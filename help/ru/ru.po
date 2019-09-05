@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-06-03 18:26+0200\n"
+"POT-Creation-Date: 2019-09-05 15:29-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -120,7 +120,7 @@ msgstr "Выключить исходный сигнал и прослушать
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:105
 msgid "References"
 msgstr "Отклики"
 
@@ -426,7 +426,7 @@ msgstr ""
 "будет уменьшен"
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:78
+#: C/deesser.page:59 C/autogain.page:96
 msgid "Gain"
 msgstr "Усиление"
 
@@ -811,7 +811,7 @@ msgstr ""
 
 #. (itstool) path: page/title
 #. (itstool) path: title/em
-#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:61
+#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:79
 msgid "Loudness"
 msgstr ""
 
@@ -1919,7 +1919,7 @@ msgid "Use the dark version of the GTK theme."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/general.page:50
+#: C/general.page:50 C/autogain.page:25
 msgid "Reset"
 msgstr ""
 
@@ -2296,49 +2296,68 @@ msgstr ""
 msgid "Loudness level."
 msgstr ""
 
+#. (itstool) path: item/p
+#: C/autogain.page:27
+msgid "Resets the auto gain history."
+msgstr ""
+
 #. (itstool) path: title/em
-#: C/autogain.page:25
+#: C/autogain.page:33
+msgid "Detect Silence"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:35
+msgid ""
+"When the momentary loudness is below the relative we assume the audio "
+"material is passing through a brief moment of silence and no changes to the "
+"output gain are applied. If you do not want this behavior disable the "
+"silence detection."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:43
 msgid "Momentary"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:27
+#: C/autogain.page:45
 msgid ""
 "Controls how much the momentary term will influence the loudness level "
 "estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:34
+#: C/autogain.page:52
 msgid "Short Term"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:36
+#: C/autogain.page:54
 msgid ""
 "Controls how much the short term measure will influence the loudness level "
 "estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:43
+#: C/autogain.page:61
 msgid "Integrated"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:45
+#: C/autogain.page:63
 msgid ""
 "Controls how much the integrated term will influence the loudness level "
 "estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:52
+#: C/autogain.page:70
 msgid "Relative"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:54
+#: C/autogain.page:72
 msgid ""
 "Relative threshold. It is used to detect silence. Whenever the momentary "
 "term is below this threshold modifications to the output gain will be "
@@ -2346,24 +2365,24 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:63
+#: C/autogain.page:81
 msgid ""
 "Estimated input loudness. The difference between its value and the target "
 "loudness determines the output gain."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:70
+#: C/autogain.page:88
 msgid "Range"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:72
+#: C/autogain.page:90
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:80
+#: C/autogain.page:98
 msgid ""
 "Output gain value. The input signal will be multiplied by this correction "
 "gain to bring its loudness to the target value."

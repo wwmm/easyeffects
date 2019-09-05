@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 12:32-0300\n"
+"POT-Creation-Date: 2019-09-05 15:25-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -280,11 +280,22 @@ msgstr "Ресемплер"
 msgid "Auto Gain"
 msgstr "Контроль громкости по EBU R 128"
 
-#: data/ui/autogain.glade:149 data/ui/autogain.glade:528
+# #, fuzzy
+#: data/ui/autogain.glade:145
+#, fuzzy
+msgid "Reset History"
+msgstr "Сброс качества"
+
+#: data/ui/autogain.glade:157
+#, fuzzy
+msgid "Detect Silence"
+msgstr "Определение"
+
+#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
 msgid "Momentary"
 msgstr "Моментальные измерения"
 
-#: data/ui/autogain.glade:164 data/ui/autogain.glade:541
+#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
 msgid "Short Term"
 msgstr "Короткие измерения"
 
@@ -293,17 +304,17 @@ msgstr "Короткие измерения"
 # В документе выше переводчик перевел 'Integrated' как 'Интегрированные',
 # хотя сам же написал, что это "измерения от начала до конца"
 # Яндекс.Переводчик перевел лучше — "Комплексные измерения"
-#: data/ui/autogain.glade:179 data/ui/autogain.glade:554
+#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
 msgid "Integrated"
 msgstr "Комплексные измерения"
 
-#: data/ui/autogain.glade:195
-msgid "Target"
-msgstr "Целевой уровень громкости"
-
-#: data/ui/autogain.glade:285
+#: data/ui/autogain.glade:289
 msgid "Weights"
 msgstr "Вес в расчете громкости"
+
+#: data/ui/autogain.glade:323
+msgid "Target"
+msgstr "Целевой уровень громкости"
 
 # ###############################################
 # https://github.com/wwmm/pulseeffects/pull/289
@@ -315,11 +326,11 @@ msgstr "Вес в расчете громкости"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: data/ui/autogain.glade:315 data/ui/autogain.glade:507
+#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:718
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
 #: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
-#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:482
+#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
 #: data/ui/loudness.glade:244 data/ui/gate.glade:487
@@ -330,7 +341,7 @@ msgstr "Вес в расчете громкости"
 msgid "Input"
 msgstr "Вход"
 
-#: data/ui/autogain.glade:330 data/ui/autogain.glade:763
+#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
 #: data/ui/limiter.glade:380 data/ui/compressor.glade:733
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
@@ -338,7 +349,7 @@ msgstr "Вход"
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
 #: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
-#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:514
+#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
 #: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
@@ -351,22 +362,22 @@ msgstr "Вход"
 msgid "Output"
 msgstr "Выход"
 
-#: data/ui/autogain.glade:645
+#: data/ui/autogain.glade:684
 msgid "Relative"
 msgstr "Относительное значение"
 
-#: data/ui/autogain.glade:658 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Усиление"
 
-#: data/ui/autogain.glade:724 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:128
 msgid "Loudness"
 msgstr "Громкость"
 
 # ??? Не уверен в переводе
-#: data/ui/autogain.glade:777
+#: data/ui/autogain.glade:816
 msgid "Range"
 msgstr "Диапазон"
 
@@ -952,7 +963,7 @@ msgid "Blend Harmonics"
 msgstr "Смешение гармоник"
 
 #: data/ui/bass_enhancer.glade:254 data/ui/bass_enhancer.glade:386
-#: data/ui/exciter.glade:258 data/ui/exciter.glade:389
+#: data/ui/exciter.glade:258 data/ui/exciter.glade:390
 msgid "Harmonics"
 msgstr "Гармоники"
 
@@ -968,7 +979,7 @@ msgstr "Нижний порог"
 msgid "Exciter"
 msgstr "Генератор"
 
-#: data/ui/exciter.glade:357 data/ui/maximizer.glade:159
+#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
 msgid "Ceiling"
 msgstr "Верхний порог"
 
@@ -1187,7 +1198,7 @@ msgstr "Импульсная реакция"
 msgid "Select the impulse Response File"
 msgstr "Выбрать файл с импульсной реакцией"
 
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:160
+#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -1523,11 +1534,11 @@ msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 msgid "Reset PulseEffects."
 msgstr "Сбросить настройки PulseEffects"
 
-#: src/application.cpp:199
+#: src/application.cpp:233
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:207
+#: src/application.cpp:241
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
@@ -1769,10 +1780,6 @@ msgstr ""
 # #, fuzzy
 #~ msgid "Reset Frequency"
 #~ msgstr "Сброс частоты"
-
-# #, fuzzy
-#~ msgid "Reset Quality"
-#~ msgstr "Сброс качества"
 
 #~ msgid "Poles"
 #~ msgstr "Полюса"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-19 12:32-0300\n"
+"POT-Creation-Date: 2019-09-05 15:25-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -271,31 +271,41 @@ msgstr "Převzorkovače"
 msgid "Auto Gain"
 msgstr "Automatické zesílení"
 
-#: data/ui/autogain.glade:149 data/ui/autogain.glade:528
+#: data/ui/autogain.glade:145
+#, fuzzy
+msgid "Reset History"
+msgstr "Vrátit jakost na výchozí"
+
+#: data/ui/autogain.glade:157
+#, fuzzy
+msgid "Detect Silence"
+msgstr "Zjištění"
+
+#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
 msgid "Momentary"
 msgstr "Chvilkové"
 
-#: data/ui/autogain.glade:164 data/ui/autogain.glade:541
+#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
 msgid "Short Term"
 msgstr "Jednorázové"
 
-#: data/ui/autogain.glade:179 data/ui/autogain.glade:554
+#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
 msgid "Integrated"
 msgstr "Sjednocené"
 
-#: data/ui/autogain.glade:195
-msgid "Target"
-msgstr "Cíl"
-
-#: data/ui/autogain.glade:285
+#: data/ui/autogain.glade:289
 msgid "Weights"
 msgstr "Váhy"
 
-#: data/ui/autogain.glade:315 data/ui/autogain.glade:507
+#: data/ui/autogain.glade:323
+msgid "Target"
+msgstr "Cíl"
+
+#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:718
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
 #: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
-#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:482
+#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
 #: data/ui/loudness.glade:244 data/ui/gate.glade:487
@@ -306,7 +316,7 @@ msgstr "Váhy"
 msgid "Input"
 msgstr "Vstup"
 
-#: data/ui/autogain.glade:330 data/ui/autogain.glade:763
+#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
 #: data/ui/limiter.glade:380 data/ui/compressor.glade:733
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
@@ -314,7 +324,7 @@ msgstr "Vstup"
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
 #: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
-#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:514
+#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
 #: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
@@ -327,21 +337,21 @@ msgstr "Vstup"
 msgid "Output"
 msgstr "Výstup"
 
-#: data/ui/autogain.glade:645
+#: data/ui/autogain.glade:684
 msgid "Relative"
 msgstr "Relativní"
 
-#: data/ui/autogain.glade:658 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Zesílení"
 
-#: data/ui/autogain.glade:724 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:128
 msgid "Loudness"
 msgstr "Hlasitost"
 
-#: data/ui/autogain.glade:777
+#: data/ui/autogain.glade:816
 msgid "Range"
 msgstr "Rozsah"
 
@@ -917,7 +927,7 @@ msgid "Blend Harmonics"
 msgstr "Míchat harmonické kmity"
 
 #: data/ui/bass_enhancer.glade:254 data/ui/bass_enhancer.glade:386
-#: data/ui/exciter.glade:258 data/ui/exciter.glade:389
+#: data/ui/exciter.glade:258 data/ui/exciter.glade:390
 msgid "Harmonics"
 msgstr "Harmonické kmity"
 
@@ -933,7 +943,7 @@ msgstr "Spodní mez"
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: data/ui/exciter.glade:357 data/ui/maximizer.glade:159
+#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
 msgid "Ceiling"
 msgstr "Strop"
 
@@ -1149,7 +1159,7 @@ msgstr "Odpověď impulsu"
 msgid "Select the impulse Response File"
 msgstr "Vybrat soubor s odpovědí impulsu"
 
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:160
+#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1481,11 +1491,11 @@ msgstr "Nahrát přednastavení. Příklad: pulseeffects -l music"
 msgid "Reset PulseEffects."
 msgstr "Vynulovat PulseEffects."
 
-#: src/application.cpp:199
+#: src/application.cpp:233
 msgid "Output Presets: "
 msgstr "Výstupní přednastavení:"
 
-#: src/application.cpp:207
+#: src/application.cpp:241
 msgid "Input Presets: "
 msgstr "Vstupní přednastavení:"
 
@@ -1709,9 +1719,6 @@ msgstr "nekonečno"
 
 #~ msgid "Reset Frequency"
 #~ msgstr "Vrátit kmitočet na výchozí"
-
-#~ msgid "Reset Quality"
-#~ msgstr "Vrátit jakost na výchozí"
 
 #~ msgid "Poles"
 #~ msgstr "Póly"

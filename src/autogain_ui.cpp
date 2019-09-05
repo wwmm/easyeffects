@@ -24,6 +24,9 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   builder->get_widget("l_label", l_label);
   builder->get_widget("lra_label", lra_label);
 
+  builder->get_widget("reset", reset);
+  builder->get_widget("detect_silence", detect_silence);
+
   get_object(builder, "input_gain", input_gain);
   builder->get_widget("l_label", l_label);
   get_object(builder, "output_gain", output_gain);
@@ -43,6 +46,9 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("weight-m", weight_m.get(), "value", flag);
   settings->bind("weight-s", weight_s.get(), "value", flag);
   settings->bind("weight-i", weight_i.get(), "value", flag);
+  settings->bind("detect-silence", detect_silence, "active", flag);
+
+  reset->signal_clicked().connect([=]() { settings->set_boolean("reset", true); });
 }
 
 AutoGainUi::~AutoGainUi() {

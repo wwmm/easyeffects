@@ -4,7 +4,8 @@
 
 ### Added
 
-- The autogain history is reset when our pipeline stops.
+- The autogain plugin now has a button to reset its history and another that allows silence detection to be disabled.
+  Disabling this detection helps with issues like the ones in https://github.com/wwmm/pulseeffects/issues/550.
 
 ## [4.6.6]
 

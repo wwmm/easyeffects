@@ -22,6 +22,24 @@
         </item>
         <item>
             <title>
+                <em style="strong" its:withinText="nested">Reset</em>
+            </title>
+            <p>
+                Resets the auto gain history.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Detect Silence</em>
+            </title>
+            <p>
+                When the momentary loudness is below the relative we assume the audio material is passing through a
+                brief moment of silence and no changes to the output gain are applied. If you do not want this behavior
+                disable the silence detection.
+            </p>
+        </item>
+        <item>
+            <title>
                 <em style="strong" its:withinText="nested">Momentary</em>
             </title>
             <p>

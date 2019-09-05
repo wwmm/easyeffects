@@ -129,4 +129,8 @@ void AutoGain::bind_to_gsettings() {
   g_settings_bind(settings, "weight-s", autogain, "weight-s", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(settings, "weight-i", autogain, "weight-i", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "detect-silence", autogain, "detect-silence", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "reset", autogain, "reset", G_SETTINGS_BIND_DEFAULT);
 }

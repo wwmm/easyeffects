@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-06-03 18:26+0200\n"
+"POT-Creation-Date: 2019-09-05 15:29-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -117,7 +117,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
-#: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:87
+#: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:105
 msgid "References"
 msgstr "Note"
 
@@ -153,10 +153,10 @@ msgid ""
 "threshold. If the signal peaks above the threshold and quickly returns to "
 "below the threshold, it may never receive a full dose of compression."
 msgstr ""
-"L'attacco indica il tempo in millisecondi (ms) nel quale il plugin "
-"applica interamente la compressione del segnale una volta superato il valore "
-"della soglia. Se il segnale supera la soglia e ritorna velocemente al di "
-"sotto di essa, allora non riceverà una compressione completa."
+"L'attacco indica il tempo in millisecondi (ms) nel quale il plugin applica "
+"interamente la compressione del segnale una volta superato il valore della "
+"soglia. Se il segnale supera la soglia e ritorna velocemente al di sotto di "
+"essa, allora non riceverà una compressione completa."
 
 #. (itstool) path: title/em
 #: C/compressor.page:31 C/gate.page:29 C/limiter.page:47
@@ -174,12 +174,12 @@ msgid ""
 "compressor to stop attenuating gain slowly once the signal returns below the "
 "threshold."
 msgstr ""
-"Il rilascio indica il tempo in millisecondi (ms) nel quale il plugin "
-"termina di applicare la fase di compressione quando il segnale scende al di "
-"sotto del valore della soglia. Un rilascio breve fa sì che il compressore "
-"smetta velocemente di comprimere il segnale. Un rilascio più lungo invece "
-"terminerà la fase di compressione più lentamente quando il segnale ritorna "
-"sotto il valore di soglia."
+"Il rilascio indica il tempo in millisecondi (ms) nel quale il plugin termina "
+"di applicare la fase di compressione quando il segnale scende al di sotto "
+"del valore della soglia. Un rilascio breve fa sì che il compressore smetta "
+"velocemente di comprimere il segnale. Un rilascio più lungo invece terminerà "
+"la fase di compressione più lentamente quando il segnale ritorna sotto il "
+"valore di soglia."
 
 #. (itstool) path: title/em
 #: C/compressor.page:43 C/deesser.page:26 C/gate.page:38
@@ -454,7 +454,7 @@ msgstr ""
 "frequenza saranno interessati dalla riduzione in ampiezza."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:78
+#: C/deesser.page:59 C/autogain.page:96
 msgid "Gain"
 msgstr "Guadagno"
 
@@ -873,7 +873,7 @@ msgstr ""
 
 #. (itstool) path: page/title
 #. (itstool) path: title/em
-#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:61
+#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:79
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -1381,8 +1381,7 @@ msgstr "Alimentazione"
 #. (itstool) path: item/p
 #: C/crossfeed.page:29
 msgid "Amount of signal from a channel that is sent to the other."
-msgstr ""
-"Quantità del segnale di uno specifico canale da inviare all'altro."
+msgstr "Quantità del segnale di uno specifico canale da inviare all'altro."
 
 #. (itstool) path: page/title
 #: C/equalizer.page:9
@@ -2142,7 +2141,7 @@ msgid "Use the dark version of the GTK theme."
 msgstr "Usa variante scura del tema GTK."
 
 #. (itstool) path: title/em
-#: C/general.page:50
+#: C/general.page:50 C/autogain.page:25
 msgid "Reset"
 msgstr "Reset"
 
@@ -2475,8 +2474,8 @@ msgid ""
 "You can save your own presets. Just add write a name and click on the add "
 "button. Presets can be imported clicking on the button to the left."
 msgstr ""
-"Si possono creare e salvare profili personalizzati scegliendo un titolo "
-"e cliccando sul pulsante di aggiunta. I profili possono essere importati "
+"Si possono creare e salvare profili personalizzati scegliendo un titolo e "
+"cliccando sul pulsante di aggiunta. I profili possono essere importati "
 "facendo clic sul pulsante a sinistra."
 
 #. (itstool) path: page/p
@@ -2571,13 +2570,33 @@ msgstr "Livello"
 msgid "Loudness level."
 msgstr "Intensità della Loudness."
 
+#. (itstool) path: item/p
+#: C/autogain.page:27
+msgid "Resets the auto gain history."
+msgstr ""
+
 #. (itstool) path: title/em
-#: C/autogain.page:25
+#: C/autogain.page:33
+#, fuzzy
+msgid "Detect Silence"
+msgstr "Rilevamento"
+
+#. (itstool) path: item/p
+#: C/autogain.page:35
+msgid ""
+"When the momentary loudness is below the relative we assume the audio "
+"material is passing through a brief moment of silence and no changes to the "
+"output gain are applied. If you do not want this behavior disable the "
+"silence detection."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:43
 msgid "Momentary"
 msgstr "Momentaneo"
 
 #. (itstool) path: item/p
-#: C/autogain.page:27
+#: C/autogain.page:45
 msgid ""
 "Controls how much the momentary term will influence the loudness level "
 "estimation."
@@ -2586,12 +2605,12 @@ msgstr ""
 "stima del livello di Loudness."
 
 #. (itstool) path: title/em
-#: C/autogain.page:34
+#: C/autogain.page:52
 msgid "Short Term"
 msgstr "Breve Termine"
 
 #. (itstool) path: item/p
-#: C/autogain.page:36
+#: C/autogain.page:54
 msgid ""
 "Controls how much the short term measure will influence the loudness level "
 "estimation."
@@ -2600,12 +2619,12 @@ msgstr ""
 "la stima del livello di Loudness."
 
 #. (itstool) path: title/em
-#: C/autogain.page:43
+#: C/autogain.page:61
 msgid "Integrated"
 msgstr "Integrato"
 
 #. (itstool) path: item/p
-#: C/autogain.page:45
+#: C/autogain.page:63
 msgid ""
 "Controls how much the integrated term will influence the loudness level "
 "estimation."
@@ -2614,12 +2633,12 @@ msgstr ""
 "stima del livello di Loudness."
 
 #. (itstool) path: title/em
-#: C/autogain.page:52
+#: C/autogain.page:70
 msgid "Relative"
 msgstr "Relativo"
 
 #. (itstool) path: item/p
-#: C/autogain.page:54
+#: C/autogain.page:72
 msgid ""
 "Relative threshold. It is used to detect silence. Whenever the momentary "
 "term is below this threshold modifications to the output gain will be "
@@ -2630,7 +2649,7 @@ msgstr ""
 "guadagno in uscita viene disattivata."
 
 #. (itstool) path: item/p
-#: C/autogain.page:63
+#: C/autogain.page:81
 msgid ""
 "Estimated input loudness. The difference between its value and the target "
 "loudness determines the output gain."
@@ -2639,19 +2658,19 @@ msgstr ""
 "di Loudness determina il guadagno in uscita."
 
 #. (itstool) path: title/em
-#: C/autogain.page:70
+#: C/autogain.page:88
 msgid "Range"
 msgstr "Gamma"
 
 #. (itstool) path: item/p
-#: C/autogain.page:72
+#: C/autogain.page:90
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Gamma della Loudness. Indica quanto è varia la gamma dinamica del segnale "
 "audio."
 
 #. (itstool) path: item/p
-#: C/autogain.page:80
+#: C/autogain.page:98
 msgid ""
 "Output gain value. The input signal will be multiplied by this correction "
 "gain to bring its loudness to the target value."
@@ -2679,8 +2698,8 @@ msgstr ""
 "applicare effetti a tutte le applicazioni, senza la necessità di abilitarle "
 "individualmente. Tuttavia ci sono casi in cui l'utente vuole che una "
 "particolare applicazione sia esclusa dalla funzione \"Abilita Tutte le "
-"Applicazioni\". In questo caso è possibile usare una lista di esclusione. "
-"È sufficiente aggiungere a tale lista il nome dell'applicazione esattamente "
+"Applicazioni\". In questo caso è possibile usare una lista di esclusione. È "
+"sufficiente aggiungere a tale lista il nome dell'applicazione esattamente "
 "come viene mostrata nella voce \"Applicazioni\"."
 
 #~ msgid "Stop the attenuation after this amount of seconds."

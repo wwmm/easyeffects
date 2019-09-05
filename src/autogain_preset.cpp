@@ -8,6 +8,8 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".autogain.state", settings->get_boolean("state"));
 
+  root.put(section + ".autogain.detect-silence", settings->get_boolean("state"));
+
   root.put(section + ".autogain.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".autogain.output-gain", settings->get_double("output-gain"));
@@ -25,6 +27,8 @@ void AutoGainPreset::load(boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".autogain.state");
+
+  update_key<bool>(root, settings, "detect-silence", section + ".autogain.detect-silence");
 
   update_key<double>(root, settings, "input-gain", section + ".autogain.input-gain");
 

@@ -34,8 +34,6 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuf
 
 static void gst_peautogain_finalize(GObject* object);
 
-static gboolean gst_peautogain_stop(GstBaseTransform* base);
-
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain);
 
 static void gst_peautogain_reset(GstPeautogain* peautogain);
@@ -54,7 +52,9 @@ enum {
   PROP_L,
   PROP_G,
   PROP_LRA,
-  PROP_NOTIFY
+  PROP_NOTIFY,
+  PROP_DETECT_SILENCE,
+  PROP_RESET
 };
 
 /* pad templates */
@@ -106,7 +106,6 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
   audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peautogain_setup);
   base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
   base_transform_class->transform_ip_on_passthrough = false;
-  base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peautogain_stop);
 
   /* define properties */
 
@@ -169,6 +168,17 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
       gobject_class, PROP_LRA,
       g_param_spec_float("lra", "Loudness Range", "Loudness Range (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_DETECT_SILENCE,
+      g_param_spec_boolean("detect-silence", "Detect Silence",
+                           "Do not change gain if the momentary term is below the relative loudness", true,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_RESET,
+      g_param_spec_boolean("reset", "Reset History", "Completely reset the library ebur128 state", false,
+                           static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -189,6 +199,8 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->notify_samples = 0;
   peautogain->sample_count = 0;
   peautogain->notify = true;
+  peautogain->detect_silence = true;
+  peautogain->reset = false;
   peautogain->ebur_state = nullptr;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
@@ -214,6 +226,12 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       break;
     case PROP_NOTIFY:
       peautogain->notify = g_value_get_boolean(value);
+      break;
+    case PROP_DETECT_SILENCE:
+      peautogain->detect_silence = g_value_get_boolean(value);
+      break;
+    case PROP_RESET:
+      peautogain->reset = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -263,6 +281,12 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
     case PROP_NOTIFY:
       g_value_set_boolean(value, peautogain->notify);
       break;
+    case PROP_DETECT_SILENCE:
+      g_value_set_boolean(value, peautogain->detect_silence);
+      break;
+    case PROP_RESET:
+      g_value_set_boolean(value, peautogain->reset);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -292,6 +316,10 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuf
 
   std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
+  if (peautogain->reset) {
+    gst_peautogain_reset(peautogain);
+  }
+
   if (peautogain->ready) {
     gst_peautogain_process(peautogain, buffer);
   } else {
@@ -313,16 +341,6 @@ void gst_peautogain_finalize(GObject* object) {
   G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
 }
 
-static gboolean gst_peautogain_stop(GstBaseTransform* base) {
-  GstPeautogain* peautogain = GST_PEAUTOGAIN(base);
-
-  std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
-
-  gst_peautogain_reset(peautogain);
-
-  return true;
-}
-
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
   if (!peautogain->ready) {
     peautogain->ebur_state = ebur128_init(
@@ -340,17 +358,19 @@ static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
 
 static void gst_peautogain_reset(GstPeautogain* peautogain) {
   peautogain->ready = false;
+  peautogain->reset = false;
   peautogain->gain = 1.0f;
 
   if (peautogain->ebur_state != nullptr) {
     ebur128_destroy(&peautogain->ebur_state);
+
     peautogain->ebur_state = nullptr;
   }
 }
 
 static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer) {
   GstMapInfo map;
-  double relative, momentary, range;
+  double momentary, shortterm, global, relative, range;
   bool failed = false;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
@@ -361,16 +381,28 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
   ebur128_add_frames_float(peautogain->ebur_state, data, num_samples);
 
-  if (EBUR128_SUCCESS != ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
-    failed = true;
-  } else {
-    peautogain->relative = (float)relative;
-  }
-
   if (EBUR128_SUCCESS != ebur128_loudness_momentary(peautogain->ebur_state, &momentary)) {
     failed = true;
   } else {
     peautogain->momentary = (float)momentary;
+  }
+
+  if (EBUR128_SUCCESS != ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
+    failed = true;
+  } else {
+    peautogain->shortterm = (float)shortterm;
+  }
+
+  if (EBUR128_SUCCESS != ebur128_loudness_global(peautogain->ebur_state, &global)) {
+    failed = true;
+  } else {
+    peautogain->global = (float)global;
+  }
+
+  if (EBUR128_SUCCESS != ebur128_relative_threshold(peautogain->ebur_state, &relative)) {
+    failed = true;
+  } else {
+    peautogain->relative = (float)relative;
   }
 
   if (EBUR128_SUCCESS != ebur128_loudness_range(peautogain->ebur_state, &range)) {
@@ -379,20 +411,10 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     peautogain->range = (float)range;
   }
 
-  if (peautogain->momentary > peautogain->relative && peautogain->relative > -70 && !failed) {
-    double shortterm, global, peak_L, peak_R;
+  bool playing_silence = (peautogain->momentary < peautogain->relative && peautogain->detect_silence) ? true : false;
 
-    if (EBUR128_SUCCESS != ebur128_loudness_shortterm(peautogain->ebur_state, &shortterm)) {
-      failed = true;
-    } else {
-      peautogain->shortterm = (float)shortterm;
-    }
-
-    if (EBUR128_SUCCESS != ebur128_loudness_global(peautogain->ebur_state, &global)) {
-      failed = true;
-    } else {
-      peautogain->global = (float)global;
-    }
+  if (peautogain->relative > -70 && !failed && !playing_silence) {
+    double peak_L, peak_R;
 
     if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
       failed = true;
@@ -432,14 +454,6 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
     if (peautogain->sample_count >= peautogain->notify_samples) {
       peautogain->sample_count = 0;
-
-      // std::cout << "relative: " << relative << std::endl;
-      // std::cout << "momentary: " << momentary << std::endl;
-      // std::cout << "shortterm: " << peautogain->shortterm << std::endl;
-      // std::cout << "global: " << peautogain->global << std::endl;
-      // std::cout << "loudness: " << peautogain->loudness << std::endl;
-      // std::cout << "range: " << peautogain->range << std::endl;
-      // std::cout << "gain: " << peautogain->gain << std::endl;
 
       g_object_notify(G_OBJECT(peautogain), "m");
       g_object_notify(G_OBJECT(peautogain), "s");

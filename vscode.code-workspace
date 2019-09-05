@@ -84,7 +84,13 @@
 			"utility": "cpp",
 			"valarray": "cpp",
 			"variant": "cpp",
-			"algorithm": "cpp"
+			"algorithm": "cpp",
+			"hash_map": "cpp",
+			"iterator": "cpp",
+			"memory_resource": "cpp",
+			"random": "cpp",
+			"cfenv": "cpp",
+			"cinttypes": "cpp"
 		}
 	}
 }
