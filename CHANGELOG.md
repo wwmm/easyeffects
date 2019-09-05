@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- The autogain history is reset when our pipeline stops.
+
 ## [4.6.6]
 
 ### Added

@@ -12,12 +12,12 @@
  * </refsect2>
  */
 
+#include "gstpeautogain.hpp"
 #include <gst/audio/gstaudiofilter.h>
 #include <gst/gst.h>
 #include <cmath>
+#include <iostream>
 #include "config.h"
-// #include <iostream>
-#include "gstpeautogain.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peautogain_debug_category);
 #define GST_CAT_DEFAULT gst_peautogain_debug_category
@@ -34,7 +34,11 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuf
 
 static void gst_peautogain_finalize(GObject* object);
 
+static gboolean gst_peautogain_stop(GstBaseTransform* base);
+
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain);
+
+static void gst_peautogain_reset(GstPeautogain* peautogain);
 
 static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer);
 
@@ -102,6 +106,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
   audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_peautogain_setup);
   base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_peautogain_transform_ip);
   base_transform_class->transform_ip_on_passthrough = false;
+  base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_peautogain_stop);
 
   /* define properties */
 
@@ -289,6 +294,8 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuf
 
   if (peautogain->ready) {
     gst_peautogain_process(peautogain, buffer);
+  } else {
+    gst_peautogain_setup_ebur(peautogain);
   }
 
   return GST_FLOW_OK;
@@ -301,15 +308,19 @@ void gst_peautogain_finalize(GObject* object) {
 
   std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
 
-  peautogain->ready = false;
-  peautogain->gain = 1.0f;
-
-  if (peautogain->ebur_state != nullptr) {
-    ebur128_destroy(&peautogain->ebur_state);
-    peautogain->ebur_state = nullptr;
-  }
+  gst_peautogain_reset(peautogain);
 
   G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
+}
+
+static gboolean gst_peautogain_stop(GstBaseTransform* base) {
+  GstPeautogain* peautogain = GST_PEAUTOGAIN(base);
+
+  std::lock_guard<std::mutex> lock(peautogain->lock_guard_ebu);
+
+  gst_peautogain_reset(peautogain);
+
+  return true;
 }
 
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
@@ -324,6 +335,16 @@ static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
     ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
 
     peautogain->ready = true;
+  }
+}
+
+static void gst_peautogain_reset(GstPeautogain* peautogain) {
+  peautogain->ready = false;
+  peautogain->gain = 1.0f;
+
+  if (peautogain->ebur_state != nullptr) {
+    ebur128_destroy(&peautogain->ebur_state);
+    peautogain->ebur_state = nullptr;
   }
 }
 
