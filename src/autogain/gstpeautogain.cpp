@@ -34,6 +34,8 @@ static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuf
 
 static void gst_peautogain_finalize(GObject* object);
 
+static void gst_peautogain_setup_ebur(GstPeautogain* peautogain);
+
 static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer);
 
 enum {
@@ -271,23 +273,9 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo*
 
   peautogain->bpf = info->bpf;
   peautogain->rate = info->rate;
+  peautogain->notify_samples = GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);  // notify every 0.1 seconds
 
-  if (!peautogain->ready) {
-    peautogain->ebur_state = ebur128_init(
-        2, peautogain->rate,
-        EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
-
-    ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
-    ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
-
-    ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
-
-    /*notify every 0.1 seconds*/
-
-    peautogain->notify_samples = GST_CLOCK_TIME_TO_FRAMES(GST_SECOND / 10, info->rate);
-
-    peautogain->ready = true;
-  }
+  gst_peautogain_setup_ebur(peautogain);
 
   return true;
 }
@@ -322,6 +310,21 @@ void gst_peautogain_finalize(GObject* object) {
   }
 
   G_OBJECT_CLASS(gst_peautogain_parent_class)->finalize(object);
+}
+
+static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
+  if (!peautogain->ready) {
+    peautogain->ebur_state = ebur128_init(
+        2, peautogain->rate,
+        EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
+
+    ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
+    ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
+
+    ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
+
+    peautogain->ready = true;
+  }
 }
 
 static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer) {
