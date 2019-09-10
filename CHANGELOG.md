@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- It is now possible to set different buffer and latency values for the pulsesrc and the pulsesink plugins. This
+  means that there is more room to reduce the overall latency. Pulsesrc is at the start of the effects pipeline and
+  pulsesink at its end.
+
 ## [4.6.7]
 
 ### Added

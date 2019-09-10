@@ -24,7 +24,7 @@ class PulseSettingsUi : public Gtk::Grid {
  private:
   std::string log_tag = "pulse_settings_ui: ";
 
-  Glib::RefPtr<Gio::Settings> settings;
+  Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
   Application* app;
 
@@ -32,7 +32,9 @@ class PulseSettingsUi : public Gtk::Grid {
   Gtk::ComboBox *input_device, *output_device;
   Gtk::ComboBoxText *blocksize_in, *blocksize_out;
 
-  Glib::RefPtr<Gtk::Adjustment> buffer_in, buffer_out, latency_in, latency_out;
+  Glib::RefPtr<Gtk::Adjustment> sie_input_buffer, sie_input_latency, sie_output_buffer, sie_output_latency,
+      soe_input_buffer, soe_input_latency, soe_output_buffer, soe_output_latency;
+
   Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
   std::vector<sigc::connection> connections;

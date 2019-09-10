@@ -50,7 +50,11 @@ GVariant* int_to_blocksize_enum(const GValue* value, const GVariantType* expecte
 PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
                                  const Glib::RefPtr<Gtk::Builder>& builder,
                                  Application* application)
-    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
+    : Gtk::Grid(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
+      sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
+      soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
+      app(application) {
   // loading glade widgets
 
   builder->get_widget("use_default_sink", use_default_sink);
@@ -60,10 +64,16 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
   builder->get_widget("blocksize_in", blocksize_in);
   builder->get_widget("blocksize_out", blocksize_out);
 
-  get_object(builder, "buffer_in", buffer_in);
-  get_object(builder, "buffer_out", buffer_out);
-  get_object(builder, "latency_in", latency_in);
-  get_object(builder, "latency_out", latency_out);
+  get_object(builder, "sie_input_buffer", sie_input_buffer);
+  get_object(builder, "sie_input_latency", sie_input_latency);
+  get_object(builder, "sie_output_buffer", sie_output_buffer);
+  get_object(builder, "sie_output_latency", sie_output_latency);
+
+  get_object(builder, "soe_input_buffer", soe_input_buffer);
+  get_object(builder, "soe_input_latency", soe_input_latency);
+  get_object(builder, "soe_output_buffer", soe_output_buffer);
+  get_object(builder, "soe_output_latency", soe_output_latency);
+
   get_object(builder, "sink_list", sink_list);
   get_object(builder, "source_list", source_list);
 
@@ -93,11 +103,15 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
 
   settings->bind("use-default-source", input_device, "sensitive", flag | flag_invert_boolean);
 
-  settings->bind("buffer-out", buffer_out.get(), "value", flag);
-  settings->bind("latency-out", latency_out.get(), "value", flag);
+  sie_settings->bind("buffer-pulsesrc", sie_input_buffer.get(), "value", flag);
+  sie_settings->bind("latency-pulsesrc", sie_input_latency.get(), "value", flag);
+  sie_settings->bind("buffer-pulsesink", sie_output_buffer.get(), "value", flag);
+  sie_settings->bind("latency-pulsesink", sie_output_latency.get(), "value", flag);
 
-  settings->bind("buffer-in", buffer_in.get(), "value", flag);
-  settings->bind("latency-in", latency_in.get(), "value", flag);
+  soe_settings->bind("buffer-pulsesrc", soe_input_buffer.get(), "value", flag);
+  soe_settings->bind("latency-pulsesrc", soe_input_latency.get(), "value", flag);
+  soe_settings->bind("buffer-pulsesink", soe_output_buffer.get(), "value", flag);
+  soe_settings->bind("latency-pulsesink", soe_output_latency.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "blocksize-in", blocksize_in->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);

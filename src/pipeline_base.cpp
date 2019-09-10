@@ -290,6 +290,8 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed), this);
   g_signal_connect(source, "notify::buffer-time", G_CALLBACK(on_buffer_changed), this);
   g_signal_connect(source, "notify::latency-time", G_CALLBACK(on_latency_changed), this);
+  g_signal_connect(sink, "notify::buffer-time", G_CALLBACK(on_buffer_changed), this);
+  g_signal_connect(sink, "notify::latency-time", G_CALLBACK(on_latency_changed), this);
 
   auto sinkpad = gst_element_get_static_pad(sink, "sink");
 

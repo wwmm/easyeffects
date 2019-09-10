@@ -8,5 +8,21 @@
                "pitch"]
           </default>
         </key>
+        <key name="buffer-pulsesrc" type="i">
+            <range min="1" max="10000000"/>
+            <default>200000</default>
+        </key>
+        <key name="latency-pulsesrc" type="i">
+            <range min="1" max="10000000"/>
+            <default>10000</default>
+        </key>
+        <key name="buffer-pulsesink" type="i">
+            <range min="1" max="10000000"/>
+            <default>200000</default>
+        </key>
+        <key name="latency-pulsesink" type="i">
+            <range min="1" max="10000000"/>
+            <default>10000</default>
+        </key>
     </schema>
 </schemalist>
