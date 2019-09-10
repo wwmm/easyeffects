@@ -193,82 +193,108 @@ class PulseManager {
   std::shared_ptr<AppInfo> parse_app_info(const T& info) {
     std::string app_name, media_name, media_role, app_id;
     auto ai = std::make_shared<AppInfo>();
+    bool forbidden_app = false;
 
     auto prop = pa_proplist_gets(info->proplist, "application.name");
 
     if (prop != nullptr) {
       app_name = prop;
+
+      forbidden_app =
+          std::find(std::begin(blacklist_apps), std::end(blacklist_apps), app_name) != std::end(blacklist_apps);
+
+      if (forbidden_app) {
+        return nullptr;
+      }
     }
 
     prop = pa_proplist_gets(info->proplist, "media.name");
 
     if (prop != nullptr) {
       media_name = prop;
+
+      if (app_name == "") {
+        app_name = media_name;
+      }
+
+      forbidden_app = std::find(std::begin(blacklist_media_name), std::end(blacklist_media_name), media_name) !=
+                      std::end(blacklist_media_name);
+
+      if (forbidden_app) {
+        return nullptr;
+      }
     }
 
     prop = pa_proplist_gets(info->proplist, "media.role");
 
     if (prop != nullptr) {
       media_role = prop;
+
+      forbidden_app = std::find(std::begin(blacklist_media_role), std::end(blacklist_media_role), media_role) !=
+                      std::end(blacklist_media_role);
+
+      if (forbidden_app) {
+        return nullptr;
+      }
     }
 
     prop = pa_proplist_gets(info->proplist, "application.id");
 
     if (prop != nullptr) {
       app_id = prop;
+
+      forbidden_app =
+          std::find(std::begin(blacklist_app_id), std::end(blacklist_app_id), app_id) != std::end(blacklist_app_id);
+
+      if (forbidden_app) {
+        return nullptr;
+      }
     }
 
-    auto forbidden_app_name =
-        std::find(std::begin(blacklist_apps), std::end(blacklist_apps), app_name) != std::end(blacklist_apps);
+    prop = pa_proplist_gets(info->proplist, "application.icon_name");
 
-    auto forbidden_media_name = std::find(std::begin(blacklist_media_name), std::end(blacklist_media_name),
-                                          media_name) != std::end(blacklist_media_name);
+    std::string icon_name;
 
-    auto forbidden_media_role = std::find(std::begin(blacklist_media_role), std::end(blacklist_media_role),
-                                          media_role) != std::end(blacklist_media_role);
-
-    auto forbidden_app_id =
-        std::find(std::begin(blacklist_app_id), std::end(blacklist_app_id), app_id) != std::end(blacklist_app_id);
-
-    if (forbidden_app_name || forbidden_media_name || forbidden_media_role || forbidden_app_id) {
-      return nullptr;
+    if (prop != nullptr) {
+      icon_name = prop;
     } else {
-      auto prop = pa_proplist_gets(info->proplist, "application.icon_name");
-
-      std::string icon_name;
+      prop = pa_proplist_gets(info->proplist, "media.icon_name");
 
       if (prop != nullptr) {
-        icon_name = prop;
+        if (prop == "audio-card-bluetooth") {  // there is no GTK icon with this name given by Pulseaudio =/
+        } else {
+          icon_name = "bluetooth-symbolic";
+        }
       } else {
         icon_name = "audio-x-generic-symbolic";
       }
-
-      ai->connected = app_is_connected(info);
-
-      // linear volume
-      ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
-
-      if (info->resample_method) {
-        ai->resampler = info->resample_method;
-      } else {
-        ai->resampler = "none";
-      }
-
-      ai->format = pa_sample_format_to_string(info->sample_spec.format);
-
-      ai->index = info->index;
-      ai->name = app_name;
-      ai->icon_name = icon_name;
-      ai->channels = info->volume.channels;
-      ai->rate = info->sample_spec.rate;
-      ai->mute = info->mute;
-      ai->buffer = info->buffer_usec;
-      ai->latency = get_latency(info);
-      ai->corked = info->corked;
-      ai->wants_to_play = (ai->connected && !ai->corked) ? true : false;
-
-      return ai;
     }
+
+    ai->connected = app_is_connected(info);
+
+    // linear volume
+    ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
+
+    if (info->resample_method) {
+      ai->resampler = info->resample_method;
+    } else {
+      ai->resampler = "none";
+    }
+
+    ai->format = pa_sample_format_to_string(info->sample_spec.format);
+
+    ai->index = info->index;
+    ai->name = app_name;
+    ai->icon_name = icon_name;
+    ai->channels = info->volume.channels;
+    ai->rate = info->sample_spec.rate;
+    ai->mute = info->mute;
+    ai->buffer = info->buffer_usec;
+    ai->latency = get_latency(info);
+    ai->corked = info->corked;
+    ai->wants_to_play = (ai->connected && !ai->corked) ? true : false;
+
+    return ai;
   }
 };
 

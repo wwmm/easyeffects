@@ -7,6 +7,12 @@
 - The autogain plugin now has a button to reset its history and another that allows silence detection to be disabled.
   Disabling this detection helps with issues like the ones in https://github.com/wwmm/pulseeffects/issues/550.
 
+### Fixed
+
+- Fixed a bug that prevented loopback devices from being shown in PulseEffects Applications section. Now it is possible
+  to apply effects for audio sent from mobile devices through a bluetooth connection. It should work for other kinds of
+  loopbacks too.
+
 ## [4.6.6]
 
 ### Added
