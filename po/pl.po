@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -114,30 +114,40 @@ msgstr "Nadpróbkowanie"
 msgid "Line Width"
 msgstr "Szerokość"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr "Użyj domyślnych"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
-#: data/ui/app_info.glade:159
-msgid "Buffer"
-msgstr "Bufor"
-
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
-#: data/ui/app_info.glade:186
-msgid "Latency"
-msgstr "Oczekiwanie"
-
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
 #, fuzzy
 msgid "Block Size"
 msgstr "Rozmiar pomieszczenia"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
+#: data/ui/app_info.glade:159
+msgid "Buffer"
+msgstr "Bufor"
+
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
+#: data/ui/app_info.glade:186
+msgid "Latency"
+msgstr "Oczekiwanie"
+
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+msgid "Pipeline Output"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Efekty wejściowe"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Efekty wyjściowe"
 
@@ -1533,7 +1543,7 @@ msgstr "limiter;kompresor;pogłos;korektor;autogłośność;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Profile"
@@ -1577,7 +1587,7 @@ msgstr ""
 msgid "General"
 msgstr "Ogólne"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 

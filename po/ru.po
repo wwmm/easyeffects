@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -110,30 +110,41 @@ msgstr "Передискретизация"
 msgid "Line Width"
 msgstr "Ширина линии"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr "По умолчанию"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+# Taking lingual shortcuts to squeeze it in the text box
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+msgid "Block Size"
+msgstr "Размер блока"
+
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
 #: data/ui/app_info.glade:159
 msgid "Buffer"
 msgstr "Буфер"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Задержка"
 
-# Taking lingual shortcuts to squeeze it in the text box
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
-msgid "Block Size"
-msgstr "Размер блока"
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+#, fuzzy
+msgid "Pipeline Output"
+msgstr "Эквалайзер - Выход"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Эффекты для ввода звука"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Эффекты для вывода звука"
 
@@ -1514,7 +1525,7 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
@@ -1554,7 +1565,7 @@ msgstr "Черный список"
 msgid "General"
 msgstr "Общие"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr ""
 
@@ -1924,6 +1935,3 @@ msgstr ""
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Эквалайзер - Вход"
-
-#~ msgid "Equalizer - Output"
-#~ msgstr "Эквалайзер - Выход"

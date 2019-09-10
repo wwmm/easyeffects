@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2019-09-07 22:19+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: \n"
@@ -114,32 +114,42 @@ msgstr "Vzorkovanie"
 msgid "Line Width"
 msgstr "Šírka Čáry"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 #, fuzzy
 msgid "Use Default"
 msgstr "Použiť Predvolený"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
-#: data/ui/app_info.glade:159
-msgid "Buffer"
-msgstr "Vyrovnávacia Pamäť"
-
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
-#: data/ui/app_info.glade:186
-msgid "Latency"
-msgstr "Odozva"
-
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
 #, fuzzy
 msgid "Block Size"
 msgstr "Veľkosť Bloku"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
+#: data/ui/app_info.glade:159
+msgid "Buffer"
+msgstr "Vyrovnávacia Pamäť"
+
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
+#: data/ui/app_info.glade:186
+msgid "Latency"
+msgstr "Odozva"
+
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+msgid "Pipeline Output"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 #, fuzzy
 msgid "Input Effects"
 msgstr "Vstupné Efekty"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 #, fuzzy
 msgid "Output Effects"
 msgstr "Výstupné Efekty"
@@ -574,7 +584,6 @@ msgid "Source"
 msgstr "Zdroj"
 
 #: data/ui/compressor.glade:676 data/ui/compressor.glade:913
-#, fuzzy
 msgid "Sidechain"
 msgstr ""
 
@@ -1535,7 +1544,7 @@ msgstr ""
 msgid "pulseeffects"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Predvoľby"
@@ -1578,7 +1587,7 @@ msgstr "Čierny List"
 msgid "General"
 msgstr "Všeobecné"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -117,30 +117,41 @@ msgstr "Jači sampling"
 msgid "Line Width"
 msgstr "Širina"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr "Koristi tvorničke postavke"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
-#: data/ui/app_info.glade:159
-msgid "Buffer"
-msgstr "Latencija međuspremnika"
-
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
-#: data/ui/app_info.glade:186
-msgid "Latency"
-msgstr "Latencija"
-
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
 #, fuzzy
 msgid "Block Size"
 msgstr "Veličina bloka"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
+#: data/ui/app_info.glade:159
+msgid "Buffer"
+msgstr "Latencija međuspremnika"
+
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
+#: data/ui/app_info.glade:186
+msgid "Latency"
+msgstr "Latencija"
+
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+#, fuzzy
+msgid "Pipeline Output"
+msgstr "Ekvalizator - Izlaz"
+
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Ulazni efekti"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Izlazni efekti"
 
@@ -1548,7 +1559,7 @@ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Predlošci"
@@ -1593,7 +1604,7 @@ msgstr "Crna lista"
 msgid "General"
 msgstr "Općenito"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
@@ -1948,6 +1959,3 @@ msgstr ""
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Ekvalizator - Ulaz"
-
-#~ msgid "Equalizer - Output"
-#~ msgstr "Ekvalizator - Izlaz"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -108,29 +108,40 @@ msgstr "Vzorkování"
 msgid "Line Width"
 msgstr "Šířka čáry"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr "Použít výchozí"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+msgid "Block Size"
+msgstr "Velikost bloku"
+
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
 #: data/ui/app_info.glade:159
 msgid "Buffer"
 msgstr "Vyrovnávací paměť"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Prodleva"
 
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
-msgid "Block Size"
-msgstr "Velikost bloku"
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+#, fuzzy
+msgid "Pipeline Output"
+msgstr "Ekvalizér - výstup"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Vstupní efekty"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Výstupní efekty"
 
@@ -1471,7 +1482,7 @@ msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 msgid "pulseeffects"
 msgstr "PulseEffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "\"Přednastavení\""
 
@@ -1511,7 +1522,7 @@ msgstr "Černá listina"
 msgid "General"
 msgstr "Obecné"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
@@ -1846,9 +1857,6 @@ msgstr "nekonečno"
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Ekvalizér - vstup"
-
-#~ msgid "Equalizer - Output"
-#~ msgstr "Ekvalizér - výstup"
 
 #~ msgid "ballad"
 #~ msgstr "Balada"

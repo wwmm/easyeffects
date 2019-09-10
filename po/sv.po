@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-05 15:25-0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -114,32 +114,43 @@ msgstr "Resampler"
 msgid "Line Width"
 msgstr "Bredd"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+#, fuzzy
+msgid "Block Size"
+msgstr "Rumsstorlek"
+
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr ""
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
 #: data/ui/app_info.glade:159
 #, fuzzy
 msgid "Buffer"
 msgstr "Latens"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Latens"
 
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
 #, fuzzy
-msgid "Block Size"
-msgstr "Rumsstorlek"
+msgid "Pipeline Output"
+msgstr "Ljudutjämnare - Utgång"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 #, fuzzy
 msgid "Input Effects"
 msgstr "PulseEffects"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 #, fuzzy
 msgid "Output Effects"
 msgstr "Ingångs-begränsning"
@@ -1570,7 +1581,7 @@ msgstr ""
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:217
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
 msgstr "Profiler"
@@ -1614,7 +1625,7 @@ msgstr ""
 msgid "General"
 msgstr "Allmänt"
 
-#: src/pulse_settings_ui.cpp:124
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr ""
 
@@ -1882,9 +1893,6 @@ msgstr ""
 
 #~ msgid "Equalizer - Input"
 #~ msgstr "Ljudutjämnare - Ingång"
-
-#~ msgid "Equalizer - Output"
-#~ msgstr "Ljudutjämnare - Utgång"
 
 #~ msgid "No Reverberation"
 #~ msgstr "Inget eko"
