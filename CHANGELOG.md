@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.6.7]
+
 ### Added
 
 - The autogain plugin now has a button to reset its history and another that allows silence detection to be disabled.
