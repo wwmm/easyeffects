@@ -128,3 +128,7 @@ See the wiki: [Reporting Bugs](https://github.com/wwmm/pulseeffects/wiki/Reporti
 ## Translating PulseEffects
 
 See the wiki: [Translating PulseEffects](https://github.com/wwmm/pulseeffects/wiki/Translating-PulseEffects), for detailed instructions.
+
+## License
+
+PulseEffects is licensed under GNU General Public License version 3. See [LICENSE file](https://github.com/wwmm/pulseeffects/blob/master/LICENSE.md).
