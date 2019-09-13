@@ -113,15 +113,15 @@ msgstr "Spessore Linea"
 
 #: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
-msgstr "Predefinito"
+msgstr "Usa Predefinito"
 
 #: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
 msgid "Block Size"
-msgstr "Dimensione Blocco"
+msgstr "Larghezza Blocco"
 
 #: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
 msgid "Pipeline Input"
-msgstr ""
+msgstr "In Ingresso alla Pipeline"
 
 #: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
 #: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
@@ -137,7 +137,7 @@ msgstr "Latenza"
 
 #: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
 msgid "Pipeline Output"
-msgstr ""
+msgstr "All'Uscita della Pipeline"
 
 #: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
