@@ -145,7 +145,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">end</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="label" translatable="yes">Block Size</property>
                   </object>
@@ -158,7 +158,7 @@
                   <object class="GtkComboBoxText" id="blocksize_in">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <items>
                       <item>64</item>
@@ -192,6 +192,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Pipeline Input</property>
                   </object>
                   <packing>
@@ -282,6 +283,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Pipeline Output</property>
                   </object>
                   <packing>
@@ -433,7 +435,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">end</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="label" translatable="yes">Block Size</property>
                   </object>
@@ -446,7 +448,7 @@
                   <object class="GtkComboBoxText" id="blocksize_out">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="halign">center</property>
                     <property name="valign">center</property>
                     <items>
                       <item>64</item>
@@ -480,6 +482,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Pipeline Input</property>
                   </object>
                   <packing>
@@ -570,6 +573,7 @@
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
                     <property name="label" translatable="yes">Pipeline Output</property>
                   </object>
                   <packing>
