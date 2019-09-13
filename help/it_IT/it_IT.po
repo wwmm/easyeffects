@@ -2319,7 +2319,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/pulseaudio.page:18
 msgid "Use Default"
-msgstr "Predefinito"
+msgstr "Usa Predefinito"
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:20
@@ -2334,7 +2334,8 @@ msgstr "Buffer"
 #. (itstool) path: item/p
 #: C/pulseaudio.page:28
 msgid "Pulsesrc plugin buffer size. It affects latency"
-msgstr "Dimensione del buffer del plugin Pulsesrc. Influenza la latenza"
+msgstr ""
+"Dimensione del buffer della Pipeline di PulseEffects. Influenza la latenza."
 
 #. (itstool) path: title/em
 #: C/pulseaudio.page:34
@@ -2344,12 +2345,13 @@ msgstr "Latenza"
 #. (itstool) path: item/p
 #: C/pulseaudio.page:36
 msgid "Pulsesrc plugin latency value."
-msgstr "Valore di latenza del plugin Pulsesrc."
+msgstr ""
+"Valore in microsecondi della latenza della Pipeline di PulseEffects."
 
 #. (itstool) path: title/em
 #: C/pulseaudio.page:42
 msgid "Block Size"
-msgstr "Dimensione Blocco"
+msgstr "Larghezza Blocco"
 
 #. (itstool) path: item/p
 #: C/pulseaudio.page:44
@@ -2357,7 +2359,7 @@ msgid ""
 "This controls the size of the audio buffer. Higher values increase latency "
 "but decrease cpu usage of a few plugins."
 msgstr ""
-"Controlla la dimensione del buffer audio. Valori più alti aumentano la "
+"Imposta la dimensione del buffer dell'audio. Valori più alti aumentano la "
 "latenza ma riducono l'utilizzo della CPU di alcuni plugin."
 
 #. (itstool) path: page/title
