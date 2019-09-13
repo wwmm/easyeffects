@@ -7,19 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-03 18:26+0200\n"
-"PO-Revision-Date: 2019-06-04 07:47+0300\n"
+"POT-Creation-Date: 2019-09-10 13:00-0300\n"
+"PO-Revision-Date: 2019-09-13 19:47+0300\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.1\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:48
-#: src/calibration_ui.cpp:175
+#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: src/calibration_ui.cpp:164
 msgid "Test Signals"
 msgstr "Test Sinyalleri"
 
@@ -40,8 +40,8 @@ msgstr "Yardım"
 
 #: data/ui/application.glade:180 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
-#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:124
-#: src/presets_menu_ui.cpp:289 src/presets_menu_ui.cpp:306
+#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
+#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -109,29 +109,39 @@ msgstr "Örnekleme"
 msgid "Line Width"
 msgstr "Hat Genişliği"
 
-#: data/ui/pulse_settings.glade:69 data/ui/pulse_settings.glade:218
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
 msgid "Use Default"
 msgstr "Öntanımlıyı Kullan"
 
-#: data/ui/pulse_settings.glade:107 data/ui/pulse_settings.glade:255
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+msgid "Block Size"
+msgstr "Blok Boyutu"
+
+#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+msgid "Pipeline Input"
+msgstr "Pipeline Giriş"
+
+#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
+#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
 #: data/ui/app_info.glade:159
 msgid "Buffer"
 msgstr "Arabellek"
 
-#: data/ui/pulse_settings.glade:140 data/ui/pulse_settings.glade:288
+#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
+#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Gecikme"
 
-#: data/ui/pulse_settings.glade:173 data/ui/pulse_settings.glade:321
-msgid "Block Size"
-msgstr "Blok Boyutu"
+#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+msgid "Pipeline Output"
+msgstr "Pipeline Çıkış"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Giriş Efektleri"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Çıkış Efektleri"
 
@@ -272,31 +282,39 @@ msgstr "Örnekleyiciler"
 msgid "Auto Gain"
 msgstr "Otomatik Kazanç"
 
-#: data/ui/autogain.glade:149 data/ui/autogain.glade:528
+#: data/ui/autogain.glade:145
+msgid "Reset History"
+msgstr "Geçmişi Sıfırla"
+
+#: data/ui/autogain.glade:157
+msgid "Detect Silence"
+msgstr "Sessizliği Algıla"
+
+#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
 msgid "Momentary"
 msgstr "Anlık"
 
-#: data/ui/autogain.glade:164 data/ui/autogain.glade:541
+#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
 msgid "Short Term"
 msgstr "Kısa Süreli"
 
-#: data/ui/autogain.glade:179 data/ui/autogain.glade:554
+#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
 msgid "Integrated"
 msgstr "Tümleşik"
 
-#: data/ui/autogain.glade:195
-msgid "Target"
-msgstr "Hedef"
-
-#: data/ui/autogain.glade:285
+#: data/ui/autogain.glade:289
 msgid "Weights"
 msgstr "Ağırlık"
 
-#: data/ui/autogain.glade:315 data/ui/autogain.glade:507
+#: data/ui/autogain.glade:323
+msgid "Target"
+msgstr "Hedef"
+
+#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:718
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
 #: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
-#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:482
+#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
 #: data/ui/loudness.glade:244 data/ui/gate.glade:487
@@ -307,7 +325,7 @@ msgstr "Ağırlık"
 msgid "Input"
 msgstr "Giriş"
 
-#: data/ui/autogain.glade:330 data/ui/autogain.glade:763
+#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
 #: data/ui/limiter.glade:380 data/ui/compressor.glade:733
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
@@ -315,7 +333,7 @@ msgstr "Giriş"
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
 #: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
-#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:514
+#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
 #: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
@@ -328,21 +346,21 @@ msgstr "Giriş"
 msgid "Output"
 msgstr "Çıkış"
 
-#: data/ui/autogain.glade:645
+#: data/ui/autogain.glade:684
 msgid "Relative"
 msgstr "Göreceli"
 
-#: data/ui/autogain.glade:658 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Kazanç"
 
-#: data/ui/autogain.glade:724 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:128
 msgid "Loudness"
 msgstr "Yüksek Ses"
 
-#: data/ui/autogain.glade:777
+#: data/ui/autogain.glade:816
 msgid "Range"
 msgstr "Sınır"
 
@@ -918,7 +936,7 @@ msgid "Blend Harmonics"
 msgstr "Harmonik Karışımları"
 
 #: data/ui/bass_enhancer.glade:254 data/ui/bass_enhancer.glade:386
-#: data/ui/exciter.glade:258 data/ui/exciter.glade:389
+#: data/ui/exciter.glade:258 data/ui/exciter.glade:390
 msgid "Harmonics"
 msgstr "Harmonikler"
 
@@ -934,7 +952,7 @@ msgstr "Zemin"
 msgid "Exciter"
 msgstr "Uyarıcı"
 
-#: data/ui/exciter.glade:357 data/ui/maximizer.glade:159
+#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
 msgid "Ceiling"
 msgstr "Tavan"
 
@@ -1042,11 +1060,9 @@ msgstr "Çapraz Besleme"
 msgid "Maximizer"
 msgstr "Yükseltici"
 
-#: data/ui/maximizer.glade:269 data/ui/multiband_gate.glade:722
-#: data/ui/multiband_gate.glade:1152 data/ui/multiband_gate.glade:1562
-#: data/ui/multiband_gate.glade:1972 data/ui/deesser.glade:748
-msgid "Reduction"
-msgstr "Azalım"
+#: data/ui/maximizer.glade:269 data/ui/gate.glade:190
+msgid "Gain Reduction"
+msgstr "Kazanç Azaltma"
 
 #: data/ui/loudness.glade:196
 msgid "Link"
@@ -1063,10 +1079,6 @@ msgstr "Keşif"
 #: data/ui/gate.glade:176
 msgid "Stereo Link"
 msgstr "Stereo Bağ"
-
-#: data/ui/gate.glade:190
-msgid "Gain Reduction"
-msgstr "Kazanç Azaltma"
 
 #: data/ui/gate.glade:235
 msgid "Average"
@@ -1085,6 +1097,12 @@ msgstr "Geçitleme"
 #: data/ui/multiband_gate.glade:70
 msgid "Multiband Gate"
 msgstr "Çoklu Bant Geçitleme"
+
+#: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
+#: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
+#: data/ui/deesser.glade:748
+msgid "Reduction"
+msgstr "Azalım"
 
 #: data/ui/deesser.glade:61
 msgid "Deesser"
@@ -1142,7 +1160,7 @@ msgstr "Süre"
 msgid "Samples"
 msgstr "Örnekler"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:269
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
 msgid "Impulse Response"
 msgstr "Dürtü Yanıtı"
 
@@ -1150,7 +1168,7 @@ msgstr "Dürtü Yanıtı"
 msgid "Select the impulse Response File"
 msgstr "Dürtü Yanıt Dosyasını Seç"
 
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:160
+#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1312,7 +1330,7 @@ msgstr ""
 "olarak uygula"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
-#: src/presets_menu_ui.cpp:119
+#: src/presets_menu_ui.cpp:110
 msgid "Import Presets"
 msgstr "Önayarları İçe Aktar"
 
@@ -1464,75 +1482,55 @@ msgstr ""
 msgid "pulseeffects"
 msgstr "pulseeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:220
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
-#: src/application.cpp:23
+#: src/application.cpp:19
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "PulseEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:26
+#: src/application.cpp:21
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application.cpp:30
+#: src/application.cpp:24
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: pulseeffects -l music"
 
-#: src/application.cpp:33
+#: src/application.cpp:26
 msgid "Reset PulseEffects."
 msgstr "PulseEffects’i Sıfırla."
 
-#: src/application.cpp:207
+#: src/application.cpp:233
 msgid "Output Presets: "
 msgstr "Çıkış Ön Ayarları: "
 
-#: src/application.cpp:215
+#: src/application.cpp:241
 msgid "Input Presets: "
 msgstr "Giriş Ön Ayarları: "
-
-#: src/application.cpp:295
-msgid "PulseEffects was updated"
-msgstr "PulseEffects güncellendi"
-
-#: src/application.cpp:298
-msgid ""
-"It is recommended to reset its configuration after an update. Do you want to "
-"do this?"
-msgstr ""
-"Güncellemeden sonra yapılandırmayı sıfırlamak önerilir. Bunu yapmak ister "
-"misin?"
-
-#: src/application.cpp:301
-msgid "Yes"
-msgstr "Evet"
-
-#: src/application.cpp:302
-msgid "No"
-msgstr "Hayır"
 
 #: src/effects_base_ui.cpp:27
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: src/blacklist_settings_ui.cpp:83
+#: src/blacklist_settings_ui.cpp:71
 msgid "Blacklist"
 msgstr "Karaliste"
 
-#: src/general_settings_ui.cpp:137
+#: src/general_settings_ui.cpp:121
 msgid "General"
 msgstr "Genel"
 
-#: src/pulse_settings_ui.cpp:144
+#: src/pulse_settings_ui.cpp:138
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Open"
 msgstr "Aç"
 
-#: src/presets_menu_ui.cpp:120 src/convolver_ui.cpp:265
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
 msgid "Cancel"
 msgstr "İptal"
 
@@ -1544,22 +1542,38 @@ msgstr "durdurulmuş"
 msgid "playing"
 msgstr "oynatılıyor"
 
-#: src/calibration_ui.cpp:182
+#: src/calibration_ui.cpp:171
 msgid "Calibration Microphone"
 msgstr "Mikrofon Kalibrasyonu"
 
-#: src/convolver_ui.cpp:264
+#: src/convolver_ui.cpp:246
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_ui.cpp:307 src/convolver_ui.cpp:308 src/convolver_ui.cpp:310
+#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
 msgid "Failed"
 msgstr "Başarısız"
 
-#: src/convolver_ui.cpp:312
+#: src/convolver_ui.cpp:295
 msgid "Could Not Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/equalizer_ui.cpp:335 src/equalizer_ui.cpp:473
+#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
 msgid "infinity"
 msgstr "sonsuzluk"
+
+#~ msgid "PulseEffects was updated"
+#~ msgstr "PulseEffects güncellendi"
+
+#~ msgid ""
+#~ "It is recommended to reset its configuration after an update. Do you want "
+#~ "to do this?"
+#~ msgstr ""
+#~ "Güncellemeden sonra yapılandırmayı sıfırlamak önerilir. Bunu yapmak ister "
+#~ "misin?"
+
+#~ msgid "Yes"
+#~ msgstr "Evet"
+
+#~ msgid "No"
+#~ msgstr "Hayır"
