@@ -1,3 +1,9 @@
+pulseeffects (4.6.7-1) unstable; urgency=low
+
+  * Version 4.6.7 upstream (autobuild)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 15 Sep 2019 00:09:47 +0300
+ 
 pulseeffects (4.6.6-1) unstable; urgency=low
 
   * Version 4.6.6 upstream (autobuild)
