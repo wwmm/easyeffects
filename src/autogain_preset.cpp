@@ -8,7 +8,7 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".autogain.state", settings->get_boolean("state"));
 
-  root.put(section + ".autogain.detect-silence", settings->get_boolean("state"));
+  root.put(section + ".autogain.detect-silence", settings->get_boolean("detect-silence"));
 
   root.put(section + ".autogain.input-gain", settings->get_double("input-gain"));
 
