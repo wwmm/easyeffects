@@ -231,61 +231,55 @@ msgstr "Состояние"
 
 #: data/ui/pulse_info.glade:76
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: data/ui/pulse_info.glade:103
-#, fuzzy
 msgid "Default Sink"
-msgstr "По умолчанию"
+msgstr "Устройство вывода по умолчанию"
 
 #: data/ui/pulse_info.glade:115
-#, fuzzy
 msgid "Default Source"
-msgstr "По умолчанию"
+msgstr "Устройство ввода по умолчанию"
 
 #: data/ui/pulse_info.glade:157
 msgid "Protocol"
-msgstr ""
+msgstr "Версия протокола сервера"
 
 #: data/ui/pulse_info.glade:184
 msgid "Default Sample Format"
-msgstr ""
+msgstr "Спецификация отсчётов по умолчанию"
 
 #: data/ui/pulse_info.glade:211
 msgid "Default Sampling Rate"
-msgstr ""
+msgstr "Частота дискретизации по умолчанию"
 
 #: data/ui/pulse_info.glade:265
-#, fuzzy
 msgid "Channel Mapping"
-msgstr "Каналы"
+msgstr "Схема каналов"
 
 #: data/ui/pulse_info.glade:290
 msgid "Server"
-msgstr ""
+msgstr "Сервер"
 
 #: data/ui/pulse_info.glade:335
 msgid "Modules"
-msgstr ""
+msgstr "Модули"
 
 #: data/ui/pulse_info.glade:381
-#, fuzzy
 msgid "Clients"
-msgstr "Центы"
+msgstr "Клиенты"
 
 #: data/ui/pulse_info.glade:444
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: data/ui/pulse_info.glade:454
-#, fuzzy
 msgid "Configuration"
-msgstr "Продолжительность"
+msgstr "Параметры"
 
 #: data/ui/pulse_info.glade:487
-#, fuzzy
 msgid "Resamplers"
-msgstr "Ресемплер"
+msgstr "Ресемплеры"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -293,14 +287,12 @@ msgstr "Контроль громкости по EBU R 128"
 
 # #, fuzzy
 #: data/ui/autogain.glade:145
-#, fuzzy
 msgid "Reset History"
-msgstr "Сброс качества"
+msgstr "Сбросить историю"
 
 #: data/ui/autogain.glade:157
-#, fuzzy
 msgid "Detect Silence"
-msgstr "Определение"
+msgstr "Определять тишину"
 
 #: data/ui/autogain.glade:188 data/ui/autogain.glade:567
 msgid "Momentary"
@@ -507,20 +499,19 @@ msgstr "Предварительное усилиние"
 
 #: data/ui/compressor.glade:535
 msgid "Reactivity"
-msgstr ""
+msgstr "Скорость реакции"
 
 #: data/ui/compressor.glade:583
 msgid "Feed-forward"
-msgstr ""
+msgstr "Прямая связь"
 
 #: data/ui/compressor.glade:584
-#, fuzzy
 msgid "Feed-back"
-msgstr "Подача"
+msgstr "Обратная связь"
 
 #: data/ui/compressor.glade:598 data/ui/equalizer_band.glade:48
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: data/ui/compressor.glade:612 data/ui/multiband_compressor.glade:473
 #: data/ui/multiband_compressor.glade:845
@@ -543,13 +534,12 @@ msgid "RMS"
 msgstr "RMS (среднеквадратичный уровень сигнала)"
 
 #: data/ui/compressor.glade:614
-#, fuzzy
 msgid "Low-Pass"
 msgstr "Фильтр низких частот"
 
 #: data/ui/compressor.glade:615
 msgid "Uniform"
-msgstr ""
+msgstr "Равномерно"
 
 #: data/ui/compressor.glade:629 data/ui/multiband_compressor.glade:283
 #: data/ui/equalizer.glade:200 data/ui/equalizer_band.glade:79
@@ -589,7 +579,7 @@ msgstr "Усиление ввода [дБ]"
 
 #: data/ui/compressor.glade:989
 msgid "Curve"
-msgstr ""
+msgstr "Кривая"
 
 #: data/ui/multiband_compressor.glade:70
 msgid "Multiband Compressor"
@@ -622,7 +612,7 @@ msgstr "Разделение 3/4"
 #: data/ui/multiband_gate.glade:867 data/ui/multiband_gate.glade:1277
 #: data/ui/multiband_gate.glade:1687 data/ui/crystalizer_band.glade:39
 msgid "Bypass"
-msgstr ""
+msgstr "Обход"
 
 #: data/ui/multiband_compressor.glade:455
 #: data/ui/multiband_compressor.glade:827
@@ -1362,7 +1352,7 @@ msgstr "Сохранить текущие настройки в этот наб�
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
-msgstr ""
+msgstr "Удалить этот файл с предустановками"
 
 #: data/ui/preset_row.glade:100
 msgid ""
