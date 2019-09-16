@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- The auto gain `detect-silence` key was not being correctly saved to the preset file.
+
 ### Added
 
 - It is now possible to set different buffer and latency values for the pulsesrc and the pulsesink plugins. This
