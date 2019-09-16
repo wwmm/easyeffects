@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.6.8]
+
 ### Added
 
 - It is now possible to set different buffer and latency values for the pulsesrc and the pulsesink plugins. This
