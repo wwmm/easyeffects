@@ -54,6 +54,7 @@ Description: Sound input and output effects for PulseAudio
 
 Package: gstreamer1.0-convolver-pulseeffects
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: peconvolver, gstreamer1.0-convolver
@@ -64,6 +65,7 @@ Description: Gstreamer convolver
 
 Package: gstreamer1.0-crystalizer-pulseeffects
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: pecrystalizer, gstreamer1.0-crystalizer
@@ -73,6 +75,7 @@ Description: Gstreamer crystalizer
 
 Package: gstreamer1.0-autogain-pulseeffects
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: peautogain, gstreamer1.0-autogain
@@ -82,6 +85,7 @@ Description: Gstreamer crystalizer
 
 Package: gstreamer1.0-adapter-pulseeffects
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: peadapter, gstreamer1.0-adapter

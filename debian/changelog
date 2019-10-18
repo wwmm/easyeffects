@@ -1,3 +1,10 @@
+pulseeffects (4.6.8-3) unstable; urgency=medium
+
+  * Partial sync with Debian package (minor changes)
+  * Added man page pulseeffects.1 (from Debian)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 18 Oct 2019 14:43:27 +0300
+
 pulseeffects (4.6.8-2) unstable; urgency=medium
 
   * Updated Russian localization
