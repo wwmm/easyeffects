@@ -12,8 +12,18 @@ Copyright: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
            2019 Boyuan Yang <byang@debian.org>
 License: GPL-3.0+
 
-Files: *
-Copyright: 2016-2019, Vladimir Sadovnikov <sadko4u@gmail.com>
+Files: util/autobuild.sh
+Copyright: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
+License: GPL-3.0+
+
+Files: PKGBUILD
+Copyright: Wellington <wellingtonwallace@gmail.com>
+License: GPL-3.0+
+
+Files: data/com.github.wwmm.pulseeffects.appdata.xml.in
+Copyright: 2017 Patrik Nilsson <asavartzeth@gmail.com>
+License: CC0-1.0
+
 License: GPL-3.0+
  This program is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -31,9 +41,6 @@ License: GPL-3.0+
  On Debian systems, the complete text of the GNU General
  Public License version 3 can be found in "/usr/share/common-licenses/GPL-3".
 
-Files: debian/*
-Copyright: 2017-2019, Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
-License: permissive
- Copying and distribution of this package, with or without
- modification, are permitted in any medium without royalty
- provided the copyright notice and this notice are preserved.
+License: CC0-1.0
+ On Debian systems, the complete text of the Creative Commons Zero v1.0
+ Universal License can be found in "/usr/share/common-licenses/CC0-1.0".
