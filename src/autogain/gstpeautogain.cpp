@@ -18,6 +18,7 @@
 #include <cmath>
 #include <iostream>
 #include "config.h"
+#include "util.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(gst_peautogain_debug_category);
 #define GST_CAT_DEFAULT gst_peautogain_debug_category
@@ -437,8 +438,12 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
       float peak = (peak_L > peak_R) ? peak_L : peak_R;
 
-      if (gain * peak < 1.0f) {
-        peautogain->gain = gain;
+      float db_peak = util::linear_to_db(peak);
+
+      if (db_peak > -99) {
+        if (gain * peak < 1.0f) {
+          peautogain->gain = gain;
+        }
       }
     }
   }
