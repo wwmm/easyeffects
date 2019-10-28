@@ -1,5 +1,6 @@
 plugin_sources = [
 	'gstpeautogain.cpp',
+	'../util.cpp'
 ]
 
 plugin_deps = [
