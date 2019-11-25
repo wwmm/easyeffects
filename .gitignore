@@ -5,6 +5,8 @@ locale
 gschemas.compiled
 obj-*-linux-gnu
 .vscode
+node_modules
+package-lock.json
 
 # Compiled python modules.
 *.pyc

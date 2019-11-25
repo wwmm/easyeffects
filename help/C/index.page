@@ -23,6 +23,9 @@
     <section id="plugins" style="2column">
         <title>Plugins</title>
     </section>
+    <section id="guides" style="2column">
+        <title>Guides</title>
+    </section>
     <section id="calibration" style="2column">
         <title>Calibration</title>
     </section>
