@@ -45,4 +45,28 @@
             at all.
         </p>
     </section>
+    <section>
+        <title>Frequency Range</title>
+        <p>
+            We'll have to talk about the frequency range. For a better understanding and because of the way we will 
+            solve our problems I'll break it down to five ranges which are:
+        </p>
+        <list>
+            <item>
+                <p>
+                    <em style="strong">Sub</em>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <em style="strong">Low or Bass</em>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <em style="strong">Low-Mid</em>
+                </p>
+            </item>
+        </list>
+    </section>
 </page>
