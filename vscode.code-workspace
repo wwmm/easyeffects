@@ -86,6 +86,7 @@
       "random": "cpp",
       "cfenv": "cpp",
       "cinttypes": "cpp"
-    }
+    },
+    "xml.format.joinContentLines": true
   }
 }

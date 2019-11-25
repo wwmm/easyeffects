@@ -1,10 +1,4 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="guide_1"
-    style="2column"
->
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="guide_1" style="2column">
     <info>
         <link type="guide" xref="index#guides" />
     </info>
@@ -12,61 +6,112 @@
     <p>This tutorial was written by Markus Schmidt schmidt@boomshop.net on November 2019</p>
     <section>
         <title>Introduction</title>
-        <p>
-            If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a 
-            tinny, clanging sound, PulseEffects is your salvation!
-        </p>
-        <p>
-            Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like 
-            to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under 
-            Linux, PulseEffects will do the job for you, although, compared to the commercial pendants, there's some 
-            manual tweaking required until the community sets up a database with presets for common machines.
-        </p>
-        <p>
-            This DSP software comes with everything needed to fatten the sound of your laptop speakers with a 
-            flexibility never found in other operating systems. Unfortunately the drawback of this flexibility is that 
-            average users will get lost in the sheer amount of possibilities. That's why this tutorial was created.
-        </p>
+        <p>If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, PulseEffects is your salvation!</p>
+        <p>Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, PulseEffects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines.</p>
+        <p>This DSP software comes with everything needed to fatten the sound of your laptop speakers with a flexibility never found in other operating systems. Unfortunately the drawback of this flexibility is that average users will get lost in the sheer amount of possibilities. That's why this tutorial was created.</p>
     </section>
     <section>
         <title>Why no EQ?</title>
-        <p>
-            We will attack the problems one by one utilizing specific signal processors, deliberately renouncing 
-            equalizers. Equalizers are not of any help here but tend to make these kinds of problems even worse. This is
-            because of the nature of this processor, but also because users tend to add to the signal
-            (additive equalization) instead of trying to eliminate problems by removing from the signal
-            (subtractive equalization) like it is usually done in the professional world.
-        </p>
-        <p>
-            But even subtractive equalization wouldn't be of any help since the amplifiers and speakers in a notebook 
-            are not loud enough by default, so trying to eliminate problems this way leads to a quiet and still 
-            castrated sound. And raising the volume afterwards generally leads to distorted sounds and other problems 
-            because the system was at its limits beforehand and just fiddling with the frequency response doesn't help 
-            at all.
-        </p>
+        <p>We will attack the problems one by one utilizing specific signal processors, deliberately renouncing equalizers. Equalizers are not of any help here but tend to make these kinds of problems even worse. This is because of the nature of this processor, but also because users tend to add to the signal (additive equalization) instead of trying to eliminate problems by removing from the signal (subtractive equalization) like it is usually done in the professional world.</p>
+        <p>But even subtractive equalization wouldn't be of any help since the amplifiers and speakers in a notebook are not loud enough by default, so trying to eliminate problems this way leads to a quiet and still castrated sound. And raising the volume afterwards generally leads to distorted sounds and other problems because the system was at its limits beforehand and just fiddling with the frequency response doesn't help at all.</p>
     </section>
     <section>
         <title>Frequency Range</title>
-        <p>
-            We'll have to talk about the frequency range. For a better understanding and because of the way we will 
-            solve our problems I'll break it down to five ranges which are:
-        </p>
+        <p>We'll have to talk about the frequency range. For a better understanding and because of the way we will solve our problems I'll break it down to five ranges which are:</p>
         <list>
             <item>
                 <p>
                     <em style="strong">Sub</em>
+                    More or less vibrations up to something an ear can barely hear. Everything from 10Hz to ~40Hz.
                 </p>
             </item>
             <item>
                 <p>
                     <em style="strong">Low or Bass</em>
+                    Where the whole fundament of a signal is located. Low end of bass drums, bass synthesizers and bass guitars are found here. Movies occupy this range with explosions, rumbling waters, thunder, heavy gun fire and the like. Absolutely missing on notebooks and tablets. Technically speaking its ~60Hz - ~200Hz.
                 </p>
             </item>
             <item>
                 <p>
                     <em style="strong">Low-Mid</em>
+                    Hit a 0.5m³ cardboard box and you know what low-mids are. The "punch" of a sound is often located here, also the juice of snare drums and electric guitars. In Movies, roaring engines and shotguns are found in this range. We're talking about ~250Hz - ~750Hz.
+                </p>
+            </item>
+            <item>
+                <p>
+                    <em style="strong">High-Mid</em>
+                    This is the ears most important and sensitive range. The main information of any kind of signal is located here. Human voice, picking of guitars, attack of drums, the colour of a synthesizer - everything carrying the main information of sound. Something around ~1kHz - ~4kHz.
+                </p>
+            </item>
+            <item>
+                <p>
+                    <em style="strong">Highs</em>
+                    The air, the breathe, the sizzling, the splashing - this is the range of brightness. Everything around and above ~5kHz.
                 </p>
             </item>
         </list>
+    </section>
+    <section>
+        <title>Test Signal</title>
+        <p>
+            You definitely need a good signal for this job. I decided to use Seeed:
+            <link href="https://www.youtube.com/watch?v=OxAP6ieuDgI" its:translate="no">https://www.youtube.com/watch?v=OxAP6ieuDgI</link>
+        </p>
+        <p>It is quite snappy, has lots of well defined substance, clear and bright highs, present vocals, comes with a very balanced frequency response and is a great mix in combination with great mastering. Afterwards I tested against various movies and other stuff like talks, classical music and the like and was convinced of the result. Well produced, modern pop music (avoid the 80's and 90's stuff) is always a good test signal for this kind of job. Movies are way too dynamic, so is classical music, and they normally don't cover a steady, broad frequency range like this kind of signal.</p>
+        <p>We will not be able to make the notebook bounce. What is the goal here is that everything contained in the mix gets audible in a well balanced manner and to gain a present, upfront, broad and hopefully rich sound.</p>
+        <p>
+            I assume you don't utilize a player or source which is able to produce levels above 0dB. I also assume you don't use e.g. video players volume bar to lower the volume of your source. This approach works well for defined, mixed and mastered sound sources like music, movies, tv and the like, played back at 100% volume in the player. Set the volume desired on your hardware via PulseAudio
+            <em style="strong">after</em>
+            the processing happened.
+        </p>
+    </section>
+    <section>
+        <title>Problems</title>
+        <p>Let's investigate the biggest problems first:</p>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong">Bass</em>
+                </title>
+                <p>The most obvious problem of notebook speakers is the tinny, pressure-free sound not reproducing any kind of low-end. This is because of the size of the membranes and the inadequate housing. Fortunately software can work around this issue at least a bit.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Highs</em>
+                </title>
+                <p>Often the highs are quite bitchy, not representing the "air" but torturing the listener with searing sibliants. In order to fix that we need to equal this frequency range out.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Overall Fequency Response</em>
+                </title>
+                <p>Normally the relation between the different frequency ranges low, low-mid, high-mid and height is quite out-of-bounds. This needs correction, although I promised a tutorial without EQ.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Distortion</em>
+                </title>
+                <p>Because of the thin and neutered sound users tend to raise the volume or even add an equalizer to raise missing frequency ranges. This normally leads to digital distortions because every signal above 0 dB at the DAC will go from occasional crackling up to a totally distorted sound.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Dynamic range</em>
+                </title>
+                <p>With movies, but music aswell, those tiny transducers tend to wiping away low-level sounds but going ballistic on loud and bassy sounds. For this reason it's recommended to reduce the overall dynamic range so you don't need to press your ear onto the palm rest when the lady in the movie starts whispering.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong">Stereo Image</em>
+                </title>
+                <p>The stereo base is quite narrow because of the positioning of the speakers inside the laptop which gives an impression of almost mono signals.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Solutions</title>
+        <p>Let's start fixing the sound. The result will not come even close to something more substantial but at least we'll be able to get the best out of the physical boundaries of these transducers.</p>
+        <p>Every parameter we are gonna set absolutely depends on your situation and the hardware you've got. Every notebook has its own frequency response and dynamic range so there's no panacea. But the audio signal processors, their order and their missions are well defined and reproducable.</p>
+        <p>Don't care about clipping in the plugins level meters. The signal will be processed as 32bit numbers internally (check title bar) which gives a non-clipping overhead of hundrets of decibels. The only thing that shouldn't happen is that there's clipping when the signal hits the sound card DAC, which would result in digital distortion.</p>
+        <p>Let's head over to the signal chain.</p>
     </section>
 </page>
