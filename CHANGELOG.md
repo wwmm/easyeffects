@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- Our built-in manual now has a guide about laptop sound enhancement. It was written by Markus Schmidt from Calf Studio.
+  Thanks Markus! :-)
+
 ## [4.6.8]
 
 ### Added

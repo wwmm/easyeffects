@@ -38,7 +38,8 @@ help_pages = [
   'advancedinfo.page',
   'saturated.page',
   'autogain.page',
-  'blacklist.page'
+  'blacklist.page',
+  'guide_1.page'
 ]
 
 help_media = [
