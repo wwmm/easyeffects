@@ -28,4 +28,21 @@
             average users will get lost in the sheer amount of possibilities. That's why this tutorial was created.
         </p>
     </section>
+    <section>
+        <title>Why no EQ?</title>
+        <p>
+            We will attack the problems one by one utilizing specific signal processors, deliberately renouncing 
+            equalizers. Equalizers are not of any help here but tend to make these kinds of problems even worse. This is
+            because of the nature of this processor, but also because users tend to add to the signal
+            (additive equalization) instead of trying to eliminate problems by removing from the signal
+            (subtractive equalization) like it is usually done in the professional world.
+        </p>
+        <p>
+            But even subtractive equalization wouldn't be of any help since the amplifiers and speakers in a notebook 
+            are not loud enough by default, so trying to eliminate problems this way leads to a quiet and still 
+            castrated sound. And raising the volume afterwards generally leads to distorted sounds and other problems 
+            because the system was at its limits beforehand and just fiddling with the frequency response doesn't help 
+            at all.
+        </p>
+    </section>
 </page>
