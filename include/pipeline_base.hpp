@@ -60,6 +60,7 @@ class PipelineBase {
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
   void do_bypass(const bool& value);
+  bool bypass_state();
 
   void enable_spectrum();
   void disable_spectrum();

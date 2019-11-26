@@ -224,7 +224,7 @@ void on_bypass_on(gpointer user_data) {
   auto effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
 
   if (effects_bin) {
-    gst_element_set_state(effects_bin, GST_STATE_NULL);
+    gst_element_set_state(effects_bin, GST_STATE_READY);
 
     gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
 
@@ -241,16 +241,18 @@ void on_bypass_on(gpointer user_data) {
 void on_bypass_off(gpointer user_data) {
   auto pb = static_cast<PipelineBase*>(user_data);
 
-  auto effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
+  auto bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
 
-  if (!effects_bin) {
-    gst_element_set_state(effects_bin, GST_STATE_NULL);
+  if (!bin) {
+    gst_element_set_state(pb->effects_bin, GST_STATE_NULL);
 
     gst_element_unlink(pb->adapter, pb->spectrum_bin);
 
-    gst_bin_add(GST_BIN(pb->pipeline), effects_bin);
+    gst_bin_add(GST_BIN(pb->pipeline), pb->effects_bin);
 
-    gst_element_link_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
+    gst_element_link_many(pb->adapter, pb->effects_bin, pb->spectrum_bin, nullptr);
+
+    gst_element_sync_state_with_parent(pb->effects_bin);
 
     util::debug(pb->log_tag + " bypass disabled");
   } else {
@@ -785,5 +787,15 @@ void PipelineBase::do_bypass(const bool& value) {
           return GST_PAD_PROBE_REMOVE;
         },
         this, nullptr);
+  }
+}
+
+bool PipelineBase::bypass_state() {
+  auto bin = gst_bin_get_by_name(GST_BIN(pipeline), "effects_bin");
+
+  if (bin) {
+    return false;
+  } else {
+    return true;
   }
 }

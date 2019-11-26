@@ -26,7 +26,7 @@ Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gi
   add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r', _("Reset PulseEffects."));
 
   add_main_option_entry(Gio::Application::OPTION_TYPE_INT, "bypass", 'b',
-                        _("Remove/Add enabled plugins from/to the pipeline."));
+                        _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
 }
 
 Application::~Application() {
@@ -70,8 +70,14 @@ int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 1) {
         util::info(log_tag + "enabling global bypass");
+
+        sie->do_bypass(true);
+        soe->do_bypass(true);
       } else if (bypass_arg == 2) {
         util::info(log_tag + "disabling global bypass");
+
+        sie->do_bypass(false);
+        soe->do_bypass(false);
       }
     }
 
@@ -259,7 +265,7 @@ int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& 
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
-        std::clog << "bypass state: " << 0 << std::endl;
+        // std::clog << sie->bypass_state() << std::endl;
 
         return EXIT_SUCCESS;
       }
