@@ -275,7 +275,9 @@ int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& 
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
-        // std::clog << sie->bypass_state() << std::endl;
+        auto cfg = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+        std::clog << cfg->get_boolean("bypass") << std::endl;
 
         return EXIT_SUCCESS;
       }
