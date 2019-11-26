@@ -2,6 +2,11 @@
 <!-- Generated with glade 3.22.1 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="image_bypass">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">media-playlist-shuffle-symbolic</property>
+  </object>
   <object class="GtkImage" id="image_help">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -46,6 +51,21 @@
           </object>
           <packing>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="button_bypass">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="tooltip_text" translatable="yes">Global Bypass</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image">image_bypass</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="position">2</property>
           </packing>
         </child>
         <child type="title">
@@ -146,7 +166,7 @@
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">2</property>
+            <property name="position">3</property>
           </packing>
         </child>
         <child>
@@ -162,7 +182,7 @@
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
         <child>
@@ -183,7 +203,7 @@
           </object>
           <packing>
             <property name="pack_type">end</property>
-            <property name="position">4</property>
+            <property name="position">5</property>
           </packing>
         </child>
       </object>
