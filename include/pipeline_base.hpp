@@ -59,6 +59,8 @@ class PipelineBase {
   std::vector<float> spectrum_freqs, spectrum_x_axis;
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
+  void do_bypass(const bool& value);
+
   void enable_spectrum();
   void disable_spectrum();
   std::array<double, 2> get_peak(GstMessage* message);

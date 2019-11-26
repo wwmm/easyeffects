@@ -218,6 +218,83 @@ GstPadProbeReturn on_sink_event(GstPad* pad, GstPadProbeInfo* info, gpointer use
   return GST_PAD_PROBE_PASS;
 }
 
+void on_bypass_on(gpointer user_data) {
+  auto pb = static_cast<PipelineBase*>(user_data);
+
+  auto effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
+
+  if (effects_bin) {
+    gst_element_set_state(effects_bin, GST_STATE_NULL);
+
+    gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
+
+    gst_bin_remove(GST_BIN(pb->pipeline), effects_bin);
+
+    gst_element_link(pb->adapter, pb->spectrum_bin);
+
+    util::debug(pb->log_tag + " bypass enabled");
+  } else {
+    util::debug(pb->log_tag + "bypass is already enabled");
+  }
+}
+
+void on_bypass_off(gpointer user_data) {
+  auto pb = static_cast<PipelineBase*>(user_data);
+
+  auto effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
+
+  if (!effects_bin) {
+    gst_element_set_state(effects_bin, GST_STATE_NULL);
+
+    gst_element_unlink(pb->adapter, pb->spectrum_bin);
+
+    gst_bin_add(GST_BIN(pb->pipeline), effects_bin);
+
+    gst_element_link_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
+
+    util::debug(pb->log_tag + " bypass disabled");
+  } else {
+    util::debug(pb->log_tag + "bypass is already disabled");
+  }
+}
+
+static GstPadProbeReturn bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+  if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
+    return GST_PAD_PROBE_PASS;
+  }
+
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  on_bypass_on(user_data);
+
+  return GST_PAD_PROBE_DROP;
+}
+
+GstPadProbeReturn bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+  auto pb = static_cast<PipelineBase*>(user_data);
+
+  gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
+
+  auto srcpad = gst_element_get_static_pad(pb->spectrum_bin, "src");
+
+  gst_pad_add_probe(srcpad,
+                    static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK | GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
+                    bypass_event_probe_cb, user_data, NULL);
+
+  auto sinkpad = gst_element_get_static_pad(pb->effects_bin, "sink");
+
+  GstStructure* s = gst_structure_new_empty("enable_bypass");
+
+  GstEvent* event = gst_event_new_custom(GST_EVENT_CUSTOM_DOWNSTREAM, s);
+
+  gst_pad_send_event(sinkpad, event);
+
+  gst_object_unref(sinkpad);
+  gst_object_unref(srcpad);
+
+  return GST_PAD_PROBE_OK;
+}
+
 }  // namespace
 
 PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
@@ -677,4 +754,36 @@ GstElement* PipelineBase::get_required_plugin(const gchar* factoryname, const gc
     throw std::runtime_error(log_tag + std::string("Failed to get required plugin: ") + factoryname);
 
   return plugin;
+}
+
+void PipelineBase::do_bypass(const bool& value) {
+  auto srcpad = gst_element_get_static_pad(adapter, "src");
+
+  if (value) {
+    GstState state, pending;
+
+    gst_element_get_state(pipeline, &state, &pending, 0);
+
+    if (state != GST_STATE_PLAYING) {
+      gst_pad_add_probe(
+          srcpad, GST_PAD_PROBE_TYPE_IDLE,
+          [](auto pad, auto info, auto d) {
+            on_bypass_on(d);
+
+            return GST_PAD_PROBE_REMOVE;
+          },
+          this, nullptr);
+    } else {
+      gst_pad_add_probe(srcpad, GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM, bypass_on_pad_blocked, this, nullptr);
+    }
+  } else {
+    gst_pad_add_probe(
+        srcpad, GST_PAD_PROBE_TYPE_IDLE,
+        [](auto pad, auto info, auto d) {
+          on_bypass_off(d);
+
+          return GST_PAD_PROBE_REMOVE;
+        },
+        this, nullptr);
+  }
 }
