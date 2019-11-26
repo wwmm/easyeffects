@@ -6,6 +6,8 @@
 
 - Our built-in manual now has a guide about laptop sound enhancement. It was written by Markus Schmidt from Calf Studio.
   Thanks Markus! :-)
+- There is now a bypass button that can be used to temporarily disable all effects. It is also possible to do this
+  through a command line option. Take a look at the output of pulseeffects --help.
 
 ## [4.6.8]
 

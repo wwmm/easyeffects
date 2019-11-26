@@ -54,7 +54,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="button_bypass">
+          <object class="GtkToggleButton" id="bypass_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

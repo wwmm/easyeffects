@@ -11,6 +11,7 @@
 #include <gtkmm/menubutton.h>
 #include <gtkmm/popover.h>
 #include <gtkmm/stack.h>
+#include <gtkmm/togglebutton.h>
 #include "application.hpp"
 #include "calibration_ui.hpp"
 #include "presets_menu_ui.hpp"
@@ -34,6 +35,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Button *calibration_button, *help_button;
+  Gtk::ToggleButton* bypass_button;
   Gtk::Stack *stack, *stack_menu_settings;
   Gtk::Label* headerbar_info;
   Gtk::Popover* presets_menu;

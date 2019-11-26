@@ -69,15 +69,9 @@ int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 1) {
-        util::info(log_tag + "enabling global bypass");
-
-        sie->do_bypass(true);
-        soe->do_bypass(true);
+        settings->set_boolean("bypass", true);
       } else if (bypass_arg == 2) {
-        util::info(log_tag + "disabling global bypass");
-
-        sie->do_bypass(false);
-        soe->do_bypass(false);
+        settings->set_boolean("bypass", false);
       }
     }
 
@@ -192,6 +186,22 @@ void Application::on_startup() {
 
   settings->signal_changed("blacklist-out").connect([=](auto key) {
     pm->blacklist_out = settings->get_string_array("blacklist-out");
+  });
+
+  settings->signal_changed("bypass").connect([=](auto key) {
+    auto state = settings->get_boolean("bypass");
+
+    if (state) {
+      util::info(log_tag + "enabling global bypass");
+
+      sie->do_bypass(true);
+      soe->do_bypass(true);
+    } else {
+      util::info(log_tag + "disabling global bypass");
+
+      sie->do_bypass(false);
+      soe->do_bypass(false);
+    }
   });
 
   if (running_as_service) {

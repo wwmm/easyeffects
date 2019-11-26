@@ -30,6 +30,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("subtitle_grid", subtitle_grid);
   builder->get_widget("headerbar", headerbar);
   builder->get_widget("help_button", help_button);
+  builder->get_widget("bypass_button", bypass_button);
   builder->get_widget("headerbar_icon1", headerbar_icon1);
   builder->get_widget("headerbar_icon2", headerbar_icon2);
   builder->get_widget("headerbar_info", headerbar_info);
@@ -110,6 +111,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("use-dark-theme", Gtk::Settings::get_default().get(), "gtk_application_prefer_dark_theme", flag);
+  settings->bind("bypass", bypass_button, "active", flag);
 
   // restore window size
 
