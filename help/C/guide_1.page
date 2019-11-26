@@ -125,6 +125,7 @@
                 </p>
                 <p>Drag the Limiter to the top of the list of processors and enable it. You will not hear any difference, which is what we expect. It will hit in as soon as we start messig up the signal with all the other processors. Set lookahead to 2ms, release to 8ms and oversampling to x4.</p>
                 <p>A limiter monitors the signal in (nearly) realtime and detects peaks over a certain threshold, in our case 0 dB. As soon as a peak is detected, it starts lowering the volume constantly (within the lookahead) until the peak will be below threshold. Afterwards it raises the volume again (within release time frame) until it is back to normal. This way we avoid signals above threshold hitting the DAC without being noticed too much. If one tries to overdo limiting, it will definitely result in distortion and other side effects, but in our case it's just a fire-and-forget troubleshooter so we can concentrate on the results without trying to mess with levelling over and over again.</p>
+                <p>Don't overdo things! This might render your overall sound eperience worse than before.</p>
                 <p>
                     Let's look at the
                     <em style="strong">real</em>

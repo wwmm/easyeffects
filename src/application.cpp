@@ -24,6 +24,9 @@ Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gi
                         _("Load a preset. Example: pulseeffects -l music"));
 
   add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r', _("Reset PulseEffects."));
+
+  add_main_option_entry(Gio::Application::OPTION_TYPE_INT, "bypass", 'b',
+                        _("Remove/Add enabled plugins from/to the pipeline."));
 }
 
 Application::~Application() {
@@ -61,6 +64,17 @@ int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>
     settings->reset("");
 
     util::info(log_tag + "All settings were reset");
+  } else if (options->contains("bypass")) {
+    int bypass_arg;
+
+    if (options->lookup_value("bypass", bypass_arg)) {
+      if (bypass_arg == 1) {
+        util::info(log_tag + "enabling global bypass");
+      } else if (bypass_arg == 2) {
+        util::info(log_tag + "disabling global bypass");
+      }
+    }
+
   } else {
     activate();
   }
@@ -240,7 +254,16 @@ int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& 
 
     std::clog << _("Input Presets: ") + list << std::endl;
 
-    return EXIT_SUCCESS;
+  } else if (options->contains("bypass")) {
+    int bypass_arg;
+
+    if (options->lookup_value("bypass", bypass_arg)) {
+      if (bypass_arg == 3) {
+        std::clog << "bypass state: " << 0 << std::endl;
+
+        return EXIT_SUCCESS;
+      }
+    }
   }
 
   return -1;
