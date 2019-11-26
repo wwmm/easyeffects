@@ -20,6 +20,7 @@ class PluginBase {
 
   void enable();
   void disable();
+  bool is_enabled();
 
  protected:
   GSettings* settings = nullptr;

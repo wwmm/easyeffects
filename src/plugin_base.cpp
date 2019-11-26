@@ -187,3 +187,7 @@ void PluginBase::disable() {
 
   g_object_unref(srcpad);
 }
+
+bool PluginBase::is_enabled() {
+  return g_settings_get_boolean(settings, "state");
+}
