@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-10 13:00-0300\n"
+"POT-Creation-Date: 2019-11-28 14:03-0300\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,27 +18,32 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: data/ui/application.glade:46 src/calibration_ui.cpp:39
 #: src/calibration_ui.cpp:164
 msgid "Test Signals"
 msgstr "Uji Sinyal"
 
-#: data/ui/application.glade:63
+#: data/ui/application.glade:61
+#, fuzzy
+msgid "Global Bypass"
+msgstr "Bypass"
+
+#: data/ui/application.glade:83
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:135 data/ui/general_settings.glade:107
+#: data/ui/application.glade:155 data/ui/general_settings.glade:107
 #: data/ui/equalizer.glade:253
 msgid "Settings"
 msgstr "Setelan"
 
-#: data/ui/application.glade:157
+#: data/ui/application.glade:177
 msgid "Help"
 msgstr "Bantuan"
 
-#: data/ui/application.glade:180 data/ui/filter.glade:204
+#: data/ui/application.glade:200 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
 #: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
 #: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
@@ -112,39 +117,39 @@ msgstr "Atur Sampling"
 msgid "Line Width"
 msgstr "Lebar"
 
-#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:389
 msgid "Use Default"
 msgstr "Gunakan Aturan Bawaan"
 
-#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:440
 msgid "Block Size"
 msgstr "Ukuran Blok"
 
-#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+#: data/ui/pulse_settings.glade:196 data/ui/pulse_settings.glade:486
 msgid "Pipeline Input"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
-#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
+#: data/ui/pulse_settings.glade:210 data/ui/pulse_settings.glade:301
+#: data/ui/pulse_settings.glade:500 data/ui/pulse_settings.glade:591
 #: data/ui/app_info.glade:159
 msgid "Buffer"
 msgstr "Ukuran Penyangga"
 
-#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
-#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
+#: data/ui/pulse_settings.glade:243 data/ui/pulse_settings.glade:334
+#: data/ui/pulse_settings.glade:513 data/ui/pulse_settings.glade:604
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Besar Latensi"
 
-#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+#: data/ui/pulse_settings.glade:287 data/ui/pulse_settings.glade:577
 msgid "Pipeline Output"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Efek Input"
 
-#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:660 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Efek Luaran"
 
@@ -300,27 +305,36 @@ msgstr ""
 msgid "Detect Silence"
 msgstr "Deteksi"
 
-#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
-msgid "Momentary"
-msgstr "Efek Sejenak"
+#: data/ui/autogain.glade:169
+#, fuzzy
+msgid "Use Geometric Mean"
+msgstr "Terapkan Gradien warna"
 
-#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
-msgid "Short Term"
-msgstr "Waktu Singkat"
-
-#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
-msgid "Integrated"
-msgstr "Terintegrasi"
-
-#: data/ui/autogain.glade:289
-msgid "Weights"
-msgstr "Tinggi"
-
-#: data/ui/autogain.glade:323
+#: data/ui/autogain.glade:198
 msgid "Target"
 msgstr "Target"
 
-#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
+#: data/ui/autogain.glade:214
+msgid "-23"
+msgstr ""
+
+#: data/ui/autogain.glade:249 data/ui/autogain.glade:591
+msgid "Momentary"
+msgstr "Efek Sejenak"
+
+#: data/ui/autogain.glade:264 data/ui/autogain.glade:604
+msgid "Short Term"
+msgstr "Waktu Singkat"
+
+#: data/ui/autogain.glade:279 data/ui/autogain.glade:617
+msgid "Integrated"
+msgstr "Terintegrasi"
+
+#: data/ui/autogain.glade:349
+msgid "Weights"
+msgstr "Tinggi"
+
+#: data/ui/autogain.glade:378 data/ui/autogain.glade:570
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:718
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
 #: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
@@ -335,7 +349,7 @@ msgstr "Target"
 msgid "Input"
 msgstr "Masukan"
 
-#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
+#: data/ui/autogain.glade:393 data/ui/autogain.glade:826
 #: data/ui/limiter.glade:380 data/ui/compressor.glade:733
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
@@ -356,21 +370,21 @@ msgstr "Masukan"
 msgid "Output"
 msgstr "Output"
 
-#: data/ui/autogain.glade:684
+#: data/ui/autogain.glade:708
 msgid "Relative"
 msgstr "Relatif"
 
-#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:721 data/ui/compressor.glade:900
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Besar Gain"
 
-#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:787 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:128
 msgid "Loudness"
 msgstr "Kelantangan"
 
-#: data/ui/autogain.glade:816
+#: data/ui/autogain.glade:840
 msgid "Range"
 msgstr "Rentang"
 
@@ -1517,12 +1531,16 @@ msgstr "Muat Preset. Misalkan: pulseeffects -l music"
 msgid "Reset PulseEffects."
 msgstr "Atur Ulang PulseEffects"
 
-#: src/application.cpp:233
+#: src/application.cpp:29
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/application.cpp:263
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Preset Output:"
 
-#: src/application.cpp:241
+#: src/application.cpp:271
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Preset Input"

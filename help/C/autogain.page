@@ -1,104 +1,75 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="autogain">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="autogain">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>
-        PulseEffects auto gain is based on the library libebur128. It changes the audio
-        volume to a perceived loudness level that can be tweaked by the user.
-    </p>
+    <p>PulseEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Target</em>
             </title>
-            <p>
-                Loudness level.
-            </p>
+            <p>Loudness level.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Reset</em>
             </title>
-            <p>
-                Resets the auto gain history.
-            </p>
+            <p>Resets the auto gain history.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Detect Silence</em>
             </title>
-            <p>
-                When the momentary loudness is below the relative we assume the audio material is passing through a
-                brief moment of silence and no changes to the output gain are applied. If you do not want this behavior
-                disable the silence detection.
-            </p>
+            <p>When the momentary loudness is below the relative we assume the audio material is passing through a brief moment of silence and no changes to the output gain are applied. If you do not want this behavior disable the silence detection.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Use Geometric Mean</em>
+            </title>
+            <p>The estimated loudness is obtained from the geometric mean of the momentary, short-term and integrated loudness. When this option is disabled a weighted average is used.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Momentary</em>
             </title>
-            <p>
-                Controls how much the momentary term will influence the loudness level
-                estimation.
-            </p>
+            <p>Controls how much the momentary term will influence the loudness level estimation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Short Term</em>
             </title>
-            <p>
-                Controls how much the short term measure will influence the loudness level
-                estimation.
-            </p>
+            <p>Controls how much the short term measure will influence the loudness level estimation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Integrated</em>
             </title>
-            <p>
-                Controls how much the integrated term will influence the loudness level
-                estimation.
-            </p>
+            <p>Controls how much the integrated term will influence the loudness level estimation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Relative</em>
             </title>
-            <p>
-                Relative threshold. It is used to detect silence. Whenever the momentary term is
-                below this threshold modifications to the output gain will be disabled.
-            </p>
+            <p>Relative threshold. It is used to detect silence. Whenever the momentary term is below this threshold modifications to the output gain will be disabled.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Loudness</em>
             </title>
-            <p>
-                Estimated input loudness. The difference between its value and the target
-                loudness determines the output gain.
-            </p>
+            <p>Estimated input loudness. The difference between its value and the target loudness determines the output gain.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Range</em>
             </title>
-            <p>
-                Loudness range. Indicates how large is the material dynamic range.
-            </p>
+            <p>Loudness range. Indicates how large is the material dynamic range.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Gain</em>
             </title>
-            <p>
-                Output gain value. The input signal will be multiplied by this correction gain
-                to bring its loudness to the target value.
-            </p>
+            <p>Output gain value. The input signal will be multiplied by this correction gain to bring its loudness to the target value.</p>
         </item>
     </terms>
     <section>
@@ -106,9 +77,7 @@
         <list>
             <item>
                 <p>
-                    <link href="https://tech.ebu.ch/loudness#tab" its:translate="no">
-                        https://tech.ebu.ch/loudness#tab
-                    </link>
+                    <link href="https://tech.ebu.ch/loudness#tab" its:translate="no">https://tech.ebu.ch/loudness#tab</link>
                 </p>
             </item>
         </list>

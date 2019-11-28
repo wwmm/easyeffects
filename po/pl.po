@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-10 13:00-0300\n"
+"POT-Creation-Date: 2019-11-28 14:03-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -19,27 +19,31 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:39
+#: data/ui/application.glade:46 src/calibration_ui.cpp:39
 #: src/calibration_ui.cpp:164
 msgid "Test Signals"
 msgstr "Sygnały testowe"
 
-#: data/ui/application.glade:63
+#: data/ui/application.glade:61
+msgid "Global Bypass"
+msgstr ""
+
+#: data/ui/application.glade:83
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:135 data/ui/general_settings.glade:107
+#: data/ui/application.glade:155 data/ui/general_settings.glade:107
 #: data/ui/equalizer.glade:253
 msgid "Settings"
 msgstr "Ustawienia"
 
-#: data/ui/application.glade:157
+#: data/ui/application.glade:177
 msgid "Help"
 msgstr ""
 
-#: data/ui/application.glade:180 data/ui/filter.glade:204
+#: data/ui/application.glade:200 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
 #: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
 #: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
@@ -114,40 +118,40 @@ msgstr "Nadpróbkowanie"
 msgid "Line Width"
 msgstr "Szerokość"
 
-#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
+#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:389
 msgid "Use Default"
 msgstr "Użyj domyślnych"
 
-#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
+#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:440
 #, fuzzy
 msgid "Block Size"
 msgstr "Rozmiar pomieszczenia"
 
-#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
+#: data/ui/pulse_settings.glade:196 data/ui/pulse_settings.glade:486
 msgid "Pipeline Input"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
-#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
+#: data/ui/pulse_settings.glade:210 data/ui/pulse_settings.glade:301
+#: data/ui/pulse_settings.glade:500 data/ui/pulse_settings.glade:591
 #: data/ui/app_info.glade:159
 msgid "Buffer"
 msgstr "Bufor"
 
-#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
-#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
+#: data/ui/pulse_settings.glade:243 data/ui/pulse_settings.glade:334
+#: data/ui/pulse_settings.glade:513 data/ui/pulse_settings.glade:604
 #: data/ui/app_info.glade:186
 msgid "Latency"
 msgstr "Oczekiwanie"
 
-#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
+#: data/ui/pulse_settings.glade:287 data/ui/pulse_settings.glade:577
 msgid "Pipeline Output"
 msgstr ""
 
-#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Efekty wejściowe"
 
-#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:660 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Efekty wyjściowe"
 
@@ -308,28 +312,36 @@ msgstr "Resetuj jakość"
 msgid "Detect Silence"
 msgstr "Wykrycie"
 
-#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
+#: data/ui/autogain.glade:169
+msgid "Use Geometric Mean"
+msgstr ""
+
+#: data/ui/autogain.glade:198
+msgid "Target"
+msgstr "Cel"
+
+#: data/ui/autogain.glade:214
+msgid "-23"
+msgstr ""
+
+#: data/ui/autogain.glade:249 data/ui/autogain.glade:591
 msgid "Momentary"
 msgstr ""
 
-#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
+#: data/ui/autogain.glade:264 data/ui/autogain.glade:604
 msgid "Short Term"
 msgstr ""
 
-#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
+#: data/ui/autogain.glade:279 data/ui/autogain.glade:617
 msgid "Integrated"
 msgstr ""
 
-#: data/ui/autogain.glade:289
+#: data/ui/autogain.glade:349
 #, fuzzy
 msgid "Weights"
 msgstr "Wysokość"
 
-#: data/ui/autogain.glade:323
-msgid "Target"
-msgstr "Cel"
-
-#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
+#: data/ui/autogain.glade:378 data/ui/autogain.glade:570
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:718
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
 #: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
@@ -344,7 +356,7 @@ msgstr "Cel"
 msgid "Input"
 msgstr "Wejście"
 
-#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
+#: data/ui/autogain.glade:393 data/ui/autogain.glade:826
 #: data/ui/limiter.glade:380 data/ui/compressor.glade:733
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
@@ -365,21 +377,21 @@ msgstr "Wejście"
 msgid "Output"
 msgstr "Wyjście"
 
-#: data/ui/autogain.glade:684
+#: data/ui/autogain.glade:708
 msgid "Relative"
 msgstr ""
 
-#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:721 data/ui/compressor.glade:900
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Wzmocnienie"
 
-#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
+#: data/ui/autogain.glade:787 data/ui/loudness.glade:24
 #: data/ui/loudness.glade:128
 msgid "Loudness"
 msgstr ""
 
-#: data/ui/autogain.glade:816
+#: data/ui/autogain.glade:840
 msgid "Range"
 msgstr ""
 
@@ -1565,12 +1577,16 @@ msgstr "Załaduj profil. Przykład: pulseeffects -l music"
 msgid "Reset PulseEffects."
 msgstr "PulseEffects"
 
-#: src/application.cpp:233
+#: src/application.cpp:29
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/application.cpp:263
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Profile: "
 
-#: src/application.cpp:241
+#: src/application.cpp:271
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Importuj profile"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-26 11:37-0300\n"
+"POT-Creation-Date: 2019-11-28 14:06-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,7 +131,7 @@ msgstr ""
 #: C/webrtc.page:140
 #: C/crystalizer.page:53
 #: C/convolver.page:42
-#: C/autogain.page:105
+#: C/autogain.page:76
 msgid "References"
 msgstr ""
 
@@ -416,7 +416,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:59
-#: C/autogain.page:96
+#: C/autogain.page:70
 msgid "Gain"
 msgstr ""
 
@@ -750,7 +750,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/loudness.page:9
 #: C/loudness.page:19
-#: C/autogain.page:79
+#: C/autogain.page:58
 msgid "Loudness"
 msgstr ""
 
@@ -1730,7 +1730,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/general.page:50
-#: C/autogain.page:25
+#: C/autogain.page:16
 msgid "Reset"
 msgstr ""
 
@@ -2045,97 +2045,107 @@ msgid "If the audio signal arriving at the plugin input is too high very unpleas
 msgstr ""
 
 #. (itstool) path: page/title
-#: C/autogain.page:9
+#: C/autogain.page:5
 msgid "Auto Gain"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/autogain.page:10
+#: C/autogain.page:6
 msgid "PulseEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:17
+#: C/autogain.page:10
 msgid "Target"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:19
+#: C/autogain.page:12
 msgid "Loudness level."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:27
+#: C/autogain.page:18
 msgid "Resets the auto gain history."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:33
+#: C/autogain.page:22
 msgid "Detect Silence"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:35
+#: C/autogain.page:24
 msgid "When the momentary loudness is below the relative we assume the audio material is passing through a brief moment of silence and no changes to the output gain are applied. If you do not want this behavior disable the silence detection."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:43
+#: C/autogain.page:28
+msgid "Use Geometric Mean"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/autogain.page:30
+msgid "The estimated loudness is obtained from the geometric mean of the momentary, short-term and integrated loudness. When this option is disabled a weighted average is used."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:34
 msgid "Momentary"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:45
+#: C/autogain.page:36
 msgid "Controls how much the momentary term will influence the loudness level estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:52
+#: C/autogain.page:40
 msgid "Short Term"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:54
+#: C/autogain.page:42
 msgid "Controls how much the short term measure will influence the loudness level estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:61
+#: C/autogain.page:46
 msgid "Integrated"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:63
+#: C/autogain.page:48
 msgid "Controls how much the integrated term will influence the loudness level estimation."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:70
+#: C/autogain.page:52
 msgid "Relative"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:72
+#: C/autogain.page:54
 msgid "Relative threshold. It is used to detect silence. Whenever the momentary term is below this threshold modifications to the output gain will be disabled."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:81
+#: C/autogain.page:60
 msgid "Estimated input loudness. The difference between its value and the target loudness determines the output gain."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/autogain.page:88
+#: C/autogain.page:64
 msgid "Range"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:90
+#: C/autogain.page:66
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/autogain.page:98
+#: C/autogain.page:72
 msgid "Output gain value. The input signal will be multiplied by this correction gain to bring its loudness to the target value."
 msgstr ""
 
