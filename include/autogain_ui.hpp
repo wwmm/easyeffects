@@ -24,7 +24,8 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level, *lra_level;
   Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label, *lra_label;
   Gtk::Button* reset;
-  Gtk::ToggleButton* detect_silence;
+  Gtk::ToggleButton *detect_silence, *use_geometric_mean;
+  Gtk::Grid* weights_grid;
 };
 
 #endif

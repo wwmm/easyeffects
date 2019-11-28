@@ -10,6 +10,8 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".autogain.detect-silence", settings->get_boolean("detect-silence"));
 
+  root.put(section + ".autogain.use-geometric-mean", settings->get_boolean("use-geometric-mean"));
+
   root.put(section + ".autogain.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".autogain.output-gain", settings->get_double("output-gain"));
@@ -29,6 +31,8 @@ void AutoGainPreset::load(boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "state", section + ".autogain.state");
 
   update_key<bool>(root, settings, "detect-silence", section + ".autogain.detect-silence");
+
+  update_key<bool>(root, settings, "use-geometric-mean", section + ".autogain.use-geometric-mean");
 
   update_key<double>(root, settings, "input-gain", section + ".autogain.input-gain");
 

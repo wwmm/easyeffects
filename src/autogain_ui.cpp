@@ -26,6 +26,8 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
 
   builder->get_widget("reset", reset);
   builder->get_widget("detect_silence", detect_silence);
+  builder->get_widget("use_geometric_mean", use_geometric_mean);
+  builder->get_widget("weights_grid", weights_grid);
 
   get_object(builder, "input_gain", input_gain);
   builder->get_widget("l_label", l_label);
@@ -47,6 +49,9 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("weight-s", weight_s.get(), "value", flag);
   settings->bind("weight-i", weight_i.get(), "value", flag);
   settings->bind("detect-silence", detect_silence, "active", flag);
+  settings->bind("use-geometric-mean", use_geometric_mean, "active", flag);
+  settings->bind("use-geometric-mean", weights_grid, "visible",
+                 Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
 
   reset->signal_clicked().connect([=]() { settings->set_boolean("reset", true); });
 }

@@ -8,6 +8,8 @@
   Thanks Markus! :-)
 - There is now a bypass button that can be used to temporarily disable all effects. It is also possible to do this
   through a command line option. Take a look at the output of pulseeffects --help.
+- The autogain plugin offers now the option of using a geometric mean of the estimated loudness instead of a weighted
+  average
 
 ## [4.6.8]
 

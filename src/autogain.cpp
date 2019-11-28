@@ -132,5 +132,7 @@ void AutoGain::bind_to_gsettings() {
 
   g_settings_bind(settings, "detect-silence", autogain, "detect-silence", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(settings, "use-geometric-mean", autogain, "use-geometric-mean", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind(settings, "reset", autogain, "reset", G_SETTINGS_BIND_DEFAULT);
 }

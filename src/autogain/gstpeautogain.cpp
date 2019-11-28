@@ -55,7 +55,8 @@ enum {
   PROP_LRA,
   PROP_NOTIFY,
   PROP_DETECT_SILENCE,
-  PROP_RESET
+  PROP_RESET,
+  PROP_USE_GEOMETRIC_MEAN
 };
 
 /* pad templates */
@@ -180,6 +181,12 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
       gobject_class, PROP_RESET,
       g_param_spec_boolean("reset", "Reset History", "Completely reset the library ebur128 state", false,
                            static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_USE_GEOMETRIC_MEAN,
+      g_param_spec_boolean("use-geometric-mean", "Loudness Geometric Mean",
+                           "Estimated loudness is the geometric mean of the momentary, short-term and global values",
+                           true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -202,6 +209,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->notify = true;
   peautogain->detect_silence = true;
   peautogain->reset = false;
+  peautogain->use_geometric_mean = true;
   peautogain->ebur_state = nullptr;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
@@ -233,6 +241,9 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       break;
     case PROP_RESET:
       peautogain->reset = g_value_get_boolean(value);
+      break;
+    case PROP_USE_GEOMETRIC_MEAN:
+      peautogain->use_geometric_mean = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -287,6 +298,9 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
       break;
     case PROP_RESET:
       g_value_set_boolean(value, peautogain->reset);
+      break;
+    case PROP_USE_GEOMETRIC_MEAN:
+      g_value_set_boolean(value, peautogain->use_geometric_mean);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -350,8 +364,6 @@ static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
 
     ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
     ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
-
-    ebur128_set_max_history(peautogain->ebur_state, 30 * 1000);  // ms
 
     peautogain->ready = true;
   }
@@ -426,10 +438,14 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     }
 
     if (!failed) {
-      peautogain->loudness =
-          (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
-           peautogain->weight_i * peautogain->global) /
-          (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+      if (peautogain->use_geometric_mean) {
+        peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
+      } else {
+        peautogain->loudness =
+            (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
+             peautogain->weight_i * peautogain->global) /
+            (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+      }
 
       float diff = peautogain->target - peautogain->loudness;
 
