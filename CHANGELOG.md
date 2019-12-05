@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Do not open the main window when listing the available presets through command line options
+
 ## [4.6.9]
 
 ### Added
