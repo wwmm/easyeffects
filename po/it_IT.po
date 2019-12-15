@@ -308,7 +308,7 @@ msgstr "Livello"
 
 #: data/ui/autogain.glade:214
 msgid "-23"
-msgstr ""
+msgstr "-23"
 
 #: data/ui/autogain.glade:249 data/ui/autogain.glade:591
 msgid "Momentary"
