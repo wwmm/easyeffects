@@ -26,9 +26,8 @@ msgid "Test Signals"
 msgstr "Segnali di Test"
 
 #: data/ui/application.glade:61
-#, fuzzy
 msgid "Global Bypass"
-msgstr "Ignora"
+msgstr "Bypass Globale"
 
 #: data/ui/application.glade:83
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
@@ -298,9 +297,8 @@ msgid "Detect Silence"
 msgstr "Rilevazione Silenzio"
 
 #: data/ui/autogain.glade:169
-#, fuzzy
 msgid "Use Geometric Mean"
-msgstr "Usa Sfumatura"
+msgstr "Usa Media Geometrica"
 
 #: data/ui/autogain.glade:198
 msgid "Target"
@@ -770,7 +768,7 @@ msgstr "Passa Alto"
 
 #: data/ui/equalizer_band.glade:63
 msgid "High Shelf"
-msgstr "Shelf Alto"
+msgstr "Sopra Soglia"
 
 #: data/ui/equalizer_band.glade:64
 msgid "Low Pass"
@@ -778,7 +776,7 @@ msgstr "Passa Basso"
 
 #: data/ui/equalizer_band.glade:65
 msgid "Low Shelf"
-msgstr "Shelf Basso"
+msgstr "Sotto Soglia"
 
 #: data/ui/equalizer_band.glade:66
 msgid "Notch"
@@ -838,7 +836,7 @@ msgstr "Qualità"
 
 #: data/ui/equalizer_band.glade:252
 msgid "Width"
-msgstr "Larghezza"
+msgstr "Ampiezza"
 
 #: data/ui/equalizer_band.glade:314 data/ui/stereo_tools.glade:550
 #: data/ui/stereo_tools.glade:609 data/ui/crystalizer_band.glade:27
@@ -1066,7 +1064,7 @@ msgstr "Taglio"
 
 #: data/ui/crossfeed.glade:155
 msgid "Feed"
-msgstr "Alimentazione"
+msgstr "Feed"
 
 #: data/ui/crossfeed.glade:392
 msgid "Crossfeed"
@@ -1082,7 +1080,7 @@ msgstr "Riduzione Guadagno"
 
 #: data/ui/loudness.glade:196
 msgid "Link"
-msgstr "Collega"
+msgstr "Link"
 
 #: data/ui/gate.glade:31
 msgid "Gate"
@@ -1364,7 +1362,7 @@ msgstr "Quadra"
 
 #: data/ui/calibration_signals.glade:110
 msgid "Saw"
-msgstr "A dente di sega"
+msgstr "A Dente di Sega"
 
 #: data/ui/calibration_signals.glade:111
 msgid "Triangle"
@@ -1380,7 +1378,7 @@ msgstr "Rumore bianco"
 
 #: data/ui/calibration_signals.glade:114
 msgid "Pink Noise"
-msgstr "Rumore rosa"
+msgstr "Rumore Rosa"
 
 #: data/ui/calibration_signals.glade:115
 msgid "Sine Table"
@@ -1518,15 +1516,15 @@ msgstr "Reset PulseEffects."
 
 #: src/application.cpp:29
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per lo stato"
 
 #: src/application.cpp:263
 msgid "Output Presets: "
-msgstr "Profili d'Uscita: "
+msgstr "Profili Uscita: "
 
 #: src/application.cpp:271
 msgid "Input Presets: "
-msgstr "Profili d'Ingresso: "
+msgstr "Profili Ingresso: "
 
 #: src/effects_base_ui.cpp:27
 msgid "Applications"
@@ -1554,11 +1552,11 @@ msgstr "Annulla"
 
 #: src/app_info_ui.cpp:85
 msgid "paused"
-msgstr "in pausa"
+msgstr "pausa"
 
 #: src/app_info_ui.cpp:87
 msgid "playing"
-msgstr "in riproduzione"
+msgstr "riproduzione"
 
 #: src/calibration_ui.cpp:171
 msgid "Calibration Microphone"
