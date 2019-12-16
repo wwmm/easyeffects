@@ -15,7 +15,9 @@ msgstr ""
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
-msgstr "gianluca boiano<morf3089@gmail.com>,2019"
+msgstr ""
+"gianluca boiano <morf3089@gmail.com> ,2019\n"
+"Digitalone <kurmikon@libero.it>, 2019"
 
 #. (itstool) path: page/title
 #: C/bassenhancer.page:9
@@ -241,7 +243,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/compressor.page:75
 msgid "Compression Mode"
-msgstr "Modalità di compressione"
+msgstr "Modalità di Compressione"
 
 #. (itstool) path: item/p
 #: C/compressor.page:79
@@ -300,7 +302,7 @@ msgstr ""
 #: C/multibandgate.page:103 C/stereotools.page:38 C/equalizer.page:23
 #: C/equalizer.page:146 C/webrtc.page:75
 msgid "Mode"
-msgstr "Modo"
+msgstr "Modalità"
 
 #. (itstool) path: item/p
 #: C/compressor.page:128
@@ -757,7 +759,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/index.page:11
 msgid "Guides"
-msgstr ""
+msgstr "Guide"
 
 #. (itstool) path: section/title
 #: C/index.page:14
@@ -917,7 +919,7 @@ msgstr "Cambia livello di uscita."
 #. (itstool) path: title/em
 #: C/loudness.page:35
 msgid "Link"
-msgstr "Collega"
+msgstr "Link"
 
 #. (itstool) path: item/p
 #: C/loudness.page:37
@@ -1541,7 +1543,7 @@ msgid ""
 "<em style=\"strong\">High-shelf</em> - Shelving filter with adjustment of "
 "high frequency range."
 msgstr ""
-"<em style=\"strong\">Shelf Alto</em> - Filtro di tipo shelf con regolazione "
+"<em style=\"strong\">Sopra Soglia</em> - Filtro a scaffale con regolazione "
 "dell'intervallo delle alte frequenze."
 
 #. (itstool) path: item/p
@@ -1559,7 +1561,7 @@ msgid ""
 "<em style=\"strong\">Low-shelf</em> - Shelving filter with adjustment of low "
 "frequencies."
 msgstr ""
-"<em style=\"strong\">Shelf Basso</em> - Filtro di tipo shelf con regolazione "
+"<em style=\"strong\">Sotto Soglia</em> - Filtro a scaffale con regolazione "
 "dell'intervallo delle basse frequenze."
 
 #. (itstool) path: item/p
@@ -2741,7 +2743,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/guide_1.page:8
-#, fuzzy
 msgid "Introduction"
 msgstr "Introduzione"
 
@@ -2788,7 +2789,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/guide_1.page:14
-#, fuzzy
 msgid "Why no equalizer?"
 msgstr "Perché non l'equalizzatore?"
 
@@ -2829,7 +2829,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/guide_1.page:19
-#, fuzzy
 msgid "Frequency Range"
 msgstr "Intervalli di frequenza"
 
@@ -2908,7 +2907,6 @@ msgstr ""
 
 #. (itstool) path: section/title
 #: C/guide_1.page:55
-#, fuzzy
 msgid "Test Signal"
 msgstr "Segnale di Test"
 
@@ -2980,7 +2978,6 @@ msgstr "Investighiamo inizialmente i problemi più rilevanti:"
 
 #. (itstool) path: item/title
 #: C/guide_1.page:73
-#, fuzzy
 msgid "<em style=\"strong\">Bass</em>"
 msgstr "<em style=\"strong\">Bassi</em>"
 
@@ -3200,7 +3197,6 @@ msgstr "Entriamo ora nel <em style=\"strong\">vivo</em> dei processi."
 
 #. (itstool) path: item/title
 #: C/guide_1.page:136
-#, fuzzy
 msgid "<em style=\"strong\">Filter</em>"
 msgstr "<em style=\"strong\">Filtro</em>"
 
@@ -3337,7 +3333,6 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/guide_1.page:158
-#, fuzzy
 msgid "<em style=\"strong\">Multiband Compressor</em>"
 msgstr "<em style=\"strong\">Compressore Multibanda</em>"
 
@@ -3418,31 +3413,26 @@ msgstr "Dopodiché, impostiamo questi valori predefiniti:"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:179
-#, fuzzy
 msgid "Low Band"
 msgstr "Sottobanda"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:182 C/guide_1.page:205
-#, fuzzy
 msgid "Attack: 150 ms"
 msgstr "Attacco: 150 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:185
-#, fuzzy
 msgid "Release: 300 ms"
 msgstr "Rilascio: 300 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:188
-#, fuzzy
 msgid "Threshold: -16 dB"
 msgstr "Soglia: -16 dB"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:191
-#, fuzzy
 msgid "Ratio: 5:1"
 msgstr "Rapporto: 5"
 
@@ -3453,7 +3443,6 @@ msgstr "Curvatura: 12 dB"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:197 C/guide_1.page:220 C/guide_1.page:243 C/guide_1.page:266
-#, fuzzy
 msgid "Makeup: 4 dB"
 msgstr "Guadagno: 4 dB"
 
@@ -3464,19 +3453,16 @@ msgstr "Banda Inferiore"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:208
-#, fuzzy
 msgid "Release: 200 ms"
 msgstr "Rilascio: 200 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:211 C/guide_1.page:234 C/guide_1.page:257
-#, fuzzy
 msgid "Threshold: -24 dB"
 msgstr "Soglia: -24 dB"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:214 C/guide_1.page:237
-#, fuzzy
 msgid "Ratio: 3:1"
 msgstr "Rapporto: 3"
 
@@ -3492,13 +3478,11 @@ msgstr "Banda Media"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:228
-#, fuzzy
 msgid "Attack: 100 ms"
 msgstr "Attacco: 100 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:231
-#, fuzzy
 msgid "Release: 150 ms"
 msgstr "Rilascio: 150 ms"
 
@@ -3509,19 +3493,16 @@ msgstr "Banda Superiore"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:251
-#, fuzzy
 msgid "Attack: 80 ms"
 msgstr "Attacco: 80 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:254
-#, fuzzy
 msgid "Release: 120 ms"
 msgstr "Rilascio: 120 ms"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:260
-#, fuzzy
 msgid "Ratio: 4:1"
 msgstr "Rapporto: 4"
 
