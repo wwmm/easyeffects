@@ -1248,7 +1248,7 @@ msgstr "Bilanciamento del segnale laterale."
 #. (itstool) path: title/em
 #: C/stereotools.page:62
 msgid "Middle Level"
-msgstr "Livello del Medio"
+msgstr "Livello Medio"
 
 #. (itstool) path: item/p
 #: C/stereotools.page:64
