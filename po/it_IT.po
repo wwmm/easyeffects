@@ -992,15 +992,15 @@ msgstr "Livello Laterale"
 
 #: data/ui/stereo_tools.glade:372
 msgid "Side Balance"
-msgstr "Livello Bilanciamento"
+msgstr "Bilanciamento Laterale"
 
 #: data/ui/stereo_tools.glade:404
 msgid "Middle Level"
-msgstr "Livello Medi"
+msgstr "Livello Medio"
 
 #: data/ui/stereo_tools.glade:417
 msgid "Middle Panorama"
-msgstr "Panorama Medi"
+msgstr "Panorama Medio"
 
 #: data/ui/stereo_tools.glade:475
 msgid "LR > LR (Stereo Default)"
