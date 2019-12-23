@@ -603,7 +603,7 @@ msgstr "Frequenza Split 3/4"
 #: data/ui/multiband_gate.glade:867 data/ui/multiband_gate.glade:1277
 #: data/ui/multiband_gate.glade:1687 data/ui/crystalizer_band.glade:39
 msgid "Bypass"
-msgstr "Ignora"
+msgstr "Bypass"
 
 #: data/ui/multiband_compressor.glade:455
 #: data/ui/multiband_compressor.glade:827
@@ -627,7 +627,7 @@ msgstr "Sottobanda"
 
 #: data/ui/multiband_compressor.glade:1173 data/ui/multiband_gate.glade:1258
 msgid "Low Band"
-msgstr "Banda Inferiore"
+msgstr "Banda Bassa"
 
 #: data/ui/multiband_compressor.glade:1551 data/ui/multiband_gate.glade:1668
 msgid "Mid Band"
@@ -635,7 +635,7 @@ msgstr "Banda Media"
 
 #: data/ui/multiband_compressor.glade:1929 data/ui/multiband_gate.glade:2078
 msgid "High Band"
-msgstr "Banda Superiore"
+msgstr "Banda Alta"
 
 #: data/ui/filter.glade:31
 msgid "Filter"
@@ -1092,15 +1092,15 @@ msgstr "Rilevamento"
 
 #: data/ui/gate.glade:176
 msgid "Stereo Link"
-msgstr "Legame Canali"
+msgstr "Relazione Canali"
 
 #: data/ui/gate.glade:235
 msgid "Average"
-msgstr "Medio"
+msgstr "Media"
 
 #: data/ui/gate.glade:236
 msgid "Maximum"
-msgstr "Massimo"
+msgstr "Massima"
 
 #: data/ui/gate.glade:667 data/ui/multiband_gate.glade:766
 #: data/ui/multiband_gate.glade:1175 data/ui/multiband_gate.glade:1585
