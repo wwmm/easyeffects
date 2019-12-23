@@ -33,15 +33,15 @@ msgid ""
 "frequency is missing from a tone."
 msgstr ""
 "Il cervello percepisce la tonalità di un suono non solo dalla sua frequenza "
-"fondamentale, ma anche dalla periodicità consequenziale delle relazioni tra "
-"le armoniche più alte. Possiamo percepire la stessa tonalità anche se la "
-"frequenza fondamentale è assente in un suono."
+"fondamentale, ma anche dalla periodicità intesa come la relazione tra le "
+"armoniche più alte. Possiamo percepire la stessa tonalità anche se la "
+"frequenza fondamentale è assente da un suono."
 
 #. (itstool) path: page/p
 #: C/bassenhancer.page:16
 msgid "PulseEffects uses the bass enhancer developed by Calf Studio."
 msgstr ""
-"PulseEffects usa il plugin di enfasi dei bassi sviluppato da Calf Studio."
+"PulseEffects usa il plugin di Enfasi Bassi sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:22 C/exciter.page:21 C/reverb.page:40
@@ -81,7 +81,7 @@ msgstr "Limite Inferiore(pulsante)"
 #. (itstool) path: item/p
 #: C/bassenhancer.page:48
 msgid "Constrain the enhancement on the lower end."
-msgstr "Limita l'enfasi all'estremità inferiore."
+msgstr "Impedisce l'enfasi nella parte inferiore."
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:54
@@ -133,13 +133,13 @@ msgstr "Compressore"
 #: C/compressor.page:10
 msgid "A compressor is used to reduce the audio signal dynamic range."
 msgstr ""
-"Il compressore viene utilizzato per ridurre la gamma dinamica del segnale "
+"Il Compressore viene utilizzato per ridurre la gamma dinamica del segnale "
 "audio."
 
 #. (itstool) path: page/p
 #: C/compressor.page:13
 msgid "PulseEffects uses the compressor from Linux Studio Plugins."
-msgstr "PulseEffects usa il compressore sviluppato da Linux Studio Plugins."
+msgstr "PulseEffects usa il Compressore sviluppato da Linux Studio Plugins."
 
 #. (itstool) path: title/em
 #: C/compressor.page:20 C/gate.page:20 C/multibandcompressor.page:20
@@ -439,7 +439,7 @@ msgstr ""
 #: C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr ""
-"Se il segnale supera il valore specificato, verrà applicata la compressione. "
+"Se il segnale supera il valore specificato, verrà applicata la compressione."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
@@ -544,14 +544,14 @@ msgid ""
 "manipulation, harmonic synthesis of high frequency signals, and through the "
 "addition of subtle harmonic distortion."
 msgstr ""
-"L'exciter è utilizzato per migliorare un segnale mediante l'equalizzazione "
-"dinamica, la manipolazione di fase, la sintesi armonica (di segnali ad alta "
-"frequenza) e l'aggiunta di distorsione armonica sottile."
+"L'Exciter è un plugin che serve per migliorare un segnale mediante "
+"l'equalizzazione dinamica, la manipolazione di fase, la sintesi armonica (di "
+"segnali ad alta frequenza) e l'aggiunta di distorsione armonica sottile."
 
 #. (itstool) path: page/p
 #: C/exciter.page:15
 msgid "PulseEffects uses the exciter developed by Calf Studio."
-msgstr "PulseEffects usa l'exciter sviluppato da Calf Studio."
+msgstr "PulseEffects usa l'Exciter sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/exciter.page:45
@@ -561,7 +561,7 @@ msgstr "Limite Superiore(pulsante)"
 #. (itstool) path: item/p
 #: C/exciter.page:47
 msgid "Constrain the excitement on the upper end."
-msgstr "Limita l'exciter fino a una determinata frequenza."
+msgstr "Impedisce al plugin di operare oltre una determinata frequenza."
 
 #. (itstool) path: title/em
 #: C/exciter.page:53
@@ -584,7 +584,7 @@ msgid ""
 "Audio filters can amplify (boost), pass or attenuate (cut) some frequency "
 "ranges."
 msgstr ""
-"Il plugin filtro può essere usato per amplificare, far passare o attenuare "
+"Il plugin Filtro può essere usato per amplificare, far passare o attenuare "
 "(tagliare) alcune bande di frequenza del segnale audio."
 
 #. (itstool) path: page/p
@@ -593,7 +593,7 @@ msgid ""
 "PulseEffects uses the filter from Calf Studio. It can be used to remove "
 "defined parts of a frequency spectrum."
 msgstr ""
-"PulseEffects utilizza il filtro sviluppato da Calf Studio. Può essere usato "
+"PulseEffects utilizza il Filtro sviluppato da Calf Studio. Può essere usato "
 "per rimuovere determinate parti dello spettro delle frequenze."
 
 #. (itstool) path: title/em
@@ -620,7 +620,7 @@ msgid ""
 msgstr ""
 "Aggiunge un'enfasi alla frequenza centrale. Quando è utilizzato in un filtro "
 "passa banda, le frequenze circostanti diminuiscono di livello e la banda "
-"diventa più stretta. La banda esclusa viene ridotta ad un ago sottile."
+"diventa più stretta. La banda esclusa viene ridotta a un ago sottile."
 
 #. (itstool) path: title/em
 #: C/filter.page:39
@@ -643,14 +643,14 @@ msgid ""
 "Gates attenuate signals that register below the threshold. This kind of "
 "signal processing reduces disturbing noise between useful signals."
 msgstr ""
-"Il plugin gate attenua i segnali che si attestano al di sotto di una "
+"Il plugin Gate attenua i segnali che si attestano al di sotto di una "
 "determinata soglia. Questo tipo di elaborazione riduce il livello del rumore "
 "(disturbo) tra segnali utili."
 
 #. (itstool) path: page/p
 #: C/gate.page:14
 msgid "PulseEffects uses the gate developed by Calf Studio."
-msgstr "PulseEffects usa il gate sviluppato da Calf Studio."
+msgstr "PulseEffects usa il Gate sviluppato da Calf Studio."
 
 #. (itstool) path: item/p
 #: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
@@ -673,7 +673,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/gate.page:70
 msgid "Stereo Link"
-msgstr "Legame Stereo"
+msgstr "Relazione Canali"
 
 #. (itstool) path: item/p
 #: C/gate.page:72
@@ -789,14 +789,14 @@ msgid ""
 "unaffected while attenuating (lowering) the peaks of stronger signals that "
 "exceed this threshold."
 msgstr ""
-"Il limitatore consente ai segnali al di sotto di una determinata soglia di "
+"Il Limitatore consente ai segnali al di sotto di una determinata soglia di "
 "passare inalterati, mentre attenua i picchi di segnale che superano tale "
 "soglia."
 
 #. (itstool) path: page/p
 #: C/limiter.page:15
 msgid "PulseEffects uses the limiter developed by Calf Studio."
-msgstr "PulseEffects usa il limitatore sviluppato da Calf Studio."
+msgstr "PulseEffects usa il Limitatore sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/limiter.page:22
@@ -949,12 +949,12 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/multibandcompressor.page:14
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
-msgstr "PulseEffects usa il compressore multibanda sviluppato da Calf Studio."
+msgstr "PulseEffects usa il Compressore Multibanda sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
 msgid "Bypass"
-msgstr "Ignora"
+msgstr "Bypass"
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:72 C/multibandgate.page:80
@@ -974,12 +974,12 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:87 C/multibandgate.page:95 C/equalizer.page:208
 msgid "Solo"
-msgstr "Solo"
+msgstr "Isola"
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:89 C/multibandgate.page:97
 msgid "Mute all strips not set to solo."
-msgstr "Silenzia tutte le tracce non impostate su solo."
+msgstr "Silenzia tutte le tracce non selezionate."
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:97 C/multibandgate.page:105
@@ -1031,14 +1031,14 @@ msgid ""
 "This kind of gate splits the signal in four different frequency ranges. "
 "These ranges are processed separately and mixed together afterwards again."
 msgstr ""
-"Questo tipo di gate divide il segnale in quattro diverse bande di frequenza. "
+"Questo tipo di Gate divide il segnale in quattro diverse bande di frequenza. "
 "Queste bande vengono processate separatamente e i loro segnali verranno "
 "rimescolati al termine dell'elaborazione."
 
 #. (itstool) path: page/p
 #: C/multibandgate.page:14
 msgid "PulseEffects uses the multiband gate developed by Calf Studio."
-msgstr "PulseEffects usa il gate multibanda sviluppato da Calf Studio."
+msgstr "PulseEffects usa il Gate Multibanda sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/multibandgate.page:38
@@ -1073,7 +1073,7 @@ msgid ""
 "up and then decay as the sound is absorbed by the surfaces of objects in the "
 "space. Reverberation plugins can be used to artificially produce this effect."
 msgstr ""
-"Il riverbero, in psicoacustica e acustica, indica una persistenza del suono "
+"Il riverbero, in acustica e psicoacustica, indica una persistenza del suono "
 "che si manifesta successivamente alla sua produzione. Un riverbero è "
 "generato quando un suono o un segnale viene riflesso e ripetuto nel tempo. "
 "Le riflessioni decadono quando il suono viene assorbito dalle superfici "
@@ -1083,7 +1083,7 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/reverb.page:17
 msgid "PulseEffects uses the reverberation developed by Calf Studio."
-msgstr "PulseEffects usa il plugin di riverbero sviluppato da Calf Studio."
+msgstr "PulseEffects usa il plugin di Riverbero sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/reverb.page:23
@@ -1112,7 +1112,7 @@ msgstr "Tempo necessario affinchè l'effetto di riverbero scompaia."
 #. (itstool) path: item/p
 #: C/reverb.page:42
 msgid "Amount of processed signal (reverberation) in the output."
-msgstr "Quantità di segnale elaborato (effetto di riverbero) in uscita."
+msgstr "Quantità di segnale elaborato (riverbero) in uscita."
 
 #. (itstool) path: title/em
 #: C/reverb.page:48
@@ -1190,7 +1190,7 @@ msgstr "Plugin Stereo"
 #. (itstool) path: page/p
 #: C/stereotools.page:10
 msgid "PulseEffects uses the stereo tools developed by Calf Studio."
-msgstr "PulseEffects usa il plugin stereo sviluppato da Calf Studio."
+msgstr "PulseEffects usa il Plugin Stereo sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/stereotools.page:16
@@ -1280,7 +1280,8 @@ msgid ""
 "Set the stereo base of your material seamless between Mono and inverted "
 "Channels."
 msgstr ""
-"Imposta la base stereo del tuo materiale tra i canali mono e invertiti."
+"Imposta la base stereo del tuo materiale senza interruzioni tra mono e "
+"canali invertiti."
 
 #. (itstool) path: title/em
 #: C/stereotools.page:88
@@ -1316,7 +1317,7 @@ msgstr ""
 "rappresenta l'amplificazione del segnale mentre il limite è il livello "
 "massimo di uscita del segnale. Impostando entrambi i valori diversi da zero, "
 "il plugin funzionerà come un compressore ascendente con un limitatore "
-"impostato sul valore di limite (segnali molti amplificati quando il limite è "
+"impostato sul valore di limite (segnali molto amplificati quando il limite è "
 "impostato troppo in basso potrebbero produrre un suono distorto anche senza "
 "la presenza del clipping). Quando solo la soglia è impostata a zero, il "
 "plugin riduce l'ampiezza del segnale."
@@ -1349,7 +1350,7 @@ msgstr "Massimo valore di picco ammesso in uscita."
 #. (itstool) path: item/p
 #: C/maximizer.page:46
 msgid "Set the release in milliseconds."
-msgstr "Impostazione del tempo di release in millisecondi."
+msgstr "Impostazione del tempo di rilascio in millisecondi."
 
 #. (itstool) path: page/title
 #: C/crossfeed.page:9
@@ -1364,7 +1365,7 @@ msgid ""
 "records. It does so by mixing the left and right channel in a way that "
 "simulates a stereo speaker setup while using headphones."
 msgstr ""
-"PulseEffects usa il plugin crossfeed di GStreamer. Questo plugin si basa "
+"PulseEffects usa il plugin Crossfeed di GStreamer. Questo plugin si basa "
 "sulla libreria bs2b e può essere utilizzato per migliorare l'ascolto "
 "dell'audio stereo tramite le cuffie. Il suo funzionamento consiste nel "
 "mescolare i due canali in modo che venga simulato l'ascolto dell'audio "
@@ -1404,11 +1405,10 @@ msgid ""
 "moment all of them have only 10 bands. Presets with other number of bands "
 "may be added in the future."
 msgstr ""
-"PulseEffects utilizza l'equalizzatore parametrico ideato da Linux Studio "
-"Plugins. È possibile scegliere tra 1 e 30 bande. Si possono anche modificare "
-"la frequenza centrale e la larghezza di ogni banda in base alle proprie "
-"necessità. Sono presenti alcuni profili, ma al momento coinvolgono solo 10 "
-"bande. Profili con un diverso numero di bande verranno aggiunti in futuro."
+"PulseEffects utilizza l'Equalizzatore parametrico ideato da Linux Studio "
+"Plugins. È possibile scegliere tra 1 e 30 bande. Si può anche modificare la "
+"frequenza centrale e la larghezza di ogni banda in base alle proprie "
+"necessità."
 
 #. (itstool) path: section/title
 #: C/equalizer.page:18
@@ -1984,8 +1984,8 @@ msgid ""
 "This plugin can be used to add a little of dynamic range to songs that were "
 "overly compressed"
 msgstr ""
-"Questo plugin può essere usato per incrementare un po' la gamma dinamica "
-"alle tracce che sono state eccessivamente compresse."
+"Il plugin Crystalizer può essere usato per incrementare un po' la gamma "
+"dinamica alle tracce che sono state eccessivamente compresse."
 
 #. (itstool) path: title/em
 #: C/crystalizer.page:17
@@ -2043,7 +2043,7 @@ msgid ""
 "mathematical convolution operation, and uses a pre-recorded audio sample of "
 "the impulse response of the space being modeled."
 msgstr ""
-"Un convolutore crea una simulazione di un ambiente audio. Si basa "
+"Un Convolutore crea una simulazione di un ambiente audio. Si basa "
 "sull'operazione matematica di convoluzione e utilizza un campione audio pre-"
 "registrato della risposta all'impulso dello spazio da modellare."
 
@@ -2604,7 +2604,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/autogain.page:28
 msgid "Use Geometric Mean"
-msgstr ""
+msgstr "Usa Media Geometrica"
 
 #. (itstool) path: item/p
 #: C/autogain.page:30
@@ -2613,6 +2613,9 @@ msgid ""
 "short-term and integrated loudness. When this option is disabled a weighted "
 "average is used."
 msgstr ""
+"La stima della Loudness è ottenuta da una media geometrica dell'intensità "
+"acustica momentanea, a breve termine e integrata. Quando questa opzione è "
+"disattivata, viene utilizzata la media aritmetica ponderata."
 
 #. (itstool) path: title/em
 #: C/autogain.page:34
@@ -2825,7 +2828,7 @@ msgstr ""
 "altoparlanti dei notebook non sono abbastanza potenti, dunque con questa "
 "tecnica si otterrebbe comunque un suono scarso e castrato. Inoltre con "
 "l'aumentare del volume si produce generalmente un suono distorto perché il "
-"sistema già era al limite precedentemente e neanche andando a modificare la "
+"sistema già era al limite precedentemente e neanche andare a modificare la "
 "risposta in frequenza serve a migliorare il risultato."
 
 #. (itstool) path: section/title
@@ -3370,8 +3373,8 @@ msgstr ""
 "Il Compressore Multibanda ci aiuterà a risolvere diversi aspetti. Taglierà "
 "delle frequenze per noi inutili, ridurrà l'intervallo dinamico e armonizzerà "
 "la risposta in frequenza. La maggior parte delle persone prova a migliorare "
-"la risposta in frequenza attraverso un equalizzatore, ma questi ulimi non "
-"sono dinamici, per cui tendono ad aggiungere problemi piuttosto che "
+"la risposta in frequenza attraverso gli equalizzatori, ma questi ultimi non "
+"sono dinamici, per cui tendono ad aumentare i problemi piuttosto che "
 "risolverli."
 
 #. (itstool) path: item/p
@@ -3452,7 +3455,7 @@ msgstr "Guadagno: 4 dB"
 #. (itstool) path: item/p
 #: C/guide_1.page:202
 msgid "Low Mid Band"
-msgstr "Banda Inferiore"
+msgstr "Banda Bassa"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:208
@@ -3492,7 +3495,7 @@ msgstr "Rilascio: 150 ms"
 #. (itstool) path: item/p
 #: C/guide_1.page:248
 msgid "High Band"
-msgstr "Banda Superiore"
+msgstr "Banda Alta"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:251
@@ -3585,8 +3588,8 @@ msgstr ""
 "tale valore influenzerà il volume percepito di ciascuna banda. O in altre "
 "parole: <em style=\"strong\">questo è il tuo equalizzatore</em>. :) Varia il "
 "Guadagno di ogni singola banda per alzarne o diminuirne il volume. Io alla "
-"fine sul mio ThinkPad P1 ho impostato Sottobanda/Banda Inferiore/Banda "
-"Media/Banda superiore a: 4 dB / 3 dB / 6 dB / 6 dB."
+"fine sul mio ThinkPad P1 ho impostato Sottobanda/Banda Bassa/Banda "
+"Media/Banda Alta a: 4 dB / 3 dB / 6 dB / 6 dB."
 
 #. (itstool) path: item/p
 #: C/guide_1.page:286
