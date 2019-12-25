@@ -2,9 +2,16 @@
 
 ## [Unreleased]
 
+## [4.7.0]
+
+### Added
+
+- Improved Italian translations.
+
 ### Fixed
 
-- Do not open the main window when listing the available presets through command line options
+- Do not open the main window when listing the available presets through command line options. This will also help
+  third party tools like https://github.com/boomshop/pulseffectstray
 
 ## [4.6.9]
 
