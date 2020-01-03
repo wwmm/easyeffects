@@ -125,7 +125,7 @@ msgstr "Larghezza Blocco"
 
 #: data/ui/pulse_settings.glade:196 data/ui/pulse_settings.glade:486
 msgid "Pipeline Input"
-msgstr "In Ingresso alla Pipeline"
+msgstr "Pipeline di Ingresso"
 
 #: data/ui/pulse_settings.glade:210 data/ui/pulse_settings.glade:301
 #: data/ui/pulse_settings.glade:500 data/ui/pulse_settings.glade:591
@@ -141,15 +141,15 @@ msgstr "Latenza"
 
 #: data/ui/pulse_settings.glade:287 data/ui/pulse_settings.glade:577
 msgid "Pipeline Output"
-msgstr "All'Uscita della Pipeline"
+msgstr "Pipeline di Uscita"
 
 #: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:130
 msgid "Input Effects"
-msgstr "Effetti d'Ingresso"
+msgstr "Effetti in Ingresso"
 
 #: data/ui/pulse_settings.glade:660 data/ui/blacklist_settings.glade:224
 msgid "Output Effects"
-msgstr "Effetti d'Uscita"
+msgstr "Effetti in Uscita"
 
 #: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
@@ -1333,7 +1333,7 @@ msgstr "Salva impostazioni attuali in questo profilo"
 
 #: data/ui/preset_row.glade:84
 msgid "Remove this preset file"
-msgstr "Rimuovi file di questo profilo"
+msgstr "Rimuovi questo profilo"
 
 #: data/ui/preset_row.glade:100
 msgid ""
