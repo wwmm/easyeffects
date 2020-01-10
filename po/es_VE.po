@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-28 14:03-0300\n"
-"PO-Revision-Date: 2020-01-07 15:22-0500\n"
+"PO-Revision-Date: 2020-01-09 18:18-0500\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -321,7 +321,6 @@ msgid "Integrated"
 msgstr "Integrado"
 
 #: data/ui/autogain.glade:349
-#, fuzzy
 msgid "Weights"
 msgstr "Fuerza"
 
@@ -403,7 +402,6 @@ msgid "Release"
 msgstr "Liberar"
 
 #: data/ui/limiter.glade:250 data/ui/compressor.glade:570
-#, fuzzy
 msgid "Lookahead"
 msgstr "Atenuación"
 
@@ -1363,7 +1361,6 @@ msgid "Square"
 msgstr "Cuadrado"
 
 #: data/ui/calibration_signals.glade:110
-#, fuzzy
 msgid "Saw"
 msgstr "Sierra"
 
