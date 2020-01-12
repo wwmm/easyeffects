@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-28 14:03-0300\n"
-"PO-Revision-Date: 2020-01-07 20:42+0100\n"
+"PO-Revision-Date: 2020-01-12 17:49+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -378,7 +378,7 @@ msgstr "Umfang"
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:395
 msgid "Limiter"
-msgstr "Begrenzer"
+msgstr "Limiter"
 
 #: data/ui/limiter.glade:149
 msgid "Input Gain"
@@ -621,19 +621,19 @@ msgstr "Kompression"
 
 #: data/ui/multiband_compressor.glade:796 data/ui/multiband_gate.glade:849
 msgid "Sub Band"
-msgstr "Unterer Bereich"
+msgstr "Subband"
 
 #: data/ui/multiband_compressor.glade:1173 data/ui/multiband_gate.glade:1258
 msgid "Low Band"
-msgstr "Niedriger Bereich"
+msgstr "Tiefband"
 
 #: data/ui/multiband_compressor.glade:1551 data/ui/multiband_gate.glade:1668
 msgid "Mid Band"
-msgstr "Mittlerer Bereich"
+msgstr "Mittelband"
 
 #: data/ui/multiband_compressor.glade:1929 data/ui/multiband_gate.glade:2078
 msgid "High Band"
-msgstr "Hoher Bereich"
+msgstr "Hochband"
 
 #: data/ui/filter.glade:31
 msgid "Filter"
@@ -758,7 +758,7 @@ msgstr "Aus"
 
 #: data/ui/equalizer_band.glade:61
 msgid "Bell"
-msgstr "Klingel"
+msgstr "Glocke"
 
 #: data/ui/equalizer_band.glade:62
 msgid "High Pass"
@@ -778,7 +778,7 @@ msgstr "Tiefen-Kuhschwanzfilter"
 
 #: data/ui/equalizer_band.glade:66
 msgid "Notch"
-msgstr "Ver­tie­fung"
+msgstr "Badewannenfilter"
 
 #: data/ui/equalizer_band.glade:91
 msgid "RLC (BT)"
@@ -950,7 +950,7 @@ msgstr "Oberwellen mischen"
 #: data/ui/bass_enhancer.glade:254 data/ui/bass_enhancer.glade:386
 #: data/ui/exciter.glade:258 data/ui/exciter.glade:390
 msgid "Harmonics"
-msgstr "Harmonik"
+msgstr "Obertöne"
 
 #: data/ui/bass_enhancer.glade:266 data/ui/exciter.glade:271
 msgid "Scope"
@@ -1066,7 +1066,7 @@ msgstr "Speisung"
 
 #: data/ui/crossfeed.glade:392
 msgid "Crossfeed"
-msgstr "Quereinspeisung"
+msgstr "Crossfeed"
 
 #: data/ui/maximizer.glade:29
 msgid "Maximizer"
@@ -1074,7 +1074,7 @@ msgstr "Maximierer"
 
 #: data/ui/maximizer.glade:269 data/ui/gate.glade:190
 msgid "Gain Reduction"
-msgstr "Verstärkungsreduzierung"
+msgstr "Amplitudenreduktion"
 
 #: data/ui/loudness.glade:196
 msgid "Link"
@@ -1218,7 +1218,7 @@ msgstr "Schneller"
 
 #: data/ui/pitch.glade:156
 msgid "Preserve Formant"
-msgstr "Formanz erhalten"
+msgstr "Formant erhalten"
 
 #: data/ui/pitch.glade:180
 msgid "Cents"
