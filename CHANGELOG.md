@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [4.7.1]
+
+### Added
+
+- Improved Italian and German translations.
+- Spanish translations for Colombia, Mexico and Venezuela were added.
+
+### Fixed
+
+- Global bypass state was not being applied when PulseEffects was restarted. This bug was fixed.
+
 ## [4.7.0]
 
 ### Added

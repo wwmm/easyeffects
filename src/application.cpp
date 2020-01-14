@@ -188,21 +188,9 @@ void Application::on_startup() {
     pm->blacklist_out = settings->get_string_array("blacklist-out");
   });
 
-  settings->signal_changed("bypass").connect([=](auto key) {
-    auto state = settings->get_boolean("bypass");
+  settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });
 
-    if (state) {
-      util::info(log_tag + "enabling global bypass");
-
-      sie->do_bypass(true);
-      soe->do_bypass(true);
-    } else {
-      util::info(log_tag + "disabling global bypass");
-
-      sie->do_bypass(false);
-      soe->do_bypass(false);
-    }
-  });
+  update_bypass_state("bypass");
 
   if (running_as_service) {
     pm->find_sink_inputs();
@@ -336,4 +324,20 @@ void Application::create_actions() {
 
   set_accel_for_action("app.help", "F1");
   set_accel_for_action("app.quit", "<Ctrl>Q");
+}
+
+void Application::update_bypass_state(const std::string& key) {
+  auto state = settings->get_boolean(key);
+
+  if (state) {
+    util::info(log_tag + "enabling global bypass");
+
+    sie->do_bypass(true);
+    soe->do_bypass(true);
+  } else {
+    util::info(log_tag + "disabling global bypass");
+
+    sie->do_bypass(false);
+    soe->do_bypass(false);
+  }
 }
