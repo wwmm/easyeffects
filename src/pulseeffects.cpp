@@ -16,17 +16,21 @@ bool sigterm(void* data) {
 }
 
 int main(int argc, char* argv[]) {
-  // Init internationalization support before anything else
+  try {
+    // Init internationalization support before anything else
 
-  bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
-  bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-  textdomain(GETTEXT_PACKAGE);
+    bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
+    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
+    textdomain(GETTEXT_PACKAGE);
 
-  auto app = Application::create();
+    auto app = Application::create();
 
-  g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
+    g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
 
-  auto status = app->run(argc, argv);
+    return app->run(argc, argv);
+  } catch (std::exception& exc) {
+    std::cerr << exc.what() << std::endl;
 
-  return status;
+    exit(EXIT_FAILURE);
+  }
 }
