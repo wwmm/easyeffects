@@ -19,9 +19,15 @@ int main(int argc, char* argv[]) {
   try {
     // Init internationalization support before anything else
 
-    bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
+    auto bindtext_output = bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
+
+    if (bindtext_output) {
+      util::debug("main: locale directory: " + std::string(bindtext_output));
+    } else if (errno == ENOMEM) {
+      util::warning("main: bindtextdomain: Not enough memory available!");
+    }
 
     auto app = Application::create();
 
