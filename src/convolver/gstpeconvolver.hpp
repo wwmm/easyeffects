@@ -15,10 +15,7 @@ G_BEGIN_DECLS
 #define GST_IS_PECONVOLVER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PECONVOLVER))
 #define GST_IS_PECONVOLVER_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PECONVOLVER))
 
-typedef struct _GstPeconvolver GstPeconvolver;
-typedef struct _GstPeconvolverClass GstPeconvolverClass;
-
-struct _GstPeconvolver {
+struct GstPeconvolver {
   GstAudioFilter base_peconvolver;
 
   /* properties */
@@ -43,7 +40,7 @@ struct _GstPeconvolver {
   std::vector<std::future<void>> futures;
 };
 
-struct _GstPeconvolverClass {
+struct GstPeconvolverClass {
   GstAudioFilterClass base_peconvolver_class;
 };
 

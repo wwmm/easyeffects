@@ -13,10 +13,7 @@ G_BEGIN_DECLS
 #define GST_IS_PEAUTOGAIN(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PEAUTOGAIN))
 #define GST_IS_PEAUTOGAIN_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PEAUTOGAIN))
 
-typedef struct _GstPeautogain GstPeautogain;
-typedef struct _GstPeautogainClass GstPeautogainClass;
-
-struct _GstPeautogain {
+struct GstPeautogain {
   GstAudioFilter base_peautogain;
 
   /* properties */
@@ -47,7 +44,7 @@ struct _GstPeautogain {
   std::mutex lock_guard_ebu;
 };
 
-struct _GstPeautogainClass {
+struct GstPeautogainClass {
   GstAudioFilterClass base_peautogain_class;
 };
 

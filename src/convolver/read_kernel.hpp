@@ -60,7 +60,7 @@ void ms_stereo(float width, float* left, float* right, int length) {
   }
 }
 
-bool read_file(_GstPeconvolver* peconvolver) {
+bool read_file(GstPeconvolver* peconvolver) {
   if (peconvolver->kernel_path == nullptr) {
     util::debug(log_tag + "irs file path is null");
 

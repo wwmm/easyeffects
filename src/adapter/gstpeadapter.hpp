@@ -12,15 +12,12 @@ G_BEGIN_DECLS
 #define GST_IS_PEADAPTER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PEADAPTER))
 #define GST_IS_PEADAPTER_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PEADAPTER))
 
-typedef struct _GstPeadapter GstPeadapter;
-typedef struct _GstPeadapterClass GstPeadapterClass;
-
 /**
  * GstPeadapter:
  *
  * The private peadapter structure
  */
-struct _GstPeadapter {
+struct GstPeadapter {
   GstElement parent;
 
   /* properties */
@@ -39,7 +36,7 @@ struct _GstPeadapter {
   GstPad* sinkpad = nullptr;
 };
 
-struct _GstPeadapterClass {
+struct GstPeadapterClass {
   GstElementClass parent_class;
 };
 
