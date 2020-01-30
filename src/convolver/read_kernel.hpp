@@ -14,22 +14,22 @@ namespace rk {
 
 std::string log_tag = "convolver: ";
 
-void autogain(float* left, float* right, int length) {
+void autogain(std::vector<float>& left, std::vector<float>& right) {
   float power = 0.0f, peak = 0.0f;
 
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     peak = (left[n] > peak) ? left[n] : peak;
     peak = (right[n] > peak) ? right[n] : peak;
   }
 
   // normalize
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     left[n] /= peak;
     right[n] /= peak;
   }
 
   // find average power
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     power += left[n] * left[n] + right[n] * right[n];
   }
 
@@ -39,7 +39,7 @@ void autogain(float* left, float* right, int length) {
 
   util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     left[n] *= autogain;
     right[n] *= autogain;
   }
@@ -48,11 +48,11 @@ void autogain(float* left, float* right, int length) {
 /* Mid-Side based Stereo width effect
    taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 */
-void ms_stereo(float width, float* left, float* right, int length) {
+void ms_stereo(float width, std::vector<float>& left, std::vector<float>& right) {
   float w = width / 100.0f;
   float x = (1.0 - w) / (1.0 + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
 
-  for (int i = 0; i < length; i++) {
+  for (uint i = 0; i < left.size(); i++) {
     float L = left[i], R = right[i];
 
     left[i] = L + x * R;
@@ -110,8 +110,8 @@ bool read_file(GstPeconvolver* peconvolver) {
 
     std::vector<float> kernel(total_frames_out);
 
-    peconvolver->kernel_L = new float[frames_out];
-    peconvolver->kernel_R = new float[frames_out];
+    peconvolver->kernel_L.resize(frames_out);
+    peconvolver->kernel_R.resize(frames_out);
     peconvolver->kernel_n_frames = frames_out;
 
     // resample if necessary
@@ -162,9 +162,9 @@ bool read_file(GstPeconvolver* peconvolver) {
       peconvolver->kernel_R[n] = kernel[2 * n + 1];
     }
 
-    autogain(peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
+    autogain(peconvolver->kernel_L, peconvolver->kernel_R);
 
-    ms_stereo(peconvolver->ir_width, peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
+    ms_stereo(peconvolver->ir_width, peconvolver->kernel_L, peconvolver->kernel_R);
 
     return true;
   } else {

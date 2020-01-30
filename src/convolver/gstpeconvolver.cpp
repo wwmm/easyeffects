@@ -415,10 +415,6 @@ static void gst_peconvolver_finish_convolver(GstPeconvolver* peconvolver) {
       }
     }
 
-    delete[] peconvolver->kernel_L;
-
-    delete[] peconvolver->kernel_R;
-
     peconvolver->futures.clear();
   }
 }
