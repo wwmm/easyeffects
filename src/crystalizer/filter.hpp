@@ -30,7 +30,7 @@ class Filter {
   std::string log_tag;
 
   int kernel_size, nsamples;
-  float* kernel = nullptr;
+  std::vector<float> kernel;
 
   Convproc* conv = nullptr;
 
@@ -45,7 +45,7 @@ class Filter {
 
   void init_zita(const int& num_samples);
 
-  void direct_conv(float*& a, float*& b, float*& c, const int& N);
+  void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
 
 #endif
