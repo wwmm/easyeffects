@@ -84,15 +84,15 @@ bool read_file(GstPeconvolver* peconvolver) {
 
   if (file.channels() == 2) {
     bool resample = false;
-    float resample_ratio = 1.0f, *buffer, *kernel;
+    float resample_ratio = 1.0f;
     int total_frames_in, total_frames_out, frames_in, frames_out;
 
     frames_in = file.frames();
     total_frames_in = file.channels() * frames_in;
 
-    buffer = new float[total_frames_in];
+    std::vector<float> buffer(total_frames_in);
 
-    file.readf(buffer, frames_in);
+    file.readf(buffer.data(), frames_in);
 
     if (file.samplerate() != peconvolver->rate) {
       resample = true;
@@ -108,7 +108,8 @@ bool read_file(GstPeconvolver* peconvolver) {
 
     // allocate arrays
 
-    kernel = new float[total_frames_out];
+    std::vector<float> kernel(total_frames_out);
+
     peconvolver->kernel_L = new float[frames_out];
     peconvolver->kernel_R = new float[frames_out];
     peconvolver->kernel_n_frames = frames_out;
@@ -130,13 +131,13 @@ bool read_file(GstPeconvolver* peconvolver) {
       src_data.input_frames = frames_in;
 
       // A pointer to the input data samples
-      src_data.data_in = buffer;
+      src_data.data_in = buffer.data();
 
       // Maximum number of frames pointer to by data_out
       src_data.output_frames = frames_out;
 
       // A pointer to the output data samples
-      src_data.data_out = kernel;
+      src_data.data_out = kernel.data();
 
       // Equal to output_sample_rate / input_sample_rate
       src_data.src_ratio = resample_ratio;
@@ -152,7 +153,7 @@ bool read_file(GstPeconvolver* peconvolver) {
     } else {
       util::debug(log_tag + "irs file does not need resampling");
 
-      std::memcpy(kernel, buffer, total_frames_in * sizeof(float));
+      std::memcpy(kernel.data(), buffer.data(), total_frames_in * sizeof(float));
     }
 
     // deinterleave
@@ -164,9 +165,6 @@ bool read_file(GstPeconvolver* peconvolver) {
     autogain(peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
 
     ms_stereo(peconvolver->ir_width, peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
-
-    delete[] buffer;
-    delete[] kernel;
 
     return true;
   } else {
