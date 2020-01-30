@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- The convolver plugin now accepts the wav extension in the impulse files.
+- Checking exceptions in the main function.
+- Headers deprecated in Boost 1.72 were replaced.
+
 ## [4.7.1]
 
 ### Added

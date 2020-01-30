@@ -151,13 +151,13 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
       return;
     }
 
-    if (p.extension().string() == ".irs") {
-      auto out_path = irs_dir / p.filename();
+    auto out_path = irs_dir / p.filename();
 
-      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+    out_path.replace_extension(".irs");
 
-      util::debug(log_tag + "imported irs file to: " + out_path.string());
-    }
+    boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+
+    util::debug(log_tag + "imported irs file to: " + out_path.string());
   } else {
     util::warning(log_tag + p.string() + " is not a file!");
   }
@@ -250,6 +250,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
   gtk_file_filter_set_name(filter, _("Impulse Response"));
   gtk_file_filter_add_pattern(filter, "*.irs");
+  gtk_file_filter_add_pattern(filter, "*.wav");
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
 
   res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(dialog));
