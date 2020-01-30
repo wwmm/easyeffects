@@ -27,6 +27,8 @@ int main(int argc, char* argv[]) {
       util::debug("main: locale directory: " + std::string(bindtext_output));
     } else if (errno == ENOMEM) {
       util::warning("main: bindtextdomain: Not enough memory available!");
+
+      return errno;
     }
 
     auto app = Application::create();
@@ -34,9 +36,9 @@ int main(int argc, char* argv[]) {
     g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
 
     return app->run(argc, argv);
-  } catch (std::exception& exc) {
-    std::cerr << exc.what() << std::endl;
+  } catch (const std::exception& e) {
+    std::cerr << e.what() << std::endl;
 
-    exit(EXIT_FAILURE);
+    return EXIT_FAILURE;
   }
 }
