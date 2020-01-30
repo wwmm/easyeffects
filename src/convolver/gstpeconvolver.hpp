@@ -27,9 +27,9 @@ struct GstPeconvolver {
 
   bool ready;
   int rate, kernel_n_frames, irs_fail_count;
-  int bpf;                    // bytes per frame : channels * bps
-  float* kernel_L = nullptr;  // left channel buffer
-  float* kernel_R = nullptr;  // right channel buffer
+  int bpf;                      // bytes per frame : channels * bps
+  std::vector<float> kernel_L;  // left channel buffer
+  std::vector<float> kernel_R;  // right channel buffer
 
   std::string log_tag;
 

@@ -338,14 +338,14 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
         util::debug(peconvolver->log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
       }
 
-      ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L, 0, peconvolver->kernel_n_frames);
+      ret = peconvolver->conv->impdata_create(0, 0, 1, peconvolver->kernel_L.data(), 0, peconvolver->kernel_n_frames);
 
       if (ret != 0) {
         failed = true;
         util::debug(peconvolver->log_tag + "left impdata_create failed: " + std::to_string(ret));
       }
 
-      ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R, 0, peconvolver->kernel_n_frames);
+      ret = peconvolver->conv->impdata_create(1, 1, 1, peconvolver->kernel_R.data(), 0, peconvolver->kernel_n_frames);
 
       if (ret != 0) {
         failed = true;
