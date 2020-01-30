@@ -2,7 +2,7 @@
 #include <glib-object.h>
 #include <gobject/gvaluecollector.h>
 #include <sys/resource.h>
-#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include "config.h"
 #include "util.hpp"
 
@@ -121,8 +121,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
     }
 
     try {
-      boost::math::cubic_b_spline<float> spline(pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(), pb->spline_f0,
-                                                pb->spline_df);
+      boost::math::interpolators::cardinal_cubic_b_spline<float> spline(
+          pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(), pb->spline_f0, pb->spline_df);
 
       for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
         pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);

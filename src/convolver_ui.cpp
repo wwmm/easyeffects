@@ -2,7 +2,7 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
-#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <sndfile.hh>
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
@@ -340,9 +340,9 @@ void ConvolverUi::get_irs_info() {
   */
 
   try {
-    boost::math::cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0f, dt);
 
-    boost::math::cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0f, dt);
 
     left_mag.resize(max_points);
     right_mag.resize(max_points);
@@ -468,9 +468,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   try {
     float dF = 0.5f * (rate / left_spectrum.size());
 
-    boost::math::cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(), 0.0f, dF);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(),
+                                                                        0.0f, dF);
 
-    boost::math::cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(), 0.0f, dF);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(),
+                                                                        0.0f, dF);
 
     left_spectrum.resize(max_points);
     right_spectrum.resize(max_points);
