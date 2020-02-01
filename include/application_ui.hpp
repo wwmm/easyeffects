@@ -22,8 +22,11 @@
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
   ApplicationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
-
-  virtual ~ApplicationUi();
+  ApplicationUi(const ApplicationUi&) = delete;
+  auto operator=(const ApplicationUi&) -> ApplicationUi& = delete;
+  ApplicationUi(const ApplicationUi&&) = delete;
+  auto operator=(const ApplicationUi &&) -> ApplicationUi& = delete;
+  ~ApplicationUi() override;
 
   static auto create(Application* app) -> ApplicationUi*;
 
@@ -56,15 +59,15 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   int sie_latency = 0, soe_latency = 0;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void update_headerbar_subtitle(const int& index);
 
-  void apply_css_style(std::string css_file_name);
+  static void apply_css_style(std::string css_file_name);
 
   void on_stack_visible_child_changed();
 
