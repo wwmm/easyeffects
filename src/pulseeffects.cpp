@@ -23,7 +23,7 @@ auto main(int argc, char* argv[]) -> int {
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 
-    if (bindtext_output) {
+    if (bindtext_output != nullptr) {
       util::debug("main: locale directory: " + std::string(bindtext_output));
     } else if (errno == ENOMEM) {
       util::warning("main: bindtextdomain: Not enough memory available!");

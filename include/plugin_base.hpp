@@ -11,6 +11,10 @@
 class PluginBase {
  public:
   PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema);
+  PluginBase(const PluginBase&) = delete;
+  auto operator=(const PluginBase&) -> PluginBase& = delete;
+  PluginBase(const PluginBase&&) = delete;
+  auto operator=(const PluginBase &&) -> PluginBase& = delete;
   virtual ~PluginBase();
 
   std::string log_tag, name;
