@@ -90,8 +90,8 @@ class PulseManager {
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
-  std::shared_ptr<mySinkInfo> get_sink_info(std::string name);
-  std::shared_ptr<mySourceInfo> get_source_info(std::string name);
+  auto get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo>;
+  auto get_source_info(std::string name) -> std::shared_ptr<mySourceInfo>;
 
   std::vector<std::string> blacklist_in;   // for input effects
   std::vector<std::string> blacklist_out;  // for output effects
@@ -157,17 +157,17 @@ class PulseManager {
 
   void get_server_info();
 
-  std::shared_ptr<mySinkInfo> get_default_sink_info();
+  auto get_default_sink_info() -> std::shared_ptr<mySinkInfo>;
 
-  std::shared_ptr<mySourceInfo> get_default_source_info();
+  auto get_default_source_info() -> std::shared_ptr<mySourceInfo>;
 
-  std::shared_ptr<mySinkInfo> load_sink(std::string name, std::string description, uint rate);
+  auto load_sink(std::string name, std::string description, uint rate) -> std::shared_ptr<mySinkInfo>;
 
   void load_apps_sink();
 
   void load_mic_sink();
 
-  bool load_module(const std::string& name, const std::string& argument);
+  auto load_module(const std::string& name, const std::string& argument) -> bool;
 
   void unload_module(uint idx);
 
@@ -185,16 +185,16 @@ class PulseManager {
 
   void print_app_info(std::shared_ptr<AppInfo> info);
 
-  bool app_is_connected(const pa_sink_input_info* info);
+  auto app_is_connected(const pa_sink_input_info* info) -> bool;
 
-  bool app_is_connected(const pa_source_output_info* info);
+  auto app_is_connected(const pa_source_output_info* info) -> bool;
 
-  uint get_latency(const pa_sink_input_info* info) { return info->sink_usec; }
+  static auto get_latency(const pa_sink_input_info* info) -> uint { return info->sink_usec; }
 
-  uint get_latency(const pa_source_output_info* info) { return info->source_usec; }
+  static auto get_latency(const pa_source_output_info* info) -> uint { return info->source_usec; }
 
   template <typename T>
-  std::shared_ptr<AppInfo> parse_app_info(const T& info) {
+  auto parse_app_info(const T& info) -> std::shared_ptr<AppInfo> {
     std::string app_name, media_name, media_role, app_id;
     auto ai = std::make_shared<AppInfo>();
     bool forbidden_app = false;

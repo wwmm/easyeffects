@@ -375,7 +375,7 @@ void PulseManager::get_server_info() {
   pa_threaded_mainloop_unlock(main_loop);
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
+auto PulseManager::get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo> {
   auto si = std::make_shared<mySinkInfo>();
 
   struct Data {
@@ -438,7 +438,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
   }
 }
 
-std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
+auto PulseManager::get_source_info(std::string name) -> std::shared_ptr<mySourceInfo> {
   auto si = std::make_shared<mySourceInfo>();
 
   struct Data {
@@ -498,7 +498,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
   }
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
+auto PulseManager::get_default_sink_info() -> std::shared_ptr<mySinkInfo> {
   auto info = get_sink_info(server_info.default_sink_name);
 
   if (info != nullptr) {
@@ -513,7 +513,7 @@ std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
   }
 }
 
-std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
+auto PulseManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
   auto info = get_source_info(server_info.default_source_name);
 
   if (info != nullptr) {
@@ -528,7 +528,7 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
   }
 }
 
-bool PulseManager::load_module(const std::string& name, const std::string& argument) {
+auto PulseManager::load_module(const std::string& name, const std::string& argument) -> bool {
   struct Data {
     bool status;
     PulseManager* pm;
@@ -566,7 +566,7 @@ bool PulseManager::load_module(const std::string& name, const std::string& argum
   return data.status;
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name, std::string description, uint rate) {
+auto PulseManager::load_sink(std::string name, std::string description, uint rate) -> std::shared_ptr<mySinkInfo> {
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
@@ -1397,7 +1397,7 @@ void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
   std::cout << "wants to play: " << info->wants_to_play << std::endl;
 }
 
-bool PulseManager::app_is_connected(const pa_sink_input_info* info) {
+auto PulseManager::app_is_connected(const pa_sink_input_info* info) -> bool {
   if (info->sink == apps_sink_info->index) {
     return true;
   } else {
@@ -1405,7 +1405,7 @@ bool PulseManager::app_is_connected(const pa_sink_input_info* info) {
   }
 }
 
-bool PulseManager::app_is_connected(const pa_source_output_info* info) {
+auto PulseManager::app_is_connected(const pa_source_output_info* info) -> bool {
   if (info->source == mic_sink_info->monitor_source) {
     return true;
   } else {
