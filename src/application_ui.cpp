@@ -155,6 +155,7 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream null_sink_rate;
   std::ostringstream current_dev_rate;
+  const float khz_factor = 0.001F;
 
   null_sink_rate.precision(1);
   current_dev_rate.precision(1);
@@ -166,11 +167,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
     headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate / 1000.0F << "kHz";
+    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
 
     auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-    current_dev_rate << std::fixed << sink->rate / 1000.0F << "kHz";
+    current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
     headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
                              null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
@@ -183,11 +184,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
     headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate / 1000.0F << "kHz";
+    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
 
     auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
 
-    current_dev_rate << std::fixed << source->rate / 1000.0F << "kHz";
+    current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
 
     headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
                              null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
