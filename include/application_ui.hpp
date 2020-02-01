@@ -25,7 +25,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   virtual ~ApplicationUi();
 
-  static ApplicationUi* create(Application* app);
+  static auto create(Application* app) -> ApplicationUi*;
 
  private:
   std::string log_tag = "application_ui: ";

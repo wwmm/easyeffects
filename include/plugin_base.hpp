@@ -24,7 +24,7 @@ class PluginBase {
  protected:
   GSettings* settings = nullptr;
 
-  bool is_installed(GstElement* e);
+  auto is_installed(GstElement* e) -> bool;
 };
 
 #endif

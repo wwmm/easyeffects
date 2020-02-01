@@ -3,7 +3,7 @@
 #include "application_ui.hpp"
 #include "config.h"
 
-bool sigterm(void* data) {
+auto sigterm(void* data) -> bool {
   auto app = static_cast<Application*>(data);
 
   for (auto w : app->get_windows()) {
@@ -15,7 +15,7 @@ bool sigterm(void* data) {
   return G_SOURCE_REMOVE;
 }
 
-int main(int argc, char* argv[]) {
+auto main(int argc, char* argv[]) -> int {
   try {
     // Init internationalization support before anything else
 

@@ -33,11 +33,11 @@ Application::~Application() {
   util::debug(log_tag + " destroyed");
 }
 
-Glib::RefPtr<Application> Application::create() {
+auto Application::create() -> Glib::RefPtr<Application> {
   return Glib::RefPtr<Application>(new Application());
 }
 
-int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
+auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
@@ -230,7 +230,7 @@ void Application::on_activate() {
   }
 }
 
-int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) {
+auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int {
   if (!options) {
     std::cerr << G_STRFUNC << ": options is null." << std::endl;
   }

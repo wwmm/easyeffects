@@ -53,13 +53,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // signals
 
-  connections.push_back(app->pm->new_default_sink.connect([&](auto name) {
+  connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "sink_inputs") {
       update_headerbar_subtitle(0);
     }
   }));
 
-  connections.push_back(app->pm->new_default_source.connect([&](auto name) {
+  connections.emplace_back(app->pm->new_default_source.connect([&](auto name) {
     if (stack->get_visible_child_name() == "source_outputs") {
       update_headerbar_subtitle(1);
     }
@@ -78,7 +78,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // headerbar info
 
-  connections.push_back(app->sie->new_latency.connect([=](int latency) {
+  connections.emplace_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;
 
     if (stack->get_visible_child_name() == "sink_inputs") {
@@ -90,7 +90,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->sie->get_latency();
   }
 
-  connections.push_back(app->soe->new_latency.connect([=](int latency) {
+  connections.emplace_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
 
     if (stack->get_visible_child_name() == "source_outputs") {
@@ -131,7 +131,7 @@ ApplicationUi::~ApplicationUi() {
   util::debug(log_tag + "destroyed");
 }
 
-ApplicationUi* ApplicationUi::create(Application* app_this) {
+auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/application.glade");
 
   ApplicationUi* window = nullptr;
