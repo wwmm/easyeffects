@@ -195,7 +195,10 @@ class PulseManager {
 
   template <typename T>
   auto parse_app_info(const T& info) -> std::shared_ptr<AppInfo> {
-    std::string app_name, media_name, media_role, app_id;
+    std::string app_name;
+    std::string media_name;
+    std::string media_role;
+    std::string app_id;
     auto ai = std::make_shared<AppInfo>();
     bool forbidden_app = false;
 
@@ -217,7 +220,7 @@ class PulseManager {
     if (prop != nullptr) {
       media_name = prop;
 
-      if (app_name == "") {
+      if (app_name.empty()) {
         app_name = media_name;
       }
 
@@ -297,7 +300,7 @@ class PulseManager {
     ai->buffer = info->buffer_usec;
     ai->latency = get_latency(info);
     ai->corked = info->corked;
-    ai->wants_to_play = (ai->connected && !ai->corked) ? true : false;
+    ai->wants_to_play = ai->connected && !ai->corked;
 
     return ai;
   }
