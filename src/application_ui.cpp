@@ -3,7 +3,9 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
+#include <memory>
 #include "blacklist_settings_ui.hpp"
+#include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "spectrum_settings_ui.hpp"
@@ -211,14 +213,12 @@ void ApplicationUi::on_stack_visible_child_changed() {
 }
 
 void ApplicationUi::on_calibration_button_clicked() {
-  auto calibration_ui = CalibrationUi::create();
+  // auto calibration_ui = std::make_shared<CalibrationUi>(CalibrationUi::create());
+  std::shared_ptr<CalibrationUi> calibration_ui(CalibrationUi::create());
 
   auto c = app->pm->new_default_source.connect([=](auto name) { calibration_ui->set_source_monitor_name(name); });
 
-  calibration_ui->signal_hide().connect([calibration_ui, c]() {
-    c->disconnect();
-    delete calibration_ui;
-  });
+  calibration_ui->signal_hide().connect([=]() { c->disconnect(); });
 
   calibration_ui->show_all();
 }
