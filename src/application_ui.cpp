@@ -141,7 +141,7 @@ auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
   return window;
 }
 
-void ApplicationUi::apply_css_style(std::string css_file_name) {
+void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto provider = Gtk::CssProvider::create();
 
   provider->load_from_resource("/com/github/wwmm/pulseeffects/ui/" + css_file_name);
@@ -153,7 +153,8 @@ void ApplicationUi::apply_css_style(std::string css_file_name) {
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
-  std::ostringstream null_sink_rate, current_dev_rate;
+  std::ostringstream null_sink_rate;
+  std::ostringstream current_dev_rate;
 
   null_sink_rate.precision(1);
   current_dev_rate.precision(1);

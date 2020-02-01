@@ -37,25 +37,25 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Button *calibration_button, *help_button;
-  Gtk::ToggleButton* bypass_button;
-  Gtk::Stack *stack, *stack_menu_settings;
-  Gtk::Label* headerbar_info;
-  Gtk::Popover* presets_menu;
-  Gtk::MenuButton* presets_menu_button;
-  Gtk::Label* presets_menu_label;
+  Gtk::Button *calibration_button = nullptr, *help_button = nullptr;
+  Gtk::ToggleButton* bypass_button = nullptr;
+  Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
+  Gtk::Label* headerbar_info = nullptr;
+  Gtk::Popover* presets_menu = nullptr;
+  Gtk::MenuButton* presets_menu_button = nullptr;
+  Gtk::Label* presets_menu_label = nullptr;
 
-  Gtk::Grid* subtitle_grid;
-  Gtk::HeaderBar* headerbar;
-  Gtk::Image *headerbar_icon1, *headerbar_icon2;
+  Gtk::Grid* subtitle_grid = nullptr;
+  Gtk::HeaderBar* headerbar = nullptr;
+  Gtk::Image *headerbar_icon1 = nullptr, *headerbar_icon2 = nullptr;
 
   std::vector<sigc::connection> connections;
 
-  PresetsMenuUi* presets_menu_ui;
+  PresetsMenuUi* presets_menu_ui = nullptr;
 
-  SinkInputEffectsUi* sie_ui;
-  SourceOutputEffectsUi* soe_ui;
-  PulseInfoUi* pulse_info_ui;
+  SinkInputEffectsUi* sie_ui = nullptr;
+  SourceOutputEffectsUi* soe_ui = nullptr;
+  PulseInfoUi* pulse_info_ui = nullptr;
 
   int sie_latency = 0, soe_latency = 0;
 
@@ -67,7 +67,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   void update_headerbar_subtitle(const int& index);
 
-  static void apply_css_style(std::string css_file_name);
+  static void apply_css_style(const std::string& css_file_name);
 
   void on_stack_visible_child_changed();
 
