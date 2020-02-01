@@ -1,5 +1,5 @@
-#ifndef __GST_PEADAPTER_H__
-#define __GST_PEADAPTER_H__
+#ifndef GST_PEADAPTER_HPP
+#define GST_PEADAPTER_HPP
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
@@ -44,4 +44,4 @@ G_GNUC_INTERNAL GType gst_peadapter_get_type(void);
 
 G_END_DECLS
 
-#endif /* __GST_PEADAPTER_H__ */
+#endif

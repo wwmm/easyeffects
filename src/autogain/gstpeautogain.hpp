@@ -1,5 +1,5 @@
-#ifndef _GST_PEAUTOGAIN_H_
-#define _GST_PEAUTOGAIN_H_
+#ifndef GST_PEAUTOGAIN_H
+#define GST_PEAUTOGAIN_H
 
 #include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>

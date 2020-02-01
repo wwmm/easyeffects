@@ -1,5 +1,5 @@
-#ifndef _GST_PECONVOLVER_H_
-#define _GST_PECONVOLVER_H_
+#ifndef GST_PECONVOLVER_HPP
+#define GST_PECONVOLVER_HPP
 
 #include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
