@@ -73,17 +73,17 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
     util::debug(pm->log_tag + "protocol version: " + protocol);
 
     pm->context_ready = true;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   } else if (state == PA_CONTEXT_FAILED) {
     util::debug(pm->log_tag + "failed to connect context");
 
     pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   } else if (state == PA_CONTEXT_TERMINATED) {
     util::debug(pm->log_tag + "context was terminated");
 
     pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   }
 }
 
@@ -975,7 +975,7 @@ void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint
         },
         &data);
 
-    if (o) {
+    if (o != nullptr) {
       while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
       }
@@ -1003,7 +1003,7 @@ void PulseManager::set_sink_input_mute(const std::string& name, uint idx, bool s
   pa_threaded_mainloop_lock(main_loop);
 
   auto o = pa_context_set_sink_input_mute(
-      context, idx, state,
+      context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
@@ -1066,7 +1066,7 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
         },
         &data);
 
-    if (o) {
+    if (o != nullptr) {
       while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
       }
@@ -1094,7 +1094,7 @@ void PulseManager::set_source_output_mute(const std::string& name, uint idx, boo
   pa_threaded_mainloop_lock(main_loop);
 
   auto o = pa_context_set_source_output_mute(
-      context, idx, state,
+      context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
