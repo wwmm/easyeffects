@@ -213,7 +213,6 @@ void ApplicationUi::on_stack_visible_child_changed() {
 }
 
 void ApplicationUi::on_calibration_button_clicked() {
-  // auto calibration_ui = std::make_shared<CalibrationUi>(CalibrationUi::create());
   std::shared_ptr<CalibrationUi> calibration_ui(CalibrationUi::create());
 
   auto c = app->pm->new_default_source.connect([=](auto name) { calibration_ui->set_source_monitor_name(name); });

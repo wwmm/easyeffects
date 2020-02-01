@@ -78,6 +78,10 @@ class ParseAppInfo;
 class PulseManager {
  public:
   PulseManager();
+  PulseManager(const PulseManager&) = delete;
+  auto operator=(const PulseManager&) -> PulseManager& = delete;
+  PulseManager(const PulseManager&&) = delete;
+  auto operator=(const PulseManager &&) -> PulseManager& = delete;
   ~PulseManager();
 
   pa_threaded_mainloop* main_loop = nullptr;
@@ -261,7 +265,8 @@ class PulseManager {
       prop = pa_proplist_gets(info->proplist, "media.icon_name");
 
       if (prop != nullptr) {
-        if (prop == std::string("audio-card-bluetooth")) {  // there is no GTK icon with this name given by Pulseaudio =/
+        if (prop ==
+            std::string("audio-card-bluetooth")) {  // there is no GTK icon with this name given by Pulseaudio =/
         } else {
           icon_name = "bluetooth-symbolic";
         }
