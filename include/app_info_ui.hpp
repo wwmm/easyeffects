@@ -14,7 +14,7 @@ class AppInfoUi : public Gtk::Grid {
  public:
   AppInfoUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
-            const std::shared_ptr<AppInfo>& info,
+            std::shared_ptr<AppInfo> info,
             PulseManager* pulse_manager);
   AppInfoUi(const AppInfoUi&) = delete;
   auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
