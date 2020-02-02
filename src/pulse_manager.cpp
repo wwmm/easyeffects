@@ -635,12 +635,10 @@ void PulseManager::find_sink_inputs() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->new_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -666,12 +664,10 @@ void PulseManager::find_source_outputs() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->new_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -697,11 +693,7 @@ void PulseManager::find_sinks() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           std::string s1 = "PulseEffects_apps";
           std::string s2 = "PulseEffects_mic";
 
@@ -716,6 +708,8 @@ void PulseManager::find_sinks() {
 
             Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -741,11 +735,7 @@ void PulseManager::find_sources() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           std::string s1 = "PulseEffects_apps.monitor";
           std::string s2 = "PulseEffects_mic.monitor";
 
@@ -760,6 +750,8 @@ void PulseManager::find_sources() {
 
             Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1127,12 +1119,10 @@ void PulseManager::get_sink_input_info(uint idx) {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->changed_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1158,11 +1148,7 @@ void PulseManager::get_modules_info() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           auto mi = std::make_shared<myModuleInfo>();
 
           if (info->name) {
@@ -1177,6 +1163,8 @@ void PulseManager::get_modules_info() {
 
             Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->module_info.emit(mi); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1202,11 +1190,7 @@ void PulseManager::get_clients_info() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           auto mi = std::make_shared<myClientInfo>();
 
           if (info->name) {
@@ -1221,6 +1205,8 @@ void PulseManager::get_clients_info() {
 
             Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->client_info.emit(mi); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
