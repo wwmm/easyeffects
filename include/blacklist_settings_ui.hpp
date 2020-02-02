@@ -14,8 +14,11 @@
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
   BlacklistSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-
-  virtual ~BlacklistSettingsUi();
+  BlacklistSettingsUi(const BlacklistSettingsUi&) = delete;
+  auto operator=(const BlacklistSettingsUi&) -> BlacklistSettingsUi& = delete;
+  BlacklistSettingsUi(const BlacklistSettingsUi&&) = delete;
+  auto operator=(const BlacklistSettingsUi &&) -> BlacklistSettingsUi& = delete;
+  ~BlacklistSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack);
 
