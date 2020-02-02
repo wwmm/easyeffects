@@ -120,7 +120,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->sink_changed.connect([&](std::shared_ptr<mySinkInfo> info) {
+  pm->sink_changed.connect([&](const std::shared_ptr<mySinkInfo>& info) {
     if (info->name == pm->server_info.default_sink_name) {
       Glib::signal_timeout().connect_seconds_once(
           [=]() {
@@ -150,7 +150,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->source_changed.connect([&](std::shared_ptr<mySourceInfo> info) {
+  pm->source_changed.connect([&](const std::shared_ptr<mySourceInfo>& info) {
     if (info->name == pm->server_info.default_source_name) {
       Glib::signal_timeout().connect_seconds_once(
           [=]() {
@@ -244,7 +244,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   if (options->contains("presets")) {
     std::string list;
 
-    for (auto name : presets_manager->get_names(PresetType::output)) {
+    for (const auto& name : presets_manager->get_names(PresetType::output)) {
       list += name + ",";
     }
 
@@ -252,7 +252,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
 
     list = "";
 
-    for (auto name : presets_manager->get_names(PresetType::input)) {
+    for (const auto& name : presets_manager->get_names(PresetType::input)) {
       list += name + ",";
     }
 
