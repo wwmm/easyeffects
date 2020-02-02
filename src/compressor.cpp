@@ -116,9 +116,9 @@ Compressor::Compressor(const std::string& tag, const std::string& schema) : Plug
 
     g_object_set(compressor, "bypass", false, nullptr);
     g_object_set(compressor, "pause", true, nullptr);  // pause graph analysis
-    g_object_set(compressor, "rrl", 0.0f, nullptr);    // relative release level
-    g_object_set(compressor, "cdr", 0.0f, nullptr);    // dry gain
-    g_object_set(compressor, "cwt", 1.0f, nullptr);    /// wet gain
+    g_object_set(compressor, "rrl", 0.0F, nullptr);    // relative release level
+    g_object_set(compressor, "cdr", 0.0F, nullptr);    // dry gain
+    g_object_set(compressor, "cwt", 1.0F, nullptr);    /// wet gain
 
     bind_to_gsettings();
 
