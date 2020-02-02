@@ -543,11 +543,7 @@ auto PulseManager::load_module(const std::string& name, const std::string& argum
       [](auto c, auto idx, auto data) {
         auto d = static_cast<Data*>(data);
 
-        if (idx == PA_INVALID_INDEX) {
-          d->status = false;
-        } else {
-          d->status = true;
-        }
+        d->status = idx != PA_INVALID_INDEX;
 
         pa_threaded_mainloop_signal(d->pm->main_loop, false);
       },
@@ -1399,17 +1395,9 @@ void PulseManager::print_app_info(const std::shared_ptr<AppInfo>& info) {
 }
 
 auto PulseManager::app_is_connected(const pa_sink_input_info* info) -> bool {
-  if (info->sink == apps_sink_info->index) {
-    return true;
-  }
-
-  return false;
+  return info->sink == apps_sink_info->index;
 }
 
 auto PulseManager::app_is_connected(const pa_source_output_info* info) -> bool {
-  if (info->source == mic_sink_info->monitor_source) {
-    return true;
-  }
-
-  return false;
+  return info->source == mic_sink_info->monitor_source;
 }
