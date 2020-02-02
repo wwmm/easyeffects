@@ -11,7 +11,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -33,7 +33,7 @@ auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
@@ -60,7 +60,7 @@ auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
@@ -95,7 +95,7 @@ auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer use
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
@@ -192,17 +192,17 @@ CompressorUi::~CompressorUi() {
 void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(value);
 
-  reduction_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  reduction_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void CompressorUi::on_new_sidechain(double value) {
   sidechain->set_value(value);
 
-  sidechain_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  sidechain_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void CompressorUi::on_new_curve(double value) {
   curve->set_value(value);
 
-  curve_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  curve_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
