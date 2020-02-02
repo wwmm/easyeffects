@@ -121,7 +121,7 @@ ConvolverUi::~ConvolverUi() {
   util::debug(name + " ui destroyed");
 }
 
-std::vector<std::string> ConvolverUi::get_irs_names() {
+auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
   boost::filesystem::directory_iterator it{irs_dir};
   std::vector<std::string> names;
 
@@ -173,7 +173,7 @@ void ConvolverUi::remove_irs_file(const std::string& name) {
   }
 }
 
-int ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -617,7 +617,7 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   }
 }
 
-bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
   ctx->paint();
@@ -631,7 +631,7 @@ bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
+auto ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) -> bool {
   update_mouse_info_L(event);
 
   left_plot->queue_draw();
@@ -639,7 +639,7 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
   return false;
 }
 
-bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
   ctx->paint();
@@ -653,7 +653,7 @@ bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
+auto ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) -> bool {
   update_mouse_info_R(event);
 
   right_plot->queue_draw();
@@ -661,12 +661,12 @@ bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
   return false;
 }
 
-bool ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) {
+auto ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = true;
   return false;
 }
 
-bool ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) {
+auto ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = false;
   return false;
 }

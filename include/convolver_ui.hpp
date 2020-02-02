@@ -55,7 +55,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   std::vector<std::future<void>> futures;
 
-  std::vector<std::string> get_irs_names();
+  auto get_irs_names() -> std::vector<std::string>;
 
   void import_irs_file(const std::string& file_path);
 
@@ -63,7 +63,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   void populate_irs_listbox();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void on_irs_menu_button_clicked();
 
@@ -81,17 +81,17 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   void update_mouse_info_R(GdkEventMotion* event);
 
-  bool on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_left_motion_notify_event(GdkEventMotion* event);
+  auto on_left_motion_notify_event(GdkEventMotion* event) -> bool;
 
-  bool on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_right_motion_notify_event(GdkEventMotion* event);
+  auto on_right_motion_notify_event(GdkEventMotion* event) -> bool;
 
-  bool on_mouse_enter_notify_event(GdkEventCrossing* event);
+  auto on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_mouse_leave_notify_event(GdkEventCrossing* event);
+  auto on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool;
 };
 
 #endif
