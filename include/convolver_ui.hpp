@@ -17,7 +17,11 @@
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
   ConvolverUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~ConvolverUi();
+  ConvolverUi(const ConvolverUi&) = delete;
+  auto operator=(const ConvolverUi&) -> ConvolverUi& = delete;
+  ConvolverUi(const ConvolverUi&&) = delete;
+  auto operator=(const ConvolverUi &&) -> ConvolverUi& = delete;
+  ~ConvolverUi() override;
 
  private:
   std::string log_tag = "convolver_ui: ";
@@ -37,11 +41,11 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   bool mouse_inside = false, show_fft_spectrum = false;
   unsigned int max_plot_points = 200;
-  float mouse_intensity = 0.0f, mouse_time = 0.0f, mouse_freq = 0.0f;
-  float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
-  float max_time = 0.0f;
-  float fft_min_left = 0.0f, fft_max_left = 0.0f, fft_min_right = 0.0f, fft_max_right = 0.0f;
-  float fft_max_freq = 0.0f, fft_min_freq = 0.0f;
+  float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
+  float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
+  float max_time = 0.0F;
+  float fft_min_left = 0.0F, fft_max_left = 0.0F, fft_min_right = 0.0F, fft_max_right = 0.0F;
+  float fft_max_freq = 0.0F, fft_min_freq = 0.0F;
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 

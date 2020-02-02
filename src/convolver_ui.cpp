@@ -309,7 +309,7 @@ void ConvolverUi::get_irs_info() {
 
   // build plot time axis
 
-  float dt = 1.0f / rate;
+  float dt = 1.0F / rate;
   float duration = (frames_in - 1) * dt;
   uint max_points = (frames_in > max_plot_points) ? max_plot_points : frames_in;
   float plot_dt = duration / max_points;
@@ -341,9 +341,9 @@ void ConvolverUi::get_irs_info() {
   */
 
   try {
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0F, dt);
 
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0F, dt);
 
     left_mag.resize(max_points);
     right_mag.resize(max_points);
@@ -457,8 +457,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     max_points = left_spectrum.size();
   }
 
-  fft_min_freq = rate * (0.5f * 0 + 0.25f) / left_spectrum.size();
-  fft_max_freq = rate * (0.5f * (left_spectrum.size() - 1) + 0.25f) / left_spectrum.size();
+  fft_min_freq = rate * (0.5F * 0 + 0.25F) / left_spectrum.size();
+  fft_max_freq = rate * (0.5F * (left_spectrum.size() - 1) + 0.25F) / left_spectrum.size();
 
   freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
@@ -470,10 +470,10 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     float dF = 0.5f * (rate / left_spectrum.size());
 
     boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(),
-                                                                        0.0f, dF);
+                                                                        0.0F, dF);
 
     boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(),
-                                                                        0.0f, dF);
+                                                                        0.0F, dF);
 
     left_spectrum.resize(max_points);
     right_spectrum.resize(max_points);
