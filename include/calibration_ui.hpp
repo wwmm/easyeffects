@@ -11,10 +11,12 @@
 
 class CalibrationUi : public Gtk::Window {
  public:
-  CalibrationUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& refBuilder);
-
-  virtual ~CalibrationUi();
+  CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
+  CalibrationUi(const CalibrationUi&) = delete;
+  auto operator=(const CalibrationUi&) -> CalibrationUi& = delete;
+  CalibrationUi(const CalibrationUi&&) = delete;
+  auto operator=(const CalibrationUi &&) -> CalibrationUi& = delete;
+  ~CalibrationUi() override;
 
   static CalibrationUi* create();
 
