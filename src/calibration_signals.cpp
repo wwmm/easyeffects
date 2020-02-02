@@ -39,8 +39,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationS
     auto max_mag = *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
     if (max_mag > min_mag) {
-      for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-        cs->spectrum_mag[n] = (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
+      for (float& v : cs->spectrum_mag) {
+        v = (v - min_mag) / (max_mag - min_mag);
       }
 
       Glib::signal_idle().connect_once([=] { cs->new_spectrum.emit(cs->spectrum_mag); });
