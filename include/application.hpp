@@ -12,6 +12,10 @@
 class Application : public Gtk::Application {
  public:
   Application();
+  Application(const Application&) = delete;
+  auto operator=(const Application&) -> Application& = delete;
+  Application(const Application&&) = delete;
+  auto operator=(const Application &&) -> Application& = delete;
   ~Application() override;
 
   static auto create() -> Glib::RefPtr<Application>;
