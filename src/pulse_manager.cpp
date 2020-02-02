@@ -175,7 +175,7 @@ void PulseManager::subscribe_to_events() {
                         si->active_port = "null";
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(move(si)); });
+                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
                     }
                   }
                 },
@@ -206,7 +206,7 @@ void PulseManager::subscribe_to_events() {
                       pm->mic_sink_info->format = si->format;
                     }
 
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(move(si)); });
+                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(si); });
                   }
                 },
                 pm);
@@ -241,7 +241,7 @@ void PulseManager::subscribe_to_events() {
                         si->active_port = "null";
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(move(si)); });
+                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
                     }
                   }
                 },
@@ -271,7 +271,7 @@ void PulseManager::subscribe_to_events() {
                       pm->apps_sink_info->format = si->format;
                     }
 
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(move(si)); });
+                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(si); });
                   }
                 },
                 pm);
