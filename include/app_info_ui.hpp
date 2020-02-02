@@ -16,8 +16,11 @@ class AppInfoUi : public Gtk::Grid {
             const Glib::RefPtr<Gtk::Builder>& builder,
             const std::shared_ptr<AppInfo>& app_info,
             PulseManager* pm);
-
-  virtual ~AppInfoUi();
+  AppInfoUi(const AppInfoUi&) = delete;
+  auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
+  AppInfoUi(const AppInfoUi&&) = delete;
+  auto operator=(const AppInfoUi &&) -> AppInfoUi& = delete;
+  ~AppInfoUi() override;
 
   Gtk::Switch* enable;
   Gtk::Image* app_icon;

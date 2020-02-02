@@ -60,11 +60,11 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
 }
 
 auto linear_to_db(const float& amp) -> float {
-  if (amp >= 0.00001F) {
+  if (amp >= minimum_linear_level) {
     return 20.0F * log10f(amp);
   }
 
-  return -99.0F;
+  return minimum_db_level;
 }
 
 auto db_to_linear(const float& db) -> float {

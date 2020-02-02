@@ -9,6 +9,9 @@
 
 namespace util {
 
+const float minimum_db_level = -99.0F;
+const float minimum_linear_level = 0.00001F;
+
 void debug(const std::string& s);
 void error(const std::string& s);
 void critical(const std::string& s);
