@@ -27,10 +27,10 @@ class BlacklistSettingsUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Button *add_blacklist_in, *add_blacklist_out;
-  Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;
-  Gtk::Entry *blacklist_in_name, *blacklist_out_name;
-  Gtk::ScrolledWindow *blacklist_in_scrolled_window, *blacklist_out_scrolled_window;
+  Gtk::Button *add_blacklist_in = nullptr, *add_blacklist_out = nullptr;
+  Gtk::ListBox *blacklist_in_listbox = nullptr, *blacklist_out_listbox = nullptr;
+  Gtk::Entry *blacklist_in_name = nullptr, *blacklist_out_name = nullptr;
+  Gtk::ScrolledWindow *blacklist_in_scrolled_window = nullptr, *blacklist_out_scrolled_window = nullptr;
 
   std::vector<sigc::connection> connections;
 
