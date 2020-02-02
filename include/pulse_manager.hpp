@@ -90,8 +90,8 @@ class PulseManager {
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
-  auto get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo>;
-  auto get_source_info(std::string name) -> std::shared_ptr<mySourceInfo>;
+  auto get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo>;
+  auto get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo>;
 
   std::vector<std::string> blacklist_in;   // for input effects
   std::vector<std::string> blacklist_out;  // for output effects
@@ -161,7 +161,7 @@ class PulseManager {
 
   auto get_default_source_info() -> std::shared_ptr<mySourceInfo>;
 
-  auto load_sink(std::string name, std::string description, uint rate) -> std::shared_ptr<mySinkInfo>;
+  auto load_sink(const std::string& name, const std::string& description, uint rate) -> std::shared_ptr<mySinkInfo>;
 
   void load_apps_sink();
 
@@ -183,7 +183,7 @@ class PulseManager {
 
   void changed_app(const pa_source_output_info* info);
 
-  void print_app_info(std::shared_ptr<AppInfo> info);
+  static void print_app_info(const std::shared_ptr<AppInfo>& info);
 
   auto app_is_connected(const pa_sink_input_info* info) -> bool;
 

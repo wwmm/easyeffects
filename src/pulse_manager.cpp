@@ -375,7 +375,7 @@ void PulseManager::get_server_info() {
   pa_threaded_mainloop_unlock(main_loop);
 }
 
-auto PulseManager::get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo> {
+auto PulseManager::get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo> {
   auto si = std::make_shared<mySinkInfo>();
 
   struct Data {
@@ -438,7 +438,7 @@ auto PulseManager::get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo
   return nullptr;
 }
 
-auto PulseManager::get_source_info(std::string name) -> std::shared_ptr<mySourceInfo> {
+auto PulseManager::get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo> {
   auto si = std::make_shared<mySourceInfo>();
 
   struct Data {
@@ -566,7 +566,8 @@ auto PulseManager::load_module(const std::string& name, const std::string& argum
   return data.status;
 }
 
-auto PulseManager::load_sink(std::string name, std::string description, uint rate) -> std::shared_ptr<mySinkInfo> {
+auto PulseManager::load_sink(const std::string& name, const std::string& description, uint rate)
+    -> std::shared_ptr<mySinkInfo> {
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
@@ -1385,7 +1386,7 @@ void PulseManager::changed_app(const pa_source_output_info* info) {
   }
 }
 
-void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
+void PulseManager::print_app_info(const std::shared_ptr<AppInfo>& info) {
   std::cout << "index: " << info->index << std::endl;
   std::cout << "name: " << info->name << std::endl;
   std::cout << "icon name: " << info->icon_name << std::endl;
