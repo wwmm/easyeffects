@@ -718,7 +718,7 @@ void PulseManager::find_sinks() {
             si->rate = info->sample_spec.rate;
             si->format = pa_sample_format_to_string(info->sample_spec.format);
 
-            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(move(si)); });
+            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
           }
         }
       },
@@ -762,7 +762,7 @@ void PulseManager::find_sources() {
             si->rate = info->sample_spec.rate;
             si->format = pa_sample_format_to_string(info->sample_spec.format);
 
-            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(move(si)); });
+            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
           }
         }
       },
@@ -1179,7 +1179,7 @@ void PulseManager::get_modules_info() {
               mi->argument = "";
             }
 
-            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->module_info.emit(move(mi)); });
+            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->module_info.emit(mi); });
           }
         }
       },
@@ -1223,7 +1223,7 @@ void PulseManager::get_clients_info() {
               mi->binary = "";
             }
 
-            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->client_info.emit(move(mi)); });
+            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->client_info.emit(mi); });
           }
         }
       },
