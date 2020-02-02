@@ -145,7 +145,7 @@ void AppInfoUi::on_mute() {
   }
 }
 
-void AppInfoUi::update(std::shared_ptr<AppInfo> info) {
+void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
   app_info = info;
 
   enable_connection.disconnect();

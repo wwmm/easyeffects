@@ -38,7 +38,7 @@ class AppInfoUi : public Gtk::Grid {
 
   std::shared_ptr<AppInfo> app_info;
 
-  void update(std::shared_ptr<AppInfo> info);
+  void update(const std::shared_ptr<AppInfo>& info);
 
  private:
   std::string log_tag = "app_info_ui: ";
