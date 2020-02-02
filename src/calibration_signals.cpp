@@ -7,7 +7,8 @@ namespace {
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationSignals* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state, new_state;
+    GstState old_state;
+    GstState new_state;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, nullptr);
 
@@ -86,7 +87,7 @@ CalibrationSignals::CalibrationSignals() {
 
   g_object_set(source, "wave", 0, nullptr);  // sine
   g_object_set(capsfilter, "caps", caps, nullptr);
-  g_object_set(queue, "silent", true, nullptr);
+  g_object_set(queue, "silent", 1, nullptr);
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
   g_object_set(sink, "stream-properties", props, nullptr);
