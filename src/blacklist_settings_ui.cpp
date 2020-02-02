@@ -147,7 +147,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
   }
 }
 
-int BlacklistSettingsUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto BlacklistSettingsUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
