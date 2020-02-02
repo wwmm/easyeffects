@@ -38,7 +38,7 @@ class BlacklistSettingsUi : public Gtk::Grid {
 
   void populate_blacklist_out_listbox();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
 
 #endif
