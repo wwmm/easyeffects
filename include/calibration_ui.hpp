@@ -11,7 +11,7 @@
 
 class CalibrationUi : public Gtk::Window {
  public:
-  CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder);
+  CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
   CalibrationUi(const CalibrationUi&) = delete;
   auto operator=(const CalibrationUi&) -> CalibrationUi& = delete;
   CalibrationUi(const CalibrationUi&&) = delete;
@@ -24,8 +24,6 @@ class CalibrationUi : public Gtk::Window {
 
  private:
   std::string log_tag = "calibration_ui: ";
-
-  Glib::RefPtr<Gtk::Builder> builder;
 
   Gtk::Stack* stack = nullptr;
   Gtk::DrawingArea* spectrum = nullptr;

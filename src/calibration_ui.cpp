@@ -2,8 +2,8 @@
 #include <glibmm/i18n.h>
 #include "util.hpp"
 
-CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& refBuilder)
-    : Gtk::Window(cobject), builder(refBuilder) {
+CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
+    : Gtk::Window(cobject) {
   // loading glade widgets
 
   builder->get_widget("stack", stack);
