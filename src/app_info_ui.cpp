@@ -68,7 +68,7 @@ void AppInfoUi::init_widgets() {
 
   volume->set_value(app_info->volume);
 
-  mute->set_active(app_info->mute);
+  mute->set_active(app_info->mute != 0);
 
   format->set_text(app_info->format);
 
@@ -82,7 +82,7 @@ void AppInfoUi::init_widgets() {
 
   latency->set_text(latency_to_str(app_info->latency));
 
-  if (app_info->corked) {
+  if (app_info->corked != 0) {
     state->set_text(_("paused"));
   } else {
     state->set_text(_("playing"));
