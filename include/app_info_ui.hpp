@@ -14,7 +14,7 @@ class AppInfoUi : public Gtk::Grid {
  public:
   AppInfoUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
-            const std::shared_ptr<AppInfo>& app_info,
+            const std::shared_ptr<AppInfo>& info,
             PulseManager* pm);
   AppInfoUi(const AppInfoUi&) = delete;
   auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
@@ -22,19 +22,19 @@ class AppInfoUi : public Gtk::Grid {
   auto operator=(const AppInfoUi &&) -> AppInfoUi& = delete;
   ~AppInfoUi() override;
 
-  Gtk::Switch* enable;
-  Gtk::Image* app_icon;
-  Gtk::Label* app_name;
-  Gtk::Scale* volume;
-  Gtk::ToggleButton* mute;
-  Gtk::Image* mute_icon;
-  Gtk::Label* format;
-  Gtk::Label* rate;
-  Gtk::Label* channels;
-  Gtk::Label* resampler;
-  Gtk::Label* buffer;
-  Gtk::Label* latency;
-  Gtk::Label* state;
+  Gtk::Switch* enable = nullptr;
+  Gtk::Image* app_icon = nullptr;
+  Gtk::Label* app_name = nullptr;
+  Gtk::Scale* volume = nullptr;
+  Gtk::ToggleButton* mute = nullptr;
+  Gtk::Image* mute_icon = nullptr;
+  Gtk::Label* format = nullptr;
+  Gtk::Label* rate = nullptr;
+  Gtk::Label* channels = nullptr;
+  Gtk::Label* resampler = nullptr;
+  Gtk::Label* buffer = nullptr;
+  Gtk::Label* latency = nullptr;
+  Gtk::Label* state = nullptr;
 
   std::shared_ptr<AppInfo> app_info;
 
@@ -50,7 +50,7 @@ class AppInfoUi : public Gtk::Grid {
   sigc::connection mute_connection;
   sigc::connection timeout_connection;
 
-  PulseManager* pm;
+  PulseManager* pm = nullptr;
 
   void init_widgets();
 
