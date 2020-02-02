@@ -7,7 +7,7 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, BassEnhancer* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->harmonics_connection.connected()) {
       l->harmonics_connection = Glib::signal_timeout().connect(
           [l]() {
@@ -51,7 +51,7 @@ BassEnhancer::BassEnhancer(const std::string& tag, const std::string& schema)
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(bass_enhancer, "bypass", false, nullptr);
+    g_object_set(bass_enhancer, "bypass", 0, nullptr);
 
     bind_to_gsettings();
 

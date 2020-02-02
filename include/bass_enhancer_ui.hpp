@@ -19,9 +19,9 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gtk::Adjustment> amount, blend, floorv, harmonics, input_gain, output_gain, scope;
 
-  Gtk::LevelBar* harmonics_levelbar;
-  Gtk::Label* harmonics_levelbar_label;
-  Gtk::ToggleButton *floor_active, *listen;
+  Gtk::LevelBar* harmonics_levelbar = nullptr;
+  Gtk::Label* harmonics_levelbar_label = nullptr;
+  Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr;
 };
 
 #endif
