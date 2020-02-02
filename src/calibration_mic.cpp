@@ -51,8 +51,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationM
     auto max_mag = *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
     if (max_mag > min_mag) {
-      for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-        cs->spectrum_mag[n] = (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
+      for (float& v : cs->spectrum_mag) {
+        v = (v - min_mag) / (max_mag - min_mag);
       }
 
       Glib::signal_idle().connect_once([=] { cs->new_spectrum.emit(cs->spectrum_mag); });
@@ -98,10 +98,10 @@ CalibrationMic::CalibrationMic() {
   auto caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=1,rate=48000");
 
   g_object_set(source, "volume", 1.0, nullptr);
-  g_object_set(source, "mute", false, nullptr);
+  g_object_set(source, "mute", 0, nullptr);
   g_object_set(source, "stream-properties", props, nullptr);
   g_object_set(capsfilter, "caps", caps, nullptr);
-  g_object_set(queue, "silent", true, nullptr);
+  g_object_set(queue, "silent", 1, nullptr);
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
