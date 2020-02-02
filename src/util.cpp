@@ -35,7 +35,7 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
   float v = start;
 
   while (v < stop) {
-    output.push_back(powf(10.0f, v));
+    output.push_back(powf(10.0F, v));
 
     v += delta;
   }
@@ -60,21 +60,21 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
 }
 
 auto linear_to_db(const float& amp) -> float {
-  if (amp >= 0.00001f) {
-    return 20.0f * log10f(amp);
+  if (amp >= 0.00001F) {
+    return 20.0F * log10f(amp);
   } else {
-    return -99.0f;
+    return -99.0F;
   }
 }
 
 auto db_to_linear(const float& db) -> float {
-  return expf((db / 20.0f) * logf(10.0f));
+  return expf((db / 20.0F) * logf(10.0F));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0f, (float)v_db / 20.0f);
+  float v_linear = powf(10.0F, (float)v_db / 20.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -92,7 +92,7 @@ auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type,
 auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0f, (float)v_db / 10.0f);
+  float v_linear = powf(10.0F, (float)v_db / 10.0F);
 
   g_value_set_float(value, v_linear);
 
