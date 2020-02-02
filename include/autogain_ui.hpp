@@ -9,7 +9,11 @@
 class AutoGainUi : public Gtk::Grid, public PluginUiBase {
  public:
   AutoGainUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~AutoGainUi();
+  AutoGainUi(const AutoGainUi&) = delete;
+  auto operator=(const AutoGainUi&) -> AutoGainUi& = delete;
+  AutoGainUi(const AutoGainUi&&) = delete;
+  auto operator=(const AutoGainUi &&) -> AutoGainUi& = delete;
+  ~AutoGainUi() override;
 
   void on_new_momentary(const float& value);
   void on_new_shortterm(const float& value);
@@ -21,11 +25,18 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
 
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i;
-  Gtk::LevelBar *m_level, *s_level, *i_level, *r_level, *g_level, *l_level, *lra_level;
-  Gtk::Label *m_label, *s_label, *i_label, *r_label, *g_label, *l_label, *lra_label;
-  Gtk::Button* reset;
-  Gtk::ToggleButton *detect_silence, *use_geometric_mean;
-  Gtk::Grid* weights_grid;
+
+  Gtk::LevelBar *m_level = nullptr, *s_level = nullptr, *i_level = nullptr, *r_level = nullptr, *g_level = nullptr,
+                *l_level = nullptr, *lra_level = nullptr;
+
+  Gtk::Label *m_label = nullptr, *s_label = nullptr, *i_label = nullptr, *r_label = nullptr, *g_label = nullptr,
+             *l_label = nullptr, *lra_label = nullptr;
+
+  Gtk::Button* reset = nullptr;
+
+  Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr;
+
+  Gtk::Grid* weights_grid = nullptr;
 };
 
 #endif
