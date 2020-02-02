@@ -7,11 +7,12 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL, inR;
+            float inL;
+            float inR;
 
             g_object_get(l->compressor, "ilm-l", &inL, nullptr);
             g_object_get(l->compressor, "ilm-r", &inR, nullptr);
@@ -28,7 +29,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL, outR;
+            float outL;
+            float outR;
 
             g_object_get(l->compressor, "olm-l", &outL, nullptr);
             g_object_get(l->compressor, "olm-r", &outR, nullptr);
@@ -114,11 +116,11 @@ Compressor::Compressor(const std::string& tag, const std::string& schema) : Plug
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(compressor, "bypass", false, nullptr);
-    g_object_set(compressor, "pause", true, nullptr);  // pause graph analysis
-    g_object_set(compressor, "rrl", 0.0F, nullptr);    // relative release level
-    g_object_set(compressor, "cdr", 0.0F, nullptr);    // dry gain
-    g_object_set(compressor, "cwt", 1.0F, nullptr);    /// wet gain
+    g_object_set(compressor, "bypass", 0, nullptr);
+    g_object_set(compressor, "pause", 1, nullptr);   // pause graph analysis
+    g_object_set(compressor, "rrl", 0.0F, nullptr);  // relative release level
+    g_object_set(compressor, "cdr", 0.0F, nullptr);  // dry gain
+    g_object_set(compressor, "cwt", 1.0F, nullptr);  /// wet gain
 
     bind_to_gsettings();
 
