@@ -2,7 +2,7 @@
 
 namespace {
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Downward")) {
@@ -14,7 +14,7 @@ gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
   return true;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -24,7 +24,7 @@ GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_typ
   }
 }
 
-gboolean sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Feed-forward")) {
@@ -36,7 +36,8 @@ gboolean sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer u
   return true;
 }
 
-GVariant* int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -46,7 +47,7 @@ GVariant* int_to_sidechain_type_enum(const GValue* value, const GVariantType* ex
   }
 }
 
-gboolean sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Peak")) {
@@ -62,7 +63,8 @@ gboolean sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer u
   return true;
 }
 
-GVariant* int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -76,7 +78,7 @@ GVariant* int_to_sidechain_mode_enum(const GValue* value, const GVariantType* ex
   }
 }
 
-gboolean sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Middle")) {
@@ -92,7 +94,8 @@ gboolean sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer
   return true;
 }
 
-GVariant* int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
