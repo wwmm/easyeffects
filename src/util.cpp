@@ -78,7 +78,7 @@ auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 
   g_value_set_float(value, v_linear);
 
-  return true;
+  return 1;
 }
 
 auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -96,7 +96,7 @@ auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 
   g_value_set_float(value, v_linear);
 
-  return true;
+  return 1;
 }
 
 auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -104,7 +104,7 @@ auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gb
 
   g_value_set_float(value, v_d);
 
-  return true;
+  return 1;
 }
 
 auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -114,7 +114,7 @@ auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_
 
   g_value_set_double(value, v_linear);
 
-  return true;
+  return 1;
 }
 
 auto linear_double_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data)
@@ -131,7 +131,7 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 
   g_value_set_int(value, v_d * 10);
 
-  return true;
+  return 1;
 }
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -139,7 +139,7 @@ auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean 
 
   g_value_set_uint64(value, v_ns);
 
-  return true;
+  return 1;
 }
 
 }  // namespace util
