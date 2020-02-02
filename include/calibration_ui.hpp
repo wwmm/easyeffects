@@ -18,7 +18,7 @@ class CalibrationUi : public Gtk::Window {
   auto operator=(const CalibrationUi &&) -> CalibrationUi& = delete;
   ~CalibrationUi() override;
 
-  static CalibrationUi* create();
+  static auto create() -> CalibrationUi*;
 
   void set_source_monitor_name(const std::string& name);
 
@@ -42,13 +42,13 @@ class CalibrationUi : public Gtk::Window {
 
   void on_new_spectrum(const std::vector<float>& magnitudes);
 
-  bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_spectrum_enter_notify_event(GdkEventCrossing* event);
+  auto on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
+  auto on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_spectrum_motion_notify_event(GdkEventMotion* event);
+  auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
 
   void on_stack_visible_child_changed();
 };
