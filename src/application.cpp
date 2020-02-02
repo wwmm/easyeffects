@@ -259,7 +259,9 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
     std::clog << _("Input Presets: ") + list << std::endl;
 
     return EXIT_SUCCESS;
-  } else if (options->contains("bypass")) {
+  }
+
+  if (options->contains("bypass")) {
     int bypass_arg;
 
     if (options->lookup_value("bypass", bypass_arg)) {
