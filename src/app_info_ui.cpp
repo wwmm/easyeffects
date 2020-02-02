@@ -49,11 +49,12 @@ AppInfoUi::~AppInfoUi() {
   util::debug(log_tag + app_info->name + " info ui destroyed");
 }
 
-std::string AppInfoUi::latency_to_str(uint value) {
+auto AppInfoUi::latency_to_str(uint value) -> std::string {
   std::ostringstream msg;
+  const float ms_factor = 0.001F;
 
   msg.precision(1);
-  msg << std::fixed << value / 1000.0 << " ms";
+  msg << std::fixed << value * ms_factor << " ms";
 
   return msg.str();
 }
@@ -96,7 +97,7 @@ void AppInfoUi::connect_signals() {
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 }
 
-bool AppInfoUi::on_enable_app(bool state) {
+auto AppInfoUi::on_enable_app(bool state) -> bool {
   if (state) {
     if (app_info->app_type == "sink_input") {
       pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);

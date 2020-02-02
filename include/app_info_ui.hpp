@@ -56,9 +56,9 @@ class AppInfoUi : public Gtk::Grid {
 
   void connect_signals();
 
-  std::string latency_to_str(uint value);
+  static auto latency_to_str(uint value) -> std::string;
 
-  bool on_enable_app(bool state);
+  auto on_enable_app(bool state) -> bool;
 
   void on_volume_changed();
 
