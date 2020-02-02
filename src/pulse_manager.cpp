@@ -431,11 +431,11 @@ auto PulseManager::get_sink_info(std::string name) -> std::shared_ptr<mySinkInfo
 
   if (!data.failed) {
     return si;
-  } else {
-    util::debug(log_tag + " failed to get sink info: " + name);
-
-    return nullptr;
   }
+
+  util::debug(log_tag + " failed to get sink info: " + name);
+
+  return nullptr;
 }
 
 auto PulseManager::get_source_info(std::string name) -> std::shared_ptr<mySourceInfo> {
@@ -491,11 +491,11 @@ auto PulseManager::get_source_info(std::string name) -> std::shared_ptr<mySource
 
   if (!data.failed) {
     return si;
-  } else {
-    util::debug(log_tag + " failed to get source info:" + name);
-
-    return nullptr;
   }
+
+  util::debug(log_tag + " failed to get source info:" + name);
+
+  return nullptr;
 }
 
 auto PulseManager::get_default_sink_info() -> std::shared_ptr<mySinkInfo> {
@@ -506,11 +506,11 @@ auto PulseManager::get_default_sink_info() -> std::shared_ptr<mySinkInfo> {
     util::debug(log_tag + "default pulseaudio sink audio format: " + info->format);
 
     return info;
-  } else {
-    util::critical(log_tag + "could not get default sink info");
-
-    return nullptr;
   }
+
+  util::critical(log_tag + "could not get default sink info");
+
+  return nullptr;
 }
 
 auto PulseManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
@@ -521,11 +521,11 @@ auto PulseManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
     util::debug(log_tag + "default pulseaudio source audio format: " + info->format);
 
     return info;
-  } else {
-    util::critical(log_tag + "could not get default source info");
-
-    return nullptr;
   }
+
+  util::critical(log_tag + "could not get default source info");
+
+  return nullptr;
 }
 
 auto PulseManager::load_module(const std::string& name, const std::string& argument) -> bool {
@@ -1400,15 +1400,15 @@ void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
 auto PulseManager::app_is_connected(const pa_sink_input_info* info) -> bool {
   if (info->sink == apps_sink_info->index) {
     return true;
-  } else {
-    return false;
   }
+
+  return false;
 }
 
 auto PulseManager::app_is_connected(const pa_source_output_info* info) -> bool {
   if (info->source == mic_sink_info->monitor_source) {
     return true;
-  } else {
-    return false;
   }
+
+  return false;
 }
