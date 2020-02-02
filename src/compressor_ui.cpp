@@ -19,9 +19,9 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 
   if (v == 0) {
     return g_variant_new_string("Downward");
-  } else {
-    return g_variant_new_string("Upward");
   }
+
+  return g_variant_new_string("Upward");
 }
 
 auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -42,9 +42,9 @@ auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expecte
 
   if (v == 0) {
     return g_variant_new_string("Feed-forward");
-  } else {
-    return g_variant_new_string("Feed-back");
   }
+
+  return g_variant_new_string("Feed-back");
 }
 
 auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -69,13 +69,17 @@ auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expecte
 
   if (v == 0) {
     return g_variant_new_string("Peak");
-  } else if (v == 1) {
-    return g_variant_new_string("RMS");
-  } else if (v == 2) {
-    return g_variant_new_string("Low-Pass");
-  } else {
-    return g_variant_new_string("Uniform");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("RMS");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Low-Pass");
+  }
+
+  return g_variant_new_string("Uniform");
 }
 
 auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -100,13 +104,17 @@ auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expec
 
   if (v == 0) {
     return g_variant_new_string("Middle");
-  } else if (v == 1) {
-    return g_variant_new_string("Side");
-  } else if (v == 2) {
-    return g_variant_new_string("Left");
-  } else {
-    return g_variant_new_string("Right");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Side");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Left");
+  }
+
+  return g_variant_new_string("Right");
 }
 
 }  // namespace
