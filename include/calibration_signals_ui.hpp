@@ -12,18 +12,21 @@
 class CalibrationSignalsUi : public Gtk::Grid {
  public:
   CalibrationSignalsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-
-  virtual ~CalibrationSignalsUi();
+  CalibrationSignalsUi(const CalibrationSignalsUi&) = delete;
+  auto operator=(const CalibrationSignalsUi&) -> CalibrationSignalsUi& = delete;
+  CalibrationSignalsUi(const CalibrationSignalsUi&&) = delete;
+  auto operator=(const CalibrationSignalsUi &&) -> CalibrationSignalsUi& = delete;
+  ~CalibrationSignalsUi() override;
 
   std::unique_ptr<CalibrationSignals> cs;
 
  private:
   std::string log_tag = "calibration_signals_ui: ";
 
-  Gtk::Switch* enable;
-  Gtk::Scale* volume;
-  Gtk::SpinButton* frequency;
-  Gtk::ComboBoxText* wave;
+  Gtk::Switch* enable = nullptr;
+  Gtk::Scale* volume = nullptr;
+  Gtk::SpinButton* frequency = nullptr;
+  Gtk::ComboBoxText* wave = nullptr;
 };
 
 #endif
