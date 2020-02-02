@@ -27,18 +27,18 @@ class CalibrationUi : public Gtk::Window {
 
   Glib::RefPtr<Gtk::Builder> builder;
 
-  Gtk::Stack* stack;
-  Gtk::DrawingArea* spectrum;
-  Gtk::HeaderBar* headerbar;
+  Gtk::Stack* stack = nullptr;
+  Gtk::DrawingArea* spectrum = nullptr;
+  Gtk::HeaderBar* headerbar = nullptr;
 
   sigc::connection spectrum_connection;
 
-  bool mouse_inside;
-  double mouse_intensity, mouse_freq, min_mag, max_mag;
+  bool mouse_inside = false;
+  double mouse_intensity = 0, mouse_freq = 0, min_mag = 0, max_mag = 0;
   std::vector<float> spectrum_mag;
 
-  CalibrationSignalsUi* calibration_signals_ui;
-  CalibrationMicUi* calibration_mic_ui;
+  CalibrationSignalsUi* calibration_signals_ui = nullptr;
+  CalibrationMicUi* calibration_mic_ui = nullptr;
 
   void on_new_spectrum(const std::vector<float>& magnitudes);
 
