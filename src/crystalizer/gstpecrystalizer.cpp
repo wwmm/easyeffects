@@ -160,7 +160,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
           g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 40.0f, 1.0f,
                              static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
-      util::debug("crystalizer: band initialization: not enough memory!");
+      util::error("crystalizer: band initialization: not enough memory!");
     }
   }
 
@@ -174,7 +174,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
           g_param_spec_boolean(name, nick, "mute band", false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
-      util::debug("crystalizer: band initialization: not enough memory!");
+      util::error("crystalizer: band initialization: not enough memory!");
     }
   }
 
@@ -188,7 +188,7 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
           g_param_spec_boolean(name, nick, "bypass band", false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
-      util::debug("crystalizer: band initialization: not enough memory!");
+      util::error("crystalizer: band initialization: not enough memory!");
     }
   }
 
