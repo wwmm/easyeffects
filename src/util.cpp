@@ -62,9 +62,9 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
 auto linear_to_db(const float& amp) -> float {
   if (amp >= 0.00001F) {
     return 20.0F * log10f(amp);
-  } else {
-    return -99.0F;
   }
+
+  return -99.0F;
 }
 
 auto db_to_linear(const float& db) -> float {
