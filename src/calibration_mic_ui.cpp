@@ -21,7 +21,7 @@ CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject, const Glib::RefPtr<G
 
   cm->noise_measured.connect([=]() { spinner->stop(); });
 
-  time_window->set_value(2.0);
+  time_window->set_value(default_time_window);
 }
 
 CalibrationMicUi::~CalibrationMicUi() {

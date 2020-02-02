@@ -7,7 +7,8 @@ namespace {
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationMic* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state, new_state;
+    GstState old_state;
+    GstState new_state;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, nullptr);
 

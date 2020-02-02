@@ -9,7 +9,10 @@
 class CalibrationMic {
  public:
   CalibrationMic();
-
+  CalibrationMic(const CalibrationMic&) = delete;
+  auto operator=(const CalibrationMic&) -> CalibrationMic& = delete;
+  CalibrationMic(const CalibrationMic&&) = delete;
+  auto operator=(const CalibrationMic &&) -> CalibrationMic& = delete;
   ~CalibrationMic();
 
   std::string log_tag = "calibration_mic: ";
