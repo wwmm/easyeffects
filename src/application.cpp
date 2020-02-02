@@ -89,7 +89,7 @@ void Application::on_startup() {
 
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-  if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
+  if ((get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) != 0U) {
     running_as_service = true;
   }
 
@@ -311,7 +311,7 @@ void Application::create_actions() {
      *So we have to use the C api :-(
      */
 
-    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr)) {
+    if (gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr) == 0) {
       util::warning("Failed to open help!");
     }
   });
