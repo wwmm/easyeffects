@@ -7,6 +7,7 @@
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <array>
+#include <cstring>
 #include <iostream>
 #include <memory>
 
@@ -268,8 +269,8 @@ class PulseManager {
       prop = pa_proplist_gets(info->proplist, "media.icon_name");
 
       if (prop != nullptr) {
-        if (prop ==
-            std::string("audio-card-bluetooth")) {  // there is no GTK icon with this name given by Pulseaudio =/
+        if (std::strcmp(prop, "audio-card-bluetooth") ==
+            0) {  // there is no GTK icon with this name given by Pulseaudio =/
         } else {
           icon_name = "bluetooth-symbolic";
         }

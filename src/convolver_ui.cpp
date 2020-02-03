@@ -4,6 +4,7 @@
 #include <gst/fft/gstfftf32.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <sndfile.hh>
+#include "sigc++/functors/ptr_fun.h"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
@@ -51,7 +52,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   irs_menu_button->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
 
-  irs_listbox->set_sort_func(sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
+  irs_listbox->set_sort_func(sigc::ptr_fun(&ConvolverUi::on_listbox_sort));
 
   import_irs->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 

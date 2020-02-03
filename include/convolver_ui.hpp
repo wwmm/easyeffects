@@ -71,7 +71,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   void populate_irs_listbox();
 
-  auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void on_irs_menu_button_clicked();
 
