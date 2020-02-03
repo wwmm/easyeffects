@@ -286,7 +286,7 @@ msgstr "Metodi di Ricampionamento"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
-msgstr "Normalizzatore"
+msgstr "Auto Guadagno"
 
 #: data/ui/autogain.glade:145
 msgid "Reset History"
@@ -505,7 +505,7 @@ msgstr "Prelievo in uscita"
 
 #: data/ui/compressor.glade:598 data/ui/equalizer_band.glade:48
 msgid "Type"
-msgstr "Tipo"
+msgstr "Tipologia"
 
 #: data/ui/compressor.glade:612 data/ui/multiband_compressor.glade:473
 #: data/ui/multiband_compressor.glade:845
@@ -544,21 +544,21 @@ msgstr "Modalità"
 
 #: data/ui/compressor.glade:643
 msgid "Middle"
-msgstr "Centro"
+msgstr "Centrale"
 
 #: data/ui/compressor.glade:644
 msgid "Side"
-msgstr "Lato"
+msgstr "Laterale"
 
 #: data/ui/compressor.glade:645 data/ui/equalizer.glade:448
 #: data/ui/stereo_tools.glade:524 data/ui/delay.glade:131
 msgid "Left"
-msgstr "Sinistra"
+msgstr "Canale Sinistro"
 
 #: data/ui/compressor.glade:646 data/ui/equalizer.glade:489
 #: data/ui/stereo_tools.glade:596 data/ui/delay.glade:163
 msgid "Right"
-msgstr "Destra"
+msgstr "Canale Destro"
 
 #: data/ui/compressor.glade:660
 msgid "Source"
@@ -968,7 +968,7 @@ msgstr "Exciter"
 
 #: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
 msgid "Ceiling"
-msgstr "Limite superiore"
+msgstr "Limite Superiore"
 
 #: data/ui/stereo_tools.glade:42
 msgid "Stereo Tools"
@@ -1487,7 +1487,7 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 
 #: data/com.github.wwmm.pulseeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limitatore;compressore;riverbero;equalizzatore;normalizzatore;"
+msgstr "limitatore;compressore;riverbero;equalizzatore;autovolume;"
 
 #. Translators: This is an icon name, don't translate!
 #: data/com.github.wwmm.pulseeffects.desktop.in:10

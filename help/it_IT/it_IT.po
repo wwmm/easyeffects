@@ -276,7 +276,7 @@ msgstr "Consente di ascoltare il segnale elaborato in sidechain."
 #. (itstool) path: title/em
 #: C/compressor.page:105 C/equalizer.page:99
 msgid "Type"
-msgstr "Tipo"
+msgstr "Tipologia"
 
 #. (itstool) path: item/p
 #: C/compressor.page:109
@@ -345,8 +345,8 @@ msgid ""
 "<em style=\"strong\">Middle</em> - Middle part of signal is used for "
 "sidechain processing."
 msgstr ""
-"<em style=\"strong\">Centro</em> - La parte centrale del segnale è usata per "
-"l'elaborazione in sidechain."
+"<em style=\"strong\">Centrale</em> - La parte centrale del segnale è usata "
+"per l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:165
@@ -354,8 +354,8 @@ msgid ""
 "<em style=\"strong\">Side</em> - Side part of signal is used for sidechain "
 "processing."
 msgstr ""
-"<em style=\"strong\">Lato</em> - La parte laterale del segnale é usata per "
-"l'elaborazione in sidechain."
+"<em style=\"strong\">Laterale</em> - La parte laterale del segnale é usata "
+"per l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:171
@@ -363,8 +363,8 @@ msgid ""
 "<em style=\"strong\">Left</em> - Only left channel is used for sidechain "
 "processing."
 msgstr ""
-"<em style=\"strong\">Sinistra</em> - Solo il canale sinistro è usato per "
-"l'elaborazione in sidechain."
+"<em style=\"strong\">Canale Sinistro</em> - Solo il canale sinistro è usato "
+"per l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:177
@@ -372,7 +372,7 @@ msgid ""
 "<em style=\"strong\">Right</em> - Only right channel is used for sidechain "
 "processing."
 msgstr ""
-"<em style=\"strong\">Destra</em> - Solo il canale destro è usato per "
+"<em style=\"strong\">Canale Destro</em> - Solo il canale destro è usato per "
 "l'elaborazione in sidechain."
 
 #. (itstool) path: title/em
@@ -1898,7 +1898,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: C/webrtc.page:71
 msgid "Gain Controller"
-msgstr "Normalizzatore"
+msgstr "Controllo Guadagno"
 
 #. (itstool) path: item/p
 #: C/webrtc.page:77
@@ -2556,7 +2556,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/autogain.page:5
 msgid "Auto Gain"
-msgstr "Normalizzatore"
+msgstr "Auto Guadagno"
 
 #. (itstool) path: page/p
 #: C/autogain.page:6
@@ -2564,9 +2564,10 @@ msgid ""
 "PulseEffects auto gain is based on the library libebur128. It changes the "
 "audio volume to a perceived loudness level that can be tweaked by the user."
 msgstr ""
-"Il Normalizzatore di PulseEffects si basa sulla libreria libebur128. Questo "
-"plugin modifica il volume dell'audio basandosi su un livello di Loudness "
-"(intensità del volume) percepito che può essere regolato dall'utente."
+"Il plugin di Auto Guadagno di PulseEffects è ricavato dalla libreria "
+"libebur128. Questo processo modifica automaticamente il livello del volume "
+"sulla base dell'intensità del suono (Loudness) percepito che può essere "
+"regolato dall'utente."
 
 #. (itstool) path: title/em
 #: C/autogain.page:10
@@ -2581,7 +2582,7 @@ msgstr "Intensità della Loudness."
 #. (itstool) path: item/p
 #: C/autogain.page:18
 msgid "Resets the auto gain history."
-msgstr "Pulisce la cronologia del Normalizzatore"
+msgstr "Pulisce la cronologia del plugin"
 
 #. (itstool) path: title/em
 #: C/autogain.page:22
@@ -2598,7 +2599,7 @@ msgid ""
 msgstr ""
 "Quando il valore di intensità acustica momentanea è inferiore alla soglia "
 "relativa, si presuppone che l'audio stia producendo del silenzio e la "
-"modifica del guadagno viene disattivata . Questo comportamento può essere "
+"modifica del guadagno viene disattivata. Questo comportamento può essere "
 "evitato disabilitando la rilevazione del silenzio."
 
 #. (itstool) path: title/em
