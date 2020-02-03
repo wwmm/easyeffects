@@ -201,11 +201,12 @@ void ConvolverUi::populate_irs_listbox() {
 
   auto names = get_irs_names();
 
-  for (auto name : names) {
+  for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Button *remove_btn, *apply_btn;
+    Gtk::Button* remove_btn;
+    Gtk::Button* apply_btn;
     Gtk::Label* label;
 
     b->get_widget("irs_row", row);
@@ -235,7 +236,7 @@ void ConvolverUi::populate_irs_listbox() {
 void ConvolverUi::on_irs_menu_button_clicked() {
   const float scaling_factor = 0.7F;
 
-  int height = static_cast<int>(scaling_factor) * this->get_toplevel()->get_allocated_height();
+  int height = static_cast<int>(scaling_factor * static_cast<float>(this->get_toplevel()->get_allocated_height()));
 
   irs_scrolled_window->set_max_content_height(height);
 
@@ -307,9 +308,9 @@ void ConvolverUi::get_irs_info() {
   uint total_frames_in = file.channels() * frames_in;
   uint rate = file.samplerate();
 
-  float* kernel = new float[total_frames_in];
+  std::vector<float> kernel(total_frames_in);
 
-  file.readf(kernel, frames_in);
+  file.readf(kernel.data(), frames_in);
 
   // build plot time axis
 
@@ -399,18 +400,17 @@ void ConvolverUi::get_irs_info() {
     left_plot->queue_draw();
     right_plot->queue_draw();
   });
-
-  delete[] kernel;
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
   int nfft = left_mag.size();  // right_mag.size() should have the same value
 
-  GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, false);
-  GstFFTF32Complex* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2 + 1);
-  GstFFTF32Complex* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+  GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, 0);
+  auto* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+  auto* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2 + 1);
 
-  std::vector<float> tmp_l, tmp_r;
+  std::vector<float> tmp_l;
+  std::vector<float> tmp_r;
 
   tmp_l.resize(nfft);
   tmp_r.resize(nfft);
@@ -432,7 +432,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   /* Calculate magnitude in db */
   for (int i = 0; i < nfft / 2 + 1; i++) {
-    float v_l, v_r;
+    float v_l;
+    float v_r;
 
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
