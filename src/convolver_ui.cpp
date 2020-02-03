@@ -233,7 +233,9 @@ void ConvolverUi::populate_irs_listbox() {
 }
 
 void ConvolverUi::on_irs_menu_button_clicked() {
-  int height = 0.7 * this->get_toplevel()->get_allocated_height();
+  const float scaling_factor = 0.7F;
+
+  int height = static_cast<int>(scaling_factor) * this->get_toplevel()->get_allocated_height();
 
   irs_scrolled_window->set_max_content_height(height);
 
@@ -312,7 +314,7 @@ void ConvolverUi::get_irs_info() {
   // build plot time axis
 
   float dt = 1.0F / rate;
-  float duration = (frames_in - 1) * dt;
+  float duration = (static_cast<float>(frames_in) - 1) * dt;
   uint max_points = (frames_in > max_plot_points) ? max_plot_points : frames_in;
   float plot_dt = duration / max_points;
 
@@ -435,8 +437,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
     v_l += freqdata_l[i].i * freqdata_l[i].i;
-    v_l /= nfft * nfft;
-    v_l = 10.0 * log10(v_l);
+    v_l /= static_cast<float>(nfft * nfft);
+    v_l = 10.0F * log10(v_l);
     v_l = (v_l > -120) ? v_l : -120;
 
     left_spectrum[i] = v_l;
@@ -444,8 +446,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     // right
     v_r = freqdata_r[i].r * freqdata_r[i].r;
     v_r += freqdata_r[i].i * freqdata_r[i].i;
-    v_r /= nfft * nfft;
-    v_r = 10.0 * log10(v_r);
+    v_r /= static_cast<float>(nfft * nfft);
+    v_r = 10.0F * log10(v_r);
     v_r = (v_r > -120) ? v_r : -120;
 
     right_spectrum[i] = v_r;
@@ -459,8 +461,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     max_points = left_spectrum.size();
   }
 
-  fft_min_freq = rate * (0.5F * 0 + 0.25F) / left_spectrum.size();
-  fft_max_freq = rate * (0.5F * (left_spectrum.size() - 1) + 0.25F) / left_spectrum.size();
+  fft_min_freq = static_cast<float>(rate) * (0.5F * 0 + 0.25F) / left_spectrum.size();
+  fft_max_freq = static_cast<float>(rate) * (0.5F * (left_spectrum.size() - 1.0F) + 0.25F) / left_spectrum.size();
 
   freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
@@ -469,7 +471,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   */
 
   try {
-    float dF = 0.5f * (rate / left_spectrum.size());
+    float dF = 0.5F * static_cast<float>(rate) / left_spectrum.size();
 
     boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(),
                                                                         0.0F, dF);
@@ -584,17 +586,17 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = event->x * fft_max_freq / width;
+    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = fft_max_left - event->y * (fft_max_left - fft_min_left) / height;
+    mouse_intensity = fft_max_left - static_cast<float>(event->y) * (fft_max_left - fft_min_left) / height;
   } else {
-    mouse_time = event->x * max_time / width;
+    mouse_time = static_cast<float>(event->x) * max_time / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+    mouse_intensity = max_left - static_cast<float>(event->y) * (max_left - min_left) / height;
   }
 }
 
@@ -605,17 +607,17 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = event->x * fft_max_freq / width;
+    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = fft_max_right - event->y * (fft_max_right - fft_min_right) / height;
+    mouse_intensity = fft_max_right - static_cast<float>(event->y) * (fft_max_right - fft_min_right) / height;
   } else {
-    mouse_time = event->x * max_time / width;
+    mouse_time = static_cast<float>(event->x) * max_time / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = max_right - event->y * (max_right - min_right) / height;
+    mouse_intensity = max_right - static_cast<float>(event->y) * (max_right - min_right) / height;
   }
 }
 
