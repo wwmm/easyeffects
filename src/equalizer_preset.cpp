@@ -26,10 +26,10 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".equalizer.split-channels", settings->get_boolean("split-channels"));
 
-  if (section == std::string("input")) {
+  if (section == "input") {
     save_channel(root, "input.equalizer.left", input_settings_left, nbands);
     save_channel(root, "input.equalizer.right", input_settings_right, nbands);
-  } else if (section == std::string("output")) {
+  } else if (section == "output") {
     save_channel(root, "output.equalizer.left", output_settings_left, nbands);
     save_channel(root, "output.equalizer.right", output_settings_right, nbands);
   }
