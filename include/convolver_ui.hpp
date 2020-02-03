@@ -27,13 +27,21 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   std::string log_tag = "convolver_ui: ";
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, ir_width;
-  Gtk::ListBox* irs_listbox;
-  Gtk::MenuButton* irs_menu_button;
-  Gtk::ScrolledWindow* irs_scrolled_window;
-  Gtk::Button* import_irs;
-  Gtk::DrawingArea *left_plot, *right_plot;
-  Gtk::Label *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
-  Gtk::ToggleButton* show_fft;
+
+  Gtk::ListBox* irs_listbox = nullptr;
+
+  Gtk::MenuButton* irs_menu_button = nullptr;
+
+  Gtk::ScrolledWindow* irs_scrolled_window = nullptr;
+
+  Gtk::Button* import_irs = nullptr;
+
+  Gtk::DrawingArea *left_plot = nullptr, *right_plot = nullptr;
+
+  Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
+             *label_duration = nullptr;
+
+  Gtk::ToggleButton* show_fft = nullptr;
 
   Pango::FontDescription font;
 
