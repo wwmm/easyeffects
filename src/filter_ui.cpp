@@ -2,7 +2,7 @@
 
 namespace {
 
-gboolean filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("12dB/oct Lowpass")) {
@@ -34,7 +34,7 @@ gboolean filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data
   return true;
 }
 
-GVariant* int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
