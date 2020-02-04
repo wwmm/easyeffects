@@ -18,7 +18,10 @@ class EffectsBaseUi {
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                 const Glib::RefPtr<Gio::Settings>& refSettings,
                 PulseManager* pulse_manager);
-
+  EffectsBaseUi(const EffectsBaseUi&) = delete;
+  auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
+  EffectsBaseUi(const EffectsBaseUi&&) = delete;
+  auto operator=(const EffectsBaseUi &&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
   void on_app_added(std::shared_ptr<AppInfo> app_info);
