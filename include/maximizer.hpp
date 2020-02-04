@@ -1,8 +1,6 @@
 #ifndef MAXIMIZER_HPP
 #define MAXIMIZER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {
