@@ -9,7 +9,11 @@
 class FilterUi : public Gtk::Grid, public PluginUiBase {
  public:
   FilterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~FilterUi();
+  FilterUi(const FilterUi&) = delete;
+  auto operator=(const FilterUi&) -> FilterUi& = delete;
+  FilterUi(const FilterUi&&) = delete;
+  auto operator=(const FilterUi &&) -> FilterUi& = delete;
+  ~FilterUi() override;
 
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, frequency, resonance, inertia;
