@@ -118,9 +118,11 @@ auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2
 
   if (idx1 < idx2) {
     return -1;
-  } else if (idx1 > idx2) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (idx1 > idx2) {
+    return 1;
+  }
+
+  return 0;
 }
