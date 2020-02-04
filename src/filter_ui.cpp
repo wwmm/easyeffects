@@ -31,7 +31,7 @@ auto filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) ->
     g_value_set_int(value, 11);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -39,29 +39,49 @@ auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, 
 
   if (v == 0) {
     return g_variant_new_string("12dB/oct Lowpass");
-  } else if (v == 1) {
-    return g_variant_new_string("24dB/oct Lowpass");
-  } else if (v == 2) {
-    return g_variant_new_string("36dB/oct Lowpass");
-  } else if (v == 3) {
-    return g_variant_new_string("12dB/oct Highpass");
-  } else if (v == 4) {
-    return g_variant_new_string("24dB/oct Highpass");
-  } else if (v == 5) {
-    return g_variant_new_string("36dB/oct Highpass");
-  } else if (v == 6) {
-    return g_variant_new_string("6dB/oct Bandpass");
-  } else if (v == 7) {
-    return g_variant_new_string("12dB/oct Bandpass");
-  } else if (v == 8) {
-    return g_variant_new_string("18dB/oct Bandpass");
-  } else if (v == 9) {
-    return g_variant_new_string("6dB/oct Bandreject");
-  } else if (v == 10) {
-    return g_variant_new_string("12dB/oct Bandreject");
-  } else {
-    return g_variant_new_string("18dB/oct Bandreject");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("24dB/oct Lowpass");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("36dB/oct Lowpass");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("12dB/oct Highpass");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("24dB/oct Highpass");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("36dB/oct Highpass");
+  }
+
+  if (v == 6) {
+    return g_variant_new_string("6dB/oct Bandpass");
+  }
+
+  if (v == 7) {
+    return g_variant_new_string("12dB/oct Bandpass");
+  }
+
+  if (v == 8) {
+    return g_variant_new_string("18dB/oct Bandpass");
+  }
+
+  if (v == 9) {
+    return g_variant_new_string("6dB/oct Bandreject");
+  }
+
+  if (v == 10) {
+    return g_variant_new_string("12dB/oct Bandreject");
+  }
+
+  return g_variant_new_string("18dB/oct Bandreject");
 }
 
 }  // namespace
