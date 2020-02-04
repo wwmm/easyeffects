@@ -9,11 +9,11 @@ namespace {
 auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Niceness")) {
+  if (std::strcmp(v, "Niceness") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Real Time")) {
+  } else if (std::strcmp(v, "Real Time") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("None")) {
+  } else if (std::strcmp(v, "None") == 0) {
     g_value_set_int(value, 2);
   }
 
