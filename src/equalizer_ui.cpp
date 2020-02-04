@@ -284,7 +284,7 @@ void EqualizerUi::on_nbands_changed() {
   }
 }
 
-void EqualizerUi::build_bands(Gtk::Grid* bands_grid, Glib::RefPtr<Gio::Settings> cfg, const int& nbands) {
+void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands) {
   for (auto c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
@@ -607,7 +607,7 @@ void EqualizerUi::on_calculate_frequencies() {
   for (int n = 0; n < nbands; n++) {
     freq1 = freq0 * step;
 
-    double freq = freq0 + ((freq1 - freq0) / 2.0);
+    double freq = freq0 + 0.5 * (freq1 - freq0);
     double width = freq1 - freq0;
     double q = freq / width;
 
@@ -650,13 +650,13 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   auto config_band = [&](auto cfg, auto n) {
     double q = 0;
 
-    double f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
+    auto f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
 
     try {
       q = root.get<double>("equalizer.band" + std::to_string(n) + ".q");
     } catch (const boost::property_tree::ptree_error& e) {
       try {
-        double w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
+        auto w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
 
         q = f / w;
       } catch (const boost::property_tree::ptree_error& e) {
@@ -720,9 +720,8 @@ void EqualizerUi::populate_presets_listbox() {
 
   auto names = Gio::Resource::enumerate_children_global(presets_path);
 
-  for (unsigned long int n = 0; n < names.size(); n++) {
-    auto file_name = names[n];
-    auto name = file_name.substr(0, file_name.find("."));
+  for (const auto& file_name : names) {
+    auto name = file_name.substr(0, file_name.find('.'));
 
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
 
