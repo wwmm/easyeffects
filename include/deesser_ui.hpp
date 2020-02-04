@@ -9,7 +9,11 @@
 class DeesserUi : public Gtk::Grid, public PluginUiBase {
  public:
   DeesserUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~DeesserUi();
+  DeesserUi(const DeesserUi&) = delete;
+  auto operator=(const DeesserUi&) -> DeesserUi& = delete;
+  DeesserUi(const DeesserUi&&) = delete;
+  auto operator=(const DeesserUi &&) -> DeesserUi& = delete;
+  ~DeesserUi() override;
 
   void on_new_compression(double value);
   void on_new_detected(double value);
