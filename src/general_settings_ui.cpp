@@ -6,7 +6,7 @@
 
 namespace {
 
-gboolean priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Niceness")) {
@@ -20,7 +20,8 @@ gboolean priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer us
   return true;
 }
 
-GVariant* int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -137,7 +138,7 @@ void GeneralSettingsUi::init_autostart_switch() {
   }
 }
 
-bool GeneralSettingsUi::on_enable_autostart(bool state) {
+auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
   boost::filesystem::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
 
   if (!boost::filesystem::is_directory(autostart_dir)) {

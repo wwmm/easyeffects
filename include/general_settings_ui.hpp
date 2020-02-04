@@ -44,15 +44,15 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   std::vector<sigc::connection> connections;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void init_autostart_switch();
 
-  bool on_enable_autostart(bool state);
+  auto on_enable_autostart(bool state) -> bool;
 
   void on_reset_settings();
 
