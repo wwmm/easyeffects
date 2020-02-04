@@ -29,7 +29,7 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
     g_value_set_int(value, 7);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -77,7 +77,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
     g_value_set_int(value, 2);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -113,7 +113,7 @@ auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
     g_value_set_int(value, 6);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -159,7 +159,7 @@ auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -220,7 +220,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
-  presets_listbox->set_sort_func(sigc::mem_fun(*this, &EqualizerUi::on_listbox_sort));
+  presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
   connections.push_back(settings->signal_changed("split-channels").connect([&](auto key) {
     for (auto c : connections_bands) {
@@ -234,10 +234,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     bool split = settings->get_boolean("split-channels");
 
     if (split) {
-      build_bands(bands_grid_left, settings_left, nbands->get_value());
-      build_bands(bands_grid_right, settings_right, nbands->get_value());
+      build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
+      build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
     } else {
-      build_unified_bands(nbands->get_value());
+      build_unified_bands(static_cast<int>(nbands->get_value()));
     }
   }));
 
@@ -277,10 +277,10 @@ void EqualizerUi::on_nbands_changed() {
   bool split = settings->get_boolean("split-channels");
 
   if (split) {
-    build_bands(bands_grid_left, settings_left, nbands->get_value());
-    build_bands(bands_grid_right, settings_right, nbands->get_value());
+    build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
+    build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
   } else {
-    build_unified_bands(nbands->get_value());
+    build_unified_bands(static_cast<int>(nbands->get_value()));
   }
 }
 
@@ -297,10 +297,15 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, Glib::RefPtr<Gio::Settings>
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
-    Gtk::Label *band_width, *band_label;
-    Gtk::Button *reset_frequency, *reset_quality;
-    Gtk::ToggleButton *band_solo, *band_mute;
+    Gtk::ComboBoxText* band_type;
+    Gtk::ComboBoxText* band_mode;
+    Gtk::ComboBoxText* band_slope;
+    Gtk::Label* band_width;
+    Gtk::Label* band_label;
+    Gtk::Button* reset_frequency;
+    Gtk::Button* reset_quality;
+    Gtk::ToggleButton* band_solo;
+    Gtk::ToggleButton* band_mute;
     Gtk::Scale* band_scale;
 
     B->get_widget("band_grid", band_grid);
@@ -416,10 +421,15 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
-    Gtk::Label *band_width, *band_label;
-    Gtk::Button *reset_frequency, *reset_quality;
-    Gtk::ToggleButton *band_solo, *band_mute;
+    Gtk::ComboBoxText* band_type;
+    Gtk::ComboBoxText* band_mode;
+    Gtk::ComboBoxText* band_slope;
+    Gtk::Label* band_width;
+    Gtk::Label* band_label;
+    Gtk::Button* reset_frequency;
+    Gtk::Button* reset_quality;
+    Gtk::ToggleButton* band_solo;
+    Gtk::ToggleButton* band_mute;
     Gtk::Scale* band_scale;
 
     B->get_widget("band_grid", band_grid);
@@ -576,7 +586,9 @@ void EqualizerUi::on_flat_response() {
 void EqualizerUi::on_calculate_frequencies() {
   const double min_freq = 20.0;
   const double max_freq = 20000.0;
-  double freq0, freq1, step;
+  double freq0;
+  double freq1;
+  double step;
 
   int nbands = settings->get_int("num-bands");
 
