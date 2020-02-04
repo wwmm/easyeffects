@@ -28,14 +28,14 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  Gtk::Grid *bands_grid_left, *bands_grid_right;
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
-  Gtk::Button *reset_eq, *flat_response, *calculate_freqs;
-  Gtk::ListBox* presets_listbox;
-  Gtk::Switch* split_channels;
-  Gtk::Stack* stack;
-  Gtk::StackSwitcher* stack_switcher;
-  Gtk::ComboBoxText* mode;
+  Gtk::Grid *bands_grid_left = nullptr, *bands_grid_right = nullptr;
+  Gtk::Button *reset_eq = nullptr, *flat_response = nullptr, *calculate_freqs = nullptr;
+  Gtk::ListBox* presets_listbox = nullptr;
+  Gtk::Switch* split_channels = nullptr;
+  Gtk::Stack* stack = nullptr;
+  Gtk::StackSwitcher* stack_switcher = nullptr;
+  Gtk::ComboBoxText* mode = nullptr;
 
   std::vector<sigc::connection> connections_bands;
 
