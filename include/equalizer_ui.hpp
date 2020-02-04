@@ -53,7 +53,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_calculate_frequencies();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void populate_presets_listbox();
 

@@ -8,7 +8,7 @@
 
 namespace {
 
-gboolean bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Off")) {
@@ -32,7 +32,7 @@ gboolean bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_da
   return true;
 }
 
-GVariant* int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -54,7 +54,7 @@ GVariant* int_to_bandtype_enum(const GValue* value, const GVariantType* expected
   }
 }
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("IIR")) {
@@ -68,7 +68,7 @@ gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
   return true;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -80,7 +80,7 @@ GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_typ
   }
 }
 
-gboolean bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("RLC (BT)")) {
@@ -102,7 +102,7 @@ gboolean bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_da
   return true;
 }
 
-GVariant* int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -122,7 +122,7 @@ GVariant* int_to_bandmode_enum(const GValue* value, const GVariantType* expected
   }
 }
 
-gboolean bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("x1")) {
@@ -138,7 +138,7 @@ gboolean bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
   return true;
 }
 
-GVariant* int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -652,7 +652,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   }
 }
 
-int EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
