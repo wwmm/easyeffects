@@ -37,8 +37,6 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
   gst_message_parse_stream_status(message, &type, &owner);
 
   switch (type) {
-    case GST_STREAM_STATUS_TYPE_CREATE:
-      break;
     case GST_STREAM_STATUS_TYPE_ENTER:
       path = gst_object_get_path_string(GST_OBJECT(owner));
 
@@ -63,15 +61,13 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
       }
 
       break;
-    case GST_STREAM_STATUS_TYPE_LEAVE:
-      break;
     default:
       break;
   }
 }
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
-  if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
+  if (std::strcmp(GST_OBJECT_NAME(message->src), "pipeline") == 0) {
     GstState old_state;
     GstState new_state;
     GstState pending;
@@ -92,7 +88,7 @@ void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, Pipeli
 }
 
 void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
-  if (GST_OBJECT_NAME(message->src) == std::string("source")) {
+  if (std::strcmp(GST_OBJECT_NAME(message->src), "source") == 0) {
     int latency;
     int buffer;
 
@@ -101,7 +97,7 @@ void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase
 
     util::debug(pb->log_tag + "pulsesrc latency [us]: " + std::to_string(latency));
     util::debug(pb->log_tag + "pulsesrc buffer [us]: " + std::to_string(buffer));
-  } else if (GST_OBJECT_NAME(message->src) == std::string("sink")) {
+  } else if (std::strcmp(GST_OBJECT_NAME(message->src), "sink") == 0) {
     int latency;
     int buffer;
 
@@ -116,7 +112,7 @@ void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase
 }
 
 void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
-  if (GST_OBJECT_NAME(message->src) == std::string("spectrum") && !pb->resizing_spectrum) {
+  if (std::strcmp(GST_OBJECT_NAME(message->src), "spectrum") == 0 && !pb->resizing_spectrum) {
     const GstStructure* s = gst_message_get_structure(message);
 
     const GValue* magnitudes;
@@ -188,7 +184,7 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
   if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
-    /*when we are playing it is necessary to reset the pipeline for the new
+    /* when we are playing it is necessary to reset the pipeline for the new
      * value to take effect
      */
 
@@ -205,7 +201,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
   if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
-    /*when we are playing it is necessary to reset the pipeline for the new
+    /* when we are playing it is necessary to reset the pipeline for the new
      * value to take effect
      */
 
@@ -587,10 +583,9 @@ void PipelineBase::get_latency() {
 }
 
 void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
-  for (auto a : apps_list) {
+  for (const auto& a : apps_list) {
     if (a->index == app_info->index) {
-      // do not add the same app two times
-      return;
+      return;  // do not add the same app two times
     }
   }
 
