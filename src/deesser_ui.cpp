@@ -1,13 +1,14 @@
 #include "deesser_ui.hpp"
+#include <cstring>
 
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -27,9 +28,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Wide")) {
+  if (std::strcmp(v, "Wide") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Split")) {
+  } else if (std::strcmp(v, "Split") == 0) {
     g_value_set_int(value, 1);
   }
 
