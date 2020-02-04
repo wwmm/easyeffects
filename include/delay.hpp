@@ -1,8 +1,6 @@
 #ifndef DELAY_HPP
 #define DELAY_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Delay : public PluginBase {

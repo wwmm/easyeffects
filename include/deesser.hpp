@@ -1,8 +1,6 @@
 #ifndef DEESSER_HPP
 #define DEESSER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {

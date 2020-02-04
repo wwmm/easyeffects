@@ -8,15 +8,19 @@
 class GateUi : public Gtk::Grid, public PluginUiBase {
  public:
   GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~GateUi();
+  GateUi(const GateUi&) = delete;
+  auto operator=(const GateUi&) -> GateUi& = delete;
+  GateUi(const GateUi&&) = delete;
+  auto operator=(const GateUi &&) -> GateUi& = delete;
+  ~GateUi() override;
 
   void on_new_gating(double value);
 
  private:
   Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, range, makeup;
-  Gtk::LevelBar* gating;
-  Gtk::Label* gating_label;
-  Gtk::ComboBoxText *detection, *stereo_link;
+  Gtk::LevelBar* gating = nullptr;
+  Gtk::Label* gating_label = nullptr;
+  Gtk::ComboBoxText *detection = nullptr, *stereo_link = nullptr;
 };
 
 #endif

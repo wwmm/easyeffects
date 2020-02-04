@@ -1,7 +1,6 @@
 #ifndef EXCITER_HPP
 #define EXCITER_HPP
 
-#include <array>
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
