@@ -8,7 +8,11 @@
 class Delay : public PluginBase {
  public:
   Delay(const std::string& tag, const std::string& schema);
-  ~Delay();
+  Delay(const Delay&) = delete;
+  auto operator=(const Delay&) -> Delay& = delete;
+  Delay(const Delay&&) = delete;
+  auto operator=(const Delay &&) -> Delay& = delete;
+  ~Delay() override;
 
   GstElement* delay = nullptr;
 
