@@ -11,7 +11,7 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -33,7 +33,7 @@ auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_dat
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -94,5 +94,5 @@ GateUi::~GateUi() {
 void GateUi::on_new_gating(double value) {
   gating->set_value(1 - value);
 
-  gating_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
