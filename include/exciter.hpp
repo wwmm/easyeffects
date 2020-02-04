@@ -1,14 +1,17 @@
 #ifndef EXCITER_HPP
 #define EXCITER_HPP
 
-#include <sigc++/sigc++.h>
 #include <array>
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
  public:
   Exciter(const std::string& tag, const std::string& schema);
-  ~Exciter();
+  Exciter(const Exciter&) = delete;
+  auto operator=(const Exciter&) -> Exciter& = delete;
+  Exciter(const Exciter&&) = delete;
+  auto operator=(const Exciter &&) -> Exciter& = delete;
+  ~Exciter() override;
 
   GstElement* exciter = nullptr;
 

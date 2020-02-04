@@ -1,7 +1,6 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-#include <sigc++/sigc++.h>
 #include <array>
 #include "plugin_base.hpp"
 
