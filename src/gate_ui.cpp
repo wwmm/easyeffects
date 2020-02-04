@@ -1,13 +1,14 @@
 #include "gate_ui.hpp"
+#include <cstring>
 
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -27,9 +28,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Average")) {
+  if (std::strcmp(v, "Average") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Maximum")) {
+  } else if (std::strcmp(v, "Maximum") == 0) {
     g_value_set_int(value, 1);
   }
 
