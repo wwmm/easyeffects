@@ -7,7 +7,7 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Maximizer* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->reduction_connection.connected()) {
       l->reduction_connection = Glib::signal_timeout().connect(
           [l]() {
