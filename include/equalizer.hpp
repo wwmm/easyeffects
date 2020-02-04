@@ -11,7 +11,11 @@ class Equalizer : public PluginBase {
             const std::string& schema,
             const std::string& schema_left,
             const std::string& schema_right);
-  ~Equalizer();
+  Equalizer(const Equalizer&) = delete;
+  auto operator=(const Equalizer&) -> Equalizer& = delete;
+  Equalizer(const Equalizer&&) = delete;
+  auto operator=(const Equalizer &&) -> Equalizer& = delete;
+  ~Equalizer() override;
 
   GstElement* equalizer = nullptr;
 
