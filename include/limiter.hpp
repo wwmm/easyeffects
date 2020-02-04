@@ -1,14 +1,16 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Limiter : public PluginBase {
  public:
   Limiter(const std::string& tag, const std::string& schema);
-  ~Limiter();
+  Limiter(const Limiter&) = delete;
+  auto operator=(const Limiter&) -> Limiter& = delete;
+  Limiter(const Limiter&&) = delete;
+  auto operator=(const Limiter &&) -> Limiter& = delete;
+  ~Limiter() override;
 
   GstElement* limiter = nullptr;
 
