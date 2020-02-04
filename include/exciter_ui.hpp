@@ -8,7 +8,11 @@
 class ExciterUi : public Gtk::Grid, public PluginUiBase {
  public:
   ExciterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~ExciterUi();
+  ExciterUi(const ExciterUi&) = delete;
+  auto operator=(const ExciterUi&) -> ExciterUi& = delete;
+  ExciterUi(const ExciterUi&&) = delete;
+  auto operator=(const ExciterUi &&) -> ExciterUi& = delete;
+  ~ExciterUi() override;
 
   void on_new_harmonics_level(double value);
 
