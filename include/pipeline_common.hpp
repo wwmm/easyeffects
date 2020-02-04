@@ -6,8 +6,6 @@
 #include <mutex>
 #include "util.hpp"
 
-namespace {
-
 template <typename T>
 void update_effects_order(gpointer user_data) {
   auto l = static_cast<T>(user_data);
@@ -153,7 +151,5 @@ void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
 
   g_object_unref(srcpad);
 }
-
-}  // namespace
 
 #endif
