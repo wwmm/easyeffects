@@ -135,11 +135,11 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
     auto max_mag = *std::max_element(pb->spectrum_mag.begin(), pb->spectrum_mag.end());
 
     if (max_mag > min_mag) {
-      for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
-        if (min_mag < pb->spectrum_mag[n]) {
-          pb->spectrum_mag[n] = (min_mag - pb->spectrum_mag[n]) / min_mag;
+      for (float& v : pb->spectrum_mag) {
+        if (min_mag < v) {
+          v = (min_mag - v) / min_mag;
         } else {
-          pb->spectrum_mag[n] = 0.0f;
+          v = 0.0F;
         }
       }
 
