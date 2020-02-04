@@ -16,7 +16,7 @@
 class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                const Glib::RefPtr<Gio::Settings>& refSettings,
+                Glib::RefPtr<Gio::Settings> refSettings,
                 PulseManager* pulse_manager);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;

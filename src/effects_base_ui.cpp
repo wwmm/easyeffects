@@ -4,9 +4,9 @@
 #include <gtkmm/label.h>
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                             const Glib::RefPtr<Gio::Settings>& refSettings,
+                             Glib::RefPtr<Gio::Settings> refSettings,
                              PulseManager* pulse_manager)
-    : settings(refSettings), pm(pulse_manager) {
+    : settings(std::move(refSettings)), pm(pulse_manager) {
   // loading glade widgets
 
   builder->get_widget("stack", stack);
