@@ -8,7 +8,11 @@
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
  public:
   CrystalizerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~CrystalizerUi();
+  CrystalizerUi(const CrystalizerUi&) = delete;
+  auto operator=(const CrystalizerUi&) -> CrystalizerUi& = delete;
+  CrystalizerUi(const CrystalizerUi&&) = delete;
+  auto operator=(const CrystalizerUi &&) -> CrystalizerUi& = delete;
+  ~CrystalizerUi() override;
 
   void on_new_range_before(double value);
 
