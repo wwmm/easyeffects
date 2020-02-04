@@ -17,7 +17,7 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gtk::Adjustment> fcut, feed;
 
-  Gtk::Button *preset_cmoy, *preset_default, *preset_jmeier;
+  Gtk::Button *preset_cmoy = nullptr, *preset_default = nullptr, *preset_jmeier = nullptr;
 
   void init_presets_buttons();
 };
