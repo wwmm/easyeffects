@@ -24,7 +24,7 @@ class Equalizer : public PluginBase {
  private:
   GSettings *settings_left = nullptr, *settings_right = nullptr;
 
-  void bind_band(GstElement* equalizer, const int index);
+  void bind_band(GstElement* equalizer, const int& index);
 };
 
 #endif
