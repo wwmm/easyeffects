@@ -68,7 +68,9 @@ auto check_update(gpointer user_data) -> bool {
 
   if (l->plugins_order.size() != l->plugins_order_old.size()) {
     update = true;
-  } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(), l->plugins_order_old.begin())) {
+  }
+
+  if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(), l->plugins_order_old.begin())) {
     update = true;
   }
 
@@ -86,7 +88,7 @@ auto check_update(gpointer user_data) -> bool {
 }
 
 template <typename T>
-static auto event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
+auto event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
