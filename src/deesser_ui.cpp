@@ -11,7 +11,7 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -33,7 +33,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -102,11 +102,11 @@ DeesserUi::~DeesserUi() {
 void DeesserUi::on_new_compression(double value) {
   compression->set_value(1 - value);
 
-  compression_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  compression_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void DeesserUi::on_new_detected(double value) {
   detected->set_value(value);
 
-  detected_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  detected_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
