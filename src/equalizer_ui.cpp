@@ -37,21 +37,33 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
 
   if (v == 0) {
     return g_variant_new_string("Off");
-  } else if (v == 1) {
-    return g_variant_new_string("Bell");
-  } else if (v == 2) {
-    return g_variant_new_string("Hi-pass");
-  } else if (v == 3) {
-    return g_variant_new_string("Hi-shelf");
-  } else if (v == 4) {
-    return g_variant_new_string("Lo-pass");
-  } else if (v == 5) {
-    return g_variant_new_string("Lo-shelf");
-  } else if (v == 6) {
-    return g_variant_new_string("Notch");
-  } else {
-    return g_variant_new_string("Resonance");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Bell");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Hi-pass");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("Hi-shelf");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("Lo-pass");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("Lo-shelf");
+  }
+
+  if (v == 6) {
+    return g_variant_new_string("Notch");
+  }
+
+  return g_variant_new_string("Resonance");
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -73,11 +85,13 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 
   if (v == 0) {
     return g_variant_new_string("IIR");
-  } else if (v == 1) {
-    return g_variant_new_string("FIR");
-  } else {
-    return g_variant_new_string("FFT");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("FIR");
+  }
+
+  return g_variant_new_string("FFT");
 }
 
 auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -107,19 +121,29 @@ auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type
 
   if (v == 0) {
     return g_variant_new_string("RLC (BT)");
-  } else if (v == 1) {
-    return g_variant_new_string("RLC (MT)");
-  } else if (v == 2) {
-    return g_variant_new_string("BWC (BT)");
-  } else if (v == 3) {
-    return g_variant_new_string("BWC (MT)");
-  } else if (v == 4) {
-    return g_variant_new_string("LRX (BT)");
-  } else if (v == 5) {
-    return g_variant_new_string("LRX (MT)");
-  } else {
-    return g_variant_new_string("APO (DR)");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("RLC (MT)");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("BWC (BT)");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("BWC (MT)");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("LRX (BT)");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("LRX (MT)");
+  }
+
+  return g_variant_new_string("APO (DR)");
 }
 
 auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -143,13 +167,17 @@ auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_typ
 
   if (v == 0) {
     return g_variant_new_string("x1");
-  } else if (v == 1) {
-    return g_variant_new_string("x2");
-  } else if (v == 2) {
-    return g_variant_new_string("x3");
-  } else {
-    return g_variant_new_string("x4");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("x2");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("x3");
+  }
+
+  return g_variant_new_string("x4");
 }
 
 }  // namespace
@@ -662,11 +690,13 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void EqualizerUi::populate_presets_listbox() {
