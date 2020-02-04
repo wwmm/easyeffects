@@ -8,7 +8,11 @@
 class Deesser : public PluginBase {
  public:
   Deesser(const std::string& tag, const std::string& schema);
-  ~Deesser();
+  Deesser(const Deesser&) = delete;
+  auto operator=(const Deesser&) -> Deesser& = delete;
+  Deesser(const Deesser&&) = delete;
+  auto operator=(const Deesser &&) -> Deesser& = delete;
+  ~Deesser() override;
 
   GstElement* deesser = nullptr;
 
