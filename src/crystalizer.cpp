@@ -7,7 +7,7 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->range_before_connection.connected()) {
       l->range_before_connection = Glib::signal_timeout().connect(
           [l]() {

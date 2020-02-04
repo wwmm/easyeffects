@@ -4,9 +4,6 @@
 #include <gio/gio.h>
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
-#include <array>
-#include <iostream>
-#include <mutex>
 
 class PluginBase {
  public:
