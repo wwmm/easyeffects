@@ -1,8 +1,6 @@
 #ifndef COMPRESSOR_HPP
 #define COMPRESSOR_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Compressor : public PluginBase {

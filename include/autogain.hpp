@@ -1,8 +1,6 @@
 #ifndef AUTOGAIN_HPP
 #define AUTOGAIN_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class AutoGain : public PluginBase {

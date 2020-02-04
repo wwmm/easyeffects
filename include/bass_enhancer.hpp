@@ -1,8 +1,6 @@
 #ifndef BASS_ENHANCER_HPP
 #define BASS_ENHANCER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class BassEnhancer : public PluginBase {
