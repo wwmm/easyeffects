@@ -8,7 +8,11 @@
 class MultibandGate : public PluginBase {
  public:
   MultibandGate(const std::string& tag, const std::string& schema);
-  ~MultibandGate();
+  MultibandGate(const MultibandGate&) = delete;
+  auto operator=(const MultibandGate&) -> MultibandGate& = delete;
+  MultibandGate(const MultibandGate&&) = delete;
+  auto operator=(const MultibandGate &&) -> MultibandGate& = delete;
+  ~MultibandGate() override;
 
   GstElement* multiband_gate = nullptr;
 
