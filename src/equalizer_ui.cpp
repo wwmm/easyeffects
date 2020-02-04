@@ -5,27 +5,28 @@
 #include <gtkmm/togglebutton.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <cstring>
 
 namespace {
 
 auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Off")) {
+  if (std::strcmp(v, "Off") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Bell")) {
+  } else if (std::strcmp(v, "Bell") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Hi-pass")) {
+  } else if (std::strcmp(v, "Hi-pass") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Hi-shelf")) {
+  } else if (std::strcmp(v, "Hi-shelf") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Lo-pass")) {
+  } else if (std::strcmp(v, "Lo-pass") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Lo-shelf")) {
+  } else if (std::strcmp(v, "Lo-shelf") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("Notch")) {
+  } else if (std::strcmp(v, "Notch") == 0) {
     g_value_set_int(value, 6);
-  } else if (v == std::string("Resonance")) {
+  } else if (std::strcmp(v, "Resonance") == 0) {
     g_value_set_int(value, 7);
   }
 
@@ -69,11 +70,11 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("IIR")) {
+  if (std::strcmp(v, "IIR") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("FIR")) {
+  } else if (std::strcmp(v, "FIR") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("FFT")) {
+  } else if (std::strcmp(v, "FFT") == 0) {
     g_value_set_int(value, 2);
   }
 
@@ -97,19 +98,19 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RLC (BT)")) {
+  if (std::strcmp(v, "RLC (BT)") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("RLC (MT)")) {
+  } else if (std::strcmp(v, "RLC (MT)") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("BWC (BT)")) {
+  } else if (std::strcmp(v, "BWC (BT)") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("BWC (MT)")) {
+  } else if (std::strcmp(v, "BWC (MT)") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("LRX (BT)")) {
+  } else if (std::strcmp(v, "LRX (BT)") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("LRX (MT)")) {
+  } else if (std::strcmp(v, "LRX (MT)") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("APO (DR)")) {
+  } else if (std::strcmp(v, "APO (DR)") == 0) {
     g_value_set_int(value, 6);
   }
 
@@ -149,13 +150,13 @@ auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type
 auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("x1")) {
+  if (std::strcmp(v, "x1") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("x2")) {
+  } else if (std::strcmp(v, "x2") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("x3")) {
+  } else if (std::strcmp(v, "x3") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("x4")) {
+  } else if (std::strcmp(v, "x4") == 0) {
     g_value_set_int(value, 3);
   }
 
