@@ -19,9 +19,9 @@ class ExciterUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gtk::Adjustment> amount, blend, ceilv, harmonics, input_gain, output_gain, scope;
 
-  Gtk::LevelBar* harmonics_levelbar;
-  Gtk::Label* harmonics_levelbar_label;
-  Gtk::ToggleButton *ceil_active, *listen;
+  Gtk::LevelBar* harmonics_levelbar = nullptr;
+  Gtk::Label* harmonics_levelbar_label = nullptr;
+  Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
 };
 
 #endif
