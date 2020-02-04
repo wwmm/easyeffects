@@ -68,7 +68,7 @@ class PipelineBase {
 
   void enable_spectrum();
   void disable_spectrum();
-  auto get_peak(GstMessage* message) -> std::array<double, 2>;
+  static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
   void set_source_monitor_name(std::string name);
   void set_output_sink_name(std::string name);

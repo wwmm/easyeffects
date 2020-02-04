@@ -23,7 +23,7 @@ void on_message_error(const GstBus* gst_bus, GstMessage* message, PipelineBase* 
   g_free(debug);
 }
 
-static void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
+void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
   GstStreamStatusType type;
   GstElement* owner;
   gchar* path;
@@ -269,7 +269,7 @@ void on_bypass_off(gpointer user_data) {
   }
 }
 
-static auto bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
+auto bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
@@ -594,7 +594,7 @@ void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
     }
   }
 
-  apps_list.push_back(move(app_info));
+  apps_list.push_back(app_info);
 
   update_pipeline_state();
 }
@@ -602,7 +602,7 @@ void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
   std::replace_copy_if(
       apps_list.begin(), apps_list.end(), apps_list.begin(), [=](auto& a) { return a->index == app_info->index; },
-      move(app_info));
+      app_info);
 
   update_pipeline_state();
 }
@@ -668,7 +668,9 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 }
 
 void PipelineBase::update_spectrum_interval(const double& value) {
-  auto interval = guint64(1000000000. / value);
+  const float one_second_in_ns = 1000000000.0F;
+
+  auto interval = guint64(one_second_in_ns / value);
 
   g_object_set(spectrum, "interval", interval, nullptr);
 }
@@ -744,7 +746,7 @@ void PipelineBase::disable_spectrum() {
 }
 
 auto PipelineBase::get_peak(GstMessage* message) -> std::array<double, 2> {
-  std::array<double, 2> peak;
+  std::array<double, 2> peak{0, 0};
 
   const GstStructure* s = gst_message_get_structure(message);
 
@@ -765,8 +767,9 @@ auto PipelineBase::get_peak(GstMessage* message) -> std::array<double, 2> {
 auto PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement* {
   GstElement* plugin = gst_element_factory_make(factoryname, name);
 
-  if (plugin == nullptr)
+  if (plugin == nullptr) {
     throw std::runtime_error(log_tag + std::string("Failed to get required plugin: ") + factoryname);
+  }
 
   return plugin;
 }
