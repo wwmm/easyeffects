@@ -19,9 +19,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 
   if (v == 0) {
     return g_variant_new_string("RMS");
-  } else {
-    return g_variant_new_string("Peak");
   }
+
+  return g_variant_new_string("Peak");
 }
 
 auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -41,9 +41,9 @@ auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_t
 
   if (v == 0) {
     return g_variant_new_string("Average");
-  } else {
-    return g_variant_new_string("Maximum");
   }
+
+  return g_variant_new_string("Maximum");
 }
 
 }  // namespace
