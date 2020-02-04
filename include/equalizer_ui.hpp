@@ -17,7 +17,11 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
               const std::string& schema,
               const std::string& schema_left,
               const std::string& schema_right);
-  virtual ~EqualizerUi();
+  EqualizerUi(const EqualizerUi&) = delete;
+  auto operator=(const EqualizerUi&) -> EqualizerUi& = delete;
+  EqualizerUi(const EqualizerUi&&) = delete;
+  auto operator=(const EqualizerUi &&) -> EqualizerUi& = delete;
+  ~EqualizerUi() override;
 
   void reset();
 
