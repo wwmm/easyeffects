@@ -27,9 +27,12 @@ static void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb)
   GstStreamStatusType type;
   GstElement* owner;
   gchar* path;
-  std::string path_str, source_name;
+  std::string path_str;
+  std::string source_name;
   std::size_t idx;
-  int priority, niceness, priority_type;
+  int priority;
+  int niceness;
+  int priority_type;
 
   gst_message_parse_stream_status(message, &type, &owner);
 
@@ -69,7 +72,9 @@ static void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb)
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state, new_state, pending;
+    GstState old_state;
+    GstState new_state;
+    GstState pending;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, &pending);
 
@@ -88,7 +93,8 @@ void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, Pipeli
 
 void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
   if (GST_OBJECT_NAME(message->src) == std::string("source")) {
-    int latency, buffer;
+    int latency;
+    int buffer;
 
     g_object_get(pb->source, "latency-time", &latency, nullptr);
     g_object_get(pb->source, "buffer-time", &buffer, nullptr);
@@ -96,7 +102,8 @@ void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase
     util::debug(pb->log_tag + "pulsesrc latency [us]: " + std::to_string(latency));
     util::debug(pb->log_tag + "pulsesrc buffer [us]: " + std::to_string(buffer));
   } else if (GST_OBJECT_NAME(message->src) == std::string("sink")) {
-    int latency, buffer;
+    int latency;
+    int buffer;
 
     g_object_get(pb->sink, "latency-time", &latency, nullptr);
     g_object_get(pb->sink, "buffer-time", &buffer, nullptr);
@@ -175,7 +182,8 @@ void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps,
 }
 
 void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
@@ -191,7 +199,8 @@ void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
 }
 
 void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
 
@@ -223,7 +232,7 @@ void on_bypass_on(gpointer user_data) {
 
   auto effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
 
-  if (effects_bin) {
+  if (effects_bin != nullptr) {
     gst_element_set_state(effects_bin, GST_STATE_READY);
 
     gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
@@ -243,7 +252,7 @@ void on_bypass_off(gpointer user_data) {
 
   auto bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
 
-  if (!bin) {
+  if (bin == nullptr) {
     gst_element_set_state(pb->effects_bin, GST_STATE_NULL);
 
     gst_element_unlink(pb->adapter, pb->spectrum_bin);
@@ -348,17 +357,17 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   // initializing properties
 
   g_object_set(source, "volume", 1.0, nullptr);
-  g_object_set(source, "mute", false, nullptr);
-  g_object_set(source, "provide-clock", false, nullptr);
+  g_object_set(source, "mute", 0, nullptr);
+  g_object_set(source, "provide-clock", 0, nullptr);
   g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
-  g_object_set(source, "do-timestamp", true, nullptr);
+  g_object_set(source, "do-timestamp", 1, nullptr);
 
   g_object_set(sink, "volume", 1.0, nullptr);
-  g_object_set(sink, "mute", false, nullptr);
-  g_object_set(sink, "provide-clock", true, nullptr);
+  g_object_set(sink, "mute", 0, nullptr);
+  g_object_set(sink, "provide-clock", 1, nullptr);
 
-  g_object_set(queue_src, "silent", true, nullptr);
-  g_object_set(queue_src, "flush-on-eos", true, nullptr);
+  g_object_set(queue_src, "silent", 1, nullptr);
+  g_object_set(queue_src, "flush-on-eos", 1, nullptr);
   g_object_set(queue_src, "max-size-buffers", 0, nullptr);
   g_object_set(queue_src, "max-size-bytes", 0, nullptr);
   g_object_set(queue_src, "max-size-time", 0, nullptr);
@@ -389,7 +398,7 @@ PipelineBase::~PipelineBase() {
 
   auto s = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
 
-  if (!s) {
+  if (s == nullptr) {
     gst_object_unref(spectrum);
   }
 
@@ -493,7 +502,8 @@ void PipelineBase::set_pulseaudio_props(std::string props) {
 void PipelineBase::set_null_pipeline() {
   gst_element_set_state(pipeline, GST_STATE_NULL);
 
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
@@ -525,7 +535,8 @@ auto PipelineBase::apps_want_to_play() -> bool {
 void PipelineBase::update_pipeline_state() {
   bool wants_to_play = apps_want_to_play();
 
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
@@ -538,7 +549,8 @@ void PipelineBase::update_pipeline_state() {
 
     timeout_connection = Glib::signal_timeout().connect_seconds(
         [=]() {
-          GstState s, p;
+          GstState s;
+          GstState p;
 
           gst_element_get_state(pipeline, &s, &p, state_check_timeout);
 
@@ -557,9 +569,10 @@ void PipelineBase::update_pipeline_state() {
 void PipelineBase::get_latency() {
   GstQuery* q = gst_query_new_latency();
 
-  if (gst_element_query(pipeline, q)) {
+  if (gst_element_query(pipeline, q) != 0) {
     gboolean live;
-    GstClockTime min, max;
+    GstClockTime min;
+    GstClockTime max;
 
     gst_query_parse_latency(q, &live, &min, &max);
 
@@ -752,7 +765,7 @@ auto PipelineBase::get_peak(GstMessage* message) -> std::array<double, 2> {
 auto PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement* {
   GstElement* plugin = gst_element_factory_make(factoryname, name);
 
-  if (!plugin)
+  if (plugin == nullptr)
     throw std::runtime_error(log_tag + std::string("Failed to get required plugin: ") + factoryname);
 
   return plugin;
@@ -762,7 +775,8 @@ void PipelineBase::do_bypass(const bool& value) {
   auto srcpad = gst_element_get_static_pad(adapter, "src");
 
   if (value) {
-    GstState state, pending;
+    GstState state;
+    GstState pending;
 
     gst_element_get_state(pipeline, &state, &pending, 0);
 
@@ -793,9 +807,5 @@ void PipelineBase::do_bypass(const bool& value) {
 auto PipelineBase::bypass_state() -> bool {
   auto bin = gst_bin_get_by_name(GST_BIN(pipeline), "effects_bin");
 
-  if (bin) {
-    return false;
-  } else {
-    return true;
-  }
+  return bin == nullptr;
 }
