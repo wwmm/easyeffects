@@ -19,11 +19,11 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
   void on_new_range_after(double value);
 
  private:
-  Gtk::Grid* bands_grid;
+  Gtk::Grid* bands_grid = nullptr;
 
-  Gtk::LevelBar *range_before, *range_after;
-  Gtk::Label *range_before_label, *range_after_label;
-  Gtk::ToggleButton* aggressive;
+  Gtk::LevelBar *range_before = nullptr, *range_after = nullptr;
+  Gtk::Label *range_before_label = nullptr, *range_after_label = nullptr;
+  Gtk::ToggleButton* aggressive = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
 
