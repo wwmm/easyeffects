@@ -17,7 +17,7 @@ auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
     g_value_set_int(value, 2);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
