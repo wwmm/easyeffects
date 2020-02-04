@@ -64,11 +64,11 @@ class PipelineBase {
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
   void do_bypass(const bool& value);
-  bool bypass_state();
+  auto bypass_state() -> bool;
 
   void enable_spectrum();
   void disable_spectrum();
-  std::array<double, 2> get_peak(GstMessage* message);
+  auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
   void set_source_monitor_name(std::string name);
   void set_output_sink_name(std::string name);
@@ -111,9 +111,9 @@ class PipelineBase {
 
   void init_spectrum_bin();
   void init_effects_bin();
-  bool apps_want_to_play();
+  auto apps_want_to_play() -> bool;
 
-  GstElement* get_required_plugin(const gchar* factoryname, const gchar* name);
+  auto get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement*;
 };
 
 #endif

@@ -206,7 +206,7 @@ void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
   }
 }
 
-GstPadProbeReturn on_sink_event(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto on_sink_event(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   GstEvent* event = GST_PAD_PROBE_INFO_EVENT(info);
 
   if (event->type == GST_EVENT_LATENCY) {
@@ -260,7 +260,7 @@ void on_bypass_off(gpointer user_data) {
   }
 }
 
-static GstPadProbeReturn bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+static auto bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
@@ -272,7 +272,7 @@ static GstPadProbeReturn bypass_event_probe_cb(GstPad* pad, GstPadProbeInfo* inf
   return GST_PAD_PROBE_DROP;
 }
 
-GstPadProbeReturn bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   auto pb = static_cast<PipelineBase*>(user_data);
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
@@ -281,7 +281,7 @@ GstPadProbeReturn bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpoi
 
   gst_pad_add_probe(srcpad,
                     static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK | GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-                    bypass_event_probe_cb, user_data, NULL);
+                    bypass_event_probe_cb, user_data, nullptr);
 
   auto sinkpad = gst_element_get_static_pad(pb->effects_bin, "sink");
 
@@ -508,7 +508,7 @@ void PipelineBase::set_null_pipeline() {
   util::debug(log_tag + gst_element_state_get_name(state) + " -> " + gst_element_state_get_name(pending));
 }
 
-bool PipelineBase::apps_want_to_play() {
+auto PipelineBase::apps_want_to_play() -> bool {
   bool wants_to_play = false;
 
   for (auto& a : apps_list) {
@@ -730,7 +730,7 @@ void PipelineBase::disable_spectrum() {
   g_object_unref(srcpad);
 }
 
-std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
+auto PipelineBase::get_peak(GstMessage* message) -> std::array<double, 2> {
   std::array<double, 2> peak;
 
   const GstStructure* s = gst_message_get_structure(message);
@@ -749,7 +749,7 @@ std::array<double, 2> PipelineBase::get_peak(GstMessage* message) {
   return peak;
 }
 
-GstElement* PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* name) {
+auto PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement* {
   GstElement* plugin = gst_element_factory_make(factoryname, name);
 
   if (!plugin)
@@ -790,7 +790,7 @@ void PipelineBase::do_bypass(const bool& value) {
   }
 }
 
-bool PipelineBase::bypass_state() {
+auto PipelineBase::bypass_state() -> bool {
   auto bin = gst_bin_get_by_name(GST_BIN(pipeline), "effects_bin");
 
   if (bin) {
