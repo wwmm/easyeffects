@@ -30,10 +30,10 @@ class EffectsBaseUi {
 
  protected:
   Glib::RefPtr<Gio::Settings> settings;
-  Gtk::ListBox* listbox;
-  Gtk::Stack* stack;
+  Gtk::ListBox* listbox = nullptr;
+  Gtk::Stack* stack = nullptr;
 
-  SpectrumUi* spectrum_ui;
+  SpectrumUi* spectrum_ui = nullptr;
 
   std::vector<sigc::connection> connections;
 
@@ -131,11 +131,11 @@ class EffectsBaseUi {
   }
 
  private:
-  Gtk::Box* apps_box;
+  Gtk::Box* apps_box = nullptr;
 
-  PulseManager* pm;
+  PulseManager* pm = nullptr;
 
-  Gtk::Box* placeholder_spectrum;
+  Gtk::Box* placeholder_spectrum = nullptr;
 
   std::vector<AppInfoUi*> apps_list;
 
