@@ -90,7 +90,7 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
  protected:
-  void set_pulseaudio_props(std::string props);
+  void set_pulseaudio_props(const std::string& props);
   void set_caps(const uint& sampling_rate);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);

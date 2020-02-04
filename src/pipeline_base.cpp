@@ -488,7 +488,7 @@ void PipelineBase::set_output_sink_name(const std::string& name) {
   util::debug(log_tag + "using output device: " + name);
 }
 
-void PipelineBase::set_pulseaudio_props(std::string props) {
+void PipelineBase::set_pulseaudio_props(const std::string& props) {
   auto str = "props," + props;
 
   auto s = gst_structure_from_string(str.c_str(), nullptr);
