@@ -8,6 +8,10 @@
 class Filter : public PluginBase {
  public:
   Filter(const std::string& tag, const std::string& schema);
+  Filter(const Filter&) = delete;
+  auto operator=(const Filter&) -> Filter& = delete;
+  Filter(const Filter&&) = delete;
+  auto operator=(const Filter &&) -> Filter& = delete;
   ~Filter();
 
   GstElement* filter = nullptr;
