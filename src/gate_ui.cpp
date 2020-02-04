@@ -2,7 +2,7 @@
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("RMS")) {
@@ -14,7 +14,7 @@ gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
   return true;
 }
 
-GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -24,7 +24,7 @@ GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expecte
   }
 }
 
-gboolean stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Average")) {
@@ -36,7 +36,7 @@ gboolean stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user
   return true;
 }
 
-GVariant* int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
