@@ -64,7 +64,7 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
   apps_list.push_back(appui);
 }
 
-void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
+void EffectsBaseUi::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 
@@ -90,7 +90,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
   }
 }
 
-int EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 

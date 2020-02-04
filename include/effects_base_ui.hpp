@@ -25,7 +25,7 @@ class EffectsBaseUi {
   virtual ~EffectsBaseUi();
 
   void on_app_added(std::shared_ptr<AppInfo> app_info);
-  void on_app_changed(std::shared_ptr<AppInfo> app_info);
+  void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
  protected:
@@ -139,7 +139,7 @@ class EffectsBaseUi {
 
   std::vector<AppInfoUi*> apps_list;
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
 
 #endif
