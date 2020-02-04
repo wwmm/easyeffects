@@ -21,10 +21,10 @@ class DeesserUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gtk::Adjustment> threshold, ratio, makeup, f1_freq, f2_freq, f1_level, f2_level, f2_q;
 
-  Gtk::LevelBar *compression, *detected;
-  Gtk::Label *compression_label, *detected_label;
-  Gtk::ComboBoxText *detection, *mode;
-  Gtk::ToggleButton* sc_listen;
+  Gtk::LevelBar *compression = nullptr, *detected = nullptr;
+  Gtk::Label *compression_label = nullptr, *detected_label = nullptr;
+  Gtk::ComboBoxText *detection = nullptr, *mode = nullptr;
+  Gtk::ToggleButton* sc_listen = nullptr;
 };
 
 #endif
