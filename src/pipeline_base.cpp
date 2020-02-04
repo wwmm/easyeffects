@@ -44,7 +44,7 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
 
       path_str = path;
 
-      idx = path_str.find_last_of("/");
+      idx = path_str.find_last_of('/');
 
       source_name = path_str.substr(idx + 1);
 
@@ -460,7 +460,7 @@ void PipelineBase::init_effects_bin() {
   g_object_unref(srcpad);
 }
 
-void PipelineBase::set_source_monitor_name(std::string name) {
+void PipelineBase::set_source_monitor_name(const std::string& name) {
   gchar* current_device;
 
   g_object_get(source, "current-device", &current_device, nullptr);
@@ -482,7 +482,7 @@ void PipelineBase::set_source_monitor_name(std::string name) {
   g_free(current_device);
 }
 
-void PipelineBase::set_output_sink_name(std::string name) {
+void PipelineBase::set_output_sink_name(const std::string& name) {
   g_object_set(sink, "device", name.c_str(), nullptr);
 
   util::debug(log_tag + "using output device: " + name);
@@ -614,7 +614,7 @@ void PipelineBase::on_app_removed(uint idx) {
   update_pipeline_state();
 }
 
-void PipelineBase::on_sink_changed(std::shared_ptr<mySinkInfo> sink_info) {
+void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info) {
   if (sink_info->name == "PulseEffects_apps") {
     if (sink_info->rate != current_rate) {
       gst_element_set_state(pipeline, GST_STATE_READY);
@@ -626,7 +626,7 @@ void PipelineBase::on_sink_changed(std::shared_ptr<mySinkInfo> sink_info) {
   }
 }
 
-void PipelineBase::on_source_changed(std::shared_ptr<mySourceInfo> source_info) {
+void PipelineBase::on_source_changed(const std::shared_ptr<mySourceInfo>& source_info) {
   if (source_info->name == "PulseEffects_mic.monitor") {
     if (source_info->rate != current_rate) {
       gst_element_set_state(pipeline, GST_STATE_READY);

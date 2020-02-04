@@ -70,8 +70,8 @@ class PipelineBase {
   void disable_spectrum();
   static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
-  void set_source_monitor_name(std::string name);
-  void set_output_sink_name(std::string name);
+  void set_source_monitor_name(const std::string& name);
+  void set_output_sink_name(const std::string& name);
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
@@ -97,8 +97,8 @@ class PipelineBase {
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
-  void on_sink_changed(std::shared_ptr<mySinkInfo> sink_info);
-  void on_source_changed(std::shared_ptr<mySourceInfo> source_info);
+  void on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info);
+  void on_source_changed(const std::shared_ptr<mySourceInfo>& source_info);
 
  private:
   uint current_rate = 0;
