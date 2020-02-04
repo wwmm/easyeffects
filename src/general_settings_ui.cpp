@@ -26,11 +26,13 @@ auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected
 
   if (v == 0) {
     return g_variant_new_string("Niceness");
-  } else if (v == 1) {
-    return g_variant_new_string("Real Time");
-  } else {
-    return g_variant_new_string("None");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Real Time");
+  }
+
+  return g_variant_new_string("None");
 }
 
 }  // namespace
