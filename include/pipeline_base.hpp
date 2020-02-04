@@ -19,6 +19,10 @@
 class PipelineBase {
  public:
   PipelineBase(const std::string& tag, PulseManager* pulse_manager);
+  PipelineBase(const PipelineBase&) = delete;
+  auto operator=(const PipelineBase&) -> PipelineBase& = delete;
+  PipelineBase(const PipelineBase&&) = delete;
+  auto operator=(const PipelineBase &&) -> PipelineBase& = delete;
   virtual ~PipelineBase();
 
   bool playing = false;
