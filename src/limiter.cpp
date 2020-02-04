@@ -7,11 +7,12 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL, inR;
+            float inL;
+            float inR;
 
             g_object_get(l->limiter, "meter-inL", &inL, nullptr);
             g_object_get(l->limiter, "meter-inR", &inR, nullptr);
@@ -28,7 +29,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL, outR;
+            float outL;
+            float outR;
 
             g_object_get(l->limiter, "meter-outL", &outL, nullptr);
             g_object_get(l->limiter, "meter-outR", &outR, nullptr);
@@ -85,7 +87,7 @@ Limiter::Limiter(const std::string& tag, const std::string& schema) : PluginBase
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(limiter, "bypass", false, nullptr);
+    g_object_set(limiter, "bypass", 0, nullptr);
 
     bind_to_gsettings();
 
