@@ -1,8 +1,6 @@
 #ifndef MULTIBAND_GATE_HPP
 #define MULTIBAND_GATE_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class MultibandGate : public PluginBase {
