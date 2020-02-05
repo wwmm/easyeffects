@@ -39,17 +39,17 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   std::vector<sigc::connection> connections;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  bool on_show_spectrum(bool state);
+  auto on_show_spectrum(bool state) -> bool;
 
   void on_spectrum_sampling_freq_set();
 
-  bool on_use_custom_color(bool state);
+  auto on_use_custom_color(bool state) -> bool;
 };
 
 #endif

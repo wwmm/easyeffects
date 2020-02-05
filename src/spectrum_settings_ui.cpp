@@ -3,7 +3,7 @@
 
 namespace {
 
-gboolean spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Bars")) {
@@ -12,10 +12,11 @@ gboolean spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer us
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -143,7 +144,7 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }
 
-bool SpectrumSettingsUi::on_show_spectrum(bool state) {
+auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
   if (state) {
     app->sie->enable_spectrum();
     app->soe->enable_spectrum();
@@ -155,7 +156,7 @@ bool SpectrumSettingsUi::on_show_spectrum(bool state) {
   return false;
 }
 
-bool SpectrumSettingsUi::on_use_custom_color(bool state) {
+auto SpectrumSettingsUi::on_use_custom_color(bool state) -> bool {
   if (state) {
     Glib::Variant<std::vector<double>> v;
 
