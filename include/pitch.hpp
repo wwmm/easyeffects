@@ -1,14 +1,16 @@
 #ifndef PITCH_HPP
 #define PITCH_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {
  public:
   Pitch(const std::string& tag, const std::string& schema);
-  ~Pitch();
+  Pitch(const Pitch&) = delete;
+  auto operator=(const Pitch&) -> Pitch& = delete;
+  Pitch(const Pitch&&) = delete;
+  auto operator=(const Pitch &&) -> Pitch& = delete;
+  ~Pitch() override;
 
   GstElement* pitch = nullptr;
 
