@@ -9,10 +9,12 @@
 
 class SpectrumUi : public Gtk::Grid {
  public:
-  SpectrumUi(BaseObjectType* cobject,
-             const Glib::RefPtr<Gtk::Builder>& builder);
-
-  virtual ~SpectrumUi();
+  SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+  SpectrumUi(const SpectrumUi&) = delete;
+  auto operator=(const SpectrumUi&) -> SpectrumUi& = delete;
+  SpectrumUi(const SpectrumUi&&) = delete;
+  auto operator=(const SpectrumUi &&) -> SpectrumUi& = delete;
+  ~SpectrumUi() override;
 
   static SpectrumUi* add_to_box(Gtk::Box* box);
 
@@ -25,7 +27,7 @@ class SpectrumUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::DrawingArea* spectrum;
+  Gtk::DrawingArea* spectrum = nullptr;
   Gdk::RGBA color, gradient_color;
 
   std::vector<sigc::connection> connections;
