@@ -37,7 +37,8 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Label *module_name, *module_argument;
+    Gtk::Label* module_name;
+    Gtk::Label* module_argument;
 
     b->get_widget("module_row", row);
     b->get_widget("module_name", module_name);
@@ -55,7 +56,8 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Label *client_name, *client_binary;
+    Gtk::Label* client_name;
+    Gtk::Label* client_binary;
 
     b->get_widget("client_row", row);
     b->get_widget("client_name", client_name);
@@ -121,11 +123,13 @@ auto PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void PulseInfoUi::on_stack_visible_child_changed() {
@@ -163,7 +167,8 @@ void PulseInfoUi::get_pulse_conf() {
 
     while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
       std::vector<std::string> aux;
-      std::string key, value;
+      std::string key;
+      std::string value;
 
       boost::split(aux, line, boost::is_any_of("="));
 
@@ -171,7 +176,8 @@ void PulseInfoUi::get_pulse_conf() {
         auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
         Gtk::ListBoxRow* row;
-        Gtk::Label *conf_key, *conf_value;
+        Gtk::Label* conf_key;
+        Gtk::Label* conf_value;
 
         b->get_widget("conf_row", row);
         b->get_widget("conf_key", conf_key);
