@@ -15,8 +15,11 @@
 class SpectrumSettingsUi : public Gtk::Grid {
  public:
   SpectrumSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
-
-  virtual ~SpectrumSettingsUi();
+  SpectrumSettingsUi(const SpectrumSettingsUi&) = delete;
+  auto operator=(const SpectrumSettingsUi&) -> SpectrumSettingsUi& = delete;
+  SpectrumSettingsUi(const SpectrumSettingsUi&&) = delete;
+  auto operator=(const SpectrumSettingsUi &&) -> SpectrumSettingsUi& = delete;
+  ~SpectrumSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
@@ -25,11 +28,12 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Application* app;
+  Application* app = nullptr;
 
-  Gtk::Switch *show, *use_custom_color, *fill, *show_bar_border, *use_gradient;
-  Gtk::ColorButton *spectrum_color_button, *gradient_color_button;
-  Gtk::ComboBoxText* spectrum_type;
+  Gtk::Switch *show = nullptr, *use_custom_color = nullptr, *fill = nullptr, *show_bar_border = nullptr,
+              *use_gradient = nullptr;
+  Gtk::ColorButton *spectrum_color_button = nullptr, *gradient_color_button = nullptr;
+  Gtk::ComboBoxText* spectrum_type = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent, sampling_freq, line_width;
 
