@@ -30,19 +30,29 @@ auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_typ
 
   if (v == 0) {
     return g_variant_new_string("64");
-  } else if (v == 1) {
-    return g_variant_new_string("128");
-  } else if (v == 2) {
-    return g_variant_new_string("256");
-  } else if (v == 3) {
-    return g_variant_new_string("512");
-  } else if (v == 4) {
-    return g_variant_new_string("1024");
-  } else if (v == 5) {
-    return g_variant_new_string("2048");
-  } else {
-    return g_variant_new_string("4096");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("128");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("256");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("512");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("1024");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("2048");
+  }
+
+  return g_variant_new_string("4096");
 }
 
 }  // namespace
