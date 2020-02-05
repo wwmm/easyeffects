@@ -1,4 +1,5 @@
 #include "reverb_ui.hpp"
+#include <cstring>
 #include "util.hpp"
 
 namespace {
@@ -6,17 +7,17 @@ namespace {
 auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Small")) {
+  if (std::strcmp(v, "Small") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Medium")) {
+  } else if (std::strcmp(v, "Medium") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Large")) {
+  } else if (std::strcmp(v, "Large") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Tunnel-like")) {
+  } else if (std::strcmp(v, "Tunnel-like") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Large/smooth")) {
+  } else if (std::strcmp(v, "Large/smooth") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Experimental")) {
+  } else if (std::strcmp(v, "Experimental") == 0) {
     g_value_set_int(value, 5);
   }
 

@@ -1,14 +1,16 @@
 #ifndef REVERB_HPP
 #define REVERB_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Reverb : public PluginBase {
  public:
   Reverb(const std::string& tag, const std::string& schema);
-  ~Reverb();
+  Reverb(const Reverb&) = delete;
+  auto operator=(const Reverb&) -> Reverb& = delete;
+  Reverb(const Reverb&&) = delete;
+  auto operator=(const Reverb &&) -> Reverb& = delete;
+  ~Reverb() override;
 
   GstElement* reverb = nullptr;
 
