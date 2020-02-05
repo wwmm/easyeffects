@@ -8,19 +8,22 @@
 
 class WebrtcUi : public Gtk::Grid, public PluginUiBase {
  public:
-  WebrtcUi(BaseObjectType* cobject,
-           const Glib::RefPtr<Gtk::Builder>& builder,
-           const std::string& settings_name);
-  virtual ~WebrtcUi();
+  WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  WebrtcUi(const WebrtcUi&) = delete;
+  auto operator=(const WebrtcUi&) -> WebrtcUi& = delete;
+  WebrtcUi(const WebrtcUi&&) = delete;
+  auto operator=(const WebrtcUi &&) -> WebrtcUi& = delete;
+  ~WebrtcUi() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> compression_gain_db, target_level_dbfs,
-      voice_detection_frame_size;
-  Gtk::ToggleButton *echo_cancel, *extended_filter, *high_pass_filter,
-      *delay_agnostic, *noise_suppression, *gain_control, *limiter,
-      *voice_detection;
-  Gtk::ComboBoxText *echo_suppression_level, *noise_suppression_level,
-      *gain_control_mode, *voice_detection_likelihood;
+  Glib::RefPtr<Gtk::Adjustment> compression_gain_db, target_level_dbfs, voice_detection_frame_size;
+
+  Gtk::ToggleButton *echo_cancel = nullptr, *extended_filter = nullptr, *high_pass_filter = nullptr,
+                    *delay_agnostic = nullptr, *noise_suppression = nullptr, *gain_control = nullptr,
+                    *limiter = nullptr, *voice_detection = nullptr;
+
+  Gtk::ComboBoxText *echo_suppression_level = nullptr, *noise_suppression_level = nullptr, *gain_control_mode = nullptr,
+                    *voice_detection_likelihood = nullptr;
 };
 
 #endif
