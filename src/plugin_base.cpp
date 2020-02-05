@@ -1,5 +1,4 @@
 #include "plugin_base.hpp"
-#include <mutex>
 #include "util.hpp"
 
 namespace {
