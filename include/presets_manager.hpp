@@ -32,7 +32,11 @@
 class PresetsManager {
  public:
   PresetsManager();
-  virtual ~PresetsManager();
+  PresetsManager(const PresetsManager&) = delete;
+  auto operator=(const PresetsManager&) -> PresetsManager& = delete;
+  PresetsManager(const PresetsManager&&) = delete;
+  auto operator=(const PresetsManager &&) -> PresetsManager& = delete;
+  ~PresetsManager();
 
   std::vector<std::string> get_names(PresetType preset_type);
   void add(PresetType preset_type, const std::string& name);
