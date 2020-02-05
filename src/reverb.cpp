@@ -7,11 +7,12 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL, inR;
+            float inL;
+            float inR;
 
             g_object_get(l->reverb, "meter-inL", &inL, nullptr);
             g_object_get(l->reverb, "meter-inR", &inR, nullptr);
@@ -28,7 +29,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL, outR;
+            float outL;
+            float outR;
 
             g_object_get(l->reverb, "meter-outL", &outL, nullptr);
             g_object_get(l->reverb, "meter-outR", &outR, nullptr);
@@ -69,7 +71,7 @@ Reverb::Reverb(const std::string& tag, const std::string& schema) : PluginBase(t
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(reverb, "on", true, nullptr);
+    g_object_set(reverb, "on", 1, nullptr);
 
     bind_to_gsettings();
 
