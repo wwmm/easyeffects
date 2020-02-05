@@ -6,9 +6,9 @@
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
-                             const Glib::RefPtr<Gio::Settings>& refSettings,
+                             Glib::RefPtr<Gio::Settings> refSettings,
                              Application* application)
-    : Gtk::Grid(cobject), settings(refSettings), app(application) {
+    : Gtk::Grid(cobject), settings(std::move(refSettings)), app(application) {
   // loading glade widgets
 
   builder->get_widget("output_listbox", output_listbox);
@@ -24,9 +24,9 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   // signals connection
 
-  output_listbox->set_sort_func(sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
+  output_listbox->set_sort_func(sigc::ptr_fun(&PresetsMenuUi::on_listbox_sort));
 
-  input_listbox->set_sort_func(sigc::mem_fun(*this, &PresetsMenuUi::on_listbox_sort));
+  input_listbox->set_sort_func(sigc::ptr_fun(&PresetsMenuUi::on_listbox_sort));
 
   add_output->signal_clicked().connect([=]() { create_preset(PresetType::output); });
 
@@ -47,7 +47,7 @@ PresetsMenuUi::~PresetsMenuUi() {
   util::debug(log_tag + "destroyed");
 }
 
-PresetsMenuUi* PresetsMenuUi::add_to_popover(Gtk::Popover* popover, Application* app) {
+auto PresetsMenuUi::add_to_popover(Gtk::Popover* popover, Application* app) -> PresetsMenuUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
@@ -157,7 +157,7 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   populate_listbox(preset_type);
 }
 
-int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -175,7 +175,7 @@ int PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2)
 }
 
 void PresetsMenuUi::on_presets_menu_button_clicked() {
-  Gtk::ApplicationWindow* parent = dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
+  auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
 
   int height = 0.7 * parent->get_allocated_height();
 
@@ -202,11 +202,13 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
   auto names = app->presets_manager->get_names(preset_type);
 
-  for (auto name : names) {
+  for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Button *apply_btn, *save_btn, *remove_btn;
+    Gtk::Button* apply_btn;
+    Gtk::Button* save_btn;
+    Gtk::Button* remove_btn;
     Gtk::Label* label;
     Gtk::ToggleButton* autoload_btn;
 
@@ -270,19 +272,19 @@ void PresetsMenuUi::reset_menu_button_label() {
   auto names_input = app->presets_manager->get_names(PresetType::input);
   auto names_output = app->presets_manager->get_names(PresetType::output);
 
-  if (names_input.size() == 0 && names_output.size() == 0) {
+  if (names_input.empty() && names_output.empty()) {
     settings->set_string("last-used-preset", _("Presets"));
 
     return;
   }
 
-  for (auto name : names_input) {
+  for (const auto& name : names_input) {
     if (name == settings->get_string("last-used-preset")) {
       return;
     }
   }
 
-  for (auto name : names_output) {
+  for (const auto& name : names_output) {
     if (name == settings->get_string("last-used-preset")) {
       return;
     }
@@ -291,8 +293,9 @@ void PresetsMenuUi::reset_menu_button_label() {
   settings->set_string("last-used-preset", _("Presets"));
 }
 
-std::string PresetsMenuUi::build_device_name(PresetType preset_type, const std::string& device) {
-  std::string port, dev_name;
+auto PresetsMenuUi::build_device_name(PresetType preset_type, const std::string& device) -> std::string {
+  std::string port;
+  std::string dev_name;
 
   if (preset_type == PresetType::output) {
     auto info = app->pm->get_sink_info(device);
@@ -313,7 +316,7 @@ std::string PresetsMenuUi::build_device_name(PresetType preset_type, const std::
   return dev_name;
 }
 
-bool PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) {
+auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) -> bool {
   std::string current_autoload;
 
   if (preset_type == PresetType::output) {

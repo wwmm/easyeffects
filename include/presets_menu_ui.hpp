@@ -16,7 +16,7 @@ class PresetsMenuUi : public Gtk::Grid {
  public:
   PresetsMenuUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& builder,
-                const Glib::RefPtr<Gio::Settings>& refSettings,
+                Glib::RefPtr<Gio::Settings> refSettings,
                 Application* application);
   PresetsMenuUi(const PresetsMenuUi&) = delete;
   auto operator=(const PresetsMenuUi&) -> PresetsMenuUi& = delete;
@@ -24,11 +24,11 @@ class PresetsMenuUi : public Gtk::Grid {
   auto operator=(const PresetsMenuUi &&) -> PresetsMenuUi& = delete;
   ~PresetsMenuUi() override;
 
-  static PresetsMenuUi* add_to_popover(Gtk::Popover* popover, Application* app);
+  static auto add_to_popover(Gtk::Popover* popover, Application* app) -> PresetsMenuUi*;
 
   void on_presets_menu_button_clicked();
 
-  std::string build_device_name(PresetType preset_type, const std::string& device);
+  auto build_device_name(PresetType preset_type, const std::string& device) -> std::string;
 
  private:
   std::string log_tag = "presets_menu_ui: ";
@@ -51,11 +51,11 @@ class PresetsMenuUi : public Gtk::Grid {
 
   void populate_listbox(PresetType preset_type);
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void reset_menu_button_label();
 
-  bool is_autoloaded(PresetType preset_type, const std::string& name);
+  auto is_autoloaded(PresetType preset_type, const std::string& name) -> bool;
 };
 
 #endif
