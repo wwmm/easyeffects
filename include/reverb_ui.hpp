@@ -9,14 +9,21 @@
 class ReverbUi : public Gtk::Grid, public PluginUiBase {
  public:
   ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~ReverbUi();
+  ReverbUi(const ReverbUi&) = delete;
+  auto operator=(const ReverbUi&) -> ReverbUi& = delete;
+  ReverbUi(const ReverbUi&&) = delete;
+  auto operator=(const ReverbUi &&) -> ReverbUi& = delete;
+  ~ReverbUi() override;
 
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, predelay, decay_time, diffusion, amount, dry, hf_damp,
       bass_cut, treble_cut;
-  Gtk::ComboBoxText* room_size;
-  Gtk::Button *preset_room, *preset_empty_walls, *preset_ambience, *preset_large_empty_hall, *preset_disco,
-      *preset_large_occupied_hall, *preset_default;
+
+  Gtk::ComboBoxText* room_size = nullptr;
+
+  Gtk::Button *preset_room = nullptr, *preset_empty_walls = nullptr, *preset_ambience = nullptr,
+              *preset_large_empty_hall = nullptr, *preset_disco = nullptr, *preset_large_occupied_hall = nullptr,
+              *preset_default = nullptr;
 
   void init_presets_buttons();
 };
