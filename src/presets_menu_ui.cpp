@@ -167,17 +167,19 @@ auto PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void PresetsMenuUi::on_presets_menu_button_clicked() {
   auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
+  const float scaling_factor = 0.7F;
 
-  int height = 0.7 * parent->get_allocated_height();
+  int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
 
   output_scrolled_window->set_max_content_height(height);
 
@@ -329,9 +331,5 @@ auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& nam
     current_autoload = app->presets_manager->find_autoload(dev_name);
   }
 
-  if (current_autoload == name) {
-    return true;
-  } else {
-    return false;
-  }
+  return current_autoload == name;
 }
