@@ -392,15 +392,15 @@ auto PresetsManager::find_autoload(const std::string& device) -> std::string {
     boost::property_tree::read_json(input_file.string(), root);
 
     return root.get<std::string>("name", "");
-  } else {
-    return "";
   }
+
+  return "";
 }
 
 void PresetsManager::autoload(PresetType preset_type, const std::string& device) {
   auto name = find_autoload(device);
 
-  if (name != "") {
+  if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device);
 
     load(preset_type, name);
@@ -415,18 +415,10 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
   if (preset_type == PresetType::output) {
     input_file = output_dir / boost::filesystem::path{name + ".json"};
 
-    if (boost::filesystem::exists(input_file)) {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    input_file = input_dir / boost::filesystem::path{name + ".json"};
-
-    if (boost::filesystem::exists(input_file)) {
-      return true;
-    } else {
-      return false;
-    }
+    return boost::filesystem::exists(input_file);
   }
+
+  input_file = input_dir / boost::filesystem::path{name + ".json"};
+
+  return boost::filesystem::exists(input_file);
 }
