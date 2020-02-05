@@ -16,8 +16,11 @@
 class PulseSettingsUi : public Gtk::Grid {
  public:
   PulseSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
-
-  virtual ~PulseSettingsUi();
+  PulseSettingsUi(const PulseSettingsUi&) = delete;
+  auto operator=(const PulseSettingsUi&) -> PulseSettingsUi& = delete;
+  PulseSettingsUi(const PulseSettingsUi&&) = delete;
+  auto operator=(const PulseSettingsUi &&) -> PulseSettingsUi& = delete;
+  ~PulseSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
@@ -26,11 +29,11 @@ class PulseSettingsUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
-  Application* app;
+  Application* app = nullptr;
 
-  Gtk::ToggleButton *use_default_sink, *use_default_source;
-  Gtk::ComboBox *input_device, *output_device;
-  Gtk::ComboBoxText *blocksize_in, *blocksize_out;
+  Gtk::ToggleButton *use_default_sink = nullptr, *use_default_source = nullptr;
+  Gtk::ComboBox *input_device = nullptr, *output_device = nullptr;
+  Gtk::ComboBoxText *blocksize_in = nullptr, *blocksize_out = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> sie_input_buffer, sie_input_latency, sie_output_buffer, sie_output_latency,
       soe_input_buffer, soe_input_latency, soe_output_buffer, soe_output_latency;
