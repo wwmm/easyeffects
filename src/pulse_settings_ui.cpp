@@ -3,7 +3,7 @@
 
 namespace {
 
-gboolean blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("64")) {
@@ -25,7 +25,7 @@ gboolean blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
   return true;
 }
 
-GVariant* int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
