@@ -22,11 +22,13 @@ auto int_to_echo_suppression_level(const GValue* value, const GVariantType* expe
 
   if (v == 0) {
     return g_variant_new_string("low");
-  } else if (v == 1) {
-    return g_variant_new_string("moderate");
-  } else {
-    return g_variant_new_string("high");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("moderate");
+  }
+
+  return g_variant_new_string("high");
 }
 
 auto noise_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -51,13 +53,17 @@ auto int_to_noise_suppression_level(const GValue* value, const GVariantType* exp
 
   if (v == 0) {
     return g_variant_new_string("low");
-  } else if (v == 1) {
-    return g_variant_new_string("moderate");
-  } else if (v == 2) {
-    return g_variant_new_string("high");
-  } else {
-    return g_variant_new_string("very-high");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("moderate");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("high");
+  }
+
+  return g_variant_new_string("very-high");
 }
 
 auto gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -77,9 +83,9 @@ auto int_to_gain_control_mode(const GValue* value, const GVariantType* expected_
 
   if (v == 0) {
     return g_variant_new_string("adaptive-digital");
-  } else {
-    return g_variant_new_string("fixed-digital");
   }
+
+  return g_variant_new_string("fixed-digital");
 }
 
 auto voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -104,13 +110,17 @@ auto int_to_voice_detection_likelihood(const GValue* value, const GVariantType* 
 
   if (v == 0) {
     return g_variant_new_string("very-low");
-  } else if (v == 1) {
-    return g_variant_new_string("low");
-  } else if (v == 2) {
-    return g_variant_new_string("moderate");
-  } else {
-    return g_variant_new_string("high");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("low");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("moderate");
+  }
+
+  return g_variant_new_string("high");
 }
 
 }  // namespace
