@@ -1,4 +1,5 @@
 #include "pulse_settings_ui.hpp"
+#include <cstring>
 #include "util.hpp"
 
 namespace {
@@ -6,19 +7,19 @@ namespace {
 auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("64")) {
+  if (std::strcmp(v, "64") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("128")) {
+  } else if (std::strcmp(v, "128") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("256")) {
+  } else if (std::strcmp(v, "256") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("512")) {
+  } else if (std::strcmp(v, "512") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("1024")) {
+  } else if (std::strcmp(v, "1024") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("2048")) {
+  } else if (std::strcmp(v, "2048") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("4096")) {
+  } else if (std::strcmp(v, "4096") == 0) {
     g_value_set_int(value, 6);
   }
 
