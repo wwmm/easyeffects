@@ -1,4 +1,5 @@
 #include "spectrum_settings_ui.hpp"
+#include <cstring>
 #include "util.hpp"
 
 namespace {
@@ -6,9 +7,9 @@ namespace {
 auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Bars")) {
+  if (std::strcmp(v, "Bars") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Lines")) {
+  } else if (std::strcmp(v, "Lines") == 0) {
     g_value_set_int(value, 1);
   }
 
