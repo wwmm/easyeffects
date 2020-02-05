@@ -18,8 +18,11 @@ class PresetsMenuUi : public Gtk::Grid {
                 const Glib::RefPtr<Gtk::Builder>& builder,
                 const Glib::RefPtr<Gio::Settings>& refSettings,
                 Application* application);
-
-  virtual ~PresetsMenuUi();
+  PresetsMenuUi(const PresetsMenuUi&) = delete;
+  auto operator=(const PresetsMenuUi&) -> PresetsMenuUi& = delete;
+  PresetsMenuUi(const PresetsMenuUi&&) = delete;
+  auto operator=(const PresetsMenuUi &&) -> PresetsMenuUi& = delete;
+  ~PresetsMenuUi() override;
 
   static PresetsMenuUi* add_to_popover(Gtk::Popover* popover, Application* app);
 
@@ -32,13 +35,13 @@ class PresetsMenuUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Application* app;
+  Application* app = nullptr;
 
-  Gtk::Button *add_output, *add_input, *import_output, *import_input;
-  Gtk::ListBox *output_listbox, *input_listbox;
+  Gtk::Button *add_output = nullptr, *add_input = nullptr, *import_output = nullptr, *import_input = nullptr;
+  Gtk::ListBox *output_listbox = nullptr, *input_listbox = nullptr;
 
-  Gtk::Entry *output_name, *input_name;
-  Gtk::ScrolledWindow *output_scrolled_window, *input_scrolled_window;
+  Gtk::Entry *output_name = nullptr, *input_name = nullptr;
+  Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
 
   std::vector<sigc::connection> connections;
 
