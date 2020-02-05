@@ -2,7 +2,7 @@
 
 namespace {
 
-gboolean echo_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto echo_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("low")) {
@@ -13,10 +13,11 @@ gboolean echo_suppression_level_to_int(GValue* value, GVariant* variant, gpointe
     g_value_set_int(value, 2);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_echo_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_echo_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -28,7 +29,7 @@ GVariant* int_to_echo_suppression_level(const GValue* value, const GVariantType*
   }
 }
 
-gboolean noise_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto noise_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("low")) {
@@ -41,10 +42,11 @@ gboolean noise_suppression_level_to_int(GValue* value, GVariant* variant, gpoint
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_noise_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_noise_suppression_level(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -58,7 +60,7 @@ GVariant* int_to_noise_suppression_level(const GValue* value, const GVariantType
   }
 }
 
-gboolean gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("adaptive-digital")) {
@@ -67,10 +69,10 @@ gboolean gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer use
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_gain_control_mode(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_gain_control_mode(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -80,7 +82,7 @@ GVariant* int_to_gain_control_mode(const GValue* value, const GVariantType* expe
   }
 }
 
-gboolean voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("very-low")) {
@@ -93,12 +95,11 @@ gboolean voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpo
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_voice_detection_likelihood(const GValue* value,
-                                            const GVariantType* expected_type,
-                                            gpointer user_data) {
+auto int_to_voice_detection_likelihood(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
