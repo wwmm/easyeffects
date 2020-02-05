@@ -12,21 +12,26 @@
 class PulseInfoUi : public Gtk::Box {
  public:
   PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr);
-
-  virtual ~PulseInfoUi();
+  PulseInfoUi(const PulseInfoUi&) = delete;
+  auto operator=(const PulseInfoUi&) -> PulseInfoUi& = delete;
+  PulseInfoUi(const PulseInfoUi&&) = delete;
+  auto operator=(const PulseInfoUi &&) -> PulseInfoUi& = delete;
+  ~PulseInfoUi() override;
 
   static PulseInfoUi* add_to_stack(Gtk::Stack* stack, PulseManager* pm);
 
  private:
   std::string log_tag = "pulse_info: ";
 
-  PulseManager* pm;
-  Gtk::Stack* stack;
+  PulseManager* pm = nullptr;
+  Gtk::Stack* stack = nullptr;
 
-  Gtk::Label *server_name, *server_version, *default_sink, *default_source, *protocol, *server_sample_format,
-      *server_rate, *server_channels, *server_channel_mapping, *config_file;
+  Gtk::Label *server_name = nullptr, *server_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
+             *protocol = nullptr, *server_sample_format = nullptr, *server_rate = nullptr, *server_channels = nullptr,
+             *server_channel_mapping = nullptr, *config_file = nullptr;
 
-  Gtk::ListBox *listbox_modules, *listbox_clients, *listbox_config, *listbox_resamplers;
+  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr, *listbox_config = nullptr,
+               *listbox_resamplers = nullptr;
 
   std::vector<sigc::connection> connections;
 

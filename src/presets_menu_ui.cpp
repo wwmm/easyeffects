@@ -71,7 +71,7 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
   }
 
   if (!name.empty()) {
-    std::string illegalChars = "\\/\0";
+    std::string illegalChars = "\\/";
 
     for (auto it = name.begin(); it < name.end(); ++it) {
       bool found = illegalChars.find(*it) != std::string::npos;
