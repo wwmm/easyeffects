@@ -21,9 +21,9 @@ auto int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected
 
   if (v == 0) {
     return g_variant_new_string("Bars");
-  } else {
-    return g_variant_new_string("Lines");
   }
+
+  return g_variant_new_string("Lines");
 }
 
 }  // namespace
