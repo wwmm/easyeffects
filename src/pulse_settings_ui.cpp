@@ -22,7 +22,7 @@ auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
     g_value_set_int(value, 6);
   }
 
-  return true;
+  return 1;
 }
 
 auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
@@ -138,12 +138,12 @@ void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_pulse", _("Pulseaudio"));
 }
 
-void PulseSettingsUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
+void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   bool add_to_list = true;
 
   auto children = sink_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -185,7 +185,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
 
   auto children = sink_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -205,12 +205,12 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   }
 }
 
-void PulseSettingsUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
+void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info) {
   bool add_to_list = true;
 
   auto children = source_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -252,7 +252,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
 
   auto children = source_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -276,7 +276,7 @@ void PulseSettingsUi::on_use_default_sink_toggled() {
   if (use_default_sink->get_active()) {
     auto children = sink_list->children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       std::string name;
 
       c.get_value(1, name);
@@ -292,7 +292,7 @@ void PulseSettingsUi::on_use_default_source_toggled() {
   if (use_default_source->get_active()) {
     auto children = source_list->children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       std::string name;
 
       c.get_value(1, name);

@@ -54,11 +54,11 @@ class PulseSettingsUi : public Gtk::Grid {
     object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(builder->get_object(name));
   }
 
-  void on_sink_added(std::shared_ptr<mySinkInfo> info);
+  void on_sink_added(const std::shared_ptr<mySinkInfo>& info);
 
   void on_sink_removed(uint idx);
 
-  void on_source_added(std::shared_ptr<mySourceInfo> info);
+  void on_source_added(const std::shared_ptr<mySourceInfo>& info);
 
   void on_source_removed(uint idx);
 
