@@ -1,8 +1,8 @@
 #include "realtime_kit.hpp"
-#include <limits.h>
 #include <sys/resource.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+#include <climits>
 #include "util.hpp"
 
 RealtimeKit::RealtimeKit(const std::string& tag) {
@@ -19,13 +19,11 @@ RealtimeKit::RealtimeKit(const std::string& tag) {
   }
 }
 
-RealtimeKit::~RealtimeKit() {}
-
 /*
   This method code was adapted from the one in Pulseaudio sources. File rtkit.c
 */
 
-long long RealtimeKit::get_int_property(const char* propname) {
+auto RealtimeKit::get_int_property(const char* propname) -> long long {
   Glib::VariantBase reply_body;
   long long propval = 0;
   const char* interfacestr = "org.freedesktop.RealtimeKit1";
