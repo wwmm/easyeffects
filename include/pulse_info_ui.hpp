@@ -18,7 +18,7 @@ class PulseInfoUi : public Gtk::Box {
   auto operator=(const PulseInfoUi &&) -> PulseInfoUi& = delete;
   ~PulseInfoUi() override;
 
-  static PulseInfoUi* add_to_stack(Gtk::Stack* stack, PulseManager* pm);
+  static auto add_to_stack(Gtk::Stack* stack, PulseManager* pm) -> PulseInfoUi*;
 
  private:
   std::string log_tag = "pulse_info: ";
@@ -39,7 +39,7 @@ class PulseInfoUi : public Gtk::Box {
   void get_pulse_conf();
   void get_resamplers();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
   void on_stack_visible_child_changed();
 };
 
