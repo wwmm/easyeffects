@@ -1,23 +1,24 @@
 #include "stereo_tools_ui.hpp"
+#include <cstring>
 
 namespace {
 
 auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("LR > LR (Stereo Default)")) {
+  if (std::strcmp(v, "LR > LR (Stereo Default)") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("LR > MS (Stereo to Mid-Side)")) {
+  } else if (std::strcmp(v, "LR > MS (Stereo to Mid-Side)") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("MS > LR (Mid-Side to Stereo)")) {
+  } else if (std::strcmp(v, "MS > LR (Mid-Side to Stereo)") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("LR > LL (Mono Left Channel)")) {
+  } else if (std::strcmp(v, "LR > LL (Mono Left Channel)") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("LR > RR (Mono Right Channel)")) {
+  } else if (std::strcmp(v, "LR > RR (Mono Right Channel)") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("LR > L+R (Mono Sum L+R)")) {
+  } else if (std::strcmp(v, "LR > L+R (Mono Sum L+R)") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("LR > RL (Stereo Flip Channels)")) {
+  } else if (std::strcmp(v, "LR > RL (Stereo Flip Channels)") == 0) {
     g_value_set_int(value, 6);
   }
 
