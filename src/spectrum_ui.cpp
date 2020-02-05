@@ -78,9 +78,9 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
 
   if (n_points > 0) {
     auto allocation = spectrum->get_allocation();
-    float width = allocation.get_width();
+    auto width = static_cast<float>(allocation.get_width());
     auto height = allocation.get_height();
-    auto line_width = settings->get_double("line-width");
+    auto line_width = static_cast<float>(settings->get_double("line-width"));
     auto x = util::linspace(line_width, width - line_width, n_points);
     double scale = settings->get_double("scale");
     double exponent = settings->get_double("exponent");
@@ -168,7 +168,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
-      ctx->move_to(width - text_width, 0);
+      ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)), 0);
 
       layout->show_in_cairo_context(ctx);
     }
