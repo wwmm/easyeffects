@@ -1,15 +1,16 @@
 #include "webrtc_ui.hpp"
+#include <cstring>
 
 namespace {
 
 auto echo_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("low")) {
+  if (std::strcmp(v, "low") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("moderate")) {
+  } else if (std::strcmp(v, "moderate") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("high")) {
+  } else if (std::strcmp(v, "high") == 0) {
     g_value_set_int(value, 2);
   }
 
@@ -34,13 +35,13 @@ auto int_to_echo_suppression_level(const GValue* value, const GVariantType* expe
 auto noise_suppression_level_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("low")) {
+  if (std::strcmp(v, "low") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("moderate")) {
+  } else if (std::strcmp(v, "moderate") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("high")) {
+  } else if (std::strcmp(v, "high") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("very-high")) {
+  } else if (std::strcmp(v, "very-high") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -69,9 +70,9 @@ auto int_to_noise_suppression_level(const GValue* value, const GVariantType* exp
 auto gain_control_mode_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("adaptive-digital")) {
+  if (std::strcmp(v, "adaptive-digital") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("fixed-digital")) {
+  } else if (std::strcmp(v, "fixed-digital") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -91,13 +92,13 @@ auto int_to_gain_control_mode(const GValue* value, const GVariantType* expected_
 auto voice_detection_likelihood_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("very-low")) {
+  if (std::strcmp(v, "very-low") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("low")) {
+  } else if (std::strcmp(v, "low") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("moderate")) {
+  } else if (std::strcmp(v, "moderate") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("high")) {
+  } else if (std::strcmp(v, "high") == 0) {
     g_value_set_int(value, 3);
   }
 
