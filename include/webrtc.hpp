@@ -16,7 +16,7 @@ class Webrtc : public PluginBase {
 
   int rate;
 
-  void set_probe_src_device(std::string name);
+  void set_probe_src_device(const std::string& name);
 
  private:
   void build_probe_bin();

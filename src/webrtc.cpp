@@ -43,7 +43,7 @@ void Webrtc::build_probe_bin() {
   g_object_set(probe_src, "stream-properties", props, nullptr);
   g_object_set(probe_src, "buffer-time", 10000, nullptr);
   g_object_set(capsfilter, "caps", caps, nullptr);
-  g_object_set(queue, "silent", true, nullptr);
+  g_object_set(queue, "silent", 1, nullptr);
 
   gst_structure_free(props);
   gst_caps_unref(caps);
@@ -93,8 +93,8 @@ void Webrtc::build_dsp_bin() {
   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
 }
 
-void Webrtc::set_probe_src_device(std::string name) {
-  if (probe_src) {
+void Webrtc::set_probe_src_device(const std::string& name) {
+  if (probe_src != nullptr) {
     g_object_set(probe_src, "device", name.c_str(), nullptr);
   }
 }
