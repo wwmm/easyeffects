@@ -60,7 +60,7 @@ void PresetsManager::create_directory(boost::filesystem::path& path) {
   }
 }
 
-std::vector<std::string> PresetsManager::get_names(PresetType preset_type) {
+auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::string> {
   boost::filesystem::directory_iterator it;
   std::vector<std::string> names;
 
@@ -84,7 +84,7 @@ std::vector<std::string> PresetsManager::get_names(PresetType preset_type) {
 }
 
 void PresetsManager::add(PresetType preset_type, const std::string& name) {
-  for (auto p : get_names(preset_type)) {
+  for (const auto& p : get_names(preset_type)) {
     if (p == name) {
       return;
     }
@@ -151,7 +151,9 @@ void PresetsManager::load_blacklist(PresetType preset_type, boost::property_tree
 }
 
 void PresetsManager::save(PresetType preset_type, const std::string& name) {
-  boost::property_tree::ptree root, node_in, node_out;
+  boost::property_tree::ptree root;
+  boost::property_tree::ptree node_in;
+  boost::property_tree::ptree node_out;
   boost::filesystem::path output_file;
 
   spectrum->write(preset_type, root);
@@ -228,7 +230,8 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
 
 void PresetsManager::load(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root;
-  std::vector<std::string> input_plugins, output_plugins;
+  std::vector<std::string> input_plugins;
+  std::vector<std::string> output_plugins;
   boost::filesystem::path input_file;
 
   if (preset_type == PresetType::output) {
@@ -243,7 +246,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       for (auto& p : root.get_child("output.plugins_order")) {
         auto value = p.second.data();
 
-        for (auto v : aux.get()) {
+        for (const auto& v : aux.get()) {
           if (v == value) {
             output_plugins.push_back(value);
 
@@ -252,7 +255,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         }
       }
 
-      for (auto v : aux.get()) {
+      for (const auto& v : aux.get()) {
         if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
           output_plugins.push_back(v);
         }
@@ -276,7 +279,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       for (auto& p : root.get_child("input.plugins_order")) {
         auto value = p.second.data();
 
-        for (auto v : aux.get()) {
+        for (const auto& v : aux.get()) {
           if (v == value) {
             input_plugins.push_back(value);
 
@@ -285,7 +288,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         }
       }
 
-      for (auto v : aux.get()) {
+      for (const auto& v : aux.get()) {
         if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
           input_plugins.push_back(v);
         }
@@ -380,7 +383,7 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
   }
 }
 
-std::string PresetsManager::find_autoload(const std::string& device) {
+auto PresetsManager::find_autoload(const std::string& device) -> std::string {
   auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
 
   if (boost::filesystem::is_regular_file(input_file)) {
@@ -406,7 +409,7 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
   }
 }
 
-bool PresetsManager::preset_file_exists(PresetType preset_type, const std::string& name) {
+auto PresetsManager::preset_file_exists(PresetType preset_type, const std::string& name) -> bool {
   boost::filesystem::path input_file;
 
   if (preset_type == PresetType::output) {
