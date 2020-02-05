@@ -16,7 +16,7 @@ class SpectrumUi : public Gtk::Grid {
   auto operator=(const SpectrumUi &&) -> SpectrumUi& = delete;
   ~SpectrumUi() override;
 
-  static SpectrumUi* add_to_box(Gtk::Box* box);
+  static auto add_to_box(Gtk::Box* box) -> SpectrumUi*;
 
   void on_new_spectrum(const std::vector<float>& magnitudes);
 
@@ -36,13 +36,13 @@ class SpectrumUi : public Gtk::Grid {
   double mouse_intensity = 0, mouse_freq = 0;
   std::vector<float> spectrum_mag;
 
-  bool on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_spectrum_enter_notify_event(GdkEventCrossing* event);
+  auto on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_spectrum_leave_notify_event(GdkEventCrossing* event);
+  auto on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_spectrum_motion_notify_event(GdkEventMotion* event);
+  auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
 
   void init_color();
 

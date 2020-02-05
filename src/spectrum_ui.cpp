@@ -47,7 +47,7 @@ SpectrumUi::~SpectrumUi() {
   util::debug(log_tag + "destroyed");
 }
 
-SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box) {
+auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
   SpectrumUi* ui;
@@ -71,7 +71,7 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
   spectrum->queue_draw();
 }
 
-bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   ctx->paint();
 
   auto n_points = spectrum_mag.size();
@@ -177,17 +177,17 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {
+auto SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = true;
   return false;
 }
 
-bool SpectrumUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) {
+auto SpectrumUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = false;
   return false;
 }
 
-bool SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
+auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool {
   auto allocation = spectrum->get_allocation();
 
   auto width = allocation.get_width();
