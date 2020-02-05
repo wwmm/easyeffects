@@ -48,13 +48,13 @@ class PluginUiBase {
 
   std::vector<sigc::connection> connections;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  std::string level_to_str(const double& value, const int& places);
+  static auto level_to_str(const double& value, const int& places) -> std::string;
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>
