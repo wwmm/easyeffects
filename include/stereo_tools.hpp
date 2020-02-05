@@ -1,14 +1,16 @@
 #ifndef STEREO_TOOLS_HPP
 #define STEREO_TOOLS_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class StereoTools : public PluginBase {
  public:
   StereoTools(const std::string& tag, const std::string& schema);
-  ~StereoTools();
+  StereoTools(const StereoTools&) = delete;
+  auto operator=(const StereoTools&) -> StereoTools& = delete;
+  StereoTools(const StereoTools&&) = delete;
+  auto operator=(const StereoTools &&) -> StereoTools& = delete;
+  ~StereoTools() override;
 
   GstElement* stereo_tools = nullptr;
 
