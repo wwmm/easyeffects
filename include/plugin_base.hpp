@@ -7,7 +7,7 @@
 
 class PluginBase {
  public:
-  PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema);
+  PluginBase(std::string tag, std::string plugin_name, const std::string& schema);
   PluginBase(const PluginBase&) = delete;
   auto operator=(const PluginBase&) -> PluginBase& = delete;
   PluginBase(const PluginBase&&) = delete;

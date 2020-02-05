@@ -99,8 +99,8 @@ auto on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> G
 
 }  // namespace
 
-PluginBase::PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema)
-    : log_tag(tag), name(plugin_name), settings(g_settings_new(schema.c_str())) {
+PluginBase::PluginBase(std::string tag, std::string plugin_name, const std::string& schema)
+    : log_tag(std::move(tag)), name(std::move(plugin_name)), settings(g_settings_new(schema.c_str())) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
   identity_in = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_in").c_str());
   identity_out = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_out").c_str());
