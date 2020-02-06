@@ -27,7 +27,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   auto operator=(const SourceOutputEffectsUi &&) -> SourceOutputEffectsUi& = delete;
   ~SourceOutputEffectsUi() override;
 
-  static SourceOutputEffectsUi* add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr);
+  static auto add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr) -> SourceOutputEffectsUi*;
 
  protected:
   std::string log_tag = "soe_ui: ";
