@@ -137,7 +137,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
   g_settings_get(child_settings, "plugins", "as", &iter);
 
   while (g_variant_iter_next(iter, "s", &name) != 0) {
-    plugins_order.push_back(name);
+    plugins_order.emplace_back(name);
     g_free(name);
   }
 
@@ -148,7 +148,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
   g_variant_unref(gvariant);
 
   while (g_variant_iter_next(iter, "s", &name) != 0) {
-    default_order.push_back(name);
+    default_order.emplace_back(name);
     g_free(name);
   }
 
