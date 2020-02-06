@@ -162,7 +162,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
     g_settings_reset(child_settings, "plugins");
   }
 
-  for (auto v : plugins_order) {
+  for (const auto& v : plugins_order) {
     // checking if the plugin exists. If not we reset the list to default
 
     if (std::find(default_order.begin(), default_order.end(), v) == default_order.end()) {
