@@ -1,4 +1,5 @@
 #include "source_output_effects.hpp"
+#include <cstring>
 #include "pipeline_common.hpp"
 
 namespace {
@@ -6,25 +7,25 @@ namespace {
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutputEffects* soe) {
   auto src_name = GST_OBJECT_NAME(message->src);
 
-  if (src_name == std::string("equalizer_input_level")) {
+  if (std::strcmp(src_name, "equalizer_input_level") == 0) {
     soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("equalizer_output_level")) {
+  } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
     soe->equalizer_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("gate_input_level")) {
+  } else if (std::strcmp(src_name, "gate_input_level") == 0) {
     soe->gate_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("gate_output_level")) {
+  } else if (std::strcmp(src_name, "gate_output_level") == 0) {
     soe->gate_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("deesser_input_level")) {
+  } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
     soe->deesser_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("deesser_output_level")) {
+  } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
     soe->deesser_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("pitch_input_level")) {
+  } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
     soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("pitch_output_level")) {
+  } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
     soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("webrtc_input_level")) {
+  } else if (std::strcmp(src_name, "webrtc_input_level") == 0) {
     soe->webrtc_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (src_name == std::string("webrtc_output_level")) {
+  } else if (std::strcmp(src_name, "webrtc_output_level") == 0) {
     soe->webrtc_output_level.emit(SourceOutputEffects::get_peak(message));
   }
 }
