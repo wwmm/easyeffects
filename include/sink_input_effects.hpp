@@ -19,7 +19,11 @@
 class SinkInputEffects : public PipelineBase {
  public:
   SinkInputEffects(PulseManager* pulse_manager);
-  virtual ~SinkInputEffects();
+  SinkInputEffects(const SinkInputEffects&) = delete;
+  auto operator=(const SinkInputEffects&) -> SinkInputEffects& = delete;
+  SinkInputEffects(const SinkInputEffects&&) = delete;
+  auto operator=(const SinkInputEffects &&) -> SinkInputEffects& = delete;
+  ~SinkInputEffects() override;
 
   std::unique_ptr<BassEnhancer> bass_enhancer;
   std::unique_ptr<Exciter> exciter;
