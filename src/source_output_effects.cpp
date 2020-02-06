@@ -42,14 +42,14 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
 
   auto PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
-  if (PULSE_SOURCE) {
+  if (PULSE_SOURCE != nullptr) {
     if (pm->get_source_info(PULSE_SOURCE)) {
       set_source_monitor_name(PULSE_SOURCE);
     } else {
       set_source_monitor_name(pm->server_info.default_source_name);
     }
   } else {
-    bool use_default_source = g_settings_get_boolean(settings, "use-default-source");
+    bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
 
     if (use_default_source) {
       set_source_monitor_name(pm->server_info.default_source_name);
@@ -124,7 +124,7 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
 
   auto enable_all = g_settings_get_boolean(settings, "enable-all-sourceoutputs");
 
-  if (enable_all && !app_info->connected) {
+  if ((enable_all != 0) && !app_info->connected) {
     pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
   }
 }
@@ -136,7 +136,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
 
   g_settings_get(child_settings, "plugins", "as", &iter);
 
-  while (g_variant_iter_next(iter, "s", &name)) {
+  while (g_variant_iter_next(iter, "s", &name) != 0) {
     plugins_order.push_back(name);
     g_free(name);
   }
@@ -147,7 +147,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
 
   g_variant_unref(gvariant);
 
-  while (g_variant_iter_next(iter, "s", &name)) {
+  while (g_variant_iter_next(iter, "s", &name) != 0) {
     default_order.push_back(name);
     g_free(name);
   }
