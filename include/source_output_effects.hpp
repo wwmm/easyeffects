@@ -10,7 +10,11 @@
 class SourceOutputEffects : public PipelineBase {
  public:
   SourceOutputEffects(PulseManager* pulse_manager);
-  virtual ~SourceOutputEffects();
+  SourceOutputEffects(const SourceOutputEffects&) = delete;
+  auto operator=(const SourceOutputEffects&) -> SourceOutputEffects& = delete;
+  SourceOutputEffects(const SourceOutputEffects&&) = delete;
+  auto operator=(const SourceOutputEffects &&) -> SourceOutputEffects& = delete;
+  ~SourceOutputEffects() override;
 
   std::unique_ptr<Webrtc> webrtc;
   std::unique_ptr<MultibandCompressor> multiband_compressor;

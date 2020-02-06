@@ -7,25 +7,25 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutput
   auto src_name = GST_OBJECT_NAME(message->src);
 
   if (src_name == std::string("equalizer_input_level")) {
-    soe->equalizer_input_level.emit(soe->get_peak(message));
+    soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("equalizer_output_level")) {
-    soe->equalizer_output_level.emit(soe->get_peak(message));
+    soe->equalizer_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("gate_input_level")) {
-    soe->gate_input_level.emit(soe->get_peak(message));
+    soe->gate_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("gate_output_level")) {
-    soe->gate_output_level.emit(soe->get_peak(message));
+    soe->gate_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("deesser_input_level")) {
-    soe->deesser_input_level.emit(soe->get_peak(message));
+    soe->deesser_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("deesser_output_level")) {
-    soe->deesser_output_level.emit(soe->get_peak(message));
+    soe->deesser_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("pitch_input_level")) {
-    soe->pitch_input_level.emit(soe->get_peak(message));
+    soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("pitch_output_level")) {
-    soe->pitch_output_level.emit(soe->get_peak(message));
+    soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("webrtc_input_level")) {
-    soe->webrtc_input_level.emit(soe->get_peak(message));
+    soe->webrtc_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (src_name == std::string("webrtc_output_level")) {
-    soe->webrtc_output_level.emit(soe->get_peak(message));
+    soe->webrtc_output_level.emit(SourceOutputEffects::get_peak(message));
   }
 }
 
