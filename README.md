@@ -78,6 +78,7 @@ Version 1.12.5 or higher
 - [ROSA](https://abf.io/import/pulseeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
 - [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
+- [CRUX](https://crux.nu/portdb/?a=search&q=pulseeffects)
 
 #### Community packages
 
