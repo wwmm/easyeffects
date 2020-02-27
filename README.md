@@ -69,8 +69,8 @@ must have the following installed in your system:
 <table>
   <tr>
     <td><a href="https://liberapay.com/wwmm/"><img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Liberapay_logo_v2_white-on-yellow.svg" alt="Liberapay" width="80px" ></a></td>
-    <td><a href="https://liberapay.com/wwmm/"><img src="assets/liberapay_qr_code.png" alt="Visit wwmm at liberapay.com" width="100px"></a></td>
-    <td><a href="https://liberapay.com/wwmm/donate"><img src="assets/liberapay_donate_button.svg" alt="Donate via Liberapay" height="35px"></a></td>
+    <td><a href="https://liberapay.com/wwmm/"></a></td>
+    <td><a href="https://liberapay.com/wwmm/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></td>
   </tr>
 </table>
 
