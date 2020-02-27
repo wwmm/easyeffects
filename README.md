@@ -52,9 +52,9 @@ next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
 - [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good).
-Version 1.12.5 or higher
+  Version 1.12.5 or higher
 - [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad).
-Version 1.12.5 or higher
+  Version 1.12.5 or higher
 - [Linux Studio plugins](http://lsp-plug.in/?page=home)
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
 - [ZamAudio plugins](http://www.zamaudio.com/)
@@ -64,9 +64,20 @@ Version 1.12.5 or higher
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
 - [libebur128](https://github.com/jiixyj/libebur128)
 
+## Donate
+
+<table>
+  <tr>
+    <td><a href="https://liberapay.com/wwmm/"><img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Liberapay_logo_v2_white-on-yellow.svg" alt="Liberapay" width="80px" ></a></td>
+    <td><a href="https://liberapay.com/wwmm/"><img src="assets/liberapay_qr_code.png" alt="Visit wwmm at liberapay.com" width="100px"></a></td>
+    <td><a href="https://liberapay.com/wwmm/donate"><img src="assets/liberapay_donate_button.svg" alt="Donate via Liberapay" height="35px"></a></td>
+  </tr>
+</table>
+
 ## Changelog
+
 - For information about changes between versions take a look at our
-[changelog](https://github.com/wwmm/pulseeffects/blob/master/CHANGELOG.md)
+  [changelog](https://github.com/wwmm/pulseeffects/blob/master/CHANGELOG.md)
 
 ## Installation
 
@@ -106,7 +117,7 @@ See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki
 
 ## Documentation
 
-PulseEffects documentation can be read inside the GUI installing 
+PulseEffects documentation can be read inside the GUI installing
 [yelp](https://gitlab.gnome.org/GNOME/yelp) package.
 
 ## Frequently asked questions
