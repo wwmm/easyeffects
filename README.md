@@ -66,6 +66,8 @@ must have the following installed in your system:
 
 ## Donate
 
+You can help me to develop PulseEffects through donations. Any amount will be greatly appreciated :-)
+
 <table>
   <tr>
     <td><a href="https://liberapay.com/wwmm/">https://liberapay.com/wwmm</a></td>
