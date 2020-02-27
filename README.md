@@ -66,7 +66,7 @@ must have the following installed in your system:
 
 ## Donate
 
-You can help me to develop PulseEffects through donations. Any amount will be greatly appreciated :-)
+You can help me to keep developing PulseEffects through donations. Any amount will be greatly appreciated :-)
 
 <table>
   <tr>
