@@ -1,5 +1,7 @@
 # PulseEffects
 
+[![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
+
 Audio effects for Pulseaudio applications.
 
 ![](images/pulseeffects.png)
