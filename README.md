@@ -1,5 +1,6 @@
 # PulseEffects
 
+[![CircleCI](https://circleci.com/gh/wwmm/pulseeffects.svg?style=shield)](https://circleci.com/gh/wwmm/pulseeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
 
 Audio effects for Pulseaudio applications.
