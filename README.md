@@ -94,6 +94,7 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
 - [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
 - [CRUX](https://crux.nu/portdb/?a=search&q=pulseeffects)
+- [openSUSE](https://software.opensuse.org/package/pulseeffects)
 
 #### Community packages
 
