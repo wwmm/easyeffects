@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/wwmm/pulseeffects.svg?style=shield)](https://circleci.com/gh/wwmm/pulseeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
-[![Patreon](https://c5.patreon.com/external/logo/become_a_patron_button@2x.png | width=83)](https://www.patreon.com/wellingtonwallace?fan_landing=true)
+[Patreon](https://www.patreon.com/wellingtonwallace?fan_landing=true)
 
 Audio effects for Pulseaudio applications.
 
