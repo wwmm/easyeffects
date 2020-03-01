@@ -2,7 +2,6 @@
 
 [![CircleCI](https://circleci.com/gh/wwmm/pulseeffects.svg?style=shield)](https://circleci.com/gh/wwmm/pulseeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
-[Patreon](https://www.patreon.com/wellingtonwallace?fan_landing=true)
 
 Audio effects for Pulseaudio applications.
 
@@ -76,6 +75,10 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
   <tr>
     <td><a href="https://liberapay.com/wwmm/">https://liberapay.com/wwmm</a></td>
     <td><a href="https://liberapay.com/wwmm/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></td>
+  </tr>
+  <tr>
+    <td>https://www.patreon.com/wellingtonwallace?fan_landing=true</td>
+    <td>Patreon</td>
   </tr>
 </table>
 
