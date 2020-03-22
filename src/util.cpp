@@ -27,7 +27,7 @@ void print_thread_id() {
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
 }
 
-std::vector<float> logspace(const float& start, const float& stop, const uint& npoints) {
+auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
   float delta = (stop - start) / npoints;
@@ -35,7 +35,7 @@ std::vector<float> logspace(const float& start, const float& stop, const uint& n
   float v = start;
 
   while (v < stop) {
-    output.push_back(powf(10.0f, v));
+    output.push_back(powf(10.0F, v));
 
     v += delta;
   }
@@ -43,7 +43,7 @@ std::vector<float> logspace(const float& start, const float& stop, const uint& n
   return output;
 }
 
-std::vector<float> linspace(const float& start, const float& stop, const uint& npoints) {
+auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
   float delta = (stop - start) / npoints;
@@ -59,29 +59,29 @@ std::vector<float> linspace(const float& start, const float& stop, const uint& n
   return output;
 }
 
-float linear_to_db(const float& amp) {
-  if (amp >= 0.00001f) {
-    return 20.0f * log10f(amp);
-  } else {
-    return -99.0f;
+auto linear_to_db(const float& amp) -> float {
+  if (amp >= minimum_linear_level) {
+    return 20.0F * log10f(amp);
   }
+
+  return minimum_db_level;
 }
 
-float db_to_linear(const float& db) {
-  return expf((db / 20.0f) * logf(10.0f));
+auto db_to_linear(const float& db) -> float {
+  return expf((db / 20.0F) * logf(10.0F));
 }
 
-gboolean db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) {
+auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0f, (float)v_db / 20.0f);
+  float v_linear = powf(10.0F, (float)v_db / 20.0F);
 
   g_value_set_float(value, v_linear);
 
-  return true;
+  return 1;
 }
 
-GVariant* linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   float v_linear = g_value_get_float(value);
 
   double v_db = 20 * log10f(v_linear);
@@ -89,35 +89,36 @@ GVariant* linear_gain_to_db20(const GValue* value, const GVariantType* expected_
   return g_variant_new_double(v_db);
 }
 
-gboolean db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) {
+auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0f, (float)v_db / 10.0f);
+  float v_linear = powf(10.0F, (float)v_db / 10.0F);
 
   g_value_set_float(value, v_linear);
 
-  return true;
+  return 1;
 }
 
-gboolean double_to_float(GValue* value, GVariant* variant, gpointer user_data) {
+auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   float v_d = g_variant_get_double(variant);
 
   g_value_set_float(value, v_d);
 
-  return true;
+  return 1;
 }
 
-gboolean db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) {
+auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
   double v_linear = pow(10, v_db / 20.0);
 
   g_value_set_double(value, v_linear);
 
-  return true;
+  return 1;
 }
 
-GVariant* linear_double_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto linear_double_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   double v_linear = g_value_get_double(value);
 
   double v_db = 20 * log10(v_linear);
@@ -125,20 +126,20 @@ GVariant* linear_double_gain_to_db20(const GValue* value, const GVariantType* ex
   return g_variant_new_double(v_db);
 }
 
-gboolean double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_d = g_variant_get_double(variant);
 
   g_value_set_int(value, v_d * 10);
 
-  return true;
+  return 1;
 }
 
-gboolean ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) {
+auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   guint64 v_ns = g_variant_get_double(variant) * 1000000;
 
   g_value_set_uint64(value, v_ns);
 
-  return true;
+  return 1;
 }
 
 }  // namespace util

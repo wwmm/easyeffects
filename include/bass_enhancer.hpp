@@ -1,14 +1,16 @@
 #ifndef BASS_ENHANCER_HPP
 #define BASS_ENHANCER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class BassEnhancer : public PluginBase {
  public:
   BassEnhancer(const std::string& tag, const std::string& schema);
-  ~BassEnhancer();
+  BassEnhancer(const BassEnhancer&) = delete;
+  auto operator=(const BassEnhancer&) -> BassEnhancer& = delete;
+  BassEnhancer(const BassEnhancer&&) = delete;
+  auto operator=(const BassEnhancer &&) -> BassEnhancer& = delete;
+  ~BassEnhancer() override;
 
   GstElement* bass_enhancer = nullptr;
 

@@ -16,21 +16,24 @@
 class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                const Glib::RefPtr<Gio::Settings>& refSettings,
+                Glib::RefPtr<Gio::Settings> refSettings,
                 PulseManager* pulse_manager);
-
+  EffectsBaseUi(const EffectsBaseUi&) = delete;
+  auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
+  EffectsBaseUi(const EffectsBaseUi&&) = delete;
+  auto operator=(const EffectsBaseUi &&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
   void on_app_added(std::shared_ptr<AppInfo> app_info);
-  void on_app_changed(std::shared_ptr<AppInfo> app_info);
+  void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
  protected:
   Glib::RefPtr<Gio::Settings> settings;
-  Gtk::ListBox* listbox;
-  Gtk::Stack* stack;
+  Gtk::ListBox* listbox = nullptr;
+  Gtk::Stack* stack = nullptr;
 
-  SpectrumUi* spectrum_ui;
+  SpectrumUi* spectrum_ui = nullptr;
 
   std::vector<sigc::connection> connections;
 
@@ -128,15 +131,15 @@ class EffectsBaseUi {
   }
 
  private:
-  Gtk::Box* apps_box;
+  Gtk::Box* apps_box = nullptr;
 
-  PulseManager* pm;
+  PulseManager* pm = nullptr;
 
-  Gtk::Box* placeholder_spectrum;
+  Gtk::Box* placeholder_spectrum = nullptr;
 
   std::vector<AppInfoUi*> apps_list;
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
 
 #endif

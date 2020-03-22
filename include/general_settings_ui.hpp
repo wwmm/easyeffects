@@ -16,8 +16,11 @@
 class GeneralSettingsUi : public Gtk::Grid {
  public:
   GeneralSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
-
-  virtual ~GeneralSettingsUi();
+  GeneralSettingsUi(const GeneralSettingsUi&) = delete;
+  auto operator=(const GeneralSettingsUi&) -> GeneralSettingsUi& = delete;
+  GeneralSettingsUi(const GeneralSettingsUi&&) = delete;
+  auto operator=(const GeneralSettingsUi &&) -> GeneralSettingsUi& = delete;
+  ~GeneralSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
@@ -26,26 +29,30 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Application* app;
+  Application* app = nullptr;
 
-  Gtk::Switch *enable_autostart, *enable_all_sinkinputs, *enable_all_sourceoutputs, *theme_switch;
-  Gtk::Button *reset_settings, *about_button;
-  Gtk::SpinButton *realtime_priority_control, *niceness_control;
-  Gtk::ComboBoxText* priority_type;
+  Gtk::Switch *enable_autostart = nullptr, *enable_all_sinkinputs = nullptr, *enable_all_sourceoutputs = nullptr,
+              *theme_switch = nullptr;
+
+  Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
+
+  Gtk::SpinButton *realtime_priority_control = nullptr, *niceness_control = nullptr;
+
+  Gtk::ComboBoxText* priority_type = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness;
 
   std::vector<sigc::connection> connections;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
   void init_autostart_switch();
 
-  bool on_enable_autostart(bool state);
+  auto on_enable_autostart(bool state) -> bool;
 
   void on_reset_settings();
 

@@ -104,10 +104,12 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   level_meters_connections();
   up_down_connections();
 
-  connections.push_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
-  connections.push_back(sie->pm->sink_input_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
-  connections.push_back(sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_changed)));
-  connections.push_back(sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_removed)));
+  connections.emplace_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  connections.emplace_back(sie->pm->sink_input_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
+  connections.emplace_back(
+      sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_changed)));
+  connections.emplace_back(
+      sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_removed)));
 }
 
 SinkInputEffectsUi::~SinkInputEffectsUi() {
@@ -116,7 +118,7 @@ SinkInputEffectsUi::~SinkInputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-SinkInputEffectsUi* SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) {
+auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
@@ -134,194 +136,202 @@ SinkInputEffectsUi* SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInpu
 void SinkInputEffectsUi::level_meters_connections() {
   // limiter level meters connections
 
-  connections.push_back(sie->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
-  connections.push_back(
+  connections.emplace_back(
+      sie->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
+  connections.emplace_back(
       sie->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
-  connections.push_back(sie->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
+  connections.emplace_back(
+      sie->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
 
   // compressor level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level)));
-  connections.push_back(
+  connections.emplace_back(
       sie->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
-  connections.push_back(
+  connections.emplace_back(
       sie->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction)));
-  connections.push_back(
+  connections.emplace_back(
       sie->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain)));
-  connections.push_back(sie->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve)));
+  connections.emplace_back(sie->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve)));
 
   // filter level meters connections
 
-  connections.push_back(sie->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
-  connections.push_back(sie->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
+  connections.emplace_back(sie->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level)));
+  connections.emplace_back(
+      sie->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level)));
 
   // equalizer level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->equalizer_input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->equalizer_output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
 
   // pitch level meters connections
 
-  connections.push_back(sie->pitch_input_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level_db)));
-  connections.push_back(sie->pitch_output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level_db)));
+  connections.emplace_back(sie->pitch_input_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level_db)));
+  connections.emplace_back(sie->pitch_output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level_db)));
 
   // reverb level meters connections
 
-  connections.push_back(sie->reverb->input_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
-  connections.push_back(sie->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
+  connections.emplace_back(sie->reverb->input_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level)));
+  connections.emplace_back(
+      sie->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
 
   // bass_enhancer level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->bass_enhancer_input_level.connect(sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level_db)));
-  connections.push_back(sie->bass_enhancer_output_level.connect(
+  connections.emplace_back(sie->bass_enhancer_output_level.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->bass_enhancer->harmonics.connect(sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level)));
 
   // exciter level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->exciter_input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->exciter_output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->exciter->harmonics.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level)));
 
   // crossfeed level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->crossfeed_input_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->crossfeed_output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level_db)));
 
   // maximizer level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->maximizer_input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->maximizer_output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
 
   // multiband_compressor level meters connections
 
-  connections.push_back(sie->multiband_compressor->input_level.connect(
+  connections.emplace_back(sie->multiband_compressor->input_level.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level)));
-  connections.push_back(sie->multiband_compressor->output_level.connect(
+  connections.emplace_back(sie->multiband_compressor->output_level.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output_level)));
 
-  connections.push_back(sie->multiband_compressor->output0.connect(
+  connections.emplace_back(sie->multiband_compressor->output0.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output0)));
-  connections.push_back(sie->multiband_compressor->output1.connect(
+  connections.emplace_back(sie->multiband_compressor->output1.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output1)));
-  connections.push_back(sie->multiband_compressor->output2.connect(
+  connections.emplace_back(sie->multiband_compressor->output2.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output2)));
-  connections.push_back(sie->multiband_compressor->output3.connect(
+  connections.emplace_back(sie->multiband_compressor->output3.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output3)));
 
-  connections.push_back(sie->multiband_compressor->compression0.connect(
+  connections.emplace_back(sie->multiband_compressor->compression0.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression0)));
-  connections.push_back(sie->multiband_compressor->compression1.connect(
+  connections.emplace_back(sie->multiband_compressor->compression1.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression1)));
-  connections.push_back(sie->multiband_compressor->compression2.connect(
+  connections.emplace_back(sie->multiband_compressor->compression2.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression2)));
-  connections.push_back(sie->multiband_compressor->compression3.connect(
+  connections.emplace_back(sie->multiband_compressor->compression3.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression3)));
 
   // loudness level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->loudness_input_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->loudness_output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
 
   // gate level meters connections
 
-  connections.push_back(sie->gate_input_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
-  connections.push_back(sie->gate_output_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
-  connections.push_back(sie->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
+  connections.emplace_back(sie->gate_input_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
+  connections.emplace_back(sie->gate_output_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level_db)));
+  connections.emplace_back(sie->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating)));
 
   // multiband_gate level meters connections
 
-  connections.push_back(sie->multiband_gate->input_level.connect(
+  connections.emplace_back(sie->multiband_gate->input_level.connect(
       sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_input_level)));
-  connections.push_back(sie->multiband_gate->output_level.connect(
+  connections.emplace_back(sie->multiband_gate->output_level.connect(
       sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output_level)));
 
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->output0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output0)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->output1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output1)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->output2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output2)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->output3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output3)));
 
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->gating0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating0)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->gating1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->gating2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
-  connections.push_back(
+  connections.emplace_back(
       sie->multiband_gate->gating3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
 
   // deesser level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->deesser_input_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->deesser_output_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level_db)));
-  connections.push_back(sie->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
-  connections.push_back(sie->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected)));
+  connections.emplace_back(
+      sie->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
+  connections.emplace_back(sie->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected)));
 
   // stereo_tools level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->stereo_tools->input_level.connect(sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level)));
-  connections.push_back(
+  connections.emplace_back(
       sie->stereo_tools->output_level.connect(sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level)));
 
   // convolver level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->convolver_input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->convolver_output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level_db)));
 
   // crystalizer level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->crystalizer_input_level.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->crystalizer_output_level.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->crystalizer->range_before.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_before)));
-  connections.push_back(
+  connections.emplace_back(
       sie->crystalizer->range_after.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_after)));
 
   // autogain level meters connections
 
-  connections.push_back(
+  connections.emplace_back(
       sie->autogain_input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db)));
-  connections.push_back(
+  connections.emplace_back(
       sie->autogain_output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db)));
-  connections.push_back(sie->autogain->momentary.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_momentary)));
-  connections.push_back(sie->autogain->shortterm.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_shortterm)));
-  connections.push_back(sie->autogain->integrated.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_integrated)));
-  connections.push_back(sie->autogain->relative.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_relative)));
-  connections.push_back(sie->autogain->loudness.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_loudness)));
-  connections.push_back(sie->autogain->range.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_range)));
-  connections.push_back(sie->autogain->gain.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_gain)));
+  connections.emplace_back(
+      sie->autogain->momentary.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_momentary)));
+  connections.emplace_back(
+      sie->autogain->shortterm.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_shortterm)));
+  connections.emplace_back(
+      sie->autogain->integrated.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_integrated)));
+  connections.emplace_back(sie->autogain->relative.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_relative)));
+  connections.emplace_back(sie->autogain->loudness.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_loudness)));
+  connections.emplace_back(sie->autogain->range.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_range)));
+  connections.emplace_back(sie->autogain->gain.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_gain)));
 
   // delay level meters connections
 
-  connections.push_back(sie->delay_input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
-  connections.push_back(sie->delay_output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
+  connections.emplace_back(sie->delay_input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
+  connections.emplace_back(sie->delay_output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -357,66 +367,67 @@ void SinkInputEffectsUi::up_down_connections() {
     }
   };
 
-  connections.push_back(limiter_ui->plugin_up->signal_clicked().connect([=]() { on_up(limiter_ui); }));
-  connections.push_back(limiter_ui->plugin_down->signal_clicked().connect([=]() { on_down(limiter_ui); }));
+  connections.emplace_back(limiter_ui->plugin_up->signal_clicked().connect([=]() { on_up(limiter_ui); }));
+  connections.emplace_back(limiter_ui->plugin_down->signal_clicked().connect([=]() { on_down(limiter_ui); }));
 
-  connections.push_back(compressor_ui->plugin_up->signal_clicked().connect([=]() { on_up(compressor_ui); }));
-  connections.push_back(compressor_ui->plugin_down->signal_clicked().connect([=]() { on_down(compressor_ui); }));
+  connections.emplace_back(compressor_ui->plugin_up->signal_clicked().connect([=]() { on_up(compressor_ui); }));
+  connections.emplace_back(compressor_ui->plugin_down->signal_clicked().connect([=]() { on_down(compressor_ui); }));
 
-  connections.push_back(filter_ui->plugin_up->signal_clicked().connect([=]() { on_up(filter_ui); }));
-  connections.push_back(filter_ui->plugin_down->signal_clicked().connect([=]() { on_down(filter_ui); }));
+  connections.emplace_back(filter_ui->plugin_up->signal_clicked().connect([=]() { on_up(filter_ui); }));
+  connections.emplace_back(filter_ui->plugin_down->signal_clicked().connect([=]() { on_down(filter_ui); }));
 
-  connections.push_back(pitch_ui->plugin_up->signal_clicked().connect([=]() { on_up(pitch_ui); }));
-  connections.push_back(pitch_ui->plugin_down->signal_clicked().connect([=]() { on_down(pitch_ui); }));
+  connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=]() { on_up(pitch_ui); }));
+  connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=]() { on_down(pitch_ui); }));
 
-  connections.push_back(equalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(equalizer_ui); }));
-  connections.push_back(equalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(equalizer_ui); }));
+  connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(equalizer_ui); }));
+  connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(equalizer_ui); }));
 
-  connections.push_back(reverb_ui->plugin_up->signal_clicked().connect([=]() { on_up(reverb_ui); }));
-  connections.push_back(reverb_ui->plugin_down->signal_clicked().connect([=]() { on_down(reverb_ui); }));
+  connections.emplace_back(reverb_ui->plugin_up->signal_clicked().connect([=]() { on_up(reverb_ui); }));
+  connections.emplace_back(reverb_ui->plugin_down->signal_clicked().connect([=]() { on_down(reverb_ui); }));
 
-  connections.push_back(bass_enhancer_ui->plugin_up->signal_clicked().connect([=]() { on_up(bass_enhancer_ui); }));
-  connections.push_back(bass_enhancer_ui->plugin_down->signal_clicked().connect([=]() { on_down(bass_enhancer_ui); }));
+  connections.emplace_back(bass_enhancer_ui->plugin_up->signal_clicked().connect([=]() { on_up(bass_enhancer_ui); }));
+  connections.emplace_back(
+      bass_enhancer_ui->plugin_down->signal_clicked().connect([=]() { on_down(bass_enhancer_ui); }));
 
-  connections.push_back(exciter_ui->plugin_up->signal_clicked().connect([=]() { on_up(exciter_ui); }));
-  connections.push_back(exciter_ui->plugin_down->signal_clicked().connect([=]() { on_down(exciter_ui); }));
+  connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=]() { on_up(exciter_ui); }));
+  connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=]() { on_down(exciter_ui); }));
 
-  connections.push_back(crossfeed_ui->plugin_up->signal_clicked().connect([=]() { on_up(crossfeed_ui); }));
-  connections.push_back(crossfeed_ui->plugin_down->signal_clicked().connect([=]() { on_down(crossfeed_ui); }));
+  connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=]() { on_up(crossfeed_ui); }));
+  connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=]() { on_down(crossfeed_ui); }));
 
-  connections.push_back(maximizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(maximizer_ui); }));
-  connections.push_back(maximizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(maximizer_ui); }));
+  connections.emplace_back(maximizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(maximizer_ui); }));
+  connections.emplace_back(maximizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(maximizer_ui); }));
 
-  connections.push_back(
+  connections.emplace_back(
       multiband_compressor_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_compressor_ui); }));
-  connections.push_back(
+  connections.emplace_back(
       multiband_compressor_ui->plugin_down->signal_clicked().connect([=]() { on_down(multiband_compressor_ui); }));
 
-  connections.push_back(loudness_ui->plugin_up->signal_clicked().connect([=]() { on_up(loudness_ui); }));
-  connections.push_back(loudness_ui->plugin_down->signal_clicked().connect([=]() { on_down(loudness_ui); }));
+  connections.emplace_back(loudness_ui->plugin_up->signal_clicked().connect([=]() { on_up(loudness_ui); }));
+  connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=]() { on_down(loudness_ui); }));
 
-  connections.push_back(gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(gate_ui); }));
-  connections.push_back(gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(gate_ui); }));
+  connections.emplace_back(gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(gate_ui); }));
+  connections.emplace_back(gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(gate_ui); }));
 
-  connections.push_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_gate_ui); }));
-  connections.push_back(
+  connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_gate_ui); }));
+  connections.emplace_back(
       multiband_gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(multiband_gate_ui); }));
 
-  connections.push_back(deesser_ui->plugin_up->signal_clicked().connect([=]() { on_up(deesser_ui); }));
-  connections.push_back(deesser_ui->plugin_down->signal_clicked().connect([=]() { on_down(deesser_ui); }));
+  connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=]() { on_up(deesser_ui); }));
+  connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=]() { on_down(deesser_ui); }));
 
-  connections.push_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=]() { on_up(stereo_tools_ui); }));
-  connections.push_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=]() { on_down(stereo_tools_ui); }));
+  connections.emplace_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=]() { on_up(stereo_tools_ui); }));
+  connections.emplace_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=]() { on_down(stereo_tools_ui); }));
 
-  connections.push_back(convolver_ui->plugin_up->signal_clicked().connect([=]() { on_up(convolver_ui); }));
-  connections.push_back(convolver_ui->plugin_down->signal_clicked().connect([=]() { on_down(convolver_ui); }));
+  connections.emplace_back(convolver_ui->plugin_up->signal_clicked().connect([=]() { on_up(convolver_ui); }));
+  connections.emplace_back(convolver_ui->plugin_down->signal_clicked().connect([=]() { on_down(convolver_ui); }));
 
-  connections.push_back(crystalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(crystalizer_ui); }));
-  connections.push_back(crystalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(crystalizer_ui); }));
+  connections.emplace_back(crystalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(crystalizer_ui); }));
+  connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(crystalizer_ui); }));
 
-  connections.push_back(autogain_ui->plugin_up->signal_clicked().connect([=]() { on_up(autogain_ui); }));
-  connections.push_back(autogain_ui->plugin_down->signal_clicked().connect([=]() { on_down(autogain_ui); }));
+  connections.emplace_back(autogain_ui->plugin_up->signal_clicked().connect([=]() { on_up(autogain_ui); }));
+  connections.emplace_back(autogain_ui->plugin_down->signal_clicked().connect([=]() { on_down(autogain_ui); }));
 
-  connections.push_back(delay_ui->plugin_up->signal_clicked().connect([=]() { on_up(delay_ui); }));
-  connections.push_back(delay_ui->plugin_down->signal_clicked().connect([=]() { on_down(delay_ui); }));
+  connections.emplace_back(delay_ui->plugin_up->signal_clicked().connect([=]() { on_up(delay_ui); }));
+  connections.emplace_back(delay_ui->plugin_down->signal_clicked().connect([=]() { on_down(delay_ui); }));
 }

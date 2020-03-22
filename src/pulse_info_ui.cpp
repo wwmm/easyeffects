@@ -21,23 +21,24 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
   builder->get_widget("listbox_resamplers", listbox_resamplers);
   builder->get_widget("config_file", config_file);
 
-  listbox_modules->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_modules->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
 
-  listbox_clients->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_clients->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
 
-  listbox_config->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_config->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
 
-  listbox_resamplers->set_sort_func(sigc::mem_fun(*this, &PulseInfoUi::on_listbox_sort));
+  listbox_resamplers->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
 
-  connections.push_back(pm->server_changed.connect([=]() { update_server_info(); }));
+  connections.emplace_back(pm->server_changed.connect([=]() { update_server_info(); }));
 
-  connections.push_back(pm->module_info.connect([=](auto info) {
+  connections.emplace_back(pm->module_info.connect([=](auto info) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Label *module_name, *module_argument;
+    Gtk::Label* module_name;
+    Gtk::Label* module_argument;
 
     b->get_widget("module_row", row);
     b->get_widget("module_name", module_name);
@@ -51,11 +52,12 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
     listbox_modules->show_all();
   }));
 
-  connections.push_back(pm->client_info.connect([=](auto info) {
+  connections.emplace_back(pm->client_info.connect([=](auto info) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Label *client_name, *client_binary;
+    Gtk::Label* client_name;
+    Gtk::Label* client_binary;
 
     b->get_widget("client_row", row);
     b->get_widget("client_name", client_name);
@@ -86,7 +88,7 @@ PulseInfoUi::~PulseInfoUi() {
   util::debug(log_tag + "destroyed");
 }
 
-PulseInfoUi* PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) {
+auto PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) -> PulseInfoUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_info.glade");
 
   PulseInfoUi* ui;
@@ -111,7 +113,7 @@ void PulseInfoUi::update_server_info() {
   server_channel_mapping->set_text(pm->server_info.channel_map);
 }
 
-int PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -121,11 +123,13 @@ int PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void PulseInfoUi::on_stack_visible_child_changed() {
@@ -163,7 +167,8 @@ void PulseInfoUi::get_pulse_conf() {
 
     while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
       std::vector<std::string> aux;
-      std::string key, value;
+      std::string key;
+      std::string value;
 
       boost::split(aux, line, boost::is_any_of("="));
 
@@ -171,7 +176,8 @@ void PulseInfoUi::get_pulse_conf() {
         auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
         Gtk::ListBoxRow* row;
-        Gtk::Label *conf_key, *conf_value;
+        Gtk::Label* conf_key;
+        Gtk::Label* conf_value;
 
         b->get_widget("conf_row", row);
         b->get_widget("conf_key", conf_key);

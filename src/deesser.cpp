@@ -7,7 +7,7 @@ namespace {
 void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
   auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
+  if (post != 0) {
     if (!l->compression_connection.connected()) {
       l->compression_connection = Glib::signal_timeout().connect(
           [l]() {
@@ -65,7 +65,7 @@ Deesser::Deesser(const std::string& tag, const std::string& schema) : PluginBase
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(deesser, "bypass", false, nullptr);
+    g_object_set(deesser, "bypass", 0, nullptr);
 
     bind_to_gsettings();
 

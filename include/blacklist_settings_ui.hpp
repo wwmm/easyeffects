@@ -14,8 +14,11 @@
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
   BlacklistSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
-
-  virtual ~BlacklistSettingsUi();
+  BlacklistSettingsUi(const BlacklistSettingsUi&) = delete;
+  auto operator=(const BlacklistSettingsUi&) -> BlacklistSettingsUi& = delete;
+  BlacklistSettingsUi(const BlacklistSettingsUi&&) = delete;
+  auto operator=(const BlacklistSettingsUi &&) -> BlacklistSettingsUi& = delete;
+  ~BlacklistSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack);
 
@@ -24,10 +27,10 @@ class BlacklistSettingsUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Button *add_blacklist_in, *add_blacklist_out;
-  Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;
-  Gtk::Entry *blacklist_in_name, *blacklist_out_name;
-  Gtk::ScrolledWindow *blacklist_in_scrolled_window, *blacklist_out_scrolled_window;
+  Gtk::Button *add_blacklist_in = nullptr, *add_blacklist_out = nullptr;
+  Gtk::ListBox *blacklist_in_listbox = nullptr, *blacklist_out_listbox = nullptr;
+  Gtk::Entry *blacklist_in_name = nullptr, *blacklist_out_name = nullptr;
+  Gtk::ScrolledWindow *blacklist_in_scrolled_window = nullptr, *blacklist_out_scrolled_window = nullptr;
 
   std::vector<sigc::connection> connections;
 
@@ -35,7 +38,7 @@ class BlacklistSettingsUi : public Gtk::Grid {
 
   void populate_blacklist_out_listbox();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
 
 #endif

@@ -1,5 +1,5 @@
-#ifndef _GST_PECONVOLVER_H_
-#define _GST_PECONVOLVER_H_
+#ifndef GST_PECONVOLVER_HPP
+#define GST_PECONVOLVER_HPP
 
 #include <gst/audio/gstaudiofilter.h>
 #include <zita-convolver.h>
@@ -15,10 +15,7 @@ G_BEGIN_DECLS
 #define GST_IS_PECONVOLVER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PECONVOLVER))
 #define GST_IS_PECONVOLVER_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PECONVOLVER))
 
-typedef struct _GstPeconvolver GstPeconvolver;
-typedef struct _GstPeconvolverClass GstPeconvolverClass;
-
-struct _GstPeconvolver {
+struct GstPeconvolver {
   GstAudioFilter base_peconvolver;
 
   /* properties */
@@ -30,9 +27,9 @@ struct _GstPeconvolver {
 
   bool ready;
   int rate, kernel_n_frames, irs_fail_count;
-  int bpf;                    // bytes per frame : channels * bps
-  float* kernel_L = nullptr;  // left channel buffer
-  float* kernel_R = nullptr;  // right channel buffer
+  int bpf;                      // bytes per frame : channels * bps
+  std::vector<float> kernel_L;  // left channel buffer
+  std::vector<float> kernel_R;  // right channel buffer
 
   std::string log_tag;
 
@@ -43,7 +40,7 @@ struct _GstPeconvolver {
   std::vector<std::future<void>> futures;
 };
 
-struct _GstPeconvolverClass {
+struct GstPeconvolverClass {
   GstAudioFilterClass base_peconvolver_class;
 };
 

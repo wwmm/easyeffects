@@ -1,14 +1,16 @@
 #ifndef MULTIBAND_COMPRESSOR_HPP
 #define MULTIBAND_COMPRESSOR_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class MultibandCompressor : public PluginBase {
  public:
   MultibandCompressor(const std::string& tag, const std::string& schema);
-  ~MultibandCompressor();
+  MultibandCompressor(const MultibandCompressor&) = delete;
+  auto operator=(const MultibandCompressor&) -> MultibandCompressor& = delete;
+  MultibandCompressor(const MultibandCompressor&&) = delete;
+  auto operator=(const MultibandCompressor &&) -> MultibandCompressor& = delete;
+  ~MultibandCompressor() override;
 
   GstElement* multiband_compressor = nullptr;
 

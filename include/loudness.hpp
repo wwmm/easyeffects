@@ -1,14 +1,16 @@
 #ifndef LOUDNESS_HPP
 #define LOUDNESS_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Loudness : public PluginBase {
  public:
   Loudness(const std::string& tag, const std::string& schema);
-  ~Loudness();
+  Loudness(const Loudness&) = delete;
+  auto operator=(const Loudness&) -> Loudness& = delete;
+  Loudness(const Loudness&&) = delete;
+  auto operator=(const Loudness &&) -> Loudness& = delete;
+  ~Loudness() override;
 
   GstElement* loudness = nullptr;
 

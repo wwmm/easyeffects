@@ -4,9 +4,9 @@
 #include <gtkmm/label.h>
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                             const Glib::RefPtr<Gio::Settings>& refSettings,
+                             Glib::RefPtr<Gio::Settings> refSettings,
                              PulseManager* pulse_manager)
-    : settings(refSettings), pm(pulse_manager) {
+    : settings(std::move(refSettings)), pm(pulse_manager) {
   // loading glade widgets
 
   builder->get_widget("stack", stack);
@@ -64,7 +64,7 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
   apps_list.push_back(appui);
 }
 
-void EffectsBaseUi::on_app_changed(std::shared_ptr<AppInfo> app_info) {
+void EffectsBaseUi::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 
@@ -90,7 +90,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
   }
 }
 
-int EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -118,9 +118,11 @@ int EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2)
 
   if (idx1 < idx2) {
     return -1;
-  } else if (idx1 > idx2) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (idx1 > idx2) {
+    return 1;
+  }
+
+  return 0;
 }

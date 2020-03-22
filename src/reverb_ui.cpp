@@ -1,44 +1,53 @@
 #include "reverb_ui.hpp"
+#include <cstring>
 #include "util.hpp"
 
 namespace {
 
-gboolean room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Small")) {
+  if (std::strcmp(v, "Small") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Medium")) {
+  } else if (std::strcmp(v, "Medium") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Large")) {
+  } else if (std::strcmp(v, "Large") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Tunnel-like")) {
+  } else if (std::strcmp(v, "Tunnel-like") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Large/smooth")) {
+  } else if (std::strcmp(v, "Large/smooth") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Experimental")) {
+  } else if (std::strcmp(v, "Experimental") == 0) {
     g_value_set_int(value, 5);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Small");
-  } else if (v == 1) {
-    return g_variant_new_string("Medium");
-  } else if (v == 2) {
-    return g_variant_new_string("Large");
-  } else if (v == 3) {
-    return g_variant_new_string("Tunnel-like");
-  } else if (v == 4) {
-    return g_variant_new_string("Large/smooth");
-  } else {
-    return g_variant_new_string("Experimental");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Medium");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Large");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("Tunnel-like");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("Large/smooth");
+  }
+
+  return g_variant_new_string("Experimental");
 }
 
 }  // namespace

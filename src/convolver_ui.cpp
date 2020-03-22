@@ -2,8 +2,9 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
-#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <sndfile.hh>
+#include "sigc++/functors/ptr_fun.h"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
@@ -51,7 +52,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   irs_menu_button->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
 
-  irs_listbox->set_sort_func(sigc::mem_fun(*this, &ConvolverUi::on_listbox_sort));
+  irs_listbox->set_sort_func(sigc::ptr_fun(&ConvolverUi::on_listbox_sort));
 
   import_irs->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
@@ -121,7 +122,7 @@ ConvolverUi::~ConvolverUi() {
   util::debug(name + " ui destroyed");
 }
 
-std::vector<std::string> ConvolverUi::get_irs_names() {
+auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
   boost::filesystem::directory_iterator it{irs_dir};
   std::vector<std::string> names;
 
@@ -151,13 +152,13 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
       return;
     }
 
-    if (p.extension().string() == ".irs") {
-      auto out_path = irs_dir / p.filename();
+    auto out_path = irs_dir / p.filename();
 
-      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+    out_path.replace_extension(".irs");
 
-      util::debug(log_tag + "imported irs file to: " + out_path.string());
-    }
+    boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+
+    util::debug(log_tag + "imported irs file to: " + out_path.string());
   } else {
     util::warning(log_tag + p.string() + " is not a file!");
   }
@@ -173,7 +174,7 @@ void ConvolverUi::remove_irs_file(const std::string& name) {
   }
 }
 
-int ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -183,11 +184,13 @@ int ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void ConvolverUi::populate_irs_listbox() {
@@ -199,11 +202,12 @@ void ConvolverUi::populate_irs_listbox() {
 
   auto names = get_irs_names();
 
-  for (auto name : names) {
+  for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
     Gtk::ListBoxRow* row;
-    Gtk::Button *remove_btn, *apply_btn;
+    Gtk::Button* remove_btn;
+    Gtk::Button* apply_btn;
     Gtk::Label* label;
 
     b->get_widget("irs_row", row);
@@ -231,7 +235,9 @@ void ConvolverUi::populate_irs_listbox() {
 }
 
 void ConvolverUi::on_irs_menu_button_clicked() {
-  int height = 0.7 * this->get_toplevel()->get_allocated_height();
+  const float scaling_factor = 0.7F;
+
+  int height = static_cast<int>(scaling_factor * static_cast<float>(this->get_toplevel()->get_allocated_height()));
 
   irs_scrolled_window->set_max_content_height(height);
 
@@ -250,6 +256,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
   gtk_file_filter_set_name(filter, _("Impulse Response"));
   gtk_file_filter_add_pattern(filter, "*.irs");
+  gtk_file_filter_add_pattern(filter, "*.wav");
   gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
 
   res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(dialog));
@@ -302,14 +309,14 @@ void ConvolverUi::get_irs_info() {
   uint total_frames_in = file.channels() * frames_in;
   uint rate = file.samplerate();
 
-  float* kernel = new float[total_frames_in];
+  std::vector<float> kernel(total_frames_in);
 
-  file.readf(kernel, frames_in);
+  file.readf(kernel.data(), frames_in);
 
   // build plot time axis
 
-  float dt = 1.0f / rate;
-  float duration = (frames_in - 1) * dt;
+  float dt = 1.0F / rate;
+  float duration = (static_cast<float>(frames_in) - 1) * dt;
   uint max_points = (frames_in > max_plot_points) ? max_plot_points : frames_in;
   float plot_dt = duration / max_points;
 
@@ -340,9 +347,9 @@ void ConvolverUi::get_irs_info() {
   */
 
   try {
-    boost::math::cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0F, dt);
 
-    boost::math::cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0f, dt);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0F, dt);
 
     left_mag.resize(max_points);
     right_mag.resize(max_points);
@@ -394,18 +401,17 @@ void ConvolverUi::get_irs_info() {
     left_plot->queue_draw();
     right_plot->queue_draw();
   });
-
-  delete[] kernel;
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
   int nfft = left_mag.size();  // right_mag.size() should have the same value
 
-  GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, false);
-  GstFFTF32Complex* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2 + 1);
-  GstFFTF32Complex* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+  GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, 0);
+  auto* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2 + 1);
+  auto* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2 + 1);
 
-  std::vector<float> tmp_l, tmp_r;
+  std::vector<float> tmp_l;
+  std::vector<float> tmp_r;
 
   tmp_l.resize(nfft);
   tmp_r.resize(nfft);
@@ -427,13 +433,14 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   /* Calculate magnitude in db */
   for (int i = 0; i < nfft / 2 + 1; i++) {
-    float v_l, v_r;
+    float v_l;
+    float v_r;
 
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
     v_l += freqdata_l[i].i * freqdata_l[i].i;
-    v_l /= nfft * nfft;
-    v_l = 10.0 * log10(v_l);
+    v_l /= static_cast<float>(nfft * nfft);
+    v_l = 10.0F * log10(v_l);
     v_l = (v_l > -120) ? v_l : -120;
 
     left_spectrum[i] = v_l;
@@ -441,8 +448,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     // right
     v_r = freqdata_r[i].r * freqdata_r[i].r;
     v_r += freqdata_r[i].i * freqdata_r[i].i;
-    v_r /= nfft * nfft;
-    v_r = 10.0 * log10(v_r);
+    v_r /= static_cast<float>(nfft * nfft);
+    v_r = 10.0F * log10(v_r);
     v_r = (v_r > -120) ? v_r : -120;
 
     right_spectrum[i] = v_r;
@@ -456,8 +463,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     max_points = left_spectrum.size();
   }
 
-  fft_min_freq = rate * (0.5f * 0 + 0.25f) / left_spectrum.size();
-  fft_max_freq = rate * (0.5f * (left_spectrum.size() - 1) + 0.25f) / left_spectrum.size();
+  fft_min_freq = static_cast<float>(rate) * (0.5F * 0 + 0.25F) / left_spectrum.size();
+  fft_max_freq = static_cast<float>(rate) * (0.5F * (left_spectrum.size() - 1.0F) + 0.25F) / left_spectrum.size();
 
   freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
@@ -466,11 +473,13 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   */
 
   try {
-    float dF = 0.5f * (rate / left_spectrum.size());
+    float dF = 0.5F * static_cast<float>(rate) / left_spectrum.size();
 
-    boost::math::cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(), 0.0f, dF);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(),
+                                                                        0.0F, dF);
 
-    boost::math::cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(), 0.0f, dF);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(),
+                                                                        0.0F, dF);
 
     left_spectrum.resize(max_points);
     right_spectrum.resize(max_points);
@@ -579,17 +588,17 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = event->x * fft_max_freq / width;
+    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = fft_max_left - event->y * (fft_max_left - fft_min_left) / height;
+    mouse_intensity = fft_max_left - static_cast<float>(event->y) * (fft_max_left - fft_min_left) / height;
   } else {
-    mouse_time = event->x * max_time / width;
+    mouse_time = static_cast<float>(event->x) * max_time / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = max_left - event->y * (max_left - min_left) / height;
+    mouse_intensity = max_left - static_cast<float>(event->y) * (max_left - min_left) / height;
   }
 }
 
@@ -600,21 +609,21 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = event->x * fft_max_freq / width;
+    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = fft_max_right - event->y * (fft_max_right - fft_min_right) / height;
+    mouse_intensity = fft_max_right - static_cast<float>(event->y) * (fft_max_right - fft_min_right) / height;
   } else {
-    mouse_time = event->x * max_time / width;
+    mouse_time = static_cast<float>(event->x) * max_time / width;
 
     // intensity scale is in decibel
 
-    mouse_intensity = max_right - event->y * (max_right - min_right) / height;
+    mouse_intensity = max_right - static_cast<float>(event->y) * (max_right - min_right) / height;
   }
 }
 
-bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
   ctx->paint();
@@ -628,7 +637,7 @@ bool ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
+auto ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) -> bool {
   update_mouse_info_L(event);
 
   left_plot->queue_draw();
@@ -636,7 +645,7 @@ bool ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) {
   return false;
 }
 
-bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
   ctx->paint();
@@ -650,7 +659,7 @@ bool ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
+auto ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) -> bool {
   update_mouse_info_R(event);
 
   right_plot->queue_draw();
@@ -658,12 +667,12 @@ bool ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) {
   return false;
 }
 
-bool ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) {
+auto ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = true;
   return false;
 }
 
-bool ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) {
+auto ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = false;
   return false;
 }

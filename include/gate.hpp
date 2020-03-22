@@ -1,14 +1,16 @@
 #ifndef GATE_HPP
 #define GATE_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Gate : public PluginBase {
  public:
   Gate(const std::string& tag, const std::string& schema);
-  ~Gate();
+  Gate(const Gate&) = delete;
+  auto operator=(const Gate&) -> Gate& = delete;
+  Gate(const Gate&&) = delete;
+  auto operator=(const Gate &&) -> Gate& = delete;
+  ~Gate() override;
 
   GstElement* gate = nullptr;
 

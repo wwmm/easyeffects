@@ -47,7 +47,7 @@ SpectrumUi::~SpectrumUi() {
   util::debug(log_tag + "destroyed");
 }
 
-SpectrumUi* SpectrumUi::add_to_box(Gtk::Box* box) {
+auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
   SpectrumUi* ui;
@@ -71,16 +71,16 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
   spectrum->queue_draw();
 }
 
-bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
+auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   ctx->paint();
 
   auto n_points = spectrum_mag.size();
 
   if (n_points > 0) {
     auto allocation = spectrum->get_allocation();
-    float width = allocation.get_width();
+    auto width = static_cast<float>(allocation.get_width());
     auto height = allocation.get_height();
-    auto line_width = settings->get_double("line-width");
+    auto line_width = static_cast<float>(settings->get_double("line-width"));
     auto x = util::linspace(line_width, width - line_width, n_points);
     double scale = settings->get_double("scale");
     double exponent = settings->get_double("exponent");
@@ -168,7 +168,7 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
-      ctx->move_to(width - text_width, 0);
+      ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)), 0);
 
       layout->show_in_cairo_context(ctx);
     }
@@ -177,17 +177,17 @@ bool SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) {
   return false;
 }
 
-bool SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) {
+auto SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = true;
   return false;
 }
 
-bool SpectrumUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) {
+auto SpectrumUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool {
   mouse_inside = false;
   return false;
 }
 
-bool SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) {
+auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool {
   auto allocation = spectrum->get_allocation();
 
   auto width = allocation.get_width();

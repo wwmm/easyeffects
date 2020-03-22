@@ -3,7 +3,9 @@
 #include <gtkmm/cssprovider.h>
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
+#include <memory>
 #include "blacklist_settings_ui.hpp"
+#include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
 #include "pulse_settings_ui.hpp"
 #include "spectrum_settings_ui.hpp"
@@ -53,13 +55,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // signals
 
-  connections.push_back(app->pm->new_default_sink.connect([&](auto name) {
+  connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "sink_inputs") {
       update_headerbar_subtitle(0);
     }
   }));
 
-  connections.push_back(app->pm->new_default_source.connect([&](auto name) {
+  connections.emplace_back(app->pm->new_default_source.connect([&](auto name) {
     if (stack->get_visible_child_name() == "source_outputs") {
       update_headerbar_subtitle(1);
     }
@@ -78,7 +80,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // headerbar info
 
-  connections.push_back(app->sie->new_latency.connect([=](int latency) {
+  connections.emplace_back(app->sie->new_latency.connect([=](int latency) {
     sie_latency = latency;
 
     if (stack->get_visible_child_name() == "sink_inputs") {
@@ -90,7 +92,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     app->sie->get_latency();
   }
 
-  connections.push_back(app->soe->new_latency.connect([=](int latency) {
+  connections.emplace_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
 
     if (stack->get_visible_child_name() == "source_outputs") {
@@ -131,7 +133,7 @@ ApplicationUi::~ApplicationUi() {
   util::debug(log_tag + "destroyed");
 }
 
-ApplicationUi* ApplicationUi::create(Application* app_this) {
+auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/application.glade");
 
   ApplicationUi* window = nullptr;
@@ -141,7 +143,7 @@ ApplicationUi* ApplicationUi::create(Application* app_this) {
   return window;
 }
 
-void ApplicationUi::apply_css_style(std::string css_file_name) {
+void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto provider = Gtk::CssProvider::create();
 
   provider->load_from_resource("/com/github/wwmm/pulseeffects/ui/" + css_file_name);
@@ -153,7 +155,9 @@ void ApplicationUi::apply_css_style(std::string css_file_name) {
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
-  std::ostringstream null_sink_rate, current_dev_rate;
+  std::ostringstream null_sink_rate;
+  std::ostringstream current_dev_rate;
+  const float khz_factor = 0.001F;
 
   null_sink_rate.precision(1);
   current_dev_rate.precision(1);
@@ -165,11 +169,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
     headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate / 1000.0f << "kHz";
+    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
 
     auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-    current_dev_rate << std::fixed << sink->rate / 1000.0f << "kHz";
+    current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
     headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
                              null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
@@ -182,11 +186,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
     headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate / 1000.0f << "kHz";
+    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
 
     auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
 
-    current_dev_rate << std::fixed << source->rate / 1000.0f << "kHz";
+    current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
 
     headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
                              null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
@@ -209,14 +213,11 @@ void ApplicationUi::on_stack_visible_child_changed() {
 }
 
 void ApplicationUi::on_calibration_button_clicked() {
-  auto calibration_ui = CalibrationUi::create();
+  std::shared_ptr<CalibrationUi> calibration_ui(CalibrationUi::create());
 
   auto c = app->pm->new_default_source.connect([=](auto name) { calibration_ui->set_source_monitor_name(name); });
 
-  calibration_ui->signal_hide().connect([calibration_ui, c]() {
-    c->disconnect();
-    delete calibration_ui;
-  });
+  calibration_ui->signal_hide().connect([=]() { c->disconnect(); });
 
   calibration_ui->show_all();
 }

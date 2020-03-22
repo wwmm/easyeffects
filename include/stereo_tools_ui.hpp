@@ -9,17 +9,20 @@
 
 class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
  public:
-  StereoToolsUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                const std::string& settings_name);
-  virtual ~StereoToolsUi();
+  StereoToolsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  StereoToolsUi(const StereoToolsUi&) = delete;
+  auto operator=(const StereoToolsUi&) -> StereoToolsUi& = delete;
+  StereoToolsUi(const StereoToolsUi&&) = delete;
+  auto operator=(const StereoToolsUi &&) -> StereoToolsUi& = delete;
+  ~StereoToolsUi() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, balance_in,
-      balance_out, slev, sbal, mlev, mpan, stereo_base, delay, sc_level,
-      stereo_phase;
-  Gtk::ComboBoxText* mode;
-  Gtk::ToggleButton *softclip, *mutel, *muter, *phasel, *phaser;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, balance_in, balance_out, slev, sbal, mlev, mpan, stereo_base,
+      delay, sc_level, stereo_phase;
+
+  Gtk::ComboBoxText* mode = nullptr;
+
+  Gtk::ToggleButton *softclip = nullptr, *mutel = nullptr, *muter = nullptr, *phasel = nullptr, *phaser = nullptr;
 };
 
 #endif

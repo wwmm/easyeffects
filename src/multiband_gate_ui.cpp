@@ -1,49 +1,50 @@
 #include "multiband_gate_ui.hpp"
+#include <cstring>
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("RMS");
-  } else {
-    return g_variant_new_string("Peak");
   }
+
+  return g_variant_new_string("Peak");
 }
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("LR4")) {
+  if (std::strcmp(v, "LR4") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("LR8")) {
+  } else if (std::strcmp(v, "LR8") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("LR4");
-  } else {
-    return g_variant_new_string("LR8");
   }
+
+  return g_variant_new_string("LR8");
 }
 
 }  // namespace
@@ -192,47 +193,47 @@ MultibandGateUi::~MultibandGateUi() {
 void MultibandGateUi::on_new_output0(double value) {
   output0->set_value(value);
 
-  output0_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  output0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_output1(double value) {
   output1->set_value(value);
 
-  output1_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  output1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_output2(double value) {
   output2->set_value(value);
 
-  output2_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  output2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_output3(double value) {
   output3->set_value(value);
 
-  output3_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  output3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating0(double value) {
   gating0->set_value(1 - value);
 
-  gating0_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating1(double value) {
   gating1->set_value(1 - value);
 
-  gating1_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating2(double value) {
   gating2->set_value(1 - value);
 
-  gating2_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating3(double value) {
   gating3->set_value(1 - value);
 
-  gating3_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

@@ -1,13 +1,15 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Filter : public PluginBase {
  public:
   Filter(const std::string& tag, const std::string& schema);
+  Filter(const Filter&) = delete;
+  auto operator=(const Filter&) -> Filter& = delete;
+  Filter(const Filter&&) = delete;
+  auto operator=(const Filter &&) -> Filter& = delete;
   ~Filter();
 
   GstElement* filter = nullptr;

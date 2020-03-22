@@ -5,151 +5,180 @@
 #include <gtkmm/togglebutton.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <cstring>
 
 namespace {
 
-gboolean bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Off")) {
+  if (std::strcmp(v, "Off") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Bell")) {
+  } else if (std::strcmp(v, "Bell") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Hi-pass")) {
+  } else if (std::strcmp(v, "Hi-pass") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Hi-shelf")) {
+  } else if (std::strcmp(v, "Hi-shelf") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("Lo-pass")) {
+  } else if (std::strcmp(v, "Lo-pass") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("Lo-shelf")) {
+  } else if (std::strcmp(v, "Lo-shelf") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("Notch")) {
+  } else if (std::strcmp(v, "Notch") == 0) {
     g_value_set_int(value, 6);
-  } else if (v == std::string("Resonance")) {
+  } else if (std::strcmp(v, "Resonance") == 0) {
     g_value_set_int(value, 7);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Off");
-  } else if (v == 1) {
-    return g_variant_new_string("Bell");
-  } else if (v == 2) {
-    return g_variant_new_string("Hi-pass");
-  } else if (v == 3) {
-    return g_variant_new_string("Hi-shelf");
-  } else if (v == 4) {
-    return g_variant_new_string("Lo-pass");
-  } else if (v == 5) {
-    return g_variant_new_string("Lo-shelf");
-  } else if (v == 6) {
-    return g_variant_new_string("Notch");
-  } else {
-    return g_variant_new_string("Resonance");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Bell");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Hi-pass");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("Hi-shelf");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("Lo-pass");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("Lo-shelf");
+  }
+
+  if (v == 6) {
+    return g_variant_new_string("Notch");
+  }
+
+  return g_variant_new_string("Resonance");
 }
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("IIR")) {
+  if (std::strcmp(v, "IIR") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("FIR")) {
+  } else if (std::strcmp(v, "FIR") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("FFT")) {
+  } else if (std::strcmp(v, "FFT") == 0) {
     g_value_set_int(value, 2);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("IIR");
-  } else if (v == 1) {
-    return g_variant_new_string("FIR");
-  } else {
-    return g_variant_new_string("FFT");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("FIR");
+  }
+
+  return g_variant_new_string("FFT");
 }
 
-gboolean bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RLC (BT)")) {
+  if (std::strcmp(v, "RLC (BT)") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("RLC (MT)")) {
+  } else if (std::strcmp(v, "RLC (MT)") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("BWC (BT)")) {
+  } else if (std::strcmp(v, "BWC (BT)") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("BWC (MT)")) {
+  } else if (std::strcmp(v, "BWC (MT)") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("LRX (BT)")) {
+  } else if (std::strcmp(v, "LRX (BT)") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("LRX (MT)")) {
+  } else if (std::strcmp(v, "LRX (MT)") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("APO (DR)")) {
+  } else if (std::strcmp(v, "APO (DR)") == 0) {
     g_value_set_int(value, 6);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("RLC (BT)");
-  } else if (v == 1) {
-    return g_variant_new_string("RLC (MT)");
-  } else if (v == 2) {
-    return g_variant_new_string("BWC (BT)");
-  } else if (v == 3) {
-    return g_variant_new_string("BWC (MT)");
-  } else if (v == 4) {
-    return g_variant_new_string("LRX (BT)");
-  } else if (v == 5) {
-    return g_variant_new_string("LRX (MT)");
-  } else {
-    return g_variant_new_string("APO (DR)");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("RLC (MT)");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("BWC (BT)");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("BWC (MT)");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("LRX (BT)");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("LRX (MT)");
+  }
+
+  return g_variant_new_string("APO (DR)");
 }
 
-gboolean bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("x1")) {
+  if (std::strcmp(v, "x1") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("x2")) {
+  } else if (std::strcmp(v, "x2") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("x3")) {
+  } else if (std::strcmp(v, "x3") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("x4")) {
+  } else if (std::strcmp(v, "x4") == 0) {
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("x1");
-  } else if (v == 1) {
-    return g_variant_new_string("x2");
-  } else if (v == 2) {
-    return g_variant_new_string("x3");
-  } else {
-    return g_variant_new_string("x4");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("x2");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("x3");
+  }
+
+  return g_variant_new_string("x4");
 }
 
 }  // namespace
@@ -192,7 +221,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
-  presets_listbox->set_sort_func(sigc::mem_fun(*this, &EqualizerUi::on_listbox_sort));
+  presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
   connections.push_back(settings->signal_changed("split-channels").connect([&](auto key) {
     for (auto c : connections_bands) {
@@ -206,10 +235,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
     bool split = settings->get_boolean("split-channels");
 
     if (split) {
-      build_bands(bands_grid_left, settings_left, nbands->get_value());
-      build_bands(bands_grid_right, settings_right, nbands->get_value());
+      build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
+      build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
     } else {
-      build_unified_bands(nbands->get_value());
+      build_unified_bands(static_cast<int>(nbands->get_value()));
     }
   }));
 
@@ -249,14 +278,14 @@ void EqualizerUi::on_nbands_changed() {
   bool split = settings->get_boolean("split-channels");
 
   if (split) {
-    build_bands(bands_grid_left, settings_left, nbands->get_value());
-    build_bands(bands_grid_right, settings_right, nbands->get_value());
+    build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
+    build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
   } else {
-    build_unified_bands(nbands->get_value());
+    build_unified_bands(static_cast<int>(nbands->get_value()));
   }
 }
 
-void EqualizerUi::build_bands(Gtk::Grid* bands_grid, Glib::RefPtr<Gio::Settings> cfg, const int& nbands) {
+void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands) {
   for (auto c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
@@ -269,10 +298,15 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, Glib::RefPtr<Gio::Settings>
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
-    Gtk::Label *band_width, *band_label;
-    Gtk::Button *reset_frequency, *reset_quality;
-    Gtk::ToggleButton *band_solo, *band_mute;
+    Gtk::ComboBoxText* band_type;
+    Gtk::ComboBoxText* band_mode;
+    Gtk::ComboBoxText* band_slope;
+    Gtk::Label* band_width;
+    Gtk::Label* band_label;
+    Gtk::Button* reset_frequency;
+    Gtk::Button* reset_quality;
+    Gtk::ToggleButton* band_solo;
+    Gtk::ToggleButton* band_mute;
     Gtk::Scale* band_scale;
 
     B->get_widget("band_grid", band_grid);
@@ -388,10 +422,15 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
     Gtk::Grid* band_grid;
-    Gtk::ComboBoxText *band_type, *band_mode, *band_slope;
-    Gtk::Label *band_width, *band_label;
-    Gtk::Button *reset_frequency, *reset_quality;
-    Gtk::ToggleButton *band_solo, *band_mute;
+    Gtk::ComboBoxText* band_type;
+    Gtk::ComboBoxText* band_mode;
+    Gtk::ComboBoxText* band_slope;
+    Gtk::Label* band_width;
+    Gtk::Label* band_label;
+    Gtk::Button* reset_frequency;
+    Gtk::Button* reset_quality;
+    Gtk::ToggleButton* band_solo;
+    Gtk::ToggleButton* band_mute;
     Gtk::Scale* band_scale;
 
     B->get_widget("band_grid", band_grid);
@@ -548,7 +587,9 @@ void EqualizerUi::on_flat_response() {
 void EqualizerUi::on_calculate_frequencies() {
   const double min_freq = 20.0;
   const double max_freq = 20000.0;
-  double freq0, freq1, step;
+  double freq0;
+  double freq1;
+  double step;
 
   int nbands = settings->get_int("num-bands");
 
@@ -567,7 +608,7 @@ void EqualizerUi::on_calculate_frequencies() {
   for (int n = 0; n < nbands; n++) {
     freq1 = freq0 * step;
 
-    double freq = freq0 + ((freq1 - freq0) / 2.0);
+    double freq = freq0 + 0.5 * (freq1 - freq0);
     double width = freq1 - freq0;
     double q = freq / width;
 
@@ -610,13 +651,13 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   auto config_band = [&](auto cfg, auto n) {
     double q = 0;
 
-    double f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
+    auto f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
 
     try {
       q = root.get<double>("equalizer.band" + std::to_string(n) + ".q");
     } catch (const boost::property_tree::ptree_error& e) {
       try {
-        double w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
+        auto w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
 
         q = f / w;
       } catch (const boost::property_tree::ptree_error& e) {
@@ -652,7 +693,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   }
 }
 
-int EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -662,11 +703,13 @@ int EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }
 
 void EqualizerUi::populate_presets_listbox() {
@@ -678,9 +721,8 @@ void EqualizerUi::populate_presets_listbox() {
 
   auto names = Gio::Resource::enumerate_children_global(presets_path);
 
-  for (unsigned long int n = 0; n < names.size(); n++) {
-    auto file_name = names[n];
-    auto name = file_name.substr(0, file_name.find("."));
+  for (const auto& file_name : names) {
+    auto name = file_name.substr(0, file_name.find('.'));
 
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
 

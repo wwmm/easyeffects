@@ -48,8 +48,8 @@ Equalizer::Equalizer(const std::string& tag,
 
     // init
 
-    g_object_set(equalizer, "bypass", false, nullptr);
-    g_object_set(equalizer, "bal", 0.0f, nullptr);
+    g_object_set(equalizer, "enabled", 1, nullptr);
+    g_object_set(equalizer, "bal", 0.0F, nullptr);
     g_object_set(equalizer, "fft", 0, nullptr);  // off
 
     for (int n = 0; n < 30; n++) {
@@ -88,7 +88,7 @@ Equalizer::~Equalizer() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Equalizer::bind_band(GstElement* equalizer, const int index) {
+void Equalizer::bind_band(GstElement* equalizer, const int& index) {
   // left channel
 
   g_settings_bind(settings_left, std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,

@@ -1,67 +1,88 @@
 #include "filter_ui.hpp"
+#include <cstring>
 
 namespace {
 
-gboolean filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("12dB/oct Lowpass")) {
+  if (std::strcmp(v, "12dB/oct Lowpass") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("24dB/oct Lowpass")) {
+  } else if (std::strcmp(v, "24dB/oct Lowpass") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("36dB/oct Lowpass")) {
+  } else if (std::strcmp(v, "36dB/oct Lowpass") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("12dB/oct Highpass")) {
+  } else if (std::strcmp(v, "12dB/oct Highpass") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("24dB/oct Highpass")) {
+  } else if (std::strcmp(v, "24dB/oct Highpass") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("36dB/oct Highpass")) {
+  } else if (std::strcmp(v, "36dB/oct Highpass") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("6dB/oct Bandpass")) {
+  } else if (std::strcmp(v, "6dB/oct Bandpass") == 0) {
     g_value_set_int(value, 6);
-  } else if (v == std::string("12dB/oct Bandpass")) {
+  } else if (std::strcmp(v, "12dB/oct Bandpass") == 0) {
     g_value_set_int(value, 7);
-  } else if (v == std::string("18dB/oct Bandpass")) {
+  } else if (std::strcmp(v, "18dB/oct Bandpass") == 0) {
     g_value_set_int(value, 8);
-  } else if (v == std::string("6dB/oct Bandreject")) {
+  } else if (std::strcmp(v, "6dB/oct Bandreject") == 0) {
     g_value_set_int(value, 9);
-  } else if (v == std::string("12dB/oct Bandreject")) {
+  } else if (std::strcmp(v, "12dB/oct Bandreject") == 0) {
     g_value_set_int(value, 10);
-  } else if (v == std::string("18dB/oct Bandreject")) {
+  } else if (std::strcmp(v, "18dB/oct Bandreject") == 0) {
     g_value_set_int(value, 11);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("12dB/oct Lowpass");
-  } else if (v == 1) {
-    return g_variant_new_string("24dB/oct Lowpass");
-  } else if (v == 2) {
-    return g_variant_new_string("36dB/oct Lowpass");
-  } else if (v == 3) {
-    return g_variant_new_string("12dB/oct Highpass");
-  } else if (v == 4) {
-    return g_variant_new_string("24dB/oct Highpass");
-  } else if (v == 5) {
-    return g_variant_new_string("36dB/oct Highpass");
-  } else if (v == 6) {
-    return g_variant_new_string("6dB/oct Bandpass");
-  } else if (v == 7) {
-    return g_variant_new_string("12dB/oct Bandpass");
-  } else if (v == 8) {
-    return g_variant_new_string("18dB/oct Bandpass");
-  } else if (v == 9) {
-    return g_variant_new_string("6dB/oct Bandreject");
-  } else if (v == 10) {
-    return g_variant_new_string("12dB/oct Bandreject");
-  } else {
-    return g_variant_new_string("18dB/oct Bandreject");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("24dB/oct Lowpass");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("36dB/oct Lowpass");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("12dB/oct Highpass");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("24dB/oct Highpass");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("36dB/oct Highpass");
+  }
+
+  if (v == 6) {
+    return g_variant_new_string("6dB/oct Bandpass");
+  }
+
+  if (v == 7) {
+    return g_variant_new_string("12dB/oct Bandpass");
+  }
+
+  if (v == 8) {
+    return g_variant_new_string("18dB/oct Bandpass");
+  }
+
+  if (v == 9) {
+    return g_variant_new_string("6dB/oct Bandreject");
+  }
+
+  if (v == 10) {
+    return g_variant_new_string("12dB/oct Bandreject");
+  }
+
+  return g_variant_new_string("18dB/oct Bandreject");
 }
 
 }  // namespace

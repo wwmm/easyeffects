@@ -1,8 +1,8 @@
 #include "realtime_kit.hpp"
-#include <limits.h>
 #include <sys/resource.h>
 #include <sys/syscall.h>
 #include <unistd.h>
+#include <climits>
 #include "util.hpp"
 
 RealtimeKit::RealtimeKit(const std::string& tag) {
@@ -19,13 +19,11 @@ RealtimeKit::RealtimeKit(const std::string& tag) {
   }
 }
 
-RealtimeKit::~RealtimeKit() {}
-
 /*
   This method code was adapted from the one in Pulseaudio sources. File rtkit.c
 */
 
-long long RealtimeKit::get_int_property(const char* propname) {
+auto RealtimeKit::get_int_property(const char* propname) -> long long {
   Glib::VariantBase reply_body;
   long long propval = 0;
   const char* interfacestr = "org.freedesktop.RealtimeKit1";
@@ -39,9 +37,8 @@ long long RealtimeKit::get_int_property(const char* propname) {
     // The rtkit reply is encoded as a tuple containing `@v <@x 123456>` instead
     // of just plain @x or @i
     if (reply_body.get_type_string() == "(v)") {
-      Glib::VariantBase child =
-          Glib::VariantBase::cast_dynamic<Glib::Variant<std::tuple<Glib::VariantBase>>>(reply_body)
-              .get_child<Glib::VariantBase>(0);
+      auto child = Glib::VariantBase::cast_dynamic<Glib::Variant<std::tuple<Glib::VariantBase>>>(reply_body)
+                       .get_child<Glib::VariantBase>(0);
 
       if (child.get_type_string() == "i") {
         propval = *(const gint32*)Glib::VariantBase::cast_dynamic<Glib::Variant<gint32>>(child).get_data();
@@ -63,9 +60,9 @@ long long RealtimeKit::get_int_property(const char* propname) {
 void RealtimeKit::make_realtime(const std::string& source_name, const int& priority) {
 #if defined(__linux__)
 
-  pid_t thread = (pid_t)syscall(SYS_gettid);
-  guint64 u64 = (guint64)thread;
-  guint32 u32 = (guint32)priority;
+  auto thread = (pid_t)syscall(SYS_gettid);
+  auto u64 = (guint64)thread;
+  auto u32 = (guint32)priority;
 
   Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
       std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64), Glib::Variant<guint32>::create(u32)}));
@@ -84,9 +81,9 @@ void RealtimeKit::make_realtime(const std::string& source_name, const int& prior
 void RealtimeKit::make_high_priority(const std::string& source_name, const int& nice_value) {
 #if defined(__linux__)
 
-  pid_t thread = (pid_t)syscall(SYS_gettid);
-  guint64 u64 = (guint64)thread;
-  gint32 i32 = (gint32)nice_value;
+  auto thread = (pid_t)syscall(SYS_gettid);
+  auto u64 = (guint64)thread;
+  auto i32 = (gint32)nice_value;
 
   Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
       std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64), Glib::Variant<gint32>::create(i32)}));
@@ -105,7 +102,7 @@ void RealtimeKit::make_high_priority(const std::string& source_name, const int& 
 void RealtimeKit::set_priority(const std::string& source_name, const int& priority) {
 #ifdef SCHED_RESET_ON_FORK
 
-  struct sched_param sp;
+  struct sched_param sp {};
 
   if (pthread_setschedparam(pthread_self(), SCHED_RR | SCHED_RESET_ON_FORK, &sp) == 0) {
     util::debug("SCHED_RR|SCHED_RESET_ON_FORK worked.");
@@ -117,7 +114,7 @@ void RealtimeKit::set_priority(const std::string& source_name, const int& priori
 
 #ifdef RLIMIT_RTTIME
 
-  struct rlimit rl;
+  struct rlimit rl {};
   long long rttime;
 
   rttime = get_int_property("RTTimeUSecMax");

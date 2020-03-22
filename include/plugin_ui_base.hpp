@@ -16,12 +16,16 @@
 class PluginUiBase {
  public:
   PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  PluginUiBase(const PluginUiBase&) = delete;
+  auto operator=(const PluginUiBase&) -> PluginUiBase& = delete;
+  PluginUiBase(const PluginUiBase&&) = delete;
+  auto operator=(const PluginUiBase &&) -> PluginUiBase& = delete;
   virtual ~PluginUiBase();
 
   std::string name;
 
-  Gtk::Box* listbox_control;
-  Gtk::Button *plugin_up, *plugin_down;
+  Gtk::Box* listbox_control = nullptr;
+  Gtk::Button *plugin_up = nullptr, *plugin_down = nullptr;
 
   void on_new_input_level(const std::array<double, 2>& peak);
   void on_new_output_level(const std::array<double, 2>& peak);
@@ -31,26 +35,26 @@ class PluginUiBase {
  protected:
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Switch* enable;
-  Gtk::Box* controls;
-  Gtk::Image* img_state;
+  Gtk::Switch* enable = nullptr;
+  Gtk::Box* controls = nullptr;
+  Gtk::Image* img_state = nullptr;
 
-  Gtk::LevelBar *input_level_left, *input_level_right;
-  Gtk::LevelBar *output_level_left, *output_level_right;
-  Gtk::Label *input_level_left_label, *input_level_right_label;
-  Gtk::Label *output_level_left_label, *output_level_right_label;
+  Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
+  Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
+  Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
+  Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
   bool input_saturated = false;
 
   std::vector<sigc::connection> connections;
 
-  void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                  const std::string& name,
-                  Glib::RefPtr<Gtk::Adjustment>& object) {
+  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+                         const std::string& name,
+                         Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  std::string level_to_str(const double& value, const int& places);
+  static auto level_to_str(const double& value, const int& places) -> std::string;
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>

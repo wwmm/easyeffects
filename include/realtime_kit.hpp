@@ -11,8 +11,6 @@ class RealtimeKit {
  public:
   RealtimeKit(const std::string& tag);
 
-  ~RealtimeKit();
-
   void set_priority(const std::string& source_name, const int& priority);
   void set_nice(const std::string& source_name, const int& nice_value);
 
@@ -22,7 +20,7 @@ class RealtimeKit {
   Glib::RefPtr<Gio::DBus::Proxy> proxy;
   Glib::RefPtr<Gio::DBus::Proxy> properties_proxy;
 
-  long long get_int_property(const char* propname);
+  auto get_int_property(const char* propname) -> long long;
 
   void make_realtime(const std::string& source_name, const int& priority);
 

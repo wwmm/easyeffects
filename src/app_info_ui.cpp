@@ -5,9 +5,9 @@
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     const std::shared_ptr<AppInfo>& info,
+                     std::shared_ptr<AppInfo> info,
                      PulseManager* pulse_manager)
-    : Gtk::Grid(cobject), app_info(info), pm(pulse_manager) {
+    : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
   // loading glade widgets
 
   builder->get_widget("enable", enable);
@@ -49,11 +49,12 @@ AppInfoUi::~AppInfoUi() {
   util::debug(log_tag + app_info->name + " info ui destroyed");
 }
 
-std::string AppInfoUi::latency_to_str(uint value) {
+auto AppInfoUi::latency_to_str(uint value) -> std::string {
   std::ostringstream msg;
+  const float ms_factor = 0.001F;
 
   msg.precision(1);
-  msg << std::fixed << value / 1000.0 << " ms";
+  msg << std::fixed << value * ms_factor << " ms";
 
   return msg.str();
 }
@@ -67,7 +68,7 @@ void AppInfoUi::init_widgets() {
 
   volume->set_value(app_info->volume);
 
-  mute->set_active(app_info->mute);
+  mute->set_active(app_info->mute != 0);
 
   format->set_text(app_info->format);
 
@@ -81,7 +82,7 @@ void AppInfoUi::init_widgets() {
 
   latency->set_text(latency_to_str(app_info->latency));
 
-  if (app_info->corked) {
+  if (app_info->corked != 0) {
     state->set_text(_("paused"));
   } else {
     state->set_text(_("playing"));
@@ -96,7 +97,7 @@ void AppInfoUi::connect_signals() {
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 }
 
-bool AppInfoUi::on_enable_app(bool state) {
+auto AppInfoUi::on_enable_app(bool state) -> bool {
   if (state) {
     if (app_info->app_type == "sink_input") {
       pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
@@ -144,7 +145,7 @@ void AppInfoUi::on_mute() {
   }
 }
 
-void AppInfoUi::update(std::shared_ptr<AppInfo> info) {
+void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
   app_info = info;
 
   enable_connection.disconnect();

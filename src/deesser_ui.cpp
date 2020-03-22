@@ -1,49 +1,50 @@
 #include "deesser_ui.hpp"
+#include <cstring>
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("RMS");
-  } else {
-    return g_variant_new_string("Peak");
   }
+
+  return g_variant_new_string("Peak");
 }
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Wide")) {
+  if (std::strcmp(v, "Wide") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Split")) {
+  } else if (std::strcmp(v, "Split") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Wide");
-  } else {
-    return g_variant_new_string("Split");
   }
+
+  return g_variant_new_string("Split");
 }
 
 }  // namespace
@@ -102,11 +103,11 @@ DeesserUi::~DeesserUi() {
 void DeesserUi::on_new_compression(double value) {
   compression->set_value(1 - value);
 
-  compression_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  compression_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void DeesserUi::on_new_detected(double value) {
   detected->set_value(value);
 
-  detected_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  detected_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

@@ -30,37 +30,40 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
                      const Glib::RefPtr<Gtk::Builder>& refBuilder,
                      const Glib::RefPtr<Gio::Settings>& refSettings,
                      SinkInputEffects* sie_ptr);
+  SinkInputEffectsUi(const SinkInputEffectsUi&) = delete;
+  auto operator=(const SinkInputEffectsUi&) -> SinkInputEffectsUi& = delete;
+  SinkInputEffectsUi(const SinkInputEffectsUi&&) = delete;
+  auto operator=(const SinkInputEffectsUi &&) -> SinkInputEffectsUi& = delete;
+  ~SinkInputEffectsUi() override;
 
-  virtual ~SinkInputEffectsUi();
-
-  static SinkInputEffectsUi* add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr);
+  static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
 
  protected:
   std::string log_tag = "sie_ui: ";
 
  private:
-  SinkInputEffects* sie;
+  SinkInputEffects* sie = nullptr;
 
-  LimiterUi* limiter_ui;
-  CompressorUi* compressor_ui;
-  FilterUi* filter_ui;
-  EqualizerUi* equalizer_ui;
-  PitchUi* pitch_ui;
-  ReverbUi* reverb_ui;
-  BassEnhancerUi* bass_enhancer_ui;
-  ExciterUi* exciter_ui;
-  CrossfeedUi* crossfeed_ui;
-  MaximizerUi* maximizer_ui;
-  MultibandCompressorUi* multiband_compressor_ui;
-  LoudnessUi* loudness_ui;
-  GateUi* gate_ui;
-  MultibandGateUi* multiband_gate_ui;
-  DeesserUi* deesser_ui;
-  StereoToolsUi* stereo_tools_ui;
-  ConvolverUi* convolver_ui;
-  CrystalizerUi* crystalizer_ui;
-  AutoGainUi* autogain_ui;
-  DelayUi* delay_ui;
+  LimiterUi* limiter_ui = nullptr;
+  CompressorUi* compressor_ui = nullptr;
+  FilterUi* filter_ui = nullptr;
+  EqualizerUi* equalizer_ui = nullptr;
+  PitchUi* pitch_ui = nullptr;
+  ReverbUi* reverb_ui = nullptr;
+  BassEnhancerUi* bass_enhancer_ui = nullptr;
+  ExciterUi* exciter_ui = nullptr;
+  CrossfeedUi* crossfeed_ui = nullptr;
+  MaximizerUi* maximizer_ui = nullptr;
+  MultibandCompressorUi* multiband_compressor_ui = nullptr;
+  LoudnessUi* loudness_ui = nullptr;
+  GateUi* gate_ui = nullptr;
+  MultibandGateUi* multiband_gate_ui = nullptr;
+  DeesserUi* deesser_ui = nullptr;
+  StereoToolsUi* stereo_tools_ui = nullptr;
+  ConvolverUi* convolver_ui = nullptr;
+  CrystalizerUi* crystalizer_ui = nullptr;
+  AutoGainUi* autogain_ui = nullptr;
+  DelayUi* delay_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

@@ -14,22 +14,22 @@ namespace rk {
 
 std::string log_tag = "convolver: ";
 
-void autogain(float* left, float* right, int length) {
+void autogain(std::vector<float>& left, std::vector<float>& right) {
   float power = 0.0f, peak = 0.0f;
 
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     peak = (left[n] > peak) ? left[n] : peak;
     peak = (right[n] > peak) ? right[n] : peak;
   }
 
   // normalize
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     left[n] /= peak;
     right[n] /= peak;
   }
 
   // find average power
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     power += left[n] * left[n] + right[n] * right[n];
   }
 
@@ -39,7 +39,7 @@ void autogain(float* left, float* right, int length) {
 
   util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
-  for (int n = 0; n < length; n++) {
+  for (uint n = 0; n < left.size(); n++) {
     left[n] *= autogain;
     right[n] *= autogain;
   }
@@ -48,11 +48,11 @@ void autogain(float* left, float* right, int length) {
 /* Mid-Side based Stereo width effect
    taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 */
-void ms_stereo(float width, float* left, float* right, int length) {
+void ms_stereo(float width, std::vector<float>& left, std::vector<float>& right) {
   float w = width / 100.0f;
   float x = (1.0 - w) / (1.0 + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
 
-  for (int i = 0; i < length; i++) {
+  for (uint i = 0; i < left.size(); i++) {
     float L = left[i], R = right[i];
 
     left[i] = L + x * R;
@@ -60,7 +60,7 @@ void ms_stereo(float width, float* left, float* right, int length) {
   }
 }
 
-bool read_file(_GstPeconvolver* peconvolver) {
+bool read_file(GstPeconvolver* peconvolver) {
   if (peconvolver->kernel_path == nullptr) {
     util::debug(log_tag + "irs file path is null");
 
@@ -84,15 +84,15 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
   if (file.channels() == 2) {
     bool resample = false;
-    float resample_ratio = 1.0f, *buffer, *kernel;
+    float resample_ratio = 1.0f;
     int total_frames_in, total_frames_out, frames_in, frames_out;
 
     frames_in = file.frames();
     total_frames_in = file.channels() * frames_in;
 
-    buffer = new float[total_frames_in];
+    std::vector<float> buffer(total_frames_in);
 
-    file.readf(buffer, frames_in);
+    file.readf(buffer.data(), frames_in);
 
     if (file.samplerate() != peconvolver->rate) {
       resample = true;
@@ -108,9 +108,10 @@ bool read_file(_GstPeconvolver* peconvolver) {
 
     // allocate arrays
 
-    kernel = new float[total_frames_out];
-    peconvolver->kernel_L = new float[frames_out];
-    peconvolver->kernel_R = new float[frames_out];
+    std::vector<float> kernel(total_frames_out);
+
+    peconvolver->kernel_L.resize(frames_out);
+    peconvolver->kernel_R.resize(frames_out);
     peconvolver->kernel_n_frames = frames_out;
 
     // resample if necessary
@@ -130,13 +131,13 @@ bool read_file(_GstPeconvolver* peconvolver) {
       src_data.input_frames = frames_in;
 
       // A pointer to the input data samples
-      src_data.data_in = buffer;
+      src_data.data_in = buffer.data();
 
       // Maximum number of frames pointer to by data_out
       src_data.output_frames = frames_out;
 
       // A pointer to the output data samples
-      src_data.data_out = kernel;
+      src_data.data_out = kernel.data();
 
       // Equal to output_sample_rate / input_sample_rate
       src_data.src_ratio = resample_ratio;
@@ -152,7 +153,7 @@ bool read_file(_GstPeconvolver* peconvolver) {
     } else {
       util::debug(log_tag + "irs file does not need resampling");
 
-      std::memcpy(kernel, buffer, total_frames_in * sizeof(float));
+      std::memcpy(kernel.data(), buffer.data(), total_frames_in * sizeof(float));
     }
 
     // deinterleave
@@ -161,12 +162,9 @@ bool read_file(_GstPeconvolver* peconvolver) {
       peconvolver->kernel_R[n] = kernel[2 * n + 1];
     }
 
-    autogain(peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
+    autogain(peconvolver->kernel_L, peconvolver->kernel_R);
 
-    ms_stereo(peconvolver->ir_width, peconvolver->kernel_L, peconvolver->kernel_R, frames_out);
-
-    delete[] buffer;
-    delete[] kernel;
+    ms_stereo(peconvolver->ir_width, peconvolver->kernel_L, peconvolver->kernel_R);
 
     return true;
   } else {

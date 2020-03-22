@@ -1,43 +1,45 @@
-# Maintainer: Wellington <wellingtonwallace@gmail.com>
-_pkgname=pulseeffects
-pkgname="${_pkgname}-git"
-pkgver=v4.1.9.r53.g24d322a
+# Maintainer: Bleuzen <supgesu@gmail.com>
+# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Contributor: Wellington <wellingtonwallace@gmail.com>
+
+pkgname=pulseeffects-git
+pkgver=4.7.1.r2.g38355f59
 pkgrel=1
-pkgdesc="Audio Effects for Pulseaudio Applications"
-arch=(any)
-url="https://github.com/wwmm/pulseeffects"
+pkgdesc='Audio Effects for Pulseaudio Applications'
+arch=(x86_64 i686 arm armv6h armv7h aarch64)
+url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
-depends=(gtk3 gtkmm3 glibmm libpulse gstreamer gst-plugins-good gst-plugins-bad
-        lilv boost-libs libsigc++ libsndfile libsamplerate zita-convolver
-        libebur128)
-optdepends=('calf: limiter, multiband compressor, exciter, bass enhancer and others'
+depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'
+        'lilv' 'boost-libs' 'libsigc++' 'libsndfile' 'libsamplerate' 'zita-convolver' 'libebur128')
+makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
+             'calf' 'zam-plugins' 'rubberband' 'mda.lv2')
+optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'zam-plugins: maximizer'
             'rubberband: pitch shifting'
-            'lsp-plugins: equalizer, sidechain compressor and delay'
+            'lsp-plugins: equalizer, delay'
             'mda.lv2: loudness'
-            'yelp: documentation')
-makedepends=('meson' 'boost' 'itstool')
-options=(!emptydirs)
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/wwmm/pulseeffects.git")
-sha256sums=('SKIP')
+            'yelp: in-app help')
+source=("git+https://github.com/wwmm/pulseeffects.git")
+conflicts=(pulseeffects)
+provides=(pulseeffects)
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd pulseeffects
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  # Remove any potential residual build files
-  rm -rf _build
-  meson _build --prefix=/usr --buildtype=release
+  mkdir -p pulseeffects/build
+  cd pulseeffects/build
+
+  arch-meson ..
+
+  ninja
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/_build"
-  env DESTDIR="$pkgdir" ninja install
-}
+  cd pulseeffects/build
 
-# vim:set ts=2 sw=2 et:
+  DESTDIR="$pkgdir" ninja install
+}

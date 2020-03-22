@@ -2,7 +2,7 @@
 
 namespace {
 
-gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Downward")) {
@@ -11,20 +11,20 @@ gboolean mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Downward");
-  } else {
-    return g_variant_new_string("Upward");
   }
+
+  return g_variant_new_string("Upward");
 }
 
-gboolean sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Feed-forward")) {
@@ -33,20 +33,21 @@ gboolean sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer u
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Feed-forward");
-  } else {
-    return g_variant_new_string("Feed-back");
   }
+
+  return g_variant_new_string("Feed-back");
 }
 
-gboolean sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Peak")) {
@@ -59,24 +60,29 @@ gboolean sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer u
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Peak");
-  } else if (v == 1) {
-    return g_variant_new_string("RMS");
-  } else if (v == 2) {
-    return g_variant_new_string("Low-Pass");
-  } else {
-    return g_variant_new_string("Uniform");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("RMS");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Low-Pass");
+  }
+
+  return g_variant_new_string("Uniform");
 }
 
-gboolean sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
   if (v == std::string("Middle")) {
@@ -89,21 +95,26 @@ gboolean sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer
     g_value_set_int(value, 3);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Middle");
-  } else if (v == 1) {
-    return g_variant_new_string("Side");
-  } else if (v == 2) {
-    return g_variant_new_string("Left");
-  } else {
-    return g_variant_new_string("Right");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Side");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("Left");
+  }
+
+  return g_variant_new_string("Right");
 }
 
 }  // namespace
@@ -181,17 +192,17 @@ CompressorUi::~CompressorUi() {
 void CompressorUi::on_new_reduction(double value) {
   reduction->set_value(value);
 
-  reduction_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  reduction_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void CompressorUi::on_new_sidechain(double value) {
   sidechain->set_value(value);
 
-  sidechain_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  sidechain_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void CompressorUi::on_new_curve(double value) {
   curve->set_value(value);
 
-  curve_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  curve_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

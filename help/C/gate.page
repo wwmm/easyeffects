@@ -21,7 +21,7 @@
             </title>
             <p>
                 Amount of milliseconds the signal has to rise above the threshold before gain
-                reduction starts.
+                reduction stops.
             </p>
         </item>
         <item>
@@ -30,7 +30,7 @@
             </title>
             <p>
                 Amount of milliseconds the signal has to fall below the threshold before the
-                reduction is decreased again.
+                reduction is increased again.
             </p>
         </item>
         <item>
@@ -38,7 +38,7 @@
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>
-                If a signal rises above this level it will affect the gain reduction.
+                If a signal rises above this level the gain reduction is released.
             </p>
         </item>
         <item>

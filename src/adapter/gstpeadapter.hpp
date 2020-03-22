@@ -1,5 +1,5 @@
-#ifndef __GST_PEADAPTER_H__
-#define __GST_PEADAPTER_H__
+#ifndef GST_PEADAPTER_HPP
+#define GST_PEADAPTER_HPP
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
@@ -12,15 +12,12 @@ G_BEGIN_DECLS
 #define GST_IS_PEADAPTER(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PEADAPTER))
 #define GST_IS_PEADAPTER_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PEADAPTER))
 
-typedef struct _GstPeadapter GstPeadapter;
-typedef struct _GstPeadapterClass GstPeadapterClass;
-
 /**
  * GstPeadapter:
  *
  * The private peadapter structure
  */
-struct _GstPeadapter {
+struct GstPeadapter {
   GstElement parent;
 
   /* properties */
@@ -39,7 +36,7 @@ struct _GstPeadapter {
   GstPad* sinkpad = nullptr;
 };
 
-struct _GstPeadapterClass {
+struct GstPeadapterClass {
   GstElementClass parent_class;
 };
 
@@ -47,4 +44,4 @@ G_GNUC_INTERNAL GType gst_peadapter_get_type(void);
 
 G_END_DECLS
 
-#endif /* __GST_PEADAPTER_H__ */
+#endif

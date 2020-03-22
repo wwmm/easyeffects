@@ -7,6 +7,7 @@
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <array>
+#include <cstring>
 #include <iostream>
 #include <memory>
 
@@ -78,6 +79,10 @@ class ParseAppInfo;
 class PulseManager {
  public:
   PulseManager();
+  PulseManager(const PulseManager&) = delete;
+  auto operator=(const PulseManager&) -> PulseManager& = delete;
+  PulseManager(const PulseManager&&) = delete;
+  auto operator=(const PulseManager &&) -> PulseManager& = delete;
   ~PulseManager();
 
   pa_threaded_mainloop* main_loop = nullptr;
@@ -86,8 +91,8 @@ class PulseManager {
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
-  std::shared_ptr<mySinkInfo> get_sink_info(std::string name);
-  std::shared_ptr<mySourceInfo> get_source_info(std::string name);
+  auto get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo>;
+  auto get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo>;
 
   std::vector<std::string> blacklist_in;   // for input effects
   std::vector<std::string> blacklist_out;  // for output effects
@@ -153,17 +158,17 @@ class PulseManager {
 
   void get_server_info();
 
-  std::shared_ptr<mySinkInfo> get_default_sink_info();
+  auto get_default_sink_info() -> std::shared_ptr<mySinkInfo>;
 
-  std::shared_ptr<mySourceInfo> get_default_source_info();
+  auto get_default_source_info() -> std::shared_ptr<mySourceInfo>;
 
-  std::shared_ptr<mySinkInfo> load_sink(std::string name, std::string description, uint rate);
+  auto load_sink(const std::string& name, const std::string& description, uint rate) -> std::shared_ptr<mySinkInfo>;
 
   void load_apps_sink();
 
   void load_mic_sink();
 
-  bool load_module(const std::string& name, const std::string& argument);
+  auto load_module(const std::string& name, const std::string& argument) -> bool;
 
   void unload_module(uint idx);
 
@@ -179,19 +184,22 @@ class PulseManager {
 
   void changed_app(const pa_source_output_info* info);
 
-  void print_app_info(std::shared_ptr<AppInfo> info);
+  static void print_app_info(const std::shared_ptr<AppInfo>& info);
 
-  bool app_is_connected(const pa_sink_input_info* info);
+  auto app_is_connected(const pa_sink_input_info* info) -> bool;
 
-  bool app_is_connected(const pa_source_output_info* info);
+  auto app_is_connected(const pa_source_output_info* info) -> bool;
 
-  uint get_latency(const pa_sink_input_info* info) { return info->sink_usec; }
+  static auto get_latency(const pa_sink_input_info* info) -> uint { return info->sink_usec; }
 
-  uint get_latency(const pa_source_output_info* info) { return info->source_usec; }
+  static auto get_latency(const pa_source_output_info* info) -> uint { return info->source_usec; }
 
   template <typename T>
-  std::shared_ptr<AppInfo> parse_app_info(const T& info) {
-    std::string app_name, media_name, media_role, app_id;
+  auto parse_app_info(const T& info) -> std::shared_ptr<AppInfo> {
+    std::string app_name;
+    std::string media_name;
+    std::string media_role;
+    std::string app_id;
     auto ai = std::make_shared<AppInfo>();
     bool forbidden_app = false;
 
@@ -213,7 +221,7 @@ class PulseManager {
     if (prop != nullptr) {
       media_name = prop;
 
-      if (app_name == "") {
+      if (app_name.empty()) {
         app_name = media_name;
       }
 
@@ -261,7 +269,8 @@ class PulseManager {
       prop = pa_proplist_gets(info->proplist, "media.icon_name");
 
       if (prop != nullptr) {
-        if (prop == std::string("audio-card-bluetooth")) {  // there is no GTK icon with this name given by Pulseaudio =/
+        if (std::strcmp(prop, "audio-card-bluetooth") ==
+            0) {  // there is no GTK icon with this name given by Pulseaudio =/
         } else {
           icon_name = "bluetooth-symbolic";
         }
@@ -292,7 +301,7 @@ class PulseManager {
     ai->buffer = info->buffer_usec;
     ai->latency = get_latency(info);
     ai->corked = info->corked;
-    ai->wants_to_play = (ai->connected && !ai->corked) ? true : false;
+    ai->wants_to_play = ai->connected && !ai->corked;
 
     return ai;
   }

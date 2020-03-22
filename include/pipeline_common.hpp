@@ -6,8 +6,6 @@
 #include <mutex>
 #include "util.hpp"
 
-namespace {
-
 template <typename T>
 void update_effects_order(gpointer user_data) {
   auto l = static_cast<T>(user_data);
@@ -49,7 +47,7 @@ void update_effects_order(gpointer user_data) {
 }
 
 template <typename T>
-bool check_update(gpointer user_data) {
+auto check_update(gpointer user_data) -> bool {
   auto l = static_cast<T>(user_data);
 
   bool update = false;
@@ -70,7 +68,9 @@ bool check_update(gpointer user_data) {
 
   if (l->plugins_order.size() != l->plugins_order_old.size()) {
     update = true;
-  } else if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(), l->plugins_order_old.begin())) {
+  }
+
+  if (!std::equal(l->plugins_order.begin(), l->plugins_order.end(), l->plugins_order_old.begin())) {
     update = true;
   }
 
@@ -88,7 +88,7 @@ bool check_update(gpointer user_data) {
 }
 
 template <typename T>
-static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
@@ -103,7 +103,7 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpoi
 }
 
 template <typename T>
-GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   auto l = static_cast<T>(user_data);
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
@@ -129,7 +129,7 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer us
 }
 
 template <typename T>
-GstPadProbeReturn on_pad_idle(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto on_pad_idle(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (check_update<T>(user_data)) {
     update_effects_order<T>(user_data);
   }
@@ -141,7 +141,8 @@ template <typename T>
 void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
   auto srcpad = gst_element_get_static_pad(l->source, "src");
 
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(l->pipeline, &state, &pending, 0);
 
@@ -153,7 +154,5 @@ void on_plugins_order_changed(GSettings* settings, gchar* key, T* l) {
 
   g_object_unref(srcpad);
 }
-
-}  // namespace
 
 #endif

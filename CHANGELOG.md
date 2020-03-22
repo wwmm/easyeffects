@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [4.7.2]
+
+### Added
+
+- Compatibility to Linux Studio Plugins `1.1.14`
+- The convolver plugin now accepts the wav extension in the impulse files.
+- Checking exceptions in the main function.
+- Headers deprecated in Boost 1.72 were replaced.
+
+### Notes to package maintainers
+
+- As the `bypass` property in Linux Studio Plugins `1.1.14` was renamed to `enabled` this new PulseEffects version
+  won't work with older Linux Studio Plugins versions. Although I could add checks and somehow try to support both
+  versions this makes the code ugly. And I think that nowadays upgrading LSP should not be hard. If it is do not upgrade
+  to PE `4.7.2`.
+
 ## [4.7.1]
 
 ### Added

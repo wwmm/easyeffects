@@ -1,13 +1,14 @@
 #include "calibration_mic.hpp"
 #include <glibmm/main.h>
-#include <boost/math/interpolators/cubic_b_spline.hpp>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include "util.hpp"
 
 namespace {
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationMic* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state, new_state;
+    GstState old_state;
+    GstState new_state;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, nullptr);
 
@@ -27,8 +28,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationM
       cs->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n));
     }
 
-    boost::math::cubic_b_spline<float> spline(cs->spectrum_mag_tmp.begin(), cs->spectrum_mag_tmp.end(), cs->spline_f0,
-                                              cs->spline_df);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline(
+        cs->spectrum_mag_tmp.begin(), cs->spectrum_mag_tmp.end(), cs->spline_f0, cs->spline_df);
 
     for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
       cs->spectrum_mag[n] = spline(cs->spectrum_x_axis[n]);
@@ -50,8 +51,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationM
     auto max_mag = *std::max_element(cs->spectrum_mag.begin(), cs->spectrum_mag.end());
 
     if (max_mag > min_mag) {
-      for (uint n = 0; n < cs->spectrum_mag.size(); n++) {
-        cs->spectrum_mag[n] = (cs->spectrum_mag[n] - min_mag) / (max_mag - min_mag);
+      for (float& v : cs->spectrum_mag) {
+        v = (v - min_mag) / (max_mag - min_mag);
       }
 
       Glib::signal_idle().connect_once([=] { cs->new_spectrum.emit(cs->spectrum_mag); });
@@ -97,10 +98,10 @@ CalibrationMic::CalibrationMic() {
   auto caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=1,rate=48000");
 
   g_object_set(source, "volume", 1.0, nullptr);
-  g_object_set(source, "mute", false, nullptr);
+  g_object_set(source, "mute", 0, nullptr);
   g_object_set(source, "stream-properties", props, nullptr);
   g_object_set(capsfilter, "caps", caps, nullptr);
-  g_object_set(queue, "silent", true, nullptr);
+  g_object_set(queue, "silent", 1, nullptr);
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 

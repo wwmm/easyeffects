@@ -19,6 +19,10 @@
 class PipelineBase {
  public:
   PipelineBase(const std::string& tag, PulseManager* pulse_manager);
+  PipelineBase(const PipelineBase&) = delete;
+  auto operator=(const PipelineBase&) -> PipelineBase& = delete;
+  PipelineBase(const PipelineBase&&) = delete;
+  auto operator=(const PipelineBase &&) -> PipelineBase& = delete;
   virtual ~PipelineBase();
 
   bool playing = false;
@@ -54,20 +58,20 @@ class PipelineBase {
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
   int spectrum_threshold = -120;   // dB
-  uint spectrum_nbands = 1600, spectrum_nfreqs;
-  float spline_f0, spline_df;
+  uint spectrum_nbands = 1600, spectrum_nfreqs = 0;
+  float spline_f0 = 0.0F, spline_df = 0.0F;
   std::vector<float> spectrum_freqs, spectrum_x_axis;
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 
   void do_bypass(const bool& value);
-  bool bypass_state();
+  auto bypass_state() -> bool;
 
   void enable_spectrum();
   void disable_spectrum();
-  std::array<double, 2> get_peak(GstMessage* message);
+  static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
-  void set_source_monitor_name(std::string name);
-  void set_output_sink_name(std::string name);
+  void set_source_monitor_name(const std::string& name);
+  void set_output_sink_name(const std::string& name);
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
@@ -86,15 +90,15 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
  protected:
-  void set_pulseaudio_props(std::string props);
+  void set_pulseaudio_props(const std::string& props);
   void set_caps(const uint& sampling_rate);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
-  void on_sink_changed(std::shared_ptr<mySinkInfo> sink_info);
-  void on_source_changed(std::shared_ptr<mySourceInfo> source_info);
+  void on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info);
+  void on_source_changed(const std::shared_ptr<mySourceInfo>& source_info);
 
  private:
   uint current_rate = 0;
@@ -107,9 +111,9 @@ class PipelineBase {
 
   void init_spectrum_bin();
   void init_effects_bin();
-  bool apps_want_to_play();
+  auto apps_want_to_play() -> bool;
 
-  GstElement* get_required_plugin(const gchar* factoryname, const gchar* name);
+  auto get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement*;
 };
 
 #endif

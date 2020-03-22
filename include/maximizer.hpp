@@ -1,14 +1,16 @@
 #ifndef MAXIMIZER_HPP
 #define MAXIMIZER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {
  public:
   Maximizer(const std::string& tag, const std::string& schema);
-  ~Maximizer();
+  Maximizer(const Maximizer&) = delete;
+  auto operator=(const Maximizer&) -> Maximizer& = delete;
+  Maximizer(const Maximizer&&) = delete;
+  auto operator=(const Maximizer &&) -> Maximizer& = delete;
+  ~Maximizer() override;
 
   GstElement* maximizer = nullptr;
 

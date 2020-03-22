@@ -1,5 +1,5 @@
-#ifndef _GST_PECRYSTALIZER_H_
-#define _GST_PECRYSTALIZER_H_
+#ifndef GST_PECRYSTALIZER_HPP
+#define GST_PECRYSTALIZER_HPP
 
 #include <ebur128.h>
 #include <gst/audio/gstaudiofilter.h>

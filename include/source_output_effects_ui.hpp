@@ -21,28 +21,31 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
                         const Glib::RefPtr<Gio::Settings>& refSettings,
                         SourceOutputEffects* soe_ptr);
+  SourceOutputEffectsUi(const SourceOutputEffectsUi&) = delete;
+  auto operator=(const SourceOutputEffectsUi&) -> SourceOutputEffectsUi& = delete;
+  SourceOutputEffectsUi(const SourceOutputEffectsUi&&) = delete;
+  auto operator=(const SourceOutputEffectsUi &&) -> SourceOutputEffectsUi& = delete;
+  ~SourceOutputEffectsUi() override;
 
-  virtual ~SourceOutputEffectsUi();
-
-  static SourceOutputEffectsUi* add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr);
+  static auto add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr) -> SourceOutputEffectsUi*;
 
  protected:
   std::string log_tag = "soe_ui: ";
 
  private:
-  SourceOutputEffects* soe;
+  SourceOutputEffects* soe = nullptr;
 
-  LimiterUi* limiter_ui;
-  CompressorUi* compressor_ui;
-  FilterUi* filter_ui;
-  EqualizerUi* equalizer_ui;
-  ReverbUi* reverb_ui;
-  GateUi* gate_ui;
-  DeesserUi* deesser_ui;
-  PitchUi* pitch_ui;
-  WebrtcUi* webrtc_ui;
-  MultibandCompressorUi* multiband_compressor_ui;
-  MultibandGateUi* multiband_gate_ui;
+  LimiterUi* limiter_ui = nullptr;
+  CompressorUi* compressor_ui = nullptr;
+  FilterUi* filter_ui = nullptr;
+  EqualizerUi* equalizer_ui = nullptr;
+  ReverbUi* reverb_ui = nullptr;
+  GateUi* gate_ui = nullptr;
+  DeesserUi* deesser_ui = nullptr;
+  PitchUi* pitch_ui = nullptr;
+  WebrtcUi* webrtc_ui = nullptr;
+  MultibandCompressorUi* multiband_compressor_ui = nullptr;
+  MultibandGateUi* multiband_gate_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

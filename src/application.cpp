@@ -33,11 +33,11 @@ Application::~Application() {
   util::debug(log_tag + " destroyed");
 }
 
-Glib::RefPtr<Application> Application::create() {
+auto Application::create() -> Glib::RefPtr<Application> {
   return Glib::RefPtr<Application>(new Application());
 }
 
-int Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) {
+auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
@@ -89,7 +89,7 @@ void Application::on_startup() {
 
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-  if (get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) {
+  if ((get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) != 0U) {
     running_as_service = true;
   }
 
@@ -120,7 +120,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->sink_changed.connect([&](std::shared_ptr<mySinkInfo> info) {
+  pm->sink_changed.connect([&](const std::shared_ptr<mySinkInfo>& info) {
     if (info->name == pm->server_info.default_sink_name) {
       Glib::signal_timeout().connect_seconds_once(
           [=]() {
@@ -150,7 +150,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->source_changed.connect([&](std::shared_ptr<mySourceInfo> info) {
+  pm->source_changed.connect([&](const std::shared_ptr<mySourceInfo>& info) {
     if (info->name == pm->server_info.default_source_name) {
       Glib::signal_timeout().connect_seconds_once(
           [=]() {
@@ -206,19 +206,18 @@ void Application::on_startup() {
 
 void Application::on_activate() {
   if (get_active_window() == nullptr) {
-    auto window = ApplicationUi::create(this);
+    std::shared_ptr<ApplicationUi> window(ApplicationUi::create(this));
 
     add_window(*window);
 
     window->signal_hide().connect([&, window]() {
-      int width, height;
+      int width;
+      int height;
 
       window->get_size(width, height);
 
       settings->set_int("window-width", width);
       settings->set_int("window-height", height);
-
-      delete window;
     });
 
     window->show_all();
@@ -230,7 +229,7 @@ void Application::on_activate() {
   }
 }
 
-int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) {
+auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int {
   if (!options) {
     std::cerr << G_STRFUNC << ": options is null." << std::endl;
   }
@@ -244,7 +243,7 @@ int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& 
   if (options->contains("presets")) {
     std::string list;
 
-    for (auto name : presets_manager->get_names(PresetType::output)) {
+    for (const auto& name : presets_manager->get_names(PresetType::output)) {
       list += name + ",";
     }
 
@@ -252,14 +251,16 @@ int Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& 
 
     list = "";
 
-    for (auto name : presets_manager->get_names(PresetType::input)) {
+    for (const auto& name : presets_manager->get_names(PresetType::input)) {
       list += name + ",";
     }
 
     std::clog << _("Input Presets: ") + list << std::endl;
 
     return EXIT_SUCCESS;
-  } else if (options->contains("bypass")) {
+  }
+
+  if (options->contains("bypass")) {
     int bypass_arg;
 
     if (options->lookup_value("bypass", bypass_arg)) {
@@ -311,7 +312,7 @@ void Application::create_actions() {
      *So we have to use the C api :-(
      */
 
-    if (!gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr)) {
+    if (gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr) == 0) {
       util::warning("Failed to open help!");
     }
   });

@@ -73,17 +73,17 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
     util::debug(pm->log_tag + "protocol version: " + protocol);
 
     pm->context_ready = true;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   } else if (state == PA_CONTEXT_FAILED) {
     util::debug(pm->log_tag + "failed to connect context");
 
     pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   } else if (state == PA_CONTEXT_TERMINATED) {
     util::debug(pm->log_tag + "context was terminated");
 
     pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, false);
+    pa_threaded_mainloop_signal(pm->main_loop, 0);
   }
 }
 
@@ -175,7 +175,7 @@ void PulseManager::subscribe_to_events() {
                         si->active_port = "null";
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(move(si)); });
+                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
                     }
                   }
                 },
@@ -206,7 +206,7 @@ void PulseManager::subscribe_to_events() {
                       pm->mic_sink_info->format = si->format;
                     }
 
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(move(si)); });
+                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(si); });
                   }
                 },
                 pm);
@@ -241,7 +241,7 @@ void PulseManager::subscribe_to_events() {
                         si->active_port = "null";
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(move(si)); });
+                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
                     }
                   }
                 },
@@ -271,7 +271,7 @@ void PulseManager::subscribe_to_events() {
                       pm->apps_sink_info->format = si->format;
                     }
 
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(move(si)); });
+                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(si); });
                   }
                 },
                 pm);
@@ -375,7 +375,7 @@ void PulseManager::get_server_info() {
   pa_threaded_mainloop_unlock(main_loop);
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
+auto PulseManager::get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo> {
   auto si = std::make_shared<mySinkInfo>();
 
   struct Data {
@@ -431,14 +431,14 @@ std::shared_ptr<mySinkInfo> PulseManager::get_sink_info(std::string name) {
 
   if (!data.failed) {
     return si;
-  } else {
-    util::debug(log_tag + " failed to get sink info: " + name);
-
-    return nullptr;
   }
+
+  util::debug(log_tag + " failed to get sink info: " + name);
+
+  return nullptr;
 }
 
-std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
+auto PulseManager::get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo> {
   auto si = std::make_shared<mySourceInfo>();
 
   struct Data {
@@ -491,14 +491,14 @@ std::shared_ptr<mySourceInfo> PulseManager::get_source_info(std::string name) {
 
   if (!data.failed) {
     return si;
-  } else {
-    util::debug(log_tag + " failed to get source info:" + name);
-
-    return nullptr;
   }
+
+  util::debug(log_tag + " failed to get source info:" + name);
+
+  return nullptr;
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
+auto PulseManager::get_default_sink_info() -> std::shared_ptr<mySinkInfo> {
   auto info = get_sink_info(server_info.default_sink_name);
 
   if (info != nullptr) {
@@ -506,14 +506,14 @@ std::shared_ptr<mySinkInfo> PulseManager::get_default_sink_info() {
     util::debug(log_tag + "default pulseaudio sink audio format: " + info->format);
 
     return info;
-  } else {
-    util::critical(log_tag + "could not get default sink info");
-
-    return nullptr;
   }
+
+  util::critical(log_tag + "could not get default sink info");
+
+  return nullptr;
 }
 
-std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
+auto PulseManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
   auto info = get_source_info(server_info.default_source_name);
 
   if (info != nullptr) {
@@ -521,14 +521,14 @@ std::shared_ptr<mySourceInfo> PulseManager::get_default_source_info() {
     util::debug(log_tag + "default pulseaudio source audio format: " + info->format);
 
     return info;
-  } else {
-    util::critical(log_tag + "could not get default source info");
-
-    return nullptr;
   }
+
+  util::critical(log_tag + "could not get default source info");
+
+  return nullptr;
 }
 
-bool PulseManager::load_module(const std::string& name, const std::string& argument) {
+auto PulseManager::load_module(const std::string& name, const std::string& argument) -> bool {
   struct Data {
     bool status;
     PulseManager* pm;
@@ -543,11 +543,7 @@ bool PulseManager::load_module(const std::string& name, const std::string& argum
       [](auto c, auto idx, auto data) {
         auto d = static_cast<Data*>(data);
 
-        if (idx == PA_INVALID_INDEX) {
-          d->status = false;
-        } else {
-          d->status = true;
-        }
+        d->status = idx != PA_INVALID_INDEX;
 
         pa_threaded_mainloop_signal(d->pm->main_loop, false);
       },
@@ -566,7 +562,8 @@ bool PulseManager::load_module(const std::string& name, const std::string& argum
   return data.status;
 }
 
-std::shared_ptr<mySinkInfo> PulseManager::load_sink(std::string name, std::string description, uint rate) {
+auto PulseManager::load_sink(const std::string& name, const std::string& description, uint rate)
+    -> std::shared_ptr<mySinkInfo> {
   auto si = get_sink_info(name);
 
   if (si == nullptr) {  // sink is not loaded
@@ -638,12 +635,10 @@ void PulseManager::find_sink_inputs() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->new_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -669,12 +664,10 @@ void PulseManager::find_source_outputs() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->new_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -700,11 +693,7 @@ void PulseManager::find_sinks() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           std::string s1 = "PulseEffects_apps";
           std::string s2 = "PulseEffects_mic";
 
@@ -717,8 +706,10 @@ void PulseManager::find_sinks() {
             si->rate = info->sample_spec.rate;
             si->format = pa_sample_format_to_string(info->sample_spec.format);
 
-            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(move(si)); });
+            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -744,11 +735,7 @@ void PulseManager::find_sources() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           std::string s1 = "PulseEffects_apps.monitor";
           std::string s2 = "PulseEffects_mic.monitor";
 
@@ -761,8 +748,10 @@ void PulseManager::find_sources() {
             si->rate = info->sample_spec.rate;
             si->format = pa_sample_format_to_string(info->sample_spec.format);
 
-            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(move(si)); });
+            Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -975,7 +964,7 @@ void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint
         },
         &data);
 
-    if (o) {
+    if (o != nullptr) {
       while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
       }
@@ -1003,7 +992,7 @@ void PulseManager::set_sink_input_mute(const std::string& name, uint idx, bool s
   pa_threaded_mainloop_lock(main_loop);
 
   auto o = pa_context_set_sink_input_mute(
-      context, idx, state,
+      context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
@@ -1066,7 +1055,7 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
         },
         &data);
 
-    if (o) {
+    if (o != nullptr) {
       while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
         pa_threaded_mainloop_wait(main_loop);
       }
@@ -1094,7 +1083,7 @@ void PulseManager::set_source_output_mute(const std::string& name, uint idx, boo
   pa_threaded_mainloop_lock(main_loop);
 
   auto o = pa_context_set_source_output_mute(
-      context, idx, state,
+      context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
@@ -1130,12 +1119,10 @@ void PulseManager::get_sink_input_info(uint idx) {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           pm->changed_app(info);
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1161,11 +1148,7 @@ void PulseManager::get_modules_info() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           auto mi = std::make_shared<myModuleInfo>();
 
           if (info->name) {
@@ -1178,8 +1161,10 @@ void PulseManager::get_modules_info() {
               mi->argument = "";
             }
 
-            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->module_info.emit(move(mi)); });
+            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->module_info.emit(mi); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1205,11 +1190,7 @@ void PulseManager::get_clients_info() {
       [](auto c, auto info, auto eol, auto d) {
         auto pm = static_cast<PulseManager*>(d);
 
-        if (eol < 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (eol > 0) {
-          pa_threaded_mainloop_signal(pm->main_loop, false);
-        } else if (info != nullptr) {
+        if (info != nullptr) {
           auto mi = std::make_shared<myClientInfo>();
 
           if (info->name) {
@@ -1222,8 +1203,10 @@ void PulseManager::get_clients_info() {
               mi->binary = "";
             }
 
-            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->client_info.emit(move(mi)); });
+            Glib::signal_idle().connect_once([pm, mi = move(mi)] { pm->client_info.emit(mi); });
           }
+        } else {
+          pa_threaded_mainloop_signal(pm->main_loop, false);
         }
       },
       this);
@@ -1385,7 +1368,7 @@ void PulseManager::changed_app(const pa_source_output_info* info) {
   }
 }
 
-void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
+void PulseManager::print_app_info(const std::shared_ptr<AppInfo>& info) {
   std::cout << "index: " << info->index << std::endl;
   std::cout << "name: " << info->name << std::endl;
   std::cout << "icon name: " << info->icon_name << std::endl;
@@ -1397,18 +1380,10 @@ void PulseManager::print_app_info(std::shared_ptr<AppInfo> info) {
   std::cout << "wants to play: " << info->wants_to_play << std::endl;
 }
 
-bool PulseManager::app_is_connected(const pa_sink_input_info* info) {
-  if (info->sink == apps_sink_info->index) {
-    return true;
-  } else {
-    return false;
-  }
+auto PulseManager::app_is_connected(const pa_sink_input_info* info) -> bool {
+  return info->sink == apps_sink_info->index;
 }
 
-bool PulseManager::app_is_connected(const pa_source_output_info* info) {
-  if (info->source == mic_sink_info->monitor_source) {
-    return true;
-  } else {
-    return false;
-  }
+auto PulseManager::app_is_connected(const pa_source_output_info* info) -> bool {
+  return info->source == mic_sink_info->monitor_source;
 }

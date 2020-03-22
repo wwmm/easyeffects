@@ -1,48 +1,59 @@
 #include "pulse_settings_ui.hpp"
+#include <cstring>
 #include "util.hpp"
 
 namespace {
 
-gboolean blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("64")) {
+  if (std::strcmp(v, "64") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("128")) {
+  } else if (std::strcmp(v, "128") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("256")) {
+  } else if (std::strcmp(v, "256") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("512")) {
+  } else if (std::strcmp(v, "512") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("1024")) {
+  } else if (std::strcmp(v, "1024") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("2048")) {
+  } else if (std::strcmp(v, "2048") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("4096")) {
+  } else if (std::strcmp(v, "4096") == 0) {
     g_value_set_int(value, 6);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("64");
-  } else if (v == 1) {
-    return g_variant_new_string("128");
-  } else if (v == 2) {
-    return g_variant_new_string("256");
-  } else if (v == 3) {
-    return g_variant_new_string("512");
-  } else if (v == 4) {
-    return g_variant_new_string("1024");
-  } else if (v == 5) {
-    return g_variant_new_string("2048");
-  } else {
-    return g_variant_new_string("4096");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("128");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("256");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("512");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("1024");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("2048");
+  }
+
+  return g_variant_new_string("4096");
 }
 
 }  // namespace
@@ -138,12 +149,12 @@ void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_pulse", _("Pulseaudio"));
 }
 
-void PulseSettingsUi::on_sink_added(std::shared_ptr<mySinkInfo> info) {
+void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   bool add_to_list = true;
 
   auto children = sink_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -185,7 +196,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
 
   auto children = sink_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -205,12 +216,12 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   }
 }
 
-void PulseSettingsUi::on_source_added(std::shared_ptr<mySourceInfo> info) {
+void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info) {
   bool add_to_list = true;
 
   auto children = source_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -252,7 +263,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
 
   auto children = source_list->children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     uint i;
     std::string name;
 
@@ -276,7 +287,7 @@ void PulseSettingsUi::on_use_default_sink_toggled() {
   if (use_default_sink->get_active()) {
     auto children = sink_list->children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       std::string name;
 
       c.get_value(1, name);
@@ -292,7 +303,7 @@ void PulseSettingsUi::on_use_default_source_toggled() {
   if (use_default_source->get_active()) {
     auto children = source_list->children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       std::string name;
 
       c.get_value(1, name);

@@ -16,9 +16,9 @@ BlacklistSettingsUi::BlacklistSettingsUi(BaseObjectType* cobject, const Glib::Re
 
   // signals connection
 
-  blacklist_in_listbox->set_sort_func(sigc::mem_fun(*this, &BlacklistSettingsUi::on_listbox_sort));
+  blacklist_in_listbox->set_sort_func(sigc::ptr_fun(BlacklistSettingsUi::on_listbox_sort));
 
-  blacklist_out_listbox->set_sort_func(sigc::mem_fun(*this, &BlacklistSettingsUi::on_listbox_sort));
+  blacklist_out_listbox->set_sort_func(sigc::ptr_fun(BlacklistSettingsUi::on_listbox_sort));
 
   add_blacklist_in->signal_clicked().connect([=]() {
     auto name = blacklist_in_name->get_text();
@@ -80,7 +80,7 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
 
   std::vector<std::string> names = settings->get_string_array("blacklist-in");
 
-  for (auto name : names) {
+  for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
 
     Gtk::ListBoxRow* row;
@@ -118,7 +118,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
 
   std::vector<std::string> names = settings->get_string_array("blacklist-out");
 
-  for (auto name : names) {
+  for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
 
     Gtk::ListBoxRow* row;
@@ -147,7 +147,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
   }
 }
 
-int BlacklistSettingsUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) {
+auto BlacklistSettingsUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -157,9 +157,11 @@ int BlacklistSettingsUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow*
 
   if (name1 == names[0]) {
     return -1;
-  } else if (name2 == names[0]) {
-    return 1;
-  } else {
-    return 0;
   }
+
+  if (name2 == names[0]) {
+    return 1;
+  }
+
+  return 0;
 }

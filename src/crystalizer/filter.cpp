@@ -25,13 +25,7 @@ void Filter::create_lowpass_kernel(const float& rate, const float& cutoff, const
 
   float fc = cutoff / rate;
 
-  if (kernel != nullptr) {
-    delete[] kernel;
-
-    kernel = nullptr;
-  }
-
-  kernel = new float[kernel_size];
+  kernel.resize(kernel_size);
 
   float sum = 0.0f;
 
@@ -66,35 +60,30 @@ void Filter::create_bandpass_kernel(const float& rate,
                                     const float& transition_band) {
   create_lowpass_kernel(rate, cutoff2, transition_band);
 
-  float* lowpass_kernel = new float[kernel_size];
+  std::vector<float> lowpass_kernel(kernel_size);
 
-  memcpy(lowpass_kernel, kernel, kernel_size * sizeof(float));
+  memcpy(lowpass_kernel.data(), kernel.data(), kernel_size * sizeof(float));
 
   create_highpass_kernel(rate, cutoff1, transition_band);
 
-  float* highpass_kernel = new float[kernel_size];
+  std::vector<float> highpass_kernel(kernel_size);
 
-  memcpy(highpass_kernel, kernel, kernel_size * sizeof(float));
-
-  delete[] kernel;
+  memcpy(highpass_kernel.data(), kernel.data(), kernel_size * sizeof(float));
 
   kernel_size = 2 * kernel_size - 1;
 
-  kernel = new float[kernel_size];
+  kernel.resize(kernel_size);
 
-  direct_conv(lowpass_kernel, highpass_kernel, kernel, kernel_size);
-
-  delete[] lowpass_kernel;
-  delete[] highpass_kernel;
+  direct_conv(lowpass_kernel, highpass_kernel, kernel);
 }
 
-void Filter::direct_conv(float*& a, float*& b, float*& c, const int& N) {
-  int M = (N + 1) / 2;
+void Filter::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
+  uint M = (c.size() + 1) / 2;
 
-  for (int n = 0; n < N; n++) {
+  for (uint n = 0; n < c.size(); n++) {
     c[n] = 0.0f;
 
-    for (int m = 0; m < M; m++) {
+    for (uint m = 0; m < M; m++) {
       if (n > m && n - m < M) {
         c[n] += a[n - m] * b[m];
       }
@@ -141,7 +130,7 @@ void Filter::init_zita(const int& num_samples) {
 
   nsamples = num_samples;
 
-  // depending on buffer and kernel size OPT_FFTW_MEASURE may make un crash
+  // depending on buffer and kernel size OPT_FFTW_MEASURE may make us crash
   // options |= Convproc::OPT_FFTW_MEASURE;
   options |= Convproc::OPT_VECTOR_MODE;
 
@@ -164,14 +153,14 @@ void Filter::init_zita(const int& num_samples) {
     util::debug(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
   }
 
-  ret = conv->impdata_create(0, 0, 1, kernel, 0, kernel_size);
+  ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, kernel_size);
 
   if (ret != 0) {
     failed = true;
     util::debug(log_tag + "left impdata_create failed: " + std::to_string(ret));
   }
 
-  ret = conv->impdata_create(1, 1, 1, kernel, 0, kernel_size);
+  ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, kernel_size);
 
   if (ret != 0) {
     failed = true;
@@ -227,11 +216,5 @@ void Filter::finish() {
 
       conv = nullptr;
     }
-  }
-
-  if (kernel != nullptr) {
-    delete[] kernel;
-
-    kernel = nullptr;
   }
 }

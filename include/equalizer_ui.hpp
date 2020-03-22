@@ -17,21 +17,25 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
               const std::string& schema,
               const std::string& schema_left,
               const std::string& schema_right);
-  virtual ~EqualizerUi();
+  EqualizerUi(const EqualizerUi&) = delete;
+  auto operator=(const EqualizerUi&) -> EqualizerUi& = delete;
+  EqualizerUi(const EqualizerUi&&) = delete;
+  auto operator=(const EqualizerUi &&) -> EqualizerUi& = delete;
+  ~EqualizerUi() override;
 
   void reset();
 
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  Gtk::Grid *bands_grid_left, *bands_grid_right;
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
-  Gtk::Button *reset_eq, *flat_response, *calculate_freqs;
-  Gtk::ListBox* presets_listbox;
-  Gtk::Switch* split_channels;
-  Gtk::Stack* stack;
-  Gtk::StackSwitcher* stack_switcher;
-  Gtk::ComboBoxText* mode;
+  Gtk::Grid *bands_grid_left = nullptr, *bands_grid_right = nullptr;
+  Gtk::Button *reset_eq = nullptr, *flat_response = nullptr, *calculate_freqs = nullptr;
+  Gtk::ListBox* presets_listbox = nullptr;
+  Gtk::Switch* split_channels = nullptr;
+  Gtk::Stack* stack = nullptr;
+  Gtk::StackSwitcher* stack_switcher = nullptr;
+  Gtk::ComboBoxText* mode = nullptr;
 
   std::vector<sigc::connection> connections_bands;
 
@@ -41,7 +45,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_nbands_changed();
 
-  void build_bands(Gtk::Grid* bands_grid, Glib::RefPtr<Gio::Settings> cfg, const int& nbands);
+  void build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands);
 
   void build_unified_bands(const int& nbands);
 
@@ -49,7 +53,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_calculate_frequencies();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void populate_presets_listbox();
 

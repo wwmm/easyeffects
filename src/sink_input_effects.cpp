@@ -1,4 +1,5 @@
 #include "sink_input_effects.hpp"
+#include <cstring>
 #include "pipeline_common.hpp"
 
 namespace {
@@ -6,58 +7,58 @@ namespace {
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEffects* sie) {
   auto src_name = GST_OBJECT_NAME(message->src);
 
-  if (src_name == std::string("pitch_input_level")) {
-    sie->pitch_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("pitch_output_level")) {
-    sie->pitch_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("equalizer_input_level")) {
-    sie->equalizer_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("equalizer_output_level")) {
-    sie->equalizer_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("bass_enhancer_input_level")) {
-    sie->bass_enhancer_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("bass_enhancer_output_level")) {
-    sie->bass_enhancer_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("exciter_input_level")) {
-    sie->exciter_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("exciter_output_level")) {
-    sie->exciter_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("crossfeed_input_level")) {
-    sie->crossfeed_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("crossfeed_output_level")) {
-    sie->crossfeed_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("maximizer_input_level")) {
-    sie->maximizer_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("maximizer_output_level")) {
-    sie->maximizer_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("loudness_input_level")) {
-    sie->loudness_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("loudness_output_level")) {
-    sie->loudness_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("gate_input_level")) {
-    sie->gate_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("gate_output_level")) {
-    sie->gate_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("deesser_input_level")) {
-    sie->deesser_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("deesser_output_level")) {
-    sie->deesser_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("convolver_input_level")) {
-    sie->convolver_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("convolver_output_level")) {
-    sie->convolver_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("crystalizer_input_level")) {
-    sie->crystalizer_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("crystalizer_output_level")) {
-    sie->crystalizer_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("autogain_input_level")) {
-    sie->autogain_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("autogain_output_level")) {
-    sie->autogain_output_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("delay_input_level")) {
-    sie->delay_input_level.emit(sie->get_peak(message));
-  } else if (src_name == std::string("delay_output_level")) {
-    sie->delay_output_level.emit(sie->get_peak(message));
+  if (std::strcmp(src_name, "pitch_input_level") == 0) {
+    sie->pitch_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
+    sie->pitch_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "equalizer_input_level") == 0) {
+    sie->equalizer_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
+    sie->equalizer_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "bass_enhancer_input_level") == 0) {
+    sie->bass_enhancer_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "bass_enhancer_output_level") == 0) {
+    sie->bass_enhancer_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "exciter_input_level") == 0) {
+    sie->exciter_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "exciter_output_level") == 0) {
+    sie->exciter_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "crossfeed_input_level") == 0) {
+    sie->crossfeed_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "crossfeed_output_level") == 0) {
+    sie->crossfeed_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "maximizer_input_level") == 0) {
+    sie->maximizer_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "maximizer_output_level") == 0) {
+    sie->maximizer_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "loudness_input_level") == 0) {
+    sie->loudness_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "loudness_output_level") == 0) {
+    sie->loudness_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "gate_input_level") == 0) {
+    sie->gate_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "gate_output_level") == 0) {
+    sie->gate_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
+    sie->deesser_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
+    sie->deesser_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "convolver_input_level") == 0) {
+    sie->convolver_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "convolver_output_level") == 0) {
+    sie->convolver_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "crystalizer_input_level") == 0) {
+    sie->crystalizer_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "crystalizer_output_level") == 0) {
+    sie->crystalizer_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "autogain_input_level") == 0) {
+    sie->autogain_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "autogain_output_level") == 0) {
+    sie->autogain_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "delay_input_level") == 0) {
+    sie->delay_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "delay_output_level") == 0) {
+    sie->delay_output_level.emit(SinkInputEffects::get_peak(message));
   }
 }
 
@@ -75,14 +76,14 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
 
   auto PULSE_SINK = std::getenv("PULSE_SINK");
 
-  if (PULSE_SINK) {
+  if (PULSE_SINK != nullptr) {
     if (pm->get_sink_info(PULSE_SINK)) {
       set_output_sink_name(PULSE_SINK);
     } else {
       set_output_sink_name(pm->server_info.default_sink_name);
     }
   } else {
-    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink");
+    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
 
     if (use_default_sink) {
       set_output_sink_name(pm->server_info.default_sink_name);
@@ -174,7 +175,7 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 
   auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
 
-  if (enable_all && !app_info->connected) {
+  if ((enable_all != 0) && !app_info->connected) {
     pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
   }
 }
@@ -186,8 +187,8 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
   g_settings_get(child_settings, "plugins", "as", &iter);
 
-  while (g_variant_iter_next(iter, "s", &name)) {
-    plugins_order.push_back(name);
+  while (g_variant_iter_next(iter, "s", &name) != 0) {
+    plugins_order.emplace_back(name);
     g_free(name);
   }
 
@@ -197,8 +198,8 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
   g_variant_unref(gvariant);
 
-  while (g_variant_iter_next(iter, "s", &name)) {
-    default_order.push_back(name);
+  while (g_variant_iter_next(iter, "s", &name) != 0) {
+    default_order.emplace_back(name);
     g_free(name);
   }
 
@@ -212,7 +213,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     g_settings_reset(child_settings, "plugins");
   }
 
-  for (auto v : plugins_order) {
+  for (const auto& v : plugins_order) {
     // checking if the plugin exists. If not we reset the list to default
 
     if (std::find(default_order.begin(), default_order.end(), v) == default_order.end()) {

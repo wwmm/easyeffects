@@ -1,14 +1,16 @@
 #ifndef MULTIBAND_GATE_HPP
 #define MULTIBAND_GATE_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class MultibandGate : public PluginBase {
  public:
   MultibandGate(const std::string& tag, const std::string& schema);
-  ~MultibandGate();
+  MultibandGate(const MultibandGate&) = delete;
+  auto operator=(const MultibandGate&) -> MultibandGate& = delete;
+  MultibandGate(const MultibandGate&&) = delete;
+  auto operator=(const MultibandGate &&) -> MultibandGate& = delete;
+  ~MultibandGate() override;
 
   GstElement* multiband_gate = nullptr;
 

@@ -7,6 +7,8 @@ obj-*-linux-gnu
 .vscode
 node_modules
 package-lock.json
+compile_commands.json
+.clangd
 
 # Compiled python modules.
 *.pyc

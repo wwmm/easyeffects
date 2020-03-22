@@ -1,49 +1,50 @@
 #include "gate_ui.hpp"
+#include <cstring>
 
 namespace {
 
-gboolean detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("RMS")) {
+  if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Peak")) {
+  } else if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("RMS");
-  } else {
-    return g_variant_new_string("Peak");
   }
+
+  return g_variant_new_string("Peak");
 }
 
-gboolean stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Average")) {
+  if (std::strcmp(v, "Average") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Maximum")) {
+  } else if (std::strcmp(v, "Maximum") == 0) {
     g_value_set_int(value, 1);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Average");
-  } else {
-    return g_variant_new_string("Maximum");
   }
+
+  return g_variant_new_string("Maximum");
 }
 
 }  // namespace
@@ -94,5 +95,5 @@ GateUi::~GateUi() {
 void GateUi::on_new_gating(double value) {
   gating->set_value(1 - value);
 
-  gating_label->set_text(level_to_str(util::linear_to_db(value), 0));
+  gating_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

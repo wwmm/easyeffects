@@ -9,18 +9,20 @@
 class CalibrationSignals {
  public:
   CalibrationSignals();
-
+  CalibrationSignals(const CalibrationSignals&) = delete;
+  auto operator=(const CalibrationSignals&) -> CalibrationSignals& = delete;
+  CalibrationSignals(const CalibrationSignals&&) = delete;
+  auto operator=(const CalibrationSignals &&) -> CalibrationSignals& = delete;
   ~CalibrationSignals();
 
   std::string log_tag = "calibration_signals: ";
 
-  GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr,
-             *spectrum = nullptr;
+  GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr, *spectrum = nullptr;
 
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
   int spectrum_threshold = -120;   // dB
-  uint spectrum_nbands = 3200, spectrum_nfreqs;
+  uint spectrum_nbands = 3200, spectrum_nfreqs = 0;
   uint spectrum_npoints = 300;  // number of points displayed
   float spline_f0, spline_df;
   std::vector<float> spectrum_freqs, spectrum_x_axis;

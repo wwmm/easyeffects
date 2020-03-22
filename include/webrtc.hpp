@@ -5,16 +5,18 @@
 
 class Webrtc : public PluginBase {
  public:
-  Webrtc(const std::string& tag,
-         const std::string& schema,
-         const int& sampling_rate);
-  ~Webrtc();
+  Webrtc(const std::string& tag, const std::string& schema, const int& sampling_rate);
+  Webrtc(const Webrtc&) = delete;
+  auto operator=(const Webrtc&) -> Webrtc& = delete;
+  Webrtc(const Webrtc&&) = delete;
+  auto operator=(const Webrtc &&) -> Webrtc& = delete;
+  ~Webrtc() override;
 
   GstElement *webrtc = nullptr, *probe_bin = nullptr, *probe_src = nullptr;
 
   int rate;
 
-  void set_probe_src_device(std::string name);
+  void set_probe_src_device(const std::string& name);
 
  private:
   void build_probe_bin();

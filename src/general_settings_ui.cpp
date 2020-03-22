@@ -6,30 +6,33 @@
 
 namespace {
 
-gboolean priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Niceness")) {
+  if (std::strcmp(v, "Niceness") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Real Time")) {
+  } else if (std::strcmp(v, "Real Time") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("None")) {
+  } else if (std::strcmp(v, "None") == 0) {
     g_value_set_int(value, 2);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Niceness");
-  } else if (v == 1) {
-    return g_variant_new_string("Real Time");
-  } else {
-    return g_variant_new_string("None");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("Real Time");
+  }
+
+  return g_variant_new_string("None");
 }
 
 }  // namespace
@@ -137,7 +140,7 @@ void GeneralSettingsUi::init_autostart_switch() {
   }
 }
 
-bool GeneralSettingsUi::on_enable_autostart(bool state) {
+auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
   boost::filesystem::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
 
   if (!boost::filesystem::is_directory(autostart_dir)) {

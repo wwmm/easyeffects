@@ -1,47 +1,58 @@
 #include "stereo_tools_ui.hpp"
+#include <cstring>
 
 namespace {
 
-gboolean stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) {
+auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   auto v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("LR > LR (Stereo Default)")) {
+  if (std::strcmp(v, "LR > LR (Stereo Default)") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("LR > MS (Stereo to Mid-Side)")) {
+  } else if (std::strcmp(v, "LR > MS (Stereo to Mid-Side)") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("MS > LR (Mid-Side to Stereo)")) {
+  } else if (std::strcmp(v, "MS > LR (Mid-Side to Stereo)") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("LR > LL (Mono Left Channel)")) {
+  } else if (std::strcmp(v, "LR > LL (Mono Left Channel)") == 0) {
     g_value_set_int(value, 3);
-  } else if (v == std::string("LR > RR (Mono Right Channel)")) {
+  } else if (std::strcmp(v, "LR > RR (Mono Right Channel)") == 0) {
     g_value_set_int(value, 4);
-  } else if (v == std::string("LR > L+R (Mono Sum L+R)")) {
+  } else if (std::strcmp(v, "LR > L+R (Mono Sum L+R)") == 0) {
     g_value_set_int(value, 5);
-  } else if (v == std::string("LR > RL (Stereo Flip Channels)")) {
+  } else if (std::strcmp(v, "LR > RL (Stereo Flip Channels)") == 0) {
     g_value_set_int(value, 6);
   }
 
-  return true;
+  return 1;
 }
 
-GVariant* int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) {
+auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("LR > LR (Stereo Default)");
-  } else if (v == 1) {
-    return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
-  } else if (v == 2) {
-    return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
-  } else if (v == 3) {
-    return g_variant_new_string("LR > LL (Mono Left Channel)");
-  } else if (v == 4) {
-    return g_variant_new_string("LR > RR (Mono Right Channel)");
-  } else if (v == 5) {
-    return g_variant_new_string("LR > L+R (Mono Sum L+R)");
-  } else {
-    return g_variant_new_string("LR > RL (Stereo Flip Channels)");
   }
+
+  if (v == 1) {
+    return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
+  }
+
+  if (v == 3) {
+    return g_variant_new_string("LR > LL (Mono Left Channel)");
+  }
+
+  if (v == 4) {
+    return g_variant_new_string("LR > RR (Mono Right Channel)");
+  }
+
+  if (v == 5) {
+    return g_variant_new_string("LR > L+R (Mono Sum L+R)");
+  }
+
+  return g_variant_new_string("LR > RL (Stereo Flip Channels)");
 }
 
 }  // namespace

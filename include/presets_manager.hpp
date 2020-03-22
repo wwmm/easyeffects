@@ -32,9 +32,13 @@
 class PresetsManager {
  public:
   PresetsManager();
-  virtual ~PresetsManager();
+  PresetsManager(const PresetsManager&) = delete;
+  auto operator=(const PresetsManager&) -> PresetsManager& = delete;
+  PresetsManager(const PresetsManager&&) = delete;
+  auto operator=(const PresetsManager &&) -> PresetsManager& = delete;
+  ~PresetsManager();
 
-  std::vector<std::string> get_names(PresetType preset_type);
+  auto get_names(PresetType preset_type) -> std::vector<std::string>;
   void add(PresetType preset_type, const std::string& name);
   void save(PresetType preset_type, const std::string& name);
   void remove(PresetType preset_type, const std::string& name);
@@ -42,9 +46,9 @@ class PresetsManager {
   void import(PresetType preset_type, const std::string& file_path);
   void add_autoload(const std::string& device, const std::string& name);
   void remove_autoload(const std::string& device, const std::string& name);
-  std::string find_autoload(const std::string& device);
+  auto find_autoload(const std::string& device) -> std::string;
   void autoload(PresetType preset_type, const std::string& device);
-  bool preset_file_exists(PresetType preset_type, const std::string& name);
+  auto preset_file_exists(PresetType preset_type, const std::string& name) -> bool;
 
  private:
   std::string log_tag = "presets_manager: ";
@@ -77,7 +81,7 @@ class PresetsManager {
   std::unique_ptr<SpectrumPreset> spectrum;
 
   template <typename T>
-  T get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) {
+  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
     Glib::Variant<T> value;
 
     settings->get_default_value(key, value);
@@ -119,7 +123,7 @@ class PresetsManager {
   }
 
   template <typename T>
-  bool is_different(const T& a, const T& b) {
+  auto is_different(const T& a, const T& b) -> bool {
     return a != b;
   }
 

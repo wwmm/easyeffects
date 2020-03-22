@@ -12,9 +12,13 @@
 class Application : public Gtk::Application {
  public:
   Application();
-  ~Application();
+  Application(const Application&) = delete;
+  auto operator=(const Application&) -> Application& = delete;
+  Application(const Application&&) = delete;
+  auto operator=(const Application &&) -> Application& = delete;
+  ~Application() override;
 
-  static Glib::RefPtr<Application> create();
+  static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
 
   std::unique_ptr<PulseManager> pm;
@@ -23,9 +27,9 @@ class Application : public Gtk::Application {
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:
-  int on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) override;
+  auto on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int override;
 
-  int on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options);
+  auto on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int;
 
   void on_startup() override;
   void on_activate() override;

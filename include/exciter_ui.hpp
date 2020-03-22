@@ -8,16 +8,20 @@
 class ExciterUi : public Gtk::Grid, public PluginUiBase {
  public:
   ExciterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~ExciterUi();
+  ExciterUi(const ExciterUi&) = delete;
+  auto operator=(const ExciterUi&) -> ExciterUi& = delete;
+  ExciterUi(const ExciterUi&&) = delete;
+  auto operator=(const ExciterUi &&) -> ExciterUi& = delete;
+  ~ExciterUi() override;
 
   void on_new_harmonics_level(double value);
 
  private:
   Glib::RefPtr<Gtk::Adjustment> amount, blend, ceilv, harmonics, input_gain, output_gain, scope;
 
-  Gtk::LevelBar* harmonics_levelbar;
-  Gtk::Label* harmonics_levelbar_label;
-  Gtk::ToggleButton *ceil_active, *listen;
+  Gtk::LevelBar* harmonics_levelbar = nullptr;
+  Gtk::Label* harmonics_levelbar_label = nullptr;
+  Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
 };
 
 #endif

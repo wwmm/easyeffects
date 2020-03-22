@@ -1,14 +1,16 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <sigc++/sigc++.h>
-#include <array>
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {
  public:
   Crystalizer(const std::string& tag, const std::string& schema);
-  ~Crystalizer();
+  Crystalizer(const Crystalizer&) = delete;
+  auto operator=(const Crystalizer&) -> Crystalizer& = delete;
+  Crystalizer(const Crystalizer&&) = delete;
+  auto operator=(const Crystalizer &&) -> Crystalizer& = delete;
+  ~Crystalizer() override;
 
   GstElement* crystalizer = nullptr;
 

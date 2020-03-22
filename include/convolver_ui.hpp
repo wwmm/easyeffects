@@ -17,19 +17,31 @@
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
   ConvolverUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
-  virtual ~ConvolverUi();
+  ConvolverUi(const ConvolverUi&) = delete;
+  auto operator=(const ConvolverUi&) -> ConvolverUi& = delete;
+  ConvolverUi(const ConvolverUi&&) = delete;
+  auto operator=(const ConvolverUi &&) -> ConvolverUi& = delete;
+  ~ConvolverUi() override;
 
  private:
   std::string log_tag = "convolver_ui: ";
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, ir_width;
-  Gtk::ListBox* irs_listbox;
-  Gtk::MenuButton* irs_menu_button;
-  Gtk::ScrolledWindow* irs_scrolled_window;
-  Gtk::Button* import_irs;
-  Gtk::DrawingArea *left_plot, *right_plot;
-  Gtk::Label *label_file_name, *label_sampling_rate, *label_samples, *label_duration;
-  Gtk::ToggleButton* show_fft;
+
+  Gtk::ListBox* irs_listbox = nullptr;
+
+  Gtk::MenuButton* irs_menu_button = nullptr;
+
+  Gtk::ScrolledWindow* irs_scrolled_window = nullptr;
+
+  Gtk::Button* import_irs = nullptr;
+
+  Gtk::DrawingArea *left_plot = nullptr, *right_plot = nullptr;
+
+  Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
+             *label_duration = nullptr;
+
+  Gtk::ToggleButton* show_fft = nullptr;
 
   Pango::FontDescription font;
 
@@ -37,11 +49,11 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   bool mouse_inside = false, show_fft_spectrum = false;
   unsigned int max_plot_points = 200;
-  float mouse_intensity = 0.0f, mouse_time = 0.0f, mouse_freq = 0.0f;
-  float min_left = 0.0f, max_left = 0.0f, min_right = 0.0f, max_right = 0.0f;
-  float max_time = 0.0f;
-  float fft_min_left = 0.0f, fft_max_left = 0.0f, fft_min_right = 0.0f, fft_max_right = 0.0f;
-  float fft_max_freq = 0.0f, fft_min_freq = 0.0f;
+  float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
+  float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
+  float max_time = 0.0F;
+  float fft_min_left = 0.0F, fft_max_left = 0.0F, fft_min_right = 0.0F, fft_max_right = 0.0F;
+  float fft_max_freq = 0.0F, fft_min_freq = 0.0F;
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
@@ -51,7 +63,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   std::vector<std::future<void>> futures;
 
-  std::vector<std::string> get_irs_names();
+  auto get_irs_names() -> std::vector<std::string>;
 
   void import_irs_file(const std::string& file_path);
 
@@ -59,7 +71,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   void populate_irs_listbox();
 
-  int on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2);
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void on_irs_menu_button_clicked();
 
@@ -77,17 +89,17 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
 
   void update_mouse_info_R(GdkEventMotion* event);
 
-  bool on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_left_motion_notify_event(GdkEventMotion* event);
+  auto on_left_motion_notify_event(GdkEventMotion* event) -> bool;
 
-  bool on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx);
+  auto on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  bool on_right_motion_notify_event(GdkEventMotion* event);
+  auto on_right_motion_notify_event(GdkEventMotion* event) -> bool;
 
-  bool on_mouse_enter_notify_event(GdkEventCrossing* event);
+  auto on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  bool on_mouse_leave_notify_event(GdkEventCrossing* event);
+  auto on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool;
 };
 
 #endif

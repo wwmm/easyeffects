@@ -1,20 +1,19 @@
 #include "plugin_base.hpp"
-#include <mutex>
 #include "util.hpp"
 
 namespace {
 
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   if (l->plugin_is_installed) {
-    bool enable = g_settings_get_boolean(settings, key);
+    int enable = g_settings_get_boolean(settings, key);
 
-    if (enable) {
+    if (enable == 1) {
       l->enable();
     } else {
       l->disable();
     }
   } else {
-    g_settings_set_boolean(settings, "installed", false);
+    g_settings_set_boolean(settings, "installed", 0);
   }
 }
 
@@ -23,7 +22,7 @@ void on_enable(gpointer user_data) {
 
   auto b = gst_bin_get_by_name(GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
-  if (!b) {
+  if (b == nullptr) {
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink(l->identity_in, l->identity_out);
@@ -45,7 +44,7 @@ void on_disable(gpointer user_data) {
 
   auto b = gst_bin_get_by_name(GST_BIN(l->plugin), std::string(l->name + "_bin").c_str());
 
-  if (b) {
+  if (b != nullptr) {
     gst_element_set_state(l->bin, GST_STATE_NULL);
 
     gst_element_unlink_many(l->identity_in, l->bin, l->identity_out, nullptr);
@@ -60,7 +59,7 @@ void on_disable(gpointer user_data) {
   }
 }
 
-static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   if (GST_EVENT_TYPE(GST_PAD_PROBE_INFO_DATA(info)) != GST_EVENT_CUSTOM_DOWNSTREAM) {
     return GST_PAD_PROBE_PASS;
   }
@@ -72,7 +71,7 @@ static GstPadProbeReturn event_probe_cb(GstPad* pad, GstPadProbeInfo* info, gpoi
   return GST_PAD_PROBE_DROP;
 }
 
-GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) {
+auto on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {
   auto l = static_cast<PluginBase*>(user_data);
 
   gst_pad_remove_probe(pad, GST_PAD_PROBE_INFO_ID(info));
@@ -81,7 +80,7 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer us
 
   gst_pad_add_probe(srcpad,
                     static_cast<GstPadProbeType>(GST_PAD_PROBE_TYPE_BLOCK | GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM),
-                    event_probe_cb, user_data, NULL);
+                    event_probe_cb, user_data, nullptr);
 
   auto sinkpad = gst_element_get_static_pad(l->bin, "sink");
 
@@ -99,8 +98,8 @@ GstPadProbeReturn on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer us
 
 }  // namespace
 
-PluginBase::PluginBase(const std::string& tag, const std::string& plugin_name, const std::string& schema)
-    : log_tag(tag), name(plugin_name), settings(g_settings_new(schema.c_str())) {
+PluginBase::PluginBase(std::string tag, std::string plugin_name, const std::string& schema)
+    : log_tag(std::move(tag)), name(std::move(plugin_name)), settings(g_settings_new(schema.c_str())) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
   identity_in = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_in").c_str());
   identity_out = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_out").c_str());
@@ -123,31 +122,31 @@ PluginBase::PluginBase(const std::string& tag, const std::string& plugin_name, c
 PluginBase::~PluginBase() {
   auto enable = g_settings_get_boolean(settings, "state");
 
-  if (!enable) {
+  if (enable == 0) {
     gst_object_unref(bin);
   }
 
   g_object_unref(settings);
 }
 
-bool PluginBase::is_installed(GstElement* e) {
+auto PluginBase::is_installed(GstElement* e) -> bool {
   if (e != nullptr) {
     plugin_is_installed = true;
 
-    g_settings_set_boolean(settings, "installed", true);
+    g_settings_set_boolean(settings, "installed", 1);
 
     g_signal_connect(settings, "changed::state", G_CALLBACK(on_state_changed), this);
 
     return true;
-  } else {
-    plugin_is_installed = false;
-
-    g_settings_set_boolean(settings, "installed", false);
-
-    util::warning(name + " plugin was not found!");
-
-    return false;
   }
+
+  plugin_is_installed = false;
+
+  g_settings_set_boolean(settings, "installed", 0);
+
+  util::warning(name + " plugin was not found!");
+
+  return false;
 }
 
 void PluginBase::enable() {
@@ -168,7 +167,8 @@ void PluginBase::enable() {
 void PluginBase::disable() {
   auto srcpad = gst_element_get_static_pad(identity_in, "src");
 
-  GstState state, pending;
+  GstState state;
+  GstState pending;
 
   gst_element_get_state(bin, &state, &pending, 0);
 
