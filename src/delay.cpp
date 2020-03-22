@@ -28,7 +28,7 @@ Delay::Delay(const std::string& tag, const std::string& schema) : PluginBase(tag
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(delay, "bypass", 0, nullptr);
+    g_object_set(delay, "enabled", 1, nullptr);
     g_object_set(delay, "mode-l", 2, nullptr);
     g_object_set(delay, "mode-r", 2, nullptr);
     g_object_set(delay, "dry-l", 0.0F, nullptr);

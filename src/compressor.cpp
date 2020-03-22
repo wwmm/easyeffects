@@ -116,7 +116,7 @@ Compressor::Compressor(const std::string& tag, const std::string& schema) : Plug
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(compressor, "bypass", 0, nullptr);
+    g_object_set(compressor, "enabled", 1, nullptr);
     g_object_set(compressor, "pause", 1, nullptr);   // pause graph analysis
     g_object_set(compressor, "rrl", 0.0F, nullptr);  // relative release level
     g_object_set(compressor, "cdr", 0.0F, nullptr);  // dry gain

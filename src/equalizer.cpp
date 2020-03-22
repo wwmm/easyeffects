@@ -48,7 +48,7 @@ Equalizer::Equalizer(const std::string& tag,
 
     // init
 
-    g_object_set(equalizer, "bypass", 0, nullptr);
+    g_object_set(equalizer, "enabled", 1, nullptr);
     g_object_set(equalizer, "bal", 0.0F, nullptr);
     g_object_set(equalizer, "fft", 0, nullptr);  // off
 
