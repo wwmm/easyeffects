@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.7.2]
+
 ### Added
 
 - Compatibility to Linux Studio Plugins `1.1.14`
