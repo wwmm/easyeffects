@@ -1,3 +1,11 @@
+pulseeffects (4.7.2-3) unstable; urgency=low
+
+  * Version 4.7.2 upstream (autobuild)
+  * Requires lsp-plugins >= 1.1.14
+  * BuildRequires boost >= 1.72
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 22 Mar 2020 20:03:01 +0300
+ 
 pulseeffects (4.7.1-1) unstable; urgency=low
 
   * Version 4.7.1 upstream (autobuild)
