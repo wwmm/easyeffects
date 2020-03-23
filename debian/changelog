@@ -1,3 +1,29 @@
+pulseeffects (4.7.2-3) unstable; urgency=low
+
+  * Version 4.7.2 upstream (autobuild)
+  * Requires lsp-plugins >= 1.1.14
+  * BuildRequires boost >= 1.72
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Sun, 22 Mar 2020 20:03:01 +0300
+ 
+pulseeffects (4.7.1-1) unstable; urgency=low
+
+  * Version 4.7.1 upstream (autobuild)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 15 Jan 2020 00:01:15 +0300
+ 
+pulseeffects (4.7.0-1) unstable; urgency=low
+
+  * Version 4.7.0 upstream (autobuild)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Wed, 25 Dec 2019 18:12:04 +0300
+ 
+pulseeffects (4.6.9-1) unstable; urgency=low
+
+  * Version 4.6.9 upstream (autobuild)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Tue, 24 Dec 2019 16:12:43 +0300
+ 
 pulseeffects (4.6.8-3) unstable; urgency=medium
 
   * Partial sync with Debian package (minor changes)
