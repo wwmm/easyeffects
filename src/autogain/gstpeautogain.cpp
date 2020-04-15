@@ -165,7 +165,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_SV,
-      g_param_spec_boolean("static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
@@ -214,7 +214,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->momentary = 0.0f;
   peautogain->shortterm = 0.0f;
   peautogain->global = 0.0f;
-  peautogain->static = -23.0f;  // LUFS (static value = constant value)
+  peautogain->staticv = -23.0f;  // LUFS (static value = constant value)
   peautogain->relative = 0.0f;
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
@@ -250,7 +250,7 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       peautogain->weight_i = g_value_get_int(value);
       break;
     case PROP_SV:
-      peautogain->static = g_value_get_int(value);
+      peautogain->staticv = g_value_get_int(value);
       break;
     case PROP_NOTIFY:
       peautogain->notify = g_value_get_boolean(value);
@@ -265,7 +265,8 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       peautogain->use_geometric_mean = g_value_get_boolean(value);
       break;
     case PROP_USE_STATIC_LONG_TERM_VALUE:
-      peautogain->use_static_long_term_value = g_value_get_boolean(value) break;
+      peautogain->use_static_long_term_value = g_value_get_boolean(value);
+      break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
@@ -306,7 +307,7 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
       g_value_set_float(value, peautogain->loudness);
       break;
     case PROP_SV:
-      g_value_set_float(value, peautogain->static);
+      g_value_set_float(value, peautogain->staticv);
       break;
     case PROP_G:
       g_value_set_float(value, peautogain->gain);
@@ -467,7 +468,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     if (!failed) {
       if (peautogain->use_geometric_mean) {
         if (peautogain->use_static_long_term_value) {
-          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->static);
+          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->staticv);
         } else {
           peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
         }
@@ -475,7 +476,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
         if (peautogain->use_static_long_term_value) {
           peautogain->loudness =
               (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
-               peautogain->weight_i * peautogain->static) /
+               peautogain->weight_i * peautogain->staticv) /
               (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
         } else {
           peautogain->loudness =
