@@ -57,6 +57,7 @@ enum {
   PROP_DETECT_SILENCE,
   PROP_RESET,
   PROP_USE_GEOMETRIC_MEAN
+  PROP_USE_STATIC_VALUE
 };
 
 /* pad templates */
@@ -187,6 +188,13 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
       g_param_spec_boolean("use-geometric-mean", "Loudness Geometric Mean",
                            "Estimated loudness is the geometric mean of the momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+  g_object_class_install_property(
+    gobject_class, PROP_USE_STATIC_VALUE,
+      g_param_spec_boolean("use-static-value", "Static Integrated Value (freezed)",
+                           "Estimated loudness is calculated from momentary, short-term and static values \
+                            instead momentary, short-term and global values",
+                           true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+  )
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -200,6 +208,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->momentary = 0.0f;
   peautogain->shortterm = 0.0f;
   peautogain->global = 0.0f;
+  peautogain->static = -23.0f; // LUFS
   peautogain->relative = 0.0f;
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
@@ -211,6 +220,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->reset = false;
   peautogain->use_geometric_mean = true;
   peautogain->ebur_state = nullptr;
+  peautogain->use_static_value = false;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
@@ -244,6 +254,9 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       break;
     case PROP_USE_GEOMETRIC_MEAN:
       peautogain->use_geometric_mean = g_value_get_boolean(value);
+      break;
+    case PROP_USE_STATIC_VALUE:
+      peautogain->use_static_value = g_value_get_boolean(value)
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -301,6 +314,9 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
       break;
     case PROP_USE_GEOMETRIC_MEAN:
       g_value_set_boolean(value, peautogain->use_geometric_mean);
+      break;
+    case PROP_USE_STATIC_VALUE:
+      g_value_set_boolean(value, peautogain->use_static_value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -439,12 +455,25 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
     if (!failed) {
       if (peautogain->use_geometric_mean) {
-        peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
+        if (peautogain->use_static_value) {
+          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->static);
+        } else {
+          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
+        }
       } else {
-        peautogain->loudness =
-            (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
-             peautogain->weight_i * peautogain->global) /
-            (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        if (peautogain->use_static_value) {
+          peautogain->loudness =
+              (peautogain->weight_m * peautogain->momentary +
+               peautogain->weight_s * peautogain->shortterm +
+               peautogain->weight_i * peautogain->static) /
+              (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        } else {
+          peautogain->loudness =
+              (peautogain->weight_m * peautogain->momentary +
+               peautogain->weight_s * peautogain->shortterm +
+               peautogain->weight_i * peautogain->global) /
+              (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        }
       }
 
       float diff = peautogain->target - peautogain->loudness;
