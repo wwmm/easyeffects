@@ -167,7 +167,6 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
       gobject_class, PROP_SV,
       g_param_spec_boolean("static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
-  )
 
   g_object_class_install_property(
       gobject_class, PROP_NOTIFY,
@@ -202,7 +201,6 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            "Estimated loudness is calculated from momentary, short-term and static values \
                             instead momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
-  )
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
