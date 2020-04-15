@@ -52,7 +52,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("weight-i", weight_i.get(), "value", flag);
   settings->bind("staticv", weight_i.get(), "value", flag);
   settings->bind("detect-silence", detect_silence, "active", flag);
-  settings->bind("use_static_integrated_value", detect_silence, "active", flag);
+  settings->bind("use-static-integrated-value", detect_silence, "active", flag);
   settings->bind("use-geometric-mean", use_geometric_mean, "active", flag);
   settings->bind("use-geometric-mean", weights_grid, "visible",
                  Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
