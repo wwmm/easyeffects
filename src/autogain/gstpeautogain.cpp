@@ -57,7 +57,7 @@ enum {
   PROP_DETECT_SILENCE,
   PROP_RESET,
   PROP_USE_GEOMETRIC_MEAN,
-  PROP_use_static_long_term_value
+  PROP_USE_STATIC_LONG_TERM_VALUE
 };
 
 /* pad templates */
@@ -196,7 +196,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
-      gobject_class, PROP_use_static_long_term_value,
+      gobject_class, PROP_USE_STATIC_LONG_TERM_VALUE,
       g_param_spec_boolean("use-static-value", "Static Value replacement for Integrated",
                            "Estimated loudness is calculated from momentary, short-term and static values \
                             instead momentary, short-term and global values",
@@ -262,7 +262,7 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
     case PROP_USE_GEOMETRIC_MEAN:
       peautogain->use_geometric_mean = g_value_get_boolean(value);
       break;
-    case PROP_use_static_long_term_value:
+    case PROP_USE_STATIC_LONG_TERM_VALUE:
       peautogain->use_static_long_term_value = g_value_get_boolean(value) break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -321,7 +321,7 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
     case PROP_USE_GEOMETRIC_MEAN:
       g_value_set_boolean(value, peautogain->use_geometric_mean);
       break;
-    case PROP_use_static_long_term_value:
+    case PROP_USE_STATIC_LONG_TERM_VALUE:
       g_value_set_boolean(value, peautogain->use_static_long_term_value);
       break;
     default:
