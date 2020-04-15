@@ -224,7 +224,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->notify = true;
   peautogain->detect_silence = true;
   peautogain->reset = false;
-  peautogain->use_d = true;
+  peautogain->use_geometric_mean = true;
   peautogain->ebur_state = nullptr;
   peautogain->use_static_value = false;
 
@@ -258,8 +258,8 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
     case PROP_RESET:
       peautogain->reset = g_value_get_boolean(value);
       break;
-    case PROP_USE_d:
-      peautogain->use_d = g_value_get_boolean(value);
+    case PROP_USE_GEOMETRIC_MEAN:
+      peautogain->use_geometric_mean = g_value_get_boolean(value);
       break;
     case PROP_USE_STATIC_VALUE:
       peautogain->use_static_value = g_value_get_boolean(value) break;
@@ -317,8 +317,8 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
     case PROP_RESET:
       g_value_set_boolean(value, peautogain->reset);
       break;
-    case PROP_USE_d:
-      g_value_set_boolean(value, peautogain->use_d);
+    case PROP_USE_GEOMETRIC_MEAN:
+      g_value_set_boolean(value, peautogain->use_geometric_mean);
       break;
     case PROP_USE_STATIC_VALUE:
       g_value_set_boolean(value, peautogain->use_static_value);
