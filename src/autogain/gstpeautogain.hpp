@@ -30,7 +30,7 @@ struct GstPeautogain {
   float loudness;     // estimated loudness
   float gain;         // correction gain
   float range;        // loudness range
-  bool detect_silence, reset, use_geometric_mean, use_static_value;
+  bool detect_silence, reset, use_geometric_mean, use_static_long_term_value;
 
   /* < private > */
 
