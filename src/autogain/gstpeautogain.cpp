@@ -190,7 +190,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
   g_object_class_install_property(
     gobject_class, PROP_USE_STATIC_VALUE,
-      g_param_spec_boolean("use-static-value", "Static Integrated Value (freezed)",
+      g_param_spec_boolean("use-static-value", "Static Value replacement for Integrated",
                            "Estimated loudness is calculated from momentary, short-term and static values \
                             instead momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
