@@ -56,7 +56,8 @@ enum {
   PROP_NOTIFY,
   PROP_DETECT_SILENCE,
   PROP_RESET,
-  PROP_USE_d PROP_USE_STATIC_VALUE
+  PROP_USE_GEOMETRIC_MEAN,
+  PROP_USE_STATIC_VALUE
 };
 
 /* pad templates */
@@ -189,7 +190,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
-      gobject_class, PROP_USE_d,
+      gobject_class, PROP_USE_GEOMETRIC_MEAN,
       g_param_spec_boolean("use-geometric-mean", "Loudness Geometric Mean",
                            "Estimated loudness is the geometric mean of the momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
