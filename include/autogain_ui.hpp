@@ -24,7 +24,7 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   void on_new_gain(const float& value);
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i, staticv;
 
   Gtk::LevelBar *m_level = nullptr, *s_level = nullptr, *i_level = nullptr, *r_level = nullptr, *g_level = nullptr,
                 *l_level = nullptr, *lra_level = nullptr;
@@ -34,7 +34,7 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::Button* reset = nullptr;
 
-  Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr;
+  Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr, *use_static_integrated_value = nullptr;
 
   Gtk::Grid* weights_grid = nullptr;
 };
