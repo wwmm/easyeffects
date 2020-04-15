@@ -56,7 +56,7 @@ enum {
   PROP_NOTIFY,
   PROP_DETECT_SILENCE,
   PROP_RESET,
-  PROP_USE_GEOMETRIC_MEAN
+  PROP_USE_d
   PROP_USE_STATIC_VALUE
 };
 
@@ -184,7 +184,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                            static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
-      gobject_class, PROP_USE_GEOMETRIC_MEAN,
+      gobject_class, PROP_USE_d,
       g_param_spec_boolean("use-geometric-mean", "Loudness Geometric Mean",
                            "Estimated loudness is the geometric mean of the momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
@@ -218,7 +218,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->notify = true;
   peautogain->detect_silence = true;
   peautogain->reset = false;
-  peautogain->use_geometric_mean = true;
+  peautogain->use_d = true;
   peautogain->ebur_state = nullptr;
   peautogain->use_static_value = false;
 
@@ -252,8 +252,8 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
     case PROP_RESET:
       peautogain->reset = g_value_get_boolean(value);
       break;
-    case PROP_USE_GEOMETRIC_MEAN:
-      peautogain->use_geometric_mean = g_value_get_boolean(value);
+    case PROP_USE_d:
+      peautogain->use_d = g_value_get_boolean(value);
       break;
     case PROP_USE_STATIC_VALUE:
       peautogain->use_static_value = g_value_get_boolean(value)
@@ -312,8 +312,8 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
     case PROP_RESET:
       g_value_set_boolean(value, peautogain->reset);
       break;
-    case PROP_USE_GEOMETRIC_MEAN:
-      g_value_set_boolean(value, peautogain->use_geometric_mean);
+    case PROP_USE_d:
+      g_value_set_boolean(value, peautogain->use_d);
       break;
     case PROP_USE_STATIC_VALUE:
       g_value_set_boolean(value, peautogain->use_static_value);
@@ -454,7 +454,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     }
 
     if (!failed) {
-      if (peautogain->use_geometric_mean) {
+      if (peautogain->use_d) {
         if (peautogain->use_static_value) {
           peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->static);
         } else {

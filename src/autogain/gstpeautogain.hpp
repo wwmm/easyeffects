@@ -18,18 +18,19 @@ struct GstPeautogain {
 
   /* properties */
 
-  float target;     // target loudness level
-  int weight_m;     // momentary loudness weight
-  int weight_s;     // short term loudness weight
-  int weight_i;     // integrated loudness weight
-  float momentary;  // momentary value
-  float shortterm;  // short term value
-  float global;     // integrated value
-  float relative;   // relative threshold
-  float loudness;   // estimated loudness
-  float gain;       // correction gain
-  float range;      // loudness range
-  bool detect_silence, reset, use_geometric_mean;
+  float target;       // target loudness level
+  int weight_m;       // momentary loudness weight
+  int weight_s;       // short term loudness weight
+  int weight_i;       // integrated loudness weight
+  float momentary;    // momentary value
+  float shortterm;    // short term value
+  float global;       // integrated value
+  float static_value; // static value
+  float relative;     // relative threshold
+  float loudness;     // estimated loudness
+  float gain;         // correction gain
+  float range;        // loudness range
+  bool detect_silence, reset, use_geometric_mean, use_static_value;
 
   /* < private > */
 
