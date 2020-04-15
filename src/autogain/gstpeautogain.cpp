@@ -165,7 +165,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_SV,
-      g_param_spec_float("staticv", "Static Value", "Static Value", -100.0f, 0.0f, -23.0f,
+      g_param_spec_float("staticv", "Static Value", "Static Value", -100.0f, 0.0f, -11.5f,
                            static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
@@ -214,7 +214,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->momentary = 0.0f;
   peautogain->shortterm = 0.0f;
   peautogain->global = 0.0f;
-  peautogain->staticv = -23.0f;  // LUFS (static value = constant value)
+  peautogain->staticv = -11.5f;  // LUFS/2 (static value = constant value set by user)
   peautogain->relative = 0.0f;
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
