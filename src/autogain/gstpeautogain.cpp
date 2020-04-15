@@ -52,6 +52,7 @@ enum {
   PROP_R,
   PROP_L,
   PROP_G,
+  PROP_SV,
   PROP_LRA,
   PROP_NOTIFY,
   PROP_DETECT_SILENCE,
@@ -163,7 +164,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
-      gobject_class, PROP_STATIC_VALUE,
+      gobject_class, PROP_SV,
       g_param_spec_boolean("static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
   )
@@ -249,6 +250,9 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       break;
     case PROP_WEIGHT_I:
       peautogain->weight_i = g_value_get_int(value);
+      break;
+    case PROP_SV:
+      peautogain->static_value = g_value_get_int(value);
       break;
     case PROP_NOTIFY:
       peautogain->notify = g_value_get_boolean(value);
