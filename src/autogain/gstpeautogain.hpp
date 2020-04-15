@@ -25,7 +25,7 @@ struct GstPeautogain {
   float momentary;    // momentary value
   float shortterm;    // short term value
   float global;       // integrated value
-  float static_value; // static value
+  float staticv;      // static value
   float relative;     // relative threshold
   float loudness;     // estimated loudness
   float gain;         // correction gain

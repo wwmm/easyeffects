@@ -165,7 +165,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_SV,
-      g_param_spec_float("static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("sv", "static-value", "Static Value", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
                            static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
