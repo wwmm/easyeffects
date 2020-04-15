@@ -460,7 +460,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     }
 
     if (!failed) {
-      if (peautogain->use_d) {
+      if (peautogain->use_geometric_mean) {
         if (peautogain->use_static_value) {
           peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->static);
         } else {
