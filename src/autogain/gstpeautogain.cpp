@@ -252,7 +252,7 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       peautogain->weight_i = g_value_get_int(value);
       break;
     case PROP_SV:
-      peautogain->static_value = g_value_get_int(value);
+      peautogain->static = g_value_get_int(value);
       break;
     case PROP_NOTIFY:
       peautogain->notify = g_value_get_boolean(value);
@@ -306,6 +306,9 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
       break;
     case PROP_L:
       g_value_set_float(value, peautogain->loudness);
+      break;
+    case PROP_SV:
+      g_value_set_float(value, peautogain->static);
       break;
     case PROP_G:
       g_value_set_float(value, peautogain->gain);
