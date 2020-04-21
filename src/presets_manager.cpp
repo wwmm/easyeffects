@@ -237,9 +237,9 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   if (preset_type == PresetType::output) {
     input_file = output_dir / boost::filesystem::path{name + ".json"};
 
-    boost::property_tree::read_json(input_file.string(), root);
-
     try {
+      boost::property_tree::read_json(input_file.string(), root);
+
       Glib::Variant<std::vector<std::string>> aux;
       sie_settings->get_default_value("plugins", aux);
 
@@ -264,15 +264,17 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       Glib::Variant<std::vector<std::string>> aux;
       sie_settings->get_default_value("plugins", aux);
       output_plugins = aux.get();
+    } catch (std::exception & e) {
+      util::debug("an error occurred during the parsing of the preset file");
     }
 
     sie_settings->set_string_array("plugins", output_plugins);
   } else {
     input_file = input_dir / boost::filesystem::path{name + ".json"};
 
-    boost::property_tree::read_json(input_file.string(), root);
-
     try {
+      boost::property_tree::read_json(input_file.string(), root);
+
       Glib::Variant<std::vector<std::string>> aux;
       soe_settings->get_default_value("plugins", aux);
 
@@ -297,6 +299,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       Glib::Variant<std::vector<std::string>> aux;
       soe_settings->get_default_value("plugins", aux);
       input_plugins = aux.get();
+    } catch (std::exception & e) {
+      util::debug("an error occurred during the parsing of the preset file");    
     }
 
     soe_settings->set_string_array("plugins", input_plugins);
