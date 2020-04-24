@@ -79,9 +79,11 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::strin
   }
 
   for (auto& dir : sys_dirs) {
-    it = boost::filesystem::directory_iterator{dir};
-    auto vn = search_names(it);
-    names.insert(names.end(), vn.begin(), vn.end());
+    if (boost::filesystem::exists(dir)) {
+      it = boost::filesystem::directory_iterator{dir};
+      auto vn = search_names(it);
+      names.insert(names.end(), vn.begin(), vn.end());
+    }
   }
 
   // user directory search
