@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- PulseEffects now searches for presets in `/ect/xdg`
+
 ## [4.7.2]
 
 ### Added
