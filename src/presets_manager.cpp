@@ -487,7 +487,6 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
       input_file = dir / boost::filesystem::path{name + ".json"};
       if (boost::filesystem::exists(input_file)) {
         return true;
-        break;
       }
     }
   } else {
