@@ -194,9 +194,9 @@ msgstr "Soglia"
 msgid "If a signal surpass this level it will trigger the compression stage."
 msgstr ""
 "Se il segnale supera il valore specificato, verrà applicata la compressione. "
-"In modalità discendente, il segnale verrà ridotto in ampiezza se salirà "
-"oltre la soglia, mentre in modalità ascendente il segnale verrà amplificato "
-"se scenderà sotto la soglia."
+"In modalità riduttiva, il segnale verrà ridotto in ampiezza se salirà oltre "
+"la soglia, mentre in modalità espansiva il segnale verrà amplificato se "
+"scenderà sotto la soglia."
 
 #. (itstool) path: title/em
 #: C/compressor.page:51 C/deesser.page:34 C/gate.page:46
@@ -251,7 +251,7 @@ msgid ""
 "<em style=\"strong\">Downward</em> - Decreases the amplitude of the signal "
 "sections that are above the threshold."
 msgstr ""
-"<em style=\"strong\">Discendente</em> - Riduce l'ampiezza delle parti di "
+"<em style=\"strong\">Riduttiva</em> - Riduce l'ampiezza delle parti di "
 "segnale che superano il valore della soglia."
 
 #. (itstool) path: item/p
@@ -260,7 +260,7 @@ msgid ""
 "<em style=\"strong\">Upwards</em> - Increases the amplitude of the signal "
 "sections that are below the threshold."
 msgstr ""
-"<em style=\"strong\">Ascendente</em> - Amplifica l'ampiezza delle parti di "
+"<em style=\"strong\">Espansiva</em> - Amplifica l'ampiezza delle parti di "
 "segnale che si trovano al di sotto della soglia."
 
 #. (itstool) path: section/title
@@ -345,7 +345,7 @@ msgid ""
 "<em style=\"strong\">Middle</em> - Middle part of signal is used for "
 "sidechain processing."
 msgstr ""
-"<em style=\"strong\">Centrale</em> - La parte centrale del segnale è usata "
+"<em style=\"strong\">Intermedia</em> - La parte intermedia del segnale è usata "
 "per l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
@@ -1316,7 +1316,7 @@ msgstr ""
 "da soli due parametri: limite e soglia. La soglia è un valore relativo che "
 "rappresenta l'amplificazione del segnale mentre il limite è il livello "
 "massimo di uscita del segnale. Impostando entrambi i valori diversi da zero, "
-"il plugin funzionerà come un compressore ascendente con un limitatore "
+"il plugin funzionerà come un compressore riduttivo con un limitatore "
 "impostato sul valore di limite (segnali molto amplificati quando il limite è "
 "impostato troppo in basso potrebbero produrre un suono distorto anche senza "
 "la presenza del clipping). Quando solo la soglia è impostata a zero, il "
@@ -2969,7 +2969,7 @@ msgstr ""
 "video player. Da questa guida si otterrà il meglio con sorgenti audio "
 "riprodotte al 100% del volume del player. Imposta il volume che desideri "
 "sulla scheda audio tramite PulseAudio così che il livello sia modificato "
-"solo <em style=\"strong\">dopo</em> che tutti gli effetti siano stati " 
+"solo <em style=\"strong\">dopo</em> che tutti gli effetti siano stati "
 "applicati."
 
 #. (itstool) path: section/title

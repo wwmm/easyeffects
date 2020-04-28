@@ -472,11 +472,11 @@ msgstr "Attacco"
 
 #: data/ui/compressor.glade:413
 msgid "Downward"
-msgstr "Discendente"
+msgstr "Riduttiva"
 
 #: data/ui/compressor.glade:414
 msgid "Upward"
-msgstr "Ascendente"
+msgstr "Espansiva"
 
 #: data/ui/compressor.glade:426
 msgid "Compression Mode"
@@ -544,7 +544,7 @@ msgstr "Modalità"
 
 #: data/ui/compressor.glade:643
 msgid "Middle"
-msgstr "Centrale"
+msgstr "Intermedia"
 
 #: data/ui/compressor.glade:644
 msgid "Side"
