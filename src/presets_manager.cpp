@@ -35,12 +35,30 @@ PresetsManager::PresetsManager()
       autogain(std::make_unique<AutoGainPreset>()),
       delay(std::make_unique<DelayPreset>()),
       spectrum(std::make_unique<SpectrumPreset>()) {
-  // system presets directories
+  // system presets directories provided by Glib
   for (auto& scd : Glib::get_system_config_dirs()) {
     system_input_dirs.push_back(scd + "/PulseEffects/input");
     system_output_dirs.push_back(scd + "/PulseEffects/output");
   }
 
+  // add "/etc" to system config folders array and remove duplicates
+  system_input_dirs.push_back("/etc/PulseEffects/input");
+  system_output_dirs.push_back("/etc/PulseEffects/output");
+  std::sort(system_input_dirs.begin(), system_input_dirs.end());
+  std::sort(system_output_dirs.begin(), system_output_dirs.end());
+  system_input_dirs.erase(
+    std::unique(system_input_dirs.begin(), system_input_dirs.end()), system_input_dirs.end());
+  system_output_dirs.erase(
+    std::unique(system_output_dirs.begin(), system_output_dirs.end()), system_output_dirs.end());
+
+  for (auto& scd : system_input_dirs) {
+    util::debug("presets_manager: system input presets directory: \"" + scd.string() + "\"; ");
+  }
+  for (auto& scd : system_output_dirs) {
+    util::debug("presets_manager: system output presets directory: \"" + scd.string() + "\"; ");
+  }
+
+  // user presets directories
   create_user_directory(user_presets_dir);
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
