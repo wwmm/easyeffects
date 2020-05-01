@@ -142,7 +142,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">0,00</property>
                 <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
@@ -175,7 +174,6 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="width_chars">10</property>
-                <property name="text" translatable="yes">0,00</property>
                 <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                 <property name="secondary_icon_activatable">False</property>
                 <property name="input_purpose">number</property>
@@ -231,7 +229,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_left_label1">
+              <object class="GtkLabel" id="input_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -259,7 +257,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_right_label1">
+              <object class="GtkLabel" id="input_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -275,7 +273,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_left_label1">
+              <object class="GtkLabel" id="output_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -290,7 +288,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_right_label1">
+              <object class="GtkLabel" id="output_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -305,7 +303,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_left1">
+              <object class="GtkLevelBar" id="input_level_left">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -317,7 +315,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_right1">
+              <object class="GtkLevelBar" id="input_level_right">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -329,7 +327,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_left1">
+              <object class="GtkLevelBar" id="output_level_left">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -341,7 +339,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_right1">
+              <object class="GtkLevelBar" id="output_level_right">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>

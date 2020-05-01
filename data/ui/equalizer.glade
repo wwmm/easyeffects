@@ -395,14 +395,14 @@
                 <property name="vexpand">True</property>
                 <property name="shadow_type">none</property>
                 <child>
-                  <object class="GtkStack" id="stack1">
+                  <object class="GtkStack" id="stack">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="vexpand">True</property>
                     <property name="transition_duration">250</property>
                     <property name="transition_type">slide-left-right</property>
                     <child>
-                      <object class="GtkGrid" id="bands_grid_left1">
+                      <object class="GtkGrid" id="bands_grid_left">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
@@ -443,7 +443,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkGrid" id="bands_grid_right1">
+                      <object class="GtkGrid" id="bands_grid_right">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
@@ -530,7 +530,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_left_label1">
+              <object class="GtkLabel" id="input_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -546,7 +546,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_right_label1">
+              <object class="GtkLabel" id="input_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -562,7 +562,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_left_label1">
+              <object class="GtkLabel" id="output_level_left_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -578,7 +578,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_right_label1">
+              <object class="GtkLabel" id="output_level_right_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -606,7 +606,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_right1">
+              <object class="GtkLevelBar" id="input_level_right">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">start</property>
@@ -618,7 +618,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_right1">
+              <object class="GtkLevelBar" id="output_level_right">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">start</property>
@@ -630,7 +630,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_left1">
+              <object class="GtkLevelBar" id="input_level_left">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">end</property>
@@ -642,7 +642,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_left1">
+              <object class="GtkLevelBar" id="output_level_left">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">end</property>
