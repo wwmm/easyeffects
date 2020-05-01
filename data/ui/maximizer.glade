@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="ceiling">
@@ -131,6 +131,32 @@
               </packing>
             </child>
             <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label" translatable="yes">Ceiling</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="label" translatable="yes">Release</property>
+              </object>
+              <packing>
+                <property name="left_attach">2</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
               <object class="GtkSpinButton">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -147,39 +173,6 @@
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Ceiling</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinButton">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="width_chars">10</property>
-                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="input_purpose">number</property>
-                <property name="orientation">vertical</property>
-                <property name="adjustment">ceiling</property>
-                <property name="numeric">True</property>
-                <property name="update_policy">if-valid</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
                 <property name="top_attach">1</property>
               </packing>
             </child>
@@ -205,16 +198,23 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkSpinButton">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">True</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Release</property>
+                <property name="width_chars">10</property>
+                <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                <property name="secondary_icon_activatable">False</property>
+                <property name="input_purpose">number</property>
+                <property name="orientation">vertical</property>
+                <property name="adjustment">ceiling</property>
+                <property name="numeric">True</property>
+                <property name="update_policy">if-valid</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
               </packing>
             </child>
           </object>
@@ -396,20 +396,6 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="reduction">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="valign">center</property>
-                <property name="margin_top">4</property>
-                <property name="hexpand">True</property>
-                <property name="max_value">40</property>
-              </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">4</property>
-              </packing>
-            </child>
-            <child>
               <object class="GtkLabel" id="reduction_label">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
@@ -424,11 +410,65 @@
                 <property name="width">3</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLevelBar" id="reduction">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="valign">center</property>
+                <property name="margin_top">4</property>
+                <property name="hexpand">True</property>
+                <property name="max_value">40</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">4</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="spacing">4</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Provided by</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">ZamAudio</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
           </packing>
         </child>
       </object>

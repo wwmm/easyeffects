@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAdjustment" id="attack">
@@ -714,7 +714,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -729,7 +728,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
@@ -739,7 +737,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_left">
+              <object class="GtkLevelBar" id="input_level_left1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -751,7 +749,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_left_label">
+              <object class="GtkLabel" id="input_level_left_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -779,7 +777,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="input_level_right_label">
+              <object class="GtkLabel" id="input_level_right_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -795,7 +793,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="input_level_right">
+              <object class="GtkLevelBar" id="input_level_right1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -807,7 +805,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_left">
+              <object class="GtkLevelBar" id="output_level_left1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -819,7 +817,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="output_level_right">
+              <object class="GtkLevelBar" id="output_level_right1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -831,7 +829,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_left_label">
+              <object class="GtkLabel" id="output_level_left_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -846,7 +844,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="output_level_right_label">
+              <object class="GtkLabel" id="output_level_right_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -861,7 +859,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="reduction">
+              <object class="GtkLevelBar" id="reduction1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -876,7 +874,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="reduction_label">
+              <object class="GtkLabel" id="reduction_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -896,7 +894,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Gain</property>
               </object>
               <packing>
@@ -918,7 +915,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="sidechain">
+              <object class="GtkLevelBar" id="sidechain1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -932,7 +929,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="sidechain_label">
+              <object class="GtkLabel" id="sidechain_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -994,7 +991,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLevelBar" id="curve">
+              <object class="GtkLevelBar" id="curve1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
@@ -1008,7 +1005,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="curve_label">
+              <object class="GtkLabel" id="curve_label1">
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
@@ -1020,6 +1017,46 @@
                 <property name="left_attach">3</property>
                 <property name="top_attach">4</property>
                 <property name="width">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="spacing">4</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Provided by</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Linux Studio Plugins</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
               </packing>
             </child>
           </object>
