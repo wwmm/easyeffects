@@ -2312,7 +2312,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Calf Studio Gears</property>
+                <property name="label" translatable="no">Calf Studio Gears</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>

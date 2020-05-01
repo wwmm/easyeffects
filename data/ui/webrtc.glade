@@ -459,7 +459,6 @@
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
                             <property name="width_chars">10</property>
-                            <property name="text" translatable="yes">9</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -795,7 +794,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">WebRTC</property>
+                <property name="label" translatable="no">WebRTC</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>

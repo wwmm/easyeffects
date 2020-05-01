@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 14:03-0300\n"
+"POT-Creation-Date: 2020-05-02 00:54+0200\n"
 "PO-Revision-Date: 2019-09-07 22:19+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: \n"
@@ -47,7 +47,7 @@ msgstr "Nápoveda"
 #: data/ui/application.glade:200 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
 #: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
-#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
+#: src/presets_menu_ui.cpp:278 src/presets_menu_ui.cpp:295
 msgid "Presets"
 msgstr "Predvoľby"
 
@@ -343,37 +343,37 @@ msgid "Weights"
 msgstr "Váhy"
 
 #: data/ui/autogain.glade:378 data/ui/autogain.glade:570
-#: data/ui/limiter.glade:365 data/ui/compressor.glade:718
+#: data/ui/limiter.glade:365 data/ui/compressor.glade:717
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
-#: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
+#: data/ui/equalizer.glade:510 data/ui/reverb.glade:630
 #: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
-#: data/ui/loudness.glade:244 data/ui/gate.glade:487
+#: data/ui/loudness.glade:243 data/ui/gate.glade:487
 #: data/ui/multiband_gate.glade:2107 data/ui/deesser.glade:568
 #: data/ui/convolver.glade:477 data/ui/crystalizer.glade:228
-#: data/ui/pitch.glade:322 data/ui/webrtc.glade:624 data/ui/delay.glade:210
+#: data/ui/pitch.glade:322 data/ui/webrtc.glade:624 data/ui/delay.glade:209
 #: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr "Vstup"
 
 #: data/ui/autogain.glade:393 data/ui/autogain.glade:826
-#: data/ui/limiter.glade:380 data/ui/compressor.glade:733
+#: data/ui/limiter.glade:380 data/ui/compressor.glade:731
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
 #: data/ui/multiband_compressor.glade:1508
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
-#: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
+#: data/ui/equalizer.glade:524 data/ui/reverb.glade:645
 #: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
-#: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
+#: data/ui/loudness.glade:162 data/ui/loudness.glade:257 data/ui/gate.glade:502
 #: data/ui/multiband_gate.glade:806 data/ui/multiband_gate.glade:1215
 #: data/ui/multiband_gate.glade:1625 data/ui/multiband_gate.glade:2035
 #: data/ui/multiband_gate.glade:2122 data/ui/deesser.glade:583
 #: data/ui/convolver.glade:492 data/ui/crystalizer.glade:243
-#: data/ui/pitch.glade:336 data/ui/webrtc.glade:639 data/ui/delay.glade:225
+#: data/ui/pitch.glade:336 data/ui/webrtc.glade:638 data/ui/delay.glade:223
 #: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr "Výstup"
@@ -382,7 +382,7 @@ msgstr "Výstup"
 msgid "Relative"
 msgstr "Relatívna"
 
-#: data/ui/autogain.glade:721 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:721 data/ui/compressor.glade:897
 #: data/ui/deesser.glade:295
 #, fuzzy
 msgid "Gain"
@@ -396,6 +396,18 @@ msgstr "Hlasitosť"
 #: data/ui/autogain.glade:840
 msgid "Range"
 msgstr "Rozsah"
+
+#: data/ui/autogain.glade:892 data/ui/limiter.glade:569
+#: data/ui/compressor.glade:1039 data/ui/multiband_compressor.glade:2154
+#: data/ui/filter.glade:564 data/ui/equalizer.glade:707
+#: data/ui/reverb.glade:826 data/ui/bass_enhancer.glade:627
+#: data/ui/exciter.glade:631 data/ui/stereo_tools.glade:1001
+#: data/ui/crossfeed.glade:364 data/ui/maximizer.glade:444
+#: data/ui/loudness.glade:404 data/ui/gate.glade:691
+#: data/ui/multiband_gate.glade:2303 data/ui/deesser.glade:813
+#: data/ui/pitch.glade:517 data/ui/webrtc.glade:785 data/ui/delay.glade:404
+msgid "Provided by"
+msgstr ""
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:395
 #, fuzzy
@@ -416,7 +428,7 @@ msgstr "Obmedzenie"
 #: data/ui/multiband_compressor.glade:534
 #: data/ui/multiband_compressor.glade:907
 #: data/ui/multiband_compressor.glade:1285
-#: data/ui/multiband_compressor.glade:1663 data/ui/maximizer.glade:213
+#: data/ui/multiband_compressor.glade:1663 data/ui/maximizer.glade:152
 #: data/ui/gate.glade:299 data/ui/multiband_gate.glade:554
 #: data/ui/multiband_gate.glade:960 data/ui/multiband_gate.glade:1370
 #: data/ui/multiband_gate.glade:1780
@@ -441,7 +453,7 @@ msgid "Attenuation"
 msgstr "Zoslabenie"
 
 #: data/ui/compressor.glade:30 data/ui/compressor.glade:442
-#: data/ui/webrtc.glade:482 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/ui/webrtc.glade:483 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -583,12 +595,12 @@ msgstr "Stredný"
 msgid "Side"
 msgstr "Postranný"
 
-#: data/ui/compressor.glade:645 data/ui/equalizer.glade:448
+#: data/ui/compressor.glade:645 data/ui/equalizer.glade:442
 #: data/ui/stereo_tools.glade:524 data/ui/delay.glade:131
 msgid "Left"
 msgstr "Ľavý"
 
-#: data/ui/compressor.glade:646 data/ui/equalizer.glade:489
+#: data/ui/compressor.glade:646 data/ui/equalizer.glade:483
 #: data/ui/stereo_tools.glade:596 data/ui/delay.glade:163
 msgid "Right"
 msgstr "Pravý"
@@ -597,11 +609,11 @@ msgstr "Pravý"
 msgid "Source"
 msgstr "Zdroj"
 
-#: data/ui/compressor.glade:676 data/ui/compressor.glade:913
+#: data/ui/compressor.glade:676 data/ui/compressor.glade:910
 msgid "Sidechain"
 msgstr ""
 
-#: data/ui/compressor.glade:989
+#: data/ui/compressor.glade:986
 msgid "Curve"
 msgstr "Krivka"
 
@@ -1014,7 +1026,7 @@ msgstr ""
 msgid "Exciter"
 msgstr ""
 
-#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
+#: data/ui/exciter.glade:358 data/ui/maximizer.glade:139
 #, fuzzy
 msgid "Ceiling"
 msgstr "Obmedzenie [dB]"
@@ -1122,7 +1134,7 @@ msgstr "Zrezanie [Hz]"
 msgid "Feed"
 msgstr "Koleno [dB]"
 
-#: data/ui/crossfeed.glade:392
+#: data/ui/crossfeed.glade:432
 msgid "Crossfeed"
 msgstr ""
 
@@ -1236,7 +1248,7 @@ msgstr "Zoslabenie"
 msgid "Samples"
 msgstr "Vzorky"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:257
 msgid "Impulse Response"
 msgstr ""
 
@@ -1244,7 +1256,7 @@ msgstr ""
 msgid "Select the impulse Response File"
 msgstr "Zvolte Súbor impulse"
 
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
+#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:145
 #, fuzzy
 msgid "Spectrum"
 msgstr "Zobraziť spektrum"
@@ -1303,12 +1315,17 @@ msgstr ""
 msgid "Crispness"
 msgstr ""
 
+#: data/ui/pitch.glade:529
+#, fuzzy
+msgid "Rubber Band"
+msgstr "Spodné Pásmo"
+
 #: data/ui/webrtc.glade:30
 msgid "Webrtc"
 msgstr ""
 
 #: data/ui/webrtc.glade:137 data/ui/webrtc.glade:257 data/ui/webrtc.glade:327
-#: data/ui/webrtc.glade:496
+#: data/ui/webrtc.glade:497
 msgid "Enable"
 msgstr "Povolené"
 
@@ -1330,15 +1347,15 @@ msgstr "Horný prechod"
 msgid "Suppresion Level"
 msgstr "Redukcia zosilnenia"
 
-#: data/ui/webrtc.glade:225 data/ui/webrtc.glade:293 data/ui/webrtc.glade:548
+#: data/ui/webrtc.glade:225 data/ui/webrtc.glade:293 data/ui/webrtc.glade:549
 msgid "Low"
 msgstr ""
 
-#: data/ui/webrtc.glade:226 data/ui/webrtc.glade:294 data/ui/webrtc.glade:549
+#: data/ui/webrtc.glade:226 data/ui/webrtc.glade:294 data/ui/webrtc.glade:550
 msgid "Moderate"
 msgstr ""
 
-#: data/ui/webrtc.glade:227 data/ui/webrtc.glade:295 data/ui/webrtc.glade:550
+#: data/ui/webrtc.glade:227 data/ui/webrtc.glade:295 data/ui/webrtc.glade:551
 #, fuzzy
 msgid "High"
 msgstr "Horný prechod"
@@ -1374,25 +1391,25 @@ msgstr ""
 msgid "Target Level"
 msgstr "Prah [dB]"
 
-#: data/ui/webrtc.glade:448
+#: data/ui/webrtc.glade:449
 msgid "Maximum Gain"
 msgstr "Maximálny Zisk"
 
-#: data/ui/webrtc.glade:521
+#: data/ui/webrtc.glade:522
 #, fuzzy
 msgid "Detection Likelihood"
 msgstr "Zoslabenie"
 
-#: data/ui/webrtc.glade:534
+#: data/ui/webrtc.glade:535
 #, fuzzy
 msgid "Frame Size"
 msgstr "Veľkosť miestnosti"
 
-#: data/ui/webrtc.glade:547
+#: data/ui/webrtc.glade:548
 msgid "Very Low"
 msgstr ""
 
-#: data/ui/webrtc.glade:584
+#: data/ui/webrtc.glade:585
 #, fuzzy
 msgid "Voice Detector"
 msgstr "Zoslabenie"
@@ -1553,11 +1570,6 @@ msgstr "Ekvalizér, Kompresor a Ďalšie Audio Efekty"
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
 
-#. Translators: This is an icon name, don't translate!
-#: data/com.github.wwmm.pulseeffects.desktop.in:10
-msgid "pulseeffects"
-msgstr ""
-
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 #, fuzzy
 msgid "\"Presets\""
@@ -1583,12 +1595,12 @@ msgstr "Resetnúť PulseEffects"
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:263
+#: src/application.cpp:250
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Predvoľby"
 
-#: src/application.cpp:271
+#: src/application.cpp:258
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Načítať predvoľbu"
@@ -1601,27 +1613,27 @@ msgstr "Aplikácie"
 msgid "Blacklist"
 msgstr "Čierny List"
 
-#: src/general_settings_ui.cpp:121
+#: src/general_settings_ui.cpp:124
 msgid "General"
 msgstr "Všeobecné"
 
-#: src/pulse_settings_ui.cpp:138
+#: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/app_info_ui.cpp:85
+#: src/app_info_ui.cpp:86
 msgid "paused"
 msgstr "pozastavené"
 
-#: src/app_info_ui.cpp:87
+#: src/app_info_ui.cpp:88
 msgid "playing"
 msgstr "hrá"
 
@@ -1629,20 +1641,20 @@ msgstr "hrá"
 msgid "Calibration Microphone"
 msgstr "Kalibrovať Mikrofón"
 
-#: src/convolver_ui.cpp:246
+#: src/convolver_ui.cpp:252
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Načítať predvoľbu"
 
-#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
+#: src/convolver_ui.cpp:297 src/convolver_ui.cpp:298 src/convolver_ui.cpp:300
 msgid "Failed"
 msgstr "Zlyhalo"
 
-#: src/convolver_ui.cpp:295
+#: src/convolver_ui.cpp:302
 msgid "Could Not Load The Impulse File"
 msgstr "Nie Je Možné Načítať Impulse súbor"
 
-#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
+#: src/equalizer_ui.cpp:341 src/equalizer_ui.cpp:465
 msgid "infinity"
 msgstr "Nekonečno"
 

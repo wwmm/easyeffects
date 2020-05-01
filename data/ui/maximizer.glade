@@ -453,7 +453,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">ZamAudio</property>
+                <property name="label" translatable="no">ZamAudio</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
