@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-28 14:03-0300\n"
+"POT-Creation-Date: 2020-05-02 00:54+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -47,7 +47,7 @@ msgstr "Справка"
 #: data/ui/application.glade:200 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
 #: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
-#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
+#: src/presets_menu_ui.cpp:278 src/presets_menu_ui.cpp:295
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -344,37 +344,37 @@ msgstr "Вес в расчете громкости"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
 #: data/ui/autogain.glade:378 data/ui/autogain.glade:570
-#: data/ui/limiter.glade:365 data/ui/compressor.glade:718
+#: data/ui/limiter.glade:365 data/ui/compressor.glade:717
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
-#: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
+#: data/ui/equalizer.glade:510 data/ui/reverb.glade:630
 #: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
-#: data/ui/loudness.glade:244 data/ui/gate.glade:487
+#: data/ui/loudness.glade:243 data/ui/gate.glade:487
 #: data/ui/multiband_gate.glade:2107 data/ui/deesser.glade:568
 #: data/ui/convolver.glade:477 data/ui/crystalizer.glade:228
-#: data/ui/pitch.glade:322 data/ui/webrtc.glade:624 data/ui/delay.glade:210
+#: data/ui/pitch.glade:322 data/ui/webrtc.glade:624 data/ui/delay.glade:209
 #: data/ui/presets_menu.glade:255
 msgid "Input"
 msgstr "Вход"
 
 #: data/ui/autogain.glade:393 data/ui/autogain.glade:826
-#: data/ui/limiter.glade:380 data/ui/compressor.glade:733
+#: data/ui/limiter.glade:380 data/ui/compressor.glade:731
 #: data/ui/multiband_compressor.glade:753
 #: data/ui/multiband_compressor.glade:1130
 #: data/ui/multiband_compressor.glade:1508
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
-#: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
+#: data/ui/equalizer.glade:524 data/ui/reverb.glade:645
 #: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
-#: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
+#: data/ui/loudness.glade:162 data/ui/loudness.glade:257 data/ui/gate.glade:502
 #: data/ui/multiband_gate.glade:806 data/ui/multiband_gate.glade:1215
 #: data/ui/multiband_gate.glade:1625 data/ui/multiband_gate.glade:2035
 #: data/ui/multiband_gate.glade:2122 data/ui/deesser.glade:583
 #: data/ui/convolver.glade:492 data/ui/crystalizer.glade:243
-#: data/ui/pitch.glade:336 data/ui/webrtc.glade:639 data/ui/delay.glade:225
+#: data/ui/pitch.glade:336 data/ui/webrtc.glade:638 data/ui/delay.glade:223
 #: data/ui/presets_menu.glade:146
 msgid "Output"
 msgstr "Выход"
@@ -383,7 +383,7 @@ msgstr "Выход"
 msgid "Relative"
 msgstr "Относительное значение"
 
-#: data/ui/autogain.glade:721 data/ui/compressor.glade:900
+#: data/ui/autogain.glade:721 data/ui/compressor.glade:897
 #: data/ui/deesser.glade:295
 msgid "Gain"
 msgstr "Усиление"
@@ -397,6 +397,18 @@ msgstr "Громкость"
 #: data/ui/autogain.glade:840
 msgid "Range"
 msgstr "Диапазон"
+
+#: data/ui/autogain.glade:892 data/ui/limiter.glade:569
+#: data/ui/compressor.glade:1039 data/ui/multiband_compressor.glade:2154
+#: data/ui/filter.glade:564 data/ui/equalizer.glade:707
+#: data/ui/reverb.glade:826 data/ui/bass_enhancer.glade:627
+#: data/ui/exciter.glade:631 data/ui/stereo_tools.glade:1001
+#: data/ui/crossfeed.glade:364 data/ui/maximizer.glade:444
+#: data/ui/loudness.glade:404 data/ui/gate.glade:691
+#: data/ui/multiband_gate.glade:2303 data/ui/deesser.glade:813
+#: data/ui/pitch.glade:517 data/ui/webrtc.glade:785 data/ui/delay.glade:404
+msgid "Provided by"
+msgstr ""
 
 #: data/ui/limiter.glade:30 data/ui/webrtc.glade:395
 msgid "Limiter"
@@ -414,7 +426,7 @@ msgstr "Ограничение"
 #: data/ui/multiband_compressor.glade:534
 #: data/ui/multiband_compressor.glade:907
 #: data/ui/multiband_compressor.glade:1285
-#: data/ui/multiband_compressor.glade:1663 data/ui/maximizer.glade:213
+#: data/ui/multiband_compressor.glade:1663 data/ui/maximizer.glade:152
 #: data/ui/gate.glade:299 data/ui/multiband_gate.glade:554
 #: data/ui/multiband_gate.glade:960 data/ui/multiband_gate.glade:1370
 #: data/ui/multiband_gate.glade:1780
@@ -438,7 +450,7 @@ msgid "Attenuation"
 msgstr "Затухание"
 
 #: data/ui/compressor.glade:30 data/ui/compressor.glade:442
-#: data/ui/webrtc.glade:482 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/ui/webrtc.glade:483 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Компрессор"
 
@@ -571,12 +583,12 @@ msgstr "Средний"
 msgid "Side"
 msgstr "Усиление ввода [дБ]"
 
-#: data/ui/compressor.glade:645 data/ui/equalizer.glade:448
+#: data/ui/compressor.glade:645 data/ui/equalizer.glade:442
 #: data/ui/stereo_tools.glade:524 data/ui/delay.glade:131
 msgid "Left"
 msgstr "Левый"
 
-#: data/ui/compressor.glade:646 data/ui/equalizer.glade:489
+#: data/ui/compressor.glade:646 data/ui/equalizer.glade:483
 #: data/ui/stereo_tools.glade:596 data/ui/delay.glade:163
 msgid "Right"
 msgstr "Правый"
@@ -587,11 +599,11 @@ msgid "Source"
 msgstr "Средний источник"
 
 # #, fuzzy
-#: data/ui/compressor.glade:676 data/ui/compressor.glade:913
+#: data/ui/compressor.glade:676 data/ui/compressor.glade:910
 msgid "Sidechain"
 msgstr "Усиление ввода [дБ]"
 
-#: data/ui/compressor.glade:989
+#: data/ui/compressor.glade:986
 msgid "Curve"
 msgstr "Кривая"
 
@@ -994,7 +1006,7 @@ msgstr "Нижний порог"
 msgid "Exciter"
 msgstr "Генератор"
 
-#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
+#: data/ui/exciter.glade:358 data/ui/maximizer.glade:139
 msgid "Ceiling"
 msgstr "Верхний порог"
 
@@ -1094,7 +1106,7 @@ msgstr "Усечение"
 msgid "Feed"
 msgstr "Подача"
 
-#: data/ui/crossfeed.glade:392
+#: data/ui/crossfeed.glade:432
 msgid "Crossfeed"
 msgstr "Перекрестная подача"
 
@@ -1205,7 +1217,7 @@ msgstr "Продолжительность"
 msgid "Samples"
 msgstr "Образцы"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:257
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
@@ -1213,7 +1225,7 @@ msgstr "Импульсная реакция"
 msgid "Select the impulse Response File"
 msgstr "Выбрать файл с импульсной реакцией"
 
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
+#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:145
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -1269,12 +1281,17 @@ msgstr "Октавы"
 msgid "Crispness"
 msgstr "Чёткость"
 
+#: data/ui/pitch.glade:529
+#, fuzzy
+msgid "Rubber Band"
+msgstr "Поддиапазон"
+
 #: data/ui/webrtc.glade:30
 msgid "Webrtc"
 msgstr "Webrtc"
 
 #: data/ui/webrtc.glade:137 data/ui/webrtc.glade:257 data/ui/webrtc.glade:327
-#: data/ui/webrtc.glade:496
+#: data/ui/webrtc.glade:497
 msgid "Enable"
 msgstr "Включить"
 
@@ -1294,15 +1311,15 @@ msgstr "Высокачастотный фильтр"
 msgid "Suppresion Level"
 msgstr "Уровень подавления"
 
-#: data/ui/webrtc.glade:225 data/ui/webrtc.glade:293 data/ui/webrtc.glade:548
+#: data/ui/webrtc.glade:225 data/ui/webrtc.glade:293 data/ui/webrtc.glade:549
 msgid "Low"
 msgstr "Низкочастотный фильтр"
 
-#: data/ui/webrtc.glade:226 data/ui/webrtc.glade:294 data/ui/webrtc.glade:549
+#: data/ui/webrtc.glade:226 data/ui/webrtc.glade:294 data/ui/webrtc.glade:550
 msgid "Moderate"
 msgstr "Средний"
 
-#: data/ui/webrtc.glade:227 data/ui/webrtc.glade:295 data/ui/webrtc.glade:550
+#: data/ui/webrtc.glade:227 data/ui/webrtc.glade:295 data/ui/webrtc.glade:551
 msgid "High"
 msgstr "Высокий"
 
@@ -1335,24 +1352,24 @@ msgstr "Автоконтроль усиления (AGC)"
 msgid "Target Level"
 msgstr "Целевой результат"
 
-#: data/ui/webrtc.glade:448
+#: data/ui/webrtc.glade:449
 msgid "Maximum Gain"
 msgstr "Максимальное увеличение"
 
-#: data/ui/webrtc.glade:521
+#: data/ui/webrtc.glade:522
 msgid "Detection Likelihood"
 msgstr "Вероятность обнаружения"
 
 # Taking lingual shortcuts to squeeze it in the text box
-#: data/ui/webrtc.glade:534
+#: data/ui/webrtc.glade:535
 msgid "Frame Size"
 msgstr "Размер кадра"
 
-#: data/ui/webrtc.glade:547
+#: data/ui/webrtc.glade:548
 msgid "Very Low"
 msgstr "Очень низкий"
 
-#: data/ui/webrtc.glade:584
+#: data/ui/webrtc.glade:585
 msgid "Voice Detector"
 msgstr "Обнаруживатель голоса"
 
@@ -1524,11 +1541,6 @@ msgstr "Эквалайзер, Компрессор и другие аудиоэ�
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "лимитер;компрессор;ребербатор;эквалайзер;автогромкость;"
 
-#. Translators: This is an icon name, don't translate!
-#: data/com.github.wwmm.pulseeffects.desktop.in:10
-msgid "pulseeffects"
-msgstr ""
-
 #: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
@@ -1553,11 +1565,11 @@ msgstr "Сбросить настройки PulseEffects"
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:263
+#: src/application.cpp:250
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:271
+#: src/application.cpp:258
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
@@ -1569,27 +1581,27 @@ msgstr "Приложения"
 msgid "Blacklist"
 msgstr "Черный список"
 
-#: src/general_settings_ui.cpp:121
+#: src/general_settings_ui.cpp:124
 msgid "General"
 msgstr "Общие"
 
-#: src/pulse_settings_ui.cpp:138
+#: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
 msgid "Open"
 msgstr "Открыть"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/app_info_ui.cpp:85
+#: src/app_info_ui.cpp:86
 msgid "paused"
 msgstr "на паузе"
 
-#: src/app_info_ui.cpp:87
+#: src/app_info_ui.cpp:88
 msgid "playing"
 msgstr "воспроизводится"
 
@@ -1597,19 +1609,19 @@ msgstr "воспроизводится"
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
-#: src/convolver_ui.cpp:246
+#: src/convolver_ui.cpp:252
 msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
-#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
+#: src/convolver_ui.cpp:297 src/convolver_ui.cpp:298 src/convolver_ui.cpp:300
 msgid "Failed"
 msgstr "Не получилось"
 
-#: src/convolver_ui.cpp:295
+#: src/convolver_ui.cpp:302
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
-#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
+#: src/equalizer_ui.cpp:341 src/equalizer_ui.cpp:465
 msgid "infinity"
 msgstr ""
 
