@@ -889,7 +889,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Provided by</property>
+                <property name="label" translatable="yes">Based on</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -901,7 +901,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="no">libebur128</property>
+                <property name="label">libebur128</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
