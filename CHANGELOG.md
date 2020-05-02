@@ -4,7 +4,9 @@
 
 ### Added
 
-- PulseEffects now searches for presets in `/ect/xdg`
+- PulseEffects now searches for presets in /ect/PulseEffects and directories specified by \$XDG_CONFIG_DIRS environment
+  variable.
+- Our interface now shows third party Plugins credits.
 
 ## [4.7.2]
 
