@@ -8,6 +8,10 @@
   variable.
 - Our interface now shows third party Plugins credits.
 
+### Fixed
+
+- PulseEffects no longer crashes when an empty or corrupted preset is provided.
+
 ## [4.7.2]
 
 ### Added
