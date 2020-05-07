@@ -120,7 +120,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
     magnitudes = gst_structure_get_value(s, "magnitude");
 
     for (uint n = 0; n < pb->spectrum_freqs.size(); n++) {
-      pb->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n));
+      pb->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n + pb->spectrum_start_index));
     }
 
     try {
@@ -647,6 +647,10 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
 
     if (f > min_spectrum_freq) {
       spectrum_freqs.push_back(f);
+
+      if (spectrum_start_index == 0) {
+        spectrum_start_index = n;
+      }
     }
   }
 
