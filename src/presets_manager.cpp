@@ -46,10 +46,8 @@ PresetsManager::PresetsManager()
   system_output_dirs.push_back("/etc/PulseEffects/output");
   std::sort(system_input_dirs.begin(), system_input_dirs.end());
   std::sort(system_output_dirs.begin(), system_output_dirs.end());
-  system_input_dirs.erase(
-    std::unique(system_input_dirs.begin(), system_input_dirs.end()), system_input_dirs.end());
-  system_output_dirs.erase(
-    std::unique(system_output_dirs.begin(), system_output_dirs.end()), system_output_dirs.end());
+  system_input_dirs.erase(std::unique(system_input_dirs.begin(), system_input_dirs.end()), system_input_dirs.end());
+  system_output_dirs.erase(std::unique(system_output_dirs.begin(), system_output_dirs.end()), system_output_dirs.end());
 
   for (auto& scd : system_input_dirs) {
     util::debug("presets_manager: system input presets directory: \"" + scd.string() + "\"; ");
@@ -120,8 +118,7 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::strin
   return names;
 }
 
-auto PresetsManager::search_names(boost::filesystem::directory_iterator& it)
-                                              -> std::vector<std::string> {
+auto PresetsManager::search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string> {
   std::vector<std::string> names;
 
   try {
@@ -134,7 +131,8 @@ auto PresetsManager::search_names(boost::filesystem::directory_iterator& it)
 
       it++;
     }
-  } catch (std::exception & e) {}
+  } catch (std::exception& e) {
+  }
 
   return names;
 }
@@ -304,40 +302,40 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
     }
 
-    if (!preset_found) {
-      util::debug("can't found the preset " + name + " on the filesystem");
-    }
+    if (preset_found) {
+      try {
+        boost::property_tree::read_json(input_file.string(), root);
 
-    try {
-      boost::property_tree::read_json(input_file.string(), root);
+        Glib::Variant<std::vector<std::string>> aux;
+        sie_settings->get_default_value("plugins", aux);
 
-      Glib::Variant<std::vector<std::string>> aux;
-      sie_settings->get_default_value("plugins", aux);
+        for (auto& p : root.get_child("output.plugins_order")) {
+          auto value = p.second.data();
 
-      for (auto& p : root.get_child("output.plugins_order")) {
-        auto value = p.second.data();
+          for (const auto& v : aux.get()) {
+            if (v == value) {
+              output_plugins.push_back(value);
 
-        for (const auto& v : aux.get()) {
-          if (v == value) {
-            output_plugins.push_back(value);
-
-            break;
+              break;
+            }
           }
         }
-      }
 
-      for (const auto& v : aux.get()) {
-        if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
-          output_plugins.push_back(v);
+        for (const auto& v : aux.get()) {
+          if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
+            output_plugins.push_back(v);
+          }
         }
+      } catch (const boost::property_tree::ptree_error& e) {
+        Glib::Variant<std::vector<std::string>> aux;
+        sie_settings->get_default_value("plugins", aux);
+        output_plugins = aux.get();
       }
-    } catch (const boost::property_tree::ptree_error& e) {
-      Glib::Variant<std::vector<std::string>> aux;
-      sie_settings->get_default_value("plugins", aux);
-      output_plugins = aux.get();
-    }
 
-    sie_settings->set_string_array("plugins", output_plugins);
+      sie_settings->set_string_array("plugins", output_plugins);
+    } else {
+      util::debug("can't found the preset " + name + " on the filesystem");
+    }
   } else {
     conf_dirs.push_back(user_input_dir);
     conf_dirs.insert(conf_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
@@ -350,40 +348,40 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
     }
 
-    if (!preset_found) {
-      util::debug("can't found the preset " + name + " on the filesystem");
-    }
+    if (preset_found) {
+      try {
+        boost::property_tree::read_json(input_file.string(), root);
 
-    try {
-      boost::property_tree::read_json(input_file.string(), root);
+        Glib::Variant<std::vector<std::string>> aux;
+        soe_settings->get_default_value("plugins", aux);
 
-      Glib::Variant<std::vector<std::string>> aux;
-      soe_settings->get_default_value("plugins", aux);
+        for (auto& p : root.get_child("input.plugins_order")) {
+          auto value = p.second.data();
 
-      for (auto& p : root.get_child("input.plugins_order")) {
-        auto value = p.second.data();
+          for (const auto& v : aux.get()) {
+            if (v == value) {
+              input_plugins.push_back(value);
 
-        for (const auto& v : aux.get()) {
-          if (v == value) {
-            input_plugins.push_back(value);
-
-            break;
+              break;
+            }
           }
         }
-      }
 
-      for (const auto& v : aux.get()) {
-        if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
-          input_plugins.push_back(v);
+        for (const auto& v : aux.get()) {
+          if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
+            input_plugins.push_back(v);
+          }
         }
+      } catch (const boost::property_tree::ptree_error& e) {
+        Glib::Variant<std::vector<std::string>> aux;
+        soe_settings->get_default_value("plugins", aux);
+        input_plugins = aux.get();
       }
-    } catch (const boost::property_tree::ptree_error& e) {
-      Glib::Variant<std::vector<std::string>> aux;
-      soe_settings->get_default_value("plugins", aux);
-      input_plugins = aux.get();
-    }
 
-    soe_settings->set_string_array("plugins", input_plugins);
+      soe_settings->set_string_array("plugins", input_plugins);
+    } else {
+      util::debug("can't found the preset " + name + " on the filesystem");
+    }
   }
 
   load_blacklist(preset_type, root);
