@@ -214,7 +214,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->momentary = 0.0f;
   peautogain->shortterm = 0.0f;
   peautogain->global = 0.0f;
-  peautogain->staticv = -11.5f;  // LUFS/2 (static value = constant value set by user)
+  peautogain->staticv = -12.0f;  // ~LUFS/2 to Int Number (static value = constant value set by user)
   peautogain->relative = 0.0f;
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
