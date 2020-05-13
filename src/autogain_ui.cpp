@@ -24,10 +24,12 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   builder->get_widget("l_label", l_label);
   builder->get_widget("lra_label", lra_label);
 
-  builder->get_widget("reset", reset);
+  builder->get_widget("reset", reset_history);
   builder->get_widget("detect_silence", detect_silence);
   builder->get_widget("use_geometric_mean", use_geometric_mean);
   builder->get_widget("weights_grid", weights_grid);
+
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   builder->get_widget("l_label", l_label);
@@ -53,11 +55,40 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("use-geometric-mean", weights_grid, "visible",
                  Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
 
-  reset->signal_clicked().connect([=]() { settings->set_boolean("reset", true); });
+  reset_history->signal_clicked().connect([=]() { settings->set_boolean("reset", true); });
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 AutoGainUi::~AutoGainUi() {
   util::debug(name + " ui destroyed");
+}
+
+void AutoGainUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<bool>(settings, "detect-silence", section + ".autogain.detect-silence");
+
+    update_default_key<bool>(settings, "use-geometric-mean", section + ".autogain.use-geometric-mean");
+
+    update_default_key<double>(settings, "input-gain", section + ".autogain.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".autogain.output-gain");
+
+    update_default_key<double>(settings, "target", section + ".autogain.target");
+
+    update_default_key<int>(settings, "weight-m", section + ".autogain.weight-m");
+
+    update_default_key<int>(settings, "weight-s", section + ".autogain.weight-s");
+
+    update_default_key<int>(settings, "weight-i", section + ".autogain.weight-i");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void AutoGainUi::on_new_momentary(const float& value) {

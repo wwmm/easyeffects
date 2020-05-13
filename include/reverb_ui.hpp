@@ -15,6 +15,8 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const ReverbUi &&) -> ReverbUi& = delete;
   ~ReverbUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, predelay, decay_time, diffusion, amount, dry, hf_damp,
       bass_cut, treble_cut;

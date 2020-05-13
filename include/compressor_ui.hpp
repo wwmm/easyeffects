@@ -21,6 +21,8 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
 
   void on_new_curve(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, makeup, preamp, reactivity, lookahead,
       input_gain, output_gain;

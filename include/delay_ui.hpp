@@ -13,6 +13,8 @@ class DelayUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const DelayUi &&) -> DelayUi& = delete;
   ~DelayUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, time_l, time_r;
 };

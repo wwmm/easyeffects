@@ -14,6 +14,8 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const CrossfeedUi &&) -> CrossfeedUi& = delete;
   ~CrossfeedUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> fcut, feed;
 

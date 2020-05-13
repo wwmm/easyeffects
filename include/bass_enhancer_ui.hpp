@@ -16,6 +16,8 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_new_harmonics_level(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> amount, blend, floorv, harmonics, input_gain, output_gain, scope;
 

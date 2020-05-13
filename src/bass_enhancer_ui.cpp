@@ -12,6 +12,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
   builder->get_widget("floor_active", floor_active);
   builder->get_widget("listen", listen);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "amount", amount);
   get_object(builder, "blend", blend);
@@ -35,10 +36,41 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("listen", listen, "active", flag);
   settings->bind("floor-active", floor_active, "active", flag);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 BassEnhancerUi::~BassEnhancerUi() {
   util::debug(name + " ui destroyed");
+}
+
+void BassEnhancerUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".bass_enhancer.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".bass_enhancer.output-gain");
+
+    update_default_key<double>(settings, "amount", section + ".bass_enhancer.amount");
+
+    update_default_key<double>(settings, "harmonics", section + ".bass_enhancer.harmonics");
+
+    update_default_key<double>(settings, "scope", section + ".bass_enhancer.scope");
+
+    update_default_key<double>(settings, "floor", section + ".bass_enhancer.floor");
+
+    update_default_key<double>(settings, "blend", section + ".bass_enhancer.blend");
+
+    update_default_key<bool>(settings, "floor-active", section + ".bass_enhancer.floor-active");
+
+    update_default_key<bool>(settings, "listen", section + ".bass_enhancer.listen");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {

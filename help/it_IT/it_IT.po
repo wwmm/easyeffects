@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-05-13 20:02+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -40,8 +40,7 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/bassenhancer.page:16
 msgid "PulseEffects uses the bass enhancer developed by Calf Studio."
-msgstr ""
-"PulseEffects usa il plugin di Enfasi Bassi sviluppato da Calf Studio."
+msgstr "PulseEffects usa il plugin di Enfasi Bassi sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/bassenhancer.page:22 C/exciter.page:21 C/reverb.page:40
@@ -345,8 +344,8 @@ msgid ""
 "<em style=\"strong\">Middle</em> - Middle part of signal is used for "
 "sidechain processing."
 msgstr ""
-"<em style=\"strong\">Intermedia</em> - La parte intermedia del segnale è usata "
-"per l'elaborazione in sidechain."
+"<em style=\"strong\">Intermedia</em> - La parte intermedia del segnale è "
+"usata per l'elaborazione in sidechain."
 
 #. (itstool) path: item/p
 #: C/compressor.page:165
@@ -435,8 +434,7 @@ msgstr ""
 "molto brevi."
 
 #. (itstool) path: item/p
-#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
-#: C/multibandgate.page:48
+#: C/deesser.page:28 C/multibandcompressor.page:40 C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr ""
 "Se il segnale supera il valore specificato, verrà applicata la compressione."
@@ -653,22 +651,31 @@ msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects usa il Gate sviluppato da Calf Studio."
 
 #. (itstool) path: item/p
-#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+#: C/gate.page:22
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"gain reduction stops."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve rimanere oltre la soglia "
 "affinchè la compressione venga applicata interamente."
 
 #. (itstool) path: item/p
-#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+#: C/gate.page:31
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"reduction is increased again."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve rimanere sotto la soglia "
 "affinchè la compressione venga terminata."
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+#, fuzzy
+msgid "If a signal rises above this level the gain reduction is released."
+msgstr ""
+"Se il segnale supera il valore specificato, verrà applicata la compressione."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -951,6 +958,24 @@ msgstr ""
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr "PulseEffects usa il Compressore Multibanda sviluppato da Calf Studio."
 
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Valore in millisecondi per cui il segnale deve rimanere oltre la soglia "
+"affinchè la compressione venga applicata interamente."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Valore in millisecondi per cui il segnale deve rimanere sotto la soglia "
+"affinchè la compressione venga terminata."
+
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
 msgid "Bypass"
@@ -1185,12 +1210,12 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/stereotools.page:9
 msgid "Stereo Tools"
-msgstr "Plugin Stereo"
+msgstr "Strumenti Stereo"
 
 #. (itstool) path: page/p
 #: C/stereotools.page:10
 msgid "PulseEffects uses the stereo tools developed by Calf Studio."
-msgstr "PulseEffects usa il Plugin Stereo sviluppato da Calf Studio."
+msgstr "PulseEffects usa il plugin Strumenti Stereo sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/stereotools.page:16
@@ -2772,9 +2797,9 @@ msgid ""
 msgstr ""
 "I sistemi operativi commerciali offrono software specifici per migliorare "
 "l'audio su questi tipi di notebook. Su Linux si può ottenere un risultato "
-"simile con PulseEffects, anche se il procedimento non è immediato e "
-"richiede un lungo intervento manuale, a meno che in futuro la community non "
-"realizzi un database con le impostazioni per i modelli più comuni."
+"simile con PulseEffects, anche se il procedimento non è immediato e richiede "
+"un lungo intervento manuale, a meno che in futuro la community non realizzi "
+"un database con le impostazioni per i modelli più comuni."
 
 #. (itstool) path: section/p
 #: C/guide_1.page:11
@@ -2882,8 +2907,8 @@ msgid ""
 msgstr ""
 "<em style=\"strong\">Medio-Bassi</em>: Colpisci una scatola di cartone da "
 "0.5m3 e capirai cosa sono. L'energia di un suono è localizzata in questo "
-"intervallo. Anche il rullo di tamburi e le chitarre elettriche. Nei film, "
-"il rombo dei motori e i colpi d'arma da fuoco. Siamo tra i ~250Hz e ~750Hz."
+"intervallo. Anche il rullo di tamburi e le chitarre elettriche. Nei film, il "
+"rombo dei motori e i colpi d'arma da fuoco. Siamo tra i ~250Hz e ~750Hz."
 
 #. (itstool) path: item/p
 #: C/guide_1.page:41
@@ -3025,8 +3050,8 @@ msgid ""
 "high-mid and height is quite out-of-bounds. This needs correction, although "
 "I promised a tutorial without EQ."
 msgstr ""
-"Rappresenta la differenza tra i vari intervalli di frequenza: basso, "
-"medio-basso, medio-alto e alto. Sui notebook può essere molto marcata e va "
+"Rappresenta la differenza tra i vari intervalli di frequenza: basso, medio-"
+"basso, medio-alto e alto. Sui notebook può essere molto marcata e va "
 "corretta, anche se non ricorreremo a un equalizzatore."
 
 #. (itstool) path: item/title
@@ -3312,10 +3337,10 @@ msgstr ""
 "200Hz/300Hz/400Hz/600Hz/800Hz/900Hz/... al variare e al ridursi dei livelli "
 "(in base alle Armoniche impostate). Questo comporta un incremento "
 "nell'intervallo basso affinché si abbia qualcosa che suoni meglio sul nostro "
-"particolare sistema. Non aggiunge, né aumenta, i "
-"<em style=\"strong\">reali</em> fondamentali del suono originale (dunque il "
-"tuo notebook non comincerà a sobbalzare), ma rende più udibili i segnali che "
-"l'hardware inizialmente non riusciva a riprodurre correttamente."
+"particolare sistema. Non aggiunge, né aumenta, i <em style=\"strong\">reali</"
+"em> fondamentali del suono originale (dunque il tuo notebook non comincerà a "
+"sobbalzare), ma rende più udibili i segnali che l'hardware inizialmente non "
+"riusciva a riprodurre correttamente."
 
 #. (itstool) path: item/p
 #: C/guide_1.page:154
@@ -3373,9 +3398,9 @@ msgid ""
 "to the problems instead of solving anything."
 msgstr ""
 "Il Compressore Multibanda ci aiuterà a risolvere diversi aspetti. Taglierà "
-"delle frequenze troppo forti, ridurrà l'intervallo dinamico e armonizzerà "
-"la risposta in frequenza. La maggior parte delle persone prova a migliorare "
-"la risposta in frequenza attraverso gli equalizzatori, ma questi ultimi non "
+"delle frequenze troppo forti, ridurrà l'intervallo dinamico e armonizzerà la "
+"risposta in frequenza. La maggior parte delle persone prova a migliorare la "
+"risposta in frequenza attraverso gli equalizzatori, ma questi ultimi non "
 "sono dinamici, per cui tendono ad aumentare i problemi piuttosto che "
 "risolverli."
 
@@ -3385,8 +3410,8 @@ msgid ""
 "Drag the Multiband Compressor to the third position, after the Bass Enhancer "
 "and before the Limiter."
 msgstr ""
-"Trascina il plugin Compressore Multibanda alla terza posizione, dopo l'Enfasi "
-"Bassi e prima del Limitatore."
+"Trascina il plugin Compressore Multibanda alla terza posizione, dopo "
+"l'Enfasi Bassi e prima del Limitatore."
 
 #. (itstool) path: item/p
 #: C/guide_1.page:164
@@ -3612,7 +3637,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: C/guide_1.page:294
 msgid "<em style=\"strong\">Stereo Tools</em>"
-msgstr "<em style=\"strong\">Plugin Stereo</em>"
+msgstr "<em style=\"strong\">Strumenti Stereo</em>"
 
 #. (itstool) path: item/p
 #: C/guide_1.page:297
@@ -3627,10 +3652,10 @@ msgid ""
 "single parameter. Switch to the last tab \"Output\" and set the parameter "
 "stereo base to 0.25. That's it."
 msgstr ""
-"Trascina il Plugin Stereo alla quarta posizione, dopo il Compressore "
-"Multibanda e prima del Limitatore. Questo processo ha un sacco di "
-"funzionalità, ma a noi ne interessa soltanto una. Clicca su Output e imposta "
-"il parametro Base Stereo su 0.25. Ecco fatto."
+"Trascina il plugin Strumenti Stereo alla quarta posizione, dopo il "
+"Compressore Multibanda e prima del Limitatore. Questo processo ha un sacco "
+"di funzionalità, ma a noi ne interessa soltanto una. Clicca su Output e "
+"imposta il parametro Base Stereo su 0.25. Ecco fatto."
 
 #. (itstool) path: item/p
 #: C/guide_1.page:299
@@ -3677,10 +3702,10 @@ msgid ""
 "comparable set of signal processors set up in the presumably same way as "
 "this tutorial explained."
 msgstr ""
-"Fortunatamente sono riuscito a ottenere una qualità del suono <em "
-"style=\"strong\">migliore</em> di quella iniziale. Questa catena di plugin "
-"sarebbe in grado di rovinare l'esperienza acustica se non impostata nel "
-"modo corretto, ma coi giusti passi può anche rendere il suono paragonabile a "
+"Fortunatamente sono riuscito a ottenere una qualità del suono <em style="
+"\"strong\">migliore</em> di quella iniziale. Questa catena di plugin sarebbe "
+"in grado di rovinare l'esperienza acustica se non impostata nel modo "
+"corretto, ma coi giusti passi può anche rendere il suono paragonabile a "
 "quello di notebook con altoparlanti di buona fattura. Tutti i produttori "
 "forniscono dei driver audio con dei preset per migliorare l'acustica, che "
 "più o meno funzionano alla stessa maniera di come ho spiegato in questa "

@@ -18,6 +18,8 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_new_range_after(double value);
 
+  void reset() override;
+
  private:
   Gtk::Grid* bands_grid = nullptr;
 

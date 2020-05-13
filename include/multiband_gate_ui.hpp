@@ -26,6 +26,8 @@ class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
   void on_new_gating2(double value);
   void on_new_gating3(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;
   Glib::RefPtr<Gtk::Adjustment> range0, attack0, release0, threshold0, knee0, ratio0, makeup0;

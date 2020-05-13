@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-05-13 20:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -404,8 +404,7 @@ msgstr ""
 "сигнала."
 
 #. (itstool) path: item/p
-#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
-#: C/multibandgate.page:48
+#: C/deesser.page:28 C/multibandcompressor.page:40 C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr ""
 "Уровень сигнала, выше которого «Компрессор» уменьшает уровень сигнала на "
@@ -612,23 +611,33 @@ msgstr ""
 "PulseEffects использует плагин для усиления басов, разработанный Calf Studio."
 
 #. (itstool) path: item/p
-#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+#: C/gate.page:22
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"gain reduction stops."
 msgstr ""
 "Время (в миллисекундах), в течение которого «Компрессор» не уменьшает "
 "уровень сигнала после достижения сигналом уровнявыше «Порога срабатывания»."
 
 #. (itstool) path: item/p
-#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+#: C/gate.page:31
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"reduction is increased again."
 msgstr ""
 "Время (в миллисекундах), в течение которого «Компрессор» продолжает "
 "уменьшать уровень сигнала после достижения сигналом уровняниже «Порога "
 "срабатывания»."
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+#, fuzzy
+msgid "If a signal rises above this level the gain reduction is released."
+msgstr ""
+"Уровень сигнала, выше которого «Компрессор» уменьшает уровень сигнала на "
+"заданный пользователем коэффициент («Степень сжатия»)."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -876,6 +885,25 @@ msgstr ""
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr ""
 "PulseEffects использует плагин для усиления басов, разработанный Calf Studio."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Время (в миллисекундах), в течение которого «Компрессор» не уменьшает "
+"уровень сигнала после достижения сигналом уровнявыше «Порога срабатывания»."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Время (в миллисекундах), в течение которого «Компрессор» продолжает "
+"уменьшать уровень сигнала после достижения сигналом уровняниже «Порога "
+"срабатывания»."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37

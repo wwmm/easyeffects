@@ -11,6 +11,7 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   builder->get_widget("preset_cmoy", preset_cmoy);
   builder->get_widget("preset_default", preset_default);
   builder->get_widget("preset_jmeier", preset_jmeier);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "fcut", fcut);
   get_object(builder, "feed", feed);
@@ -23,11 +24,28 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   settings->bind("fcut", fcut.get(), "value", flag);
   settings->bind("feed", feed.get(), "value", flag);
 
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
+
   init_presets_buttons();
 }
 
 CrossfeedUi::~CrossfeedUi() {
   util::debug(name + " ui destroyed");
+}
+
+void CrossfeedUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<int>(settings, "fcut", section + ".crossfeed.fcut");
+
+    update_default_key<double>(settings, "feed", section + ".crossfeed.feed");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void CrossfeedUi::init_presets_buttons() {

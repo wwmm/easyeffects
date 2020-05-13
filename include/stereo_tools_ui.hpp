@@ -16,6 +16,8 @@ class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const StereoToolsUi &&) -> StereoToolsUi& = delete;
   ~StereoToolsUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, balance_in, balance_out, slev, sbal, mlev, mpan, stereo_base,
       delay, sc_level, stereo_phase;

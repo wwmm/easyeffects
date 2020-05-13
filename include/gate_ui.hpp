@@ -16,6 +16,8 @@ class GateUi : public Gtk::Grid, public PluginUiBase {
 
   void on_new_gating(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, range, makeup;
   Gtk::LevelBar* gating = nullptr;

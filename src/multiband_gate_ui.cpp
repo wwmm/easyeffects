@@ -86,6 +86,7 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   builder->get_widget("gating2_label", gating2_label);
   builder->get_widget("gating3", gating3);
   builder->get_widget("gating3_label", gating3_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -184,10 +185,123 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 MultibandGateUi::~MultibandGateUi() {
   util::debug(name + " ui destroyed");
+}
+
+void MultibandGateUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".multiband_gate.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".multiband_gate.output-gain");
+
+    update_default_key<double>(settings, "freq0", section + ".multiband_gate.freq0");
+
+    update_default_key<double>(settings, "freq1", section + ".multiband_gate.freq1");
+
+    update_default_key<double>(settings, "freq2", section + ".multiband_gate.freq2");
+
+    update_default_string_key(settings, "mode", section + ".multiband_gate.mode");
+
+    // sub band
+
+    update_default_key<double>(settings, "range0", section + ".multiband_gate.subband.reduction");
+
+    update_default_key<double>(settings, "threshold0", section + ".multiband_gate.subband.threshold");
+
+    update_default_key<double>(settings, "ratio0", section + ".multiband_gate.subband.ratio");
+
+    update_default_key<double>(settings, "attack0", section + ".multiband_gate.subband.attack");
+
+    update_default_key<double>(settings, "release0", section + ".multiband_gate.subband.release");
+
+    update_default_key<double>(settings, "makeup0", section + ".multiband_gate.subband.makeup");
+
+    update_default_key<double>(settings, "knee0", section + ".multiband_gate.subband.knee");
+
+    update_default_string_key(settings, "detection0", section + ".multiband_gate.subband.detection");
+
+    update_default_key<bool>(settings, "bypass0", section + ".multiband_gate.subband.bypass");
+
+    update_default_key<bool>(settings, "solo0", section + ".multiband_gate.subband.solo");
+
+    // low band
+
+    update_default_key<double>(settings, "range1", section + ".multiband_gate.lowband.reduction");
+
+    update_default_key<double>(settings, "threshold1", section + ".multiband_gate.lowband.threshold");
+
+    update_default_key<double>(settings, "ratio1", section + ".multiband_gate.lowband.ratio");
+
+    update_default_key<double>(settings, "attack1", section + ".multiband_gate.lowband.attack");
+
+    update_default_key<double>(settings, "release1", section + ".multiband_gate.lowband.release");
+
+    update_default_key<double>(settings, "makeup1", section + ".multiband_gate.lowband.makeup");
+
+    update_default_key<double>(settings, "knee1", section + ".multiband_gate.lowband.knee");
+
+    update_default_string_key(settings, "detection1", section + ".multiband_gate.lowband.detection");
+
+    update_default_key<bool>(settings, "bypass1", section + ".multiband_gate.lowband.bypass");
+
+    update_default_key<bool>(settings, "solo1", section + ".multiband_gate.lowband.solo");
+
+    // mid band
+
+    update_default_key<double>(settings, "range2", section + ".multiband_gate.midband.reduction");
+
+    update_default_key<double>(settings, "threshold2", section + ".multiband_gate.midband.threshold");
+
+    update_default_key<double>(settings, "ratio2", section + ".multiband_gate.midband.ratio");
+
+    update_default_key<double>(settings, "attack2", section + ".multiband_gate.midband.attack");
+
+    update_default_key<double>(settings, "release2", section + ".multiband_gate.midband.release");
+
+    update_default_key<double>(settings, "makeup2", section + ".multiband_gate.midband.makeup");
+
+    update_default_key<double>(settings, "knee2", section + ".multiband_gate.midband.knee");
+
+    update_default_string_key(settings, "detection2", section + ".multiband_gate.midband.detection");
+
+    update_default_key<bool>(settings, "bypass2", section + ".multiband_gate.midband.bypass");
+
+    update_default_key<bool>(settings, "solo2", section + ".multiband_gate.midband.solo");
+
+    // high band
+
+    update_default_key<double>(settings, "range3", section + ".multiband_gate.highband.reduction");
+
+    update_default_key<double>(settings, "threshold3", section + ".multiband_gate.highband.threshold");
+
+    update_default_key<double>(settings, "ratio3", section + ".multiband_gate.highband.ratio");
+
+    update_default_key<double>(settings, "attack3", section + ".multiband_gate.highband.attack");
+
+    update_default_key<double>(settings, "release3", section + ".multiband_gate.highband.release");
+
+    update_default_key<double>(settings, "makeup3", section + ".multiband_gate.highband.makeup");
+
+    update_default_key<double>(settings, "knee3", section + ".multiband_gate.highband.knee");
+
+    update_default_string_key(settings, "detection3", section + ".multiband_gate.highband.detection");
+
+    update_default_key<bool>(settings, "bypass3", section + ".multiband_gate.highband.bypass");
+
+    update_default_key<bool>(settings, "solo3", section + ".multiband_gate.highband.solo");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void MultibandGateUi::on_new_output0(double value) {

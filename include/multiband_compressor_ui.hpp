@@ -28,6 +28,8 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
   void on_new_compression2(double value);
   void on_new_compression3(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;
   Glib::RefPtr<Gtk::Adjustment> attack0, release0, threshold0, knee0, ratio0, makeup0;

@@ -206,6 +206,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("stack", stack);
   builder->get_widget("stack_switcher", stack_switcher);
   builder->get_widget("mode", mode);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "nbands", nbands);
   get_object(builder, "input_gain", input_gain);
@@ -215,7 +216,9 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
 
+  // reset equalizer
   reset_eq->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
+  reset_button->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
 
   flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
@@ -747,34 +750,40 @@ void EqualizerUi::populate_presets_listbox() {
 }
 
 void EqualizerUi::reset() {
-  settings->reset("state");
-  settings->reset("mode");
-  settings->reset("num-bands");
-  settings->reset("split-channels");
-  settings->reset("input-gain");
-  settings->reset("output-gain");
+  try {
+    settings->reset("state");
+    settings->reset("mode");
+    settings->reset("num-bands");
+    settings->reset("split-channels");
+    settings->reset("input-gain");
+    settings->reset("output-gain");
 
-  for (int n = 0; n < 30; n++) {
-    // left channel
+    for (int n = 0; n < 30; n++) {
+      // left channel
 
-    settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
 
-    // right channel
+      // right channel
 
-    settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
+    }
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
   }
 }

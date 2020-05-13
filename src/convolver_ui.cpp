@@ -28,6 +28,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   builder->get_widget("samples", label_samples);
   builder->get_widget("duration", label_duration);
   builder->get_widget("show_fft", show_fft);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -75,6 +76,9 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   settings->set_boolean("post-messages", true);
 
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
+
   // irs dir
 
   auto dir_exists = boost::filesystem::is_directory(irs_dir);
@@ -120,6 +124,26 @@ ConvolverUi::~ConvolverUi() {
   futures.clear();
 
   util::debug(name + " ui destroyed");
+}
+
+void ConvolverUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<bool>(settings, "state", section + ".convolver.state");
+
+    update_default_key<double>(settings, "input-gain", section + ".convolver.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".convolver.output-gain");
+
+    update_default_string_key(settings, "kernel-path", section + ".convolver.kernel-path");
+
+    update_default_key<int>(settings, "ir-width", section + ".convolver.ir-width");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 auto ConvolverUi::get_irs_names() -> std::vector<std::string> {

@@ -59,6 +59,7 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
   builder->get_widget("stereo_link", stereo_link);
   builder->get_widget("gating", gating);
   builder->get_widget("gating_label", gating_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
@@ -86,10 +87,41 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
 
   g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 GateUi::~GateUi() {
   util::debug(name + " ui destroyed");
+}
+
+void GateUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_string_key(settings, "detection", section + ".gate.detection");
+
+    update_default_string_key(settings, "stereo-link", section + ".gate.stereo-link");
+
+    update_default_key<double>(settings, "range", section + ".gate.range");
+
+    update_default_key<double>(settings, "attack", section + ".gate.attack");
+
+    update_default_key<double>(settings, "release", section + ".gate.release");
+
+    update_default_key<double>(settings, "threshold", section + ".gate.threshold");
+
+    update_default_key<double>(settings, "ratio", section + ".gate.ratio");
+
+    update_default_key<double>(settings, "knee", section + ".gate.knee");
+
+    update_default_key<double>(settings, "makeup", section + ".gate.makeup");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void GateUi::on_new_gating(double value) {

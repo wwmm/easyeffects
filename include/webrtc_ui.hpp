@@ -15,6 +15,8 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const WebrtcUi &&) -> WebrtcUi& = delete;
   ~WebrtcUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> compression_gain_db, target_level_dbfs, voice_detection_frame_size;
 

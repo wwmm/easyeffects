@@ -98,6 +98,7 @@ FilterUi::FilterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
   builder->get_widget("preset_disco", preset_disco);
   builder->get_widget("preset_distant_headphones", preset_distant_headphones);
   builder->get_widget("preset_default", preset_default);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -120,10 +121,35 @@ FilterUi::FilterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
   init_presets_buttons();
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 FilterUi::~FilterUi() {
   util::debug(name + " ui destroyed");
+}
+
+void FilterUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".filter.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".filter.output-gain");
+
+    update_default_key<double>(settings, "frequency", section + ".filter.frequency");
+
+    update_default_key<double>(settings, "resonance", section + ".filter.resonance");
+
+    update_default_string_key(settings, "mode", section + ".filter.mode");
+
+    update_default_key<double>(settings, "inertia", section + ".filter.inertia");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void FilterUi::init_presets_buttons() {

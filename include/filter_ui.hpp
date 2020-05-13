@@ -15,6 +15,8 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const FilterUi &&) -> FilterUi& = delete;
   ~FilterUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, frequency, resonance, inertia;
 

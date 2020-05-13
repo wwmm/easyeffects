@@ -66,6 +66,7 @@ ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
   builder->get_widget("preset_disco", preset_disco);
   builder->get_widget("preset_large_occupied_hall", preset_large_occupied_hall);
   builder->get_widget("preset_default", preset_default);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -98,10 +99,45 @@ ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
   init_presets_buttons();
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 ReverbUi::~ReverbUi() {
   util::debug(name + " ui destroyed");
+}
+
+void ReverbUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".reverb.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".reverb.output-gain");
+
+    update_default_string_key(settings, "room-size", section + ".reverb.room-size");
+
+    update_default_key<double>(settings, "decay-time", section + ".reverb.decay-time");
+
+    update_default_key<double>(settings, "hf-damp", section + ".reverb.hf-damp");
+
+    update_default_key<double>(settings, "diffusion", section + ".reverb.diffusion");
+
+    update_default_key<double>(settings, "amount", section + ".reverb.amount");
+
+    update_default_key<double>(settings, "dry", section + ".reverb.dry");
+
+    update_default_key<double>(settings, "predelay", section + ".reverb.predelay");
+
+    update_default_key<double>(settings, "bass-cut", section + ".reverb.bass-cut");
+
+    update_default_key<double>(settings, "treble-cut", section + ".reverb.treble-cut");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void ReverbUi::init_presets_buttons() {

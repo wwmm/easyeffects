@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-05-13 20:02+0200\n"
 "PO-Revision-Date: 2020-01-12 17:48+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.4\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -427,8 +427,7 @@ msgstr ""
 "Ausschläge."
 
 #. (itstool) path: item/p
-#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
-#: C/multibandgate.page:48
+#: C/deesser.page:28 C/multibandcompressor.page:40 C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr ""
 "Übersteigt ein Signal diesen Wert, wird die Amplitudenreduktion beeinflusst."
@@ -641,22 +640,31 @@ msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects verwendet das von Calf Studio entwickelte Gate."
 
 #. (itstool) path: item/p
-#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+#: C/gate.page:22
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"gain reduction stops."
 msgstr ""
 "Anzahl der Millisekunden, die das Signal über die Schwelle steigen muss, "
 "bevor die Amplitudenreduktion beginnt."
 
 #. (itstool) path: item/p
-#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+#: C/gate.page:31
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"reduction is increased again."
 msgstr ""
 "Anzahl der Millisekunden, die das Signal unter die Schwelle fallen muss, "
 "bevor die Reduktion wieder verringert wird."
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+#, fuzzy
+msgid "If a signal rises above this level the gain reduction is released."
+msgstr ""
+"Übersteigt ein Signal diesen Wert, wird die Amplitudenreduktion beeinflusst."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -939,6 +947,24 @@ msgstr ""
 #: C/multibandcompressor.page:14
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr "PulseEffects verwendet den Multibandkompressor von Calf Studio."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Anzahl der Millisekunden, die das Signal über die Schwelle steigen muss, "
+"bevor die Amplitudenreduktion beginnt."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Anzahl der Millisekunden, die das Signal unter die Schwelle fallen muss, "
+"bevor die Reduktion wieder verringert wird."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
