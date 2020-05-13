@@ -12,6 +12,7 @@
 ### Fixed
 
 - PulseEffects no longer crashes when an empty or corrupted preset is provided.
+- Fixed laxity setting not being applied in the deesser
 
 ## [4.7.2]
 
