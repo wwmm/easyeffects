@@ -74,6 +74,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   get_object(builder, "f1_level", f1_level);
   get_object(builder, "f2_level", f2_level);
   get_object(builder, "f2_q", f2_q);
+  get_object(builder, "laxity", laxity);
 
   // gsettings bindings
 
@@ -89,6 +90,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   settings->bind("f1-level", f1_level.get(), "value", flag);
   settings->bind("f2-level", f2_level.get(), "value", flag);
   settings->bind("f2-q", f2_q.get(), "value", flag);
+  settings->bind("laxity", laxity.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);

@@ -7,6 +7,7 @@
 - PulseEffects now searches for presets in /etc/PulseEffects and directories specified by \$XDG_CONFIG_DIRS environment
   variable.
 - Our interface now shows third party Plugins credits.
+- Each plugin now has a reset button
 
 ### Fixed
 
