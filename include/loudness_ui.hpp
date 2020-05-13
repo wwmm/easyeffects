@@ -14,6 +14,8 @@ class LoudnessUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const LoudnessUi &&) -> LoudnessUi& = delete;
   ~LoudnessUi() override;
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> loudness, output, link;
 };

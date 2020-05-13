@@ -71,6 +71,7 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   builder->get_widget("phasel", phasel);
   builder->get_widget("phaser", phaser);
   builder->get_widget("mode", mode);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -111,8 +112,57 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 StereoToolsUi::~StereoToolsUi() {
   util::debug(name + " ui destroyed");
+}
+
+void StereoToolsUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".stereo_tools.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".stereo_tools.output-gain");
+
+    update_default_key<double>(settings, "balance-in", section + ".stereo_tools.balance-in");
+
+    update_default_key<double>(settings, "balance-out", section + ".stereo_tools.balance-out");
+
+    update_default_key<bool>(settings, "softclip", section + ".stereo_tools.softclip");
+
+    update_default_key<bool>(settings, "mutel", section + ".stereo_tools.mutel");
+
+    update_default_key<bool>(settings, "muter", section + ".stereo_tools.muter");
+
+    update_default_key<bool>(settings, "phasel", section + ".stereo_tools.phasel");
+
+    update_default_key<bool>(settings, "phaser", section + ".stereo_tools.phaser");
+
+    update_default_string_key(settings, "mode", section + ".stereo_tools.mode");
+
+    update_default_key<double>(settings, "slev", section + ".stereo_tools.side-level");
+
+    update_default_key<double>(settings, "sbal", section + ".stereo_tools.side-balance");
+
+    update_default_key<double>(settings, "mlev", section + ".stereo_tools.middle-level");
+
+    update_default_key<double>(settings, "mpan", section + ".stereo_tools.middle-panorama");
+
+    update_default_key<double>(settings, "stereo-base", section + ".stereo_tools.stereo-base");
+
+    update_default_key<double>(settings, "delay", section + ".stereo_tools.delay");
+
+    update_default_key<double>(settings, "sc-level", section + ".stereo_tools.sc-level");
+
+    update_default_key<double>(settings, "stereo-phase", section + ".stereo_tools.stereo-phase");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }

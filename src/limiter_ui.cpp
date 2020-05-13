@@ -11,6 +11,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   builder->get_widget("asc", asc);
   builder->get_widget("attenuation", attenuation);
   builder->get_widget("attenuation_label", attenuation_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "limit", limit);
@@ -32,10 +33,37 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("oversampling", oversampling.get(), "value", flag);
   settings->bind("asc", asc, "active", flag);
   settings->bind("asc-level", asc_level.get(), "value", flag);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 LimiterUi::~LimiterUi() {
   util::debug(name + " ui destroyed");
+}
+
+void LimiterUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".limiter.input-gain");
+
+    update_default_key<double>(settings, "limit", section + ".limiter.limit");
+
+    update_default_key<double>(settings, "lookahead", section + ".limiter.lookahead");
+
+    update_default_key<double>(settings, "release", section + ".limiter.release");
+
+    update_default_key<bool>(settings, "asc", section + ".limiter.asc");
+
+    update_default_key<double>(settings, "asc-level", section + ".limiter.asc-level");
+
+    update_default_key<int>(settings, "oversampling", section + ".limiter.oversampling");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void LimiterUi::on_new_attenuation(double value) {

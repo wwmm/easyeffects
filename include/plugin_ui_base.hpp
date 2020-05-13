@@ -2,6 +2,8 @@
 #define PLUGIN_UI_BASE_HPP
 
 #include <giomm/settings.h>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include <gtkmm/adjustment.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
@@ -12,6 +14,7 @@
 #include <gtkmm/switch.h>
 #include <array>
 #include "util.hpp"
+#include "preset_type.hpp"
 
 class PluginUiBase {
  public:
@@ -24,6 +27,10 @@ class PluginUiBase {
 
   std::string name;
 
+  // preset_type to let the UI know which pipeline it belongs to
+  // initialized to "output"; to be changed to "input" for soe_ui properties
+  PresetType preset_type = PresetType::output;
+
   Gtk::Box* listbox_control = nullptr;
   Gtk::Button *plugin_up = nullptr, *plugin_down = nullptr;
 
@@ -32,9 +39,13 @@ class PluginUiBase {
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
+  // reset plugin method
+  virtual void reset() = 0;
+
  protected:
   Glib::RefPtr<Gio::Settings> settings;
 
+  Gtk::Button* reset_button = nullptr;
   Gtk::Switch* enable = nullptr;
   Gtk::Box* controls = nullptr;
   Gtk::Image* img_state = nullptr;
@@ -55,6 +66,55 @@ class PluginUiBase {
   }
 
   static auto level_to_str(const double& value, const int& places) -> std::string;
+
+  // reimplemented templates from plugin_preset_base without passing boost ptree
+  // using an empty root will rely on default value
+  template <typename T>
+  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
+    Glib::Variant<T> value;
+
+    settings->get_default_value(key, value);
+
+    return value.get();
+  }
+
+  template <typename T>
+  void update_default_key(const Glib::RefPtr<Gio::Settings>& settings,
+                  const std::string& key,
+                  const std::string& json_key) {
+    boost::property_tree::ptree root;
+    Glib::Variant<T> aux;
+
+    settings->get_value(key, aux);
+
+    T current_value = aux.get();
+
+    T new_value = root.get<T>(json_key, get_default<T>(settings, key));
+
+    if (is_different(current_value, new_value)) {
+      auto v = Glib::Variant<T>::create(new_value);
+
+      settings->set_value(key, v);
+    }
+  }
+
+  void update_default_string_key(const Glib::RefPtr<Gio::Settings>& settings,
+                         const std::string& key,
+                         const std::string& json_key) {
+    boost::property_tree::ptree root;
+    std::string current_value = settings->get_string(key);
+
+    std::string new_value = root.get<std::string>(json_key, get_default<std::string>(settings, key));
+
+    if (current_value != new_value) {
+      settings->set_string(key, new_value);
+    }
+  }
+
+  template <typename T>
+  auto is_different(const T& a, const T& b) -> bool {
+    return a != b;
+  }
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>

@@ -23,6 +23,8 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   void on_new_range(const float& value);
   void on_new_gain(const float& value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i;
 
@@ -32,7 +34,7 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   Gtk::Label *m_label = nullptr, *s_label = nullptr, *i_label = nullptr, *r_label = nullptr, *g_label = nullptr,
              *l_label = nullptr, *lra_label = nullptr;
 
-  Gtk::Button* reset = nullptr;
+  Gtk::Button* reset_history = nullptr;
 
   Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr;
 

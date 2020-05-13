@@ -15,6 +15,8 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_new_reduction(double value);
 
+  void reset() override;
+
  private:
   Glib::RefPtr<Gtk::Adjustment> release, threshold, ceiling;
   Gtk::LevelBar* reduction = nullptr;

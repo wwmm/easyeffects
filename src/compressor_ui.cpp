@@ -138,6 +138,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   builder->get_widget("sidechain_label", sidechain_label);
   builder->get_widget("curve", curve);
   builder->get_widget("curve_label", curve_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
@@ -183,10 +184,55 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int, int_to_sidechain_source_enum,
                                nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 CompressorUi::~CompressorUi() {
   util::debug(name + " ui destroyed");
+}
+
+void CompressorUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".compressor.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".compressor.output-gain");
+
+    update_default_string_key(settings, "mode", section + ".compressor.mode");
+
+    update_default_key<double>(settings, "attack", section + ".compressor.attack");
+
+    update_default_key<double>(settings, "release", section + ".compressor.release");
+
+    update_default_key<double>(settings, "threshold", section + ".compressor.threshold");
+
+    update_default_key<double>(settings, "ratio", section + ".compressor.ratio");
+
+    update_default_key<double>(settings, "knee", section + ".compressor.knee");
+
+    update_default_key<double>(settings, "makeup", section + ".compressor.makeup");
+
+    update_default_key<bool>(settings, "sidechain-listen", section + ".compressor.sidechain.listen");
+
+    update_default_string_key(settings, "sidechain-type", section + ".compressor.sidechain.type");
+
+    update_default_string_key(settings, "sidechain-mode", section + ".compressor.sidechain.mode");
+
+    update_default_string_key(settings, "sidechain-source", section + ".compressor.sidechain.source");
+
+    update_default_key<double>(settings, "sidechain-preamp", section + ".compressor.sidechain.preamp");
+
+    update_default_key<double>(settings, "sidechain-reactivity", section + ".compressor.sidechain.reactivity");
+
+    update_default_key<double>(settings, "sidechain-lookahead", section + ".compressor.sidechain.lookahead");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void CompressorUi::on_new_reduction(double value) {

@@ -144,6 +144,7 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
   builder->get_widget("noise_suppression_level", noise_suppression_level);
   builder->get_widget("gain_control_mode", gain_control_mode);
   builder->get_widget("voice_detection_likelihood", voice_detection_likelihood);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "compression_gain_db", compression_gain_db);
   get_object(builder, "target_level_dbfs", target_level_dbfs);
@@ -182,8 +183,51 @@ WebrtcUi::WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
   g_settings_bind_with_mapping(settings->gobj(), "voice-detection-likelihood", voice_detection_likelihood->gobj(),
                                "active", G_SETTINGS_BIND_DEFAULT, voice_detection_likelihood_to_int,
                                int_to_voice_detection_likelihood, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 WebrtcUi::~WebrtcUi() {
   util::debug(name + " ui destroyed");
+}
+
+void WebrtcUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<bool>(settings, "high-pass-filter", section + ".webrtc.high-pass-filter");
+
+    update_default_key<bool>(settings, "echo-cancel", section + ".webrtc.echo-cancel");
+
+    update_default_string_key(settings, "echo-suppression-level", section + ".webrtc.echo-suppression-level");
+
+    update_default_key<bool>(settings, "noise-suppression", section + ".webrtc.noise-suppression");
+
+    update_default_string_key(settings, "noise-suppression-level", section + ".webrtc.noise-suppression-level");
+
+    update_default_key<bool>(settings, "gain-control", section + ".webrtc.gain-control");
+
+    update_default_key<bool>(settings, "extended-filter", section + ".webrtc.extended-filter");
+
+    update_default_key<bool>(settings, "delay-agnostic", section + ".webrtc.delay-agnostic");
+
+    update_default_key<int>(settings, "target-level-dbfs", section + ".webrtc.target-level-dbfs");
+
+    update_default_key<int>(settings, "compression-gain-db", section + ".webrtc.compression-gain-db");
+
+    update_default_key<bool>(settings, "limiter", section + ".webrtc.limiter");
+
+    update_default_string_key(settings, "gain-control-mode", section + ".webrtc.gain-control-mode");
+
+    update_default_key<bool>(settings, "voice-detection", section + ".webrtc.voice-detection");
+
+    update_default_key<int>(settings, "voice-detection-frame-size-ms", section + ".webrtc.voice-detection-frame-size-ms");
+
+    update_default_string_key(settings, "voice-detection-likelihood", section + ".webrtc.voice-detection-likelihood");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }

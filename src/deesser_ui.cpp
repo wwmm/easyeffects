@@ -64,6 +64,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   builder->get_widget("detected", detected);
   builder->get_widget("detected_label", detected_label);
   builder->get_widget("sc_listen", sc_listen);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "makeup", makeup);
   get_object(builder, "ratio", ratio);
@@ -94,10 +95,47 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 DeesserUi::~DeesserUi() {
   util::debug(name + " ui destroyed");
+}
+
+void DeesserUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_string_key(settings, "detection", section + ".deesser.detection");
+
+    update_default_string_key(settings, "mode", section + ".deesser.mode");
+
+    update_default_key<double>(settings, "threshold", section + ".deesser.threshold");
+
+    update_default_key<double>(settings, "ratio", section + ".deesser.ratio");
+
+    update_default_key<int>(settings, "laxity", section + ".deesser.laxity");
+
+    update_default_key<double>(settings, "makeup", section + ".deesser.makeup");
+
+    update_default_key<double>(settings, "f1-freq", section + ".deesser.f1-freq");
+
+    update_default_key<double>(settings, "f2-freq", section + ".deesser.f2-freq");
+
+    update_default_key<double>(settings, "f1-level", section + ".deesser.f1-level");
+
+    update_default_key<double>(settings, "f2-level", section + ".deesser.f2-level");
+
+    update_default_key<double>(settings, "f2-q", section + ".deesser.f2-q");
+
+    update_default_key<bool>(settings, "sc-listen", section + ".deesser.sc-listen");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void DeesserUi::on_new_compression(double value) {

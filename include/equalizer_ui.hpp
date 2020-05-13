@@ -23,7 +23,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const EqualizerUi &&) -> EqualizerUi& = delete;
   ~EqualizerUi() override;
 
-  void reset();
+  void reset() override;
 
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;

@@ -14,6 +14,8 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const PitchUi &&) -> PitchUi& = delete;
   ~PitchUi() override;
 
+  void reset() override;
+
  private:
   Gtk::ToggleButton *faster = nullptr, *formant_preserving = nullptr;
 

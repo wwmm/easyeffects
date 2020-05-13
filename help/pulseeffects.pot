@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-05-13 20:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -398,7 +398,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/deesser.page:28
-#: C/gate.page:40
 #: C/multibandcompressor.page:40
 #: C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
@@ -571,16 +570,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/gate.page:22
-#: C/multibandcompressor.page:22
-#: C/multibandgate.page:22
-msgid "Amount of milliseconds the signal has to rise above the threshold before gain reduction starts."
+msgid "Amount of milliseconds the signal has to rise above the threshold before gain reduction stops."
 msgstr ""
 
 #. (itstool) path: item/p
 #: C/gate.page:31
-#: C/multibandcompressor.page:31
-#: C/multibandgate.page:31
-msgid "Amount of milliseconds the signal has to fall below the threshold before the reduction is decreased again."
+msgid "Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+msgid "If a signal rises above this level the gain reduction is released."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -797,6 +797,18 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/multibandcompressor.page:14
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22
+#: C/multibandgate.page:22
+msgid "Amount of milliseconds the signal has to rise above the threshold before gain reduction starts."
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31
+#: C/multibandgate.page:31
+msgid "Amount of milliseconds the signal has to fall below the threshold before the reduction is decreased again."
 msgstr ""
 
 #. (itstool) path: title/em

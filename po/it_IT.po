@@ -988,7 +988,7 @@ msgstr "Limite Superiore"
 
 #: data/ui/stereo_tools.glade:42
 msgid "Stereo Tools"
-msgstr "Plugin Stereo"
+msgstr "Strumenti Stereo"
 
 #: data/ui/stereo_tools.glade:207
 msgid "Softclip"

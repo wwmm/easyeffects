@@ -23,6 +23,8 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const ConvolverUi &&) -> ConvolverUi& = delete;
   ~ConvolverUi() override;
 
+  void reset() override;
+
  private:
   std::string log_tag = "convolver_ui: ";
 
