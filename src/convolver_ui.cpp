@@ -446,9 +446,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   std::copy(left_mag.begin(), left_mag.end(), tmp_l.begin());
   std::copy(right_mag.begin(), right_mag.end(), tmp_r.begin());
 
-  gst_fft_f32_window(fft_ctx, tmp_l.data(), GST_FFT_WINDOW_HAMMING);
-  gst_fft_f32_window(fft_ctx, tmp_r.data(), GST_FFT_WINDOW_HAMMING);
-
   gst_fft_f32_fft(fft_ctx, tmp_l.data(), freqdata_l);
   gst_fft_f32_fft(fft_ctx, tmp_r.data(), freqdata_r);
 
