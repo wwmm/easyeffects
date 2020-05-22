@@ -353,17 +353,31 @@ void ConvolverUi::get_irs_info() {
 
   max_time = *std::max_element(time_axis.begin(), time_axis.end());
 
-  // deinterleaving channels and calculating each amplitude in decibel
+  // deinterleaving channels
 
   left_mag.resize(frames_in);
   right_mag.resize(frames_in);
+
+  // ensure that the fft can be computed
+  if (left_mag.size() % 2 != 0)
+    left_mag.push_back(0);
+  if (right_mag.size() % 2 != 0)
+    right_mag.push_back(0);
 
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
   for (uint n = 0; n < frames_in; n++) {
-    left_mag[n] = util::linear_to_db(kernel[2 * n]);
-    right_mag[n] = util::linear_to_db(kernel[2 * n + 1]);
+    left_mag[n] = kernel[2 * n];
+    right_mag[n] = kernel[2 * n + 1];
+  }
+
+  get_irs_spectrum(rate);
+
+  // converting each amplitude to decibel
+  for (uint n = 0; n < frames_in; n++) {
+    left_mag[n] = util::linear_to_db(left_mag[n]);
+    right_mag[n] = util::linear_to_db(right_mag[n]);
   }
 
   /*interpolating because we can not plot all the data in the irs file. It
@@ -402,8 +416,6 @@ void ConvolverUi::get_irs_info() {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
-
-  get_irs_spectrum(rate);
 
   // updating interface with ir file info
 
