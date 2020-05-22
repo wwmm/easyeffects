@@ -478,13 +478,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     right_spectrum[i] = v_r;
   }
 
-  uint max_points;
-
-  if (left_spectrum.size() > max_plot_points) {
-    max_points = max_plot_points;
-  } else {
-    max_points = left_spectrum.size();
-  }
+  uint max_points = std::min((uint)left_spectrum.size(), max_plot_points);
 
   fft_min_freq = static_cast<float>(rate) * (0.5F * 0 + 0.25F) / left_spectrum.size();
   fft_max_freq = static_cast<float>(rate) * (0.5F * (left_spectrum.size() - 1.0F) + 0.25F) / left_spectrum.size();
