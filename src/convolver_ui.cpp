@@ -374,12 +374,6 @@ void ConvolverUi::get_irs_info() {
 
   get_irs_spectrum(rate);
 
-  // converting each amplitude to decibel
-  for (uint n = 0; n < frames_in; n++) {
-    left_mag[n] = util::linear_to_db(left_mag[n]);
-    right_mag[n] = util::linear_to_db(right_mag[n]);
-  }
-
   /*interpolating because we can not plot all the data in the irs file. It
     would be too slow
   */
@@ -464,7 +458,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   left_spectrum.resize(nfft / 2 + 1);
   right_spectrum.resize(nfft / 2 + 1);
 
-  /* Calculate magnitude in db */
   for (int i = 0; i < nfft / 2 + 1; i++) {
     float v_l;
     float v_r;
@@ -474,8 +467,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     v_l += freqdata_l[i].i * freqdata_l[i].i;
     v_l = std::sqrt(v_l);
     v_l /= static_cast<float>(nfft * nfft);
-    v_l = 10.0F * log10(v_l);
-    v_l = (v_l > -120) ? v_l : -120;
 
     left_spectrum[i] = v_l;
 
@@ -484,8 +475,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     v_r += freqdata_r[i].i * freqdata_r[i].i;
     v_r = std::sqrt(v_r);
     v_r /= static_cast<float>(nfft * nfft);
-    v_r = 10.0F * log10(v_r);
-    v_r = (v_r > -120) ? v_r : -120;
 
     right_spectrum[i] = v_r;
   }
@@ -594,8 +583,7 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         msg << std::fixed << mouse_time << " s, ";
       }
 
-      msg.precision(0);
-      msg << std::fixed << mouse_intensity << " dB";
+      msg << std::scientific << mouse_intensity;
 
       int text_width;
       int text_height;
@@ -619,15 +607,11 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
   if (show_fft_spectrum) {
     mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
-    // intensity scale is in decibel
-
-    mouse_intensity = fft_max_left - static_cast<float>(event->y) * (fft_max_left - fft_min_left) / height;
+    mouse_intensity = (height - static_cast<float>(event->y)) * (fft_max_left - fft_min_left) / height;
   } else {
     mouse_time = static_cast<float>(event->x) * max_time / width;
 
-    // intensity scale is in decibel
-
-    mouse_intensity = max_left - static_cast<float>(event->y) * (max_left - min_left) / height;
+    mouse_intensity = (height - static_cast<float>(event->y)) * (max_left - min_left) / height;
   }
 }
 
@@ -640,15 +624,11 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   if (show_fft_spectrum) {
     mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
 
-    // intensity scale is in decibel
-
-    mouse_intensity = fft_max_right - static_cast<float>(event->y) * (fft_max_right - fft_min_right) / height;
+    mouse_intensity = static_cast<float>(event->y) * (fft_max_right - fft_min_right) / height;
   } else {
     mouse_time = static_cast<float>(event->x) * max_time / width;
 
-    // intensity scale is in decibel
-
-    mouse_intensity = max_right - static_cast<float>(event->y) * (max_right - min_right) / height;
+    mouse_intensity = static_cast<float>(event->y) * (max_right - min_right) / height;
   }
 }
 
