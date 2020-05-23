@@ -8,6 +8,7 @@
   variable.
 - Our interface now shows third party Plugins credits.
 - Each plugin now has a reset button
+- Improved convolver impulse response files plot
 
 ### Fixed
 
