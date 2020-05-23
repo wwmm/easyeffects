@@ -621,7 +621,7 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
 }
 
 void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
-  auto allocation = left_plot->get_allocation();
+  auto allocation = right_plot->get_allocation();
 
   auto width = allocation.get_width();
   auto height = allocation.get_height();
