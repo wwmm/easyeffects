@@ -466,7 +466,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     v_l = freqdata_l[i].r * freqdata_l[i].r;
     v_l += freqdata_l[i].i * freqdata_l[i].i;
     v_l = std::sqrt(v_l);
-    v_l /= static_cast<float>(nfft * nfft);
 
     left_spectrum[i] = v_l;
 
@@ -474,7 +473,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     v_r = freqdata_r[i].r * freqdata_r[i].r;
     v_r += freqdata_r[i].i * freqdata_r[i].i;
     v_r = std::sqrt(v_r);
-    v_r /= static_cast<float>(nfft * nfft);
 
     right_spectrum[i] = v_r;
   }
