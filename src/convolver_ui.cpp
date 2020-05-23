@@ -583,7 +583,8 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
         msg << std::fixed << mouse_time << " s, ";
       }
 
-      msg << std::scientific << mouse_intensity;
+      msg.precision(3);
+      msg << std::fixed << mouse_intensity;
 
       int text_width;
       int text_height;
