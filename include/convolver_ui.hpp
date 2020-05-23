@@ -50,7 +50,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   boost::filesystem::path irs_dir;
 
   bool mouse_inside = false, show_fft_spectrum = false;
-  unsigned int max_plot_points = 200;
+  unsigned int max_plot_points = 1000;
   float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
   float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
   float max_time = 0.0F;

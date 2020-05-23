@@ -353,17 +353,31 @@ void ConvolverUi::get_irs_info() {
 
   max_time = *std::max_element(time_axis.begin(), time_axis.end());
 
-  // deinterleaving channels and calculating each amplitude in decibel
+  // deinterleaving channels
 
   left_mag.resize(frames_in);
   right_mag.resize(frames_in);
+
+  // ensure that the fft can be computed
+  if (left_mag.size() % 2 != 0)
+    left_mag.push_back(0);
+  if (right_mag.size() % 2 != 0)
+    right_mag.push_back(0);
 
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
   for (uint n = 0; n < frames_in; n++) {
-    left_mag[n] = util::linear_to_db(kernel[2 * n]);
-    right_mag[n] = util::linear_to_db(kernel[2 * n + 1]);
+    left_mag[n] = kernel[2 * n];
+    right_mag[n] = kernel[2 * n + 1];
+  }
+
+  get_irs_spectrum(rate);
+
+  // converting each amplitude to decibel
+  for (uint n = 0; n < frames_in; n++) {
+    left_mag[n] = util::linear_to_db(left_mag[n]);
+    right_mag[n] = util::linear_to_db(right_mag[n]);
   }
 
   /*interpolating because we can not plot all the data in the irs file. It
@@ -402,8 +416,6 @@ void ConvolverUi::get_irs_info() {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
-
-  get_irs_spectrum(rate);
 
   // updating interface with ir file info
 
@@ -446,9 +458,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   std::copy(left_mag.begin(), left_mag.end(), tmp_l.begin());
   std::copy(right_mag.begin(), right_mag.end(), tmp_r.begin());
 
-  gst_fft_f32_window(fft_ctx, tmp_l.data(), GST_FFT_WINDOW_HAMMING);
-  gst_fft_f32_window(fft_ctx, tmp_r.data(), GST_FFT_WINDOW_HAMMING);
-
   gst_fft_f32_fft(fft_ctx, tmp_l.data(), freqdata_l);
   gst_fft_f32_fft(fft_ctx, tmp_r.data(), freqdata_r);
 
@@ -463,6 +472,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
     v_l += freqdata_l[i].i * freqdata_l[i].i;
+    v_l = std::sqrt(v_l);
     v_l /= static_cast<float>(nfft * nfft);
     v_l = 10.0F * log10(v_l);
     v_l = (v_l > -120) ? v_l : -120;
@@ -472,6 +482,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     // right
     v_r = freqdata_r[i].r * freqdata_r[i].r;
     v_r += freqdata_r[i].i * freqdata_r[i].i;
+    v_r = std::sqrt(v_r);
     v_r /= static_cast<float>(nfft * nfft);
     v_r = 10.0F * log10(v_r);
     v_r = (v_r > -120) ? v_r : -120;
@@ -479,13 +490,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     right_spectrum[i] = v_r;
   }
 
-  uint max_points;
-
-  if (left_spectrum.size() > max_plot_points) {
-    max_points = max_plot_points;
-  } else {
-    max_points = left_spectrum.size();
-  }
+  uint max_points = std::min((uint)left_spectrum.size(), max_plot_points);
 
   fft_min_freq = static_cast<float>(rate) * (0.5F * 0 + 0.25F) / left_spectrum.size();
   fft_max_freq = static_cast<float>(rate) * (0.5F * (left_spectrum.size() - 1.0F) + 0.25F) / left_spectrum.size();
