@@ -606,7 +606,11 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
+    float fft_min_freq_log = log10(fft_min_freq);
+    float fft_max_freq_log = log10(fft_max_freq);
+    float mouse_freq_log = static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
+
+    mouse_freq = exp10(mouse_freq_log);
 
     mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_left - fft_min_left) + fft_min_left;
   } else {
@@ -623,7 +627,11 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   auto height = allocation.get_height();
 
   if (show_fft_spectrum) {
-    mouse_freq = static_cast<float>(event->x) * fft_max_freq / width;
+    float fft_min_freq_log = log10(fft_min_freq);
+    float fft_max_freq_log = log10(fft_max_freq);
+    float mouse_freq_log = static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
+
+    mouse_freq = exp10(mouse_freq_log);
 
     mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_right - fft_min_right) + fft_min_right;
   } else {
