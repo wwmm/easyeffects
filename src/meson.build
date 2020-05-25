@@ -106,7 +106,7 @@ pulseeffects_deps = [
 	dependency('gstreamer-fft-1.0'),
 	dependency('lilv-0', version: '>=0.22', required: false),
 	dependency('libbs2b', required: false),
-	dependency('boost', version: '>=1.65', modules:['system','filesystem']),
+	dependency('boost', version: '>=1.72', modules:['system','filesystem']),
 	dependency('sndfile'),
 	dependency('threads')
 ]
