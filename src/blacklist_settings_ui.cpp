@@ -21,23 +21,14 @@ BlacklistSettingsUi::BlacklistSettingsUi(BaseObjectType* cobject, const Glib::Re
   blacklist_out_listbox->set_sort_func(sigc::ptr_fun(BlacklistSettingsUi::on_listbox_sort));
 
   add_blacklist_in->signal_clicked().connect([=]() {
-    auto name = blacklist_in_name->get_text();
-
-    if (!name.empty()) {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-in");
-      bl.push_back(name);
-      settings->set_string_array("blacklist-in", bl);
+    if (add_new_entry(settings, blacklist_in_name->get_text(), PresetType::input)) {
       blacklist_in_name->set_text("");
       populate_blacklist_in_listbox();
     }
   });
 
   add_blacklist_out->signal_clicked().connect([=]() {
-    auto name = blacklist_out_name->get_text();
-    if (!name.empty()) {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-out");
-      bl.push_back(name);
-      settings->set_string_array("blacklist-out", bl);
+    if (add_new_entry(settings, blacklist_out_name->get_text(), PresetType::output)) {
       blacklist_out_name->set_text("");
       populate_blacklist_out_listbox();
     }
@@ -59,6 +50,39 @@ BlacklistSettingsUi::~BlacklistSettingsUi() {
   }
 
   util::debug(log_tag + "destroyed");
+}
+
+bool BlacklistSettingsUi::add_new_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type) {
+  if (name.empty()) {
+    return false;
+  }
+
+  auto blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+  std::vector<std::string> bl = settings->get_string_array(blacklist_preset_type);
+
+  // Check if the entry is already added
+  for (const auto& str : bl) {
+    if (name.compare(str) == 0) {
+      util::debug("blacklist_settings_ui: entry already present in the list");
+      return false;
+    }
+  }
+
+  bl.emplace_back(name);
+  settings->set_string_array(blacklist_preset_type, bl);
+
+  util::debug("blacklist_settings_ui: new entry added in the list");
+  return true;
+}
+
+void BlacklistSettingsUi::remove_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type) {
+  auto blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+
+  std::vector<std::string> bl = settings->get_string_array(blacklist_preset_type);
+
+  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
+
+  settings->set_string_array(blacklist_preset_type, bl);
 }
 
 void BlacklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
@@ -95,11 +119,7 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
     label->set_text(name);
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-in");
-
-      bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
-
-      settings->set_string_array("blacklist-in", bl);
+      remove_entry(settings, name, PresetType::input);
 
       populate_blacklist_in_listbox();
     }));
@@ -133,11 +153,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
     label->set_text(name);
 
     connections.push_back(remove_btn->signal_clicked().connect([=]() {
-      std::vector<std::string> bl = settings->get_string_array("blacklist-out");
-
-      bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
-
-      settings->set_string_array("blacklist-out", bl);
+      remove_entry(settings, name, PresetType::output);
 
       populate_blacklist_out_listbox();
     }));

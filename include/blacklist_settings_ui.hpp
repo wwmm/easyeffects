@@ -11,6 +11,8 @@
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
 
+#include "preset_type.hpp"
+
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
   BlacklistSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
@@ -21,6 +23,8 @@ class BlacklistSettingsUi : public Gtk::Grid {
   ~BlacklistSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack);
+  static bool add_new_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type);
+  static void remove_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type);
 
  private:
   std::string log_tag = "blacklist_settings_ui: ";

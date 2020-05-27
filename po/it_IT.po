@@ -1548,7 +1548,7 @@ msgstr "Applicazioni"
 
 #: src/blacklist_settings_ui.cpp:71
 msgid "Blacklist"
-msgstr "Applicazioni Escluse"
+msgstr "Blacklist"
 
 #: src/general_settings_ui.cpp:124
 msgid "General"
