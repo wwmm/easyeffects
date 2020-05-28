@@ -37,13 +37,13 @@ PresetsManager::PresetsManager()
       spectrum(std::make_unique<SpectrumPreset>()) {
   // system presets directories provided by Glib
   for (auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dirs.push_back(scd + "/PulseEffects/input");
-    system_output_dirs.push_back(scd + "/PulseEffects/output");
+    system_input_dirs.emplace_back(scd + "/PulseEffects/input");
+    system_output_dirs.emplace_back(scd + "/PulseEffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates
-  system_input_dirs.push_back("/etc/PulseEffects/input");
-  system_output_dirs.push_back("/etc/PulseEffects/output");
+  system_input_dirs.emplace_back("/etc/PulseEffects/input");
+  system_output_dirs.emplace_back("/etc/PulseEffects/output");
   std::sort(system_input_dirs.begin(), system_input_dirs.end());
   std::sort(system_output_dirs.begin(), system_output_dirs.end());
   system_input_dirs.erase(std::unique(system_input_dirs.begin(), system_input_dirs.end()), system_input_dirs.end());
@@ -125,7 +125,7 @@ auto PresetsManager::search_names(boost::filesystem::directory_iterator& it) -> 
     while (it != boost::filesystem::directory_iterator{}) {
       if (boost::filesystem::is_regular_file(it->status())) {
         if (it->path().extension().string() == ".json") {
-          names.push_back(it->path().stem().string());
+          names.emplace_back(it->path().stem().string());
         }
       }
 
@@ -139,7 +139,7 @@ auto PresetsManager::search_names(boost::filesystem::directory_iterator& it) -> 
 
 void PresetsManager::add(PresetType preset_type, const std::string& name) {
   for (const auto& p : get_names(preset_type)) {
-    if (p == name) {
+    if (p.compare(name) == 0) {
       return;
     }
   }
@@ -184,7 +184,7 @@ void PresetsManager::load_blacklist(PresetType preset_type, boost::property_tree
   if (preset_type == PresetType::output) {
     try {
       for (auto& p : root.get_child("input.blacklist")) {
-        blacklist.push_back(p.second.data());
+        blacklist.emplace_back(p.second.data());
       }
 
       settings->set_string_array("blacklist-in", blacklist);
@@ -194,7 +194,7 @@ void PresetsManager::load_blacklist(PresetType preset_type, boost::property_tree
   } else {
     try {
       for (auto& p : root.get_child("output.blacklist")) {
-        blacklist.push_back(p.second.data());
+        blacklist.emplace_back(p.second.data());
       }
 
       settings->set_string_array("blacklist-out", blacklist);
@@ -291,7 +291,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   bool preset_found = false;
 
   if (preset_type == PresetType::output) {
-    conf_dirs.push_back(user_output_dir);
+    conf_dirs.emplace_back(user_output_dir);
     conf_dirs.insert(conf_dirs.end(), system_output_dirs.begin(), system_output_dirs.end());
 
     for (auto& dir : conf_dirs) {
@@ -337,7 +337,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       util::debug("can't found the preset " + name + " on the filesystem");
     }
   } else {
-    conf_dirs.push_back(user_input_dir);
+    conf_dirs.emplace_back(user_input_dir);
     conf_dirs.insert(conf_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
 
     for (auto& dir : conf_dirs) {
@@ -496,7 +496,7 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
   std::vector<boost::filesystem::path> conf_dirs;
 
   if (preset_type == PresetType::output) {
-    conf_dirs.push_back(user_output_dir);
+    conf_dirs.emplace_back(user_output_dir);
     conf_dirs.insert(conf_dirs.end(), system_output_dirs.begin(), system_output_dirs.end());
 
     for (auto& dir : conf_dirs) {
@@ -506,7 +506,7 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
       }
     }
   } else {
-    conf_dirs.push_back(user_input_dir);
+    conf_dirs.emplace_back(user_input_dir);
     conf_dirs.insert(conf_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
 
     for (auto& dir : conf_dirs) {

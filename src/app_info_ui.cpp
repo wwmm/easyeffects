@@ -1,7 +1,9 @@
 #include "app_info_ui.hpp"
+#include "blacklist_settings_ui.hpp"
+#include "preset_type.hpp"
+#include "util.hpp"
 #include <glibmm/i18n.h>
 #include <sstream>
-#include "util.hpp"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
@@ -15,6 +17,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("app_name", app_name);
   builder->get_widget("volume", volume);
   builder->get_widget("mute", mute);
+  builder->get_widget("blacklist", blacklist);
   builder->get_widget("mute_icon", mute_icon);
   builder->get_widget("format", format);
   builder->get_widget("rate", rate);
@@ -95,6 +98,32 @@ void AppInfoUi::connect_signals() {
   volume_connection = volume->signal_value_changed().connect(sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
+
+  blacklist_connection = blacklist->signal_clicked().connect([=]() {
+    PresetType preset_type = (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input;
+
+    if (blacklist->get_active()) {
+      // Add new entry to blacklist vector
+      BlacklistSettingsUi::add_new_entry(Gio::Settings::create("com.github.wwmm.pulseeffects"), app_info->name, preset_type);
+
+      if (preset_type == PresetType::output) {
+        pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+      } else {
+        pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+      }
+
+      enable->set_active(false);
+    } else {
+      // Remove app name entry from blacklist vector
+      BlacklistSettingsUi::remove_entry(Gio::Settings::create("com.github.wwmm.pulseeffects"), app_info->name, preset_type);
+
+      if (preset_type == PresetType::output) {
+        pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+      } else {
+        pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+      }
+    }
+  });
 }
 
 auto AppInfoUi::on_enable_app(bool state) -> bool {
@@ -151,6 +180,7 @@ void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
   enable_connection.disconnect();
   volume_connection.disconnect();
   mute_connection.disconnect();
+  blacklist_connection.disconnect();
 
   init_widgets();
   connect_signals();

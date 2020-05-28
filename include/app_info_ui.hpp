@@ -27,6 +27,7 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Label* app_name = nullptr;
   Gtk::Scale* volume = nullptr;
   Gtk::ToggleButton* mute = nullptr;
+  Gtk::ToggleButton* blacklist = nullptr;
   Gtk::Image* mute_icon = nullptr;
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
@@ -48,6 +49,7 @@ class AppInfoUi : public Gtk::Grid {
   sigc::connection enable_connection;
   sigc::connection volume_connection;
   sigc::connection mute_connection;
+  sigc::connection blacklist_connection;
   sigc::connection timeout_connection;
 
   PulseManager* pm = nullptr;

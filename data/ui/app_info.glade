@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
+  <object class="GtkImage" id="blacklist_icon">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="icon_name">action-unavailable</property>
+  </object>
   <object class="GtkImage" id="mute_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -15,8 +20,6 @@
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="margin_left">12</property>
-    <property name="margin_right">12</property>
     <property name="margin_top">12</property>
     <property name="margin_bottom">12</property>
     <property name="row_spacing">18</property>
@@ -280,24 +283,10 @@
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="margin_start">12</property>
+        <property name="margin_end">12</property>
         <property name="hexpand">True</property>
         <property name="column_spacing">6</property>
-        <child>
-          <object class="GtkScale" id="volume">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="valign">center</property>
-            <property name="hexpand">True</property>
-            <property name="adjustment">volume_adjustment</property>
-            <property name="round_digits">1</property>
-            <property name="digits">0</property>
-            <property name="value_pos">right</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
         <child>
           <object class="GtkToggleButton" id="mute">
             <property name="visible">True</property>
@@ -309,6 +298,39 @@
           </object>
           <packing>
             <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="volume">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="valign">center</property>
+            <property name="margin_end">10</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">volume_adjustment</property>
+            <property name="round_digits">0</property>
+            <property name="digits">0</property>
+            <property name="value_pos">right</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="blacklist">
+            <property name="label" translatable="yes">Blacklist</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">start</property>
+            <property name="valign">center</property>
+            <property name="image">blacklist_icon</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
             <property name="top_attach">0</property>
           </packing>
         </child>

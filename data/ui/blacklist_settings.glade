@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkImage" id="image_add_blacklist_in">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -124,6 +124,19 @@
                 <property name="width">2</property>
               </packing>
             </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_bottom">2</property>
+                <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the blacklist</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="name">blacklist_in</property>
@@ -215,6 +228,19 @@
               <packing>
                 <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_bottom">2</property>
+                <property name="label" translatable="yes">Restart the player to apply new changes made to the blacklist</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
                 <property name="width">2</property>
               </packing>
             </child>
