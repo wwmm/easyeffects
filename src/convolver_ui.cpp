@@ -102,13 +102,13 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   auto future = std::async(std::launch::async, f);
 
-  futures.push_back(std::move(future));
+  futures.emplace_back(std::move(future));
 
   /* this is necessary to update the interface with the irs info when a preset
      is loaded
   */
 
-  connections.push_back(settings->signal_changed("kernel-path").connect([=](auto key) {
+  connections.emplace_back(settings->signal_changed("kernel-path").connect([=](auto key) {
     auto f = [=]() {
       std::lock_guard<std::mutex> lock(lock_guard_irs_info);
       get_irs_info();
@@ -116,7 +116,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     auto future = std::async(std::launch::async, f);
 
-    futures.push_back(std::move(future));
+    futures.emplace_back(std::move(future));
   }));
 }
 
@@ -153,7 +153,7 @@ auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
   while (it != boost::filesystem::directory_iterator{}) {
     if (boost::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().string() == ".irs") {
-        names.push_back(it->path().stem().string());
+        names.emplace_back(it->path().stem().string());
       }
     }
 
@@ -242,12 +242,12 @@ void ConvolverUi::populate_irs_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
       remove_irs_file(name);
       populate_irs_listbox();
     }));
 
-    connections.push_back(apply_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
       auto irs_file = irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
       settings->set_string("kernel-path", irs_file.string());
@@ -360,9 +360,9 @@ void ConvolverUi::get_irs_info() {
 
   // ensure that the fft can be computed
   if (left_mag.size() % 2 != 0)
-    left_mag.push_back(0);
+    left_mag.emplace_back(0);
   if (right_mag.size() % 2 != 0)
-    right_mag.push_back(0);
+    right_mag.emplace_back(0);
 
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();

@@ -54,7 +54,7 @@ class EffectsBaseUi {
 
     auto entry = Gtk::TargetEntry("Gtk::ListBoxRow", Gtk::TARGET_SAME_APP, 0);
 
-    listTargets.push_back(entry);
+    listTargets.emplace_back(entry);
 
     eventBox->drag_source_set(listTargets, Gdk::MODIFIER_MASK, Gdk::ACTION_MOVE);
 

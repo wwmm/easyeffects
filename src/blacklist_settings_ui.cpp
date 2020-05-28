@@ -34,10 +34,10 @@ BlacklistSettingsUi::BlacklistSettingsUi(BaseObjectType* cobject, const Glib::Re
     }
   });
 
-  connections.push_back(
+  connections.emplace_back(
       settings->signal_changed("blacklist-in").connect([&](auto key) { populate_blacklist_in_listbox(); }));
 
-  connections.push_back(
+  connections.emplace_back(
       settings->signal_changed("blacklist-out").connect([&](auto key) { populate_blacklist_out_listbox(); }));
 
   populate_blacklist_in_listbox();
@@ -118,7 +118,7 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
       remove_entry(settings, name, PresetType::input);
 
       populate_blacklist_in_listbox();
@@ -152,7 +152,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
       remove_entry(settings, name, PresetType::output);
 
       populate_blacklist_out_listbox();

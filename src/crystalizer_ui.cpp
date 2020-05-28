@@ -94,7 +94,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
     auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_intensity"));
 
-    connections.push_back(band_mute->signal_toggled().connect([=]() {
+    connections.emplace_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {
         band_scale->set_sensitive(false);
       } else {

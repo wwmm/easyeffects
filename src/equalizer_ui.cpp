@@ -226,7 +226,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
-  connections.push_back(settings->signal_changed("split-channels").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
     for (auto c : connections_bands) {
       c.disconnect();
     }
@@ -361,19 +361,19 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
       band_label->set_text(msg.str());
     };
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_band_label));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(reset_frequency->signal_clicked().connect(
+    connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
         [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
 
-    connections_bands.push_back(
+    connections_bands.emplace_back(
         reset_quality->signal_clicked().connect([=]() { cfg->reset(std::string("band" + std::to_string(n) + "-q")); }));
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
           band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
         band_scale->set_sensitive(true);
@@ -485,52 +485,52 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
       band_label->set_text(msg.str());
     };
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_band_label));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
 
     /*right channel
       we need the bindgins below for the right channel equalizer to be updated
       they have to be before the bindings for the left channel.
      */
 
-    connections_bands.push_back(band_gain->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_gain->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), band_gain->get_value());
     }));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), band_frequency->get_value());
     }));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), band_quality->get_value());
     }));
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-type"), band_type->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_mode->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_mode->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-mode"), band_mode->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_slope->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_slope->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-slope"), band_slope->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_solo->signal_toggled().connect([=]() {
+    connections_bands.emplace_back(band_solo->signal_toggled().connect([=]() {
       settings_right->set_boolean(std::string("band" + std::to_string(n) + "-solo"), band_solo->get_active());
     }));
 
-    connections_bands.push_back(band_mute->signal_toggled().connect([=]() {
+    connections_bands.emplace_back(band_mute->signal_toggled().connect([=]() {
       settings_right->set_boolean(std::string("band" + std::to_string(n) + "-mute"), band_mute->get_active());
     }));
 
     // left channel
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
           band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
         band_scale->set_sensitive(true);
@@ -539,13 +539,13 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
       }
     }));
 
-    connections_bands.push_back(reset_frequency->signal_clicked().connect([=]() {
+    connections_bands.emplace_back(reset_frequency->signal_clicked().connect([=]() {
       settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
 
       settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
-    connections_bands.push_back(reset_quality->signal_clicked().connect([=]() {
+    connections_bands.emplace_back(reset_quality->signal_clicked().connect([=]() {
       settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
 
       settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
@@ -741,7 +741,7 @@ void EqualizerUi::populate_presets_listbox() {
 
     label->set_text(name);
 
-    connections.push_back(apply_btn->signal_clicked().connect([=]() { load_preset(row->get_name() + ".json"); }));
+    connections.emplace_back(apply_btn->signal_clicked().connect([=]() { load_preset(row->get_name() + ".json"); }));
 
     presets_listbox->add(*row);
 
@@ -751,7 +751,6 @@ void EqualizerUi::populate_presets_listbox() {
 
 void EqualizerUi::reset() {
   try {
-    settings->reset("state");
     settings->reset("mode");
     settings->reset("num-bands");
     settings->reset("split-channels");

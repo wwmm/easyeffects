@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-02 17:20+0200\n"
+"POT-Creation-Date: 2020-05-28 22:40+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -130,13 +130,13 @@ msgstr ""
 
 #: data/ui/pulse_settings.glade:210 data/ui/pulse_settings.glade:301
 #: data/ui/pulse_settings.glade:500 data/ui/pulse_settings.glade:591
-#: data/ui/app_info.glade:159
+#: data/ui/app_info.glade:162
 msgid "Buffer"
 msgstr "Буфер"
 
 #: data/ui/pulse_settings.glade:243 data/ui/pulse_settings.glade:334
 #: data/ui/pulse_settings.glade:513 data/ui/pulse_settings.glade:604
-#: data/ui/app_info.glade:186
+#: data/ui/app_info.glade:189
 msgid "Latency"
 msgstr "Задержка"
 
@@ -145,24 +145,32 @@ msgstr "Задержка"
 msgid "Pipeline Output"
 msgstr "Эквалайзер - Выход"
 
-#: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:143
 msgid "Input Effects"
 msgstr "Эффекты для ввода звука"
 
-#: data/ui/pulse_settings.glade:660 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:660 data/ui/blacklist_settings.glade:250
 msgid "Output Effects"
 msgstr "Эффекты для вывода звука"
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:160
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Создать новый набор предустановок"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:179
 #: data/ui/pulse_info.glade:49 data/ui/presets_menu.glade:55
 #: data/ui/presets_menu.glade:164
 msgid "Name"
 msgstr "Название"
+
+#: data/ui/blacklist_settings.glade:132
+msgid "Reconnect the microphone to apply new changes made to the blacklist"
+msgstr ""
+
+#: data/ui/blacklist_settings.glade:239
+msgid "Restart the player to apply new changes made to the blacklist"
+msgstr ""
 
 #: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
@@ -176,8 +184,18 @@ msgstr "Вкл. для всех выводов"
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:183
-#: data/ui/equalizer_band.glade:229
+#: data/ui/general_settings.glade:116 data/ui/autogain.glade:957
+#: data/ui/limiter.glade:635 data/ui/compressor.glade:1104
+#: data/ui/multiband_compressor.glade:2219 data/ui/filter.glade:629
+#: data/ui/equalizer.glade:778 data/ui/equalizer_band.glade:183
+#: data/ui/equalizer_band.glade:229 data/ui/reverb.glade:891
+#: data/ui/bass_enhancer.glade:692 data/ui/exciter.glade:696
+#: data/ui/stereo_tools.glade:1066 data/ui/crossfeed.glade:429
+#: data/ui/maximizer.glade:499 data/ui/loudness.glade:469
+#: data/ui/gate.glade:756 data/ui/multiband_gate.glade:2368
+#: data/ui/deesser.glade:878 data/ui/convolver.glade:698
+#: data/ui/crystalizer.glade:561 data/ui/pitch.glade:582
+#: data/ui/webrtc.glade:850 data/ui/delay.glade:469
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -213,26 +231,30 @@ msgstr "Приоритет"
 msgid "Audio effects for PulseAudio applications"
 msgstr "Аудиоэффекты для приложений PulseAudio"
 
-#: data/ui/app_info.glade:51
+#: data/ui/app_info.glade:54
 msgid "Format"
 msgstr "Формат"
 
-#: data/ui/app_info.glade:78 data/ui/convolver.glade:257
+#: data/ui/app_info.glade:81 data/ui/convolver.glade:257
 msgid "Rate"
 msgstr "Частота"
 
-#: data/ui/app_info.glade:105 data/ui/pulse_info.glade:238
+#: data/ui/app_info.glade:108 data/ui/pulse_info.glade:238
 #: data/ui/stereo_tools.glade:629
 msgid "Channels"
 msgstr "Каналы"
 
-#: data/ui/app_info.glade:132
+#: data/ui/app_info.glade:135
 msgid "Resampler"
 msgstr "Ресемплер"
 
-#: data/ui/app_info.glade:213
+#: data/ui/app_info.glade:216
 msgid "State"
 msgstr "Состояние"
+
+#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:95
+msgid "Blacklist"
+msgstr "Черный список"
 
 #: data/ui/pulse_info.glade:76
 msgid "Version"
@@ -346,7 +368,7 @@ msgstr "Вес в расчете громкости"
 #: data/ui/autogain.glade:378 data/ui/autogain.glade:570
 #: data/ui/limiter.glade:365 data/ui/compressor.glade:717
 #: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
-#: data/ui/equalizer.glade:510 data/ui/reverb.glade:630
+#: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
 #: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
 #: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
 #: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
@@ -365,7 +387,7 @@ msgstr "Вход"
 #: data/ui/multiband_compressor.glade:1508
 #: data/ui/multiband_compressor.glade:1886
 #: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
-#: data/ui/equalizer.glade:524 data/ui/reverb.glade:645
+#: data/ui/equalizer.glade:530 data/ui/reverb.glade:645
 #: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
 #: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
 #: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
@@ -443,7 +465,7 @@ msgstr "Затухание"
 
 #: data/ui/limiter.glade:569 data/ui/compressor.glade:1039
 #: data/ui/multiband_compressor.glade:2154 data/ui/filter.glade:564
-#: data/ui/equalizer.glade:707 data/ui/reverb.glade:826
+#: data/ui/equalizer.glade:713 data/ui/reverb.glade:826
 #: data/ui/bass_enhancer.glade:627 data/ui/exciter.glade:631
 #: data/ui/stereo_tools.glade:1001 data/ui/crossfeed.glade:364
 #: data/ui/maximizer.glade:444 data/ui/loudness.glade:404
@@ -587,12 +609,12 @@ msgstr "Средний"
 msgid "Side"
 msgstr "Усиление ввода [дБ]"
 
-#: data/ui/compressor.glade:645 data/ui/equalizer.glade:442
+#: data/ui/compressor.glade:645 data/ui/equalizer.glade:448
 #: data/ui/stereo_tools.glade:524 data/ui/delay.glade:131
 msgid "Left"
 msgstr "Левый"
 
-#: data/ui/compressor.glade:646 data/ui/equalizer.glade:483
+#: data/ui/compressor.glade:646 data/ui/equalizer.glade:489
 #: data/ui/stereo_tools.glade:596 data/ui/delay.glade:163
 msgid "Right"
 msgstr "Правый"
@@ -884,7 +906,6 @@ msgid "Mute"
 msgstr "Приглушить"
 
 #: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:59
-#: data/ui/preset_row.glade:51
 msgid "Apply"
 msgstr "Применить"
 
@@ -1110,7 +1131,7 @@ msgstr "Усечение"
 msgid "Feed"
 msgstr "Подача"
 
-#: data/ui/crossfeed.glade:432
+#: data/ui/crossfeed.glade:468
 msgid "Crossfeed"
 msgstr "Перекрестная подача"
 
@@ -1221,7 +1242,7 @@ msgstr "Продолжительность"
 msgid "Samples"
 msgstr "Образцы"
 
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:257
+#: data/ui/convolver.glade:342 src/convolver_ui.cpp:281
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
@@ -1380,6 +1401,10 @@ msgstr "Обнаруживатель голоса"
 #: data/ui/delay.glade:24
 msgid "Delay"
 msgstr "Задержка"
+
+#: data/ui/preset_row.glade:51
+msgid "Load"
+msgstr ""
 
 #: data/ui/preset_row.glade:68
 msgid "Save current settings to this preset file"
@@ -1581,10 +1606,6 @@ msgstr "Входные предустановки: "
 msgid "Applications"
 msgstr "Приложения"
 
-#: src/blacklist_settings_ui.cpp:71
-msgid "Blacklist"
-msgstr "Черный список"
-
 #: src/general_settings_ui.cpp:124
 msgid "General"
 msgstr "Общие"
@@ -1593,19 +1614,19 @@ msgstr "Общие"
 msgid "Pulseaudio"
 msgstr ""
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:277
 msgid "Open"
 msgstr "Открыть"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:253
+#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:277
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/app_info_ui.cpp:86
+#: src/app_info_ui.cpp:89
 msgid "paused"
 msgstr "на паузе"
 
-#: src/app_info_ui.cpp:88
+#: src/app_info_ui.cpp:91
 msgid "playing"
 msgstr "воспроизводится"
 
@@ -1613,19 +1634,19 @@ msgstr "воспроизводится"
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
-#: src/convolver_ui.cpp:252
+#: src/convolver_ui.cpp:276
 msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
-#: src/convolver_ui.cpp:297 src/convolver_ui.cpp:298 src/convolver_ui.cpp:300
+#: src/convolver_ui.cpp:321 src/convolver_ui.cpp:322 src/convolver_ui.cpp:324
 msgid "Failed"
 msgstr "Не получилось"
 
-#: src/convolver_ui.cpp:302
+#: src/convolver_ui.cpp:326
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
-#: src/equalizer_ui.cpp:341 src/equalizer_ui.cpp:465
+#: src/equalizer_ui.cpp:344 src/equalizer_ui.cpp:468
 msgid "infinity"
 msgstr ""
 

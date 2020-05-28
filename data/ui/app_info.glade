@@ -5,7 +5,7 @@
   <object class="GtkImage" id="blacklist_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="icon_name">action-unavailable</property>
+    <property name="icon_name">action-unavailable-symbolic</property>
   </object>
   <object class="GtkImage" id="mute_icon">
     <property name="visible">True</property>

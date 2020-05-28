@@ -21,7 +21,7 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std:
 
   // gsettings bindings
 
-  connections.push_back(settings->signal_changed("state").connect(
+  connections.emplace_back(settings->signal_changed("state").connect(
       [=](auto key) { settings->set_boolean("post-messages", settings->get_boolean(key)); }));
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;

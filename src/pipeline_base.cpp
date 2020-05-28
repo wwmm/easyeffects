@@ -589,7 +589,7 @@ void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
     }
   }
 
-  apps_list.push_back(app_info);
+  apps_list.emplace_back(app_info);
 
   update_pipeline_state();
 }
@@ -646,7 +646,7 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
     }
 
     if (f > min_spectrum_freq) {
-      spectrum_freqs.push_back(f);
+      spectrum_freqs.emplace_back(f);
 
       if (spectrum_start_index == 0) {
         spectrum_start_index = n;

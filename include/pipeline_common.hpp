@@ -60,7 +60,7 @@ auto check_update(gpointer user_data) -> bool {
   l->plugins_order.clear();
 
   while (g_variant_iter_next(iter, "s", &name)) {
-    l->plugins_order.push_back(name);
+    l->plugins_order.emplace_back(name);
     g_free(name);
   }
 
