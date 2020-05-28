@@ -9,6 +9,8 @@
 - Our interface now shows third party Plugins credits.
 - Each plugin now has a reset button
 - Improved convolver impulse response files plot
+- Applications entry now have a blacklist button to make it easier to blacklist an application the user does not want
+  effects to be applied.
 
 ### Fixed
 
