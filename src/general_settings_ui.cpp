@@ -64,7 +64,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
 
-  connections.push_back(settings->signal_changed("priority-type").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("priority-type").connect([&](auto key) {
     set_priority_controls_visibility();
 
     app->sie->set_null_pipeline();
@@ -74,7 +74,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
     app->soe->update_pipeline_state();
   }));
 
-  connections.push_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
     app->sie->set_null_pipeline();
     app->soe->set_null_pipeline();
 
@@ -82,7 +82,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
     app->soe->update_pipeline_state();
   }));
 
-  connections.push_back(settings->signal_changed("niceness").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("niceness").connect([&](auto key) {
     app->sie->set_null_pipeline();
     app->soe->set_null_pipeline();
 

@@ -53,7 +53,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  connections.push_back(settings->signal_changed("color").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("color").connect([&](auto key) {
     Glib::Variant<std::vector<double>> v;
 
     settings->get_value("color", v);
@@ -67,7 +67,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     spectrum_color_button->set_rgba(color);
   }));
 
-  connections.push_back(settings->signal_changed("gradient-color").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("gradient-color").connect([&](auto key) {
     Glib::Variant<std::vector<double>> v;
 
     settings->get_value("gradient-color", v);

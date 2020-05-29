@@ -118,7 +118,7 @@ CalibrationMic::CalibrationMic() {
     }
 
     if (f > min_spectrum_freq) {
-      spectrum_freqs.push_back(f);
+      spectrum_freqs.emplace_back(f);
     }
   }
 

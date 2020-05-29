@@ -36,7 +36,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   listbox->set_sort_func(sigc::mem_fun(*this, &EffectsBaseUi::on_listbox_sort));
 
-  connections.push_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
+  connections.emplace_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -61,7 +61,7 @@ void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
 
   apps_box->add(*appui);
 
-  apps_list.push_back(appui);
+  apps_list.emplace_back(appui);
 }
 
 void EffectsBaseUi::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {

@@ -246,7 +246,7 @@ static GstFlowReturn gst_peconvolver_transform_ip(GstBaseTransform* trans, GstBu
 
     auto future = std::async(std::launch::async, f);
 
-    peconvolver->futures.push_back(std::move(future));
+    peconvolver->futures.emplace_back(std::move(future));
   }
 
   return GST_FLOW_OK;

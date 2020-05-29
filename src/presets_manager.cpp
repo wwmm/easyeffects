@@ -314,7 +314,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
           for (const auto& v : aux.get()) {
             if (v == value) {
-              output_plugins.push_back(value);
+              output_plugins.emplace_back(value);
 
               break;
             }
@@ -323,7 +323,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
         for (const auto& v : aux.get()) {
           if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
-            output_plugins.push_back(v);
+            output_plugins.emplace_back(v);
           }
         }
       } catch (const boost::property_tree::ptree_error& e) {
@@ -360,7 +360,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
           for (const auto& v : aux.get()) {
             if (v == value) {
-              input_plugins.push_back(value);
+              input_plugins.emplace_back(value);
 
               break;
             }
@@ -369,7 +369,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
         for (const auto& v : aux.get()) {
           if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
-            input_plugins.push_back(v);
+            input_plugins.emplace_back(v);
           }
         }
       } catch (const boost::property_tree::ptree_error& e) {

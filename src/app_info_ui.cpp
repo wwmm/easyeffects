@@ -105,6 +105,7 @@ void AppInfoUi::connect_signals() {
     if (blacklist->get_active()) {
       // Add new entry to blacklist vector
       BlacklistSettingsUi::add_new_entry(Gio::Settings::create("com.github.wwmm.pulseeffects"), app_info->name, preset_type);
+      enable->set_sensitive(false);
 
       if (preset_type == PresetType::output) {
         pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
@@ -116,6 +117,7 @@ void AppInfoUi::connect_signals() {
     } else {
       // Remove app name entry from blacklist vector
       BlacklistSettingsUi::remove_entry(Gio::Settings::create("com.github.wwmm.pulseeffects"), app_info->name, preset_type);
+      enable->set_sensitive(true);
 
       if (preset_type == PresetType::output) {
         pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);

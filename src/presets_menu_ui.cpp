@@ -229,15 +229,15 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
       autoload_btn->set_active(true);
     }
 
-    connections.push_back(apply_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
       settings->set_string("last-used-preset", row->get_name());
 
       app->presets_manager->load(preset_type, row->get_name());
     }));
 
-    connections.push_back(save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
+    connections.emplace_back(save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
 
-    connections.push_back(autoload_btn->signal_toggled().connect([=]() {
+    connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
       if (preset_type == PresetType::output) {
         auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
 
@@ -259,7 +259,7 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
       populate_listbox(preset_type);
     }));
 
-    connections.push_back(remove_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
       app->presets_manager->remove(preset_type, name);
 
       populate_listbox(preset_type);

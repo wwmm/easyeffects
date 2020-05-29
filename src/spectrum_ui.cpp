@@ -14,16 +14,16 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_leave_notify_event));
   spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
 
-  connections.push_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
     init_color();
     init_gradient_color();
   }));
 
-  connections.push_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
+  connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
 
-  connections.push_back(settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
+  connections.emplace_back(settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
 
-  connections.push_back(settings->signal_changed("height").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("height").connect([&](auto key) {
     auto v = settings->get_int("height");
 
     spectrum->set_size_request(-1, v);

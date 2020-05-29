@@ -84,7 +84,7 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
     std::vector<double> color;
 
     for (auto& p : root.get_child("spectrum.color")) {
-      color.push_back(p.second.get<double>(""));
+      color.emplace_back(p.second.get<double>(""));
     }
 
     auto v = Glib::Variant<std::vector<double>>::create(color);
@@ -100,7 +100,7 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
     std::vector<double> color;
 
     for (auto& p : root.get_child("spectrum.gradient-color")) {
-      color.push_back(p.second.get<double>(""));
+      color.emplace_back(p.second.get<double>(""));
     }
 
     auto v = Glib::Variant<std::vector<double>>::create(color);
