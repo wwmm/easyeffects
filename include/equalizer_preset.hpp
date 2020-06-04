@@ -8,7 +8,7 @@ class EqualizerPreset : public PluginPresetBase {
   EqualizerPreset();
 
   void write(PresetType preset_type, boost::property_tree::ptree& root) override;
-  void read(PresetType preset_type, boost::property_tree::ptree& root) override;
+  void read(PresetType preset_type, const boost::property_tree::ptree& root) override;
 
  private:
   std::string log_tag = "equalizer_preset: ";
@@ -19,7 +19,7 @@ class EqualizerPreset : public PluginPresetBase {
   void save(boost::property_tree::ptree& root,
             const std::string& section,
             const Glib::RefPtr<Gio::Settings>& settings) override;
-  void load(boost::property_tree::ptree& root,
+  void load(const boost::property_tree::ptree& root,
             const std::string& section,
             const Glib::RefPtr<Gio::Settings>& settings) override;
 
@@ -28,7 +28,7 @@ class EqualizerPreset : public PluginPresetBase {
                            const Glib::RefPtr<Gio::Settings>& settings,
                            const int& nbands);
 
-  void load_channel(boost::property_tree::ptree& root,
+  void load_channel(const boost::property_tree::ptree& root,
                     const std::string& section,
                     const Glib::RefPtr<Gio::Settings>& settings,
                     const int& nbands);

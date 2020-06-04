@@ -22,7 +22,7 @@ void FilterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".filter.inertia", settings->get_double("inertia"));
 }
 
-void FilterPreset::load(boost::property_tree::ptree& root,
+void FilterPreset::load(const boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".filter.state");
@@ -48,7 +48,7 @@ void FilterPreset::write(PresetType preset_type, boost::property_tree::ptree& ro
   }
 }
 
-void FilterPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void FilterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

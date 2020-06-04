@@ -246,7 +246,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
   // adding plugins to effects_bin
 
-  for (auto& p : plugins) {
+  for (const auto& p : plugins) {
     gst_bin_add(GST_BIN(effects_bin), p.second);
   }
 

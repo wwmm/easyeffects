@@ -15,7 +15,7 @@ void DelayPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".delay.time-r", settings->get_double("time-r"));
 }
 
-void DelayPreset::load(boost::property_tree::ptree& root,
+void DelayPreset::load(const boost::property_tree::ptree& root,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".delay.state");
@@ -35,7 +35,7 @@ void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& roo
   }
 }
 
-void DelayPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void DelayPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

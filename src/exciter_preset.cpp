@@ -27,7 +27,7 @@ void ExciterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".exciter.listen", settings->get_boolean("listen"));
 }
 
-void ExciterPreset::load(boost::property_tree::ptree& root,
+void ExciterPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".exciter.state");
@@ -57,7 +57,7 @@ void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void ExciterPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void ExciterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

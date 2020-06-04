@@ -24,7 +24,7 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
 }
 
-void LimiterPreset::load(boost::property_tree::ptree& root,
+void LimiterPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".limiter.state");
@@ -52,7 +52,7 @@ void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void LimiterPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void LimiterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

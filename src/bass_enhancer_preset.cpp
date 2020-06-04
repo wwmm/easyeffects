@@ -27,7 +27,7 @@ void BassEnhancerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".bass_enhancer.listen", settings->get_boolean("listen"));
 }
 
-void BassEnhancerPreset::load(boost::property_tree::ptree& root,
+void BassEnhancerPreset::load(const boost::property_tree::ptree& root,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".bass_enhancer.state");
@@ -57,7 +57,7 @@ void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptr
   }
 }
 
-void BassEnhancerPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void BassEnhancerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

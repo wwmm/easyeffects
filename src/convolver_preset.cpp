@@ -17,7 +17,7 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
 }
 
-void ConvolverPreset::load(boost::property_tree::ptree& root,
+void ConvolverPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".convolver.state");
@@ -37,7 +37,7 @@ void ConvolverPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void ConvolverPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void ConvolverPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

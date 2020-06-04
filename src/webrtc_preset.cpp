@@ -39,7 +39,7 @@ void WebrtcPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".webrtc.voice-detection-likelihood", settings->get_string("voice-detection-likelihood"));
 }
 
-void WebrtcPreset::load(boost::property_tree::ptree& root,
+void WebrtcPreset::load(const boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".webrtc.state");
@@ -81,7 +81,7 @@ void WebrtcPreset::write(PresetType preset_type, boost::property_tree::ptree& ro
   }
 }
 
-void WebrtcPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void WebrtcPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::input) {
     load(root, "input", input_settings);
   }
