@@ -173,11 +173,29 @@ SinkInputEffects::~SinkInputEffects() {
 void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
-  auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
+  bool forbidden_app = false;
+  auto blacklist = g_settings_get_strv(settings, "blacklist-out");
 
-  if ((enable_all != 0) && !app_info->connected) {
-    pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+  for (std::size_t i = 0; blacklist[i]; i++) {
+    if (app_info->name.compare(blacklist[i]) == 0) {
+      forbidden_app = true;
+    }
+    g_free(blacklist[i]);
   }
+
+  if (app_info->connected) {
+    if (forbidden_app) {
+      pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+    }
+  } else {
+    auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
+
+    if (!forbidden_app && enable_all != 0) {
+      pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+    }
+  }
+
+  g_free(blacklist);
 }
 
 void SinkInputEffects::add_plugins_to_pipeline() {
