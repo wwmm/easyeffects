@@ -5,7 +5,7 @@
 namespace {
 
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutputEffects* soe) {
-  auto src_name = GST_OBJECT_NAME(message->src);
+  auto* src_name = GST_OBJECT_NAME(message->src);
 
   if (std::strcmp(src_name, "equalizer_input_level") == 0) {
     soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
@@ -41,7 +41,7 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
   set_output_sink_name("PulseEffects_mic");
   set_caps(pm->mic_sink_info->rate);
 
-  auto PULSE_SOURCE = std::getenv("PULSE_SOURCE");
+  auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr) {
     if (pm->get_source_info(PULSE_SOURCE)) {
@@ -124,12 +124,13 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
   PipelineBase::on_app_added(app_info);
 
   bool forbidden_app = false;
-  auto blacklist = g_settings_get_strv(settings, "blacklist-in");
+  auto* blacklist = g_settings_get_strv(settings, "blacklist-in");
 
-  for (std::size_t i = 0; blacklist[i]; i++) {
-    if (app_info->name.compare(blacklist[i]) == 0) {
+  for (std::size_t i = 0; blacklist[i] != nullptr; i++) {
+    if (app_info->name == blacklist[i]) {
       forbidden_app = true;
     }
+
     g_free(blacklist[i]);
   }
 
@@ -149,8 +150,8 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
 }
 
 void SourceOutputEffects::add_plugins_to_pipeline() {
-  gchar* name;
-  GVariantIter* iter;
+  gchar* name = nullptr;
+  GVariantIter* iter = nullptr;
   std::vector<std::string> default_order;
 
   g_settings_get(child_settings, "plugins", "as", &iter);
@@ -160,7 +161,7 @@ void SourceOutputEffects::add_plugins_to_pipeline() {
     g_free(name);
   }
 
-  auto gvariant = g_settings_get_default_value(child_settings, "plugins");
+  auto* gvariant = g_settings_get_default_value(child_settings, "plugins");
 
   g_variant_get(gvariant, "as", &iter);
 

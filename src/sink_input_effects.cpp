@@ -5,7 +5,7 @@
 namespace {
 
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEffects* sie) {
-  auto src_name = GST_OBJECT_NAME(message->src);
+  auto* src_name = GST_OBJECT_NAME(message->src);
 
   if (std::strcmp(src_name, "pitch_input_level") == 0) {
     sie->pitch_input_level.emit(SinkInputEffects::get_peak(message));
@@ -74,7 +74,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
   set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
   set_caps(pm->apps_sink_info->rate);
 
-  auto PULSE_SINK = std::getenv("PULSE_SINK");
+  auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
     if (pm->get_sink_info(PULSE_SINK)) {
@@ -174,12 +174,13 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
   bool forbidden_app = false;
-  auto blacklist = g_settings_get_strv(settings, "blacklist-out");
+  auto* blacklist = g_settings_get_strv(settings, "blacklist-out");
 
-  for (std::size_t i = 0; blacklist[i]; i++) {
-    if (app_info->name.compare(blacklist[i]) == 0) {
+  for (std::size_t i = 0; blacklist[i] != nullptr; i++) {
+    if (app_info->name == blacklist[i]) {
       forbidden_app = true;
     }
+
     g_free(blacklist[i]);
   }
 
@@ -199,8 +200,8 @@ void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
 }
 
 void SinkInputEffects::add_plugins_to_pipeline() {
-  gchar* name;
-  GVariantIter* iter;
+  gchar* name = nullptr;
+  GVariantIter* iter = nullptr;
   std::vector<std::string> default_order;
 
   g_settings_get(child_settings, "plugins", "as", &iter);
@@ -210,7 +211,7 @@ void SinkInputEffects::add_plugins_to_pipeline() {
     g_free(name);
   }
 
-  auto gvariant = g_settings_get_default_value(child_settings, "plugins");
+  auto* gvariant = g_settings_get_default_value(child_settings, "plugins");
 
   g_variant_get(gvariant, "as", &iter);
 
