@@ -29,9 +29,9 @@ static void gst_peautogain_set_property(GObject* object, guint property_id, cons
 
 static void gst_peautogain_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec);
 
-static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info);
+static auto gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info) -> gboolean;
 
-static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer);
+static auto gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) -> GstFlowReturn;
 
 static void gst_peautogain_finalize(GObject* object);
 
@@ -308,7 +308,7 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
   }
 }
 
-static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info) {
+static auto gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo* info) -> gboolean {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(filter);
 
   GST_DEBUG_OBJECT(peautogain, "setup");
@@ -324,7 +324,7 @@ static gboolean gst_peautogain_setup(GstAudioFilter* filter, const GstAudioInfo*
   return true;
 }
 
-static GstFlowReturn gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) {
+static auto gst_peautogain_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) -> GstFlowReturn {
   GstPeautogain* peautogain = GST_PEAUTOGAIN(trans);
 
   GST_DEBUG_OBJECT(peautogain, "transform");
@@ -383,12 +383,16 @@ static void gst_peautogain_reset(GstPeautogain* peautogain) {
 
 static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer) {
   GstMapInfo map;
-  double momentary, shortterm, global, relative, range;
+  double momentary;
+  double shortterm;
+  double global;
+  double relative;
+  double range;
   bool failed = false;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-  float* data = (float*)map.data;
+  auto* data = (float*)map.data;
 
   guint num_samples = map.size / peautogain->bpf;
 
@@ -456,8 +460,8 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
       float db_peak = util::linear_to_db(peak);
 
-      if (db_peak > -99) {
-        if (gain * peak < 1.0f) {
+      if (db_peak > -99.0F) {
+        if (gain * peak < 1.0F) {
           peautogain->gain = gain;
         }
       }

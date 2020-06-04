@@ -51,8 +51,8 @@ auto check_update(gpointer user_data) -> bool {
   auto l = static_cast<T>(user_data);
 
   bool update = false;
-  gchar* name;
-  GVariantIter* iter;
+  gchar* name = nullptr;
+  GVariantIter* iter = nullptr;
 
   g_settings_get(l->child_settings, "plugins", "as", &iter);
 
