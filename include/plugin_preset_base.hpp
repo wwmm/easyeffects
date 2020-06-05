@@ -11,16 +11,14 @@ class PluginPresetBase {
   PluginPresetBase() {}
   virtual ~PluginPresetBase() {}
 
-  virtual void write(PresetType preset_type,
-                     boost::property_tree::ptree& root) = 0;
-  virtual void read(PresetType preset_type,
-                    boost::property_tree::ptree& root) = 0;
+  virtual void write(PresetType preset_type, boost::property_tree::ptree& root) = 0;
+  virtual void read(PresetType preset_type, const boost::property_tree::ptree& root) = 0;
 
  protected:
   virtual void save(boost::property_tree::ptree& root,
                     const std::string& section,
                     const Glib::RefPtr<Gio::Settings>& settings) = 0;
-  virtual void load(boost::property_tree::ptree& root,
+  virtual void load(const boost::property_tree::ptree& root,
                     const std::string& section,
                     const Glib::RefPtr<Gio::Settings>& settings) = 0;
 
@@ -35,7 +33,7 @@ class PluginPresetBase {
   }
 
   template <typename T>
-  void update_key(boost::property_tree::ptree& root,
+  void update_key(const boost::property_tree::ptree& root,
                   const Glib::RefPtr<Gio::Settings>& settings,
                   const std::string& key,
                   const std::string& json_key) {
@@ -54,7 +52,7 @@ class PluginPresetBase {
     }
   }
 
-  void update_string_key(boost::property_tree::ptree& root,
+  void update_string_key(const boost::property_tree::ptree& root,
                          const Glib::RefPtr<Gio::Settings>& settings,
                          const std::string& key,
                          const std::string& json_key) {

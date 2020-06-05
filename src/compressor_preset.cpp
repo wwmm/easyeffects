@@ -42,7 +42,7 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".compressor.sidechain.lookahead", settings->get_double("sidechain-lookahead"));
 }
 
-void CompressorPreset::load(boost::property_tree::ptree& root,
+void CompressorPreset::load(const boost::property_tree::ptree& root,
                             const std::string& section,
                             const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".compressor.state");
@@ -88,7 +88,7 @@ void CompressorPreset::write(PresetType preset_type, boost::property_tree::ptree
   }
 }
 
-void CompressorPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void CompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

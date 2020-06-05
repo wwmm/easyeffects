@@ -46,7 +46,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 }
 
 void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
-  for (auto a : apps_list) {
+  for (const auto& a : apps_list) {
     if (a->app_info->index == app_info->index) {
       // do not add the same app two times in the interface
       return;

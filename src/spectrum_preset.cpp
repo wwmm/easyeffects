@@ -32,7 +32,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   settings->get_value("color", aux);
 
-  for (auto& p : aux.get()) {
+  for (const auto& p : aux.get()) {
     boost::property_tree::ptree node;
     node.put("", p);
     node_in.push_back(std::make_pair("", node));
@@ -46,7 +46,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   settings->get_value("gradient-color", aux);
 
-  for (auto& p : aux.get()) {
+  for (const auto& p : aux.get()) {
     boost::property_tree::ptree node;
     node.put("", p);
     node_in.push_back(std::make_pair("", node));
@@ -55,7 +55,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
   root.add_child("spectrum.gradient-color", node_in);
 }
 
-void SpectrumPreset::load(boost::property_tree::ptree& root,
+void SpectrumPreset::load(const boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "show", "spectrum.show");
@@ -83,7 +83,7 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
   try {
     std::vector<double> color;
 
-    for (auto& p : root.get_child("spectrum.color")) {
+    for (const auto& p : root.get_child("spectrum.color")) {
       color.emplace_back(p.second.get<double>(""));
     }
 
@@ -99,7 +99,7 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
   try {
     std::vector<double> color;
 
-    for (auto& p : root.get_child("spectrum.gradient-color")) {
+    for (const auto& p : root.get_child("spectrum.gradient-color")) {
       color.emplace_back(p.second.get<double>(""));
     }
 
@@ -115,6 +115,6 @@ void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& 
   save(root, "", settings);
 }
 
-void SpectrumPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void SpectrumPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   load(root, "", settings);
 }

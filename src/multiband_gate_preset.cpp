@@ -110,7 +110,7 @@ void MultibandGatePreset::save(boost::property_tree::ptree& root,
   root.put(section + ".multiband_gate.highband.solo", settings->get_boolean("solo3"));
 }
 
-void MultibandGatePreset::load(boost::property_tree::ptree& root,
+void MultibandGatePreset::load(const boost::property_tree::ptree& root,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".multiband_gate.state");
@@ -224,7 +224,7 @@ void MultibandGatePreset::write(PresetType preset_type, boost::property_tree::pt
   }
 }
 
-void MultibandGatePreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void MultibandGatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

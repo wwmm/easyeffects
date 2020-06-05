@@ -62,7 +62,7 @@ bool BlacklistSettingsUi::add_new_entry(Glib::RefPtr<Gio::Settings> settings, co
 
   // Check if the entry is already added
   for (const auto& str : bl) {
-    if (name.compare(str) == 0) {
+    if (name == str) {
       util::debug("blacklist_settings_ui: entry already present in the list");
       return false;
     }
@@ -98,7 +98,7 @@ void BlacklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
 void BlacklistSettingsUi::populate_blacklist_in_listbox() {
   auto children = blacklist_in_listbox->get_children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     blacklist_in_listbox->remove(*c);
   }
 

@@ -66,7 +66,7 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::load(boost::property_tree::ptree& root,
+void EqualizerPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".equalizer.state");
@@ -92,7 +92,7 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
+void EqualizerPreset::load_channel(const boost::property_tree::ptree& root,
                                    const std::string& section,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
@@ -131,7 +131,7 @@ void EqualizerPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void EqualizerPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void EqualizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {

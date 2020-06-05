@@ -41,7 +41,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
-    for (auto w : get_windows()) {
+    for (const auto& w : get_windows()) {
       w->hide();
     }
 

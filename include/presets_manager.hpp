@@ -94,7 +94,7 @@ class PresetsManager {
   }
 
   template <typename T>
-  void update_key(boost::property_tree::ptree& root,
+  void update_key(const boost::property_tree::ptree& root,
                   const Glib::RefPtr<Gio::Settings>& settings,
                   const std::string& key,
                   const std::string& json_key) {
@@ -113,7 +113,7 @@ class PresetsManager {
     }
   }
 
-  void update_string_key(boost::property_tree::ptree& root,
+  void update_string_key(const boost::property_tree::ptree& root,
                          const Glib::RefPtr<Gio::Settings>& settings,
                          const std::string& key,
                          const std::string& json_key) {
@@ -131,11 +131,11 @@ class PresetsManager {
     return a != b;
   }
 
-  void create_user_directory(boost::filesystem::path& path);
+  void create_user_directory(const boost::filesystem::path& path);
 
   void save_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
 
-  void load_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
+  void load_blacklist(PresetType preset_type, const boost::property_tree::ptree& root);
 };
 
 #endif

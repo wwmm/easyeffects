@@ -198,7 +198,7 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
   auto children = listbox->get_children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     listbox->remove(*c);
   }
 

@@ -517,7 +517,7 @@ void PipelineBase::set_null_pipeline() {
 auto PipelineBase::apps_want_to_play() -> bool {
   bool wants_to_play = false;
 
-  for (auto& a : apps_list) {
+  for (const auto& a : apps_list) {
     if (a->wants_to_play) {
       wants_to_play = true;
 

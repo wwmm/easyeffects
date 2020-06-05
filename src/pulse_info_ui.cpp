@@ -140,7 +140,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
   } else if (name == std::string("page_modules")) {
     auto children = listbox_modules->get_children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       listbox_modules->remove(*c);
     }
 
@@ -148,7 +148,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
   } else if (name == std::string("page_clients")) {
     auto children = listbox_clients->get_children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       listbox_clients->remove(*c);
     }
 

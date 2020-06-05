@@ -102,7 +102,7 @@ void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".multiband_compressor.highband.solo", settings->get_boolean("solo3"));
 }
 
-void MultibandCompressorPreset::load(boost::property_tree::ptree& root,
+void MultibandCompressorPreset::load(const boost::property_tree::ptree& root,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".multiband_compressor.state");
@@ -208,7 +208,7 @@ void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tr
   }
 }
 
-void MultibandCompressorPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void MultibandCompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   } else {
