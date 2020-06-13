@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-28 22:40+0200\n"
+"POT-Creation-Date: 2020-06-13 20:34+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -164,12 +164,16 @@ msgstr "Создать новый набор предустановок"
 msgid "Name"
 msgstr "Название"
 
-#: data/ui/blacklist_settings.glade:132
+#: data/ui/blacklist_settings.glade:85
 msgid "Reconnect the microphone to apply new changes made to the blacklist"
 msgstr ""
 
 #: data/ui/blacklist_settings.glade:239
 msgid "Restart the player to apply new changes made to the blacklist"
+msgstr ""
+
+#: data/ui/blacklist_settings.glade:273
+msgid "Show Blacklisted Apps in Main Tab"
 msgstr ""
 
 #: data/ui/general_settings.glade:31
@@ -252,7 +256,7 @@ msgstr "Ресемплер"
 msgid "State"
 msgstr "Состояние"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:95
+#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:122
 msgid "Blacklist"
 msgstr "Черный список"
 
@@ -1622,11 +1626,11 @@ msgstr "Открыть"
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/app_info_ui.cpp:89
+#: src/app_info_ui.cpp:97
 msgid "paused"
 msgstr "на паузе"
 
-#: src/app_info_ui.cpp:91
+#: src/app_info_ui.cpp:99
 msgid "playing"
 msgstr "воспроизводится"
 
