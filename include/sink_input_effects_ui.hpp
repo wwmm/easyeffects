@@ -20,7 +20,6 @@
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
-#include "preset_type.hpp"
 #include "reverb_ui.hpp"
 #include "sink_input_effects.hpp"
 #include "stereo_tools_ui.hpp"
@@ -38,6 +37,8 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   ~SinkInputEffectsUi() override;
 
   static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
+
+  void on_app_added(std::shared_ptr<AppInfo> app_info) override;
 
  protected:
   std::string log_tag = "sie_ui: ";

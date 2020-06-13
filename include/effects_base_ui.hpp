@@ -9,9 +9,12 @@
 #include <gtkmm/stack.h>
 #include <memory>
 #include <vector>
-#include "app_info_ui.hpp"
 #include "pulse_manager.hpp"
+#include "app_info_ui.hpp"
 #include "spectrum_ui.hpp"
+#include "blacklist_settings_ui.hpp"
+#include "preset_type.hpp"
+#include "util.hpp"
 
 class EffectsBaseUi {
  public:
@@ -24,7 +27,7 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi &&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
-  void on_app_added(std::shared_ptr<AppInfo> app_info);
+  virtual void on_app_added(std::shared_ptr<AppInfo> app_info) = 0;
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
 
@@ -32,10 +35,14 @@ class EffectsBaseUi {
   Glib::RefPtr<Gio::Settings> settings;
   Gtk::ListBox* listbox = nullptr;
   Gtk::Stack* stack = nullptr;
+  Gtk::Box* apps_box = nullptr;
+
+  PulseManager* pm = nullptr;
+
+  std::vector<AppInfoUi*> apps_list;
+  std::vector<sigc::connection> connections;
 
   SpectrumUi* spectrum_ui = nullptr;
-
-  std::vector<sigc::connection> connections;
 
   template <typename T>
   void add_to_listbox(T p) {
@@ -131,13 +138,7 @@ class EffectsBaseUi {
   }
 
  private:
-  Gtk::Box* apps_box = nullptr;
-
-  PulseManager* pm = nullptr;
-
   Gtk::Box* placeholder_spectrum = nullptr;
-
-  std::vector<AppInfoUi*> apps_list;
 
   auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };

@@ -1,7 +1,6 @@
 #ifndef APP_INFO_UI_HPP
 #define APP_INFO_UI_HPP
 
-#include <giomm/settings.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
@@ -45,7 +44,7 @@ class AppInfoUi : public Gtk::Grid {
  private:
   std::string log_tag = "app_info_ui: ";
 
-  bool running = true, enabled = true, blacklisted = true, pre_bl_state = true;
+  bool running = true, is_enabled = true, is_blacklisted = true, pre_bl_state = true;
 
   sigc::connection enable_connection;
   sigc::connection volume_connection;
@@ -54,7 +53,6 @@ class AppInfoUi : public Gtk::Grid {
   sigc::connection timeout_connection;
 
   PulseManager* pm = nullptr;
-  Glib::RefPtr<Gio::Settings> settings;
 
   void init_widgets();
 
