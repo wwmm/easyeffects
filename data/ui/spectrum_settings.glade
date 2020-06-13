@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="exponent">
     <property name="upper">10</property>
-    <property name="step_increment">0.01</property>
+    <property name="step_increment">0,01</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="height">
@@ -14,11 +14,11 @@
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="line_width">
-    <property name="lower">0.10000000000000001</property>
+    <property name="lower">0,10</property>
     <property name="upper">100</property>
     <property name="value">2</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="step_increment">0,10</property>
+    <property name="page_increment">0,10</property>
   </object>
   <object class="GtkAdjustment" id="n_points">
     <property name="lower">2</property>
@@ -34,13 +34,14 @@
   </object>
   <object class="GtkAdjustment" id="scale">
     <property name="upper">10</property>
-    <property name="step_increment">0.01</property>
+    <property name="step_increment">0,01</property>
     <property name="page_increment">10</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
+    <property name="valign">center</property>
     <property name="row_spacing">18</property>
     <child>
       <object class="GtkGrid">
@@ -181,7 +182,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Spectrum Color</property>
           </object>
           <packing>
@@ -209,7 +210,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Gradient Color</property>
           </object>
           <packing>
@@ -237,7 +238,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Spectrum Type</property>
           </object>
           <packing>
@@ -267,7 +268,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Points</property>
           </object>
           <packing>
@@ -299,7 +300,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Height</property>
           </object>
           <packing>
@@ -332,7 +333,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Scale</property>
           </object>
           <packing>
@@ -365,7 +366,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Exponent</property>
           </object>
           <packing>
@@ -398,7 +399,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Sampling</property>
           </object>
           <packing>
@@ -429,7 +430,7 @@
             <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="margin_left">30</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Line Width</property>
           </object>
           <packing>
@@ -455,24 +456,6 @@
             <property name="left_attach">5</property>
             <property name="top_attach">3</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
         <child>
           <placeholder/>
