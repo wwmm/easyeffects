@@ -112,6 +112,39 @@ auto SourceOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SourceOutputEffects*
   return ui;
 }
 
+void SourceOutputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
+  // Blacklist check
+  auto forbidden_app = BlacklistSettingsUi::app_is_blacklisted(app_info->name, PresetType::input);
+
+  if (forbidden_app) {
+    app_info->visible = BlacklistSettingsUi::get_blacklisted_apps_visibility();
+
+    if (!app_info->visible) {
+        return;
+    }
+  } else {
+    app_info->visible = true;
+  }
+
+  // Duplicate entry check
+  for (const auto& a : apps_list) {
+    if (a->app_info->index == app_info->index) {
+      // do not add the same app two times in the interface
+      return;
+    }
+  }
+
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
+
+  AppInfoUi* appui = nullptr;
+
+  builder->get_widget_derived("widgets_grid", appui, app_info, pm);
+
+  apps_box->add(*appui);
+
+  apps_list.emplace_back(appui);
+}
+
 void SourceOutputEffectsUi::level_meters_connections() {
   // limiter level meters connections
 

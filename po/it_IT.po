@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-28 22:40+0200\n"
+"POT-Creation-Date: 2020-06-13 20:34+0200\n"
 "PO-Revision-Date: 2019-03-28 17:38+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -162,7 +162,7 @@ msgstr "Crea Profilo"
 msgid "Name"
 msgstr "Nome"
 
-#: data/ui/blacklist_settings.glade:132
+#: data/ui/blacklist_settings.glade:85
 msgid "Reconnect the microphone to apply new changes made to the blacklist"
 msgstr ""
 "Riconnetti il microfono per applicare le modifiche apportate alla blacklist"
@@ -171,6 +171,10 @@ msgstr ""
 msgid "Restart the player to apply new changes made to the blacklist"
 msgstr ""
 "Riavvia il media player per applicare le modifiche apportate alla blacklist"
+
+#: data/ui/blacklist_settings.glade:273
+msgid "Show Blacklisted Apps in Main Tab"
+msgstr "Mostra Applicazioni Escluse nella Scheda Principale"
 
 #: data/ui/general_settings.glade:31
 msgid "Start Service at Login"
@@ -252,7 +256,7 @@ msgstr "Ricampionamento"
 msgid "State"
 msgstr "Stato"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:95
+#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:122
 msgid "Blacklist"
 msgstr "Blacklist"
 
@@ -1589,11 +1593,11 @@ msgstr "Apri"
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/app_info_ui.cpp:89
+#: src/app_info_ui.cpp:97
 msgid "paused"
 msgstr "pausa"
 
-#: src/app_info_ui.cpp:91
+#: src/app_info_ui.cpp:99
 msgid "playing"
 msgstr "riproduzione"
 

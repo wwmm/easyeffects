@@ -68,6 +68,7 @@ struct AppInfo {
   std::string format;
   int mute;
   bool connected;
+  bool visible;
   uint buffer;
   uint latency;
   int corked;
@@ -101,10 +102,10 @@ class PulseManager {
   void find_source_outputs();
   void find_sinks();
   void find_sources();
-  void move_sink_input_to_pulseeffects(const std::string& name, uint idx);
-  void remove_sink_input_from_pulseeffects(const std::string& name, uint idx);
-  void move_source_output_to_pulseeffects(const std::string& name, uint idx);
-  void remove_source_output_from_pulseeffects(const std::string& name, uint idx);
+  auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto remove_source_output_from_pulseeffects(const std::string& name, uint idx) -> bool;
   void set_sink_input_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_sink_input_mute(const std::string& name, uint idx, bool state);
   void set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value);
@@ -279,7 +280,11 @@ class PulseManager {
       }
     }
 
+    // Connection flag: it specifies only the primary state that can be enabled/disabled by the user
     ai->connected = app_is_connected(info);
+
+    // Initialize visibility to true, it will be properly updated forward
+    ai->visible = true;
 
     // linear volume
     ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
@@ -294,6 +299,7 @@ class PulseManager {
 
     ai->index = info->index;
     ai->name = app_name;
+    ai->app_type = "";
     ai->icon_name = icon_name;
     ai->channels = info->volume.channels;
     ai->rate = info->sample_spec.rate;

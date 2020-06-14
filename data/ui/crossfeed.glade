@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="fcut">
     <property name="lower">300</property>
     <property name="upper">2000</property>
@@ -12,8 +12,8 @@
   <object class="GtkAdjustment" id="feed">
     <property name="lower">1</property>
     <property name="upper">15</property>
-    <property name="value">4.50</property>
-    <property name="step_increment">0.10</property>
+    <property name="value">4.5</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
     <signal name="value-changed" handler="on_feed_value_changed" swapped="no"/>
   </object>
@@ -198,7 +198,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
+                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -213,7 +213,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
+                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>

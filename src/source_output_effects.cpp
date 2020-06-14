@@ -123,7 +123,7 @@ SourceOutputEffects::~SourceOutputEffects() {
 void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
-  bool forbidden_app = false;
+  bool forbidden_app = false, success = false;
   auto* blacklist = g_settings_get_strv(settings, "blacklist-in");
 
   for (std::size_t i = 0; blacklist[i] != nullptr; i++) {
@@ -136,13 +136,21 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
 
   if (app_info->connected) {
     if (forbidden_app) {
-      pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+      success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+
+      if (success) {
+        app_info->connected = false;
+      }
     }
   } else {
     auto enable_all = g_settings_get_boolean(settings, "enable-all-sourceoutputs");
 
     if (!forbidden_app && (enable_all != 0)) {
-      pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+      success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+
+      if (success) {
+        app_info->connected = true;
+      }
     }
   }
 

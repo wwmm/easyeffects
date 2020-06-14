@@ -769,7 +769,7 @@ void PulseManager::find_sources() {
   pa_threaded_mainloop_unlock(main_loop);
 }
 
-void PulseManager::move_sink_input_to_pulseeffects(const std::string& name, uint idx) {
+auto PulseManager::move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool {
   struct Data {
     std::string name;
     uint idx;
@@ -777,6 +777,8 @@ void PulseManager::move_sink_input_to_pulseeffects(const std::string& name, uint
   };
 
   Data data = {name, idx, this};
+
+  bool added_successfully = false;
 
   pa_threaded_mainloop_lock(main_loop);
 
@@ -802,14 +804,18 @@ void PulseManager::move_sink_input_to_pulseeffects(const std::string& name, uint
     }
 
     pa_operation_unref(o);
+
+    added_successfully = true;
   } else {
     util::critical(log_tag + "failed to move sink input: " + name + ", idx = " + std::to_string(idx) + " to PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
+
+  return added_successfully;
 }
 
-void PulseManager::remove_sink_input_from_pulseeffects(const std::string& name, uint idx) {
+auto PulseManager::remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool {
   struct Data {
     std::string name;
     uint idx;
@@ -817,6 +823,8 @@ void PulseManager::remove_sink_input_from_pulseeffects(const std::string& name, 
   };
 
   Data data = {name, idx, this};
+
+  bool removed_successfully = false;
 
   pa_threaded_mainloop_lock(main_loop);
 
@@ -843,14 +851,18 @@ void PulseManager::remove_sink_input_from_pulseeffects(const std::string& name, 
     }
 
     pa_operation_unref(o);
+
+    removed_successfully = true;
   } else {
     util::critical(log_tag + "failed to remove sink input: " + name + ", idx = " + std::to_string(idx) + " from PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
+
+  return removed_successfully;
 }
 
-void PulseManager::move_source_output_to_pulseeffects(const std::string& name, uint idx) {
+auto PulseManager::move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool {
   struct Data {
     std::string name;
     uint idx;
@@ -858,6 +870,8 @@ void PulseManager::move_source_output_to_pulseeffects(const std::string& name, u
   };
 
   Data data = {name, idx, this};
+
+  bool added_successfully = false;
 
   pa_threaded_mainloop_lock(main_loop);
 
@@ -883,14 +897,18 @@ void PulseManager::move_source_output_to_pulseeffects(const std::string& name, u
     }
 
     pa_operation_unref(o);
+
+    added_successfully = true;
   } else {
     util::critical(log_tag + "failed to move source output: " + name + ", idx = " + std::to_string(idx) + " to PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
+
+  return added_successfully;
 }
 
-void PulseManager::remove_source_output_from_pulseeffects(const std::string& name, uint idx) {
+auto PulseManager::remove_source_output_from_pulseeffects(const std::string& name, uint idx) -> bool {
   struct Data {
     std::string name;
     uint idx;
@@ -898,6 +916,8 @@ void PulseManager::remove_source_output_from_pulseeffects(const std::string& nam
   };
 
   Data data = {name, idx, this};
+
+  bool removed_successfully = false;
 
   pa_threaded_mainloop_lock(main_loop);
 
@@ -922,11 +942,15 @@ void PulseManager::remove_source_output_from_pulseeffects(const std::string& nam
     }
 
     pa_operation_unref(o);
+
+    removed_successfully = true;
   } else {
     util::critical(log_tag + "failed to remove source output: " + name + ", idx = " + std::to_string(idx) + " from PE");
   }
 
   pa_threaded_mainloop_unlock(main_loop);
+
+  return removed_successfully;
 }
 
 void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint8_t channels, uint value) {

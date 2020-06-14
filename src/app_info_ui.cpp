@@ -9,8 +9,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      std::shared_ptr<AppInfo> info,
                      PulseManager* pulse_manager)
-    : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")) {
+    : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
   // loading glade widgets
 
   builder->get_widget("enable", enable);
@@ -28,14 +27,10 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
 
-  std::vector<std::string> blacklisted_apps =
-      settings->get_string_array((app_info->app_type == "sink_input") ? "blacklist-out" : "blacklist-in");
-  blacklisted =
-      std::find(std::begin(blacklisted_apps), std::end(blacklisted_apps), app_info->name) != std::end(blacklisted_apps);
+  is_blacklisted =
+      BlacklistSettingsUi::app_is_blacklisted(app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
 
-  enabled = app_info->connected && !blacklisted;
-  pre_bl_state =
-      settings->get_boolean((app_info->app_type == "sink_input") ? "enable-all-sinkinputs" : "enable-all-sourceoutputs");
+  is_enabled = app_info->connected && !is_blacklisted;
 
   init_widgets();
   connect_signals();
@@ -73,10 +68,10 @@ auto AppInfoUi::latency_to_str(uint value) -> std::string {
 }
 
 void AppInfoUi::init_widgets() {
-  enable->set_active(enabled && !blacklisted);
-  enable->set_sensitive(!blacklisted);
+  enable->set_active(is_enabled && !is_blacklisted);
+  enable->set_sensitive(!is_blacklisted);
 
-  blacklist->set_active(blacklisted);
+  blacklist->set_active(is_blacklisted);
 
   app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
 
@@ -117,17 +112,17 @@ void AppInfoUi::connect_signals() {
 
     if (blacklist->get_active()) {
       // Add new entry to blacklist vector
-      BlacklistSettingsUi::add_new_entry(settings, app_info->name, preset_type);
-      pre_bl_state = enabled;
-      blacklisted = true;
-      if (enabled) {
+      BlacklistSettingsUi::add_new_entry(app_info->name, preset_type);
+      pre_bl_state = is_enabled;
+      is_blacklisted = true;
+      if (is_enabled) {
         enable->set_active(false);
       }
       enable->set_sensitive(false);
     } else {
       // Remove app name entry from blacklist vector
-      BlacklistSettingsUi::remove_entry(settings, app_info->name, preset_type);
-      blacklisted = false;
+      BlacklistSettingsUi::remove_entry(app_info->name, preset_type);
+      is_blacklisted = false;
       enable->set_sensitive(true);
       if (pre_bl_state) {
         enable->set_active(true);
@@ -137,21 +132,25 @@ void AppInfoUi::connect_signals() {
 }
 
 auto AppInfoUi::on_enable_app(bool state) -> bool {
+  bool success = false;
+
   if (state) {
     if (app_info->app_type == "sink_input") {
-      pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+      success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
     } else {
-      pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+      success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
     }
   } else {
     if (app_info->app_type == "sink_input") {
-      pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+      success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
     } else {
-      pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+      success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
     }
   }
 
-  enabled = state;
+  if (success) {
+    is_enabled = state;
+  }
 
   return false;
 }

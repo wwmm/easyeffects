@@ -5,13 +5,14 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
+#include <gtkmm/switch.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
-
 #include "preset_type.hpp"
+#include "util.hpp"
 
 class BlacklistSettingsUi : public Gtk::Grid {
  public:
@@ -23,24 +24,29 @@ class BlacklistSettingsUi : public Gtk::Grid {
   ~BlacklistSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack);
-  static bool add_new_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type);
-  static void remove_entry(Glib::RefPtr<Gio::Settings> settings, const std::string& name, PresetType preset_type);
+
+  // Blacklist management static methods
+  static auto add_new_entry(const std::string& name, PresetType preset_type) -> bool;
+  static void remove_entry(const std::string& name, PresetType preset_type);
+  static auto app_is_blacklisted(const std::string& name, PresetType preset_type) -> bool;
+  static auto get_blacklisted_apps_visibility() -> bool;
 
  private:
   std::string log_tag = "blacklist_settings_ui: ";
 
-  Glib::RefPtr<Gio::Settings> settings;
+  static Glib::RefPtr<Gio::Settings> settings;
 
+  Gtk::Switch *show_blacklisted_apps = nullptr;
   Gtk::Button *add_blacklist_in = nullptr, *add_blacklist_out = nullptr;
-  Gtk::ListBox *blacklist_in_listbox = nullptr, *blacklist_out_listbox = nullptr;
+  static Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;
   Gtk::Entry *blacklist_in_name = nullptr, *blacklist_out_name = nullptr;
   Gtk::ScrolledWindow *blacklist_in_scrolled_window = nullptr, *blacklist_out_scrolled_window = nullptr;
 
-  std::vector<sigc::connection> connections;
+  static std::vector<sigc::connection> connections;
 
-  void populate_blacklist_in_listbox();
+  static void populate_blacklist_in_listbox();
 
-  void populate_blacklist_out_listbox();
+  static void populate_blacklist_out_listbox();
 
   static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
