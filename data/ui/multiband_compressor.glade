@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="attack0">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
@@ -186,25 +186,25 @@
     <property name="upper">20</property>
     <property name="value">2</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio1">
     <property name="lower">1</property>
     <property name="upper">20</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio2">
     <property name="lower">1</property>
     <property name="upper">20</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio3">
     <property name="lower">1</property>
     <property name="upper">20</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="release0">
     <property name="lower">0.01</property>
@@ -1954,7 +1954,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
+                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -1969,7 +1969,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_right">3</property>
+                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
