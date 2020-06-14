@@ -120,7 +120,7 @@ void SourceOutputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
     app_info->visible = BlacklistSettingsUi::get_blacklisted_apps_visibility();
 
     if (!app_info->visible) {
-        return;
+      return;
     }
   } else {
     app_info->visible = true;

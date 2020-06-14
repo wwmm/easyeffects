@@ -5,12 +5,12 @@
 #include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/switch.h>
 #include <gtkmm/entry.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/scrolledwindow.h>
 #include <gtkmm/stack.h>
+#include <gtkmm/switch.h>
 #include "preset_type.hpp"
 #include "util.hpp"
 
@@ -34,9 +34,7 @@ class BlacklistSettingsUi : public Gtk::Grid {
  private:
   std::string log_tag = "blacklist_settings_ui: ";
 
-  static Glib::RefPtr<Gio::Settings> settings;
-
-  Gtk::Switch *show_blacklisted_apps = nullptr;
+  Gtk::Switch* show_blacklisted_apps = nullptr;
   Gtk::Button *add_blacklist_in = nullptr, *add_blacklist_out = nullptr;
   static Gtk::ListBox *blacklist_in_listbox, *blacklist_out_listbox;
   Gtk::Entry *blacklist_in_name = nullptr, *blacklist_out_name = nullptr;

@@ -1,9 +1,8 @@
 #include "blacklist_settings_ui.hpp"
 
 // static attributes initialization
-Glib::RefPtr<Gio::Settings> BlacklistSettingsUi::settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-Gtk::ListBox *BlacklistSettingsUi::blacklist_in_listbox = nullptr;
-Gtk::ListBox *BlacklistSettingsUi::blacklist_out_listbox = nullptr;
+Gtk::ListBox* BlacklistSettingsUi::blacklist_in_listbox = nullptr;
+Gtk::ListBox* BlacklistSettingsUi::blacklist_out_listbox = nullptr;
 std::vector<sigc::connection> BlacklistSettingsUi::connections;
 
 // constructor
@@ -39,7 +38,10 @@ BlacklistSettingsUi::BlacklistSettingsUi(BaseObjectType* cobject, const Glib::Re
     }
   });
 
-  settings->bind("show-blacklisted-apps", show_blacklisted_apps, "active", Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT);
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
+  settings->bind("show-blacklisted-apps", show_blacklisted_apps, "active",
+                 Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT);
 
   populate_blacklist_in_listbox();
   populate_blacklist_out_listbox();
@@ -54,6 +56,8 @@ BlacklistSettingsUi::~BlacklistSettingsUi() {
 }
 
 auto BlacklistSettingsUi::get_blacklisted_apps_visibility() -> bool {
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
   return settings->get_boolean("show-blacklisted-apps");
 }
 
@@ -62,7 +66,10 @@ auto BlacklistSettingsUi::add_new_entry(const std::string& name, PresetType pres
     return false;
   }
 
-  auto blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+  const auto* blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
   std::vector<std::string> bl = settings->get_string_array(blacklist_preset_type);
 
   // Check if the entry is already added
@@ -74,6 +81,7 @@ auto BlacklistSettingsUi::add_new_entry(const std::string& name, PresetType pres
   }
 
   bl.emplace_back(name);
+
   settings->set_string_array(blacklist_preset_type, bl);
 
   if (preset_type == PresetType::output) {
@@ -87,7 +95,9 @@ auto BlacklistSettingsUi::add_new_entry(const std::string& name, PresetType pres
 }
 
 void BlacklistSettingsUi::remove_entry(const std::string& name, PresetType preset_type) {
-  auto blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+  const auto* blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
   std::vector<std::string> bl = settings->get_string_array(blacklist_preset_type);
 
@@ -105,7 +115,9 @@ void BlacklistSettingsUi::remove_entry(const std::string& name, PresetType prese
 }
 
 auto BlacklistSettingsUi::app_is_blacklisted(const std::string& name, PresetType preset_type) -> bool {
-  auto blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+  const auto* blacklist_preset_type = (preset_type == PresetType::output) ? "blacklist-out" : "blacklist-in";
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
   std::vector<std::string> bl = settings->get_string_array(blacklist_preset_type);
 
@@ -115,7 +127,7 @@ auto BlacklistSettingsUi::app_is_blacklisted(const std::string& name, PresetType
 void BlacklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/blacklist_settings.glade");
 
-  BlacklistSettingsUi* ui;
+  BlacklistSettingsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_grid", ui);
 
@@ -129,14 +141,16 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
     blacklist_in_listbox->remove(*c);
   }
 
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+
   std::vector<std::string> names = settings->get_string_array("blacklist-in");
 
   for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/blacklist_row.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Button* remove_btn;
-    Gtk::Label* label;
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Button* remove_btn = nullptr;
+    Gtk::Label* label = nullptr;
 
     b->get_widget("blacklist_row", row);
     b->get_widget("remove", remove_btn);
@@ -145,9 +159,7 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-      remove_entry(name, PresetType::input);
-    }));
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() { remove_entry(name, PresetType::input); }));
 
     blacklist_in_listbox->add(*row);
     blacklist_in_listbox->show_all();
@@ -157,9 +169,11 @@ void BlacklistSettingsUi::populate_blacklist_in_listbox() {
 void BlacklistSettingsUi::populate_blacklist_out_listbox() {
   auto children = blacklist_out_listbox->get_children();
 
-  for (auto c : children) {
+  for (auto* c : children) {
     blacklist_out_listbox->remove(*c);
   }
+
+  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
   std::vector<std::string> names = settings->get_string_array("blacklist-out");
 
@@ -177,9 +191,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-      remove_entry(name, PresetType::output);
-    }));
+    connections.emplace_back(remove_btn->signal_clicked().connect([=]() { remove_entry(name, PresetType::output); }));
 
     blacklist_out_listbox->add(*row);
     blacklist_out_listbox->show_all();
