@@ -14,6 +14,7 @@
 
 ### Fixed
 
+- Fixed a severe memory leak that happened whenever the window was closed.
 - PulseEffects no longer crashes when an empty or corrupted preset is provided.
 - Fixed laxity setting not being applied in the deesser
 

@@ -206,18 +206,25 @@ void Application::on_startup() {
 
 void Application::on_activate() {
   if (get_active_window() == nullptr) {
-    std::shared_ptr<ApplicationUi> window(ApplicationUi::create(this));
+    /*
+      Note to myself: do not wrap this pointer in a smart pointer. Causes memory leaks when closing the window because
+      GTK reference counting system will see that there is still someone with an object reference and it won't free the
+      widgets.
+    */
+    auto* window = ApplicationUi::create(this);
 
     add_window(*window);
 
     window->signal_hide().connect([&, window]() {
-      int width;
-      int height;
+      int width = 0;
+      int height = 0;
 
       window->get_size(width, height);
 
       settings->set_int("window-width", width);
       settings->set_int("window-height", height);
+
+      delete window;
     });
 
     window->show_all();
