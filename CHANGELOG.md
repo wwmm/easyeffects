@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.7.3]
+
 ### Added
 
 - PulseEffects now searches for presets in /etc/PulseEffects and directories specified by \$XDG_CONFIG_DIRS environment
