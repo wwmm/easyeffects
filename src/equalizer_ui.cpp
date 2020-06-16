@@ -10,7 +10,7 @@
 namespace {
 
 auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Off") == 0) {
     g_value_set_int(value, 0);
@@ -68,7 +68,7 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "IIR") == 0) {
     g_value_set_int(value, 0);
@@ -96,7 +96,7 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 }
 
 auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "RLC (BT)") == 0) {
     g_value_set_int(value, 0);
@@ -148,7 +148,7 @@ auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type
 }
 
 auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "x1") == 0) {
     g_value_set_int(value, 0);
@@ -198,7 +198,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   builder->get_widget("bands_grid_left", bands_grid_left);
   builder->get_widget("bands_grid_right", bands_grid_right);
-  builder->get_widget("reset_eq", reset_eq);
   builder->get_widget("flat_response", flat_response);
   builder->get_widget("calculate_freqs", calculate_freqs);
   builder->get_widget("presets_listbox", presets_listbox);
@@ -217,7 +216,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
 
   // reset equalizer
-  reset_eq->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
   reset_button->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
 
   flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
@@ -289,7 +287,7 @@ void EqualizerUi::on_nbands_changed() {
 }
 
 void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands) {
-  for (auto c : bands_grid->get_children()) {
+  for (auto* c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
     delete c;
@@ -300,17 +298,17 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
   for (int n = 0; n < nbands; n++) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
-    Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_type;
-    Gtk::ComboBoxText* band_mode;
-    Gtk::ComboBoxText* band_slope;
-    Gtk::Label* band_width;
-    Gtk::Label* band_label;
-    Gtk::Button* reset_frequency;
-    Gtk::Button* reset_quality;
-    Gtk::ToggleButton* band_solo;
-    Gtk::ToggleButton* band_mute;
-    Gtk::Scale* band_scale;
+    Gtk::Grid* band_grid = nullptr;
+    Gtk::ComboBoxText* band_type = nullptr;
+    Gtk::ComboBoxText* band_mode = nullptr;
+    Gtk::ComboBoxText* band_slope = nullptr;
+    Gtk::Label* band_width = nullptr;
+    Gtk::Label* band_label = nullptr;
+    Gtk::Button* reset_frequency = nullptr;
+    Gtk::Button* reset_quality = nullptr;
+    Gtk::ToggleButton* band_solo = nullptr;
+    Gtk::ToggleButton* band_mute = nullptr;
+    Gtk::Scale* band_scale = nullptr;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -413,7 +411,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     delete c;
   }
 
-  for (auto c : bands_grid_right->get_children()) {
+  for (auto* c : bands_grid_right->get_children()) {
     bands_grid_right->remove(*c);
 
     delete c;
@@ -424,17 +422,17 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
   for (int n = 0; n < nbands; n++) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
-    Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_type;
-    Gtk::ComboBoxText* band_mode;
-    Gtk::ComboBoxText* band_slope;
-    Gtk::Label* band_width;
-    Gtk::Label* band_label;
-    Gtk::Button* reset_frequency;
-    Gtk::Button* reset_quality;
-    Gtk::ToggleButton* band_solo;
-    Gtk::ToggleButton* band_mute;
-    Gtk::Scale* band_scale;
+    Gtk::Grid* band_grid = nullptr;
+    Gtk::ComboBoxText* band_type = nullptr;
+    Gtk::ComboBoxText* band_mode = nullptr;
+    Gtk::ComboBoxText* band_slope = nullptr;
+    Gtk::Label* band_width = nullptr;
+    Gtk::Label* band_label = nullptr;
+    Gtk::Button* reset_frequency = nullptr;
+    Gtk::Button* reset_quality = nullptr;
+    Gtk::ToggleButton* band_solo = nullptr;
+    Gtk::ToggleButton* band_mute = nullptr;
+    Gtk::Scale* band_scale = nullptr;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -590,9 +588,9 @@ void EqualizerUi::on_flat_response() {
 void EqualizerUi::on_calculate_frequencies() {
   const double min_freq = 20.0;
   const double max_freq = 20000.0;
-  double freq0;
-  double freq1;
-  double step;
+  double freq0 = 0.0;
+  double freq1 = 0.0;
+  double step = 0.0;
 
   int nbands = settings->get_int("num-bands");
 
@@ -625,13 +623,13 @@ void EqualizerUi::on_calculate_frequencies() {
 }
 
 void EqualizerUi::load_preset(const std::string& file_name) {
-  gsize dsize;
+  gsize dsize = 0;
   std::stringstream ss;
   boost::property_tree::ptree root;
 
   auto bytes = Gio::Resource::lookup_data_global(presets_path + file_name);
 
-  auto rdata = static_cast<const char*>(bytes->get_data(dsize));
+  const auto* rdata = static_cast<const char*>(bytes->get_data(dsize));
 
   auto file_contents = std::string(rdata);
 
@@ -718,7 +716,7 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 void EqualizerUi::populate_presets_listbox() {
   auto children = presets_listbox->get_children();
 
-  for (auto c : children) {
+  for (auto* c : children) {
     presets_listbox->remove(*c);
   }
 
@@ -729,9 +727,9 @@ void EqualizerUi::populate_presets_listbox() {
 
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Button* apply_btn;
-    Gtk::Label* label;
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Button* apply_btn = nullptr;
+    Gtk::Label* label = nullptr;
 
     b->get_widget("preset_row", row);
     b->get_widget("apply", apply_btn);

@@ -83,8 +83,6 @@
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkAdjustment" id="nbands">
     <property name="lower">1</property>
@@ -234,18 +232,7 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="reset_eq">
-                    <property name="label" translatable="yes">Reset Equalizer</property>
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="valign">center</property>
-                    <property name="margin_start">12</property>
-                  </object>
-                  <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">2</property>
-                  </packing>
+                  <placeholder/>
                 </child>
               </object>
               <packing>
@@ -335,8 +322,6 @@
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

@@ -30,7 +30,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
   Gtk::Grid *bands_grid_left = nullptr, *bands_grid_right = nullptr;
-  Gtk::Button *reset_eq = nullptr, *flat_response = nullptr, *calculate_freqs = nullptr;
+  Gtk::Button *flat_response = nullptr, *calculate_freqs = nullptr;
   Gtk::ListBox* presets_listbox = nullptr;
   Gtk::Switch* split_channels = nullptr;
   Gtk::Stack* stack = nullptr;

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-05-13 20:02+0200\n"
+"POT-Creation-Date: 2020-06-16 11:02-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"

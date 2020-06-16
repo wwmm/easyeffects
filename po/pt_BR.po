@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-13 20:34+0200\n"
+"POT-Creation-Date: 2020-06-16 11:02-0300\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -20,99 +20,99 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: data/ui/application.glade:46 src/calibration_ui.cpp:39
-#: src/calibration_ui.cpp:164
-msgid "Test Signals"
-msgstr "Sinais de Teste"
-
-#: data/ui/application.glade:61
-#, fuzzy
-msgid "Global Bypass"
-msgstr "Ignorar"
-
-#: data/ui/application.glade:83
+#: data/ui/application.glade:60
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
 #: data/com.github.wwmm.pulseeffects.desktop.in:3
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/application.glade:155 data/ui/general_settings.glade:107
+#: data/ui/application.glade:140 src/calibration_ui.cpp:39
+#: src/calibration_ui.cpp:164
+msgid "Test Signals"
+msgstr "Sinais de Teste"
+
+#: data/ui/application.glade:155
+#, fuzzy
+msgid "Global Bypass"
+msgstr "Ignorar"
+
+#: data/ui/application.glade:170 data/ui/general_settings.glade:107
 #: data/ui/equalizer.glade:253
 msgid "Settings"
 msgstr "Configurações"
 
-#: data/ui/application.glade:177
+#: data/ui/application.glade:192
 msgid "Help"
 msgstr "Ajuda"
 
-#: data/ui/application.glade:200 data/ui/filter.glade:204
+#: data/ui/application.glade:215 data/ui/filter.glade:204
 #: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
 #: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
 #: src/presets_menu_ui.cpp:278 src/presets_menu_ui.cpp:295
 msgid "Presets"
 msgstr "Predefinições"
 
-#: data/ui/spectrum_settings.glade:59
+#: data/ui/spectrum_settings.glade:60
 msgid "Show Spectrum"
 msgstr "Mostrar Espectro"
 
-#: data/ui/spectrum_settings.glade:84
+#: data/ui/spectrum_settings.glade:85
 msgid "Fill"
 msgstr "Preencher"
 
-#: data/ui/spectrum_settings.glade:109
+#: data/ui/spectrum_settings.glade:110
 msgid "Border"
 msgstr "Borda"
 
-#: data/ui/spectrum_settings.glade:134
+#: data/ui/spectrum_settings.glade:135
 msgid "Use Custom Color"
 msgstr "Usar Cor Customizada"
 
-#: data/ui/spectrum_settings.glade:159
+#: data/ui/spectrum_settings.glade:160
 msgid "Use Gradient"
 msgstr "Usar Gradiente"
 
-#: data/ui/spectrum_settings.glade:185
+#: data/ui/spectrum_settings.glade:186
 msgid "Spectrum Color"
 msgstr "Cor do Espectro"
 
-#: data/ui/spectrum_settings.glade:213
+#: data/ui/spectrum_settings.glade:214
 msgid "Gradient Color"
 msgstr "Cor do Gradiente"
 
-#: data/ui/spectrum_settings.glade:241
+#: data/ui/spectrum_settings.glade:242
 msgid "Spectrum Type"
 msgstr "Tipo de Espectro"
 
-#: data/ui/spectrum_settings.glade:255
+#: data/ui/spectrum_settings.glade:256
 msgid "Bars"
 msgstr "Barras"
 
-#: data/ui/spectrum_settings.glade:256
+#: data/ui/spectrum_settings.glade:257
 msgid "Lines"
 msgstr "Linhas"
 
-#: data/ui/spectrum_settings.glade:271
+#: data/ui/spectrum_settings.glade:272
 msgid "Points"
 msgstr "Pontos"
 
-#: data/ui/spectrum_settings.glade:303
+#: data/ui/spectrum_settings.glade:304
 msgid "Height"
 msgstr "Altura"
 
-#: data/ui/spectrum_settings.glade:336
+#: data/ui/spectrum_settings.glade:337
 msgid "Scale"
 msgstr "Escala"
 
-#: data/ui/spectrum_settings.glade:369
+#: data/ui/spectrum_settings.glade:370
 msgid "Exponent"
 msgstr "Expoente"
 
-#: data/ui/spectrum_settings.glade:402
+#: data/ui/spectrum_settings.glade:403
 msgid "Sampling"
 msgstr "Amostragem"
 
-#: data/ui/spectrum_settings.glade:433
+#: data/ui/spectrum_settings.glade:434
 msgid "Line Width"
 msgstr "Largura da Linha"
 
@@ -196,7 +196,7 @@ msgstr "Usar Tema Escuro"
 #: data/ui/stereo_tools.glade:1066 data/ui/crossfeed.glade:429
 #: data/ui/maximizer.glade:499 data/ui/loudness.glade:469
 #: data/ui/gate.glade:756 data/ui/multiband_gate.glade:2368
-#: data/ui/deesser.glade:878 data/ui/convolver.glade:698
+#: data/ui/deesser.glade:879 data/ui/convolver.glade:698
 #: data/ui/crystalizer.glade:561 data/ui/pitch.glade:582
 #: data/ui/webrtc.glade:850 data/ui/delay.glade:469
 msgid "Reset"
@@ -255,7 +255,7 @@ msgstr "Resampler"
 msgid "State"
 msgstr "Estado"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:122
+#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:134
 msgid "Blacklist"
 msgstr "Lista Negra"
 
@@ -456,7 +456,7 @@ msgstr "Atenuação"
 #: data/ui/stereo_tools.glade:1001 data/ui/crossfeed.glade:364
 #: data/ui/maximizer.glade:444 data/ui/loudness.glade:404
 #: data/ui/gate.glade:691 data/ui/multiband_gate.glade:2303
-#: data/ui/deesser.glade:813 data/ui/pitch.glade:517 data/ui/webrtc.glade:785
+#: data/ui/deesser.glade:814 data/ui/pitch.glade:517 data/ui/webrtc.glade:785
 #: data/ui/delay.glade:404
 msgid "Provided by"
 msgstr ""
@@ -1185,7 +1185,7 @@ msgstr "Pico Q"
 msgid "Laxity"
 msgstr "Frouxidão"
 
-#: data/ui/deesser.glade:761
+#: data/ui/deesser.glade:762
 msgid "Detected"
 msgstr "Detectado"
 
@@ -1567,11 +1567,11 @@ msgstr "Redefinir o PulseEffects."
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:250
+#: src/application.cpp:257
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:258
+#: src/application.cpp:265
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 
