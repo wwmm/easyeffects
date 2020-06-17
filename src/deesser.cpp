@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
     if (!l->compression_connection.connected()) {
       l->compression_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0;
 
             g_object_get(l->deesser, "compression", &compression, nullptr);
 
@@ -25,7 +25,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
     if (!l->detected_connection.connected()) {
       l->detected_connection = Glib::signal_timeout().connect(
           [l]() {
-            float detected;
+            float detected = 0.0;
 
             g_object_get(l->deesser, "detected", &detected, nullptr);
 
@@ -47,17 +47,17 @@ Deesser::Deesser(const std::string& tag, const std::string& schema) : PluginBase
   deesser = gst_element_factory_make("calf-sourceforge-net-plugins-Deesser", nullptr);
 
   if (is_installed(deesser)) {
-    auto in_level = gst_element_factory_make("level", "deesser_input_level");
-    auto out_level = gst_element_factory_make("level", "deesser_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "deesser_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "deesser_audioconvert_out");
+    auto* in_level = gst_element_factory_make("level", "deesser_input_level");
+    auto* out_level = gst_element_factory_make("level", "deesser_output_level");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "deesser_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "deesser_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, deesser, audioconvert_out, out_level, nullptr);
 
     gst_element_link_many(in_level, audioconvert_in, deesser, audioconvert_out, out_level, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(in_level, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

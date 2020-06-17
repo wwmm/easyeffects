@@ -1,5 +1,6 @@
 #include "compressor.hpp"
 #include <glibmm/main.h>
+#include <array>
 #include "util.hpp"
 
 namespace {
@@ -11,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0;
+            float inR = 0.0;
 
             g_object_get(l->compressor, "ilm-l", &inL, nullptr);
             g_object_get(l->compressor, "ilm-r", &inR, nullptr);
@@ -29,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0;
+            float outR = 0.0;
 
             g_object_get(l->compressor, "olm-l", &outL, nullptr);
             g_object_get(l->compressor, "olm-r", &outR, nullptr);

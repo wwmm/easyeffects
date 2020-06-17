@@ -6,12 +6,12 @@ Delay::Delay(const std::string& tag, const std::string& schema) : PluginBase(tag
   delay = gst_element_factory_make("lsp-plug-in-plugins-lv2-comp-delay-x2-stereo", nullptr);
 
   if (is_installed(delay)) {
-    auto input_gain = gst_element_factory_make("volume", nullptr);
-    auto in_level = gst_element_factory_make("level", "delay_input_level");
-    auto output_gain = gst_element_factory_make("volume", nullptr);
-    auto out_level = gst_element_factory_make("level", "delay_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "delay_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "delay_audioconvert_out");
+    auto* input_gain = gst_element_factory_make("volume", nullptr);
+    auto* in_level = gst_element_factory_make("level", "delay_input_level");
+    auto* output_gain = gst_element_factory_make("volume", nullptr);
+    auto* out_level = gst_element_factory_make("level", "delay_output_level");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "delay_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "delay_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, delay, audioconvert_out, output_gain,
                      out_level, nullptr);
@@ -19,8 +19,8 @@ Delay::Delay(const std::string& tag, const std::string& schema) : PluginBase(tag
     gst_element_link_many(input_gain, in_level, audioconvert_in, delay, audioconvert_out, output_gain, out_level,
                           nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

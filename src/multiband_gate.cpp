@@ -1,5 +1,6 @@
 #include "multiband_gate.hpp"
 #include <glibmm/main.h>
+#include <array>
 #include "util.hpp"
 
 namespace {

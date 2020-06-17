@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, BassEnhancer* l) 
     if (!l->harmonics_connection.connected()) {
       l->harmonics_connection = Glib::signal_timeout().connect(
           [l]() {
-            float harmonics;
+            float harmonics = 0.0;
 
             g_object_get(l->bass_enhancer, "meter-drive", &harmonics, nullptr);
 
