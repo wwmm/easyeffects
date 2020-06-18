@@ -606,9 +606,10 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
   if (show_fft_spectrum) {
     float fft_min_freq_log = log10(fft_min_freq);
     float fft_max_freq_log = log10(fft_max_freq);
-    float mouse_freq_log = static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
+    float mouse_freq_log =
+        static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
 
-    mouse_freq = exp10(mouse_freq_log);
+    mouse_freq = std::pow(10.0f, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
     mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_left - fft_min_left) + fft_min_left;
   } else {
@@ -627,11 +628,13 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
   if (show_fft_spectrum) {
     float fft_min_freq_log = log10(fft_min_freq);
     float fft_max_freq_log = log10(fft_max_freq);
-    float mouse_freq_log = static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
+    float mouse_freq_log =
+        static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
 
-    mouse_freq = exp10(mouse_freq_log);
+    mouse_freq = std::pow(10.0f, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
-    mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_right - fft_min_right) + fft_min_right;
+    mouse_intensity =
+        (height - static_cast<float>(event->y)) / height * (fft_max_right - fft_min_right) + fft_min_right;
   } else {
     mouse_time = static_cast<float>(event->x) * max_time / width;
 
