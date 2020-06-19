@@ -107,7 +107,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 }
 
 GeneralSettingsUi::~GeneralSettingsUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 

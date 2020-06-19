@@ -126,7 +126,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 }
 
 ApplicationUi::~ApplicationUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 

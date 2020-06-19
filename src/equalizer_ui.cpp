@@ -225,7 +225,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
   connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
-    for (auto c : connections_bands) {
+    for (auto& c : connections_bands) {
       c.disconnect();
     }
 
@@ -262,7 +262,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 }
 
 EqualizerUi::~EqualizerUi() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
@@ -270,7 +270,7 @@ EqualizerUi::~EqualizerUi() {
 }
 
 void EqualizerUi::on_nbands_changed() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
