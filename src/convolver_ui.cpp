@@ -220,7 +220,7 @@ auto ConvolverUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 void ConvolverUi::populate_irs_listbox() {
   auto children = irs_listbox->get_children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     irs_listbox->remove(*c);
   }
 

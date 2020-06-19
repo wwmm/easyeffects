@@ -215,7 +215,7 @@ void BlacklistSettingsUi::populate_blacklist_out_listbox() {
 
   auto children = blacklist_out_listbox->get_children();
 
-  for (auto* c : children) {
+  for (const auto& c : children) {
     blacklist_out_listbox->remove(*c);
   }
 
