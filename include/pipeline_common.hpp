@@ -77,7 +77,7 @@ auto check_update(gpointer user_data) -> bool {
   if (update) {
     std::string list;
 
-    for (auto name : l->plugins_order) {
+    for (const auto& name : l->plugins_order) {
       list += name + ",";
     }
 
