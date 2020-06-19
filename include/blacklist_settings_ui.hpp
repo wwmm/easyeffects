@@ -40,12 +40,16 @@ class BlacklistSettingsUi : public Gtk::Grid {
   Gtk::Entry *blacklist_in_name = nullptr, *blacklist_out_name = nullptr;
   Gtk::ScrolledWindow *blacklist_in_scrolled_window = nullptr, *blacklist_out_scrolled_window = nullptr;
 
+  Glib::RefPtr<Gio::Settings> settings;
+
+  // singleton pointer used to access settings from static methods
+  // needed because Gio::Settings instance can't be made static
+  static BlacklistSettingsUi* thisPtr;
+
   static std::vector<sigc::connection> connections;
 
   static void populate_blacklist_in_listbox();
-
   static void populate_blacklist_out_listbox();
-
   static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };
 
