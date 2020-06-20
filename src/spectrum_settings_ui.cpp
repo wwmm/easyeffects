@@ -128,7 +128,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 }
 
 SpectrumSettingsUi::~SpectrumSettingsUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 

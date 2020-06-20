@@ -69,7 +69,7 @@ void CrystalizerUi::reset() {
 }
 
 void CrystalizerUi::build_bands(const int& nbands) {
-  for (auto c : bands_grid->get_children()) {
+  for (const auto& c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
     delete c;

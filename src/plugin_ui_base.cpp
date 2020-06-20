@@ -35,7 +35,7 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std:
 }
 
 PluginUiBase::~PluginUiBase() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 

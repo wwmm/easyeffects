@@ -40,7 +40,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 

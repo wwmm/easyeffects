@@ -225,7 +225,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
   connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
-    for (auto c : connections_bands) {
+    for (auto& c : connections_bands) {
       c.disconnect();
     }
 
@@ -262,7 +262,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 }
 
 EqualizerUi::~EqualizerUi() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
@@ -270,7 +270,7 @@ EqualizerUi::~EqualizerUi() {
 }
 
 void EqualizerUi::on_nbands_changed() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
@@ -287,7 +287,7 @@ void EqualizerUi::on_nbands_changed() {
 }
 
 void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands) {
-  for (auto* c : bands_grid->get_children()) {
+  for (const auto& c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
     delete c;
@@ -405,13 +405,13 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 }
 
 void EqualizerUi::build_unified_bands(const int& nbands) {
-  for (auto c : bands_grid_left->get_children()) {
+  for (const auto& c : bands_grid_left->get_children()) {
     bands_grid_left->remove(*c);
 
     delete c;
   }
 
-  for (auto* c : bands_grid_right->get_children()) {
+  for (const auto& c : bands_grid_right->get_children()) {
     bands_grid_right->remove(*c);
 
     delete c;
@@ -716,7 +716,7 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 void EqualizerUi::populate_presets_listbox() {
   auto children = presets_listbox->get_children();
 
-  for (auto* c : children) {
+  for (const auto& c : children) {
     presets_listbox->remove(*c);
   }
 

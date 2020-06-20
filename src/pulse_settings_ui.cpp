@@ -132,7 +132,7 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
 }
 
 PulseSettingsUi::~PulseSettingsUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 
