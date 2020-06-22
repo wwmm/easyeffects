@@ -81,7 +81,7 @@ msgstr "Colore Sfumatura"
 
 #: data/ui/spectrum_settings.glade:242
 msgid "Spectrum Type"
-msgstr "Aspetto Spettro"
+msgstr "Tipo Spettro"
 
 #: data/ui/spectrum_settings.glade:256
 msgid "Bars"
@@ -125,7 +125,7 @@ msgstr "Larghezza Blocco"
 
 #: data/ui/pulse_settings.glade:196 data/ui/pulse_settings.glade:486
 msgid "Pipeline Input"
-msgstr "Pipeline di Ingresso"
+msgstr "In Ingresso alla Pipeline"
 
 #: data/ui/pulse_settings.glade:210 data/ui/pulse_settings.glade:301
 #: data/ui/pulse_settings.glade:500 data/ui/pulse_settings.glade:591
@@ -141,7 +141,7 @@ msgstr "Latenza"
 
 #: data/ui/pulse_settings.glade:287 data/ui/pulse_settings.glade:577
 msgid "Pipeline Output"
-msgstr "Pipeline di Uscita"
+msgstr "In Uscita alla Pipeline"
 
 #: data/ui/pulse_settings.glade:370 data/ui/blacklist_settings.glade:143
 msgid "Input Effects"
@@ -182,7 +182,7 @@ msgstr "Esegui Servizio all'Avvio"
 
 #: data/ui/general_settings.glade:56
 msgid "Process All Outputs"
-msgstr "Elabora Ogni Uscita"
+msgstr "Processa Tutto in Uscita"
 
 #: data/ui/general_settings.glade:81
 msgid "Use Dark Theme"
@@ -225,7 +225,7 @@ msgstr "Info"
 
 #: data/ui/general_settings.glade:180
 msgid "Process All Inputs"
-msgstr "Elabora Ogni Ingresso"
+msgstr "Processa Tutto in Ingresso"
 
 #: data/ui/general_settings.glade:232
 msgid "Priority"
@@ -270,7 +270,7 @@ msgstr "Sink Predefinito"
 
 #: data/ui/pulse_info.glade:115
 msgid "Default Source"
-msgstr "Ingresso Predefinito"
+msgstr "Sorgente Predefinita"
 
 #: data/ui/pulse_info.glade:157
 msgid "Protocol"
@@ -310,7 +310,7 @@ msgstr "Configurazione"
 
 #: data/ui/pulse_info.glade:487
 msgid "Resamplers"
-msgstr "Metodi di Ricampionamento"
+msgstr "Ricampionamento"
 
 #: data/ui/autogain.glade:24
 msgid "Auto Gain"
@@ -1255,7 +1255,7 @@ msgstr "Dopo"
 
 #: data/ui/pitch.glade:36
 msgid "Pitch"
-msgstr "Pitch"
+msgstr "Intonazione"
 
 #: data/ui/pitch.glade:142
 msgid "Faster"
