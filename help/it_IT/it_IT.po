@@ -1733,7 +1733,7 @@ msgstr "Fattore di qualità."
 #. (itstool) path: page/title
 #: C/pitch.page:9
 msgid "Pitch"
-msgstr "Pitch"
+msgstr "Intonazione"
 
 #. (itstool) path: page/p
 #: C/pitch.page:10
@@ -1741,13 +1741,14 @@ msgid ""
 "Pitch shifting is a sound recording technique in which the original pitch of "
 "a sound is raised or lowered."
 msgstr ""
-"Il cambio di intonazione (pitch in inglese) è una tecnica di registrazione "
-"del suono in cui il tono originale viene aumentato o diminuito."
+"Il cambio di intonazione è una tecnica di registrazione del suono in cui il "
+"tono originale viene aumentato o diminuito."
 
 #. (itstool) path: page/p
 #: C/pitch.page:14
 msgid "PulseEffects uses the pitch shifter from RubberBand."
-msgstr "PulseEffects usa il plugin Pitch ideato da RubberBand."
+msgstr 
+"PulseEffects usa il plugin di modifica dell'intonazione ideato da RubberBand."
 
 #. (itstool) path: title/em
 #: C/pitch.page:20
@@ -2133,7 +2134,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/general.page:23
 msgid "Process All Outputs"
-msgstr "Elabora Ogni Uscita"
+msgstr "Processa Tutto in Uscita"
 
 #. (itstool) path: item/p
 #: C/general.page:25
@@ -2149,7 +2150,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/general.page:32
 msgid "Process All Inputs"
-msgstr "Elabora Ogni Ingresso"
+msgstr "Processa Tutto in Ingresso"
 
 #. (itstool) path: item/p
 #: C/general.page:34
@@ -2477,8 +2478,8 @@ msgstr ""
 "Si può scegliere a quali programmi abilitare gli effetti tramite il "
 "selettore accanto al loro nome nella voce Applicazioni. Per applicare sempre "
 "gli effetti a tutti i programmi, si può selezionare l'opzione <link xref="
-"\"general#title_enable_all_apps\" its:withinText=\"yes\">Elabora Ogni Uscita/"
-"Ingresso</link> nelle impostazioni generali."
+"\"general#title_enable_all_apps\" its:withinText=\"yes\">Processa Tutto in "
+"Uscita/Ingresso</link> nelle impostazioni generali."
 
 #. (itstool) path: page/title
 #: C/effectsorder.page:10
