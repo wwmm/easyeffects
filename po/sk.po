@@ -1559,7 +1559,7 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects je pokročilý nástroj pre úpravu zvuku. Obsahuje taktiež"
+"PulseEffects je pokročilý nástroj pre úpravu zvuku. Obsahuje taktiež "
 "Equalizér, Limiter, Kompresor, nástroj Ozveny, a viacero ďalších."
 "Pre doplnenie napríklad aj zabudovaný analyzátor spektra."
 
