@@ -62,49 +62,49 @@ jobs:
           command:      |
                 pulseeffects
           background:   true
-      - run:
-          name:         Waiting PulseEffects initialization
-          command:      .circleci/wait_pe.sh
-      - run:
-          name:         Testing play/pause
-          command:      |
-                .circleci/enable_all_plugins.sh
-                # sink inputs
-                gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
-                gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
-                # source outputs
-                gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
-                gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
-      - run:
-          name:         Simulating audio applications
-          command:      |
-                gst-launch-1.0 audiotestsrc ! queue ! pulsesink &
-                gst-launch-1.0 pulsesrc ! queue ! pulsesink
-          background:   true
-      - run:
-          name:         Testing plugin enable/disable on the fly
-          command:      |
-                sleep 5
-                .circleci/enable_all_plugins.sh
-                sleep 1
-                .circleci/disable_all_plugins.sh
-                sleep 1
-                .circleci/enable_all_plugins.sh
-      - run:
-          name:         Testing presets
-          command:      |
-                sleep 5
-                cp -v .circleci/presets/soe_preset_disable_all.json /root/.config/PulseEffects/input
-                cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/PulseEffects/input
-                cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/PulseEffects/output
-                cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/PulseEffects/output
-                pulseeffects -l soe_preset_disable_all || true
-                sleep 1
-                pulseeffects -l soe_preset_enable_all || true
-                sleep 1
-                pulseeffects -l sie_preset_disable_all || true
-                sleep 1
-                pulseeffects -l sie_preset_enalbe_all || true
+      # - run:
+      #     name:         Waiting PulseEffects initialization
+      #     command:      .circleci/wait_pe.sh
+      # - run:
+      #     name:         Testing play/pause
+      #     command:      |
+      #           .circleci/enable_all_plugins.sh
+      #           # sink inputs
+      #           gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
+      #           gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
+      #           # source outputs
+      #           gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
+      #           gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
+      # - run:
+      #     name:         Simulating audio applications
+      #     command:      |
+      #           gst-launch-1.0 audiotestsrc ! queue ! pulsesink &
+      #           gst-launch-1.0 pulsesrc ! queue ! pulsesink
+      #     background:   true
+      # - run:
+      #     name:         Testing plugin enable/disable on the fly
+      #     command:      |
+      #           sleep 5
+      #           .circleci/enable_all_plugins.sh
+      #           sleep 1
+      #           .circleci/disable_all_plugins.sh
+      #           sleep 1
+      #           .circleci/enable_all_plugins.sh
+      # - run:
+      #     name:         Testing presets
+      #     command:      |
+      #           sleep 5
+      #           cp -v .circleci/presets/soe_preset_disable_all.json /root/.config/PulseEffects/input
+      #           cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/PulseEffects/input
+      #           cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/PulseEffects/output
+      #           cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/PulseEffects/output
+      #           pulseeffects -l soe_preset_disable_all || true
+      #           sleep 1
+      #           pulseeffects -l soe_preset_enable_all || true
+      #           sleep 1
+      #           pulseeffects -l sie_preset_disable_all || true
+      #           sleep 1
+      #           pulseeffects -l sie_preset_enalbe_all || true
       - run:
           name:         Reset Configuration
           command:      |
