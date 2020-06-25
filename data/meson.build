@@ -88,9 +88,10 @@ glade_about = configure_file(input: 'ui/about.glade.in',
                configuration: conf_glade)
 
 gresources = gnome_mod.compile_resources(
-	'pulseeffects-resources',
+	'resources',
 	'pulseeffects.gresource.xml',
 	c_name: meson.project_name(),
+  gresource_bundle: true,
   dependencies: [glade_about]
 )
 

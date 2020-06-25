@@ -1,0 +1,15 @@
+[package]
+name = "pulseeffects"
+version = "4.7.3"
+authors = ["Wellington Wallace <wellingtonwallace@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+log = "0.4.8"
+env_logger = "0.7.1"
+gettext-rs= { version = "0.4.4", features = ["gettext-system"] }
+glib = "0.9.3"
+gtk = {version = "", features = ["v3_24"]}
+gio = {version = "", features = ["v2_60"]}
+gtk_resources = "0.1.5"
+gdk = {version = "", features = ["v3_24"]}

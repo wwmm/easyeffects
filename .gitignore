@@ -1,14 +1,12 @@
-__pycache__
 _build
 build
-locale
 gschemas.compiled
-obj-*-linux-gnu
 .vscode
 node_modules
 package-lock.json
-compile_commands.json
-.clangd
+target
+src/config.rs
+src/ui/resources.gresource
 
 # Compiled python modules.
 *.pyc

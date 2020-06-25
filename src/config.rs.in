@@ -1,0 +1,3 @@
+pub const GETTEXT_PACKAGE: &str = @GETTEXT_PACKAGE@;
+pub const LOCALE_DIR: &str = @LOCALE_DIR@;
+pub const VERSION: &str = @VERSION@;

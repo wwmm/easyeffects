@@ -1,14 +1,11 @@
 project(
 	'pulseeffects',
-	'c',
 	'cpp',
-	default_options : ['cpp_std=c++17','buildtype=debugoptimized'],
 	version: '4.7.3',
-	meson_version: '>= 0.40.0'
+	meson_version: '>= 0.48.0',
+	default_options : ['buildtype=release']
 )
 
-add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'c')
-add_global_arguments('-DG_LOG_DOMAIN="pulseeffects"', language : 'cpp')
 add_global_arguments('-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
 	language:'c')
 
@@ -19,7 +16,6 @@ prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))
 datadir = join_paths(prefix, get_option('datadir'))
 localedir = join_paths(prefix, get_option('localedir'))
-include_dir = include_directories('include')
 config_h_dir = include_directories('.')
 plugins_install_dir = '@0@/gstreamer-1.0'.format(get_option('libdir'))
 
@@ -46,3 +42,4 @@ subdir('help')
 subdir('src')
 
 meson.add_install_script('meson_post_install.py')
+
