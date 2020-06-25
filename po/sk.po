@@ -1258,7 +1258,7 @@ msgstr "Načítať Impulz"
 
 #: data/ui/convolver.glade:105
 msgid "Import Impulse Response File"
-msgstr "Načitať Ddpoveď Impulzu"
+msgstr "Načitať Odpoveď Impulzu"
 
 #: data/ui/convolver.glade:221
 msgid "L"
