@@ -1466,7 +1466,7 @@ msgid ""
 "plugged in the system"
 msgstr ""
 "Automaticky použiť toto nastavenie, keď je aktuálne používané zariadenie "
-"zapojené v systéme
+"zapojené v systéme"
 
 #: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
 #: src/presets_menu_ui.cpp:110
