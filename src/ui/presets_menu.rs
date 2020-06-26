@@ -83,4 +83,6 @@ fn populate_listbox(
     }
 
     let names = presets_manager.get_names(preset_type);
+
+    println!("{:?}", names);
 }
