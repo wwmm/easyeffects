@@ -4,7 +4,7 @@ use gettextrs::*;
 mod config;
 mod application;
 mod ui;
-mod presets_manager;
+mod presets;
 
 fn main() {
     env_logger::init();

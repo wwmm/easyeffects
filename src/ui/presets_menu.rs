@@ -1,6 +1,7 @@
 use gtk::prelude::*;
 
-use crate::presets_manager::PresetType;
+use crate::presets::manager;
+
 use gtk_resources::UIResource;
 
 #[derive(UIResource, Debug)]
@@ -30,6 +31,8 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
     output_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
     input_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
 
+    let presets_manager = manager::Manager::new();
+
     button.connect_clicked(move |obj| {
         let top_widget = obj
             .get_toplevel()
@@ -38,8 +41,13 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
 
         output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-        populate_listbox(PresetType::Input, &input_listbox);
-        populate_listbox(PresetType::Output, &output_listbox);
+        populate_listbox(&presets_manager, manager::PresetType::Input, &input_listbox);
+
+        populate_listbox(
+            &presets_manager,
+            manager::PresetType::Output,
+            &output_listbox,
+        );
     });
 
     return resources.widgets_grid;
@@ -63,12 +71,16 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
     return 0;
 }
 
-fn populate_listbox(preset_type: PresetType, listbox: &gtk::ListBox) {
+fn populate_listbox(
+    presets_manager: &manager::Manager,
+    preset_type: manager::PresetType,
+    listbox: &gtk::ListBox,
+) {
     let children = listbox.get_children();
 
-    for child in children{
+    for child in children {
         listbox.remove(&child);
     }
 
-    // auto names = app->presets_manager->get_names(preset_type);
+    let names = presets_manager.get_names(preset_type);
 }
