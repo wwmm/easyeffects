@@ -31,8 +31,6 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
     output_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
     input_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
 
-    let presets_manager = manager::Manager::new();
-
     button.connect_clicked(move |obj| {
         let top_widget = obj
             .get_toplevel()
@@ -41,11 +39,13 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
 
         output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-        populate_listbox(&presets_manager, manager::PresetType::Input, &input_listbox);
+        populate_listbox(
+            &manager::PresetType::Input,
+            &input_listbox,
+        );
 
         populate_listbox(
-            &presets_manager,
-            manager::PresetType::Output,
+            &manager::PresetType::Output,
             &output_listbox,
         );
     });
@@ -72,8 +72,7 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
 }
 
 fn populate_listbox(
-    presets_manager: &manager::Manager,
-    preset_type: manager::PresetType,
+    preset_type: &manager::PresetType,
     listbox: &gtk::ListBox,
 ) {
     let children = listbox.get_children();
@@ -82,7 +81,88 @@ fn populate_listbox(
         listbox.remove(&child);
     }
 
+    let presets_manager = manager::Manager::new();
+
     let names = presets_manager.get_names(preset_type);
 
-    println!("{:?}", names);
+    for name in names {
+        let builder =
+            gtk::Builder::new_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
+
+        let row: gtk::ListBoxRow = builder
+            .get_object("preset_row")
+            .expect("builder could not get the widget: preset_row");
+
+        let apply_btn: gtk::Button = builder
+            .get_object("apply")
+            .expect("builder could not get the widget: apply");
+
+        let save_btn: gtk::Button = builder
+            .get_object("save")
+            .expect("builder could not get the widget: save");
+
+        let remove_btn: gtk::Button = builder
+            .get_object("remove")
+            .expect("builder could not get the widget: remove");
+
+        let label: gtk::Label = builder
+            .get_object("name")
+            .expect("builder could not get the widget: name");
+
+        let autoload_btn: gtk::Button = builder
+            .get_object("autoload")
+            .expect("builder could not get the widget: autoload");
+
+        row.set_widget_name(name.as_str());
+
+        label.set_text(name.as_str());
+
+        // if (is_autoloaded(preset_type, name)) {
+        //     autoload_btn->set_active(true);
+        // }
+
+        {
+            let presets_manager = presets_manager.clone();
+            let preset_type = (*preset_type).clone();
+            let name = name.clone();
+
+            apply_btn.connect_clicked(move |_btn| {
+                // settings->set_string("last-used-preset", row->get_name());
+
+                presets_manager.load(&preset_type, &name);
+            });
+        }
+
+        save_btn.connect_clicked(|obj| {
+            // app->presets_manager->save(preset_type, name);
+        });
+
+        remove_btn.connect_clicked(|obj| {
+            // app->presets_manager->remove(preset_type, name);
+
+            // populate_listbox(preset_type);
+        });
+
+        autoload_btn.connect_clicked(|obj| {
+            // if (preset_type == PresetType::output) {
+            //     auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
+            //     if (autoload_btn->get_active()) {
+            //       app->presets_manager->add_autoload(dev_name, name);
+            //     } else {
+            //       app->presets_manager->remove_autoload(dev_name, name);
+            //     }
+            //   } else {
+            //     auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+            //     if (autoload_btn->get_active()) {
+            //       app->presets_manager->add_autoload(dev_name, name);
+            //     } else {
+            //       app->presets_manager->remove_autoload(dev_name, name);
+            //     }
+            //   }
+            //   populate_listbox(preset_type);
+        });
+
+        listbox.add(&row);
+        listbox.show_all();
+    }
 }
