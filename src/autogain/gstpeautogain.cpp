@@ -52,11 +52,13 @@ enum {
   PROP_R,
   PROP_L,
   PROP_G,
+  PROP_SV,
   PROP_LRA,
   PROP_NOTIFY,
   PROP_DETECT_SILENCE,
   PROP_RESET,
-  PROP_USE_GEOMETRIC_MEAN
+  PROP_USE_GEOMETRIC_MEAN,
+  PROP_USE_STATIC_INTEGRATED_VALUE
 };
 
 /* pad templates */
@@ -162,6 +164,11 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
+      gobject_class, PROP_SV,
+      g_param_spec_float("staticv", "Static Value", "Static Value", -100.0f, 0.0f, -12.0f,
+                           static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
       gobject_class, PROP_NOTIFY,
       g_param_spec_boolean("notify-host", "Notify Host", "Notify host of variable changes", true,
                            static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
@@ -187,6 +194,13 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
       g_param_spec_boolean("use-geometric-mean", "Loudness Geometric Mean",
                            "Estimated loudness is the geometric mean of the momentary, short-term and global values",
                            true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+
+  g_object_class_install_property(
+      gobject_class, PROP_USE_STATIC_INTEGRATED_VALUE,
+      g_param_spec_boolean("use-static-integrated-value", "Static Value replacement for Integrated",
+                           "Estimated loudness is calculated from momentary, short-term and static values \
+                            instead momentary, short-term and global values",
+                           true, static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peautogain_init(GstPeautogain* peautogain) {
@@ -200,6 +214,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->momentary = 0.0f;
   peautogain->shortterm = 0.0f;
   peautogain->global = 0.0f;
+  peautogain->staticv = -12.0f;  // ~LUFS/2 to Int Number (static value = constant value set by user)
   peautogain->relative = 0.0f;
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
@@ -211,6 +226,7 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->reset = false;
   peautogain->use_geometric_mean = true;
   peautogain->ebur_state = nullptr;
+  peautogain->use_static_integrated_value = false;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peautogain), true);
 }
@@ -233,6 +249,9 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
     case PROP_WEIGHT_I:
       peautogain->weight_i = g_value_get_int(value);
       break;
+    case PROP_SV:
+      peautogain->staticv = g_value_get_int(value);
+      break;
     case PROP_NOTIFY:
       peautogain->notify = g_value_get_boolean(value);
       break;
@@ -244,6 +263,9 @@ void gst_peautogain_set_property(GObject* object, guint property_id, const GValu
       break;
     case PROP_USE_GEOMETRIC_MEAN:
       peautogain->use_geometric_mean = g_value_get_boolean(value);
+      break;
+    case PROP_USE_STATIC_INTEGRATED_VALUE:
+      peautogain->use_static_integrated_value = g_value_get_boolean(value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -284,6 +306,9 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
     case PROP_L:
       g_value_set_float(value, peautogain->loudness);
       break;
+    case PROP_SV:
+      g_value_set_float(value, peautogain->staticv);
+      break;
     case PROP_G:
       g_value_set_float(value, peautogain->gain);
       break;
@@ -301,6 +326,9 @@ void gst_peautogain_get_property(GObject* object, guint property_id, GValue* val
       break;
     case PROP_USE_GEOMETRIC_MEAN:
       g_value_set_boolean(value, peautogain->use_geometric_mean);
+      break;
+    case PROP_USE_STATIC_INTEGRATED_VALUE:
+      g_value_set_boolean(value, peautogain->use_static_integrated_value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
@@ -439,12 +467,23 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
     if (!failed) {
       if (peautogain->use_geometric_mean) {
-        peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
+        if (peautogain->use_static_integrated_value) {
+          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->staticv);
+        } else {
+          peautogain->loudness = std::cbrt(peautogain->momentary * peautogain->shortterm * peautogain->global);
+        }
       } else {
-        peautogain->loudness =
-            (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
-             peautogain->weight_i * peautogain->global) /
-            (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        if (peautogain->use_static_integrated_value) {
+          peautogain->loudness =
+              (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
+               peautogain->weight_i * peautogain->staticv) /
+              (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        } else {
+          peautogain->loudness =
+              (peautogain->weight_m * peautogain->momentary + peautogain->weight_s * peautogain->shortterm +
+               peautogain->weight_i * peautogain->global) /
+              (peautogain->weight_m + peautogain->weight_s + peautogain->weight_i);
+        }
       }
 
       float diff = peautogain->target - peautogain->loudness;
