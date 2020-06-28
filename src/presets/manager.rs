@@ -1,6 +1,7 @@
 use glib;
+use serde_json::Value;
 use std::fs;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 #[derive(Clone)]
 pub enum PresetType {
@@ -12,6 +13,7 @@ pub enum PresetType {
 pub struct Manager {
     input_presets_directories: Vec<String>,
     output_presets_directories: Vec<String>,
+    json: Value
 }
 
 impl Manager {
@@ -56,6 +58,7 @@ impl Manager {
         Manager {
             input_presets_directories: input_directories,
             output_presets_directories: output_directories,
+            json: serde_json::from_str("{}").unwrap()
         }
     }
 
@@ -94,20 +97,23 @@ impl Manager {
         }
     }
 
-    pub fn load(&self, preset_type: &PresetType, name: &String) {
+    pub fn load(&mut self, preset_type: &PresetType, name: &String) {
         let mut name = name.clone();
 
         name.push_str(".json");
 
         let mut preset_found = false;
+        let mut file_path = PathBuf::new();
 
         match preset_type {
             PresetType::Output => {
                 for dir in &self.output_presets_directories {
-                    let file_path = Path::new(dir).join(&name);
+                    let f_path = file_path.join(dir).join(&name);
 
-                    if file_path.is_file() {
+                    if f_path.is_file() {
                         preset_found = true;
+
+                        file_path.push(f_path);
 
                         println!("{:?}", file_path.display());
 
@@ -115,7 +121,13 @@ impl Manager {
                     }
                 }
 
-                if preset_found {}
+                if preset_found {
+                    let file_string = fs::read_to_string(file_path).expect("could not read preset file to string");
+
+                    self.json = serde_json::from_str(file_string.as_str()).unwrap();
+
+                    println!("{:?}", self.json);
+                }
             }
             PresetType::Input => {
                 for dir in &self.input_presets_directories {

@@ -1,6 +1,7 @@
 use gtk::prelude::*;
 
 use crate::presets::manager;
+use std::sync::{Arc, Mutex};
 
 use gtk_resources::UIResource;
 
@@ -122,14 +123,14 @@ fn populate_listbox(
         // }
 
         {
-            let presets_manager = presets_manager.clone();
+            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
             let preset_type = (*preset_type).clone();
             let name = name.clone();
 
             apply_btn.connect_clicked(move |_btn| {
                 // settings->set_string("last-used-preset", row->get_name());
 
-                presets_manager.load(&preset_type, &name);
+                presets_manager.lock().unwrap().load(&preset_type, &name);
             });
         }
 

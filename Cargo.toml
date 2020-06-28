@@ -13,3 +13,4 @@ gtk = {version = "", features = ["v3_24"]}
 gio = {version = "", features = ["v2_60"]}
 gtk_resources = "0.1.5"
 gdk = {version = "", features = ["v3_24"]}
+serde_json = "1.0.55"
