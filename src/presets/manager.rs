@@ -130,6 +130,8 @@ impl Manager {
                     self.json = serde_json::from_str(file_string.as_str()).unwrap();
 
                     let mut test = serde_yaml::to_string(&self.json).unwrap();
+                    test = test.replace("type","style");
+                    // println!("{:?}", test);
                     test = test.replace("\"","");
 
                     let root: preset_structures::OutputRoot =

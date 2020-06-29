@@ -21,6 +21,13 @@ struct Spectrum {
     use_custom_color: bool,
     fill: bool,
     show_bar_border: bool,
+    scale: f32,
+    exponent: f32,
+    sampling_freq: i32,
+    line_width: i32,
+    style: String,
+    color: [f32;4],
+    gradient_color: [f32;4]
 }
 
 #[derive(Serialize, Deserialize, Debug)]
