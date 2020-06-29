@@ -1,5 +1,7 @@
+use crate::presets::preset_structures;
 use glib;
-use serde_json::Value;
+use serde_json;
+use serde_yaml;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -13,7 +15,7 @@ pub enum PresetType {
 pub struct Manager {
     input_presets_directories: Vec<String>,
     output_presets_directories: Vec<String>,
-    json: Value
+    json: serde_yaml::Value,
 }
 
 impl Manager {
@@ -58,7 +60,7 @@ impl Manager {
         Manager {
             input_presets_directories: input_directories,
             output_presets_directories: output_directories,
-            json: serde_json::from_str("{}").unwrap()
+            json: serde_json::from_str("{}").unwrap(),
         }
     }
 
@@ -122,11 +124,20 @@ impl Manager {
                 }
 
                 if preset_found {
-                    let file_string = fs::read_to_string(file_path).expect("could not read preset file to string");
+                    let file_string = fs::read_to_string(file_path)
+                        .expect("could not read preset file to string");
 
                     self.json = serde_json::from_str(file_string.as_str()).unwrap();
 
-                    println!("{:?}", self.json);
+                    let mut test = serde_yaml::to_string(&self.json).unwrap();
+                    test = test.replace("\"","");
+
+                    let root: preset_structures::OutputRoot =
+                        serde_yaml::from_str(test.as_str())
+                            .expect("failed to parse preset file");
+
+                    println!("{:?}", root);
+                    // println!("{:?}", self.json["output"]["plugins_order"]);
                 }
             }
             PresetType::Input => {

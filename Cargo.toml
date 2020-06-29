@@ -9,8 +9,10 @@ log = "0.4.8"
 env_logger = "0.7.1"
 gettext-rs= { version = "0.4.4", features = ["gettext-system"] }
 glib = "0.9.3"
-gtk = {version = "", features = ["v3_24"]}
-gio = {version = "", features = ["v2_60"]}
+gtk = {version = "0.8.1", features = ["v3_24"]}
+gio = {version = "0.8.1", features = ["v2_60"]}
 gtk_resources = "0.1.5"
-gdk = {version = "", features = ["v3_24"]}
-serde_json = "1.0.55"
+gdk = {version = "0.12.1", features = ["v3_24"]}
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_yaml = "0.8"
