@@ -15,7 +15,9 @@ pub struct InputRoot {
 #[derive(Serialize, Deserialize, Debug)]
 struct Output {
     plugins_order: Vec<String>,
-    bass_enhancer: BassEnhancer
+    bass_enhancer: BassEnhancer,
+    compressor: Compressor,
+    crossfeed: Crossfeed
 }
 
 #[derive(Serialize, Deserialize)]
@@ -52,4 +54,40 @@ struct BassEnhancer {
     blend: f32,
     floor_active: bool,
     listen: bool
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Compressor {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    mode: String,
+    attack: f32,
+    release: f32,
+    threshold: f32,
+    ratio: f32,
+    knee: f32,
+    makeup: f32,
+    sidechain: CompressorSidechain
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct CompressorSidechain {
+    listen: bool,
+    style: String,
+    mode: String,
+    source: String,
+    preamp: f32,
+    reactivity: f32,
+    lookahead: f32
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Crossfeed {
+    state: bool,
+    fcut: i32,
+    feed: f32
 }
