@@ -13,6 +13,15 @@ pub struct InputRoot {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
+struct Output {
+    plugins_order: Vec<String>,
+    bass_enhancer: BassEnhancer
+}
+
+#[derive(Serialize, Deserialize)]
+struct Input {}
+
+#[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct Spectrum {
     show: bool,
@@ -26,12 +35,21 @@ struct Spectrum {
     sampling_freq: i32,
     line_width: i32,
     style: String,
-    color: [f32;4],
-    gradient_color: [f32;4]
+    color: [f32; 4],
+    gradient_color: [f32; 4],
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-struct Output {}
-
-#[derive(Serialize, Deserialize)]
-struct Input {}
+#[serde(rename_all = "kebab-case")]
+struct BassEnhancer {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    amount: f32,
+    harmonics: f32,
+    scope: f32,
+    floor: f32,
+    blend: f32,
+    floor_active: bool,
+    listen: bool
+}
