@@ -17,7 +17,10 @@ struct Output {
     plugins_order: Vec<String>,
     bass_enhancer: BassEnhancer,
     compressor: Compressor,
-    crossfeed: Crossfeed
+    crossfeed: Crossfeed,
+    deesser: Deesser,
+    exciter: Exciter,
+    filter: Filter
 }
 
 #[derive(Serialize, Deserialize)]
@@ -90,4 +93,49 @@ struct Crossfeed {
     state: bool,
     fcut: i32,
     feed: f32
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Deesser {
+    state: bool,
+    detection: String,
+    mode: String,
+    threshold: f32,
+    ratio: f32,
+    laxity: i32,
+    makeup: f32,
+    f1_freq: f32,
+    f2_freq: f32,
+    f1_level: f32,
+    f2_level: f32,
+    f2_q: f32,
+    sc_listen: bool
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Exciter {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    amount: f32,
+    harmonics: f32,
+    scope: f32,
+    ceil: f32,
+    blend: f32,
+    ceil_active: bool,
+    listen: bool
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Filter {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    frequency: f32,
+    resonance: f32,
+    mode: String,
+    inertia: f32
 }

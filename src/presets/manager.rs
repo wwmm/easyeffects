@@ -114,7 +114,7 @@ impl Manager {
                     serde_yaml::from_str(yaml_string.as_str()).expect("failed to parse yaml string");
 
                 println!("{:?}", root);
-                println!("{:?}", self.json["output"]["plugins_order"]);
+                // println!("{:?}", self.json["output"]["plugins_order"]);
             }
             PresetType::Input => {
                 
