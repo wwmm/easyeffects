@@ -20,7 +20,11 @@ struct Output {
     crossfeed: Crossfeed,
     deesser: Deesser,
     exciter: Exciter,
-    filter: Filter
+    filter: Filter,
+    gate: Gate,
+    limiter: Limiter,
+    maximizer: Maximizer,
+    pitch: Pitch,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -56,7 +60,7 @@ struct BassEnhancer {
     floor: f32,
     blend: f32,
     floor_active: bool,
-    listen: bool
+    listen: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -72,7 +76,7 @@ struct Compressor {
     ratio: f32,
     knee: f32,
     makeup: f32,
-    sidechain: CompressorSidechain
+    sidechain: CompressorSidechain,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -84,7 +88,7 @@ struct CompressorSidechain {
     source: String,
     preamp: f32,
     reactivity: f32,
-    lookahead: f32
+    lookahead: f32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -92,7 +96,7 @@ struct CompressorSidechain {
 struct Crossfeed {
     state: bool,
     fcut: i32,
-    feed: f32
+    feed: f32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -110,7 +114,7 @@ struct Deesser {
     f1_level: f32,
     f2_level: f32,
     f2_q: f32,
-    sc_listen: bool
+    sc_listen: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -125,7 +129,7 @@ struct Exciter {
     ceil: f32,
     blend: f32,
     ceil_active: bool,
-    listen: bool
+    listen: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -137,5 +141,56 @@ struct Filter {
     frequency: f32,
     resonance: f32,
     mode: String,
-    inertia: f32
+    inertia: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Gate {
+    state: bool,
+    detection: String,
+    stereo_link: String,
+    range: f32,
+    attack: f32,
+    release: f32,
+    threshold: f32,
+    ratio: f32,
+    knee: f32,
+    makeup: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Limiter {
+    state: bool,
+    input_gain: f32,
+    limit: f32,
+    lookahead: f32,
+    release: f32,
+    asc: bool,
+    asc_level: f32,
+    oversampling: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Maximizer {
+    state: bool,
+    release: f32,
+    ceiling: f32,
+    threshold: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Pitch {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    cents: f32,
+    semitones: i32,
+    octaves: i32,
+    crispness: i32,
+    formant_preserving: bool,
+    faster: bool,
 }
