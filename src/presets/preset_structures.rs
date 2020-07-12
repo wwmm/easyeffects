@@ -25,6 +25,10 @@ struct Output {
     limiter: Limiter,
     maximizer: Maximizer,
     pitch: Pitch,
+    reverb: Reverb,
+    multiband_compressor: MultibandCompressor,
+    loudness: Loudness,
+    multiband_gate: MultibandGate,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -193,4 +197,91 @@ struct Pitch {
     crispness: i32,
     formant_preserving: bool,
     faster: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Reverb {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    room_size: String,
+    decay_time: f32,
+    hf_damp: f32,
+    diffusion: f32,
+    amount: f32,
+    dry: f32,
+    predelay: f32,
+    bass_cut: f32,
+    treble_cut: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct MultibandCompressor {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    freq0: f32,
+    freq1: f32,
+    freq2: f32,
+    mode: String,
+    subband: MultibandCompressorBand,
+    lowband: MultibandCompressorBand,
+    midband: MultibandCompressorBand,
+    highband: MultibandCompressorBand,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct MultibandCompressorBand {
+    threshold: f32,
+    ratio: f32,
+    attack: f32,
+    release: f32,
+    makeup: f32,
+    knee: f32,
+    detection: String,
+    bypass: bool,
+    solo: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Loudness {
+    state: bool,
+    loudness: f32,
+    output: f32,
+    link: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct MultibandGate {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    freq0: f32,
+    freq1: f32,
+    freq2: f32,
+    mode: String,
+    subband: MultibandGateBand,
+    lowband: MultibandGateBand,
+    midband: MultibandGateBand,
+    highband: MultibandGateBand,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct MultibandGateBand {
+    reduction: f32,
+    threshold: f32,
+    ratio: f32,
+    attack: f32,
+    release: f32,
+    makeup: f32,
+    knee: f32,
+    detection: String,
+    bypass: bool,
+    solo: bool,
 }

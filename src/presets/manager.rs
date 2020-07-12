@@ -4,6 +4,7 @@ use serde_json;
 use serde_yaml;
 use std::fs;
 use std::path::{Path, PathBuf};
+use log::*;
 
 #[derive(Clone)]
 pub enum PresetType {
@@ -106,19 +107,21 @@ impl Manager {
             return;
         }
 
-        // println!("{:?}", yaml_string);
-
         match preset_type {
             PresetType::Output => {
-                let root: preset_structures::OutputRoot =
-                    serde_yaml::from_str(yaml_string.as_str()).expect("failed to parse yaml string");
+                match serde_yaml::from_str::<preset_structures::OutputRoot>(yaml_string.as_str()) {
+                    Ok(root) => {
+                        println!("{:?}", root);
+                    }
 
-                println!("{:?}", root);
+                    Err(err) => {
+                        error!("{:?}", err);
+                    }
+                }
+
                 // println!("{:?}", self.json["output"]["plugins_order"]);
             }
-            PresetType::Input => {
-                
-            }
+            PresetType::Input => {}
         }
     }
 
