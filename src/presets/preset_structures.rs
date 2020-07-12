@@ -29,6 +29,11 @@ struct Output {
     multiband_compressor: MultibandCompressor,
     loudness: Loudness,
     multiband_gate: MultibandGate,
+    stereo_tools: StereoTools,
+    convolver: Convolver,
+    crystalizer: Crystalizer,
+    autogain: AutoGain,
+    delay: Delay,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -284,4 +289,92 @@ struct MultibandGateBand {
     detection: String,
     bypass: bool,
     solo: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct StereoTools {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    balance_in: f32,
+    balance_out: f32,
+    softclip: bool,
+    mutel: bool,
+    muter: bool,
+    phasel: bool,
+    phaser: bool,
+    mode: String,
+    side_level: f32,
+    side_balance: f32,
+    middle_level: f32,
+    middle_panorama: f32,
+    stereo_base: f32,
+    delay: f32,
+    sc_level: f32,
+    stereo_phase: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Convolver {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    kernel_path: String,
+    ir_width: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Crystalizer {
+    state: bool,
+    aggressive: bool,
+    input_gain: f32,
+    output_gain: f32,
+    band0: CrystalizerBand,
+    band1: CrystalizerBand,
+    band2: CrystalizerBand,
+    band3: CrystalizerBand,
+    band4: CrystalizerBand,
+    band5: CrystalizerBand,
+    band6: CrystalizerBand,
+    band7: CrystalizerBand,
+    band8: CrystalizerBand,
+    band9: CrystalizerBand,
+    band10: CrystalizerBand,
+    band11: CrystalizerBand,
+    band12: CrystalizerBand,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct CrystalizerBand {
+    intensity: f32,
+    mute: bool,
+    bypass: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct AutoGain {
+    state: bool,
+    detect_silence: bool,
+    use_geometric_mean: bool,
+    input_gain: f32,
+    output_gain: f32,
+    target: f32,
+    weight_m: i32,
+    weight_s: i32,
+    weight_i: i32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct Delay {
+    state: bool,
+    input_gain: f32,
+    output_gain: f32,
+    time_l: f32,
+    time_r: f32,
 }
