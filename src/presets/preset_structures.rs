@@ -9,7 +9,7 @@ pub struct OutputRoot {
 #[derive(Serialize, Deserialize, Debug)]
 pub struct InputRoot {
     spectrum: Spectrum,
-    output: Output,
+    input: Input,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -36,8 +36,20 @@ struct Output {
     delay: Delay,
 }
 
-#[derive(Serialize, Deserialize)]
-struct Input {}
+#[derive(Serialize, Deserialize, Debug)]
+struct Input {
+    plugins_order: Vec<String>,
+    compressor: Compressor,
+    deesser: Deesser,
+    filter: Filter,
+    gate: Gate,
+    limiter: Limiter,
+    pitch: Pitch,
+    reverb: Reverb,
+    webrtc: WebRTC,
+    multiband_compressor: MultibandCompressor,
+    multiband_gate: MultibandGate,
+}
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
@@ -377,4 +389,25 @@ struct Delay {
     output_gain: f32,
     time_l: f32,
     time_r: f32,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "kebab-case")]
+struct WebRTC {
+    state: bool,
+    high_pass_filter: bool,
+    echo_cancel: bool,
+    echo_suppression_level: String,
+    noise_suppression: bool,
+    noise_suppression_level: String,
+    gain_control: bool,
+    extended_filter: bool,
+    delay_agnostic: bool,
+    target_level_dbfs: i32,
+    compression_gain_db: i32,
+    limiter: bool,
+    gain_control_mode: String,
+    voice_detection: bool,
+    voice_detection_frame_size_ms: i32,
+    voice_detection_likelihood: String,
 }

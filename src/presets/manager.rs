@@ -121,7 +121,18 @@ impl Manager {
 
                 // println!("{:?}", self.json["output"]["plugins_order"]);
             }
-            PresetType::Input => {}
+            PresetType::Input => {
+                match serde_yaml::from_str::<preset_structures::InputRoot>(yaml_string.as_str()) {
+                    Ok(root) => {
+                        println!("{:?}", root);
+                    }
+
+                    Err(err) => {
+                        error!("{:?}", err);
+                    }
+                }
+
+            }
         }
     }
 
