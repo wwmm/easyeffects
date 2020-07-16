@@ -1,4 +1,5 @@
-use gio::prelude::*;
+use crate::presets::bass_enhancer::BassEnhancer;
+use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -50,99 +51,6 @@ struct Input {
     webrtc: WebRTC,
     multiband_compressor: MultibandCompressor,
     multiband_gate: MultibandGate,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case", default)]
-struct Spectrum {
-    show: bool,
-    n_points: i32,
-    height: i32,
-    use_custom_color: bool,
-    fill: bool,
-    show_bar_border: bool,
-    scale: f64,
-    exponent: f64,
-    sampling_freq: i32,
-    line_width: i32,
-    style: String,
-    color: Vec<f32>,
-    gradient_color: Vec<f32>,
-}
-
-impl Default for Spectrum {
-    fn default() -> Self {
-        let settings = gio::Settings::new("com.github.wwmm.pulseeffects.spectrum");
-
-        // color vec
-
-        let mut color_string = settings
-            .get_value("color")
-            .to_string()
-            .replace("[", "")
-            .replace("]", "")
-            .replace(" ", "");
-
-        let color_str_vec: Vec<&str> = color_string.split(",").collect();
-
-        let mut color: Vec<f32> = Vec::new();
-
-        for pixel in color_str_vec {
-            color.push(pixel.parse().unwrap());
-        }
-
-        println!("{:?}", color);
-
-        // gradient color vec
-
-        color_string = settings
-            .get_value("gradient-color")
-            .to_string()
-            .replace("[", "")
-            .replace("]", "")
-            .replace(" ", "");
-
-        let color_str_vec: Vec<&str> = color_string.split(",").collect();
-
-        let mut gradient_color: Vec<f32> = Vec::new();
-
-        for pixel in color_str_vec {
-            gradient_color.push(pixel.parse().unwrap());
-        }
-
-        println!("{:?}", gradient_color);
-
-        Spectrum {
-            show: settings.get_boolean("show"),
-            n_points: settings.get_int("n-points"),
-            height: settings.get_int("height"),
-            use_custom_color: settings.get_boolean("use-custom-color"),
-            fill: settings.get_boolean("fill"),
-            show_bar_border: settings.get_boolean("show-bar-border"),
-            scale: settings.get_double("scale"),
-            exponent: settings.get_double("exponent"),
-            sampling_freq: settings.get_int("sampling-freq"),
-            line_width: settings.get_int("line-width"),
-            style: settings.get_string("type").unwrap().to_string(),
-            color: color,
-            gradient_color: gradient_color,
-        }
-    }
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct BassEnhancer {
-    state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    amount: f32,
-    harmonics: f32,
-    scope: f32,
-    floor: f32,
-    blend: f32,
-    floor_active: bool,
-    listen: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

@@ -1,0 +1,1 @@
+GST_DEBUG=4 GST_DEBUG_FILE=gst_log.txt pulseeffects
