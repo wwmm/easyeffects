@@ -1,4 +1,6 @@
 use crate::presets::bass_enhancer::BassEnhancer;
+use crate::presets::compressor::Compressor;
+use crate::presets::crossfeed::Crossfeed;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
 
@@ -53,41 +55,7 @@ struct Input {
     multiband_gate: MultibandGate,
 }
 
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Compressor {
-    state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    mode: String,
-    attack: f32,
-    release: f32,
-    threshold: f32,
-    ratio: f32,
-    knee: f32,
-    makeup: f32,
-    sidechain: CompressorSidechain,
-}
 
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct CompressorSidechain {
-    listen: bool,
-    style: String,
-    mode: String,
-    source: String,
-    preamp: f32,
-    reactivity: f32,
-    lookahead: f32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Crossfeed {
-    state: bool,
-    fcut: i32,
-    feed: f32,
-}
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
@@ -95,15 +63,15 @@ struct Deesser {
     state: bool,
     detection: String,
     mode: String,
-    threshold: f32,
-    ratio: f32,
+    threshold: f64,
+    ratio: f64,
     laxity: i32,
-    makeup: f32,
-    f1_freq: f32,
-    f2_freq: f32,
-    f1_level: f32,
-    f2_level: f32,
-    f2_q: f32,
+    makeup: f64,
+    f1_freq: f64,
+    f2_freq: f64,
+    f1_level: f64,
+    f2_level: f64,
+    f2_q: f64,
     sc_listen: bool,
 }
 
@@ -111,13 +79,13 @@ struct Deesser {
 #[serde(rename_all = "kebab-case")]
 struct Exciter {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    amount: f32,
-    harmonics: f32,
-    scope: f32,
-    ceil: f32,
-    blend: f32,
+    input_gain: f64,
+    output_gain: f64,
+    amount: f64,
+    harmonics: f64,
+    scope: f64,
+    ceil: f64,
+    blend: f64,
     ceil_active: bool,
     listen: bool,
 }
@@ -126,12 +94,12 @@ struct Exciter {
 #[serde(rename_all = "kebab-case")]
 struct Filter {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    frequency: f32,
-    resonance: f32,
+    input_gain: f64,
+    output_gain: f64,
+    frequency: f64,
+    resonance: f64,
     mode: String,
-    inertia: f32,
+    inertia: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -140,25 +108,25 @@ struct Gate {
     state: bool,
     detection: String,
     stereo_link: String,
-    range: f32,
-    attack: f32,
-    release: f32,
-    threshold: f32,
-    ratio: f32,
-    knee: f32,
-    makeup: f32,
+    range: f64,
+    attack: f64,
+    release: f64,
+    threshold: f64,
+    ratio: f64,
+    knee: f64,
+    makeup: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct Limiter {
     state: bool,
-    input_gain: f32,
-    limit: f32,
-    lookahead: f32,
-    release: f32,
+    input_gain: f64,
+    limit: f64,
+    lookahead: f64,
+    release: f64,
     asc: bool,
-    asc_level: f32,
+    asc_level: f64,
     oversampling: i32,
 }
 
@@ -166,18 +134,18 @@ struct Limiter {
 #[serde(rename_all = "kebab-case")]
 struct Maximizer {
     state: bool,
-    release: f32,
-    ceiling: f32,
-    threshold: f32,
+    release: f64,
+    ceiling: f64,
+    threshold: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct Pitch {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    cents: f32,
+    input_gain: f64,
+    output_gain: f64,
+    cents: f64,
     semitones: i32,
     octaves: i32,
     crispness: i32,
@@ -189,28 +157,28 @@ struct Pitch {
 #[serde(rename_all = "kebab-case")]
 struct Reverb {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
+    input_gain: f64,
+    output_gain: f64,
     room_size: String,
-    decay_time: f32,
-    hf_damp: f32,
-    diffusion: f32,
-    amount: f32,
-    dry: f32,
-    predelay: f32,
-    bass_cut: f32,
-    treble_cut: f32,
+    decay_time: f64,
+    hf_damp: f64,
+    diffusion: f64,
+    amount: f64,
+    dry: f64,
+    predelay: f64,
+    bass_cut: f64,
+    treble_cut: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct MultibandCompressor {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    freq0: f32,
-    freq1: f32,
-    freq2: f32,
+    input_gain: f64,
+    output_gain: f64,
+    freq0: f64,
+    freq1: f64,
+    freq2: f64,
     mode: String,
     subband: MultibandCompressorBand,
     lowband: MultibandCompressorBand,
@@ -221,12 +189,12 @@ struct MultibandCompressor {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct MultibandCompressorBand {
-    threshold: f32,
-    ratio: f32,
-    attack: f32,
-    release: f32,
-    makeup: f32,
-    knee: f32,
+    threshold: f64,
+    ratio: f64,
+    attack: f64,
+    release: f64,
+    makeup: f64,
+    knee: f64,
     detection: String,
     bypass: bool,
     solo: bool,
@@ -236,20 +204,20 @@ struct MultibandCompressorBand {
 #[serde(rename_all = "kebab-case")]
 struct Loudness {
     state: bool,
-    loudness: f32,
-    output: f32,
-    link: f32,
+    loudness: f64,
+    output: f64,
+    link: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct MultibandGate {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    freq0: f32,
-    freq1: f32,
-    freq2: f32,
+    input_gain: f64,
+    output_gain: f64,
+    freq0: f64,
+    freq1: f64,
+    freq2: f64,
     mode: String,
     subband: MultibandGateBand,
     lowband: MultibandGateBand,
@@ -260,13 +228,13 @@ struct MultibandGate {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct MultibandGateBand {
-    reduction: f32,
-    threshold: f32,
-    ratio: f32,
-    attack: f32,
-    release: f32,
-    makeup: f32,
-    knee: f32,
+    reduction: f64,
+    threshold: f64,
+    ratio: f64,
+    attack: f64,
+    release: f64,
+    makeup: f64,
+    knee: f64,
     detection: String,
     bypass: bool,
     solo: bool,
@@ -276,32 +244,32 @@ struct MultibandGateBand {
 #[serde(rename_all = "kebab-case")]
 struct StereoTools {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    balance_in: f32,
-    balance_out: f32,
+    input_gain: f64,
+    output_gain: f64,
+    balance_in: f64,
+    balance_out: f64,
     softclip: bool,
     mutel: bool,
     muter: bool,
     phasel: bool,
     phaser: bool,
     mode: String,
-    side_level: f32,
-    side_balance: f32,
-    middle_level: f32,
-    middle_panorama: f32,
-    stereo_base: f32,
-    delay: f32,
-    sc_level: f32,
-    stereo_phase: f32,
+    side_level: f64,
+    side_balance: f64,
+    middle_level: f64,
+    middle_panorama: f64,
+    stereo_base: f64,
+    delay: f64,
+    sc_level: f64,
+    stereo_phase: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct Convolver {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
+    input_gain: f64,
+    output_gain: f64,
     kernel_path: String,
     ir_width: i32,
 }
@@ -311,8 +279,8 @@ struct Convolver {
 struct Crystalizer {
     state: bool,
     aggressive: bool,
-    input_gain: f32,
-    output_gain: f32,
+    input_gain: f64,
+    output_gain: f64,
     band0: CrystalizerBand,
     band1: CrystalizerBand,
     band2: CrystalizerBand,
@@ -331,7 +299,7 @@ struct Crystalizer {
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
 struct CrystalizerBand {
-    intensity: f32,
+    intensity: f64,
     mute: bool,
     bypass: bool,
 }
@@ -342,9 +310,9 @@ struct AutoGain {
     state: bool,
     detect_silence: bool,
     use_geometric_mean: bool,
-    input_gain: f32,
-    output_gain: f32,
-    target: f32,
+    input_gain: f64,
+    output_gain: f64,
+    target: f64,
     weight_m: i32,
     weight_s: i32,
     weight_i: i32,
@@ -354,10 +322,10 @@ struct AutoGain {
 #[serde(rename_all = "kebab-case")]
 struct Delay {
     state: bool,
-    input_gain: f32,
-    output_gain: f32,
-    time_l: f32,
-    time_r: f32,
+    input_gain: f64,
+    output_gain: f64,
+    time_l: f64,
+    time_r: f64,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

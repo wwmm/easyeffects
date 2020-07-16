@@ -2,7 +2,7 @@ use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct BassEnhancer {
     state: bool,
     input_gain: f64,
@@ -18,7 +18,8 @@ pub struct BassEnhancer {
 
 impl Default for BassEnhancer {
     fn default() -> Self {
-        let settings = gio::Settings::new("com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
+        let settings = gio::Settings::new_with_path("com.github.wwmm.pulseeffects.bassenhancer",
+        "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
 
         BassEnhancer {
             state: settings.get_boolean("state"),
