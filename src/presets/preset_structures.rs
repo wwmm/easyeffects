@@ -1,7 +1,8 @@
 use crate::presets::bass_enhancer::BassEnhancer;
 use crate::presets::compressor;
-use crate::presets::deesser;
 use crate::presets::crossfeed::Crossfeed;
+use crate::presets::deesser;
+use crate::presets::exciter::Exciter;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
 
@@ -54,39 +55,6 @@ struct Input {
     webrtc: WebRTC,
     multiband_compressor: MultibandCompressor,
     multiband_gate: MultibandGate,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Deesser {
-    state: bool,
-    detection: String,
-    mode: String,
-    threshold: f64,
-    ratio: f64,
-    laxity: i32,
-    makeup: f64,
-    f1_freq: f64,
-    f2_freq: f64,
-    f1_level: f64,
-    f2_level: f64,
-    f2_q: f64,
-    sc_listen: bool,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Exciter {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    amount: f64,
-    harmonics: f64,
-    scope: f64,
-    ceil: f64,
-    blend: f64,
-    ceil_active: bool,
-    listen: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
