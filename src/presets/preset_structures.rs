@@ -1,5 +1,5 @@
 use crate::presets::bass_enhancer::BassEnhancer;
-use crate::presets::compressor::Compressor;
+use crate::presets::compressor;
 use crate::presets::crossfeed::Crossfeed;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
@@ -20,7 +20,7 @@ pub struct InputRoot {
 struct Output {
     plugins_order: Vec<String>,
     bass_enhancer: BassEnhancer,
-    compressor: Compressor,
+    compressor: compressor::Output,
     crossfeed: Crossfeed,
     deesser: Deesser,
     exciter: Exciter,
@@ -43,7 +43,7 @@ struct Output {
 #[derive(Serialize, Deserialize, Debug)]
 struct Input {
     plugins_order: Vec<String>,
-    compressor: Compressor,
+    compressor: compressor::Input,
     deesser: Deesser,
     filter: Filter,
     gate: Gate,

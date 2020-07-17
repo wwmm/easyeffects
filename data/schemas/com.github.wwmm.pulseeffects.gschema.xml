@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.compressor.mode.enum">
-        <value nick="Downward" value="0" />
-        <value nick="Upward" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
-        <value nick="Feed-forward" value="0" />
-        <value nick="Feed-back" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
-        <value nick="Peak" value="0" />
-        <value nick="RMS" value="1" />
-        <value nick="Low-Pass" value="2" />
-        <value nick="Uniform" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
-        <value nick="Middle" value="0" />
-        <value nick="Side" value="1" />
-        <value nick="Left" value="2" />
-        <value nick="Right" value="3" />
-    </enum>
     <enum id="com.github.wwmm.pulseeffects.filter.enum">
         <value nick="12dB/oct Lowpass" value="0" />
         <value nick="24dB/oct Lowpass" value="1" />
