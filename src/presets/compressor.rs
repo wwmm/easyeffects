@@ -19,8 +19,10 @@ pub struct Output {
 
 impl Default for Output {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path("com.github.wwmm.pulseeffects.compressor",
-        "/com/github/wwmm/pulseeffects/sinkinputs/compressor/");
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.compressor",
+            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/",
+        );
 
         Output {
             state: settings.get_boolean("state"),
@@ -33,7 +35,7 @@ impl Default for Output {
             ratio: settings.get_double("ratio"),
             knee: settings.get_double("knee"),
             makeup: settings.get_double("makeup"),
-            sidechain: Sidechain{
+            sidechain: Sidechain {
                 listen: settings.get_boolean("sidechain-listen"),
                 style: settings.get_string("sidechain-type").unwrap().to_string(),
                 mode: settings.get_string("sidechain-mode").unwrap().to_string(),
@@ -64,8 +66,10 @@ pub struct Input {
 
 impl Default for Input {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path("com.github.wwmm.pulseeffects.compressor",
-        "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/");
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.compressor",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/",
+        );
 
         Input {
             state: settings.get_boolean("state"),
@@ -78,7 +82,7 @@ impl Default for Input {
             ratio: settings.get_double("ratio"),
             knee: settings.get_double("knee"),
             makeup: settings.get_double("makeup"),
-            sidechain: Sidechain{
+            sidechain: Sidechain {
                 listen: settings.get_boolean("sidechain-listen"),
                 style: settings.get_string("sidechain-type").unwrap().to_string(),
                 mode: settings.get_string("sidechain-mode").unwrap().to_string(),

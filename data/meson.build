@@ -22,7 +22,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.gate.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.multibandgate.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.stereotools.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.deesser.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.deesser.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.convolver.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.crystalizer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.delay.gschema.xml',

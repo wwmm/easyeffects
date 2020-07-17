@@ -11,8 +11,10 @@ pub struct Crossfeed {
 
 impl Default for Crossfeed {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path("com.github.wwmm.pulseeffects.sinkinputs.crossfeed",
-        "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.sinkinputs.crossfeed",
+            "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/",
+        );
 
         Crossfeed {
             state: settings.get_boolean("state"),

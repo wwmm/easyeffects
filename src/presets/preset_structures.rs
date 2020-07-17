@@ -1,5 +1,6 @@
 use crate::presets::bass_enhancer::BassEnhancer;
 use crate::presets::compressor;
+use crate::presets::deesser;
 use crate::presets::crossfeed::Crossfeed;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
@@ -22,7 +23,7 @@ struct Output {
     bass_enhancer: BassEnhancer,
     compressor: compressor::Output,
     crossfeed: Crossfeed,
-    deesser: Deesser,
+    deesser: deesser::Output,
     exciter: Exciter,
     filter: Filter,
     gate: Gate,
@@ -44,7 +45,7 @@ struct Output {
 struct Input {
     plugins_order: Vec<String>,
     compressor: compressor::Input,
-    deesser: Deesser,
+    deesser: deesser::Input,
     filter: Filter,
     gate: Gate,
     limiter: Limiter,
@@ -54,8 +55,6 @@ struct Input {
     multiband_compressor: MultibandCompressor,
     multiband_gate: MultibandGate,
 }
-
-
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]

@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.deesser.detection.enum">
+        <value nick="RMS" value="0" />
+        <value nick="Peak" value="1" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.deesser.mode.enum">
+        <value nick="Wide" value="0" />
+        <value nick="Split" value="1" />
+    </enum>
+
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.deesser"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/deesser/">
+        id="com.github.wwmm.pulseeffects.deesser">
         <key name="state" type="b">
             <default>false</default>
         </key>

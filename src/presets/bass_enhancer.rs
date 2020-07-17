@@ -18,8 +18,10 @@ pub struct BassEnhancer {
 
 impl Default for BassEnhancer {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path("com.github.wwmm.pulseeffects.bassenhancer",
-        "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.bassenhancer",
+            "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/",
+        );
 
         BassEnhancer {
             state: settings.get_boolean("state"),
