@@ -15,7 +15,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.exciter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.bassenhancer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.crossfeed.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.crossfeed.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.maximizer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.loudness.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.pitch.gschema.xml',
