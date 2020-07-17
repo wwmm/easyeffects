@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.filter.enum">
+        <value nick="12dB/oct Lowpass" value="0" />
+        <value nick="24dB/oct Lowpass" value="1" />
+        <value nick="36dB/oct Lowpass" value="2" />
+        <value nick="12dB/oct Highpass" value="3" />
+        <value nick="24dB/oct Highpass" value="4" />
+        <value nick="36dB/oct Highpass" value="5" />
+        <value nick="6dB/oct Bandpass" value="6" />
+        <value nick="12dB/oct Bandpass" value="7" />
+        <value nick="18dB/oct Bandpass" value="8" />
+        <value nick="6dB/oct Bandreject" value="9" />
+        <value nick="12dB/oct Bandreject" value="10" />
+        <value nick="18dB/oct Bandreject" value="11" />
+    </enum>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.filter"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/filter/">
+        id="com.github.wwmm.pulseeffects.filter">
         <key name="state" type="b">
             <default>false</default>
         </key>
