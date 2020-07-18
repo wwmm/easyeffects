@@ -7,3 +7,4 @@ pub mod crossfeed;
 pub mod deesser;
 pub mod exciter;
 pub mod filter;
+pub mod gate;
