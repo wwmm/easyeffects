@@ -5,7 +5,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.spectrum.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.autogain.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.limiter.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.compressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.reverb.gschema.xml',

@@ -5,6 +5,7 @@ use crate::presets::deesser;
 use crate::presets::exciter::Exciter;
 use crate::presets::filter;
 use crate::presets::gate;
+use crate::presets::limiter;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
 
@@ -30,7 +31,7 @@ struct Output {
     exciter: Exciter,
     filter: filter::Output,
     gate: gate::Output,
-    limiter: Limiter,
+    limiter: limiter::Output,
     maximizer: Maximizer,
     pitch: Pitch,
     reverb: Reverb,
@@ -51,25 +52,12 @@ struct Input {
     deesser: deesser::Input,
     filter: filter::Input,
     gate: gate::Input,
-    limiter: Limiter,
+    limiter: limiter::Input,
     pitch: Pitch,
     reverb: Reverb,
     webrtc: WebRTC,
     multiband_compressor: MultibandCompressor,
     multiband_gate: MultibandGate,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Limiter {
-    state: bool,
-    input_gain: f64,
-    limit: f64,
-    lookahead: f64,
-    release: f64,
-    asc: bool,
-    asc_level: f64,
-    oversampling: i32,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
