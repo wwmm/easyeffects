@@ -6,6 +6,8 @@ use crate::presets::exciter::Exciter;
 use crate::presets::filter;
 use crate::presets::gate;
 use crate::presets::limiter;
+use crate::presets::maximizer;
+use crate::presets::pitch;
 use crate::presets::spectrum::Spectrum;
 use serde::{Deserialize, Serialize};
 
@@ -32,8 +34,8 @@ struct Output {
     filter: filter::Output,
     gate: gate::Output,
     limiter: limiter::Output,
-    maximizer: Maximizer,
-    pitch: Pitch,
+    maximizer: maximizer::Output,
+    pitch: pitch::Output,
     reverb: Reverb,
     multiband_compressor: MultibandCompressor,
     loudness: Loudness,
@@ -53,34 +55,11 @@ struct Input {
     filter: filter::Input,
     gate: gate::Input,
     limiter: limiter::Input,
-    pitch: Pitch,
+    pitch: pitch::Input,
     reverb: Reverb,
     webrtc: WebRTC,
     multiband_compressor: MultibandCompressor,
     multiband_gate: MultibandGate,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Maximizer {
-    state: bool,
-    release: f64,
-    ceiling: f64,
-    threshold: f64,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Pitch {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    cents: f64,
-    semitones: i32,
-    octaves: i32,
-    crispness: i32,
-    formant_preserving: bool,
-    faster: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
