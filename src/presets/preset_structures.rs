@@ -7,6 +7,7 @@ use crate::presets::filter;
 use crate::presets::gate;
 use crate::presets::limiter;
 use crate::presets::maximizer;
+use crate::presets::multiband_compressor;
 use crate::presets::pitch;
 use crate::presets::reverb;
 use crate::presets::spectrum::Spectrum;
@@ -38,7 +39,7 @@ struct Output {
     maximizer: maximizer::Output,
     pitch: pitch::Output,
     reverb: reverb::Output,
-    multiband_compressor: MultibandCompressor,
+    multiband_compressor: multiband_compressor::Output,
     loudness: Loudness,
     multiband_gate: MultibandGate,
     stereo_tools: StereoTools,
@@ -59,40 +60,8 @@ struct Input {
     pitch: pitch::Input,
     reverb: reverb::Input,
     webrtc: WebRTC,
-    multiband_compressor: MultibandCompressor,
+    multiband_compressor: multiband_compressor::Input,
     multiband_gate: MultibandGate,
-}
-
-
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct MultibandCompressor {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    freq0: f64,
-    freq1: f64,
-    freq2: f64,
-    mode: String,
-    subband: MultibandCompressorBand,
-    lowband: MultibandCompressorBand,
-    midband: MultibandCompressorBand,
-    highband: MultibandCompressorBand,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct MultibandCompressorBand {
-    threshold: f64,
-    ratio: f64,
-    attack: f64,
-    release: f64,
-    makeup: f64,
-    knee: f64,
-    detection: String,
-    bypass: bool,
-    solo: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

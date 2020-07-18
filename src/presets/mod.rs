@@ -8,6 +8,7 @@ pub mod gate;
 pub mod limiter;
 pub mod manager;
 pub mod maximizer;
+pub mod multiband_compressor;
 pub mod pitch;
 pub mod preset_structures;
 pub mod reverb;
