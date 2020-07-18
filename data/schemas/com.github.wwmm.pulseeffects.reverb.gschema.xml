@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
+        <value nick="Small" value="0" />
+        <value nick="Medium" value="1" />
+        <value nick="Large" value="2" />
+        <value nick="Tunnel-like" value="3" />
+        <value nick="Large/smooth" value="4" />
+        <value nick="Experimental" value="5" />
+    </enum>
+    
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.reverb"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/reverb/">
+        id="com.github.wwmm.pulseeffects.reverb">
         <key name="state" type="b">
             <default>false</default>
         </key>

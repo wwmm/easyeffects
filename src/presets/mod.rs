@@ -10,4 +10,5 @@ pub mod manager;
 pub mod maximizer;
 pub mod pitch;
 pub mod preset_structures;
+pub mod reverb;
 pub mod spectrum;

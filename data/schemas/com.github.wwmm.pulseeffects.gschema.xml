@@ -30,14 +30,7 @@
         <value nick="x3" value="2" />
         <value nick="x4" value="3" />
     </enum>
-    <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
-        <value nick="Small" value="0" />
-        <value nick="Medium" value="1" />
-        <value nick="Large" value="2" />
-        <value nick="Tunnel-like" value="3" />
-        <value nick="Large/smooth" value="4" />
-        <value nick="Experimental" value="5" />
-    </enum>
+    
     <enum id="com.github.wwmm.pulseeffects.stereoenhancer.msource.enum">
         <value nick="Left" value="0" />
         <value nick="Right" value="1" />

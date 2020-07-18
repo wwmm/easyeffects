@@ -8,7 +8,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.compressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.reverb.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.reverb.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.filter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel.gschema.xml',

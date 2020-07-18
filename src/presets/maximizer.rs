@@ -2,7 +2,7 @@ use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct Output {
     state: bool,
     release: f64,
@@ -27,7 +27,7 @@ impl Default for Output {
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct Input {
     state: bool,
     release: f64,

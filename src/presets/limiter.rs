@@ -2,7 +2,7 @@ use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct Output {
     state: bool,
     input_gain: f64,
@@ -28,14 +28,14 @@ impl Default for Output {
             lookahead: settings.get_double("lookahead"),
             release: settings.get_double("release"),
             asc: settings.get_boolean("asc"),
-            asc_level: settings.get_double("asc_level"),
+            asc_level: settings.get_double("asc-level"),
             oversampling: settings.get_int("oversampling"),
         }
     }
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct Input {
     state: bool,
     input_gain: f64,
@@ -61,7 +61,7 @@ impl Default for Input {
             lookahead: settings.get_double("lookahead"),
             release: settings.get_double("release"),
             asc: settings.get_boolean("asc"),
-            asc_level: settings.get_double("asc_level"),
+            asc_level: settings.get_double("asc-level"),
             oversampling: settings.get_int("oversampling"),
         }
     }
