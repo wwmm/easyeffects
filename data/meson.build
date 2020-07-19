@@ -4,7 +4,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.spectrum.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.autogain.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.autogain.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.limiter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.compressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.multibandcompressor.gschema.xml',
@@ -25,21 +25,9 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.deesser.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.convolver.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.crystalizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.delay.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.delay.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.limiter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.compressor.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.reverb.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.filter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.equalizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.pitch.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gate.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.deesser.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.webrtc.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.multibandgate.gschema.xml'
+  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.webrtc.gschema.xml'
 ], install_dir: schemadir)
 
 appdata_file = i18n_mod.merge_file(

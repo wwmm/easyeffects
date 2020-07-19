@@ -1,9 +1,11 @@
+pub mod autogain;
 pub mod bass_enhancer;
 pub mod compressor;
 pub mod convolver;
 pub mod crossfeed;
 pub mod crystalizer;
 pub mod deesser;
+pub mod delay;
 pub mod exciter;
 pub mod filter;
 pub mod gate;
@@ -18,3 +20,4 @@ pub mod preset_structures;
 pub mod reverb;
 pub mod spectrum;
 pub mod stereo_tools;
+pub mod webrtc;

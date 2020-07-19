@@ -1,9 +1,11 @@
+use crate::presets::autogain::AutoGain;
 use crate::presets::bass_enhancer::BassEnhancer;
 use crate::presets::compressor;
 use crate::presets::convolver::Convolver;
 use crate::presets::crossfeed::Crossfeed;
 use crate::presets::crystalizer::Crystalizer;
 use crate::presets::deesser;
+use crate::presets::delay::Delay;
 use crate::presets::exciter::Exciter;
 use crate::presets::filter;
 use crate::presets::gate;
@@ -16,6 +18,7 @@ use crate::presets::pitch;
 use crate::presets::reverb;
 use crate::presets::spectrum::Spectrum;
 use crate::presets::stereo_tools::StereoTools;
+use crate::presets::webrtc::WebRTC;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -67,49 +70,4 @@ struct Input {
     webrtc: WebRTC,
     multiband_compressor: multiband_compressor::Input,
     multiband_gate: multiband_gate::Input,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct AutoGain {
-    state: bool,
-    detect_silence: bool,
-    use_geometric_mean: bool,
-    input_gain: f64,
-    output_gain: f64,
-    target: f64,
-    weight_m: i32,
-    weight_s: i32,
-    weight_i: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Delay {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    time_l: f64,
-    time_r: f64,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct WebRTC {
-    state: bool,
-    high_pass_filter: bool,
-    echo_cancel: bool,
-    echo_suppression_level: String,
-    noise_suppression: bool,
-    noise_suppression_level: String,
-    gain_control: bool,
-    extended_filter: bool,
-    delay_agnostic: bool,
-    target_level_dbfs: i32,
-    compression_gain_db: i32,
-    limiter: bool,
-    gain_control_mode: String,
-    voice_detection: bool,
-    voice_detection_frame_size_ms: i32,
-    voice_detection_likelihood: String,
 }
