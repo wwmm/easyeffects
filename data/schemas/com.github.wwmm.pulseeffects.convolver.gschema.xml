@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.convolver"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/convolver/">
+        id="com.github.wwmm.pulseeffects.convolver">
         <key name="state" type="b">
             <default>false</default>
         </key>

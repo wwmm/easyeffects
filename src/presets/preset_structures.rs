@@ -1,6 +1,8 @@
 use crate::presets::bass_enhancer::BassEnhancer;
 use crate::presets::compressor;
+use crate::presets::convolver::Convolver;
 use crate::presets::crossfeed::Crossfeed;
+use crate::presets::crystalizer::Crystalizer;
 use crate::presets::deesser;
 use crate::presets::exciter::Exciter;
 use crate::presets::filter;
@@ -13,6 +15,7 @@ use crate::presets::multiband_gate;
 use crate::presets::pitch;
 use crate::presets::reverb;
 use crate::presets::spectrum::Spectrum;
+use crate::presets::stereo_tools::StereoTools;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
@@ -64,70 +67,6 @@ struct Input {
     webrtc: WebRTC,
     multiband_compressor: multiband_compressor::Input,
     multiband_gate: multiband_gate::Input,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct StereoTools {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    balance_in: f64,
-    balance_out: f64,
-    softclip: bool,
-    mutel: bool,
-    muter: bool,
-    phasel: bool,
-    phaser: bool,
-    mode: String,
-    side_level: f64,
-    side_balance: f64,
-    middle_level: f64,
-    middle_panorama: f64,
-    stereo_base: f64,
-    delay: f64,
-    sc_level: f64,
-    stereo_phase: f64,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Convolver {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    kernel_path: String,
-    ir_width: i32,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Crystalizer {
-    state: bool,
-    aggressive: bool,
-    input_gain: f64,
-    output_gain: f64,
-    band0: CrystalizerBand,
-    band1: CrystalizerBand,
-    band2: CrystalizerBand,
-    band3: CrystalizerBand,
-    band4: CrystalizerBand,
-    band5: CrystalizerBand,
-    band6: CrystalizerBand,
-    band7: CrystalizerBand,
-    band8: CrystalizerBand,
-    band9: CrystalizerBand,
-    band10: CrystalizerBand,
-    band11: CrystalizerBand,
-    band12: CrystalizerBand,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct CrystalizerBand {
-    intensity: f64,
-    mute: bool,
-    bypass: bool,
 }
 
 #[derive(Serialize, Deserialize, Debug)]

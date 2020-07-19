@@ -1,6 +1,8 @@
 pub mod bass_enhancer;
 pub mod compressor;
+pub mod convolver;
 pub mod crossfeed;
+pub mod crystalizer;
 pub mod deesser;
 pub mod exciter;
 pub mod filter;
@@ -15,3 +17,4 @@ pub mod pitch;
 pub mod preset_structures;
 pub mod reverb;
 pub mod spectrum;
+pub mod stereo_tools;

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.crystalizer"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/">
+        id="com.github.wwmm.pulseeffects.crystalizer">
         <key name="state" type="b">
             <default>false</default>
         </key>
