@@ -76,14 +76,6 @@
         <value nick="Up" value="1" />
     </enum>
     
-    <enum id="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
-        <value nick="LR4" value="0" />
-        <value nick="LR8" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.multibandgate.detection.enum">
-        <value nick="RMS" value="0" />
-        <value nick="Peak" value="1" />
-    </enum>
     <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
         <value nick="LR > LR (Stereo Default)" value="0" />
         <value nick="LR > MS (Stereo to Mid-Side)" value="1" />

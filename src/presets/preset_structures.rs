@@ -6,8 +6,10 @@ use crate::presets::exciter::Exciter;
 use crate::presets::filter;
 use crate::presets::gate;
 use crate::presets::limiter;
+use crate::presets::loudness::Loudness;
 use crate::presets::maximizer;
 use crate::presets::multiband_compressor;
+use crate::presets::multiband_gate;
 use crate::presets::pitch;
 use crate::presets::reverb;
 use crate::presets::spectrum::Spectrum;
@@ -41,7 +43,7 @@ struct Output {
     reverb: reverb::Output,
     multiband_compressor: multiband_compressor::Output,
     loudness: Loudness,
-    multiband_gate: MultibandGate,
+    multiband_gate: multiband_gate::Output,
     stereo_tools: StereoTools,
     convolver: Convolver,
     crystalizer: Crystalizer,
@@ -61,47 +63,7 @@ struct Input {
     reverb: reverb::Input,
     webrtc: WebRTC,
     multiband_compressor: multiband_compressor::Input,
-    multiband_gate: MultibandGate,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct Loudness {
-    state: bool,
-    loudness: f64,
-    output: f64,
-    link: f64,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct MultibandGate {
-    state: bool,
-    input_gain: f64,
-    output_gain: f64,
-    freq0: f64,
-    freq1: f64,
-    freq2: f64,
-    mode: String,
-    subband: MultibandGateBand,
-    lowband: MultibandGateBand,
-    midband: MultibandGateBand,
-    highband: MultibandGateBand,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-#[serde(rename_all = "kebab-case")]
-struct MultibandGateBand {
-    reduction: f64,
-    threshold: f64,
-    ratio: f64,
-    attack: f64,
-    release: f64,
-    makeup: f64,
-    knee: f64,
-    detection: String,
-    bypass: bool,
-    solo: bool,
+    multiband_gate: multiband_gate::Input,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
