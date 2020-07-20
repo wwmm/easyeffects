@@ -5,31 +5,6 @@
         <value nick="FIR" value="1" />
         <value nick="FFT" value="2" />
     </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
-        <value nick="RLC (BT)" value="0" />
-        <value nick="RLC (MT)" value="1" />
-        <value nick="BWC (BT)" value="2" />
-        <value nick="BWC (MT)" value="3" />
-        <value nick="LRX (BT)" value="4" />
-        <value nick="LRX (MT)" value="5" />
-        <value nick="APO (DR)" value="6" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-        <value nick="Off" value="0" />
-        <value nick="Bell" value="1" />
-        <value nick="Hi-pass" value="2" />
-        <value nick="Hi-shelf" value="3" />
-        <value nick="Lo-pass" value="4" />
-        <value nick="Lo-shelf" value="5" />
-        <value nick="Notch" value="6" />
-        <value nick="Resonance" value="7" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandslope.enum">
-        <value nick="x1" value="0" />
-        <value nick="x2" value="1" />
-        <value nick="x3" value="2" />
-        <value nick="x4" value="3" />
-    </enum>
     
     <schema
         id="com.github.wwmm.pulseeffects.equalizer">

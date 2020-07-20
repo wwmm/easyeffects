@@ -8,6 +8,7 @@ use crate::presets::deesser;
 use crate::presets::delay::Delay;
 use crate::presets::exciter::Exciter;
 use crate::presets::filter;
+use crate::presets::equalizer;
 use crate::presets::gate;
 use crate::presets::limiter;
 use crate::presets::loudness::Loudness;
@@ -59,6 +60,7 @@ struct Output {
     compressor: compressor::Output,
     crossfeed: Crossfeed,
     deesser: deesser::Output,
+    equalizer: equalizer::Output,
     exciter: Exciter,
     filter: filter::Output,
     gate: gate::Output,
@@ -81,6 +83,7 @@ struct Input {
     plugins_order: Vec<String>,
     compressor: compressor::Input,
     deesser: deesser::Input,
+    equalizer: equalizer::Input,
     filter: filter::Input,
     gate: gate::Input,
     limiter: limiter::Input,
