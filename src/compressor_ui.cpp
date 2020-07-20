@@ -117,6 +117,41 @@ auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expec
   return g_variant_new_string("Right");
 }
 
+auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  auto v = g_variant_get_string(variant, nullptr);
+
+  if (v == std::string("off")) {
+    g_value_set_int(value, 0);
+  } else if (v == std::string("12 dB/oct")) {
+    g_value_set_int(value, 1);
+  } else if (v == std::string("24 dB/oct")) {
+    g_value_set_int(value, 2);
+  } else if (v == std::string("36 dB/oct")) {
+    g_value_set_int(value, 3);
+  }
+
+  return 1;
+}
+
+auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
+  int v = g_value_get_int(value);
+
+  if (v == 0) {
+    return g_variant_new_string("off");
+  }
+
+  if (v == 1) {
+    return g_variant_new_string("12 dB/oct");
+  }
+
+  if (v == 2) {
+    return g_variant_new_string("24 dB/oct");
+  }
+
+  return g_variant_new_string("36 dB/oct");
+}
+
 }  // namespace
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
@@ -132,6 +167,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   builder->get_widget("sidechain_type", sidechain_type);
   builder->get_widget("sidechain_mode", sidechain_mode);
   builder->get_widget("sidechain_source", sidechain_source);
+  builder->get_widget("hpf_mode", hpf_mode);
+  builder->get_widget("lpf_mode", lpf_mode);
   builder->get_widget("reduction", reduction);
   builder->get_widget("reduction_label", reduction_label);
   builder->get_widget("sidechain", sidechain);
@@ -151,6 +188,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   get_object(builder, "lookahead", lookahead);
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
+  get_object(builder, "release_threshold", release_threshold);
+  get_object(builder, "boost_threshold", boost_threshold);
+  get_object(builder, "hpf_freq", hpf_freq);
+  get_object(builder, "lpf_freq", lpf_freq);
 
   // gsettings bindings
 
@@ -169,6 +210,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
+  settings->bind("release-threshold", release_threshold.get(), "value", flag);
+  settings->bind("boost-threshold", boost_threshold.get(), "value", flag);
+  settings->bind("hpf-frequency", hpf_freq.get(), "value", flag);
+  settings->bind("lpf-frequency", lpf_freq.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
@@ -184,6 +229,12 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "sidechain-source", sidechain_source->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, sidechain_source_enum_to_int, int_to_sidechain_source_enum,
                                nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings->gobj(), "hpf-mode", hpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings->gobj(), "lpf-mode", lpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
 
   // reset plugin
   reset_button->signal_clicked().connect([=]() { reset(); });
@@ -207,6 +258,8 @@ void CompressorUi::reset() {
 
     update_default_key<double>(settings, "release", section + ".compressor.release");
 
+    update_default_key<double>(settings, "release-threshold", section + ".compressor.release-threshold");
+
     update_default_key<double>(settings, "threshold", section + ".compressor.threshold");
 
     update_default_key<double>(settings, "ratio", section + ".compressor.ratio");
@@ -214,6 +267,8 @@ void CompressorUi::reset() {
     update_default_key<double>(settings, "knee", section + ".compressor.knee");
 
     update_default_key<double>(settings, "makeup", section + ".compressor.makeup");
+
+    update_default_key<double>(settings, "boost-threshold", section + ".compressor.boost-threshold");
 
     update_default_key<bool>(settings, "sidechain-listen", section + ".compressor.sidechain.listen");
 
@@ -228,6 +283,14 @@ void CompressorUi::reset() {
     update_default_key<double>(settings, "sidechain-reactivity", section + ".compressor.sidechain.reactivity");
 
     update_default_key<double>(settings, "sidechain-lookahead", section + ".compressor.sidechain.lookahead");
+
+    update_default_string_key(settings, "hpf-mode", section + ".compressor.hpf-mode");
+
+    update_default_key<double>(settings, "hpf-frequency", section + ".compressor.hpf-frequency");
+
+    update_default_string_key(settings, "lpf-mode", section + ".compressor.lpf-mode");
+
+    update_default_key<double>(settings, "lpf-frequency", section + ".compressor.lpf-frequency");
 
     util::debug(name + " plugin: successfully reset");
   } catch (std::exception& e) {

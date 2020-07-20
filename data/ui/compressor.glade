@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="attack">
     <property name="upper">2000</property>
     <property name="value">20</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.01</property>
+  </object>
+  <object class="GtkAdjustment" id="boost_threshold">
+    <property name="lower">-120</property>
+    <property name="upper">-60</property>
+    <property name="value">-72</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="hpf_freq">
+    <property name="lower">10</property>
+    <property name="upper">20000</property>
+    <property name="value">10</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -87,13 +101,13 @@
     </child>
   </object>
   <object class="GtkAdjustment" id="input_gain">
-    <property name="lower">-20</property>
-    <property name="upper">20</property>
+    <property name="lower">-60</property>
+    <property name="upper">60</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="knee">
-    <property name="lower">-23.80</property>
+    <property name="lower">-23.99</property>
     <property name="value">-6</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">1</property>
@@ -104,6 +118,13 @@
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
   </object>
+  <object class="GtkAdjustment" id="lpf_freq">
+    <property name="lower">10</property>
+    <property name="upper">20000</property>
+    <property name="value">20000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
+  </object>
   <object class="GtkAdjustment" id="makeup">
     <property name="lower">-60</property>
     <property name="upper">60</property>
@@ -112,15 +133,15 @@
     <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="output_gain">
-    <property name="lower">-20</property>
-    <property name="upper">20</property>
+    <property name="lower">-60</property>
+    <property name="upper">60</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="preamp">
     <property name="upper">40</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">0.1</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="ratio">
     <property name="lower">1</property>
@@ -139,7 +160,13 @@
     <property name="upper">5000</property>
     <property name="value">100</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
+  </object>
+  <object class="GtkAdjustment" id="release_threshold">
+    <property name="lower">-200</property>
+    <property name="value">-200</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="threshold">
     <property name="lower">-60</property>
@@ -482,7 +509,6 @@
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">preamp</property>
-                            <property name="digits">2</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -519,7 +545,6 @@
                             <property name="digits">2</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
-                            <property name="value">20</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
@@ -554,7 +579,6 @@
                             <property name="digits">2</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
-                            <property name="value">20</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -675,6 +699,213 @@
                     <property name="name">page_sidechain</property>
                     <property name="title" translatable="yes">Sidechain</property>
                     <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkGrid" id="advanced_grid">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="row_spacing">6</property>
+                    <property name="column_spacing">60</property>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">release_threshold</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">boost_threshold</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">hpf_freq</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSpinButton">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="width_chars">10</property>
+                        <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+                        <property name="secondary_icon_activatable">False</property>
+                        <property name="input_purpose">number</property>
+                        <property name="orientation">vertical</property>
+                        <property name="adjustment">lpf_freq</property>
+                        <property name="numeric">True</property>
+                        <property name="update_policy">if-valid</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">3</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Relative Release Threshold</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Boost Threshold</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">High-pass Frequency</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Low-pass Frequency</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">2</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">High-pass Filter Mode</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Low-pass Filter Mode</property>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="hpf_mode">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_bottom">18</property>
+                        <items>
+                          <item translatable="yes">Off</item>
+                          <item translatable="yes">12 dB/oct</item>
+                          <item translatable="yes">24 dB/oct</item>
+                          <item translatable="yes">36 dB/oct</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">2</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkComboBoxText" id="lpf_mode">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="margin_bottom">18</property>
+                        <items>
+                          <item translatable="yes">Off</item>
+                          <item translatable="yes">12 dB/oct</item>
+                          <item translatable="yes">24 dB/oct</item>
+                          <item translatable="yes">36 dB/oct</item>
+                        </items>
+                      </object>
+                      <packing>
+                        <property name="left_attach">3</property>
+                        <property name="top_attach">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                    <child>
+                      <placeholder/>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="name">page_advanced</property>
+                    <property name="title" translatable="yes">Advanced</property>
+                    <property name="position">2</property>
                   </packing>
                 </child>
               </object>
