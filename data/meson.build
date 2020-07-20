@@ -10,9 +10,9 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.multibandcompressor.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.reverb.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.filter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.equalizer.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.equalizer.leftchannel.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.equalizer.rightchannel.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.exciter.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.bassenhancer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.crossfeed.gschema.xml',
@@ -27,7 +27,7 @@ install_data([
   'schemas/com.github.wwmm.pulseeffects.crystalizer.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.delay.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.webrtc.gschema.xml'
+  'schemas/com.github.wwmm.pulseeffects.webrtc.gschema.xml'
 ], install_dir: schemadir)
 
 appdata_file = i18n_mod.merge_file(
