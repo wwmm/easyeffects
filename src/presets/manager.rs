@@ -1,31 +1,10 @@
-use crate::presets::autogain::AutoGain;
-use crate::presets::bass_enhancer::BassEnhancer;
-use crate::presets::compressor;
-use crate::presets::convolver::Convolver;
-use crate::presets::crossfeed::Crossfeed;
-use crate::presets::crystalizer::Crystalizer;
-use crate::presets::deesser;
-use crate::presets::delay::Delay;
-use crate::presets::exciter::Exciter;
-use crate::presets::filter;
-use crate::presets::equalizer;
-use crate::presets::gate;
-use crate::presets::limiter;
-use crate::presets::loudness::Loudness;
-use crate::presets::maximizer;
-use crate::presets::multiband_compressor;
-use crate::presets::multiband_gate;
-use crate::presets::pitch;
-use crate::presets::reverb;
-use crate::presets::spectrum::Spectrum;
-use crate::presets::stereo_tools::StereoTools;
-use crate::presets::webrtc::WebRTC;
+use crate::presets::root;
 use glib;
 use log::*;
-use serde::{Deserialize, Serialize};
 use serde_json;
 use serde_yaml;
 use std::fs;
+use std::io::prelude::*;
 use std::path::{Path, PathBuf};
 
 #[derive(Clone)]
@@ -39,59 +18,6 @@ pub struct Manager {
     input_presets_directories: Vec<String>,
     output_presets_directories: Vec<String>,
     json: serde_yaml::Value,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct OutputRoot {
-    spectrum: Spectrum,
-    output: Output,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct InputRoot {
-    spectrum: Spectrum,
-    input: Input,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-struct Output {
-    plugins_order: Vec<String>,
-    bass_enhancer: BassEnhancer,
-    compressor: compressor::Output,
-    crossfeed: Crossfeed,
-    deesser: deesser::Output,
-    equalizer: equalizer::Output,
-    exciter: Exciter,
-    filter: filter::Output,
-    gate: gate::Output,
-    limiter: limiter::Output,
-    maximizer: maximizer::Output,
-    pitch: pitch::Output,
-    reverb: reverb::Output,
-    multiband_compressor: multiband_compressor::Output,
-    loudness: Loudness,
-    multiband_gate: multiband_gate::Output,
-    stereo_tools: StereoTools,
-    convolver: Convolver,
-    crystalizer: Crystalizer,
-    autogain: AutoGain,
-    delay: Delay,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-struct Input {
-    plugins_order: Vec<String>,
-    compressor: compressor::Input,
-    deesser: deesser::Input,
-    equalizer: equalizer::Input,
-    filter: filter::Input,
-    gate: gate::Input,
-    limiter: limiter::Input,
-    pitch: pitch::Input,
-    reverb: reverb::Input,
-    webrtc: WebRTC,
-    multiband_compressor: multiband_compressor::Input,
-    multiband_gate: multiband_gate::Input,
 }
 
 impl Manager {
@@ -175,6 +101,25 @@ impl Manager {
         }
     }
 
+    pub fn save(&mut self, preset_type: &PresetType, name: &String) {
+        match preset_type {
+            PresetType::Output => {
+                let o = root::Output::default();
+
+                let yaml_string = serde_yaml::to_string(&o).unwrap();
+
+                self.save_file(preset_type, name, yaml_string);
+            }
+            PresetType::Input => {
+                let o = root::Input::default();
+
+                let yaml_string = serde_yaml::to_string(&o).unwrap();
+
+                self.save_file(preset_type, name, yaml_string);
+            }
+        }
+    }
+
     pub fn load(&mut self, preset_type: &PresetType, name: &String) {
         let yaml_string = self.preset_file_to_string(preset_type, name);
 
@@ -184,7 +129,7 @@ impl Manager {
 
         match preset_type {
             PresetType::Output => {
-                match serde_yaml::from_str::<OutputRoot>(yaml_string.as_str()) {
+                match serde_yaml::from_str::<root::Output>(yaml_string.as_str()) {
                     Ok(root) => {
                         println!("{:?}", root);
                     }
@@ -196,15 +141,19 @@ impl Manager {
 
                 // println!("{:?}", self.json["output"]["plugins_order"]);
             }
-            PresetType::Input => match serde_yaml::from_str::<InputRoot>(yaml_string.as_str()) {
-                Ok(root) => {
-                    println!("{:?}", root);
+            PresetType::Input => {
+                match serde_yaml::from_str::<root::Input>(yaml_string.as_str()) {
+                    Ok(root) => {
+                        println!("{:?}", root);
+                    }
+
+                    Err(err) => {
+                        error!("{:?}", err);
+                    }
                 }
 
-                Err(err) => {
-                    error!("{:?}", err);
-                }
-            },
+                // println!("{:?}", self.json["input"]["plugins_order"]);
+            }
         }
     }
 
@@ -271,6 +220,34 @@ impl Manager {
         }
 
         return String::new();
+    }
+
+    fn save_file(&self, preset_type: &PresetType, name: &String, body: String) {
+        let preset_directory = match preset_type {
+            PresetType::Output => {
+                let mut p = self.output_presets_directories[0].clone();
+                p.push_str("/output");
+
+                p
+            }
+            PresetType::Input => {
+                let mut p = self.input_presets_directories[0].clone();
+
+                p.push_str("/input");
+
+                p
+            }
+        };
+
+        let preset_directory = Path::new(&preset_directory);
+
+        let preset_file = preset_directory.with_file_name(name.clone() + ".yaml");
+
+        let mut output = fs::File::create(preset_file).unwrap();
+
+        output
+            .write_all(body.as_bytes())
+            .expect("Could not save preset file");
     }
 }
 

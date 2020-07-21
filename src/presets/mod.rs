@@ -18,6 +18,7 @@ pub mod multiband_compressor;
 pub mod multiband_gate;
 pub mod pitch;
 pub mod reverb;
+pub mod root;
 pub mod spectrum;
 pub mod stereo_tools;
 pub mod webrtc;

@@ -40,15 +40,9 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
 
         output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-        populate_listbox(
-            &manager::PresetType::Input,
-            &input_listbox,
-        );
+        populate_listbox(&manager::PresetType::Input, &input_listbox);
 
-        populate_listbox(
-            &manager::PresetType::Output,
-            &output_listbox,
-        );
+        populate_listbox(&manager::PresetType::Output, &output_listbox);
     });
 
     return resources.widgets_grid;
@@ -72,10 +66,7 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
     return 0;
 }
 
-fn populate_listbox(
-    preset_type: &manager::PresetType,
-    listbox: &gtk::ListBox,
-) {
+fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
     let children = listbox.get_children();
 
     for child in children {
@@ -134,9 +125,15 @@ fn populate_listbox(
             });
         }
 
-        save_btn.connect_clicked(|obj| {
-            // app->presets_manager->save(preset_type, name);
-        });
+        {
+            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
+            let preset_type = (*preset_type).clone();
+            let name = name.clone();
+
+            save_btn.connect_clicked(move |_btn| {
+                presets_manager.lock().unwrap().save(&preset_type, &name);
+            });
+        }
 
         remove_btn.connect_clicked(|obj| {
             // app->presets_manager->remove(preset_type, name);

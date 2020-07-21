@@ -28,8 +28,8 @@ impl Default for Output {
             input_gain: settings.get_double("input-gain"),
             output_gain: settings.get_double("output-gain"),
             split_channels: settings.get_boolean("split-channels"),
-            left: LeftOutput{..LeftOutput::default()},
-            right: RightOutput{..RightOutput::default()},
+            left: LeftOutput::default(),
+            right: RightOutput::default(),
         }
     }
 }
@@ -61,8 +61,8 @@ impl Default for Input {
             input_gain: settings.get_double("input-gain"),
             output_gain: settings.get_double("output-gain"),
             split_channels: settings.get_boolean("split-channels"),
-            left: LeftInput{..LeftInput::default()},
-            right: RightInput{..RightInput::default()},
+            left: LeftInput::default(),
+            right: RightInput::default(),
         }
     }
 }
