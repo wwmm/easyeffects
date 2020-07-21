@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-06-16 11:02-0300\n"
+"POT-Creation-Date: 2020-07-21 17:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgid "Mute the original signal and listen to the harmonics exclusively."
 msgstr "Выключить исходный сигнал и прослушать только гармоники"
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:211 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
@@ -375,6 +375,77 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/compressor.page:204
 msgid "Look-ahead time of the sidechain relative to the input signal."
+msgstr ""
+
+#. (itstool) path: section/title
+#: C/compressor.page:211
+msgid "Advanced"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:215
+msgid "Relative Release Threshold"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:217
+msgid ""
+"Relative to the Attack Threshold that sets up the threshold of Release Time."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:223
+#, fuzzy
+msgid "Boost Threshold"
+msgstr "Порог срабатывания"
+
+#. (itstool) path: item/p
+#: C/compressor.page:225
+msgid ""
+"Related to upward compression mode only. It defines the threshold below "
+"which the constant amplification will be applied to the input signal. This "
+"prevents the compressor from applying infinite amplification to very quiet "
+"signals."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:233
+msgid "High-pass Filter Mode"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:235
+msgid "Sets the type of the high-pass filter applied to sidechain signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:241
+msgid "High-pass Frequency"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:243
+msgid "Sets the cut-off frequency of the high-pass filter."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:249
+msgid "Low-pass Filter Mode"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:251
+msgid "Sets the type of the low-pass filter applied to sidechain signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:257
+msgid "Low-pass Frequency"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:259
+msgid "Sets the cut-off frequency of the low-pass filter."
 msgstr ""
 
 #. (itstool) path: page/title
