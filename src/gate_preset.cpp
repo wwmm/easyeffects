@@ -25,6 +25,8 @@ void GatePreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".gate.knee", settings->get_double("knee"));
 
+  root.put(section + ".gate.input", settings->get_double("input"));
+
   root.put(section + ".gate.makeup", settings->get_double("makeup"));
 }
 
@@ -48,6 +50,8 @@ void GatePreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "ratio", section + ".gate.ratio");
 
   update_key<double>(root, settings, "knee", section + ".gate.knee");
+
+  update_key<double>(root, settings, "input", section + ".gate.input");
 
   update_key<double>(root, settings, "makeup", section + ".gate.makeup");
 }

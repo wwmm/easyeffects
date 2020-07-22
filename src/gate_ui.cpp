@@ -63,6 +63,7 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
+  get_object(builder, "input", input);
   get_object(builder, "makeup", makeup);
   get_object(builder, "range", range);
   get_object(builder, "ratio", ratio);
@@ -76,6 +77,7 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("attack", attack.get(), "value", flag);
   settings->bind("knee", knee.get(), "value", flag);
+  settings->bind("input", input.get(), "value", flag);
   settings->bind("makeup", makeup.get(), "value", flag);
   settings->bind("range", range.get(), "value", flag);
   settings->bind("ratio", ratio.get(), "value", flag);
@@ -115,6 +117,8 @@ void GateUi::reset() {
     update_default_key<double>(settings, "ratio", section + ".gate.ratio");
 
     update_default_key<double>(settings, "knee", section + ".gate.knee");
+
+    update_default_key<double>(settings, "input", section + ".gate.input");
 
     update_default_key<double>(settings, "makeup", section + ".gate.makeup");
 
