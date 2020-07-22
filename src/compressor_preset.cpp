@@ -19,6 +19,8 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".compressor.release", settings->get_double("release"));
 
+  root.put(section + ".compressor.release-threshold", settings->get_double("release-threshold"));
+
   root.put(section + ".compressor.threshold", settings->get_double("threshold"));
 
   root.put(section + ".compressor.ratio", settings->get_double("ratio"));
@@ -26,6 +28,8 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".compressor.knee", settings->get_double("knee"));
 
   root.put(section + ".compressor.makeup", settings->get_double("makeup"));
+
+  root.put(section + ".compressor.boost-threshold", settings->get_double("boost-threshold"));
 
   root.put(section + ".compressor.sidechain.listen", settings->get_boolean("sidechain-listen"));
 
@@ -40,6 +44,14 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".compressor.sidechain.reactivity", settings->get_double("sidechain-reactivity"));
 
   root.put(section + ".compressor.sidechain.lookahead", settings->get_double("sidechain-lookahead"));
+
+  root.put(section + ".compressor.hpf-mode", settings->get_string("hpf-mode"));
+
+  root.put(section + ".compressor.hpf-frequency", settings->get_double("hpf-frequency"));
+
+  root.put(section + ".compressor.lpf-mode", settings->get_string("lpf-mode"));
+
+  root.put(section + ".compressor.lpf-frequency", settings->get_double("lpf-frequency"));
 }
 
 void CompressorPreset::load(const boost::property_tree::ptree& root,
@@ -57,6 +69,8 @@ void CompressorPreset::load(const boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "release", section + ".compressor.release");
 
+  update_key<double>(root, settings, "release-threshold", section + ".compressor.release-threshold");
+
   update_key<double>(root, settings, "threshold", section + ".compressor.threshold");
 
   update_key<double>(root, settings, "ratio", section + ".compressor.ratio");
@@ -64,6 +78,8 @@ void CompressorPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "knee", section + ".compressor.knee");
 
   update_key<double>(root, settings, "makeup", section + ".compressor.makeup");
+
+  update_key<double>(root, settings, "boost-threshold", section + ".compressor.boost-threshold");
 
   update_key<bool>(root, settings, "sidechain-listen", section + ".compressor.sidechain.listen");
 
@@ -78,6 +94,14 @@ void CompressorPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "sidechain-reactivity", section + ".compressor.sidechain.reactivity");
 
   update_key<double>(root, settings, "sidechain-lookahead", section + ".compressor.sidechain.lookahead");
+
+  update_string_key(root, settings, "hpf-mode", section + ".compressor.hpf-mode");
+
+  update_key<double>(root, settings, "hpf-frequency", section + ".compressor.hpf-frequency");
+
+  update_string_key(root, settings, "lpf-mode", section + ".compressor.lpf-mode");
+
+  update_key<double>(root, settings, "lpf-frequency", section + ".compressor.lpf-frequency");
 }
 
 void CompressorPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

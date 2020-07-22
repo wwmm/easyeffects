@@ -20,6 +20,12 @@
         <value nick="Left" value="2" />
         <value nick="Right" value="3" />
     </enum>
+    <enum id="com.github.wwmm.pulseeffects.compressor.filter.mode.enum">
+        <value nick="off" value="0" />
+        <value nick="12 dB/oct" value="1" />
+        <value nick="24 dB/oct" value="2" />
+        <value nick="36 dB/oct" value="3" />
+    </enum>
     <enum id="com.github.wwmm.pulseeffects.filter.enum">
         <value nick="12dB/oct Lowpass" value="0" />
         <value nick="24dB/oct Lowpass" value="1" />

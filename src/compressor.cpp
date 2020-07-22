@@ -119,7 +119,6 @@ Compressor::Compressor(const std::string& tag, const std::string& schema) : Plug
 
     g_object_set(compressor, "enabled", 1, nullptr);
     g_object_set(compressor, "pause", 1, nullptr);   // pause graph analysis
-    g_object_set(compressor, "rrl", 0.0F, nullptr);  // relative release level
     g_object_set(compressor, "cdr", 0.0F, nullptr);  // dry gain
     g_object_set(compressor, "cwt", 1.0F, nullptr);  /// wet gain
 
@@ -150,6 +149,10 @@ void Compressor::bind_to_gsettings() {
 
   g_settings_bind(settings, "sidechain-source", compressor, "scs", G_SETTINGS_BIND_DEFAULT);
 
+  g_settings_bind(settings, "hpf-mode", compressor, "shpm", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "lpf-mode", compressor, "slpm", G_SETTINGS_BIND_DEFAULT);
+
   g_settings_bind_with_mapping(settings, "input-gain", compressor, "g-in", G_SETTINGS_BIND_GET,
                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
 
@@ -161,6 +164,9 @@ void Compressor::bind_to_gsettings() {
 
   g_settings_bind_with_mapping(settings, "release", compressor, "rt", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "release-threshold", compressor, "rrl", G_SETTINGS_BIND_GET,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind_with_mapping(settings, "ratio", compressor, "cr", G_SETTINGS_BIND_GET, util::double_to_float, nullptr,
                                nullptr, nullptr);
@@ -174,6 +180,9 @@ void Compressor::bind_to_gsettings() {
   g_settings_bind_with_mapping(settings, "makeup", compressor, "mk", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
                                util::linear_gain_to_db20, nullptr, nullptr);
 
+  g_settings_bind_with_mapping(settings, "boost-threshold", compressor, "bth", G_SETTINGS_BIND_GET,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
   g_settings_bind_with_mapping(settings, "sidechain-preamp", compressor, "scp", G_SETTINGS_BIND_DEFAULT,
                                util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
@@ -182,4 +191,10 @@ void Compressor::bind_to_gsettings() {
 
   g_settings_bind_with_mapping(settings, "sidechain-lookahead", compressor, "sla", G_SETTINGS_BIND_GET,
                                util::double_to_float, nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "hpf-frequency", compressor, "shpf", G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "lpf-frequency", compressor, "slpf", G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
 }

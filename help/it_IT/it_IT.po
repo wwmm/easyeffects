@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-06-16 11:02-0300\n"
+"POT-Creation-Date: 2020-07-21 17:41+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -113,7 +113,7 @@ msgid "Mute the original signal and listen to the harmonics exclusively."
 msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:211 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
 #: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
@@ -404,6 +404,85 @@ msgstr "Lookahead"
 msgid "Look-ahead time of the sidechain relative to the input signal."
 msgstr "Tempo di look-ahead in sidechain, relativo al segnale di ingresso."
 
+#. (itstool) path: section/title
+#: C/compressor.page:211
+msgid "Advanced"
+msgstr "Avanzate"
+
+#. (itstool) path: title/em
+#: C/compressor.page:215
+msgid "Relative Release Threshold"
+msgstr "Soglia di Rilascio Relativa"
+
+#. (itstool) path: item/p
+#: C/compressor.page:217
+msgid ""
+"Relative to the Attack Threshold that sets up the threshold of Release Time."
+msgstr ""
+"Relativa alla Soglia di Attacco che imposta la soglia del Tempo di Rilascio."
+
+#. (itstool) path: title/em
+#: C/compressor.page:223
+msgid "Boost Threshold"
+msgstr "Soglia di Incremento"
+
+#. (itstool) path: item/p
+#: C/compressor.page:225
+msgid ""
+"Related to upward compression mode only. It defines the threshold below "
+"which the constant amplification will be applied to the input signal. This "
+"prevents the compressor from applying infinite amplification to very quiet "
+"signals."
+msgstr ""
+"Relativa esclusivamente alla modalità espansiva. Definisce la soglia sotto "
+"la quale verrà applicata un'amplificazione costante al segnale di input. "
+"Ciò impedisce al compressore di applicare un'amplificazione infinita a "
+"segnali molto silenziosi."
+
+#. (itstool) path: title/em
+#: C/compressor.page:233
+msgid "High-pass Filter Mode"
+msgstr "Modalità Filtro Passa-Alto"
+
+#. (itstool) path: item/p
+#: C/compressor.page:235
+msgid "Sets the type of the high-pass filter applied to sidechain signal."
+msgstr ""
+"Imposta la tipologia del filtro passa-alto applicato al segnale di "
+"sidechain"
+
+#. (itstool) path: title/em
+#: C/compressor.page:241
+msgid "High-pass Frequency"
+msgstr "Frequenza Passa-Alto"
+
+#. (itstool) path: item/p
+#: C/compressor.page:243
+msgid "Sets the cut-off frequency of the high-pass filter."
+msgstr "Imposta la frequenza di taglio del filtro passa-alto."
+
+#. (itstool) path: title/em
+#: C/compressor.page:249
+msgid "Low-pass Filter Mode"
+msgstr "Modalità Filtro Passa-Basso"
+
+#. (itstool) path: item/p
+#: C/compressor.page:251
+msgid "Sets the type of the low-pass filter applied to sidechain signal."
+msgstr ""
+"Imposta la tipologia del filtro passa-basso applicato al segnale di "
+"sidechain"
+
+#. (itstool) path: title/em
+#: C/compressor.page:257
+msgid "Low-pass Frequency"
+msgstr "Frequenza Passa-Basso"
+
+#. (itstool) path: item/p
+#: C/compressor.page:259
+msgid "Sets the cut-off frequency of the low-pass filter."
+msgstr "Imposta la frequenza di taglio del filtro passa-basso."
+
 #. (itstool) path: page/title
 #: C/deesser.page:9
 msgid "Deesser"
@@ -652,30 +731,28 @@ msgstr "PulseEffects usa il Gate sviluppato da Calf Studio."
 
 #. (itstool) path: item/p
 #: C/gate.page:22
-#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
 "gain reduction stops."
 msgstr ""
-"Valore in millisecondi per cui il segnale deve rimanere oltre la soglia "
-"affinchè la compressione venga applicata interamente."
+"Valore in millisecondi per cui il segnale deve salire oltre la soglia "
+"affinchè la riduzione del guadagno venga terminata."
 
 #. (itstool) path: item/p
 #: C/gate.page:31
-#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
 "reduction is increased again."
 msgstr ""
-"Valore in millisecondi per cui il segnale deve rimanere sotto la soglia "
-"affinchè la compressione venga terminata."
+"Valore in millisecondi per cui il segnale deve scendere sotto la soglia "
+"affinchè la riduzione venga incrementata ulteriormente."
 
 #. (itstool) path: item/p
 #: C/gate.page:40
-#, fuzzy
 msgid "If a signal rises above this level the gain reduction is released."
 msgstr ""
-"Se il segnale supera il valore specificato, verrà applicata la compressione."
+"Se il segnale supera il valore specificato, la riduzione del guadagno viene "
+"rilasciata."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -1747,7 +1824,7 @@ msgstr ""
 #. (itstool) path: page/p
 #: C/pitch.page:14
 msgid "PulseEffects uses the pitch shifter from RubberBand."
-msgstr 
+msgstr ""
 "PulseEffects usa il plugin di modifica dell'intonazione ideato da RubberBand."
 
 #. (itstool) path: title/em
