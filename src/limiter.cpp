@@ -113,18 +113,23 @@ void Limiter::bind_to_gsettings() {
   g_settings_bind_with_mapping(settings, "limit", limiter, "limit", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
                                nullptr, nullptr, nullptr);
 
-  // calf limiter does automatic makeup gain by the same amount given as
-  // limit. See https://github.com/calf-studio-gear/calf/issues/162
-  // that is why we reduce the output level accordingly
+  // Calf limiter did automatic makeup gain by the same amount given as limit.
+  // See https://github.com/calf-studio-gear/calf/issues/162
+  // That is why we reduced the output level accordingly binding both limit and output-gain to the same,
+  // gsettings key, but from 0.90.2 version the "auto-level" toggle was introduced, so we expose the
+  // output gain as a separate parameter along with the automatic level button.
+  // See changelog at https://freshcode.club/projects/calf
 
-  g_settings_bind_with_mapping(settings, "limit", limiter, "level-out", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "output-gain", limiter, "level-out", G_SETTINGS_BIND_GET,
+                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
   g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
 
   g_settings_bind_with_mapping(settings, "release", limiter, "release", G_SETTINGS_BIND_GET, util::double_to_float,
                                nullptr, nullptr, nullptr);
+
+  g_settings_bind(settings, "auto-level", limiter, "auto-level", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);
 

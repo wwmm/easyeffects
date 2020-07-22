@@ -19,9 +19,9 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release, oversampling;
-  Gtk::ToggleButton* asc = nullptr;
-  Glib::RefPtr<Gtk::Adjustment> asc_level;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release, oversampling, asc_level, output_gain;
+
+  Gtk::ToggleButton *auto_level = nullptr , *asc = nullptr;
 
   Gtk::LevelBar* attenuation = nullptr;
   Gtk::Label* attenuation_label = nullptr;

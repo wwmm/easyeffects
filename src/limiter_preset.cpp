@@ -17,11 +17,15 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".limiter.release", settings->get_double("release"));
 
+  root.put(section + ".limiter.auto-level", settings->get_boolean("auto-level"));
+
   root.put(section + ".limiter.asc", settings->get_boolean("asc"));
 
   root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
 
   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
+
+  root.put(section + ".limiter.output-gain", settings->get_double("output-gain"));
 }
 
 void LimiterPreset::load(const boost::property_tree::ptree& root,
@@ -37,11 +41,15 @@ void LimiterPreset::load(const boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "release", section + ".limiter.release");
 
+  update_key<bool>(root, settings, "auto-level", section + ".limiter.auto-level");
+
   update_key<bool>(root, settings, "asc", section + ".limiter.asc");
 
   update_key<double>(root, settings, "asc-level", section + ".limiter.asc-level");
 
   update_key<int>(root, settings, "oversampling", section + ".limiter.oversampling");
+
+  update_key<double>(root, settings, "output-gain", section + ".limiter.output-gain");
 }
 
 void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

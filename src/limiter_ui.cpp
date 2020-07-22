@@ -8,6 +8,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
+  builder->get_widget("auto-level", auto_level);
   builder->get_widget("asc", asc);
   builder->get_widget("attenuation", attenuation);
   builder->get_widget("attenuation_label", attenuation_label);
@@ -19,6 +20,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   get_object(builder, "release", release);
   get_object(builder, "oversampling", oversampling);
   get_object(builder, "asc_level", asc_level);
+  get_object(builder, "output_gain", output_gain);
 
   // gsettings bindings
 
@@ -31,8 +33,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("lookahead", lookahead.get(), "value", flag);
   settings->bind("release", release.get(), "value", flag);
   settings->bind("oversampling", oversampling.get(), "value", flag);
+  settings->bind("auto-level", auto_level, "active", flag);
   settings->bind("asc", asc, "active", flag);
   settings->bind("asc-level", asc_level.get(), "value", flag);
+  settings->bind("output-gain", output_gain.get(), "value", flag);
 
   // reset plugin
   reset_button->signal_clicked().connect([=]() { reset(); });
@@ -54,11 +58,15 @@ void LimiterUi::reset() {
 
     update_default_key<double>(settings, "release", section + ".limiter.release");
 
+    update_default_key<bool>(settings, "auto-level", section + ".limiter.auto-level");
+
     update_default_key<bool>(settings, "asc", section + ".limiter.asc");
 
     update_default_key<double>(settings, "asc-level", section + ".limiter.asc-level");
 
     update_default_key<int>(settings, "oversampling", section + ".limiter.oversampling");
+
+    update_default_key<double>(settings, "output-gain", section + ".limiter.output-gain");
 
     util::debug(name + " plugin: successfully reset");
   } catch (std::exception& e) {
