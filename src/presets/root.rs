@@ -37,6 +37,12 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self){
+        println!("oi");
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Input {
     spectrum: Spectrum,
@@ -49,6 +55,12 @@ impl Default for Input {
             spectrum: Spectrum::default(),
             input: InputChildren::default(),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self){
+        println!("oi");
     }
 }
 

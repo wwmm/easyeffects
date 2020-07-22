@@ -132,6 +132,7 @@ impl Manager {
                 match serde_yaml::from_str::<root::Output>(yaml_string.as_str()) {
                     Ok(root) => {
                         println!("{:?}", root);
+                        root.apply();
                     }
 
                     Err(err) => {
