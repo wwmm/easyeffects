@@ -1835,12 +1835,13 @@ msgstr "Più Veloce"
 #. (itstool) path: title/em
 #: C/pitch.page:26
 msgid "Preserve Formant"
-msgstr "Preserva Formato"
+msgstr "Preserva Formante"
 
 #. (itstool) path: item/p
 #: C/pitch.page:28
 msgid "Enable formant preservation when pitch shifting."
-msgstr "Abilita la preservazione del formato durante il cambio di intonazione."
+msgstr ""
+"Abilita la preservazione della formante durante il cambio di intonazione."
 
 #. (itstool) path: title/em
 #: C/pitch.page:34

@@ -1316,7 +1316,7 @@ msgstr "Più Veloce"
 
 #: data/ui/pitch.glade:156
 msgid "Preserve Formant"
-msgstr "Preserva Formato"
+msgstr "Preserva Formante"
 
 #: data/ui/pitch.glade:180
 msgid "Cents"
