@@ -44,6 +44,10 @@
             <range min="0" max="18"/>
             <default>9</default>
         </key>
+        <key name="input" type="d">
+            <range min="-36" max="36"/>
+            <default>0.0</default>
+        </key>
         <key name="makeup" type="d">
             <range min="0" max="36"/>
             <default>0.0</default>

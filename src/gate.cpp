@@ -89,6 +89,9 @@ void Gate::bind_to_gsettings() {
   g_settings_bind_with_mapping(settings, "threshold", gate, "threshold", G_SETTINGS_BIND_DEFAULT,
                                util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
+  g_settings_bind_with_mapping(settings, "input", gate, "level-in", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+                               util::linear_gain_to_db20, nullptr, nullptr);
+
   g_settings_bind_with_mapping(settings, "makeup", gate, "makeup", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
                                util::linear_gain_to_db20, nullptr, nullptr);
 

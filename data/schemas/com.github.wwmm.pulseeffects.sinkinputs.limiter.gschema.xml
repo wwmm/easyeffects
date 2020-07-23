@@ -13,11 +13,15 @@
             <default>true</default>
         </key>
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1"/>
+            <range min="-36.0" max="36.0"/>
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.0" max="36.0"/>
             <default>0.0</default>
         </key>
         <key name="limit" type="d">
-            <range min="-24.1" max="0.0"/>
+            <range min="-24.0" max="0.0"/>
             <default>0.0</default>
         </key>
         <key name="lookahead" type="d">
@@ -27,6 +31,9 @@
         <key name="release" type="d">
             <range min="1" max="1000"/>
             <default>50.0</default>
+        </key>
+        <key name="auto-level" type="b">
+          <default>false</default>
         </key>
         <key name="asc" type="b">
             <default>false</default>

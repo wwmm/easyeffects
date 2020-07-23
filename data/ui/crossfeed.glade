@@ -45,13 +45,15 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="label" translatable="yes">Presets</property>
+                <property name="justify">center</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
               </object>
               <packing>
-                <property name="left_attach">1</property>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
+                <property name="width">3</property>
               </packing>
             </child>
             <child>
@@ -92,12 +94,6 @@
                 <property name="left_attach">0</property>
                 <property name="top_attach">1</property>
               </packing>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
             </child>
           </object>
           <packing>
@@ -198,7 +194,6 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -213,12 +208,11 @@
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -240,6 +234,7 @@
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label">0</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -259,7 +254,7 @@
               <packing>
                 <property name="left_attach">3</property>
                 <property name="top_attach">0</property>
-                <property name="height">4</property>
+                <property name="height">5</property>
               </packing>
             </child>
             <child>
@@ -268,6 +263,7 @@
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label">1</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -299,7 +295,7 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -311,7 +307,7 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -319,13 +315,15 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label">0</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -334,14 +332,41 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label">1</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">6</property>
+                <property name="activate_on_single_click">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">4</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_top">6</property>
+                <property name="activate_on_single_click">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">3</property>
               </packing>
             </child>
           </object>

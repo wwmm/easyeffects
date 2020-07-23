@@ -19,7 +19,7 @@ class GateUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, range, makeup;
+  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, range, input, makeup;
   Gtk::LevelBar* gating = nullptr;
   Gtk::Label* gating_label = nullptr;
   Gtk::ComboBoxText *detection = nullptr, *stereo_link = nullptr;
