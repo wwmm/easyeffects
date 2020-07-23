@@ -1,5 +1,6 @@
 pub mod autogain;
 pub mod bass_enhancer;
+pub mod common;
 pub mod compressor;
 pub mod convolver;
 pub mod crossfeed;

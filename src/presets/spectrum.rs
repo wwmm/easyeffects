@@ -1,5 +1,6 @@
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+use crate::presets::common::update_key;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -40,8 +41,6 @@ impl Default for Spectrum {
             color.push(pixel.parse().unwrap());
         }
 
-        println!("{:?}", color);
-
         // gradient color vec
 
         color_string = settings
@@ -58,8 +57,6 @@ impl Default for Spectrum {
         for pixel in color_str_vec {
             gradient_color.push(pixel.parse().unwrap());
         }
-
-        println!("{:?}", gradient_color);
 
         Spectrum {
             show: settings.get_boolean("show"),
@@ -81,6 +78,10 @@ impl Default for Spectrum {
 
 impl Spectrum {
     pub fn apply(&self){
-        println!("oi spectrum");
+        let settings = gio::Settings::new("com.github.wwmm.pulseeffects.spectrum");
+
+        update_key(&settings, "show", self.show);
+        update_key(&settings, "n-points", self.n_points);
+        update_key(&settings, "height", self.height);
     }
 }
