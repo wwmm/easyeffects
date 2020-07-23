@@ -13,6 +13,7 @@ pub struct Output {
     threshold: f64,
     ratio: f64,
     knee: f64,
+    input: f64,
     makeup: f64,
 }
 
@@ -33,6 +34,7 @@ impl Default for Output {
             threshold: settings.get_double("threshold"),
             ratio: settings.get_double("ratio"),
             knee: settings.get_double("knee"),
+            input: settings.get_double("input"),
             makeup: settings.get_double("makeup"),
         }
     }
@@ -49,6 +51,7 @@ pub struct Input {
     release: f64,
     threshold: f64,
     ratio: f64,
+    input: f64,
     knee: f64,
     makeup: f64,
 }
@@ -70,6 +73,7 @@ impl Default for Input {
             threshold: settings.get_double("threshold"),
             ratio: settings.get_double("ratio"),
             knee: settings.get_double("knee"),
+            input: settings.get_double("input"),
             makeup: settings.get_double("makeup"),
         }
     }

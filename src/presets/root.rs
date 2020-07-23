@@ -39,7 +39,8 @@ impl Default for Output {
 
 impl Output {
     pub fn apply(&self){
-        println!("oi");
+        self.spectrum.apply();
+        self.output.apply();
     }
 }
 
@@ -60,7 +61,8 @@ impl Default for Input {
 
 impl Input {
     pub fn apply(&self){
-        println!("oi");
+        self.spectrum.apply();
+        self.input.apply();
     }
 }
 
@@ -117,6 +119,12 @@ impl Default for OutputChildren {
     }
 }
 
+impl OutputChildren {
+    pub fn apply(&self){
+        println!("oi output children");
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 struct InputChildren {
     plugins_order: Vec<String>,
@@ -149,5 +157,11 @@ impl Default for InputChildren {
             multiband_compressor: multiband_compressor::Input::default(),
             multiband_gate: multiband_gate::Input::default(),
         }
+    }
+}
+
+impl InputChildren {
+    pub fn apply(&self){
+        println!("oi input children");
     }
 }

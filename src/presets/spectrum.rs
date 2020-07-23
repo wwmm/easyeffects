@@ -78,3 +78,9 @@ impl Default for Spectrum {
         }
     }
 }
+
+impl Spectrum {
+    pub fn apply(&self){
+        println!("oi spectrum");
+    }
+}

@@ -131,7 +131,7 @@ impl Manager {
             PresetType::Output => {
                 match serde_yaml::from_str::<root::Output>(yaml_string.as_str()) {
                     Ok(root) => {
-                        println!("{:?}", root);
+                        // println!("{:?}", root);
                         root.apply();
                     }
 
@@ -145,7 +145,8 @@ impl Manager {
             PresetType::Input => {
                 match serde_yaml::from_str::<root::Input>(yaml_string.as_str()) {
                     Ok(root) => {
-                        println!("{:?}", root);
+                        // println!("{:?}", root);
+                        root.apply();
                     }
 
                     Err(err) => {
