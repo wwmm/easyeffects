@@ -1,6 +1,6 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
-use crate::presets::common::update_key;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -77,7 +77,7 @@ impl Default for Spectrum {
 }
 
 impl Spectrum {
-    pub fn apply(&self){
+    pub fn apply(&self) {
         let settings = gio::Settings::new("com.github.wwmm.pulseeffects.spectrum");
 
         update_key(&settings, "show", self.show);
@@ -90,6 +90,6 @@ impl Spectrum {
         update_key(&settings, "exponent", self.exponent);
         update_key(&settings, "sampling-freq", self.sampling_freq);
         update_key(&settings, "line-width", self.line_width);
-        // update_key(&settings, "type", self.style);
+        update_string_key(&settings, "type", &self.style);
     }
 }
