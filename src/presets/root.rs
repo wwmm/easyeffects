@@ -123,6 +123,7 @@ impl OutputChildren {
     pub fn apply(&self){
         self.autogain.apply();
         self.bass_enhancer.apply();
+        self.compressor.apply();
     }
 }
 
@@ -163,6 +164,6 @@ impl Default for InputChildren {
 
 impl InputChildren {
     pub fn apply(&self){
-        println!("Hi from input children.");
+        self.compressor.apply();
     }
 }

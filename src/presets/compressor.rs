@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -60,6 +61,38 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.compressor",
+            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_string_key(&settings, "mode", &self.mode);
+        update_key(&settings, "attack", self.attack);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "release-threshold", self.release_threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "knee", self.knee);
+        update_key(&settings, "makeup", self.makeup);
+        update_key(&settings, "boost-threshold", self.boost_threshold);
+        update_key(&settings, "sidechain-listen", self.sidechain.listen);
+        update_string_key(&settings, "sidechain-type", &self.sidechain.style);
+        update_string_key(&settings, "sidechain-mode", &self.sidechain.mode);
+        update_string_key(&settings, "sidechain-source", &self.sidechain.source);
+        update_key(&settings, "sidechain-preamp", self.sidechain.preamp);
+        update_key(&settings, "sidechain-reactivity", self.sidechain.reactivity);
+        update_key(&settings, "sidechain-lookahead", self.sidechain.lookahead);
+        update_string_key(&settings, "hpf-mode", &self.hpf_mode);
+        update_key(&settings, "hpf-frequency", self.hpf_frequency);
+        update_string_key(&settings, "lpf-mode", &self.lpf_mode);
+        update_key(&settings, "lpf-frequency", self.lpf_frequency);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -116,6 +149,38 @@ impl Default for Input {
             lpf_mode: settings.get_string("lpf-mode").unwrap().to_string(),
             lpf_frequency: settings.get_double("lpf-frequency"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.compressor",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_string_key(&settings, "mode", &self.mode);
+        update_key(&settings, "attack", self.attack);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "release-threshold", self.release_threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "knee", self.knee);
+        update_key(&settings, "makeup", self.makeup);
+        update_key(&settings, "boost-threshold", self.boost_threshold);
+        update_key(&settings, "sidechain-listen", self.sidechain.listen);
+        update_string_key(&settings, "sidechain-type", &self.sidechain.style);
+        update_string_key(&settings, "sidechain-mode", &self.sidechain.mode);
+        update_string_key(&settings, "sidechain-source", &self.sidechain.source);
+        update_key(&settings, "sidechain-preamp", self.sidechain.preamp);
+        update_key(&settings, "sidechain-reactivity", self.sidechain.reactivity);
+        update_key(&settings, "sidechain-lookahead", self.sidechain.lookahead);
+        update_string_key(&settings, "hpf-mode", &self.hpf_mode);
+        update_key(&settings, "hpf-frequency", self.hpf_frequency);
+        update_string_key(&settings, "lpf-mode", &self.lpf_mode);
+        update_key(&settings, "lpf-frequency", self.lpf_frequency);
     }
 }
 
