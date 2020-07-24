@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -33,5 +34,24 @@ impl Default for AutoGain {
             weight_s: settings.get_int("weight-s"),
             weight_i: settings.get_int("weight-i"),
         }
+    }
+}
+
+impl AutoGain {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.autogain",
+            "/com/github/wwmm/pulseeffects/sinkinputs/autogain/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "detect-silence", self.detect_silence);
+        update_key(&settings, "use-geometric-mean", self.use_geometric_mean);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "target", self.target);
+        update_key(&settings, "weight-m", self.weight_m);
+        update_key(&settings, "weight-s", self.weight_s);
+        update_key(&settings, "weight-i", self.weight_i);
     }
 }

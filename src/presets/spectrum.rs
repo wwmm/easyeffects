@@ -91,5 +91,7 @@ impl Spectrum {
         update_key(&settings, "sampling-freq", self.sampling_freq);
         update_key(&settings, "line-width", self.line_width);
         update_string_key(&settings, "type", &self.style);
+
+        // Todo: writing arrays. It seems it is not possible to do that in Rust at the moment :-(
     }
 }

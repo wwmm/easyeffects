@@ -122,6 +122,8 @@ impl Default for OutputChildren {
 impl OutputChildren {
     pub fn apply(&self){
         println!("oi output children");
+
+        self.autogain.apply();
     }
 }
 
