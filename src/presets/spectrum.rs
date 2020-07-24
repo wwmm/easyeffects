@@ -83,5 +83,13 @@ impl Spectrum {
         update_key(&settings, "show", self.show);
         update_key(&settings, "n-points", self.n_points);
         update_key(&settings, "height", self.height);
+        update_key(&settings, "use-custom-color", self.use_custom_color);
+        update_key(&settings, "fill", self.fill);
+        update_key(&settings, "show-bar-border", self.show_bar_border);
+        update_key(&settings, "scale", self.scale);
+        update_key(&settings, "exponent", self.exponent);
+        update_key(&settings, "sampling-freq", self.sampling_freq);
+        update_key(&settings, "line-width", self.line_width);
+        // update_key(&settings, "type", self.style);
     }
 }
