@@ -121,9 +121,8 @@ impl Default for OutputChildren {
 
 impl OutputChildren {
     pub fn apply(&self){
-        println!("oi output children");
-
         self.autogain.apply();
+        self.bass_enhancer.apply();
     }
 }
 
@@ -164,6 +163,6 @@ impl Default for InputChildren {
 
 impl InputChildren {
     pub fn apply(&self){
-        println!("oi input children");
+        println!("Hi from input children.");
     }
 }

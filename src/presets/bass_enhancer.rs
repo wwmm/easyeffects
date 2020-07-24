@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -35,5 +36,25 @@ impl Default for BassEnhancer {
             floor_active: settings.get_boolean("floor-active"),
             listen: settings.get_boolean("listen"),
         }
+    }
+}
+
+impl BassEnhancer {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.bassenhancer",
+            "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "amount", self.amount);
+        update_key(&settings, "harmonics", self.harmonics);
+        update_key(&settings, "scope", self.scope);
+        update_key(&settings, "floor", self.floor);
+        update_key(&settings, "blend", self.blend);
+        update_key(&settings, "floor-active", self.floor_active);
+        update_key(&settings, "listen", self.listen);
     }
 }
