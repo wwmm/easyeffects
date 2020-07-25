@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -25,5 +26,20 @@ impl Default for Convolver {
             kernel_path: settings.get_string("kernel-path").unwrap().to_string(),
             ir_width: settings.get_int("ir-width"),
         }
+    }
+}
+
+impl Convolver {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.convolver",
+            "/com/github/wwmm/pulseeffects/sinkinputs/convolver/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_string_key(&settings, "kernel-path", &self.kernel_path);
+        update_key(&settings, "ir-width", self.ir_width);
     }
 }

@@ -124,6 +124,7 @@ impl OutputChildren {
         self.autogain.apply();
         self.bass_enhancer.apply();
         self.compressor.apply();
+        self.convolver.apply();
     }
 }
 
