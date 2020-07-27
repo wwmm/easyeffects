@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -21,5 +22,18 @@ impl Default for Crossfeed {
             fcut: settings.get_int("fcut"),
             feed: settings.get_double("feed"),
         }
+    }
+}
+
+impl Crossfeed {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.crossfeed",
+            "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "fcut", self.fcut);
+        update_key(&settings, "feed", self.feed);
     }
 }

@@ -125,6 +125,7 @@ impl OutputChildren {
         self.bass_enhancer.apply();
         self.compressor.apply();
         self.convolver.apply();
+        self.crossfeed.apply();
     }
 }
 
