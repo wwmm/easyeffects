@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -103,11 +104,76 @@ impl Default for Crystalizer {
                 mute: settings.get_boolean("mute-band11"),
                 bypass: settings.get_boolean("bypass-band11"),
             },
-            band12: Band{
+            band12: Band {
                 intensity: settings.get_double("intensity-band12"),
                 mute: settings.get_boolean("mute-band12"),
                 bypass: settings.get_boolean("bypass-band12"),
             },
         }
+    }
+}
+
+impl Crystalizer {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.crystalizer",
+            "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "aggressive", self.aggressive);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+
+        update_key(&settings, "intensity-band0", self.band0.intensity);
+        update_key(&settings, "mute-band0", self.band0.mute);
+        update_key(&settings, "bypass-band0", self.band0.bypass);
+
+        update_key(&settings, "intensity-band1", self.band1.intensity);
+        update_key(&settings, "mute-band1", self.band1.mute);
+        update_key(&settings, "bypass-band1", self.band1.bypass);
+
+        update_key(&settings, "intensity-band2", self.band2.intensity);
+        update_key(&settings, "mute-band2", self.band2.mute);
+        update_key(&settings, "bypass-band2", self.band2.bypass);
+
+        update_key(&settings, "intensity-band3", self.band3.intensity);
+        update_key(&settings, "mute-band3", self.band3.mute);
+        update_key(&settings, "bypass-band3", self.band3.bypass);
+
+        update_key(&settings, "intensity-band4", self.band4.intensity);
+        update_key(&settings, "mute-band4", self.band4.mute);
+        update_key(&settings, "bypass-band4", self.band4.bypass);
+
+        update_key(&settings, "intensity-band5", self.band5.intensity);
+        update_key(&settings, "mute-band5", self.band5.mute);
+        update_key(&settings, "bypass-band5", self.band5.bypass);
+
+        update_key(&settings, "intensity-band6", self.band6.intensity);
+        update_key(&settings, "mute-band6", self.band6.mute);
+        update_key(&settings, "bypass-band6", self.band6.bypass);
+
+        update_key(&settings, "intensity-band7", self.band7.intensity);
+        update_key(&settings, "mute-band7", self.band7.mute);
+        update_key(&settings, "bypass-band7", self.band7.bypass);
+        update_key(&settings, "intensity-band8", self.band8.intensity);
+        update_key(&settings, "mute-band8", self.band8.mute);
+        update_key(&settings, "bypass-band8", self.band8.bypass);
+
+        update_key(&settings, "intensity-band9", self.band9.intensity);
+        update_key(&settings, "mute-band9", self.band9.mute);
+        update_key(&settings, "bypass-band9", self.band9.bypass);
+
+        update_key(&settings, "intensity-band10", self.band10.intensity);
+        update_key(&settings, "mute-band10", self.band10.mute);
+        update_key(&settings, "bypass-band10", self.band10.bypass);
+
+        update_key(&settings, "intensity-band11", self.band11.intensity);
+        update_key(&settings, "mute-band11", self.band11.mute);
+        update_key(&settings, "bypass-band11", self.band11.bypass);
+
+        update_key(&settings, "intensity-band12", self.band12.intensity);
+        update_key(&settings, "mute-band12", self.band12.mute);
+        update_key(&settings, "bypass-band12", self.band12.bypass);
     }
 }

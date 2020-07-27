@@ -126,6 +126,7 @@ impl OutputChildren {
         self.compressor.apply();
         self.convolver.apply();
         self.crossfeed.apply();
+        self.crystalizer.apply();
     }
 }
 
