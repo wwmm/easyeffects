@@ -129,6 +129,7 @@ impl OutputChildren {
         self.crystalizer.apply();
         self.deesser.apply();
         self.delay.apply();
+        self.equalizer.apply();
     }
 }
 
@@ -171,5 +172,6 @@ impl InputChildren {
     pub fn apply(&self){
         self.compressor.apply();
         self.deesser.apply();
+        self.equalizer.apply();
     }
 }

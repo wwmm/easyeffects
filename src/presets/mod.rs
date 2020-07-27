@@ -8,6 +8,12 @@ pub mod crystalizer;
 pub mod deesser;
 pub mod delay;
 pub mod equalizer;
+
+#[macro_use]
+pub mod equalizer_band;
+
+pub mod equalizer_left;
+pub mod equalizer_right;
 pub mod exciter;
 pub mod filter;
 pub mod gate;
