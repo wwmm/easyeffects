@@ -128,6 +128,7 @@ impl OutputChildren {
         self.crossfeed.apply();
         self.crystalizer.apply();
         self.deesser.apply();
+        self.delay.apply();
     }
 }
 

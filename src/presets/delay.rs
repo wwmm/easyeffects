@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -25,5 +26,20 @@ impl Default for Delay {
             time_l: settings.get_double("time-l"),
             time_r: settings.get_double("time-r"),
         }
+    }
+}
+
+impl Delay {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.delay",
+            "/com/github/wwmm/pulseeffects/sinkinputs/delay/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "time-l", self.time_l);
+        update_key(&settings, "time-r", self.time_r);
     }
 }
