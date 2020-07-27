@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -44,6 +45,30 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.deesser",
+            "/com/github/wwmm/pulseeffects/sinkinputs/deesser/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_string_key(&settings, "detection", &self.detection);
+        update_string_key(&settings, "mode", &self.mode);
+        update_key(&settings, "threshold", self.threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "laxity", self.laxity);
+        update_key(&settings, "makeup", self.makeup);
+        update_key(&settings, "f1-freq", self.f1_freq);
+        update_key(&settings, "f1-level", self.f1_level);
+        update_key(&settings, "f2-freq", self.f2_freq);
+        update_key(&settings, "f2-level", self.f2_level);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "f2-q", self.f2_q);
+        update_key(&settings, "sc-listen", self.sc_listen);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -84,5 +109,29 @@ impl Default for Input {
             f2_q: settings.get_double("f2-q"),
             sc_listen: settings.get_boolean("sc-listen"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.deesser",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_string_key(&settings, "detection", &self.detection);
+        update_string_key(&settings, "mode", &self.mode);
+        update_key(&settings, "threshold", self.threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "laxity", self.laxity);
+        update_key(&settings, "makeup", self.makeup);
+        update_key(&settings, "f1-freq", self.f1_freq);
+        update_key(&settings, "f1-level", self.f1_level);
+        update_key(&settings, "f2-freq", self.f2_freq);
+        update_key(&settings, "f2-level", self.f2_level);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "f2-q", self.f2_q);
+        update_key(&settings, "sc-listen", self.sc_listen);
     }
 }

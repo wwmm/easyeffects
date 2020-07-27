@@ -127,6 +127,7 @@ impl OutputChildren {
         self.convolver.apply();
         self.crossfeed.apply();
         self.crystalizer.apply();
+        self.deesser.apply();
     }
 }
 
@@ -168,5 +169,6 @@ impl Default for InputChildren {
 impl InputChildren {
     pub fn apply(&self){
         self.compressor.apply();
+        self.deesser.apply();
     }
 }
