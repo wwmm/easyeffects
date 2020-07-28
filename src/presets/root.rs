@@ -131,6 +131,7 @@ impl OutputChildren {
         self.delay.apply();
         self.equalizer.apply();
         self.exciter.apply();
+        self.filter.apply();
     }
 }
 
@@ -174,5 +175,6 @@ impl InputChildren {
         self.compressor.apply();
         self.deesser.apply();
         self.equalizer.apply();
+        self.filter.apply();
     }
 }
