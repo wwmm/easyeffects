@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -40,6 +41,27 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.gate",
+            "/com/github/wwmm/pulseeffects/sinkinputs/gate/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_string_key(&settings, "detection", &self.detection);
+        update_string_key(&settings, "stereo-link", &self.stereo_link);
+        update_key(&settings, "range", self.range);
+        update_key(&settings, "attack", self.attack);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "threshold", self.threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "knee", self.knee);
+        update_key(&settings, "input", self.input);
+        update_key(&settings, "makeup", self.makeup);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -76,5 +98,26 @@ impl Default for Input {
             input: settings.get_double("input"),
             makeup: settings.get_double("makeup"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.gate",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/gate/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_string_key(&settings, "detection", &self.detection);
+        update_string_key(&settings, "stereo-link", &self.stereo_link);
+        update_key(&settings, "range", self.range);
+        update_key(&settings, "attack", self.attack);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "threshold", self.threshold);
+        update_key(&settings, "ratio", self.ratio);
+        update_key(&settings, "knee", self.knee);
+        update_key(&settings, "input", self.input);
+        update_key(&settings, "makeup", self.makeup);
     }
 }
