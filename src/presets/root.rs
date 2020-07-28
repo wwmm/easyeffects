@@ -130,6 +130,7 @@ impl OutputChildren {
         self.deesser.apply();
         self.delay.apply();
         self.equalizer.apply();
+        self.exciter.apply();
     }
 }
 
