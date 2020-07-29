@@ -1,4 +1,4 @@
-use crate::presets::common::{update_key, update_string_key};
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -55,7 +55,6 @@ impl Output {
         update_key(&settings, "oversampling", self.oversampling);
     }
 }
-
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]

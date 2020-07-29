@@ -1,3 +1,4 @@
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -23,5 +24,19 @@ impl Default for Loudness {
             output: settings.get_double("output"),
             link: settings.get_double("link"),
         }
+    }
+}
+
+impl Loudness {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.loudness",
+            "/com/github/wwmm/pulseeffects/sinkinputs/loudness/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "loudness", self.loudness);
+        update_key(&settings, "output", self.output);
+        update_key(&settings, "link", self.link);
     }
 }

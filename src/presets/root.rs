@@ -134,6 +134,8 @@ impl OutputChildren {
         self.filter.apply();
         self.gate.apply();
         self.limiter.apply();
+        self.loudness.apply();
+        self.maximizer.apply();
     }
 }
 
