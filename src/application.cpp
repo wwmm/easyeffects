@@ -27,6 +27,8 @@ Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gi
 
   add_main_option_entry(Gio::Application::OPTION_TYPE_INT, "bypass", 'b',
                         _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
+
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "hide-window", 'w', _("Hide the Window."));
 }
 
 Application::~Application() {
@@ -64,6 +66,12 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
     settings->reset("");
 
     util::info(log_tag + "All settings were reset");
+  } else if (options->contains("hide-window")) {
+    util::info(log_tag + "Hiding the window...");
+
+    for (const auto& w : get_windows()) {
+      w->hide();
+    }
   } else if (options->contains("bypass")) {
     int bypass_arg;
 
