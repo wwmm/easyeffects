@@ -133,6 +133,7 @@ impl OutputChildren {
         self.exciter.apply();
         self.filter.apply();
         self.gate.apply();
+        self.limiter.apply();
     }
 }
 
@@ -178,5 +179,6 @@ impl InputChildren {
         self.equalizer.apply();
         self.filter.apply();
         self.gate.apply();
+        self.limiter.apply();
     }
 }

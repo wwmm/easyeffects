@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -36,6 +37,26 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.limiter",
+            "/com/github/wwmm/pulseeffects/sinkinputs/limiter/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "limit", self.limit);
+        update_key(&settings, "lookahead", self.lookahead);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "auto-level", self.auto_level);
+        update_key(&settings, "asc", self.asc);
+        update_key(&settings, "asc-level", self.asc_level);
+        update_key(&settings, "oversampling", self.oversampling);
+    }
+}
+
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -68,5 +89,24 @@ impl Default for Input {
             asc_level: settings.get_double("asc-level"),
             oversampling: settings.get_int("oversampling"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.limiter",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "limit", self.limit);
+        update_key(&settings, "lookahead", self.lookahead);
+        update_key(&settings, "release", self.release);
+        update_key(&settings, "auto-level", self.auto_level);
+        update_key(&settings, "asc", self.asc);
+        update_key(&settings, "asc-level", self.asc_level);
+        update_key(&settings, "oversampling", self.oversampling);
     }
 }
