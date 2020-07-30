@@ -1,4 +1,4 @@
-use crate::presets::common::{update_key, update_string_key};
+use crate::presets::common::update_key;
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
