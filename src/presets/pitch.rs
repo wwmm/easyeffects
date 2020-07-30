@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -36,6 +37,25 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.pitch",
+            "/com/github/wwmm/pulseeffects/sinkinputs/pitch/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "cents", self.cents);
+        update_key(&settings, "semitones", self.semitones);
+        update_key(&settings, "octaves", self.octaves);
+        update_key(&settings, "crispness", self.crispness);
+        update_key(&settings, "formant-preserving", self.formant_preserving);
+        update_key(&settings, "faster", self.faster);
+    }
+}
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -68,5 +88,24 @@ impl Default for Input {
             formant_preserving: settings.get_boolean("formant-preserving"),
             faster: settings.get_boolean("faster"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.pitch",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "cents", self.cents);
+        update_key(&settings, "semitones", self.semitones);
+        update_key(&settings, "octaves", self.octaves);
+        update_key(&settings, "crispness", self.crispness);
+        update_key(&settings, "formant-preserving", self.formant_preserving);
+        update_key(&settings, "faster", self.faster);
     }
 }

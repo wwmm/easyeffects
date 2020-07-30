@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -42,6 +43,29 @@ impl Default for Output {
     }
 }
 
+impl Output {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.reverb",
+            "/com/github/wwmm/pulseeffects/sinkinputs/reverb/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_string_key(&settings, "room-size", &self.room_size);
+        update_key(&settings, "decay-time", self.decay_time);
+        update_key(&settings, "hf-damp", self.hf_damp);
+        update_key(&settings, "diffusion", self.diffusion);
+        update_key(&settings, "amount", self.amount);
+        update_key(&settings, "dry", self.dry);
+        update_key(&settings, "predelay", self.predelay);
+        update_key(&settings, "bass-cut", self.bass_cut);
+        update_key(&settings, "treble-cut", self.treble_cut);
+    }
+}
+
+
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
 pub struct Input {
@@ -80,5 +104,27 @@ impl Default for Input {
             bass_cut: settings.get_double("bass-cut"),
             treble_cut: settings.get_double("treble-cut"),
         }
+    }
+}
+
+impl Input {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.reverb",
+            "/com/github/wwmm/pulseeffects/sourceoutputs/reverb/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_string_key(&settings, "room-size", &self.room_size);
+        update_key(&settings, "decay-time", self.decay_time);
+        update_key(&settings, "hf-damp", self.hf_damp);
+        update_key(&settings, "diffusion", self.diffusion);
+        update_key(&settings, "amount", self.amount);
+        update_key(&settings, "dry", self.dry);
+        update_key(&settings, "predelay", self.predelay);
+        update_key(&settings, "bass-cut", self.bass_cut);
+        update_key(&settings, "treble-cut", self.treble_cut);
     }
 }
