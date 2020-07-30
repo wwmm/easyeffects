@@ -191,5 +191,6 @@ impl InputChildren {
         self.multiband_gate.apply();
         self.pitch.apply();
         self.reverb.apply();
+        self.webrtc.apply();
     }
 }
