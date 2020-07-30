@@ -1,11 +1,11 @@
 use gtk::prelude::*;
 
+use gdk;
 use gio;
 use glib;
-use gdk;
 
-use gtk_resources::UIResource;
 use crate::ui::presets_menu;
+use gtk_resources::UIResource;
 
 #[derive(UIResource, Debug)]
 #[resource = "/com/github/wwmm/pulseeffects/ui/application.glade"]
@@ -23,7 +23,7 @@ struct WindowResource {
     bypass_button: gtk::Button,
     headerbar_icon1: gtk::Image,
     headerbar_icon2: gtk::Image,
-    headerbar_info: gtk::Label
+    headerbar_info: gtk::Label,
 }
 
 pub fn build_ui() -> gtk::ApplicationWindow {
@@ -46,12 +46,13 @@ pub fn build_ui() -> gtk::ApplicationWindow {
     apply_css_style("custom.css");
     add_path_to_theme_resource();
 
-    res.presets_menu.add(&presets_menu::build_ui(&res.presets_menu_button));
+    res.presets_menu
+        .add(&presets_menu::build_ui(&res.presets_menu_button));
 
     return window;
 }
 
-fn apply_css_style(css_file_name: &str){
+fn apply_css_style(css_file_name: &str) {
     let provider = gtk::CssProvider::new();
 
     let path = String::from("/com/github/wwmm/pulseeffects/ui/") + css_file_name;
@@ -64,7 +65,7 @@ fn apply_css_style(css_file_name: &str){
     gtk::StyleContext::add_provider_for_screen(screen, &provider, priority);
 }
 
-fn add_path_to_theme_resource(){
+fn add_path_to_theme_resource() {
     let default_theme = gtk::IconTheme::get_default().expect("Could not get default icon theme");
 
     default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");

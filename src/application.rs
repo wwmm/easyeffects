@@ -48,7 +48,7 @@ pub fn init() {
 
             app.add_window(&window);
 
-            window.connect_hide(|obj|{
+            window.connect_hide(|obj| {
                 let (w, h) = obj.get_size();
 
                 println!("{}, {}", w, h);
