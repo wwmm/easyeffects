@@ -4,6 +4,7 @@
 
 ### Added
 
+- New parameters were added to the plugins: limiter, gate and compressor.
 - New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
   applets to hide our window.
 
