@@ -140,6 +140,7 @@ impl OutputChildren {
         self.multiband_gate.apply();
         self.pitch.apply();
         self.reverb.apply();
+        self.stereo_tools.apply();
     }
 }
 

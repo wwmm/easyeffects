@@ -1,3 +1,4 @@
+use crate::presets::common::{update_key, update_string_key};
 use gio::prelude::*;
 use serde::{Deserialize, Serialize};
 
@@ -53,5 +54,34 @@ impl Default for StereoTools {
             sc_level: settings.get_double("sc-level"),
             stereo_phase: settings.get_double("stereo-phase"),
         }
+    }
+}
+
+impl StereoTools {
+    pub fn apply(&self) {
+        let settings = gio::Settings::new_with_path(
+            "com.github.wwmm.pulseeffects.stereotools",
+            "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/",
+        );
+
+        update_key(&settings, "state", self.state);
+        update_key(&settings, "input-gain", self.input_gain);
+        update_key(&settings, "output-gain", self.output_gain);
+        update_key(&settings, "balance-in", self.balance_in);
+        update_key(&settings, "balance-out", self.balance_out);
+        update_key(&settings, "softclip", self.softclip);
+        update_key(&settings, "mutel", self.mutel);
+        update_key(&settings, "muter", self.muter);
+        update_key(&settings, "phasel", self.phasel);
+        update_key(&settings, "phaser", self.phaser);
+        update_string_key(&settings, "mode", &self.mode);
+        update_key(&settings, "slev", self.side_level);
+        update_key(&settings, "sbal", self.side_balance);
+        update_key(&settings, "mlev", self.middle_level);
+        update_key(&settings, "mpan", self.middle_panorama);
+        update_key(&settings, "stereo-base", self.stereo_base);
+        update_key(&settings, "delay", self.delay);
+        update_key(&settings, "sc-level", self.sc_level);
+        update_key(&settings, "stereo-phase", self.stereo_phase);
     }
 }
