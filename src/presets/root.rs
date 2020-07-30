@@ -137,6 +137,7 @@ impl OutputChildren {
         self.loudness.apply();
         self.maximizer.apply();
         self.multiband_compressor.apply();
+        self.multiband_gate.apply();
     }
 }
 
@@ -184,5 +185,6 @@ impl InputChildren {
         self.gate.apply();
         self.limiter.apply();
         self.multiband_compressor.apply();
+        self.multiband_gate.apply();
     }
 }
