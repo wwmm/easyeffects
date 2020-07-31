@@ -4,6 +4,7 @@ use gdk;
 use gio;
 use glib;
 
+use crate::ui::general_settings;
 use crate::ui::presets_menu;
 use gtk_resources::UIResource;
 
@@ -37,17 +38,20 @@ pub fn build_ui() -> gtk::ApplicationWindow {
 
     gio::resources_register(&resource);
 
-    let res = WindowResource::load().unwrap();
+    let resources = WindowResource::load().unwrap();
 
-    // println!("res: {:?}", res);
+    // println!("res: {:?}", resources);
 
-    let window = res.application_window;
+    let window = resources.application_window;
 
     apply_css_style("custom.css");
     add_path_to_theme_resource();
 
-    res.presets_menu
-        .add(&presets_menu::build_ui(&res.presets_menu_button));
+    resources.presets_menu
+        .add(&presets_menu::build_ui(&resources.presets_menu_button));
+
+    resources.stack_menu_settings
+        .add_titled(&general_settings::build_ui(), "general_spectrum", "General");
 
     return window;
 }
