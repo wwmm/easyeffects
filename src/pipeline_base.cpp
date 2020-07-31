@@ -231,11 +231,11 @@ void on_bypass_on(gpointer user_data) {
   if (effects_bin != nullptr) {
     gst_element_set_state(effects_bin, GST_STATE_READY);
 
-    gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, nullptr);
+    gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_bin_remove(GST_BIN(pb->pipeline), effects_bin);
 
-    gst_element_link(pb->adapter, pb->spectrum_bin);
+    gst_element_link_many(pb->adapter, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     util::debug(pb->log_tag + " bypass enabled");
   } else {
@@ -251,11 +251,11 @@ void on_bypass_off(gpointer user_data) {
   if (bin == nullptr) {
     gst_element_set_state(pb->effects_bin, GST_STATE_NULL);
 
-    gst_element_unlink(pb->adapter, pb->spectrum_bin);
+    gst_element_unlink_many(pb->adapter, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_bin_add(GST_BIN(pb->pipeline), pb->effects_bin);
 
-    gst_element_link_many(pb->adapter, pb->effects_bin, pb->spectrum_bin, nullptr);
+    gst_element_link_many(pb->adapter, pb->effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_element_sync_state_with_parent(pb->effects_bin);
 
@@ -336,6 +336,7 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   capsfilter = get_required_plugin("capsfilter", nullptr);
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
+  global_level_meter = get_required_plugin("level", "global_level_meter");
   adapter = gst_element_factory_make("peadapter", nullptr);
 
   auto src_type = get_required_plugin("typefind", nullptr);
@@ -345,10 +346,11 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin, sink,
-                   nullptr);
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin,
+                   global_level_meter, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin, sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin,
+                        global_level_meter, sink, nullptr);
 
   // initializing properties
 
@@ -389,8 +391,7 @@ PipelineBase::~PipelineBase() {
 
   set_null_pipeline();
 
-  // avoinding memory leak. If the spectrum is not in a bin we have to unref
-  // it
+  // Avoinding memory leak. If spectrum is not in a bin we have to unref it
 
   auto s = gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum");
 
@@ -431,6 +432,25 @@ void PipelineBase::init_spectrum_bin() {
 
   gst_element_add_pad(spectrum_bin, gst_ghost_pad_new("sink", sinkpad));
   gst_element_add_pad(spectrum_bin, gst_ghost_pad_new("src", srcpad));
+
+  g_object_unref(sinkpad);
+  g_object_unref(srcpad);
+}
+
+void PipelineBase::init_global_level_meter_bin() {
+  global_level_meter_bin = gst_bin_new("global_level_meter_bin");
+  level_meter_identity_in = gst_element_factory_make("identity", nullptr);
+  level_meter_identity_out = gst_element_factory_make("identity", nullptr);
+
+  gst_bin_add_many(GST_BIN(global_level_meter_bin), level_meter_identity_in, level_meter_identity_out, nullptr);
+
+  gst_element_link(level_meter_identity_in, level_meter_identity_out);
+
+  auto sinkpad = gst_element_get_static_pad(level_meter_identity_in, "sink");
+  auto srcpad = gst_element_get_static_pad(level_meter_identity_out, "src");
+
+  gst_element_add_pad(global_level_meter_bin, gst_ghost_pad_new("sink", sinkpad));
+  gst_element_add_pad(global_level_meter_bin, gst_ghost_pad_new("src", srcpad));
 
   g_object_unref(sinkpad);
   g_object_unref(srcpad);
@@ -503,7 +523,7 @@ void PipelineBase::set_null_pipeline() {
 
   gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
-  /*on_message_state is not called when going to null. I don't know why.
+  /* on_message_state is not called when going to null. I don't know why.
    * so we have to update the variable manually after setting to null.
    */
 
