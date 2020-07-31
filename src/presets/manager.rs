@@ -15,6 +15,8 @@ pub enum PresetType {
 
 #[derive(Clone)]
 pub struct Manager {
+    user_input_directory: String,
+    user_output_directory: String,
     input_presets_directories: Vec<String>,
     output_presets_directories: Vec<String>,
     json: serde_yaml::Value,
@@ -39,8 +41,8 @@ impl Manager {
         let mut input_directories = Vec::new();
         let mut output_directories = Vec::new();
 
-        input_directories.push(user_input_directory);
-        output_directories.push(user_output_directory);
+        input_directories.push(user_input_directory.clone());
+        output_directories.push(user_output_directory.clone());
 
         // appending system presets paths in case they exist
 
@@ -60,6 +62,8 @@ impl Manager {
         }
 
         Manager {
+            user_input_directory: user_input_directory,
+            user_output_directory: user_output_directory,
             input_presets_directories: input_directories,
             output_presets_directories: output_directories,
             json: serde_json::from_str("{}").unwrap(),
@@ -116,6 +120,17 @@ impl Manager {
                 let yaml_string = serde_yaml::to_string(&o).unwrap();
 
                 self.save_file(preset_type, name, yaml_string);
+            }
+        }
+    }
+
+    pub fn remove(&mut self, preset_type: &PresetType, name: &String) {
+        match preset_type {
+            PresetType::Output => {
+                
+            }
+            PresetType::Input => {
+                
             }
         }
     }

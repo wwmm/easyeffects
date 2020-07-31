@@ -40,11 +40,11 @@ fn on_enable_autostart(_switch: &gtk::Switch, state: bool) -> gtk::Inhibit {
 
     let autostart_directory = user_config_directory + "/autostart/";
 
-    let autostart_directory = Path::new(&autostart_directory);
+    fs::create_dir_all(&autostart_directory).expect("Could not create autostart directory");
 
-    fs::create_dir_all(autostart_directory).expect("Could not create autostart directory");
+    let autostart_file = autostart_directory + "/pulseeffects-service.desktop";
 
-    let autostart_file = autostart_directory.with_file_name("autostart/pulseeffects-service.desktop");
+    let autostart_file = Path::new(&autostart_file);
 
     if state {
         if !autostart_file.is_file() {

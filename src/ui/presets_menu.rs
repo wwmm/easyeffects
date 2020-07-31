@@ -135,11 +135,17 @@ fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
             });
         }
 
-        remove_btn.connect_clicked(|obj| {
-            // app->presets_manager->remove(preset_type, name);
+        {
+            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
+            let preset_type = (*preset_type).clone();
+            let name = name.clone();
 
-            // populate_listbox(preset_type);
-        });
+            remove_btn.connect_clicked(move |_btn| {
+                presets_manager.lock().unwrap().remove(&preset_type, &name);
+
+                // populate_listbox(&preset_type, &listbox);
+            });
+        }
 
         autoload_btn.connect_clicked(|obj| {
             // if (preset_type == PresetType::output) {
