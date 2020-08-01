@@ -79,27 +79,60 @@ pub fn init() {
 
 fn create_actions(app: &gtk::Application) {
     let about_action = gio::SimpleAction::new("about", None);
+    let quit_action = gio::SimpleAction::new("quit", None);
+    let help_action = gio::SimpleAction::new("help", None);
 
-    let app_moved = app.clone();
+    {
+        let app = app.clone();
 
-    about_action.connect_activate(move |_action, _parameters| {
-        let builder = gtk::Builder::new_from_resource("/com/github/wwmm/pulseeffects/about.glade");
+        about_action.connect_activate(move |_action, _parameters| {
+            let builder =
+                gtk::Builder::new_from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
-        let dialog: gtk::Dialog = builder.get_object("about_dialog").unwrap();
+            let dialog: gtk::Dialog = builder.get_object("about_dialog").unwrap();
 
-        dialog.connect_response(|dialog, response| match response {
-            gtk::ResponseType::DeleteEvent => {
-                dialog.hide();
-            }
+            dialog.connect_response(|dialog, response| match response {
+                gtk::ResponseType::DeleteEvent => {
+                    dialog.hide();
+                }
 
-            _ => {}
+                _ => {}
+            });
+
+            dialog.set_transient_for(app.get_active_window().as_ref());
+
+            dialog.show();
+            dialog.present(); // Bring it to the front, in case it was already shown
         });
+    }
 
-        dialog.set_transient_for(app_moved.get_active_window().as_ref());
+    {
+        let app = app.clone();
 
-        dialog.show();
-        dialog.present(); // Bring it to the front, in case it was already shown
-    });
+        quit_action.connect_activate(move |_action, _parameters| {
+            app.get_active_window().unwrap().hide();
+        });
+    }
+
+    {
+        let app = app.clone();
+
+        help_action.connect_activate(move |_action, _parameters| {
+            match gtk::show_uri_on_window(
+                app.get_active_window().as_ref(),
+                "help:pulseeffects",
+                gtk::get_current_event_time(),
+            ) {
+                Ok(_) => {}
+
+                Err(err) => {
+                    warn!("{}", err);
+                }
+            }
+        });
+    }
 
     app.add_action(&about_action);
+    app.add_action(&quit_action);
+    app.add_action(&help_action);
 }

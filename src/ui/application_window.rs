@@ -1,3 +1,4 @@
+use gio::prelude::*;
 use gtk::prelude::*;
 
 use gdk;
@@ -47,11 +48,25 @@ pub fn build_ui() -> gtk::ApplicationWindow {
     apply_css_style("custom.css");
     add_path_to_theme_resource();
 
-    resources.presets_menu
+    resources
+        .presets_menu
         .add(&presets_menu::build_ui(&resources.presets_menu_button));
 
-    resources.stack_menu_settings
-        .add_titled(&general_settings::build_ui(&window), "general_spectrum", "General");
+    resources.stack_menu_settings.add_titled(
+        &general_settings::build_ui(&window),
+        "general_spectrum",
+        "General",
+    );
+
+    {
+        let window = window.clone();
+
+        resources.help_button.connect_clicked(move |_btn| {
+            let app = window.get_application().unwrap();
+
+            app.activate_action("help", None);
+        });
+    }
 
     return window;
 }
