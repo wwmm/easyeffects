@@ -124,13 +124,23 @@ impl Manager {
         }
     }
 
+    pub fn add(&mut self, preset_type: &PresetType, name: &String) {
+        if self.get_names(preset_type).contains(&name){
+            return
+        }
+        
+        self.save(preset_type, name);
+    }
+
     pub fn remove(&mut self, preset_type: &PresetType, name: &String) {
         match preset_type {
             PresetType::Output => {
-                
+                let _ = fs::remove_file(self.user_output_directory.clone() + "/" + name + ".yaml");
+                let _ = fs::remove_file(self.user_output_directory.clone() + "/" + name + ".json");
             }
             PresetType::Input => {
-                
+                let _ = fs::remove_file(self.user_input_directory.clone() + "/" + name + ".yaml");
+                let _ = fs::remove_file(self.user_input_directory.clone() + "/" + name + ".json");
             }
         }
     }
@@ -277,7 +287,7 @@ fn get_presets_list(directory: &String) -> Vec<String> {
             let file_path = entry.unwrap().path();
 
             if file_path.is_file() {
-                if file_path.extension().unwrap() == "json" {
+                if file_path.extension().unwrap() == "json" || file_path.extension().unwrap() == "yaml" {
                     let name = file_path.file_stem().unwrap().to_str().unwrap();
 
                     output.push(String::from(name));

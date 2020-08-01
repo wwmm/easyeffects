@@ -51,9 +51,17 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
 
             output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-            populate_listbox(&presets_manager, &manager::PresetType::Input, &input_listbox);
+            populate_listbox(
+                &presets_manager,
+                &manager::PresetType::Input,
+                &input_listbox,
+            );
 
-            populate_listbox(&presets_manager, &manager::PresetType::Output, &output_listbox);
+            populate_listbox(
+                &presets_manager,
+                &manager::PresetType::Output,
+                &output_listbox,
+            );
         });
     }
 
@@ -63,31 +71,57 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
         let presets_manager = presets_manager.clone();
 
         resources.add_output.connect_clicked(move |_btn| {
-            create_preset(&manager::PresetType::Output, &output_name);
+            create_preset(
+                &presets_manager,
+                &manager::PresetType::Output,
+                &output_name,
+                &output_listbox,
+            );
 
-            populate_listbox(&presets_manager, &manager::PresetType::Output, &output_listbox);
+            populate_listbox(
+                &presets_manager,
+                &manager::PresetType::Output,
+                &output_listbox,
+            );
         });
     }
 
     {
         let input_name = resources.input_name.clone();
         let input_listbox = resources.input_listbox.clone();
+        let presets_manager = presets_manager.clone();
 
         resources.add_input.connect_clicked(move |_btn| {
-            create_preset(&manager::PresetType::Input, &input_name);
+            create_preset(
+                &presets_manager,
+                &manager::PresetType::Input,
+                &input_name,
+                &input_listbox,
+            );
 
-            populate_listbox(&presets_manager, &manager::PresetType::Input, &input_listbox);
+            populate_listbox(
+                &presets_manager,
+                &manager::PresetType::Input,
+                &input_listbox,
+            );
         });
     }
 
     return resources.widgets_grid;
 }
 
-fn create_preset(preset_type: &manager::PresetType, entry: &gtk::Entry) {
+fn create_preset(
+    presets_manager: &std::sync::Arc<std::sync::Mutex<manager::Manager>>,
+    preset_type: &manager::PresetType,
+    entry: &gtk::Entry,
+    listbox: &gtk::ListBox,
+) {
     let name = entry.get_text().unwrap().to_string();
 
     if name.chars().all(char::is_alphanumeric) {
-        println!("{:?}", name);
+        presets_manager.lock().unwrap().add(preset_type, &name);
+
+        populate_listbox(&presets_manager, &preset_type, &listbox);
     }
 
     entry.set_text("");
@@ -108,6 +142,7 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
     if name2 == *names[0] {
         return 1;
     }
+
     return 0;
 }
 
@@ -188,11 +223,12 @@ fn populate_listbox(
             let presets_manager = presets_manager.clone();
             let preset_type = (*preset_type).clone();
             let name = name.clone();
+            let listbox = listbox.clone();
 
             remove_btn.connect_clicked(move |_btn| {
                 presets_manager.lock().unwrap().remove(&preset_type, &name);
 
-                // populate_listbox(&preset_type, &listbox);
+                populate_listbox(&presets_manager, &preset_type, &listbox);
             });
         }
 
