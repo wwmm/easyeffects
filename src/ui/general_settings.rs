@@ -1,3 +1,4 @@
+use gio::prelude::*;
 use gtk::prelude::*;
 
 use glib;
@@ -24,12 +25,22 @@ struct WindowResource {
     adjustment_niceness: gtk::Adjustment,
 }
 
-pub fn build_ui() -> gtk::Grid {
+pub fn build_ui(app_window: &gtk::ApplicationWindow) -> gtk::Grid {
     let resources = WindowResource::load().unwrap();
 
     resources
         .enable_autostart
         .connect_state_set(on_enable_autostart);
+
+    {
+        let window = app_window.clone();
+
+        resources.about_button.connect_clicked(move |_btn| {
+            let app = window.get_application().unwrap();
+
+            app.activate_action("about", None);
+        });
+    }
 
     return resources.widgets_grid;
 }

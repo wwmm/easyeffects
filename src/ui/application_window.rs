@@ -51,7 +51,7 @@ pub fn build_ui() -> gtk::ApplicationWindow {
         .add(&presets_menu::build_ui(&resources.presets_menu_button));
 
     resources.stack_menu_settings
-        .add_titled(&general_settings::build_ui(), "general_spectrum", "General");
+        .add_titled(&general_settings::build_ui(&window), "general_spectrum", "General");
 
     return window;
 }
