@@ -30,11 +30,15 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
     resources
         .output_listbox
         .set_sort_func(Some(Box::new(on_listbox_sort)));
+
     resources
         .input_listbox
         .set_sort_func(Some(Box::new(on_listbox_sort)));
 
+    let presets_manager = Arc::new(Mutex::new(manager::Manager::new()));
+
     {
+        let presets_manager = presets_manager.clone();
         let input_listbox = resources.input_listbox.clone();
         let output_listbox = resources.output_listbox.clone();
 
@@ -42,32 +46,37 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
             let top_widget = obj
                 .get_toplevel()
                 .expect("Could not get presets menu top level widget");
+
             let height = top_widget.get_allocated_height() as f32;
 
             output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-            populate_listbox(&manager::PresetType::Input, &input_listbox);
+            populate_listbox(&presets_manager, &manager::PresetType::Input, &input_listbox);
 
-            populate_listbox(&manager::PresetType::Output, &output_listbox);
+            populate_listbox(&presets_manager, &manager::PresetType::Output, &output_listbox);
         });
     }
 
     {
         let output_name = resources.output_name.clone();
         let output_listbox = resources.output_listbox.clone();
+        let presets_manager = presets_manager.clone();
 
         resources.add_output.connect_clicked(move |_btn| {
             create_preset(&manager::PresetType::Output, &output_name);
 
-            populate_listbox(&manager::PresetType::Output, &output_listbox);
+            populate_listbox(&presets_manager, &manager::PresetType::Output, &output_listbox);
         });
     }
 
     {
         let input_name = resources.input_name.clone();
+        let input_listbox = resources.input_listbox.clone();
 
         resources.add_input.connect_clicked(move |_btn| {
             create_preset(&manager::PresetType::Input, &input_name);
+
+            populate_listbox(&presets_manager, &manager::PresetType::Input, &input_listbox);
         });
     }
 
@@ -91,8 +100,8 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
 
     names.push(&name1);
     names.push(&name2);
-
     names.sort();
+
     if name1 == *names[0] {
         return -1;
     }
@@ -102,16 +111,18 @@ fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
     return 0;
 }
 
-fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
+fn populate_listbox(
+    presets_manager: &std::sync::Arc<std::sync::Mutex<manager::Manager>>,
+    preset_type: &manager::PresetType,
+    listbox: &gtk::ListBox,
+) {
     let children = listbox.get_children();
 
     for child in children {
         listbox.remove(&child);
     }
 
-    let presets_manager = manager::Manager::new();
-
-    let names = presets_manager.get_names(preset_type);
+    let names = presets_manager.lock().unwrap().get_names(preset_type);
 
     for name in names {
         let builder =
@@ -149,8 +160,10 @@ fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
         //     autoload_btn->set_active(true);
         // }
 
+        let presets_manager = presets_manager.clone();
+
         {
-            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
+            let presets_manager = presets_manager.clone();
             let preset_type = (*preset_type).clone();
             let name = name.clone();
 
@@ -162,7 +175,7 @@ fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
         }
 
         {
-            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
+            let presets_manager = presets_manager.clone();
             let preset_type = (*preset_type).clone();
             let name = name.clone();
 
@@ -172,7 +185,7 @@ fn populate_listbox(preset_type: &manager::PresetType, listbox: &gtk::ListBox) {
         }
 
         {
-            let presets_manager = Arc::new(Mutex::new(presets_manager.clone()));
+            let presets_manager = presets_manager.clone();
             let preset_type = (*preset_type).clone();
             let name = name.clone();
 
