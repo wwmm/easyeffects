@@ -26,26 +26,62 @@ pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
     let resources = WindowResource::load().unwrap();
 
     let output_scrolled_window = resources.output_scrolled_window;
-    let input_listbox = resources.input_listbox;
-    let output_listbox = resources.output_listbox;
 
-    output_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
-    input_listbox.set_sort_func(Some(Box::new(on_listbox_sort)));
+    resources
+        .output_listbox
+        .set_sort_func(Some(Box::new(on_listbox_sort)));
+    resources
+        .input_listbox
+        .set_sort_func(Some(Box::new(on_listbox_sort)));
 
-    button.connect_clicked(move |obj| {
-        let top_widget = obj
-            .get_toplevel()
-            .expect("Could not get presets menu top level widget");
-        let height = top_widget.get_allocated_height() as f32;
+    {
+        let input_listbox = resources.input_listbox.clone();
+        let output_listbox = resources.output_listbox.clone();
 
-        output_scrolled_window.set_max_content_height((0.7 * height) as i32);
+        button.connect_clicked(move |obj| {
+            let top_widget = obj
+                .get_toplevel()
+                .expect("Could not get presets menu top level widget");
+            let height = top_widget.get_allocated_height() as f32;
 
-        populate_listbox(&manager::PresetType::Input, &input_listbox);
+            output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-        populate_listbox(&manager::PresetType::Output, &output_listbox);
-    });
+            populate_listbox(&manager::PresetType::Input, &input_listbox);
+
+            populate_listbox(&manager::PresetType::Output, &output_listbox);
+        });
+    }
+
+    {
+        let output_name = resources.output_name.clone();
+        let output_listbox = resources.output_listbox.clone();
+
+        resources.add_output.connect_clicked(move |_btn| {
+            create_preset(&manager::PresetType::Output, &output_name);
+
+            populate_listbox(&manager::PresetType::Output, &output_listbox);
+        });
+    }
+
+    {
+        let input_name = resources.input_name.clone();
+
+        resources.add_input.connect_clicked(move |_btn| {
+            create_preset(&manager::PresetType::Input, &input_name);
+        });
+    }
 
     return resources.widgets_grid;
+}
+
+fn create_preset(preset_type: &manager::PresetType, entry: &gtk::Entry) {
+    let name = entry.get_text().unwrap().to_string();
+
+    if name.chars().all(char::is_alphanumeric) {
+        println!("{:?}", name);
+    }
+
+    entry.set_text("");
 }
 
 fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
