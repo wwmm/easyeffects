@@ -56,6 +56,29 @@ pub fn build_ui(app_window: &gtk::ApplicationWindow) -> gtk::Grid {
 
     settings.bind("use-dark-theme", &resources.theme_switch, "active", flag);
 
+    settings.bind(
+        "enable-all-sinkinputs",
+        &resources.enable_all_sinkinputs,
+        "active",
+        flag,
+    );
+
+    settings.bind(
+        "enable-all-sourceoutputs",
+        &resources.enable_all_sourceoutputs,
+        "active",
+        flag,
+    );
+
+    settings.bind(
+        "realtime-priority",
+        &resources.adjustment_priority,
+        "value",
+        flag,
+    );
+
+    settings.bind("niceness", &resources.adjustment_niceness, "value", flag);
+
     return resources.widgets_grid;
 }
 
