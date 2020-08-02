@@ -70,7 +70,21 @@ pub fn build_ui() -> gtk::ApplicationWindow {
     let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
     let flag = gio::SettingsBindFlags::DEFAULT;
 
-    settings.bind("use-dark-theme", &gtk::Settings::get_default().unwrap(), "gtk_application_prefer_dark_theme", flag);
+    settings.bind(
+        "use-dark-theme",
+        &gtk::Settings::get_default().unwrap(),
+        "gtk_application_prefer_dark_theme",
+        flag,
+    );
+
+    settings.bind("bypass", &resources.bypass_button, "active", flag);
+
+    let window_width = settings.get_int("window-width");
+    let window_height = settings.get_int("window-height");
+
+    if window_width > 0 && window_height > 0 {
+        window.set_default_size(window_width, window_height);
+    }
 
     return window;
 }
