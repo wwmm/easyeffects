@@ -42,6 +42,20 @@ pub fn build_ui(app_window: &gtk::ApplicationWindow) -> gtk::Grid {
         });
     }
 
+    let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
+
+    {
+        let settings = settings.clone();
+
+        resources.reset_settings.connect_clicked(move |_btn| {
+            settings.reset("");
+        });
+    }
+
+    let flag = gio::SettingsBindFlags::DEFAULT;
+
+    settings.bind("use-dark-theme", &resources.theme_switch, "active", flag);
+
     return resources.widgets_grid;
 }
 

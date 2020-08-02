@@ -2,7 +2,6 @@ use gio::prelude::*;
 use gtk::prelude::*;
 
 use gdk;
-use gio;
 use glib;
 
 use crate::ui::general_settings;
@@ -67,6 +66,11 @@ pub fn build_ui() -> gtk::ApplicationWindow {
             app.activate_action("help", None);
         });
     }
+
+    let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
+    let flag = gio::SettingsBindFlags::DEFAULT;
+
+    settings.bind("use-dark-theme", &gtk::Settings::get_default().unwrap(), "gtk_application_prefer_dark_theme", flag);
 
     return window;
 }
