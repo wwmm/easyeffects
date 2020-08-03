@@ -8,6 +8,10 @@
 - New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
   applets to hide our window.
 
+### Note to packagers
+
+- This release is using GTKMM 3.24 features.
+
 ## [4.7.3]
 
 ### Added

@@ -271,12 +271,12 @@ void ConvolverUi::on_irs_menu_button_clicked() {
 void ConvolverUi::on_import_irs_clicked() {
   // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
 
-  gint res;
+  gint res = 0;
 
-  auto dialog = gtk_file_chooser_native_new(_("Import Impulse File"), (GtkWindow*)this->get_toplevel()->gobj(),
-                                            GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto* dialog = gtk_file_chooser_native_new(_("Import Impulse File"), (GtkWindow*)this->get_toplevel()->gobj(),
+                                             GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
-  auto filter = gtk_file_filter_new();
+  auto* filter = gtk_file_filter_new();
 
   gtk_file_filter_set_name(filter, _("Impulse Response"));
   gtk_file_filter_add_pattern(filter, "*.irs");
@@ -295,7 +295,7 @@ void ConvolverUi::on_import_irs_clicked() {
         [](auto data, auto user_data) {
           auto cui = static_cast<ConvolverUi*>(user_data);
 
-          auto file_path = static_cast<char*>(data);
+          auto* file_path = static_cast<char*>(data);
 
           cui->import_irs_file(file_path);
         },
@@ -359,10 +359,14 @@ void ConvolverUi::get_irs_info() {
   right_mag.resize(frames_in);
 
   // ensure that the fft can be computed
-  if (left_mag.size() % 2 != 0)
+
+  if (left_mag.size() % 2 != 0) {
     left_mag.emplace_back(0);
-  if (right_mag.size() % 2 != 0)
+  }
+
+  if (right_mag.size() % 2 != 0) {
     right_mag.emplace_back(0);
+  }
 
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
@@ -459,8 +463,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   right_spectrum.resize(nfft / 2 + 1);
 
   for (int i = 0; i < nfft / 2 + 1; i++) {
-    float v_l;
-    float v_r;
+    float v_l = 0.0;
+    float v_r = 0.0;
 
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
@@ -480,7 +484,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   uint max_points = std::min((uint)left_spectrum.size(), max_plot_points);
 
   fft_min_freq = 1;
-  fft_max_freq = 0.5f * static_cast<float>(rate);
+  fft_max_freq = 0.5F * static_cast<float>(rate);
 
   freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
@@ -584,8 +588,8 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
       msg.precision(3);
       msg << std::fixed << mouse_intensity;
 
-      int text_width;
-      int text_height;
+      int text_width = 0;
+      int text_height = 0;
       auto layout = create_pango_layout(msg.str());
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
@@ -609,7 +613,7 @@ void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
     float mouse_freq_log =
         static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
 
-    mouse_freq = std::pow(10.0f, mouse_freq_log);  // exp10 does not exist on FreeBSD
+    mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
     mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_left - fft_min_left) + fft_min_left;
   } else {
@@ -631,7 +635,7 @@ void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
     float mouse_freq_log =
         static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
 
-    mouse_freq = std::pow(10.0f, mouse_freq_log);  // exp10 does not exist on FreeBSD
+    mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
     mouse_intensity =
         (height - static_cast<float>(event->y)) / height * (fft_max_right - fft_min_right) + fft_min_right;

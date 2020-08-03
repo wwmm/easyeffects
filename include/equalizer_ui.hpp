@@ -26,11 +26,13 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
+  int max_bands = 30;
+
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
   Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
   Gtk::Grid *bands_grid_left = nullptr, *bands_grid_right = nullptr;
-  Gtk::Button *flat_response = nullptr, *calculate_freqs = nullptr;
+  Gtk::Button *flat_response = nullptr, *calculate_freqs = nullptr, *import_apo = nullptr;
   Gtk::ListBox* presets_listbox = nullptr;
   Gtk::Switch* split_channels = nullptr;
   Gtk::Stack* stack = nullptr;
@@ -57,7 +59,9 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void populate_presets_listbox();
 
-  void on_import_preset_clicked();
+  void on_import_apo_preset_clicked();
+
+  void import_apo_preset(const std::string& file_path);
 };
 
 #endif

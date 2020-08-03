@@ -1,13 +1,25 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
+#include <gtkmm/filechoosernative.h>
 #include <gtkmm/label.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/togglebutton.h>
+#include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <cstddef>
 #include <cstring>
+#include <regex>
+#include "gtkmm/dialog.h"
+#include "gtkmm/window.h"
 
 namespace {
+
+struct ImportedBand {
+  float freq;
+  float gain;
+  float quality_factor;
+};
 
 auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
@@ -199,6 +211,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   builder->get_widget("bands_grid_left", bands_grid_left);
   builder->get_widget("bands_grid_right", bands_grid_right);
   builder->get_widget("flat_response", flat_response);
+  builder->get_widget("import_apo", import_apo);
   builder->get_widget("calculate_freqs", calculate_freqs);
   builder->get_widget("presets_listbox", presets_listbox);
   builder->get_widget("split_channels", split_channels);
@@ -223,6 +236,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
 
   presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
+
+  import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
   connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
     for (auto& c : connections_bands) {
@@ -574,7 +589,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 }
 
 void EqualizerUi::on_flat_response() {
-  for (int n = 0; n < 30; n++) {
+  for (int n = 0; n < max_bands; n++) {
     // left channel
 
     settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
@@ -755,7 +770,7 @@ void EqualizerUi::reset() {
     settings->reset("input-gain");
     settings->reset("output-gain");
 
-    for (int n = 0; n < 30; n++) {
+    for (int n = 0; n < max_bands; n++) {
       // left channel
 
       settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
@@ -782,5 +797,102 @@ void EqualizerUi::reset() {
     util::debug(name + " plugin: successfully reset");
   } catch (std::exception& e) {
     util::debug(name + " plugin: an error occurred during reset process");
+  }
+}
+
+void EqualizerUi::on_import_apo_preset_clicked() {
+  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
+
+  auto dialog = Gtk::FileChooserNative::create("Import APO Preset File", *main_window,
+                                               Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN);
+
+  auto dialog_filter = Gtk::FileFilter::create();
+
+  dialog_filter->set_name("APO Presets");
+  dialog_filter->add_pattern("*.txt");
+
+  dialog->add_filter(dialog_filter);
+
+  dialog->signal_response().connect([=](auto response_id) {
+    switch (response_id) {
+      case Gtk::RESPONSE_ACCEPT: {
+        import_apo_preset(dialog->get_file()->get_path());
+
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  dialog->set_modal(true);
+  dialog->show();
+}
+
+void EqualizerUi::import_apo_preset(const std::string& file_path) {
+  boost::filesystem::path p{file_path};
+
+  if (boost::filesystem::is_regular_file(p)) {
+    std::ifstream eq_file;
+    std::vector<struct ImportedBand> bands;
+
+    eq_file.open(p.string());
+
+    if (eq_file.is_open()) {
+      std::string line;
+
+      while (getline(eq_file, line)) {
+        struct ImportedBand filter {};
+
+        std::regex re(
+            R"(Filter[\s]*[\d]*:[\s]*ON[\s]*PK[\s]*Fc[\s]*([0-9]*[.]?[0-9]+)[\s]*Hz[\s]*Gain[\s]*([+-]?[0-9]*[.]?[0-9]+)[\s]*dB[\s]*Q[\s]*([0-9]*[.]?[0-9]+))");
+
+        std::smatch matches;
+
+        bool found = false;
+
+        if (std::regex_search(line, matches, re)) {
+          if (matches.size() == 4) {
+            filter.freq = std::stof(matches.str(1));
+            filter.gain = std::stof(matches.str(2));
+            filter.quality_factor = std::stof(matches.str(3));
+
+            found = true;
+          }
+        }
+
+        if (found) {
+          bands.push_back(filter);
+        }
+      }
+    }
+
+    eq_file.close();
+
+    if (bands.empty()) {
+      return;
+    }
+
+    settings->set_int("num-bands", bands.size());
+
+    for (int n = 0; n < max_bands; n++) {
+      if (n < static_cast<int>(bands.size())) {
+        // std::cout << bands[n].freq << "\t" << bands[n].gain << "\t" << bands[n].quality_factor << std::endl;
+
+        settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+
+        settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+      } else {
+        settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Off");
+
+        settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Off");
+      }
+    }
   }
 }
