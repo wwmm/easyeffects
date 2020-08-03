@@ -803,12 +803,12 @@ void EqualizerUi::reset() {
 void EqualizerUi::on_import_apo_preset_clicked() {
   auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
 
-  auto dialog = Gtk::FileChooserNative::create("Import APO Preset File", *main_window,
+  auto dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), *main_window,
                                                Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN);
 
   auto dialog_filter = Gtk::FileFilter::create();
 
-  dialog_filter->set_name("APO Presets");
+  dialog_filter->set_name(_("APO Presets"));
   dialog_filter->add_pattern("*.txt");
 
   dialog->add_filter(dialog_filter);

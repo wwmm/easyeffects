@@ -2,8 +2,11 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
+#include <gtkmm/filechoosernative.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <sndfile.hh>
+#include "gtkmm/dialog.h"
+#include "gtkmm/window.h"
 #include "sigc++/functors/ptr_fun.h"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
@@ -269,44 +272,35 @@ void ConvolverUi::on_irs_menu_button_clicked() {
 }
 
 void ConvolverUi::on_import_irs_clicked() {
-  // gtkmm 3.22 does not have FileChooseNative so we have to use C api :-(
+  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
 
-  gint res = 0;
+  auto dialog = Gtk::FileChooserNative::create(_("Import Impulse File"), *main_window,
+                                               Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN);
 
-  auto* dialog = gtk_file_chooser_native_new(_("Import Impulse File"), (GtkWindow*)this->get_toplevel()->gobj(),
-                                             GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto dialog_filter = Gtk::FileFilter::create();
 
-  auto* filter = gtk_file_filter_new();
+  dialog_filter->set_name(_("Impulse Response"));
+  dialog_filter->add_pattern("*.irs");
+  dialog_filter->add_pattern("*.wav");
 
-  gtk_file_filter_set_name(filter, _("Impulse Response"));
-  gtk_file_filter_add_pattern(filter, "*.irs");
-  gtk_file_filter_add_pattern(filter, "*.wav");
-  gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dialog), filter);
+  dialog->add_filter(dialog_filter);
 
-  res = gtk_native_dialog_run(GTK_NATIVE_DIALOG(dialog));
+  dialog->signal_response().connect([=](auto response_id) {
+    switch (response_id) {
+      case Gtk::RESPONSE_ACCEPT: {
+        import_irs_file(dialog->get_file()->get_path());
 
-  if (res == GTK_RESPONSE_ACCEPT) {
-    GtkFileChooser* chooser = GTK_FILE_CHOOSER(dialog);
+        populate_irs_listbox();
 
-    auto file_list = gtk_file_chooser_get_filenames(chooser);
+        break;
+      }
+      default:
+        break;
+    }
+  });
 
-    g_slist_foreach(
-        file_list,
-        [](auto data, auto user_data) {
-          auto cui = static_cast<ConvolverUi*>(user_data);
-
-          auto* file_path = static_cast<char*>(data);
-
-          cui->import_irs_file(file_path);
-        },
-        this);
-
-    g_slist_free(file_list);
-  }
-
-  g_object_unref(dialog);
-
-  populate_irs_listbox();
+  dialog->set_modal(true);
+  dialog->show();
 }
 
 void ConvolverUi::get_irs_info() {
