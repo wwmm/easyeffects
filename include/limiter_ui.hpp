@@ -7,7 +7,10 @@
 
 class LimiterUi : public Gtk::Grid, public PluginUiBase {
  public:
-  LimiterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  LimiterUi(BaseObjectType* cobject,
+            const Glib::RefPtr<Gtk::Builder>& builder,
+            const std::string& schema,
+            const std::string& schema_path);
   LimiterUi(const LimiterUi&) = delete;
   auto operator=(const LimiterUi&) -> LimiterUi& = delete;
   LimiterUi(const LimiterUi&&) = delete;
@@ -21,7 +24,7 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
  private:
   Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release, oversampling, asc_level, output_gain;
 
-  Gtk::ToggleButton *auto_level = nullptr , *asc = nullptr;
+  Gtk::ToggleButton *auto_level = nullptr, *asc = nullptr;
 
   Gtk::LevelBar* attenuation = nullptr;
   Gtk::Label* attenuation_label = nullptr;

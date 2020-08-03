@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.webrtc.echo.suppression.level.enum">
+        <value nick="low" value="0" />
+        <value nick="moderate" value="1" />
+        <value nick="high" value="2" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.webrtc.noise.suppression.level.enum">
+        <value nick="low" value="0" />
+        <value nick="moderate" value="1" />
+        <value nick="high" value="2" />
+        <value nick="very-high" value="3" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.webrtc.gain.control.mode.enum">
+        <value nick="adaptive-digital" value="1" />
+        <value nick="fixed-digital" value="2" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.webrtc.voice.detection.likelihood.enum">
+        <value nick="very-low" value="0" />
+        <value nick="low" value="1" />
+        <value nick="moderate" value="2" />
+        <value nick="high" value="3" />
+    </enum>
     <schema
-        id="com.github.wwmm.pulseeffects.sourceoutputs.webrtc"
-        path="/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/">
+        id="com.github.wwmm.pulseeffects.webrtc">
         <key name="state" type="b">
             <default>false</default>
         </key>

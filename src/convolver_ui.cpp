@@ -11,9 +11,10 @@
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& settings_name)
+                         const std::string& schema,
+                         const std::string& schema_path)
     : Gtk::Grid(cobject),
-      PluginUiBase(builder, settings_name),
+      PluginUiBase(builder, schema, schema_path),
       irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs"),
       spectrum_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   name = "convolver";

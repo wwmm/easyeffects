@@ -8,7 +8,10 @@
 
 class DeesserUi : public Gtk::Grid, public PluginUiBase {
  public:
-  DeesserUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  DeesserUi(BaseObjectType* cobject,
+            const Glib::RefPtr<Gtk::Builder>& builder,
+            const std::string& schema,
+            const std::string& schema_path);
   DeesserUi(const DeesserUi&) = delete;
   auto operator=(const DeesserUi&) -> DeesserUi& = delete;
   DeesserUi(const DeesserUi&&) = delete;

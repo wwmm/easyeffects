@@ -97,19 +97,20 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
 
 }  // namespace
 
-Compressor::Compressor(const std::string& tag, const std::string& schema) : PluginBase(tag, "compressor", schema) {
+Compressor::Compressor(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "compressor", schema, schema_path) {
   compressor = gst_element_factory_make("lsp-plug-in-plugins-lv2-compressor-stereo", nullptr);
 
   if (is_installed(compressor)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "compressor_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "compressor_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "compressor_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "compressor_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, compressor, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, compressor, audioconvert_out, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
+    auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
@@ -192,9 +193,9 @@ void Compressor::bind_to_gsettings() {
   g_settings_bind_with_mapping(settings, "sidechain-lookahead", compressor, "sla", G_SETTINGS_BIND_GET,
                                util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "hpf-frequency", compressor, "shpf", G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "hpf-frequency", compressor, "shpf", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings, "lpf-frequency", compressor, "slpf", G_SETTINGS_BIND_GET, util::double_to_float,
-                               nullptr, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings, "lpf-frequency", compressor, "slpf", G_SETTINGS_BIND_GET,
+                               util::double_to_float, nullptr, nullptr, nullptr);
 }

@@ -12,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0F;
+            float inR = 0.0F;
 
             g_object_get(l->stereo_tools, "meter-inL", &inL, nullptr);
             g_object_get(l->stereo_tools, "meter-inR", &inR, nullptr);
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0F;
+            float outR = 0.0F;
 
             g_object_get(l->stereo_tools, "meter-outL", &outL, nullptr);
             g_object_get(l->stereo_tools, "meter-outR", &outR, nullptr);
@@ -52,19 +52,20 @@ void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
 
 }  // namespace
 
-StereoTools::StereoTools(const std::string& tag, const std::string& schema) : PluginBase(tag, "stereo_tools", schema) {
+StereoTools::StereoTools(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "stereo_tools", schema, schema_path) {
   stereo_tools = gst_element_factory_make("calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
 
   if (is_installed(stereo_tools)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "stereo_tools_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, stereo_tools, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, stereo_tools, audioconvert_out, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
+    auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

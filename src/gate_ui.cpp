@@ -49,8 +49,11 @@ auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_t
 
 }  // namespace
 
-GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+GateUi::GateUi(BaseObjectType* cobject,
+               const Glib::RefPtr<Gtk::Builder>& builder,
+               const std::string& schema,
+               const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "gate";
 
   // loading glade widgets

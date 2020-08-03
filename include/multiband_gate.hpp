@@ -5,7 +5,7 @@
 
 class MultibandGate : public PluginBase {
  public:
-  MultibandGate(const std::string& tag, const std::string& schema);
+  MultibandGate(const std::string& tag, const std::string& schema, const std::string& schema_path);
   MultibandGate(const MultibandGate&) = delete;
   auto operator=(const MultibandGate&) -> MultibandGate& = delete;
   MultibandGate(const MultibandGate&&) = delete;

@@ -51,8 +51,9 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 
 DeesserUi::DeesserUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                     const std::string& schema,
+                     const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "deesser";
 
   // loading glade widgets

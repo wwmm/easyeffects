@@ -15,8 +15,10 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   EqualizerUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,
               const std::string& schema,
-              const std::string& schema_left,
-              const std::string& schema_right);
+              const std::string& schema_path,
+              const std::string& schema_channel,
+              const std::string& schema_channel_left_path,
+              const std::string& schema_channel_right_path);
   EqualizerUi(const EqualizerUi&) = delete;
   auto operator=(const EqualizerUi&) -> EqualizerUi& = delete;
   EqualizerUi(const EqualizerUi&&) = delete;

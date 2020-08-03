@@ -8,7 +8,10 @@
 
 class ReverbUi : public Gtk::Grid, public PluginUiBase {
  public:
-  ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  ReverbUi(BaseObjectType* cobject,
+           const Glib::RefPtr<Gtk::Builder>& builder,
+           const std::string& schema,
+           const std::string& schema_path);
   ReverbUi(const ReverbUi&) = delete;
   auto operator=(const ReverbUi&) -> ReverbUi& = delete;
   ReverbUi(const ReverbUi&&) = delete;

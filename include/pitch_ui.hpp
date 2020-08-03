@@ -7,7 +7,10 @@
 
 class PitchUi : public Gtk::Grid, public PluginUiBase {
  public:
-  PitchUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  PitchUi(BaseObjectType* cobject,
+          const Glib::RefPtr<Gtk::Builder>& builder,
+          const std::string& schema,
+          const std::string& schema_path);
   PitchUi(const PitchUi&) = delete;
   auto operator=(const PitchUi&) -> PitchUi& = delete;
   PitchUi(const PitchUi&&) = delete;

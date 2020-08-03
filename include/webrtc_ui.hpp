@@ -8,7 +8,10 @@
 
 class WebrtcUi : public Gtk::Grid, public PluginUiBase {
  public:
-  WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  WebrtcUi(BaseObjectType* cobject,
+           const Glib::RefPtr<Gtk::Builder>& builder,
+           const std::string& schema,
+           const std::string& schema_path);
   WebrtcUi(const WebrtcUi&) = delete;
   auto operator=(const WebrtcUi&) -> WebrtcUi& = delete;
   WebrtcUi(const WebrtcUi&&) = delete;

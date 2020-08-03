@@ -116,29 +116,69 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
 
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
 
-  limiter = std::make_unique<Limiter>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
-  compressor = std::make_unique<Compressor>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.compressor");
-  filter = std::make_unique<Filter>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.filter");
-  equalizer = std::make_unique<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
-                                          "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
-                                          "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
-  reverb = std::make_unique<Reverb>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
-  bass_enhancer = std::make_unique<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
-  exciter = std::make_unique<Exciter>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
-  crossfeed = std::make_unique<Crossfeed>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
-  maximizer = std::make_unique<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
+  limiter = std::make_unique<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter",
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/limiter/");
+
+  compressor = std::make_unique<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/");
+
+  filter = std::make_unique<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter",
+                                    "/com/github/wwmm/pulseeffects/sinkinputs/filter/");
+
+  equalizer = std::make_unique<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/",
+                                          "com.github.wwmm.pulseeffects.equalizer.channel",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/");
+
+  reverb = std::make_unique<Reverb>(log_tag, "com.github.wwmm.pulseeffects.reverb",
+                                    "/com/github/wwmm/pulseeffects/sinkinputs/reverb/");
+
+  bass_enhancer = std::make_unique<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer",
+                                                 "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
+
+  exciter = std::make_unique<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter",
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
+
+  crossfeed = std::make_unique<Crossfeed>(log_tag, "com.github.wwmm.pulseeffects.crossfeed",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
+
+  maximizer = std::make_unique<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/");
+
   multiband_compressor =
-      std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
-  loudness = std::make_unique<Loudness>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
-  gate = std::make_unique<Gate>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.gate");
-  pitch = std::make_unique<Pitch>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.pitch");
-  multiband_gate = std::make_unique<MultibandGate>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
-  deesser = std::make_unique<Deesser>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.deesser");
-  stereo_tools = std::make_unique<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
-  convolver = std::make_unique<Convolver>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.convolver");
-  crystalizer = std::make_unique<Crystalizer>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.crystalizer");
-  autogain = std::make_unique<AutoGain>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.autogain");
-  delay = std::make_unique<Delay>(log_tag, "com.github.wwmm.pulseeffects.sinkinputs.delay");
+      std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/");
+
+  loudness = std::make_unique<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness",
+                                        "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
+
+  gate = std::make_unique<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate",
+                                "/com/github/wwmm/pulseeffects/sinkinputs/gate/");
+
+  pitch = std::make_unique<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
+
+  multiband_gate = std::make_unique<MultibandGate>(log_tag, "com.github.wwmm.pulseeffects.multibandgate",
+                                                   "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/");
+
+  deesser = std::make_unique<Deesser>(log_tag, "com.github.wwmm.pulseeffects.deesser",
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/deesser/");
+
+  stereo_tools = std::make_unique<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools",
+                                               "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/");
+
+  convolver = std::make_unique<Convolver>(log_tag, "com.github.wwmm.pulseeffects.convolver",
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/convolver/");
+
+  crystalizer = std::make_unique<Crystalizer>(log_tag, "com.github.wwmm.pulseeffects.crystalizer",
+                                              "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
+
+  autogain = std::make_unique<AutoGain>(log_tag, "com.github.wwmm.pulseeffects.autogain",
+                                        "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
+
+  delay = std::make_unique<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
 
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));

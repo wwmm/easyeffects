@@ -1,7 +1,10 @@
 #include "pitch_ui.hpp"
 
-PitchUi::PitchUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+PitchUi::PitchUi(BaseObjectType* cobject,
+                 const Glib::RefPtr<Gtk::Builder>& builder,
+                 const std::string& schema,
+                 const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "pitch";
 
   // loading glade widgets

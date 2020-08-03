@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <schemalist>
-    <schema id="com.github.wwmm.pulseeffects.sinkinputs.autogain" path="/com/github/wwmm/pulseeffects/sinkinputs/autogain/">
+    <schema id="com.github.wwmm.pulseeffects.autogain">
         <key name="state" type="b">
             <default>false</default>
         </key>

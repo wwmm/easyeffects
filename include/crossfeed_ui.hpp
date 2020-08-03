@@ -7,7 +7,10 @@
 
 class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
  public:
-  CrossfeedUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  CrossfeedUi(BaseObjectType* cobject,
+              const Glib::RefPtr<Gtk::Builder>& builder,
+              const std::string& schema,
+              const std::string& schema_path);
   CrossfeedUi(const CrossfeedUi&) = delete;
   auto operator=(const CrossfeedUi&) -> CrossfeedUi& = delete;
   CrossfeedUi(const CrossfeedUi&&) = delete;

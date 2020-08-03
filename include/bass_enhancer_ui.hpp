@@ -7,7 +7,10 @@
 
 class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
  public:
-  BassEnhancerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  BassEnhancerUi(BaseObjectType* cobject,
+                 const Glib::RefPtr<Gtk::Builder>& builder,
+                 const std::string& schema,
+                 const std::string& schema_path);
   BassEnhancerUi(const BassEnhancerUi&) = delete;
   auto operator=(const BassEnhancerUi&) -> BassEnhancerUi& = delete;
   BassEnhancerUi(const BassEnhancerUi&&) = delete;

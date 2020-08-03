@@ -7,7 +7,10 @@
 
 class ExciterUi : public Gtk::Grid, public PluginUiBase {
  public:
-  ExciterUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  ExciterUi(BaseObjectType* cobject,
+            const Glib::RefPtr<Gtk::Builder>& builder,
+            const std::string& schema,
+            const std::string& schema_path);
   ExciterUi(const ExciterUi&) = delete;
   auto operator=(const ExciterUi&) -> ExciterUi& = delete;
   ExciterUi(const ExciterUi&&) = delete;

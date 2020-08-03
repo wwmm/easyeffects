@@ -198,12 +198,14 @@ auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_typ
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& schema,
-                         const std::string& schema_left,
-                         const std::string& schema_right)
+                         const std::string& schema_path,
+                         const std::string& schema_channel,
+                         const std::string& schema_channel_left_path,
+                         const std::string& schema_channel_right_path)
     : Gtk::Grid(cobject),
-      PluginUiBase(builder, schema),
-      settings_left(Gio::Settings::create(schema_left)),
-      settings_right(Gio::Settings::create(schema_right)) {
+      PluginUiBase(builder, schema, schema_path),
+      settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
+      settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)) {
   name = "equalizer";
 
   // loading glade widgets

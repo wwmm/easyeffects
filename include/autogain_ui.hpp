@@ -8,7 +8,10 @@
 
 class AutoGainUi : public Gtk::Grid, public PluginUiBase {
  public:
-  AutoGainUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  AutoGainUi(BaseObjectType* cobject,
+             const Glib::RefPtr<Gtk::Builder>& builder,
+             const std::string& schema,
+             const std::string& schema_path);
   AutoGainUi(const AutoGainUi&) = delete;
   auto operator=(const AutoGainUi&) -> AutoGainUi& = delete;
   AutoGainUi(const AutoGainUi&&) = delete;

@@ -9,7 +9,10 @@
 
 class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
  public:
-  StereoToolsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  StereoToolsUi(BaseObjectType* cobject,
+                const Glib::RefPtr<Gtk::Builder>& builder,
+                const std::string& schema,
+                const std::string& schema_path);
   StereoToolsUi(const StereoToolsUi&) = delete;
   auto operator=(const StereoToolsUi&) -> StereoToolsUi& = delete;
   StereoToolsUi(const StereoToolsUi&&) = delete;

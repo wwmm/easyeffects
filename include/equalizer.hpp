@@ -7,8 +7,10 @@ class Equalizer : public PluginBase {
  public:
   Equalizer(const std::string& tag,
             const std::string& schema,
-            const std::string& schema_left,
-            const std::string& schema_right);
+            const std::string& schema_path,
+            const std::string& schema_channel,
+            const std::string& schema_channel_left_path,
+            const std::string& schema_channel_right_path);
   Equalizer(const Equalizer&) = delete;
   auto operator=(const Equalizer&) -> Equalizer& = delete;
   Equalizer(const Equalizer&&) = delete;

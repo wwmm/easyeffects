@@ -7,7 +7,10 @@
 
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
  public:
-  CrystalizerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  CrystalizerUi(BaseObjectType* cobject,
+                const Glib::RefPtr<Gtk::Builder>& builder,
+                const std::string& schema,
+                const std::string& schema_path);
   CrystalizerUi(const CrystalizerUi&) = delete;
   auto operator=(const CrystalizerUi&) -> CrystalizerUi& = delete;
   CrystalizerUi(const CrystalizerUi&&) = delete;

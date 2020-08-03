@@ -7,7 +7,10 @@
 
 class GateUi : public Gtk::Grid, public PluginUiBase {
  public:
-  GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  GateUi(BaseObjectType* cobject,
+         const Glib::RefPtr<Gtk::Builder>& builder,
+         const std::string& schema,
+         const std::string& schema_path);
   GateUi(const GateUi&) = delete;
   auto operator=(const GateUi&) -> GateUi& = delete;
   GateUi(const GateUi&&) = delete;

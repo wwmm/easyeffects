@@ -2,8 +2,6 @@
 #define PLUGIN_UI_BASE_HPP
 
 #include <giomm/settings.h>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
 #include <gtkmm/adjustment.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
@@ -13,12 +11,14 @@
 #include <gtkmm/levelbar.h>
 #include <gtkmm/switch.h>
 #include <array>
-#include "util.hpp"
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
 #include "preset_type.hpp"
+#include "util.hpp"
 
 class PluginUiBase {
  public:
-  PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder, const std::string& schema, const std::string& schema_path);
   PluginUiBase(const PluginUiBase&) = delete;
   auto operator=(const PluginUiBase&) -> PluginUiBase& = delete;
   PluginUiBase(const PluginUiBase&&) = delete;
@@ -80,8 +80,8 @@ class PluginUiBase {
 
   template <typename T>
   void update_default_key(const Glib::RefPtr<Gio::Settings>& settings,
-                  const std::string& key,
-                  const std::string& json_key) {
+                          const std::string& key,
+                          const std::string& json_key) {
     boost::property_tree::ptree root;
     Glib::Variant<T> aux;
 
@@ -99,8 +99,8 @@ class PluginUiBase {
   }
 
   void update_default_string_key(const Glib::RefPtr<Gio::Settings>& settings,
-                         const std::string& key,
-                         const std::string& json_key) {
+                                 const std::string& key,
+                                 const std::string& json_key) {
     boost::property_tree::ptree root;
     std::string current_value = settings->get_string(key);
 

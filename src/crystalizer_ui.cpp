@@ -4,8 +4,9 @@
 
 CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
-                             const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                             const std::string& schema,
+                             const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "crystalizer";
 
   // loading glade widgets
@@ -53,13 +54,13 @@ void CrystalizerUi::reset() {
 
     for (int n = 0; n < 13; n++) {
       update_default_key<double>(settings, "intensity-band" + std::to_string(n),
-                         section + ".crystalizer.band" + std::to_string(n) + ".intensity");
+                                 section + ".crystalizer.band" + std::to_string(n) + ".intensity");
 
       update_default_key<bool>(settings, "mute-band" + std::to_string(n),
-                       section + ".crystalizer.band" + std::to_string(n) + ".mute");
+                               section + ".crystalizer.band" + std::to_string(n) + ".mute");
 
       update_default_key<bool>(settings, "bypass-band" + std::to_string(n),
-                       section + ".crystalizer.band" + std::to_string(n) + ".bypass");
+                               section + ".crystalizer.band" + std::to_string(n) + ".bypass");
     }
 
     util::debug(name + " plugin: successfully reset");

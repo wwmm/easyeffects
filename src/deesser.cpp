@@ -43,7 +43,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
 
 }  // namespace
 
-Deesser::Deesser(const std::string& tag, const std::string& schema) : PluginBase(tag, "deesser", schema) {
+Deesser::Deesser(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "deesser", schema, schema_path) {
   deesser = gst_element_factory_make("calf-sourceforge-net-plugins-Deesser", nullptr);
 
   if (is_installed(deesser)) {

@@ -43,17 +43,18 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
 
 }  // namespace
 
-Crystalizer::Crystalizer(const std::string& tag, const std::string& schema) : PluginBase(tag, "crystalizer", schema) {
+Crystalizer::Crystalizer(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "crystalizer", schema, schema_path) {
   crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
 
   if (is_installed(crystalizer)) {
-    auto input_gain = gst_element_factory_make("volume", nullptr);
-    auto in_level = gst_element_factory_make("level", "crystalizer_input_level");
-    auto output_gain = gst_element_factory_make("volume", nullptr);
-    auto out_level = gst_element_factory_make("level", "crystalizer_output_level");
+    auto* input_gain = gst_element_factory_make("volume", nullptr);
+    auto* in_level = gst_element_factory_make("level", "crystalizer_input_level");
+    auto* output_gain = gst_element_factory_make("volume", nullptr);
+    auto* out_level = gst_element_factory_make("level", "crystalizer_output_level");
 
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, crystalizer, audioconvert_out, output_gain,
                      out_level, nullptr);
@@ -61,8 +62,8 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema) : Pl
     gst_element_link_many(input_gain, in_level, audioconvert_in, crystalizer, audioconvert_out, output_gain, out_level,
                           nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

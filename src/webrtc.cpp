@@ -2,8 +2,11 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-Webrtc::Webrtc(const std::string& tag, const std::string& schema, const int& sampling_rate)
-    : PluginBase(tag, "webrtc", schema), rate(sampling_rate) {
+Webrtc::Webrtc(const std::string& tag,
+               const std::string& schema,
+               const std::string& schema_path,
+               const int& sampling_rate)
+    : PluginBase(tag, "webrtc", schema, schema_path), rate(sampling_rate) {
   webrtc = gst_element_factory_make("webrtcdsp", nullptr);
 
   if (is_installed(webrtc)) {

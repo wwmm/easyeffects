@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
+        <value nick="LR > LR (Stereo Default)" value="0" />
+        <value nick="LR > MS (Stereo to Mid-Side)" value="1" />
+        <value nick="MS > LR (Mid-Side to Stereo)" value="2" />
+        <value nick="LR > LL (Mono Left Channel)" value="3" />
+        <value nick="LR > RR (Mono Right Channel)" value="4" />
+        <value nick="LR > L+R (Mono Sum L+R)" value="5" />
+        <value nick="LR > RL (Stereo Flip Channels)" value="6" />
+    </enum>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.stereotools"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/stereotools/">
+        id="com.github.wwmm.pulseeffects.stereotools">
         <key name="state" type="b">
             <default>false</default>
         </key>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.exciter"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/exciter/">
+        id="com.github.wwmm.pulseeffects.exciter">
         <key name="state" type="b">
             <default>false</default>
         </key>

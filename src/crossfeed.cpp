@@ -2,7 +2,8 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-Crossfeed::Crossfeed(const std::string& tag, const std::string& schema) : PluginBase(tag, "crossfeed", schema) {
+Crossfeed::Crossfeed(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "crossfeed", schema, schema_path) {
   crossfeed = gst_element_factory_make("bs2b", nullptr);
 
   if (is_installed(crossfeed)) {

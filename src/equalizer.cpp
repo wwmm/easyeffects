@@ -13,21 +13,23 @@ void on_num_bands_changed(GSettings* settings, gchar* key, Equalizer* l) {
 
 Equalizer::Equalizer(const std::string& tag,
                      const std::string& schema,
-                     const std::string& schema_left,
-                     const std::string& schema_right)
-    : PluginBase(tag, "equalizer", schema),
-      settings_left(g_settings_new(schema_left.c_str())),
-      settings_right(g_settings_new(schema_right.c_str())) {
+                     const std::string& schema_path,
+                     const std::string& schema_channel,
+                     const std::string& schema_channel_left_path,
+                     const std::string& schema_channel_right_path)
+    : PluginBase(tag, "equalizer", schema, schema_path),
+      settings_left(g_settings_new_with_path(schema_channel.c_str(), schema_channel_left_path.c_str())),
+      settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())) {
   equalizer = gst_element_factory_make("lsp-plug-in-plugins-lv2-para-equalizer-x32-lr", nullptr);
 
   if (is_installed(equalizer)) {
-    auto input_gain = gst_element_factory_make("volume", nullptr);
-    auto in_level = gst_element_factory_make("level", "equalizer_input_level");
-    auto out_level = gst_element_factory_make("level", "equalizer_output_level");
-    auto output_gain = gst_element_factory_make("volume", nullptr);
+    auto* input_gain = gst_element_factory_make("volume", nullptr);
+    auto* in_level = gst_element_factory_make("level", "equalizer_input_level");
+    auto* out_level = gst_element_factory_make("level", "equalizer_output_level");
+    auto* output_gain = gst_element_factory_make("volume", nullptr);
 
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "eq_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "eq_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "eq_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "eq_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, equalizer, audioconvert_out, output_gain,
                      out_level, nullptr);
@@ -37,8 +39,8 @@ Equalizer::Equalizer(const std::string& tag,
 
     // setting bin ghost pads
 
-    auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

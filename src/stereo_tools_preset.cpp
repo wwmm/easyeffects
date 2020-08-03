@@ -1,7 +1,8 @@
 #include "stereo_tools_preset.hpp"
 
 StereoToolsPreset::StereoToolsPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.stereotools")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.stereotools",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/")) {}
 
 void StereoToolsPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,

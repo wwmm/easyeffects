@@ -16,7 +16,10 @@
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
-  ConvolverUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  ConvolverUi(BaseObjectType* cobject,
+              const Glib::RefPtr<Gtk::Builder>& builder,
+              const std::string& schema,
+              const std::string& schema_path);
   ConvolverUi(const ConvolverUi&) = delete;
   auto operator=(const ConvolverUi&) -> ConvolverUi& = delete;
   ConvolverUi(const ConvolverUi&&) = delete;

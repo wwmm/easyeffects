@@ -5,7 +5,7 @@
 
 class MultibandCompressor : public PluginBase {
  public:
-  MultibandCompressor(const std::string& tag, const std::string& schema);
+  MultibandCompressor(const std::string& tag, const std::string& schema, const std::string& schema_path);
   MultibandCompressor(const MultibandCompressor&) = delete;
   auto operator=(const MultibandCompressor&) -> MultibandCompressor& = delete;
   MultibandCompressor(const MultibandCompressor&&) = delete;

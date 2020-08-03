@@ -126,8 +126,11 @@ auto int_to_voice_detection_likelihood(const GValue* value, const GVariantType* 
 
 }  // namespace
 
-WebrtcUi::WebrtcUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+WebrtcUi::WebrtcUi(BaseObjectType* cobject,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
+                   const std::string& schema,
+                   const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "webrtc";
 
   // loading glade widgets
@@ -222,7 +225,8 @@ void WebrtcUi::reset() {
 
     update_default_key<bool>(settings, "voice-detection", section + ".webrtc.voice-detection");
 
-    update_default_key<int>(settings, "voice-detection-frame-size-ms", section + ".webrtc.voice-detection-frame-size-ms");
+    update_default_key<int>(settings, "voice-detection-frame-size-ms",
+                            section + ".webrtc.voice-detection-frame-size-ms");
 
     update_default_string_key(settings, "voice-detection-likelihood", section + ".webrtc.voice-detection-likelihood");
 

@@ -5,7 +5,7 @@
 
 class Pitch : public PluginBase {
  public:
-  Pitch(const std::string& tag, const std::string& schema);
+  Pitch(const std::string& tag, const std::string& schema, const std::string& schema_path);
   Pitch(const Pitch&) = delete;
   auto operator=(const Pitch&) -> Pitch& = delete;
   Pitch(const Pitch&&) = delete;

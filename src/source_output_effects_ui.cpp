@@ -20,22 +20,42 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   auto b_multiband_gate = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
 
-  b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.sourceoutputs.limiter");
-  b_compressor->get_widget_derived("widgets_grid", compressor_ui,
-                                   "com.github.wwmm.pulseeffects.sourceoutputs.compressor");
-  b_filter->get_widget_derived("widgets_grid", filter_ui, "com.github.wwmm.pulseeffects.sourceoutputs.filter");
-  b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.sourceoutputs.equalizer",
-                                  "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel",
-                                  "com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel");
-  b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.sourceoutputs.reverb");
-  b_gate->get_widget_derived("widgets_grid", gate_ui, "com.github.wwmm.pulseeffects.sourceoutputs.gate");
-  b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.sourceoutputs.deesser");
-  b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.sourceoutputs.pitch");
-  b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.sourceoutputs.webrtc");
+  b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
+                                "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/");
+
+  b_compressor->get_widget_derived("widgets_grid", compressor_ui, "com.github.wwmm.pulseeffects.compressor",
+                                   "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/");
+
+  b_filter->get_widget_derived("widgets_grid", filter_ui, "com.github.wwmm.pulseeffects.filter",
+                               "/com/github/wwmm/pulseeffects/sourceoutputs/filter/");
+
+  b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.equalizer",
+                                  "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/",
+                                  "com.github.wwmm.pulseeffects.equalizer.channel",
+                                  "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/",
+                                  "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/rightchannel/");
+
+  b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.reverb",
+                               "/com/github/wwmm/pulseeffects/sourceoutputs/reverb/");
+
+  b_gate->get_widget_derived("widgets_grid", gate_ui, "com.github.wwmm.pulseeffects.gate",
+                             "/com/github/wwmm/pulseeffects/sourceoutputs/gate/");
+
+  b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
+                                "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/");
+
+  b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
+                              "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
+
+  b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.webrtc",
+                               "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/");
+
   b_multiband_compressor->get_widget_derived("widgets_grid", multiband_compressor_ui,
-                                             "com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor");
-  b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui,
-                                       "com.github.wwmm.pulseeffects.sourceoutputs.multibandgate");
+                                             "com.github.wwmm.pulseeffects.multibandcompressor",
+                                             "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/");
+
+  b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui, "com.github.wwmm.pulseeffects.multibandgate",
+                                       "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/");
 
   // set preset type property inside user interfaces to be intepreted as "input"
 

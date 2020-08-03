@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
+        <value nick="LR4" value="0" />
+        <value nick="LR8" value="1" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+        <value nick="RMS" value="0" />
+        <value nick="Peak" value="1" />
+    </enum>
     <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs.multibandgate"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/">
+        id="com.github.wwmm.pulseeffects.multibandcompressor">
         <key name="state" type="b">
             <default>false</default>
         </key>
@@ -32,12 +39,10 @@
             <range min="10" max="20000"/>
             <default>6000</default>
         </key>
-        <key name="mode" enum="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
+        <key
+            name="mode"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
             <default>"LR8"</default>
-        </key>
-        <key name="range0" type="d">
-            <range min="-95.0" max="0"/>
-            <default>-24</default>
         </key>
         <key name="threshold0" type="d">
             <range min="-60.0" max="0"/>
@@ -63,7 +68,9 @@
             <range min="0" max="18"/>
             <default>9</default>
         </key>
-        <key name="detection0" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
+        <key
+            name="detection0"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass0" type="b">
@@ -71,10 +78,6 @@
         </key>
         <key name="solo0" type="b">
             <default>false</default>
-        </key>
-        <key name="range1" type="d">
-            <range min="-95.0" max="0"/>
-            <default>-24</default>
         </key>
         <key name="threshold1" type="d">
             <range min="-60.0" max="0"/>
@@ -100,7 +103,9 @@
             <range min="0" max="18"/>
             <default>9</default>
         </key>
-        <key name="detection1" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
+        <key
+            name="detection1"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass1" type="b">
@@ -108,10 +113,6 @@
         </key>
         <key name="solo1" type="b">
             <default>false</default>
-        </key>
-        <key name="range2" type="d">
-            <range min="-95.0" max="0"/>
-            <default>-24</default>
         </key>
         <key name="threshold2" type="d">
             <range min="-60.0" max="0"/>
@@ -137,7 +138,9 @@
             <range min="0" max="18"/>
             <default>9</default>
         </key>
-        <key name="detection2" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
+        <key
+            name="detection2"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass2" type="b">
@@ -145,10 +148,6 @@
         </key>
         <key name="solo2" type="b">
             <default>false</default>
-        </key>
-        <key name="range3" type="d">
-            <range min="-95.0" max="0"/>
-            <default>-24</default>
         </key>
         <key name="threshold3" type="d">
             <range min="-60.0" max="0"/>
@@ -174,7 +173,9 @@
             <range min="0" max="18"/>
             <default>9</default>
         </key>
-        <key name="detection3" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
+        <key
+            name="detection3"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
             <default>"RMS"</default>
         </key>
         <key name="bypass3" type="b">

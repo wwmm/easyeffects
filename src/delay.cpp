@@ -2,7 +2,8 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-Delay::Delay(const std::string& tag, const std::string& schema) : PluginBase(tag, "delay", schema) {
+Delay::Delay(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "delay", schema, schema_path) {
   delay = gst_element_factory_make("lsp-plug-in-plugins-lv2-comp-delay-x2-stereo", nullptr);
 
   if (is_installed(delay)) {

@@ -11,7 +11,8 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
  public:
   MultibandCompressorUi(BaseObjectType* cobject,
                         const Glib::RefPtr<Gtk::Builder>& builder,
-                        const std::string& settings_name);
+                        const std::string& schema,
+                        const std::string& schema_path);
   MultibandCompressorUi(const MultibandCompressorUi&) = delete;
   auto operator=(const MultibandCompressorUi&) -> MultibandCompressorUi& = delete;
   MultibandCompressorUi(const MultibandCompressorUi&&) = delete;

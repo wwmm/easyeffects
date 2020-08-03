@@ -133,8 +133,7 @@ auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_dat
   return 1;
 }
 
-auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
+auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   int v = g_value_get_int(value);
 
   if (v == 0) {
@@ -156,8 +155,9 @@ auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_t
 
 CompressorUi::CompressorUi(BaseObjectType* cobject,
                            const Glib::RefPtr<Gtk::Builder>& builder,
-                           const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                           const std::string& schema,
+                           const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "compressor";
 
   // loading glade widgets

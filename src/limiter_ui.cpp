@@ -2,8 +2,9 @@
 
 LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                     const std::string& schema,
+                     const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "limiter";
 
   // loading glade widgets

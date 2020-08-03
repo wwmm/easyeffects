@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
+        <value nick="LR4" value="0" />
+        <value nick="LR8" value="1" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.multibandgate.detection.enum">
+        <value nick="RMS" value="0" />
+        <value nick="Peak" value="1" />
+    </enum>
     <schema
-        id="com.github.wwmm.pulseeffects.sourceoutputs.multibandgate"
-        path="/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/">
+        id="com.github.wwmm.pulseeffects.multibandgate">
         <key name="state" type="b">
             <default>false</default>
         </key>

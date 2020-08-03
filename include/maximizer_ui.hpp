@@ -6,7 +6,10 @@
 
 class MaximizerUi : public Gtk::Grid, public PluginUiBase {
  public:
-  MaximizerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  MaximizerUi(BaseObjectType* cobject,
+              const Glib::RefPtr<Gtk::Builder>& builder,
+              const std::string& schema,
+              const std::string& schema_path);
   MaximizerUi(const MaximizerUi&) = delete;
   auto operator=(const MaximizerUi&) -> MaximizerUi& = delete;
   MaximizerUi(const MaximizerUi&&) = delete;

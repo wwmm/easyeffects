@@ -9,7 +9,10 @@
 
 class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
  public:
-  MultibandGateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  MultibandGateUi(BaseObjectType* cobject,
+                  const Glib::RefPtr<Gtk::Builder>& builder,
+                  const std::string& schema,
+                  const std::string& schema_path);
   MultibandGateUi(const MultibandGateUi&) = delete;
   auto operator=(const MultibandGateUi&) -> MultibandGateUi& = delete;
   MultibandGateUi(const MultibandGateUi&&) = delete;
