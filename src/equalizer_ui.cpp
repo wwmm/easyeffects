@@ -849,20 +849,14 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
 
         std::smatch matches;
 
-        bool found = false;
-
         if (std::regex_search(line, matches, re)) {
           if (matches.size() == 4) {
             filter.freq = std::stof(matches.str(1));
             filter.gain = std::stof(matches.str(2));
             filter.quality_factor = std::stof(matches.str(3));
 
-            found = true;
+            bands.push_back(filter);
           }
-        }
-
-        if (found) {
-          bands.push_back(filter);
         }
       }
     }
