@@ -73,7 +73,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
       w->hide();
     }
   } else if (options->contains("bypass")) {
-    int bypass_arg;
+    int bypass_arg = 2;
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 1) {
@@ -276,7 +276,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   }
 
   if (options->contains("bypass")) {
-    int bypass_arg;
+    int bypass_arg = 2;
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
@@ -296,7 +296,7 @@ void Application::create_actions() {
   add_action("about", [&]() {
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
-    auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
+    auto* dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
     dialog->signal_response().connect([=](auto response_id) {
       switch (response_id) {
@@ -321,19 +321,13 @@ void Application::create_actions() {
   });
 
   add_action("help", [&] {
-    auto window = get_active_window();
+    auto* window = get_active_window();
 
-    /*GTKMM 3.22 does not have a wrapper for gtk_show_uri_on_window.
-     *So we have to use the C api :-(
-     */
-
-    if (gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr) == 0) {
-      util::warning("Failed to open help!");
-    }
+    window->show_uri("help:pulseeffects", gtk_get_current_event_time());
   });
 
   add_action("quit", [&] {
-    auto window = get_active_window();
+    auto* window = get_active_window();
 
     window->hide();
   });

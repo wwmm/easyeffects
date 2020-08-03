@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-07-21 17:41+0200\n"
+"POT-Creation-Date: 2020-08-03 14:09-0300\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -435,9 +435,9 @@ msgid ""
 "signals."
 msgstr ""
 "Relativa esclusivamente alla modalità espansiva. Definisce la soglia sotto "
-"la quale verrà applicata un'amplificazione costante al segnale di input. "
-"Ciò impedisce al compressore di applicare un'amplificazione infinita a "
-"segnali molto silenziosi."
+"la quale verrà applicata un'amplificazione costante al segnale di input. Ciò "
+"impedisce al compressore di applicare un'amplificazione infinita a segnali "
+"molto silenziosi."
 
 #. (itstool) path: title/em
 #: C/compressor.page:233
@@ -448,8 +448,7 @@ msgstr "Modalità Filtro Passa-Alto"
 #: C/compressor.page:235
 msgid "Sets the type of the high-pass filter applied to sidechain signal."
 msgstr ""
-"Imposta la tipologia del filtro passa-alto applicato al segnale di "
-"sidechain"
+"Imposta la tipologia del filtro passa-alto applicato al segnale di sidechain"
 
 #. (itstool) path: title/em
 #: C/compressor.page:241
@@ -470,8 +469,7 @@ msgstr "Modalità Filtro Passa-Basso"
 #: C/compressor.page:251
 msgid "Sets the type of the low-pass filter applied to sidechain signal."
 msgstr ""
-"Imposta la tipologia del filtro passa-basso applicato al segnale di "
-"sidechain"
+"Imposta la tipologia del filtro passa-basso applicato al segnale di sidechain"
 
 #. (itstool) path: title/em
 #: C/compressor.page:257
