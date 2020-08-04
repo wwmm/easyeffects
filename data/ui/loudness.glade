@@ -113,9 +113,7 @@
   </object>
   <object class="GtkAdjustment" id="link">
     <property name="lower">-100</property>
-    <property name="value">-9,09999999999999964473</property>
-    <property name="step_increment">0,01000000000000000021</property>
-    <property name="page_increment">0,01000000000000000021</property>
+    <property name="value">-9</property>
   </object>
   <object class="GtkAdjustment" id="link1">
     <property name="lower">-100</property>
@@ -521,21 +519,6 @@
         <property name="can_focus">False</property>
         <property name="column_homogeneous">True</property>
         <child>
-          <object class="GtkButton" id="plugin_reset">
-            <property name="label" translatable="yes">Reset</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="image_position">right</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkBox">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -576,16 +559,39 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="plugin_reset">
+            <property name="label" translatable="yes">Reset</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image_position">right</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
         </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
         <property name="top_attach">1</property>
       </packing>
-    </child>
-    <child>
-      <placeholder/>
     </child>
   </object>
 </interface>
