@@ -1,9 +1,6 @@
 #ifndef COMPRESSOR_UI_HPP
 #define COMPRESSOR_UI_HPP
 
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class CompressorUi : public Gtk::Grid, public PluginUiBase {

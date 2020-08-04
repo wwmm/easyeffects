@@ -30,9 +30,12 @@ class PipelineBase {
 
   PulseManager* pm = nullptr;
 
-  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *spectrum = nullptr,
-             *spectrum_bin = nullptr, *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
-             *adapter = nullptr, *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr;
+  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr,
+             *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr,
+             *adapter = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
+             *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
+             *global_level_meter = nullptr, *global_level_meter_bin = nullptr,
+             *level_meter_identity_in = nullptr, *level_meter_identity_out = nullptr;
 
   GstBus* bus = nullptr;
 
@@ -81,6 +84,7 @@ class PipelineBase {
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
+  sigc::signal<void, std::array<double, 2>> global_output_level;
   sigc::signal<void, std::array<double, 2>> equalizer_input_level;
   sigc::signal<void, std::array<double, 2>> equalizer_output_level;
   sigc::signal<void, std::array<double, 2>> pitch_input_level;
@@ -111,6 +115,7 @@ class PipelineBase {
   sigc::connection timeout_connection;
 
   void init_spectrum_bin();
+  void init_global_level_meter_bin();
   void init_effects_bin();
   auto apps_want_to_play() -> bool;
 

@@ -1,9 +1,6 @@
 #ifndef AUTOGAIN_UI_HPP
 #define AUTOGAIN_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class AutoGainUi : public Gtk::Grid, public PluginUiBase {

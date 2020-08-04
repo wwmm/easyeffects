@@ -7,6 +7,7 @@
 #include <gtkmm/eventbox.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
+#include <gtkmm/label.h>
 #include <memory>
 #include <vector>
 #include "pulse_manager.hpp"
@@ -30,12 +31,15 @@ class EffectsBaseUi {
   virtual void on_app_added(std::shared_ptr<AppInfo> app_info) = 0;
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
+  void on_new_output_level_db(const std::array<double, 2>& peak);
 
  protected:
   Glib::RefPtr<Gio::Settings> settings;
   Gtk::ListBox* listbox = nullptr;
   Gtk::Stack* stack = nullptr;
-  Gtk::Box* apps_box = nullptr;
+  Gtk::Box *apps_box = nullptr, *app_button_row = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
+  Gtk::Image* saturation_icon = nullptr;
 
   PulseManager* pm = nullptr;
 

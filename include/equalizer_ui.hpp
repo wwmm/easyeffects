@@ -1,13 +1,6 @@
 #ifndef EQUALIZER_UI_HPP
 #define EQUALIZER_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/stackswitcher.h>
-#include <gtkmm/switch.h>
 #include "plugin_ui_base.hpp"
 
 class EqualizerUi : public Gtk::Grid, public PluginUiBase {
