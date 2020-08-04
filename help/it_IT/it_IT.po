@@ -790,7 +790,7 @@ msgstr ""
 #. (itstool) path: page/title
 #: C/delay.page:9
 msgid "Delay"
-msgstr "Ritardo"
+msgstr "Delay"
 
 #. (itstool) path: page/p
 #: C/delay.page:10
