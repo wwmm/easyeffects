@@ -1,8 +1,6 @@
 #ifndef LIMITER_UI_HPP
 #define LIMITER_UI_HPP
 
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class LimiterUi : public Gtk::Grid, public PluginUiBase {

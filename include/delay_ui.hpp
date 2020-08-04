@@ -1,7 +1,6 @@
 #ifndef DELAY_UI_HPP
 #define DELAY_UI_HPP
 
-#include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
 class DelayUi : public Gtk::Grid, public PluginUiBase {

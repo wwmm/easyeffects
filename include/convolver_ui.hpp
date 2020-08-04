@@ -1,14 +1,6 @@
 #ifndef CONVOLVER_UI_HPP
 #define CONVOLVER_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/label.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/menubutton.h>
-#include <gtkmm/scrolledwindow.h>
-#include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
 #include <future>
 #include <mutex>

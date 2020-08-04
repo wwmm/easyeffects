@@ -1,9 +1,5 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/filechoosernative.h>
-#include <gtkmm/label.h>
-#include <gtkmm/scale.h>
-#include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>

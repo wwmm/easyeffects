@@ -1,9 +1,6 @@
 #ifndef REVERB_UI_HPP
 #define REVERB_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
 class ReverbUi : public Gtk::Grid, public PluginUiBase {

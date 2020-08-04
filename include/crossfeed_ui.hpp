@@ -1,8 +1,6 @@
 #ifndef CROSSFEED_UI_HPP
 #define CROSSFEED_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
 class CrossfeedUi : public Gtk::Grid, public PluginUiBase {

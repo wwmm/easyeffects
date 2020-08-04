@@ -1,6 +1,5 @@
 #include "reverb_ui.hpp"
 #include <cstring>
-#include "util.hpp"
 
 namespace {
 

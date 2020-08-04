@@ -1,10 +1,6 @@
 #ifndef MULTIBAND_GATE_UI_HPP
 #define MULTIBAND_GATE_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class MultibandGateUi : public Gtk::Grid, public PluginUiBase {

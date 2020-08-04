@@ -1,6 +1,4 @@
 #include "crystalizer_ui.hpp"
-#include <gtkmm/scale.h>
-#include <gtkmm/togglebutton.h>
 
 CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
