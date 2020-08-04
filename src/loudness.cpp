@@ -4,7 +4,7 @@
 
 Loudness::Loudness(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "loudness", schema, schema_path) {
-  loudness = gst_element_factory_make("drobilla-net-plugins-mda-Loudness", nullptr);
+  loudness = gst_element_factory_make("lsp-plug-in-plugins-lv2-loud-comp-stereo", nullptr);
 
   if (is_installed(loudness)) {
     auto* in_level = gst_element_factory_make("level", "loudness_input_level");
@@ -24,6 +24,10 @@ Loudness::Loudness(const std::string& tag, const std::string& schema, const std:
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
+    g_object_set(loudness, "enabled", 1, nullptr);
+    g_object_set(loudness, "refer", 0, nullptr);
+    g_object_set(loudness, "hclip", 0, nullptr);
+
     bind_to_gsettings();
 
     g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
@@ -42,12 +46,15 @@ Loudness::~Loudness() {
 }
 
 void Loudness::bind_to_gsettings() {
-  g_settings_bind_with_mapping(settings, "loudness", loudness, "loudness", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings, "output", loudness, "output", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings, "link", loudness, "link", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+  g_settings_bind_with_mapping(settings, "input", loudness, "input", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
                                util::linear_gain_to_db20, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "volume", loudness, "volume", G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind(settings, "fft", loudness, "fft", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "std", loudness, "std", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "reference-signal", loudness, "refer", G_SETTINGS_BIND_DEFAULT);
 }

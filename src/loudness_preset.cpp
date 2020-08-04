@@ -9,11 +9,11 @@ void LoudnessPreset::save(boost::property_tree::ptree& root,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   root.put(section + ".loudness.state", settings->get_boolean("state"));
 
-  root.put(section + ".loudness.loudness", settings->get_double("loudness"));
+  root.put(section + ".loudness.fft", settings->get_string("fft"));
 
-  root.put(section + ".loudness.output", settings->get_double("output"));
+  root.put(section + ".loudness.std", settings->get_string("std"));
 
-  root.put(section + ".loudness.link", settings->get_double("link"));
+  root.put(section + ".loudness.volume", settings->get_double("volume"));
 }
 
 void LoudnessPreset::load(const boost::property_tree::ptree& root,
@@ -21,11 +21,11 @@ void LoudnessPreset::load(const boost::property_tree::ptree& root,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".loudness.state");
 
-  update_key<double>(root, settings, "loudness", section + ".loudness.loudness");
+  update_string_key(root, settings, "fft", section + ".loudness.fft");
 
-  update_key<double>(root, settings, "output", section + ".loudness.output");
+  update_string_key(root, settings, "std", section + ".loudness.std");
 
-  update_key<double>(root, settings, "link", section + ".loudness.link");
+  update_key<double>(root, settings, "volume", section + ".loudness.volume");
 }
 
 void LoudnessPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

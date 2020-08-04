@@ -213,7 +213,8 @@ SinkInputEffects::~SinkInputEffects() {
 void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
-  bool forbidden_app = false, success = false;
+  bool forbidden_app = false;
+  bool success = false;
   auto* blacklist = g_settings_get_strv(settings, "blacklist-out");
 
   for (std::size_t i = 0; blacklist[i] != nullptr; i++) {

@@ -1,8 +1,9 @@
 #ifndef LOUDNESS_UI_HPP
 #define LOUDNESS_UI_HPP
 
-#include <gtkmm/button.h>
+#include <gtkmm/comboboxtext.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class LoudnessUi : public Gtk::Grid, public PluginUiBase {
@@ -20,7 +21,11 @@ class LoudnessUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> loudness, output, link;
+  Glib::RefPtr<Gtk::Adjustment> input, volume;
+
+  Gtk::ComboBoxText *fft_size = nullptr, *standard = nullptr;
+
+  Gtk::ToggleButton* reference_signal = nullptr;
 };
 
 #endif
