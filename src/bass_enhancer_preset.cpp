@@ -1,7 +1,7 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.bassenhancer",
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.bassenhancer",
                                             "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/")) {}
 
 void BassEnhancerPreset::save(boost::property_tree::ptree& root,
