@@ -10,7 +10,7 @@
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
-#include <gtkmm/switch.h>
+#include <gtkmm/checkbutton.h>
 #include <array>
 #include "util.hpp"
 #include "preset_type.hpp"
@@ -46,7 +46,7 @@ class PluginUiBase {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Button* reset_button = nullptr;
-  Gtk::Switch* enable = nullptr;
+  Gtk::CheckButton* enable = nullptr;
   Gtk::Box* controls = nullptr;
 
   Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
