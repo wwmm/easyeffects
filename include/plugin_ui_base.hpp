@@ -38,6 +38,7 @@ class PluginUiBase {
   void on_new_output_level(const std::array<double, 2>& peak);
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
+  static auto level_to_str(const double& value, const int& places) -> std::string;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -64,8 +65,6 @@ class PluginUiBase {
                          Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
-
-  static auto level_to_str(const double& value, const int& places) -> std::string;
 
   // reimplemented templates from plugin_preset_base without passing boost ptree
   // using an empty root will rely on default value
