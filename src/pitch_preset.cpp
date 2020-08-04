@@ -1,8 +1,10 @@
 #include "pitch_preset.hpp"
 
 PitchPreset::PitchPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.pitch")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.pitch",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.pitch",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/pitch/")) {}
 
 void PitchPreset::save(boost::property_tree::ptree& root,
                        const std::string& section,

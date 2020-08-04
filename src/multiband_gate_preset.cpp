@@ -1,8 +1,10 @@
 #include "multiband_gate_preset.hpp"
 
 MultibandGatePreset::MultibandGatePreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.multibandgate")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.multibandgate")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandgate",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandgate",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/")) {}
 
 void MultibandGatePreset::save(boost::property_tree::ptree& root,
                                const std::string& section,

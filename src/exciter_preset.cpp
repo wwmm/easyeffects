@@ -1,7 +1,8 @@
 #include "exciter_preset.hpp"
 
 ExciterPreset::ExciterPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.exciter")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.exciter",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/exciter/")) {}
 
 void ExciterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,

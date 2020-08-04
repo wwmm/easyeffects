@@ -1,7 +1,8 @@
 #include "webrtc_preset.hpp"
 
 WebrtcPreset::WebrtcPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.webrtc")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.webrtc",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/")) {}
 
 void WebrtcPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,

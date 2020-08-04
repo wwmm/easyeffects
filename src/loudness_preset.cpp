@@ -1,7 +1,8 @@
 #include "loudness_preset.hpp"
 
 LoudnessPreset::LoudnessPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.loudness")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.loudness",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/loudness/")) {}
 
 void LoudnessPreset::save(boost::property_tree::ptree& root,
                           const std::string& section,

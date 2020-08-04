@@ -1,8 +1,10 @@
 #include "filter_preset.hpp"
 
 FilterPreset::FilterPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.filter")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.filter")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.filter",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/filter/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.filter",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/filter/")) {}
 
 void FilterPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,

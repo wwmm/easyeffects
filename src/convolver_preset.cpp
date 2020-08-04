@@ -1,7 +1,8 @@
 #include "convolver_preset.hpp"
 
 ConvolverPreset::ConvolverPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.convolver")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.convolver",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/convolver/")) {}
 
 void ConvolverPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,

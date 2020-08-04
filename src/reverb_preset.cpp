@@ -1,8 +1,10 @@
 #include "reverb_preset.hpp"
 
 ReverbPreset::ReverbPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.reverb")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.reverb")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.reverb",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/reverb/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.reverb",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/reverb/")) {}
 
 void ReverbPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,

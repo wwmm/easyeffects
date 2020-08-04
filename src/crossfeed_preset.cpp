@@ -1,7 +1,8 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.crossfeed")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crossfeed",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/")) {}
 
 void CrossfeedPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,

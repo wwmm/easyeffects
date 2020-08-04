@@ -1,7 +1,8 @@
 #include "autogain_preset.hpp"
 
 AutoGainPreset::AutoGainPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.autogain")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.autogain",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/autogain/")) {}
 
 void AutoGainPreset::save(boost::property_tree::ptree& root,
                           const std::string& section,

@@ -1,8 +1,10 @@
 #include "compressor_preset.hpp"
 
 CompressorPreset::CompressorPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.compressor")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.compressor")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.compressor",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.compressor",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/")) {}
 
 void CompressorPreset::save(boost::property_tree::ptree& root,
                             const std::string& section,

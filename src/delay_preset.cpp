@@ -1,6 +1,8 @@
 #include "delay_preset.hpp"
 
-DelayPreset::DelayPreset() : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.delay")) {}
+DelayPreset::DelayPreset()
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.delay",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/delay/")) {}
 
 void DelayPreset::save(boost::property_tree::ptree& root,
                        const std::string& section,

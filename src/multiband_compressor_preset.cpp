@@ -1,8 +1,10 @@
 #include "multiband_compressor_preset.hpp"
 
 MultibandCompressorPreset::MultibandCompressorPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandcompressor",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandcompressor",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/")) {}
 
 void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
                                      const std::string& section,

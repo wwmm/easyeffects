@@ -1,8 +1,10 @@
 #include "deesser_preset.hpp"
 
 DeesserPreset::DeesserPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.deesser")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.deesser",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.deesser",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/deesser/")) {}
 
 void DeesserPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,

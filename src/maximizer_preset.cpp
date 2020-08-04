@@ -1,7 +1,8 @@
 #include "maximizer_preset.hpp"
 
 MaximizerPreset::MaximizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.maximizer")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/")) {}
 
 void MaximizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,

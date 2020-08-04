@@ -1,7 +1,8 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.crystalizer")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crystalizer",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/")) {}
 
 void CrystalizerPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
