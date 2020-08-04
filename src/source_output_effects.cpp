@@ -7,7 +7,9 @@ namespace {
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutputEffects* soe) {
   auto* src_name = GST_OBJECT_NAME(message->src);
 
-  if (std::strcmp(src_name, "equalizer_input_level") == 0) {
+  if (std::strcmp(src_name, "global_level_meter") == 0) {
+    soe->global_output_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "equalizer_input_level") == 0) {
     soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
     soe->equalizer_output_level.emit(SourceOutputEffects::get_peak(message));

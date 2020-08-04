@@ -166,6 +166,11 @@ void SourceOutputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
 }
 
 void SourceOutputEffectsUi::level_meters_connections() {
+  // global output level meter connection
+
+  connections.emplace_back(
+      soe->global_output_level.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_new_output_level_db)));
+
   // limiter level meters connections
 
   connections.emplace_back(

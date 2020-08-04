@@ -1,8 +1,6 @@
 #ifndef GATE_UI_HPP
 #define GATE_UI_HPP
 
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
 #include "plugin_ui_base.hpp"
 
 class GateUi : public Gtk::Grid, public PluginUiBase {

@@ -6,10 +6,21 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/image.h>
+#include <gtkmm/checkbutton.h>
+#include <gtkmm/comboboxtext.h>
+#include <gtkmm/drawingarea.h>
+#include <gtkmm/filechoosernative.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
+#include <gtkmm/listbox.h>
+#include <gtkmm/menubutton.h>
+#include <gtkmm/scale.h>
+#include <gtkmm/scrolledwindow.h>
+#include <gtkmm/stack.h>
+#include <gtkmm/stackswitcher.h>
 #include <gtkmm/switch.h>
+#include <gtkmm/togglebutton.h>
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -38,6 +49,7 @@ class PluginUiBase {
   void on_new_output_level(const std::array<double, 2>& peak);
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
+  static auto level_to_str(const double& value, const int& places) -> std::string;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -46,16 +58,13 @@ class PluginUiBase {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Button* reset_button = nullptr;
-  Gtk::Switch* enable = nullptr;
+  Gtk::CheckButton* enable = nullptr;
   Gtk::Box* controls = nullptr;
-  Gtk::Image* img_state = nullptr;
 
   Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
-
-  bool input_saturated = false;
 
   std::vector<sigc::connection> connections;
 
@@ -64,8 +73,6 @@ class PluginUiBase {
                          Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
-
-  static auto level_to_str(const double& value, const int& places) -> std::string;
 
   // reimplemented templates from plugin_preset_base without passing boost ptree
   // using an empty root will rely on default value

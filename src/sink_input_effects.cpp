@@ -7,7 +7,9 @@ namespace {
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEffects* sie) {
   auto* src_name = GST_OBJECT_NAME(message->src);
 
-  if (std::strcmp(src_name, "pitch_input_level") == 0) {
+  if (std::strcmp(src_name, "global_level_meter") == 0) {
+    sie->global_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
     sie->pitch_input_level.emit(SinkInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
     sie->pitch_output_level.emit(SinkInputEffects::get_peak(message));

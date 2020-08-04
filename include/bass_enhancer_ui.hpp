@@ -1,8 +1,6 @@
 #ifndef BASS_ENHANCER_UI_HPP
 #define BASS_ENHANCER_UI_HPP
 
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {

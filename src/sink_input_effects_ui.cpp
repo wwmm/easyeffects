@@ -207,6 +207,11 @@ void SinkInputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
 }
 
 void SinkInputEffectsUi::level_meters_connections() {
+  // global output level meter connection
+
+  connections.emplace_back(
+      sie->global_output_level.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_new_output_level_db)));
+
   // limiter level meters connections
 
   connections.emplace_back(

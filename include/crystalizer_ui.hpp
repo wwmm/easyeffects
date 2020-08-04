@@ -1,8 +1,6 @@
 #ifndef CRYSTALIZER_UI_HPP
 #define CRYSTALIZER_UI_HPP
 
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {

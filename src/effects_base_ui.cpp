@@ -1,7 +1,7 @@
 #include "effects_base_ui.hpp"
+#include "plugin_ui_base.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
-#include <gtkmm/label.h>
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
@@ -14,7 +14,18 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   builder->get_widget("apps_box", apps_box);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
 
+  auto b_app_button_row = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_button_row.glade");
+
+  b_app_button_row->get_widget("app_button_row", app_button_row);
+  b_app_button_row->get_widget("global_output_level_left", global_output_level_left);
+  b_app_button_row->get_widget("global_output_level_right", global_output_level_right);
+  b_app_button_row->get_widget("saturation_icon", saturation_icon);
+
+  // spectrum
+
   spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
+
+  // setting up plugin list box
 
   auto row = Gtk::manage(new Gtk::ListBoxRow());
 
@@ -24,13 +35,11 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   row->set_margin_right(6);
   row->set_margin_left(6);
 
-  auto row_label = Gtk::manage(new Gtk::Label(_("Applications")));
-
-  row_label->set_halign(Gtk::Align::ALIGN_START);
-
-  row->add(*row_label);
+  row->add(*app_button_row);
 
   listbox->add(*row);
+
+  // plugin rows connections
 
   listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
 
@@ -106,4 +115,32 @@ auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2
   }
 
   return 0;
+}
+
+void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
+  auto left = peak[0], right = peak[1];
+
+  // saturation icon notification
+
+  if (left > 0 || right > 0) {
+    saturation_icon->set_visible(true);
+  } else {
+    saturation_icon->set_visible(false);
+  }
+
+  // right channel
+
+  if (left >= -99) {
+    global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
+  } else {
+    global_output_level_left->set_text("-99");
+  }
+
+  // left channel
+
+  if (right >= -99) {
+    global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
+  } else {
+    global_output_level_right->set_text("-99");
+  }
 }
