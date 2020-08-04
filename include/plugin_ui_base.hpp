@@ -8,7 +8,6 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
-#include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
 #include <gtkmm/switch.h>
@@ -49,14 +48,11 @@ class PluginUiBase {
   Gtk::Button* reset_button = nullptr;
   Gtk::Switch* enable = nullptr;
   Gtk::Box* controls = nullptr;
-  Gtk::Image* img_state = nullptr;
 
   Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
-
-  bool input_saturated = false;
 
   std::vector<sigc::connection> connections;
 
