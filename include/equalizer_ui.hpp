@@ -3,6 +3,29 @@
 
 #include "plugin_ui_base.hpp"
 
+enum FilterType : const unsigned int {
+  PEAKING = 1,
+  LOW_PASS = 1 << 1,
+  LOW_PASS_Q = 1 << 2,
+  HIGH_PASS = 1 << 3,
+  HIGH_PASS_Q = 1 << 4,
+  BAND_PASS = 1 << 5,
+  LOW_SHELF = 1 << 6,
+  LOW_SHELF_xdB = 1 << 7,
+  HIGH_SHELF = 1 << 8,
+  HIGH_SHELF_xdB = 1 << 9,
+  NOTCH = 1 << 10,
+  ALL_PASS = 1 << 11
+};
+
+struct ImportedBand {
+  unsigned int type;
+  float freq;
+  float gain;
+  float quality_factor;
+  float slope_dB;
+};
+
 class EqualizerUi : public Gtk::Grid, public PluginUiBase {
  public:
   EqualizerUi(BaseObjectType* cobject,
@@ -56,7 +79,15 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_import_apo_preset_clicked();
 
+  bool parse_apo_filter(const std::string& line, struct ImportedBand& filter);
+
   void import_apo_preset(const std::string& file_path);
+
+  std::unordered_map<std::string, FilterType> const FilterTypeMap = {
+      {"PK", FilterType::PEAKING},         {"LP", FilterType::LOW_PASS},       {"LPQ", FilterType::LOW_PASS_Q},
+      {"HP", FilterType::HIGH_PASS},       {"HPQ", FilterType::HIGH_PASS_Q},   {"BP", FilterType::BAND_PASS},
+      {"LS", FilterType::LOW_SHELF},       {"LSC", FilterType::LOW_SHELF_xdB}, {"HS", FilterType::HIGH_SHELF},
+      {"HSC", FilterType::HIGH_SHELF_xdB}, {"NO", FilterType::NOTCH},          {"AP", FilterType::ALL_PASS}};
 };
 
 #endif
