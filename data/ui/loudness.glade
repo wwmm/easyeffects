@@ -89,7 +89,7 @@
             <property name="can_focus">False</property>
             <property name="halign">start</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Loudness</property>
+            <property name="label" translatable="yes">Loudness Compensator</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -220,13 +220,13 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <items>
-                      <item translatable="yes">256</item>
-                      <item translatable="yes">512</item>
-                      <item translatable="yes">1024</item>
-                      <item translatable="yes">2048</item>
-                      <item translatable="yes">4096</item>
-                      <item translatable="yes">8192</item>
-                      <item translatable="yes">16384</item>
+                      <item>256</item>
+                      <item>512</item>
+                      <item>1024</item>
+                      <item>2048</item>
+                      <item>4096</item>
+                      <item>8192</item>
+                      <item>16384</item>
                     </items>
                   </object>
                   <packing>
