@@ -144,26 +144,15 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
             <property name="row_spacing">6</property>
-            <property name="column_spacing">60</property>
+            <property name="column_spacing">8</property>
+            <property name="column_homogeneous">True</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">FFT Size</property>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="halign">center</property>
+                <property name="valign">center</property>
                 <property name="label" translatable="yes">Standard</property>
               </object>
               <packing>
@@ -172,30 +161,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkComboBoxText" id="fft_size">
+              <object class="GtkComboBoxText" id="standard">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <items>
-                  <item translatable="yes">256</item>
-                  <item translatable="yes">512</item>
-                  <item translatable="yes">1024</item>
-                  <item translatable="yes">2048</item>
-                  <item translatable="yes">4096</item>
-                  <item translatable="yes">8192</item>
-                  <item translatable="yes">16384</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="standard">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
                 <items>
                   <item translatable="yes">Flat</item>
                   <item translatable="yes">ISO226-2003</item>
@@ -214,12 +184,62 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-                <property name="halign">center</property>
+                <property name="halign">start</property>
                 <property name="valign">center</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
                 <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">6</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="label" translatable="yes">FFT Size</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkComboBoxText" id="fft_size">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <items>
+                      <item translatable="yes">256</item>
+                      <item translatable="yes">512</item>
+                      <item translatable="yes">1024</item>
+                      <item translatable="yes">2048</item>
+                      <item translatable="yes">4096</item>
+                      <item translatable="yes">8192</item>
+                      <item translatable="yes">16384</item>
+                    </items>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+                <property name="height">2</property>
               </packing>
             </child>
             <child>
@@ -318,6 +338,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_top">20</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">

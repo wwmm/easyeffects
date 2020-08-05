@@ -502,7 +502,7 @@
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="row_spacing">36</property>
+                    <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkToggleButton" id="listen">
                         <property name="label" translatable="yes">Listen</property>
@@ -965,6 +965,7 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_top">20</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
