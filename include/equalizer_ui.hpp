@@ -80,7 +80,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_import_apo_preset_clicked();
 
-  bool parse_apo_filter(const std::string& line, struct ImportedBand& filter);
+  auto parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool;
 
   void import_apo_preset(const std::string& file_path);
 
