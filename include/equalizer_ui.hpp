@@ -1,6 +1,7 @@
 #ifndef EQUALIZER_UI_HPP
 #define EQUALIZER_UI_HPP
 
+#include <unordered_map>
 #include "plugin_ui_base.hpp"
 
 enum FilterType : const unsigned int {
