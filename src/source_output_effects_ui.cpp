@@ -128,7 +128,7 @@ auto SourceOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SourceOutputEffects*
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
 
-  SourceOutputEffectsUi* ui;
+  SourceOutputEffectsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_box", ui, settings, soe_ptr);
 
