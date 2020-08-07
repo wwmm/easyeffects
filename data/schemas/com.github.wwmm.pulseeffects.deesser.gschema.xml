@@ -60,6 +60,7 @@
             <default>12</default>
         </key>
         <key name="f2-q" type="d">
+            <range min="0.1" max="100"/>
             <default>1</default>
         </key>
         <key name="sc-listen" type="b">

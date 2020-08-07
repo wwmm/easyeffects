@@ -7,7 +7,7 @@
     <property name="upper">18000</property>
     <property name="value">6000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="f1_level">
     <property name="lower">-24</property>
@@ -22,7 +22,7 @@
     <property name="upper">18000</property>
     <property name="value">4500</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">10</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="f2_level">
     <property name="lower">-24</property>
@@ -435,7 +435,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">f2_q</property>
-                <property name="digits">2</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -467,7 +467,6 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">laxity</property>
-                <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
