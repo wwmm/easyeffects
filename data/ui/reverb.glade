@@ -14,13 +14,13 @@
     <property name="upper">20000</property>
     <property name="value">300</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="decay_time">
     <property name="lower">0.4</property>
     <property name="upper">15</property>
     <property name="value">1.5</property>
-    <property name="step_increment">0.1</property>
+    <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="diffusion">
@@ -40,7 +40,7 @@
     <property name="upper">20000</property>
     <property name="value">5000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -159,8 +159,8 @@
   </object>
   <object class="GtkAdjustment" id="predelay">
     <property name="upper">500</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkPopover" id="presets">
     <property name="can_focus">False</property>
@@ -279,7 +279,7 @@
     <property name="upper">20000</property>
     <property name="value">5000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
@@ -344,6 +344,7 @@
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">predelay</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -389,7 +390,7 @@
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">decay_time</property>
-                    <property name="digits">1</property>
+                    <property name="digits">2</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
