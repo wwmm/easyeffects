@@ -140,7 +140,7 @@ void LoudnessUi::reset() {
 
     update_default_key<double>(settings, "input", section + ".loudness.input");
 
-    update_default_key<double>(settings, "output", section + ".loudness.output");
+    update_default_key<double>(settings, "volume", section + ".loudness.volume");
 
     util::debug(name + " plugin: successfully reset");
   } catch (std::exception& e) {
