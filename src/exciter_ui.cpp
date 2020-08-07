@@ -12,6 +12,7 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   builder->get_widget("harmonics_levelbar", harmonics_levelbar);
   builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
   builder->get_widget("ceil_active", ceil_active);
+  builder->get_widget("ceil_freq", ceil_freq);
   builder->get_widget("listen", listen);
   builder->get_widget("plugin_reset", reset_button);
 
@@ -37,6 +38,7 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("listen", listen, "active", flag);
   settings->bind("ceil-active", ceil_active, "active", flag);
+  settings->bind("ceil-active", ceil_freq, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
 
   // reset plugin
   reset_button->signal_clicked().connect([=]() { reset(); });

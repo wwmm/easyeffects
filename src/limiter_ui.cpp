@@ -11,6 +11,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   builder->get_widget("auto-level", auto_level);
   builder->get_widget("asc", asc);
+  builder->get_widget("asc_grid", asc_grid);
   builder->get_widget("attenuation", attenuation);
   builder->get_widget("attenuation_label", attenuation_label);
   builder->get_widget("plugin_reset", reset_button);
@@ -36,6 +37,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("oversampling", oversampling.get(), "value", flag);
   settings->bind("auto-level", auto_level, "active", flag);
   settings->bind("asc", asc, "active", flag);
+  settings->bind("asc", asc_grid, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
   settings->bind("asc-level", asc_level.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
 

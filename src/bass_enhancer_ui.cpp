@@ -12,6 +12,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   builder->get_widget("harmonics_levelbar", harmonics_levelbar);
   builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
   builder->get_widget("floor_active", floor_active);
+  builder->get_widget("floor_freq", floor_freq);
   builder->get_widget("listen", listen);
   builder->get_widget("plugin_reset", reset_button);
 
@@ -37,6 +38,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain.get(), "value", flag);
   settings->bind("listen", listen, "active", flag);
   settings->bind("floor-active", floor_active, "active", flag);
+  settings->bind("floor-active", floor_freq, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
 
   // reset plugin
   reset_button->signal_clicked().connect([=]() { reset(); });

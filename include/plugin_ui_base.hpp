@@ -17,6 +17,7 @@
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/spinbutton.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/stackswitcher.h>
 #include <gtkmm/switch.h>
