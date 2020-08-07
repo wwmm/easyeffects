@@ -336,7 +336,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_w = [=]() {
       auto q = band_quality->get_value();
 
-      if (q > 0) {
+      if (q > 0.0) {
         auto f = band_frequency->get_value();
 
         std::ostringstream msg;
@@ -355,7 +355,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 
       std::ostringstream msg;
 
-      if (f > 1000) {
+      if (f > 1000.0) {
         msg.precision(1);
         msg << std::fixed << f / 1000 << "kHz";
       } else {
@@ -460,7 +460,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto update_w = [=]() {
       auto q = band_quality->get_value();
 
-      if (q > 0) {
+      if (q > 0.0) {
         auto f = band_frequency->get_value();
 
         std::ostringstream msg;
@@ -479,7 +479,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 
       std::ostringstream msg;
 
-      if (f > 1000) {
+      if (f > 1000.0) {
         msg.precision(1);
         msg << std::fixed << f / 1000 << "kHz";
       } else {
@@ -657,7 +657,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain", root.get<double>("equalizer.output-gain"));
 
   auto config_band = [&](auto cfg, auto n) {
-    double q = 0;
+    double q = 0.0;
 
     auto f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
 
