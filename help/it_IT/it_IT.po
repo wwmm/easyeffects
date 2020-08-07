@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-03 14:09-0300\n"
+"POT-Creation-Date: 2020-08-07 10:41+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -115,7 +115,7 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #. (itstool) path: section/title
 #: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
-#: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
+#: C/limiter.page:82 C/loudness.page:65 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:76
@@ -734,7 +734,7 @@ msgid ""
 "gain reduction stops."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve salire oltre la soglia "
-"affinchè la riduzione del guadagno venga terminata."
+"affinché la riduzione del guadagno venga terminata."
 
 #. (itstool) path: item/p
 #: C/gate.page:31
@@ -743,7 +743,7 @@ msgid ""
 "reduction is increased again."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve scendere sotto la soglia "
-"affinchè la riduzione venga incrementata ulteriormente."
+"affinché la riduzione venga incrementata ulteriormente."
 
 #. (itstool) path: item/p
 #: C/gate.page:40
@@ -961,56 +961,89 @@ msgstr ""
 "più elevati."
 
 #. (itstool) path: page/title
-#. (itstool) path: title/em
-#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:58
-msgid "Loudness"
-msgstr "Loudness"
+#: C/loudness.page:9
+msgid "Loudness Compensator"
+msgstr "Bilanciamento Loudness"
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
 msgid ""
-"PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to "
-"low frequencies when listening at low volume. This plug-in is based on the "
-"Stevens-Davis equal loudness contours and allows the bass level to be "
-"adjusted to simulate or correct for this effect."
+"PulseEffects uses the loudness compensator from Linux Studio Plugins which "
+"applies equal loudness contour corrections to the input signal. This is a "
+"measure of sound pressure level (SPL), over the frequency spectrum, for "
+"which a listener perceives a constant loudness when presented with pure "
+"steady tones."
 msgstr ""
-"PulseEffects utilizza il plugin Loudness di MDA.LV2. L'orecchio è meno "
-"sensibile alle basse frequenze quando si ascolta a basso volume. Questo "
-"plugin si basa sulla \"equal loudness contours\" di Stevens-Davis e consente "
-"di regolare il livello dei bassi per simulare o correggere questo effetto."
-
-#. (itstool) path: item/p
-#: C/loudness.page:21
-msgid ""
-"Source level relative to listening level (based on a 100 dB SPL maximum "
-"level)."
-msgstr ""
-"Livello sorgente relativo al livello di ascolto (basato su un livello "
-"massimo di 100 dB SPL)."
+"PulseEffects usa il plugin di bilanciamento della Loudness sviluppato da "
+"Linux Studio Plugins che applica la correzione \"equal loudness contour\" al "
+"segnale in ingresso. Si tratta della misura del livello di pressione del "
+"suono effettuata sull'intero spetto di frequenze affinché l'ascoltatore "
+"percepisca un livello costante di volume."
 
 #. (itstool) path: title/em
-#: C/loudness.page:27
+#: C/loudness.page:20
+msgid "Input"
+msgstr "Ingresso"
+
+#. (itstool) path: item/p
+#: C/loudness.page:22
+msgid ""
+"The input gain settings, allows to adjust the level of the input signal to "
+"the desired level."
+msgstr ""
+"Il guadagno in ingresso, permette di regolare il livello del segnale in "
+"input al valore desiderato."
+
+#. (itstool) path: title/em
+#: C/loudness.page:29
 msgid "Output"
 msgstr "Uscita"
 
 #. (itstool) path: item/p
-#: C/loudness.page:29
-msgid "Change output level."
-msgstr "Cambia livello di uscita."
+#: C/loudness.page:31
+msgid ""
+"The output volume of the signal with applied equal loudness contour, "
+"controls the loudness of the 1 kHz pure sine wave."
+msgstr ""
+"Il volume in uscita del segnale con la equal loudness contour applicata, "
+"regola la Loudness di una onda sinusoidale pura a 1 kHz."
 
 #. (itstool) path: title/em
-#: C/loudness.page:35
-msgid "Link"
-msgstr "Link"
+#: C/loudness.page:38
+msgid "Standard"
+msgstr "Standard"
 
 #. (itstool) path: item/p
-#: C/loudness.page:37
+#: C/loudness.page:40
+msgid "Allows to select different equal loudness contour standards."
+msgstr "Permette di selezionare differenti standard di equal loudness contour."
+
+#. (itstool) path: title/em
+#: C/loudness.page:46
+msgid "FFT Size"
+msgstr "Dimensione FFT"
+
+#. (itstool) path: item/p
+#: C/loudness.page:48
 msgid ""
-"Automatically adjusts Output to maintain a consistent tonal balance at all "
-"levels."
+"Allows to select size of the fast Fourier transform frame used for the "
+"processing. The larger FFT frame is, the more precize the curve is "
+"approximated and the more latency the plugin introduces"
 msgstr ""
-"Regola automaticamente l'uscita per mantenere un bilanciamento tonale "
-"coerente a tutti i livelli."
+
+#. (itstool) path: title/em
+#: C/loudness.page:56
+msgid "Reference Signal"
+msgstr "Segnale di Riferimento"
+
+#. (itstool) path: item/p
+#: C/loudness.page:58
+msgid ""
+"Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency "
+"for callibration purposes."
+msgstr ""
+"Abilita l'onda sinusoidale di riferimento con ampiezza 0 dBFS e frequenza "
+"1000 Hz a scopo di calibrazione."
 
 #. (itstool) path: page/title
 #: C/multibandcompressor.page:9
@@ -1040,7 +1073,7 @@ msgid ""
 "gain reduction starts."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve rimanere oltre la soglia "
-"affinchè la compressione venga applicata interamente."
+"affinché la compressione venga applicata interamente."
 
 #. (itstool) path: item/p
 #: C/multibandcompressor.page:31 C/multibandgate.page:31
@@ -1049,7 +1082,7 @@ msgid ""
 "reduction is decreased again."
 msgstr ""
 "Valore in millisecondi per cui il segnale deve rimanere sotto la soglia "
-"affinchè la compressione venga terminata."
+"affinché la compressione venga terminata."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
@@ -1207,7 +1240,7 @@ msgstr "Tempo di Decadimento"
 #. (itstool) path: item/p
 #: C/reverb.page:34
 msgid "Time it takes for reverberation to fade out."
-msgstr "Tempo necessario affinchè l'effetto di riverbero scompaia."
+msgstr "Tempo necessario affinché l'effetto di riverbero scompaia."
 
 #. (itstool) path: item/p
 #: C/reverb.page:42
@@ -2646,14 +2679,15 @@ msgstr "Avviso di Saturazione"
 #. (itstool) path: page/p
 #: C/saturated.page:12
 msgid ""
-"If the audio signal arriving at the plugin input is too high very unpleasent "
+"If the audio signal coming out from the pipeline is too high very unpleasent "
 "noises will be produced. In case this happens the warning in the image above "
-"is shown so that the user can reduce the audio level."
+"is shown so that the user can reduce the audio level using the limiter or "
+"the maximizer."
 msgstr ""
-"Se il livello del segnale audio diretto in ingresso al plugin è troppo alto, "
-"verrà prodotta una distorsione del suono molto spiacevole. Quando ciò "
-"accade, l'avviso nell'immagine sopra è mostrato in modo che l'utente possa "
-"ridurre il livello dell'audio."
+"Se il livello del segnale in uscita dalla pipeline è troppo alto, verrà "
+"prodotta una distorsione del suono molto spiacevole. Quando ciò accade, "
+"viene mostrato l'avviso nell'immagine sopra in modo che l'utente possa "
+"ridurre il livello dell'audio usando il limitatore o il maximizer."
 
 #. (itstool) path: page/title
 #: C/autogain.page:5
@@ -2778,6 +2812,11 @@ msgstr ""
 "intensità acustica momentanea è inferiore a questo livello, la modifica del "
 "guadagno in uscita viene disattivata."
 
+#. (itstool) path: title/em
+#: C/autogain.page:58
+msgid "Loudness"
+msgstr "Loudness"
+
 #. (itstool) path: item/p
 #: C/autogain.page:60
 msgid ""
@@ -2806,7 +2845,7 @@ msgid ""
 "gain to bring its loudness to the target value."
 msgstr ""
 "Valore del guadagno in uscita. Il segnale di ingresso verrà moltiplicato per "
-"questo valore di correzione del guadagno affinche la sua Loudness venga "
+"questo valore di correzione del guadagno affinché la sua Loudness venga "
 "portata al valore impostato come Livello."
 
 #. (itstool) path: page/title
