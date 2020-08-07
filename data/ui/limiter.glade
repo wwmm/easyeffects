@@ -6,7 +6,7 @@
     <property name="upper">1</property>
     <property name="value">0.5</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -128,7 +128,7 @@
     <property name="lower">0.1</property>
     <property name="upper">10</property>
     <property name="value">5</property>
-    <property name="step_increment">0.1</property>
+    <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
@@ -148,8 +148,8 @@
     <property name="lower">1</property>
     <property name="upper">1000</property>
     <property name="value">50</property>
-    <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

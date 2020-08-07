@@ -169,7 +169,6 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">band_frequency</property>
-                <property name="digits">2</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
