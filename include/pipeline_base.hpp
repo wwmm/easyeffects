@@ -15,6 +15,7 @@
 #include "pulse_manager.hpp"
 #include "realtime_kit.hpp"
 #include "reverb.hpp"
+#include "stereo_tools.hpp"
 
 class PipelineBase {
  public:
@@ -30,12 +31,11 @@ class PipelineBase {
 
   PulseManager* pm = nullptr;
 
-  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr,
-             *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr,
-             *adapter = nullptr, *spectrum = nullptr, *spectrum_bin = nullptr,
-             *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
-             *global_level_meter = nullptr, *global_level_meter_bin = nullptr,
-             *level_meter_identity_in = nullptr, *level_meter_identity_out = nullptr;
+  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *effects_bin = nullptr,
+             *identity_in = nullptr, *identity_out = nullptr, *adapter = nullptr, *spectrum = nullptr,
+             *spectrum_bin = nullptr, *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
+             *global_level_meter = nullptr, *global_level_meter_bin = nullptr, *level_meter_identity_in = nullptr,
+             *level_meter_identity_out = nullptr;
 
   GstBus* bus = nullptr;
 
@@ -52,6 +52,7 @@ class PipelineBase {
   std::unique_ptr<Gate> gate;
   std::unique_ptr<Deesser> deesser;
   std::unique_ptr<Pitch> pitch;
+  std::unique_ptr<StereoTools> stereo_tools;
 
   std::unique_ptr<RealtimeKit> rtkit;
 

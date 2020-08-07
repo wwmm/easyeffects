@@ -8,6 +8,7 @@
 - New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
   applets to hide our window.
 - Initial support to Equalizer APO presets.
+- The Stereo Tools plugin can now be used when applying effects to microphone signals.
 
 ### Note to packagers
 

@@ -14,7 +14,6 @@
 #include "multiband_gate.hpp"
 #include "pipeline_base.hpp"
 #include "pulse_manager.hpp"
-#include "stereo_tools.hpp"
 
 class SinkInputEffects : public PipelineBase {
  public:
@@ -32,7 +31,6 @@ class SinkInputEffects : public PipelineBase {
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<Loudness> loudness;
   std::unique_ptr<MultibandGate> multiband_gate;
-  std::unique_ptr<StereoTools> stereo_tools;
   std::unique_ptr<Convolver> convolver;
   std::unique_ptr<Crystalizer> crystalizer;
   std::unique_ptr<AutoGain> autogain;

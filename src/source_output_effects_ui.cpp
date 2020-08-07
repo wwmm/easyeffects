@@ -19,6 +19,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   auto b_multiband_compressor =
       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   auto b_multiband_gate = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
+  auto b_stereo_tools = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.glade");
 
   b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
                                 "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/");
@@ -57,6 +58,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui, "com.github.wwmm.pulseeffects.multibandgate",
                                        "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/");
 
+  b_stereo_tools->get_widget_derived("widgets_grid", stereo_tools_ui, "com.github.wwmm.pulseeffects.stereotools",
+                                     "/com/github/wwmm/pulseeffects/sourceoutputs/stereotools/");
+
   // set preset type property inside user interfaces to be intepreted as "input"
 
   limiter_ui->preset_type = PresetType::input;
@@ -84,6 +88,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   stack->add(*webrtc_ui, webrtc_ui->name);
   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
+  stack->add(*stereo_tools_ui, stereo_tools_ui->name);
 
   // populate listbox
 
@@ -98,6 +103,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(webrtc_ui);
   add_to_listbox(multiband_compressor_ui);
   add_to_listbox(multiband_gate_ui);
+  add_to_listbox(stereo_tools_ui);
 
   level_meters_connections();
   up_down_connections();
@@ -288,6 +294,13 @@ void SourceOutputEffectsUi::level_meters_connections() {
       soe->multiband_gate->gating2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
   connections.emplace_back(
       soe->multiband_gate->gating3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
+
+  // stereo_tools level meters connections
+
+  connections.emplace_back(
+      soe->stereo_tools->input_level.connect(sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level)));
+  connections.emplace_back(
+      soe->stereo_tools->output_level.connect(sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level)));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -358,4 +371,7 @@ void SourceOutputEffectsUi::up_down_connections() {
   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_gate_ui); }));
   connections.emplace_back(
       multiband_gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(multiband_gate_ui); }));
+
+  connections.emplace_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=]() { on_up(stereo_tools_ui); }));
+  connections.emplace_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=]() { on_down(stereo_tools_ui); }));
 }

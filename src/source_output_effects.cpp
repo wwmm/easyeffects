@@ -122,6 +122,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
   multiband_gate = std::make_unique<MultibandGate>(log_tag, "com.github.wwmm.pulseeffects.multibandgate",
                                                    "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/");
 
+  stereo_tools = std::make_unique<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools",
+                                               "/com/github/wwmm/pulseeffects/sourceoutputs/stereotools/");
+
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));
   plugins.insert(std::make_pair(filter->name, filter->plugin));
@@ -133,6 +136,7 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
   plugins.insert(std::make_pair(webrtc->name, webrtc->plugin));
   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor->plugin));
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
+  plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
 
   add_plugins_to_pipeline();
 
@@ -146,7 +150,8 @@ SourceOutputEffects::~SourceOutputEffects() {
 void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   PipelineBase::on_app_added(app_info);
 
-  bool forbidden_app = false, success = false;
+  bool forbidden_app = false;
+  bool success = false;
   auto* blacklist = g_settings_get_strv(settings, "blacklist-in");
 
   for (std::size_t i = 0; blacklist[i] != nullptr; i++) {
