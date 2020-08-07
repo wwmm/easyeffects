@@ -2,7 +2,9 @@
 
 StereoToolsPreset::StereoToolsPreset()
     : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.stereotools",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/")) {}
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/")),
+      input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.stereotools",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/stereotools/")) {}
 
 void StereoToolsPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
@@ -91,11 +93,15 @@ void StereoToolsPreset::load(const boost::property_tree::ptree& root,
 void StereoToolsPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
   }
 }
 
 void StereoToolsPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
   }
 }
