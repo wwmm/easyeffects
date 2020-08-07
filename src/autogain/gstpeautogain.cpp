@@ -430,7 +430,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
   bool playing_silence = (peautogain->momentary < peautogain->relative && peautogain->detect_silence) ? true : false;
 
-  if (peautogain->relative > -70 && !failed && !playing_silence) {
+  if (peautogain->relative > -70.0f && !failed && !playing_silence) {
     double peak_L, peak_R;
 
     if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {

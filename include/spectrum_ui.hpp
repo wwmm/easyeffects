@@ -33,7 +33,7 @@ class SpectrumUi : public Gtk::Grid {
   std::vector<sigc::connection> connections;
 
   bool mouse_inside = false;
-  double mouse_intensity = 0, mouse_freq = 0;
+  double mouse_intensity = 0.0, mouse_freq = 0.0;
   std::vector<float> spectrum_mag;
 
   auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;

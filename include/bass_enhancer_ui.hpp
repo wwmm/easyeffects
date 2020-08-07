@@ -24,6 +24,7 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::LevelBar* harmonics_levelbar = nullptr;
   Gtk::Label* harmonics_levelbar_label = nullptr;
+  Gtk::SpinButton* floor_freq = nullptr;
   Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr;
 };
 

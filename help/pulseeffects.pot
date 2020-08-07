@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-03 14:09-0300\n"
+"POT-Creation-Date: 2020-08-07 10:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr ""
 #: C/gate.page:96
 #: C/delay.page:33
 #: C/limiter.page:82
-#: C/loudness.page:44
+#: C/loudness.page:65
 #: C/multibandcompressor.page:128
 #: C/multibandgate.page:136
 #: C/reverb.page:97
@@ -812,41 +812,63 @@ msgid "Select how much the release time is affected by ASC, 0 means nearly no ch
 msgstr ""
 
 #. (itstool) path: page/title
-#. (itstool) path: title/em
 #: C/loudness.page:9
-#: C/loudness.page:19
-#: C/autogain.page:58
-msgid "Loudness"
+msgid "Loudness Compensator"
 msgstr ""
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
-msgid "PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to low frequencies when listening at low volume. This plug-in is based on the Stevens-Davis equal loudness contours and allows the bass level to be adjusted to simulate or correct for this effect."
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/loudness.page:21
-msgid "Source level relative to listening level (based on a 100 dB SPL maximum level)."
+msgid "PulseEffects uses the loudness compensator from Linux Studio Plugins which applies equal loudness contour corrections to the input signal. This is a measure of sound pressure level (SPL), over the frequency spectrum, for which a listener perceives a constant loudness when presented with pure steady tones."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/loudness.page:27
+#: C/loudness.page:20
+msgid "Input"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/loudness.page:22
+msgid "The input gain settings, allows to adjust the level of the input signal to the desired level."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:29
 msgid "Output"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/loudness.page:29
-msgid "Change output level."
+#: C/loudness.page:31
+msgid "The output volume of the signal with applied equal loudness contour, controls the loudness of the 1 kHz pure sine wave."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/loudness.page:35
-msgid "Link"
+#: C/loudness.page:38
+msgid "Standard"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/loudness.page:37
-msgid "Automatically adjusts Output to maintain a consistent tonal balance at all levels."
+#: C/loudness.page:40
+msgid "Allows to select different equal loudness contour standards."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:46
+msgid "FFT Size"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/loudness.page:48
+msgid "Allows to select size of the fast Fourier transform frame used for the processing. The larger FFT frame is, the more precize the curve is approximated and the more latency the plugin introduces"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:56
+msgid "Reference Signal"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/loudness.page:58
+msgid "Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency for callibration purposes."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -2118,7 +2140,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/saturated.page:12
-msgid "If the audio signal arriving at the plugin input is too high very unpleasent noises will be produced. In case this happens the warning in the image above is shown so that the user can reduce the audio level."
+msgid "If the audio signal coming out from the pipeline is too high very unpleasent noises will be produced. In case this happens the warning in the image above is shown so that the user can reduce the audio level using the limiter or the maximizer."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -2204,6 +2226,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/autogain.page:54
 msgid "Relative threshold. It is used to detect silence. Whenever the momentary term is below this threshold modifications to the output gain will be disabled."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:58
+msgid "Loudness"
 msgstr ""
 
 #. (itstool) path: item/p

@@ -122,7 +122,7 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   // saturation icon notification
 
-  if (left > 0 || right > 0) {
+  if (left > 0.0 || right > 0.0) {
     saturation_icon->set_visible(true);
   } else {
     saturation_icon->set_visible(false);
@@ -130,7 +130,7 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   // right channel
 
-  if (left >= -99) {
+  if (left >= -99.0) {
     global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
   } else {
     global_output_level_left->set_text("-99");
@@ -138,7 +138,7 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   // left channel
 
-  if (right >= -99) {
+  if (right >= -99.0) {
     global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
   } else {
     global_output_level_right->set_text("-99");

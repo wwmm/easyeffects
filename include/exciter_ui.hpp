@@ -24,6 +24,7 @@ class ExciterUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::LevelBar* harmonics_levelbar = nullptr;
   Gtk::Label* harmonics_levelbar_label = nullptr;
+  Gtk::SpinButton* ceil_freq = nullptr;
   Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
 };
 

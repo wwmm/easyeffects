@@ -17,6 +17,7 @@
 #include <gtkmm/menubutton.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/scrolledwindow.h>
+#include <gtkmm/spinbutton.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/stackswitcher.h>
 #include <gtkmm/switch.h>
@@ -135,7 +136,7 @@ class PluginUiBase {
     auto left_db = util::linear_to_db(left);
     auto right_db = util::linear_to_db(right);
 
-    if (left_db >= -99) {
+    if (left_db >= -99.0f) {
       w_left->set_value(left);
       w_left_label->set_text(level_to_str(left_db, 0));
     } else {
@@ -143,7 +144,7 @@ class PluginUiBase {
       w_left_label->set_text("-99");
     }
 
-    if (right_db >= -99) {
+    if (right_db >= -99.0f) {
       w_right->set_value(right);
       w_right_label->set_text(level_to_str(right_db, 0));
     } else {
@@ -161,12 +162,12 @@ class PluginUiBase {
     auto left = peak[0];
     auto right = peak[1];
 
-    if (left >= -99) {
+    if (left >= -99.0) {
       auto db_value = util::db_to_linear(left);
 
-      if (db_value < 0) {
+      if (db_value < 0.0f) {
         db_value = 0;
-      } else if (db_value > 1) {
+      } else if (db_value > 1.0f) {
         db_value = 1;
       }
 
@@ -177,12 +178,12 @@ class PluginUiBase {
       w_left_label->set_text("-99");
     }
 
-    if (right >= -99) {
+    if (right >= -99.0) {
       auto db_value = util::db_to_linear(right);
 
-      if (db_value < 0) {
+      if (db_value < 0.0f) {
         db_value = 0;
-      } else if (db_value > 1) {
+      } else if (db_value > 1.0f) {
         db_value = 1;
       }
 
