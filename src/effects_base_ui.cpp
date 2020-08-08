@@ -1,7 +1,7 @@
 #include "effects_base_ui.hpp"
-#include "plugin_ui_base.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/button.h>
+#include "plugin_ui_base.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
@@ -27,7 +27,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // setting up plugin list box
 
-  auto row = Gtk::manage(new Gtk::ListBoxRow());
+  auto* row = Gtk::manage(new Gtk::ListBoxRow());
 
   row->set_name("applications");
   row->set_margin_top(6);
@@ -69,7 +69,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
     auto n = it - apps_list.begin();
 
     if (apps_list[n]->app_info->index == idx) {
-      auto appui = apps_list[n];
+      auto* appui = apps_list[n];
 
       apps_box->remove(*appui);
 
@@ -118,7 +118,8 @@ auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2
 }
 
 void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
-  auto left = peak[0], right = peak[1];
+  auto left = peak[0];
+  auto right = peak[1];
 
   // saturation icon notification
 

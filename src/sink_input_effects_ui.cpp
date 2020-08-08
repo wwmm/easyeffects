@@ -93,8 +93,6 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.delay",
                               "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
 
-  // preset_type inside user interfaces already initialized to "output"; nothing to be done
-
   // add to stack
 
   stack->add(*limiter_ui, limiter_ui->name);

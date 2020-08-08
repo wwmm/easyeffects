@@ -1,4 +1,4 @@
 Checks: 'boost-*,bugprone-*,cert-*,cppcoreguidelines-*,modernize-*,performance-*,readability-*,
 -clang-analyzer-osx*,-cppcoreguidelines-pro-type-cstyle-cast,-cppcoreguidelines-pro-type-vararg,
 -cppcoreguidelines-non-private-member-variables-in-classes,-cppcoreguidelines-avoid-magic-numbers,
--readability-magic-numbers'
+-readability-magic-numbers,-cppcoreguidelines-owning-memory'

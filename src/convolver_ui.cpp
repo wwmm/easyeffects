@@ -6,7 +6,7 @@
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <sndfile.hh>
 #include "gtkmm/dialog.h"
-#include "gtkmm/window.h"
+// #include "gtkmm/window.h"
 #include "sigc++/functors/ptr_fun.h"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
@@ -233,10 +233,10 @@ void ConvolverUi::populate_irs_listbox() {
   for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Button* remove_btn;
-    Gtk::Button* apply_btn;
-    Gtk::Label* label;
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Button* remove_btn = nullptr;
+    Gtk::Button* apply_btn = nullptr;
+    Gtk::Label* label = nullptr;
 
     b->get_widget("irs_row", row);
     b->get_widget("remove", remove_btn);
@@ -275,8 +275,8 @@ void ConvolverUi::on_irs_menu_button_clicked() {
 void ConvolverUi::on_import_irs_clicked() {
   auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
 
-  auto dialog = Gtk::FileChooserNative::create(_("Import Impulse File"), *main_window,
-                                               Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN);
+  auto dialog = Gtk::FileChooserNative::create(
+      _("Import Impulse File"), *main_window, Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
 
@@ -288,7 +288,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
   dialog->signal_response().connect([=](auto response_id) {
     switch (response_id) {
-      case Gtk::RESPONSE_ACCEPT: {
+      case Gtk::ResponseType::RESPONSE_ACCEPT: {
         import_irs_file(dialog->get_file()->get_path());
 
         populate_irs_listbox();

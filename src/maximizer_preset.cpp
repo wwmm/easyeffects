@@ -2,7 +2,9 @@
 
 MaximizerPreset::MaximizerPreset()
     : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/")) {}
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/")),
+      input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/")) {}
 
 void MaximizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -31,11 +33,15 @@ void MaximizerPreset::load(const boost::property_tree::ptree& root,
 void MaximizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
+  } else {
+    save(root, "input", input_settings);
   }
 }
 
 void MaximizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
+  } else {
+    load(root, "input", input_settings);
   }
 }

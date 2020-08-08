@@ -5,16 +5,16 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/eventbox.h>
+#include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
-#include <gtkmm/label.h>
 #include <memory>
 #include <vector>
-#include "pulse_manager.hpp"
 #include "app_info_ui.hpp"
-#include "spectrum_ui.hpp"
 #include "blacklist_settings_ui.hpp"
 #include "preset_type.hpp"
+#include "pulse_manager.hpp"
+#include "spectrum_ui.hpp"
 #include "util.hpp"
 
 class EffectsBaseUi {
@@ -50,8 +50,8 @@ class EffectsBaseUi {
 
   template <typename T>
   void add_to_listbox(T p) {
-    auto row = Gtk::manage(new Gtk::ListBoxRow());
-    auto eventBox = Gtk::manage(new Gtk::EventBox());
+    auto* row = Gtk::manage(new Gtk::ListBoxRow());
+    auto* eventBox = Gtk::manage(new Gtk::EventBox());
 
     eventBox->add(*p->listbox_control);
 

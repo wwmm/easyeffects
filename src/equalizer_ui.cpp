@@ -1,5 +1,6 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
+#include <gtkmm/filechoosernative.h>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
@@ -795,8 +796,9 @@ void EqualizerUi::reset() {
 void EqualizerUi::on_import_apo_preset_clicked() {
   auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
 
-  auto dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), *main_window,
-                                               Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN);
+  auto dialog =
+      Gtk::FileChooserNative::create(_("Import APO Preset File"), *main_window,
+                                     Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
 
@@ -807,7 +809,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 
   dialog->signal_response().connect([=](auto response_id) {
     switch (response_id) {
-      case Gtk::RESPONSE_ACCEPT: {
+      case Gtk::ResponseType::RESPONSE_ACCEPT: {
         import_apo_preset(dialog->get_file()->get_path());
 
         break;
