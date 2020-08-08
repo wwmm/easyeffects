@@ -17,24 +17,24 @@ Audio effects for Pulseaudio applications.
 
 - Limiter
 - Auto gain
-- Expander
+- Gate
+- Multiband gate
 - Compressor
 - Multiband compressor
-- Equalizer
+- Convolver
 - Bass enhancer
 - Exciter
 - Crystalizer
-- Reverberation
-- Crossfeed
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Stereo tools
+- Reverberation
+- Equalizer
+- Expander
+- De-esser
+- Crossfeed
 - Loudness
 - Maximizer
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Pitch
-- Gate
-- Multiband gate
-- De-esser
-- Convolver
 
 ### Applications input
 
@@ -44,11 +44,11 @@ Audio effects for Pulseaudio applications.
 - Limiter
 - Compressor
 - Multiband compressor
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Equalizer
+- De-esser
 - Reverberation
 - Pitch
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
-- De-esser
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
