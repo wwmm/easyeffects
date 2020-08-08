@@ -76,12 +76,12 @@ class PipelineBase {
   static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
   void set_source_monitor_name(const std::string& name);
-  void set_output_sink_name(const std::string& name);
+  void set_output_sink_name(const std::string& name) const;
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
   void init_spectrum(const uint& sampling_rate);
-  void update_spectrum_interval(const double& value);
+  void update_spectrum_interval(const double& value) const;
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
@@ -96,7 +96,7 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> deesser_output_level;
 
  protected:
-  void set_pulseaudio_props(const std::string& props);
+  void set_pulseaudio_props(const std::string& props) const;
   void set_caps(const uint& sampling_rate);
 
   void on_app_added(const std::shared_ptr<AppInfo>& app_info);
@@ -120,7 +120,7 @@ class PipelineBase {
   void init_effects_bin();
   auto apps_want_to_play() -> bool;
 
-  auto get_required_plugin(const gchar* factoryname, const gchar* name) -> GstElement*;
+  auto get_required_plugin(const gchar* factoryname, const gchar* name) const -> GstElement*;
 };
 
 #endif
