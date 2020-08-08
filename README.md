@@ -38,10 +38,10 @@ Audio effects for Pulseaudio applications.
 
 ### Applications input
 
-- Limiter
 - Gate
 - Multiband gate
 - WebRTC
+- Limiter
 - Compressor
 - Multiband compressor
 - Filter (low-pass, high-pass, band-pass and band-reject modes)
