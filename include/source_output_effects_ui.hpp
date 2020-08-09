@@ -8,6 +8,7 @@
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
 #include "limiter_ui.hpp"
+#include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
@@ -50,6 +51,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   MultibandCompressorUi* multiband_compressor_ui = nullptr;
   MultibandGateUi* multiband_gate_ui = nullptr;
   StereoToolsUi* stereo_tools_ui = nullptr;
+  MaximizerUi* maximizer_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

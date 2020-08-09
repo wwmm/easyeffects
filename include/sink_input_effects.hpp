@@ -9,7 +9,6 @@
 #include "delay.hpp"
 #include "exciter.hpp"
 #include "loudness.hpp"
-#include "maximizer.hpp"
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "pipeline_base.hpp"
@@ -27,7 +26,6 @@ class SinkInputEffects : public PipelineBase {
   std::unique_ptr<BassEnhancer> bass_enhancer;
   std::unique_ptr<Exciter> exciter;
   std::unique_ptr<Crossfeed> crossfeed;
-  std::unique_ptr<Maximizer> maximizer;
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<Loudness> loudness;
   std::unique_ptr<MultibandGate> multiband_gate;
@@ -42,8 +40,6 @@ class SinkInputEffects : public PipelineBase {
   sigc::signal<void, std::array<double, 2>> exciter_output_level;
   sigc::signal<void, std::array<double, 2>> crossfeed_input_level;
   sigc::signal<void, std::array<double, 2>> crossfeed_output_level;
-  sigc::signal<void, std::array<double, 2>> maximizer_input_level;
-  sigc::signal<void, std::array<double, 2>> maximizer_output_level;
   sigc::signal<void, std::array<double, 2>> loudness_input_level;
   sigc::signal<void, std::array<double, 2>> loudness_output_level;
   sigc::signal<void, std::array<double, 2>> convolver_input_level;

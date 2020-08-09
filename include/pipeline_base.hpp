@@ -11,6 +11,7 @@
 #include "filter.hpp"
 #include "gate.hpp"
 #include "limiter.hpp"
+#include "maximizer.hpp"
 #include "pitch.hpp"
 #include "pulse_manager.hpp"
 #include "realtime_kit.hpp"
@@ -53,6 +54,7 @@ class PipelineBase {
   std::unique_ptr<Deesser> deesser;
   std::unique_ptr<Pitch> pitch;
   std::unique_ptr<StereoTools> stereo_tools;
+  std::unique_ptr<Maximizer> maximizer;
 
   std::unique_ptr<RealtimeKit> rtkit;
 
@@ -94,6 +96,8 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> gate_output_level;
   sigc::signal<void, std::array<double, 2>> deesser_input_level;
   sigc::signal<void, std::array<double, 2>> deesser_output_level;
+  sigc::signal<void, std::array<double, 2>> maximizer_input_level;
+  sigc::signal<void, std::array<double, 2>> maximizer_output_level;
 
  protected:
   void set_pulseaudio_props(const std::string& props) const;
