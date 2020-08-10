@@ -475,6 +475,9 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Minimum Frequency</property>
           </object>
           <packing>
@@ -500,6 +503,9 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="margin_start">30</property>
             <property name="label" translatable="yes">Maximum Frequency</property>
           </object>
           <packing>
