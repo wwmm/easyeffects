@@ -5,7 +5,7 @@
 namespace {
 
 auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Bars") == 0) {
     g_value_set_int(value, 0);
@@ -50,6 +50,8 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   get_object(builder, "exponent", exponent);
   get_object(builder, "sampling_freq", sampling_freq);
   get_object(builder, "line_width", line_width);
+  get_object(builder, "maximum_frequency", maximum_frequency);
+  get_object(builder, "minimum_frequency", minimum_frequency);
 
   // signals connection
 
@@ -106,6 +108,22 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   sampling_freq->signal_value_changed().connect(
       sigc::mem_fun(*this, &SpectrumSettingsUi::on_spectrum_sampling_freq_set), false);
 
+  minimum_frequency->signal_value_changed().connect([&]() {
+    app->sie->min_spectrum_freq = minimum_frequency->get_value();
+    app->soe->min_spectrum_freq = minimum_frequency->get_value();
+
+    app->sie->init_spectrum();
+    app->soe->init_spectrum();
+  });
+
+  maximum_frequency->signal_value_changed().connect([&]() {
+    app->sie->max_spectrum_freq = maximum_frequency->get_value();
+    app->soe->max_spectrum_freq = maximum_frequency->get_value();
+
+    app->sie->init_spectrum();
+    app->soe->init_spectrum();
+  });
+
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("show", show, "active", flag);
@@ -122,6 +140,8 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
   settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
+  settings->bind("minimum-frequency", minimum_frequency.get(), "value", flag);
+  settings->bind("maximum-frequency", maximum_frequency.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                spectrum_type_enum_to_int, int_to_spectrum_type_enum, nullptr, nullptr);
@@ -138,7 +158,7 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
 
-  SpectrumSettingsUi* ui;
+  SpectrumSettingsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_grid", ui, app);
 

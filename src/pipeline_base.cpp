@@ -174,7 +174,9 @@ void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps,
 
   gst_structure_get_int(structure, "rate", &rate);
 
-  pb->init_spectrum(rate);
+  pb->sampling_rate = rate;
+
+  pb->init_spectrum();
 
   util::debug(pb->log_tag + "sampling rate: " + std::to_string(rate) + " Hz");
 }
@@ -409,7 +411,7 @@ PipelineBase::~PipelineBase() {
 }
 
 void PipelineBase::set_caps(const uint& sampling_rate) {
-  current_rate = sampling_rate;
+  this->sampling_rate = sampling_rate;
 
   auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
 
@@ -633,7 +635,7 @@ void PipelineBase::on_app_removed(uint idx) {
 
 void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info) {
   if (sink_info->name == "PulseEffects_apps") {
-    if (sink_info->rate != current_rate) {
+    if (sink_info->rate != sampling_rate) {
       gst_element_set_state(pipeline, GST_STATE_READY);
 
       set_caps(sink_info->rate);
@@ -645,7 +647,7 @@ void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info)
 
 void PipelineBase::on_source_changed(const std::shared_ptr<mySourceInfo>& source_info) {
   if (source_info->name == "PulseEffects_mic.monitor") {
-    if (source_info->rate != current_rate) {
+    if (source_info->rate != sampling_rate) {
       gst_element_set_state(pipeline, GST_STATE_READY);
 
       set_caps(source_info->rate);
@@ -655,7 +657,7 @@ void PipelineBase::on_source_changed(const std::shared_ptr<mySourceInfo>& source
   }
 }
 
-void PipelineBase::init_spectrum(const uint& sampling_rate) {
+void PipelineBase::init_spectrum() {
   g_signal_connect(spectrum_settings, "changed::n-points", G_CALLBACK(on_spectrum_n_points_changed), this);
 
   spectrum_freqs.clear();
@@ -676,16 +678,18 @@ void PipelineBase::init_spectrum(const uint& sampling_rate) {
     }
   }
 
-  spectrum_mag_tmp.resize(spectrum_freqs.size());
+  if (!spectrum_freqs.empty()) {
+    spectrum_mag_tmp.resize(spectrum_freqs.size());
 
-  auto npoints = g_settings_get_int(spectrum_settings, "n-points");
+    auto npoints = g_settings_get_int(spectrum_settings, "n-points");
 
-  spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), npoints);
+    spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), npoints);
 
-  spectrum_mag.resize(npoints);
+    spectrum_mag.resize(npoints);
 
-  spline_f0 = spectrum_freqs[0];
-  spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+    spline_f0 = spectrum_freqs[0];
+    spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+  }
 }
 
 void PipelineBase::update_spectrum_interval(const double& value) const {

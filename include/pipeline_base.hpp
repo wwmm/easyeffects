@@ -60,6 +60,8 @@ class PipelineBase {
 
   GstClockTime state_check_timeout = 5 * GST_SECOND;
 
+  uint sampling_rate = 0;
+
   bool resizing_spectrum = false;
   uint min_spectrum_freq = 20;     // Hz
   uint max_spectrum_freq = 20000;  // Hz
@@ -82,7 +84,7 @@ class PipelineBase {
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
-  void init_spectrum(const uint& sampling_rate);
+  void init_spectrum();
   void update_spectrum_interval(const double& value) const;
 
   sigc::signal<void, std::vector<float>> new_spectrum;
@@ -111,8 +113,6 @@ class PipelineBase {
   void on_source_changed(const std::shared_ptr<mySourceInfo>& source_info);
 
  private:
-  uint current_rate = 0;
-
   GstElement* capsfilter = nullptr;
 
   std::vector<std::shared_ptr<AppInfo>> apps_list;

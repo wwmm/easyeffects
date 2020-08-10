@@ -21,7 +21,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
 
-  connections.emplace_back(settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
+  connections.emplace_back(
+      settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
 
   connections.emplace_back(settings->signal_changed("height").connect([&](auto key) {
     auto v = settings->get_int("height");
@@ -50,7 +51,7 @@ SpectrumUi::~SpectrumUi() {
 auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.glade");
 
-  SpectrumUi* ui;
+  SpectrumUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_grid", ui);
 
@@ -162,8 +163,8 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       font.set_family("Monospace");
       font.set_weight(Pango::WEIGHT_BOLD);
 
-      int text_width;
-      int text_height;
+      int text_width = 0;
+      int text_height = 0;
       auto layout = create_pango_layout(msg.str());
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
