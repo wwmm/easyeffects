@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -205,10 +205,6 @@ msgstr ""
 msgid "Target"
 msgstr "Cel"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr ""
@@ -219,11 +215,6 @@ msgstr ""
 
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
-msgstr ""
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-msgid "1"
 msgstr ""
 
 #: data/ui/autogain.glade:362
@@ -940,22 +931,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Jakość"
@@ -1534,12 +1509,12 @@ msgstr "Nadpróbkowanie"
 msgid "Line Width"
 msgstr "Szerokość"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Częstotliwość"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Częstotliwość"
@@ -1810,134 +1785,3 @@ msgstr "Ogólne"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
-
-#~ msgid "Webrtc"
-#~ msgstr "WebRTC"
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Pasma"
-
-#~ msgid "Reset Equalizer"
-#~ msgstr "Resetuj korektor"
-
-#~ msgid "pulseeffects"
-#~ msgstr "pulseeffects"
-
-#, fuzzy
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects"
-
-#, fuzzy
-#~ msgid "Split 0/1"
-#~ msgstr "Podzielony"
-
-#, fuzzy
-#~ msgid "Band 0"
-#~ msgstr "Pasma"
-
-#, fuzzy
-#~ msgid "Band 2"
-#~ msgstr "Pasma"
-
-#, fuzzy
-#~ msgid "Band 3"
-#~ msgstr "Pasma"
-
-#, fuzzy
-#~ msgid "Band 1"
-#~ msgstr "Pasma"
-
-#, fuzzy
-#~ msgid "Band 4"
-#~ msgstr "Pasma"
-
-#~ msgid "Vocal Leveller 1"
-#~ msgstr "Poziomowanie wokalu 1"
-
-#~ msgid "Vocal Leveller 2"
-#~ msgstr "Poziomowanie wokalu 2"
-
-#~ msgid "Mix"
-#~ msgstr "Miksuj"
-
-#~ msgid "Show"
-#~ msgstr "Pokaż"
-
-#~ msgid "Enable All Applications"
-#~ msgstr "Włącz dla wszystkich programów"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Filter Type"
-#~ msgstr "Typ filtru"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Efekty dźwiękowe dla programu Pulseaudio"
-
-#~ msgid "Output Device"
-#~ msgstr "Urządzenie wyjściowe"
-
-#~ msgid "Tolerance"
-#~ msgstr "Tolerancja"
-
-#~ msgid "Auto Volume"
-#~ msgstr "Auto. głośność"
-
-#~ msgid "Invert Middle Phase"
-#~ msgstr "Odwróć środkową fazę"
-
-#~ msgid "Mid (L + R)"
-#~ msgstr "Śr (L + P)"
-
-#~ msgid "Side (L - R)"
-#~ msgstr "Strona (L - P)"
-
-#~ msgid "Middle Source"
-#~ msgstr "Środkowe źródło"
-
-#~ msgid "Side Gain"
-#~ msgstr "Wzmocnienie strony"
-
-#~ msgid "Meters"
-#~ msgstr "Metry"
-
-#~ msgid "Centimeters"
-#~ msgstr "Centymetry"
-
-#~ msgid "Temperature"
-#~ msgstr "Temperatura"
-
-#~ msgid "Expander"
-#~ msgstr "Ekspander"
-
-#~ msgid "Up"
-#~ msgstr "Góra"
-
-#~ msgid "Pre Amplifier"
-#~ msgstr "Przedwzmacniacz"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Wejście [dB]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Wyjście [dB]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "szczyt"
-
-#~ msgid "Reset Frequency"
-#~ msgstr "Resetuj częstotliwość"
-
-#~ msgid "Poles"
-#~ msgstr "Bieguny"
-
-#~ msgid "Output Limiter"
-#~ msgstr "Limiter wyjścia"
-
-#~ msgid "Cathedral"
-#~ msgstr "Katedra"

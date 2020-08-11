@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -204,10 +204,6 @@ msgstr ""
 msgid "Target"
 msgstr "Meta"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Trenutačno"
@@ -219,12 +215,6 @@ msgstr "Kratkoročno"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Integrirano"
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "F1"
 
 #: data/ui/autogain.glade:362
 #, fuzzy
@@ -941,23 +931,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:122
-#, fuzzy
-msgid "x2"
-msgstr "F2"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Kvaliteta"
@@ -1549,12 +1522,12 @@ msgstr "Jači sampling"
 msgid "Line Width"
 msgstr "Širina"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Frekvencija"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Frekvencija"
@@ -1829,314 +1802,3 @@ msgstr "Općenito"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
-
-#~ msgid "Link"
-#~ msgstr "Veza"
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Sub band"
-
-#, fuzzy
-#~ msgid "Reset Equalizer"
-#~ msgstr "Vrati ekvalizator na tvorničke postavke"
-
-#~ msgid "pulseeffects"
-#~ msgstr "pulseeffects"
-
-#, fuzzy
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects je bio nadograđen"
-
-#~ msgid ""
-#~ "It is recommended to reset its configuration after an update. Do you want "
-#~ "to do this?"
-#~ msgstr ""
-#~ "Nakon nadogradnje preporučeno je vratiti njegovu konfiguraciju na "
-#~ "tvorničke postavke. Želite li to učiniti?"
-
-#~ msgid "Yes"
-#~ msgstr "Da"
-
-#~ msgid "No"
-#~ msgstr "Ne"
-
-#, fuzzy
-#~ msgid "Intensities"
-#~ msgstr "Intenzitet"
-
-#, fuzzy
-#~ msgid "Split 0/1"
-#~ msgstr "Razdvojeno 1/2"
-
-#, fuzzy
-#~ msgid "Band 0"
-#~ msgstr "Broj raspona"
-
-#, fuzzy
-#~ msgid "Band 2"
-#~ msgstr "Broj raspona"
-
-#, fuzzy
-#~ msgid "Band 3"
-#~ msgstr "Broj raspona"
-
-#, fuzzy
-#~ msgid "Band 1"
-#~ msgstr "Broj raspona"
-
-#, fuzzy
-#~ msgid "Band 4"
-#~ msgstr "Broj raspona"
-
-#~ msgid "Vocal Leveller 1"
-#~ msgstr "Vokalni izravnavač 1"
-
-#~ msgid "Vocal Leveller 2"
-#~ msgstr "Vokalni izravnavač 2"
-
-#~ msgid "Mix"
-#~ msgstr "Miješanje"
-
-#~ msgid "Show"
-#~ msgstr "Prikaži"
-
-#~ msgid "Enable All Applications"
-#~ msgstr "Uključi za sve aplikacije"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Filter Type"
-#~ msgstr "Vrsta filtera"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
-
-#, fuzzy
-#~ msgid "Fixed:"
-#~ msgstr "Popravljeno:"
-
-#, fuzzy
-#~ msgid "Changed:"
-#~ msgstr "Promijenjeno:"
-
-#, fuzzy
-#~ msgid "Calf Multiband compressor"
-#~ msgstr "Calf višerasponski kompresor"
-
-#, fuzzy
-#~ msgid "Changes:"
-#~ msgstr "Mijenja:"
-
-#, fuzzy
-#~ msgid "Fixes:"
-#~ msgstr "Popravlja:"
-
-#, fuzzy
-#~ msgid ""
-#~ "Bug with pipeline being put out of playing state when running in service "
-#~ "mode"
-#~ msgstr ""
-#~ "Bug sa izbacivanjem cijevi iz reprodukcije kad je program pokrenut u "
-#~ "načinu servisa."
-
-#~ msgid "Tolerance"
-#~ msgstr "Tolerancija"
-
-#~ msgid "Auto Volume"
-#~ msgstr "Automatska glasnoća"
-
-#, fuzzy
-#~ msgid "Import"
-#~ msgstr "Učitaj predloške"
-
-#~ msgid "Stereo Enhancer"
-#~ msgstr "Pojačanje sterea"
-
-#~ msgid "Invert Middle Phase"
-#~ msgstr "Inverzija srednje faze"
-
-#~ msgid "Mid (L + R)"
-#~ msgstr "Sredina (L+D)"
-
-#~ msgid "Side (L - R)"
-#~ msgstr "Stranično (L-D)"
-
-#~ msgid "Middle Source"
-#~ msgstr "Srednji izvor"
-
-#, fuzzy
-#~ msgid "Import Impulse Response"
-#~ msgstr "Učitaj datoteku reakcije impulsa"
-
-#~ msgid "Output Device"
-#~ msgstr "Izlazni uređaj"
-
-#~ msgid "Meters"
-#~ msgstr "Metri"
-
-#~ msgid "Centimeters"
-#~ msgstr "Centimetri"
-
-#~ msgid "Temperature"
-#~ msgstr "Temperatura"
-
-#, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Vrh"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Ulaz [dB]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Izlaz [dB]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "Vršna snaga"
-
-#~ msgid "wide"
-#~ msgstr "široko"
-
-#~ msgid "F1 Level"
-#~ msgstr "F1 razina"
-
-#~ msgid "F2 Level"
-#~ msgstr "F2 razina"
-
-#~ msgid "F2 Q"
-#~ msgstr "F2 Q"
-
-#~ msgid "Reset Frequency"
-#~ msgstr "Vrati izvornu frekvenciju"
-
-#~ msgid "Poles"
-#~ msgstr "Polovi"
-
-#~ msgid "Output Limiter"
-#~ msgstr "Graničnik ulaza"
-
-#~ msgid "Engine Room"
-#~ msgstr "Strojarnica"
-
-#~ msgid "Cathedral"
-#~ msgstr "Katedrala"
-
-#~ msgid "Damping"
-#~ msgstr "Prigušivanje"
-
-#~ msgid "Stereo Spread"
-#~ msgstr "Širenje sterea"
-
-#~ msgid "Sub"
-#~ msgstr "Sub"
-
-#~ msgid "Mid"
-#~ msgstr "Srednje"
-
-#~ msgid "Mono Input"
-#~ msgstr "Mono ulaz"
-
-#~ msgid "Running in background"
-#~ msgstr "Radi u pozadini"
-
-#~ msgid "Delete Preset"
-#~ msgstr "Obriši predložak"
-
-#~ msgid " is not a file!"
-#~ msgstr " nije datoteka!"
-
-#~ msgid "Guideline Position"
-#~ msgstr "Položaj smjernice"
-
-#~ msgid "Equal Loudness Test Signals"
-#~ msgstr "Testni signali jednake glasnoće"
-
-#~ msgid "Test Signal"
-#~ msgstr "Testni signali"
-
-#, fuzzy
-#~ msgid "Reduction Level"
-#~ msgstr "Razina ograničenja pojačanja"
-
-#~ msgid "Window [s]"
-#~ msgstr "Prozor [s]"
-
-#~ msgid "Frequency [Hz]"
-#~ msgstr "Frekvencija [Hz]"
-
-#, fuzzy
-#~ msgid "Buffer [ms]"
-#~ msgstr "Latencija međuspremnika [ms]"
-
-#, fuzzy
-#~ msgid "Latency [ms]"
-#~ msgstr "Latencija [ms]"
-
-#~ msgid "Threshold [dB]"
-#~ msgstr "Prag [dB]"
-
-#~ msgid "Makeup [dB]"
-#~ msgstr "Poboljšanje [dB]"
-
-#, fuzzy
-#~ msgid "F1 Level [dB]"
-#~ msgstr "F1 razina [dB]"
-
-#, fuzzy
-#~ msgid "F2 Level [dB]"
-#~ msgstr "F2 razina [dB]"
-
-#~ msgid "Release [ms]"
-#~ msgstr "Završavanje [ms]"
-
-#, fuzzy
-#~ msgid "Delay [ms]"
-#~ msgstr "Kašnjenje [ms]"
-
-#, fuzzy
-#~ msgid "Gain Reduction [dB]"
-#~ msgstr "Ograničenje pojačanja [dB]"
-
-#, fuzzy
-#~ msgid "Low [dB]"
-#~ msgstr "Nisko [dB]"
-
-#, fuzzy
-#~ msgid "High [dB]"
-#~ msgstr "Visoko [dB]"
-
-#, fuzzy
-#~ msgid "Input Gate"
-#~ msgstr "Vrata ulaza"
-
-#~ msgid "Audio Enhancer"
-#~ msgstr "Zvučni poboljšivač"
-
-#~ msgid "Buffer Latency"
-#~ msgstr "Latencija međuspremnika"
-
-#, fuzzy
-#~ msgid "buffer-time"
-#~ msgstr "Vrijeme međuspremnika [ms]"
-
-#, fuzzy
-#~ msgid "latency-time"
-#~ msgstr "Vrijeme latencije [ms]"
-
-#~ msgid "Vlc"
-#~ msgstr "Vlc"
-
-#, fuzzy
-#~ msgid "Sink Latency"
-#~ msgstr "Latencija kanala"
-
-#, fuzzy
-#~ msgid "Preset Name"
-#~ msgstr "Ime predloška"
-
-#~ msgid "Equalizer - Input"
-#~ msgstr "Ekvalizator - Ulaz"

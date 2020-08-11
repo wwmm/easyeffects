@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -206,10 +206,6 @@ msgstr ""
 msgid "Target"
 msgstr "Cible [dB]"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr ""
@@ -221,12 +217,6 @@ msgstr ""
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr ""
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "F"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -949,23 +939,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:122
-#, fuzzy
-msgid "x2"
-msgstr "F"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 #, fuzzy
 msgid "Quality"
@@ -1553,12 +1526,12 @@ msgstr ""
 msgid "Line Width"
 msgstr "Largeur"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Fréquence [Hz]"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Fréquence [Hz]"
@@ -1844,207 +1817,3 @@ msgstr "Général"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr ""
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Entrée [dB]"
-
-#, fuzzy
-#~ msgid "Reset Equalizer"
-#~ msgstr "Égaliseur"
-
-#, fuzzy
-#~ msgid "pulseeffects"
-#~ msgstr "pulseeffects"
-
-#, fuzzy
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects"
-
-#~ msgid "Show"
-#~ msgstr "Montrer"
-
-#, fuzzy
-#~ msgid "Enable All Applications"
-#~ msgstr "Calibration"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Effets audio pour applications PulseAudio"
-
-#, fuzzy
-#~ msgid "Calf Multiband compressor"
-#~ msgstr "Compresseur"
-
-#, fuzzy
-#~ msgid "Tolerance"
-#~ msgstr "Tolérance [dB]"
-
-#~ msgid "Auto Volume"
-#~ msgstr "Volume automatique"
-
-#, fuzzy
-#~ msgid "Import"
-#~ msgstr "Ouvrir préréglage"
-
-#, fuzzy
-#~ msgid "Stereo Enhancer"
-#~ msgstr "Amélioration audio"
-
-#, fuzzy
-#~ msgid "Side Gain"
-#~ msgstr "Gain d'entrée [dB]"
-
-#, fuzzy
-#~ msgid "Import Impulse Response"
-#~ msgstr "Réponse plane"
-
-#, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "Limiteur d'entrée"
-
-#, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Limite [dB]"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Entrée [dB]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Sortie [dB]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "Pic à pic"
-
-#, fuzzy
-#~ msgid "F1"
-#~ msgstr "F"
-
-#, fuzzy
-#~ msgid "F2 Level"
-#~ msgstr "Niveau"
-
-#~ msgid "Poles"
-#~ msgstr "Pôles"
-
-#, fuzzy
-#~ msgid "Output Limiter"
-#~ msgstr "Limiteur d'entrée"
-
-#~ msgid "Engine Room"
-#~ msgstr "Pièce moteur"
-
-#~ msgid "Cathedral"
-#~ msgstr "Cathédrale"
-
-#~ msgid "Damping"
-#~ msgstr "Amortissement"
-
-#, fuzzy
-#~ msgid "Mono Input"
-#~ msgstr "Entrée"
-
-#, fuzzy
-#~ msgid "Delete Preset"
-#~ msgstr "Sauvegarder préglage"
-
-#~ msgid "Guideline Position"
-#~ msgstr "Guide de position"
-
-#~ msgid "Equal Loudness Test Signals"
-#~ msgstr "Signal de test d'intensité constante"
-
-#~ msgid "Test Signal"
-#~ msgstr "Signal de test"
-
-#, fuzzy
-#~ msgid "Reduction Level"
-#~ msgstr "Réduction de gain"
-
-#~ msgid "Window [s]"
-#~ msgstr "Fenêtre [s]"
-
-#~ msgid "Frequency [Hz]"
-#~ msgstr "Fréquence [Hz]"
-
-#, fuzzy
-#~ msgid "Buffer [ms]"
-#~ msgstr "Latence"
-
-#, fuzzy
-#~ msgid "Latency [ms]"
-#~ msgstr "Latence"
-
-#~ msgid "Threshold [dB]"
-#~ msgstr "Seuil [dB]"
-
-#~ msgid "Makeup [dB]"
-#~ msgstr "Gain de remise [dB]"
-
-#, fuzzy
-#~ msgid "F1 Level [dB]"
-#~ msgstr "Coudée [dB]"
-
-#, fuzzy
-#~ msgid "F2 Level [dB]"
-#~ msgstr "Coudée [dB]"
-
-#~ msgid "Release [ms]"
-#~ msgstr "Relâche [ms]"
-
-#, fuzzy
-#~ msgid "Delay [ms]"
-#~ msgstr "Relâche [ms]"
-
-#, fuzzy
-#~ msgid "Gain Reduction [dB]"
-#~ msgstr "Réduction de gain"
-
-#, fuzzy
-#~ msgid "Low [dB]"
-#~ msgstr "Limite [dB]"
-
-#, fuzzy
-#~ msgid "High [dB]"
-#~ msgstr "Limite [dB]"
-
-#, fuzzy
-#~ msgid "Input Gate"
-#~ msgstr "Limiteur d'entrée"
-
-#~ msgid "Audio Enhancer"
-#~ msgstr "Amélioration audio"
-
-#, fuzzy
-#~ msgid "Buffer Latency"
-#~ msgstr "Latence"
-
-#, fuzzy
-#~ msgid "buffer-time"
-#~ msgstr "Temps tampon [ms]"
-
-#, fuzzy
-#~ msgid "latency-time"
-#~ msgstr "Temps de latence [ms]"
-
-#~ msgid "Vlc"
-#~ msgstr "VLC"
-
-#, fuzzy
-#~ msgid "Sink Latency"
-#~ msgstr "Latence"
-
-#, fuzzy
-#~ msgid "Preset Name"
-#~ msgstr "Préréglage"
-
-#~ msgid "No Reverberation"
-#~ msgstr "Pas de réverbération"
-
-#~ msgid "Equalizer - Input"
-#~ msgstr "Égaliseur - Entrée"

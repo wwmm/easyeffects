@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -202,10 +202,6 @@ msgstr "Использовать градиент"
 msgid "Target"
 msgstr "Целевой уровень громкости"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Моментальные измерения"
@@ -222,13 +218,6 @@ msgstr "Короткие измерения"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Комплексные измерения"
-
-# #, fuzzy
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "F"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -318,7 +307,7 @@ msgid "Based on"
 msgstr ""
 
 # Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
-# «Бас-Энхансер» или «Глубокий бас» 
+# «Бас-Энхансер» или «Глубокий бас»
 #: data/ui/bass_enhancer.glade:118
 msgid "Bass Enhancer"
 msgstr "Усиление басов (бас-энхансер)"
@@ -934,23 +923,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-# #, fuzzy
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Качество"
@@ -1517,12 +1489,12 @@ msgstr "Передискретизация"
 msgid "Line Width"
 msgstr "Ширина линии"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Частота"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Частота"
@@ -1781,323 +1753,3 @@ msgstr "Общие"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr ""
-
-#~ msgid "Webrtc"
-#~ msgstr "Webrtc"
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Поддиапазон"
-
-#~ msgid "Reset Equalizer"
-#~ msgstr "Сбросить эквалайзер"
-
-#~ msgid "PulseEffects was updated"
-#~ msgstr "Программа PulseEffects была обновлена"
-
-#~ msgid ""
-#~ "It is recommended to reset its configuration after an update. Do you want "
-#~ "to do this?"
-#~ msgstr ""
-#~ "После обновления рекомендуется сбросить настройки PulseEffects. Хотите ли "
-#~ "вы это сделать?"
-
-#~ msgid "Yes"
-#~ msgstr "Да"
-
-#~ msgid "No"
-#~ msgstr "Нет"
-
-#, fuzzy
-#~ msgid "Intensities"
-#~ msgstr "Интенсивность"
-
-#, fuzzy
-#~ msgid "Split 0/1"
-#~ msgstr "Разделение 1/2"
-
-#, fuzzy
-#~ msgid "Band 0"
-#~ msgstr "Кол-во полос эквалайзера"
-
-#, fuzzy
-#~ msgid "Band 2"
-#~ msgstr "Кол-во полос эквалайзера"
-
-#, fuzzy
-#~ msgid "Band 3"
-#~ msgstr "Кол-во полос эквалайзера"
-
-#, fuzzy
-#~ msgid "Band 1"
-#~ msgstr "Кол-во полос эквалайзера"
-
-#, fuzzy
-#~ msgid "Band 4"
-#~ msgstr "Кол-во полос эквалайзера"
-
-#~ msgid "Vocal Leveller 1"
-#~ msgstr "Выравниевание уровня речи 1"
-
-#~ msgid "Vocal Leveller 2"
-#~ msgstr "Выравниевание уровня речи 2"
-
-#~ msgid "Mix"
-#~ msgstr "Смешать"
-
-#~ msgid "Show"
-#~ msgstr "Показать"
-
-#~ msgid "Enable All Applications"
-#~ msgstr "Включить для всех приложений"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Filter Type"
-#~ msgstr "Тип фильтра"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Аудиоэффекты для приложений PulseAudio"
-
-#~ msgid "Added:"
-#~ msgstr "Добавлено:"
-
-#~ msgid "Fixed:"
-#~ msgstr "Исправлено:"
-
-#~ msgid "Changed:"
-#~ msgstr "Изменилось:"
-
-#~ msgid "Calf Multiband compressor"
-#~ msgstr "Многополосный компрессор Calf"
-
-#~ msgid "Changes:"
-#~ msgstr "Изменения:"
-
-#~ msgid "Fixes:"
-#~ msgstr "Исправления:"
-
-#~ msgid "Tolerance"
-#~ msgstr "Допуск"
-
-#~ msgid "Auto Volume"
-#~ msgstr "Автоподстройка уровня звука"
-
-# #, fuzzy
-#~ msgid "Import"
-#~ msgstr "Импортировать предустановки"
-
-#~ msgid "Stereo Enhancer"
-#~ msgstr "Стереокорректор"
-
-#~ msgid "Invert Middle Phase"
-#~ msgstr "Инвертировать центральную фазу"
-
-#~ msgid "Mid (L + R)"
-#~ msgstr "Суммарно (Лев + Пр)"
-
-#~ msgid "Side (L - R)"
-#~ msgstr "Разность (Лев - Пр)"
-
-#~ msgid "Middle Source"
-#~ msgstr "Средний источник"
-
-#~ msgid "Side Gain"
-#~ msgstr "Боковое усиление"
-
-#~ msgid "Import Impulse Response"
-#~ msgstr "Импортировать импульсную реакцию"
-
-#~ msgid "Стерео база"
-#~ msgstr "Сетерео база"
-
-# #, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "Ограничитель ввода"
-
-# #, fuzzy
-#~ msgid "Meters"
-#~ msgstr "Тип фильтра"
-
-#~ msgid "Centimeters"
-#~ msgstr "Сантиметры"
-
-#~ msgid "Temperature"
-#~ msgstr "Температура"
-
-# #, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Верхний порог (Гц)"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Ввод [дБ]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Вывод [дБ]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "пик"
-
-# #, fuzzy
-#~ msgid "F1"
-#~ msgstr "F"
-
-# #, fuzzy
-#~ msgid "F1 Level"
-#~ msgstr "Уровень"
-
-# #, fuzzy
-#~ msgid "F2 Level"
-#~ msgstr "Уровень"
-
-# #, fuzzy
-#~ msgid "Reset Frequency"
-#~ msgstr "Сброс частоты"
-
-#~ msgid "Poles"
-#~ msgstr "Полюса"
-
-# #, fuzzy
-#~ msgid "Output Limiter"
-#~ msgstr "Ограничитель ввода"
-
-#~ msgid "Engine Room"
-#~ msgstr "Машинномоторное помещение"
-
-#~ msgid "Cathedral"
-#~ msgstr "Большая церковь"
-
-#~ msgid "Damping"
-#~ msgstr "Демпфирование"
-
-#~ msgid "Stereo Spread"
-#~ msgstr "Рассеивание стерео"
-
-# #, fuzzy
-#~ msgid "Mono Input"
-#~ msgstr "Моноввод"
-
-#~ msgid "Running in background"
-#~ msgstr "Работает в фоне"
-
-# #, fuzzy
-#~ msgid "Delete Preset"
-#~ msgstr "Удалить набор предустановок"
-
-#~ msgid " is not a file!"
-#~ msgstr " не является файлом!"
-
-#~ msgid "Guideline Position"
-#~ msgstr "Расположение гайдлайна"
-
-#~ msgid "Equal Loudness Test Signals"
-#~ msgstr "Проверочный сигналы одинаковой громкости"
-
-#~ msgid "Test Signal"
-#~ msgstr "Проверочный сигнал"
-
-# #, fuzzy
-#~ msgid "Reduction Level"
-#~ msgstr "Увеличение ослабления"
-
-#~ msgid "Window [s]"
-#~ msgstr "Окно [s]"
-
-#~ msgid "Frequency [Hz]"
-#~ msgstr "Частота [Hz]"
-
-# #, fuzzy
-#~ msgid "Buffer [ms]"
-#~ msgstr "Буферизация"
-
-# #, fuzzy
-#~ msgid "Latency [ms]"
-#~ msgstr "Задержка"
-
-#~ msgid "Threshold [dB]"
-#~ msgstr "Порог [дБ]"
-
-#~ msgid "Makeup [dB]"
-#~ msgstr "Компенсирование [дБ]"
-
-# #, fuzzy
-#~ msgid "F1 [Hz]"
-#~ msgstr "Шум [Гц]"
-
-# #, fuzzy
-#~ msgid "F1 Level [dB]"
-#~ msgstr "Подача [дБ]"
-
-# #, fuzzy
-#~ msgid "F2 [Hz]"
-#~ msgstr "Шум [Гц]"
-
-# #, fuzzy
-#~ msgid "F2 Level [dB]"
-#~ msgstr "Подача [дБ]"
-
-#~ msgid "Release [ms]"
-#~ msgstr "Высвобождение [мс]"
-
-# #, fuzzy
-#~ msgid "Delay [ms]"
-#~ msgstr "Задержка [ms]"
-
-# #, fuzzy
-#~ msgid "Gain Reduction [dB]"
-#~ msgstr "Увеличение ослабления"
-
-# #, fuzzy
-#~ msgid "Ceiling [dB]"
-#~ msgstr "Ограничение [dB]"
-
-# #, fuzzy
-#~ msgid "Low [dB]"
-#~ msgstr "Низкие частоты [дБ]"
-
-# #, fuzzy
-#~ msgid "High [dB]"
-#~ msgstr "Высокие частоты [дБ]"
-
-# #, fuzzy
-#~ msgid "Input Gate"
-#~ msgstr "Ограничитель ввода"
-
-#~ msgid "Latency in Miliseconds"
-#~ msgstr "Задержка (мс)"
-
-#~ msgid "Audio Enhancer"
-#~ msgstr "Усилитель аудио"
-
-# #, fuzzy
-#~ msgid "Buffer Latency"
-#~ msgstr "Задержка буферизации"
-
-# #, fuzzy
-#~ msgid "buffer-time"
-#~ msgstr "Время буферизации [ms]"
-
-# #, fuzzy
-#~ msgid "latency-time"
-#~ msgstr "Задержка [ms]"
-
-#~ msgid "Vlc"
-#~ msgstr "VLC"
-
-# #, fuzzy
-#~ msgid "Sink Latency"
-#~ msgstr "Задержка затухания"
-
-# #, fuzzy
-#~ msgid "Preset Name"
-#~ msgstr "Название предустановки"
-
-#~ msgid "No Reverberation"
-#~ msgstr "Без ревербации"
-
-#~ msgid "Equalizer - Input"
-#~ msgstr "Эквалайзер - Вход"

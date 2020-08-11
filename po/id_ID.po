@@ -1,4 +1,4 @@
-# This is Indonesia translate file for PE. We are need your help to completely translate this project. You can translate PuleEffect's help file to Indonesian to develop this project. If you any question about translating process, just send email that I have been desribed below. But if you want to support such as reporting any bugs, go ahead to github page @ https://github.com/wwmm/pulseeffects/ 
+# This is Indonesia translate file for PE. We are need your help to completely translate this project. You can translate PuleEffect's help file to Indonesian to develop this project. If you any question about translating process, just send email that I have been desribed below. But if you want to support such as reporting any bugs, go ahead to github page @ https://github.com/wwmm/pulseeffects/
 # Copyright (C) 2018
 # This file is distributed under the same license as the PulseEffects package.
 # Dika Muhamad A. <ardumpl_AT_gmail.com>, 2018.
@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -198,10 +198,6 @@ msgstr "Terapkan Gradien warna"
 msgid "Target"
 msgstr "Target"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Efek Sejenak"
@@ -213,12 +209,6 @@ msgstr "Waktu Singkat"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Terintegrasi"
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "Satu kali"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -918,22 +908,6 @@ msgstr ""
 msgid "Slope"
 msgstr "Besar Lembah"
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr "Satu kali"
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr "2 Kali"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr "Tiga Kali"
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr "Empat Kali"
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Kualitas"
@@ -1499,12 +1473,12 @@ msgstr "Atur Sampling"
 msgid "Line Width"
 msgstr "Lebar"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Frekuensi"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Frekuensi"
@@ -1763,87 +1737,3 @@ msgstr "Umum"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
-
-#~ msgid "Link"
-#~ msgstr "Penautan"
-
-#~ msgid "Webrtc"
-#~ msgstr "Webrtc"
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Band Sub"
-
-#~ msgid "Reset Equalizer"
-#~ msgstr "Atur Ulang Ekualiser"
-
-#~ msgid "pulseeffects"
-#~ msgstr "pulseeffects"
-
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects telah dimutakhirkan"
-
-#~ msgid ""
-#~ "It is recommended to reset its configuration after an update. Do you want "
-#~ "to do this?"
-#~ msgstr ""
-#~ "Dianjurkan untuk mengatur ulang konfigurasi setelah pemutakhiran. Tetap "
-#~ "Lanjutkan?"
-
-#~ msgid "Yes"
-#~ msgstr "Ya"
-
-#~ msgid "No"
-#~ msgstr "Tidak"
-
-#, fuzzy
-#~ msgid "Intensities"
-#~ msgstr "Intensitas"
-
-#, fuzzy
-#~ msgid "Split 0/1"
-#~ msgstr "Split 0/1"
-
-#, fuzzy
-#~ msgid "Band 0"
-#~ msgstr "Band 0"
-
-#, fuzzy
-#~ msgid "Band 2"
-#~ msgstr "Band 2"
-
-#, fuzzy
-#~ msgid "Band 3"
-#~ msgstr "Band 3"
-
-#, fuzzy
-#~ msgid "Band 1"
-#~ msgstr "Band 1"
-
-#, fuzzy
-#~ msgid "Band 4"
-#~ msgstr "Band 4"
-
-#~ msgid "Vocal Leveller 1"
-#~ msgstr "Penguat Suara 1"
-
-#~ msgid "Vocal Leveller 2"
-#~ msgstr "Penguat Suara 2"
-
-#~ msgid "Mix"
-#~ msgstr "Mix Dry/Wet"
-
-#~ msgid "Show"
-#~ msgstr "Tampilkan"
-
-#~ msgid "Enable All Applications"
-#~ msgstr "Terapkan Efek pada Semua Aplikasi"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Filter Type"
-#~ msgstr "Jenis Filter"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Penerap Efek untuk Aplikasi Berbasis Pulseaudio"

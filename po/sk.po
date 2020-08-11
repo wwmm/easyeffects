@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2019-09-07 22:19+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: \n"
@@ -204,10 +204,6 @@ msgstr "Použiť Tieňovanie"
 msgid "Target"
 msgstr "Ciel"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Okamžité"
@@ -219,11 +215,6 @@ msgstr "Krátkodobé"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Integrované"
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-msgid "1"
-msgstr ""
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -944,22 +935,6 @@ msgstr ""
 msgid "Slope"
 msgstr "Sklon"
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Kvalita"
@@ -1544,12 +1519,12 @@ msgstr "Vzorkovanie"
 msgid "Line Width"
 msgstr "Šírka Čáry"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Frekvencia"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Frekvencia"
@@ -1824,181 +1799,3 @@ msgstr "Všeobecné"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
-
-#~ msgid "Link"
-#~ msgstr "Spojenie"
-
-#~ msgid "Webrtc"
-#~ msgstr "WebRTC"
-
-#, fuzzy
-#~ msgid "Rubber Band"
-#~ msgstr "Spodné Pásmo"
-
-#, fuzzy
-#~ msgid "Reset Equalizer"
-#~ msgstr "Vynulovať Ekvalizér"
-
-#~ msgid "Audio Effects for Pulseaudio Applications"
-#~ msgstr "Zvukové Efekty pre Aplikácie využívajúce Pulseaudio"
-
-#, fuzzy
-#~ msgid "Calf Multiband compressor"
-#~ msgstr "Kompresor"
-
-#, fuzzy
-#~ msgid "Tolerance"
-#~ msgstr "Koleno [dB]"
-
-#~ msgid "Auto Volume"
-#~ msgstr "Automatická hlasitosť"
-
-#, fuzzy
-#~ msgid "Import"
-#~ msgstr "Načítať predvoľbu"
-
-#, fuzzy
-#~ msgid "Side Gain"
-#~ msgstr "Vstupné zosilnenie [dB]"
-
-#, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "Vstupný obmedzovač"
-
-#, fuzzy
-#~ msgid "Meters"
-#~ msgstr "Vstupné filtre"
-
-#, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Obmedzenie [dB]"
-
-#~ msgid "Input [dB]"
-#~ msgstr "Vstup [dB]"
-
-#~ msgid "Output [dB]"
-#~ msgstr "Výstup [dB]"
-
-#~ msgid "rms"
-#~ msgstr "RMS"
-
-#~ msgid "peak"
-#~ msgstr "Špičkový"
-
-#, fuzzy
-#~ msgid "F2 Level"
-#~ msgstr "Úroveň"
-
-#, fuzzy
-#~ msgid "Poles"
-#~ msgstr "Póly"
-
-#, fuzzy
-#~ msgid "Output Limiter"
-#~ msgstr "Vstupný obmedzovač"
-
-#, fuzzy
-#~ msgid "Engine Room"
-#~ msgstr "Strojovňa"
-
-#, fuzzy
-#~ msgid "Cathedral"
-#~ msgstr "Chrám"
-
-#~ msgid "Damping"
-#~ msgstr "Tlmenie"
-
-#, fuzzy
-#~ msgid "Mono Input"
-#~ msgstr "Vstup"
-
-#, fuzzy
-#~ msgid "Delete Preset"
-#~ msgstr "Uložiť predvoľbu"
-
-#~ msgid "Test Signal"
-#~ msgstr "Skúšobný signál"
-
-#, fuzzy
-#~ msgid "Reduction Level"
-#~ msgstr "Redukcia zosilnenia"
-
-#, fuzzy
-#~ msgid "Latency [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#~ msgid "Threshold [dB]"
-#~ msgstr "Prah [dB]"
-
-#~ msgid "Makeup [dB]"
-#~ msgstr "Výstupné zosilnenie [dB]"
-
-#, fuzzy
-#~ msgid "F1 Level [dB]"
-#~ msgstr "Koleno [dB]"
-
-#, fuzzy
-#~ msgid "F2 Level [dB]"
-#~ msgstr "Koleno [dB]"
-
-#~ msgid "Release [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#, fuzzy
-#~ msgid "Delay [ms]"
-#~ msgstr "Uvoľnenie [ms]"
-
-#, fuzzy
-#~ msgid "Gain Reduction [dB]"
-#~ msgstr "Redukcia zosilnenia"
-
-#, fuzzy
-#~ msgid "Low [dB]"
-#~ msgstr "Obmedzenie [dB]"
-
-#, fuzzy
-#~ msgid "High [dB]"
-#~ msgstr "Obmedzenie [dB]"
-
-#, fuzzy
-#~ msgid "Input Gate"
-#~ msgstr "Vstupný obmedzovač"
-
-#, fuzzy
-#~ msgid "buffer-time"
-#~ msgstr "Čas zásobníka [ms]"
-
-#, fuzzy
-#~ msgid "latency-time"
-#~ msgstr "Čas oneskorenia [ms]"
-
-#, fuzzy
-#~ msgid "Preset Name"
-#~ msgstr "Predvoľby"
-
-#~ msgid "Sensing Type"
-#~ msgstr "Typ snímania"
-
-#~ msgid "equal loudness 20"
-#~ msgstr "Rovnaká hlasitosť 20"
-
-#~ msgid "equal loudness 40"
-#~ msgstr "Rovnaká hlasitosť 40"
-
-#~ msgid "equal loudness 60"
-#~ msgstr "Rovnaká hlasitosť 60"
-
-#~ msgid "equal loudness 80"
-#~ msgstr "Rovnaká hlasitosť 80"
-
-#~ msgid "equal loudness 100"
-#~ msgstr "Rovnaká hlasitosť 100"
-
-#~ msgid "flat"
-#~ msgstr "Plochý"
-
-#~ msgid "no compression"
-#~ msgstr "Bez kompresie"
-
-#~ msgid "no reverberation"
-#~ msgstr "Bez ozveny"

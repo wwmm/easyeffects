@@ -220,7 +220,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="width_chars">5</property>
-                    <property name="text" translatable="yes">-23</property>
+                    <property name="text">-23</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">target</property>
@@ -300,7 +300,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="width_chars">5</property>
-                    <property name="text" translatable="yes">1</property>
+                    <property name="text">1</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">weight_m</property>
@@ -320,7 +320,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="width_chars">5</property>
-                    <property name="text" translatable="yes">1</property>
+                    <property name="text">1</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">weight_s</property>
@@ -340,7 +340,7 @@
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="width_chars">5</property>
-                    <property name="text" translatable="yes">1</property>
+                    <property name="text">1</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
                     <property name="adjustment">weight_i</property>
