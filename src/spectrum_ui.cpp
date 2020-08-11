@@ -201,11 +201,8 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       if (label < 1000.0) {
         msg.precision(0);
         msg << std::fixed << label << "Hz";
-      } else if (label > 1000.0 && label < 10000.0) {
+      } else if (label > 1000.0) {
         msg.precision(1);
-        msg << std::fixed << label / 1000 << "kHz";
-      } else {
-        msg.precision(0);
         msg << std::fixed << label / 1000 << "kHz";
       }
 
@@ -219,12 +216,14 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
-      if (n < freq_labels.size() - 1) {
-        ctx->move_to(n * freq_labels_offset, static_cast<double>(height - static_cast<float>(text_height)));
-      } else {
-        ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)),
-                     static_cast<double>(height - static_cast<float>(text_height)));
-      }
+      // if (n < freq_labels.size() - 1) {
+      //   ctx->move_to(n * freq_labels_offset, static_cast<double>(height - static_cast<float>(text_height)));
+      // } else {
+      //   ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)),
+      //                static_cast<double>(height - static_cast<float>(text_height)));
+      // }
+
+      ctx->move_to(n * freq_labels_offset, static_cast<double>(height - static_cast<float>(text_height)));
 
       layout->show_in_cairo_context(ctx);
     }
