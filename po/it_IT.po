@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2019-03-28 17:38+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -198,10 +198,6 @@ msgstr "Usa Media Geometrica"
 msgid "Target"
 msgstr "Livello"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr "-23"
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Momentaneo"
@@ -213,12 +209,6 @@ msgstr "Breve Termine"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Integrato"
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "x1"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -902,22 +892,6 @@ msgstr "APO (DR)"
 msgid "Slope"
 msgstr "Pendenza"
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr "x1"
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr "x2"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr "x3"
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr "x4"
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Qualità"
@@ -1473,15 +1447,13 @@ msgstr "Campionamento"
 msgid "Line Width"
 msgstr "Spessore Linea"
 
-#: data/ui/spectrum_settings.glade:478
-#, fuzzy
+#: data/ui/spectrum_settings.glade:481
 msgid "Minimum Frequency"
-msgstr "Frequenza"
+msgstr "Frequenza Minima"
 
-#: data/ui/spectrum_settings.glade:503
-#, fuzzy
+#: data/ui/spectrum_settings.glade:509
 msgid "Maximum Frequency"
-msgstr "Frequenza"
+msgstr "Frequenza Massima"
 
 #: data/ui/stereo_tools.glade:110
 msgid "Stereo Tools"

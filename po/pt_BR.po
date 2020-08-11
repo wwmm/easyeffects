@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -202,10 +202,6 @@ msgstr "Usar Gradiente"
 msgid "Target"
 msgstr "Alvo"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Momentâneo"
@@ -217,12 +213,6 @@ msgstr "Curto Prazo"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Integrada"
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "x1"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -913,22 +903,6 @@ msgstr "APO (DR)"
 msgid "Slope"
 msgstr "Inclinação"
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr "x1"
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr "x2"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr "x3"
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr "x4"
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Qualidade"
@@ -1487,12 +1461,12 @@ msgstr "Amostragem"
 msgid "Line Width"
 msgstr "Largura da Linha"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Frequência"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Frequência"
@@ -1749,6 +1723,22 @@ msgstr "Geral"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr "Pulseaudio"
+
+#, fuzzy
+#~ msgid "1"
+#~ msgstr "x1"
+
+#~ msgid "x1"
+#~ msgstr "x1"
+
+#~ msgid "x2"
+#~ msgstr "x2"
+
+#~ msgid "x3"
+#~ msgstr "x3"
+
+#~ msgid "x4"
+#~ msgstr "x4"
 
 #~ msgid "Link"
 #~ msgstr "Elo"

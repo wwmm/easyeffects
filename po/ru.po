@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -202,10 +202,6 @@ msgstr "Использовать градиент"
 msgid "Target"
 msgstr "Целевой уровень громкости"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr "Моментальные измерения"
@@ -222,13 +218,6 @@ msgstr "Короткие измерения"
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr "Комплексные измерения"
-
-# #, fuzzy
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "F"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -934,23 +923,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-# #, fuzzy
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Качество"
@@ -1517,12 +1489,12 @@ msgstr "Передискретизация"
 msgid "Line Width"
 msgstr "Ширина линии"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Частота"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Частота"
@@ -1781,6 +1753,11 @@ msgstr "Общие"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr ""
+
+# #, fuzzy
+#, fuzzy
+#~ msgid "1"
+#~ msgstr "F"
 
 #~ msgid "Webrtc"
 #~ msgstr "Webrtc"

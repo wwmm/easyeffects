@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-10 15:55-0300\n"
+"POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -206,10 +206,6 @@ msgstr ""
 msgid "Target"
 msgstr "Målvärde (dB)"
 
-#: data/ui/autogain.glade:223
-msgid "-23"
-msgstr ""
-
 #: data/ui/autogain.glade:257 data/ui/autogain.glade:601
 msgid "Momentary"
 msgstr ""
@@ -221,12 +217,6 @@ msgstr ""
 #: data/ui/autogain.glade:287 data/ui/autogain.glade:627
 msgid "Integrated"
 msgstr ""
-
-#: data/ui/autogain.glade:303 data/ui/autogain.glade:323
-#: data/ui/autogain.glade:343
-#, fuzzy
-msgid "1"
-msgstr "F"
 
 #: data/ui/autogain.glade:362
 msgid "Weights"
@@ -952,23 +942,6 @@ msgstr ""
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:122
-#, fuzzy
-msgid "x2"
-msgstr "F"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr ""
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr ""
-
 #: data/ui/equalizer_band.glade:200
 msgid "Quality"
 msgstr "Kvalitet"
@@ -1555,12 +1528,12 @@ msgstr "Resampler"
 msgid "Line Width"
 msgstr "Bredd"
 
-#: data/ui/spectrum_settings.glade:478
+#: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Frekvens (Hz)"
 
-#: data/ui/spectrum_settings.glade:503
+#: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Frekvens (Hz)"
@@ -1847,6 +1820,14 @@ msgstr "Allmänt"
 #: src/pulse_settings_ui.cpp:149
 msgid "Pulseaudio"
 msgstr ""
+
+#, fuzzy
+#~ msgid "1"
+#~ msgstr "F"
+
+#, fuzzy
+#~ msgid "x2"
+#~ msgstr "F"
 
 #, fuzzy
 #~ msgid "Rubber Band"
