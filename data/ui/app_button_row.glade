@@ -99,7 +99,7 @@
             <property name="can_focus">False</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
-            <property name="label">db</property>
+            <property name="label">dB</property>
             <property name="justify">right</property>
             <property name="width_chars">2</property>
             <property name="max_width_chars">2</property>
