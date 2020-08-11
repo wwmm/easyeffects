@@ -119,19 +119,23 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
       sigc::mem_fun(*this, &SpectrumSettingsUi::on_spectrum_sampling_freq_set), false);
 
   minimum_frequency->signal_value_changed().connect([&]() {
-    app->sie->min_spectrum_freq = minimum_frequency->get_value();
-    app->soe->min_spectrum_freq = minimum_frequency->get_value();
+    if (minimum_frequency->get_value() < maximum_frequency->get_value()) {
+      app->sie->min_spectrum_freq = minimum_frequency->get_value();
+      app->soe->min_spectrum_freq = minimum_frequency->get_value();
 
-    app->sie->init_spectrum();
-    app->soe->init_spectrum();
+      app->sie->init_spectrum();
+      app->soe->init_spectrum();
+    }
   });
 
   maximum_frequency->signal_value_changed().connect([&]() {
-    app->sie->max_spectrum_freq = maximum_frequency->get_value();
-    app->soe->max_spectrum_freq = maximum_frequency->get_value();
+    if (maximum_frequency->get_value() > minimum_frequency->get_value()) {
+      app->sie->max_spectrum_freq = maximum_frequency->get_value();
+      app->soe->max_spectrum_freq = maximum_frequency->get_value();
 
-    app->sie->init_spectrum();
-    app->soe->init_spectrum();
+      app->sie->init_spectrum();
+      app->soe->init_spectrum();
+    }
   });
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;

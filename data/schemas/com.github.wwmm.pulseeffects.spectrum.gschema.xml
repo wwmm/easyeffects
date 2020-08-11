@@ -52,11 +52,11 @@
             <default>"Bars"</default>
         </key>
         <key name="minimum-frequency" type="i">
-            <range min="20" max="999" />
+            <range min="20" max="22000" />
             <default>20</default>
         </key>
         <key name="maximum-frequency" type="i">
-            <range min="1000" max="20000" />
+            <range min="20" max="22000" />
             <default>20000</default>
         </key>
     </schema>

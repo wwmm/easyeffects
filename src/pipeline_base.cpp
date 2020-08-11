@@ -662,6 +662,8 @@ void PipelineBase::init_spectrum() {
 
   spectrum_freqs.clear();
 
+  spectrum_start_index = 0;
+
   for (uint n = 0; n < spectrum_nbands; n++) {
     auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
 

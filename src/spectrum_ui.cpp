@@ -249,10 +249,11 @@ auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool 
   auto width = allocation.get_width();
   auto height = allocation.get_height();
 
-  // frequency axis is logarithmic
-  // 20 Hz = 10^(1.3), 20000 Hz = 10^(4.3)
+  double min_freq_log = log10(settings->get_int("minimum-frequency"));
+  double max_freq_log = log10(settings->get_int("maximum-frequency"));
+  double mouse_freq_log = static_cast<float>(event->x) / width * (max_freq_log - min_freq_log) + min_freq_log;
 
-  mouse_freq = pow(10, 1.3 + event->x * 3.0 / width);
+  mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
   // intensity scale is in decibel
   // minimum intensity is -120 dB and maximum is 0 dB
