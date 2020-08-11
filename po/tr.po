@@ -1561,19 +1561,3 @@ msgstr "Dürtü Dosyası Yüklenemedi"
 #: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
 msgid "infinity"
 msgstr "sonsuzluk"
-
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects güncellendi"
-
-#~ msgid ""
-#~ "It is recommended to reset its configuration after an update. Do you want "
-#~ "to do this?"
-#~ msgstr ""
-#~ "Güncellemeden sonra yapılandırmayı sıfırlamak önerilir. Bunu yapmak ister "
-#~ "misin?"
-
-#~ msgid "Yes"
-#~ msgstr "Evet"
-
-#~ msgid "No"
-#~ msgstr "Hayır"
