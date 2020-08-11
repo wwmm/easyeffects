@@ -4,15 +4,21 @@
 
 ### Added
 
-- New parameters were added to the plugins: limiter, gate and compressor.
+- Loudness plugin has been replaced with the new Loudness Compensator by Linux Studio Plugins.
+- The Stereo Tools and the Maximizer plugins can now be used when applying effects to microphone signals.
+- New parameters have been added to the following plugins: Compressor, Gate and Limiter.
+- Plugin user interfaces have been redesigned with checkbutton list and new global output level meter for both output and
+  input pipelines.
+- The user has now the ability to change the minimum and maximum frequency in the spectrum user interface.
 - New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
   applets to hide our window.
 - Initial support to Equalizer APO presets.
-- The Stereo Tools and the MAximizer plugins can now be used when applying effects to microphone signals.
 
 ### Note to packagers
 
 - This release is using GTKMM 3.24 features.
+- This release requires Linux Studio Plugins >= `1.1.24`.
+- MDA is not needed anymore as optional dependency.
 
 ## [4.7.3]
 
