@@ -30,6 +30,9 @@
         <key name="gradient-color" type="ad">
             <default>[0.0,0.0,0.0,1.0]</default>
         </key>
+        <key name="color-axis-labels" type="ad">
+            <default>[1.0,1.0,1.0,1.0]</default>
+        </key>
         <key name="height" type="i">
             <default>100</default>
         </key>

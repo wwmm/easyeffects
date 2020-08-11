@@ -32,7 +32,9 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Gtk::Switch *show = nullptr, *use_custom_color = nullptr, *fill = nullptr, *show_bar_border = nullptr,
               *use_gradient = nullptr;
-  Gtk::ColorButton *spectrum_color_button = nullptr, *gradient_color_button = nullptr;
+
+  Gtk::ColorButton *spectrum_color_button = nullptr, *gradient_color_button = nullptr, *axis_color_button = nullptr;
+
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent, sampling_freq, line_width, minimum_frequency,

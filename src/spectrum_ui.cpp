@@ -16,10 +16,14 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   connections.emplace_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
     init_color();
+    init_frequency_labels_color();
     init_gradient_color();
   }));
 
   connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
+
+  connections.emplace_back(
+      settings->signal_changed("color-axis-labels").connect([&](auto key) { init_frequency_labels_color(); }));
 
   connections.emplace_back(
       settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
@@ -35,6 +39,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   settings->bind("show", this, "visible", flag_get);
 
   init_color();
+  init_frequency_labels_color();
   init_gradient_color();
 
   spectrum->set_size_request(-1, settings->get_int("height"));
@@ -82,7 +87,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     auto width = static_cast<float>(allocation.get_width());
     auto height = allocation.get_height();
     auto line_width = static_cast<float>(settings->get_double("line-width"));
-    auto x = util::linspace(line_width, width - line_width, n_points);
+    auto objects_x = util::linspace(line_width, width - line_width, n_points);
     double scale = settings->get_double("scale");
     double exponent = settings->get_double("exponent");
     auto draw_border = settings->get_boolean("show-bar-border");
@@ -93,6 +98,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       auto style_ctx = spectrum->get_style_context();
 
       style_ctx->lookup_color("theme_selected_bg_color", color);
+      style_ctx->lookup_color("theme_selected_fg_color", color_frequency_axis_labels);
 
       if (use_gradient) {
         gradient_color = color;
@@ -121,9 +127,9 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
         auto bar_height = height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
 
         if (draw_border) {
-          ctx->rectangle(x[n], height - bar_height, width / n_points - line_width, bar_height);
+          ctx->rectangle(objects_x[n], height - bar_height, width / n_points - line_width, bar_height);
         } else {
-          ctx->rectangle(x[n], height - bar_height, width / n_points, bar_height);
+          ctx->rectangle(objects_x[n], height - bar_height, width / n_points, bar_height);
         }
       }
     } else if (spectrum_type == 1) {  // Lines
@@ -132,7 +138,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       for (uint n = 0; n < n_points - 1; n++) {
         auto bar_height = spectrum_mag[n] * height;
 
-        ctx->line_to(x[n], height - bar_height);
+        ctx->line_to(objects_x[n], height - bar_height);
       }
 
       ctx->line_to(width, height);
@@ -170,6 +176,55 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       layout->get_pixel_size(text_width, text_height);
 
       ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)), 0);
+
+      layout->show_in_cairo_context(ctx);
+    }
+
+    // draw the frequency axis
+
+    int min_spectrum_freq = settings->get_int("minimum-frequency");
+    int max_spectrum_freq = settings->get_int("maximum-frequency");
+    int n_freq_labels = 10;
+    double freq_labels_offset = width / static_cast<double>(n_freq_labels);
+
+    auto freq_labels = util::logspace(static_cast<float>(log10(min_spectrum_freq)),
+                                      static_cast<float>(log10(max_spectrum_freq)), n_freq_labels);
+
+    ctx->set_source_rgba(color_frequency_axis_labels.get_red(), color_frequency_axis_labels.get_green(),
+                         color_frequency_axis_labels.get_blue(), color_frequency_axis_labels.get_alpha());
+
+    for (size_t n = 0; n < freq_labels.size(); n++) {
+      std::ostringstream msg;
+
+      auto label = freq_labels[n];
+
+      if (label < 1000.0) {
+        msg.precision(0);
+        msg << std::fixed << label << "Hz";
+      } else if (label > 1000.0 && label < 10000.0) {
+        msg.precision(1);
+        msg << std::fixed << label / 1000 << "kHz";
+      } else {
+        msg.precision(0);
+        msg << std::fixed << label / 1000 << "kHz";
+      }
+
+      Pango::FontDescription font;
+      font.set_family("Monospace");
+      font.set_weight(Pango::WEIGHT_BOLD);
+
+      int text_width = 0;
+      int text_height = 0;
+      auto layout = create_pango_layout(msg.str());
+      layout->set_font_description(font);
+      layout->get_pixel_size(text_width, text_height);
+
+      if (n < freq_labels.size() - 1) {
+        ctx->move_to(n * freq_labels_offset, static_cast<double>(height - static_cast<float>(text_height)));
+      } else {
+        ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)),
+                     static_cast<double>(height - static_cast<float>(text_height)));
+      }
 
       layout->show_in_cairo_context(ctx);
     }
@@ -217,6 +272,16 @@ void SpectrumUi::init_color() {
   auto rgba = v.get();
 
   color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+}
+
+void SpectrumUi::init_frequency_labels_color() {
+  Glib::Variant<std::vector<double>> v;
+
+  settings->get_value("color-axis-labels", v);
+
+  auto rgba = v.get();
+
+  color_frequency_axis_labels.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }
 
 void SpectrumUi::init_gradient_color() {

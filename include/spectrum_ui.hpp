@@ -28,7 +28,7 @@ class SpectrumUi : public Gtk::Grid {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::DrawingArea* spectrum = nullptr;
-  Gdk::RGBA color, gradient_color;
+  Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
 
   std::vector<sigc::connection> connections;
 
@@ -45,6 +45,8 @@ class SpectrumUi : public Gtk::Grid {
   auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
 
   void init_color();
+
+  void init_frequency_labels_color();
 
   void init_gradient_color();
 };

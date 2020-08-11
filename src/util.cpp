@@ -30,11 +30,15 @@ void print_thread_id() {
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
+  if (stop <= start) {
+    return output;
+  }
+
   float delta = (stop - start) / npoints;
 
   float v = start;
 
-  while (v < stop) {
+  while (v <= stop) {
     output.emplace_back(powf(10.0F, v));
 
     v += delta;
@@ -46,11 +50,15 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
+  if (stop <= start) {
+    return output;
+  }
+
   float delta = (stop - start) / npoints;
 
   float v = start;
 
-  while (v < stop) {
+  while (v <= stop) {
     output.emplace_back(v);
 
     v += delta;

@@ -39,6 +39,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   builder->get_widget("fill", fill);
   builder->get_widget("show_bar_border", show_bar_border);
   builder->get_widget("spectrum_color_button", spectrum_color_button);
+  builder->get_widget("axis_color_button", axis_color_button);
   builder->get_widget("gradient_color_button", gradient_color_button);
   builder->get_widget("use_custom_color", use_custom_color);
   builder->get_widget("use_gradient", use_gradient);
@@ -94,6 +95,15 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     settings->set_value("color", v);
   });
 
+  axis_color_button->signal_color_set().connect([&]() {
+    auto axis_color = axis_color_button->get_rgba();
+
+    auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+        axis_color.get_red(), axis_color.get_green(), axis_color.get_blue(), axis_color.get_alpha()});
+
+    settings->set_value("color-axis-labels", v);
+  });
+
   gradient_color_button->signal_color_set().connect([&]() {
     auto color = gradient_color_button->get_rgba();
 
@@ -140,6 +150,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   settings->bind("use-custom-color", use_custom_color, "active", flag);
   settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
   settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
+  settings->bind("use-custom-color", axis_color_button, "sensitive", flag);
   settings->bind("minimum-frequency", minimum_frequency.get(), "value", flag);
   settings->bind("maximum-frequency", maximum_frequency.get(), "value", flag);
 
