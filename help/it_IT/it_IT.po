@@ -1391,7 +1391,7 @@ msgstr "Posizione del segnale medio nell'audio stereo."
 #. (itstool) path: title/em
 #: C/stereotools.page:70
 msgid "Delay L/R"
-msgstr "Ritardo L/R"
+msgstr "Delay Canali"
 
 #. (itstool) path: item/p
 #: C/stereotools.page:72
@@ -1399,8 +1399,8 @@ msgid ""
 "Delay the left or the right channel (milliseconds). Negative values delay "
 "the left channel and positive values the right channel."
 msgstr ""
-"Ritardo del canale sinistro o destro (millisecondi). I valori negativi "
-"ritardano il canale sinistro e i valori positivi il canale destro."
+"Ritarda un canale rispetto all'altro (millisecondi). I valori negativi "
+"ritardano il canale sinistro e i valori positivi quello destro."
 
 #. (itstool) path: title/em
 #: C/stereotools.page:79

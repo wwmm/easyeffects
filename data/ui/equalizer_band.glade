@@ -118,10 +118,10 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <items>
-                  <item translatable="yes">x1</item>
-                  <item translatable="yes">x2</item>
-                  <item translatable="yes">x3</item>
-                  <item translatable="yes">x4</item>
+                  <item>x1</item>
+                  <item>x2</item>
+                  <item>x3</item>
+                  <item>x4</item>
                 </items>
               </object>
               <packing>
