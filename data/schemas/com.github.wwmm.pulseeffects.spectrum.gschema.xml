@@ -34,7 +34,7 @@
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
         <key name="height" type="i">
-            <default>100</default>
+            <default>120</default>
         </key>
         <key name="scale" type="d">
             <range min="0.0" max="10.0" />

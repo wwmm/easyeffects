@@ -30,6 +30,8 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.type", settings->get_string("type"));
 
+  // color
+
   settings->get_value("color", aux);
 
   for (const auto& p : aux.get()) {
@@ -40,7 +42,21 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.add_child("spectrum.color", node_in);
 
-  // background color
+  // axis color
+
+  node_in.clear();
+
+  settings->get_value("color-axis-labels", aux);
+
+  for (const auto& p : aux.get()) {
+    boost::property_tree::ptree node;
+    node.put("", p);
+    node_in.push_back(std::make_pair("", node));
+  }
+
+  root.add_child("spectrum.color-axis-labels", node_in);
+
+  // gradient color
 
   node_in.clear();
 
@@ -80,6 +96,8 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
 
   update_string_key(root, settings, "type", "spectrum.type");
 
+  // spectrum color
+
   try {
     std::vector<double> color;
 
@@ -94,7 +112,23 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
     settings->reset("color");
   }
 
-  // background color
+  // axis color
+
+  try {
+    std::vector<double> color;
+
+    for (const auto& p : root.get_child("spectrum.color-axis-labels")) {
+      color.emplace_back(p.second.get<double>(""));
+    }
+
+    auto v = Glib::Variant<std::vector<double>>::create(color);
+
+    settings->set_value("color-axis-labels", v);
+  } catch (const boost::property_tree::ptree_error& e) {
+    settings->reset("color-axis-labels");
+  }
+
+  // gradient color
 
   try {
     std::vector<double> color;

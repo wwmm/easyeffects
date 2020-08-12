@@ -49,6 +49,8 @@ class SpectrumUi : public Gtk::Grid {
   void init_frequency_labels_color();
 
   void init_gradient_color();
+
+  auto draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int;
 };
 
 #endif
