@@ -13,6 +13,7 @@
 - New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
   applets to hide our window.
 - Initial support to Equalizer APO presets.
+- Improved Slovak and Czech Translations.
 
 ### Note to packagers
 
