@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-11 09:04+0200\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
-"Last-Translator: Pavel Fric <pavelfric@seznam.cz>\n"
+"Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -156,9 +156,8 @@ msgid "Test Signals"
 msgstr "Zkušební signály"
 
 #: data/ui/application.glade:155
-#, fuzzy
 msgid "Global Bypass"
-msgstr "Překlenutí"
+msgstr "Přepustení"
 
 #: data/ui/application.glade:170 data/ui/equalizer.glade:278
 #: data/ui/general_settings.glade:107
@@ -183,12 +182,11 @@ msgstr "Automatické zesílení"
 #: data/ui/autogain.glade:145
 #, fuzzy
 msgid "Reset History"
-msgstr "Vrátit jakost na výchozí"
+msgstr "Vymazat Historii"
 
 #: data/ui/autogain.glade:157
-#, fuzzy
 msgid "Detect Silence"
-msgstr "Zjištění"
+msgstr "Zjištění Ticha"
 
 #: data/ui/autogain.glade:169
 #, fuzzy
@@ -285,7 +283,7 @@ msgstr "Vrátit na výchozí"
 
 #: data/ui/autogain.glade:943
 msgid "Based on"
-msgstr ""
+msgstr "Na základě"
 
 #: data/ui/bass_enhancer.glade:118
 msgid "Bass Enhancer"
@@ -336,7 +334,7 @@ msgstr "Spodní mez"
 #: data/ui/reverb.glade:882 data/ui/stereo_tools.glade:1054
 #: data/ui/webrtc.glade:839
 msgid "Provided by"
-msgstr ""
+msgstr "Poskytuje"
 
 #: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:160
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
@@ -351,7 +349,7 @@ msgstr "Název"
 
 #: data/ui/blacklist_settings.glade:85
 msgid "Reconnect the microphone to apply new changes made to the blacklist"
-msgstr ""
+msgstr "Znovu připojit mikrofon pro použití změn provedených v blacklistu"
 
 #: data/ui/blacklist_settings.glade:143 data/ui/pulse_settings.glade:370
 msgid "Input Effects"
@@ -359,7 +357,7 @@ msgstr "Vstupní efekty"
 
 #: data/ui/blacklist_settings.glade:239
 msgid "Restart the player to apply new changes made to the blacklist"
-msgstr ""
+msgstr "Restartovat přehrávač pro použití změn provedených v blacklistu"
 
 #: data/ui/blacklist_settings.glade:250 data/ui/pulse_settings.glade:660
 msgid "Output Effects"
@@ -367,7 +365,7 @@ msgstr "Výstupní efekty"
 
 #: data/ui/blacklist_settings.glade:273
 msgid "Show Blacklisted Apps in Main Tab"
-msgstr ""
+msgstr "Zobrazit Aplikace z Blacklistu na Hlavní Kartě"
 
 #: data/ui/calibration_signals.glade:32 data/ui/equalizer_band.glade:152
 #: data/ui/filter.glade:281
@@ -604,7 +602,7 @@ msgstr "Postranní řetězec"
 
 #: data/ui/compressor.glade:822
 msgid "Relative Release Threshold"
-msgstr ""
+msgstr "Relativní Práh Uvolnění"
 
 #: data/ui/compressor.glade:833
 #, fuzzy
@@ -628,7 +626,7 @@ msgstr "Vysokopásmový filtr"
 
 #: data/ui/compressor.glade:877
 msgid "Low-pass Filter Mode"
-msgstr ""
+msgstr "Nízkopropustný Mód Filtru"
 
 #: data/ui/compressor.glade:890 data/ui/compressor.glade:907
 #: data/ui/equalizer_band.glade:60
@@ -833,12 +831,11 @@ msgstr "Uhladit"
 
 #: data/ui/equalizer.glade:249
 msgid "Calculate Frequencies"
-msgstr "Spočítat kmitočty"
+msgstr "Vypočítat Kmitočty"
 
 #: data/ui/equalizer.glade:263
-#, fuzzy
 msgid "Import APO Presets"
-msgstr "Zavést přednastavení"
+msgstr "Zavést APO Přednastavení"
 
 #: data/ui/equalizer_band.glade:61
 msgid "Bell"
@@ -1074,11 +1071,11 @@ msgstr "Omezovač"
 
 #: data/ui/limiter.glade:177
 msgid "Automatic Smoothing Control"
-msgstr ""
+msgstr "Automatické Vyhlazení"
 
 #: data/ui/limiter.glade:191
 msgid "Automatic Leveling"
-msgstr ""
+msgstr "Automatické Úrovně"
 
 #: data/ui/limiter.glade:223
 msgid "Input Gain"
@@ -1107,31 +1104,31 @@ msgstr "Tlumení"
 
 #: data/ui/loudness.glade:92
 msgid "Loudness Compensator"
-msgstr ""
+msgstr "Kompenzace Hlasitosti"
 
 #: data/ui/loudness.glade:148
 msgid "Standard"
-msgstr ""
+msgstr "Standardní"
 
 #: data/ui/loudness.glade:162
 msgid "Flat"
-msgstr ""
+msgstr "Rovný"
 
 #: data/ui/loudness.glade:163
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: data/ui/loudness.glade:164
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: data/ui/loudness.glade:165
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: data/ui/loudness.glade:175
 msgid "Reference Signal"
-msgstr ""
+msgstr "Referenční Signál"
 
 #: data/ui/loudness.glade:200
 #, fuzzy
@@ -1223,7 +1220,7 @@ msgstr "Zachovat složku rozhodující o barvě zvuku"
 
 #: data/ui/preset_row.glade:51
 msgid "Load"
-msgstr ""
+msgstr "Načíst"
 
 #: data/ui/preset_row.glade:68
 msgid "Save current settings to this preset file"
@@ -1300,11 +1297,11 @@ msgstr "Převzorkovače"
 
 #: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:389
 msgid "Use Default"
-msgstr "Použít výchozí"
+msgstr "Použít Výchozí"
 
 #: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:440
 msgid "Block Size"
-msgstr "Velikost bloku"
+msgstr "Velikost Bloku"
 
 #: data/ui/pulse_settings.glade:196 data/ui/pulse_settings.glade:486
 msgid "Pipeline Input"
@@ -1462,12 +1459,12 @@ msgstr "Šířka čáry"
 #: data/ui/spectrum_settings.glade:481
 #, fuzzy
 msgid "Minimum Frequency"
-msgstr "Kmitočet"
+msgstr "Minimální Kmitočet"
 
 #: data/ui/spectrum_settings.glade:509
 #, fuzzy
 msgid "Maximum Frequency"
-msgstr "Kmitočet"
+msgstr "Maximální Kmitočet"
 
 #: data/ui/stereo_tools.glade:110
 msgid "Stereo Tools"
@@ -1551,7 +1548,7 @@ msgstr "Fáze sterea"
 
 #: data/ui/webrtc.glade:98
 msgid "WebRTC"
-msgstr ""
+msgstr "WebRTC"
 
 #: data/ui/webrtc.glade:164 data/ui/webrtc.glade:284 data/ui/webrtc.glade:354
 #: data/ui/webrtc.glade:524
@@ -1660,11 +1657,11 @@ msgstr "Vynulovat PulseEffects."
 
 #: src/application.cpp:29
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
 
 #: src/application.cpp:31
 msgid "Hide the Window."
-msgstr ""
+msgstr "Skrýt Okno"
 
 #: src/application.cpp:265
 msgid "Output Presets: "
@@ -1707,12 +1704,12 @@ msgstr "nekonečno"
 #: src/equalizer_ui.cpp:800
 #, fuzzy
 msgid "Import APO Preset File"
-msgstr "Zavést přednastavení"
+msgstr "Zavést APO přednastavení"
 
 #: src/equalizer_ui.cpp:805
 #, fuzzy
 msgid "APO Presets"
-msgstr "Přednastavení"
+msgstr "APO Přednastavení"
 
 #: src/general_settings_ui.cpp:124
 msgid "General"
