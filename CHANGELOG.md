@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.8.0]
+
 ### Added
 
 - Loudness plugin has been replaced with the new Loudness Compensator by Linux Studio Plugins.
@@ -23,8 +25,8 @@
 
 ### Note to packagers
 
-- This release is using GTKMM 3.24 features.
-- This release requires Linux Studio Plugins >= `1.1.24`.
+- This release is using GTKMM 3.24 features and Linux Studio Plugins >= `1.1.24`. If you can not use any of these
+  libraries do not upgrade to PulseEffects 4.8.0!
 - MDA is not needed anymore as optional dependency.
 
 ## [4.7.3]
