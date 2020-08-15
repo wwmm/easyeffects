@@ -15,6 +15,12 @@
 - Initial support to Equalizer APO presets.
 - Improved Slovak and Czech Translations.
 
+### Removed
+
+- The spectrum scaling feature was removed as it leads to wrong mouse hover values when used
+  https://github.com/wwmm/pulseeffects/issues/733. And fixing this will require the addition of an amount of code
+  complexity that does not seem worth it.
+
 ### Note to packagers
 
 - This release is using GTKMM 3.24 features.

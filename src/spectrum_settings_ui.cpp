@@ -47,8 +47,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   get_object(builder, "n_points", n_points);
   get_object(builder, "height", height);
-  get_object(builder, "scale", scale);
-  get_object(builder, "exponent", exponent);
   get_object(builder, "sampling_freq", sampling_freq);
   get_object(builder, "line_width", line_width);
   get_object(builder, "maximum_frequency", maximum_frequency);
@@ -146,8 +144,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   settings->bind("show-bar-border", show_bar_border, "active", flag);
   settings->bind("n-points", n_points.get(), "value", flag);
   settings->bind("height", height.get(), "value", flag);
-  settings->bind("scale", scale.get(), "value", flag);
-  settings->bind("exponent", exponent.get(), "value", flag);
   settings->bind("sampling-freq", sampling_freq.get(), "value", flag);
   settings->bind("line-width", line_width.get(), "value", flag);
   settings->bind("use-gradient", use_gradient, "active", flag);

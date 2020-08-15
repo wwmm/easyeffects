@@ -20,10 +20,6 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.show-bar-border", settings->get_boolean("show-bar-border"));
 
-  root.put("spectrum.scale", settings->get_double("scale"));
-
-  root.put("spectrum.exponent", settings->get_double("exponent"));
-
   root.put("spectrum.sampling-freq", settings->get_int("sampling-freq"));
 
   root.put("spectrum.line-width", settings->get_double("line-width"));
@@ -85,10 +81,6 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "fill", "spectrum.fill");
 
   update_key<bool>(root, settings, "show-bar-border", "spectrum.show-bar-border");
-
-  update_key<double>(root, settings, "scale", "spectrum.scale");
-
-  update_key<double>(root, settings, "exponent", "spectrum.exponent");
 
   update_key<int>(root, settings, "sampling-freq", "spectrum.sampling-freq");
 

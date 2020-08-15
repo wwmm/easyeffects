@@ -36,14 +36,6 @@
         <key name="height" type="i">
             <default>120</default>
         </key>
-        <key name="scale" type="d">
-            <range min="0.0" max="10.0" />
-            <default>1.0</default>
-        </key>
-        <key name="exponent" type="d">
-            <range min="0.0" max="10.0" />
-            <default>1.0</default>
-        </key>
         <key name="sampling-freq" type="i">
             <range min="1" max="200" />
             <default>10</default>

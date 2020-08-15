@@ -37,8 +37,7 @@ class SpectrumSettingsUi : public Gtk::Grid {
 
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> n_points, height, scale, exponent, sampling_freq, line_width, minimum_frequency,
-      maximum_frequency;
+  Glib::RefPtr<Gtk::Adjustment> n_points, height, sampling_freq, line_width, minimum_frequency, maximum_frequency;
 
   std::vector<sigc::connection> connections;
 

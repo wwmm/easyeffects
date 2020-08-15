@@ -88,8 +88,6 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     auto height = allocation.get_height();
     auto line_width = static_cast<float>(settings->get_double("line-width"));
     auto objects_x = util::linspace(line_width, width - line_width, n_points);
-    double scale = settings->get_double("scale");
-    double exponent = settings->get_double("exponent");
     auto draw_border = settings->get_boolean("show-bar-border");
     auto use_gradient = settings->get_boolean("use-gradient");
     auto spectrum_type = settings->get_enum("type");
@@ -111,8 +109,8 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     int usable_height = height - axis_height;
 
     if (use_gradient) {
-      auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
-      auto max_bar_height = usable_height * std::min(1., std::pow(scale * max_mag, exponent));
+      float max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+      double max_bar_height = static_cast<double>(usable_height) * max_mag;
 
       auto gradient = Cairo::LinearGradient::create(0.0, usable_height - max_bar_height, 0, usable_height);
 
@@ -128,13 +126,14 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
 
     if (spectrum_type == 0) {  // Bars
       for (uint n = 0; n < n_points; n++) {
-        auto bar_height = usable_height * std::min(1., std::pow(scale * spectrum_mag[n], exponent));
+        double bar_height = static_cast<double>(usable_height) * spectrum_mag[n];
 
         if (draw_border) {
-          ctx->rectangle(objects_x[n], usable_height - bar_height, static_cast<double>(width) / n_points - line_width,
-                         bar_height);
+          ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
+                         static_cast<double>(width) / n_points - line_width, bar_height);
         } else {
-          ctx->rectangle(objects_x[n], usable_height - bar_height, static_cast<double>(width) / n_points, bar_height);
+          ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
+                         static_cast<double>(width) / n_points, bar_height);
         }
       }
     } else if (spectrum_type == 1) {  // Lines
