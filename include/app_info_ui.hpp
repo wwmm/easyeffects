@@ -2,6 +2,7 @@
 #define APP_INFO_UI_HPP
 
 #include <gtkmm/builder.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
@@ -23,12 +24,16 @@ class AppInfoUi : public Gtk::Grid {
   ~AppInfoUi() override;
 
   Gtk::Switch* enable = nullptr;
-  Gtk::Image* app_icon = nullptr;
-  Gtk::Label* app_name = nullptr;
-  Gtk::Scale* volume = nullptr;
+
   Gtk::ToggleButton* mute = nullptr;
-  Gtk::ToggleButton* blocklist = nullptr;
+  Gtk::CheckButton* blocklist = nullptr;
+
+  Gtk::Scale* volume = nullptr;
+
+  Gtk::Image* app_icon = nullptr;
   Gtk::Image* mute_icon = nullptr;
+
+  Gtk::Label* app_name = nullptr;
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
   Gtk::Label* channels = nullptr;

@@ -2,11 +2,6 @@
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.22"/>
-  <object class="GtkImage" id="blocklist_icon">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">action-unavailable-symbolic</property>
-  </object>
   <object class="GtkImage" id="mute_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -28,7 +23,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">center</property>
-        <property name="valign">center</property>
         <property name="row_spacing">6</property>
         <property name="column_spacing">24</property>
         <child>
@@ -286,14 +280,12 @@
         <property name="margin_start">12</property>
         <property name="margin_end">12</property>
         <property name="hexpand">True</property>
-        <property name="column_spacing">6</property>
         <child>
           <object class="GtkToggleButton" id="mute">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
             <property name="image">mute_icon</property>
           </object>
           <packing>
@@ -302,35 +294,41 @@
           </packing>
         </child>
         <child>
+          <object class="GtkCheckButton" id="blocklist">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="halign">end</property>
+            <property name="draw_indicator">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="label" translatable="yes">Add to Blocklist</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkScale" id="volume">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="valign">center</property>
-            <property name="margin_end">10</property>
+            <property name="margin_start">2</property>
+            <property name="margin_end">24</property>
             <property name="hexpand">True</property>
             <property name="adjustment">volume_adjustment</property>
+            <property name="fill_level">100</property>
             <property name="round_digits">0</property>
             <property name="digits">0</property>
             <property name="value_pos">right</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkToggleButton" id="blocklist">
-            <property name="label" translatable="yes">Blocklist</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="image">blocklist_icon</property>
-            <property name="always_show_image">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
             <property name="top_attach">0</property>
           </packing>
         </child>

@@ -82,7 +82,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_bottom">2</property>
-                <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the blocklist</property>
+                <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the Blocklist</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -236,7 +236,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_bottom">2</property>
-                <property name="label" translatable="yes">Restart the player to apply new changes made to the blocklist</property>
+                <property name="label" translatable="yes">Restart the player to apply new changes made to the Blocklist</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -270,7 +270,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="label" translatable="yes">Show blocklisted Apps in Main Tab</property>
+            <property name="label" translatable="yes">Show Blocklisted Apps in Main Tab</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
