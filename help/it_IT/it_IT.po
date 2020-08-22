@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-07 10:41+0200\n"
+"POT-Creation-Date: 2020-08-22 15:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -1031,8 +1031,8 @@ msgid ""
 "approximated and the more latency the plugin introduces"
 msgstr ""
 "Permette di selezionare la dimensione del frame della trasformata veloce di "
-"Fourier. Più grande è il frame, più precisa sarà la curva approssimata, ma il "
-"processo sarà più lento introducendo una latenza maggiore del plugin"
+"Fourier. Più grande è il frame, più precisa sarà la curva approssimata, ma "
+"il processo sarà più lento introducendo una latenza maggiore del plugin"
 
 #. (itstool) path: title/em
 #: C/loudness.page:56
