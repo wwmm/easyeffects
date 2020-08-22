@@ -146,8 +146,8 @@ msgstr "Besar Latensi"
 msgid "State"
 msgstr "Status"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:166
-msgid "Blacklist"
+#: data/ui/app_info.glade:323 src/blocklist_settings_ui.cpp:166
+msgid "Blocklist"
 msgstr "Daftar Blokir"
 
 #: data/ui/application.glade:140 src/calibration_ui.cpp:39
@@ -337,35 +337,35 @@ msgstr "Monitor Lantai"
 msgid "Provided by"
 msgstr ""
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:160
+#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:160
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Buat Preset"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:179
+#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:179
 #: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 #: data/ui/pulse_info.glade:49
 msgid "Name"
 msgstr "Nama"
 
-#: data/ui/blacklist_settings.glade:85
-msgid "Reconnect the microphone to apply new changes made to the blacklist"
+#: data/ui/blocklist_settings.glade:85
+msgid "Reconnect the microphone to apply new changes made to the blocklist"
 msgstr ""
 
-#: data/ui/blacklist_settings.glade:143 data/ui/pulse_settings.glade:370
+#: data/ui/blocklist_settings.glade:143 data/ui/pulse_settings.glade:370
 msgid "Input Effects"
 msgstr "Efek Input"
 
-#: data/ui/blacklist_settings.glade:239
-msgid "Restart the player to apply new changes made to the blacklist"
+#: data/ui/blocklist_settings.glade:239
+msgid "Restart the player to apply new changes made to the blocklist"
 msgstr ""
 
-#: data/ui/blacklist_settings.glade:250 data/ui/pulse_settings.glade:660
+#: data/ui/blocklist_settings.glade:250 data/ui/pulse_settings.glade:660
 msgid "Output Effects"
 msgstr "Efek Luaran"
 
-#: data/ui/blacklist_settings.glade:273
-msgid "Show Blacklisted Apps in Main Tab"
+#: data/ui/blocklist_settings.glade:273
+msgid "Show Blocklisted Apps in Main Tab"
 msgstr ""
 
 #: data/ui/calibration_signals.glade:32 data/ui/equalizer_band.glade:152

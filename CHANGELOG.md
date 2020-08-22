@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- `Blocklist` adopted and related command modified as a checkbutton inside the app info ui.
+
 ## [4.8.0]
 
 ### Added

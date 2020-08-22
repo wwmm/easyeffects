@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.22"/>
-  <object class="GtkImage" id="blacklist_icon">
+  <object class="GtkImage" id="blocklist_icon">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">action-unavailable-symbolic</property>
@@ -319,14 +319,14 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="blacklist">
-            <property name="label" translatable="yes">Blacklist</property>
+          <object class="GtkToggleButton" id="blocklist">
+            <property name="label" translatable="yes">Blocklist</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <property name="halign">start</property>
             <property name="valign">center</property>
-            <property name="image">blacklist_icon</property>
+            <property name="image">blocklist_icon</property>
             <property name="always_show_image">True</property>
           </object>
           <packing>

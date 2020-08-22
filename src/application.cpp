@@ -108,8 +108,8 @@ void Application::on_startup() {
   soe = std::make_unique<SourceOutputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
-  pm->blacklist_in = settings->get_string_array("blacklist-in");
-  pm->blacklist_out = settings->get_string_array("blacklist-out");
+  pm->blocklist_in = settings->get_string_array("blocklist-in");
+  pm->blocklist_out = settings->get_string_array("blocklist-out");
 
   pm->new_default_sink.connect([&](auto name) {
     util::debug("new default sink: " + name);
@@ -188,12 +188,12 @@ void Application::on_startup() {
     }
   });
 
-  settings->signal_changed("blacklist-in").connect([=](auto key) {
-    pm->blacklist_in = settings->get_string_array("blacklist-in");
+  settings->signal_changed("blocklist-in").connect([=](auto key) {
+    pm->blocklist_in = settings->get_string_array("blocklist-in");
   });
 
-  settings->signal_changed("blacklist-out").connect([=](auto key) {
-    pm->blacklist_out = settings->get_string_array("blacklist-out");
+  settings->signal_changed("blocklist-out").connect([=](auto key) {
+    pm->blocklist_out = settings->get_string_array("blocklist-out");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });

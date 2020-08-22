@@ -11,7 +11,7 @@
 #include <memory>
 #include <vector>
 #include "app_info_ui.hpp"
-#include "blacklist_settings_ui.hpp"
+#include "blocklist_settings_ui.hpp"
 #include "preset_type.hpp"
 #include "pulse_manager.hpp"
 #include "spectrum_ui.hpp"

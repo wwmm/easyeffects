@@ -149,9 +149,9 @@ msgstr "Latenza"
 msgid "State"
 msgstr "Stato"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:166
-msgid "Blacklist"
-msgstr "Blacklist"
+#: data/ui/app_info.glade:323 src/blocklist_settings_ui.cpp:166
+msgid "Blocklist"
+msgstr "Blocklist"
 
 #: data/ui/application.glade:140 src/calibration_ui.cpp:39
 #: src/calibration_ui.cpp:164
@@ -337,37 +337,37 @@ msgstr "Limite inferiore"
 msgid "Provided by"
 msgstr "Fornito da"
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:160
+#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:160
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Crea Profilo"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:179
+#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:179
 #: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 #: data/ui/pulse_info.glade:49
 msgid "Name"
 msgstr "Nome"
 
-#: data/ui/blacklist_settings.glade:85
-msgid "Reconnect the microphone to apply new changes made to the blacklist"
+#: data/ui/blocklist_settings.glade:85
+msgid "Reconnect the microphone to apply new changes made to the blocklist"
 msgstr ""
-"Riconnetti il microfono per applicare le modifiche apportate alla blacklist"
+"Riconnetti il microfono per applicare le modifiche apportate alla blocklist"
 
-#: data/ui/blacklist_settings.glade:143 data/ui/pulse_settings.glade:370
+#: data/ui/blocklist_settings.glade:143 data/ui/pulse_settings.glade:370
 msgid "Input Effects"
 msgstr "Effetti in Ingresso"
 
-#: data/ui/blacklist_settings.glade:239
-msgid "Restart the player to apply new changes made to the blacklist"
+#: data/ui/blocklist_settings.glade:239
+msgid "Restart the player to apply new changes made to the blocklist"
 msgstr ""
-"Riavvia il media player per applicare le modifiche apportate alla blacklist"
+"Riavvia il media player per applicare le modifiche apportate alla blocklist"
 
-#: data/ui/blacklist_settings.glade:250 data/ui/pulse_settings.glade:660
+#: data/ui/blocklist_settings.glade:250 data/ui/pulse_settings.glade:660
 msgid "Output Effects"
 msgstr "Effetti in Uscita"
 
-#: data/ui/blacklist_settings.glade:273
-msgid "Show Blacklisted Apps in Main Tab"
+#: data/ui/blocklist_settings.glade:273
+msgid "Show Blocklisted Apps in Main Tab"
 msgstr "Mostra Applicazioni Escluse nella Scheda Principale"
 
 #: data/ui/calibration_signals.glade:32 data/ui/equalizer_band.glade:152

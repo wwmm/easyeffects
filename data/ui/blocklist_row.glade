@@ -8,7 +8,7 @@
     <property name="icon_name">list-remove-symbolic</property>
     <property name="icon_size">2</property>
   </object>
-  <object class="GtkListBoxRow" id="blacklist_row">
+  <object class="GtkListBoxRow" id="blocklist_row">
     <property name="visible">True</property>
     <property name="can_focus">True</property>
     <property name="valign">center</property>

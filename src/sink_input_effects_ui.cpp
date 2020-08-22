@@ -172,11 +172,11 @@ auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_p
 }
 
 void SinkInputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
-  // Blacklist check
-  auto forbidden_app = BlacklistSettingsUi::app_is_blacklisted(app_info->name, PresetType::output);
+  // Blocklist check
+  auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(app_info->name, PresetType::output);
 
   if (forbidden_app) {
-    app_info->visible = BlacklistSettingsUi::get_blacklisted_apps_visibility();
+    app_info->visible = BlocklistSettingsUi::get_blocklisted_apps_visibility();
 
     if (!app_info->visible) {
       return;

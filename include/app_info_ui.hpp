@@ -27,7 +27,7 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Label* app_name = nullptr;
   Gtk::Scale* volume = nullptr;
   Gtk::ToggleButton* mute = nullptr;
-  Gtk::ToggleButton* blacklist = nullptr;
+  Gtk::ToggleButton* blocklist = nullptr;
   Gtk::Image* mute_icon = nullptr;
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
@@ -44,12 +44,12 @@ class AppInfoUi : public Gtk::Grid {
  private:
   std::string log_tag = "app_info_ui: ";
 
-  bool running = true, is_enabled = true, is_blacklisted = true, pre_bl_state = true;
+  bool running = true, is_enabled = true, is_blocklisted = true, pre_bl_state = true;
 
   sigc::connection enable_connection;
   sigc::connection volume_connection;
   sigc::connection mute_connection;
-  sigc::connection blacklist_connection;
+  sigc::connection blocklist_connection;
   sigc::connection timeout_connection;
 
   PulseManager* pm = nullptr;

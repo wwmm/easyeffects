@@ -1,5 +1,5 @@
 #include "app_info_ui.hpp"
-#include "blacklist_settings_ui.hpp"
+#include "blocklist_settings_ui.hpp"
 #include "preset_type.hpp"
 #include "util.hpp"
 #include <glibmm/i18n.h>
@@ -17,7 +17,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("app_name", app_name);
   builder->get_widget("volume", volume);
   builder->get_widget("mute", mute);
-  builder->get_widget("blacklist", blacklist);
+  builder->get_widget("blocklist", blocklist);
   builder->get_widget("mute_icon", mute_icon);
   builder->get_widget("format", format);
   builder->get_widget("rate", rate);
@@ -27,10 +27,10 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
 
-  is_blacklisted =
-      BlacklistSettingsUi::app_is_blacklisted(app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
+  is_blocklisted =
+      BlocklistSettingsUi::app_is_blocklisted(app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
 
-  is_enabled = app_info->connected && !is_blacklisted;
+  is_enabled = app_info->connected && !is_blocklisted;
 
   init_widgets();
   connect_signals();
@@ -68,10 +68,10 @@ auto AppInfoUi::latency_to_str(uint value) -> std::string {
 }
 
 void AppInfoUi::init_widgets() {
-  enable->set_active(is_enabled && !is_blacklisted);
-  enable->set_sensitive(!is_blacklisted);
+  enable->set_active(is_enabled && !is_blocklisted);
+  enable->set_sensitive(!is_blocklisted);
 
-  blacklist->set_active(is_blacklisted);
+  blocklist->set_active(is_blocklisted);
 
   app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
 
@@ -107,22 +107,22 @@ void AppInfoUi::connect_signals() {
 
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 
-  blacklist_connection = blacklist->signal_clicked().connect([=]() {
+  blocklist_connection = blocklist->signal_clicked().connect([=]() {
     PresetType preset_type = (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input;
 
-    if (blacklist->get_active()) {
-      // Add new entry to blacklist vector
-      BlacklistSettingsUi::add_new_entry(app_info->name, preset_type);
+    if (blocklist->get_active()) {
+      // Add new entry to blocklist vector
+      BlocklistSettingsUi::add_new_entry(app_info->name, preset_type);
       pre_bl_state = is_enabled;
-      is_blacklisted = true;
+      is_blocklisted = true;
       if (is_enabled) {
         enable->set_active(false);
       }
       enable->set_sensitive(false);
     } else {
-      // Remove app name entry from blacklist vector
-      BlacklistSettingsUi::remove_entry(app_info->name, preset_type);
-      is_blacklisted = false;
+      // Remove app name entry from blocklist vector
+      BlocklistSettingsUi::remove_entry(app_info->name, preset_type);
+      is_blocklisted = false;
       enable->set_sensitive(true);
       if (pre_bl_state) {
         enable->set_active(true);
@@ -191,7 +191,7 @@ void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
   enable_connection.disconnect();
   volume_connection.disconnect();
   mute_connection.disconnect();
-  blacklist_connection.disconnect();
+  blocklist_connection.disconnect();
 
   init_widgets();
   connect_signals();

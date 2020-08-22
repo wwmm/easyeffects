@@ -4,7 +4,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
 #include <memory>
-#include "blacklist_settings_ui.hpp"
+#include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
 #include "pulse_settings_ui.hpp"
@@ -43,7 +43,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
-  BlacklistSettingsUi::add_to_stack(stack_menu_settings);
+  BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed("visible-child",

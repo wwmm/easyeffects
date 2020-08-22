@@ -95,8 +95,8 @@ class PulseManager {
   auto get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo>;
   auto get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo>;
 
-  std::vector<std::string> blacklist_in;   // for input effects
-  std::vector<std::string> blacklist_out;  // for output effects
+  std::vector<std::string> blocklist_in;   // for input effects
+  std::vector<std::string> blocklist_out;  // for output effects
 
   void find_sink_inputs();
   void find_source_outputs();
@@ -141,15 +141,15 @@ class PulseManager {
   pa_mainloop_api* main_loop_api = nullptr;
   pa_context* context = nullptr;
 
-  std::array<std::string, 7> blacklist_apps = {
+  std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
 
-  std::array<std::string, 4> blacklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
+  std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
                                                      "screen-capture"};
 
-  std::array<std::string, 1> blacklist_media_role = {"event"};
+  std::array<std::string, 1> blocklist_media_role = {"event"};
 
-  std::array<std::string, 4> blacklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
+  std::array<std::string, 4> blocklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",
                                                  "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
@@ -210,7 +210,7 @@ class PulseManager {
       app_name = prop;
 
       forbidden_app =
-          std::find(std::begin(blacklist_apps), std::end(blacklist_apps), app_name) != std::end(blacklist_apps);
+          std::find(std::begin(blocklist_apps), std::end(blocklist_apps), app_name) != std::end(blocklist_apps);
 
       if (forbidden_app) {
         return nullptr;
@@ -226,8 +226,8 @@ class PulseManager {
         app_name = media_name;
       }
 
-      forbidden_app = std::find(std::begin(blacklist_media_name), std::end(blacklist_media_name), media_name) !=
-                      std::end(blacklist_media_name);
+      forbidden_app = std::find(std::begin(blocklist_media_name), std::end(blocklist_media_name), media_name) !=
+                      std::end(blocklist_media_name);
 
       if (forbidden_app) {
         return nullptr;
@@ -239,8 +239,8 @@ class PulseManager {
     if (prop != nullptr) {
       media_role = prop;
 
-      forbidden_app = std::find(std::begin(blacklist_media_role), std::end(blacklist_media_role), media_role) !=
-                      std::end(blacklist_media_role);
+      forbidden_app = std::find(std::begin(blocklist_media_role), std::end(blocklist_media_role), media_role) !=
+                      std::end(blocklist_media_role);
 
       if (forbidden_app) {
         return nullptr;
@@ -253,7 +253,7 @@ class PulseManager {
       app_id = prop;
 
       forbidden_app =
-          std::find(std::begin(blacklist_app_id), std::end(blacklist_app_id), app_id) != std::end(blacklist_app_id);
+          std::find(std::begin(blocklist_app_id), std::end(blocklist_app_id), app_id) != std::end(blocklist_app_id);
 
       if (forbidden_app) {
         return nullptr;

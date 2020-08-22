@@ -147,8 +147,8 @@ msgstr "Odozva"
 msgid "State"
 msgstr "Stav"
 
-#: data/ui/app_info.glade:323 src/blacklist_settings_ui.cpp:166
-msgid "Blacklist"
+#: data/ui/app_info.glade:323 src/blocklist_settings_ui.cpp:166
+msgid "Blocklist"
 msgstr "Čierny List"
 
 #: data/ui/application.glade:140 src/calibration_ui.cpp:39
@@ -338,36 +338,36 @@ msgstr "Spodná hranica"
 msgid "Provided by"
 msgstr "Poskytuje"
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:160
+#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:160
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Vytvoriť Predvoľbu"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:179
+#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:179
 #: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 #: data/ui/pulse_info.glade:49
 msgid "Name"
 msgstr "Názov"
 
-#: data/ui/blacklist_settings.glade:85
-msgid "Reconnect the microphone to apply new changes made to the blacklist"
-msgstr "Znovu pripojiť mikrofón pre použitie zmien vykonaných v blackliste"
+#: data/ui/blocklist_settings.glade:85
+msgid "Reconnect the microphone to apply new changes made to the blocklist"
+msgstr "Znovu pripojiť mikrofón pre použitie zmien vykonaných v blockliste"
 
-#: data/ui/blacklist_settings.glade:143 data/ui/pulse_settings.glade:370
+#: data/ui/blocklist_settings.glade:143 data/ui/pulse_settings.glade:370
 msgid "Input Effects"
 msgstr "Vstupné Efekty"
 
-#: data/ui/blacklist_settings.glade:239
-msgid "Restart the player to apply new changes made to the blacklist"
-msgstr "Reštartovať prehrávač pre použitie zmien vykonaných v blackliste"
+#: data/ui/blocklist_settings.glade:239
+msgid "Restart the player to apply new changes made to the blocklist"
+msgstr "Reštartovať prehrávač pre použitie zmien vykonaných v blockliste"
 
-#: data/ui/blacklist_settings.glade:250 data/ui/pulse_settings.glade:660
+#: data/ui/blocklist_settings.glade:250 data/ui/pulse_settings.glade:660
 msgid "Output Effects"
 msgstr "Výstupné Efekty"
 
-#: data/ui/blacklist_settings.glade:273
-msgid "Show Blacklisted Apps in Main Tab"
-msgstr "Zobraziť Aplikácie z Blacklistu na Hlavnej Karte"
+#: data/ui/blocklist_settings.glade:273
+msgid "Show Blocklisted Apps in Main Tab"
+msgstr "Zobraziť Aplikácie z Blocklistu na Hlavnej Karte"
 
 #: data/ui/calibration_signals.glade:32 data/ui/equalizer_band.glade:152
 #: data/ui/filter.glade:281

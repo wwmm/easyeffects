@@ -49,13 +49,13 @@
         <key name="custom-source" type="s">
             <default>""</default>
         </key>
-        <key name="show-blacklisted-apps" type="b">
+        <key name="show-blocklisted-apps" type="b">
             <default>false</default>
         </key>
-        <key name="blacklist-in" type="as">
+        <key name="blocklist-in" type="as">
             <default>[]</default>
         </key>
-        <key name="blacklist-out" type="as">
+        <key name="blocklist-out" type="as">
             <default>[]</default>
         </key>
         <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">
