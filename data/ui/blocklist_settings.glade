@@ -2,12 +2,12 @@
 <!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.22"/>
-  <object class="GtkImage" id="image_add_blacklist_in">
+  <object class="GtkImage" id="image_add_blocklist_in">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">list-add-symbolic</property>
   </object>
-  <object class="GtkImage" id="image_add_blacklist_out">
+  <object class="GtkImage" id="image_add_blocklist_out">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="icon_name">list-add-symbolic</property>
@@ -22,7 +22,7 @@
         <property name="can_focus">False</property>
         <property name="halign">center</property>
         <property name="valign">center</property>
-        <property name="stack">blacklist_stack</property>
+        <property name="stack">blocklist_stack</property>
       </object>
       <packing>
         <property name="left_attach">0</property>
@@ -30,7 +30,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkStack" id="blacklist_stack">
+      <object class="GtkStack" id="blocklist_stack">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="hexpand">True</property>
@@ -46,14 +46,14 @@
             <property name="row_spacing">18</property>
             <property name="column_spacing">6</property>
             <child>
-              <object class="GtkButton" id="add_blacklist_in">
+              <object class="GtkButton" id="add_blocklist_in">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="tooltip_text" translatable="yes">Create Preset</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="image">image_add_blacklist_in</property>
+                <property name="image">image_add_blocklist_in</property>
                 <style>
                   <class name="suggested-action"/>
                 </style>
@@ -64,7 +64,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="blacklist_in_name">
+              <object class="GtkEntry" id="blocklist_in_name">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="valign">center</property>
@@ -82,7 +82,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_bottom">2</property>
-                <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the blacklist</property>
+                <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the Blocklist</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -99,7 +99,7 @@
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="blacklist_in_scrolled_window">
+                  <object class="GtkScrolledWindow" id="blocklist_in_scrolled_window">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -113,8 +113,8 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <child>
-                          <object class="GtkListBox" id="blacklist_in_listbox">
-                            <property name="name">listbox_blacklist</property>
+                          <object class="GtkListBox" id="blocklist_in_listbox">
+                            <property name="name">listbox_blocklist</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="hexpand">True</property>
@@ -139,7 +139,7 @@
             </child>
           </object>
           <packing>
-            <property name="name">blacklist_in</property>
+            <property name="name">blocklist_in</property>
             <property name="title" translatable="yes">Input Effects</property>
             <property name="icon_name">audio-input-microphone-symbolic</property>
           </packing>
@@ -153,14 +153,14 @@
             <property name="row_spacing">18</property>
             <property name="column_spacing">6</property>
             <child>
-              <object class="GtkButton" id="add_blacklist_out">
+              <object class="GtkButton" id="add_blocklist_out">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="tooltip_text" translatable="yes">Create Preset</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="image">image_add_blacklist_out</property>
+                <property name="image">image_add_blocklist_out</property>
                 <style>
                   <class name="suggested-action"/>
                 </style>
@@ -171,7 +171,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="blacklist_out_name">
+              <object class="GtkEntry" id="blocklist_out_name">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="valign">center</property>
@@ -193,7 +193,7 @@
                 <property name="label_xalign">0</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkScrolledWindow" id="blacklist_out_scrolled_window">
+                  <object class="GtkScrolledWindow" id="blocklist_out_scrolled_window">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hexpand">True</property>
@@ -207,8 +207,8 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <child>
-                          <object class="GtkListBox" id="blacklist_out_listbox">
-                            <property name="name">listbox_blacklist</property>
+                          <object class="GtkListBox" id="blocklist_out_listbox">
+                            <property name="name">listbox_blocklist</property>
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="hexpand">True</property>
@@ -236,7 +236,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="margin_bottom">2</property>
-                <property name="label" translatable="yes">Restart the player to apply new changes made to the blacklist</property>
+                <property name="label" translatable="yes">Restart the player to apply new changes made to the Blocklist</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -246,7 +246,7 @@
             </child>
           </object>
           <packing>
-            <property name="name">blacklist_out</property>
+            <property name="name">blocklist_out</property>
             <property name="title" translatable="yes">Output Effects</property>
             <property name="icon_name">audio-speakers-symbolic</property>
             <property name="position">1</property>
@@ -270,7 +270,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">end</property>
-            <property name="label" translatable="yes">Show Blacklisted Apps in Main Tab</property>
+            <property name="label" translatable="yes">Show Blocklisted Apps in Main Tab</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -278,7 +278,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="show_blacklisted_apps">
+          <object class="GtkSwitch" id="show_blocklisted_apps">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">start</property>

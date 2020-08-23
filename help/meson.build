@@ -38,7 +38,7 @@ help_pages = [
   'advancedinfo.page',
   'saturated.page',
   'autogain.page',
-  'blacklist.page',
+  'blocklist.page',
   'guide_1.page'
 ]
 
@@ -49,7 +49,7 @@ help_media = [
   'figures/userpresets.png',
   'figures/advancedinfo.png',
   'figures/saturated.png',
-  'figures/blacklist.png'
+  'figures/blocklist.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),

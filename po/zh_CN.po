@@ -127,20 +127,20 @@ msgstr "延迟"
 msgid "Block Size"
 msgstr "块大小"
 
-#: data/ui/pulse_settings.glade:204 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:204 data/ui/blocklist_settings.glade:130
 msgid "Input Effects"
 msgstr "输入效果"
 
-#: data/ui/pulse_settings.glade:352 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:352 data/ui/blocklist_settings.glade:224
 msgid "Output Effects"
 msgstr "输入效果"
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:147
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "创建预设"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:166
 #: data/ui/presets_menu.glade:55 data/ui/presets_menu.glade:164
 msgid "Name"
 msgstr "名称"
@@ -1424,8 +1424,8 @@ msgstr "否"
 msgid "Applications"
 msgstr "程序"
 
-#: src/blacklist_settings_ui.cpp:83
-msgid "Blacklist"
+#: src/blocklist_settings_ui.cpp:83
+msgid "Blocklist"
 msgstr "黑名单"
 
 #: src/general_settings_ui.cpp:137

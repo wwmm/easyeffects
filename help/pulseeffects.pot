@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-07 10:41+0200\n"
+"POT-Creation-Date: 2020-08-22 15:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2254,13 +2254,13 @@ msgid "Output gain value. The input signal will be multiplied by this correction
 msgstr ""
 
 #. (itstool) path: page/title
-#: C/blacklist.page:9
-msgid "Applications Blacklist"
+#: C/blocklist.page:9
+msgid "Applications Blocklist"
 msgstr ""
 
 #. (itstool) path: page/p
-#: C/blacklist.page:11
-msgid "In the settings menu there is an option that allows the user to apply effects to all applications without the need to switch each one on individually. But there are cases where the user wants a specific application to be excluded from the \"Enable All\" functionality. This can be done by using a blacklist. Just add the application name exactly as it is shown in the \"Applications\" entry."
+#: C/blocklist.page:11
+msgid "In the settings menu there is an option that allows the user to apply effects to all applications without the need to switch each one on individually. But there are cases where the user wants a specific application to be excluded from the \"Enable All\" functionality. This can be done by using a blocklist. Just add the application name exactly as it is shown in the \"Applications\" entry."
 msgstr ""
 
 #. (itstool) path: page/title

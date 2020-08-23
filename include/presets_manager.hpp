@@ -133,9 +133,9 @@ class PresetsManager {
 
   void create_user_directory(const boost::filesystem::path& path);
 
-  void save_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
+  void save_blocklist(PresetType preset_type, boost::property_tree::ptree& root);
 
-  void load_blacklist(PresetType preset_type, const boost::property_tree::ptree& root);
+  void load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root);
 };
 
 #endif

@@ -160,14 +160,14 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
 
   bool forbidden_app = false;
   bool success = false;
-  auto* blacklist = g_settings_get_strv(settings, "blacklist-in");
+  auto* blocklist = g_settings_get_strv(settings, "blocklist-in");
 
-  for (std::size_t i = 0; blacklist[i] != nullptr; i++) {
-    if (app_info->name == blacklist[i]) {
+  for (std::size_t i = 0; blocklist[i] != nullptr; i++) {
+    if (app_info->name == blocklist[i]) {
       forbidden_app = true;
     }
 
-    g_free(blacklist[i]);
+    g_free(blocklist[i]);
   }
 
   if (app_info->connected) {
@@ -190,7 +190,7 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
     }
   }
 
-  g_free(blacklist);
+  g_free(blocklist);
 }
 
 void SourceOutputEffects::add_plugins_to_pipeline() {

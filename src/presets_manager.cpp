@@ -147,59 +147,59 @@ void PresetsManager::add(PresetType preset_type, const std::string& name) {
   save(preset_type, name);
 }
 
-void PresetsManager::save_blacklist(PresetType preset_type, boost::property_tree::ptree& root) {
-  std::vector<std::string> blacklist;
+void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree::ptree& root) {
+  std::vector<std::string> blocklist;
   boost::property_tree::ptree node_in;
 
   if (preset_type == PresetType::output) {
-    blacklist = settings->get_string_array("blacklist-out");
+    blocklist = settings->get_string_array("blocklist-out");
 
     node_in.clear();
 
-    for (const auto& p : blacklist) {
+    for (const auto& p : blocklist) {
       boost::property_tree::ptree node;
       node.put("", p);
       node_in.push_back(std::make_pair("", node));
     }
 
-    root.add_child("output.blacklist", node_in);
+    root.add_child("output.blocklist", node_in);
   } else {
-    blacklist = settings->get_string_array("blacklist-in");
+    blocklist = settings->get_string_array("blocklist-in");
 
     node_in.clear();
 
-    for (const auto& p : blacklist) {
+    for (const auto& p : blocklist) {
       boost::property_tree::ptree node;
       node.put("", p);
       node_in.push_back(std::make_pair("", node));
     }
 
-    root.add_child("input.blacklist", node_in);
+    root.add_child("input.blocklist", node_in);
   }
 }
 
-void PresetsManager::load_blacklist(PresetType preset_type, const boost::property_tree::ptree& root) {
-  std::vector<std::string> blacklist;
+void PresetsManager::load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root) {
+  std::vector<std::string> blocklist;
 
   if (preset_type == PresetType::output) {
     try {
-      for (const auto& p : root.get_child("input.blacklist")) {
-        blacklist.emplace_back(p.second.data());
+      for (const auto& p : root.get_child("input.blocklist")) {
+        blocklist.emplace_back(p.second.data());
       }
 
-      settings->set_string_array("blacklist-in", blacklist);
+      settings->set_string_array("blocklist-in", blocklist);
     } catch (const boost::property_tree::ptree_error& e) {
-      settings->reset("blacklist-in");
+      settings->reset("blocklist-in");
     }
   } else {
     try {
-      for (const auto& p : root.get_child("output.blacklist")) {
-        blacklist.emplace_back(p.second.data());
+      for (const auto& p : root.get_child("output.blocklist")) {
+        blocklist.emplace_back(p.second.data());
       }
 
-      settings->set_string_array("blacklist-out", blacklist);
+      settings->set_string_array("blocklist-out", blocklist);
     } catch (const boost::property_tree::ptree_error& e) {
-      settings->reset("blacklist-out");
+      settings->reset("blocklist-out");
     }
   }
 }
@@ -211,7 +211,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::filesystem::path output_file;
 
   spectrum->write(preset_type, root);
-  save_blacklist(preset_type, root);
+  save_blocklist(preset_type, root);
 
   if (preset_type == PresetType::output) {
     std::vector<std::string> output_plugins = sie_settings->get_string_array("plugins");
@@ -384,7 +384,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
     }
   }
 
-  load_blacklist(preset_type, root);
+  load_blocklist(preset_type, root);
 
   spectrum->read(preset_type, root);
   bass_enhancer->read(preset_type, root);

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-07 10:41+0200\n"
+"POT-Creation-Date: 2020-08-22 15:53+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -1031,8 +1031,8 @@ msgid ""
 "approximated and the more latency the plugin introduces"
 msgstr ""
 "Permette di selezionare la dimensione del frame della trasformata veloce di "
-"Fourier. Più grande è il frame, più precisa sarà la curva approssimata, ma il "
-"processo sarà più lento introducendo una latenza maggiore del plugin"
+"Fourier. Più grande è il frame, più precisa sarà la curva approssimata, ma "
+"il processo sarà più lento introducendo una latenza maggiore del plugin"
 
 #. (itstool) path: title/em
 #: C/loudness.page:56
@@ -2852,18 +2852,18 @@ msgstr ""
 "portata al valore impostato come Livello."
 
 #. (itstool) path: page/title
-#: C/blacklist.page:9
-msgid "Applications Blacklist"
+#: C/blocklist.page:9
+msgid "Applications Blocklist"
 msgstr "Applicazioni Escluse"
 
 #. (itstool) path: page/p
-#: C/blacklist.page:11
+#: C/blocklist.page:11
 msgid ""
 "In the settings menu there is an option that allows the user to apply "
 "effects to all applications without the need to switch each one on "
 "individually. But there are cases where the user wants a specific "
 "application to be excluded from the \"Enable All\" functionality. This can "
-"be done by using a blacklist. Just add the application name exactly as it is "
+"be done by using a blocklist. Just add the application name exactly as it is "
 "shown in the \"Applications\" entry."
 msgstr ""
 "Nel menu delle impostazioni è presente un'opzione che consente all'utente di "

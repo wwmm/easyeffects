@@ -1348,10 +1348,10 @@ void PulseManager::changed_app(const pa_sink_input_info* info) {
   auto app_info = parse_app_info(info);
 
   if (app_info != nullptr) {
-    // checking if the user blacklisted this app
+    // checking if the user blocklisted this app
 
     auto forbidden_app =
-        std::find(std::begin(blacklist_out), std::end(blacklist_out), app_info->name) != std::end(blacklist_out);
+        std::find(std::begin(blocklist_out), std::end(blocklist_out), app_info->name) != std::end(blocklist_out);
 
     if (!forbidden_app) {
       app_info->app_type = "sink_input";
@@ -1365,10 +1365,10 @@ void PulseManager::changed_app(const pa_source_output_info* info) {
   auto app_info = parse_app_info(info);
 
   if (app_info != nullptr) {
-    // checking if the user blacklisted this app
+    // checking if the user blocklisted this app
 
     auto forbidden_app =
-        std::find(std::begin(blacklist_in), std::end(blacklist_in), app_info->name) != std::end(blacklist_in);
+        std::find(std::begin(blocklist_in), std::end(blocklist_in), app_info->name) != std::end(blocklist_in);
 
     if (!forbidden_app) {
       app_info->app_type = "source_output";

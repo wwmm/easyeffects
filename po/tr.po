@@ -137,20 +137,20 @@ msgstr "Gecikme"
 msgid "Pipeline Output"
 msgstr "Pipeline Çıkış"
 
-#: data/ui/pulse_settings.glade:368 data/ui/blacklist_settings.glade:130
+#: data/ui/pulse_settings.glade:368 data/ui/blocklist_settings.glade:130
 msgid "Input Effects"
 msgstr "Giriş Efektleri"
 
-#: data/ui/pulse_settings.glade:656 data/ui/blacklist_settings.glade:224
+#: data/ui/pulse_settings.glade:656 data/ui/blocklist_settings.glade:224
 msgid "Output Effects"
 msgstr "Çıkış Efektleri"
 
-#: data/ui/blacklist_settings.glade:53 data/ui/blacklist_settings.glade:147
+#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:147
 #: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
 msgid "Create Preset"
 msgstr "Hazır Ayar Oluştur"
 
-#: data/ui/blacklist_settings.glade:72 data/ui/blacklist_settings.glade:166
+#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:166
 #: data/ui/pulse_info.glade:49 data/ui/presets_menu.glade:55
 #: data/ui/presets_menu.glade:164
 msgid "Name"
@@ -1514,8 +1514,8 @@ msgstr "Giriş Ön Ayarları: "
 msgid "Applications"
 msgstr "Uygulamalar"
 
-#: src/blacklist_settings_ui.cpp:71
-msgid "Blacklist"
+#: src/blocklist_settings_ui.cpp:71
+msgid "Blocklist"
 msgstr "Karaliste"
 
 #: src/general_settings_ui.cpp:121

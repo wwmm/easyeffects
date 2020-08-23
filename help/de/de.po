@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-08-07 10:41+0200\n"
+"POT-Creation-Date: 2020-08-22 15:53+0200\n"
 "PO-Revision-Date: 2020-01-12 17:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -2827,25 +2827,25 @@ msgstr ""
 "bringen."
 
 #. (itstool) path: page/title
-#: C/blacklist.page:9
-msgid "Applications Blacklist"
+#: C/blocklist.page:9
+msgid "Applications Blocklist"
 msgstr "Anwendungssperrliste"
 
 #. (itstool) path: page/p
-#: C/blacklist.page:11
+#: C/blocklist.page:11
 msgid ""
 "In the settings menu there is an option that allows the user to apply "
 "effects to all applications without the need to switch each one on "
 "individually. But there are cases where the user wants a specific "
 "application to be excluded from the \"Enable All\" functionality. This can "
-"be done by using a blacklist. Just add the application name exactly as it is "
+"be done by using a blocklist. Just add the application name exactly as it is "
 "shown in the \"Applications\" entry."
 msgstr ""
 "Im Einstellungsmenü gibt es eine Option, die es dem Benutzer erlaubt, "
 "Effekte auf alle Programme anzuwenden, ohne dass man jedes Programm einzeln "
 "einschalten muss. Es gibt jedoch Fälle, in denen der Benutzer möchte, dass "
 "eine bestimmte Anwendung von der \"Alle aktivieren\"-Funktionalität "
-"ausgeschlossen wird. Dies kann über eine Blacklist erfolgen. Füge einfach "
+"ausgeschlossen wird. Dies kann über eine Blocklist erfolgen. Füge einfach "
 "den Namen der Anwendung genau so hinzu, wie er im Eintrag \"Anwendungen\" "
 "angezeigt wird."
 
