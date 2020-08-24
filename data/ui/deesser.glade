@@ -15,7 +15,6 @@
     <property name="value">1</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_f1_level_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="f2_freq">
     <property name="lower">10</property>
@@ -30,7 +29,6 @@
     <property name="value">4</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_f2_level_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="f2_q">
     <property name="lower">0.1</property>
@@ -152,7 +150,6 @@
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="ratio">
     <property name="lower">1</property>
@@ -166,7 +163,6 @@
     <property name="value">-18</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

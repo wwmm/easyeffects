@@ -164,7 +164,6 @@
     <property name="value">9</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
-    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="knee1">
     <property name="upper">18</property>
@@ -188,7 +187,6 @@
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="makeup1">
     <property name="upper">36</property>
@@ -296,7 +294,6 @@
     <property name="value">-12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="threshold1">
     <property name="lower">-60</property>

@@ -135,7 +135,6 @@
     <property name="value">-6</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
-    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="lookahead">
     <property name="upper">20</property>
@@ -154,7 +153,6 @@
     <property name="upper">60</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-60</property>
@@ -197,7 +195,6 @@
     <property name="value">-12</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

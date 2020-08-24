@@ -115,13 +115,11 @@
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="limit">
     <property name="lower">-24</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_limit_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="lookahead">
     <property name="lower">0.1</property>

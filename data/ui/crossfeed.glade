@@ -15,7 +15,6 @@
     <property name="value">4.5</property>
     <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_feed_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

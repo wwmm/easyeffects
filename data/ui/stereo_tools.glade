@@ -158,7 +158,6 @@
     <property name="value">1</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
-    <signal name="value-changed" handler="on_left_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="slev">
     <property name="lower">-36</property>
@@ -176,7 +175,6 @@
     <property name="upper">360</property>
     <property name="step_increment">0.01</property>
     <property name="page_increment">0.1</property>
-    <signal name="value-changed" handler="on_right_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>

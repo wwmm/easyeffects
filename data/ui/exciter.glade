@@ -135,14 +135,12 @@
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_input_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_output_gain_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="scope">
     <property name="lower">2000</property>
