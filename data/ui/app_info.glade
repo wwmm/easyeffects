@@ -57,9 +57,9 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="opacity">0.7000000002235174</property>
+            <property name="opacity">0.7</property>
             <property name="margin_start">1</property>
-            <property name="label" translatable="yes">%</property>
+            <property name="label">%</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -142,7 +142,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">start</property>
-                    <property name="label" translatable="yes">Description</property>
+                    <property name="label">Description</property>
                     <property name="wrap">True</property>
                     <property name="wrap_mode">word-char</property>
                     <property name="ellipsize">end</property>
