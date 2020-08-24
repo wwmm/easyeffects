@@ -237,7 +237,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
-                        <property name="label" translatable="yes">Gain Detection</property>
+                        <property name="label" translatable="yes">Maximum Gain Reduction</property>
                       </object>
                       <packing>
                         <property name="expand">False</property>

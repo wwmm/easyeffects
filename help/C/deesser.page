@@ -47,7 +47,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Split</em>
+                <em style="strong" its:withinText="nested">F1 Split</em>
             </title>
             <p>
                 The split frequency. All signals above this frequency will affect the gain
@@ -56,7 +56,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Gain</em>
+                <em style="strong" its:withinText="nested">F1 Gain</em>
             </title>
             <p>
                 It shifts the volume of the higher band. In wideband mode it affects the
@@ -65,7 +65,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Peak</em>
+                <em style="strong" its:withinText="nested">F2 Peak</em>
             </title>
             <p>
                 Center frequency of the bell filter. It allows a more precise selection of the
@@ -74,7 +74,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Level</em>
+                <em style="strong" its:withinText="nested">F2 Level</em>
             </title>
             <p>
                 Increase or decrease the frequencies around the center bell frequency.
@@ -82,7 +82,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Peak Q</em>
+                <em style="strong" its:withinText="nested">F2 Peak Q</em>
             </title>
             <p>
                 Set the quality of the bell. Higher values will affect a narrower frequency

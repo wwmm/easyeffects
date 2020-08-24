@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2020-08-22 15:53+0200\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: 2020-01-12 17:48+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -512,7 +512,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+#, fuzzy
+msgid "F1 Split"
 msgstr "Teilen"
 
 #. (itstool) path: item/p
@@ -526,8 +527,9 @@ msgstr ""
 "der Reduktion betroffen)."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
+#: C/deesser.page:59
+#, fuzzy
+msgid "F1 Gain"
 msgstr "Verstärkung"
 
 #. (itstool) path: item/p
@@ -542,7 +544,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+#, fuzzy
+msgid "F2 Peak"
 msgstr "Hochpunkt"
 
 #. (itstool) path: item/p
@@ -556,7 +559,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+#, fuzzy
+msgid "F2 Level"
 msgstr "Ebene"
 
 #. (itstool) path: item/p
@@ -566,7 +570,8 @@ msgstr "Erhöht oder verringert die Frequenzen um die mittlere Glockenfrequenz."
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+#, fuzzy
+msgid "F2 Peak Q"
 msgstr "Höchstwert Q"
 
 #. (itstool) path: item/p
@@ -2815,6 +2820,11 @@ msgstr "Umfang"
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Lautstärkebereich. Zeigt an, wie groß der Dynamikbereich des Materials ist."
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Verstärkung"
 
 #. (itstool) path: item/p
 #: C/autogain.page:72

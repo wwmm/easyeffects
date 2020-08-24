@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-22 15:53+0200\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "MIME-Version: 1.0\n"
@@ -483,7 +483,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+#, fuzzy
+msgid "F1 Split"
 msgstr "Частота раздела"
 
 #. (itstool) path: item/p
@@ -496,8 +497,9 @@ msgstr ""
 "будет уменьшен"
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
+#: C/deesser.page:59
+#, fuzzy
+msgid "F1 Gain"
 msgstr "Усиление"
 
 #. (itstool) path: item/p
@@ -512,7 +514,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+#, fuzzy
+msgid "F2 Peak"
 msgstr "Пик"
 
 #. (itstool) path: item/p
@@ -526,7 +529,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+#, fuzzy
+msgid "F2 Level"
 msgstr "Уровень"
 
 #. (itstool) path: item/p
@@ -538,7 +542,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+#, fuzzy
+msgid "F2 Peak Q"
 msgstr "Добротность (Q)"
 
 #. (itstool) path: item/p
@@ -2534,6 +2539,11 @@ msgstr ""
 #: C/autogain.page:66
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Усиление"
 
 #. (itstool) path: item/p
 #: C/autogain.page:72

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-22 15:53+0200\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -503,7 +503,8 @@ msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+#, fuzzy
+msgid "F1 Split"
 msgstr "Separado"
 
 #. (itstool) path: item/p
@@ -516,8 +517,9 @@ msgstr ""
 "redução de ganho(e em modo separado eles também serão afetados pela redução)."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
+#: C/deesser.page:59
+#, fuzzy
+msgid "F1 Gain"
 msgstr "Ganho"
 
 #. (itstool) path: item/p
@@ -532,7 +534,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+#, fuzzy
+msgid "F2 Peak"
 msgstr "Pico"
 
 #. (itstool) path: item/p
@@ -546,7 +549,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+#, fuzzy
+msgid "F2 Level"
 msgstr "Nível"
 
 #. (itstool) path: item/p
@@ -558,7 +562,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+#, fuzzy
+msgid "F2 Peak Q"
 msgstr "Pico Q"
 
 #. (itstool) path: item/p
@@ -2787,6 +2792,11 @@ msgstr "Alcance"
 msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Intervalo de sonoridade. Indica quão grande é a faixa dinâmica do material."
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Ganho"
 
 #. (itstool) path: item/p
 #: C/autogain.page:72
