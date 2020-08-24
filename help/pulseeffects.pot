@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-22 15:53+0200\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -470,7 +470,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+msgid "F1 Split"
 msgstr ""
 
 #. (itstool) path: item/p
@@ -480,8 +480,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:59
-#: C/autogain.page:70
-msgid "Gain"
+msgid "F1 Gain"
 msgstr ""
 
 #. (itstool) path: item/p
@@ -491,7 +490,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+msgid "F2 Peak"
 msgstr ""
 
 #. (itstool) path: item/p
@@ -501,7 +500,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+msgid "F2 Level"
 msgstr ""
 
 #. (itstool) path: item/p
@@ -511,7 +510,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+msgid "F2 Peak Q"
 msgstr ""
 
 #. (itstool) path: item/p
@@ -2246,6 +2245,11 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/autogain.page:66
 msgid "Loudness range. Indicates how large is the material dynamic range."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
 msgstr ""
 
 #. (itstool) path: item/p

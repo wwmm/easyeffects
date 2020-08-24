@@ -86,6 +86,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
+            <property name="valign">center</property>
             <property name="draw_indicator">True</property>
           </object>
           <packing>
@@ -119,7 +120,7 @@
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="octaves">
@@ -131,7 +132,7 @@
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="semitones">
@@ -510,8 +511,7 @@
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="adjustment">input_gain</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
+                <property name="round_digits">1</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>
@@ -527,8 +527,7 @@
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="adjustment">output_gain</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
+                <property name="round_digits">1</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>

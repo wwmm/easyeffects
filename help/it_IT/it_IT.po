@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-22 15:53+0200\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -518,8 +518,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
-msgstr "Split"
+msgid "F1 Split"
+msgstr "F1 Split"
 
 #. (itstool) path: item/p
 #: C/deesser.page:52
@@ -531,9 +531,9 @@ msgstr ""
 "frequenza saranno interessati dalla riduzione in ampiezza."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
-msgstr "Guadagno"
+#: C/deesser.page:59
+msgid "F1 Gain"
+msgstr "F1 Guadagno"
 
 #. (itstool) path: item/p
 #: C/deesser.page:61
@@ -547,8 +547,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
-msgstr "Picco"
+msgid "F2 Peak"
+msgstr "F2 Picco"
 
 #. (itstool) path: item/p
 #: C/deesser.page:70
@@ -561,8 +561,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
-msgstr "Livello"
+msgid "F2 Level"
+msgstr "F2 Livello"
 
 #. (itstool) path: item/p
 #: C/deesser.page:79
@@ -573,8 +573,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
-msgstr "Picco Q"
+msgid "F2 Peak Q"
+msgstr "F2 Picco Q"
 
 #. (itstool) path: item/p
 #: C/deesser.page:87
@@ -2840,6 +2840,11 @@ msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Gamma della Loudness. Indica quanto è varia la gamma dinamica del segnale "
 "audio."
+
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Guadagno"
 
 #. (itstool) path: item/p
 #: C/autogain.page:72

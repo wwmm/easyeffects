@@ -6,7 +6,7 @@
     <property name="lower">-100</property>
     <property name="upper">6</property>
     <property name="value">-12</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="bass_cut">
@@ -32,7 +32,7 @@
   <object class="GtkAdjustment" id="dry">
     <property name="lower">-100</property>
     <property name="upper">6</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="hf_damp">
@@ -114,6 +114,7 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
+            <property name="valign">center</property>
             <property name="draw_indicator">True</property>
           </object>
           <packing>
@@ -147,13 +148,13 @@
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="predelay">
@@ -422,6 +423,7 @@
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">amount</property>
+                    <property name="digits">1</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -454,6 +456,7 @@
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">dry</property>
+                    <property name="digits">1</property>
                     <property name="numeric">True</property>
                     <property name="update_policy">if-valid</property>
                   </object>
@@ -808,7 +811,6 @@
                 <property name="hexpand">True</property>
                 <property name="adjustment">input_gain</property>
                 <property name="round_digits">1</property>
-                <property name="digits">0</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>
@@ -825,7 +827,6 @@
                 <property name="hexpand">True</property>
                 <property name="adjustment">output_gain</property>
                 <property name="round_digits">1</property>
-                <property name="digits">0</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>
