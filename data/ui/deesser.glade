@@ -13,7 +13,7 @@
     <property name="lower">-24</property>
     <property name="upper">24</property>
     <property name="value">1</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="f2_freq">
@@ -27,7 +27,7 @@
     <property name="lower">-24</property>
     <property name="upper">24</property>
     <property name="value">4</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="f2_q">
@@ -148,7 +148,7 @@
   </object>
   <object class="GtkAdjustment" id="makeup">
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="ratio">
@@ -161,7 +161,7 @@
   <object class="GtkAdjustment" id="threshold">
     <property name="lower">-60</property>
     <property name="value">-18</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
@@ -281,7 +281,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Split</property>
+                <property name="label" translatable="yes">F1 Split</property>
               </object>
               <packing>
                 <property name="left_attach">4</property>
@@ -314,7 +314,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Gain</property>
+                <property name="label" translatable="yes">F1 Gain</property>
               </object>
               <packing>
                 <property name="left_attach">5</property>
@@ -333,6 +333,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">f1_level</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -347,7 +348,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Peak</property>
+                <property name="label" translatable="yes">F2 Peak</property>
               </object>
               <packing>
                 <property name="left_attach">6</property>
@@ -386,6 +387,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">f2_level</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -400,7 +402,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Level</property>
+                <property name="label" translatable="yes">F2 Level</property>
               </object>
               <packing>
                 <property name="left_attach">7</property>
@@ -413,7 +415,7 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Peak Q</property>
+                <property name="label" translatable="yes">F2 Peak Q</property>
               </object>
               <packing>
                 <property name="left_attach">8</property>
@@ -495,6 +497,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">threshold</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
@@ -559,6 +562,7 @@
                 <property name="input_purpose">number</property>
                 <property name="orientation">vertical</property>
                 <property name="adjustment">makeup</property>
+                <property name="digits">1</property>
                 <property name="numeric">True</property>
                 <property name="update_policy">if-valid</property>
               </object>
