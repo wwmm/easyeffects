@@ -34,6 +34,7 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Image* mute_icon = nullptr;
 
   Gtk::Label* app_name = nullptr;
+  Gtk::Label* media_name = nullptr;
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
   Gtk::Label* channels = nullptr;

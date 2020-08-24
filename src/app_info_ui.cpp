@@ -1,9 +1,9 @@
 #include "app_info_ui.hpp"
+#include <glibmm/i18n.h>
+#include <sstream>
 #include "blocklist_settings_ui.hpp"
 #include "preset_type.hpp"
 #include "util.hpp"
-#include <glibmm/i18n.h>
-#include <sstream>
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
@@ -15,6 +15,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("enable", enable);
   builder->get_widget("app_icon", app_icon);
   builder->get_widget("app_name", app_name);
+  builder->get_widget("media_name", media_name);
   builder->get_widget("volume", volume);
   builder->get_widget("mute", mute);
   builder->get_widget("blocklist", blocklist);
@@ -27,8 +28,8 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
 
-  is_blocklisted =
-      BlocklistSettingsUi::app_is_blocklisted(app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
+  is_blocklisted = BlocklistSettingsUi::app_is_blocklisted(
+      app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
 
   is_enabled = app_info->connected && !is_blocklisted;
 
@@ -77,6 +78,16 @@ void AppInfoUi::init_widgets() {
 
   app_name->set_text(app_info->name);
 
+  if (app_info->name == app_info->media_name) {
+    media_name->set_visible(false);
+  } else {
+    if (!media_name->is_visible()) {
+      media_name->set_visible(true);
+    };
+
+    media_name->set_text(app_info->media_name);
+  }
+
   volume->set_value(app_info->volume);
 
   mute->set_active(app_info->mute != 0);
@@ -112,18 +123,27 @@ void AppInfoUi::connect_signals() {
 
     if (blocklist->get_active()) {
       // Add new entry to blocklist vector
+
       BlocklistSettingsUi::add_new_entry(app_info->name, preset_type);
+
       pre_bl_state = is_enabled;
+
       is_blocklisted = true;
+
       if (is_enabled) {
         enable->set_active(false);
       }
+
       enable->set_sensitive(false);
     } else {
       // Remove app name entry from blocklist vector
+
       BlocklistSettingsUi::remove_entry(app_info->name, preset_type);
+
       is_blocklisted = false;
+
       enable->set_sensitive(true);
+
       if (pre_bl_state) {
         enable->set_active(true);
       }

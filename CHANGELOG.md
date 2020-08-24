@@ -2,7 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
 - `Blocklist` adopted and related command modified as a checkbutton inside the app info ui.
+- Pulseaudio's media name property is shown for each application in the `Applications` section.
 
 ## [4.8.0]
 
