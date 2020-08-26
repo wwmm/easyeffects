@@ -157,24 +157,24 @@ void FilterUi::reset() {
 
 void FilterUi::init_presets_buttons() {
   preset_muted->signal_clicked().connect([=]() {
-    frequency->set_value(10);
+    frequency->set_value(10.0);
     resonance->set_value(0.707);
     mode->set_active(2);
-    inertia->set_value(20);
+    inertia->set_value(20.0);
   });
 
   preset_disco->signal_clicked().connect([=]() {
     frequency->set_value(193.821);
     resonance->set_value(1.37956);
     mode->set_active(0);
-    inertia->set_value(74);
+    inertia->set_value(74.0);
   });
 
   preset_distant_headphones->signal_clicked().connect([=]() {
     frequency->set_value(305.818);
     resonance->set_value(0.707);
     mode->set_active(3);
-    inertia->set_value(74);
+    inertia->set_value(74.0);
   });
 
   preset_default->signal_clicked().connect([=]() {

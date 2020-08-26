@@ -31,7 +31,7 @@ CalibrationSignalsUi::CalibrationSignalsUi(BaseObjectType* cobject, const Glib::
   // default values
 
   wave->set_active(0);  // sine
-  frequency->set_value(1000);
+  frequency->set_value(1000.0);
   volume->set_value(1.0);
 }
 

@@ -330,25 +330,25 @@ void MultibandGateUi::on_new_output3(double value) {
 }
 
 void MultibandGateUi::on_new_gating0(double value) {
-  gating0->set_value(1 - value);
+  gating0->set_value(1.0 - value);
 
   gating0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating1(double value) {
-  gating1->set_value(1 - value);
+  gating1->set_value(1.0 - value);
 
   gating1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating2(double value) {
-  gating2->set_value(1 - value);
+  gating2->set_value(1.0 - value);
 
   gating2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandGateUi::on_new_gating3(double value) {
-  gating3->set_value(1 - value);
+  gating3->set_value(1.0 - value);
 
   gating3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

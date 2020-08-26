@@ -314,25 +314,25 @@ void MultibandCompressorUi::on_new_output3(double value) {
 }
 
 void MultibandCompressorUi::on_new_compression0(double value) {
-  compression0->set_value(1 - value);
+  compression0->set_value(1.0 - value);
 
   compression0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandCompressorUi::on_new_compression1(double value) {
-  compression1->set_value(1 - value);
+  compression1->set_value(1.0 - value);
 
   compression1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandCompressorUi::on_new_compression2(double value) {
-  compression2->set_value(1 - value);
+  compression2->set_value(1.0 - value);
 
   compression2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
 
 void MultibandCompressorUi::on_new_compression3(double value) {
-  compression3->set_value(1 - value);
+  compression3->set_value(1.0 - value);
 
   compression3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

@@ -132,7 +132,7 @@ void GateUi::reset() {
 }
 
 void GateUi::on_new_gating(double value) {
-  gating->set_value(1 - value);
+  gating->set_value(1.0 - value);
 
   gating_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }
