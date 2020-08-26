@@ -85,7 +85,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
       set_output_sink_name(pm->server_info.default_sink_name);
     }
   } else {
-    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
+    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != false;
 
     if (use_default_sink) {
       set_output_sink_name(pm->server_info.default_sink_name);

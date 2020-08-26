@@ -125,7 +125,7 @@ void Filter::create_bandpass(const int& nsamples,
 void Filter::init_zita(const int& num_samples) {
   bool failed = false;
   float density = 0.0f;
-  int ret;
+  int ret = 0;
   unsigned int options = 0u;
 
   nsamples = num_samples;

@@ -109,8 +109,8 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
       font.set_family("Monospace");
       font.set_weight(Pango::WEIGHT_BOLD);
 
-      int text_width;
-      int text_height;
+      int text_width = 0;
+      int text_height = 0;
       auto layout = create_pango_layout(msg.str());
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);

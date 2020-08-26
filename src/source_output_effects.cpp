@@ -56,7 +56,7 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
       set_source_monitor_name(pm->server_info.default_source_name);
     }
   } else {
-    bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
+    bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != false;
 
     if (use_default_source) {
       set_source_monitor_name(pm->server_info.default_source_name);
