@@ -206,16 +206,17 @@ auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool 
   int usable_height = height - axis_height;
 
   if (event->y < usable_height) {
-    double min_freq_log = log10(settings->get_int("minimum-frequency"));
-    double max_freq_log = log10(settings->get_int("maximum-frequency"));
-    double mouse_freq_log = static_cast<float>(event->x) / width * (max_freq_log - min_freq_log) + min_freq_log;
+    double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
+    double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
+    double mouse_freq_log =
+        event->x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
 
-    mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
+    mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
     // intensity scale is in decibel
     // minimum intensity is -120 dB and maximum is 0 dB
 
-    mouse_intensity = -event->y * 120 / usable_height;
+    mouse_intensity = -event->y * 120.0 / usable_height;
 
     spectrum->queue_draw();
   }

@@ -673,7 +673,7 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer* buffer) {
   bool ebur_failed = false;
-  double range;
+  double range = 0.0;
   GstMapInfo map;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
