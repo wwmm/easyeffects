@@ -121,7 +121,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
 
     magnitudes = gst_structure_get_value(s, "magnitude");
 
-    for (uint n = 0; n < pb->spectrum_freqs.size(); n++) {
+    for (uint n = 0u; n < pb->spectrum_freqs.size(); n++) {
       pb->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n + pb->spectrum_start_index));
     }
 
@@ -129,7 +129,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
       boost::math::interpolators::cardinal_cubic_b_spline<float> spline(
           pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(), pb->spline_f0, pb->spline_df);
 
-      for (uint n = 0; n < pb->spectrum_mag.size(); n++) {
+      for (uint n = 0u; n < pb->spectrum_mag.size(); n++) {
         pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
       }
     } catch (const std::exception& e) {
@@ -154,7 +154,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
 }
 
 void on_spectrum_n_points_changed(GSettings* settings, gchar* key, PipelineBase* pb) {
-  long unsigned int npoints = g_settings_get_int(settings, "n-points");
+  unsigned long int npoints = g_settings_get_int(settings, "n-points");
 
   if (npoints != pb->spectrum_mag.size()) {
     pb->resizing_spectrum = true;
@@ -662,9 +662,9 @@ void PipelineBase::init_spectrum() {
 
   spectrum_freqs.clear();
 
-  spectrum_start_index = 0;
+  spectrum_start_index = 0u;
 
-  for (uint n = 0; n < spectrum_nbands; n++) {
+  for (uint n = 0u; n < spectrum_nbands; n++) {
     auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
 
     if (f > max_spectrum_freq) {
@@ -674,7 +674,7 @@ void PipelineBase::init_spectrum() {
     if (f > min_spectrum_freq) {
       spectrum_freqs.emplace_back(f);
 
-      if (spectrum_start_index == 0) {
+      if (spectrum_start_index == 0u) {
         spectrum_start_index = n;
       }
     }

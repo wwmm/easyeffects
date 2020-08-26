@@ -143,7 +143,7 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 }
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  guint64 v_ns = g_variant_get_double(variant) * 1000000;
+  guint64 v_ns = g_variant_get_double(variant) * 1000000.0;
 
   g_value_set_uint64(value, v_ns);
 

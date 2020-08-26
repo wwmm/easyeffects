@@ -19,11 +19,11 @@ class CalibrationMic {
 
   GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr, *spectrum = nullptr;
 
-  uint min_spectrum_freq = 20;     // Hz
-  uint max_spectrum_freq = 20000;  // Hz
-  int spectrum_threshold = -120;   // dB
-  uint spectrum_nbands = 3200, spectrum_nfreqs = 0;
-  uint spectrum_npoints = 300;  // number of points displayed
+  uint min_spectrum_freq = 20u;     // Hz
+  uint max_spectrum_freq = 20000u;  // Hz
+  int spectrum_threshold = -120;    // dB
+  uint spectrum_nbands = 3200u, spectrum_nfreqs = 0u;
+  uint spectrum_npoints = 300u;  // number of points displayed
   float spline_f0 = 0.0f, spline_df = 0.0f;
   bool measure_noise = false, subtract_noise = false;
   std::vector<float> spectrum_freqs, spectrum_x_axis;

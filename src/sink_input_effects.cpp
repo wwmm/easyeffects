@@ -307,9 +307,9 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
   gst_element_link(identity_in, plugins[plugins_order[0]]);
 
-  for (long unsigned int n = 1; n < plugins_order.size(); n++) {
-    gst_element_link(plugins[plugins_order[n - 1]], plugins[plugins_order[n]]);
+  for (unsigned long int n = 1u; n < plugins_order.size(); n++) {
+    gst_element_link(plugins[plugins_order[n - 1u]], plugins[plugins_order[n]]);
   }
 
-  gst_element_link(plugins[plugins_order[plugins_order.size() - 1]], identity_out);
+  gst_element_link(plugins[plugins_order[plugins_order.size() - 1u]], identity_out);
 }

@@ -78,14 +78,14 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
     auto n_bars = spectrum_mag.size();
     auto x = util::linspace(0, width, n_bars);
 
-    for (uint n = 0; n < n_bars - 1; n++) {
+    for (uint n = 0u; n < n_bars - 1u; n++) {
       auto bar_height = spectrum_mag[n] * height;
 
       ctx->move_to(x[n], height - bar_height);
 
-      bar_height = spectrum_mag[n + 1] * height;
+      bar_height = spectrum_mag[n + 1u] * height;
 
-      ctx->line_to(x[n + 1], height - bar_height);
+      ctx->line_to(x[n + 1u], height - bar_height);
     }
 
     auto color = Gdk::RGBA();

@@ -82,7 +82,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
 
   auto n_points = spectrum_mag.size();
 
-  if (n_points > 0) {
+  if (n_points > 0u) {
     auto allocation = spectrum->get_allocation();
     auto width = allocation.get_width();
     auto height = allocation.get_height();
@@ -125,7 +125,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     }
 
     if (spectrum_type == 0) {  // Bars
-      for (uint n = 0; n < n_points; n++) {
+      for (uint n = 0u; n < n_points; n++) {
         double bar_height = static_cast<double>(usable_height) * spectrum_mag[n];
 
         if (draw_border) {
@@ -139,7 +139,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     } else if (spectrum_type == 1) {  // Lines
       ctx->move_to(0, usable_height);
 
-      for (uint n = 0; n < n_points - 1; n++) {
+      for (uint n = 0u; n < n_points - 1u; n++) {
         auto bar_height = spectrum_mag[n] * static_cast<float>(usable_height);
 
         ctx->line_to(objects_x[n], static_cast<float>(usable_height) - bar_height);
@@ -271,7 +271,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
     would start to be drawn at the border of the window.
   */
 
-  for (size_t n = 0; n < freq_labels.size() - 1; n++) {
+  for (size_t n = 0u; n < freq_labels.size() - 1u; n++) {
     std::ostringstream msg;
 
     auto label = freq_labels[n];
@@ -281,7 +281,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
       msg << std::fixed << label << "Hz";
     } else if (label > 1000.0) {
       msg.precision(1);
-      msg << std::fixed << label / 1000 << "kHz";
+      msg << std::fixed << label / 1000.0 << "kHz";
     }
 
     Pango::FontDescription font;
@@ -298,7 +298,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
 
     layout->show_in_cairo_context(ctx);
 
-    if (n == freq_labels.size() - 2) {
+    if (n == freq_labels.size() - 2u) {
       return text_height;
     }
   }
