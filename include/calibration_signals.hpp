@@ -24,7 +24,7 @@ class CalibrationSignals {
   int spectrum_threshold = -120;   // dB
   uint spectrum_nbands = 3200, spectrum_nfreqs = 0;
   uint spectrum_npoints = 300;  // number of points displayed
-  float spline_f0, spline_df;
+  float spline_f0 = 0.0f, spline_df = 0.0f;
   std::vector<float> spectrum_freqs, spectrum_x_axis;
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 

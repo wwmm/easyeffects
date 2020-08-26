@@ -50,7 +50,7 @@ void autogain(std::vector<float>& left, std::vector<float>& right) {
 */
 void ms_stereo(float width, std::vector<float>& left, std::vector<float>& right) {
   float w = width / 100.0f;
-  float x = (1.0 - w) / (1.0 + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
+  float x = (1.0f - w) / (1.0f + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
 
   for (uint i = 0; i < left.size(); i++) {
     float L = left[i], R = right[i];

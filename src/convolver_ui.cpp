@@ -458,8 +458,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   right_spectrum.resize(nfft / 2 + 1);
 
   for (int i = 0; i < nfft / 2 + 1; i++) {
-    float v_l = 0.0;
-    float v_r = 0.0;
+    float v_l = 0.0f;
+    float v_r = 0.0f;
 
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;

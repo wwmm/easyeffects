@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
     if (!l->compression_connection.connected()) {
       l->compression_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression = 0.0;
+            float compression = 0.0f;
 
             g_object_get(l->deesser, "compression", &compression, nullptr);
 
@@ -25,7 +25,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
     if (!l->detected_connection.connected()) {
       l->detected_connection = Glib::signal_timeout().connect(
           [l]() {
-            float detected = 0.0;
+            float detected = 0.0f;
 
             g_object_get(l->deesser, "detected", &detected, nullptr);
 

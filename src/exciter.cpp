@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Exciter* l) {
     if (!l->harmonics_connection.connected()) {
       l->harmonics_connection = Glib::signal_timeout().connect(
           [l]() {
-            float harmonics = 0.0;
+            float harmonics = 0.0f;
 
             g_object_get(l->exciter, "meter-drive", &harmonics, nullptr);
 

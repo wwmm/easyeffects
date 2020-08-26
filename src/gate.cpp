@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Gate* l) {
     if (!l->gating_connection.connected()) {
       l->gating_connection = Glib::signal_timeout().connect(
           [l]() {
-            float gating;
+            float gating = 0.0f;
 
             g_object_get(l->gate, "gating", &gating, nullptr);
 

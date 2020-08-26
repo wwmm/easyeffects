@@ -12,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0f;
+            float inR = 0.0f;
 
             g_object_get(l->multiband_compressor, "meter-inL", &inL, nullptr);
             g_object_get(l->multiband_compressor, "meter-inR", &inR, nullptr);
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0f;
+            float outR = 0.0f;
 
             g_object_get(l->multiband_compressor, "meter-outL", &outL, nullptr);
             g_object_get(l->multiband_compressor, "meter-outR", &outR, nullptr);
@@ -48,7 +48,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output0_connection.connected()) {
       l->output0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output0", &output, nullptr);
 
@@ -62,7 +62,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output1_connection.connected()) {
       l->output1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output1", &output, nullptr);
 
@@ -76,7 +76,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output2_connection.connected()) {
       l->output2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output2", &output, nullptr);
 
@@ -90,7 +90,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output3_connection.connected()) {
       l->output3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output3", &output, nullptr);
 
@@ -104,7 +104,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression0_connection.connected()) {
       l->compression0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression0", &compression, nullptr);
 
@@ -118,7 +118,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression1_connection.connected()) {
       l->compression1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression1", &compression, nullptr);
 
@@ -132,7 +132,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression2_connection.connected()) {
       l->compression2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression2", &compression, nullptr);
 
@@ -146,7 +146,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression3_connection.connected()) {
       l->compression3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression3", &compression, nullptr);
 
