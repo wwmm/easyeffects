@@ -82,7 +82,7 @@ auto db_to_linear(const float& db) -> float {
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0F, (float)v_db / 20.0F);
+  float v_linear = powf(10.0F, static_cast<float>(v_db) / 20.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -100,7 +100,7 @@ auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type,
 auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0F, (float)v_db / 10.0F);
+  float v_linear = powf(10.0F, static_cast<float>(v_db) / 10.0F);
 
   g_value_set_float(value, v_linear);
 

@@ -60,9 +60,9 @@ auto RealtimeKit::get_int_property(const char* propname) -> long long {
 void RealtimeKit::make_realtime(const std::string& source_name, const int& priority) {
 #if defined(__linux__)
 
-  auto thread = (pid_t)syscall(SYS_gettid);
-  auto u64 = (guint64)thread;
-  auto u32 = (guint32)priority;
+  auto thread = static_cast<pid_t>(syscall(SYS_gettid));
+  auto u64 = static_cast<guint64>(thread);
+  auto u32 = static_cast<guint32>(priority);
 
   Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
       std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64), Glib::Variant<guint32>::create(u32)}));
@@ -81,9 +81,9 @@ void RealtimeKit::make_realtime(const std::string& source_name, const int& prior
 void RealtimeKit::make_high_priority(const std::string& source_name, const int& nice_value) {
 #if defined(__linux__)
 
-  auto thread = (pid_t)syscall(SYS_gettid);
-  auto u64 = (guint64)thread;
-  auto i32 = (gint32)nice_value;
+  auto thread = static_cast<pid_t>(syscall(SYS_gettid));
+  auto u64 = static_cast<guint64>(thread);
+  auto i32 = static_cast<gint32>(nice_value);
 
   Glib::VariantContainerBase args = Glib::VariantContainerBase::create_tuple(
       std::vector<Glib::VariantBase>({Glib::Variant<guint64>::create(u64), Glib::Variant<gint32>::create(i32)}));

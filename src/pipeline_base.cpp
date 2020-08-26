@@ -695,9 +695,9 @@ void PipelineBase::init_spectrum() {
 }
 
 void PipelineBase::update_spectrum_interval(const double& value) const {
-  const float one_second_in_ns = 1000000000.0F;
+  const double one_second_in_ns = 1000000000.0;
 
-  auto interval = guint64(one_second_in_ns / value);
+  auto interval = static_cast<guint64>(one_second_in_ns / value);
 
   g_object_set(spectrum, "interval", interval, nullptr);
 }

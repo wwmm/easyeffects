@@ -377,8 +377,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
 
     // deinterleave
     for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
-      peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2u * n];
-      peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2u * n + 1u];
+      peconvolver->conv->inpdata(0)[n] = (reinterpret_cast<float*>(map.data))[2u * n];
+      peconvolver->conv->inpdata(1)[n] = (reinterpret_cast<float*>(map.data))[2u * n + 1u];
     }
 
     int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
@@ -389,8 +389,8 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
 
     // interleave
     for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
-      ((float*)map.data)[2u * n] = peconvolver->conv->outdata(0)[n];
-      ((float*)map.data)[2u * n + 1u] = peconvolver->conv->outdata(1)[n];
+      (reinterpret_cast<float*>(map.data))[2u * n] = peconvolver->conv->outdata(0)[n];
+      (reinterpret_cast<float*>(map.data))[2u * n + 1u] = peconvolver->conv->outdata(1)[n];
     }
 
     gst_buffer_unmap(buffer, &map);

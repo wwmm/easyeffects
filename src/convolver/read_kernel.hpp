@@ -97,7 +97,7 @@ bool read_file(GstPeconvolver* peconvolver) {
     if (file.samplerate() != peconvolver->rate) {
       resample = true;
 
-      resample_ratio = (float)peconvolver->rate / file.samplerate();
+      resample_ratio = static_cast<float>(peconvolver->rate) / file.samplerate();
 
       frames_out = ceil(file.frames() * resample_ratio);
       total_frames_out = file.channels() * frames_out;
