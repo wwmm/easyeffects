@@ -78,7 +78,7 @@ void AppInfoUi::init_widgets() {
 
   app_name->set_text(app_info->name);
 
-  if (app_info->name == app_info->media_name) {
+  if (app_info->media_name.empty() || app_info->name == app_info->media_name) {
     media_name->set_visible(false);
   } else {
     if (!media_name->is_visible()) {
