@@ -76,16 +76,16 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
     auto width = allocation.get_width();
     auto height = allocation.get_height();
     auto n_bars = spectrum_mag.size();
-    auto x = util::linspace(0, width, n_bars);
+    auto x = util::linspace(0.0f, static_cast<float>(width), n_bars);
 
-    for (uint n = 0; n < n_bars - 1; n++) {
+    for (uint n = 0u; n < n_bars - 1u; n++) {
       auto bar_height = spectrum_mag[n] * height;
 
       ctx->move_to(x[n], height - bar_height);
 
-      bar_height = spectrum_mag[n + 1] * height;
+      bar_height = spectrum_mag[n + 1u] * height;
 
-      ctx->line_to(x[n + 1], height - bar_height);
+      ctx->line_to(x[n + 1u], height - bar_height);
     }
 
     auto color = Gdk::RGBA();
@@ -109,8 +109,8 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
       font.set_family("Monospace");
       font.set_weight(Pango::WEIGHT_BOLD);
 
-      int text_width;
-      int text_height;
+      int text_width = 0;
+      int text_height = 0;
       auto layout = create_pango_layout(msg.str());
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);

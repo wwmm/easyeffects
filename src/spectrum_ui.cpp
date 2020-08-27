@@ -82,7 +82,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
 
   auto n_points = spectrum_mag.size();
 
-  if (n_points > 0) {
+  if (n_points > 0u) {
     auto allocation = spectrum->get_allocation();
     auto width = allocation.get_width();
     auto height = allocation.get_height();
@@ -125,7 +125,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     }
 
     if (spectrum_type == 0) {  // Bars
-      for (uint n = 0; n < n_points; n++) {
+      for (uint n = 0u; n < n_points; n++) {
         double bar_height = static_cast<double>(usable_height) * spectrum_mag[n];
 
         if (draw_border) {
@@ -139,7 +139,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     } else if (spectrum_type == 1) {  // Lines
       ctx->move_to(0, usable_height);
 
-      for (uint n = 0; n < n_points - 1; n++) {
+      for (uint n = 0u; n < n_points - 1u; n++) {
         auto bar_height = spectrum_mag[n] * static_cast<float>(usable_height);
 
         ctx->line_to(objects_x[n], static_cast<float>(usable_height) - bar_height);
@@ -206,16 +206,17 @@ auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool 
   int usable_height = height - axis_height;
 
   if (event->y < usable_height) {
-    double min_freq_log = log10(settings->get_int("minimum-frequency"));
-    double max_freq_log = log10(settings->get_int("maximum-frequency"));
-    double mouse_freq_log = static_cast<float>(event->x) / width * (max_freq_log - min_freq_log) + min_freq_log;
+    double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
+    double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
+    double mouse_freq_log =
+        event->x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
 
-    mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
+    mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
     // intensity scale is in decibel
     // minimum intensity is -120 dB and maximum is 0 dB
 
-    mouse_intensity = -event->y * 120 / usable_height;
+    mouse_intensity = -event->y * 120.0 / usable_height;
 
     spectrum->queue_draw();
   }
@@ -260,8 +261,8 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
   int n_freq_labels = 10;
   double freq_labels_offset = width / static_cast<double>(n_freq_labels);
 
-  auto freq_labels = util::logspace(static_cast<float>(log10(min_spectrum_freq)),
-                                    static_cast<float>(log10(max_spectrum_freq)), n_freq_labels);
+  auto freq_labels = util::logspace(log10(static_cast<float>(min_spectrum_freq)),
+                                    log10(static_cast<float>(max_spectrum_freq)), n_freq_labels);
 
   ctx->set_source_rgba(color_frequency_axis_labels.get_red(), color_frequency_axis_labels.get_green(),
                        color_frequency_axis_labels.get_blue(), color_frequency_axis_labels.get_alpha());
@@ -271,7 +272,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
     would start to be drawn at the border of the window.
   */
 
-  for (size_t n = 0; n < freq_labels.size() - 1; n++) {
+  for (size_t n = 0u; n < freq_labels.size() - 1u; n++) {
     std::ostringstream msg;
 
     auto label = freq_labels[n];
@@ -281,7 +282,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
       msg << std::fixed << label << "Hz";
     } else if (label > 1000.0) {
       msg.precision(1);
-      msg << std::fixed << label / 1000 << "kHz";
+      msg << std::fixed << label / 1000.0 << "kHz";
     }
 
     Pango::FontDescription font;
@@ -298,7 +299,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
 
     layout->show_in_cairo_context(ctx);
 
-    if (n == freq_labels.size() - 2) {
+    if (n == freq_labels.size() - 2u) {
       return text_height;
     }
   }

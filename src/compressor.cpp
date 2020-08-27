@@ -12,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL = 0.0;
-            float inR = 0.0;
+            float inL = 0.0f;
+            float inR = 0.0f;
 
             g_object_get(l->compressor, "ilm-l", &inL, nullptr);
             g_object_get(l->compressor, "ilm-r", &inR, nullptr);
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL = 0.0;
-            float outR = 0.0;
+            float outL = 0.0f;
+            float outR = 0.0f;
 
             g_object_get(l->compressor, "olm-l", &outL, nullptr);
             g_object_get(l->compressor, "olm-r", &outR, nullptr);
@@ -48,7 +48,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->reduction_connection.connected()) {
       l->reduction_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->compressor, "rlm", &compression, nullptr);
 
@@ -62,7 +62,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->sidechain_connection.connected()) {
       l->sidechain_connection = Glib::signal_timeout().connect(
           [l]() {
-            float v;
+            float v = 0.0f;
 
             g_object_get(l->compressor, "slm", &v, nullptr);
 
@@ -76,7 +76,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Compressor* l) {
     if (!l->curve_connection.connected()) {
       l->curve_connection = Glib::signal_timeout().connect(
           [l]() {
-            float v;
+            float v = 0.0f;
 
             g_object_get(l->compressor, "clm", &v, nullptr);
 

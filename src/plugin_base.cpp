@@ -8,7 +8,7 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   if (l->plugin_is_installed) {
     int enable = g_settings_get_boolean(settings, key);
 
-    if (enable == 1) {
+    if (enable == true) {
       l->enable();
     } else {
       l->disable();
@@ -128,7 +128,7 @@ PluginBase::PluginBase(std::string tag,
 PluginBase::~PluginBase() {
   auto enable = g_settings_get_boolean(settings, "state");
 
-  if (enable == 0) {
+  if (enable == false) {
     gst_object_unref(bin);
   }
 

@@ -78,7 +78,7 @@ void LimiterUi::reset() {
 }
 
 void LimiterUi::on_new_attenuation(double value) {
-  attenuation->set_value(1 - value);
+  attenuation->set_value(1.0 - value);
 
   attenuation_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
 }

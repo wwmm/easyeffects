@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Maximizer* l) {
     if (!l->reduction_connection.connected()) {
       l->reduction_connection = Glib::signal_timeout().connect(
           [l]() {
-            float reduction;
+            float reduction = 0.0f;
 
             g_object_get(l->maximizer, "gain-reduction", &reduction, nullptr);
 

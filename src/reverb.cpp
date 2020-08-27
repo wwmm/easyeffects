@@ -12,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0f;
+            float inR = 0.0f;
 
             g_object_get(l->reverb, "meter-inL", &inL, nullptr);
             g_object_get(l->reverb, "meter-inR", &inR, nullptr);
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Reverb* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0f;
+            float outR = 0.0f;
 
             g_object_get(l->reverb, "meter-outL", &outL, nullptr);
             g_object_get(l->reverb, "meter-outR", &outR, nullptr);

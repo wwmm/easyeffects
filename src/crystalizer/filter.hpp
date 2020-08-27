@@ -29,7 +29,7 @@ class Filter {
  private:
   std::string log_tag;
 
-  int kernel_size, nsamples;
+  int kernel_size = 0, nsamples = 0;
   std::vector<float> kernel;
 
   Convproc* conv = nullptr;

@@ -452,9 +452,10 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
+                <property name="margin_start">2</property>
+                <property name="margin_end">2</property>
                 <property name="label">0</property>
-                <property name="width_chars">2</property>
-                <property name="max_width_chars">2</property>
+                <property name="width_chars">7</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>
@@ -482,9 +483,10 @@
                 <property name="can_focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
+                <property name="margin_start">2</property>
+                <property name="margin_end">2</property>
                 <property name="label">0</property>
-                <property name="width_chars">2</property>
-                <property name="max_width_chars">2</property>
+                <property name="width_chars">7</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>

@@ -139,8 +139,8 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
   peconvolver->rate = 0;
   peconvolver->bpf = 0;
   peconvolver->kernel_path = nullptr;
-  peconvolver->ir_width = 100;
-  peconvolver->num_samples = 0;
+  peconvolver->ir_width = 100u;
+  peconvolver->num_samples = 0u;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peconvolver), true);
 }
@@ -313,7 +313,7 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 
       peconvolver->conv = new Convproc();
 
-      unsigned int options = 0;
+      unsigned int options = 0u;
 
       // depending on buffer and kernel size OPT_FFTW_MEASURE may make us crash
       // options |= Convproc::OPT_FFTW_MEASURE;
@@ -376,9 +376,9 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
     // deinterleave
-    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
-      peconvolver->conv->inpdata(0)[n] = ((float*)map.data)[2 * n];
-      peconvolver->conv->inpdata(1)[n] = ((float*)map.data)[2 * n + 1];
+    for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
+      peconvolver->conv->inpdata(0)[n] = (reinterpret_cast<float*>(map.data))[2u * n];
+      peconvolver->conv->inpdata(1)[n] = (reinterpret_cast<float*>(map.data))[2u * n + 1u];
     }
 
     int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
@@ -388,9 +388,9 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
     }
 
     // interleave
-    for (unsigned int n = 0; n < peconvolver->num_samples; n++) {
-      ((float*)map.data)[2 * n] = peconvolver->conv->outdata(0)[n];
-      ((float*)map.data)[2 * n + 1] = peconvolver->conv->outdata(1)[n];
+    for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
+      (reinterpret_cast<float*>(map.data))[2u * n] = peconvolver->conv->outdata(0)[n];
+      (reinterpret_cast<float*>(map.data))[2u * n + 1u] = peconvolver->conv->outdata(1)[n];
     }
 
     gst_buffer_unmap(buffer, &map);

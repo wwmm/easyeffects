@@ -17,19 +17,19 @@ std::string log_tag = "convolver: ";
 void autogain(std::vector<float>& left, std::vector<float>& right) {
   float power = 0.0f, peak = 0.0f;
 
-  for (uint n = 0; n < left.size(); n++) {
+  for (uint n = 0u; n < left.size(); n++) {
     peak = (left[n] > peak) ? left[n] : peak;
     peak = (right[n] > peak) ? right[n] : peak;
   }
 
   // normalize
-  for (uint n = 0; n < left.size(); n++) {
+  for (uint n = 0u; n < left.size(); n++) {
     left[n] /= peak;
     right[n] /= peak;
   }
 
   // find average power
-  for (uint n = 0; n < left.size(); n++) {
+  for (uint n = 0u; n < left.size(); n++) {
     power += left[n] * left[n] + right[n] * right[n];
   }
 
@@ -39,7 +39,7 @@ void autogain(std::vector<float>& left, std::vector<float>& right) {
 
   util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
-  for (uint n = 0; n < left.size(); n++) {
+  for (uint n = 0u; n < left.size(); n++) {
     left[n] *= autogain;
     right[n] *= autogain;
   }
@@ -50,9 +50,9 @@ void autogain(std::vector<float>& left, std::vector<float>& right) {
 */
 void ms_stereo(float width, std::vector<float>& left, std::vector<float>& right) {
   float w = width / 100.0f;
-  float x = (1.0 - w) / (1.0 + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
+  float x = (1.0f - w) / (1.0f + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
 
-  for (uint i = 0; i < left.size(); i++) {
+  for (uint i = 0u; i < left.size(); i++) {
     float L = left[i], R = right[i];
 
     left[i] = L + x * R;
@@ -85,7 +85,7 @@ bool read_file(GstPeconvolver* peconvolver) {
   if (file.channels() == 2) {
     bool resample = false;
     float resample_ratio = 1.0f;
-    int total_frames_in, total_frames_out, frames_in, frames_out;
+    uint total_frames_in, total_frames_out, frames_in, frames_out;
 
     frames_in = file.frames();
     total_frames_in = file.channels() * frames_in;
@@ -97,7 +97,7 @@ bool read_file(GstPeconvolver* peconvolver) {
     if (file.samplerate() != peconvolver->rate) {
       resample = true;
 
-      resample_ratio = (float)peconvolver->rate / file.samplerate();
+      resample_ratio = static_cast<float>(peconvolver->rate) / file.samplerate();
 
       frames_out = ceil(file.frames() * resample_ratio);
       total_frames_out = file.channels() * frames_out;
@@ -157,9 +157,9 @@ bool read_file(GstPeconvolver* peconvolver) {
     }
 
     // deinterleave
-    for (int n = 0; n < frames_out; n++) {
-      peconvolver->kernel_L[n] = kernel[2 * n];
-      peconvolver->kernel_R[n] = kernel[2 * n + 1];
+    for (uint n = 0u; n < frames_out; n++) {
+      peconvolver->kernel_L[n] = kernel[2u * n];
+      peconvolver->kernel_R[n] = kernel[2u * n + 1u];
     }
 
     autogain(peconvolver->kernel_L, peconvolver->kernel_R);

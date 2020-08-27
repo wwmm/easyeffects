@@ -5,18 +5,18 @@
 #include "plugin_ui_base.hpp"
 
 enum FilterType : const unsigned int {
-  PEAKING = 1,
-  LOW_PASS = 1 << 1,
-  LOW_PASS_Q = 1 << 2,
-  HIGH_PASS = 1 << 3,
-  HIGH_PASS_Q = 1 << 4,
-  BAND_PASS = 1 << 5,
-  LOW_SHELF = 1 << 6,
-  LOW_SHELF_xdB = 1 << 7,
-  HIGH_SHELF = 1 << 8,
-  HIGH_SHELF_xdB = 1 << 9,
-  NOTCH = 1 << 10,
-  ALL_PASS = 1 << 11
+  PEAKING = 1u,
+  LOW_PASS = 1u << 1u,
+  LOW_PASS_Q = 1u << 2u,
+  HIGH_PASS = 1u << 3u,
+  HIGH_PASS_Q = 1u << 4u,
+  BAND_PASS = 1u << 5u,
+  LOW_SHELF = 1u << 6u,
+  LOW_SHELF_xdB = 1u << 7u,
+  HIGH_SHELF = 1u << 8u,
+  HIGH_SHELF_xdB = 1u << 9u,
+  NOTCH = 1u << 10u,
+  ALL_PASS = 1u << 11u
 };
 
 struct ImportedBand {

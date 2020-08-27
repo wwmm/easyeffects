@@ -51,17 +51,17 @@ void CrossfeedUi::reset() {
 
 void CrossfeedUi::init_presets_buttons() {
   preset_cmoy->signal_clicked().connect([=]() {
-    fcut->set_value(700);
-    feed->set_value(6);
+    fcut->set_value(700.0);
+    feed->set_value(6.0);
   });
 
   preset_default->signal_clicked().connect([=]() {
-    fcut->set_value(700);
+    fcut->set_value(700.0);
     feed->set_value(4.5);
   });
 
   preset_jmeier->signal_clicked().connect([=]() {
-    fcut->set_value(650);
-    feed->set_value(9);
+    fcut->set_value(650.0);
+    feed->set_value(9.0);
   });
 }

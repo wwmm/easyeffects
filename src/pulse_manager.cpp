@@ -976,7 +976,7 @@ void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint
         [](auto c, auto success, auto data) {
           auto d = static_cast<Data*>(data);
 
-          if (success == 1) {
+          if (success) {
             util::debug(d->pm->log_tag + "changed volume of sink input: " + d->name +
                         ", idx = " + std::to_string(d->idx));
           } else {
@@ -1020,7 +1020,7 @@ void PulseManager::set_sink_input_mute(const std::string& name, uint idx, bool s
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
-        if (success == 1) {
+        if (success) {
           util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) + " is muted");
         } else {
           util::critical(d->pm->log_tag + "failed to mute sink input: " + d->name +
@@ -1067,7 +1067,7 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
         [](auto c, auto success, auto data) {
           auto d = static_cast<Data*>(data);
 
-          if (success == 1) {
+          if (success) {
             util::debug(d->pm->log_tag + "changed volume of source output: " + d->name +
                         ", idx = " + std::to_string(d->idx));
           } else {
@@ -1111,7 +1111,7 @@ void PulseManager::set_source_output_mute(const std::string& name, uint idx, boo
       [](auto c, auto success, auto data) {
         auto d = static_cast<Data*>(data);
 
-        if (success == 1) {
+        if (success) {
           util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + std::to_string(d->idx) + " is muted");
         } else {
           util::critical(d->pm->log_tag + "failed to mute source output: " + d->name +

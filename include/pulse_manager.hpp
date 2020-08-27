@@ -63,7 +63,7 @@ struct AppInfo {
   std::string icon_name;
   std::string media_name;
   uint8_t channels;
-  float volume;
+  double volume;
   uint rate;
   std::string resampler;
   std::string format;
@@ -288,7 +288,7 @@ class PulseManager {
     ai->visible = true;
 
     // linear volume
-    ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
+    ai->volume = 100.0 * (static_cast<double>(pa_cvolume_max(&info->volume)) / PA_VOLUME_NORM);
 
     if (info->resample_method) {
       ai->resampler = info->resample_method;
@@ -301,7 +301,6 @@ class PulseManager {
     ai->index = info->index;
     ai->name = app_name;
     ai->media_name = media_name;
-    ai->app_type = "";
     ai->icon_name = icon_name;
     ai->channels = info->volume.channels;
     ai->rate = info->sample_spec.rate;
