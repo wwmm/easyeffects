@@ -161,7 +161,8 @@ void on_spectrum_n_points_changed(GSettings* settings, gchar* key, PipelineBase*
 
     pb->spectrum_mag.resize(npoints);
 
-    pb->spectrum_x_axis = util::logspace(log10(pb->min_spectrum_freq), log10(pb->max_spectrum_freq), npoints);
+    pb->spectrum_x_axis = util::logspace(log10(static_cast<float>(pb->min_spectrum_freq)),
+                                         log10(static_cast<float>(pb->max_spectrum_freq)), npoints);
 
     pb->resizing_spectrum = false;
   }
@@ -685,7 +686,8 @@ void PipelineBase::init_spectrum() {
 
     auto npoints = g_settings_get_int(spectrum_settings, "n-points");
 
-    spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), npoints);
+    spectrum_x_axis = util::logspace(log10(static_cast<float>(min_spectrum_freq)),
+                                     log10(static_cast<float>(max_spectrum_freq)), npoints);
 
     spectrum_mag.resize(npoints);
 

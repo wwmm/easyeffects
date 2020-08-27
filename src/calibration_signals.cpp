@@ -111,7 +111,8 @@ CalibrationSignals::CalibrationSignals() {
 
   spectrum_mag_tmp.resize(spectrum_freqs.size());
 
-  spectrum_x_axis = util::logspace(log10(min_spectrum_freq), log10(max_spectrum_freq), spectrum_npoints);
+  spectrum_x_axis = util::logspace(log10(static_cast<float>(min_spectrum_freq)),
+                                   log10(static_cast<float>(max_spectrum_freq)), spectrum_npoints);
 
   spectrum_mag.resize(spectrum_npoints);
 

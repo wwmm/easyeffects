@@ -261,8 +261,8 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
   int n_freq_labels = 10;
   double freq_labels_offset = width / static_cast<double>(n_freq_labels);
 
-  auto freq_labels = util::logspace(static_cast<float>(log10(min_spectrum_freq)),
-                                    static_cast<float>(log10(max_spectrum_freq)), n_freq_labels);
+  auto freq_labels = util::logspace(log10(static_cast<float>(min_spectrum_freq)),
+                                    log10(static_cast<float>(max_spectrum_freq)), n_freq_labels);
 
   ctx->set_source_rgba(color_frequency_axis_labels.get_red(), color_frequency_axis_labels.get_green(),
                        color_frequency_axis_labels.get_blue(), color_frequency_axis_labels.get_alpha());

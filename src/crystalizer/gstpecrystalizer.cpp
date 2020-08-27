@@ -248,7 +248,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ebur_state_before = nullptr;
   pecrystalizer->ebur_state_after = nullptr;
 
-  pecrystalizer->ndivs = 1000;
+  pecrystalizer->ndivs = 1000u;
   pecrystalizer->dv = 1.0f / pecrystalizer->ndivs;
   pecrystalizer->aggressive = false;
 
