@@ -359,11 +359,11 @@ void gst_peautogain_finalize(GObject* object) {
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
   if (!peautogain->ready) {
     peautogain->ebur_state = ebur128_init(
-        2, peautogain->rate,
+        2u, peautogain->rate,
         EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(peautogain->ebur_state, 0, EBUR128_LEFT);
-    ebur128_set_channel(peautogain->ebur_state, 1, EBUR128_RIGHT);
+    ebur128_set_channel(peautogain->ebur_state, 0u, EBUR128_LEFT);
+    ebur128_set_channel(peautogain->ebur_state, 1u, EBUR128_RIGHT);
 
     peautogain->ready = true;
   }
@@ -433,11 +433,11 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
   if (peautogain->relative > -70.0f && !failed && !playing_silence) {
     double peak_L = 0.0, peak_R = 0.0;
 
-    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0, &peak_L)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0u, &peak_L)) {
       failed = true;
     }
 
-    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 1, &peak_R)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 1u, &peak_R)) {
       failed = true;
     }
 

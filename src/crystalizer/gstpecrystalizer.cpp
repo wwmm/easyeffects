@@ -683,21 +683,21 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     // before
 
-    pecrystalizer->ebur_state_before = ebur128_init(2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+    pecrystalizer->ebur_state_before = ebur128_init(2u, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(pecrystalizer->ebur_state_before, 0, EBUR128_LEFT);
-    ebur128_set_channel(pecrystalizer->ebur_state_before, 1, EBUR128_RIGHT);
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 0u, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 1u, EBUR128_RIGHT);
 
-    ebur128_set_max_history(pecrystalizer->ebur_state_before, 30 * 1000);  // ms
+    ebur128_set_max_history(pecrystalizer->ebur_state_before, 30u * 1000u);  // ms
 
     // after
 
-    pecrystalizer->ebur_state_after = ebur128_init(2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+    pecrystalizer->ebur_state_after = ebur128_init(2u, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(pecrystalizer->ebur_state_after, 0, EBUR128_LEFT);
-    ebur128_set_channel(pecrystalizer->ebur_state_after, 1, EBUR128_RIGHT);
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 0u, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 1u, EBUR128_RIGHT);
 
-    ebur128_set_max_history(pecrystalizer->ebur_state_after, 30 * 1000);  // ms
+    ebur128_set_max_history(pecrystalizer->ebur_state_after, 30u * 1000u);  // ms
   }
 }
 
@@ -923,7 +923,7 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
 
           /* add our own latency */
 
-          latency = gst_util_uint64_scale_round(1, GST_SECOND, pecrystalizer->rate);
+          latency = gst_util_uint64_scale_round(1ul, GST_SECOND, pecrystalizer->rate);
 
           // std::cout << "latency: " << latency << std::endl;
           // std::cout << "n: " << pecrystalizer->inbuf_n_samples
