@@ -150,46 +150,76 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
   /* define properties */
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("intensity-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("BAND " + std::to_string(n) + " INTENSITY").c_str());
+  std::string band_num;
 
-    if (name && nick) {
+  const std::string name_intensity = "intensity-band";
+  const std::string nick_band = "BAND ";
+  const std::string nick_intensity = " INTENSITY";
+
+  const char* const param_expansion = strdup(std::string("Expansion intensity").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_intensity).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_band).append(band_num).append(nick_intensity).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, n + 1,
-          g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 40.0f, 1.0f,
+          g_param_spec_float(name, nick, param_expansion, 0.0f, 40.0f, 1.0f,
                              static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("mute-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("MUTE BAND " + std::to_string(n)).c_str());
+  const std::string name_mute = "mute-band";
+  const std::string nick_mute = "MUTE ";
 
-    if (name && nick) {
+  const char* const param_mute = strdup(std::string("mute band").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_mute).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_mute).append(nick_band).append(band_num).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, NBANDS + 1 + n,
-          g_param_spec_boolean(name, nick, "mute band", false,
+          g_param_spec_boolean(name, nick, param_mute, false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("bypass-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("BYPASS BAND " + std::to_string(n)).c_str());
+  const std::string name_bypass = "bypass-band";
+  const std::string nick_bypass = "BYPASS ";
 
-    if (name && nick) {
+  const char* const param_bypass = strdup(std::string("bypass band").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_bypass).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_bypass).append(nick_band).append(band_num).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, 2 * NBANDS + 1 + n,
-          g_param_spec_boolean(name, nick, "bypass band", false,
+          g_param_spec_boolean(name, nick, param_bypass, false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
   g_object_class_install_property(
