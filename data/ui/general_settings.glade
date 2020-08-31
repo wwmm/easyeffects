@@ -162,7 +162,7 @@
             <property name="can_focus">True</property>
             <property name="halign">start</property>
             <property name="width_chars">5</property>
-            <property name="text" translatable="yes">-10</property>
+            <property name="text">-10</property>
             <property name="xalign">0.5</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">adjustment_niceness</property>
@@ -179,7 +179,7 @@
             <property name="can_focus">True</property>
             <property name="halign">start</property>
             <property name="width_chars">5</property>
-            <property name="text" translatable="yes">4</property>
+            <property name="text">4</property>
             <property name="xalign">0.5</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">adjustment_priority</property>

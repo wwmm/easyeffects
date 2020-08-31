@@ -250,7 +250,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">0.0</property>
+                    <property name="text">0.0</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
@@ -271,7 +271,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">4.0</property>
+                    <property name="text">4.0</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
@@ -293,7 +293,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">1.0</property>
+                    <property name="text">1.0</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">f2_q</property>
@@ -363,7 +363,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">15</property>
+                    <property name="text">15</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">laxity</property>
@@ -382,7 +382,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">-18.0</property>
+                    <property name="text">-18.0</property>
                     <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                     <property name="secondary_icon_activatable">False</property>
                     <property name="input_purpose">number</property>
@@ -404,7 +404,7 @@
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
                     <property name="width_chars">10</property>
-                    <property name="text" translatable="yes">3</property>
+                    <property name="text">3</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
                     <property name="adjustment">ratio</property>
@@ -509,7 +509,7 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="width_chars">9</property>
-                        <property name="text" translatable="yes">6000</property>
+                        <property name="text">6000</property>
                         <property name="xalign">0.5</property>
                         <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
@@ -530,7 +530,7 @@
                         <property name="can_focus">True</property>
                         <property name="halign">start</property>
                         <property name="width_chars">9</property>
-                        <property name="text" translatable="yes">4500</property>
+                        <property name="text">4500</property>
                         <property name="xalign">0.5</property>
                         <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
                         <property name="secondary_icon_activatable">False</property>
