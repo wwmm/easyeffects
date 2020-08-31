@@ -33,7 +33,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">end</property>
-        <property name="valign">center</property>
         <property name="spacing">6</property>
         <child>
           <object class="GtkButton" id="plugin_up">
@@ -100,7 +99,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
             <property name="label" translatable="yes">Pitch</property>
           </object>
           <packing>
@@ -160,22 +158,22 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="hexpand">True</property>
             <property name="row_spacing">18</property>
-            <property name="column_spacing">60</property>
             <child>
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
                 <property name="row_spacing">6</property>
-                <property name="column_spacing">60</property>
+                <property name="column_spacing">48</property>
+                <property name="column_homogeneous">True</property>
                 <child>
                   <object class="GtkLabel">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Cents</property>
                   </object>
                   <packing>
@@ -188,7 +186,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
@@ -206,7 +203,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Semitones</property>
                   </object>
                   <packing>
@@ -219,7 +215,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
@@ -237,7 +232,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Octaves</property>
                   </object>
                   <packing>
@@ -250,7 +244,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
@@ -268,7 +261,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="label" translatable="yes">Crispness</property>
                   </object>
                   <packing>
@@ -281,7 +273,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
                     <property name="width_chars">10</property>
                     <property name="input_purpose">number</property>
                     <property name="orientation">vertical</property>
@@ -313,8 +304,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
                   </object>
                   <packing>
                     <property name="left_attach">0</property>
@@ -327,8 +316,6 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
-                    <property name="halign">start</property>
-                    <property name="valign">center</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -353,13 +340,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_top">20</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -373,12 +360,11 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -387,7 +373,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">0</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -407,7 +392,7 @@
               <packing>
                 <property name="left_attach">4</property>
                 <property name="top_attach">0</property>
-                <property name="height">4</property>
+                <property name="height">5</property>
               </packing>
             </child>
             <child>
@@ -415,7 +400,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">1</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -437,7 +421,7 @@
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -452,7 +436,7 @@
               </object>
               <packing>
                 <property name="left_attach">5</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -489,7 +473,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -501,7 +485,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -532,8 +516,29 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">4</property>
               </packing>
             </child>
           </object>

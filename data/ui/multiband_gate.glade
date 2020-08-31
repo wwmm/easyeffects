@@ -70,7 +70,6 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="halign">end</property>
-        <property name="valign">center</property>
         <property name="spacing">6</property>
         <child>
           <object class="GtkButton" id="plugin_up">
@@ -137,7 +136,6 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
             <property name="label" translatable="yes">Multiband Gate</property>
           </object>
           <packing>
@@ -336,7 +334,7 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="row_spacing">6</property>
-            <property name="column_spacing">18</property>
+            <property name="column_spacing">20</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -466,8 +464,8 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="hexpand">True</property>
             <property name="row_spacing">18</property>
             <child>
               <object class="GtkStackSwitcher">
@@ -485,12 +483,14 @@
               <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -498,7 +498,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass0">
@@ -551,15 +551,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -572,7 +572,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -593,7 +592,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -606,7 +604,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -627,7 +624,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -640,7 +636,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -661,7 +656,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -674,7 +668,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -693,7 +686,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -706,7 +698,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -727,7 +718,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -740,8 +730,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -763,7 +751,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -776,7 +763,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -803,12 +789,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -835,8 +822,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -848,7 +835,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -875,8 +862,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -899,6 +886,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -906,7 +894,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass1">
@@ -959,15 +947,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -980,7 +968,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1002,7 +989,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -1015,7 +1001,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1037,7 +1022,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1050,7 +1034,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1072,7 +1055,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1085,7 +1067,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1105,7 +1086,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1118,7 +1098,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1140,7 +1119,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1153,8 +1131,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1176,7 +1152,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1197,7 +1172,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -1215,12 +1189,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -1247,8 +1222,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1260,7 +1235,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -1287,8 +1262,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1312,6 +1287,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -1319,7 +1295,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass2">
@@ -1372,15 +1348,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -1393,7 +1369,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1415,7 +1390,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -1428,7 +1402,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1450,7 +1423,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1463,7 +1435,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1485,7 +1456,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1498,7 +1468,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1518,7 +1487,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1531,7 +1499,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1553,7 +1520,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1566,8 +1532,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1589,7 +1553,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1610,7 +1573,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -1628,12 +1590,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -1660,8 +1623,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1673,7 +1636,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -1700,8 +1663,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1725,6 +1688,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -1732,7 +1696,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass3">
@@ -1785,15 +1749,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -1806,7 +1770,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1828,7 +1791,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -1841,7 +1803,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1863,7 +1824,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1876,7 +1836,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1898,7 +1857,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1911,7 +1869,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1931,7 +1888,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1944,7 +1900,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1966,7 +1921,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1979,8 +1933,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -2002,7 +1954,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -2023,7 +1974,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -2041,12 +1991,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -2073,8 +2024,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -2086,7 +2037,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -2113,8 +2064,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -2152,14 +2103,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="margin_top">20</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -2173,13 +2123,11 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2200,7 +2148,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">0</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -2220,7 +2167,7 @@
               <packing>
                 <property name="left_attach">4</property>
                 <property name="top_attach">0</property>
-                <property name="height">4</property>
+                <property name="height">5</property>
               </packing>
             </child>
             <child>
@@ -2228,7 +2175,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">1</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -2260,7 +2206,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -2272,7 +2218,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -2286,7 +2232,7 @@
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2301,7 +2247,7 @@
               </object>
               <packing>
                 <property name="left_attach">5</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2333,8 +2279,29 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">4</property>
               </packing>
             </child>
           </object>
