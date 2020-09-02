@@ -338,7 +338,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 
       if (f > 1000.0) {
         msg.precision(1);
-        msg << std::fixed << f / 1000 << "kHz";
+        msg << std::fixed << f / 1000.0 << "kHz";
       } else {
         msg.precision(0);
         msg << std::fixed << f << "Hz";

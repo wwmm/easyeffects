@@ -597,7 +597,7 @@ void PipelineBase::get_latency() {
   GstQuery* q = gst_query_new_latency();
 
   if (gst_element_query(pipeline, q) != 0) {
-    gboolean live = 0;
+    gboolean live = false;
     GstClockTime min = 0;
     GstClockTime max = 0;
 

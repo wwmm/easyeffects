@@ -6,9 +6,9 @@
 namespace {
 
 void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
-  auto post = g_settings_get_boolean(settings, key);
+  const auto post = g_settings_get_boolean(settings, key);
 
-  if (post != 0) {
+  if (post) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
