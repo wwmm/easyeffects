@@ -18,7 +18,7 @@ auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
 
 auto int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
   if (v == 0) {
     return g_variant_new_string("Bars");

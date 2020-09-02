@@ -28,10 +28,12 @@ void on_message_error(const GstBus* gst_bus, GstMessage* message, PipelineBase* 
 void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
   GstStreamStatusType type = GST_STREAM_STATUS_TYPE_DESTROY;
   GstElement* owner = nullptr;
+
   gchar* path = nullptr;
   std::string path_str;
   std::string source_name;
   std::size_t idx = 0;
+
   int priority = 4;
   int niceness = -10;
   int priority_type = 2;  // None
@@ -39,7 +41,7 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
   gst_message_parse_stream_status(message, &type, &owner);
 
   switch (type) {
-    case GST_STREAM_STATUS_TYPE_ENTER:
+    case GST_STREAM_STATUS_TYPE_ENTER: {
       path = gst_object_get_path_string(GST_OBJECT(owner));
 
       path_str = path;
@@ -52,18 +54,22 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
 
       priority_type = g_settings_get_enum(pb->settings, "priority-type");
 
-      if (priority_type == 0) {  // Niceness (high priority in rtkit terms)
-        niceness = g_settings_get_int(pb->settings, "niceness");
+      switch (priority_type) {
+        case 0: {  // Niceness (high priority in rtkit terms)
+          niceness = g_settings_get_int(pb->settings, "niceness");
 
-        pb->rtkit->set_nice(source_name, niceness);
-      } else if (priority_type == 1) {  // Real Time
-        priority = g_settings_get_int(pb->settings, "realtime-priority");
+          pb->rtkit->set_nice(source_name, niceness);
 
-        pb->rtkit->set_priority(source_name, priority);
+          break;
+
+        } case 1: {  // Real Time
+          priority = g_settings_get_int(pb->settings, "realtime-priority");
+
+          pb->rtkit->set_priority(source_name, priority);
+        }
       }
 
-      break;
-    default:
+    } default:
       break;
   }
 }

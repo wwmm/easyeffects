@@ -37,37 +37,27 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Off");
+  switch (v) {
+    case 0: return g_variant_new_string("Off");
+
+    case 1: return g_variant_new_string("Bell");
+
+    case 2: return g_variant_new_string("Hi-pass");
+
+    case 3: return g_variant_new_string("Hi-shelf");
+
+    case 4: return g_variant_new_string("Lo-pass");
+
+    case 5: return g_variant_new_string("Lo-shelf");
+
+    case 6: return g_variant_new_string("Notch");
+
+    case 7: return g_variant_new_string("Resonance");
+
+    default: return g_variant_new_string("Bell");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("Bell");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("Hi-pass");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("Hi-shelf");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("Lo-pass");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("Lo-shelf");
-  }
-
-  if (v == 6) {
-    return g_variant_new_string("Notch");
-  }
-
-  return g_variant_new_string("Resonance");
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -85,17 +75,17 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("IIR");
+  switch (v) {
+    case 0: return g_variant_new_string("IIR");
+
+    case 1: return g_variant_new_string("FIR");
+
+    case 3: return g_variant_new_string("FFT");
+
+    default: return g_variant_new_string("IIR");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("FIR");
-  }
-
-  return g_variant_new_string("FFT");
 }
 
 auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -121,33 +111,25 @@ auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("RLC (BT)");
+  switch (v) {
+    case 0: return g_variant_new_string("RLC (BT)");
+
+    case 1: return g_variant_new_string("RLC (MT)");
+
+    case 2: return g_variant_new_string("BWC (BT)");
+
+    case 3: return g_variant_new_string("BWC (MT)");
+
+    case 4: return g_variant_new_string("LRX (BT)");
+
+    case 5: return g_variant_new_string("LRX (MT)");
+
+    case 6: return g_variant_new_string("APO (DR)");
+
+    default: return g_variant_new_string("RLC (BT)");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("RLC (MT)");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("BWC (BT)");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("BWC (MT)");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("LRX (BT)");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("LRX (MT)");
-  }
-
-  return g_variant_new_string("APO (DR)");
 }
 
 auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -167,21 +149,19 @@ auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("x1");
+  switch (v) {
+    case 0: return g_variant_new_string("x1");
+
+    case 1: return g_variant_new_string("x2");
+
+    case 2: return g_variant_new_string("x3");
+
+    case 3: return g_variant_new_string("x4");
+
+    default: return g_variant_new_string("x1");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("x2");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("x3");
-  }
-
-  return g_variant_new_string("x4");
 }
 
 }  // namespace

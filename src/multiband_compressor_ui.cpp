@@ -4,7 +4,7 @@
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
@@ -16,17 +16,19 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("RMS");
+  switch (v) {
+    case 0: return g_variant_new_string("RMS");
+
+    case 1: return g_variant_new_string("Peak");
+
+    default: return g_variant_new_string("RMS");
   }
-
-  return g_variant_new_string("Peak");
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "LR4") == 0) {
     g_value_set_int(value, 0);
@@ -38,13 +40,15 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("LR4");
+  switch (v) {
+    case 0: return g_variant_new_string("LR4");
+
+    case 1: return g_variant_new_string("LR8");
+
+    default: return g_variant_new_string("LR8");
   }
-
-  return g_variant_new_string("LR8");
 }
 
 }  // namespace

@@ -162,41 +162,52 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   null_sink_rate.precision(1);
   current_dev_rate.precision(1);
 
-  if (index == 0) {  // sie
-    subtitle_grid->show();
+  switch (index) {
+    case 0: {  // sie
 
-    headerbar_icon1->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
+      subtitle_grid->show();
 
-    headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
+      headerbar_icon1->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
+      headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-    auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
+      null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
 
-    current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
+      auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-    headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
-                             null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
-                             std::to_string(sie_latency) + "ms ⟶ ");
+      current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-  } else if (index == 1) {  // soe
-    subtitle_grid->show();
+      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() +
+                               " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " + sink->format + "," +
+                               current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
-    headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic", Gtk::ICON_SIZE_MENU);
+      break;
 
-    headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
+    } case 1: {  // soe
 
-    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
+      subtitle_grid->show();
 
-    auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+      headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic", Gtk::ICON_SIZE_MENU);
 
-    current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+      headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
-                             null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
-                             null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
-  } else if (index == 2) {  // pulse info
-    subtitle_grid->hide();
+      null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
+
+      auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+
+      current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+
+      headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
+                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
+                               null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+
+      break;
+
+    } default:  // pulse info
+
+      subtitle_grid->hide();
+
+      break;
   }
 }
 

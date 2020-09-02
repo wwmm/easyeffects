@@ -4,7 +4,7 @@
 namespace {
 
 auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Small") == 0) {
     g_value_set_int(value, 0);
@@ -24,29 +24,23 @@ auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Small");
+  switch (v) {
+    case 0: return g_variant_new_string("Small");
+
+    case 1: return g_variant_new_string("Medium");
+
+    case 2: return g_variant_new_string("Large");
+
+    case 3: return g_variant_new_string("Tunnel-like");
+
+    case 4: return g_variant_new_string("Large/smooth");
+
+    case 5: return g_variant_new_string("Experimental");
+
+    default: return g_variant_new_string("Large");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("Medium");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("Large");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("Tunnel-like");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("Large/smooth");
-  }
-
-  return g_variant_new_string("Experimental");
 }
 
 }  // namespace

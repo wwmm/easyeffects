@@ -54,36 +54,56 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
 
   auto state = pa_context_get_state(ctx);
 
-  if (state == PA_CONTEXT_UNCONNECTED) {
-    util::debug(pm->log_tag + "context is unconnected");
-  } else if (state == PA_CONTEXT_CONNECTING) {
-    util::debug(pm->log_tag + "context is connecting");
-  } else if (state == PA_CONTEXT_AUTHORIZING) {
-    util::debug(pm->log_tag + "context is authorizing");
-  } else if (state == PA_CONTEXT_SETTING_NAME) {
-    util::debug(pm->log_tag + "context is setting name");
-  } else if (state == PA_CONTEXT_READY) {
-    util::debug(pm->log_tag + "context is ready");
-    util::debug(pm->log_tag + "connected to: " + pa_context_get_server(ctx));
+  switch (state) {
+    case PA_CONTEXT_UNCONNECTED:
+      util::debug(pm->log_tag + "context is unconnected");
+      break;
 
-    auto protocol = std::to_string(pa_context_get_protocol_version(ctx));
+    case PA_CONTEXT_CONNECTING:
+      util::debug(pm->log_tag + "context is connecting");
+      break;
 
-    pm->server_info.protocol = protocol;
+    case PA_CONTEXT_AUTHORIZING:
+      util::debug(pm->log_tag + "context is authorizing");
+      break;
 
-    util::debug(pm->log_tag + "protocol version: " + protocol);
+    case PA_CONTEXT_SETTING_NAME:
+      util::debug(pm->log_tag + "context is setting name");
+      break;
 
-    pm->context_ready = true;
-    pa_threaded_mainloop_signal(pm->main_loop, 0);
-  } else if (state == PA_CONTEXT_FAILED) {
-    util::debug(pm->log_tag + "failed to connect context");
+    case PA_CONTEXT_READY: {
+      util::debug(pm->log_tag + "context is ready");
+      util::debug(pm->log_tag + "connected to: " + pa_context_get_server(ctx));
 
-    pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, 0);
-  } else if (state == PA_CONTEXT_TERMINATED) {
-    util::debug(pm->log_tag + "context was terminated");
+      auto protocol = std::to_string(pa_context_get_protocol_version(ctx));
 
-    pm->context_ready = false;
-    pa_threaded_mainloop_signal(pm->main_loop, 0);
+      pm->server_info.protocol = protocol;
+
+      util::debug(pm->log_tag + "protocol version: " + protocol);
+
+      pm->context_ready = true;
+      pa_threaded_mainloop_signal(pm->main_loop, 0);
+
+      break;
+
+    } case PA_CONTEXT_FAILED: {
+      util::debug(pm->log_tag + "failed to connect context");
+
+      pm->context_ready = false;
+      pa_threaded_mainloop_signal(pm->main_loop, 0);
+
+      break;
+
+    } case PA_CONTEXT_TERMINATED: {
+      util::debug(pm->log_tag + "context was terminated");
+
+      pm->context_ready = false;
+      pa_threaded_mainloop_signal(pm->main_loop, 0);
+
+      break;
+
+    } default:
+      break;
   }
 }
 
@@ -95,216 +115,267 @@ void PulseManager::subscribe_to_events() {
 
         auto pm = static_cast<PulseManager*>(d);
 
-        if (f == PA_SUBSCRIPTION_EVENT_SINK_INPUT) {
-          auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+        switch (f) {
+          case PA_SUBSCRIPTION_EVENT_SINK_INPUT: {
+            auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
 
-          if (e == PA_SUBSCRIPTION_EVENT_NEW) {
-            pa_context_get_sink_input_info(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-                    pm->new_app(info);
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
-            pa_context_get_sink_input_info(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-                    pm->changed_app(info);
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-            Glib::signal_idle().connect_once([pm, idx]() { pm->sink_input_removed.emit(idx); });
-          }
-        } else if (f == PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT) {
-          auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+            switch (e) {
+              case PA_SUBSCRIPTION_EVENT_NEW:
+                pa_context_get_sink_input_info(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+                        pm->new_app(info);
+                      }
+                    },
+                    pm
+                );
 
-          if (e == PA_SUBSCRIPTION_EVENT_NEW) {
-            pa_context_get_source_output_info(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-                    pm->new_app(info);
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
-            pa_context_get_source_output_info(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-                    pm->changed_app(info);
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-            Glib::signal_idle().connect_once([pm, idx]() { pm->source_output_removed.emit(idx); });
-          }
-        } else if (f == PA_SUBSCRIPTION_EVENT_SOURCE) {
-          auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+                break;
 
-          if (e == PA_SUBSCRIPTION_EVENT_NEW) {
-            pa_context_get_source_info_by_index(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    std::string s1 = "PulseEffects_apps.monitor";
-                    std::string s2 = "PulseEffects_mic.monitor";
+              case PA_SUBSCRIPTION_EVENT_CHANGE:
+                pa_context_get_sink_input_info(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+                        pm->changed_app(info);
+                      }
+                    },
+                    pm
+                );
 
-                    if (info->name != s1 && info->name != s2) {
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_REMOVE:
+                Glib::signal_idle().connect_once([pm, idx]() { pm->sink_input_removed.emit(idx); });
+            }
+
+            break;
+
+          } case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT: {
+            auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+            switch (e) {
+              case PA_SUBSCRIPTION_EVENT_NEW:
+                pa_context_get_source_output_info(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+                        pm->new_app(info);
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_CHANGE:
+                pa_context_get_source_output_info(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+                        pm->changed_app(info);
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_REMOVE:
+                Glib::signal_idle().connect_once([pm, idx]() { pm->source_output_removed.emit(idx); });
+            }
+
+            break;
+
+          } case PA_SUBSCRIPTION_EVENT_SOURCE: {
+            auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+            switch (e) {
+              case PA_SUBSCRIPTION_EVENT_NEW:
+                pa_context_get_source_info_by_index(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        std::string s1 = "PulseEffects_apps.monitor";
+                        std::string s2 = "PulseEffects_mic.monitor";
+
+                        if (info->name != s1 && info->name != s2) {
+                          auto pm = static_cast<PulseManager*>(d);
+
+                          auto si = std::make_shared<mySourceInfo>();
+
+                          si->name = info->name;
+                          si->index = info->index;
+                          si->description = info->description;
+                          si->rate = info->sample_spec.rate;
+                          si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                          if (info->active_port != nullptr) {
+                            si->active_port = info->active_port->name;
+                          } else {
+                            si->active_port = "null";
+                          }
+
+                          Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
+                        }
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_CHANGE:
+                pa_context_get_source_info_by_index(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+
+                        auto si = std::make_shared<mySourceInfo>();
+
+                        si->name = info->name;
+                        si->index = info->index;
+                        si->description = info->description;
+                        si->rate = info->sample_spec.rate;
+                        si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                        if (info->active_port != nullptr) {
+                          si->active_port = info->active_port->name;
+                        } else {
+                          si->active_port = "null";
+                        }
+
+                        if (si->name == "PulseEffects_mic.monitor") {
+                          pm->mic_sink_info->rate = si->rate;
+                          pm->mic_sink_info->format = si->format;
+                        }
+
+                        Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(si); });
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_REMOVE:
+                Glib::signal_idle().connect_once([pm, idx]() { pm->source_removed.emit(idx); });
+            }
+
+            break;
+
+          } case PA_SUBSCRIPTION_EVENT_SINK: {
+            auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+            switch (e) {
+              case PA_SUBSCRIPTION_EVENT_NEW:
+                pa_context_get_sink_info_by_index(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        std::string s1 = "PulseEffects_apps";
+                        std::string s2 = "PulseEffects_mic";
+
+                        if (info->name != s1 && info->name != s2) {
+                          auto pm = static_cast<PulseManager*>(d);
+
+                          auto si = std::make_shared<mySinkInfo>();
+
+                          si->name = info->name;
+                          si->index = info->index;
+                          si->description = info->description;
+                          si->rate = info->sample_spec.rate;
+                          si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                          if (info->active_port != nullptr) {
+                            si->active_port = info->active_port->name;
+                          } else {
+                            si->active_port = "null";
+                          }
+
+                          Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
+                        }
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_CHANGE:
+                pa_context_get_sink_info_by_index(
+                    c, idx,
+                    [](auto cx, auto info, auto eol, auto d) {
+                      if (info != nullptr) {
+                        auto pm = static_cast<PulseManager*>(d);
+                        auto si = std::make_shared<mySinkInfo>();
+
+                        si->name = info->name;
+                        si->index = info->index;
+                        si->description = info->description;
+                        si->rate = info->sample_spec.rate;
+                        si->format = pa_sample_format_to_string(info->sample_spec.format);
+
+                        if (info->active_port != nullptr) {
+                          si->active_port = info->active_port->name;
+                        } else {
+                          si->active_port = "null";
+                        }
+
+                        if (si->name == "PulseEffects_apps") {
+                          pm->apps_sink_info->rate = si->rate;
+                          pm->apps_sink_info->format = si->format;
+                        }
+
+                        Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(si); });
+                      }
+                    },
+                    pm
+                );
+
+                break;
+
+              case PA_SUBSCRIPTION_EVENT_REMOVE:
+                Glib::signal_idle().connect_once([pm, idx]() { pm->sink_removed.emit(idx); });
+            }
+
+            break;
+
+          } case PA_SUBSCRIPTION_EVENT_SERVER: {
+            auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
+
+            if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
+              pa_context_get_server_info(
+                  c,
+                  [](auto cx, auto info, auto d) {
+                    if (info != nullptr) {
                       auto pm = static_cast<PulseManager*>(d);
 
-                      auto si = std::make_shared<mySourceInfo>();
+                      pm->update_server_info(info);
 
-                      si->name = info->name;
-                      si->index = info->index;
-                      si->description = info->description;
-                      si->rate = info->sample_spec.rate;
-                      si->format = pa_sample_format_to_string(info->sample_spec.format);
+                      std::string sink = info->default_sink_name;
+                      std::string source = info->default_source_name;
 
-                      if (info->active_port != nullptr) {
-                        si->active_port = info->active_port->name;
-                      } else {
-                        si->active_port = "null";
+                      if (sink != std::string("PulseEffects_apps")) {
+                        Glib::signal_idle().connect_once([pm, sink]() { pm->new_default_sink.emit(sink); });
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_added.emit(si); });
-                    }
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
-            pa_context_get_source_info_by_index(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-
-                    auto si = std::make_shared<mySourceInfo>();
-
-                    si->name = info->name;
-                    si->index = info->index;
-                    si->description = info->description;
-                    si->rate = info->sample_spec.rate;
-                    si->format = pa_sample_format_to_string(info->sample_spec.format);
-
-                    if (info->active_port != nullptr) {
-                      si->active_port = info->active_port->name;
-                    } else {
-                      si->active_port = "null";
-                    }
-
-                    if (si->name == "PulseEffects_mic.monitor") {
-                      pm->mic_sink_info->rate = si->rate;
-                      pm->mic_sink_info->format = si->format;
-                    }
-
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(si); });
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-            Glib::signal_idle().connect_once([pm, idx]() { pm->source_removed.emit(idx); });
-          }
-        } else if (f == PA_SUBSCRIPTION_EVENT_SINK) {
-          auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
-
-          if (e == PA_SUBSCRIPTION_EVENT_NEW) {
-            pa_context_get_sink_info_by_index(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    std::string s1 = "PulseEffects_apps";
-                    std::string s2 = "PulseEffects_mic";
-
-                    if (info->name != s1 && info->name != s2) {
-                      auto pm = static_cast<PulseManager*>(d);
-
-                      auto si = std::make_shared<mySinkInfo>();
-
-                      si->name = info->name;
-                      si->index = info->index;
-                      si->description = info->description;
-                      si->rate = info->sample_spec.rate;
-                      si->format = pa_sample_format_to_string(info->sample_spec.format);
-
-                      if (info->active_port != nullptr) {
-                        si->active_port = info->active_port->name;
-                      } else {
-                        si->active_port = "null";
+                      if (source != std::string("PulseEffects_mic.monitor")) {
+                        Glib::signal_idle().connect_once([pm, source]() { pm->new_default_source.emit(source); });
                       }
 
-                      Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_added.emit(si); });
+                      Glib::signal_idle().connect_once([pm]() { pm->server_changed.emit(); });
                     }
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
-            pa_context_get_sink_info_by_index(
-                c, idx,
-                [](auto cx, auto info, auto eol, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-                    auto si = std::make_shared<mySinkInfo>();
-
-                    si->name = info->name;
-                    si->index = info->index;
-                    si->description = info->description;
-                    si->rate = info->sample_spec.rate;
-                    si->format = pa_sample_format_to_string(info->sample_spec.format);
-
-                    if (info->active_port != nullptr) {
-                      si->active_port = info->active_port->name;
-                    } else {
-                      si->active_port = "null";
-                    }
-
-                    if (si->name == "PulseEffects_apps") {
-                      pm->apps_sink_info->rate = si->rate;
-                      pm->apps_sink_info->format = si->format;
-                    }
-
-                    Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(si); });
-                  }
-                },
-                pm);
-          } else if (e == PA_SUBSCRIPTION_EVENT_REMOVE) {
-            Glib::signal_idle().connect_once([pm, idx]() { pm->sink_removed.emit(idx); });
-          }
-        } else if (f == PA_SUBSCRIPTION_EVENT_SERVER) {
-          auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
-
-          if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {
-            pa_context_get_server_info(
-                c,
-                [](auto cx, auto info, auto d) {
-                  if (info != nullptr) {
-                    auto pm = static_cast<PulseManager*>(d);
-
-                    pm->update_server_info(info);
-
-                    std::string sink = info->default_sink_name;
-                    std::string source = info->default_source_name;
-
-                    if (sink != std::string("PulseEffects_apps")) {
-                      Glib::signal_idle().connect_once([pm, sink]() { pm->new_default_sink.emit(sink); });
-                    }
-
-                    if (source != std::string("PulseEffects_mic.monitor")) {
-                      Glib::signal_idle().connect_once([pm, source]() { pm->new_default_source.emit(source); });
-                    }
-
-                    Glib::signal_idle().connect_once([pm]() { pm->server_changed.emit(); });
-                  }
-                },
-                pm);
+                  },
+                  pm
+              );
+            }
           }
         }
       },
