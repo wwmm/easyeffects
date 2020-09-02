@@ -5,9 +5,9 @@ namespace {
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Downward")) {
+  if (std::strcmp(v, "Downward") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Upward")) {
+  } else if (std::strcmp(v, "Upward") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -29,9 +29,9 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Feed-forward")) {
+  if (std::strcmp(v, "Feed-forward") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Feed-back")) {
+  } else if (std::strcmp(v, "Feed-back") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -54,13 +54,13 @@ auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expecte
 auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Peak")) {
+  if (std::strcmp(v, "Peak") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("RMS")) {
+  } else if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Low-Pass")) {
+  } else if (std::strcmp(v, "Low-Pass") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Uniform")) {
+  } else if (std::strcmp(v, "Uniform") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -87,13 +87,13 @@ auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expecte
 auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("Middle")) {
+  if (std::strcmp(v, "Middle") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("Side")) {
+  } else if (std::strcmp(v, "Side") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("Left")) {
+  } else if (std::strcmp(v, "Left") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("Right")) {
+  } else if (std::strcmp(v, "Right") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -120,13 +120,13 @@ auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expec
 auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (v == std::string("off")) {
+  if (std::strcmp(v, "off") == 0) {
     g_value_set_int(value, 0);
-  } else if (v == std::string("12 dB/oct")) {
+  } else if (std::strcmp(v, "12 dB/oct") == 0) {
     g_value_set_int(value, 1);
-  } else if (v == std::string("24 dB/oct")) {
+  } else if (std::strcmp(v, "24 dB/oct") == 0) {
     g_value_set_int(value, 2);
-  } else if (v == std::string("36 dB/oct")) {
+  } else if (std::strcmp(v, "36 dB/oct") == 0) {
     g_value_set_int(value, 3);
   }
 
