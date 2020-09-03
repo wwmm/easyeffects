@@ -5,6 +5,7 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/eventbox.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
@@ -37,9 +38,10 @@ class EffectsBaseUi {
   Glib::RefPtr<Gio::Settings> settings;
   Gtk::ListBox* listbox = nullptr;
   Gtk::Stack* stack = nullptr;
-  Gtk::Box *apps_box = nullptr, *app_button_row = nullptr;
+
+  Gtk::Box *apps_box = nullptr, *app_button_row = nullptr, *global_level_meter_grid = nullptr;
+  Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
-  Gtk::Image* saturation_icon = nullptr;
 
   PulseManager* pm = nullptr;
 

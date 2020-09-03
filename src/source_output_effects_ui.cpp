@@ -114,6 +114,10 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(stereo_tools_ui);
   add_to_listbox(maximizer_ui);
 
+  // show only mic icon before "Application" label
+
+  app_input_icon->set_visible(true);
+
   level_meters_connections();
   up_down_connections();
 
