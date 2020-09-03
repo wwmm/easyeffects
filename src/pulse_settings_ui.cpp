@@ -5,7 +5,7 @@
 namespace {
 
 auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "64") == 0) {
     g_value_set_int(value, 0);
@@ -27,33 +27,25 @@ auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("64");
+  switch (v) {
+    case 0: return g_variant_new_string("64");
+
+    case 1: return g_variant_new_string("128");
+
+    case 2: return g_variant_new_string("256");
+
+    case 3: return g_variant_new_string("512");
+
+    case 4: return g_variant_new_string("1024");
+
+    case 5: return g_variant_new_string("2048");
+
+    case 6: return g_variant_new_string("4096");
+
+    default: return g_variant_new_string("512");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("128");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("256");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("512");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("1024");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("2048");
-  }
-
-  return g_variant_new_string("4096");
 }
 
 }  // namespace

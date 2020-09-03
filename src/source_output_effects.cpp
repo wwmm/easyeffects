@@ -7,32 +7,36 @@ namespace {
 void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutputEffects* soe) {
   auto* src_name = GST_OBJECT_NAME(message->src);
 
+  // To optimize this call we move at the top of the nested "if statements" the most used messages
+  // which are 'global_level_meter' and the level meters for the most used plugins for source outputs:
+  // equalizer and webrtc. The rest is sorted alphabetically.
+
   if (std::strcmp(src_name, "global_level_meter") == 0) {
     soe->global_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "equalizer_input_level") == 0) {
     soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
     soe->equalizer_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "gate_input_level") == 0) {
-    soe->gate_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "gate_output_level") == 0) {
-    soe->gate_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
-    soe->deesser_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
-    soe->deesser_output_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
-    soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
-    soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "webrtc_input_level") == 0) {
     soe->webrtc_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "webrtc_output_level") == 0) {
     soe->webrtc_output_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
+    soe->deesser_input_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
+    soe->deesser_output_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "gate_input_level") == 0) {
+    soe->gate_input_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "gate_output_level") == 0) {
+    soe->gate_output_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "maximizer_input_level") == 0) {
     soe->maximizer_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "maximizer_output_level") == 0) {
     soe->maximizer_output_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
+    soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
+    soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
   }
 }
 

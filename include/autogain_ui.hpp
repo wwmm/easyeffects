@@ -38,7 +38,7 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
 
   Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr;
 
-  Gtk::Grid* weights_grid = nullptr;
+  Gtk::Grid *weight_m_grid = nullptr, *weight_s_grid = nullptr, *weight_i_grid = nullptr;
 };
 
 #endif

@@ -4,7 +4,7 @@
 namespace {
 
 auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "LR > LR (Stereo Default)") == 0) {
     g_value_set_int(value, 0);
@@ -26,33 +26,25 @@ auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_da
 }
 
 auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("LR > LR (Stereo Default)");
+  switch (v) {
+    case 0: return g_variant_new_string("LR > LR (Stereo Default)");
+
+    case 1: return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
+
+    case 2: return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
+
+    case 3: return g_variant_new_string("LR > LL (Mono Left Channel)");
+
+    case 4: return g_variant_new_string("LR > RR (Mono Right Channel)");
+
+    case 5: return g_variant_new_string("LR > L+R (Mono Sum L+R)");
+
+    case 6: return g_variant_new_string("LR > RL (Stereo Flip Channels)");
+
+    default: return g_variant_new_string("LR > LR (Stereo Default)");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("LR > LL (Mono Left Channel)");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("LR > RR (Mono Right Channel)");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("LR > L+R (Mono Sum L+R)");
-  }
-
-  return g_variant_new_string("LR > RL (Stereo Flip Channels)");
 }
 
 }  // namespace

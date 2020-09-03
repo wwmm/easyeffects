@@ -25,33 +25,25 @@ auto fft_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_fft_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("256");
+  switch (v) {
+    case 0: return g_variant_new_string("256");
+
+    case 1: return g_variant_new_string("512");
+
+    case 2: return g_variant_new_string("1024");
+
+    case 3: return g_variant_new_string("2048");
+
+    case 4: return g_variant_new_string("4096");
+
+    case 5: return g_variant_new_string("8192");
+
+    case 6: return g_variant_new_string("16384");
+
+    default: return g_variant_new_string("4096");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("512");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("1024");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("2048");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("4096");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("8192");
-  }
-
-  return g_variant_new_string("16384");
 }
 
 auto standard_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -71,21 +63,19 @@ auto standard_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_standard_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Flat");
+  switch (v) {
+    case 0: return g_variant_new_string("Flat");
+
+    case 1: return g_variant_new_string("ISO226-2003");
+
+    case 2: return g_variant_new_string("Fletcher-Munson");
+
+    case 3: return g_variant_new_string("Robinson-Dadson");
+
+    default: return g_variant_new_string("ISO226-2003");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("ISO226-2003");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("Fletcher-Munson");
-  }
-
-  return g_variant_new_string("Robinson-Dadson");
 }
 
 }  // namespace

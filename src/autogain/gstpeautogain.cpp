@@ -204,8 +204,8 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->loudness = 0.0f;
   peautogain->gain = 1.0f;
   peautogain->range = 0.0f;
-  peautogain->notify_samples = 0;
-  peautogain->sample_count = 0;
+  peautogain->notify_samples = 0u;
+  peautogain->sample_count = 0u;
   peautogain->notify = true;
   peautogain->detect_silence = true;
   peautogain->reset = false;
@@ -468,7 +468,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     }
   }
 
-  for (unsigned int n = 0; n < 2 * num_samples; n++) {
+  for (unsigned int n = 0u; n < 2u * num_samples; n++) {
     data[n] = data[n] * peautogain->gain;
   }
 
@@ -478,7 +478,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     peautogain->sample_count += num_samples;
 
     if (peautogain->sample_count >= peautogain->notify_samples) {
-      peautogain->sample_count = 0;
+      peautogain->sample_count = 0u;
 
       g_object_notify(G_OBJECT(peautogain), "m");
       g_object_notify(G_OBJECT(peautogain), "s");
