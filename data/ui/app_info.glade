@@ -56,8 +56,8 @@
         <child>
           <object class="GtkLabel">
             <property name="visible">True</property>
+            <property name="sensitive">False</property>
             <property name="can_focus">False</property>
-            <property name="opacity">0.7</property>
             <property name="margin_start">1</property>
             <property name="label">%</property>
           </object>

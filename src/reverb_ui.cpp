@@ -142,8 +142,8 @@ void ReverbUi::init_presets_buttons() {
     hf_damp->set_value(5508.46);
     room_size->set_active(4);
     diffusion->set_value(0.54);
-    amount->set_value(util::linear_to_db(0.469761f));
-    dry->set_value(util::linear_to_db(1.0f));
+    amount->set_value(util::linear_to_db(0.469761));
+    dry->set_value(util::linear_to_db(1.0));
     predelay->set_value(25.0);
     bass_cut->set_value(257.65);
     treble_cut->set_value(20000.0);
@@ -154,8 +154,8 @@ void ReverbUi::init_presets_buttons() {
     hf_damp->set_value(3971.64);
     room_size->set_active(4);
     diffusion->set_value(0.17);
-    amount->set_value(util::linear_to_db(0.198884f));
-    dry->set_value(util::linear_to_db(1.0f));
+    amount->set_value(util::linear_to_db(0.198884));
+    dry->set_value(util::linear_to_db(1.0));
     predelay->set_value(13.0);
     bass_cut->set_value(240.453);
     treble_cut->set_value(3303.47);
@@ -166,8 +166,8 @@ void ReverbUi::init_presets_buttons() {
     hf_damp->set_value(2182.58);
     room_size->set_active(4);
     diffusion->set_value(0.69);
-    amount->set_value(util::linear_to_db(0.291183f));
-    dry->set_value(util::linear_to_db(1.0f));
+    amount->set_value(util::linear_to_db(0.291183));
+    dry->set_value(util::linear_to_db(1.0));
     predelay->set_value(6.5);
     bass_cut->set_value(514.079);
     treble_cut->set_value(4064.15);
@@ -176,7 +176,7 @@ void ReverbUi::init_presets_buttons() {
   preset_large_empty_hall->signal_clicked().connect([=]() {
     decay_time->set_value(2.00689);
     hf_damp->set_value(20000.0);
-    amount->set_value(util::linear_to_db(0.366022f));
+    amount->set_value(util::linear_to_db(0.366022));
     settings->reset("room-size");
     settings->reset("diffusion");
     settings->reset("dry");
@@ -188,7 +188,7 @@ void ReverbUi::init_presets_buttons() {
   preset_disco->signal_clicked().connect([=]() {
     decay_time->set_value(1.0);
     hf_damp->set_value(3396.49);
-    amount->set_value(util::linear_to_db(0.269807f));
+    amount->set_value(util::linear_to_db(0.269807));
     settings->reset("room-size");
     settings->reset("diffusion");
     settings->reset("dry");
@@ -200,7 +200,7 @@ void ReverbUi::init_presets_buttons() {
   preset_large_occupied_hall->signal_clicked().connect([=]() {
     decay_time->set_value(1.45397);
     hf_damp->set_value(9795.58);
-    amount->set_value(util::linear_to_db(0.184284f));
+    amount->set_value(util::linear_to_db(0.184284));
     settings->reset("room-size");
     settings->reset("diffusion");
     settings->reset("dry");

@@ -1,6 +1,5 @@
 #include "effects_base_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/button.h>
 #include "plugin_ui_base.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
@@ -17,6 +16,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   auto b_app_button_row = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_button_row.glade");
 
   b_app_button_row->get_widget("app_button_row", app_button_row);
+  b_app_button_row->get_widget("app_input_icon", app_input_icon);
+  b_app_button_row->get_widget("app_output_icon", app_output_icon);
+  b_app_button_row->get_widget("global_level_meter_grid", global_level_meter_grid);
   b_app_button_row->get_widget("global_output_level_left", global_output_level_left);
   b_app_button_row->get_widget("global_output_level_right", global_output_level_right);
   b_app_button_row->get_widget("saturation_icon", saturation_icon);
@@ -121,27 +123,25 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   auto left = peak[0];
   auto right = peak[1];
 
+  // show the grid only if something is playing/recording
+
+  if (left < -99.0 && right < -99.0) {
+    global_level_meter_grid->set_visible(false);
+
+    return;
+  }
+
+  global_level_meter_grid->set_visible(true);
+
+  global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
+
+  global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
+
   // saturation icon notification
 
   if (left > 0.0 || right > 0.0) {
     saturation_icon->set_visible(true);
   } else {
     saturation_icon->set_visible(false);
-  }
-
-  // right channel
-
-  if (left >= -99.0) {
-    global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
-  } else {
-    global_output_level_left->set_text("-99");
-  }
-
-  // left channel
-
-  if (right >= -99.0) {
-    global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
-  } else {
-    global_output_level_right->set_text("-99");
   }
 }

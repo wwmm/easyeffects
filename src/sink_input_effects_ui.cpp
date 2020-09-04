@@ -139,6 +139,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(autogain_ui);
   add_to_listbox(delay_ui);
 
+  // show only speaker icon before "Application" label
+
+  app_output_icon->set_visible(true);
+
   level_meters_connections();
   up_down_connections();
 
