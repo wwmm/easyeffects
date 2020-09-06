@@ -493,7 +493,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Attenuation</property>
               </object>
               <packing>
@@ -506,6 +505,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
+                <property name="margin_start">4</property>
                 <property name="hexpand">True</property>
               </object>
               <packing>
