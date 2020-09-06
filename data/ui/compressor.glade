@@ -1107,7 +1107,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
-                <property name="margin_top">4</property>
+                <property name="margin_start">4</property>
                 <property name="hexpand">True</property>
                 <property name="max_value">30</property>
               </object>
@@ -1137,7 +1137,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Gain</property>
               </object>
               <packing>
@@ -1150,7 +1149,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Sidechain</property>
               </object>
               <packing>
@@ -1163,7 +1161,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
-                <property name="margin_top">4</property>
+                <property name="margin_start">4</property>
                 <property name="hexpand">True</property>
               </object>
               <packing>
@@ -1224,7 +1222,6 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="margin_end">3</property>
                 <property name="label" translatable="yes">Curve</property>
               </object>
               <packing>
@@ -1237,7 +1234,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="valign">center</property>
-                <property name="margin_top">4</property>
+                <property name="margin_start">4</property>
                 <property name="hexpand">True</property>
               </object>
               <packing>
