@@ -47,7 +47,6 @@
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>
-        <file>icons/about_icon.png</file>
         <file>icons/pulseeffects-sine-symbolic.svg</file>
         <file>icons/pulseeffects-us-symbolic.svg</file>
         <file>icons/pulseeffects-db-symbolic.svg</file>

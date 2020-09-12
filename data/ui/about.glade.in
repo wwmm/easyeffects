@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkAboutDialog" id="about_dialog">
@@ -13,11 +13,8 @@
     <property name="translator_credits">Wellington Wallace
 Gianluca Boiano</property>
     <property name="artists">ZenCubic</property>
-    <property name="logo">icons/about_icon.png</property>
+    <property name="logo_icon_name">pulseeffects</property>
     <property name="license_type">gpl-3-0</property>
-    <child>
-      <placeholder/>
-    </child>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>
@@ -44,6 +41,9 @@ Gianluca Boiano</property>
           <placeholder/>
         </child>
       </object>
+    </child>
+    <child type="titlebar">
+      <placeholder/>
     </child>
   </object>
 </interface>
