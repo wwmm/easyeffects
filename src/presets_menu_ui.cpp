@@ -4,6 +4,7 @@
 #include <gtkmm/dialog.h>
 #include <gtkmm/filechoosernative.h>
 #include <gtkmm/togglebutton.h>
+#include "preset_type.hpp"
 #include "util.hpp"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
@@ -209,7 +210,16 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     }
 
     connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
-      settings->set_string("last-used-preset", row->get_name());
+      switch (preset_type) {
+        case PresetType::input: {
+          settings->set_string("last-used-input-preset", row->get_name());
+          break;
+        }
+        case PresetType::output: {
+          settings->set_string("last-used-output-preset", row->get_name());
+          break;
+        }
+      }
 
       app->presets_manager->load(preset_type, row->get_name());
     }));
@@ -255,24 +265,26 @@ void PresetsMenuUi::reset_menu_button_label() {
   auto names_output = app->presets_manager->get_names(PresetType::output);
 
   if (names_input.empty() && names_output.empty()) {
-    settings->set_string("last-used-preset", _("Presets"));
+    settings->set_string("last-used-output-preset", _("Presets"));
+    settings->set_string("last-used-input-preset", _("Presets"));
 
     return;
   }
 
   for (const auto& name : names_input) {
-    if (name == settings->get_string("last-used-preset")) {
+    if (name == settings->get_string("last-used-input-preset")) {
       return;
     }
   }
 
   for (const auto& name : names_output) {
-    if (name == settings->get_string("last-used-preset")) {
+    if (name == settings->get_string("last-used-output-preset")) {
       return;
     }
   }
 
-  settings->set_string("last-used-preset", _("Presets"));
+  settings->set_string("last-used-output-preset", _("Presets"));
+  settings->set_string("last-used-input-preset", _("Presets"));
 }
 
 auto PresetsMenuUi::build_device_name(PresetType preset_type, const std::string& device) -> std::string {

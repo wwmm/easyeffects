@@ -6,6 +6,8 @@
 
 - `Blocklist` adopted and related command modified as a checkbutton inside the app info ui.
 - Pulseaudio's media name property is shown for each application in the `Applications` section.
+- The feature that shows the last used preset in the preset menu button label was improved. When seeing input effects
+  widget it shows the last used input preset. And when seeing output effects widgets it shows the last used output preset.
 
 ## [4.8.0]
 

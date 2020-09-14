@@ -72,10 +72,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   presets_menu_button->signal_clicked().connect(
       sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
 
-  presets_menu_label->set_text(settings->get_string("last-used-preset"));
+  presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
 
-  connections.emplace_back(settings->signal_changed("last-used-preset").connect([=](auto key) {
-    presets_menu_label->set_text(settings->get_string("last-used-preset"));
+  connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
+  }));
+
+  connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   }));
 
   // headerbar info
@@ -177,13 +181,13 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() +
-                               " ⟶ F32LE," + null_sink_rate.str() + " ⟶ " + sink->format + "," +
-                               current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
+      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
+                               null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
+                               std::to_string(sie_latency) + "ms ⟶ ");
 
       break;
-
-    } case 1: {  // soe
+    }
+    case 1: {  // soe
 
       subtitle_grid->show();
 
@@ -202,8 +206,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
                                null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;
-
-    } default:  // pulse info
+    }
+    default:  // pulse info
 
       subtitle_grid->hide();
 
@@ -216,8 +220,12 @@ void ApplicationUi::on_stack_visible_child_changed() {
 
   if (name == std::string("sink_inputs")) {
     update_headerbar_subtitle(0);
+
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   } else if (name == std::string("source_outputs")) {
     update_headerbar_subtitle(1);
+
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
   } else if (name == std::string("pulse_info")) {
     update_headerbar_subtitle(2);
   }

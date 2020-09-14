@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
     <enum id="com.github.wwmm.pulseeffects.blocksize.enum">
         <value nick="64" value="64" />
@@ -40,7 +40,10 @@
         <key name="use-default-source" type="b">
             <default>true</default>
         </key>
-        <key name="last-used-preset" type="s">
+        <key name="last-used-input-preset" type="s">
+            <default l10n="messages">"Presets"</default>
+        </key>
+        <key name="last-used-output-preset" type="s">
             <default l10n="messages">"Presets"</default>
         </key>
         <key name="custom-sink" type="s">
