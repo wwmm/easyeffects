@@ -514,7 +514,15 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
 
     load(preset_type, name);
 
-    settings->set_string("last-used-preset", name);
+    switch (preset_type) {
+      case PresetType::output:
+        settings->set_string("last-used-output-preset", name);
+        break;
+      case PresetType::input:
+        settings->set_string("last-used-input-preset", name);
+        break;
+    }
+
   }
 }
 
