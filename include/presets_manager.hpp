@@ -54,10 +54,9 @@ class PresetsManager {
  private:
   std::string log_tag = "presets_manager: ";
 
-  boost::filesystem::path user_presets_dir, user_input_dir, user_output_dir,
-    autoload_dir;
+  boost::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_dir;
 
-  std::vector<boost::filesystem::path> system_input_dirs, system_output_dirs;
+  std::vector<boost::filesystem::path> system_input_dir, system_output_dir;
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 

@@ -302,10 +302,11 @@ void Application::create_actions() {
       switch (response_id) {
         case Gtk::RESPONSE_CLOSE:
         case Gtk::RESPONSE_CANCEL:
-        case Gtk::RESPONSE_DELETE_EVENT:
+        case Gtk::RESPONSE_DELETE_EVENT: {
           dialog->hide();
           util::debug(log_tag + "hiding the about dialog window");
           break;
+        }
         default:
           util::debug(log_tag + "unexpected about dialog response!");
           break;

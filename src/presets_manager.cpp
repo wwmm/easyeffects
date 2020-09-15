@@ -37,22 +37,22 @@ PresetsManager::PresetsManager()
       spectrum(std::make_unique<SpectrumPreset>()) {
   // system presets directories provided by Glib
   for (const auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dirs.emplace_back(scd + "/PulseEffects/input");
-    system_output_dirs.emplace_back(scd + "/PulseEffects/output");
+    system_input_dir.emplace_back(scd + "/PulseEffects/input");
+    system_output_dir.emplace_back(scd + "/PulseEffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates
-  system_input_dirs.emplace_back("/etc/PulseEffects/input");
-  system_output_dirs.emplace_back("/etc/PulseEffects/output");
-  std::sort(system_input_dirs.begin(), system_input_dirs.end());
-  std::sort(system_output_dirs.begin(), system_output_dirs.end());
-  system_input_dirs.erase(std::unique(system_input_dirs.begin(), system_input_dirs.end()), system_input_dirs.end());
-  system_output_dirs.erase(std::unique(system_output_dirs.begin(), system_output_dirs.end()), system_output_dirs.end());
+  system_input_dir.emplace_back("/etc/PulseEffects/input");
+  system_output_dir.emplace_back("/etc/PulseEffects/output");
+  std::sort(system_input_dir.begin(), system_input_dir.end());
+  std::sort(system_output_dir.begin(), system_output_dir.end());
+  system_input_dir.erase(std::unique(system_input_dir.begin(), system_input_dir.end()), system_input_dir.end());
+  system_output_dir.erase(std::unique(system_output_dir.begin(), system_output_dir.end()), system_output_dir.end());
 
-  for (const auto& scd : system_input_dirs) {
+  for (const auto& scd : system_input_dir) {
     util::debug("presets_manager: system input presets directory: \"" + scd.string() + "\"; ");
   }
-  for (const auto& scd : system_output_dirs) {
+  for (const auto& scd : system_output_dir) {
     util::debug("presets_manager: system output presets directory: \"" + scd.string() + "\"; ");
   }
 
@@ -88,10 +88,13 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::strin
   std::vector<boost::filesystem::path> sys_dirs;
 
   // system directories search
-  if (preset_type == PresetType::output) {
-    sys_dirs.insert(sys_dirs.end(), system_output_dirs.begin(), system_output_dirs.end());
-  } else {
-    sys_dirs.insert(sys_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
+  switch (preset_type) {
+    case PresetType::output:
+      sys_dirs.insert(sys_dirs.end(), system_output_dir.begin(), system_output_dir.end());
+      break;
+    case PresetType::input:
+      sys_dirs.insert(sys_dirs.end(), system_input_dir.begin(), system_input_dir.end());
+      break;
   }
 
   for (const auto& dir : sys_dirs) {
@@ -103,11 +106,9 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::strin
   }
 
   // user directory search
-  if (preset_type == PresetType::output) {
-    it = boost::filesystem::directory_iterator{user_output_dir};
-  } else {
-    it = boost::filesystem::directory_iterator{user_input_dir};
-  }
+  auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  it = boost::filesystem::directory_iterator{user_dir};
+
   auto vn = search_names(it);
   names.insert(names.end(), vn.begin(), vn.end());
 
@@ -151,57 +152,75 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
   std::vector<std::string> blocklist;
   boost::property_tree::ptree node_in;
 
-  if (preset_type == PresetType::output) {
-    blocklist = settings->get_string_array("blocklist-out");
+  switch (preset_type) {
+    case PresetType::output: {
+      blocklist = settings->get_string_array("blocklist-out");
 
-    node_in.clear();
+      node_in.clear();
 
-    for (const auto& p : blocklist) {
-      boost::property_tree::ptree node;
-      node.put("", p);
-      node_in.push_back(std::make_pair("", node));
+      for (const auto& p : blocklist) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_in.push_back(std::make_pair("", node));
+      }
+
+      root.add_child("output.blocklist", node_in);
+
+      break;
     }
+    case PresetType::input: {
+      blocklist = settings->get_string_array("blocklist-in");
 
-    root.add_child("output.blocklist", node_in);
-  } else {
-    blocklist = settings->get_string_array("blocklist-in");
+      node_in.clear();
 
-    node_in.clear();
+      for (const auto& p : blocklist) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_in.push_back(std::make_pair("", node));
+      }
 
-    for (const auto& p : blocklist) {
-      boost::property_tree::ptree node;
-      node.put("", p);
-      node_in.push_back(std::make_pair("", node));
+      root.add_child("input.blocklist", node_in);
+
+      break;
     }
-
-    root.add_child("input.blocklist", node_in);
   }
+
 }
 
 void PresetsManager::load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root) {
   std::vector<std::string> blocklist;
 
-  if (preset_type == PresetType::output) {
-    try {
-      for (const auto& p : root.get_child("input.blocklist")) {
-        blocklist.emplace_back(p.second.data());
+  switch (preset_type) {
+    case PresetType::output: {
+      try {
+        for (const auto& p : root.get_child("input.blocklist")) {
+          blocklist.emplace_back(p.second.data());
+        }
+
+        settings->set_string_array("blocklist-in", blocklist);
+      }
+      catch (const boost::property_tree::ptree_error& e) {
+        settings->reset("blocklist-in");
       }
 
-      settings->set_string_array("blocklist-in", blocklist);
-    } catch (const boost::property_tree::ptree_error& e) {
-      settings->reset("blocklist-in");
+      break;
     }
-  } else {
-    try {
-      for (const auto& p : root.get_child("output.blocklist")) {
-        blocklist.emplace_back(p.second.data());
+    case PresetType::input: {
+      try {
+        for (const auto& p : root.get_child("output.blocklist")) {
+          blocklist.emplace_back(p.second.data());
+        }
+
+        settings->set_string_array("blocklist-out", blocklist);
+      }
+      catch (const boost::property_tree::ptree_error& e) {
+        settings->reset("blocklist-out");
       }
 
-      settings->set_string_array("blocklist-out", blocklist);
-    } catch (const boost::property_tree::ptree_error& e) {
-      settings->reset("blocklist-out");
+      break;
     }
   }
+
 }
 
 void PresetsManager::save(PresetType preset_type, const std::string& name) {
@@ -213,30 +232,37 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   spectrum->write(preset_type, root);
   save_blocklist(preset_type, root);
 
-  if (preset_type == PresetType::output) {
-    std::vector<std::string> output_plugins = sie_settings->get_string_array("plugins");
+  switch (preset_type) {
+    case PresetType::output: {
+      std::vector<std::string> output_plugins = sie_settings->get_string_array("plugins");
 
-    for (const auto& p : output_plugins) {
-      boost::property_tree::ptree node;
-      node.put("", p);
-      node_out.push_back(std::make_pair("", node));
+      for (const auto& p : output_plugins) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_out.push_back(std::make_pair("", node));
+      }
+
+      root.add_child("output.plugins_order", node_out);
+
+      output_file = user_output_dir / boost::filesystem::path{name + ".json"};
+
+      break;
     }
+    case PresetType::input: {
+      std::vector<std::string> input_plugins = soe_settings->get_string_array("plugins");
 
-    root.add_child("output.plugins_order", node_out);
+      for (const auto& p : input_plugins) {
+        boost::property_tree::ptree node;
+        node.put("", p);
+        node_in.push_back(std::make_pair("", node));
+      }
 
-    output_file = user_output_dir / boost::filesystem::path{name + ".json"};
-  } else {
-    std::vector<std::string> input_plugins = soe_settings->get_string_array("plugins");
+      root.add_child("input.plugins_order", node_in);
 
-    for (const auto& p : input_plugins) {
-      boost::property_tree::ptree node;
-      node.put("", p);
-      node_in.push_back(std::make_pair("", node));
+      output_file = user_input_dir / boost::filesystem::path{name + ".json"};
+
+      break;
     }
-
-    root.add_child("input.plugins_order", node_in);
-
-    output_file = user_input_dir / boost::filesystem::path{name + ".json"};
   }
 
   bass_enhancer->write(preset_type, root);
@@ -268,12 +294,9 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
   boost::filesystem::path preset_file;
+  auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  if (preset_type == PresetType::output) {
-    preset_file = user_output_dir / boost::filesystem::path{name + ".json"};
-  } else {
-    preset_file = user_input_dir / boost::filesystem::path{name + ".json"};
-  }
+  preset_file = user_dir / boost::filesystem::path{name + ".json"};
 
   if (boost::filesystem::exists(preset_file)) {
     boost::filesystem::remove(preset_file);
@@ -290,97 +313,104 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   boost::filesystem::path input_file;
   bool preset_found = false;
 
-  if (preset_type == PresetType::output) {
-    conf_dirs.emplace_back(user_output_dir);
-    conf_dirs.insert(conf_dirs.end(), system_output_dirs.begin(), system_output_dirs.end());
+  switch (preset_type) {
+    case PresetType::output: {
+      conf_dirs.emplace_back(user_output_dir);
+      conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
-    for (const auto& dir : conf_dirs) {
-      input_file = dir / boost::filesystem::path{name + ".json"};
-      if (boost::filesystem::exists(input_file)) {
-        preset_found = true;
-        break;
+      for (const auto& dir : conf_dirs) {
+        input_file = dir / boost::filesystem::path{name + ".json"};
+        if (boost::filesystem::exists(input_file)) {
+          preset_found = true;
+          break;
+        }
       }
-    }
 
-    if (preset_found) {
-      try {
-        boost::property_tree::read_json(input_file.string(), root);
+      if (preset_found) {
+        try {
+          boost::property_tree::read_json(input_file.string(), root);
 
-        Glib::Variant<std::vector<std::string>> aux;
-        sie_settings->get_default_value("plugins", aux);
+          Glib::Variant<std::vector<std::string>> aux;
+          sie_settings->get_default_value("plugins", aux);
 
-        for (const auto& p : root.get_child("output.plugins_order")) {
-          auto value = p.second.data();
+          for (const auto& p : root.get_child("output.plugins_order")) {
+            auto& value = p.second.data();
 
-          for (const auto& v : aux.get()) {
-            if (v == value) {
-              output_plugins.emplace_back(value);
+            for (const auto& v : aux.get()) {
+              if (v == value) {
+                output_plugins.emplace_back(value);
 
-              break;
+                break;
+              }
             }
           }
-        }
-
-        for (const auto& v : aux.get()) {
-          if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
-            output_plugins.emplace_back(v);
-          }
-        }
-      } catch (const boost::property_tree::ptree_error& e) {
-        Glib::Variant<std::vector<std::string>> aux;
-        sie_settings->get_default_value("plugins", aux);
-        output_plugins = aux.get();
-      }
-
-      sie_settings->set_string_array("plugins", output_plugins);
-    } else {
-      util::debug("can't found the preset " + name + " on the filesystem");
-    }
-  } else {
-    conf_dirs.emplace_back(user_input_dir);
-    conf_dirs.insert(conf_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
-
-    for (const auto& dir : conf_dirs) {
-      input_file = dir / boost::filesystem::path{name + ".json"};
-      if (boost::filesystem::exists(input_file)) {
-        preset_found = true;
-        break;
-      }
-    }
-
-    if (preset_found) {
-      try {
-        boost::property_tree::read_json(input_file.string(), root);
-
-        Glib::Variant<std::vector<std::string>> aux;
-        soe_settings->get_default_value("plugins", aux);
-
-        for (const auto& p : root.get_child("input.plugins_order")) {
-          auto value = p.second.data();
 
           for (const auto& v : aux.get()) {
-            if (v == value) {
-              input_plugins.emplace_back(value);
-
-              break;
+            if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
+              output_plugins.emplace_back(v);
             }
           }
+        } catch (const boost::property_tree::ptree_error& e) {
+          Glib::Variant<std::vector<std::string>> aux;
+          sie_settings->get_default_value("plugins", aux);
+          output_plugins = aux.get();
         }
 
-        for (const auto& v : aux.get()) {
-          if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
-            input_plugins.emplace_back(v);
-          }
-        }
-      } catch (const boost::property_tree::ptree_error& e) {
-        Glib::Variant<std::vector<std::string>> aux;
-        soe_settings->get_default_value("plugins", aux);
-        input_plugins = aux.get();
+        sie_settings->set_string_array("plugins", output_plugins);
+      } else {
+        util::debug("can't found the preset " + name + " on the filesystem");
       }
 
-      soe_settings->set_string_array("plugins", input_plugins);
-    } else {
-      util::debug("can't found the preset " + name + " on the filesystem");
+      break;
+    }
+    case PresetType::input: {
+      conf_dirs.emplace_back(user_input_dir);
+      conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
+
+      for (const auto& dir : conf_dirs) {
+        input_file = dir / boost::filesystem::path{name + ".json"};
+        if (boost::filesystem::exists(input_file)) {
+          preset_found = true;
+          break;
+        }
+      }
+
+      if (preset_found) {
+        try {
+          boost::property_tree::read_json(input_file.string(), root);
+
+          Glib::Variant<std::vector<std::string>> aux;
+          soe_settings->get_default_value("plugins", aux);
+
+          for (const auto& p : root.get_child("input.plugins_order")) {
+            auto& value = p.second.data();
+
+            for (const auto& v : aux.get()) {
+              if (v == value) {
+                input_plugins.emplace_back(value);
+
+                break;
+              }
+            }
+          }
+
+          for (const auto& v : aux.get()) {
+            if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
+              input_plugins.emplace_back(v);
+            }
+          }
+        } catch (const boost::property_tree::ptree_error& e) {
+          Glib::Variant<std::vector<std::string>> aux;
+          soe_settings->get_default_value("plugins", aux);
+          input_plugins = aux.get();
+        }
+
+        soe_settings->set_string_array("plugins", input_plugins);
+      } else {
+        util::debug("can't found the preset " + name + " on the filesystem");
+      }
+
+      break;
     }
   }
 
@@ -418,12 +448,9 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   if (boost::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
       boost::filesystem::path out_path;
+      auto& user_dir = (preset_type == PresetType::output) ? user_output_dir: user_input_dir;
 
-      if (preset_type == PresetType::output) {
-        out_path = user_output_dir / p.filename();
-      } else {
-        out_path = user_input_dir / p.filename();
-      }
+      out_path = user_dir / p.filename();
 
       boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
 
@@ -495,25 +522,32 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
   boost::filesystem::path input_file;
   std::vector<boost::filesystem::path> conf_dirs;
 
-  if (preset_type == PresetType::output) {
-    conf_dirs.emplace_back(user_output_dir);
-    conf_dirs.insert(conf_dirs.end(), system_output_dirs.begin(), system_output_dirs.end());
+  switch (preset_type) {
+    case PresetType::output: {
+      conf_dirs.emplace_back(user_output_dir);
+      conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
-    for (const auto& dir : conf_dirs) {
-      input_file = dir / boost::filesystem::path{name + ".json"};
-      if (boost::filesystem::exists(input_file)) {
-        return true;
+      for (const auto& dir : conf_dirs) {
+        input_file = dir / boost::filesystem::path{name + ".json"};
+        if (boost::filesystem::exists(input_file)) {
+          return true;
+        }
       }
+
+      break;
     }
-  } else {
-    conf_dirs.emplace_back(user_input_dir);
-    conf_dirs.insert(conf_dirs.end(), system_input_dirs.begin(), system_input_dirs.end());
+    case PresetType::input: {
+      conf_dirs.emplace_back(user_input_dir);
+      conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
-    for (const auto& dir : conf_dirs) {
-      input_file = dir / boost::filesystem::path{name + ".json"};
-      if (boost::filesystem::exists(input_file)) {
-        return true;
+      for (const auto& dir : conf_dirs) {
+        input_file = dir / boost::filesystem::path{name + ".json"};
+        if (boost::filesystem::exists(input_file)) {
+          return true;
+        }
       }
+
+      break;
     }
   }
 

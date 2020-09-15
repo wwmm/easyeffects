@@ -85,16 +85,16 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
       pa_threaded_mainloop_signal(pm->main_loop, 0);
 
       break;
-
-    } case PA_CONTEXT_FAILED: {
+    }
+    case PA_CONTEXT_FAILED: {
       util::debug(pm->log_tag + "failed to connect context");
 
       pm->context_ready = false;
       pa_threaded_mainloop_signal(pm->main_loop, 0);
 
       break;
-
-    } case PA_CONTEXT_TERMINATED: {
+    }
+    case PA_CONTEXT_TERMINATED: {
       util::debug(pm->log_tag + "context was terminated");
 
       pm->context_ready = false;
@@ -153,8 +153,8 @@ void PulseManager::subscribe_to_events() {
             }
 
             break;
-
-          } case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT: {
+          }
+          case PA_SUBSCRIPTION_EVENT_SOURCE_OUTPUT: {
             auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
 
             switch (e) {
@@ -191,8 +191,8 @@ void PulseManager::subscribe_to_events() {
             }
 
             break;
-
-          } case PA_SUBSCRIPTION_EVENT_SOURCE: {
+          }
+          case PA_SUBSCRIPTION_EVENT_SOURCE: {
             auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
 
             switch (e) {
@@ -269,8 +269,8 @@ void PulseManager::subscribe_to_events() {
             }
 
             break;
-
-          } case PA_SUBSCRIPTION_EVENT_SINK: {
+          }
+          case PA_SUBSCRIPTION_EVENT_SINK: {
             auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
 
             switch (e) {
@@ -346,8 +346,8 @@ void PulseManager::subscribe_to_events() {
             }
 
             break;
-
-          } case PA_SUBSCRIPTION_EVENT_SERVER: {
+          }
+          case PA_SUBSCRIPTION_EVENT_SERVER: {
             auto e = t & PA_SUBSCRIPTION_EVENT_TYPE_MASK;
 
             if (e == PA_SUBSCRIPTION_EVENT_CHANGE) {

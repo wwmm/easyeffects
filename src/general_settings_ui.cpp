@@ -185,21 +185,21 @@ void GeneralSettingsUi::set_priority_controls_visibility() {
   auto priority_type = settings->get_enum("priority-type");
 
   switch (priority_type) {
-    case 0:
+    case 0: {
       niceness_control->set_sensitive(true);
       realtime_priority_control->set_sensitive(false);
       break;
-
-    case 1:
+    }
+    case 1: {
       niceness_control->set_sensitive(false);
       realtime_priority_control->set_sensitive(true);
       break;
-
-    case 2:
+    }
+    case 2: {
       niceness_control->set_sensitive(false);
       realtime_priority_control->set_sensitive(false);
       break;
-
+    }
     default:
       break;
   }
