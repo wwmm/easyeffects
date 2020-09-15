@@ -61,8 +61,8 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
           pb->rtkit->set_nice(source_name, niceness);
 
           break;
-
-        } case 1: {  // Real Time
+        }
+        case 1: {  // Real Time
           priority = g_settings_get_int(pb->settings, "realtime-priority");
 
           pb->rtkit->set_priority(source_name, priority);

@@ -65,13 +65,7 @@ auto PresetsMenuUi::add_to_popover(Gtk::Popover* popover, Application* app) -> P
 }
 
 void PresetsMenuUi::create_preset(PresetType preset_type) {
-  std::string name;
-
-  if (preset_type == PresetType::output) {
-    name = output_name->get_text();
-  } else {
-    name = input_name->get_text();
-  }
+  std::string name = (preset_type == PresetType::output) ? output_name->get_text() : input_name->get_text();
 
   if (!name.empty()) {
     std::string illegalChars = "\\/";
@@ -80,21 +74,27 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
       bool found = illegalChars.find(*it) != std::string::npos;
 
       if (found) {
-        if (preset_type == PresetType::output) {
-          output_name->set_text("");
-        } else {
-          input_name->set_text("");
+        switch (preset_type) {
+          case PresetType::output:
+            output_name->set_text("");
+            break;
+          case PresetType::input:
+            input_name->set_text("");
+            break;
         }
 
         return;
       }
     }
 
-    if (preset_type == PresetType::output) {
-      output_name->set_text("");
-    } else {
-      // app->presets_manager->add(name);
-      input_name->set_text("");
+    switch (preset_type) {
+      case PresetType::output:
+        output_name->set_text("");
+        break;
+      case PresetType::input:
+        // app->presets_manager->add(name);
+        input_name->set_text("");
+        break;
     }
 
     app->presets_manager->add(preset_type, name);
@@ -168,13 +168,7 @@ void PresetsMenuUi::on_presets_menu_button_clicked() {
 }
 
 void PresetsMenuUi::populate_listbox(PresetType preset_type) {
-  Gtk::ListBox* listbox = nullptr;
-
-  if (preset_type == PresetType::output) {
-    listbox = output_listbox;
-  } else {
-    listbox = input_listbox;
-  }
+  Gtk::ListBox* listbox = (preset_type == PresetType::output) ? output_listbox : input_listbox;
 
   auto children = listbox->get_children();
 
@@ -211,14 +205,12 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
       switch (preset_type) {
-        case PresetType::input: {
+        case PresetType::input:
           settings->set_string("last-used-input-preset", row->get_name());
           break;
-        }
-        case PresetType::output: {
+        case PresetType::output:
           settings->set_string("last-used-output-preset", row->get_name());
           break;
-        }
       }
 
       app->presets_manager->load(preset_type, row->get_name());
@@ -228,21 +220,28 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
         save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
 
     connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
-      if (preset_type == PresetType::output) {
-        auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
+      switch (preset_type) {
+        case PresetType::output: {
+          auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
 
-        if (autoload_btn->get_active()) {
-          app->presets_manager->add_autoload(dev_name, name);
-        } else {
-          app->presets_manager->remove_autoload(dev_name, name);
+          if (autoload_btn->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
+          }
+
+          break;
         }
-      } else {
-        auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+        case PresetType::input: {
+          auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
 
-        if (autoload_btn->get_active()) {
-          app->presets_manager->add_autoload(dev_name, name);
-        } else {
-          app->presets_manager->remove_autoload(dev_name, name);
+          if (autoload_btn->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
+          }
+
+          break;
         }
       }
 
@@ -291,14 +290,21 @@ auto PresetsMenuUi::build_device_name(PresetType preset_type, const std::string&
   std::string port;
   std::string dev_name;
 
-  if (preset_type == PresetType::output) {
-    auto info = app->pm->get_sink_info(device);
+  switch (preset_type) {
+    case PresetType::output: {
+      auto info = app->pm->get_sink_info(device);
 
-    port = info->active_port;
-  } else {
-    auto info = app->pm->get_source_info(device);
+      port = info->active_port;
 
-    port = info->active_port;
+      break;
+    }
+    case PresetType::input: {
+      auto info = app->pm->get_source_info(device);
+
+      port = info->active_port;
+
+      break;
+    }
   }
 
   if (port != "null") {
@@ -313,14 +319,21 @@ auto PresetsMenuUi::build_device_name(PresetType preset_type, const std::string&
 auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) -> bool {
   std::string current_autoload;
 
-  if (preset_type == PresetType::output) {
-    auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
+  switch (preset_type) {
+    case PresetType::output: {
+      auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
 
-    current_autoload = app->presets_manager->find_autoload(dev_name);
-  } else {
-    auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+      current_autoload = app->presets_manager->find_autoload(dev_name);
 
-    current_autoload = app->presets_manager->find_autoload(dev_name);
+      break;
+    }
+    case PresetType::input: {
+      auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+
+      current_autoload = app->presets_manager->find_autoload(dev_name);
+
+      break;
+    }
   }
 
   return current_autoload == name;

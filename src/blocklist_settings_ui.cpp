@@ -104,10 +104,13 @@ auto BlocklistSettingsUi::add_new_entry(const std::string& name, PresetType pres
 
   settingsPtr->set_string_array(blocklist_preset_type, bl);
 
-  if (preset_type == PresetType::output) {
-    populate_blocklist_out_listbox();
-  } else {
-    populate_blocklist_in_listbox();
+  switch (preset_type) {
+    case PresetType::output:
+      populate_blocklist_out_listbox();
+      break;
+    case PresetType::input:
+      populate_blocklist_in_listbox();
+      break;
   }
 
   util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
@@ -131,10 +134,13 @@ void BlocklistSettingsUi::remove_entry(const std::string& name, PresetType prese
 
   settingsPtr->set_string_array(blocklist_preset_type, bl);
 
-  if (preset_type == PresetType::output) {
-    populate_blocklist_out_listbox();
-  } else {
-    populate_blocklist_in_listbox();
+  switch (preset_type) {
+    case PresetType::output:
+      populate_blocklist_out_listbox();
+      break;
+    case PresetType::input:
+      populate_blocklist_in_listbox();
+      break;
   }
 
   util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");

@@ -297,58 +297,87 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
   GST_DEBUG_OBJECT(pecrystalizer, "set_property");
 
   switch (property_id) {
-    case PROP_INTENSITY_BAND0:
+    // Intensities
+    case PROP_INTENSITY_BAND0: {
       pecrystalizer->intensities[0] = g_value_get_float(value);
       pecrystalizer->gain[0] = util::linspace(1.0f, pecrystalizer->intensities[0], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND1:
+    }
+    case PROP_INTENSITY_BAND1: {
       pecrystalizer->intensities[1] = g_value_get_float(value);
       pecrystalizer->gain[1] = util::linspace(1.0f, pecrystalizer->intensities[1], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND2:
+    }
+    case PROP_INTENSITY_BAND2: {
       pecrystalizer->intensities[2] = g_value_get_float(value);
       pecrystalizer->gain[2] = util::linspace(1.0f, pecrystalizer->intensities[2], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND3:
+    }
+    case PROP_INTENSITY_BAND3: {
       pecrystalizer->intensities[3] = g_value_get_float(value);
       pecrystalizer->gain[3] = util::linspace(1.0f, pecrystalizer->intensities[3], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND4:
+    }
+    case PROP_INTENSITY_BAND4: {
       pecrystalizer->intensities[4] = g_value_get_float(value);
       pecrystalizer->gain[4] = util::linspace(1.0f, pecrystalizer->intensities[4], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND5:
+    }
+    case PROP_INTENSITY_BAND5: {
       pecrystalizer->intensities[5] = g_value_get_float(value);
       pecrystalizer->gain[5] = util::linspace(1.0f, pecrystalizer->intensities[5], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND6:
+    }
+    case PROP_INTENSITY_BAND6: {
       pecrystalizer->intensities[6] = g_value_get_float(value);
       pecrystalizer->gain[6] = util::linspace(1.0f, pecrystalizer->intensities[6], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND7:
+    }
+    case PROP_INTENSITY_BAND7: {
       pecrystalizer->intensities[7] = g_value_get_float(value);
       pecrystalizer->gain[7] = util::linspace(1.0f, pecrystalizer->intensities[7], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND8:
+    }
+    case PROP_INTENSITY_BAND8: {
       pecrystalizer->intensities[8] = g_value_get_float(value);
       pecrystalizer->gain[8] = util::linspace(1.0f, pecrystalizer->intensities[8], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND9:
+    }
+    case PROP_INTENSITY_BAND9: {
       pecrystalizer->intensities[9] = g_value_get_float(value);
       pecrystalizer->gain[9] = util::linspace(1.0f, pecrystalizer->intensities[9], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND10:
+    }
+    case PROP_INTENSITY_BAND10: {
       pecrystalizer->intensities[10] = g_value_get_float(value);
       pecrystalizer->gain[10] = util::linspace(1.0f, pecrystalizer->intensities[10], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND11:
+    }
+    case PROP_INTENSITY_BAND11: {
       pecrystalizer->intensities[11] = g_value_get_float(value);
       pecrystalizer->gain[11] = util::linspace(1.0f, pecrystalizer->intensities[11], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND12:
+    }
+    case PROP_INTENSITY_BAND12: {
       pecrystalizer->intensities[12] = g_value_get_float(value);
       pecrystalizer->gain[12] = util::linspace(1.0f, pecrystalizer->intensities[12], pecrystalizer->ndivs);
+
       break;
+    }
+
+    // Mute
     case PROP_MUTE_BAND0:
       pecrystalizer->mute[0] = g_value_get_boolean(value);
       break;
@@ -388,6 +417,8 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
     case PROP_MUTE_BAND12:
       pecrystalizer->mute[12] = g_value_get_boolean(value);
       break;
+
+    // Bypass
     case PROP_BYPASS_BAND0:
       pecrystalizer->bypass[0] = g_value_get_boolean(value);
       break;
@@ -427,9 +458,13 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
     case PROP_BYPASS_BAND12:
       pecrystalizer->bypass[12] = g_value_get_boolean(value);
       break;
+
+    // Aggressive
     case PROP_AGGRESSIVE:
       pecrystalizer->aggressive = g_value_get_boolean(value);
       break;
+
+    // Notify
     case PROP_NOTIFY:
       pecrystalizer->notify = g_value_get_boolean(value);
       break;
@@ -445,6 +480,7 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
   GST_DEBUG_OBJECT(pecrystalizer, "get_property");
 
   switch (property_id) {
+    // Intensities
     case PROP_INTENSITY_BAND0:
       g_value_set_float(value, pecrystalizer->intensities[0]);
       break;
@@ -484,6 +520,8 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_INTENSITY_BAND12:
       g_value_set_float(value, pecrystalizer->intensities[12]);
       break;
+
+    // Mute
     case PROP_MUTE_BAND0:
       g_value_set_boolean(value, pecrystalizer->mute[0]);
       break;
@@ -523,6 +561,8 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_MUTE_BAND12:
       g_value_set_boolean(value, pecrystalizer->mute[12]);
       break;
+
+    // Bypass
     case PROP_BYPASS_BAND0:
       g_value_set_boolean(value, pecrystalizer->bypass[0]);
       break;
@@ -562,15 +602,21 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_BYPASS_BAND12:
       g_value_set_boolean(value, pecrystalizer->bypass[12]);
       break;
+
+    // Range
     case PROP_RANGE_BEFORE:
       g_value_set_float(value, pecrystalizer->range_before);
       break;
     case PROP_RANGE_AFTER:
       g_value_set_float(value, pecrystalizer->range_after);
       break;
+
+    // Aggressive
     case PROP_AGGRESSIVE:
       g_value_set_boolean(value, pecrystalizer->aggressive);
       break;
+
+    // Notify
     case PROP_NOTIFY:
       g_value_set_boolean(value, pecrystalizer->notify);
       break;
@@ -910,7 +956,7 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
   bool ret = true;
 
   switch (GST_QUERY_TYPE(query)) {
-    case GST_QUERY_LATENCY:
+    case GST_QUERY_LATENCY: {
       if (pecrystalizer->rate > 0) {
         ret = gst_pad_peer_query(pecrystalizer->sinkpad, query);
 
@@ -946,9 +992,11 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
       }
 
       break;
+    }
     default:
       /* just call the default handler */
       ret = gst_pad_query_default(pad, parent, query);
+
       break;
   }
 
