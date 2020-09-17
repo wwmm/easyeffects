@@ -115,6 +115,7 @@ class PulseManager {
   void update_server_info(const pa_server_info* info);
   void get_modules_info();
   void get_clients_info();
+  void set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value);
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;

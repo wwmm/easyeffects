@@ -637,6 +637,8 @@ auto PulseManager::load_sink(const std::string& name, const std::string& descrip
     if (ok) {
       util::debug(log_tag + "loaded module-null-sink: " + argument);
 
+      set_sink_volume_by_name(name, 2, 100);
+
       si = get_sink_info(name);
     } else {
       util::warning(
@@ -650,6 +652,8 @@ auto PulseManager::load_sink(const std::string& name, const std::string& descrip
 
       if (ok) {
         util::debug(log_tag + "loaded module-null-sink: " + argument);
+
+        set_sink_volume_by_name(name, 2, 100);
 
         si = get_sink_info(name);
       } else {
@@ -1151,6 +1155,54 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
       pa_threaded_mainloop_unlock(main_loop);
     } else {
       util::warning(log_tag + "failed to change volume of source output: " + name + ", idx = " + std::to_string(idx));
+
+      pa_threaded_mainloop_unlock(main_loop);
+    }
+  }
+}
+
+void PulseManager::set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value) {
+  pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
+
+  auto cvol = pa_cvolume();
+
+  auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
+
+  if (cvol_ptr != nullptr) {
+    struct Data {
+      std::string name;
+      PulseManager* pm;
+    };
+
+    Data data = {name, this};
+
+    pa_threaded_mainloop_lock(main_loop);
+
+    auto* o = pa_context_set_sink_volume_by_name(
+        context, name.c_str(), cvol_ptr,
+        [](auto c, auto success, auto data) {
+          auto* d = static_cast<Data*>(data);
+
+          if (success) {
+            util::debug(d->pm->log_tag + "changed volume of the sink: " + d->name);
+          } else {
+            util::debug(d->pm->log_tag + "failed to change volume of the sink: " + d->name);
+          }
+
+          pa_threaded_mainloop_signal(d->pm->main_loop, false);
+        },
+        &data);
+
+    if (o != nullptr) {
+      while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
+        pa_threaded_mainloop_wait(main_loop);
+      }
+
+      pa_operation_unref(o);
+
+      pa_threaded_mainloop_unlock(main_loop);
+    } else {
+      util::warning(log_tag + "failed to change volume of the sink: " + name);
 
       pa_threaded_mainloop_unlock(main_loop);
     }
