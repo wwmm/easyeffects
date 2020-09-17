@@ -50,7 +50,7 @@ PulseManager::~PulseManager() {
 }
 
 void PulseManager::context_state_cb(pa_context* ctx, void* data) {
-  auto pm = static_cast<PulseManager*>(data);
+  auto* pm = static_cast<PulseManager*>(data);
 
   auto state = pa_context_get_state(ctx);
 
@@ -101,8 +101,8 @@ void PulseManager::context_state_cb(pa_context* ctx, void* data) {
       pa_threaded_mainloop_signal(pm->main_loop, 0);
 
       break;
-
-    } default:
+    }
+    default:
       break;
   }
 }
@@ -113,7 +113,7 @@ void PulseManager::subscribe_to_events() {
       [](auto c, auto t, auto idx, auto d) {
         auto f = t & PA_SUBSCRIPTION_EVENT_FACILITY_MASK;
 
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         switch (f) {
           case PA_SUBSCRIPTION_EVENT_SINK_INPUT: {
@@ -125,12 +125,11 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
                         pm->new_app(info);
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -139,12 +138,11 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
                         pm->changed_app(info);
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -163,12 +161,11 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
                         pm->new_app(info);
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -177,12 +174,11 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
                         pm->changed_app(info);
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -205,7 +201,7 @@ void PulseManager::subscribe_to_events() {
                         std::string s2 = "PulseEffects_mic.monitor";
 
                         if (info->name != s1 && info->name != s2) {
-                          auto pm = static_cast<PulseManager*>(d);
+                          auto* pm = static_cast<PulseManager*>(d);
 
                           auto si = std::make_shared<mySourceInfo>();
 
@@ -225,8 +221,7 @@ void PulseManager::subscribe_to_events() {
                         }
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -235,7 +230,7 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
 
                         auto si = std::make_shared<mySourceInfo>();
 
@@ -259,8 +254,7 @@ void PulseManager::subscribe_to_events() {
                         Glib::signal_idle().connect_once([pm, si = move(si)] { pm->source_changed.emit(si); });
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -283,7 +277,7 @@ void PulseManager::subscribe_to_events() {
                         std::string s2 = "PulseEffects_mic";
 
                         if (info->name != s1 && info->name != s2) {
-                          auto pm = static_cast<PulseManager*>(d);
+                          auto* pm = static_cast<PulseManager*>(d);
 
                           auto si = std::make_shared<mySinkInfo>();
 
@@ -303,8 +297,7 @@ void PulseManager::subscribe_to_events() {
                         }
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -313,7 +306,7 @@ void PulseManager::subscribe_to_events() {
                     c, idx,
                     [](auto cx, auto info, auto eol, auto d) {
                       if (info != nullptr) {
-                        auto pm = static_cast<PulseManager*>(d);
+                        auto* pm = static_cast<PulseManager*>(d);
                         auto si = std::make_shared<mySinkInfo>();
 
                         si->name = info->name;
@@ -336,8 +329,7 @@ void PulseManager::subscribe_to_events() {
                         Glib::signal_idle().connect_once([pm, si = move(si)] { pm->sink_changed.emit(si); });
                       }
                     },
-                    pm
-                );
+                    pm);
 
                 break;
 
@@ -355,7 +347,7 @@ void PulseManager::subscribe_to_events() {
                   c,
                   [](auto cx, auto info, auto d) {
                     if (info != nullptr) {
-                      auto pm = static_cast<PulseManager*>(d);
+                      auto* pm = static_cast<PulseManager*>(d);
 
                       pm->update_server_info(info);
 
@@ -373,8 +365,7 @@ void PulseManager::subscribe_to_events() {
                       Glib::signal_idle().connect_once([pm]() { pm->server_changed.emit(); });
                     }
                   },
-                  pm
-              );
+                  pm);
             }
           }
         }
@@ -388,7 +379,7 @@ void PulseManager::subscribe_to_events() {
   pa_context_subscribe(
       context, mask,
       [](auto c, auto success, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (success == 0) {
           util::critical(pm->log_tag + "context event subscribe failed!");
@@ -416,10 +407,10 @@ void PulseManager::update_server_info(const pa_server_info* info) {
 void PulseManager::get_server_info() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_server_info(
+  auto* o = pa_context_get_server_info(
       context,
       [](auto c, auto info, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           pm->update_server_info(info);
@@ -459,10 +450,10 @@ auto PulseManager::get_sink_info(const std::string& name) -> std::shared_ptr<myS
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_sink_info_by_name(
+  auto* o = pa_context_get_sink_info_by_name(
       context, name.c_str(),
       [](auto c, auto info, auto eol, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (eol < 0) {
           d->failed = true;
@@ -522,10 +513,10 @@ auto PulseManager::get_source_info(const std::string& name) -> std::shared_ptr<m
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_source_info_by_name(
+  auto* o = pa_context_get_source_info_by_name(
       context, name.c_str(),
       [](auto c, auto info, auto eol, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (eol < 0) {
           d->failed = true;
@@ -609,10 +600,10 @@ auto PulseManager::load_module(const std::string& name, const std::string& argum
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_load_module(
+  auto* o = pa_context_load_module(
       context, name.c_str(), argument.c_str(),
       [](auto c, auto idx, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         d->status = idx != PA_INVALID_INDEX;
 
@@ -701,10 +692,10 @@ void PulseManager::load_mic_sink() {
 void PulseManager::find_sink_inputs() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_sink_input_info_list(
+  auto* o = pa_context_get_sink_input_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           pm->new_app(info);
@@ -730,10 +721,10 @@ void PulseManager::find_sink_inputs() {
 void PulseManager::find_source_outputs() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_source_output_info_list(
+  auto* o = pa_context_get_source_output_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           pm->new_app(info);
@@ -759,10 +750,10 @@ void PulseManager::find_source_outputs() {
 void PulseManager::find_sinks() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_sink_info_list(
+  auto* o = pa_context_get_sink_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           std::string s1 = "PulseEffects_apps";
@@ -801,10 +792,10 @@ void PulseManager::find_sinks() {
 void PulseManager::find_sources() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_source_info_list(
+  auto* o = pa_context_get_source_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           std::string s1 = "PulseEffects_apps.monitor";
@@ -853,10 +844,10 @@ auto PulseManager::move_sink_input_to_pulseeffects(const std::string& name, uint
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_move_sink_input_by_index(
+  auto* o = pa_context_move_sink_input_by_index(
       context, idx, apps_sink_info->index,
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) + " moved to PE");
@@ -899,10 +890,10 @@ auto PulseManager::remove_sink_input_from_pulseeffects(const std::string& name, 
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_move_sink_input_by_name(
+  auto* o = pa_context_move_sink_input_by_name(
       context, idx, server_info.default_sink_name.c_str(),
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) +
@@ -946,10 +937,10 @@ auto PulseManager::move_source_output_to_pulseeffects(const std::string& name, u
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_move_source_output_by_index(
+  auto* o = pa_context_move_source_output_by_index(
       context, idx, mic_sink_info->monitor_source,
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + std::to_string(d->idx) +
@@ -992,10 +983,10 @@ auto PulseManager::remove_source_output_from_pulseeffects(const std::string& nam
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_move_source_output_by_name(
+  auto* o = pa_context_move_source_output_by_name(
       context, idx, server_info.default_source_name.c_str(),
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + " removed from PE");
@@ -1029,7 +1020,7 @@ void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint
 
   auto cvol = pa_cvolume();
 
-  auto cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
+  auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
 
   if (cvol_ptr != nullptr) {
     struct Data {
@@ -1042,10 +1033,10 @@ void PulseManager::set_sink_input_volume(const std::string& name, uint idx, uint
 
     pa_threaded_mainloop_lock(main_loop);
 
-    auto o = pa_context_set_sink_input_volume(
+    auto* o = pa_context_set_sink_input_volume(
         context, idx, cvol_ptr,
         [](auto c, auto success, auto data) {
-          auto d = static_cast<Data*>(data);
+          auto* d = static_cast<Data*>(data);
 
           if (success) {
             util::debug(d->pm->log_tag + "changed volume of sink input: " + d->name +
@@ -1086,10 +1077,10 @@ void PulseManager::set_sink_input_mute(const std::string& name, uint idx, bool s
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_set_sink_input_mute(
+  auto* o = pa_context_set_sink_input_mute(
       context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) + " is muted");
@@ -1120,7 +1111,7 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
 
   auto cvol = pa_cvolume();
 
-  auto cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
+  auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
 
   if (cvol_ptr != nullptr) {
     struct Data {
@@ -1133,10 +1124,10 @@ void PulseManager::set_source_output_volume(const std::string& name, uint idx, u
 
     pa_threaded_mainloop_lock(main_loop);
 
-    auto o = pa_context_set_source_output_volume(
+    auto* o = pa_context_set_source_output_volume(
         context, idx, cvol_ptr,
         [](auto c, auto success, auto data) {
-          auto d = static_cast<Data*>(data);
+          auto* d = static_cast<Data*>(data);
 
           if (success) {
             util::debug(d->pm->log_tag + "changed volume of source output: " + d->name +
@@ -1177,10 +1168,10 @@ void PulseManager::set_source_output_mute(const std::string& name, uint idx, boo
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_set_source_output_mute(
+  auto* o = pa_context_set_source_output_mute(
       context, idx, static_cast<int>(state),
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + std::to_string(d->idx) + " is muted");
@@ -1209,10 +1200,10 @@ void PulseManager::set_source_output_mute(const std::string& name, uint idx, boo
 void PulseManager::get_sink_input_info(uint idx) {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_sink_input_info(
+  auto* o = pa_context_get_sink_input_info(
       context, idx,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           pm->changed_app(info);
@@ -1238,10 +1229,10 @@ void PulseManager::get_sink_input_info(uint idx) {
 void PulseManager::get_modules_info() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_module_info_list(
+  auto* o = pa_context_get_module_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           auto mi = std::make_shared<myModuleInfo>();
@@ -1280,10 +1271,10 @@ void PulseManager::get_modules_info() {
 void PulseManager::get_clients_info() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_get_client_info_list(
+  auto* o = pa_context_get_client_info_list(
       context,
       [](auto c, auto info, auto eol, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (info != nullptr) {
           auto mi = std::make_shared<myClientInfo>();
@@ -1329,10 +1320,10 @@ void PulseManager::unload_module(uint idx) {
 
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_unload_module(
+  auto* o = pa_context_unload_module(
       context, idx,
       [](auto c, auto success, auto data) {
-        auto d = static_cast<Data*>(data);
+        auto* d = static_cast<Data*>(data);
 
         if (success) {
           util::debug(d->pm->log_tag + "module " + std::to_string(d->idx) + " unloaded");
@@ -1367,10 +1358,10 @@ void PulseManager::unload_sinks() {
 void PulseManager::drain_context() {
   pa_threaded_mainloop_lock(main_loop);
 
-  auto o = pa_context_drain(
+  auto* o = pa_context_drain(
       context,
       [](auto c, auto d) {
-        auto pm = static_cast<PulseManager*>(d);
+        auto* pm = static_cast<PulseManager*>(d);
 
         if (pa_context_get_state(c) == PA_CONTEXT_READY) {
           pa_threaded_mainloop_signal(pm->main_loop, false);

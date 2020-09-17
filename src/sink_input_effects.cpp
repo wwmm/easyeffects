@@ -89,7 +89,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
       set_output_sink_name(pm->server_info.default_sink_name);
     }
   } else {
-    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != false;
+    bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
 
     if (use_default_sink) {
       set_output_sink_name(pm->server_info.default_sink_name);
@@ -311,9 +311,9 @@ void SinkInputEffects::add_plugins_to_pipeline() {
 
   gst_element_link(identity_in, plugins[plugins_order[0]]);
 
-  for (unsigned long int n = 1u; n < plugins_order.size(); n++) {
-    gst_element_link(plugins[plugins_order[n - 1u]], plugins[plugins_order[n]]);
+  for (unsigned long int n = 1U; n < plugins_order.size(); n++) {
+    gst_element_link(plugins[plugins_order[n - 1U]], plugins[plugins_order[n]]);
   }
 
-  gst_element_link(plugins[plugins_order[plugins_order.size() - 1u]], identity_out);
+  gst_element_link(plugins[plugins_order[plugins_order.size() - 1U]], identity_out);
 }

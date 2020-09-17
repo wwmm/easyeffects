@@ -68,8 +68,8 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
           pb->rtkit->set_priority(source_name, priority);
         }
       }
-
-    } default:
+    }
+    default:
       break;
   }
 }
@@ -127,7 +127,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
 
     magnitudes = gst_structure_get_value(s, "magnitude");
 
-    for (uint n = 0u; n < pb->spectrum_freqs.size(); n++) {
+    for (uint n = 0U; n < pb->spectrum_freqs.size(); n++) {
       pb->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n + pb->spectrum_start_index));
     }
 
@@ -135,7 +135,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, PipelineBase
       boost::math::interpolators::cardinal_cubic_b_spline<float> spline(
           pb->spectrum_mag_tmp.begin(), pb->spectrum_mag_tmp.end(), pb->spline_f0, pb->spline_df);
 
-      for (uint n = 0u; n < pb->spectrum_mag.size(); n++) {
+      for (uint n = 0U; n < pb->spectrum_mag.size(); n++) {
         pb->spectrum_mag[n] = spline(pb->spectrum_x_axis[n]);
       }
     } catch (const std::exception& e) {
@@ -597,7 +597,7 @@ void PipelineBase::get_latency() {
   GstQuery* q = gst_query_new_latency();
 
   if (gst_element_query(pipeline, q) != 0) {
-    gboolean live = false;
+    gboolean live = 0;
     GstClockTime min = 0;
     GstClockTime max = 0;
 
@@ -669,9 +669,9 @@ void PipelineBase::init_spectrum() {
 
   spectrum_freqs.clear();
 
-  spectrum_start_index = 0u;
+  spectrum_start_index = 0U;
 
-  for (uint n = 0u; n < spectrum_nbands; n++) {
+  for (uint n = 0U; n < spectrum_nbands; n++) {
     auto f = sampling_rate * (0.5 * n + 0.25) / spectrum_nbands;
 
     if (f > max_spectrum_freq) {
@@ -681,7 +681,7 @@ void PipelineBase::init_spectrum() {
     if (f > min_spectrum_freq) {
       spectrum_freqs.emplace_back(f);
 
-      if (spectrum_start_index == 0u) {
+      if (spectrum_start_index == 0U) {
         spectrum_start_index = n;
       }
     }
