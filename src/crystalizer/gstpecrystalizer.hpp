@@ -37,7 +37,8 @@ struct _GstPecrystalizer {
   int rate, bpf;  // sampling rate,  bytes per frame : channels * bps
   uint nsamples;
   int notify_samples;  // number of samples to count before emit a notify
-  int sample_count, ndivs;
+  int sample_count;
+  uint ndivs;
   float dv;
 
   std::array<Filter*, NBANDS> filters;

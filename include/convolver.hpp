@@ -5,7 +5,7 @@
 
 class Convolver : public PluginBase {
  public:
-  Convolver(const std::string& tag, const std::string& schema);
+  Convolver(const std::string& tag, const std::string& schema, const std::string& schema_path);
   Convolver(const Convolver&) = delete;
   auto operator=(const Convolver&) -> Convolver& = delete;
   Convolver(const Convolver&&) = delete;

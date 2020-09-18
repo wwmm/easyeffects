@@ -1,16 +1,19 @@
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/label.h>
-#include <gtkmm/scale.h>
-#include <gtkmm/togglebutton.h>
+#include <gtkmm/filechoosernative.h>
+#include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <cstddef>
 #include <cstring>
+#include <regex>
+#include "gtkmm/dialog.h"
+#include "gtkmm/window.h"
 
 namespace {
 
 auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Off") == 0) {
     g_value_set_int(value, 0);
@@ -34,41 +37,31 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Off");
+  switch (v) {
+    case 0: return g_variant_new_string("Off");
+
+    case 1: return g_variant_new_string("Bell");
+
+    case 2: return g_variant_new_string("Hi-pass");
+
+    case 3: return g_variant_new_string("Hi-shelf");
+
+    case 4: return g_variant_new_string("Lo-pass");
+
+    case 5: return g_variant_new_string("Lo-shelf");
+
+    case 6: return g_variant_new_string("Notch");
+
+    case 7: return g_variant_new_string("Resonance");
+
+    default: return g_variant_new_string("Bell");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("Bell");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("Hi-pass");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("Hi-shelf");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("Lo-pass");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("Lo-shelf");
-  }
-
-  if (v == 6) {
-    return g_variant_new_string("Notch");
-  }
-
-  return g_variant_new_string("Resonance");
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "IIR") == 0) {
     g_value_set_int(value, 0);
@@ -82,21 +75,21 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("IIR");
+  switch (v) {
+    case 0: return g_variant_new_string("IIR");
+
+    case 1: return g_variant_new_string("FIR");
+
+    case 3: return g_variant_new_string("FFT");
+
+    default: return g_variant_new_string("IIR");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("FIR");
-  }
-
-  return g_variant_new_string("FFT");
 }
 
 auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "RLC (BT)") == 0) {
     g_value_set_int(value, 0);
@@ -118,37 +111,29 @@ auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("RLC (BT)");
+  switch (v) {
+    case 0: return g_variant_new_string("RLC (BT)");
+
+    case 1: return g_variant_new_string("RLC (MT)");
+
+    case 2: return g_variant_new_string("BWC (BT)");
+
+    case 3: return g_variant_new_string("BWC (MT)");
+
+    case 4: return g_variant_new_string("LRX (BT)");
+
+    case 5: return g_variant_new_string("LRX (MT)");
+
+    case 6: return g_variant_new_string("APO (DR)");
+
+    default: return g_variant_new_string("RLC (BT)");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("RLC (MT)");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("BWC (BT)");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("BWC (MT)");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("LRX (BT)");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("LRX (MT)");
-  }
-
-  return g_variant_new_string("APO (DR)");
 }
 
 auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "x1") == 0) {
     g_value_set_int(value, 0);
@@ -164,21 +149,19 @@ auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("x1");
+  switch (v) {
+    case 0: return g_variant_new_string("x1");
+
+    case 1: return g_variant_new_string("x2");
+
+    case 2: return g_variant_new_string("x3");
+
+    case 3: return g_variant_new_string("x4");
+
+    default: return g_variant_new_string("x1");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("x2");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("x3");
-  }
-
-  return g_variant_new_string("x4");
 }
 
 }  // namespace
@@ -186,26 +169,29 @@ auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_typ
 EqualizerUi::EqualizerUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& schema,
-                         const std::string& schema_left,
-                         const std::string& schema_right)
+                         const std::string& schema_path,
+                         const std::string& schema_channel,
+                         const std::string& schema_channel_left_path,
+                         const std::string& schema_channel_right_path)
     : Gtk::Grid(cobject),
-      PluginUiBase(builder, schema),
-      settings_left(Gio::Settings::create(schema_left)),
-      settings_right(Gio::Settings::create(schema_right)) {
+      PluginUiBase(builder, schema, schema_path),
+      settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
+      settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)) {
   name = "equalizer";
 
   // loading glade widgets
 
   builder->get_widget("bands_grid_left", bands_grid_left);
   builder->get_widget("bands_grid_right", bands_grid_right);
-  builder->get_widget("reset_eq", reset_eq);
   builder->get_widget("flat_response", flat_response);
+  builder->get_widget("import_apo", import_apo);
   builder->get_widget("calculate_freqs", calculate_freqs);
   builder->get_widget("presets_listbox", presets_listbox);
   builder->get_widget("split_channels", split_channels);
   builder->get_widget("stack", stack);
   builder->get_widget("stack_switcher", stack_switcher);
   builder->get_widget("mode", mode);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "nbands", nbands);
   get_object(builder, "input_gain", input_gain);
@@ -215,7 +201,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
 
-  reset_eq->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
+  // reset equalizer
+  reset_button->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::reset));
 
   flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
@@ -223,8 +210,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
-  connections.push_back(settings->signal_changed("split-channels").connect([&](auto key) {
-    for (auto c : connections_bands) {
+  import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
+
+  connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
+    for (auto& c : connections_bands) {
       c.disconnect();
     }
 
@@ -261,7 +250,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 }
 
 EqualizerUi::~EqualizerUi() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
@@ -269,7 +258,7 @@ EqualizerUi::~EqualizerUi() {
 }
 
 void EqualizerUi::on_nbands_changed() {
-  for (auto c : connections_bands) {
+  for (auto& c : connections_bands) {
     c.disconnect();
   }
 
@@ -286,7 +275,7 @@ void EqualizerUi::on_nbands_changed() {
 }
 
 void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands) {
-  for (auto c : bands_grid->get_children()) {
+  for (const auto& c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
     delete c;
@@ -297,17 +286,17 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
   for (int n = 0; n < nbands; n++) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
-    Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_type;
-    Gtk::ComboBoxText* band_mode;
-    Gtk::ComboBoxText* band_slope;
-    Gtk::Label* band_width;
-    Gtk::Label* band_label;
-    Gtk::Button* reset_frequency;
-    Gtk::Button* reset_quality;
-    Gtk::ToggleButton* band_solo;
-    Gtk::ToggleButton* band_mute;
-    Gtk::Scale* band_scale;
+    Gtk::Grid* band_grid = nullptr;
+    Gtk::ComboBoxText* band_type = nullptr;
+    Gtk::ComboBoxText* band_mode = nullptr;
+    Gtk::ComboBoxText* band_slope = nullptr;
+    Gtk::Label* band_width = nullptr;
+    Gtk::Label* band_label = nullptr;
+    Gtk::Button* reset_frequency = nullptr;
+    Gtk::Button* reset_quality = nullptr;
+    Gtk::ToggleButton* band_solo = nullptr;
+    Gtk::ToggleButton* band_mute = nullptr;
+    Gtk::Scale* band_scale = nullptr;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -328,7 +317,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_w = [=]() {
       auto q = band_quality->get_value();
 
-      if (q > 0) {
+      if (q > 0.0) {
         auto f = band_frequency->get_value();
 
         std::ostringstream msg;
@@ -347,9 +336,9 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 
       std::ostringstream msg;
 
-      if (f > 1000) {
+      if (f > 1000.0) {
         msg.precision(1);
-        msg << std::fixed << f / 1000 << "kHz";
+        msg << std::fixed << f / 1000.0 << "kHz";
       } else {
         msg.precision(0);
         msg << std::fixed << f << "Hz";
@@ -358,19 +347,19 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
       band_label->set_text(msg.str());
     };
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_band_label));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(reset_frequency->signal_clicked().connect(
+    connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
         [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
 
-    connections_bands.push_back(
+    connections_bands.emplace_back(
         reset_quality->signal_clicked().connect([=]() { cfg->reset(std::string("band" + std::to_string(n) + "-q")); }));
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
           band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
         band_scale->set_sensitive(true);
@@ -404,13 +393,13 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 }
 
 void EqualizerUi::build_unified_bands(const int& nbands) {
-  for (auto c : bands_grid_left->get_children()) {
+  for (const auto& c : bands_grid_left->get_children()) {
     bands_grid_left->remove(*c);
 
     delete c;
   }
 
-  for (auto c : bands_grid_right->get_children()) {
+  for (const auto& c : bands_grid_right->get_children()) {
     bands_grid_right->remove(*c);
 
     delete c;
@@ -421,17 +410,17 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
   for (int n = 0; n < nbands; n++) {
     auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
 
-    Gtk::Grid* band_grid;
-    Gtk::ComboBoxText* band_type;
-    Gtk::ComboBoxText* band_mode;
-    Gtk::ComboBoxText* band_slope;
-    Gtk::Label* band_width;
-    Gtk::Label* band_label;
-    Gtk::Button* reset_frequency;
-    Gtk::Button* reset_quality;
-    Gtk::ToggleButton* band_solo;
-    Gtk::ToggleButton* band_mute;
-    Gtk::Scale* band_scale;
+    Gtk::Grid* band_grid = nullptr;
+    Gtk::ComboBoxText* band_type = nullptr;
+    Gtk::ComboBoxText* band_mode = nullptr;
+    Gtk::ComboBoxText* band_slope = nullptr;
+    Gtk::Label* band_width = nullptr;
+    Gtk::Label* band_label = nullptr;
+    Gtk::Button* reset_frequency = nullptr;
+    Gtk::Button* reset_quality = nullptr;
+    Gtk::ToggleButton* band_solo = nullptr;
+    Gtk::ToggleButton* band_mute = nullptr;
+    Gtk::Scale* band_scale = nullptr;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_type", band_type);
@@ -452,7 +441,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto update_w = [=]() {
       auto q = band_quality->get_value();
 
-      if (q > 0) {
+      if (q > 0.0) {
         auto f = band_frequency->get_value();
 
         std::ostringstream msg;
@@ -471,7 +460,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 
       std::ostringstream msg;
 
-      if (f > 1000) {
+      if (f > 1000.0) {
         msg.precision(1);
         msg << std::fixed << f / 1000 << "kHz";
       } else {
@@ -482,52 +471,52 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
       band_label->set_text(msg.str());
     };
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_band_label));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
 
     /*right channel
       we need the bindgins below for the right channel equalizer to be updated
       they have to be before the bindings for the left channel.
      */
 
-    connections_bands.push_back(band_gain->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_gain->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), band_gain->get_value());
     }));
 
-    connections_bands.push_back(band_frequency->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), band_frequency->get_value());
     }));
 
-    connections_bands.push_back(band_quality->signal_value_changed().connect([=]() {
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect([=]() {
       settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), band_quality->get_value());
     }));
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-type"), band_type->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_mode->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_mode->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-mode"), band_mode->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_slope->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_slope->signal_changed().connect([=]() {
       settings_right->set_enum(std::string("band" + std::to_string(n) + "-slope"), band_slope->get_active_row_number());
     }));
 
-    connections_bands.push_back(band_solo->signal_toggled().connect([=]() {
+    connections_bands.emplace_back(band_solo->signal_toggled().connect([=]() {
       settings_right->set_boolean(std::string("band" + std::to_string(n) + "-solo"), band_solo->get_active());
     }));
 
-    connections_bands.push_back(band_mute->signal_toggled().connect([=]() {
+    connections_bands.emplace_back(band_mute->signal_toggled().connect([=]() {
       settings_right->set_boolean(std::string("band" + std::to_string(n) + "-mute"), band_mute->get_active());
     }));
 
     // left channel
 
-    connections_bands.push_back(band_type->signal_changed().connect([=]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
           band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
         band_scale->set_sensitive(true);
@@ -536,13 +525,13 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
       }
     }));
 
-    connections_bands.push_back(reset_frequency->signal_clicked().connect([=]() {
+    connections_bands.emplace_back(reset_frequency->signal_clicked().connect([=]() {
       settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
 
       settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
     }));
 
-    connections_bands.push_back(reset_quality->signal_clicked().connect([=]() {
+    connections_bands.emplace_back(reset_quality->signal_clicked().connect([=]() {
       settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
 
       settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
@@ -573,7 +562,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 }
 
 void EqualizerUi::on_flat_response() {
-  for (int n = 0; n < 30; n++) {
+  for (int n = 0; n < max_bands; n++) {
     // left channel
 
     settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
@@ -587,9 +576,9 @@ void EqualizerUi::on_flat_response() {
 void EqualizerUi::on_calculate_frequencies() {
   const double min_freq = 20.0;
   const double max_freq = 20000.0;
-  double freq0;
-  double freq1;
-  double step;
+  double freq0 = 0.0;
+  double freq1 = 0.0;
+  double step = 0.0;
 
   int nbands = settings->get_int("num-bands");
 
@@ -622,13 +611,13 @@ void EqualizerUi::on_calculate_frequencies() {
 }
 
 void EqualizerUi::load_preset(const std::string& file_name) {
-  gsize dsize;
+  gsize dsize = 0;
   std::stringstream ss;
   boost::property_tree::ptree root;
 
   auto bytes = Gio::Resource::lookup_data_global(presets_path + file_name);
 
-  auto rdata = static_cast<const char*>(bytes->get_data(dsize));
+  const auto* rdata = static_cast<const char*>(bytes->get_data(dsize));
 
   auto file_contents = std::string(rdata);
 
@@ -649,7 +638,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
   settings->set_double("output-gain", root.get<double>("equalizer.output-gain"));
 
   auto config_band = [&](auto cfg, auto n) {
-    double q = 0;
+    double q = 0.0;
 
     auto f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
 
@@ -715,7 +704,7 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 void EqualizerUi::populate_presets_listbox() {
   auto children = presets_listbox->get_children();
 
-  for (auto c : children) {
+  for (const auto& c : children) {
     presets_listbox->remove(*c);
   }
 
@@ -726,9 +715,9 @@ void EqualizerUi::populate_presets_listbox() {
 
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Button* apply_btn;
-    Gtk::Label* label;
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Button* apply_btn = nullptr;
+    Gtk::Label* label = nullptr;
 
     b->get_widget("preset_row", row);
     b->get_widget("apply", apply_btn);
@@ -738,7 +727,7 @@ void EqualizerUi::populate_presets_listbox() {
 
     label->set_text(name);
 
-    connections.push_back(apply_btn->signal_clicked().connect([=]() { load_preset(row->get_name() + ".json"); }));
+    connections.emplace_back(apply_btn->signal_clicked().connect([=]() { load_preset(row->get_name() + ".json"); }));
 
     presets_listbox->add(*row);
 
@@ -747,34 +736,195 @@ void EqualizerUi::populate_presets_listbox() {
 }
 
 void EqualizerUi::reset() {
-  settings->reset("state");
-  settings->reset("mode");
-  settings->reset("num-bands");
-  settings->reset("split-channels");
-  settings->reset("input-gain");
-  settings->reset("output-gain");
+  try {
+    settings->reset("mode");
+    settings->reset("num-bands");
+    settings->reset("split-channels");
+    settings->reset("input-gain");
+    settings->reset("output-gain");
 
-  for (int n = 0; n < 30; n++) {
-    // left channel
+    for (int n = 0; n < max_bands; n++) {
+      // left channel
 
-    settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
-    settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
+      settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
 
-    // right channel
+      // right channel
 
-    settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
-    settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
+      settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
+    }
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
+}
+
+void EqualizerUi::on_import_apo_preset_clicked() {
+  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
+
+  auto dialog =
+      Gtk::FileChooserNative::create(_("Import APO Preset File"), *main_window,
+                                     Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+
+  auto dialog_filter = Gtk::FileFilter::create();
+
+  dialog_filter->set_name(_("APO Presets"));
+  dialog_filter->add_pattern("*.txt");
+
+  dialog->add_filter(dialog_filter);
+
+  dialog->signal_response().connect([=](auto response_id) {
+    switch (response_id) {
+      case Gtk::ResponseType::RESPONSE_ACCEPT: {
+        import_apo_preset(dialog->get_file()->get_path());
+
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  dialog->set_modal(true);
+  dialog->show();
+}
+
+// returns false if we cannot parse given line successfully
+auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
+  std::smatch matches;
+  std::regex re_filter_type(R"(Filter[\s]+[\d]*:[\s]*ON[\s]+([\w]+))");
+  std::regex re_freq(R"([\s]+Fc[\s]*([\d]*[.]?[\d]*)[\s]*Hz)");
+  std::regex re_dB_per_octave(R"(Filter[\s]+[\d]*:[\s]*ON[\s]+[\w]+[\s]+([+-]?[\d]*[.]?[\d]*)[\s]*dB)");
+  std::regex re_gain(R"(Gain[\s]*([+-]?[\d]*[.]?[\d]*)[\s]*dB)");
+  std::regex re_quality_factor(R"([\s]+Q[\s]+([\d]*[.]?[\d]*))");
+
+  // get filter type
+  std::regex_search(line, matches, re_filter_type);
+
+  if (matches.size() != 2u) {
+    return false;
+  }
+
+  try {
+    filter.type = EqualizerUi::FilterTypeMap.at(matches.str(1));
+  } catch (...) {
+    return false;
+  }
+
+  // get center frequency
+  std::regex_search(line, matches, re_freq);
+
+  if (matches.size() != 2u) {
+    return false;
+  }
+
+  filter.freq = std::stof(matches.str(1));
+
+  // get slope
+
+  if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
+    std::regex_search(line, matches, re_dB_per_octave);
+    // _xdB variants require the dB parameter
+    if (((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB)) != 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2u) {
+      // we satisfied the condition, now assign the paramater if given
+      filter.slope_dB = std::stof(matches.str(1));
+    }
+  }
+
+  // get gain
+
+  if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
+    std::regex_search(line, matches, re_gain);
+    // all Shelf types (i.e. all above except for Peaking) require the gain parameter
+    if (((filter.type & PEAKING) == 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2u) {
+      filter.gain = std::stof(matches.str(1));
+    }
+  }
+
+  // get quality factor
+  if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
+    std::regex_search(line, matches, re_quality_factor);
+    // Peaking and All-Pass filter types require the quality factor parameter
+    if (((filter.type & (PEAKING | ALL_PASS)) != 0U) && (matches.size() != 2U)) {
+      return false;
+    }
+
+    if (matches.size() == 2u) {
+      filter.quality_factor = std::stof(matches.str(1));
+    }
+  }
+
+  return true;
+}
+
+void EqualizerUi::import_apo_preset(const std::string& file_path) {
+  boost::filesystem::path p{file_path};
+
+  if (boost::filesystem::is_regular_file(p)) {
+    std::ifstream eq_file;
+    std::vector<struct ImportedBand> bands;
+
+    eq_file.open(p.string());
+
+    if (eq_file.is_open()) {
+      std::string line;
+
+      while (getline(eq_file, line)) {
+        struct ImportedBand filter {};
+        bool parsed = this->parse_apo_filter(line, filter);
+
+        if (parsed) {
+          bands.push_back(filter);
+        }
+      }
+    }
+
+    eq_file.close();
+
+    if (bands.empty()) {
+      return;
+    }
+
+    settings->set_int("num-bands", bands.size());
+
+    for (int n = 0; n < max_bands; n++) {
+      if (n < static_cast<int>(bands.size())) {
+        settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+        settings_left->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+
+        settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+      } else {
+        settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Off");
+
+        settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Off");
+      }
+    }
   }
 }

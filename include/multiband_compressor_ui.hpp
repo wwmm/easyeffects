@@ -1,17 +1,14 @@
 #ifndef MULTIBAND_COMPRESSOR_UI_HPP
 #define MULTIBAND_COMPRESSOR_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
  public:
   MultibandCompressorUi(BaseObjectType* cobject,
                         const Glib::RefPtr<Gtk::Builder>& builder,
-                        const std::string& settings_name);
+                        const std::string& schema,
+                        const std::string& schema_path);
   MultibandCompressorUi(const MultibandCompressorUi&) = delete;
   auto operator=(const MultibandCompressorUi&) -> MultibandCompressorUi& = delete;
   MultibandCompressorUi(const MultibandCompressorUi&&) = delete;
@@ -27,6 +24,8 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
   void on_new_compression1(double value);
   void on_new_compression2(double value);
   void on_new_compression3(double value);
+
+  void reset() override;
 
  private:
   Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;

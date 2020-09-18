@@ -1,18 +1,19 @@
 #include "multiband_gate.hpp"
 #include <glibmm/main.h>
+#include <array>
 #include "util.hpp"
 
 namespace {
 
 void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l) {
-  auto post = g_settings_get_boolean(settings, key);
+  const auto post = g_settings_get_boolean(settings, key);
 
-  if (post != 0) {
+  if (post) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0f;
+            float inR = 0.0f;
 
             g_object_get(l->multiband_gate, "meter-inL", &inL, nullptr);
             g_object_get(l->multiband_gate, "meter-inR", &inR, nullptr);
@@ -29,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0f;
+            float outR = 0.0f;
 
             g_object_get(l->multiband_gate, "meter-outL", &outL, nullptr);
             g_object_get(l->multiband_gate, "meter-outR", &outR, nullptr);
@@ -47,7 +48,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->output0_connection.connected()) {
       l->output0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_gate, "output0", &output, nullptr);
 
@@ -61,7 +62,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->output1_connection.connected()) {
       l->output1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_gate, "output1", &output, nullptr);
 
@@ -75,7 +76,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->output2_connection.connected()) {
       l->output2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_gate, "output2", &output, nullptr);
 
@@ -89,7 +90,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->output3_connection.connected()) {
       l->output3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_gate, "output3", &output, nullptr);
 
@@ -103,7 +104,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->gating0_connection.connected()) {
       l->gating0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float gating;
+            float gating = 0.0f;
 
             g_object_get(l->multiband_gate, "gating0", &gating, nullptr);
 
@@ -117,7 +118,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->gating1_connection.connected()) {
       l->gating1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float gating;
+            float gating = 0.0f;
 
             g_object_get(l->multiband_gate, "gating1", &gating, nullptr);
 
@@ -131,7 +132,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->gating2_connection.connected()) {
       l->gating2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float gating;
+            float gating = 0.0f;
 
             g_object_get(l->multiband_gate, "gating2", &gating, nullptr);
 
@@ -145,7 +146,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
     if (!l->gating3_connection.connected()) {
       l->gating3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float gating;
+            float gating = 0.0f;
 
             g_object_get(l->multiband_gate, "gating3", &gating, nullptr);
 
@@ -170,19 +171,19 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
 
 }  // namespace
 
-MultibandGate::MultibandGate(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "multiband_gate", schema) {
+MultibandGate::MultibandGate(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "multiband_gate", schema, schema_path) {
   multiband_gate = gst_element_factory_make("calf-sourceforge-net-plugins-MultibandGate", nullptr);
 
   if (is_installed(multiband_gate)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "multiband_gate_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_gate, audioconvert_out, nullptr);
     gst_element_link_many(audioconvert_in, multiband_gate, audioconvert_out, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
+    auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

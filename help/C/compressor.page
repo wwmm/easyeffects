@@ -208,6 +208,61 @@
         </terms>
     </section>
     <section>
+        <title>Advanced</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Relative Release Threshold</em>
+                </title>
+                <p>
+                    Relative to the Attack Threshold that sets up the threshold of Release Time.
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Boost Threshold</em>
+                </title>
+                <p>
+                    Related to upward compression mode only. It defines the threshold below which the
+                    constant amplification will be applied to the input signal. This prevents the
+                    compressor from applying infinite amplification to very quiet signals. 
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">High-pass Filter Mode</em>
+                </title>
+                <p>
+                    Sets the type of the high-pass filter applied to sidechain signal. 
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">High-pass Frequency</em>
+                </title>
+                <p>
+                    Sets the cut-off frequency of the high-pass filter. 
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Low-pass Filter Mode</em>
+                </title>
+                <p>
+                    Sets the type of the low-pass filter applied to sidechain signal. 
+                </p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Low-pass Frequency</em>
+                </title>
+                <p>
+                    Sets the cut-off frequency of the low-pass filter. 
+                </p>
+            </item>
+        </terms>
+    </section>
+    <section>
         <title>References</title>
         <list>
             <item>
@@ -222,9 +277,9 @@
             <item>
                 <p>
                     <link
-                        href="https://lsp-plug.in/?page=manuals&amp;section=compressor_stereo"
+                        href="https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo"
                         its:translate="no">
-                        https://lsp-plug.in/?page=manuals&amp;section=compressor_stereo
+                        https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo
                     </link>
                 </p>
             </item>

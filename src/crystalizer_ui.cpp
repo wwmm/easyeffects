@@ -1,11 +1,10 @@
 #include "crystalizer_ui.hpp"
-#include <gtkmm/scale.h>
-#include <gtkmm/togglebutton.h>
 
 CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
-                             const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                             const std::string& schema,
+                             const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "crystalizer";
 
   // loading glade widgets
@@ -16,6 +15,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   builder->get_widget("range_before_label", range_before_label);
   builder->get_widget("range_after_label", range_after_label);
   builder->get_widget("aggressive", aggressive);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -31,14 +31,44 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("aggressive", aggressive, "active", flag);
 
   build_bands(13);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 CrystalizerUi::~CrystalizerUi() {
   util::debug(name + " ui destroyed");
 }
 
+void CrystalizerUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<bool>(settings, "aggressive", section + ".crystalizer.aggressive");
+
+    update_default_key<double>(settings, "input-gain", section + ".crystalizer.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".crystalizer.output-gain");
+
+    for (int n = 0; n < 13; n++) {
+      update_default_key<double>(settings, "intensity-band" + std::to_string(n),
+                                 section + ".crystalizer.band" + std::to_string(n) + ".intensity");
+
+      update_default_key<bool>(settings, "mute-band" + std::to_string(n),
+                               section + ".crystalizer.band" + std::to_string(n) + ".mute");
+
+      update_default_key<bool>(settings, "bypass-band" + std::to_string(n),
+                               section + ".crystalizer.band" + std::to_string(n) + ".bypass");
+    }
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
+}
+
 void CrystalizerUi::build_bands(const int& nbands) {
-  for (auto c : bands_grid->get_children()) {
+  for (const auto& c : bands_grid->get_children()) {
     bands_grid->remove(*c);
 
     delete c;
@@ -63,7 +93,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
     auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_intensity"));
 
-    connections.push_back(band_mute->signal_toggled().connect([=]() {
+    connections.emplace_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {
         band_scale->set_sensitive(false);
       } else {
@@ -138,13 +168,13 @@ void CrystalizerUi::build_bands(const int& nbands) {
 }
 
 void CrystalizerUi::on_new_range_before(double value) {
-  range_before->set_value(util::db_to_linear(static_cast<float>(value)));
+  range_before->set_value(util::db_to_linear(value));
 
   range_before_label->set_text(level_to_str(value, 2));
 }
 
 void CrystalizerUi::on_new_range_after(double value) {
-  range_after->set_value(util::db_to_linear(static_cast<float>(value)));
+  range_after->set_value(util::db_to_linear(value));
 
   range_after_label->set_text(level_to_str(value, 2));
 }

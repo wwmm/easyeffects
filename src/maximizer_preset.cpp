@@ -1,7 +1,10 @@
 #include "maximizer_preset.hpp"
 
 MaximizerPreset::MaximizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.maximizer")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/")),
+      input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/")) {}
 
 void MaximizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -15,7 +18,7 @@ void MaximizerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".maximizer.threshold", settings->get_double("threshold"));
 }
 
-void MaximizerPreset::load(boost::property_tree::ptree& root,
+void MaximizerPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".maximizer.state");
@@ -28,13 +31,23 @@ void MaximizerPreset::load(boost::property_tree::ptree& root,
 }
 
 void MaximizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void MaximizerPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void MaximizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

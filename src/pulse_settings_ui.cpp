@@ -5,7 +5,7 @@
 namespace {
 
 auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "64") == 0) {
     g_value_set_int(value, 0);
@@ -27,33 +27,25 @@ auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("64");
+  switch (v) {
+    case 0: return g_variant_new_string("64");
+
+    case 1: return g_variant_new_string("128");
+
+    case 2: return g_variant_new_string("256");
+
+    case 3: return g_variant_new_string("512");
+
+    case 4: return g_variant_new_string("1024");
+
+    case 5: return g_variant_new_string("2048");
+
+    case 6: return g_variant_new_string("4096");
+
+    default: return g_variant_new_string("512");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("128");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("256");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("512");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("1024");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("2048");
-  }
-
-  return g_variant_new_string("4096");
 }
 
 }  // namespace
@@ -93,9 +85,9 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
   use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_sink_toggled));
   use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_source_toggled));
 
-  connections.push_back(
+  connections.emplace_back(
       input_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed)));
-  connections.push_back(
+  connections.emplace_back(
       output_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed)));
 
   app->pm->sink_added.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_sink_added));
@@ -132,7 +124,7 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
 }
 
 PulseSettingsUi::~PulseSettingsUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 
@@ -155,7 +147,7 @@ void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i;
+    uint i = 0u;
     std::string name;
 
     c.get_value(0, i);
@@ -197,7 +189,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i;
+    uint i = 0u;
     std::string name;
 
     c.get_value(0, i);
@@ -222,7 +214,7 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i;
+    uint i = 0u;
     std::string name;
 
     c.get_value(0, i);
@@ -264,7 +256,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i;
+    uint i = 0u;
     std::string name;
 
     c.get_value(0, i);
@@ -319,7 +311,7 @@ void PulseSettingsUi::on_input_device_changed() {
   Gtk::TreeModel::Row row = *(input_device->get_active());
 
   if (row) {
-    uint index;
+    uint index = 0u;
     std::string name;
 
     row.get_value(0, index);
@@ -339,7 +331,7 @@ void PulseSettingsUi::on_output_device_changed() {
   Gtk::TreeModel::Row row = *(output_device->get_active());
 
   if (row) {
-    uint index;
+    uint index = 0u;
     std::string name;
 
     row.get_value(0, index);

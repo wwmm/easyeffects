@@ -1,16 +1,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: 2020-01-12 17:48+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.4\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: de\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -112,9 +112,9 @@ msgstr ""
 "Schaltet das Originalsignal stumm und spielt ausschließlich die Obertöne ab."
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:211 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
-#: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
+#: C/limiter.page:82 C/loudness.page:65 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:76
@@ -396,6 +396,84 @@ msgstr "Ausblick"
 msgid "Look-ahead time of the sidechain relative to the input signal."
 msgstr "Vorlaufzeit der Sidechain relativ zum Eingangssignal."
 
+#. (itstool) path: section/title
+#: C/compressor.page:211
+msgid "Advanced"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:215
+msgid "Relative Release Threshold"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:217
+msgid ""
+"Relative to the Attack Threshold that sets up the threshold of Release Time."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:223
+#, fuzzy
+msgid "Boost Threshold"
+msgstr "Schwelle"
+
+#. (itstool) path: item/p
+#: C/compressor.page:225
+msgid ""
+"Related to upward compression mode only. It defines the threshold below "
+"which the constant amplification will be applied to the input signal. This "
+"prevents the compressor from applying infinite amplification to very quiet "
+"signals."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:233
+#, fuzzy
+msgid "High-pass Filter Mode"
+msgstr "Hochpassfilter"
+
+#. (itstool) path: item/p
+#: C/compressor.page:235
+msgid "Sets the type of the high-pass filter applied to sidechain signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:241
+#, fuzzy
+msgid "High-pass Frequency"
+msgstr "Hochfrequenz-Dämpfung"
+
+#. (itstool) path: item/p
+#: C/compressor.page:243
+#, fuzzy
+msgid "Sets the cut-off frequency of the high-pass filter."
+msgstr "Die Mitten- oder Grenzfrequenz des Filters."
+
+#. (itstool) path: title/em
+#: C/compressor.page:249
+#, fuzzy
+msgid "Low-pass Filter Mode"
+msgstr "Grenzfrequenz des Tiefpassfilters."
+
+#. (itstool) path: item/p
+#: C/compressor.page:251
+#, fuzzy
+msgid "Sets the type of the low-pass filter applied to sidechain signal."
+msgstr "Ermöglicht das Abhören des bearbeiteten Sidechain-Signals."
+
+#. (itstool) path: title/em
+#: C/compressor.page:257
+#, fuzzy
+msgid "Low-pass Frequency"
+msgstr "Grenzfrequenz des Tiefpassfilters."
+
+#. (itstool) path: item/p
+#: C/compressor.page:259
+#, fuzzy
+msgid "Sets the cut-off frequency of the low-pass filter."
+msgstr "Die Mitten- oder Grenzfrequenz des Filters."
+
 #. (itstool) path: page/title
 #: C/deesser.page:9
 msgid "Deesser"
@@ -427,15 +505,15 @@ msgstr ""
 "Ausschläge."
 
 #. (itstool) path: item/p
-#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
-#: C/multibandgate.page:48
+#: C/deesser.page:28 C/multibandcompressor.page:40 C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr ""
 "Übersteigt ein Signal diesen Wert, wird die Amplitudenreduktion beeinflusst."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+#, fuzzy
+msgid "F1 Split"
 msgstr "Teilen"
 
 #. (itstool) path: item/p
@@ -449,8 +527,9 @@ msgstr ""
 "der Reduktion betroffen)."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
+#: C/deesser.page:59
+#, fuzzy
+msgid "F1 Gain"
 msgstr "Verstärkung"
 
 #. (itstool) path: item/p
@@ -465,7 +544,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+#, fuzzy
+msgid "F2 Peak"
 msgstr "Hochpunkt"
 
 #. (itstool) path: item/p
@@ -479,7 +559,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+#, fuzzy
+msgid "F2 Level"
 msgstr "Ebene"
 
 #. (itstool) path: item/p
@@ -489,7 +570,8 @@ msgstr "Erhöht oder verringert die Frequenzen um die mittlere Glockenfrequenz."
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+#, fuzzy
+msgid "F2 Peak Q"
 msgstr "Höchstwert Q"
 
 #. (itstool) path: item/p
@@ -641,22 +723,31 @@ msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects verwendet das von Calf Studio entwickelte Gate."
 
 #. (itstool) path: item/p
-#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+#: C/gate.page:22
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"gain reduction stops."
 msgstr ""
 "Anzahl der Millisekunden, die das Signal über die Schwelle steigen muss, "
 "bevor die Amplitudenreduktion beginnt."
 
 #. (itstool) path: item/p
-#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+#: C/gate.page:31
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"reduction is increased again."
 msgstr ""
 "Anzahl der Millisekunden, die das Signal unter die Schwelle fallen muss, "
 "bevor die Reduktion wieder verringert wird."
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+#, fuzzy
+msgid "If a signal rises above this level the gain reduction is released."
+msgstr ""
+"Übersteigt ein Signal diesen Wert, wird die Amplitudenreduktion beeinflusst."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -867,57 +958,81 @@ msgstr ""
 "Ausklangszeiten erzeugt."
 
 #. (itstool) path: page/title
-#. (itstool) path: title/em
-#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:58
-msgid "Loudness"
-msgstr "Lautstärke"
+#: C/loudness.page:9
+msgid "Loudness Compensator"
+msgstr ""
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
 msgid ""
-"PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to "
-"low frequencies when listening at low volume. This plug-in is based on the "
-"Stevens-Davis equal loudness contours and allows the bass level to be "
-"adjusted to simulate or correct for this effect."
+"PulseEffects uses the loudness compensator from Linux Studio Plugins which "
+"applies equal loudness contour corrections to the input signal. This is a "
+"measure of sound pressure level (SPL), over the frequency spectrum, for "
+"which a listener perceives a constant loudness when presented with pure "
+"steady tones."
 msgstr ""
-"PulseEffects verwendet die Lautstärke von MDA.LV2. Das Ohr ist weniger "
-"empfindlich für niedrige Frequenzen, wenn es bei niedriger Lautstärke hört. "
-"Dieses Plug-in basiert auf den Stevens-Davis-Konturen gleicher Lautheit und "
-"ermöglicht die Anpassung des Basspegels, um diesen Effekt zu simulieren oder "
-"zu korrigieren."
-
-#. (itstool) path: item/p
-#: C/loudness.page:21
-msgid ""
-"Source level relative to listening level (based on a 100 dB SPL maximum "
-"level)."
-msgstr ""
-"Quellenpegel relativ zum Hörpegel (bezogen auf einen 100 dB SPL "
-"Maximalpegel)."
 
 #. (itstool) path: title/em
-#: C/loudness.page:27
+#: C/loudness.page:20
+#, fuzzy
+msgid "Input"
+msgstr "Eingabeverstärkung"
+
+#. (itstool) path: item/p
+#: C/loudness.page:22
+msgid ""
+"The input gain settings, allows to adjust the level of the input signal to "
+"the desired level."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:29
 msgid "Output"
 msgstr "Ausgang"
 
 #. (itstool) path: item/p
-#: C/loudness.page:29
-msgid "Change output level."
-msgstr "Ausgangspegel ändern."
+#: C/loudness.page:31
+msgid ""
+"The output volume of the signal with applied equal loudness contour, "
+"controls the loudness of the 1 kHz pure sine wave."
+msgstr ""
 
 #. (itstool) path: title/em
-#: C/loudness.page:35
-msgid "Link"
-msgstr "Verknüpfung"
+#: C/loudness.page:38
+msgid "Standard"
+msgstr ""
 
 #. (itstool) path: item/p
-#: C/loudness.page:37
-msgid ""
-"Automatically adjusts Output to maintain a consistent tonal balance at all "
-"levels."
+#: C/loudness.page:40
+msgid "Allows to select different equal loudness contour standards."
 msgstr ""
-"Passt die Ausgabe automatisch an, um eine konsistente tonale Balance auf "
-"allen Ebenen zu erhalten."
+
+#. (itstool) path: title/em
+#: C/loudness.page:46
+#, fuzzy
+msgid "FFT Size"
+msgstr "Rahmengröße"
+
+#. (itstool) path: item/p
+#: C/loudness.page:48
+msgid ""
+"Allows to select size of the fast Fourier transform frame used for the "
+"processing. The larger FFT frame is, the more precize the curve is "
+"approximated and the more latency the plugin introduces"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:56
+#, fuzzy
+msgid "Reference Signal"
+msgstr "Referenzen"
+
+#. (itstool) path: item/p
+#: C/loudness.page:58
+msgid ""
+"Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency "
+"for callibration purposes."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/multibandcompressor.page:9
@@ -939,6 +1054,24 @@ msgstr ""
 #: C/multibandcompressor.page:14
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr "PulseEffects verwendet den Multibandkompressor von Calf Studio."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Anzahl der Millisekunden, die das Signal über die Schwelle steigen muss, "
+"bevor die Amplitudenreduktion beginnt."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Anzahl der Millisekunden, die das Signal unter die Schwelle fallen muss, "
+"bevor die Reduktion wieder verringert wird."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
@@ -2530,10 +2663,12 @@ msgstr "Übersteuerungswarnung"
 
 #. (itstool) path: page/p
 #: C/saturated.page:12
+#, fuzzy
 msgid ""
-"If the audio signal arriving at the plugin input is too high very unpleasent "
+"If the audio signal coming out from the pipeline is too high very unpleasent "
 "noises will be produced. In case this happens the warning in the image above "
-"is shown so that the user can reduce the audio level."
+"is shown so that the user can reduce the audio level using the limiter or "
+"the maximizer."
 msgstr ""
 "Wenn das am Eingang des Plugins ankommende Audiosignal zu hoch ist, werden "
 "sehr unangenehme Geräusche erzeugt. In diesem Fall wird die Warnung im "
@@ -2661,6 +2796,11 @@ msgstr ""
 "wenn der momentane Wert unter diesem Schwellwert liegt, werden Änderungen "
 "der Ausgangsverstärkung deaktiviert."
 
+#. (itstool) path: title/em
+#: C/autogain.page:58
+msgid "Loudness"
+msgstr "Lautstärke"
+
 #. (itstool) path: item/p
 #: C/autogain.page:60
 msgid ""
@@ -2681,6 +2821,11 @@ msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Lautstärkebereich. Zeigt an, wie groß der Dynamikbereich des Materials ist."
 
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Verstärkung"
+
 #. (itstool) path: item/p
 #: C/autogain.page:72
 msgid ""
@@ -2692,25 +2837,25 @@ msgstr ""
 "bringen."
 
 #. (itstool) path: page/title
-#: C/blacklist.page:9
-msgid "Applications Blacklist"
+#: C/blocklist.page:9
+msgid "Applications Blocklist"
 msgstr "Anwendungssperrliste"
 
 #. (itstool) path: page/p
-#: C/blacklist.page:11
+#: C/blocklist.page:11
 msgid ""
 "In the settings menu there is an option that allows the user to apply "
 "effects to all applications without the need to switch each one on "
 "individually. But there are cases where the user wants a specific "
 "application to be excluded from the \"Enable All\" functionality. This can "
-"be done by using a blacklist. Just add the application name exactly as it is "
+"be done by using a blocklist. Just add the application name exactly as it is "
 "shown in the \"Applications\" entry."
 msgstr ""
 "Im Einstellungsmenü gibt es eine Option, die es dem Benutzer erlaubt, "
 "Effekte auf alle Programme anzuwenden, ohne dass man jedes Programm einzeln "
 "einschalten muss. Es gibt jedoch Fälle, in denen der Benutzer möchte, dass "
 "eine bestimmte Anwendung von der \"Alle aktivieren\"-Funktionalität "
-"ausgeschlossen wird. Dies kann über eine Blacklist erfolgen. Füge einfach "
+"ausgeschlossen wird. Dies kann über eine Blocklist erfolgen. Füge einfach "
 "den Namen der Anwendung genau so hinzu, wie er im Eintrag \"Anwendungen\" "
 "angezeigt wird."
 

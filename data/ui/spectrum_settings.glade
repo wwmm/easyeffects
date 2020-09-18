@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
-  <object class="GtkAdjustment" id="exponent">
-    <property name="upper">10</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">10</property>
-  </object>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="height">
     <property name="lower">1</property>
     <property name="upper">1000</property>
+    <property name="value">100</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="line_width">
-    <property name="lower">0.10000000000000001</property>
+    <property name="lower">0.1</property>
     <property name="upper">100</property>
     <property name="value">2</property>
-    <property name="step_increment">0.10000000000000001</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="step_increment">0.1</property>
+    <property name="page_increment">1</property>
+  </object>
+  <object class="GtkAdjustment" id="maximum_frequency">
+    <property name="lower">20</property>
+    <property name="upper">22000</property>
+    <property name="value">22000</property>
+    <property name="step_increment">10</property>
+    <property name="page_increment">100</property>
+  </object>
+  <object class="GtkAdjustment" id="minimum_frequency">
+    <property name="lower">20</property>
+    <property name="upper">22000</property>
+    <property name="value">20</property>
+    <property name="step_increment">10</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="n_points">
     <property name="lower">2</property>
     <property name="upper">1000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">10</property>
   </object>
   <object class="GtkAdjustment" id="sampling_freq">
     <property name="lower">1</property>
@@ -32,31 +42,25 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkAdjustment" id="scale">
-    <property name="upper">10</property>
-    <property name="step_increment">0.01</property>
-    <property name="page_increment">10</property>
-  </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="halign">center</property>
-    <property name="row_spacing">18</property>
+    <property name="valign">center</property>
+    <property name="column_spacing">48</property>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="halign">center</property>
+        <property name="halign">start</property>
         <property name="valign">center</property>
         <property name="row_spacing">6</property>
         <property name="column_spacing">6</property>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkSwitch" id="show">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can_focus">True</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Show Spectrum</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -64,11 +68,11 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="show">
+          <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
+            <property name="label" translatable="yes">Show Spectrum</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -79,12 +83,11 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
+            <property name="halign">start</property>
             <property name="label" translatable="yes">Fill</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
+            <property name="left_attach">1</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -92,36 +95,23 @@
           <object class="GtkSwitch" id="fill">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-          </object>
-          <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Border</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
-            <property name="top_attach">2</property>
+            <property name="top_attach">1</property>
           </packing>
         </child>
         <child>
           <object class="GtkSwitch" id="show_bar_border">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
+            <property name="left_attach">0</property>
             <property name="top_attach">2</property>
           </packing>
         </child>
@@ -129,24 +119,23 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="label" translatable="yes">Use Custom Color</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Border</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">3</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
           </packing>
         </child>
         <child>
           <object class="GtkSwitch" id="use_custom_color">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
+            <property name="left_attach">0</property>
             <property name="top_attach">3</property>
           </packing>
         </child>
@@ -154,9 +143,20 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Use Custom Color</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="use_gradient">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
             <property name="halign">end</property>
             <property name="valign">center</property>
-            <property name="label" translatable="yes">Use Gradient</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -164,124 +164,39 @@
           </packing>
         </child>
         <child>
-          <object class="GtkSwitch" id="use_gradient">
+          <object class="GtkLabel">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
+            <property name="label" translatable="yes">Use Gradient</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
             <property name="top_attach">4</property>
           </packing>
         </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Spectrum Color</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkColorButton" id="spectrum_color_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="use_alpha">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Gradient Color</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkColorButton" id="gradient_color_button">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="use_alpha">True</property>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Spectrum Type</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkComboBoxText" id="spectrum_type">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <items>
-              <item translatable="yes">Bars</item>
-              <item translatable="yes">Lines</item>
-            </items>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Points</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <property name="row_spacing">6</property>
+        <property name="column_spacing">6</property>
         <child>
           <object class="GtkSpinButton">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
+            <property name="width_chars">10</property>
+            <property name="text">2</property>
+            <property name="xalign">0.33000001311302185</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">n_points</property>
             <property name="numeric">True</property>
@@ -289,22 +204,8 @@
             <property name="value">2</property>
           </object>
           <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Height</property>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">4</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
           </packing>
         </child>
         <child>
@@ -312,64 +213,17 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
+            <property name="width_chars">10</property>
+            <property name="text">100</property>
+            <property name="xalign">0.33000001311302185</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">height</property>
             <property name="numeric">True</property>
-            <property name="wrap">True</property>
             <property name="update_policy">if-valid</property>
             <property name="value">100</property>
           </object>
           <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">4</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Scale</property>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSpinButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
-            <property name="input_purpose">number</property>
-            <property name="adjustment">scale</property>
-            <property name="digits">2</property>
-            <property name="numeric">True</property>
-            <property name="update_policy">if-valid</property>
-            <property name="value">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Exponent</property>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
+            <property name="left_attach">1</property>
             <property name="top_attach">1</property>
           </packing>
         </child>
@@ -378,72 +232,9 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
-            <property name="input_purpose">number</property>
-            <property name="adjustment">exponent</property>
-            <property name="digits">2</property>
-            <property name="numeric">True</property>
-            <property name="update_policy">if-valid</property>
-            <property name="value">1</property>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Sampling</property>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSpinButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
-            <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
-            <property name="adjustment">sampling_freq</property>
-            <property name="numeric">True</property>
-            <property name="value">15</property>
-          </object>
-          <packing>
-            <property name="left_attach">5</property>
-            <property name="top_attach">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkLabel">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="halign">end</property>
-            <property name="valign">center</property>
-            <property name="margin_left">30</property>
-            <property name="label" translatable="yes">Line Width</property>
-          </object>
-          <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkSpinButton">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="halign">start</property>
-            <property name="valign">center</property>
-            <property name="width_chars">8</property>
+            <property name="width_chars">10</property>
+            <property name="text">1.0</property>
+            <property name="xalign">0.33000001311302185</property>
             <property name="input_purpose">number</property>
             <property name="adjustment">line_width</property>
             <property name="digits">1</property>
@@ -452,37 +243,271 @@
             <property name="value">1</property>
           </object>
           <packing>
-            <property name="left_attach">5</property>
+            <property name="left_attach">1</property>
+            <property name="top_attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="width_chars">10</property>
+            <property name="text">15</property>
+            <property name="xalign">0.5</property>
+            <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">sampling_freq</property>
+            <property name="numeric">True</property>
+            <property name="value">15</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
             <property name="top_attach">3</property>
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkSpinButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="width_chars">10</property>
+            <property name="text">20</property>
+            <property name="xalign">0.5</property>
+            <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">minimum_frequency</property>
+            <property name="numeric">True</property>
+            <property name="value">20</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">4</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkSpinButton">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">start</property>
+            <property name="width_chars">10</property>
+            <property name="text">22000</property>
+            <property name="xalign">0.5</property>
+            <property name="secondary_icon_name">pulseeffects-hz-symbolic</property>
+            <property name="input_purpose">number</property>
+            <property name="adjustment">maximum_frequency</property>
+            <property name="numeric">True</property>
+            <property name="value">22000</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Points</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Height</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">1</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Line Width</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Sampling</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">3</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Minimum Frequency</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">4</property>
+          </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="label" translatable="yes">Maximum Frequency</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
         </child>
       </object>
       <packing>
-        <property name="left_attach">0</property>
+        <property name="left_attach">2</property>
+        <property name="top_attach">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="hexpand">True</property>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="row_spacing">6</property>
+            <property name="column_spacing">6</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Spectrum Type</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="spectrum_type">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <items>
+                  <item translatable="yes">Bars</item>
+                  <item translatable="yes">Lines</item>
+                </items>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Spectrum Color</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Gradient Color</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">end</property>
+                <property name="label" translatable="yes">Axis Color</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="spectrum_color_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="use_alpha">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="gradient_color_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="use_alpha">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkColorButton" id="axis_color_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="halign">start</property>
+                <property name="use_alpha">True</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="left_attach">1</property>
         <property name="top_attach">0</property>
       </packing>
     </child>

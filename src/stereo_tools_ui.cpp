@@ -4,7 +4,7 @@
 namespace {
 
 auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "LR > LR (Stereo Default)") == 0) {
     g_value_set_int(value, 0);
@@ -26,41 +26,34 @@ auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_da
 }
 
 auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("LR > LR (Stereo Default)");
+  switch (v) {
+    case 0: return g_variant_new_string("LR > LR (Stereo Default)");
+
+    case 1: return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
+
+    case 2: return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
+
+    case 3: return g_variant_new_string("LR > LL (Mono Left Channel)");
+
+    case 4: return g_variant_new_string("LR > RR (Mono Right Channel)");
+
+    case 5: return g_variant_new_string("LR > L+R (Mono Sum L+R)");
+
+    case 6: return g_variant_new_string("LR > RL (Stereo Flip Channels)");
+
+    default: return g_variant_new_string("LR > LR (Stereo Default)");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("LR > LL (Mono Left Channel)");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("LR > RR (Mono Right Channel)");
-  }
-
-  if (v == 5) {
-    return g_variant_new_string("LR > L+R (Mono Sum L+R)");
-  }
-
-  return g_variant_new_string("LR > RL (Stereo Flip Channels)");
 }
 
 }  // namespace
 
 StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
-                             const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                             const std::string& schema,
+                             const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "stereo_tools";
 
   // loading glade widgets
@@ -71,6 +64,7 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   builder->get_widget("phasel", phasel);
   builder->get_widget("phaser", phaser);
   builder->get_widget("mode", mode);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -111,8 +105,57 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 StereoToolsUi::~StereoToolsUi() {
   util::debug(name + " ui destroyed");
+}
+
+void StereoToolsUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".stereo_tools.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".stereo_tools.output-gain");
+
+    update_default_key<double>(settings, "balance-in", section + ".stereo_tools.balance-in");
+
+    update_default_key<double>(settings, "balance-out", section + ".stereo_tools.balance-out");
+
+    update_default_key<bool>(settings, "softclip", section + ".stereo_tools.softclip");
+
+    update_default_key<bool>(settings, "mutel", section + ".stereo_tools.mutel");
+
+    update_default_key<bool>(settings, "muter", section + ".stereo_tools.muter");
+
+    update_default_key<bool>(settings, "phasel", section + ".stereo_tools.phasel");
+
+    update_default_key<bool>(settings, "phaser", section + ".stereo_tools.phaser");
+
+    update_default_string_key(settings, "mode", section + ".stereo_tools.mode");
+
+    update_default_key<double>(settings, "slev", section + ".stereo_tools.side-level");
+
+    update_default_key<double>(settings, "sbal", section + ".stereo_tools.side-balance");
+
+    update_default_key<double>(settings, "mlev", section + ".stereo_tools.middle-level");
+
+    update_default_key<double>(settings, "mpan", section + ".stereo_tools.middle-panorama");
+
+    update_default_key<double>(settings, "stereo-base", section + ".stereo_tools.stereo-base");
+
+    update_default_key<double>(settings, "delay", section + ".stereo_tools.delay");
+
+    update_default_key<double>(settings, "sc-level", section + ".stereo_tools.sc-level");
+
+    update_default_key<double>(settings, "stereo-phase", section + ".stereo_tools.stereo-phase");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }

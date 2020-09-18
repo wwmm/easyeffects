@@ -1,7 +1,8 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.crystalizer")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crystalizer",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/")) {}
 
 void CrystalizerPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
@@ -26,7 +27,7 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   }
 }
 
-void CrystalizerPreset::load(boost::property_tree::ptree& root,
+void CrystalizerPreset::load(const boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".crystalizer.state");
@@ -55,7 +56,7 @@ void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptre
   }
 }
 
-void CrystalizerPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     load(root, "output", output_settings);
   }

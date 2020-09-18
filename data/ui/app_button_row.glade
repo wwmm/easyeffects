@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.36.0 -->
+<interface>
+  <requires lib="gtk+" version="3.22"/>
+  <object class="GtkBox" id="app_button_row">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="margin_top">7</property>
+    <property name="margin_bottom">7</property>
+    <property name="spacing">12</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkImage" id="app_output_icon">
+            <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
+            <property name="halign">center</property>
+            <property name="icon_name">audio-speakers-symbolic</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkImage" id="app_input_icon">
+            <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
+            <property name="halign">center</property>
+            <property name="icon_name">audio-input-microphone-symbolic</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="app_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="margin_bottom">2</property>
+            <property name="label" translatable="yes">Applications</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">0</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkBox" id="global_level_meter_grid">
+        <property name="can_focus">False</property>
+        <property name="no_show_all">True</property>
+        <property name="halign">end</property>
+        <property name="margin_end">2</property>
+        <child>
+          <object class="GtkImage" id="saturation_icon">
+            <property name="can_focus">False</property>
+            <property name="no_show_all">True</property>
+            <property name="halign">center</property>
+            <property name="margin_end">4</property>
+            <property name="icon_name">dialog-warning-symbolic</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="global_output_level_left">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="justify">right</property>
+            <property name="width_chars">4</property>
+            <property name="max_width_chars">4</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="global_output_level_right">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="justify">right</property>
+            <property name="width_chars">4</property>
+            <property name="max_width_chars">4</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="db_unit_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">center</property>
+            <property name="margin_start">4</property>
+            <property name="label">dB</property>
+            <property name="justify">right</property>
+            <property name="width_chars">2</property>
+            <property name="max_width_chars">2</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="pack_type">end</property>
+        <property name="position">1</property>
+      </packing>
+    </child>
+  </object>
+</interface>

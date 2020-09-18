@@ -30,12 +30,16 @@ void print_thread_id() {
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
+  if (stop <= start) {
+    return output;
+  }
+
   float delta = (stop - start) / npoints;
 
   float v = start;
 
-  while (v < stop) {
-    output.push_back(powf(10.0F, v));
+  while (v <= stop) {
+    output.emplace_back(powf(10.0F, v));
 
     v += delta;
   }
@@ -46,12 +50,16 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
+  if (stop <= start) {
+    return output;
+  }
+
   float delta = (stop - start) / npoints;
 
   float v = start;
 
-  while (v < stop) {
-    output.push_back(v);
+  while (v <= stop) {
+    output.emplace_back(v);
 
     v += delta;
   }
@@ -67,14 +75,26 @@ auto linear_to_db(const float& amp) -> float {
   return minimum_db_level;
 }
 
+auto linear_to_db(const double& amp) -> double {
+  if (amp >= minimum_linear_d_level) {
+    return 20.0 * log10f(amp);
+  }
+
+  return minimum_db_d_level;
+}
+
 auto db_to_linear(const float& db) -> float {
   return expf((db / 20.0F) * logf(10.0F));
+}
+
+auto db_to_linear(const double& db) -> double {
+  return expf((db / 20.0) * logf(10.0));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0F, (float)v_db / 20.0F);
+  float v_linear = powf(10.0F, static_cast<float>(v_db) / 20.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -84,7 +104,7 @@ auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   float v_linear = g_value_get_float(value);
 
-  double v_db = 20 * log10f(v_linear);
+  double v_db = 20.0 * log10f(static_cast<double>(v_linear));
 
   return g_variant_new_double(v_db);
 }
@@ -92,7 +112,7 @@ auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type,
 auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  float v_linear = powf(10.0F, (float)v_db / 10.0F);
+  float v_linear = powf(10.0F, static_cast<float>(v_db) / 10.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -110,7 +130,7 @@ auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gb
 auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   double v_db = g_variant_get_double(variant);
 
-  double v_linear = pow(10, v_db / 20.0);
+  double v_linear = pow(10.0, v_db / 20.0);
 
   g_value_set_double(value, v_linear);
 
@@ -121,7 +141,7 @@ auto linear_double_gain_to_db20(const GValue* value, const GVariantType* expecte
     -> GVariant* {
   double v_linear = g_value_get_double(value);
 
-  double v_db = 20 * log10(v_linear);
+  double v_db = 20.0 * log10(v_linear);
 
   return g_variant_new_double(v_db);
 }
@@ -135,7 +155,7 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 }
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  guint64 v_ns = g_variant_get_double(variant) * 1000000;
+  guint64 v_ns = g_variant_get_double(variant) * 1000000.0;
 
   g_value_set_uint64(value, v_ns);
 

@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema
-        id="com.github.wwmm.pulseeffects.sinkinputs"
-        path="/com/github/wwmm/pulseeffects/sinkinputs/">
+    <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
         <key name="plugins" type="as">
-            <default>
-                ["limiter","autogain","gate","multiband_gate","compressor",
-                "multiband_compressor","convolver","bass_enhancer","exciter",
-                "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser",
-                "crossfeed","loudness","maximizer","filter","pitch"]
-            </default>
+            <default>["limiter","autogain","gate","multiband_gate","compressor", "multiband_compressor","convolver","bass_enhancer","exciter", "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser", "crossfeed","loudness","maximizer","filter","pitch"]</default>
         </key>
         <key name="buffer-pulsesrc" type="i">
-            <range min="1" max="10000000"/>
+            <range min="1" max="10000000" />
             <default>200000</default>
         </key>
         <key name="latency-pulsesrc" type="i">
-            <range min="1" max="10000000"/>
+            <range min="1" max="10000000" />
             <default>10000</default>
         </key>
         <key name="buffer-pulsesink" type="i">
-            <range min="1" max="10000000"/>
+            <range min="1" max="10000000" />
             <default>200000</default>
         </key>
         <key name="latency-pulsesink" type="i">
-            <range min="1" max="10000000"/>
+            <range min="1" max="10000000" />
             <default>10000</default>
         </key>
     </schema>

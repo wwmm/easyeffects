@@ -1,7 +1,10 @@
 #include "stereo_tools_preset.hpp"
 
 StereoToolsPreset::StereoToolsPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.stereotools")) {}
+    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.stereotools",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/")),
+      input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.stereotools",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/stereotools/")) {}
 
 void StereoToolsPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
@@ -45,7 +48,7 @@ void StereoToolsPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".stereo_tools.stereo-phase", settings->get_double("stereo-phase"));
 }
 
-void StereoToolsPreset::load(boost::property_tree::ptree& root,
+void StereoToolsPreset::load(const boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".stereo_tools.state");
@@ -88,13 +91,23 @@ void StereoToolsPreset::load(boost::property_tree::ptree& root,
 }
 
 void StereoToolsPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void StereoToolsPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void StereoToolsPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

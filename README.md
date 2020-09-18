@@ -17,24 +17,24 @@ Audio effects for Pulseaudio applications.
 
 - Limiter
 - Auto gain
-- Expander
+- Gate
+- Multiband gate
 - Compressor
 - Multiband compressor
-- Equalizer
+- Convolver
 - Bass enhancer
 - Exciter
 - Crystalizer
-- Reverberation
-- Crossfeed
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Stereo tools
+- Reverberation
+- Equalizer
+- Expander
+- De-esser
+- Crossfeed
 - Loudness
 - Maximizer
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Pitch
-- Gate
-- Multiband gate
-- De-esser
-- Convolver
 
 ### Applications input
 
@@ -44,28 +44,28 @@ Audio effects for Pulseaudio applications.
 - Limiter
 - Compressor
 - Multiband compressor
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
 - Equalizer
+- De-esser
 - Reverberation
 - Pitch
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
-- De-esser
+- Stereo tools
+- Maximizer
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
-- [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good).
-  Version 1.12.5 or higher
-- [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad).
-  Version 1.12.5 or higher
-- [Linux Studio plugins](http://lsp-plug.in/?page=home)
+- [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good). Version 1.12.5 or higher
+- [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad). Version 1.12.5 or higher
+- [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
-- [ZamAudio plugins](http://www.zamaudio.com/)
-- [MDA.LV2](https://git.drobilla.net/cgit.cgi/mda.lv2.git/about/)
+- [libebur128](https://github.com/jiixyj/libebur128). For Auto Gain.
+- [ZamAudio plugins](http://www.zamaudio.com/). For Maximizer.
+- [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
+- [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
-- [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/)
-- [libebur128](https://github.com/jiixyj/libebur128)
 
 ## Donate
 

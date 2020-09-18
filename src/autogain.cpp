@@ -5,7 +5,7 @@
 namespace {
 
 void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "m", &v, nullptr);
 
@@ -13,7 +13,7 @@ void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "s", &v, nullptr);
 
@@ -21,7 +21,7 @@ void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "i", &v, nullptr);
 
@@ -29,7 +29,7 @@ void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "r", &v, nullptr);
 
@@ -37,7 +37,7 @@ void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "l", &v, nullptr);
 
@@ -45,7 +45,7 @@ void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "lra", &v, nullptr);
 
@@ -53,7 +53,7 @@ void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v;
+  float v = 0.0f;
 
   g_object_get(a->autogain, "g", &v, nullptr);
 
@@ -62,16 +62,17 @@ void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 
 }  // namespace
 
-AutoGain::AutoGain(const std::string& tag, const std::string& schema) : PluginBase(tag, "autogain", schema) {
+AutoGain::AutoGain(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "autogain", schema, schema_path) {
   autogain = gst_element_factory_make("peautogain", nullptr);
 
   if (is_installed(autogain)) {
-    auto input_gain = gst_element_factory_make("volume", nullptr);
-    auto in_level = gst_element_factory_make("level", "autogain_input_level");
-    auto output_gain = gst_element_factory_make("volume", nullptr);
-    auto out_level = gst_element_factory_make("level", "autogain_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "autogain_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "autogain_audioconvert_out");
+    auto* input_gain = gst_element_factory_make("volume", nullptr);
+    auto* in_level = gst_element_factory_make("level", "autogain_input_level");
+    auto* output_gain = gst_element_factory_make("volume", nullptr);
+    auto* out_level = gst_element_factory_make("level", "autogain_output_level");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "autogain_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "autogain_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, autogain, audioconvert_out, output_gain,
                      out_level, nullptr);
@@ -79,8 +80,8 @@ AutoGain::AutoGain(const std::string& tag, const std::string& schema) : PluginBa
     gst_element_link_many(input_gain, in_level, audioconvert_in, autogain, audioconvert_out, output_gain, out_level,
                           nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(input_gain, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

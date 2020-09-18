@@ -27,6 +27,8 @@ Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gi
 
   add_main_option_entry(Gio::Application::OPTION_TYPE_INT, "bypass", 'b',
                         _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
+
+  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "hide-window", 'w', _("Hide the Window."));
 }
 
 Application::~Application() {
@@ -41,7 +43,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
   auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
-    for (auto w : get_windows()) {
+    for (const auto& w : get_windows()) {
       w->hide();
     }
 
@@ -64,8 +66,14 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
     settings->reset("");
 
     util::info(log_tag + "All settings were reset");
+  } else if (options->contains("hide-window")) {
+    util::info(log_tag + "Hiding the window...");
+
+    for (const auto& w : get_windows()) {
+      w->hide();
+    }
   } else if (options->contains("bypass")) {
-    int bypass_arg;
+    int bypass_arg = 2;
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 1) {
@@ -100,8 +108,8 @@ void Application::on_startup() {
   soe = std::make_unique<SourceOutputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
-  pm->blacklist_in = settings->get_string_array("blacklist-in");
-  pm->blacklist_out = settings->get_string_array("blacklist-out");
+  pm->blocklist_in = settings->get_string_array("blocklist-in");
+  pm->blocklist_out = settings->get_string_array("blocklist-out");
 
   pm->new_default_sink.connect([&](auto name) {
     util::debug("new default sink: " + name);
@@ -180,12 +188,12 @@ void Application::on_startup() {
     }
   });
 
-  settings->signal_changed("blacklist-in").connect([=](auto key) {
-    pm->blacklist_in = settings->get_string_array("blacklist-in");
+  settings->signal_changed("blocklist-in").connect([=](auto key) {
+    pm->blocklist_in = settings->get_string_array("blocklist-in");
   });
 
-  settings->signal_changed("blacklist-out").connect([=](auto key) {
-    pm->blacklist_out = settings->get_string_array("blacklist-out");
+  settings->signal_changed("blocklist-out").connect([=](auto key) {
+    pm->blocklist_out = settings->get_string_array("blocklist-out");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });
@@ -206,18 +214,25 @@ void Application::on_startup() {
 
 void Application::on_activate() {
   if (get_active_window() == nullptr) {
-    std::shared_ptr<ApplicationUi> window(ApplicationUi::create(this));
+    /*
+      Note to myself: do not wrap this pointer in a smart pointer. Causes memory leaks when closing the window because
+      GTK reference counting system will see that there is still someone with an object reference and it won't free the
+      widgets.
+    */
+    auto* window = ApplicationUi::create(this);
 
     add_window(*window);
 
     window->signal_hide().connect([&, window]() {
-      int width;
-      int height;
+      int width = 0;
+      int height = 0;
 
       window->get_size(width, height);
 
       settings->set_int("window-width", width);
       settings->set_int("window-height", height);
+
+      delete window;
     });
 
     window->show_all();
@@ -261,7 +276,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   }
 
   if (options->contains("bypass")) {
-    int bypass_arg;
+    int bypass_arg = 2;
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
@@ -281,16 +296,17 @@ void Application::create_actions() {
   add_action("about", [&]() {
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
-    auto dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
+    auto* dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
     dialog->signal_response().connect([=](auto response_id) {
       switch (response_id) {
         case Gtk::RESPONSE_CLOSE:
         case Gtk::RESPONSE_CANCEL:
-        case Gtk::RESPONSE_DELETE_EVENT:
+        case Gtk::RESPONSE_DELETE_EVENT: {
           dialog->hide();
           util::debug(log_tag + "hiding the about dialog window");
           break;
+        }
         default:
           util::debug(log_tag + "unexpected about dialog response!");
           break;
@@ -306,19 +322,13 @@ void Application::create_actions() {
   });
 
   add_action("help", [&] {
-    auto window = get_active_window();
+    auto* window = get_active_window();
 
-    /*GTKMM 3.22 does not have a wrapper for gtk_show_uri_on_window.
-     *So we have to use the C api :-(
-     */
-
-    if (gtk_show_uri_on_window(window->gobj(), "help:pulseeffects", gtk_get_current_event_time(), nullptr) == 0) {
-      util::warning("Failed to open help!");
-    }
+    window->show_uri("help:pulseeffects", gtk_get_current_event_time());
   });
 
   add_action("quit", [&] {
-    auto window = get_active_window();
+    auto* window = get_active_window();
 
     window->hide();
   });

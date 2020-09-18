@@ -37,8 +37,8 @@ struct GstPeautogain {
   int bpf;   // bytes per frame : channels * bps
   int rate;  // sampling rate
 
-  int notify_samples;  // number of samples to count before emit a notify
-  int sample_count;
+  uint notify_samples;  // number of samples to count before emit a notify
+  uint sample_count;
   ebur128_state* ebur_state = nullptr;
 
   std::mutex lock_guard_ebu;

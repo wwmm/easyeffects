@@ -7,7 +7,7 @@
 namespace {
 
 auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Niceness") == 0) {
     g_value_set_int(value, 0);
@@ -22,17 +22,17 @@ auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
 
 auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Niceness");
+  switch (v) {
+    case 0: return g_variant_new_string("Niceness");
+
+    case 1: return g_variant_new_string("Real Time");
+
+    case 2: return g_variant_new_string("None");
+
+    default: return g_variant_new_string("None");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("Real Time");
-  }
-
-  return g_variant_new_string("None");
 }
 
 }  // namespace
@@ -64,7 +64,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
 
-  connections.push_back(settings->signal_changed("priority-type").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("priority-type").connect([&](auto key) {
     set_priority_controls_visibility();
 
     app->sie->set_null_pipeline();
@@ -74,7 +74,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
     app->soe->update_pipeline_state();
   }));
 
-  connections.push_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
     app->sie->set_null_pipeline();
     app->soe->set_null_pipeline();
 
@@ -82,7 +82,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
     app->soe->update_pipeline_state();
   }));
 
-  connections.push_back(settings->signal_changed("niceness").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("niceness").connect([&](auto key) {
     app->sie->set_null_pipeline();
     app->soe->set_null_pipeline();
 
@@ -107,7 +107,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 }
 
 GeneralSettingsUi::~GeneralSettingsUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 
@@ -184,14 +184,23 @@ void GeneralSettingsUi::on_reset_settings() {
 void GeneralSettingsUi::set_priority_controls_visibility() {
   auto priority_type = settings->get_enum("priority-type");
 
-  if (priority_type == 0) {
-    niceness_control->set_sensitive(true);
-    realtime_priority_control->set_sensitive(false);
-  } else if (priority_type == 1) {
-    niceness_control->set_sensitive(false);
-    realtime_priority_control->set_sensitive(true);
-  } else if (priority_type == 2) {
-    niceness_control->set_sensitive(false);
-    realtime_priority_control->set_sensitive(false);
+  switch (priority_type) {
+    case 0: {
+      niceness_control->set_sensitive(true);
+      realtime_priority_control->set_sensitive(false);
+      break;
+    }
+    case 1: {
+      niceness_control->set_sensitive(false);
+      realtime_priority_control->set_sensitive(true);
+      break;
+    }
+    case 2: {
+      niceness_control->set_sensitive(false);
+      realtime_priority_control->set_sensitive(false);
+      break;
+    }
+    default:
+      break;
   }
 }

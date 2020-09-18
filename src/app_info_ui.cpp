@@ -1,6 +1,8 @@
 #include "app_info_ui.hpp"
 #include <glibmm/i18n.h>
 #include <sstream>
+#include "blocklist_settings_ui.hpp"
+#include "preset_type.hpp"
 #include "util.hpp"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
@@ -13,8 +15,10 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("enable", enable);
   builder->get_widget("app_icon", app_icon);
   builder->get_widget("app_name", app_name);
+  builder->get_widget("media_name", media_name);
   builder->get_widget("volume", volume);
   builder->get_widget("mute", mute);
+  builder->get_widget("blocklist", blocklist);
   builder->get_widget("mute_icon", mute_icon);
   builder->get_widget("format", format);
   builder->get_widget("rate", rate);
@@ -23,6 +27,11 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("buffer", buffer);
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
+
+  is_blocklisted = BlocklistSettingsUi::app_is_blocklisted(
+      app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
+
+  is_enabled = app_info->connected && !is_blocklisted;
 
   init_widgets();
   connect_signals();
@@ -60,11 +69,22 @@ auto AppInfoUi::latency_to_str(uint value) -> std::string {
 }
 
 void AppInfoUi::init_widgets() {
-  enable->set_active(app_info->connected);
+  enable->set_active(is_enabled && !is_blocklisted);
+  enable->set_sensitive(!is_blocklisted);
+
+  blocklist->set_active(is_blocklisted);
 
   app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
 
   app_name->set_text(app_info->name);
+
+  if (app_info->name == app_info->media_name || app_info->media_name.empty()) {
+    media_name->set_visible(false);
+  } else {
+    media_name->set_visible(true);
+
+    media_name->set_text(app_info->media_name);
+  }
 
   volume->set_value(app_info->volume);
 
@@ -95,21 +115,59 @@ void AppInfoUi::connect_signals() {
   volume_connection = volume->signal_value_changed().connect(sigc::mem_fun(*this, &AppInfoUi::on_volume_changed));
 
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
+
+  blocklist_connection = blocklist->signal_clicked().connect([=]() {
+    PresetType preset_type = (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input;
+
+    if (blocklist->get_active()) {
+      // Add new entry to blocklist vector
+
+      BlocklistSettingsUi::add_new_entry(app_info->name, preset_type);
+
+      pre_bl_state = is_enabled;
+
+      is_blocklisted = true;
+
+      if (is_enabled) {
+        enable->set_active(false);
+      }
+
+      enable->set_sensitive(false);
+    } else {
+      // Remove app name entry from blocklist vector
+
+      BlocklistSettingsUi::remove_entry(app_info->name, preset_type);
+
+      is_blocklisted = false;
+
+      enable->set_sensitive(true);
+
+      if (pre_bl_state) {
+        enable->set_active(true);
+      }
+    }
+  });
 }
 
 auto AppInfoUi::on_enable_app(bool state) -> bool {
+  bool success = false;
+
   if (state) {
     if (app_info->app_type == "sink_input") {
-      pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+      success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
     } else {
-      pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+      success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
     }
   } else {
     if (app_info->app_type == "sink_input") {
-      pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+      success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
     } else {
-      pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+      success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
     }
+  }
+
+  if (success) {
+    is_enabled = state;
   }
 
   return false;
@@ -151,6 +209,7 @@ void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
   enable_connection.disconnect();
   volume_connection.disconnect();
   mute_connection.disconnect();
+  blocklist_connection.disconnect();
 
   init_widgets();
   connect_signals();

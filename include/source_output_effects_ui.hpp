@@ -8,11 +8,13 @@
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
 #include "limiter_ui.hpp"
+#include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
 #include "source_output_effects.hpp"
+#include "stereo_tools_ui.hpp"
 #include "webrtc_ui.hpp"
 
 class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
@@ -28,6 +30,8 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   ~SourceOutputEffectsUi() override;
 
   static auto add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr) -> SourceOutputEffectsUi*;
+
+  void on_app_added(std::shared_ptr<AppInfo> app_info) override;
 
  protected:
   std::string log_tag = "soe_ui: ";
@@ -46,6 +50,8 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   WebrtcUi* webrtc_ui = nullptr;
   MultibandCompressorUi* multiband_compressor_ui = nullptr;
   MultibandGateUi* multiband_gate_ui = nullptr;
+  StereoToolsUi* stereo_tools_ui = nullptr;
+  MaximizerUi* maximizer_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

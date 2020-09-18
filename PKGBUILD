@@ -11,13 +11,11 @@ url='https://github.com/wwmm/pulseeffects'
 license=('GPL3')
 depends=('gtk3' 'gtkmm3' 'glibmm' 'libpulse' 'gstreamer' 'gst-plugins-good' 'gst-plugins-bad'
         'lilv' 'boost-libs' 'libsigc++' 'libsndfile' 'libsamplerate' 'zita-convolver' 'libebur128')
-makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
-             'calf' 'zam-plugins' 'rubberband' 'mda.lv2')
+makedepends=('meson' 'boost' 'itstool' 'appstream-glib' 'calf' 'zam-plugins' 'rubberband')
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
-            'zam-plugins: maximizer'
-            'rubberband: pitch shifting'
             'lsp-plugins: equalizer, delay'
-            'mda.lv2: loudness'
+            'rubberband: pitch shifting'
+            'zam-plugins: maximizer'
             'yelp: in-app help')
 source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)

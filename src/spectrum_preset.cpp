@@ -20,19 +20,17 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.show-bar-border", settings->get_boolean("show-bar-border"));
 
-  root.put("spectrum.scale", settings->get_double("scale"));
-
-  root.put("spectrum.exponent", settings->get_double("exponent"));
-
   root.put("spectrum.sampling-freq", settings->get_int("sampling-freq"));
 
   root.put("spectrum.line-width", settings->get_double("line-width"));
 
   root.put("spectrum.type", settings->get_string("type"));
 
+  // color
+
   settings->get_value("color", aux);
 
-  for (auto& p : aux.get()) {
+  for (const auto& p : aux.get()) {
     boost::property_tree::ptree node;
     node.put("", p);
     node_in.push_back(std::make_pair("", node));
@@ -40,13 +38,27 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.add_child("spectrum.color", node_in);
 
-  // background color
+  // axis color
+
+  node_in.clear();
+
+  settings->get_value("color-axis-labels", aux);
+
+  for (const auto& p : aux.get()) {
+    boost::property_tree::ptree node;
+    node.put("", p);
+    node_in.push_back(std::make_pair("", node));
+  }
+
+  root.add_child("spectrum.color-axis-labels", node_in);
+
+  // gradient color
 
   node_in.clear();
 
   settings->get_value("gradient-color", aux);
 
-  for (auto& p : aux.get()) {
+  for (const auto& p : aux.get()) {
     boost::property_tree::ptree node;
     node.put("", p);
     node_in.push_back(std::make_pair("", node));
@@ -55,7 +67,7 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
   root.add_child("spectrum.gradient-color", node_in);
 }
 
-void SpectrumPreset::load(boost::property_tree::ptree& root,
+void SpectrumPreset::load(const boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "show", "spectrum.show");
@@ -70,21 +82,19 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
 
   update_key<bool>(root, settings, "show-bar-border", "spectrum.show-bar-border");
 
-  update_key<double>(root, settings, "scale", "spectrum.scale");
-
-  update_key<double>(root, settings, "exponent", "spectrum.exponent");
-
   update_key<int>(root, settings, "sampling-freq", "spectrum.sampling-freq");
 
   update_key<double>(root, settings, "line-width", "spectrum.line-width");
 
   update_string_key(root, settings, "type", "spectrum.type");
 
+  // spectrum color
+
   try {
     std::vector<double> color;
 
-    for (auto& p : root.get_child("spectrum.color")) {
-      color.push_back(p.second.get<double>(""));
+    for (const auto& p : root.get_child("spectrum.color")) {
+      color.emplace_back(p.second.get<double>(""));
     }
 
     auto v = Glib::Variant<std::vector<double>>::create(color);
@@ -94,13 +104,29 @@ void SpectrumPreset::load(boost::property_tree::ptree& root,
     settings->reset("color");
   }
 
-  // background color
+  // axis color
 
   try {
     std::vector<double> color;
 
-    for (auto& p : root.get_child("spectrum.gradient-color")) {
-      color.push_back(p.second.get<double>(""));
+    for (const auto& p : root.get_child("spectrum.color-axis-labels")) {
+      color.emplace_back(p.second.get<double>(""));
+    }
+
+    auto v = Glib::Variant<std::vector<double>>::create(color);
+
+    settings->set_value("color-axis-labels", v);
+  } catch (const boost::property_tree::ptree_error& e) {
+    settings->reset("color-axis-labels");
+  }
+
+  // gradient color
+
+  try {
+    std::vector<double> color;
+
+    for (const auto& p : root.get_child("spectrum.gradient-color")) {
+      color.emplace_back(p.second.get<double>(""));
     }
 
     auto v = Glib::Variant<std::vector<double>>::create(color);
@@ -115,6 +141,6 @@ void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& 
   save(root, "", settings);
 }
 
-void SpectrumPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
+void SpectrumPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
   load(root, "", settings);
 }

@@ -4,7 +4,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
 #include <memory>
-#include "blacklist_settings_ui.hpp"
+#include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
 #include "pulse_settings_ui.hpp"
@@ -43,7 +43,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
-  BlacklistSettingsUi::add_to_stack(stack_menu_settings);
+  BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed("visible-child",
@@ -72,10 +72,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   presets_menu_button->signal_clicked().connect(
       sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
 
-  presets_menu_label->set_text(settings->get_string("last-used-preset"));
+  presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
 
-  connections.push_back(settings->signal_changed("last-used-preset").connect([=](auto key) {
-    presets_menu_label->set_text(settings->get_string("last-used-preset"));
+  connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
+  }));
+
+  connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   }));
 
   // headerbar info
@@ -126,7 +130,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 }
 
 ApplicationUi::~ApplicationUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 
@@ -162,41 +166,52 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   null_sink_rate.precision(1);
   current_dev_rate.precision(1);
 
-  if (index == 0) {  // sie
-    subtitle_grid->show();
+  switch (index) {
+    case 0: {  // sie
 
-    headerbar_icon1->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
+      subtitle_grid->show();
 
-    headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
+      headerbar_icon1->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
+      headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-    auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
+      null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
 
-    current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
+      auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-    headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
-                             null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
-                             std::to_string(sie_latency) + "ms ⟶ ");
+      current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-  } else if (index == 1) {  // soe
-    subtitle_grid->show();
+      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
+                               null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
+                               std::to_string(sie_latency) + "ms ⟶ ");
 
-    headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic", Gtk::ICON_SIZE_MENU);
+      break;
+    }
+    case 1: {  // soe
 
-    headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
+      subtitle_grid->show();
 
-    null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
+      headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic", Gtk::ICON_SIZE_MENU);
 
-    auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+      headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-    current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+      null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
 
-    headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
-                             null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
-                             null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
-  } else if (index == 2) {  // pulse info
-    subtitle_grid->hide();
+      auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+
+      current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+
+      headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
+                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
+                               null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+
+      break;
+    }
+    default:  // pulse info
+
+      subtitle_grid->hide();
+
+      break;
   }
 }
 
@@ -205,8 +220,12 @@ void ApplicationUi::on_stack_visible_child_changed() {
 
   if (name == std::string("sink_inputs")) {
     update_headerbar_subtitle(0);
+
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   } else if (name == std::string("source_outputs")) {
     update_headerbar_subtitle(1);
+
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
   } else if (name == std::string("pulse_info")) {
     update_headerbar_subtitle(2);
   }

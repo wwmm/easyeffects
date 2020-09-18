@@ -1,15 +1,14 @@
 #ifndef MULTIBAND_GATE_UI_HPP
 #define MULTIBAND_GATE_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
  public:
-  MultibandGateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  MultibandGateUi(BaseObjectType* cobject,
+                  const Glib::RefPtr<Gtk::Builder>& builder,
+                  const std::string& schema,
+                  const std::string& schema_path);
   MultibandGateUi(const MultibandGateUi&) = delete;
   auto operator=(const MultibandGateUi&) -> MultibandGateUi& = delete;
   MultibandGateUi(const MultibandGateUi&&) = delete;
@@ -25,6 +24,8 @@ class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
   void on_new_gating1(double value);
   void on_new_gating2(double value);
   void on_new_gating3(double value);
+
+  void reset() override;
 
  private:
   Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;

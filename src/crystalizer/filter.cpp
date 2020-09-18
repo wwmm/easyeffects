@@ -78,12 +78,12 @@ void Filter::create_bandpass_kernel(const float& rate,
 }
 
 void Filter::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1) / 2;
+  uint M = (c.size() + 1u) / 2u;
 
-  for (uint n = 0; n < c.size(); n++) {
+  for (uint n = 0u; n < c.size(); n++) {
     c[n] = 0.0f;
 
-    for (uint m = 0; m < M; m++) {
+    for (uint m = 0u; m < M; m++) {
       if (n > m && n - m < M) {
         c[n] += a[n - m] * b[m];
       }
@@ -125,8 +125,8 @@ void Filter::create_bandpass(const int& nsamples,
 void Filter::init_zita(const int& num_samples) {
   bool failed = false;
   float density = 0.0f;
-  int ret;
-  unsigned int options = 0;
+  int ret = 0;
+  unsigned int options = 0u;
 
   nsamples = num_samples;
 

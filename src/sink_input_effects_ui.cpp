@@ -29,33 +29,71 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   auto b_autogain = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/autogain.glade");
   auto b_delay = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/delay.glade");
 
-  b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.sinkinputs.limiter");
-  b_compressor->get_widget_derived("widgets_grid", compressor_ui, "com.github.wwmm.pulseeffects.sinkinputs.compressor");
-  b_filter->get_widget_derived("widgets_grid", filter_ui, "com.github.wwmm.pulseeffects.sinkinputs.filter");
-  b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.sinkinputs.equalizer",
-                                  "com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel",
-                                  "com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel");
-  b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.sinkinputs.pitch");
-  b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.sinkinputs.reverb");
-  b_bass_enhancer->get_widget_derived("widgets_grid", bass_enhancer_ui,
-                                      "com.github.wwmm.pulseeffects.sinkinputs.bassenhancer");
-  b_exciter->get_widget_derived("widgets_grid", exciter_ui, "com.github.wwmm.pulseeffects.sinkinputs.exciter");
-  b_crossfeed->get_widget_derived("widgets_grid", crossfeed_ui, "com.github.wwmm.pulseeffects.sinkinputs.crossfeed");
-  b_maximizer->get_widget_derived("widgets_grid", maximizer_ui, "com.github.wwmm.pulseeffects.sinkinputs.maximizer");
+  b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
+                                "/com/github/wwmm/pulseeffects/sinkinputs/limiter/");
+
+  b_compressor->get_widget_derived("widgets_grid", compressor_ui, "com.github.wwmm.pulseeffects.compressor",
+                                   "/com/github/wwmm/pulseeffects/sinkinputs/compressor/");
+
+  b_filter->get_widget_derived("widgets_grid", filter_ui, "com.github.wwmm.pulseeffects.filter",
+                               "/com/github/wwmm/pulseeffects/sinkinputs/filter/");
+
+  b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.equalizer",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/",
+                                  "com.github.wwmm.pulseeffects.equalizer.channel",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/");
+
+  b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
+                              "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
+
+  b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.reverb",
+                               "/com/github/wwmm/pulseeffects/sinkinputs/reverb/");
+
+  b_bass_enhancer->get_widget_derived("widgets_grid", bass_enhancer_ui, "com.github.wwmm.pulseeffects.bassenhancer",
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
+
+  b_exciter->get_widget_derived("widgets_grid", exciter_ui, "com.github.wwmm.pulseeffects.exciter",
+                                "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
+
+  b_crossfeed->get_widget_derived("widgets_grid", crossfeed_ui, "com.github.wwmm.pulseeffects.crossfeed",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
+
+  b_maximizer->get_widget_derived("widgets_grid", maximizer_ui, "com.github.wwmm.pulseeffects.maximizer",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/");
+
   b_multiband_compressor->get_widget_derived("widgets_grid", multiband_compressor_ui,
-                                             "com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor");
-  b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.sinkinputs.loudness");
-  b_gate->get_widget_derived("widgets_grid", gate_ui, "com.github.wwmm.pulseeffects.sinkinputs.gate");
-  b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui,
-                                       "com.github.wwmm.pulseeffects.sinkinputs.multibandgate");
-  b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.sinkinputs.deesser");
-  b_stereo_tools->get_widget_derived("widgets_grid", stereo_tools_ui,
-                                     "com.github.wwmm.pulseeffects.sinkinputs.stereotools");
-  b_convolver->get_widget_derived("widgets_grid", convolver_ui, "com.github.wwmm.pulseeffects.sinkinputs.convolver");
-  b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui,
-                                    "com.github.wwmm.pulseeffects.sinkinputs.crystalizer");
-  b_autogain->get_widget_derived("widgets_grid", autogain_ui, "com.github.wwmm.pulseeffects.sinkinputs.autogain");
-  b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.sinkinputs.delay");
+                                             "com.github.wwmm.pulseeffects.multibandcompressor",
+                                             "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/");
+
+  b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.loudness",
+                                 "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
+
+  b_gate->get_widget_derived("widgets_grid", gate_ui, "com.github.wwmm.pulseeffects.gate",
+                             "/com/github/wwmm/pulseeffects/sinkinputs/gate/");
+
+  b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui, "com.github.wwmm.pulseeffects.multibandgate",
+                                       "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/");
+
+  b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
+                                "/com/github/wwmm/pulseeffects/sinkinputs/deesser/");
+
+  b_stereo_tools->get_widget_derived("widgets_grid", stereo_tools_ui, "com.github.wwmm.pulseeffects.stereotools",
+                                     "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/");
+
+  b_convolver->get_widget_derived("widgets_grid", convolver_ui, "com.github.wwmm.pulseeffects.convolver",
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/convolver/");
+
+  b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui, "com.github.wwmm.pulseeffects.crystalizer",
+                                    "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
+
+  b_autogain->get_widget_derived("widgets_grid", autogain_ui, "com.github.wwmm.pulseeffects.autogain",
+                                 "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
+
+  b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.delay",
+                              "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
+
+  // add to stack
 
   stack->add(*limiter_ui, limiter_ui->name);
   stack->add(*compressor_ui, compressor_ui->name);
@@ -101,6 +139,10 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(autogain_ui);
   add_to_listbox(delay_ui);
 
+  // show only speaker icon before "Application" label
+
+  app_output_icon->set_visible(true);
+
   level_meters_connections();
   up_down_connections();
 
@@ -133,7 +175,45 @@ auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_p
   return ui;
 }
 
+void SinkInputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
+  // Blocklist check
+  auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(app_info->name, PresetType::output);
+
+  if (forbidden_app) {
+    app_info->visible = BlocklistSettingsUi::get_blocklisted_apps_visibility();
+
+    if (!app_info->visible) {
+      return;
+    }
+  } else {
+    app_info->visible = true;
+  }
+
+  // Duplicate entry check
+  for (const auto& a : apps_list) {
+    if (a->app_info->index == app_info->index) {
+      // do not add the same app two times in the interface
+      return;
+    }
+  }
+
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
+
+  AppInfoUi* appui = nullptr;
+
+  builder->get_widget_derived("widgets_grid", appui, app_info, pm);
+
+  apps_box->add(*appui);
+
+  apps_list.emplace_back(appui);
+}
+
 void SinkInputEffectsUi::level_meters_connections() {
+  // global output level meter connection
+
+  connections.emplace_back(
+      sie->global_output_level.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_new_output_level_db)));
+
   // limiter level meters connections
 
   connections.emplace_back(

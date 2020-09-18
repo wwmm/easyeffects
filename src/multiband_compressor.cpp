@@ -1,18 +1,19 @@
 #include "multiband_compressor.hpp"
 #include <glibmm/main.h>
+#include <array>
 #include "util.hpp"
 
 namespace {
 
 void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompressor* l) {
-  auto post = g_settings_get_boolean(settings, key);
+  const auto post = g_settings_get_boolean(settings, key);
 
-  if (post != 0) {
+  if (post) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL;
-            float inR;
+            float inL = 0.0f;
+            float inR = 0.0f;
 
             g_object_get(l->multiband_compressor, "meter-inL", &inL, nullptr);
             g_object_get(l->multiband_compressor, "meter-inR", &inR, nullptr);
@@ -29,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL;
-            float outR;
+            float outL = 0.0f;
+            float outR = 0.0f;
 
             g_object_get(l->multiband_compressor, "meter-outL", &outL, nullptr);
             g_object_get(l->multiband_compressor, "meter-outR", &outR, nullptr);
@@ -47,7 +48,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output0_connection.connected()) {
       l->output0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output0", &output, nullptr);
 
@@ -61,7 +62,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output1_connection.connected()) {
       l->output1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output1", &output, nullptr);
 
@@ -75,7 +76,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output2_connection.connected()) {
       l->output2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output2", &output, nullptr);
 
@@ -89,7 +90,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->output3_connection.connected()) {
       l->output3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float output;
+            float output = 0.0f;
 
             g_object_get(l->multiband_compressor, "output3", &output, nullptr);
 
@@ -103,7 +104,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression0_connection.connected()) {
       l->compression0_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression0", &compression, nullptr);
 
@@ -117,7 +118,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression1_connection.connected()) {
       l->compression1_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression1", &compression, nullptr);
 
@@ -131,7 +132,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression2_connection.connected()) {
       l->compression2_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression2", &compression, nullptr);
 
@@ -145,7 +146,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
     if (!l->compression3_connection.connected()) {
       l->compression3_connection = Glib::signal_timeout().connect(
           [l]() {
-            float compression;
+            float compression = 0.0f;
 
             g_object_get(l->multiband_compressor, "compression3", &compression, nullptr);
 
@@ -170,20 +171,22 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
 
 }  // namespace
 
-MultibandCompressor::MultibandCompressor(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "multiband_compressor", schema) {
+MultibandCompressor::MultibandCompressor(const std::string& tag,
+                                         const std::string& schema,
+                                         const std::string& schema_path)
+    : PluginBase(tag, "multiband_compressor", schema, schema_path) {
   multiband_compressor = gst_element_factory_make("calf-sourceforge-net-plugins-MultibandCompressor", nullptr);
 
   if (is_installed(multiband_compressor)) {
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "multiband_compressor_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "multiband_compressor_audioconvert_out");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "multiband_compressor_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "multiband_compressor_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), audioconvert_in, multiband_compressor, audioconvert_out, nullptr);
 
     gst_element_link_many(audioconvert_in, multiband_compressor, audioconvert_out, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-    auto pad_src = gst_element_get_static_pad(audioconvert_out, "src");
+    auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
+    auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

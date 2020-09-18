@@ -129,14 +129,16 @@ static void gst_peadapter_set_property(GObject* object, guint prop_id, const GVa
   GstPeadapter* peadapter = GST_PEADAPTER(object);
 
   switch (prop_id) {
-    case PROP_BLOCKSIZE:
+    case PROP_BLOCKSIZE: {
       peadapter->blocksize = g_value_get_enum(value);
 
       gst_element_post_message(GST_ELEMENT_CAST(peadapter), gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
 
       break;
+    }
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+
       break;
   }
 }
@@ -227,7 +229,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEven
   gboolean ret = true;
 
   switch (GST_EVENT_TYPE(event)) {
-    case GST_EVENT_CAPS:
+    case GST_EVENT_CAPS: {
       GstCaps* caps;
       GstAudioInfo info;
 
@@ -243,7 +245,8 @@ static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEven
       ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
-    case GST_EVENT_FLUSH_START:
+    }
+    case GST_EVENT_FLUSH_START: {
       gst_peadapter_process(peadapter);
       gst_adapter_clear(peadapter->adapter);
 
@@ -252,7 +255,8 @@ static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEven
       ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
-    case GST_EVENT_EOS:
+    }
+    case GST_EVENT_EOS: {
       gst_peadapter_process(peadapter);
       gst_adapter_clear(peadapter->adapter);
 
@@ -261,6 +265,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEven
       ret = gst_pad_push_event(peadapter->srcpad, event);
 
       break;
+    }
     default:
       ret = gst_pad_push_event(peadapter->srcpad, event);
       break;
@@ -290,12 +295,13 @@ static GstStateChangeReturn gst_peadapter_change_state(GstElement* element, GstS
     return ret;
 
   switch (transition) {
-    case GST_STATE_CHANGE_PAUSED_TO_READY:
+    case GST_STATE_CHANGE_PAUSED_TO_READY: {
       gst_adapter_clear(peadapter->adapter);
 
       peadapter->inbuf_n_samples = -1;
 
       break;
+    }
     default:
       break;
   }
@@ -308,7 +314,7 @@ static gboolean gst_peadapter_src_query(GstPad* pad, GstObject* parent, GstQuery
   bool ret = true;
 
   switch (GST_QUERY_TYPE(query)) {
-    case GST_QUERY_LATENCY:
+    case GST_QUERY_LATENCY: {
       if (peadapter->rate > 0) {
         ret = gst_pad_peer_query(peadapter->sinkpad, query);
 
@@ -345,6 +351,7 @@ static gboolean gst_peadapter_src_query(GstPad* pad, GstObject* parent, GstQuery
       }
 
       break;
+    }
     default:
       /* just call the default handler */
       ret = gst_pad_query_default(pad, parent, query);

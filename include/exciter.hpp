@@ -5,7 +5,7 @@
 
 class Exciter : public PluginBase {
  public:
-  Exciter(const std::string& tag, const std::string& schema);
+  Exciter(const std::string& tag, const std::string& schema, const std::string& schema_path);
   Exciter(const Exciter&) = delete;
   auto operator=(const Exciter&) -> Exciter& = delete;
   Exciter(const Exciter&&) = delete;

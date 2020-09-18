@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema
-        id="com.github.wwmm.pulseeffects.spectrum"
-        path="/com/github/wwmm/pulseeffects/spectrum/">
+    <schema id="com.github.wwmm.pulseeffects.spectrum" path="/com/github/wwmm/pulseeffects/spectrum/">
         <key name="show" type="b">
             <default>true</default>
         </key>
@@ -13,11 +11,11 @@
             <default>true</default>
         </key>
         <key name="n-points" type="i">
-            <range min="2" max="1000"/>
+            <range min="2" max="1000" />
             <default>100</default>
         </key>
         <key name="line-width" type="d">
-            <range min="0.1" max="100.0"/>
+            <range min="0.1" max="100.0" />
             <default>2.0</default>
         </key>
         <key name="use-custom-color" type="b">
@@ -32,23 +30,26 @@
         <key name="gradient-color" type="ad">
             <default>[0.0,0.0,0.0,1.0]</default>
         </key>
+        <key name="color-axis-labels" type="ad">
+            <default>[1.0,1.0,1.0,1.0]</default>
+        </key>
         <key name="height" type="i">
-            <default>100</default>
-        </key>
-        <key name="scale" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
-        </key>
-        <key name="exponent" type="d">
-            <range min="0.0" max="10.0"/>
-            <default>1.0</default>
+            <default>120</default>
         </key>
         <key name="sampling-freq" type="i">
-            <range min="1" max="200"/>
+            <range min="1" max="200" />
             <default>10</default>
         </key>
         <key name="type" enum="com.github.wwmm.pulseeffects.spectrum.type.enum">
             <default>"Bars"</default>
+        </key>
+        <key name="minimum-frequency" type="i">
+            <range min="20" max="22000" />
+            <default>20</default>
+        </key>
+        <key name="maximum-frequency" type="i">
+            <range min="20" max="22000" />
+            <default>20000</default>
         </key>
     </schema>
 </schemalist>

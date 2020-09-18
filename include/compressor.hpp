@@ -5,7 +5,7 @@
 
 class Compressor : public PluginBase {
  public:
-  Compressor(const std::string& tag, const std::string& schema);
+  Compressor(const std::string& tag, const std::string& schema, const std::string& schema_path);
   Compressor(const Compressor&) = delete;
   auto operator=(const Compressor&) -> Compressor& = delete;
   Compressor(const Compressor&&) = delete;

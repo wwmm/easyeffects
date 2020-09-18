@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schemalist>
+    <schema id="com.github.wwmm.pulseeffects.autogain">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>true</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>true</default>
+        </key>
+        <key name="input-gain" type="d">
+            <range min="-20.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-20.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="target" type="d">
+            <range min="-100.0" max="0.0" />
+            <default>-23.0</default>
+        </key>
+        <key name="weight-m" type="i">
+            <range min="1" max="100" />
+            <default>1</default>
+        </key>
+        <key name="weight-s" type="i">
+            <range min="1" max="100" />
+            <default>1</default>
+        </key>
+        <key name="weight-i" type="i">
+            <range min="1" max="100" />
+            <default>1</default>
+        </key>
+        <key name="detect-silence" type="b">
+            <default>false</default>
+        </key>
+        <key name="reset" type="b">
+            <default>false</default>
+        </key>
+        <key name="use-geometric-mean" type="b">
+            <default>true</default>
+        </key>
+    </schema>
+</schemalist>

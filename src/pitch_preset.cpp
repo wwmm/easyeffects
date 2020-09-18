@@ -1,8 +1,10 @@
 #include "pitch_preset.hpp"
 
 PitchPreset::PitchPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.pitch")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.pitch")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.pitch",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.pitch",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/pitch/")) {}
 
 void PitchPreset::save(boost::property_tree::ptree& root,
                        const std::string& section,
@@ -26,7 +28,7 @@ void PitchPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".pitch.faster", settings->get_boolean("faster"));
 }
 
-void PitchPreset::load(boost::property_tree::ptree& root,
+void PitchPreset::load(const boost::property_tree::ptree& root,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".pitch.state");
@@ -49,17 +51,23 @@ void PitchPreset::load(boost::property_tree::ptree& root,
 }
 
 void PitchPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  } else {
-    save(root, "input", input_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void PitchPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
-  } else {
-    load(root, "input", input_settings);
+void PitchPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

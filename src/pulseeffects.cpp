@@ -6,7 +6,7 @@
 auto sigterm(void* data) -> bool {
   auto app = static_cast<Application*>(data);
 
-  for (auto w : app->get_windows()) {
+  for (const auto& w : app->get_windows()) {
     w->hide();
   }
 

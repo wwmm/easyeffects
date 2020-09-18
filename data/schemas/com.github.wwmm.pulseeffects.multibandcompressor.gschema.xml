@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
+        <value nick="LR4" value="0" />
+        <value nick="LR8" value="1" />
+    </enum>
+    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+        <value nick="RMS" value="0" />
+        <value nick="Peak" value="1" />
+    </enum>
+    <schema
+        id="com.github.wwmm.pulseeffects.multibandcompressor">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>true</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>true</default>
+        </key>
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="freq0" type="d">
+            <range min="10" max="20000"/>
+            <default>120</default>
+        </key>
+        <key name="freq1" type="d">
+            <range min="10" max="20000"/>
+            <default>1000</default>
+        </key>
+        <key name="freq2" type="d">
+            <range min="10" max="20000"/>
+            <default>6000</default>
+        </key>
+        <key
+            name="mode"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
+            <default>"LR8"</default>
+        </key>
+        <key name="threshold0" type="d">
+            <range min="-60.0" max="0"/>
+            <default>-12</default>
+        </key>
+        <key name="ratio0" type="d">
+            <range min="1" max="20"/>
+            <default>2</default>
+        </key>
+        <key name="attack0" type="d">
+            <range min="0.01" max="2000"/>
+            <default>150.0</default>
+        </key>
+        <key name="release0" type="d">
+            <range min="0.01" max="2000"/>
+            <default>300.0</default>
+        </key>
+        <key name="makeup0" type="d">
+            <range min="0" max="36"/>
+            <default>0.0</default>
+        </key>
+        <key name="knee0" type="d">
+            <range min="0" max="18"/>
+            <default>9</default>
+        </key>
+        <key
+            name="detection0"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="bypass0" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo0" type="b">
+            <default>false</default>
+        </key>
+        <key name="threshold1" type="d">
+            <range min="-60.0" max="0"/>
+            <default>-12</default>
+        </key>
+        <key name="ratio1" type="d">
+            <range min="1" max="20"/>
+            <default>2</default>
+        </key>
+        <key name="attack1" type="d">
+            <range min="0.01" max="2000"/>
+            <default>150.0</default>
+        </key>
+        <key name="release1" type="d">
+            <range min="0.01" max="2000"/>
+            <default>300.0</default>
+        </key>
+        <key name="makeup1" type="d">
+            <range min="0" max="36"/>
+            <default>0.0</default>
+        </key>
+        <key name="knee1" type="d">
+            <range min="0" max="18"/>
+            <default>9</default>
+        </key>
+        <key
+            name="detection1"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="bypass1" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo1" type="b">
+            <default>false</default>
+        </key>
+        <key name="threshold2" type="d">
+            <range min="-60.0" max="0"/>
+            <default>-12</default>
+        </key>
+        <key name="ratio2" type="d">
+            <range min="1" max="20"/>
+            <default>2</default>
+        </key>
+        <key name="attack2" type="d">
+            <range min="0.01" max="2000"/>
+            <default>150.0</default>
+        </key>
+        <key name="release2" type="d">
+            <range min="0.01" max="2000"/>
+            <default>300.0</default>
+        </key>
+        <key name="makeup2" type="d">
+            <range min="0" max="36"/>
+            <default>0.0</default>
+        </key>
+        <key name="knee2" type="d">
+            <range min="0" max="18"/>
+            <default>9</default>
+        </key>
+        <key
+            name="detection2"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="bypass2" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo2" type="b">
+            <default>false</default>
+        </key>
+        <key name="threshold3" type="d">
+            <range min="-60.0" max="0"/>
+            <default>-12</default>
+        </key>
+        <key name="ratio3" type="d">
+            <range min="1" max="20"/>
+            <default>2</default>
+        </key>
+        <key name="attack3" type="d">
+            <range min="0.01" max="2000"/>
+            <default>150.0</default>
+        </key>
+        <key name="release3" type="d">
+            <range min="0.01" max="2000"/>
+            <default>300.0</default>
+        </key>
+        <key name="makeup3" type="d">
+            <range min="0" max="36"/>
+            <default>0.0</default>
+        </key>
+        <key name="knee3" type="d">
+            <range min="0" max="18"/>
+            <default>9</default>
+        </key>
+        <key
+            name="detection3"
+            enum="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
+            <default>"RMS"</default>
+        </key>
+        <key name="bypass3" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo3" type="b">
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>

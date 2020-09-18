@@ -4,7 +4,7 @@
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
@@ -16,17 +16,19 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("RMS");
+  switch (v) {
+    case 0: return g_variant_new_string("RMS");
+
+    case 1: return g_variant_new_string("Peak");
+
+    default: return g_variant_new_string("RMS");
   }
-
-  return g_variant_new_string("Peak");
 }
 
 auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Average") == 0) {
     g_value_set_int(value, 0);
@@ -38,19 +40,24 @@ auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_dat
 }
 
 auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Average");
+  switch (v) {
+    case 0: return g_variant_new_string("Average");
+
+    case 1: return g_variant_new_string("Maximum");
+
+    default: return g_variant_new_string("Average");
   }
-
-  return g_variant_new_string("Maximum");
 }
 
 }  // namespace
 
-GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+GateUi::GateUi(BaseObjectType* cobject,
+               const Glib::RefPtr<Gtk::Builder>& builder,
+               const std::string& schema,
+               const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "gate";
 
   // loading glade widgets
@@ -59,9 +66,11 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
   builder->get_widget("stereo_link", stereo_link);
   builder->get_widget("gating", gating);
   builder->get_widget("gating_label", gating_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "attack", attack);
   get_object(builder, "knee", knee);
+  get_object(builder, "input", input);
   get_object(builder, "makeup", makeup);
   get_object(builder, "range", range);
   get_object(builder, "ratio", ratio);
@@ -75,6 +84,7 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("attack", attack.get(), "value", flag);
   settings->bind("knee", knee.get(), "value", flag);
+  settings->bind("input", input.get(), "value", flag);
   settings->bind("makeup", makeup.get(), "value", flag);
   settings->bind("range", range.get(), "value", flag);
   settings->bind("ratio", ratio.get(), "value", flag);
@@ -86,14 +96,47 @@ GateUi::GateUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builde
 
   g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 GateUi::~GateUi() {
   util::debug(name + " ui destroyed");
 }
 
-void GateUi::on_new_gating(double value) {
-  gating->set_value(1 - value);
+void GateUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
 
-  gating_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+    update_default_string_key(settings, "detection", section + ".gate.detection");
+
+    update_default_string_key(settings, "stereo-link", section + ".gate.stereo-link");
+
+    update_default_key<double>(settings, "range", section + ".gate.range");
+
+    update_default_key<double>(settings, "attack", section + ".gate.attack");
+
+    update_default_key<double>(settings, "release", section + ".gate.release");
+
+    update_default_key<double>(settings, "threshold", section + ".gate.threshold");
+
+    update_default_key<double>(settings, "ratio", section + ".gate.ratio");
+
+    update_default_key<double>(settings, "knee", section + ".gate.knee");
+
+    update_default_key<double>(settings, "input", section + ".gate.input");
+
+    update_default_key<double>(settings, "makeup", section + ".gate.makeup");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
+}
+
+void GateUi::on_new_gating(double value) {
+  gating->set_value(1.0 - value);
+
+  gating_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

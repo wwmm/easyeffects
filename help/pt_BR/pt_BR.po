@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2019-11-28 14:06-0300\n"
+"POT-Creation-Date: 2020-08-24 16:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -111,9 +111,9 @@ msgid "Mute the original signal and listen to the harmonics exclusively."
 msgstr "Silenciar o sinal original e escutar exclusivamente aos harmônicos."
 
 #. (itstool) path: section/title
-#: C/bassenhancer.page:78 C/compressor.page:211 C/deesser.page:111
+#: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
-#: C/limiter.page:82 C/loudness.page:44 C/multibandcompressor.page:128
+#: C/limiter.page:82 C/loudness.page:65 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:76
@@ -390,6 +390,84 @@ msgstr "Lookahead"
 msgid "Look-ahead time of the sidechain relative to the input signal."
 msgstr "Tempo de antecipação da cadeia lateral em relação ao sinal de entrada."
 
+#. (itstool) path: section/title
+#: C/compressor.page:211
+msgid "Advanced"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:215
+msgid "Relative Release Threshold"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/compressor.page:217
+msgid ""
+"Relative to the Attack Threshold that sets up the threshold of Release Time."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:223
+#, fuzzy
+msgid "Boost Threshold"
+msgstr "Limiar"
+
+#. (itstool) path: item/p
+#: C/compressor.page:225
+msgid ""
+"Related to upward compression mode only. It defines the threshold below "
+"which the constant amplification will be applied to the input signal. This "
+"prevents the compressor from applying infinite amplification to very quiet "
+"signals."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:233
+#, fuzzy
+msgid "High-pass Filter Mode"
+msgstr "Filtro Passa-Alta"
+
+#. (itstool) path: item/p
+#: C/compressor.page:235
+msgid "Sets the type of the high-pass filter applied to sidechain signal."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/compressor.page:241
+#, fuzzy
+msgid "High-pass Frequency"
+msgstr "Amortecimento de Alta Frequência"
+
+#. (itstool) path: item/p
+#: C/compressor.page:243
+#, fuzzy
+msgid "Sets the cut-off frequency of the high-pass filter."
+msgstr "A frequência central ou de corte do filtro."
+
+#. (itstool) path: title/em
+#: C/compressor.page:249
+#, fuzzy
+msgid "Low-pass Filter Mode"
+msgstr "Frequência de corte do filtro passa baixas."
+
+#. (itstool) path: item/p
+#: C/compressor.page:251
+#, fuzzy
+msgid "Sets the type of the low-pass filter applied to sidechain signal."
+msgstr "Permite ouvir o sinal de sidechain processado."
+
+#. (itstool) path: title/em
+#: C/compressor.page:257
+#, fuzzy
+msgid "Low-pass Frequency"
+msgstr "Frequência de corte do filtro passa baixas."
+
+#. (itstool) path: item/p
+#: C/compressor.page:259
+#, fuzzy
+msgid "Sets the cut-off frequency of the low-pass filter."
+msgstr "A frequência central ou de corte do filtro."
+
 #. (itstool) path: page/title
 #: C/deesser.page:9
 msgid "Deesser"
@@ -419,14 +497,14 @@ msgstr ""
 "A reação do deesser. Valores maiores não afetarão picos realmente curtos."
 
 #. (itstool) path: item/p
-#: C/deesser.page:28 C/gate.page:40 C/multibandcompressor.page:40
-#: C/multibandgate.page:48
+#: C/deesser.page:28 C/multibandcompressor.page:40 C/multibandgate.page:48
 msgid "If a signal rises above this level it will affect the gain reduction."
 msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
 #: C/deesser.page:50
-msgid "Split"
+#, fuzzy
+msgid "F1 Split"
 msgstr "Separado"
 
 #. (itstool) path: item/p
@@ -439,8 +517,9 @@ msgstr ""
 "redução de ganho(e em modo separado eles também serão afetados pela redução)."
 
 #. (itstool) path: title/em
-#: C/deesser.page:59 C/autogain.page:70
-msgid "Gain"
+#: C/deesser.page:59
+#, fuzzy
+msgid "F1 Gain"
 msgstr "Ganho"
 
 #. (itstool) path: item/p
@@ -455,7 +534,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:68
-msgid "Peak"
+#, fuzzy
+msgid "F2 Peak"
 msgstr "Pico"
 
 #. (itstool) path: item/p
@@ -469,7 +549,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:77
-msgid "Level"
+#, fuzzy
+msgid "F2 Level"
 msgstr "Nível"
 
 #. (itstool) path: item/p
@@ -481,7 +562,8 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/deesser.page:85
-msgid "Peak Q"
+#, fuzzy
+msgid "F2 Peak Q"
 msgstr "Pico Q"
 
 #. (itstool) path: item/p
@@ -633,22 +715,30 @@ msgid "PulseEffects uses the gate developed by Calf Studio."
 msgstr "PulseEffects usa o gate desenvolvido por Calf Studio."
 
 #. (itstool) path: item/p
-#: C/gate.page:22 C/multibandcompressor.page:22 C/multibandgate.page:22
+#: C/gate.page:22
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to rise above the threshold before "
-"gain reduction starts."
+"gain reduction stops."
 msgstr ""
 "Quantidade de milissegundos que o sinal deve passar acima do limiar para que "
 "a redução de ganho comece."
 
 #. (itstool) path: item/p
-#: C/gate.page:31 C/multibandcompressor.page:31 C/multibandgate.page:31
+#: C/gate.page:31
+#, fuzzy
 msgid ""
 "Amount of milliseconds the signal has to fall below the threshold before the "
-"reduction is decreased again."
+"reduction is increased again."
 msgstr ""
 "Quantidade de milissegundos que o sinal tem que passar abaixo do limar antes "
 "que a magnitude da redução seja novamente diminuída."
+
+#. (itstool) path: item/p
+#: C/gate.page:40
+#, fuzzy
+msgid "If a signal rises above this level the gain reduction is released."
+msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho."
 
 #. (itstool) path: title/em
 #: C/gate.page:70
@@ -854,56 +944,81 @@ msgstr ""
 "liberação mais altos."
 
 #. (itstool) path: page/title
-#. (itstool) path: title/em
-#: C/loudness.page:9 C/loudness.page:19 C/autogain.page:58
-msgid "Loudness"
-msgstr "Sonoridade"
+#: C/loudness.page:9
+msgid "Loudness Compensator"
+msgstr ""
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
 msgid ""
-"PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to "
-"low frequencies when listening at low volume. This plug-in is based on the "
-"Stevens-Davis equal loudness contours and allows the bass level to be "
-"adjusted to simulate or correct for this effect."
+"PulseEffects uses the loudness compensator from Linux Studio Plugins which "
+"applies equal loudness contour corrections to the input signal. This is a "
+"measure of sound pressure level (SPL), over the frequency spectrum, for "
+"which a listener perceives a constant loudness when presented with pure "
+"steady tones."
 msgstr ""
-"PulseEffects usa o plugin de sonoridade do MDA.LV2. O ouvido é menos "
-"sensível às baixas frequências quando escuta com volume baixo. Este plugin é "
-"baseado nos contornos de volume iguais do Stevens-Davis e permite que o "
-"nível de graves seja ajustado para simular ou corrigir este efeito."
-
-#. (itstool) path: item/p
-#: C/loudness.page:21
-msgid ""
-"Source level relative to listening level (based on a 100 dB SPL maximum "
-"level)."
-msgstr ""
-"Nível de origem relativo ao nível de audição (com base em um nível máximo de "
-"100 dB SPL)."
 
 #. (itstool) path: title/em
-#: C/loudness.page:27
+#: C/loudness.page:20
+#, fuzzy
+msgid "Input"
+msgstr "Ganho de Entrada"
+
+#. (itstool) path: item/p
+#: C/loudness.page:22
+msgid ""
+"The input gain settings, allows to adjust the level of the input signal to "
+"the desired level."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:29
 msgid "Output"
 msgstr "Saída"
 
 #. (itstool) path: item/p
-#: C/loudness.page:29
-msgid "Change output level."
-msgstr "Mudar nível de saída."
+#: C/loudness.page:31
+msgid ""
+"The output volume of the signal with applied equal loudness contour, "
+"controls the loudness of the 1 kHz pure sine wave."
+msgstr ""
 
 #. (itstool) path: title/em
-#: C/loudness.page:35
-msgid "Link"
-msgstr "Elo"
+#: C/loudness.page:38
+msgid "Standard"
+msgstr ""
 
 #. (itstool) path: item/p
-#: C/loudness.page:37
-msgid ""
-"Automatically adjusts Output to maintain a consistent tonal balance at all "
-"levels."
+#: C/loudness.page:40
+msgid "Allows to select different equal loudness contour standards."
 msgstr ""
-"Ajusta automaticamente a saída para manter um equilíbrio tonal consistente "
-"em todos os níveis."
+
+#. (itstool) path: title/em
+#: C/loudness.page:46
+#, fuzzy
+msgid "FFT Size"
+msgstr "Tamanho do Quadro"
+
+#. (itstool) path: item/p
+#: C/loudness.page:48
+msgid ""
+"Allows to select size of the fast Fourier transform frame used for the "
+"processing. The larger FFT frame is, the more precize the curve is "
+"approximated and the more latency the plugin introduces"
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/loudness.page:56
+#, fuzzy
+msgid "Reference Signal"
+msgstr "Referências"
+
+#. (itstool) path: item/p
+#: C/loudness.page:58
+msgid ""
+"Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency "
+"for callibration purposes."
+msgstr ""
 
 #. (itstool) path: page/title
 #: C/multibandcompressor.page:9
@@ -926,6 +1041,24 @@ msgstr ""
 msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
 msgstr ""
 "PulseEffects usa o compressor multi bandas desenvolvido por Calf Studio."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:22 C/multibandgate.page:22
+msgid ""
+"Amount of milliseconds the signal has to rise above the threshold before "
+"gain reduction starts."
+msgstr ""
+"Quantidade de milissegundos que o sinal deve passar acima do limiar para que "
+"a redução de ganho comece."
+
+#. (itstool) path: item/p
+#: C/multibandcompressor.page:31 C/multibandgate.page:31
+msgid ""
+"Amount of milliseconds the signal has to fall below the threshold before the "
+"reduction is decreased again."
+msgstr ""
+"Quantidade de milissegundos que o sinal tem que passar abaixo do limar antes "
+"que a magnitude da redução seja novamente diminuída."
 
 #. (itstool) path: title/em
 #: C/multibandcompressor.page:70 C/multibandgate.page:78 C/crystalizer.page:37
@@ -2505,10 +2638,12 @@ msgstr "Aviso de Saturação"
 
 #. (itstool) path: page/p
 #: C/saturated.page:12
+#, fuzzy
 msgid ""
-"If the audio signal arriving at the plugin input is too high very unpleasent "
+"If the audio signal coming out from the pipeline is too high very unpleasent "
 "noises will be produced. In case this happens the warning in the image above "
-"is shown so that the user can reduce the audio level."
+"is shown so that the user can reduce the audio level using the limiter or "
+"the maximizer."
 msgstr ""
 "Se o sinal de áudio que chega à entrada do plugin estiver muito alto, ruídos "
 "muito desagradáveis serão produzidos. Caso isso aconteça, o aviso na imagem "
@@ -2633,6 +2768,11 @@ msgstr ""
 "momentâneo estiver abaixo deste limite as modificações no ganho de saída "
 "serão desativadas."
 
+#. (itstool) path: title/em
+#: C/autogain.page:58
+msgid "Loudness"
+msgstr "Sonoridade"
+
 #. (itstool) path: item/p
 #: C/autogain.page:60
 msgid ""
@@ -2653,6 +2793,11 @@ msgid "Loudness range. Indicates how large is the material dynamic range."
 msgstr ""
 "Intervalo de sonoridade. Indica quão grande é a faixa dinâmica do material."
 
+#. (itstool) path: title/em
+#: C/autogain.page:70
+msgid "Gain"
+msgstr "Ganho"
+
 #. (itstool) path: item/p
 #: C/autogain.page:72
 msgid ""
@@ -2663,18 +2808,18 @@ msgstr ""
 "de correção para trazer sua sonoridade para o valor alvo."
 
 #. (itstool) path: page/title
-#: C/blacklist.page:9
-msgid "Applications Blacklist"
+#: C/blocklist.page:9
+msgid "Applications Blocklist"
 msgstr "Lista Negra de Aplicativos"
 
 #. (itstool) path: page/p
-#: C/blacklist.page:11
+#: C/blocklist.page:11
 msgid ""
 "In the settings menu there is an option that allows the user to apply "
 "effects to all applications without the need to switch each one on "
 "individually. But there are cases where the user wants a specific "
 "application to be excluded from the \"Enable All\" functionality. This can "
-"be done by using a blacklist. Just add the application name exactly as it is "
+"be done by using a blocklist. Just add the application name exactly as it is "
 "shown in the \"Applications\" entry."
 msgstr ""
 "No menu de configurações há uma opção que permite ao usuário aplicar efeitos "
@@ -3459,316 +3604,3 @@ msgid ""
 "is not Apple, Lenovo or Dell offering high quality Dolby Theatre drivers for "
 "your particular machine."
 msgstr ""
-
-#~ msgid "Stop the attenuation after this amount of seconds."
-#~ msgstr "Pare a atenuação após esta quantidade de segundos."
-
-#~ msgid ""
-#~ "A maximizer is similar to a limiter. It attenuates peaks above the "
-#~ "limit(ceiling in our case) but it also boosts peaks that are between the "
-#~ "limit and the threshold."
-#~ msgstr ""
-#~ "Um maximizador é semelhante a um limitador. Ele atenua os picos acima do "
-#~ "limite (teto em nosso caso), mas também aumenta os picos que estão entre "
-#~ "o limite e o limite."
-
-#~ msgid ""
-#~ "PulseEffects crystalizer is a port of the FFMPEG crystalizer code to the "
-#~ "GStreamer framework. We only added on top of it the possibility of "
-#~ "applying different intensities for different frequency ranges. This "
-#~ "plugin can be used to add dynamic range to songs that were overly "
-#~ "compressed"
-#~ msgstr ""
-#~ "O crystalizer do PulseEffects é uma adaptação do código do cristalizador "
-#~ "do FFMPEG para a estrutura do GStreamer. Adicionamos apenas a "
-#~ "possibilidade de aplicar diferentes intensidades para diferentes faixas "
-#~ "de frequência. Este plugin pode ser usado para adicionar intervalo "
-#~ "dinâmico a músicas que foram excessivamente compactadas"
-
-#~ msgid "Band Splitting"
-#~ msgstr "Separação de Bandas"
-
-#~ msgid "Split 0/1"
-#~ msgstr "Disivão 0/1"
-
-#~ msgid "Frequency that splits the bands 0 and 1."
-#~ msgstr "Frequência que separa as bandas 0 e 1."
-
-#~ msgid "Frequency that splits the bands 1 and 2."
-#~ msgstr "Frequência que separa as bandas 1 e 2."
-
-#~ msgid "Frequency that splits the bands 2 and 3."
-#~ msgstr "Frequência que separa as bandas 2 e 3."
-
-#~ msgid "Frequency that splits the bands 3 and 4."
-#~ msgstr "Frequência que separa as bandas 3 e 4."
-
-#~ msgid "Frequency that splits the mid and high bands."
-#~ msgstr "Frequência que separa as bandas média e alta."
-
-#~ msgid "Intensity of the effect applied to frequencies below 3000 Hz."
-#~ msgstr "Intensidade do efeito aplicado às frequências abaixo de 3000 Hz."
-
-#~ msgid ""
-#~ "Intensity of the effect applied to frequencies between 3000 Hz and 10000 "
-#~ "Hz."
-#~ msgstr ""
-#~ "Intensidade do efeito aplicado às frequências entre 3000 Hz e 10000 Hz."
-
-#~ msgid "Intensity of the effect applied to frequencies above 10000 Hz."
-#~ msgstr "Intensidade do efeito aplicado às frequências acima de 10000 Hz."
-
-#~ msgid ""
-#~ "Downward decreases signals above the threshold. Upwards increases the "
-#~ "signal below the threshold."
-#~ msgstr ""
-#~ "Diminui para baixo os sinais acima do limiar. Upwards aumenta o sinal "
-#~ "abaixo do limite."
-
-#~ msgid ""
-#~ "Choose if the average level between both channels or the louder channel "
-#~ "affects the reduction."
-#~ msgstr ""
-#~ "Escolha se a redução será afetada pelo nível médio entre os canais ou "
-#~ "pelo canal mais alto."
-
-#~ msgid ""
-#~ "Choose if the compressor should take the signal peak for detection or the "
-#~ "RMS value (it is smoother)."
-#~ msgstr ""
-#~ "Escolha se o compressor deve usar o pico do sinal para detecção ou o "
-#~ "valor RMS (é mais suave)"
-
-#~ msgid "Mix"
-#~ msgstr "Mistura"
-
-#~ msgid "Filter Type"
-#~ msgstr "Tipo de Filtro"
-
-#~ msgid ""
-#~ "Choose between Peak, Low Shelf and High Shelf. Usually you would set the "
-#~ "band with the lowest frequency to Low Shelf, the one with the highest "
-#~ "frequency to High Shelf and the others to Peak."
-#~ msgstr ""
-#~ "Escolha entre Peak, Low Shelf e High Shelf. Normalmente você ajustaria a "
-#~ "banda com a menor frequência para Low Shelf, aquela com a maior "
-#~ "frequência para High Shelf e as outras para Pico."
-
-#~ msgid "Enable All Applications"
-#~ msgstr "Habilitar Todos os Aplicativos"
-
-#~ msgid "Q"
-#~ msgstr "Q"
-
-#~ msgid "Limiter and Auto Volume"
-#~ msgstr "Limitador e Volume Automático"
-
-#~ msgid ""
-#~ "PulseEffects uses the limiter developed by Calf Studio. We only attached "
-#~ "to it a routine to automatically set its input gain. This is what we call "
-#~ "auto volume."
-#~ msgstr ""
-#~ "PulseEffects usa o limitador desenvolvido por Calf Studio. Nós apenas "
-#~ "anexamos a ele uma rotina para definir automaticamente seu ganho de "
-#~ "entrada. Isso é o que chamamos de volume automático."
-
-#~ msgid "Auto Volume"
-#~ msgstr "Volume Automático"
-
-#~ msgid "The amount of time taken to measure the maximum audio peak."
-#~ msgstr "O tempo gasto para medir o pico máximo de áudio."
-
-#~ msgid "The desired peak value."
-#~ msgstr "O valor de pico desejado."
-
-#~ msgid "Tolerance"
-#~ msgstr "Tolerância"
-
-#~ msgid ""
-#~ "Maximum tolerated difference between the target level and the current "
-#~ "peak level."
-#~ msgstr ""
-#~ "Diferença máxima tolerada entre o nível de destino e o nível de pico "
-#~ "atual."
-
-#~ msgid "Auto volume works only when the audio level is above the threshold."
-#~ msgstr ""
-#~ "O volume automático só funciona quando o nível de áudio está acima do "
-#~ "limite."
-
-#~ msgid "Time window used to measure the loudness level."
-#~ msgstr "Janela de tempo utilizada para medir o nível de sonoridade."
-
-#~ msgid "~/.config/autostart"
-#~ msgstr "~/.config/autostart"
-
-#~ msgid ""
-#~ "PulseEffects uses the bass enhancer developed by <link href=\"https://"
-#~ "calf-studio-gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o intensificador de graves desenvolvido por <link href "
-#~ "= \"https://calf-studio-gear.org\", seu: withinText = \"yes\"> Calf "
-#~ "Studio </ link>."
-
-#~ msgid "Calf Studio"
-#~ msgstr "Estúdio Calf"
-
-#~ msgid ""
-#~ "PulseEffects uses the exciter developed by <link href=\"https://calf-"
-#~ "studio-gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o excitador desenvolvido por <link href = \"https://"
-#~ "calf-studio-gear.org\", seu: withinText = \"yes\"> Calf Studio </ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the gate developed by <link href=\"https://calf-studio-"
-#~ "gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o gate desenvolvido por <link href = \"https://calf-"
-#~ "studio-gear.org\" seu: withinText = \"yes\"> Calf Studio </ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the multiband compressor developed by <link href="
-#~ "\"https://calf-studio-gear.org\" its:withinText=\"yes\">Calf Studio</"
-#~ "link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o compressor multibandas desenvolvido por <link href = "
-#~ "\"https://calf-studio-gear.org\" seu: withinText = \"yes\"> Calf Studio "
-#~ "</ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the multiband gate developed by <link href=\"https://"
-#~ "calf-studio-gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o gate multibandas desenvolvido por <link href = "
-#~ "\"https://calf-studio-gear.org\", seu: withinText = \"yes\"> Calf Studio "
-#~ "</ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the reverberation developed by <link href=\"https://"
-#~ "calf-studio-gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa a reverberação desenvolvida por <link href = \"https://"
-#~ "calf-studio-gear.org\" seu: withinText = \"yes\"> Calf Studio </ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the stereo tools developed by <link href=\"https://calf-"
-#~ "studio-gear.org\" its:withinText=\"yes\">Calf Studio</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa as ferramentas de estéreo desenvolvidas por <link href "
-#~ "= \"https://calf-studio-gear.org\" seu: withinText = \"yes\"> Calf Studio "
-#~ "</ link>."
-
-#~ msgid ""
-#~ "PulseEffects uses the maximizer from <link href=\"http://www.zamaudio.com"
-#~ "\" its:withinText=\"yes\">ZamAudio</link>."
-#~ msgstr ""
-#~ "PulseEffects usa o maximizador de <link href = \"http://www.zamaudio.com"
-#~ "\" its: withinText = \"yes\"> ZamAudio </ link>."
-
-#~ msgid "GStreamer"
-#~ msgstr "GStreamer"
-
-#~ msgid ""
-#~ "PulseEffects uses the pitch shifter from <link href=\"https://"
-#~ "breakfastquay.com/rubberband/\" its:withinText=\"yes\">RubberBand</link>."
-#~ msgstr ""
-#~ "O PulseEffects usa o plugin de deslocamento de altura da <link href = "
-#~ "\"https://breakfastquay.com/rubberband/\" its: withinText = \"yes\"> "
-#~ "RubberBand </ link>."
-
-#~ msgid ""
-#~ "PulseEffects crystalizer is a port of the <link href=\"https://github.com/"
-#~ "FFmpeg/FFmpeg/blob/master/libavfilter/af_crystalizer.c\">FFMPEG "
-#~ "crystalizer</link> code to the GStreamer framework. This plugin can be "
-#~ "used to add <link href=\"https://en.wikipedia.org/wiki/Dynamic_range\" "
-#~ "its:withinText=\"yes\">dynamic range</link> to songs that were overly "
-#~ "compressed"
-#~ msgstr ""
-#~ "O crystalizador do PulseEffects é uma adaptação do código do <link href = "
-#~ "\"https://github.com/FFmpeg/FFmpeg/blob/master/libavfilter/af_crystalizer."
-#~ "c\"> cristalizador do FFMPEG </ link> para o framework GStreamer. Este "
-#~ "plug-in pode ser usado para adicionar <link href = \"https://en.wikipedia."
-#~ "org/wiki/Dynamic_range\" seu: withinText = \"yes\"> intervalo dinâmico </ "
-#~ "link> a músicas que foram excessivamente compactadas"
-
-#~ msgid "ZamAudio"
-#~ msgstr "ZamAudio"
-
-#~ msgid "RubberBand"
-#~ msgstr "RubberBand"
-
-#~ msgid "MDA.LV2"
-#~ msgstr "MDA.LV2"
-
-#~ msgid "Stereo Enhancer"
-#~ msgstr "Melhorador de Stereo"
-
-#~ msgid ""
-#~ "The precedence effect (popularly called Haas Effects) is a binaural "
-#~ "psychoacoustic effect. When a sound is followed by another sound "
-#~ "separated by a sufficiently short time delay listeners perceive a single "
-#~ "auditory event. Its perceived spatial location is dominated by the "
-#~ "location of the first-arriving sound"
-#~ msgstr ""
-#~ "O efeito de precedência (popularmente chamado de efeito Haas) é um efeito "
-#~ "psicoacústico binaural. Quando um som é seguido por outro som separado "
-#~ "por um tempo suficientemente curto, os ouvintes percebem um único evento "
-#~ "auditivo. Sua localização espacial percebida é dominada pela localização "
-#~ "do primeiro som que chega"
-
-#~ msgid ""
-#~ "PulseEffects uses the stereo enhancer developed by <_:link-1/>. It uses "
-#~ "Haas effect to improve the stereo signal."
-#~ msgstr ""
-#~ "PulseEffects usa o melhorador de stereo desenvolvido por <_:link-1/>. Ele "
-#~ "usa efeito Haas para melhorar o sinal stereo."
-
-#~ msgid "Choose how the middle signal is generated."
-#~ msgstr "Escolha como o sinal do meio é gerado."
-
-#~ msgid "If a signal rises above this level it will affect the gain reduction"
-#~ msgstr "Se um sinal subir acima deste nível ele afetará a redução de ganho"
-
-#~ msgid ""
-#~ "Set a ratio about which the signal is reduced. 1:2 means that if the "
-#~ "level rises 4dB above the threshold, it will be only 2dB above after the "
-#~ "reduction."
-#~ msgstr ""
-#~ "Configura uma razão sobre a qual o sinal é reduzido. 1:2 significa que se "
-#~ "o nível subir 4dB acima do limiar ele estará apenas 2dB acima após a "
-#~ "redução."
-
-#~ msgid ""
-#~ "Curve the sharp knee around the threshold to enter gain reduction more "
-#~ "softly"
-#~ msgstr ""
-#~ "Curva o joelho em torno do limiar para que a entrada na redução de ganho "
-#~ "seja mais suave"
-
-#, fuzzy
-#~ msgid "Level trim"
-#~ msgstr "Nível"
-
-#, fuzzy
-#~ msgid "<em style=\"strong\">Spectrum Color</em>"
-#~ msgstr "<em style=\"strong\">Harmônicos</em>"
-
-#~ msgid "<em style=\"strong\">Amount</em>"
-#~ msgstr "<em style=\"strong\">Quantidade</em>"
-
-#~ msgid "<em style=\"strong\">Floor(button)</em>"
-#~ msgstr "<em style=\"strong\">Piso(botão)</em>"
-
-#~ msgid "<em style=\"strong\">Floor(value)</em>"
-#~ msgstr "<em style=\"strong\">Piso(value)</em>"
-
-#~ msgid "<em style=\"strong\">Blend Harmonics</em>"
-#~ msgstr "<em style=\"strong\">Misturar Harmônicos</em>"
-
-#~ msgid "<em style=\"strong\">Ceiling(button)</em>"
-#~ msgstr "<em style=\"strong\">Piso(botão)</em>"
-
-#, fuzzy
-#~ msgid "<em style=\"strong\" its:withinText=\"yes\">Amount</em>"
-#~ msgstr "<em style=\"strong\">Quantidade</em>"

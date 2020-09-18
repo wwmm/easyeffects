@@ -1,0 +1,1 @@
+valgrind --suppressions=../../util/pulseaudio.supp --suppressions=../../util/gst.supp --leak-check=full --show-leak-kinds=definite

@@ -14,8 +14,8 @@ void update_effects_order(gpointer user_data) {
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
 
-  for (long unsigned int n = 1; n < l->plugins_order_old.size(); n++) {
-    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1]], l->plugins[l->plugins_order_old[n]]);
+  for (unsigned long int n = 1u; n < l->plugins_order_old.size(); n++) {
+    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1u]], l->plugins[l->plugins_order_old[n]]);
   }
 
   gst_element_unlink(l->plugins[l->plugins_order_old.back()], l->identity_out);
@@ -28,8 +28,8 @@ void update_effects_order(gpointer user_data) {
     util::debug(l->log_tag + "failed to link identity_in to " + l->plugins_order[0]);
   }
 
-  for (long unsigned int n = 1; n < l->plugins_order.size(); n++) {
-    auto p1_name = l->plugins_order[n - 1];
+  for (unsigned long int n = 1u; n < l->plugins_order.size(); n++) {
+    auto p1_name = l->plugins_order[n - 1u];
     auto p2_name = l->plugins_order[n];
 
     if (gst_element_link(l->plugins[p1_name], l->plugins[p2_name])) {
@@ -51,8 +51,8 @@ auto check_update(gpointer user_data) -> bool {
   auto l = static_cast<T>(user_data);
 
   bool update = false;
-  gchar* name;
-  GVariantIter* iter;
+  gchar* name = nullptr;
+  GVariantIter* iter = nullptr;
 
   g_settings_get(l->child_settings, "plugins", "as", &iter);
 
@@ -60,7 +60,7 @@ auto check_update(gpointer user_data) -> bool {
   l->plugins_order.clear();
 
   while (g_variant_iter_next(iter, "s", &name)) {
-    l->plugins_order.push_back(name);
+    l->plugins_order.emplace_back(name);
     g_free(name);
   }
 
@@ -77,7 +77,7 @@ auto check_update(gpointer user_data) -> bool {
   if (update) {
     std::string list;
 
-    for (auto name : l->plugins_order) {
+    for (const auto& name : l->plugins_order) {
       list += name + ",";
     }
 

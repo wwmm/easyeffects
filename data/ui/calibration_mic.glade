@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="time_window_adjustment">
     <property name="lower">1</property>
     <property name="upper">60</property>
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_time_window_value_changed" swapped="no"/>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="halign">center</property>
     <property name="valign">center</property>
-    <property name="margin_left">6</property>
-    <property name="margin_right">6</property>
+    <property name="margin_start">6</property>
+    <property name="margin_end">6</property>
     <property name="margin_top">6</property>
     <property name="margin_bottom">6</property>
     <property name="row_spacing">12</property>

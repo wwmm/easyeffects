@@ -2,6 +2,7 @@
 #define APP_INFO_UI_HPP
 
 #include <gtkmm/builder.h>
+#include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
@@ -23,11 +24,17 @@ class AppInfoUi : public Gtk::Grid {
   ~AppInfoUi() override;
 
   Gtk::Switch* enable = nullptr;
-  Gtk::Image* app_icon = nullptr;
-  Gtk::Label* app_name = nullptr;
-  Gtk::Scale* volume = nullptr;
+
   Gtk::ToggleButton* mute = nullptr;
+  Gtk::CheckButton* blocklist = nullptr;
+
+  Gtk::Scale* volume = nullptr;
+
+  Gtk::Image* app_icon = nullptr;
   Gtk::Image* mute_icon = nullptr;
+
+  Gtk::Label* app_name = nullptr;
+  Gtk::Label* media_name = nullptr;
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
   Gtk::Label* channels = nullptr;
@@ -43,11 +50,12 @@ class AppInfoUi : public Gtk::Grid {
  private:
   std::string log_tag = "app_info_ui: ";
 
-  bool running = true;
+  bool running = true, is_enabled = true, is_blocklisted = true, pre_bl_state = true;
 
   sigc::connection enable_connection;
   sigc::connection volume_connection;
   sigc::connection mute_connection;
+  sigc::connection blocklist_connection;
   sigc::connection timeout_connection;
 
   PulseManager* pm = nullptr;

@@ -1,8 +1,10 @@
 #include "multiband_compressor_preset.hpp"
 
 MultibandCompressorPreset::MultibandCompressorPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.multibandcompressor")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.multibandcompressor")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandcompressor",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.multibandcompressor",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/")) {}
 
 void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
                                      const std::string& section,
@@ -102,7 +104,7 @@ void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".multiband_compressor.highband.solo", settings->get_boolean("solo3"));
 }
 
-void MultibandCompressorPreset::load(boost::property_tree::ptree& root,
+void MultibandCompressorPreset::load(const boost::property_tree::ptree& root,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".multiband_compressor.state");
@@ -201,17 +203,23 @@ void MultibandCompressorPreset::load(boost::property_tree::ptree& root,
 }
 
 void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  } else {
-    save(root, "input", input_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void MultibandCompressorPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
-  } else {
-    load(root, "input", input_settings);
+void MultibandCompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

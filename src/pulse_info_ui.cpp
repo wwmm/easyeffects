@@ -81,7 +81,7 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 }
 
 PulseInfoUi::~PulseInfoUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
 
@@ -140,7 +140,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
   } else if (name == std::string("page_modules")) {
     auto children = listbox_modules->get_children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       listbox_modules->remove(*c);
     }
 
@@ -148,7 +148,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
   } else if (name == std::string("page_clients")) {
     auto children = listbox_clients->get_children();
 
-    for (auto c : children) {
+    for (const auto& c : children) {
       listbox_clients->remove(*c);
     }
 
@@ -172,7 +172,7 @@ void PulseInfoUi::get_pulse_conf() {
 
       boost::split(aux, line, boost::is_any_of("="));
 
-      if (aux.size() > 1) {
+      if (aux.size() > 1u) {
         auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
         Gtk::ListBoxRow* row;
@@ -191,7 +191,7 @@ void PulseInfoUi::get_pulse_conf() {
       } else {
         boost::split(aux, line, boost::is_any_of(":"));
 
-        if (aux.size() > 1) {
+        if (aux.size() > 1u) {
           std::string tmp = aux[1];
 
           boost::split(aux, tmp, boost::is_any_of("#"));

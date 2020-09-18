@@ -150,46 +150,76 @@ static void gst_pecrystalizer_class_init(GstPecrystalizerClass* klass) {
 
   /* define properties */
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("intensity-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("BAND " + std::to_string(n) + " INTENSITY").c_str());
+  std::string band_num;
 
-    if (name && nick) {
+  const std::string name_intensity = "intensity-band";
+  const std::string nick_band = "BAND ";
+  const std::string nick_intensity = " INTENSITY";
+
+  const char* const param_expansion = strdup(std::string("Expansion intensity").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_intensity).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_band).append(band_num).append(nick_intensity).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, n + 1,
-          g_param_spec_float(name, nick, "Expansion intensity", 0.0f, 40.0f, 1.0f,
+          g_param_spec_float(name, nick, param_expansion, 0.0f, 40.0f, 1.0f,
                              static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("mute-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("MUTE BAND " + std::to_string(n)).c_str());
+  const std::string name_mute = "mute-band";
+  const std::string nick_mute = "MUTE ";
 
-    if (name && nick) {
+  const char* const param_mute = strdup(std::string("mute band").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_mute).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_mute).append(nick_band).append(band_num).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, NBANDS + 1 + n,
-          g_param_spec_boolean(name, nick, "mute band", false,
+          g_param_spec_boolean(name, nick, param_mute, false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
-  for (int n = 0; n < NBANDS; n++) {
-    char* name = strdup(std::string("bypass-band" + std::to_string(n)).c_str());
-    char* nick = strdup(std::string("BYPASS BAND " + std::to_string(n)).c_str());
+  const std::string name_bypass = "bypass-band";
+  const std::string nick_bypass = "BYPASS ";
 
-    if (name && nick) {
+  const char* const param_bypass = strdup(std::string("bypass band").c_str());
+
+  for (int n = 0; n < NBANDS; n++) {
+    band_num.append(std::to_string(n));
+
+    char* name = strdup(std::string(name_bypass).append(band_num).c_str());
+    char* nick = strdup(std::string(nick_bypass).append(nick_band).append(band_num).c_str());
+
+    if (name != nullptr && nick != nullptr) {
       g_object_class_install_property(
           gobject_class, 2 * NBANDS + 1 + n,
-          g_param_spec_boolean(name, nick, "bypass band", false,
+          g_param_spec_boolean(name, nick, param_bypass, false,
                                static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
     } else if (errno == ENOMEM) {
       util::error("crystalizer: band initialization: not enough memory!");
     }
+
+    band_num.clear();
   }
 
   g_object_class_install_property(
@@ -231,7 +261,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->freqs[10] = 10000.0f;
   pecrystalizer->freqs[11] = 15000.0f;
 
-  for (uint n = 0; n < NBANDS; n++) {
+  for (int n = 0; n < NBANDS; n++) {
     pecrystalizer->filters[n] = new Filter("crystalizer band" + std::to_string(n));
 
     pecrystalizer->intensities[n] = 1.0f;
@@ -248,7 +278,7 @@ static void gst_pecrystalizer_init(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ebur_state_before = nullptr;
   pecrystalizer->ebur_state_after = nullptr;
 
-  pecrystalizer->ndivs = 1000;
+  pecrystalizer->ndivs = 1000u;
   pecrystalizer->dv = 1.0f / pecrystalizer->ndivs;
   pecrystalizer->aggressive = false;
 
@@ -267,58 +297,87 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
   GST_DEBUG_OBJECT(pecrystalizer, "set_property");
 
   switch (property_id) {
-    case PROP_INTENSITY_BAND0:
+    // Intensities
+    case PROP_INTENSITY_BAND0: {
       pecrystalizer->intensities[0] = g_value_get_float(value);
       pecrystalizer->gain[0] = util::linspace(1.0f, pecrystalizer->intensities[0], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND1:
+    }
+    case PROP_INTENSITY_BAND1: {
       pecrystalizer->intensities[1] = g_value_get_float(value);
       pecrystalizer->gain[1] = util::linspace(1.0f, pecrystalizer->intensities[1], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND2:
+    }
+    case PROP_INTENSITY_BAND2: {
       pecrystalizer->intensities[2] = g_value_get_float(value);
       pecrystalizer->gain[2] = util::linspace(1.0f, pecrystalizer->intensities[2], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND3:
+    }
+    case PROP_INTENSITY_BAND3: {
       pecrystalizer->intensities[3] = g_value_get_float(value);
       pecrystalizer->gain[3] = util::linspace(1.0f, pecrystalizer->intensities[3], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND4:
+    }
+    case PROP_INTENSITY_BAND4: {
       pecrystalizer->intensities[4] = g_value_get_float(value);
       pecrystalizer->gain[4] = util::linspace(1.0f, pecrystalizer->intensities[4], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND5:
+    }
+    case PROP_INTENSITY_BAND5: {
       pecrystalizer->intensities[5] = g_value_get_float(value);
       pecrystalizer->gain[5] = util::linspace(1.0f, pecrystalizer->intensities[5], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND6:
+    }
+    case PROP_INTENSITY_BAND6: {
       pecrystalizer->intensities[6] = g_value_get_float(value);
       pecrystalizer->gain[6] = util::linspace(1.0f, pecrystalizer->intensities[6], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND7:
+    }
+    case PROP_INTENSITY_BAND7: {
       pecrystalizer->intensities[7] = g_value_get_float(value);
       pecrystalizer->gain[7] = util::linspace(1.0f, pecrystalizer->intensities[7], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND8:
+    }
+    case PROP_INTENSITY_BAND8: {
       pecrystalizer->intensities[8] = g_value_get_float(value);
       pecrystalizer->gain[8] = util::linspace(1.0f, pecrystalizer->intensities[8], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND9:
+    }
+    case PROP_INTENSITY_BAND9: {
       pecrystalizer->intensities[9] = g_value_get_float(value);
       pecrystalizer->gain[9] = util::linspace(1.0f, pecrystalizer->intensities[9], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND10:
+    }
+    case PROP_INTENSITY_BAND10: {
       pecrystalizer->intensities[10] = g_value_get_float(value);
       pecrystalizer->gain[10] = util::linspace(1.0f, pecrystalizer->intensities[10], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND11:
+    }
+    case PROP_INTENSITY_BAND11: {
       pecrystalizer->intensities[11] = g_value_get_float(value);
       pecrystalizer->gain[11] = util::linspace(1.0f, pecrystalizer->intensities[11], pecrystalizer->ndivs);
+
       break;
-    case PROP_INTENSITY_BAND12:
+    }
+    case PROP_INTENSITY_BAND12: {
       pecrystalizer->intensities[12] = g_value_get_float(value);
       pecrystalizer->gain[12] = util::linspace(1.0f, pecrystalizer->intensities[12], pecrystalizer->ndivs);
+
       break;
+    }
+
+    // Mute
     case PROP_MUTE_BAND0:
       pecrystalizer->mute[0] = g_value_get_boolean(value);
       break;
@@ -358,6 +417,8 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
     case PROP_MUTE_BAND12:
       pecrystalizer->mute[12] = g_value_get_boolean(value);
       break;
+
+    // Bypass
     case PROP_BYPASS_BAND0:
       pecrystalizer->bypass[0] = g_value_get_boolean(value);
       break;
@@ -397,9 +458,13 @@ void gst_pecrystalizer_set_property(GObject* object, guint property_id, const GV
     case PROP_BYPASS_BAND12:
       pecrystalizer->bypass[12] = g_value_get_boolean(value);
       break;
+
+    // Aggressive
     case PROP_AGGRESSIVE:
       pecrystalizer->aggressive = g_value_get_boolean(value);
       break;
+
+    // Notify
     case PROP_NOTIFY:
       pecrystalizer->notify = g_value_get_boolean(value);
       break;
@@ -415,6 +480,7 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
   GST_DEBUG_OBJECT(pecrystalizer, "get_property");
 
   switch (property_id) {
+    // Intensities
     case PROP_INTENSITY_BAND0:
       g_value_set_float(value, pecrystalizer->intensities[0]);
       break;
@@ -454,6 +520,8 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_INTENSITY_BAND12:
       g_value_set_float(value, pecrystalizer->intensities[12]);
       break;
+
+    // Mute
     case PROP_MUTE_BAND0:
       g_value_set_boolean(value, pecrystalizer->mute[0]);
       break;
@@ -493,6 +561,8 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_MUTE_BAND12:
       g_value_set_boolean(value, pecrystalizer->mute[12]);
       break;
+
+    // Bypass
     case PROP_BYPASS_BAND0:
       g_value_set_boolean(value, pecrystalizer->bypass[0]);
       break;
@@ -532,15 +602,21 @@ void gst_pecrystalizer_get_property(GObject* object, guint property_id, GValue* 
     case PROP_BYPASS_BAND12:
       g_value_set_boolean(value, pecrystalizer->bypass[12]);
       break;
+
+    // Range
     case PROP_RANGE_BEFORE:
       g_value_set_float(value, pecrystalizer->range_before);
       break;
     case PROP_RANGE_AFTER:
       g_value_set_float(value, pecrystalizer->range_after);
       break;
+
+    // Aggressive
     case PROP_AGGRESSIVE:
       g_value_set_boolean(value, pecrystalizer->aggressive);
       break;
+
+    // Notify
     case PROP_NOTIFY:
       g_value_set_boolean(value, pecrystalizer->notify);
       break;
@@ -586,7 +662,7 @@ static GstFlowReturn gst_pecrystalizer_transform_ip(GstBaseTransform* trans, Gst
 
   bool filters_ready = true;
 
-  for (uint n = 0; n < NBANDS; n++) {
+  for (int n = 0; n < NBANDS; n++) {
     filters_ready = filters_ready && pecrystalizer->filters[n]->ready;
   }
 
@@ -620,14 +696,14 @@ static gboolean gst_pecrystalizer_stop(GstBaseTransform* base) {
 
 static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
   if (pecrystalizer->rate != 0) {
-    for (uint n = 0; n < NBANDS; n++) {
-      if (pecrystalizer->band_data[n].size() != 2 * pecrystalizer->nsamples) {
-        pecrystalizer->band_data[n].resize(2 * pecrystalizer->nsamples);
+    for (int n = 0; n < NBANDS; n++) {
+      if (pecrystalizer->band_data[n].size() != 2u * pecrystalizer->nsamples) {
+        pecrystalizer->band_data[n].resize(2u * pecrystalizer->nsamples);
       }
     }
 
-    if (pecrystalizer->deriv2.size() != 2 * pecrystalizer->nsamples) {
-      pecrystalizer->deriv2.resize(2 * pecrystalizer->nsamples);
+    if (pecrystalizer->deriv2.size() != 2u * pecrystalizer->nsamples) {
+      pecrystalizer->deriv2.resize(2u * pecrystalizer->nsamples);
     }
 
     /*
@@ -637,48 +713,48 @@ static void gst_pecrystalizer_setup_filters(GstPecrystalizer* pecrystalizer) {
 
     float transition_band = 100.0f;  // Hz
 
-    for (uint n = 0; n < NBANDS; n++) {
-      if (n == 0) {
+    for (uint n = 0u; n < NBANDS; n++) {
+      if (n == 0u) {
         pecrystalizer->filters[0]->create_lowpass(pecrystalizer->nsamples, pecrystalizer->rate, pecrystalizer->freqs[0],
                                                   transition_band);
-      } else if (n == pecrystalizer->filters.size() - 1) {
+      } else if (n == pecrystalizer->filters.size() - 1u) {
         pecrystalizer->filters[n]->create_highpass(pecrystalizer->nsamples, pecrystalizer->rate,
                                                    pecrystalizer->freqs.back(), transition_band);
       } else {
         pecrystalizer->filters[n]->create_bandpass(pecrystalizer->nsamples, pecrystalizer->rate,
-                                                   pecrystalizer->freqs[n - 1], pecrystalizer->freqs[n],
+                                                   pecrystalizer->freqs[n - 1u], pecrystalizer->freqs[n],
                                                    2.0f * transition_band);
       }
     }
 
     // before
 
-    pecrystalizer->ebur_state_before = ebur128_init(2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+    pecrystalizer->ebur_state_before = ebur128_init(2u, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(pecrystalizer->ebur_state_before, 0, EBUR128_LEFT);
-    ebur128_set_channel(pecrystalizer->ebur_state_before, 1, EBUR128_RIGHT);
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 0u, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_before, 1u, EBUR128_RIGHT);
 
-    ebur128_set_max_history(pecrystalizer->ebur_state_before, 30 * 1000);  // ms
+    ebur128_set_max_history(pecrystalizer->ebur_state_before, 30u * 1000u);  // ms
 
     // after
 
-    pecrystalizer->ebur_state_after = ebur128_init(2, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
+    pecrystalizer->ebur_state_after = ebur128_init(2u, pecrystalizer->rate, EBUR128_MODE_LRA | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(pecrystalizer->ebur_state_after, 0, EBUR128_LEFT);
-    ebur128_set_channel(pecrystalizer->ebur_state_after, 1, EBUR128_RIGHT);
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 0u, EBUR128_LEFT);
+    ebur128_set_channel(pecrystalizer->ebur_state_after, 1u, EBUR128_RIGHT);
 
-    ebur128_set_max_history(pecrystalizer->ebur_state_after, 30 * 1000);  // ms
+    ebur128_set_max_history(pecrystalizer->ebur_state_after, 30u * 1000u);  // ms
   }
 }
 
 static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer* buffer) {
   bool ebur_failed = false;
-  double range;
+  double range = 0.0;
   GstMapInfo map;
 
   gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
-  float* data = (float*)map.data;
+  auto* data = reinterpret_cast<float*>(map.data);
 
   /* Measure loudness range before the processing. Rigorously speaking we should
      add the band_data arrays because we will delay output by 1 sample. But I
@@ -691,11 +767,11 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer
     if (EBUR128_SUCCESS != ebur128_loudness_range(pecrystalizer->ebur_state_before, &range)) {
       ebur_failed = true;
     } else {
-      pecrystalizer->range_before = (float)range;
+      pecrystalizer->range_before = static_cast<float>(range);
     }
   }
 
-  for (uint n = 0; n < NBANDS; n++) {
+  for (int n = 0; n < NBANDS; n++) {
     memcpy(pecrystalizer->band_data[n].data(), data, map.size);
 
     pecrystalizer->filters[n]->process(pecrystalizer->band_data[n].data());
@@ -750,96 +826,96 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer
     }
   }
 
-  for (uint n = 0; n < NBANDS; n++) {
+  for (int n = 0; n < NBANDS; n++) {
     if (!pecrystalizer->bypass[n]) {
       // Calculating second derivative
 
-      for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float L = pecrystalizer->band_data[n][2 * m];
-        float R = pecrystalizer->band_data[n][2 * m + 1];
+      for (uint m = 0u; m < pecrystalizer->nsamples; m++) {
+        float L = pecrystalizer->band_data[n][2u * m];
+        float R = pecrystalizer->band_data[n][2u * m + 1u];
 
-        if (m > 0 && m < pecrystalizer->nsamples - 1) {
-          float L_lower = pecrystalizer->band_data[n][2 * (m - 1)];
-          float R_lower = pecrystalizer->band_data[n][2 * (m - 1) + 1];
-          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
-          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
+        if (m > 0u && m < pecrystalizer->nsamples - 1u) {
+          float L_lower = pecrystalizer->band_data[n][2u * (m - 1u)];
+          float R_lower = pecrystalizer->band_data[n][2u * (m - 1u) + 1u];
+          float L_upper = pecrystalizer->band_data[n][2u * (m + 1u)];
+          float R_upper = pecrystalizer->band_data[n][2u * (m + 1u) + 1u];
 
-          pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
-          pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
-        } else if (m == 0) {
-          float L_upper = pecrystalizer->band_data[n][2 * (m + 1)];
-          float R_upper = pecrystalizer->band_data[n][2 * (m + 1) + 1];
+          pecrystalizer->deriv2[2u * m] = L_upper - 2.0f * L + L_lower;
+          pecrystalizer->deriv2[2u * m + 1u] = R_upper - 2.0f * R + R_lower;
+        } else if (m == 0u) {
+          float L_upper = pecrystalizer->band_data[n][2u * (m + 1u)];
+          float R_upper = pecrystalizer->band_data[n][2u * (m + 1u) + 1u];
 
-          pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + pecrystalizer->last_L[n];
-          pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + pecrystalizer->last_R[n];
-        } else if (m == pecrystalizer->nsamples - 1) {
+          pecrystalizer->deriv2[2u * m] = L_upper - 2.0f * L + pecrystalizer->last_L[n];
+          pecrystalizer->deriv2[2u * m + 1u] = R_upper - 2.0f * R + pecrystalizer->last_R[n];
+        } else if (m == pecrystalizer->nsamples - 1u) {
           float L_upper = pecrystalizer->delayed_L[n];
           float R_upper = pecrystalizer->delayed_R[n];
-          float L_lower = pecrystalizer->band_data[n][2 * (m - 1)];
-          float R_lower = pecrystalizer->band_data[n][2 * (m - 1) + 1];
+          float L_lower = pecrystalizer->band_data[n][2u * (m - 1u)];
+          float R_lower = pecrystalizer->band_data[n][2u * (m - 1u) + 1u];
 
-          pecrystalizer->deriv2[2 * m] = L_upper - 2 * L + L_lower;
-          pecrystalizer->deriv2[2 * m + 1] = R_upper - 2 * R + R_lower;
+          pecrystalizer->deriv2[2u * m] = L_upper - 2.0f * L + L_lower;
+          pecrystalizer->deriv2[2u * m + 1u] = R_upper - 2.0f * R + R_lower;
         }
       }
 
       // peak enhancing using second derivative
 
-      for (uint m = 0; m < pecrystalizer->nsamples; m++) {
-        float L = pecrystalizer->band_data[n][2 * m];
-        float R = pecrystalizer->band_data[n][2 * m + 1];
-        float d2L = pecrystalizer->deriv2[2 * m];
-        float d2R = pecrystalizer->deriv2[2 * m + 1];
+      for (uint m = 0u; m < pecrystalizer->nsamples; m++) {
+        float L = pecrystalizer->band_data[n][2u * m];
+        float R = pecrystalizer->band_data[n][2u * m + 1];
+        float d2L = pecrystalizer->deriv2[2u * m];
+        float d2R = pecrystalizer->deriv2[2u * m + 1];
 
-        pecrystalizer->band_data[n][2 * m] = L - pecrystalizer->intensities[n] * d2L;
-        pecrystalizer->band_data[n][2 * m + 1] = R - pecrystalizer->intensities[n] * d2R;
+        pecrystalizer->band_data[n][2u * m] = L - pecrystalizer->intensities[n] * d2L;
+        pecrystalizer->band_data[n][2u * m + 1u] = R - pecrystalizer->intensities[n] * d2R;
 
         /*
           Aggressive mode applies a amplitude dependent gain to every sample in
           the signal
         */
 
-        if (pecrystalizer->aggressive && pecrystalizer->gain[n].size() != 0) {
+        if (pecrystalizer->aggressive && pecrystalizer->gain[n].size() != 0u) {
           uint idx_L = floorf(fabsf(L) / pecrystalizer->dv);
           uint idx_R = floorf(fabsf(R) / pecrystalizer->dv);
 
-          if (idx_L < 0) {
-            idx_L = 0;
+          if (idx_L < 0u) {
+            idx_L = 0u;
           } else if (idx_L > pecrystalizer->gain[n].size()) {
-            idx_L = pecrystalizer->gain[n].size() - 1;
+            idx_L = pecrystalizer->gain[n].size() - 1u;
           }
 
-          if (idx_R < 0) {
-            idx_R = 0;
+          if (idx_R < 0u) {
+            idx_R = 0u;
           } else if (idx_R > pecrystalizer->gain[n].size()) {
-            idx_R = pecrystalizer->gain[n].size() - 1;
+            idx_R = pecrystalizer->gain[n].size() - 1u;
           }
 
-          float vL = pecrystalizer->band_data[n][2 * m];
-          float vR = pecrystalizer->band_data[n][2 * m + 1];
+          float vL = pecrystalizer->band_data[n][2u * m];
+          float vR = pecrystalizer->band_data[n][2u * m + 1u];
 
-          pecrystalizer->band_data[n][2 * m] = vL * pecrystalizer->gain[n][idx_L];
+          pecrystalizer->band_data[n][2u * m] = vL * pecrystalizer->gain[n][idx_L];
 
-          pecrystalizer->band_data[n][2 * m + 1] = vR * pecrystalizer->gain[n][idx_R];
+          pecrystalizer->band_data[n][2u * m + 1u] = vR * pecrystalizer->gain[n][idx_R];
         }
 
-        if (m == pecrystalizer->nsamples - 1) {
+        if (m == pecrystalizer->nsamples - 1u) {
           pecrystalizer->last_L[n] = L;
           pecrystalizer->last_R[n] = R;
         }
       }
     } else {
-      pecrystalizer->last_L[n] = pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 2];
-      pecrystalizer->last_R[n] = pecrystalizer->band_data[n][2 * pecrystalizer->nsamples - 1];
+      pecrystalizer->last_L[n] = pecrystalizer->band_data[n][2u * pecrystalizer->nsamples - 2u];
+      pecrystalizer->last_R[n] = pecrystalizer->band_data[n][2u * pecrystalizer->nsamples - 1u];
     }
   }
 
   // add bands
 
-  for (uint n = 0; n < 2 * pecrystalizer->nsamples; n++) {
+  for (uint n = 0u; n < 2u * pecrystalizer->nsamples; n++) {
     data[n] = 0.0f;
 
-    for (uint m = 0; m < pecrystalizer->filters.size(); m++) {
+    for (uint m = 0u; m < pecrystalizer->filters.size(); m++) {
       if (!pecrystalizer->mute[m]) {
         data[n] += pecrystalizer->band_data[m][n];
       }
@@ -854,7 +930,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer
     if (EBUR128_SUCCESS != ebur128_loudness_range(pecrystalizer->ebur_state_after, &range)) {
       ebur_failed = true;
     } else {
-      pecrystalizer->range_after = (float)range;
+      pecrystalizer->range_after = static_cast<float>(range);
     }
   }
 
@@ -880,7 +956,7 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
   bool ret = true;
 
   switch (GST_QUERY_TYPE(query)) {
-    case GST_QUERY_LATENCY:
+    case GST_QUERY_LATENCY: {
       if (pecrystalizer->rate > 0) {
         ret = gst_pad_peer_query(pecrystalizer->sinkpad, query);
 
@@ -893,7 +969,7 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
 
           /* add our own latency */
 
-          latency = gst_util_uint64_scale_round(1, GST_SECOND, pecrystalizer->rate);
+          latency = gst_util_uint64_scale_round(1ul, GST_SECOND, pecrystalizer->rate);
 
           // std::cout << "latency: " << latency << std::endl;
           // std::cout << "n: " << pecrystalizer->inbuf_n_samples
@@ -916,9 +992,11 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
       }
 
       break;
+    }
     default:
       /* just call the default handler */
       ret = gst_pad_query_default(pad, parent, query);
+
       break;
   }
 
@@ -928,7 +1006,7 @@ static gboolean gst_pecrystalizer_src_query(GstPad* pad, GstObject* parent, GstQ
 static void gst_pecrystalizer_finish_filters(GstPecrystalizer* pecrystalizer) {
   pecrystalizer->ready = false;
 
-  for (uint m = 0; m < NBANDS; m++) {
+  for (int m = 0; m < NBANDS; m++) {
     pecrystalizer->filters[m]->finish();
   }
 

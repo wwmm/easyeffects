@@ -5,13 +5,13 @@
 namespace {
 
 void on_post_messages_changed(GSettings* settings, gchar* key, BassEnhancer* l) {
-  auto post = g_settings_get_boolean(settings, key);
+  const auto post = g_settings_get_boolean(settings, key);
 
-  if (post != 0) {
+  if (post) {
     if (!l->harmonics_connection.connected()) {
       l->harmonics_connection = Glib::signal_timeout().connect(
           [l]() {
-            float harmonics;
+            float harmonics = 0.0f;
 
             g_object_get(l->bass_enhancer, "meter-drive", &harmonics, nullptr);
 
@@ -28,22 +28,22 @@ void on_post_messages_changed(GSettings* settings, gchar* key, BassEnhancer* l) 
 
 }  // namespace
 
-BassEnhancer::BassEnhancer(const std::string& tag, const std::string& schema)
-    : PluginBase(tag, "bass_enhancer", schema) {
+BassEnhancer::BassEnhancer(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "bass_enhancer", schema, schema_path) {
   bass_enhancer = gst_element_factory_make("calf-sourceforge-net-plugins-BassEnhancer", nullptr);
 
   if (is_installed(bass_enhancer)) {
-    auto in_level = gst_element_factory_make("level", "bass_enhancer_input_level");
-    auto out_level = gst_element_factory_make("level", "bass_enhancer_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "bass_enhancer_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "bass_enhancer_audioconvert_out");
+    auto* in_level = gst_element_factory_make("level", "bass_enhancer_input_level");
+    auto* out_level = gst_element_factory_make("level", "bass_enhancer_output_level");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "bass_enhancer_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "bass_enhancer_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, bass_enhancer, audioconvert_out, out_level, nullptr);
 
     gst_element_link_many(in_level, audioconvert_in, bass_enhancer, audioconvert_out, out_level, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(in_level, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

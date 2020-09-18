@@ -1,8 +1,10 @@
 #include "deesser_preset.hpp"
 
 DeesserPreset::DeesserPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.deesser")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.deesser")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.deesser",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.deesser",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/deesser/")) {}
 
 void DeesserPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -34,7 +36,7 @@ void DeesserPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
 }
 
-void DeesserPreset::load(boost::property_tree::ptree& root,
+void DeesserPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".deesser.state");
@@ -65,17 +67,23 @@ void DeesserPreset::load(boost::property_tree::ptree& root,
 }
 
 void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  } else {
-    save(root, "input", input_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void DeesserPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
-  } else {
-    load(root, "input", input_settings);
+void DeesserPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

@@ -2,6 +2,65 @@
 
 ## [Unreleased]
 
+## [4.8.1]
+
+### Added
+
+- `Blocklist` adopted and related command modified as a checkbutton inside the app info ui.
+- Pulseaudio's media name property is shown for each application in the `Applications` section.
+- Deesser UI redesigned and applied homogeneous property to all plugin UI to get same space between controls and make them fit
+  all the available horizontal space.
+- Modified `Applications` row in the left side plugin list to show an icon according to input/output effects while the pipeline
+  global level meter is only shown when something is recording/playing
+- The feature that shows the last used preset in the preset menu button label was improved. When seeing input effects
+  widget it shows the last used input preset. And when seeing output effects widgets it shows the last used output preset.
+- New application icon.
+
+## [4.8.0]
+
+### Added
+
+- Loudness plugin has been replaced with the new Loudness Compensator by Linux Studio Plugins.
+- The Stereo Tools and the Maximizer plugins can now be used when applying effects to microphone signals.
+- New parameters have been added to the following plugins: Compressor, Gate and Limiter.
+- Plugin user interfaces have been redesigned with checkbutton list and new global output level meter for both output and
+  input pipelines.
+- The user has now the ability to change the minimum and maximum frequency in the spectrum user interface.
+- New command line that allows to hide the window when running PulseEffects in service mode. This will allow tray
+  applets to hide our window.
+- Initial support to Equalizer APO presets.
+- Improved Slovak and Czech Translations.
+
+### Removed
+
+- The spectrum scaling feature was removed as it leads to wrong mouse hover values when used
+  https://github.com/wwmm/pulseeffects/issues/733. And fixing this will require the addition of an amount of code
+  complexity that does not seem worth it.
+
+### Note to packagers
+
+- This release is using GTKMM 3.24 features and Linux Studio Plugins >= `1.1.24`. If you can not use any of these
+  libraries do not upgrade to PulseEffects 4.8.0!
+- MDA is not needed anymore as optional dependency.
+
+## [4.7.3]
+
+### Added
+
+- PulseEffects now searches for presets in /etc/PulseEffects and directories specified by \$XDG_CONFIG_DIRS environment
+  variable.
+- Our interface now shows third party Plugins credits.
+- Each plugin now has a reset button
+- Improved convolver impulse response files plot
+- Applications entry now have a blacklist button to make it easier to blacklist an application the user does not want
+  effects to be applied.
+
+### Fixed
+
+- Fixed a severe memory leak that happened whenever the window was closed.
+- PulseEffects no longer crashes when an empty or corrupted preset is provided.
+- Fixed laxity setting not being applied in the deesser
+
 ## [4.7.2]
 
 ### Added

@@ -2,26 +2,31 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-Loudness::Loudness(const std::string& tag, const std::string& schema) : PluginBase(tag, "loudness", schema) {
-  loudness = gst_element_factory_make("drobilla-net-plugins-mda-Loudness", nullptr);
+Loudness::Loudness(const std::string& tag, const std::string& schema, const std::string& schema_path)
+    : PluginBase(tag, "loudness", schema, schema_path) {
+  loudness = gst_element_factory_make("lsp-plug-in-plugins-lv2-loud-comp-stereo", nullptr);
 
   if (is_installed(loudness)) {
-    auto in_level = gst_element_factory_make("level", "loudness_input_level");
-    auto out_level = gst_element_factory_make("level", "loudness_output_level");
-    auto audioconvert_in = gst_element_factory_make("audioconvert", "loudness_audioconvert_in");
-    auto audioconvert_out = gst_element_factory_make("audioconvert", "loudness_audioconvert_out");
+    auto* in_level = gst_element_factory_make("level", "loudness_input_level");
+    auto* out_level = gst_element_factory_make("level", "loudness_output_level");
+    auto* audioconvert_in = gst_element_factory_make("audioconvert", "loudness_audioconvert_in");
+    auto* audioconvert_out = gst_element_factory_make("audioconvert", "loudness_audioconvert_out");
 
     gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, loudness, audioconvert_out, out_level, nullptr);
     gst_element_link_many(in_level, audioconvert_in, loudness, audioconvert_out, out_level, nullptr);
 
-    auto pad_sink = gst_element_get_static_pad(in_level, "sink");
-    auto pad_src = gst_element_get_static_pad(out_level, "src");
+    auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
+    auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
     gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
     gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
 
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
+
+    g_object_set(loudness, "enabled", 1, nullptr);
+    g_object_set(loudness, "refer", 0, nullptr);
+    g_object_set(loudness, "hclip", 0, nullptr);
 
     bind_to_gsettings();
 
@@ -41,12 +46,15 @@ Loudness::~Loudness() {
 }
 
 void Loudness::bind_to_gsettings() {
-  g_settings_bind_with_mapping(settings, "loudness", loudness, "loudness", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings, "output", loudness, "output", G_SETTINGS_BIND_DEFAULT,
-                               util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings, "link", loudness, "link", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+  g_settings_bind_with_mapping(settings, "input", loudness, "input", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
                                util::linear_gain_to_db20, nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings, "volume", loudness, "volume", G_SETTINGS_BIND_GET, util::double_to_float,
+                               nullptr, nullptr, nullptr);
+
+  g_settings_bind(settings, "fft", loudness, "fft", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "std", loudness, "std", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "reference-signal", loudness, "refer", G_SETTINGS_BIND_DEFAULT);
 }

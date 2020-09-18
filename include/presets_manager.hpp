@@ -39,6 +39,7 @@ class PresetsManager {
   ~PresetsManager();
 
   auto get_names(PresetType preset_type) -> std::vector<std::string>;
+  auto search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string>;
   void add(PresetType preset_type, const std::string& name);
   void save(PresetType preset_type, const std::string& name);
   void remove(PresetType preset_type, const std::string& name);
@@ -53,7 +54,9 @@ class PresetsManager {
  private:
   std::string log_tag = "presets_manager: ";
 
-  boost::filesystem::path presets_dir, input_dir, output_dir, autoload_dir;
+  boost::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_dir;
+
+  std::vector<boost::filesystem::path> system_input_dir, system_output_dir;
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
@@ -90,7 +93,7 @@ class PresetsManager {
   }
 
   template <typename T>
-  void update_key(boost::property_tree::ptree& root,
+  void update_key(const boost::property_tree::ptree& root,
                   const Glib::RefPtr<Gio::Settings>& settings,
                   const std::string& key,
                   const std::string& json_key) {
@@ -109,7 +112,7 @@ class PresetsManager {
     }
   }
 
-  void update_string_key(boost::property_tree::ptree& root,
+  void update_string_key(const boost::property_tree::ptree& root,
                          const Glib::RefPtr<Gio::Settings>& settings,
                          const std::string& key,
                          const std::string& json_key) {
@@ -127,11 +130,11 @@ class PresetsManager {
     return a != b;
   }
 
-  void create_directory(boost::filesystem::path& path);
+  void create_user_directory(const boost::filesystem::path& path);
 
-  void save_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
+  void save_blocklist(PresetType preset_type, boost::property_tree::ptree& root);
 
-  void load_blacklist(PresetType preset_type, boost::property_tree::ptree& root);
+  void load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root);
 };
 
 #endif

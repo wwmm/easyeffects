@@ -28,12 +28,13 @@ class SpectrumUi : public Gtk::Grid {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::DrawingArea* spectrum = nullptr;
-  Gdk::RGBA color, gradient_color;
+  Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
 
   std::vector<sigc::connection> connections;
 
   bool mouse_inside = false;
-  double mouse_intensity = 0, mouse_freq = 0;
+  int axis_height = 0;
+  double mouse_intensity = 0.0, mouse_freq = 0.0;
   std::vector<float> spectrum_mag;
 
   auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
@@ -46,7 +47,11 @@ class SpectrumUi : public Gtk::Grid {
 
   void init_color();
 
+  void init_frequency_labels_color();
+
   void init_gradient_color();
+
+  auto draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int;
 };
 
 #endif

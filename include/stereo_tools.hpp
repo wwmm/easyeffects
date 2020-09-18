@@ -5,7 +5,7 @@
 
 class StereoTools : public PluginBase {
  public:
-  StereoTools(const std::string& tag, const std::string& schema);
+  StereoTools(const std::string& tag, const std::string& schema, const std::string& schema_path);
   StereoTools(const StereoTools&) = delete;
   auto operator=(const StereoTools&) -> StereoTools& = delete;
   StereoTools(const StereoTools&&) = delete;

@@ -1,11 +1,10 @@
 #include "reverb_ui.hpp"
 #include <cstring>
-#include "util.hpp"
 
 namespace {
 
 auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "Small") == 0) {
     g_value_set_int(value, 0);
@@ -25,35 +24,32 @@ auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("Small");
+  switch (v) {
+    case 0: return g_variant_new_string("Small");
+
+    case 1: return g_variant_new_string("Medium");
+
+    case 2: return g_variant_new_string("Large");
+
+    case 3: return g_variant_new_string("Tunnel-like");
+
+    case 4: return g_variant_new_string("Large/smooth");
+
+    case 5: return g_variant_new_string("Experimental");
+
+    default: return g_variant_new_string("Large");
   }
-
-  if (v == 1) {
-    return g_variant_new_string("Medium");
-  }
-
-  if (v == 2) {
-    return g_variant_new_string("Large");
-  }
-
-  if (v == 3) {
-    return g_variant_new_string("Tunnel-like");
-  }
-
-  if (v == 4) {
-    return g_variant_new_string("Large/smooth");
-  }
-
-  return g_variant_new_string("Experimental");
 }
 
 }  // namespace
 
-ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+ReverbUi::ReverbUi(BaseObjectType* cobject,
+                   const Glib::RefPtr<Gtk::Builder>& builder,
+                   const std::string& schema,
+                   const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "reverb";
 
   // loading glade widgets
@@ -66,6 +62,7 @@ ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
   builder->get_widget("preset_disco", preset_disco);
   builder->get_widget("preset_large_occupied_hall", preset_large_occupied_hall);
   builder->get_widget("preset_default", preset_default);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -98,10 +95,45 @@ ReverbUi::ReverbUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& bu
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
   init_presets_buttons();
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 ReverbUi::~ReverbUi() {
   util::debug(name + " ui destroyed");
+}
+
+void ReverbUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".reverb.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".reverb.output-gain");
+
+    update_default_string_key(settings, "room-size", section + ".reverb.room-size");
+
+    update_default_key<double>(settings, "decay-time", section + ".reverb.decay-time");
+
+    update_default_key<double>(settings, "hf-damp", section + ".reverb.hf-damp");
+
+    update_default_key<double>(settings, "diffusion", section + ".reverb.diffusion");
+
+    update_default_key<double>(settings, "amount", section + ".reverb.amount");
+
+    update_default_key<double>(settings, "dry", section + ".reverb.dry");
+
+    update_default_key<double>(settings, "predelay", section + ".reverb.predelay");
+
+    update_default_key<double>(settings, "bass-cut", section + ".reverb.bass-cut");
+
+    update_default_key<double>(settings, "treble-cut", section + ".reverb.treble-cut");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
 }
 
 void ReverbUi::init_presets_buttons() {
@@ -111,10 +143,10 @@ void ReverbUi::init_presets_buttons() {
     room_size->set_active(4);
     diffusion->set_value(0.54);
     amount->set_value(util::linear_to_db(0.469761));
-    dry->set_value(util::linear_to_db(1));
-    predelay->set_value(25);
+    dry->set_value(util::linear_to_db(1.0));
+    predelay->set_value(25.0);
     bass_cut->set_value(257.65);
-    treble_cut->set_value(20000);
+    treble_cut->set_value(20000.0);
   });
 
   preset_empty_walls->signal_clicked().connect([=]() {
@@ -123,8 +155,8 @@ void ReverbUi::init_presets_buttons() {
     room_size->set_active(4);
     diffusion->set_value(0.17);
     amount->set_value(util::linear_to_db(0.198884));
-    dry->set_value(util::linear_to_db(1));
-    predelay->set_value(13);
+    dry->set_value(util::linear_to_db(1.0));
+    predelay->set_value(13.0);
     bass_cut->set_value(240.453);
     treble_cut->set_value(3303.47);
   });
@@ -135,7 +167,7 @@ void ReverbUi::init_presets_buttons() {
     room_size->set_active(4);
     diffusion->set_value(0.69);
     amount->set_value(util::linear_to_db(0.291183));
-    dry->set_value(util::linear_to_db(1));
+    dry->set_value(util::linear_to_db(1.0));
     predelay->set_value(6.5);
     bass_cut->set_value(514.079);
     treble_cut->set_value(4064.15);
@@ -143,7 +175,7 @@ void ReverbUi::init_presets_buttons() {
 
   preset_large_empty_hall->signal_clicked().connect([=]() {
     decay_time->set_value(2.00689);
-    hf_damp->set_value(20000);
+    hf_damp->set_value(20000.0);
     amount->set_value(util::linear_to_db(0.366022));
     settings->reset("room-size");
     settings->reset("diffusion");
@@ -154,7 +186,7 @@ void ReverbUi::init_presets_buttons() {
   });
 
   preset_disco->signal_clicked().connect([=]() {
-    decay_time->set_value(1);
+    decay_time->set_value(1.0);
     hf_damp->set_value(3396.49);
     amount->set_value(util::linear_to_db(0.269807));
     settings->reset("room-size");

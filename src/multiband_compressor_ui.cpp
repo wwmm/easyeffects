@@ -4,7 +4,7 @@
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "RMS") == 0) {
     g_value_set_int(value, 0);
@@ -16,17 +16,19 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("RMS");
+  switch (v) {
+    case 0: return g_variant_new_string("RMS");
+
+    case 1: return g_variant_new_string("Peak");
+
+    default: return g_variant_new_string("RMS");
   }
-
-  return g_variant_new_string("Peak");
 }
 
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  auto v = g_variant_get_string(variant, nullptr);
+  const auto* v = g_variant_get_string(variant, nullptr);
 
   if (std::strcmp(v, "LR4") == 0) {
     g_value_set_int(value, 0);
@@ -38,21 +40,24 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  int v = g_value_get_int(value);
+  const auto v = g_value_get_int(value);
 
-  if (v == 0) {
-    return g_variant_new_string("LR4");
+  switch (v) {
+    case 0: return g_variant_new_string("LR4");
+
+    case 1: return g_variant_new_string("LR8");
+
+    default: return g_variant_new_string("LR8");
   }
-
-  return g_variant_new_string("LR8");
 }
 
 }  // namespace
 
 MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& builder,
-                                             const std::string& settings_name)
-    : Gtk::Grid(cobject), PluginUiBase(builder, settings_name) {
+                                             const std::string& schema,
+                                             const std::string& schema_path)
+    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "multiband_compressor";
 
   // loading glade widgets
@@ -86,6 +91,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   builder->get_widget("compression2_label", compression2_label);
   builder->get_widget("compression3", compression3);
   builder->get_widget("compression3_label", compression3_label);
+  builder->get_widget("plugin_reset", reset_button);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -176,56 +182,161 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  // reset plugin
+  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {
   util::debug(name + " ui destroyed");
 }
 
+void MultibandCompressorUi::reset() {
+  try {
+    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+
+    update_default_key<double>(settings, "input-gain", section + ".multiband_compressor.input-gain");
+
+    update_default_key<double>(settings, "output-gain", section + ".multiband_compressor.output-gain");
+
+    update_default_key<double>(settings, "freq0", section + ".multiband_compressor.freq0");
+
+    update_default_key<double>(settings, "freq1", section + ".multiband_compressor.freq1");
+
+    update_default_key<double>(settings, "freq2", section + ".multiband_compressor.freq2");
+
+    update_default_string_key(settings, "mode", section + ".multiband_compressor.mode");
+
+    // sub band
+
+    update_default_key<double>(settings, "threshold0", section + ".multiband_compressor.subband.threshold");
+
+    update_default_key<double>(settings, "ratio0", section + ".multiband_compressor.subband.ratio");
+
+    update_default_key<double>(settings, "attack0", section + ".multiband_compressor.subband.attack");
+
+    update_default_key<double>(settings, "release0", section + ".multiband_compressor.subband.release");
+
+    update_default_key<double>(settings, "makeup0", section + ".multiband_compressor.subband.makeup");
+
+    update_default_key<double>(settings, "knee0", section + ".multiband_compressor.subband.knee");
+
+    update_default_string_key(settings, "detection0", section + ".multiband_compressor.subband.detection");
+
+    update_default_key<bool>(settings, "bypass0", section + ".multiband_compressor.subband.bypass");
+
+    update_default_key<bool>(settings, "solo0", section + ".multiband_compressor.subband.solo");
+
+    // low band
+
+    update_default_key<double>(settings, "threshold1", section + ".multiband_compressor.lowband.threshold");
+
+    update_default_key<double>(settings, "ratio1", section + ".multiband_compressor.lowband.ratio");
+
+    update_default_key<double>(settings, "attack1", section + ".multiband_compressor.lowband.attack");
+
+    update_default_key<double>(settings, "release1", section + ".multiband_compressor.lowband.release");
+
+    update_default_key<double>(settings, "makeup1", section + ".multiband_compressor.lowband.makeup");
+
+    update_default_key<double>(settings, "knee1", section + ".multiband_compressor.lowband.knee");
+
+    update_default_string_key(settings, "detection1", section + ".multiband_compressor.lowband.detection");
+
+    update_default_key<bool>(settings, "bypass1", section + ".multiband_compressor.lowband.bypass");
+
+    update_default_key<bool>(settings, "solo1", section + ".multiband_compressor.lowband.solo");
+
+    // mid band
+
+    update_default_key<double>(settings, "threshold2", section + ".multiband_compressor.midband.threshold");
+
+    update_default_key<double>(settings, "ratio2", section + ".multiband_compressor.midband.ratio");
+
+    update_default_key<double>(settings, "attack2", section + ".multiband_compressor.midband.attack");
+
+    update_default_key<double>(settings, "release2", section + ".multiband_compressor.midband.release");
+
+    update_default_key<double>(settings, "makeup2", section + ".multiband_compressor.midband.makeup");
+
+    update_default_key<double>(settings, "knee2", section + ".multiband_compressor.midband.knee");
+
+    update_default_string_key(settings, "detection2", section + ".multiband_compressor.midband.detection");
+
+    update_default_key<bool>(settings, "bypass2", section + ".multiband_compressor.midband.bypass");
+
+    update_default_key<bool>(settings, "solo2", section + ".multiband_compressor.midband.solo");
+
+    // high band
+
+    update_default_key<double>(settings, "threshold3", section + ".multiband_compressor.highband.threshold");
+
+    update_default_key<double>(settings, "ratio3", section + ".multiband_compressor.highband.ratio");
+
+    update_default_key<double>(settings, "attack3", section + ".multiband_compressor.highband.attack");
+
+    update_default_key<double>(settings, "release3", section + ".multiband_compressor.highband.release");
+
+    update_default_key<double>(settings, "makeup3", section + ".multiband_compressor.highband.makeup");
+
+    update_default_key<double>(settings, "knee3", section + ".multiband_compressor.highband.knee");
+
+    update_default_string_key(settings, "detection3", section + ".multiband_compressor.highband.detection");
+
+    update_default_key<bool>(settings, "bypass3", section + ".multiband_compressor.highband.bypass");
+
+    update_default_key<bool>(settings, "solo3", section + ".multiband_compressor.highband.solo");
+
+    util::debug(name + " plugin: successfully reset");
+  } catch (std::exception& e) {
+    util::debug(name + " plugin: an error occurred during reset process");
+  }
+}
+
 void MultibandCompressorUi::on_new_output0(double value) {
   output0->set_value(value);
 
-  output0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  output0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output1(double value) {
   output1->set_value(value);
 
-  output1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  output1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output2(double value) {
   output2->set_value(value);
 
-  output2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  output2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_output3(double value) {
   output3->set_value(value);
 
-  output3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  output3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression0(double value) {
-  compression0->set_value(1 - value);
+  compression0->set_value(1.0 - value);
 
-  compression0_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  compression0_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression1(double value) {
-  compression1->set_value(1 - value);
+  compression1->set_value(1.0 - value);
 
-  compression1_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  compression1_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression2(double value) {
-  compression2->set_value(1 - value);
+  compression2->set_value(1.0 - value);
 
-  compression2_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  compression2_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }
 
 void MultibandCompressorUi::on_new_compression3(double value) {
-  compression3->set_value(1 - value);
+  compression3->set_value(1.0 - value);
 
-  compression3_label->set_text(level_to_str(util::linear_to_db(static_cast<float>(value)), 0));
+  compression3_label->set_text(level_to_str(util::linear_to_db(value), 0));
 }

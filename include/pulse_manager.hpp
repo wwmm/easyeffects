@@ -61,13 +61,15 @@ struct AppInfo {
   uint index;
   std::string name;
   std::string icon_name;
+  std::string media_name;
   uint8_t channels;
-  float volume;
+  double volume;
   uint rate;
   std::string resampler;
   std::string format;
   int mute;
   bool connected;
+  bool visible;
   uint buffer;
   uint latency;
   int corked;
@@ -94,17 +96,17 @@ class PulseManager {
   auto get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo>;
   auto get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo>;
 
-  std::vector<std::string> blacklist_in;   // for input effects
-  std::vector<std::string> blacklist_out;  // for output effects
+  std::vector<std::string> blocklist_in;   // for input effects
+  std::vector<std::string> blocklist_out;  // for output effects
 
   void find_sink_inputs();
   void find_source_outputs();
   void find_sinks();
   void find_sources();
-  void move_sink_input_to_pulseeffects(const std::string& name, uint idx);
-  void remove_sink_input_from_pulseeffects(const std::string& name, uint idx);
-  void move_source_output_to_pulseeffects(const std::string& name, uint idx);
-  void remove_source_output_from_pulseeffects(const std::string& name, uint idx);
+  auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool;
+  auto remove_source_output_from_pulseeffects(const std::string& name, uint idx) -> bool;
   void set_sink_input_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_sink_input_mute(const std::string& name, uint idx, bool state);
   void set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value);
@@ -113,6 +115,7 @@ class PulseManager {
   void update_server_info(const pa_server_info* info);
   void get_modules_info();
   void get_clients_info();
+  void set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value);
 
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
@@ -140,15 +143,15 @@ class PulseManager {
   pa_mainloop_api* main_loop_api = nullptr;
   pa_context* context = nullptr;
 
-  std::array<std::string, 7> blacklist_apps = {
+  std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
 
-  std::array<std::string, 4> blacklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
+  std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
                                                      "screen-capture"};
 
-  std::array<std::string, 1> blacklist_media_role = {"event"};
+  std::array<std::string, 1> blocklist_media_role = {"event"};
 
-  std::array<std::string, 4> blacklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
+  std::array<std::string, 4> blocklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",
                                                  "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
@@ -209,7 +212,7 @@ class PulseManager {
       app_name = prop;
 
       forbidden_app =
-          std::find(std::begin(blacklist_apps), std::end(blacklist_apps), app_name) != std::end(blacklist_apps);
+          std::find(std::begin(blocklist_apps), std::end(blocklist_apps), app_name) != std::end(blocklist_apps);
 
       if (forbidden_app) {
         return nullptr;
@@ -225,8 +228,8 @@ class PulseManager {
         app_name = media_name;
       }
 
-      forbidden_app = std::find(std::begin(blacklist_media_name), std::end(blacklist_media_name), media_name) !=
-                      std::end(blacklist_media_name);
+      forbidden_app = std::find(std::begin(blocklist_media_name), std::end(blocklist_media_name), media_name) !=
+                      std::end(blocklist_media_name);
 
       if (forbidden_app) {
         return nullptr;
@@ -238,8 +241,8 @@ class PulseManager {
     if (prop != nullptr) {
       media_role = prop;
 
-      forbidden_app = std::find(std::begin(blacklist_media_role), std::end(blacklist_media_role), media_role) !=
-                      std::end(blacklist_media_role);
+      forbidden_app = std::find(std::begin(blocklist_media_role), std::end(blocklist_media_role), media_role) !=
+                      std::end(blocklist_media_role);
 
       if (forbidden_app) {
         return nullptr;
@@ -252,7 +255,7 @@ class PulseManager {
       app_id = prop;
 
       forbidden_app =
-          std::find(std::begin(blacklist_app_id), std::end(blacklist_app_id), app_id) != std::end(blacklist_app_id);
+          std::find(std::begin(blocklist_app_id), std::end(blocklist_app_id), app_id) != std::end(blocklist_app_id);
 
       if (forbidden_app) {
         return nullptr;
@@ -279,10 +282,14 @@ class PulseManager {
       }
     }
 
+    // Connection flag: it specifies only the primary state that can be enabled/disabled by the user
     ai->connected = app_is_connected(info);
 
+    // Initialize visibility to true, it will be properly updated forward
+    ai->visible = true;
+
     // linear volume
-    ai->volume = 100 * pa_cvolume_max(&info->volume) / PA_VOLUME_NORM;
+    ai->volume = 100.0 * (static_cast<double>(pa_cvolume_max(&info->volume)) / PA_VOLUME_NORM);
 
     if (info->resample_method) {
       ai->resampler = info->resample_method;
@@ -294,6 +301,7 @@ class PulseManager {
 
     ai->index = info->index;
     ai->name = app_name;
+    ai->media_name = media_name;
     ai->icon_name = icon_name;
     ai->channels = info->volume.channels;
     ai->rate = info->sample_spec.rate;

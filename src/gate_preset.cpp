@@ -1,8 +1,10 @@
 #include "gate_preset.hpp"
 
 GatePreset::GatePreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.gate")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.gate")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.gate",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/gate/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.gate",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/gate/")) {}
 
 void GatePreset::save(boost::property_tree::ptree& root,
                       const std::string& section,
@@ -25,10 +27,12 @@ void GatePreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".gate.knee", settings->get_double("knee"));
 
+  root.put(section + ".gate.input", settings->get_double("input"));
+
   root.put(section + ".gate.makeup", settings->get_double("makeup"));
 }
 
-void GatePreset::load(boost::property_tree::ptree& root,
+void GatePreset::load(const boost::property_tree::ptree& root,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".gate.state");
@@ -49,21 +53,29 @@ void GatePreset::load(boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "knee", section + ".gate.knee");
 
+  update_key<double>(root, settings, "input", section + ".gate.input");
+
   update_key<double>(root, settings, "makeup", section + ".gate.makeup");
 }
 
 void GatePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  } else {
-    save(root, "input", input_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void GatePreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
-  } else {
-    load(root, "input", input_settings);
+void GatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

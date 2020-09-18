@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
+        <value nick="LR > LR (Stereo Default)" value="0" />
+        <value nick="LR > MS (Stereo to Mid-Side)" value="1" />
+        <value nick="MS > LR (Mid-Side to Stereo)" value="2" />
+        <value nick="LR > LL (Mono Left Channel)" value="3" />
+        <value nick="LR > RR (Mono Right Channel)" value="4" />
+        <value nick="LR > L+R (Mono Sum L+R)" value="5" />
+        <value nick="LR > RL (Stereo Flip Channels)" value="6" />
+    </enum>
+    <schema
+        id="com.github.wwmm.pulseeffects.stereotools">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>true</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>true</default>
+        </key>
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="balance-in" type="d">
+            <range min="-1" max="1"/>
+            <default>0.0</default>
+        </key>
+        <key name="balance-out" type="d">
+            <range min="-1" max="1"/>
+            <default>0.0</default>
+        </key>
+        <key name="softclip" type="b">
+            <default>false</default>
+        </key>
+        <key name="mutel" type="b">
+            <default>false</default>
+        </key>
+        <key name="muter" type="b">
+            <default>false</default>
+        </key>
+        <key name="phasel" type="b">
+            <default>false</default>
+        </key>
+        <key name="phaser" type="b">
+            <default>false</default>
+        </key>
+        <key name="mode" enum="com.github.wwmm.pulseeffects.stereotools.mode.enum">
+            <default>"LR > LR (Stereo Default)"</default>
+        </key>
+        <key name="slev" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="sbal" type="d">
+            <range min="-1" max="1"/>
+            <default>0.0</default>
+        </key>
+        <key name="mlev" type="d">
+            <range min="-36.1" max="36.1"/>
+            <default>0.0</default>
+        </key>
+        <key name="mpan" type="d">
+            <range min="-1" max="1"/>
+            <default>0.0</default>
+        </key>
+        <key name="stereo-base" type="d">
+            <range min="-1" max="1"/>
+            <default>0.0</default>
+        </key>
+        <key name="delay" type="d">
+            <range min="-20" max="20"/>
+            <default>0.0</default>
+        </key>
+        <key name="sc-level" type="d">
+            <range min="1" max="100"/>
+            <default>1</default>
+        </key>
+        <key name="stereo-phase" type="d">
+            <range min="0" max="360"/>
+            <default>0</default>
+        </key>
+    </schema>
+</schemalist>

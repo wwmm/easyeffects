@@ -5,13 +5,18 @@
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/eventbox.h>
+#include <gtkmm/grid.h>
+#include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
 #include <memory>
 #include <vector>
 #include "app_info_ui.hpp"
+#include "blocklist_settings_ui.hpp"
+#include "preset_type.hpp"
 #include "pulse_manager.hpp"
 #include "spectrum_ui.hpp"
+#include "util.hpp"
 
 class EffectsBaseUi {
  public:
@@ -24,23 +29,31 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi &&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
-  void on_app_added(std::shared_ptr<AppInfo> app_info);
+  virtual void on_app_added(std::shared_ptr<AppInfo> app_info) = 0;
   void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
   void on_app_removed(uint idx);
+  void on_new_output_level_db(const std::array<double, 2>& peak);
 
  protected:
   Glib::RefPtr<Gio::Settings> settings;
   Gtk::ListBox* listbox = nullptr;
   Gtk::Stack* stack = nullptr;
 
-  SpectrumUi* spectrum_ui = nullptr;
+  Gtk::Box *apps_box = nullptr, *app_button_row = nullptr, *global_level_meter_grid = nullptr;
+  Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
 
+  PulseManager* pm = nullptr;
+
+  std::vector<AppInfoUi*> apps_list;
   std::vector<sigc::connection> connections;
+
+  SpectrumUi* spectrum_ui = nullptr;
 
   template <typename T>
   void add_to_listbox(T p) {
-    auto row = Gtk::manage(new Gtk::ListBoxRow());
-    auto eventBox = Gtk::manage(new Gtk::EventBox());
+    auto* row = Gtk::manage(new Gtk::ListBoxRow());
+    auto* eventBox = Gtk::manage(new Gtk::EventBox());
 
     eventBox->add(*p->listbox_control);
 
@@ -54,7 +67,7 @@ class EffectsBaseUi {
 
     auto entry = Gtk::TargetEntry("Gtk::ListBoxRow", Gtk::TARGET_SAME_APP, 0);
 
-    listTargets.push_back(entry);
+    listTargets.emplace_back(entry);
 
     eventBox->drag_source_set(listTargets, Gdk::MODIFIER_MASK, Gdk::ACTION_MOVE);
 
@@ -131,13 +144,7 @@ class EffectsBaseUi {
   }
 
  private:
-  Gtk::Box* apps_box = nullptr;
-
-  PulseManager* pm = nullptr;
-
   Gtk::Box* placeholder_spectrum = nullptr;
-
-  std::vector<AppInfoUi*> apps_list;
 
   auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 };

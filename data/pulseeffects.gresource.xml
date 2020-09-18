@@ -4,10 +4,11 @@
         <file>about.glade</file>
         <file>ui/custom.css</file>
         <file>ui/application.glade</file>
+        <file>ui/app_button_row.glade</file>
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.glade</file>
         <file>ui/pulse_settings.glade</file>
-        <file>ui/blacklist_settings.glade</file>
+        <file>ui/blocklist_settings.glade</file>
         <file>ui/general_settings.glade</file>
         <file>ui/effects_base.glade</file>
         <file>ui/app_info.glade</file>
@@ -42,11 +43,10 @@
         <file>ui/webrtc.glade</file>
         <file>ui/preset_row.glade</file>
         <file>ui/presets_menu.glade</file>
-        <file>ui/blacklist_row.glade</file>
+        <file>ui/blocklist_row.glade</file>
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>
-        <file>icons/about_icon.png</file>
         <file>icons/pulseeffects-sine-symbolic.svg</file>
         <file>icons/pulseeffects-us-symbolic.svg</file>
         <file>icons/pulseeffects-db-symbolic.svg</file>

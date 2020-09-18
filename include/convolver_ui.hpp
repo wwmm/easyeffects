@@ -1,14 +1,6 @@
 #ifndef CONVOLVER_UI_HPP
 #define CONVOLVER_UI_HPP
 
-#include <gtkmm/button.h>
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/label.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/menubutton.h>
-#include <gtkmm/scrolledwindow.h>
-#include <gtkmm/togglebutton.h>
 #include <boost/filesystem.hpp>
 #include <future>
 #include <mutex>
@@ -16,12 +8,17 @@
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
-  ConvolverUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  ConvolverUi(BaseObjectType* cobject,
+              const Glib::RefPtr<Gtk::Builder>& builder,
+              const std::string& schema,
+              const std::string& schema_path);
   ConvolverUi(const ConvolverUi&) = delete;
   auto operator=(const ConvolverUi&) -> ConvolverUi& = delete;
   ConvolverUi(const ConvolverUi&&) = delete;
   auto operator=(const ConvolverUi &&) -> ConvolverUi& = delete;
   ~ConvolverUi() override;
+
+  void reset() override;
 
  private:
   std::string log_tag = "convolver_ui: ";
@@ -48,7 +45,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   boost::filesystem::path irs_dir;
 
   bool mouse_inside = false, show_fft_spectrum = false;
-  unsigned int max_plot_points = 200;
+  unsigned int max_plot_points = 1000u;
   float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
   float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
   float max_time = 0.0F;

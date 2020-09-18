@@ -2,12 +2,20 @@
 #include "util.hpp"
 
 EqualizerPreset::EqualizerPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.equalizer")),
-      input_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.equalizer.leftchannel")),
-      input_settings_right(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs.equalizer.rightchannel")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.equalizer")),
-      output_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.equalizer.leftchannel")),
-      output_settings_right(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs.equalizer.rightchannel")) {}
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/")),
+      input_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
+                                                "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/")),
+      input_settings_right(
+          Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
+                                "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/rightchannel/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer",
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/")),
+      output_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
+                                                 "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/")),
+      output_settings_right(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
+                                                  "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/")) {
+}
 
 void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -66,7 +74,7 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::load(boost::property_tree::ptree& root,
+void EqualizerPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<bool>(root, settings, "state", section + ".equalizer.state");
@@ -92,7 +100,7 @@ void EqualizerPreset::load(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
+void EqualizerPreset::load_channel(const boost::property_tree::ptree& root,
                                    const std::string& section,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
@@ -124,17 +132,23 @@ void EqualizerPreset::load_channel(boost::property_tree::ptree& root,
 }
 
 void EqualizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  } else {
-    save(root, "input", input_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
-void EqualizerPreset::read(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
-  } else {
-    load(root, "input", input_settings);
+void EqualizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

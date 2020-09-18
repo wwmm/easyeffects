@@ -1,7 +1,6 @@
 #include "effects_base_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/button.h>
-#include <gtkmm/label.h>
+#include "plugin_ui_base.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
@@ -14,9 +13,23 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   builder->get_widget("apps_box", apps_box);
   builder->get_widget("placeholder_spectrum", placeholder_spectrum);
 
+  auto b_app_button_row = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_button_row.glade");
+
+  b_app_button_row->get_widget("app_button_row", app_button_row);
+  b_app_button_row->get_widget("app_input_icon", app_input_icon);
+  b_app_button_row->get_widget("app_output_icon", app_output_icon);
+  b_app_button_row->get_widget("global_level_meter_grid", global_level_meter_grid);
+  b_app_button_row->get_widget("global_output_level_left", global_output_level_left);
+  b_app_button_row->get_widget("global_output_level_right", global_output_level_right);
+  b_app_button_row->get_widget("saturation_icon", saturation_icon);
+
+  // spectrum
+
   spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
 
-  auto row = Gtk::manage(new Gtk::ListBoxRow());
+  // setting up plugin list box
+
+  auto* row = Gtk::manage(new Gtk::ListBoxRow());
 
   row->set_name("applications");
   row->set_margin_top(6);
@@ -24,44 +37,23 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   row->set_margin_right(6);
   row->set_margin_left(6);
 
-  auto row_label = Gtk::manage(new Gtk::Label(_("Applications")));
-
-  row_label->set_halign(Gtk::Align::ALIGN_START);
-
-  row->add(*row_label);
+  row->add(*app_button_row);
 
   listbox->add(*row);
+
+  // plugin rows connections
 
   listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
 
   listbox->set_sort_func(sigc::mem_fun(*this, &EffectsBaseUi::on_listbox_sort));
 
-  connections.push_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
+  connections.emplace_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
-  for (auto c : connections) {
+  for (auto& c : connections) {
     c.disconnect();
   }
-}
-
-void EffectsBaseUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
-  for (auto a : apps_list) {
-    if (a->app_info->index == app_info->index) {
-      // do not add the same app two times in the interface
-      return;
-    }
-  }
-
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
-
-  AppInfoUi* appui = nullptr;
-
-  builder->get_widget_derived("widgets_grid", appui, app_info, pm);
-
-  apps_box->add(*appui);
-
-  apps_list.push_back(appui);
 }
 
 void EffectsBaseUi::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
@@ -79,7 +71,7 @@ void EffectsBaseUi::on_app_removed(uint idx) {
     auto n = it - apps_list.begin();
 
     if (apps_list[n]->app_info->index == idx) {
-      auto appui = apps_list[n];
+      auto* appui = apps_list[n];
 
       apps_box->remove(*appui);
 
@@ -125,4 +117,31 @@ auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2
   }
 
   return 0;
+}
+
+void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
+  auto left = peak[0];
+  auto right = peak[1];
+
+  // show the grid only if something is playing/recording
+
+  if (left < -99.0 && right < -99.0) {
+    global_level_meter_grid->set_visible(false);
+
+    return;
+  }
+
+  global_level_meter_grid->set_visible(true);
+
+  global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
+
+  global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
+
+  // saturation icon notification
+
+  if (left > 0.0 || right > 0.0) {
+    saturation_icon->set_visible(true);
+  } else {
+    saturation_icon->set_visible(false);
+  }
 }

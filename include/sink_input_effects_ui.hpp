@@ -38,6 +38,8 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
 
+  void on_app_added(std::shared_ptr<AppInfo> app_info) override;
+
  protected:
   std::string log_tag = "sie_ui: ";
 

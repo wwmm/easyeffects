@@ -1,13 +1,14 @@
 #ifndef CRYSTALIZER_UI_HPP
 #define CRYSTALIZER_UI_HPP
 
-#include <gtkmm/grid.h>
-#include <gtkmm/togglebutton.h>
 #include "plugin_ui_base.hpp"
 
 class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
  public:
-  CrystalizerUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, const std::string& settings_name);
+  CrystalizerUi(BaseObjectType* cobject,
+                const Glib::RefPtr<Gtk::Builder>& builder,
+                const std::string& schema,
+                const std::string& schema_path);
   CrystalizerUi(const CrystalizerUi&) = delete;
   auto operator=(const CrystalizerUi&) -> CrystalizerUi& = delete;
   CrystalizerUi(const CrystalizerUi&&) = delete;
@@ -17,6 +18,8 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
   void on_new_range_before(double value);
 
   void on_new_range_after(double value);
+
+  void reset() override;
 
  private:
   Gtk::Grid* bands_grid = nullptr;

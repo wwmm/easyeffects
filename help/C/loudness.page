@@ -6,20 +6,22 @@
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
-    <title>Loudness</title>
+    <title>Loudness Compensator</title>
     <p>
-        PulseEffects uses the loudness from MDA.LV2. The ear is less sensitive to low
-        frequencies when listening at low volume. This plug-in is based on the
-        Stevens-Davis equal loudness contours and allows the bass level to be adjusted
-        to simulate or correct for this effect.
+        PulseEffects uses the loudness compensator from Linux Studio Plugins which
+        applies equal loudness contour corrections to the input signal. This is a
+        measure of sound pressure level (SPL), over the frequency spectrum, for
+        which a listener perceives a constant loudness when presented with pure
+        steady tones.
     </p>
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Loudness</em>
+                <em style="strong" its:withinText="nested">Input</em>
             </title>
             <p>
-                Source level relative to listening level (based on a 100 dB SPL maximum level).
+                The input gain settings, allows to adjust the level of the input
+                signal to the desired level.
             </p>
         </item>
         <item>
@@ -27,16 +29,35 @@
                 <em style="strong" its:withinText="nested">Output</em>
             </title>
             <p>
-                Change output level.
+                The output volume of the signal with applied equal loudness contour,
+                controls the loudness of the 1 kHz pure sine wave.
             </p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Link</em>
+                <em style="strong" its:withinText="nested">Standard</em>
             </title>
             <p>
-                Automatically adjusts Output to maintain a consistent tonal balance at all
-                levels.
+                Allows to select different equal loudness contour standards.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">FFT Size</em>
+            </title>
+            <p>
+                Allows to select size of the fast Fourier transform frame used for
+                the processing. The larger FFT frame is, the more precize the curve
+                is approximated and the more latency the plugin introduces
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Reference Signal</em>
+            </title>
+            <p>
+                Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz
+                frequency for callibration purposes.
             </p>
         </item>
     </terms>
@@ -45,17 +66,18 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Loudness" its:translate="no">
-                        https://en.wikipedia.org/wiki/Loudness
+                    <link href="https://en.wikipedia.org/wiki/Loudness_compensation"
+                        its:translate="no">
+                        https://en.wikipedia.org/wiki/Loudness_compensation
                     </link>
                 </p>
             </item>
             <item>
                 <p>
                     <link
-                        href="http://mda.smartelectronix.com/vst/help/loudness.htm"
+                        href="https://lsp-plug.in/?page=manuals&amp;section=loud_comp_stereo"
                         its:translate="no">
-                        http://mda.smartelectronix.com/vst/help/loudness.htm
+                        https://lsp-plug.in/?page=manuals&amp;section=loud_comp_stereo
                     </link>
                 </p>
             </item>

@@ -1,162 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.compressor.mode.enum">
-        <value nick="Downward" value="0" />
-        <value nick="Upward" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
-        <value nick="Feed-forward" value="0" />
-        <value nick="Feed-back" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
-        <value nick="Peak" value="0" />
-        <value nick="RMS" value="1" />
-        <value nick="Low-Pass" value="2" />
-        <value nick="Uniform" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
-        <value nick="Middle" value="0" />
-        <value nick="Side" value="1" />
-        <value nick="Left" value="2" />
-        <value nick="Right" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.filter.enum">
-        <value nick="12dB/oct Lowpass" value="0" />
-        <value nick="24dB/oct Lowpass" value="1" />
-        <value nick="36dB/oct Lowpass" value="2" />
-        <value nick="12dB/oct Highpass" value="3" />
-        <value nick="24dB/oct Highpass" value="4" />
-        <value nick="36dB/oct Highpass" value="5" />
-        <value nick="6dB/oct Bandpass" value="6" />
-        <value nick="12dB/oct Bandpass" value="7" />
-        <value nick="18dB/oct Bandpass" value="8" />
-        <value nick="6dB/oct Bandreject" value="9" />
-        <value nick="12dB/oct Bandreject" value="10" />
-        <value nick="18dB/oct Bandreject" value="11" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.mode.enum">
-        <value nick="IIR" value="0" />
-        <value nick="FIR" value="1" />
-        <value nick="FFT" value="2" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandmode.enum">
-        <value nick="RLC (BT)" value="0" />
-        <value nick="RLC (MT)" value="1" />
-        <value nick="BWC (BT)" value="2" />
-        <value nick="BWC (MT)" value="3" />
-        <value nick="LRX (BT)" value="4" />
-        <value nick="LRX (MT)" value="5" />
-        <value nick="APO (DR)" value="6" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandtype.enum">
-        <value nick="Off" value="0" />
-        <value nick="Bell" value="1" />
-        <value nick="Hi-pass" value="2" />
-        <value nick="Hi-shelf" value="3" />
-        <value nick="Lo-pass" value="4" />
-        <value nick="Lo-shelf" value="5" />
-        <value nick="Notch" value="6" />
-        <value nick="Resonance" value="7" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.equalizer.bandslope.enum">
-        <value nick="x1" value="0" />
-        <value nick="x2" value="1" />
-        <value nick="x3" value="2" />
-        <value nick="x4" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.reverb.roomsize.enum">
-        <value nick="Small" value="0" />
-        <value nick="Medium" value="1" />
-        <value nick="Large" value="2" />
-        <value nick="Tunnel-like" value="3" />
-        <value nick="Large/smooth" value="4" />
-        <value nick="Experimental" value="5" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.stereoenhancer.msource.enum">
-        <value nick="Left" value="0" />
-        <value nick="Right" value="1" />
-        <value nick="Mid (L+R)" value="2" />
-        <value nick="Side (L-R)" value="3" />
-        <value nick="Mute" value="4" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.gate.detection.enum">
-        <value nick="RMS" value="0" />
-        <value nick="Peak" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.gate.stereo.link.enum">
-        <value nick="Average" value="0" />
-        <value nick="Maximum" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.deesser.detection.enum">
-        <value nick="RMS" value="0" />
-        <value nick="Peak" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.deesser.mode.enum">
-        <value nick="Wide" value="0" />
-        <value nick="Split" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.webrtc.echo.suppression.level.enum">
-        <value nick="low" value="0" />
-        <value nick="moderate" value="1" />
-        <value nick="high" value="2" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.webrtc.noise.suppression.level.enum">
-        <value nick="low" value="0" />
-        <value nick="moderate" value="1" />
-        <value nick="high" value="2" />
-        <value nick="very-high" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.webrtc.gain.control.mode.enum">
-        <value nick="adaptive-digital" value="1" />
-        <value nick="fixed-digital" value="2" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.webrtc.voice.detection.likelihood.enum">
-        <value nick="very-low" value="0" />
-        <value nick="low" value="1" />
-        <value nick="moderate" value="2" />
-        <value nick="high" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.expander.sidechain.mode.enum">
-        <value nick="Peak" value="0" />
-        <value nick="RMS" value="1" />
-        <value nick="Low-Pass" value="2" />
-        <value nick="Uniform" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.expander.sidechain.source.enum">
-        <value nick="Middle" value="0" />
-        <value nick="Side" value="1" />
-        <value nick="Left" value="2" />
-        <value nick="Right" value="3" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.expander.mode.enum">
-        <value nick="Down" value="0" />
-        <value nick="Up" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.mode.enum">
-        <value nick="LR4" value="0" />
-        <value nick="LR8" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.multibandcompressor.detection.enum">
-        <value nick="RMS" value="0" />
-        <value nick="Peak" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.multibandgate.mode.enum">
-        <value nick="LR4" value="0" />
-        <value nick="LR8" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.multibandgate.detection.enum">
-        <value nick="RMS" value="0" />
-        <value nick="Peak" value="1" />
-    </enum>
-    <enum id="com.github.wwmm.pulseeffects.stereotools.mode.enum">
-        <value nick="LR > LR (Stereo Default)" value="0" />
-        <value nick="LR > MS (Stereo to Mid-Side)" value="1" />
-        <value nick="MS > LR (Mid-Side to Stereo)" value="2" />
-        <value nick="LR > LL (Mono Left Channel)" value="3" />
-        <value nick="LR > RR (Mono Right Channel)" value="4" />
-        <value nick="LR > L+R (Mono Sum L+R)" value="5" />
-        <value nick="LR > RL (Stereo Flip Channels)" value="6" />
-    </enum>
     <enum id="com.github.wwmm.pulseeffects.blocksize.enum">
         <value nick="64" value="64" />
         <value nick="128" value="128" />
@@ -197,7 +40,10 @@
         <key name="use-default-source" type="b">
             <default>true</default>
         </key>
-        <key name="last-used-preset" type="s">
+        <key name="last-used-input-preset" type="s">
+            <default l10n="messages">"Presets"</default>
+        </key>
+        <key name="last-used-output-preset" type="s">
             <default l10n="messages">"Presets"</default>
         </key>
         <key name="custom-sink" type="s">
@@ -206,10 +52,13 @@
         <key name="custom-source" type="s">
             <default>""</default>
         </key>
-        <key name="blacklist-in" type="as">
+        <key name="show-blocklisted-apps" type="b">
+            <default>false</default>
+        </key>
+        <key name="blocklist-in" type="as">
             <default>[]</default>
         </key>
-        <key name="blacklist-out" type="as">
+        <key name="blocklist-out" type="as">
             <default>[]</default>
         </key>
         <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">

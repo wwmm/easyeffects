@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.1 -->
+<!-- Generated with glade 3.36.0 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.22"/>
   <object class="GtkAdjustment" id="attack0">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
     <property name="value">150</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="attack1">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">150</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="attack2">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">150</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="attack3">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">150</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="freq0">
     <property name="lower">10</property>
     <property name="upper">20000</property>
     <property name="value">120</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="freq1">
     <property name="lower">10</property>
     <property name="upper">20000</property>
     <property name="value">1000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkAdjustment" id="freq2">
     <property name="lower">10</property>
     <property name="upper">20000</property>
     <property name="value">6000</property>
     <property name="step_increment">1</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">100</property>
   </object>
   <object class="GtkImage" id="image1">
     <property name="visible">True</property>
@@ -61,144 +64,172 @@
   <object class="GtkBox" id="listbox_control">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
-    <property name="spacing">6</property>
+    <property name="spacing">10</property>
     <child>
-      <object class="GtkLabel">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="valign">center</property>
-        <property name="label" translatable="yes">Multiband Gate</property>
+        <property name="halign">end</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkButton" id="plugin_up">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="image">image1</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="plugin_down">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="image">image2</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
+        <property name="pack_type">end</property>
         <property name="position">0</property>
       </packing>
     </child>
     <child>
-      <object class="GtkButton" id="plugin_down">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="halign">end</property>
-        <property name="valign">center</property>
-        <property name="image">image2</property>
-        <property name="always_show_image">True</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="pack_type">end</property>
-        <property name="position">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="plugin_up">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <property name="halign">end</property>
-        <property name="valign">center</property>
-        <property name="image">image1</property>
-        <property name="always_show_image">True</property>
-      </object>
-      <packing>
-        <property name="expand">False</property>
-        <property name="fill">True</property>
-        <property name="pack_type">end</property>
-        <property name="position">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkImage" id="img_state">
+      <object class="GtkBox">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="no_show_all">True</property>
-        <property name="halign">end</property>
-        <property name="valign">center</property>
-        <property name="icon_name">emblem-ok-symbolic</property>
+        <property name="halign">start</property>
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkCheckButton" id="enable">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="valign">center</property>
+            <property name="draw_indicator">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="plugin_name_label">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Multiband Gate</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="pack_type">end</property>
-        <property name="position">3</property>
+        <property name="position">1</property>
       </packing>
     </child>
   </object>
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="knee0">
     <property name="upper">18</property>
     <property name="value">9</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_knee_value_changed" swapped="no"/>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="knee1">
     <property name="upper">18</property>
+    <property name="value">9</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="knee2">
     <property name="upper">18</property>
+    <property name="value">9</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="knee3">
     <property name="upper">18</property>
+    <property name="value">9</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">1</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="makeup0">
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_makeup_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="makeup1">
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="makeup2">
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="makeup3">
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-36</property>
     <property name="upper">36</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="range0">
     <property name="lower">-95</property>
-    <property name="step_increment">1</property>
+    <property name="value">-24</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="range1">
     <property name="lower">-95</property>
-    <property name="step_increment">1</property>
+    <property name="value">-24</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="range2">
     <property name="lower">-95</property>
-    <property name="step_increment">1</property>
+    <property name="value">-24</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="range3">
     <property name="lower">-95</property>
-    <property name="step_increment">1</property>
+    <property name="value">-24</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="ratio0">
@@ -206,77 +237,87 @@
     <property name="upper">20</property>
     <property name="value">2</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio1">
     <property name="lower">1</property>
     <property name="upper">20</property>
+    <property name="value">2</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio2">
     <property name="lower">1</property>
     <property name="upper">20</property>
+    <property name="value">2</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="ratio3">
     <property name="lower">1</property>
     <property name="upper">20</property>
+    <property name="value">2</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.10000000000000001</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="release0">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
     <property name="value">300</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="release1">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">300</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="release2">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">300</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="release3">
     <property name="lower">0.01</property>
     <property name="upper">2000</property>
+    <property name="value">300</property>
     <property name="step_increment">0.01</property>
-    <property name="page_increment">0.01</property>
+    <property name="page_increment">0.1</property>
   </object>
   <object class="GtkAdjustment" id="threshold0">
     <property name="lower">-60</property>
     <property name="value">-12</property>
-    <property name="step_increment">1</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
-    <signal name="value-changed" handler="on_threshold_value_changed" swapped="no"/>
   </object>
   <object class="GtkAdjustment" id="threshold1">
     <property name="lower">-60</property>
-    <property name="step_increment">1</property>
+    <property name="value">-12</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="threshold2">
     <property name="lower">-60</property>
-    <property name="step_increment">1</property>
+    <property name="value">-12</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkAdjustment" id="threshold3">
     <property name="lower">-60</property>
-    <property name="step_increment">1</property>
+    <property name="value">-12</property>
+    <property name="step_increment">0.1</property>
     <property name="page_increment">1</property>
   </object>
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="valign">center</property>
+    <property name="margin_start">6</property>
+    <property name="margin_end">6</property>
     <property name="row_spacing">18</property>
     <child>
       <object class="GtkBox" id="controls">
@@ -293,7 +334,7 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="row_spacing">6</property>
-            <property name="column_spacing">18</property>
+            <property name="column_spacing">20</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
@@ -423,8 +464,8 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
             <property name="valign">center</property>
+            <property name="hexpand">True</property>
             <property name="row_spacing">18</property>
             <child>
               <object class="GtkStackSwitcher">
@@ -442,12 +483,14 @@
               <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -455,7 +498,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass0">
@@ -508,15 +551,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -529,7 +572,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -550,7 +592,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -563,7 +604,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -584,7 +624,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -597,13 +636,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">threshold0</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -617,7 +656,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -630,7 +668,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -649,7 +686,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -662,7 +698,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -683,7 +718,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -696,8 +730,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -705,6 +737,7 @@
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">makeup0</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -718,7 +751,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -731,13 +763,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">range0</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                             <property name="value">300</property>
@@ -757,12 +789,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -789,8 +822,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -802,7 +835,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -829,8 +862,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -853,6 +886,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -860,7 +894,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass1">
@@ -913,15 +947,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -934,7 +968,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -956,7 +989,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -969,7 +1001,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -991,7 +1022,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1004,13 +1034,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">threshold1</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                             <property name="value">-12</property>
@@ -1025,7 +1055,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1038,7 +1067,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1058,7 +1086,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1071,7 +1098,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1093,7 +1119,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1106,8 +1131,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1115,6 +1138,7 @@
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">makeup1</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1128,13 +1152,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">range1</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1148,7 +1172,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -1166,12 +1189,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -1198,8 +1222,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1211,7 +1235,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -1238,8 +1262,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1263,6 +1287,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -1270,7 +1295,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass2">
@@ -1323,15 +1348,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -1344,7 +1369,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1366,7 +1390,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -1379,7 +1402,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1401,7 +1423,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1414,13 +1435,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">threshold2</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                             <property name="value">-12</property>
@@ -1435,7 +1456,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1448,7 +1468,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1468,7 +1487,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1481,7 +1499,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1503,7 +1520,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1516,8 +1532,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1525,6 +1539,7 @@
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">makeup2</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1538,13 +1553,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">range2</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1558,7 +1573,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -1576,12 +1590,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -1608,8 +1623,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1621,7 +1636,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -1648,8 +1663,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1673,6 +1688,7 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="row_spacing">18</property>
                     <child>
                       <object class="GtkGrid">
@@ -1680,7 +1696,7 @@
                         <property name="can_focus">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="column_spacing">6</property>
+                        <property name="column_spacing">20</property>
                         <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkToggleButton" id="bypass3">
@@ -1733,15 +1749,15 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="row_spacing">6</property>
-                        <property name="column_spacing">48</property>
+                        <property name="column_spacing">24</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Attack</property>
                           </object>
                           <packing>
@@ -1754,7 +1770,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1776,7 +1791,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Release</property>
                           </object>
                           <packing>
@@ -1789,7 +1803,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-ms-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1811,7 +1824,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Threshold</property>
                           </object>
                           <packing>
@@ -1824,13 +1836,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">threshold3</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                             <property name="value">-12</property>
@@ -1845,7 +1857,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Ratio</property>
                           </object>
                           <packing>
@@ -1858,7 +1869,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
@@ -1878,7 +1888,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Knee</property>
                           </object>
                           <packing>
@@ -1891,7 +1900,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
@@ -1913,7 +1921,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Makeup</property>
                           </object>
                           <packing>
@@ -1926,8 +1933,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="hexpand">True</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="primary_icon_activatable">False</property>
@@ -1935,6 +1940,7 @@
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">makeup3</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1948,13 +1954,13 @@
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="width_chars">10</property>
                             <property name="secondary_icon_name">pulseeffects-db-symbolic</property>
                             <property name="secondary_icon_activatable">False</property>
                             <property name="input_purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">range3</property>
+                            <property name="digits">1</property>
                             <property name="numeric">True</property>
                             <property name="update_policy">if-valid</property>
                           </object>
@@ -1968,7 +1974,6 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">center</property>
-                            <property name="valign">center</property>
                             <property name="label" translatable="yes">Reduction</property>
                           </object>
                           <packing>
@@ -1986,12 +1991,13 @@
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="column_spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Gating</property>
                           </object>
                           <packing>
@@ -2018,8 +2024,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -2031,7 +2037,7 @@
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="halign">end</property>
-                            <property name="valign">center</property>
+                            <property name="margin_end">3</property>
                             <property name="label" translatable="yes">Output</property>
                           </object>
                           <packing>
@@ -2058,8 +2064,8 @@
                             <property name="sensitive">False</property>
                             <property name="can_focus">False</property>
                             <property name="label">0</property>
-                            <property name="width_chars">2</property>
-                            <property name="max_width_chars">2</property>
+                            <property name="width_chars">4</property>
+                            <property name="max_width_chars">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -2096,14 +2102,14 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_top">20</property>
+            <property name="row_spacing">6</property>
             <property name="column_spacing">6</property>
             <child>
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Input</property>
               </object>
               <packing>
@@ -2117,13 +2123,11 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="margin_right">3</property>
                 <property name="label" translatable="yes">Output</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2144,7 +2148,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">0</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -2164,7 +2167,7 @@
               <packing>
                 <property name="left_attach">4</property>
                 <property name="top_attach">0</property>
-                <property name="height">4</property>
+                <property name="height">5</property>
               </packing>
             </child>
             <child>
@@ -2172,7 +2175,6 @@
                 <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">False</property>
-                <property name="halign">center</property>
                 <property name="label">1</property>
                 <property name="width_chars">3</property>
                 <property name="max_width_chars">3</property>
@@ -2204,7 +2206,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
               </packing>
             </child>
             <child>
@@ -2216,7 +2218,7 @@
               </object>
               <packing>
                 <property name="left_attach">2</property>
-                <property name="top_attach">3</property>
+                <property name="top_attach">4</property>
               </packing>
             </child>
             <child>
@@ -2230,7 +2232,7 @@
               </object>
               <packing>
                 <property name="left_attach">3</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2245,7 +2247,7 @@
               </object>
               <packing>
                 <property name="left_attach">5</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
               </packing>
             </child>
@@ -2256,8 +2258,7 @@
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="adjustment">input_gain</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
+                <property name="round_digits">1</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>
@@ -2273,14 +2274,34 @@
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="adjustment">output_gain</property>
-                <property name="round_digits">0</property>
-                <property name="digits">0</property>
+                <property name="round_digits">1</property>
                 <property name="value_pos">right</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">2</property>
+                <property name="top_attach">3</property>
                 <property name="height">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">5</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkFlowBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">4</property>
               </packing>
             </child>
           </object>
@@ -2293,19 +2314,86 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="top_attach">0</property>
       </packing>
     </child>
     <child>
-      <object class="GtkSwitch" id="enable">
+      <object class="GtkGrid">
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
+        <property name="can_focus">False</property>
+        <property name="column_homogeneous">True</property>
+        <child>
+          <object class="GtkButton" id="plugin_reset">
+            <property name="label" translatable="yes">Reset</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="image_position">right</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">end</property>
+            <property name="valign">center</property>
+            <property name="spacing">4</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Provided by</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label">Calf Studio Gears</property>
+                <attributes>
+                  <attribute name="weight" value="bold"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
+        <property name="top_attach">1</property>
       </packing>
     </child>
   </object>
