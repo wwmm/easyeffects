@@ -1,3 +1,12 @@
+pulseeffects (4.8.1-1) unstable; urgency=low
+
+  * Version 4.8.1 upstream (autobuild)
+  * Dropped Ubuntu < 20.04 because GTKMM >= 3.24 is required now
+  * Requires lsp-plugins >= 1.1.24
+  * Dropped soft dependency from mda-lv2 (not needeed any more according to upstream)
+
+ -- Mikhail Novosyolov <mikhailnov@dumalogiya.ru>  Fri, 18 Sep 2020 22:09:17 +0300
+ 
 pulseeffects (4.7.2-3) unstable; urgency=low
 
   * Version 4.7.2 upstream (autobuild)
