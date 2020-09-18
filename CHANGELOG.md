@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.8.1]
+
 ### Added
 
 - `Blocklist` adopted and related command modified as a checkbutton inside the app info ui.
@@ -12,6 +14,7 @@
   global level meter is only shown when something is recording/playing
 - The feature that shows the last used preset in the preset menu button label was improved. When seeing input effects
   widget it shows the last used input preset. And when seeing output effects widgets it shows the last used output preset.
+- New application icon.
 
 ## [4.8.0]
 
