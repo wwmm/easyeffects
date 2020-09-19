@@ -17,7 +17,7 @@ old_header=$(head -1 ./debian/changelog)
 old_format_source=$(cat ./debian/source/format)
 tmp_suffix="buildPPA_$(date +%s)_tmp"
 
-for i in bionic disco eoan focal
+for i in focal groovy
 do
 	old_version="$(cat ./debian/changelog | head -n 1 | awk -F "(" '{print $2}' | awk -F ")" '{print $1}')"
 	new_version="${old_version}~${i}1"
