@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [4.8.2]
+
+### Fixed
+
+- When importing Equalizer APO presets the bands were not being set to the APO mode.
+
 ## [4.8.1]
 
 ### Added

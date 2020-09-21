@@ -40,23 +40,32 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Off");
+    case 0:
+      return g_variant_new_string("Off");
 
-    case 1: return g_variant_new_string("Bell");
+    case 1:
+      return g_variant_new_string("Bell");
 
-    case 2: return g_variant_new_string("Hi-pass");
+    case 2:
+      return g_variant_new_string("Hi-pass");
 
-    case 3: return g_variant_new_string("Hi-shelf");
+    case 3:
+      return g_variant_new_string("Hi-shelf");
 
-    case 4: return g_variant_new_string("Lo-pass");
+    case 4:
+      return g_variant_new_string("Lo-pass");
 
-    case 5: return g_variant_new_string("Lo-shelf");
+    case 5:
+      return g_variant_new_string("Lo-shelf");
 
-    case 6: return g_variant_new_string("Notch");
+    case 6:
+      return g_variant_new_string("Notch");
 
-    case 7: return g_variant_new_string("Resonance");
+    case 7:
+      return g_variant_new_string("Resonance");
 
-    default: return g_variant_new_string("Bell");
+    default:
+      return g_variant_new_string("Bell");
   }
 }
 
@@ -78,13 +87,17 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("IIR");
+    case 0:
+      return g_variant_new_string("IIR");
 
-    case 1: return g_variant_new_string("FIR");
+    case 1:
+      return g_variant_new_string("FIR");
 
-    case 3: return g_variant_new_string("FFT");
+    case 3:
+      return g_variant_new_string("FFT");
 
-    default: return g_variant_new_string("IIR");
+    default:
+      return g_variant_new_string("IIR");
   }
 }
 
@@ -114,21 +127,29 @@ auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("RLC (BT)");
+    case 0:
+      return g_variant_new_string("RLC (BT)");
 
-    case 1: return g_variant_new_string("RLC (MT)");
+    case 1:
+      return g_variant_new_string("RLC (MT)");
 
-    case 2: return g_variant_new_string("BWC (BT)");
+    case 2:
+      return g_variant_new_string("BWC (BT)");
 
-    case 3: return g_variant_new_string("BWC (MT)");
+    case 3:
+      return g_variant_new_string("BWC (MT)");
 
-    case 4: return g_variant_new_string("LRX (BT)");
+    case 4:
+      return g_variant_new_string("LRX (BT)");
 
-    case 5: return g_variant_new_string("LRX (MT)");
+    case 5:
+      return g_variant_new_string("LRX (MT)");
 
-    case 6: return g_variant_new_string("APO (DR)");
+    case 6:
+      return g_variant_new_string("APO (DR)");
 
-    default: return g_variant_new_string("RLC (BT)");
+    default:
+      return g_variant_new_string("RLC (BT)");
   }
 }
 
@@ -152,15 +173,20 @@ auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("x1");
+    case 0:
+      return g_variant_new_string("x1");
 
-    case 1: return g_variant_new_string("x2");
+    case 1:
+      return g_variant_new_string("x2");
 
-    case 2: return g_variant_new_string("x3");
+    case 2:
+      return g_variant_new_string("x3");
 
-    case 3: return g_variant_new_string("x4");
+    case 3:
+      return g_variant_new_string("x4");
 
-    default: return g_variant_new_string("x1");
+    default:
+      return g_variant_new_string("x1");
   }
 }
 
@@ -815,7 +841,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get filter type
   std::regex_search(line, matches, re_filter_type);
 
-  if (matches.size() != 2u) {
+  if (matches.size() != 2U) {
     return false;
   }
 
@@ -828,7 +854,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get center frequency
   std::regex_search(line, matches, re_freq);
 
-  if (matches.size() != 2u) {
+  if (matches.size() != 2U) {
     return false;
   }
 
@@ -843,7 +869,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
       return false;
     }
 
-    if (matches.size() == 2u) {
+    if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
       filter.slope_dB = std::stof(matches.str(1));
     }
@@ -858,7 +884,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
       return false;
     }
 
-    if (matches.size() == 2u) {
+    if (matches.size() == 2U) {
       filter.gain = std::stof(matches.str(1));
     }
   }
@@ -871,7 +897,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
       return false;
     }
 
-    if (matches.size() == 2u) {
+    if (matches.size() == 2U) {
       filter.quality_factor = std::stof(matches.str(1));
     }
   }
@@ -911,6 +937,8 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
 
     for (int n = 0; n < max_bands; n++) {
       if (n < static_cast<int>(bands.size())) {
+        settings_left->set_string(std::string("band" + std::to_string(n) + "-mode"), "APO (DR)");
+
         settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
         settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
         settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
