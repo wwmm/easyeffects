@@ -30,21 +30,29 @@ auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("64");
+    case 0:
+      return g_variant_new_string("64");
 
-    case 1: return g_variant_new_string("128");
+    case 1:
+      return g_variant_new_string("128");
 
-    case 2: return g_variant_new_string("256");
+    case 2:
+      return g_variant_new_string("256");
 
-    case 3: return g_variant_new_string("512");
+    case 3:
+      return g_variant_new_string("512");
 
-    case 4: return g_variant_new_string("1024");
+    case 4:
+      return g_variant_new_string("1024");
 
-    case 5: return g_variant_new_string("2048");
+    case 5:
+      return g_variant_new_string("2048");
 
-    case 6: return g_variant_new_string("4096");
+    case 6:
+      return g_variant_new_string("4096");
 
-    default: return g_variant_new_string("512");
+    default:
+      return g_variant_new_string("512");
   }
 }
 

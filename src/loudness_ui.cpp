@@ -28,21 +28,29 @@ auto int_to_fft_size_enum(const GValue* value, const GVariantType* expected_type
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("256");
+    case 0:
+      return g_variant_new_string("256");
 
-    case 1: return g_variant_new_string("512");
+    case 1:
+      return g_variant_new_string("512");
 
-    case 2: return g_variant_new_string("1024");
+    case 2:
+      return g_variant_new_string("1024");
 
-    case 3: return g_variant_new_string("2048");
+    case 3:
+      return g_variant_new_string("2048");
 
-    case 4: return g_variant_new_string("4096");
+    case 4:
+      return g_variant_new_string("4096");
 
-    case 5: return g_variant_new_string("8192");
+    case 5:
+      return g_variant_new_string("8192");
 
-    case 6: return g_variant_new_string("16384");
+    case 6:
+      return g_variant_new_string("16384");
 
-    default: return g_variant_new_string("4096");
+    default:
+      return g_variant_new_string("4096");
   }
 }
 
@@ -66,15 +74,20 @@ auto int_to_standard_enum(const GValue* value, const GVariantType* expected_type
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Flat");
+    case 0:
+      return g_variant_new_string("Flat");
 
-    case 1: return g_variant_new_string("ISO226-2003");
+    case 1:
+      return g_variant_new_string("ISO226-2003");
 
-    case 2: return g_variant_new_string("Fletcher-Munson");
+    case 2:
+      return g_variant_new_string("Fletcher-Munson");
 
-    case 3: return g_variant_new_string("Robinson-Dadson");
+    case 3:
+      return g_variant_new_string("Robinson-Dadson");
 
-    default: return g_variant_new_string("ISO226-2003");
+    default:
+      return g_variant_new_string("ISO226-2003");
   }
 }
 

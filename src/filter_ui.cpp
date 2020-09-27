@@ -39,31 +39,44 @@ auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, 
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case  0: return g_variant_new_string("12dB/oct Lowpass");
+    case  0:
+      return g_variant_new_string("12dB/oct Lowpass");
 
-    case  1: return g_variant_new_string("24dB/oct Lowpass");
+    case  1:
+      return g_variant_new_string("24dB/oct Lowpass");
 
-    case  2: return g_variant_new_string("36dB/oct Lowpass");
+    case  2:
+      return g_variant_new_string("36dB/oct Lowpass");
 
-    case  3: return g_variant_new_string("12dB/oct Highpass");
+    case  3:
+      return g_variant_new_string("12dB/oct Highpass");
 
-    case  4: return g_variant_new_string("24dB/oct Highpass");
+    case  4:
+      return g_variant_new_string("24dB/oct Highpass");
 
-    case  5: return g_variant_new_string("36dB/oct Highpass");
+    case  5:
+      return g_variant_new_string("36dB/oct Highpass");
 
-    case  6: return g_variant_new_string("6dB/oct Bandpass");
+    case  6:
+      return g_variant_new_string("6dB/oct Bandpass");
 
-    case  7: return g_variant_new_string("12dB/oct Bandpass");
+    case  7:
+      return g_variant_new_string("12dB/oct Bandpass");
 
-    case  8: return g_variant_new_string("18dB/oct Bandpass");
+    case  8:
+      return g_variant_new_string("18dB/oct Bandpass");
 
-    case  9: return g_variant_new_string("6dB/oct Bandreject");
+    case  9:
+      return g_variant_new_string("6dB/oct Bandreject");
 
-    case 10: return g_variant_new_string("12dB/oct Bandreject");
+    case 10:
+      return g_variant_new_string("12dB/oct Bandreject");
 
-    case 11: return g_variant_new_string("18dB/oct Bandreject");
+    case 11:
+      return g_variant_new_string("18dB/oct Bandreject");
 
-    default: return g_variant_new_string("12dB/oct Lowpass");
+    default:
+      return g_variant_new_string("12dB/oct Lowpass");
   }
 }
 

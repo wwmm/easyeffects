@@ -29,21 +29,29 @@ auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("LR > LR (Stereo Default)");
+    case 0:
+      return g_variant_new_string("LR > LR (Stereo Default)");
 
-    case 1: return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
+    case 1:
+      return g_variant_new_string("LR > MS (Stereo to Mid-Side)");
 
-    case 2: return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
+    case 2:
+      return g_variant_new_string("MS > LR (Mid-Side to Stereo)");
 
-    case 3: return g_variant_new_string("LR > LL (Mono Left Channel)");
+    case 3:
+      return g_variant_new_string("LR > LL (Mono Left Channel)");
 
-    case 4: return g_variant_new_string("LR > RR (Mono Right Channel)");
+    case 4:
+      return g_variant_new_string("LR > RR (Mono Right Channel)");
 
-    case 5: return g_variant_new_string("LR > L+R (Mono Sum L+R)");
+    case 5:
+      return g_variant_new_string("LR > L+R (Mono Sum L+R)");
 
-    case 6: return g_variant_new_string("LR > RL (Stereo Flip Channels)");
+    case 6:
+      return g_variant_new_string("LR > RL (Stereo Flip Channels)");
 
-    default: return g_variant_new_string("LR > LR (Stereo Default)");
+    default:
+      return g_variant_new_string("LR > LR (Stereo Default)");
   }
 }
 

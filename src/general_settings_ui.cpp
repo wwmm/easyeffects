@@ -25,13 +25,17 @@ auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Niceness");
+    case 0:
+      return g_variant_new_string("Niceness");
 
-    case 1: return g_variant_new_string("Real Time");
+    case 1:
+      return g_variant_new_string("Real Time");
 
-    case 2: return g_variant_new_string("None");
+    case 2:
+      return g_variant_new_string("None");
 
-    default: return g_variant_new_string("None");
+    default:
+      return g_variant_new_string("None");
   }
 }
 
