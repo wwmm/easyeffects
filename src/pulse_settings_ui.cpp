@@ -155,7 +155,7 @@ void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -197,7 +197,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -222,7 +222,7 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -264,7 +264,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -319,7 +319,7 @@ void PulseSettingsUi::on_input_device_changed() {
   Gtk::TreeModel::Row row = *(input_device->get_active());
 
   if (row) {
-    uint index = 0u;
+    uint index = 0U;
     std::string name;
 
     row.get_value(0, index);
@@ -339,7 +339,7 @@ void PulseSettingsUi::on_output_device_changed() {
   Gtk::TreeModel::Row row = *(output_device->get_active());
 
   if (row) {
-    uint index = 0u;
+    uint index = 0U;
     std::string name;
 
     row.get_value(0, index);

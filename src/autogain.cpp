@@ -5,7 +5,7 @@
 namespace {
 
 void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "m", &v, nullptr);
 
@@ -13,7 +13,7 @@ void on_m_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "s", &v, nullptr);
 
@@ -21,7 +21,7 @@ void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "i", &v, nullptr);
 
@@ -29,7 +29,7 @@ void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "r", &v, nullptr);
 
@@ -37,7 +37,7 @@ void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "l", &v, nullptr);
 
@@ -45,7 +45,7 @@ void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "lra", &v, nullptr);
 
@@ -53,7 +53,7 @@ void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 }
 
 void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
-  float v = 0.0f;
+  float v = 0.0F;
 
   g_object_get(a->autogain, "g", &v, nullptr);
 

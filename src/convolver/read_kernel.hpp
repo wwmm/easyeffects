@@ -15,31 +15,31 @@ namespace rk {
 std::string log_tag = "convolver: ";
 
 void autogain(std::vector<float>& left, std::vector<float>& right) {
-  float power = 0.0f, peak = 0.0f;
+  float power = 0.0F, peak = 0.0F;
 
-  for (uint n = 0u; n < left.size(); n++) {
+  for (uint n = 0U; n < left.size(); n++) {
     peak = (left[n] > peak) ? left[n] : peak;
     peak = (right[n] > peak) ? right[n] : peak;
   }
 
   // normalize
-  for (uint n = 0u; n < left.size(); n++) {
+  for (uint n = 0U; n < left.size(); n++) {
     left[n] /= peak;
     right[n] /= peak;
   }
 
   // find average power
-  for (uint n = 0u; n < left.size(); n++) {
+  for (uint n = 0U; n < left.size(); n++) {
     power += left[n] * left[n] + right[n] * right[n];
   }
 
-  power *= 0.5f;
+  power *= 0.5F;
 
-  float autogain = std::min(1.0f, 1.0f / sqrtf(power));
+  float autogain = std::min(1.0F, 1.0F / sqrtf(power));
 
   util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
-  for (uint n = 0u; n < left.size(); n++) {
+  for (uint n = 0U; n < left.size(); n++) {
     left[n] *= autogain;
     right[n] *= autogain;
   }
@@ -49,10 +49,10 @@ void autogain(std::vector<float>& left, std::vector<float>& right) {
    taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 */
 void ms_stereo(float width, std::vector<float>& left, std::vector<float>& right) {
-  float w = width / 100.0f;
-  float x = (1.0f - w) / (1.0f + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
+  float w = width / 100.0F;
+  float x = (1.0F - w) / (1.0F + w); /* M-S coeff.; L_out = L + x*R; R_out = x*L + R */
 
-  for (uint i = 0u; i < left.size(); i++) {
+  for (uint i = 0U; i < left.size(); i++) {
     float L = left[i], R = right[i];
 
     left[i] = L + x * R;
@@ -84,7 +84,7 @@ bool read_file(GstPeconvolver* peconvolver) {
 
   if (file.channels() == 2) {
     bool resample = false;
-    float resample_ratio = 1.0f;
+    float resample_ratio = 1.0F;
     uint total_frames_in, total_frames_out, frames_in, frames_out;
 
     frames_in = file.frames();
@@ -157,9 +157,9 @@ bool read_file(GstPeconvolver* peconvolver) {
     }
 
     // deinterleave
-    for (uint n = 0u; n < frames_out; n++) {
-      peconvolver->kernel_L[n] = kernel[2u * n];
-      peconvolver->kernel_R[n] = kernel[2u * n + 1u];
+    for (uint n = 0U; n < frames_out; n++) {
+      peconvolver->kernel_L[n] = kernel[2U * n];
+      peconvolver->kernel_R[n] = kernel[2U * n + 1U];
     }
 
     autogain(peconvolver->kernel_L, peconvolver->kernel_R);

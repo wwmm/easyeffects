@@ -172,7 +172,7 @@ void PulseInfoUi::get_pulse_conf() {
 
       boost::split(aux, line, boost::is_any_of("="));
 
-      if (aux.size() > 1u) {
+      if (aux.size() > 1U) {
         auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
 
         Gtk::ListBoxRow* row;
@@ -191,7 +191,7 @@ void PulseInfoUi::get_pulse_conf() {
       } else {
         boost::split(aux, line, boost::is_any_of(":"));
 
-        if (aux.size() > 1u) {
+        if (aux.size() > 1U) {
           std::string tmp = aux[1];
 
           boost::split(aux, tmp, boost::is_any_of("#"));

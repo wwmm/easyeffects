@@ -14,8 +14,8 @@ void update_effects_order(gpointer user_data) {
 
   gst_element_unlink(l->identity_in, l->plugins[l->plugins_order_old[0]]);
 
-  for (unsigned long int n = 1u; n < l->plugins_order_old.size(); n++) {
-    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1u]], l->plugins[l->plugins_order_old[n]]);
+  for (unsigned long int n = 1U; n < l->plugins_order_old.size(); n++) {
+    gst_element_unlink(l->plugins[l->plugins_order_old[n - 1U]], l->plugins[l->plugins_order_old[n]]);
   }
 
   gst_element_unlink(l->plugins[l->plugins_order_old.back()], l->identity_out);
@@ -28,8 +28,8 @@ void update_effects_order(gpointer user_data) {
     util::debug(l->log_tag + "failed to link identity_in to " + l->plugins_order[0]);
   }
 
-  for (unsigned long int n = 1u; n < l->plugins_order.size(); n++) {
-    auto p1_name = l->plugins_order[n - 1u];
+  for (unsigned long int n = 1U; n < l->plugins_order.size(); n++) {
+    auto p1_name = l->plugins_order[n - 1U];
     auto p2_name = l->plugins_order[n];
 
     if (gst_element_link(l->plugins[p1_name], l->plugins[p2_name])) {
