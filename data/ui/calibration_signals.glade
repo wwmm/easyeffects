@@ -73,7 +73,7 @@
         <property name="valign">center</property>
         <property name="hexpand">True</property>
         <property name="adjustment">volume_adjustment</property>
-        <property name="round_digits">1</property>
+        <property name="round_digits">2</property>
         <property name="digits">2</property>
         <property name="value_pos">right</property>
       </object>
