@@ -19,12 +19,12 @@ class CalibrationSignals {
 
   GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr, *spectrum = nullptr;
 
-  uint min_spectrum_freq = 20u;     // Hz
-  uint max_spectrum_freq = 20000u;  // Hz
+  uint min_spectrum_freq = 20U;     // Hz
+  uint max_spectrum_freq = 20000U;  // Hz
   int spectrum_threshold = -120;    // dB
-  uint spectrum_nbands = 3200u, spectrum_nfreqs = 0u;
-  uint spectrum_npoints = 300u;  // number of points displayed
-  float spline_f0 = 0.0f, spline_df = 0.0f;
+  uint spectrum_nbands = 3200U, spectrum_nfreqs = 0U;
+  uint spectrum_npoints = 300U;  // number of points displayed
+  float spline_f0 = 0.0F, spline_df = 0.0F;
   std::vector<float> spectrum_freqs, spectrum_x_axis;
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 

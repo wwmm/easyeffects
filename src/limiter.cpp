@@ -12,8 +12,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     if (!l->input_level_connection.connected()) {
       l->input_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float inL = 0.0f;
-            float inR = 0.0f;
+            float inL = 0.0F;
+            float inR = 0.0F;
 
             g_object_get(l->limiter, "meter-inL", &inL, nullptr);
             g_object_get(l->limiter, "meter-inR", &inR, nullptr);
@@ -30,8 +30,8 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     if (!l->output_level_connection.connected()) {
       l->output_level_connection = Glib::signal_timeout().connect(
           [l]() {
-            float outL = 0.0f;
-            float outR = 0.0f;
+            float outL = 0.0F;
+            float outR = 0.0F;
 
             g_object_get(l->limiter, "meter-outL", &outL, nullptr);
             g_object_get(l->limiter, "meter-outR", &outR, nullptr);
@@ -48,7 +48,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
     if (!l->attenuation_connection.connected()) {
       l->attenuation_connection = Glib::signal_timeout().connect(
           [l]() {
-            float att = 0.0f;
+            float att = 0.0F;
 
             g_object_get(l->limiter, "att", &att, nullptr);
 

@@ -60,15 +60,15 @@ class PipelineBase {
 
   GstClockTime state_check_timeout = 5 * GST_SECOND;
 
-  uint sampling_rate = 0u;
+  uint sampling_rate = 0U;
 
   bool resizing_spectrum = false;
-  uint min_spectrum_freq = 20u;     // Hz
-  uint max_spectrum_freq = 20000u;  // Hz
+  uint min_spectrum_freq = 20U;     // Hz
+  uint max_spectrum_freq = 20000U;  // Hz
   int spectrum_threshold = -120;    // dB
-  uint spectrum_nbands = 1600u, spectrum_nfreqs = 0u;
+  uint spectrum_nbands = 1600U, spectrum_nfreqs = 0U;
   float spline_f0 = 0.0F, spline_df = 0.0F;
-  uint spectrum_start_index = 0u;
+  uint spectrum_start_index = 0U;
   std::vector<float> spectrum_freqs, spectrum_x_axis;
   std::vector<float> spectrum_mag_tmp, spectrum_mag;
 

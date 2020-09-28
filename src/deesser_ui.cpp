@@ -19,11 +19,14 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("RMS");
+    case 0:
+      return g_variant_new_string("RMS");
 
-    case 1: return g_variant_new_string("Peak");
+    case 1:
+      return g_variant_new_string("Peak");
 
-    default: return g_variant_new_string("RMS");
+    default:
+      return g_variant_new_string("RMS");
   }
 }
 
@@ -43,11 +46,14 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Wide");
+    case 0:
+      return g_variant_new_string("Wide");
 
-    case 1: return g_variant_new_string("Split");
+    case 1:
+      return g_variant_new_string("Split");
 
-    default: return g_variant_new_string("Wide");
+    default:
+      return g_variant_new_string("Wide");
   }
 }
 

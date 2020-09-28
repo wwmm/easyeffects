@@ -24,14 +24,14 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationS
 
     magnitudes = gst_structure_get_value(s, "magnitude");
 
-    for (uint n = 0u; n < cs->spectrum_freqs.size(); n++) {
+    for (uint n = 0U; n < cs->spectrum_freqs.size(); n++) {
       cs->spectrum_mag_tmp[n] = g_value_get_float(gst_value_list_get_value(magnitudes, n));
     }
 
     boost::math::interpolators::cardinal_cubic_b_spline<float> spline(
         cs->spectrum_mag_tmp.begin(), cs->spectrum_mag_tmp.end(), cs->spline_f0, cs->spline_df);
 
-    for (uint n = 0u; n < cs->spectrum_mag.size(); n++) {
+    for (uint n = 0U; n < cs->spectrum_mag.size(); n++) {
       cs->spectrum_mag[n] = spline(cs->spectrum_x_axis[n]);
     }
 
@@ -97,7 +97,7 @@ CalibrationSignals::CalibrationSignals() {
 
   // init spectrum
 
-  for (uint n = 0u; n < spectrum_nbands; n++) {
+  for (uint n = 0U; n < spectrum_nbands; n++) {
     auto f = 48000.0 * (0.5 * n + 0.25) / spectrum_nbands;
 
     if (f > max_spectrum_freq) {

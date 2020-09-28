@@ -113,7 +113,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_TARGET,
-      g_param_spec_float("target", "Target Level", "Target loudness level (in LUFS)", -100.0f, 0.0f, -23.0f,
+      g_param_spec_float("target", "Target Level", "Target loudness level (in LUFS)", -100.0F, 0.0F, -23.0F,
                          static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
@@ -133,32 +133,32 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_M,
-      g_param_spec_float("m", "Momentary Level", "Momentary loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("m", "Momentary Level", "Momentary loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_S,
-      g_param_spec_float("s", "Short Term Level", "Short term loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("s", "Short Term Level", "Short term loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_I,
-      g_param_spec_float("i", "Integrated Level", "Integrated loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("i", "Integrated Level", "Integrated loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_R,
-      g_param_spec_float("r", "Relative Level", "Relative threshold level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("r", "Relative Level", "Relative threshold level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_L,
-      g_param_spec_float("l", "Loudness Level", "Estimated Loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("l", "Loudness Level", "Estimated Loudness level (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_G,
-      g_param_spec_float("g", "Gain", "Correction gain", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("g", "Gain", "Correction gain", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
@@ -168,7 +168,7 @@ static void gst_peautogain_class_init(GstPeautogainClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_LRA,
-      g_param_spec_float("lra", "Loudness Range", "Loudness Range (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0f,
+      g_param_spec_float("lra", "Loudness Range", "Loudness Range (in LUFS)", -G_MAXFLOAT, G_MAXFLOAT, 0.0F,
                          static_cast<GParamFlags>(G_PARAM_READABLE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
@@ -193,19 +193,19 @@ static void gst_peautogain_init(GstPeautogain* peautogain) {
   peautogain->ready = false;
   peautogain->bpf = 0;
   peautogain->rate = 0;
-  peautogain->target = -23.0f;  // LUFS
+  peautogain->target = -23.0F;  // LUFS
   peautogain->weight_m = 1;
   peautogain->weight_s = 1;
   peautogain->weight_i = 1;
-  peautogain->momentary = 0.0f;
-  peautogain->shortterm = 0.0f;
-  peautogain->global = 0.0f;
-  peautogain->relative = 0.0f;
-  peautogain->loudness = 0.0f;
-  peautogain->gain = 1.0f;
-  peautogain->range = 0.0f;
-  peautogain->notify_samples = 0u;
-  peautogain->sample_count = 0u;
+  peautogain->momentary = 0.0F;
+  peautogain->shortterm = 0.0F;
+  peautogain->global = 0.0F;
+  peautogain->relative = 0.0F;
+  peautogain->loudness = 0.0F;
+  peautogain->gain = 1.0F;
+  peautogain->range = 0.0F;
+  peautogain->notify_samples = 0U;
+  peautogain->sample_count = 0U;
   peautogain->notify = true;
   peautogain->detect_silence = true;
   peautogain->reset = false;
@@ -359,11 +359,11 @@ void gst_peautogain_finalize(GObject* object) {
 static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
   if (!peautogain->ready) {
     peautogain->ebur_state = ebur128_init(
-        2u, peautogain->rate,
+        2U, peautogain->rate,
         EBUR128_MODE_S | EBUR128_MODE_I | EBUR128_MODE_LRA | EBUR128_MODE_SAMPLE_PEAK | EBUR128_MODE_HISTOGRAM);
 
-    ebur128_set_channel(peautogain->ebur_state, 0u, EBUR128_LEFT);
-    ebur128_set_channel(peautogain->ebur_state, 1u, EBUR128_RIGHT);
+    ebur128_set_channel(peautogain->ebur_state, 0U, EBUR128_LEFT);
+    ebur128_set_channel(peautogain->ebur_state, 1U, EBUR128_RIGHT);
 
     peautogain->ready = true;
   }
@@ -372,7 +372,7 @@ static void gst_peautogain_setup_ebur(GstPeautogain* peautogain) {
 static void gst_peautogain_reset(GstPeautogain* peautogain) {
   peautogain->ready = false;
   peautogain->reset = false;
-  peautogain->gain = 1.0f;
+  peautogain->gain = 1.0F;
 
   if (peautogain->ebur_state != nullptr) {
     ebur128_destroy(&peautogain->ebur_state);
@@ -430,14 +430,14 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
 
   bool playing_silence = (peautogain->momentary < peautogain->relative && peautogain->detect_silence) ? true : false;
 
-  if (peautogain->relative > -70.0f && !failed && !playing_silence) {
+  if (peautogain->relative > -70.0F && !failed && !playing_silence) {
     double peak_L = 0.0, peak_R = 0.0;
 
-    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0u, &peak_L)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 0U, &peak_L)) {
       failed = true;
     }
 
-    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 1u, &peak_R)) {
+    if (EBUR128_SUCCESS != ebur128_prev_sample_peak(peautogain->ebur_state, 1U, &peak_R)) {
       failed = true;
     }
 
@@ -454,7 +454,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
       float diff = peautogain->target - peautogain->loudness;
 
       // 10^(diff/20). The way below should be faster than using pow
-      float gain = expf((diff / 20.0f) * logf(10.0f));
+      float gain = expf((diff / 20.0F) * logf(10.0F));
 
       float peak = (peak_L > peak_R) ? peak_L : peak_R;
 
@@ -468,7 +468,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     }
   }
 
-  for (unsigned int n = 0u; n < 2u * num_samples; n++) {
+  for (unsigned int n = 0U; n < 2U * num_samples; n++) {
     data[n] = data[n] * peautogain->gain;
   }
 
@@ -478,7 +478,7 @@ static void gst_peautogain_process(GstPeautogain* peautogain, GstBuffer* buffer)
     peautogain->sample_count += num_samples;
 
     if (peautogain->sample_count >= peautogain->notify_samples) {
-      peautogain->sample_count = 0u;
+      peautogain->sample_count = 0U;
 
       g_object_notify(G_OBJECT(peautogain), "m");
       g_object_notify(G_OBJECT(peautogain), "s");

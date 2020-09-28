@@ -27,19 +27,26 @@ auto int_to_room_size_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Small");
+    case 0:
+      return g_variant_new_string("Small");
 
-    case 1: return g_variant_new_string("Medium");
+    case 1:
+      return g_variant_new_string("Medium");
 
-    case 2: return g_variant_new_string("Large");
+    case 2:
+      return g_variant_new_string("Large");
 
-    case 3: return g_variant_new_string("Tunnel-like");
+    case 3:
+      return g_variant_new_string("Tunnel-like");
 
-    case 4: return g_variant_new_string("Large/smooth");
+    case 4:
+      return g_variant_new_string("Large/smooth");
 
-    case 5: return g_variant_new_string("Experimental");
+    case 5:
+      return g_variant_new_string("Experimental");
 
-    default: return g_variant_new_string("Large");
+    default:
+      return g_variant_new_string("Large");
   }
 }
 

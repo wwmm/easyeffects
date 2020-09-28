@@ -342,7 +342,7 @@ void ConvolverUi::get_irs_info() {
   time_axis.resize(max_points);
   time_axis.shrink_to_fit();
 
-  for (uint n = 0u; n < max_points; n++) {
+  for (uint n = 0U; n < max_points; n++) {
     time_axis[n] = n * plot_dt;
   }
 
@@ -355,20 +355,20 @@ void ConvolverUi::get_irs_info() {
 
   // ensure that the fft can be computed
 
-  if (left_mag.size() % 2u != 0u) {
-    left_mag.emplace_back(0.0f);
+  if (left_mag.size() % 2U != 0U) {
+    left_mag.emplace_back(0.0F);
   }
 
-  if (right_mag.size() % 2u != 0u) {
-    right_mag.emplace_back(0.0f);
+  if (right_mag.size() % 2U != 0U) {
+    right_mag.emplace_back(0.0F);
   }
 
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  for (uint n = 0u; n < frames_in; n++) {
-    left_mag[n] = kernel[2u * n];
-    right_mag[n] = kernel[2u * n + 1u];
+  for (uint n = 0U; n < frames_in; n++) {
+    left_mag[n] = kernel[2U * n];
+    right_mag[n] = kernel[2U * n + 1U];
   }
 
   get_irs_spectrum(rate);
@@ -388,7 +388,7 @@ void ConvolverUi::get_irs_info() {
     left_mag.shrink_to_fit();
     right_mag.shrink_to_fit();
 
-    for (uint n = 0u; n < max_points; n++) {
+    for (uint n = 0U; n < max_points; n++) {
       left_mag[n] = spline_L(time_axis[n]);
       right_mag[n] = spline_R(time_axis[n]);
     }
@@ -405,7 +405,7 @@ void ConvolverUi::get_irs_info() {
 
   // rescaling between 0 and 1
 
-  for (uint n = 0u; n < max_points; n++) {
+  for (uint n = 0U; n < max_points; n++) {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
@@ -436,8 +436,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   uint nfft = left_mag.size();  // right_mag.size() should have the same value
 
   GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, 0);
-  auto* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2u + 1u);
-  auto* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2u + 1u);
+  auto* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2U + 1U);
+  auto* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2U + 1U);
 
   std::vector<float> tmp_l;
   std::vector<float> tmp_r;
@@ -454,12 +454,12 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   gst_fft_f32_fft(fft_ctx, tmp_l.data(), freqdata_l);
   gst_fft_f32_fft(fft_ctx, tmp_r.data(), freqdata_r);
 
-  left_spectrum.resize(nfft / 2u + 1u);
-  right_spectrum.resize(nfft / 2u + 1u);
+  left_spectrum.resize(nfft / 2U + 1U);
+  right_spectrum.resize(nfft / 2U + 1U);
 
-  for (uint i = 0u; i < nfft / 2u + 1u; i++) {
-    float v_l = 0.0f;
-    float v_r = 0.0f;
+  for (uint i = 0U; i < nfft / 2U + 1U; i++) {
+    float v_l = 0.0F;
+    float v_r = 0.0F;
 
     // left
     v_l = freqdata_l[i].r * freqdata_l[i].r;
@@ -502,7 +502,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     left_spectrum.shrink_to_fit();
     right_spectrum.shrink_to_fit();
 
-    for (uint n = 0u; n < max_points; n++) {
+    for (uint n = 0U; n < max_points; n++) {
       left_spectrum[n] = spline_L(freq_axis[n]);
       right_spectrum[n] = spline_R(freq_axis[n]);
     }
@@ -519,7 +519,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // rescaling between 0 and 1
 
-  for (unsigned int n = 0u; n < left_spectrum.size(); n++) {
+  for (unsigned int n = 0U; n < left_spectrum.size(); n++) {
     left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
@@ -534,21 +534,21 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
                                const std::vector<float>& magnitudes) {
   auto n_bars = magnitudes.size();
 
-  if (n_bars > 0u) {
+  if (n_bars > 0U) {
     auto allocation = da->get_allocation();
     auto width = allocation.get_width();
     auto height = allocation.get_height();
     auto n_bars = magnitudes.size();
-    auto x = util::linspace(0.0f, static_cast<float>(width), n_bars);
+    auto x = util::linspace(0.0F, static_cast<float>(width), n_bars);
 
-    for (uint n = 0u; n < n_bars - 1u; n++) {
+    for (uint n = 0U; n < n_bars - 1U; n++) {
       auto bar_height = magnitudes[n] * height;
 
       ctx->move_to(x[n], height - bar_height);
 
-      bar_height = magnitudes[n + 1u] * height;
+      bar_height = magnitudes[n + 1U] * height;
 
-      ctx->line_to(x[n + 1u], height - bar_height);
+      ctx->line_to(x[n + 1U], height - bar_height);
     }
 
     if (spectrum_settings->get_boolean("use-custom-color")) {

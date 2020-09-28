@@ -18,11 +18,14 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Downward");
+    case 0:
+      return g_variant_new_string("Downward");
 
-    case 1: return g_variant_new_string("Upward");
+    case 1:
+      return g_variant_new_string("Upward");
 
-    default: return g_variant_new_string("Downward");
+    default:
+      return g_variant_new_string("Downward");
   }
 }
 
@@ -43,11 +46,14 @@ auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expecte
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Feed-forward");
+    case 0:
+      return g_variant_new_string("Feed-forward");
 
-    case 1: return g_variant_new_string("Feed-back");
+    case 1:
+      return g_variant_new_string("Feed-back");
 
-    default: return g_variant_new_string("Feed-forward");
+    default:
+      return g_variant_new_string("Feed-forward");
   }
 }
 
@@ -72,15 +78,20 @@ auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expecte
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Peak");
+    case 0:
+      return g_variant_new_string("Peak");
 
-    case 1: return g_variant_new_string("RMS");
+    case 1:
+      return g_variant_new_string("RMS");
 
-    case 2: return g_variant_new_string("Low-Pass");
+    case 2:
+      return g_variant_new_string("Low-Pass");
 
-    case 3: return g_variant_new_string("Uniform");
+    case 3:
+      return g_variant_new_string("Uniform");
 
-    default: return g_variant_new_string("RMS");
+    default:
+      return g_variant_new_string("RMS");
   }
 }
 
@@ -105,15 +116,20 @@ auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expec
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Middle");
+    case 0:
+      return g_variant_new_string("Middle");
 
-    case 1: return g_variant_new_string("Side");
+    case 1:
+      return g_variant_new_string("Side");
 
-    case 2: return g_variant_new_string("Left");
+    case 2:
+      return g_variant_new_string("Left");
 
-    case 3: return g_variant_new_string("Right");
+    case 3:
+      return g_variant_new_string("Right");
 
-    default: return g_variant_new_string("Middle");
+    default:
+      return g_variant_new_string("Middle");
   }
 }
 
@@ -137,15 +153,20 @@ auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_t
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("off");
+    case 0:
+      return g_variant_new_string("off");
 
-    case 1: return g_variant_new_string("12 dB/oct");
+    case 1:
+      return g_variant_new_string("12 dB/oct");
 
-    case 2: return g_variant_new_string("24 dB/oct");
+    case 2:
+      return g_variant_new_string("24 dB/oct");
 
-    case 3: return g_variant_new_string("36 dB/oct");
+    case 3:
+      return g_variant_new_string("36 dB/oct");
 
-    default: return g_variant_new_string("off");
+    default:
+      return g_variant_new_string("off");
   }
 }
 

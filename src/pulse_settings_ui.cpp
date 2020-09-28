@@ -30,21 +30,29 @@ auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("64");
+    case 0:
+      return g_variant_new_string("64");
 
-    case 1: return g_variant_new_string("128");
+    case 1:
+      return g_variant_new_string("128");
 
-    case 2: return g_variant_new_string("256");
+    case 2:
+      return g_variant_new_string("256");
 
-    case 3: return g_variant_new_string("512");
+    case 3:
+      return g_variant_new_string("512");
 
-    case 4: return g_variant_new_string("1024");
+    case 4:
+      return g_variant_new_string("1024");
 
-    case 5: return g_variant_new_string("2048");
+    case 5:
+      return g_variant_new_string("2048");
 
-    case 6: return g_variant_new_string("4096");
+    case 6:
+      return g_variant_new_string("4096");
 
-    default: return g_variant_new_string("512");
+    default:
+      return g_variant_new_string("512");
   }
 }
 
@@ -147,7 +155,7 @@ void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -189,7 +197,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   auto children = sink_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -214,7 +222,7 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -256,7 +264,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
   auto children = source_list->children();
 
   for (const auto& c : children) {
-    uint i = 0u;
+    uint i = 0U;
     std::string name;
 
     c.get_value(0, i);
@@ -311,7 +319,7 @@ void PulseSettingsUi::on_input_device_changed() {
   Gtk::TreeModel::Row row = *(input_device->get_active());
 
   if (row) {
-    uint index = 0u;
+    uint index = 0U;
     std::string name;
 
     row.get_value(0, index);
@@ -331,7 +339,7 @@ void PulseSettingsUi::on_output_device_changed() {
   Gtk::TreeModel::Row row = *(output_device->get_active());
 
   if (row) {
-    uint index = 0u;
+    uint index = 0U;
     std::string name;
 
     row.get_value(0, index);

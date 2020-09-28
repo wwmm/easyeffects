@@ -22,13 +22,17 @@ auto int_to_echo_suppression_level(const GValue* value, const GVariantType* expe
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("low");
+    case 0:
+      return g_variant_new_string("low");
 
-    case 1: return g_variant_new_string("moderate");
+    case 1:
+      return g_variant_new_string("moderate");
 
-    case 2: return g_variant_new_string("high");
+    case 2:
+      return g_variant_new_string("high");
 
-    default: return g_variant_new_string("moderate");
+    default:
+      return g_variant_new_string("moderate");
   }
 }
 
@@ -53,15 +57,20 @@ auto int_to_noise_suppression_level(const GValue* value, const GVariantType* exp
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("low");
+    case 0:
+      return g_variant_new_string("low");
 
-    case 1: return g_variant_new_string("moderate");
+    case 1:
+      return g_variant_new_string("moderate");
 
-    case 2: return g_variant_new_string("high");
+    case 2:
+      return g_variant_new_string("high");
 
-    case 3: return g_variant_new_string("very-high");
+    case 3:
+      return g_variant_new_string("very-high");
 
-    default: return g_variant_new_string("moderate");
+    default:
+      return g_variant_new_string("moderate");
   }
 }
 
@@ -81,11 +90,14 @@ auto int_to_gain_control_mode(const GValue* value, const GVariantType* expected_
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("adaptive-digital");
+    case 0:
+      return g_variant_new_string("adaptive-digital");
 
-    case 1: return g_variant_new_string("fixed-digital");
+    case 1:
+      return g_variant_new_string("fixed-digital");
 
-    default: return g_variant_new_string("adaptive-digital");
+    default:
+      return g_variant_new_string("adaptive-digital");
   }
 }
 
@@ -110,15 +122,20 @@ auto int_to_voice_detection_likelihood(const GValue* value, const GVariantType* 
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("very-low");
+    case 0:
+      return g_variant_new_string("very-low");
 
-    case 1: return g_variant_new_string("low");
+    case 1:
+      return g_variant_new_string("low");
 
-    case 2: return g_variant_new_string("moderate");
+    case 2:
+      return g_variant_new_string("moderate");
 
-    case 3: return g_variant_new_string("high");
+    case 3:
+      return g_variant_new_string("high");
 
-    default: return g_variant_new_string("low");
+    default:
+      return g_variant_new_string("low");
   }
 }
 

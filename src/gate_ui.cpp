@@ -19,11 +19,14 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("RMS");
+    case 0:
+      return g_variant_new_string("RMS");
 
-    case 1: return g_variant_new_string("Peak");
+    case 1:
+      return g_variant_new_string("Peak");
 
-    default: return g_variant_new_string("RMS");
+    default:
+      return g_variant_new_string("RMS");
   }
 }
 
@@ -43,11 +46,14 @@ auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_t
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case 0: return g_variant_new_string("Average");
+    case 0:
+      return g_variant_new_string("Average");
 
-    case 1: return g_variant_new_string("Maximum");
+    case 1:
+      return g_variant_new_string("Maximum");
 
-    default: return g_variant_new_string("Average");
+    default:
+      return g_variant_new_string("Average");
   }
 }
 

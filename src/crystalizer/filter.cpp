@@ -19,7 +19,7 @@ Filter::~Filter() {
 void Filter::create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band) {
   float b = transition_band / rate;
 
-  kernel_size = std::ceil(4.0f / b);
+  kernel_size = std::ceil(4.0F / b);
 
   kernel_size = (kernel_size % 2 == 0) ? kernel_size + 1 : kernel_size;
 
@@ -27,12 +27,12 @@ void Filter::create_lowpass_kernel(const float& rate, const float& cutoff, const
 
   kernel.resize(kernel_size);
 
-  float sum = 0.0f;
+  float sum = 0.0F;
 
   for (int n = 0; n < kernel_size; n++) {
-    kernel[n] = boost::math::sinc_pi(2.0f * fc * PI * (n - (kernel_size - 1) / 2));
+    kernel[n] = boost::math::sinc_pi(2.0F * fc * PI * (n - (kernel_size - 1) / 2));
 
-    auto w = 0.42f - 0.5f * cosf(2.0f * PI * n / (kernel_size - 1)) + 0.08f * cosf(4.0f * PI * n / (kernel_size - 1));
+    auto w = 0.42F - 0.5F * cosf(2.0F * PI * n / (kernel_size - 1)) + 0.08F * cosf(4.0F * PI * n / (kernel_size - 1));
 
     kernel[n] *= w;
 
@@ -78,12 +78,12 @@ void Filter::create_bandpass_kernel(const float& rate,
 }
 
 void Filter::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1u) / 2u;
+  uint M = (c.size() + 1U) / 2U;
 
-  for (uint n = 0u; n < c.size(); n++) {
-    c[n] = 0.0f;
+  for (uint n = 0U; n < c.size(); n++) {
+    c[n] = 0.0F;
 
-    for (uint m = 0u; m < M; m++) {
+    for (uint m = 0U; m < M; m++) {
       if (n > m && n - m < M) {
         c[n] += a[n - m] * b[m];
       }
@@ -124,9 +124,9 @@ void Filter::create_bandpass(const int& nsamples,
 
 void Filter::init_zita(const int& num_samples) {
   bool failed = false;
-  float density = 0.0f;
+  float density = 0.0F;
   int ret = 0;
-  unsigned int options = 0u;
+  unsigned int options = 0U;
 
   nsamples = num_samples;
 

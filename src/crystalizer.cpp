@@ -11,7 +11,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
     if (!l->range_before_connection.connected()) {
       l->range_before_connection = Glib::signal_timeout().connect(
           [l]() {
-            float v = 0.0f;
+            float v = 0.0F;
 
             g_object_get(l->crystalizer, "lra-before", &v, nullptr);
 
@@ -25,7 +25,7 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
     if (!l->range_after_connection.connected()) {
       l->range_after_connection = Glib::signal_timeout().connect(
           [l]() {
-            float v = 0.0f;
+            float v = 0.0F;
 
             g_object_get(l->crystalizer, "lra-after", &v, nullptr);
 

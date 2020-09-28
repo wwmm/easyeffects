@@ -139,8 +139,8 @@ static void gst_peconvolver_init(GstPeconvolver* peconvolver) {
   peconvolver->rate = 0;
   peconvolver->bpf = 0;
   peconvolver->kernel_path = nullptr;
-  peconvolver->ir_width = 100u;
-  peconvolver->num_samples = 0u;
+  peconvolver->ir_width = 100U;
+  peconvolver->num_samples = 0U;
 
   gst_base_transform_set_in_place(GST_BASE_TRANSFORM(peconvolver), true);
 }
@@ -306,14 +306,14 @@ static void gst_peconvolver_setup_convolver(GstPeconvolver* peconvolver) {
 
     if (irs_ok) {
       bool failed = false;
-      float density = 0.0f;
+      float density = 0.0F;
       int max_size = peconvolver->kernel_n_frames, ret;
 
       peconvolver->irs_fail_count = 0;
 
       peconvolver->conv = new Convproc();
 
-      unsigned int options = 0u;
+      unsigned int options = 0U;
 
       // depending on buffer and kernel size OPT_FFTW_MEASURE may make us crash
       // options |= Convproc::OPT_FFTW_MEASURE;
@@ -376,9 +376,9 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
     gst_buffer_map(buffer, &map, GST_MAP_READWRITE);
 
     // deinterleave
-    for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
-      peconvolver->conv->inpdata(0)[n] = (reinterpret_cast<float*>(map.data))[2u * n];
-      peconvolver->conv->inpdata(1)[n] = (reinterpret_cast<float*>(map.data))[2u * n + 1u];
+    for (unsigned int n = 0U; n < peconvolver->num_samples; n++) {
+      peconvolver->conv->inpdata(0)[n] = (reinterpret_cast<float*>(map.data))[2U * n];
+      peconvolver->conv->inpdata(1)[n] = (reinterpret_cast<float*>(map.data))[2U * n + 1U];
     }
 
     int ret = peconvolver->conv->process(THREAD_SYNC_MODE);
@@ -388,9 +388,9 @@ static void gst_peconvolver_process(GstPeconvolver* peconvolver, GstBuffer* buff
     }
 
     // interleave
-    for (unsigned int n = 0u; n < peconvolver->num_samples; n++) {
-      (reinterpret_cast<float*>(map.data))[2u * n] = peconvolver->conv->outdata(0)[n];
-      (reinterpret_cast<float*>(map.data))[2u * n + 1u] = peconvolver->conv->outdata(1)[n];
+    for (unsigned int n = 0U; n < peconvolver->num_samples; n++) {
+      (reinterpret_cast<float*>(map.data))[2U * n] = peconvolver->conv->outdata(0)[n];
+      (reinterpret_cast<float*>(map.data))[2U * n + 1U] = peconvolver->conv->outdata(1)[n];
     }
 
     gst_buffer_unmap(buffer, &map);
