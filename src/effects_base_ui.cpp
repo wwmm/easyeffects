@@ -125,7 +125,7 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   // show the grid only if something is playing/recording
 
-  if (left < -99.0 && right < -99.0) {
+  if (left <= -100.0 && right <= -100.0) {
     global_level_meter_grid->set_visible(false);
 
     return;
@@ -133,9 +133,9 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   global_level_meter_grid->set_visible(true);
 
-  global_output_level_left->set_text(PluginUiBase::level_to_str(left, 0));
+  global_output_level_left->set_text(PluginUiBase::level_to_str_showpos(left, 0));
 
-  global_output_level_right->set_text(PluginUiBase::level_to_str(right, 0));
+  global_output_level_right->set_text(PluginUiBase::level_to_str_showpos(right, 0));
 
   // saturation icon notification
 

@@ -51,6 +51,15 @@ auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::
   return msg.str();
 }
 
+auto PluginUiBase::level_to_str_showpos(const double& value, const int& places) -> std::string {
+  std::ostringstream msg;
+
+  msg.precision(places);
+  msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+
+  return msg.str();
+}
+
 void PluginUiBase::on_new_input_level(const std::array<double, 2>& peak) {
   update_level(input_level_left, input_level_left_label, input_level_right, input_level_right_label, peak);
 }
