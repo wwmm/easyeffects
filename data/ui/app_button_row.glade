@@ -71,7 +71,6 @@
           <object class="GtkImage" id="saturation_icon">
             <property name="can_focus">False</property>
             <property name="no_show_all">True</property>
-            <property name="halign">center</property>
             <property name="margin_end">4</property>
             <property name="icon_name">dialog-warning-symbolic</property>
           </object>
@@ -85,10 +84,10 @@
           <object class="GtkLabel" id="global_output_level_left">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="justify">right</property>
             <property name="width_chars">4</property>
+            <property name="single_line_mode">True</property>
             <property name="max_width_chars">4</property>
+            <property name="xalign">1</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -100,10 +99,10 @@
           <object class="GtkLabel" id="global_output_level_right">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
-            <property name="justify">right</property>
             <property name="width_chars">4</property>
+            <property name="single_line_mode">True</property>
             <property name="max_width_chars">4</property>
+            <property name="xalign">1</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -115,12 +114,12 @@
           <object class="GtkLabel" id="db_unit_label">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="halign">center</property>
             <property name="margin_start">4</property>
             <property name="label">dB</property>
             <property name="justify">right</property>
-            <property name="width_chars">2</property>
-            <property name="max_width_chars">2</property>
+            <property name="width_chars">3</property>
+            <property name="single_line_mode">True</property>
+            <property name="xalign">1</property>
           </object>
           <packing>
             <property name="expand">False</property>
