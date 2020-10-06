@@ -318,6 +318,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     Gtk::ComboBoxText* band_slope = nullptr;
     Gtk::Label* band_width = nullptr;
     Gtk::Label* band_label = nullptr;
+    Gtk::Label* band_quality_label = nullptr;
     Gtk::Button* reset_frequency = nullptr;
     Gtk::Button* reset_quality = nullptr;
     Gtk::ToggleButton* band_solo = nullptr;
@@ -330,6 +331,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     B->get_widget("band_slope", band_slope);
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
+    B->get_widget("band_quality_label", band_quality_label);
     B->get_widget("band_solo", band_solo);
     B->get_widget("band_mute", band_mute);
     B->get_widget("band_scale", band_scale);
@@ -340,18 +342,25 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto band_frequency = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_frequency"));
     auto band_quality = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_quality"));
 
-    auto update_w = [=]() {
+    auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
+
+      std::ostringstream q_msg;
+
+      q_msg.precision(2);
+      q_msg << "Q " << std::fixed << q;
+
+      band_quality_label->set_text(q_msg.str());
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
 
-        std::ostringstream msg;
+        std::ostringstream w_msg;
 
-        msg.precision(1);
-        msg << std::fixed << f / q << " Hz";
+        w_msg.precision(1);
+        w_msg << std::fixed << f / q << " Hz";
 
-        band_width->set_text(msg.str());
+        band_width->set_text(w_msg.str());
       } else {
         band_width->set_text(_("infinity"));
       }
@@ -364,20 +373,20 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
 
       if (f > 1000.0) {
         msg.precision(1);
-        msg << std::fixed << f / 1000.0 << "kHz";
+        msg << std::fixed << f / 1000.0 << " kHz";
       } else {
         msg.precision(0);
-        msg << std::fixed << f << "Hz";
+        msg << std::fixed << f << " Hz";
       }
 
       band_label->set_text(msg.str());
     };
 
-    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
 
     connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
         [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
@@ -442,6 +451,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     Gtk::ComboBoxText* band_slope = nullptr;
     Gtk::Label* band_width = nullptr;
     Gtk::Label* band_label = nullptr;
+    Gtk::Label* band_quality_label = nullptr;
     Gtk::Button* reset_frequency = nullptr;
     Gtk::Button* reset_quality = nullptr;
     Gtk::ToggleButton* band_solo = nullptr;
@@ -454,6 +464,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     B->get_widget("band_slope", band_slope);
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
+    B->get_widget("band_quality_label", band_quality_label);
     B->get_widget("band_solo", band_solo);
     B->get_widget("band_mute", band_mute);
     B->get_widget("band_scale", band_scale);
@@ -464,18 +475,25 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto band_frequency = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_frequency"));
     auto band_quality = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_quality"));
 
-    auto update_w = [=]() {
+    auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
+
+      std::ostringstream q_msg;
+
+      q_msg.precision(2);
+      q_msg << "Q " << std::fixed << q;
+
+      band_quality_label->set_text(q_msg.str());
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
 
-        std::ostringstream msg;
+        std::ostringstream w_msg;
 
-        msg.precision(1);
-        msg << std::fixed << f / q << " Hz";
+        w_msg.precision(1);
+        w_msg << std::fixed << f / q << " Hz";
 
-        band_width->set_text(msg.str());
+        band_width->set_text(w_msg.str());
       } else {
         band_width->set_text(_("infinity"));
       }
@@ -488,20 +506,20 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
 
       if (f > 1000.0) {
         msg.precision(1);
-        msg << std::fixed << f / 1000 << "kHz";
+        msg << std::fixed << f / 1000 << " kHz";
       } else {
         msg.precision(0);
-        msg << std::fixed << f << "Hz";
+        msg << std::fixed << f << " Hz";
       }
 
       band_label->set_text(msg.str());
     };
 
-    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_w));
+    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
 
     /*right channel
       we need the bindgins below for the right channel equalizer to be updated

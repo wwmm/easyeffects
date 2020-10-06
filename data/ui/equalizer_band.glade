@@ -393,7 +393,7 @@
       </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="quality_label">
+      <object class="GtkLabel" id="band_quality_label">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="label" translatable="yes">Q</property>
