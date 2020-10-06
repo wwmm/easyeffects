@@ -1,109 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0 -->
+<!-- Generated with glade 3.38.1 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.22"/>
+  <requires lib="gtk+" version="3.24"/>
   <object class="GtkImage" id="image_autoload">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">emblem-synchronizing-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">emblem-synchronizing-symbolic</property>
   </object>
   <object class="GtkImage" id="image_delete">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">list-remove-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">list-remove-symbolic</property>
   </object>
   <object class="GtkImage" id="image_save">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-save-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">document-save-symbolic</property>
   </object>
   <object class="GtkListBoxRow" id="preset_row">
     <property name="visible">True</property>
-    <property name="can_focus">True</property>
+    <property name="can-focus">True</property>
     <property name="valign">center</property>
-    <property name="margin_start">6</property>
-    <property name="margin_end">6</property>
-    <property name="margin_top">6</property>
-    <property name="margin_bottom">6</property>
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
     <property name="activatable">False</property>
     <property name="selectable">False</property>
     <child>
+      <!-- n-columns=5 n-rows=1 -->
       <object class="GtkGrid">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="column_spacing">6</property>
+        <property name="can-focus">False</property>
+        <property name="column-spacing">6</property>
         <child>
           <object class="GtkLabel" id="name">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="hexpand">True</property>
             <property name="label">Name</property>
           </object>
           <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">0</property>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="apply">
             <property name="label" translatable="yes">Load</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
           </object>
           <packing>
-            <property name="left_attach">1</property>
-            <property name="top_attach">0</property>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="save">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Save current settings to this preset file</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="tooltip-text" translatable="yes">Save current settings to this preset file</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="image">image_save</property>
-            <property name="always_show_image">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">0</property>
+            <property name="left-attach">2</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="remove">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Remove this preset file</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="tooltip-text" translatable="yes">Remove this preset file</property>
             <property name="halign">center</property>
             <property name="valign">center</property>
             <property name="image">image_delete</property>
-            <property name="always_show_image">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
-            <property name="left_attach">4</property>
-            <property name="top_attach">0</property>
+            <property name="left-attach">4</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
         <child>
           <object class="GtkToggleButton" id="autoload">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="tooltip_text" translatable="yes">Automatically apply this preset whenever the currently used device is plugged in the system</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <property name="tooltip-text" translatable="yes">Automatically apply this preset whenever the currently used device is plugged in the system</property>
             <property name="image">image_autoload</property>
-            <property name="always_show_image">True</property>
+            <property name="always-show-image">True</property>
           </object>
           <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">0</property>
+            <property name="left-attach">3</property>
+            <property name="top-attach">0</property>
           </packing>
         </child>
       </object>
