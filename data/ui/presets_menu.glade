@@ -1,71 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.36.0 -->
+<!-- Generated with glade 3.38.1 -->
 <interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.22"/>
+  <requires lib="gtk+" version="3.24"/>
   <object class="GtkImage" id="image_add_input">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">list-add-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">list-add-symbolic</property>
   </object>
   <object class="GtkImage" id="image_add_output">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">list-add-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">list-add-symbolic</property>
   </object>
   <object class="GtkImage" id="image_import_input">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-open-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">document-open-symbolic</property>
   </object>
   <object class="GtkImage" id="image_import_output">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="icon_name">document-open-symbolic</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">document-open-symbolic</property>
   </object>
+  <!-- n-columns=1 n-rows=2 -->
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="margin_start">6</property>
-    <property name="margin_end">6</property>
-    <property name="margin_top">6</property>
-    <property name="margin_bottom">6</property>
-    <property name="row_spacing">18</property>
+    <property name="can-focus">False</property>
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
+    <property name="row-spacing">18</property>
     <child>
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <property name="transition_duration">250</property>
-        <property name="transition_type">slide-left-right</property>
+        <property name="transition-duration">250</property>
+        <property name="transition-type">slide-left-right</property>
         <child>
+          <!-- n-columns=3 n-rows=2 -->
           <object class="GtkGrid" id="grid_output">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="row_spacing">18</property>
-            <property name="column_spacing">6</property>
+            <property name="row-spacing">18</property>
+            <property name="column-spacing">6</property>
             <child>
               <object class="GtkEntry" id="output_name">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Name</property>
-                <property name="input_purpose">name</property>
+                <property name="placeholder-text" translatable="yes">Name</property>
+                <property name="input-purpose">name</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="add_output">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Create Preset</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Create Preset</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="image">image_add_output</property>
@@ -74,56 +76,56 @@
                 </style>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="import_output">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Import Presets</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Import Presets</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="image">image_import_output</property>
-                <property name="always_show_image">True</property>
+                <property name="always-show-image">True</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">in</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkScrolledWindow" id="output_scrolled_window">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="propagate_natural_width">True</property>
-                    <property name="propagate_natural_height">True</property>
+                    <property name="propagate-natural-width">True</property>
+                    <property name="propagate-natural-height">True</property>
                     <child>
                       <object class="GtkViewport">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <child>
                           <object class="GtkListBox" id="output_listbox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">True</property>
-                            <property name="selection_mode">none</property>
-                            <property name="activate_on_single_click">False</property>
+                            <property name="selection-mode">none</property>
+                            <property name="activate-on-single-click">False</property>
                           </object>
                         </child>
                       </object>
@@ -135,8 +137,8 @@
                 </child>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
                 <property name="width">3</property>
               </packing>
             </child>
@@ -144,37 +146,38 @@
           <packing>
             <property name="name">page_output</property>
             <property name="title" translatable="yes">Output</property>
-            <property name="icon_name">audio-speakers-symbolic</property>
+            <property name="icon-name">audio-speakers-symbolic</property>
           </packing>
         </child>
         <child>
+          <!-- n-columns=3 n-rows=2 -->
           <object class="GtkGrid" id="grid_input">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
+            <property name="can-focus">False</property>
             <property name="hexpand">True</property>
             <property name="vexpand">True</property>
-            <property name="row_spacing">18</property>
-            <property name="column_spacing">6</property>
+            <property name="row-spacing">18</property>
+            <property name="column-spacing">6</property>
             <child>
               <object class="GtkEntry" id="input_name">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
+                <property name="can-focus">True</property>
                 <property name="valign">center</property>
                 <property name="hexpand">True</property>
-                <property name="placeholder_text" translatable="yes">Name</property>
-                <property name="input_purpose">name</property>
+                <property name="placeholder-text" translatable="yes">Name</property>
+                <property name="input-purpose">name</property>
               </object>
               <packing>
-                <property name="left_attach">2</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">2</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="add_input">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Create Preset</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Create Preset</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="image">image_add_input</property>
@@ -183,56 +186,56 @@
                 </style>
               </object>
               <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">1</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkButton" id="import_input">
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="tooltip_text" translatable="yes">Import Presets</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+                <property name="tooltip-text" translatable="yes">Import Presets</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="image">image_import_input</property>
-                <property name="always_show_image">True</property>
+                <property name="always-show-image">True</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">0</property>
               </packing>
             </child>
             <child>
               <object class="GtkFrame">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <property name="label_xalign">0</property>
-                <property name="shadow_type">in</property>
+                <property name="label-xalign">0</property>
+                <property name="shadow-type">in</property>
                 <child>
                   <object class="GtkScrolledWindow" id="input_scrolled_window">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
-                    <property name="propagate_natural_width">True</property>
-                    <property name="propagate_natural_height">True</property>
+                    <property name="propagate-natural-width">True</property>
+                    <property name="propagate-natural-height">True</property>
                     <child>
                       <object class="GtkViewport">
                         <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can-focus">False</property>
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <child>
                           <object class="GtkListBox" id="input_listbox">
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
+                            <property name="can-focus">False</property>
                             <property name="hexpand">True</property>
                             <property name="vexpand">True</property>
-                            <property name="selection_mode">none</property>
-                            <property name="activate_on_single_click">False</property>
+                            <property name="selection-mode">none</property>
+                            <property name="activate-on-single-click">False</property>
                           </object>
                         </child>
                       </object>
@@ -244,8 +247,8 @@
                 </child>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
+                <property name="left-attach">0</property>
+                <property name="top-attach">1</property>
                 <property name="width">3</property>
               </packing>
             </child>
@@ -253,26 +256,26 @@
           <packing>
             <property name="name">page_input</property>
             <property name="title" translatable="yes">Input</property>
-            <property name="icon_name">audio-input-microphone-symbolic</property>
+            <property name="icon-name">audio-input-microphone-symbolic</property>
             <property name="position">1</property>
           </packing>
         </child>
       </object>
       <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkStackSwitcher">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="halign">center</property>
         <property name="stack">stack</property>
       </object>
       <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
+        <property name="left-attach">0</property>
+        <property name="top-attach">0</property>
       </packing>
     </child>
   </object>
