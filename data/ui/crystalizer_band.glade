@@ -55,6 +55,7 @@
     <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="halign">center</property>
+    <property name="hexpand">True</property>
     <property name="vexpand">True</property>
     <property name="row-spacing">4</property>
     <child>
@@ -62,7 +63,6 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="label">band</property>
-        <property name="width-chars">9</property>
         <style>
           <class name="dim-label"/>
         </style>
@@ -78,6 +78,8 @@
         <property name="visible">True</property>
         <property name="can-focus">True</property>
         <property name="halign">center</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
         <property name="adjustment">band_intensity</property>
@@ -119,7 +121,6 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="label">intensity</property>
-        <property name="width-chars">9</property>
         <style>
           <class name="dim-label"/>
         </style>

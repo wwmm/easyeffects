@@ -416,12 +416,7 @@ void ConvolverUi::get_irs_info() {
     label_sampling_rate->set_text(std::to_string(rate) + " Hz");
     label_samples->set_text(std::to_string(frames_in));
 
-    std::ostringstream msg;
-
-    msg.precision(3);
-    msg << duration << " s";
-
-    label_duration->set_text(msg.str());
+    label_duration->set_text(level_to_str(duration, 3) + " s");
 
     auto fpath = boost::filesystem::path{path};
 

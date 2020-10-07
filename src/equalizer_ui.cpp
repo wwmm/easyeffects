@@ -345,22 +345,12 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
 
-      std::ostringstream q_msg;
-
-      q_msg.precision(2);
-      q_msg << "Q " << std::fixed << q;
-
-      band_quality_label->set_text(q_msg.str());
+      band_quality_label->set_text(level_to_str(q, 2));
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
 
-        std::ostringstream w_msg;
-
-        w_msg.precision(1);
-        w_msg << std::fixed << f / q << " Hz";
-
-        band_width->set_text(w_msg.str());
+        band_width->set_text(level_to_str(f / q, 1) + " Hz");
       } else {
         band_width->set_text(_("infinity"));
       }
@@ -369,17 +359,11 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_band_label = [=]() {
       auto f = band_frequency->get_value();
 
-      std::ostringstream msg;
-
       if (f > 1000.0) {
-        msg.precision(1);
-        msg << std::fixed << f / 1000.0 << " kHz";
+        band_label->set_text(level_to_str(f / 1000.0, 1) + " kHz");
       } else {
-        msg.precision(0);
-        msg << std::fixed << f << " Hz";
+        band_label->set_text(level_to_str(f, 0) + " Hz");
       }
-
-      band_label->set_text(msg.str());
     };
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
@@ -478,22 +462,12 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
 
-      std::ostringstream q_msg;
-
-      q_msg.precision(2);
-      q_msg << "Q " << std::fixed << q;
-
-      band_quality_label->set_text(q_msg.str());
+      band_quality_label->set_text(level_to_str(q, 2));
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
 
-        std::ostringstream w_msg;
-
-        w_msg.precision(1);
-        w_msg << std::fixed << f / q << " Hz";
-
-        band_width->set_text(w_msg.str());
+        band_width->set_text(level_to_str(f / q, 1) + " Hz");
       } else {
         band_width->set_text(_("infinity"));
       }
@@ -502,17 +476,11 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto update_band_label = [=]() {
       auto f = band_frequency->get_value();
 
-      std::ostringstream msg;
-
       if (f > 1000.0) {
-        msg.precision(1);
-        msg << std::fixed << f / 1000 << " kHz";
+        band_label->set_text(level_to_str(f / 1000.0, 1) + " kHz");
       } else {
-        msg.precision(0);
-        msg << std::fixed << f << " Hz";
+        band_label->set_text(level_to_str(f, 0) + " Hz");
       }
-
-      band_label->set_text(msg.str());
     };
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));

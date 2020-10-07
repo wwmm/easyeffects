@@ -463,7 +463,7 @@
                       <object class="GtkGrid" id="bands_grid_left">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="column-spacing">12</property>
                         <property name="column-homogeneous">True</property>
@@ -477,32 +477,14 @@
                       </packing>
                     </child>
                     <child>
-                      <!-- n-columns=3 n-rows=3 -->
+                      <!-- n-columns=0 n-rows=3 -->
                       <object class="GtkGrid" id="bands_grid_right">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">center</property>
+                        <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="column-spacing">12</property>
                         <property name="column-homogeneous">True</property>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
-                        <child>
-                          <placeholder/>
-                        </child>
                         <child>
                           <placeholder/>
                         </child>

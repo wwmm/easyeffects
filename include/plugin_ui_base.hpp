@@ -51,7 +51,9 @@ class PluginUiBase {
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
   static auto level_to_str(const double& value, const int& places) -> std::string;
+  static auto level_to_str(const float& value, const int& places) -> std::string;
   static auto level_to_str_showpos(const double& value, const int& places) -> std::string;
+  static auto level_to_str_showpos(const float& value, const int& places) -> std::string;
 
   // reset plugin method
   virtual void reset() = 0;
