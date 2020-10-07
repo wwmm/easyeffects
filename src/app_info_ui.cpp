@@ -1,9 +1,4 @@
 #include "app_info_ui.hpp"
-#include <glibmm/i18n.h>
-#include <sstream>
-#include "blocklist_settings_ui.hpp"
-#include "preset_type.hpp"
-#include "util.hpp"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
@@ -58,17 +53,9 @@ AppInfoUi::~AppInfoUi() {
   util::debug(log_tag + app_info->name + " info ui destroyed");
 }
 
-auto AppInfoUi::latency_to_str(uint value) -> std::string {
-  std::ostringstream msg;
+void AppInfoUi::init_widgets() {
   const float ms_factor = 0.001F;
 
-  msg.precision(1);
-  msg << std::fixed << value * ms_factor << " ms";
-
-  return msg.str();
-}
-
-void AppInfoUi::init_widgets() {
   enable->set_active(is_enabled && !is_blocklisted);
   enable->set_sensitive(!is_blocklisted);
 
@@ -98,9 +85,9 @@ void AppInfoUi::init_widgets() {
 
   resampler->set_text(app_info->resampler);
 
-  buffer->set_text(latency_to_str(app_info->buffer));
+  buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
 
-  latency->set_text(latency_to_str(app_info->latency));
+  latency->set_text(PluginUiBase::level_to_str(app_info->latency * ms_factor, 1) + " ms");
 
   if (app_info->corked != 0) {
     state->set_text(_("paused"));
