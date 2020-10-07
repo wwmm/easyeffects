@@ -84,7 +84,6 @@
         <property name="orientation">vertical</property>
         <property name="adjustment">band_intensity</property>
         <property name="inverted">True</property>
-        <property name="round-digits">1</property>
         <property name="digits">0</property>
         <property name="draw-value">False</property>
         <property name="has-origin">False</property>

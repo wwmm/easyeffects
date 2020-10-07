@@ -70,6 +70,8 @@ class PluginUiBase {
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
+  static std::locale syslocale;
+
   std::vector<sigc::connection> connections;
 
   static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
