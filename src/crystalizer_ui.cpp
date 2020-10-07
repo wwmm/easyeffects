@@ -81,17 +81,31 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
     Gtk::Grid* band_grid;
     Gtk::Label* band_label;
+    Gtk::Label* band_intensity_label;
     Gtk::ToggleButton* band_mute;
     Gtk::ToggleButton* band_bypass;
     Gtk::Scale* band_scale;
 
     B->get_widget("band_grid", band_grid);
     B->get_widget("band_label", band_label);
+    B->get_widget("band_intensity_label", band_intensity_label);
     B->get_widget("band_mute", band_mute);
     B->get_widget("band_bypass", band_bypass);
     B->get_widget("band_scale", band_scale);
 
     auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_intensity"));
+
+    // set initial band intensity in relative label
+
+    band_intensity_label->set_text(level_to_str_showpos(band_intensity->get_value(), 0));
+
+    // connections
+
+    connections.emplace_back(band_intensity->signal_value_changed().connect([=]() {
+      auto bi = band_intensity->get_value();
+
+      band_intensity_label->set_text(level_to_str_showpos(bi, 0));
+    }));
 
     connections.emplace_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {

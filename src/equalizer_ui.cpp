@@ -319,6 +319,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     Gtk::Label* band_width = nullptr;
     Gtk::Label* band_label = nullptr;
     Gtk::Label* band_quality_label = nullptr;
+    Gtk::Label* band_gain_label = nullptr;
     Gtk::Button* reset_frequency = nullptr;
     Gtk::Button* reset_quality = nullptr;
     Gtk::ToggleButton* band_solo = nullptr;
@@ -332,6 +333,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
     B->get_widget("band_quality_label", band_quality_label);
+    B->get_widget("band_gain_label", band_gain_label);
     B->get_widget("band_solo", band_solo);
     B->get_widget("band_mute", band_mute);
     B->get_widget("band_scale", band_scale);
@@ -345,7 +347,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
 
-      band_quality_label->set_text(level_to_str(q, 2));
+      band_quality_label->set_text("Q " + level_to_str(q, 2));
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
@@ -366,11 +368,25 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
       }
     };
 
+    auto update_gain = [=]() {
+      auto g = band_gain->get_value();
+
+      band_gain_label->set_text(level_to_str_showpos(g, 2));
+    };
+
+    // set initial band gain in relative label
+
+    band_gain_label->set_text(level_to_str_showpos(band_gain->get_value(), 2));
+
+    // connections
+
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
     connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
+
+    connections_bands.emplace_back(band_gain->signal_value_changed().connect(update_gain));
 
     connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
         [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
@@ -436,6 +452,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     Gtk::Label* band_width = nullptr;
     Gtk::Label* band_label = nullptr;
     Gtk::Label* band_quality_label = nullptr;
+    Gtk::Label* band_gain_label = nullptr;
     Gtk::Button* reset_frequency = nullptr;
     Gtk::Button* reset_quality = nullptr;
     Gtk::ToggleButton* band_solo = nullptr;
@@ -449,6 +466,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     B->get_widget("band_width", band_width);
     B->get_widget("band_label", band_label);
     B->get_widget("band_quality_label", band_quality_label);
+    B->get_widget("band_gain_label", band_gain_label);
     B->get_widget("band_solo", band_solo);
     B->get_widget("band_mute", band_mute);
     B->get_widget("band_scale", band_scale);
@@ -462,7 +480,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto update_quality_width = [=]() {
       auto q = band_quality->get_value();
 
-      band_quality_label->set_text(level_to_str(q, 2));
+      band_quality_label->set_text("Q " + level_to_str(q, 2));
 
       if (q > 0.0) {
         auto f = band_frequency->get_value();
@@ -483,11 +501,25 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
       }
     };
 
+    auto update_gain = [=]() {
+      auto g = band_gain->get_value();
+
+      band_gain_label->set_text(level_to_str_showpos(g, 2));
+    };
+
+    // set initial band gain in relative label
+
+    band_gain_label->set_text(level_to_str_showpos(band_gain->get_value(), 2));
+
+    // connections
+
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
     connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
+
+    connections_bands.emplace_back(band_gain->signal_value_changed().connect(update_gain));
 
     /*right channel
       we need the bindgins below for the right channel equalizer to be updated
