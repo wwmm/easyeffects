@@ -184,7 +184,9 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     if (mouse_inside) {
       std::ostringstream msg;
 
+      msg.imbue(syslocale);
       msg.precision(0);
+
       msg << std::fixed << mouse_freq << " Hz, ";
       msg << std::fixed << mouse_intensity << " dB";
 
@@ -293,6 +295,8 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
 
   for (size_t n = 0U; n < freq_labels.size() - 1U; n++) {
     std::ostringstream msg;
+
+    msg.imbue(syslocale);
 
     auto label = freq_labels[n];
 

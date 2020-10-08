@@ -20,6 +20,7 @@
 #ifndef CALIBRATION_UI_HPP
 #define CALIBRATION_UI_HPP
 
+#include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/headerbar.h>
@@ -27,6 +28,7 @@
 #include <gtkmm/window.h>
 #include "calibration_mic_ui.hpp"
 #include "calibration_signals_ui.hpp"
+#include "util.hpp"
 
 class CalibrationUi : public Gtk::Window {
  public:
@@ -43,6 +45,8 @@ class CalibrationUi : public Gtk::Window {
 
  private:
   std::string log_tag = "calibration_ui: ";
+
+  std::locale syslocale = std::locale("");
 
   Gtk::Stack* stack = nullptr;
   Gtk::DrawingArea* spectrum = nullptr;

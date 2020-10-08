@@ -182,7 +182,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream current_dev_rate;
   const float khz_factor = 0.001F;
 
+  null_sink_rate.imbue(syslocale);
   null_sink_rate.precision(1);
+
+  current_dev_rate.imbue(syslocale);
   current_dev_rate.precision(1);
 
   switch (index) {
@@ -200,9 +203,9 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
-                               null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
-                               std::to_string(sie_latency) + "ms ⟶ ");
+      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + " " + null_sink_rate.str() +
+                               " ⟶ float32le " + null_sink_rate.str() + " ⟶ " + sink->format + " " +
+                               current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
       break;
     }
@@ -220,8 +223,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
-                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
+      headerbar_info->set_text(" ⟶ " + source->format + " " + current_dev_rate.str() + " ⟶ float32le " +
+                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + " " +
                                null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;

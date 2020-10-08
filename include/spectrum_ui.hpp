@@ -46,6 +46,8 @@ class SpectrumUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
+  std::locale syslocale = std::locale("");
+
   Gtk::DrawingArea* spectrum = nullptr;
   Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
 

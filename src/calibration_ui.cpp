@@ -18,8 +18,6 @@
  */
 
 #include "calibration_ui.hpp"
-#include <glibmm/i18n.h>
-#include "util.hpp"
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Window(cobject) {
@@ -120,7 +118,9 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
     if (mouse_inside) {
       std::ostringstream msg;
 
+      msg.imbue(syslocale);
       msg.precision(0);
+
       msg << std::fixed << mouse_freq << " Hz, ";
       msg << std::fixed << mouse_intensity << " dB";
 
