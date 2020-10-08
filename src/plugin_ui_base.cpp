@@ -1,5 +1,7 @@
 #include "plugin_ui_base.hpp"
 
+std::locale PluginUiBase::syslocale = std::locale("");
+
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
@@ -45,7 +47,9 @@ PluginUiBase::~PluginUiBase() {
 auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
 
+  msg.imbue(syslocale);
   msg.precision(places);
+
   msg << std::fixed << value;
 
   return msg.str();
@@ -54,8 +58,32 @@ auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::
 auto PluginUiBase::level_to_str_showpos(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
 
+  msg.imbue(syslocale);
   msg.precision(places);
+
   msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+
+  return msg.str();
+}
+
+auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::string {
+  std::ostringstream msg;
+
+  msg.imbue(syslocale);
+  msg.precision(places);
+
+  msg << std::fixed << value;
+
+  return msg.str();
+}
+
+auto PluginUiBase::level_to_str_showpos(const float& value, const int& places) -> std::string {
+  std::ostringstream msg;
+
+  msg.imbue(syslocale);
+  msg.precision(places);
+
+  msg << ((value > 0.0F) ? "+" : "") << std::fixed << value;
 
   return msg.str();
 }

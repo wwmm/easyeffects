@@ -8,8 +8,13 @@
 #include <gtkmm/label.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/switch.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/togglebutton.h>
+#include "blocklist_settings_ui.hpp"
+#include "plugin_ui_base.hpp"
+#include "preset_type.hpp"
 #include "pulse_manager.hpp"
+#include "util.hpp"
 
 class AppInfoUi : public Gtk::Grid {
  public:
@@ -63,8 +68,6 @@ class AppInfoUi : public Gtk::Grid {
   void init_widgets();
 
   void connect_signals();
-
-  static auto latency_to_str(uint value) -> std::string;
 
   auto on_enable_app(bool state) -> bool;
 

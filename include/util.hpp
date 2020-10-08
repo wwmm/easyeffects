@@ -4,6 +4,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <iostream>
+#include <locale>
 #include <thread>
 #include <vector>
 

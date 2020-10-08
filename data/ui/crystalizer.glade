@@ -150,7 +150,7 @@
           <object class="GtkGrid" id="bands_grid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">center</property>
+            <property name="hexpand">True</property>
             <property name="vexpand">True</property>
             <property name="column-spacing">12</property>
             <property name="column-homogeneous">True</property>
