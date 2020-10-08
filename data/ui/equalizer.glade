@@ -112,6 +112,7 @@
   <object class="GtkAdjustment" id="nbands">
     <property name="lower">1</property>
     <property name="upper">30</property>
+    <property name="value">30</property>
     <property name="step-increment">1</property>
     <property name="page-increment">1</property>
   </object>
@@ -211,12 +212,11 @@
                         <property name="can-focus">True</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="text" translatable="yes">1</property>
+                        <property name="text">1</property>
                         <property name="input-purpose">number</property>
                         <property name="adjustment">nbands</property>
                         <property name="numeric">True</property>
                         <property name="update-policy">if-valid</property>
-                        <property name="value">1</property>
                       </object>
                       <packing>
                         <property name="left-attach">1</property>
@@ -477,7 +477,7 @@
                       </packing>
                     </child>
                     <child>
-                      <!-- n-columns=0 n-rows=3 -->
+                      <!-- n-columns=3 n-rows=3 -->
                       <object class="GtkGrid" id="bands_grid_right">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -485,6 +485,24 @@
                         <property name="vexpand">True</property>
                         <property name="column-spacing">12</property>
                         <property name="column-homogeneous">True</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
                         <child>
                           <placeholder/>
                         </child>
