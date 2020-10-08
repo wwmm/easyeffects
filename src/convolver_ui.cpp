@@ -1,13 +1,4 @@
 #include "convolver_ui.hpp"
-#include <glibmm.h>
-#include <glibmm/i18n.h>
-#include <gst/fft/gstfftf32.h>
-#include <gtkmm/filechoosernative.h>
-#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
-#include <sndfile.hh>
-#include "gtkmm/dialog.h"
-// #include "gtkmm/window.h"
-#include "sigc++/functors/ptr_fun.h"
 
 ConvolverUi::ConvolverUi(BaseObjectType* cobject,
                          const Glib::RefPtr<Gtk::Builder>& builder,
@@ -565,22 +556,19 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
     ctx->stroke();
 
     if (mouse_inside) {
-      std::ostringstream msg;
+      std::string msg;
 
       if (show_fft_spectrum) {
-        msg.precision(0);
-        msg << std::fixed << mouse_freq << " Hz, ";
+        msg.append(level_to_str(mouse_freq, 0) + " Hz, ");
+        msg.append(level_to_str(mouse_intensity, 3));
       } else {
-        msg.precision(3);
-        msg << std::fixed << mouse_time << " s, ";
+        msg.append(level_to_str(mouse_time, 3) + " s, ");
+        msg.append(level_to_str_showpos(mouse_intensity, 3));
       }
-
-      msg.precision(3);
-      msg << std::fixed << mouse_intensity;
 
       int text_width = 0;
       int text_height = 0;
-      auto layout = create_pango_layout(msg.str());
+      auto layout = create_pango_layout(msg);
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
