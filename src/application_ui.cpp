@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2020 Wellington Wallace
+ *
+ *  This file is part of PulseEffects.
+ *
+ *  PulseEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  PulseEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "application_ui.hpp"
 #include <glibmm/i18n.h>
 #include <gtkmm/cssprovider.h>
@@ -163,7 +182,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream current_dev_rate;
   const float khz_factor = 0.001F;
 
+  null_sink_rate.imbue(syslocale);
   null_sink_rate.precision(1);
+
+  current_dev_rate.imbue(syslocale);
   current_dev_rate.precision(1);
 
   switch (index) {
@@ -181,9 +203,9 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + "," + null_sink_rate.str() + " ⟶ F32LE," +
-                               null_sink_rate.str() + " ⟶ " + sink->format + "," + current_dev_rate.str() + " ⟶ " +
-                               std::to_string(sie_latency) + "ms ⟶ ");
+      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + " " + null_sink_rate.str() +
+                               " ⟶ float32le " + null_sink_rate.str() + " ⟶ " + sink->format + " " +
+                               current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
       break;
     }
@@ -201,8 +223,8 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + source->format + "," + current_dev_rate.str() + " ⟶ F32LE," +
-                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + "," +
+      headerbar_info->set_text(" ⟶ " + source->format + " " + current_dev_rate.str() + " ⟶ float32le " +
+                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + " " +
                                null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;

@@ -1,6 +1,23 @@
+/*
+ *  Copyright © 2017-2020 Wellington Wallace
+ *
+ *  This file is part of PulseEffects.
+ *
+ *  PulseEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  PulseEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "calibration_ui.hpp"
-#include <glibmm/i18n.h>
-#include "util.hpp"
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Window(cobject) {
@@ -101,7 +118,9 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
     if (mouse_inside) {
       std::ostringstream msg;
 
+      msg.imbue(syslocale);
       msg.precision(0);
+
       msg << std::fixed << mouse_freq << " Hz, ";
       msg << std::fixed << mouse_intensity << " dB";
 
