@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+### Added
+
+- Band Quality factor exposed in the equalizer main interface.
+
+### Fixed
+
+- Values outside GTK widgets are now shown according to system locale settings.
+- Equalizer and Crystalizer UI redesigned: band wrapper is extended to fit all available horizontal space and homogeneous property
+  has been applied to get same space between band sliders.
+
 ## [4.8.2]
 
 ### Fixed
@@ -17,8 +27,8 @@
 - Deesser UI redesigned and applied homogeneous property to all plugin UI to get same space between controls and make them fit
   all the available horizontal space.
 - Modified `Applications` row in the left side plugin list to show an icon according to input/output effects while the pipeline
-  global level meter is only shown when something is recording/playing
-- The feature that shows the last used preset in the preset menu button label was improved. When seeing input effects
+  global level meter is only shown when something is recording/playing.
+- The feature that shows the last used preset in the preset menu button label was improved. When seeing input effects.
   widget it shows the last used input preset. And when seeing output effects widgets it shows the last used output preset.
 - New application icon.
 
