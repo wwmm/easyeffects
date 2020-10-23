@@ -869,11 +869,13 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 // returns false if we cannot parse given line successfully
 auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
   std::smatch matches;
-  std::regex re_filter_type(R"(Filter[\s]+[\d]*:[\s]*ON[\s]+([\w]+))");
-  std::regex re_freq(R"([\s]+Fc[\s]*([\d]*[.]?[\d]*)[\s]*Hz)");
-  std::regex re_dB_per_octave(R"(Filter[\s]+[\d]*:[\s]*ON[\s]+[\w]+[\s]+([+-]?[\d]*[.]?[\d]*)[\s]*dB)");
-  std::regex re_gain(R"(Gain[\s]*([+-]?[\d]*[.]?[\d]*)[\s]*dB)");
-  std::regex re_quality_factor(R"([\s]+Q[\s]+([\d]*[.]?[\d]*))");
+
+  auto i = std::regex::icase;
+  std::regex re_filter_type("filter\\s++\\d*+:\\s*+on\\s++(\\w++)", i);
+  std::regex re_freq("\\s++fc\\s*+(\\d*+\\.?+\\d*+)\\s*+hz", i);
+  std::regex re_dB_per_octave("filter\\s++\\d*+:\\s*+on\\s++\\w++\\s++([\\+-]?+\\d*+\\.?+\\d*+)\\s*+db", i);
+  std::regex re_gain("gain\\s*+([\\+-]?+\\d*+\\.?+\\d*+)\\s*+db", i);
+  std::regex re_quality_factor("\\s++q\\s++(\\d*+\\.?+\\d*+)", i);
 
   // get filter type
   std::regex_search(line, matches, re_filter_type);
