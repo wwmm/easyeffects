@@ -5,6 +5,7 @@
 ### Added
 
 - Band Quality factor exposed in the equalizer main interface.
+- Updated Chinese translation
 
 ### Fixed
 
