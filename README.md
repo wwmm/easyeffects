@@ -93,7 +93,7 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
 
 - [Arch Linux](https://www.archlinux.org/packages/community/x86_64/pulseeffects/) / [AUR Git version](https://aur.archlinux.org/packages/pulseeffects-git/)
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
-- [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects/)
+- [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects)
 - [ROSA](https://abf.io/import/pulseeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
 - [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
