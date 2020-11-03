@@ -99,6 +99,7 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
 - [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
 - [CRUX](https://crux.nu/portdb/?a=search&q=pulseeffects)
 - [openSUSE](https://software.opensuse.org/package/pulseeffects)
+- [NixOS](https://search.nixos.org/packages?channel=unstable&show=pulseeffects&query=pulseeffects)
 
 #### Community packages
 
