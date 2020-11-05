@@ -100,6 +100,7 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
 - [CRUX](https://crux.nu/portdb/?a=search&q=pulseeffects)
 - [openSUSE](https://software.opensuse.org/package/pulseeffects)
 - [NixOS](https://search.nixos.org/packages?channel=unstable&show=pulseeffects&query=pulseeffects)
+- [Debian (buster)](https://packages.debian.org/buster-backports/pulseeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/pulseeffects)
 
 #### Community packages
 
