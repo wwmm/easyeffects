@@ -37,10 +37,12 @@
           <object class="GtkLabel" id="name">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">start</property>
+            <property name="halign">end</property>
             <property name="valign">center</property>
+            <property name="margin-end">14</property>
             <property name="hexpand">True</property>
             <property name="label">Name</property>
+            <property name="single-line-mode">True</property>
           </object>
           <packing>
             <property name="left-attach">0</property>
