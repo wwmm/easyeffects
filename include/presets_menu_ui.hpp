@@ -62,6 +62,8 @@ class PresetsMenuUi : public Gtk::Grid {
   Gtk::Entry *output_name = nullptr, *input_name = nullptr;
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
 
+  std::size_t preset_maxsize = 50u;
+
   std::vector<sigc::connection> connections;
 
   void create_preset(PresetType preset_type);
