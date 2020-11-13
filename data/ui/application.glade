@@ -215,6 +215,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Presets</property>
+                <property name="single-line-mode">True</property>
               </object>
             </child>
           </object>

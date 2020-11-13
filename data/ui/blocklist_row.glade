@@ -27,6 +27,7 @@
             <property name="halign">start</property>
             <property name="valign">center</property>
             <property name="label">Name</property>
+            <property name="single-line-mode">True</property>
           </object>
           <packing>
             <property name="expand">False</property>

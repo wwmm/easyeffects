@@ -60,8 +60,8 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="margin-end">6</property>
-            <property name="margin-top">6</property>
-            <property name="margin-bottom">6</property>
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">10</property>
             <property name="hexpand">True</property>
             <property name="hhomogeneous">False</property>
             <property name="vhomogeneous">False</property>
