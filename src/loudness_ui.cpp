@@ -124,7 +124,6 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   builder->get_widget("plugin_reset", reset_button);
   builder->get_widget("fft_size", fft_size);
   builder->get_widget("standard", standard);
-  builder->get_widget("reference_signal", reference_signal);
 
   get_object(builder, "input", input);
   get_object(builder, "volume", volume);
@@ -136,7 +135,6 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("input", input.get(), "value", flag);
   settings->bind("volume", volume.get(), "value", flag);
-  settings->bind("reference-signal", reference_signal, "active", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "fft", fft_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                fft_size_enum_to_int, int_to_fft_size_enum, nullptr, nullptr);

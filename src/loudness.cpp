@@ -44,7 +44,6 @@ Loudness::Loudness(const std::string& tag, const std::string& schema, const std:
     gst_object_unref(GST_OBJECT(pad_src));
 
     g_object_set(loudness, "enabled", 1, nullptr);
-    g_object_set(loudness, "refer", 0, nullptr);
     g_object_set(loudness, "hclip", 0, nullptr);
 
     bind_to_gsettings();
@@ -74,6 +73,4 @@ void Loudness::bind_to_gsettings() {
   g_settings_bind(settings, "fft", loudness, "fft", G_SETTINGS_BIND_DEFAULT);
 
   g_settings_bind(settings, "std", loudness, "std", G_SETTINGS_BIND_DEFAULT);
-
-  g_settings_bind(settings, "reference-signal", loudness, "refer", G_SETTINGS_BIND_DEFAULT);
 }
