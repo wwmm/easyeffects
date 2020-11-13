@@ -14,6 +14,7 @@
   property has been applied to get the same space between band sliders.
 - App info and plugin interfaces made scrollable: now PulseEffects window does not change its size when switching beetween
   plugins.
+- Loudness plugin: removed reference signal button; input value is now saved to preset.
 
 ## [4.8.2]
 
