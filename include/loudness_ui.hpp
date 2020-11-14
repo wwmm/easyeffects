@@ -40,8 +40,6 @@ class LoudnessUi : public Gtk::Grid, public PluginUiBase {
   Glib::RefPtr<Gtk::Adjustment> input, volume;
 
   Gtk::ComboBoxText *fft_size = nullptr, *standard = nullptr;
-
-  Gtk::ToggleButton* reference_signal = nullptr;
 };
 
 #endif

@@ -39,8 +39,5 @@
             <range min="-83.0" max="7.0" />
             <default>0.0</default>
         </key>
-        <key name="reference-signal" type="b">
-            <default>false</default>
-        </key>
     </schema>
 </schemalist>

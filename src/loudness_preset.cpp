@@ -32,6 +32,8 @@ void LoudnessPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".loudness.std", settings->get_string("std"));
 
+  root.put(section + ".loudness.input", settings->get_double("input"));
+
   root.put(section + ".loudness.volume", settings->get_double("volume"));
 }
 
@@ -43,6 +45,8 @@ void LoudnessPreset::load(const boost::property_tree::ptree& root,
   update_string_key(root, settings, "fft", section + ".loudness.fft");
 
   update_string_key(root, settings, "std", section + ".loudness.std");
+
+  update_key<double>(root, settings, "input", section + ".loudness.input");
 
   update_key<double>(root, settings, "volume", section + ".loudness.volume");
 }

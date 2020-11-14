@@ -216,7 +216,9 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
     row->set_name(name);
 
-    label->set_text(name);
+    label->set_text(
+      (name.length() > preset_maxsize) ? name.substr(0u, preset_maxsize - 3u).append("...") : name
+    );
 
     if (is_autoloaded(preset_type, name)) {
       autoload_btn->set_active(true);

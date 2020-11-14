@@ -106,6 +106,7 @@
                     <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
+                    <property name="max-content-width">1000</property>
                     <property name="max-content-height">650</property>
                     <property name="propagate-natural-width">True</property>
                     <property name="propagate-natural-height">True</property>
@@ -202,6 +203,7 @@
                     <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
+                    <property name="max-content-width">1000</property>
                     <property name="max-content-height">650</property>
                     <property name="propagate-natural-width">True</property>
                     <property name="propagate-natural-height">True</property>
