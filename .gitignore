@@ -9,6 +9,7 @@ node_modules
 package-lock.json
 compile_commands.json
 .clangd
+.cache
 
 # Compiled python modules.
 *.pyc
