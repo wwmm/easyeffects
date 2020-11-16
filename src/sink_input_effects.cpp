@@ -20,6 +20,7 @@
 #include "sink_input_effects.hpp"
 #include <cstring>
 #include "pipeline_common.hpp"
+#include "rnnoise.hpp"
 
 namespace {
 
@@ -84,6 +85,10 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEff
     sie->pitch_input_level.emit(SinkInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
     sie->pitch_output_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "rnnoise_input_level") == 0) {
+    sie->rnnoise_input_level.emit(SinkInputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "rnnoise_output_level") == 0) {
+    sie->rnnoise_output_level.emit(SinkInputEffects::get_peak(message));
   }
 }
 
@@ -205,6 +210,9 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
   delay = std::make_unique<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay",
                                   "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
 
+  rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
+
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));
   plugins.insert(std::make_pair(filter->name, filter->plugin));
@@ -225,6 +233,7 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
   plugins.insert(std::make_pair(crystalizer->name, crystalizer->plugin));
   plugins.insert(std::make_pair(autogain->name, autogain->plugin));
   plugins.insert(std::make_pair(delay->name, delay->plugin));
+  plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
 
   add_plugins_to_pipeline();
 

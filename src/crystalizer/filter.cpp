@@ -193,11 +193,7 @@ void Filter::init_zita(const int& num_samples) {
     util::debug(log_tag + "start_process failed: " + std::to_string(ret));
   }
 
-  if (failed) {
-    ready = false;
-  } else {
-    ready = true;
-  }
+  ready = !failed;
 }
 
 void Filter::process(float* data) {

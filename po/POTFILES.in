@@ -46,6 +46,7 @@ data/ui/spectrum.glade
 data/ui/spectrum_settings.glade
 data/ui/stereo_tools.glade
 data/ui/webrtc.glade
+data/ui/rnnoise.glade
 src/app_info_ui.cpp
 src/application.cpp
 src/application_ui.cpp

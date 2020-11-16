@@ -50,17 +50,17 @@ void Webrtc::build_probe_bin() {
   probe_bin = gst_bin_new("probe_bin");
 
   probe_src = gst_element_factory_make("pulsesrc", nullptr);
-  auto queue = gst_element_factory_make("queue", nullptr);
-  auto audioconvert = gst_element_factory_make("audioconvert", nullptr);
-  auto audioresample = gst_element_factory_make("audioresample", nullptr);
-  auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
-  auto probe = gst_element_factory_make("webrtcechoprobe", nullptr);
-  auto sink = gst_element_factory_make("fakesink", nullptr);
+  auto* queue = gst_element_factory_make("queue", nullptr);
+  auto* audioconvert = gst_element_factory_make("audioconvert", nullptr);
+  auto* audioresample = gst_element_factory_make("audioresample", nullptr);
+  auto* capsfilter = gst_element_factory_make("capsfilter", nullptr);
+  auto* probe = gst_element_factory_make("webrtcechoprobe", nullptr);
+  auto* sink = gst_element_factory_make("fakesink", nullptr);
 
-  auto props = gst_structure_from_string("props,application.name=PulseEffectsWebrtcProbe", nullptr);
+  auto* props = gst_structure_from_string("props,application.name=PulseEffectsWebrtcProbe", nullptr);
 
-  auto caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
-  auto caps = gst_caps_from_string(caps_str);
+  const auto* caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
+  auto* caps = gst_caps_from_string(caps_str);
 
   g_object_set(probe_src, "stream-properties", props, nullptr);
   g_object_set(probe_src, "buffer-time", 10000, nullptr);
@@ -76,17 +76,17 @@ void Webrtc::build_probe_bin() {
 }
 
 void Webrtc::build_dsp_bin() {
-  auto in_level = gst_element_factory_make("level", "webrtc_input_level");
-  auto audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
-  auto audioresample_in = gst_element_factory_make("audioresample", nullptr);
-  auto caps_in = gst_element_factory_make("capsfilter", nullptr);
-  auto audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
-  auto audioresample_out = gst_element_factory_make("audioresample", nullptr);
-  auto caps_out = gst_element_factory_make("capsfilter", nullptr);
-  auto out_level = gst_element_factory_make("level", "webrtc_output_level");
+  auto* in_level = gst_element_factory_make("level", "webrtc_input_level");
+  auto* audioconvert_in = gst_element_factory_make("audioconvert", nullptr);
+  auto* audioresample_in = gst_element_factory_make("audioresample", nullptr);
+  auto* caps_in = gst_element_factory_make("capsfilter", nullptr);
+  auto* audioconvert_out = gst_element_factory_make("audioconvert", nullptr);
+  auto* audioresample_out = gst_element_factory_make("audioresample", nullptr);
+  auto* caps_out = gst_element_factory_make("capsfilter", nullptr);
+  auto* out_level = gst_element_factory_make("level", "webrtc_output_level");
 
-  auto capsin = gst_caps_from_string("audio/x-raw,channels=2,format=S16LE,rate=48000");
-  auto capsout = gst_caps_from_string(("audio/x-raw,channels=2,format=F32LE,rate=" + std::to_string(rate)).c_str());
+  auto* capsin = gst_caps_from_string("audio/x-raw,channels=2,format=S16LE,rate=48000");
+  auto* capsout = gst_caps_from_string(("audio/x-raw,channels=2,format=F32LE,rate=" + std::to_string(rate)).c_str());
 
   g_object_set(caps_in, "caps", capsin, nullptr);
   g_object_set(caps_out, "caps", capsout, nullptr);
@@ -102,8 +102,8 @@ void Webrtc::build_dsp_bin() {
   gst_element_link_many(in_level, audioconvert_in, audioresample_in, caps_in, webrtc, audioconvert_out,
                         audioresample_out, caps_out, out_level, nullptr);
 
-  auto pad_sink = gst_element_get_static_pad(in_level, "sink");
-  auto pad_src = gst_element_get_static_pad(out_level, "src");
+  auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
+  auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));

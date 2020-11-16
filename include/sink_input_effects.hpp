@@ -39,7 +39,7 @@ class SinkInputEffects : public PipelineBase {
   SinkInputEffects(const SinkInputEffects&) = delete;
   auto operator=(const SinkInputEffects&) -> SinkInputEffects& = delete;
   SinkInputEffects(const SinkInputEffects&&) = delete;
-  auto operator=(const SinkInputEffects &&) -> SinkInputEffects& = delete;
+  auto operator=(const SinkInputEffects&&) -> SinkInputEffects& = delete;
   ~SinkInputEffects() override;
 
   std::unique_ptr<BassEnhancer> bass_enhancer;

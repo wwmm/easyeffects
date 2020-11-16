@@ -22,6 +22,8 @@
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <iostream>
+#include <memory>
+#include "rnnoise_preset.hpp"
 #include "util.hpp"
 
 PresetsManager::PresetsManager()
@@ -53,6 +55,7 @@ PresetsManager::PresetsManager()
       crystalizer(std::make_unique<CrystalizerPreset>()),
       autogain(std::make_unique<AutoGainPreset>()),
       delay(std::make_unique<DelayPreset>()),
+      rnnoise(std::make_unique<RNNoisePreset>()),
       spectrum(std::make_unique<SpectrumPreset>()) {
   // system presets directories provided by Glib
   for (const auto& scd : Glib::get_system_config_dirs()) {
@@ -203,7 +206,6 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
       break;
     }
   }
-
 }
 
 void PresetsManager::load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root) {
@@ -217,8 +219,7 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
         }
 
         settings->set_string_array("blocklist-in", blocklist);
-      }
-      catch (const boost::property_tree::ptree_error& e) {
+      } catch (const boost::property_tree::ptree_error& e) {
         settings->reset("blocklist-in");
       }
 
@@ -231,15 +232,13 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
         }
 
         settings->set_string_array("blocklist-out", blocklist);
-      }
-      catch (const boost::property_tree::ptree_error& e) {
+      } catch (const boost::property_tree::ptree_error& e) {
         settings->reset("blocklist-out");
       }
 
       break;
     }
   }
-
 }
 
 void PresetsManager::save(PresetType preset_type, const std::string& name) {
@@ -305,6 +304,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   crystalizer->write(preset_type, root);
   autogain->write(preset_type, root);
   delay->write(preset_type, root);
+  rnnoise->write(preset_type, root);
 
   boost::property_tree::write_json(output_file.string(), root);
 
@@ -353,7 +353,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           sie_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("output.plugins_order")) {
-            auto& value = p.second.data();
+            const auto& value = p.second.data();
 
             for (const auto& v : aux.get()) {
               if (v == value) {
@@ -402,7 +402,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           soe_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("input.plugins_order")) {
-            auto& value = p.second.data();
+            const auto& value = p.second.data();
 
             for (const auto& v : aux.get()) {
               if (v == value) {
@@ -457,6 +457,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   crystalizer->read(preset_type, root);
   autogain->read(preset_type, root);
   delay->read(preset_type, root);
+  rnnoise->read(preset_type, root);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
@@ -467,7 +468,7 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   if (boost::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
       boost::filesystem::path out_path;
-      auto& user_dir = (preset_type == PresetType::output) ? user_output_dir: user_input_dir;
+      auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
       out_path = user_dir / p.filename();
 
@@ -541,7 +542,6 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
         settings->set_string("last-used-input-preset", name);
         break;
     }
-
   }
 }
 

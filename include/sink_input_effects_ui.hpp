@@ -40,6 +40,8 @@
 #include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
+#include "rnnoise.hpp"
+#include "rnnoise_ui.hpp"
 #include "sink_input_effects.hpp"
 #include "stereo_tools_ui.hpp"
 
@@ -52,7 +54,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   SinkInputEffectsUi(const SinkInputEffectsUi&) = delete;
   auto operator=(const SinkInputEffectsUi&) -> SinkInputEffectsUi& = delete;
   SinkInputEffectsUi(const SinkInputEffectsUi&&) = delete;
-  auto operator=(const SinkInputEffectsUi &&) -> SinkInputEffectsUi& = delete;
+  auto operator=(const SinkInputEffectsUi&&) -> SinkInputEffectsUi& = delete;
   ~SinkInputEffectsUi() override;
 
   static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
@@ -85,6 +87,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   CrystalizerUi* crystalizer_ui = nullptr;
   AutoGainUi* autogain_ui = nullptr;
   DelayUi* delay_ui = nullptr;
+  RNNoiseUi* rnnoise_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

@@ -35,6 +35,7 @@
 #include "pulse_manager.hpp"
 #include "realtime_kit.hpp"
 #include "reverb.hpp"
+#include "rnnoise.hpp"
 #include "stereo_tools.hpp"
 
 class PipelineBase {
@@ -43,7 +44,7 @@ class PipelineBase {
   PipelineBase(const PipelineBase&) = delete;
   auto operator=(const PipelineBase&) -> PipelineBase& = delete;
   PipelineBase(const PipelineBase&&) = delete;
-  auto operator=(const PipelineBase &&) -> PipelineBase& = delete;
+  auto operator=(const PipelineBase&&) -> PipelineBase& = delete;
   virtual ~PipelineBase();
 
   bool playing = false;
@@ -74,6 +75,7 @@ class PipelineBase {
   std::unique_ptr<Pitch> pitch;
   std::unique_ptr<StereoTools> stereo_tools;
   std::unique_ptr<Maximizer> maximizer;
+  std::unique_ptr<RNNoise> rnnoise;
 
   std::unique_ptr<RealtimeKit> rtkit;
 
@@ -119,6 +121,8 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> deesser_output_level;
   sigc::signal<void, std::array<double, 2>> maximizer_input_level;
   sigc::signal<void, std::array<double, 2>> maximizer_output_level;
+  sigc::signal<void, std::array<double, 2>> rnnoise_input_level;
+  sigc::signal<void, std::array<double, 2>> rnnoise_output_level;
 
  protected:
   void set_pulseaudio_props(const std::string& props) const;

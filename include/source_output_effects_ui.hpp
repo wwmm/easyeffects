@@ -32,6 +32,7 @@
 #include "multiband_gate_ui.hpp"
 #include "pitch_ui.hpp"
 #include "reverb_ui.hpp"
+#include "rnnoise_ui.hpp"
 #include "source_output_effects.hpp"
 #include "stereo_tools_ui.hpp"
 #include "webrtc_ui.hpp"
@@ -45,7 +46,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   SourceOutputEffectsUi(const SourceOutputEffectsUi&) = delete;
   auto operator=(const SourceOutputEffectsUi&) -> SourceOutputEffectsUi& = delete;
   SourceOutputEffectsUi(const SourceOutputEffectsUi&&) = delete;
-  auto operator=(const SourceOutputEffectsUi &&) -> SourceOutputEffectsUi& = delete;
+  auto operator=(const SourceOutputEffectsUi&&) -> SourceOutputEffectsUi& = delete;
   ~SourceOutputEffectsUi() override;
 
   static auto add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr) -> SourceOutputEffectsUi*;
@@ -71,6 +72,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   MultibandGateUi* multiband_gate_ui = nullptr;
   StereoToolsUi* stereo_tools_ui = nullptr;
   MaximizerUi* maximizer_ui = nullptr;
+  RNNoiseUi* rnnoise_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

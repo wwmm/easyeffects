@@ -41,6 +41,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   auto b_multiband_gate = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
   auto b_stereo_tools = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.glade");
   auto b_maximizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/maximizer.glade");
+  auto b_rnnoise = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
   b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
                                 "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/");
@@ -85,6 +86,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   b_maximizer->get_widget_derived("widgets_grid", maximizer_ui, "com.github.wwmm.pulseeffects.maximizer",
                                   "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/");
 
+  b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
+                                "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/");
+
   // set preset type property inside user interfaces to be intepreted as "input"
 
   limiter_ui->preset_type = PresetType::input;
@@ -116,6 +120,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
   stack->add(*stereo_tools_ui, stereo_tools_ui->name);
   stack->add(*maximizer_ui, maximizer_ui->name);
+  stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   // populate listbox
 
@@ -132,6 +137,7 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(multiband_gate_ui);
   add_to_listbox(stereo_tools_ui);
   add_to_listbox(maximizer_ui);
+  add_to_listbox(rnnoise_ui);
 
   // show only mic icon before "Application" label
 
@@ -342,6 +348,13 @@ void SourceOutputEffectsUi::level_meters_connections() {
       soe->maximizer_output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
   connections.emplace_back(
       soe->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
+
+  // rnnoise level meters connections
+
+  connections.emplace_back(
+      soe->rnnoise_input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level_db)));
+  connections.emplace_back(
+      soe->rnnoise_output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level_db)));
 }
 
 void SourceOutputEffectsUi::up_down_connections() {
@@ -418,4 +431,7 @@ void SourceOutputEffectsUi::up_down_connections() {
 
   connections.emplace_back(maximizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(maximizer_ui); }));
   connections.emplace_back(maximizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(maximizer_ui); }));
+
+  connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=]() { on_up(rnnoise_ui); }));
+  connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=]() { on_down(rnnoise_ui); }));
 }

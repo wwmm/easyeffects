@@ -39,7 +39,8 @@ help_pages = [
   'saturated.page',
   'autogain.page',
   'blocklist.page',
-  'guide_1.page'
+  'guide_1.page',
+  'rnnoise.page'
 ]
 
 help_media = [

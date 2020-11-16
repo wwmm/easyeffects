@@ -2,7 +2,7 @@
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.sinkinputs" path="/com/github/wwmm/pulseeffects/sinkinputs/">
         <key name="plugins" type="as">
-            <default>["limiter","autogain","gate","multiband_gate","compressor", "multiband_compressor","convolver","bass_enhancer","exciter", "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser", "crossfeed","loudness","maximizer","filter","pitch"]</default>
+            <default>["limiter","autogain","gate","multiband_gate","compressor", "multiband_compressor","convolver","bass_enhancer","exciter", "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser", "crossfeed","loudness","maximizer","filter","pitch","rnnoise"]</default>
         </key>
         <key name="buffer-pulsesrc" type="i">
             <range min="1" max="10000000" />

@@ -20,6 +20,7 @@
 #include "source_output_effects.hpp"
 #include <cstring>
 #include "pipeline_common.hpp"
+#include "rnnoise.hpp"
 
 namespace {
 
@@ -56,6 +57,10 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutput
     soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
     soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "rnnoise_input_level") == 0) {
+    soe->rnnoise_input_level.emit(SourceOutputEffects::get_peak(message));
+  } else if (std::strcmp(src_name, "rnnoise_output_level") == 0) {
+    soe->rnnoise_output_level.emit(SourceOutputEffects::get_peak(message));
   }
 }
 
@@ -155,6 +160,9 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
   maximizer = std::make_unique<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer",
                                           "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/");
 
+  rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
+                                      "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/");
+
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));
   plugins.insert(std::make_pair(filter->name, filter->plugin));
@@ -168,6 +176,7 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
   plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
+  plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
 
   add_plugins_to_pipeline();
 

@@ -44,6 +44,7 @@
 #include "pitch_preset.hpp"
 #include "preset_type.hpp"
 #include "reverb_preset.hpp"
+#include "rnnoise_preset.hpp"
 #include "spectrum_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "webrtc_preset.hpp"
@@ -54,11 +55,11 @@ class PresetsManager {
   PresetsManager(const PresetsManager&) = delete;
   auto operator=(const PresetsManager&) -> PresetsManager& = delete;
   PresetsManager(const PresetsManager&&) = delete;
-  auto operator=(const PresetsManager &&) -> PresetsManager& = delete;
+  auto operator=(const PresetsManager&&) -> PresetsManager& = delete;
   ~PresetsManager();
 
   auto get_names(PresetType preset_type) -> std::vector<std::string>;
-  auto search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string>;
+  static auto search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string>;
   void add(PresetType preset_type, const std::string& name);
   void save(PresetType preset_type, const std::string& name);
   void remove(PresetType preset_type, const std::string& name);
@@ -100,6 +101,7 @@ class PresetsManager {
   std::unique_ptr<CrystalizerPreset> crystalizer;
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<DelayPreset> delay;
+  std::unique_ptr<RNNoisePreset> rnnoise;
   std::unique_ptr<SpectrumPreset> spectrum;
 
   template <typename T>

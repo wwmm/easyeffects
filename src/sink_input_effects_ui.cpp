@@ -18,6 +18,7 @@
  */
 
 #include "sink_input_effects_ui.hpp"
+#include "rnnoise_ui.hpp"
 
 SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
                                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
@@ -47,6 +48,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   auto b_crystalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade");
   auto b_autogain = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/autogain.glade");
   auto b_delay = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/delay.glade");
+  auto b_rnnoise = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
   b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
                                 "/com/github/wwmm/pulseeffects/sinkinputs/limiter/");
@@ -112,6 +114,9 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.delay",
                               "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
 
+  b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
+                                "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
+
   // add to stack
 
   stack->add(*limiter_ui, limiter_ui->name);
@@ -134,6 +139,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   stack->add(*crystalizer_ui, crystalizer_ui->name);
   stack->add(*autogain_ui, autogain_ui->name);
   stack->add(*delay_ui, delay_ui->name);
+  stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   // populate_listbox
 
@@ -157,6 +163,7 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   add_to_listbox(crystalizer_ui);
   add_to_listbox(autogain_ui);
   add_to_listbox(delay_ui);
+  add_to_listbox(rnnoise_ui);
 
   // show only speaker icon before "Application" label
 
@@ -184,7 +191,7 @@ auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_p
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
 
-  SinkInputEffectsUi* ui;
+  SinkInputEffectsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
 
@@ -431,6 +438,13 @@ void SinkInputEffectsUi::level_meters_connections() {
 
   connections.emplace_back(sie->delay_input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level_db)));
   connections.emplace_back(sie->delay_output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level_db)));
+
+  // rnnoise level meters connections
+
+  connections.emplace_back(
+      sie->rnnoise_input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level_db)));
+  connections.emplace_back(
+      sie->rnnoise_output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level_db)));
 }
 
 void SinkInputEffectsUi::up_down_connections() {
@@ -529,4 +543,7 @@ void SinkInputEffectsUi::up_down_connections() {
 
   connections.emplace_back(delay_ui->plugin_up->signal_clicked().connect([=]() { on_up(delay_ui); }));
   connections.emplace_back(delay_ui->plugin_down->signal_clicked().connect([=]() { on_down(delay_ui); }));
+
+  connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=]() { on_up(rnnoise_ui); }));
+  connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=]() { on_down(rnnoise_ui); }));
 }
