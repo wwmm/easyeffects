@@ -23,7 +23,8 @@
 
 RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "rnnoise", schema, schema_path) {
-  rnnoise = gst_element_factory_make("audiornnoise", nullptr);
+  // rnnoise = gst_element_factory_make("audiornnoise", nullptr);
+  rnnoise = gst_element_factory_make("pernnoise", nullptr);
 
   if (is_installed(rnnoise)) {
     auto* input_gain = gst_element_factory_make("volume", nullptr);

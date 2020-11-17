@@ -798,7 +798,7 @@ static void gst_pecrystalizer_process(GstPecrystalizer* pecrystalizer, GstBuffer
     /*
       Later we will need to calculate the second derivative of each band. This
       is done through the central difference method. In order to calculate
-      themderivative at the last elementsof the array we have to now the first
+      the derivative at the last elementsof the array we have to now the first
       element of the next buffer. As we do not have this information the only
       way to do this calculation is delaying the signal by 1 sample.
     */
