@@ -799,40 +799,34 @@ void EqualizerUi::populate_presets_listbox() {
 }
 
 void EqualizerUi::reset() {
-  try {
-    settings->reset("mode");
-    settings->reset("num-bands");
-    settings->reset("split-channels");
-    settings->reset("input-gain");
-    settings->reset("output-gain");
+  settings->reset("mode");
+  settings->reset("num-bands");
+  settings->reset("split-channels");
+  settings->reset("input-gain");
+  settings->reset("output-gain");
 
-    for (int n = 0; n < max_bands; n++) {
-      // left channel
+  for (int n = 0; n < max_bands; n++) {
+    // left channel
 
-      settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
-      settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-gain"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-frequency"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-q"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-type"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-mode"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-slope"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-solo"));
+    settings_left->reset(std::string("band" + std::to_string(n) + "-mute"));
 
-      // right channel
+    // right channel
 
-      settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
-      settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
-    }
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
+    settings_right->reset(std::string("band" + std::to_string(n) + "-gain"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-frequency"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-q"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-type"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-mode"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-slope"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-solo"));
+    settings_right->reset(std::string("band" + std::to_string(n) + "-mute"));
   }
 }
 

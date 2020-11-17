@@ -69,31 +69,23 @@ LimiterUi::~LimiterUi() {
 }
 
 void LimiterUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".limiter.input-gain");
+  settings->reset("limit");
 
-    update_default_key<double>(settings, "limit", section + ".limiter.limit");
+  settings->reset("lookahead");
 
-    update_default_key<double>(settings, "lookahead", section + ".limiter.lookahead");
+  settings->reset("release");
 
-    update_default_key<double>(settings, "release", section + ".limiter.release");
+  settings->reset("auto-level");
 
-    update_default_key<bool>(settings, "auto-level", section + ".limiter.auto-level");
+  settings->reset("asc");
 
-    update_default_key<bool>(settings, "asc", section + ".limiter.asc");
+  settings->reset("asc-level");
 
-    update_default_key<double>(settings, "asc-level", section + ".limiter.asc-level");
+  settings->reset("oversampling");
 
-    update_default_key<int>(settings, "oversampling", section + ".limiter.oversampling");
-
-    update_default_key<double>(settings, "output-gain", section + ".limiter.output-gain");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("output-gain");
 }
 
 void LimiterUi::on_new_attenuation(double value) {

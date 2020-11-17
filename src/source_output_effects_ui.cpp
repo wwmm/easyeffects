@@ -18,7 +18,6 @@
  */
 
 #include "source_output_effects_ui.hpp"
-#include "preset_type.hpp"
 
 SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
@@ -88,22 +87,6 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
 
   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
                                 "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/");
-
-  // set preset type property inside user interfaces to be intepreted as "input"
-
-  limiter_ui->preset_type = PresetType::input;
-  compressor_ui->preset_type = PresetType::input;
-  filter_ui->preset_type = PresetType::input;
-  equalizer_ui->preset_type = PresetType::input;
-  reverb_ui->preset_type = PresetType::input;
-  gate_ui->preset_type = PresetType::input;
-  deesser_ui->preset_type = PresetType::input;
-  pitch_ui->preset_type = PresetType::input;
-  webrtc_ui->preset_type = PresetType::input;
-  multiband_compressor_ui->preset_type = PresetType::input;
-  multiband_gate_ui->preset_type = PresetType::input;
-  stereo_tools_ui->preset_type = PresetType::input;
-  maximizer_ui->preset_type = PresetType::input;
 
   // add to stack
 

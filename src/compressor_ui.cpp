@@ -283,57 +283,49 @@ CompressorUi::~CompressorUi() {
 }
 
 void CompressorUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".compressor.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".compressor.output-gain");
+  settings->reset("mode");
 
-    update_default_string_key(settings, "mode", section + ".compressor.mode");
+  settings->reset("attack");
 
-    update_default_key<double>(settings, "attack", section + ".compressor.attack");
+  settings->reset("release");
 
-    update_default_key<double>(settings, "release", section + ".compressor.release");
+  settings->reset("release-threshold");
 
-    update_default_key<double>(settings, "release-threshold", section + ".compressor.release-threshold");
+  settings->reset("threshold");
 
-    update_default_key<double>(settings, "threshold", section + ".compressor.threshold");
+  settings->reset("ratio");
 
-    update_default_key<double>(settings, "ratio", section + ".compressor.ratio");
+  settings->reset("knee");
 
-    update_default_key<double>(settings, "knee", section + ".compressor.knee");
+  settings->reset("makeup");
 
-    update_default_key<double>(settings, "makeup", section + ".compressor.makeup");
+  settings->reset("boost-threshold");
 
-    update_default_key<double>(settings, "boost-threshold", section + ".compressor.boost-threshold");
+  settings->reset("sidechain-listen");
 
-    update_default_key<bool>(settings, "sidechain-listen", section + ".compressor.sidechain.listen");
+  settings->reset("sidechain-type");
 
-    update_default_string_key(settings, "sidechain-type", section + ".compressor.sidechain.type");
+  settings->reset("sidechain-mode");
 
-    update_default_string_key(settings, "sidechain-mode", section + ".compressor.sidechain.mode");
+  settings->reset("sidechain-source");
 
-    update_default_string_key(settings, "sidechain-source", section + ".compressor.sidechain.source");
+  settings->reset("sidechain-preamp");
 
-    update_default_key<double>(settings, "sidechain-preamp", section + ".compressor.sidechain.preamp");
+  settings->reset("sidechain-reactivity");
 
-    update_default_key<double>(settings, "sidechain-reactivity", section + ".compressor.sidechain.reactivity");
+  settings->reset("sidechain-lookahead");
 
-    update_default_key<double>(settings, "sidechain-lookahead", section + ".compressor.sidechain.lookahead");
+  settings->reset("hpf-mode");
 
-    update_default_string_key(settings, "hpf-mode", section + ".compressor.hpf-mode");
+  settings->reset("hpf-frequency");
 
-    update_default_key<double>(settings, "hpf-frequency", section + ".compressor.hpf-frequency");
+  settings->reset("lpf-mode");
 
-    update_default_string_key(settings, "lpf-mode", section + ".compressor.lpf-mode");
-
-    update_default_key<double>(settings, "lpf-frequency", section + ".compressor.lpf-frequency");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("lpf-frequency");
 }
 
 void CompressorUi::on_new_reduction(double value) {

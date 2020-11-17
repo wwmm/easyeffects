@@ -151,19 +151,11 @@ LoudnessUi::~LoudnessUi() {
 }
 
 void LoudnessUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("fft");
 
-    update_default_string_key(settings, "fft", section + ".loudness.fft");
+  settings->reset("std");
 
-    update_default_string_key(settings, "std", section + ".loudness.std");
+  settings->reset("input");
 
-    update_default_key<double>(settings, "input", section + ".loudness.input");
-
-    update_default_key<double>(settings, "volume", section + ".loudness.volume");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("volume");
 }

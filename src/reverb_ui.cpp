@@ -131,35 +131,27 @@ ReverbUi::~ReverbUi() {
 }
 
 void ReverbUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".reverb.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".reverb.output-gain");
+  settings->reset("room-size");
 
-    update_default_string_key(settings, "room-size", section + ".reverb.room-size");
+  settings->reset("decay-time");
 
-    update_default_key<double>(settings, "decay-time", section + ".reverb.decay-time");
+  settings->reset("hf-damp");
 
-    update_default_key<double>(settings, "hf-damp", section + ".reverb.hf-damp");
+  settings->reset("diffusion");
 
-    update_default_key<double>(settings, "diffusion", section + ".reverb.diffusion");
+  settings->reset("amount");
 
-    update_default_key<double>(settings, "amount", section + ".reverb.amount");
+  settings->reset("dry");
 
-    update_default_key<double>(settings, "dry", section + ".reverb.dry");
+  settings->reset("predelay");
 
-    update_default_key<double>(settings, "predelay", section + ".reverb.predelay");
+  settings->reset("bass-cut");
 
-    update_default_key<double>(settings, "bass-cut", section + ".reverb.bass-cut");
-
-    update_default_key<double>(settings, "treble-cut", section + ".reverb.treble-cut");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("treble-cut");
 }
 
 void ReverbUi::init_presets_buttons() {

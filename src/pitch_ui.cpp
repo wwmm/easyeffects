@@ -62,27 +62,19 @@ PitchUi::~PitchUi() {
 }
 
 void PitchUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".pitch.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".pitch.output-gain");
+  settings->reset("cents");
 
-    update_default_key<double>(settings, "cents", section + ".pitch.cents");
+  settings->reset("semitones");
 
-    update_default_key<int>(settings, "semitones", section + ".pitch.semitones");
+  settings->reset("octaves");
 
-    update_default_key<int>(settings, "octaves", section + ".pitch.octaves");
+  settings->reset("crispness");
 
-    update_default_key<int>(settings, "crispness", section + ".pitch.crispness");
+  settings->reset("formant-preserving");
 
-    update_default_key<bool>(settings, "formant-preserving", section + ".pitch.formant-preserving");
-
-    update_default_key<bool>(settings, "faster", section + ".pitch.faster");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("faster");
 }

@@ -60,29 +60,18 @@ CrystalizerUi::~CrystalizerUi() {
 }
 
 void CrystalizerUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("aggressive");
 
-    update_default_key<bool>(settings, "aggressive", section + ".crystalizer.aggressive");
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".crystalizer.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".crystalizer.output-gain");
+  for (int n = 0; n < 13; n++) {
+    settings->reset("intensity-band" + std::to_string(n));
 
-    for (int n = 0; n < 13; n++) {
-      update_default_key<double>(settings, "intensity-band" + std::to_string(n),
-                                 section + ".crystalizer.band" + std::to_string(n) + ".intensity");
+    settings->reset("mute-band" + std::to_string(n));
 
-      update_default_key<bool>(settings, "mute-band" + std::to_string(n),
-                               section + ".crystalizer.band" + std::to_string(n) + ".mute");
-
-      update_default_key<bool>(settings, "bypass-band" + std::to_string(n),
-                               section + ".crystalizer.band" + std::to_string(n) + ".bypass");
-    }
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
+    settings->reset("bypass-band" + std::to_string(n));
   }
 }
 

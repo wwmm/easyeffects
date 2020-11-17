@@ -141,23 +141,15 @@ ConvolverUi::~ConvolverUi() {
 }
 
 void ConvolverUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("state");
 
-    update_default_key<bool>(settings, "state", section + ".convolver.state");
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".convolver.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".convolver.output-gain");
+  settings->reset("kernel-path");
 
-    update_default_string_key(settings, "kernel-path", section + ".convolver.kernel-path");
-
-    update_default_key<int>(settings, "ir-width", section + ".convolver.ir-width");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("ir-width");
 }
 
 auto ConvolverUi::get_irs_names() -> std::vector<std::string> {

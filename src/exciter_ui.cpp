@@ -68,31 +68,23 @@ ExciterUi::~ExciterUi() {
 }
 
 void ExciterUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".exciter.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".exciter.output-gain");
+  settings->reset("amount");
 
-    update_default_key<double>(settings, "amount", section + ".exciter.amount");
+  settings->reset("harmonics");
 
-    update_default_key<double>(settings, "harmonics", section + ".exciter.harmonics");
+  settings->reset("scope");
 
-    update_default_key<double>(settings, "scope", section + ".exciter.scope");
+  settings->reset("ceil");
 
-    update_default_key<double>(settings, "ceil", section + ".exciter.ceil");
+  settings->reset("blend");
 
-    update_default_key<double>(settings, "blend", section + ".exciter.blend");
+  settings->reset("ceil-active");
 
-    update_default_key<bool>(settings, "ceil-active", section + ".exciter.ceil-active");
-
-    update_default_key<bool>(settings, "listen", section + ".exciter.listen");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("listen");
 }
 
 void ExciterUi::on_new_harmonics_level(double value) {

@@ -44,7 +44,6 @@
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include "preset_type.hpp"
 #include "util.hpp"
 
 class PluginUiBase {
@@ -57,10 +56,6 @@ class PluginUiBase {
   virtual ~PluginUiBase();
 
   std::string name;
-
-  // preset_type to let the UI know which pipeline it belongs to
-  // initialized to "output"; to be changed to "input" for soe_ui properties
-  PresetType preset_type = PresetType::output;
 
   Gtk::Box* listbox_control = nullptr;
   Gtk::Button *plugin_up = nullptr, *plugin_down = nullptr;
