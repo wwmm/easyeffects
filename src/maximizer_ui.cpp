@@ -54,19 +54,11 @@ MaximizerUi::~MaximizerUi() {
 }
 
 void MaximizerUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("release");
 
-    update_default_key<double>(settings, "release", section + "maximizer.release");
+  settings->reset("ceiling");
 
-    update_default_key<double>(settings, "ceiling", section + "maximizer.ceiling");
-
-    update_default_key<double>(settings, "threshold", section + "maximizer.threshold");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("threshold");
 }
 
 void MaximizerUi::on_new_reduction(double value) {

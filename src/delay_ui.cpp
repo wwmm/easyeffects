@@ -54,19 +54,11 @@ DelayUi::~DelayUi() {
 }
 
 void DelayUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".delay.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".delay.output-gain");
+  settings->reset("time-l");
 
-    update_default_key<double>(settings, "time-l", section + ".delay.time-l");
-
-    update_default_key<double>(settings, "time-r", section + ".delay.time-r");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("time-r");
 }

@@ -55,17 +55,9 @@ CrossfeedUi::~CrossfeedUi() {
 }
 
 void CrossfeedUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("fcut");
 
-    update_default_key<int>(settings, "fcut", section + ".crossfeed.fcut");
-
-    update_default_key<double>(settings, "feed", section + ".crossfeed.feed");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("feed");
 }
 
 void CrossfeedUi::init_presets_buttons() {

@@ -51,5 +51,6 @@ RNNoiseUi::~RNNoiseUi() {
 
 void RNNoiseUi::reset() {
   settings->reset("input-gain");
+
   settings->reset("output-gain");
 }

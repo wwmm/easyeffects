@@ -44,7 +44,6 @@
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include "preset_type.hpp"
 #include "util.hpp"
 
 class PluginUiBase {
@@ -57,10 +56,6 @@ class PluginUiBase {
   virtual ~PluginUiBase();
 
   std::string name;
-
-  // preset_type to let the UI know which pipeline it belongs to
-  // initialized to "output"; to be changed to "input" for soe_ui properties
-  PresetType preset_type = PresetType::output;
 
   Gtk::Box* listbox_control = nullptr;
   Gtk::Button *plugin_up = nullptr, *plugin_down = nullptr;
@@ -97,55 +92,6 @@ class PluginUiBase {
                          const std::string& name,
                          Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  }
-
-  // reimplemented templates from plugin_preset_base without passing boost ptree
-  // using an empty root will rely on default value
-  template <typename T>
-  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
-    Glib::Variant<T> value;
-
-    settings->get_default_value(key, value);
-
-    return value.get();
-  }
-
-  template <typename T>
-  void update_default_key(const Glib::RefPtr<Gio::Settings>& settings,
-                          const std::string& key,
-                          const std::string& json_key) {
-    boost::property_tree::ptree root;
-    Glib::Variant<T> aux;
-
-    settings->get_value(key, aux);
-
-    T current_value = aux.get();
-
-    T new_value = root.get<T>(json_key, get_default<T>(settings, key));
-
-    if (is_different(current_value, new_value)) {
-      auto v = Glib::Variant<T>::create(new_value);
-
-      settings->set_value(key, v);
-    }
-  }
-
-  void update_default_string_key(const Glib::RefPtr<Gio::Settings>& settings,
-                                 const std::string& key,
-                                 const std::string& json_key) {
-    boost::property_tree::ptree root;
-    std::string current_value = settings->get_string(key);
-
-    std::string new_value = root.get<std::string>(json_key, get_default<std::string>(settings, key));
-
-    if (current_value != new_value) {
-      settings->set_string(key, new_value);
-    }
-  }
-
-  template <typename T>
-  auto is_different(const T& a, const T& b) -> bool {
-    return a != b;
   }
 
  private:

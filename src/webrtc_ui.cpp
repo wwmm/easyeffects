@@ -230,42 +230,33 @@ WebrtcUi::~WebrtcUi() {
 }
 
 void WebrtcUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("high-pass-filter");
 
-    update_default_key<bool>(settings, "high-pass-filter", section + ".webrtc.high-pass-filter");
+  settings->reset("echo-cancel");
 
-    update_default_key<bool>(settings, "echo-cancel", section + ".webrtc.echo-cancel");
+  settings->reset("echo-suppression-level");
 
-    update_default_string_key(settings, "echo-suppression-level", section + ".webrtc.echo-suppression-level");
+  settings->reset("noise-suppression");
 
-    update_default_key<bool>(settings, "noise-suppression", section + ".webrtc.noise-suppression");
+  settings->reset("noise-suppression-level");
 
-    update_default_string_key(settings, "noise-suppression-level", section + ".webrtc.noise-suppression-level");
+  settings->reset("gain-control");
 
-    update_default_key<bool>(settings, "gain-control", section + ".webrtc.gain-control");
+  settings->reset("extended-filter");
 
-    update_default_key<bool>(settings, "extended-filter", section + ".webrtc.extended-filter");
+  settings->reset("delay-agnostic");
 
-    update_default_key<bool>(settings, "delay-agnostic", section + ".webrtc.delay-agnostic");
+  settings->reset("target-level-dbfs");
 
-    update_default_key<int>(settings, "target-level-dbfs", section + ".webrtc.target-level-dbfs");
+  settings->reset("compression-gain-db");
 
-    update_default_key<int>(settings, "compression-gain-db", section + ".webrtc.compression-gain-db");
+  settings->reset("limiter");
 
-    update_default_key<bool>(settings, "limiter", section + ".webrtc.limiter");
+  settings->reset("gain-control-mode");
 
-    update_default_string_key(settings, "gain-control-mode", section + ".webrtc.gain-control-mode");
+  settings->reset("voice-detection");
 
-    update_default_key<bool>(settings, "voice-detection", section + ".webrtc.voice-detection");
+  settings->reset("voice-detection-frame-size-ms");
 
-    update_default_key<int>(settings, "voice-detection-frame-size-ms",
-                            section + ".webrtc.voice-detection-frame-size-ms");
-
-    update_default_string_key(settings, "voice-detection-likelihood", section + ".webrtc.voice-detection-likelihood");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("voice-detection-likelihood");
 }

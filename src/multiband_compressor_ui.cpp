@@ -217,105 +217,97 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 }
 
 void MultibandCompressorUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".multiband_compressor.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".multiband_compressor.output-gain");
+  settings->reset("freq0");
 
-    update_default_key<double>(settings, "freq0", section + ".multiband_compressor.freq0");
+  settings->reset("freq1");
 
-    update_default_key<double>(settings, "freq1", section + ".multiband_compressor.freq1");
+  settings->reset("freq2");
 
-    update_default_key<double>(settings, "freq2", section + ".multiband_compressor.freq2");
+  settings->reset("mode");
 
-    update_default_string_key(settings, "mode", section + ".multiband_compressor.mode");
+  // sub band
 
-    // sub band
+  settings->reset("threshold0");
 
-    update_default_key<double>(settings, "threshold0", section + ".multiband_compressor.subband.threshold");
+  settings->reset("ratio0");
 
-    update_default_key<double>(settings, "ratio0", section + ".multiband_compressor.subband.ratio");
+  settings->reset("attack0");
 
-    update_default_key<double>(settings, "attack0", section + ".multiband_compressor.subband.attack");
+  settings->reset("release0");
 
-    update_default_key<double>(settings, "release0", section + ".multiband_compressor.subband.release");
+  settings->reset("makeup0");
 
-    update_default_key<double>(settings, "makeup0", section + ".multiband_compressor.subband.makeup");
+  settings->reset("knee0");
 
-    update_default_key<double>(settings, "knee0", section + ".multiband_compressor.subband.knee");
+  settings->reset("detection0");
 
-    update_default_string_key(settings, "detection0", section + ".multiband_compressor.subband.detection");
+  settings->reset("bypass0");
 
-    update_default_key<bool>(settings, "bypass0", section + ".multiband_compressor.subband.bypass");
+  settings->reset("solo0");
 
-    update_default_key<bool>(settings, "solo0", section + ".multiband_compressor.subband.solo");
+  // low band
 
-    // low band
+  settings->reset("threshold1");
 
-    update_default_key<double>(settings, "threshold1", section + ".multiband_compressor.lowband.threshold");
+  settings->reset("ratio1");
 
-    update_default_key<double>(settings, "ratio1", section + ".multiband_compressor.lowband.ratio");
+  settings->reset("attack1");
 
-    update_default_key<double>(settings, "attack1", section + ".multiband_compressor.lowband.attack");
+  settings->reset("release1");
 
-    update_default_key<double>(settings, "release1", section + ".multiband_compressor.lowband.release");
+  settings->reset("makeup1");
 
-    update_default_key<double>(settings, "makeup1", section + ".multiband_compressor.lowband.makeup");
+  settings->reset("knee1");
 
-    update_default_key<double>(settings, "knee1", section + ".multiband_compressor.lowband.knee");
+  settings->reset("detection1");
 
-    update_default_string_key(settings, "detection1", section + ".multiband_compressor.lowband.detection");
+  settings->reset("bypass1");
 
-    update_default_key<bool>(settings, "bypass1", section + ".multiband_compressor.lowband.bypass");
+  settings->reset("solo1");
 
-    update_default_key<bool>(settings, "solo1", section + ".multiband_compressor.lowband.solo");
+  // mid band
 
-    // mid band
+  settings->reset("threshold2");
 
-    update_default_key<double>(settings, "threshold2", section + ".multiband_compressor.midband.threshold");
+  settings->reset("ratio2");
 
-    update_default_key<double>(settings, "ratio2", section + ".multiband_compressor.midband.ratio");
+  settings->reset("attack2");
 
-    update_default_key<double>(settings, "attack2", section + ".multiband_compressor.midband.attack");
+  settings->reset("release2");
 
-    update_default_key<double>(settings, "release2", section + ".multiband_compressor.midband.release");
+  settings->reset("makeup2");
 
-    update_default_key<double>(settings, "makeup2", section + ".multiband_compressor.midband.makeup");
+  settings->reset("knee2");
 
-    update_default_key<double>(settings, "knee2", section + ".multiband_compressor.midband.knee");
+  settings->reset("detection2");
 
-    update_default_string_key(settings, "detection2", section + ".multiband_compressor.midband.detection");
+  settings->reset("bypass2");
 
-    update_default_key<bool>(settings, "bypass2", section + ".multiband_compressor.midband.bypass");
+  settings->reset("solo2");
 
-    update_default_key<bool>(settings, "solo2", section + ".multiband_compressor.midband.solo");
+  // high band
 
-    // high band
+  settings->reset("threshold3");
 
-    update_default_key<double>(settings, "threshold3", section + ".multiband_compressor.highband.threshold");
+  settings->reset("ratio3");
 
-    update_default_key<double>(settings, "ratio3", section + ".multiband_compressor.highband.ratio");
+  settings->reset("attack3");
 
-    update_default_key<double>(settings, "attack3", section + ".multiband_compressor.highband.attack");
+  settings->reset("release3");
 
-    update_default_key<double>(settings, "release3", section + ".multiband_compressor.highband.release");
+  settings->reset("makeup3");
 
-    update_default_key<double>(settings, "makeup3", section + ".multiband_compressor.highband.makeup");
+  settings->reset("knee3");
 
-    update_default_key<double>(settings, "knee3", section + ".multiband_compressor.highband.knee");
+  settings->reset("detection3");
 
-    update_default_string_key(settings, "detection3", section + ".multiband_compressor.highband.detection");
+  settings->reset("bypass3");
 
-    update_default_key<bool>(settings, "bypass3", section + ".multiband_compressor.highband.bypass");
-
-    update_default_key<bool>(settings, "solo3", section + ".multiband_compressor.highband.solo");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("solo3");
 }
 
 void MultibandCompressorUi::on_new_output0(double value) {

@@ -142,47 +142,39 @@ StereoToolsUi::~StereoToolsUi() {
 }
 
 void StereoToolsUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".stereo_tools.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".stereo_tools.output-gain");
+  settings->reset("balance-in");
 
-    update_default_key<double>(settings, "balance-in", section + ".stereo_tools.balance-in");
+  settings->reset("balance-out");
 
-    update_default_key<double>(settings, "balance-out", section + ".stereo_tools.balance-out");
+  settings->reset("softclip");
 
-    update_default_key<bool>(settings, "softclip", section + ".stereo_tools.softclip");
+  settings->reset("mutel");
 
-    update_default_key<bool>(settings, "mutel", section + ".stereo_tools.mutel");
+  settings->reset("muter");
 
-    update_default_key<bool>(settings, "muter", section + ".stereo_tools.muter");
+  settings->reset("phasel");
 
-    update_default_key<bool>(settings, "phasel", section + ".stereo_tools.phasel");
+  settings->reset("phaser");
 
-    update_default_key<bool>(settings, "phaser", section + ".stereo_tools.phaser");
+  settings->reset("mode");
 
-    update_default_string_key(settings, "mode", section + ".stereo_tools.mode");
+  settings->reset("slev");
 
-    update_default_key<double>(settings, "slev", section + ".stereo_tools.side-level");
+  settings->reset("sbal");
 
-    update_default_key<double>(settings, "sbal", section + ".stereo_tools.side-balance");
+  settings->reset("mlev");
 
-    update_default_key<double>(settings, "mlev", section + ".stereo_tools.middle-level");
+  settings->reset("mpan");
 
-    update_default_key<double>(settings, "mpan", section + ".stereo_tools.middle-panorama");
+  settings->reset("stereo-base");
 
-    update_default_key<double>(settings, "stereo-base", section + ".stereo_tools.stereo-base");
+  settings->reset("delay");
 
-    update_default_key<double>(settings, "delay", section + ".stereo_tools.delay");
+  settings->reset("sc-level");
 
-    update_default_key<double>(settings, "sc-level", section + ".stereo_tools.sc-level");
-
-    update_default_key<double>(settings, "stereo-phase", section + ".stereo_tools.stereo-phase");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("stereo-phase");
 }

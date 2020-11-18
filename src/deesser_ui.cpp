@@ -137,37 +137,29 @@ DeesserUi::~DeesserUi() {
 }
 
 void DeesserUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("detection");
 
-    update_default_string_key(settings, "detection", section + ".deesser.detection");
+  settings->reset("mode");
 
-    update_default_string_key(settings, "mode", section + ".deesser.mode");
+  settings->reset("threshold");
 
-    update_default_key<double>(settings, "threshold", section + ".deesser.threshold");
+  settings->reset("ratio");
 
-    update_default_key<double>(settings, "ratio", section + ".deesser.ratio");
+  settings->reset("laxity");
 
-    update_default_key<int>(settings, "laxity", section + ".deesser.laxity");
+  settings->reset("makeup");
 
-    update_default_key<double>(settings, "makeup", section + ".deesser.makeup");
+  settings->reset("f1-freq");
 
-    update_default_key<double>(settings, "f1-freq", section + ".deesser.f1-freq");
+  settings->reset("f2-freq");
 
-    update_default_key<double>(settings, "f2-freq", section + ".deesser.f2-freq");
+  settings->reset("f1-level");
 
-    update_default_key<double>(settings, "f1-level", section + ".deesser.f1-level");
+  settings->reset("f2-level");
 
-    update_default_key<double>(settings, "f2-level", section + ".deesser.f2-level");
+  settings->reset("f2-q");
 
-    update_default_key<double>(settings, "f2-q", section + ".deesser.f2-q");
-
-    update_default_key<bool>(settings, "sc-listen", section + ".deesser.sc-listen");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("sc-listen");
 }
 
 void DeesserUi::on_new_compression(double value) {

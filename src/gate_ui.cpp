@@ -131,33 +131,25 @@ GateUi::~GateUi() {
 }
 
 void GateUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("detection");
 
-    update_default_string_key(settings, "detection", section + ".gate.detection");
+  settings->reset("stereo-link");
 
-    update_default_string_key(settings, "stereo-link", section + ".gate.stereo-link");
+  settings->reset("range");
 
-    update_default_key<double>(settings, "range", section + ".gate.range");
+  settings->reset("attack");
 
-    update_default_key<double>(settings, "attack", section + ".gate.attack");
+  settings->reset("release");
 
-    update_default_key<double>(settings, "release", section + ".gate.release");
+  settings->reset("threshold");
 
-    update_default_key<double>(settings, "threshold", section + ".gate.threshold");
+  settings->reset("ratio");
 
-    update_default_key<double>(settings, "ratio", section + ".gate.ratio");
+  settings->reset("knee");
 
-    update_default_key<double>(settings, "knee", section + ".gate.knee");
+  settings->reset("input");
 
-    update_default_key<double>(settings, "input", section + ".gate.input");
-
-    update_default_key<double>(settings, "makeup", section + ".gate.makeup");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("makeup");
 }
 
 void GateUi::on_new_gating(double value) {

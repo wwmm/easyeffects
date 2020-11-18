@@ -148,25 +148,17 @@ FilterUi::~FilterUi() {
 }
 
 void FilterUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".filter.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".filter.output-gain");
+  settings->reset("frequency");
 
-    update_default_key<double>(settings, "frequency", section + ".filter.frequency");
+  settings->reset("resonance");
 
-    update_default_key<double>(settings, "resonance", section + ".filter.resonance");
+  settings->reset("mode");
 
-    update_default_string_key(settings, "mode", section + ".filter.mode");
-
-    update_default_key<double>(settings, "inertia", section + ".filter.inertia");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("inertia");
 }
 
 void FilterUi::init_presets_buttons() {

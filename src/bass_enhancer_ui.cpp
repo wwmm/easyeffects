@@ -68,31 +68,23 @@ BassEnhancerUi::~BassEnhancerUi() {
 }
 
 void BassEnhancerUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".bass_enhancer.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".bass_enhancer.output-gain");
+  settings->reset("amount");
 
-    update_default_key<double>(settings, "amount", section + ".bass_enhancer.amount");
+  settings->reset("harmonics");
 
-    update_default_key<double>(settings, "harmonics", section + ".bass_enhancer.harmonics");
+  settings->reset("scope");
 
-    update_default_key<double>(settings, "scope", section + ".bass_enhancer.scope");
+  settings->reset("floor");
 
-    update_default_key<double>(settings, "floor", section + ".bass_enhancer.floor");
+  settings->reset("blend");
 
-    update_default_key<double>(settings, "blend", section + ".bass_enhancer.blend");
+  settings->reset("floor-active");
 
-    update_default_key<bool>(settings, "floor-active", section + ".bass_enhancer.floor-active");
-
-    update_default_key<bool>(settings, "listen", section + ".bass_enhancer.listen");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("listen");
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {

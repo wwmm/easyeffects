@@ -92,29 +92,21 @@ AutoGainUi::~AutoGainUi() {
 }
 
 void AutoGainUi::reset() {
-  try {
-    std::string section = (preset_type == PresetType::output) ? "output" : "input";
+  settings->reset("detect-silence");
 
-    update_default_key<bool>(settings, "detect-silence", section + ".autogain.detect-silence");
+  settings->reset("use-geometric-mean");
 
-    update_default_key<bool>(settings, "use-geometric-mean", section + ".autogain.use-geometric-mean");
+  settings->reset("input-gain");
 
-    update_default_key<double>(settings, "input-gain", section + ".autogain.input-gain");
+  settings->reset("output-gain");
 
-    update_default_key<double>(settings, "output-gain", section + ".autogain.output-gain");
+  settings->reset("target");
 
-    update_default_key<double>(settings, "target", section + ".autogain.target");
+  settings->reset("weight-m");
 
-    update_default_key<int>(settings, "weight-m", section + ".autogain.weight-m");
+  settings->reset("weight-s");
 
-    update_default_key<int>(settings, "weight-s", section + ".autogain.weight-s");
-
-    update_default_key<int>(settings, "weight-i", section + ".autogain.weight-i");
-
-    util::debug(name + " plugin: successfully reset");
-  } catch (std::exception& e) {
-    util::debug(name + " plugin: an error occurred during reset process");
-  }
+  settings->reset("weight-i");
 }
 
 void AutoGainUi::on_new_momentary(const float& value) {
