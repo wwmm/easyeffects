@@ -4,6 +4,7 @@
 
 ### Added
 
+- New noise remover plugin based on the RNNoise-nu library.
 - Band Quality factor exposed in the equalizer main interface.
 - Updated Chinese translation.
 

@@ -22,6 +22,7 @@
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
+#include <mutex>
 #include <vector>
 
 extern "C" {
@@ -47,15 +48,17 @@ struct GstPernnoise {
   /* properties */
 
   gchar* model_path = nullptr;
-  float max_attenuation = 0.0F;
+  float max_attenuation;
 
   /*< private >*/
 
-  int rate;             // sampling rate
-  int bpf;              // bytes per frame : channels * bps
-  int inbuf_n_samples;  // number of samples in the input buffer
+  int rate;              // sampling rate
+  int bpf;               // bytes per frame : channels * bps
+  int inbuf_n_samples;   // number of samples in the input buffer
+  int outbuf_n_samples;  // number of samples in the input buffer
+  int blocksize;         // number of samples processed by the rnnoise library
   bool flag_discont;
-  int blocksize;  // number of samples in the output buffer
+  bool ready;
 
   RNNModel* model = nullptr;
   DenoiseState *state_left = nullptr, *state_right = nullptr;
@@ -64,8 +67,11 @@ struct GstPernnoise {
   std::vector<float> data_R;  // right channel buffer
 
   GstAdapter* adapter = nullptr;
+  GstAdapter* out_adapter = nullptr;
   GstPad* srcpad = nullptr;
   GstPad* sinkpad = nullptr;
+
+  std::mutex lock_guard_rnnoise;
 };
 
 struct GstPernnoiseClass {
