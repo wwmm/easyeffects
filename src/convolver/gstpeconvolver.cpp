@@ -147,7 +147,7 @@ static void gst_peconvolver_class_init(GstPeconvolverClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_IR_WIDTH,
-      g_param_spec_int("ir-width", "IR Width", "ImpulseResponse Stereo Width", 0, 200, 100,
+      g_param_spec_int("ir-width", "IR Width", "Impulse Response Stereo Width", 0, 200, 100,
                        static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 

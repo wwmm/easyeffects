@@ -48,6 +48,7 @@ struct GstPernnoise {
   /* properties */
 
   gchar* model_path = nullptr;
+  gchar* model_name = nullptr;
   float max_attenuation;
 
   /*< private >*/

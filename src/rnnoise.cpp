@@ -49,6 +49,8 @@ RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::s
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
+    g_object_set(rnnoise, "model-name", "orig", nullptr);
+
     bind_to_gsettings();
 
     g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);

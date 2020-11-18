@@ -20,6 +20,7 @@
 #include "gstpernnoise.hpp"
 #include <gst/audio/audio.h>
 #include <pulse/def.h>
+#include <cstring>
 #include "config.h"
 #include "util.hpp"
 
@@ -42,6 +43,8 @@ static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer);
 
 static void gst_pernnoise_finish(GstPernnoise* pernnoise);
 
+static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value);
+
 static gboolean gst_pernnoise_src_query(GstPad* pad, GstObject* parent, GstQuery* query);
 
 static void gst_pernnoise_finalize(GObject* object);
@@ -60,7 +63,7 @@ static GstStaticPadTemplate srctemplate =
                             GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                                             "channels=2,layout=interleaved"));
 
-enum { PROP_BLOCKSIZE = 1 };
+enum { PROP_MODEL_NAME = 1 };
 
 #define gst_pernnoise_parent_class parent_class
 G_DEFINE_TYPE_WITH_CODE(GstPernnoise,
@@ -86,8 +89,15 @@ static void gst_pernnoise_class_init(GstPernnoiseClass* klass) {
   gobject_class->finalize = gst_pernnoise_finalize;
 
   gst_element_class_set_static_metadata(gstelement_class, "Pernnoise element", "Filter",
-                                        "Gives output buffers sizes that are a power of 2",
+                                        "Remove noises using the RNNoise library",
                                         "Wellington <wellingtonwallace@gmail.com>");
+
+  /* define properties */
+
+  g_object_class_install_property(
+      gobject_class, PROP_MODEL_NAME,
+      g_param_spec_string("model-name", "Model Name", "Name of the built-in model", nullptr,
+                          static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_pernnoise_init(GstPernnoise* pernnoise) {
@@ -135,10 +145,8 @@ static void gst_pernnoise_set_property(GObject* object, guint prop_id, const GVa
   GstPernnoise* pernnoise = GST_PERNNOISE(object);
 
   switch (prop_id) {
-    case PROP_BLOCKSIZE: {
-      pernnoise->blocksize = g_value_get_enum(value);
-
-      gst_element_post_message(GST_ELEMENT_CAST(pernnoise), gst_message_new_latency(GST_OBJECT_CAST(pernnoise)));
+    case PROP_MODEL_NAME: {
+      gst_pernnoise_set_model_name(pernnoise, g_value_dup_string(value));
 
       break;
     }
@@ -153,8 +161,8 @@ static void gst_pernnoise_get_property(GObject* object, guint prop_id, GValue* v
   GstPernnoise* pernnoise = GST_PERNNOISE(object);
 
   switch (prop_id) {
-    case PROP_BLOCKSIZE:
-      g_value_set_enum(value, pernnoise->blocksize);
+    case PROP_MODEL_NAME:
+      g_value_set_string(value, pernnoise->model_name);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -247,8 +255,30 @@ static GstFlowReturn gst_pernnoise_chain(GstPad* pad, GstObject* parent, GstBuff
   return ret;
 }
 
+static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value) {
+  if (value != nullptr) {
+    if (pernnoise->model_name != nullptr) {
+      std::lock_guard<std::mutex> lock(pernnoise->lock_guard_rnnoise);
+
+      if (std::strcmp(value, pernnoise->model_name) != 0) {
+        g_free(pernnoise->model_name);
+
+        pernnoise->model_name = value;
+
+        gst_pernnoise_finish(pernnoise);
+      }
+    } else {
+      // plugin is being initialized
+
+      g_free(pernnoise->model_name);
+
+      pernnoise->model_name = value;
+    }
+  }
+}
+
 static void gst_pernnoise_setup(GstPernnoise* pernnoise) {
-  pernnoise->model = rnnoise_get_model("orig");
+  pernnoise->model = rnnoise_get_model(pernnoise->model_name);
 
   if (pernnoise->model != nullptr) {
     pernnoise->state_left = rnnoise_create(pernnoise->model);
