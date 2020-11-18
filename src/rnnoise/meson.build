@@ -1,3 +1,7 @@
+dep_rnnoise_nu = dependency('rnnoise-nu', required: false)
+
+if dep_rnnoise_nu.found()
+
 plugin_sources = [
 	'gstpernnoise.cpp',
 	'../util.cpp'
@@ -8,7 +12,7 @@ plugin_deps = [
 	dependency('gstreamer-base-1.0'),
 	dependency('gstreamer-controller-1.0'),
 	dependency('gstreamer-audio-1.0'),
-	dependency('rnnoise-nu'),
+	dep_rnnoise_nu,
 	dependency('threads')
 ]
 
@@ -23,3 +27,9 @@ library(
 	install_dir : plugins_install_dir,
   	cpp_args: plugins_cxx_args
 )
+
+else
+
+message('could not find the RNNoise-nu library')
+
+endif
