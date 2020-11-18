@@ -167,7 +167,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label">GStreamer</property>
+                <property name="label">RNNoise-nu</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>

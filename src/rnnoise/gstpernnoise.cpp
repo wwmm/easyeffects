@@ -231,11 +231,11 @@ static GstFlowReturn gst_pernnoise_process(GstPernnoise* pernnoise) {
 
 static gboolean gst_pernnoise_sink_event(GstPad* pad, GstObject* parent, GstEvent* event) {
   GstPernnoise* pernnoise = GST_PERNNOISE(parent);
-  gboolean ret = true;
+  gboolean ret = 1;
 
   switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_CAPS: {
-      GstCaps* caps;
+      GstCaps* caps = nullptr;
       GstAudioInfo info;
 
       gst_event_parse_caps(event, &caps);
@@ -288,19 +288,20 @@ static GstStateChangeReturn gst_pernnoise_change_state(GstElement* element, GstS
 
   /*up changes*/
 
-  switch (transition) {
-    case GST_STATE_CHANGE_NULL_TO_READY:
-      break;
-    default:
-      break;
-  }
+  // switch (transition) {
+  //   case GST_STATE_CHANGE_NULL_TO_READY:
+  //     break;
+  //   default:
+  //     break;
+  // }
 
   /*down changes*/
 
   ret = GST_ELEMENT_CLASS(parent_class)->change_state(element, transition);
 
-  if (ret == GST_STATE_CHANGE_FAILURE)
+  if (ret == GST_STATE_CHANGE_FAILURE) {
     return ret;
+  }
 
   switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY: {
