@@ -42,7 +42,6 @@ struct GstPernnoise {
   /* properties */
 
   gchar* model_path = nullptr;
-  gchar* model_name = nullptr;
 
   /*< private >*/
 

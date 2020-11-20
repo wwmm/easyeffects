@@ -52,13 +52,11 @@ static void gst_pernnoise_get_property(GObject* object, guint property_id, GValu
 
 static void gst_pernnoise_finalize(GObject* object);
 
-static gboolean gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info);
+static auto gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info) -> gboolean;
 
-static GstFlowReturn gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer);
+static auto gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) -> GstFlowReturn;
 
-static gboolean gst_pernnoise_stop(GstBaseTransform* base);
-
-static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value);
+static auto gst_pernnoise_stop(GstBaseTransform* base) -> gboolean;
 
 static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value);
 
@@ -68,22 +66,7 @@ static void gst_pernnoise_setup_rnnoise(GstPernnoise* pernnoise);
 
 static void gst_pernnoise_finish_rnnoise(GstPernnoise* pernnoise);
 
-/*global variables and my defines*/
-
-// taken from https://github.com/x42/convoLV2/blob/master/convolution.cc
-/*
- * Priority should match -P parameter passed to jackd.
- * Sched.class: either SCHED_FIFO or SCHED_RR (I think Jack uses SCHED_FIFO).
- *
- * THREAD_SYNC_MODE must be true if you want to use the plugin in Jack
- * freewheeling mode (eg. while exporting in Ardour). You may only use
- * false if you *only* run the plugin realtime.
- */
-#define CONVPROC_SCHEDULER_PRIORITY 0
-#define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
-#define THREAD_SYNC_MODE true
-
-enum { PROP_MODEL_NAME = 1, PROP_MODEL_PATH };
+enum { PROP_MODEL_PATH = 1 };
 
 /* pad templates */
 
@@ -136,16 +119,11 @@ static void gst_pernnoise_class_init(GstPernnoiseClass* klass) {
 
   base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_pernnoise_transform_ip);
 
-  base_transform_class->transform_ip_on_passthrough = false;
+  base_transform_class->transform_ip_on_passthrough = 0;
 
   base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_pernnoise_stop);
 
   /* define properties */
-
-  g_object_class_install_property(
-      gobject_class, PROP_MODEL_NAME,
-      g_param_spec_string("model-name", "Model Name", "Name of the built-in model", nullptr,
-                          static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 
   g_object_class_install_property(
       gobject_class, PROP_MODEL_PATH,
@@ -163,7 +141,7 @@ static void gst_pernnoise_init(GstPernnoise* pernnoise) {
   pernnoise->data_L.resize(pernnoise->blocksize);
   pernnoise->data_R.resize(pernnoise->blocksize);
 
-  gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pernnoise), true);
+  gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pernnoise), 1);
 }
 
 void gst_pernnoise_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec) {
@@ -172,11 +150,6 @@ void gst_pernnoise_set_property(GObject* object, guint property_id, const GValue
   GST_DEBUG_OBJECT(pernnoise, "set_property");
 
   switch (property_id) {
-    case PROP_MODEL_NAME: {
-      gst_pernnoise_set_model_name(pernnoise, g_value_dup_string(value));
-
-      break;
-    }
     case PROP_MODEL_PATH: {
       gst_pernnoise_set_model_path(pernnoise, g_value_dup_string(value));
 
@@ -195,9 +168,6 @@ void gst_pernnoise_get_property(GObject* object, guint property_id, GValue* valu
   GST_DEBUG_OBJECT(pernnoise, "get_property");
 
   switch (property_id) {
-    case PROP_MODEL_NAME:
-      g_value_set_string(value, pernnoise->model_name);
-      break;
     case PROP_MODEL_PATH:
       g_value_set_string(value, pernnoise->model_path);
       break;
@@ -221,7 +191,7 @@ void gst_pernnoise_finalize(GObject* object) {
   G_OBJECT_CLASS(gst_pernnoise_parent_class)->finalize(object);
 }
 
-static gboolean gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info) {
+static auto gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info) -> gboolean {
   GstPernnoise* pernnoise = GST_PERNNOISE(filter);
 
   GST_DEBUG_OBJECT(pernnoise, "setup");
@@ -237,10 +207,10 @@ static gboolean gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* 
 
   gst_pernnoise_finish_rnnoise(pernnoise);
 
-  return true;
+  return 1;
 }
 
-static GstFlowReturn gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) {
+static auto gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) -> GstFlowReturn {
   GstPernnoise* pernnoise = GST_PERNNOISE(trans);
 
   GST_DEBUG_OBJECT(pernnoise, "transform");
@@ -256,36 +226,14 @@ static GstFlowReturn gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuff
   return GST_FLOW_OK;
 }
 
-static gboolean gst_pernnoise_stop(GstBaseTransform* base) {
+static auto gst_pernnoise_stop(GstBaseTransform* base) -> gboolean {
   GstPernnoise* pernnoise = GST_PERNNOISE(base);
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
   gst_pernnoise_finish_rnnoise(pernnoise);
 
-  return true;
-}
-
-static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value) {
-  if (value != nullptr) {
-    if (pernnoise->model_name != nullptr) {
-      if (std::strcmp(value, pernnoise->model_name) != 0) {
-        g_free(pernnoise->model_name);
-
-        pernnoise->model_name = value;
-
-        std::lock_guard<std::mutex> guard(rnnoise_mutex);
-
-        gst_pernnoise_finish_rnnoise(pernnoise);
-      }
-    } else {
-      // plugin is being initialized
-
-      g_free(pernnoise->model_name);
-
-      pernnoise->model_name = value;
-    }
-  }
+  return 1;
 }
 
 static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value) {
@@ -372,7 +320,7 @@ static void gst_pernnoise_finish_rnnoise(GstPernnoise* pernnoise) {
   }
 }
 
-static gboolean plugin_init(GstPlugin* plugin) {
+static auto plugin_init(GstPlugin* plugin) -> gboolean {
   /* FIXME Remember to set the rank if it's an element that is meant
      to be autoplugged by decodebin. */
   return gst_element_register(plugin, "pernnoise", GST_RANK_NONE, GST_TYPE_PERNNOISE);

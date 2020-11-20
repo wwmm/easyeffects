@@ -4,7 +4,7 @@
 
 ### Added
 
-- New noise remover plugin based on the RNNoise-nu library.
+- New noise remover plugin based on the RNNoise library https://github.com/xiph/rnnoise.
 - Band Quality factor exposed in the equalizer main interface.
 - Updated Chinese translation.
 

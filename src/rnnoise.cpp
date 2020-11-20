@@ -51,7 +51,6 @@ RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::s
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(rnnoise, "model-name", "orig", nullptr);
     g_object_set(adapter, "blocksize", 480, nullptr);
 
     set_caps_in();
