@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-16 15:40-0300\n"
+"POT-Creation-Date: 2020-11-20 15:59-0300\n"
 "PO-Revision-Date: 2020-01-12 17:49+0100\n"
 "Last-Translator: David Keller <blobcodes@protonmail.com>\n"
 "Language-Team: \n"
@@ -194,11 +194,11 @@ msgstr "Automatische Verstärkungsregelung"
 #: data/ui/maximizer.glade:139 data/ui/multiband_compressor.glade:307
 #: data/ui/multiband_gate.glade:331 data/ui/pitch.glade:158
 #: data/ui/reverb.glade:299 data/ui/stereo_tools.glade:194
-#: data/ui/webrtc.glade:141 data/ui/rnnoise.glade:134
+#: data/ui/webrtc.glade:141 data/ui/rnnoise.glade:139
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: data/ui/autogain.glade:185
+#: data/ui/autogain.glade:185 data/ui/rnnoise.glade:163
 msgid "Based on"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgstr "Integriert"
 #: data/ui/pitch.glade:450 data/ui/presets_menu.glade:260
 #: data/ui/reverb.glade:753 data/ui/stereo_tools.glade:427
 #: data/ui/stereo_tools.glade:931 data/ui/webrtc.glade:780
-#: data/ui/rnnoise.glade:237
+#: data/ui/rnnoise.glade:351
 msgid "Input"
 msgstr "Eingang"
 
@@ -268,7 +268,7 @@ msgstr "Eingang"
 #: data/ui/pitch.glade:463 data/ui/presets_menu.glade:149
 #: data/ui/reverb.glade:766 data/ui/stereo_tools.glade:901
 #: data/ui/stereo_tools.glade:944 data/ui/webrtc.glade:794
-#: data/ui/rnnoise.glade:250
+#: data/ui/rnnoise.glade:364
 msgid "Output"
 msgstr "Ausgang"
 
@@ -300,7 +300,7 @@ msgstr "Bassverstärker"
 #: data/ui/maximizer.glade:163 data/ui/multiband_compressor.glade:331
 #: data/ui/multiband_gate.glade:355 data/ui/pitch.glade:182
 #: data/ui/reverb.glade:323 data/ui/stereo_tools.glade:218
-#: data/ui/webrtc.glade:165 data/ui/rnnoise.glade:158
+#: data/ui/webrtc.glade:165
 msgid "Provided by"
 msgstr ""
 
@@ -767,7 +767,7 @@ msgstr "Dauer"
 msgid "Samples"
 msgstr "Probenahme"
 
-#: data/ui/convolver.glade:439 src/convolver_ui.cpp:293
+#: data/ui/convolver.glade:439 src/convolver_ui.cpp:285
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
@@ -1833,6 +1833,25 @@ msgstr "Spracherkennung"
 msgid "Noise Reduction"
 msgstr "Amplitudenreduktion"
 
+#: data/ui/rnnoise.glade:242
+#, fuzzy
+msgid "Import Model"
+msgstr "Impuls importieren"
+
+#: data/ui/rnnoise.glade:246
+#, fuzzy
+msgid "Import Model File"
+msgstr "Impulsdatei importieren"
+
+#: data/ui/rnnoise.glade:308
+#, fuzzy
+msgid "Active Model"
+msgstr "Aggressiver Modus"
+
+#: data/ui/rnnoise.glade:321
+msgid "Standard RNNoise Model"
+msgstr ""
+
 #: src/app_info_ui.cpp:112
 msgid "paused"
 msgstr "Pausiert"
@@ -1883,25 +1902,25 @@ msgstr "Sperrliste"
 msgid "Calibration Microphone"
 msgstr "Kalibrationsmikrofon"
 
-#: src/convolver_ui.cpp:289
+#: src/convolver_ui.cpp:281
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_ui.cpp:289 src/equalizer_ui.cpp:844
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:838
 #: src/presets_menu_ui.cpp:129
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/convolver_ui.cpp:289 src/equalizer_ui.cpp:844
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:838
 #: src/presets_menu_ui.cpp:129
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/convolver_ui.cpp:326 src/convolver_ui.cpp:327 src/convolver_ui.cpp:329
+#: src/convolver_ui.cpp:318 src/convolver_ui.cpp:319 src/convolver_ui.cpp:321
 msgid "Failed"
 msgstr "Gescheitert"
 
-#: src/convolver_ui.cpp:331
+#: src/convolver_ui.cpp:323
 msgid "Could Not Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
@@ -1909,12 +1928,12 @@ msgstr "Die Impulsdatei konnte nicht geladen werden"
 msgid "infinity"
 msgstr "Unendlich"
 
-#: src/equalizer_ui.cpp:843
+#: src/equalizer_ui.cpp:837
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Presets importieren"
 
-#: src/equalizer_ui.cpp:848
+#: src/equalizer_ui.cpp:842
 #, fuzzy
 msgid "APO Presets"
 msgstr "Presets"
