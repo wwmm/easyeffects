@@ -22,11 +22,10 @@
 
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
-#include <mutex>
 #include <vector>
 
 extern "C" {
-#include <rnnoise-nu.h>
+#include "rnnoise.h"
 }
 
 G_BEGIN_DECLS
@@ -49,7 +48,6 @@ struct GstPernnoise {
 
   gchar* model_path = nullptr;
   gchar* model_name = nullptr;
-  float max_attenuation;
 
   /*< private >*/
 
@@ -71,8 +69,6 @@ struct GstPernnoise {
   GstAdapter* out_adapter = nullptr;
   GstPad* srcpad = nullptr;
   GstPad* sinkpad = nullptr;
-
-  std::mutex lock_guard_rnnoise;
 };
 
 struct GstPernnoiseClass {

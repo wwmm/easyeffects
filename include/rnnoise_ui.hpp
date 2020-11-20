@@ -20,6 +20,10 @@
 #ifndef RNNOISE_UI_HPP
 #define RNNOISE_UI_HPP
 
+#include <glibmm/i18n.h>
+#include <filesystem>
+#include "glibmm/miscutils.h"
+#include "gtkmm/dialog.h"
 #include "plugin_ui_base.hpp"
 
 class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
@@ -37,7 +41,26 @@ class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
+  std::string log_tag = "rnnoise_ui: ";
+
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
+
+  Gtk::Button* import_model = nullptr;
+  Gtk::ListBox* model_listbox = nullptr;
+
+  std::filesystem::path model_dir;
+
+  void on_import_model_clicked();
+
+  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
+
+  void import_model_file(const std::string& file_path);
+
+  void populate_model_listbox();
+
+  auto get_model_names() -> std::vector<std::string>;
+
+  void remove_model_file(const std::string& name);
 };
 
 #endif

@@ -103,6 +103,11 @@
       </packing>
     </child>
   </object>
+  <object class="GtkImage" id="image_import_preset">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="icon-name">document-open-symbolic</property>
+  </object>
   <object class="GtkAdjustment" id="input_gain">
     <property name="lower">-20</property>
     <property name="upper">20</property>
@@ -155,7 +160,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Provided by</property>
+                <property name="label" translatable="yes">Based on</property>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -167,7 +172,7 @@
               <object class="GtkLabel">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="label">RNNoise-nu</property>
+                <property name="label">RNNoise</property>
                 <attributes>
                   <attribute name="weight" value="bold"/>
                 </attributes>
@@ -227,13 +232,22 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="row-spacing">6</property>
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
+                    <property name="row-spacing">18</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkButton" id="import_model">
+                        <property name="label" translatable="yes">Import Model</property>
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Model Name</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                        <property name="tooltip-text" translatable="yes">Import Model File</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="image">image_import_preset</property>
+                        <property name="always-show-image">True</property>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
@@ -241,19 +255,44 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBoxText" id="model_name">
+                      <object class="GtkFrame">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <items>
-                          <item translatable="yes">original</item>
-                          <item translatable="yes">conjoined-burgers</item>
-                          <item translatable="yes">marathon-prescription</item>
-                          <item translatable="yes">beguiling-drafter</item>
-                          <item translatable="yes">leavened-quisling</item>
-                          <item translatable="yes">somnolent-hogwash</item>
-                        </items>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="label-xalign">0</property>
+                        <property name="shadow-type">in</property>
+                        <child>
+                          <object class="GtkScrolledWindow" id="irs_scrolled_window">
+                            <property name="visible">True</property>
+                            <property name="can-focus">True</property>
+                            <property name="hexpand">True</property>
+                            <property name="vexpand">True</property>
+                            <property name="propagate-natural-width">True</property>
+                            <property name="propagate-natural-height">True</property>
+                            <child>
+                              <object class="GtkViewport">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">True</property>
+                                <child>
+                                  <object class="GtkListBox" id="model_listbox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="hexpand">True</property>
+                                    <property name="vexpand">True</property>
+                                    <property name="selection-mode">none</property>
+                                    <property name="activate-on-single-click">False</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child type="label_item">
+                          <placeholder/>
+                        </child>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>

@@ -20,19 +20,19 @@
 #ifndef CONVOLVER_UI_HPP
 #define CONVOLVER_UI_HPP
 
-#include <boost/filesystem.hpp>
-#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
-#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
-#include "gtkmm/dialog.h"
 #include <gtkmm/filechoosernative.h>
-// #include "gtkmm/window.h"
+#include <boost/filesystem.hpp>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <future>
 #include <mutex>
 #include <sndfile.hh>
-#include "sigc++/functors/ptr_fun.h"
+#include "glibmm/main.h"
+#include "glibmm/miscutils.h"
+#include "gtkmm/dialog.h"
 #include "plugin_ui_base.hpp"
+#include "sigc++/functors/ptr_fun.h"
 
 class ConvolverUi : public Gtk::Grid, public PluginUiBase {
  public:
@@ -43,7 +43,7 @@ class ConvolverUi : public Gtk::Grid, public PluginUiBase {
   ConvolverUi(const ConvolverUi&) = delete;
   auto operator=(const ConvolverUi&) -> ConvolverUi& = delete;
   ConvolverUi(const ConvolverUi&&) = delete;
-  auto operator=(const ConvolverUi &&) -> ConvolverUi& = delete;
+  auto operator=(const ConvolverUi&&) -> ConvolverUi& = delete;
   ~ConvolverUi() override;
 
   void reset() override;

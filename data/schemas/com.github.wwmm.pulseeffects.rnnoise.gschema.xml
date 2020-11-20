@@ -18,5 +18,8 @@
             <range min="-20.0" max="20.0" />
             <default>0.0</default>
         </key>
+        <key name="model-path" type="s">
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>
