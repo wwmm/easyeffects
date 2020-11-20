@@ -33,6 +33,8 @@ void RNNoisePreset::save(boost::property_tree::ptree& root,
   root.put(section + ".rnnoise.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".rnnoise.output-gain", settings->get_double("output-gain"));
+
+  root.put(section + ".rnnoise.model-path", settings->get_string("model-path"));
 }
 
 void RNNoisePreset::load(const boost::property_tree::ptree& root,
@@ -43,6 +45,8 @@ void RNNoisePreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "input-gain", section + ".rnnoise.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".rnnoise.output-gain");
+
+  update_string_key(root, settings, "model-path", section + ".rnnoise.model-path");
 }
 
 void RNNoisePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

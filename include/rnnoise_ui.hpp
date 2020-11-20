@@ -42,11 +42,13 @@ class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
 
  private:
   std::string log_tag = "rnnoise_ui: ";
+  std::string default_model_name;
 
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
 
   Gtk::Button* import_model = nullptr;
   Gtk::ListBox* model_listbox = nullptr;
+  Gtk::Label* active_model_name = nullptr;
 
   std::filesystem::path model_dir;
 
@@ -61,6 +63,8 @@ class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
   auto get_model_names() -> std::vector<std::string>;
 
   void remove_model_file(const std::string& name);
+
+  void set_active_model_label();
 };
 
 #endif

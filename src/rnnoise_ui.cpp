@@ -27,12 +27,14 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
       PluginUiBase(builder, schema, schema_path),
       model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
   name = "rnnoise";
+  default_model_name = _("Standard RNNoise Model");
 
   // loading glade widgets
 
   builder->get_widget("plugin_reset", reset_button);
   builder->get_widget("import_model", import_model);
   builder->get_widget("model_listbox", model_listbox);
+  builder->get_widget("active_model_name", active_model_name);
 
   get_object(builder, "input_gain", input_gain);
   get_object(builder, "output_gain", output_gain);
@@ -53,6 +55,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value", flag);
   settings->bind("output-gain", output_gain.get(), "value", flag);
 
+  connections.emplace_back(settings->signal_changed("model-path").connect([=](auto key) { set_active_model_label(); }));
+
   // model dir
 
   if (!std::filesystem::is_directory(model_dir)) {
@@ -66,6 +70,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   }
 
   populate_model_listbox();
+
+  set_active_model_label();
 }
 
 RNNoiseUi::~RNNoiseUi() {
@@ -147,6 +153,10 @@ void RNNoiseUi::populate_model_listbox() {
 
   auto names = get_model_names();
 
+  if (names.empty()) {
+    settings->set_string("model-path", default_model_name);
+  }
+
   for (const auto& name : names) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
@@ -203,6 +213,16 @@ void RNNoiseUi::remove_model_file(const std::string& name) {
     std::filesystem::remove(model_file);
 
     util::debug(log_tag + "removed model file: " + model_file.string());
+  }
+}
+
+void RNNoiseUi::set_active_model_label() {
+  auto path = std::filesystem::path{settings->get_string("model-path")};
+
+  if (settings->get_string("model-path").empty()) {
+    active_model_name->set_text(default_model_name);
+  } else {
+    active_model_name->set_text(path.stem().string());
   }
 }
 

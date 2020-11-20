@@ -259,26 +259,22 @@ static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value) 
 }
 
 static void gst_pernnoise_setup_rnnoise(GstPernnoise* pernnoise) {
-  FILE* f = fopen(pernnoise->model_path, "r");
+  if (pernnoise->model_path != nullptr) {
+    FILE* f = fopen(pernnoise->model_path, "r");
 
-  if (f != nullptr) {
-    util::debug("rnnoise plugin: loading model from file: " + std::string(pernnoise->model_path));
+    if (f != nullptr) {
+      util::debug("rnnoise plugin: loading model from file: " + std::string(pernnoise->model_path));
 
-    pernnoise->model = rnnoise_model_from_file(f);
+      pernnoise->model = rnnoise_model_from_file(f);
 
-    fclose(f);
+      fclose(f);
+    }
   }
 
-  if (pernnoise->model != nullptr) {
-    pernnoise->state_left = rnnoise_create(pernnoise->model);
-    pernnoise->state_right = rnnoise_create(pernnoise->model);
+  pernnoise->state_left = rnnoise_create(pernnoise->model);
+  pernnoise->state_right = rnnoise_create(pernnoise->model);
 
-    pernnoise->ready = true;
-  } else {
-    pernnoise->ready = false;
-
-    util::debug("could not open the model file: " + std::string(pernnoise->model_path));
-  }
+  pernnoise->ready = true;
 }
 
 static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer) {
