@@ -20,8 +20,8 @@
 #ifndef GST_PERNNOISE_HPP
 #define GST_PERNNOISE_HPP
 
-#include <gst/base/gstadapter.h>
-#include <gst/gst.h>
+#include <gst/audio/gstaudiofilter.h>
+#include <mutex>
 #include <vector>
 
 extern "C" {
@@ -36,13 +36,8 @@ G_BEGIN_DECLS
 #define GST_IS_PERNNOISE(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_PERNNOISE))
 #define GST_IS_PERNNOISE_CLASS(obj) (G_TYPE_CHECK_CLASS_TYPE((klass), GST_TYPE_PERNNOISE))
 
-/**
- * GstPernnoise:
- *
- * The private pernnoise structure
- */
 struct GstPernnoise {
-  GstElement parent;
+  GstAudioFilter base_pernnoise;
 
   /* properties */
 
@@ -64,18 +59,13 @@ struct GstPernnoise {
 
   std::vector<float> data_L;  // left channel buffer
   std::vector<float> data_R;  // right channel buffer
-
-  GstAdapter* adapter = nullptr;
-  GstAdapter* out_adapter = nullptr;
-  GstPad* srcpad = nullptr;
-  GstPad* sinkpad = nullptr;
 };
 
 struct GstPernnoiseClass {
-  GstElementClass parent_class;
+  GstAudioFilterClass base_pernnoise_class;
 };
 
-G_GNUC_INTERNAL GType gst_pearnnoise_get_type(void);
+GType gst_pernnoise_get_type(void);
 
 G_END_DECLS
 

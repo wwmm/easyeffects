@@ -28,10 +28,10 @@ class Crystalizer : public PluginBase {
   Crystalizer(const Crystalizer&) = delete;
   auto operator=(const Crystalizer&) -> Crystalizer& = delete;
   Crystalizer(const Crystalizer&&) = delete;
-  auto operator=(const Crystalizer &&) -> Crystalizer& = delete;
+  auto operator=(const Crystalizer&&) -> Crystalizer& = delete;
   ~Crystalizer() override;
 
-  GstElement* crystalizer = nullptr;
+  GstElement *crystalizer = nullptr, *adapter = nullptr;
 
   sigc::connection range_before_connection, range_after_connection;
 

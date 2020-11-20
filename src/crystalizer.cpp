@@ -75,11 +75,13 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema, cons
     auto* audioconvert_in = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
     auto* audioconvert_out = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_out");
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, crystalizer, audioconvert_out, output_gain,
-                     out_level, nullptr);
+    adapter = gst_element_factory_make("peadapter", nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, crystalizer, audioconvert_out, output_gain, out_level,
-                          nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter, audioconvert_in, crystalizer, audioconvert_out,
+                     output_gain, out_level, nullptr);
+
+    gst_element_link_many(input_gain, in_level, adapter, audioconvert_in, crystalizer, audioconvert_out, output_gain,
+                          out_level, nullptr);
 
     auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto* pad_src = gst_element_get_static_pad(out_level, "src");
@@ -89,6 +91,8 @@ Crystalizer::Crystalizer(const std::string& tag, const std::string& schema, cons
 
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
+
+    g_object_set(adapter, "blocksize", 512, nullptr);
 
     bind_to_gsettings();
 

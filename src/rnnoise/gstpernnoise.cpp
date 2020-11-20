@@ -17,87 +17,128 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * SECTION:element-gstpernnoise
+ *
+ * The pernnoise uses the rnnoise library to remove background noise from audio.
+ *
+ * <refsect2>
+ * <title>Example launch line</title>
+ * |[
+ * gst-launch-1.0 -v audiotestsrc ! pernnoise ! pulsesink
+ * ]|
+ * The pernnoise uses the rnnoise library to remove background noise from audio.
+ * </refsect2>
+ */
+
 #include "gstpernnoise.hpp"
-#include <gst/audio/audio.h>
-#include <pulse/def.h>
-#include <rnnoise-nu.h>
-#include <cstdio>
+#include <gst/audio/gstaudiofilter.h>
+#include <gst/gst.h>
 #include <cstring>
 #include <mutex>
-#include <string>
 #include "config.h"
 #include "util.hpp"
 
 std::mutex rnnoise_mutex;
 
-GST_DEBUG_CATEGORY_STATIC(pernnoise_debug);
-#define GST_CAT_DEFAULT (pernnoise_debug)
+GST_DEBUG_CATEGORY_STATIC(gst_pernnoise_debug_category);
+#define GST_CAT_DEFAULT gst_pernnoise_debug_category
 
-static void gst_pernnoise_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec);
+/* prototypes */
 
-static void gst_pernnoise_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec);
+static void gst_pernnoise_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec);
 
-static GstFlowReturn gst_pernnoise_chain(GstPad* pad, GstObject* parent, GstBuffer* buffer);
+static void gst_pernnoise_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec);
 
-static gboolean gst_pernnoise_sink_event(GstPad* pad, GstObject* parent, GstEvent* event);
+static void gst_pernnoise_finalize(GObject* object);
 
-static GstStateChangeReturn gst_pernnoise_change_state(GstElement* element, GstStateChange transition);
+static gboolean gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info);
 
-static void gst_pernnoise_setup(GstPernnoise* pernnoise);
+static GstFlowReturn gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer);
 
-static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer);
-
-static void gst_pernnoise_finish(GstPernnoise* pernnoise);
+static gboolean gst_pernnoise_stop(GstBaseTransform* base);
 
 static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value);
 
 static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value);
 
-static gboolean gst_pernnoise_src_query(GstPad* pad, GstObject* parent, GstQuery* query);
+static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer);
 
-static void gst_pernnoise_finalize(GObject* object);
+static void gst_pernnoise_setup_rnnoise(GstPernnoise* pernnoise);
 
-static GstStaticPadTemplate sinktemplate =
-    GST_STATIC_PAD_TEMPLATE("sink",
-                            GST_PAD_SINK,
-                            GST_PAD_ALWAYS,
-                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=48000,"
-                                            "channels=2,layout=interleaved"));
+static void gst_pernnoise_finish_rnnoise(GstPernnoise* pernnoise);
 
-static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE("src",
-                                                                  GST_PAD_SRC,
-                                                                  GST_PAD_ALWAYS,
-                                                                  GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=48000,"
-                                                                                  "channels=2,layout=interleaved"));
+/*global variables and my defines*/
+
+// taken from https://github.com/x42/convoLV2/blob/master/convolution.cc
+/*
+ * Priority should match -P parameter passed to jackd.
+ * Sched.class: either SCHED_FIFO or SCHED_RR (I think Jack uses SCHED_FIFO).
+ *
+ * THREAD_SYNC_MODE must be true if you want to use the plugin in Jack
+ * freewheeling mode (eg. while exporting in Ardour). You may only use
+ * false if you *only* run the plugin realtime.
+ */
+#define CONVPROC_SCHEDULER_PRIORITY 0
+#define CONVPROC_SCHEDULER_CLASS SCHED_FIFO
+#define THREAD_SYNC_MODE true
 
 enum { PROP_MODEL_NAME = 1, PROP_MODEL_PATH };
 
-#define gst_pernnoise_parent_class parent_class
-G_DEFINE_TYPE_WITH_CODE(GstPernnoise,
-                        gst_pernnoise,
-                        GST_TYPE_ELEMENT,
-                        GST_DEBUG_CATEGORY_INIT(pernnoise_debug, "pernnoise", 0, "Pernnoise"));
+/* pad templates */
+
+static GstStaticPadTemplate gst_pernnoise_src_template =
+    GST_STATIC_PAD_TEMPLATE("src",
+                            GST_PAD_SRC,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
+
+static GstStaticPadTemplate gst_pernnoise_sink_template =
+    GST_STATIC_PAD_TEMPLATE("sink",
+                            GST_PAD_SINK,
+                            GST_PAD_ALWAYS,
+                            GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
+                                            "channels=2,layout=interleaved"));
+
+/* class initialization */
+
+G_DEFINE_TYPE_WITH_CODE(
+    GstPernnoise,
+    gst_pernnoise,
+    GST_TYPE_AUDIO_FILTER,
+    GST_DEBUG_CATEGORY_INIT(gst_pernnoise_debug_category, "pernnoise", 0, "debug category for pernnoise element"));
 
 static void gst_pernnoise_class_init(GstPernnoiseClass* klass) {
-  GObjectClass* gobject_class;
-  GstElementClass* gstelement_class;
+  GObjectClass* gobject_class = G_OBJECT_CLASS(klass);
 
-  gobject_class = (GObjectClass*)klass;
-  gstelement_class = (GstElementClass*)(klass);
+  GstBaseTransformClass* base_transform_class = GST_BASE_TRANSFORM_CLASS(klass);
+
+  GstAudioFilterClass* audio_filter_class = GST_AUDIO_FILTER_CLASS(klass);
+
+  /* Setting up pads and setting metadata should be moved to
+     base_class_init if you intend to subclass this class. */
+
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_pernnoise_src_template);
+  gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_pernnoise_sink_template);
+
+  gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass), "PulseEffects Convolver", "Generic",
+                                        "PulseEffects Convolver", "Wellington <wellingtonwallace@gmail.com>");
+
+  /* define virtual function pointers */
 
   gobject_class->set_property = gst_pernnoise_set_property;
   gobject_class->get_property = gst_pernnoise_get_property;
 
-  gst_element_class_add_static_pad_template(gstelement_class, &srctemplate);
-  gst_element_class_add_static_pad_template(gstelement_class, &sinktemplate);
-
-  gstelement_class->change_state = gst_pernnoise_change_state;
-
   gobject_class->finalize = gst_pernnoise_finalize;
 
-  gst_element_class_set_static_metadata(gstelement_class, "Pernnoise element", "Filter",
-                                        "Remove noises using the RNNoise library",
-                                        "Wellington <wellingtonwallace@gmail.com>");
+  audio_filter_class->setup = GST_DEBUG_FUNCPTR(gst_pernnoise_setup);
+
+  base_transform_class->transform_ip = GST_DEBUG_FUNCPTR(gst_pernnoise_transform_ip);
+
+  base_transform_class->transform_ip_on_passthrough = false;
+
+  base_transform_class->stop = GST_DEBUG_FUNCPTR(gst_pernnoise_stop);
 
   /* define properties */
 
@@ -119,43 +160,18 @@ static void gst_pernnoise_init(GstPernnoise* pernnoise) {
   pernnoise->inbuf_n_samples = -1;
   pernnoise->blocksize = 480;  // for some reason I do not know rnnoise has to process buffers of 480 elements
 
-  /*
-    RNNoise can work only with buffers of 480 elements. But the convolver and the crystalizer need bufffer sizes
-    following a power of two. If rnnoise is placed before these two in the pipeline and its output buffer size is not
-    a power of two PulseEffects will crash. That is why an output size of 512 is being forced.
-  */
-  pernnoise->outbuf_n_samples = 512;
-
-  pernnoise->flag_discont = false;
-  pernnoise->adapter = gst_adapter_new();
-  pernnoise->out_adapter = gst_adapter_new();
-
   pernnoise->data_L.resize(pernnoise->blocksize);
   pernnoise->data_R.resize(pernnoise->blocksize);
 
-  pernnoise->srcpad = gst_pad_new_from_static_template(&srctemplate, "src");
-
-  /*
-    configure event function on the pad before adding the pad to the element
-  */
-
-  gst_pad_set_query_function(pernnoise->srcpad, gst_pernnoise_src_query);
-
-  gst_element_add_pad(GST_ELEMENT(pernnoise), pernnoise->srcpad);
-
-  pernnoise->sinkpad = gst_pad_new_from_static_template(&sinktemplate, "sink");
-
-  gst_pad_set_chain_function(pernnoise->sinkpad, GST_DEBUG_FUNCPTR(gst_pernnoise_chain));
-
-  gst_pad_set_event_function(pernnoise->sinkpad, GST_DEBUG_FUNCPTR(gst_pernnoise_sink_event));
-
-  gst_element_add_pad(GST_ELEMENT(pernnoise), pernnoise->sinkpad);
+  gst_base_transform_set_in_place(GST_BASE_TRANSFORM(pernnoise), true);
 }
 
-static void gst_pernnoise_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+void gst_pernnoise_set_property(GObject* object, guint property_id, const GValue* value, GParamSpec* pspec) {
   GstPernnoise* pernnoise = GST_PERNNOISE(object);
 
-  switch (prop_id) {
+  GST_DEBUG_OBJECT(pernnoise, "set_property");
+
+  switch (property_id) {
     case PROP_MODEL_NAME: {
       gst_pernnoise_set_model_name(pernnoise, g_value_dup_string(value));
 
@@ -167,16 +183,18 @@ static void gst_pernnoise_set_property(GObject* object, guint prop_id, const GVa
       break;
     }
     default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
 
       break;
   }
 }
 
-static void gst_pernnoise_get_property(GObject* object, guint prop_id, GValue* value, GParamSpec* pspec) {
+void gst_pernnoise_get_property(GObject* object, guint property_id, GValue* value, GParamSpec* pspec) {
   GstPernnoise* pernnoise = GST_PERNNOISE(object);
 
-  switch (prop_id) {
+  GST_DEBUG_OBJECT(pernnoise, "get_property");
+
+  switch (property_id) {
     case PROP_MODEL_NAME:
       g_value_set_string(value, pernnoise->model_name);
       break;
@@ -184,94 +202,68 @@ static void gst_pernnoise_get_property(GObject* object, guint prop_id, GValue* v
       g_value_set_string(value, pernnoise->model_path);
       break;
     default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
       break;
   }
 }
 
-static GstFlowReturn gst_pernnoise_chain(GstPad* pad, GstObject* parent, GstBuffer* buffer) {
-  GstPernnoise* pernnoise = GST_PERNNOISE(parent);
-  GstFlowReturn ret = GST_FLOW_OK;
+void gst_pernnoise_finalize(GObject* object) {
+  GstPernnoise* pernnoise = GST_PERNNOISE(object);
 
-  if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
-    gst_adapter_clear(pernnoise->adapter);
-    gst_adapter_clear(pernnoise->out_adapter);
-
-    pernnoise->inbuf_n_samples = -1;
-
-    pernnoise->flag_discont = true;
-  }
-
-  if (pernnoise->inbuf_n_samples == -1) {
-    GstMapInfo map;
-
-    gst_buffer_map(buffer, &map, GST_MAP_READ);
-
-    pernnoise->inbuf_n_samples = map.size / pernnoise->bpf;
-
-    util::debug("pernnoise: input block size " + std::to_string(pernnoise->inbuf_n_samples) + " frames");
-
-    util::debug("pernnoise: we will read in chunks of " + std::to_string(pernnoise->blocksize) + " frames");
-
-    gst_buffer_unmap(buffer, &map);
-  }
-
-  gst_adapter_push(pernnoise->adapter, buffer);
-
-  gsize nbytes = pernnoise->blocksize * pernnoise->bpf;
-
-  // process the input buffers
+  GST_DEBUG_OBJECT(pernnoise, "finalize");
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-  while (gst_adapter_available(pernnoise->adapter) > nbytes && (ret == GST_FLOW_OK)) {
-    GstBuffer* b = gst_adapter_take_buffer(pernnoise->adapter, nbytes);
+  gst_pernnoise_finish_rnnoise(pernnoise);
 
-    if (b != nullptr) {
-      b = gst_buffer_make_writable(b);
+  /* clean up object here */
 
-      if (pernnoise->ready) {
-        gst_pernnoise_process(pernnoise, b);
-      } else {
-        gst_pernnoise_setup(pernnoise);
-      }
+  G_OBJECT_CLASS(gst_pernnoise_parent_class)->finalize(object);
+}
 
-      gst_adapter_push(pernnoise->out_adapter, b);
-    }
+static gboolean gst_pernnoise_setup(GstAudioFilter* filter, const GstAudioInfo* info) {
+  GstPernnoise* pernnoise = GST_PERNNOISE(filter);
+
+  GST_DEBUG_OBJECT(pernnoise, "setup");
+
+  pernnoise->rate = info->rate;
+  pernnoise->bpf = GST_AUDIO_INFO_BPF(info);
+
+  /*
+  this function is called whenever there is a format change. So we reinitialize rnnoise.
+  */
+
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+
+  gst_pernnoise_finish_rnnoise(pernnoise);
+
+  return true;
+}
+
+static GstFlowReturn gst_pernnoise_transform_ip(GstBaseTransform* trans, GstBuffer* buffer) {
+  GstPernnoise* pernnoise = GST_PERNNOISE(trans);
+
+  GST_DEBUG_OBJECT(pernnoise, "transform");
+
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+
+  if (pernnoise->ready) {
+    gst_pernnoise_process(pernnoise, buffer);
+  } else {
+    gst_pernnoise_setup_rnnoise(pernnoise);
   }
 
-  // prepare the output buffer
+  return GST_FLOW_OK;
+}
 
-  nbytes = pernnoise->outbuf_n_samples * pernnoise->bpf;
-  auto duration = GST_FRAMES_TO_CLOCK_TIME(pernnoise->blocksize, pernnoise->rate);
+static gboolean gst_pernnoise_stop(GstBaseTransform* base) {
+  GstPernnoise* pernnoise = GST_PERNNOISE(base);
 
-  while (gst_adapter_available(pernnoise->out_adapter) > nbytes && (ret == GST_FLOW_OK)) {
-    GstBuffer* b = gst_adapter_take_buffer(pernnoise->out_adapter, nbytes);
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-    if (b != nullptr) {
-      b = gst_buffer_make_writable(b);
+  gst_pernnoise_finish_rnnoise(pernnoise);
 
-      GST_BUFFER_OFFSET(b) = gst_adapter_prev_offset(pernnoise->adapter, nullptr);
-      GST_BUFFER_PTS(b) = gst_adapter_prev_pts(pernnoise->adapter, nullptr);
-      GST_BUFFER_DURATION(b) = duration;
-
-      if (pernnoise->flag_discont) {
-        gst_buffer_set_flags(b, GST_BUFFER_FLAG_DISCONT);
-        gst_buffer_set_flags(b, GST_BUFFER_FLAG_RESYNC);
-
-        pernnoise->flag_discont = false;
-      } else {
-        gst_buffer_unset_flags(b, GST_BUFFER_FLAG_DISCONT);
-      }
-
-      gst_buffer_set_flags(b, GST_BUFFER_FLAG_NON_DROPPABLE);
-      gst_buffer_set_flags(b, GST_BUFFER_FLAG_LIVE);
-
-      ret = gst_pad_push(pernnoise->srcpad, b);
-    }
-  }
-
-  return ret;
+  return true;
 }
 
 static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value) {
@@ -284,7 +276,7 @@ static void gst_pernnoise_set_model_name(GstPernnoise* pernnoise, gchar* value) 
 
         std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-        gst_pernnoise_finish(pernnoise);
+        gst_pernnoise_finish_rnnoise(pernnoise);
       }
     } else {
       // plugin is being initialized
@@ -306,7 +298,7 @@ static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value) 
 
         std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-        gst_pernnoise_finish(pernnoise);
+        gst_pernnoise_finish_rnnoise(pernnoise);
       }
     } else {
       // plugin is being initialized
@@ -318,7 +310,7 @@ static void gst_pernnoise_set_model_path(GstPernnoise* pernnoise, gchar* value) 
   }
 }
 
-static void gst_pernnoise_setup(GstPernnoise* pernnoise) {
+static void gst_pernnoise_setup_rnnoise(GstPernnoise* pernnoise) {
   FILE* f = fopen(pernnoise->model_path, "r");
 
   if (f != nullptr) {
@@ -330,11 +322,8 @@ static void gst_pernnoise_setup(GstPernnoise* pernnoise) {
   }
 
   if (pernnoise->model != nullptr) {
-    pernnoise->state_left = rnnoise_create(nullptr);
-    pernnoise->state_right = rnnoise_create(nullptr);
-
-    rnnoise_init(pernnoise->state_left, pernnoise->model);
-    rnnoise_init(pernnoise->state_right, pernnoise->model);
+    pernnoise->state_left = rnnoise_create(pernnoise->model);
+    pernnoise->state_right = rnnoise_create(pernnoise->model);
 
     pernnoise->ready = true;
   } else {
@@ -342,93 +331,6 @@ static void gst_pernnoise_setup(GstPernnoise* pernnoise) {
 
     util::debug("could not open the model file: " + std::string(pernnoise->model_path));
   }
-}
-
-static gboolean gst_pernnoise_sink_event(GstPad* pad, GstObject* parent, GstEvent* event) {
-  GstPernnoise* pernnoise = GST_PERNNOISE(parent);
-  gboolean ret = 1;
-
-  switch (GST_EVENT_TYPE(event)) {
-    case GST_EVENT_CAPS: {
-      GstCaps* caps = nullptr;
-      GstAudioInfo info;
-
-      gst_event_parse_caps(event, &caps);
-
-      gst_audio_info_from_caps(&info, caps);
-
-      pernnoise->rate = GST_AUDIO_INFO_RATE(&info);
-      pernnoise->bpf = GST_AUDIO_INFO_BPF(&info);
-
-      /* push the event downstream */
-
-      ret = gst_pad_push_event(pernnoise->srcpad, event);
-
-      break;
-    }
-    case GST_EVENT_FLUSH_START: {
-      gst_adapter_clear(pernnoise->adapter);
-      gst_adapter_clear(pernnoise->out_adapter);
-
-      pernnoise->inbuf_n_samples = -1;
-
-      ret = gst_pad_push_event(pernnoise->srcpad, event);
-
-      break;
-    }
-    case GST_EVENT_EOS: {
-      gst_adapter_clear(pernnoise->adapter);
-      gst_adapter_clear(pernnoise->out_adapter);
-
-      pernnoise->inbuf_n_samples = -1;
-
-      ret = gst_pad_push_event(pernnoise->srcpad, event);
-
-      break;
-    }
-    default:
-      ret = gst_pad_push_event(pernnoise->srcpad, event);
-      break;
-  }
-
-  return ret;
-}
-
-static GstStateChangeReturn gst_pernnoise_change_state(GstElement* element, GstStateChange transition) {
-  GstStateChangeReturn ret = GST_STATE_CHANGE_SUCCESS;
-  GstPernnoise* pernnoise = GST_PERNNOISE(element);
-
-  /*up changes*/
-
-  // switch (transition) {
-  //   case GST_STATE_CHANGE_NULL_TO_READY:
-  //     break;
-  //   default:
-  //     break;
-  // }
-
-  /*down changes*/
-
-  ret = GST_ELEMENT_CLASS(parent_class)->change_state(element, transition);
-
-  if (ret == GST_STATE_CHANGE_FAILURE) {
-    return ret;
-  }
-
-  switch (transition) {
-    case GST_STATE_CHANGE_PAUSED_TO_READY: {
-      gst_adapter_clear(pernnoise->adapter);
-      gst_adapter_clear(pernnoise->out_adapter);
-
-      pernnoise->inbuf_n_samples = -1;
-
-      break;
-    }
-    default:
-      break;
-  }
-
-  return ret;
 }
 
 static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer) {
@@ -456,88 +358,18 @@ static void gst_pernnoise_process(GstPernnoise* pernnoise, GstBuffer* buffer) {
   gst_buffer_unmap(buffer, &map);
 }
 
-static void gst_pernnoise_finish(GstPernnoise* pernnoise) {
+static void gst_pernnoise_finish_rnnoise(GstPernnoise* pernnoise) {
   if (pernnoise->ready) {
     pernnoise->ready = false;
 
-    rnnoise_model_free(pernnoise->model);
-
     rnnoise_destroy(pernnoise->state_left);
     rnnoise_destroy(pernnoise->state_right);
+    rnnoise_model_free(pernnoise->model);
 
     pernnoise->state_left = nullptr;
     pernnoise->state_right = nullptr;
     pernnoise->model = nullptr;
   }
-}
-
-static gboolean gst_pernnoise_src_query(GstPad* pad, GstObject* parent, GstQuery* query) {
-  GstPernnoise* pernnoise = GST_PERNNOISE(parent);
-  bool ret = true;
-
-  switch (GST_QUERY_TYPE(query)) {
-    case GST_QUERY_LATENCY: {
-      if (pernnoise->rate > 0) {
-        ret = gst_pad_peer_query(pernnoise->sinkpad, query);
-
-        if (ret && pernnoise->inbuf_n_samples != -1 && pernnoise->inbuf_n_samples < pernnoise->blocksize) {
-          GstClockTime min = 0;
-          GstClockTime max = 0;
-          gboolean live = 0;
-          guint64 latency = 0;
-
-          gst_query_parse_latency(query, &live, &min, &max);
-
-          /* add our own latency */
-
-          latency = gst_util_uint64_scale_round(pernnoise->blocksize - pernnoise->inbuf_n_samples, GST_SECOND,
-                                                pernnoise->rate);
-
-          // std::cout << "latency: " << latency << std::endl;
-          // std::cout << "n: " << pernnoise->inbuf_n_samples
-          //           << std::endl;
-
-          min += latency;
-
-          if (max != GST_CLOCK_TIME_NONE) {
-            max += latency;
-          }
-
-          // std::cout << min << "\t" << max << "\t" << live
-          //           << std::endl;
-
-          gst_query_set_latency(query, live, min, max);
-        }
-
-      } else {
-        ret = false;
-      }
-
-      break;
-    }
-    default:
-      /* just call the default handler */
-      ret = gst_pad_query_default(pad, parent, query);
-      break;
-  }
-
-  return ret;
-}
-
-void gst_pernnoise_finalize(GObject* object) {
-  GstPernnoise* pernnoise = GST_PERNNOISE(object);
-
-  GST_DEBUG_OBJECT(pernnoise, "finalize");
-
-  gst_adapter_clear(pernnoise->adapter);
-  gst_adapter_clear(pernnoise->out_adapter);
-  g_object_unref(pernnoise->adapter);
-
-  pernnoise->ready = false;
-
-  /* clean up object here */
-
-  G_OBJECT_CLASS(gst_pernnoise_parent_class)->finalize(object);
 }
 
 static gboolean plugin_init(GstPlugin* plugin) {
@@ -549,7 +381,7 @@ static gboolean plugin_init(GstPlugin* plugin) {
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   GST_VERSION_MINOR,
                   pernnoise,
-                  "PulseEffects Buffer Adapter",
+                  "PulseEffects Noise Remover",
                   plugin_init,
                   VERSION,
                   "LGPL",

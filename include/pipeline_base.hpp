@@ -52,8 +52,8 @@ class PipelineBase {
 
   PulseManager* pm = nullptr;
 
-  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *effects_bin = nullptr,
-             *identity_in = nullptr, *identity_out = nullptr, *adapter = nullptr, *spectrum = nullptr,
+  GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *src_type = nullptr,
+             *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr, *spectrum = nullptr,
              *spectrum_bin = nullptr, *spectrum_identity_in = nullptr, *spectrum_identity_out = nullptr,
              *global_level_meter = nullptr, *global_level_meter_bin = nullptr, *level_meter_identity_in = nullptr,
              *level_meter_identity_out = nullptr;

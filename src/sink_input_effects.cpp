@@ -140,8 +140,6 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
   g_settings_bind(child_settings, "buffer-pulsesink", sink, "buffer-time", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(child_settings, "latency-pulsesink", sink, "latency-time", G_SETTINGS_BIND_DEFAULT);
 
-  g_settings_bind(settings, "blocksize-out", adapter, "blocksize", G_SETTINGS_BIND_DEFAULT);
-
   // element message callback
 
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
@@ -212,6 +210,16 @@ SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("
 
   rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
                                       "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
+
+  // doing some plugin configurations
+
+  rnnoise->set_caps_out(sampling_rate);
+
+  g_settings_bind(settings, "blocksize-out", crystalizer->adapter, "blocksize", G_SETTINGS_BIND_DEFAULT);
+
+  g_settings_bind(settings, "blocksize-out", convolver->adapter, "blocksize", G_SETTINGS_BIND_DEFAULT);
+
+  // inserting the plugins in the containers
 
   plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   plugins.insert(std::make_pair(compressor->name, compressor->plugin));

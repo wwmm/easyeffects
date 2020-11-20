@@ -28,10 +28,10 @@ class Convolver : public PluginBase {
   Convolver(const Convolver&) = delete;
   auto operator=(const Convolver&) -> Convolver& = delete;
   Convolver(const Convolver&&) = delete;
-  auto operator=(const Convolver &&) -> Convolver& = delete;
+  auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
 
-  GstElement* convolver = nullptr;
+  GstElement *convolver = nullptr, *adapter = nullptr;
 
  private:
   void bind_to_gsettings();

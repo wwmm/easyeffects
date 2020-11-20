@@ -32,12 +32,13 @@ Convolver::Convolver(const std::string& tag, const std::string& schema, const st
     auto* output_gain = gst_element_factory_make("volume", nullptr);
     auto* audioconvert_in = gst_element_factory_make("audioconvert", "convolver_audioconvert_in");
     auto* audioconvert_out = gst_element_factory_make("audioconvert", "convolver_audioconvert_out");
+    adapter = gst_element_factory_make("peadapter", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, convolver, audioconvert_out, output_gain,
-                     out_level, nullptr);
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter, audioconvert_in, convolver, audioconvert_out,
+                     output_gain, out_level, nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioconvert_in, convolver, audioconvert_out, output_gain, out_level,
-                          nullptr);
+    gst_element_link_many(input_gain, in_level, adapter, audioconvert_in, convolver, audioconvert_out, output_gain,
+                          out_level, nullptr);
 
     auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto* pad_src = gst_element_get_static_pad(out_level, "src");
@@ -47,6 +48,8 @@ Convolver::Convolver(const std::string& tag, const std::string& schema, const st
 
     gst_object_unref(GST_OBJECT(pad_sink));
     gst_object_unref(GST_OBJECT(pad_src));
+
+    g_object_set(adapter, "blocksize", 512, nullptr);
 
     bind_to_gsettings();
 

@@ -261,11 +261,11 @@ void on_bypass_on(gpointer user_data) {
   if (effects_bin != nullptr) {
     gst_element_set_state(effects_bin, GST_STATE_READY);
 
-    gst_element_unlink_many(pb->adapter, effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
+    gst_element_unlink_many(pb->src_type, effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_bin_remove(GST_BIN(pb->pipeline), effects_bin);
 
-    gst_element_link_many(pb->adapter, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
+    gst_element_link_many(pb->src_type, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     util::debug(pb->log_tag + " bypass enabled");
   } else {
@@ -281,11 +281,11 @@ void on_bypass_off(gpointer user_data) {
   if (bin == nullptr) {
     gst_element_set_state(pb->effects_bin, GST_STATE_NULL);
 
-    gst_element_unlink_many(pb->adapter, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
+    gst_element_unlink_many(pb->src_type, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_bin_add(GST_BIN(pb->pipeline), pb->effects_bin);
 
-    gst_element_link_many(pb->adapter, pb->effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
+    gst_element_link_many(pb->src_type, pb->effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 
     gst_element_sync_state_with_parent(pb->effects_bin);
 
@@ -367,20 +367,18 @@ PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
   sink = get_required_plugin("pulsesink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
   global_level_meter = get_required_plugin("level", "global_level_meter");
-  adapter = gst_element_factory_make("peadapter", nullptr);
-
-  auto* src_type = get_required_plugin("typefind", nullptr);
+  src_type = get_required_plugin("typefind", nullptr);
 
   init_spectrum_bin();
   init_effects_bin();
 
   // building the pipeline
 
-  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin,
+  gst_bin_add_many(GST_BIN(pipeline), source, queue_src, capsfilter, src_type, effects_bin, spectrum_bin,
                    global_level_meter, sink, nullptr);
 
-  gst_element_link_many(source, queue_src, capsfilter, src_type, adapter, effects_bin, spectrum_bin, global_level_meter,
-                        sink, nullptr);
+  gst_element_link_many(source, queue_src, capsfilter, src_type, effects_bin, spectrum_bin, global_level_meter, sink,
+                        nullptr);
 
   // initializing properties
 
@@ -829,7 +827,7 @@ auto PipelineBase::get_required_plugin(const gchar* factoryname, const gchar* na
 }
 
 void PipelineBase::do_bypass(const bool& value) {
-  auto* srcpad = gst_element_get_static_pad(adapter, "src");
+  auto* srcpad = gst_element_get_static_pad(src_type, "src");
 
   if (value) {
     GstState state = GST_STATE_NULL;

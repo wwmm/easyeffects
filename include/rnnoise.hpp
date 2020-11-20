@@ -33,8 +33,14 @@ class RNNoise : public PluginBase {
 
   GstElement* rnnoise = nullptr;
 
+  void set_caps_out(const uint& sampling_rate);
+
  private:
+  GstElement *capsfilter_in = nullptr, *capsfilter_out = nullptr;
+
   void bind_to_gsettings();
+
+  void set_caps_in();
 };
 
 #endif
