@@ -591,6 +591,8 @@ void PipelineBase::update_pipeline_state() {
   } else if (state == GST_STATE_PLAYING && !wants_to_play) {
     timeout_connection.disconnect();
 
+    auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
+
     timeout_connection = Glib::signal_timeout().connect_seconds(
         [=]() {
           GstState s = GST_STATE_NULL;
@@ -599,14 +601,14 @@ void PipelineBase::update_pipeline_state() {
           gst_element_get_state(pipeline, &s, &p, state_check_timeout);
 
           if (s == GST_STATE_PLAYING && !apps_want_to_play()) {
-            util::debug(log_tag + "No app wants to play audio. We will pause our pipeline.");
+            util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
 
-            gst_element_set_state(pipeline, GST_STATE_PAUSED);
+            gst_element_set_state(pipeline, GST_STATE_READY);
           }
 
           return false;
         },
-        5);
+        seconds);
   }
 }
 

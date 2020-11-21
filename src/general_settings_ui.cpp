@@ -78,6 +78,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   get_object(builder, "adjustment_priority", adjustment_priority);
   get_object(builder, "adjustment_niceness", adjustment_niceness);
+  get_object(builder, "adjustment_audio_activity_timeout", adjustment_audio_activity_timeout);
 
   // signals connection
 
@@ -120,6 +121,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
+  settings->bind("audio-activity-timeout", adjustment_audio_activity_timeout.get(), "value", flag);
 
   g_settings_bind_with_mapping(settings->gobj(), "priority-type", priority_type->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
