@@ -22,7 +22,6 @@
 
 #include <glibmm/i18n.h>
 #include <gst/fft/gstfftf32.h>
-#include <gtkmm/filechoosernative.h>
 #include <boost/filesystem.hpp>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <future>
@@ -30,7 +29,6 @@
 #include <sndfile.hh>
 #include "glibmm/main.h"
 #include "glibmm/miscutils.h"
-#include "gtkmm/dialog.h"
 #include "plugin_ui_base.hpp"
 #include "sigc++/functors/ptr_fun.h"
 

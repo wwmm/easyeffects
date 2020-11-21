@@ -254,9 +254,9 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
+                      <object class="GtkFrame" id="model_list_frame">
                         <property name="can-focus">False</property>
+                        <property name="no-show-all">True</property>
                         <property name="halign">center</property>
                         <property name="label-xalign">0</property>
                         <property name="shadow-type">in</property>

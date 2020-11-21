@@ -19,15 +19,12 @@
 
 #include "equalizer_ui.hpp"
 #include <glibmm/i18n.h>
-#include <gtkmm/filechoosernative.h>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <cstddef>
 #include <cstring>
 #include <regex>
-#include "gtkmm/dialog.h"
-#include "gtkmm/window.h"
 
 namespace {
 

@@ -27,8 +27,10 @@
 #include <gtkmm/button.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/comboboxtext.h>
+#include <gtkmm/dialog.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/filechoosernative.h>
+#include <gtkmm/frame.h>
 #include <gtkmm/grid.h>
 #include <gtkmm/label.h>
 #include <gtkmm/levelbar.h>
@@ -41,6 +43,7 @@
 #include <gtkmm/stackswitcher.h>
 #include <gtkmm/switch.h>
 #include <gtkmm/togglebutton.h>
+#include <gtkmm/window.h>
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
