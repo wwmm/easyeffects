@@ -470,7 +470,7 @@
                         <property name="can-focus">True</property>
                         <property name="halign">center</property>
                         <property name="width-chars">10</property>
-                        <property name="text" translatable="yes">20.00</property>
+                        <property name="text">20.00</property>
                         <property name="secondary-icon-name">pulseeffects-ms-symbolic</property>
                         <property name="input-purpose">number</property>
                         <property name="orientation">vertical</property>

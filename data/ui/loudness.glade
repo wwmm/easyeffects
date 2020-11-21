@@ -248,7 +248,7 @@
                         <property name="can-focus">True</property>
                         <property name="halign">center</property>
                         <property name="width-chars">10</property>
-                        <property name="text" translatable="yes">0.0</property>
+                        <property name="text">0.0</property>
                         <property name="secondary-icon-name">pulseeffects-db-symbolic</property>
                         <property name="secondary-icon-activatable">False</property>
                         <property name="input-purpose">number</property>
@@ -281,7 +281,7 @@
                         <property name="can-focus">True</property>
                         <property name="halign">center</property>
                         <property name="width-chars">10</property>
-                        <property name="text" translatable="yes">0.0</property>
+                        <property name="text">0.0</property>
                         <property name="secondary-icon-name">pulseeffects-db-symbolic</property>
                         <property name="secondary-icon-activatable">False</property>
                         <property name="input-purpose">number</property>

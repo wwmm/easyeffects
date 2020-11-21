@@ -4,7 +4,7 @@
 
 ### Added
 
-- New noise remover plugin based on the RNNoise library.
+- New Noise Remover plugin based on the RNNoise library.
 - Band Quality factor exposed in the equalizer main interface.
 - Updated Chinese translation.
 - A new settings was added to the general section of our settings menu: `Activity Timeout`. It is the time during which

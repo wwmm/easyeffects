@@ -550,7 +550,7 @@
                                     <property name="can-focus">True</property>
                                     <property name="halign">center</property>
                                     <property name="width-chars">10</property>
-                                    <property name="text" translatable="yes">3</property>
+                                    <property name="text">3</property>
                                     <property name="secondary-icon-name">pulseeffects-db-symbolic</property>
                                     <property name="input-purpose">number</property>
                                     <property name="orientation">vertical</property>
@@ -582,7 +582,7 @@
                                     <property name="can-focus">True</property>
                                     <property name="halign">center</property>
                                     <property name="width-chars">10</property>
-                                    <property name="text" translatable="yes">9</property>
+                                    <property name="text">9</property>
                                     <property name="secondary-icon-name">pulseeffects-db-symbolic</property>
                                     <property name="input-purpose">number</property>
                                     <property name="orientation">vertical</property>
@@ -711,7 +711,7 @@
                                     <property name="can-focus">True</property>
                                     <property name="halign">center</property>
                                     <property name="width-chars">8</property>
-                                    <property name="text" translatable="yes">10</property>
+                                    <property name="text">10</property>
                                     <property name="xalign">0.5</property>
                                     <property name="secondary-icon-name">pulseeffects-ms-symbolic</property>
                                     <property name="input-purpose">number</property>
