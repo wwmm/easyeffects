@@ -15,42 +15,44 @@ Audio effects for Pulseaudio applications.
 
 ### Applications output
 
-- Limiter
 - Auto gain
-- Gate
-- Multiband gate
-- Compressor
-- Multiband compressor
-- Convolver
 - Bass enhancer
-- Exciter
-- Crystalizer
-- Stereo tools
-- Reverberation
-- Equalizer
-- Expander
-- De-esser
+- Compressor
+- Convolver
 - Crossfeed
+- Crystalizer
+- De-esser
+- Equalizer
+- Exciter
+- Expander
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
+- Gate
+- Limiter
 - Loudness
 - Maximizer
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
+- Multiband compressor
+- Multiband gate
+- Noise reduction
 - Pitch
+- Reverberation
+- Stereo tools
 
 ### Applications input
 
-- Gate
-- Multiband gate
-- WebRTC
-- Limiter
 - Compressor
-- Multiband compressor
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
-- Equalizer
 - De-esser
-- Reverberation
-- Pitch
-- Stereo tools
+- Equalizer
+- Filter (low-pass, high-pass, band-pass and band-reject modes)
+- Gate
+- Limiter
 - Maximizer
+- Multiband compressor
+- Multiband gate
+- Noise reduction
+- Pitch
+- Reverberation
+- Stereo tools
+- WebRTC
 
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
@@ -66,6 +68,7 @@ must have the following installed in your system:
 - [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
+- [RNNoise](https://github.com/xiph/rnnoise)
 
 ## Donate
 
