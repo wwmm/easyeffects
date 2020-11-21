@@ -23,7 +23,6 @@
 #include <glibmm/i18n.h>
 #include <filesystem>
 #include "glibmm/miscutils.h"
-#include "gtkmm/dialog.h"
 #include "plugin_ui_base.hpp"
 
 class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
@@ -47,6 +46,7 @@ class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
   Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
 
   Gtk::Button* import_model = nullptr;
+  Gtk::Frame* model_list_frame = nullptr;
   Gtk::ListBox* model_listbox = nullptr;
   Gtk::Label* active_model_name = nullptr;
 

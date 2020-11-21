@@ -34,6 +34,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   builder->get_widget("plugin_reset", reset_button);
   builder->get_widget("import_model", import_model);
   builder->get_widget("model_listbox", model_listbox);
+  builder->get_widget("model_list_frame", model_list_frame);
   builder->get_widget("active_model_name", active_model_name);
 
   get_object(builder, "input_gain", input_gain);
@@ -155,6 +156,9 @@ void RNNoiseUi::populate_model_listbox() {
 
   if (names.empty()) {
     settings->set_string("model-path", default_model_name);
+    model_list_frame->set_visible(false);
+  } else {
+    model_list_frame->set_visible(true);
   }
 
   for (const auto& name : names) {

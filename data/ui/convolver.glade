@@ -128,7 +128,6 @@
             <property name="receives-default">True</property>
             <property name="tooltip-text" translatable="yes">Import Impulse Response File</property>
             <property name="halign">center</property>
-            <property name="valign">center</property>
             <property name="image">image_import_preset</property>
             <property name="always-show-image">True</property>
           </object>
@@ -142,7 +141,6 @@
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
             <property name="label-xalign">0</property>
             <property name="shadow-type">in</property>
             <child>
@@ -150,7 +148,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
+                <property name="max-content-width">800</property>
                 <property name="propagate-natural-width">True</property>
                 <property name="propagate-natural-height">True</property>
                 <child>
@@ -158,13 +156,11 @@
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
                     <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
                     <child>
                       <object class="GtkListBox" id="irs_listbox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <property name="selection-mode">none</property>
                         <property name="activate-on-single-click">False</property>
                       </object>

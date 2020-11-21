@@ -16,13 +16,13 @@
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
+    <property name="valign">center</property>
     <property name="row-spacing">18</property>
     <child>
       <object class="GtkStackSwitcher">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="halign">center</property>
-        <property name="valign">center</property>
         <property name="stack">blocklist_stack</property>
       </object>
       <packing>
@@ -35,7 +35,6 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="hexpand">True</property>
-        <property name="vexpand">True</property>
         <property name="transition-duration">250</property>
         <property name="transition-type">slide-left-right</property>
         <child>
@@ -43,8 +42,6 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
             <property name="row-spacing">18</property>
             <property name="column-spacing">6</property>
             <child>
@@ -53,8 +50,6 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="tooltip-text" translatable="yes">Create Preset</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
                 <property name="image">image_add_blocklist_in</property>
                 <style>
                   <class name="suggested-action"/>
@@ -69,7 +64,6 @@
               <object class="GtkEntry" id="blocklist_in_name">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder-text" translatable="yes">Name</property>
                 <property name="input-purpose">name</property>
@@ -85,6 +79,7 @@
                 <property name="can-focus">False</property>
                 <property name="margin-bottom">2</property>
                 <property name="label" translatable="yes">Reconnect the microphone to apply new changes made to the Blocklist</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left-attach">0</property>
@@ -105,9 +100,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="max-content-width">1000</property>
-                    <property name="max-content-height">650</property>
+                    <property name="max-content-width">800</property>
+                    <property name="max-content-height">400</property>
                     <property name="propagate-natural-width">True</property>
                     <property name="propagate-natural-height">True</property>
                     <child>
@@ -115,14 +109,12 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <child>
                           <object class="GtkListBox" id="blocklist_in_listbox">
                             <property name="name">listbox_blocklist</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
                             <property name="selection-mode">none</property>
                             <property name="activate-on-single-click">False</property>
                           </object>
@@ -153,8 +145,6 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
             <property name="row-spacing">18</property>
             <property name="column-spacing">6</property>
             <child>
@@ -163,8 +153,6 @@
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
                 <property name="tooltip-text" translatable="yes">Create Preset</property>
-                <property name="halign">center</property>
-                <property name="valign">center</property>
                 <property name="image">image_add_blocklist_out</property>
                 <style>
                   <class name="suggested-action"/>
@@ -179,7 +167,6 @@
               <object class="GtkEntry" id="blocklist_out_name">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="valign">center</property>
                 <property name="hexpand">True</property>
                 <property name="placeholder-text" translatable="yes">Name</property>
                 <property name="input-purpose">name</property>
@@ -202,9 +189,8 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <property name="max-content-width">1000</property>
-                    <property name="max-content-height">650</property>
+                    <property name="max-content-width">800</property>
+                    <property name="max-content-height">400</property>
                     <property name="propagate-natural-width">True</property>
                     <property name="propagate-natural-height">True</property>
                     <child>
@@ -212,14 +198,12 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <child>
                           <object class="GtkListBox" id="blocklist_out_listbox">
                             <property name="name">listbox_blocklist</property>
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <property name="hexpand">True</property>
-                            <property name="vexpand">True</property>
                             <property name="selection-mode">none</property>
                             <property name="activate-on-single-click">False</property>
                           </object>
@@ -244,6 +228,7 @@
                 <property name="can-focus">False</property>
                 <property name="margin-bottom">2</property>
                 <property name="label" translatable="yes">Restart the player to apply new changes made to the Blocklist</property>
+                <property name="wrap">True</property>
               </object>
               <packing>
                 <property name="left-attach">0</property>
@@ -277,7 +262,6 @@
           <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">end</property>
             <property name="label" translatable="yes">Show Blocklisted Apps in Main Tab</property>
           </object>
           <packing>
@@ -289,7 +273,6 @@
           <object class="GtkSwitch" id="show_blocklisted_apps">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
-            <property name="halign">start</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
