@@ -280,7 +280,7 @@
                             <property name="can-focus">True</property>
                             <property name="halign">center</property>
                             <property name="width-chars">10</property>
-                            <property name="text" translatable="yes">0</property>
+                            <property name="text">0</property>
                             <property name="input-purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">cents</property>
@@ -310,7 +310,7 @@
                             <property name="can-focus">True</property>
                             <property name="halign">center</property>
                             <property name="width-chars">10</property>
-                            <property name="text" translatable="yes">0</property>
+                            <property name="text">0</property>
                             <property name="input-purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">semitones</property>
@@ -340,7 +340,7 @@
                             <property name="can-focus">True</property>
                             <property name="halign">center</property>
                             <property name="width-chars">10</property>
-                            <property name="text" translatable="yes">0</property>
+                            <property name="text">0</property>
                             <property name="input-purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">octaves</property>
@@ -370,7 +370,7 @@
                             <property name="can-focus">True</property>
                             <property name="halign">center</property>
                             <property name="width-chars">10</property>
-                            <property name="text" translatable="yes">3</property>
+                            <property name="text">3</property>
                             <property name="input-purpose">number</property>
                             <property name="orientation">vertical</property>
                             <property name="adjustment">crispness</property>
