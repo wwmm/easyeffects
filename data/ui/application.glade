@@ -215,7 +215,9 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="label" translatable="yes">Presets</property>
+                <property name="ellipsize">end</property>
                 <property name="single-line-mode">True</property>
+                <property name="max-width-chars">50</property>
               </object>
             </child>
           </object>

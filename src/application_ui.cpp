@@ -91,14 +91,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   presets_menu_button->signal_clicked().connect(
       sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
 
-  update_preset_label(settings->get_string("last-used-output-preset"));
+  presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
 
   connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
-    update_preset_label(settings->get_string("last-used-input-preset"));
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
   }));
 
   connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
-    update_preset_label(settings->get_string("last-used-output-preset"));
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   }));
 
   // headerbar info
@@ -243,20 +243,14 @@ void ApplicationUi::on_stack_visible_child_changed() {
   if (name == std::string("sink_inputs")) {
     update_headerbar_subtitle(0);
 
-    update_preset_label(settings->get_string("last-used-output-preset"));
+    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
   } else if (name == std::string("source_outputs")) {
     update_headerbar_subtitle(1);
 
-    update_preset_label(settings->get_string("last-used-input-preset"));
+    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
   } else if (name == std::string("pulse_info")) {
     update_headerbar_subtitle(2);
   }
-}
-
-void ApplicationUi::update_preset_label(const std::string& name) {
-  presets_menu_label->set_text(
-    (name.length() > preset_maxsize) ? name.substr(0u, preset_maxsize - 3u).append("...") : name
-  );
 }
 
 void ApplicationUi::on_calibration_button_clicked() {

@@ -149,7 +149,6 @@
                 <property name="can-focus">True</property>
                 <property name="hexpand">True</property>
                 <property name="max-content-width">800</property>
-                <property name="max-content-height">200</property>
                 <property name="propagate-natural-width">True</property>
                 <property name="propagate-natural-height">True</property>
                 <child>

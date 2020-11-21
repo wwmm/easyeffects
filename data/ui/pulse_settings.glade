@@ -70,15 +70,13 @@
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="halign">center</property>
     <property name="valign">center</property>
     <property name="row-spacing">12</property>
     <child>
       <object class="GtkStack" id="pulse_stack">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
+        <property name="hexpand">True</property>
         <property name="transition-duration">250</property>
         <property name="transition-type">slide-left-right</property>
         <child>
@@ -86,8 +84,6 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
             <property name="margin-top">8</property>
             <property name="row-spacing">18</property>
             <property name="column-spacing">48</property>
@@ -96,7 +92,6 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="halign">center</property>
                 <property name="column-spacing">6</property>
                 <child>
                   <object class="GtkToggleButton" id="use_default_source">
@@ -104,7 +99,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="halign">center</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -115,7 +109,7 @@
                   <object class="GtkComboBox" id="input_device">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="halign">start</property>
+                    <property name="hexpand">True</property>
                     <property name="model">source_list</property>
                     <child>
                       <object class="GtkCellRendererText"/>
@@ -142,6 +136,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
@@ -241,6 +236,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
@@ -341,6 +337,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">start</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <child>
                   <object class="GtkLabel">
@@ -392,8 +389,6 @@
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
             <property name="margin-top">8</property>
             <property name="row-spacing">18</property>
             <property name="column-spacing">48</property>
@@ -402,7 +397,6 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="halign">center</property>
                 <property name="column-spacing">6</property>
                 <child>
                   <object class="GtkToggleButton" id="use_default_sink">
@@ -410,7 +404,6 @@
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
-                    <property name="halign">start</property>
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
@@ -421,6 +414,7 @@
                   <object class="GtkComboBox" id="output_device">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
+                    <property name="hexpand">True</property>
                     <property name="model">sink_list</property>
                     <child>
                       <object class="GtkCellRendererText"/>
@@ -447,6 +441,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
@@ -546,6 +541,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
@@ -646,6 +642,7 @@
                 <property name="can-focus">False</property>
                 <property name="halign">center</property>
                 <property name="valign">start</property>
+                <property name="hexpand">True</property>
                 <property name="row-spacing">6</property>
                 <child>
                   <object class="GtkLabel">
@@ -704,7 +701,6 @@
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="halign">center</property>
-        <property name="valign">center</property>
         <property name="stack">pulse_stack</property>
       </object>
       <packing>

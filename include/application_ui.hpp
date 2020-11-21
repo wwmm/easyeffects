@@ -72,8 +72,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   std::vector<sigc::connection> connections;
 
-  std::size_t preset_maxsize = 30u;
-
   PresetsMenuUi* presets_menu_ui = nullptr;
 
   SinkInputEffectsUi* sie_ui = nullptr;
@@ -93,8 +91,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   static void apply_css_style(const std::string& css_file_name);
 
   void on_stack_visible_child_changed();
-
-  void update_preset_label(const std::string& name);
 
   void on_calibration_button_clicked();
 };
