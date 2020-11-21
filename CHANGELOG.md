@@ -7,6 +7,9 @@
 - New noise remover plugin based on the RNNoise library https://github.com/xiph/rnnoise.
 - Band Quality factor exposed in the equalizer main interface.
 - Updated Chinese translation.
+- When no application is playing audio PulseEffects pipeline is now put in the ready state instead of the paused
+  state. This should help to reduce cpu usage in situations like the ones described in
+  https://github.com/wwmm/pulseeffects/issues/829
 
 ### Fixed
 
