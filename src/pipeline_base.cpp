@@ -591,6 +591,8 @@ void PipelineBase::update_pipeline_state() {
   } else if (state == GST_STATE_PLAYING && !wants_to_play) {
     timeout_connection.disconnect();
 
+    auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
+
     timeout_connection = Glib::signal_timeout().connect_seconds(
         [=]() {
           GstState s = GST_STATE_NULL;
@@ -606,7 +608,7 @@ void PipelineBase::update_pipeline_state() {
 
           return false;
         },
-        5);
+        seconds);
   }
 }
 

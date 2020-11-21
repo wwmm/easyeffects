@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-20 15:59-0300\n"
+"POT-Creation-Date: 2020-11-21 12:23-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,7 +149,7 @@ msgid "Global Bypass"
 msgstr ""
 
 #: data/ui/application.glade:172 data/ui/equalizer.glade:300
-#: data/ui/general_settings.glade:253
+#: data/ui/general_settings.glade:289
 msgid "Settings"
 msgstr ""
 
@@ -175,7 +175,7 @@ msgstr ""
 #: data/ui/deesser.glade:182 data/ui/delay.glade:144
 #: data/ui/equalizer.glade:404 data/ui/equalizer_band.glade:186
 #: data/ui/equalizer_band.glade:229 data/ui/exciter.glade:167
-#: data/ui/filter.glade:243 data/ui/general_settings.glade:262
+#: data/ui/filter.glade:243 data/ui/general_settings.glade:298
 #: data/ui/gate.glade:172 data/ui/limiter.glade:166 data/ui/loudness.glade:174
 #: data/ui/maximizer.glade:139 data/ui/multiband_compressor.glade:307
 #: data/ui/multiband_gate.glade:331 data/ui/pitch.glade:158
@@ -1083,43 +1083,47 @@ msgstr ""
 msgid "Inertia"
 msgstr ""
 
-#: data/ui/general_settings.glade:52
+#: data/ui/general_settings.glade:58
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/general_settings.glade:76
+#: data/ui/general_settings.glade:82
 msgid "Process All Outputs"
 msgstr ""
 
-#: data/ui/general_settings.glade:88
+#: data/ui/general_settings.glade:94
 msgid "Process All Inputs"
 msgstr ""
 
-#: data/ui/general_settings.glade:124
+#: data/ui/general_settings.glade:130
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/general_settings.glade:152 data/ui/general_settings.glade:214
+#: data/ui/general_settings.glade:158 data/ui/general_settings.glade:220
 msgid "Niceness"
 msgstr ""
 
-#: data/ui/general_settings.glade:153
+#: data/ui/general_settings.glade:159
 msgid "Real Time"
 msgstr ""
 
-#: data/ui/general_settings.glade:154
+#: data/ui/general_settings.glade:160
 msgid "None"
 msgstr ""
 
-#: data/ui/general_settings.glade:202
+#: data/ui/general_settings.glade:208
 msgid "Priority Type"
 msgstr ""
 
-#: data/ui/general_settings.glade:226
+#: data/ui/general_settings.glade:232
 msgid "Priority"
 msgstr ""
 
-#: data/ui/general_settings.glade:289
+#: data/ui/general_settings.glade:244
+msgid "Activity Timeout"
+msgstr ""
+
+#: data/ui/general_settings.glade:325
 msgid "About"
 msgstr ""
 
@@ -1894,7 +1898,7 @@ msgstr ""
 msgid "APO Presets"
 msgstr ""
 
-#: src/general_settings_ui.cpp:147
+#: src/general_settings_ui.cpp:149
 msgid "General"
 msgstr ""
 

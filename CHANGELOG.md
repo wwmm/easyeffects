@@ -7,6 +7,10 @@
 - New noise remover plugin based on the RNNoise library https://github.com/xiph/rnnoise.
 - Band Quality factor exposed in the equalizer main interface.
 - Updated Chinese translation.
+- A new settings was added to the general section of our settings menu: `Activity Timeout`. It is the time during which
+  PulseEffects monitors if there is any application playing audio. If there is none we stop our playback stream in order
+  to save cpu usage. This timeout has been in place for a long time but until now its value could not be configured by
+  the user.
 - When no application is playing audio PulseEffects pipeline is now put in the ready state instead of the paused
   state. This should help to reduce cpu usage in situations like the ones described in
   https://github.com/wwmm/pulseeffects/issues/829

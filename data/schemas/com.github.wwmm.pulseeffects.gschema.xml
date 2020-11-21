@@ -81,5 +81,8 @@
         <key name="bypass" type="b">
             <default>false</default>
         </key>
+        <key name="audio-activity-timeout" type="i">
+            <default>5</default>
+        </key>
     </schema>
 </schemalist>

@@ -38,7 +38,7 @@ class GeneralSettingsUi : public Gtk::Grid {
   GeneralSettingsUi(const GeneralSettingsUi&) = delete;
   auto operator=(const GeneralSettingsUi&) -> GeneralSettingsUi& = delete;
   GeneralSettingsUi(const GeneralSettingsUi&&) = delete;
-  auto operator=(const GeneralSettingsUi &&) -> GeneralSettingsUi& = delete;
+  auto operator=(const GeneralSettingsUi&&) -> GeneralSettingsUi& = delete;
   ~GeneralSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
@@ -59,7 +59,7 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Gtk::ComboBoxText* priority_type = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness;
+  Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness, adjustment_audio_activity_timeout;
 
   std::vector<sigc::connection> connections;
 
