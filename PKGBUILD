@@ -16,6 +16,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'lsp-plugins: equalizer, delay'
             'rubberband: pitch shifting'
             'zam-plugins: maximizer'
+            'librnnoise: noise remover'
             'yelp: in-app help')
 source=("git+https://github.com/wwmm/pulseeffects.git")
 conflicts=(pulseeffects)
