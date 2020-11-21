@@ -83,13 +83,15 @@ void RNNoise::bind_to_gsettings() {
 }
 
 void RNNoise::set_caps_out(const uint& sampling_rate) {
-  auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
+  if (capsfilter_out != nullptr) {
+    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
 
-  auto* caps = gst_caps_from_string(caps_str.c_str());
+    auto* caps = gst_caps_from_string(caps_str.c_str());
 
-  g_object_set(capsfilter_out, "caps", caps, nullptr);
+    g_object_set(capsfilter_out, "caps", caps, nullptr);
 
-  gst_caps_unref(caps);
+    gst_caps_unref(caps);
+  }
 }
 
 void RNNoise::set_caps_in() {
