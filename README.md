@@ -66,9 +66,9 @@ must have the following installed in your system:
 - [ZamAudio plugins](http://www.zamaudio.com/). For Maximizer.
 - [zita-convolver](https://kokkinizita.linuxaudio.org/linuxaudio/). For Convolver.
 - [rubberband](https://www.breakfastquay.com/rubberband/). For Pitch Shift.
+- [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
-- [RNNoise](https://github.com/xiph/rnnoise)
 
 ## Donate
 

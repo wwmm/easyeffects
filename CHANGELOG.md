@@ -4,9 +4,8 @@
 
 ### Added
 
-- New Noise Remover plugin based on the RNNoise library.
-- Band Quality factor exposed in the equalizer main interface.
-- Updated Chinese translation.
+- New Noise Reduction plugin based on the RNNoise library.
+- Band Quality factor exposed in the Equalizer main interface.
 - A new settings was added to the general section of our settings menu: `Activity Timeout`. It is the time during which
   PulseEffects monitors if there is any application playing audio. If there is none we stop our playback stream in order
   to save cpu usage. This timeout has been in place for a long time but until now its value could not be configured by
@@ -14,6 +13,7 @@
 - When no application is playing audio PulseEffects pipeline is now put in the ready state instead of the paused
   state. This should help to reduce cpu usage in situations like the ones described in
   https://github.com/wwmm/pulseeffects/issues/829
+- Updated Chinese translation.
 
 ### Fixed
 
@@ -22,11 +22,12 @@
   property has been applied to get the same space between band sliders.
 - App info and plugin interfaces made scrollable: now PulseEffects window does not change its size when switching beetween
   plugins.
-- Loudness plugin: removed reference signal button; input value is now saved to preset.
+- Loudness plugin: removed reference signal button (test signals can be used in its stead); input value is now saved to
+  preset.
 
 ### Note to packagers
 
-- The noise remover plugin is an optional plugin. For it to be available to the user the library RNNoise
+- The Noise Reduction is an optional plugin. For it to be available to the user the library RNNoise
   https://github.com/xiph/rnnoise has to be installed when PulseEffects is compiled.
 
 ## [4.8.2]
