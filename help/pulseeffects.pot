@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-24 16:56+0200\n"
+"POT-Creation-Date: 2020-11-22 18:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,8 +119,8 @@ msgstr ""
 #: C/filter.page:47
 #: C/gate.page:96
 #: C/delay.page:33
-#: C/limiter.page:82
-#: C/loudness.page:65
+#: C/limiter.page:100
+#: C/loudness.page:56
 #: C/multibandcompressor.page:128
 #: C/multibandgate.page:136
 #: C/reverb.page:97
@@ -132,6 +132,7 @@ msgstr ""
 #: C/crystalizer.page:53
 #: C/convolver.page:42
 #: C/autogain.page:76
+#: C/rnnoise.page:24
 msgid "References"
 msgstr ""
 
@@ -168,7 +169,7 @@ msgstr ""
 #. (itstool) path: title/em
 #: C/compressor.page:31
 #: C/gate.page:29
-#: C/limiter.page:47
+#: C/limiter.page:39
 #: C/multibandcompressor.page:29
 #: C/multibandgate.page:29
 #: C/maximizer.page:44
@@ -367,7 +368,7 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/compressor.page:202
-#: C/limiter.page:38
+#: C/limiter.page:30
 msgid "Lookahead"
 msgstr ""
 
@@ -752,62 +753,82 @@ msgstr ""
 
 #. (itstool) path: title/em
 #: C/limiter.page:22
-msgid "Input Gain"
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/limiter.page:24
-msgid "Raises audio volume before it is sent ot the compression stage."
-msgstr ""
-
-#. (itstool) path: title/em
-#: C/limiter.page:30
 msgid "Limit"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:32
+#: C/limiter.page:24
 msgid "No signal above this level will pass through the limiter."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:40
+#: C/limiter.page:32
 msgid "The Limiter will reach its attenuation level in this amount of time (output will be delayed two times this time)."
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:49
+#: C/limiter.page:41
 msgid "Stop the attenuation after this amount of milliseconds."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:55
+#: C/limiter.page:47
 msgid "Oversampling"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:57
+#: C/limiter.page:49
 msgid "Increase the signal sampling to better detect the peaks. The signal is downsampled after processing."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:64
-msgid "ASC"
+#: C/limiter.page:56
+msgid "Automatic Smoothing Control"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:66
+#: C/limiter.page:58
 msgid "When gain reduction is always needed ASC takes care of releasing to an average reduction level rather than reaching a reduction of 0 in the release time."
 msgstr ""
 
 #. (itstool) path: title/em
-#: C/limiter.page:73
+#: C/limiter.page:65
 msgid "ASC Level"
 msgstr ""
 
 #. (itstool) path: item/p
-#: C/limiter.page:75
+#: C/limiter.page:67
 msgid "Select how much the release time is affected by ASC, 0 means nearly no changes in release time while 1 produces higher release times."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:74
+msgid "Automatic Leveling"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:76
+msgid "Raises the signal level adding the absolute value of the limit amount after the compression stage is performed. Enabling this feature the volume is automatically leveled at 0 db."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:84
+msgid "Input Gain"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:86
+msgid "Raises or decrease the signal level before it is sent to the compression stage."
+msgstr ""
+
+#. (itstool) path: title/em
+#: C/limiter.page:92
+msgid "Output Gain"
+msgstr ""
+
+#. (itstool) path: item/p
+#: C/limiter.page:94
+msgid "Raises or decrease the signal level after the compression stage."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -858,16 +879,6 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/loudness.page:48
 msgid "Allows to select size of the fast Fourier transform frame used for the processing. The larger FFT frame is, the more precize the curve is approximated and the more latency the plugin introduces"
-msgstr ""
-
-#. (itstool) path: title/em
-#: C/loudness.page:56
-msgid "Reference Signal"
-msgstr ""
-
-#. (itstool) path: item/p
-#: C/loudness.page:58
-msgid "Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency for callibration purposes."
 msgstr ""
 
 #. (itstool) path: page/title
@@ -2779,5 +2790,25 @@ msgstr ""
 #. (itstool) path: section/p
 #: C/guide_1.page:319
 msgid "Sorry dude, this isn't done by simply loading a preset, since the community is not Apple, Lenovo or Dell offering high quality Dolby Theatre drivers for your particular machine."
+msgstr ""
+
+#. (itstool) path: page/title
+#: C/rnnoise.page:9
+msgid "Noise Reduction"
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:10
+msgid "Noise reduction is the process of removing noise from a signal."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:13
+msgid "PulseEffects Noise Reduction is made on the library RNNoise which is based based on recurrent neural network, a class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence. This allows it to exhibit temporal dynamic behavior."
+msgstr ""
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:19
+msgid "Standard RNNoise Model is used and custom models can be imported to perform different types of noise reduction."
 msgstr ""
 
