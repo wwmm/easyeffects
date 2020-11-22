@@ -19,14 +19,6 @@
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Input Gain</em>
-            </title>
-            <p>
-                Raises audio volume before it is sent ot the compression stage.
-            </p>
-        </item>
-        <item>
-            <title>
                 <em style="strong" its:withinText="nested">Limit</em>
             </title>
             <p>
@@ -61,7 +53,7 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">ASC</em>
+                <em style="strong" its:withinText="nested">Automatic Smoothing Control</em>
             </title>
             <p>
                 When gain reduction is always needed ASC takes care of releasing to an average
@@ -75,6 +67,32 @@
             <p>
                 Select how much the release time is affected by ASC, 0 means nearly no changes
                 in release time while 1 produces higher release times.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Automatic Leveling</em>
+            </title>
+            <p>
+                Raises the signal level adding the absolute value of the limit amount after
+                the compression stage is performed. Enabling this feature the volume is
+                automatically leveled at 0 db.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Input Gain</em>
+            </title>
+            <p>
+                Raises or decrease the signal level before it is sent to the compression stage.
+            </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Output Gain</em>
+            </title>
+            <p>
+                Raises or decrease the signal level after the compression stage.
             </p>
         </item>
     </terms>
