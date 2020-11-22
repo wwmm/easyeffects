@@ -51,15 +51,6 @@
                 is approximated and the more latency the plugin introduces
             </p>
         </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Reference Signal</em>
-            </title>
-            <p>
-                Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz
-                frequency for callibration purposes.
-            </p>
-        </item>
     </terms>
     <section>
         <title>References</title>
