@@ -27,7 +27,7 @@
 
 ### Note to packagers
 
-- The noise remover plugin is an optional plugin. For it to be available to the user the library RNNoise
+- The Noise Reduction is an optional plugin. For it to be available to the user the library RNNoise
   https://github.com/xiph/rnnoise has to be installed when PulseEffects is compiled.
 
 ## [4.8.2]
