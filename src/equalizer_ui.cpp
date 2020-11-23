@@ -109,7 +109,7 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
     case 1:
       return g_variant_new_string("FIR");
 
-    case 3:
+    case 2:
       return g_variant_new_string("FFT");
 
     default:
