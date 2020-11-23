@@ -5,104 +5,29 @@
   <object class="GtkAdjustment" id="frequency_adjustment">
     <property name="upper">23000</property>
     <property name="step-increment">1</property>
-    <property name="page-increment">1</property>
+    <property name="page-increment">100</property>
   </object>
   <object class="GtkAdjustment" id="volume_adjustment">
     <property name="upper">1</property>
     <property name="step-increment">0.01</property>
-    <property name="page-increment">0.05</property>
+    <property name="page-increment">0.1</property>
   </object>
-  <!-- n-columns=3 n-rows=4 -->
+  <!-- n-columns=2 n-rows=3 -->
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
-    <property name="margin-start">3</property>
-    <property name="margin-end">3</property>
-    <property name="margin-top">3</property>
-    <property name="margin-bottom">3</property>
-    <property name="row-spacing">6</property>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="margin-top">12</property>
-        <property name="label" translatable="yes">Frequency</property>
-      </object>
-      <packing>
-        <property name="left-attach">1</property>
-        <property name="top-attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSpinButton" id="frequency">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="halign">center</property>
-        <property name="valign">center</property>
-        <property name="width-chars">10</property>
-        <property name="secondary-icon-name">pulseeffects-hz-symbolic</property>
-        <property name="secondary-icon-activatable">False</property>
-        <property name="input-purpose">number</property>
-        <property name="adjustment">frequency_adjustment</property>
-        <property name="numeric">True</property>
-        <property name="update-policy">if-valid</property>
-      </object>
-      <packing>
-        <property name="left-attach">1</property>
-        <property name="top-attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="halign">start</property>
-        <property name="valign">center</property>
-        <property name="label" translatable="yes">Volume</property>
-      </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkScale" id="volume">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="valign">center</property>
-        <property name="hexpand">True</property>
-        <property name="adjustment">volume_adjustment</property>
-        <property name="round-digits">2</property>
-        <property name="digits">2</property>
-        <property name="value-pos">right</property>
-      </object>
-      <packing>
-        <property name="left-attach">1</property>
-        <property name="top-attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSwitch" id="enable">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="halign">end</property>
-        <property name="valign">center</property>
-        <property name="margin-top">8</property>
-        <signal name="state-set" handler="on_wave1_switch_state_set" swapped="no"/>
-      </object>
-      <packing>
-        <property name="left-attach">2</property>
-        <property name="top-attach">3</property>
-      </packing>
-    </child>
+    <property name="valign">center</property>
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <property name="margin-top">18</property>
+    <property name="margin-bottom">6</property>
+    <property name="row-spacing">18</property>
+    <property name="column-spacing">12</property>
     <child>
       <object class="GtkComboBoxText" id="wave">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="halign">center</property>
-        <property name="valign">center</property>
         <items>
           <item translatable="yes">Sine</item>
           <item translatable="yes">Square</item>
@@ -120,27 +45,106 @@
         </items>
       </object>
       <packing>
-        <property name="left-attach">1</property>
+        <property name="left-attach">0</property>
         <property name="top-attach">0</property>
+        <property name="width">2</property>
       </packing>
     </child>
     <child>
-      <placeholder/>
+      <!-- n-columns=2 n-rows=1 -->
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="column-spacing">6</property>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Volume</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkScale" id="volume">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="adjustment">volume_adjustment</property>
+            <property name="round-digits">2</property>
+            <property name="digits">2</property>
+            <property name="value-pos">right</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">2</property>
+      </packing>
     </child>
     <child>
-      <placeholder/>
+      <object class="GtkSwitch" id="enable">
+        <property name="visible">True</property>
+        <property name="can-focus">True</property>
+        <property name="halign">end</property>
+        <property name="valign">center</property>
+        <signal name="state-set" handler="on_wave1_switch_state_set" swapped="no"/>
+      </object>
+      <packing>
+        <property name="left-attach">1</property>
+        <property name="top-attach">2</property>
+      </packing>
     </child>
     <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
+      <!-- n-columns=1 n-rows=2 -->
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="halign">center</property>
+        <property name="row-spacing">6</property>
+        <child>
+          <object class="GtkSpinButton" id="frequency">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="width-chars">10</property>
+            <property name="text" translatable="yes">0</property>
+            <property name="xalign">0.5</property>
+            <property name="secondary-icon-name">pulseeffects-hz-symbolic</property>
+            <property name="secondary-icon-activatable">False</property>
+            <property name="input-purpose">number</property>
+            <property name="adjustment">frequency_adjustment</property>
+            <property name="numeric">True</property>
+            <property name="update-policy">if-valid</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="label" translatable="yes">Frequency</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+      </object>
+      <packing>
+        <property name="left-attach">0</property>
+        <property name="top-attach">1</property>
+        <property name="width">2</property>
+      </packing>
     </child>
   </object>
 </interface>
