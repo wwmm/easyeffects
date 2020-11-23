@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
-"POT-Creation-Date: 2020-08-24 16:56+0200\n"
+"POT-Creation-Date: 2020-11-22 18:51+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -115,10 +115,11 @@ msgstr "Disattiva il segnale originale e ascolta esclusivamente le armoniche."
 #. (itstool) path: section/title
 #: C/bassenhancer.page:78 C/compressor.page:266 C/deesser.page:111
 #: C/exciter.page:77 C/filter.page:47 C/gate.page:96 C/delay.page:33
-#: C/limiter.page:82 C/loudness.page:65 C/multibandcompressor.page:128
+#: C/limiter.page:100 C/loudness.page:56 C/multibandcompressor.page:128
 #: C/multibandgate.page:136 C/reverb.page:97 C/stereotools.page:96
 #: C/crossfeed.page:35 C/equalizer.page:251 C/pitch.page:87 C/webrtc.page:140
 #: C/crystalizer.page:53 C/convolver.page:42 C/autogain.page:76
+#: C/rnnoise.page:24
 msgid "References"
 msgstr "Note"
 
@@ -160,7 +161,7 @@ msgstr ""
 "essa, allora non riceverà una compressione completa."
 
 #. (itstool) path: title/em
-#: C/compressor.page:31 C/gate.page:29 C/limiter.page:47
+#: C/compressor.page:31 C/gate.page:29 C/limiter.page:39
 #: C/multibandcompressor.page:29 C/multibandgate.page:29 C/maximizer.page:44
 msgid "Release"
 msgstr "Rilascio"
@@ -395,7 +396,7 @@ msgid "Reactivity of the sidechain signal."
 msgstr "Reattività del segnale di sidechain."
 
 #. (itstool) path: title/em
-#: C/compressor.page:202 C/limiter.page:38
+#: C/compressor.page:202 C/limiter.page:30
 msgid "Lookahead"
 msgstr "Lookahead"
 
@@ -882,26 +883,16 @@ msgstr "PulseEffects usa il Limitatore sviluppato da Calf Studio."
 
 #. (itstool) path: title/em
 #: C/limiter.page:22
-msgid "Input Gain"
-msgstr "Guadagno in Ingresso"
-
-#. (itstool) path: item/p
-#: C/limiter.page:24
-msgid "Raises audio volume before it is sent ot the compression stage."
-msgstr "Aumenta il volume del segnale prima di essere processato."
-
-#. (itstool) path: title/em
-#: C/limiter.page:30
 msgid "Limit"
 msgstr "Limite"
 
 #. (itstool) path: item/p
-#: C/limiter.page:32
+#: C/limiter.page:24
 msgid "No signal above this level will pass through the limiter."
 msgstr "Il segnale in uscita non avrà picchi oltre questa soglia."
 
 #. (itstool) path: item/p
-#: C/limiter.page:40
+#: C/limiter.page:32
 msgid ""
 "The Limiter will reach its attenuation level in this amount of time (output "
 "will be delayed two times this time)."
@@ -910,17 +901,17 @@ msgstr ""
 "specificato (l'uscita sarà ritardata due volte questo tempo)."
 
 #. (itstool) path: item/p
-#: C/limiter.page:49
+#: C/limiter.page:41
 msgid "Stop the attenuation after this amount of milliseconds."
 msgstr "Arresta l'attenuazione dopo questo tempo in millisecondi."
 
 #. (itstool) path: title/em
-#: C/limiter.page:55
+#: C/limiter.page:47
 msgid "Oversampling"
 msgstr "Sovracampionamento"
 
 #. (itstool) path: item/p
-#: C/limiter.page:57
+#: C/limiter.page:49
 msgid ""
 "Increase the signal sampling to better detect the peaks. The signal is "
 "downsampled after processing."
@@ -930,12 +921,12 @@ msgstr ""
 "dell'elaborazione."
 
 #. (itstool) path: title/em
-#: C/limiter.page:64
-msgid "ASC"
-msgstr "ASC"
+#: C/limiter.page:56
+msgid "Automatic Smoothing Control"
+msgstr "Auto-Controllo Smussamento"
 
 #. (itstool) path: item/p
-#: C/limiter.page:66
+#: C/limiter.page:58
 msgid ""
 "When gain reduction is always needed ASC takes care of releasing to an "
 "average reduction level rather than reaching a reduction of 0 in the release "
@@ -946,12 +937,12 @@ msgstr ""
 "di rilascio."
 
 #. (itstool) path: title/em
-#: C/limiter.page:73
+#: C/limiter.page:65
 msgid "ASC Level"
 msgstr "Livello di ASC"
 
 #. (itstool) path: item/p
-#: C/limiter.page:75
+#: C/limiter.page:67
 msgid ""
 "Select how much the release time is affected by ASC, 0 means nearly no "
 "changes in release time while 1 produces higher release times."
@@ -959,6 +950,46 @@ msgstr ""
 "Seleziona quanto il tempo di rilascio è influenzato dall'ASC. 0 indica quasi "
 "nessun cambiamento nel tempo di rilascio, mentre 1 produce tempi di rilascio "
 "più elevati."
+
+#. (itstool) path: title/em
+#: C/limiter.page:74
+msgid "Automatic Leveling"
+msgstr "Livellamento Automatico"
+
+#. (itstool) path: item/p
+#: C/limiter.page:76
+msgid ""
+"Raises the signal level adding the absolute value of the limit amount after "
+"the compression stage is performed. Enabling this feature the volume is "
+"automatically leveled at 0 db."
+msgstr ""
+"Incrementa il segnale aggiungendo il valore assoluto della quantità limite "
+"in seguito alla fase di compressione. Abilitando questa funzionalità il "
+"volume è automaticamente livellato a 0 db."
+
+#. (itstool) path: title/em
+#: C/limiter.page:84
+msgid "Input Gain"
+msgstr "Guadagno in Ingresso"
+
+#. (itstool) path: item/p
+#: C/limiter.page:86
+msgid ""
+"Raises or decrease the signal level before it is sent to the compression "
+"stage."
+msgstr ""
+"Incrementa o decrementa il livello del segnale prima di essere processato."
+
+#. (itstool) path: title/em
+#: C/limiter.page:92
+msgid "Output Gain"
+msgstr "Guadagno in Uscita"
+
+#. (itstool) path: item/p
+#: C/limiter.page:94
+msgid "Raises or decrease the signal level after the compression stage."
+msgstr ""
+"Incrementa o decrementa il livello del segnale dopo essere stato processato."
 
 #. (itstool) path: page/title
 #: C/loudness.page:9
@@ -1033,20 +1064,6 @@ msgstr ""
 "Permette di selezionare la dimensione del frame della trasformata veloce di "
 "Fourier. Più grande è il frame, più precisa sarà la curva approssimata, ma "
 "il processo sarà più lento introducendo una latenza maggiore del plugin"
-
-#. (itstool) path: title/em
-#: C/loudness.page:56
-msgid "Reference Signal"
-msgstr "Segnale di Riferimento"
-
-#. (itstool) path: item/p
-#: C/loudness.page:58
-msgid ""
-"Turns on the reference sine wave with 0 dBFS amplitude and 1000 Hz frequency "
-"for callibration purposes."
-msgstr ""
-"Abilita l'onda sinusoidale di riferimento con ampiezza 0 dBFS e frequenza "
-"1000 Hz a scopo di calibrazione."
 
 #. (itstool) path: page/title
 #: C/multibandcompressor.page:9
@@ -3875,3 +3892,39 @@ msgstr ""
 "impostazione da caricare nelle opzioni del programma. Questa comunità non è "
 "come quella di Apple, Lenovo o Dell che ti offrono i driver Dolby Theatre "
 "per il tuo specifico sistema."
+
+#. (itstool) path: page/title
+#: C/rnnoise.page:9
+msgid "Noise Reduction"
+msgstr "Riduzione Rumore"
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:10
+msgid "Noise reduction is the process of removing noise from a signal."
+msgstr ""
+"La riduzione del rumore rappresenta quell'insieme di processi utili a "
+"sopprimere in parte o del tutto il rumore da un segnale audio."
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:13
+msgid ""
+"PulseEffects Noise Reduction is made on the library RNNoise which is based "
+"based on recurrent neural network, a class of artificial neural networks "
+"where connections between nodes form a directed graph along a temporal "
+"sequence. This allows it to exhibit temporal dynamic behavior."
+msgstr ""
+"Il plugin di riduzione del rumore di PulseEffects è stato realizzato sulla "
+"libreria RNNoise che si basa sulla rete neurale ricorrente, ovvero una "
+"classe di reti neurali artificiali dove le connessioni fra i nodi formano un "
+"grafico orientato lungo una sequenza temporale. Questo permette di mostrare "
+"il comportamento dinamico temporale."
+
+#. (itstool) path: page/p
+#: C/rnnoise.page:19
+msgid ""
+"Standard RNNoise Model is used and custom models can be imported to perform "
+"different types of noise reduction."
+msgstr ""
+"Il Modello Standard di RNNoise è utilizzato e ulteriori modelli "
+"personalizzati possono essere importati per eseguire diverse tipologie di "
+"riduzione del rumore."
