@@ -42,7 +42,7 @@
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="width-chars">8</property>
-            <property name="text" translatable="yes">1</property>
+            <property name="text">1</property>
             <property name="xalign">0.5</property>
             <property name="secondary-icon-name">pulseeffects-s-symbolic</property>
             <property name="secondary-icon-activatable">False</property>
