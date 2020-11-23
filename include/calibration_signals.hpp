@@ -31,7 +31,7 @@ class CalibrationSignals {
   CalibrationSignals(const CalibrationSignals&) = delete;
   auto operator=(const CalibrationSignals&) -> CalibrationSignals& = delete;
   CalibrationSignals(const CalibrationSignals&&) = delete;
-  auto operator=(const CalibrationSignals &&) -> CalibrationSignals& = delete;
+  auto operator=(const CalibrationSignals&&) -> CalibrationSignals& = delete;
   ~CalibrationSignals();
 
   std::string log_tag = "calibration_signals: ";
@@ -49,10 +49,10 @@ class CalibrationSignals {
 
   sigc::signal<void, std::vector<float>> new_spectrum;
 
-  void start();
-  void stop();
-  void set_freq(const double& value);
-  void set_volume(const double& value);
+  void start() const;
+  void stop() const;
+  void set_freq(const double& value) const;
+  void set_volume(const double& value) const;
 
  private:
   GstBus* bus = nullptr;

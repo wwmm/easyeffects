@@ -39,7 +39,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationS
   if (GST_OBJECT_NAME(message->src) == std::string("spectrum")) {
     const GstStructure* s = gst_message_get_structure(message);
 
-    const GValue* magnitudes;
+    const GValue* magnitudes = nullptr;
 
     magnitudes = gst_structure_get_value(s, "magnitude");
 
@@ -89,8 +89,8 @@ CalibrationSignals::CalibrationSignals() {
   sink = gst_element_factory_make("pulsesink", "sink");
   spectrum = gst_element_factory_make("spectrum", "spectrum");
 
-  auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
-  auto queue = gst_element_factory_make("queue", nullptr);
+  auto* capsfilter = gst_element_factory_make("capsfilter", nullptr);
+  auto* queue = gst_element_factory_make("queue", nullptr);
 
   // building the pipeline
 
@@ -100,9 +100,9 @@ CalibrationSignals::CalibrationSignals() {
 
   // setting a few parameters
 
-  auto props = gst_structure_from_string("props,application.name=PulseEffectsCalibration", nullptr);
+  auto* props = gst_structure_from_string("props,application.name=PulseEffectsCalibration", nullptr);
 
-  auto caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
+  auto* caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
 
   g_object_set(source, "wave", 0, nullptr);  // sine
   g_object_set(capsfilter, "caps", caps, nullptr);
@@ -148,18 +148,18 @@ CalibrationSignals::~CalibrationSignals() {
   util::debug(log_tag + "destroyed");
 }
 
-void CalibrationSignals::start() {
+void CalibrationSignals::start() const {
   gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
-void CalibrationSignals::stop() {
+void CalibrationSignals::stop() const {
   gst_element_set_state(pipeline, GST_STATE_NULL);
 }
 
-void CalibrationSignals::set_freq(const double& value) {
+void CalibrationSignals::set_freq(const double& value) const {
   g_object_set(source, "freq", value, nullptr);
 }
 
-void CalibrationSignals::set_volume(const double& value) {
+void CalibrationSignals::set_volume(const double& value) const {
   g_object_set(source, "volume", value, nullptr);
 }
