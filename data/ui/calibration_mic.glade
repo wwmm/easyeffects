@@ -6,9 +6,9 @@
     <property name="lower">1</property>
     <property name="upper">60</property>
     <property name="step-increment">1</property>
-    <property name="page-increment">1</property>
+    <property name="page-increment">5</property>
   </object>
-  <!-- n-columns=2 n-rows=2 -->
+  <!-- n-columns=1 n-rows=2 -->
   <object class="GtkGrid" id="widgets_grid">
     <property name="visible">True</property>
     <property name="can-focus">False</property>
@@ -16,94 +16,120 @@
     <property name="valign">center</property>
     <property name="margin-start">6</property>
     <property name="margin-end">6</property>
-    <property name="margin-top">6</property>
+    <property name="margin-top">12</property>
     <property name="margin-bottom">6</property>
-    <property name="row-spacing">12</property>
-    <property name="column-spacing">6</property>
-    <property name="column-homogeneous">True</property>
+    <property name="row-spacing">24</property>
     <child>
-      <object class="GtkLabel">
+      <!-- n-columns=1 n-rows=2 -->
+      <object class="GtkGrid">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="halign">end</property>
-        <property name="label" translatable="yes">Window</property>
-      </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkSpinButton" id="time_window">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="halign">start</property>
-        <property name="valign">center</property>
-        <property name="hexpand">True</property>
-        <property name="width-chars">10</property>
-        <property name="secondary-icon-name">pulseeffects-s-symbolic</property>
-        <property name="secondary-icon-activatable">False</property>
-        <property name="input-purpose">number</property>
-        <property name="adjustment">time_window_adjustment</property>
-        <property name="numeric">True</property>
-        <property name="update-policy">if-valid</property>
-      </object>
-      <packing>
-        <property name="left-attach">1</property>
-        <property name="top-attach">0</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkButton" id="measure_noise">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <signal name="clicked" handler="on_measure_noise_clicked" swapped="no"/>
+        <property name="halign">center</property>
+        <property name="row-spacing">6</property>
         <child>
-          <object class="GtkBox" id="measure_noise_button_widget">
+          <object class="GtkLabel">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Measure Noise</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkSpinner" id="spinner">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
+            <property name="label" translatable="yes">Window</property>
           </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSpinButton" id="time_window">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="width-chars">8</property>
+            <property name="text">1</property>
+            <property name="xalign">0.5</property>
+            <property name="secondary-icon-name">pulseeffects-s-symbolic</property>
+            <property name="secondary-icon-activatable">False</property>
+            <property name="input-purpose">number</property>
+            <property name="adjustment">time_window_adjustment</property>
+            <property name="numeric">True</property>
+            <property name="update-policy">if-valid</property>
+            <property name="value">1</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+          </packing>
         </child>
       </object>
       <packing>
         <property name="left-attach">0</property>
-        <property name="top-attach">1</property>
+        <property name="top-attach">0</property>
       </packing>
     </child>
     <child>
-      <object class="GtkToggleButton" id="subtract_noise">
-        <property name="label" translatable="yes">Subtract Noise</property>
+      <!-- n-columns=2 n-rows=1 -->
+      <object class="GtkGrid">
         <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <signal name="toggled" handler="on_subtract_noise_toggled" swapped="no"/>
+        <property name="can-focus">False</property>
+        <property name="column-spacing">24</property>
+        <property name="column-homogeneous">True</property>
+        <child>
+          <object class="GtkButton" id="measure_noise">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="clicked" handler="on_measure_noise_clicked" swapped="no"/>
+            <child>
+              <object class="GtkBox" id="measure_noise_button_widget">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="spacing">4</property>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">start</property>
+                    <property name="hexpand">True</property>
+                    <property name="label" translatable="yes">Measure Noise</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSpinner" id="spinner">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkToggleButton" id="subtract_noise">
+            <property name="label" translatable="yes">Subtract Noise</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+            <signal name="toggled" handler="on_subtract_noise_toggled" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">0</property>
+          </packing>
+        </child>
       </object>
       <packing>
-        <property name="left-attach">1</property>
+        <property name="left-attach">0</property>
         <property name="top-attach">1</property>
       </packing>
     </child>

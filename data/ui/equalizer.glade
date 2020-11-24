@@ -109,6 +109,13 @@
     <property name="step-increment">0.1</property>
     <property name="page-increment">1</property>
   </object>
+  <object class="GtkAdjustment" id="nbands">
+    <property name="lower">1</property>
+    <property name="upper">30</property>
+    <property name="value">30</property>
+    <property name="step-increment">1</property>
+    <property name="page-increment">3</property>
+  </object>
   <object class="GtkPopover" id="menu">
     <property name="can-focus">False</property>
     <child>
@@ -131,10 +138,12 @@
             <property name="transition-duration">250</property>
             <property name="transition-type">slide-left-right</property>
             <child>
-              <!-- n-columns=1 n-rows=2 -->
+              <!-- n-columns=1 n-rows=3 -->
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="halign">center</property>
+                <property name="margin-top">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="row-spacing">12</property>
@@ -178,7 +187,7 @@
                   </object>
                   <packing>
                     <property name="left-attach">0</property>
-                    <property name="top-attach">1</property>
+                    <property name="top-attach">2</property>
                   </packing>
                 </child>
                 <child>
@@ -186,18 +195,16 @@
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="hexpand">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="margin-bottom">6</property>
                     <property name="vexpand">True</property>
-                    <property name="column-spacing">24</property>
+                    <property name="column-spacing">32</property>
                     <child>
                       <!-- n-columns=1 n-rows=2 -->
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
                         <property name="row-spacing">6</property>
                         <child>
                           <object class="GtkLabel">
@@ -234,56 +241,30 @@
                       </packing>
                     </child>
                     <child>
-                      <!-- n-columns=2 n-rows=2 -->
+                      <!-- n-columns=1 n-rows=2 -->
                       <object class="GtkGrid">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">end</property>
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
-                        <property name="row-spacing">12</property>
-                        <property name="column-spacing">6</property>
+                        <property name="row-spacing">6</property>
                         <child>
                           <object class="GtkLabel">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="halign">end</property>
-                            <property name="label" translatable="yes">Split Channels</property>
-                          </object>
-                          <packing>
-                            <property name="left-attach">0</property>
-                            <property name="top-attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSwitch" id="split_channels">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="halign">start</property>
-                          </object>
-                          <packing>
-                            <property name="left-attach">1</property>
-                            <property name="top-attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">end</property>
                             <property name="label" translatable="yes">Mode</property>
                           </object>
                           <packing>
                             <property name="left-attach">0</property>
-                            <property name="top-attach">1</property>
+                            <property name="top-attach">0</property>
                           </packing>
                         </child>
                         <child>
                           <object class="GtkComboBoxText" id="mode">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="halign">start</property>
                             <items>
                               <item translatable="yes">IIR</item>
                               <item translatable="yes">FIR</item>
@@ -291,13 +272,50 @@
                             </items>
                           </object>
                           <packing>
-                            <property name="left-attach">1</property>
+                            <property name="left-attach">0</property>
                             <property name="top-attach">1</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
                         <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="left-attach">0</property>
+                    <property name="top-attach">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <!-- n-columns=2 n-rows=1 -->
+                  <object class="GtkGrid">
+                    <property name="visible">True</property>
+                    <property name="can-focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="column-spacing">6</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Split Channels</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkSwitch" id="split_channels">
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="halign">start</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
                         <property name="top-attach">0</property>
                       </packing>
                     </child>
@@ -318,6 +336,7 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="margin-top">6</property>
                 <property name="row-spacing">12</property>
                 <child>
                   <object class="GtkFrame">
@@ -367,7 +386,7 @@
                 </child>
                 <child>
                   <object class="GtkButton" id="import_apo">
-                    <property name="label" translatable="yes">Import APO Presets</property>
+                    <property name="label" translatable="yes">Apply APO Preset</property>
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>
@@ -406,13 +425,6 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkAdjustment" id="nbands">
-    <property name="lower">1</property>
-    <property name="upper">30</property>
-    <property name="value">30</property>
-    <property name="step-increment">1</property>
-    <property name="page-increment">3</property>
   </object>
   <object class="GtkAdjustment" id="output_gain">
     <property name="lower">-20</property>

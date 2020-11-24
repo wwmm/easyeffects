@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-21 22:17+0100\n"
+"POT-Creation-Date: 2020-11-23 21:53+0100\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -168,7 +168,7 @@ msgstr "Signal de test"
 msgid "Global Bypass"
 msgstr ""
 
-#: data/ui/application.glade:172 data/ui/equalizer.glade:300
+#: data/ui/application.glade:172 data/ui/equalizer.glade:331
 #: data/ui/general_settings.glade:289
 msgid "Settings"
 msgstr "Paramètres"
@@ -178,7 +178,7 @@ msgid "Help"
 msgstr ""
 
 #: data/ui/application.glade:217 data/ui/crossfeed.glade:240
-#: data/ui/equalizer.glade:357 data/ui/filter.glade:344
+#: data/ui/equalizer.glade:403 data/ui/filter.glade:344
 #: data/ui/reverb.glade:401 src/presets_menu_ui.cpp:133
 #: src/presets_menu_ui.cpp:285 src/presets_menu_ui.cpp:286
 #: src/presets_menu_ui.cpp:303 src/presets_menu_ui.cpp:304
@@ -194,7 +194,7 @@ msgstr "Gain d'entrée [dB]"
 #: data/ui/compressor.glade:214 data/ui/convolver.glade:218
 #: data/ui/crossfeed.glade:136 data/ui/crystalizer.glade:134
 #: data/ui/deesser.glade:182 data/ui/delay.glade:144
-#: data/ui/equalizer.glade:404 data/ui/equalizer_band.glade:186
+#: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:186
 #: data/ui/equalizer_band.glade:229 data/ui/exciter.glade:167
 #: data/ui/filter.glade:243 data/ui/general_settings.glade:298
 #: data/ui/gate.glade:172 data/ui/limiter.glade:166 data/ui/loudness.glade:174
@@ -247,7 +247,7 @@ msgstr ""
 #: data/ui/bass_enhancer.glade:596 data/ui/compressor.glade:1086
 #: data/ui/convolver.glade:575 data/ui/crossfeed.glade:391
 #: data/ui/crystalizer.glade:250 data/ui/deesser.glade:783
-#: data/ui/delay.glade:328 data/ui/equalizer.glade:636
+#: data/ui/delay.glade:328 data/ui/equalizer.glade:682
 #: data/ui/exciter.glade:596 data/ui/filter.glade:508 data/ui/gate.glade:689
 #: data/ui/limiter.glade:501 data/ui/loudness.glade:238
 #: data/ui/loudness.glade:431 data/ui/maximizer.glade:358
@@ -263,7 +263,7 @@ msgstr "Entrée"
 #: data/ui/bass_enhancer.glade:625 data/ui/compressor.glade:1099
 #: data/ui/convolver.glade:588 data/ui/crossfeed.glade:405
 #: data/ui/crystalizer.glade:263 data/ui/deesser.glade:797
-#: data/ui/delay.glade:341 data/ui/equalizer.glade:649
+#: data/ui/delay.glade:341 data/ui/equalizer.glade:695
 #: data/ui/exciter.glade:625 data/ui/filter.glade:521 data/ui/gate.glade:703
 #: data/ui/limiter.glade:636 data/ui/loudness.glade:271
 #: data/ui/loudness.glade:445 data/ui/maximizer.glade:372
@@ -305,7 +305,7 @@ msgstr "Amélioration audio"
 
 #: data/ui/bass_enhancer.glade:191 data/ui/compressor.glade:238
 #: data/ui/crossfeed.glade:160 data/ui/deesser.glade:206
-#: data/ui/delay.glade:168 data/ui/equalizer.glade:428
+#: data/ui/delay.glade:168 data/ui/equalizer.glade:474
 #: data/ui/exciter.glade:191 data/ui/filter.glade:267 data/ui/gate.glade:196
 #: data/ui/limiter.glade:190 data/ui/loudness.glade:143
 #: data/ui/maximizer.glade:163 data/ui/multiband_compressor.glade:331
@@ -384,79 +384,79 @@ msgstr "Limiteur d'entrée"
 msgid "Show Blocklisted Apps in Main Tab"
 msgstr ""
 
-#: data/ui/calibration_signals.glade:31 data/ui/equalizer_band.glade:157
+#: data/ui/calibration_signals.glade:32
+msgid "Sine"
+msgstr "Sinusoïde"
+
+#: data/ui/calibration_signals.glade:33
+msgid "Square"
+msgstr "Carrée"
+
+#: data/ui/calibration_signals.glade:34
+msgid "Saw"
+msgstr "Dent de scie"
+
+#: data/ui/calibration_signals.glade:35
+msgid "Triangle"
+msgstr "Triangle"
+
+#: data/ui/calibration_signals.glade:36
+#, fuzzy
+msgid "Silence"
+msgstr "Silence"
+
+#: data/ui/calibration_signals.glade:37
+msgid "White Noise"
+msgstr "Bruit blanc"
+
+#: data/ui/calibration_signals.glade:38
+msgid "Pink Noise"
+msgstr "Bruit rose"
+
+#: data/ui/calibration_signals.glade:39
+msgid "Sine Table"
+msgstr "Table sinusoïdale"
+
+#: data/ui/calibration_signals.glade:40
+msgid "Ticks"
+msgstr "Ticks"
+
+#: data/ui/calibration_signals.glade:41
+msgid "Gaussian Noise"
+msgstr "Bruit Gaussien"
+
+#: data/ui/calibration_signals.glade:42
+msgid "Red Noise"
+msgstr "Bruit rouge"
+
+#: data/ui/calibration_signals.glade:43
+msgid "Blue Noise"
+msgstr "Bruit bleu"
+
+#: data/ui/calibration_signals.glade:44
+msgid "Violet Noise"
+msgstr "Bruit violet"
+
+#: data/ui/calibration_signals.glade:64
+msgid "Volume"
+msgstr "Volume"
+
+#: data/ui/calibration_signals.glade:135 data/ui/equalizer_band.glade:157
 #: data/ui/filter.glade:394
 #, fuzzy
 msgid "Frequency"
 msgstr "Fréquence [Hz]"
 
-#: data/ui/calibration_signals.glade:63
-msgid "Volume"
-msgstr "Volume"
-
-#: data/ui/calibration_signals.glade:107
-msgid "Sine"
-msgstr "Sinusoïde"
-
-#: data/ui/calibration_signals.glade:108
-msgid "Square"
-msgstr "Carrée"
-
-#: data/ui/calibration_signals.glade:109
-msgid "Saw"
-msgstr "Dent de scie"
-
-#: data/ui/calibration_signals.glade:110
-msgid "Triangle"
-msgstr "Triangle"
-
-#: data/ui/calibration_signals.glade:111
-#, fuzzy
-msgid "Silence"
-msgstr "Silence"
-
-#: data/ui/calibration_signals.glade:112
-msgid "White Noise"
-msgstr "Bruit blanc"
-
-#: data/ui/calibration_signals.glade:113
-msgid "Pink Noise"
-msgstr "Bruit rose"
-
-#: data/ui/calibration_signals.glade:114
-msgid "Sine Table"
-msgstr "Table sinusoïdale"
-
-#: data/ui/calibration_signals.glade:115
-msgid "Ticks"
-msgstr "Ticks"
-
-#: data/ui/calibration_signals.glade:116
-msgid "Gaussian Noise"
-msgstr "Bruit Gaussien"
-
-#: data/ui/calibration_signals.glade:117
-msgid "Red Noise"
-msgstr "Bruit rouge"
-
-#: data/ui/calibration_signals.glade:118
-msgid "Blue Noise"
-msgstr "Bruit bleu"
-
-#: data/ui/calibration_signals.glade:119
-msgid "Violet Noise"
-msgstr "Bruit violet"
-
-#: data/ui/calibration_mic.glade:29
+#: data/ui/calibration_mic.glade:33
 #, fuzzy
 msgid "Window"
 msgstr "Fenêtre [s]"
 
-#: data/ui/calibration_mic.glade:70
+#: data/ui/calibration_mic.glade:90
 msgid "Measure Noise"
 msgstr "Mesurer le bruit"
 
-#: data/ui/calibration_mic.glade:99
+#: data/ui/calibration_mic.glade:119
 msgid "Subtract Noise"
 msgstr "Enlever le bruit"
 
@@ -597,7 +597,7 @@ msgid "Uniform"
 msgstr ""
 
 #: data/ui/compressor.glade:774 data/ui/deesser.glade:702
-#: data/ui/equalizer.glade:161 data/ui/equalizer_band.glade:83
+#: data/ui/equalizer.glade:257 data/ui/equalizer_band.glade:83
 #: data/ui/multiband_compressor.glade:412 data/ui/multiband_gate.glade:436
 #: data/ui/stereo_tools.glade:591 data/ui/webrtc.glade:483
 msgid "Mode"
@@ -614,12 +614,12 @@ msgid "Side"
 msgstr "Gain d'entrée [dB]"
 
 #: data/ui/compressor.glade:790 data/ui/delay.glade:247
-#: data/ui/equalizer.glade:566 data/ui/stereo_tools.glade:655
+#: data/ui/equalizer.glade:612 data/ui/stereo_tools.glade:655
 msgid "Left"
 msgstr ""
 
 #: data/ui/compressor.glade:791 data/ui/delay.glade:280
-#: data/ui/equalizer.glade:608 data/ui/stereo_tools.glade:724
+#: data/ui/equalizer.glade:654 data/ui/stereo_tools.glade:724
 msgid "Right"
 msgstr ""
 
@@ -862,38 +862,38 @@ msgstr "Relâche [ms]"
 msgid "Equalizer"
 msgstr "Égaliseur"
 
-#: data/ui/equalizer.glade:173
-msgid "Bands"
-msgstr ""
-
-#: data/ui/equalizer.glade:185
-msgid "Split Channels"
-msgstr ""
-
-#: data/ui/equalizer.glade:199
-msgid "IIR"
-msgstr ""
-
-#: data/ui/equalizer.glade:200
-msgid "FIR"
-msgstr ""
-
-#: data/ui/equalizer.glade:201
-msgid "FFT"
-msgstr ""
-
-#: data/ui/equalizer.glade:253
+#: data/ui/equalizer.glade:160
 msgid "Flat Response"
 msgstr "Réponse plane"
 
-#: data/ui/equalizer.glade:267
+#: data/ui/equalizer.glade:175
 msgid "Calculate Frequencies"
 msgstr ""
 
-#: data/ui/equalizer.glade:280
+#: data/ui/equalizer.glade:213
+msgid "Bands"
+msgstr ""
+
+#: data/ui/equalizer.glade:269
+msgid "IIR"
+msgstr ""
+
+#: data/ui/equalizer.glade:270
+msgid "FIR"
+msgstr ""
+
+#: data/ui/equalizer.glade:271
+msgid "FFT"
+msgstr ""
+
+#: data/ui/equalizer.glade:304
+msgid "Split Channels"
+msgstr ""
+
+#: data/ui/equalizer.glade:389
 #, fuzzy
-msgid "Import APO Presets"
-msgstr "Ouvrir préréglage"
+msgid "Apply APO Preset"
+msgstr "Préréglage"
 
 #: data/ui/equalizer_band.glade:64
 msgid "Bell"
@@ -974,7 +974,7 @@ msgstr "Largeur"
 msgid "Solo"
 msgstr ""
 
-#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:43
+#: data/ui/equalizer_preset_row.glade:39 data/ui/irs_row.glade:44
 msgid "Apply"
 msgstr ""
 
@@ -1426,10 +1426,6 @@ msgstr ""
 msgid "Bass Cut"
 msgstr ""
 
-#: data/ui/reverb.glade:576
-msgid "300"
-msgstr ""
-
 #: data/ui/reverb.glade:615
 msgid "Treble Cut"
 msgstr ""
@@ -1857,6 +1853,10 @@ msgstr "Général"
 #: src/pulse_settings_ui.cpp:168
 msgid "Pulseaudio"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Import APO Presets"
+#~ msgstr "Ouvrir préréglage"
 
 #, fuzzy
 #~ msgid "Input Gain"
