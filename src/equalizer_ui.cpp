@@ -22,8 +22,6 @@
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <cstddef>
-#include <cstring>
 #include <regex>
 
 namespace {
@@ -869,6 +867,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   std::regex re_quality_factor("\\s++q\\s++(\\d*+\\.?+\\d*+)", i);
 
   // get filter type
+
   std::regex_search(line, matches, re_filter_type);
 
   if (matches.size() != 2U) {
@@ -882,13 +881,14 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   }
 
   // get center frequency
+
   std::regex_search(line, matches, re_freq);
 
   if (matches.size() != 2U) {
     return false;
   }
 
-  filter.freq = std::stof(matches.str(1));
+  filter.freq = string_to_float_nolocale(matches.str(1));
 
   // get slope
 
@@ -901,7 +901,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
     if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
-      filter.slope_dB = std::stof(matches.str(1));
+      filter.slope_dB = string_to_float_nolocale(matches.str(1));
     }
   }
 
@@ -915,7 +915,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.gain = std::stof(matches.str(1));
+      filter.gain = string_to_float_nolocale(matches.str(1));
     }
   }
 
@@ -928,7 +928,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.quality_factor = std::stof(matches.str(1));
+      filter.quality_factor = string_to_float_nolocale(matches.str(1));
     }
   }
 

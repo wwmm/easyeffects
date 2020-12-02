@@ -107,6 +107,18 @@ auto PluginUiBase::level_to_str_showpos(const float& value, const int& places) -
   return msg.str();
 }
 
+auto PluginUiBase::string_to_float_nolocale(const std::string& value) -> float {
+  std::stringstream ss;
+  ss.imbue(std::locale("C"));
+
+  float fv = 0.0F;
+
+  ss << value;
+  ss >> fv;
+
+  return fv;
+}
+
 void PluginUiBase::on_new_input_level(const std::array<double, 2>& peak) {
   update_level(input_level_left, input_level_left_label, input_level_right, input_level_right_label, peak);
 }
