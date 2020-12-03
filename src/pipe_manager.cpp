@@ -20,17 +20,65 @@
 #include "pipe_manager.hpp"
 #include <glibmm.h>
 #include <memory>
+#include <string>
+#include "pipewire/core.h"
 #include "util.hpp"
+
+namespace {
+
+void registry_event_global(void* data,
+                           uint32_t id,
+                           uint32_t permissions,
+                           const char* type,
+                           uint32_t version,
+                           const struct spa_dict* props) {
+  printf("object: id:%u type:%s/%d\n", id, type, version);
+}
+
+void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
+  auto* pm = static_cast<PipeManager*>(data);
+
+  util::warning(pm->log_tag + "Remote error on id:" + std::to_string(id));
+  util::warning(pm->log_tag + "Remote error message:" + message);
+}
+
+void on_core_done(void* data, uint32_t id, int seq) {
+  auto* pm = static_cast<PipeManager*>(data);
+
+  util::warning(pm->log_tag + "connected to the core");
+
+  pw_thread_loop_signal(pm->thread_loop, false);
+}
+
+const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
+                                           .done = on_core_done,
+                                           .error = on_core_error};
+
+}  // namespace
 
 PipeManager::PipeManager() {
   pw_init(nullptr, nullptr);
 
+  util::debug(log_tag + "compiled with pipewire: " + pw_get_headers_version());
+  util::debug(log_tag + "linked to pipewire: " + pw_get_library_version());
+
   thread_loop = pw_thread_loop_new("pipe-thread-loop", nullptr);
 
-  pw_thread_loop_lock(thread_loop);
-  pw_thread_loop_start(thread_loop);
+  if (thread_loop == nullptr) {
+    util::error(log_tag + "could not create pipewire loop");
+  }
+
+  if (pw_thread_loop_start(thread_loop) != 0) {
+    util::error(log_tag + "could not start the loop");
+  }
 
   context = pw_context_new(pw_thread_loop_get_loop(thread_loop), nullptr, 0);
+
+  if (context == nullptr) {
+    util::error(log_tag + "could not create pipewire context");
+  }
+
+  pw_thread_loop_lock(thread_loop);
 
   core = pw_context_connect(context, nullptr, 0);
 
@@ -38,24 +86,15 @@ PipeManager::PipeManager() {
     util::error(log_tag + "context connection failed");
   }
 
-  registry = pw_core_get_registry(core, PW_VERSION_REGISTRY, 0);
+  spa_hook core_listener{};
 
-  spa_hook registry_listener{};
+  spa_zero(core_listener);
 
-  spa_zero(registry_listener);
+  pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  const struct pw_registry_events registry_events = {
-      PW_VERSION_REGISTRY_EVENTS,
-      .global = [](void* data, uint32_t id, uint32_t permissions, const char* type, uint32_t version,
-                   const struct spa_dict* props) { util::warning(type); },
-  };
+  pw_core_sync(core, PW_ID_CORE, 0);
 
-  pw_registry_add_listener(registry, &registry_listener, &registry_events, nullptr);
-
-  // pw_context_set_state_callback(context, &PipeManager::context_state_cb, this);
-  // pw_context_connect(context, nullptr, PA_CONTEXT_NOFAIL, nullptr);
-  // pa_threaded_mainloop_wait(thread_loop);
-  // pa_threaded_mainloop_unlock(thread_loop);
+  pw_thread_loop_wait(thread_loop);
 
   // if (context_ready) {
   //   get_server_info();
@@ -65,16 +104,14 @@ PipeManager::PipeManager() {
   // } else {
   //   util::error(log_tag + "context initialization failed");
   // }
+
+  pw_thread_loop_unlock(thread_loop);
 }
 
 PipeManager::~PipeManager() {
   unload_sinks();
 
   drain_context();
-
-  pw_proxy_destroy((struct pw_proxy*)registry);
-
-  util::debug(log_tag + "Destroying Pipewire registry...");
 
   pw_core_disconnect(core);
 
@@ -83,6 +120,10 @@ PipeManager::~PipeManager() {
   pw_context_destroy(context);
 
   util::debug(log_tag + "Destroying Pipewire context...");
+
+  pw_thread_loop_stop(thread_loop);
+
+  util::debug(log_tag + "Stopping Pipewire loop...");
 
   pw_thread_loop_destroy(thread_loop);
 

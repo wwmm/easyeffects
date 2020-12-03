@@ -105,6 +105,8 @@ class PipeManager {
   auto operator=(const PipeManager&&) -> PipeManager& = delete;
   ~PipeManager();
 
+  std::string log_tag = "pipe_manager: ";
+
   pw_thread_loop* thread_loop = nullptr;
 
   myServerInfo server_info;
@@ -154,13 +156,10 @@ class PipeManager {
   sigc::signal<void, std::shared_ptr<myClientInfo>> client_info;
 
  private:
-  std::string log_tag = "pipe_manager: ";
-
   bool context_ready = false;
 
   pw_core* core = nullptr;
   pw_context* context = nullptr;
-  pw_registry* registry = nullptr;
 
   std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
