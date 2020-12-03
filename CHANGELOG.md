@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [4.8.3]
+
 ### Added
 
 - New Noise Reduction plugin based on the RNNoise library.
