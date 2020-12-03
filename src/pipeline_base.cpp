@@ -334,7 +334,7 @@ auto bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_dat
 
 }  // namespace
 
-PipelineBase::PipelineBase(const std::string& tag, PulseManager* pulse_manager)
+PipelineBase::PipelineBase(const std::string& tag, PipeManager* pulse_manager)
     : log_tag(tag),
       pm(pulse_manager),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),

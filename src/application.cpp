@@ -24,7 +24,7 @@
 #include <gtkmm/messagedialog.h>
 #include "application_ui.hpp"
 #include "config.h"
-#include "pulse_manager.hpp"
+#include "pipe_manager.hpp"
 #include "util.hpp"
 
 Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gio::APPLICATION_HANDLES_COMMAND_LINE) {
@@ -122,7 +122,7 @@ void Application::on_startup() {
 
   create_actions();
 
-  pm = std::make_unique<PulseManager>();
+  pm = std::make_unique<PipeManager>();
   sie = std::make_unique<SinkInputEffects>(pm.get());
   soe = std::make_unique<SourceOutputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();

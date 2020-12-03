@@ -22,7 +22,7 @@
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      std::shared_ptr<AppInfo> info,
-                     PulseManager* pulse_manager)
+                     PipeManager* pulse_manager)
     : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
   // loading glade widgets
 

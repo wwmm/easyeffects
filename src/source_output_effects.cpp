@@ -66,14 +66,14 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutput
 
 }  // namespace
 
-SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : PipelineBase("soe: ", pulse_manager) {
+SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
   std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
   set_pulseaudio_props(pulse_props);
   set_output_sink_name("PulseEffects_mic");
-  set_caps(pm->mic_sink_info->rate);
+  // set_caps(pm->mic_sink_info->rate);
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
@@ -143,7 +143,7 @@ SourceOutputEffects::SourceOutputEffects(PulseManager* pulse_manager) : Pipeline
                                   "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
 
   webrtc = std::make_unique<Webrtc>(log_tag, "com.github.wwmm.pulseeffects.webrtc",
-                                    "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/", pm->mic_sink_info->rate);
+                                    "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/", 48000/* pm->mic_sink_info->rate*/);
 
   multiband_compressor =
       std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",

@@ -22,7 +22,7 @@
 #include <boost/process.hpp>
 #include "util.hpp"
 
-PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr)
+PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
   builder->get_widget("stack", stack);
   builder->get_widget("server_name", server_name);
@@ -107,7 +107,7 @@ PulseInfoUi::~PulseInfoUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto PulseInfoUi::add_to_stack(Gtk::Stack* stack, PulseManager* pm) -> PulseInfoUi* {
+auto PulseInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PulseInfoUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_info.glade");
 
   PulseInfoUi* ui;

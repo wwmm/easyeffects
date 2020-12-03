@@ -8,7 +8,7 @@ pulseeffects_sources = [
 	'pulse_settings_ui.cpp',
 	'blocklist_settings_ui.cpp',
 	'general_settings_ui.cpp',
-	'pulse_manager.cpp',
+	'pipe_manager.cpp',
 	'effects_base_ui.cpp',
 	'app_info_ui.cpp',
 	'pulse_info_ui.cpp',
@@ -98,7 +98,7 @@ pulseeffects_sources = [
 ]
 
 pulseeffects_deps = [
-	dependency('libpulse'),
+	dependency('libpipewire-0.3', version: '>=0.3'),
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('glibmm-2.4', version: '>=2.56'),
 	dependency('gtk+-3.0', version: '>=3.20'),

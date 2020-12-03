@@ -94,15 +94,15 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEff
 
 }  // namespace
 
-SinkInputEffects::SinkInputEffects(PulseManager* pulse_manager) : PipelineBase("sie: ", pulse_manager) {
+SinkInputEffects::SinkInputEffects(PipeManager* pulse_manager) : PipelineBase("sie: ", pulse_manager) {
   std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.sinkinputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
   set_pulseaudio_props(pulse_props);
 
-  set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
-  set_caps(pm->apps_sink_info->rate);
+  // set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
+  // set_caps(pm->apps_sink_info->rate);
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 

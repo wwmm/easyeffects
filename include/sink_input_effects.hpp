@@ -30,12 +30,12 @@
 #include "loudness.hpp"
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
+#include "pipe_manager.hpp"
 #include "pipeline_base.hpp"
-#include "pulse_manager.hpp"
 
 class SinkInputEffects : public PipelineBase {
  public:
-  SinkInputEffects(PulseManager* pulse_manager);
+  SinkInputEffects(PipeManager* pulse_manager);
   SinkInputEffects(const SinkInputEffects&) = delete;
   auto operator=(const SinkInputEffects&) -> SinkInputEffects& = delete;
   SinkInputEffects(const SinkInputEffects&&) = delete;

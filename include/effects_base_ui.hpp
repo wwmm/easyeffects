@@ -32,8 +32,8 @@
 #include <vector>
 #include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
+#include "pipe_manager.hpp"
 #include "preset_type.hpp"
-#include "pulse_manager.hpp"
 #include "spectrum_ui.hpp"
 #include "util.hpp"
 
@@ -41,11 +41,11 @@ class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                 Glib::RefPtr<Gio::Settings> refSettings,
-                PulseManager* pulse_manager);
+                PipeManager* pulse_manager);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
   EffectsBaseUi(const EffectsBaseUi&&) = delete;
-  auto operator=(const EffectsBaseUi &&) -> EffectsBaseUi& = delete;
+  auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
   virtual void on_app_added(std::shared_ptr<AppInfo> app_info) = 0;
@@ -62,7 +62,7 @@ class EffectsBaseUi {
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
 
-  PulseManager* pm = nullptr;
+  PipeManager* pm = nullptr;
 
   std::vector<AppInfoUi*> apps_list;
   std::vector<sigc::connection> connections;

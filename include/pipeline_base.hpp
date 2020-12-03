@@ -31,8 +31,8 @@
 #include "gate.hpp"
 #include "limiter.hpp"
 #include "maximizer.hpp"
+#include "pipe_manager.hpp"
 #include "pitch.hpp"
-#include "pulse_manager.hpp"
 #include "realtime_kit.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
@@ -40,7 +40,7 @@
 
 class PipelineBase {
  public:
-  PipelineBase(const std::string& tag, PulseManager* pulse_manager);
+  PipelineBase(const std::string& tag, PipeManager* pulse_manager);
   PipelineBase(const PipelineBase&) = delete;
   auto operator=(const PipelineBase&) -> PipelineBase& = delete;
   PipelineBase(const PipelineBase&&) = delete;
@@ -50,7 +50,7 @@ class PipelineBase {
   bool playing = false;
   std::string log_tag;
 
-  PulseManager* pm = nullptr;
+  PipeManager* pm = nullptr;
 
   GstElement *pipeline = nullptr, *source = nullptr, *queue_src = nullptr, *sink = nullptr, *src_type = nullptr,
              *effects_bin = nullptr, *identity_in = nullptr, *identity_out = nullptr, *spectrum = nullptr,

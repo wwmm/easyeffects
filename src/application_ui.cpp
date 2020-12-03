@@ -63,7 +63,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PulseSettingsUi::add_to_stack(stack_menu_settings, app);
   BlocklistSettingsUi::add_to_stack(stack_menu_settings);
-  pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
+  // pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed("visible-child",
                                   sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
@@ -197,15 +197,15 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-      null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
+      // null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
 
-      auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
+      // auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-      current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
+      // current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + " " + null_sink_rate.str() +
-                               " ⟶ float32le " + null_sink_rate.str() + " ⟶ " + sink->format + " " +
-                               current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
+      // headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + " " + null_sink_rate.str() +
+      //                          " ⟶ float32le " + null_sink_rate.str() + " ⟶ " + sink->format + " " +
+      //                          current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
       break;
     }
@@ -217,15 +217,15 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-      null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
+      // null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
 
-      auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+      // auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
 
-      current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+      // current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
 
-      headerbar_info->set_text(" ⟶ " + source->format + " " + current_dev_rate.str() + " ⟶ float32le " +
-                               null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + " " +
-                               null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+      // headerbar_info->set_text(" ⟶ " + source->format + " " + current_dev_rate.str() + " ⟶ float32le " +
+      //                          null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + " " +
+      //                          null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;
     }

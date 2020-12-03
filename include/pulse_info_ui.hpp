@@ -26,23 +26,23 @@
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
-#include "pulse_manager.hpp"
+#include "pipe_manager.hpp"
 
 class PulseInfoUi : public Gtk::Box {
  public:
-  PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr);
+  PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
   PulseInfoUi(const PulseInfoUi&) = delete;
   auto operator=(const PulseInfoUi&) -> PulseInfoUi& = delete;
   PulseInfoUi(const PulseInfoUi&&) = delete;
-  auto operator=(const PulseInfoUi &&) -> PulseInfoUi& = delete;
+  auto operator=(const PulseInfoUi&&) -> PulseInfoUi& = delete;
   ~PulseInfoUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, PulseManager* pm) -> PulseInfoUi*;
+  static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PulseInfoUi*;
 
  private:
   std::string log_tag = "pulse_info: ";
 
-  PulseManager* pm = nullptr;
+  PipeManager* pm = nullptr;
   Gtk::Stack* stack = nullptr;
 
   Gtk::Label *server_name = nullptr, *server_version = nullptr, *default_sink = nullptr, *default_source = nullptr,

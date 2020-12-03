@@ -17,12 +17,11 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PULSE_MANAGER_HPP
-#define PULSE_MANAGER_HPP
+#ifndef PIPE_MANAGER_HPP
+#define PIPE_MANAGER_HPP
 
 #include <glibmm.h>
-#include <pulse/pulseaudio.h>
-#include <pulse/thread-mainloop.h>
+#include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <array>
@@ -97,16 +96,16 @@ struct AppInfo {
 
 class ParseAppInfo;
 
-class PulseManager {
+class PipeManager {
  public:
-  PulseManager();
-  PulseManager(const PulseManager&) = delete;
-  auto operator=(const PulseManager&) -> PulseManager& = delete;
-  PulseManager(const PulseManager&&) = delete;
-  auto operator=(const PulseManager &&) -> PulseManager& = delete;
-  ~PulseManager();
+  PipeManager();
+  PipeManager(const PipeManager&) = delete;
+  auto operator=(const PipeManager&) -> PipeManager& = delete;
+  PipeManager(const PipeManager&&) = delete;
+  auto operator=(const PipeManager&&) -> PipeManager& = delete;
+  ~PipeManager();
 
-  pa_threaded_mainloop* main_loop = nullptr;
+  pw_thread_loop* thread_loop = nullptr;
 
   myServerInfo server_info;
   std::shared_ptr<mySinkInfo> apps_sink_info;
@@ -131,7 +130,7 @@ class PulseManager {
   void set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_source_output_mute(const std::string& name, uint idx, bool state);
   void get_sink_input_info(uint idx);
-  void update_server_info(const pa_server_info* info);
+  // void update_server_info(const pa_server_info* info);
   void get_modules_info();
   void get_clients_info();
   void set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value);
@@ -155,12 +154,13 @@ class PulseManager {
   sigc::signal<void, std::shared_ptr<myClientInfo>> client_info;
 
  private:
-  std::string log_tag = "pulse_manager: ";
+  std::string log_tag = "pipe_manager: ";
 
   bool context_ready = false;
 
-  pa_mainloop_api* main_loop_api = nullptr;
-  pa_context* context = nullptr;
+  pw_core* core = nullptr;
+  pw_context* context = nullptr;
+  pw_registry* registry = nullptr;
 
   std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
@@ -174,7 +174,7 @@ class PulseManager {
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",
                                                  "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
-  static void context_state_cb(pa_context* ctx, void* data);
+  static void context_state_cb(pw_context* ctx, void* data);
 
   void subscribe_to_events();
 
@@ -198,23 +198,23 @@ class PulseManager {
 
   void drain_context();
 
-  void new_app(const pa_sink_input_info* info);
+  // void new_app(const pa_sink_input_info* info);
 
-  void new_app(const pa_source_output_info* info);
+  // void new_app(const pa_source_output_info* info);
 
-  void changed_app(const pa_sink_input_info* info);
+  // void changed_app(const pa_sink_input_info* info);
 
-  void changed_app(const pa_source_output_info* info);
+  // void changed_app(const pa_source_output_info* info);
 
   static void print_app_info(const std::shared_ptr<AppInfo>& info);
 
-  auto app_is_connected(const pa_sink_input_info* info) -> bool;
+  // auto app_is_connected(const pa_sink_input_info* info) -> bool;
 
-  auto app_is_connected(const pa_source_output_info* info) -> bool;
+  // auto app_is_connected(const pa_source_output_info* info) -> bool;
 
-  static auto get_latency(const pa_sink_input_info* info) -> uint { return info->sink_usec; }
+  // static auto get_latency(const pa_sink_input_info* info) -> uint { return info->sink_usec; }
 
-  static auto get_latency(const pa_source_output_info* info) -> uint { return info->source_usec; }
+  // static auto get_latency(const pa_source_output_info* info) -> uint { return info->source_usec; }
 
   template <typename T>
   auto parse_app_info(const T& info) -> std::shared_ptr<AppInfo> {
@@ -224,111 +224,113 @@ class PulseManager {
     std::string app_id;
     auto ai = std::make_shared<AppInfo>();
     bool forbidden_app = false;
+    /*
+        auto prop = pa_proplist_gets(info->proplist, "application.name");
 
-    auto prop = pa_proplist_gets(info->proplist, "application.name");
+        if (prop != nullptr) {
+          app_name = prop;
 
-    if (prop != nullptr) {
-      app_name = prop;
+          forbidden_app =
+              std::find(std::begin(blocklist_apps), std::end(blocklist_apps), app_name) != std::end(blocklist_apps);
 
-      forbidden_app =
-          std::find(std::begin(blocklist_apps), std::end(blocklist_apps), app_name) != std::end(blocklist_apps);
-
-      if (forbidden_app) {
-        return nullptr;
-      }
-    }
-
-    prop = pa_proplist_gets(info->proplist, "media.name");
-
-    if (prop != nullptr) {
-      media_name = prop;
-
-      if (app_name.empty()) {
-        app_name = media_name;
-      }
-
-      forbidden_app = std::find(std::begin(blocklist_media_name), std::end(blocklist_media_name), media_name) !=
-                      std::end(blocklist_media_name);
-
-      if (forbidden_app) {
-        return nullptr;
-      }
-    }
-
-    prop = pa_proplist_gets(info->proplist, "media.role");
-
-    if (prop != nullptr) {
-      media_role = prop;
-
-      forbidden_app = std::find(std::begin(blocklist_media_role), std::end(blocklist_media_role), media_role) !=
-                      std::end(blocklist_media_role);
-
-      if (forbidden_app) {
-        return nullptr;
-      }
-    }
-
-    prop = pa_proplist_gets(info->proplist, "application.id");
-
-    if (prop != nullptr) {
-      app_id = prop;
-
-      forbidden_app =
-          std::find(std::begin(blocklist_app_id), std::end(blocklist_app_id), app_id) != std::end(blocklist_app_id);
-
-      if (forbidden_app) {
-        return nullptr;
-      }
-    }
-
-    prop = pa_proplist_gets(info->proplist, "application.icon_name");
-
-    std::string icon_name;
-
-    if (prop != nullptr) {
-      icon_name = prop;
-    } else {
-      prop = pa_proplist_gets(info->proplist, "media.icon_name");
-
-      if (prop != nullptr) {
-        if (std::strcmp(prop, "audio-card-bluetooth") ==
-            0) {  // there is no GTK icon with this name given by Pulseaudio =/
-        } else {
-          icon_name = "bluetooth-symbolic";
+          if (forbidden_app) {
+            return nullptr;
+          }
         }
-      } else {
-        icon_name = "audio-x-generic-symbolic";
-      }
-    }
 
-    // Connection flag: it specifies only the primary state that can be enabled/disabled by the user
-    ai->connected = app_is_connected(info);
+        prop = pa_proplist_gets(info->proplist, "media.name");
 
-    // Initialize visibility to true, it will be properly updated forward
-    ai->visible = true;
+        if (prop != nullptr) {
+          media_name = prop;
 
-    // linear volume
-    ai->volume = 100.0 * (static_cast<double>(pa_cvolume_max(&info->volume)) / PA_VOLUME_NORM);
+          if (app_name.empty()) {
+            app_name = media_name;
+          }
 
-    if (info->resample_method) {
-      ai->resampler = info->resample_method;
-    } else {
-      ai->resampler = "none";
-    }
+          forbidden_app = std::find(std::begin(blocklist_media_name), std::end(blocklist_media_name), media_name) !=
+                          std::end(blocklist_media_name);
 
-    ai->format = pa_sample_format_to_string(info->sample_spec.format);
+          if (forbidden_app) {
+            return nullptr;
+          }
+        }
 
-    ai->index = info->index;
-    ai->name = app_name;
-    ai->media_name = media_name;
-    ai->icon_name = icon_name;
-    ai->channels = info->volume.channels;
-    ai->rate = info->sample_spec.rate;
-    ai->mute = info->mute;
-    ai->buffer = info->buffer_usec;
-    ai->latency = get_latency(info);
-    ai->corked = info->corked;
-    ai->wants_to_play = ai->connected && !ai->corked;
+        prop = pa_proplist_gets(info->proplist, "media.role");
+
+        if (prop != nullptr) {
+          media_role = prop;
+
+          forbidden_app = std::find(std::begin(blocklist_media_role), std::end(blocklist_media_role), media_role) !=
+                          std::end(blocklist_media_role);
+
+          if (forbidden_app) {
+            return nullptr;
+          }
+        }
+
+        prop = pa_proplist_gets(info->proplist, "application.id");
+
+        if (prop != nullptr) {
+          app_id = prop;
+
+          forbidden_app =
+              std::find(std::begin(blocklist_app_id), std::end(blocklist_app_id), app_id) != std::end(blocklist_app_id);
+
+          if (forbidden_app) {
+            return nullptr;
+          }
+        }
+
+        prop = pa_proplist_gets(info->proplist, "application.icon_name");
+
+        std::string icon_name;
+
+        if (prop != nullptr) {
+          icon_name = prop;
+        } else {
+          prop = pa_proplist_gets(info->proplist, "media.icon_name");
+
+          if (prop != nullptr) {
+            if (std::strcmp(prop, "audio-card-bluetooth") ==
+                0) {  // there is no GTK icon with this name given by Pulseaudio =/
+            } else {
+              icon_name = "bluetooth-symbolic";
+            }
+          } else {
+            icon_name = "audio-x-generic-symbolic";
+          }
+        }
+
+        // Connection flag: it specifies only the primary state that can be enabled/disabled by the user
+        ai->connected = app_is_connected(info);
+
+        // Initialize visibility to true, it will be properly updated forward
+        ai->visible = true;
+
+        // linear volume
+        ai->volume = 100.0 * (static_cast<double>(pa_cvolume_max(&info->volume)) / PA_VOLUME_NORM);
+
+        if (info->resample_method) {
+          ai->resampler = info->resample_method;
+        } else {
+          ai->resampler = "none";
+        }
+
+        ai->format = pa_sample_format_to_string(info->sample_spec.format);
+
+        ai->index = info->index;
+        ai->name = app_name;
+        ai->media_name = media_name;
+        ai->icon_name = icon_name;
+        ai->channels = info->volume.channels;
+        ai->rate = info->sample_spec.rate;
+        ai->mute = info->mute;
+        ai->buffer = info->buffer_usec;
+        ai->latency = get_latency(info);
+        ai->corked = info->corked;
+        ai->wants_to_play = ai->connected && !ai->corked;
+
+        */
 
     return ai;
   }

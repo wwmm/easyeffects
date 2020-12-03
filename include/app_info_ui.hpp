@@ -20,6 +20,7 @@
 #ifndef APP_INFO_UI_HPP
 #define APP_INFO_UI_HPP
 
+#include <glibmm/i18n.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/checkbutton.h>
 #include <gtkmm/grid.h>
@@ -27,12 +28,11 @@
 #include <gtkmm/label.h>
 #include <gtkmm/scale.h>
 #include <gtkmm/switch.h>
-#include <glibmm/i18n.h>
 #include <gtkmm/togglebutton.h>
 #include "blocklist_settings_ui.hpp"
+#include "pipe_manager.hpp"
 #include "plugin_ui_base.hpp"
 #include "preset_type.hpp"
-#include "pulse_manager.hpp"
 #include "util.hpp"
 
 class AppInfoUi : public Gtk::Grid {
@@ -40,11 +40,11 @@ class AppInfoUi : public Gtk::Grid {
   AppInfoUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
             std::shared_ptr<AppInfo> info,
-            PulseManager* pulse_manager);
+            PipeManager* pulse_manager);
   AppInfoUi(const AppInfoUi&) = delete;
   auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
   AppInfoUi(const AppInfoUi&&) = delete;
-  auto operator=(const AppInfoUi &&) -> AppInfoUi& = delete;
+  auto operator=(const AppInfoUi&&) -> AppInfoUi& = delete;
   ~AppInfoUi() override;
 
   Gtk::Switch* enable = nullptr;
@@ -82,7 +82,7 @@ class AppInfoUi : public Gtk::Grid {
   sigc::connection blocklist_connection;
   sigc::connection timeout_connection;
 
-  PulseManager* pm = nullptr;
+  PipeManager* pm = nullptr;
 
   void init_widgets();
 

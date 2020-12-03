@@ -23,8 +23,8 @@
 #include <giomm/settings.h>
 #include <gtkmm/application.h>
 #include <memory>
+#include "pipe_manager.hpp"
 #include "presets_manager.hpp"
-#include "pulse_manager.hpp"
 #include "sink_input_effects.hpp"
 #include "source_output_effects.hpp"
 
@@ -34,13 +34,13 @@ class Application : public Gtk::Application {
   Application(const Application&) = delete;
   auto operator=(const Application&) -> Application& = delete;
   Application(const Application&&) = delete;
-  auto operator=(const Application &&) -> Application& = delete;
+  auto operator=(const Application&&) -> Application& = delete;
   ~Application() override;
 
   static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
 
-  std::unique_ptr<PulseManager> pm;
+  std::unique_ptr<PipeManager> pm;
   std::unique_ptr<SinkInputEffects> sie;
   std::unique_ptr<SourceOutputEffects> soe;
   std::unique_ptr<PresetsManager> presets_manager;

@@ -23,7 +23,7 @@
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
-                             PulseManager* pulse_manager)
+                             PipeManager* pulse_manager)
     : settings(std::move(refSettings)), pm(pulse_manager) {
   // loading glade widgets
 

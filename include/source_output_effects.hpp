@@ -22,17 +22,17 @@
 
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
+#include "pipe_manager.hpp"
 #include "pipeline_base.hpp"
-#include "pulse_manager.hpp"
 #include "webrtc.hpp"
 
 class SourceOutputEffects : public PipelineBase {
  public:
-  SourceOutputEffects(PulseManager* pulse_manager);
+  SourceOutputEffects(PipeManager* pulse_manager);
   SourceOutputEffects(const SourceOutputEffects&) = delete;
   auto operator=(const SourceOutputEffects&) -> SourceOutputEffects& = delete;
   SourceOutputEffects(const SourceOutputEffects&&) = delete;
-  auto operator=(const SourceOutputEffects &&) -> SourceOutputEffects& = delete;
+  auto operator=(const SourceOutputEffects&&) -> SourceOutputEffects& = delete;
   ~SourceOutputEffects() override;
 
   std::unique_ptr<Webrtc> webrtc;
