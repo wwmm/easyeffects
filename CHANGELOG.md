@@ -18,6 +18,7 @@
 ### Fixed
 
 - Values outside GTK widgets are now shown according to system locale settings.
+- Applying APO Equalizer preset when locale is different than "C" is now working properly.
 - Equalizer and Crystalizer UI redesigned: band wrapper is extended to fit all the available horizontal space; homogeneous
   property has been applied to get the same space between band sliders.
 - App info and plugin interfaces made scrollable: now PulseEffects window does not change its size when switching beetween

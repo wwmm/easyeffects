@@ -71,6 +71,7 @@ class PluginUiBase {
   static auto level_to_str(const float& value, const int& places) -> std::string;
   static auto level_to_str_showpos(const double& value, const int& places) -> std::string;
   static auto level_to_str_showpos(const float& value, const int& places) -> std::string;
+  static auto string_to_float_nolocale(const std::string& value) -> float;
 
   // reset plugin method
   virtual void reset() = 0;
