@@ -22,18 +22,24 @@
 #include <memory>
 #include <string>
 #include "pipewire/core.h"
+#include "spa/utils/hook.h"
 #include "util.hpp"
 
 namespace {
 
-void registry_event_global(void* data,
-                           uint32_t id,
-                           uint32_t permissions,
-                           const char* type,
-                           uint32_t version,
-                           const struct spa_dict* props) {
+void on_registry_global(void* data,
+                        uint32_t id,
+                        uint32_t permissions,
+                        const char* type,
+                        uint32_t version,
+                        const struct spa_dict* props) {
   printf("object: id:%u type:%s/%d\n", id, type, version);
 }
+
+const struct pw_registry_events registry_events = {
+    PW_VERSION_REGISTRY_EVENTS,
+    .global = on_registry_global,
+};
 
 void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
   auto* pm = static_cast<PipeManager*>(data);
@@ -42,15 +48,23 @@ void on_core_error(void* data, uint32_t id, int seq, int res, const char* messag
   util::warning(pm->log_tag + "Remote error message:" + message);
 }
 
+void on_core_info(void* data, const struct pw_core_info* info) {
+  auto* pm = static_cast<PipeManager*>(data);
+
+  util::debug(pm->log_tag + "core version: " + info->version);
+  util::debug(pm->log_tag + "core name: " + info->name);
+}
+
 void on_core_done(void* data, uint32_t id, int seq) {
   auto* pm = static_cast<PipeManager*>(data);
 
-  util::warning(pm->log_tag + "connected to the core");
+  util::debug(pm->log_tag + "connected to the core");
 
   pw_thread_loop_signal(pm->thread_loop, false);
 }
 
 const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
+                                           .info = on_core_info,
                                            .done = on_core_done,
                                            .error = on_core_error};
 
@@ -59,10 +73,13 @@ const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
 PipeManager::PipeManager() {
   pw_init(nullptr, nullptr);
 
+  spa_zero(core_listener);
+  spa_zero(registry_listener);
+
   util::debug(log_tag + "compiled with pipewire: " + pw_get_headers_version());
   util::debug(log_tag + "linked to pipewire: " + pw_get_library_version());
 
-  thread_loop = pw_thread_loop_new("pipe-thread-loop", nullptr);
+  thread_loop = pw_thread_loop_new("pipewire-thread", nullptr);
 
   if (thread_loop == nullptr) {
     util::error(log_tag + "could not create pipewire loop");
@@ -72,13 +89,13 @@ PipeManager::PipeManager() {
     util::error(log_tag + "could not start the loop");
   }
 
+  pw_thread_loop_lock(thread_loop);
+
   context = pw_context_new(pw_thread_loop_get_loop(thread_loop), nullptr, 0);
 
   if (context == nullptr) {
     util::error(log_tag + "could not create pipewire context");
   }
-
-  pw_thread_loop_lock(thread_loop);
 
   core = pw_context_connect(context, nullptr, 0);
 
@@ -86,9 +103,13 @@ PipeManager::PipeManager() {
     util::error(log_tag + "context connection failed");
   }
 
-  spa_hook core_listener{};
+  registry = pw_core_get_registry(core, PW_VERSION_REGISTRY, 0);
 
-  spa_zero(core_listener);
+  if (registry == nullptr) {
+    util::error(log_tag + "could not get the registry");
+  }
+
+  pw_registry_add_listener(registry, &registry_listener, &registry_events, this);
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
@@ -96,38 +117,28 @@ PipeManager::PipeManager() {
 
   pw_thread_loop_wait(thread_loop);
 
-  // if (context_ready) {
   //   get_server_info();
   //   load_apps_sink();
   //   load_mic_sink();
   //   subscribe_to_events();
-  // } else {
-  //   util::error(log_tag + "context initialization failed");
-  // }
 
   pw_thread_loop_unlock(thread_loop);
 }
 
 PipeManager::~PipeManager() {
-  unload_sinks();
+  util::debug(log_tag + "Destroying Pipewire registry...");
+  pw_proxy_destroy((struct pw_proxy*)registry);
 
-  drain_context();
-
-  pw_core_disconnect(core);
+  spa_hook_remove(&core_listener);
 
   util::debug(log_tag + "Disconnecting Pipewire core...");
-
-  pw_context_destroy(context);
+  pw_core_disconnect(core);
 
   util::debug(log_tag + "Destroying Pipewire context...");
-
-  pw_thread_loop_stop(thread_loop);
-
-  util::debug(log_tag + "Stopping Pipewire loop...");
-
-  pw_thread_loop_destroy(thread_loop);
+  pw_context_destroy(context);
 
   util::debug(log_tag + "Destroying Pipewire loop...");
+  pw_thread_loop_destroy(thread_loop);
 }
 
 void PipeManager::context_state_cb(pw_context* ctx, void* data) {
@@ -670,110 +681,6 @@ auto PipeManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
   util::critical(log_tag + "could not get default source info");
 
   return nullptr;
-}
-
-auto PipeManager::load_module(const std::string& name, const std::string& argument) -> bool {
-  // struct Data {
-  //   bool status;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {false, this};
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_load_module(
-  //     context, name.c_str(), argument.c_str(),
-  //     [](auto c, auto idx, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       d->status = idx != PA_INVALID_INDEX;
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-
-  // return data.status;
-}
-
-auto PipeManager::load_sink(const std::string& name, const std::string& description, uint rate)
-    -> std::shared_ptr<mySinkInfo> {
-  auto si = get_sink_info(name);
-
-  // if (si == nullptr) {  // sink is not loaded
-  //   std::string argument =
-  //       "sink_name=" + name + " " + "sink_properties=" + description + "device.class=\"sound\"" + " " +
-  //       "norewinds=1";
-
-  //   bool ok = load_module("module-null-sink", argument);
-
-  //   if (ok) {
-  //     util::debug(log_tag + "loaded module-null-sink: " + argument);
-
-  //     set_sink_volume_by_name(name, 2, 100);
-
-  //     si = get_sink_info(name);
-  //   } else {
-  //     util::warning(
-  //         log_tag + "Pulseaudio " + server_info.server_version +
-  //         " does not support norewinds. Loading the sink the old way. Changing apps volume will cause cracklings");
-
-  //     argument = "sink_name=" + name + " " + "sink_properties=" + description + "device.class=\"sound\"" + " " +
-  //                "channels=2" + " " + "rate=" + std::to_string(rate);
-
-  //     ok = load_module("module-null-sink", argument);
-
-  //     if (ok) {
-  //       util::debug(log_tag + "loaded module-null-sink: " + argument);
-
-  //       set_sink_volume_by_name(name, 2, 100);
-
-  //       si = get_sink_info(name);
-  //     } else {
-  //       util::critical(log_tag + "failed to load module-null-sink with argument: " + argument);
-  //     }
-  //   }
-  // }
-
-  return si;
-}
-
-void PipeManager::load_apps_sink() {
-  util::debug(log_tag + "loading Pulseeffects applications output sink...");
-
-  auto info = get_default_sink_info();
-
-  if (info != nullptr) {
-    std::string name = "PulseEffects_apps";
-    std::string description = "device.description=\"PulseEffects(apps)\"";
-    auto rate = info->rate;
-
-    apps_sink_info = load_sink(name, description, rate);
-  }
-}
-
-void PipeManager::load_mic_sink() {
-  util::debug(log_tag + "loading Pulseeffects microphone output sink...");
-
-  auto info = get_default_source_info();
-
-  if (info != nullptr) {
-    std::string name = "PulseEffects_mic";
-    std::string description = "device.description=\"PulseEffects(mic)\"";
-    auto rate = info->rate;
-
-    mic_sink_info = load_sink(name, description, rate);
-  }
 }
 
 void PipeManager::find_sink_inputs() {
@@ -1447,82 +1354,6 @@ void PipeManager::get_clients_info() {
   // }
 
   // pa_threaded_mainloop_unlock(thread_loop);
-}
-
-void PipeManager::unload_module(uint idx) {
-  // struct Data {
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {idx, this};
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_unload_module(
-  //     context, idx,
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "module " + std::to_string(d->idx) + " unloaded");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to unload module " + std::to_string(d->idx));
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-  // } else {
-  //   util::critical(log_tag + "failed to unload module: " + std::to_string(idx));
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-}
-
-void PipeManager::unload_sinks() {
-  // util::debug(log_tag + "unloading PulseEffects sinks...");
-
-  // unload_module(apps_sink_info->owner_module);
-  // unload_module(mic_sink_info->owner_module);
-}
-
-void PipeManager::drain_context() {
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_drain(
-  //     context,
-  //     [](auto c, auto d) {
-  //       auto* pm = static_cast<PipeManager*>(d);
-
-  //       if (pw_context_get_state(c) == PA_CONTEXT_READY) {
-  //         pa_threaded_mainloop_signal(pm->thread_loop, false);
-  //       }
-  //     },
-  //     this);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-
-  //   pa_threaded_mainloop_unlock(thread_loop);
-
-  //   util::debug(log_tag + "Context was drained");
-  // } else {
-  //   pa_threaded_mainloop_unlock(thread_loop);
-
-  //   util::debug(log_tag + "Context did not need draining");
-  // }
 }
 
 // void PipeManager::new_app(const pa_sink_input_info* info) {

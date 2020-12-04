@@ -28,6 +28,7 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
+#include "pipewire/core.h"
 
 struct myServerInfo {
   std::string server_name;
@@ -160,6 +161,9 @@ class PipeManager {
 
   pw_core* core = nullptr;
   pw_context* context = nullptr;
+  pw_registry* registry = nullptr;
+
+  spa_hook core_listener{}, registry_listener{};
 
   std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
@@ -182,20 +186,6 @@ class PipeManager {
   auto get_default_sink_info() -> std::shared_ptr<mySinkInfo>;
 
   auto get_default_source_info() -> std::shared_ptr<mySourceInfo>;
-
-  auto load_sink(const std::string& name, const std::string& description, uint rate) -> std::shared_ptr<mySinkInfo>;
-
-  void load_apps_sink();
-
-  void load_mic_sink();
-
-  auto load_module(const std::string& name, const std::string& argument) -> bool;
-
-  void unload_module(uint idx);
-
-  void unload_sinks();
-
-  void drain_context();
 
   // void new_app(const pa_sink_input_info* info);
 
