@@ -109,6 +109,10 @@ class PipeManager {
   std::string log_tag = "pipe_manager: ";
 
   pw_thread_loop* thread_loop = nullptr;
+  pw_registry* registry = nullptr;
+  pw_node* node = nullptr;
+
+  spa_hook node_listener{};
 
   myServerInfo server_info;
   std::shared_ptr<mySinkInfo> apps_sink_info;
@@ -161,7 +165,6 @@ class PipeManager {
 
   pw_core* core = nullptr;
   pw_context* context = nullptr;
-  pw_registry* registry = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
 

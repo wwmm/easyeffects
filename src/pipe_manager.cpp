@@ -22,10 +22,30 @@
 #include <memory>
 #include <string>
 #include "pipewire/core.h"
+#include "pipewire/keys.h"
+#include "pipewire/node.h"
+#include "pipewire/port.h"
 #include "spa/utils/hook.h"
 #include "util.hpp"
 
 namespace {
+
+void on_node_info(void* object, const struct pw_node_info* info) {
+  auto* pm = static_cast<PipeManager*>(object);
+
+  const struct spa_dict_item* item = nullptr;
+
+  spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
+
+  spa_hook_remove(&pm->node_listener);
+
+  pw_proxy_destroy((struct pw_proxy*)pm->node);
+}
+
+const struct pw_node_events node_events = {
+    PW_VERSION_NODE_EVENTS,
+    .info = on_node_info,
+};
 
 void on_registry_global(void* data,
                         uint32_t id,
@@ -33,13 +53,27 @@ void on_registry_global(void* data,
                         const char* type,
                         uint32_t version,
                         const struct spa_dict* props) {
-  printf("object: id:%u type:%s/%d\n", id, type, version);
-}
+  auto* pm = static_cast<PipeManager*>(data);
 
-const struct pw_registry_events registry_events = {
-    PW_VERSION_REGISTRY_EVENTS,
-    .global = on_registry_global,
-};
+  if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
+    // printf("node id:%u\n", id);
+
+    const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
+
+    if (path != nullptr) {
+      printf("node path: %s\n", spa_dict_lookup(props, PW_KEY_OBJECT_PATH));
+      printf("node name: %s\n", spa_dict_lookup(props, PW_KEY_NODE_NAME));
+    }
+
+    // pm->node = static_cast<pw_node*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, 0));
+
+    // pw_node_add_listener(pm->node, &pm->node_listener, &node_events, data);
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
+    // printf("port id:%u\n", id);
+  }
+}
 
 void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
   auto* pm = static_cast<PipeManager*>(data);
@@ -68,6 +102,11 @@ const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
                                            .done = on_core_done,
                                            .error = on_core_error};
 
+const struct pw_registry_events registry_events = {
+    PW_VERSION_REGISTRY_EVENTS,
+    .global = on_registry_global,
+};
+
 }  // namespace
 
 PipeManager::PipeManager() {
@@ -75,6 +114,7 @@ PipeManager::PipeManager() {
 
   spa_zero(core_listener);
   spa_zero(registry_listener);
+  spa_zero(node_listener);
 
   util::debug(log_tag + "compiled with pipewire: " + pw_get_headers_version());
   util::debug(log_tag + "linked to pipewire: " + pw_get_library_version());
