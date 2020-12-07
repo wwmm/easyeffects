@@ -30,37 +30,16 @@
 #include <memory>
 #include "pipewire/core.h"
 
-struct myServerInfo {
-  std::string server_name;
-  std::string server_version;
-  std::string default_sink_name;
-  std::string default_source_name;
-  std::string protocol;
-  std::string format;
-  std::string channel_map;
-  uint rate;
-  uint8_t channels;
-};
-
 struct mySinkInfo {
   std::string name;
   uint index;
   std::string description;
-  uint owner_module;
-  uint monitor_source;
-  std::string monitor_source_name;
-  uint rate;
-  std::string format;
-  std::string active_port;
 };
 
 struct mySourceInfo {
   std::string name;
   uint index;
   std::string description;
-  uint rate;
-  std::string format;
-  std::string active_port;
 };
 
 struct myModuleInfo {
@@ -109,12 +88,9 @@ class PipeManager {
   std::string log_tag = "pipe_manager: ";
 
   pw_thread_loop* thread_loop = nullptr;
+  pw_core* core = nullptr;
   pw_registry* registry = nullptr;
-  pw_node* node = nullptr;
 
-  spa_hook node_listener{};
-
-  myServerInfo server_info;
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
@@ -163,7 +139,6 @@ class PipeManager {
  private:
   bool context_ready = false;
 
-  pw_core* core = nullptr;
   pw_context* context = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
@@ -183,12 +158,6 @@ class PipeManager {
   static void context_state_cb(pw_context* ctx, void* data);
 
   void subscribe_to_events();
-
-  void get_server_info();
-
-  auto get_default_sink_info() -> std::shared_ptr<mySinkInfo>;
-
-  auto get_default_source_info() -> std::shared_ptr<mySourceInfo>;
 
   // void new_app(const pa_sink_input_info* info);
 

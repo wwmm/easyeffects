@@ -180,7 +180,7 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream null_sink_rate;
   std::ostringstream current_dev_rate;
-  const float khz_factor = 0.001F;
+  // const float khz_factor = 0.001F;
 
   null_sink_rate.imbue(syslocale);
   null_sink_rate.precision(1);

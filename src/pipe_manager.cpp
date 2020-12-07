@@ -21,25 +21,60 @@
 #include <glibmm.h>
 #include <memory>
 #include <string>
-#include "pipewire/core.h"
+#include "pipewire/device.h"
 #include "pipewire/keys.h"
-#include "pipewire/node.h"
-#include "pipewire/port.h"
-#include "spa/utils/hook.h"
 #include "util.hpp"
 
 namespace {
 
+struct proxy_data {
+  pw_proxy* proxy = nullptr;
+
+  spa_hook proxy_listener{};
+
+  spa_hook object_listener{};
+
+  PipeManager* pm = nullptr;
+
+  std::string type;
+
+  std::string name;
+
+  std::string description;
+
+  std::string media_class;
+
+  int priority = -1;
+};
+
+void removed_proxy(void* data) {
+  auto* pd = static_cast<proxy_data*>(data);
+
+  pw_proxy_destroy(pd->proxy);
+
+  util::debug(pd->pm->log_tag + pd->type + " " + pd->name + " was removed");
+}
+
+void destroy_proxy(void* data) {
+  auto* pd = static_cast<proxy_data*>(data);
+
+  spa_hook_remove(&pd->proxy_listener);
+  spa_hook_remove(&pd->object_listener);
+}
+
+const struct pw_proxy_events proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_proxy,
+                                             .removed = removed_proxy};
+
 void on_node_info(void* object, const struct pw_node_info* info) {
-  auto* pm = static_cast<PipeManager*>(object);
+  auto* pd = static_cast<proxy_data*>(object);
 
-  const struct spa_dict_item* item = nullptr;
+  std::cout << pd->description << ", " << pd->name << ", id: " << info->id << ", " << info->n_input_ports
+            << " input ports, " << pd->media_class << " prio: " << pd->priority << std::endl;
+  std::cout << pd->description << ", " << pd->name << ", id: " << info->id << ", " << info->n_output_ports
+            << " output ports, " << pd->media_class << " prio: " << pd->priority << std::endl;
 
-  spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
-
-  spa_hook_remove(&pm->node_listener);
-
-  pw_proxy_destroy((struct pw_proxy*)pm->node);
+  // const struct spa_dict_item* item = nullptr;
+  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 const struct pw_node_events node_events = {
@@ -54,24 +89,60 @@ void on_registry_global(void* data,
                         uint32_t version,
                         const struct spa_dict* props) {
   auto* pm = static_cast<PipeManager*>(data);
+  const void* events = nullptr;
+  uint32_t client_version = 0;
+  bool listen = false;
+  std::string name;
+  std::string description;
+  std::string media_class;
+  int priority = -1;
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
-    // printf("node id:%u\n", id);
-
     const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
 
-    if (path != nullptr) {
-      printf("node path: %s\n", spa_dict_lookup(props, PW_KEY_OBJECT_PATH));
-      printf("node name: %s\n", spa_dict_lookup(props, PW_KEY_NODE_NAME));
+    if (path == nullptr) {
+      return;
     }
 
-    // pm->node = static_cast<pw_node*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, 0));
+    name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+    description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
+    media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
+    const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
-    // pw_node_add_listener(pm->node, &pm->node_listener, &node_events, data);
+    if (!name.empty() && !media_class.empty()) {
+      if (prio_session != nullptr) {
+        priority = std::atoi(prio_session);
+      }
+
+      listen = true;
+      client_version = PW_VERSION_NODE;
+      events = &node_events;
+    }
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
-    // printf("port id:%u\n", id);
+  }
+
+  if (listen) {
+    proxy_data* pd = nullptr;
+    pw_proxy* proxy = nullptr;
+
+    proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, client_version, sizeof(struct proxy_data)));
+
+    pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+
+    pd->proxy = proxy;
+    pd->pm = pm;
+    pd->name = name;
+    pd->description = description;
+    pd->type = type;
+    pd->media_class = media_class;
+    pd->priority = priority;
+
+    pw_proxy_add_object_listener(proxy, &pd->object_listener, events, pd);
+    pw_proxy_add_listener(proxy, &pd->proxy_listener, &proxy_events, pd);
+
+    util::debug(pm->log_tag + media_class + " " + name + " was added");
   }
 }
 
@@ -114,7 +185,6 @@ PipeManager::PipeManager() {
 
   spa_zero(core_listener);
   spa_zero(registry_listener);
-  spa_zero(node_listener);
 
   util::debug(log_tag + "compiled with pipewire: " + pw_get_headers_version());
   util::debug(log_tag + "linked to pipewire: " + pw_get_library_version());
@@ -166,16 +236,21 @@ PipeManager::PipeManager() {
 }
 
 PipeManager::~PipeManager() {
+  pw_thread_loop_lock(thread_loop);
+
+  spa_hook_remove(&registry_listener);
+  spa_hook_remove(&core_listener);
+
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
-
-  spa_hook_remove(&core_listener);
 
   util::debug(log_tag + "Disconnecting Pipewire core...");
   pw_core_disconnect(core);
 
   util::debug(log_tag + "Destroying Pipewire context...");
   pw_context_destroy(context);
+
+  pw_thread_loop_unlock(thread_loop);
 
   util::debug(log_tag + "Destroying Pipewire loop...");
   pw_thread_loop_destroy(thread_loop);
@@ -537,39 +612,6 @@ void PipeManager::subscribe_to_events() {
 //   }
 // }
 
-void PipeManager::get_server_info() {
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_get_server_info(
-  //     context,
-  //     [](auto c, auto info, auto d) {
-  //       auto* pm = static_cast<PipeManager*>(d);
-
-  //       if (info != nullptr) {
-  //         pm->update_server_info(info);
-
-  //         util::debug(pm->log_tag + "Pulseaudio version: " + info->server_version);
-  //         util::debug(pm->log_tag + "default pulseaudio source: " + info->default_source_name);
-  //         util::debug(pm->log_tag + "default pulseaudio sink: " + info->default_sink_name);
-  //       }
-
-  //       pa_threaded_mainloop_signal(pm->thread_loop, false);
-  //     },
-  //     this);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-  // } else {
-  //   util::critical(log_tag + " failed to get server info");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-}
-
 auto PipeManager::get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo> {
   auto si = std::make_shared<mySinkInfo>();
 
@@ -689,36 +731,6 @@ auto PipeManager::get_source_info(const std::string& name) -> std::shared_ptr<my
   // }
 
   // util::debug(log_tag + " failed to get source info:" + name);
-
-  return nullptr;
-}
-
-auto PipeManager::get_default_sink_info() -> std::shared_ptr<mySinkInfo> {
-  auto info = get_sink_info(server_info.default_sink_name);
-
-  if (info != nullptr) {
-    util::debug(log_tag + "default pulseaudio sink sampling rate: " + std::to_string(info->rate) + " Hz");
-    util::debug(log_tag + "default pulseaudio sink audio format: " + info->format);
-
-    return info;
-  }
-
-  util::critical(log_tag + "could not get default sink info");
-
-  return nullptr;
-}
-
-auto PipeManager::get_default_source_info() -> std::shared_ptr<mySourceInfo> {
-  auto info = get_source_info(server_info.default_source_name);
-
-  if (info != nullptr) {
-    util::debug(log_tag + "default pulseaudio source sampling rate: " + std::to_string(info->rate) + " Hz");
-    util::debug(log_tag + "default pulseaudio source audio format: " + info->format);
-
-    return info;
-  }
-
-  util::critical(log_tag + "could not get default source info");
 
   return nullptr;
 }

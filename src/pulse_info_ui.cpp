@@ -121,15 +121,15 @@ auto PulseInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PulseInfoU
 }
 
 void PulseInfoUi::update_server_info() {
-  server_name->set_text(pm->server_info.server_name);
-  server_version->set_text(pm->server_info.server_version);
-  default_sink->set_text(pm->server_info.default_sink_name);
-  default_source->set_text(pm->server_info.default_source_name);
-  protocol->set_text(pm->server_info.protocol);
-  server_sample_format->set_text(pm->server_info.format);
-  server_rate->set_text(std::to_string(pm->server_info.rate));
-  server_channels->set_text(std::to_string(pm->server_info.channels));
-  server_channel_mapping->set_text(pm->server_info.channel_map);
+  // server_name->set_text(pm->server_info.server_name);
+  // server_version->set_text(pm->server_info.server_version);
+  // default_sink->set_text(pm->server_info.default_sink_name);
+  // default_source->set_text(pm->server_info.default_source_name);
+  // protocol->set_text(pm->server_info.protocol);
+  // server_sample_format->set_text(pm->server_info.format);
+  // server_rate->set_text(std::to_string(pm->server_info.rate));
+  // server_channels->set_text(std::to_string(pm->server_info.channels));
+  // server_channel_mapping->set_text(pm->server_info.channel_map);
 }
 
 auto PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {

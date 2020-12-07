@@ -81,20 +81,20 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
     if (pm->get_source_info(PULSE_SOURCE)) {
       set_source_monitor_name(PULSE_SOURCE);
     } else {
-      set_source_monitor_name(pm->server_info.default_source_name);
+      // set_source_monitor_name(pm->server_info.default_source_name);
     }
   } else {
     bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
 
     if (use_default_source) {
-      set_source_monitor_name(pm->server_info.default_source_name);
+      // set_source_monitor_name(pm->server_info.default_source_name);
     } else {
       gchar* custom_source = g_settings_get_string(settings, "custom-source");
 
       if (pm->get_source_info(custom_source)) {
         set_source_monitor_name(custom_source);
       } else {
-        set_source_monitor_name(pm->server_info.default_source_name);
+        // set_source_monitor_name(pm->server_info.default_source_name);
       }
 
       g_free(custom_source);
@@ -143,7 +143,8 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
                                   "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
 
   webrtc = std::make_unique<Webrtc>(log_tag, "com.github.wwmm.pulseeffects.webrtc",
-                                    "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/", 48000/* pm->mic_sink_info->rate*/);
+                                    "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/",
+                                    48000 /* pm->mic_sink_info->rate*/);
 
   multiband_compressor =
       std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",

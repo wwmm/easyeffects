@@ -660,27 +660,27 @@ void PipelineBase::on_app_removed(uint idx) {
 }
 
 void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info) {
-  if (sink_info->name == "PulseEffects_apps") {
-    if (sink_info->rate != sampling_rate) {
-      gst_element_set_state(pipeline, GST_STATE_READY);
+  // if (sink_info->name == "PulseEffects_apps") {
+  //   if (sink_info->rate != sampling_rate) {
+  //     gst_element_set_state(pipeline, GST_STATE_READY);
 
-      set_caps(sink_info->rate);
+  //     set_caps(sink_info->rate);
 
-      update_pipeline_state();
-    }
-  }
+  //     update_pipeline_state();
+  //   }
+  // }
 }
 
 void PipelineBase::on_source_changed(const std::shared_ptr<mySourceInfo>& source_info) {
-  if (source_info->name == "PulseEffects_mic.monitor") {
-    if (source_info->rate != sampling_rate) {
-      gst_element_set_state(pipeline, GST_STATE_READY);
+  // if (source_info->name == "PulseEffects_mic.monitor") {
+  //   if (source_info->rate != sampling_rate) {
+  //     gst_element_set_state(pipeline, GST_STATE_READY);
 
-      set_caps(source_info->rate);
+  //     set_caps(source_info->rate);
 
-      update_pipeline_state();
-    }
-  }
+  //     update_pipeline_state();
+  //   }
+  // }
 }
 
 void PipelineBase::init_spectrum() {

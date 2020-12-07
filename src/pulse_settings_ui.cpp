@@ -194,9 +194,9 @@ void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
     row->set_value(1, info->name);
 
     if (use_default_sink->get_active()) {
-      if (info->name == app->pm->server_info.default_sink_name) {
-        output_device->set_active(row);
-      }
+      // if (info->name == app->pm->server_info.default_sink_name) {
+      //   output_device->set_active(row);
+      // }
     } else {
       auto custom_sink = settings->get_string("custom-sink");
 
@@ -261,9 +261,9 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
     row->set_value(1, info->name);
 
     if (use_default_source->get_active()) {
-      if (info->name == app->pm->server_info.default_source_name) {
-        input_device->set_active(row);
-      }
+      // if (info->name == app->pm->server_info.default_source_name) {
+      //   input_device->set_active(row);
+      // }
     } else {
       auto custom_source = settings->get_string("custom-source");
 
@@ -311,9 +311,9 @@ void PulseSettingsUi::on_use_default_sink_toggled() {
 
       c.get_value(1, name);
 
-      if (name == app->pm->server_info.default_sink_name) {
-        output_device->set_active(c);
-      }
+      // if (name == app->pm->server_info.default_sink_name) {
+      //   output_device->set_active(c);
+      // }
     }
   }
 }
@@ -327,9 +327,9 @@ void PulseSettingsUi::on_use_default_source_toggled() {
 
       c.get_value(1, name);
 
-      if (name == app->pm->server_info.default_source_name) {
-        input_device->set_active(c);
-      }
+      // if (name == app->pm->server_info.default_source_name) {
+      //   input_device->set_active(c);
+      // }
     }
   }
 }
