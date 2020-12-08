@@ -92,31 +92,39 @@ void on_registry_global(void* data,
   const void* events = nullptr;
   uint32_t client_version = 0;
   bool listen = false;
-  std::string name;
-  std::string description;
-  std::string media_class;
+  std::string name = "none";
+  std::string description = "none";
+  std::string media_class = "none";
   int priority = -1;
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
-    const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
-
-    if (path == nullptr) {
-      return;
-    }
-
-    name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-    description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-    media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
+    const auto* node_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
+    const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+    const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
     const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
-    if (!name.empty() && !media_class.empty()) {
-      if (prio_session != nullptr) {
-        priority = std::atoi(prio_session);
-      }
+    if (node_media_class != nullptr) {
+      media_class = node_media_class;
 
-      listen = true;
-      client_version = PW_VERSION_NODE;
-      events = &node_events;
+      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Stream/Output/Audio" ||
+          media_class == "Stream/Input/Audio") {
+        listen = true;
+
+        if (node_name != nullptr) {
+          name = node_name;
+        }
+
+        if (node_description != nullptr) {
+          description = node_description;
+        }
+
+        if (prio_session != nullptr) {
+          priority = std::atoi(prio_session);
+        }
+
+        client_version = PW_VERSION_NODE;
+        events = &node_events;
+      }
     }
   }
 
@@ -133,9 +141,9 @@ void on_registry_global(void* data,
 
     pd->proxy = proxy;
     pd->pm = pm;
+    pd->type = type;
     pd->name = name;
     pd->description = description;
-    pd->type = type;
     pd->media_class = media_class;
     pd->priority = priority;
 
