@@ -28,7 +28,29 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
+#include <vector>
 #include "pipewire/core.h"
+#include "pipewire/node.h"
+
+struct NodeInfo {
+  int id;
+
+  std::string type;
+
+  std::string name;
+
+  std::string description;
+
+  std::string media_class;
+
+  int priority = -1;
+
+  pw_node_state state;
+
+  int n_input_ports;
+
+  int n_output_ports;
+};
 
 struct mySinkInfo {
   std::string name;
@@ -90,6 +112,8 @@ class PipeManager {
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;
   pw_registry* registry = nullptr;
+
+  std::vector<NodeInfo> list_nodes;
 
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;

@@ -36,6 +36,8 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
+  int id;
+
   std::string type;
 
   std::string name;
@@ -51,6 +53,10 @@ void removed_proxy(void* data) {
   auto* pd = static_cast<proxy_data*>(data);
 
   pw_proxy_destroy(pd->proxy);
+
+  pd->pm->list_nodes.erase(
+      std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(), [=](auto& n) { return n.id == pd->id; }),
+      pd->pm->list_nodes.end());
 
   util::debug(pd->pm->log_tag + pd->type + " " + pd->name + " was removed");
 }
@@ -68,10 +74,17 @@ const struct pw_proxy_events proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy =
 void on_node_info(void* object, const struct pw_node_info* info) {
   auto* pd = static_cast<proxy_data*>(object);
 
-  std::cout << pd->description << ", " << pd->name << ", id: " << info->id << ", " << info->n_input_ports
-            << " input ports, " << pd->media_class << " prio: " << pd->priority << std::endl;
-  std::cout << pd->description << ", " << pd->name << ", id: " << info->id << ", " << info->n_output_ports
-            << " output ports, " << pd->media_class << " prio: " << pd->priority << std::endl;
+  for (auto& n : pd->pm->list_nodes) {
+    if (n.id == info->id) {
+      n.state = info->state;
+      n.n_input_ports = info->n_input_ports;
+      n.n_output_ports = info->n_output_ports;
+
+      std::cout << "updating node: " << pd->name << std::endl;
+
+      break;
+    }
+  }
 
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
@@ -141,6 +154,7 @@ void on_registry_global(void* data,
 
     pd->proxy = proxy;
     pd->pm = pm;
+    pd->id = id;
     pd->type = type;
     pd->name = name;
     pd->description = description;
@@ -149,6 +163,23 @@ void on_registry_global(void* data,
 
     pw_proxy_add_object_listener(proxy, &pd->object_listener, events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &proxy_events, pd);
+
+    for (const auto& n : pm->list_nodes) {
+      if (n.id == id) {
+        return;  // do not add the same node two times
+      }
+    }
+
+    NodeInfo nd_info;
+
+    nd_info.id = id;
+    nd_info.type = type;
+    nd_info.media_class = media_class;
+    nd_info.name = name;
+    nd_info.description = description;
+    nd_info.priority = priority;
+
+    pm->list_nodes.emplace_back(nd_info);
 
     util::debug(pm->log_tag + media_class + " " + name + " was added");
   }
