@@ -179,10 +179,6 @@ class PipeManager {
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",
                                                  "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
-  static void context_state_cb(pw_context* ctx, void* data);
-
-  void subscribe_to_events();
-
   // void new_app(const pa_sink_input_info* info);
 
   // void new_app(const pa_source_output_info* info);
