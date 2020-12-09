@@ -56,7 +56,7 @@ src/convolver_ui.cpp
 src/effects_base_ui.cpp
 src/equalizer_ui.cpp
 src/general_settings_ui.cpp
-src/pulse_settings_ui.cpp
+src/pipe_settings_ui.cpp
 src/presets_menu_ui.cpp
 src/sink_input_effects_ui.cpp
 src/spectrum_settings_ui.cpp

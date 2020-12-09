@@ -26,7 +26,7 @@
 #include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
-#include "pulse_settings_ui.hpp"
+#include "pipe_settings_ui.hpp"
 #include "spectrum_settings_ui.hpp"
 #include "util.hpp"
 
@@ -61,7 +61,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   soe_ui = SourceOutputEffectsUi::add_to_stack(stack, app->soe.get());
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
-  PulseSettingsUi::add_to_stack(stack_menu_settings, app);
+  PipeSettingsUi::add_to_stack(stack_menu_settings, app);
   BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
 

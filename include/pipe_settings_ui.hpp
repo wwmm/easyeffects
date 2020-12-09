@@ -17,8 +17,8 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PULSE_SETTINGS_UI_HPP
-#define PULSE_SETTINGS_UI_HPP
+#ifndef PIPE_SETTINGS_UI_HPP
+#define PIPE_SETTINGS_UI_HPP
 
 #include <giomm/settings.h>
 #include <glibmm/i18n.h>
@@ -32,19 +32,19 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
-class PulseSettingsUi : public Gtk::Grid {
+class PipeSettingsUi : public Gtk::Grid {
  public:
-  PulseSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
-  PulseSettingsUi(const PulseSettingsUi&) = delete;
-  auto operator=(const PulseSettingsUi&) -> PulseSettingsUi& = delete;
-  PulseSettingsUi(const PulseSettingsUi&&) = delete;
-  auto operator=(const PulseSettingsUi &&) -> PulseSettingsUi& = delete;
-  ~PulseSettingsUi() override;
+  PipeSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
+  PipeSettingsUi(const PipeSettingsUi&) = delete;
+  auto operator=(const PipeSettingsUi&) -> PipeSettingsUi& = delete;
+  PipeSettingsUi(const PipeSettingsUi&&) = delete;
+  auto operator=(const PipeSettingsUi&&) -> PipeSettingsUi& = delete;
+  ~PipeSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
-  std::string log_tag = "pulse_settings_ui: ";
+  std::string log_tag = "pipe_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
 
@@ -77,7 +77,7 @@ class PulseSettingsUi : public Gtk::Grid {
 
   void on_sink_removed(uint idx);
 
-  void on_source_added(const std::shared_ptr<mySourceInfo>& info);
+  void on_source_added(const NodeInfo& info);
 
   void on_source_removed(uint idx);
 

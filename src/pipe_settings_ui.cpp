@@ -17,7 +17,7 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "pulse_settings_ui.hpp"
+#include "pipe_settings_ui.hpp"
 #include <cstring>
 #include "util.hpp"
 
@@ -77,9 +77,9 @@ auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_typ
 
 }  // namespace
 
-PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
-                                 const Glib::RefPtr<Gtk::Builder>& builder,
-                                 Application* application)
+PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
+                               const Glib::RefPtr<Gtk::Builder>& builder,
+                               Application* application)
     : Gtk::Grid(cobject),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
@@ -109,18 +109,18 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_sink_toggled));
-  use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_use_default_source_toggled));
+  use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_sink_toggled));
+  use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_source_toggled));
 
   connections.emplace_back(
-      input_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_input_device_changed)));
+      input_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_input_device_changed)));
   connections.emplace_back(
-      output_device->signal_changed().connect(sigc::mem_fun(*this, &PulseSettingsUi::on_output_device_changed)));
+      output_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_output_device_changed)));
 
-  app->pm->sink_added.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_sink_added));
-  app->pm->sink_removed.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_sink_removed));
-  app->pm->source_added.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_source_added));
-  app->pm->source_removed.connect(sigc::mem_fun(*this, &PulseSettingsUi::on_source_removed));
+  app->pm->sink_added.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_sink_added));
+  app->pm->sink_removed.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_sink_removed));
+  app->pm->source_added.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_source_added));
+  app->pm->source_removed.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_source_removed));
 
   auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
   auto flag_invert_boolean = Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN;
@@ -150,7 +150,7 @@ PulseSettingsUi::PulseSettingsUi(BaseObjectType* cobject,
                                G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 }
 
-PulseSettingsUi::~PulseSettingsUi() {
+PipeSettingsUi::~PipeSettingsUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
@@ -158,17 +158,17 @@ PulseSettingsUi::~PulseSettingsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-void PulseSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_settings.glade");
+void PipeSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_settings.glade");
 
-  PulseSettingsUi* ui;
+  PipeSettingsUi* ui;
 
   builder->get_widget_derived("widgets_grid", ui, app);
 
-  stack->add(*ui, "settings_pulse", _("Pulseaudio"));
+  stack->add(*ui, "settings_pipe", _("PipeWire"));
 }
 
-void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
+void PipeSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   bool add_to_list = true;
 
   auto children = sink_list->children();
@@ -209,7 +209,7 @@ void PulseSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   }
 }
 
-void PulseSettingsUi::on_sink_removed(uint idx) {
+void PipeSettingsUi::on_sink_removed(uint idx) {
   Gtk::TreeIter remove_iter;
   std::string remove_name;
 
@@ -235,7 +235,7 @@ void PulseSettingsUi::on_sink_removed(uint idx) {
   }
 }
 
-void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info) {
+void PipeSettingsUi::on_source_added(const NodeInfo& info) {
   bool add_to_list = true;
 
   auto children = source_list->children();
@@ -247,7 +247,7 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
     c.get_value(0, i);
     c.get_value(1, name);
 
-    if (info->index == i) {
+    if (info.id == i) {
       add_to_list = false;
 
       break;
@@ -257,8 +257,8 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
   if (add_to_list) {
     Gtk::TreeModel::Row row = *(source_list->append());
 
-    row->set_value(0, info->index);
-    row->set_value(1, info->name);
+    row->set_value(0, info.id);
+    row->set_value(1, info.name);
 
     if (use_default_source->get_active()) {
       // if (info->name == app->pm->server_info.default_source_name) {
@@ -267,16 +267,14 @@ void PulseSettingsUi::on_source_added(const std::shared_ptr<mySourceInfo>& info)
     } else {
       auto custom_source = settings->get_string("custom-source");
 
-      if (info->name == custom_source) {
+      if (info.name == custom_source) {
         input_device->set_active(row);
       }
     }
-
-    util::debug(log_tag + "added source: " + info->name);
   }
 }
 
-void PulseSettingsUi::on_source_removed(uint idx) {
+void PipeSettingsUi::on_source_removed(uint idx) {
   Gtk::TreeIter remove_iter;
   std::string remove_name;
 
@@ -302,7 +300,7 @@ void PulseSettingsUi::on_source_removed(uint idx) {
   }
 }
 
-void PulseSettingsUi::on_use_default_sink_toggled() {
+void PipeSettingsUi::on_use_default_sink_toggled() {
   if (use_default_sink->get_active()) {
     auto children = sink_list->children();
 
@@ -318,7 +316,7 @@ void PulseSettingsUi::on_use_default_sink_toggled() {
   }
 }
 
-void PulseSettingsUi::on_use_default_source_toggled() {
+void PipeSettingsUi::on_use_default_source_toggled() {
   if (use_default_source->get_active()) {
     auto children = source_list->children();
 
@@ -334,7 +332,7 @@ void PulseSettingsUi::on_use_default_source_toggled() {
   }
 }
 
-void PulseSettingsUi::on_input_device_changed() {
+void PipeSettingsUi::on_input_device_changed() {
   Gtk::TreeModel::Row row = *(input_device->get_active());
 
   if (row) {
@@ -354,7 +352,7 @@ void PulseSettingsUi::on_input_device_changed() {
   }
 }
 
-void PulseSettingsUi::on_output_device_changed() {
+void PipeSettingsUi::on_output_device_changed() {
   Gtk::TreeModel::Row row = *(output_device->get_active());
 
   if (row) {

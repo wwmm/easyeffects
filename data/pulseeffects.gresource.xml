@@ -7,7 +7,7 @@
         <file>ui/app_button_row.glade</file>
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.glade</file>
-        <file>ui/pulse_settings.glade</file>
+        <file>ui/pipe_settings.glade</file>
         <file>ui/blocklist_settings.glade</file>
         <file>ui/general_settings.glade</file>
         <file>ui/effects_base.glade</file>

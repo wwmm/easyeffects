@@ -33,7 +33,7 @@
 #include "pipewire/node.h"
 
 struct NodeInfo {
-  int id;
+  uint id;
 
   std::string type;
 
@@ -142,7 +142,7 @@ class PipeManager {
   void get_clients_info();
   void set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value);
 
-  sigc::signal<void, std::shared_ptr<mySourceInfo>> source_added;
+  sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
   sigc::signal<void, uint> source_removed;
   sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;

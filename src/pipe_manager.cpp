@@ -36,7 +36,7 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
-  int id;
+  uint id;
 
   std::string type;
 
@@ -80,7 +80,13 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       n.n_input_ports = info->n_input_ports;
       n.n_output_ports = info->n_output_ports;
 
-      std::cout << "updating node: " << pd->name << std::endl;
+      const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
+
+      if (prio_session != nullptr) {
+        n.priority = std::atoi(prio_session);
+      }
+
+      // std::cout << "updating node: " << n.name << std::endl;
 
       break;
     }
@@ -164,12 +170,6 @@ void on_registry_global(void* data,
     pw_proxy_add_object_listener(proxy, &pd->object_listener, events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &proxy_events, pd);
 
-    for (const auto& n : pm->list_nodes) {
-      if (n.id == id) {
-        return;  // do not add the same node two times
-      }
-    }
-
     NodeInfo nd_info;
 
     nd_info.id = id;
@@ -182,6 +182,10 @@ void on_registry_global(void* data,
     pm->list_nodes.emplace_back(nd_info);
 
     util::debug(pm->log_tag + media_class + " " + name + " was added");
+
+    if (media_class == "Audio/Source") {
+      Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
+    }
   }
 }
 
