@@ -125,10 +125,6 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  void find_sink_inputs();
-  void find_source_outputs();
-  void find_sinks();
-  void find_sources();
   auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
   auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;
   auto move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool;

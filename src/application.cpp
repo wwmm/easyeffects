@@ -220,11 +220,6 @@ void Application::on_startup() {
   update_bypass_state("bypass");
 
   if (running_as_service) {
-    pm->find_sink_inputs();
-    pm->find_source_outputs();
-    pm->find_sinks();
-    pm->find_sources();
-
     util::debug(log_tag + "Running in Background");
 
     hold();
@@ -255,11 +250,6 @@ void Application::on_activate() {
     });
 
     window->show_all();
-
-    pm->find_sink_inputs();
-    pm->find_source_outputs();
-    pm->find_sinks();
-    pm->find_sources();
   }
 }
 
