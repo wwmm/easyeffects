@@ -122,9 +122,6 @@ class PipeManager {
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
-  auto get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo>;
-  auto get_source_info(const std::string& name) -> std::shared_ptr<mySourceInfo>;
-
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 

@@ -107,11 +107,11 @@ SinkInputEffects::SinkInputEffects(PipeManager* pulse_manager) : PipelineBase("s
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
-    if (pm->get_sink_info(PULSE_SINK)) {
-      set_output_sink_name(PULSE_SINK);
-    } else {
-      // set_output_sink_name(pm->server_info.default_sink_name);
-    }
+    // if (pm->get_sink_info(PULSE_SINK)) {
+    //   set_output_sink_name(PULSE_SINK);
+    // } else {
+    //   set_output_sink_name(pm->server_info.default_sink_name);
+    // }
   } else {
     bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
 
@@ -120,11 +120,11 @@ SinkInputEffects::SinkInputEffects(PipeManager* pulse_manager) : PipelineBase("s
     } else {
       gchar* custom_sink = g_settings_get_string(settings, "custom-sink");
 
-      if (pm->get_sink_info(custom_sink)) {
-        set_output_sink_name(custom_sink);
-      } else {
-        // set_output_sink_name(pm->server_info.default_sink_name);
-      }
+      // if (pm->get_sink_info(custom_sink)) {
+      //   set_output_sink_name(custom_sink);
+      // } else {
+      //   set_output_sink_name(pm->server_info.default_sink_name);
+      // }
 
       g_free(custom_sink);
     }

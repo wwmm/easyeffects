@@ -78,11 +78,11 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr) {
-    if (pm->get_source_info(PULSE_SOURCE)) {
-      set_source_monitor_name(PULSE_SOURCE);
-    } else {
-      // set_source_monitor_name(pm->server_info.default_source_name);
-    }
+    // if (pm->get_source_info(PULSE_SOURCE)) {
+    //   set_source_monitor_name(PULSE_SOURCE);
+    // } else {
+    //   set_source_monitor_name(pm->server_info.default_source_name);
+    // }
   } else {
     bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
 
@@ -91,11 +91,11 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
     } else {
       gchar* custom_source = g_settings_get_string(settings, "custom-source");
 
-      if (pm->get_source_info(custom_source)) {
-        set_source_monitor_name(custom_source);
-      } else {
-        // set_source_monitor_name(pm->server_info.default_source_name);
-      }
+      // if (pm->get_source_info(custom_source)) {
+      //   set_source_monitor_name(custom_source);
+      // } else {
+      //   set_source_monitor_name(pm->server_info.default_source_name);
+      // }
 
       g_free(custom_source);
     }
