@@ -115,6 +115,10 @@ class PipeManager {
 
   std::vector<NodeInfo> list_nodes;
 
+  auto get_default_source() -> NodeInfo;
+
+  auto get_default_sink() -> NodeInfo;
+
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
@@ -145,7 +149,7 @@ class PipeManager {
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
   sigc::signal<void, uint> source_removed;
-  sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_added;
+  sigc::signal<void, NodeInfo> sink_added;
   sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_changed;
   sigc::signal<void, uint> sink_removed;
   sigc::signal<void, std::string> new_default_sink;

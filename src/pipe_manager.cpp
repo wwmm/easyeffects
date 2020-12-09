@@ -185,6 +185,8 @@ void on_registry_global(void* data,
 
     if (media_class == "Audio/Source") {
       Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
+    } else if (media_class == "Audio/Sink") {
+      Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
     }
   }
 }
@@ -296,6 +298,44 @@ PipeManager::~PipeManager() {
 
   util::debug(log_tag + "Destroying Pipewire loop...");
   pw_thread_loop_destroy(thread_loop);
+}
+
+auto PipeManager::get_default_source() -> NodeInfo {
+  int priority = -1;
+  NodeInfo default_source;
+
+  for (const auto& n : list_nodes) {
+    if (n.media_class != "Audio/Source") {
+      continue;
+    }
+
+    if (n.priority > priority) {
+      priority = n.priority;
+
+      default_source = n;
+    }
+  }
+
+  return default_source;
+}
+
+auto PipeManager::get_default_sink() -> NodeInfo {
+  int priority = -1;
+  NodeInfo default_sink;
+
+  for (const auto& n : list_nodes) {
+    if (n.media_class != "Audio/Sink") {
+      continue;
+    }
+
+    if (n.priority > priority) {
+      priority = n.priority;
+
+      default_sink = n;
+    }
+  }
+
+  return default_sink;
 }
 
 auto PipeManager::get_sink_info(const std::string& name) -> std::shared_ptr<mySinkInfo> {

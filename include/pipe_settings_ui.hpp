@@ -73,7 +73,7 @@ class PipeSettingsUi : public Gtk::Grid {
     object = Glib::RefPtr<Gtk::ListStore>::cast_dynamic(builder->get_object(name));
   }
 
-  void on_sink_added(const std::shared_ptr<mySinkInfo>& info);
+  void on_sink_added(const NodeInfo& info);
 
   void on_sink_removed(uint idx);
 

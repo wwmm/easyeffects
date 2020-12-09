@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 21:53+0100\n"
+"POT-Creation-Date: 2020-12-09 16:54-0300\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -141,15 +141,15 @@ msgstr "Canais"
 msgid "Resampler"
 msgstr "Resampler"
 
-#: data/ui/app_info.glade:339 data/ui/pulse_settings.glade:159
-#: data/ui/pulse_settings.glade:259 data/ui/pulse_settings.glade:464
-#: data/ui/pulse_settings.glade:564
+#: data/ui/app_info.glade:339 data/ui/pipe_settings.glade:159
+#: data/ui/pipe_settings.glade:259 data/ui/pipe_settings.glade:464
+#: data/ui/pipe_settings.glade:564
 msgid "Buffer"
 msgstr "Buffer"
 
-#: data/ui/app_info.glade:364 data/ui/pulse_settings.glade:190
-#: data/ui/pulse_settings.glade:290 data/ui/pulse_settings.glade:476
-#: data/ui/pulse_settings.glade:576
+#: data/ui/app_info.glade:364 data/ui/pipe_settings.glade:190
+#: data/ui/pipe_settings.glade:290 data/ui/pipe_settings.glade:476
+#: data/ui/pipe_settings.glade:576
 msgid "Latency"
 msgstr "Latência"
 
@@ -360,7 +360,7 @@ msgstr "Nome"
 msgid "Reconnect the microphone to apply new changes made to the Blocklist"
 msgstr ""
 
-#: data/ui/blocklist_settings.glade:139 data/ui/pulse_settings.glade:383
+#: data/ui/blocklist_settings.glade:139 data/ui/pipe_settings.glade:383
 msgid "Input Effects"
 msgstr "Efeitos de Entrada"
 
@@ -368,7 +368,7 @@ msgstr "Efeitos de Entrada"
 msgid "Restart the player to apply new changes made to the Blocklist"
 msgstr ""
 
-#: data/ui/blocklist_settings.glade:242 data/ui/pulse_settings.glade:688
+#: data/ui/blocklist_settings.glade:242 data/ui/pipe_settings.glade:688
 msgid "Output Effects"
 msgstr "Efeitos de Saída"
 
@@ -1318,19 +1318,19 @@ msgstr "Configuração"
 msgid "Resamplers"
 msgstr "Resamplers"
 
-#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:403
+#: data/ui/pipe_settings.glade:98 data/ui/pipe_settings.glade:403
 msgid "Use Default"
 msgstr "Usar Padrão"
 
-#: data/ui/pulse_settings.glade:147 data/ui/pulse_settings.glade:452
+#: data/ui/pipe_settings.glade:147 data/ui/pipe_settings.glade:452
 msgid "Pipeline Input"
 msgstr "Entrada da Pipeline"
 
-#: data/ui/pulse_settings.glade:247 data/ui/pulse_settings.glade:552
+#: data/ui/pipe_settings.glade:247 data/ui/pipe_settings.glade:552
 msgid "Pipeline Output"
 msgstr "Saída da Pipeline"
 
-#: data/ui/pulse_settings.glade:347 data/ui/pulse_settings.glade:652
+#: data/ui/pipe_settings.glade:347 data/ui/pipe_settings.glade:652
 msgid "Block Size"
 msgstr "Tamanho do Bloco"
 
@@ -1726,12 +1726,12 @@ msgstr "Microfone de Calibração"
 msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:835
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:833
 #: src/presets_menu_ui.cpp:129
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:835
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:833
 #: src/presets_menu_ui.cpp:129
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1744,16 +1744,16 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/equalizer_ui.cpp:373 src/equalizer_ui.cpp:506
+#: src/equalizer_ui.cpp:371 src/equalizer_ui.cpp:504
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:834
+#: src/equalizer_ui.cpp:832
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:839
+#: src/equalizer_ui.cpp:837
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"
@@ -1762,9 +1762,12 @@ msgstr "Predefinições"
 msgid "General"
 msgstr "Geral"
 
-#: src/pulse_settings_ui.cpp:168
-msgid "Pulseaudio"
-msgstr "Pulseaudio"
+#: src/pipe_settings_ui.cpp:168
+msgid "PipeWire"
+msgstr ""
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
 
 #, fuzzy
 #~ msgid "Import APO Presets"

@@ -40,7 +40,7 @@ data/ui/preset_row.glade
 data/ui/presets_menu.glade
 data/ui/pulse_info.glade
 data/ui/pulse_conf_file_line.glade
-data/ui/pulse_settings.glade
+data/ui/pipe_settings.glade
 data/ui/reverb.glade
 data/ui/spectrum.glade
 data/ui/spectrum_settings.glade

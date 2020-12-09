@@ -168,7 +168,7 @@ void PipeSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_pipe", _("PipeWire"));
 }
 
-void PipeSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
+void PipeSettingsUi::on_sink_added(const NodeInfo& info) {
   bool add_to_list = true;
 
   auto children = sink_list->children();
@@ -180,7 +180,7 @@ void PipeSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
     c.get_value(0, i);
     c.get_value(1, name);
 
-    if (info->index == i) {
+    if (info.id == i) {
       add_to_list = false;
 
       break;
@@ -190,22 +190,22 @@ void PipeSettingsUi::on_sink_added(const std::shared_ptr<mySinkInfo>& info) {
   if (add_to_list) {
     Gtk::TreeModel::Row row = *(sink_list->append());
 
-    row->set_value(0, info->index);
-    row->set_value(1, info->name);
+    row->set_value(0, info.id);
+    row->set_value(1, info.name);
 
     if (use_default_sink->get_active()) {
-      // if (info->name == app->pm->server_info.default_sink_name) {
-      //   output_device->set_active(row);
-      // }
+      auto default_sink = app->pm->get_default_sink();
+
+      if (info.name == default_sink.name) {
+        output_device->set_active(row);
+      }
     } else {
       auto custom_sink = settings->get_string("custom-sink");
 
-      if (info->name == custom_sink) {
+      if (info.name == custom_sink) {
         output_device->set_active(row);
       }
     }
-
-    util::debug(log_tag + "added sink: " + info->name);
   }
 }
 
@@ -261,9 +261,11 @@ void PipeSettingsUi::on_source_added(const NodeInfo& info) {
     row->set_value(1, info.name);
 
     if (use_default_source->get_active()) {
-      // if (info->name == app->pm->server_info.default_source_name) {
-      //   input_device->set_active(row);
-      // }
+      auto default_source = app->pm->get_default_source();
+
+      if (info.name == default_source.name) {
+        input_device->set_active(row);
+      }
     } else {
       auto custom_source = settings->get_string("custom-source");
 
