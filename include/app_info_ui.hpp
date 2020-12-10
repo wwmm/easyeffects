@@ -31,7 +31,6 @@
 #include <gtkmm/togglebutton.h>
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
-#include "plugin_ui_base.hpp"
 #include "preset_type.hpp"
 #include "util.hpp"
 
@@ -93,6 +92,8 @@ class AppInfoUi : public Gtk::Grid {
   void on_volume_changed();
 
   void on_mute();
+
+  static auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
 
 #endif

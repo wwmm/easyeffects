@@ -19,9 +19,6 @@
 
 #include "app_info_ui.hpp"
 
-#include <utility>
-#include "pipewire/node.h"
-
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      NodeInfo node_info,
@@ -101,7 +98,7 @@ void AppInfoUi::init_widgets() {
 
   // format->set_text(app_info->format);
 
-  // rate->set_text(std::to_string(app_info->rate) + " Hz");
+  rate->set_text(std::to_string(nd_info.rate) + " Hz");
 
   channels->set_text(std::to_string(nd_info.n_output_ports));
 
@@ -109,7 +106,7 @@ void AppInfoUi::init_widgets() {
 
   // buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
 
-  // latency->set_text(PluginUiBase::level_to_str(app_info->latency * ms_factor, 1) + " ms");
+  latency->set_text(float_to_localized_string(nd_info.latency, 2) + " ms");
 
   // if (app_info->corked != 0) {
   //   state->set_text(_("paused"));
@@ -222,4 +219,16 @@ void AppInfoUi::update(NodeInfo node_info) {
 
   init_widgets();
   connect_signals();
+}
+
+auto AppInfoUi::float_to_localized_string(const float& value, const int& places) -> std::string {
+  std::ostringstream msg;
+  std::locale global_locale("");
+
+  msg.imbue(global_locale);
+  msg.precision(places);
+
+  msg << std::fixed << value;
+
+  return msg.str();
 }

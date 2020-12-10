@@ -18,8 +18,7 @@
  */
 
 #include "plugin_ui_base.hpp"
-
-std::locale PluginUiBase::syslocale = std::locale("");
+#include <locale>
 
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
@@ -65,8 +64,9 @@ PluginUiBase::~PluginUiBase() {
 
 auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
+  std::locale global_locale("");
 
-  msg.imbue(syslocale);
+  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;
@@ -76,8 +76,9 @@ auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::
 
 auto PluginUiBase::level_to_str_showpos(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
+  std::locale global_locale("");
 
-  msg.imbue(syslocale);
+  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
@@ -87,8 +88,9 @@ auto PluginUiBase::level_to_str_showpos(const double& value, const int& places) 
 
 auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
+  std::locale global_locale("");
 
-  msg.imbue(syslocale);
+  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;
@@ -98,8 +100,9 @@ auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::s
 
 auto PluginUiBase::level_to_str_showpos(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
+  std::locale global_locale("");
 
-  msg.imbue(syslocale);
+  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << ((value > 0.0F) ? "+" : "") << std::fixed << value;

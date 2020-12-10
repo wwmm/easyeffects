@@ -55,6 +55,10 @@ struct NodeInfo {
 
   int n_output_ports;
 
+  int rate;
+
+  float latency;
+
   bool visible_to_user;
 
   bool connected;

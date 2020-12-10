@@ -18,7 +18,6 @@
  */
 
 #include "util.hpp"
-#include <cmath>
 
 namespace util {
 

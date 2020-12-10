@@ -56,6 +56,8 @@ void removed_proxy(void* data) {
     Glib::signal_idle().connect_once([pd] { pd->pm->sink_removed.emit(pd->nd_info); });
   } else if (pd->nd_info.media_class == "Stream/Output/Audio") {
     Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_removed.emit(pd->nd_info); });
+  } else if (pd->nd_info.media_class == "Stream/Input/Audio") {
+    Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_removed.emit(pd->nd_info); });
   }
 }
 
@@ -77,13 +79,14 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto* icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
+      const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
 
       pd->nd_info.state = info->state;
       pd->nd_info.n_input_ports = info->n_input_ports;
       pd->nd_info.n_output_ports = info->n_output_ports;
 
       if (prio_session != nullptr) {
-        pd->nd_info.priority = std::atoi(prio_session);
+        pd->nd_info.priority = std::stoi(prio_session);
       }
 
       if (icon_name != nullptr) {
@@ -94,10 +97,26 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pd->nd_info.media_name = media_name;
       }
 
+      if (node_latency != nullptr) {
+        auto str = std::string(node_latency);
+
+        auto delimiter_pos = str.find('/');
+
+        auto latency_str = str.substr(0, delimiter_pos);
+
+        auto rate_str = str.substr(delimiter_pos + 1);
+
+        pd->nd_info.rate = std::stoi(rate_str);
+
+        pd->nd_info.latency = std::stof(latency_str) / static_cast<float>(pd->nd_info.rate);
+      }
+
       node = pd->nd_info;
 
       if (node.media_class == "Stream/Output/Audio") {
         Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_changed.emit(pd->nd_info); });
+      } else if (node.media_class == "Stream/Input/Audio") {
+        Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_changed.emit(pd->nd_info); });
       }
 
       // std::cout << "updating node: " << node.n_output_ports << " " << pd->nd_info.n_output_ports << std::endl;
@@ -195,6 +214,8 @@ void on_registry_global(void* data,
       Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
     } else if (media_class == "Stream/Output/Audio") {
       Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
+    } else if (media_class == "Stream/Input/Audio") {
+      Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_added.emit(pd->nd_info); });
     }
   }
 }

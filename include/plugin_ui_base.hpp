@@ -55,7 +55,7 @@ class PluginUiBase {
   PluginUiBase(const PluginUiBase&) = delete;
   auto operator=(const PluginUiBase&) -> PluginUiBase& = delete;
   PluginUiBase(const PluginUiBase&&) = delete;
-  auto operator=(const PluginUiBase &&) -> PluginUiBase& = delete;
+  auto operator=(const PluginUiBase&&) -> PluginUiBase& = delete;
   virtual ~PluginUiBase();
 
   std::string name;
@@ -87,8 +87,6 @@ class PluginUiBase {
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
-
-  static std::locale syslocale;
 
   std::vector<sigc::connection> connections;
 
