@@ -36,17 +36,7 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
-  uint id;
-
-  std::string type;
-
-  std::string name;
-
-  std::string description;
-
-  std::string media_class;
-
-  int priority = -1;
+  NodeInfo nd_info;
 };
 
 void removed_proxy(void* data) {
@@ -54,11 +44,17 @@ void removed_proxy(void* data) {
 
   pw_proxy_destroy(pd->proxy);
 
-  pd->pm->list_nodes.erase(
-      std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(), [=](auto& n) { return n.id == pd->id; }),
-      pd->pm->list_nodes.end());
+  pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
+                                          [=](auto& n) { return n.id == pd->nd_info.id; }),
+                           pd->pm->list_nodes.end());
 
-  util::debug(pd->pm->log_tag + pd->type + " " + pd->name + " was removed");
+  util::debug(pd->pm->log_tag + pd->nd_info.type + " " + pd->nd_info.name + " was removed");
+
+  if (pd->nd_info.media_class == "Audio/Source") {
+    Glib::signal_idle().connect_once([pd] { pd->pm->source_removed.emit(pd->nd_info); });
+  } else if (pd->nd_info.media_class == "Audio/Sink") {
+    Glib::signal_idle().connect_once([pd] { pd->pm->sink_removed.emit(pd->nd_info); });
+  }
 }
 
 void destroy_proxy(void* data) {
@@ -160,33 +156,24 @@ void on_registry_global(void* data,
 
     pd->proxy = proxy;
     pd->pm = pm;
-    pd->id = id;
-    pd->type = type;
-    pd->name = name;
-    pd->description = description;
-    pd->media_class = media_class;
-    pd->priority = priority;
+    pd->nd_info.id = id;
+    pd->nd_info.type = type;
+    pd->nd_info.media_class = media_class;
+    pd->nd_info.name = name;
+    pd->nd_info.description = description;
+    pd->nd_info.priority = priority;
 
     pw_proxy_add_object_listener(proxy, &pd->object_listener, events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &proxy_events, pd);
 
-    NodeInfo nd_info;
-
-    nd_info.id = id;
-    nd_info.type = type;
-    nd_info.media_class = media_class;
-    nd_info.name = name;
-    nd_info.description = description;
-    nd_info.priority = priority;
-
-    pm->list_nodes.emplace_back(nd_info);
+    pm->list_nodes.emplace_back(pd->nd_info);
 
     util::debug(pm->log_tag + media_class + " " + name + " was added");
 
     if (media_class == "Audio/Source") {
-      Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
+      Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
     } else if (media_class == "Audio/Sink") {
-      Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
+      Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
     }
   }
 }

@@ -141,10 +141,10 @@ class PipeManager {
 
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
-  sigc::signal<void, uint> source_removed;
+  sigc::signal<void, NodeInfo> source_removed;
   sigc::signal<void, NodeInfo> sink_added;
   sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_changed;
-  sigc::signal<void, uint> sink_removed;
+  sigc::signal<void, NodeInfo> sink_removed;
   sigc::signal<void, std::string> new_default_sink;
   sigc::signal<void, std::string> new_default_source;
   sigc::signal<void, std::shared_ptr<AppInfo>> sink_input_added;

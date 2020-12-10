@@ -209,7 +209,7 @@ void PipeSettingsUi::on_sink_added(const NodeInfo& info) {
   }
 }
 
-void PipeSettingsUi::on_sink_removed(uint idx) {
+void PipeSettingsUi::on_sink_removed(const NodeInfo& info) {
   Gtk::TreeIter remove_iter;
   std::string remove_name;
 
@@ -222,13 +222,11 @@ void PipeSettingsUi::on_sink_removed(uint idx) {
     c.get_value(0, i);
     c.get_value(1, name);
 
-    if (idx == i) {
+    if (info.id == i) {
       remove_iter = c;
       remove_name = name;
 
       sink_list->erase(remove_iter);
-
-      util::debug(log_tag + "removed sink: " + remove_name);
 
       break;
     }
@@ -276,7 +274,7 @@ void PipeSettingsUi::on_source_added(const NodeInfo& info) {
   }
 }
 
-void PipeSettingsUi::on_source_removed(uint idx) {
+void PipeSettingsUi::on_source_removed(const NodeInfo& info) {
   Gtk::TreeIter remove_iter;
   std::string remove_name;
 
@@ -289,13 +287,11 @@ void PipeSettingsUi::on_source_removed(uint idx) {
     c.get_value(0, i);
     c.get_value(1, name);
 
-    if (idx == i) {
+    if (info.id == i) {
       remove_iter = c;
       remove_name = name;
 
       source_list->erase(remove_iter);
-
-      util::debug(log_tag + "removed source: " + remove_name);
 
       break;
     }

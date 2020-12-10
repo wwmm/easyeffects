@@ -75,11 +75,11 @@ class PipeSettingsUi : public Gtk::Grid {
 
   void on_sink_added(const NodeInfo& info);
 
-  void on_sink_removed(uint idx);
+  void on_sink_removed(const NodeInfo& info);
 
   void on_source_added(const NodeInfo& info);
 
-  void on_source_removed(uint idx);
+  void on_source_removed(const NodeInfo& info);
 
   void on_use_default_sink_toggled();
 
