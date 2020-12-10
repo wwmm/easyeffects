@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 16:54-0300\n"
+"POT-Creation-Date: 2020-12-10 13:58-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1660,11 +1660,11 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:284
+#: src/application.cpp:274
 msgid "Output Presets: "
 msgstr ""
 
-#: src/application.cpp:292
+#: src/application.cpp:282
 msgid "Input Presets: "
 msgstr ""
 

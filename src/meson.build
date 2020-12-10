@@ -12,7 +12,7 @@ pulseeffects_sources = [
 	'effects_base_ui.cpp',
 	'app_info_ui.cpp',
 	'pulse_info_ui.cpp',
-	'sink_input_effects_ui.cpp',
+	'stream_output_effects_ui.cpp',
 	'sink_input_effects.cpp',
 	'source_output_effects_ui.cpp',
 	'source_output_effects.cpp',

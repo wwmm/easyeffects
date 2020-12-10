@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 16:54-0300\n"
+"POT-Creation-Date: 2020-12-10 13:58-0300\n"
 "PO-Revision-Date: 2019-03-28 17:38+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -1677,11 +1677,11 @@ msgstr "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per lo stato"
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra"
 
-#: src/application.cpp:284
+#: src/application.cpp:274
 msgid "Output Presets: "
 msgstr "Profili Uscita: "
 
-#: src/application.cpp:292
+#: src/application.cpp:282
 msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 

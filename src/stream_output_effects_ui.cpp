@@ -17,8 +17,7 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "sink_input_effects_ui.hpp"
-#include "rnnoise_ui.hpp"
+#include "stream_output_effects_ui.hpp"
 
 SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
                                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
@@ -173,7 +172,8 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
   up_down_connections();
 
   connections.emplace_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
-  connections.emplace_back(sie->pm->sink_input_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
+  connections.emplace_back(
+      sie->pm->stream_output_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
   connections.emplace_back(
       sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_changed)));
   connections.emplace_back(
@@ -201,37 +201,31 @@ auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_p
   return ui;
 }
 
-void SinkInputEffectsUi::on_app_added(std::shared_ptr<AppInfo> app_info) {
+void SinkInputEffectsUi::on_app_added(NodeInfo node_info) {
   // Blocklist check
-  auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(app_info->name, PresetType::output);
+  auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(node_info.name, PresetType::output);
 
   if (forbidden_app) {
-    app_info->visible = BlocklistSettingsUi::get_blocklisted_apps_visibility();
+    node_info.visible_to_user = BlocklistSettingsUi::get_blocklisted_apps_visibility();
 
-    if (!app_info->visible) {
+    if (!node_info.visible_to_user) {
       return;
     }
   } else {
-    app_info->visible = true;
-  }
-
-  // Duplicate entry check
-  for (const auto& a : apps_list) {
-    if (a->app_info->index == app_info->index) {
-      // do not add the same app two times in the interface
-      return;
-    }
+    node_info.visible_to_user = true;
   }
 
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
 
   AppInfoUi* appui = nullptr;
 
-  builder->get_widget_derived("widgets_grid", appui, app_info, pm);
+  util::warning(node_info.name);
 
-  apps_box->add(*appui);
+  //   builder->get_widget_derived("widgets_grid", appui, app_info, pm);
 
-  apps_list.emplace_back(appui);
+  //   apps_box->add(*appui);
+
+  //   apps_list.emplace_back(appui);
 }
 
 void SinkInputEffectsUi::level_meters_connections() {

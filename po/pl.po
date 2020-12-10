@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 16:54-0300\n"
+"POT-Creation-Date: 2020-12-10 13:58-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -1764,12 +1764,12 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:284
+#: src/application.cpp:274
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Profile: "
 
-#: src/application.cpp:292
+#: src/application.cpp:282
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Importuj profile"

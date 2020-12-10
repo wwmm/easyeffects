@@ -101,10 +101,10 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
     }
   }
 
-  pm->source_output_added.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_added));
-  pm->source_output_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_changed));
-  pm->source_output_removed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_removed));
-  pm->source_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_source_changed));
+  // pm->source_output_added.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_added));
+  // pm->source_output_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_changed));
+  // pm->source_output_removed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_removed));
+  // pm->source_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_source_changed));
 
   g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(child_settings, "latency-pulsesrc", source, "latency-time", G_SETTINGS_BIND_DEFAULT);
@@ -189,8 +189,6 @@ SourceOutputEffects::~SourceOutputEffects() {
 }
 
 void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
-  PipelineBase::on_app_added(app_info);
-
   bool forbidden_app = false;
   bool success = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-in");

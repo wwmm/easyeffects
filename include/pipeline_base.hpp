@@ -40,7 +40,7 @@
 
 class PipelineBase {
  public:
-  PipelineBase(const std::string& tag, PipeManager* pulse_manager);
+  PipelineBase(const std::string& tag, PipeManager* pipe_manager);
   PipelineBase(const PipelineBase&) = delete;
   auto operator=(const PipelineBase&) -> PipelineBase& = delete;
   PipelineBase(const PipelineBase&&) = delete;
@@ -127,10 +127,6 @@ class PipelineBase {
  protected:
   void set_pulseaudio_props(const std::string& props) const;
   void set_caps(const uint& sampling_rate);
-
-  void on_app_added(const std::shared_ptr<AppInfo>& app_info);
-  void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
-  void on_app_removed(uint idx);
 
   void on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info);
   void on_source_changed(const std::shared_ptr<mySourceInfo>& source_info);

@@ -17,8 +17,8 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SINK_INPUT_EFFECTS_UI_HPP
-#define SINK_INPUT_EFFECTS_UI_HPP
+#ifndef STREAM_OUTPUT_EFFECTS_UI_HPP
+#define STREAM_OUTPUT_EFFECTS_UI_HPP
 
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
@@ -59,7 +59,7 @@ class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
 
-  void on_app_added(std::shared_ptr<AppInfo> app_info) override;
+  void on_app_added(NodeInfo node_info);
 
  protected:
   std::string log_tag = "sie_ui: ";

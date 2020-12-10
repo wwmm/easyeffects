@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-09 16:54-0300\n"
+"POT-Creation-Date: 2020-12-10 13:58-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -1736,11 +1736,11 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:284
+#: src/application.cpp:274
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:292
+#: src/application.cpp:282
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 

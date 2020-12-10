@@ -35,8 +35,8 @@
 #include "calibration_ui.hpp"
 #include "presets_menu_ui.hpp"
 #include "pulse_info_ui.hpp"
-#include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
+#include "stream_output_effects_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
@@ -44,7 +44,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   ApplicationUi(const ApplicationUi&) = delete;
   auto operator=(const ApplicationUi&) -> ApplicationUi& = delete;
   ApplicationUi(const ApplicationUi&&) = delete;
-  auto operator=(const ApplicationUi &&) -> ApplicationUi& = delete;
+  auto operator=(const ApplicationUi&&) -> ApplicationUi& = delete;
   ~ApplicationUi() override;
 
   static auto create(Application* app) -> ApplicationUi*;

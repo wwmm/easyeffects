@@ -334,9 +334,9 @@ auto bypass_on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_dat
 
 }  // namespace
 
-PipelineBase::PipelineBase(const std::string& tag, PipeManager* pulse_manager)
+PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
     : log_tag(tag),
-      pm(pulse_manager),
+      pm(pipe_manager),
       settings(g_settings_new("com.github.wwmm.pulseeffects")),
       spectrum_settings(g_settings_new("com.github.wwmm.pulseeffects.spectrum")),
       rtkit(std::make_unique<RealtimeKit>(tag)) {
@@ -630,33 +630,6 @@ void PipelineBase::get_latency() {
   }
 
   gst_query_unref(q);
-}
-
-void PipelineBase::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
-  for (const auto& a : apps_list) {
-    if (a->index == app_info->index) {
-      return;  // do not add the same app two times
-    }
-  }
-
-  apps_list.emplace_back(app_info);
-
-  update_pipeline_state();
-}
-
-void PipelineBase::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
-  std::replace_copy_if(
-      apps_list.begin(), apps_list.end(), apps_list.begin(), [=](auto& a) { return a->index == app_info->index; },
-      app_info);
-
-  update_pipeline_state();
-}
-
-void PipelineBase::on_app_removed(uint idx) {
-  apps_list.erase(std::remove_if(apps_list.begin(), apps_list.end(), [=](auto& a) { return a->index == idx; }),
-                  apps_list.end());
-
-  update_pipeline_state();
 }
 
 void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info) {

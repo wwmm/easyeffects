@@ -50,6 +50,8 @@ struct NodeInfo {
   int n_input_ports;
 
   int n_output_ports;
+
+  bool visible_to_user;
 };
 
 struct mySinkInfo {
@@ -147,10 +149,10 @@ class PipeManager {
   sigc::signal<void, NodeInfo> sink_removed;
   sigc::signal<void, std::string> new_default_sink;
   sigc::signal<void, std::string> new_default_source;
-  sigc::signal<void, std::shared_ptr<AppInfo>> sink_input_added;
+  sigc::signal<void, NodeInfo> stream_output_added;
   sigc::signal<void, std::shared_ptr<AppInfo>> sink_input_changed;
   sigc::signal<void, uint> sink_input_removed;
-  sigc::signal<void, std::shared_ptr<AppInfo>> source_output_added;
+  sigc::signal<void, NodeInfo> stream_input_added;
   sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
   sigc::signal<void, uint> source_output_removed;
   sigc::signal<void> server_changed;

@@ -51,7 +51,7 @@ class SourceOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   static auto add_to_stack(Gtk::Stack* stack, SourceOutputEffects* soe_ptr) -> SourceOutputEffectsUi*;
 
-  void on_app_added(std::shared_ptr<AppInfo> app_info) override;
+  void on_app_added(NodeInfo node_info);
 
  protected:
   std::string log_tag = "soe_ui: ";

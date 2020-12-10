@@ -36,15 +36,20 @@ jobs:
           command: |
             DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
             echo "export $DBUS" >> $BASH_ENV
+      # - run:
+      #     name: Starting PipeWire
+      #     command: |
+      #       systemctl start pipewire
+      #       pactl load-module module-null-sink sink_name=DummyOutput
+      #       pactl load-module module-null-source source_name=DummyInput
+      #       pacmd set-default-source DummyInput
+      #       pacmd set-default-sink DummyOutput
+      #       pactl list sinks && pactl list sources
       - run:
-          name: Starting PipeWire
+          name: Starting PipeWire in background
           command: |
-            systemctl start pipewire
-            # pactl load-module module-null-sink sink_name=DummyOutput
-            # pactl load-module module-null-source source_name=DummyInput
-            # pacmd set-default-source DummyInput
-            # pacmd set-default-sink DummyOutput
-            # pactl list sinks && pactl list sources
+            pipewire
+          background: true
       - restore_cache:
           keys:
             - ccache-{{ checksum "/tmp/date" }}

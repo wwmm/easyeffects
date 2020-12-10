@@ -174,6 +174,8 @@ void on_registry_global(void* data,
       Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
     } else if (media_class == "Audio/Sink") {
       Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+    } else if (media_class == "Stream/Output/Audio") {
+      Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
     }
   }
 }

@@ -130,10 +130,10 @@ SinkInputEffects::SinkInputEffects(PipeManager* pulse_manager) : PipelineBase("s
     }
   }
 
-  pm->sink_input_added.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_added));
-  pm->sink_input_changed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_changed));
-  pm->sink_input_removed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_removed));
-  pm->sink_changed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_sink_changed));
+  // pm->sink_input_added.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_added));
+  // pm->sink_input_changed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_changed));
+  // pm->sink_input_removed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_app_removed));
+  // pm->sink_changed.connect(sigc::mem_fun(*this, &SinkInputEffects::on_sink_changed));
 
   g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(child_settings, "latency-pulsesrc", source, "latency-time", G_SETTINGS_BIND_DEFAULT);
@@ -253,8 +253,6 @@ SinkInputEffects::~SinkInputEffects() {
 }
 
 void SinkInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
-  PipelineBase::on_app_added(app_info);
-
   bool forbidden_app = false;
   bool success = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-out");

@@ -76,29 +76,29 @@ EffectsBaseUi::~EffectsBaseUi() {
 }
 
 void EffectsBaseUi::on_app_changed(const std::shared_ptr<AppInfo>& app_info) {
-  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-    auto n = it - apps_list.begin();
+  // for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+  //   auto n = it - apps_list.begin();
 
-    if (apps_list[n]->app_info->index == app_info->index) {
-      apps_list[n]->update(app_info);
-    }
-  }
+  //   if (apps_list[n]->app_info->index == app_info->index) {
+  //     apps_list[n]->update(app_info);
+  //   }
+  // }
 }
 
 void EffectsBaseUi::on_app_removed(uint idx) {
-  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-    auto n = it - apps_list.begin();
+  // for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+  //   auto n = it - apps_list.begin();
 
-    if (apps_list[n]->app_info->index == idx) {
-      auto* appui = apps_list[n];
+  //   if (apps_list[n]->app_info->index == idx) {
+  //     auto* appui = apps_list[n];
 
-      apps_box->remove(*appui);
+  //     apps_box->remove(*appui);
 
-      apps_list.erase(it);
+  //     apps_list.erase(it);
 
-      break;
-    }
-  }
+  //     break;
+  //   }
+  // }
 }
 
 auto EffectsBaseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
