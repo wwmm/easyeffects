@@ -19,11 +19,14 @@
 
 #include "app_info_ui.hpp"
 
+#include <utility>
+#include "pipewire/node.h"
+
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
-                     std::shared_ptr<AppInfo> info,
+                     NodeInfo node_info,
                      PipeManager* pulse_manager)
-    : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
+    : Gtk::Grid(cobject), nd_info(std::move(node_info)), pm(pulse_manager) {
   // loading glade widgets
 
   builder->get_widget("enable", enable);
@@ -43,33 +46,33 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("state", state);
 
   is_blocklisted = BlocklistSettingsUi::app_is_blocklisted(
-      app_info->name, (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input);
+      nd_info.name, (nd_info.media_class == "Stream/Output/Audio") ? PresetType::output : PresetType::input);
 
-  is_enabled = app_info->connected && !is_blocklisted;
+  is_enabled = nd_info.connected && !is_blocklisted;
 
   init_widgets();
   connect_signals();
 
-  if (app_info->app_type == "sink_input") {
-    timeout_connection = Glib::signal_timeout().connect_seconds(
-        [&]() {
-          if (app_info != nullptr) {
-            if (app_info->wants_to_play) {
-              pm->get_sink_input_info(app_info->index);
-            }
-          }
+  // if (app_info->app_type == "sink_input") {
+  //   timeout_connection = Glib::signal_timeout().connect_seconds(
+  //       [&]() {
+  //         if (app_info != nullptr) {
+  //           if (app_info->wants_to_play) {
+  //             pm->get_sink_input_info(app_info->index);
+  //           }
+  //         }
 
-          return running;
-        },
-        5);
-  }
+  //         return running;
+  //       },
+  //       5);
+  // }
 }
 
 AppInfoUi::~AppInfoUi() {
   running = false;
   timeout_connection.disconnect();
 
-  util::debug(log_tag + app_info->name + " info ui destroyed");
+  util::debug(log_tag + nd_info.name + " info ui destroyed");
 }
 
 void AppInfoUi::init_widgets() {
@@ -80,39 +83,39 @@ void AppInfoUi::init_widgets() {
 
   blocklist->set_active(is_blocklisted);
 
-  app_icon->set_from_icon_name(app_info->icon_name, Gtk::ICON_SIZE_BUTTON);
+  app_icon->set_from_icon_name(nd_info.icon_name, Gtk::ICON_SIZE_BUTTON);
 
-  app_name->set_text(app_info->name);
+  app_name->set_text(nd_info.name);
 
-  if (app_info->name == app_info->media_name || app_info->media_name.empty()) {
+  if (nd_info.name == nd_info.media_name || nd_info.media_name.empty()) {
     media_name->set_visible(false);
   } else {
     media_name->set_visible(true);
 
-    media_name->set_text(app_info->media_name);
+    media_name->set_text(nd_info.media_name);
   }
 
-  volume->set_value(app_info->volume);
+  // volume->set_value(app_info->volume);
 
-  mute->set_active(app_info->mute != 0);
+  // mute->set_active(app_info->mute != 0);
 
-  format->set_text(app_info->format);
+  // format->set_text(app_info->format);
 
-  rate->set_text(std::to_string(app_info->rate) + " Hz");
+  // rate->set_text(std::to_string(app_info->rate) + " Hz");
 
-  channels->set_text(std::to_string(app_info->channels));
+  channels->set_text(std::to_string(nd_info.n_output_ports));
 
-  resampler->set_text(app_info->resampler);
+  // resampler->set_text(app_info->resampler);
 
-  buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
+  // buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
 
-  latency->set_text(PluginUiBase::level_to_str(app_info->latency * ms_factor, 1) + " ms");
+  // latency->set_text(PluginUiBase::level_to_str(app_info->latency * ms_factor, 1) + " ms");
 
-  if (app_info->corked != 0) {
-    state->set_text(_("paused"));
-  } else {
-    state->set_text(_("playing"));
-  }
+  // if (app_info->corked != 0) {
+  //   state->set_text(_("paused"));
+  // } else {
+  //   state->set_text(_("playing"));
+  // }
 }
 
 void AppInfoUi::connect_signals() {
@@ -123,12 +126,12 @@ void AppInfoUi::connect_signals() {
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 
   blocklist_connection = blocklist->signal_clicked().connect([=]() {
-    PresetType preset_type = (app_info->app_type == "sink_input") ? PresetType::output : PresetType::input;
+    PresetType preset_type = (nd_info.media_class == "Stream/Output/Audio") ? PresetType::output : PresetType::input;
 
     if (blocklist->get_active()) {
       // Add new entry to blocklist vector
 
-      BlocklistSettingsUi::add_new_entry(app_info->name, preset_type);
+      BlocklistSettingsUi::add_new_entry(nd_info.name, preset_type);
 
       pre_bl_state = is_enabled;
 
@@ -142,7 +145,7 @@ void AppInfoUi::connect_signals() {
     } else {
       // Remove app name entry from blocklist vector
 
-      BlocklistSettingsUi::remove_entry(app_info->name, preset_type);
+      BlocklistSettingsUi::remove_entry(nd_info.name, preset_type);
 
       is_blocklisted = false;
 
@@ -158,19 +161,19 @@ void AppInfoUi::connect_signals() {
 auto AppInfoUi::on_enable_app(bool state) -> bool {
   bool success = false;
 
-  if (state) {
-    if (app_info->app_type == "sink_input") {
-      success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
-    } else {
-      success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
-    }
-  } else {
-    if (app_info->app_type == "sink_input") {
-      success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
-    } else {
-      success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
-    }
-  }
+  // if (state) {
+  //   if (app_info->app_type == "sink_input") {
+  //     success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
+  //   } else {
+  //     success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+  //   }
+  // } else {
+  //   if (app_info->app_type == "sink_input") {
+  //     success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+  //   } else {
+  //     success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+  //   }
+  // }
 
   if (success) {
     is_enabled = state;
@@ -182,11 +185,11 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
 void AppInfoUi::on_volume_changed() {
   auto value = volume->get_value();
 
-  if (app_info->app_type == "sink_input") {
-    pm->set_sink_input_volume(app_info->name, app_info->index, app_info->channels, value);
-  } else {
-    pm->set_source_output_volume(app_info->name, app_info->index, app_info->channels, value);
-  }
+  // if (app_info->app_type == "sink_input") {
+  //   pm->set_sink_input_volume(app_info->name, app_info->index, app_info->channels, value);
+  // } else {
+  //   pm->set_source_output_volume(app_info->name, app_info->index, app_info->channels, value);
+  // }
 }
 
 void AppInfoUi::on_mute() {
@@ -202,15 +205,15 @@ void AppInfoUi::on_mute() {
     volume->set_sensitive(true);
   }
 
-  if (app_info->app_type == "sink_input") {
-    pm->set_sink_input_mute(app_info->name, app_info->index, state);
-  } else {
-    pm->set_source_output_mute(app_info->name, app_info->index, state);
-  }
+  // if (app_info->app_type == "sink_input") {
+  //   pm->set_sink_input_mute(app_info->name, app_info->index, state);
+  // } else {
+  //   pm->set_source_output_mute(app_info->name, app_info->index, state);
+  // }
 }
 
-void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
-  app_info = info;
+void AppInfoUi::update(NodeInfo node_info) {
+  nd_info = std::move(node_info);
 
   enable_connection.disconnect();
   volume_connection.disconnect();

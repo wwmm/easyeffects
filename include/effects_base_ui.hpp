@@ -48,8 +48,8 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
-  void on_app_changed(const std::shared_ptr<AppInfo>& app_info);
-  void on_app_removed(uint idx);
+  void on_app_changed(const NodeInfo& node_info);
+  void on_app_removed(const NodeInfo& node_info);
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
  protected:

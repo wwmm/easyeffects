@@ -43,6 +43,10 @@ struct NodeInfo {
 
   std::string media_class;
 
+  std::string icon_name;
+
+  std::string media_name;
+
   int priority = -1;
 
   pw_node_state state;
@@ -52,6 +56,8 @@ struct NodeInfo {
   int n_output_ports;
 
   bool visible_to_user;
+
+  bool connected;
 };
 
 struct mySinkInfo {
@@ -150,11 +156,11 @@ class PipeManager {
   sigc::signal<void, std::string> new_default_sink;
   sigc::signal<void, std::string> new_default_source;
   sigc::signal<void, NodeInfo> stream_output_added;
-  sigc::signal<void, std::shared_ptr<AppInfo>> sink_input_changed;
-  sigc::signal<void, uint> sink_input_removed;
+  sigc::signal<void, NodeInfo> stream_output_changed;
+  sigc::signal<void, NodeInfo> stream_output_removed;
   sigc::signal<void, NodeInfo> stream_input_added;
-  sigc::signal<void, std::shared_ptr<AppInfo>> source_output_changed;
-  sigc::signal<void, uint> source_output_removed;
+  sigc::signal<void, NodeInfo> stream_input_changed;
+  sigc::signal<void, NodeInfo> stream_input_removed;
   sigc::signal<void> server_changed;
   sigc::signal<void, std::shared_ptr<myModuleInfo>> module_info;
   sigc::signal<void, std::shared_ptr<myClientInfo>> client_info;

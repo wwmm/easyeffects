@@ -175,9 +175,9 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       sie->pm->stream_output_added.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_added)));
   connections.emplace_back(
-      sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_changed)));
+      sie->pm->stream_output_changed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_changed)));
   connections.emplace_back(
-      sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_removed)));
+      sie->pm->stream_output_removed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_removed)));
 }
 
 StreamOutputEffectsUi::~StreamOutputEffectsUi() {
@@ -195,7 +195,7 @@ auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* si
 
   builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
 
-  stack->add(*ui, "sink_inputs");
+  stack->add(*ui, "stream_output");
   stack->child_property_icon_name(*ui).set_value("audio-speakers-symbolic");
 
   return ui;
@@ -219,13 +219,11 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
 
   AppInfoUi* appui = nullptr;
 
-  util::warning(node_info.name);
+  builder->get_widget_derived("widgets_grid", appui, node_info, pm);
 
-  //   builder->get_widget_derived("widgets_grid", appui, app_info, pm);
+  apps_box->add(*appui);
 
-  //   apps_box->add(*appui);
-
-  //   apps_list.emplace_back(appui);
+  apps_list.emplace_back(appui);
 }
 
 void StreamOutputEffectsUi::level_meters_connections() {

@@ -133,9 +133,9 @@ SourceOutputEffectsUi::SourceOutputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       soe->pm->stream_input_added.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_app_added)));
   connections.emplace_back(
-      soe->pm->source_output_changed.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_app_changed)));
+      soe->pm->stream_input_changed.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_app_changed)));
   connections.emplace_back(
-      soe->pm->source_output_removed.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_app_removed)));
+      soe->pm->stream_input_removed.connect(sigc::mem_fun(this, &SourceOutputEffectsUi::on_app_removed)));
 }
 
 SourceOutputEffectsUi::~SourceOutputEffectsUi() {

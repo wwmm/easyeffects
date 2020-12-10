@@ -39,7 +39,7 @@ class AppInfoUi : public Gtk::Grid {
  public:
   AppInfoUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
-            std::shared_ptr<AppInfo> info,
+            NodeInfo node_info,
             PipeManager* pulse_manager);
   AppInfoUi(const AppInfoUi&) = delete;
   auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
@@ -67,9 +67,9 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Label* latency = nullptr;
   Gtk::Label* state = nullptr;
 
-  std::shared_ptr<AppInfo> app_info;
+  NodeInfo nd_info;
 
-  void update(const std::shared_ptr<AppInfo>& info);
+  void update(NodeInfo node_info);
 
  private:
   std::string log_tag = "app_info_ui: ";

@@ -54,6 +54,8 @@ void removed_proxy(void* data) {
     Glib::signal_idle().connect_once([pd] { pd->pm->source_removed.emit(pd->nd_info); });
   } else if (pd->nd_info.media_class == "Audio/Sink") {
     Glib::signal_idle().connect_once([pd] { pd->pm->sink_removed.emit(pd->nd_info); });
+  } else if (pd->nd_info.media_class == "Stream/Output/Audio") {
+    Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_removed.emit(pd->nd_info); });
   }
 }
 
@@ -70,19 +72,35 @@ const struct pw_proxy_events proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy =
 void on_node_info(void* object, const struct pw_node_info* info) {
   auto* pd = static_cast<proxy_data*>(object);
 
-  for (auto& n : pd->pm->list_nodes) {
-    if (n.id == info->id) {
-      n.state = info->state;
-      n.n_input_ports = info->n_input_ports;
-      n.n_output_ports = info->n_output_ports;
-
+  for (auto& node : pd->pm->list_nodes) {
+    if (node.id == info->id) {
+      const auto* icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
+      const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
 
+      pd->nd_info.state = info->state;
+      pd->nd_info.n_input_ports = info->n_input_ports;
+      pd->nd_info.n_output_ports = info->n_output_ports;
+
       if (prio_session != nullptr) {
-        n.priority = std::atoi(prio_session);
+        pd->nd_info.priority = std::atoi(prio_session);
       }
 
-      // std::cout << "updating node: " << n.name << std::endl;
+      if (icon_name != nullptr) {
+        pd->nd_info.icon_name = icon_name;
+      }
+
+      if (media_name != nullptr) {
+        pd->nd_info.media_name = media_name;
+      }
+
+      node = pd->nd_info;
+
+      if (node.media_class == "Stream/Output/Audio") {
+        Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_changed.emit(pd->nd_info); });
+      }
+
+      // std::cout << "updating node: " << node.n_output_ports << " " << pd->nd_info.n_output_ports << std::endl;
 
       break;
     }
@@ -114,15 +132,16 @@ void on_registry_global(void* data,
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
     const auto* node_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
-    const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-    const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-    const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
     if (node_media_class != nullptr) {
       media_class = node_media_class;
 
       if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Stream/Output/Audio" ||
           media_class == "Stream/Input/Audio") {
+        const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+        const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
+        const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
+
         listen = true;
 
         if (node_name != nullptr) {
@@ -168,7 +187,7 @@ void on_registry_global(void* data,
 
     pm->list_nodes.emplace_back(pd->nd_info);
 
-    util::debug(pm->log_tag + media_class + " " + name + " was added");
+    util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + name + " was added");
 
     if (media_class == "Audio/Source") {
       Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
