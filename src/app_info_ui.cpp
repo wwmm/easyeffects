@@ -18,6 +18,7 @@
  */
 
 #include "app_info_ui.hpp"
+#include "pipewire/node.h"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
@@ -108,11 +109,30 @@ void AppInfoUi::init_widgets() {
 
   latency->set_text(float_to_localized_string(nd_info.latency, 2) + " ms");
 
-  // if (app_info->corked != 0) {
-  //   state->set_text(_("paused"));
-  // } else {
-  //   state->set_text(_("playing"));
-  // }
+  switch (nd_info.state) {
+    case PW_NODE_STATE_RUNNING:
+      state->set_text(_("playing"));
+
+      break;
+    case PW_NODE_STATE_SUSPENDED:
+      state->set_text(_("suspended"));
+
+      break;
+    case PW_NODE_STATE_IDLE:
+      state->set_text(_("idle"));
+
+      break;
+    case PW_NODE_STATE_CREATING:
+      state->set_text(_("creating"));
+
+      break;
+    case PW_NODE_STATE_ERROR:
+      state->set_text(_("error"));
+
+      break;
+    default:
+      break;
+  }
 }
 
 void AppInfoUi::connect_signals() {
