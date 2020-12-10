@@ -45,24 +45,24 @@
 #include "sink_input_effects.hpp"
 #include "stereo_tools_ui.hpp"
 
-class SinkInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
+class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
-  SinkInputEffectsUi(BaseObjectType* cobject,
-                     const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                     const Glib::RefPtr<Gio::Settings>& refSettings,
-                     SinkInputEffects* sie_ptr);
-  SinkInputEffectsUi(const SinkInputEffectsUi&) = delete;
-  auto operator=(const SinkInputEffectsUi&) -> SinkInputEffectsUi& = delete;
-  SinkInputEffectsUi(const SinkInputEffectsUi&&) = delete;
-  auto operator=(const SinkInputEffectsUi&&) -> SinkInputEffectsUi& = delete;
-  ~SinkInputEffectsUi() override;
+  StreamOutputEffectsUi(BaseObjectType* cobject,
+                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                        const Glib::RefPtr<Gio::Settings>& refSettings,
+                        SinkInputEffects* sie_ptr);
+  StreamOutputEffectsUi(const StreamOutputEffectsUi&) = delete;
+  auto operator=(const StreamOutputEffectsUi&) -> StreamOutputEffectsUi& = delete;
+  StreamOutputEffectsUi(const StreamOutputEffectsUi&&) = delete;
+  auto operator=(const StreamOutputEffectsUi&&) -> StreamOutputEffectsUi& = delete;
+  ~StreamOutputEffectsUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi*;
+  static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> StreamOutputEffectsUi*;
 
   void on_app_added(NodeInfo node_info);
 
  protected:
-  std::string log_tag = "sie_ui: ";
+  std::string log_tag = "soe_ui: ";
 
  private:
   SinkInputEffects* sie = nullptr;

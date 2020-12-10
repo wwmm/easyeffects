@@ -19,10 +19,10 @@
 
 #include "stream_output_effects_ui.hpp"
 
-SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
-                                       const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                                       const Glib::RefPtr<Gio::Settings>& refSettings,
-                                       SinkInputEffects* sie_ptr)
+StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
+                                             const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                                             const Glib::RefPtr<Gio::Settings>& refSettings,
+                                             SinkInputEffects* sie_ptr)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm), sie(sie_ptr) {
   // populate stack
 
@@ -173,25 +173,25 @@ SinkInputEffectsUi::SinkInputEffectsUi(BaseObjectType* cobject,
 
   connections.emplace_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
   connections.emplace_back(
-      sie->pm->stream_output_added.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_added)));
+      sie->pm->stream_output_added.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_added)));
   connections.emplace_back(
-      sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_changed)));
+      sie->pm->sink_input_changed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_changed)));
   connections.emplace_back(
-      sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_app_removed)));
+      sie->pm->sink_input_removed.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_app_removed)));
 }
 
-SinkInputEffectsUi::~SinkInputEffectsUi() {
+StreamOutputEffectsUi::~StreamOutputEffectsUi() {
   sie->disable_spectrum();
 
   util::debug(log_tag + "destroyed");
 }
 
-auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> SinkInputEffectsUi* {
+auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> StreamOutputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
 
-  SinkInputEffectsUi* ui = nullptr;
+  StreamOutputEffectsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
 
@@ -201,7 +201,7 @@ auto SinkInputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_p
   return ui;
 }
 
-void SinkInputEffectsUi::on_app_added(NodeInfo node_info) {
+void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
   // Blocklist check
   auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(node_info.name, PresetType::output);
 
@@ -228,11 +228,11 @@ void SinkInputEffectsUi::on_app_added(NodeInfo node_info) {
   //   apps_list.emplace_back(appui);
 }
 
-void SinkInputEffectsUi::level_meters_connections() {
+void StreamOutputEffectsUi::level_meters_connections() {
   // global output level meter connection
 
   connections.emplace_back(
-      sie->global_output_level.connect(sigc::mem_fun(this, &SinkInputEffectsUi::on_new_output_level_db)));
+      sie->global_output_level.connect(sigc::mem_fun(this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
   // limiter level meters connections
 
@@ -441,7 +441,7 @@ void SinkInputEffectsUi::level_meters_connections() {
       sie->rnnoise_output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level_db)));
 }
 
-void SinkInputEffectsUi::up_down_connections() {
+void StreamOutputEffectsUi::up_down_connections() {
   auto on_up = [=](auto p) {
     auto order = Glib::Variant<std::vector<std::string>>();
 

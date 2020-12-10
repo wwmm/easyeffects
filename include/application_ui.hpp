@@ -74,8 +74,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   PresetsMenuUi* presets_menu_ui = nullptr;
 
-  SinkInputEffectsUi* sie_ui = nullptr;
-  SourceOutputEffectsUi* soe_ui = nullptr;
+  StreamOutputEffectsUi* soe_ui = nullptr;
+  SourceOutputEffectsUi* sie_ui = nullptr;
   PulseInfoUi* pulse_info_ui = nullptr;
 
   int sie_latency = 0, soe_latency = 0;
