@@ -252,7 +252,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
-  connections.emplace_back(settings->signal_changed("split-channels").connect([=](auto sc) {
+  connections.emplace_back(settings->signal_changed("split-channels").connect([=](const auto& sc) {
     stack->set_visible_child("left_channel");
 
     on_nbands_changed();
@@ -359,12 +359,12 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto band_quality = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_quality"));
 
     auto update_quality_width = [=]() {
-      auto q = band_quality->get_value();
+      const auto& q = band_quality->get_value();
 
       band_quality_label->set_text("Q " + level_to_str(q, 2));
 
       if (q > 0.0) {
-        auto f = band_frequency->get_value();
+        const auto& f = band_frequency->get_value();
 
         band_width->set_text(level_to_str(f / q, 1) + " Hz");
       } else {
@@ -373,7 +373,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     };
 
     auto update_band_label = [=]() {
-      auto f = band_frequency->get_value();
+      const auto& f = band_frequency->get_value();
 
       if (f > 1000.0) {
         band_label->set_text(level_to_str(f / 1000.0, 1) + " kHz");
@@ -383,7 +383,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     };
 
     auto update_gain = [=]() {
-      auto g = band_gain->get_value();
+      const auto& g = band_gain->get_value();
 
       band_gain_label->set_text(level_to_str_showpos(g, 2));
     };
@@ -492,12 +492,12 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     auto band_quality = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_quality"));
 
     auto update_quality_width = [=]() {
-      auto q = band_quality->get_value();
+      const auto& q = band_quality->get_value();
 
       band_quality_label->set_text("Q " + level_to_str(q, 2));
 
       if (q > 0.0) {
-        auto f = band_frequency->get_value();
+        const auto& f = band_frequency->get_value();
 
         band_width->set_text(level_to_str(f / q, 1) + " Hz");
       } else {
@@ -506,7 +506,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     };
 
     auto update_band_label = [=]() {
-      auto f = band_frequency->get_value();
+      const auto& f = band_frequency->get_value();
 
       if (f > 1000.0) {
         band_label->set_text(level_to_str(f / 1000.0, 1) + " kHz");
@@ -516,7 +516,7 @@ void EqualizerUi::build_unified_bands(const int& nbands) {
     };
 
     auto update_gain = [=]() {
-      auto g = band_gain->get_value();
+      const auto& g = band_gain->get_value();
 
       band_gain_label->set_text(level_to_str_showpos(g, 2));
     };
@@ -638,7 +638,7 @@ void EqualizerUi::on_calculate_frequencies() {
   double freq1 = 0.0;
   double step = 0.0;
 
-  int nbands = settings->get_int("num-bands");
+  const auto& nbands = settings->get_int("num-bands");
 
   // code taken from gstreamer equalizer sources: gstiirequalizer.c
   // function: gst_iir_equalizer_compute_frequencies
@@ -646,7 +646,7 @@ void EqualizerUi::on_calculate_frequencies() {
   step = pow(max_freq / min_freq, 1.0 / nbands);
   freq0 = min_freq;
 
-  auto config_band = [&](auto cfg, auto n, auto freq, auto q) {
+  auto config_band = [&](const auto& cfg, const auto& n, const auto& freq, const auto& q) {
     cfg->set_double(std::string("band" + std::to_string(n) + "-frequency"), freq);
 
     cfg->set_double(std::string("band" + std::to_string(n) + "-q"), q);
@@ -685,7 +685,7 @@ void EqualizerUi::load_preset(const std::string& file_name) {
 
   boost::property_tree::read_json(ss, root);
 
-  int nbands = root.get<int>("equalizer.num-bands");
+  const auto& nbands = root.get<int>("equalizer.num-bands");
 
   settings->set_int("num-bands", nbands);
 
@@ -695,16 +695,16 @@ void EqualizerUi::load_preset(const std::string& file_name) {
 
   settings->set_double("output-gain", root.get<double>("equalizer.output-gain"));
 
-  auto config_band = [&](auto cfg, auto n) {
+  auto config_band = [&](const auto& cfg, const auto& n) {
     double q = 0.0;
 
-    auto f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
+    const auto& f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
 
     try {
       q = root.get<double>("equalizer.band" + std::to_string(n) + ".q");
     } catch (const boost::property_tree::ptree_error& e) {
       try {
-        auto w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
+        const auto& w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
 
         q = f / w;
       } catch (const boost::property_tree::ptree_error& e) {
@@ -839,7 +839,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=](auto response_id) {
+  dialog->signal_response().connect([=](const auto& response_id) {
     switch (response_id) {
       case Gtk::ResponseType::RESPONSE_ACCEPT: {
         import_apo_preset(dialog->get_file()->get_path());
