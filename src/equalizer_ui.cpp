@@ -252,23 +252,10 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
-  connections.emplace_back(settings->signal_changed("split-channels").connect([&](auto key) {
-    for (auto& c : connections_bands) {
-      c.disconnect();
-    }
-
-    connections_bands.clear();
-
+  connections.emplace_back(settings->signal_changed("split-channels").connect([=](auto sc) {
     stack->set_visible_child("left_channel");
 
-    bool split = settings->get_boolean("split-channels");
-
-    if (split) {
-      build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
-      build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
-    } else {
-      build_unified_bands(static_cast<int>(nbands->get_value()));
-    }
+    on_nbands_changed();
   }));
 
   // gsettings bindings
@@ -306,11 +293,13 @@ void EqualizerUi::on_nbands_changed() {
 
   bool split = settings->get_boolean("split-channels");
 
+  const auto& nb = static_cast<int>(nbands->get_value());
+
   if (split) {
-    build_bands(bands_grid_left, settings_left, static_cast<int>(nbands->get_value()));
-    build_bands(bands_grid_right, settings_right, static_cast<int>(nbands->get_value()));
+    build_bands(bands_grid_left, settings_left, nb);
+    build_bands(bands_grid_right, settings_right, nb);
   } else {
-    build_unified_bands(static_cast<int>(nbands->get_value()));
+    build_unified_bands(nb);
   }
 }
 
