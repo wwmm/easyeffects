@@ -273,6 +273,17 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
+  // explicitly invoke the method to build equalizer bands (fixes #843)
+  // if the preset num-bands value is equal to the default schema value
+  // otherwise it's automatically invoked at startup by the functor on signal_value_changed
+
+  Glib::Variant<gint32> default_nbands;
+  settings->get_default_value("num-bands", default_nbands);
+
+  if (default_nbands.get() == settings->get_int("num-bands")) {
+    on_nbands_changed();
+  }
+
   populate_presets_listbox();
 }
 
