@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+- The equalizer UI is now correctly shown when a profile with 30 bands is loaded at startup.
+- Added a workaround for systems that were crashing because the locale is not correctly set at system level.
+
 ## [4.8.3]
 
 ### Added
