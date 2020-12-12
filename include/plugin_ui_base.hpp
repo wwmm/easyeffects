@@ -88,7 +88,7 @@ class PluginUiBase {
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
-  static std::locale syslocale;
+  static std::locale global_locale;
 
   std::vector<sigc::connection> connections;
 
@@ -96,6 +96,14 @@ class PluginUiBase {
                          const std::string& name,
                          Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+  }
+
+  static auto get_system_locale() -> std::locale {
+    try {
+      return std::locale("");
+    } catch (const std::exception& e) {
+      return std::locale();
+    }
   }
 
  private:
