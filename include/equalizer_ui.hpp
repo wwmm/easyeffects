@@ -85,9 +85,8 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_nbands_changed();
 
-  void build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands);
-
-  void build_unified_bands(const int& nbands);
+  void build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands,
+      const bool& split_mode);
 
   void on_flat_response();
 
