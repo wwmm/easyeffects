@@ -29,8 +29,6 @@
 #include <iostream>
 #include <memory>
 #include <vector>
-#include "pipewire/core.h"
-#include "pipewire/node.h"
 
 struct NodeInfo {
   uint id;

@@ -361,10 +361,10 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
 
   gst_registry_scan_path(gst_registry_get(), PLUGINS_INSTALL_DIR);
 
-  source = get_required_plugin("pulsesrc", "source");
+  source = get_required_plugin("pipewiresrc", "source");
   queue_src = get_required_plugin("queue", nullptr);
   capsfilter = get_required_plugin("capsfilter", nullptr);
-  sink = get_required_plugin("pulsesink", "sink");
+  sink = get_required_plugin("pipewiresink", "sink");
   spectrum = get_required_plugin("spectrum", "spectrum");
   global_level_meter = get_required_plugin("level", "global_level_meter");
   src_type = get_required_plugin("typefind", nullptr);
@@ -382,15 +382,7 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
 
   // initializing properties
 
-  g_object_set(source, "volume", 1.0, nullptr);
-  g_object_set(source, "mute", 0, nullptr);
-  g_object_set(source, "provide-clock", 0, nullptr);
-  g_object_set(source, "slave-method", 1, nullptr);  // re-timestamp
   g_object_set(source, "do-timestamp", 1, nullptr);
-
-  g_object_set(sink, "volume", 1.0, nullptr);
-  g_object_set(sink, "mute", 0, nullptr);
-  g_object_set(sink, "provide-clock", 1, nullptr);
 
   g_object_set(queue_src, "silent", 1, nullptr);
   g_object_set(queue_src, "flush-on-eos", 1, nullptr);
@@ -402,10 +394,6 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
 
   g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed), this);
-  g_signal_connect(source, "notify::buffer-time", G_CALLBACK(on_buffer_changed), this);
-  g_signal_connect(source, "notify::latency-time", G_CALLBACK(on_latency_changed), this);
-  g_signal_connect(sink, "notify::buffer-time", G_CALLBACK(on_buffer_changed), this);
-  g_signal_connect(sink, "notify::latency-time", G_CALLBACK(on_latency_changed), this);
 
   auto* sinkpad = gst_element_get_static_pad(sink, "sink");
 
@@ -507,29 +495,29 @@ void PipelineBase::init_effects_bin() {
 void PipelineBase::set_source_monitor_name(const std::string& name) {
   gchar* current_device = nullptr;
 
-  g_object_get(source, "current-device", &current_device, nullptr);
+  // g_object_get(source, "current-device", &current_device, nullptr);
 
-  if (name != current_device) {
-    if (playing) {
-      set_null_pipeline();
+  // if (name != current_device) {
+  //   if (playing) {
+  //     set_null_pipeline();
 
-      g_object_set(source, "device", name.c_str(), nullptr);
+  //     g_object_set(source, "device", name.c_str(), nullptr);
 
-      gst_element_set_state(pipeline, GST_STATE_PLAYING);
-    } else {
-      g_object_set(source, "device", name.c_str(), nullptr);
-    }
+  //     gst_element_set_state(pipeline, GST_STATE_PLAYING);
+  //   } else {
+  //     g_object_set(source, "device", name.c_str(), nullptr);
+  //   }
 
-    util::debug(log_tag + "using input device: " + name);
-  }
+  //   util::debug(log_tag + "using input device: " + name);
+  // }
 
   g_free(current_device);
 }
 
 void PipelineBase::set_output_sink_name(const std::string& name) const {
-  g_object_set(sink, "device", name.c_str(), nullptr);
+  // g_object_set(sink, "device", name.c_str(), nullptr);
 
-  util::debug(log_tag + "using output device: " + name);
+  // util::debug(log_tag + "using output device: " + name);
 }
 
 void PipelineBase::set_pulseaudio_props(const std::string& props) const {

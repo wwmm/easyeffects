@@ -50,20 +50,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
   init_widgets();
   connect_signals();
-
-  // if (app_info->app_type == "sink_input") {
-  //   timeout_connection = Glib::signal_timeout().connect_seconds(
-  //       [&]() {
-  //         if (app_info != nullptr) {
-  //           if (app_info->wants_to_play) {
-  //             pm->get_sink_input_info(app_info->index);
-  //           }
-  //         }
-
-  //         return running;
-  //       },
-  //       5);
-  // }
 }
 
 AppInfoUi::~AppInfoUi() {

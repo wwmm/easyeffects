@@ -19,10 +19,12 @@
 
 #include "pipe_manager.hpp"
 #include <glibmm.h>
+#include <chrono>
 #include <memory>
 #include <string>
 #include "pipewire/device.h"
 #include "pipewire/keys.h"
+#include "pipewire/node.h"
 #include "util.hpp"
 
 namespace {
@@ -80,6 +82,12 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
+
+      const auto* audio_format = spa_dict_lookup(info->props, PW_KEY_AUDIO_FORMAT);
+
+      if (audio_format != nullptr) {
+        util::warning(audio_format);
+      }
 
       pd->nd_info.state = info->state;
       pd->nd_info.n_input_ports = info->n_input_ports;
@@ -211,7 +219,9 @@ void on_registry_global(void* data,
     if (media_class == "Audio/Source") {
       Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
     } else if (media_class == "Audio/Sink") {
-      Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+      if (name != "pulseeffects_sink") {
+        Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+      }
     } else if (media_class == "Stream/Output/Audio") {
       Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
     } else if (media_class == "Stream/Input/Audio") {
@@ -297,11 +307,26 @@ PipeManager::PipeManager() {
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
+  pw_properties* props = pw_properties_new(nullptr, nullptr);
+  pw_properties_set(props, "node.name", "pulseeffects_sink");
+  pw_properties_set(props, "node.description", "PulseEffects Sink");
+  pw_properties_set(props, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props, "media.class", "Audio/Sink");
+  pw_properties_set(props, "audio.channels", "2");
+  pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+
   pw_core_sync(core, PW_ID_CORE, 0);
 
   pw_thread_loop_wait(thread_loop);
 
   pw_thread_loop_unlock(thread_loop);
+
+  // pw_properties* props = pw_properties_new(nullptr, nullptr);
+  // pw_properties_set(props, PW_KEY_NODE_NAME, "PE");
+  // pw_properties_set(props, PW_KEY_MEDIA_CLASS, "Audio/Sink");
+  // pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+
+  // std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 PipeManager::~PipeManager() {
