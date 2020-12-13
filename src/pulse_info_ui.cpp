@@ -92,9 +92,6 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 
   update_server_info();
 
-  pm->get_modules_info();
-  pm->get_clients_info();
-
   get_pulse_conf();
   get_resamplers();
 }
@@ -163,15 +160,12 @@ void PulseInfoUi::on_stack_visible_child_changed() {
       listbox_modules->remove(*c);
     }
 
-    pm->get_modules_info();
   } else if (name == std::string("page_clients")) {
     auto children = listbox_clients->get_children();
 
     for (const auto& c : children) {
       listbox_clients->remove(*c);
     }
-
-    pm->get_clients_info();
   }
 }
 

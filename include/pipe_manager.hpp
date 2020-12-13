@@ -170,10 +170,6 @@ class PipeManager {
   void set_sink_input_mute(const std::string& name, uint idx, bool state);
   void set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value);
   void set_source_output_mute(const std::string& name, uint idx, bool state);
-  void get_sink_input_info(uint idx);
-  // void update_server_info(const pa_server_info* info);
-  void get_modules_info();
-  void get_clients_info();
   void set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value);
 
   sigc::signal<void, NodeInfo> source_added;
