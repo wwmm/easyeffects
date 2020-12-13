@@ -28,6 +28,7 @@
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
+#include <locale>
 #include <memory>
 #include <vector>
 #include "app_info_ui.hpp"
@@ -164,7 +165,21 @@ class EffectsBaseUi {
  private:
   Gtk::Box* placeholder_spectrum = nullptr;
 
+  std::locale global_locale;
+
   auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
+
+  template <typename T>
+  auto level_to_str_showpos(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.imbue(global_locale);
+    msg.precision(places);
+
+    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+
+    return msg.str();
+  }
 };
 
 #endif

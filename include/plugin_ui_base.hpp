@@ -47,6 +47,7 @@
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
+#include <locale>
 #include "util.hpp"
 
 class PluginUiBase {
@@ -67,11 +68,10 @@ class PluginUiBase {
   void on_new_output_level(const std::array<double, 2>& peak);
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
-  static auto level_to_str(const double& value, const int& places) -> std::string;
-  static auto level_to_str(const float& value, const int& places) -> std::string;
-  static auto level_to_str_showpos(const double& value, const int& places) -> std::string;
-  static auto level_to_str_showpos(const float& value, const int& places) -> std::string;
-  static auto string_to_float_nolocale(const std::string& value) -> float;
+
+  auto level_to_str(const double& value, const int& places) -> std::string;
+  auto level_to_str(const float& value, const int& places) -> std::string;
+  auto string_to_float_nolocale(const std::string& value) -> float;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -96,7 +96,21 @@ class PluginUiBase {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
+  template <typename T>
+  auto level_to_str_showpos(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.imbue(global_locale);
+    msg.precision(places);
+
+    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+
+    return msg.str();
+  }
+
  private:
+  std::locale global_locale, c_locale;
+
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,
                     const T2& w_left_label,

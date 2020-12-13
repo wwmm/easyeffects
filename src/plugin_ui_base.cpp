@@ -18,12 +18,11 @@
  */
 
 #include "plugin_ui_base.hpp"
-#include <locale>
 
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
-    : settings(Gio::Settings::create(schema, schema_path)) {
+    : settings(Gio::Settings::create(schema, schema_path)), global_locale(std::locale("")), c_locale(std::locale("C")) {
   builder->get_widget("enable", enable);
   builder->get_widget("listbox_control", listbox_control);
   builder->get_widget("controls", controls);
@@ -64,31 +63,17 @@ PluginUiBase::~PluginUiBase() {
 
 auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
-  std::locale global_locale("");
 
   msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;
-
-  return msg.str();
-}
-
-auto PluginUiBase::level_to_str_showpos(const double& value, const int& places) -> std::string {
-  std::ostringstream msg;
-  std::locale global_locale("");
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
 
   return msg.str();
 }
 
 auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
-  std::locale global_locale("");
 
   msg.imbue(global_locale);
   msg.precision(places);
@@ -98,21 +83,9 @@ auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::s
   return msg.str();
 }
 
-auto PluginUiBase::level_to_str_showpos(const float& value, const int& places) -> std::string {
-  std::ostringstream msg;
-  std::locale global_locale("");
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << ((value > 0.0F) ? "+" : "") << std::fixed << value;
-
-  return msg.str();
-}
-
 auto PluginUiBase::string_to_float_nolocale(const std::string& value) -> float {
   std::stringstream ss;
-  ss.imbue(std::locale("C"));
+  ss.imbue(c_locale);
 
   float fv = 0.0F;
 
