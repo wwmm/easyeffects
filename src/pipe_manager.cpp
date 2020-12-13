@@ -26,11 +26,12 @@
 #include "pipewire/device.h"
 #include "pipewire/keys.h"
 #include "pipewire/node.h"
+#include "pipewire/port.h"
 #include "util.hpp"
 
 namespace {
 
-struct proxy_data {
+struct node_data {
   pw_proxy* proxy = nullptr;
 
   spa_hook proxy_listener{};
@@ -42,8 +43,20 @@ struct proxy_data {
   NodeInfo nd_info;
 };
 
-void removed_proxy(void* data) {
-  auto* pd = static_cast<proxy_data*>(data);
+struct port_data {
+  pw_proxy* proxy = nullptr;
+
+  spa_hook proxy_listener{};
+
+  spa_hook object_listener{};
+
+  PipeManager* pm = nullptr;
+
+  PortInfo p_info;
+};
+
+void removed_node_proxy(void* data) {
+  auto* pd = static_cast<node_data*>(data);
 
   pw_proxy_destroy(pd->proxy);
 
@@ -64,18 +77,18 @@ void removed_proxy(void* data) {
   }
 }
 
-void destroy_proxy(void* data) {
-  auto* pd = static_cast<proxy_data*>(data);
+void destroy_node_proxy(void* data) {
+  auto* pd = static_cast<node_data*>(data);
 
   spa_hook_remove(&pd->proxy_listener);
   spa_hook_remove(&pd->object_listener);
 }
 
-const struct pw_proxy_events proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_proxy,
-                                             .removed = removed_proxy};
+const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_node_proxy,
+                                                  .removed = removed_node_proxy};
 
 void on_node_info(void* object, const struct pw_node_info* info) {
-  auto* pd = static_cast<proxy_data*>(object);
+  auto* pd = static_cast<node_data*>(object);
 
   for (auto& node : pd->pm->list_nodes) {
     if (node.id == info->id) {
@@ -128,10 +141,80 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_changed.emit(pd->nd_info); });
       }
 
-      // std::cout << "updating node: " << node.n_output_ports << " " << pd->nd_info.n_output_ports << std::endl;
-
       break;
     }
+  }
+
+  // const struct spa_dict_item* item = nullptr;
+  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
+}
+
+void removed_port_proxy(void* data) {
+  auto* pd = static_cast<port_data*>(data);
+
+  pw_proxy_destroy(pd->proxy);
+
+  pd->pm->list_ports.erase(std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(),
+                                          [=](auto& n) { return n.id == pd->p_info.id; }),
+                           pd->pm->list_ports.end());
+
+  // util::debug(pd->pm->log_tag + pd->p_info.type + " " + pd->p_info.name + " was removed");
+}
+
+void destroy_port_proxy(void* data) {
+  auto* pd = static_cast<port_data*>(data);
+
+  spa_hook_remove(&pd->proxy_listener);
+  spa_hook_remove(&pd->object_listener);
+}
+
+const struct pw_proxy_events port_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_port_proxy,
+                                                  .removed = removed_port_proxy};
+
+void on_port_info(void* object, const struct pw_port_info* info) {
+  auto* pd = static_cast<port_data*>(object);
+
+  for (auto& port : pd->pm->list_ports) {
+    if (port.id == info->id) {
+      const auto* port_channel = spa_dict_lookup(info->props, PW_KEY_AUDIO_CHANNEL);
+      const auto* port_audio_format = spa_dict_lookup(info->props, PW_KEY_AUDIO_FORMAT);
+      const auto* port_physical = spa_dict_lookup(info->props, PW_KEY_PORT_PHYSICAL);
+      const auto* port_terminal = spa_dict_lookup(info->props, PW_KEY_PORT_TERMINAL);
+      const auto* port_monitor = spa_dict_lookup(info->props, PW_KEY_PORT_MONITOR);
+
+      pd->p_info.name = spa_dict_lookup(info->props, PW_KEY_PORT_NAME);
+      pd->p_info.direction = spa_dict_lookup(info->props, PW_KEY_PORT_DIRECTION);
+
+      if (port_channel != nullptr) {
+        pd->p_info.audio_channel = port_channel;
+      }
+
+      if (port_audio_format != nullptr) {
+        pd->p_info.format_dsp = port_audio_format;
+      }
+
+      if (port_physical != nullptr) {
+        if (strcmp(port_physical, "true") == 0) {
+          pd->p_info.physical = true;
+        }
+      }
+
+      if (port_terminal != nullptr) {
+        if (strcmp(port_terminal, "true") == 0) {
+          pd->p_info.terminal = true;
+        }
+      }
+
+      if (port_monitor != nullptr) {
+        if (strcmp(port_monitor, "true") == 0) {
+          pd->p_info.monitor = true;
+        }
+      }
+
+      port = pd->p_info;
+    }
+
+    break;
   }
 
   // const struct spa_dict_item* item = nullptr;
@@ -143,6 +226,11 @@ const struct pw_node_events node_events = {
     .info = on_node_info,
 };
 
+const struct pw_port_events port_events = {
+    PW_VERSION_PORT_EVENTS,
+    .info = on_port_info,
+};
+
 void on_registry_global(void* data,
                         uint32_t id,
                         uint32_t permissions,
@@ -150,83 +238,93 @@ void on_registry_global(void* data,
                         uint32_t version,
                         const struct spa_dict* props) {
   auto* pm = static_cast<PipeManager*>(data);
-  const void* events = nullptr;
-  uint32_t client_version = 0;
-  bool listen = false;
-  std::string name = "none";
-  std::string description = "none";
-  std::string media_class = "none";
-  int priority = -1;
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
-    const auto* node_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
+    const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
 
-    if (node_media_class != nullptr) {
-      media_class = node_media_class;
+    if (key_media_class != nullptr) {
+      std::string media_class = key_media_class;
 
       if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Stream/Output/Audio" ||
           media_class == "Stream/Input/Audio") {
+        auto* proxy =
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(struct node_data)));
+
+        auto* pd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
+
+        pd->proxy = proxy;
+        pd->pm = pm;
+        pd->nd_info.id = id;
+        pd->nd_info.type = type;
+        pd->nd_info.media_class = media_class;
+
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
         const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
         const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
-        listen = true;
-
         if (node_name != nullptr) {
-          name = node_name;
+          pd->nd_info.name = node_name;
         }
 
         if (node_description != nullptr) {
-          description = node_description;
+          pd->nd_info.description = node_description;
         }
 
         if (prio_session != nullptr) {
-          priority = std::stoi(prio_session);
+          pd->nd_info.priority = std::stoi(prio_session);
         }
 
-        client_version = PW_VERSION_NODE;
-        events = &node_events;
+        pw_node_add_listener(proxy, &pd->object_listener, &node_events, pd);
+        pw_proxy_add_listener(proxy, &pd->proxy_listener, &node_proxy_events, pd);
+
+        pm->list_nodes.emplace_back(pd->nd_info);
+
+        util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
+
+        if (media_class == "Audio/Source") {
+          Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
+        } else if (media_class == "Audio/Sink" && pd->nd_info.name != "pulseeffects_sink") {
+          Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+        } else if (media_class == "Stream/Output/Audio") {
+          Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
+        } else if (media_class == "Stream/Input/Audio") {
+          Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_added.emit(pd->nd_info); });
+        }
       }
     }
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
-  }
+    const auto* node_id_char = spa_dict_lookup(props, PW_KEY_NODE_ID);
 
-  if (listen) {
-    proxy_data* pd = nullptr;
-    pw_proxy* proxy = nullptr;
+    if (node_id_char == nullptr) {
+      return;
+    }
 
-    proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, client_version, sizeof(struct proxy_data)));
+    int node_id = std::stoi(node_id_char);
 
-    pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+    for (auto& node : pm->list_nodes) {
+      if (node.id == node_id) {
+        auto* proxy =
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(struct port_data)));
 
-    pd->proxy = proxy;
-    pd->pm = pm;
-    pd->nd_info.id = id;
-    pd->nd_info.type = type;
-    pd->nd_info.media_class = media_class;
-    pd->nd_info.name = name;
-    pd->nd_info.description = description;
-    pd->nd_info.priority = priority;
+        auto* pd = static_cast<port_data*>(pw_proxy_get_user_data(proxy));
 
-    pw_proxy_add_object_listener(proxy, &pd->object_listener, events, pd);
-    pw_proxy_add_listener(proxy, &pd->proxy_listener, &proxy_events, pd);
+        pd->proxy = proxy;
+        pd->pm = pm;
+        pd->p_info.path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
+        pd->p_info.id = id;
+        pd->p_info.type = type;
 
-    pm->list_nodes.emplace_back(pd->nd_info);
+        pw_port_add_listener(proxy, &pd->object_listener, &port_events, pd);
+        pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
 
-    util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + name + " was added");
+        pm->list_ports.emplace_back(pd->p_info);
 
-    if (media_class == "Audio/Source") {
-      Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
-    } else if (media_class == "Audio/Sink") {
-      if (name != "pulseeffects_sink") {
-        Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+        // util::debug(pm->log_tag + " " + std::to_string(id) + " " + pd->p_info.name + " was added");
+
+        return;
       }
-    } else if (media_class == "Stream/Output/Audio") {
-      Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
-    } else if (media_class == "Stream/Input/Audio") {
-      Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_added.emit(pd->nd_info); });
     }
   }
 }
@@ -308,28 +406,21 @@ PipeManager::PipeManager() {
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  // pw_properties* props = pw_properties_new(nullptr, nullptr);
-  // pw_properties_set(props, "node.name", "pulseeffects_sink");
-  // pw_properties_set(props, "node.description", "PulseEffects Sink");
-  // pw_properties_set(props, "factory.name", "support.null-audio-sink");
-  // pw_properties_set(props, "media.class", "Audio/Sink");
-  // pw_properties_set(props, "audio.channels", "2");
-  // pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+  pw_properties* props = pw_properties_new(nullptr, nullptr);
+  pw_properties_set(props, "node.name", "pulseeffects_sink");
+  pw_properties_set(props, "node.description", "PulseEffects Sink");
+  pw_properties_set(props, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props, "media.class", "Audio/Sink");
+  pw_properties_set(props, "audio.channels", "2");
+  pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
 
-  filter = new PipeFilter(core);
+  // filter = new PipeFilter(core);
 
   pw_core_sync(core, PW_ID_CORE, 0);
 
   pw_thread_loop_wait(thread_loop);
 
   pw_thread_loop_unlock(thread_loop);
-
-  // pw_properties* props = pw_properties_new(nullptr, nullptr);
-  // pw_properties_set(props, PW_KEY_NODE_NAME, "PE");
-  // pw_properties_set(props, PW_KEY_MEDIA_CLASS, "Audio/Sink");
-  // pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
-
-  // std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 PipeManager::~PipeManager() {
@@ -338,7 +429,7 @@ PipeManager::~PipeManager() {
   spa_hook_remove(&registry_listener);
   spa_hook_remove(&core_listener);
 
-  delete filter;
+  // delete filter;
 
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);

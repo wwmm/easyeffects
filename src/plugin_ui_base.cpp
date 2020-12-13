@@ -22,7 +22,13 @@
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
-    : settings(Gio::Settings::create(schema, schema_path)), global_locale(std::locale("")), c_locale(std::locale("C")) {
+    : settings(Gio::Settings::create(schema, schema_path)) {
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
+
   builder->get_widget("enable", enable);
   builder->get_widget("listbox_control", listbox_control);
   builder->get_widget("controls", controls);

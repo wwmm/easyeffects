@@ -32,35 +32,59 @@
 #include "pipe_filter.hpp"
 
 struct NodeInfo {
-  uint id;
+  uint id = 0;
 
-  std::string type;
+  std::string type = "empty";
 
-  std::string name;
+  std::string name = "empty";
 
-  std::string description;
+  std::string description = "empty";
 
-  std::string media_class;
+  std::string media_class = "empty";
 
-  std::string icon_name;
+  std::string icon_name = "empty";
 
-  std::string media_name;
+  std::string media_name = "empty";
 
   int priority = -1;
 
   pw_node_state state;
 
-  int n_input_ports;
+  int n_input_ports = 0;
 
-  int n_output_ports;
+  int n_output_ports = 0;
 
-  int rate;
+  int rate = 0;
 
-  float latency;
+  float latency = 0;
 
-  bool visible_to_user;
+  bool visible_to_user = false;
 
-  bool connected;
+  bool connected = false;
+};
+
+struct PortInfo {
+  std::string type = "empty";
+
+  std::string path = "empty";
+
+  std::string format_dsp = "empty";
+
+  std::string audio_channel = "empty";
+
+  std::string name = "empty";
+
+  std::string direction = "empty";
+
+  bool physical = false;
+
+  bool terminal = false;
+
+  bool monitor = false;
+
+  uint id = 0;
+
+  uint node_id = 0;
 };
 
 struct mySinkInfo {
@@ -125,6 +149,8 @@ class PipeManager {
   pw_registry* registry = nullptr;
 
   std::vector<NodeInfo> list_nodes;
+
+  std::vector<PortInfo> list_ports;
 
   auto get_default_source() -> NodeInfo;
 

@@ -18,13 +18,18 @@
  */
 
 #include "app_info_ui.hpp"
-#include "pipewire/node.h"
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      NodeInfo node_info,
                      PipeManager* pulse_manager)
     : Gtk::Grid(cobject), nd_info(std::move(node_info)), pm(pulse_manager) {
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
+
   // loading glade widgets
 
   builder->get_widget("enable", enable);
@@ -229,7 +234,6 @@ void AppInfoUi::update(NodeInfo node_info) {
 
 auto AppInfoUi::float_to_localized_string(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
-  std::locale global_locale("");
 
   msg.imbue(global_locale);
   msg.precision(places);
