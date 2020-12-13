@@ -152,9 +152,9 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   global_level_meter_grid->set_visible(true);
 
-  global_output_level_left->set_text(PluginUiBase::level_to_str_showpos(left, 0));
+  global_output_level_left->set_text(PluginUiBase::level_to_localized_string_showpos(left, 0));
 
-  global_output_level_right->set_text(PluginUiBase::level_to_str_showpos(right, 0));
+  global_output_level_right->set_text(PluginUiBase::level_to_localized_string_showpos(right, 0));
 
   // saturation icon notification
 

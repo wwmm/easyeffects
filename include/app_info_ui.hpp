@@ -93,6 +93,10 @@ class AppInfoUi : public Gtk::Grid {
   void on_volume_changed();
 
   void on_mute();
+
+  std::locale global_locale;
+
+  auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
 
 #endif

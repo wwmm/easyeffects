@@ -365,12 +365,12 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     auto update_quality_width = [=]() {
       const auto& q = band_quality->get_value();
 
-      band_quality_label->set_text("Q " + level_to_str(q, 2));
+      band_quality_label->set_text("Q " + level_to_localized_string(q, 2));
 
       if (q > 0.0) {
         const auto& f = band_frequency->get_value();
 
-        band_width->set_text(level_to_str(f / q, 1) + " Hz");
+        band_width->set_text(level_to_localized_string(f / q, 1) + " Hz");
       } else {
         band_width->set_text(_("infinity"));
       }
@@ -380,21 +380,21 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
       const auto& f = band_frequency->get_value();
 
       if (f > 1000.0) {
-        band_label->set_text(level_to_str(f / 1000.0, 1) + " kHz");
+        band_label->set_text(level_to_localized_string(f / 1000.0, 1) + " kHz");
       } else {
-        band_label->set_text(level_to_str(f, 0) + " Hz");
+        band_label->set_text(level_to_localized_string(f, 0) + " Hz");
       }
     };
 
     auto update_gain = [=]() {
       const auto& g = band_gain->get_value();
 
-      band_gain_label->set_text(level_to_str_showpos(g, 2));
+      band_gain_label->set_text(level_to_localized_string_showpos(g, 2));
     };
 
     // set initial band gain in relative label
 
-    band_gain_label->set_text(level_to_str_showpos(band_gain->get_value(), 2));
+    band_gain_label->set_text(level_to_localized_string_showpos(band_gain->get_value(), 2));
 
     // connections
 
@@ -789,7 +789,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     return false;
   }
 
-  filter.freq = string_to_float_nolocale(matches.str(1));
+  filter.freq = string_to_float(matches.str(1));
 
   // get slope
 
@@ -802,7 +802,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
     if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
-      filter.slope_dB = string_to_float_nolocale(matches.str(1));
+      filter.slope_dB = string_to_float(matches.str(1));
     }
   }
 
@@ -816,7 +816,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.gain = string_to_float_nolocale(matches.str(1));
+      filter.gain = string_to_float(matches.str(1));
     }
   }
 
@@ -829,7 +829,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.quality_factor = string_to_float_nolocale(matches.str(1));
+      filter.quality_factor = string_to_float(matches.str(1));
     }
   }
 
