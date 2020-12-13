@@ -418,7 +418,7 @@ void ConvolverUi::get_irs_info() {
     label_sampling_rate->set_text(std::to_string(rate) + " Hz");
     label_samples->set_text(std::to_string(frames_in));
 
-    label_duration->set_text(level_to_str(duration, 3) + " s");
+    label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
     auto fpath = boost::filesystem::path{path};
 
@@ -570,11 +570,11 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
       std::string msg;
 
       if (show_fft_spectrum) {
-        msg.append(level_to_str(mouse_freq, 0) + " Hz, ");
-        msg.append(level_to_str(mouse_intensity, 3));
+        msg.append(level_to_localized_string(mouse_freq, 0) + " Hz, ");
+        msg.append(level_to_localized_string(mouse_intensity, 3));
       } else {
-        msg.append(level_to_str(mouse_time, 3) + " s, ");
-        msg.append(level_to_str_showpos(mouse_intensity, 3));
+        msg.append(level_to_localized_string(mouse_time, 3) + " s, ");
+        msg.append(level_to_localized_string_showpos(mouse_intensity, 3));
       }
 
       int text_width = 0;

@@ -67,11 +67,11 @@ class PluginUiBase {
   void on_new_output_level(const std::array<double, 2>& peak);
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
-  static auto level_to_str(const double& value, const int& places) -> std::string;
-  static auto level_to_str(const float& value, const int& places) -> std::string;
-  static auto level_to_str_showpos(const double& value, const int& places) -> std::string;
-  static auto level_to_str_showpos(const float& value, const int& places) -> std::string;
-  static auto string_to_float_nolocale(const std::string& value) -> float;
+  static auto level_to_localized_string(const double& value, const int& places) -> std::string;
+  static auto level_to_localized_string(const float& value, const int& places) -> std::string;
+  static auto level_to_localized_string_showpos(const double& value, const int& places) -> std::string;
+  static auto level_to_localized_string_showpos(const float& value, const int& places) -> std::string;
+  static auto string_to_float(const std::string& value) -> float;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -88,7 +88,7 @@ class PluginUiBase {
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
-  static std::locale syslocale;
+  static std::locale global_locale;
 
   std::vector<sigc::connection> connections;
 
@@ -96,6 +96,14 @@ class PluginUiBase {
                          const std::string& name,
                          Glib::RefPtr<Gtk::Adjustment>& object) {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+  }
+
+  static auto get_system_locale() -> std::locale {
+    try {
+      return std::locale("");
+    } catch (const std::exception& e) {
+      return std::locale();
+    }
   }
 
  private:
@@ -112,7 +120,7 @@ class PluginUiBase {
 
     if (left_db >= -99.0) {
       w_left->set_value(left);
-      w_left_label->set_text(level_to_str(left_db, 0));
+      w_left_label->set_text(level_to_localized_string(left_db, 0));
     } else {
       w_left->set_value(0.0);
       w_left_label->set_text("-99");
@@ -120,7 +128,7 @@ class PluginUiBase {
 
     if (right_db >= -99.0) {
       w_right->set_value(right);
-      w_right_label->set_text(level_to_str(right_db, 0));
+      w_right_label->set_text(level_to_localized_string(right_db, 0));
     } else {
       w_right->set_value(0.0);
       w_right_label->set_text("-99");
@@ -146,7 +154,7 @@ class PluginUiBase {
       }
 
       w_left->set_value(db_value);
-      w_left_label->set_text(level_to_str(left, 0));
+      w_left_label->set_text(level_to_localized_string(left, 0));
     } else {
       w_left->set_value(0.0);
       w_left_label->set_text("-99");
@@ -162,7 +170,7 @@ class PluginUiBase {
       }
 
       w_right->set_value(db_value);
-      w_right_label->set_text(level_to_str(right, 0));
+      w_right_label->set_text(level_to_localized_string(right, 0));
     } else {
       w_right->set_value(0.0);
       w_right_label->set_text("-99");

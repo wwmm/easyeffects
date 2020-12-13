@@ -24,6 +24,14 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      std::shared_ptr<AppInfo> info,
                      PulseManager* pulse_manager)
     : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
+  // set locale
+
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
+
   // loading glade widgets
 
   builder->get_widget("enable", enable);
@@ -104,9 +112,9 @@ void AppInfoUi::init_widgets() {
 
   resampler->set_text(app_info->resampler);
 
-  buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
+  buffer->set_text(float_to_localized_string(app_info->buffer * ms_factor, 1) + " ms");
 
-  latency->set_text(PluginUiBase::level_to_str(app_info->latency * ms_factor, 1) + " ms");
+  latency->set_text(float_to_localized_string(app_info->latency * ms_factor, 1) + " ms");
 
   if (app_info->corked != 0) {
     state->set_text(_("paused"));
@@ -219,4 +227,15 @@ void AppInfoUi::update(const std::shared_ptr<AppInfo>& info) {
 
   init_widgets();
   connect_signals();
+}
+
+auto AppInfoUi::float_to_localized_string(const float& value, const int& places) -> std::string {
+  std::ostringstream msg;
+
+  msg.imbue(global_locale);
+  msg.precision(places);
+
+  msg << std::fixed << value;
+
+  return msg.str();
 }

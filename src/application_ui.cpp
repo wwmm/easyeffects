@@ -38,6 +38,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   Gtk::IconTheme::get_default()->add_resource_path("/com/github/wwmm/pulseeffects/icons");
 
+  // set locale
+
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
+
   // loading glade widgets
 
   builder->get_widget("stack", stack);
@@ -182,10 +190,10 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream current_dev_rate;
   const float khz_factor = 0.001F;
 
-  null_sink_rate.imbue(syslocale);
+  null_sink_rate.imbue(global_locale);
   null_sink_rate.precision(1);
 
-  current_dev_rate.imbue(syslocale);
+  current_dev_rate.imbue(global_locale);
   current_dev_rate.precision(1);
 
   switch (index) {
