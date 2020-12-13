@@ -162,6 +162,11 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
+  std::array<std::string, 7> blocklist_node_name = {
+      "PulseEffectsWebrtcProbe", "PulseAudio Volume Control", "libcanberra", "gsd-media-keys", "GNOME Shell",
+      "speech-dispatcher",
+  };
+
   auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
   auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;
   auto move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool;
@@ -194,13 +199,11 @@ class PipeManager {
   bool context_ready = false;
 
   pw_context* context = nullptr;
+  pw_proxy* proxy_stream_output_sink = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
 
   PipeFilter* filter = nullptr;
-
-  std::array<std::string, 7> blocklist_apps = {
-      "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};
 
   std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
                                                      "screen-capture"};

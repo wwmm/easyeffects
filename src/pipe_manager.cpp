@@ -176,14 +176,21 @@ void on_port_info(void* object, const struct pw_port_info* info) {
 
   for (auto& port : pd->pm->list_ports) {
     if (port.id == info->id) {
+      const auto* port_name = spa_dict_lookup(info->props, PW_KEY_PORT_NAME);
+      const auto* port_direction = spa_dict_lookup(info->props, PW_KEY_PORT_DIRECTION);
       const auto* port_channel = spa_dict_lookup(info->props, PW_KEY_AUDIO_CHANNEL);
       const auto* port_audio_format = spa_dict_lookup(info->props, PW_KEY_AUDIO_FORMAT);
       const auto* port_physical = spa_dict_lookup(info->props, PW_KEY_PORT_PHYSICAL);
       const auto* port_terminal = spa_dict_lookup(info->props, PW_KEY_PORT_TERMINAL);
       const auto* port_monitor = spa_dict_lookup(info->props, PW_KEY_PORT_MONITOR);
 
-      pd->p_info.name = spa_dict_lookup(info->props, PW_KEY_PORT_NAME);
-      pd->p_info.direction = spa_dict_lookup(info->props, PW_KEY_PORT_DIRECTION);
+      if (port_name != nullptr) {
+        pd->p_info.name = port_name;
+      }
+
+      if (port_direction != nullptr) {
+        pd->p_info.direction = port_direction;
+      }
 
       if (port_channel != nullptr) {
         pd->p_info.audio_channel = port_channel;
@@ -247,6 +254,15 @@ void on_registry_global(void* data,
 
       if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Stream/Output/Audio" ||
           media_class == "Stream/Input/Audio") {
+        const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+        const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
+        const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
+
+        if (std::find(std::begin(pm->blocklist_node_name), std::end(pm->blocklist_node_name), node_name) !=
+            std::end(pm->blocklist_node_name)) {
+          return;
+        }
+
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(struct node_data)));
 
@@ -257,10 +273,6 @@ void on_registry_global(void* data,
         pd->nd_info.id = id;
         pd->nd_info.type = type;
         pd->nd_info.media_class = media_class;
-
-        const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-        const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-        const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
         if (node_name != nullptr) {
           pd->nd_info.name = node_name;
@@ -407,12 +419,13 @@ PipeManager::PipeManager() {
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
   pw_properties* props = pw_properties_new(nullptr, nullptr);
-  pw_properties_set(props, "node.name", "pulseeffects_sink");
+  pw_properties_set(props, PW_KEY_NODE_NAME, "pulseeffects_sink");
   pw_properties_set(props, "node.description", "PulseEffects Sink");
   pw_properties_set(props, "factory.name", "support.null-audio-sink");
   pw_properties_set(props, "media.class", "Audio/Sink");
   pw_properties_set(props, "audio.channels", "2");
-  pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+  proxy_stream_output_sink = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0));
 
   // filter = new PipeFilter(core);
 
@@ -430,6 +443,8 @@ PipeManager::~PipeManager() {
   spa_hook_remove(&core_listener);
 
   // delete filter;
+
+  pw_proxy_destroy(proxy_stream_output_sink);
 
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
