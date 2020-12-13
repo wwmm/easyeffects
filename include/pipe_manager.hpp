@@ -29,6 +29,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include "pipe_filter.hpp"
 
 struct NodeInfo {
   uint id;
@@ -173,6 +174,8 @@ class PipeManager {
   pw_context* context = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
+
+  PipeFilter* filter = nullptr;
 
   std::array<std::string, 7> blocklist_apps = {
       "PulseEffectsWebrtcProbe", "gsd-media-keys", "GNOME Shell", "libcanberra", "Screenshot", "speech-dispatcher"};

@@ -22,6 +22,7 @@
 #include <chrono>
 #include <memory>
 #include <string>
+#include "pipe_filter.hpp"
 #include "pipewire/device.h"
 #include "pipewire/keys.h"
 #include "pipewire/node.h"
@@ -180,7 +181,7 @@ void on_registry_global(void* data,
         }
 
         if (prio_session != nullptr) {
-          priority = std::atoi(prio_session);
+          priority = std::stoi(prio_session);
         }
 
         client_version = PW_VERSION_NODE;
@@ -307,13 +308,15 @@ PipeManager::PipeManager() {
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  pw_properties* props = pw_properties_new(nullptr, nullptr);
-  pw_properties_set(props, "node.name", "pulseeffects_sink");
-  pw_properties_set(props, "node.description", "PulseEffects Sink");
-  pw_properties_set(props, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props, "media.class", "Audio/Sink");
-  pw_properties_set(props, "audio.channels", "2");
-  pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+  // pw_properties* props = pw_properties_new(nullptr, nullptr);
+  // pw_properties_set(props, "node.name", "pulseeffects_sink");
+  // pw_properties_set(props, "node.description", "PulseEffects Sink");
+  // pw_properties_set(props, "factory.name", "support.null-audio-sink");
+  // pw_properties_set(props, "media.class", "Audio/Sink");
+  // pw_properties_set(props, "audio.channels", "2");
+  // pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0);
+
+  filter = new PipeFilter(core);
 
   pw_core_sync(core, PW_ID_CORE, 0);
 
@@ -334,6 +337,8 @@ PipeManager::~PipeManager() {
 
   spa_hook_remove(&registry_listener);
   spa_hook_remove(&core_listener);
+
+  delete filter;
 
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
