@@ -22,7 +22,7 @@
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
-  // set locale
+  // set locale (workaround for #849)
 
   try {
     global_locale = std::locale("");

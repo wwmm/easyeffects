@@ -38,7 +38,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   Gtk::IconTheme::get_default()->add_resource_path("/com/github/wwmm/pulseeffects/icons");
 
-  // set locale
+  // set locale (workaround for #849)
 
   try {
     global_locale = std::locale("");

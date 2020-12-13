@@ -74,6 +74,8 @@ class AppInfoUi : public Gtk::Grid {
  private:
   std::string log_tag = "app_info_ui: ";
 
+  std::locale global_locale;
+
   bool running = true, is_enabled = true, is_blocklisted = true, pre_bl_state = true;
 
   sigc::connection enable_connection;
@@ -93,8 +95,6 @@ class AppInfoUi : public Gtk::Grid {
   void on_volume_changed();
 
   void on_mute();
-
-  std::locale global_locale;
 
   auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
