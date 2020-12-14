@@ -24,7 +24,7 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      std::shared_ptr<AppInfo> info,
                      PulseManager* pulse_manager)
     : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
-  // set locale
+  // set locale (workaround for #849)
 
   try {
     global_locale = std::locale("");

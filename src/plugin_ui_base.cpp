@@ -19,12 +19,20 @@
 
 #include "plugin_ui_base.hpp"
 
-std::locale PluginUiBase::global_locale = PluginUiBase::get_system_locale();
-
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
+  // set locale (workaround for #849)
+
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
+
+  // get widgets
+
   builder->get_widget("enable", enable);
   builder->get_widget("listbox_control", listbox_control);
   builder->get_widget("controls", controls);
@@ -74,17 +82,6 @@ auto PluginUiBase::level_to_localized_string(const double& value, const int& pla
   return msg.str();
 }
 
-auto PluginUiBase::level_to_localized_string_showpos(const double& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
-
-  return msg.str();
-}
-
 auto PluginUiBase::level_to_localized_string(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
 
@@ -96,20 +93,9 @@ auto PluginUiBase::level_to_localized_string(const float& value, const int& plac
   return msg.str();
 }
 
-auto PluginUiBase::level_to_localized_string_showpos(const float& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << ((value > 0.0F) ? "+" : "") << std::fixed << value;
-
-  return msg.str();
-}
-
 auto PluginUiBase::string_to_float(const std::string& value) -> float {
   std::stringstream ss;
-  ss.imbue(std::locale());
+  ss.imbue(c_locale);
 
   float fv = 0.0F;
 

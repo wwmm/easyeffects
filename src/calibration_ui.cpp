@@ -21,7 +21,7 @@
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Window(cobject) {
-  // set locale
+  // set locale (workaround for #849)
 
   try {
     global_locale = std::locale("");

@@ -67,11 +67,10 @@ class PluginUiBase {
   void on_new_output_level(const std::array<double, 2>& peak);
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
-  static auto level_to_localized_string(const double& value, const int& places) -> std::string;
-  static auto level_to_localized_string(const float& value, const int& places) -> std::string;
-  static auto level_to_localized_string_showpos(const double& value, const int& places) -> std::string;
-  static auto level_to_localized_string_showpos(const float& value, const int& places) -> std::string;
-  static auto string_to_float(const std::string& value) -> float;
+
+  auto level_to_localized_string(const double& value, const int& places) -> std::string;
+  auto level_to_localized_string(const float& value, const int& places) -> std::string;
+  auto string_to_float(const std::string& value) -> float;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -88,8 +87,6 @@ class PluginUiBase {
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
-  static std::locale global_locale;
-
   std::vector<sigc::connection> connections;
 
   static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
@@ -98,15 +95,22 @@ class PluginUiBase {
     object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
   }
 
-  static auto get_system_locale() -> std::locale {
-    try {
-      return std::locale("");
-    } catch (const std::exception& e) {
-      return std::locale();
-    }
+  template <typename T>
+  auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.imbue(global_locale);
+    msg.precision(places);
+
+    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+
+    return msg.str();
   }
 
  private:
+  std::locale global_locale;
+  std::locale c_locale = std::locale();
+
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,
                     const T2& w_left_label,
