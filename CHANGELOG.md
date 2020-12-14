@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+### Added
+- Added Allpass filter in Equalizer plugin.
+
 ### Fixed
 - The equalizer UI is now correctly shown when a profile with 30 bands is loaded at startup.
 - Added a workaround for systems that were crashing because the locale is not correctly set at system level.
