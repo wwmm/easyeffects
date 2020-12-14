@@ -45,6 +45,8 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
     g_value_set_int(value, 6);
   } else if (std::strcmp(v, "Resonance") == 0) {
     g_value_set_int(value, 7);
+  } else if (std::strcmp(v, "Allpass") == 0) {
+    g_value_set_int(value, 8);
   }
 
   return 1;
@@ -77,6 +79,9 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
 
     case 7:
       return g_variant_new_string("Resonance");
+
+    case 8:
+      return g_variant_new_string("Allpass");
 
     default:
       return g_variant_new_string("Bell");

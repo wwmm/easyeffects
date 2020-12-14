@@ -68,6 +68,7 @@
                   <item translatable="yes">Low Shelf</item>
                   <item translatable="yes">Notch</item>
                   <item translatable="yes">Resonance</item>
+                  <item translatable="yes">All Pass</item>
                 </items>
               </object>
               <packing>
