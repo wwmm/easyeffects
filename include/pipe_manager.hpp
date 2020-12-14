@@ -163,9 +163,8 @@ class PipeManager {
   std::vector<std::string> blocklist_out;  // for output effects
 
   std::array<std::string, 7> blocklist_node_name = {
-      "PulseEffectsWebrtcProbe", "PulseAudio Volume Control", "libcanberra", "gsd-media-keys", "GNOME Shell",
-      "speech-dispatcher",
-  };
+      "PulseEffectsWebrtcProbe", "Pavucontrol", "PulseAudio Volume Control", "libcanberra",
+      "gsd-media-keys",          "GNOME Shell", "speech-dispatcher"};
 
   auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
   auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;

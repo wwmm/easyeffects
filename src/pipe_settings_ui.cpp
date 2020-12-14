@@ -344,7 +344,15 @@ void PipeSettingsUi::on_input_device_changed() {
     row.get_value(0, index);
     row.get_value(1, name);
 
-    app->soe->set_source_monitor_name(name);
+    // app->soe->set_source_monitor_name(name);
+
+    for (const auto& node : app->soe->pm->list_nodes) {
+      if (node.name == name) {
+        app->soe->set_input_node_id(node.id);
+
+        break;
+      }
+    }
 
     if (!use_default_source->get_active()) {
       settings->set_string("custom-source", name);
@@ -364,8 +372,14 @@ void PipeSettingsUi::on_output_device_changed() {
     row.get_value(0, index);
     row.get_value(1, name);
 
-    app->sie->set_output_sink_name(name);
-    app->soe->webrtc->set_probe_src_device(name + ".monitor");
+    for (const auto& node : app->sie->pm->list_nodes) {
+      if (node.name == name) {
+        app->sie->set_output_node_id(node.id);
+        // app->soe->webrtc->set_probe_src_device(name + ".monitor");
+
+        break;
+      }
+    }
 
     if (!use_default_sink->get_active()) {
       settings->set_string("custom-sink", name);

@@ -130,22 +130,22 @@ void Application::on_startup() {
   pm->blocklist_in = settings->get_string_array("blocklist-in");
   pm->blocklist_out = settings->get_string_array("blocklist-out");
 
-  pm->new_default_sink.connect([&](auto name) {
-    util::debug("new default sink: " + name);
+  // pm->new_default_sink.connect([&](auto name) {
+  //   util::debug("new default sink: " + name);
 
-    if (name != "") {
-      sie->set_output_sink_name(name);
-      soe->webrtc->set_probe_src_device(name + ".monitor");
-    }
-  });
+  //   if (name != "") {
+  //     sie->set_output_sink_name(name);
+  //     soe->webrtc->set_probe_src_device(name + ".monitor");
+  //   }
+  // });
 
-  pm->new_default_source.connect([&](auto name) {
-    util::debug("new default source: " + name);
+  // pm->new_default_source.connect([&](auto name) {
+  //   util::debug("new default source: " + name);
 
-    if (name != "") {
-      soe->set_source_monitor_name(name);
-    }
-  });
+  //   if (name != "") {
+  //     soe->set_source_monitor_name(name);
+  //   }
+  // });
 
   // pm->sink_changed.connect([&](const std::shared_ptr<mySinkInfo>& info) {
   //   if (info->name == pm->server_info.default_sink_name) {

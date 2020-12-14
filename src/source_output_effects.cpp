@@ -72,7 +72,7 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
   set_pulseaudio_props(pulse_props);
-  set_output_sink_name("PulseEffects_mic");
+  // set_output_sink_name("PulseEffects_mic");
   // set_caps(pm->mic_sink_info->rate);
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");

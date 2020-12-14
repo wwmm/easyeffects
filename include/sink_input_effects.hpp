@@ -35,7 +35,7 @@
 
 class SinkInputEffects : public PipelineBase {
  public:
-  SinkInputEffects(PipeManager* pulse_manager);
+  SinkInputEffects(PipeManager* pipe_manager);
   SinkInputEffects(const SinkInputEffects&) = delete;
   auto operator=(const SinkInputEffects&) -> SinkInputEffects& = delete;
   SinkInputEffects(const SinkInputEffects&&) = delete;

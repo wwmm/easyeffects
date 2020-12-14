@@ -97,12 +97,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
 
-      const auto* audio_format = spa_dict_lookup(info->props, PW_KEY_AUDIO_FORMAT);
-
-      if (audio_format != nullptr) {
-        util::warning(audio_format);
-      }
-
       pd->nd_info.state = info->state;
       pd->nd_info.n_input_ports = info->n_input_ports;
       pd->nd_info.n_output_ports = info->n_output_ports;
@@ -419,11 +413,13 @@ PipeManager::PipeManager() {
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
   pw_properties* props = pw_properties_new(nullptr, nullptr);
+
   pw_properties_set(props, PW_KEY_NODE_NAME, "pulseeffects_sink");
-  pw_properties_set(props, "node.description", "PulseEffects Sink");
+  pw_properties_set(props, PW_KEY_NODE_DESCRIPTION, "PulseEffects Sink");
   pw_properties_set(props, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props, "media.class", "Audio/Sink");
-  pw_properties_set(props, "audio.channels", "2");
+  pw_properties_set(props, PW_KEY_MEDIA_CLASS, "Audio/Sink");
+  pw_properties_set(props, "audio.position", "FL,FR");
+
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0));
 

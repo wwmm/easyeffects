@@ -22,6 +22,7 @@
 #include <gobject/gvaluecollector.h>
 #include <sys/resource.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include <string>
 #include "config.h"
 #include "gst/gstelement.h"
 #include "gst/gstmessage.h"
@@ -492,32 +493,20 @@ void PipelineBase::init_effects_bin() {
   g_object_unref(srcpad);
 }
 
-void PipelineBase::set_source_monitor_name(const std::string& name) {
-  gchar* current_device = nullptr;
+void PipelineBase::set_input_node_id(const uint& id) const {
+  auto path = std::to_string(id);
 
-  // g_object_get(source, "current-device", &current_device, nullptr);
+  g_object_set(source, "path", path.c_str(), nullptr);
 
-  // if (name != current_device) {
-  //   if (playing) {
-  //     set_null_pipeline();
-
-  //     g_object_set(source, "device", name.c_str(), nullptr);
-
-  //     gst_element_set_state(pipeline, GST_STATE_PLAYING);
-  //   } else {
-  //     g_object_set(source, "device", name.c_str(), nullptr);
-  //   }
-
-  //   util::debug(log_tag + "using input device: " + name);
-  // }
-
-  g_free(current_device);
+  util::debug(log_tag + "using input device: " + path);
 }
 
-void PipelineBase::set_output_sink_name(const std::string& name) const {
-  // g_object_set(sink, "device", name.c_str(), nullptr);
+void PipelineBase::set_output_node_id(const uint& id) const {
+  auto path = std::to_string(id);
 
-  // util::debug(log_tag + "using output device: " + name);
+  g_object_set(sink, "path", path.c_str(), nullptr);
+
+  util::debug(log_tag + "using output device: " + path);
 }
 
 void PipelineBase::set_pulseaudio_props(const std::string& props) const {

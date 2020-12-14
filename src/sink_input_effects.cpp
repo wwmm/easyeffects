@@ -94,29 +94,48 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SinkInputEff
 
 }  // namespace
 
-SinkInputEffects::SinkInputEffects(PipeManager* pulse_manager) : PipelineBase("sie: ", pulse_manager) {
+SinkInputEffects::SinkInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
   std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.sinkinputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
   set_pulseaudio_props(pulse_props);
 
-  // set_source_monitor_name(pm->apps_sink_info->monitor_source_name);
-  // set_caps(pm->apps_sink_info->rate);
+  auto default_output = pipe_manager->get_default_sink();
+
+  for (const auto& node : pipe_manager->list_nodes) {
+    if (node.name == "pulseeffects_sink") {
+      set_input_node_id(node.id);
+
+      break;
+    }
+  }
+
+  set_caps(48000);
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
-    // if (pm->get_sink_info(PULSE_SINK)) {
-    //   set_output_sink_name(PULSE_SINK);
-    // } else {
-    //   set_output_sink_name(pm->server_info.default_sink_name);
-    // }
+    int node_id = -1;
+
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == PULSE_SINK) {
+        node_id = node.id;
+
+        break;
+      }
+    }
+
+    if (node_id != -1) {
+      set_output_node_id(node_id);
+    } else {
+      set_output_node_id(default_output.id);
+    }
   } else {
     bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
 
     if (use_default_sink) {
-      // set_output_sink_name(pm->server_info.default_sink_name);
+      set_output_node_id(default_output.id);
     } else {
       gchar* custom_sink = g_settings_get_string(settings, "custom-sink");
 

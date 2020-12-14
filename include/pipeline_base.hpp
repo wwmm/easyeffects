@@ -100,8 +100,8 @@ class PipelineBase {
   void disable_spectrum();
   static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
-  void set_source_monitor_name(const std::string& name);
-  void set_output_sink_name(const std::string& name) const;
+  void set_input_node_id(const uint& id) const;
+  void set_output_node_id(const uint& id) const;
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
