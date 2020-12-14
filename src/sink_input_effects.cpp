@@ -103,6 +103,8 @@ SinkInputEffects::SinkInputEffects(PipeManager* pipe_manager) : PipelineBase("si
 
   auto default_output = pipe_manager->get_default_sink();
 
+  set_output_node_id(default_output.id);
+
   for (const auto& node : pipe_manager->list_nodes) {
     if (node.name == "pulseeffects_sink") {
       set_input_node_id(node.id);
@@ -128,24 +130,30 @@ SinkInputEffects::SinkInputEffects(PipeManager* pipe_manager) : PipelineBase("si
 
     if (node_id != -1) {
       set_output_node_id(node_id);
-    } else {
-      set_output_node_id(default_output.id);
     }
   } else {
     bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
 
-    if (use_default_sink) {
-      set_output_node_id(default_output.id);
-    } else {
+    if (!use_default_sink) {
       gchar* custom_sink = g_settings_get_string(settings, "custom-sink");
 
-      // if (pm->get_sink_info(custom_sink)) {
-      //   set_output_sink_name(custom_sink);
-      // } else {
-      //   set_output_sink_name(pm->server_info.default_sink_name);
-      // }
+      if (custom_sink != nullptr) {
+        int node_id = -1;
 
-      g_free(custom_sink);
+        for (const auto& node : pipe_manager->list_nodes) {
+          if (node.name == custom_sink) {
+            node_id = node.id;
+
+            break;
+          }
+        }
+
+        if (node_id != -1) {
+          set_output_node_id(node_id);
+        }
+
+        g_free(custom_sink);
+      }
     }
   }
 

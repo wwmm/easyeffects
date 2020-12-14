@@ -65,8 +65,6 @@ AppInfoUi::~AppInfoUi() {
 }
 
 void AppInfoUi::init_widgets() {
-  const float ms_factor = 0.001F;
-
   enable->set_active(is_enabled && !is_blocklisted);
   enable->set_sensitive(!is_blocklisted);
 
@@ -169,19 +167,19 @@ void AppInfoUi::connect_signals() {
 auto AppInfoUi::on_enable_app(bool state) -> bool {
   bool success = false;
 
-  // if (state) {
-  //   if (app_info->app_type == "sink_input") {
-  //     success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
-  //   } else {
-  //     success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
-  //   }
-  // } else {
-  //   if (app_info->app_type == "sink_input") {
-  //     success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
-  //   } else {
-  //     success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
-  //   }
-  // }
+  if (state) {
+    if (nd_info.media_class == "Stream/Output/Audio") {
+      success = pm->connect_stream_output(nd_info);
+    } else {
+      //     success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+    }
+  } else {
+    if (nd_info.media_class == "Stream/Output/Audio") {
+      //     success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+    } else {
+      //     success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+    }
+  }
 
   if (success) {
     is_enabled = state;

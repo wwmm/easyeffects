@@ -152,10 +152,6 @@ class PipeManager {
 
   std::vector<PortInfo> list_ports;
 
-  auto get_default_source() -> NodeInfo;
-
-  auto get_default_sink() -> NodeInfo;
-
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
 
@@ -165,6 +161,12 @@ class PipeManager {
   std::array<std::string, 7> blocklist_node_name = {
       "PulseEffectsWebrtcProbe", "Pavucontrol", "PulseAudio Volume Control", "libcanberra",
       "gsd-media-keys",          "GNOME Shell", "speech-dispatcher"};
+
+  auto get_default_source() -> NodeInfo;
+
+  auto get_default_sink() -> NodeInfo;
+
+  auto connect_stream_output(const NodeInfo& nd_info) -> bool;
 
   auto move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool;
   auto remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool;

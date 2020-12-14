@@ -344,8 +344,6 @@ void PipeSettingsUi::on_input_device_changed() {
     row.get_value(0, index);
     row.get_value(1, name);
 
-    // app->soe->set_source_monitor_name(name);
-
     for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
         app->soe->set_input_node_id(node.id);

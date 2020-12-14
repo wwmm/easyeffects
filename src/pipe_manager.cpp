@@ -52,8 +52,68 @@ struct port_data {
 
   PipeManager* pm = nullptr;
 
-  PortInfo p_info;
+  uint id = 0;
 };
+
+auto port_info_from_props(const spa_dict* props) -> PortInfo {
+  PortInfo info;
+
+  info.type = PW_TYPE_INTERFACE_Port;
+
+  const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
+  const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID);
+  const auto* port_name = spa_dict_lookup(props, PW_KEY_PORT_NAME);
+  const auto* port_direction = spa_dict_lookup(props, PW_KEY_PORT_DIRECTION);
+  const auto* port_channel = spa_dict_lookup(props, PW_KEY_AUDIO_CHANNEL);
+  const auto* port_audio_format = spa_dict_lookup(props, PW_KEY_AUDIO_FORMAT);
+  const auto* port_physical = spa_dict_lookup(props, PW_KEY_PORT_PHYSICAL);
+  const auto* port_terminal = spa_dict_lookup(props, PW_KEY_PORT_TERMINAL);
+  const auto* port_monitor = spa_dict_lookup(props, PW_KEY_PORT_MONITOR);
+
+  if (path != nullptr) {
+    info.path = path;
+  }
+
+  if (node_id != nullptr) {
+    info.node_id = std::stoi(node_id);
+  }
+
+  if (port_name != nullptr) {
+    info.name = port_name;
+  }
+
+  if (port_direction != nullptr) {
+    info.direction = port_direction;
+  }
+
+  if (port_channel != nullptr) {
+    info.audio_channel = port_channel;
+  }
+
+  if (port_audio_format != nullptr) {
+    info.format_dsp = port_audio_format;
+  }
+
+  if (port_physical != nullptr) {
+    if (strcmp(port_physical, "true") == 0) {
+      info.physical = true;
+    }
+  }
+
+  if (port_terminal != nullptr) {
+    if (strcmp(port_terminal, "true") == 0) {
+      info.terminal = true;
+    }
+  }
+
+  if (port_monitor != nullptr) {
+    if (strcmp(port_monitor, "true") == 0) {
+      info.monitor = true;
+    }
+  }
+
+  return info;
+}
 
 void removed_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
@@ -148,9 +208,9 @@ void removed_port_proxy(void* data) {
 
   pw_proxy_destroy(pd->proxy);
 
-  pd->pm->list_ports.erase(std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(),
-                                          [=](auto& n) { return n.id == pd->p_info.id; }),
-                           pd->pm->list_ports.end());
+  pd->pm->list_ports.erase(
+      std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(), [=](auto& n) { return n.id == pd->id; }),
+      pd->pm->list_ports.end());
 
   // util::debug(pd->pm->log_tag + pd->p_info.type + " " + pd->p_info.name + " was removed");
 }
@@ -170,49 +230,7 @@ void on_port_info(void* object, const struct pw_port_info* info) {
 
   for (auto& port : pd->pm->list_ports) {
     if (port.id == info->id) {
-      const auto* port_name = spa_dict_lookup(info->props, PW_KEY_PORT_NAME);
-      const auto* port_direction = spa_dict_lookup(info->props, PW_KEY_PORT_DIRECTION);
-      const auto* port_channel = spa_dict_lookup(info->props, PW_KEY_AUDIO_CHANNEL);
-      const auto* port_audio_format = spa_dict_lookup(info->props, PW_KEY_AUDIO_FORMAT);
-      const auto* port_physical = spa_dict_lookup(info->props, PW_KEY_PORT_PHYSICAL);
-      const auto* port_terminal = spa_dict_lookup(info->props, PW_KEY_PORT_TERMINAL);
-      const auto* port_monitor = spa_dict_lookup(info->props, PW_KEY_PORT_MONITOR);
-
-      if (port_name != nullptr) {
-        pd->p_info.name = port_name;
-      }
-
-      if (port_direction != nullptr) {
-        pd->p_info.direction = port_direction;
-      }
-
-      if (port_channel != nullptr) {
-        pd->p_info.audio_channel = port_channel;
-      }
-
-      if (port_audio_format != nullptr) {
-        pd->p_info.format_dsp = port_audio_format;
-      }
-
-      if (port_physical != nullptr) {
-        if (strcmp(port_physical, "true") == 0) {
-          pd->p_info.physical = true;
-        }
-      }
-
-      if (port_terminal != nullptr) {
-        if (strcmp(port_terminal, "true") == 0) {
-          pd->p_info.terminal = true;
-        }
-      }
-
-      if (port_monitor != nullptr) {
-        if (strcmp(port_monitor, "true") == 0) {
-          pd->p_info.monitor = true;
-        }
-      }
-
-      port = pd->p_info;
+      port = port_info_from_props(info->props);
     }
 
     break;
@@ -318,14 +336,16 @@ void on_registry_global(void* data,
 
         pd->proxy = proxy;
         pd->pm = pm;
-        pd->p_info.path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
-        pd->p_info.id = id;
-        pd->p_info.type = type;
+        pd->id = id;
 
         pw_port_add_listener(proxy, &pd->object_listener, &port_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
 
-        pm->list_ports.emplace_back(pd->p_info);
+        auto port_info = port_info_from_props(props);
+
+        port_info.id = id;
+
+        pm->list_ports.emplace_back(port_info);
 
         // util::debug(pm->log_tag + " " + std::to_string(id) + " " + pd->p_info.name + " was added");
 
@@ -493,6 +513,58 @@ auto PipeManager::get_default_sink() -> NodeInfo {
   }
 
   return default_sink;
+}
+
+auto PipeManager::connect_stream_output(const NodeInfo& nd_info) -> bool {
+  bool success = false;
+
+  if (nd_info.media_class == "Stream/Output/Audio") {
+    NodeInfo pe_node;
+    std::vector<PortInfo> pe_ports;
+    std::vector<PortInfo> app_ports;
+
+    for (const auto& node : list_nodes) {
+      if (node.name == "pulseeffects_sink") {
+        pe_node = node;
+
+        break;
+      }
+    }
+
+    for (const auto& port : list_ports) {
+      if (port.node_id == pe_node.id) {
+        pe_ports.emplace_back(port);
+
+      } else if (port.node_id == nd_info.id) {
+        app_ports.emplace_back(port);
+      }
+    }
+
+    for (const auto& pe_port : pe_ports) {
+      if (pe_port.direction == "in") {
+        for (const auto& app_port : app_ports) {
+          if (app_port.direction == "out") {
+            if (app_port.audio_channel == pe_port.audio_channel) {
+              pw_properties* props = pw_properties_new(nullptr, nullptr);
+
+              pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(pe_port.node_id).c_str());
+              pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(pe_port.id).c_str());
+              pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(app_port.node_id).c_str());
+              pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(app_port.id).c_str());
+              pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
+
+              auto* proxy =
+                  pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
+
+              util::debug(log_tag + "connecting " + app_port.path + " to " + pe_port.path);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return success;
 }
 
 auto PipeManager::move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool {
