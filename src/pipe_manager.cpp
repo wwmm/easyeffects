@@ -19,14 +19,8 @@
 
 #include "pipe_manager.hpp"
 #include <glibmm.h>
-#include <chrono>
-#include <memory>
 #include <string>
 #include "pipe_filter.hpp"
-#include "pipewire/device.h"
-#include "pipewire/keys.h"
-#include "pipewire/node.h"
-#include "pipewire/port.h"
 #include "util.hpp"
 
 namespace {
@@ -55,10 +49,20 @@ struct port_data {
   uint id = 0;
 };
 
+struct link_data {
+  pw_proxy* proxy = nullptr;
+
+  spa_hook proxy_listener{};
+
+  spa_hook object_listener{};
+
+  PipeManager* pm = nullptr;
+
+  uint id = 0;
+};
+
 auto port_info_from_props(const spa_dict* props) -> PortInfo {
   PortInfo info;
-
-  info.type = PW_TYPE_INTERFACE_Port;
 
   const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
   const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID);
@@ -115,7 +119,46 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
   return info;
 }
 
-void removed_node_proxy(void* data) {
+auto link_info_from_props(const spa_dict* props) -> LinkInfo {
+  LinkInfo info;
+
+  const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
+  const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE);
+  const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT);
+  const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE);
+  const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT);
+  const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE);
+
+  if (path != nullptr) {
+    info.path = path;
+  }
+
+  if (input_node_id != nullptr) {
+    info.input_node_id = std::stoi(input_node_id);
+  }
+
+  if (input_port_id != nullptr) {
+    info.input_port_id = std::stoi(input_port_id);
+  }
+
+  if (output_node_id != nullptr) {
+    info.output_node_id = std::stoi(output_node_id);
+  }
+
+  if (output_port_id != nullptr) {
+    info.output_port_id = std::stoi(output_port_id);
+  }
+
+  if (passive != nullptr) {
+    if (strcmp(passive, "true") == 0) {
+      info.passive = true;
+    }
+  }
+
+  return info;
+}
+
+void on_removed_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
 
   pw_proxy_destroy(pd->proxy);
@@ -124,7 +167,7 @@ void removed_node_proxy(void* data) {
                                           [=](auto& n) { return n.id == pd->nd_info.id; }),
                            pd->pm->list_nodes.end());
 
-  util::debug(pd->pm->log_tag + pd->nd_info.type + " " + pd->nd_info.name + " was removed");
+  util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 
   if (pd->nd_info.media_class == "Audio/Source") {
     Glib::signal_idle().connect_once([pd] { pd->pm->source_removed.emit(pd->nd_info); });
@@ -137,40 +180,40 @@ void removed_node_proxy(void* data) {
   }
 }
 
-void destroy_node_proxy(void* data) {
+void on_destroy_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
 
   spa_hook_remove(&pd->proxy_listener);
   spa_hook_remove(&pd->object_listener);
 }
 
-const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_node_proxy,
-                                                  .removed = removed_node_proxy};
+const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_node_proxy,
+                                                  .removed = on_removed_node_proxy};
 
 void on_node_info(void* object, const struct pw_node_info* info) {
-  auto* pd = static_cast<node_data*>(object);
+  auto* nd = static_cast<node_data*>(object);
 
-  for (auto& node : pd->pm->list_nodes) {
+  for (auto& node : nd->pm->list_nodes) {
     if (node.id == info->id) {
       const auto* icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
 
-      pd->nd_info.state = info->state;
-      pd->nd_info.n_input_ports = info->n_input_ports;
-      pd->nd_info.n_output_ports = info->n_output_ports;
+      nd->nd_info.state = info->state;
+      nd->nd_info.n_input_ports = info->n_input_ports;
+      nd->nd_info.n_output_ports = info->n_output_ports;
 
       if (prio_session != nullptr) {
-        pd->nd_info.priority = std::stoi(prio_session);
+        nd->nd_info.priority = std::stoi(prio_session);
       }
 
       if (icon_name != nullptr) {
-        pd->nd_info.icon_name = icon_name;
+        nd->nd_info.icon_name = icon_name;
       }
 
       if (media_name != nullptr) {
-        pd->nd_info.media_name = media_name;
+        nd->nd_info.media_name = media_name;
       }
 
       if (node_latency != nullptr) {
@@ -182,17 +225,17 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         auto rate_str = str.substr(delimiter_pos + 1);
 
-        pd->nd_info.rate = std::stoi(rate_str);
+        nd->nd_info.rate = std::stoi(rate_str);
 
-        pd->nd_info.latency = std::stof(latency_str) / static_cast<float>(pd->nd_info.rate);
+        nd->nd_info.latency = std::stof(latency_str) / static_cast<float>(nd->nd_info.rate);
       }
 
-      node = pd->nd_info;
+      node = nd->nd_info;
 
       if (node.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_changed.emit(pd->nd_info); });
+        Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (node.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_changed.emit(pd->nd_info); });
+        Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
       }
 
       break;
@@ -203,7 +246,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
-void removed_port_proxy(void* data) {
+void on_removed_port_proxy(void* data) {
   auto* pd = static_cast<port_data*>(data);
 
   pw_proxy_destroy(pd->proxy);
@@ -215,15 +258,15 @@ void removed_port_proxy(void* data) {
   // util::debug(pd->pm->log_tag + pd->p_info.type + " " + pd->p_info.name + " was removed");
 }
 
-void destroy_port_proxy(void* data) {
+void on_destroy_port_proxy(void* data) {
   auto* pd = static_cast<port_data*>(data);
 
   spa_hook_remove(&pd->proxy_listener);
   spa_hook_remove(&pd->object_listener);
 }
 
-const struct pw_proxy_events port_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = destroy_port_proxy,
-                                                  .removed = removed_port_proxy};
+const struct pw_proxy_events port_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_port_proxy,
+                                                  .removed = on_removed_port_proxy};
 
 void on_port_info(void* object, const struct pw_port_info* info) {
   auto* pd = static_cast<port_data*>(object);
@@ -235,10 +278,46 @@ void on_port_info(void* object, const struct pw_port_info* info) {
 
     break;
   }
+}
+
+void on_link_info(void* object, const struct pw_link_info* info) {
+  auto* ld = static_cast<link_data*>(object);
+
+  for (auto& link : ld->pm->list_links) {
+    if (link.id == info->id) {
+      link = link_info_from_props(info->props);
+    }
+
+    break;
+  }
 
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
+
+void on_removed_link_proxy(void* data) {
+  auto* ld = static_cast<link_data*>(data);
+
+  ld->pm->list_link_proxys.erase(std::remove_if(ld->pm->list_link_proxys.begin(), ld->pm->list_link_proxys.end(),
+                                                [=](auto& proxy) { return proxy == ld->proxy; }),
+                                 ld->pm->list_link_proxys.end());
+
+  ld->pm->list_links.erase(
+      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
+      ld->pm->list_links.end());
+
+  pw_proxy_destroy(ld->proxy);
+}
+
+void on_destroy_link_proxy(void* data) {
+  auto* ld = static_cast<link_data*>(data);
+
+  spa_hook_remove(&ld->proxy_listener);
+  spa_hook_remove(&ld->object_listener);
+}
+
+const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
+                                                  .removed = on_removed_link_proxy};
 
 const struct pw_node_events node_events = {
     PW_VERSION_NODE_EVENTS,
@@ -248,6 +327,11 @@ const struct pw_node_events node_events = {
 const struct pw_port_events port_events = {
     PW_VERSION_PORT_EVENTS,
     .info = on_port_info,
+};
+
+const struct pw_link_events link_events = {
+    PW_VERSION_PORT_EVENTS,
+    .info = on_link_info,
 };
 
 void on_registry_global(void* data,
@@ -283,7 +367,6 @@ void on_registry_global(void* data,
         pd->proxy = proxy;
         pd->pm = pm;
         pd->nd_info.id = id;
-        pd->nd_info.type = type;
         pd->nd_info.media_class = media_class;
 
         if (node_name != nullptr) {
@@ -325,7 +408,7 @@ void on_registry_global(void* data,
       return;
     }
 
-    int node_id = std::stoi(node_id_char);
+    uint node_id = std::stoi(node_id_char);
 
     for (auto& node : pm->list_nodes) {
       if (node.id == node_id) {
@@ -348,6 +431,34 @@ void on_registry_global(void* data,
         pm->list_ports.emplace_back(port_info);
 
         // util::debug(pm->log_tag + " " + std::to_string(id) + " " + pd->p_info.name + " was added");
+
+        return;
+      }
+    }
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Link) == 0) {
+    auto link_info = link_info_from_props(props);
+
+    link_info.id = id;
+
+    for (auto& node : pm->list_nodes) {
+      if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
+        auto* proxy =
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(struct link_data)));
+
+        auto* pd = static_cast<link_data*>(pw_proxy_get_user_data(proxy));
+
+        pd->proxy = proxy;
+        pd->pm = pm;
+        pd->id = id;
+
+        pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
+        pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
+
+        pm->list_links.emplace_back(link_info);
+
+        pm->list_link_proxys.emplace_back(proxy);
 
         return;
       }
@@ -551,7 +662,7 @@ auto PipeManager::connect_stream_output(const NodeInfo& nd_info) -> bool {
               pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(pe_port.id).c_str());
               pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(app_port.node_id).c_str());
               pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(app_port.id).c_str());
-              pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
+              // pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
 
               auto* proxy =
                   pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
@@ -567,422 +678,31 @@ auto PipeManager::connect_stream_output(const NodeInfo& nd_info) -> bool {
   return success;
 }
 
-auto PipeManager::move_sink_input_to_pulseeffects(const std::string& name, uint idx) -> bool {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
+auto PipeManager::disconnect_stream_output(const NodeInfo& nd_info) -> bool {
+  bool success = false;
+  NodeInfo pe_node;
 
-  // Data data = {name, idx, this};
+  for (const auto& node : list_nodes) {
+    if (node.name == "pulseeffects_sink") {
+      pe_node = node;
 
-  // bool added_successfully = false;
+      break;
+    }
+  }
 
-  // pa_threaded_mainloop_lock(thread_loop);
+  for (size_t n = 0; n < list_links.size(); n++) {
+    auto link = list_links[n];
 
-  // auto* o = pw_context_move_sink_input_by_index(
-  //     context, idx, apps_sink_info->index,
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
+    if (link.output_node_id == nd_info.id && link.input_node_id != pe_node.id) {
+      auto* proxy = list_link_proxys[n];
 
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) + " moved to
-  //         PE");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to move sink input: " + d->name +
-  //                        ", idx = " + std::to_string(d->idx) + " to PE");
-  //       }
+      pw_proxy_destroy(proxy);
 
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
+      break;
+    }
+  }
 
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-
-  //   added_successfully = true;
-  // } else {
-  //   util::critical(log_tag + "failed to move sink input: " + name + ", idx = " + std::to_string(idx) + " to PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-
-  // return added_successfully;
-}
-
-auto PipeManager::remove_sink_input_from_pulseeffects(const std::string& name, uint idx) -> bool {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {name, idx, this};
-
-  // bool removed_successfully = false;
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_move_sink_input_by_name(
-  //     context, idx, server_info.default_sink_name.c_str(),
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) +
-  //                     " removed from PE");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to remove sink input: " + d->name +
-  //                        ", idx = " + std::to_string(d->idx) + " from PE");
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-
-  //   removed_successfully = true;
-  // } else {
-  //   util::critical(log_tag + "failed to remove sink input: " + name + ", idx = " + std::to_string(idx) + " from PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-
-  // return removed_successfully;
-}
-
-auto PipeManager::move_source_output_to_pulseeffects(const std::string& name, uint idx) -> bool {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {name, idx, this};
-
-  // bool added_successfully = false;
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_move_source_output_by_index(
-  //     context, idx, mic_sink_info->monitor_source,
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + std::to_string(d->idx) +
-  //                     " moved to PE");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to move source output " + d->name + ", idx = " + " to PE");
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-
-  //   added_successfully = true;
-  // } else {
-  //   util::critical(log_tag + "failed to move source output: " + name + ", idx = " + std::to_string(idx) + " to PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-
-  // return added_successfully;
-}
-
-auto PipeManager::remove_source_output_from_pulseeffects(const std::string& name, uint idx) -> bool {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {name, idx, this};
-
-  // bool removed_successfully = false;
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_move_source_output_by_name(
-  //     context, idx, server_info.default_source_name.c_str(),
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + " removed from PE");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to remove source output: " + d->name + ", idx = " + " from PE");
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-
-  //   removed_successfully = true;
-  // } else {
-  //   util::critical(log_tag + "failed to remove source output: " + name + ", idx = " + std::to_string(idx) + " from
-  //   PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-
-  // return removed_successfully;
-}
-
-void PipeManager::set_sink_input_volume(const std::string& name, uint idx, uint8_t channels, uint value) {
-  // pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
-
-  // auto cvol = pa_cvolume();
-
-  // auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
-
-  // if (cvol_ptr != nullptr) {
-  //   struct Data {
-  //     std::string name;
-  //     uint idx;
-  //     PipeManager* pm;
-  //   };
-
-  //   Data data = {name, idx, this};
-
-  //   pa_threaded_mainloop_lock(thread_loop);
-
-  //   auto* o = pw_context_set_sink_input_volume(
-  //       context, idx, cvol_ptr,
-  //       [](auto c, auto success, auto data) {
-  //         auto* d = static_cast<Data*>(data);
-
-  //         if (success) {
-  //           util::debug(d->pm->log_tag + "changed volume of sink input: " + d->name +
-  //                       ", idx = " + std::to_string(d->idx));
-  //         } else {
-  //           util::critical(d->pm->log_tag + "failed to change volume of sink input: " + d->name +
-  //                          ", idx = " + std::to_string(d->idx));
-  //         }
-
-  //         pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //       },
-  //       &data);
-
-  //   if (o != nullptr) {
-  //     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //       pa_threaded_mainloop_wait(thread_loop);
-  //     }
-
-  //     pa_operation_unref(o);
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   } else {
-  //     util::warning(log_tag + "failed to change volume of sink input: " + name + ", idx = " + std::to_string(idx));
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   }
-  // }
-}
-
-void PipeManager::set_sink_input_mute(const std::string& name, uint idx, bool state) {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {name, idx, this};
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_set_sink_input_mute(
-  //     context, idx, static_cast<int>(state),
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "sink input: " + d->name + ", idx = " + std::to_string(d->idx) + " is muted");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to mute sink input: " + d->name +
-  //                        ", idx = " + std::to_string(d->idx));
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-  // } else {
-  //   util::warning(log_tag + "failed to mute set sink input: " + name + ", idx = " + std::to_string(idx) + " to PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
-}
-
-void PipeManager::set_source_output_volume(const std::string& name, uint idx, uint8_t channels, uint value) {
-  // pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
-
-  // auto cvol = pa_cvolume();
-
-  // auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
-
-  // if (cvol_ptr != nullptr) {
-  //   struct Data {
-  //     std::string name;
-  //     uint idx;
-  //     PipeManager* pm;
-  //   };
-
-  //   Data data = {name, idx, this};
-
-  //   pa_threaded_mainloop_lock(thread_loop);
-
-  //   auto* o = pw_context_set_source_output_volume(
-  //       context, idx, cvol_ptr,
-  //       [](auto c, auto success, auto data) {
-  //         auto* d = static_cast<Data*>(data);
-
-  //         if (success) {
-  //           util::debug(d->pm->log_tag + "changed volume of source output: " + d->name +
-  //                       ", idx = " + std::to_string(d->idx));
-  //         } else {
-  //           util::debug(d->pm->log_tag + "failed to change volume of source output: " + d->name +
-  //                       ", idx = " + std::to_string(d->idx));
-  //         }
-
-  //         pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //       },
-  //       &data);
-
-  //   if (o != nullptr) {
-  //     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //       pa_threaded_mainloop_wait(thread_loop);
-  //     }
-
-  //     pa_operation_unref(o);
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   } else {
-  //     util::warning(log_tag + "failed to change volume of source output: " + name + ", idx = " +
-  //     std::to_string(idx));
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   }
-  // }
-}
-
-void PipeManager::set_sink_volume_by_name(const std::string& name, uint8_t channels, uint value) {
-  // pa_volume_t raw_value = PA_VOLUME_NORM * value / 100.0;
-
-  // auto cvol = pa_cvolume();
-
-  // auto* cvol_ptr = pa_cvolume_set(&cvol, channels, raw_value);
-
-  // if (cvol_ptr != nullptr) {
-  //   struct Data {
-  //     std::string name;
-  //     PipeManager* pm;
-  //   };
-
-  //   Data data = {name, this};
-
-  //   pa_threaded_mainloop_lock(thread_loop);
-
-  //   auto* o = pw_context_set_sink_volume_by_name(
-  //       context, name.c_str(), cvol_ptr,
-  //       [](auto c, auto success, auto data) {
-  //         auto* d = static_cast<Data*>(data);
-
-  //         if (success) {
-  //           util::debug(d->pm->log_tag + "changed volume of the sink: " + d->name);
-  //         } else {
-  //           util::debug(d->pm->log_tag + "failed to change volume of the sink: " + d->name);
-  //         }
-
-  //         pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //       },
-  //       &data);
-
-  //   if (o != nullptr) {
-  //     while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //       pa_threaded_mainloop_wait(thread_loop);
-  //     }
-
-  //     pa_operation_unref(o);
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   } else {
-  //     util::warning(log_tag + "failed to change volume of the sink: " + name);
-
-  //     pa_threaded_mainloop_unlock(thread_loop);
-  //   }
-  // }
-}
-
-void PipeManager::set_source_output_mute(const std::string& name, uint idx, bool state) {
-  // struct Data {
-  //   std::string name;
-  //   uint idx;
-  //   PipeManager* pm;
-  // };
-
-  // Data data = {name, idx, this};
-
-  // pa_threaded_mainloop_lock(thread_loop);
-
-  // auto* o = pw_context_set_source_output_mute(
-  //     context, idx, static_cast<int>(state),
-  //     [](auto c, auto success, auto data) {
-  //       auto* d = static_cast<Data*>(data);
-
-  //       if (success) {
-  //         util::debug(d->pm->log_tag + "source output: " + d->name + ", idx = " + std::to_string(d->idx) + " is
-  //         muted");
-  //       } else {
-  //         util::critical(d->pm->log_tag + "failed to mute source output: " + d->name +
-  //                        ", idx = " + std::to_string(d->idx));
-  //       }
-
-  //       pa_threaded_mainloop_signal(d->pm->thread_loop, false);
-  //     },
-  //     &data);
-
-  // if (o != nullptr) {
-  //   while (pa_operation_get_state(o) == PA_OPERATION_RUNNING) {
-  //     pa_threaded_mainloop_wait(thread_loop);
-  //   }
-
-  //   pa_operation_unref(o);
-  // } else {
-  //   util::warning(log_tag + "failed to mute source output: " + name + ", idx = " + std::to_string(idx) + " to PE");
-  // }
-
-  // pa_threaded_mainloop_unlock(thread_loop);
+  return success;
 }
 
 // void PipeManager::new_app(const pa_sink_input_info* info) {
@@ -1037,24 +757,4 @@ void PipeManager::set_source_output_mute(const std::string& name, uint idx, bool
 //       Glib::signal_idle().connect_once([&, app_info = move(app_info)]() { source_output_changed.emit(app_info); });
 //     }
 //   }
-// }
-
-void PipeManager::print_app_info(const std::shared_ptr<AppInfo>& info) {
-  std::cout << "index: " << info->index << std::endl;
-  std::cout << "name: " << info->name << std::endl;
-  std::cout << "icon name: " << info->icon_name << std::endl;
-  std::cout << "channels: " << info->channels << std::endl;
-  std::cout << "volume: " << info->volume << std::endl;
-  std::cout << "rate: " << info->rate << std::endl;
-  std::cout << "resampler: " << info->resampler << std::endl;
-  std::cout << "format: " << info->format << std::endl;
-  std::cout << "wants to play: " << info->wants_to_play << std::endl;
-}
-
-// auto PipeManager::app_is_connected(const pa_sink_input_info* info) -> bool {
-//   return info->sink == apps_sink_info->index;
-// }
-
-// auto PipeManager::app_is_connected(const pa_source_output_info* info) -> bool {
-//   return info->source == mic_sink_info->monitor_source;
 // }

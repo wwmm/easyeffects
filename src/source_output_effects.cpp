@@ -203,7 +203,7 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
 
   if (app_info->connected) {
     if (forbidden_app) {
-      success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+      // success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
 
       if (success) {
         app_info->connected = false;
@@ -213,7 +213,7 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
     auto enable_all = g_settings_get_boolean(settings, "enable-all-sourceoutputs");
 
     if (!forbidden_app && (enable_all != 0)) {
-      success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+      // success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
 
       if (success) {
         app_info->connected = true;
