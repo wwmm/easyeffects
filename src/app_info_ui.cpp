@@ -165,26 +165,21 @@ void AppInfoUi::connect_signals() {
 }
 
 auto AppInfoUi::on_enable_app(bool state) -> bool {
-  bool success = false;
-
   if (state) {
     if (nd_info.media_class == "Stream/Output/Audio") {
-      success = pm->connect_stream_output(nd_info);
-      success = pm->disconnect_stream_output(nd_info);
+      pm->connect_stream_output(nd_info);
     } else {
       //     success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
     }
   } else {
     if (nd_info.media_class == "Stream/Output/Audio") {
-      success = pm->disconnect_stream_output(nd_info);
+      pm->disconnect_stream_output(nd_info);
     } else {
       //     success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
     }
   }
 
-  if (success) {
-    is_enabled = state;
-  }
+  is_enabled = state;
 
   return false;
 }

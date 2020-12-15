@@ -18,10 +18,9 @@
  */
 
 #include "pipe_manager.hpp"
-#include <glibmm.h>
 #include <string>
-#include "pipe_filter.hpp"
-#include "util.hpp"
+#include "pipewire/extensions/metadata.h"
+#include "pipewire/keys.h"
 
 namespace {
 
@@ -241,9 +240,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       break;
     }
   }
-
-  // const struct spa_dict_item* item = nullptr;
-  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_removed_port_proxy(void* data) {
@@ -254,8 +250,6 @@ void on_removed_port_proxy(void* data) {
   pd->pm->list_ports.erase(
       std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(), [=](auto& n) { return n.id == pd->id; }),
       pd->pm->list_ports.end());
-
-  // util::debug(pd->pm->log_tag + pd->p_info.type + " " + pd->p_info.name + " was removed");
 }
 
 void on_destroy_port_proxy(void* data) {
@@ -283,12 +277,29 @@ void on_port_info(void* object, const struct pw_port_info* info) {
 void on_link_info(void* object, const struct pw_link_info* info) {
   auto* ld = static_cast<link_data*>(object);
 
-  for (auto& link : ld->pm->list_links) {
-    if (link.id == info->id) {
-      link = link_info_from_props(info->props);
+  auto link = link_info_from_props(info->props);
+
+  bool found_input = false;
+  bool found_output = false;
+  NodeInfo input_node;
+  NodeInfo output_node;
+
+  for (auto& node : ld->pm->list_nodes) {
+    if (link.input_node_id == node.id) {
+      found_input = true;
+
+      input_node = node;
     }
 
-    break;
+    if (link.output_node_id == node.id) {
+      found_output = true;
+
+      output_node = node;
+    }
+  }
+
+  if (found_input and found_output) {
+    util::debug(ld->pm->log_tag + output_node.name + " is connected to " + input_node.name);
   }
 
   // const struct spa_dict_item* item = nullptr;
@@ -297,14 +308,6 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 
 void on_removed_link_proxy(void* data) {
   auto* ld = static_cast<link_data*>(data);
-
-  ld->pm->list_link_proxys.erase(std::remove_if(ld->pm->list_link_proxys.begin(), ld->pm->list_link_proxys.end(),
-                                                [=](auto& proxy) { return proxy == ld->proxy; }),
-                                 ld->pm->list_link_proxys.end());
-
-  ld->pm->list_links.erase(
-      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
-      ld->pm->list_links.end());
 
   pw_proxy_destroy(ld->proxy);
 }
@@ -315,6 +318,16 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
   spa_hook_remove(&ld->object_listener);
 }
+
+int metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) {
+  auto* pm = static_cast<PipeManager*>(data);
+
+  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + key + ", " + type + ", " + value);
+
+  return 0;
+}
+
+const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .property = metadata_property};
 
 const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
                                                   .removed = on_removed_link_proxy};
@@ -456,13 +469,25 @@ void on_registry_global(void* data,
         pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
 
-        pm->list_links.emplace_back(link_info);
-
-        pm->list_link_proxys.emplace_back(proxy);
-
         return;
       }
     }
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
+    const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME);
+
+    if (name != nullptr) {
+      util::debug(pm->log_tag + "found metadata: " + name);
+
+      if (pm->metadata != nullptr) {
+        return;
+      }
+
+      pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
+    }
+
+    pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
   }
 }
 
@@ -568,6 +593,11 @@ PipeManager::~PipeManager() {
 
   spa_hook_remove(&registry_listener);
   spa_hook_remove(&core_listener);
+  spa_hook_remove(&metadata_listener);
+
+  if (metadata != nullptr) {
+    pw_proxy_destroy((struct pw_proxy*)metadata);
+  }
 
   // delete filter;
 
@@ -626,9 +656,7 @@ auto PipeManager::get_default_sink() -> NodeInfo {
   return default_sink;
 }
 
-auto PipeManager::connect_stream_output(const NodeInfo& nd_info) -> bool {
-  bool success = false;
-
+void PipeManager::connect_stream_output(const NodeInfo& nd_info) {
   if (nd_info.media_class == "Stream/Output/Audio") {
     NodeInfo pe_node;
     std::vector<PortInfo> pe_ports;
@@ -642,67 +670,16 @@ auto PipeManager::connect_stream_output(const NodeInfo& nd_info) -> bool {
       }
     }
 
-    for (const auto& port : list_ports) {
-      if (port.node_id == pe_node.id) {
-        pe_ports.emplace_back(port);
-
-      } else if (port.node_id == nd_info.id) {
-        app_ports.emplace_back(port);
-      }
-    }
-
-    for (const auto& pe_port : pe_ports) {
-      if (pe_port.direction == "in") {
-        for (const auto& app_port : app_ports) {
-          if (app_port.direction == "out") {
-            if (app_port.audio_channel == pe_port.audio_channel) {
-              pw_properties* props = pw_properties_new(nullptr, nullptr);
-
-              pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(pe_port.node_id).c_str());
-              pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(pe_port.id).c_str());
-              pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(app_port.node_id).c_str());
-              pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(app_port.id).c_str());
-              // pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
-
-              auto* proxy =
-                  pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
-
-              util::debug(log_tag + "connecting " + app_port.path + " to " + pe_port.path);
-            }
-          }
-        }
-      }
-    }
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_node.id).c_str());
   }
-
-  return success;
 }
 
-auto PipeManager::disconnect_stream_output(const NodeInfo& nd_info) -> bool {
-  bool success = false;
-  NodeInfo pe_node;
+void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
+  if (nd_info.media_class == "Stream/Output/Audio") {
+    auto default_sink = get_default_sink();
 
-  for (const auto& node : list_nodes) {
-    if (node.name == "pulseeffects_sink") {
-      pe_node = node;
-
-      break;
-    }
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
   }
-
-  for (size_t n = 0; n < list_links.size(); n++) {
-    auto link = list_links[n];
-
-    if (link.output_node_id == nd_info.id && link.input_node_id != pe_node.id) {
-      auto* proxy = list_link_proxys[n];
-
-      pw_proxy_destroy(proxy);
-
-      break;
-    }
-  }
-
-  return success;
 }
 
 // void PipeManager::new_app(const pa_sink_input_info* info) {

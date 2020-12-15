@@ -21,15 +21,17 @@
 #define PIPE_MANAGER_HPP
 
 #include <glibmm.h>
+#include <pipewire/extensions/metadata.h>
 #include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <array>
 #include <cstring>
-#include <iostream>
 #include <memory>
+#include <string>
 #include <vector>
 #include "pipe_filter.hpp"
+#include "util.hpp"
 
 struct NodeInfo {
   uint id = 0;
@@ -159,14 +161,13 @@ class PipeManager {
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;
   pw_registry* registry = nullptr;
+  pw_metadata* metadata = nullptr;
+
+  spa_hook metadata_listener{};
 
   std::vector<NodeInfo> list_nodes;
 
   std::vector<PortInfo> list_ports;
-
-  std::vector<LinkInfo> list_links;
-
-  std::vector<pw_proxy*> list_link_proxys;
 
   std::shared_ptr<mySinkInfo> apps_sink_info;
   std::shared_ptr<mySinkInfo> mic_sink_info;
@@ -182,9 +183,9 @@ class PipeManager {
 
   auto get_default_sink() -> NodeInfo;
 
-  auto connect_stream_output(const NodeInfo& nd_info) -> bool;
+  void connect_stream_output(const NodeInfo& nd_info);
 
-  auto disconnect_stream_output(const NodeInfo& nd_info) -> bool;
+  void disconnect_stream_output(const NodeInfo& nd_info);
 
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
