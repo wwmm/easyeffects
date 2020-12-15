@@ -51,15 +51,11 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   is_blocklisted = BlocklistSettingsUi::app_is_blocklisted(
       nd_info.name, (nd_info.media_class == "Stream/Output/Audio") ? PresetType::output : PresetType::input);
 
-  is_enabled = nd_info.connected && !is_blocklisted;
-
   init_widgets();
   connect_signals();
 }
 
 AppInfoUi::~AppInfoUi() {
-  running = false;
-
   util::debug(log_tag + nd_info.name + " info ui destroyed");
 }
 
@@ -184,7 +180,7 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
 }
 
 void AppInfoUi::on_volume_changed() {
-  auto value = volume->get_value();
+  // auto value = volume->get_value();
 
   // if (app_info->app_type == "sink_input") {
   //   pm->set_sink_input_volume(app_info->name, app_info->index, app_info->channels, value);
@@ -194,17 +190,17 @@ void AppInfoUi::on_volume_changed() {
 }
 
 void AppInfoUi::on_mute() {
-  bool state = mute->get_active();
+  // bool state = mute->get_active();
 
-  if (state) {
-    mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
+  // if (state) {
+  //   mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
 
-    volume->set_sensitive(false);
-  } else {
-    mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
+  //   volume->set_sensitive(false);
+  // } else {
+  //   mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
 
-    volume->set_sensitive(true);
-  }
+  //   volume->set_sensitive(true);
+  // }
 
   // if (app_info->app_type == "sink_input") {
   //   pm->set_sink_input_mute(app_info->name, app_info->index, state);
@@ -215,6 +211,26 @@ void AppInfoUi::on_mute() {
 
 void AppInfoUi::update(NodeInfo node_info) {
   nd_info = std::move(node_info);
+
+  is_enabled = false;
+
+  if (nd_info.media_class == "Stream/Output/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == nd_info.id && link.input_node_id == pm->pe_sink_node.id) {
+        is_enabled = true;
+
+        break;
+      }
+    }
+  } else if (nd_info.media_class == "Stream/Input/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == pm->pe_sink_node.id && link.input_node_id == nd_info.id) {
+        is_enabled = true;
+
+        break;
+      }
+    }
+  }
 
   enable_connection.disconnect();
   volume_connection.disconnect();

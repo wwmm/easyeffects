@@ -197,7 +197,7 @@ void on_spectrum_n_points_changed(GSettings* settings, gchar* key, PipelineBase*
 void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps, PipelineBase* pb) {
   GstStructure* structure = gst_caps_get_structure(caps, 0);
 
-  int rate = 44100;
+  int rate = 48000;
 
   gst_structure_get_int(structure, "rate", &rate);
 
@@ -206,40 +206,6 @@ void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps,
   pb->init_spectrum();
 
   util::debug(pb->log_tag + "sampling rate: " + std::to_string(rate) + " Hz");
-}
-
-void on_buffer_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  GstState state = GST_STATE_NULL;
-  GstState pending = GST_STATE_NULL;
-
-  gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
-
-  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
-    /* when we are playing it is necessary to reset the pipeline for the new
-     * value to take effect
-     */
-
-    gst_element_set_state(pb->pipeline, GST_STATE_READY);
-
-    pb->update_pipeline_state();
-  }
-}
-
-void on_latency_changed(GObject* gobject, GParamSpec* pspec, PipelineBase* pb) {
-  GstState state = GST_STATE_NULL;
-  GstState pending = GST_STATE_NULL;
-
-  gst_element_get_state(pb->pipeline, &state, &pending, pb->state_check_timeout);
-
-  if (state == GST_STATE_PLAYING || state == GST_STATE_PAUSED) {
-    /* when we are playing it is necessary to reset the pipeline for the new
-     * value to take effect
-     */
-
-    gst_element_set_state(pb->pipeline, GST_STATE_READY);
-
-    pb->update_pipeline_state();
-  }
 }
 
 auto on_sink_event(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> GstPadProbeReturn {

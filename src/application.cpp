@@ -123,8 +123,8 @@ void Application::on_startup() {
   create_actions();
 
   pm = std::make_unique<PipeManager>();
-  sie = std::make_unique<SinkInputEffects>(pm.get());
-  soe = std::make_unique<SourceOutputEffects>(pm.get());
+  soe = std::make_unique<StreamOutputEffects>(pm.get());
+  sie = std::make_unique<SourceOutputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
   pm->blocklist_in = settings->get_string_array("blocklist-in");
@@ -352,12 +352,12 @@ void Application::update_bypass_state(const std::string& key) {
   if (state) {
     util::info(log_tag + "enabling global bypass");
 
-    sie->do_bypass(true);
     soe->do_bypass(true);
+    sie->do_bypass(true);
   } else {
     util::info(log_tag + "disabling global bypass");
 
-    sie->do_bypass(false);
     soe->do_bypass(false);
+    sie->do_bypass(false);
   }
 }

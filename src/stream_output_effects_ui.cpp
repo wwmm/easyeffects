@@ -22,7 +22,7 @@
 StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
                                              const Glib::RefPtr<Gio::Settings>& refSettings,
-                                             SinkInputEffects* sie_ptr)
+                                             StreamOutputEffects* sie_ptr)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm), sie(sie_ptr) {
   // populate stack
 
@@ -186,7 +186,7 @@ StreamOutputEffectsUi::~StreamOutputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> StreamOutputEffectsUi* {
+auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* sie_ptr) -> StreamOutputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");

@@ -59,8 +59,6 @@ struct NodeInfo {
   float latency = 0;
 
   bool visible_to_user = false;
-
-  bool connected = false;
 };
 
 struct PortInfo {
@@ -159,6 +157,8 @@ class PipeManager {
 
   std::vector<LinkInfo> list_links;
 
+  NodeInfo pe_sink_node, pe_source_node;
+
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
@@ -170,7 +170,7 @@ class PipeManager {
 
   auto get_default_sink() -> NodeInfo;
 
-  void connect_stream_output(const NodeInfo& nd_info);
+  void connect_stream_output(const NodeInfo& nd_info) const;
 
   void disconnect_stream_output(const NodeInfo& nd_info);
 
@@ -193,7 +193,7 @@ class PipeManager {
   bool context_ready = false;
 
   pw_context* context = nullptr;
-  pw_proxy* proxy_stream_output_sink = nullptr;
+  pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
 

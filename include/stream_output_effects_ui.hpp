@@ -42,22 +42,22 @@
 #include "reverb_ui.hpp"
 #include "rnnoise.hpp"
 #include "rnnoise_ui.hpp"
-#include "sink_input_effects.hpp"
 #include "stereo_tools_ui.hpp"
+#include "stream_output_effects.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
   StreamOutputEffectsUi(BaseObjectType* cobject,
                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
                         const Glib::RefPtr<Gio::Settings>& refSettings,
-                        SinkInputEffects* sie_ptr);
+                        StreamOutputEffects* soe_ptr);
   StreamOutputEffectsUi(const StreamOutputEffectsUi&) = delete;
   auto operator=(const StreamOutputEffectsUi&) -> StreamOutputEffectsUi& = delete;
   StreamOutputEffectsUi(const StreamOutputEffectsUi&&) = delete;
   auto operator=(const StreamOutputEffectsUi&&) -> StreamOutputEffectsUi& = delete;
   ~StreamOutputEffectsUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, SinkInputEffects* sie_ptr) -> StreamOutputEffectsUi*;
+  static auto add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi*;
 
   void on_app_added(NodeInfo node_info);
 
@@ -65,7 +65,7 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   std::string log_tag = "soe_ui: ";
 
  private:
-  SinkInputEffects* sie = nullptr;
+  StreamOutputEffects* sie = nullptr;
 
   LimiterUi* limiter_ui = nullptr;
   CompressorUi* compressor_ui = nullptr;

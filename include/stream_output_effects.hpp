@@ -17,8 +17,8 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SINK_INPUT_EFFECTS_HPP
-#define SINK_INPUT_EFFECTS_HPP
+#ifndef STREAM_OUTPUT_EFFECTS_HPP
+#define STREAM_OUTPUT_EFFECTS_HPP
 
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
@@ -33,14 +33,14 @@
 #include "pipe_manager.hpp"
 #include "pipeline_base.hpp"
 
-class SinkInputEffects : public PipelineBase {
+class StreamOutputEffects : public PipelineBase {
  public:
-  SinkInputEffects(PipeManager* pipe_manager);
-  SinkInputEffects(const SinkInputEffects&) = delete;
-  auto operator=(const SinkInputEffects&) -> SinkInputEffects& = delete;
-  SinkInputEffects(const SinkInputEffects&&) = delete;
-  auto operator=(const SinkInputEffects&&) -> SinkInputEffects& = delete;
-  ~SinkInputEffects() override;
+  StreamOutputEffects(PipeManager* pipe_manager);
+  StreamOutputEffects(const StreamOutputEffects&) = delete;
+  auto operator=(const StreamOutputEffects&) -> StreamOutputEffects& = delete;
+  StreamOutputEffects(const StreamOutputEffects&&) = delete;
+  auto operator=(const StreamOutputEffects&&) -> StreamOutputEffects& = delete;
+  ~StreamOutputEffects() override;
 
   std::unique_ptr<BassEnhancer> bass_enhancer;
   std::unique_ptr<Exciter> exciter;

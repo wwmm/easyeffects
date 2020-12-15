@@ -73,7 +73,7 @@ class AppInfoUi : public Gtk::Grid {
  private:
   std::string log_tag = "app_info_ui: ";
 
-  bool running = true, is_enabled = true, is_blocklisted = true, pre_bl_state = true;
+  bool is_enabled = false, is_blocklisted = false, pre_bl_state = true;
 
   std::locale global_locale;
 

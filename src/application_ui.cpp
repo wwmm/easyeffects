@@ -57,8 +57,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   builder->get_widget("headerbar_info", headerbar_info);
 
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
-  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->sie.get());
-  sie_ui = SourceOutputEffectsUi::add_to_stack(stack, app->soe.get());
+  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
+  sie_ui = SourceOutputEffectsUi::add_to_stack(stack, app->sie.get());
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PipeSettingsUi::add_to_stack(stack_menu_settings, app);

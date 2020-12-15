@@ -580,16 +580,31 @@ PipeManager::PipeManager() {
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  pw_properties* props = pw_properties_new(nullptr, nullptr);
+  // loading our sink
 
-  pw_properties_set(props, PW_KEY_NODE_NAME, "pulseeffects_sink");
-  pw_properties_set(props, PW_KEY_NODE_DESCRIPTION, "PulseEffects Sink");
-  pw_properties_set(props, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props, PW_KEY_MEDIA_CLASS, "Audio/Sink");
-  pw_properties_set(props, "audio.position", "FL,FR");
+  pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_sink, PW_KEY_NODE_NAME, "pulseeffects_sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "PulseEffects Sink");
+  pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
+  pw_properties_set(props_sink, "audio.position", "FL,FR");
 
   proxy_stream_output_sink = static_cast<pw_proxy*>(
-      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props->dict, 0));
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
+
+  // loading our source
+
+  pw_properties* props_source = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
+  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
+  pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source");
+  pw_properties_set(props_source, "audio.position", "FL,FR");
+
+  proxy_stream_input_source = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
   // filter = new PipeFilter(core);
 
@@ -598,6 +613,16 @@ PipeManager::PipeManager() {
   pw_thread_loop_wait(thread_loop);
 
   pw_thread_loop_unlock(thread_loop);
+
+  for (const auto& node : list_nodes) {
+    if (node.name == "pulseeffects_sink") {
+      pe_sink_node = node;
+    }
+
+    if (node.name == "pulseeffects_source") {
+      pe_source_node = node;
+    }
+  }
 }
 
 PipeManager::~PipeManager() {
@@ -614,6 +639,7 @@ PipeManager::~PipeManager() {
   // delete filter;
 
   pw_proxy_destroy(proxy_stream_output_sink);
+  pw_proxy_destroy(proxy_stream_input_source);
 
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
@@ -668,21 +694,9 @@ auto PipeManager::get_default_sink() -> NodeInfo {
   return default_sink;
 }
 
-void PipeManager::connect_stream_output(const NodeInfo& nd_info) {
+void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
-    NodeInfo pe_node;
-    std::vector<PortInfo> pe_ports;
-    std::vector<PortInfo> app_ports;
-
-    for (const auto& node : list_nodes) {
-      if (node.name == "pulseeffects_sink") {
-        pe_node = node;
-
-        break;
-      }
-    }
-
-    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_node.id).c_str());
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_sink_node.id).c_str());
   }
 }
 
