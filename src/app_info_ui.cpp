@@ -112,7 +112,7 @@ void AppInfoUi::init_widgets() {
 
   switch (nd_info.state) {
     case PW_NODE_STATE_RUNNING:
-      state->set_text(_("playing"));
+      state->set_text(_("running"));
 
       break;
     case PW_NODE_STATE_SUSPENDED:

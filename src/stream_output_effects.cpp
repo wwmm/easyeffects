@@ -293,8 +293,6 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
     }
   }
 
-  gst_element_set_state(pipeline, GST_STATE_PLAYING);
-
   if (connected) {
     if (forbidden_app) {
       pm->disconnect_stream_output(node_info);
@@ -312,17 +310,25 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 }
 
 void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
-  // apps_want_to_play = false;
+  apps_want_to_play = false;
 
-  // for (const auto& link : pm->list_links) {
-  //   if (link.input_node_id == pm->pe_sink_node.id) {
-  //     apps_want_to_play = true;
+  for (const auto& link : pm->list_links) {
+    if (link.input_node_id == pm->pe_sink_node.id) {
+      for (const auto& node : pm->list_nodes) {
+        if (node.id == link.output_node_id && node.state == PW_NODE_STATE_RUNNING) {
+          apps_want_to_play = true;
 
-  //     break;
-  //   }
-  // }
+          break;
+        }
+      }
+    }
 
-  // update_pipeline_state();
+    if (apps_want_to_play) {
+      break;
+    }
+  }
+
+  update_pipeline_state();
 }
 
 void StreamOutputEffects::add_plugins_to_pipeline() {

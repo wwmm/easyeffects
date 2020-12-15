@@ -507,38 +507,39 @@ void PipelineBase::set_null_pipeline() {
 }
 
 void PipelineBase::update_pipeline_state() {
-  // GstState state = GST_STATE_NULL;
-  // GstState pending = GST_STATE_NULL;
+  GstState state = GST_STATE_NULL;
+  GstState pending = GST_STATE_NULL;
 
-  // gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+  gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
-  // if (state != GST_STATE_PLAYING && apps_want_to_play) {
-  //   timeout_connection.disconnect();
+  if (state != GST_STATE_PLAYING && apps_want_to_play) {
+    timeout_connection.disconnect();
 
-  //   gst_element_set_state(pipeline, GST_STATE_PLAYING);
-  // }
-  // else if (state == GST_STATE_PLAYING && !apps_want_to_play) {
-  //   timeout_connection.disconnect();
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+  } else if (state == GST_STATE_PLAYING && !apps_want_to_play) {
+    timeout_connection.disconnect();
 
-  //   auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
+    util::warning("no one");
 
-  //   timeout_connection = Glib::signal_timeout().connect_seconds(
-  //       [=]() {
-  //         GstState s = GST_STATE_NULL;
-  //         GstState p = GST_STATE_NULL;
+    auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
 
-  //         gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+    timeout_connection = Glib::signal_timeout().connect_seconds(
+        [=]() {
+          GstState s = GST_STATE_NULL;
+          GstState p = GST_STATE_NULL;
 
-  //         if (s == GST_STATE_PLAYING && !apps_want_to_play) {
-  //           util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
+          gst_element_get_state(pipeline, &s, &p, state_check_timeout);
 
-  //           gst_element_set_state(pipeline, GST_STATE_READY);
-  //         }
+          if (s == GST_STATE_PLAYING && !apps_want_to_play) {
+            util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
 
-  //         return false;
-  //       },
-  //       seconds);
-  // }
+            gst_element_set_state(pipeline, GST_STATE_READY);
+          }
+
+          return false;
+        },
+        seconds);
+  }
 }
 
 void PipelineBase::get_latency() {
