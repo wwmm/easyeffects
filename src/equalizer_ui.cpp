@@ -493,11 +493,14 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     }
 
     connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
-      if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
-          band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
-        band_scale->set_sensitive(true);
-      } else {
+      const auto& row_num = band_type->get_active_row_number();
+
+      // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
+
+      if (row_num == 0 || row_num == 2 || row_num == 4) {
         band_scale->set_sensitive(false);
+      } else {
+        band_scale->set_sensitive(true);
       }
     }));
 
