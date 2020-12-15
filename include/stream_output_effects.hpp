@@ -73,7 +73,9 @@ class StreamOutputEffects : public PipelineBase {
  private:
   void add_plugins_to_pipeline();
 
-  void on_app_added(const std::shared_ptr<AppInfo>& app_info);
+  void on_app_added(const NodeInfo& node_info);
+
+  void on_app_changed(const NodeInfo& node_info);
 };
 
 #endif

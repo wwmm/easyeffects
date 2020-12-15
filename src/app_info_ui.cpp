@@ -44,7 +44,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("rate", rate);
   builder->get_widget("channels", channels);
   builder->get_widget("resampler", resampler);
-  builder->get_widget("buffer", buffer);
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
 
@@ -60,6 +59,26 @@ AppInfoUi::~AppInfoUi() {
 }
 
 void AppInfoUi::init_widgets() {
+  is_enabled = false;
+
+  if (nd_info.media_class == "Stream/Output/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == nd_info.id && link.input_node_id == pm->pe_sink_node.id) {
+        is_enabled = true;
+
+        break;
+      }
+    }
+  } else if (nd_info.media_class == "Stream/Input/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == pm->pe_sink_node.id && link.input_node_id == nd_info.id) {
+        is_enabled = true;
+
+        break;
+      }
+    }
+  }
+
   enable->set_active(is_enabled && !is_blocklisted);
   enable->set_sensitive(!is_blocklisted);
 
@@ -88,8 +107,6 @@ void AppInfoUi::init_widgets() {
   channels->set_text(std::to_string(nd_info.n_output_ports));
 
   // resampler->set_text(app_info->resampler);
-
-  // buffer->set_text(PluginUiBase::level_to_str(app_info->buffer * ms_factor, 1) + " ms");
 
   latency->set_text(float_to_localized_string(nd_info.latency, 2) + " ms");
 
@@ -174,8 +191,6 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
     }
   }
 
-  is_enabled = state;
-
   return false;
 }
 
@@ -211,26 +226,6 @@ void AppInfoUi::on_mute() {
 
 void AppInfoUi::update(NodeInfo node_info) {
   nd_info = std::move(node_info);
-
-  is_enabled = false;
-
-  if (nd_info.media_class == "Stream/Output/Audio") {
-    for (const auto& link : pm->list_links) {
-      if (link.output_node_id == nd_info.id && link.input_node_id == pm->pe_sink_node.id) {
-        is_enabled = true;
-
-        break;
-      }
-    }
-  } else if (nd_info.media_class == "Stream/Input/Audio") {
-    for (const auto& link : pm->list_links) {
-      if (link.output_node_id == pm->pe_sink_node.id && link.input_node_id == nd_info.id) {
-        is_enabled = true;
-
-        break;
-      }
-    }
-  }
 
   enable_connection.disconnect();
   volume_connection.disconnect();

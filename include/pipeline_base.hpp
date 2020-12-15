@@ -47,8 +47,9 @@ class PipelineBase {
   auto operator=(const PipelineBase&&) -> PipelineBase& = delete;
   virtual ~PipelineBase();
 
-  bool playing = false;
   std::string log_tag;
+
+  bool playing = false;
 
   PipeManager* pm = nullptr;
 
@@ -98,6 +99,7 @@ class PipelineBase {
 
   void enable_spectrum();
   void disable_spectrum();
+
   static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
   void set_input_node_id(const uint& id) const;
@@ -125,6 +127,8 @@ class PipelineBase {
   sigc::signal<void, std::array<double, 2>> rnnoise_output_level;
 
  protected:
+  bool apps_want_to_play = false;
+
   void set_pulseaudio_props(const std::string& props) const;
   void set_caps(const uint& sampling_rate);
 
@@ -134,14 +138,13 @@ class PipelineBase {
  private:
   GstElement* capsfilter = nullptr;
 
-  std::vector<std::shared_ptr<AppInfo>> apps_list;
+  std::vector<NodeInfo> apps_list;
 
   sigc::connection timeout_connection;
 
   void init_spectrum_bin();
   void init_global_level_meter_bin();
   void init_effects_bin();
-  auto apps_want_to_play() -> bool;
 
   auto get_required_plugin(const gchar* factoryname, const gchar* name) const -> GstElement*;
 };

@@ -62,7 +62,6 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Label* rate = nullptr;
   Gtk::Label* channels = nullptr;
   Gtk::Label* resampler = nullptr;
-  Gtk::Label* buffer = nullptr;
   Gtk::Label* latency = nullptr;
   Gtk::Label* state = nullptr;
 

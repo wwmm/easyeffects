@@ -350,6 +350,7 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
   // initializing properties
 
   g_object_set(source, "do-timestamp", 1, nullptr);
+  g_object_set(source, "always-copy", 1, nullptr);
 
   g_object_set(queue_src, "silent", 1, nullptr);
   g_object_set(queue_src, "flush-on-eos", 1, nullptr);
@@ -505,54 +506,39 @@ void PipelineBase::set_null_pipeline() {
   util::debug(log_tag + gst_element_state_get_name(state) + " -> " + gst_element_state_get_name(pending));
 }
 
-auto PipelineBase::apps_want_to_play() -> bool {
-  bool wants_to_play = false;
-
-  for (const auto& a : apps_list) {
-    if (a->wants_to_play) {
-      wants_to_play = true;
-
-      break;
-    }
-  }
-
-  return wants_to_play;
-}
-
 void PipelineBase::update_pipeline_state() {
-  bool wants_to_play = apps_want_to_play();
+  // GstState state = GST_STATE_NULL;
+  // GstState pending = GST_STATE_NULL;
 
-  GstState state = GST_STATE_NULL;
-  GstState pending = GST_STATE_NULL;
+  // gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
-  gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+  // if (state != GST_STATE_PLAYING && apps_want_to_play) {
+  //   timeout_connection.disconnect();
 
-  if (state != GST_STATE_PLAYING && wants_to_play) {
-    timeout_connection.disconnect();
+  //   gst_element_set_state(pipeline, GST_STATE_PLAYING);
+  // }
+  // else if (state == GST_STATE_PLAYING && !apps_want_to_play) {
+  //   timeout_connection.disconnect();
 
-    gst_element_set_state(pipeline, GST_STATE_PLAYING);
-  } else if (state == GST_STATE_PLAYING && !wants_to_play) {
-    timeout_connection.disconnect();
+  //   auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
 
-    auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
+  //   timeout_connection = Glib::signal_timeout().connect_seconds(
+  //       [=]() {
+  //         GstState s = GST_STATE_NULL;
+  //         GstState p = GST_STATE_NULL;
 
-    timeout_connection = Glib::signal_timeout().connect_seconds(
-        [=]() {
-          GstState s = GST_STATE_NULL;
-          GstState p = GST_STATE_NULL;
+  //         gst_element_get_state(pipeline, &s, &p, state_check_timeout);
 
-          gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+  //         if (s == GST_STATE_PLAYING && !apps_want_to_play) {
+  //           util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
 
-          if (s == GST_STATE_PLAYING && !apps_want_to_play()) {
-            util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
+  //           gst_element_set_state(pipeline, GST_STATE_READY);
+  //         }
 
-            gst_element_set_state(pipeline, GST_STATE_READY);
-          }
-
-          return false;
-        },
-        seconds);
-  }
+  //         return false;
+  //       },
+  //       seconds);
+  // }
 }
 
 void PipelineBase::get_latency() {

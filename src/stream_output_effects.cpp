@@ -94,7 +94,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamOutput
 
 }  // namespace
 
-StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
+StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
   std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.streamoutputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
@@ -103,15 +103,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   auto default_output = pipe_manager->get_default_sink();
 
+  set_input_node_id(pm->pe_sink_node.id);
   set_output_node_id(default_output.id);
-
-  for (const auto& node : pipe_manager->list_nodes) {
-    if (node.name == "pulseeffects_sink") {
-      set_input_node_id(node.id);
-
-      break;
-    }
-  }
 
   set_caps(48000);
 
@@ -157,9 +150,9 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
     }
   }
 
-  // pm->sink_input_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
-  // pm->sink_input_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_changed));
-  // pm->sink_input_removed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_removed));
+  pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
+  pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_changed));
+  // pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_removed));
   // pm->sink_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_sink_changed));
 
   // g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
@@ -279,40 +272,57 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
+void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
   bool forbidden_app = false;
-  bool success = false;
+  bool connected = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-out");
 
   for (std::size_t i = 0; blocklist[i] != nullptr; i++) {
-    if (app_info->name == blocklist[i]) {
+    if (node_info.name == blocklist[i]) {
       forbidden_app = true;
     }
 
     g_free(blocklist[i]);
   }
 
-  if (app_info->connected) {
-    if (forbidden_app) {
-      // success = pm->remove_sink_input_from_pulseeffects(app_info->name, app_info->index);
+  for (const auto& link : pm->list_links) {
+    if (link.output_node_id == node_info.id && link.input_node_id == pm->pe_sink_node.id) {
+      connected = true;
 
-      if (success) {
-        app_info->connected = false;
-      }
+      break;
+    }
+  }
+
+  gst_element_set_state(pipeline, GST_STATE_PLAYING);
+
+  if (connected) {
+    if (forbidden_app) {
+      pm->disconnect_stream_output(node_info);
     }
   } else {
     auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
 
     if (!forbidden_app && enable_all != 0) {
       // success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
-
-      if (success) {
-        app_info->connected = true;
-      }
+      pm->connect_stream_output(node_info);
     }
   }
 
   g_free(blocklist);
+}
+
+void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
+  // apps_want_to_play = false;
+
+  // for (const auto& link : pm->list_links) {
+  //   if (link.input_node_id == pm->pe_sink_node.id) {
+  //     apps_want_to_play = true;
+
+  //     break;
+  //   }
+  // }
+
+  // update_pipeline_state();
 }
 
 void StreamOutputEffects::add_plugins_to_pipeline() {
