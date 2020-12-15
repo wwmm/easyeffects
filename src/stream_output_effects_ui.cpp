@@ -186,14 +186,14 @@ StreamOutputEffectsUi::~StreamOutputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* sie_ptr) -> StreamOutputEffectsUi* {
+auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.glade");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
 
   StreamOutputEffectsUi* ui = nullptr;
 
-  builder->get_widget_derived("widgets_box", ui, settings, sie_ptr);
+  builder->get_widget_derived("widgets_box", ui, settings, soe_ptr);
 
   stack->add(*ui, "stream_output");
   stack->child_property_icon_name(*ui).set_value("audio-speakers-symbolic");
