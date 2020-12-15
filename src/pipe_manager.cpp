@@ -279,6 +279,14 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 
   auto link = link_info_from_props(info->props);
 
+  for (auto& l : ld->pm->list_links) {
+    if (l.id == link.id) {
+      l = link;
+
+      break;
+    }
+  }
+
   bool found_input = false;
   bool found_output = false;
   NodeInfo input_node;
@@ -310,6 +318,10 @@ void on_removed_link_proxy(void* data) {
   auto* ld = static_cast<link_data*>(data);
 
   pw_proxy_destroy(ld->proxy);
+
+  ld->pm->list_links.erase(
+      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
+      ld->pm->list_links.end());
 }
 
 void on_destroy_link_proxy(void* data) {
@@ -443,8 +455,6 @@ void on_registry_global(void* data,
 
         pm->list_ports.emplace_back(port_info);
 
-        // util::debug(pm->log_tag + " " + std::to_string(id) + " " + pd->p_info.name + " was added");
-
         return;
       }
     }
@@ -468,6 +478,8 @@ void on_registry_global(void* data,
 
         pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
+
+        pm->list_links.emplace_back(link_info);
 
         return;
       }

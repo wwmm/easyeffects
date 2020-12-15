@@ -50,45 +50,45 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
 
-  connections.emplace_back(pm->server_changed.connect([=]() { update_server_info(); }));
+  // connections.emplace_back(pm->server_changed.connect([=]() { update_server_info(); }));
 
-  connections.emplace_back(pm->module_info.connect([=](auto info) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
+  // connections.emplace_back(pm->module_info.connect([=](auto info) {
+  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Label* module_name;
-    Gtk::Label* module_argument;
+  //   Gtk::ListBoxRow* row;
+  //   Gtk::Label* module_name;
+  //   Gtk::Label* module_argument;
 
-    b->get_widget("module_row", row);
-    b->get_widget("module_name", module_name);
-    b->get_widget("module_argument", module_argument);
+  //   b->get_widget("module_row", row);
+  //   b->get_widget("module_name", module_name);
+  //   b->get_widget("module_argument", module_argument);
 
-    row->set_name(info->name);
-    module_name->set_text(info->name);
-    module_argument->set_text(info->argument);
+  //   row->set_name(info->name);
+  //   module_name->set_text(info->name);
+  //   module_argument->set_text(info->argument);
 
-    listbox_modules->add(*row);
-    listbox_modules->show_all();
-  }));
+  //   listbox_modules->add(*row);
+  //   listbox_modules->show_all();
+  // }));
 
-  connections.emplace_back(pm->client_info.connect([=](auto info) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
+  // connections.emplace_back(pm->client_info.connect([=](auto info) {
+  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
-    Gtk::ListBoxRow* row;
-    Gtk::Label* client_name;
-    Gtk::Label* client_binary;
+  //   Gtk::ListBoxRow* row;
+  //   Gtk::Label* client_name;
+  //   Gtk::Label* client_binary;
 
-    b->get_widget("client_row", row);
-    b->get_widget("client_name", client_name);
-    b->get_widget("client_binary", client_binary);
+  //   b->get_widget("client_row", row);
+  //   b->get_widget("client_name", client_name);
+  //   b->get_widget("client_binary", client_binary);
 
-    row->set_name(info->name);
-    client_name->set_text(info->name);
-    client_binary->set_text(info->binary);
+  //   row->set_name(info->name);
+  //   client_name->set_text(info->name);
+  //   client_binary->set_text(info->binary);
 
-    listbox_clients->add(*row);
-    listbox_clients->show_all();
-  }));
+  //   listbox_clients->add(*row);
+  //   listbox_clients->show_all();
+  // }));
 
   update_server_info();
 

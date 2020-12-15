@@ -39,7 +39,7 @@ class AppInfoUi : public Gtk::Grid {
   AppInfoUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
             NodeInfo node_info,
-            PipeManager* pulse_manager);
+            PipeManager* pipe_manager);
   AppInfoUi(const AppInfoUi&) = delete;
   auto operator=(const AppInfoUi&) -> AppInfoUi& = delete;
   AppInfoUi(const AppInfoUi&&) = delete;
@@ -81,7 +81,6 @@ class AppInfoUi : public Gtk::Grid {
   sigc::connection volume_connection;
   sigc::connection mute_connection;
   sigc::connection blocklist_connection;
-  sigc::connection timeout_connection;
 
   PipeManager* pm = nullptr;
 

@@ -22,8 +22,8 @@
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      NodeInfo node_info,
-                     PipeManager* pulse_manager)
-    : Gtk::Grid(cobject), nd_info(std::move(node_info)), pm(pulse_manager) {
+                     PipeManager* pipe_manager)
+    : Gtk::Grid(cobject), nd_info(std::move(node_info)), pm(pipe_manager) {
   try {
     global_locale = std::locale("");
   } catch (const std::exception& e) {
@@ -59,7 +59,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
 AppInfoUi::~AppInfoUi() {
   running = false;
-  timeout_connection.disconnect();
 
   util::debug(log_tag + nd_info.name + " info ui destroyed");
 }

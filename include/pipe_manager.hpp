@@ -113,18 +113,6 @@ struct mySourceInfo {
   std::string description;
 };
 
-struct myModuleInfo {
-  std::string name;
-  uint index;
-  std::string argument;
-};
-
-struct myClientInfo {
-  std::string name;
-  uint index;
-  std::string binary;
-};
-
 struct AppInfo {
   std::string app_type;
   uint index;
@@ -169,8 +157,7 @@ class PipeManager {
 
   std::vector<PortInfo> list_ports;
 
-  std::shared_ptr<mySinkInfo> apps_sink_info;
-  std::shared_ptr<mySinkInfo> mic_sink_info;
+  std::vector<LinkInfo> list_links;
 
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
@@ -201,9 +188,6 @@ class PipeManager {
   sigc::signal<void, NodeInfo> stream_input_added;
   sigc::signal<void, NodeInfo> stream_input_changed;
   sigc::signal<void, NodeInfo> stream_input_removed;
-  sigc::signal<void> server_changed;
-  sigc::signal<void, std::shared_ptr<myModuleInfo>> module_info;
-  sigc::signal<void, std::shared_ptr<myClientInfo>> client_info;
 
  private:
   bool context_ready = false;
