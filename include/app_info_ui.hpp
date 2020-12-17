@@ -85,6 +85,8 @@ class AppInfoUi : public Gtk::Grid {
 
   void init_widgets();
 
+  void init_mute_widgets(const bool& state) const;
+
   void connect_signals();
 
   auto on_enable_app(bool state) -> bool;

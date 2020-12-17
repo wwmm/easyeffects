@@ -132,9 +132,6 @@ class PipelineBase {
   void set_pulseaudio_props(const std::string& props) const;
   void set_caps(const uint& sampling_rate);
 
-  void on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info);
-  void on_source_changed(const std::shared_ptr<mySourceInfo>& source_info);
-
  private:
   GstElement* capsfilter = nullptr;
 

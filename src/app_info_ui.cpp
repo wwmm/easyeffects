@@ -84,7 +84,11 @@ void AppInfoUi::init_widgets() {
 
   blocklist->set_active(is_blocklisted);
 
-  app_icon->set_from_icon_name(nd_info.icon_name, Gtk::ICON_SIZE_BUTTON);
+  if (!nd_info.icon_name.empty()) {
+    app_icon->set_from_icon_name(nd_info.icon_name, Gtk::ICON_SIZE_BUTTON);
+  } else {
+    app_icon->set_from_icon_name(nd_info.name, Gtk::ICON_SIZE_BUTTON);
+  }
 
   app_name->set_text(nd_info.name);
 
@@ -96,9 +100,11 @@ void AppInfoUi::init_widgets() {
     media_name->set_text(nd_info.media_name);
   }
 
-  // volume->set_value(app_info->volume);
+  // volume->set_value(nd_info.volume);
 
-  // mute->set_active(app_info->mute != 0);
+  mute->set_active(nd_info.mute);
+
+  init_mute_widgets(nd_info.mute);
 
   // format->set_text(app_info->format);
 
@@ -133,6 +139,18 @@ void AppInfoUi::init_widgets() {
       break;
     default:
       break;
+  }
+}
+
+void AppInfoUi::init_mute_widgets(const bool& state) const {
+  if (state) {
+    mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
+
+    volume->set_sensitive(false);
+  } else {
+    mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
+
+    volume->set_sensitive(true);
   }
 }
 
@@ -205,23 +223,11 @@ void AppInfoUi::on_volume_changed() {
 }
 
 void AppInfoUi::on_mute() {
-  // bool state = mute->get_active();
+  bool state = mute->get_active();
 
-  // if (state) {
-  //   mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
+  init_mute_widgets(state);
 
-  //   volume->set_sensitive(false);
-  // } else {
-  //   mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
-
-  //   volume->set_sensitive(true);
-  // }
-
-  // if (app_info->app_type == "sink_input") {
-  //   pm->set_sink_input_mute(app_info->name, app_info->index, state);
-  // } else {
-  //   pm->set_source_output_mute(app_info->name, app_info->index, state);
-  // }
+  pm->set_node_mute(nd_info, state);
 }
 
 void AppInfoUi::update(NodeInfo node_info) {

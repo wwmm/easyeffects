@@ -197,7 +197,7 @@ void on_spectrum_n_points_changed(GSettings* settings, gchar* key, PipelineBase*
 void on_src_type_changed(GstElement* typefind, guint probability, GstCaps* caps, PipelineBase* pb) {
   GstStructure* structure = gst_caps_get_structure(caps, 0);
 
-  int rate = 48000;
+  int rate = 0;
 
   gst_structure_get_int(structure, "rate", &rate);
 
@@ -519,8 +519,6 @@ void PipelineBase::update_pipeline_state() {
   } else if (state == GST_STATE_PLAYING && !apps_want_to_play) {
     timeout_connection.disconnect();
 
-    util::warning("no one");
-
     auto seconds = g_settings_get_int(settings, "audio-activity-timeout");
 
     timeout_connection = Glib::signal_timeout().connect_seconds(
@@ -560,30 +558,6 @@ void PipelineBase::get_latency() {
   }
 
   gst_query_unref(q);
-}
-
-void PipelineBase::on_sink_changed(const std::shared_ptr<mySinkInfo>& sink_info) {
-  // if (sink_info->name == "PulseEffects_apps") {
-  //   if (sink_info->rate != sampling_rate) {
-  //     gst_element_set_state(pipeline, GST_STATE_READY);
-
-  //     set_caps(sink_info->rate);
-
-  //     update_pipeline_state();
-  //   }
-  // }
-}
-
-void PipelineBase::on_source_changed(const std::shared_ptr<mySourceInfo>& source_info) {
-  // if (source_info->name == "PulseEffects_mic.monitor") {
-  //   if (source_info->rate != sampling_rate) {
-  //     gst_element_set_state(pipeline, GST_STATE_READY);
-
-  //     set_caps(source_info->rate);
-
-  //     update_pipeline_state();
-  //   }
-  // }
 }
 
 void PipelineBase::init_spectrum() {

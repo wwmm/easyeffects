@@ -24,6 +24,8 @@
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
+#include <spa/param/audio/format-utils.h>
+#include <spa/param/props.h>
 #include <algorithm>
 #include <array>
 #include <cstring>
@@ -34,31 +36,37 @@
 #include "util.hpp"
 
 struct NodeInfo {
+  pw_proxy* proxy = nullptr;
+
   uint id = 0;
 
-  std::string name = "empty";
+  std::string name;
 
-  std::string description = "empty";
+  std::string description;
 
-  std::string media_class = "empty";
+  std::string media_class;
 
-  std::string icon_name = "empty";
+  std::string icon_name;
 
-  std::string media_name = "empty";
+  std::string media_name;
 
   int priority = -1;
 
   pw_node_state state;
 
+  bool mute = false;
+
+  bool visible_to_user = false;
+
   int n_input_ports = 0;
 
   int n_output_ports = 0;
 
-  int rate = 0;
+  int rate = -1;
 
-  float latency = 0;
+  float latency = 0.0F;
 
-  bool visible_to_user = false;
+  float volume = 0.0F;
 };
 
 struct PortInfo {
@@ -162,8 +170,8 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  std::array<std::string, 8> blocklist_node_name = {
-      "pulseeffects", "PulseEffectsWebrtcProbe", "Pavucontrol", "PulseAudio Volume Control",
+  std::array<std::string, 9> blocklist_node_name = {
+      "pulseeffects", "PulseEffectsWebrtcProbe", "Pavucontrol", "pavucontrol",      "PulseAudio Volume Control",
       "libcanberra",  "gsd-media-keys",          "GNOME Shell", "speech-dispatcher"};
 
   auto get_default_source() -> NodeInfo;
@@ -173,6 +181,10 @@ class PipeManager {
   void connect_stream_output(const NodeInfo& nd_info) const;
 
   void disconnect_stream_output(const NodeInfo& nd_info);
+
+  void set_node_volume(const NodeInfo& nd_info, const float& value);
+
+  void set_node_mute(const NodeInfo& nd_info, const bool& state);
 
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
@@ -207,18 +219,6 @@ class PipeManager {
   std::array<std::string, 4> blocklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",
                                                  "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
-
-  // void new_app(const pa_sink_input_info* info);
-
-  // void new_app(const pa_source_output_info* info);
-
-  // void changed_app(const pa_sink_input_info* info);
-
-  // void changed_app(const pa_source_output_info* info);
-
-  // static auto get_latency(const pa_sink_input_info* info) -> uint { return info->sink_usec; }
-
-  // static auto get_latency(const pa_source_output_info* info) -> uint { return info->source_usec; }
 };
 
 #endif

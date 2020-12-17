@@ -19,8 +19,12 @@
 
 #include "pipe_manager.hpp"
 #include <string>
-#include "pipewire/extensions/metadata.h"
-#include "pipewire/keys.h"
+#include "spa/param/audio/format.h"
+#include "spa/param/audio/raw.h"
+#include "spa/param/format.h"
+#include "spa/param/props.h"
+#include "spa/pod/iter.h"
+#include "spa/pod/parser.h"
 
 namespace {
 
@@ -231,6 +235,20 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       node = nd->nd_info;
 
+      if (info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) {
+        for (int i = 0; i < info->n_params; i++) {
+          if (!(info->params[i].flags & SPA_PARAM_INFO_READ)) {
+            continue;
+          }
+
+          auto id = info->params[i].id;
+
+          if (id == SPA_PARAM_Props) {
+            pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
+          }
+        }
+      }
+
       if (node.media_class == "Stream/Output/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (node.media_class == "Stream/Input/Audio") {
@@ -240,6 +258,96 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       break;
     }
   }
+
+  // const struct spa_dict_item* item = nullptr;
+  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
+}
+
+void on_node_event_param(void* object,
+                         int seq,
+                         uint32_t id,
+                         uint32_t index,
+                         uint32_t next,
+                         const struct spa_pod* param) {
+  auto* nd = static_cast<node_data*>(object);
+
+  if (param != nullptr) {
+    spa_pod_prop* pod_prop = nullptr;
+    auto* obj = (spa_pod_object*)param;
+    bool notify = false;
+
+    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
+      switch (pod_prop->key) {
+        case SPA_PROP_mute: {
+          bool v = false;
+
+          if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
+            for (auto& node : nd->pm->list_nodes) {
+              if (node.id == nd->nd_info.id) {
+                node.mute = v;
+
+                nd->nd_info.mute = v;
+
+                notify = true;
+
+                // util::warning("mute " + std::to_string(static_cast<int>(v)));
+
+                break;
+              }
+            }
+          }
+
+          break;
+        }
+        case SPA_PROP_rate: {
+          int rate = -1;
+
+          if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
+            for (auto& node : nd->pm->list_nodes) {
+              if (node.id == nd->nd_info.id) {
+                node.rate = rate;
+
+                nd->nd_info.rate = rate;
+
+                util::debug(node.name + " sampling rate: " + std::to_string(rate));
+
+                break;
+              }
+            }
+          }
+
+          break;
+        }
+        case SPA_PROP_volume: {
+          float v = 0.0F;
+
+          if (spa_pod_get_float(&pod_prop->value, &v) == 0) {
+            for (auto& node : nd->pm->list_nodes) {
+              if (node.id == nd->nd_info.id) {
+                // node.volume = v;
+
+                // nd->nd_info = node;
+
+                break;
+              }
+            }
+          }
+
+          break;
+        }
+        default:
+          break;
+      }
+    }
+
+    if (notify) {
+      if (nd->nd_info.media_class == "Stream/Output/Audio") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
+      } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
+      }
+    }
+  }  // namespace
 }
 
 void on_removed_port_proxy(void* data) {
@@ -310,9 +418,6 @@ void on_link_info(void* object, const struct pw_link_info* info) {
     util::debug(ld->pm->log_tag + output_node.name + " port " + std::to_string(link.output_port_id) +
                 " is connected to " + input_node.name + " port " + std::to_string(link.input_port_id));
   }
-
-  // const struct spa_dict_item* item = nullptr;
-  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_removed_link_proxy(void* data) {
@@ -332,7 +437,7 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->object_listener);
 }
 
-int metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) {
+int on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) {
   auto* pm = static_cast<PipeManager*>(data);
 
   util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + key + ", " + type + ", " + value);
@@ -340,15 +445,12 @@ int metadata_property(void* data, uint32_t id, const char* key, const char* type
   return 0;
 }
 
-const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .property = metadata_property};
+const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .property = on_metadata_property};
 
 const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
                                                   .removed = on_removed_link_proxy};
 
-const struct pw_node_events node_events = {
-    PW_VERSION_NODE_EVENTS,
-    .info = on_node_info,
-};
+const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
 
 const struct pw_port_events port_events = {
     PW_VERSION_PORT_EVENTS,
@@ -392,6 +494,7 @@ void on_registry_global(void* data,
 
         pd->proxy = proxy;
         pd->pm = pm;
+        pd->nd_info.proxy = proxy;
         pd->nd_info.id = id;
         pd->nd_info.media_class = media_class;
 
@@ -590,6 +693,7 @@ PipeManager::PipeManager() {
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
   pw_properties_set(props_sink, "audio.position", "FL,FR");
+  // pw_properties_set(props_sink, "audio.rate", "96000");
 
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
@@ -709,56 +813,24 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
   }
 }
 
-// void PipeManager::new_app(const pa_sink_input_info* info) {
-//   auto app_info = parse_app_info(info);
+void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
+  char buffer[1024];
 
-//   if (app_info != nullptr) {
-//     app_info->app_type = "sink_input";
+  auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
 
-//     Glib::signal_idle().connect_once([&, app_info = move(app_info)]() { sink_input_added.emit(app_info); });
-//   }
-// }
+  // pw_node_set_param((struct pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
+  //                   spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_mute,
+  //                                              SPA_POD_Bool(mute), SPA_PROP_channelVolumes,
+  //                                              SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_channel_volumes,
+  //                                              vols)));
+}
 
-// void PipeManager::new_app(const pa_source_output_info* info) {
-//   auto app_info = parse_app_info(info);
+void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
+  char buffer[1024];
 
-//   if (app_info != nullptr) {
-//     app_info->app_type = "source_output";
+  auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
 
-//     Glib::signal_idle().connect_once([&, app_info = move(app_info)]() { source_output_added.emit(app_info); });
-//   }
-// }
-
-// void PipeManager::changed_app(const pa_sink_input_info* info) {
-//   auto app_info = parse_app_info(info);
-
-//   if (app_info != nullptr) {
-//     // checking if the user blocklisted this app
-
-//     auto forbidden_app =
-//         std::find(std::begin(blocklist_out), std::end(blocklist_out), app_info->name) != std::end(blocklist_out);
-
-//     if (!forbidden_app) {
-//       app_info->app_type = "sink_input";
-
-//       Glib::signal_idle().connect_once([&, app_info = move(app_info)]() { sink_input_changed.emit(app_info); });
-//     }
-//   }
-// }
-
-// void PipeManager::changed_app(const pa_source_output_info* info) {
-//   auto app_info = parse_app_info(info);
-
-//   if (app_info != nullptr) {
-//     // checking if the user blocklisted this app
-
-//     auto forbidden_app =
-//         std::find(std::begin(blocklist_in), std::end(blocklist_in), app_info->name) != std::end(blocklist_in);
-
-//     if (!forbidden_app) {
-//       app_info->app_type = "source_output";
-
-//       Glib::signal_idle().connect_once([&, app_info = move(app_info)]() { source_output_changed.emit(app_info); });
-//     }
-//   }
-// }
+  pw_node_set_param((pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
+                    (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
+                                                         SPA_PROP_mute, SPA_POD_Bool(state)));
+}

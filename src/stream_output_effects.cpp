@@ -19,6 +19,7 @@
 
 #include "stream_output_effects.hpp"
 #include <cstring>
+#include <string>
 #include "pipeline_common.hpp"
 #include "rnnoise.hpp"
 
@@ -311,6 +312,7 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 
 void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
   apps_want_to_play = false;
+  int rate = 0;
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == pm->pe_sink_node.id) {
@@ -318,14 +320,18 @@ void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
         if (node.id == link.output_node_id && node.state == PW_NODE_STATE_RUNNING) {
           apps_want_to_play = true;
 
-          break;
+          rate = (node.rate > rate) ? node.rate : rate;
         }
       }
     }
+  }
 
-    if (apps_want_to_play) {
-      break;
-    }
+  if (rate > 0 && rate != sampling_rate) {
+    // util::debug(log_tag + "the largest sampling rate has changed to: " + std::to_string(rate));
+
+    // gst_element_set_state(pipeline, GST_STATE_READY);
+
+    // set_caps(rate);
   }
 
   update_pipeline_state();
