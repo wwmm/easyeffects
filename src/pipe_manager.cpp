@@ -25,6 +25,7 @@
 #include "spa/param/props.h"
 #include "spa/pod/iter.h"
 #include "spa/pod/parser.h"
+#include "spa/pod/vararg.h"
 
 namespace {
 
@@ -236,7 +237,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       node = nd->nd_info;
 
       if (info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) {
-        for (int i = 0; i < info->n_params; i++) {
+        for (uint i = 0; i < info->n_params; i++) {
           if (!(info->params[i].flags & SPA_PARAM_INFO_READ)) {
             continue;
           }
@@ -309,7 +310,9 @@ void on_node_event_param(void* object,
 
                 nd->nd_info.rate = rate;
 
-                util::debug(node.name + " sampling rate: " + std::to_string(rate));
+                notify = true;
+
+                // util::debug(node.name + " sampling rate: " + std::to_string(rate));
 
                 break;
               }
@@ -318,18 +321,30 @@ void on_node_event_param(void* object,
 
           break;
         }
-        case SPA_PROP_volume: {
-          float v = 0.0F;
+        case SPA_PROP_channelVolumes: {
+          float volumes[SPA_AUDIO_MAX_CHANNELS];
 
-          if (spa_pod_get_float(&pod_prop->value, &v) == 0) {
-            for (auto& node : nd->pm->list_nodes) {
-              if (node.id == nd->nd_info.id) {
-                // node.volume = v;
+          auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes, SPA_AUDIO_MAX_CHANNELS);
 
-                // nd->nd_info = node;
+          for (auto& node : nd->pm->list_nodes) {
+            if (node.id == nd->nd_info.id) {
+              float max = 0.0F;
 
-                break;
+              for (uint i = 0; i < n_volumes; i++) {
+                max = (volumes[i] > max) ? volumes[i] : max;
               }
+
+              node.n_volume_channels = n_volumes;
+              node.volume = max;
+
+              nd->nd_info.n_volume_channels = n_volumes;
+              nd->nd_info.volume = max;
+
+              notify = true;
+
+              // util::debug(node.name + " volume: " + std::to_string(max));
+
+              break;
             }
           }
 
@@ -347,7 +362,7 @@ void on_node_event_param(void* object,
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
       }
     }
-  }  // namespace
+  }
 }
 
 void on_removed_port_proxy(void* data) {
@@ -814,15 +829,20 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
 }
 
 void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
+  float volumes[SPA_AUDIO_MAX_CHANNELS];
+
+  for (uint i = 0; i < nd_info.n_volume_channels; i++) {
+    volumes[i] = value;
+  }
+
   char buffer[1024];
 
   auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
 
-  // pw_node_set_param((struct pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
-  //                   spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_mute,
-  //                                              SPA_POD_Bool(mute), SPA_PROP_channelVolumes,
-  //                                              SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_channel_volumes,
-  //                                              vols)));
+  pw_node_set_param((struct pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
+                    (spa_pod*)spa_pod_builder_add_object(
+                        &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
+                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes)));
 }
 
 void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {

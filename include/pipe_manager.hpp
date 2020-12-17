@@ -64,6 +64,8 @@ struct NodeInfo {
 
   int rate = -1;
 
+  int n_volume_channels = 0;
+
   float latency = 0.0F;
 
   float volume = 0.0F;

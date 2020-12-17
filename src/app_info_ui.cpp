@@ -18,6 +18,7 @@
  */
 
 #include "app_info_ui.hpp"
+#include <string>
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
@@ -100,7 +101,7 @@ void AppInfoUi::init_widgets() {
     media_name->set_text(nd_info.media_name);
   }
 
-  // volume->set_value(nd_info.volume);
+  volume->set_value(100 * nd_info.volume);
 
   mute->set_active(nd_info.mute);
 
@@ -213,13 +214,7 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
 }
 
 void AppInfoUi::on_volume_changed() {
-  // auto value = volume->get_value();
-
-  // if (app_info->app_type == "sink_input") {
-  //   pm->set_sink_input_volume(app_info->name, app_info->index, app_info->channels, value);
-  // } else {
-  //   pm->set_source_output_volume(app_info->name, app_info->index, app_info->channels, value);
-  // }
+  pm->set_node_volume(nd_info, volume->get_value() / 100.0);
 }
 
 void AppInfoUi::on_mute() {
