@@ -45,6 +45,8 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
     g_value_set_int(value, 6);
   } else if (std::strcmp(v, "Resonance") == 0) {
     g_value_set_int(value, 7);
+  } else if (std::strcmp(v, "Allpass") == 0) {
+    g_value_set_int(value, 8);
   }
 
   return 1;
@@ -77,6 +79,9 @@ auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type
 
     case 7:
       return g_variant_new_string("Resonance");
+
+    case 8:
+      return g_variant_new_string("Allpass");
 
     default:
       return g_variant_new_string("Bell");
@@ -488,11 +493,14 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Set
     }
 
     connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
-      if (band_type->get_active_row_number() == 1 || band_type->get_active_row_number() == 3 ||
-          band_type->get_active_row_number() == 5 || band_type->get_active_row_number() == 7) {
-        band_scale->set_sensitive(true);
-      } else {
+      const auto& row_num = band_type->get_active_row_number();
+
+      // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
+
+      if (row_num == 0 || row_num == 2 || row_num == 4) {
         band_scale->set_sensitive(false);
+      } else {
+        band_scale->set_sensitive(true);
       }
     }));
 
