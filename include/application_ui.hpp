@@ -78,7 +78,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   SourceOutputEffectsUi* sie_ui = nullptr;
   PulseInfoUi* pulse_info_ui = nullptr;
 
-  int sie_latency = 0, soe_latency = 0;
+  int soe_latency = 0, sie_latency = 0;
 
   static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& name,

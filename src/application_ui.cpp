@@ -23,6 +23,7 @@
 #include <gtkmm/icontheme.h>
 #include <gtkmm/settings.h>
 #include <memory>
+#include <sstream>
 #include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
@@ -103,28 +104,28 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // headerbar info
 
-  connections.emplace_back(app->sie->new_latency.connect([=](int latency) {
-    sie_latency = latency;
-
-    if (stack->get_visible_child_name() == "sink_inputs") {
-      update_headerbar_subtitle(0);
-    }
-  }));
-
-  if (app->sie->playing) {
-    app->sie->get_latency();
-  }
-
   connections.emplace_back(app->soe->new_latency.connect([=](int latency) {
     soe_latency = latency;
 
-    if (stack->get_visible_child_name() == "source_outputs") {
-      update_headerbar_subtitle(1);
+    if (stack->get_visible_child_name() == "stream_output") {
+      update_headerbar_subtitle(0);
     }
   }));
 
   if (app->soe->playing) {
     app->soe->get_latency();
+  }
+
+  connections.emplace_back(app->sie->new_latency.connect([=](int latency) {
+    sie_latency = latency;
+
+    if (stack->get_visible_child_name() == "stream_input") {
+      update_headerbar_subtitle(1);
+    }
+  }));
+
+  if (app->sie->playing) {
+    app->sie->get_latency();
   }
 
   // updating headerbar info
@@ -179,17 +180,22 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
   std::ostringstream null_sink_rate;
+  std::ostringstream pipeline_rate;
   std::ostringstream current_dev_rate;
-  // const float khz_factor = 0.001F;
+
+  const float khz_factor = 0.001F;
 
   null_sink_rate.imbue(syslocale);
   null_sink_rate.precision(1);
+
+  pipeline_rate.imbue(syslocale);
+  pipeline_rate.precision(1);
 
   current_dev_rate.imbue(syslocale);
   current_dev_rate.precision(1);
 
   switch (index) {
-    case 0: {  // sie
+    case 0: {  // soe
 
       subtitle_grid->show();
 
@@ -197,19 +203,24 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-      // null_sink_rate << std::fixed << app->pm->apps_sink_info->rate * khz_factor << "kHz";
+      null_sink_rate << std::fixed << 0 * khz_factor << "kHz";
+
+      pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
       // auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
 
-      // current_dev_rate << std::fixed << sink->rate * khz_factor << "kHz";
+      current_dev_rate << std::fixed << 0 * khz_factor << "kHz";
 
-      // headerbar_info->set_text(" ⟶ " + app->pm->apps_sink_info->format + " " + null_sink_rate.str() +
-      //                          " ⟶ float32le " + null_sink_rate.str() + " ⟶ " + sink->format + " " +
-      //                          current_dev_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
+      std::string pe_sink_format;
+      std::string output_sink_format;
+
+      headerbar_info->set_text(" ⟶ " + pe_sink_format + " " + null_sink_rate.str() + " ⟶ float32le " +
+                               pipeline_rate.str() + " ⟶ " + output_sink_format + " " + current_dev_rate.str() + " ⟶ " +
+                               std::to_string(soe_latency) + "ms ⟶ ");
 
       break;
     }
-    case 1: {  // soe
+    case 1: {  // sie
 
       subtitle_grid->show();
 
@@ -256,7 +267,9 @@ void ApplicationUi::on_stack_visible_child_changed() {
 void ApplicationUi::on_calibration_button_clicked() {
   std::shared_ptr<CalibrationUi> calibration_ui(CalibrationUi::create());
 
-  auto c = app->pm->new_default_source.connect([=](auto name) { calibration_ui->set_source_monitor_name(name); });
+  auto c = app->pm->new_default_source.connect([=](auto name) {
+    // calibration_ui->set_source_monitor_name(name);
+  });
 
   calibration_ui->signal_hide().connect([=]() { c->disconnect(); });
 

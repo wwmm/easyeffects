@@ -153,7 +153,7 @@ auto SourceOutputEffectsUi::add_to_stack(Gtk::Stack* stack, SourceOutputEffects*
 
   builder->get_widget_derived("widgets_box", ui, settings, soe_ptr);
 
-  stack->add(*ui, "source_outputs");
+  stack->add(*ui, "stream_input");
   stack->child_property_icon_name(*ui).set_value("audio-input-microphone-symbolic");
 
   return ui;

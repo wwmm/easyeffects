@@ -19,6 +19,7 @@
 
 #include "pipe_manager.hpp"
 #include <string>
+#include "pipewire/keys.h"
 #include "spa/param/audio/format.h"
 #include "spa/param/audio/raw.h"
 #include "spa/param/format.h"
@@ -238,9 +239,9 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       node = nd->nd_info;
 
-      if (info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) {
+      if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
         for (uint i = 0; i < info->n_params; i++) {
-          if (!(info->params[i].flags & SPA_PARAM_INFO_READ)) {
+          if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
             continue;
           }
 
@@ -256,6 +257,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (node.media_class == "Stream/Input/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
+      } else if (nd->nd_info.media_class == "Audio/Source") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
+      } else if (nd->nd_info.media_class == "Audio/Sink") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->sink_changed.emit(nd->nd_info); });
       }
 
       break;
@@ -282,7 +287,7 @@ void on_node_event_param(void* object,
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
         case SPA_FORMAT_AUDIO_format: {
-          uint format;
+          uint format = 0;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
             for (auto& node : nd->pm->list_nodes) {
@@ -322,6 +327,27 @@ void on_node_event_param(void* object,
 
           break;
         }
+        case SPA_FORMAT_AUDIO_rate: {
+          int rate = -1;
+
+          if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
+            for (auto& node : nd->pm->list_nodes) {
+              if (node.id == nd->nd_info.id) {
+                node.rate = rate;
+
+                nd->nd_info.rate = rate;
+
+                notify = true;
+
+                // util::debug(node.name + " sampling rate: " + std::to_string(rate));
+
+                break;
+              }
+            }
+          }
+
+          break;
+        }
         case SPA_PROP_mute: {
           bool v = false;
 
@@ -335,27 +361,6 @@ void on_node_event_param(void* object,
                 notify = true;
 
                 // util::warning("mute " + std::to_string(static_cast<int>(v)));
-
-                break;
-              }
-            }
-          }
-
-          break;
-        }
-        case SPA_PROP_rate: {
-          int rate = -1;
-
-          if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
-            for (auto& node : nd->pm->list_nodes) {
-              if (node.id == nd->nd_info.id) {
-                node.rate = rate;
-
-                nd->nd_info.rate = rate;
-
-                notify = true;
-
-                // util::debug(node.name + " sampling rate: " + std::to_string(rate));
 
                 break;
               }
@@ -385,7 +390,7 @@ void on_node_event_param(void* object,
 
               notify = true;
 
-              // util::debug(node.name + " volume: " + std::to_string(n_volumes));
+              // util::debug(node.name + " volume: " + std::to_string(max));
 
               break;
             }
@@ -436,42 +441,9 @@ void on_port_info(void* object, const struct pw_port_info* info) {
       port = port_info_from_props(info->props);
 
       // util::warning("call: " + std::to_string(port.node_id));
-
-      if (info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) {
-        for (uint i = 0; i < info->n_params; i++) {
-          if (!(info->params[i].flags & SPA_PARAM_INFO_READ)) {
-            continue;
-          }
-
-          auto id = info->params[i].id;
-
-          if (id == SPA_PARAM_EnumFormat) {
-            pw_node_enum_params((struct pw_port*)pd->proxy, 0, id, 0, -1, nullptr);
-          }
-        }
-      }
     }
 
     break;
-  }
-}
-
-void on_port_event_param(void* data, int seq, uint32_t id, uint32_t index, uint32_t next, const struct spa_pod* param) {
-  auto* pd = static_cast<port_data*>(data);
-
-  if (param != nullptr) {
-    spa_pod_prop* pod_prop = nullptr;
-    auto* obj = (spa_pod_object*)param;
-    bool notify = false;
-
-    // util::warning("param: " + std::to_string(pd->id));
-
-    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
-      // util::warning(std::to_string(pod_prop->key));
-      // switch (pod_prop->key) {
-
-      // }
-    }
   }
 }
 
@@ -530,7 +502,7 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->object_listener);
 }
 
-int on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) {
+auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
   util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + key + ", " + type + ", " + value);
@@ -545,7 +517,7 @@ const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .dest
 
 const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
 
-const struct pw_port_events port_events = {PW_VERSION_PORT_EVENTS, .info = on_port_info, .param = on_port_event_param};
+const struct pw_port_events port_events = {PW_VERSION_PORT_EVENTS, .info = on_port_info};
 
 const struct pw_link_events link_events = {
     PW_VERSION_PORT_EVENTS,

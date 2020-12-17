@@ -175,7 +175,7 @@ class PipeManager {
   std::vector<std::string> blocklist_out;  // for output effects
 
   std::array<std::string, 9> blocklist_node_name = {
-      "pulseeffects", "PulseEffectsWebrtcProbe", "Pavucontrol", "pavucontrol",      "PulseAudio Volume Control",
+      "pulseeffects", "PulseEffectsWebrtcProbe", "pavucontrol", "PulseAudio Volume Control",
       "libcanberra",  "gsd-media-keys",          "GNOME Shell", "speech-dispatcher"};
 
   auto get_default_source() -> NodeInfo;
@@ -186,18 +186,18 @@ class PipeManager {
 
   void disconnect_stream_output(const NodeInfo& nd_info);
 
-  void set_node_volume(const NodeInfo& nd_info, const float& value);
+  static void set_node_volume(const NodeInfo& nd_info, const float& value);
 
-  void set_node_mute(const NodeInfo& nd_info, const bool& state);
+  static void set_node_mute(const NodeInfo& nd_info, const bool& state);
 
   sigc::signal<void, NodeInfo> source_added;
-  sigc::signal<void, std::shared_ptr<mySourceInfo>> source_changed;
+  sigc::signal<void, NodeInfo> source_changed;
   sigc::signal<void, NodeInfo> source_removed;
   sigc::signal<void, NodeInfo> sink_added;
-  sigc::signal<void, std::shared_ptr<mySinkInfo>> sink_changed;
+  sigc::signal<void, NodeInfo> sink_changed;
   sigc::signal<void, NodeInfo> sink_removed;
-  sigc::signal<void, std::string> new_default_sink;
-  sigc::signal<void, std::string> new_default_source;
+  sigc::signal<void, NodeInfo> new_default_sink;
+  sigc::signal<void, NodeInfo> new_default_source;
   sigc::signal<void, NodeInfo> stream_output_added;
   sigc::signal<void, NodeInfo> stream_output_changed;
   sigc::signal<void, NodeInfo> stream_output_removed;
