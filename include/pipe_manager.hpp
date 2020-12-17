@@ -62,7 +62,7 @@ struct NodeInfo {
 
   int n_output_ports = 0;
 
-  int rate = -1;
+  uint rate = 0;
 
   int n_volume_channels = 0;
 

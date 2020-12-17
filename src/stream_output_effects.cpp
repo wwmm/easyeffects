@@ -302,7 +302,6 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
     auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
 
     if (!forbidden_app && enable_all != 0) {
-      // success = pm->move_sink_input_to_pulseeffects(app_info->name, app_info->index);
       pm->connect_stream_output(node_info);
     }
   }
@@ -312,7 +311,7 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 
 void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
   apps_want_to_play = false;
-  int rate = 0;
+  uint rate = 0;
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == pm->pe_sink_node.id) {

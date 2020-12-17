@@ -342,7 +342,7 @@ void on_node_event_param(void* object,
 
               notify = true;
 
-              // util::debug(node.name + " volume: " + std::to_string(max));
+              // util::debug(node.name + " volume: " + std::to_string(n_volumes));
 
               break;
             }
@@ -708,7 +708,6 @@ PipeManager::PipeManager() {
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
   pw_properties_set(props_sink, "audio.position", "FL,FR");
-  // pw_properties_set(props_sink, "audio.rate", "96000");
 
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
@@ -831,7 +830,7 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
 void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
   float volumes[SPA_AUDIO_MAX_CHANNELS];
 
-  for (uint i = 0; i < nd_info.n_volume_channels; i++) {
+  for (int i = 0; i < nd_info.n_volume_channels; i++) {
     volumes[i] = value;
   }
 

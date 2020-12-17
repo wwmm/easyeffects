@@ -111,7 +111,7 @@ void AppInfoUi::init_widgets() {
 
   rate->set_text(std::to_string(nd_info.rate) + " Hz");
 
-  channels->set_text(std::to_string(nd_info.n_output_ports));
+  channels->set_text(std::to_string(nd_info.n_volume_channels));
 
   // resampler->set_text(app_info->resampler);
 
