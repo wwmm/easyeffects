@@ -107,7 +107,7 @@ void AppInfoUi::init_widgets() {
 
   init_mute_widgets(nd_info.mute);
 
-  // format->set_text(app_info->format);
+  format->set_text(nd_info.format);
 
   rate->set_text(std::to_string(nd_info.rate) + " Hz");
 

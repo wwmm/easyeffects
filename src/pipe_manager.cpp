@@ -22,10 +22,12 @@
 #include "spa/param/audio/format.h"
 #include "spa/param/audio/raw.h"
 #include "spa/param/format.h"
+#include "spa/param/param.h"
 #include "spa/param/props.h"
 #include "spa/pod/iter.h"
 #include "spa/pod/parser.h"
 #include "spa/pod/vararg.h"
+#include "util.hpp"
 
 namespace {
 
@@ -244,7 +246,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           auto id = info->params[i].id;
 
-          if (id == SPA_PARAM_Props) {
+          if (id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat) {
             pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -279,6 +281,47 @@ void on_node_event_param(void* object,
 
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
+        case SPA_FORMAT_AUDIO_format: {
+          uint format;
+
+          if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
+            for (auto& node : nd->pm->list_nodes) {
+              if (node.id == nd->nd_info.id) {
+                std::string format_str;
+
+                switch (format) {
+                  case SPA_AUDIO_FORMAT_S16_LE:
+                    format_str = "S16LE";
+                    break;
+                  case SPA_AUDIO_FORMAT_S24_LE:
+                    format_str = "S24LE";
+                    break;
+                  case SPA_AUDIO_FORMAT_S32_LE:
+                    format_str = "S32LE";
+                    break;
+                  case SPA_AUDIO_FORMAT_F32_LE:
+                    format_str = "F32LE";
+                    break;
+                  case SPA_AUDIO_FORMAT_F64_LE:
+                    format_str = "F64LE";
+                    break;
+                  default:
+                    format_str = std::to_string(format);
+                    // util::warning(format_str + " " + std::to_string(SPA_AUDIO_FORMAT_F32_LE));
+                    break;
+                }
+
+                node.format = format_str;
+
+                nd->nd_info.format = format_str;
+
+                notify = true;
+              }
+            }
+          }
+
+          break;
+        }
         case SPA_PROP_mute: {
           bool v = false;
 
@@ -391,9 +434,44 @@ void on_port_info(void* object, const struct pw_port_info* info) {
   for (auto& port : pd->pm->list_ports) {
     if (port.id == info->id) {
       port = port_info_from_props(info->props);
+
+      // util::warning("call: " + std::to_string(port.node_id));
+
+      if (info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) {
+        for (uint i = 0; i < info->n_params; i++) {
+          if (!(info->params[i].flags & SPA_PARAM_INFO_READ)) {
+            continue;
+          }
+
+          auto id = info->params[i].id;
+
+          if (id == SPA_PARAM_EnumFormat) {
+            pw_node_enum_params((struct pw_port*)pd->proxy, 0, id, 0, -1, nullptr);
+          }
+        }
+      }
     }
 
     break;
+  }
+}
+
+void on_port_event_param(void* data, int seq, uint32_t id, uint32_t index, uint32_t next, const struct spa_pod* param) {
+  auto* pd = static_cast<port_data*>(data);
+
+  if (param != nullptr) {
+    spa_pod_prop* pod_prop = nullptr;
+    auto* obj = (spa_pod_object*)param;
+    bool notify = false;
+
+    // util::warning("param: " + std::to_string(pd->id));
+
+    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
+      // util::warning(std::to_string(pod_prop->key));
+      // switch (pod_prop->key) {
+
+      // }
+    }
   }
 }
 
@@ -467,10 +545,7 @@ const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .dest
 
 const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
 
-const struct pw_port_events port_events = {
-    PW_VERSION_PORT_EVENTS,
-    .info = on_port_info,
-};
+const struct pw_port_events port_events = {PW_VERSION_PORT_EVENTS, .info = on_port_info, .param = on_port_event_param};
 
 const struct pw_link_events link_events = {
     PW_VERSION_PORT_EVENTS,
@@ -503,7 +578,7 @@ void on_registry_global(void* data,
         }
 
         auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(struct node_data)));
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 
         auto* pd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
 
@@ -557,7 +632,7 @@ void on_registry_global(void* data,
     for (auto& node : pm->list_nodes) {
       if (node.id == node_id) {
         auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(struct port_data)));
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(port_data)));
 
         auto* pd = static_cast<port_data*>(pw_proxy_get_user_data(proxy));
 
@@ -587,7 +662,7 @@ void on_registry_global(void* data,
     for (auto& node : pm->list_nodes) {
       if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
         auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(struct link_data)));
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(link_data)));
 
         auto* pd = static_cast<link_data*>(pw_proxy_get_user_data(proxy));
 

@@ -50,6 +50,8 @@ struct NodeInfo {
 
   std::string media_name;
 
+  std::string format;
+
   int priority = -1;
 
   pw_node_state state;
