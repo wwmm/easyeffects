@@ -44,7 +44,6 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
   builder->get_widget("format", format);
   builder->get_widget("rate", rate);
   builder->get_widget("channels", channels);
-  builder->get_widget("resampler", resampler);
   builder->get_widget("latency", latency);
   builder->get_widget("state", state);
 
@@ -112,8 +111,6 @@ void AppInfoUi::init_widgets() {
   rate->set_text(std::to_string(nd_info.rate) + " Hz");
 
   channels->set_text(std::to_string(nd_info.n_volume_channels));
-
-  // resampler->set_text(app_info->resampler);
 
   latency->set_text(float_to_localized_string(nd_info.latency, 2) + " ms");
 
@@ -213,8 +210,8 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
   return false;
 }
 
-void AppInfoUi::on_volume_changed() {
-  pm->set_node_volume(nd_info, volume->get_value() / 100.0);
+void AppInfoUi::on_volume_changed() const {
+  PipeManager::set_node_volume(nd_info, static_cast<float>(volume->get_value()) / 100.0F);
 }
 
 void AppInfoUi::on_mute() {
@@ -222,7 +219,7 @@ void AppInfoUi::on_mute() {
 
   init_mute_widgets(state);
 
-  pm->set_node_mute(nd_info, state);
+  PipeManager::set_node_mute(nd_info, state);
 }
 
 void AppInfoUi::update(NodeInfo node_info) {

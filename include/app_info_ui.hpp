@@ -61,7 +61,6 @@ class AppInfoUi : public Gtk::Grid {
   Gtk::Label* format = nullptr;
   Gtk::Label* rate = nullptr;
   Gtk::Label* channels = nullptr;
-  Gtk::Label* resampler = nullptr;
   Gtk::Label* latency = nullptr;
   Gtk::Label* state = nullptr;
 
@@ -91,7 +90,7 @@ class AppInfoUi : public Gtk::Grid {
 
   auto on_enable_app(bool state) -> bool;
 
-  void on_volume_changed();
+  void on_volume_changed() const;
 
   void on_mute();
 

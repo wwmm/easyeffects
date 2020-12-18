@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-10 13:58-0300\n"
+"POT-Creation-Date: 2020-12-18 12:04-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -137,24 +137,13 @@ msgstr ""
 msgid "Channels"
 msgstr ""
 
-#: data/ui/app_info.glade:314
-msgid "Resampler"
-msgstr ""
-
-#: data/ui/app_info.glade:339 data/ui/pipe_settings.glade:159
-#: data/ui/pipe_settings.glade:259 data/ui/pipe_settings.glade:464
-#: data/ui/pipe_settings.glade:564
-#, fuzzy
-msgid "Buffer"
-msgstr "Latence"
-
-#: data/ui/app_info.glade:364 data/ui/pipe_settings.glade:190
+#: data/ui/app_info.glade:314 data/ui/pipe_settings.glade:190
 #: data/ui/pipe_settings.glade:290 data/ui/pipe_settings.glade:476
 #: data/ui/pipe_settings.glade:576
 msgid "Latency"
 msgstr "Latence"
 
-#: data/ui/app_info.glade:389
+#: data/ui/app_info.glade:339
 msgid "State"
 msgstr ""
 
@@ -1371,6 +1360,12 @@ msgstr ""
 msgid "Pipeline Input"
 msgstr ""
 
+#: data/ui/pipe_settings.glade:159 data/ui/pipe_settings.glade:259
+#: data/ui/pipe_settings.glade:464 data/ui/pipe_settings.glade:564
+#, fuzzy
+msgid "Buffer"
+msgstr "Latence"
+
 #: data/ui/pipe_settings.glade:247 data/ui/pipe_settings.glade:552
 #, fuzzy
 msgid "Pipeline Output"
@@ -1756,12 +1751,25 @@ msgstr "Aucune compression"
 msgid "Standard RNNoise Model"
 msgstr ""
 
-#: src/app_info_ui.cpp:112
-msgid "paused"
+#: src/app_info_ui.cpp:119
+msgid "running"
 msgstr ""
 
-#: src/app_info_ui.cpp:114
-msgid "playing"
+#: src/app_info_ui.cpp:123
+msgid "suspended"
+msgstr ""
+
+#: src/app_info_ui.cpp:127
+msgid "idle"
+msgstr ""
+
+#: src/app_info_ui.cpp:131
+#, fuzzy
+msgid "creating"
+msgstr "Paramètres"
+
+#: src/app_info_ui.cpp:135
+msgid "error"
 msgstr ""
 
 #: src/application.cpp:38

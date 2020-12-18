@@ -217,8 +217,6 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
-      // auto sink = app->pm->get_sink_info(app->pm->server_info.default_sink_name);
-
       current_dev_rate << std::fixed << 0 * khz_factor << "kHz";
 
       std::string pe_sink_format;

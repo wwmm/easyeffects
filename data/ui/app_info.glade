@@ -210,7 +210,7 @@
                   </packing>
                 </child>
                 <child>
-                  <!-- n-columns=6 n-rows=2 -->
+                  <!-- n-columns=5 n-rows=2 -->
                   <object class="GtkGrid">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -294,31 +294,6 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkLabel" id="resampler">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label">r</property>
-                        <style>
-                          <class name="dim-label"/>
-                        </style>
-                      </object>
-                      <packing>
-                        <property name="left-attach">3</property>
-                        <property name="top-attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">Resampler</property>
-                      </object>
-                      <packing>
-                        <property name="left-attach">3</property>
-                        <property name="top-attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkLabel" id="latency">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
@@ -328,7 +303,7 @@
                         </style>
                       </object>
                       <packing>
-                        <property name="left-attach">4</property>
+                        <property name="left-attach">3</property>
                         <property name="top-attach">1</property>
                       </packing>
                     </child>
@@ -339,7 +314,7 @@
                         <property name="label" translatable="yes">Latency</property>
                       </object>
                       <packing>
-                        <property name="left-attach">4</property>
+                        <property name="left-attach">3</property>
                         <property name="top-attach">0</property>
                       </packing>
                     </child>
@@ -353,7 +328,7 @@
                         </style>
                       </object>
                       <packing>
-                        <property name="left-attach">5</property>
+                        <property name="left-attach">4</property>
                         <property name="top-attach">1</property>
                       </packing>
                     </child>
@@ -364,7 +339,7 @@
                         <property name="label" translatable="yes">State</property>
                       </object>
                       <packing>
-                        <property name="left-attach">5</property>
+                        <property name="left-attach">4</property>
                         <property name="top-attach">0</property>
                       </packing>
                     </child>

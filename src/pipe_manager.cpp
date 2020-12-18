@@ -339,7 +339,7 @@ void on_node_event_param(void* object,
 
                 notify = true;
 
-                util::debug(node.name + " sampling rate: " + std::to_string(rate));
+                // util::debug(node.name + " sampling rate: " + std::to_string(rate));
 
                 break;
               }
