@@ -217,7 +217,13 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
-      current_dev_rate << std::fixed << 0 * khz_factor << "kHz";
+      for (const auto& node : app->pm->list_nodes) {
+        if (node.id == app->soe->get_output_node_id()) {
+          current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
+
+          break;
+        }
+      }
 
       std::string pe_sink_format;
       std::string output_sink_format;

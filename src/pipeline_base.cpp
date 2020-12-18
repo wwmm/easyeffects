@@ -469,11 +469,11 @@ void PipelineBase::set_input_node_id(const uint& id) const {
 }
 
 auto PipelineBase::get_input_node_id() -> uint {
-  uint id = 0;
+  char* path = nullptr;
 
-  g_object_get(source, "path", &id, nullptr);
+  g_object_get(source, "path", &path, nullptr);
 
-  return id;
+  return std::stoi(path);
 }
 
 void PipelineBase::set_output_node_id(const uint& id) const {
@@ -485,11 +485,11 @@ void PipelineBase::set_output_node_id(const uint& id) const {
 }
 
 auto PipelineBase::get_output_node_id() -> uint {
-  uint id = 0;
+  char* path = nullptr;
 
-  g_object_get(sink, "path", &id, nullptr);
+  g_object_get(sink, "path", &path, nullptr);
 
-  return id;
+  return std::stoi(path);
 }
 
 void PipelineBase::set_pulseaudio_props(const std::string& props) const {
