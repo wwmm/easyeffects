@@ -76,6 +76,8 @@ class StreamOutputEffects : public PipelineBase {
   void on_app_added(const NodeInfo& node_info);
 
   void on_app_changed(const NodeInfo& node_info);
+
+  void on_sink_changed(const NodeInfo& node_info);
 };
 
 #endif

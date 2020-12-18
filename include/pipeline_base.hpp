@@ -103,7 +103,9 @@ class PipelineBase {
   static auto get_peak(GstMessage* message) -> std::array<double, 2>;
 
   void set_input_node_id(const uint& id) const;
+  auto get_input_node_id() -> uint;
   void set_output_node_id(const uint& id) const;
+  auto get_output_node_id() -> uint;
   void set_null_pipeline();
   void update_pipeline_state();
   void get_latency();
@@ -134,8 +136,6 @@ class PipelineBase {
 
  private:
   GstElement* capsfilter = nullptr;
-
-  std::vector<NodeInfo> apps_list;
 
   sigc::connection timeout_connection;
 

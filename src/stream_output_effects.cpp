@@ -107,7 +107,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   set_input_node_id(pm->pe_sink_node.id);
   set_output_node_id(default_output.id);
 
-  set_caps(48000);
+  set_caps(48000);  // 48 kHz is the default pipewire sampling rate
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
@@ -153,13 +153,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_changed));
-  // pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_removed));
-  // pm->sink_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_sink_changed));
-
-  // g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "latency-pulsesrc", source, "latency-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "buffer-pulsesink", sink, "buffer-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "latency-pulsesink", sink, "latency-time", G_SETTINGS_BIND_DEFAULT);
+  pm->sink_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_sink_changed));
 
   // element message callback
 
@@ -311,29 +305,30 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 
 void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
   apps_want_to_play = false;
-  uint rate = 0;
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == pm->pe_sink_node.id) {
       for (const auto& node : pm->list_nodes) {
         if (node.id == link.output_node_id && node.state == PW_NODE_STATE_RUNNING) {
           apps_want_to_play = true;
-
-          rate = (node.rate > rate) ? node.rate : rate;
         }
       }
     }
   }
 
-  if (rate > 0 && rate != sampling_rate) {
-    // util::debug(log_tag + "the largest sampling rate has changed to: " + std::to_string(rate));
-
-    // gst_element_set_state(pipeline, GST_STATE_READY);
-
-    // set_caps(rate);
-  }
-
   update_pipeline_state();
+}
+
+void StreamOutputEffects::on_sink_changed(const NodeInfo& node_info) {
+  if (node_info.name == "pulseeffects_sink") {
+    if (node_info.rate != sampling_rate) {
+      gst_element_set_state(pipeline, GST_STATE_READY);
+
+      set_caps(node_info.rate);
+
+      update_pipeline_state();
+    }
+  }
 }
 
 void StreamOutputEffects::add_plugins_to_pipeline() {

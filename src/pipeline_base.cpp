@@ -468,12 +468,28 @@ void PipelineBase::set_input_node_id(const uint& id) const {
   util::debug(log_tag + "using input device: " + path);
 }
 
+auto PipelineBase::get_input_node_id() -> uint {
+  uint id = 0;
+
+  g_object_get(source, "path", &id, nullptr);
+
+  return id;
+}
+
 void PipelineBase::set_output_node_id(const uint& id) const {
   auto path = std::to_string(id);
 
   g_object_set(sink, "path", path.c_str(), nullptr);
 
   util::debug(log_tag + "using output device: " + path);
+}
+
+auto PipelineBase::get_output_node_id() -> uint {
+  uint id = 0;
+
+  g_object_get(sink, "path", &id, nullptr);
+
+  return id;
 }
 
 void PipelineBase::set_pulseaudio_props(const std::string& props) const {
