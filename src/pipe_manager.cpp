@@ -247,7 +247,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
           auto id = info->params[i].id;
 
-          if (id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat) {
+          if (id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
             pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -339,7 +339,7 @@ void on_node_event_param(void* object,
 
                 notify = true;
 
-                // util::debug(node.name + " sampling rate: " + std::to_string(rate));
+                util::debug(node.name + " sampling rate: " + std::to_string(rate));
 
                 break;
               }
@@ -408,6 +408,10 @@ void on_node_event_param(void* object,
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
+      } else if (nd->nd_info.media_class == "Audio/Source") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
+      } else if (nd->nd_info.media_class == "Audio/Sink") {
+        Glib::signal_idle().connect_once([nd] { nd->pm->sink_changed.emit(nd->nd_info); });
       }
     }
   }

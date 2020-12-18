@@ -76,14 +76,24 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // signals
 
   connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
-    if (stack->get_visible_child_name() == "sink_inputs") {
+    if (stack->get_visible_child_name() == "stream_output") {
       update_headerbar_subtitle(0);
     }
   }));
 
   connections.emplace_back(app->pm->new_default_source.connect([&](auto name) {
-    if (stack->get_visible_child_name() == "source_outputs") {
+    if (stack->get_visible_child_name() == "stream_input") {
       update_headerbar_subtitle(1);
+    }
+  }));
+
+  connections.emplace_back(app->pm->sink_changed.connect([&](auto nd_info) {
+    if (stack->get_visible_child_name() == "stream_output") {
+      if (nd_info.name == "pulseeffects_sink") {
+        pe_sink_node = nd_info;
+      }
+
+      update_headerbar_subtitle(0);
     }
   }));
 
@@ -203,7 +213,7 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-      null_sink_rate << std::fixed << 0 * khz_factor << "kHz";
+      null_sink_rate << std::fixed << pe_sink_node.rate * khz_factor << "kHz";
 
       pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
@@ -214,7 +224,7 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
       std::string pe_sink_format;
       std::string output_sink_format;
 
-      headerbar_info->set_text(" ⟶ " + pe_sink_format + " " + null_sink_rate.str() + " ⟶ float32le " +
+      headerbar_info->set_text(" ⟶ " + pe_sink_node.format + " " + null_sink_rate.str() + " ⟶ F32LE " +
                                pipeline_rate.str() + " ⟶ " + output_sink_format + " " + current_dev_rate.str() + " ⟶ " +
                                std::to_string(soe_latency) + "ms ⟶ ");
 
