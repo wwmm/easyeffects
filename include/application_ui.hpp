@@ -80,8 +80,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   int soe_latency = 0, sie_latency = 0;
 
-  NodeInfo pe_sink_node, current_sink_node;
-
   static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
                          const std::string& name,
                          Glib::RefPtr<Gtk::Adjustment>& object) {

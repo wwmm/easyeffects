@@ -409,8 +409,18 @@ void on_node_event_param(void* object,
       } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Audio/Source") {
+        // if (nd->nd_info.id == nd->pm->pe_source_node.id) {
+        //   nd->pm->pe_source_node = nd->nd_info;
+        // }
+
         Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Audio/Sink") {
+        if (nd->nd_info.id == nd->pm->pe_sink_node.id) {
+          nd->pm->pe_sink_node = nd->nd_info;
+        } else if (nd->nd_info.id == nd->pm->pe_source_node.id) {
+          nd->pm->pe_source_node = nd->nd_info;
+        }
+
         Glib::signal_idle().connect_once([nd] { nd->pm->sink_changed.emit(nd->nd_info); });
       }
     }

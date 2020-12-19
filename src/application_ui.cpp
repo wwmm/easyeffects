@@ -24,6 +24,7 @@
 #include <gtkmm/settings.h>
 #include <memory>
 #include <sstream>
+#include <string>
 #include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
@@ -97,11 +98,21 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   connections.emplace_back(app->pm->sink_changed.connect([&](auto nd_info) {
     if (stack->get_visible_child_name() == "stream_output") {
-      if (nd_info.name == "pulseeffects_sink") {
-        pe_sink_node = nd_info;
+      if (nd_info.id != app->soe->get_output_node_id()) {
+        return;
       }
 
       update_headerbar_subtitle(0);
+    }
+  }));
+
+  connections.emplace_back(app->pm->source_changed.connect([&](auto nd_info) {
+    if (stack->get_visible_child_name() == "stream_input") {
+      if (nd_info.id != app->sie->get_input_node_id()) {
+        return;
+      }
+
+      update_headerbar_subtitle(1);
     }
   }));
 
@@ -221,25 +232,25 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("audio-speakers-symbolic", Gtk::ICON_SIZE_MENU);
 
-      null_sink_rate << std::fixed << pe_sink_node.rate * khz_factor << "kHz";
+      null_sink_rate << std::fixed << app->pm->pe_sink_node.rate * khz_factor << "kHz";
 
       pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
-      std::string output_sink_format;
+      std::string current_device_format;
 
       for (const auto& node : app->pm->list_nodes) {
         if (node.id == app->soe->get_output_node_id()) {
           current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
 
-          output_sink_format = node.format;
+          current_device_format = node.format;
 
           break;
         }
       }
 
-      headerbar_info->set_text(" ⟶ " + pe_sink_node.format + " " + null_sink_rate.str() + " ⟶ F32LE " +
-                               pipeline_rate.str() + " ⟶ " + output_sink_format + " " + current_dev_rate.str() + " ⟶ " +
-                               std::to_string(soe_latency) + "ms ⟶ ");
+      headerbar_info->set_text(" ⟶ " + app->pm->pe_sink_node.format + " " + null_sink_rate.str() + " ⟶ F32LE " +
+                               pipeline_rate.str() + " ⟶ " + current_device_format + " " + current_dev_rate.str() +
+                               " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;
     }
@@ -251,15 +262,25 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       headerbar_icon2->set_from_icon_name("emblem-music-symbolic", Gtk::ICON_SIZE_MENU);
 
-      // null_sink_rate << std::fixed << app->pm->mic_sink_info->rate * khz_factor << "kHz";
+      null_sink_rate << std::fixed << app->pm->pe_source_node.rate * khz_factor << "kHz";
 
-      // auto source = app->pm->get_source_info(app->pm->server_info.default_source_name);
+      pipeline_rate << std::fixed << app->sie->sampling_rate * khz_factor << "kHz";
 
-      // current_dev_rate << std::fixed << source->rate * khz_factor << "kHz";
+      std::string current_device_format;
 
-      // headerbar_info->set_text(" ⟶ " + source->format + " " + current_dev_rate.str() + " ⟶ float32le " +
-      //                          null_sink_rate.str() + " ⟶ " + app->pm->mic_sink_info->format + " " +
-      //                          null_sink_rate.str() + " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
+      for (const auto& node : app->pm->list_nodes) {
+        if (node.id == app->sie->get_input_node_id()) {
+          current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
+
+          current_device_format = node.format;
+
+          break;
+        }
+      }
+
+      headerbar_info->set_text(" ⟶ " + current_device_format + " " + current_dev_rate.str() + " ⟶ F32LE " +
+                               pipeline_rate.str() + " ⟶ " + app->pm->pe_source_node.format + " " +
+                               null_sink_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
 
       break;
     }
@@ -274,11 +295,11 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 void ApplicationUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
-  if (name == std::string("sink_inputs")) {
+  if (name == std::string("stream_output")) {
     update_headerbar_subtitle(0);
 
     presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
-  } else if (name == std::string("source_outputs")) {
+  } else if (name == std::string("stream_input")) {
     update_headerbar_subtitle(1);
 
     presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
