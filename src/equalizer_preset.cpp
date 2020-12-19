@@ -43,7 +43,7 @@ void EqualizerPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".equalizer.mode", settings->get_string("mode"));
 
-  int nbands = settings->get_int("num-bands");
+  const auto& nbands = settings->get_int("num-bands");
 
   root.put(section + ".equalizer.num-bands", nbands);
 
@@ -106,7 +106,7 @@ void EqualizerPreset::load(const boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "output-gain", section + ".equalizer.output-gain");
 
-  int nbands = settings->get_int("num-bands");
+  const auto& nbands = settings->get_int("num-bands");
 
   update_key<bool>(root, settings, "split-channels", section + ".equalizer.split-channels");
 

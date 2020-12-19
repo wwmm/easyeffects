@@ -18,6 +18,7 @@
         <value nick="Lo-shelf" value="5" />
         <value nick="Notch" value="6" />
         <value nick="Resonance" value="7" />
+        <value nick="Allpass" value="8" />
     </enum>
     <enum id="com.github.wwmm.pulseeffects.equalizer.bandslope.enum">
         <value nick="x1" value="0" />

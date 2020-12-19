@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.1 -->
+<!-- Generated with glade 3.38.2 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkImage" id="image_add_input">
@@ -92,6 +92,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">in</property>
                 <child>
@@ -192,6 +193,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <property name="label-xalign">0</property>
                 <property name="shadow-type">in</property>
                 <child>

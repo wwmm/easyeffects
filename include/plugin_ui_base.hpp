@@ -69,9 +69,9 @@ class PluginUiBase {
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
-  auto level_to_str(const double& value, const int& places) -> std::string;
-  auto level_to_str(const float& value, const int& places) -> std::string;
-  auto string_to_float_nolocale(const std::string& value) -> float;
+  auto level_to_localized_string(const double& value, const int& places) -> std::string;
+  auto level_to_localized_string(const float& value, const int& places) -> std::string;
+  auto string_to_float(const std::string& value) -> float;
 
   // reset plugin method
   virtual void reset() = 0;
@@ -97,7 +97,7 @@ class PluginUiBase {
   }
 
   template <typename T>
-  auto level_to_str_showpos(const T& value, const int& places) -> std::string {
+  auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
     std::ostringstream msg;
 
     msg.imbue(global_locale);
@@ -109,7 +109,8 @@ class PluginUiBase {
   }
 
  private:
-  std::locale global_locale, c_locale;
+  std::locale global_locale;
+  std::locale c_locale = std::locale();
 
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,
@@ -124,7 +125,7 @@ class PluginUiBase {
 
     if (left_db >= -99.0) {
       w_left->set_value(left);
-      w_left_label->set_text(level_to_str(left_db, 0));
+      w_left_label->set_text(level_to_localized_string(left_db, 0));
     } else {
       w_left->set_value(0.0);
       w_left_label->set_text("-99");
@@ -132,7 +133,7 @@ class PluginUiBase {
 
     if (right_db >= -99.0) {
       w_right->set_value(right);
-      w_right_label->set_text(level_to_str(right_db, 0));
+      w_right_label->set_text(level_to_localized_string(right_db, 0));
     } else {
       w_right->set_value(0.0);
       w_right_label->set_text("-99");
@@ -158,7 +159,7 @@ class PluginUiBase {
       }
 
       w_left->set_value(db_value);
-      w_left_label->set_text(level_to_str(left, 0));
+      w_left_label->set_text(level_to_localized_string(left, 0));
     } else {
       w_left->set_value(0.0);
       w_left_label->set_text("-99");
@@ -174,7 +175,7 @@ class PluginUiBase {
       }
 
       w_right->set_value(db_value);
-      w_right_label->set_text(level_to_str(right, 0));
+      w_right_label->set_text(level_to_localized_string(right, 0));
     } else {
       w_right->set_value(0.0);
       w_right_label->set_text("-99");

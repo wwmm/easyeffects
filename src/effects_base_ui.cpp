@@ -23,8 +23,15 @@
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
-                             PipeManager* pulse_manager)
-    : settings(std::move(refSettings)), pm(pulse_manager), global_locale(std::locale("")) {
+                             PipeManager* pipe_manager)
+    : settings(std::move(refSettings)), pm(pipe_manager) {
+  // set locale (workaround for #849)
+
+  try {
+    global_locale = std::locale("");
+  } catch (const std::exception& e) {
+    global_locale = std::locale();
+  }
   // loading glade widgets
 
   builder->get_widget("stack", stack);
@@ -154,9 +161,9 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
 
   global_level_meter_grid->set_visible(true);
 
-  global_output_level_left->set_text(level_to_str_showpos(left, 0));
+  global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
 
-  global_output_level_right->set_text(level_to_str_showpos(right, 0));
+  global_output_level_right->set_text(level_to_localized_string_showpos(right, 0));
 
   // saturation icon notification
 

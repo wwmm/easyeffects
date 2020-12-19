@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 12:18-0300\n"
+"POT-Creation-Date: 2020-12-19 20:06-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,8 +129,8 @@ msgstr ""
 msgid "State"
 msgstr ""
 
-#: data/ui/application.glade:142 src/calibration_ui.cpp:56
-#: src/calibration_ui.cpp:183
+#: data/ui/application.glade:142 src/calibration_ui.cpp:64
+#: src/calibration_ui.cpp:191
 msgid "Test Signals"
 msgstr ""
 
@@ -163,8 +163,8 @@ msgstr ""
 #: data/ui/compressor.glade:214 data/ui/convolver.glade:218
 #: data/ui/crossfeed.glade:136 data/ui/crystalizer.glade:134
 #: data/ui/deesser.glade:182 data/ui/delay.glade:144
-#: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:186
-#: data/ui/equalizer_band.glade:229 data/ui/exciter.glade:167
+#: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:187
+#: data/ui/equalizer_band.glade:230 data/ui/exciter.glade:167
 #: data/ui/filter.glade:243 data/ui/general_settings.glade:298
 #: data/ui/gate.glade:172 data/ui/limiter.glade:166 data/ui/loudness.glade:174
 #: data/ui/maximizer.glade:139 data/ui/multiband_compressor.glade:307
@@ -219,7 +219,7 @@ msgstr ""
 #: data/ui/limiter.glade:501 data/ui/loudness.glade:238
 #: data/ui/loudness.glade:431 data/ui/maximizer.glade:358
 #: data/ui/multiband_compressor.glade:2103 data/ui/multiband_gate.glade:2262
-#: data/ui/pitch.glade:450 data/ui/presets_menu.glade:236
+#: data/ui/pitch.glade:450 data/ui/presets_menu.glade:238
 #: data/ui/reverb.glade:753 data/ui/stereo_tools.glade:427
 #: data/ui/stereo_tools.glade:931 data/ui/webrtc.glade:780
 #: data/ui/rnnoise.glade:362
@@ -241,7 +241,7 @@ msgstr ""
 #: data/ui/multiband_compressor.glade:2116 data/ui/multiband_gate.glade:951
 #: data/ui/multiband_gate.glade:1363 data/ui/multiband_gate.glade:1776
 #: data/ui/multiband_gate.glade:2189 data/ui/multiband_gate.glade:2275
-#: data/ui/pitch.glade:463 data/ui/presets_menu.glade:136
+#: data/ui/pitch.glade:463 data/ui/presets_menu.glade:137
 #: data/ui/reverb.glade:766 data/ui/stereo_tools.glade:901
 #: data/ui/stereo_tools.glade:944 data/ui/webrtc.glade:794
 #: data/ui/rnnoise.glade:375
@@ -316,12 +316,12 @@ msgid "Floor"
 msgstr ""
 
 #: data/ui/blocklist_settings.glade:52 data/ui/blocklist_settings.glade:155
-#: data/ui/presets_menu.glade:65 data/ui/presets_menu.glade:165
+#: data/ui/presets_menu.glade:65 data/ui/presets_menu.glade:166
 msgid "Create Preset"
 msgstr ""
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
-#: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:152
+#: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
 #: data/ui/pulse_info.glade:50
 msgid "Name"
 msgstr ""
@@ -402,7 +402,7 @@ msgstr ""
 msgid "Volume"
 msgstr ""
 
-#: data/ui/calibration_signals.glade:135 data/ui/equalizer_band.glade:157
+#: data/ui/calibration_signals.glade:135 data/ui/equalizer_band.glade:158
 #: data/ui/filter.glade:394
 msgid "Frequency"
 msgstr ""
@@ -546,7 +546,7 @@ msgid "Uniform"
 msgstr ""
 
 #: data/ui/compressor.glade:774 data/ui/deesser.glade:702
-#: data/ui/equalizer.glade:257 data/ui/equalizer_band.glade:83
+#: data/ui/equalizer.glade:257 data/ui/equalizer_band.glade:84
 #: data/ui/multiband_compressor.glade:412 data/ui/multiband_gate.glade:436
 #: data/ui/stereo_tools.glade:591 data/ui/webrtc.glade:483
 msgid "Mode"
@@ -716,7 +716,7 @@ msgstr ""
 msgid "Loudness Range"
 msgstr ""
 
-#: data/ui/crystalizer_band.glade:28 data/ui/equalizer_band.glade:315
+#: data/ui/crystalizer_band.glade:28 data/ui/equalizer_band.glade:316
 #: data/ui/stereo_tools.glade:680 data/ui/stereo_tools.glade:737
 msgid "Mute"
 msgstr ""
@@ -848,47 +848,51 @@ msgstr ""
 msgid "Resonance"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:95
-msgid "RLC (BT)"
+#: data/ui/equalizer_band.glade:71
+msgid "All Pass"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:96
-msgid "RLC (MT)"
+msgid "RLC (BT)"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:97
-msgid "BWC (BT)"
+msgid "RLC (MT)"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:98
-msgid "BWC (MT)"
+msgid "BWC (BT)"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:99
-msgid "LRX (BT)"
+msgid "BWC (MT)"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:100
-msgid "LRX (MT)"
+msgid "LRX (BT)"
 msgstr ""
 
 #: data/ui/equalizer_band.glade:101
+msgid "LRX (MT)"
+msgstr ""
+
+#: data/ui/equalizer_band.glade:102
 msgid "APO (DR)"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:114
+#: data/ui/equalizer_band.glade:115
 msgid "Slope"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:202
+#: data/ui/equalizer_band.glade:203
 msgid "Quality"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:252
+#: data/ui/equalizer_band.glade:253
 msgid "Width"
 msgstr ""
 
-#: data/ui/equalizer_band.glade:303 data/ui/multiband_compressor.glade:593
+#: data/ui/equalizer_band.glade:304 data/ui/multiband_compressor.glade:593
 #: data/ui/multiband_compressor.glade:971
 #: data/ui/multiband_compressor.glade:1350
 #: data/ui/multiband_compressor.glade:1729 data/ui/multiband_gate.glade:617
@@ -1212,7 +1216,7 @@ msgid ""
 "plugged in the system"
 msgstr ""
 
-#: data/ui/presets_menu.glade:81 data/ui/presets_menu.glade:181
+#: data/ui/presets_menu.glade:81 data/ui/presets_menu.glade:182
 #: src/presets_menu_ui.cpp:129
 msgid "Import Presets"
 msgstr ""
@@ -1679,7 +1683,7 @@ msgstr ""
 msgid "Blocklist"
 msgstr ""
 
-#: src/calibration_ui.cpp:190
+#: src/calibration_ui.cpp:198
 msgid "Calibration Microphone"
 msgstr ""
 
@@ -1687,12 +1691,12 @@ msgstr ""
 msgid "Import Impulse File"
 msgstr ""
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:833
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
 #: src/presets_menu_ui.cpp:129
 msgid "Open"
 msgstr ""
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:833
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
 #: src/presets_menu_ui.cpp:129
 msgid "Cancel"
 msgstr ""
@@ -1705,15 +1709,15 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:371 src/equalizer_ui.cpp:504
+#: src/equalizer_ui.cpp:380
 msgid "infinity"
 msgstr ""
 
-#: src/equalizer_ui.cpp:832
+#: src/equalizer_ui.cpp:741
 msgid "Import APO Preset File"
 msgstr ""
 
-#: src/equalizer_ui.cpp:837
+#: src/equalizer_ui.cpp:746
 msgid "APO Presets"
 msgstr ""
 

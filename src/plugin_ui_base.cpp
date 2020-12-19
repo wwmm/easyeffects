@@ -23,11 +23,15 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
+  // set locale (workaround for #849)
+
   try {
     global_locale = std::locale("");
   } catch (const std::exception& e) {
     global_locale = std::locale();
   }
+
+  // get widgets
 
   builder->get_widget("enable", enable);
   builder->get_widget("listbox_control", listbox_control);
@@ -67,7 +71,7 @@ PluginUiBase::~PluginUiBase() {
   settings->set_boolean("post-messages", false);
 }
 
-auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::string {
+auto PluginUiBase::level_to_localized_string(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
 
   msg.imbue(global_locale);
@@ -78,7 +82,7 @@ auto PluginUiBase::level_to_str(const double& value, const int& places) -> std::
   return msg.str();
 }
 
-auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::string {
+auto PluginUiBase::level_to_localized_string(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
 
   msg.imbue(global_locale);
@@ -89,7 +93,7 @@ auto PluginUiBase::level_to_str(const float& value, const int& places) -> std::s
   return msg.str();
 }
 
-auto PluginUiBase::string_to_float_nolocale(const std::string& value) -> float {
+auto PluginUiBase::string_to_float(const std::string& value) -> float {
   std::stringstream ss;
   ss.imbue(c_locale);
 

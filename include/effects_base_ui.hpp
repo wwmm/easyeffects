@@ -42,7 +42,7 @@ class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                 Glib::RefPtr<Gio::Settings> refSettings,
-                PipeManager* pulse_manager);
+                PipeManager* pipe_manager);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
   EffectsBaseUi(const EffectsBaseUi&&) = delete;
@@ -170,7 +170,7 @@ class EffectsBaseUi {
   auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   template <typename T>
-  auto level_to_str_showpos(const T& value, const int& places) -> std::string {
+  auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
     std::ostringstream msg;
 
     msg.imbue(global_locale);
