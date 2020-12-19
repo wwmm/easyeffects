@@ -174,9 +174,15 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  std::array<std::string, 9> blocklist_node_name = {
-      "pulseeffects", "PulseEffectsWebrtcProbe", "pavucontrol", "PulseAudio Volume Control",
-      "libcanberra",  "gsd-media-keys",          "GNOME Shell", "speech-dispatcher"};
+  std::array<std::string, 9> blocklist_node_name = {"PulseEffects",
+                                                    "pulseeffects",
+                                                    "PulseEffectsWebrtcProbe",
+                                                    "pavucontrol",
+                                                    "PulseAudio Volume Control",
+                                                    "libcanberra",
+                                                    "gsd-media-keys",
+                                                    "GNOME Shell",
+                                                    "speech-dispatcher"};
 
   auto get_default_source() -> NodeInfo;
 
@@ -185,6 +191,10 @@ class PipeManager {
   void connect_stream_output(const NodeInfo& nd_info) const;
 
   void disconnect_stream_output(const NodeInfo& nd_info);
+
+  void connect_stream_input(const NodeInfo& nd_info) const;
+
+  void disconnect_stream_input(const NodeInfo& nd_info);
 
   static void set_node_volume(const NodeInfo& nd_info, const float& value);
 

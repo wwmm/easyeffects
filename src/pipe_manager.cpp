@@ -782,16 +782,16 @@ PipeManager::PipeManager() {
 
   // loading our source
 
-  // pw_properties* props_source = pw_properties_new(nullptr, nullptr);
+  pw_properties* props_source = pw_properties_new(nullptr, nullptr);
 
-  // pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
-  // pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
-  // pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
-  // pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source");
-  // pw_properties_set(props_source, "audio.position", "FL,FR");
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
+  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
+  pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Sink");
+  pw_properties_set(props_source, "audio.position", "FL,FR");
 
-  // proxy_stream_input_source = static_cast<pw_proxy*>(
-  //     pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
+  proxy_stream_input_source = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
   // filter = new PipeFilter(core);
 
@@ -826,7 +826,7 @@ PipeManager::~PipeManager() {
   // delete filter;
 
   pw_proxy_destroy(proxy_stream_output_sink);
-  // pw_proxy_destroy(proxy_stream_input_source);
+  pw_proxy_destroy(proxy_stream_input_source);
 
   util::debug(log_tag + "Destroying Pipewire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
@@ -892,6 +892,20 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
     auto default_sink = get_default_sink();
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
+  }
+}
+
+void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
+  if (nd_info.media_class == "Stream/Input/Audio") {
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_source_node.id).c_str());
+  }
+}
+
+void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) {
+  if (nd_info.media_class == "Stream/Input/Audio") {
+    auto default_source = get_default_source();
+
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_source.id).c_str());
   }
 }
 

@@ -67,49 +67,65 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamInputE
 }  // namespace
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
-  std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
+  std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.streaminputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
   set_pulseaudio_props(pulse_props);
-  // set_output_sink_name("PulseEffects_mic");
-  // set_caps(pm->mic_sink_info->rate);
+
+  auto default_input = pipe_manager->get_default_source();
+
+  set_input_node_id(default_input.id);
+
+  set_output_node_id(pm->pe_source_node.id);
+
+  set_caps(48000);  // 48 kHz is the default pipewire sampling rate
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr) {
-    // if (pm->get_source_info(PULSE_SOURCE)) {
-    //   set_source_monitor_name(PULSE_SOURCE);
-    // } else {
-    //   set_source_monitor_name(pm->server_info.default_source_name);
-    // }
+    int node_id = -1;
+
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == PULSE_SOURCE) {
+        node_id = node.id;
+
+        break;
+      }
+    }
+
+    if (node_id != -1) {
+      set_input_node_id(node_id);
+    }
   } else {
     bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
 
-    if (use_default_source) {
-      // set_source_monitor_name(pm->server_info.default_source_name);
-    } else {
+    if (!use_default_source) {
       gchar* custom_source = g_settings_get_string(settings, "custom-source");
 
-      // if (pm->get_source_info(custom_source)) {
-      //   set_source_monitor_name(custom_source);
-      // } else {
-      //   set_source_monitor_name(pm->server_info.default_source_name);
-      // }
+      if (custom_source != nullptr) {
+        int node_id = -1;
 
-      g_free(custom_source);
+        for (const auto& node : pipe_manager->list_nodes) {
+          if (node.name == custom_source) {
+            node_id = node.id;
+
+            break;
+          }
+        }
+
+        if (node_id != -1) {
+          set_output_node_id(node_id);
+        }
+
+        g_free(custom_source);
+      }
     }
   }
 
-  // pm->source_output_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
-  // pm->source_output_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_changed));
-  // pm->source_output_removed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_removed));
-  // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
-
-  // g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "latency-pulsesrc", source, "latency-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "buffer-pulsesink", sink, "buffer-time", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(child_settings, "latency-pulsesink", sink, "latency-time", G_SETTINGS_BIND_DEFAULT);
+  pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
+  pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_changed));
+  pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
   // element message callback
 
@@ -188,40 +204,72 @@ StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
+void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
   bool forbidden_app = false;
-  bool success = false;
+  bool connected = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-in");
 
   for (std::size_t i = 0; blocklist[i] != nullptr; i++) {
-    if (app_info->name == blocklist[i]) {
+    if (node_info.name == blocklist[i]) {
       forbidden_app = true;
     }
 
     g_free(blocklist[i]);
   }
 
-  if (app_info->connected) {
-    if (forbidden_app) {
-      // success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+  for (const auto& link : pm->list_links) {
+    if (link.input_node_id == node_info.id && link.output_node_id == pm->pe_source_node.id) {
+      connected = true;
 
-      if (success) {
-        app_info->connected = false;
-      }
+      break;
+    }
+  }
+
+  if (connected) {
+    if (forbidden_app) {
+      pm->disconnect_stream_input(node_info);
     }
   } else {
     auto enable_all = g_settings_get_boolean(settings, "enable-all-sourceoutputs");
 
-    if (!forbidden_app && (enable_all != 0)) {
-      // success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
-
-      if (success) {
-        app_info->connected = true;
-      }
+    if (!forbidden_app && enable_all != 0) {
+      pm->connect_stream_input(node_info);
     }
   }
 
   g_free(blocklist);
+}
+
+void StreamInputEffects::on_app_changed(const NodeInfo& node_info) {
+  apps_want_to_play = false;
+
+  for (const auto& link : pm->list_links) {
+    if (link.output_node_id == pm->pe_source_node.id) {
+      for (const auto& node : pm->list_nodes) {
+        if (node.id == link.input_node_id && node.state == PW_NODE_STATE_RUNNING) {
+          apps_want_to_play = true;
+        }
+      }
+    }
+  }
+
+  update_pipeline_state();
+}
+
+void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
+  auto id = get_input_node_id();
+
+  if (node_info.id == id) {
+    if (node_info.rate != sampling_rate) {
+      gst_element_set_state(pipeline, GST_STATE_READY);
+
+      set_caps(node_info.rate);
+
+      rnnoise->set_caps_out(sampling_rate);
+
+      update_pipeline_state();
+    }
+  }
 }
 
 void StreamInputEffects::add_plugins_to_pipeline() {

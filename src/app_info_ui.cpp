@@ -71,7 +71,7 @@ void AppInfoUi::init_widgets() {
     }
   } else if (nd_info.media_class == "Stream/Input/Audio") {
     for (const auto& link : pm->list_links) {
-      if (link.output_node_id == pm->pe_sink_node.id && link.input_node_id == nd_info.id) {
+      if (link.output_node_id == pm->pe_source_node.id && link.input_node_id == nd_info.id) {
         is_enabled = true;
 
         break;
@@ -196,14 +196,14 @@ auto AppInfoUi::on_enable_app(bool state) -> bool {
   if (state) {
     if (nd_info.media_class == "Stream/Output/Audio") {
       pm->connect_stream_output(nd_info);
-    } else {
-      //     success = pm->move_source_output_to_pulseeffects(app_info->name, app_info->index);
+    } else if (nd_info.media_class == "Stream/Input/Audio") {
+      pm->connect_stream_input(nd_info);
     }
   } else {
     if (nd_info.media_class == "Stream/Output/Audio") {
       pm->disconnect_stream_output(nd_info);
-    } else {
-      //     success = pm->remove_source_output_from_pulseeffects(app_info->name, app_info->index);
+    } else if (nd_info.media_class == "Stream/Input/Audio") {
+      pm->disconnect_stream_input(nd_info);
     }
   }
 

@@ -326,6 +326,8 @@ void StreamOutputEffects::on_sink_changed(const NodeInfo& node_info) {
 
       set_caps(node_info.rate);
 
+      rnnoise->set_caps_out(sampling_rate);
+
       update_pipeline_state();
     }
   }
