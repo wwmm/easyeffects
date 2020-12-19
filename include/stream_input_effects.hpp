@@ -17,8 +17,8 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SOURCE_OUTPUT_EFFECTS_HPP
-#define SOURCE_OUTPUT_EFFECTS_HPP
+#ifndef STREAM_INPUT_EFFECTS_HPP
+#define STREAM_INPUT_EFFECTS_HPP
 
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
@@ -26,14 +26,14 @@
 #include "pipeline_base.hpp"
 #include "webrtc.hpp"
 
-class SourceOutputEffects : public PipelineBase {
+class StreamInputEffects : public PipelineBase {
  public:
-  SourceOutputEffects(PipeManager* pulse_manager);
-  SourceOutputEffects(const SourceOutputEffects&) = delete;
-  auto operator=(const SourceOutputEffects&) -> SourceOutputEffects& = delete;
-  SourceOutputEffects(const SourceOutputEffects&&) = delete;
-  auto operator=(const SourceOutputEffects&&) -> SourceOutputEffects& = delete;
-  ~SourceOutputEffects() override;
+  StreamInputEffects(PipeManager* pipe_manager);
+  StreamInputEffects(const StreamInputEffects&) = delete;
+  auto operator=(const StreamInputEffects&) -> StreamInputEffects& = delete;
+  StreamInputEffects(const StreamInputEffects&&) = delete;
+  auto operator=(const StreamInputEffects&&) -> StreamInputEffects& = delete;
+  ~StreamInputEffects() override;
 
   std::unique_ptr<Webrtc> webrtc;
   std::unique_ptr<MultibandCompressor> multiband_compressor;

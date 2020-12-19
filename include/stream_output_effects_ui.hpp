@@ -65,7 +65,7 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   std::string log_tag = "soe_ui: ";
 
  private:
-  StreamOutputEffects* sie = nullptr;
+  StreamOutputEffects* soe = nullptr;
 
   LimiterUi* limiter_ui = nullptr;
   CompressorUi* compressor_ui = nullptr;

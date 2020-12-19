@@ -35,7 +35,7 @@
 #include "calibration_ui.hpp"
 #include "presets_menu_ui.hpp"
 #include "pulse_info_ui.hpp"
-#include "source_output_effects_ui.hpp"
+#include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
@@ -75,7 +75,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   PresetsMenuUi* presets_menu_ui = nullptr;
 
   StreamOutputEffectsUi* soe_ui = nullptr;
-  SourceOutputEffectsUi* sie_ui = nullptr;
+  StreamInputEffectsUi* sie_ui = nullptr;
   PulseInfoUi* pulse_info_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;

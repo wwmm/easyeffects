@@ -124,7 +124,7 @@ void Application::on_startup() {
 
   pm = std::make_unique<PipeManager>();
   soe = std::make_unique<StreamOutputEffects>(pm.get());
-  sie = std::make_unique<SourceOutputEffects>(pm.get());
+  sie = std::make_unique<StreamInputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
   pm->blocklist_in = settings->get_string_array("blocklist-in");

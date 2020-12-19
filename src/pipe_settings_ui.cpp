@@ -346,7 +346,7 @@ void PipeSettingsUi::on_input_device_changed() {
 
     for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
-        app->soe->set_input_node_id(node.id);
+        app->sie->set_input_node_id(node.id);
 
         break;
       }
@@ -356,7 +356,7 @@ void PipeSettingsUi::on_input_device_changed() {
       settings->set_string("custom-source", name);
     }
 
-    util::debug(log_tag + "input device changed: " + name);
+    util::debug(log_tag + "selected input device changed: " + name);
   }
 }
 
@@ -370,9 +370,9 @@ void PipeSettingsUi::on_output_device_changed() {
     row.get_value(0, index);
     row.get_value(1, name);
 
-    for (const auto& node : app->sie->pm->list_nodes) {
+    for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
-        app->sie->set_output_node_id(node.id);
+        app->soe->set_output_node_id(node.id);
         // app->soe->webrtc->set_probe_src_device(name + ".monitor");
 
         break;
@@ -383,6 +383,6 @@ void PipeSettingsUi::on_output_device_changed() {
       settings->set_string("custom-sink", name);
     }
 
-    util::debug(log_tag + "output device changed: " + name);
+    util::debug(log_tag + "selected output device changed: " + name);
   }
 }

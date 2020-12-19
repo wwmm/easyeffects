@@ -25,7 +25,7 @@
 #include <memory>
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
-#include "source_output_effects.hpp"
+#include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
 
 class Application : public Gtk::Application {
@@ -42,7 +42,7 @@ class Application : public Gtk::Application {
 
   std::unique_ptr<PipeManager> pm;
   std::unique_ptr<StreamOutputEffects> soe;
-  std::unique_ptr<SourceOutputEffects> sie;
+  std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:

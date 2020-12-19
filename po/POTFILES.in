@@ -59,6 +59,6 @@ src/general_settings_ui.cpp
 src/pipe_settings_ui.cpp
 src/presets_menu_ui.cpp
 src/stream_output_effects_ui.cpp
+src/stream_input_effects_ui.cpp
 src/spectrum_settings_ui.cpp
 src/spectrum_ui.cpp
-src/source_output_effects_ui.cpp

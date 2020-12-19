@@ -509,7 +509,24 @@ void on_destroy_link_proxy(void* data) {
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
-  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + key + ", " + type + ", " + value);
+  std::string str_key;
+  std::string str_type;
+  std::string str_value;
+  auto str_id = std::to_string(id);
+
+  if (key != nullptr) {
+    str_key = key;
+  }
+
+  if (type != nullptr) {
+    str_type = type;
+  }
+
+  if (value != nullptr) {
+    str_value = value;
+  }
+
+  util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
 
   return 0;
 }

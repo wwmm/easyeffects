@@ -17,14 +17,14 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "source_output_effects.hpp"
+#include "stream_input_effects.hpp"
 #include <cstring>
 #include "pipeline_common.hpp"
 #include "rnnoise.hpp"
 
 namespace {
 
-void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutputEffects* soe) {
+void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamInputEffects* sie) {
   auto* src_name = GST_OBJECT_NAME(message->src);
 
   // To optimize this call we move at the top of the nested "if statements" the most used messages
@@ -32,41 +32,41 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, SourceOutput
   // equalizer and webrtc. The rest is sorted alphabetically.
 
   if (std::strcmp(src_name, "global_level_meter") == 0) {
-    soe->global_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->global_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "equalizer_input_level") == 0) {
-    soe->equalizer_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->equalizer_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
-    soe->equalizer_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->equalizer_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "webrtc_input_level") == 0) {
-    soe->webrtc_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->webrtc_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "webrtc_output_level") == 0) {
-    soe->webrtc_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->webrtc_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
-    soe->deesser_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->deesser_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
-    soe->deesser_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->deesser_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "gate_input_level") == 0) {
-    soe->gate_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->gate_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "gate_output_level") == 0) {
-    soe->gate_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->gate_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "maximizer_input_level") == 0) {
-    soe->maximizer_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->maximizer_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "maximizer_output_level") == 0) {
-    soe->maximizer_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->maximizer_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
-    soe->pitch_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->pitch_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
-    soe->pitch_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->pitch_output_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "rnnoise_input_level") == 0) {
-    soe->rnnoise_input_level.emit(SourceOutputEffects::get_peak(message));
+    sie->rnnoise_input_level.emit(StreamInputEffects::get_peak(message));
   } else if (std::strcmp(src_name, "rnnoise_output_level") == 0) {
-    soe->rnnoise_output_level.emit(SourceOutputEffects::get_peak(message));
+    sie->rnnoise_output_level.emit(StreamInputEffects::get_peak(message));
   }
 }
 
 }  // namespace
 
-SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
+StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
   std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.sourceoutputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
@@ -101,10 +101,10 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
     }
   }
 
-  // pm->source_output_added.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_added));
-  // pm->source_output_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_changed));
-  // pm->source_output_removed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_app_removed));
-  // pm->source_changed.connect(sigc::mem_fun(*this, &SourceOutputEffects::on_source_changed));
+  // pm->source_output_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
+  // pm->source_output_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_changed));
+  // pm->source_output_removed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_removed));
+  // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
   // g_settings_bind(child_settings, "buffer-pulsesrc", source, "buffer-time", G_SETTINGS_BIND_DEFAULT);
   // g_settings_bind(child_settings, "latency-pulsesrc", source, "latency-time", G_SETTINGS_BIND_DEFAULT);
@@ -181,14 +181,14 @@ SourceOutputEffects::SourceOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   add_plugins_to_pipeline();
 
-  g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<SourceOutputEffects>), this);
+  g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamInputEffects>), this);
 }
 
-SourceOutputEffects::~SourceOutputEffects() {
+StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
+void StreamInputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info) {
   bool forbidden_app = false;
   bool success = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-in");
@@ -224,7 +224,7 @@ void SourceOutputEffects::on_app_added(const std::shared_ptr<AppInfo>& app_info)
   g_free(blocklist);
 }
 
-void SourceOutputEffects::add_plugins_to_pipeline() {
+void StreamInputEffects::add_plugins_to_pipeline() {
   gchar* name = nullptr;
   GVariantIter* iter = nullptr;
   std::vector<std::string> default_order;

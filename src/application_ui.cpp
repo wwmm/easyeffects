@@ -59,7 +59,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
-  sie_ui = SourceOutputEffectsUi::add_to_stack(stack, app->sie.get());
+  sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PipeSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -217,16 +217,17 @@ void ApplicationUi::update_headerbar_subtitle(const int& index) {
 
       pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
 
+      std::string output_sink_format;
+
       for (const auto& node : app->pm->list_nodes) {
         if (node.id == app->soe->get_output_node_id()) {
           current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
 
+          output_sink_format = node.format;
+
           break;
         }
       }
-
-      std::string pe_sink_format;
-      std::string output_sink_format;
 
       headerbar_info->set_text(" ⟶ " + pe_sink_node.format + " " + null_sink_rate.str() + " ⟶ F32LE " +
                                pipeline_rate.str() + " ⟶ " + output_sink_format + " " + current_dev_rate.str() + " ⟶ " +
