@@ -621,6 +621,8 @@ void on_registry_global(void* data,
         }
       }
     }
+
+    return;
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
@@ -655,6 +657,8 @@ void on_registry_global(void* data,
         return;
       }
     }
+
+    return;
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Link) == 0) {
@@ -681,6 +685,8 @@ void on_registry_global(void* data,
         return;
       }
     }
+
+    return;
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
@@ -694,9 +700,13 @@ void on_registry_global(void* data,
       }
 
       pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
+
+      pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+
+      return;
     }
 
-    pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+    return;
   }
 }
 

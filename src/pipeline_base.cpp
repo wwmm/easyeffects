@@ -226,7 +226,7 @@ void on_bypass_on(gpointer user_data) {
   auto* effects_bin = gst_bin_get_by_name(GST_BIN(pb->pipeline), "effects_bin");
 
   if (effects_bin != nullptr) {
-    gst_element_set_state(effects_bin, GST_STATE_READY);
+    gst_element_set_state(effects_bin, GST_STATE_NULL);
 
     gst_element_unlink_many(pb->src_type, effects_bin, pb->spectrum_bin, pb->global_level_meter_bin, nullptr);
 

@@ -22,6 +22,7 @@
 #include <string>
 #include "pipeline_common.hpp"
 #include "rnnoise.hpp"
+#include "util.hpp"
 
 namespace {
 
@@ -321,8 +322,8 @@ void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
 
 void StreamOutputEffects::on_sink_changed(const NodeInfo& node_info) {
   if (node_info.name == "pulseeffects_sink") {
-    if (node_info.rate != sampling_rate) {
-      gst_element_set_state(pipeline, GST_STATE_READY);
+    if (node_info.rate != sampling_rate && node_info.rate != 0) {
+      gst_element_set_state(pipeline, GST_STATE_NULL);
 
       set_caps(node_info.rate);
 
