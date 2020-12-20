@@ -73,7 +73,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   PipeSettingsUi::add_to_stack(stack_menu_settings, app);
   BlocklistSettingsUi::add_to_stack(stack_menu_settings);
-  // pulse_info_ui = PulseInfoUi::add_to_stack(stack, app->pm.get());
+  pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
 
   stack->connect_property_changed("visible-child",
                                   sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
@@ -303,7 +303,7 @@ void ApplicationUi::on_stack_visible_child_changed() {
     update_headerbar_subtitle(1);
 
     presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
-  } else if (name == std::string("pulse_info")) {
+  } else if (name == std::string("pipe_info")) {
     update_headerbar_subtitle(2);
   }
 }

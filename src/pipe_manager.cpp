@@ -578,6 +578,15 @@ void on_registry_global(void* data,
   auto* pm = static_cast<PipeManager*>(data);
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
+    const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE);
+
+    if (key_media_role != nullptr) {
+      if (std::find(std::begin(pm->blocklist_media_role), std::end(pm->blocklist_media_role),
+                    std::string(key_media_role)) != std::end(pm->blocklist_media_role)) {
+        return;
+      }
+    }
+
     const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
 
     if (key_media_class != nullptr) {
@@ -736,6 +745,29 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   util::debug(pm->log_tag + "core version: " + info->version);
   util::debug(pm->log_tag + "core name: " + info->name);
+
+  const auto* rate = spa_dict_lookup(info->props, "default.clock.rate");
+  const auto* min_quantum = spa_dict_lookup(info->props, "default.clock.min-quantum");
+  const auto* max_quantum = spa_dict_lookup(info->props, "default.clock.max-quantum");
+  const auto* quantum = spa_dict_lookup(info->props, "default.clock.quantum");
+
+  pm->core_name = info->name;
+
+  if (rate != nullptr) {
+    pm->default_clock_rate = rate;
+  }
+
+  if (min_quantum != nullptr) {
+    pm->default_min_quantum = min_quantum;
+  }
+
+  if (max_quantum != nullptr) {
+    pm->default_max_quantum = max_quantum;
+  }
+
+  if (quantum != nullptr) {
+    pm->default_quantum = quantum;
+  }
 }
 
 void on_core_done(void* data, uint32_t id, int seq) {
@@ -764,8 +796,11 @@ PipeManager::PipeManager() {
   spa_zero(core_listener);
   spa_zero(registry_listener);
 
-  util::debug(log_tag + "compiled with pipewire: " + pw_get_headers_version());
-  util::debug(log_tag + "linked to pipewire: " + pw_get_library_version());
+  header_version = pw_get_headers_version();
+  library_version = pw_get_library_version();
+
+  util::debug(log_tag + "compiled with pipewire: " + header_version);
+  util::debug(log_tag + "linked to pipewire: " + library_version);
 
   thread_loop = pw_thread_loop_new("pipewire-thread", nullptr);
 

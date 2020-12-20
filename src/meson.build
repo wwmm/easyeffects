@@ -11,7 +11,7 @@ pulseeffects_sources = [
 	'pipe_manager.cpp',
 	'effects_base_ui.cpp',
 	'app_info_ui.cpp',
-	'pulse_info_ui.cpp',
+	'pipe_info_ui.cpp',
 	'stream_output_effects_ui.cpp',
 	'stream_output_effects.cpp',
 	'stream_input_effects_ui.cpp',

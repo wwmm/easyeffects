@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:06-0300\n"
+"POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2019-01-17 18:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -127,7 +127,7 @@ msgstr "Format Resampling"
 msgid "Rate"
 msgstr "Rataan Frekuensi"
 
-#: data/ui/app_info.glade:289 data/ui/pulse_info.glade:239
+#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
 #: data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Total Kanal"
@@ -338,7 +338,7 @@ msgstr "Buat Preset"
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
 #: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pulse_info.glade:50
+#: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Nama"
 
@@ -1264,60 +1264,60 @@ msgstr ""
 msgid "Import Presets"
 msgstr "Muat Preset"
 
-#: data/ui/pulse_info.glade:77
+#: data/ui/pipe_info.glade:77
 msgid "Version"
 msgstr ""
 
-#: data/ui/pulse_info.glade:104
+#: data/ui/pipe_info.glade:104
 #, fuzzy
 msgid "Default Sink"
 msgstr "Aturan Bawaan"
 
-#: data/ui/pulse_info.glade:116
+#: data/ui/pipe_info.glade:116
 #, fuzzy
 msgid "Default Source"
 msgstr "Aturan Bawaan"
 
-#: data/ui/pulse_info.glade:158
+#: data/ui/pipe_info.glade:158
 msgid "Protocol"
 msgstr ""
 
-#: data/ui/pulse_info.glade:185
+#: data/ui/pipe_info.glade:185
 msgid "Default Sample Format"
 msgstr ""
 
-#: data/ui/pulse_info.glade:212
+#: data/ui/pipe_info.glade:212
 msgid "Default Sampling Rate"
 msgstr ""
 
-#: data/ui/pulse_info.glade:266
+#: data/ui/pipe_info.glade:266
 #, fuzzy
 msgid "Channel Mapping"
 msgstr "Total Kanal"
 
-#: data/ui/pulse_info.glade:291
+#: data/ui/pipe_info.glade:291
 msgid "Server"
 msgstr ""
 
-#: data/ui/pulse_info.glade:336
+#: data/ui/pipe_info.glade:336
 msgid "Modules"
 msgstr ""
 
-#: data/ui/pulse_info.glade:382
+#: data/ui/pipe_info.glade:382
 #, fuzzy
 msgid "Clients"
 msgstr "Sen"
 
-#: data/ui/pulse_info.glade:446
+#: data/ui/pipe_info.glade:446
 msgid "File"
 msgstr ""
 
-#: data/ui/pulse_info.glade:456
+#: data/ui/pipe_info.glade:456
 #, fuzzy
 msgid "Configuration"
 msgstr "Durasi"
 
-#: data/ui/pulse_info.glade:489
+#: data/ui/pipe_info.glade:489
 #, fuzzy
 msgid "Resamplers"
 msgstr "Modus Penyampling"
@@ -1731,12 +1731,12 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:274
+#: src/application.cpp:270
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Preset Output:"
 
-#: src/application.cpp:282
+#: src/application.cpp:278
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Preset Input"

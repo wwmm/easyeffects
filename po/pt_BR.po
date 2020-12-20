@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:06-0300\n"
+"POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -132,7 +132,7 @@ msgstr "Formato"
 msgid "Rate"
 msgstr "Taxa"
 
-#: data/ui/app_info.glade:289 data/ui/pulse_info.glade:239
+#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
 #: data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Canais"
@@ -342,7 +342,7 @@ msgstr "Criar Predefinição"
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
 #: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pulse_info.glade:50
+#: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Nome"
 
@@ -1261,55 +1261,55 @@ msgstr ""
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
-#: data/ui/pulse_info.glade:77
+#: data/ui/pipe_info.glade:77
 msgid "Version"
 msgstr "Versão"
 
-#: data/ui/pulse_info.glade:104
+#: data/ui/pipe_info.glade:104
 msgid "Default Sink"
 msgstr "Saída Padrão"
 
-#: data/ui/pulse_info.glade:116
+#: data/ui/pipe_info.glade:116
 msgid "Default Source"
 msgstr "Entrada Padrão"
 
-#: data/ui/pulse_info.glade:158
+#: data/ui/pipe_info.glade:158
 msgid "Protocol"
 msgstr "Protocolo"
 
-#: data/ui/pulse_info.glade:185
+#: data/ui/pipe_info.glade:185
 msgid "Default Sample Format"
 msgstr "Formato de Amostra Padrão"
 
-#: data/ui/pulse_info.glade:212
+#: data/ui/pipe_info.glade:212
 msgid "Default Sampling Rate"
 msgstr "Taxa de Amostragem Padrão"
 
-#: data/ui/pulse_info.glade:266
+#: data/ui/pipe_info.glade:266
 msgid "Channel Mapping"
 msgstr "Mapeamento de Canal"
 
-#: data/ui/pulse_info.glade:291
+#: data/ui/pipe_info.glade:291
 msgid "Server"
 msgstr "Servidor"
 
-#: data/ui/pulse_info.glade:336
+#: data/ui/pipe_info.glade:336
 msgid "Modules"
 msgstr "Módulos"
 
-#: data/ui/pulse_info.glade:382
+#: data/ui/pipe_info.glade:382
 msgid "Clients"
 msgstr "Clientes"
 
-#: data/ui/pulse_info.glade:446
+#: data/ui/pipe_info.glade:446
 msgid "File"
 msgstr "Arquivo"
 
-#: data/ui/pulse_info.glade:456
+#: data/ui/pipe_info.glade:456
 msgid "Configuration"
 msgstr "Configuração"
 
-#: data/ui/pulse_info.glade:489
+#: data/ui/pipe_info.glade:489
 msgid "Resamplers"
 msgstr "Resamplers"
 
@@ -1719,11 +1719,11 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:274
+#: src/application.cpp:270
 msgid "Output Presets: "
 msgstr "Predefinições de Saída: "
 
-#: src/application.cpp:282
+#: src/application.cpp:278
 msgid "Input Presets: "
 msgstr "Predefinições de Entrada: "
 

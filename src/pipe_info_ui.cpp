@@ -17,38 +17,38 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "pulse_info_ui.hpp"
+#include "pipe_info_ui.hpp"
 #include <boost/algorithm/string.hpp>
 #include <boost/process.hpp>
 #include "util.hpp"
 
-PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
+PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
   builder->get_widget("stack", stack);
   builder->get_widget("server_name", server_name);
-  builder->get_widget("server_version", server_version);
+  builder->get_widget("header_version", header_version);
+  builder->get_widget("library_version", library_version);
   builder->get_widget("default_sink", default_sink);
   builder->get_widget("default_source", default_source);
-  builder->get_widget("server_protocol", protocol);
-  builder->get_widget("server_sample_format", server_sample_format);
+  builder->get_widget("quantum", quantum);
+  builder->get_widget("max_quantum", max_quantum);
+  builder->get_widget("min_quantum", min_quantum);
   builder->get_widget("server_rate", server_rate);
-  builder->get_widget("server_channels", server_channels);
-  builder->get_widget("server_channel_mapping", server_channel_mapping);
   builder->get_widget("listbox_modules", listbox_modules);
   builder->get_widget("listbox_clients", listbox_clients);
   builder->get_widget("listbox_config", listbox_config);
   builder->get_widget("listbox_resamplers", listbox_resamplers);
   builder->get_widget("config_file", config_file);
 
-  listbox_modules->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
+  listbox_modules->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
-  listbox_clients->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
+  listbox_clients->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
-  listbox_config->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
+  listbox_config->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
-  listbox_resamplers->set_sort_func(sigc::ptr_fun(&PulseInfoUi::on_listbox_sort));
+  listbox_resamplers->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
-  stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PulseInfoUi::on_stack_visible_child_changed));
+  stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
   // connections.emplace_back(pm->server_changed.connect([=]() { update_server_info(); }));
 
@@ -92,11 +92,11 @@ PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 
   update_server_info();
 
-  get_pulse_conf();
-  get_resamplers();
+  // get_pulse_conf();
+  // get_resamplers();
 }
 
-PulseInfoUi::~PulseInfoUi() {
+PipeInfoUi::~PipeInfoUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
@@ -104,32 +104,40 @@ PulseInfoUi::~PulseInfoUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto PulseInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PulseInfoUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_info.glade");
+auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_info.glade");
 
-  PulseInfoUi* ui;
+  PipeInfoUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_box", ui, pm);
 
-  stack->add(*ui, "pulse_info");
+  stack->add(*ui, "pipe_info");
   stack->child_property_icon_name(*ui).set_value("network-server-symbolic");
 
   return ui;
 }
 
-void PulseInfoUi::update_server_info() {
-  // server_name->set_text(pm->server_info.server_name);
-  // server_version->set_text(pm->server_info.server_version);
-  // default_sink->set_text(pm->server_info.default_sink_name);
-  // default_source->set_text(pm->server_info.default_source_name);
+void PipeInfoUi::update_server_info() {
+  header_version->set_text(pm->header_version);
+  library_version->set_text(pm->library_version);
+
+  server_name->set_text(pm->core_name);
+
+  default_sink->set_text(pm->get_default_sink().name);
+  default_source->set_text(pm->get_default_source().name);
+  server_rate->set_text(pm->default_clock_rate);
+
+  min_quantum->set_text(pm->default_min_quantum);
+  max_quantum->set_text(pm->default_max_quantum);
+  quantum->set_text(pm->default_quantum);
+
   // protocol->set_text(pm->server_info.protocol);
   // server_sample_format->set_text(pm->server_info.format);
-  // server_rate->set_text(std::to_string(pm->server_info.rate));
   // server_channels->set_text(std::to_string(pm->server_info.channels));
   // server_channel_mapping->set_text(pm->server_info.channel_map);
 }
 
-auto PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
+auto PipeInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
@@ -148,7 +156,7 @@ auto PulseInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
   return 0;
 }
 
-void PulseInfoUi::on_stack_visible_child_changed() {
+void PipeInfoUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
   if (name == std::string("page_server")) {
@@ -169,7 +177,7 @@ void PulseInfoUi::on_stack_visible_child_changed() {
   }
 }
 
-void PulseInfoUi::get_pulse_conf() {
+void PipeInfoUi::get_pulse_conf() {
   std::string command = "pulseaudio --dump-conf";
 
   try {
@@ -186,11 +194,11 @@ void PulseInfoUi::get_pulse_conf() {
       boost::split(aux, line, boost::is_any_of("="));
 
       if (aux.size() > 1U) {
-        auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pulse_conf_file_line.glade");
+        auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_conf_file_line.glade");
 
-        Gtk::ListBoxRow* row;
-        Gtk::Label* conf_key;
-        Gtk::Label* conf_value;
+        Gtk::ListBoxRow* row = nullptr;
+        Gtk::Label* conf_key = nullptr;
+        Gtk::Label* conf_value = nullptr;
 
         b->get_widget("conf_row", row);
         b->get_widget("conf_key", conf_key);
@@ -221,7 +229,7 @@ void PulseInfoUi::get_pulse_conf() {
   }
 }
 
-void PulseInfoUi::get_resamplers() {
+void PipeInfoUi::get_resamplers() {
   std::string command = "pulseaudio --dump-resample-methods";
 
   try {
@@ -231,8 +239,8 @@ void PulseInfoUi::get_resamplers() {
     std::string line;
 
     while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
-      auto row = Gtk::manage(new Gtk::ListBoxRow());
-      auto label = Gtk::manage(new Gtk::Label());
+      auto* row = Gtk::manage(new Gtk::ListBoxRow());
+      auto* label = Gtk::manage(new Gtk::Label());
 
       row->set_name(line);
 

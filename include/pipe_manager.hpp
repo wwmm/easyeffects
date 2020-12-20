@@ -173,15 +173,21 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  std::array<std::string, 9> blocklist_node_name = {"PulseEffects",
-                                                    "pulseeffects",
-                                                    "PulseEffectsWebrtcProbe",
-                                                    "pavucontrol",
-                                                    "PulseAudio Volume Control",
-                                                    "libcanberra",
-                                                    "gsd-media-keys",
-                                                    "GNOME Shell",
-                                                    "speech-dispatcher"};
+  std::array<std::string, 10> blocklist_node_name = {"PulseEffects",
+                                                     "pulseeffects",
+                                                     "PulseEffectsWebrtcProbe",
+                                                     "pavucontrol",
+                                                     "PulseAudio Volume Control",
+                                                     "libcanberra",
+                                                     "gsd-media-keys",
+                                                     "GNOME Shell",
+                                                     "speech-dispatcher",
+                                                     "Mutter"};
+
+  std::array<std::string, 2> blocklist_media_role = {"event", "Notification"};
+
+  std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
+      default_quantum;
 
   auto get_default_source() -> NodeInfo;
 
@@ -224,8 +230,6 @@ class PipeManager {
 
   std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
                                                      "screen-capture"};
-
-  std::array<std::string, 1> blocklist_media_role = {"event"};
 
   std::array<std::string, 4> blocklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
                                                  "com.github.wwmm.pulseeffects.sourceoutputs",

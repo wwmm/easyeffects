@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:06-0300\n"
+"POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2019-03-28 17:38+0100\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -129,7 +129,7 @@ msgstr "Formato"
 msgid "Rate"
 msgstr "Frequenza"
 
-#: data/ui/app_info.glade:289 data/ui/pulse_info.glade:239
+#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
 #: data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Canali"
@@ -337,7 +337,7 @@ msgstr "Crea Profilo"
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
 #: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pulse_info.glade:50
+#: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Nome"
 
@@ -1238,55 +1238,55 @@ msgstr ""
 msgid "Import Presets"
 msgstr "Importa Profili"
 
-#: data/ui/pulse_info.glade:77
+#: data/ui/pipe_info.glade:77
 msgid "Version"
 msgstr "Versione"
 
-#: data/ui/pulse_info.glade:104
+#: data/ui/pipe_info.glade:104
 msgid "Default Sink"
 msgstr "Sink Predefinito"
 
-#: data/ui/pulse_info.glade:116
+#: data/ui/pipe_info.glade:116
 msgid "Default Source"
 msgstr "Sorgente Predefinita"
 
-#: data/ui/pulse_info.glade:158
+#: data/ui/pipe_info.glade:158
 msgid "Protocol"
 msgstr "Protocollo"
 
-#: data/ui/pulse_info.glade:185
+#: data/ui/pipe_info.glade:185
 msgid "Default Sample Format"
 msgstr "Formato di Campionamento Predefinito"
 
-#: data/ui/pulse_info.glade:212
+#: data/ui/pipe_info.glade:212
 msgid "Default Sampling Rate"
 msgstr "Frequenza di Campionamento Predefinita"
 
-#: data/ui/pulse_info.glade:266
+#: data/ui/pipe_info.glade:266
 msgid "Channel Mapping"
 msgstr "Mappatura Canali"
 
-#: data/ui/pulse_info.glade:291
+#: data/ui/pipe_info.glade:291
 msgid "Server"
 msgstr "Server"
 
-#: data/ui/pulse_info.glade:336
+#: data/ui/pipe_info.glade:336
 msgid "Modules"
 msgstr "Moduli"
 
-#: data/ui/pulse_info.glade:382
+#: data/ui/pipe_info.glade:382
 msgid "Clients"
 msgstr "Client"
 
-#: data/ui/pulse_info.glade:446
+#: data/ui/pipe_info.glade:446
 msgid "File"
 msgstr "File"
 
-#: data/ui/pulse_info.glade:456
+#: data/ui/pipe_info.glade:456
 msgid "Configuration"
 msgstr "Configurazione"
 
-#: data/ui/pulse_info.glade:489
+#: data/ui/pipe_info.glade:489
 msgid "Resamplers"
 msgstr "Ricampionamento"
 
@@ -1689,11 +1689,11 @@ msgstr "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per lo stato"
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra"
 
-#: src/application.cpp:274
+#: src/application.cpp:270
 msgid "Output Presets: "
 msgstr "Profili Uscita: "
 
-#: src/application.cpp:282
+#: src/application.cpp:278
 msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 

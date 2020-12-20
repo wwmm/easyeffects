@@ -17,8 +17,8 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PULSE_INFO_UI_HPP
-#define PULSE_INFO_UI_HPP
+#ifndef PIPE_INFO_UI_HPP
+#define PIPE_INFO_UI_HPP
 
 #include <giomm/settings.h>
 #include <gtkmm/box.h>
@@ -28,26 +28,26 @@
 #include <gtkmm/stack.h>
 #include "pipe_manager.hpp"
 
-class PulseInfoUi : public Gtk::Box {
+class PipeInfoUi : public Gtk::Box {
  public:
-  PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
-  PulseInfoUi(const PulseInfoUi&) = delete;
-  auto operator=(const PulseInfoUi&) -> PulseInfoUi& = delete;
-  PulseInfoUi(const PulseInfoUi&&) = delete;
-  auto operator=(const PulseInfoUi&&) -> PulseInfoUi& = delete;
-  ~PulseInfoUi() override;
+  PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
+  PipeInfoUi(const PipeInfoUi&) = delete;
+  auto operator=(const PipeInfoUi&) -> PipeInfoUi& = delete;
+  PipeInfoUi(const PipeInfoUi&&) = delete;
+  auto operator=(const PipeInfoUi&&) -> PipeInfoUi& = delete;
+  ~PipeInfoUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PulseInfoUi*;
+  static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi*;
 
  private:
-  std::string log_tag = "pulse_info: ";
+  std::string log_tag = "pipe_info: ";
 
   PipeManager* pm = nullptr;
   Gtk::Stack* stack = nullptr;
 
-  Gtk::Label *server_name = nullptr, *server_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
-             *protocol = nullptr, *server_sample_format = nullptr, *server_rate = nullptr, *server_channels = nullptr,
-             *server_channel_mapping = nullptr, *config_file = nullptr;
+  Gtk::Label *server_name = nullptr, *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr,
+             *default_source = nullptr, *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr,
+             *quantum = nullptr, *config_file = nullptr;
 
   Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr, *listbox_config = nullptr,
                *listbox_resamplers = nullptr;

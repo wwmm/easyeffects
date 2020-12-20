@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:06-0300\n"
+"POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -127,7 +127,7 @@ msgstr "Formát"
 msgid "Rate"
 msgstr "Kmitočet"
 
-#: data/ui/app_info.glade:289 data/ui/pulse_info.glade:239
+#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
 #: data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Kanály"
@@ -337,7 +337,7 @@ msgstr "Vytvořit přednastavení"
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
 #: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pulse_info.glade:50
+#: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Název"
 
@@ -1256,55 +1256,55 @@ msgstr ""
 msgid "Import Presets"
 msgstr "Zavést přednastavení"
 
-#: data/ui/pulse_info.glade:77
+#: data/ui/pipe_info.glade:77
 msgid "Version"
 msgstr "Verze"
 
-#: data/ui/pulse_info.glade:104
+#: data/ui/pipe_info.glade:104
 msgid "Default Sink"
 msgstr "Výchozí zeslabení"
 
-#: data/ui/pulse_info.glade:116
+#: data/ui/pipe_info.glade:116
 msgid "Default Source"
 msgstr "Výchozí zdroj"
 
-#: data/ui/pulse_info.glade:158
+#: data/ui/pipe_info.glade:158
 msgid "Protocol"
 msgstr "Protokol"
 
-#: data/ui/pulse_info.glade:185
+#: data/ui/pipe_info.glade:185
 msgid "Default Sample Format"
 msgstr "Výchozí formát vzorku"
 
-#: data/ui/pulse_info.glade:212
+#: data/ui/pipe_info.glade:212
 msgid "Default Sampling Rate"
 msgstr "Výchozí rychlost vzorkování"
 
-#: data/ui/pulse_info.glade:266
+#: data/ui/pipe_info.glade:266
 msgid "Channel Mapping"
 msgstr "Přiřazení kanálu"
 
-#: data/ui/pulse_info.glade:291
+#: data/ui/pipe_info.glade:291
 msgid "Server"
 msgstr "Server"
 
-#: data/ui/pulse_info.glade:336
+#: data/ui/pipe_info.glade:336
 msgid "Modules"
 msgstr "Moduly"
 
-#: data/ui/pulse_info.glade:382
+#: data/ui/pipe_info.glade:382
 msgid "Clients"
 msgstr "Klienti"
 
-#: data/ui/pulse_info.glade:446
+#: data/ui/pipe_info.glade:446
 msgid "File"
 msgstr "Soubor"
 
-#: data/ui/pulse_info.glade:456
+#: data/ui/pipe_info.glade:456
 msgid "Configuration"
 msgstr "Nastavení"
 
-#: data/ui/pulse_info.glade:489
+#: data/ui/pipe_info.glade:489
 msgid "Resamplers"
 msgstr "Převzorkovače"
 
@@ -1715,11 +1715,11 @@ msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získán
 msgid "Hide the Window."
 msgstr "Skrýt Okno"
 
-#: src/application.cpp:274
+#: src/application.cpp:270
 msgid "Output Presets: "
 msgstr "Výstupní přednastavení:"
 
-#: src/application.cpp:282
+#: src/application.cpp:278
 msgid "Input Presets: "
 msgstr "Vstupní přednastavení:"
 

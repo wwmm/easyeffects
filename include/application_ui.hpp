@@ -33,8 +33,8 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 #include "calibration_ui.hpp"
+#include "pipe_info_ui.hpp"
 #include "presets_menu_ui.hpp"
-#include "pulse_info_ui.hpp"
 #include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"
 
@@ -76,7 +76,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   StreamOutputEffectsUi* soe_ui = nullptr;
   StreamInputEffectsUi* sie_ui = nullptr;
-  PulseInfoUi* pulse_info_ui = nullptr;
+  PipeInfoUi* pipe_info_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;
 

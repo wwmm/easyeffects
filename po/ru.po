@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-19 20:06-0300\n"
+"POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -131,7 +131,7 @@ msgstr "Формат"
 msgid "Rate"
 msgstr "Частота"
 
-#: data/ui/app_info.glade:289 data/ui/pulse_info.glade:239
+#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
 #: data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Каналы"
@@ -360,7 +360,7 @@ msgstr "Создать новый набор предустановок"
 
 #: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
 #: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pulse_info.glade:50
+#: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Название"
 
@@ -1285,55 +1285,55 @@ msgstr ""
 msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
-#: data/ui/pulse_info.glade:77
+#: data/ui/pipe_info.glade:77
 msgid "Version"
 msgstr "Версия"
 
-#: data/ui/pulse_info.glade:104
+#: data/ui/pipe_info.glade:104
 msgid "Default Sink"
 msgstr "Устройство вывода по умолчанию"
 
-#: data/ui/pulse_info.glade:116
+#: data/ui/pipe_info.glade:116
 msgid "Default Source"
 msgstr "Устройство ввода по умолчанию"
 
-#: data/ui/pulse_info.glade:158
+#: data/ui/pipe_info.glade:158
 msgid "Protocol"
 msgstr "Версия протокола сервера"
 
-#: data/ui/pulse_info.glade:185
+#: data/ui/pipe_info.glade:185
 msgid "Default Sample Format"
 msgstr "Спецификация отсчётов по умолчанию"
 
-#: data/ui/pulse_info.glade:212
+#: data/ui/pipe_info.glade:212
 msgid "Default Sampling Rate"
 msgstr "Частота дискретизации по умолчанию"
 
-#: data/ui/pulse_info.glade:266
+#: data/ui/pipe_info.glade:266
 msgid "Channel Mapping"
 msgstr "Схема каналов"
 
-#: data/ui/pulse_info.glade:291
+#: data/ui/pipe_info.glade:291
 msgid "Server"
 msgstr "Сервер"
 
-#: data/ui/pulse_info.glade:336
+#: data/ui/pipe_info.glade:336
 msgid "Modules"
 msgstr "Модули"
 
-#: data/ui/pulse_info.glade:382
+#: data/ui/pipe_info.glade:382
 msgid "Clients"
 msgstr "Клиенты"
 
-#: data/ui/pulse_info.glade:446
+#: data/ui/pipe_info.glade:446
 msgid "File"
 msgstr "Файл"
 
-#: data/ui/pulse_info.glade:456
+#: data/ui/pipe_info.glade:456
 msgid "Configuration"
 msgstr "Параметры"
 
-#: data/ui/pulse_info.glade:489
+#: data/ui/pipe_info.glade:489
 msgid "Resamplers"
 msgstr "Ресемплеры"
 
@@ -1749,11 +1749,11 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:274
+#: src/application.cpp:270
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:282
+#: src/application.cpp:278
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
