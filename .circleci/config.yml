@@ -74,17 +74,17 @@ jobs:
           name: Testing play/pause
           command: |
             .circleci/enable_all_plugins.sh
-            # sink inputs
-            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
-            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pulsesink
-            # source outputs
-            gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
-            gst-launch-1.0 pulsesrc num-buffers=100 ! queue ! pulsesink
+            # stream outputs
+            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+            # strem inputs
+            gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
+            gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
       - run:
           name: Simulating audio applications
           command: |
-            gst-launch-1.0 audiotestsrc ! queue ! pulsesink &
-            gst-launch-1.0 pulsesrc ! queue ! pulsesink
+            gst-launch-1.0 audiotestsrc ! queue ! pipewiresink &
+            gst-launch-1.0 pipewiresrc ! queue ! audio/x-raw,format=F32LE ! pipewiresink
           background: true
       - run:
           name: Testing plugin enable/disable on the fly

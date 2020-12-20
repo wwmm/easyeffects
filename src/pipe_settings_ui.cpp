@@ -373,7 +373,7 @@ void PipeSettingsUi::on_output_device_changed() {
     for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
         app->soe->set_output_node_id(node.id);
-        // app->soe->webrtc->set_probe_src_device(name + ".monitor");
+        app->sie->webrtc->set_probe_input_node_id(node.id);
 
         break;
       }

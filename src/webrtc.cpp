@@ -49,7 +49,7 @@ Webrtc::~Webrtc() {
 void Webrtc::build_probe_bin() {
   probe_bin = gst_bin_new("probe_bin");
 
-  probe_src = gst_element_factory_make("pulsesrc", nullptr);
+  probe_src = gst_element_factory_make("pipewiresrc", nullptr);
   auto* queue = gst_element_factory_make("queue", nullptr);
   auto* audioconvert = gst_element_factory_make("audioconvert", nullptr);
   auto* audioresample = gst_element_factory_make("audioresample", nullptr);
@@ -62,9 +62,12 @@ void Webrtc::build_probe_bin() {
   const auto* caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
   auto* caps = gst_caps_from_string(caps_str);
 
+  g_object_set(probe_src, "always-copy", 1, nullptr);
+  g_object_set(probe_src, "do-timestamp", 1, nullptr);
   g_object_set(probe_src, "stream-properties", props, nullptr);
-  g_object_set(probe_src, "buffer-time", 10000, nullptr);
+
   g_object_set(capsfilter, "caps", caps, nullptr);
+
   g_object_set(queue, "silent", 1, nullptr);
 
   gst_structure_free(props);
@@ -115,9 +118,13 @@ void Webrtc::build_dsp_bin() {
   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
 }
 
-void Webrtc::set_probe_src_device(const std::string& name) {
+void Webrtc::set_probe_input_node_id(const uint& id) const {
   if (probe_src != nullptr) {
-    g_object_set(probe_src, "device", name.c_str(), nullptr);
+    auto path = std::to_string(id);
+
+    g_object_set(probe_src, "path", path.c_str(), nullptr);
+
+    util::debug(log_tag + "webrtc probe is using input device: " + path);
   }
 }
 
