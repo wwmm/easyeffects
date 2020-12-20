@@ -133,18 +133,14 @@ void Application::on_startup() {
   pm->new_default_sink.connect([&](const NodeInfo& node) {
     util::debug("new default sink: " + node.name);
 
-    //   if (name != "") {
-    //     sie->set_output_sink_name(name);
-    //     soe->webrtc->set_probe_src_device(name + ".monitor");
-    //   }
+    soe->set_output_node_id(node.id);
+    sie->webrtc->set_probe_input_node_id(node.id);
   });
 
   pm->new_default_source.connect([&](const NodeInfo& node) {
     util::debug("new default source: " + node.name);
 
-    //   if (name != "") {
-    //     soe->set_source_monitor_name(name);
-    //   }
+    sie->change_input_device(node);
   });
 
   // pm->sink_changed.connect([&](const std::shared_ptr<mySinkInfo>& info) {

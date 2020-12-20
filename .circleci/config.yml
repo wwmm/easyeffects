@@ -75,8 +75,8 @@ jobs:
           command: |
             .circleci/enable_all_plugins.sh
             # stream outputs
-            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
-            gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+            #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+            #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
             # strem inputs
             #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
             #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
@@ -84,7 +84,7 @@ jobs:
           name: Simulating audio applications
           command: |
             gst-launch-1.0 audiotestsrc ! queue ! pipewiresink &
-            #gst-launch-1.0 pipewiresrc ! queue ! audio/x-raw,format=F32LE ! pipewiresink
+            gst-launch-1.0 pipewiresrc ! queue ! audio/x-raw,format=F32LE ! pipewiresink
           background: true
       - run:
           name: Testing plugin enable/disable on the fly

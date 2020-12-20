@@ -39,6 +39,8 @@ class StreamInputEffects : public PipelineBase {
   std::unique_ptr<MultibandCompressor> multiband_compressor;
   std::unique_ptr<MultibandGate> multiband_gate;
 
+  void change_input_device(const NodeInfo& node);
+
   sigc::signal<void, std::array<double, 2>> webrtc_input_level;
   sigc::signal<void, std::array<double, 2>> webrtc_output_level;
 

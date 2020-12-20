@@ -272,6 +272,18 @@ void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
   }
 }
 
+void StreamInputEffects::change_input_device(const NodeInfo& node) {
+  gst_element_set_state(pipeline, GST_STATE_NULL);
+
+  set_caps(node.rate);
+
+  set_input_node_id(node.id);
+
+  rnnoise->set_caps_out(sampling_rate);
+
+  update_pipeline_state();
+}
+
 void StreamInputEffects::add_plugins_to_pipeline() {
   gchar* name = nullptr;
   GVariantIter* iter = nullptr;

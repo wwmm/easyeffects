@@ -538,8 +538,10 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
   util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
 
+  uint v = std::stoul(str_value);
+
   for (auto& node : pm->list_nodes) {
-    if (node.id == std::stoul(str_value)) {
+    if (node.id == v) {
       if (str_key == "default.audio.source") {
         Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
       } else if (str_key == "default.audio.sink") {
