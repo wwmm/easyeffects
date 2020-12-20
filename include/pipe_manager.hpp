@@ -32,7 +32,6 @@
 #include <memory>
 #include <string>
 #include <vector>
-#include "pipe_filter.hpp"
 #include "util.hpp"
 
 struct NodeInfo {
@@ -222,8 +221,6 @@ class PipeManager {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
-
-  PipeFilter* filter = nullptr;
 
   std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
                                                      "screen-capture"};

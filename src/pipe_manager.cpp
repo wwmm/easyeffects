@@ -538,6 +538,18 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
   util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
 
+  for (auto& node : pm->list_nodes) {
+    if (node.id == std::stoul(str_value)) {
+      if (str_key == "default.audio.source") {
+        Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+      } else if (str_key == "default.audio.sink") {
+        Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+      }
+
+      break;
+    }
+  }
+
   return 0;
 }
 
@@ -813,8 +825,6 @@ PipeManager::PipeManager() {
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
-  // filter = new PipeFilter(core);
-
   pw_core_sync(core, PW_ID_CORE, 0);
 
   pw_thread_loop_wait(thread_loop);
@@ -842,8 +852,6 @@ PipeManager::~PipeManager() {
   if (metadata != nullptr) {
     pw_proxy_destroy((struct pw_proxy*)metadata);
   }
-
-  // delete filter;
 
   pw_proxy_destroy(proxy_stream_output_sink);
   pw_proxy_destroy(proxy_stream_input_source);
