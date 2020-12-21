@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/wwmm/pulseeffects.svg?style=shield)](https://circleci.com/gh/wwmm/pulseeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
 
-Audio effects for Pulseaudio applications.
+Audio effects for PipeWire applications.
 
 ![](images/pulseeffects.png)
 ![](images/equalizer1.png)
@@ -58,6 +58,7 @@ The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
+- [GStreamer plugins for "PipeWire"](https://gitlab.freedesktop.org/pipewire/pipewire)
 - [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good). Version 1.12.5 or higher
 - [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad). Version 1.12.5 or higher
 - [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.

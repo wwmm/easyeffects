@@ -129,6 +129,12 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   level_meters_connections();
   up_down_connections();
 
+  for (auto& node : pm->list_nodes) {
+    if (node.media_class == "Stream/Input/Audio") {
+      on_app_added(node);
+    }
+  }
+
   connections.emplace_back(sie->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
   connections.emplace_back(
       sie->pm->stream_input_added.connect(sigc::mem_fun(this, &StreamInputEffectsUi::on_app_added)));
