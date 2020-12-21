@@ -334,6 +334,20 @@ void StreamOutputEffects::on_sink_changed(const NodeInfo& node_info) {
   }
 }
 
+void StreamOutputEffects::change_output_device(const NodeInfo& node) {
+  gst_element_set_state(pipeline, GST_STATE_NULL);
+
+  if (node.rate != 0) {
+    set_caps(node.rate);
+  }
+
+  set_output_node_id(node.id);
+
+  rnnoise->set_caps_out(sampling_rate);
+
+  update_pipeline_state();
+}
+
 void StreamOutputEffects::add_plugins_to_pipeline() {
   gchar* name = nullptr;
   GVariantIter* iter = nullptr;

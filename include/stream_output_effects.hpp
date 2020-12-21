@@ -53,6 +53,8 @@ class StreamOutputEffects : public PipelineBase {
   std::unique_ptr<AutoGain> autogain;
   std::unique_ptr<Delay> delay;
 
+  void change_output_device(const NodeInfo& node);
+
   sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
   sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
   sigc::signal<void, std::array<double, 2>> exciter_input_level;

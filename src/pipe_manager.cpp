@@ -181,23 +181,26 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
 
 void on_removed_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
+  auto* pm = pd->pm;
 
-  pw_proxy_destroy(pd->proxy);
+  auto nd_info = pd->nd_info;
 
   pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
                                           [=](auto& n) { return n.id == pd->nd_info.id; }),
                            pd->pm->list_nodes.end());
 
+  pw_proxy_destroy(pd->proxy);
+
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 
   if (pd->nd_info.media_class == "Audio/Source") {
-    Glib::signal_idle().connect_once([pd] { pd->pm->source_removed.emit(pd->nd_info); });
+    Glib::signal_idle().connect_once([pm, nd_info] { pm->source_removed.emit(nd_info); });
   } else if (pd->nd_info.media_class == "Audio/Sink") {
-    Glib::signal_idle().connect_once([pd] { pd->pm->sink_removed.emit(pd->nd_info); });
+    Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_removed.emit(nd_info); });
   } else if (pd->nd_info.media_class == "Stream/Output/Audio") {
-    Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_removed.emit(pd->nd_info); });
+    Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_removed.emit(nd_info); });
   } else if (pd->nd_info.media_class == "Stream/Input/Audio") {
-    Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_removed.emit(pd->nd_info); });
+    Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_removed.emit(nd_info); });
   }
 }
 
@@ -444,11 +447,11 @@ void on_node_event_param(void* object,
 void on_removed_port_proxy(void* data) {
   auto* pd = static_cast<port_data*>(data);
 
-  pw_proxy_destroy(pd->proxy);
-
   pd->pm->list_ports.erase(
       std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(), [=](auto& n) { return n.id == pd->id; }),
       pd->pm->list_ports.end());
+
+  pw_proxy_destroy(pd->proxy);
 }
 
 void on_destroy_port_proxy(void* data) {
@@ -516,11 +519,11 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 void on_removed_link_proxy(void* data) {
   auto* ld = static_cast<link_data*>(data);
 
-  pw_proxy_destroy(ld->proxy);
-
   ld->pm->list_links.erase(
       std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
       ld->pm->list_links.end());
+
+  pw_proxy_destroy(ld->proxy);
 }
 
 void on_destroy_link_proxy(void* data) {
@@ -553,11 +556,11 @@ void on_module_info(void* object, const struct pw_module_info* info) {
 void on_removed_module_proxy(void* data) {
   auto* md = static_cast<module_data*>(data);
 
-  pw_proxy_destroy(md->proxy);
-
   md->pm->list_modules.erase(
       std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
       md->pm->list_modules.end());
+
+  pw_proxy_destroy(md->proxy);
 }
 
 void on_destroy_module_proxy(void* data) {
@@ -589,18 +592,26 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
   util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
 
-  uint v = std::stoul(str_value);
+  if (str_value.empty()) {
+    return 0;
+  }
 
-  for (auto& node : pm->list_nodes) {
-    if (node.id == v) {
-      if (str_key == "default.audio.source") {
-        Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
-      } else if (str_key == "default.audio.sink") {
-        Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+  try {
+    uint v = std::stoul(str_value);
+
+    for (auto& node : pm->list_nodes) {
+      if (node.id == v) {
+        if (str_key == "default.audio.source") {
+          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+        } else if (str_key == "default.audio.sink") {
+          Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+        }
+
+        break;
       }
-
-      break;
     }
+  } catch (std::exception& e) {
+    util::warning(e.what());
   }
 
   return 0;
@@ -694,7 +705,8 @@ void on_registry_global(void* data,
 
         if (media_class == "Audio/Source") {
           Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
-        } else if (media_class == "Audio/Sink" && pd->nd_info.name != "pulseeffects_sink") {
+        } else if (media_class == "Audio/Sink" && pd->nd_info.name != "pulseeffects_sink" &&
+                   pd->nd_info.name != "pulseeffects_source") {
           Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
         } else if (media_class == "Stream/Output/Audio") {
           Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });

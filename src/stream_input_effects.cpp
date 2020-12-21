@@ -275,7 +275,9 @@ void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
 void StreamInputEffects::change_input_device(const NodeInfo& node) {
   gst_element_set_state(pipeline, GST_STATE_NULL);
 
-  set_caps(node.rate);
+  if (node.rate != 0) {
+    set_caps(node.rate);
+  }
 
   set_input_node_id(node.id);
 

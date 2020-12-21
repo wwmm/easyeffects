@@ -346,7 +346,7 @@ void PipeSettingsUi::on_input_device_changed() {
 
     for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
-        app->sie->set_input_node_id(node.id);
+        app->sie->change_input_device(node);
 
         break;
       }
@@ -372,7 +372,8 @@ void PipeSettingsUi::on_output_device_changed() {
 
     for (const auto& node : app->soe->pm->list_nodes) {
       if (node.name == name) {
-        app->soe->set_output_node_id(node.id);
+        app->soe->change_output_device(node);
+
         app->sie->webrtc->set_probe_input_node_id(node.id);
 
         break;

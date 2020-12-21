@@ -37,15 +37,16 @@ jobs:
             dbus-uuidgen > /var/lib/dbus/machine-id
             mkdir -p /var/run/dbus
             # DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
-            DBUS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS
-            echo "export $DBUS" >> $BASH_ENV
-            echo $BASH_ENV
-      - run:
-          name: Starting PipeWire in background
-          command: |
-            sleep 5
+            dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
             pipewire
-          background: true
+            # echo "export $DBUS" >> $BASH_ENV
+            # echo $BASH_ENV
+      # - run:
+      #     name: Starting PipeWire in background
+      #     command: |
+      #       sleep 5
+      #       pipewire
+      #     background: true
       - run:
           name: loading devices
           command: |
