@@ -166,6 +166,16 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
 }
 
 void StreamInputEffectsUi::on_app_added(NodeInfo node_info) {
+  // do not add the same stream twice
+
+  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
+    auto n = it - apps_list.begin();
+
+    if (apps_list[n]->nd_info.id == node_info.id) {
+      return;
+    }
+  }
+
   // Blocklist check
 
   auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(node_info.name, PresetType::input);
