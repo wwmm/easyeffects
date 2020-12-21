@@ -39,9 +39,8 @@ jobs:
       - run:
           name: Starting PipeWire in background
           command: |
-            sleep 5
+            sleep 10
             pipewire
-          background: true
       - run:
           name: loading devices
           command: |
