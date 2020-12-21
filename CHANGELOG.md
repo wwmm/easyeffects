@@ -9,6 +9,11 @@
 - The equalizer UI is now correctly shown when a profile with 30 bands is loaded at startup.
 - Added a workaround for systems that were crashing because the locale is not correctly set at system level.
 
+### Note to packagers
+- This is the latest release that supports plain Pulseaudio and its code has been moved to a legacy branch.
+- The following PulseEffects releases will be based on the new Pipewire multimedia server and only serious bugfixes
+  will be backported to the lagacy branch.
+
 ## [4.8.3]
 
 ### Added
