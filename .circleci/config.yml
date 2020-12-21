@@ -36,64 +36,63 @@ jobs:
           command: |
             DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
             echo "export $DBUS" >> $BASH_ENV
+            echo $BASH_ENV
+            pipewire
       - run:
           name: Starting PipeWire in background
           command: |
-            sleep 10
+            sleep 5
             pipewire
-      - run:
-          name: loading devices
-          command: |
-            sleep 5
-            pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
-            pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
-            pw-cli list-objects Node
-          background: true
-      - restore_cache:
-          keys:
-            - ccache-{{ checksum "/tmp/date" }}
-      - checkout
-      - run:
-          name: Compile and install PulseEffects
-          command: |
-            meson build && cd build && ninja -j 8 && ninja -j 8 install
-      - save_cache:
-          key: ccache-{{ checksum "/tmp/date" }}
-          paths:
-            - /root/.ccache
-      - run:
-          name: Starting PE in background
-          command: |
-            pulseeffects
-          background: true
       # - run:
-      #     name: Waiting PulseEffects initialization
-      #     command: .circleci/wait_pe.sh
-      - run:
-          name: Testing play/pause
-          command: |
-            .circleci/enable_all_plugins.sh
-            # stream outputs
-            #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
-            #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
-            # strem inputs
-            #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
-            #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
-      - run:
-          name: Simulating audio applications
-          command: |
-            gst-launch-1.0 audiotestsrc ! queue ! pipewiresink &
-            gst-launch-1.0 pipewiresrc ! queue ! audio/x-raw,format=F32LE ! pipewiresink
-          background: true
-      - run:
-          name: Testing plugin enable/disable on the fly
-          command: |
-            sleep 5
-            .circleci/enable_all_plugins.sh
-            sleep 1
-            .circleci/disable_all_plugins.sh
-            sleep 1
-            .circleci/enable_all_plugins.sh
+      #     name: loading devices
+      #     command: |
+      #       sleep 5
+      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
+      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
+      #       pw-cli list-objects Node
+      #     background: true
+      # - restore_cache:
+      #     keys:
+      #       - ccache-{{ checksum "/tmp/date" }}
+      # - checkout
+      # - run:
+      #     name: Compile and install PulseEffects
+      #     command: |
+      #       meson build && cd build && ninja -j 8 && ninja -j 8 install
+      # - save_cache:
+      #     key: ccache-{{ checksum "/tmp/date" }}
+      #     paths:
+      #       - /root/.ccache
+      # - run:
+      #     name: Starting PE in background
+      #     command: |
+      #       pulseeffects
+      #     background: true
+      # - run:
+      #     name: Testing play/pause
+      #     command: |
+      #       .circleci/enable_all_plugins.sh
+      #       # stream outputs
+      #       #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+      #       #gst-launch-1.0 audiotestsrc num-buffers=100 ! queue ! pipewiresink
+      #       # strem inputs
+      #       #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
+      #       #gst-launch-1.0 pipewiresrc num-buffers=100 ! queue ! audio/x-raw,format=F32LE ! pipewiresink
+      # - run:
+      #     name: Simulating audio applications
+      #     command: |
+      #       gst-launch-1.0 audiotestsrc ! queue ! pipewiresink &
+      #       gst-launch-1.0 pipewiresrc ! queue ! audio/x-raw,format=F32LE ! pipewiresink
+      #     background: true
+      # - run:
+      #     name: Testing plugin enable/disable on the fly
+      #     command: |
+      #       sleep 5
+      #       .circleci/enable_all_plugins.sh
+      #       sleep 1
+      #       .circleci/disable_all_plugins.sh
+      #       sleep 1
+      #       .circleci/enable_all_plugins.sh
       # - run:
       #     name:         Testing presets
       #     command:      |
