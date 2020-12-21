@@ -34,10 +34,11 @@ jobs:
       - run:
           name: Starting dbus
           command: |
+            dbus-uuidgen > /var/lib/dbus/machine-id
+            mkdir -p /var/run/dbus
             DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
             echo "export $DBUS" >> $BASH_ENV
             echo $BASH_ENV
-            pipewire
       - run:
           name: Starting PipeWire in background
           command: |
