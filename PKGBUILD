@@ -19,7 +19,7 @@ makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
 optdepends=('zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'librnnoise: noise remover')
-source=("git+https://github.com/wwmm/pulseeffects.git")
+source=("git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
 sha512sums=('SKIP')
