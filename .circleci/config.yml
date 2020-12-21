@@ -39,7 +39,13 @@ jobs:
       - run:
           name: Starting PipeWire in background
           command: |
+            sleep 5
             pipewire
+          background: true
+      - run:
+          name: loading devices
+          command: |
+            sleep 5
             pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
             pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
             pw-cli list-objects Node
