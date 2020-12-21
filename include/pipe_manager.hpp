@@ -73,15 +73,15 @@ struct NodeInfo {
 };
 
 struct PortInfo {
-  std::string path = "empty";
+  std::string path;
 
-  std::string format_dsp = "empty";
+  std::string format_dsp;
 
-  std::string audio_channel = "empty";
+  std::string audio_channel;
 
-  std::string name = "empty";
+  std::string name;
 
-  std::string direction = "empty";
+  std::string direction;
 
   bool physical = false;
 
@@ -95,7 +95,7 @@ struct PortInfo {
 };
 
 struct LinkInfo {
-  std::string path = "empty";
+  std::string path;
 
   uint id = 0;
 
@@ -110,39 +110,15 @@ struct LinkInfo {
   bool passive = false;  // does not cause the graph to be runnable
 };
 
-struct mySinkInfo {
+struct ModuleInfo {
+  uint id;
+
   std::string name;
-  uint index;
+
   std::string description;
-};
 
-struct mySourceInfo {
-  std::string name;
-  uint index;
-  std::string description;
+  std::string filename;
 };
-
-struct AppInfo {
-  std::string app_type;
-  uint index;
-  std::string name;
-  std::string icon_name;
-  std::string media_name;
-  uint8_t channels;
-  double volume;
-  uint rate;
-  std::string resampler;
-  std::string format;
-  int mute;
-  bool connected;
-  bool visible;
-  uint buffer;
-  uint latency;
-  int corked;
-  bool wants_to_play;
-};
-
-class ParseAppInfo;
 
 class PipeManager {
  public:
@@ -167,6 +143,8 @@ class PipeManager {
   std::vector<PortInfo> list_ports;
 
   std::vector<LinkInfo> list_links;
+
+  std::vector<ModuleInfo> list_modules;
 
   NodeInfo pe_sink_node, pe_source_node;
 

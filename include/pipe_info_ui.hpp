@@ -55,6 +55,7 @@ class PipeInfoUi : public Gtk::Box {
   std::vector<sigc::connection> connections;
 
   void update_server_info();
+  void update_modules_info();
   void get_pulse_conf();
   void get_resamplers();
 

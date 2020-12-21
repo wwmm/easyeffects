@@ -50,27 +50,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
-  // connections.emplace_back(pm->server_changed.connect([=]() { update_server_info(); }));
-
-  // connections.emplace_back(pm->module_info.connect([=](auto info) {
-  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
-
-  //   Gtk::ListBoxRow* row;
-  //   Gtk::Label* module_name;
-  //   Gtk::Label* module_argument;
-
-  //   b->get_widget("module_row", row);
-  //   b->get_widget("module_name", module_name);
-  //   b->get_widget("module_argument", module_argument);
-
-  //   row->set_name(info->name);
-  //   module_name->set_text(info->name);
-  //   module_argument->set_text(info->argument);
-
-  //   listbox_modules->add(*row);
-  //   listbox_modules->show_all();
-  // }));
-
   // connections.emplace_back(pm->client_info.connect([=](auto info) {
   //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
@@ -91,6 +70,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   // }));
 
   update_server_info();
+  update_modules_info();
 
   // get_pulse_conf();
   // get_resamplers();
@@ -130,11 +110,33 @@ void PipeInfoUi::update_server_info() {
   min_quantum->set_text(pm->default_min_quantum);
   max_quantum->set_text(pm->default_max_quantum);
   quantum->set_text(pm->default_quantum);
+}
 
-  // protocol->set_text(pm->server_info.protocol);
-  // server_sample_format->set_text(pm->server_info.format);
-  // server_channels->set_text(std::to_string(pm->server_info.channels));
-  // server_channel_mapping->set_text(pm->server_info.channel_map);
+void PipeInfoUi::update_modules_info() {
+  auto children = listbox_modules->get_children();
+
+  for (const auto& c : children) {
+    listbox_modules->remove(*c);
+  }
+
+  for (auto& module : pm->list_modules) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
+
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Label* module_name = nullptr;
+    Gtk::Label* module_argument = nullptr;
+
+    b->get_widget("module_row", row);
+    b->get_widget("module_name", module_name);
+    b->get_widget("module_argument", module_argument);
+
+    row->set_name(module.name);
+    module_name->set_text(module.name);
+    module_argument->set_text(module.description);
+
+    listbox_modules->add(*row);
+    listbox_modules->show_all();
+  }
 }
 
 auto PipeInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
@@ -162,12 +164,7 @@ void PipeInfoUi::on_stack_visible_child_changed() {
   if (name == std::string("page_server")) {
     update_server_info();
   } else if (name == std::string("page_modules")) {
-    auto children = listbox_modules->get_children();
-
-    for (const auto& c : children) {
-      listbox_modules->remove(*c);
-    }
-
+    update_modules_info();
   } else if (name == std::string("page_clients")) {
     auto children = listbox_clients->get_children();
 

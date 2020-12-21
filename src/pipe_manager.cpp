@@ -20,6 +20,8 @@
 #include "pipe_manager.hpp"
 #include <string>
 #include "pipewire/keys.h"
+#include "pipewire/link.h"
+#include "pipewire/module.h"
 #include "spa/param/audio/format.h"
 #include "spa/param/audio/raw.h"
 #include "spa/param/format.h"
@@ -57,6 +59,18 @@ struct port_data {
 };
 
 struct link_data {
+  pw_proxy* proxy = nullptr;
+
+  spa_hook proxy_listener{};
+
+  spa_hook object_listener{};
+
+  PipeManager* pm = nullptr;
+
+  uint id = 0;
+};
+
+struct module_data {
   pw_proxy* proxy = nullptr;
 
   spa_hook proxy_listener{};
@@ -516,6 +530,43 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->object_listener);
 }
 
+void on_module_info(void* object, const struct pw_module_info* info) {
+  auto* ld = static_cast<link_data*>(object);
+
+  for (auto& module : ld->pm->list_modules) {
+    if (module.id == info->id) {
+      if (info->filename != nullptr) {
+        module.filename = info->filename;
+      }
+
+      const auto* description = spa_dict_lookup(info->props, PW_KEY_MODULE_DESCRIPTION);
+
+      if (description != nullptr) {
+        module.description = description;
+      }
+
+      break;
+    }
+  }
+}
+
+void on_removed_module_proxy(void* data) {
+  auto* md = static_cast<module_data*>(data);
+
+  pw_proxy_destroy(md->proxy);
+
+  md->pm->list_modules.erase(
+      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
+      md->pm->list_modules.end());
+}
+
+void on_destroy_module_proxy(void* data) {
+  auto* md = static_cast<module_data*>(data);
+
+  spa_hook_remove(&md->proxy_listener);
+  spa_hook_remove(&md->object_listener);
+}
+
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
@@ -560,13 +611,21 @@ const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .
 const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
                                                   .removed = on_removed_link_proxy};
 
+const struct pw_proxy_events module_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_module_proxy,
+                                                    .removed = on_removed_module_proxy};
+
 const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
 
 const struct pw_port_events port_events = {PW_VERSION_PORT_EVENTS, .info = on_port_info};
 
 const struct pw_link_events link_events = {
-    PW_VERSION_PORT_EVENTS,
+    PW_VERSION_LINK_EVENTS,
     .info = on_link_info,
+};
+
+const struct pw_module_events module_events = {
+    PW_VERSION_MODULE_EVENTS,
+    .info = on_module_info,
 };
 
 void on_registry_global(void* data,
@@ -708,6 +767,32 @@ void on_registry_global(void* data,
         return;
       }
     }
+
+    return;
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Module) == 0) {
+    auto* proxy =
+        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(module_data)));
+
+    auto* pd = static_cast<module_data*>(pw_proxy_get_user_data(proxy));
+
+    pd->proxy = proxy;
+    pd->pm = pm;
+    pd->id = id;
+
+    pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);
+    pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
+
+    ModuleInfo m_info{.id = id};
+
+    const auto* name = spa_dict_lookup(props, PW_KEY_MODULE_NAME);
+
+    if (name != nullptr) {
+      m_info.name = name;
+    }
+
+    pm->list_modules.emplace_back(m_info);
 
     return;
   }
