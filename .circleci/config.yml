@@ -44,31 +44,32 @@ jobs:
           command: |
             sleep 5
             pipewire
-      # - run:
-      #     name: loading devices
-      #     command: |
-      #       sleep 5
-      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
-      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
-      #       pw-cli list-objects Node
-      #     background: true
-      # - restore_cache:
-      #     keys:
-      #       - ccache-{{ checksum "/tmp/date" }}
-      # - checkout
-      # - run:
-      #     name: Compile and install PulseEffects
-      #     command: |
-      #       meson build && cd build && ninja -j 8 && ninja -j 8 install
-      # - save_cache:
-      #     key: ccache-{{ checksum "/tmp/date" }}
-      #     paths:
-      #       - /root/.ccache
-      # - run:
-      #     name: Starting PE in background
-      #     command: |
-      #       pulseeffects
-      #     background: true
+          background: true
+      - run:
+          name: loading devices
+          command: |
+            sleep 5
+            pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
+            pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
+            pw-cli list-objects Node
+          background: true
+      - restore_cache:
+          keys:
+            - ccache-{{ checksum "/tmp/date" }}
+      - checkout
+      - run:
+          name: Compile and install PulseEffects
+          command: |
+            meson build && cd build && ninja -j 8 && ninja -j 8 install
+      - save_cache:
+          key: ccache-{{ checksum "/tmp/date" }}
+          paths:
+            - /root/.ccache
+      - run:
+          name: Starting PE in background
+          command: |
+            pulseeffects
+          background: true
       # - run:
       #     name: Testing play/pause
       #     command: |
