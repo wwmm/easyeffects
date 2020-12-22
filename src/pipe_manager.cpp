@@ -110,15 +110,23 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
 
 void on_removed_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
+
+  spa_hook_remove(&pd->object_listener);
+
+  pw_proxy_destroy(pd->proxy);
+}
+
+void on_destroy_node_proxy(void* data) {
+  auto* pd = static_cast<node_data*>(data);
   auto* pm = pd->pm;
 
   auto nd_info = pd->nd_info;
 
+  spa_hook_remove(&pd->proxy_listener);
+
   pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
                                           [=](auto& n) { return n.id == pd->nd_info.id; }),
                            pd->pm->list_nodes.end());
-
-  pw_proxy_destroy(pd->proxy);
 
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 
@@ -132,16 +140,6 @@ void on_removed_node_proxy(void* data) {
     Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_removed.emit(nd_info); });
   }
 }
-
-void on_destroy_node_proxy(void* data) {
-  auto* pd = static_cast<node_data*>(data);
-
-  spa_hook_remove(&pd->proxy_listener);
-  spa_hook_remove(&pd->object_listener);
-}
-
-const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_node_proxy,
-                                                  .removed = on_removed_node_proxy};
 
 void on_node_info(void* object, const struct pw_node_info* info) {
   auto* nd = static_cast<node_data*>(object);
@@ -414,9 +412,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 void on_removed_link_proxy(void* data) {
   auto* ld = static_cast<link_data*>(data);
 
-  ld->pm->list_links.erase(
-      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
-      ld->pm->list_links.end());
+  spa_hook_remove(&ld->object_listener);
 
   pw_proxy_destroy(ld->proxy);
 }
@@ -425,7 +421,10 @@ void on_destroy_link_proxy(void* data) {
   auto* ld = static_cast<link_data*>(data);
 
   spa_hook_remove(&ld->proxy_listener);
-  spa_hook_remove(&ld->object_listener);
+
+  ld->pm->list_links.erase(
+      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
+      ld->pm->list_links.end());
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
@@ -451,9 +450,7 @@ void on_module_info(void* object, const struct pw_module_info* info) {
 void on_removed_module_proxy(void* data) {
   auto* md = static_cast<module_data*>(data);
 
-  md->pm->list_modules.erase(
-      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
-      md->pm->list_modules.end());
+  spa_hook_remove(&md->object_listener);
 
   pw_proxy_destroy(md->proxy);
 }
@@ -462,7 +459,10 @@ void on_destroy_module_proxy(void* data) {
   auto* md = static_cast<module_data*>(data);
 
   spa_hook_remove(&md->proxy_listener);
-  spa_hook_remove(&md->object_listener);
+
+  md->pm->list_modules.erase(
+      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
+      md->pm->list_modules.end());
 }
 
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
@@ -519,6 +519,9 @@ const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .dest
 
 const struct pw_proxy_events module_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_module_proxy,
                                                     .removed = on_removed_module_proxy};
+
+const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_node_proxy,
+                                                  .removed = on_removed_node_proxy};
 
 const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
 
