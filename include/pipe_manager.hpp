@@ -72,28 +72,6 @@ struct NodeInfo {
   float volume = 0.0F;
 };
 
-struct PortInfo {
-  std::string path;
-
-  std::string format_dsp;
-
-  std::string audio_channel;
-
-  std::string name;
-
-  std::string direction;
-
-  bool physical = false;
-
-  bool terminal = false;
-
-  bool monitor = false;
-
-  uint id = 0;
-
-  uint node_id = 0;
-};
-
 struct LinkInfo {
   std::string path;
 
@@ -139,8 +117,6 @@ class PipeManager {
   spa_hook metadata_listener{};
 
   std::vector<NodeInfo> list_nodes;
-
-  std::vector<PortInfo> list_ports;
 
   std::vector<LinkInfo> list_links;
 
