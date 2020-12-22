@@ -33,18 +33,6 @@ struct node_data {
   NodeInfo nd_info;
 };
 
-struct port_data {
-  pw_proxy* proxy = nullptr;
-
-  spa_hook proxy_listener{};
-
-  spa_hook object_listener{};
-
-  PipeManager* pm = nullptr;
-
-  uint id = 0;
-};
-
 struct link_data {
   pw_proxy* proxy = nullptr;
 
