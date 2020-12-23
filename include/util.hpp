@@ -39,6 +39,9 @@ void critical(const std::string& s);
 void warning(const std::string& s);
 void info(const std::string& s);
 
+auto get_global_locale() -> std::locale;
+auto get_c_locale() -> std::locale;
+
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 

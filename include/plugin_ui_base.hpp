@@ -118,8 +118,8 @@ class PluginUiBase {
   auto string_to_float(const std::string& value) -> float;
 
  private:
-  std::locale global_locale;
-  std::locale c_locale = std::locale();
+  static std::locale global_locale;
+  static std::locale c_locale;
 
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,

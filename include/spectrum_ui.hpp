@@ -25,6 +25,7 @@
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
+#include "util.hpp"
 
 class SpectrumUi : public Gtk::Grid {
  public:

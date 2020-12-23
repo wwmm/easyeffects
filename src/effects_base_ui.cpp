@@ -18,20 +18,13 @@
  */
 
 #include "effects_base_ui.hpp"
-#include <glibmm/i18n.h>
-#include "plugin_ui_base.hpp"
+
+std::locale EffectsBaseUi::global_locale = util::get_global_locale();
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              PulseManager* pulse_manager)
     : settings(std::move(refSettings)), pm(pulse_manager) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
   // loading glade widgets
 
   builder->get_widget("stack", stack);

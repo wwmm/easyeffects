@@ -45,6 +45,20 @@ void print_thread_id() {
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
 }
 
+auto get_global_locale() -> std::locale {
+  // set locale (workaround for #849)
+
+  try {
+    return std::locale("");
+  } catch (const std::exception& e) {
+    return std::locale();
+  }
+}
+
+auto get_c_locale() -> std::locale {
+  return std::locale();
+}
+
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 

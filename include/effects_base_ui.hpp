@@ -21,6 +21,7 @@
 #define EFFECTS_BASE_UI_HPP
 
 #include <giomm/settings.h>
+#include <glibmm/i18n.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/eventbox.h>
@@ -33,6 +34,7 @@
 #include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
 #include "preset_type.hpp"
+#include "plugin_ui_base.hpp"
 #include "pulse_manager.hpp"
 #include "spectrum_ui.hpp"
 #include "util.hpp"
@@ -165,7 +167,7 @@ class EffectsBaseUi {
  private:
   Gtk::Box* placeholder_spectrum = nullptr;
 
-  std::locale global_locale;
+  static std::locale global_locale;
 
   auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 

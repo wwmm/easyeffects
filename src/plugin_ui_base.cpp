@@ -19,18 +19,13 @@
 
 #include "plugin_ui_base.hpp"
 
+std::locale PluginUiBase::global_locale = util::get_global_locale();
+std::locale PluginUiBase::c_locale = util::get_c_locale();
+
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // get widgets
 
   builder->get_widget("enable", enable);
