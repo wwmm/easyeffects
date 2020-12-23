@@ -893,7 +893,11 @@ auto PipeManager::get_default_sink() -> NodeInfo {
 
 void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
+    pw_thread_loop_lock(thread_loop);
+
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_sink_node.id).c_str());
+
+    pw_thread_loop_unlock(thread_loop);
   }
 }
 
@@ -901,13 +905,21 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
   if (nd_info.media_class == "Stream/Output/Audio") {
     auto default_sink = get_default_sink();
 
+    pw_thread_loop_lock(thread_loop);
+
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
+
+    pw_thread_loop_unlock(thread_loop);
   }
 }
 
 void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
+    pw_thread_loop_lock(thread_loop);
+
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_source_node.id).c_str());
+
+    pw_thread_loop_unlock(thread_loop);
   }
 }
 
@@ -915,7 +927,11 @@ void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) {
   if (nd_info.media_class == "Stream/Input/Audio") {
     auto default_source = get_default_source();
 
+    pw_thread_loop_lock(thread_loop);
+
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_source.id).c_str());
+
+    pw_thread_loop_unlock(thread_loop);
   }
 }
 
