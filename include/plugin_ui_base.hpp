@@ -68,10 +68,6 @@ class PluginUiBase {
   void on_new_input_level_db(const std::array<double, 2>& peak);
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
-  auto level_to_localized_string(const double& value, const int& places) -> std::string;
-  auto level_to_localized_string(const float& value, const int& places) -> std::string;
-  auto string_to_float(const std::string& value) -> float;
-
   // reset plugin method
   virtual void reset() = 0;
 
@@ -106,6 +102,20 @@ class PluginUiBase {
 
     return msg.str();
   }
+
+  template <typename T>
+  auto level_to_localized_string(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.imbue(global_locale);
+    msg.precision(places);
+
+    msg << std::fixed << value;
+
+    return msg.str();
+  }
+
+  auto string_to_float(const std::string& value) -> float;
 
  private:
   std::locale global_locale;

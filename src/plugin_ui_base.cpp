@@ -71,28 +71,6 @@ PluginUiBase::~PluginUiBase() {
   settings->set_boolean("post-messages", false);
 }
 
-auto PluginUiBase::level_to_localized_string(const double& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << std::fixed << value;
-
-  return msg.str();
-}
-
-auto PluginUiBase::level_to_localized_string(const float& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.imbue(global_locale);
-  msg.precision(places);
-
-  msg << std::fixed << value;
-
-  return msg.str();
-}
-
 auto PluginUiBase::string_to_float(const std::string& value) -> float {
   std::stringstream ss;
   ss.imbue(c_locale);
