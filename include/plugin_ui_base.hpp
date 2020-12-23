@@ -98,7 +98,7 @@ class PluginUiBase {
     msg.imbue(global_locale);
     msg.precision(places);
 
-    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
+    msg << ((value > 0.0F) ? "+" : "") << std::fixed << value;
 
     return msg.str();
   }

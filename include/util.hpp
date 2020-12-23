@@ -20,6 +20,7 @@
 #ifndef UTIL_HPP
 #define UTIL_HPP
 
+#include <cmath>
 #include <glib-object.h>
 #include <glib.h>
 #include <iostream>
@@ -30,9 +31,7 @@
 namespace util {
 
 const float minimum_db_level = -99.0F;
-const double minimum_db_d_level = -99.0;
 const float minimum_linear_level = 0.00001F;
-const double minimum_linear_d_level = 0.00001;
 
 void debug(const std::string& s);
 void error(const std::string& s);
@@ -43,11 +42,15 @@ void info(const std::string& s);
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float>;
 
-auto linear_to_db(const float& amp) -> float;
-auto linear_to_db(const double& amp) -> double;
+template <typename T>
+auto linear_to_db(const T& amp) -> T {
+  return (amp >= minimum_linear_level) ? (20.0F * log10f(amp)) : minimum_db_level;
+}
 
-auto db_to_linear(const float& db) -> float;
-auto db_to_linear(const double& db) -> double;
+template <typename T>
+auto db_to_linear(const T& db) -> T {
+  return expf((db / 20.0F) * logf(10.0F));
+}
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
