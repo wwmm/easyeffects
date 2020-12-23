@@ -2,8 +2,9 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
+
 pkgname=pulseeffects-legacy-git
-pkgver=4.7.1.r2.g38355f59
+pkgver=4.8.4.r0.gcef23707
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64)
@@ -19,19 +20,19 @@ makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
 optdepends=('zam-plugins: maximizer'
             'rubberband: pitch shifting'
             'librnnoise: noise remover')
-source=("git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy")
+source=("git+https://github.com/Digitalone1/pulseeffects-1.git")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd pulseeffects
+  cd pulseeffects-1
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p pulseeffects/build
-  cd pulseeffects/build
+  mkdir -p pulseeffects-1/build
+  cd pulseeffects-1/build
 
   arch-meson ..
 
@@ -39,7 +40,7 @@ build() {
 }
 
 package() {
-  cd pulseeffects/build
+  cd pulseeffects-1/build
 
   DESTDIR="$pkgdir" ninja install
 }
