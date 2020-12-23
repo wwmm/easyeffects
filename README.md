@@ -1,9 +1,8 @@
-# PulseEffects
+# PulseEffects Legacy PulseAudio
 
-[![CircleCI](https://circleci.com/gh/wwmm/pulseeffects.svg?style=shield)](https://circleci.com/gh/wwmm/pulseeffects)
 [![Donate](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/wwmm/donate)
 
-Audio effects for Pulseaudio applications.
+This is the old PulseEffects version supporting plain PulseAudio server, not Pipewire. This branch is in maintenance mode and no longer under development.
 
 ![](images/pulseeffects.png)
 ![](images/equalizer1.png)
@@ -58,6 +57,7 @@ The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
+- [PulseAudio](https://gitlab.freedesktop.org/pulseaudio/pulseaudio). Version 13 or higher
 - [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good). Version 1.12.5 or higher
 - [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad). Version 1.12.5 or higher
 - [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
@@ -72,7 +72,8 @@ must have the following installed in your system:
 
 ## Donate
 
-You can help me to keep developing PulseEffects through donations. Any amount will be greatly appreciated :-)
+You can help Wellington Wallace to keep developing PulseEffects through donations.
+Any amount will be greatly appreciated :-)
 
 <table>
   <tr>
@@ -91,41 +92,6 @@ You can help me to keep developing PulseEffects through donations. Any amount wi
   [changelog](https://github.com/wwmm/pulseeffects/blob/master/CHANGELOG.md)
 
 ## Installation
-
-### GNU/Linux packages
-
-- [Arch Linux](https://www.archlinux.org/packages/community/x86_64/pulseeffects/) / [AUR Git version](https://aur.archlinux.org/packages/pulseeffects-git/)
-- [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/pulseeffects/template)
-- [Gentoo](https://packages.gentoo.org/packages/media-sound/pulseeffects)
-- [ROSA](https://abf.io/import/pulseeffects/)
-- [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/pulseeffects/)
-- [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/pulseeffects)
-- [CRUX](https://crux.nu/portdb/?a=search&q=pulseeffects)
-- [openSUSE](https://software.opensuse.org/package/pulseeffects)
-- [NixOS](https://search.nixos.org/packages?channel=unstable&show=pulseeffects&query=pulseeffects)
-- [Debian (buster)](https://packages.debian.org/buster-backports/pulseeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/pulseeffects)
-
-#### Community packages
-
-These are community maintained repositories of distribution packages. You can
-find more information about these in the
-[wiki](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#package-repositories).
-
-- [Ubuntu and Debian](https://github.com/wwmm/pulseeffects/wiki/Package-Repositories#debian--ubuntu)
-
-### Flatpak
-
-[Flatpak](https://flatpak.org/) packages support multiple Linux distributions and are sandboxed.
-
-Stable releases are hosted on
-[Flathub](https://flathub.org/apps/details/com.github.wwmm.pulseeffects):
-
-```
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.pulseeffects
-```
-
-#### Installing from source
 
 See the wiki: [Installing from Source](https://github.com/wwmm/pulseeffects/wiki/Installation-from-Source), for detailed instructions.
 
