@@ -50,27 +50,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
-  // connections.emplace_back(pm->client_info.connect([=](auto info) {
-  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
-
-  //   Gtk::ListBoxRow* row;
-  //   Gtk::Label* client_name;
-  //   Gtk::Label* client_binary;
-
-  //   b->get_widget("client_row", row);
-  //   b->get_widget("client_name", client_name);
-  //   b->get_widget("client_binary", client_binary);
-
-  //   row->set_name(info->name);
-  //   client_name->set_text(info->name);
-  //   client_binary->set_text(info->binary);
-
-  //   listbox_clients->add(*row);
-  //   listbox_clients->show_all();
-  // }));
-
   update_server_info();
   update_modules_info();
+  update_clients_info();
 
   // get_pulse_conf();
   // get_resamplers();
@@ -139,6 +121,40 @@ void PipeInfoUi::update_modules_info() {
   }
 }
 
+void PipeInfoUi::update_clients_info() {
+  auto children = listbox_clients->get_children();
+
+  for (const auto& c : children) {
+    listbox_clients->remove(*c);
+  }
+
+  for (auto& client : pm->list_clients) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
+
+    Gtk::ListBoxRow* row = nullptr;
+    Gtk::Label* client_name = nullptr;
+    Gtk::Label* client_id = nullptr;
+    Gtk::Label* client_access = nullptr;
+    Gtk::Label* client_api = nullptr;
+
+    b->get_widget("client_row", row);
+    b->get_widget("client_name", client_name);
+    b->get_widget("client_id", client_id);
+    b->get_widget("client_access", client_access);
+    b->get_widget("client_api", client_api);
+
+    row->set_name(client.name);
+
+    client_name->set_text(client.name);
+    client_id->set_text(std::to_string(client.id));
+    client_access->set_text(client.access);
+    client_api->set_text(client.api);
+
+    listbox_clients->add(*row);
+    listbox_clients->show_all();
+  }
+}
+
 auto PipeInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
@@ -166,11 +182,7 @@ void PipeInfoUi::on_stack_visible_child_changed() {
   } else if (name == std::string("page_modules")) {
     update_modules_info();
   } else if (name == std::string("page_clients")) {
-    auto children = listbox_clients->get_children();
-
-    for (const auto& c : children) {
-      listbox_clients->remove(*c);
-    }
+    update_clients_info();
   }
 }
 

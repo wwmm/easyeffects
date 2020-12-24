@@ -18,6 +18,8 @@
  */
 
 #include "pipe_manager.hpp"
+#include "pipewire/client.h"
+#include "pipewire/keys.h"
 
 namespace {
 
@@ -33,7 +35,7 @@ struct node_data {
   NodeInfo nd_info;
 };
 
-struct link_data {
+struct proxy_data {
   pw_proxy* proxy = nullptr;
 
   spa_hook proxy_listener{};
@@ -45,17 +47,13 @@ struct link_data {
   uint id = 0;
 };
 
-struct module_data {
-  pw_proxy* proxy = nullptr;
+void on_removed_proxy(void* data) {
+  auto* pd = static_cast<proxy_data*>(data);
 
-  spa_hook proxy_listener{};
+  spa_hook_remove(&pd->object_listener);
 
-  spa_hook object_listener{};
-
-  PipeManager* pm = nullptr;
-
-  uint id = 0;
-};
+  pw_proxy_destroy(pd->proxy);
+}
 
 auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   LinkInfo info;
@@ -360,7 +358,7 @@ void on_node_event_param(void* object,
 }
 
 void on_link_info(void* object, const struct pw_link_info* info) {
-  auto* ld = static_cast<link_data*>(object);
+  auto* ld = static_cast<proxy_data*>(object);
 
   auto link = link_info_from_props(info->props);
 
@@ -397,16 +395,8 @@ void on_link_info(void* object, const struct pw_link_info* info) {
   }
 }
 
-void on_removed_link_proxy(void* data) {
-  auto* ld = static_cast<link_data*>(data);
-
-  spa_hook_remove(&ld->object_listener);
-
-  pw_proxy_destroy(ld->proxy);
-}
-
 void on_destroy_link_proxy(void* data) {
-  auto* ld = static_cast<link_data*>(data);
+  auto* ld = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&ld->proxy_listener);
 
@@ -416,7 +406,7 @@ void on_destroy_link_proxy(void* data) {
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
-  auto* ld = static_cast<link_data*>(object);
+  auto* ld = static_cast<proxy_data*>(object);
 
   for (auto& module : ld->pm->list_modules) {
     if (module.id == info->id) {
@@ -435,22 +425,50 @@ void on_module_info(void* object, const struct pw_module_info* info) {
   }
 }
 
-void on_removed_module_proxy(void* data) {
-  auto* md = static_cast<module_data*>(data);
-
-  spa_hook_remove(&md->object_listener);
-
-  pw_proxy_destroy(md->proxy);
-}
-
 void on_destroy_module_proxy(void* data) {
-  auto* md = static_cast<module_data*>(data);
+  auto* md = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&md->proxy_listener);
 
   md->pm->list_modules.erase(
       std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
       md->pm->list_modules.end());
+}
+
+void on_client_info(void* object, const struct pw_client_info* info) {
+  auto* ld = static_cast<proxy_data*>(object);
+
+  for (auto& client : ld->pm->list_clients) {
+    if (client.id == info->id) {
+      const auto* name = spa_dict_lookup(info->props, PW_KEY_APP_NAME);
+      const auto* access = spa_dict_lookup(info->props, PW_KEY_ACCESS);
+      const auto* api = spa_dict_lookup(info->props, PW_KEY_CLIENT_API);
+
+      if (name != nullptr) {
+        client.name = name;
+      }
+
+      if (access != nullptr) {
+        client.access = access;
+      }
+
+      if (api != nullptr) {
+        client.api = api;
+      }
+
+      break;
+    }
+  }
+}
+
+void on_destroy_client_proxy(void* data) {
+  auto* pd = static_cast<proxy_data*>(data);
+
+  spa_hook_remove(&pd->proxy_listener);
+
+  pd->pm->list_clients.erase(
+      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(), [=](auto& n) { return n.id == pd->id; }),
+      pd->pm->list_clients.end());
 }
 
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
@@ -503,10 +521,13 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .property = on_metadata_property};
 
 const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
-                                                  .removed = on_removed_link_proxy};
+                                                  .removed = on_removed_proxy};
 
 const struct pw_proxy_events module_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_module_proxy,
-                                                    .removed = on_removed_module_proxy};
+                                                    .removed = on_removed_proxy};
+
+const struct pw_proxy_events client_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_client_proxy,
+                                                    .removed = on_removed_proxy};
 
 const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_node_proxy,
                                                   .removed = on_removed_node_proxy};
@@ -521,6 +542,11 @@ const struct pw_link_events link_events = {
 const struct pw_module_events module_events = {
     PW_VERSION_MODULE_EVENTS,
     .info = on_module_info,
+};
+
+const struct pw_client_events client_events = {
+    PW_VERSION_CLIENT_EVENTS,
+    .info = on_client_info,
 };
 
 void on_registry_global(void* data,
@@ -611,9 +637,9 @@ void on_registry_global(void* data,
     for (auto& node : pm->list_nodes) {
       if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
         auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(link_data)));
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
 
-        auto* pd = static_cast<link_data*>(pw_proxy_get_user_data(proxy));
+        auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
         pd->proxy = proxy;
         pd->pm = pm;
@@ -633,9 +659,9 @@ void on_registry_global(void* data,
 
   if (strcmp(type, PW_TYPE_INTERFACE_Module) == 0) {
     auto* proxy =
-        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(module_data)));
+        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(proxy_data)));
 
-    auto* pd = static_cast<module_data*>(pw_proxy_get_user_data(proxy));
+    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
     pd->proxy = proxy;
     pd->pm = pm;
@@ -653,6 +679,26 @@ void on_registry_global(void* data,
     }
 
     pm->list_modules.emplace_back(m_info);
+
+    return;
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Client) == 0) {
+    auto* proxy =
+        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_CLIENT, sizeof(proxy_data)));
+
+    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+
+    pd->proxy = proxy;
+    pd->pm = pm;
+    pd->id = id;
+
+    pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);
+    pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
+
+    ClientInfo c_info{.id = id};
+
+    pm->list_clients.emplace_back(c_info);
 
     return;
   }

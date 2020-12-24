@@ -98,6 +98,16 @@ struct ModuleInfo {
   std::string filename;
 };
 
+struct ClientInfo {
+  uint id;
+
+  std::string name;
+
+  std::string access;
+
+  std::string api;
+};
+
 class PipeManager {
  public:
   PipeManager();
@@ -121,6 +131,8 @@ class PipeManager {
   std::vector<LinkInfo> list_links;
 
   std::vector<ModuleInfo> list_modules;
+
+  std::vector<ClientInfo> list_clients;
 
   NodeInfo pe_sink_node, pe_source_node;
 

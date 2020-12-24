@@ -56,6 +56,7 @@ class PipeInfoUi : public Gtk::Box {
 
   void update_server_info();
   void update_modules_info();
+  void update_clients_info();
   void get_pulse_conf();
   void get_resamplers();
 
