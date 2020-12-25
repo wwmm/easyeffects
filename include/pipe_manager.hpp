@@ -139,7 +139,7 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  std::array<std::string, 10> blocklist_node_name = {"PulseEffects",
+  std::array<std::string, 11> blocklist_node_name = {"PulseEffects",
                                                      "pulseeffects",
                                                      "PulseEffectsWebrtcProbe",
                                                      "pavucontrol",
@@ -148,7 +148,8 @@ class PipeManager {
                                                      "gsd-media-keys",
                                                      "GNOME Shell",
                                                      "speech-dispatcher",
-                                                     "Mutter"};
+                                                     "Mutter",
+                                                     "gameoverlayui"};
 
   std::array<std::string, 2> blocklist_media_role = {"event", "Notification"};
 
