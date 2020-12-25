@@ -578,7 +578,17 @@ void on_registry_global(void* data,
         const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
         const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
 
-        if (std::find(std::begin(pm->blocklist_node_name), std::end(pm->blocklist_node_name), node_name) !=
+        if (node_name == nullptr) {
+          return;
+        }
+
+        std::string name = node_name;
+
+        if (name.empty()) {
+          return;
+        }
+
+        if (std::find(std::begin(pm->blocklist_node_name), std::end(pm->blocklist_node_name), name) !=
             std::end(pm->blocklist_node_name)) {
           return;
         }
@@ -593,10 +603,7 @@ void on_registry_global(void* data,
         pd->nd_info.proxy = proxy;
         pd->nd_info.id = id;
         pd->nd_info.media_class = media_class;
-
-        if (node_name != nullptr) {
-          pd->nd_info.name = node_name;
-        }
+        pd->nd_info.name = name;
 
         if (node_description != nullptr) {
           pd->nd_info.description = node_description;
