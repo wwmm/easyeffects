@@ -492,12 +492,21 @@ auto PipelineBase::get_output_node_id() -> uint {
   return std::stoi(path);
 }
 
-void PipelineBase::set_pulseaudio_props(const std::string& props) const {
+void PipelineBase::set_pipewiresrc_stream_props(const std::string& props) const {
   auto str = "props," + props;
 
   auto* s = gst_structure_from_string(str.c_str(), nullptr);
 
   g_object_set(source, "stream-properties", s, nullptr);
+
+  gst_structure_free(s);
+}
+
+void PipelineBase::set_pipewiresink_stream_props(const std::string& props) const {
+  auto str = "props," + props;
+
+  auto* s = gst_structure_from_string(str.c_str(), nullptr);
+
   g_object_set(sink, "stream-properties", s, nullptr);
 
   gst_structure_free(s);

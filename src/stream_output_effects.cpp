@@ -97,18 +97,22 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamOutput
 }  // namespace
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
-  std::string pulse_props = "application.id=com.github.wwmm.pulseeffects.streamoutputs";
+  std::string pipe_props = "application.id=com.github.wwmm.pulseeffects.streamoutputs,node.group=1";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
-
-  set_pulseaudio_props(pulse_props);
 
   auto default_output = pipe_manager->get_default_sink();
 
   set_input_node_id(pm->pe_sink_node.id);
   set_output_node_id(default_output.id);
 
-  set_caps(48000);  // 48 kHz is the default pipewire sampling rate
+  int default_rate = 48000;  // 48 kHz is the default pipewire sampling rate
+
+  set_caps(default_rate);
+
+  set_pipewiresrc_stream_props(pipe_props + ",node.latency=512/" + std::to_string(default_rate));
+
+  set_pipewiresink_stream_props(pipe_props + ",node.latency=512/" + std::to_string(default_rate));
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
