@@ -19,12 +19,6 @@
         <value nick="Lines" value="1" />
     </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
-        <key name="blocksize-in" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"512"</default>
-        </key>
-        <key name="blocksize-out" enum="com.github.wwmm.pulseeffects.blocksize.enum">
-            <default>"512"</default>
-        </key>
         <key name="enable-all-sinkinputs" type="b">
             <default>true</default>
         </key>

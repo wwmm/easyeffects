@@ -21,62 +21,6 @@
 #include <cstring>
 #include "util.hpp"
 
-namespace {
-
-auto blocksize_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (std::strcmp(v, "64") == 0) {
-    g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "128") == 0) {
-    g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "256") == 0) {
-    g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "512") == 0) {
-    g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "1024") == 0) {
-    g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "2048") == 0) {
-    g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "4096") == 0) {
-    g_value_set_int(value, 6);
-  }
-
-  return 1;
-}
-
-auto int_to_blocksize_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
-    case 0:
-      return g_variant_new_string("64");
-
-    case 1:
-      return g_variant_new_string("128");
-
-    case 2:
-      return g_variant_new_string("256");
-
-    case 3:
-      return g_variant_new_string("512");
-
-    case 4:
-      return g_variant_new_string("1024");
-
-    case 5:
-      return g_variant_new_string("2048");
-
-    case 6:
-      return g_variant_new_string("4096");
-
-    default:
-      return g_variant_new_string("512");
-  }
-}
-
-}  // namespace
-
 PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
                                const Glib::RefPtr<Gtk::Builder>& builder,
                                Application* application)
@@ -91,8 +35,6 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   builder->get_widget("use_default_source", use_default_source);
   builder->get_widget("input_device", input_device);
   builder->get_widget("output_device", output_device);
-  builder->get_widget("blocksize_sie", blocksize_sie);
-  builder->get_widget("blocksize_soe", blocksize_soe);
 
   get_object(builder, "sie_latency", sie_latency);
   get_object(builder, "soe_latency", soe_latency);
@@ -128,12 +70,6 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
 
   sie_settings->bind("latency", sie_latency.get(), "value", flag);
   soe_settings->bind("latency", soe_latency.get(), "value", flag);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in", blocksize_sie->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out", blocksize_soe->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 }
 
 PipeSettingsUi::~PipeSettingsUi() {

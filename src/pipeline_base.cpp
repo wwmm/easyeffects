@@ -393,8 +393,6 @@ PipelineBase::~PipelineBase() {
 void PipelineBase::set_sampling_rate(const uint& sampling_rate) {
   this->sampling_rate = sampling_rate;
 
-  // setting the pipeline caps
-
   auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
 
   auto* caps = gst_caps_from_string(caps_str.c_str());
@@ -402,9 +400,9 @@ void PipelineBase::set_sampling_rate(const uint& sampling_rate) {
   g_object_set(capsfilter, "caps", caps, nullptr);
 
   gst_caps_unref(caps);
+}
 
-  // setting latency
-
+void PipelineBase::set_latency() {
   float latency = g_settings_get_int(child_settings, "latency");
 
   auto latency_str = std::to_string(static_cast<int>(latency * 0.001F * sampling_rate));

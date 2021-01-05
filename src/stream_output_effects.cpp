@@ -94,6 +94,24 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamOutput
   }
 }
 
+void on_latency_changed(GSettings* settings, gchar* key, StreamOutputEffects* soe) {
+  gst_element_set_state(soe->pipeline, GST_STATE_NULL);
+
+  soe->set_latency();
+
+  // int blocksize = 2;
+
+  // while (blocksize < desired_buffer_size) {
+  //   if (blocksize * 2 > desired_buffer_size) {
+  //     break;
+  //   }
+
+  //   blocksize *= 2;
+  // }
+
+  soe->update_pipeline_state();
+}
+
 }  // namespace
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
@@ -107,6 +125,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   set_output_node_id(default_output.id);
 
   set_sampling_rate(48000);  // 48 kHz is the default pipewire sampling rate
+
+  set_latency();
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
@@ -229,9 +249,9 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   rnnoise->set_caps_out(sampling_rate);
 
-  g_settings_bind(settings, "blocksize-out", crystalizer->adapter, "blocksize", G_SETTINGS_BIND_DEFAULT);
+  g_object_set(convolver->adapter, "blocksize", 512, nullptr);
 
-  g_settings_bind(settings, "blocksize-out", convolver->adapter, "blocksize", G_SETTINGS_BIND_DEFAULT);
+  g_object_set(crystalizer->adapter, "blocksize", 512, nullptr);
 
   // inserting the plugins in the containers
 
@@ -260,6 +280,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   add_plugins_to_pipeline();
 
   g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamOutputEffects>), this);
+
+  g_signal_connect(child_settings, "changed::latency", G_CALLBACK(on_latency_changed), this);
 }
 
 StreamOutputEffects::~StreamOutputEffects() {

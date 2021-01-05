@@ -44,7 +44,7 @@
         <property name="transition-duration">250</property>
         <property name="transition-type">slide-left-right</property>
         <child>
-          <!-- n-columns=2 n-rows=3 -->
+          <!-- n-columns=2 n-rows=2 -->
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -93,39 +93,6 @@
                 <property name="can-focus">False</property>
                 <property name="halign">end</property>
                 <property name="valign">center</property>
-                <property name="label" translatable="yes">Block Size</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="blocksize_sie">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">start</property>
-                <items>
-                  <item>64</item>
-                  <item>128</item>
-                  <item>256</item>
-                  <item>512</item>
-                  <item>1024</item>
-                  <item id="&lt;Enter ID&gt;">2048</item>
-                  <item>4096</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
                 <property name="label" translatable="yes">Latency</property>
               </object>
               <packing>
@@ -160,7 +127,7 @@
           </packing>
         </child>
         <child>
-          <!-- n-columns=2 n-rows=3 -->
+          <!-- n-columns=2 n-rows=2 -->
           <object class="GtkGrid">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
@@ -234,40 +201,6 @@
               <packing>
                 <property name="left-attach">1</property>
                 <property name="top-attach">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">end</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Block Size</property>
-              </object>
-              <packing>
-                <property name="left-attach">0</property>
-                <property name="top-attach">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkComboBoxText" id="blocksize_soe">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="halign">start</property>
-                <property name="valign">center</property>
-                <items>
-                  <item>64</item>
-                  <item>128</item>
-                  <item>256</item>
-                  <item>512</item>
-                  <item>1024</item>
-                  <item id="&lt;Enter ID&gt;">2048</item>
-                  <item>4096</item>
-                </items>
-              </object>
-              <packing>
-                <property name="left-attach">1</property>
-                <property name="top-attach">2</property>
               </packing>
             </child>
           </object>

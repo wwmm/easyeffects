@@ -64,6 +64,14 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamInputE
   }
 }
 
+void on_latency_changed(GSettings* settings, gchar* key, StreamInputEffects* sie) {
+  gst_element_set_state(sie->pipeline, GST_STATE_NULL);
+
+  sie->set_latency();
+
+  sie->update_pipeline_state();
+}
+
 }  // namespace
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
@@ -78,6 +86,8 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   set_output_node_id(pm->pe_source_node.id);
 
   set_sampling_rate(48000);  // 48 kHz is the default pipewire sampling rate
+
+  set_latency();
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
@@ -196,6 +206,8 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   add_plugins_to_pipeline();
 
   g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamInputEffects>), this);
+
+  g_signal_connect(child_settings, "changed::latency", G_CALLBACK(on_latency_changed), this);
 }
 
 StreamInputEffects::~StreamInputEffects() {
