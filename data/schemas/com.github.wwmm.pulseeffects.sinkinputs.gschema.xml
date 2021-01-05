@@ -4,21 +4,9 @@
         <key name="plugins" type="as">
             <default>["limiter","autogain","gate","multiband_gate","compressor", "multiband_compressor","convolver","bass_enhancer","exciter", "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser", "crossfeed","loudness","maximizer","filter","pitch","rnnoise"]</default>
         </key>
-        <key name="buffer-pulsesrc" type="i">
+        <key name="latency" type="i">
             <range min="1" max="10000000" />
-            <default>200000</default>
-        </key>
-        <key name="latency-pulsesrc" type="i">
-            <range min="1" max="10000000" />
-            <default>10000</default>
-        </key>
-        <key name="buffer-pulsesink" type="i">
-            <range min="1" max="10000000" />
-            <default>200000</default>
-        </key>
-        <key name="latency-pulsesink" type="i">
-            <range min="1" max="10000000" />
-            <default>10000</default>
+            <default>50</default>
         </key>
     </schema>
 </schemalist>

@@ -91,18 +91,11 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   builder->get_widget("use_default_source", use_default_source);
   builder->get_widget("input_device", input_device);
   builder->get_widget("output_device", output_device);
-  builder->get_widget("blocksize_in", blocksize_in);
-  builder->get_widget("blocksize_out", blocksize_out);
+  builder->get_widget("blocksize_sie", blocksize_sie);
+  builder->get_widget("blocksize_soe", blocksize_soe);
 
-  get_object(builder, "sie_input_buffer", sie_input_buffer);
-  get_object(builder, "sie_input_latency", sie_input_latency);
-  get_object(builder, "sie_output_buffer", sie_output_buffer);
-  get_object(builder, "sie_output_latency", sie_output_latency);
-
-  get_object(builder, "soe_input_buffer", soe_input_buffer);
-  get_object(builder, "soe_input_latency", soe_input_latency);
-  get_object(builder, "soe_output_buffer", soe_output_buffer);
-  get_object(builder, "soe_output_latency", soe_output_latency);
+  get_object(builder, "sie_latency", sie_latency);
+  get_object(builder, "soe_latency", soe_latency);
 
   get_object(builder, "sink_list", sink_list);
   get_object(builder, "source_list", source_list);
@@ -133,20 +126,13 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
 
   settings->bind("use-default-source", input_device, "sensitive", flag | flag_invert_boolean);
 
-  sie_settings->bind("buffer-pulsesrc", sie_input_buffer.get(), "value", flag);
-  sie_settings->bind("latency-pulsesrc", sie_input_latency.get(), "value", flag);
-  sie_settings->bind("buffer-pulsesink", sie_output_buffer.get(), "value", flag);
-  sie_settings->bind("latency-pulsesink", sie_output_latency.get(), "value", flag);
+  sie_settings->bind("latency", sie_latency.get(), "value", flag);
+  soe_settings->bind("latency", soe_latency.get(), "value", flag);
 
-  soe_settings->bind("buffer-pulsesrc", soe_input_buffer.get(), "value", flag);
-  soe_settings->bind("latency-pulsesrc", soe_input_latency.get(), "value", flag);
-  soe_settings->bind("buffer-pulsesink", soe_output_buffer.get(), "value", flag);
-  soe_settings->bind("latency-pulsesink", soe_output_latency.get(), "value", flag);
-
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in", blocksize_in->gobj(), "active",
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-in", blocksize_sie->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out", blocksize_out->gobj(), "active",
+  g_settings_bind_with_mapping(settings->gobj(), "blocksize-out", blocksize_soe->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, blocksize_enum_to_int, int_to_blocksize_enum, nullptr, nullptr);
 }
 

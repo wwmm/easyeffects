@@ -67,7 +67,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamInputE
 }  // namespace
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
-  std::string pipe_props = "application.id=com.github.wwmm.pulseeffects.streaminputs,node.group=1";
+  pipe_props += ",application.id=com.github.wwmm.pulseeffects.streaminputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
@@ -77,13 +77,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
 
   set_output_node_id(pm->pe_source_node.id);
 
-  int default_rate = 48000;  // 48 kHz is the default pipewire sampling rate
-
-  set_caps(default_rate);
-
-  set_pipewiresrc_stream_props(pipe_props + ",node.latency=512/" + std::to_string(default_rate));
-
-  set_pipewiresink_stream_props(pipe_props + ",node.latency=512/" + std::to_string(default_rate));
+  set_sampling_rate(48000);  // 48 kHz is the default pipewire sampling rate
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
@@ -267,7 +261,7 @@ void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
     if (node_info.rate != sampling_rate && node_info.rate != 0) {
       gst_element_set_state(pipeline, GST_STATE_NULL);
 
-      set_caps(node_info.rate);
+      set_sampling_rate(node_info.rate);
 
       rnnoise->set_caps_out(sampling_rate);
 
@@ -280,7 +274,7 @@ void StreamInputEffects::change_input_device(const NodeInfo& node) {
   gst_element_set_state(pipeline, GST_STATE_NULL);
 
   if (node.rate != 0) {
-    set_caps(node.rate);
+    set_sampling_rate(node.rate);
   }
 
   set_input_node_id(node.id);

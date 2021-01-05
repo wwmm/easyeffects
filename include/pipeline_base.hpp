@@ -130,10 +130,11 @@ class PipelineBase {
 
  protected:
   bool apps_want_to_play = false;
+  std::string pipe_props = "node.group=1";
 
   void set_pipewiresrc_stream_props(const std::string& props) const;
   void set_pipewiresink_stream_props(const std::string& props) const;
-  void set_caps(const uint& sampling_rate);
+  void set_sampling_rate(const uint& sampling_rate);
 
  private:
   GstElement* capsfilter = nullptr;
