@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PulseEffects package.
 # Matteo Iervasi <matteoiervasi@gmail.com>, 2018.
 # Gianluca Boiano <morf3089@gmail.com>, 2018.
+# Albano Battistella <albano_battistella@hotmail.com>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-20 19:56-0300\n"
-"PO-Revision-Date: 2019-03-28 17:38+0100\n"
-"Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
+"PO-Revision-Date: 2021-01-08 17:38+0100\n"
+"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -1646,24 +1647,23 @@ msgstr "Standard RNNoise"
 
 #: src/app_info_ui.cpp:119
 msgid "running"
-msgstr ""
+msgstr "in esecuzione"
 
 #: src/app_info_ui.cpp:123
 msgid "suspended"
-msgstr ""
+msgstr "sospeso"
 
 #: src/app_info_ui.cpp:127
 msgid "idle"
-msgstr ""
+msgstr "inattivo"
 
 #: src/app_info_ui.cpp:131
-#, fuzzy
 msgid "creating"
-msgstr "Gating"
+msgstr "creazione in corso"
 
 #: src/app_info_ui.cpp:135
 msgid "error"
-msgstr ""
+msgstr "errore"
 
 #: src/application.cpp:38
 msgid "Quit PulseEffects. Useful when running in service mode."
