@@ -338,10 +338,10 @@ void on_node_event_param(void* object,
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
-      } else if (nd->nd_info.media_class == "Audio/Source") {
-        // if (nd->nd_info.id == nd->pm->pe_source_node.id) {
-        //   nd->pm->pe_source_node = nd->nd_info;
-        // }
+      } else if (nd->nd_info.media_class == "Audio/Duplex") {
+        if (nd->nd_info.id == nd->pm->pe_source_node.id) {
+          nd->pm->pe_source_node = nd->nd_info;
+        }
 
         Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Audio/Sink") {
@@ -572,8 +572,8 @@ void on_registry_global(void* data,
     if (key_media_class != nullptr) {
       std::string media_class = key_media_class;
 
-      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Stream/Output/Audio" ||
-          media_class == "Stream/Input/Audio") {
+      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Duplex" ||
+          media_class == "Stream/Output/Audio" || media_class == "Stream/Input/Audio") {
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
         const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
         const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
@@ -854,7 +854,7 @@ PipeManager::PipeManager() {
   pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Sink");
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Duplex");
   pw_properties_set(props_source, "audio.position", "FL,FR");
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
