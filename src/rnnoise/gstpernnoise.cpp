@@ -105,8 +105,8 @@ static void gst_pernnoise_class_init(GstPernnoiseClass* klass) {
   gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_pernnoise_src_template);
   gst_element_class_add_static_pad_template(GST_ELEMENT_CLASS(klass), &gst_pernnoise_sink_template);
 
-  gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass), "PulseEffects Convolver", "Generic",
-                                        "PulseEffects Convolver", "Wellington <wellingtonwallace@gmail.com>");
+  gst_element_class_set_static_metadata(GST_ELEMENT_CLASS(klass), "PulseEffects Noise Suppression", "Generic",
+                                        "PulseEffects Noise Suppression", "Wellington <wellingtonwallace@gmail.com>");
 
   /* define virtual function pointers */
 
@@ -325,7 +325,7 @@ static auto plugin_init(GstPlugin* plugin) -> gboolean {
 GST_PLUGIN_DEFINE(GST_VERSION_MAJOR,
                   GST_VERSION_MINOR,
                   pernnoise,
-                  "PulseEffects Noise Remover",
+                  "PulseEffects Noise Suppression",
                   plugin_init,
                   VERSION,
                   "LGPL",
