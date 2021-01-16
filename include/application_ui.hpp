@@ -78,6 +78,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   StreamInputEffectsUi* sie_ui = nullptr;
   PipeInfoUi* pipe_info_ui = nullptr;
 
+  CalibrationUi* calibration_ui = nullptr;
+
   int soe_latency = 0, sie_latency = 0;
 
   static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,

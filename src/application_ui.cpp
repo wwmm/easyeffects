@@ -28,6 +28,7 @@
 #include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
 #include "general_settings_ui.hpp"
+#include "pipe_manager.hpp"
 #include "pipe_settings_ui.hpp"
 #include "spectrum_settings_ui.hpp"
 #include "util.hpp"
@@ -309,13 +310,19 @@ void ApplicationUi::on_stack_visible_child_changed() {
 }
 
 void ApplicationUi::on_calibration_button_clicked() {
-  std::shared_ptr<CalibrationUi> calibration_ui(CalibrationUi::create());
+  calibration_ui = CalibrationUi::create();
 
-  auto c = app->pm->new_default_source.connect([=](auto name) {
+  auto c = app->pm->new_default_source.connect([=](NodeInfo node_info) {
     // calibration_ui->set_source_monitor_name(name);
   });
 
-  calibration_ui->signal_hide().connect([=]() { c->disconnect(); });
+  calibration_ui->signal_hide().connect([=]() {
+    c->disconnect();
+
+    delete calibration_ui;
+  });
+
+  calibration_ui->set_transient_for(*this);
 
   calibration_ui->show_all();
 }

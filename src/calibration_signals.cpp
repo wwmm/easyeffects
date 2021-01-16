@@ -20,14 +20,15 @@
 #include "calibration_signals.hpp"
 #include <glibmm/main.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include "gst/gstelement.h"
 #include "util.hpp"
 
 namespace {
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationSignals* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state;
-    GstState new_state;
+    GstState old_state = GST_STATE_VOID_PENDING;
+    GstState new_state = GST_STATE_VOID_PENDING;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, nullptr);
 
@@ -86,7 +87,7 @@ CalibrationSignals::CalibrationSignals() {
   // creating elements
 
   source = gst_element_factory_make("audiotestsrc", "source");
-  sink = gst_element_factory_make("pulsesink", "sink");
+  sink = gst_element_factory_make("pipewiresink", "sink");
   spectrum = gst_element_factory_make("spectrum", "spectrum");
 
   auto* capsfilter = gst_element_factory_make("capsfilter", nullptr);
@@ -110,6 +111,7 @@ CalibrationSignals::CalibrationSignals() {
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
   g_object_set(spectrum, "threshold", spectrum_threshold, nullptr);
   g_object_set(sink, "stream-properties", props, nullptr);
+  g_object_set(sink, "sync", 0, nullptr);
 
   gst_structure_free(props);
   gst_caps_unref(caps);

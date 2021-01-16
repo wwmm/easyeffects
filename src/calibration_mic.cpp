@@ -26,8 +26,8 @@ namespace {
 
 void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, CalibrationMic* cs) {
   if (GST_OBJECT_NAME(message->src) == std::string("pipeline")) {
-    GstState old_state;
-    GstState new_state;
+    GstState old_state = GST_STATE_VOID_PENDING;
+    GstState new_state = GST_STATE_VOID_PENDING;
 
     gst_message_parse_state_changed(message, &old_state, &new_state, nullptr);
 
@@ -39,7 +39,7 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, CalibrationM
   if (GST_OBJECT_NAME(message->src) == std::string("spectrum")) {
     const GstStructure* s = gst_message_get_structure(message);
 
-    const GValue* magnitudes;
+    const GValue* magnitudes = nullptr;
 
     magnitudes = gst_structure_get_value(s, "magnitude");
 
@@ -97,12 +97,12 @@ CalibrationMic::CalibrationMic() {
 
   // creating elements
 
-  source = gst_element_factory_make("pulsesrc", "source");
+  source = gst_element_factory_make("pipewiresrc", "source");
   sink = gst_element_factory_make("fakesink", "sink");
   spectrum = gst_element_factory_make("spectrum", "spectrum");
 
-  auto capsfilter = gst_element_factory_make("capsfilter", nullptr);
-  auto queue = gst_element_factory_make("queue", nullptr);
+  auto* capsfilter = gst_element_factory_make("capsfilter", nullptr);
+  auto* queue = gst_element_factory_make("queue", nullptr);
 
   // building the pipeline
 
@@ -112,12 +112,10 @@ CalibrationMic::CalibrationMic() {
 
   // setting a few parameters
 
-  auto props = gst_structure_from_string("props,application.name=PulseEffectsCalibration", nullptr);
+  auto* props = gst_structure_from_string("props,application.name=PulseEffectsCalibration", nullptr);
 
-  auto caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=1,rate=48000");
+  auto* caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=1,rate=48000");
 
-  g_object_set(source, "volume", 1.0, nullptr);
-  g_object_set(source, "mute", 0, nullptr);
   g_object_set(source, "stream-properties", props, nullptr);
   g_object_set(capsfilter, "caps", caps, nullptr);
   g_object_set(queue, "silent", 1, nullptr);
@@ -151,7 +149,7 @@ CalibrationMic::CalibrationMic() {
   spline_f0 = spectrum_freqs[0];
   spline_df = spectrum_freqs[1] - spectrum_freqs[0];
 
-  gst_element_set_state(pipeline, GST_STATE_PLAYING);
+  // gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
 CalibrationMic::~CalibrationMic() {
