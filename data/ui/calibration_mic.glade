@@ -128,7 +128,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="start">
+          <object class="GtkButton" id="start">
             <property name="label" translatable="yes">Start</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -140,7 +140,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="stop">
+          <object class="GtkButton" id="stop">
             <property name="label" translatable="yes">Stop</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
