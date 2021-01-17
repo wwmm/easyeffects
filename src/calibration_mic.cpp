@@ -117,6 +117,8 @@ CalibrationMic::CalibrationMic() {
   auto* caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=1,rate=48000");
 
   g_object_set(source, "stream-properties", props, nullptr);
+  g_object_set(source, "always-copy", 1, nullptr);
+
   g_object_set(capsfilter, "caps", caps, nullptr);
   g_object_set(queue, "silent", 1, nullptr);
   g_object_set(spectrum, "bands", spectrum_nbands, nullptr);
@@ -148,8 +150,6 @@ CalibrationMic::CalibrationMic() {
 
   spline_f0 = spectrum_freqs[0];
   spline_df = spectrum_freqs[1] - spectrum_freqs[0];
-
-  // gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
 CalibrationMic::~CalibrationMic() {
@@ -161,10 +161,18 @@ CalibrationMic::~CalibrationMic() {
   util::debug(log_tag + "destroyed");
 }
 
-void CalibrationMic::set_source_monitor_name(const std::string& name) {
+void CalibrationMic::set_source_monitor_name(const std::string& name) const {
   g_object_set(source, "device", name.c_str(), nullptr);
 }
 
-void CalibrationMic::set_window(const double& value) {
+void CalibrationMic::set_window(const double& value) const {
   g_object_set(spectrum, "interval", (int64_t)(value * 1000000000), nullptr);
+}
+
+void CalibrationMic::start() const {
+  gst_element_set_state(pipeline, GST_STATE_PLAYING);
+}
+
+void CalibrationMic::stop() const {
+  gst_element_set_state(pipeline, GST_STATE_NULL);
 }

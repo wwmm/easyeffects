@@ -24,10 +24,16 @@ CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject, const Glib::RefPtr<G
     : Gtk::Grid(cobject), cm(std::make_unique<CalibrationMic>()) {
   // loading glade widgets
 
+  builder->get_widget("start", start);
+  builder->get_widget("stop", stop);
   builder->get_widget("measure_noise", measure_noise);
   builder->get_widget("subtract_noise", subtract_noise);
   builder->get_widget("time_window", time_window);
   builder->get_widget("spinner", spinner);
+
+  start->signal_clicked().connect([=]() { cm->start(); });
+
+  stop->signal_clicked().connect([=]() { cm->stop(); });
 
   measure_noise->signal_clicked().connect([=]() {
     cm->measure_noise = true;

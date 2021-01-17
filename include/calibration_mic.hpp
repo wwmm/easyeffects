@@ -31,7 +31,7 @@ class CalibrationMic {
   CalibrationMic(const CalibrationMic&) = delete;
   auto operator=(const CalibrationMic&) -> CalibrationMic& = delete;
   CalibrationMic(const CalibrationMic&&) = delete;
-  auto operator=(const CalibrationMic &&) -> CalibrationMic& = delete;
+  auto operator=(const CalibrationMic&&) -> CalibrationMic& = delete;
   ~CalibrationMic();
 
   std::string log_tag = "calibration_mic: ";
@@ -51,8 +51,10 @@ class CalibrationMic {
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void> noise_measured;
 
-  void set_window(const double& value);
-  void set_source_monitor_name(const std::string& name);
+  void start() const;
+  void stop() const;
+  void set_window(const double& value) const;
+  void set_source_monitor_name(const std::string& name) const;
 
  private:
   GstBus* bus = nullptr;

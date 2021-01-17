@@ -34,7 +34,7 @@ class CalibrationMicUi : public Gtk::Grid {
   CalibrationMicUi(const CalibrationMicUi&) = delete;
   auto operator=(const CalibrationMicUi&) -> CalibrationMicUi& = delete;
   CalibrationMicUi(const CalibrationMicUi&&) = delete;
-  auto operator=(const CalibrationMicUi &&) -> CalibrationMicUi& = delete;
+  auto operator=(const CalibrationMicUi&&) -> CalibrationMicUi& = delete;
   ~CalibrationMicUi() override;
 
   std::unique_ptr<CalibrationMic> cm;
@@ -44,7 +44,7 @@ class CalibrationMicUi : public Gtk::Grid {
 
   const double default_time_window = 2.0;  // seconds
 
-  Gtk::Button* measure_noise = nullptr;
+  Gtk::Button *measure_noise = nullptr, *start = nullptr, *stop = nullptr;
   Gtk::ToggleButton* subtract_noise = nullptr;
   Gtk::Spinner* spinner = nullptr;
   Gtk::SpinButton* time_window = nullptr;
