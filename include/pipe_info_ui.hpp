@@ -49,8 +49,7 @@ class PipeInfoUi : public Gtk::Box {
              *default_source = nullptr, *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr,
              *quantum = nullptr, *config_file = nullptr;
 
-  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr, *listbox_config = nullptr,
-               *listbox_resamplers = nullptr;
+  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr, *listbox_config = nullptr;
 
   std::vector<sigc::connection> connections;
 
@@ -58,7 +57,6 @@ class PipeInfoUi : public Gtk::Box {
   void update_modules_info();
   void update_clients_info();
   void get_pulse_conf();
-  void get_resamplers();
 
   static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
   void on_stack_visible_child_changed();

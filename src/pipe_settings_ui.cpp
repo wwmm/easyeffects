@@ -42,6 +42,20 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   get_object(builder, "sink_list", sink_list);
   get_object(builder, "source_list", source_list);
 
+  // initializing widgets
+
+  for (const auto& node : app->pm->list_nodes) {
+    if (node.name == "pulseeffects_sink" || node.name == "pulseeffects_source") {
+      continue;
+    }
+
+    if (node.media_class == "Audio/Sink") {
+      on_sink_added(node);
+    } else if (node.media_class == "Audio/Source") {
+      on_source_added(node);
+    }
+  }
+
   // signals connection
 
   use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_sink_toggled));

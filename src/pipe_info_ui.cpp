@@ -37,7 +37,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   builder->get_widget("listbox_modules", listbox_modules);
   builder->get_widget("listbox_clients", listbox_clients);
   builder->get_widget("listbox_config", listbox_config);
-  builder->get_widget("listbox_resamplers", listbox_resamplers);
   builder->get_widget("config_file", config_file);
 
   listbox_modules->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
@@ -46,8 +45,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   listbox_config->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
-  listbox_resamplers->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
-
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
   update_server_info();
@@ -55,7 +52,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   update_clients_info();
 
   // get_pulse_conf();
-  // get_resamplers();
 }
 
 PipeInfoUi::~PipeInfoUi() {
@@ -233,35 +229,6 @@ void PipeInfoUi::get_pulse_conf() {
 
     // c.wait();
     listbox_config->show_all();
-  } catch (std::exception& e) {
-    util::warning(log_tag + command + " : " + e.what());
-  }
-}
-
-void PipeInfoUi::get_resamplers() {
-  std::string command = "pulseaudio --dump-resample-methods";
-
-  try {
-    boost::process::ipstream pipe_stream;
-    boost::process::child c(command, boost::process::std_out > pipe_stream);
-
-    std::string line;
-
-    while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
-      auto* row = Gtk::manage(new Gtk::ListBoxRow());
-      auto* label = Gtk::manage(new Gtk::Label());
-
-      row->set_name(line);
-
-      label->set_text(line);
-      label->set_halign(Gtk::Align::ALIGN_START);
-
-      row->add(*label);
-
-      listbox_resamplers->add(*row);
-    }
-
-    listbox_resamplers->show_all();
   } catch (std::exception& e) {
     util::warning(log_tag + command + " : " + e.what());
   }
