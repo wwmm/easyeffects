@@ -411,13 +411,9 @@
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <child>
-                      <object class="GtkListBox" id="listbox_config">
+                      <object class="GtkTextView" id="textview_config_file">
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="selection-mode">none</property>
-                        <property name="activate-on-single-click">False</property>
+                        <property name="can-focus">True</property>
                       </object>
                     </child>
                   </object>
@@ -462,9 +458,6 @@
             <property name="title" translatable="yes">Configuration</property>
             <property name="position">3</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
       <packing>

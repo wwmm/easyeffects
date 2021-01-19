@@ -18,9 +18,6 @@
  */
 
 #include "pipe_info_ui.hpp"
-#include <boost/algorithm/string.hpp>
-#include <boost/process.hpp>
-#include "util.hpp"
 
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
@@ -36,14 +33,12 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   builder->get_widget("server_rate", server_rate);
   builder->get_widget("listbox_modules", listbox_modules);
   builder->get_widget("listbox_clients", listbox_clients);
-  builder->get_widget("listbox_config", listbox_config);
   builder->get_widget("config_file", config_file);
+  builder->get_widget("textview_config_file", textview_config_file);
 
   listbox_modules->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
   listbox_clients->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
-
-  listbox_config->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
@@ -51,7 +46,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   update_modules_info();
   update_clients_info();
 
-  // get_pulse_conf();
+  get_pipe_conf();
 }
 
 PipeInfoUi::~PipeInfoUi() {
@@ -182,54 +177,24 @@ void PipeInfoUi::on_stack_visible_child_changed() {
   }
 }
 
-void PipeInfoUi::get_pulse_conf() {
-  std::string command = "pulseaudio --dump-conf";
+void PipeInfoUi::get_pipe_conf() {
+  std::string path = "/etc/pipewire/pipewire.conf";
 
-  try {
-    boost::process::ipstream pipe_stream;
-    boost::process::child c(command, boost::process::std_out > pipe_stream);
+  config_file->set_text(path);
 
-    std::string line;
+  if (!std::filesystem::is_regular_file(path)) {
+    util::debug("the file " + path + " does not exist!");
+  } else {
+    std::ifstream f;
 
-    while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
-      std::vector<std::string> aux;
-      std::string key;
-      std::string value;
+    f.open(path);
 
-      boost::split(aux, line, boost::is_any_of("="));
+    std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
 
-      if (aux.size() > 1U) {
-        auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_conf_file_line.glade");
+    auto buffer = textview_config_file->get_buffer();
 
-        Gtk::ListBoxRow* row = nullptr;
-        Gtk::Label* conf_key = nullptr;
-        Gtk::Label* conf_value = nullptr;
+    buffer->set_text(str);
 
-        b->get_widget("conf_row", row);
-        b->get_widget("conf_key", conf_key);
-        b->get_widget("conf_value", conf_value);
-
-        row->set_name(aux[0]);
-        conf_key->set_text(aux[0]);
-        conf_value->set_text(aux[1]);
-
-        listbox_config->add(*row);
-      } else {
-        boost::split(aux, line, boost::is_any_of(":"));
-
-        if (aux.size() > 1U) {
-          std::string tmp = aux[1];
-
-          boost::split(aux, tmp, boost::is_any_of("#"));
-
-          config_file->set_text(aux[0]);
-        }
-      }
-    }
-
-    // c.wait();
-    listbox_config->show_all();
-  } catch (std::exception& e) {
-    util::warning(log_tag + command + " : " + e.what());
+    f.close();
   }
 }

@@ -26,7 +26,11 @@
 #include <gtkmm/label.h>
 #include <gtkmm/listbox.h>
 #include <gtkmm/stack.h>
+#include <gtkmm/textview.h>
+#include <filesystem>
+#include <fstream>
 #include "pipe_manager.hpp"
+#include "util.hpp"
 
 class PipeInfoUi : public Gtk::Box {
  public:
@@ -49,14 +53,16 @@ class PipeInfoUi : public Gtk::Box {
              *default_source = nullptr, *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr,
              *quantum = nullptr, *config_file = nullptr;
 
-  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr, *listbox_config = nullptr;
+  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr;
+
+  Gtk::TextView* textview_config_file = nullptr;
 
   std::vector<sigc::connection> connections;
 
   void update_server_info();
   void update_modules_info();
   void update_clients_info();
-  void get_pulse_conf();
+  void get_pipe_conf();
 
   static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
   void on_stack_visible_child_changed();
