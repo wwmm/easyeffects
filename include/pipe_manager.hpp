@@ -139,8 +139,10 @@ class PipeManager {
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
-  std::array<std::string, 11> blocklist_node_name = {"PulseEffects",
+  std::array<std::string, 13> blocklist_node_name = {"PulseEffects",
                                                      "pulseeffects",
+                                                     "pulseeffects_soe",
+                                                     "pulseeffects_sie",
                                                      "PulseEffectsWebrtcProbe",
                                                      "pavucontrol",
                                                      "PulseAudio Volume Control",
@@ -194,13 +196,6 @@ class PipeManager {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
-
-  std::array<std::string, 4> blocklist_media_name = {"pulsesink probe", "bell-window-system", "audio-volume-change",
-                                                     "screen-capture"};
-
-  std::array<std::string, 4> blocklist_app_id = {"com.github.wwmm.pulseeffects.sinkinputs",
-                                                 "com.github.wwmm.pulseeffects.sourceoutputs",
-                                                 "org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 };
 
 #endif

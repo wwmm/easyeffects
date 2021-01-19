@@ -115,7 +115,7 @@ void on_latency_changed(GSettings* settings, gchar* key, StreamOutputEffects* so
 }  // namespace
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
-  pipe_props += ",application.id=com.github.wwmm.pulseeffects.streamoutputs";
+  pipe_props += ",node.name=pulseeffects_soe,application.id=com.github.wwmm.pulseeffects.streamoutputs";
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
