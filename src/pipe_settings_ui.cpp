@@ -97,7 +97,7 @@ PipeSettingsUi::~PipeSettingsUi() {
 void PipeSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_settings.glade");
 
-  PipeSettingsUi* ui;
+  PipeSettingsUi* ui = nullptr;
 
   builder->get_widget_derived("widgets_grid", ui, app);
 

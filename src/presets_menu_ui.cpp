@@ -304,36 +304,6 @@ void PresetsMenuUi::reset_menu_button_label() {
   settings->set_string("last-used-input-preset", _("Presets"));
 }
 
-auto PresetsMenuUi::build_device_name(PresetType preset_type, const std::string& device) -> std::string {
-  std::string port;
-  std::string dev_name;
-
-  switch (preset_type) {
-    case PresetType::output: {
-      // auto info = app->pm->get_sink_info(device);
-
-      // port = info->active_port;
-
-      break;
-    }
-    case PresetType::input: {
-      // auto info = app->pm->get_source_info(device);
-
-      // port = info->active_port;
-
-      break;
-    }
-  }
-
-  if (port != "null") {
-    dev_name = device + ":" + port;
-  } else {
-    dev_name = device;
-  }
-
-  return dev_name;
-}
-
 auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) -> bool {
   std::string current_autoload;
 

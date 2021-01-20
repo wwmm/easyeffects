@@ -133,8 +133,15 @@ void Application::on_startup() {
   pm->new_default_sink.connect([&](const NodeInfo& node) {
     util::debug("new default sink: " + node.name);
 
-    soe->set_output_node_id(node.id);
-    sie->webrtc->set_probe_input_node_id(node.id);
+    if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
+      soe->set_null_pipeline();
+
+      soe->set_output_node_id(node.id);
+
+      soe->update_pipeline_state();
+
+      sie->webrtc->set_probe_input_node_id(node.id);
+    }
 
     Glib::signal_timeout().connect_seconds_once(
         [=]() {
@@ -155,7 +162,13 @@ void Application::on_startup() {
   pm->new_default_source.connect([&](const NodeInfo& node) {
     util::debug("new default source: " + node.name);
 
-    sie->change_input_device(node);
+    if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
+      sie->set_null_pipeline();
+
+      sie->change_input_device(node);
+
+      sie->update_pipeline_state();
+    }
 
     Glib::signal_timeout().connect_seconds_once(
         [=]() {

@@ -40,14 +40,12 @@ class PresetsMenuUi : public Gtk::Grid {
   PresetsMenuUi(const PresetsMenuUi&) = delete;
   auto operator=(const PresetsMenuUi&) -> PresetsMenuUi& = delete;
   PresetsMenuUi(const PresetsMenuUi&&) = delete;
-  auto operator=(const PresetsMenuUi &&) -> PresetsMenuUi& = delete;
+  auto operator=(const PresetsMenuUi&&) -> PresetsMenuUi& = delete;
   ~PresetsMenuUi() override;
 
   static auto add_to_popover(Gtk::Popover* popover, Application* app) -> PresetsMenuUi*;
 
   void on_presets_menu_button_clicked();
-
-  auto build_device_name(PresetType preset_type, const std::string& device) -> std::string;
 
  private:
   std::string log_tag = "presets_menu_ui: ";
