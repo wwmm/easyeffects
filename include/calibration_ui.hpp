@@ -36,12 +36,12 @@ class CalibrationUi : public Gtk::Window {
   CalibrationUi(const CalibrationUi&) = delete;
   auto operator=(const CalibrationUi&) -> CalibrationUi& = delete;
   CalibrationUi(const CalibrationUi&&) = delete;
-  auto operator=(const CalibrationUi &&) -> CalibrationUi& = delete;
+  auto operator=(const CalibrationUi&&) -> CalibrationUi& = delete;
   ~CalibrationUi() override;
 
   static auto create() -> CalibrationUi*;
 
-  void set_source_monitor_name(const std::string& name);
+  void set_input_node_id(const uint& id);
 
  private:
   std::string log_tag = "calibration_ui: ";

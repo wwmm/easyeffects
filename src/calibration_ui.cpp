@@ -78,8 +78,8 @@ auto CalibrationUi::create() -> CalibrationUi* {
   return window;
 }
 
-void CalibrationUi::set_source_monitor_name(const std::string& name) {
-  calibration_mic_ui->cm->set_source_monitor_name(name);
+void CalibrationUi::set_input_node_id(const uint& id) {
+  calibration_mic_ui->cm->set_input_node_id(id);
 }
 
 void CalibrationUi::on_new_spectrum(const std::vector<float>& magnitudes) {

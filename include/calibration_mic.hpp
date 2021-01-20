@@ -54,7 +54,7 @@ class CalibrationMic {
   void start() const;
   void stop() const;
   void set_window(const double& value) const;
-  void set_source_monitor_name(const std::string& name) const;
+  void set_input_node_id(const uint& id) const;
 
  private:
   GstBus* bus = nullptr;

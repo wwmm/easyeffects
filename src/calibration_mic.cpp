@@ -161,8 +161,12 @@ CalibrationMic::~CalibrationMic() {
   util::debug(log_tag + "destroyed");
 }
 
-void CalibrationMic::set_source_monitor_name(const std::string& name) const {
-  g_object_set(source, "device", name.c_str(), nullptr);
+void CalibrationMic::set_input_node_id(const uint& id) const {
+  auto path = std::to_string(id);
+
+  g_object_set(source, "path", path.c_str(), nullptr);
+
+  util::debug(log_tag + "using input device: " + path);
 }
 
 void CalibrationMic::set_window(const double& value) const {

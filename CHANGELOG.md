@@ -2,9 +2,17 @@
 
 ## [Unreleased]
 
+## [5.0.0]
+
 ### Added
 
 - First version using the PipeWire server instead of Pulseaudio.
+
+### Note to packagers
+
+- This is the first release using PipeWire instead of Pulseaudio. If you cannot use PipeWire yet do not upgrade
+  to this version or any other higher version. Supporting both PipeWire and Pulseaudio would require too much time. And
+  would probably open the door to much more bugs.
 
 ## [4.8.4]
 

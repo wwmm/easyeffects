@@ -312,9 +312,8 @@ void ApplicationUi::on_stack_visible_child_changed() {
 void ApplicationUi::on_calibration_button_clicked() {
   calibration_ui = CalibrationUi::create();
 
-  auto c = app->pm->new_default_source.connect([=](NodeInfo node_info) {
-    // calibration_ui->set_source_monitor_name(name);
-  });
+  auto c = app->pm->new_default_source.connect(
+      [=](const NodeInfo& node_info) { calibration_ui->set_input_node_id(node_info.id); });
 
   calibration_ui->signal_hide().connect([=]() {
     c->disconnect();
