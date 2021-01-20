@@ -79,7 +79,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
 
-  auto default_input = pipe_manager->get_default_source();
+  auto default_input = pipe_manager->default_source;
 
   set_input_node_id(default_input.id);
 

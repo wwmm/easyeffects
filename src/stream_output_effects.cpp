@@ -119,7 +119,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
-  auto default_output = pipe_manager->get_default_sink();
+  auto default_output = pipe_manager->default_sink;
 
   set_input_node_id(pm->pe_sink_node.id);
   set_output_node_id(default_output.id);

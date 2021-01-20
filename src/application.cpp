@@ -135,73 +135,43 @@ void Application::on_startup() {
 
     soe->set_output_node_id(node.id);
     sie->webrtc->set_probe_input_node_id(node.id);
+
+    Glib::signal_timeout().connect_seconds_once(
+        [=]() {
+          auto defaul_sink_name = pm->default_sink.name;
+
+          // checking if after 2 seconds this sink still is the default sink
+          if (node.name == defaul_sink_name) {
+            if (node.name != last_sink_dev_name) {
+              last_sink_dev_name = node.name;
+
+              presets_manager->autoload(PresetType::output, node.name);
+            }
+          }
+        },
+        2);
   });
 
   pm->new_default_source.connect([&](const NodeInfo& node) {
     util::debug("new default source: " + node.name);
 
     sie->change_input_device(node);
+
+    Glib::signal_timeout().connect_seconds_once(
+        [=]() {
+          auto defaul_source_name = pm->default_source.name;
+
+          // checking if after 2 seconds this source still is the default source
+          if (node.name == defaul_source_name) {
+            if (node.name != last_source_dev_name) {
+              last_source_dev_name = node.name;
+
+              presets_manager->autoload(PresetType::input, node.name);
+            }
+          }
+        },
+        3);
   });
-
-  // pm->sink_changed.connect([&](const std::shared_ptr<mySinkInfo>& info) {
-  //   if (info->name == pm->server_info.default_sink_name) {
-  //     Glib::signal_timeout().connect_seconds_once(
-  //         [=]() {
-  //           // checking if after 3 seconds this sink still is the default sink
-  //           if (info->name == pm->server_info.default_sink_name) {
-  //             auto current_info = pm->get_sink_info(info->name);
-
-  //             if (current_info != nullptr) {
-  //               auto port = current_info->active_port;
-  //               std::string dev_name;
-
-  //               if (port != "null") {
-  //                 dev_name = current_info->name + ":" + port;
-  //               } else {
-  //                 dev_name = current_info->name;
-  //               }
-
-  //               if (dev_name != last_sink_dev_name) {
-  //                 last_sink_dev_name = dev_name;
-
-  //                 presets_manager->autoload(PresetType::output, dev_name);
-  //               }
-  //             }
-  //           }
-  //         },
-  //         3);
-  //   }
-  // });
-
-  // pm->source_changed.connect([&](const std::shared_ptr<mySourceInfo>& info) {
-  //   if (info->name == pm->server_info.default_source_name) {
-  //     Glib::signal_timeout().connect_seconds_once(
-  //         [=]() {
-  //           // checking if after 3 seconds this source still is the default source
-  //           if (info->name == pm->server_info.default_source_name) {
-  //             auto current_info = pm->get_source_info(info->name);
-
-  //             if (current_info != nullptr) {
-  //               auto port = current_info->active_port;
-  //               std::string dev_name;
-
-  //               if (port != "null") {
-  //                 dev_name = current_info->name + ":" + port;
-  //               } else {
-  //                 dev_name = current_info->name;
-  //               }
-
-  //               if (dev_name != last_source_dev_name) {
-  //                 last_source_dev_name = dev_name;
-
-  //                 presets_manager->autoload(PresetType::input, dev_name);
-  //               }
-  //             }
-  //           }
-  //         },
-  //         3);
-  //   }
-  // });
 
   settings->signal_changed("blocklist-in").connect([=](auto key) {
     pm->blocklist_in = settings->get_string_array("blocklist-in");

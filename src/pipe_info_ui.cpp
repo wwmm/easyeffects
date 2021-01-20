@@ -76,8 +76,8 @@ void PipeInfoUi::update_server_info() {
 
   server_name->set_text(pm->core_name);
 
-  default_sink->set_text(pm->get_default_sink().name);
-  default_source->set_text(pm->get_default_source().name);
+  default_sink->set_text(pm->default_sink.name);
+  default_source->set_text(pm->default_source.name);
   server_rate->set_text(pm->default_clock_rate);
 
   min_quantum->set_text(pm->default_min_quantum);

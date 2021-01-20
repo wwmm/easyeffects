@@ -238,30 +238,30 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
         save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
 
     connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
-      //   switch (preset_type) {
-      //     case PresetType::output: {
-      //       auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
+      switch (preset_type) {
+        case PresetType::output: {
+          auto dev_name = app->pm->default_sink.name;
 
-      //       if (autoload_btn->get_active()) {
-      //         app->presets_manager->add_autoload(dev_name, name);
-      //       } else {
-      //         app->presets_manager->remove_autoload(dev_name, name);
-      //       }
+          if (autoload_btn->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
+          }
 
-      //       break;
-      //     }
-      //     case PresetType::input: {
-      //       auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+          break;
+        }
+        case PresetType::input: {
+          auto dev_name = app->pm->default_source.name;
 
-      //       if (autoload_btn->get_active()) {
-      //         app->presets_manager->add_autoload(dev_name, name);
-      //       } else {
-      //         app->presets_manager->remove_autoload(dev_name, name);
-      //       }
+          if (autoload_btn->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
+          }
 
-      //       break;
-      //     }
-      //   }
+          break;
+        }
+      }
 
       populate_listbox(preset_type);
     }));
@@ -339,16 +339,16 @@ auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& nam
 
   switch (preset_type) {
     case PresetType::output: {
-      // auto dev_name = build_device_name(preset_type, app->pm->server_info.default_sink_name);
+      auto dev_name = app->pm->default_sink.name;
 
-      // current_autoload = app->presets_manager->find_autoload(dev_name);
+      current_autoload = app->presets_manager->find_autoload(dev_name);
 
       break;
     }
     case PresetType::input: {
-      // auto dev_name = build_device_name(preset_type, app->pm->server_info.default_source_name);
+      auto dev_name = app->pm->default_source.name;
 
-      // current_autoload = app->presets_manager->find_autoload(dev_name);
+      current_autoload = app->presets_manager->find_autoload(dev_name);
 
       break;
     }

@@ -32,6 +32,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "spa/utils/defs.h"
 #include "util.hpp"
 
 struct NodeInfo {
@@ -136,6 +137,8 @@ class PipeManager {
 
   NodeInfo pe_sink_node, pe_source_node;
 
+  NodeInfo default_sink, default_source;
+
   std::vector<std::string> blocklist_in;   // for input effects
   std::vector<std::string> blocklist_out;  // for output effects
 
@@ -158,17 +161,13 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
-  auto get_default_source() -> NodeInfo;
-
-  auto get_default_sink() -> NodeInfo;
-
   void connect_stream_output(const NodeInfo& nd_info) const;
 
-  void disconnect_stream_output(const NodeInfo& nd_info);
+  void disconnect_stream_output(const NodeInfo& nd_info) const;
 
   void connect_stream_input(const NodeInfo& nd_info) const;
 
-  void disconnect_stream_input(const NodeInfo& nd_info);
+  void disconnect_stream_input(const NodeInfo& nd_info) const;
 
   static void set_node_volume(const NodeInfo& nd_info, const float& value);
 

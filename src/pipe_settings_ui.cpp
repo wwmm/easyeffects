@@ -130,9 +130,7 @@ void PipeSettingsUi::on_sink_added(const NodeInfo& info) {
     row->set_value(1, info.name);
 
     if (use_default_sink->get_active()) {
-      auto default_sink = app->pm->get_default_sink();
-
-      if (info.name == default_sink.name) {
+      if (info.name == app->pm->default_sink.name) {
         output_device->set_active(row);
       }
     } else {
@@ -195,9 +193,7 @@ void PipeSettingsUi::on_source_added(const NodeInfo& info) {
     row->set_value(1, info.name);
 
     if (use_default_source->get_active()) {
-      auto default_source = app->pm->get_default_source();
-
-      if (info.name == default_source.name) {
+      if (info.name == app->pm->default_source.name) {
         input_device->set_active(row);
       }
     } else {
@@ -236,7 +232,7 @@ void PipeSettingsUi::on_source_removed(const NodeInfo& info) {
 
 void PipeSettingsUi::on_use_default_sink_toggled() {
   if (use_default_sink->get_active()) {
-    auto default_sink = app->pm->get_default_sink().name;
+    auto default_sink = app->pm->default_sink.name;
 
     auto children = sink_list->children();
 
@@ -254,7 +250,7 @@ void PipeSettingsUi::on_use_default_sink_toggled() {
 
 void PipeSettingsUi::on_use_default_source_toggled() {
   if (use_default_source->get_active()) {
-    auto default_source = app->pm->get_default_source().name;
+    auto default_source = app->pm->default_source.name;
 
     auto children = source_list->children();
 

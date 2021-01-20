@@ -503,8 +503,12 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     for (auto& node : pm->list_nodes) {
       if (node.id == v) {
         if (str_key == "default.audio.source") {
+          pm->default_source = node;
+
           Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
         } else if (str_key == "default.audio.sink") {
+          pm->default_sink = node;
+
           Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
         }
 
@@ -906,44 +910,6 @@ PipeManager::~PipeManager() {
   pw_thread_loop_destroy(thread_loop);
 }
 
-auto PipeManager::get_default_source() -> NodeInfo {
-  int priority = -1;
-  NodeInfo default_source;
-
-  for (const auto& n : list_nodes) {
-    if (n.media_class != "Audio/Source") {
-      continue;
-    }
-
-    if (n.priority > priority) {
-      priority = n.priority;
-
-      default_source = n;
-    }
-  }
-
-  return default_source;
-}
-
-auto PipeManager::get_default_sink() -> NodeInfo {
-  int priority = -1;
-  NodeInfo default_sink;
-
-  for (const auto& n : list_nodes) {
-    if (n.media_class != "Audio/Sink") {
-      continue;
-    }
-
-    if (n.priority > priority) {
-      priority = n.priority;
-
-      default_sink = n;
-    }
-  }
-
-  return default_sink;
-}
-
 void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
@@ -954,10 +920,8 @@ void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) {
+void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
-    auto default_sink = get_default_sink();
-
     pw_thread_loop_lock(thread_loop);
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
@@ -976,10 +940,8 @@ void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) {
+void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
-    auto default_source = get_default_source();
-
     pw_thread_loop_lock(thread_loop);
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_source.id).c_str());
