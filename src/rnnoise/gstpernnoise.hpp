@@ -23,10 +23,7 @@
 #include <gst/audio/gstaudiofilter.h>
 #include <mutex>
 #include <vector>
-
-extern "C" {
-#include "rnnoise.h"
-}
+#include <rnnoise.h>
 
 G_BEGIN_DECLS
 
