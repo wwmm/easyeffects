@@ -75,8 +75,8 @@ must have the following installed in your system:
 
 From version `5.0.0` onward PulseEffects needs PipeWire. Pulseaudio users need to instal one of the `4.x` releases or
 building a package directly from our legacy Pulseaudio branch https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
-This branch will receive updates for critical bugs as time goes by. So if PipeWire is not for you yet it is fine to use
-the legacy branch.
+Arch Linux users can also use the PKGBUILD on the same branch. This branch will receive updates for critical bugs as
+time goes by. So if PipeWire is not for you yet it is fine to use the legacy branch.
 
 ## Donate
 
