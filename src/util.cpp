@@ -18,7 +18,6 @@
  */
 
 #include "util.hpp"
-#include <cmath>
 
 namespace util {
 
@@ -44,6 +43,20 @@ void info(const std::string& s) {
 
 void print_thread_id() {
   std::cout << "thread id: " << std::this_thread::get_id() << std::endl;
+}
+
+auto get_global_locale() -> std::locale {
+  // set locale (workaround for #849)
+
+  try {
+    return std::locale("");
+  } catch (const std::exception& e) {
+    return std::locale();
+  }
+}
+
+auto get_c_locale() -> std::locale {
+  return std::locale();
 }
 
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
@@ -84,30 +97,6 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
   }
 
   return output;
-}
-
-auto linear_to_db(const float& amp) -> float {
-  if (amp >= minimum_linear_level) {
-    return 20.0F * log10f(amp);
-  }
-
-  return minimum_db_level;
-}
-
-auto linear_to_db(const double& amp) -> double {
-  if (amp >= minimum_linear_d_level) {
-    return 20.0 * log10f(amp);
-  }
-
-  return minimum_db_d_level;
-}
-
-auto db_to_linear(const float& db) -> float {
-  return expf((db / 20.0F) * logf(10.0F));
-}
-
-auto db_to_linear(const double& db) -> double {
-  return expf((db / 20.0) * logf(10.0));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {

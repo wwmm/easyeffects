@@ -19,19 +19,13 @@
 
 #include "app_info_ui.hpp"
 
+std::locale AppInfoUi::global_locale = util::get_global_locale();
+
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      std::shared_ptr<AppInfo> info,
                      PulseManager* pulse_manager)
     : Gtk::Grid(cobject), app_info(std::move(info)), pm(pulse_manager) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // loading glade widgets
 
   builder->get_widget("enable", enable);

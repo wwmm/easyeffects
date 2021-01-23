@@ -18,18 +18,10 @@
  */
 
 #include "spectrum_ui.hpp"
-#include "util.hpp"
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
+    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
+      global_locale(util::get_global_locale()) {
   // loading glade widgets
 
   builder->get_widget("spectrum", spectrum);

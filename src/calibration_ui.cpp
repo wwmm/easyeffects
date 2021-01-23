@@ -20,15 +20,7 @@
 #include "calibration_ui.hpp"
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Window(cobject) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
+    : Gtk::Window(cobject), global_locale(util::get_global_locale()) {
   // loading glade widgets
 
   builder->get_widget("stack", stack);

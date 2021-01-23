@@ -3,7 +3,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=pulseeffects-legacy-git
-pkgver=4.7.1.r2.g38355f59
+pkgver=4.8.4.r0.gcef23707
 pkgrel=1
 pkgdesc='Audio Effects for Pulseaudio Applications'
 arch=(x86_64)

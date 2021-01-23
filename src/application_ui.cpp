@@ -18,33 +18,15 @@
  */
 
 #include "application_ui.hpp"
-#include <glibmm/i18n.h>
-#include <gtkmm/cssprovider.h>
-#include <gtkmm/icontheme.h>
-#include <gtkmm/settings.h>
-#include <memory>
-#include "blocklist_settings_ui.hpp"
-#include "calibration_ui.hpp"
-#include "general_settings_ui.hpp"
-#include "pulse_settings_ui.hpp"
-#include "spectrum_settings_ui.hpp"
-#include "util.hpp"
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
-    : Gtk::ApplicationWindow(cobject), app(application), settings(app->settings) {
+    : Gtk::ApplicationWindow(cobject), app(application),
+      settings(app->settings), global_locale(util::get_global_locale()) {
   apply_css_style("custom.css");
 
   Gtk::IconTheme::get_default()->add_resource_path("/com/github/wwmm/pulseeffects/icons");
-
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
 
   // loading glade widgets
 

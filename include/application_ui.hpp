@@ -20,23 +20,34 @@
 #ifndef APPLICATION_WINDOW_HPP
 #define APPLICATION_WINDOW_HPP
 
+#include <glibmm/i18n.h>
 #include <gtkmm/applicationwindow.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/button.h>
+#include <gtkmm/cssprovider.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/icontheme.h>
 #include <gtkmm/headerbar.h>
 #include <gtkmm/image.h>
 #include <gtkmm/label.h>
 #include <gtkmm/menubutton.h>
 #include <gtkmm/popover.h>
+#include <gtkmm/settings.h>
 #include <gtkmm/stack.h>
 #include <gtkmm/togglebutton.h>
+#include <memory>
 #include "application.hpp"
+#include "blocklist_settings_ui.hpp"
 #include "calibration_ui.hpp"
+#include "general_settings_ui.hpp"
 #include "presets_menu_ui.hpp"
 #include "pulse_info_ui.hpp"
+#include "pulse_settings_ui.hpp"
 #include "sink_input_effects_ui.hpp"
 #include "source_output_effects_ui.hpp"
+#include "spectrum_settings_ui.hpp"
+#include "util.hpp"
+
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
