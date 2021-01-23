@@ -71,6 +71,13 @@ must have the following installed in your system:
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
 
+## Note for users that did not moved from Pulseaudio to PipeWire
+
+From version `5.0.0` onward PulseEffects needs PipeWire. Pulseaudio users need to instal one of the `4.x` releases or
+building a package directly from our legacy Pulseaudio branch https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
+This branch will receive updates for critical bugs as time goes by. So if PipeWire is not for you yet it is fine to use
+the legacy branch.
+
 ## Donate
 
 You can help me to keep developing PulseEffects through donations. Any amount will be greatly appreciated :-)
