@@ -20,8 +20,11 @@
 #ifndef GST_PEADAPTER_HPP
 #define GST_PEADAPTER_HPP
 
+#include <gst/audio/audio.h>
 #include <gst/base/gstadapter.h>
 #include <gst/gst.h>
+#include "config.h"
+#include "util.hpp"
 
 G_BEGIN_DECLS
 
@@ -49,6 +52,7 @@ struct GstPeadapter {
   int bpf;              // bytes per frame : channels * bps
   int inbuf_n_samples;  // number of samples in the input buffer
   bool flag_discont;
+  bool passthrough_power_of_2;
 
   GstAdapter* adapter = nullptr;
   GstPad* srcpad = nullptr;

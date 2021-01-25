@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Inproved buffer size handling in the plugins: peadapter, rnnoise, convolver and crystalizer
+
 ## [5.0.0]
 
 ### Added
