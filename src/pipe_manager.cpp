@@ -502,6 +502,10 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.id == v) {
+        if (node.name == "pulseeffects_sink" || node.name == "pulseeffects_source") {
+          return 0;
+        }
+
         if (str_key == "default.audio.source") {
           pm->default_source = node;
 
