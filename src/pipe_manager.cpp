@@ -338,7 +338,7 @@ void on_node_event_param(void* object,
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
       } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
         Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
-      } else if (nd->nd_info.media_class == "Audio/Duplex") {
+      } else if (nd->nd_info.media_class == "Audio/Source/Virtual") {
         if (nd->nd_info.id == nd->pm->pe_source_node.id) {
           nd->pm->pe_source_node = nd->nd_info;
         }
@@ -580,7 +580,7 @@ void on_registry_global(void* data,
     if (key_media_class != nullptr) {
       std::string media_class = key_media_class;
 
-      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Duplex" ||
+      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Source/Virtual" ||
           media_class == "Stream/Output/Audio" || media_class == "Stream/Input/Audio") {
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
         const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
@@ -862,7 +862,7 @@ PipeManager::PipeManager() {
   pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
-  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Duplex");
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source/Virtual");
   pw_properties_set(props_source, "audio.position", "FL,FR");
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
