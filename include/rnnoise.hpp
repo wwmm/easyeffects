@@ -31,7 +31,7 @@ class RNNoise : public PluginBase {
   auto operator=(const RNNoise&&) -> RNNoise& = delete;
   ~RNNoise() override;
 
-  GstElement* rnnoise = nullptr;
+  GstElement *rnnoise = nullptr, *adapter = nullptr, *adapter_out = nullptr;
 
   void set_caps_out(const uint& sampling_rate);
 
