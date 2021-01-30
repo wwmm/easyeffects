@@ -183,14 +183,16 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         }
       }
 
+      auto* pm = nd->pm;
+
       if (node.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
+        Glib::signal_idle().connect_once([pm, node] { pm->stream_output_changed.emit(node); });
       } else if (node.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
+        Glib::signal_idle().connect_once([pm, node] { pm->stream_input_changed.emit(node); });
       } else if (nd->nd_info.media_class == "Audio/Source") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
+        Glib::signal_idle().connect_once([pm, node] { pm->source_changed.emit(node); });
       } else if (nd->nd_info.media_class == "Audio/Sink") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->sink_changed.emit(nd->nd_info); });
+        Glib::signal_idle().connect_once([pm, node] { pm->sink_changed.emit(node); });
       }
 
       break;
@@ -334,24 +336,27 @@ void on_node_event_param(void* object,
     }
 
     if (notify) {
-      if (nd->nd_info.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->stream_output_changed.emit(nd->nd_info); });
-      } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([nd] { nd->pm->stream_input_changed.emit(nd->nd_info); });
-      } else if (nd->nd_info.media_class == "Audio/Source/Virtual") {
-        if (nd->nd_info.id == nd->pm->pe_source_node.id) {
-          nd->pm->pe_source_node = nd->nd_info;
+      auto* pm = nd->pm;
+      NodeInfo nd_info = nd->nd_info;  // sometimes PipeWire destroys the pointer before signal_idle is called
+
+      if (nd_info.media_class == "Stream/Output/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_changed.emit(nd_info); });
+      } else if (nd_info.media_class == "Stream/Input/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_changed.emit(nd_info); });
+      } else if (nd_info.media_class == "Audio/Source/Virtual") {
+        if (nd_info.id == pm->pe_source_node.id) {
+          pm->pe_source_node = nd_info;
         }
 
-        Glib::signal_idle().connect_once([nd] { nd->pm->source_changed.emit(nd->nd_info); });
-      } else if (nd->nd_info.media_class == "Audio/Sink") {
-        if (nd->nd_info.id == nd->pm->pe_sink_node.id) {
-          nd->pm->pe_sink_node = nd->nd_info;
-        } else if (nd->nd_info.id == nd->pm->pe_source_node.id) {
-          nd->pm->pe_source_node = nd->nd_info;
+        Glib::signal_idle().connect_once([pm, nd_info] { pm->source_changed.emit(nd_info); });
+      } else if (nd_info.media_class == "Audio/Sink") {
+        if (nd_info.id == pm->pe_sink_node.id) {
+          pm->pe_sink_node = nd_info;
+        } else if (nd_info.id == pm->pe_source_node.id) {
+          pm->pe_source_node = nd_info;
         }
 
-        Glib::signal_idle().connect_once([nd] { nd->pm->sink_changed.emit(nd->nd_info); });
+        Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_changed.emit(nd_info); });
       }
     }
   }
@@ -628,15 +633,17 @@ void on_registry_global(void* data,
 
         util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
 
+        NodeInfo nd_info = pd->nd_info;
+
         if (media_class == "Audio/Source") {
-          Glib::signal_idle().connect_once([pd] { pd->pm->source_added.emit(pd->nd_info); });
-        } else if (media_class == "Audio/Sink" && pd->nd_info.name != "pulseeffects_sink" &&
-                   pd->nd_info.name != "pulseeffects_source") {
-          Glib::signal_idle().connect_once([pd] { pd->pm->sink_added.emit(pd->nd_info); });
+          Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
+        } else if (media_class == "Audio/Sink" && nd_info.name != "pulseeffects_sink" &&
+                   nd_info.name != "pulseeffects_source") {
+          Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
         } else if (media_class == "Stream/Output/Audio") {
-          Glib::signal_idle().connect_once([pd] { pd->pm->stream_output_added.emit(pd->nd_info); });
+          Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_added.emit(nd_info); });
         } else if (media_class == "Stream/Input/Audio") {
-          Glib::signal_idle().connect_once([pd] { pd->pm->stream_input_added.emit(pd->nd_info); });
+          Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_added.emit(nd_info); });
         }
       }
     }
@@ -914,7 +921,7 @@ PipeManager::~PipeManager() {
   pw_thread_loop_destroy(thread_loop);
 }
 
-void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
+void PipeManager::connect_stream_output(NodeInfo nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -924,7 +931,7 @@ void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) const {
+void PipeManager::disconnect_stream_output(NodeInfo nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -934,7 +941,7 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
+void PipeManager::connect_stream_input(NodeInfo nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -944,7 +951,7 @@ void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) const {
+void PipeManager::disconnect_stream_input(NodeInfo nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -954,7 +961,7 @@ void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) const {
   }
 }
 
-void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
+void PipeManager::set_node_volume(NodeInfo nd_info, const float& value) {
   float volumes[SPA_AUDIO_MAX_CHANNELS];
 
   for (int i = 0; i < nd_info.n_volume_channels; i++) {
@@ -971,7 +978,7 @@ void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
                         SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes)));
 }
 
-void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
+void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
   char buffer[1024];
 
   auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));

@@ -214,7 +214,7 @@ StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
+void StreamInputEffects::on_app_added(NodeInfo node_info) {
   bool forbidden_app = false;
   bool connected = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-in");
@@ -250,7 +250,7 @@ void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
   g_free(blocklist);
 }
 
-void StreamInputEffects::on_app_changed(const NodeInfo& node_info) {
+void StreamInputEffects::on_app_changed(NodeInfo node_info) {
   apps_want_to_play = false;
 
   for (const auto& link : pm->list_links) {
@@ -266,7 +266,7 @@ void StreamInputEffects::on_app_changed(const NodeInfo& node_info) {
   update_pipeline_state();
 }
 
-void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
+void StreamInputEffects::on_source_changed(NodeInfo node_info) {
   auto id = get_input_node_id();
 
   if (node_info.id == id) {

@@ -208,6 +208,8 @@ auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects*
 }
 
 void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
+  std::lock_guard<std::mutex> lock(apps_list_lock_guard);
+
   // do not add the same stream twice
 
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {

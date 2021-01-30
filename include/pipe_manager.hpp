@@ -161,17 +161,21 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
-  void connect_stream_output(const NodeInfo& nd_info) const;
+  /*
+    Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens
+  */
 
-  void disconnect_stream_output(const NodeInfo& nd_info) const;
+  void connect_stream_output(NodeInfo nd_info) const;
 
-  void connect_stream_input(const NodeInfo& nd_info) const;
+  void disconnect_stream_output(NodeInfo nd_info) const;
 
-  void disconnect_stream_input(const NodeInfo& nd_info) const;
+  void connect_stream_input(NodeInfo nd_info) const;
 
-  static void set_node_volume(const NodeInfo& nd_info, const float& value);
+  void disconnect_stream_input(NodeInfo nd_info) const;
 
-  static void set_node_mute(const NodeInfo& nd_info, const bool& state);
+  static void set_node_volume(NodeInfo nd_info, const float& value);
+
+  static void set_node_mute(NodeInfo nd_info, const bool& state);
 
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, NodeInfo> source_changed;

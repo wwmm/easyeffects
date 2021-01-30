@@ -82,7 +82,9 @@ EffectsBaseUi::~EffectsBaseUi() {
   }
 }
 
-void EffectsBaseUi::on_app_changed(const NodeInfo& node_info) {
+void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
+  std::lock_guard<std::mutex> lock(apps_list_lock_guard);
+
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 
@@ -94,7 +96,9 @@ void EffectsBaseUi::on_app_changed(const NodeInfo& node_info) {
   }
 }
 
-void EffectsBaseUi::on_app_removed(const NodeInfo& node_info) {
+void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
+  std::lock_guard<std::mutex> lock(apps_list_lock_guard);
+
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 

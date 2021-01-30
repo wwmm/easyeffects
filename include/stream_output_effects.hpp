@@ -75,11 +75,15 @@ class StreamOutputEffects : public PipelineBase {
  private:
   void add_plugins_to_pipeline();
 
-  void on_app_added(const NodeInfo& node_info);
+  /*
+    Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens
+  */
 
-  void on_app_changed(const NodeInfo& node_info);
+  void on_app_added(NodeInfo node_info);
 
-  void on_sink_changed(const NodeInfo& node_info);
+  void on_app_changed(NodeInfo node_info);
+
+  void on_sink_changed(NodeInfo node_info);
 };
 
 #endif

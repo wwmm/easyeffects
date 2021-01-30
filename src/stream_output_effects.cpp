@@ -288,7 +288,7 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
+void StreamOutputEffects::on_app_added(NodeInfo node_info) {
   bool forbidden_app = false;
   bool connected = false;
   auto* blocklist = g_settings_get_strv(settings, "blocklist-out");
@@ -324,7 +324,7 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
   g_free(blocklist);
 }
 
-void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
+void StreamOutputEffects::on_app_changed(NodeInfo node_info) {
   apps_want_to_play = false;
 
   for (const auto& link : pm->list_links) {
@@ -340,7 +340,7 @@ void StreamOutputEffects::on_app_changed(const NodeInfo& node_info) {
   update_pipeline_state();
 }
 
-void StreamOutputEffects::on_sink_changed(const NodeInfo& node_info) {
+void StreamOutputEffects::on_sink_changed(NodeInfo node_info) {
   if (node_info.name == "pulseeffects_sink") {
     if (node_info.rate != sampling_rate && node_info.rate != 0) {
       gst_element_set_state(pipeline, GST_STATE_NULL);

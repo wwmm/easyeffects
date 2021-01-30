@@ -30,6 +30,7 @@
 #include <gtkmm/stack.h>
 #include <locale>
 #include <memory>
+#include <mutex>
 #include <vector>
 #include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
@@ -49,8 +50,13 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
-  void on_app_changed(const NodeInfo& node_info);
-  void on_app_removed(const NodeInfo& node_info);
+  /*
+    Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens
+  */
+
+  void on_app_changed(NodeInfo node_info);
+  void on_app_removed(NodeInfo node_info);
+
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
  protected:
@@ -66,6 +72,8 @@ class EffectsBaseUi {
 
   std::vector<AppInfoUi*> apps_list;
   std::vector<sigc::connection> connections;
+
+  std::mutex apps_list_lock_guard;
 
   SpectrumUi* spectrum_ui = nullptr;
 
