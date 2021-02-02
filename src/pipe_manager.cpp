@@ -827,7 +827,13 @@ PipeManager::PipeManager() {
 
   pw_thread_loop_lock(thread_loop);
 
-  context = pw_context_new(pw_thread_loop_get_loop(thread_loop), nullptr, 0);
+  pw_properties* props_context = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_context, PW_KEY_MEDIA_TYPE, "Audio");
+  pw_properties_set(props_context, PW_KEY_MEDIA_CATEGORY, "Manager");
+  pw_properties_set(props_context, PW_KEY_MEDIA_ROLE, "Music");
+
+  context = pw_context_new(pw_thread_loop_get_loop(thread_loop), props_context, 0);
 
   if (context == nullptr) {
     util::error(log_tag + "could not create pipewire context");
