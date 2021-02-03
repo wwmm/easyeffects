@@ -21,20 +21,6 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-namespace {
-
-void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Convolver* c) {
-  int v = 0;
-  int blocksize = 0;
-
-  g_object_get(c->adapter, "n-input-samples", &v, nullptr);
-  g_object_get(c->adapter, "blocksize", &blocksize, nullptr);
-
-  util::debug(c->log_tag + "convolver: new input block size " + std::to_string(v) + " frames");
-}
-
-}  // namespace
-
 Convolver::Convolver(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "convolver", schema, schema_path) {
   convolver = gst_element_factory_make("peconvolver", "convolver");
@@ -64,9 +50,6 @@ Convolver::Convolver(const std::string& tag, const std::string& schema, const st
     gst_object_unref(GST_OBJECT(pad_src));
 
     g_object_set(adapter, "blocksize", 512, nullptr);
-    g_object_set(adapter, "passthrough", 1, nullptr);
-
-    g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
 
     bind_to_gsettings();
 

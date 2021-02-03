@@ -18,6 +18,9 @@
  */
 
 #include "gstpeadapter.hpp"
+#include <gst/audio/audio.h>
+#include "config.h"
+#include "util.hpp"
 
 GST_DEBUG_CATEGORY_STATIC(peadapter_debug);
 #define GST_CAT_DEFAULT (peadapter_debug)
@@ -52,7 +55,39 @@ static GstStaticPadTemplate srctemplate =
                             GST_STATIC_CAPS("audio/x-raw,format=F32LE,rate=[1,max],"
                                             "channels=2,layout=interleaved"));
 
-enum { PROP_BLOCKSIZE = 1, PROP_PASSTHROUGH_POWER_OF_2, PROP_N_INPUT_SAMPLES };
+enum { PROP_BLOCKSIZE = 1 };
+
+enum {
+  BLOCKSIZE_64 = 64,
+  BLOCKSIZE_128 = 128,
+  BLOCKSIZE_256 = 256,
+  BLOCKSIZE_480 = 480,
+  BLOCKSIZE_512 = 512,
+  BLOCKSIZE_1024 = 1024,
+  BLOCKSIZE_2048 = 2048,
+  BLOCKSIZE_4096 = 4096
+};
+
+#define GST_TYPE_PEADAPTER_BLOCKSIZE (gst_peadapter_blocksize_get_type())
+static GType gst_peadapter_blocksize_get_type(void) {
+  static GType gtype = 0;
+
+  if (gtype == 0) {
+    static const GEnumValue values[] = {{BLOCKSIZE_64, "Block size 64", "64"},
+                                        {BLOCKSIZE_128, "Block size 128", "128"},
+                                        {BLOCKSIZE_256, "Block size 256", "256"},
+                                        {BLOCKSIZE_480, "Block size 480", "480"},
+                                        {BLOCKSIZE_512, "Block size 512 (default)", "512"},
+                                        {BLOCKSIZE_1024, "Block size 1024", "1024"},
+                                        {BLOCKSIZE_2048, "Block size 2048", "2048"},
+                                        {BLOCKSIZE_4096, "Block size 4096", "4096"},
+                                        {0, NULL, NULL}};
+
+    gtype = g_enum_register_static("GstPeadapterBlockSize", values);
+  }
+
+  return gtype;
+}
 
 #define gst_peadapter_parent_class parent_class
 G_DEFINE_TYPE_WITH_CODE(GstPeadapter,
@@ -61,8 +96,8 @@ G_DEFINE_TYPE_WITH_CODE(GstPeadapter,
                         GST_DEBUG_CATEGORY_INIT(peadapter_debug, "peadapter", 0, "Peadapter"));
 
 static void gst_peadapter_class_init(GstPeadapterClass* klass) {
-  GObjectClass* gobject_class = nullptr;
-  GstElementClass* gstelement_class = nullptr;
+  GObjectClass* gobject_class;
+  GstElementClass* gstelement_class;
 
   gobject_class = (GObjectClass*)klass;
   gstelement_class = (GstElementClass*)(klass);
@@ -82,18 +117,9 @@ static void gst_peadapter_class_init(GstPeadapterClass* klass) {
 
   g_object_class_install_property(
       gobject_class, PROP_BLOCKSIZE,
-        g_param_spec_int("blocksize", "Block Size", "Number of Samples in the Audio Buffer", 0, 1000000, 512,
-                         static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_PASSTHROUGH_POWER_OF_2,
-      g_param_spec_boolean("passthrough", "Passthrough", "Passthrough buffers whose size is a power of 2", 0,
-                           static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
-
-  g_object_class_install_property(
-      gobject_class, PROP_N_INPUT_SAMPLES,
-      g_param_spec_int("n-input-samples", "Input Samples", "Number of Input Samples", 0, 100000000, 512,
-                       static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
+      g_param_spec_enum("blocksize", "Block Size", "Number of Samples in the Audio Buffer",
+                        GST_TYPE_PEADAPTER_BLOCKSIZE, BLOCKSIZE_512,
+                        static_cast<GParamFlags>(G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS)));
 }
 
 static void gst_peadapter_init(GstPeadapter* peadapter) {
@@ -101,7 +127,6 @@ static void gst_peadapter_init(GstPeadapter* peadapter) {
   peadapter->bpf = -1;
   peadapter->blocksize = 512;
   peadapter->inbuf_n_samples = -1;
-  peadapter->passthrough_power_of_2 = false;
   peadapter->flag_discont = false;
   peadapter->adapter = gst_adapter_new();
 
@@ -128,14 +153,9 @@ static void gst_peadapter_set_property(GObject* object, guint prop_id, const GVa
 
   switch (prop_id) {
     case PROP_BLOCKSIZE: {
-      peadapter->blocksize = g_value_get_int(value);
+      peadapter->blocksize = g_value_get_enum(value);
 
       gst_element_post_message(GST_ELEMENT_CAST(peadapter), gst_message_new_latency(GST_OBJECT_CAST(peadapter)));
-
-      break;
-    }
-    case PROP_PASSTHROUGH_POWER_OF_2: {
-      peadapter->passthrough_power_of_2 = (g_value_get_boolean(value) != 0);
 
       break;
     }
@@ -151,13 +171,7 @@ static void gst_peadapter_get_property(GObject* object, guint prop_id, GValue* v
 
   switch (prop_id) {
     case PROP_BLOCKSIZE:
-      g_value_set_int(value, peadapter->blocksize);
-      break;
-    case PROP_PASSTHROUGH_POWER_OF_2:
-      g_value_set_boolean(value, static_cast<gboolean>(peadapter->passthrough_power_of_2));
-      break;
-    case PROP_N_INPUT_SAMPLES:
-      g_value_set_int(value, peadapter->inbuf_n_samples);
+      g_value_set_enum(value, peadapter->blocksize);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
@@ -167,6 +181,7 @@ static void gst_peadapter_get_property(GObject* object, guint prop_id, GValue* v
 
 static GstFlowReturn gst_peadapter_chain(GstPad* pad, GstObject* parent, GstBuffer* buffer) {
   GstPeadapter* peadapter = GST_PEADAPTER(parent);
+  GstFlowReturn ret = GST_FLOW_OK;
 
   if (GST_BUFFER_FLAG_IS_SET(buffer, GST_BUFFER_FLAG_DISCONT)) {
     gst_adapter_clear(peadapter->adapter);
@@ -176,29 +191,25 @@ static GstFlowReturn gst_peadapter_chain(GstPad* pad, GstObject* parent, GstBuff
     peadapter->flag_discont = true;
   }
 
-  GstMapInfo map;
+  if (peadapter->inbuf_n_samples == -1) {
+    GstMapInfo map;
 
-  gst_buffer_map(buffer, &map, GST_MAP_READ);
+    gst_buffer_map(buffer, &map, GST_MAP_READ);
 
-  int n_samples = static_cast<int>(map.size) / peadapter->bpf;
+    peadapter->inbuf_n_samples = static_cast<int>(map.size) / peadapter->bpf;
 
-  gst_buffer_unmap(buffer, &map);
+    util::debug("peadapter: input block size " + std::to_string(peadapter->inbuf_n_samples) + " frames");
 
-  if (peadapter->inbuf_n_samples != n_samples) {
-    peadapter->inbuf_n_samples = n_samples;
+    util::debug("peadapter: we will read in chunks of " + std::to_string(peadapter->blocksize) + " frames");
 
     gst_buffer_unmap(buffer, &map);
   }
 
-  if (peadapter->passthrough_power_of_2) {
-    if ((peadapter->inbuf_n_samples & (peadapter->inbuf_n_samples - 1)) == 0) {
-      return gst_pad_push(peadapter->srcpad, buffer);
-    }
-  }
-
   gst_adapter_push(peadapter->adapter, buffer);
 
-  return gst_peadapter_process(peadapter);
+  ret = gst_peadapter_process(peadapter);
+
+  return ret;
 }
 
 static GstFlowReturn gst_peadapter_process(GstPeadapter* peadapter) {
@@ -242,7 +253,7 @@ static gboolean gst_peadapter_sink_event(GstPad* pad, GstObject* parent, GstEven
 
   switch (GST_EVENT_TYPE(event)) {
     case GST_EVENT_CAPS: {
-      GstCaps* caps = nullptr;
+      GstCaps* caps;
       GstAudioInfo info;
 
       gst_event_parse_caps(event, &caps);
@@ -292,20 +303,19 @@ static GstStateChangeReturn gst_peadapter_change_state(GstElement* element, GstS
 
   /*up changes*/
 
-  //switch (transition) {
-  //  case GST_STATE_CHANGE_NULL_TO_READY:
-  //    break;
-  //  default:
-  //    break;
-  //}
+  switch (transition) {
+    case GST_STATE_CHANGE_NULL_TO_READY:
+      break;
+    default:
+      break;
+  }
 
   /*down changes*/
 
   ret = GST_ELEMENT_CLASS(parent_class)->change_state(element, transition);
 
-  if (ret == GST_STATE_CHANGE_FAILURE) {
+  if (ret == GST_STATE_CHANGE_FAILURE)
     return ret;
-  }
 
   switch (transition) {
     case GST_STATE_CHANGE_PAUSED_TO_READY: {
@@ -350,9 +360,9 @@ static gboolean gst_peadapter_src_query(GstPad* pad, GstObject* parent, GstQuery
             if (max != GST_CLOCK_TIME_NONE) {
               max += latency;
             }
-
-            gst_query_set_latency(query, live, min, max);
           }
+
+          gst_query_set_latency(query, live, min, max);
         }
 
       } else {

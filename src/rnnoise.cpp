@@ -21,23 +21,6 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
-namespace {
-
-void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, RNNoise* r) {
-  int v = 0;
-  int blocksize = 0;
-
-  g_object_get(r->adapter, "n-input-samples", &v, nullptr);
-  g_object_get(r->adapter, "blocksize", &blocksize, nullptr);
-
-  util::debug(r->log_tag + "rnnoise: new input block size " + std::to_string(v) + " frames");
-  util::debug(r->log_tag + "rnnoise: we will try to read in chunks of " + std::to_string(blocksize) + " frames");
-
-  g_object_set(r->adapter_out, "blocksize", v, nullptr);
-}
-
-}  // namespace
-
 RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "rnnoise", schema, schema_path) {
   rnnoise = gst_element_factory_make("pernnoise", nullptr);
@@ -51,14 +34,13 @@ RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::s
     capsfilter_in = gst_element_factory_make("capsfilter", nullptr);
     auto* audioresample_in = gst_element_factory_make("audioresample", "rnnoise_audioresample_in");
     auto* audioresample_out = gst_element_factory_make("audioresample", "rnnoise_audioresample_out");
-    adapter = gst_element_factory_make("peadapter", nullptr);
-    adapter_out = gst_element_factory_make("peadapter", nullptr);
+    auto* adapter = gst_element_factory_make("peadapter", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
+    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise,
                      audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
-                          audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
+    gst_element_link_many(input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, audioresample_out,
+                          capsfilter_out, output_gain, out_level, nullptr);
 
     auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
     auto* pad_src = gst_element_get_static_pad(out_level, "src");
@@ -72,8 +54,6 @@ RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::s
     g_object_set(adapter, "blocksize", 480, nullptr);
 
     set_caps_in();
-
-    g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
 
     bind_to_gsettings();
 
