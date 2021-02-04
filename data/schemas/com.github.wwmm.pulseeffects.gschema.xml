@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.blocksize.enum">
-        <value nick="64" value="64" />
-        <value nick="128" value="128" />
-        <value nick="256" value="256" />
-        <value nick="512" value="512" />
-        <value nick="1024" value="1024" />
-        <value nick="2048" value="2048" />
-        <value nick="4096" value="4096" />
-    </enum>
     <enum id="com.github.wwmm.pulseeffects.prioritytype.enum">
         <value nick="Niceness" value="0" />
         <value nick="Real Time" value="1" />
