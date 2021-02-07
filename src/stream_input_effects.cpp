@@ -132,7 +132,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   }
 
   pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
-  pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_changed));
+  pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
   pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
   // element message callback
@@ -250,14 +250,18 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
   g_free(blocklist);
 }
 
-void StreamInputEffects::on_app_changed(NodeInfo node_info) {
+void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   apps_want_to_play = false;
 
   for (const auto& link : pm->list_links) {
     if (link.output_node_id == pm->pe_source_node.id) {
-      for (const auto& node : pm->list_nodes) {
-        if (node.id == link.input_node_id && node.state == PW_NODE_STATE_RUNNING) {
-          apps_want_to_play = true;
+      if (link.state == PW_LINK_STATE_ACTIVE) {
+        for (const auto& node : pm->list_nodes) {
+          if (node.id == link.input_node_id) {
+            apps_want_to_play = true;
+
+            break;
+          }
         }
       }
     }

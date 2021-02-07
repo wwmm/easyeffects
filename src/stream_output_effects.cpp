@@ -21,6 +21,7 @@
 #include <cstring>
 #include <string>
 #include "pipeline_common.hpp"
+#include "pipewire/link.h"
 #include "rnnoise.hpp"
 #include "util.hpp"
 
@@ -99,16 +100,6 @@ void on_latency_changed(GSettings* settings, gchar* key, StreamOutputEffects* so
 
   soe->set_latency();
 
-  // int blocksize = 2;
-
-  // while (blocksize < desired_buffer_size) {
-  //   if (blocksize * 2 > desired_buffer_size) {
-  //     break;
-  //   }
-
-  //   blocksize *= 2;
-  // }
-
   soe->update_pipeline_state();
 }
 
@@ -171,7 +162,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   }
 
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
-  pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_changed));
+  pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
   pm->sink_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_sink_changed));
 
   // element message callback
@@ -324,14 +315,18 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
   g_free(blocklist);
 }
 
-void StreamOutputEffects::on_app_changed(NodeInfo node_info) {
+void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
   apps_want_to_play = false;
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == pm->pe_sink_node.id) {
-      for (const auto& node : pm->list_nodes) {
-        if (node.id == link.output_node_id && node.state == PW_NODE_STATE_RUNNING) {
-          apps_want_to_play = true;
+      if (link.state == PW_LINK_STATE_ACTIVE) {
+        for (const auto& node : pm->list_nodes) {
+          if (node.id == link.output_node_id) {
+            apps_want_to_play = true;
+
+            break;
+          }
         }
       }
     }

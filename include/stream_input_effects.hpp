@@ -53,7 +53,7 @@ class StreamInputEffects : public PipelineBase {
 
   void on_app_added(NodeInfo node_info);
 
-  void on_app_changed(NodeInfo node_info);
+  void on_link_changed(LinkInfo link_info);
 
   void on_source_changed(NodeInfo node_info);
 };

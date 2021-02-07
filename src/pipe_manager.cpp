@@ -18,6 +18,7 @@
  */
 
 #include "pipe_manager.hpp"
+#include <string>
 #include "pipewire/client.h"
 #include "pipewire/keys.h"
 
@@ -58,12 +59,17 @@ void on_removed_proxy(void* data) {
 auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   LinkInfo info;
 
+  const auto* id = spa_dict_lookup(props, PW_KEY_LINK_ID);
   const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
   const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE);
   const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT);
   const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE);
   const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT);
   const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE);
+
+  if (id != nullptr) {
+    info.id = std::stoi(id);
+  }
 
   if (path != nullptr) {
     info.path = path;
@@ -364,40 +370,26 @@ void on_node_event_param(void* object,
 
 void on_link_info(void* object, const struct pw_link_info* info) {
   auto* ld = static_cast<proxy_data*>(object);
+  auto* pm = ld->pm;
 
-  auto link = link_info_from_props(info->props);
+  LinkInfo link;
 
   for (auto& l : ld->pm->list_links) {
-    if (l.id == link.id) {
-      l = link;
+    if (l.id == ld->id) {
+      l.state = info->state;
+
+      link = l;
+
+      Glib::signal_idle().connect_once([pm, link] { pm->link_changed.emit(link); });
+
+      // util::warning(pw_link_state_as_string(l.state));
 
       break;
     }
   }
 
-  bool found_input = false;
-  bool found_output = false;
-  NodeInfo input_node;
-  NodeInfo output_node;
-
-  for (auto& node : ld->pm->list_nodes) {
-    if (link.input_node_id == node.id) {
-      found_input = true;
-
-      input_node = node;
-    }
-
-    if (link.output_node_id == node.id) {
-      found_output = true;
-
-      output_node = node;
-    }
-  }
-
-  if (found_input and found_output) {
-    util::debug(ld->pm->log_tag + output_node.name + " port " + std::to_string(link.output_port_id) +
-                " is connected to " + input_node.name + " port " + std::to_string(link.input_port_id));
-  }
+  // const struct spa_dict_item* item = nullptr;
+  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_destroy_link_proxy(void* data) {
@@ -652,28 +644,46 @@ void on_registry_global(void* data,
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Link) == 0) {
+    auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
+
+    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+
+    pd->proxy = proxy;
+    pd->pm = pm;
+    pd->id = id;
+
+    pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
+    pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
+
     auto link_info = link_info_from_props(props);
 
     link_info.id = id;
 
+    pm->list_links.emplace_back(link_info);
+
+    bool found_input = false;
+    bool found_output = false;
+    NodeInfo input_node;
+    NodeInfo output_node;
+
     for (auto& node : pm->list_nodes) {
-      if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
-        auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
+      if (link_info.input_node_id == node.id) {
+        found_input = true;
 
-        auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+        input_node = node;
+      } else if (link_info.output_node_id == node.id) {
+        found_output = true;
 
-        pd->proxy = proxy;
-        pd->pm = pm;
-        pd->id = id;
-
-        pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
-        pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
-
-        pm->list_links.emplace_back(link_info);
-
-        return;
+        output_node = node;
       }
+
+      if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
+      }
+    }
+
+    if (found_input and found_output) {
+      util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
+                  " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
     }
 
     return;

@@ -87,6 +87,8 @@ struct LinkInfo {
   uint output_port_id = 0;
 
   bool passive = false;  // does not cause the graph to be runnable
+
+  pw_link_state state;
 };
 
 struct ModuleInfo {
@@ -191,6 +193,8 @@ class PipeManager {
   sigc::signal<void, NodeInfo> stream_input_added;
   sigc::signal<void, NodeInfo> stream_input_changed;
   sigc::signal<void, NodeInfo> stream_input_removed;
+
+  sigc::signal<void, LinkInfo> link_changed;
 
  private:
   bool context_ready = false;
