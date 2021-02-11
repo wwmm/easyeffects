@@ -21,6 +21,23 @@
 #include <glibmm/main.h>
 #include "util.hpp"
 
+namespace {
+
+void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Webrtc* w) {
+  int v = 0;
+  int blocksize = 0;
+
+  g_object_get(w->adapter, "n-input-samples", &v, nullptr);
+  g_object_get(w->adapter, "blocksize", &blocksize, nullptr);
+
+  util::debug(w->log_tag + "webrtc: new input block size " + std::to_string(v) + " frames");
+  util::debug(w->log_tag + "webrtc: we will try to read in chunks of " + std::to_string(blocksize) + " frames");
+
+  g_object_set(w->adapter_out, "blocksize", v, nullptr);
+}
+
+}  // namespace
+
 Webrtc::Webrtc(const std::string& tag,
                const std::string& schema,
                const std::string& schema_path,
@@ -88,6 +105,9 @@ void Webrtc::build_dsp_bin() {
   auto* caps_out = gst_element_factory_make("capsfilter", nullptr);
   auto* out_level = gst_element_factory_make("level", "webrtc_output_level");
 
+  adapter = gst_element_factory_make("peadapter", nullptr);
+  adapter_out = gst_element_factory_make("peadapter", nullptr);
+
   auto* capsin = gst_caps_from_string("audio/x-raw,channels=2,format=S16LE,rate=48000");
   auto* capsout = gst_caps_from_string(("audio/x-raw,channels=2,format=F32LE,rate=" + std::to_string(rate)).c_str());
 
@@ -97,13 +117,15 @@ void Webrtc::build_dsp_bin() {
   gst_caps_unref(capsin);
   gst_caps_unref(capsout);
 
+  g_object_set(adapter, "blocksize", 480, nullptr);
+
   gst_bin_add(GST_BIN(bin), probe_bin);
 
-  gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, audioresample_in, caps_in, webrtc, audioconvert_out,
-                   audioresample_out, caps_out, out_level, nullptr);
+  gst_bin_add_many(GST_BIN(bin), in_level, adapter, audioconvert_in, audioresample_in, caps_in, webrtc, adapter_out,
+                   audioconvert_out, audioresample_out, caps_out, out_level, nullptr);
 
-  gst_element_link_many(in_level, audioconvert_in, audioresample_in, caps_in, webrtc, audioconvert_out,
-                        audioresample_out, caps_out, out_level, nullptr);
+  gst_element_link_many(in_level, adapter, audioconvert_in, audioresample_in, caps_in, webrtc, audioconvert_out,
+                        audioresample_out, caps_out, adapter_out, out_level, nullptr);
 
   auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
   auto* pad_src = gst_element_get_static_pad(out_level, "src");
@@ -113,6 +135,8 @@ void Webrtc::build_dsp_bin() {
 
   gst_object_unref(GST_OBJECT(pad_sink));
   gst_object_unref(GST_OBJECT(pad_src));
+
+  g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
 
   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);

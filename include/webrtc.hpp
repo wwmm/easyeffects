@@ -31,7 +31,7 @@ class Webrtc : public PluginBase {
   auto operator=(const Webrtc&&) -> Webrtc& = delete;
   ~Webrtc() override;
 
-  GstElement *webrtc = nullptr, *probe_bin = nullptr, *probe_src = nullptr;
+  GstElement *webrtc = nullptr, *probe_bin = nullptr, *probe_src = nullptr, *adapter = nullptr, *adapter_out = nullptr;
 
   int rate;
 

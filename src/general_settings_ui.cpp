@@ -21,6 +21,7 @@
 #include <giomm/file.h>
 #include <glibmm.h>
 #include <boost/filesystem.hpp>
+#include "giomm/settings.h"
 #include "util.hpp"
 
 namespace {
