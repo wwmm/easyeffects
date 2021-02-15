@@ -494,30 +494,48 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     return 0;
   }
 
-  try {
-    uint v = std::stoul(str_value);
+  if (str_key == "default.audio.sink") {
+    try {
+      uint v = std::stoul(str_value);
 
-    for (auto& node : pm->list_nodes) {
-      if (node.id == v) {
-        if (node.name == "pulseeffects_sink" || node.name == "pulseeffects_source") {
-          return 0;
-        }
+      for (auto& node : pm->list_nodes) {
+        if (node.id == v) {
+          if (node.name == "pulseeffects_sink") {
+            return 0;
+          }
 
-        if (str_key == "default.audio.source") {
-          pm->default_source = node;
-
-          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
-        } else if (str_key == "default.audio.sink") {
           pm->default_sink = node;
 
           Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
-        }
 
-        break;
+          break;
+        }
       }
+    } catch (std::exception& e) {
+      util::warning(pm->log_tag + "could not parse the new default sink id: " + e.what());
     }
-  } catch (std::exception& e) {
-    util::warning(e.what());
+  }
+
+  if (str_key == "default.audio.source") {
+    try {
+      uint v = std::stoul(str_value);
+
+      for (auto& node : pm->list_nodes) {
+        if (node.id == v) {
+          if (node.name == "pulseeffects_source") {
+            return 0;
+          }
+
+          pm->default_source = node;
+
+          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+
+          break;
+        }
+      }
+    } catch (std::exception& e) {
+      util::warning(pm->log_tag + "could not parse the new default source id: " + e.what());
+    }
   }
 
   return 0;
@@ -676,15 +694,19 @@ void on_registry_global(void* data,
 
         output_node = node;
       }
-
-      if (link_info.input_node_id == node.id || link_info.output_node_id == node.id) {
-      }
     }
 
     if (found_input and found_output) {
       util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
     }
+
+    // if (link_info.input_node_id == pm->pe_sink_node.id) {
+    // pw_metadata_set_property(pm->metadata, id, PW_KEY_LINK_PASSIVE, "Spa:Bool", "true");
+    // } else if (link_info.output_node_id == pm->pe_sink_node.id) {
+    // pw_metadata_set_property(pm->metadata, id, PW_KEY_LINK_PASSIVE, "Spa:Int", "1");
+    // pw_metadata_set_property(pm->metadata, id, PW_KEY_OBJECT_LINGER, "Spa:Bool", "true");
+    // }
 
     return;
   }
