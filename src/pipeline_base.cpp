@@ -557,7 +557,7 @@ void PipelineBase::update_pipeline_state() {
         util::debug(log_tag + "We will wait for it to finish...");
 
         do {
-          s = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+          s = gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
 
           std::this_thread::sleep_for(std::chrono::milliseconds(100));
         } while (s == GST_STATE_CHANGE_ASYNC);
