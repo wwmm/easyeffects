@@ -316,23 +316,23 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
 }
 
 void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
-  apps_want_to_play = false;
+  bool want_to_play = false;
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == pm->pe_sink_node.id) {
       if (link.state == PW_LINK_STATE_ACTIVE) {
-        for (const auto& node : pm->list_nodes) {
-          if (node.id == link.output_node_id) {
-            apps_want_to_play = true;
+        want_to_play = true;
 
-            break;
-          }
-        }
+        break;
       }
     }
   }
 
-  update_pipeline_state();
+  if (want_to_play != apps_want_to_play) {
+    apps_want_to_play = want_to_play;
+
+    update_pipeline_state();
+  }
 }
 
 void StreamOutputEffects::on_sink_changed(NodeInfo node_info) {

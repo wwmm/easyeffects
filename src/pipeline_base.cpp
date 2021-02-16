@@ -548,7 +548,13 @@ void PipelineBase::update_pipeline_state() {
   GstState state = GST_STATE_NULL;
   GstState pending = GST_STATE_NULL;
 
-  gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+  auto status = gst_element_get_state(pipeline, &state, &pending, state_check_timeout);
+
+  if (status == GST_STATE_CHANGE_SUCCESS) {
+    util::debug(log_tag + "pipeline state reading was succesfull");
+  } else if (status == GST_STATE_CHANGE_ASYNC) {
+    util::warning(log_tag + "trying to update the pipeline state during an async change!!");
+  }
 
   if (state != GST_STATE_PLAYING && apps_want_to_play) {
     timeout_connection.disconnect();

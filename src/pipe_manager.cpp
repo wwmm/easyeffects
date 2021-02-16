@@ -701,13 +701,6 @@ void on_registry_global(void* data,
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
     }
 
-    // if (link_info.input_node_id == pm->pe_sink_node.id) {
-    // pw_metadata_set_property(pm->metadata, id, PW_KEY_LINK_PASSIVE, "Spa:Bool", "true");
-    // } else if (link_info.output_node_id == pm->pe_sink_node.id) {
-    // pw_metadata_set_property(pm->metadata, id, PW_KEY_LINK_PASSIVE, "Spa:Int", "1");
-    // pw_metadata_set_property(pm->metadata, id, PW_KEY_OBJECT_LINGER, "Spa:Bool", "true");
-    // }
-
     return;
   }
 
