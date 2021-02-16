@@ -22,6 +22,7 @@
 #include <gobject/gvaluecollector.h>
 #include <sys/resource.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include <chrono>
 #include <string>
 #include "config.h"
 #include "gst/gstelement.h"
@@ -553,6 +554,15 @@ void PipelineBase::update_pipeline_state() {
       };
       case GST_STATE_CHANGE_ASYNC: {
         util::debug(log_tag + "The pipeline will go to the playing state asynchronously!");
+        util::debug(log_tag + "We will wait for it to finish...");
+
+        do {
+          s = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+
+          std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        } while (s == GST_STATE_CHANGE_ASYNC);
+
+        util::debug(log_tag + "Pipeline state change finished");
 
         break;
       };
