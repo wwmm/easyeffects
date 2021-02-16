@@ -116,25 +116,7 @@ void on_message_state_changed(const GstBus* gst_bus, GstMessage* message, Pipeli
 }
 
 void on_message_latency(const GstBus* gst_bus, GstMessage* message, PipelineBase* pb) {
-  if (std::strcmp(GST_OBJECT_NAME(message->src), "source") == 0) {
-    int latency = 0;
-    int buffer = 0;
-
-    g_object_get(pb->source, "latency-time", &latency, nullptr);
-    g_object_get(pb->source, "buffer-time", &buffer, nullptr);
-
-    util::debug(pb->log_tag + "pulsesrc latency [us]: " + std::to_string(latency));
-    util::debug(pb->log_tag + "pulsesrc buffer [us]: " + std::to_string(buffer));
-  } else if (std::strcmp(GST_OBJECT_NAME(message->src), "sink") == 0) {
-    int latency = 0;
-    int buffer = 0;
-
-    g_object_get(pb->sink, "latency-time", &latency, nullptr);
-    g_object_get(pb->sink, "buffer-time", &buffer, nullptr);
-
-    util::debug(pb->log_tag + "pulsesink latency [us]: " + std::to_string(latency));
-    util::debug(pb->log_tag + "pulsesink buffer [us]: " + std::to_string(buffer));
-  }
+  util::debug(pb->log_tag + "latency update source: " + GST_OBJECT_NAME(message->src));
 
   pb->get_latency();
 }
@@ -363,6 +345,8 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
 
   g_signal_connect(src_type, "have-type", G_CALLBACK(on_src_type_changed), this);
 
+  g_signal_connect(spectrum_settings, "changed::n-points", G_CALLBACK(on_spectrum_n_points_changed), this);
+
   auto* sinkpad = gst_element_get_static_pad(sink, "sink");
 
   gst_pad_add_probe(sinkpad, GST_PAD_PROBE_TYPE_EVENT_UPSTREAM, on_sink_event, this, nullptr);
@@ -553,7 +537,7 @@ void PipelineBase::update_pipeline_state() {
   if (status == GST_STATE_CHANGE_SUCCESS) {
     util::debug(log_tag + "pipeline state reading was succesfull");
   } else if (status == GST_STATE_CHANGE_ASYNC) {
-    util::warning(log_tag + "trying to update the pipeline state during an async change!!");
+    util::warning(log_tag + "trying to get the pipeline state during an async change!!");
   }
 
   if (state != GST_STATE_PLAYING && apps_want_to_play) {
@@ -570,7 +554,13 @@ void PipelineBase::update_pipeline_state() {
           GstState s = GST_STATE_NULL;
           GstState p = GST_STATE_NULL;
 
-          gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+          auto status = gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+
+          if (status == GST_STATE_CHANGE_SUCCESS) {
+            util::debug(log_tag + "timeout callback: pipeline state reading was succesfull");
+          } else if (status == GST_STATE_CHANGE_ASYNC) {
+            util::warning(log_tag + "timeout callback: trying to get the pipeline state during an async change!!");
+          }
 
           if (s == GST_STATE_PLAYING && !apps_want_to_play) {
             util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
@@ -605,8 +595,6 @@ void PipelineBase::get_latency() {
 }
 
 void PipelineBase::init_spectrum() {
-  g_signal_connect(spectrum_settings, "changed::n-points", G_CALLBACK(on_spectrum_n_points_changed), this);
-
   spectrum_freqs.clear();
 
   spectrum_start_index = 0U;
