@@ -275,6 +275,8 @@ void StreamInputEffects::on_source_changed(NodeInfo node_info) {
 
   if (node_info.id == id) {
     if (node_info.rate != sampling_rate && node_info.rate != 0) {
+      util::debug(log_tag + "pulseeffects_source sampling rate has changed. Restarting the pipeline...");
+
       gst_element_set_state(pipeline, GST_STATE_NULL);
 
       set_sampling_rate(node_info.rate);
@@ -287,6 +289,8 @@ void StreamInputEffects::on_source_changed(NodeInfo node_info) {
 }
 
 void StreamInputEffects::change_input_device(const NodeInfo& node) {
+  util::debug(log_tag + "The user has requested a new input device. Restarting the pipeline...");
+
   gst_element_set_state(pipeline, GST_STATE_NULL);
 
   if (node.rate != 0) {

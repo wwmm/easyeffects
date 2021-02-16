@@ -96,6 +96,8 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamOutput
 }
 
 void on_latency_changed(GSettings* settings, gchar* key, StreamOutputEffects* soe) {
+  util::debug(soe->log_tag + "The user has requested a new latency. Restarting the pipeline...");
+
   gst_element_set_state(soe->pipeline, GST_STATE_NULL);
 
   soe->set_latency();
@@ -338,6 +340,8 @@ void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
 void StreamOutputEffects::on_sink_changed(NodeInfo node_info) {
   if (node_info.name == "pulseeffects_sink") {
     if (node_info.rate != sampling_rate && node_info.rate != 0) {
+      util::debug(log_tag + "pulseeffects_sink sampling rate has changed. Restarting the pipeline...");
+
       gst_element_set_state(pipeline, GST_STATE_NULL);
 
       set_sampling_rate(node_info.rate);
@@ -350,6 +354,8 @@ void StreamOutputEffects::on_sink_changed(NodeInfo node_info) {
 }
 
 void StreamOutputEffects::change_output_device(const NodeInfo& node) {
+  util::debug(log_tag + "The user has requested a new output device. Restarting the pipeline...");
+
   gst_element_set_state(pipeline, GST_STATE_NULL);
 
   if (node.rate != 0) {

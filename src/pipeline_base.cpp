@@ -543,7 +543,27 @@ void PipelineBase::update_pipeline_state() {
   if (state != GST_STATE_PLAYING && apps_want_to_play) {
     timeout_connection.disconnect();
 
-    gst_element_set_state(pipeline, GST_STATE_PLAYING);
+    auto s = gst_element_set_state(pipeline, GST_STATE_PLAYING);
+
+    switch (s) {
+      case GST_STATE_CHANGE_FAILURE: {
+        util::warning(log_tag + "failed to set the pipeline to the playing state!");
+
+        break;
+      };
+      case GST_STATE_CHANGE_ASYNC: {
+        util::debug(log_tag + "The pipeline will go to the playing state asynchronously!");
+
+        break;
+      };
+      case GST_STATE_CHANGE_NO_PREROLL: {
+        util::debug(log_tag + "No preroll pipeline state change");
+
+        break;
+      };
+      default:
+        break;
+    }
   } else if (state == GST_STATE_PLAYING && !apps_want_to_play) {
     timeout_connection.disconnect();
 
