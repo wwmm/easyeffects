@@ -590,12 +590,50 @@ void PipelineBase::update_pipeline_state() {
             util::debug(log_tag + "timeout callback: pipeline state reading was succesfull");
           } else if (status == GST_STATE_CHANGE_ASYNC) {
             util::warning(log_tag + "timeout callback: trying to get the pipeline state during an async change!!");
+            util::debug(log_tag + "We will wait for it to finish...");
+
+            do {
+              status = gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+
+              std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            } while (status == GST_STATE_CHANGE_ASYNC);
+
+            util::debug(log_tag + "Pipeline state change finished");
           }
 
           if (s == GST_STATE_PLAYING && !apps_want_to_play) {
             util::debug(log_tag + "No app wants to play audio. We will stop our pipeline.");
 
-            gst_element_set_state(pipeline, GST_STATE_NULL);
+            status = gst_element_set_state(pipeline, GST_STATE_NULL);
+
+            switch (status) {
+              case GST_STATE_CHANGE_FAILURE: {
+                util::warning(log_tag + "failed to stop the pipeline!");
+
+                break;
+              };
+              case GST_STATE_CHANGE_ASYNC: {
+                util::debug(log_tag + "The pipeline will be stopped asynchronously!");
+                util::debug(log_tag + "We will wait for it to finish...");
+
+                do {
+                  status = gst_element_get_state(pipeline, &s, &p, state_check_timeout);
+
+                  std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                } while (status == GST_STATE_CHANGE_ASYNC);
+
+                util::debug(log_tag + "Pipeline state change finished");
+
+                break;
+              };
+              case GST_STATE_CHANGE_NO_PREROLL: {
+                util::debug(log_tag + "No preroll pipeline state change");
+
+                break;
+              };
+              default:
+                break;
+            }
           }
 
           return false;
