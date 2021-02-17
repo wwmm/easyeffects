@@ -563,15 +563,6 @@ void PipelineBase::update_pipeline_state() {
       };
       case GST_STATE_CHANGE_ASYNC: {
         util::debug(log_tag + "The pipeline will go to the playing state asynchronously!");
-        util::debug(log_tag + "We will wait for it to finish...");
-
-        do {
-          s = gst_element_get_state(pipeline, &state, &pending, 0);
-
-          std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        } while (s == GST_STATE_CHANGE_ASYNC);
-
-        util::debug(log_tag + "Pipeline state change finished");
 
         break;
       };
@@ -623,15 +614,6 @@ void PipelineBase::update_pipeline_state() {
               };
               case GST_STATE_CHANGE_ASYNC: {
                 util::debug(log_tag + "The pipeline will be stopped asynchronously!");
-                util::debug(log_tag + "We will wait for it to finish...");
-
-                do {
-                  status = gst_element_get_state(pipeline, &s, &p, 0);
-
-                  std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                } while (status == GST_STATE_CHANGE_ASYNC);
-
-                util::debug(log_tag + "Pipeline state change finished");
 
                 break;
               };
