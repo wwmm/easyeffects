@@ -354,6 +354,10 @@ void StreamOutputEffects::on_sink_changed(NodeInfo node_info) {
 }
 
 void StreamOutputEffects::change_output_device(const NodeInfo& node) {
+  if (node.id == get_output_node_id()) {
+    return;
+  }
+
   util::debug(log_tag + "The user has requested a new output device. Restarting the pipeline...");
 
   gst_element_set_state(pipeline, GST_STATE_NULL);

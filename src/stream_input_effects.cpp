@@ -289,6 +289,10 @@ void StreamInputEffects::on_source_changed(NodeInfo node_info) {
 }
 
 void StreamInputEffects::change_input_device(const NodeInfo& node) {
+  if (node.id == get_input_node_id()) {
+    return;
+  }
+
   util::debug(log_tag + "The user has requested a new input device. Restarting the pipeline...");
 
   gst_element_set_state(pipeline, GST_STATE_NULL);

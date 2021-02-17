@@ -59,12 +59,8 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   // signals connection
 
   use_default_sink->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_sink_toggled));
-  use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_source_toggled));
 
-  connections.emplace_back(
-      input_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_input_device_changed)));
-  connections.emplace_back(
-      output_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_output_device_changed)));
+  use_default_source->signal_toggled().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_use_default_source_toggled));
 
   app->pm->sink_added.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_sink_added));
   app->pm->sink_removed.connect(sigc::mem_fun(*this, &PipeSettingsUi::on_sink_removed));
@@ -84,6 +80,14 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
 
   sie_settings->bind("latency", sie_latency.get(), "value", flag);
   soe_settings->bind("latency", soe_latency.get(), "value", flag);
+
+  // These connections have to come after the binding to gsettings.
+
+  connections.emplace_back(
+      input_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_input_device_changed)));
+
+  connections.emplace_back(
+      output_device->signal_changed().connect(sigc::mem_fun(*this, &PipeSettingsUi::on_output_device_changed)));
 }
 
 PipeSettingsUi::~PipeSettingsUi() {

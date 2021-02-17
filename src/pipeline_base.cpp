@@ -716,6 +716,10 @@ void PipelineBase::update_spectrum_interval(const double& value) const {
 }
 
 void PipelineBase::enable_spectrum() {
+  if (gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum") != nullptr) {
+    return;
+  }
+
   auto* srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
   auto id = gst_pad_add_probe(
@@ -751,6 +755,10 @@ void PipelineBase::enable_spectrum() {
 }
 
 void PipelineBase::disable_spectrum() {
+  if (gst_bin_get_by_name(GST_BIN(spectrum_bin), "spectrum") == nullptr) {
+    return;
+  }
+
   auto* srcpad = gst_element_get_static_pad(spectrum_identity_in, "src");
 
   auto id = gst_pad_add_probe(
