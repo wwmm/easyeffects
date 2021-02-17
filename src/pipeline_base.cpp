@@ -89,6 +89,8 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
           pb->rtkit->set_priority(source_name, priority);
         }
       }
+
+      break;
     }
     default:
       break;
@@ -335,6 +337,8 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
   g_object_set(source, "do-timestamp", 1, nullptr);
   g_object_set(source, "always-copy", 1, nullptr);
 
+  g_object_set(sink, "processing-deadline", 0, nullptr);
+
   g_object_set(queue_src, "silent", 1, nullptr);
   g_object_set(queue_src, "flush-on-eos", 1, nullptr);
   g_object_set(queue_src, "max-size-buffers", 0, nullptr);
@@ -392,9 +396,10 @@ void PipelineBase::set_latency() {
 
   auto latency_str = std::to_string(static_cast<int>(latency * 0.001F * sampling_rate));
 
-  auto prop_str = pipe_props + ",node.latency=" + latency_str + "/" + std::to_string(sampling_rate);
+  // set_pipewiresrc_stream_props(pipe_props);
+  // set_pipewiresink_stream_props(pipe_props);
 
-  // util::warning(prop_str);
+  auto prop_str = pipe_props + ",node.latency=" + latency_str + "/" + std::to_string(sampling_rate);
 
   set_pipewiresrc_stream_props(prop_str);
   set_pipewiresink_stream_props(prop_str);
