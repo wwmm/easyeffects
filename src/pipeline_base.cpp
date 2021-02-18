@@ -337,6 +337,7 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
   g_object_set(source, "always-copy", 1, nullptr);
 
   g_object_set(sink, "processing-deadline", 0, nullptr);
+  g_object_set(sink, "async", 0, nullptr);
 
   g_object_set(queue_src, "silent", 1, nullptr);
   g_object_set(queue_src, "flush-on-eos", 1, nullptr);
