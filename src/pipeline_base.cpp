@@ -298,13 +298,12 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
 
   bus = gst_element_get_bus(pipeline);
 
-  gst_bus_enable_sync_message_emission(bus);
   gst_bus_add_signal_watch(bus);
 
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
-  g_signal_connect(bus, "sync-message::stream-status", GCallback(on_stream_status), this);
+  g_signal_connect(bus, "message::stream-status", GCallback(on_stream_status), this);
   g_signal_connect(bus, "message::state-changed", G_CALLBACK(on_message_state_changed), this);
   g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency), this);
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
@@ -360,6 +359,8 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
 }
 
 PipelineBase::~PipelineBase() {
+  gst_bus_remove_signal_watch(bus);
+
   timeout_connection.disconnect();
 
   set_null_pipeline();
