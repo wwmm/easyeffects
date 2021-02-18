@@ -53,8 +53,6 @@ class PipeSettingsUi : public Gtk::Grid {
   Gtk::ToggleButton *use_default_sink = nullptr, *use_default_source = nullptr;
   Gtk::ComboBox *input_device = nullptr, *output_device = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> sie_latency, soe_latency;
-
   Glib::RefPtr<Gtk::ListStore> sink_list, source_list;
 
   std::vector<sigc::connection> connections;

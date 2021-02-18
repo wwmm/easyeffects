@@ -36,9 +36,6 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   builder->get_widget("input_device", input_device);
   builder->get_widget("output_device", output_device);
 
-  get_object(builder, "sie_latency", sie_latency);
-  get_object(builder, "soe_latency", soe_latency);
-
   get_object(builder, "sink_list", sink_list);
   get_object(builder, "source_list", source_list);
 
@@ -77,9 +74,6 @@ PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
   settings->bind("use-default-source", use_default_source, "active", flag);
 
   settings->bind("use-default-source", input_device, "sensitive", flag | flag_invert_boolean);
-
-  sie_settings->bind("latency", sie_latency.get(), "value", flag);
-  soe_settings->bind("latency", soe_latency.get(), "value", flag);
 
   // These connections have to come after the binding to gsettings.
 
