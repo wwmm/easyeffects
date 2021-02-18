@@ -303,7 +303,7 @@ PipelineBase::PipelineBase(const std::string& tag, PipeManager* pipe_manager)
   // bus callbacks
 
   g_signal_connect(bus, "message::error", G_CALLBACK(on_message_error), this);
-  g_signal_connect(bus, "message::stream-status", GCallback(on_stream_status), this);
+  g_signal_connect(bus, "message::stream-status", G_CALLBACK(on_stream_status), this);
   g_signal_connect(bus, "message::state-changed", G_CALLBACK(on_message_state_changed), this);
   g_signal_connect(bus, "message::latency", G_CALLBACK(on_message_latency), this);
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
