@@ -393,6 +393,20 @@ void PipelineBase::set_sampling_rate(const uint& sampling_rate) {
   gst_caps_unref(caps);
 }
 
+void PipelineBase::set_latency() {
+  float latency = g_settings_get_int(child_settings, "latency");
+
+  auto latency_str = std::to_string(static_cast<int>(latency * 0.001F * sampling_rate));
+
+  // set_pipewiresrc_stream_props(pipe_props);
+  // set_pipewiresink_stream_props(pipe_props);
+
+  auto prop_str = pipe_props + ",node.latency=" + latency_str + "/" + std::to_string(sampling_rate);
+
+  set_pipewiresrc_stream_props(prop_str);
+  set_pipewiresink_stream_props(prop_str);
+}
+
 void PipelineBase::init_spectrum_bin() {
   spectrum_bin = gst_bin_new("spectrum_bin");
   spectrum_identity_in = gst_element_factory_make("identity", nullptr);

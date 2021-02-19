@@ -95,13 +95,20 @@ void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamOutput
   }
 }
 
+void on_latency_changed(GSettings* settings, gchar* key, StreamOutputEffects* soe) {
+  util::debug(soe->log_tag + "The user has requested a new latency. Restarting the pipeline...");
+
+  gst_element_set_state(soe->pipeline, GST_STATE_NULL);
+
+  soe->set_latency();
+
+  soe->update_pipeline_state();
+}
+
 }  // namespace
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBase("soe: ", pipe_manager) {
   pipe_props += ",node.name=pulseeffects_soe,application.id=com.github.wwmm.pulseeffects.streamoutputs";
-
-  set_pipewiresrc_stream_props(pipe_props);
-  set_pipewiresink_stream_props(pipe_props);
 
   child_settings = g_settings_new("com.github.wwmm.pulseeffects.sinkinputs");
 
@@ -111,6 +118,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   set_output_node_id(default_output.id);
 
   set_sampling_rate(48000);  // 48 kHz is the default pipewire sampling rate
+
+  set_latency();
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
@@ -264,6 +273,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   add_plugins_to_pipeline();
 
   g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamOutputEffects>), this);
+
+  g_signal_connect(child_settings, "changed::latency", G_CALLBACK(on_latency_changed), this);
 }
 
 StreamOutputEffects::~StreamOutputEffects() {

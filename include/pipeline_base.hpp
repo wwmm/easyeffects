@@ -111,6 +111,7 @@ class PipelineBase {
   void get_latency();
   void init_spectrum();
   void update_spectrum_interval(const double& value) const;
+  void set_latency();
 
   sigc::signal<void, std::vector<float>> new_spectrum;
   sigc::signal<void, int> new_latency;
