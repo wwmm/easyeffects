@@ -7,6 +7,9 @@ package-lock.json
 target
 src/config.rs
 src/ui/resources.gresource
+.cache
+.clangd
+compile_commands.json
 
 # Compiled python modules.
 *.pyc

@@ -1,7 +1,7 @@
 project(
 	'pulseeffects',
 	'cpp',
-	version: '4.7.3',
+	version: '6.0.0',
 	meson_version: '>= 0.48.0',
 	default_options : ['buildtype=release']
 )
