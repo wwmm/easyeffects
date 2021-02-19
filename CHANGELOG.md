@@ -2,9 +2,17 @@
 
 ## [Unreleased]
 
+## [5.0.1]
+
 ### Added
 
-- Inproved buffer size handling in the plugins: peadapter, rnnoise, convolver and crystalizer
+- Improved compatibility with PipeWire `0.3.22`
+- Improved buffer size handling in the plugins: peadapter, rnnoise, convolver and crystalizer
+
+### Fixed
+
+- Opening Audacity should not make us crash anymore.
+- Fixed a latency drift that happened when the webrtc plugin was enabled.
 
 ## [5.0.0]
 
