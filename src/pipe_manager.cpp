@@ -500,11 +500,11 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
       for (auto& node : pm->list_nodes) {
         if (node.id == v) {
+          pm->default_sink = node;
+
           if (node.name == "pulseeffects_sink") {
             return 0;
           }
-
-          pm->default_sink = node;
 
           Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
 
@@ -522,11 +522,11 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
       for (auto& node : pm->list_nodes) {
         if (node.id == v) {
+          pm->default_source = node;
+
           if (node.name == "pulseeffects_source") {
             return 0;
           }
-
-          pm->default_source = node;
 
           Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
 

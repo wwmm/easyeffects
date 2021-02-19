@@ -251,6 +251,10 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
 }
 
 void StreamInputEffects::on_link_changed(LinkInfo link_info) {
+  if (pm->default_source.id == pm->pe_source_node.id) {
+    return;
+  }
+
   bool want_to_play = false;
 
   for (const auto& link : pm->list_links) {

@@ -398,9 +398,6 @@ void PipelineBase::set_latency() {
 
   auto latency_str = std::to_string(static_cast<int>(latency * 0.001F * sampling_rate));
 
-  // set_pipewiresrc_stream_props(pipe_props);
-  // set_pipewiresink_stream_props(pipe_props);
-
   auto prop_str = pipe_props + ",node.latency=" + latency_str + "/" + std::to_string(sampling_rate);
 
   set_pipewiresrc_stream_props(prop_str);
