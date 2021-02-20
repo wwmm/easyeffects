@@ -89,7 +89,7 @@
                         <property name="tooltip_text" translatable="yes">Test Signals</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="icon-name">image_test</property>
+                        <property name="icon-name">pulseeffects-sine-symbolic</property>
                     </object>
                 </child>
                 <child>
@@ -98,7 +98,7 @@
                         <property name="tooltip_text" translatable="yes">Global Bypass</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="icon-name">image_bypass</property>
+                        <property name="icon-name">media-playlist-shuffle-symbolic</property>
                     </object>
                 </child>
                 <child type="end">
@@ -106,14 +106,24 @@
                         <property name="tooltip_text" translatable="yes">Settings</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <!-- <property name="popover">settings_menu</property> -->
-                        <child>
-                            <object class="GtkImage">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="icon_name">format-justify-fill-symbolic</property>
-                            </object>
-                        </child>
+                        <property name="icon_name">format-justify-fill-symbolic</property>
+                        <property name="popover">settings_menu</property>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkButton" id="help_button">
+                        <property name="tooltip_text" translatable="yes">Help</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon_name">help-faq-symbolic</property>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkMenuButton" id="presets_menu_button">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="popover">presets_menu</property>
+                        <property name="label" translatable="yes">Presets</property>
                     </object>
                 </child>
             </object>
@@ -133,5 +143,46 @@
                 </child>
             </object>
         </child>
+        <object class="GtkPopover" id="presets_menu">
+            <child>
+                <placeholder />
+            </child>
+        </object>
+        <object class="GtkPopover" id="settings_menu">
+            <child>
+                <object class="GtkGrid">
+                    <property name="margin_start">6</property>
+                    <property name="margin_end">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
+                    <property name="row_spacing">18</property>
+                    <child>
+                        <object class="GtkStackSwitcher">
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="stack">stack_menu_settings</property>
+                            <layout>
+                                <property name="column">0</property>
+                                <property name="row">0</property>
+                            </layout>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkStack" id="stack_menu_settings">
+                            <property name="hexpand">True</property>
+                            <property name="transition_duration">250</property>
+                            <property name="transition_type">crossfade</property>
+                            <child>
+                                <placeholder />
+                            </child>
+                            <layout>
+                                <property name="column">0</property>
+                                <property name="row">1</property>
+                            </layout>
+                        </object>
+                    </child>
+                </object>
+            </child>
+        </object>
     </template>
 </interface>
