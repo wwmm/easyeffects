@@ -3,112 +3,110 @@ use gtk::prelude::*;
 use crate::presets::manager;
 use std::sync::{Arc, Mutex};
 
-use gtk_resources::UIResource;
+// #[derive(UIResource, Debug)]
+// #[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
+// struct WindowResource {
+//     widgets_grid: gtk::Grid,
+//     stack: gtk::Stack,
+//     output_listbox: gtk::ListBox,
+//     output_scrolled_window: gtk::ScrolledWindow,
+//     output_name: gtk::Entry,
+//     add_output: gtk::Button,
+//     import_output: gtk::Button,
+//     input_listbox: gtk::ListBox,
+//     input_scrolled_window: gtk::ScrolledWindow,
+//     input_name: gtk::Entry,
+//     add_input: gtk::Button,
+//     import_input: gtk::Button,
+// }
 
-#[derive(UIResource, Debug)]
-#[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
-struct WindowResource {
-    widgets_grid: gtk::Grid,
-    stack: gtk::Stack,
-    output_listbox: gtk::ListBox,
-    output_scrolled_window: gtk::ScrolledWindow,
-    output_name: gtk::Entry,
-    add_output: gtk::Button,
-    import_output: gtk::Button,
-    input_listbox: gtk::ListBox,
-    input_scrolled_window: gtk::ScrolledWindow,
-    input_name: gtk::Entry,
-    add_input: gtk::Button,
-    import_input: gtk::Button,
-}
+// pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
+//     let resources = WindowResource::load().unwrap();
 
-pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
-    let resources = WindowResource::load().unwrap();
+//     let output_scrolled_window = resources.output_scrolled_window;
 
-    let output_scrolled_window = resources.output_scrolled_window;
+//     resources
+//         .output_listbox
+//         .set_sort_func(Some(Box::new(on_listbox_sort)));
 
-    resources
-        .output_listbox
-        .set_sort_func(Some(Box::new(on_listbox_sort)));
+//     resources
+//         .input_listbox
+//         .set_sort_func(Some(Box::new(on_listbox_sort)));
 
-    resources
-        .input_listbox
-        .set_sort_func(Some(Box::new(on_listbox_sort)));
+//     let presets_manager = Arc::new(Mutex::new(manager::Manager::new()));
 
-    let presets_manager = Arc::new(Mutex::new(manager::Manager::new()));
+//     {
+//         let presets_manager = presets_manager.clone();
+//         let input_listbox = resources.input_listbox.clone();
+//         let output_listbox = resources.output_listbox.clone();
 
-    {
-        let presets_manager = presets_manager.clone();
-        let input_listbox = resources.input_listbox.clone();
-        let output_listbox = resources.output_listbox.clone();
+//         button.connect_clicked(move |obj| {
+//             let top_widget = obj
+//                 .get_toplevel()
+//                 .expect("Could not get presets menu top level widget");
 
-        button.connect_clicked(move |obj| {
-            let top_widget = obj
-                .get_toplevel()
-                .expect("Could not get presets menu top level widget");
+//             let height = top_widget.get_allocated_height() as f32;
 
-            let height = top_widget.get_allocated_height() as f32;
+//             output_scrolled_window.set_max_content_height((0.7 * height) as i32);
 
-            output_scrolled_window.set_max_content_height((0.7 * height) as i32);
+//             populate_listbox(
+//                 &presets_manager,
+//                 &manager::PresetType::Input,
+//                 &input_listbox,
+//             );
 
-            populate_listbox(
-                &presets_manager,
-                &manager::PresetType::Input,
-                &input_listbox,
-            );
+//             populate_listbox(
+//                 &presets_manager,
+//                 &manager::PresetType::Output,
+//                 &output_listbox,
+//             );
+//         });
+//     }
 
-            populate_listbox(
-                &presets_manager,
-                &manager::PresetType::Output,
-                &output_listbox,
-            );
-        });
-    }
+//     {
+//         let output_name = resources.output_name.clone();
+//         let output_listbox = resources.output_listbox.clone();
+//         let presets_manager = presets_manager.clone();
 
-    {
-        let output_name = resources.output_name.clone();
-        let output_listbox = resources.output_listbox.clone();
-        let presets_manager = presets_manager.clone();
+//         resources.add_output.connect_clicked(move |_btn| {
+//             create_preset(
+//                 &presets_manager,
+//                 &manager::PresetType::Output,
+//                 &output_name,
+//                 &output_listbox,
+//             );
 
-        resources.add_output.connect_clicked(move |_btn| {
-            create_preset(
-                &presets_manager,
-                &manager::PresetType::Output,
-                &output_name,
-                &output_listbox,
-            );
+//             populate_listbox(
+//                 &presets_manager,
+//                 &manager::PresetType::Output,
+//                 &output_listbox,
+//             );
+//         });
+//     }
 
-            populate_listbox(
-                &presets_manager,
-                &manager::PresetType::Output,
-                &output_listbox,
-            );
-        });
-    }
+//     {
+//         let input_name = resources.input_name.clone();
+//         let input_listbox = resources.input_listbox.clone();
+//         let presets_manager = presets_manager.clone();
 
-    {
-        let input_name = resources.input_name.clone();
-        let input_listbox = resources.input_listbox.clone();
-        let presets_manager = presets_manager.clone();
+//         resources.add_input.connect_clicked(move |_btn| {
+//             create_preset(
+//                 &presets_manager,
+//                 &manager::PresetType::Input,
+//                 &input_name,
+//                 &input_listbox,
+//             );
 
-        resources.add_input.connect_clicked(move |_btn| {
-            create_preset(
-                &presets_manager,
-                &manager::PresetType::Input,
-                &input_name,
-                &input_listbox,
-            );
+//             populate_listbox(
+//                 &presets_manager,
+//                 &manager::PresetType::Input,
+//                 &input_listbox,
+//             );
+//         });
+//     }
 
-            populate_listbox(
-                &presets_manager,
-                &manager::PresetType::Input,
-                &input_listbox,
-            );
-        });
-    }
-
-    return resources.widgets_grid;
-}
+//     return resources.widgets_grid;
+// }
 
 fn create_preset(
     presets_manager: &std::sync::Arc<std::sync::Mutex<manager::Manager>>,
@@ -116,7 +114,7 @@ fn create_preset(
     entry: &gtk::Entry,
     listbox: &gtk::ListBox,
 ) {
-    let name = entry.get_text().unwrap().to_string();
+    let name = entry.get_text().to_string();
 
     if name.chars().all(char::is_alphanumeric) {
         presets_manager.lock().unwrap().add(preset_type, &name);
@@ -129,8 +127,8 @@ fn create_preset(
 
 fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
     let mut names = Vec::new();
-    let name1 = row1.get_widget_name().expect("Could not get widget name");
-    let name2 = row2.get_widget_name().expect("Could not get widget name");
+    let name1 = row1.get_widget_name();
+    let name2 = row2.get_widget_name();
 
     names.push(&name1);
     names.push(&name2);
@@ -151,17 +149,17 @@ fn populate_listbox(
     preset_type: &manager::PresetType,
     listbox: &gtk::ListBox,
 ) {
-    let children = listbox.get_children();
+    // let children = listbox.get_children();
 
-    for child in children {
-        listbox.remove(&child);
-    }
+    // for child in children {
+    //     listbox.remove(&child);
+    // }
 
     let names = presets_manager.lock().unwrap().get_names(preset_type);
 
     for name in names {
         let builder =
-            gtk::Builder::new_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
+            gtk::Builder::from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
         let row: gtk::ListBoxRow = builder
             .get_object("preset_row")
@@ -251,7 +249,7 @@ fn populate_listbox(
             //   populate_listbox(preset_type);
         });
 
-        listbox.add(&row);
-        listbox.show_all();
+        // listbox.add(&row);
+        // listbox.show_all();
     }
 }

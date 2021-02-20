@@ -1,6 +1,8 @@
 use crate::presets::common::update_key;
-use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+
+use gtk::gio;
+use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -12,7 +14,7 @@ pub struct Crossfeed {
 
 impl Default for Crossfeed {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.sinkinputs.crossfeed",
             "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/",
         );
@@ -27,7 +29,7 @@ impl Default for Crossfeed {
 
 impl Crossfeed {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.crossfeed",
             "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/",
         );

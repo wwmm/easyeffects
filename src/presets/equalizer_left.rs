@@ -1,6 +1,8 @@
 use crate::presets::equalizer_band::Band;
-use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+
+use gtk::gio;
+use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -41,7 +43,7 @@ pub struct LeftOutput {
 
 impl Default for LeftOutput {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.equalizer.channel",
             "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
         );
@@ -85,7 +87,7 @@ impl Default for LeftOutput {
 
 impl LeftOutput {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.equalizer.channel",
             "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
         );
@@ -164,7 +166,7 @@ pub struct LeftInput {
 
 impl Default for LeftInput {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.equalizer.channel",
             "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/",
         );
@@ -208,7 +210,7 @@ impl Default for LeftInput {
 
 impl LeftInput {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.equalizer.channel",
             "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/",
         );

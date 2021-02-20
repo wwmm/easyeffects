@@ -1,6 +1,8 @@
 use crate::presets::common::update_key;
-use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+
+use gtk::gio;
+use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case")]
@@ -34,7 +36,7 @@ pub struct Crystalizer {
 
 impl Default for Crystalizer {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.crystalizer",
             "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/",
         );
@@ -115,7 +117,7 @@ impl Default for Crystalizer {
 
 impl Crystalizer {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.crystalizer",
             "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/",
         );

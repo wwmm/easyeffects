@@ -1,6 +1,8 @@
 use crate::presets::common::{update_key, update_string_key};
-use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+
+use gtk::gio;
+use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -16,7 +18,7 @@ pub struct Output {
 
 impl Default for Output {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.filter",
             "/com/github/wwmm/pulseeffects/sinkinputs/filter/",
         );
@@ -35,7 +37,7 @@ impl Default for Output {
 
 impl Output {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.filter",
             "/com/github/wwmm/pulseeffects/sinkinputs/filter/",
         );
@@ -64,7 +66,7 @@ pub struct Input {
 
 impl Default for Input {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.filter",
             "/com/github/wwmm/pulseeffects/sourceoutputs/filter/",
         );
@@ -83,7 +85,7 @@ impl Default for Input {
 
 impl Input {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.filter",
             "/com/github/wwmm/pulseeffects/sourceoutputs/filter/",
         );

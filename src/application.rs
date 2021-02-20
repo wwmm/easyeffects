@@ -1,17 +1,18 @@
-use gio::prelude::*;
 use gtk::prelude::*;
 
 use gtk::Application;
+use gtk::gio;
+
 use log::*;
 use std::env;
 
 use crate::config::VERSION;
-use crate::ui::application_window::build_ui;
+// use crate::ui::application_window::build_ui;
 
 pub fn init() {
     let application = Application::new(
         Some("com.github.wwmm.pulseeffects.rust"),
-        gio::ApplicationFlags::HANDLES_COMMAND_LINE,
+        gtk::gio::ApplicationFlags::HANDLES_COMMAND_LINE,
     )
     .expect("failed to initialize GTK application");
 
@@ -60,17 +61,17 @@ pub fn init() {
 
     application.connect_activate(|app| {
         if app.get_active_window() == Option::None {
-            let window = build_ui();
+            // let window = build_ui();
 
-            app.add_window(&window);
+            // app.add_window(&window);
 
-            window.connect_hide(|obj| {
-                let (w, h) = obj.get_size();
+            // window.connect_hide(|obj| {
+            //     let (w, h) = obj.get_size();
 
-                println!("{}, {}", w, h);
-            });
+            //     println!("{}, {}", w, h);
+            // });
 
-            window.show_all();
+            // window.show_all();
         }
     });
 
@@ -87,7 +88,7 @@ fn create_actions(app: &gtk::Application) {
 
         about_action.connect_activate(move |_action, _parameters| {
             let builder =
-                gtk::Builder::new_from_resource("/com/github/wwmm/pulseeffects/about.glade");
+                gtk::Builder::from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
             let dialog: gtk::Dialog = builder.get_object("about_dialog").unwrap();
 
@@ -117,19 +118,19 @@ fn create_actions(app: &gtk::Application) {
     {
         let app = app.clone();
 
-        help_action.connect_activate(move |_action, _parameters| {
-            match gtk::show_uri_on_window(
-                app.get_active_window().as_ref(),
-                "help:pulseeffects",
-                gtk::get_current_event_time(),
-            ) {
-                Ok(_) => {}
+        // help_action.connect_activate(move |_action, _parameters| {
+        //     match gtk::show_uri_on_window(
+        //         app.get_active_window().as_ref(),
+        //         "help:pulseeffects",
+        //         gtk::get_current_event_time(),
+        //     ) {
+        //         Ok(_) => {}
 
-                Err(err) => {
-                    warn!("{}", err);
-                }
-            }
-        });
+        //         Err(err) => {
+        //             warn!("{}", err);
+        //         }
+        //     }
+        // });
     }
 
     app.add_action(&about_action);

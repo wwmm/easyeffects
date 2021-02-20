@@ -1,5 +1,6 @@
 // use log::*;
 use gettextrs::*;
+use gtk::glib;
 
 mod config;
 mod application;

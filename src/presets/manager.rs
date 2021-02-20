@@ -1,5 +1,5 @@
 use crate::presets::root;
-use glib;
+use gtk::glib;
 use log::*;
 use serde_json;
 use serde_yaml;
@@ -27,7 +27,7 @@ impl Manager {
         // User presets directories
 
         let user_config_directory =
-            String::from(glib::get_user_config_dir().unwrap().to_str().unwrap());
+            String::from(glib::get_user_config_dir().to_str().unwrap());
 
         let user_input_directory = user_config_directory.clone() + "/PulseEffects/input";
         let user_output_directory = user_config_directory.clone() + "/PulseEffects/output";

@@ -1,6 +1,8 @@
 use crate::presets::common::update_key;
-use gio::prelude::*;
 use serde::{Deserialize, Serialize};
+
+use gtk::gio;
+use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]
 #[serde(rename_all = "kebab-case", default)]
@@ -18,7 +20,7 @@ pub struct AutoGain {
 
 impl Default for AutoGain {
     fn default() -> Self {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.autogain",
             "/com/github/wwmm/pulseeffects/sinkinputs/autogain/",
         );
@@ -39,7 +41,7 @@ impl Default for AutoGain {
 
 impl AutoGain {
     pub fn apply(&self) {
-        let settings = gio::Settings::new_with_path(
+        let settings = gio::Settings::with_path(
             "com.github.wwmm.pulseeffects.autogain",
             "/com/github/wwmm/pulseeffects/sinkinputs/autogain/",
         );
