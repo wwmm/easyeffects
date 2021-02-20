@@ -49,15 +49,13 @@ mod imp {
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
-            // let display_manager = gdk::DisplayManagerBuilder::new().build();
+            let default_display = gdk::Display::get_default();
 
-            // println!("{}", display_manager.list_displays().len());
+            let default_theme = gtk::IconTheme::get_for_display(&default_display.unwrap()).unwrap();
 
-            // let default_display = display_manager.get_default_display();
+            println!("{}", default_theme.get_theme_name().unwrap());
 
-            // let default_theme = gtk::IconTheme::get_for_display(&default_display.unwrap()).unwrap();
-
-            // default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
+            default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
 
             obj.init_template();
         }

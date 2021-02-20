@@ -89,7 +89,7 @@
                         <property name="tooltip_text" translatable="yes">Test Signals</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="icon-name">pulseeffects-sine-symbolic</property>
+                        <property name="icon_name">pulseeffects-sine-symbolic</property>
                     </object>
                 </child>
                 <child>
@@ -98,7 +98,7 @@
                         <property name="tooltip_text" translatable="yes">Global Bypass</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="icon-name">media-playlist-shuffle-symbolic</property>
+                        <property name="icon_name">media-playlist-shuffle-symbolic</property>
                     </object>
                 </child>
                 <child type="end">
