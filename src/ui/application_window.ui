@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <template class="ExApplicationWindow" parent="GtkApplicationWindow">
+        <child type="titlebar">
+            <object class="GtkHeaderBar" id="headerbar">
+                <property name="visible">True</property>
+                <property name="show_title_buttons">True</property>
+                <child type="title">
+                    <object class="GtkGrid">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">PulseEffects</property>
+                                <style>
+                                    <class name="title" />
+                                </style>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkGrid" id="subtitle_grid">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <child>
+                                    <object class="GtkImage" id="headerbar_icon1">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="icon_name">emblem-music-symbolic</property>
+                                        <property name="icon_size">1</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel" id="headerbar_info">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="valign">center</property>
+                                        <property name="label">info</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkImage" id="headerbar_icon2">
+                                        <property name="visible">True</property>
+                                        <property name="can_focus">False</property>
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                        <property name="icon_name">audio-speakers-symbolic</property>
+                                        <property name="icon_size">1</property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                                <style>
+                                    <class name="subtitle" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkStackSwitcher" id="stack_switcher">
+                        <property name="valign">center</property>
+                        <property name="stack">stack</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="calibration_button">
+                        <property name="tooltip_text" translatable="yes">Test Signals</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon-name">image_test</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkToggleButton" id="bypass_button">
+                        <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Global Bypass</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon-name">image_bypass</property>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkMenuButton" id="settings_popover_button">
+                        <property name="tooltip_text" translatable="yes">Settings</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <!-- <property name="popover">settings_menu</property> -->
+                        <child>
+                            <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="icon_name">format-justify-fill-symbolic</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <child>
+            <object class="GtkStack" id="stack">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="hhomogeneous">False</property>
+                <property name="vhomogeneous">False</property>
+                <property name="transition_duration">250</property>
+                <property name="transition_type">crossfade</property>
+                <child>
+                    <placeholder />
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

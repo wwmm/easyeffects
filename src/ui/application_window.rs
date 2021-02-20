@@ -1,11 +1,79 @@
 use gtk::prelude::*;
+use gtk::{gio, glib, CompositeTemplate};
 
-use gtk::gdk;
-use gtk::glib;
-use gtk::gio;
+// use crate::ui::general_settings;
+// use crate::ui::presets_menu;
 
-use crate::ui::general_settings;
-use crate::ui::presets_menu;
+mod imp {
+    use super::*;
+    use glib::subclass;
+    use gtk::subclass::prelude::*;
+
+    #[derive(Debug, CompositeTemplate)]
+    #[template(file = "application_window.ui")]
+    pub struct ExApplicationWindow {
+        #[template_child]
+        pub headerbar: TemplateChild<gtk::HeaderBar>,
+
+        #[template_child]
+        pub headerbar_info: TemplateChild<gtk::Label>,
+
+        #[template_child]
+        pub headerbar_icon1: TemplateChild<gtk::Image>,
+
+        #[template_child]
+        pub headerbar_icon2: TemplateChild<gtk::Image>,
+    }
+
+    impl ObjectSubclass for ExApplicationWindow {
+        const NAME: &'static str = "ExApplicationWindow";
+        type Type = super::ExApplicationWindow;
+        type ParentType = gtk::ApplicationWindow;
+        type Interfaces = ();
+        type Instance = subclass::simple::InstanceStruct<Self>;
+        type Class = subclass::simple::ClassStruct<Self>;
+
+        glib::object_subclass!();
+
+        fn new() -> Self {
+            Self {
+                headerbar: TemplateChild::default(),
+                headerbar_info: TemplateChild::default(),
+                headerbar_icon1: TemplateChild::default(),
+                headerbar_icon2: TemplateChild::default(),
+            }
+        }
+
+        fn class_init(klass: &mut Self::Class) {
+            Self::bind_template(klass);
+        }
+
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
+            obj.init_template();
+        }
+    }
+
+    impl ObjectImpl for ExApplicationWindow {
+        fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+        }
+    }
+
+    impl WidgetImpl for ExApplicationWindow {}
+    impl WindowImpl for ExApplicationWindow {}
+    impl ApplicationWindowImpl for ExApplicationWindow {}
+}
+
+glib::wrapper! {
+    pub struct ExApplicationWindow(ObjectSubclass<imp::ExApplicationWindow>)
+        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow, @implements gio::ActionMap, gio::ActionGroup;
+}
+
+impl ExApplicationWindow {
+    pub fn new<P: glib::IsA<gtk::Application>>(app: &P) -> Self {
+        glib::Object::new(&[("application", app)]).expect("Failed to create ApplicationWindow")
+    }
+}
 
 // #[derive(UIResource, Debug)]
 // #[resource = "/com/github/wwmm/pulseeffects/ui/application.glade"]

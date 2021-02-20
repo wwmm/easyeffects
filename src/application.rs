@@ -1,18 +1,18 @@
 use gtk::prelude::*;
 
-use gtk::Application;
 use gtk::gio;
+use gtk::Application;
 
 use log::*;
 use std::env;
 
 use crate::config::VERSION;
-// use crate::ui::application_window::build_ui;
+use crate::ui::application_window::ExApplicationWindow;
 
 pub fn init() {
     let application = Application::new(
         Some("com.github.wwmm.pulseeffects.rust"),
-        gtk::gio::ApplicationFlags::HANDLES_COMMAND_LINE,
+        gio::ApplicationFlags::HANDLES_COMMAND_LINE,
     )
     .expect("failed to initialize GTK application");
 
@@ -61,17 +61,15 @@ pub fn init() {
 
     application.connect_activate(|app| {
         if app.get_active_window() == Option::None {
-            // let window = build_ui();
+            let window = ExApplicationWindow::new(app);
 
-            // app.add_window(&window);
+            window.connect_hide(|obj| {
+                let w = obj.get_width();
+                let h = obj.get_height();
+                println!("{}, {}", w, h);
+            });
 
-            // window.connect_hide(|obj| {
-            //     let (w, h) = obj.get_size();
-
-            //     println!("{}, {}", w, h);
-            // });
-
-            // window.show_all();
+            window.show();
         }
     });
 
@@ -87,8 +85,7 @@ fn create_actions(app: &gtk::Application) {
         let app = app.clone();
 
         about_action.connect_activate(move |_action, _parameters| {
-            let builder =
-                gtk::Builder::from_resource("/com/github/wwmm/pulseeffects/about.glade");
+            let builder = gtk::Builder::from_resource("/com/github/wwmm/pulseeffects/about.glade");
 
             let dialog: gtk::Dialog = builder.get_object("about_dialog").unwrap();
 
