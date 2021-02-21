@@ -62,10 +62,13 @@ pub fn init() {
         if app.get_active_window() == Option::None {
             let window = ExApplicationWindow::new(app);
 
-            window.connect_hide(|obj| {
-                let w = obj.get_width();
-                let h = obj.get_height();
+            window.connect_close_request(|window| {
+                let w = window.get_width();
+                let h = window.get_height();
+                
                 println!("{}, {}", w, h);
+
+                return glib::signal::Inhibit(false);
             });
 
             window.show();
@@ -115,12 +118,7 @@ fn create_actions(app: &gtk::Application) {
         let app = app.clone();
 
         help_action.connect_activate(move |_action, _parameters| {
-            gtk::show_uri(
-                app.get_active_window().as_ref(),
-                "help:pulseeffects",
-                0,
-            );
-            
+            gtk::show_uri(app.get_active_window().as_ref(), "help:pulseeffects", 0);
             // match gtk::show_uri(
             //     app.get_active_window().as_ref(),
             //     "help:pulseeffects",
