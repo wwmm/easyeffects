@@ -72,17 +72,11 @@ impl ExPresetsMenu {
     pub fn new() -> Self {
         glib::Object::new(&[]).expect("Failed to create the presets menu")
     }
-
-    pub fn new2<P: glib::IsA<gtk::Popover>>(parent: &P) -> Self {
-        glib::Object::new(&[("parent", parent)]).expect("Failed to create the presets menu")
-    }
 }
 
 // #[derive(UIResource, Debug)]
 // #[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
 // struct WindowResource {
-//     widgets_grid: gtk::Grid,
-//     stack: gtk::Stack,
 //     output_listbox: gtk::ListBox,
 //     output_scrolled_window: gtk::ScrolledWindow,
 //     output_name: gtk::Entry,
