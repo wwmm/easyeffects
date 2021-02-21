@@ -29,12 +29,9 @@
                                 <property name="valign">center</property>
                                 <child>
                                     <object class="GtkImage" id="headerbar_icon1">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
                                         <property name="icon_name">emblem-music-symbolic</property>
-                                        <property name="icon_size">1</property>
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">0</property>
@@ -43,8 +40,6 @@
                                 </child>
                                 <child>
                                     <object class="GtkLabel" id="headerbar_info">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
                                         <property name="valign">center</property>
                                         <property name="label">info</property>
                                         <layout>
@@ -55,12 +50,9 @@
                                 </child>
                                 <child>
                                     <object class="GtkImage" id="headerbar_icon2">
-                                        <property name="visible">True</property>
-                                        <property name="can_focus">False</property>
                                         <property name="halign">start</property>
                                         <property name="valign">center</property>
                                         <property name="icon_name">audio-speakers-symbolic</property>
-                                        <property name="icon_size">1</property>
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
@@ -94,7 +86,6 @@
                 </child>
                 <child>
                     <object class="GtkToggleButton" id="bypass_button">
-                        <property name="receives_default">True</property>
                         <property name="tooltip_text" translatable="yes">Global Bypass</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
@@ -143,11 +134,7 @@
                 </child>
             </object>
         </child>
-        <object class="GtkPopover" id="presets_menu">
-            <child>
-                <placeholder />
-            </child>
-        </object>
+        <object class="GtkPopover" id="presets_menu"></object>
         <object class="GtkPopover" id="settings_menu">
             <child>
                 <object class="GtkGrid">

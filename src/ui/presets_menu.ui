@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <template class="ExPresetsMenu" parent="GtkPopover">
+        <child>
+            <object class="GtkGrid" id="top_grid">
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="row_spacing">18</property>
+                <child>
+                    <object class="GtkStackSwitcher">
+                        <property name="halign">center</property>
+                        <property name="stack">stack</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkStack" id="stack">
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="transition_duration">250</property>
+                        <property name="transition_type">slide-left-right</property>
+                        <child>
+                            <object class="GtkGrid" id="grid_output">
+                                <property name="hexpand">True</property>
+                                <property name="vexpand">True</property>
+                                <property name="row_spacing">18</property>
+                                <property name="column_spacing">6</property>
+                                <child>
+                                    <object class="GtkEntry" id="output_name">
+                                        <property name="valign">center</property>
+                                        <property name="hexpand">True</property>
+                                        <property name="placeholder_text" translatable="yes">Name</property>
+                                        <property name="input_purpose">name</property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+            </object>
+
+        </child>
+    </template>
+</interface>

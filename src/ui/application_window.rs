@@ -3,7 +3,7 @@ use gtk::prelude::*;
 use gtk::{gdk, CompositeTemplate};
 
 // use crate::ui::general_settings;
-// use crate::ui::presets_menu;
+use crate::ui::presets_menu::ExPresetsMenu;
 
 mod imp {
     use super::*;
@@ -32,7 +32,7 @@ mod imp {
         pub stack_menu_settings: TemplateChild<gtk::Stack>,
 
         #[template_child]
-        pub presets_menu_button: TemplateChild<gtk::Button>,
+        pub presets_menu_button: TemplateChild<gtk::MenuButton>,
 
         #[template_child]
         pub presets_menu: TemplateChild<gtk::Popover>,
@@ -93,6 +93,11 @@ mod imp {
             obj.register_resources();
             obj.add_resource_icons_to_theme_path();
 
+            // let presets_menu = ExPresetsMenu::new();
+            self.presets_menu_button.set_popover(Some(&ExPresetsMenu::new()));
+            // self.presets_menu.set_child(Some(&ExPresetsMenu::new()));
+            // ExPresetsMenu::new2(&self.presets_menu.get());
+
             let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
 
             settings
@@ -111,7 +116,8 @@ mod imp {
             let window_height = settings.get_int("window-height");
 
             if window_width > 0 && window_height > 0 {
-                self.get_instance().set_default_size(window_width, window_height);
+                self.get_instance()
+                    .set_default_size(window_width, window_height);
             }
 
             {

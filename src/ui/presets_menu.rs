@@ -1,7 +1,82 @@
 use gtk::prelude::*;
+use gtk::CompositeTemplate;
 
 use crate::presets::manager;
 use std::sync::{Arc, Mutex};
+
+mod imp {
+    use super::*;
+    use glib::subclass;
+    use gtk::subclass::prelude::*;
+
+    #[derive(Debug, CompositeTemplate)]
+    #[template(file = "presets_menu.ui")]
+    pub struct ExPresetsMenu {
+        #[template_child]
+        pub stack: TemplateChild<gtk::Stack>,
+
+        #[template_child]
+        pub output_name: TemplateChild<gtk::Entry>,
+    }
+
+    impl ObjectSubclass for ExPresetsMenu {
+        const NAME: &'static str = "ExPresetsMenu";
+        type Type = super::ExPresetsMenu;
+        type ParentType = gtk::Popover;
+        type Interfaces = ();
+        type Instance = subclass::simple::InstanceStruct<Self>;
+        type Class = subclass::simple::ClassStruct<Self>;
+
+        glib::object_subclass!();
+
+        fn new() -> Self {
+            Self {
+                stack: TemplateChild::default(),
+                output_name: TemplateChild::default(),
+                // headerbar_icon1: TemplateChild::default(),
+                // headerbar_icon2: TemplateChild::default(),
+                // stack_menu_settings: TemplateChild::default(),
+                // presets_menu_button: TemplateChild::default(),
+                // presets_menu: TemplateChild::default(),
+                // calibration_button: TemplateChild::default(),
+                // subtitle_grid: TemplateChild::default(),
+                // help_button: TemplateChild::default(),
+                // bypass_button: TemplateChild::default(),
+            }
+        }
+
+        fn class_init(klass: &mut Self::Class) {
+            Self::bind_template(klass);
+        }
+
+        fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
+            obj.init_template();
+        }
+    }
+
+    impl ObjectImpl for ExPresetsMenu {
+        fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+        }
+    }
+
+    impl WidgetImpl for ExPresetsMenu {}
+    impl PopoverImpl for ExPresetsMenu {}
+}
+
+glib::wrapper! {
+    pub struct ExPresetsMenu(ObjectSubclass<imp::ExPresetsMenu>) @extends gtk::Widget, gtk::Popover;
+}
+
+impl ExPresetsMenu {
+    pub fn new() -> Self {
+        glib::Object::new(&[]).expect("Failed to create the presets menu")
+    }
+
+    pub fn new2<P: glib::IsA<gtk::Popover>>(parent: &P) -> Self {
+        glib::Object::new(&[("parent", parent)]).expect("Failed to create the presets menu")
+    }
+}
 
 // #[derive(UIResource, Debug)]
 // #[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
