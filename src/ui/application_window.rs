@@ -49,20 +49,15 @@ mod imp {
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self::Type>) {
-            let default_display = gdk::Display::get_default();
-
-            let default_theme = gtk::IconTheme::get_for_display(&default_display.unwrap()).unwrap();
-
-            println!("{}", default_theme.get_theme_name().unwrap());
-
-            default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
-
             obj.init_template();
         }
     }
 
     impl ObjectImpl for ExApplicationWindow {
         fn constructed(&self, obj: &Self::Type) {
+            obj.register_resources();
+            obj.add_resource_icons_to_theme_path();
+
             self.parent_constructed(obj);
         }
     }
@@ -80,6 +75,24 @@ glib::wrapper! {
 impl ExApplicationWindow {
     pub fn new<P: glib::IsA<gtk::Application>>(app: &P) -> Self {
         glib::Object::new(&[("application", app)]).expect("Failed to create ApplicationWindow")
+    }
+
+    pub fn register_resources(&self){
+        let res_bytes = include_bytes!("resources.gresource");
+
+        let data = glib::Bytes::from(&res_bytes[..]);
+
+        let resource = gio::Resource::from_data(&data).expect("Failed to load resources");
+
+        gio::resources_register(&resource);
+    }
+
+    pub fn add_resource_icons_to_theme_path(&self){
+        let default_display = gdk::Display::get_default();
+
+        let default_theme = gtk::IconTheme::get_for_display(&default_display.unwrap()).unwrap();
+
+        default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
     }
 }
 
@@ -103,25 +116,6 @@ impl ExApplicationWindow {
 // }
 
 // pub fn build_ui() -> gtk::ApplicationWindow {
-//     // Register resource bundles
-
-//     let res_bytes = include_bytes!("resources.gresource");
-
-//     let data = glib::Bytes::from(&res_bytes[..]);
-
-//     let resource = gio::Resource::new_from_data(&data).expect("Failed to load resources");
-
-//     gio::resources_register(&resource);
-
-//     let resources = WindowResource::load().unwrap();
-
-//     // println!("res: {:?}", resources);
-
-//     let window = resources.application_window;
-
-//     apply_css_style("custom.css");
-//     add_path_to_theme_resource();
-
 //     resources
 //         .presets_menu
 //         .add(&presets_menu::build_ui(&resources.presets_menu_button));
@@ -176,9 +170,3 @@ impl ExApplicationWindow {
 
 //     gtk::StyleContext::add_provider_for_screen(screen, &provider, priority);
 // }
-
-fn add_path_to_theme_resource() {
-    let default_theme = gtk::IconTheme::default();
-
-    default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
-}
