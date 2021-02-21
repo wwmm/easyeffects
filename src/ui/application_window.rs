@@ -90,6 +90,15 @@ mod imp {
             obj.register_resources();
             obj.add_resource_icons_to_theme_path();
 
+            {
+                // let app = obj.get_application().unwrap();
+
+                self.help_button.connect_clicked(move |_btn| {
+                    // app.activate_action("help", None);
+                    println!("oi");
+                });
+            }
+
             self.parent_constructed(obj);
         }
     }
@@ -109,7 +118,7 @@ impl ExApplicationWindow {
         glib::Object::new(&[("application", app)]).expect("Failed to create ApplicationWindow")
     }
 
-    pub fn register_resources(&self){
+    pub fn register_resources(&self) {
         let res_bytes = include_bytes!("resources.gresource");
 
         let data = glib::Bytes::from(&res_bytes[..]);
@@ -119,7 +128,7 @@ impl ExApplicationWindow {
         gio::resources_register(&resource);
     }
 
-    pub fn add_resource_icons_to_theme_path(&self){
+    pub fn add_resource_icons_to_theme_path(&self) {
         let default_display = gdk::Display::get_default();
 
         let default_theme = gtk::IconTheme::get_for_display(&default_display.unwrap()).unwrap();
@@ -169,17 +178,4 @@ impl ExApplicationWindow {
 //     }
 
 //     return window;
-// }
-
-// fn apply_css_style(css_file_name: &str) {
-//     let provider = gtk::CssProvider::new();
-
-//     let path = String::from("/com/github/wwmm/pulseeffects/ui/") + css_file_name;
-
-//     provider.load_from_resource(&path);
-
-//     let screen = &gdk::Screen::get_default().expect("Failed to get gdk default screen");
-//     let priority = gtk::STYLE_PROVIDER_PRIORITY_APPLICATION;
-
-//     gtk::StyleContext::add_provider_for_screen(screen, &provider, priority);
 // }
