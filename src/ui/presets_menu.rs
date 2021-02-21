@@ -1,4 +1,5 @@
 use gtk::prelude::*;
+use gtk::subclass::widget::WidgetImplExt;
 use gtk::CompositeTemplate;
 
 use crate::presets::manager;
@@ -44,6 +45,8 @@ mod imp {
 
         #[template_child]
         pub input_listbox: TemplateChild<gtk::ListBox>,
+
+        pub presets_manager: manager::Manager,
     }
 
     impl ObjectSubclass for ExPresetsMenu {
@@ -69,6 +72,7 @@ mod imp {
                 input_name: TemplateChild::default(),
                 input_scrolled_window: TemplateChild::default(),
                 input_listbox: TemplateChild::default(),
+                presets_manager: manager::Manager::new(),
             }
         }
 
@@ -84,11 +88,47 @@ mod imp {
     impl ObjectImpl for ExPresetsMenu {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
+
+            self.output_listbox
+                .set_sort_func(Some(Box::new(on_listbox_sort)));
+            self.input_listbox
+                .set_sort_func(Some(Box::new(on_listbox_sort)));
         }
     }
 
-    impl WidgetImpl for ExPresetsMenu {}
+    impl WidgetImpl for ExPresetsMenu {
+        fn show(&self, widget: &Self::Type) {
+            self.parent_show(widget);
+
+            println!("oi");
+
+            let presets_manager = Arc::new(Mutex::new(&self.presets_manager));
+
+            {
+                let presets_manager = presets_manager.clone();
+                let input_listbox = self.input_listbox.clone();
+                let output_listbox = self.output_listbox.clone();
+
+                self.populate_listbox(&manager::PresetType::Input);
+
+                // populate_listbox(
+                //     &presets_manager,
+                //     &manager::PresetType::Input,
+                //     &input_listbox,
+                // );
+            }
+        }
+    }
+
     impl PopoverImpl for ExPresetsMenu {}
+
+    impl ExPresetsMenu {
+        pub fn populate_listbox(&self, preset_type: &manager::PresetType) {
+            let names = self.presets_manager.get_names(preset_type);
+
+            for name in names {}
+        }
+    }
 }
 
 glib::wrapper! {
@@ -101,36 +141,7 @@ impl ExPresetsMenu {
     }
 }
 
-// #[derive(UIResource, Debug)]
-// #[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
-// struct WindowResource {
-//     output_listbox: gtk::ListBox,
-//     input_listbox: gtk::ListBox,
-//     input_scrolled_window: gtk::ScrolledWindow,
-//     input_name: gtk::Entry,
-//     add_input: gtk::Button,
-//     import_input: gtk::Button,
-// }
-
 // pub fn build_ui(button: &gtk::Button) -> gtk::Grid {
-//     let resources = WindowResource::load().unwrap();
-
-//     let output_scrolled_window = resources.output_scrolled_window;
-
-//     resources
-//         .output_listbox
-//         .set_sort_func(Some(Box::new(on_listbox_sort)));
-
-//     resources
-//         .input_listbox
-//         .set_sort_func(Some(Box::new(on_listbox_sort)));
-
-//     let presets_manager = Arc::new(Mutex::new(manager::Manager::new()));
-
-//     {
-//         let presets_manager = presets_manager.clone();
-//         let input_listbox = resources.input_listbox.clone();
-//         let output_listbox = resources.output_listbox.clone();
 
 //         button.connect_clicked(move |obj| {
 //             let top_widget = obj
@@ -140,12 +151,6 @@ impl ExPresetsMenu {
 //             let height = top_widget.get_allocated_height() as f32;
 
 //             output_scrolled_window.set_max_content_height((0.7 * height) as i32);
-
-//             populate_listbox(
-//                 &presets_manager,
-//                 &manager::PresetType::Input,
-//                 &input_listbox,
-//             );
 
 //             populate_listbox(
 //                 &presets_manager,

@@ -12,7 +12,7 @@ pub enum PresetType {
     Output,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Manager {
     user_input_directory: String,
     user_output_directory: String,
