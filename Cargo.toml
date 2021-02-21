@@ -12,3 +12,5 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_yaml = "0.8"
 gtk = { git = "https://github.com/gtk-rs/gtk4.git", package = "gtk4" }
+gio = { git = "https://github.com/gtk-rs/gtk-rs", features = ["v2_46"] }
+glib = { git = "https://github.com/gtk-rs/gtk-rs" }

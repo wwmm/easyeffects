@@ -1,6 +1,5 @@
 use gtk::prelude::*;
 
-use gtk::gio;
 use gtk::Application;
 
 use log::*;
@@ -115,19 +114,25 @@ fn create_actions(app: &gtk::Application) {
     {
         let app = app.clone();
 
-        // help_action.connect_activate(move |_action, _parameters| {
-        //     match gtk::show_uri_on_window(
-        //         app.get_active_window().as_ref(),
-        //         "help:pulseeffects",
-        //         gtk::get_current_event_time(),
-        //     ) {
-        //         Ok(_) => {}
+        help_action.connect_activate(move |_action, _parameters| {
+            gtk::show_uri(
+                app.get_active_window().as_ref(),
+                "help:pulseeffects",
+                0,
+            );
+            
+            // match gtk::show_uri(
+            //     app.get_active_window().as_ref(),
+            //     "help:pulseeffects",
+            //     gtk::get_current_event_time(),
+            // ) {
+            //     Ok(_) => {}
 
-        //         Err(err) => {
-        //             warn!("{}", err);
-        //         }
-        //     }
-        // });
+            //     Err(err) => {
+            //         warn!("{}", err);
+            //     }
+            // }
+        });
     }
 
     app.add_action(&about_action);

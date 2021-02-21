@@ -2,7 +2,6 @@ use crate::presets::common::{update_key, update_string_key};
 use crate::presets::{equalizer_left, equalizer_right};
 use serde::{Deserialize, Serialize};
 
-use gtk::gio;
 use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]

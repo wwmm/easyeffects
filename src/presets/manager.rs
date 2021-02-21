@@ -1,5 +1,4 @@
 use crate::presets::root;
-use gtk::glib;
 use log::*;
 use serde_json;
 use serde_yaml;

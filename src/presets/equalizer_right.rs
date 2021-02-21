@@ -1,7 +1,6 @@
 use crate::presets::equalizer_band::Band;
 use serde::{Deserialize, Serialize};
 
-use gtk::gio;
 use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]

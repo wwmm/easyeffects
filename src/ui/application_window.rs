@@ -1,5 +1,6 @@
+use gio::prelude::*;
 use gtk::prelude::*;
-use gtk::{gdk, gio, glib, CompositeTemplate};
+use gtk::{gdk, CompositeTemplate};
 
 // use crate::ui::general_settings;
 // use crate::ui::presets_menu;
@@ -87,19 +88,40 @@ mod imp {
 
     impl ObjectImpl for ExApplicationWindow {
         fn constructed(&self, obj: &Self::Type) {
+            self.parent_constructed(obj);
+
             obj.register_resources();
             obj.add_resource_icons_to_theme_path();
 
+            let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
+
+            settings
+                .bind(
+                    "use-dark-theme",
+                    &gtk::Settings::get_default().unwrap(),
+                    "gtk_application_prefer_dark_theme",
+                )
+                .build();
+
+            settings
+                .bind("bypass", &self.bypass_button.get(), "active")
+                .build();
+
+            let window_width = settings.get_int("window-width");
+            let window_height = settings.get_int("window-height");
+
+            if window_width > 0 && window_height > 0 {
+                self.get_instance().set_default_size(window_width, window_height);
+            }
+
             {
-                // let app = obj.get_application().unwrap();
+                // let app = self.get_instance().get_application().unwrap();
 
                 self.help_button.connect_clicked(move |_btn| {
                     // app.activate_action("help", None);
                     println!("oi");
                 });
             }
-
-            self.parent_constructed(obj);
         }
     }
 
@@ -156,25 +178,6 @@ impl ExApplicationWindow {
 
 //             app.activate_action("help", None);
 //         });
-//     }
-
-//     let settings = gio::Settings::new("com.github.wwmm.pulseeffects");
-//     let flag = gio::SettingsBindFlags::DEFAULT;
-
-//     settings.bind(
-//         "use-dark-theme",
-//         &gtk::Settings::get_default().unwrap(),
-//         "gtk_application_prefer_dark_theme",
-//         flag,
-//     );
-
-//     settings.bind("bypass", &resources.bypass_button, "active", flag);
-
-//     let window_width = settings.get_int("window-width");
-//     let window_height = settings.get_int("window-height");
-
-//     if window_width > 0 && window_height > 0 {
-//         window.set_default_size(window_width, window_height);
 //     }
 
 //     return window;

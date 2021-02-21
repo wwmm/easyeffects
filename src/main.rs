@@ -1,6 +1,5 @@
 // use log::*;
 use gettextrs::*;
-use gtk::glib;
 
 mod config;
 mod application;
@@ -15,24 +14,6 @@ fn main() {
 
     bindtextdomain(config::GETTEXT_PACKAGE, config::LOCALE_DIR);
     textdomain(config::GETTEXT_PACKAGE);
-
-    // Initializing GTK
-
-    gtk::init().expect("Unable to initialize GTK3");
-
-    // Setting glibproperties
-
-    glib::set_application_name("PulseEffects");
-
-    glib::setenv(
-        "PULSE_PROP_application.id",
-        "com.github.wwmm.pulseeffects",
-        false,
-    )
-    .expect("setenv failed to set the application id");
-
-    glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects", false)
-        .expect("setenv failed to set the application icon name");
 
     // Creating the gtk application
 

@@ -1,7 +1,6 @@
 use crate::presets::common::{update_key, update_string_key};
 use serde::{Deserialize, Serialize};
 
-use gtk::gio;
 use gio::prelude::*;
 
 #[derive(Serialize, Deserialize, Debug)]

@@ -1,6 +1,3 @@
-use gtk::gio;
-use gtk::glib;
-
 use gio::prelude::*;
 
 pub fn update_key<
