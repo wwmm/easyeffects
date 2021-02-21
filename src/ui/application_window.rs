@@ -23,6 +23,30 @@ mod imp {
 
         #[template_child]
         pub headerbar_icon2: TemplateChild<gtk::Image>,
+
+        #[template_child]
+        pub stack: TemplateChild<gtk::Stack>,
+
+        #[template_child]
+        pub stack_menu_settings: TemplateChild<gtk::Stack>,
+
+        #[template_child]
+        pub presets_menu_button: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub presets_menu: TemplateChild<gtk::Popover>,
+
+        #[template_child]
+        pub calibration_button: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub subtitle_grid: TemplateChild<gtk::Grid>,
+
+        #[template_child]
+        pub help_button: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub bypass_button: TemplateChild<gtk::Button>,
     }
 
     impl ObjectSubclass for ExApplicationWindow {
@@ -41,6 +65,14 @@ mod imp {
                 headerbar_info: TemplateChild::default(),
                 headerbar_icon1: TemplateChild::default(),
                 headerbar_icon2: TemplateChild::default(),
+                stack: TemplateChild::default(),
+                stack_menu_settings: TemplateChild::default(),
+                presets_menu_button: TemplateChild::default(),
+                presets_menu: TemplateChild::default(),
+                calibration_button: TemplateChild::default(),
+                subtitle_grid: TemplateChild::default(),
+                help_button: TemplateChild::default(),
+                bypass_button: TemplateChild::default(),
             }
         }
 
@@ -95,25 +127,6 @@ impl ExApplicationWindow {
         default_theme.add_resource_path("/com/github/wwmm/pulseeffects/icons");
     }
 }
-
-// #[derive(UIResource, Debug)]
-// #[resource = "/com/github/wwmm/pulseeffects/ui/application.glade"]
-// struct WindowResource {
-//     application_window: gtk::ApplicationWindow,
-//     stack: gtk::Stack,
-//     stack_menu_settings: gtk::Stack,
-//     presets_menu_button: gtk::Button,
-//     presets_menu: gtk::Popover,
-//     presets_menu_label: gtk::Label,
-//     calibration_button: gtk::Button,
-//     subtitle_grid: gtk::Grid,
-//     headerbar: gtk::HeaderBar,
-//     help_button: gtk::Button,
-//     bypass_button: gtk::Button,
-//     headerbar_icon1: gtk::Image,
-//     headerbar_icon2: gtk::Image,
-//     headerbar_info: gtk::Label,
-// }
 
 // pub fn build_ui() -> gtk::ApplicationWindow {
 //     resources
