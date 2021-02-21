@@ -26,6 +26,7 @@
                         <property name="vexpand">True</property>
                         <property name="transition_duration">250</property>
                         <property name="transition_type">slide-left-right</property>
+
                         <child>
                             <object class="GtkStackPage">
                                 <property name="name">page_output</property>
@@ -181,7 +182,7 @@
                                                                 <property name="hexpand">True</property>
                                                                 <property name="vexpand">True</property>
                                                                 <child>
-                                                                    <object class="GtkListBox" id="output_listbox">
+                                                                    <object class="GtkListBox" id="input_listbox">
                                                                         <property name="hexpand">True</property>
                                                                         <property name="vexpand">True</property>
                                                                         <property name="selection_mode">none</property>

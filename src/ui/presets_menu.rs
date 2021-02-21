@@ -16,7 +16,34 @@ mod imp {
         pub stack: TemplateChild<gtk::Stack>,
 
         #[template_child]
+        pub import_output: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub add_output: TemplateChild<gtk::Button>,
+
+        #[template_child]
         pub output_name: TemplateChild<gtk::Entry>,
+
+        #[template_child]
+        pub output_scrolled_window: TemplateChild<gtk::ScrolledWindow>,
+
+        #[template_child]
+        pub output_listbox: TemplateChild<gtk::ListBox>,
+
+        #[template_child]
+        pub import_input: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub add_input: TemplateChild<gtk::Button>,
+
+        #[template_child]
+        pub input_name: TemplateChild<gtk::Entry>,
+
+        #[template_child]
+        pub input_scrolled_window: TemplateChild<gtk::ScrolledWindow>,
+
+        #[template_child]
+        pub input_listbox: TemplateChild<gtk::ListBox>,
     }
 
     impl ObjectSubclass for ExPresetsMenu {
@@ -32,16 +59,16 @@ mod imp {
         fn new() -> Self {
             Self {
                 stack: TemplateChild::default(),
+                import_output: TemplateChild::default(),
+                add_output: TemplateChild::default(),
                 output_name: TemplateChild::default(),
-                // headerbar_icon1: TemplateChild::default(),
-                // headerbar_icon2: TemplateChild::default(),
-                // stack_menu_settings: TemplateChild::default(),
-                // presets_menu_button: TemplateChild::default(),
-                // presets_menu: TemplateChild::default(),
-                // calibration_button: TemplateChild::default(),
-                // subtitle_grid: TemplateChild::default(),
-                // help_button: TemplateChild::default(),
-                // bypass_button: TemplateChild::default(),
+                output_scrolled_window: TemplateChild::default(),
+                output_listbox: TemplateChild::default(),
+                import_input: TemplateChild::default(),
+                add_input: TemplateChild::default(),
+                input_name: TemplateChild::default(),
+                input_scrolled_window: TemplateChild::default(),
+                input_listbox: TemplateChild::default(),
             }
         }
 
@@ -78,10 +105,6 @@ impl ExPresetsMenu {
 // #[resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.glade"]
 // struct WindowResource {
 //     output_listbox: gtk::ListBox,
-//     output_scrolled_window: gtk::ScrolledWindow,
-//     output_name: gtk::Entry,
-//     add_output: gtk::Button,
-//     import_output: gtk::Button,
 //     input_listbox: gtk::ListBox,
 //     input_scrolled_window: gtk::ScrolledWindow,
 //     input_name: gtk::Entry,
