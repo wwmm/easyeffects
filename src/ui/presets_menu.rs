@@ -29,7 +29,7 @@ mod imp {
         pub output_scrolled_window: TemplateChild<gtk::ScrolledWindow>,
 
         #[template_child]
-        pub output_listbox: TemplateChild<gtk::ListBox>,
+        pub output_listview: TemplateChild<gtk::ListView>,
 
         #[template_child]
         pub import_input: TemplateChild<gtk::Button>,
@@ -44,9 +44,13 @@ mod imp {
         pub input_scrolled_window: TemplateChild<gtk::ScrolledWindow>,
 
         #[template_child]
-        pub input_listbox: TemplateChild<gtk::ListBox>,
+        pub input_listview: TemplateChild<gtk::ListView>,
 
         pub presets_manager: manager::Manager,
+
+        pub output_selection_model: gtk::SingleSelection,
+
+        pub output_string_list: gtk::StringList,
     }
 
     impl ObjectSubclass for ExPresetsMenu {
@@ -66,13 +70,15 @@ mod imp {
                 add_output: TemplateChild::default(),
                 output_name: TemplateChild::default(),
                 output_scrolled_window: TemplateChild::default(),
-                output_listbox: TemplateChild::default(),
+                output_listview: TemplateChild::default(),
                 import_input: TemplateChild::default(),
                 add_input: TemplateChild::default(),
                 input_name: TemplateChild::default(),
                 input_scrolled_window: TemplateChild::default(),
-                input_listbox: TemplateChild::default(),
+                input_listview: TemplateChild::default(),
                 presets_manager: manager::Manager::new(),
+                output_selection_model: gtk::SingleSelectionBuilder::new().build(),
+                output_string_list: gtk::StringList::new(&["first", "second"]),
             }
         }
 
@@ -89,10 +95,12 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            self.output_listbox
-                .set_sort_func(Some(Box::new(on_listbox_sort)));
-            self.input_listbox
-                .set_sort_func(Some(Box::new(on_listbox_sort)));
+            self.configure_output_listview();
+
+            // self.output_listbox
+            //     .set_sort_func(Some(Box::new(on_listbox_sort)));
+            // self.input_listbox
+            //     .set_sort_func(Some(Box::new(on_listbox_sort)));
         }
     }
 
@@ -102,29 +110,35 @@ mod imp {
 
             println!("oi");
 
-            let presets_manager = Arc::new(Mutex::new(&self.presets_manager));
-
-            {
-                let presets_manager = presets_manager.clone();
-                let input_listbox = self.input_listbox.clone();
-                let output_listbox = self.output_listbox.clone();
-
-                self.populate_listbox(&manager::PresetType::Input);
-
-                // populate_listbox(
-                //     &presets_manager,
-                //     &manager::PresetType::Input,
-                //     &input_listbox,
-                // );
-            }
+            self.populate_listbox(manager::PresetType::Output);
+            self.populate_listbox(manager::PresetType::Input);
         }
     }
 
     impl PopoverImpl for ExPresetsMenu {}
 
     impl ExPresetsMenu {
-        pub fn populate_listbox(&self, preset_type: &manager::PresetType) {
-            let names = self.presets_manager.get_names(preset_type);
+        pub fn configure_output_listview(&self) {
+            self.output_selection_model.set_model(Some(&self.output_string_list));
+
+            self.output_listview
+                .set_model(Some(&self.output_selection_model));
+
+            let output_factory = gtk::BuilderListItemFactoryBuilder::new()
+                .resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui")
+                .build();
+
+            self.output_listview.set_factory(Some(&output_factory));
+        }
+
+        pub fn populate_listbox(&self, preset_type: manager::PresetType) {
+            // let children = listbox.get_children();
+
+            // for child in children {
+            //     listbox.remove(&child);
+            // }
+
+            let names = self.presets_manager.get_names(&preset_type);
 
             for name in names {}
         }
@@ -246,12 +260,6 @@ fn populate_listbox(
     preset_type: &manager::PresetType,
     listbox: &gtk::ListBox,
 ) {
-    // let children = listbox.get_children();
-
-    // for child in children {
-    //     listbox.remove(&child);
-    // }
-
     let names = presets_manager.lock().unwrap().get_names(preset_type);
 
     for name in names {

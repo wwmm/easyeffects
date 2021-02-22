@@ -93,11 +93,9 @@
                                                                 <property name="hexpand">True</property>
                                                                 <property name="vexpand">True</property>
                                                                 <child>
-                                                                    <object class="GtkListBox" id="output_listbox">
+                                                                    <object class="GtkListView" id="output_listview">
                                                                         <property name="hexpand">True</property>
                                                                         <property name="vexpand">True</property>
-                                                                        <property name="selection_mode">none</property>
-                                                                        <property name="activate_on_single_click">False</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -182,11 +180,9 @@
                                                                 <property name="hexpand">True</property>
                                                                 <property name="vexpand">True</property>
                                                                 <child>
-                                                                    <object class="GtkListBox" id="input_listbox">
+                                                                    <object class="GtkListView" id="input_listview">
                                                                         <property name="hexpand">True</property>
                                                                         <property name="vexpand">True</property>
-                                                                        <property name="selection_mode">none</property>
-                                                                        <property name="activate_on_single_click">False</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
