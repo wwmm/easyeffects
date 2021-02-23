@@ -1,4 +1,4 @@
-<interface>
+<interface domain="pulseeffects">
     <template class="GtkListItem">
         <property name="child">
             <object class="GtkBox">
@@ -30,6 +30,20 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="icon_name">document-save-symbolic</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkToggleButton" id="autoload">
+                        <property name="tooltip_text" translatable="yes">Automatically apply this preset whenever the currently used device is plugged in the system</property>
+                        <property name="icon_name">emblem-synchronizing-symbolic</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="remove">
+                        <property name="tooltip_text" translatable="yes">Remove this preset file</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon_name">list-remove-symbolic</property>
                     </object>
                 </child>
             </object>

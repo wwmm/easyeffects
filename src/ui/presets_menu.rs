@@ -93,11 +93,6 @@ mod imp {
             self.parent_constructed(obj);
 
             self.configure_output_listview();
-
-            // self.output_listbox
-            //     .set_sort_func(Some(Box::new(on_listbox_sort)));
-            // self.input_listbox
-            //     .set_sort_func(Some(Box::new(on_listbox_sort)));
         }
     }
 
@@ -239,25 +234,6 @@ fn create_preset(
     entry.set_text("");
 }
 
-fn on_listbox_sort(row1: &gtk::ListBoxRow, row2: &gtk::ListBoxRow) -> i32 {
-    let mut names = Vec::new();
-    let name1 = row1.get_widget_name();
-    let name2 = row2.get_widget_name();
-
-    names.push(&name1);
-    names.push(&name2);
-    names.sort();
-
-    if name1 == *names[0] {
-        return -1;
-    }
-    if name2 == *names[0] {
-        return 1;
-    }
-
-    return 0;
-}
-
 fn populate_listbox(
     presets_manager: &std::sync::Arc<std::sync::Mutex<manager::Manager>>,
     preset_type: &manager::PresetType,
@@ -356,8 +332,5 @@ fn populate_listbox(
             //   }
             //   populate_listbox(preset_type);
         });
-
-        // listbox.add(&row);
-        // listbox.show_all();
     }
 }
