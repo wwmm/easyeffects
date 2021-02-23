@@ -122,6 +122,12 @@ mod imp {
                 .resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui")
                 .build();
 
+            // let factory = gtk::SignalListItemFactory::new();
+
+            // factory.connect_setup(|_factory, list_item| {});
+
+            // factory.connect_bind(|_factory, list_item| {});
+
             self.output_listview.set_factory(Some(&output_factory));
         }
 
