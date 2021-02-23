@@ -28,7 +28,7 @@ class Compressor : public PluginBase {
   Compressor(const Compressor&) = delete;
   auto operator=(const Compressor&) -> Compressor& = delete;
   Compressor(const Compressor&&) = delete;
-  auto operator=(const Compressor &&) -> Compressor& = delete;
+  auto operator=(const Compressor&&) -> Compressor& = delete;
   ~Compressor() override;
 
   GstElement* compressor = nullptr;
@@ -36,8 +36,8 @@ class Compressor : public PluginBase {
   sigc::connection input_level_connection, output_level_connection, reduction_connection, sidechain_connection,
       curve_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level, output_level;
-  sigc::signal<void, double> reduction, sidechain, curve;
+  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  sigc::signal<void(double)> reduction, sidechain, curve;
 
  private:
   void bind_to_gsettings();

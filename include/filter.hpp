@@ -28,14 +28,14 @@ class Filter : public PluginBase {
   Filter(const Filter&) = delete;
   auto operator=(const Filter&) -> Filter& = delete;
   Filter(const Filter&&) = delete;
-  auto operator=(const Filter &&) -> Filter& = delete;
+  auto operator=(const Filter&&) -> Filter& = delete;
   ~Filter();
 
   GstElement* filter = nullptr;
 
   sigc::connection input_level_connection, output_level_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level, output_level;
+  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
 
  private:
   void bind_to_gsettings();

@@ -28,14 +28,14 @@ class Gate : public PluginBase {
   Gate(const Gate&) = delete;
   auto operator=(const Gate&) -> Gate& = delete;
   Gate(const Gate&&) = delete;
-  auto operator=(const Gate &&) -> Gate& = delete;
+  auto operator=(const Gate&&) -> Gate& = delete;
   ~Gate() override;
 
   GstElement* gate = nullptr;
 
   sigc::connection gating_connection;
 
-  sigc::signal<void, double> gating;
+  sigc::signal<void(double)> gating;
 
  private:
   void bind_to_gsettings();

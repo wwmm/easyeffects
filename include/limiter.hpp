@@ -28,15 +28,15 @@ class Limiter : public PluginBase {
   Limiter(const Limiter&) = delete;
   auto operator=(const Limiter&) -> Limiter& = delete;
   Limiter(const Limiter&&) = delete;
-  auto operator=(const Limiter &&) -> Limiter& = delete;
+  auto operator=(const Limiter&&) -> Limiter& = delete;
   ~Limiter() override;
 
   GstElement* limiter = nullptr;
 
   sigc::connection input_level_connection, output_level_connection, attenuation_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level, output_level;
-  sigc::signal<void, double> attenuation;
+  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  sigc::signal<void(double)> attenuation;
 
  private:
   void bind_to_gsettings();

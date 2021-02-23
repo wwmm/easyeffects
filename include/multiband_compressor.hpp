@@ -28,7 +28,7 @@ class MultibandCompressor : public PluginBase {
   MultibandCompressor(const MultibandCompressor&) = delete;
   auto operator=(const MultibandCompressor&) -> MultibandCompressor& = delete;
   MultibandCompressor(const MultibandCompressor&&) = delete;
-  auto operator=(const MultibandCompressor &&) -> MultibandCompressor& = delete;
+  auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
 
   GstElement* multiband_compressor = nullptr;
@@ -38,9 +38,9 @@ class MultibandCompressor : public PluginBase {
   sigc::connection output0_connection, output1_connection, output2_connection, output3_connection,
       compression0_connection, compression1_connection, compression2_connection, compression3_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level, output_level;
+  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
 
-  sigc::signal<void, double> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
+  sigc::signal<void(double)> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
 
  private:
   void bind_to_gsettings();

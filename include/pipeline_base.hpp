@@ -113,21 +113,21 @@ class PipelineBase {
   void update_spectrum_interval(const double& value) const;
   void set_latency();
 
-  sigc::signal<void, std::vector<float>> new_spectrum;
-  sigc::signal<void, int> new_latency;
-  sigc::signal<void, std::array<double, 2>> global_output_level;
-  sigc::signal<void, std::array<double, 2>> equalizer_input_level;
-  sigc::signal<void, std::array<double, 2>> equalizer_output_level;
-  sigc::signal<void, std::array<double, 2>> pitch_input_level;
-  sigc::signal<void, std::array<double, 2>> pitch_output_level;
-  sigc::signal<void, std::array<double, 2>> gate_input_level;
-  sigc::signal<void, std::array<double, 2>> gate_output_level;
-  sigc::signal<void, std::array<double, 2>> deesser_input_level;
-  sigc::signal<void, std::array<double, 2>> deesser_output_level;
-  sigc::signal<void, std::array<double, 2>> maximizer_input_level;
-  sigc::signal<void, std::array<double, 2>> maximizer_output_level;
-  sigc::signal<void, std::array<double, 2>> rnnoise_input_level;
-  sigc::signal<void, std::array<double, 2>> rnnoise_output_level;
+  sigc::signal<void(std::vector<float>)> new_spectrum;
+  sigc::signal<void(int)> new_latency;
+  sigc::signal<void(std::array<double, 2>)> global_output_level;
+  sigc::signal<void(std::array<double, 2>)> equalizer_input_level;
+  sigc::signal<void(std::array<double, 2>)> equalizer_output_level;
+  sigc::signal<void(std::array<double, 2>)> pitch_input_level;
+  sigc::signal<void(std::array<double, 2>)> pitch_output_level;
+  sigc::signal<void(std::array<double, 2>)> gate_input_level;
+  sigc::signal<void(std::array<double, 2>)> gate_output_level;
+  sigc::signal<void(std::array<double, 2>)> deesser_input_level;
+  sigc::signal<void(std::array<double, 2>)> deesser_output_level;
+  sigc::signal<void(std::array<double, 2>)> maximizer_input_level;
+  sigc::signal<void(std::array<double, 2>)> maximizer_output_level;
+  sigc::signal<void(std::array<double, 2>)> rnnoise_input_level;
+  sigc::signal<void(std::array<double, 2>)> rnnoise_output_level;
 
  protected:
   bool apps_want_to_play = false;

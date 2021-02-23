@@ -27,8 +27,8 @@
 #include "config.h"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
+#include "stream_input_effects.hpp"
 #include "util.hpp"
-// #include "stream_input_effects.hpp"
 // #include "stream_output_effects.hpp"
 // #include "application_ui.hpp"
 

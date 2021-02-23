@@ -28,14 +28,14 @@ class Deesser : public PluginBase {
   Deesser(const Deesser&) = delete;
   auto operator=(const Deesser&) -> Deesser& = delete;
   Deesser(const Deesser&&) = delete;
-  auto operator=(const Deesser &&) -> Deesser& = delete;
+  auto operator=(const Deesser&&) -> Deesser& = delete;
   ~Deesser() override;
 
   GstElement* deesser = nullptr;
 
   sigc::connection compression_connection, detected_connection;
 
-  sigc::signal<void, double> compression, detected;
+  sigc::signal<void(double)> compression, detected;
 
  private:
   void bind_to_gsettings();

@@ -28,7 +28,7 @@ class MultibandGate : public PluginBase {
   MultibandGate(const MultibandGate&) = delete;
   auto operator=(const MultibandGate&) -> MultibandGate& = delete;
   MultibandGate(const MultibandGate&&) = delete;
-  auto operator=(const MultibandGate &&) -> MultibandGate& = delete;
+  auto operator=(const MultibandGate&&) -> MultibandGate& = delete;
   ~MultibandGate() override;
 
   GstElement* multiband_gate = nullptr;
@@ -38,9 +38,9 @@ class MultibandGate : public PluginBase {
   sigc::connection output0_connection, output1_connection, output2_connection, output3_connection, gating0_connection,
       gating1_connection, gating2_connection, gating3_connection;
 
-  sigc::signal<void, std::array<double, 2>> input_level, output_level;
+  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
 
-  sigc::signal<void, double> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
+  sigc::signal<void(double)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
 
  private:
   void bind_to_gsettings();

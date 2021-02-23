@@ -28,14 +28,14 @@ class Maximizer : public PluginBase {
   Maximizer(const Maximizer&) = delete;
   auto operator=(const Maximizer&) -> Maximizer& = delete;
   Maximizer(const Maximizer&&) = delete;
-  auto operator=(const Maximizer &&) -> Maximizer& = delete;
+  auto operator=(const Maximizer&&) -> Maximizer& = delete;
   ~Maximizer() override;
 
   GstElement* maximizer = nullptr;
 
   sigc::connection reduction_connection;
 
-  sigc::signal<void, double> reduction;
+  sigc::signal<void(double)> reduction;
 
  private:
   void bind_to_gsettings();

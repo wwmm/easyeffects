@@ -41,8 +41,8 @@ class StreamInputEffects : public PipelineBase {
 
   void change_input_device(const NodeInfo& node);
 
-  sigc::signal<void, std::array<double, 2>> webrtc_input_level;
-  sigc::signal<void, std::array<double, 2>> webrtc_output_level;
+  sigc::signal<void(std::array<double, 2>)> webrtc_input_level;
+  sigc::signal<void(std::array<double, 2>)> webrtc_output_level;
 
  private:
   void add_plugins_to_pipeline();
