@@ -18,36 +18,29 @@
  */
 
 #include "application.hpp"
-#include <glibmm.h>
-#include <glibmm/i18n.h>
-#include <gtkmm/dialog.h>
-#include <gtkmm/messagedialog.h>
-#include "application_ui.hpp"
-#include "config.h"
-#include "pipe_manager.hpp"
-#include "util.hpp"
+#include "gtkmm/dialog.h"
+// #include "application_ui.hpp"
 
-Application::Application() : Gtk::Application("com.github.wwmm.pulseeffects", Gio::APPLICATION_HANDLES_COMMAND_LINE) {
+Application::Application()
+    : Gtk::Application("com.github.wwmm.pulseeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
   Glib::set_application_name("PulseEffects");
-  Glib::setenv("PULSE_PROP_application.id", "com.github.wwmm.pulseeffects");
-  Glib::setenv("PULSE_PROP_application.icon_name", "pulseeffects");
 
   signal_handle_local_options().connect(sigc::mem_fun(*this, &Application::on_handle_local_options), false);
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "quit", 'q',
+  add_main_option_entry(Gio::Application::OptionType::BOOL, "quit", 'q',
                         _("Quit PulseEffects. Useful when running in service mode."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "presets", 'p', _("Show available presets."));
+  add_main_option_entry(Gio::Application::OptionType::BOOL, "presets", 'p', _("Show available presets."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_STRING, "load-preset", 'l',
+  add_main_option_entry(Gio::Application::OptionType::STRING, "load-preset", 'l',
                         _("Load a preset. Example: pulseeffects -l music"));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "reset", 'r', _("Reset PulseEffects."));
+  add_main_option_entry(Gio::Application::OptionType::BOOL, "reset", 'r', _("Reset PulseEffects."));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_INT, "bypass", 'b',
+  add_main_option_entry(Gio::Application::OptionType::INT, "bypass", 'b',
                         _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
 
-  add_main_option_entry(Gio::Application::OPTION_TYPE_BOOL, "hide-window", 'w', _("Hide the Window."));
+  add_main_option_entry(Gio::Application::OptionType::BOOL, "hide-window", 'w', _("Hide the Window."));
 }
 
 Application::~Application() {
@@ -116,82 +109,82 @@ void Application::on_startup() {
 
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-  if ((get_flags() & Gio::ApplicationFlags::APPLICATION_IS_SERVICE) != 0U) {
+  if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0U) {
     running_as_service = true;
   }
 
   create_actions();
 
-  pm = std::make_unique<PipeManager>();
-  soe = std::make_unique<StreamOutputEffects>(pm.get());
-  sie = std::make_unique<StreamInputEffects>(pm.get());
+  // pm = std::make_unique<PipeManager>();
+  // soe = std::make_unique<StreamOutputEffects>(pm.get());
+  // sie = std::make_unique<StreamInputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
-  pm->blocklist_in = settings->get_string_array("blocklist-in");
-  pm->blocklist_out = settings->get_string_array("blocklist-out");
+  // pm->blocklist_in = settings->get_string_array("blocklist-in");
+  // pm->blocklist_out = settings->get_string_array("blocklist-out");
 
-  pm->new_default_sink.connect([&](const NodeInfo& node) {
-    util::debug("new default sink: " + node.name);
+  // pm->new_default_sink.connect([&](const NodeInfo& node) {
+  //   util::debug("new default sink: " + node.name);
 
-    if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
-      soe->set_null_pipeline();
+  //   if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
+  //     soe->set_null_pipeline();
 
-      soe->set_output_node_id(node.id);
+  //     soe->set_output_node_id(node.id);
 
-      soe->update_pipeline_state();
+  //     soe->update_pipeline_state();
 
-      sie->webrtc->set_probe_input_node_id(node.id);
-    }
+  //     sie->webrtc->set_probe_input_node_id(node.id);
+  //   }
 
-    Glib::signal_timeout().connect_seconds_once(
-        [=]() {
-          auto defaul_sink_name = pm->default_sink.name;
+  //   Glib::signal_timeout().connect_seconds_once(
+  //       [=]() {
+  //         auto defaul_sink_name = pm->default_sink.name;
 
-          // checking if after 2 seconds this sink still is the default sink
-          if (node.name == defaul_sink_name) {
-            if (node.name != last_sink_dev_name) {
-              last_sink_dev_name = node.name;
+  //         // checking if after 2 seconds this sink still is the default sink
+  //         if (node.name == defaul_sink_name) {
+  //           if (node.name != last_sink_dev_name) {
+  //             last_sink_dev_name = node.name;
 
-              presets_manager->autoload(PresetType::output, node.name);
-            }
-          }
-        },
-        2);
-  });
+  //             presets_manager->autoload(PresetType::output, node.name);
+  //           }
+  //         }
+  //       },
+  //       2);
+  // });
 
-  pm->new_default_source.connect([&](const NodeInfo& node) {
-    util::debug("new default source: " + node.name);
+  // pm->new_default_source.connect([&](const NodeInfo& node) {
+  //   util::debug("new default source: " + node.name);
 
-    if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
-      sie->set_null_pipeline();
+  //   if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
+  //     sie->set_null_pipeline();
 
-      sie->change_input_device(node);
+  //     sie->change_input_device(node);
 
-      sie->update_pipeline_state();
-    }
+  //     sie->update_pipeline_state();
+  //   }
 
-    Glib::signal_timeout().connect_seconds_once(
-        [=]() {
-          auto defaul_source_name = pm->default_source.name;
+  //   Glib::signal_timeout().connect_seconds_once(
+  //       [=]() {
+  //         auto defaul_source_name = pm->default_source.name;
 
-          // checking if after 2 seconds this source still is the default source
-          if (node.name == defaul_source_name) {
-            if (node.name != last_source_dev_name) {
-              last_source_dev_name = node.name;
+  //         // checking if after 2 seconds this source still is the default source
+  //         if (node.name == defaul_source_name) {
+  //           if (node.name != last_source_dev_name) {
+  //             last_source_dev_name = node.name;
 
-              presets_manager->autoload(PresetType::input, node.name);
-            }
-          }
-        },
-        3);
-  });
+  //             presets_manager->autoload(PresetType::input, node.name);
+  //           }
+  //         }
+  //       },
+  //       3);
+  // });
 
   settings->signal_changed("blocklist-in").connect([=](auto key) {
-    pm->blocklist_in = settings->get_string_array("blocklist-in");
+    // pm->blocklist_in = settings->get_string_array("blocklist-in");
   });
 
   settings->signal_changed("blocklist-out").connect([=](auto key) {
-    pm->blocklist_out = settings->get_string_array("blocklist-out");
+    // pm->blocklist_out = settings->get_string_array("blocklist-out");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });
@@ -212,23 +205,23 @@ void Application::on_activate() {
       GTK reference counting system will see that there is still someone with an object reference and it won't free the
       widgets.
     */
-    auto* window = ApplicationUi::create(this);
+    // auto* window = ApplicationUi::create(this);
 
-    add_window(*window);
+    // add_window(*window);
 
-    window->signal_hide().connect([&, window]() {
-      int width = 0;
-      int height = 0;
+    // window->signal_hide().connect([&, window]() {
+    //   int width = 0;
+    //   int height = 0;
 
-      window->get_size(width, height);
+    //   window->get_size(width, height);
 
-      settings->set_int("window-width", width);
-      settings->set_int("window-height", height);
+    //   settings->set_int("window-width", width);
+    //   settings->set_int("window-height", height);
 
-      delete window;
-    });
+    //   delete window;
+    // });
 
-    window->show_all();
+    // window->show_all();
   }
 }
 
@@ -288,9 +281,9 @@ void Application::create_actions() {
 
     dialog->signal_response().connect([=](auto response_id) {
       switch (response_id) {
-        case Gtk::RESPONSE_CLOSE:
-        case Gtk::RESPONSE_CANCEL:
-        case Gtk::RESPONSE_DELETE_EVENT: {
+        case Gtk::ResponseType::CLOSE:
+        case Gtk::ResponseType::CANCEL:
+        case Gtk::ResponseType::DELETE_EVENT: {
           dialog->hide();
           util::debug(log_tag + "hiding the about dialog window");
           break;
@@ -312,7 +305,7 @@ void Application::create_actions() {
   add_action("help", [&] {
     auto* window = get_active_window();
 
-    window->show_uri("help:pulseeffects", gtk_get_current_event_time());
+    // window->show_uri("help:pulseeffects", gtk_get_current_event_time());
   });
 
   add_action("quit", [&] {
@@ -331,12 +324,12 @@ void Application::update_bypass_state(const std::string& key) {
   if (state) {
     util::info(log_tag + "enabling global bypass");
 
-    soe->do_bypass(true);
-    sie->do_bypass(true);
+    // soe->do_bypass(true);
+    // sie->do_bypass(true);
   } else {
     util::info(log_tag + "disabling global bypass");
 
-    soe->do_bypass(false);
-    sie->do_bypass(false);
+    // soe->do_bypass(false);
+    // sie->do_bypass(false);
   }
 }

@@ -18,12 +18,12 @@
  */
 
 #include <glib-unix.h>
-#include <glibmm/i18n.h>
-#include "application_ui.hpp"
+#include "application.hpp"
 #include "config.h"
+#include "gtkmm/window.h"
 
 auto sigterm(void* data) -> bool {
-  auto app = static_cast<Application*>(data);
+  auto* app = static_cast<Application*>(data);
 
   for (const auto& w : app->get_windows()) {
     w->hide();
@@ -38,7 +38,7 @@ auto main(int argc, char* argv[]) -> int {
   try {
     // Init internationalization support before anything else
 
-    auto bindtext_output = bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
+    auto* bindtext_output = bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
     bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
     textdomain(GETTEXT_PACKAGE);
 

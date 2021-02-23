@@ -171,7 +171,7 @@ void PresetsManager::add(PresetType preset_type, const std::string& name) {
 }
 
 void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree::ptree& root) {
-  std::vector<std::string> blocklist;
+  std::vector<Glib::ustring> blocklist;
   boost::property_tree::ptree node_in;
 
   switch (preset_type) {
@@ -209,7 +209,7 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
 }
 
 void PresetsManager::load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root) {
-  std::vector<std::string> blocklist;
+  std::vector<Glib::ustring> blocklist;
 
   switch (preset_type) {
     case PresetType::output: {
@@ -252,7 +252,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
   switch (preset_type) {
     case PresetType::output: {
-      std::vector<std::string> output_plugins = sie_settings->get_string_array("plugins");
+      std::vector<Glib::ustring> output_plugins = sie_settings->get_string_array("plugins");
 
       for (const auto& p : output_plugins) {
         boost::property_tree::ptree node;
@@ -267,7 +267,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
       break;
     }
     case PresetType::input: {
-      std::vector<std::string> input_plugins = soe_settings->get_string_array("plugins");
+      std::vector<Glib::ustring> input_plugins = soe_settings->get_string_array("plugins");
 
       for (const auto& p : input_plugins) {
         boost::property_tree::ptree node;
@@ -326,8 +326,8 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
 
 void PresetsManager::load(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root;
-  std::vector<std::string> input_plugins;
-  std::vector<std::string> output_plugins;
+  std::vector<Glib::ustring> input_plugins;
+  std::vector<Glib::ustring> output_plugins;
   std::vector<boost::filesystem::path> conf_dirs;
   boost::filesystem::path input_file;
   bool preset_found = false;
@@ -349,11 +349,11 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         try {
           boost::property_tree::read_json(input_file.string(), root);
 
-          Glib::Variant<std::vector<std::string>> aux;
+          Glib::Variant<std::vector<Glib::ustring>> aux;
           sie_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("output.plugins_order")) {
-            const auto& value = p.second.data();
+            const Glib::ustring value = p.second.data();
 
             for (const auto& v : aux.get()) {
               if (v == value) {
@@ -370,7 +370,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
             }
           }
         } catch (const boost::property_tree::ptree_error& e) {
-          Glib::Variant<std::vector<std::string>> aux;
+          Glib::Variant<std::vector<Glib::ustring>> aux;
           sie_settings->get_default_value("plugins", aux);
           output_plugins = aux.get();
         }
@@ -398,11 +398,11 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         try {
           boost::property_tree::read_json(input_file.string(), root);
 
-          Glib::Variant<std::vector<std::string>> aux;
+          Glib::Variant<std::vector<Glib::ustring>> aux;
           soe_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("input.plugins_order")) {
-            const auto& value = p.second.data();
+            const Glib::ustring value = p.second.data();
 
             for (const auto& v : aux.get()) {
               if (v == value) {
@@ -419,7 +419,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
             }
           }
         } catch (const boost::property_tree::ptree_error& e) {
-          Glib::Variant<std::vector<std::string>> aux;
+          Glib::Variant<std::vector<Glib::ustring>> aux;
           soe_settings->get_default_value("plugins", aux);
           input_plugins = aux.get();
         }

@@ -20,13 +20,16 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include <giomm/settings.h>
-#include <gtkmm/application.h>
+#include <giomm.h>
+#include <glibmm/i18n.h>
+#include <gtkmm.h>
 #include <memory>
-#include "pipe_manager.hpp"
+#include "config.h"
 #include "presets_manager.hpp"
-#include "stream_input_effects.hpp"
-#include "stream_output_effects.hpp"
+#include "util.hpp"
+// #include "pipe_manager.hpp"
+// #include "stream_input_effects.hpp"
+// #include "stream_output_effects.hpp"
 
 class Application : public Gtk::Application {
  public:
@@ -40,9 +43,9 @@ class Application : public Gtk::Application {
   static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
 
-  std::unique_ptr<PipeManager> pm;
-  std::unique_ptr<StreamOutputEffects> soe;
-  std::unique_ptr<StreamInputEffects> sie;
+  // std::unique_ptr<PipeManager> pm;
+  // std::unique_ptr<StreamOutputEffects> soe;
+  // std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:

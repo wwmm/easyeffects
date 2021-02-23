@@ -20,7 +20,8 @@
 #ifndef PRESETS_MANAGER_HPP
 #define PRESETS_MANAGER_HPP
 
-#include <giomm/settings.h>
+#include <giomm.h>
+#include <glibmm.h>
 #include <boost/filesystem.hpp>
 #include <memory>
 #include <vector>
