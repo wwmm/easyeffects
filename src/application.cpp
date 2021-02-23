@@ -18,8 +18,6 @@
  */
 
 #include "application.hpp"
-#include "gtkmm/dialog.h"
-// #include "application_ui.hpp"
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
@@ -115,76 +113,76 @@ void Application::on_startup() {
 
   create_actions();
 
-  // pm = std::make_unique<PipeManager>();
+  pm = std::make_unique<PipeManager>();
   // soe = std::make_unique<StreamOutputEffects>(pm.get());
   // sie = std::make_unique<StreamInputEffects>(pm.get());
   presets_manager = std::make_unique<PresetsManager>();
 
-  // pm->blocklist_in = settings->get_string_array("blocklist-in");
-  // pm->blocklist_out = settings->get_string_array("blocklist-out");
+  pm->blocklist_in = settings->get_string_array("blocklist-in");
+  pm->blocklist_out = settings->get_string_array("blocklist-out");
 
-  // pm->new_default_sink.connect([&](const NodeInfo& node) {
-  //   util::debug("new default sink: " + node.name);
+  pm->new_default_sink.connect([&](const NodeInfo& node) {
+    util::debug("new default sink: " + node.name);
 
-  //   if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
-  //     soe->set_null_pipeline();
+    // if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
+    //   soe->set_null_pipeline();
 
-  //     soe->set_output_node_id(node.id);
+    //   soe->set_output_node_id(node.id);
 
-  //     soe->update_pipeline_state();
+    //   soe->update_pipeline_state();
 
-  //     sie->webrtc->set_probe_input_node_id(node.id);
-  //   }
+    //   sie->webrtc->set_probe_input_node_id(node.id);
+    // }
 
-  //   Glib::signal_timeout().connect_seconds_once(
-  //       [=]() {
-  //         auto defaul_sink_name = pm->default_sink.name;
+    Glib::signal_timeout().connect_seconds_once(
+        [=]() {
+          auto defaul_sink_name = pm->default_sink.name;
 
-  //         // checking if after 2 seconds this sink still is the default sink
-  //         if (node.name == defaul_sink_name) {
-  //           if (node.name != last_sink_dev_name) {
-  //             last_sink_dev_name = node.name;
+          // checking if after 2 seconds this sink still is the default sink
+          if (node.name == defaul_sink_name) {
+            if (node.name != last_sink_dev_name) {
+              last_sink_dev_name = node.name;
 
-  //             presets_manager->autoload(PresetType::output, node.name);
-  //           }
-  //         }
-  //       },
-  //       2);
-  // });
+              presets_manager->autoload(PresetType::output, node.name);
+            }
+          }
+        },
+        2);
+  });
 
-  // pm->new_default_source.connect([&](const NodeInfo& node) {
-  //   util::debug("new default source: " + node.name);
+  pm->new_default_source.connect([&](const NodeInfo& node) {
+    util::debug("new default source: " + node.name);
 
-  //   if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
-  //     sie->set_null_pipeline();
+    // if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
+    //   sie->set_null_pipeline();
 
-  //     sie->change_input_device(node);
+    //   sie->change_input_device(node);
 
-  //     sie->update_pipeline_state();
-  //   }
+    //   sie->update_pipeline_state();
+    // }
 
-  //   Glib::signal_timeout().connect_seconds_once(
-  //       [=]() {
-  //         auto defaul_source_name = pm->default_source.name;
+    Glib::signal_timeout().connect_seconds_once(
+        [=]() {
+          auto defaul_source_name = pm->default_source.name;
 
-  //         // checking if after 2 seconds this source still is the default source
-  //         if (node.name == defaul_source_name) {
-  //           if (node.name != last_source_dev_name) {
-  //             last_source_dev_name = node.name;
+          // checking if after 2 seconds this source still is the default source
+          if (node.name == defaul_source_name) {
+            if (node.name != last_source_dev_name) {
+              last_source_dev_name = node.name;
 
-  //             presets_manager->autoload(PresetType::input, node.name);
-  //           }
-  //         }
-  //       },
-  //       3);
-  // });
+              presets_manager->autoload(PresetType::input, node.name);
+            }
+          }
+        },
+        3);
+  });
 
   settings->signal_changed("blocklist-in").connect([=](auto key) {
-    // pm->blocklist_in = settings->get_string_array("blocklist-in");
+    pm->blocklist_in = settings->get_string_array("blocklist-in");
   });
 
   settings->signal_changed("blocklist-out").connect([=](auto key) {
-    // pm->blocklist_out = settings->get_string_array("blocklist-out");
+    pm->blocklist_out = settings->get_string_array("blocklist-out");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });

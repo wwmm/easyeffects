@@ -25,11 +25,12 @@
 #include <gtkmm.h>
 #include <memory>
 #include "config.h"
+#include "pipe_manager.hpp"
 #include "presets_manager.hpp"
 #include "util.hpp"
-// #include "pipe_manager.hpp"
 // #include "stream_input_effects.hpp"
 // #include "stream_output_effects.hpp"
+// #include "application_ui.hpp"
 
 class Application : public Gtk::Application {
  public:
@@ -43,7 +44,7 @@ class Application : public Gtk::Application {
   static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
 
-  // std::unique_ptr<PipeManager> pm;
+  std::unique_ptr<PipeManager> pm;
   // std::unique_ptr<StreamOutputEffects> soe;
   // std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
@@ -51,7 +52,7 @@ class Application : public Gtk::Application {
  protected:
   auto on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int override;
 
-  auto on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int;
+  auto on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int override;
 
   void on_startup() override;
   void on_activate() override;

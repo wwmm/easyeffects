@@ -141,8 +141,8 @@ class PipeManager {
 
   NodeInfo default_sink, default_source;
 
-  std::vector<std::string> blocklist_in;   // for input effects
-  std::vector<std::string> blocklist_out;  // for output effects
+  std::vector<Glib::ustring> blocklist_in;   // for input effects
+  std::vector<Glib::ustring> blocklist_out;  // for output effects
 
   std::array<std::string, 13> blocklist_node_name = {"PulseEffects",
                                                      "pulseeffects",
@@ -179,22 +179,22 @@ class PipeManager {
 
   static void set_node_mute(NodeInfo nd_info, const bool& state);
 
-  sigc::signal<void, NodeInfo> source_added;
-  sigc::signal<void, NodeInfo> source_changed;
-  sigc::signal<void, NodeInfo> source_removed;
-  sigc::signal<void, NodeInfo> sink_added;
-  sigc::signal<void, NodeInfo> sink_changed;
-  sigc::signal<void, NodeInfo> sink_removed;
-  sigc::signal<void, NodeInfo> new_default_sink;
-  sigc::signal<void, NodeInfo> new_default_source;
-  sigc::signal<void, NodeInfo> stream_output_added;
-  sigc::signal<void, NodeInfo> stream_output_changed;
-  sigc::signal<void, NodeInfo> stream_output_removed;
-  sigc::signal<void, NodeInfo> stream_input_added;
-  sigc::signal<void, NodeInfo> stream_input_changed;
-  sigc::signal<void, NodeInfo> stream_input_removed;
+  sigc::signal<void(NodeInfo)> source_added;
+  sigc::signal<void(NodeInfo)> source_changed;
+  sigc::signal<void(NodeInfo)> source_removed;
+  sigc::signal<void(NodeInfo)> sink_added;
+  sigc::signal<void(NodeInfo)> sink_changed;
+  sigc::signal<void(NodeInfo)> sink_removed;
+  sigc::signal<void(NodeInfo)> new_default_sink;
+  sigc::signal<void(NodeInfo)> new_default_source;
+  sigc::signal<void(NodeInfo)> stream_output_added;
+  sigc::signal<void(NodeInfo)> stream_output_changed;
+  sigc::signal<void(NodeInfo)> stream_output_removed;
+  sigc::signal<void(NodeInfo)> stream_input_added;
+  sigc::signal<void(NodeInfo)> stream_input_changed;
+  sigc::signal<void(NodeInfo)> stream_input_removed;
 
-  sigc::signal<void, LinkInfo> link_changed;
+  sigc::signal<void(LinkInfo)> link_changed;
 
  private:
   bool context_ready = false;
