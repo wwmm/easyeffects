@@ -6,7 +6,7 @@ node_modules
 package-lock.json
 target
 src/config.rs
-src/ui/resources.gresource
+src/resources.gresource
 .cache
 .clangd
 compile_commands.json

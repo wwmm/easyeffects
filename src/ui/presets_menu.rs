@@ -11,7 +11,7 @@ mod imp {
     use gtk::subclass::prelude::*;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(file = "presets_menu.ui")]
+    #[template(resource = "/com/github/wwmm/pulseeffects/ui/presets_menu.ui")]
     pub struct ExPresetsMenu {
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
@@ -48,8 +48,6 @@ mod imp {
 
         pub presets_manager: manager::Manager,
 
-        pub output_selection_model: gtk::SingleSelection,
-
         pub output_string_list: gtk::StringList,
     }
 
@@ -77,8 +75,7 @@ mod imp {
                 input_scrolled_window: TemplateChild::default(),
                 input_listview: TemplateChild::default(),
                 presets_manager: manager::Manager::new(),
-                output_selection_model: gtk::SingleSelectionBuilder::new().build(),
-                output_string_list: gtk::StringList::new(&["first", "second"]),
+                output_string_list: gtk::StringList::new(&[""]),
             }
         }
 
@@ -110,8 +107,7 @@ mod imp {
 
             println!("oi");
 
-            self.populate_listbox(manager::PresetType::Output);
-            self.populate_listbox(manager::PresetType::Input);
+            self.populate_listview(manager::PresetType::Output);
         }
     }
 
@@ -119,10 +115,13 @@ mod imp {
 
     impl ExPresetsMenu {
         pub fn configure_output_listview(&self) {
-            self.output_selection_model.set_model(Some(&self.output_string_list));
+            self.output_string_list.remove(0);
 
-            self.output_listview
-                .set_model(Some(&self.output_selection_model));
+            let no_selection_model = gtk::NoSelectionBuilder::new().build();
+
+            no_selection_model.set_model(Some(&self.output_string_list));
+
+            self.output_listview.set_model(Some(&no_selection_model));
 
             let output_factory = gtk::BuilderListItemFactoryBuilder::new()
                 .resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui")
@@ -131,16 +130,20 @@ mod imp {
             self.output_listview.set_factory(Some(&output_factory));
         }
 
-        pub fn populate_listbox(&self, preset_type: manager::PresetType) {
-            // let children = listbox.get_children();
+        pub fn populate_listview(&self, preset_type: manager::PresetType) {
+            let mut n_items = self.output_string_list.get_n_items();
 
-            // for child in children {
-            //     listbox.remove(&child);
-            // }
+            while n_items > 0 {
+                self.output_string_list.remove(n_items - 1);
+
+                n_items = self.output_string_list.get_n_items();
+            }
 
             let names = self.presets_manager.get_names(&preset_type);
 
-            for name in names {}
+            for name in names {
+                self.output_string_list.append(&name);
+            }
         }
     }
 }

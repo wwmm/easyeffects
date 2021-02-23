@@ -1,4 +1,4 @@
-src/ui/application_window.ui
+data/ui/application_window.ui
 data/ui/spectrum.glade
 data/ui/spectrum_settings.glade
 data/ui/pulse_settings.glade
@@ -37,7 +37,7 @@ data/ui/pitch.glade
 data/ui/webrtc.glade
 data/ui/delay.glade
 data/ui/preset_row.ui
-src/ui/presets_menu.ui
+data/ui/presets_menu.ui
 data/ui/blacklist_row.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade

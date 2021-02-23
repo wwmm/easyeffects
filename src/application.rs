@@ -60,12 +60,18 @@ pub fn init() {
 
     application.connect_activate(|app| {
         if app.get_active_window() == Option::None {
+            let res_bytes = include_bytes!("resources.gresource");
+
+            let data = glib::Bytes::from(&res_bytes[..]);
+
+            let resource = gio::Resource::from_data(&data).expect("Failed to load resources");
+
+            gio::resources_register(&resource);
             let window = ExApplicationWindow::new(app);
 
             window.connect_close_request(|window| {
                 let w = window.get_width();
                 let h = window.get_height();
-                
                 println!("{}, {}", w, h);
 
                 return glib::signal::Inhibit(false);

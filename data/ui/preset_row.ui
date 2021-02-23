@@ -1,0 +1,38 @@
+<interface>
+    <template class="GtkListItem">
+        <property name="child">
+            <object class="GtkBox">
+                <property name="spacing">6</property>
+                <property name="orientation">horizontal</property>
+                <child>
+                    <object class="GtkLabel" id="name">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="hexpand">True</property>
+                        <property name="label">Name</property>
+                        <binding name="label">
+                            <lookup name='string' type="GtkStringObject">
+                                <lookup name="item">GtkListItem</lookup>
+                            </lookup>
+                        </binding>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="apply">
+                        <property name="label" translatable="yes">Load</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="save">
+                        <property name="tooltip_text" translatable="yes">Save current settings to this preset file</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon_name">document-save-symbolic</property>
+                    </object>
+                </child>
+            </object>
+        </property>
+    </template>
+</interface>

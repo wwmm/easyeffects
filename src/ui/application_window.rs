@@ -11,7 +11,7 @@ mod imp {
     use gtk::subclass::prelude::*;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(file = "application_window.ui")]
+    #[template(resource = "/com/github/wwmm/pulseeffects/ui/application_window.ui")]
     pub struct ExApplicationWindow {
         #[template_child]
         pub headerbar: TemplateChild<gtk::HeaderBar>,
@@ -90,7 +90,6 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
-            obj.register_resources();
             obj.add_resource_icons_to_theme_path();
 
             // let presets_menu = ExPresetsMenu::new();
@@ -144,16 +143,6 @@ glib::wrapper! {
 impl ExApplicationWindow {
     pub fn new<P: glib::IsA<gtk::Application>>(app: &P) -> Self {
         glib::Object::new(&[("application", app)]).expect("Failed to create ApplicationWindow")
-    }
-
-    pub fn register_resources(&self) {
-        let res_bytes = include_bytes!("resources.gresource");
-
-        let data = glib::Bytes::from(&res_bytes[..]);
-
-        let resource = gio::Resource::from_data(&data).expect("Failed to load resources");
-
-        gio::resources_register(&resource);
     }
 
     pub fn add_resource_icons_to_theme_path(&self) {
