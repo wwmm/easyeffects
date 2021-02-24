@@ -18,9 +18,6 @@
  */
 
 #include "stream_input_effects.hpp"
-#include <cstring>
-#include "pipeline_common.hpp"
-#include "rnnoise.hpp"
 
 namespace {
 

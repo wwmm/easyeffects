@@ -20,10 +20,13 @@
 #ifndef STREAM_INPUT_EFFECTS_HPP
 #define STREAM_INPUT_EFFECTS_HPP
 
+#include <cstring>
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "pipe_manager.hpp"
 #include "pipeline_base.hpp"
+#include "pipeline_common.hpp"
+#include "rnnoise.hpp"
 #include "webrtc.hpp"
 
 class StreamInputEffects : public PipelineBase {

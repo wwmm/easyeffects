@@ -18,12 +18,6 @@
  */
 
 #include "stream_output_effects.hpp"
-#include <cstring>
-#include <string>
-#include "pipeline_common.hpp"
-#include "pipewire/link.h"
-#include "rnnoise.hpp"
-#include "util.hpp"
 
 namespace {
 

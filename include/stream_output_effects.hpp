@@ -20,6 +20,7 @@
 #ifndef STREAM_OUTPUT_EFFECTS_HPP
 #define STREAM_OUTPUT_EFFECTS_HPP
 
+#include <cstring>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "convolver.hpp"
@@ -32,6 +33,8 @@
 #include "multiband_gate.hpp"
 #include "pipe_manager.hpp"
 #include "pipeline_base.hpp"
+#include "pipeline_common.hpp"
+#include "rnnoise.hpp"
 
 class StreamOutputEffects : public PipelineBase {
  public:
