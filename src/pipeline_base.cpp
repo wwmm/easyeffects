@@ -18,16 +18,6 @@
  */
 
 #include "pipeline_base.hpp"
-#include <glib-object.h>
-#include <gobject/gvaluecollector.h>
-#include <sys/resource.h>
-#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
-#include <chrono>
-#include <string>
-#include "config.h"
-#include "gst/gstelement.h"
-#include "gst/gstmessage.h"
-#include "util.hpp"
 
 namespace {
 

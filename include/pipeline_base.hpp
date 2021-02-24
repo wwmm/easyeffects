@@ -22,9 +22,11 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <memory>
 #include <vector>
 #include "compressor.hpp"
+#include "config.h"
 #include "deesser.hpp"
 #include "equalizer.hpp"
 #include "filter.hpp"
