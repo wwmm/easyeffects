@@ -30,7 +30,6 @@
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
 #include "util.hpp"
-// #include "application_ui.hpp"
 
 class Application : public Gtk::Application {
  public:

@@ -18,6 +18,7 @@
  */
 
 #include "application.hpp"
+#include "application_ui.hpp"
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {

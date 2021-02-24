@@ -20,23 +20,13 @@
 #ifndef APPLICATION_WINDOW_HPP
 #define APPLICATION_WINDOW_HPP
 
-#include <gtkmm/applicationwindow.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/button.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/headerbar.h>
-#include <gtkmm/image.h>
-#include <gtkmm/label.h>
-#include <gtkmm/menubutton.h>
-#include <gtkmm/popover.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/togglebutton.h>
+#include <gtkmm.h>
 #include "application.hpp"
-#include "calibration_ui.hpp"
-#include "pipe_info_ui.hpp"
-#include "presets_menu_ui.hpp"
-#include "stream_input_effects_ui.hpp"
-#include "stream_output_effects_ui.hpp"
+// #include "calibration_ui.hpp"
+// #include "pipe_info_ui.hpp"
+// #include "presets_menu_ui.hpp"
+// #include "stream_input_effects_ui.hpp"
+// #include "stream_output_effects_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
@@ -72,25 +62,23 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   std::vector<sigc::connection> connections;
 
-  PresetsMenuUi* presets_menu_ui = nullptr;
-
-  StreamOutputEffectsUi* soe_ui = nullptr;
-  StreamInputEffectsUi* sie_ui = nullptr;
-  PipeInfoUi* pipe_info_ui = nullptr;
-
-  CalibrationUi* calibration_ui = nullptr;
+  // PresetsMenuUi* presets_menu_ui = nullptr;
+  // StreamOutputEffectsUi* soe_ui = nullptr;
+  // StreamInputEffectsUi* sie_ui = nullptr;
+  // PipeInfoUi* pipe_info_ui = nullptr;
+  // CalibrationUi* calibration_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;
 
-  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& name,
-                         Glib::RefPtr<Gtk::Adjustment>& object) {
-    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  }
+  // static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
+  //                        const std::string& name,
+  //                        Glib::RefPtr<Gtk::Adjustment>& object) {
+  //   object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
+  // }
+
+  void apply_css_style(const std::string& css_file_name);
 
   void update_headerbar_subtitle(const int& index);
-
-  static void apply_css_style(const std::string& css_file_name);
 
   void on_stack_visible_child_changed();
 
