@@ -20,6 +20,7 @@
 #ifndef DEESSER_HPP
 #define DEESSER_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {

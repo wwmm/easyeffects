@@ -18,8 +18,6 @@
  */
 
 #include "bass_enhancer.hpp"
-#include <glibmm/main.h>
-#include "util.hpp"
 
 namespace {
 

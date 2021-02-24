@@ -28,8 +28,8 @@
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
 #include "stream_input_effects.hpp"
+#include "stream_output_effects.hpp"
 #include "util.hpp"
-// #include "stream_output_effects.hpp"
 // #include "application_ui.hpp"
 
 class Application : public Gtk::Application {
@@ -45,8 +45,8 @@ class Application : public Gtk::Application {
   Glib::RefPtr<Gio::Settings> settings;
 
   std::unique_ptr<PipeManager> pm;
-  // std::unique_ptr<StreamOutputEffects> soe;
-  // std::unique_ptr<StreamInputEffects> sie;
+  std::unique_ptr<StreamOutputEffects> soe;
+  std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:

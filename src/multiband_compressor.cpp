@@ -18,9 +18,6 @@
  */
 
 #include "multiband_compressor.hpp"
-#include <glibmm/main.h>
-#include <array>
-#include "util.hpp"
 
 namespace {
 

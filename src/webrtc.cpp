@@ -18,8 +18,6 @@
  */
 
 #include "webrtc.hpp"
-#include <glibmm/main.h>
-#include "util.hpp"
 
 namespace {
 

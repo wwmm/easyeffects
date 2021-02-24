@@ -20,6 +20,8 @@
 #ifndef REVERB_HPP
 #define REVERB_HPP
 
+#include <glibmm.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class Reverb : public PluginBase {

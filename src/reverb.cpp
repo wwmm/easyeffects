@@ -18,9 +18,6 @@
  */
 
 #include "reverb.hpp"
-#include <glibmm/main.h>
-#include <array>
-#include "util.hpp"
 
 namespace {
 

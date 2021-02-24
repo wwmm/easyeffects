@@ -20,8 +20,13 @@
 #ifndef REALTIMEKIT_HPP
 #define REALTIMEKIT_HPP
 
-#include <giomm/dbusproxy.h>
+#include <giomm.h>
+#include <sys/resource.h>
+#include <sys/syscall.h>
+#include <unistd.h>
+#include <climits>
 #include <iostream>
+#include "util.hpp"
 
 #define RTKIT_SERVICE_NAME "org.freedesktop.RealtimeKit1"
 #define RTKIT_OBJECT_PATH "/org/freedesktop/RealtimeKit1"

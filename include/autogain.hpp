@@ -20,7 +20,9 @@
 #ifndef AUTOGAIN_HPP
 #define AUTOGAIN_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
+#include "util.hpp"
 
 class AutoGain : public PluginBase {
  public:
@@ -28,12 +30,12 @@ class AutoGain : public PluginBase {
   AutoGain(const AutoGain&) = delete;
   auto operator=(const AutoGain&) -> AutoGain& = delete;
   AutoGain(const AutoGain&&) = delete;
-  auto operator=(const AutoGain &&) -> AutoGain& = delete;
+  auto operator=(const AutoGain&&) -> AutoGain& = delete;
   ~AutoGain() override;
 
   GstElement* autogain = nullptr;
 
-  sigc::signal<void, float> momentary, shortterm, integrated, relative, loudness, range, gain;
+  sigc::signal<void(float)> momentary, shortterm, integrated, relative, loudness, range, gain;
 
  private:
   void bind_to_gsettings();

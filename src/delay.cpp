@@ -18,8 +18,6 @@
  */
 
 #include "delay.hpp"
-#include <glibmm/main.h>
-#include "util.hpp"
 
 Delay::Delay(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "delay", schema, schema_path) {

@@ -20,6 +20,7 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {
@@ -35,7 +36,7 @@ class Crystalizer : public PluginBase {
 
   sigc::connection range_before_connection, range_after_connection;
 
-  sigc::signal<void, double> range_before, range_after;
+  sigc::signal<void(double)> range_before, range_after;
 
  private:
   void bind_to_gsettings();

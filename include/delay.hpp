@@ -20,6 +20,7 @@
 #ifndef DELAY_HPP
 #define DELAY_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Delay : public PluginBase {
@@ -28,7 +29,7 @@ class Delay : public PluginBase {
   Delay(const Delay&) = delete;
   auto operator=(const Delay&) -> Delay& = delete;
   Delay(const Delay&&) = delete;
-  auto operator=(const Delay &&) -> Delay& = delete;
+  auto operator=(const Delay&&) -> Delay& = delete;
   ~Delay() override;
 
   GstElement* delay = nullptr;

@@ -20,6 +20,7 @@
 #ifndef RNNOISE_HPP
 #define RNNOISE_HPP
 
+#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class RNNoise : public PluginBase {

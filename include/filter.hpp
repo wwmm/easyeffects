@@ -20,6 +20,8 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
+#include <glibmm.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class Filter : public PluginBase {

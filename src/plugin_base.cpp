@@ -18,8 +18,6 @@
  */
 
 #include "plugin_base.hpp"
-#include "gst/gstelement.h"
-#include "util.hpp"
 
 namespace {
 

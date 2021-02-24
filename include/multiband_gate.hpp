@@ -20,6 +20,8 @@
 #ifndef MULTIBAND_GATE_HPP
 #define MULTIBAND_GATE_HPP
 
+#include <glibmm/main.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class MultibandGate : public PluginBase {

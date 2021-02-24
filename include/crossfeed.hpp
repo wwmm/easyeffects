@@ -20,6 +20,7 @@
 #ifndef CROSSFEED_HPP
 #define CROSSFEED_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Crossfeed : public PluginBase {
@@ -28,7 +29,7 @@ class Crossfeed : public PluginBase {
   Crossfeed(const Crossfeed&) = delete;
   auto operator=(const Crossfeed&) -> Crossfeed& = delete;
   Crossfeed(const Crossfeed&&) = delete;
-  auto operator=(const Crossfeed &&) -> Crossfeed& = delete;
+  auto operator=(const Crossfeed&&) -> Crossfeed& = delete;
   ~Crossfeed() override;
 
   GstElement* crossfeed = nullptr;

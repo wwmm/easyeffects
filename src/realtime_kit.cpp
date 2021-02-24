@@ -18,23 +18,18 @@
  */
 
 #include "realtime_kit.hpp"
-#include <sys/resource.h>
-#include <sys/syscall.h>
-#include <unistd.h>
-#include <climits>
-#include "util.hpp"
 
 RealtimeKit::RealtimeKit(const std::string& tag) {
   log_tag = tag + "rtkit: ";
 
   try {
-    proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
-                                                  RTKIT_OBJECT_PATH, "org.freedesktop.RealtimeKit1");
+    proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::SYSTEM, RTKIT_SERVICE_NAME, RTKIT_OBJECT_PATH,
+                                                  "org.freedesktop.RealtimeKit1");
 
-    properties_proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::BUS_TYPE_SYSTEM, RTKIT_SERVICE_NAME,
+    properties_proxy = Gio::DBus::Proxy::create_for_bus_sync(Gio::DBus::BusType::SYSTEM, RTKIT_SERVICE_NAME,
                                                              RTKIT_OBJECT_PATH, "org.freedesktop.DBus.Properties");
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + "Failed to connect to system bus: " + err.what().c_str());
+    util::warning(log_tag + "Failed to connect to system bus: " + err.what());
   }
 }
 
@@ -70,7 +65,7 @@ auto RealtimeKit::get_int_property(const char* propname) -> long long {
       util::warning(log_tag + " Expected value of type (v) but received " + reply_body.get_type_string());
     }
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + err.what().c_str());
+    util::warning(log_tag + err.what());
   }
 
   return propval;
@@ -91,7 +86,7 @@ void RealtimeKit::make_realtime(const std::string& source_name, const int& prior
 
     util::debug(log_tag + "changed " + source_name + " thread real-time priority value to " + std::to_string(priority));
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + "MakeThreadRealtime: " + err.what().c_str());
+    util::warning(log_tag + "MakeThreadRealtime: " + err.what());
   }
 
 #endif
@@ -112,7 +107,7 @@ void RealtimeKit::make_high_priority(const std::string& source_name, const int& 
 
     util::debug(log_tag + "changed " + source_name + " thread nice value to " + std::to_string(nice_value));
   } catch (const Glib::Error& err) {
-    util::warning(log_tag + "MakeThreadHighPriority: " + err.what().c_str());
+    util::warning(log_tag + "MakeThreadHighPriority: " + err.what());
   }
 
 #endif

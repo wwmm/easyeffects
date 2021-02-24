@@ -475,7 +475,15 @@ auto PipelineBase::get_input_node_id() -> uint {
 
   g_object_get(source, "path", &path, nullptr);
 
-  return std::stoi(path);
+  if (path == nullptr) {
+    return 0;
+  }
+
+  uint id = std::stoi(path);
+
+  g_free(path);
+
+  return id;
 }
 
 void PipelineBase::set_output_node_id(const uint& id) const {
@@ -487,11 +495,19 @@ void PipelineBase::set_output_node_id(const uint& id) const {
 }
 
 auto PipelineBase::get_output_node_id() -> uint {
-  char* path = nullptr;
+  gchar* path = nullptr;
 
   g_object_get(sink, "path", &path, nullptr);
 
-  return std::stoi(path);
+  if (path == nullptr) {
+    return 0;
+  }
+
+  uint id = std::stoi(path);
+
+  g_free(path);
+
+  return id;
 }
 
 void PipelineBase::set_pipewiresrc_stream_props(const std::string& props) const {

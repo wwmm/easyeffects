@@ -23,7 +23,7 @@
 #include <gio/gio.h>
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
-#include <string>
+#include "util.hpp"
 
 class PluginBase {
  public:
@@ -31,7 +31,7 @@ class PluginBase {
   PluginBase(const PluginBase&) = delete;
   auto operator=(const PluginBase&) -> PluginBase& = delete;
   PluginBase(const PluginBase&&) = delete;
-  auto operator=(const PluginBase &&) -> PluginBase& = delete;
+  auto operator=(const PluginBase&&) -> PluginBase& = delete;
   virtual ~PluginBase();
 
   std::string log_tag, name;

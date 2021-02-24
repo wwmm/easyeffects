@@ -18,8 +18,6 @@
  */
 
 #include "autogain.hpp"
-#include <glibmm/main.h>
-#include "util.hpp"
 
 namespace {
 

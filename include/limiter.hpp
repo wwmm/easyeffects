@@ -20,6 +20,8 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
+#include <glibmm.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class Limiter : public PluginBase {

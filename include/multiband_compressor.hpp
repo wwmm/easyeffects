@@ -20,6 +20,8 @@
 #ifndef MULTIBAND_COMPRESSOR_HPP
 #define MULTIBAND_COMPRESSOR_HPP
 
+#include <glibmm.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class MultibandCompressor : public PluginBase {

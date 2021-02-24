@@ -18,8 +18,6 @@
  */
 
 #include "crossfeed.hpp"
-#include <glibmm/main.h>
-#include "util.hpp"
 
 Crossfeed::Crossfeed(const std::string& tag, const std::string& schema, const std::string& schema_path)
     : PluginBase(tag, "crossfeed", schema, schema_path) {

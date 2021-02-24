@@ -20,6 +20,8 @@
 #ifndef STEREO_TOOLS_HPP
 #define STEREO_TOOLS_HPP
 
+#include <glibmm.h>
+#include <array>
 #include "plugin_base.hpp"
 
 class StereoTools : public PluginBase {

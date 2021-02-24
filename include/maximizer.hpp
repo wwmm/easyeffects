@@ -20,6 +20,7 @@
 #ifndef MAXIMIZER_HPP
 #define MAXIMIZER_HPP
 
+#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {

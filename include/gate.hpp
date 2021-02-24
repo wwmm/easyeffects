@@ -20,7 +20,9 @@
 #ifndef GATE_HPP
 #define GATE_HPP
 
+#include <glibmm.h>
 #include "plugin_base.hpp"
+#include "util.hpp"
 
 class Gate : public PluginBase {
  public:

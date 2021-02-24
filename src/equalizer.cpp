@@ -18,9 +18,6 @@
  */
 
 #include "equalizer.hpp"
-#include <glibmm/main.h>
-#include <chrono>
-#include "util.hpp"
 
 namespace {
 

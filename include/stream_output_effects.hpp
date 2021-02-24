@@ -55,22 +55,22 @@ class StreamOutputEffects : public PipelineBase {
 
   void change_output_device(const NodeInfo& node);
 
-  sigc::signal<void, std::array<double, 2>> bass_enhancer_input_level;
-  sigc::signal<void, std::array<double, 2>> bass_enhancer_output_level;
-  sigc::signal<void, std::array<double, 2>> exciter_input_level;
-  sigc::signal<void, std::array<double, 2>> exciter_output_level;
-  sigc::signal<void, std::array<double, 2>> crossfeed_input_level;
-  sigc::signal<void, std::array<double, 2>> crossfeed_output_level;
-  sigc::signal<void, std::array<double, 2>> loudness_input_level;
-  sigc::signal<void, std::array<double, 2>> loudness_output_level;
-  sigc::signal<void, std::array<double, 2>> convolver_input_level;
-  sigc::signal<void, std::array<double, 2>> convolver_output_level;
-  sigc::signal<void, std::array<double, 2>> crystalizer_input_level;
-  sigc::signal<void, std::array<double, 2>> crystalizer_output_level;
-  sigc::signal<void, std::array<double, 2>> autogain_input_level;
-  sigc::signal<void, std::array<double, 2>> autogain_output_level;
-  sigc::signal<void, std::array<double, 2>> delay_input_level;
-  sigc::signal<void, std::array<double, 2>> delay_output_level;
+  sigc::signal<void(std::array<double, 2>)> bass_enhancer_input_level;
+  sigc::signal<void(std::array<double, 2>)> bass_enhancer_output_level;
+  sigc::signal<void(std::array<double, 2>)> exciter_input_level;
+  sigc::signal<void(std::array<double, 2>)> exciter_output_level;
+  sigc::signal<void(std::array<double, 2>)> crossfeed_input_level;
+  sigc::signal<void(std::array<double, 2>)> crossfeed_output_level;
+  sigc::signal<void(std::array<double, 2>)> loudness_input_level;
+  sigc::signal<void(std::array<double, 2>)> loudness_output_level;
+  sigc::signal<void(std::array<double, 2>)> convolver_input_level;
+  sigc::signal<void(std::array<double, 2>)> convolver_output_level;
+  sigc::signal<void(std::array<double, 2>)> crystalizer_input_level;
+  sigc::signal<void(std::array<double, 2>)> crystalizer_output_level;
+  sigc::signal<void(std::array<double, 2>)> autogain_input_level;
+  sigc::signal<void(std::array<double, 2>)> autogain_output_level;
+  sigc::signal<void(std::array<double, 2>)> delay_input_level;
+  sigc::signal<void(std::array<double, 2>)> delay_output_level;
 
  private:
   void add_plugins_to_pipeline();

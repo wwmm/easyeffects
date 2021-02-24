@@ -18,9 +18,6 @@
  */
 
 #include "stereo_tools.hpp"
-#include <glibmm/main.h>
-#include <array>
-#include "util.hpp"
 
 namespace {
 

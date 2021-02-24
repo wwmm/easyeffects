@@ -20,6 +20,7 @@
 #ifndef CONVOLVER_HPP
 #define CONVOLVER_HPP
 
+#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Convolver : public PluginBase {

@@ -20,6 +20,8 @@
 #ifndef EQUALIZER_HPP
 #define EQUALIZER_HPP
 
+#include <glibmm.h>
+#include <chrono>
 #include "plugin_base.hpp"
 
 class Equalizer : public PluginBase {
@@ -33,7 +35,7 @@ class Equalizer : public PluginBase {
   Equalizer(const Equalizer&) = delete;
   auto operator=(const Equalizer&) -> Equalizer& = delete;
   Equalizer(const Equalizer&&) = delete;
-  auto operator=(const Equalizer &&) -> Equalizer& = delete;
+  auto operator=(const Equalizer&&) -> Equalizer& = delete;
   ~Equalizer() override;
 
   GstElement* equalizer = nullptr;

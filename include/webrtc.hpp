@@ -20,6 +20,7 @@
 #ifndef WEBRTC_HPP
 #define WEBRTC_HPP
 
+#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Webrtc : public PluginBase {
