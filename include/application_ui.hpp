@@ -54,7 +54,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Label* headerbar_info = nullptr;
   Gtk::Popover* presets_menu = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
-  Gtk::Label* presets_menu_label = nullptr;
 
   Gtk::Grid* subtitle_grid = nullptr;
   Gtk::HeaderBar* headerbar = nullptr;

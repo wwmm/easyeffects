@@ -54,7 +54,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   presets_menu = builder->get_widget<Gtk::Popover>("presets_menu");
-  // presets_menu_label = builder->get_widget<Gtk::Label>("presets_menu_label");
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
   subtitle_grid = builder->get_widget<Gtk::Grid>("subtitle_grid");
   headerbar = builder->get_widget<Gtk::HeaderBar>("headerbar");
@@ -119,14 +118,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // presets_menu_button->signal_clicked().connect(
   //     sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
 
-  presets_menu_button->get_label() = settings->get_string("last-used-output-preset");
+  presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
 
   connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
-    presets_menu_button->get_label() = settings->get_string("last-used-input-preset");
+    presets_menu_button->set_label(settings->get_string("last-used-input-preset"));
   }));
 
   connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
-    presets_menu_button->get_label() = settings->get_string("last-used-output-preset");
+    presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
   }));
 
   // headerbar info
@@ -290,11 +289,11 @@ void ApplicationUi::on_stack_visible_child_changed() {
   if (name == "stream_output") {
     update_headerbar_subtitle(0);
 
-    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
+    presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
   } else if (name == "stream_input") {
     update_headerbar_subtitle(1);
 
-    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
+    presets_menu_button->set_label(settings->get_string("last-used-input-preset"));
   } else if (name == "pipe_info") {
     update_headerbar_subtitle(2);
   }
