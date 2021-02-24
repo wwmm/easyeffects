@@ -20,13 +20,19 @@
 #ifndef APPLICATION_WINDOW_HPP
 #define APPLICATION_WINDOW_HPP
 
+#include <glibmm/i18n.h>
 #include <gtkmm.h>
 #include "application.hpp"
-// #include "calibration_ui.hpp"
+#include "pipe_manager.hpp"
 // #include "pipe_info_ui.hpp"
 // #include "presets_menu_ui.hpp"
 // #include "stream_input_effects_ui.hpp"
 // #include "stream_output_effects_ui.hpp"
+// #include "blocklist_settings_ui.hpp"
+// #include "calibration_ui.hpp"
+// #include "general_settings_ui.hpp"
+// #include "pipe_settings_ui.hpp"
+// #include "spectrum_settings_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
@@ -68,12 +74,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   // CalibrationUi* calibration_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;
-
-  // static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-  //                        const std::string& name,
-  //                        Glib::RefPtr<Gtk::Adjustment>& object) {
-  //   object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  // }
 
   void apply_css_style(const std::string& css_file_name);
 

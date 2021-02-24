@@ -18,19 +18,6 @@
  */
 
 #include "application_ui.hpp"
-#include <glibmm/i18n.h>
-#include <memory>
-#include <sstream>
-// #include "blocklist_settings_ui.hpp"
-// #include "calibration_ui.hpp"
-// #include "general_settings_ui.hpp"
-#include "gtkmm/label.h"
-#include "gtkmm/menubutton.h"
-#include "gtkmm/popovermenu.h"
-#include "gtkmm/stack.h"
-#include "pipe_manager.hpp"
-// #include "pipe_settings_ui.hpp"
-// #include "spectrum_settings_ui.hpp"
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
