@@ -204,23 +204,26 @@ void Application::on_activate() {
       GTK reference counting system will see that there is still someone with an object reference and it won't free the
       widgets.
     */
-    // auto* window = ApplicationUi::create(this);
 
-    // add_window(*window);
+    auto* window = ApplicationUi::create(this);
 
-    // window->signal_hide().connect([&, window]() {
-    //   int width = 0;
-    //   int height = 0;
+    add_window(*window);
 
-    //   window->get_size(width, height);
+    window->signal_close_request().connect(
+        [&, window]() {
+          int width = window->get_width();
+          int height = window->get_height();
 
-    //   settings->set_int("window-width", width);
-    //   settings->set_int("window-height", height);
+          settings->set_int("window-width", width);
+          settings->set_int("window-height", height);
 
-    //   delete window;
-    // });
+          delete window;
 
-    // window->show_all();
+          return false;
+        },
+        false);
+
+    window->show();
   }
 }
 

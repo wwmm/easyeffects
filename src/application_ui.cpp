@@ -48,13 +48,13 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     global_locale = std::locale();
   }
 
-  // loading glade widgets
+  // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   presets_menu = builder->get_widget<Gtk::Popover>("presets_menu");
-  presets_menu_label = builder->get_widget<Gtk::Label>("presets_menu_label");
+  // presets_menu_label = builder->get_widget<Gtk::Label>("presets_menu_label");
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
   subtitle_grid = builder->get_widget<Gtk::Grid>("subtitle_grid");
   headerbar = builder->get_widget<Gtk::HeaderBar>("headerbar");
@@ -119,14 +119,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // presets_menu_button->signal_clicked().connect(
   //     sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
 
-  presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
+  presets_menu_button->get_label() = settings->get_string("last-used-output-preset");
 
   connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
-    presets_menu_label->set_text(settings->get_string("last-used-input-preset"));
+    presets_menu_button->get_label() = settings->get_string("last-used-input-preset");
   }));
 
   connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
-    presets_menu_label->set_text(settings->get_string("last-used-output-preset"));
+    presets_menu_button->get_label() = settings->get_string("last-used-output-preset");
   }));
 
   // headerbar info
@@ -183,7 +183,7 @@ ApplicationUi::~ApplicationUi() {
 }
 
 auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/application.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/application_window.ui");
 
   return Gtk::Builder::get_widget_derived<ApplicationUi>(builder, "ApplicationUi", app_this);
 }

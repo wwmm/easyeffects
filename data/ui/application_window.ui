@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
-    <template class="ExApplicationWindow" parent="GtkApplicationWindow">
+
+    <!-- main window widget -->
+
+    <object class="GtkApplicationWindow" id="ApplicationUi">
         <child type="titlebar">
+
+            <!-- headerbar -->
+
             <object class="GtkHeaderBar" id="headerbar">
                 <property name="visible">True</property>
                 <property name="show_title_buttons">True</property>
+
+                <!-- title -->
+
                 <child type="title">
                     <object class="GtkGrid">
                         <property name="halign">center</property>
@@ -70,12 +79,18 @@
                         </child>
                     </object>
                 </child>
+
+                <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
+
                 <child>
                     <object class="GtkStackSwitcher" id="stack_switcher">
                         <property name="valign">center</property>
                         <property name="stack">stack</property>
                     </object>
                 </child>
+
+                <!-- calibration button -->
+
                 <child>
                     <object class="GtkButton" id="calibration_button">
                         <property name="tooltip_text" translatable="yes">Test Signals</property>
@@ -84,6 +99,9 @@
                         <property name="icon_name">pulseeffects-sine-symbolic</property>
                     </object>
                 </child>
+
+                <!-- bypass button  -->
+
                 <child>
                     <object class="GtkToggleButton" id="bypass_button">
                         <property name="tooltip_text" translatable="yes">Global Bypass</property>
@@ -92,6 +110,9 @@
                         <property name="icon_name">media-playlist-shuffle-symbolic</property>
                     </object>
                 </child>
+
+                <!-- button for the settings menu -->
+
                 <child type="end">
                     <object class="GtkMenuButton" id="settings_popover_button">
                         <property name="tooltip_text" translatable="yes">Settings</property>
@@ -101,6 +122,9 @@
                         <property name="popover">settings_menu</property>
                     </object>
                 </child>
+
+                <!-- help button -->
+
                 <child type="end">
                     <object class="GtkButton" id="help_button">
                         <property name="tooltip_text" translatable="yes">Help</property>
@@ -109,6 +133,9 @@
                         <property name="icon_name">help-faq-symbolic</property>
                     </object>
                 </child>
+
+                <!-- button for the presets menu -->
+
                 <child type="end">
                     <object class="GtkMenuButton" id="presets_menu_button">
                         <property name="halign">center</property>
@@ -119,6 +146,9 @@
                 </child>
             </object>
         </child>
+
+        <!-- stack switcher where input and output effects and the server info can be shown -->
+
         <child>
             <object class="GtkStack" id="stack">
                 <property name="visible">True</property>
@@ -134,42 +164,45 @@
                 </child>
             </object>
         </child>
-        <object class="GtkPopover" id="presets_menu"></object>
-        <object class="GtkPopover" id="settings_menu">
-            <child>
-                <object class="GtkGrid">
-                    <property name="margin_start">6</property>
-                    <property name="margin_end">6</property>
-                    <property name="margin_top">6</property>
-                    <property name="margin_bottom">6</property>
-                    <property name="row_spacing">18</property>
-                    <child>
-                        <object class="GtkStackSwitcher">
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="stack">stack_menu_settings</property>
-                            <layout>
-                                <property name="column">0</property>
-                                <property name="row">0</property>
-                            </layout>
-                        </object>
-                    </child>
-                    <child>
-                        <object class="GtkStack" id="stack_menu_settings">
-                            <property name="hexpand">True</property>
-                            <property name="transition_duration">250</property>
-                            <property name="transition_type">crossfade</property>
-                            <child>
-                                <placeholder />
-                            </child>
-                            <layout>
-                                <property name="column">0</property>
-                                <property name="row">1</property>
-                            </layout>
-                        </object>
-                    </child>
-                </object>
-            </child>
-        </object>
-    </template>
+
+    </object>
+
+    <object class="GtkPopover" id="presets_menu"></object>
+
+    <object class="GtkPopover" id="settings_menu">
+        <child>
+            <object class="GtkGrid">
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="row_spacing">18</property>
+                <child>
+                    <object class="GtkStackSwitcher">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="stack">stack_menu_settings</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkStack" id="stack_menu_settings">
+                        <property name="hexpand">True</property>
+                        <property name="transition_duration">250</property>
+                        <property name="transition_type">crossfade</property>
+                        <child>
+                            <placeholder />
+                        </child>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
 </interface>
