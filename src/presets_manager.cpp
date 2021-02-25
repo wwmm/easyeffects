@@ -91,11 +91,11 @@ PresetsManager::PresetsManager()
   user_output_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
     switch (event) {
       case Gio::FileMonitor::Event::CREATED: {
-        util::warning("created" + file->get_path());
+        user_output_preset_created.emit(file);
         break;
       }
       case Gio::FileMonitor::Event::DELETED: {
-        util::warning("deleted" + file->get_path());
+        user_output_preset_removed.emit(file);
         break;
       }
       default:
@@ -108,11 +108,11 @@ PresetsManager::PresetsManager()
   user_input_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
     switch (event) {
       case Gio::FileMonitor::Event::CREATED: {
-        util::warning("created");
+        user_input_preset_created.emit(file);
         break;
       }
       case Gio::FileMonitor::Event::DELETED: {
-        util::warning("deleted");
+        user_input_preset_removed.emit(file);
         break;
       }
       default:
