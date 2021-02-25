@@ -51,16 +51,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   presets_menu_ui = PresetsMenuUi::create(app);
 
-  if (presets_menu_ui == nullptr) {
-    util::warning("aqui");
-  }
-
-  // presets_menu_ui->get_name();
-
-  // presets_menu_ui->set_parent(*presets_menu_button);
-
-  // presets_menu_ui->reference();
-
   // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
   // GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -69,7 +59,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
 
-  // presets_menu_button->set_popover(*presets_menu_ui);
+  presets_menu_button->set_popover(*presets_menu_ui);
 
   // signals
 
@@ -171,6 +161,8 @@ ApplicationUi::~ApplicationUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
+
+  presets_menu_ui->unreference();
 
   util::debug(log_tag + "destroyed");
 }

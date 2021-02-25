@@ -58,6 +58,8 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_input->signal_clicked().connect([=]() { import_preset(PresetType::input); });
 
   reset_menu_button_label();
+
+  reference();
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
