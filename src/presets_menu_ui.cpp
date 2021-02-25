@@ -119,7 +119,7 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
 void PresetsMenuUi::import_preset(PresetType preset_type) {
   auto* main_window = dynamic_cast<Gtk::Window*>(app->get_active_window());
 
-  auto dialog = Gtk::FileChooserNative::create(_("Import Presets"), *main_window, Gtk::FileChooser::Action::OPEN,
+  auto dialog = Gtk::FileChooserNative::create(_("Import Preset"), *main_window, Gtk::FileChooser::Action::OPEN,
                                                _("Open"), _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
@@ -132,15 +132,9 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   dialog->signal_response().connect([=](auto response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
-        auto* model = dialog->get_files().get();
+        auto f = dialog->get_file();
 
-        for (guint n = 0; n < model->get_n_items(); n++) {
-          auto f = std::dynamic_pointer_cast<Gio::File>(model->get_object(n));
-
-          util::warning(f->get_path());
-
-          // app->presets_manager->import(preset_type, file_path);
-        }
+        app->presets_manager->import(preset_type, f->get_path());
 
         populate_listbox(preset_type);
 
@@ -152,7 +146,6 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   });
 
   dialog->set_modal(true);
-  dialog->set_select_multiple(true);
   dialog->show();
 }
 
@@ -162,14 +155,14 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
   auto names = app->presets_manager->get_names(preset_type);
 
   for (const auto& name : names) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
+    // auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
 
-    Gtk::ListBoxRow* row = nullptr;
-    Gtk::Button* apply_btn = nullptr;
-    Gtk::Button* save_btn = nullptr;
-    Gtk::Button* remove_btn = nullptr;
-    Gtk::Label* label = nullptr;
-    Gtk::ToggleButton* autoload_btn = nullptr;
+    // Gtk::ListBoxRow* row = nullptr;
+    // Gtk::Button* apply_btn = nullptr;
+    // Gtk::Button* save_btn = nullptr;
+    // Gtk::Button* remove_btn = nullptr;
+    // Gtk::Label* label = nullptr;
+    // Gtk::ToggleButton* autoload_btn = nullptr;
 
     // b->get_widget("preset_row", row);
     // b->get_widget("apply", apply_btn);
@@ -178,63 +171,63 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     // b->get_widget("name", label);
     // b->get_widget("autoload", autoload_btn);
 
-    row->set_name(name);
-    label->set_text(name);
+    // row->set_name(name);
+    // label->set_text(name);
 
-    if (is_autoloaded(preset_type, name)) {
-      autoload_btn->set_active(true);
-    }
+    // if (is_autoloaded(preset_type, name)) {
+    //   autoload_btn->set_active(true);
+    // }
 
-    connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
-      switch (preset_type) {
-        case PresetType::input:
-          settings->set_string("last-used-input-preset", row->get_name());
-          break;
-        case PresetType::output:
-          settings->set_string("last-used-output-preset", row->get_name());
-          break;
-      }
+    // connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
+    //   switch (preset_type) {
+    //     case PresetType::input:
+    //       settings->set_string("last-used-input-preset", row->get_name());
+    //       break;
+    //     case PresetType::output:
+    //       settings->set_string("last-used-output-preset", row->get_name());
+    //       break;
+    //   }
 
-      app->presets_manager->load(preset_type, row->get_name());
-    }));
+    //   app->presets_manager->load(preset_type, row->get_name());
+    // }));
 
-    connections.emplace_back(
-        save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
+    // connections.emplace_back(
+    //     save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
 
-    connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
-      switch (preset_type) {
-        case PresetType::output: {
-          auto dev_name = app->pm->default_sink.name;
+    // connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
+    //   switch (preset_type) {
+    //     case PresetType::output: {
+    //       auto dev_name = app->pm->default_sink.name;
 
-          if (autoload_btn->get_active()) {
-            app->presets_manager->add_autoload(dev_name, name);
-          } else {
-            app->presets_manager->remove_autoload(dev_name, name);
-          }
+    //       if (autoload_btn->get_active()) {
+    //         app->presets_manager->add_autoload(dev_name, name);
+    //       } else {
+    //         app->presets_manager->remove_autoload(dev_name, name);
+    //       }
 
-          break;
-        }
-        case PresetType::input: {
-          auto dev_name = app->pm->default_source.name;
+    //       break;
+    //     }
+    //     case PresetType::input: {
+    //       auto dev_name = app->pm->default_source.name;
 
-          if (autoload_btn->get_active()) {
-            app->presets_manager->add_autoload(dev_name, name);
-          } else {
-            app->presets_manager->remove_autoload(dev_name, name);
-          }
+    //       if (autoload_btn->get_active()) {
+    //         app->presets_manager->add_autoload(dev_name, name);
+    //       } else {
+    //         app->presets_manager->remove_autoload(dev_name, name);
+    //       }
 
-          break;
-        }
-      }
+    //       break;
+    //     }
+    //   }
 
-      populate_listbox(preset_type);
-    }));
+    //   populate_listbox(preset_type);
+    // }));
 
-    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-      app->presets_manager->remove(preset_type, name);
+    // connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
+    //   app->presets_manager->remove(preset_type, name);
 
-      populate_listbox(preset_type);
-    }));
+    //   populate_listbox(preset_type);
+    // }));
   }
 }
 
