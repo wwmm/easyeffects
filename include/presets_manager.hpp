@@ -37,6 +37,7 @@
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "giomm/filemonitor.h"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
@@ -80,6 +81,8 @@ class PresetsManager {
   std::vector<boost::filesystem::path> system_input_dir, system_output_dir;
 
   Glib::RefPtr<Gio::Settings> settings, sie_settings, soe_settings;
+
+  Glib::RefPtr<Gio::FileMonitor> user_output_monitor, user_input_monitor;
 
   std::unique_ptr<LimiterPreset> limiter;
   std::unique_ptr<BassEnhancerPreset> bass_enhancer;

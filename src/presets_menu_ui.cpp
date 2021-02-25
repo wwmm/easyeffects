@@ -136,7 +136,7 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
         app->presets_manager->import(preset_type, f->get_path());
 
-        populate_listbox(preset_type);
+        // populate_listbox(preset_type);
 
         break;
       }

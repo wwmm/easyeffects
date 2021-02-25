@@ -18,11 +18,13 @@
  */
 
 #include "presets_manager.hpp"
+#include <giomm.h>
 #include <glibmm.h>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <iostream>
 #include <memory>
+#include "giomm/file.h"
 #include "rnnoise_preset.hpp"
 #include "util.hpp"
 
@@ -83,9 +85,46 @@ PresetsManager::PresetsManager()
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
   create_user_directory(autoload_dir);
+
+  user_output_monitor = Gio::File::create_for_path(user_output_dir.string())->monitor_directory();
+
+  user_output_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+    switch (event) {
+      case Gio::FileMonitor::Event::CREATED: {
+        util::warning("created" + file->get_path());
+        break;
+      }
+      case Gio::FileMonitor::Event::DELETED: {
+        util::warning("deleted" + file->get_path());
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  user_input_monitor = Gio::File::create_for_path(user_input_dir.string())->monitor_directory();
+
+  user_input_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+    switch (event) {
+      case Gio::FileMonitor::Event::CREATED: {
+        util::warning("created");
+        break;
+      }
+      case Gio::FileMonitor::Event::DELETED: {
+        util::warning("deleted");
+        break;
+      }
+      default:
+        break;
+    }
+  });
 }
 
 PresetsManager::~PresetsManager() {
+  user_output_monitor->cancel();
+  user_input_monitor->cancel();
+
   util::debug(log_tag + "destroyed");
 }
 

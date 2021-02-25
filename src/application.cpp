@@ -117,7 +117,10 @@ void Application::on_startup() {
   pm = std::make_unique<PipeManager>();
   soe = std::make_unique<StreamOutputEffects>(pm.get());
   sie = std::make_unique<StreamInputEffects>(pm.get());
-  presets_manager = std::make_unique<PresetsManager>();
+
+  if (presets_manager == nullptr) {
+    presets_manager = std::make_unique<PresetsManager>();
+  }
 
   pm->blocklist_in = settings->get_string_array("blocklist-in");
   pm->blocklist_out = settings->get_string_array("blocklist-out");
@@ -236,7 +239,9 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   // instance, so they won't be passed to the primary (remote) instance:
   options->remove("preset");
 
-  presets_manager = std::make_unique<PresetsManager>();
+  if (presets_manager == nullptr) {
+    presets_manager = std::make_unique<PresetsManager>();
+  }
 
   if (options->contains("presets")) {
     std::string list;
