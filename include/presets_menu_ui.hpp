@@ -20,18 +20,14 @@
 #ifndef PRESETS_MENU_UI_HPP
 #define PRESETS_MENU_UI_HPP
 
-#include <giomm/settings.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/button.h>
-#include <gtkmm/entry.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/popover.h>
-#include <gtkmm/scrolledwindow.h>
+#include <giomm.h>
+#include <glibmm/i18n.h>
+#include <gtkmm.h>
 #include "application.hpp"
 #include "preset_type.hpp"
+#include "util.hpp"
 
-class PresetsMenuUi : public Gtk::Grid {
+class PresetsMenuUi : public Gtk::Popover {
  public:
   PresetsMenuUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& builder,
@@ -43,9 +39,7 @@ class PresetsMenuUi : public Gtk::Grid {
   auto operator=(const PresetsMenuUi&&) -> PresetsMenuUi& = delete;
   ~PresetsMenuUi() override;
 
-  static auto add_to_popover(Gtk::Popover* popover, Application* app) -> PresetsMenuUi*;
-
-  void on_presets_menu_button_clicked();
+  static auto create(Application* app) -> PresetsMenuUi*;
 
  private:
   std::string log_tag = "presets_menu_ui: ";
@@ -55,7 +49,7 @@ class PresetsMenuUi : public Gtk::Grid {
   Application* app = nullptr;
 
   Gtk::Button *add_output = nullptr, *add_input = nullptr, *import_output = nullptr, *import_input = nullptr;
-  Gtk::ListBox *output_listbox = nullptr, *input_listbox = nullptr;
+  Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
 
   Gtk::Entry *output_name = nullptr, *input_name = nullptr;
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
@@ -67,8 +61,6 @@ class PresetsMenuUi : public Gtk::Grid {
   void import_preset(PresetType preset_type);
 
   void populate_listbox(PresetType preset_type);
-
-  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
 
   void reset_menu_button_label();
 

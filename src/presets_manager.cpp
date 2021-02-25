@@ -104,9 +104,9 @@ void PresetsManager::create_user_directory(const boost::filesystem::path& path) 
   }
 }
 
-auto PresetsManager::get_names(PresetType preset_type) -> std::vector<std::string> {
+auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustring> {
   boost::filesystem::directory_iterator it;
-  std::vector<std::string> names;
+  std::vector<Glib::ustring> names;
   std::vector<boost::filesystem::path> sys_dirs;
 
   // system directories search
@@ -160,7 +160,7 @@ auto PresetsManager::search_names(boost::filesystem::directory_iterator& it) -> 
   return names;
 }
 
-void PresetsManager::add(PresetType preset_type, const std::string& name) {
+void PresetsManager::add(PresetType preset_type, const Glib::ustring& name) {
   for (const auto& p : get_names(preset_type)) {
     if (p == name) {
       return;

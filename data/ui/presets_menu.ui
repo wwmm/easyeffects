@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
-    <template class="ExPresetsMenu" parent="GtkPopover">
+    <object class="GtkPopover" id="PresetsMenuUi">
         <child>
             <object class="GtkGrid" id="top_grid">
                 <property name="hexpand">True</property>
@@ -210,5 +210,5 @@
             </object>
 
         </child>
-    </template>
+    </object>
 </interface>

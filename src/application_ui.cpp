@@ -40,7 +40,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack = builder->get_widget<Gtk::Stack>("stack");
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
-  presets_menu = builder->get_widget<Gtk::Popover>("presets_menu");
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
   subtitle_grid = builder->get_widget<Gtk::Grid>("subtitle_grid");
   headerbar = builder->get_widget<Gtk::HeaderBar>("headerbar");
@@ -50,7 +49,18 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   headerbar_icon2 = builder->get_widget<Gtk::Image>("headerbar_icon2");
   headerbar_info = builder->get_widget<Gtk::Label>("headerbar_info");
 
-  // presets_menu_ui = PresetsMenuUi::add_to_popover(presets_menu, app);
+  presets_menu_ui = PresetsMenuUi::create(app);
+
+  if (presets_menu_ui == nullptr) {
+    util::warning("aqui");
+  }
+
+  // presets_menu_ui->get_name();
+
+  // presets_menu_ui->set_parent(*presets_menu_button);
+
+  // presets_menu_ui->reference();
+
   // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
   // GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -59,14 +69,18 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   // BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
 
+  // presets_menu_button->set_popover(*presets_menu_ui);
+
+  // signals
+
   stack->connect_property_changed("visible-child",
                                   sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
 
-  // calibration
+  help_button->signal_clicked().connect([=]() { app->activate_action("help"); });
+
+  presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
 
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
-
-  // signals
 
   connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
     if (stack->get_visible_child_name() == "stream_output") {
@@ -99,13 +113,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       update_headerbar_subtitle(1);
     }
   }));
-
-  help_button->signal_clicked().connect([=]() { app->activate_action("help"); });
-
-  // presets_menu_button->signal_clicked().connect(
-  //     sigc::mem_fun(*presets_menu_ui, &PresetsMenuUi::on_presets_menu_button_clicked));
-
-  presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
 
   connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
     presets_menu_button->set_label(settings->get_string("last-used-input-preset"));
@@ -145,7 +152,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   update_headerbar_subtitle(0);
 
-  // binding glade widgets to gsettings keys
+  // binding properties to gsettings keys
 
   settings->bind("use-dark-theme", Gtk::Settings::get_default().get(), "gtk_application_prefer_dark_theme");
   settings->bind("bypass", bypass_button, "active");

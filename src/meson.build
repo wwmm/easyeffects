@@ -62,7 +62,7 @@ pulseeffects_sources = [
 	# 'delay_ui.cpp',
 	'rnnoise.cpp',
 	# 'rnnoise_ui.cpp',
-	# 'presets_menu_ui.cpp',
+	'presets_menu_ui.cpp',
 	'presets_manager.cpp',
 	'autogain_preset.cpp',
 	'delay_preset.cpp',

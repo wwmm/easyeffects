@@ -140,7 +140,6 @@
                     <object class="GtkMenuButton" id="presets_menu_button">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="popover">presets_menu</property>
                         <property name="label" translatable="yes">Presets</property>
                     </object>
                 </child>
@@ -166,8 +165,6 @@
         </child>
 
     </object>
-
-    <object class="GtkPopover" id="presets_menu"></object>
 
     <object class="GtkPopover" id="settings_menu">
         <child>

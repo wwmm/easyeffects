@@ -18,37 +18,36 @@
  */
 
 #include "presets_menu_ui.hpp"
-#include <glibmm/i18n.h>
-#include <gtkmm/applicationwindow.h>
-#include <gtkmm/dialog.h>
-#include <gtkmm/filechoosernative.h>
-#include <gtkmm/togglebutton.h>
-#include "preset_type.hpp"
-#include "util.hpp"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              Application* application)
-    : Gtk::Grid(cobject), settings(std::move(refSettings)), app(application) {
-  // loading glade widgets
+    : Gtk::Popover(cobject), settings(std::move(refSettings)), app(application) {
+  // loading builder widgets
 
-  builder->get_widget("output_listbox", output_listbox);
-  builder->get_widget("output_scrolled_window", output_scrolled_window);
-  builder->get_widget("output_name", output_name);
-  builder->get_widget("add_output", add_output);
-  builder->get_widget("import_output", import_output);
-  builder->get_widget("input_listbox", input_listbox);
-  builder->get_widget("input_scrolled_window", input_scrolled_window);
-  builder->get_widget("input_name", input_name);
-  builder->get_widget("add_input", add_input);
-  builder->get_widget("import_input", import_input);
+  output_listview = builder->get_widget<Gtk::ListView>("output_listview");
+  output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
+  output_name = builder->get_widget<Gtk::Entry>("output_name");
+  add_output = builder->get_widget<Gtk::Button>("add_output");
+  import_output = builder->get_widget<Gtk::Button>("import_output");
+
+  input_listview = builder->get_widget<Gtk::ListView>("input_listview");
+  input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
+  input_name = builder->get_widget<Gtk::Entry>("input_name");
+  add_input = builder->get_widget<Gtk::Button>("add_input");
+  import_input = builder->get_widget<Gtk::Button>("import_input");
+
+  // setting the maximum menu size
+
+  // auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
+  // const float scaling_factor = 0.7F;
+
+  // int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
+
+  // output_scrolled_window->set_max_content_height(height);
 
   // signals connection
-
-  output_listbox->set_sort_func(sigc::ptr_fun(&PresetsMenuUi::on_listbox_sort));
-
-  input_listbox->set_sort_func(sigc::ptr_fun(&PresetsMenuUi::on_listbox_sort));
 
   add_output->signal_clicked().connect([=]() { create_preset(PresetType::output); });
 
@@ -69,18 +68,12 @@ PresetsMenuUi::~PresetsMenuUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto PresetsMenuUi::add_to_popover(Gtk::Popover* popover, Application* app) -> PresetsMenuUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/presets_menu.glade");
+auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/presets_menu.ui");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-  PresetsMenuUi* ui = nullptr;
-
-  builder->get_widget_derived("widgets_grid", ui, settings, app);
-
-  popover->add(*ui);
-
-  return ui;
+  return builder->get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
 }
 
 void PresetsMenuUi::create_preset(PresetType preset_type) {
@@ -111,7 +104,6 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
         output_name->set_text("");
         break;
       case PresetType::input:
-        // app->presets_manager->add(name);
         input_name->set_text("");
         break;
     }
@@ -123,10 +115,10 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
 }
 
 void PresetsMenuUi::import_preset(PresetType preset_type) {
-  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
+  auto* main_window = dynamic_cast<Gtk::Window*>(app->get_active_window());
 
-  auto dialog = Gtk::FileChooserNative::create(
-      _("Import Presets"), *main_window, Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto dialog = Gtk::FileChooserNative::create(_("Import Presets"), *main_window, Gtk::FileChooser::Action::OPEN,
+                                               _("Open"), _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
 
@@ -137,9 +129,15 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
   dialog->signal_response().connect([=](auto response_id) {
     switch (response_id) {
-      case Gtk::ResponseType::RESPONSE_ACCEPT: {
-        for (const auto& file_path : dialog->get_filenames()) {
-          app->presets_manager->import(preset_type, file_path);
+      case Gtk::ResponseType::ACCEPT: {
+        auto* model = dialog->get_files().get();
+
+        for (guint n = 0; n < model->get_n_items(); n++) {
+          auto f = std::dynamic_pointer_cast<Gio::File>(model->get_object(n));
+
+          util::warning(f->get_path());
+
+          // app->presets_manager->import(preset_type, file_path);
         }
 
         populate_listbox(preset_type);
@@ -156,44 +154,8 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   dialog->show();
 }
 
-auto PresetsMenuUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
-  auto name1 = row1->get_name();
-  auto name2 = row2->get_name();
-
-  std::vector<std::string> names = {name1, name2};
-
-  std::sort(names.begin(), names.end());
-
-  if (name1 == names[0]) {
-    return -1;
-  }
-  if (name2 == names[0]) {
-    return 1;
-  }
-
-  return 0;
-}
-
-void PresetsMenuUi::on_presets_menu_button_clicked() {
-  auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(this->get_toplevel());
-  const float scaling_factor = 0.7F;
-
-  int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
-
-  output_scrolled_window->set_max_content_height(height);
-
-  populate_listbox(PresetType::input);
-  populate_listbox(PresetType::output);
-}
-
 void PresetsMenuUi::populate_listbox(PresetType preset_type) {
-  Gtk::ListBox* listbox = (preset_type == PresetType::output) ? output_listbox : input_listbox;
-
-  auto children = listbox->get_children();
-
-  for (const auto& c : children) {
-    listbox->remove(*c);
-  }
+  Gtk::ListView* listview = (preset_type == PresetType::output) ? output_listview : input_listview;
 
   auto names = app->presets_manager->get_names(preset_type);
 
@@ -207,12 +169,12 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
     Gtk::Label* label = nullptr;
     Gtk::ToggleButton* autoload_btn = nullptr;
 
-    b->get_widget("preset_row", row);
-    b->get_widget("apply", apply_btn);
-    b->get_widget("save", save_btn);
-    b->get_widget("remove", remove_btn);
-    b->get_widget("name", label);
-    b->get_widget("autoload", autoload_btn);
+    // b->get_widget("preset_row", row);
+    // b->get_widget("apply", apply_btn);
+    // b->get_widget("save", save_btn);
+    // b->get_widget("remove", remove_btn);
+    // b->get_widget("name", label);
+    // b->get_widget("autoload", autoload_btn);
 
     row->set_name(name);
     label->set_text(name);
@@ -271,9 +233,6 @@ void PresetsMenuUi::populate_listbox(PresetType preset_type) {
 
       populate_listbox(preset_type);
     }));
-
-    listbox->add(*row);
-    listbox->show_all();
   }
 }
 
