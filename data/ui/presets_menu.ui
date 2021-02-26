@@ -2,22 +2,19 @@
 <interface domain="pulseeffects">
     <object class="GtkPopover" id="PresetsMenuUi">
         <child>
-            <object class="GtkGrid" id="top_grid">
+            <object class="GtkBox" id="top_box">
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="margin_start">6</property>
                 <property name="margin_end">6</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
-                <property name="row_spacing">18</property>
+                <property name="spacing">6</property>
+                <property name="orientation">horizontal</property>
                 <child>
-                    <object class="GtkStackSwitcher">
+                    <object class="GtkStackSidebar">
                         <property name="halign">center</property>
                         <property name="stack">stack</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
                     </object>
                 </child>
                 <child>
@@ -30,7 +27,7 @@
                         <child>
                             <object class="GtkStackPage">
                                 <property name="name">page_output</property>
-                                <property name="title" translatable="yes">Output</property>
+                                <property name="title" translatable="yes">Speakers</property>
                                 <property name="icon_name">audio-speakers-symbolic</property>
                                 <property name="child">
                                     <object class="GtkGrid" id="grid_output">
@@ -117,7 +114,7 @@
                         <child>
                             <object class="GtkStackPage">
                                 <property name="name">page_input</property>
-                                <property name="title" translatable="yes">Output</property>
+                                <property name="title" translatable="yes">Microphone</property>
                                 <property name="icon_name">audio-input-microphone-symbolic</property>
                                 <property name="child">
                                     <object class="GtkGrid" id="grid_input">
@@ -201,10 +198,6 @@
                             </object>
                         </child>
 
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
                     </object>
                 </child>
             </object>

@@ -2,6 +2,8 @@
     <object class="GtkBox" id="top_box">
         <property name="spacing">6</property>
         <property name="orientation">horizontal</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
         <child>
             <object class="GtkLabel" id="name">
                 <property name="halign">start</property>

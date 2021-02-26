@@ -18,6 +18,8 @@
  */
 
 #include "presets_menu_ui.hpp"
+#include "gtkmm/sortlistmodel.h"
+#include "gtkmm/stringsorter.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -196,7 +198,12 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     string_list->append(name);
   }
 
-  listview->set_model(Gtk::NoSelection::create(string_list));
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+
+  listview->set_model(Gtk::NoSelection::create(sort_list_model));
 
   auto factory = Gtk::SignalListItemFactory::create();
 
