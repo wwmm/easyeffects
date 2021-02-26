@@ -216,83 +216,94 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
+    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
+    list_item->set_data("apply", b->get_widget<Gtk::Button>("apply"));
+    list_item->set_data("save", b->get_widget<Gtk::Button>("save"));
+    list_item->set_data("autoload", b->get_widget<Gtk::ToggleButton>("autoload"));
+    list_item->set_data("remove", b->get_widget<Gtk::Button>("remove"));
+
     list_item->set_child(*top_box);
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* label = dynamic_cast<Gtk::Label*>(list_item->get_child()->get_first_child())) {
-      if (auto* apply = dynamic_cast<Gtk::Button*>(label->get_next_sibling())) {
-        if (auto* save = dynamic_cast<Gtk::Button*>(apply->get_next_sibling())) {
-          if (auto* autoload = dynamic_cast<Gtk::ToggleButton*>(save->get_next_sibling())) {
-            if (auto* remove = dynamic_cast<Gtk::Button*>(autoload->get_next_sibling())) {
-              auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
+    auto* save = static_cast<Gtk::Button*>(list_item->get_data("save"));
+    auto* autoload = static_cast<Gtk::ToggleButton*>(list_item->get_data("autoload"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-              label->set_text(name);
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
-              if (is_autoloaded(preset_type, name)) {
-                autoload->set_active(true);
-              }
+    label->set_text(name);
 
-              apply->signal_clicked().connect([=]() {
-                switch (preset_type) {
-                  case PresetType::input:
-                    settings->set_string("last-used-input-preset", name);
-                    break;
-                  case PresetType::output:
-                    settings->set_string("last-used-output-preset", name);
-                    break;
-                }
+    if (is_autoloaded(preset_type, name)) {
+      autoload->set_active(true);
+    }
 
-                app->presets_manager->load(preset_type, name);
-              });
+    auto connection_apply = apply->signal_clicked().connect([=]() {
+      switch (preset_type) {
+        case PresetType::input:
+          settings->set_string("last-used-input-preset", name);
+          break;
+        case PresetType::output:
+          settings->set_string("last-used-output-preset", name);
+          break;
+      }
 
-              save->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); });
+      app->presets_manager->load(preset_type, name);
+    });
 
-              autoload->signal_toggled().connect([=]() {
-                switch (preset_type) {
-                  case PresetType::output: {
-                    auto dev_name = app->pm->default_sink.name;
+    auto connection_save = save->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); });
 
-                    if (autoload->get_active()) {
-                      app->presets_manager->add_autoload(dev_name, name);
-                    } else {
-                      app->presets_manager->remove_autoload(dev_name, name);
-                    }
+    auto connection_autoload = autoload->signal_toggled().connect([=]() {
+      switch (preset_type) {
+        case PresetType::output: {
+          auto dev_name = app->pm->default_sink.name;
 
-                    break;
-                  }
-                  case PresetType::input: {
-                    auto dev_name = app->pm->default_source.name;
-
-                    if (autoload->get_active()) {
-                      app->presets_manager->add_autoload(dev_name, name);
-                    } else {
-                      app->presets_manager->remove_autoload(dev_name, name);
-                    }
-
-                    break;
-                  }
-                }
-              });
-
-              remove->signal_clicked().connect([=]() { app->presets_manager->remove(preset_type, name); });
-            }
+          if (autoload->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
           }
+
+          break;
+        }
+        case PresetType::input: {
+          auto dev_name = app->pm->default_source.name;
+
+          if (autoload->get_active()) {
+            app->presets_manager->add_autoload(dev_name, name);
+          } else {
+            app->presets_manager->remove_autoload(dev_name, name);
+          }
+
+          break;
         }
       }
-    }
+    });
+
+    auto connection_remove =
+        remove->signal_clicked().connect([=]() { app->presets_manager->remove(preset_type, name); });
+
+    list_item->set_data("connection_apply", new sigc::connection(connection_apply),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_save", new sigc::connection(connection_save),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_autoload", new sigc::connection(connection_autoload),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    if (auto* label = dynamic_cast<Gtk::Label*>(list_item->get_child()->get_first_child())) {
-      if (auto* apply = dynamic_cast<Gtk::Button*>(label->get_next_sibling())) {
-        if (auto* save = dynamic_cast<Gtk::Button*>(apply->get_next_sibling())) {
-          if (auto* autoload = dynamic_cast<Gtk::ToggleButton*>(save->get_next_sibling())) {
-            if (auto* remove = dynamic_cast<Gtk::Button*>(autoload->get_next_sibling())) {
-              util::warning("unbind");
-            }
-          }
-        }
+    for (const auto* conn : {"connection_apply", "connection_save", "connection_autoload", "connection_remove"}) {
+      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
+        connection->disconnect();
+
+        list_item->set_data("connection", nullptr);
       }
     }
   });
