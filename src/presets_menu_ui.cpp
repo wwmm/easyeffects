@@ -18,6 +18,7 @@
  */
 
 #include "presets_menu_ui.hpp"
+#include "gtkmm/popovermenu.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -46,15 +47,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   setup_listview(output_listview, PresetType::output, output_string_list);
   setup_listview(input_listview, PresetType::input, input_string_list);
-
-  // setting the maximum menu size
-
-  // auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
-  // const float scaling_factor = 0.7F;
-
-  // int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
-
-  // output_scrolled_window->set_max_content_height(height);
 
   // signals connection
 
@@ -357,4 +349,16 @@ auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& nam
   }
 
   return current_autoload == name;
+}
+
+void PresetsMenuUi::on_show() {
+  auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
+
+  const float scaling_factor = 0.5F;
+
+  int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
+
+  output_scrolled_window->set_max_content_height(height);
+
+  Gtk::Popover::on_show();
 }
