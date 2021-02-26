@@ -18,12 +18,19 @@
  */
 
 #include "presets_menu_ui.hpp"
+#include "glibmm/ustring.h"
+#include "gtkmm/button.h"
+#include "gtkmm/signallistitemfactory.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              Application* application)
-    : Gtk::Popover(cobject), settings(std::move(refSettings)), app(application) {
+    : Gtk::Popover(cobject),
+      settings(std::move(refSettings)),
+      app(application),
+      output_string_list(Gtk::StringList::create({"initial_value"})),
+      input_string_list(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
 
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
@@ -37,6 +44,11 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   input_name = builder->get_widget<Gtk::Entry>("input_name");
   add_input = builder->get_widget<Gtk::Button>("add_input");
   import_input = builder->get_widget<Gtk::Button>("import_input");
+
+  // widgets configuration
+
+  setup_listview(output_listview, PresetType::output, output_string_list);
+  setup_listview(input_listview, PresetType::input, input_string_list);
 
   // setting the maximum menu size
 
@@ -111,8 +123,6 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
     }
 
     app->presets_manager->add(preset_type, name);
-
-    populate_listbox(preset_type);
   }
 }
 
@@ -136,8 +146,6 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
         app->presets_manager->import(preset_type, f->get_path());
 
-        // populate_listbox(preset_type);
-
         break;
       }
       default:
@@ -149,86 +157,94 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   dialog->show();
 }
 
-void PresetsMenuUi::populate_listbox(PresetType preset_type) {
-  Gtk::ListView* listview = (preset_type == PresetType::output) ? output_listview : input_listview;
+void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
+                                   PresetType preset_type,
+                                   Glib::RefPtr<Gtk::StringList>& string_list) {
+  string_list->remove(0);
 
   auto names = app->presets_manager->get_names(preset_type);
 
   for (const auto& name : names) {
-    // auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.glade");
-
-    // Gtk::ListBoxRow* row = nullptr;
-    // Gtk::Button* apply_btn = nullptr;
-    // Gtk::Button* save_btn = nullptr;
-    // Gtk::Button* remove_btn = nullptr;
-    // Gtk::Label* label = nullptr;
-    // Gtk::ToggleButton* autoload_btn = nullptr;
-
-    // b->get_widget("preset_row", row);
-    // b->get_widget("apply", apply_btn);
-    // b->get_widget("save", save_btn);
-    // b->get_widget("remove", remove_btn);
-    // b->get_widget("name", label);
-    // b->get_widget("autoload", autoload_btn);
-
-    // row->set_name(name);
-    // label->set_text(name);
-
-    // if (is_autoloaded(preset_type, name)) {
-    //   autoload_btn->set_active(true);
-    // }
-
-    // connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
-    //   switch (preset_type) {
-    //     case PresetType::input:
-    //       settings->set_string("last-used-input-preset", row->get_name());
-    //       break;
-    //     case PresetType::output:
-    //       settings->set_string("last-used-output-preset", row->get_name());
-    //       break;
-    //   }
-
-    //   app->presets_manager->load(preset_type, row->get_name());
-    // }));
-
-    // connections.emplace_back(
-    //     save_btn->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); }));
-
-    // connections.emplace_back(autoload_btn->signal_toggled().connect([=]() {
-    //   switch (preset_type) {
-    //     case PresetType::output: {
-    //       auto dev_name = app->pm->default_sink.name;
-
-    //       if (autoload_btn->get_active()) {
-    //         app->presets_manager->add_autoload(dev_name, name);
-    //       } else {
-    //         app->presets_manager->remove_autoload(dev_name, name);
-    //       }
-
-    //       break;
-    //     }
-    //     case PresetType::input: {
-    //       auto dev_name = app->pm->default_source.name;
-
-    //       if (autoload_btn->get_active()) {
-    //         app->presets_manager->add_autoload(dev_name, name);
-    //       } else {
-    //         app->presets_manager->remove_autoload(dev_name, name);
-    //       }
-
-    //       break;
-    //     }
-    //   }
-
-    //   populate_listbox(preset_type);
-    // }));
-
-    // connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-    //   app->presets_manager->remove(preset_type, name);
-
-    //   populate_listbox(preset_type);
-    // }));
+    string_list->append(name);
   }
+
+  listview->set_model(Gtk::NoSelection::create(string_list));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview->set_factory(factory);
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui");
+
+    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+
+    list_item->set_child(*top_box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* label = dynamic_cast<Gtk::Label*>(list_item->get_child()->get_first_child())) {
+      if (auto* apply = dynamic_cast<Gtk::Button*>(label->get_next_sibling())) {
+        if (auto* save = dynamic_cast<Gtk::Button*>(apply->get_next_sibling())) {
+          if (auto* autoload = dynamic_cast<Gtk::ToggleButton*>(save->get_next_sibling())) {
+            if (auto* remove = dynamic_cast<Gtk::Button*>(autoload->get_next_sibling())) {
+              auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+              label->set_text(name);
+
+              if (is_autoloaded(preset_type, name)) {
+                autoload->set_active(true);
+              }
+
+              apply->signal_clicked().connect([=]() {
+                switch (preset_type) {
+                  case PresetType::input:
+                    settings->set_string("last-used-input-preset", name);
+                    break;
+                  case PresetType::output:
+                    settings->set_string("last-used-output-preset", name);
+                    break;
+                }
+
+                app->presets_manager->load(preset_type, name);
+              });
+
+              save->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); });
+
+              autoload->signal_toggled().connect([=]() {
+                switch (preset_type) {
+                  case PresetType::output: {
+                    auto dev_name = app->pm->default_sink.name;
+
+                    if (autoload->get_active()) {
+                      app->presets_manager->add_autoload(dev_name, name);
+                    } else {
+                      app->presets_manager->remove_autoload(dev_name, name);
+                    }
+
+                    break;
+                  }
+                  case PresetType::input: {
+                    auto dev_name = app->pm->default_source.name;
+
+                    if (autoload->get_active()) {
+                      app->presets_manager->add_autoload(dev_name, name);
+                    } else {
+                      app->presets_manager->remove_autoload(dev_name, name);
+                    }
+
+                    break;
+                  }
+                }
+              });
+
+              remove->signal_clicked().connect([=]() { app->presets_manager->remove(preset_type, name); });
+            }
+          }
+        }
+      }
+    }
+  });
 }
 
 void PresetsMenuUi::reset_menu_button_label() {

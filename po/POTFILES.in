@@ -36,7 +36,7 @@ data/ui/module_info.glade
 data/ui/multiband_compressor.glade
 data/ui/multiband_gate.glade
 data/ui/pitch.glade
-data/ui/preset_row.glade
+data/ui/preset_row.ui
 data/ui/presets_menu.ui
 data/ui/pipe_info.glade
 data/ui/pipe_conf_file_line.glade

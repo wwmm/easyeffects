@@ -54,13 +54,15 @@ class PresetsMenuUi : public Gtk::Popover {
   Gtk::Entry *output_name = nullptr, *input_name = nullptr;
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
 
+  Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
+
   std::vector<sigc::connection> connections;
 
   void create_preset(PresetType preset_type);
 
   void import_preset(PresetType preset_type);
 
-  void populate_listbox(PresetType preset_type);
+  void setup_listview(Gtk::ListView* listview, PresetType preset_type, Glib::RefPtr<Gtk::StringList>& string_list);
 
   void reset_menu_button_label();
 
