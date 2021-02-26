@@ -180,4 +180,10 @@ auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean 
   return 1;
 }
 
+auto remove_filename_extension(const std::string& basename) -> std::string {
+  auto idx = basename.find_last_of('.');
+
+  return basename.substr(0, idx);
+}
+
 }  // namespace util

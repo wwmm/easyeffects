@@ -18,9 +18,6 @@
  */
 
 #include "presets_menu_ui.hpp"
-#include "glibmm/ustring.h"
-#include "gtkmm/button.h"
-#include "gtkmm/signallistitemfactory.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -68,6 +65,46 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_output->signal_clicked().connect([=]() { import_preset(PresetType::output); });
 
   import_input->signal_clicked().connect([=]() { import_preset(PresetType::input); });
+
+  app->presets_manager->user_output_preset_created.connect([=](const Glib::RefPtr<Gio::File>& file) {
+    output_string_list->append(util::remove_filename_extension(file->get_basename()));
+  });
+
+  app->presets_manager->user_output_preset_removed.connect([=](const Glib::RefPtr<Gio::File>& file) {
+    int count = 0;
+    auto name = output_string_list->get_string(count);
+
+    while (name.c_str() != nullptr) {
+      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+        output_string_list->remove(count);
+        return;
+      }
+
+      count++;
+
+      name = output_string_list->get_string(count);
+    }
+  });
+
+  app->presets_manager->user_input_preset_created.connect([=](const Glib::RefPtr<Gio::File>& file) {
+    input_string_list->append(util::remove_filename_extension(file->get_basename()));
+  });
+
+  app->presets_manager->user_input_preset_removed.connect([=](const Glib::RefPtr<Gio::File>& file) {
+    int count = 0;
+    auto name = input_string_list->get_string(count);
+
+    while (name.c_str() != nullptr) {
+      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+        input_string_list->remove(count);
+        return;
+      }
+
+      count++;
+
+      name = input_string_list->get_string(count);
+    }
+  });
 
   reset_menu_button_label();
 
@@ -239,6 +276,20 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
               });
 
               remove->signal_clicked().connect([=]() { app->presets_manager->remove(preset_type, name); });
+            }
+          }
+        }
+      }
+    }
+  });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* label = dynamic_cast<Gtk::Label*>(list_item->get_child()->get_first_child())) {
+      if (auto* apply = dynamic_cast<Gtk::Button*>(label->get_next_sibling())) {
+        if (auto* save = dynamic_cast<Gtk::Button*>(apply->get_next_sibling())) {
+          if (auto* autoload = dynamic_cast<Gtk::ToggleButton*>(save->get_next_sibling())) {
+            if (auto* remove = dynamic_cast<Gtk::Button*>(autoload->get_next_sibling())) {
+              util::warning("unbind");
             }
           }
         }
