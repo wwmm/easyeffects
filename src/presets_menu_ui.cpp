@@ -18,7 +18,6 @@
  */
 
 #include "presets_menu_ui.hpp"
-#include "gtkmm/popovermenu.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
