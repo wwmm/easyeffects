@@ -24,6 +24,9 @@
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
 #include <boost/filesystem.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <iostream>
 #include <memory>
 #include <vector>
 #include "autogain_preset.hpp"
@@ -38,6 +41,7 @@
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "giomm/file.h"
 #include "giomm/filemonitor.h"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
@@ -50,6 +54,7 @@
 #include "rnnoise_preset.hpp"
 #include "spectrum_preset.hpp"
 #include "stereo_tools_preset.hpp"
+#include "util.hpp"
 #include "webrtc_preset.hpp"
 
 class PresetsManager {

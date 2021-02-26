@@ -18,15 +18,6 @@
  */
 
 #include "presets_manager.hpp"
-#include <giomm.h>
-#include <glibmm.h>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <iostream>
-#include <memory>
-#include "giomm/file.h"
-#include "rnnoise_preset.hpp"
-#include "util.hpp"
 
 PresetsManager::PresetsManager()
     : user_presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
