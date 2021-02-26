@@ -33,7 +33,7 @@
                                     <object class="GtkGrid" id="grid_output">
                                         <property name="hexpand">True</property>
                                         <property name="vexpand">True</property>
-                                        <property name="row_spacing">18</property>
+                                        <property name="row_spacing">6</property>
                                         <property name="column_spacing">6</property>
                                         <child>
                                             <object class="GtkButton" id="import_output">
@@ -75,6 +75,18 @@
                                             </object>
                                         </child>
                                         <child>
+                                            <object class="GtkSearchEntry" id="output_search">
+                                                <property name="valign">center</property>
+                                                <property name="hexpand">True</property>
+                                                <property name="placeholder_text" translatable="yes">Search</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">1</property>
+                                                    <property name="column_span">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
                                             <object class="GtkFrame">
                                                 <property name="hexpand">True</property>
                                                 <property name="vexpand">True</property>
@@ -101,7 +113,7 @@
                                                 </child>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">2</property>
                                                     <property name="column_span">3</property>
                                                 </layout>
                                             </object>
@@ -120,7 +132,7 @@
                                     <object class="GtkGrid" id="grid_input">
                                         <property name="hexpand">True</property>
                                         <property name="vexpand">True</property>
-                                        <property name="row_spacing">18</property>
+                                        <property name="row_spacing">6</property>
                                         <property name="column_spacing">6</property>
                                         <child>
                                             <object class="GtkButton" id="import_input">
@@ -162,6 +174,18 @@
                                             </object>
                                         </child>
                                         <child>
+                                            <object class="GtkSearchEntry" id="input_search">
+                                                <property name="valign">center</property>
+                                                <property name="hexpand">True</property>
+                                                <property name="placeholder_text" translatable="yes">Search</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">1</property>
+                                                    <property name="column_span">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
                                             <object class="GtkFrame">
                                                 <property name="hexpand">True</property>
                                                 <property name="vexpand">True</property>
@@ -188,7 +212,7 @@
                                                 </child>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">2</property>
                                                     <property name="column_span">3</property>
                                                 </layout>
                                             </object>

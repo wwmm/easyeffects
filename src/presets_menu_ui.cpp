@@ -18,7 +18,9 @@
  */
 
 #include "presets_menu_ui.hpp"
+#include "gtkmm/filterlistmodel.h"
 #include "gtkmm/sortlistmodel.h"
+#include "gtkmm/stringfilter.h"
 #include "gtkmm/stringsorter.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
@@ -198,16 +200,29 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     string_list->append(name);
   }
 
+  // filter
+
+  auto filter =
+      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto filter_model = Gtk::FilterListModel::create(string_list, filter);
+
+  // sorter
+
   auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+
+  // setting the listview model and factory
 
   listview->set_model(Gtk::NoSelection::create(sort_list_model));
 
   auto factory = Gtk::SignalListItemFactory::create();
 
   listview->set_factory(factory);
+
+  // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui");
