@@ -22,7 +22,7 @@
                         <property name="hexpand">True</property>
                         <property name="vexpand">True</property>
                         <property name="transition_duration">250</property>
-                        <property name="transition_type">slide-left-right</property>
+                        <property name="transition_type">slide-up-down</property>
 
                         <child>
                             <object class="GtkStackPage">
@@ -33,7 +33,7 @@
                                     <object class="GtkGrid" id="grid_output">
                                         <property name="hexpand">True</property>
                                         <property name="vexpand">True</property>
-                                        <property name="row_spacing">6</property>
+                                        <property name="row_spacing">12</property>
                                         <property name="column_spacing">6</property>
                                         <child>
                                             <object class="GtkButton" id="import_output">
@@ -114,6 +114,20 @@
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">2</property>
+                                                    <property name="column_span">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel" id="last_used_output">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <style>
+                                                    <class name="dim-label" />
+                                                </style>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">3</property>
                                                     <property name="column_span">3</property>
                                                 </layout>
                                             </object>
@@ -213,6 +227,20 @@
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">2</property>
+                                                    <property name="column_span">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel" id="last_used_input">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <style>
+                                                    <class name="dim-label" />
+                                                </style>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">3</property>
                                                     <property name="column_span">3</property>
                                                 </layout>
                                             </object>

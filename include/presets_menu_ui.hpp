@@ -24,6 +24,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
 #include "application.hpp"
+#include "gtkmm/searchentry.h"
 #include "preset_type.hpp"
 #include "util.hpp"
 
@@ -49,10 +50,16 @@ class PresetsMenuUi : public Gtk::Popover {
   Application* app = nullptr;
 
   Gtk::Button *add_output = nullptr, *add_input = nullptr, *import_output = nullptr, *import_input = nullptr;
+
   Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
 
   Gtk::Entry *output_name = nullptr, *input_name = nullptr;
+
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
+
+  Gtk::SearchEntry *output_search = nullptr, *input_search = nullptr;
+
+  Gtk::Label *last_used_output = nullptr, *last_used_input = nullptr;
 
   Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
 

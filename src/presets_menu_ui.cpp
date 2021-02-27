@@ -18,10 +18,6 @@
  */
 
 #include "presets_menu_ui.hpp"
-#include "gtkmm/filterlistmodel.h"
-#include "gtkmm/sortlistmodel.h"
-#include "gtkmm/stringfilter.h"
-#include "gtkmm/stringsorter.h"
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -39,12 +35,14 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   output_name = builder->get_widget<Gtk::Entry>("output_name");
   add_output = builder->get_widget<Gtk::Button>("add_output");
   import_output = builder->get_widget<Gtk::Button>("import_output");
+  output_search = builder->get_widget<Gtk::SearchEntry>("output_search");
 
   input_listview = builder->get_widget<Gtk::ListView>("input_listview");
   input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
   input_name = builder->get_widget<Gtk::Entry>("input_name");
   add_input = builder->get_widget<Gtk::Button>("add_input");
   import_input = builder->get_widget<Gtk::Button>("import_input");
+  input_search = builder->get_widget<Gtk::SearchEntry>("input_search");
 
   // widgets configuration
 
@@ -206,6 +204,19 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
       Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
   auto filter_model = Gtk::FilterListModel::create(string_list, filter);
+
+  filter_model->set_incremental(true);
+
+  switch (preset_type) {
+    case PresetType::output: {
+      Glib::Binding::bind_property(output_search->property_text(), filter->property_search());
+      break;
+    }
+    case PresetType::input: {
+      Glib::Binding::bind_property(input_search->property_text(), filter->property_search());
+      break;
+    }
+  }
 
   // sorter
 
