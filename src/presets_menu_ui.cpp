@@ -36,6 +36,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   add_output = builder->get_widget<Gtk::Button>("add_output");
   import_output = builder->get_widget<Gtk::Button>("import_output");
   output_search = builder->get_widget<Gtk::SearchEntry>("output_search");
+  last_used_output = builder->get_widget<Gtk::Label>("last_used_output");
 
   input_listview = builder->get_widget<Gtk::ListView>("input_listview");
   input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
@@ -43,11 +44,15 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   add_input = builder->get_widget<Gtk::Button>("add_input");
   import_input = builder->get_widget<Gtk::Button>("import_input");
   input_search = builder->get_widget<Gtk::SearchEntry>("input_search");
+  last_used_input = builder->get_widget<Gtk::Label>("last_used_input");
 
   // widgets configuration
 
   setup_listview(output_listview, PresetType::output, output_string_list);
   setup_listview(input_listview, PresetType::input, input_string_list);
+
+  last_used_output->set_label(settings->get_string("last-used-output-preset"));
+  last_used_input->set_label(settings->get_string("last-used-input-preset"));
 
   // signals connection
 
@@ -58,6 +63,14 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_output->signal_clicked().connect([=]() { import_preset(PresetType::output); });
 
   import_input->signal_clicked().connect([=]() { import_preset(PresetType::input); });
+
+  settings->signal_changed("last-used-output-preset").connect([=](auto key) {
+    last_used_output->set_label(settings->get_string("last-used-output-preset"));
+  });
+
+  settings->signal_changed("last-used-input-preset").connect([=](auto key) {
+    last_used_input->set_label(settings->get_string("last-used-input-preset"));
+  });
 
   app->presets_manager->user_output_preset_created.connect([=](const Glib::RefPtr<Gio::File>& file) {
     output_string_list->append(util::remove_filename_extension(file->get_basename()));

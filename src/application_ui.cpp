@@ -68,8 +68,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   help_button->signal_clicked().connect([=]() { app->activate_action("help"); });
 
-  presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
-
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
   connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
@@ -102,14 +100,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
       update_headerbar_subtitle(1);
     }
-  }));
-
-  connections.emplace_back(settings->signal_changed("last-used-input-preset").connect([=](auto key) {
-    presets_menu_button->set_label(settings->get_string("last-used-input-preset"));
-  }));
-
-  connections.emplace_back(settings->signal_changed("last-used-output-preset").connect([=](auto key) {
-    presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
   }));
 
   // headerbar info
@@ -274,12 +264,8 @@ void ApplicationUi::on_stack_visible_child_changed() {
 
   if (name == "stream_output") {
     update_headerbar_subtitle(0);
-
-    presets_menu_button->set_label(settings->get_string("last-used-output-preset"));
   } else if (name == "stream_input") {
     update_headerbar_subtitle(1);
-
-    presets_menu_button->set_label(settings->get_string("last-used-input-preset"));
   } else if (name == "pipe_info") {
     update_headerbar_subtitle(2);
   }
