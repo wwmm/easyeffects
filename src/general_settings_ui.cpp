@@ -67,7 +67,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   about_button = builder->get_widget<Gtk::Button>("about_button");
   spin_button_priority = builder->get_widget<Gtk::SpinButton>("spin_button_priority");
   spin_button_niceness = builder->get_widget<Gtk::SpinButton>("spin_button_niceness");
-  priority_type = builder->get_widget<Gtk::ComboBoxText>("priority_type");
+  cpu_priority = builder->get_widget<Gtk::ComboBoxText>("cpu_priority");
 
   realtime_priority = builder->get_object<Gtk::Adjustment>("realtime_priority");
   niceness = builder->get_object<Gtk::Adjustment>("niceness");
@@ -81,7 +81,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
 
-  connections.emplace_back(settings->signal_changed("priority-type").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("cpu-priority").connect([&](auto key) {
     set_priority_controls_visibility();
 
     app->sie->set_null_pipeline();
@@ -114,7 +114,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("niceness", niceness.get(), "value");
   settings->bind("audio-activity-timeout", audio_activity_timeout.get(), "value");
 
-  g_settings_bind_with_mapping(settings->gobj(), "priority-type", priority_type->gobj(), "active",
+  g_settings_bind_with_mapping(settings->gobj(), "cpu-priority", cpu_priority->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
                                nullptr);
 
@@ -190,7 +190,7 @@ void GeneralSettingsUi::on_reset_settings() {
 }
 
 void GeneralSettingsUi::set_priority_controls_visibility() {
-  auto priority_type = settings->get_enum("priority-type");
+  auto priority_type = settings->get_enum("cpu-priority");
 
   switch (priority_type) {
     case 0: {

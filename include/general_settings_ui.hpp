@@ -53,7 +53,7 @@ class GeneralSettingsUi : public Gtk::Box {
 
   Gtk::SpinButton *spin_button_priority = nullptr, *spin_button_niceness = nullptr;
 
-  Gtk::ComboBoxText* priority_type = nullptr;
+  Gtk::ComboBoxText* cpu_priority = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> realtime_priority, niceness, audio_activity_timeout;
 

@@ -63,7 +63,7 @@ void on_stream_status(GstBus* bus, GstMessage* message, PipelineBase* pb) {
 
       g_free(path);
 
-      priority_type = g_settings_get_enum(pb->settings, "priority-type");
+      priority_type = g_settings_get_enum(pb->settings, "cpu-priority");
 
       switch (priority_type) {
         case 0: {  // Niceness (high priority in rtkit terms)

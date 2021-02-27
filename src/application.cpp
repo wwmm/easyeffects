@@ -214,8 +214,10 @@ void Application::on_activate() {
 
     window->signal_close_request().connect(
         [&, window]() {
-          int width = window->get_width();
-          int height = window->get_height();
+          int width = 0;
+          int height = 0;
+
+          window->get_default_size(width, height);
 
           settings->set_int("window-width", width);
           settings->set_int("window-height", height);

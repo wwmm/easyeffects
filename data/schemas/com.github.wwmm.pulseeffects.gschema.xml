@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.prioritytype.enum">
+    <enum id="com.github.wwmm.pulseeffects.cpupriority.enum">
         <value nick="Niceness" value="0" />
         <value nick="Real Time" value="1" />
         <value nick="None" value="2" />
@@ -46,7 +46,7 @@
         <key name="blocklist-out" type="as">
             <default>[]</default>
         </key>
-        <key name="priority-type" enum="com.github.wwmm.pulseeffects.prioritytype.enum">
+        <key name="cpu-priority" enum="com.github.wwmm.pulseeffects.cpupriority.enum">
             <default>"None"</default>
         </key>
         <key name="realtime-priority" type="i">
