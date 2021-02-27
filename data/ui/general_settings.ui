@@ -2,7 +2,7 @@
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
         <property name="valign">center</property>
-        <property name="spacing">24</property>
+        <property name="spacing">48</property>
         <property name="orientation">horizontal</property>
         <child>
             <object class="GtkGrid">
@@ -136,9 +136,6 @@
                 <child>
                     <object class="GtkSpinButton" id="spin_button_niceness">
                         <property name="halign">start</property>
-                        <property name="width-chars">8</property>
-                        <property name="text">-10</property>
-                        <property name="xalign">0.5</property>
                         <property name="numeric">true</property>
                         <property name="adjustment">niceness</property>
                         <property name="value">-10</property>
@@ -161,9 +158,6 @@
                 <child>
                     <object class="GtkSpinButton" id="spin_button_priority">
                         <property name="halign">start</property>
-                        <property name="width-chars">8</property>
-                        <property name="text">4</property>
-                        <property name="xalign">0.5</property>
                         <property name="numeric">true</property>
                         <property name="adjustment">realtime_priority</property>
                         <property name="value">4</property>
@@ -188,10 +182,6 @@
                 </child>
                 <child>
                     <object class="GtkSpinButton">
-                        <property name="halign">center</property>
-                        <property name="width-chars">8</property>
-                        <property name="text">4</property>
-                        <property name="xalign">0.5</property>
                         <!-- <property name="secondary-icon-name">pulseeffects-s-symbolic</property> -->
                         <property name="numeric">true</property>
                         <property name="adjustment">audio_activity_timeout</property>
