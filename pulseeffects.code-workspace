@@ -83,6 +83,9 @@
       "cfenv": "cpp",
       "cinttypes": "cpp"
     },
-    "xml.format.joinContentLines": true
+    "xml.format.joinContentLines": true,
+    "clangd.arguments": [
+      "-header-insertion=never"
+    ]
   }
 }

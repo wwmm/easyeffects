@@ -29,7 +29,6 @@
 #include "presets_manager.hpp"
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
-#include "util.hpp"
 
 class Application : public Gtk::Application {
  public:

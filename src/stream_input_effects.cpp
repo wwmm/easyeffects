@@ -237,7 +237,7 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
       pm->disconnect_stream_input(node_info);
     }
   } else {
-    auto enable_all = g_settings_get_boolean(settings, "enable-all-sourceoutputs");
+    auto enable_all = g_settings_get_boolean(settings, "process-all-inputs");
 
     if (!forbidden_app && enable_all != 0) {
       pm->connect_stream_input(node_info);

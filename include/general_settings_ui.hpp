@@ -20,17 +20,13 @@
 #ifndef GENERAL_SETTINGS_UI_HPP
 #define GENERAL_SETTINGS_UI_HPP
 
-#include <giomm/settings.h>
+#include <giomm.h>
+#include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm/adjustment.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/button.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/spinbutton.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/switch.h>
+#include <gtkmm.h>
+#include <filesystem>
 #include "application.hpp"
+#include "util.hpp"
 
 class GeneralSettingsUi : public Gtk::Grid {
  public:
@@ -50,7 +46,7 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Application* app = nullptr;
 
-  Gtk::Switch *enable_autostart = nullptr, *enable_all_sinkinputs = nullptr, *enable_all_sourceoutputs = nullptr,
+  Gtk::Switch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
               *theme_switch = nullptr;
 
   Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
@@ -62,12 +58,6 @@ class GeneralSettingsUi : public Gtk::Grid {
   Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness, adjustment_audio_activity_timeout;
 
   std::vector<sigc::connection> connections;
-
-  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& name,
-                         Glib::RefPtr<Gtk::Adjustment>& object) {
-    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  }
 
   void init_autostart_switch();
 

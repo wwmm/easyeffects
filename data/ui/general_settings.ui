@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <object class="GtkGrid" id="top_grid">
+        <property name="valign">center</property>
+        <property name="row-spacing">24</property>
+        <property name="column-spacing">48</property>
+    </object>
+</interface>

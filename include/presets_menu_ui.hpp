@@ -24,9 +24,7 @@
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
 #include "application.hpp"
-#include "gtkmm/searchentry.h"
 #include "preset_type.hpp"
-#include "util.hpp"
 
 class PresetsMenuUi : public Gtk::Popover {
  public:

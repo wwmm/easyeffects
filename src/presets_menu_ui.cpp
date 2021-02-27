@@ -130,7 +130,7 @@ auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
 
-  return builder->get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
+  return Gtk::Builder::get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
 }
 
 void PresetsMenuUi::create_preset(PresetType preset_type) {

@@ -18,11 +18,6 @@
  */
 
 #include "general_settings_ui.hpp"
-#include <giomm/file.h>
-#include <glibmm.h>
-#include <boost/filesystem.hpp>
-#include "giomm/settings.h"
-#include "util.hpp"
 
 namespace {
 
@@ -51,9 +46,6 @@ auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected
     case 1:
       return g_variant_new_string("Real Time");
 
-    case 2:
-      return g_variant_new_string("None");
-
     default:
       return g_variant_new_string("None");
   }
@@ -65,21 +57,21 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
                                      const Glib::RefPtr<Gtk::Builder>& builder,
                                      Application* application)
     : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("theme_switch", theme_switch);
-  builder->get_widget("enable_autostart", enable_autostart);
-  builder->get_widget("enable_all_sinkinputs", enable_all_sinkinputs);
-  builder->get_widget("enable_all_sourceoutputs", enable_all_sourceoutputs);
-  builder->get_widget("reset_settings", reset_settings);
-  builder->get_widget("about_button", about_button);
-  builder->get_widget("realtime_priority", realtime_priority_control);
-  builder->get_widget("niceness", niceness_control);
-  builder->get_widget("priority_type", priority_type);
+  theme_switch = builder->get_widget<Gtk::Switch>("theme_switch");
+  process_all_inputs = builder->get_widget<Gtk::Switch>("process_all_inputs");
+  process_all_outputs = builder->get_widget<Gtk::Switch>("process_all_outputs");
+  enable_autostart = builder->get_widget<Gtk::Switch>("enable_autostart");
+  reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
+  about_button = builder->get_widget<Gtk::Button>("about_button");
+  realtime_priority_control = builder->get_widget<Gtk::SpinButton>("realtime_priority");
+  niceness_control = builder->get_widget<Gtk::SpinButton>("niceness_control");
+  priority_type = builder->get_widget<Gtk::ComboBoxText>("priority_type");
 
-  get_object(builder, "adjustment_priority", adjustment_priority);
-  get_object(builder, "adjustment_niceness", adjustment_niceness);
-  get_object(builder, "adjustment_audio_activity_timeout", adjustment_audio_activity_timeout);
+  adjustment_priority = builder->get_object<Gtk::Adjustment>("adjustment_priority");
+  adjustment_niceness = builder->get_object<Gtk::Adjustment>("adjustment_niceness");
+  adjustment_audio_activity_timeout = builder->get_object<Gtk::Adjustment>("adjustment_audio_activity_timeout");
 
   // signals connection
 
@@ -115,14 +107,12 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
     app->soe->update_pipeline_state();
   }));
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("use-dark-theme", theme_switch, "active", flag);
-  settings->bind("enable-all-sinkinputs", enable_all_sinkinputs, "active", flag);
-  settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active", flag);
-  settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
-  settings->bind("niceness", adjustment_niceness.get(), "value", flag);
-  settings->bind("audio-activity-timeout", adjustment_audio_activity_timeout.get(), "value", flag);
+  settings->bind("use-dark-theme", theme_switch, "active");
+  settings->bind("process-all-inputs", process_all_inputs, "active");
+  settings->bind("process-all-outputs", process_all_outputs, "active");
+  settings->bind("realtime-priority", adjustment_priority.get(), "value");
+  settings->bind("niceness", adjustment_niceness.get(), "value");
+  settings->bind("audio-activity-timeout", adjustment_audio_activity_timeout.get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "priority-type", priority_type->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
@@ -141,11 +131,9 @@ GeneralSettingsUi::~GeneralSettingsUi() {
 }
 
 void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/general_settings.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/general_settings.ui");
 
-  GeneralSettingsUi* ui;
-
-  builder->get_widget_derived("widgets_grid", ui, app);
+  auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "widgets_grid", app);
 
   stack->add(*ui, "general_spectrum", _("General"));
 }
@@ -153,16 +141,10 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 void GeneralSettingsUi::init_autostart_switch() {
   auto path = Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
 
-  try {
-    auto file = Gio::File::create_for_path(path);
-
-    if (file->query_exists()) {
-      enable_autostart->set_active(true);
-    } else {
-      enable_autostart->set_active(false);
-    }
-  } catch (const Glib::Exception& ex) {
-    util::warning(log_tag + ex.what());
+  if (std::filesystem::is_regular_file(path)) {
+    enable_autostart->set_active(true);
+  } else {
+    enable_autostart->set_active(false);
   }
 }
 

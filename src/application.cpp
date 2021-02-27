@@ -312,7 +312,9 @@ void Application::create_actions() {
   add_action("help", [&] {
     auto* window = get_active_window();
 
-    // window->show_uri("help:pulseeffects", gtk_get_current_event_time());
+    // show_uri has not been wrapped by GTKMM yet :-(
+
+    gtk_show_uri(window->gobj(), "help:pulseeffects", GDK_CURRENT_TIME);
   });
 
   add_action("quit", [&] {

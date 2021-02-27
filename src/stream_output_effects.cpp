@@ -301,7 +301,7 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
       pm->disconnect_stream_output(node_info);
     }
   } else {
-    auto enable_all = g_settings_get_boolean(settings, "enable-all-sinkinputs");
+    auto enable_all = g_settings_get_boolean(settings, "process-all-outputs");
 
     if (!forbidden_app && enable_all != 0) {
       pm->connect_stream_output(node_info);
