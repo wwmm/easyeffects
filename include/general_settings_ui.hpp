@@ -28,7 +28,7 @@
 #include "application.hpp"
 #include "util.hpp"
 
-class GeneralSettingsUi : public Gtk::Grid {
+class GeneralSettingsUi : public Gtk::Box {
  public:
   GeneralSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
   GeneralSettingsUi(const GeneralSettingsUi&) = delete;
@@ -51,11 +51,11 @@ class GeneralSettingsUi : public Gtk::Grid {
 
   Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
 
-  Gtk::SpinButton *realtime_priority_control = nullptr, *niceness_control = nullptr;
+  Gtk::SpinButton *spin_button_priority = nullptr, *spin_button_niceness = nullptr;
 
   Gtk::ComboBoxText* priority_type = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> adjustment_priority, adjustment_niceness, adjustment_audio_activity_timeout;
+  Glib::RefPtr<Gtk::Adjustment> realtime_priority, niceness, audio_activity_timeout;
 
   std::vector<sigc::connection> connections;
 

@@ -9,7 +9,7 @@
         <file>ui/spectrum_settings.glade</file>
         <file>ui/pipe_settings.glade</file>
         <file>ui/blocklist_settings.glade</file>
-        <file>ui/general_settings.glade</file>
+        <file>ui/general_settings.ui</file>
         <file>ui/effects_base.glade</file>
         <file>ui/app_info.glade</file>
         <file>ui/pipe_info.glade</file>

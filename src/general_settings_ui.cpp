@@ -56,7 +56,7 @@ auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected
 GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
                                      const Glib::RefPtr<Gtk::Builder>& builder,
                                      Application* application)
-    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
+    : Gtk::Box(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
   // loading builder widgets
 
   theme_switch = builder->get_widget<Gtk::Switch>("theme_switch");
@@ -65,13 +65,13 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   enable_autostart = builder->get_widget<Gtk::Switch>("enable_autostart");
   reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
   about_button = builder->get_widget<Gtk::Button>("about_button");
-  realtime_priority_control = builder->get_widget<Gtk::SpinButton>("realtime_priority");
-  niceness_control = builder->get_widget<Gtk::SpinButton>("niceness_control");
+  spin_button_priority = builder->get_widget<Gtk::SpinButton>("spin_button_priority");
+  spin_button_niceness = builder->get_widget<Gtk::SpinButton>("spin_button_niceness");
   priority_type = builder->get_widget<Gtk::ComboBoxText>("priority_type");
 
-  adjustment_priority = builder->get_object<Gtk::Adjustment>("adjustment_priority");
-  adjustment_niceness = builder->get_object<Gtk::Adjustment>("adjustment_niceness");
-  adjustment_audio_activity_timeout = builder->get_object<Gtk::Adjustment>("adjustment_audio_activity_timeout");
+  realtime_priority = builder->get_object<Gtk::Adjustment>("realtime_priority");
+  niceness = builder->get_object<Gtk::Adjustment>("niceness");
+  audio_activity_timeout = builder->get_object<Gtk::Adjustment>("audio_activity_timeout");
 
   // signals connection
 
@@ -110,9 +110,9 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("use-dark-theme", theme_switch, "active");
   settings->bind("process-all-inputs", process_all_inputs, "active");
   settings->bind("process-all-outputs", process_all_outputs, "active");
-  settings->bind("realtime-priority", adjustment_priority.get(), "value");
-  settings->bind("niceness", adjustment_niceness.get(), "value");
-  settings->bind("audio-activity-timeout", adjustment_audio_activity_timeout.get(), "value");
+  settings->bind("realtime-priority", realtime_priority.get(), "value");
+  settings->bind("niceness", niceness.get(), "value");
+  settings->bind("audio-activity-timeout", audio_activity_timeout.get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "priority-type", priority_type->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
@@ -133,7 +133,7 @@ GeneralSettingsUi::~GeneralSettingsUi() {
 void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/general_settings.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "widgets_grid", app);
+  auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "general_spectrum", _("General"));
 }
@@ -149,17 +149,17 @@ void GeneralSettingsUi::init_autostart_switch() {
 }
 
 auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
-  boost::filesystem::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
+  std::filesystem::path autostart_dir{Glib::get_user_config_dir() + "/autostart"};
 
-  if (!boost::filesystem::is_directory(autostart_dir)) {
-    boost::filesystem::create_directories(autostart_dir);
+  if (!std::filesystem::is_directory(autostart_dir)) {
+    std::filesystem::create_directories(autostart_dir);
   }
 
-  boost::filesystem::path autostart_file{Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
+  std::filesystem::path autostart_file{Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
 
   if (state) {
-    if (!boost::filesystem::exists(autostart_file)) {
-      boost::filesystem::ofstream ofs{autostart_file};
+    if (!std::filesystem::exists(autostart_file)) {
+      std::ofstream ofs{autostart_file};
 
       ofs << "[Desktop Entry]\n";
       ofs << "Name=PulseEffects\n";
@@ -175,8 +175,8 @@ auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
       util::debug(log_tag + "autostart file created");
     }
   } else {
-    if (boost::filesystem::exists(autostart_file)) {
-      boost::filesystem::remove(autostart_file);
+    if (std::filesystem::exists(autostart_file)) {
+      std::filesystem::remove(autostart_file);
 
       util::debug(log_tag + "autostart file removed");
     }
@@ -194,18 +194,18 @@ void GeneralSettingsUi::set_priority_controls_visibility() {
 
   switch (priority_type) {
     case 0: {
-      niceness_control->set_sensitive(true);
-      realtime_priority_control->set_sensitive(false);
+      spin_button_niceness->set_sensitive(true);
+      spin_button_priority->set_sensitive(false);
       break;
     }
     case 1: {
-      niceness_control->set_sensitive(false);
-      realtime_priority_control->set_sensitive(true);
+      spin_button_niceness->set_sensitive(false);
+      spin_button_priority->set_sensitive(true);
       break;
     }
     case 2: {
-      niceness_control->set_sensitive(false);
-      realtime_priority_control->set_sensitive(false);
+      spin_button_niceness->set_sensitive(false);
+      spin_button_priority->set_sensitive(false);
       break;
     }
     default:

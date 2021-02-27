@@ -1,8 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
-    <object class="GtkGrid" id="top_grid">
+    <object class="GtkBox" id="top_box">
         <property name="valign">center</property>
-        <property name="row-spacing">24</property>
-        <property name="column-spacing">48</property>
+        <property name="spacing">24</property>
+        <property name="orientation">horizontal</property>
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">6</property>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Start Service at Login</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSwitch" id="enable_autostart">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSwitch" id="process_all_outputs">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Process All Outputs</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Process All Inputs</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSwitch" id="process_all_inputs">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSwitch" id="theme_switch">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Use Dark Theme</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">6</property>
+                <child>
+                    <object class="GtkComboBoxText" id="priority_type">
+                        <property name="halign">start</property>
+                        <items>
+                            <item translatable="yes">Niceness</item>
+                            <item translatable="yes">Real Time</item>
+                            <item translatable="yes">None</item>
+                        </items>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton" id="spin_button_niceness">
+                        <property name="halign">start</property>
+                        <property name="width-chars">8</property>
+                        <property name="text">-10</property>
+                        <property name="xalign">0.5</property>
+                        <property name="numeric">true</property>
+                        <property name="adjustment">niceness</property>
+                        <property name="value">-10</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton" id="spin_button_priority">
+                        <property name="halign">start</property>
+                        <property name="width-chars">8</property>
+                        <property name="text">4</property>
+                        <property name="xalign">0.5</property>
+                        <property name="numeric">true</property>
+                        <property name="adjustment">realtime_priority</property>
+                        <property name="value">4</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="hexpand">False</property>
+                        <property name="label" translatable="yes">Priority Type</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Niceness</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Priority</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Activity Timeout</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="halign">start</property>
+                        <property name="width-chars">8</property>
+                        <property name="text">4</property>
+                        <property name="xalign">0.5</property>
+                        <!-- <property name="secondary-icon-name">pulseeffects-s-symbolic</property> -->
+                        <property name="numeric">true</property>
+                        <property name="adjustment">audio_activity_timeout</property>
+                        <property name="value">4</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <child>
+            <object class="GtkBox">
+                <property name="valign">start</property>
+                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="GtkButton" id="reset_settings">
+                        <property name="halign">start</property>
+                        <property name="label" translatable="yes">Reset All Settings</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkButton" id="about_button">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">About PulseEffects</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+    <object class="GtkAdjustment" id="audio_activity_timeout">
+        <property name="lower">1</property>
+        <property name="upper">3600</property>
+        <property name="step-increment">1</property>
+        <property name="page-increment">10</property>
+    </object>
+    <object class="GtkAdjustment" id="niceness">
+        <property name="lower">-20</property>
+        <property name="upper">19</property>
+        <property name="value">-10</property>
+        <property name="step-increment">1</property>
+        <property name="page-increment">5</property>
+    </object>
+    <object class="GtkAdjustment" id="realtime_priority">
+        <property name="upper">99</property>
+        <property name="value">4</property>
+        <property name="step-increment">1</property>
+        <property name="page-increment">10</property>
     </object>
 </interface>
