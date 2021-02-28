@@ -31,7 +31,7 @@ enum PortType { TYPE_CONTROL, TYPE_AUDIO };
 struct Port {
   const LilvPort* lilv_port;  // Port description
   PortType type;              // Datatype
-  uint32_t index;             // Port index
+  uint index;                 // Port index
   float value;                // Control value (if applicable)
   bool is_input;              // True if an input port
   bool optional;              // True if the connection is optional
@@ -59,7 +59,9 @@ class Lv2Wrapper {
   uint n_audio_in = 0;
   uint n_audio_out = 0;
 
-  Port* ports = nullptr;
+  std::vector<Port> ports;
+
+  void create_ports();
 };
 
 }  // namespace lv2
