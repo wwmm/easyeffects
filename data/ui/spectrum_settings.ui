@@ -2,7 +2,7 @@
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
         <property name="valign">center</property>
-        <property name="spacing">48</property>
+        <property name="spacing">24</property>
         <property name="orientation">horizontal</property>
         <child>
             <object class="GtkGrid">

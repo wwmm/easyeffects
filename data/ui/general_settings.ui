@@ -2,7 +2,7 @@
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
         <property name="valign">start</property>
-        <property name="spacing">48</property>
+        <property name="spacing">24</property>
         <property name="orientation">horizontal</property>
         <child>
             <object class="GtkGrid">
@@ -115,50 +115,6 @@
                         </layout>
                     </object>
                 </child>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">end</property>
-                        <property name="label" translatable="yes">Niceness</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">5</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="spin_button_niceness">
-                        <property name="halign">start</property>
-                        <property name="numeric">true</property>
-                        <property name="adjustment">niceness</property>
-                        <property name="value">-10</property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">5</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">end</property>
-                        <property name="label" translatable="yes">Priority</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">6</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="spin_button_priority">
-                        <property name="halign">start</property>
-                        <property name="numeric">true</property>
-                        <property name="adjustment">realtime_priority</property>
-                        <property name="value">4</property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">6</property>
-                        </layout>
-                    </object>
-                </child>
             </object>
         </child>
 
@@ -177,16 +133,57 @@
                 <property name="spacing">6</property>
                 <property name="orientation">vertical</property>
                 <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Activity Timeout</property>
+                    <object class="GtkSpinButton" id="spin_button_priority">
+                        <property name="numeric">1</property>
+                        <property name="adjustment">realtime_priority</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Priority</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton" id="spin_button_niceness">
+                        <property name="numeric">1</property>
+                        <property name="adjustment">niceness</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Niceness</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
                     </object>
                 </child>
                 <child>
                     <object class="GtkSpinButton" id="spin_button_activity_timeout">
-                        <property name="numeric">true</property>
+                        <property name="numeric">1</property>
                         <property name="adjustment">audio_activity_timeout</property>
-                        <property name="value">4</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="label" translatable="yes">Activity Timeout</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
                         <child>
                             <object class="GtkLabel">
                                 <property name="margin_start">3</property>
@@ -202,13 +199,13 @@
                 </child>
                 <child>
                     <object class="GtkButton" id="reset_settings">
-                        <property name="hexpand">true</property>
+                        <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset All Settings</property>
                     </object>
                 </child>
                 <child>
                     <object class="GtkButton" id="about_button">
-                        <property name="hexpand">true</property>
+                        <property name="hexpand">1</property>
                         <property name="label" translatable="yes">About PulseEffects</property>
                     </object>
                 </child>

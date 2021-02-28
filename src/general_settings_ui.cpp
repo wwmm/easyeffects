@@ -76,10 +76,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   // configuring widgets
 
-  auto* first_child = spin_button_activity_timeout->get_first_child();
-  auto* last_child = spin_button_activity_timeout->get_last_child();
-
-  last_child->insert_after(*spin_button_activity_timeout, *first_child);
+  prepare_spin_buttons();
 
   // signals connection
 
@@ -144,6 +141,16 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "general_spectrum", _("General"));
+}
+
+void GeneralSettingsUi::prepare_spin_buttons() {
+  spin_button_priority->get_last_child()->insert_at_start(*spin_button_priority);
+
+  spin_button_niceness->get_last_child()->insert_at_start(*spin_button_niceness);
+
+  spin_button_activity_timeout->get_last_child()->insert_after(*spin_button_activity_timeout,
+                                                               *spin_button_activity_timeout->get_first_child());
+  spin_button_activity_timeout->get_last_child()->insert_at_start(*spin_button_activity_timeout);
 }
 
 void GeneralSettingsUi::init_autostart_switch() {

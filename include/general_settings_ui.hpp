@@ -60,6 +60,8 @@ class GeneralSettingsUi : public Gtk::Box {
 
   std::vector<sigc::connection> connections;
 
+  void prepare_spin_buttons();
+
   void init_autostart_switch();
 
   auto on_enable_autostart(bool state) -> bool;
