@@ -65,6 +65,10 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
 
   label_n_points = builder->get_widget<Gtk::Label>("label_n_points");
+  label_height = builder->get_widget<Gtk::Label>("label_height");
+  label_line_width = builder->get_widget<Gtk::Label>("label_line_width");
+  label_sampling = builder->get_widget<Gtk::Label>("label_sampling");
+  label_sampling_unit = builder->get_widget<Gtk::Label>("label_sampling_unit");
 
   n_points = builder->get_object<Gtk::Adjustment>("n_points");
   height = builder->get_object<Gtk::Adjustment>("height");
@@ -199,8 +203,17 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 
 void SpectrumSettingsUi::prepare_widgets_spin_buttons() {
   auto* parent = label_n_points->get_parent();
-
   label_n_points->insert_at_start(*parent);
+
+  parent = label_height->get_parent();
+  label_height->insert_at_start(*parent);
+
+  parent = label_line_width->get_parent();
+  label_line_width->insert_at_start(*parent);
+
+  parent = label_sampling->get_parent();
+  label_sampling_unit->insert_after(*parent, *parent->get_first_child());
+  label_sampling->insert_at_start(*parent);
 }
 
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {

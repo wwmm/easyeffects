@@ -221,16 +221,85 @@
                 <property name="orientation">vertical</property>
                 <child>
                     <object class="GtkSpinButton">
-                        <property name="halign">start</property>
                         <property name="adjustment">n_points</property>
                         <property name="numeric">1</property>
                         <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
                         <child>
                             <object class="GtkLabel" id="label_n_points">
                                 <property name="margin_start">3</property>
                                 <property name="margin_end">3</property>
                                 <property name="halign">start</property>
                                 <property name="label" translatable="yes">Points</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="adjustment">height</property>
+                        <property name="numeric">1</property>
+                        <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel" id="label_height">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Height</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="adjustment">line_width</property>
+                        <property name="digits">1</property>
+                        <property name="numeric">1</property>
+                        <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel" id="label_line_width">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Line Width</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="adjustment">sampling_freq</property>
+                        <property name="numeric">1</property>
+                        <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel" id="label_sampling">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Sampling</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel" id="label_sampling_unit">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Hz</property>
                                 <style>
                                     <class name="dim-label" />
                                 </style>
