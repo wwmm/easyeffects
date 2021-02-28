@@ -51,10 +51,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
+  SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
   // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
-  // SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
   // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
   // BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());

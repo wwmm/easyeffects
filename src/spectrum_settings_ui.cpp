@@ -18,8 +18,6 @@
  */
 
 #include "spectrum_settings_ui.hpp"
-#include <cstring>
-#include "util.hpp"
 
 namespace {
 
@@ -51,25 +49,27 @@ auto int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected
 SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
                                        const Glib::RefPtr<Gtk::Builder>& builder,
                                        Application* application)
-    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")), app(application) {
+    : Gtk::Box(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")), app(application) {
   // loading glade widgets
 
-  builder->get_widget("show", show);
-  builder->get_widget("fill", fill);
-  builder->get_widget("show_bar_border", show_bar_border);
-  builder->get_widget("spectrum_color_button", spectrum_color_button);
-  builder->get_widget("axis_color_button", axis_color_button);
-  builder->get_widget("gradient_color_button", gradient_color_button);
-  builder->get_widget("use_custom_color", use_custom_color);
-  builder->get_widget("use_gradient", use_gradient);
-  builder->get_widget("spectrum_type", spectrum_type);
+  show = builder->get_widget<Gtk::Switch>("show");
+  fill = builder->get_widget<Gtk::Switch>("fill");
+  show_bar_border = builder->get_widget<Gtk::Switch>("show_bar_border");
+  use_custom_color = builder->get_widget<Gtk::Switch>("use_custom_color");
+  use_gradient = builder->get_widget<Gtk::Switch>("use_gradient");
 
-  get_object(builder, "n_points", n_points);
-  get_object(builder, "height", height);
-  get_object(builder, "sampling_freq", sampling_freq);
-  get_object(builder, "line_width", line_width);
-  get_object(builder, "maximum_frequency", maximum_frequency);
-  get_object(builder, "minimum_frequency", minimum_frequency);
+  spectrum_color_button = builder->get_widget<Gtk::ColorButton>("spectrum_color_button");
+  axis_color_button = builder->get_widget<Gtk::ColorButton>("axis_color_button");
+  gradient_color_button = builder->get_widget<Gtk::ColorButton>("gradient_color_button");
+
+  spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
+
+  n_points = builder->get_object<Gtk::Adjustment>("n_points");
+  height = builder->get_object<Gtk::Adjustment>("height");
+  sampling_freq = builder->get_object<Gtk::Adjustment>("sampling_freq");
+  line_width = builder->get_object<Gtk::Adjustment>("line_width");
+  maximum_frequency = builder->get_object<Gtk::Adjustment>("maximum_frequency");
+  minimum_frequency = builder->get_object<Gtk::Adjustment>("minimum_frequency");
 
   // signals connection
 
@@ -155,23 +155,21 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     }
   });
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("show", show, "active");
 
-  settings->bind("show", show, "active", flag);
-
-  settings->bind("fill", fill, "active", flag);
-  settings->bind("show-bar-border", show_bar_border, "active", flag);
-  settings->bind("n-points", n_points.get(), "value", flag);
-  settings->bind("height", height.get(), "value", flag);
-  settings->bind("sampling-freq", sampling_freq.get(), "value", flag);
-  settings->bind("line-width", line_width.get(), "value", flag);
-  settings->bind("use-gradient", use_gradient, "active", flag);
-  settings->bind("use-custom-color", use_custom_color, "active", flag);
-  settings->bind("use-custom-color", spectrum_color_button, "sensitive", flag);
-  settings->bind("use-custom-color", gradient_color_button, "sensitive", flag);
-  settings->bind("use-custom-color", axis_color_button, "sensitive", flag);
-  settings->bind("minimum-frequency", minimum_frequency.get(), "value", flag);
-  settings->bind("maximum-frequency", maximum_frequency.get(), "value", flag);
+  settings->bind("fill", fill, "active");
+  settings->bind("show-bar-border", show_bar_border, "active");
+  settings->bind("n-points", n_points.get(), "value");
+  settings->bind("height", height.get(), "value");
+  settings->bind("sampling-freq", sampling_freq.get(), "value");
+  settings->bind("line-width", line_width.get(), "value");
+  settings->bind("use-gradient", use_gradient, "active");
+  settings->bind("use-custom-color", use_custom_color, "active");
+  settings->bind("use-custom-color", spectrum_color_button, "sensitive");
+  settings->bind("use-custom-color", gradient_color_button, "sensitive");
+  settings->bind("use-custom-color", axis_color_button, "sensitive");
+  settings->bind("minimum-frequency", minimum_frequency.get(), "value");
+  settings->bind("maximum-frequency", maximum_frequency.get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                spectrum_type_enum_to_int, int_to_spectrum_type_enum, nullptr, nullptr);
@@ -186,11 +184,9 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 }
 
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum_settings.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum_settings.ui");
 
-  SpectrumSettingsUi* ui = nullptr;
-
-  builder->get_widget_derived("widgets_grid", ui, app);
+  auto* ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }

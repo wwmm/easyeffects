@@ -3,8 +3,8 @@
     <object class="GtkPopover" id="PresetsMenuUi">
         <child>
             <object class="GtkBox" id="top_box">
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
                 <property name="margin_start">6</property>
                 <property name="margin_end">6</property>
                 <property name="margin_top">6</property>
@@ -19,8 +19,8 @@
                 </child>
                 <child>
                     <object class="GtkStack" id="stack">
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
                         <property name="transition_duration">250</property>
                         <property name="transition_type">slide-up-down</property>
 
@@ -31,8 +31,8 @@
                                 <property name="icon_name">audio-speakers-symbolic</property>
                                 <property name="child">
                                     <object class="GtkGrid" id="grid_output">
-                                        <property name="hexpand">True</property>
-                                        <property name="vexpand">True</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
                                         <property name="row_spacing">12</property>
                                         <property name="column_spacing">6</property>
                                         <child>
@@ -65,7 +65,7 @@
                                         <child>
                                             <object class="GtkEntry" id="output_name">
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">True</property>
+                                                <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                 <property name="input_purpose">name</property>
                                                 <layout>
@@ -77,7 +77,7 @@
                                         <child>
                                             <object class="GtkSearchEntry" id="output_search">
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">True</property>
+                                                <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
                                                 <layout>
                                                     <property name="column">0</property>
@@ -88,23 +88,22 @@
                                         </child>
                                         <child>
                                             <object class="GtkFrame">
-                                                <property name="hexpand">True</property>
-                                                <property name="vexpand">True</property>
-                                                <property name="label_xalign">0</property>
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
                                                 <child>
                                                     <object class="GtkScrolledWindow" id="output_scrolled_window">
-                                                        <property name="hexpand">True</property>
-                                                        <property name="vexpand">True</property>
-                                                        <property name="propagate_natural_width">True</property>
-                                                        <property name="propagate_natural_height">True</property>
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                        <property name="propagate_natural_width">1</property>
+                                                        <property name="propagate_natural_height">1</property>
                                                         <child>
                                                             <object class="GtkViewport">
-                                                                <property name="hexpand">True</property>
-                                                                <property name="vexpand">True</property>
+                                                                <property name="hexpand">1</property>
+                                                                <property name="vexpand">1</property>
                                                                 <child>
                                                                     <object class="GtkListView" id="output_listview">
-                                                                        <property name="hexpand">True</property>
-                                                                        <property name="vexpand">True</property>
+                                                                        <property name="hexpand">1</property>
+                                                                        <property name="vexpand">1</property>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -144,8 +143,8 @@
                                 <property name="icon_name">audio-input-microphone-symbolic</property>
                                 <property name="child">
                                     <object class="GtkGrid" id="grid_input">
-                                        <property name="hexpand">True</property>
-                                        <property name="vexpand">True</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
                                         <property name="row_spacing">6</property>
                                         <property name="column_spacing">6</property>
                                         <child>
@@ -178,7 +177,7 @@
                                         <child>
                                             <object class="GtkEntry" id="input_name">
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">True</property>
+                                                <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                 <property name="input_purpose">name</property>
                                                 <layout>
@@ -190,7 +189,7 @@
                                         <child>
                                             <object class="GtkSearchEntry" id="input_search">
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">True</property>
+                                                <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
                                                 <layout>
                                                     <property name="column">0</property>
@@ -201,23 +200,22 @@
                                         </child>
                                         <child>
                                             <object class="GtkFrame">
-                                                <property name="hexpand">True</property>
-                                                <property name="vexpand">True</property>
-                                                <property name="label_xalign">0</property>
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
                                                 <child>
                                                     <object class="GtkScrolledWindow" id="input_scrolled_window">
-                                                        <property name="hexpand">True</property>
-                                                        <property name="vexpand">True</property>
-                                                        <property name="propagate_natural_width">True</property>
-                                                        <property name="propagate_natural_height">True</property>
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                        <property name="propagate_natural_width">1</property>
+                                                        <property name="propagate_natural_height">1</property>
                                                         <child>
                                                             <object class="GtkViewport">
-                                                                <property name="hexpand">True</property>
-                                                                <property name="vexpand">True</property>
+                                                                <property name="hexpand">1</property>
+                                                                <property name="vexpand">1</property>
                                                                 <child>
                                                                     <object class="GtkListView" id="input_listview">
-                                                                        <property name="hexpand">True</property>
-                                                                        <property name="vexpand">True</property>
+                                                                        <property name="hexpand">1</property>
+                                                                        <property name="vexpand">1</property>
                                                                     </object>
                                                                 </child>
                                                             </object>

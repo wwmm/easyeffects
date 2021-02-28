@@ -26,13 +26,13 @@
 #include "general_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "presets_menu_ui.hpp"
+#include "spectrum_settings_ui.hpp"
 // #include "pipe_info_ui.hpp"
 // #include "stream_input_effects_ui.hpp"
 // #include "stream_output_effects_ui.hpp"
 // #include "blocklist_settings_ui.hpp"
 // #include "calibration_ui.hpp"
 // #include "pipe_settings_ui.hpp"
-// #include "spectrum_settings_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:

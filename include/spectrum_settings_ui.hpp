@@ -20,24 +20,20 @@
 #ifndef SPECTRUM_SETTINGS_UI_HPP
 #define SPECTRUM_SETTINGS_UI_HPP
 
-#include <giomm/settings.h>
+#include <giomm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm/adjustment.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/colorbutton.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/switch.h>
+#include <gtkmm.h>
+#include <cstring>
 #include "application.hpp"
+#include "util.hpp"
 
-class SpectrumSettingsUi : public Gtk::Grid {
+class SpectrumSettingsUi : public Gtk::Box {
  public:
   SpectrumSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
   SpectrumSettingsUi(const SpectrumSettingsUi&) = delete;
   auto operator=(const SpectrumSettingsUi&) -> SpectrumSettingsUi& = delete;
   SpectrumSettingsUi(const SpectrumSettingsUi&&) = delete;
-  auto operator=(const SpectrumSettingsUi &&) -> SpectrumSettingsUi& = delete;
+  auto operator=(const SpectrumSettingsUi&&) -> SpectrumSettingsUi& = delete;
   ~SpectrumSettingsUi() override;
 
   static void add_to_stack(Gtk::Stack* stack, Application* app);
@@ -59,12 +55,6 @@ class SpectrumSettingsUi : public Gtk::Grid {
   Glib::RefPtr<Gtk::Adjustment> n_points, height, sampling_freq, line_width, minimum_frequency, maximum_frequency;
 
   std::vector<sigc::connection> connections;
-
-  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& name,
-                         Glib::RefPtr<Gtk::Adjustment>& object) {
-    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  }
 
   auto on_show_spectrum(bool state) -> bool;
 

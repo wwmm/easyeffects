@@ -8,7 +8,7 @@
             <object class="GtkLabel" id="name">
                 <property name="halign">start</property>
                 <property name="valign">center</property>
-                <property name="hexpand">True</property>
+                <property name="hexpand">1</property>
                 <property name="label">Name</property>
             </object>
         </child>
