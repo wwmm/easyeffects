@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
-        <property name="valign">center</property>
+        <property name="valign">start</property>
         <property name="spacing">48</property>
         <property name="orientation">horizontal</property>
         <child>
@@ -91,21 +91,13 @@
                         </layout>
                     </object>
                 </child>
-            </object>
-        </child>
-        <child>
-            <object class="GtkGrid">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">6</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Priority Type</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">0</property>
+                            <property name="row">4</property>
                         </layout>
                     </object>
                 </child>
@@ -119,7 +111,7 @@
                         </items>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">0</property>
+                            <property name="row">4</property>
                         </layout>
                     </object>
                 </child>
@@ -129,7 +121,7 @@
                         <property name="label" translatable="yes">Niceness</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">1</property>
+                            <property name="row">5</property>
                         </layout>
                     </object>
                 </child>
@@ -141,7 +133,7 @@
                         <property name="value">-10</property>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">1</property>
+                            <property name="row">5</property>
                         </layout>
                     </object>
                 </child>
@@ -151,7 +143,7 @@
                         <property name="label" translatable="yes">Priority</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">2</property>
+                            <property name="row">6</property>
                         </layout>
                     </object>
                 </child>
@@ -163,12 +155,22 @@
                         <property name="value">4</property>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">2</property>
+                            <property name="row">6</property>
                         </layout>
                     </object>
                 </child>
             </object>
         </child>
+
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">6</property>
+            </object>
+        </child>
+
         <child>
             <object class="GtkBox">
                 <property name="valign">start</property>

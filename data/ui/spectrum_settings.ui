@@ -115,15 +115,6 @@
                         </layout>
                     </object>
                 </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkGrid">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">6</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">end</property>
@@ -131,7 +122,7 @@
                         <property name="label" translatable="yes">Spectrum Type</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">0</property>
+                            <property name="row">5</property>
                         </layout>
                     </object>
                 </child>
@@ -144,7 +135,7 @@
                         </items>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">0</property>
+                            <property name="row">5</property>
                         </layout>
                     </object>
                 </child>
@@ -155,7 +146,7 @@
                         <property name="label" translatable="yes">Spectrum Color</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">1</property>
+                            <property name="row">6</property>
                         </layout>
                     </object>
                 </child>
@@ -165,7 +156,7 @@
                         <property name="use-alpha">True</property>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">1</property>
+                            <property name="row">6</property>
                         </layout>
                     </object>
                 </child>
@@ -176,7 +167,7 @@
                         <property name="label" translatable="yes">Gradient Color</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">2</property>
+                            <property name="row">7</property>
                         </layout>
                     </object>
                 </child>
@@ -186,7 +177,7 @@
                         <property name="use-alpha">True</property>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">2</property>
+                            <property name="row">7</property>
                         </layout>
                     </object>
                 </child>
@@ -197,7 +188,7 @@
                         <property name="label" translatable="yes">Axis Color</property>
                         <layout>
                             <property name="column">0</property>
-                            <property name="row">3</property>
+                            <property name="row">8</property>
                         </layout>
                     </object>
                 </child>
@@ -207,7 +198,7 @@
                         <property name="use-alpha">True</property>
                         <layout>
                             <property name="column">1</property>
-                            <property name="row">3</property>
+                            <property name="row">8</property>
                         </layout>
                     </object>
                 </child>
@@ -295,7 +286,67 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkLabel" id="label_sampling_unit">
+                            <object class="GtkLabel">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Hz</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="adjustment">minimum_frequency</property>
+                        <property name="numeric">1</property>
+                        <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel" id="label_minimum_frequency">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Minimum Frequency</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Hz</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="adjustment">maximum_frequency</property>
+                        <property name="numeric">1</property>
+                        <property name="update-policy">if-valid</property>
+                        <property name="xalign">1.0</property>
+                        <child>
+                            <object class="GtkLabel" id="label_maximum_frequency">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Maximum Frequency</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel">
                                 <property name="margin_start">3</property>
                                 <property name="margin_end">3</property>
                                 <property name="halign">start</property>

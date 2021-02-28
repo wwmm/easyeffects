@@ -179,7 +179,6 @@
                 </child>
                 <child>
                     <object class="GtkBox">
-
                         <property name="spacing">18</property>
                         <child>
                             <object class="GtkStackSidebar">
@@ -191,7 +190,7 @@
                             <object class="GtkStack" id="stack_menu_settings">
                                 <property name="hexpand">1</property>
                                 <property name="transition_duration">250</property>
-                                <property name="transition_type">crossfade</property>
+                                <property name="transition_type">slide-up-down</property>
                             </object>
                         </child>
                     </object>

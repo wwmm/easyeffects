@@ -68,7 +68,8 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   label_height = builder->get_widget<Gtk::Label>("label_height");
   label_line_width = builder->get_widget<Gtk::Label>("label_line_width");
   label_sampling = builder->get_widget<Gtk::Label>("label_sampling");
-  label_sampling_unit = builder->get_widget<Gtk::Label>("label_sampling_unit");
+  label_minimum_frequency = builder->get_widget<Gtk::Label>("label_minimum_frequency");
+  label_maximum_frequency = builder->get_widget<Gtk::Label>("label_maximum_frequency");
 
   n_points = builder->get_object<Gtk::Adjustment>("n_points");
   height = builder->get_object<Gtk::Adjustment>("height");
@@ -79,7 +80,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   // prepare widgets
 
-  prepare_widgets_spin_buttons();
+  prepare_spin_buttons();
 
   // signals connection
 
@@ -201,7 +202,7 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }
 
-void SpectrumSettingsUi::prepare_widgets_spin_buttons() {
+void SpectrumSettingsUi::prepare_spin_buttons() {
   auto* parent = label_n_points->get_parent();
   label_n_points->insert_at_start(*parent);
 
@@ -212,8 +213,16 @@ void SpectrumSettingsUi::prepare_widgets_spin_buttons() {
   label_line_width->insert_at_start(*parent);
 
   parent = label_sampling->get_parent();
-  label_sampling_unit->insert_after(*parent, *parent->get_first_child());
+  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
   label_sampling->insert_at_start(*parent);
+
+  parent = label_minimum_frequency->get_parent();
+  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
+  label_minimum_frequency->insert_at_start(*parent);
+
+  parent = label_maximum_frequency->get_parent();
+  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
+  label_maximum_frequency->insert_at_start(*parent);
 }
 
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
