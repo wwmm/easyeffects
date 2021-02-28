@@ -67,11 +67,19 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   about_button = builder->get_widget<Gtk::Button>("about_button");
   spin_button_priority = builder->get_widget<Gtk::SpinButton>("spin_button_priority");
   spin_button_niceness = builder->get_widget<Gtk::SpinButton>("spin_button_niceness");
+  spin_button_activity_timeout = builder->get_widget<Gtk::SpinButton>("spin_button_activity_timeout");
   cpu_priority = builder->get_widget<Gtk::ComboBoxText>("cpu_priority");
 
   realtime_priority = builder->get_object<Gtk::Adjustment>("realtime_priority");
   niceness = builder->get_object<Gtk::Adjustment>("niceness");
   audio_activity_timeout = builder->get_object<Gtk::Adjustment>("audio_activity_timeout");
+
+  // configuring widgets
+
+  auto* first_child = spin_button_activity_timeout->get_first_child();
+  auto* last_child = spin_button_activity_timeout->get_last_child();
+
+  last_child->insert_after(*spin_button_activity_timeout, *first_child);
 
   // signals connection
 

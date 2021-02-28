@@ -181,11 +181,21 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton">
-                        <!-- <property name="secondary-icon-name">pulseeffects-s-symbolic</property> -->
+                    <object class="GtkSpinButton" id="spin_button_activity_timeout">
                         <property name="numeric">true</property>
                         <property name="adjustment">audio_activity_timeout</property>
                         <property name="value">4</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">s</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
                     </object>
                 </child>
                 <child>

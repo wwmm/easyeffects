@@ -51,7 +51,8 @@ class GeneralSettingsUi : public Gtk::Box {
 
   Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
 
-  Gtk::SpinButton *spin_button_priority = nullptr, *spin_button_niceness = nullptr;
+  Gtk::SpinButton *spin_button_priority = nullptr, *spin_button_niceness = nullptr,
+                  *spin_button_activity_timeout = nullptr;
 
   Gtk::ComboBoxText* cpu_priority = nullptr;
 
