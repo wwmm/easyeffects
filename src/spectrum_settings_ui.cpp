@@ -64,12 +64,12 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
 
-  label_n_points = builder->get_widget<Gtk::Label>("label_n_points");
-  label_height = builder->get_widget<Gtk::Label>("label_height");
-  label_line_width = builder->get_widget<Gtk::Label>("label_line_width");
-  label_sampling = builder->get_widget<Gtk::Label>("label_sampling");
-  label_minimum_frequency = builder->get_widget<Gtk::Label>("label_minimum_frequency");
-  label_maximum_frequency = builder->get_widget<Gtk::Label>("label_maximum_frequency");
+  spinbutton_n_points = builder->get_widget<Gtk::SpinButton>("spinbutton_n_points");
+  spinbutton_height = builder->get_widget<Gtk::SpinButton>("spinbutton_height");
+  spinbutton_line_width = builder->get_widget<Gtk::SpinButton>("spinbutton_line_width");
+  spinbutton_sampling = builder->get_widget<Gtk::SpinButton>("spinbutton_sampling");
+  spinbutton_minimum_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_minimum_frequency");
+  spinbutton_maximum_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_maximum_frequency");
 
   n_points = builder->get_object<Gtk::Adjustment>("n_points");
   height = builder->get_object<Gtk::Adjustment>("height");
@@ -203,26 +203,22 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 }
 
 void SpectrumSettingsUi::prepare_spin_buttons() {
-  auto* parent = label_n_points->get_parent();
-  label_n_points->insert_at_start(*parent);
+  spinbutton_n_points->get_last_child()->insert_at_start(*spinbutton_n_points);
 
-  parent = label_height->get_parent();
-  label_height->insert_at_start(*parent);
+  spinbutton_height->get_last_child()->insert_at_start(*spinbutton_height);
 
-  parent = label_line_width->get_parent();
-  label_line_width->insert_at_start(*parent);
+  spinbutton_line_width->get_last_child()->insert_at_start(*spinbutton_line_width);
 
-  parent = label_sampling->get_parent();
-  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
-  label_sampling->insert_at_start(*parent);
+  spinbutton_sampling->get_last_child()->insert_after(*spinbutton_sampling, *spinbutton_sampling->get_first_child());
+  spinbutton_sampling->get_last_child()->insert_at_start(*spinbutton_sampling);
 
-  parent = label_minimum_frequency->get_parent();
-  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
-  label_minimum_frequency->insert_at_start(*parent);
+  spinbutton_minimum_frequency->get_last_child()->insert_after(*spinbutton_minimum_frequency,
+                                                               *spinbutton_minimum_frequency->get_first_child());
+  spinbutton_minimum_frequency->get_last_child()->insert_at_start(*spinbutton_minimum_frequency);
 
-  parent = label_maximum_frequency->get_parent();
-  parent->get_last_child()->insert_after(*parent, *parent->get_first_child());
-  label_maximum_frequency->insert_at_start(*parent);
+  spinbutton_maximum_frequency->get_last_child()->insert_after(*spinbutton_maximum_frequency,
+                                                               *spinbutton_maximum_frequency->get_first_child());
+  spinbutton_maximum_frequency->get_last_child()->insert_at_start(*spinbutton_maximum_frequency);
 }
 
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {

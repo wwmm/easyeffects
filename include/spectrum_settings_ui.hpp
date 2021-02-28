@@ -52,8 +52,9 @@ class SpectrumSettingsUi : public Gtk::Box {
 
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
-  Gtk::Label *label_n_points = nullptr, *label_height = nullptr, *label_line_width = nullptr, *label_sampling = nullptr,
-             *label_minimum_frequency = nullptr, *label_maximum_frequency = nullptr;
+  Gtk::SpinButton *spinbutton_n_points = nullptr, *spinbutton_height = nullptr, *spinbutton_line_width = nullptr,
+                  *spinbutton_sampling = nullptr, *spinbutton_minimum_frequency = nullptr,
+                  *spinbutton_maximum_frequency = nullptr;
 
   Glib::RefPtr<Gtk::Adjustment> n_points, height, sampling_freq, line_width, minimum_frequency, maximum_frequency;
 
