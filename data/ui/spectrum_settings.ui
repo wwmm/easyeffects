@@ -125,6 +125,102 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Spectrum Type</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkComboBoxText" id="spectrum_type">
+                        <property name="halign">start</property>
+                        <items>
+                            <item translatable="yes">Bars</item>
+                            <item translatable="yes">Lines</item>
+                        </items>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Spectrum Color</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkColorButton" id="spectrum_color_button">
+                        <property name="halign">start</property>
+                        <property name="use-alpha">True</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Gradient Color</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">2</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkColorButton" id="gradient_color_button">
+                        <property name="halign">start</property>
+                        <property name="use-alpha">True</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">2</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Axis Color</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">3</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkColorButton" id="axis_color_button">
+                        <property name="halign">start</property>
+                        <property name="use-alpha">True</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">3</property>
+                        </layout>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">6</property>
+                <child>
                     <object class="GtkSpinButton">
                         <property name="halign">start</property>
                         <property name="adjustment">n_points</property>
@@ -178,36 +274,5 @@
         <property name="upper">200</property>
         <property name="step-increment">1</property>
         <property name="page-increment">10</property>
-    </object>
-
-    <object class="GtkComboBoxText" id="spectrum_type">
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="halign">start</property>
-        <items>
-            <item translatable="yes">Bars</item>
-            <item translatable="yes">Lines</item>
-        </items>
-    </object>
-    <object class="GtkColorButton" id="spectrum_color_button">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="halign">start</property>
-        <property name="use-alpha">True</property>
-    </object>
-    <object class="GtkColorButton" id="gradient_color_button">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="halign">start</property>
-        <property name="use-alpha">True</property>
-    </object>
-    <object class="GtkColorButton" id="axis_color_button">
-        <property name="visible">True</property>
-        <property name="can-focus">True</property>
-        <property name="receives-default">True</property>
-        <property name="halign">start</property>
-        <property name="use-alpha">True</property>
     </object>
 </interface>

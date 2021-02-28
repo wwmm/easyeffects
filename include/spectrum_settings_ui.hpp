@@ -56,6 +56,8 @@ class SpectrumSettingsUi : public Gtk::Box {
 
   std::vector<sigc::connection> connections;
 
+  void prepare_widgets_spin_buttons();
+
   auto on_show_spectrum(bool state) -> bool;
 
   void on_spectrum_sampling_freq_set();

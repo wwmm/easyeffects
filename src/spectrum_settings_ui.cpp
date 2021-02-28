@@ -191,6 +191,8 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }
 
+void SpectrumSettingsUi::prepare_widgets_spin_buttons() {}
+
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
   if (state) {
     app->sie->enable_spectrum();
