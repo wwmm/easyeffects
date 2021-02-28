@@ -163,35 +163,37 @@
 
     <object class="GtkPopover" id="settings_menu">
         <child>
-            <object class="GtkGrid">
+            <object class="GtkBox">
                 <property name="margin_start">6</property>
                 <property name="margin_end">6</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
-                <property name="row_spacing">18</property>
+                <property name="spacing">12</property>
+                <property name="orientation">vertical</property>
                 <child>
-                    <object class="GtkStackSwitcher">
+                    <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="stack">stack_menu_settings</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
+                        <property name="label" translatable="yes">Settings</property>
                     </object>
                 </child>
                 <child>
-                    <object class="GtkStack" id="stack_menu_settings">
-                        <property name="hexpand">1</property>
-                        <property name="transition_duration">250</property>
-                        <property name="transition_type">crossfade</property>
+                    <object class="GtkBox">
+
+                        <property name="spacing">18</property>
                         <child>
-                            <placeholder />
+                            <object class="GtkStackSidebar">
+                                <property name="halign">center</property>
+                                <property name="stack">stack_menu_settings</property>
+                            </object>
                         </child>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
+                        <child>
+                            <object class="GtkStack" id="stack_menu_settings">
+                                <property name="hexpand">1</property>
+                                <property name="transition_duration">250</property>
+                                <property name="transition_type">crossfade</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

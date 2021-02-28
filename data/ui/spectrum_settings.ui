@@ -215,21 +215,27 @@
         </child>
 
         <child>
-            <object class="GtkGrid">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">6</property>
+            <object class="GtkBox">
+                <property name="valign">start</property>
+                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
                 <child>
                     <object class="GtkSpinButton">
                         <property name="halign">start</property>
                         <property name="adjustment">n_points</property>
                         <property name="numeric">1</property>
                         <property name="update-policy">if-valid</property>
-                        <!-- <layout>
-                            <property name="column">1</property>
-                            <property name="row">4</property>
-                        </layout> -->
+                        <child>
+                            <object class="GtkLabel" id="label_n_points">
+                                <property name="margin_start">3</property>
+                                <property name="margin_end">3</property>
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Points</property>
+                                <style>
+                                    <class name="dim-label" />
+                                </style>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

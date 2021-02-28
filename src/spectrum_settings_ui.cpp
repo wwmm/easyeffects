@@ -64,12 +64,18 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
 
+  label_n_points = builder->get_widget<Gtk::Label>("label_n_points");
+
   n_points = builder->get_object<Gtk::Adjustment>("n_points");
   height = builder->get_object<Gtk::Adjustment>("height");
   sampling_freq = builder->get_object<Gtk::Adjustment>("sampling_freq");
   line_width = builder->get_object<Gtk::Adjustment>("line_width");
   maximum_frequency = builder->get_object<Gtk::Adjustment>("maximum_frequency");
   minimum_frequency = builder->get_object<Gtk::Adjustment>("minimum_frequency");
+
+  // prepare widgets
+
+  prepare_widgets_spin_buttons();
 
   // signals connection
 
@@ -191,7 +197,11 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }
 
-void SpectrumSettingsUi::prepare_widgets_spin_buttons() {}
+void SpectrumSettingsUi::prepare_widgets_spin_buttons() {
+  auto* parent = label_n_points->get_parent();
+
+  label_n_points->insert_at_start(*parent);
+}
 
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
   if (state) {

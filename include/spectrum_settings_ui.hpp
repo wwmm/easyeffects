@@ -52,6 +52,8 @@ class SpectrumSettingsUi : public Gtk::Box {
 
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
+  Gtk::Label* label_n_points = nullptr;
+
   Glib::RefPtr<Gtk::Adjustment> n_points, height, sampling_freq, line_width, minimum_frequency, maximum_frequency;
 
   std::vector<sigc::connection> connections;
