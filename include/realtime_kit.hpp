@@ -25,7 +25,6 @@
 #include <sys/syscall.h>
 #include <unistd.h>
 #include <climits>
-#include <iostream>
 #include "util.hpp"
 
 #define RTKIT_SERVICE_NAME "org.freedesktop.RealtimeKit1"
