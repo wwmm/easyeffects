@@ -151,6 +151,18 @@ void GeneralSettingsUi::prepare_spin_buttons() {
   spin_button_activity_timeout->get_last_child()->insert_after(*spin_button_activity_timeout,
                                                                *spin_button_activity_timeout->get_first_child());
   spin_button_activity_timeout->get_last_child()->insert_at_start(*spin_button_activity_timeout);
+
+  // For some reason the spinbutton does not finish the childs we add to it
+
+  spin_button_priority->signal_hide().connect([=]() { spin_button_priority->get_first_child()->unparent(); });
+
+  spin_button_niceness->signal_hide().connect([=]() { spin_button_niceness->get_first_child()->unparent(); });
+
+  spin_button_activity_timeout->signal_hide().connect([=]() {
+    spin_button_activity_timeout->get_first_child()->unparent();
+
+    spin_button_activity_timeout->get_first_child()->get_next_sibling()->unparent();
+  });
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
