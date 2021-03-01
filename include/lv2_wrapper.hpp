@@ -38,6 +38,8 @@ struct Port {
 
   std::string name;
 
+  std::string symbol;
+
   float value;  // Control value (if applicable)
 
   bool is_input;  // True if an input port

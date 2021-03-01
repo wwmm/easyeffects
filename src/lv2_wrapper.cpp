@@ -60,10 +60,12 @@ void Lv2Wrapper::create_ports() {
     port->lilv_port = lilv_plugin_get_port_by_index(plugin, n);
     port->index = n;
     port->name = lilv_node_as_string(lilv_port_get_name(plugin, port->lilv_port));
+    port->symbol = lilv_node_as_string(lilv_port_get_symbol(plugin, port->lilv_port));
     port->value = std::isnan(values[n]) ? 0.0F : values[n];
     port->optional = lilv_port_has_property(plugin, port->lilv_port, lv2_connectionOptional);
 
     // util::warning("port name: " + port.name);
+    // util::warning("port symbol: " + port->symbol);
 
     if (lilv_port_is_a(plugin, port->lilv_port, lv2_InputPort)) {
       port->is_input = true;
@@ -85,6 +87,12 @@ void Lv2Wrapper::create_ports() {
 
   // util::warning("n audio_in ports: " + std::to_string(n_audio_in));
   // util::warning("n audio_out ports: " + std::to_string(n_audio_out));
+
+  lilv_node_free(lv2_connectionOptional);
+  lilv_node_free(lv2_ControlPort);
+  lilv_node_free(lv2_AudioPort);
+  lilv_node_free(lv2_OutputPort);
+  lilv_node_free(lv2_InputPort);
 }
 
 }  // namespace lv2

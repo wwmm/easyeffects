@@ -202,7 +202,7 @@ void Application::on_startup() {
 
   // This is only for testing an idea. It will be moved from here in the future
 
-  auto l = lv2::Lv2Wrapper("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
+  // auto l = lv2::Lv2Wrapper("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
 }
 
 void Application::on_activate() {
