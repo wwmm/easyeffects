@@ -20,6 +20,7 @@
 #ifndef LV2_WRAPPER_HPP
 #define LV2_WRAPPER_HPP
 
+#include <cmath>
 #include "lilv/lilv.h"
 #include "lv2/core/lv2.h"
 #include "util.hpp"
@@ -30,11 +31,18 @@ enum PortType { TYPE_CONTROL, TYPE_AUDIO };
 
 struct Port {
   const LilvPort* lilv_port;  // Port description
-  PortType type;              // Datatype
-  uint index;                 // Port index
-  float value;                // Control value (if applicable)
-  bool is_input;              // True if an input port
-  bool optional;              // True if the connection is optional
+
+  PortType type;  // Datatype
+
+  uint index;  // Port index
+
+  std::string name;
+
+  float value;  // Control value (if applicable)
+
+  bool is_input;  // True if an input port
+
+  bool optional;  // True if the connection is optional
 };
 
 class Lv2Wrapper {
