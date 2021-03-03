@@ -118,7 +118,6 @@ Delay::Delay(const std::string& tag,
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, "pe_filter_delay");
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, tag.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "pulseeffects_filter");
-  pw_properties_set(props_filter, PW_KEY_NODE_TARGET, std::to_string(pm->pe_sink_node.id).c_str());
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
