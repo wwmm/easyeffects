@@ -588,6 +588,30 @@ void on_registry_global(void* data,
                     std::string(key_media_role)) != std::end(pm->blocklist_media_role)) {
         return;
       }
+
+      if (strcmp(key_media_role, "DSP") == 0) {
+        const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY);
+
+        if (key_media_category == nullptr) {
+          return;
+        }
+
+        if (strcmp(key_media_category, "Filter") == 0) {
+          const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
+
+          if (key_node_description == nullptr) {
+            return;
+          }
+
+          if (strcmp(key_node_description, "pulseeffects_filter") == 0) {
+            const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
+            const auto* node_nick = spa_dict_lookup(props, PW_KEY_NODE_NICK);
+
+            util::debug(pm->log_tag + "Filter " + node_nick + node_name + ", id = " + std::to_string(id) +
+                        ", was added");
+          }
+        }
+      }
     }
 
     const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);

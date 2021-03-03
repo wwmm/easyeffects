@@ -8,6 +8,7 @@ pulseeffects_sources = [
 	# 'blocklist_settings_ui.cpp',
 	'general_settings_ui.cpp',
 	'pipe_manager.cpp',
+	'pipe_filter.cpp',
 	# 'effects_base_ui.cpp',
 	# 'app_info_ui.cpp',
 	# 'pipe_info_ui.cpp',

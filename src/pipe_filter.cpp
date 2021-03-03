@@ -1,20 +1,6 @@
 #include "pipe_filter.hpp"
-#include "pipewire/filter.h"
-#include "pipewire/keys.h"
-#include "util.hpp"
 
-namespace {
-
-struct data;
-
-struct port {
-  struct data* data;
-};
-
-struct data {
-  struct port *in_left, *in_right;
-  struct port *out_left, *out_right;
-};
+namespace pf {
 
 void on_process(void* userdata, struct spa_io_position* position) {
   auto* d = static_cast<data*>(userdata);
@@ -48,21 +34,18 @@ static const struct pw_filter_events filter_events = {
     .process = on_process,
 };
 
-}  // namespace
-
 PipeFilter::PipeFilter(pw_core* core) {
   auto* props_filter = pw_properties_new(nullptr, nullptr);
 
+  pw_properties_set(props_filter, PW_KEY_NODE_NAME, "pe_filter");
+  pw_properties_set(props_filter, PW_KEY_NODE_AUTOCONNECT, "true");
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
-  pw_properties_set(props_filter, PW_KEY_NODE_AUTOCONNECT, "true");
 
   filter = pw_filter_new(core, "pe_filter", props_filter);
 
-  pw_filter_add_listener(filter, &listener, &filter_events, this);
-
-  data d{};
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 
   // left channel input
 
@@ -72,8 +55,8 @@ PipeFilter::PipeFilter(pw_core* core) {
   pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "pe_input_fl");
   pw_properties_set(props_in_left, "audio.channel", "FL");
 
-  d.in_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
-                                                    sizeof(port), props_in_left, nullptr, 0));
+  pf_data.in_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                          sizeof(port), props_in_left, nullptr, 0));
 
   // left channel input
 
@@ -83,8 +66,8 @@ PipeFilter::PipeFilter(pw_core* core) {
   pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "pe_input_fr");
   pw_properties_set(props_in_right, "audio.channel", "FR");
 
-  d.in_right = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
-                                                     sizeof(port), props_in_right, nullptr, 0));
+  pf_data.in_right = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                           sizeof(port), props_in_right, nullptr, 0));
 
   // left channel output
 
@@ -94,8 +77,8 @@ PipeFilter::PipeFilter(pw_core* core) {
   pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "pe_output_fl");
   pw_properties_set(props_in_left, "audio.channel", "FL");
 
-  d.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
-                                                     sizeof(port), props_out_left, nullptr, 0));
+  pf_data.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                           sizeof(port), props_out_left, nullptr, 0));
 
   auto* props_out_right = pw_properties_new(nullptr, nullptr);
 
@@ -103,8 +86,8 @@ PipeFilter::PipeFilter(pw_core* core) {
   pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "pe_output_fr");
   pw_properties_set(props_in_left, "audio.channel", "FR");
 
-  d.out_right = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
-                                                      sizeof(port), props_out_right, nullptr, 0));
+  pf_data.out_right = static_cast<port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
     util::error(log_tag + "can not connect the filter to pipewire!");
@@ -116,3 +99,5 @@ PipeFilter::PipeFilter(pw_core* core) {
 PipeFilter::~PipeFilter() {
   pw_filter_destroy(filter);
 }
+
+}  // namespace pf

@@ -227,7 +227,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
                                         "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
 
   delay = std::make_unique<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay",
-                                  "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/delay/", pipe_manager);
 
   rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
                                       "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");

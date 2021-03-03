@@ -3,7 +3,19 @@
 
 #include <pipewire/filter.h>
 #include <pipewire/pipewire.h>
-#include <iostream>
+#include "util.hpp"
+
+namespace pf {
+
+struct data;
+
+struct port {
+  struct data* data;
+};
+
+struct data {
+  struct port *in_left, *in_right, *out_left, *out_right;
+};
 
 class PipeFilter {
  public:
@@ -19,6 +31,10 @@ class PipeFilter {
   pw_filter* filter = nullptr;
 
   spa_hook listener{};
+
+  data pf_data{};
 };
+
+};  // namespace pf
 
 #endif

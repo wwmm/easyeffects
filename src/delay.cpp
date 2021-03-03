@@ -19,8 +19,46 @@
 
 #include "delay.hpp"
 
-Delay::Delay(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "delay", schema, schema_path) {
+namespace {
+
+void on_process(void* userdata, struct spa_io_position* position) {
+  // auto* d = static_cast<data*>(userdata);
+
+  // uint32_t n_samples = position->clock.duration;
+
+  // pw_log_trace("do process %d", n_samples);
+  util::warning("processing");
+
+  // auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
+  // auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
+
+  // auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
+  // auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
+
+  // memcpy(out_left, in_left, n_samples * sizeof(float));
+  // memcpy(out_right, in_right, n_samples * sizeof(float));
+}
+
+// void destroy_filter(void* data) {
+// auto* pf = static_cast<PipeFilter*>(data);
+
+// util::debug(pf->log_tag + "Destroying Pipewire filter...");
+
+// spa_hook_remove(&pf->listener);
+// }
+
+static const struct pw_filter_events filter_events = {
+    PW_VERSION_FILTER_EVENTS,
+    .process = on_process,
+};
+
+}  // namespace
+
+Delay::Delay(const std::string& tag,
+             const std::string& schema,
+             const std::string& schema_path,
+             PipeManager* pipe_manager)
+    : PluginBase(tag, "delay", schema, schema_path), pm(pipe_manager) {
   delay = gst_element_factory_make("lsp-plug-in-plugins-lv2-comp-delay-x2-stereo", nullptr);
 
   if (is_installed(delay)) {
@@ -72,6 +110,80 @@ Delay::Delay(const std::string& tag, const std::string& schema, const std::strin
 
     g_settings_set_boolean(settings, "state", enable);
   }
+
+  // testing new ideas
+
+  auto* props_filter = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_filter, PW_KEY_NODE_NAME, "pe_filter_delay");
+  pw_properties_set(props_filter, PW_KEY_NODE_NICK, tag.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "pulseeffects_filter");
+  pw_properties_set(props_filter, PW_KEY_NODE_TARGET, std::to_string(pm->pe_sink_node.id).c_str());
+  pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
+
+  filter = pw_filter_new(pm->core, "pe_filter_delay", props_filter);
+
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
+
+  // left channel input
+
+  auto* props_in_left = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_in_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "input_fl");
+  pw_properties_set(props_in_left, "audio.channel", "FL");
+
+  pf_data.in_left = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_left, nullptr, 0));
+
+  // right channel input
+
+  auto* props_in_right = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_in_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "input_fr");
+  pw_properties_set(props_in_right, "audio.channel", "FR");
+
+  pf_data.in_right = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_right, nullptr, 0));
+
+  // left channel output
+
+  auto* props_out_left = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
+  pw_properties_set(props_in_left, "audio.channel", "FL");
+
+  pf_data.out_left = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_left, nullptr, 0));
+
+  // right channel output
+
+  auto* props_out_right = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
+  pw_properties_set(props_in_left, "audio.channel", "FR");
+
+  pf_data.out_right = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_right, nullptr, 0));
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
+    util::error(log_tag + "can not connect the filter to pipewire!");
+  } else {
+    util::debug(log_tag + "delay filter connected to pipewire");
+  }
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 Delay::~Delay() {
