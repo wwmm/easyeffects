@@ -155,7 +155,7 @@ Delay::Delay(const std::string& tag,
 
   pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
   pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
-  pw_properties_set(props_in_left, "audio.channel", "FL");
+  pw_properties_set(props_out_left, "audio.channel", "FL");
 
   pf_data.out_left = static_cast<pf::port*>(pw_filter_add_port(
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_left, nullptr, 0));
@@ -166,7 +166,7 @@ Delay::Delay(const std::string& tag,
 
   pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
   pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
-  pw_properties_set(props_in_left, "audio.channel", "FR");
+  pw_properties_set(props_out_right, "audio.channel", "FR");
 
   pf_data.out_right = static_cast<pf::port*>(pw_filter_add_port(
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_right, nullptr, 0));
