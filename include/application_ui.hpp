@@ -27,7 +27,7 @@
 #include "pipe_manager.hpp"
 #include "presets_menu_ui.hpp"
 #include "spectrum_settings_ui.hpp"
-// #include "stream_output_effects_ui.hpp"
+#include "stream_output_effects_ui.hpp"
 // #include "pipe_info_ui.hpp"
 // #include "stream_input_effects_ui.hpp"
 // #include "blocklist_settings_ui.hpp"
@@ -67,7 +67,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   std::vector<sigc::connection> connections;
 
   PresetsMenuUi* presets_menu_ui = nullptr;
-  // StreamOutputEffectsUi* soe_ui = nullptr;
+  StreamOutputEffectsUi* soe_ui = nullptr;
   // StreamInputEffectsUi* sie_ui = nullptr;
   // PipeInfoUi* pipe_info_ui = nullptr;
   // CalibrationUi* calibration_ui = nullptr;

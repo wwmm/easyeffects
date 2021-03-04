@@ -170,7 +170,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   // show only speaker icon before "Application" label
 
-  app_output_icon->set_visible(true);
+  //   app_output_icon->set_visible(true);
 
   level_meters_connections();
   up_down_connections();
@@ -181,7 +181,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     }
   }
 
-  connections.emplace_back(soe->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  //   connections.emplace_back(soe->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+
   connections.emplace_back(
       soe->pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_added)));
   connections.emplace_back(
@@ -197,11 +198,11 @@ StreamOutputEffectsUi::~StreamOutputEffectsUi() {
 }
 
 auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.ui");
 
   auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
 
-  auto* ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "widgets_box", settings, soe_ptr);
+  auto* ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", settings, soe_ptr);
 
   auto stack_page = stack->add(*ui, "stream_output");
 

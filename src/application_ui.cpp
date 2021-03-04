@@ -53,7 +53,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
-  // soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
+  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
   // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
   // BlocklistSettingsUi::add_to_stack(stack_menu_settings);

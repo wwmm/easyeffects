@@ -32,10 +32,10 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   }
   // loading glade widgets
 
-  stack = builder->get_widget<Gtk::Stack>("stack");
-  listbox = builder->get_widget<Gtk::ListBox>("listbox");
-  apps_box = builder->get_widget<Gtk::Box>("apps_box");
-  placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
+  // stack = builder->get_widget<Gtk::Stack>("stack");
+  // listbox = builder->get_widget<Gtk::ListBox>("listbox");
+  // apps_box = builder->get_widget<Gtk::Box>("apps_box");
+  // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
 
   // auto b_app_button_row =
   // Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_button_row.glade");
@@ -50,13 +50,11 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // spectrum
 
-  spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
+  // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
 
   // plugin rows connections
 
-  listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
-
-  connections.emplace_back(settings->signal_changed("plugins").connect([=](auto key) { listbox->invalidate_sort(); }));
+  // listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -104,12 +102,12 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   // show the grid only if something is playing/recording
 
   if (left <= -100.0 && right <= -100.0) {
-    global_level_meter_grid->set_visible(false);
+    // global_level_meter_grid->set_visible(false);
 
     return;
   }
 
-  global_level_meter_grid->set_visible(true);
+  // global_level_meter_grid->set_visible(true);
 
   global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
 
@@ -118,8 +116,8 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   // saturation icon notification
 
   if (left > 0.0 || right > 0.0) {
-    saturation_icon->set_visible(true);
+    // saturation_icon->set_visible(true);
   } else {
-    saturation_icon->set_visible(false);
+    // saturation_icon->set_visible(false);
   }
 }
