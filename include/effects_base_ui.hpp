@@ -20,14 +20,9 @@
 #ifndef EFFECTS_BASE_UI_HPP
 #define EFFECTS_BASE_UI_HPP
 
-#include <giomm/settings.h>
-#include <gtkmm/box.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/eventbox.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/label.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/stack.h>
+#include <giomm.h>
+#include <glibmm/i18n.h>
+#include <gtkmm.h>
 #include <locale>
 #include <memory>
 #include <mutex>
@@ -35,6 +30,7 @@
 #include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
+#include "plugin_ui_base.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"
 #include "util.hpp"

@@ -18,7 +18,6 @@
  */
 
 #include "app_info_ui.hpp"
-#include <string>
 
 AppInfoUi::AppInfoUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,

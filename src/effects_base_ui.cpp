@@ -18,8 +18,6 @@
  */
 
 #include "effects_base_ui.hpp"
-#include <glibmm/i18n.h>
-#include "plugin_ui_base.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,

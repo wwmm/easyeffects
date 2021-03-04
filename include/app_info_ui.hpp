@@ -21,14 +21,8 @@
 #define APP_INFO_UI_HPP
 
 #include <glibmm/i18n.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/checkbutton.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/image.h>
-#include <gtkmm/label.h>
-#include <gtkmm/scale.h>
-#include <gtkmm/switch.h>
-#include <gtkmm/togglebutton.h>
+#include <gtkmm.h>
+#include <string>
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
