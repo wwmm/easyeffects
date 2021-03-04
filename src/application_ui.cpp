@@ -25,7 +25,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     : Gtk::ApplicationWindow(cobject), app(application), settings(app->settings) {
   apply_css_style("custom.css");
 
-  // Gtk::IconTheme::get_default()->add_resource_path("/com/github/wwmm/pulseeffects/icons");
+  Gtk::IconTheme::get_for_display(Gdk::Display::get_default())
+      ->add_resource_path("/com/github/wwmm/pulseeffects/icons");
 
   // set locale (workaround for #849)
 
@@ -111,20 +112,6 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
 
   Gtk::StyleContext::add_provider_for_display(display, provider, priority);
-}
-
-void ApplicationUi::update_headerbar_subtitle(const int& index) {
-  switch (index) {
-    case 0: {  // soe
-
-      break;
-    }
-    case 1: {  // sie
-    }
-    default:  // pipewire info
-
-      break;
-  }
 }
 
 void ApplicationUi::on_stack_visible_child_changed() {

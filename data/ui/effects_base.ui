@@ -2,7 +2,6 @@
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
         <property name="orientation">vertical</property>
-        <property name="spacing">6</property>
         <child>
             <object class="GtkStack" id="top_stack">
                 <property name="hexpand">1</property>
@@ -14,8 +13,36 @@
                         <property name="name">page_players</property>
                         <property name="title">Players</property>
                         <property name="child">
-                            <object class="GtkLabel">
-                                <property name="label">Streams</property>
+                            <object class="GtkBox">
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">6</property>
+                                <child>
+                                    <object class="GtkMenuButton" id="menubutton_players">
+                                        <property name="margin_top">6</property>
+                                        <property name="tooltip_text" translatable="yes">Settings</property>
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="icon_name">preferences-system-symbolic</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkScrolledWindow">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <child>
+                                            <object class="GtkViewport">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <child>
+                                                    <object class="GtkListView" id="players_listview">
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
                             </object>
                         </property>
                     </object>

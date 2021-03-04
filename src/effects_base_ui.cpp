@@ -37,16 +37,11 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
   sink_state = builder->get_widget<Gtk::Label>("sink_state");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
+  players_listview = builder->get_widget<Gtk::ListView>("players_listview");
 
   // stack = builder->get_widget<Gtk::Stack>("stack");
-  // listbox = builder->get_widget<Gtk::ListBox>("listbox");
   // apps_box = builder->get_widget<Gtk::Box>("apps_box");
   // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
-
-  // b_app_button_row->get_widget("app_button_row", app_button_row);
-  // b_app_button_row->get_widget("app_input_icon", app_input_icon);
-  // b_app_button_row->get_widget("app_output_icon", app_output_icon);
-  // b_app_button_row->get_widget("global_level_meter_grid", global_level_meter_grid);
 
   // spectrum
 
