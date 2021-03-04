@@ -20,11 +20,12 @@
 #ifndef SPECTRUM_UI_HPP
 #define SPECTRUM_UI_HPP
 
-#include <giomm/settings.h>
+#include <giomm.h>
 #include <gtkmm/box.h>
 #include <gtkmm/builder.h>
 #include <gtkmm/drawingarea.h>
 #include <gtkmm/grid.h>
+#include "util.hpp"
 
 class SpectrumUi : public Gtk::Grid {
  public:
@@ -32,7 +33,7 @@ class SpectrumUi : public Gtk::Grid {
   SpectrumUi(const SpectrumUi&) = delete;
   auto operator=(const SpectrumUi&) -> SpectrumUi& = delete;
   SpectrumUi(const SpectrumUi&&) = delete;
-  auto operator=(const SpectrumUi &&) -> SpectrumUi& = delete;
+  auto operator=(const SpectrumUi&&) -> SpectrumUi& = delete;
   ~SpectrumUi() override;
 
   static auto add_to_box(Gtk::Box* box) -> SpectrumUi*;
@@ -60,11 +61,11 @@ class SpectrumUi : public Gtk::Grid {
 
   auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  auto on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool;
+  // auto on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  auto on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool;
+  // auto on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool;
 
-  auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
+  // auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
 
   void init_color();
 

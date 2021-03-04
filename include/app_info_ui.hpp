@@ -26,7 +26,6 @@
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
-#include "util.hpp"
 
 class AppInfoUi : public Gtk::Grid {
  public:
