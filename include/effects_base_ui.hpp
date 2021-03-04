@@ -62,8 +62,7 @@ class EffectsBaseUi {
 
   Gtk::Box *apps_box = nullptr, *app_button_row = nullptr, *global_level_meter_grid = nullptr;
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *sink_format = nullptr,
-             *sink_state = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *sink_state = nullptr;
 
   PipeManager* pm = nullptr;
 

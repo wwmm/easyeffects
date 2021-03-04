@@ -9,73 +9,38 @@
             <!-- headerbar -->
 
             <object class="GtkHeaderBar" id="headerbar">
-                <!-- title -->
 
-                <child type="title">
-                    <object class="GtkGrid">
+                <!-- title and subtitle  -->
+
+                <property name="title-widget">
+                    <object class="GtkBox">
+                        <property name="orientation">vertical</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
+                                <property name="single-line-mode">True</property>
                                 <property name="label" translatable="yes">PulseEffects</property>
                                 <style>
                                     <class name="title" />
                                 </style>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">0</property>
-                                </layout>
                             </object>
                         </child>
                         <child>
-                            <object class="GtkGrid" id="subtitle_grid">
+                            <object class="GtkLabel" id="subtitle">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <child>
-                                    <object class="GtkImage" id="headerbar_icon1">
-                                        <property name="halign">end</property>
-                                        <property name="valign">center</property>
-                                        <property name="icon_name">emblem-music-symbolic</property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkLabel" id="headerbar_info">
-                                        <property name="valign">center</property>
-                                        <property name="label">info</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkImage" id="headerbar_icon2">
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <property name="icon_name">audio-speakers-symbolic</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">1</property>
-                                </layout>
+                                <property name="valign">end</property>
+                                <property name="single-line-mode">True</property>
+                                <property name="label"></property>
                                 <style>
                                     <class name="subtitle" />
                                 </style>
                             </object>
                         </child>
                     </object>
-                </child>
+                </property>
 
                 <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
 
@@ -108,6 +73,17 @@
                     </object>
                 </child>
 
+                <!-- help button -->
+
+                <child>
+                    <object class="GtkButton" id="help_button">
+                        <property name="tooltip_text" translatable="yes">Help</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="icon_name">help-faq-symbolic</property>
+                    </object>
+                </child>
+
                 <!-- button for the settings menu -->
 
                 <child type="end">
@@ -117,17 +93,6 @@
                         <property name="valign">center</property>
                         <property name="icon_name">format-justify-fill-symbolic</property>
                         <property name="popover">settings_menu</property>
-                    </object>
-                </child>
-
-                <!-- help button -->
-
-                <child type="end">
-                    <object class="GtkButton" id="help_button">
-                        <property name="tooltip_text" translatable="yes">Help</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">help-faq-symbolic</property>
                     </object>
                 </child>
 

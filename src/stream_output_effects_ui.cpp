@@ -193,8 +193,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(soe->pm->sink_changed.connect([&](auto nd_info) {
     if (nd_info.id == soe->pm->pe_sink_node.id) {
       sink_state->set_text(node_state_to_string(soe->pm->pe_sink_node.state));
-
-      sink_format->set_text(soe->pm->pe_sink_node.format);
     }
   }));
 }

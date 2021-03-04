@@ -35,7 +35,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
-  sink_format = builder->get_widget<Gtk::Label>("sink_format");
   sink_state = builder->get_widget<Gtk::Label>("sink_state");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
 

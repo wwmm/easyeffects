@@ -55,14 +55,6 @@
                         </style>
                     </object>
                 </child>
-                <child>
-                    <object class="GtkLabel" id="sink_format">
-                        <property name="label"></property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
-                </child>
 
                 <child type="end">
                     <object class="GtkLabel">

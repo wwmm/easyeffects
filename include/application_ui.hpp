@@ -57,12 +57,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Button *calibration_button = nullptr, *help_button = nullptr;
   Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
-  Gtk::Label* headerbar_info = nullptr;
+  Gtk::Label* subtitle = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
 
-  Gtk::Grid* subtitle_grid = nullptr;
   Gtk::HeaderBar* headerbar = nullptr;
-  Gtk::Image *headerbar_icon1 = nullptr, *headerbar_icon2 = nullptr;
 
   std::vector<sigc::connection> connections;
 

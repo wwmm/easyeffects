@@ -41,13 +41,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
-  subtitle_grid = builder->get_widget<Gtk::Grid>("subtitle_grid");
   headerbar = builder->get_widget<Gtk::HeaderBar>("headerbar");
   help_button = builder->get_widget<Gtk::Button>("help_button");
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
-  headerbar_icon1 = builder->get_widget<Gtk::Image>("headerbar_icon1");
-  headerbar_icon2 = builder->get_widget<Gtk::Image>("headerbar_icon2");
-  headerbar_info = builder->get_widget<Gtk::Label>("headerbar_info");
+  subtitle = builder->get_widget<Gtk::Label>("subtitle");
 
   presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -70,51 +67,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
-  connections.emplace_back(app->pm->new_default_source.connect([&](auto name) {
-    if (stack->get_visible_child_name() == "stream_input") {
-      update_headerbar_subtitle(1);
-    }
-  }));
+  // initializing the subtitle
 
-  connections.emplace_back(app->pm->source_changed.connect([&](auto nd_info) {
-    if (stack->get_visible_child_name() == "stream_input") {
-      if (nd_info.id != app->sie->get_input_node_id()) {
-        return;
-      }
-
-      update_headerbar_subtitle(1);
-    }
-  }));
-
-  // headerbar info
-
-  connections.emplace_back(app->soe->new_latency.connect([=](int latency) {
-    soe_latency = latency;
-
-    if (stack->get_visible_child_name() == "stream_output") {
-      update_headerbar_subtitle(0);
-    }
-  }));
-
-  if (app->soe->playing) {
-    app->soe->get_latency();
-  }
-
-  connections.emplace_back(app->sie->new_latency.connect([=](int latency) {
-    sie_latency = latency;
-
-    if (stack->get_visible_child_name() == "stream_input") {
-      update_headerbar_subtitle(1);
-    }
-  }));
-
-  if (app->sie->playing) {
-    app->sie->get_latency();
-  }
-
-  // updating headerbar info
-
-  update_headerbar_subtitle(0);
+  subtitle->set_text(_("stream outputs"));
 
   // binding properties to gsettings keys
 
@@ -159,85 +114,14 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 }
 
 void ApplicationUi::update_headerbar_subtitle(const int& index) {
-  std::ostringstream null_sink_rate;
-  std::ostringstream pipeline_rate;
-  std::ostringstream current_dev_rate;
-
-  const float khz_factor = 0.001F;
-
-  null_sink_rate.imbue(global_locale);
-  null_sink_rate.precision(1);
-
-  pipeline_rate.imbue(global_locale);
-  pipeline_rate.precision(1);
-
-  current_dev_rate.imbue(global_locale);
-  current_dev_rate.precision(1);
-
   switch (index) {
     case 0: {  // soe
-
-      subtitle_grid->show();
-
-      headerbar_icon1->set_from_icon_name("emblem-music-symbolic");
-
-      headerbar_icon2->set_from_icon_name("audio-speakers-symbolic");
-
-      null_sink_rate << std::fixed << app->pm->pe_sink_node.rate * khz_factor << "kHz";
-
-      pipeline_rate << std::fixed << app->soe->sampling_rate * khz_factor << "kHz";
-
-      std::string current_device_format;
-
-      for (const auto& node : app->pm->list_nodes) {
-        if (node.id == app->soe->get_output_node_id()) {
-          current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
-
-          current_device_format = node.format;
-
-          break;
-        }
-      }
-
-      headerbar_info->set_text(" ⟶ " + app->pm->pe_sink_node.format + " " + null_sink_rate.str() + " ⟶ F32LE " +
-                               pipeline_rate.str() + " ⟶ " + current_device_format + " " + current_dev_rate.str() +
-                               " ⟶ " + std::to_string(soe_latency) + "ms ⟶ ");
 
       break;
     }
     case 1: {  // sie
-
-      subtitle_grid->show();
-
-      headerbar_icon1->set_from_icon_name("audio-input-microphone-symbolic");
-
-      headerbar_icon2->set_from_icon_name("emblem-music-symbolic");
-
-      null_sink_rate << std::fixed << app->pm->pe_source_node.rate * khz_factor << "kHz";
-
-      pipeline_rate << std::fixed << app->sie->sampling_rate * khz_factor << "kHz";
-
-      std::string current_device_format;
-
-      for (const auto& node : app->pm->list_nodes) {
-        if (node.id == app->sie->get_input_node_id()) {
-          current_dev_rate << std::fixed << node.rate * khz_factor << "kHz";
-
-          current_device_format = node.format;
-
-          break;
-        }
-      }
-
-      headerbar_info->set_text(" ⟶ " + current_device_format + " " + current_dev_rate.str() + " ⟶ F32LE " +
-                               pipeline_rate.str() + " ⟶ " + app->pm->pe_source_node.format + " " +
-                               null_sink_rate.str() + " ⟶ " + std::to_string(sie_latency) + "ms ⟶ ");
-
-      break;
     }
-    default:  // pulse info
-
-      subtitle_grid->hide();
+    default:  // pipewire info
 
       break;
   }
@@ -247,11 +131,11 @@ void ApplicationUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
   if (name == "stream_output") {
-    update_headerbar_subtitle(0);
+    subtitle->set_text(_("stream outputs"));
   } else if (name == "stream_input") {
-    update_headerbar_subtitle(1);
+    subtitle->set_text(_("stream inputs"));
   } else if (name == "pipe_info") {
-    update_headerbar_subtitle(2);
+    subtitle->set_text(_("server"));
   }
 }
 
