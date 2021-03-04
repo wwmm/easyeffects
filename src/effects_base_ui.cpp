@@ -30,7 +30,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   } catch (const std::exception& e) {
     global_locale = std::locale();
   }
-  // loading glade widgets
+
+  // loading builder widgets
 
   // stack = builder->get_widget<Gtk::Stack>("stack");
   // listbox = builder->get_widget<Gtk::ListBox>("listbox");

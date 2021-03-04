@@ -2,5 +2,50 @@
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
         <property name="orientation">vertical</property>
+        <property name="spacing">6</property>
+        <child>
+            <object class="GtkStack" id="top_stack">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <property name="transition_duration">250</property>
+                <property name="transition_type">slide-left-right</property>
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_players</property>
+                        <property name="title">Players</property>
+                        <property name="child">
+                            <object class="GtkLabel">
+                                <property name="label">Streams</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_plugins</property>
+                        <property name="title">Plugins</property>
+                        <property name="child">
+                            <object class="GtkLabel">
+                                <property name="label">plugins</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkHeaderBar">
+                <property name="show_title_buttons">0</property>
+                <property name="title-widget">
+                    <object class="GtkStackSwitcher">
+                        <property name="halign">center</property>
+                        <property name="valign">end</property>
+                        <property name="stack">top_stack</property>
+                    </object>
+                </property>
+            </object>
+        </child>
     </object>
 </interface>
