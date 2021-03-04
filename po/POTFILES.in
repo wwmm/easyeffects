@@ -2,7 +2,6 @@ data/com.github.wwmm.pulseeffects.appdata.xml.in
 data/com.github.wwmm.pulseeffects.desktop.in
 data/schemas/com.github.wwmm.pulseeffects.gschema.xml
 data/ui/about.glade.in
-data/ui/app_button_row.glade
 data/ui/app_info.glade
 data/ui/application_window.ui
 data/ui/autogain.glade

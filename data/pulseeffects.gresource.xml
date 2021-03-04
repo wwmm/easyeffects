@@ -4,7 +4,6 @@
         <file>about.glade</file>
         <file>ui/custom.css</file>
         <file>ui/application_window.ui</file>
-        <file>ui/app_button_row.glade</file>
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.ui</file>
         <file>ui/pipe_settings.glade</file>
