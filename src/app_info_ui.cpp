@@ -32,19 +32,19 @@ AppInfoUi::AppInfoUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("enable", enable);
-  builder->get_widget("app_icon", app_icon);
-  builder->get_widget("app_name", app_name);
-  builder->get_widget("media_name", media_name);
-  builder->get_widget("volume", volume);
-  builder->get_widget("mute", mute);
-  builder->get_widget("blocklist", blocklist);
-  builder->get_widget("mute_icon", mute_icon);
-  builder->get_widget("format", format);
-  builder->get_widget("rate", rate);
-  builder->get_widget("channels", channels);
-  builder->get_widget("latency", latency);
-  builder->get_widget("state", state);
+  enable = builder->get_widget<Gtk::Switch>("enable");
+  app_icon = builder->get_widget<Gtk::Image>("app_icon");
+  app_name = builder->get_widget<Gtk::Label>("app_name");
+  media_name = builder->get_widget<Gtk::Label>("media_name");
+  volume = builder->get_widget<Gtk::Scale>("volume");
+  mute = builder->get_widget<Gtk::ToggleButton>("mute");
+  blocklist = builder->get_widget<Gtk::CheckButton>("blocklist");
+  mute_icon = builder->get_widget<Gtk::Image>("mute_icon");
+  format = builder->get_widget<Gtk::Label>("format");
+  rate = builder->get_widget<Gtk::Label>("rate");
+  channels = builder->get_widget<Gtk::Label>("channels");
+  latency = builder->get_widget<Gtk::Label>("latency");
+  state = builder->get_widget<Gtk::Label>("state");
 
   is_blocklisted = BlocklistSettingsUi::app_is_blocklisted(
       nd_info.name, (nd_info.media_class == "Stream/Output/Audio") ? PresetType::output : PresetType::input);
@@ -84,9 +84,9 @@ void AppInfoUi::init_widgets() {
   blocklist->set_active(is_blocklisted);
 
   if (!nd_info.icon_name.empty()) {
-    app_icon->set_from_icon_name(nd_info.icon_name, Gtk::ICON_SIZE_BUTTON);
+    app_icon->set_from_icon_name(nd_info.icon_name);
   } else {
-    app_icon->set_from_icon_name(nd_info.name, Gtk::ICON_SIZE_BUTTON);
+    app_icon->set_from_icon_name(nd_info.name);
   }
 
   app_name->set_text(nd_info.name);
@@ -141,11 +141,11 @@ void AppInfoUi::init_widgets() {
 
 void AppInfoUi::init_mute_widgets(const bool& state) const {
   if (state) {
-    mute_icon->set_from_icon_name("audio-volume-muted-symbolic", Gtk::ICON_SIZE_BUTTON);
+    mute_icon->set_from_icon_name("audio-volume-muted-symbolic");
 
     volume->set_sensitive(false);
   } else {
-    mute_icon->set_from_icon_name("audio-volume-high-symbolic", Gtk::ICON_SIZE_BUTTON);
+    mute_icon->set_from_icon_name("audio-volume-high-symbolic");
 
     volume->set_sensitive(true);
   }
@@ -158,7 +158,7 @@ void AppInfoUi::connect_signals() {
 
   mute_connection = mute->signal_toggled().connect(sigc::mem_fun(*this, &AppInfoUi::on_mute));
 
-  blocklist_connection = blocklist->signal_clicked().connect([=]() {
+  blocklist_connection = blocklist->signal_toggled().connect([=]() {
     PresetType preset_type = (nd_info.media_class == "Stream/Output/Audio") ? PresetType::output : PresetType::input;
 
     if (blocklist->get_active()) {
