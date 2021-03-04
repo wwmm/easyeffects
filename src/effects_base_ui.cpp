@@ -33,21 +33,19 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // loading builder widgets
 
+  global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
+  global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
+  saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
+
   // stack = builder->get_widget<Gtk::Stack>("stack");
   // listbox = builder->get_widget<Gtk::ListBox>("listbox");
   // apps_box = builder->get_widget<Gtk::Box>("apps_box");
   // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
 
-  // auto b_app_button_row =
-  // Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_button_row.glade");
-
   // b_app_button_row->get_widget("app_button_row", app_button_row);
   // b_app_button_row->get_widget("app_input_icon", app_input_icon);
   // b_app_button_row->get_widget("app_output_icon", app_output_icon);
   // b_app_button_row->get_widget("global_level_meter_grid", global_level_meter_grid);
-  // b_app_button_row->get_widget("global_output_level_left", global_output_level_left);
-  // b_app_button_row->get_widget("global_output_level_right", global_output_level_right);
-  // b_app_button_row->get_widget("saturation_icon", saturation_icon);
 
   // spectrum
 
@@ -100,14 +98,6 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   auto left = peak[0];
   auto right = peak[1];
 
-  // show the grid only if something is playing/recording
-
-  if (left <= -100.0 && right <= -100.0) {
-    // global_level_meter_grid->set_visible(false);
-
-    return;
-  }
-
   // global_level_meter_grid->set_visible(true);
 
   global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
@@ -117,8 +107,8 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   // saturation icon notification
 
   if (left > 0.0 || right > 0.0) {
-    // saturation_icon->set_visible(true);
+    saturation_icon->set_visible(true);
   } else {
-    // saturation_icon->set_visible(false);
+    saturation_icon->set_visible(false);
   }
 }

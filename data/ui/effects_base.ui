@@ -38,6 +38,7 @@
         <child>
             <object class="GtkHeaderBar">
                 <property name="show_title_buttons">0</property>
+
                 <property name="title-widget">
                     <object class="GtkStackSwitcher">
                         <property name="halign">center</property>
@@ -45,6 +46,45 @@
                         <property name="stack">top_stack</property>
                     </object>
                 </property>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="label">48 kHz</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+
+                <child type="end">
+                    <object class="GtkLabel">
+                        <property name="label">dB</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkLabel" id="global_output_level_right">
+                        <property name="label">0</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkLabel" id="global_output_level_left">
+                        <property name="label">0</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+                <child type="end">
+                    <object class="GtkImage" id="saturation_icon">
+                        <property name="icon_name">dialog-warning-symbolic</property>
+                    </object>
+                </child>
             </object>
         </child>
     </object>
