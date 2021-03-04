@@ -35,6 +35,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
+  sink_format = builder->get_widget<Gtk::Label>("sink_format");
+  sink_state = builder->get_widget<Gtk::Label>("sink_state");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
 
   // stack = builder->get_widget<Gtk::Stack>("stack");
@@ -110,5 +112,22 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
     saturation_icon->set_visible(true);
   } else {
     saturation_icon->set_visible(false);
+  }
+}
+
+auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::string {
+  switch (state) {
+    case PW_NODE_STATE_RUNNING:
+      return _("running");
+    case PW_NODE_STATE_SUSPENDED:
+      return _("suspended");
+    case PW_NODE_STATE_IDLE:
+      return _("idle");
+    case PW_NODE_STATE_CREATING:
+      return _("creating");
+    case PW_NODE_STATE_ERROR:
+      return _("error");
+    default:
+      return "";
   }
 }

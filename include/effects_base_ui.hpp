@@ -62,7 +62,8 @@ class EffectsBaseUi {
 
   Gtk::Box *apps_box = nullptr, *app_button_row = nullptr, *global_level_meter_grid = nullptr;
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *sink_format = nullptr,
+             *sink_state = nullptr;
 
   PipeManager* pm = nullptr;
 
@@ -73,10 +74,12 @@ class EffectsBaseUi {
 
   SpectrumUi* spectrum_ui = nullptr;
 
+  std::locale global_locale;
+
+  auto node_state_to_string(const pw_node_state& state) -> std::string;
+
  private:
   Gtk::Box* placeholder_spectrum = nullptr;
-
-  std::locale global_locale;
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {

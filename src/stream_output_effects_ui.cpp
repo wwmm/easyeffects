@@ -189,6 +189,14 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
       soe->pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_changed)));
   connections.emplace_back(
       soe->pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_removed)));
+
+  connections.emplace_back(soe->pm->sink_changed.connect([&](auto nd_info) {
+    if (nd_info.id == soe->pm->pe_sink_node.id) {
+      sink_state->set_text(node_state_to_string(soe->pm->pe_sink_node.state));
+
+      sink_format->set_text(soe->pm->pe_sink_node.format);
+    }
+  }));
 }
 
 StreamOutputEffectsUi::~StreamOutputEffectsUi() {
@@ -238,13 +246,13 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
     node_info.visible_to_user = true;
   }
 
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
+  // auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
 
-  auto* appui = Gtk::Builder::get_widget_derived<AppInfoUi>(builder, "widgets_grid", node_info, pm);
+  // auto* appui = Gtk::Builder::get_widget_derived<AppInfoUi>(builder, "widgets_grid", node_info, pm);
 
-  apps_box->append(*appui);
+  // apps_box->append(*appui);
 
-  apps_list.emplace_back(appui);
+  // apps_list.emplace_back(appui);
 }
 
 void StreamOutputEffectsUi::level_meters_connections() {

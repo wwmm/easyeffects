@@ -70,25 +70,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
-  connections.emplace_back(app->pm->new_default_sink.connect([&](auto name) {
-    if (stack->get_visible_child_name() == "stream_output") {
-      update_headerbar_subtitle(0);
-    }
-  }));
-
   connections.emplace_back(app->pm->new_default_source.connect([&](auto name) {
     if (stack->get_visible_child_name() == "stream_input") {
       update_headerbar_subtitle(1);
-    }
-  }));
-
-  connections.emplace_back(app->pm->sink_changed.connect([&](auto nd_info) {
-    if (stack->get_visible_child_name() == "stream_output") {
-      if (nd_info.id != app->soe->get_output_node_id()) {
-        return;
-      }
-
-      update_headerbar_subtitle(0);
     }
   }));
 

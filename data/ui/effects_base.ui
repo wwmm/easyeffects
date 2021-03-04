@@ -48,8 +48,16 @@
                 </property>
 
                 <child>
-                    <object class="GtkLabel">
-                        <property name="label">48 kHz</property>
+                    <object class="GtkLabel" id="sink_state">
+                        <property name="label"></property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="sink_format">
+                        <property name="label"></property>
                         <style>
                             <class name="dim-label" />
                         </style>
@@ -82,6 +90,7 @@
                 </child>
                 <child type="end">
                     <object class="GtkImage" id="saturation_icon">
+                        <property name="visible">0</property>
                         <property name="icon_name">dialog-warning-symbolic</property>
                     </object>
                 </child>

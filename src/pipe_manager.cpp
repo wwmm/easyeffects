@@ -265,10 +265,10 @@ void on_node_event_param(void* object,
 
           break;
         }
-        case SPA_FORMAT_AUDIO_rate: {
-          int rate = -1;
+        case SPA_PROP_rate: {
+          double rate = 1;
 
-          if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
+          if (spa_pod_get_double(&pod_prop->value, &rate) == 0) {
             for (auto& node : nd->pm->list_nodes) {
               if (node.id == nd->nd_info.id) {
                 node.rate = rate;
