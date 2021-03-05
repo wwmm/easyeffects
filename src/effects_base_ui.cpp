@@ -19,6 +19,12 @@
 
 #include "effects_base_ui.hpp"
 
+NodeInfoHolder::NodeInfoHolder(NodeInfo info) : info(std::move(info)) {}
+
+auto NodeInfoHolder::create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder> {
+  return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(std::move(info)));
+}
+
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              PipeManager* pipe_manager)
@@ -37,25 +43,34 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
   sink_state = builder->get_widget<Gtk::Label>("sink_state");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
-  players_listview = builder->get_widget<Gtk::ListView>("players_listview");
+  listview_players = builder->get_widget<Gtk::ListView>("listview_players");
+
+  // configuring widgets
+
+  setup_listview_players();
 
   // stack = builder->get_widget<Gtk::Stack>("stack");
-  // apps_box = builder->get_widget<Gtk::Box>("apps_box");
   // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
 
   // spectrum
 
   // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
-
-  // plugin rows connections
-
-  // listbox->signal_row_activated().connect([&](auto row) { stack->set_visible_child(row->get_name()); });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
+}
+
+void EffectsBaseUi::setup_listview_players() {
+  // setting the listview model and factory
+
+  listview_players->set_model(Gtk::NoSelection::create(Gio::ListStore<NodeInfoHolder>::create()));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_players->set_factory(factory);
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
@@ -80,8 +95,6 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
 
     if (apps_list[n]->nd_info.id == node_info.id) {
       auto* appui = apps_list[n];
-
-      apps_box->remove(*appui);
 
       apps_list.erase(it);
 

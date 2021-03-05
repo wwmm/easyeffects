@@ -35,6 +35,16 @@
 #include "spectrum_ui.hpp"
 #include "util.hpp"
 
+class NodeInfoHolder : public Glib::Object {
+ public:
+  NodeInfo info;
+
+  static auto create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder>;
+
+ protected:
+  NodeInfoHolder(NodeInfo info);
+};
+
 class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
@@ -58,9 +68,8 @@ class EffectsBaseUi {
  protected:
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::ListView* players_listview = nullptr;
+  Gtk::ListView* listview_players = nullptr;
   Gtk::Stack* stack = nullptr;
-  Gtk::Box *apps_box = nullptr, *app_button_row = nullptr, *global_level_meter_grid = nullptr;
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *sink_state = nullptr;
 
@@ -91,6 +100,8 @@ class EffectsBaseUi {
 
     return msg.str();
   }
+
+  void setup_listview_players();
 };
 
 #endif
