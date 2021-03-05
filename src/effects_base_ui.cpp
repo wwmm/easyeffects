@@ -71,11 +71,23 @@ void EffectsBaseUi::setup_listview_players() {
   auto factory = Gtk::SignalListItemFactory::create();
 
   listview_players->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    // auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.ui");
+
+    // auto* appui = Gtk::Builder::get_widget_derived<AppInfoUi>(builder, "widgets_grid", node_info, pm);
+
+    // list_item->set_child(*appui);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
-  std::lock_guard<std::mutex> lock(apps_list_lock_guard);
-
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 
@@ -88,8 +100,6 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
-  std::lock_guard<std::mutex> lock(apps_list_lock_guard);
-
   for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
     auto n = it - apps_list.begin();
 

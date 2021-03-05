@@ -26,7 +26,6 @@
 #include <gtkmm.h>
 #include <locale>
 #include <memory>
-#include <mutex>
 #include <vector>
 #include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
@@ -76,9 +75,10 @@ class EffectsBaseUi {
   PipeManager* pm = nullptr;
 
   std::vector<AppInfoUi*> apps_list;
-  std::vector<sigc::connection> connections;
 
-  std::mutex apps_list_lock_guard;
+  Glib::RefPtr<NodeInfoHolder> players_model;
+
+  std::vector<sigc::connection> connections;
 
   SpectrumUi* spectrum_ui = nullptr;
 
