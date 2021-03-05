@@ -104,6 +104,10 @@
                                                                     <object class="GtkListView" id="output_listview">
                                                                         <property name="hexpand">1</property>
                                                                         <property name="vexpand">1</property>
+                                                                        <property name="show-separators">1</property>
+                                                                        <style>
+                                                                            <class name="rich-list" />
+                                                                        </style>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -216,6 +220,10 @@
                                                                     <object class="GtkListView" id="input_listview">
                                                                         <property name="hexpand">1</property>
                                                                         <property name="vexpand">1</property>
+                                                                        <property name="show-separators">1</property>
+                                                                        <style>
+                                                                            <class name="rich-list" />
+                                                                        </style>
                                                                     </object>
                                                                 </child>
                                                             </object>

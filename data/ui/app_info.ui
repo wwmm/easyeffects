@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="hexpand">1</property>
+        <property name="vexpand">1</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
+        <property name="spacing">6</property>
+        <property name="orientation">vertical</property>
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkSwitch" id="enable">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkImage" id="saturation_icon">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="visible">0</property>
+                        <property name="icon_name">image-missing</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="spacing">6</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkLabel" id="app_name">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="label">App</property>
+                                <style>
+                                    <class name="title" />
+                                </style>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkLabel" id="media_name">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="label">Description</property>
+                                <style>
+                                    <class name="subtitle" />
+                                </style>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkCheckButton" id="blocklist">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Add to Blocklist</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row-spacing">4</property>
+                <property name="column-spacing">12</property>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Format</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="format">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label">f</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Rate</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="rate">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label">r</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Channels</property>
+                        <layout>
+                            <property name="column">2</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="channels">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label">c</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">2</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Latency</property>
+                        <layout>
+                            <property name="column">3</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="latency">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label">l</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">3</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">State</property>
+                        <layout>
+                            <property name="column">4</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="state">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label">s</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">4</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

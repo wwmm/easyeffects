@@ -10,7 +10,7 @@
         <file>ui/blocklist_settings.glade</file>
         <file>ui/general_settings.ui</file>
         <file>ui/effects_base.ui</file>
-        <file>ui/app_info.glade</file>
+        <file>ui/app_info.ui</file>
         <file>ui/pipe_info.glade</file>
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
