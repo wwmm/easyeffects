@@ -232,7 +232,6 @@
                         <property name="round-digits">0</property>
                         <property name="digits">0</property>
                         <property name="value-pos">right</property>
-                        <property name="icon_name">audio-volume-high-symbolic</property>
                     </object>
                 </child>
 
