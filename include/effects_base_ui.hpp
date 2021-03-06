@@ -39,10 +39,10 @@ class NodeInfoHolder : public Glib::Object {
   uint id;
   Glib::ustring name;
 
-  static auto create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder>;
+  static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
 
  protected:
-  NodeInfoHolder(NodeInfo info);
+  NodeInfoHolder(const NodeInfo& info);
 };
 
 class EffectsBaseUi {

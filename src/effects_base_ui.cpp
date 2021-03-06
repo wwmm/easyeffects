@@ -19,11 +19,9 @@
 
 #include "effects_base_ui.hpp"
 
-NodeInfoHolder::NodeInfoHolder(NodeInfo info) : id(info.id), name(info.name) {
-  // util::warning(name);
-}
+NodeInfoHolder::NodeInfoHolder(const NodeInfo& info) : id(info.id), name(info.name) {}
 
-auto NodeInfoHolder::create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder> {
+auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder> {
   return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(info));
 }
 
@@ -80,6 +78,19 @@ void EffectsBaseUi::setup_listview_players() {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
+
+    list_item->set_data("enable", b->get_widget<Gtk::Switch>("enable"));
+    list_item->set_data("app_name", b->get_widget<Gtk::Label>("app_name"));
+    list_item->set_data("media_name", b->get_widget<Gtk::Label>("media_name"));
+    list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
+    list_item->set_data("format", b->get_widget<Gtk::Label>("format"));
+    list_item->set_data("rate", b->get_widget<Gtk::Label>("rate"));
+    list_item->set_data("channels", b->get_widget<Gtk::Label>("channels"));
+    list_item->set_data("latency", b->get_widget<Gtk::Label>("latency"));
+    list_item->set_data("state", b->get_widget<Gtk::Label>("state"));
+    list_item->set_data("mute", b->get_widget<Gtk::ToggleButton>("mute"));
+    list_item->set_data("scale_volume", b->get_widget<Gtk::Scale>("scale_volume"));
+    list_item->set_data("volume", b->get_object<Gtk::Adjustment>("volume").get());
 
     list_item->set_child(*top_box);
   });

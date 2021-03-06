@@ -24,7 +24,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkImage" id="saturation_icon">
+                    <object class="GtkImage">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="visible">0</property>
@@ -227,7 +227,6 @@
                 <child>
                     <object class="GtkScale" id="scale_volume">
                         <property name="hexpand">1</property>
-                        <!-- <property name="halign">start</property> -->
                         <property name="valign">center</property>
                         <property name="adjustment">volume</property>
                         <property name="round-digits">0</property>
