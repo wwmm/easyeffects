@@ -36,7 +36,8 @@
 
 class NodeInfoHolder : public Glib::Object {
  public:
-  NodeInfo info;
+  uint id;
+  Glib::ustring name;
 
   static auto create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder>;
 
@@ -76,7 +77,9 @@ class EffectsBaseUi {
 
   std::vector<AppInfoUi*> apps_list;
 
-  Glib::RefPtr<NodeInfoHolder> players_model;
+  Glib::RefPtr<NodeInfoHolder> players_holder;
+
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model;
 
   std::vector<sigc::connection> connections;
 

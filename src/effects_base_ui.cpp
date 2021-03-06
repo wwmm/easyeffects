@@ -19,16 +19,18 @@
 
 #include "effects_base_ui.hpp"
 
-NodeInfoHolder::NodeInfoHolder(NodeInfo info) : info(std::move(info)) {}
+NodeInfoHolder::NodeInfoHolder(NodeInfo info) : id(info.id), name(info.name) {
+  // util::warning(name);
+}
 
 auto NodeInfoHolder::create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder> {
-  return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(std::move(info)));
+  return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(info));
 }
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              PipeManager* pipe_manager)
-    : settings(std::move(refSettings)), pm(pipe_manager) {
+    : settings(std::move(refSettings)), pm(pipe_manager), players_model(Gio::ListStore<NodeInfoHolder>::create()) {
   // set locale (workaround for #849)
 
   try {
@@ -66,7 +68,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 void EffectsBaseUi::setup_listview_players() {
   // setting the listview model and factory
 
-  listview_players->set_model(Gtk::NoSelection::create(Gio::ListStore<NodeInfoHolder>::create()));
+  listview_players->set_model(Gtk::NoSelection::create(players_model));
 
   auto factory = Gtk::SignalListItemFactory::create();
 
@@ -75,16 +77,20 @@ void EffectsBaseUi::setup_listview_players() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    // auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.ui");
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.ui");
 
-    // auto* appui = Gtk::Builder::get_widget_derived<AppInfoUi>(builder, "widgets_grid", node_info, pm);
+    auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
-    // list_item->set_child(*appui);
+    list_item->set_child(*top_box);
   });
 
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+    util::warning(holder->name);
+  });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) { util::warning("unbind"); });
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
@@ -100,13 +106,11 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
-  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-    auto n = it - apps_list.begin();
+  for (guint n = 0; n < players_model->get_n_items(); n++) {
+    auto item = players_model->get_item(n);
 
-    if (apps_list[n]->nd_info.id == node_info.id) {
-      auto* appui = apps_list[n];
-
-      apps_list.erase(it);
+    if (item->id == node_info.id) {
+      players_model->remove(n);
 
       break;
     }

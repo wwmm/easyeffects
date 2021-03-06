@@ -220,10 +220,10 @@ auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects*
 void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
   // do not add the same stream twice
 
-  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-    auto n = it - apps_list.begin();
+  for (guint n = 0; n < players_model->get_n_items(); n++) {
+    auto item = players_model->get_item(n);
 
-    if (apps_list[n]->nd_info.id == node_info.id) {
+    if (item->id == node_info.id) {
       return;
     }
   }
@@ -249,6 +249,8 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
   // apps_box->append(*appui);
 
   // apps_list.emplace_back(appui);
+
+  players_model->append(NodeInfoHolder::create(node_info));
 }
 
 void StreamOutputEffectsUi::level_meters_connections() {

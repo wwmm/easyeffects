@@ -213,7 +213,7 @@
 
         <child>
             <object class="GtkBox">
-                <property name="hexpand">0</property>
+                <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
                 <property name="spacing">6</property>
                 <child>
@@ -226,7 +226,8 @@
 
                 <child>
                     <object class="GtkScale" id="scale_volume">
-                        <property name="halign">start</property>
+                        <property name="hexpand">1</property>
+                        <!-- <property name="halign">start</property> -->
                         <property name="valign">center</property>
                         <property name="adjustment">volume</property>
                         <property name="round-digits">0</property>
@@ -250,6 +251,7 @@
     </object>
 
     <object class="GtkAdjustment" id="volume">
+        <property name="lower">0</property>
         <property name="upper">100</property>
         <property name="step-increment">1</property>
         <property name="page-increment">5</property>
