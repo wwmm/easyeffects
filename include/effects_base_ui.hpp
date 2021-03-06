@@ -39,6 +39,8 @@ class NodeInfoHolder : public Glib::Object {
   uint id;
   Glib::ustring name;
 
+  Glib::Property<Glib::ustring> property_name;
+
   static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
 
  protected:

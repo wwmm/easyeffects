@@ -19,7 +19,12 @@
 
 #include "effects_base_ui.hpp"
 
-NodeInfoHolder::NodeInfoHolder(const NodeInfo& info) : id(info.id), name(info.name) {}
+NodeInfoHolder::NodeInfoHolder(const NodeInfo& info)
+    : Glib::ObjectBase(typeid(NodeInfoHolder)),
+      Glib::Object(),
+      id(info.id),
+      name(info.name),
+      property_name(*this, "name", "teste") {}
 
 auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder> {
   return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(info));
@@ -96,20 +101,35 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
+
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    util::warning(holder->name);
+    auto binding_app_name = Glib::Binding::bind_property_value(
+        holder->property_name.get_proxy(), app_name->property_label(), Glib::Binding::Flags::SYNC_CREATE);
+
+    list_item->set_data("binding_app_name", binding_app_name.get());
   });
 
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) { util::warning("unbind"); });
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    for (const auto* binding : {"binding_app_name"}) {
+      if (auto* b = static_cast<Glib::Binding*>(list_item->get_data(binding))) {
+        b->unbind();
+
+        list_item->set_data(binding, nullptr);
+      }
+    }
+  });
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
-  for (auto it = apps_list.begin(); it != apps_list.end(); it++) {
-    auto n = it - apps_list.begin();
+  for (guint n = 0; n < players_model->get_n_items(); n++) {
+    auto* item = players_model->get_item(n).get();
 
-    if (apps_list[n]->nd_info.id == node_info.id) {
-      apps_list[n]->update(node_info);
+    if (item->id == node_info.id) {
+      // players_model->set_data(NodeInfoHolder::create(node_info));
+
+      item->property_name.set_value(node_info.name);
 
       break;
     }

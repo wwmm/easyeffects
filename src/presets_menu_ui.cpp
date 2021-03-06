@@ -340,7 +340,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
-        list_item->set_data("connection", nullptr);
+        list_item->set_data(conn, nullptr);
       }
     }
   });
