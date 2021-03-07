@@ -147,7 +147,13 @@ void EffectsBaseUi::setup_listview_players() {
       } else if (!i.media_icon_name.empty()) {
         app_icon->set_from_icon_name(i.media_icon_name);
       } else {
-        app_icon->set_from_icon_name(i.name);
+        auto str = i.name;
+
+        // We need this to make Firefox icon visible =/
+
+        std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+
+        app_icon->set_from_icon_name(str);
       }
 
       switch (i.state) {

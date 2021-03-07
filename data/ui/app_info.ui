@@ -44,9 +44,6 @@
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
                                 <property name="label">App</property>
-                                <style>
-                                    <class name="title" />
-                                </style>
                             </object>
                         </child>
                         <child>
