@@ -112,6 +112,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
     auto* app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
     auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
+    auto* volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -134,7 +135,11 @@ void EffectsBaseUi::setup_listview_players() {
         },
         false);
 
+    auto connection_volume = volume->signal_value_changed().connect(
+        [=]() { PipeManager::set_node_volume(holder->info, static_cast<float>(volume->get_value()) / 100.0F); });
+
     auto* pointer_connection_enable = new sigc::connection(connection_enable);
+    auto* pointer_connection_volume = new sigc::connection(connection_volume);
 
     auto connection_info = holder->info_updated.connect([=](const NodeInfo& i) {
       app_name->set_text(i.name);
@@ -183,6 +188,8 @@ void EffectsBaseUi::setup_listview_players() {
           break;
       }
 
+      // initializing the switch
+
       pointer_connection_enable->block();
 
       bool is_enabled = false;
@@ -212,6 +219,16 @@ void EffectsBaseUi::setup_listview_players() {
       // blocklist->set_active(is_blocklisted);
 
       pointer_connection_enable->unblock();
+
+      // initializing the volume slide
+
+      pointer_connection_volume->block();
+
+      volume->set_value(100 * holder->info.volume);
+
+      pointer_connection_volume->unblock();
+
+      // initializing the mute button
     });
 
     scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
@@ -220,12 +237,14 @@ void EffectsBaseUi::setup_listview_players() {
 
     list_item->set_data("connection_enable", pointer_connection_enable, Glib::destroy_notify_delete<sigc::connection>);
 
+    list_item->set_data("connection_volume", pointer_connection_volume, Glib::destroy_notify_delete<sigc::connection>);
+
     list_item->set_data("connection_info", new sigc::connection(connection_info),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_enable", "connection_info"}) {
+    for (const auto* conn : {"connection_enable", "connection_volume", "connection_info"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
