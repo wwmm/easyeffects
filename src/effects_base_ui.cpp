@@ -166,6 +166,32 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_enable->block();
 
+      bool is_enabled = false;
+
+      if (holder->info.media_class == "Stream/Output/Audio") {
+        for (const auto& link : pm->list_links) {
+          if (link.output_node_id == holder->info.id && link.input_node_id == pm->pe_sink_node.id) {
+            is_enabled = true;
+
+            break;
+          }
+        }
+      } else if (holder->info.media_class == "Stream/Input/Audio") {
+        for (const auto& link : pm->list_links) {
+          if (link.output_node_id == pm->pe_source_node.id && link.input_node_id == holder->info.id) {
+            is_enabled = true;
+
+            break;
+          }
+        }
+      }
+
+      enable->set_active(is_enabled);
+      // enable->set_active(is_enabled && !is_blocklisted);
+      // enable->set_sensitive(!is_blocklisted);
+
+      // blocklist->set_active(is_blocklisted);
+
       pointer_connection_enable->unblock();
     });
 
