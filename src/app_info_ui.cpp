@@ -111,7 +111,7 @@ void AppInfoUi::init_widgets() {
 
   channels->set_text(std::to_string(nd_info.n_volume_channels));
 
-  latency->set_text(float_to_localized_string(nd_info.latency, 2) + " ms");
+  latency->set_text(float_to_localized_string(nd_info.latency, 2) + " s");
 
   switch (nd_info.state) {
     case PW_NODE_STATE_RUNNING:

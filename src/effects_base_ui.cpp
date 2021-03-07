@@ -19,12 +19,10 @@
 
 #include "effects_base_ui.hpp"
 
-NodeInfoHolder::NodeInfoHolder(const NodeInfo& info)
-    : Glib::ObjectBase(typeid(NodeInfoHolder)),
-      Glib::Object(),
-      id(info.id),
-      name(info.name),
-      property_name(*this, "name", "teste") {}
+#include <utility>
+
+NodeInfoHolder::NodeInfoHolder(NodeInfo info)
+    : Glib::ObjectBase(typeid(NodeInfoHolder)), Glib::Object(), info(std::move(info)) {}
 
 auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder> {
   return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(info));
@@ -102,21 +100,61 @@ void EffectsBaseUi::setup_listview_players() {
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
+    auto* media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
+    auto* format = static_cast<Gtk::Label*>(list_item->get_data("format"));
+    auto* rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
+    auto* channels = static_cast<Gtk::Label*>(list_item->get_data("channels"));
+    auto* latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
+    auto* state = static_cast<Gtk::Label*>(list_item->get_data("state"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    auto binding_app_name = Glib::Binding::bind_property_value(
-        holder->property_name.get_proxy(), app_name->property_label(), Glib::Binding::Flags::SYNC_CREATE);
+    auto connection_info = holder->info_updated.connect([=](const NodeInfo& i) {
+      app_name->set_text(i.name);
+      media_name->set_text(i.media_name);
+      format->set_text(i.format);
+      rate->set_text(std::to_string(i.rate) + " Hz");
+      channels->set_text(std::to_string(i.n_volume_channels));
+      latency->set_text(float_to_localized_string(i.latency, 2) + " ms");
 
-    list_item->set_data("binding_app_name", binding_app_name.get());
+      switch (i.state) {
+        case PW_NODE_STATE_RUNNING:
+          state->set_text(_("running"));
+
+          break;
+        case PW_NODE_STATE_SUSPENDED:
+          state->set_text(_("suspended"));
+
+          break;
+        case PW_NODE_STATE_IDLE:
+          state->set_text(_("idle"));
+
+          break;
+        case PW_NODE_STATE_CREATING:
+          state->set_text(_("creating"));
+
+          break;
+        case PW_NODE_STATE_ERROR:
+          state->set_text(_("error"));
+
+          break;
+        default:
+          break;
+      }
+    });
+
+    holder->info_updated.emit(holder->info);
+
+    list_item->set_data("connection_info", new sigc::connection(connection_info),
+                        Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* binding : {"binding_app_name"}) {
-      if (auto* b = static_cast<Glib::Binding*>(list_item->get_data(binding))) {
-        b->unbind();
+    for (const auto* conn : {"connection_info"}) {
+      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
+        connection->disconnect();
 
-        list_item->set_data(binding, nullptr);
+        list_item->set_data(conn, nullptr);
       }
     }
   });
@@ -126,10 +164,9 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
   for (guint n = 0; n < players_model->get_n_items(); n++) {
     auto* item = players_model->get_item(n).get();
 
-    if (item->id == node_info.id) {
-      // players_model->set_data(NodeInfoHolder::create(node_info));
-
-      item->property_name.set_value(node_info.name);
+    if (item->info.id == node_info.id) {
+      item->info = node_info;
+      item->info_updated.emit(node_info);
 
       break;
     }
@@ -140,7 +177,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
   for (guint n = 0; n < players_model->get_n_items(); n++) {
     auto item = players_model->get_item(n);
 
-    if (item->id == node_info.id) {
+    if (item->info.id == node_info.id) {
       players_model->remove(n);
 
       break;
@@ -182,4 +219,15 @@ auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::str
     default:
       return "";
   }
+}
+
+auto EffectsBaseUi::float_to_localized_string(const float& value, const int& places) -> std::string {
+  std::ostringstream msg;
+
+  msg.imbue(global_locale);
+  msg.precision(places);
+
+  msg << std::fixed << value;
+
+  return msg.str();
 }

@@ -223,7 +223,7 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
   for (guint n = 0; n < players_model->get_n_items(); n++) {
     auto item = players_model->get_item(n);
 
-    if (item->id == node_info.id) {
+    if (item->info.id == node_info.id) {
       return;
     }
   }

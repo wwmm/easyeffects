@@ -36,15 +36,14 @@
 
 class NodeInfoHolder : public Glib::Object {
  public:
-  uint id;
-  Glib::ustring name;
-
-  Glib::Property<Glib::ustring> property_name;
+  NodeInfo info;
 
   static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
 
+  sigc::signal<void(NodeInfo)> info_updated;
+
  protected:
-  NodeInfoHolder(const NodeInfo& info);
+  NodeInfoHolder(NodeInfo info);
 };
 
 class EffectsBaseUi {
@@ -107,6 +106,8 @@ class EffectsBaseUi {
   }
 
   void setup_listview_players();
+
+  auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
 
 #endif
