@@ -91,6 +91,10 @@ class EffectsBaseUi {
 
   static auto node_state_to_string(const pw_node_state& state) -> std::string;
 
+  auto app_is_blocklisted(const Glib::ustring& name) -> bool;
+
+  auto add_new_entry(const Glib::ustring& name) -> bool;
+
  private:
   Gtk::Box* placeholder_spectrum = nullptr;
 

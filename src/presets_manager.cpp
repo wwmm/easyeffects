@@ -25,8 +25,8 @@ PresetsManager::PresetsManager()
       user_output_dir(Glib::get_user_config_dir() + "/PulseEffects/output"),
       autoload_dir(Glib::get_user_config_dir() + "/PulseEffects/autoload"),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
-      soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
+      soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
+      sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
       limiter(std::make_unique<LimiterPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
@@ -206,7 +206,7 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
 
   switch (preset_type) {
     case PresetType::output: {
-      blocklist = settings->get_string_array("blocklist-out");
+      blocklist = soe_settings->get_string_array("blocklist");
 
       node_in.clear();
 
@@ -261,9 +261,9 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
           blocklist.emplace_back(p.second.data());
         }
 
-        settings->set_string_array("blocklist-out", blocklist);
+        soe_settings->set_string_array("blocklist", blocklist);
       } catch (const boost::property_tree::ptree_error& e) {
-        settings->reset("blocklist-out");
+        soe_settings->reset("blocklist");
       }
 
       break;
@@ -282,7 +282,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
   switch (preset_type) {
     case PresetType::output: {
-      std::vector<Glib::ustring> output_plugins = sie_settings->get_string_array("plugins");
+      std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
 
       for (const auto& p : output_plugins) {
         boost::property_tree::ptree node;
@@ -297,7 +297,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
       break;
     }
     case PresetType::input: {
-      std::vector<Glib::ustring> input_plugins = soe_settings->get_string_array("plugins");
+      std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
 
       for (const auto& p : input_plugins) {
         boost::property_tree::ptree node;
@@ -380,7 +380,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           boost::property_tree::read_json(input_file.string(), root);
 
           Glib::Variant<std::vector<Glib::ustring>> aux;
-          sie_settings->get_default_value("plugins", aux);
+          soe_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("output.plugins_order")) {
             const Glib::ustring value = p.second.data();
@@ -401,11 +401,11 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
         } catch (const boost::property_tree::ptree_error& e) {
           Glib::Variant<std::vector<Glib::ustring>> aux;
-          sie_settings->get_default_value("plugins", aux);
+          soe_settings->get_default_value("plugins", aux);
           output_plugins = aux.get();
         }
 
-        sie_settings->set_string_array("plugins", output_plugins);
+        soe_settings->set_string_array("plugins", output_plugins);
       } else {
         util::debug("can't found the preset " + name + " on the filesystem");
       }
@@ -429,7 +429,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           boost::property_tree::read_json(input_file.string(), root);
 
           Glib::Variant<std::vector<Glib::ustring>> aux;
-          soe_settings->get_default_value("plugins", aux);
+          sie_settings->get_default_value("plugins", aux);
 
           for (const auto& p : root.get_child("input.plugins_order")) {
             const Glib::ustring value = p.second.data();
@@ -450,11 +450,11 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
         } catch (const boost::property_tree::ptree_error& e) {
           Glib::Variant<std::vector<Glib::ustring>> aux;
-          soe_settings->get_default_value("plugins", aux);
+          sie_settings->get_default_value("plugins", aux);
           input_plugins = aux.get();
         }
 
-        soe_settings->set_string_array("plugins", input_plugins);
+        sie_settings->set_string_array("plugins", input_plugins);
       } else {
         util::debug("can't found the preset " + name + " on the filesystem");
       }

@@ -317,8 +317,6 @@ void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
   auto left = peak[0];
   auto right = peak[1];
 
-  // global_level_meter_grid->set_visible(true);
-
   global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
 
   global_output_level_right->set_text(level_to_localized_string_showpos(right, 0));
@@ -358,4 +356,32 @@ auto EffectsBaseUi::float_to_localized_string(const float& value, const int& pla
   msg << std::fixed << value;
 
   return msg.str();
+}
+
+auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
+  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+
+  return std::find(std::begin(bl), std::end(bl), name) != std::end(bl);
+}
+
+auto EffectsBaseUi::add_new_entry(const Glib::ustring& name) -> bool {
+  if (name.empty()) {
+    return false;
+  }
+
+  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+
+  if (std::any_of(bl.cbegin(), bl.cend(), [&](auto str) { return str == name; })) {
+    util::debug("blocklist_settings_ui: entry already present in the list");
+
+    return false;
+  }
+
+  bl.emplace_back(name);
+
+  settings->set_string_array("blocklist", bl);
+
+  util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
+
+  return true;
 }

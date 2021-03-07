@@ -40,7 +40,6 @@ class BlocklistSettingsUi : public Gtk::Grid {
   // Blocklist management static methods
   static auto add_new_entry(const Glib::ustring& name, PresetType preset_type) -> bool;
   static void remove_entry(const Glib::ustring& name, PresetType preset_type);
-  static auto app_is_blocklisted(const Glib::ustring& name, PresetType preset_type) -> bool;
   static auto get_blocklisted_apps_visibility() -> bool;
 
  private:

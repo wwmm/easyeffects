@@ -278,7 +278,7 @@ StreamOutputEffects::~StreamOutputEffects() {
 void StreamOutputEffects::on_app_added(NodeInfo node_info) {
   bool forbidden_app = false;
   bool connected = false;
-  auto* blocklist = g_settings_get_strv(settings, "blocklist-out");
+  auto* blocklist = g_settings_get_strv(child_settings, "blocklist");
 
   for (std::size_t i = 0; blocklist[i] != nullptr; i++) {
     if (node_info.name == blocklist[i]) {

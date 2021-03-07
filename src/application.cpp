@@ -108,6 +108,8 @@ void Application::on_startup() {
   util::debug(log_tag + "PE version: " + std::string(VERSION));
 
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+  auto soe_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+  auto sie_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
 
   if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0U) {
     running_as_service = true;
@@ -124,7 +126,7 @@ void Application::on_startup() {
   }
 
   pm->blocklist_in = settings->get_string_array("blocklist-in");
-  pm->blocklist_out = settings->get_string_array("blocklist-out");
+  pm->blocklist_out = soe_settings->get_string_array("blocklist");
 
   pm->new_default_sink.connect([&](const NodeInfo& node) {
     util::debug("new default sink: " + node.name);
@@ -186,8 +188,8 @@ void Application::on_startup() {
     pm->blocklist_in = settings->get_string_array("blocklist-in");
   });
 
-  settings->signal_changed("blocklist-out").connect([=](auto key) {
-    pm->blocklist_out = settings->get_string_array("blocklist-out");
+  soe_settings->signal_changed("blocklist").connect([=](auto key) {
+    pm->blocklist_out = settings->get_string_array("blocklist");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });

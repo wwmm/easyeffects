@@ -8,5 +8,8 @@
             <range min="1" max="10000000" />
             <default>50</default>
         </key>
+        <key name="blocklist" type="as">
+            <default>[]</default>
+        </key>
     </schema>
 </schemalist>

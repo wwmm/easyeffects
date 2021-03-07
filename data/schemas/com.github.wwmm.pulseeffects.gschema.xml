@@ -43,9 +43,7 @@
         <key name="blocklist-in" type="as">
             <default>[]</default>
         </key>
-        <key name="blocklist-out" type="as">
-            <default>[]</default>
-        </key>
+
         <key name="cpu-priority" enum="com.github.wwmm.pulseeffects.cpupriority.enum">
             <default>"None"</default>
         </key>

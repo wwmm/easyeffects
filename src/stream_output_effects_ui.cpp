@@ -241,7 +241,7 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
 
   // Blocklist check
 
-  auto forbidden_app = BlocklistSettingsUi::app_is_blocklisted(node_info.name, PresetType::output);
+  auto forbidden_app = app_is_blocklisted(node_info.name);
 
   if (forbidden_app) {
     node_info.visible_to_user = BlocklistSettingsUi::get_blocklisted_apps_visibility();
@@ -252,14 +252,6 @@ void StreamOutputEffectsUi::on_app_added(NodeInfo node_info) {
   } else {
     node_info.visible_to_user = true;
   }
-
-  // auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/app_info.glade");
-
-  // auto* appui = Gtk::Builder::get_widget_derived<AppInfoUi>(builder, "widgets_grid", node_info, pm);
-
-  // apps_box->append(*appui);
-
-  // apps_list.emplace_back(appui);
 
   players_model->append(NodeInfoHolder::create(node_info));
 }

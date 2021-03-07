@@ -89,90 +89,74 @@ auto BlocklistSettingsUi::get_blocklisted_apps_visibility() -> bool {
 }
 
 auto BlocklistSettingsUi::add_new_entry(const Glib::ustring& name, PresetType preset_type) -> bool {
-  if (name.empty()) {
-    return false;
-  }
+  // if (name.empty()) {
+  //   return false;
+  // }
 
-  Glib::RefPtr<Gio::Settings> settingsPtr;
+  // Glib::RefPtr<Gio::Settings> settingsPtr;
 
-  if (thisPtr == nullptr) {
-    settingsPtr = Gio::Settings::create("com.github.wwmm.pulseeffects");
-  } else {
-    settingsPtr = thisPtr->settings;
-  }
+  // if (thisPtr == nullptr) {
+  //   settingsPtr = Gio::Settings::create("com.github.wwmm.pulseeffects");
+  // } else {
+  //   settingsPtr = thisPtr->settings;
+  // }
 
-  const auto* blocklist_preset_type = (preset_type == PresetType::output) ? "blocklist-out" : "blocklist-in";
+  // const auto* blocklist_preset_type = (preset_type == PresetType::output) ? "blocklist-out" : "blocklist-in";
 
-  std::vector<Glib::ustring> bl = settingsPtr->get_string_array(blocklist_preset_type);
+  // std::vector<Glib::ustring> bl = settingsPtr->get_string_array(blocklist_preset_type);
 
-  // Check if the entry is already added
-  for (const auto& str : bl) {
-    if (name == str) {
-      util::debug("blocklist_settings_ui: entry already present in the list");
-      return false;
-    }
-  }
+  // // Check if the entry is already added
+  // for (const auto& str : bl) {
+  //   if (name == str) {
+  //     util::debug("blocklist_settings_ui: entry already present in the list");
+  //     return false;
+  //   }
+  // }
 
-  bl.emplace_back(name);
+  // bl.emplace_back(name);
 
-  settingsPtr->set_string_array(blocklist_preset_type, bl);
+  // settingsPtr->set_string_array(blocklist_preset_type, bl);
 
-  switch (preset_type) {
-    case PresetType::output:
-      populate_blocklist_out_listbox();
-      break;
-    case PresetType::input:
-      populate_blocklist_in_listbox();
-      break;
-  }
+  // switch (preset_type) {
+  //   case PresetType::output:
+  //     populate_blocklist_out_listbox();
+  //     break;
+  //   case PresetType::input:
+  //     populate_blocklist_in_listbox();
+  //     break;
+  // }
 
-  util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
+  // util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
   return true;
 }
 
 void BlocklistSettingsUi::remove_entry(const Glib::ustring& name, PresetType preset_type) {
-  Glib::RefPtr<Gio::Settings> settingsPtr;
+  // Glib::RefPtr<Gio::Settings> settingsPtr;
 
-  if (thisPtr == nullptr) {
-    settingsPtr = Gio::Settings::create("com.github.wwmm.pulseeffects");
-  } else {
-    settingsPtr = thisPtr->settings;
-  }
+  // if (thisPtr == nullptr) {
+  //   settingsPtr = Gio::Settings::create("com.github.wwmm.pulseeffects");
+  // } else {
+  //   settingsPtr = thisPtr->settings;
+  // }
 
-  const auto* blocklist_preset_type = (preset_type == PresetType::output) ? "blocklist-out" : "blocklist-in";
+  // const auto* blocklist_preset_type = (preset_type == PresetType::output) ? "blocklist-out" : "blocklist-in";
 
-  std::vector<Glib::ustring> bl = settingsPtr->get_string_array(blocklist_preset_type);
+  // std::vector<Glib::ustring> bl = settingsPtr->get_string_array(blocklist_preset_type);
 
-  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
+  // bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
 
-  settingsPtr->set_string_array(blocklist_preset_type, bl);
+  // settingsPtr->set_string_array(blocklist_preset_type, bl);
 
-  switch (preset_type) {
-    case PresetType::output:
-      populate_blocklist_out_listbox();
-      break;
-    case PresetType::input:
-      populate_blocklist_in_listbox();
-      break;
-  }
+  // switch (preset_type) {
+  //   case PresetType::output:
+  //     populate_blocklist_out_listbox();
+  //     break;
+  //   case PresetType::input:
+  //     populate_blocklist_in_listbox();
+  //     break;
+  // }
 
-  util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");
-}
-
-auto BlocklistSettingsUi::app_is_blocklisted(const Glib::ustring& name, PresetType preset_type) -> bool {
-  Glib::RefPtr<Gio::Settings> settingsPtr;
-
-  if (thisPtr == nullptr) {
-    settingsPtr = Gio::Settings::create("com.github.wwmm.pulseeffects");
-  } else {
-    settingsPtr = thisPtr->settings;
-  }
-
-  const auto* blocklist_preset_type = (preset_type == PresetType::output) ? "blocklist-out" : "blocklist-in";
-
-  std::vector<Glib::ustring> bl = settingsPtr->get_string_array(blocklist_preset_type);
-
-  return std::find(std::begin(bl), std::end(bl), name) != std::end(bl);
+  // util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");
 }
 
 void BlocklistSettingsUi::add_to_stack(Gtk::Stack* stack) {
