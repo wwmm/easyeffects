@@ -112,6 +112,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
     auto* volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
     auto* mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
+    auto* blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -153,9 +154,24 @@ void EffectsBaseUi::setup_listview_players() {
       PipeManager::set_node_mute(holder->info, state);
     });
 
+    auto connection_blocklist = blocklist->signal_toggled().connect([=]() {
+      if (blocklist->get_active()) {
+        add_new_blocklist_entry(holder->info.name);
+
+        enable->set_active(false);
+
+        enable->set_sensitive(false);
+      } else {
+        remove_blocklist_entry(holder->info.name);
+
+        enable->set_sensitive(true);
+      }
+    });
+
     auto* pointer_connection_enable = new sigc::connection(connection_enable);
     auto* pointer_connection_volume = new sigc::connection(connection_volume);
     auto* pointer_connection_mute = new sigc::connection(connection_mute);
+    auto* pointer_connection_blocklist = new sigc::connection(connection_blocklist);
 
     auto connection_info = holder->info_updated.connect([=](const NodeInfo& i) {
       app_name->set_text(i.name);
@@ -228,11 +244,11 @@ void EffectsBaseUi::setup_listview_players() {
         }
       }
 
-      enable->set_active(is_enabled);
-      // enable->set_active(is_enabled && !is_blocklisted);
-      // enable->set_sensitive(!is_blocklisted);
+      bool is_blocklisted = app_is_blocklisted(holder->info.name);
 
-      // blocklist->set_active(is_blocklisted);
+      enable->set_active(is_enabled);
+      enable->set_active(is_enabled && !is_blocklisted);
+      enable->set_sensitive(!is_blocklisted);
 
       pointer_connection_enable->unblock();
 
@@ -261,6 +277,14 @@ void EffectsBaseUi::setup_listview_players() {
       mute->set_active(holder->info.mute);
 
       pointer_connection_mute->unblock();
+
+      // initializing the blocklist checkbutton
+
+      pointer_connection_blocklist->block();
+
+      blocklist->set_active(is_blocklisted);
+
+      pointer_connection_blocklist->unblock();
     });
 
     scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
@@ -273,12 +297,16 @@ void EffectsBaseUi::setup_listview_players() {
 
     list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
 
+    list_item->set_data("connection_blocklist", pointer_connection_blocklist,
+                        Glib::destroy_notify_delete<sigc::connection>);
+
     list_item->set_data("connection_info", new sigc::connection(connection_info),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_enable", "connection_volume", "connection_mute", "connection_info"}) {
+    for (const auto* conn :
+         {"connection_enable", "connection_volume", "connection_mute", "connection_blocklist", "connection_info"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
@@ -364,7 +392,7 @@ auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
   return std::find(std::begin(bl), std::end(bl), name) != std::end(bl);
 }
 
-auto EffectsBaseUi::add_new_entry(const Glib::ustring& name) -> bool {
+auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
   if (name.empty()) {
     return false;
   }
@@ -384,4 +412,14 @@ auto EffectsBaseUi::add_new_entry(const Glib::ustring& name) -> bool {
   util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
 
   return true;
+}
+
+void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
+  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+
+  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
+
+  settings->set_string_array("blocklist", bl);
+
+  util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");
 }

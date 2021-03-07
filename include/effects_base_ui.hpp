@@ -27,7 +27,6 @@
 #include <locale>
 #include <memory>
 #include <vector>
-#include "app_info_ui.hpp"
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
@@ -77,8 +76,6 @@ class EffectsBaseUi {
 
   PipeManager* pm = nullptr;
 
-  std::vector<AppInfoUi*> apps_list;
-
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model;
@@ -93,7 +90,9 @@ class EffectsBaseUi {
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 
-  auto add_new_entry(const Glib::ustring& name) -> bool;
+  auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
+
+  void remove_blocklist_entry(const Glib::ustring& name);
 
  private:
   Gtk::Box* placeholder_spectrum = nullptr;
