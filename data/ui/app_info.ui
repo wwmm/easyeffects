@@ -229,20 +229,22 @@
                         <property name="hexpand">1</property>
                         <property name="valign">center</property>
                         <property name="adjustment">volume</property>
-                        <property name="round-digits">0</property>
+                        <property name="draw-value">1</property>
                         <property name="digits">0</property>
-                        <property name="value-pos">right</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">end</property>
-                        <property name="valign">center</property>
-                        <property name="label">%</property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
+                        <property name="value-pos">bottom</property>
+                        <marks>
+                            <mark value="0" position="bottom"></mark>
+                            <mark value="10" position="bottom"></mark>
+                            <mark value="20" position="bottom"></mark>
+                            <mark value="30" position="bottom"></mark>
+                            <mark value="40" position="bottom"></mark>
+                            <mark value="50" position="bottom"></mark>
+                            <mark value="60" position="bottom"></mark>
+                            <mark value="70" position="bottom"></mark>
+                            <mark value="80" position="bottom"></mark>
+                            <mark value="90" position="bottom"></mark>
+                            <mark value="100" position="bottom"></mark>
+                        </marks>
                     </object>
                 </child>
             </object>
@@ -253,6 +255,6 @@
         <property name="lower">0</property>
         <property name="upper">100</property>
         <property name="step-increment">1</property>
-        <property name="page-increment">5</property>
+        <property name="page-increment">10</property>
     </object>
 </interface>

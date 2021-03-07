@@ -107,6 +107,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
     auto* state = static_cast<Gtk::Label*>(list_item->get_data("state"));
     auto* enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
+    auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -194,6 +195,8 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_enable->unblock();
     });
+
+    scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
 
     holder->info_updated.emit(holder->info);
 
