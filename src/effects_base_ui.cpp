@@ -106,8 +106,30 @@ void EffectsBaseUi::setup_listview_players() {
     auto* channels = static_cast<Gtk::Label*>(list_item->get_data("channels"));
     auto* latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
     auto* state = static_cast<Gtk::Label*>(list_item->get_data("state"));
+    auto* enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
+
+    auto connection_enable = enable->signal_state_set().connect(
+        [=](bool state) {
+          if (state) {
+            if (holder->info.media_class == "Stream/Output/Audio") {
+              pm->connect_stream_output(holder->info);
+            } else if (holder->info.media_class == "Stream/Input/Audio") {
+              pm->connect_stream_input(holder->info);
+            }
+          } else {
+            if (holder->info.media_class == "Stream/Output/Audio") {
+              pm->disconnect_stream_output(holder->info);
+            } else if (holder->info.media_class == "Stream/Input/Audio") {
+              pm->disconnect_stream_input(holder->info);
+            }
+          }
+          return false;
+        },
+        false);
+
+    auto* pointer_connection_enable = new sigc::connection(connection_enable);
 
     auto connection_info = holder->info_updated.connect([=](const NodeInfo& i) {
       app_name->set_text(i.name);
@@ -141,16 +163,22 @@ void EffectsBaseUi::setup_listview_players() {
         default:
           break;
       }
+
+      pointer_connection_enable->block();
+
+      pointer_connection_enable->unblock();
     });
 
     holder->info_updated.emit(holder->info);
+
+    list_item->set_data("connection_enable", pointer_connection_enable, Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_info", new sigc::connection(connection_info),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_info"}) {
+    for (const auto* conn : {"connection_enable", "connection_info"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
