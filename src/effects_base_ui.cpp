@@ -19,8 +19,6 @@
 
 #include "effects_base_ui.hpp"
 
-#include <utility>
-
 NodeInfoHolder::NodeInfoHolder(NodeInfo info)
     : Glib::ObjectBase(typeid(NodeInfoHolder)), Glib::Object(), info(std::move(info)) {}
 
@@ -113,6 +111,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
     auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
     auto* volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
+    auto* mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -138,8 +137,25 @@ void EffectsBaseUi::setup_listview_players() {
     auto connection_volume = volume->signal_value_changed().connect(
         [=]() { PipeManager::set_node_volume(holder->info, static_cast<float>(volume->get_value()) / 100.0F); });
 
+    auto connection_mute = mute->signal_toggled().connect([=]() {
+      bool state = mute->get_active();
+
+      if (state) {
+        mute->property_icon_name().set_value("audio-volume-muted-symbolic");
+
+        scale_volume->set_sensitive(false);
+      } else {
+        mute->property_icon_name().set_value("audio-volume-high-symbolic");
+
+        scale_volume->set_sensitive(true);
+      }
+
+      PipeManager::set_node_mute(holder->info, state);
+    });
+
     auto* pointer_connection_enable = new sigc::connection(connection_enable);
     auto* pointer_connection_volume = new sigc::connection(connection_volume);
+    auto* pointer_connection_mute = new sigc::connection(connection_mute);
 
     auto connection_info = holder->info_updated.connect([=](const NodeInfo& i) {
       app_name->set_text(i.name);
@@ -229,6 +245,22 @@ void EffectsBaseUi::setup_listview_players() {
       pointer_connection_volume->unblock();
 
       // initializing the mute button
+
+      pointer_connection_mute->block();
+
+      if (holder->info.mute) {
+        mute->property_icon_name().set_value("audio-volume-muted-symbolic");
+
+        scale_volume->set_sensitive(false);
+      } else {
+        mute->property_icon_name().set_value("audio-volume-high-symbolic");
+
+        scale_volume->set_sensitive(true);
+      }
+
+      mute->set_active(holder->info.mute);
+
+      pointer_connection_mute->unblock();
     });
 
     scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
@@ -239,12 +271,14 @@ void EffectsBaseUi::setup_listview_players() {
 
     list_item->set_data("connection_volume", pointer_connection_volume, Glib::destroy_notify_delete<sigc::connection>);
 
+    list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
+
     list_item->set_data("connection_info", new sigc::connection(connection_info),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_enable", "connection_volume", "connection_info"}) {
+    for (const auto* conn : {"connection_enable", "connection_volume", "connection_mute", "connection_info"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
