@@ -42,7 +42,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
-  headerbar = builder->get_widget<Gtk::HeaderBar>("headerbar");
   help_button = builder->get_widget<Gtk::Button>("help_button");
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
   subtitle = builder->get_widget<Gtk::Label>("subtitle");
@@ -52,7 +51,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
-  // sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
+  sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
   // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
   // BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());

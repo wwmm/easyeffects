@@ -316,6 +316,34 @@ void EffectsBaseUi::setup_listview_players() {
   });
 }
 
+void EffectsBaseUi::on_app_added(NodeInfo node_info) {
+  // do not add the same stream twice
+
+  for (guint n = 0; n < players_model->get_n_items(); n++) {
+    auto item = players_model->get_item(n);
+
+    if (item->info.id == node_info.id) {
+      return;
+    }
+  }
+
+  // Blocklist check
+
+  auto forbidden_app = app_is_blocklisted(node_info.name);
+
+  if (forbidden_app) {
+    node_info.visible_to_user = BlocklistSettingsUi::get_blocklisted_apps_visibility();
+
+    if (!node_info.visible_to_user) {
+      return;
+    }
+  } else {
+    node_info.visible_to_user = true;
+  }
+
+  players_model->append(NodeInfoHolder::create(node_info));
+}
+
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
   for (guint n = 0; n < players_model->get_n_items(); n++) {
     auto* item = players_model->get_item(n).get();

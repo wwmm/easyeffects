@@ -125,7 +125,7 @@ void Application::on_startup() {
     presets_manager = std::make_unique<PresetsManager>();
   }
 
-  pm->blocklist_in = settings->get_string_array("blocklist-in");
+  pm->blocklist_in = sie_settings->get_string_array("blocklist");
   pm->blocklist_out = soe_settings->get_string_array("blocklist");
 
   pm->new_default_sink.connect([&](const NodeInfo& node) {
@@ -184,12 +184,12 @@ void Application::on_startup() {
         3);
   });
 
-  settings->signal_changed("blocklist-in").connect([=](auto key) {
-    pm->blocklist_in = settings->get_string_array("blocklist-in");
+  sie_settings->signal_changed("blocklist").connect([=](auto key) {
+    pm->blocklist_in = sie_settings->get_string_array("blocklist");
   });
 
   soe_settings->signal_changed("blocklist").connect([=](auto key) {
-    pm->blocklist_out = settings->get_string_array("blocklist");
+    pm->blocklist_out = sie_settings->get_string_array("blocklist");
   });
 
   settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });

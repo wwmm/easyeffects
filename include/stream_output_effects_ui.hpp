@@ -59,8 +59,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   static auto add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi*;
 
-  void on_app_added(NodeInfo node_info);
-
  protected:
   std::string log_tag = "soe_ui: ";
 

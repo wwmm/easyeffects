@@ -13,7 +13,7 @@ pulseeffects_sources = [
 	# 'pipe_info_ui.cpp',
 	'stream_output_effects_ui.cpp',
 	'stream_output_effects.cpp',
-	# 'stream_input_effects_ui.cpp',
+	'stream_input_effects_ui.cpp',
 	'stream_input_effects.cpp',
 	'pipeline_base.cpp',
 	'plugin_base.cpp',

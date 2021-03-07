@@ -221,7 +221,7 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
       break;
     }
     case PresetType::input: {
-      blocklist = settings->get_string_array("blocklist-in");
+      blocklist = sie_settings->get_string_array("blocklist");
 
       node_in.clear();
 
@@ -248,9 +248,9 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
           blocklist.emplace_back(p.second.data());
         }
 
-        settings->set_string_array("blocklist-in", blocklist);
+        sie_settings->set_string_array("blocklist", blocklist);
       } catch (const boost::property_tree::ptree_error& e) {
-        settings->reset("blocklist-in");
+        sie_settings->reset("blocklist");
       }
 
       break;
