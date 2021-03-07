@@ -83,11 +83,11 @@ void AppInfoUi::init_widgets() {
 
   blocklist->set_active(is_blocklisted);
 
-  if (!nd_info.icon_name.empty()) {
-    app_icon->set_from_icon_name(nd_info.icon_name);
-  } else {
-    app_icon->set_from_icon_name(nd_info.name);
-  }
+  // if (!nd_info.icon_name.empty()) {
+  //   app_icon->set_from_icon_name(nd_info.icon_name);
+  // } else {
+  //   app_icon->set_from_icon_name(nd_info.name);
+  // }
 
   app_name->set_text(nd_info.name);
 

@@ -18,9 +18,6 @@
  */
 
 #include "pipe_manager.hpp"
-#include <string>
-#include "pipewire/client.h"
-#include "pipewire/keys.h"
 
 namespace {
 
@@ -138,7 +135,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   for (auto& node : nd->pm->list_nodes) {
     if (node.id == info->id) {
-      const auto* icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
+      const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME);
+      const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
@@ -151,8 +149,12 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         nd->nd_info.priority = std::stoi(prio_session);
       }
 
-      if (icon_name != nullptr) {
-        nd->nd_info.icon_name = icon_name;
+      if (app_icon_name != nullptr) {
+        nd->nd_info.app_icon_name = app_icon_name;
+      }
+
+      if (media_icon_name != nullptr) {
+        nd->nd_info.media_icon_name = media_icon_name;
       }
 
       if (media_name != nullptr) {

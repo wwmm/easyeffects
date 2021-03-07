@@ -83,6 +83,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("enable", b->get_widget<Gtk::Switch>("enable"));
+    list_item->set_data("app_icon", b->get_widget<Gtk::Image>("app_icon"));
     list_item->set_data("app_name", b->get_widget<Gtk::Label>("app_name"));
     list_item->set_data("media_name", b->get_widget<Gtk::Label>("media_name"));
     list_item->set_data("blocklist", b->get_widget<Gtk::CheckButton>("blocklist"));
@@ -107,6 +108,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto* latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
     auto* state = static_cast<Gtk::Label*>(list_item->get_data("state"));
     auto* enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
+    auto* app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
     auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
@@ -139,6 +141,14 @@ void EffectsBaseUi::setup_listview_players() {
       rate->set_text(std::to_string(i.rate) + " Hz");
       channels->set_text(std::to_string(i.n_volume_channels));
       latency->set_text(float_to_localized_string(i.latency, 2) + " s");
+
+      if (!i.app_icon_name.empty()) {
+        app_icon->set_from_icon_name(i.app_icon_name);
+      } else if (!i.media_icon_name.empty()) {
+        app_icon->set_from_icon_name(i.media_icon_name);
+      } else {
+        app_icon->set_from_icon_name(i.name);
+      }
 
       switch (i.state) {
         case PW_NODE_STATE_RUNNING:

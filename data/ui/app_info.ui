@@ -7,7 +7,7 @@
         <property name="margin_end">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <property name="spacing">24</property>
+        <property name="spacing">12</property>
         <property name="orientation">vertical</property>
         <child>
             <object class="GtkBox">
@@ -24,11 +24,10 @@
                 </child>
 
                 <child>
-                    <object class="GtkImage">
+                    <object class="GtkImage" id="app_icon">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
-                        <property name="visible">0</property>
-                        <property name="icon_name">image-missing</property>
+                        <property name="icon_size">large</property>
                     </object>
                 </child>
 
@@ -56,7 +55,7 @@
                                 <property name="valign">center</property>
                                 <property name="label">Description</property>
                                 <style>
-                                    <class name="subtitle" />
+                                    <class name="dim-label" />
                                 </style>
                             </object>
                         </child>
@@ -77,8 +76,8 @@
             <object class="GtkGrid">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="row-spacing">4</property>
-                <property name="column-spacing">24</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
