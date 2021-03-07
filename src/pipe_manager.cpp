@@ -250,6 +250,9 @@ void on_node_event_param(void* object,
                   case SPA_AUDIO_FORMAT_F64_LE:
                     format_str = "F64LE";
                     break;
+                  case SPA_AUDIO_FORMAT_F32P:
+                    format_str = "F32P";
+                    break;
                   default:
                     format_str = std::to_string(format);
                     // util::warning(format_str + " " + std::to_string(SPA_AUDIO_FORMAT_F32_LE));
