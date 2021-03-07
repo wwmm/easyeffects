@@ -7,7 +7,7 @@
         <property name="margin_end">6</property>
         <property name="margin_top">6</property>
         <property name="margin_bottom">6</property>
-        <property name="spacing">6</property>
+        <property name="spacing">24</property>
         <property name="orientation">vertical</property>
         <child>
             <object class="GtkBox">
@@ -78,7 +78,7 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">4</property>
-                <property name="column-spacing">12</property>
+                <property name="column-spacing">24</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>

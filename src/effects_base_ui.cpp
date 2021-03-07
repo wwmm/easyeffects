@@ -115,7 +115,7 @@ void EffectsBaseUi::setup_listview_players() {
       format->set_text(i.format);
       rate->set_text(std::to_string(i.rate) + " Hz");
       channels->set_text(std::to_string(i.n_volume_channels));
-      latency->set_text(float_to_localized_string(i.latency, 2) + " ms");
+      latency->set_text(float_to_localized_string(i.latency, 2) + " s");
 
       switch (i.state) {
         case PW_NODE_STATE_RUNNING:
