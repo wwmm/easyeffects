@@ -83,6 +83,8 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
 
+  Glib::RefPtr<Gtk::StringList> blocklist;
+
   std::vector<sigc::connection> connections;
 
   SpectrumUi* spectrum_ui = nullptr;
@@ -110,6 +112,8 @@ class EffectsBaseUi {
   }
 
   void setup_listview_players();
+
+  void setup_listview_blocklist();
 
   auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };

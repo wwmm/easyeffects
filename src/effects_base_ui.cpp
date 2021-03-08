@@ -32,7 +32,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     : settings(std::move(refSettings)),
       pm(pipe_manager),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
-      all_players_model(Gio::ListStore<NodeInfoHolder>::create()) {
+      all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
+      blocklist(Gtk::StringList::create({"initial_value"})) {
   // set locale (workaround for #849)
 
   // loading builder widgets
@@ -48,10 +49,12 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");
   button_add_to_blocklist = builder->get_widget<Gtk::Button>("button_add_to_blocklist");
   show_blocklisted_apps = builder->get_widget<Gtk::Switch>("show_blocklisted_apps");
+  listview_blocklist = builder->get_widget<Gtk::ListView>("listview_blocklist");
 
   // configuring widgets
 
   setup_listview_players();
+  setup_listview_blocklist();
 
   // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
 
@@ -367,6 +370,98 @@ void EffectsBaseUi::setup_listview_players() {
         list_item->set_data(conn, nullptr);
       }
     }
+  });
+}
+
+void EffectsBaseUi::setup_listview_blocklist() {
+  blocklist->remove(0);
+
+  for (auto& name : settings->get_string_array("blocklist")) {
+    blocklist->append(name);
+  }
+
+  settings->signal_changed("blocklist").connect([=](auto key) {
+    auto list = settings->get_string_array(key);
+
+    blocklist->splice(0, blocklist->get_n_items(), list);
+  });
+
+  blocklist->signal_items_changed().connect([=](guint position, guint removed, guint added) {
+    if (removed > 0) {
+      players_model->remove_all();
+
+      listview_players->set_model(nullptr);
+
+      for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+        players_model->append(all_players_model->get_item(n));
+      }
+
+      listview_players->set_model(Gtk::NoSelection::create(players_model));
+    }
+  });
+
+  // sorter
+
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
+
+  // setting the listview model and factory
+
+  listview_blocklist->set_model(Gtk::NoSelection::create(sort_list_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_blocklist->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = new Gtk::Box();
+    auto* label = Gtk::manage(new Gtk::Label());
+    auto* btn = Gtk::manage(new Gtk::Button());
+
+    label->set_hexpand(true);
+
+    btn->set_icon_name("list-remove-symbolic");
+
+    box->append(*label);
+    box->append(*btn);
+
+    list_item->set_data("name", label);
+    list_item->set_data("remove", btn);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+    label->set_text(name);
+
+    auto connection_remove = remove->signal_clicked().connect([=]() {
+      auto list = settings->get_string_array("blocklist");
+
+      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& player_name) { return player_name == name; }),
+                 list.end());
+
+      settings->set_string_array("blocklist", list);
+    });
+
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
+        connection->disconnect();
+
+        list_item->set_data("connection_remove", nullptr);
+      }
+    });
   });
 }
 
