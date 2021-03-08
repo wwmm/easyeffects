@@ -3,6 +3,11 @@
     <object class="GtkBox" id="top_box">
         <property name="orientation">vertical</property>
         <child>
+            <object class="GtkBox" id="box_spectrum">
+                <property name="hexpand">1</property>
+            </object>
+        </child>
+        <child>
             <object class="GtkStack" id="stack_top">
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>

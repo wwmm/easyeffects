@@ -54,6 +54,18 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
+ protected:
+  Glib::RefPtr<Gio::Settings> settings;
+
+  Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *device_state = nullptr;
+
+  PipeManager* pm = nullptr;
+
+  std::vector<sigc::connection> connections;
+
+  SpectrumUi* spectrum_ui = nullptr;
+
   /*
     Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens
   */
@@ -64,41 +76,22 @@ class EffectsBaseUi {
 
   void on_new_output_level_db(const std::array<double, 2>& peak);
 
- protected:
-  Glib::RefPtr<Gio::Settings> settings;
+  static auto node_state_to_string(const pw_node_state& state) -> std::string;
 
-  Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr;
+ private:
   Gtk::Stack* stack_top = nullptr;
-  Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *device_state = nullptr;
-  Gtk::MenuButton* menubutton_blocklist = nullptr;
+  Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr;
   Gtk::Switch* show_blocklisted_apps = nullptr;
   Gtk::Button* button_add_to_blocklist = nullptr;
   Gtk::Text* blocklist_player_name = nullptr;
   Gtk::ScrolledWindow* blocklist_scrolled_window = nullptr;
-
-  PipeManager* pm = nullptr;
+  Gtk::MenuButton* menubutton_blocklist = nullptr;
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
 
   Glib::RefPtr<Gtk::StringList> blocklist;
-
-  std::vector<sigc::connection> connections;
-
-  SpectrumUi* spectrum_ui = nullptr;
-
-  static auto node_state_to_string(const pw_node_state& state) -> std::string;
-
-  auto app_is_blocklisted(const Glib::ustring& name) -> bool;
-
-  auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
-
-  void remove_blocklist_entry(const Glib::ustring& name);
-
- private:
-  Gtk::Box* placeholder_spectrum = nullptr;
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
@@ -114,6 +107,12 @@ class EffectsBaseUi {
   void setup_listview_players();
 
   void setup_listview_blocklist();
+
+  auto app_is_blocklisted(const Glib::ustring& name) -> bool;
+
+  auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
+
+  void remove_blocklist_entry(const Glib::ustring& name);
 
   auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
