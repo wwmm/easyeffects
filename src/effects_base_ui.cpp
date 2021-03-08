@@ -32,12 +32,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     : settings(std::move(refSettings)), pm(pipe_manager), players_model(Gio::ListStore<NodeInfoHolder>::create()) {
   // set locale (workaround for #849)
 
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // loading builder widgets
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
@@ -406,7 +400,6 @@ auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::str
 auto EffectsBaseUi::float_to_localized_string(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
 
-  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;

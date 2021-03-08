@@ -21,14 +21,6 @@
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // loading glade widgets
 
   spectrum = builder->get_widget<Gtk::DrawingArea>("spectrum");
@@ -187,7 +179,6 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     if (mouse_inside) {
       std::ostringstream msg;
 
-      msg.imbue(global_locale);
       msg.precision(0);
 
       msg << std::fixed << mouse_freq << " Hz, ";
@@ -297,8 +288,6 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
 
   for (size_t n = 0U; n < freq_labels.size() - 1U; n++) {
     std::ostringstream msg;
-
-    msg.imbue(global_locale);
 
     auto label = freq_labels[n];
 

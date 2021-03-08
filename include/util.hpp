@@ -24,7 +24,6 @@
 #include <glib.h>
 #include <cmath>
 #include <iostream>
-#include <locale>
 #include <sstream>
 #include <thread>
 #include <vector>

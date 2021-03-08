@@ -47,7 +47,6 @@
 #include <array>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <locale>
 #include "util.hpp"
 
 class PluginUiBase {
@@ -100,7 +99,6 @@ class PluginUiBase {
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
     std::ostringstream msg;
 
-    msg.imbue(global_locale);
     msg.precision(places);
 
     msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
@@ -109,9 +107,6 @@ class PluginUiBase {
   }
 
  private:
-  std::locale global_locale;
-  std::locale c_locale = std::locale();
-
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,
                     const T2& w_left_label,

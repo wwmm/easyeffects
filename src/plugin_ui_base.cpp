@@ -23,14 +23,6 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // get widgets
 
   builder->get_widget("enable", enable);
@@ -74,7 +66,6 @@ PluginUiBase::~PluginUiBase() {
 auto PluginUiBase::level_to_localized_string(const double& value, const int& places) -> std::string {
   std::ostringstream msg;
 
-  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;
@@ -85,7 +76,6 @@ auto PluginUiBase::level_to_localized_string(const double& value, const int& pla
 auto PluginUiBase::level_to_localized_string(const float& value, const int& places) -> std::string {
   std::ostringstream msg;
 
-  msg.imbue(global_locale);
   msg.precision(places);
 
   msg << std::fixed << value;
@@ -95,7 +85,6 @@ auto PluginUiBase::level_to_localized_string(const float& value, const int& plac
 
 auto PluginUiBase::string_to_float(const std::string& value) -> float {
   std::stringstream ss;
-  ss.imbue(c_locale);
 
   float fv = 0.0F;
 

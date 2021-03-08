@@ -46,8 +46,6 @@ class CalibrationUi : public Gtk::Window {
  private:
   std::string log_tag = "calibration_ui: ";
 
-  std::locale global_locale;
-
   Gtk::Stack* stack = nullptr;
   Gtk::DrawingArea* spectrum = nullptr;
   Gtk::HeaderBar* headerbar = nullptr;

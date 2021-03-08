@@ -154,7 +154,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
       std::ostringstream str_rate;
 
-      str_rate.imbue(global_locale);
       str_rate.precision(1);
 
       str_rate << std::fixed << sie->pm->pe_sink_node.rate * 0.001F << " kHz";

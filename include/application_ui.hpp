@@ -52,8 +52,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  std::locale global_locale;
-
   Gtk::Button *calibration_button = nullptr, *help_button = nullptr;
   Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;

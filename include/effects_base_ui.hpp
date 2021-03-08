@@ -24,14 +24,12 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
-#include <locale>
 #include <memory>
 #include <vector>
 #include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"
-#include "util.hpp"
 
 class NodeInfoHolder : public Glib::Object {
  public:
@@ -85,8 +83,6 @@ class EffectsBaseUi {
 
   SpectrumUi* spectrum_ui = nullptr;
 
-  std::locale global_locale;
-
   static auto node_state_to_string(const pw_node_state& state) -> std::string;
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
@@ -102,7 +98,6 @@ class EffectsBaseUi {
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
     std::ostringstream msg;
 
-    msg.imbue(global_locale);
     msg.precision(places);
 
     msg << ((value > 0.0) ? "+" : "") << std::fixed << value;

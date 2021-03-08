@@ -28,14 +28,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   Gtk::IconTheme::get_for_display(Gdk::Display::get_default())
       ->add_resource_path("/com/github/wwmm/pulseeffects/icons");
 
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
@@ -52,9 +44,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
-  // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
-  // BlocklistSettingsUi::add_to_stack(stack_menu_settings);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
+  // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
 
   presets_menu_button->set_popover(*presets_menu_ui);
 

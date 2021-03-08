@@ -21,14 +21,6 @@
 
 CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
     : Gtk::Window(cobject) {
-  // set locale (workaround for #849)
-
-  try {
-    global_locale = std::locale("");
-  } catch (const std::exception& e) {
-    global_locale = std::locale();
-  }
-
   // loading glade widgets
 
   builder->get_widget("stack", stack);
@@ -126,7 +118,6 @@ auto CalibrationUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -
     if (mouse_inside) {
       std::ostringstream msg;
 
-      msg.imbue(global_locale);
       msg.precision(0);
 
       msg << std::fixed << mouse_freq << " Hz, ";
