@@ -423,6 +423,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     auto* btn = Gtk::manage(new Gtk::Button());
 
     label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
 
     btn->set_icon_name("list-remove-symbolic");
 
