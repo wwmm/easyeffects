@@ -81,7 +81,7 @@ class EffectsBaseUi {
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
-  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model;
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
 
   std::vector<sigc::connection> connections;
 

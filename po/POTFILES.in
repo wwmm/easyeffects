@@ -6,8 +6,6 @@ data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.glade
 data/ui/bass_enhancer.glade
-data/ui/blocklist_row.glade
-data/ui/blocklist_settings.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
@@ -46,10 +44,8 @@ data/ui/spectrum_settings.ui
 data/ui/stereo_tools.glade
 data/ui/webrtc.glade
 data/ui/rnnoise.glade
-src/app_info_ui.cpp
 src/application.cpp
 src/application_ui.cpp
-src/blocklist_settings_ui.cpp
 src/calibration_ui.cpp
 src/convolver_ui.cpp
 src/effects_base_ui.cpp

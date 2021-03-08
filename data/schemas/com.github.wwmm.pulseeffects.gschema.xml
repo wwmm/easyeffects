@@ -37,11 +37,6 @@
         <key name="custom-source" type="s">
             <default>""</default>
         </key>
-
-        <key name="show-blocklisted-apps" type="b">
-            <default>false</default>
-        </key>
-
         <key name="cpu-priority" enum="com.github.wwmm.pulseeffects.cpupriority.enum">
             <default>"None"</default>
         </key>

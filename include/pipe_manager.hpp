@@ -60,8 +60,6 @@ struct NodeInfo {
 
   bool mute = false;
 
-  bool visible_to_user = false;
-
   int n_input_ports = 0;
 
   int n_output_ports = 0;

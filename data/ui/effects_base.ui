@@ -211,6 +211,26 @@
                         </child>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label">Show Blocklisted Players</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSwitch" id="show_blocklisted_apps">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
     </object>

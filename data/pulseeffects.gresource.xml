@@ -7,7 +7,6 @@
         <file>ui/spectrum.glade</file>
         <file>ui/spectrum_settings.ui</file>
         <file>ui/pipe_settings.glade</file>
-        <file>ui/blocklist_settings.glade</file>
         <file>ui/general_settings.ui</file>
         <file>ui/effects_base.ui</file>
         <file>ui/app_info.ui</file>
@@ -43,7 +42,6 @@
         <file>ui/rnnoise.glade</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
-        <file>ui/blocklist_row.glade</file>
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>

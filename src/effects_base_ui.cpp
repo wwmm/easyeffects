@@ -29,7 +29,10 @@ auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              PipeManager* pipe_manager)
-    : settings(std::move(refSettings)), pm(pipe_manager), players_model(Gio::ListStore<NodeInfoHolder>::create()) {
+    : settings(std::move(refSettings)),
+      pm(pipe_manager),
+      players_model(Gio::ListStore<NodeInfoHolder>::create()),
+      all_players_model(Gio::ListStore<NodeInfoHolder>::create()) {
   // set locale (workaround for #849)
 
   // loading builder widgets
@@ -44,6 +47,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");
   button_add_to_blocklist = builder->get_widget<Gtk::Button>("button_add_to_blocklist");
+  show_blocklisted_apps = builder->get_widget<Gtk::Switch>("show_blocklisted_apps");
 
   // configuring widgets
 
@@ -54,6 +58,10 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   // spectrum
 
   // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
+
+  // gsettings
+
+  settings->bind("show-blocklisted-apps", show_blocklisted_apps, "active");
 
   // signals connections
 
@@ -72,6 +80,38 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       blocklist_player_name->set_text("");
     }
   });
+
+  show_blocklisted_apps->signal_state_set().connect(
+      [=](bool state) {
+        if (state) {
+          players_model->remove_all();
+
+          listview_players->set_model(nullptr);
+
+          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+            players_model->append(all_players_model->get_item(n));
+          }
+
+          listview_players->set_model(Gtk::NoSelection::create(players_model));
+        } else {
+          players_model->remove_all();
+
+          listview_players->set_model(nullptr);
+
+          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+            auto item = all_players_model->get_item(n);
+
+            if (!app_is_blocklisted(item->info.name)) {
+              players_model->append(item);
+            }
+          }
+
+          listview_players->set_model(Gtk::NoSelection::create(players_model));
+        }
+
+        return false;
+      },
+      false);
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -333,26 +373,24 @@ void EffectsBaseUi::setup_listview_players() {
 void EffectsBaseUi::on_app_added(NodeInfo node_info) {
   // do not add the same stream twice
 
-  for (guint n = 0; n < players_model->get_n_items(); n++) {
-    auto item = players_model->get_item(n);
+  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+    auto item = all_players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
       return;
     }
   }
 
+  all_players_model->append(NodeInfoHolder::create(node_info));
+
   // Blocklist check
 
   auto forbidden_app = app_is_blocklisted(node_info.name);
 
   if (forbidden_app) {
-    node_info.visible_to_user = BlocklistSettingsUi::get_blocklisted_apps_visibility();
-
-    if (!node_info.visible_to_user) {
+    if (!settings->get_boolean("show-blocklisted-apps")) {
       return;
     }
-  } else {
-    node_info.visible_to_user = true;
   }
 
   players_model->append(NodeInfoHolder::create(node_info));
@@ -377,6 +415,16 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
 
     if (item->info.id == node_info.id) {
       players_model->remove(n);
+
+      break;
+    }
+  }
+
+  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+    auto item = all_players_model->get_item(n);
+
+    if (item->info.id == node_info.id) {
+      all_players_model->remove(n);
 
       break;
     }

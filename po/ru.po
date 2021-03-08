@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-20 19:56-0300\n"
+"POT-Creation-Date: 2021-03-08 17:22-0300\n"
 "PO-Revision-Date: 2018-07-18 22:14+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -20,7 +20,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3 data/ui/application.glade:61
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+#: data/ui/application_window.ui:25
 msgid "PulseEffects"
 msgstr "PulseEffects"
 
@@ -105,8 +106,8 @@ msgstr "Эквалайзер, Компрессор и другие аудиоэ�
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "лимитер;компрессор;ребербатор;эквалайзер;автогромкость;"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:44
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:47
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:29
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:32
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
@@ -114,62 +115,56 @@ msgstr "\"Предустановки\""
 msgid "Audio effects for PulseAudio applications"
 msgstr "Аудиоэффекты для приложений PulseAudio"
 
-#: data/ui/app_button_row.glade:49
-msgid "Applications"
-msgstr "Приложения"
-
-#: data/ui/app_info.glade:203
+#: data/ui/app_info.ui:66
 #, fuzzy
 msgid "Add to Blocklist"
 msgstr "Черный список"
 
-#: data/ui/app_info.glade:239
+#: data/ui/app_info.ui:82
 msgid "Format"
 msgstr "Формат"
 
-#: data/ui/app_info.glade:264 data/ui/convolver.glade:348
+#: data/ui/app_info.ui:108 data/ui/convolver.glade:348
 msgid "Rate"
 msgstr "Частота"
 
-#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
-#: data/ui/stereo_tools.glade:756
+#: data/ui/app_info.ui:134 data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Каналы"
 
-#: data/ui/app_info.glade:314 data/ui/pipe_settings.glade:190
-#: data/ui/pipe_settings.glade:290 data/ui/pipe_settings.glade:476
-#: data/ui/pipe_settings.glade:576
+#: data/ui/app_info.ui:160 data/ui/pipe_settings.glade:96
+#: data/ui/pipe_settings.glade:179
 msgid "Latency"
 msgstr "Задержка"
 
-#: data/ui/app_info.glade:339
+#: data/ui/app_info.ui:186
 msgid "State"
 msgstr "Состояние"
 
-#: data/ui/application.glade:142 src/calibration_ui.cpp:64
-#: src/calibration_ui.cpp:191
+#: data/ui/application_window.ui:58 src/calibration_ui.cpp:56
+#: src/calibration_ui.cpp:182
 msgid "Test Signals"
 msgstr "Проверочный сигнал"
 
-#: data/ui/application.glade:157
+#: data/ui/application_window.ui:69
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Обход"
 
-#: data/ui/application.glade:172 data/ui/equalizer.glade:331
-#: data/ui/general_settings.glade:289
-msgid "Settings"
-msgstr "Настройки"
-
-#: data/ui/application.glade:194
+#: data/ui/application_window.ui:80
 msgid "Help"
 msgstr "Справка"
 
-#: data/ui/application.glade:217 data/ui/crossfeed.glade:240
+#: data/ui/application_window.ui:91 data/ui/application_window.ui:142
+#: data/ui/equalizer.glade:331
+msgid "Settings"
+msgstr "Настройки"
+
+#: data/ui/application_window.ui:105 data/ui/crossfeed.glade:240
 #: data/ui/equalizer.glade:403 data/ui/filter.glade:344
-#: data/ui/reverb.glade:401 src/presets_menu_ui.cpp:133
-#: src/presets_menu_ui.cpp:285 src/presets_menu_ui.cpp:286
-#: src/presets_menu_ui.cpp:303 src/presets_menu_ui.cpp:304
+#: data/ui/reverb.glade:401 src/presets_menu_ui.cpp:180
+#: src/presets_menu_ui.cpp:354 src/presets_menu_ui.cpp:355
+#: src/presets_menu_ui.cpp:372 src/presets_menu_ui.cpp:373
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -183,12 +178,12 @@ msgstr "Контроль громкости по EBU R 128"
 #: data/ui/deesser.glade:182 data/ui/delay.glade:144
 #: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:187
 #: data/ui/equalizer_band.glade:230 data/ui/exciter.glade:167
-#: data/ui/filter.glade:243 data/ui/general_settings.glade:298
-#: data/ui/gate.glade:172 data/ui/limiter.glade:166 data/ui/loudness.glade:174
-#: data/ui/maximizer.glade:139 data/ui/multiband_compressor.glade:307
-#: data/ui/multiband_gate.glade:331 data/ui/pitch.glade:158
-#: data/ui/reverb.glade:299 data/ui/stereo_tools.glade:194
-#: data/ui/webrtc.glade:141 data/ui/rnnoise.glade:139
+#: data/ui/filter.glade:243 data/ui/gate.glade:172 data/ui/limiter.glade:166
+#: data/ui/loudness.glade:174 data/ui/maximizer.glade:139
+#: data/ui/multiband_compressor.glade:307 data/ui/multiband_gate.glade:331
+#: data/ui/pitch.glade:158 data/ui/reverb.glade:299
+#: data/ui/stereo_tools.glade:194 data/ui/webrtc.glade:141
+#: data/ui/rnnoise.glade:139
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -254,10 +249,9 @@ msgstr "Комплексные измерения"
 #: data/ui/limiter.glade:501 data/ui/loudness.glade:238
 #: data/ui/loudness.glade:431 data/ui/maximizer.glade:358
 #: data/ui/multiband_compressor.glade:2103 data/ui/multiband_gate.glade:2262
-#: data/ui/pitch.glade:450 data/ui/presets_menu.glade:238
-#: data/ui/reverb.glade:753 data/ui/stereo_tools.glade:427
-#: data/ui/stereo_tools.glade:931 data/ui/webrtc.glade:780
-#: data/ui/rnnoise.glade:362
+#: data/ui/pitch.glade:450 data/ui/reverb.glade:753
+#: data/ui/stereo_tools.glade:427 data/ui/stereo_tools.glade:931
+#: data/ui/webrtc.glade:780 data/ui/rnnoise.glade:362
 msgid "Input"
 msgstr "Вход"
 
@@ -276,10 +270,9 @@ msgstr "Вход"
 #: data/ui/multiband_compressor.glade:2116 data/ui/multiband_gate.glade:951
 #: data/ui/multiband_gate.glade:1363 data/ui/multiband_gate.glade:1776
 #: data/ui/multiband_gate.glade:2189 data/ui/multiband_gate.glade:2275
-#: data/ui/pitch.glade:463 data/ui/presets_menu.glade:137
-#: data/ui/reverb.glade:766 data/ui/stereo_tools.glade:901
-#: data/ui/stereo_tools.glade:944 data/ui/webrtc.glade:794
-#: data/ui/rnnoise.glade:375
+#: data/ui/pitch.glade:463 data/ui/reverb.glade:766
+#: data/ui/stereo_tools.glade:901 data/ui/stereo_tools.glade:944
+#: data/ui/webrtc.glade:794 data/ui/rnnoise.glade:375
 msgid "Output"
 msgstr "Выход"
 
@@ -353,37 +346,6 @@ msgstr "Диапазон частот"
 msgid "Floor"
 msgstr "Нижний порог"
 
-#: data/ui/blocklist_settings.glade:52 data/ui/blocklist_settings.glade:155
-#: data/ui/presets_menu.glade:65 data/ui/presets_menu.glade:166
-msgid "Create Preset"
-msgstr "Создать новый набор предустановок"
-
-#: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
-#: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
-#: data/ui/pipe_info.glade:50
-msgid "Name"
-msgstr "Название"
-
-#: data/ui/blocklist_settings.glade:81
-msgid "Reconnect the microphone to apply new changes made to the Blocklist"
-msgstr ""
-
-#: data/ui/blocklist_settings.glade:139 data/ui/pipe_settings.glade:383
-msgid "Input Effects"
-msgstr "Эффекты для ввода звука"
-
-#: data/ui/blocklist_settings.glade:230
-msgid "Restart the player to apply new changes made to the Blocklist"
-msgstr ""
-
-#: data/ui/blocklist_settings.glade:242 data/ui/pipe_settings.glade:688
-msgid "Output Effects"
-msgstr "Эффекты для вывода звука"
-
-#: data/ui/blocklist_settings.glade:265
-msgid "Show Blocklisted Apps in Main Tab"
-msgstr ""
-
 #: data/ui/calibration_signals.glade:32
 msgid "Sine"
 msgstr "Синусоида"
@@ -456,6 +418,14 @@ msgstr "Измерение шума"
 #: data/ui/calibration_mic.glade:119
 msgid "Subtract Noise"
 msgstr "Вычетание шума"
+
+#: data/ui/calibration_mic.glade:132
+msgid "Start"
+msgstr ""
+
+#: data/ui/calibration_mic.glade:144
+msgid "Stop"
+msgstr ""
 
 #: data/ui/compressor.glade:386 data/ui/deesser.glade:436
 #: data/ui/gate.glade:498 data/ui/maximizer.glade:242
@@ -710,7 +680,7 @@ msgstr "Импульсная реакция"
 msgid "Select the impulse Response File"
 msgstr "Выбрать файл с импульсной реакцией"
 
-#: data/ui/convolver.glade:477 src/spectrum_settings_ui.cpp:195
+#: data/ui/convolver.glade:477 src/spectrum_settings_ui.cpp:202
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -836,6 +806,14 @@ msgstr "Определено"
 #: data/ui/delay.glade:90
 msgid "Delay"
 msgstr "Задержка"
+
+#: data/ui/effects_base.ui:138
+msgid "Blocklist"
+msgstr "Черный список"
+
+#: data/ui/effects_base.ui:165
+msgid "Player Name"
+msgstr ""
 
 #: data/ui/equalizer.glade:44
 msgid "Equalizer"
@@ -1036,49 +1014,59 @@ msgstr ""
 msgid "Inertia"
 msgstr "Инертность"
 
-#: data/ui/general_settings.glade:58
+#: data/ui/general_settings.ui:17
 msgid "Start Service at Login"
 msgstr "Запуск службы при запуске"
 
-#: data/ui/general_settings.glade:82
+#: data/ui/general_settings.ui:37
 msgid "Process All Outputs"
 msgstr "Вкл. для всех выводов"
 
-#: data/ui/general_settings.glade:94
+#: data/ui/general_settings.ui:57
 msgid "Process All Inputs"
 msgstr "Вкл. для всех вводов"
 
-#: data/ui/general_settings.glade:130
+#: data/ui/general_settings.ui:77
 msgid "Use Dark Theme"
 msgstr "Исп. тёмную тему"
 
-#: data/ui/general_settings.glade:158 data/ui/general_settings.glade:220
-msgid "Niceness"
-msgstr "Приоритет процесса (nice)"
-
-#: data/ui/general_settings.glade:159
-msgid "Real Time"
-msgstr "Режим реального времени"
-
-#: data/ui/general_settings.glade:160
-msgid "None"
-msgstr "Никакой"
-
-#: data/ui/general_settings.glade:208
+#: data/ui/general_settings.ui:97
 msgid "Priority Type"
 msgstr "Тип приоритета процесса"
 
-#: data/ui/general_settings.glade:232
+#: data/ui/general_settings.ui:108 data/ui/general_settings.ui:163
+msgid "Niceness"
+msgstr "Приоритет процесса (nice)"
+
+#: data/ui/general_settings.ui:109
+msgid "Real Time"
+msgstr "Режим реального времени"
+
+#: data/ui/general_settings.ui:110
+msgid "None"
+msgstr "Никакой"
+
+#: data/ui/general_settings.ui:145
 msgid "Priority"
 msgstr "Приоритет"
 
-#: data/ui/general_settings.glade:244
+#: data/ui/general_settings.ui:181
 msgid "Activity Timeout"
 msgstr ""
 
-#: data/ui/general_settings.glade:325
-msgid "About"
-msgstr "О программе"
+#: data/ui/general_settings.ui:192
+msgid "s"
+msgstr ""
+
+#: data/ui/general_settings.ui:203
+#, fuzzy
+msgid "Reset All Settings"
+msgstr "Настройки"
+
+#: data/ui/general_settings.ui:209
+#, fuzzy
+msgid "About PulseEffects"
+msgstr "PulseEffects"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: data/ui/gate.glade:97
@@ -1260,19 +1248,15 @@ msgstr "Быстрее"
 msgid "Preserve Formant"
 msgstr "Сохранить формат"
 
-#: data/ui/preset_row.glade:55
+#: data/ui/preset_row.ui:17
 msgid "Load"
 msgstr ""
 
-#: data/ui/preset_row.glade:70
+#: data/ui/preset_row.ui:24
 msgid "Save current settings to this preset file"
 msgstr "Сохранить текущие настройки в этот набор преднастроек"
 
-#: data/ui/preset_row.glade:84
-msgid "Remove this preset file"
-msgstr "Удалить этот файл с предустановками"
-
-#: data/ui/preset_row.glade:98
+#: data/ui/preset_row.ui:32
 msgid ""
 "Automatically apply this preset whenever the currently used device is "
 "plugged in the system"
@@ -1280,85 +1264,104 @@ msgstr ""
 "Автоматически применять этот набор предустановок, когда текущее звукое "
 "устройство подключают к системе"
 
-#: data/ui/presets_menu.glade:81 data/ui/presets_menu.glade:182
-#: src/presets_menu_ui.cpp:129
+#: data/ui/preset_row.ui:38
+msgid "Remove this preset file"
+msgstr "Удалить этот файл с предустановками"
+
+#: data/ui/presets_menu.ui:29
+msgid "Speakers"
+msgstr ""
+
+#: data/ui/presets_menu.ui:52 data/ui/presets_menu.ui:162
+#: data/ui/pipe_info.glade:50
+msgid "Name"
+msgstr "Название"
+
+#: data/ui/presets_menu.ui:58 data/ui/presets_menu.ui:168
+msgid "Create Preset"
+msgstr "Создать новый набор предустановок"
+
+#: data/ui/presets_menu.ui:75 data/ui/presets_menu.ui:185
 msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
+#: data/ui/presets_menu.ui:87 data/ui/presets_menu.ui:197
+msgid "Search"
+msgstr ""
+
+#: data/ui/presets_menu.ui:139
+#, fuzzy
+msgid "Microphone"
+msgstr "Калибровка корректировки микрофона"
+
 #: data/ui/pipe_info.glade:77
-msgid "Version"
+#, fuzzy
+msgid "Header Version"
 msgstr "Версия"
 
 #: data/ui/pipe_info.glade:104
+#, fuzzy
+msgid "Default Clock Rate"
+msgstr "Частота дискретизации по умолчанию"
+
+#: data/ui/pipe_info.glade:131
+#, fuzzy
+msgid "Library Version"
+msgstr "Версия"
+
+#: data/ui/pipe_info.glade:158
 msgid "Default Sink"
 msgstr "Устройство вывода по умолчанию"
 
-#: data/ui/pipe_info.glade:116
+#: data/ui/pipe_info.glade:185
 msgid "Default Source"
 msgstr "Устройство ввода по умолчанию"
 
-#: data/ui/pipe_info.glade:158
-msgid "Protocol"
-msgstr "Версия протокола сервера"
-
-#: data/ui/pipe_info.glade:185
-msgid "Default Sample Format"
-msgstr "Спецификация отсчётов по умолчанию"
-
 #: data/ui/pipe_info.glade:212
-msgid "Default Sampling Rate"
-msgstr "Частота дискретизации по умолчанию"
+#, fuzzy
+msgid "Minimum Quantum"
+msgstr "Частота"
 
-#: data/ui/pipe_info.glade:266
-msgid "Channel Mapping"
-msgstr "Схема каналов"
+#: data/ui/pipe_info.glade:224
+#, fuzzy
+msgid "Maximum Quantum"
+msgstr "Максимальное увеличение"
 
-#: data/ui/pipe_info.glade:291
+#: data/ui/pipe_info.glade:236
+msgid "Quantum"
+msgstr ""
+
+#: data/ui/pipe_info.glade:297
 msgid "Server"
 msgstr "Сервер"
 
-#: data/ui/pipe_info.glade:336
+#: data/ui/pipe_info.glade:342
 msgid "Modules"
 msgstr "Модули"
 
-#: data/ui/pipe_info.glade:382
+#: data/ui/pipe_info.glade:388
 msgid "Clients"
 msgstr "Клиенты"
 
-#: data/ui/pipe_info.glade:446
+#: data/ui/pipe_info.glade:448
 msgid "File"
 msgstr "Файл"
 
-#: data/ui/pipe_info.glade:456
+#: data/ui/pipe_info.glade:458
 msgid "Configuration"
 msgstr "Параметры"
 
-#: data/ui/pipe_info.glade:489
-msgid "Resamplers"
-msgstr "Ресемплеры"
-
-#: data/ui/pipe_settings.glade:98 data/ui/pipe_settings.glade:403
+#: data/ui/pipe_settings.glade:58 data/ui/pipe_settings.glade:141
 msgid "Use Default"
 msgstr "По умолчанию"
 
-#: data/ui/pipe_settings.glade:147 data/ui/pipe_settings.glade:452
-msgid "Pipeline Input"
-msgstr ""
+#: data/ui/pipe_settings.glade:125
+msgid "Input Effects"
+msgstr "Эффекты для ввода звука"
 
-#: data/ui/pipe_settings.glade:159 data/ui/pipe_settings.glade:259
-#: data/ui/pipe_settings.glade:464 data/ui/pipe_settings.glade:564
-msgid "Buffer"
-msgstr "Буфер"
-
-#: data/ui/pipe_settings.glade:247 data/ui/pipe_settings.glade:552
-#, fuzzy
-msgid "Pipeline Output"
-msgstr "Эквалайзер - Выход"
-
-# Taking lingual shortcuts to squeeze it in the text box
-#: data/ui/pipe_settings.glade:347 data/ui/pipe_settings.glade:652
-msgid "Block Size"
-msgstr "Размер блока"
+#: data/ui/pipe_settings.glade:209
+msgid "Output Effects"
+msgstr "Эффекты для вывода звука"
 
 #: data/ui/reverb.glade:130
 msgid "Reverberation"
@@ -1442,75 +1445,80 @@ msgstr "Экспериментальный"
 msgid "High Frequency Damping"
 msgstr "Высокочастотное демпфирование"
 
-#: data/ui/spectrum_settings.glade:77
+#: data/ui/spectrum_settings.ui:17
 msgid "Show Spectrum"
 msgstr "Показывать спектр"
 
-#: data/ui/spectrum_settings.glade:89
+#: data/ui/spectrum_settings.ui:38
 msgid "Fill"
 msgstr "Заполнить"
 
-#: data/ui/spectrum_settings.glade:125
+#: data/ui/spectrum_settings.ui:59
 msgid "Border"
 msgstr "Граница"
 
-#: data/ui/spectrum_settings.glade:149
+#: data/ui/spectrum_settings.ui:80
 msgid "Use Custom Color"
 msgstr "Использовать свой цвет"
 
-#: data/ui/spectrum_settings.glade:173
+#: data/ui/spectrum_settings.ui:101
 msgid "Use Gradient"
 msgstr "Использовать градиент"
 
-#: data/ui/spectrum_settings.glade:315
+#: data/ui/spectrum_settings.ui:122
+msgid "Spectrum Type"
+msgstr "Тип спектра"
+
+#: data/ui/spectrum_settings.ui:133
+msgid "Bars"
+msgstr "Полосы"
+
+#: data/ui/spectrum_settings.ui:134
+msgid "Lines"
+msgstr "Линии"
+
+#: data/ui/spectrum_settings.ui:146
+msgid "Spectrum Color"
+msgstr "Цвет спектра"
+
+#: data/ui/spectrum_settings.ui:167
+msgid "Gradient Color"
+msgstr "Цвет градиента"
+
+#: data/ui/spectrum_settings.ui:188
+msgid "Axis Color"
+msgstr ""
+
+#: data/ui/spectrum_settings.ui:224
 msgid "Points"
 msgstr "Точки"
 
-#: data/ui/spectrum_settings.glade:327
+#: data/ui/spectrum_settings.ui:243
 msgid "Height"
 msgstr "Высота"
 
-#: data/ui/spectrum_settings.glade:339
+#: data/ui/spectrum_settings.ui:263
 msgid "Line Width"
 msgstr "Ширина линии"
 
-#: data/ui/spectrum_settings.glade:351
+#: data/ui/spectrum_settings.ui:282
 msgid "Sampling"
 msgstr "Передискретизация"
 
-#: data/ui/spectrum_settings.glade:363
+#: data/ui/spectrum_settings.ui:293 data/ui/spectrum_settings.ui:323
+#: data/ui/spectrum_settings.ui:353
+msgid "Hz"
+msgstr ""
+
+#: data/ui/spectrum_settings.ui:312
 #, fuzzy
 msgid "Minimum Frequency"
 msgstr "Частота"
 
-#: data/ui/spectrum_settings.glade:375
+#: data/ui/spectrum_settings.ui:342
 #, fuzzy
 msgid "Maximum Frequency"
 msgstr "Частота"
-
-#: data/ui/spectrum_settings.glade:410
-msgid "Spectrum Type"
-msgstr "Тип спектра"
-
-#: data/ui/spectrum_settings.glade:423
-msgid "Bars"
-msgstr "Полосы"
-
-#: data/ui/spectrum_settings.glade:424
-msgid "Lines"
-msgstr "Линии"
-
-#: data/ui/spectrum_settings.glade:437
-msgid "Spectrum Color"
-msgstr "Цвет спектра"
-
-#: data/ui/spectrum_settings.glade:449
-msgid "Gradient Color"
-msgstr "Цвет градиента"
-
-#: data/ui/spectrum_settings.glade:461
-msgid "Axis Color"
-msgstr ""
 
 #: data/ui/stereo_tools.glade:108
 msgid "Stereo Tools"
@@ -1704,64 +1712,53 @@ msgstr "Агрессивный режим"
 msgid "Standard RNNoise Model"
 msgstr ""
 
-#: src/app_info_ui.cpp:119
-msgid "running"
-msgstr ""
-
-#: src/app_info_ui.cpp:123
-msgid "suspended"
-msgstr ""
-
-#: src/app_info_ui.cpp:127
-msgid "idle"
-msgstr ""
-
-#: src/app_info_ui.cpp:131
-#, fuzzy
-msgid "creating"
-msgstr "Настройки"
-
-#: src/app_info_ui.cpp:135
-msgid "error"
-msgstr ""
-
-#: src/application.cpp:38
+#: src/application.cpp:31
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Выйти из PulseEffects. Полезно при запуске в режиме отладки."
 
-#: src/application.cpp:40
+#: src/application.cpp:33
 msgid "Show available presets."
 msgstr "Показать доступные пресеты."
 
-#: src/application.cpp:43
+#: src/application.cpp:36
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Загрузить пресет. Пример: pulseeffects -l music"
 
-#: src/application.cpp:45
+#: src/application.cpp:38
 msgid "Reset PulseEffects."
 msgstr "Сбросить настройки PulseEffects"
 
-#: src/application.cpp:48
+#: src/application.cpp:41
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:50
+#: src/application.cpp:43
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:270
+#: src/application.cpp:264
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:278
+#: src/application.cpp:272
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
-#: src/blocklist_settings_ui.cpp:191
-msgid "Blocklist"
-msgstr "Черный список"
+#. initializing the subtitle
+#: src/application_ui.cpp:63 src/application_ui.cpp:111
+msgid "stream outputs"
+msgstr ""
 
-#: src/calibration_ui.cpp:198
+#: src/application_ui.cpp:113
+msgid "stream inputs"
+msgstr ""
+
+#: src/application_ui.cpp:115
+#, fuzzy
+msgid "server"
+msgstr "Сервер"
+
+#: src/calibration_ui.cpp:189
 msgid "Calibration Microphone"
 msgstr "Калибровка корректировки микрофона"
 
@@ -1770,12 +1767,12 @@ msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
 #: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
-#: src/presets_menu_ui.cpp:129
+#: src/presets_menu_ui.cpp:176
 msgid "Open"
 msgstr "Открыть"
 
 #: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
-#: src/presets_menu_ui.cpp:129
+#: src/presets_menu_ui.cpp:176
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -1786,6 +1783,27 @@ msgstr "Не получилось"
 #: src/convolver_ui.cpp:323
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
+
+#: src/effects_base_ui.cpp:219 src/effects_base_ui.cpp:411
+msgid "running"
+msgstr ""
+
+#: src/effects_base_ui.cpp:223 src/effects_base_ui.cpp:413
+msgid "suspended"
+msgstr ""
+
+#: src/effects_base_ui.cpp:227 src/effects_base_ui.cpp:415
+msgid "idle"
+msgstr ""
+
+#: src/effects_base_ui.cpp:231 src/effects_base_ui.cpp:417
+#, fuzzy
+msgid "creating"
+msgstr "Настройки"
+
+#: src/effects_base_ui.cpp:235 src/effects_base_ui.cpp:419
+msgid "error"
+msgstr ""
 
 #: src/equalizer_ui.cpp:380
 msgid "infinity"
@@ -1801,13 +1819,47 @@ msgstr "Импортировать предустановки"
 msgid "APO Presets"
 msgstr "Предустановки"
 
-#: src/general_settings_ui.cpp:149
+#: src/general_settings_ui.cpp:143
 msgid "General"
 msgstr "Общие"
 
-#: src/pipe_settings_ui.cpp:168
+#: src/pipe_settings_ui.cpp:108
 msgid "PipeWire"
 msgstr ""
+
+#: src/presets_menu_ui.cpp:175
+#, fuzzy
+msgid "Import Preset"
+msgstr "Импортировать предустановки"
+
+#~ msgid "Applications"
+#~ msgstr "Приложения"
+
+#~ msgid "About"
+#~ msgstr "О программе"
+
+#~ msgid "Protocol"
+#~ msgstr "Версия протокола сервера"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Спецификация отсчётов по умолчанию"
+
+#~ msgid "Channel Mapping"
+#~ msgstr "Схема каналов"
+
+#~ msgid "Resamplers"
+#~ msgstr "Ресемплеры"
+
+#~ msgid "Buffer"
+#~ msgstr "Буфер"
+
+#, fuzzy
+#~ msgid "Pipeline Output"
+#~ msgstr "Эквалайзер - Выход"
+
+# Taking lingual shortcuts to squeeze it in the text box
+#~ msgid "Block Size"
+#~ msgstr "Размер блока"
 
 #~ msgid "Resampler"
 #~ msgstr "Ресемплер"
