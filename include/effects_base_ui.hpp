@@ -74,7 +74,7 @@ class EffectsBaseUi {
   Gtk::MenuButton* menubutton_blocklist = nullptr;
   Gtk::Switch* show_blocklisted_apps = nullptr;
   Gtk::Button* button_add_to_blocklist = nullptr;
-  Gtk::Entry* entry_blocklist_name = nullptr;
+  Gtk::Text* blocklist_player_name = nullptr;
   Gtk::ScrolledWindow* blocklist_scrolled_window = nullptr;
 
   PipeManager* pm = nullptr;

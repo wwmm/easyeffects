@@ -68,7 +68,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   int soe_latency = 0, sie_latency = 0;
 
-  void apply_css_style(const std::string& css_file_name);
+  static void apply_css_style(const std::string& css_file_name);
 
   void on_stack_visible_child_changed();
 
