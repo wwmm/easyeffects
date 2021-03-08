@@ -158,6 +158,37 @@
                         <property name="placeholder_text" translatable="yes">Player Name</property>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <child>
+                            <object class="GtkScrolledWindow" id="blocklist_scrolled_window">
+                                <property name="hexpand">1</property>
+                                <property name="vexpand">1</property>
+                                <property name="propagate_natural_width">1</property>
+                                <property name="propagate_natural_height">1</property>
+                                <child>
+                                    <object class="GtkViewport">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <child>
+                                            <object class="GtkListView" id="listview_blocklist">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <property name="show-separators">1</property>
+                                                <style>
+                                                    <class name="rich-list" />
+                                                </style>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
     </object>
