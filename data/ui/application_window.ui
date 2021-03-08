@@ -117,7 +117,7 @@
                 <property name="hhomogeneous">0</property>
                 <property name="vhomogeneous">0</property>
                 <property name="transition_duration">250</property>
-                <property name="transition_type">crossfade</property>
+                <property name="transition_type">slide-left-right</property>
                 <child>
                     <placeholder />
                 </child>

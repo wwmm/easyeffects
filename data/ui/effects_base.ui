@@ -3,7 +3,7 @@
     <object class="GtkBox" id="top_box">
         <property name="orientation">vertical</property>
         <child>
-            <object class="GtkStack" id="top_stack">
+            <object class="GtkStack" id="stack_top">
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
                 <property name="transition_duration">250</property>
@@ -65,12 +65,12 @@
                     <object class="GtkStackSwitcher">
                         <property name="halign">center</property>
                         <property name="valign">end</property>
-                        <property name="stack">top_stack</property>
+                        <property name="stack">stack_top</property>
                     </object>
                 </property>
 
                 <child>
-                    <object class="GtkLabel" id="sink_state">
+                    <object class="GtkLabel" id="device_state">
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="label"></property>
@@ -81,39 +81,6 @@
                 </child>
 
                 <child>
-                    <object class="GtkLabel" id="sink_rate">
-                        <property name="margin-start">6</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="label"></property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="sink_format">
-                        <property name="margin-start">6</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="label"></property>
-                        <style>
-                            <class name="dim-label" />
-                        </style>
-                    </object>
-                </child>
-
-                <child type="end">
-                    <object class="GtkMenuButton" id="menubutton">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="tooltip_text" translatable="yes">Settings</property>
-                        <property name="icon_name">preferences-system-symbolic</property>
-                    </object>
-                </child>
-
-                <child type="end">
                     <object class="GtkBox">
                         <property name="margin-end">6</property>
                         <property name="halign">center</property>
@@ -159,6 +126,14 @@
                                 </style>
                             </object>
                         </child>
+                    </object>
+                </child>
+
+                <child type="end">
+                    <object class="GtkMenuButton" id="menubutton_blocklist">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Blocklist</property>
                     </object>
                 </child>
             </object>

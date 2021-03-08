@@ -192,17 +192,15 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   connections.emplace_back(soe->pm->sink_changed.connect([&](auto nd_info) {
     if (nd_info.id == soe->pm->pe_sink_node.id) {
-      sink_state->set_text(node_state_to_string(soe->pm->pe_sink_node.state));
+      std::ostringstream str;
 
-      sink_format->set_text(soe->pm->pe_sink_node.format);
+      str << node_state_to_string(soe->pm->pe_sink_node.state) << std::string(5, ' ');
 
-      std::ostringstream str_rate;
+      str.precision(1);
 
-      str_rate.precision(1);
+      str << std::fixed << soe->pm->pe_sink_node.rate * 0.001F << " kHz" << std::string(5, ' ');
 
-      str_rate << std::fixed << soe->pm->pe_sink_node.rate * 0.001F << " kHz";
-
-      sink_rate->set_text(str_rate.str());
+      device_state->set_text(str.str());
     }
   }));
 }

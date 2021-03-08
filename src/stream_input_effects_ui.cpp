@@ -148,17 +148,15 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   connections.emplace_back(sie->pm->source_changed.connect([&](auto nd_info) {
     if (nd_info.id == sie->pm->pe_source_node.id) {
-      sink_state->set_text(node_state_to_string(sie->pm->pe_sink_node.state));
+      std::ostringstream str;
 
-      sink_format->set_text(sie->pm->pe_sink_node.format);
+      str << node_state_to_string(sie->pm->pe_source_node.state) << std::string(5, ' ');
 
-      std::ostringstream str_rate;
+      str.precision(1);
 
-      str_rate.precision(1);
+      str << std::fixed << sie->pm->pe_source_node.rate * 0.001F << " kHz" << std::string(5, ' ');
 
-      str_rate << std::fixed << sie->pm->pe_sink_node.rate * 0.001F << " kHz";
-
-      sink_rate->set_text(str_rate.str());
+      device_state->set_text(str.str());
     }
   }));
 }

@@ -36,22 +36,31 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
-  sink_state = builder->get_widget<Gtk::Label>("sink_state");
-  sink_rate = builder->get_widget<Gtk::Label>("sink_rate");
-  sink_format = builder->get_widget<Gtk::Label>("sink_format");
+  device_state = builder->get_widget<Gtk::Label>("device_state");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
+  menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
+  stack_top = builder->get_widget<Gtk::Stack>("stack_top");
 
   // configuring widgets
 
   setup_listview_players();
 
-  // stack = builder->get_widget<Gtk::Stack>("stack");
   // placeholder_spectrum = builder->get_widget<Gtk::Box>("placeholder_spectrum");
 
   // spectrum
 
   // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
+
+  stack_top->connect_property_changed("visible-child", [=]() {
+    auto name = stack_top->get_visible_child_name();
+
+    if (name == "page_players") {
+      menubutton_blocklist->set_visible(true);
+    } else {
+      menubutton_blocklist->set_visible(false);
+    }
+  });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {

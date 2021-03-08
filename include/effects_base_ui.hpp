@@ -68,10 +68,10 @@ class EffectsBaseUi {
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::ListView* listview_players = nullptr;
-  Gtk::Stack* stack = nullptr;
+  Gtk::Stack* stack_top = nullptr;
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *sink_state = nullptr,
-             *sink_rate = nullptr, *sink_format = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *device_state = nullptr;
+  Gtk::MenuButton* menubutton_blocklist = nullptr;
 
   PipeManager* pm = nullptr;
 
