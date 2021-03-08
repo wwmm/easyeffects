@@ -32,7 +32,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
   output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
-  output_name = builder->get_widget<Gtk::Entry>("output_name");
+  output_name = builder->get_widget<Gtk::Text>("output_name");
   add_output = builder->get_widget<Gtk::Button>("add_output");
   import_output = builder->get_widget<Gtk::Button>("import_output");
   output_search = builder->get_widget<Gtk::SearchEntry>("output_search");
@@ -40,7 +40,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   input_listview = builder->get_widget<Gtk::ListView>("input_listview");
   input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
-  input_name = builder->get_widget<Gtk::Entry>("input_name");
+  input_name = builder->get_widget<Gtk::Text>("input_name");
   add_input = builder->get_widget<Gtk::Button>("add_input");
   import_input = builder->get_widget<Gtk::Button>("import_input");
   input_search = builder->get_widget<Gtk::SearchEntry>("input_search");
@@ -404,6 +404,7 @@ void PresetsMenuUi::on_show() {
   int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
 
   output_scrolled_window->set_max_content_height(height);
+  input_scrolled_window->set_max_content_height(height);
 
   Gtk::Popover::on_show();
 }

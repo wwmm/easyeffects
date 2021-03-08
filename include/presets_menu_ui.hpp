@@ -51,7 +51,7 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
 
-  Gtk::Entry *output_name = nullptr, *input_name = nullptr;
+  Gtk::Text *output_name = nullptr, *input_name = nullptr;
 
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
 

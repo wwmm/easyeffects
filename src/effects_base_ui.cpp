@@ -41,7 +41,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
+
   blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");
+  button_add_to_blocklist = builder->get_widget<Gtk::Button>("button_add_to_blocklist");
 
   // configuring widgets
 
@@ -53,6 +55,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
 
+  // signals connections
+
   stack_top->connect_property_changed("visible-child", [=]() {
     auto name = stack_top->get_visible_child_name();
 
@@ -60,6 +64,12 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       menubutton_blocklist->set_visible(true);
     } else {
       menubutton_blocklist->set_visible(false);
+    }
+  });
+
+  button_add_to_blocklist->signal_clicked().connect([=]() {
+    if (add_new_blocklist_entry(blocklist_player_name->get_text())) {
+      blocklist_player_name->set_text("");
     }
   });
 }

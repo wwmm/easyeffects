@@ -151,16 +151,12 @@
                 <property name="margin_bottom">6</property>
                 <property name="spacing">12</property>
                 <property name="orientation">vertical</property>
+
                 <child>
-                    <object class="GtkWidget">
+                    <object class="GtkBox">
                         <property name="valign">center</property>
-                        <property name="css-name">entry</property>
                         <property name="hexpand">1</property>
-
-                        <property name="layout-manager">
-                            <object class="GtkBoxLayout" />
-                        </property>
-
+                        <property name="css-name">entry</property>
                         <child>
                             <object class="GtkText" id="blocklist_player_name">
                                 <property name="valign">center</property>
@@ -169,9 +165,8 @@
                                 <property name="placeholder_text" translatable="yes">Player Name</property>
                             </object>
                         </child>
-
                         <child>
-                            <object class="GtkButton">
+                            <object class="GtkButton" id="button_add_to_blocklist">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="icon_name">list-add-symbolic</property>
@@ -180,7 +175,6 @@
                                 </style>
                             </object>
                         </child>
-
                         <style>
                             <class name="entry" />
                         </style>

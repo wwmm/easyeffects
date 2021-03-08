@@ -229,6 +229,8 @@ void Application::on_activate() {
           settings->set_int("window-width", width);
           settings->set_int("window-height", height);
 
+          // util::warning(std::to_string(width) + " x " + std::to_string(height));
+
           delete window;
 
           return false;
