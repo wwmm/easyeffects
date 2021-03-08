@@ -41,6 +41,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
+  entry_blocklist_name = builder->get_widget<Gtk::Entry>("entry_blocklist_name");
 
   // configuring widgets
 
