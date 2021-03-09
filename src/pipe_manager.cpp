@@ -1144,11 +1144,9 @@ void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-void PipeManager::link_nodes(const int& output_node_id, const int& input_node_id) {
+auto PipeManager::link_nodes(const int& output_node_id, const int& input_node_id) -> bool {
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
-
-  pw_thread_loop_lock(thread_loop);
 
   for (auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
@@ -1176,16 +1174,22 @@ void PipeManager::link_nodes(const int& output_node_id, const int& input_node_id
             pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
 
         if (proxy == nullptr) {
-          pw_thread_loop_unlock(thread_loop);
-
           util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +
                         std::to_string(input_node_id));
 
-          pw_thread_loop_unlock(thread_loop);
+          return false;
         }
       }
     }
   }
 
+  return true;
+}
+
+void PipeManager::lock() const {
+  pw_thread_loop_lock(thread_loop);
+}
+
+void PipeManager::unlock() const {
   pw_thread_loop_unlock(thread_loop);
 }

@@ -207,7 +207,11 @@ class PipeManager {
     Links the output ports of the node output_node_id to the input ports of the node input_node_id
   */
 
-  void link_nodes(const int& output_node_id, const int& input_node_id);
+  auto link_nodes(const int& output_node_id, const int& input_node_id) -> bool;
+
+  void lock() const;
+
+  void unlock() const;
 
   sigc::signal<void(NodeInfo)> source_added;
   sigc::signal<void(NodeInfo)> source_changed;
