@@ -53,8 +53,53 @@
                         <property name="name">page_plugins</property>
                         <property name="title">Plugins</property>
                         <property name="child">
-                            <object class="GtkLabel">
-                                <property name="label">plugins</property>
+                            <object class="GtkBox">
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="orientation">vertical</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="spacing">6</property>
+                                        <child>
+                                            <object class="GtkMenuButton" id="menubutton_select_plugin">
+                                                <property name="margin_start">6</property>
+                                                <property name="margin_end">6</property>
+                                                <property name="margin_top">6</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="direction">right</property>
+                                                <property name="popover">popover_add_plugin</property>
+                                                <property name="label" translatable="yes">Add Plugin</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkScrolledWindow">
+                                                <child>
+                                                    <object class="GtkViewport">
+                                                        <child>
+                                                            <object class="GtkListView" id="listview_selected_plugins">
+                                                                <property name="vexpand">1</property>
+                                                                <property name="show-separators">1</property>
+                                                                <style>
+                                                                    <class name="rich-list" />
+                                                                </style>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkStack" id="stack_plugins">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="transition_duration">250</property>
+                                        <property name="transition_type">slide-up-down</property>
+                                    </object>
+                                </child>
                             </object>
                         </property>
                     </object>
@@ -87,7 +132,6 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="margin-end">6</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="spacing">3</property>
@@ -236,6 +280,59 @@
                         </child>
                     </object>
                 </child>
+            </object>
+        </child>
+    </object>
+
+    <object class="GtkPopover" id="popover_add_plugin">
+        <child>
+            <object class="GtkBox">
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="spacing">12</property>
+                <property name="orientation">vertical</property>
+
+                <child>
+                    <object class="GtkSearchEntry" id="plugins_add_search">
+                        <property name="valign">start</property>
+                        <property name="hexpand">1</property>
+                        <property name="placeholder_text" translatable="yes">Search</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkFrame">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <child>
+                            <object class="GtkScrolledWindow" id="scrolled_window_menu_plugins">
+                                <property name="hexpand">1</property>
+                                <property name="vexpand">1</property>
+                                <property name="propagate_natural_width">1</property>
+                                <property name="propagate_natural_height">1</property>
+                                <child>
+                                    <object class="GtkViewport">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <child>
+                                            <object class="GtkListView" id="listview_menu_plugins">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <property name="show-separators">1</property>
+                                                <style>
+                                                    <class name="rich-list" />
+                                                </style>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
             </object>
         </child>
     </object>
