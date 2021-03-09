@@ -632,10 +632,36 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* up = static_cast<Gtk::Button*>(list_item->get_data("up"));
+    auto* down = static_cast<Gtk::Button*>(list_item->get_data("down"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(plugins_names[name]);
+
+    auto connection_up = up->signal_clicked().connect([=]() {
+      auto list = settings->get_string_array("selected-plugins");
+
+      auto r = std::find(std::begin(list), std::end(list), name);
+
+      if (r != std::begin(list)) {
+        std::iter_swap(r, r - 1);
+
+        settings->set_string_array("selected-plugins", list);
+      }
+    });
+
+    auto connection_down = down->signal_clicked().connect([=]() {
+      auto list = settings->get_string_array("selected-plugins");
+
+      auto r = std::find(std::begin(list), std::end(list), name);
+
+      if (r != std::end(list) - 1) {
+        std::iter_swap(r, r + 1);
+
+        settings->set_string_array("selected-plugins", list);
+      }
+    });
 
     auto connection_remove = remove->signal_clicked().connect([=]() {
       auto list = settings->get_string_array("selected-plugins");
@@ -646,12 +672,18 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       settings->set_string_array("selected-plugins", list);
     });
 
+    list_item->set_data("connection_up", new sigc::connection(connection_up),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_down", new sigc::connection(connection_down),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_remove", "connection_up", "connection_down"}) {
+    for (const auto* conn : {"connection_up", "connection_down", "connection_remove"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
