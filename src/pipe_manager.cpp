@@ -1143,3 +1143,49 @@ void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
                     (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
+
+void PipeManager::link_nodes(const int& output_node_id, const int& input_node_id) {
+  std::vector<PortInfo> list_output_ports;
+  std::vector<PortInfo> list_input_ports;
+
+  pw_thread_loop_lock(thread_loop);
+
+  for (auto& port : list_ports) {
+    if (port.node_id == output_node_id && port.direction == "out") {
+      list_output_ports.emplace_back(port);
+    }
+
+    if (port.node_id == input_node_id && port.direction == "in") {
+      list_input_ports.emplace_back(port);
+    }
+  }
+
+  for (auto& outp : list_output_ports) {
+    for (auto& inp : list_input_ports) {
+      if (outp.audio_channel == inp.audio_channel) {
+        pw_properties* props = pw_properties_new(nullptr, nullptr);
+
+        pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
+        pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
+        pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(output_node_id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(input_node_id).c_str());
+        pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(inp.id).c_str());
+
+        auto* proxy =
+            pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
+
+        if (proxy == nullptr) {
+          pw_thread_loop_unlock(thread_loop);
+
+          util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +
+                        std::to_string(input_node_id));
+
+          pw_thread_loop_unlock(thread_loop);
+        }
+      }
+    }
+  }
+
+  pw_thread_loop_unlock(thread_loop);
+}

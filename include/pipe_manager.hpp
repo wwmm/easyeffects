@@ -203,6 +203,12 @@ class PipeManager {
 
   static void set_node_mute(NodeInfo nd_info, const bool& state);
 
+  /*
+    Links the output ports of the node output_node_id to the input ports of the node input_node_id
+  */
+
+  void link_nodes(const int& output_node_id, const int& input_node_id);
+
   sigc::signal<void(NodeInfo)> source_added;
   sigc::signal<void(NodeInfo)> source_changed;
   sigc::signal<void(NodeInfo)> source_removed;
