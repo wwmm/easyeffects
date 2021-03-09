@@ -21,10 +21,7 @@
 #define SPECTRUM_UI_HPP
 
 #include <giomm.h>
-#include <gtkmm/box.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/grid.h>
+#include <gtkmm.h>
 #include "util.hpp"
 
 class SpectrumUi : public Gtk::DrawingArea {
@@ -47,22 +44,17 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   Glib::RefPtr<Gio::Settings> settings;
 
+  Glib::RefPtr<Gtk::EventControllerMotion> controller_motion;
+
   Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
 
   std::vector<sigc::connection> connections;
 
-  bool mouse_inside = false;
   int axis_height = 0;
   double mouse_intensity = 0.0, mouse_freq = 0.0;
   std::vector<float> spectrum_mag;
 
-  auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
-
-  // auto on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool;
-
-  // auto on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool;
-
-  // auto on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool;
+  void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 
   void init_color();
 

@@ -20,15 +20,39 @@
 #include "spectrum_ui.hpp"
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::DrawingArea(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
-  // loading glade widgets
+    : Gtk::DrawingArea(cobject),
+      settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
+      controller_motion(Gtk::EventControllerMotion::create()) {
+  set_draw_func(sigc::mem_fun(*this, &SpectrumUi::on_draw));
 
   // signals connection
 
-  // spectrum->signal_draw().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_draw));
-  // spectrum->signal_enter_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_enter_notify_event));
-  // spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_leave_notify_event));
-  // spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_spectrum_motion_notify_event));
+  // spectrum->signal_enter_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_enter));
+  // spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_leave));
+  // spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_motion));
+
+  add_controller(controller_motion);
+
+  controller_motion->signal_motion().connect([=](const double& x, const double& y) {
+    int width = get_width();
+    int height = get_height();
+    int usable_height = height - axis_height;
+
+    if (y < usable_height) {
+      double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
+      double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
+      double mouse_freq_log = x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
+
+      mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
+
+      // intensity scale is in decibel
+      // minimum intensity is -120 dB and maximum is 0 dB
+
+      mouse_intensity = -y * 120.0 / usable_height;
+
+      queue_draw();
+    }
+  });
 
   connections.emplace_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
     init_color();
@@ -86,17 +110,14 @@ void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
   queue_draw();
 }
 
-auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
+void SpectrumUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
   ctx->paint();
 
   auto n_points = spectrum_mag.size();
 
   if (n_points > 0U) {
-    auto allocation = get_allocation();
-    auto width = allocation.get_width();
-    auto height = allocation.get_height();
-    auto line_width = static_cast<float>(settings->get_double("line-width"));
-    auto objects_x = util::linspace(line_width, width - line_width, n_points);
+    auto line_width = static_cast<int>(settings->get_double("line-width"));
+    auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
     auto draw_border = settings->get_boolean("show-bar-border");
     auto use_gradient = settings->get_boolean("use-gradient");
     auto spectrum_type = settings->get_enum("type");
@@ -171,7 +192,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       ctx->stroke();
     }
 
-    if (mouse_inside) {
+    if (controller_motion->contains_pointer()) {
       std::ostringstream msg;
 
       msg.precision(0);
@@ -181,7 +202,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
 
       Pango::FontDescription font;
       font.set_family("Monospace");
-      // font.set_weight(Pango::WEIGHT_BOLD);
+      font.set_weight(Pango::Weight::BOLD);
 
       int text_width = 0;
       int text_height = 0;
@@ -189,49 +210,12 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
-      ctx->move_to(static_cast<double>(width - static_cast<float>(text_width)), 0);
+      ctx->move_to(static_cast<double>(static_cast<float>(width) - static_cast<float>(text_width)), 0);
 
       layout->show_in_cairo_context(ctx);
     }
   }
-
-  return false;
 }
-
-// auto SpectrumUi::on_spectrum_enter_notify_event(GdkEventCrossing* event) -> bool {
-//   mouse_inside = true;
-//   return false;
-// }
-
-// auto SpectrumUi::on_spectrum_leave_notify_event(GdkEventCrossing* event) -> bool {
-//   mouse_inside = false;
-//   return false;
-// }
-
-// auto SpectrumUi::on_spectrum_motion_notify_event(GdkEventMotion* event) -> bool {
-//   auto allocation = spectrum->get_allocation();
-
-//   auto width = allocation.get_width();
-//   auto height = allocation.get_height();
-//   int usable_height = height - axis_height;
-
-//   if (event->y < usable_height) {
-//     double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
-//     double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
-//     double mouse_freq_log = event->x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
-
-//     mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
-
-//     // intensity scale is in decibel
-//     // minimum intensity is -120 dB and maximum is 0 dB
-
-//     mouse_intensity = -event->y * 120.0 / usable_height;
-
-//     spectrum->queue_draw();
-//   }
-
-//   return false;
-// }
 
 void SpectrumUi::init_color() {
   Glib::Variant<std::vector<double>> v;
@@ -296,7 +280,7 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
 
     Pango::FontDescription font;
     font.set_family("Monospace");
-    // font.set_weight(Pango::WEIGHT_BOLD);
+    font.set_weight(Pango::Weight::BOLD);
 
     int text_width = 0;
     int text_height = 0;
