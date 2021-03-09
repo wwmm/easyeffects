@@ -63,8 +63,6 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  SpectrumUi* spectrum_ui = nullptr;
-
   /*
     Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens
   */
