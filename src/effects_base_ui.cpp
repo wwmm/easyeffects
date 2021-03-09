@@ -605,18 +605,26 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = new Gtk::Box();
     auto* label = Gtk::manage(new Gtk::Label());
-    auto* btn = Gtk::manage(new Gtk::Button());
+    auto* up = Gtk::manage(new Gtk::Button());
+    auto* down = Gtk::manage(new Gtk::Button());
+    auto* remove = Gtk::manage(new Gtk::Button());
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
-    btn->set_icon_name("list-remove-symbolic");
+    up->set_icon_name("go-up-symbolic");
+    down->set_icon_name("go-down-symbolic");
+    remove->set_icon_name("list-remove-symbolic");
 
     box->append(*label);
-    box->append(*btn);
+    box->append(*up);
+    box->append(*down);
+    box->append(*remove);
 
     list_item->set_data("name", label);
-    list_item->set_data("remove", btn);
+    list_item->set_data("up", up);
+    list_item->set_data("down", down);
+    list_item->set_data("remove", remove);
 
     list_item->set_child(*box);
   });
