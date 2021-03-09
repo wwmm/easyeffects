@@ -101,6 +101,29 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
 
+  std::map<std::string, std::string> plugins_names{{"autogain", _("Autogain")},
+                                                   {"bass_enhancer", _("Bass Enhancer")},
+                                                   {"compressor", _("Compressor")},
+                                                   {"convolver", _("Convolver")},
+                                                   {"crossfeed", _("Crossfeed")},
+                                                   {"crystalizer", _("Crystalizer")},
+                                                   {"deesser", _("Deesser")},
+                                                   {"delay", _("Delay")},
+                                                   {"equalizer", _("Equalizer")},
+                                                   {"exciter", _("Exciter")},
+                                                   {"filter", _("Filter")},
+                                                   {"gate", _("Gate")},
+                                                   {"limiter", _("Limiter")},
+                                                   {"loudness", _("Loudness")},
+                                                   {"maximizer", _("Maximizer")},
+                                                   {"multiband_compressor", _("Multiband Compressor")},
+                                                   {"multiband_gate", _("Multiband Gate")},
+                                                   {"pitch", _("Pitch")},
+                                                   {"reverb", _("Reverberation")},
+                                                   {"rnnoise", _("Noise Reduction")},
+                                                   {"stereo_tools", _("Stereo Tools")},
+                                                   {"webrtc", _("WebRTC")}};
+
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
     std::ostringstream msg;
@@ -117,6 +140,8 @@ class EffectsBaseUi {
   void setup_listview_blocklist();
 
   void setup_listview_plugins();
+
+  void setup_listview_selected_plugins();
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 

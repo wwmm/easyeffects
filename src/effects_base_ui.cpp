@@ -56,6 +56,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   popover_plugins = builder->get_widget<Gtk::Popover>("popover_plugins");
   scrolled_window_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_plugins");
   listview_plugins = builder->get_widget<Gtk::ListView>("listview_plugins");
+  listview_selected_plugins = builder->get_widget<Gtk::ListView>("listview_selected_plugins");
   entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
 
   // configuring widgets
@@ -63,6 +64,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   setup_listview_players();
   setup_listview_blocklist();
   setup_listview_plugins();
+  setup_listview_selected_plugins();
 
   auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
 
@@ -475,14 +477,14 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
+  });
 
-    factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
-        connection->disconnect();
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
+      connection->disconnect();
 
-        list_item->set_data("connection_remove", nullptr);
-      }
-    });
+      list_item->set_data("connection_remove", nullptr);
+    }
   });
 }
 
@@ -552,7 +554,7 @@ void EffectsBaseUi::setup_listview_plugins() {
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
-    label->set_text(name);
+    label->set_text(plugins_names[name]);
 
     auto connection_add = add->signal_clicked().connect([=]() {
       auto list = settings->get_string_array("selected-plugins");
@@ -566,15 +568,88 @@ void EffectsBaseUi::setup_listview_plugins() {
 
     list_item->set_data("connection_add", new sigc::connection(connection_add),
                         Glib::destroy_notify_delete<sigc::connection>);
-
-    factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
-        connection->disconnect();
-
-        list_item->set_data("connection_add", nullptr);
-      }
-    });
   });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
+      connection->disconnect();
+
+      list_item->set_data("connection_add", nullptr);
+    }
+  });
+}
+
+void EffectsBaseUi::setup_listview_selected_plugins() {
+  selected_plugins->remove(0);
+
+  for (auto& name : settings->get_string_array("selected-plugins")) {
+    selected_plugins->append(name);
+  }
+
+  settings->signal_changed("selected-plugins").connect([=](auto key) {
+    auto list = settings->get_string_array(key);
+
+    selected_plugins->splice(0, selected_plugins->get_n_items(), list);
+  });
+
+  // setting the listview model and factory
+
+  listview_selected_plugins->set_model(Gtk::SingleSelection::create(selected_plugins));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_selected_plugins->set_factory(factory);
+
+  // setting the factory callbacks
+
+  // factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  //   auto* box = new Gtk::Box();
+  //   auto* label = Gtk::manage(new Gtk::Label());
+  //   auto* btn = Gtk::manage(new Gtk::Button());
+
+  //   label->set_hexpand(true);
+  //   label->set_halign(Gtk::Align::START);
+
+  //   btn->set_icon_name("list-remove-symbolic");
+
+  //   box->append(*label);
+  //   box->append(*btn);
+
+  //   list_item->set_data("name", label);
+  //   list_item->set_data("add", btn);
+
+  //   list_item->set_child(*box);
+  // });
+
+  // factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  //   auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+  //   auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
+
+  //   auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+  //   label->set_text(name);
+
+  //   auto connection_add = add->signal_clicked().connect([=]() {
+  //     auto list = settings->get_string_array("selected-plugins");
+
+  //     if (std::find(std::begin(list), std::end(list), name) != std::end(list)) {
+  //       list.emplace_back(name);
+
+  //       settings->set_string_array("selected-plugins", list);
+  //     }
+  //   });
+
+  //   list_item->set_data("connection_add", new sigc::connection(connection_add),
+  //                       Glib::destroy_notify_delete<sigc::connection>);
+  // });
+
+  // factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  //   if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
+  //     connection->disconnect();
+
+  //     list_item->set_data("connection_add", nullptr);
+  //   }
+  // });
 }
 
 void EffectsBaseUi::on_app_added(NodeInfo node_info) {
