@@ -22,21 +22,21 @@
 namespace {
 
 void on_process(void* userdata, struct spa_io_position* position) {
-  // auto* d = static_cast<data*>(userdata);
+  auto* d = static_cast<pf::data*>(userdata);
 
-  // uint32_t n_samples = position->clock.duration;
+  uint32_t n_samples = position->clock.duration;
 
   // pw_log_trace("do process %d", n_samples);
-  util::warning("processing");
+  // util::warning("processing");
 
-  // auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
-  // auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
+  auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
+  auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
 
-  // auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
-  // auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
+  auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
+  auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  // memcpy(out_left, in_left, n_samples * sizeof(float));
-  // memcpy(out_right, in_right, n_samples * sizeof(float));
+  memcpy(out_left, in_left, n_samples * sizeof(float));
+  memcpy(out_right, in_right, n_samples * sizeof(float));
 }
 
 // void destroy_filter(void* data) {

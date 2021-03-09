@@ -269,6 +269,18 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamOutputEffects>), this);
 
   g_signal_connect(child_settings, "changed::latency", G_CALLBACK(on_latency_changed), this);
+
+  // test
+
+  int delay_id = pw_filter_get_node_id(delay->filter);
+
+  pipe_manager->lock();
+
+  pipe_manager->link_nodes(pipe_manager->pe_sink_node.id, delay_id);
+
+  pipe_manager->link_nodes(delay_id, pipe_manager->default_sink.id);
+
+  pipe_manager->unlock();
 }
 
 StreamOutputEffects::~StreamOutputEffects() {

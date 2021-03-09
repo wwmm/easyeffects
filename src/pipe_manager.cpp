@@ -96,6 +96,10 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
     info.name = name;
   }
 
+  if (const auto* node_id = spa_dict_lookup(props, PW_KEY_NODE_ID)) {
+    info.node_id = std::stoi(node_id);
+  }
+
   if (const auto* direction = spa_dict_lookup(props, PW_KEY_PORT_DIRECTION)) {
     info.direction = direction;
   }
@@ -1144,7 +1148,7 @@ void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-auto PipeManager::link_nodes(const int& output_node_id, const int& input_node_id) -> bool {
+auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id) -> bool {
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
 
