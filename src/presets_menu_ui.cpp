@@ -399,9 +399,7 @@ auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& nam
 void PresetsMenuUi::on_show() {
   auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
 
-  const float scaling_factor = 0.5F;
-
-  int height = static_cast<int>(scaling_factor * static_cast<float>(parent->get_allocated_height()));
+  int height = static_cast<int>(0.5F * static_cast<float>(parent->get_allocated_height()));
 
   output_scrolled_window->set_max_content_height(height);
   input_scrolled_window->set_max_content_height(height);

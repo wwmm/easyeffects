@@ -34,8 +34,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
       blocklist(Gtk::StringList::create({"initial_value"})) {
-  // set locale (workaround for #849)
-
   // loading builder widgets
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
@@ -46,10 +44,15 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
 
+  popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
+  blocklist_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("blocklist_scrolled_window");
   blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");
   button_add_to_blocklist = builder->get_widget<Gtk::Button>("button_add_to_blocklist");
   show_blocklisted_apps = builder->get_widget<Gtk::Switch>("show_blocklisted_apps");
   listview_blocklist = builder->get_widget<Gtk::ListView>("listview_blocklist");
+
+  popover_select_plugin = builder->get_widget<Gtk::Popover>("popover_select_plugin");
+  scrolled_window_menu_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_menu_plugins");
 
   // configuring widgets
 
@@ -115,6 +118,18 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
         return false;
       },
       false);
+
+  popover_blocklist->signal_show().connect([=]() {
+    int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
+
+    blocklist_scrolled_window->set_max_content_height(height);
+  });
+
+  popover_select_plugin->signal_show().connect([=]() {
+    int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
+
+    scrolled_window_menu_plugins->set_max_content_height(height);
+  });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {

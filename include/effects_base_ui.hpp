@@ -77,12 +77,14 @@ class EffectsBaseUi {
 
  private:
   Gtk::Stack* stack_top = nullptr;
-  Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr;
+  Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_selected_plugins = nullptr,
+                *listview_menu_plugins = nullptr;
   Gtk::Switch* show_blocklisted_apps = nullptr;
   Gtk::Button* button_add_to_blocklist = nullptr;
   Gtk::Text* blocklist_player_name = nullptr;
-  Gtk::ScrolledWindow* blocklist_scrolled_window = nullptr;
-  Gtk::MenuButton* menubutton_blocklist = nullptr;
+  Gtk::ScrolledWindow *blocklist_scrolled_window = nullptr, *scrolled_window_menu_plugins = nullptr;
+  Gtk::MenuButton *menubutton_blocklist = nullptr, *menubutton_select_plugin = nullptr;
+  Gtk::Popover *popover_blocklist = nullptr, *popover_select_plugin = nullptr;
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 

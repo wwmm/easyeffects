@@ -67,7 +67,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="direction">right</property>
-                                                <property name="popover">popover_add_plugin</property>
+                                                <property name="popover">popover_select_plugin</property>
                                                 <property name="label" translatable="yes">Add Plugin</property>
                                             </object>
                                         </child>
@@ -284,7 +284,7 @@
         </child>
     </object>
 
-    <object class="GtkPopover" id="popover_add_plugin">
+    <object class="GtkPopover" id="popover_select_plugin">
         <child>
             <object class="GtkBox">
                 <property name="margin_start">6</property>
