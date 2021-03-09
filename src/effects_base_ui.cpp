@@ -559,7 +559,7 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto connection_add = add->signal_clicked().connect([=]() {
       auto list = settings->get_string_array("selected-plugins");
 
-      if (std::find(std::begin(list), std::end(list), name) != std::end(list)) {
+      if (std::find(std::begin(list), std::end(list), name) == std::end(list)) {
         list.emplace_back(name);
 
         settings->set_string_array("selected-plugins", list);
@@ -602,54 +602,55 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
   // setting the factory callbacks
 
-  // factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-  //   auto* box = new Gtk::Box();
-  //   auto* label = Gtk::manage(new Gtk::Label());
-  //   auto* btn = Gtk::manage(new Gtk::Button());
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = new Gtk::Box();
+    auto* label = Gtk::manage(new Gtk::Label());
+    auto* btn = Gtk::manage(new Gtk::Button());
 
-  //   label->set_hexpand(true);
-  //   label->set_halign(Gtk::Align::START);
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
 
-  //   btn->set_icon_name("list-remove-symbolic");
+    btn->set_icon_name("list-remove-symbolic");
 
-  //   box->append(*label);
-  //   box->append(*btn);
+    box->append(*label);
+    box->append(*btn);
 
-  //   list_item->set_data("name", label);
-  //   list_item->set_data("add", btn);
+    list_item->set_data("name", label);
+    list_item->set_data("remove", btn);
 
-  //   list_item->set_child(*box);
-  // });
+    list_item->set_child(*box);
+  });
 
-  // factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-  //   auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-  //   auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-  //   auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
-  //   label->set_text(name);
+    label->set_text(plugins_names[name]);
 
-  //   auto connection_add = add->signal_clicked().connect([=]() {
-  //     auto list = settings->get_string_array("selected-plugins");
+    auto connection_remove = remove->signal_clicked().connect([=]() {
+      auto list = settings->get_string_array("selected-plugins");
 
-  //     if (std::find(std::begin(list), std::end(list), name) != std::end(list)) {
-  //       list.emplace_back(name);
+      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& plugin_name) { return plugin_name == name; }),
+                 list.end());
 
-  //       settings->set_string_array("selected-plugins", list);
-  //     }
-  //   });
+      settings->set_string_array("selected-plugins", list);
+    });
 
-  //   list_item->set_data("connection_add", new sigc::connection(connection_add),
-  //                       Glib::destroy_notify_delete<sigc::connection>);
-  // });
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
+  });
 
-  // factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-  //   if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
-  //     connection->disconnect();
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    for (const auto* conn : {"connection_remove", "connection_up", "connection_down"}) {
+      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
+        connection->disconnect();
 
-  //     list_item->set_data("connection_add", nullptr);
-  //   }
-  // });
+        list_item->set_data(conn, nullptr);
+      }
+    }
+  });
 }
 
 void EffectsBaseUi::on_app_added(NodeInfo node_info) {
