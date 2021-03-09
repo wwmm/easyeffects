@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-08 17:22-0300\n"
+"POT-Creation-Date: 2021-03-09 15:27-0300\n"
 "PO-Revision-Date: 2019-09-07 22:19+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: \n"
@@ -86,7 +86,7 @@ msgstr "Vstupný Obmedzovač"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 #: data/ui/compressor.glade:110 data/ui/compressor.glade:589
-#: data/ui/webrtc.glade:633
+#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:108
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -265,7 +265,7 @@ msgstr "Relatívna"
 msgid "Gain"
 msgstr "Zisk"
 
-#: data/ui/autogain.glade:980
+#: data/ui/autogain.glade:980 include/effects_base_ui.hpp:119
 msgid "Loudness"
 msgstr "Hlasitosť"
 
@@ -273,7 +273,7 @@ msgstr "Hlasitosť"
 msgid "Range"
 msgstr "Rozsah"
 
-#: data/ui/bass_enhancer.glade:116
+#: data/ui/bass_enhancer.glade:116 include/effects_base_ui.hpp:107
 msgid "Bass Enhancer"
 msgstr "Vylepšovač Hĺbok"
 
@@ -620,7 +620,7 @@ msgstr "Pokročilé"
 msgid "Curve"
 msgstr "Krivka"
 
-#: data/ui/convolver.glade:90
+#: data/ui/convolver.glade:90 include/effects_base_ui.hpp:109
 msgid "Convolver"
 msgstr "Svinovač"
 
@@ -665,7 +665,7 @@ msgstr "Spektrum"
 msgid "Stereo Width"
 msgstr "Šírka sterea"
 
-#: data/ui/crossfeed.glade:104
+#: data/ui/crossfeed.glade:104 include/effects_base_ui.hpp:110
 msgid "Crossfeed"
 msgstr "Prelínanie kanálov"
 
@@ -690,7 +690,7 @@ msgstr "Zrezanie"
 msgid "Feed"
 msgstr "Kanál"
 
-#: data/ui/crystalizer.glade:90
+#: data/ui/crystalizer.glade:90 include/effects_base_ui.hpp:111
 msgid "Crystalizer"
 msgstr "Kryštalizátor"
 
@@ -724,7 +724,7 @@ msgstr "Stíšený"
 msgid "Bypass"
 msgstr "Prepustiť"
 
-#: data/ui/deesser.glade:125
+#: data/ui/deesser.glade:125 include/effects_base_ui.hpp:112
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -779,19 +779,28 @@ msgstr "Redukcia"
 msgid "Detected"
 msgstr "Zistené"
 
-#: data/ui/delay.glade:90
+#: data/ui/delay.glade:90 include/effects_base_ui.hpp:113
 msgid "Delay"
 msgstr "Onsekorenie"
 
-#: data/ui/effects_base.ui:138
+#: data/ui/effects_base.ui:71
+msgid "Add Plugin"
+msgstr ""
+
+#: data/ui/effects_base.ui:188
 msgid "Blocklist"
 msgstr "Čierny List"
 
-#: data/ui/effects_base.ui:165
+#: data/ui/effects_base.ui:215
 msgid "Player Name"
 msgstr ""
 
-#: data/ui/equalizer.glade:44
+#: data/ui/effects_base.ui:302 data/ui/presets_menu.ui:87
+#: data/ui/presets_menu.ui:197
+msgid "Search"
+msgstr ""
+
+#: data/ui/equalizer.glade:44 include/effects_base_ui.hpp:114
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
@@ -914,7 +923,7 @@ msgstr "Sólo"
 msgid "Apply"
 msgstr "Použiť"
 
-#: data/ui/exciter.glade:116
+#: data/ui/exciter.glade:116 include/effects_base_ui.hpp:115
 msgid "Exciter"
 msgstr "Zvukový budič"
 
@@ -923,7 +932,7 @@ msgstr "Zvukový budič"
 msgid "Ceiling"
 msgstr "Obmedzenie [dB]"
 
-#: data/ui/filter.glade:97
+#: data/ui/filter.glade:97 include/effects_base_ui.hpp:116
 msgid "Filter"
 msgstr "Filter"
 
@@ -1045,7 +1054,7 @@ msgstr "Nastavenia"
 msgid "About PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/gate.glade:97
+#: data/ui/gate.glade:97 include/effects_base_ui.hpp:117
 msgid "Gate"
 msgstr "Brána"
 
@@ -1077,6 +1086,7 @@ msgid "Gating"
 msgstr "Hradlo"
 
 #: data/ui/limiter.glade:96 data/ui/webrtc.glade:612
+#: include/effects_base_ui.hpp:118
 msgid "Limiter"
 msgstr "Obmedzovač"
 
@@ -1133,7 +1143,7 @@ msgstr "Robinson-Dadson"
 msgid "FFT Size"
 msgstr "Veľkosť miestnosti"
 
-#: data/ui/maximizer.glade:95
+#: data/ui/maximizer.glade:95 include/effects_base_ui.hpp:120
 msgid "Maximizer"
 msgstr "Zosilovač"
 
@@ -1141,7 +1151,7 @@ msgstr "Zosilovač"
 msgid "Gain Reduction"
 msgstr "Redukcia zosilnenia"
 
-#: data/ui/multiband_compressor.glade:139
+#: data/ui/multiband_compressor.glade:139 include/effects_base_ui.hpp:121
 msgid "Multiband Compressor"
 msgstr "Viacpásmový Kompresor"
 
@@ -1188,11 +1198,11 @@ msgstr "Stredné Pásmo"
 msgid "High Band"
 msgstr "Vysoké Pásmo"
 
-#: data/ui/multiband_gate.glade:139
+#: data/ui/multiband_gate.glade:139 include/effects_base_ui.hpp:122
 msgid "Multiband Gate"
 msgstr "Viacpásmová Brána"
 
-#: data/ui/pitch.glade:102
+#: data/ui/pitch.glade:102 include/effects_base_ui.hpp:123
 msgid "Pitch"
 msgstr "Výška tónu"
 
@@ -1256,10 +1266,6 @@ msgstr "Vytvoriť Predvoľbu"
 #: data/ui/presets_menu.ui:75 data/ui/presets_menu.ui:185
 msgid "Import Presets"
 msgstr "Načítať predvoľbu"
-
-#: data/ui/presets_menu.ui:87 data/ui/presets_menu.ui:197
-msgid "Search"
-msgstr ""
 
 #: data/ui/presets_menu.ui:139
 #, fuzzy
@@ -1336,7 +1342,7 @@ msgstr "Vstupné Efekty"
 msgid "Output Effects"
 msgstr "Výstupné Efekty"
 
-#: data/ui/reverb.glade:130
+#: data/ui/reverb.glade:130 include/effects_base_ui.hpp:124
 msgid "Reverberation"
 msgstr "Ozvena"
 
@@ -1489,7 +1495,7 @@ msgstr "Minimálna Frekvencia"
 msgid "Maximum Frequency"
 msgstr "Maximálna Frekvencia"
 
-#: data/ui/stereo_tools.glade:108
+#: data/ui/stereo_tools.glade:108 include/effects_base_ui.hpp:126
 msgid "Stereo Tools"
 msgstr "Stereo Nástroje"
 
@@ -1570,7 +1576,7 @@ msgstr "Základ Sterea"
 msgid "Stereo Phase"
 msgstr "Fáza Sterea"
 
-#: data/ui/webrtc.glade:96
+#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:127
 msgid "WebRTC"
 msgstr "WebRTC"
 
@@ -1656,7 +1662,7 @@ msgstr "Veľmi nízka"
 msgid "Voice Detector"
 msgstr "Detekcia Reči"
 
-#: data/ui/rnnoise.glade:90
+#: data/ui/rnnoise.glade:90 include/effects_base_ui.hpp:125
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Redukcia zosilnenia"
@@ -1679,6 +1685,11 @@ msgstr "Agresívny Režim"
 #: data/ui/rnnoise.glade:324
 msgid "Standard RNNoise Model"
 msgstr ""
+
+#: include/effects_base_ui.hpp:106
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatická hlasitosť"
 
 #: src/application.cpp:31
 msgid "Quit PulseEffects. Useful when running in service mode."
@@ -1753,24 +1764,24 @@ msgstr "Zlyhanie"
 msgid "Could Not Load The Impulse File"
 msgstr "Nie Je Možné Načítať Impulz súbor"
 
-#: src/effects_base_ui.cpp:219 src/effects_base_ui.cpp:411
+#: src/effects_base_ui.cpp:281 src/effects_base_ui.cpp:779
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:223 src/effects_base_ui.cpp:413
+#: src/effects_base_ui.cpp:285 src/effects_base_ui.cpp:781
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:227 src/effects_base_ui.cpp:415
+#: src/effects_base_ui.cpp:289 src/effects_base_ui.cpp:783
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:231 src/effects_base_ui.cpp:417
+#: src/effects_base_ui.cpp:293 src/effects_base_ui.cpp:785
 #, fuzzy
 msgid "creating"
 msgstr "Hradlo"
 
-#: src/effects_base_ui.cpp:235 src/effects_base_ui.cpp:419
+#: src/effects_base_ui.cpp:297 src/effects_base_ui.cpp:787
 msgid "error"
 msgstr ""
 
@@ -1798,6 +1809,11 @@ msgstr ""
 #, fuzzy
 msgid "Import Preset"
 msgstr "Načítať predvoľbu"
+
+#: src/stream_input_effects_ui.cpp:27
+#, fuzzy
+msgid "Recorders"
+msgstr "Okraj"
 
 #~ msgid "Applications"
 #~ msgstr "Aplikácie"

@@ -56,6 +56,8 @@ class EffectsBaseUi {
  protected:
   Glib::RefPtr<Gio::Settings> settings;
 
+  Glib::RefPtr<Gtk::StackPage> page_players = nullptr;
+
   Gtk::Image *app_input_icon = nullptr, *app_output_icon = nullptr, *saturation_icon = nullptr;
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *device_state = nullptr;
 

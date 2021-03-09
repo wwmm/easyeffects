@@ -24,6 +24,8 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            const Glib::RefPtr<Gio::Settings>& refSettings,
                                            StreamInputEffects* sie_ptr)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm), sie(sie_ptr) {
+  page_players->set_title(_("Recorders"));
+
   // populate stack
 
   //   auto b_limiter = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/limiter.glade");

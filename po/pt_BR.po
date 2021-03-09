@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PulseEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-08 17:22-0300\n"
+"POT-Creation-Date: 2021-03-09 15:27-0300\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -91,7 +91,7 @@ msgstr "Limitador de Entrada"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 #: data/ui/compressor.glade:110 data/ui/compressor.glade:589
-#: data/ui/webrtc.glade:633
+#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:108
 msgid "Compressor"
 msgstr "Compressor"
 
@@ -269,7 +269,7 @@ msgstr "Relativo"
 msgid "Gain"
 msgstr "Ganho"
 
-#: data/ui/autogain.glade:980
+#: data/ui/autogain.glade:980 include/effects_base_ui.hpp:119
 msgid "Loudness"
 msgstr "Sonoridade"
 
@@ -277,7 +277,7 @@ msgstr "Sonoridade"
 msgid "Range"
 msgstr "Alcance"
 
-#: data/ui/bass_enhancer.glade:116
+#: data/ui/bass_enhancer.glade:116 include/effects_base_ui.hpp:107
 msgid "Bass Enhancer"
 msgstr "Reforçador de Graves"
 
@@ -625,7 +625,7 @@ msgstr "Configurações Avançadas"
 msgid "Curve"
 msgstr "Curva"
 
-#: data/ui/convolver.glade:90
+#: data/ui/convolver.glade:90 include/effects_base_ui.hpp:109
 msgid "Convolver"
 msgstr "Convolver"
 
@@ -669,7 +669,7 @@ msgstr "Espectro"
 msgid "Stereo Width"
 msgstr "Largura do Stereo"
 
-#: data/ui/crossfeed.glade:104
+#: data/ui/crossfeed.glade:104 include/effects_base_ui.hpp:110
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
@@ -694,7 +694,7 @@ msgstr "Corte"
 msgid "Feed"
 msgstr "Alimentação"
 
-#: data/ui/crystalizer.glade:90
+#: data/ui/crystalizer.glade:90 include/effects_base_ui.hpp:111
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
@@ -728,7 +728,7 @@ msgstr "Mudo"
 msgid "Bypass"
 msgstr "Ignorar"
 
-#: data/ui/deesser.glade:125
+#: data/ui/deesser.glade:125 include/effects_base_ui.hpp:112
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -783,19 +783,28 @@ msgstr "Redução"
 msgid "Detected"
 msgstr "Detectado"
 
-#: data/ui/delay.glade:90
+#: data/ui/delay.glade:90 include/effects_base_ui.hpp:113
 msgid "Delay"
 msgstr "Atraso"
 
-#: data/ui/effects_base.ui:138
+#: data/ui/effects_base.ui:71
+msgid "Add Plugin"
+msgstr ""
+
+#: data/ui/effects_base.ui:188
 msgid "Blocklist"
 msgstr "Lista Negra"
 
-#: data/ui/effects_base.ui:165
+#: data/ui/effects_base.ui:215
 msgid "Player Name"
 msgstr ""
 
-#: data/ui/equalizer.glade:44
+#: data/ui/effects_base.ui:302 data/ui/presets_menu.ui:87
+#: data/ui/presets_menu.ui:197
+msgid "Search"
+msgstr ""
+
+#: data/ui/equalizer.glade:44 include/effects_base_ui.hpp:114
 msgid "Equalizer"
 msgstr "Equalizador"
 
@@ -918,7 +927,7 @@ msgstr "Sozinho"
 msgid "Apply"
 msgstr "Aplicar"
 
-#: data/ui/exciter.glade:116
+#: data/ui/exciter.glade:116 include/effects_base_ui.hpp:115
 msgid "Exciter"
 msgstr "Excitador"
 
@@ -926,7 +935,7 @@ msgstr "Excitador"
 msgid "Ceiling"
 msgstr "Teto"
 
-#: data/ui/filter.glade:97
+#: data/ui/filter.glade:97 include/effects_base_ui.hpp:116
 msgid "Filter"
 msgstr "Filtro"
 
@@ -1048,7 +1057,7 @@ msgstr "Configurações"
 msgid "About PulseEffects"
 msgstr "PulseEffects"
 
-#: data/ui/gate.glade:97
+#: data/ui/gate.glade:97 include/effects_base_ui.hpp:117
 msgid "Gate"
 msgstr "Gate"
 
@@ -1081,6 +1090,7 @@ msgid "Gating"
 msgstr "Gating"
 
 #: data/ui/limiter.glade:96 data/ui/webrtc.glade:612
+#: include/effects_base_ui.hpp:118
 msgid "Limiter"
 msgstr "Limitador"
 
@@ -1137,7 +1147,7 @@ msgstr ""
 msgid "FFT Size"
 msgstr "Tamanho do Quadro"
 
-#: data/ui/maximizer.glade:95
+#: data/ui/maximizer.glade:95 include/effects_base_ui.hpp:120
 msgid "Maximizer"
 msgstr "Maximizador"
 
@@ -1145,7 +1155,7 @@ msgstr "Maximizador"
 msgid "Gain Reduction"
 msgstr "Redução de Ganho"
 
-#: data/ui/multiband_compressor.glade:139
+#: data/ui/multiband_compressor.glade:139 include/effects_base_ui.hpp:121
 msgid "Multiband Compressor"
 msgstr "Compressor Multibandas"
 
@@ -1192,11 +1202,11 @@ msgstr "Banda Média"
 msgid "High Band"
 msgstr "Banda Alta"
 
-#: data/ui/multiband_gate.glade:139
+#: data/ui/multiband_gate.glade:139 include/effects_base_ui.hpp:122
 msgid "Multiband Gate"
 msgstr "Gate Multibandas"
 
-#: data/ui/pitch.glade:102
+#: data/ui/pitch.glade:102 include/effects_base_ui.hpp:123
 msgid "Pitch"
 msgstr "Altura"
 
@@ -1260,10 +1270,6 @@ msgstr "Criar Predefinição"
 #: data/ui/presets_menu.ui:75 data/ui/presets_menu.ui:185
 msgid "Import Presets"
 msgstr "Importar Predefinições"
-
-#: data/ui/presets_menu.ui:87 data/ui/presets_menu.ui:197
-msgid "Search"
-msgstr ""
 
 #: data/ui/presets_menu.ui:139
 #, fuzzy
@@ -1339,7 +1345,7 @@ msgstr "Efeitos de Entrada"
 msgid "Output Effects"
 msgstr "Efeitos de Saída"
 
-#: data/ui/reverb.glade:130
+#: data/ui/reverb.glade:130 include/effects_base_ui.hpp:124
 msgid "Reverberation"
 msgstr "Reverberação"
 
@@ -1494,7 +1500,7 @@ msgstr "Frequência"
 msgid "Maximum Frequency"
 msgstr "Frequência"
 
-#: data/ui/stereo_tools.glade:108
+#: data/ui/stereo_tools.glade:108 include/effects_base_ui.hpp:126
 msgid "Stereo Tools"
 msgstr "Ferramentas Stereo"
 
@@ -1574,7 +1580,7 @@ msgstr "Base Stereo"
 msgid "Stereo Phase"
 msgstr "Fase Stereo"
 
-#: data/ui/webrtc.glade:96
+#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:127
 msgid "WebRTC"
 msgstr ""
 
@@ -1660,7 +1666,7 @@ msgstr "Muito Baixo"
 msgid "Voice Detector"
 msgstr "Detector de Voz"
 
-#: data/ui/rnnoise.glade:90
+#: data/ui/rnnoise.glade:90 include/effects_base_ui.hpp:125
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Redução de Ganho"
@@ -1683,6 +1689,11 @@ msgstr "Modo Agressivo"
 #: data/ui/rnnoise.glade:324
 msgid "Standard RNNoise Model"
 msgstr ""
+
+#: include/effects_base_ui.hpp:106
+#, fuzzy
+msgid "Autogain"
+msgstr "Ganho Automático"
 
 #: src/application.cpp:31
 msgid "Quit PulseEffects. Useful when running in service mode."
@@ -1756,24 +1767,24 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_base_ui.cpp:219 src/effects_base_ui.cpp:411
+#: src/effects_base_ui.cpp:281 src/effects_base_ui.cpp:779
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:223 src/effects_base_ui.cpp:413
+#: src/effects_base_ui.cpp:285 src/effects_base_ui.cpp:781
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:227 src/effects_base_ui.cpp:415
+#: src/effects_base_ui.cpp:289 src/effects_base_ui.cpp:783
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:231 src/effects_base_ui.cpp:417
+#: src/effects_base_ui.cpp:293 src/effects_base_ui.cpp:785
 #, fuzzy
 msgid "creating"
 msgstr "Gating"
 
-#: src/effects_base_ui.cpp:235 src/effects_base_ui.cpp:419
+#: src/effects_base_ui.cpp:297 src/effects_base_ui.cpp:787
 msgid "error"
 msgstr ""
 
@@ -1803,6 +1814,11 @@ msgstr ""
 #, fuzzy
 msgid "Import Preset"
 msgstr "Importar Predefinições"
+
+#: src/stream_input_effects_ui.cpp:27
+#, fuzzy
+msgid "Recorders"
+msgstr "Borda"
 
 #~ msgid "Applications"
 #~ msgstr "Aplicativos"

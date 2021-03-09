@@ -46,6 +46,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
 
+  page_players = builder->get_object<Gtk::StackPage>("page_players");
+
   popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
   blocklist_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("blocklist_scrolled_window");
   blocklist_player_name = builder->get_widget<Gtk::Text>("blocklist_player_name");

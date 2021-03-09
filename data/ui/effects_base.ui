@@ -14,7 +14,7 @@
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>
-                    <object class="GtkStackPage">
+                    <object class="GtkStackPage" id="page_players">
                         <property name="name">page_players</property>
                         <property name="title">Players</property>
                         <property name="child">
