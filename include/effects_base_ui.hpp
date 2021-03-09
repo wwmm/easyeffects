@@ -26,7 +26,6 @@
 #include <gtkmm.h>
 #include <memory>
 #include <vector>
-#include "blocklist_settings_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"

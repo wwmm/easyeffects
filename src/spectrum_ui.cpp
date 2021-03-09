@@ -20,10 +20,8 @@
 #include "spectrum_ui.hpp"
 
 SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Grid(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
+    : Gtk::DrawingArea(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   // loading glade widgets
-
-  spectrum = builder->get_widget<Gtk::DrawingArea>("spectrum");
 
   // signals connection
 
@@ -46,11 +44,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   connections.emplace_back(
       settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
 
-  connections.emplace_back(settings->signal_changed("height").connect([&](auto key) {
-    auto v = settings->get_int("height");
-
-    spectrum->set_size_request(-1, v);
-  }));
+  connections.emplace_back(
+      settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
 
   settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
 
@@ -58,7 +53,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   init_frequency_labels_color();
   init_gradient_color();
 
-  spectrum->set_size_request(-1, settings->get_int("height"));
+  set_content_height(settings->get_int("height"));
 }
 
 SpectrumUi::~SpectrumUi() {
@@ -70,9 +65,9 @@ SpectrumUi::~SpectrumUi() {
 }
 
 auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/spectrum.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "widgets_grid");
+  auto* ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "drawing_area");
 
   box->append(*ui);
 
@@ -82,13 +77,13 @@ auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
 void SpectrumUi::clear_spectrum() {
   spectrum_mag.resize(0);
 
-  spectrum->queue_draw();
+  queue_draw();
 }
 
 void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
   spectrum_mag = magnitudes;
 
-  spectrum->queue_draw();
+  queue_draw();
 }
 
 auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
@@ -97,7 +92,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
   auto n_points = spectrum_mag.size();
 
   if (n_points > 0U) {
-    auto allocation = spectrum->get_allocation();
+    auto allocation = get_allocation();
     auto width = allocation.get_width();
     auto height = allocation.get_height();
     auto line_width = static_cast<float>(settings->get_double("line-width"));
@@ -107,7 +102,7 @@ auto SpectrumUi::on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> b
     auto spectrum_type = settings->get_enum("type");
 
     if (!settings->get_boolean("use-custom-color")) {
-      auto style_ctx = spectrum->get_style_context();
+      auto style_ctx = get_style_context();
 
       style_ctx->lookup_color("theme_selected_bg_color", color);
       style_ctx->lookup_color("theme_selected_fg_color", color_frequency_axis_labels);

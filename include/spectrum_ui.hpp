@@ -27,7 +27,7 @@
 #include <gtkmm/grid.h>
 #include "util.hpp"
 
-class SpectrumUi : public Gtk::Grid {
+class SpectrumUi : public Gtk::DrawingArea {
  public:
   SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
   SpectrumUi(const SpectrumUi&) = delete;
@@ -47,7 +47,6 @@ class SpectrumUi : public Gtk::Grid {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::DrawingArea* spectrum = nullptr;
   Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
 
   std::vector<sigc::connection> connections;

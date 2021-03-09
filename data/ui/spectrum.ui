@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <object class="GtkDrawingArea" id="drawing_area">
+        <property name="hexpand">1</property>
+        <property name="content-height">100</property>
+        <!-- <property name="events">GDK_POINTER_MOTION_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_STRUCTURE_MASK</property> -->
+    </object>
+</interface>

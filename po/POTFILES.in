@@ -39,7 +39,7 @@ data/ui/pipe_info.glade
 data/ui/pipe_conf_file_line.glade
 data/ui/pipe_settings.glade
 data/ui/reverb.glade
-data/ui/spectrum.glade
+data/ui/spectrum.ui
 data/ui/spectrum_settings.ui
 data/ui/stereo_tools.glade
 data/ui/webrtc.glade

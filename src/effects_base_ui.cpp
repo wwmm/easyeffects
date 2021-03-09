@@ -56,11 +56,11 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   setup_listview_players();
   setup_listview_blocklist();
 
-  // placeholder_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
+  auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
 
   // spectrum
 
-  // spectrum_ui = SpectrumUi::add_to_box(placeholder_spectrum);
+  spectrum_ui = SpectrumUi::add_to_box(box_spectrum);
 
   // gsettings
 
