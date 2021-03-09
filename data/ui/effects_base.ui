@@ -295,7 +295,7 @@
                 <property name="orientation">vertical</property>
 
                 <child>
-                    <object class="GtkSearchEntry" id="plugins_add_search">
+                    <object class="GtkSearchEntry" id="entry_plugins_search">
                         <property name="valign">start</property>
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
