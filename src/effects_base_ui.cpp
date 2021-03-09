@@ -33,7 +33,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       pm(pipe_manager),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
-      blocklist(Gtk::StringList::create({"initial_value"})) {
+      blocklist(Gtk::StringList::create({"initial_value"})),
+      plugins(Gtk::StringList::create({"initial_value"})),
+      selected_plugins(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
@@ -51,8 +53,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   show_blocklisted_apps = builder->get_widget<Gtk::Switch>("show_blocklisted_apps");
   listview_blocklist = builder->get_widget<Gtk::ListView>("listview_blocklist");
 
-  popover_select_plugin = builder->get_widget<Gtk::Popover>("popover_select_plugin");
-  scrolled_window_menu_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_menu_plugins");
+  popover_plugins = builder->get_widget<Gtk::Popover>("popover_plugins");
+  scrolled_window_plugins = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window_plugins");
 
   // configuring widgets
 
@@ -125,10 +127,10 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     blocklist_scrolled_window->set_max_content_height(height);
   });
 
-  popover_select_plugin->signal_show().connect([=]() {
+  popover_plugins->signal_show().connect([=]() {
     int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
 
-    scrolled_window_menu_plugins->set_max_content_height(height);
+    scrolled_window_plugins->set_max_content_height(height);
   });
 }
 

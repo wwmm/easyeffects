@@ -60,14 +60,14 @@
                                         <property name="vexpand">1</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkMenuButton" id="menubutton_select_plugin">
+                                            <object class="GtkMenuButton" id="menubutton_plugins">
                                                 <property name="margin_start">6</property>
                                                 <property name="margin_end">6</property>
                                                 <property name="margin_top">6</property>
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="direction">right</property>
-                                                <property name="popover">popover_select_plugin</property>
+                                                <property name="popover">popover_plugins</property>
                                                 <property name="label" translatable="yes">Add Plugin</property>
                                             </object>
                                         </child>
@@ -284,7 +284,7 @@
         </child>
     </object>
 
-    <object class="GtkPopover" id="popover_select_plugin">
+    <object class="GtkPopover" id="popover_plugins">
         <child>
             <object class="GtkBox">
                 <property name="margin_start">6</property>
@@ -307,7 +307,7 @@
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
                         <child>
-                            <object class="GtkScrolledWindow" id="scrolled_window_menu_plugins">
+                            <object class="GtkScrolledWindow" id="scrolled_window_plugins">
                                 <property name="hexpand">1</property>
                                 <property name="vexpand">1</property>
                                 <property name="propagate_natural_width">1</property>
@@ -317,7 +317,7 @@
                                         <property name="hexpand">1</property>
                                         <property name="vexpand">1</property>
                                         <child>
-                                            <object class="GtkListView" id="listview_menu_plugins">
+                                            <object class="GtkListView" id="listview_plugins">
                                                 <property name="hexpand">1</property>
                                                 <property name="vexpand">1</property>
                                                 <property name="show-separators">1</property>

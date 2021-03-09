@@ -82,15 +82,15 @@ class EffectsBaseUi {
   Gtk::Switch* show_blocklisted_apps = nullptr;
   Gtk::Button* button_add_to_blocklist = nullptr;
   Gtk::Text* blocklist_player_name = nullptr;
-  Gtk::ScrolledWindow *blocklist_scrolled_window = nullptr, *scrolled_window_menu_plugins = nullptr;
+  Gtk::ScrolledWindow *blocklist_scrolled_window = nullptr, *scrolled_window_plugins = nullptr;
   Gtk::MenuButton *menubutton_blocklist = nullptr, *menubutton_select_plugin = nullptr;
-  Gtk::Popover *popover_blocklist = nullptr, *popover_select_plugin = nullptr;
+  Gtk::Popover *popover_blocklist = nullptr, *popover_plugins = nullptr;
 
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
 
-  Glib::RefPtr<Gtk::StringList> blocklist;
+  Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
