@@ -116,6 +116,8 @@ class EffectsBaseUi {
 
   void setup_listview_blocklist();
 
+  void setup_listview_plugins();
+
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 
   auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;

@@ -4,6 +4,9 @@
         <key name="plugins" type="as">
             <default>["gate","multiband_gate","webrtc","limiter","compressor", "multiband_compressor","filter","equalizer","deesser","reverb", "pitch","stereo_tools","maximizer","rnnoise"]</default>
         </key>
+        <key name="selected-plugins" type="as">
+            <default>[]</default>
+        </key>
         <key name="latency" type="i">
             <range min="1" max="10000000" />
             <default>50</default>

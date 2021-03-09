@@ -62,6 +62,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   setup_listview_players();
   setup_listview_blocklist();
+  setup_listview_plugins();
 
   auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
 
@@ -480,6 +481,97 @@ void EffectsBaseUi::setup_listview_blocklist() {
         connection->disconnect();
 
         list_item->set_data("connection_remove", nullptr);
+      }
+    });
+  });
+}
+
+void EffectsBaseUi::setup_listview_plugins() {
+  plugins->remove(0);
+
+  for (auto& name : settings->get_string_array("plugins")) {
+    plugins->append(name);
+  }
+
+  settings->signal_changed("plugins").connect([=](auto key) {
+    auto list = settings->get_string_array(key);
+
+    plugins->splice(0, plugins->get_n_items(), list);
+  });
+
+  // filter
+
+  auto filter =
+      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto filter_model = Gtk::FilterListModel::create(plugins, filter);
+
+  filter_model->set_incremental(true);
+
+  Glib::Binding::bind_property(entry_plugins_search->property_text(), filter->property_search());
+
+  // sorter
+
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+
+  // setting the listview model and factory
+
+  listview_plugins->set_model(Gtk::NoSelection::create(sort_list_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_plugins->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = new Gtk::Box();
+    auto* label = Gtk::manage(new Gtk::Label());
+    auto* btn = Gtk::manage(new Gtk::Button());
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    btn->set_icon_name("list-add-symbolic");
+
+    box->append(*label);
+    box->append(*btn);
+
+    list_item->set_data("name", label);
+    list_item->set_data("add", btn);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
+
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+    label->set_text(name);
+
+    auto connection_add = add->signal_clicked().connect([=]() {
+      auto list = settings->get_string_array("selected-plugins");
+
+      if (std::find(std::begin(list), std::end(list), name) != std::end(list)) {
+        list.emplace_back(name);
+
+        settings->set_string_array("selected-plugins", list);
+      }
+    });
+
+    list_item->set_data("connection_add", new sigc::connection(connection_add),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
+        connection->disconnect();
+
+        list_item->set_data("connection_add", nullptr);
       }
     });
   });
