@@ -91,6 +91,28 @@ struct LinkInfo {
   pw_link_state state;
 };
 
+struct PortInfo {
+  std::string path;
+
+  std::string format_dsp;
+
+  std::string audio_channel;
+
+  std::string name;
+
+  std::string direction;
+
+  bool physical = false;
+
+  bool terminal = false;
+
+  bool monitor = false;
+
+  uint id = 0;
+
+  uint node_id = 0;
+};
+
 struct ModuleInfo {
   uint id;
 
@@ -132,6 +154,8 @@ class PipeManager {
   std::vector<NodeInfo> list_nodes;
 
   std::vector<LinkInfo> list_links;
+
+  std::vector<PortInfo> list_ports;
 
   std::vector<ModuleInfo> list_modules;
 
@@ -195,6 +219,8 @@ class PipeManager {
   sigc::signal<void(NodeInfo)> stream_input_removed;
 
   sigc::signal<void(LinkInfo)> link_changed;
+
+  sigc::signal<void(PortInfo)> port_changed;
 
  private:
   bool context_ready = false;

@@ -56,41 +56,73 @@ void on_removed_proxy(void* data) {
 auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   LinkInfo info;
 
-  const auto* id = spa_dict_lookup(props, PW_KEY_LINK_ID);
-  const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH);
-  const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE);
-  const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT);
-  const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE);
-  const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT);
-  const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE);
-
-  if (id != nullptr) {
+  if (const auto* id = spa_dict_lookup(props, PW_KEY_LINK_ID)) {
     info.id = std::stoi(id);
   }
 
-  if (path != nullptr) {
+  if (const auto* path = spa_dict_lookup(props, PW_KEY_OBJECT_PATH)) {
     info.path = path;
   }
 
-  if (input_node_id != nullptr) {
+  if (const auto* input_node_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_NODE)) {
     info.input_node_id = std::stoi(input_node_id);
   }
 
-  if (input_port_id != nullptr) {
+  if (const auto* input_port_id = spa_dict_lookup(props, PW_KEY_LINK_INPUT_PORT)) {
     info.input_port_id = std::stoi(input_port_id);
   }
 
-  if (output_node_id != nullptr) {
+  if (const auto* output_node_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_NODE)) {
     info.output_node_id = std::stoi(output_node_id);
   }
 
-  if (output_port_id != nullptr) {
+  if (const auto* output_port_id = spa_dict_lookup(props, PW_KEY_LINK_OUTPUT_PORT)) {
     info.output_port_id = std::stoi(output_port_id);
   }
 
-  if (passive != nullptr) {
+  if (const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE)) {
     if (strcmp(passive, "true") == 0) {
       info.passive = true;
+    }
+  }
+
+  return info;
+}
+
+auto port_info_from_props(const spa_dict* props) -> PortInfo {
+  PortInfo info;
+
+  if (const auto* name = spa_dict_lookup(props, PW_KEY_PORT_NAME)) {
+    info.name = name;
+  }
+
+  if (const auto* direction = spa_dict_lookup(props, PW_KEY_PORT_DIRECTION)) {
+    info.direction = direction;
+  }
+
+  if (const auto* port_channel = spa_dict_lookup(props, PW_KEY_AUDIO_CHANNEL)) {
+    info.audio_channel = port_channel;
+  }
+
+  if (const auto* port_audio_format = spa_dict_lookup(props, PW_KEY_AUDIO_FORMAT)) {
+    info.format_dsp = port_audio_format;
+  }
+
+  if (const auto* port_physical = spa_dict_lookup(props, PW_KEY_PORT_PHYSICAL)) {
+    if (strcmp(port_physical, "true") == 0) {
+      info.physical = true;
+    }
+  }
+
+  if (const auto* port_terminal = spa_dict_lookup(props, PW_KEY_PORT_TERMINAL)) {
+    if (strcmp(port_terminal, "true") == 0) {
+      info.terminal = true;
+    }
+  }
+
+  if (const auto* port_monitor = spa_dict_lookup(props, PW_KEY_PORT_MONITOR)) {
+    if (strcmp(port_monitor, "true") == 0) {
+      info.monitor = true;
     }
   }
 
@@ -407,6 +439,39 @@ void on_destroy_link_proxy(void* data) {
       ld->pm->list_links.end());
 }
 
+void on_port_info(void* object, const struct pw_port_info* info) {
+  auto* pd = static_cast<proxy_data*>(object);
+  auto* pm = pd->pm;
+
+  PortInfo port_info;
+
+  for (auto& port : pd->pm->list_ports) {
+    if (port.id == info->id) {
+      port_info = port_info_from_props(info->props);
+      port_info.id = port.id;
+
+      port = port_info;
+
+      Glib::signal_idle().connect_once([pm, port_info] { pm->port_changed.emit(port_info); });
+    }
+
+    break;
+  }
+
+  // const struct spa_dict_item* item = nullptr;
+  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
+}
+
+void on_destroy_port_proxy(void* data) {
+  auto* ld = static_cast<proxy_data*>(data);
+
+  spa_hook_remove(&ld->proxy_listener);
+
+  ld->pm->list_ports.erase(
+      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(), [=](auto& n) { return n.id == ld->id; }),
+      ld->pm->list_ports.end());
+}
+
 void on_module_info(void* object, const struct pw_module_info* info) {
   auto* ld = static_cast<proxy_data*>(object);
 
@@ -551,6 +616,9 @@ const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .
 const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
                                                   .removed = on_removed_proxy};
 
+const struct pw_proxy_events port_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_port_proxy,
+                                                  .removed = on_removed_proxy};
+
 const struct pw_proxy_events module_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_module_proxy,
                                                     .removed = on_removed_proxy};
 
@@ -565,6 +633,11 @@ const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_no
 const struct pw_link_events link_events = {
     PW_VERSION_LINK_EVENTS,
     .info = on_link_info,
+};
+
+const struct pw_port_events port_events = {
+    PW_VERSION_LINK_EVENTS,
+    .info = on_port_info,
 };
 
 const struct pw_module_events module_events = {
@@ -729,6 +802,27 @@ void on_registry_global(void* data,
       util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
     }
+
+    return;
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
+    auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(proxy_data)));
+
+    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+
+    pd->proxy = proxy;
+    pd->pm = pm;
+    pd->id = id;
+
+    pw_port_add_listener(proxy, &pd->object_listener, &port_events, pd);
+    pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
+
+    auto port_info = port_info_from_props(props);
+
+    port_info.id = id;
+
+    pm->list_ports.emplace_back(port_info);
 
     return;
   }
