@@ -110,20 +110,20 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
                                       "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/", pm);
 
-  // plugins.insert(std::make_pair(limiter->name, limiter->plugin));
-  // plugins.insert(std::make_pair(compressor->name, compressor->plugin));
-  // plugins.insert(std::make_pair(filter->name, filter->plugin));
-  // plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
-  // plugins.insert(std::make_pair(reverb->name, reverb->plugin));
-  // plugins.insert(std::make_pair(gate->name, gate->plugin));
-  // plugins.insert(std::make_pair(deesser->name, deesser->plugin));
-  // plugins.insert(std::make_pair(pitch->name, pitch->plugin));
-  // plugins.insert(std::make_pair(webrtc->name, webrtc->plugin));
-  // plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor->plugin));
-  // plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
-  // plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
-  // plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
-  // plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
+  plugins.insert(std::make_pair(limiter->name, limiter));
+  plugins.insert(std::make_pair(compressor->name, compressor));
+  plugins.insert(std::make_pair(filter->name, filter));
+  plugins.insert(std::make_pair(equalizer->name, equalizer));
+  plugins.insert(std::make_pair(reverb->name, reverb));
+  plugins.insert(std::make_pair(gate->name, gate));
+  plugins.insert(std::make_pair(deesser->name, deesser));
+  plugins.insert(std::make_pair(pitch->name, pitch));
+  // plugins.insert(std::make_pair(webrtc->name, webrtc));
+  plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
+  plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
+  plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
+  plugins.insert(std::make_pair(maximizer->name, maximizer));
+  plugins.insert(std::make_pair(rnnoise->name, rnnoise));
 
   connect_filters();
 }

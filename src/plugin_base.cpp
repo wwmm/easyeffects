@@ -124,8 +124,6 @@ PluginBase::PluginBase(std::string tag,
     util::error(log_tag + "can not connect the filter to pipewire!");
   }
 
-  pw_filter_set_active(filter, 0);
-
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 
   pw_thread_loop_wait(pm->thread_loop);

@@ -62,27 +62,29 @@ class EffectsBase {
 
   bool apps_want_to_play = false;
 
-  std::unique_ptr<AutoGain> autogain;
-  std::unique_ptr<BassEnhancer> bass_enhancer;
-  std::unique_ptr<Compressor> compressor;
-  std::unique_ptr<Convolver> convolver;
-  std::unique_ptr<Crossfeed> crossfeed;
-  std::unique_ptr<Crystalizer> crystalizer;
-  std::unique_ptr<Deesser> deesser;
-  std::unique_ptr<Delay> delay;
-  std::unique_ptr<Equalizer> equalizer;
-  std::unique_ptr<Exciter> exciter;
-  std::unique_ptr<Filter> filter;
-  std::unique_ptr<Gate> gate;
-  std::unique_ptr<Limiter> limiter;
-  std::unique_ptr<Loudness> loudness;
-  std::unique_ptr<Maximizer> maximizer;
-  std::unique_ptr<MultibandCompressor> multiband_compressor;
-  std::unique_ptr<MultibandGate> multiband_gate;
-  std::unique_ptr<Pitch> pitch;
-  std::unique_ptr<Reverb> reverb;
-  std::unique_ptr<RNNoise> rnnoise;
-  std::unique_ptr<StereoTools> stereo_tools;
+  std::map<std::string, std::shared_ptr<PluginBase>> plugins;
+
+  std::shared_ptr<AutoGain> autogain;
+  std::shared_ptr<BassEnhancer> bass_enhancer;
+  std::shared_ptr<Compressor> compressor;
+  std::shared_ptr<Convolver> convolver;
+  std::shared_ptr<Crossfeed> crossfeed;
+  std::shared_ptr<Crystalizer> crystalizer;
+  std::shared_ptr<Deesser> deesser;
+  std::shared_ptr<Delay> delay;
+  std::shared_ptr<Equalizer> equalizer;
+  std::shared_ptr<Exciter> exciter;
+  std::shared_ptr<Filter> filter;
+  std::shared_ptr<Gate> gate;
+  std::shared_ptr<Limiter> limiter;
+  std::shared_ptr<Loudness> loudness;
+  std::shared_ptr<Maximizer> maximizer;
+  std::shared_ptr<MultibandCompressor> multiband_compressor;
+  std::shared_ptr<MultibandGate> multiband_gate;
+  std::shared_ptr<Pitch> pitch;
+  std::shared_ptr<Reverb> reverb;
+  std::shared_ptr<RNNoise> rnnoise;
+  std::shared_ptr<StereoTools> stereo_tools;
 };
 
 #endif
