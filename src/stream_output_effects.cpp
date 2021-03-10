@@ -272,13 +272,11 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   // test
 
-  int delay_id = pw_filter_get_node_id(delay->filter);
-
   pipe_manager->lock();
 
-  pipe_manager->link_nodes(pipe_manager->pe_sink_node.id, delay_id);
+  pipe_manager->link_nodes(pipe_manager->pe_sink_node.id, delay->get_node_id());
 
-  pipe_manager->link_nodes(delay_id, pipe_manager->default_sink.id);
+  pipe_manager->link_nodes(delay->get_node_id(), pipe_manager->default_sink.id);
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 

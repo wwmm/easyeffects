@@ -60,6 +60,8 @@ class PluginBase {
 
   pw_filter* filter = nullptr;
 
+  [[nodiscard]] auto get_node_id() const -> int;
+
   void enable();
   void disable();
 
@@ -74,6 +76,8 @@ class PluginBase {
   spa_hook listener{};
 
   pf::data pf_data = {};
+
+  int node_id = 0;
 };
 
 #endif
