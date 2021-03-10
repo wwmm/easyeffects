@@ -20,7 +20,6 @@
 #ifndef STEREO_TOOLS_HPP
 #define STEREO_TOOLS_HPP
 
-#include <glibmm.h>
 #include <array>
 #include "plugin_base.hpp"
 
@@ -35,8 +34,6 @@ class StereoTools : public PluginBase {
   StereoTools(const StereoTools&&) = delete;
   auto operator=(const StereoTools&&) -> StereoTools& = delete;
   ~StereoTools() override;
-
-  GstElement* stereo_tools = nullptr;
 
   sigc::connection input_level_connection, output_level_connection;
 

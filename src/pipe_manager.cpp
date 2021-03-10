@@ -399,8 +399,6 @@ void on_node_event_param(void* object,
       } else if (nd_info.media_class == "Audio/Sink") {
         if (nd_info.id == pm->pe_sink_node.id) {
           pm->pe_sink_node = nd_info;
-        } else if (nd_info.id == pm->pe_source_node.id) {
-          pm->pe_source_node = nd_info;
         }
 
         Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_changed.emit(nd_info); });
@@ -751,10 +749,9 @@ void on_registry_global(void* data,
 
         NodeInfo nd_info = pd->nd_info;
 
-        if (media_class == "Audio/Source") {
+        if (media_class == "Audio/Source" && nd_info.name != "pulseeffects_source") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
-        } else if (media_class == "Audio/Sink" && nd_info.name != "pulseeffects_sink" &&
-                   nd_info.name != "pulseeffects_source") {
+        } else if (media_class == "Audio/Sink" && nd_info.name != "pulseeffects_sink") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
         } else if (media_class == "Stream/Output/Audio") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_added.emit(nd_info); });

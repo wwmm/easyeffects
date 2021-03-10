@@ -19,122 +19,53 @@
 
 #include "stream_input_effects.hpp"
 
-namespace {
+StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
+    : EffectsBase("sie: ", "com.github.wwmm.pulseeffects.sourceoutputs", pipe_manager) {
+  // auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
-void on_message_element(const GstBus* gst_bus, GstMessage* message, StreamInputEffects* sie) {
-  auto* src_name = GST_OBJECT_NAME(message->src);
+  // if (PULSE_SOURCE != nullptr) {
+  //   int node_id = -1;
 
-  // To optimize this call we move at the top of the nested "if statements" the most used messages
-  // which are 'global_level_meter' and the level meters for the most used plugins for source outputs:
-  // equalizer and webrtc. The rest is sorted alphabetically.
+  //   for (const auto& node : pipe_manager->list_nodes) {
+  //     if (node.name == PULSE_SOURCE) {
+  //       node_id = node.id;
 
-  if (std::strcmp(src_name, "global_level_meter") == 0) {
-    sie->global_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "equalizer_input_level") == 0) {
-    sie->equalizer_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "equalizer_output_level") == 0) {
-    sie->equalizer_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "webrtc_input_level") == 0) {
-    sie->webrtc_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "webrtc_output_level") == 0) {
-    sie->webrtc_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "deesser_input_level") == 0) {
-    sie->deesser_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "deesser_output_level") == 0) {
-    sie->deesser_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "gate_input_level") == 0) {
-    sie->gate_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "gate_output_level") == 0) {
-    sie->gate_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "maximizer_input_level") == 0) {
-    sie->maximizer_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "maximizer_output_level") == 0) {
-    sie->maximizer_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "pitch_input_level") == 0) {
-    sie->pitch_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "pitch_output_level") == 0) {
-    sie->pitch_output_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "rnnoise_input_level") == 0) {
-    sie->rnnoise_input_level.emit(StreamInputEffects::get_peak(message));
-  } else if (std::strcmp(src_name, "rnnoise_output_level") == 0) {
-    sie->rnnoise_output_level.emit(StreamInputEffects::get_peak(message));
-  }
-}
+  //       break;
+  //     }
+  //   }
 
-void on_latency_changed(GSettings* settings, gchar* key, StreamInputEffects* sie) {
-  gst_element_set_state(sie->pipeline, GST_STATE_NULL);
+  //   if (node_id != -1) {
+  //     set_input_node_id(node_id);
+  //   }
+  // } else {
+  //   bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
 
-  sie->set_latency();
+  //   if (!use_default_source) {
+  //     gchar* custom_source = g_settings_get_string(settings, "custom-source");
 
-  sie->update_pipeline_state();
-}
+  //     if (custom_source != nullptr) {
+  //       int node_id = -1;
 
-}  // namespace
+  //       for (const auto& node : pipe_manager->list_nodes) {
+  //         if (node.name == custom_source) {
+  //           node_id = node.id;
 
-StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase("sie: ", pipe_manager) {
-  pipe_props += ",node.name=pulseeffects_sie,application.id=com.github.wwmm.pulseeffects.streaminputs";
+  //           break;
+  //         }
+  //       }
 
-  child_settings = g_settings_new("com.github.wwmm.pulseeffects.sourceoutputs");
+  //       if (node_id != -1) {
+  //         set_output_node_id(node_id);
+  //       }
 
-  auto default_input = pipe_manager->default_source;
-
-  set_input_node_id(default_input.id);
-
-  set_output_node_id(pm->pe_source_node.id);
-
-  set_sampling_rate(48000);  // 48 kHz is the default pipewire sampling rate
-
-  set_latency();
-
-  auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
-
-  if (PULSE_SOURCE != nullptr) {
-    int node_id = -1;
-
-    for (const auto& node : pipe_manager->list_nodes) {
-      if (node.name == PULSE_SOURCE) {
-        node_id = node.id;
-
-        break;
-      }
-    }
-
-    if (node_id != -1) {
-      set_input_node_id(node_id);
-    }
-  } else {
-    bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
-
-    if (!use_default_source) {
-      gchar* custom_source = g_settings_get_string(settings, "custom-source");
-
-      if (custom_source != nullptr) {
-        int node_id = -1;
-
-        for (const auto& node : pipe_manager->list_nodes) {
-          if (node.name == custom_source) {
-            node_id = node.id;
-
-            break;
-          }
-        }
-
-        if (node_id != -1) {
-          set_output_node_id(node_id);
-        }
-
-        g_free(custom_source);
-      }
-    }
-  }
+  //       g_free(custom_source);
+  //     }
+  //   }
+  // }
 
   pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
-  pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
-
-  // element message callback
-
-  g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
+  // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
   limiter = std::make_unique<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter",
                                       "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/", pm);
@@ -163,10 +94,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   pitch = std::make_unique<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch",
                                   "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/", pm);
 
-  webrtc = std::make_unique<Webrtc>(log_tag, "com.github.wwmm.pulseeffects.webrtc",
-                                    "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/",
-                                    48000 /* pm->mic_sink_info->rate*/, pm);
-
   multiband_compressor =
       std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",
                                             "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/", pm);
@@ -183,8 +110,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
                                       "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/", pm);
 
-  rnnoise->set_caps_out(sampling_rate);
-
   // plugins.insert(std::make_pair(limiter->name, limiter->plugin));
   // plugins.insert(std::make_pair(compressor->name, compressor->plugin));
   // plugins.insert(std::make_pair(filter->name, filter->plugin));
@@ -200,11 +125,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager) : PipelineBase
   // plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
   // plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
 
-  // add_plugins_to_pipeline();
-
-  g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamInputEffects>), this);
-
-  g_signal_connect(child_settings, "changed::latency", G_CALLBACK(on_latency_changed), this);
+  connect_filters();
 }
 
 StreamInputEffects::~StreamInputEffects() {
@@ -214,15 +135,10 @@ StreamInputEffects::~StreamInputEffects() {
 void StreamInputEffects::on_app_added(NodeInfo node_info) {
   bool forbidden_app = false;
   bool connected = false;
-  auto* blocklist = g_settings_get_strv(child_settings, "blocklist");
+  auto blocklist = settings->get_string_array("blocklist");
 
-  for (std::size_t i = 0; blocklist[i] != nullptr; i++) {
-    if (node_info.name == blocklist[i]) {
-      forbidden_app = true;
-    }
-
-    g_free(blocklist[i]);
-  }
+  forbidden_app =
+      std::find(std::begin(blocklist), std::end(blocklist), Glib::ustring(node_info.name)) != std::end(blocklist);
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == node_info.id && link.output_node_id == pm->pe_source_node.id) {
@@ -237,14 +153,10 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
       pm->disconnect_stream_input(node_info);
     }
   } else {
-    auto enable_all = g_settings_get_boolean(settings, "process-all-inputs");
-
-    if (!forbidden_app && enable_all != 0) {
+    if (!forbidden_app && global_settings->get_boolean("process-all-inputs")) {
       pm->connect_stream_input(node_info);
     }
   }
-
-  g_free(blocklist);
 }
 
 void StreamInputEffects::on_link_changed(LinkInfo link_info) {
@@ -267,108 +179,58 @@ void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   if (want_to_play != apps_want_to_play) {
     apps_want_to_play = want_to_play;
 
-    update_pipeline_state();
+    // update_pipeline_state();
   }
 }
 
 void StreamInputEffects::on_source_changed(NodeInfo node_info) {
-  auto id = get_input_node_id();
+  // auto id = get_input_node_id();
 
-  if (node_info.id == id) {
-    if (node_info.rate != sampling_rate && node_info.rate != 0) {
-      util::debug(log_tag + "pulseeffects_source sampling rate has changed. Restarting the pipeline...");
+  // if (node_info.id == id) {
+  //   if (node_info.rate != sampling_rate && node_info.rate != 0) {
+  //     util::debug(log_tag + "pulseeffects_source sampling rate has changed. Restarting the pipeline...");
 
-      gst_element_set_state(pipeline, GST_STATE_NULL);
+  //     gst_element_set_state(pipeline, GST_STATE_NULL);
 
-      set_sampling_rate(node_info.rate);
+  //     set_sampling_rate(node_info.rate);
 
-      rnnoise->set_caps_out(sampling_rate);
+  //     rnnoise->set_caps_out(sampling_rate);
 
-      update_pipeline_state();
-    }
-  }
+  //     update_pipeline_state();
+  //   }
+  // }
 }
 
 void StreamInputEffects::change_input_device(const NodeInfo& node) {
-  if (node.id == get_input_node_id()) {
-    return;
-  }
+  // if (node.id == get_input_node_id()) {
+  //   return;
+  // }
 
-  util::debug(log_tag + "The user has requested a new input device. Restarting the pipeline...");
+  // util::debug(log_tag + "The user has requested a new input device. Restarting the pipeline...");
 
-  gst_element_set_state(pipeline, GST_STATE_NULL);
+  // gst_element_set_state(pipeline, GST_STATE_NULL);
 
-  if (node.rate != 0) {
-    set_sampling_rate(node.rate);
-  }
+  // if (node.rate != 0) {
+  //   set_sampling_rate(node.rate);
+  // }
 
-  set_input_node_id(node.id);
+  // set_input_node_id(node.id);
 
-  rnnoise->set_caps_out(sampling_rate);
+  // rnnoise->set_caps_out(sampling_rate);
 
-  update_pipeline_state();
+  // update_pipeline_state();
 }
 
-void StreamInputEffects::add_plugins_to_pipeline() {
-  gchar* name = nullptr;
-  GVariantIter* iter = nullptr;
-  std::vector<std::string> default_order;
+void StreamInputEffects::connect_filters() {
+  // pm->lock();
 
-  g_settings_get(child_settings, "plugins", "as", &iter);
+  // pm->link_nodes(pm->pe_sink_node.id, delay->get_node_id());
 
-  while (g_variant_iter_next(iter, "s", &name) != 0) {
-    plugins_order.emplace_back(name);
-    g_free(name);
-  }
+  // pm->link_nodes(delay->get_node_id(), pm->default_sink.id);
 
-  auto* gvariant = g_settings_get_default_value(child_settings, "plugins");
+  // pw_core_sync(pm->core, PW_ID_CORE, 0);
 
-  g_variant_get(gvariant, "as", &iter);
+  // pw_thread_loop_wait(pm->thread_loop);
 
-  g_variant_unref(gvariant);
-
-  while (g_variant_iter_next(iter, "s", &name) != 0) {
-    default_order.emplace_back(name);
-    g_free(name);
-  }
-
-  g_variant_iter_free(iter);
-
-  // updating user list if there is any new plugin
-
-  if (plugins_order.size() != default_order.size()) {
-    plugins_order = default_order;
-
-    g_settings_reset(child_settings, "plugins");
-  }
-
-  for (const auto& v : plugins_order) {
-    // checking if the plugin exists. If not we reset the list to default
-
-    if (std::find(default_order.begin(), default_order.end(), v) == default_order.end()) {
-      plugins_order = default_order;
-
-      g_settings_reset(child_settings, "plugins");
-
-      break;
-    }
-  }
-
-  // adding plugins to effects_bin
-
-  for (const auto& p : plugins) {
-    gst_bin_add(GST_BIN(effects_bin), p.second);
-  }
-
-  // linking plugins
-
-  gst_element_unlink(identity_in, identity_out);
-
-  gst_element_link(identity_in, plugins[plugins_order[0]]);
-
-  for (unsigned long int n = 1U; n < plugins_order.size(); n++) {
-    gst_element_link(plugins[plugins_order[n - 1U]], plugins[plugins_order[n]]);
-  }
-
-  gst_element_link(plugins[plugins_order[plugins_order.size() - 1U]], identity_out);
+  // pm->unlock();
 }

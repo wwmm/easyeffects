@@ -20,7 +20,6 @@
 #ifndef WEBRTC_HPP
 #define WEBRTC_HPP
 
-#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Webrtc : public PluginBase {
@@ -35,8 +34,6 @@ class Webrtc : public PluginBase {
   Webrtc(const Webrtc&&) = delete;
   auto operator=(const Webrtc&&) -> Webrtc& = delete;
   ~Webrtc() override;
-
-  GstElement *webrtc = nullptr, *probe_bin = nullptr, *probe_src = nullptr, *adapter = nullptr, *adapter_out = nullptr;
 
   int rate;
 

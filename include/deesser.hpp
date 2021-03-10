@@ -20,7 +20,6 @@
 #ifndef DEESSER_HPP
 #define DEESSER_HPP
 
-#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {
@@ -31,8 +30,6 @@ class Deesser : public PluginBase {
   Deesser(const Deesser&&) = delete;
   auto operator=(const Deesser&&) -> Deesser& = delete;
   ~Deesser() override;
-
-  GstElement* deesser = nullptr;
 
   sigc::connection compression_connection, detected_connection;
 

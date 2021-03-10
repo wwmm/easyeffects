@@ -148,21 +148,21 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   minimum_frequency->signal_value_changed().connect([&]() {
     if (minimum_frequency->get_value() < maximum_frequency->get_value()) {
-      app->sie->min_spectrum_freq = minimum_frequency->get_value();
-      app->soe->min_spectrum_freq = minimum_frequency->get_value();
+      // app->sie->min_spectrum_freq = minimum_frequency->get_value();
+      // app->soe->min_spectrum_freq = minimum_frequency->get_value();
 
-      app->sie->init_spectrum();
-      app->soe->init_spectrum();
+      // app->sie->init_spectrum();
+      // app->soe->init_spectrum();
     }
   });
 
   maximum_frequency->signal_value_changed().connect([&]() {
     if (maximum_frequency->get_value() > minimum_frequency->get_value()) {
-      app->sie->max_spectrum_freq = maximum_frequency->get_value();
-      app->soe->max_spectrum_freq = maximum_frequency->get_value();
+      // app->sie->max_spectrum_freq = maximum_frequency->get_value();
+      // app->soe->max_spectrum_freq = maximum_frequency->get_value();
 
-      app->sie->init_spectrum();
-      app->soe->init_spectrum();
+      // app->sie->init_spectrum();
+      // app->soe->init_spectrum();
     }
   });
 
@@ -248,13 +248,13 @@ void SpectrumSettingsUi::prepare_spin_buttons() {
 }
 
 auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
-  if (state) {
-    app->sie->enable_spectrum();
-    app->soe->enable_spectrum();
-  } else {
-    app->sie->disable_spectrum();
-    app->soe->disable_spectrum();
-  }
+  // if (state) {
+  //   app->sie->enable_spectrum();
+  //   app->soe->enable_spectrum();
+  // } else {
+  //   app->sie->disable_spectrum();
+  //   app->soe->disable_spectrum();
+  // }
 
   return false;
 }
@@ -288,6 +288,6 @@ auto SpectrumSettingsUi::on_use_custom_color(bool state) -> bool {
 }
 
 void SpectrumSettingsUi::on_spectrum_sampling_freq_set() {
-  app->sie->update_spectrum_interval(sampling_freq->get_value());
-  app->soe->update_spectrum_interval(sampling_freq->get_value());
+  // app->sie->update_spectrum_interval(sampling_freq->get_value());
+  // app->soe->update_spectrum_interval(sampling_freq->get_value());
 }

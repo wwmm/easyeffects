@@ -20,7 +20,6 @@
 #ifndef RNNOISE_HPP
 #define RNNOISE_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class RNNoise : public PluginBase {
@@ -32,16 +31,8 @@ class RNNoise : public PluginBase {
   auto operator=(const RNNoise&&) -> RNNoise& = delete;
   ~RNNoise() override;
 
-  GstElement *rnnoise = nullptr, *adapter = nullptr, *adapter_out = nullptr;
-
-  void set_caps_out(const uint& sampling_rate);
-
  private:
-  GstElement *capsfilter_in = nullptr, *capsfilter_out = nullptr;
-
   void bind_to_gsettings();
-
-  void set_caps_in();
 };
 
 #endif

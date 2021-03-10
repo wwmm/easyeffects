@@ -20,7 +20,6 @@
 #ifndef REVERB_HPP
 #define REVERB_HPP
 
-#include <glibmm.h>
 #include <array>
 #include "plugin_base.hpp"
 
@@ -32,8 +31,6 @@ class Reverb : public PluginBase {
   Reverb(const Reverb&&) = delete;
   auto operator=(const Reverb&&) -> Reverb& = delete;
   ~Reverb() override;
-
-  GstElement* reverb = nullptr;
 
   sigc::connection input_level_connection, output_level_connection;
 

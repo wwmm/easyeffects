@@ -206,7 +206,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 }
 
 StreamOutputEffectsUi::~StreamOutputEffectsUi() {
-  soe->disable_spectrum();
+  // soe->disable_spectrum();
 
   util::debug(log_tag + "destroyed");
 }
@@ -228,8 +228,8 @@ auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects*
 void StreamOutputEffectsUi::level_meters_connections() {
   // global output level meter connection
 
-  connections.emplace_back(
-      soe->global_output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
+  // connections.emplace_back(
+  //     soe->global_output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
   // limiter level meters connections
 

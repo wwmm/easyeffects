@@ -20,7 +20,6 @@
 #ifndef CONVOLVER_HPP
 #define CONVOLVER_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Convolver : public PluginBase {
@@ -34,8 +33,6 @@ class Convolver : public PluginBase {
   Convolver(const Convolver&&) = delete;
   auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
-
-  GstElement *convolver = nullptr, *adapter = nullptr;
 
  private:
   void bind_to_gsettings();

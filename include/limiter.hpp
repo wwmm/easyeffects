@@ -20,7 +20,6 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
-#include <glibmm.h>
 #include <array>
 #include "plugin_base.hpp"
 
@@ -32,8 +31,6 @@ class Limiter : public PluginBase {
   Limiter(const Limiter&&) = delete;
   auto operator=(const Limiter&&) -> Limiter& = delete;
   ~Limiter() override;
-
-  GstElement* limiter = nullptr;
 
   sigc::connection input_level_connection, output_level_connection, attenuation_connection;
 

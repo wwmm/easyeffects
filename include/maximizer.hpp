@@ -20,7 +20,6 @@
 #ifndef MAXIMIZER_HPP
 #define MAXIMIZER_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Maximizer : public PluginBase {
@@ -34,8 +33,6 @@ class Maximizer : public PluginBase {
   Maximizer(const Maximizer&&) = delete;
   auto operator=(const Maximizer&&) -> Maximizer& = delete;
   ~Maximizer() override;
-
-  GstElement* maximizer = nullptr;
 
   sigc::connection reduction_connection;
 

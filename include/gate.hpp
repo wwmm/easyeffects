@@ -20,9 +20,7 @@
 #ifndef GATE_HPP
 #define GATE_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
-#include "util.hpp"
 
 class Gate : public PluginBase {
  public:
@@ -32,8 +30,6 @@ class Gate : public PluginBase {
   Gate(const Gate&&) = delete;
   auto operator=(const Gate&&) -> Gate& = delete;
   ~Gate() override;
-
-  GstElement* gate = nullptr;
 
   sigc::connection gating_connection;
 

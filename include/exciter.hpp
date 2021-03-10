@@ -20,7 +20,6 @@
 #ifndef EXCITER_HPP
 #define EXCITER_HPP
 
-#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
@@ -31,8 +30,6 @@ class Exciter : public PluginBase {
   Exciter(const Exciter&&) = delete;
   auto operator=(const Exciter&&) -> Exciter& = delete;
   ~Exciter() override;
-
-  GstElement* exciter = nullptr;
 
   sigc::connection harmonics_connection;
 

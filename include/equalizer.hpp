@@ -20,8 +20,6 @@
 #ifndef EQUALIZER_HPP
 #define EQUALIZER_HPP
 
-#include <glibmm.h>
-#include <chrono>
 #include "plugin_base.hpp"
 
 class Equalizer : public PluginBase {
@@ -39,14 +37,12 @@ class Equalizer : public PluginBase {
   auto operator=(const Equalizer&&) -> Equalizer& = delete;
   ~Equalizer() override;
 
-  GstElement* equalizer = nullptr;
-
   void update_equalizer();
 
  private:
   GSettings *settings_left = nullptr, *settings_right = nullptr;
 
-  void bind_band(GstElement* equalizer, const int& index);
+  // void bind_band(GstElement* equalizer, const int& index);
 };
 
 #endif

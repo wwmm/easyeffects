@@ -20,7 +20,6 @@
 #ifndef MULTIBAND_COMPRESSOR_HPP
 #define MULTIBAND_COMPRESSOR_HPP
 
-#include <glibmm.h>
 #include <array>
 #include "plugin_base.hpp"
 
@@ -35,8 +34,6 @@ class MultibandCompressor : public PluginBase {
   MultibandCompressor(const MultibandCompressor&&) = delete;
   auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
-
-  GstElement* multiband_compressor = nullptr;
 
   sigc::connection input_level_connection, output_level_connection;
 

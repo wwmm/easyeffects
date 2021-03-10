@@ -20,7 +20,6 @@
 #ifndef BASS_ENHANCER_HPP
 #define BASS_ENHANCER_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class BassEnhancer : public PluginBase {
@@ -34,8 +33,6 @@ class BassEnhancer : public PluginBase {
   BassEnhancer(const BassEnhancer&&) = delete;
   auto operator=(const BassEnhancer&&) -> BassEnhancer& = delete;
   ~BassEnhancer() override;
-
-  GstElement* bass_enhancer = nullptr;
 
   sigc::connection harmonics_connection;
 

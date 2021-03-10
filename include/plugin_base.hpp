@@ -20,8 +20,7 @@
 #ifndef PLUGIN_BASE_HPP
 #define PLUGIN_BASE_HPP
 
-#include <gio/gio.h>
-#include <gst/gst.h>
+#include <giomm.h>
 #include <pipewire/filter.h>
 #include <sigc++/sigc++.h>
 #include "pipe_manager.hpp"
@@ -52,7 +51,6 @@ class PluginBase {
   };
 
   std::string log_tag, name;
-  GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr, *identity_out = nullptr;
 
   bool plugin_is_installed = false;
 
@@ -66,11 +64,9 @@ class PluginBase {
   void disable();
 
  protected:
-  GSettings* settings = nullptr;
+  Glib::RefPtr<Gio::Settings> settings;
 
   PipeManager* pm = nullptr;
-
-  auto is_installed(GstElement* e) -> bool;
 
  private:
   spa_hook listener{};

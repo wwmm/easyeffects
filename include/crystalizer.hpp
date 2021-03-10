@@ -20,7 +20,6 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <glibmm/main.h>
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {
@@ -34,8 +33,6 @@ class Crystalizer : public PluginBase {
   Crystalizer(const Crystalizer&&) = delete;
   auto operator=(const Crystalizer&&) -> Crystalizer& = delete;
   ~Crystalizer() override;
-
-  GstElement *crystalizer = nullptr, *adapter = nullptr;
 
   sigc::connection range_before_connection, range_after_connection;
 

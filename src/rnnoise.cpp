@@ -19,80 +19,83 @@
 
 #include "rnnoise.hpp"
 
-namespace {
+// namespace {
 
-void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, RNNoise* r) {
-  int v = 0;
-  int blocksize = 0;
+// void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, RNNoise* r) {
+//   int v = 0;
+//   int blocksize = 0;
 
-  g_object_get(r->adapter, "n-input-samples", &v, nullptr);
-  g_object_get(r->adapter, "blocksize", &blocksize, nullptr);
+//   g_object_get(r->adapter, "n-input-samples", &v, nullptr);
+//   g_object_get(r->adapter, "blocksize", &blocksize, nullptr);
 
-  util::debug(r->log_tag + "rnnoise: new input block size " + std::to_string(v) + " frames");
-  util::debug(r->log_tag + "rnnoise: we will try to read in chunks of " + std::to_string(blocksize) + " frames");
+//   util::debug(r->log_tag + "rnnoise: new input block size " + std::to_string(v) + " frames");
+//   util::debug(r->log_tag + "rnnoise: we will try to read in chunks of " + std::to_string(blocksize) + " frames");
 
-  g_object_set(r->adapter_out, "blocksize", v, nullptr);
-}
+//   g_object_set(r->adapter_out, "blocksize", v, nullptr);
+// }
 
-}  // namespace
+// }  // namespace
 
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
     : PluginBase(tag, "rnnoise", schema, schema_path, pipe_manager) {
-  rnnoise = gst_element_factory_make("pernnoise", nullptr);
+  // rnnoise = gst_element_factory_make("pernnoise", nullptr);
 
-  if (is_installed(rnnoise)) {
-    auto* input_gain = gst_element_factory_make("volume", nullptr);
-    auto* in_level = gst_element_factory_make("level", "rnnoise_input_level");
-    auto* output_gain = gst_element_factory_make("volume", nullptr);
-    auto* out_level = gst_element_factory_make("level", "rnnoise_output_level");
-    capsfilter_out = gst_element_factory_make("capsfilter", nullptr);
-    capsfilter_in = gst_element_factory_make("capsfilter", nullptr);
-    auto* audioresample_in = gst_element_factory_make("audioresample", "rnnoise_audioresample_in");
-    auto* audioresample_out = gst_element_factory_make("audioresample", "rnnoise_audioresample_out");
-    adapter = gst_element_factory_make("peadapter", nullptr);
-    adapter_out = gst_element_factory_make("peadapter", nullptr);
+  // if (is_installed(rnnoise)) {
+  //   auto* input_gain = gst_element_factory_make("volume", nullptr);
+  //   auto* in_level = gst_element_factory_make("level", "rnnoise_input_level");
+  //   auto* output_gain = gst_element_factory_make("volume", nullptr);
+  //   auto* out_level = gst_element_factory_make("level", "rnnoise_output_level");
+  //   capsfilter_out = gst_element_factory_make("capsfilter", nullptr);
+  //   capsfilter_in = gst_element_factory_make("capsfilter", nullptr);
+  //   auto* audioresample_in = gst_element_factory_make("audioresample", "rnnoise_audioresample_in");
+  //   auto* audioresample_out = gst_element_factory_make("audioresample", "rnnoise_audioresample_out");
+  //   adapter = gst_element_factory_make("peadapter", nullptr);
+  //   adapter_out = gst_element_factory_make("peadapter", nullptr);
 
-    gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
-                     audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
+  //   gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise,
+  //   adapter_out,
+  //                    audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
 
-    gst_element_link_many(input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
-                          audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
+  //   gst_element_link_many(input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
+  //                         audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
 
-    auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
-    auto* pad_src = gst_element_get_static_pad(out_level, "src");
+  //   auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
+  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
 
-    gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-    gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
+  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
+  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
 
-    gst_object_unref(GST_OBJECT(pad_sink));
-    gst_object_unref(GST_OBJECT(pad_src));
+  //   gst_object_unref(GST_OBJECT(pad_sink));
+  //   gst_object_unref(GST_OBJECT(pad_src));
 
-    g_object_set(adapter, "blocksize", 480, nullptr);
+  //   g_object_set(adapter, "blocksize", 480, nullptr);
 
-    set_caps_in();
+  //   set_caps_in();
 
-    g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
+  //   g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
 
-    bind_to_gsettings();
+  //   bind_to_gsettings();
 
-    g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-    g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
+  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
+  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
 
-    g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-                                 util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr, nullptr);
+  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
+  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
+  //                                nullptr);
 
-    g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-                                 util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr, nullptr);
+  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
+  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
+  //                                nullptr);
 
-    // useless write just to force callback call
+  //   // useless write just to force callback call
 
-    auto enable = g_settings_get_boolean(settings, "state");
+  //   auto enable = g_settings_get_boolean(settings, "state");
 
-    g_settings_set_boolean(settings, "state", enable);
-  }
+  //   g_settings_set_boolean(settings, "state", enable);
+  // }
 }
 
 RNNoise::~RNNoise() {
@@ -100,25 +103,5 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::bind_to_gsettings() {
-  g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
-}
-
-void RNNoise::set_caps_out(const uint& sampling_rate) {
-  if (capsfilter_out != nullptr) {
-    auto caps_str = "audio/x-raw,format=F32LE,channels=2,rate=" + std::to_string(sampling_rate);
-
-    auto* caps = gst_caps_from_string(caps_str.c_str());
-
-    g_object_set(capsfilter_out, "caps", caps, nullptr);
-
-    gst_caps_unref(caps);
-  }
-}
-
-void RNNoise::set_caps_in() {
-  auto* caps = gst_caps_from_string("audio/x-raw,format=F32LE,channels=2,rate=48000");
-
-  g_object_set(capsfilter_in, "caps", caps, nullptr);
-
-  gst_caps_unref(caps);
+  // g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
 }

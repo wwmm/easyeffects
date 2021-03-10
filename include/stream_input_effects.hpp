@@ -20,16 +20,9 @@
 #ifndef STREAM_INPUT_EFFECTS_HPP
 #define STREAM_INPUT_EFFECTS_HPP
 
-#include <cstring>
-#include "multiband_compressor.hpp"
-#include "multiband_gate.hpp"
-#include "pipe_manager.hpp"
-#include "pipeline_base.hpp"
-#include "pipeline_common.hpp"
-#include "rnnoise.hpp"
-#include "webrtc.hpp"
+#include "effects_base.hpp"
 
-class StreamInputEffects : public PipelineBase {
+class StreamInputEffects : public EffectsBase {
  public:
   StreamInputEffects(PipeManager* pipe_manager);
   StreamInputEffects(const StreamInputEffects&) = delete;
@@ -38,17 +31,10 @@ class StreamInputEffects : public PipelineBase {
   auto operator=(const StreamInputEffects&&) -> StreamInputEffects& = delete;
   ~StreamInputEffects() override;
 
-  std::unique_ptr<Webrtc> webrtc;
-  std::unique_ptr<MultibandCompressor> multiband_compressor;
-  std::unique_ptr<MultibandGate> multiband_gate;
-
   void change_input_device(const NodeInfo& node);
 
-  sigc::signal<void(std::array<double, 2>)> webrtc_input_level;
-  sigc::signal<void(std::array<double, 2>)> webrtc_output_level;
-
  private:
-  void add_plugins_to_pipeline();
+  void connect_filters();
 
   /*
     Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens

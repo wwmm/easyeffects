@@ -20,7 +20,6 @@
 #ifndef MULTIBAND_GATE_HPP
 #define MULTIBAND_GATE_HPP
 
-#include <glibmm/main.h>
 #include <array>
 #include "plugin_base.hpp"
 
@@ -35,8 +34,6 @@ class MultibandGate : public PluginBase {
   MultibandGate(const MultibandGate&&) = delete;
   auto operator=(const MultibandGate&&) -> MultibandGate& = delete;
   ~MultibandGate() override;
-
-  GstElement* multiband_gate = nullptr;
 
   sigc::connection input_level_connection, output_level_connection;
 

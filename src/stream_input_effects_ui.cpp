@@ -164,7 +164,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 }
 
 StreamInputEffectsUi::~StreamInputEffectsUi() {
-  sie->disable_spectrum();
+  // sie->disable_spectrum();
 
   util::debug(log_tag + "destroyed");
 }

@@ -20,7 +20,6 @@
 #ifndef LOUDNESS_HPP
 #define LOUDNESS_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Loudness : public PluginBase {
@@ -34,8 +33,6 @@ class Loudness : public PluginBase {
   Loudness(const Loudness&&) = delete;
   auto operator=(const Loudness&&) -> Loudness& = delete;
   ~Loudness() override;
-
-  GstElement* loudness = nullptr;
 
  private:
   void bind_to_gsettings();

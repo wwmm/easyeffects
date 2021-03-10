@@ -20,7 +20,6 @@
 #ifndef PITCH_HPP
 #define PITCH_HPP
 
-#include <glibmm.h>
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {
@@ -31,8 +30,6 @@ class Pitch : public PluginBase {
   Pitch(const Pitch&&) = delete;
   auto operator=(const Pitch&&) -> Pitch& = delete;
   ~Pitch() override;
-
-  GstElement* pitch = nullptr;
 
  private:
   void bind_to_gsettings();

@@ -86,31 +86,31 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
 
-  connections.emplace_back(settings->signal_changed("cpu-priority").connect([&](auto key) {
-    set_priority_controls_visibility();
+  // connections.emplace_back(settings->signal_changed("cpu-priority").connect([&](auto key) {
+  //   set_priority_controls_visibility();
 
-    app->sie->set_null_pipeline();
-    app->soe->set_null_pipeline();
+  //   app->sie->set_null_pipeline();
+  //   app->soe->set_null_pipeline();
 
-    app->sie->update_pipeline_state();
-    app->soe->update_pipeline_state();
-  }));
+  //   app->sie->update_pipeline_state();
+  //   app->soe->update_pipeline_state();
+  // }));
 
-  connections.emplace_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
-    app->sie->set_null_pipeline();
-    app->soe->set_null_pipeline();
+  // connections.emplace_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
+  //   app->sie->set_null_pipeline();
+  //   app->soe->set_null_pipeline();
 
-    app->sie->update_pipeline_state();
-    app->soe->update_pipeline_state();
-  }));
+  //   app->sie->update_pipeline_state();
+  //   app->soe->update_pipeline_state();
+  // }));
 
-  connections.emplace_back(settings->signal_changed("niceness").connect([&](auto key) {
-    app->sie->set_null_pipeline();
-    app->soe->set_null_pipeline();
+  // connections.emplace_back(settings->signal_changed("niceness").connect([&](auto key) {
+  //   app->sie->set_null_pipeline();
+  //   app->soe->set_null_pipeline();
 
-    app->sie->update_pipeline_state();
-    app->soe->update_pipeline_state();
-  }));
+  //   app->sie->update_pipeline_state();
+  //   app->soe->update_pipeline_state();
+  // }));
 
   settings->bind("use-dark-theme", theme_switch, "active");
   settings->bind("process-all-inputs", process_all_inputs, "active");
