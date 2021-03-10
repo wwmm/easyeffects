@@ -187,8 +187,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandGate* l)
 
 }  // namespace
 
-MultibandGate::MultibandGate(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "multiband_gate", schema, schema_path) {
+MultibandGate::MultibandGate(const std::string& tag,
+                             const std::string& schema,
+                             const std::string& schema_path,
+                             PipeManager* pipe_manager)
+    : PluginBase(tag, "multiband_gate", schema, schema_path, pipe_manager) {
   multiband_gate = gst_element_factory_make("calf-sourceforge-net-plugins-MultibandGate", nullptr);
 
   if (is_installed(multiband_gate)) {

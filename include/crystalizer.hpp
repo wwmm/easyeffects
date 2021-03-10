@@ -25,7 +25,10 @@
 
 class Crystalizer : public PluginBase {
  public:
-  Crystalizer(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  Crystalizer(const std::string& tag,
+              const std::string& schema,
+              const std::string& schema_path,
+              PipeManager* pipe_manager);
   Crystalizer(const Crystalizer&) = delete;
   auto operator=(const Crystalizer&) -> Crystalizer& = delete;
   Crystalizer(const Crystalizer&&) = delete;

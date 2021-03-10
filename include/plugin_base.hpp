@@ -22,12 +22,31 @@
 
 #include <gio/gio.h>
 #include <gst/gst.h>
+#include <pipewire/filter.h>
 #include <sigc++/sigc++.h>
-#include "util.hpp"
+#include "pipe_manager.hpp"
+
+namespace pf {
+
+struct data;
+
+struct port {
+  struct data* data;
+};
+
+struct data {
+  struct port *in_left, *in_right, *out_left, *out_right;
+};
+
+}  // namespace pf
 
 class PluginBase {
  public:
-  PluginBase(std::string tag, std::string plugin_name, const std::string& schema, const std::string& schema_path);
+  PluginBase(std::string tag,
+             std::string plugin_name,
+             const std::string& schema,
+             const std::string& schema_path,
+             PipeManager* pipe_manager);
   PluginBase(const PluginBase&) = delete;
   auto operator=(const PluginBase&) -> PluginBase& = delete;
   PluginBase(const PluginBase&&) = delete;
@@ -39,13 +58,22 @@ class PluginBase {
 
   bool plugin_is_installed = false;
 
+  pw_filter* filter = nullptr;
+
   void enable();
   void disable();
 
  protected:
   GSettings* settings = nullptr;
 
+  PipeManager* pm = nullptr;
+
   auto is_installed(GstElement* e) -> bool;
+
+ private:
+  spa_hook listener{};
+
+  pf::data pf_data = {};
 };
 
 #endif

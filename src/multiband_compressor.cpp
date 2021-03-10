@@ -189,8 +189,9 @@ void on_post_messages_changed(GSettings* settings, gchar* key, MultibandCompress
 
 MultibandCompressor::MultibandCompressor(const std::string& tag,
                                          const std::string& schema,
-                                         const std::string& schema_path)
-    : PluginBase(tag, "multiband_compressor", schema, schema_path) {
+                                         const std::string& schema_path,
+                                         PipeManager* pipe_manager)
+    : PluginBase(tag, "multiband_compressor", schema, schema_path, pipe_manager) {
   multiband_compressor = gst_element_factory_make("calf-sourceforge-net-plugins-MultibandCompressor", nullptr);
 
   if (is_installed(multiband_compressor)) {

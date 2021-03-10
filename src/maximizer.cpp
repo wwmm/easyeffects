@@ -45,8 +45,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Maximizer* l) {
 
 }  // namespace
 
-Maximizer::Maximizer(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "maximizer", schema, schema_path) {
+Maximizer::Maximizer(const std::string& tag,
+                     const std::string& schema,
+                     const std::string& schema_path,
+                     PipeManager* pipe_manager)
+    : PluginBase(tag, "maximizer", schema, schema_path, pipe_manager) {
   maximizer = gst_element_factory_make("ladspa-zamaximx2-ladspa-so-zamaximx2", nullptr);
 
   if (is_installed(maximizer)) {

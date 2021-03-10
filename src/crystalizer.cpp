@@ -70,8 +70,11 @@ void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Crystalizer
 
 }  // namespace
 
-Crystalizer::Crystalizer(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "crystalizer", schema, schema_path) {
+Crystalizer::Crystalizer(const std::string& tag,
+                         const std::string& schema,
+                         const std::string& schema_path,
+                         PipeManager* pipe_manager)
+    : PluginBase(tag, "crystalizer", schema, schema_path, pipe_manager) {
   crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
 
   if (is_installed(crystalizer)) {

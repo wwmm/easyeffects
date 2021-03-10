@@ -26,7 +26,10 @@
 
 class StereoTools : public PluginBase {
  public:
-  StereoTools(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  StereoTools(const std::string& tag,
+              const std::string& schema,
+              const std::string& schema_path,
+              PipeManager* pipe_manager);
   StereoTools(const StereoTools&) = delete;
   auto operator=(const StereoTools&) -> StereoTools& = delete;
   StereoTools(const StereoTools&&) = delete;

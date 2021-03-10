@@ -19,8 +19,11 @@
 
 #include "crossfeed.hpp"
 
-Crossfeed::Crossfeed(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "crossfeed", schema, schema_path) {
+Crossfeed::Crossfeed(const std::string& tag,
+                     const std::string& schema,
+                     const std::string& schema_path,
+                     PipeManager* pipe_manager)
+    : PluginBase(tag, "crossfeed", schema, schema_path, pipe_manager) {
   crossfeed = gst_element_factory_make("bs2b", nullptr);
 
   if (is_installed(crossfeed)) {

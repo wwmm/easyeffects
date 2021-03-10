@@ -26,7 +26,10 @@
 
 class AutoGain : public PluginBase {
  public:
-  AutoGain(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  AutoGain(const std::string& tag,
+           const std::string& schema,
+           const std::string& schema_path,
+           PipeManager* pipe_manager);
   AutoGain(const AutoGain&) = delete;
   auto operator=(const AutoGain&) -> AutoGain& = delete;
   AutoGain(const AutoGain&&) = delete;

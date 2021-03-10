@@ -33,8 +33,11 @@ void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Convolver* 
 
 }  // namespace
 
-Convolver::Convolver(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "convolver", schema, schema_path) {
+Convolver::Convolver(const std::string& tag,
+                     const std::string& schema,
+                     const std::string& schema_path,
+                     PipeManager* pipe_manager)
+    : PluginBase(tag, "convolver", schema, schema_path, pipe_manager) {
   convolver = gst_element_factory_make("peconvolver", "convolver");
 
   if (is_installed(convolver)) {

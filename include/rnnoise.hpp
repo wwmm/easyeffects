@@ -25,7 +25,7 @@
 
 class RNNoise : public PluginBase {
  public:
-  RNNoise(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  RNNoise(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
   RNNoise(const RNNoise&) = delete;
   auto operator=(const RNNoise&) -> RNNoise& = delete;
   RNNoise(const RNNoise&&) = delete;

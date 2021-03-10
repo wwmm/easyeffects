@@ -25,7 +25,10 @@
 
 class Crossfeed : public PluginBase {
  public:
-  Crossfeed(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  Crossfeed(const std::string& tag,
+            const std::string& schema,
+            const std::string& schema_path,
+            PipeManager* pipe_manager);
   Crossfeed(const Crossfeed&) = delete;
   auto operator=(const Crossfeed&) -> Crossfeed& = delete;
   Crossfeed(const Crossfeed&&) = delete;

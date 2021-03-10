@@ -19,8 +19,11 @@
 
 #include "pitch.hpp"
 
-Pitch::Pitch(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "pitch", schema, schema_path) {
+Pitch::Pitch(const std::string& tag,
+             const std::string& schema,
+             const std::string& schema_path,
+             PipeManager* pipe_manager)
+    : PluginBase(tag, "pitch", schema, schema_path, pipe_manager) {
   pitch = gst_element_factory_make("ladspa-ladspa-rubberband-so-rubberband-pitchshifter-stereo", "pitch");
 
   if (is_installed(pitch)) {

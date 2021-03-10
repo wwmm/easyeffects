@@ -79,8 +79,11 @@ void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
 
 }  // namespace
 
-AutoGain::AutoGain(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "autogain", schema, schema_path) {
+AutoGain::AutoGain(const std::string& tag,
+                   const std::string& schema,
+                   const std::string& schema_path,
+                   PipeManager* pipe_manager)
+    : PluginBase(tag, "autogain", schema, schema_path, pipe_manager) {
   autogain = gst_element_factory_make("peautogain", nullptr);
 
   if (is_installed(autogain)) {

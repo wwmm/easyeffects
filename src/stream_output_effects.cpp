@@ -166,71 +166,71 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   g_signal_connect(bus, "message::element", G_CALLBACK(on_message_element), this);
 
   limiter = std::make_unique<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter",
-                                      "/com/github/wwmm/pulseeffects/sinkinputs/limiter/");
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/limiter/", pm);
 
   compressor = std::make_unique<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/");
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/compressor/", pm);
 
   filter = std::make_unique<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter",
-                                    "/com/github/wwmm/pulseeffects/sinkinputs/filter/");
+                                    "/com/github/wwmm/pulseeffects/sinkinputs/filter/", pm);
 
   equalizer = std::make_unique<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer",
                                           "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/",
                                           "com.github.wwmm.pulseeffects.equalizer.channel",
                                           "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
-                                          "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/");
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/", pm);
 
   reverb = std::make_unique<Reverb>(log_tag, "com.github.wwmm.pulseeffects.reverb",
-                                    "/com/github/wwmm/pulseeffects/sinkinputs/reverb/");
+                                    "/com/github/wwmm/pulseeffects/sinkinputs/reverb/", pm);
 
   bass_enhancer = std::make_unique<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer",
-                                                 "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
+                                                 "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/", pm);
 
   exciter = std::make_unique<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter",
-                                      "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/exciter/", pm);
 
   crossfeed = std::make_unique<Crossfeed>(log_tag, "com.github.wwmm.pulseeffects.crossfeed",
-                                          "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/", pm);
 
   maximizer = std::make_unique<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer",
-                                          "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/");
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/", pm);
 
   multiband_compressor =
       std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/");
+                                            "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/", pm);
 
   loudness = std::make_unique<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness",
-                                        "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
+                                        "/com/github/wwmm/pulseeffects/sinkinputs/loudness/", pm);
 
   gate = std::make_unique<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate",
-                                "/com/github/wwmm/pulseeffects/sinkinputs/gate/");
+                                "/com/github/wwmm/pulseeffects/sinkinputs/gate/", pm);
 
   pitch = std::make_unique<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch",
-                                  "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/pitch/", pm);
 
   multiband_gate = std::make_unique<MultibandGate>(log_tag, "com.github.wwmm.pulseeffects.multibandgate",
-                                                   "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/");
+                                                   "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/", pm);
 
   deesser = std::make_unique<Deesser>(log_tag, "com.github.wwmm.pulseeffects.deesser",
-                                      "/com/github/wwmm/pulseeffects/sinkinputs/deesser/");
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/deesser/", pm);
 
   stereo_tools = std::make_unique<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools",
-                                               "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/");
+                                               "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/", pm);
 
   convolver = std::make_unique<Convolver>(log_tag, "com.github.wwmm.pulseeffects.convolver",
-                                          "/com/github/wwmm/pulseeffects/sinkinputs/convolver/");
+                                          "/com/github/wwmm/pulseeffects/sinkinputs/convolver/", pm);
 
   crystalizer = std::make_unique<Crystalizer>(log_tag, "com.github.wwmm.pulseeffects.crystalizer",
-                                              "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
+                                              "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/", pm);
 
   autogain = std::make_unique<AutoGain>(log_tag, "com.github.wwmm.pulseeffects.autogain",
-                                        "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
+                                        "/com/github/wwmm/pulseeffects/sinkinputs/autogain/", pm);
 
   delay = std::make_unique<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay",
-                                  "/com/github/wwmm/pulseeffects/sinkinputs/delay/", pipe_manager);
+                                  "/com/github/wwmm/pulseeffects/sinkinputs/delay/", pm);
 
   rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
-                                      "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
+                                      "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/", pm);
 
   // doing some plugin configurations
 
@@ -242,29 +242,29 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
 
   // inserting the plugins in the containers
 
-  plugins.insert(std::make_pair(limiter->name, limiter->plugin));
-  plugins.insert(std::make_pair(compressor->name, compressor->plugin));
-  plugins.insert(std::make_pair(filter->name, filter->plugin));
-  plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
-  plugins.insert(std::make_pair(reverb->name, reverb->plugin));
-  plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
-  plugins.insert(std::make_pair(exciter->name, exciter->plugin));
-  plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
-  plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
-  plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor->plugin));
-  plugins.insert(std::make_pair(loudness->name, loudness->plugin));
-  plugins.insert(std::make_pair(gate->name, gate->plugin));
-  plugins.insert(std::make_pair(pitch->name, pitch->plugin));
-  plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
-  plugins.insert(std::make_pair(deesser->name, deesser->plugin));
-  plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
-  plugins.insert(std::make_pair(convolver->name, convolver->plugin));
-  plugins.insert(std::make_pair(crystalizer->name, crystalizer->plugin));
-  plugins.insert(std::make_pair(autogain->name, autogain->plugin));
-  plugins.insert(std::make_pair(delay->name, delay->plugin));
-  plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
+  // plugins.insert(std::make_pair(limiter->name, limiter->plugin));
+  // plugins.insert(std::make_pair(compressor->name, compressor->plugin));
+  // plugins.insert(std::make_pair(filter->name, filter->plugin));
+  // plugins.insert(std::make_pair(equalizer->name, equalizer->plugin));
+  // plugins.insert(std::make_pair(reverb->name, reverb->plugin));
+  // plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer->plugin));
+  // plugins.insert(std::make_pair(exciter->name, exciter->plugin));
+  // plugins.insert(std::make_pair(crossfeed->name, crossfeed->plugin));
+  // plugins.insert(std::make_pair(maximizer->name, maximizer->plugin));
+  // plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor->plugin));
+  // plugins.insert(std::make_pair(loudness->name, loudness->plugin));
+  // plugins.insert(std::make_pair(gate->name, gate->plugin));
+  // plugins.insert(std::make_pair(pitch->name, pitch->plugin));
+  // plugins.insert(std::make_pair(multiband_gate->name, multiband_gate->plugin));
+  // plugins.insert(std::make_pair(deesser->name, deesser->plugin));
+  // plugins.insert(std::make_pair(stereo_tools->name, stereo_tools->plugin));
+  // plugins.insert(std::make_pair(convolver->name, convolver->plugin));
+  // plugins.insert(std::make_pair(crystalizer->name, crystalizer->plugin));
+  // plugins.insert(std::make_pair(autogain->name, autogain->plugin));
+  // plugins.insert(std::make_pair(delay->name, delay->plugin));
+  // plugins.insert(std::make_pair(rnnoise->name, rnnoise->plugin));
 
-  add_plugins_to_pipeline();
+  // add_plugins_to_pipeline();
 
   g_signal_connect(child_settings, "changed::plugins", G_CALLBACK(on_plugins_order_changed<StreamOutputEffects>), this);
 
@@ -279,6 +279,10 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager) : PipelineBa
   pipe_manager->link_nodes(pipe_manager->pe_sink_node.id, delay_id);
 
   pipe_manager->link_nodes(delay_id, pipe_manager->default_sink.id);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
 
   pipe_manager->unlock();
 }

@@ -32,8 +32,9 @@ Equalizer::Equalizer(const std::string& tag,
                      const std::string& schema_path,
                      const std::string& schema_channel,
                      const std::string& schema_channel_left_path,
-                     const std::string& schema_channel_right_path)
-    : PluginBase(tag, "equalizer", schema, schema_path),
+                     const std::string& schema_channel_right_path,
+                     PipeManager* pipe_manager)
+    : PluginBase(tag, "equalizer", schema, schema_path, pipe_manager),
       settings_left(g_settings_new_with_path(schema_channel.c_str(), schema_channel_left_path.c_str())),
       settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())) {
   equalizer = gst_element_factory_make("lsp-plug-in-plugins-lv2-para-equalizer-x32-lr", nullptr);

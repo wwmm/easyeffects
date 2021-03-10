@@ -68,8 +68,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
 
 }  // namespace
 
-Filter::Filter(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "filter", schema, schema_path) {
+Filter::Filter(const std::string& tag,
+               const std::string& schema,
+               const std::string& schema_path,
+               PipeManager* pipe_manager)
+    : PluginBase(tag, "filter", schema, schema_path, pipe_manager) {
   filter = gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
 
   if (is_installed(filter)) {

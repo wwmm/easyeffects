@@ -68,8 +68,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, StereoTools* l) {
 
 }  // namespace
 
-StereoTools::StereoTools(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "stereo_tools", schema, schema_path) {
+StereoTools::StereoTools(const std::string& tag,
+                         const std::string& schema,
+                         const std::string& schema_path,
+                         PipeManager* pipe_manager)
+    : PluginBase(tag, "stereo_tools", schema, schema_path, pipe_manager) {
   stereo_tools = gst_element_factory_make("calf-sourceforge-net-plugins-StereoTools", "stereo_tools");
 
   if (is_installed(stereo_tools)) {

@@ -25,7 +25,10 @@
 
 class BassEnhancer : public PluginBase {
  public:
-  BassEnhancer(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  BassEnhancer(const std::string& tag,
+               const std::string& schema,
+               const std::string& schema_path,
+               PipeManager* pipe_manager);
   BassEnhancer(const BassEnhancer&) = delete;
   auto operator=(const BassEnhancer&) -> BassEnhancer& = delete;
   BassEnhancer(const BassEnhancer&&) = delete;

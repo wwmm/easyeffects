@@ -36,8 +36,11 @@ void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, RNNoise* r)
 
 }  // namespace
 
-RNNoise::RNNoise(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "rnnoise", schema, schema_path) {
+RNNoise::RNNoise(const std::string& tag,
+                 const std::string& schema,
+                 const std::string& schema_path,
+                 PipeManager* pipe_manager)
+    : PluginBase(tag, "rnnoise", schema, schema_path, pipe_manager) {
   rnnoise = gst_element_factory_make("pernnoise", nullptr);
 
   if (is_installed(rnnoise)) {

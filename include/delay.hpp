@@ -21,23 +21,7 @@
 #define DELAY_HPP
 
 #include <glibmm/main.h>
-#include <pipewire/filter.h>
-#include "pipe_manager.hpp"
 #include "plugin_base.hpp"
-
-namespace pf {
-
-struct data;
-
-struct port {
-  struct data* data;
-};
-
-struct data {
-  struct port *in_left, *in_right, *out_left, *out_right;
-};
-
-}  // namespace pf
 
 class Delay : public PluginBase {
  public:
@@ -49,14 +33,6 @@ class Delay : public PluginBase {
   ~Delay() override;
 
   GstElement* delay = nullptr;
-
-  PipeManager* pm = nullptr;
-
-  pw_filter* filter = nullptr;
-
-  spa_hook listener{};
-
-  pf::data pf_data = {};
 
  private:
   void bind_to_gsettings();

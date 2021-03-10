@@ -25,7 +25,10 @@
 
 class Convolver : public PluginBase {
  public:
-  Convolver(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  Convolver(const std::string& tag,
+            const std::string& schema,
+            const std::string& schema_path,
+            PipeManager* pipe_manager);
   Convolver(const Convolver&) = delete;
   auto operator=(const Convolver&) -> Convolver& = delete;
   Convolver(const Convolver&&) = delete;

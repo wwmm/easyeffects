@@ -45,8 +45,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, BassEnhancer* l) 
 
 }  // namespace
 
-BassEnhancer::BassEnhancer(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "bass_enhancer", schema, schema_path) {
+BassEnhancer::BassEnhancer(const std::string& tag,
+                           const std::string& schema,
+                           const std::string& schema_path,
+                           PipeManager* pipe_manager)
+    : PluginBase(tag, "bass_enhancer", schema, schema_path, pipe_manager) {
   bass_enhancer = gst_element_factory_make("calf-sourceforge-net-plugins-BassEnhancer", nullptr);
 
   if (is_installed(bass_enhancer)) {

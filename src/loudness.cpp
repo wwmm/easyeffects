@@ -19,8 +19,11 @@
 
 #include "loudness.hpp"
 
-Loudness::Loudness(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "loudness", schema, schema_path) {
+Loudness::Loudness(const std::string& tag,
+                   const std::string& schema,
+                   const std::string& schema_path,
+                   PipeManager* pipe_manager)
+    : PluginBase(tag, "loudness", schema, schema_path, pipe_manager) {
   loudness = gst_element_factory_make("lsp-plug-in-plugins-lv2-loud-comp-stereo", nullptr);
 
   if (is_installed(loudness)) {

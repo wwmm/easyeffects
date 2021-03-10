@@ -26,7 +26,7 @@
 
 class Filter : public PluginBase {
  public:
-  Filter(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  Filter(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
   Filter(const Filter&) = delete;
   auto operator=(const Filter&) -> Filter& = delete;
   Filter(const Filter&&) = delete;

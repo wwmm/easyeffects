@@ -84,8 +84,11 @@ void on_post_messages_changed(GSettings* settings, gchar* key, Limiter* l) {
 
 }  // namespace
 
-Limiter::Limiter(const std::string& tag, const std::string& schema, const std::string& schema_path)
-    : PluginBase(tag, "limiter", schema, schema_path) {
+Limiter::Limiter(const std::string& tag,
+                 const std::string& schema,
+                 const std::string& schema_path,
+                 PipeManager* pipe_manager)
+    : PluginBase(tag, "limiter", schema, schema_path, pipe_manager) {
   limiter = gst_element_factory_make("calf-sourceforge-net-plugins-Limiter", nullptr);
 
   if (is_installed(limiter)) {

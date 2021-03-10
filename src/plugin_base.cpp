@@ -21,11 +21,42 @@
 
 namespace {
 
+void on_process(void* userdata, struct spa_io_position* position) {
+  auto* d = static_cast<pf::data*>(userdata);
+
+  uint32_t n_samples = position->clock.duration;
+
+  // pw_log_trace("do process %d", n_samples);
+  // util::warning("processing");
+
+  auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
+  auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
+
+  auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
+  auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
+
+  memcpy(out_left, in_left, n_samples * sizeof(float));
+  memcpy(out_right, in_right, n_samples * sizeof(float));
+}
+
+// void destroy_filter(void* data) {
+// auto* pf = static_cast<PipeFilter*>(data);
+
+// util::debug(pf->log_tag + "Destroying Pipewire filter...");
+
+// spa_hook_remove(&pf->listener);
+// }
+
+static const struct pw_filter_events filter_events = {
+    PW_VERSION_FILTER_EVENTS,
+    .process = on_process,
+};
+
 void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   if (l->plugin_is_installed) {
     int enable = g_settings_get_boolean(settings, key);
 
-    if (enable == true) {
+    if (enable == 1) {
       l->enable();
     } else {
       l->disable();
@@ -119,10 +150,12 @@ auto on_pad_blocked(GstPad* pad, GstPadProbeInfo* info, gpointer user_data) -> G
 PluginBase::PluginBase(std::string tag,
                        std::string plugin_name,
                        const std::string& schema,
-                       const std::string& schema_path)
+                       const std::string& schema_path,
+                       PipeManager* pipe_manager)
     : log_tag(std::move(tag)),
       name(std::move(plugin_name)),
-      settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())) {
+      settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
+      pm(pipe_manager) {
   plugin = gst_bin_new(std::string(name + "_plugin").c_str());
   identity_in = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_in").c_str());
   identity_out = gst_element_factory_make("identity", std::string(name + "_plugin_bin_identity_out").c_str());
@@ -140,12 +173,87 @@ PluginBase::PluginBase(std::string tag,
   g_object_unref(srcpad);
 
   bin = gst_bin_new((name + "_bin").c_str());
+
+  ///////////////////////////////////////
+
+  auto* props_filter = pw_properties_new(nullptr, nullptr);
+
+  name.insert(0, "pe_filter_");
+
+  pw_properties_set(props_filter, PW_KEY_NODE_NAME, name.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_NICK, log_tag.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "pulseeffects_filter");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
+
+  filter = pw_filter_new(pm->core, plugin_name.c_str(), props_filter);
+
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
+
+  // left channel input
+
+  auto* props_in_left = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_in_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "input_fl");
+  pw_properties_set(props_in_left, "audio.channel", "FL");
+
+  pf_data.in_left = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_left, nullptr, 0));
+
+  // right channel input
+
+  auto* props_in_right = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_in_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "input_fr");
+  pw_properties_set(props_in_right, "audio.channel", "FR");
+
+  pf_data.in_right = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_right, nullptr, 0));
+
+  // left channel output
+
+  auto* props_out_left = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
+  pw_properties_set(props_out_left, "audio.channel", "FL");
+
+  pf_data.out_left = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_left, nullptr, 0));
+
+  // right channel output
+
+  auto* props_out_right = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
+  pw_properties_set(props_out_right, "audio.channel", "FR");
+
+  pf_data.out_right = static_cast<pf::port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_right, nullptr, 0));
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
+    util::error(log_tag + "can not connect the filter to pipewire!");
+  }
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 PluginBase::~PluginBase() {
+  spa_hook_remove(&listener);
+
   auto enable = g_settings_get_boolean(settings, "state");
 
-  if (enable == false) {
+  if (enable == 0) {
     gst_object_unref(bin);
   }
 

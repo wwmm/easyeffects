@@ -25,7 +25,7 @@
 
 class Deesser : public PluginBase {
  public:
-  Deesser(const std::string& tag, const std::string& schema, const std::string& schema_path);
+  Deesser(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager);
   Deesser(const Deesser&) = delete;
   auto operator=(const Deesser&) -> Deesser& = delete;
   Deesser(const Deesser&&) = delete;

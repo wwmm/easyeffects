@@ -25,7 +25,11 @@
 
 class Webrtc : public PluginBase {
  public:
-  Webrtc(const std::string& tag, const std::string& schema, const std::string& schema_path, const int& sampling_rate);
+  Webrtc(const std::string& tag,
+         const std::string& schema,
+         const std::string& schema_path,
+         const int& sampling_rate,
+         PipeManager* pipe_manager);
   Webrtc(const Webrtc&) = delete;
   auto operator=(const Webrtc&) -> Webrtc& = delete;
   Webrtc(const Webrtc&&) = delete;
