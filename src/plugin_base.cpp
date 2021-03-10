@@ -22,12 +22,12 @@
 namespace {
 
 void on_process(void* userdata, struct spa_io_position* position) {
-  auto* d = static_cast<pf::data*>(userdata);
+  auto* d = static_cast<PluginBase::data*>(userdata);
 
   uint32_t n_samples = position->clock.duration;
 
-  // pw_log_trace("do process %d", n_samples);
-  // util::warning("processing");
+  // util::warning("processing: " + std::to_string(n_samples));
+  d->pb->setup();
 
   auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
   auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
@@ -38,14 +38,6 @@ void on_process(void* userdata, struct spa_io_position* position) {
   memcpy(out_left, in_left, n_samples * sizeof(float));
   memcpy(out_right, in_right, n_samples * sizeof(float));
 }
-
-// void destroy_filter(void* data) {
-// auto* pf = static_cast<PipeFilter*>(data);
-
-// util::debug(pf->log_tag + "Destroying Pipewire filter...");
-
-// spa_hook_remove(&pf->listener);
-// }
 
 static const struct pw_filter_events filter_events = {
     PW_VERSION_FILTER_EVENTS,
@@ -176,6 +168,8 @@ PluginBase::PluginBase(std::string tag,
 
   ///////////////////////////////////////
 
+  pf_data.pb = this;
+
   auto* props_filter = pw_properties_new(nullptr, nullptr);
 
   name.insert(0, "pe_filter_");
@@ -199,8 +193,8 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "input_fl");
   pw_properties_set(props_in_left, "audio.channel", "FL");
 
-  pf_data.in_left = static_cast<pf::port*>(pw_filter_add_port(
-      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_left, nullptr, 0));
+  pf_data.in_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                          sizeof(port), props_in_left, nullptr, 0));
 
   // right channel input
 
@@ -210,8 +204,8 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "input_fr");
   pw_properties_set(props_in_right, "audio.channel", "FR");
 
-  pf_data.in_right = static_cast<pf::port*>(pw_filter_add_port(
-      filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_in_right, nullptr, 0));
+  pf_data.in_right = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                           sizeof(port), props_in_right, nullptr, 0));
 
   // left channel output
 
@@ -221,8 +215,8 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
   pw_properties_set(props_out_left, "audio.channel", "FL");
 
-  pf_data.out_left = static_cast<pf::port*>(pw_filter_add_port(
-      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_left, nullptr, 0));
+  pf_data.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                           sizeof(port), props_out_left, nullptr, 0));
 
   // right channel output
 
@@ -232,8 +226,8 @@ PluginBase::PluginBase(std::string tag,
   pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
   pw_properties_set(props_out_right, "audio.channel", "FR");
 
-  pf_data.out_right = static_cast<pf::port*>(pw_filter_add_port(
-      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(pf::port), props_out_right, nullptr, 0));
+  pf_data.out_right = static_cast<port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -266,9 +260,11 @@ PluginBase::~PluginBase() {
   g_object_unref(settings);
 }
 
-auto PluginBase::get_node_id() const -> int {
+auto PluginBase::get_node_id() const -> uint {
   return node_id;
 }
+
+void PluginBase::setup() {}
 
 auto PluginBase::is_installed(GstElement* e) -> bool {
   if (e != nullptr) {

@@ -26,20 +26,6 @@
 #include <sigc++/sigc++.h>
 #include "pipe_manager.hpp"
 
-namespace pf {
-
-struct data;
-
-struct port {
-  struct data* data;
-};
-
-struct data {
-  struct port *in_left, *in_right, *out_left, *out_right;
-};
-
-}  // namespace pf
-
 class PluginBase {
  public:
   PluginBase(std::string tag,
@@ -53,6 +39,18 @@ class PluginBase {
   auto operator=(const PluginBase&&) -> PluginBase& = delete;
   virtual ~PluginBase();
 
+  struct data;
+
+  struct port {
+    struct data* data;
+  };
+
+  struct data {
+    struct port *in_left = nullptr, *in_right = nullptr, *out_left = nullptr, *out_right = nullptr;
+
+    PluginBase* pb = nullptr;
+  };
+
   std::string log_tag, name;
   GstElement *plugin = nullptr, *bin = nullptr, *identity_in = nullptr, *identity_out = nullptr;
 
@@ -60,7 +58,9 @@ class PluginBase {
 
   pw_filter* filter = nullptr;
 
-  [[nodiscard]] auto get_node_id() const -> int;
+  [[nodiscard]] auto get_node_id() const -> uint;
+
+  void setup();
 
   void enable();
   void disable();
@@ -75,9 +75,9 @@ class PluginBase {
  private:
   spa_hook listener{};
 
-  pf::data pf_data = {};
+  data pf_data = {};
 
-  int node_id = 0;
+  uint node_id = 0;
 };
 
 #endif
