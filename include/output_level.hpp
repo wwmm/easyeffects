@@ -39,6 +39,8 @@ class OutputLevel : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  sigc::signal<void(float, float)> level;
+
  private:
   void bind_to_gsettings();
 };

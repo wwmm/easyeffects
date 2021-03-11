@@ -756,10 +756,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
   }
 }
 
-void EffectsBaseUi::on_new_output_level_db(const std::array<double, 2>& peak) {
-  auto left = peak[0];
-  auto right = peak[1];
-
+void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
   global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
 
   global_output_level_right->set_text(level_to_localized_string_showpos(right, 0));

@@ -33,6 +33,22 @@ void OutputLevel::process(const std::vector<float>& left_in,
                           std::span<float>& right_out) {
   //   util::warning(std::to_string(left_in.size()));
 
+  float peak_l = 0.0F;
+  float peak_r = 0.0F;
+
+  for (const auto& v : left_in) {
+    peak_l = (v > peak_l) ? v : peak_l;
+  }
+
+  for (const auto& v : right_in) {
+    peak_r = (v > peak_r) ? v : peak_r;
+  }
+
+  float peak_l_db = util::linear_to_db(peak_l);
+  float peak_r_db = util::linear_to_db(peak_r);
+
+  Glib::signal_idle().connect_once([=] { level.emit(peak_l_db, peak_r_db); });
+
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 }

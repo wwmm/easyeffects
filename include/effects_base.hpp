@@ -58,14 +58,14 @@ class EffectsBase {
 
   PipeManager* pm = nullptr;
 
+  std::unique_ptr<OutputLevel> output_level;
+
  protected:
   Glib::RefPtr<Gio::Settings> settings, global_settings;
 
   bool apps_want_to_play = false;
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
-
-  std::unique_ptr<OutputLevel> output_level;
 
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;

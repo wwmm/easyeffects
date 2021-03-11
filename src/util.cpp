@@ -95,7 +95,7 @@ auto linear_to_db(const float& amp) -> float {
 
 auto linear_to_db(const double& amp) -> double {
   if (amp >= minimum_linear_d_level) {
-    return 20.0 * log10f(amp);
+    return 20.0 * log10(amp);
   }
 
   return minimum_db_d_level;
@@ -106,7 +106,7 @@ auto db_to_linear(const float& db) -> float {
 }
 
 auto db_to_linear(const double& db) -> double {
-  return expf((db / 20.0) * logf(10.0));
+  return exp((db / 20.0) * logf(10.0));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
@@ -122,7 +122,7 @@ auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
   float v_linear = g_value_get_float(value);
 
-  double v_db = 20.0 * log10f(static_cast<double>(v_linear));
+  double v_db = 20.0 * log10(static_cast<double>(v_linear));
 
   return g_variant_new_double(v_db);
 }
