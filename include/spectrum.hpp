@@ -50,6 +50,10 @@ class Spectrum : public PluginBase {
   fftwf_complex *complex_left = nullptr, *complex_right = nullptr;
 
   std::vector<float> fft_left_in, fft_right_in, output;
+
+  float threshold = util::minimum_db_level;
+
+  bool bypass = false;
 };
 
 #endif

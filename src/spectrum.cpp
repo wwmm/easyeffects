@@ -41,7 +41,7 @@ Spectrum::~Spectrum() {
 void Spectrum::setup() {
   fft_left_in.resize(n_samples);
   fft_right_in.resize(n_samples);
-  output.resize(n_samples);
+  output.resize(n_samples / 2 + 1);
 
   if (complex_left != nullptr) {
     fftwf_free(complex_left);
@@ -62,28 +62,34 @@ void Spectrum::process(const std::vector<float>& left_in,
                        const std::vector<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
+  std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  if (bypass) {
+    return;
+  }
+
   std::copy(left_in.begin(), left_in.end(), fft_left_in.begin());
   std::copy(right_in.begin(), right_in.end(), fft_right_in.begin());
 
   fftwf_execute(plan_l);
   fftwf_execute(plan_r);
 
-  // for (auto v : fft_left_out) {
-  //   std::cout << v << std::endl;
-  // }
-
-  for (uint i = 0; i < n_samples; i++) {
+  for (uint i = 0; i < output.size(); i++) {
     float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
-    float sqr_r = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
+    float sqr_r = complex_right[i][0] * complex_right[i][0] + complex_right[i][1] * complex_right[i][1];
 
     sqr_l /= n_samples;
     sqr_r /= n_samples;
 
     float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
 
-    output[i] = v;
-  }
+    if (!std::isinf(v)) {
+      output[i] = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+    } else {
+      output[i] = util::minimum_db_level;
+    }
 
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+    // std::cout << output[i] << std::endl;
+  }
 }
