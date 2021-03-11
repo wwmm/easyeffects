@@ -60,7 +60,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("floor-active", floor_freq, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 BassEnhancerUi::~BassEnhancerUi() {

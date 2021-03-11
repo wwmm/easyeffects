@@ -129,7 +129,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 DeesserUi::~DeesserUi() {

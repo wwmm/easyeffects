@@ -452,7 +452,7 @@ void StreamOutputEffectsUi::level_meters_connections() {
 }
 
 void StreamOutputEffectsUi::up_down_connections() {
-  //   auto on_up = [=](auto p) {
+  //   auto on_up = [=, this](auto p) {
   //     auto order = Glib::Variant<std::vector<Glib::ustring>>();
 
   //     settings->get_value("plugins", order);
@@ -468,7 +468,7 @@ void StreamOutputEffectsUi::up_down_connections() {
   //     }
   //   };
 
-  //   auto on_down = [=](auto p) {
+  //   auto on_down = [=, this](auto p) {
   //     auto order = Glib::Variant<std::vector<Glib::ustring>>();
 
   //     settings->get_value("plugins", order);
@@ -484,73 +484,90 @@ void StreamOutputEffectsUi::up_down_connections() {
   //     }
   //   };
 
-  //   connections.emplace_back(limiter_ui->plugin_up->signal_clicked().connect([=]() { on_up(limiter_ui); }));
-  //   connections.emplace_back(limiter_ui->plugin_down->signal_clicked().connect([=]() { on_down(limiter_ui); }));
-
-  //   connections.emplace_back(compressor_ui->plugin_up->signal_clicked().connect([=]() { on_up(compressor_ui); }));
-  //   connections.emplace_back(compressor_ui->plugin_down->signal_clicked().connect([=]() { on_down(compressor_ui);
+  //   connections.emplace_back(limiter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(limiter_ui); }));
+  //   connections.emplace_back(limiter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(limiter_ui);
   //   }));
 
-  //   connections.emplace_back(filter_ui->plugin_up->signal_clicked().connect([=]() { on_up(filter_ui); }));
-  //   connections.emplace_back(filter_ui->plugin_down->signal_clicked().connect([=]() { on_down(filter_ui); }));
+  //   connections.emplace_back(compressor_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(compressor_ui);
+  //   })); connections.emplace_back(compressor_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(compressor_ui);
+  //   }));
 
-  //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=]() { on_up(pitch_ui); }));
-  //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=]() { on_down(pitch_ui); }));
+  //   connections.emplace_back(filter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(filter_ui); }));
+  //   connections.emplace_back(filter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(filter_ui); }));
 
-  //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(equalizer_ui); }));
-  //   connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(equalizer_ui); }));
+  //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(pitch_ui); }));
+  //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(pitch_ui); }));
 
-  //   connections.emplace_back(reverb_ui->plugin_up->signal_clicked().connect([=]() { on_up(reverb_ui); }));
-  //   connections.emplace_back(reverb_ui->plugin_down->signal_clicked().connect([=]() { on_down(reverb_ui); }));
+  //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(equalizer_ui);
+  //   })); connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(equalizer_ui); }));
 
-  //   connections.emplace_back(bass_enhancer_ui->plugin_up->signal_clicked().connect([=]() { on_up(bass_enhancer_ui);
+  //   connections.emplace_back(reverb_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(reverb_ui); }));
+  //   connections.emplace_back(reverb_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(reverb_ui); }));
+
+  //   connections.emplace_back(bass_enhancer_ui->plugin_up->signal_clicked().connect([=, this]() {
+  //   on_up(bass_enhancer_ui);
   //   })); connections.emplace_back(
-  //       bass_enhancer_ui->plugin_down->signal_clicked().connect([=]() { on_down(bass_enhancer_ui); }));
+  //       bass_enhancer_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(bass_enhancer_ui); }));
 
-  //   connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=]() { on_up(exciter_ui); }));
-  //   connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=]() { on_down(exciter_ui); }));
+  //   connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(exciter_ui); }));
+  //   connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(exciter_ui);
+  //   }));
 
-  //   connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=]() { on_up(crossfeed_ui); }));
-  //   connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=]() { on_down(crossfeed_ui); }));
+  //   connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crossfeed_ui);
+  //   })); connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(crossfeed_ui); }));
 
-  //   connections.emplace_back(maximizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(maximizer_ui); }));
-  //   connections.emplace_back(maximizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(maximizer_ui); }));
+  //   connections.emplace_back(maximizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(maximizer_ui);
+  //   })); connections.emplace_back(maximizer_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(maximizer_ui); }));
 
   //   connections.emplace_back(
-  //       multiband_compressor_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_compressor_ui); }));
+  //       multiband_compressor_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(multiband_compressor_ui);
+  //       }));
   //   connections.emplace_back(
-  //       multiband_compressor_ui->plugin_down->signal_clicked().connect([=]() { on_down(multiband_compressor_ui); }));
+  //       multiband_compressor_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //       on_down(multiband_compressor_ui); }));
 
-  //   connections.emplace_back(loudness_ui->plugin_up->signal_clicked().connect([=]() { on_up(loudness_ui); }));
-  //   connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=]() { on_down(loudness_ui); }));
+  //   connections.emplace_back(loudness_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(loudness_ui); }));
+  //   connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(loudness_ui);
+  //   }));
 
-  //   connections.emplace_back(gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(gate_ui); }));
-  //   connections.emplace_back(gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(gate_ui); }));
+  //   connections.emplace_back(gate_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(gate_ui); }));
+  //   connections.emplace_back(gate_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(gate_ui); }));
 
-  //   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=]() { on_up(multiband_gate_ui);
+  //   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=, this]() {
+  //   on_up(multiband_gate_ui);
   //   })); connections.emplace_back(
-  //       multiband_gate_ui->plugin_down->signal_clicked().connect([=]() { on_down(multiband_gate_ui); }));
+  //       multiband_gate_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(multiband_gate_ui); }));
 
-  //   connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=]() { on_up(deesser_ui); }));
-  //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=]() { on_down(deesser_ui); }));
+  //   connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(deesser_ui); }));
+  //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(deesser_ui);
+  //   }));
 
-  //   connections.emplace_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=]() { on_up(stereo_tools_ui);
-  //   })); connections.emplace_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=]() {
+  //   connections.emplace_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=, this]() {
+  //   on_up(stereo_tools_ui);
+  //   })); connections.emplace_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(stereo_tools_ui); }));
 
-  //   connections.emplace_back(convolver_ui->plugin_up->signal_clicked().connect([=]() { on_up(convolver_ui); }));
-  //   connections.emplace_back(convolver_ui->plugin_down->signal_clicked().connect([=]() { on_down(convolver_ui); }));
+  //   connections.emplace_back(convolver_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(convolver_ui);
+  //   })); connections.emplace_back(convolver_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(convolver_ui); }));
 
-  //   connections.emplace_back(crystalizer_ui->plugin_up->signal_clicked().connect([=]() { on_up(crystalizer_ui); }));
-  //   connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=]() { on_down(crystalizer_ui);
+  //   connections.emplace_back(crystalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crystalizer_ui);
+  //   })); connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
+  //   on_down(crystalizer_ui);
   //   }));
 
-  //   connections.emplace_back(autogain_ui->plugin_up->signal_clicked().connect([=]() { on_up(autogain_ui); }));
-  //   connections.emplace_back(autogain_ui->plugin_down->signal_clicked().connect([=]() { on_down(autogain_ui); }));
+  //   connections.emplace_back(autogain_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(autogain_ui); }));
+  //   connections.emplace_back(autogain_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(autogain_ui);
+  //   }));
 
-  //   connections.emplace_back(delay_ui->plugin_up->signal_clicked().connect([=]() { on_up(delay_ui); }));
-  //   connections.emplace_back(delay_ui->plugin_down->signal_clicked().connect([=]() { on_down(delay_ui); }));
+  //   connections.emplace_back(delay_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(delay_ui); }));
+  //   connections.emplace_back(delay_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(delay_ui); }));
 
-  //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=]() { on_up(rnnoise_ui); }));
-  //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=]() { on_down(rnnoise_ui); }));
+  //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(rnnoise_ui); }));
+  //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(rnnoise_ui);
+  //   }));
 }

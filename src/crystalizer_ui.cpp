@@ -52,7 +52,7 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   build_bands(13);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 CrystalizerUi::~CrystalizerUi() {
@@ -109,13 +109,13 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
     // connections
 
-    connections.emplace_back(band_intensity->signal_value_changed().connect([=]() {
+    connections.emplace_back(band_intensity->signal_value_changed().connect([=, this]() {
       auto bi = band_intensity->get_value();
 
       band_intensity_label->set_text(level_to_localized_string_showpos(bi, 0));
     }));
 
-    connections.emplace_back(band_mute->signal_toggled().connect([=]() {
+    connections.emplace_back(band_mute->signal_toggled().connect([=, this]() {
       if (band_mute->get_active()) {
         band_scale->set_sensitive(false);
       } else {

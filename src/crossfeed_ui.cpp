@@ -45,7 +45,7 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   settings->bind("feed", feed.get(), "value", flag);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 
   init_presets_buttons();
 }
@@ -61,17 +61,17 @@ void CrossfeedUi::reset() {
 }
 
 void CrossfeedUi::init_presets_buttons() {
-  preset_cmoy->signal_clicked().connect([=]() {
+  preset_cmoy->signal_clicked().connect([=, this]() {
     fcut->set_value(700.0);
     feed->set_value(6.0);
   });
 
-  preset_default->signal_clicked().connect([=]() {
+  preset_default->signal_clicked().connect([=, this]() {
     fcut->set_value(700.0);
     feed->set_value(4.5);
   });
 
-  preset_jmeier->signal_clicked().connect([=]() {
+  preset_jmeier->signal_clicked().connect([=, this]() {
     fcut->set_value(650.0);
     feed->set_value(9.0);
   });

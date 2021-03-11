@@ -222,25 +222,25 @@ void SpectrumSettingsUi::prepare_spin_buttons() {
 
   // For some reason the spinbutton does not finish the childs we add to it
 
-  spinbutton_n_points->signal_hide().connect([=]() { spinbutton_n_points->get_first_child()->unparent(); });
+  spinbutton_n_points->signal_hide().connect([=, this]() { spinbutton_n_points->get_first_child()->unparent(); });
 
-  spinbutton_height->signal_hide().connect([=]() { spinbutton_height->get_first_child()->unparent(); });
+  spinbutton_height->signal_hide().connect([=, this]() { spinbutton_height->get_first_child()->unparent(); });
 
-  spinbutton_line_width->signal_hide().connect([=]() { spinbutton_line_width->get_first_child()->unparent(); });
+  spinbutton_line_width->signal_hide().connect([=, this]() { spinbutton_line_width->get_first_child()->unparent(); });
 
-  spinbutton_sampling->signal_hide().connect([=]() {
+  spinbutton_sampling->signal_hide().connect([=, this]() {
     spinbutton_sampling->get_first_child()->unparent();
 
     spinbutton_sampling->get_first_child()->get_next_sibling()->unparent();
   });
 
-  spinbutton_minimum_frequency->signal_hide().connect([=]() {
+  spinbutton_minimum_frequency->signal_hide().connect([=, this]() {
     spinbutton_minimum_frequency->get_first_child()->unparent();
 
     spinbutton_minimum_frequency->get_first_child()->get_next_sibling()->unparent();
   });
 
-  spinbutton_maximum_frequency->signal_hide().connect([=]() {
+  spinbutton_maximum_frequency->signal_hide().connect([=, this]() {
     spinbutton_maximum_frequency->get_first_child()->unparent();
 
     spinbutton_maximum_frequency->get_first_child()->get_next_sibling()->unparent();

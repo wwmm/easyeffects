@@ -46,7 +46,7 @@ DelayUi::DelayUi(BaseObjectType* cobject,
   settings->bind("time-r", time_r.get(), "value", flag);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 DelayUi::~DelayUi() {

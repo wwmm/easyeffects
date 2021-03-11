@@ -79,12 +79,12 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("use-geometric-mean", weight_s_grid, "sensitive",
                  Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
   settings->bind("use-geometric-mean", weight_i_grid, "sensitive",
-                Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
+                 Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
 
-  reset_history->signal_clicked().connect([=]() { settings->set_boolean("reset", true); });
+  reset_history->signal_clicked().connect([=, this]() { settings->set_boolean("reset", true); });
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 AutoGainUi::~AutoGainUi() {

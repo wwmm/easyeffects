@@ -84,7 +84,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   reset_settings->signal_clicked().connect(sigc::mem_fun(*this, &GeneralSettingsUi::on_reset_settings));
 
-  about_button->signal_clicked().connect([=]() { app->activate_action("about"); });
+  about_button->signal_clicked().connect([=, this]() { app->activate_action("about"); });
 
   // connections.emplace_back(settings->signal_changed("cpu-priority").connect([&](auto key) {
   //   set_priority_controls_visibility();
@@ -154,11 +154,11 @@ void GeneralSettingsUi::prepare_spin_buttons() {
 
   // For some reason the spinbutton does not finish the childs we add to it
 
-  spin_button_priority->signal_hide().connect([=]() { spin_button_priority->get_first_child()->unparent(); });
+  spin_button_priority->signal_hide().connect([=, this]() { spin_button_priority->get_first_child()->unparent(); });
 
-  spin_button_niceness->signal_hide().connect([=]() { spin_button_niceness->get_first_child()->unparent(); });
+  spin_button_niceness->signal_hide().connect([=, this]() { spin_button_niceness->get_first_child()->unparent(); });
 
-  spin_button_activity_timeout->signal_hide().connect([=]() {
+  spin_button_activity_timeout->signal_hide().connect([=, this]() {
     spin_button_activity_timeout->get_first_child()->unparent();
 
     spin_button_activity_timeout->get_first_child()->get_next_sibling()->unparent();

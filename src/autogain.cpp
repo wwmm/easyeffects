@@ -26,7 +26,7 @@
 
 //   g_object_get(a->autogain, "m", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->momentary.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->momentary.emit(v); });
 // }
 
 // void on_s_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -34,7 +34,7 @@
 
 //   g_object_get(a->autogain, "s", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->shortterm.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->shortterm.emit(v); });
 // }
 
 // void on_i_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -42,7 +42,7 @@
 
 //   g_object_get(a->autogain, "i", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->integrated.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->integrated.emit(v); });
 // }
 
 // void on_r_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -50,7 +50,7 @@
 
 //   g_object_get(a->autogain, "r", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->relative.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->relative.emit(v); });
 // }
 
 // void on_l_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -58,7 +58,7 @@
 
 //   g_object_get(a->autogain, "l", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->loudness.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->loudness.emit(v); });
 // }
 
 // void on_lra_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -66,7 +66,7 @@
 
 //   g_object_get(a->autogain, "lra", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->range.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->range.emit(v); });
 // }
 
 // void on_g_changed(GObject* gobject, GParamSpec* pspec, AutoGain* a) {
@@ -74,7 +74,7 @@
 
 //   g_object_get(a->autogain, "g", &v, nullptr);
 
-//   Glib::signal_idle().connect_once([=] { a->gain.emit(v); });
+//   Glib::signal_idle().connect_once([=, this] { a->gain.emit(v); });
 // }
 
 // }  // namespace

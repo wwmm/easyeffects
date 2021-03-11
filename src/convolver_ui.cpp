@@ -73,7 +73,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // show fft toggle button callback
 
-  show_fft->signal_toggled().connect([=]() {
+  show_fft->signal_toggled().connect([=, this]() {
     show_fft_spectrum = show_fft->get_active();
     left_plot->queue_draw();
     right_plot->queue_draw();
@@ -91,7 +91,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   settings->set_boolean("post-messages", true);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 
   // irs dir
 
@@ -109,7 +109,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // reading current configured irs file
 
-  auto f = [=]() {
+  auto f = [=, this]() {
     std::lock_guard<std::mutex> lock(lock_guard_irs_info);
     get_irs_info();
   };
@@ -122,8 +122,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
      is loaded
   */
 
-  connections.emplace_back(settings->signal_changed("kernel-path").connect([=](auto key) {
-    auto f = [=]() {
+  connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
+    auto f = [=, this]() {
       std::lock_guard<std::mutex> lock(lock_guard_irs_info);
       get_irs_info();
     };
@@ -248,12 +248,12 @@ void ConvolverUi::populate_irs_listbox() {
     row->set_name(name);
     label->set_text(name);
 
-    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(remove_btn->signal_clicked().connect([=, this]() {
       remove_irs_file(name);
       populate_irs_listbox();
     }));
 
-    connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
+    connections.emplace_back(apply_btn->signal_clicked().connect([=, this]() {
       auto irs_file = irs_dir / boost::filesystem::path{row->get_name() + ".irs"};
 
       settings->set_string("kernel-path", irs_file.string());
@@ -288,7 +288,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=](auto response_id) {
+  dialog->signal_response().connect([=, this](auto response_id) {
     switch (response_id) {
       case Gtk::ResponseType::RESPONSE_ACCEPT: {
         import_irs_file(dialog->get_file()->get_path());
@@ -314,7 +314,7 @@ void ConvolverUi::get_irs_info() {
   if (file.channels() != 2 || file.frames() == 0) {
     // warning user that there is a problem
 
-    Glib::signal_idle().connect_once([=]() {
+    Glib::signal_idle().connect_once([=, this]() {
       label_sampling_rate->set_text(_("Failed"));
       label_samples->set_text(_("Failed"));
 
@@ -414,7 +414,7 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
-  Glib::signal_idle().connect_once([=]() {
+  Glib::signal_idle().connect_once([=, this]() {
     label_sampling_rate->set_text(std::to_string(rate) + " Hz");
     label_samples->set_text(std::to_string(frames_in));
 

@@ -56,23 +56,23 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   // signals connection
 
-  add_output->signal_clicked().connect([=]() { create_preset(PresetType::output); });
+  add_output->signal_clicked().connect([=, this]() { create_preset(PresetType::output); });
 
-  add_input->signal_clicked().connect([=]() { create_preset(PresetType::input); });
+  add_input->signal_clicked().connect([=, this]() { create_preset(PresetType::input); });
 
-  import_output->signal_clicked().connect([=]() { import_preset(PresetType::output); });
+  import_output->signal_clicked().connect([=, this]() { import_preset(PresetType::output); });
 
-  import_input->signal_clicked().connect([=]() { import_preset(PresetType::input); });
+  import_input->signal_clicked().connect([=, this]() { import_preset(PresetType::input); });
 
-  settings->signal_changed("last-used-output-preset").connect([=](auto key) {
+  settings->signal_changed("last-used-output-preset").connect([=, this](auto key) {
     last_used_output->set_label(settings->get_string("last-used-output-preset"));
   });
 
-  settings->signal_changed("last-used-input-preset").connect([=](auto key) {
+  settings->signal_changed("last-used-input-preset").connect([=, this](auto key) {
     last_used_input->set_label(settings->get_string("last-used-input-preset"));
   });
 
-  app->presets_manager->user_output_preset_created.connect([=](const Glib::RefPtr<Gio::File>& file) {
+  app->presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     output_string_list->append(util::remove_filename_extension(file->get_basename()));
   });
 
@@ -248,7 +248,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
@@ -336,7 +336,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_unbind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     for (const auto* conn : {"connection_apply", "connection_save", "connection_autoload", "connection_remove"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();

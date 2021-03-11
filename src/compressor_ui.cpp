@@ -275,7 +275,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
                                filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
 
   // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 CompressorUi::~CompressorUi() {
