@@ -2,6 +2,7 @@ schemadir = join_paths(datadir, 'glib-2.0', 'schemas')
 
 install_data([
   'schemas/com.github.wwmm.pulseeffects.gschema.xml',
+  'schemas/com.github.wwmm.pulseeffects.outputlevel.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.spectrum.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
   'schemas/com.github.wwmm.pulseeffects.autogain.gschema.xml',

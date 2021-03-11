@@ -38,6 +38,7 @@
 #include "maximizer.hpp"
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
+#include "output_level.hpp"
 #include "pipe_manager.hpp"
 #include "pitch.hpp"
 #include "reverb.hpp"
@@ -63,6 +64,8 @@ class EffectsBase {
   bool apps_want_to_play = false;
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
+
+  std::unique_ptr<OutputLevel> output_level;
 
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;

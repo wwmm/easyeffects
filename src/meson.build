@@ -17,6 +17,7 @@ pulseeffects_sources = [
 	'pipeline_base.cpp',
 	'plugin_base.cpp',
 	# 'plugin_ui_base.cpp',
+	'output_level.cpp',
 	'autogain.cpp',
 	# 'autogain_ui.cpp',
 	'limiter.cpp',

@@ -67,63 +67,20 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
   // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
-  limiter = std::make_unique<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter",
-                                      "/com/github/wwmm/pulseeffects/sourceoutputs/limiter/", pm);
-
-  compressor = std::make_unique<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor",
-                                            "/com/github/wwmm/pulseeffects/sourceoutputs/compressor/", pm);
-
-  filter = std::make_unique<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter",
-                                    "/com/github/wwmm/pulseeffects/sourceoutputs/filter/", pm);
-
-  equalizer = std::make_unique<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer",
-                                          "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/",
-                                          "com.github.wwmm.pulseeffects.equalizer.channel",
-                                          "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/",
-                                          "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/rightchannel/", pm);
-
-  reverb = std::make_unique<Reverb>(log_tag, "com.github.wwmm.pulseeffects.reverb",
-                                    "/com/github/wwmm/pulseeffects/sourceoutputs/reverb/", pm);
-
-  gate = std::make_unique<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate",
-                                "/com/github/wwmm/pulseeffects/sourceoutputs/gate/", pm);
-
-  deesser = std::make_unique<Deesser>(log_tag, "com.github.wwmm.pulseeffects.deesser",
-                                      "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/", pm);
-
-  pitch = std::make_unique<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch",
-                                  "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/", pm);
-
-  multiband_compressor =
-      std::make_unique<MultibandCompressor>(log_tag, "com.github.wwmm.pulseeffects.multibandcompressor",
-                                            "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/", pm);
-
-  multiband_gate = std::make_unique<MultibandGate>(log_tag, "com.github.wwmm.pulseeffects.multibandgate",
-                                                   "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/", pm);
-
-  stereo_tools = std::make_unique<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools",
-                                               "/com/github/wwmm/pulseeffects/sourceoutputs/stereotools/", pm);
-
-  maximizer = std::make_unique<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer",
-                                          "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/", pm);
-
-  rnnoise = std::make_unique<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise",
-                                      "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/", pm);
-
-  plugins.insert(std::make_pair(limiter->name, limiter));
-  plugins.insert(std::make_pair(compressor->name, compressor));
-  plugins.insert(std::make_pair(filter->name, filter));
-  plugins.insert(std::make_pair(equalizer->name, equalizer));
-  plugins.insert(std::make_pair(reverb->name, reverb));
-  plugins.insert(std::make_pair(gate->name, gate));
-  plugins.insert(std::make_pair(deesser->name, deesser));
-  plugins.insert(std::make_pair(pitch->name, pitch));
-  // plugins.insert(std::make_pair(webrtc->name, webrtc));
-  plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
-  plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
-  plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  plugins.insert(std::make_pair(maximizer->name, maximizer));
-  plugins.insert(std::make_pair(rnnoise->name, rnnoise));
+  // plugins.insert(std::make_pair(limiter->name, limiter));
+  // plugins.insert(std::make_pair(compressor->name, compressor));
+  // plugins.insert(std::make_pair(filter->name, filter));
+  // plugins.insert(std::make_pair(equalizer->name, equalizer));
+  // plugins.insert(std::make_pair(reverb->name, reverb));
+  // plugins.insert(std::make_pair(gate->name, gate));
+  // plugins.insert(std::make_pair(deesser->name, deesser));
+  // plugins.insert(std::make_pair(pitch->name, pitch));
+  // // plugins.insert(std::make_pair(webrtc->name, webrtc));
+  // plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
+  // plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
+  // plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
+  // plugins.insert(std::make_pair(maximizer->name, maximizer));
+  // plugins.insert(std::make_pair(rnnoise->name, rnnoise));
 
   connect_filters();
 }
