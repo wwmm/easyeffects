@@ -145,7 +145,7 @@ void StreamOutputEffects::connect_filters() {
 
   pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
 
-  pm->link_nodes(spectrum->get_node_id(), pm->default_sink.id);
+  pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
   pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
 

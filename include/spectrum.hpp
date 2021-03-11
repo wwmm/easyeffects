@@ -45,9 +45,11 @@ class Spectrum : public PluginBase {
   sigc::signal<void(float, float)> level;
 
  private:
-  fftwf_plan plan_l, plan_r;
+  fftwf_plan plan_l = nullptr, plan_r = nullptr;
 
-  std::vector<float> fft_left_in, fft_left_out, fft_right_in, fft_right_out;
+  fftwf_complex *complex_left = nullptr, *complex_right = nullptr;
+
+  std::vector<float> fft_left_in, fft_right_in, output;
 };
 
 #endif

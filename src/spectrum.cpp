@@ -28,17 +28,34 @@ Spectrum::Spectrum(const std::string& tag,
 Spectrum::~Spectrum() {
   fftwf_destroy_plan(plan_l);
   fftwf_destroy_plan(plan_r);
+
+  if (complex_left != nullptr) {
+    fftwf_free(complex_left);
+  }
+
+  if (complex_right == nullptr) {
+    fftwf_free(complex_right);
+  }
 }
 
 void Spectrum::setup() {
   fft_left_in.resize(n_samples);
-  fft_left_out.resize(n_samples);
-
   fft_right_in.resize(n_samples);
-  fft_right_out.resize(n_samples);
+  output.resize(n_samples);
 
-  plan_l = fftwf_plan_r2r_1d(n_samples, fft_left_in.data(), fft_left_out.data(), FFTW_REDFT00, FFTW_ESTIMATE);
-  plan_r = fftwf_plan_r2r_1d(n_samples, fft_right_in.data(), fft_right_out.data(), FFTW_REDFT00, FFTW_ESTIMATE);
+  if (complex_left != nullptr) {
+    fftwf_free(complex_left);
+  }
+
+  if (complex_right == nullptr) {
+    fftwf_free(complex_right);
+  }
+
+  complex_left = fftwf_alloc_complex(n_samples);
+  complex_right = fftwf_alloc_complex(n_samples);
+
+  plan_l = fftwf_plan_dft_r2c_1d(n_samples, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
+  plan_r = fftwf_plan_dft_r2c_1d(n_samples, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
 }
 
 void Spectrum::process(const std::vector<float>& left_in,
@@ -50,6 +67,22 @@ void Spectrum::process(const std::vector<float>& left_in,
 
   fftwf_execute(plan_l);
   fftwf_execute(plan_r);
+
+  // for (auto v : fft_left_out) {
+  //   std::cout << v << std::endl;
+  // }
+
+  for (uint i = 0; i < n_samples; i++) {
+    float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
+    float sqr_r = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
+
+    sqr_l /= n_samples;
+    sqr_r /= n_samples;
+
+    float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
+
+    output[i] = v;
+  }
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
