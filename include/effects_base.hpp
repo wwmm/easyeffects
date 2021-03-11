@@ -43,6 +43,7 @@
 #include "pitch.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
+#include "spectrum.hpp"
 #include "stereo_tools.hpp"
 
 class EffectsBase {
@@ -59,6 +60,7 @@ class EffectsBase {
   PipeManager* pm = nullptr;
 
   std::unique_ptr<OutputLevel> output_level;
+  std::unique_ptr<Spectrum> spectrum;
 
  protected:
   Glib::RefPtr<Gio::Settings> settings, global_settings;

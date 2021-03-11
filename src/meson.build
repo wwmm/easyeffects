@@ -18,6 +18,7 @@ pulseeffects_sources = [
 	'plugin_base.cpp',
 	# 'plugin_ui_base.cpp',
 	'output_level.cpp',
+	'spectrum.cpp',
 	'autogain.cpp',
 	# 'autogain_ui.cpp',
 	'limiter.cpp',
@@ -107,11 +108,11 @@ pulseeffects_deps = [
 	dependency('sigc++-3.0', version: '>=3.0.6'),
 	dependency('gstreamer-1.0', version: '>=1.12.5'),
 	dependency('gstreamer-plugins-bad-1.0', version: '>=1.12.5'),
-	dependency('gstreamer-fft-1.0'),
 	dependency('lilv-0', version: '>=0.22', required: false),
 	dependency('libbs2b', required: false),
 	dependency('boost', version: '>=1.72', modules:['filesystem']),
 	dependency('sndfile'),
+	dependency('fftw3f'),
 	dependency('threads')
 ]
 

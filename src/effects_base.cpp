@@ -59,6 +59,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise", path + "rnnoise/", pm);
 
+  spectrum = std::make_unique<Spectrum>(log_tag, "com.github.wwmm.pulseeffects.spectrum",
+                                        "/com/github/wwmm/pulseeffects/spectrum/", pm);
+
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools", path + "stereotools/", pm);
 

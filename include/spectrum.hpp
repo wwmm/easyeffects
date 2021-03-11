@@ -17,22 +17,23 @@
  *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef OUTPUT_LEVEL_HPP
-#define OUTPUT_LEVEL_HPP
+#ifndef SPECTRUM_HPP
+#define SPECTRUM_HPP
 
+#include <fftw3.h>
 #include "plugin_base.hpp"
 
-class OutputLevel : public PluginBase {
+class Spectrum : public PluginBase {
  public:
-  OutputLevel(const std::string& tag,
-              const std::string& schema,
-              const std::string& schema_path,
-              PipeManager* pipe_manager);
-  OutputLevel(const OutputLevel&) = delete;
-  auto operator=(const OutputLevel&) -> OutputLevel& = delete;
-  OutputLevel(const OutputLevel&&) = delete;
-  auto operator=(const OutputLevel&&) -> OutputLevel& = delete;
-  ~OutputLevel() override;
+  Spectrum(const std::string& tag,
+           const std::string& schema,
+           const std::string& schema_path,
+           PipeManager* pipe_manager);
+  Spectrum(const Spectrum&) = delete;
+  auto operator=(const Spectrum&) -> Spectrum& = delete;
+  Spectrum(const Spectrum&&) = delete;
+  auto operator=(const Spectrum&&) -> Spectrum& = delete;
+  ~Spectrum() override;
 
   void setup() override;
 
@@ -44,9 +45,9 @@ class OutputLevel : public PluginBase {
   sigc::signal<void(float, float)> level;
 
  private:
-  float max_l = util::minimum_linear_level, max_r = util::minimum_linear_level;
-  float time_window = 0.1F;  // 100 ms
-  float dt = 0.0F;
+  fftwf_plan plan_l, plan_r;
+
+  std::vector<float> fft_left_in, fft_left_out, fft_right_in, fft_right_out;
 };
 
 #endif
