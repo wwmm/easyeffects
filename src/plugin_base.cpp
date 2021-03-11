@@ -21,10 +21,18 @@
 
 namespace {
 
-void on_process(void* userdata, struct spa_io_position* position) {
+void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
-  uint32_t n_samples = position->clock.duration;
+  auto n_samples = position->clock.duration;
+  auto rate = position->clock.rate.denom;
+
+  if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
+    d->pb->rate = rate;
+    d->pb->n_samples = n_samples;
+
+    d->pb->setup();
+  }
 
   // util::warning("processing: " + std::to_string(n_samples));
 
@@ -42,9 +50,7 @@ void on_process(void* userdata, struct spa_io_position* position) {
   d->pb->process(left_in, right_in, left_out, right_out);
 }
 
-const struct pw_filter_events filter_events = {
-    .process = on_process,
-};
+const struct pw_filter_events filter_events = {.process = on_process};
 
 }  // namespace
 
@@ -144,6 +150,8 @@ PluginBase::~PluginBase() {
 auto PluginBase::get_node_id() const -> uint {
   return node_id;
 }
+
+void PluginBase::setup() {}
 
 void PluginBase::process(const std::vector<float>& left_in,
                          const std::vector<float>& right_in,

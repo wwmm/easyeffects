@@ -34,6 +34,8 @@ class OutputLevel : public PluginBase {
   auto operator=(const OutputLevel&&) -> OutputLevel& = delete;
   ~OutputLevel() override;
 
+  void setup() override;
+
   void process(const std::vector<float>& left_in,
                const std::vector<float>& right_in,
                std::span<float>& left_out,
@@ -42,7 +44,9 @@ class OutputLevel : public PluginBase {
   sigc::signal<void(float, float)> level;
 
  private:
-  void bind_to_gsettings();
+  float max_l = util::minimum_linear_level, max_r = util::minimum_linear_level;
+  float time_window = 0.1F;  // 100 ms
+  float dt = 0.0F;
 };
 
 #endif

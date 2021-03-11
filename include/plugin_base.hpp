@@ -57,7 +57,13 @@ class PluginBase {
 
   pw_filter* filter = nullptr;
 
+  uint n_samples = 0;
+
+  uint rate = 0;
+
   [[nodiscard]] auto get_node_id() const -> uint;
+
+  virtual void setup();
 
   virtual void process(const std::vector<float>& left_in,
                        const std::vector<float>& right_in,
