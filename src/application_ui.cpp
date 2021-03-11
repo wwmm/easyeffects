@@ -54,7 +54,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack->connect_property_changed("visible-child",
                                   sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
 
-  help_button->signal_clicked().connect([=]() { app->activate_action("help"); });
+  help_button->signal_clicked().connect([=, this]() { app->activate_action("help"); });
 
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 

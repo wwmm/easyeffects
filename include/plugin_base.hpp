@@ -23,6 +23,7 @@
 #include <giomm.h>
 #include <pipewire/filter.h>
 #include <sigc++/sigc++.h>
+#include <span>
 #include "pipe_manager.hpp"
 
 class PluginBase {
@@ -58,7 +59,10 @@ class PluginBase {
 
   [[nodiscard]] auto get_node_id() const -> uint;
 
-  void setup();
+  virtual void process(const std::vector<float>& left_in,
+                       const std::vector<float>& right_in,
+                       std::span<float>& left_out,
+                       std::span<float>& right_out);
 
   void enable();
   void disable();

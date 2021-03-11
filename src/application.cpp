@@ -142,7 +142,7 @@ void Application::on_startup() {
     // }
 
     Glib::signal_timeout().connect_seconds_once(
-        [=]() {
+        [=, this]() {
           auto defaul_sink_name = pm->default_sink.name;
 
           // checking if after 2 seconds this sink still is the default sink
@@ -169,7 +169,7 @@ void Application::on_startup() {
     // }
 
     Glib::signal_timeout().connect_seconds_once(
-        [=]() {
+        [=, this]() {
           auto defaul_source_name = pm->default_source.name;
 
           // checking if after 2 seconds this source still is the default source
@@ -184,15 +184,15 @@ void Application::on_startup() {
         3);
   });
 
-  sie_settings->signal_changed("blocklist").connect([=](auto key) {
+  sie_settings->signal_changed("blocklist").connect([=, this](auto key) {
     pm->blocklist_in = sie_settings->get_string_array("blocklist");
   });
 
-  soe_settings->signal_changed("blocklist").connect([=](auto key) {
+  soe_settings->signal_changed("blocklist").connect([=, this](auto key) {
     pm->blocklist_out = sie_settings->get_string_array("blocklist");
   });
 
-  settings->signal_changed("bypass").connect([=](auto key) { update_bypass_state(key); });
+  settings->signal_changed("bypass").connect([=, this](auto key) { update_bypass_state(key); });
 
   update_bypass_state("bypass");
 
@@ -297,7 +297,7 @@ void Application::create_actions() {
 
     auto* dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
-    dialog->signal_response().connect([=](auto response_id) {
+    dialog->signal_response().connect([=, this](auto response_id) {
       switch (response_id) {
         case Gtk::ResponseType::CLOSE:
         case Gtk::ResponseType::CANCEL:

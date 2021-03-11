@@ -27,7 +27,6 @@ void on_process(void* userdata, struct spa_io_position* position) {
   uint32_t n_samples = position->clock.duration;
 
   // util::warning("processing: " + std::to_string(n_samples));
-  d->pb->setup();
 
   auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
   auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
@@ -35,14 +34,15 @@ void on_process(void* userdata, struct spa_io_position* position) {
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  std::vector<float> vec_lecft_in{in_left, in_left + n_samples};
+  std::vector<float> left_in{in_left, in_left + n_samples};
+  std::span left_out{out_left, out_left + n_samples};
+  std::vector<float> right_in{in_right, in_right + n_samples};
+  std::span right_out{out_right, out_right + n_samples};
 
-  memcpy(out_left, in_left, n_samples * sizeof(float));
-  memcpy(out_right, in_right, n_samples * sizeof(float));
+  d->pb->process(left_in, right_in, left_out, right_out);
 }
 
-static const struct pw_filter_events filter_events = {
-    PW_VERSION_FILTER_EVENTS,
+const struct pw_filter_events filter_events = {
     .process = on_process,
 };
 
@@ -145,4 +145,7 @@ auto PluginBase::get_node_id() const -> uint {
   return node_id;
 }
 
-void PluginBase::setup() {}
+void PluginBase::process(const std::vector<float>& left_in,
+                         const std::vector<float>& right_in,
+                         std::span<float>& left_out,
+                         std::span<float>& right_out) {}

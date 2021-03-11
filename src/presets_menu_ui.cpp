@@ -76,7 +76,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     output_string_list->append(util::remove_filename_extension(file->get_basename()));
   });
 
-  app->presets_manager->user_output_preset_removed.connect([=](const Glib::RefPtr<Gio::File>& file) {
+  app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     int count = 0;
     auto name = output_string_list->get_string(count);
 
@@ -92,11 +92,11 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
   });
 
-  app->presets_manager->user_input_preset_created.connect([=](const Glib::RefPtr<Gio::File>& file) {
+  app->presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     input_string_list->append(util::remove_filename_extension(file->get_basename()));
   });
 
-  app->presets_manager->user_input_preset_removed.connect([=](const Glib::RefPtr<Gio::File>& file) {
+  app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     int count = 0;
     auto name = input_string_list->get_string(count);
 
@@ -182,7 +182,7 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=](auto response_id) {
+  dialog->signal_response().connect([=, this](auto response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
         auto f = dialog->get_file();
@@ -262,7 +262,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     list_item->set_child(*top_box);
   });
 
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
     auto* save = static_cast<Gtk::Button*>(list_item->get_data("save"));
@@ -277,7 +277,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
       autoload->set_active(true);
     }
 
-    auto connection_apply = apply->signal_clicked().connect([=]() {
+    auto connection_apply = apply->signal_clicked().connect([=, this]() {
       switch (preset_type) {
         case PresetType::input:
           settings->set_string("last-used-input-preset", name);
@@ -290,9 +290,10 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
       app->presets_manager->load(preset_type, name);
     });
 
-    auto connection_save = save->signal_clicked().connect([=]() { app->presets_manager->save(preset_type, name); });
+    auto connection_save =
+        save->signal_clicked().connect([=, this]() { app->presets_manager->save(preset_type, name); });
 
-    auto connection_autoload = autoload->signal_toggled().connect([=]() {
+    auto connection_autoload = autoload->signal_toggled().connect([=, this]() {
       switch (preset_type) {
         case PresetType::output: {
           auto dev_name = app->pm->default_sink.name;
@@ -320,7 +321,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     });
 
     auto connection_remove =
-        remove->signal_clicked().connect([=]() { app->presets_manager->remove(preset_type, name); });
+        remove->signal_clicked().connect([=, this]() { app->presets_manager->remove(preset_type, name); });
 
     list_item->set_data("connection_apply", new sigc::connection(connection_apply),
                         Glib::destroy_notify_delete<sigc::connection>);

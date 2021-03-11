@@ -67,21 +67,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
   // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
-  // plugins.insert(std::make_pair(limiter->name, limiter));
-  // plugins.insert(std::make_pair(compressor->name, compressor));
-  // plugins.insert(std::make_pair(filter->name, filter));
-  // plugins.insert(std::make_pair(equalizer->name, equalizer));
-  // plugins.insert(std::make_pair(reverb->name, reverb));
-  // plugins.insert(std::make_pair(gate->name, gate));
-  // plugins.insert(std::make_pair(deesser->name, deesser));
-  // plugins.insert(std::make_pair(pitch->name, pitch));
-  // // plugins.insert(std::make_pair(webrtc->name, webrtc));
-  // plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
-  // plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
-  // plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  // plugins.insert(std::make_pair(maximizer->name, maximizer));
-  // plugins.insert(std::make_pair(rnnoise->name, rnnoise));
-
   connect_filters();
 }
 

@@ -613,42 +613,53 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   return 0;
 }
 
-const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, .property = on_metadata_property};
+const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, on_metadata_property};
 
-const struct pw_proxy_events link_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_link_proxy,
-                                                  .removed = on_removed_proxy};
+const struct pw_proxy_events link_proxy_events = {.destroy = on_destroy_link_proxy,
+                                                  .bound = nullptr,
+                                                  .removed = on_removed_proxy,
+                                                  .done = nullptr,
+                                                  .error = nullptr};
 
-const struct pw_proxy_events port_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_port_proxy,
-                                                  .removed = on_removed_proxy};
+const struct pw_proxy_events port_proxy_events = {.destroy = on_destroy_port_proxy,
+                                                  .bound = nullptr,
+                                                  .removed = on_removed_proxy,
+                                                  .done = nullptr,
+                                                  .error = nullptr};
 
-const struct pw_proxy_events module_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_module_proxy,
-                                                    .removed = on_removed_proxy};
+const struct pw_proxy_events module_proxy_events = {.destroy = on_destroy_module_proxy,
+                                                    .bound = nullptr,
+                                                    .removed = on_removed_proxy,
+                                                    .done = nullptr,
+                                                    .error = nullptr};
 
-const struct pw_proxy_events client_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_client_proxy,
-                                                    .removed = on_removed_proxy};
+const struct pw_proxy_events client_proxy_events = {.destroy = on_destroy_client_proxy,
+                                                    .bound = nullptr,
+                                                    .removed = on_removed_proxy,
+                                                    .done = nullptr,
+                                                    .error = nullptr};
 
-const struct pw_proxy_events node_proxy_events = {PW_VERSION_PROXY_EVENTS, .destroy = on_destroy_node_proxy,
-                                                  .removed = on_removed_node_proxy};
+const struct pw_proxy_events node_proxy_events = {.destroy = on_destroy_node_proxy,
+                                                  .bound = nullptr,
+                                                  .removed = on_removed_node_proxy,
+                                                  .done = nullptr,
+                                                  .error = nullptr};
 
-const struct pw_node_events node_events = {PW_VERSION_NODE_EVENTS, .info = on_node_info, .param = on_node_event_param};
+const struct pw_node_events node_events = {.info = on_node_info, .param = on_node_event_param};
 
 const struct pw_link_events link_events = {
-    PW_VERSION_LINK_EVENTS,
     .info = on_link_info,
 };
 
 const struct pw_port_events port_events = {
-    PW_VERSION_LINK_EVENTS,
     .info = on_port_info,
 };
 
 const struct pw_module_events module_events = {
-    PW_VERSION_MODULE_EVENTS,
     .info = on_module_info,
 };
 
 const struct pw_client_events client_events = {
-    PW_VERSION_CLIENT_EVENTS,
     .info = on_client_info,
 };
 
@@ -946,7 +957,6 @@ const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
                                            .error = on_core_error};
 
 const struct pw_registry_events registry_events = {
-    PW_VERSION_REGISTRY_EVENTS,
     .global = on_registry_global,
 };
 
