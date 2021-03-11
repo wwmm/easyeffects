@@ -79,8 +79,8 @@ void Spectrum::process(const std::vector<float>& left_in,
     float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
     float sqr_r = complex_right[i][0] * complex_right[i][0] + complex_right[i][1] * complex_right[i][1];
 
-    sqr_l /= n_samples;
-    sqr_r /= n_samples;
+    sqr_l /= static_cast<float>(n_samples * n_samples);
+    sqr_r /= static_cast<float>(n_samples * n_samples);
 
     float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
 
@@ -92,4 +92,6 @@ void Spectrum::process(const std::vector<float>& left_in,
 
     // std::cout << output[i] << std::endl;
   }
+
+  Glib::signal_idle().connect_once([=, this] { power.emit(output); });
 }

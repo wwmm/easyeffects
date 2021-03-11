@@ -181,7 +181,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     }
   }
 
-  //   connections.emplace_back(soe->new_spectrum.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  connections.emplace_back(soe->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
 
   connections.emplace_back(
       soe->pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_added)));

@@ -72,7 +72,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   // spectrum
 
-  SpectrumUi::add_to_box(box_spectrum);
+  spectrum_ui = SpectrumUi::add_to_box(box_spectrum);
 
   // gsettings
 

@@ -33,7 +33,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   add_controller(controller_motion);
 
-  controller_motion->signal_motion().connect([=](const double& x, const double& y) {
+  controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
     int width = get_width();
     int height = get_height();
     int usable_height = height - axis_height;
@@ -105,9 +105,29 @@ void SpectrumUi::clear_spectrum() {
 }
 
 void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
-  spectrum_mag = magnitudes;
+  if (!settings->get_boolean("show")) {
+    return;
+  }
 
-  queue_draw();
+  if (spectrum_mag.size() != magnitudes.size()) {
+    spectrum_mag.resize(magnitudes.size());
+  }
+
+  std::copy(magnitudes.begin(), magnitudes.end(), spectrum_mag.begin());
+
+  auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+
+  if (max_mag > util::minimum_db_level) {
+    for (float& v : spectrum_mag) {
+      if (util::minimum_db_level < v) {
+        v = (util::minimum_db_level - v) / util::minimum_db_level;
+      } else {
+        v = 0.0F;
+      }
+    }
+
+    queue_draw();
+  }
 }
 
 void SpectrumUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
