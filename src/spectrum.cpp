@@ -23,7 +23,21 @@ Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {}
+    : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {
+  fft_left_in.resize(n_bands);
+  fft_right_in.resize(n_bands);
+  output.resize(n_bands / 2 + 1);
+
+  complex_left = fftwf_alloc_complex(n_bands);
+  complex_right = fftwf_alloc_complex(n_bands);
+
+  plan_l = fftwf_plan_dft_r2c_1d(n_bands, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
+  plan_r = fftwf_plan_dft_r2c_1d(n_bands, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
+
+  bypass = !settings->get_boolean("show");
+
+  settings->signal_changed("show").connect([=, this](auto key) { bypass = !settings->get_boolean(key); });
+}
 
 Spectrum::~Spectrum() {
   fftwf_destroy_plan(plan_l);
@@ -38,25 +52,7 @@ Spectrum::~Spectrum() {
   }
 }
 
-void Spectrum::setup() {
-  fft_left_in.resize(n_samples);
-  fft_right_in.resize(n_samples);
-  output.resize(n_samples / 2 + 1);
-
-  if (complex_left != nullptr) {
-    fftwf_free(complex_left);
-  }
-
-  if (complex_right == nullptr) {
-    fftwf_free(complex_right);
-  }
-
-  complex_left = fftwf_alloc_complex(n_samples);
-  complex_right = fftwf_alloc_complex(n_samples);
-
-  plan_l = fftwf_plan_dft_r2c_1d(n_samples, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
-  plan_r = fftwf_plan_dft_r2c_1d(n_samples, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
-}
+void Spectrum::setup() {}
 
 void Spectrum::process(const std::vector<float>& left_in,
                        const std::vector<float>& right_in,
@@ -69,29 +65,50 @@ void Spectrum::process(const std::vector<float>& left_in,
     return;
   }
 
-  std::copy(left_in.begin(), left_in.end(), fft_left_in.begin());
-  std::copy(right_in.begin(), right_in.end(), fft_right_in.begin());
+  // std::copy(left_in.begin(), left_in.end(), fft_left_in.begin());
+  // std::copy(right_in.begin(), right_in.end(), fft_right_in.begin());
 
-  fftwf_execute(plan_l);
-  fftwf_execute(plan_r);
+  uint count = 0;
 
-  for (uint i = 0; i < output.size(); i++) {
-    float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
-    float sqr_r = complex_right[i][0] * complex_right[i][0] + complex_right[i][1] * complex_right[i][1];
+  for (uint n = 0; n < n_samples; n++) {
+    uint k = total_count + n;
 
-    sqr_l /= static_cast<float>(n_samples * n_samples);
-    sqr_r /= static_cast<float>(n_samples * n_samples);
+    if (k < n_bands) {
+      fft_left_in[k] = left_in[n];
+      fft_right_in[k] = right_in[n];
 
-    float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
-
-    if (!std::isinf(v)) {
-      output[i] = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+      count++;
     } else {
-      output[i] = util::minimum_db_level;
+      break;
     }
-
-    // std::cout << output[i] << std::endl;
   }
 
-  Glib::signal_idle().connect_once([=, this] { power.emit(output); });
+  total_count += count;
+
+  if (total_count == n_bands) {
+    total_count = 0;
+
+    fftwf_execute(plan_l);
+    fftwf_execute(plan_r);
+
+    for (uint i = 0; i < output.size(); i++) {
+      float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
+      float sqr_r = complex_right[i][0] * complex_right[i][0] + complex_right[i][1] * complex_right[i][1];
+
+      sqr_l /= static_cast<float>(n_samples * n_samples);
+      sqr_r /= static_cast<float>(n_samples * n_samples);
+
+      float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
+
+      if (!std::isinf(v)) {
+        output[i] = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+      } else {
+        output[i] = util::minimum_db_level;
+      }
+
+      // std::cout << output[i] << std::endl;
+    }
+
+    Glib::signal_idle().connect_once([=, this] { power.emit(output); });
+  }
 }

@@ -14,7 +14,6 @@ pulseeffects_sources = [
 	'stream_output_effects.cpp',
 	'stream_input_effects_ui.cpp',
 	'stream_input_effects.cpp',
-	'pipeline_base.cpp',
 	'plugin_base.cpp',
 	# 'plugin_ui_base.cpp',
 	'output_level.cpp',

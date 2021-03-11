@@ -53,6 +53,8 @@ class Spectrum : public PluginBase {
 
   float threshold = util::minimum_db_level;
 
+  uint n_bands = 4096, total_count = 0;
+
   bool bypass = false;
 };
 

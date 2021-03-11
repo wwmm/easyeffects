@@ -52,7 +52,11 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   int axis_height = 0;
   double mouse_intensity = 0.0, mouse_freq = 0.0;
-  std::vector<float> spectrum_mag;
+
+  uint min_spectrum_freq = 20U;     // Hz
+  uint max_spectrum_freq = 20000U;  // Hz
+
+  std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
 
   void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 
