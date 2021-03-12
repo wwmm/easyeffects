@@ -20,33 +20,9 @@
 #ifndef PLUGIN_UI_BASE_HPP
 #define PLUGIN_UI_BASE_HPP
 
-#include <giomm/settings.h>
-#include <gtkmm/adjustment.h>
-#include <gtkmm/box.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/button.h>
-#include <gtkmm/checkbutton.h>
-#include <gtkmm/comboboxtext.h>
-#include <gtkmm/dialog.h>
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/filechoosernative.h>
-#include <gtkmm/frame.h>
-#include <gtkmm/grid.h>
-#include <gtkmm/label.h>
-#include <gtkmm/levelbar.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/menubutton.h>
-#include <gtkmm/scale.h>
-#include <gtkmm/scrolledwindow.h>
-#include <gtkmm/spinbutton.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/stackswitcher.h>
-#include <gtkmm/switch.h>
-#include <gtkmm/togglebutton.h>
-#include <gtkmm/window.h>
+#include <giomm.h>
+#include <gtkmm.h>
 #include <array>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
 #include "util.hpp"
 
 class PluginUiBase {
@@ -59,9 +35,6 @@ class PluginUiBase {
   virtual ~PluginUiBase();
 
   std::string name;
-
-  Gtk::Box* listbox_control = nullptr;
-  Gtk::Button *plugin_up = nullptr, *plugin_down = nullptr;
 
   void on_new_input_level(const std::array<double, 2>& peak);
   void on_new_output_level(const std::array<double, 2>& peak);
@@ -88,12 +61,6 @@ class PluginUiBase {
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
 
   std::vector<sigc::connection> connections;
-
-  static void get_object(const Glib::RefPtr<Gtk::Builder>& builder,
-                         const std::string& name,
-                         Glib::RefPtr<Gtk::Adjustment>& object) {
-    object = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(builder->get_object(name));
-  }
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {

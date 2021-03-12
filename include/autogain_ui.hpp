@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class AutoGainUi : public Gtk::Grid, public PluginUiBase {
+class AutoGainUi : public Gtk::Box, public PluginUiBase {
  public:
   AutoGainUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,8 +31,10 @@ class AutoGainUi : public Gtk::Grid, public PluginUiBase {
   AutoGainUi(const AutoGainUi&) = delete;
   auto operator=(const AutoGainUi&) -> AutoGainUi& = delete;
   AutoGainUi(const AutoGainUi&&) = delete;
-  auto operator=(const AutoGainUi &&) -> AutoGainUi& = delete;
+  auto operator=(const AutoGainUi&&) -> AutoGainUi& = delete;
   ~AutoGainUi() override;
+
+  static auto add_to_stack(Gtk::Stack* stack) -> AutoGainUi*;
 
   void on_new_momentary(const float& value);
   void on_new_shortterm(const float& value);

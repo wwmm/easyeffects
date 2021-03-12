@@ -368,7 +368,7 @@ void EffectsBaseUi::setup_listview_players() {
       pointer_connection_blocklist->unblock();
     });
 
-    scale_volume->set_format_value_func([=, this](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
+    scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
 
     holder->info_updated.emit(holder->info);
 
@@ -441,7 +441,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = new Gtk::Box();
     auto* label = Gtk::manage(new Gtk::Label());
     auto* btn = Gtk::manage(new Gtk::Button());
@@ -471,7 +471,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("blocklist");
 
-      list.erase(std::remove_if(list.begin(), list.end(), [=, this](auto& player_name) { return player_name == name; }),
+      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& player_name) { return player_name == name; }),
                  list.end());
 
       settings->set_string_array("blocklist", list);
@@ -481,7 +481,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
-  factory->signal_unbind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
       connection->disconnect();
 
@@ -531,7 +531,7 @@ void EffectsBaseUi::setup_listview_plugins() {
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = new Gtk::Box();
     auto* label = Gtk::manage(new Gtk::Label());
     auto* btn = Gtk::manage(new Gtk::Button());
@@ -572,7 +572,7 @@ void EffectsBaseUi::setup_listview_plugins() {
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
-  factory->signal_unbind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_add"))) {
       connection->disconnect();
 
@@ -604,7 +604,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = new Gtk::Box();
     auto* label = Gtk::manage(new Gtk::Label());
     auto* up = Gtk::manage(new Gtk::Button());
@@ -668,7 +668,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("selected-plugins");
 
-      list.erase(std::remove_if(list.begin(), list.end(), [=, this](auto& plugin_name) { return plugin_name == name; }),
+      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& plugin_name) { return plugin_name == name; }),
                  list.end());
 
       settings->set_string_array("selected-plugins", list);

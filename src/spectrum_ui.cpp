@@ -27,10 +27,6 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   // signals connection
 
-  // spectrum->signal_enter_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_enter));
-  // spectrum->signal_leave_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_leave));
-  // spectrum->signal_motion_notify_event().connect(sigc::mem_fun(*this, &SpectrumUi::on_mouse_motion));
-
   add_controller(controller_motion);
 
   controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
@@ -46,7 +42,6 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
       mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
       // intensity scale is in decibel
-      // minimum intensity is -120 dB and maximum is 0 dB
 
       mouse_intensity = y * util::minimum_db_level / usable_height;
 

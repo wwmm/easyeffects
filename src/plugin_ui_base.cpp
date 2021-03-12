@@ -25,34 +25,22 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
     : settings(Gio::Settings::create(schema, schema_path)) {
   // get widgets
 
-  builder->get_widget("enable", enable);
-  builder->get_widget("listbox_control", listbox_control);
-  builder->get_widget("controls", controls);
-  builder->get_widget("plugin_up", plugin_up);
-  builder->get_widget("plugin_down", plugin_down);
+  input_level_left = builder->get_widget<Gtk::LevelBar>("input_level_left");
+  input_level_right = builder->get_widget<Gtk::LevelBar>("input_level_right");
+  input_level_left_label = builder->get_widget<Gtk::Label>("input_level_left_label");
+  input_level_right_label = builder->get_widget<Gtk::Label>("input_level_right_label");
 
-  builder->get_widget("input_level_left", input_level_left);
-  builder->get_widget("input_level_right", input_level_right);
-  builder->get_widget("input_level_left_label", input_level_left_label);
-  builder->get_widget("input_level_right_label", input_level_right_label);
-
-  builder->get_widget("output_level_left", output_level_left);
-  builder->get_widget("output_level_right", output_level_right);
-  builder->get_widget("output_level_left_label", output_level_left_label);
-  builder->get_widget("output_level_right_label", output_level_right_label);
+  output_level_left = builder->get_widget<Gtk::LevelBar>("output_level_left");
+  output_level_right = builder->get_widget<Gtk::LevelBar>("output_level_right");
+  output_level_left_label = builder->get_widget<Gtk::Label>("output_level_left_label");
+  output_level_right_label = builder->get_widget<Gtk::Label>("output_level_right_label");
 
   // gsettings bindings
 
-  connections.emplace_back(settings->signal_changed("state").connect(
-      [=](auto key) { settings->set_boolean("post-messages", settings->get_boolean(key)); }));
+  // connections.emplace_back(settings->signal_changed("state").connect(
+  //     [=, this](auto key) { settings->set_boolean("post-messages", settings->get_boolean(key)); }));
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-  auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-
-  settings->bind("state", enable, "active", flag);
-  settings->bind("state", controls, "sensitive", flag_get);
-
-  settings->set_boolean("post-messages", settings->get_boolean("state"));
+  // settings->set_boolean("post-messages", settings->get_boolean("state"));
 }
 
 PluginUiBase::~PluginUiBase() {
