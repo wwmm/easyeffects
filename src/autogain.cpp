@@ -151,7 +151,14 @@ void AutoGain::process(const std::vector<float>& left_in,
   std::transform(right_out.begin(), right_out.end(), right_out.begin(),
                  [=, this](float& c) { return c * output_gain; });
 
-  // Glib::signal_idle().connect_once([=, this] { power.emit(rate, n_bands, output); });
+  notification_dt += static_cast<float>(n_samples) / rate;
+
+  if (notification_dt > notification_time_window) {
+    notification_dt = 0.0F;
+
+    Glib::signal_idle().connect_once(
+        [=, this] { results.emit(loudness, output_gain, momentary, shortterm, global, relative, range); });
+  }
 }
 
 // void AutoGain::bind_to_gsettings() {

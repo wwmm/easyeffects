@@ -43,13 +43,18 @@ class AutoGain : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> momentary, shortterm, integrated, relative, loudness, range, gain;
+  // loudness, gain, momentary, shortterm, integrated, relative, range;
+
+  sigc::signal<void(double, double, double, double, double, double, double)> results;
 
  private:
   bool bypass = false;
 
   double target = -23.0;  // target loudness level
   double output_gain = 1.0;
+
+  float notification_time_window = 0.1F;  // 100 ms
+  float notification_dt = 0.0F;
 
   std::vector<float> data;
 
