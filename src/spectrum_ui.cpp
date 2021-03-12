@@ -48,7 +48,7 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
       // intensity scale is in decibel
       // minimum intensity is -120 dB and maximum is 0 dB
 
-      mouse_intensity = -y * 120.0 / usable_height;
+      mouse_intensity = y * util::minimum_db_level / usable_height;
 
       queue_draw();
     }
@@ -70,6 +70,18 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   connections.emplace_back(
       settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
+
+  connections.emplace_back(settings->signal_changed("minimum-frequency").connect([&](auto key) {
+    std::lock_guard<std::mutex> guard(my_lock_guard);
+
+    init_frequency_axis();
+  }));
+
+  connections.emplace_back(settings->signal_changed("maximum-frequency").connect([&](auto key) {
+    std::lock_guard<std::mutex> guard(my_lock_guard);
+
+    init_frequency_axis();
+  }));
 
   settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
 
@@ -104,16 +116,30 @@ void SpectrumUi::clear_spectrum() {
   queue_draw();
 }
 
-void SpectrumUi::on_new_spectrum(const std::vector<float>& magnitudes) {
+void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes) {
   if (!settings->get_boolean("show")) {
     return;
   }
 
-  if (spectrum_mag.size() != magnitudes.size()) {
-    spectrum_mag.resize(magnitudes.size());
+  std::lock_guard<std::mutex> guard(my_lock_guard);
+
+  if (this->rate != rate || this->n_bands != n_bands) {
+    this->rate = rate;
+    this->n_bands = n_bands;
+
+    init_frequency_axis();
   }
 
-  std::copy(magnitudes.begin(), magnitudes.end(), spectrum_mag.begin());
+  try {
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline(magnitudes.begin() + start_index,
+                                                                      magnitudes.end(), spline_f0, spline_df);
+
+    for (uint n = 0U; n < spectrum_mag.size(); n++) {
+      spectrum_mag[n] = spline(spectrum_x_axis[n]);
+    }
+  } catch (const std::exception& e) {
+    util::debug(std::string("Message from thrown exception was: ") + e.what());
+  }
 
   auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
 
@@ -247,6 +273,42 @@ void SpectrumUi::init_color() {
   color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
 }
 
+void SpectrumUi::init_frequency_axis() {
+  spectrum_freqs.clear();
+
+  start_index = 0U;
+
+  for (uint n = 0U; n < n_bands; n++) {
+    auto f = rate * n / n_bands;
+
+    if (f > static_cast<uint>(settings->get_int("maximum-frequency"))) {
+      break;
+    }
+
+    if (f > static_cast<uint>(settings->get_int("minimum-frequency"))) {
+      spectrum_freqs.emplace_back(f);
+
+      if (start_index == 0U) {
+        start_index = n;
+      }
+    }
+  }
+
+  if (!spectrum_freqs.empty()) {
+    spectrum_mag.resize(spectrum_freqs.size());
+
+    auto npoints = settings->get_int("n-points");
+
+    spectrum_x_axis = util::logspace(log10f(static_cast<float>(settings->get_int("minimum-frequency"))),
+                                     log10f(static_cast<float>(settings->get_int("maximum-frequency"))), npoints);
+
+    spectrum_mag.resize(npoints);
+
+    spline_f0 = spectrum_freqs[0];
+    spline_df = spectrum_freqs[1] - spectrum_freqs[0];
+  }
+}
+
 void SpectrumUi::init_frequency_labels_color() {
   Glib::Variant<std::vector<double>> v;
 
@@ -274,8 +336,8 @@ auto SpectrumUi::draw_frequency_axis(const Cairo::RefPtr<Cairo::Context>& ctx, c
   int n_freq_labels = 10;
   double freq_labels_offset = width / static_cast<double>(n_freq_labels);
 
-  auto freq_labels = util::logspace(log10(static_cast<float>(min_spectrum_freq)),
-                                    log10(static_cast<float>(max_spectrum_freq)), n_freq_labels);
+  auto freq_labels = util::logspace(log10f(static_cast<float>(min_spectrum_freq)),
+                                    log10f(static_cast<float>(max_spectrum_freq)), n_freq_labels);
 
   ctx->set_source_rgba(color_frequency_axis_labels.get_red(), color_frequency_axis_labels.get_green(),
                        color_frequency_axis_labels.get_blue(), color_frequency_axis_labels.get_alpha());

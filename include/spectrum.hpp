@@ -42,7 +42,7 @@ class Spectrum : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(std::vector<float>)> power;
+  sigc::signal<void(uint, uint, std::vector<float>)> power;  // rate, nbands, magnitudes
 
  private:
   fftwf_plan plan_l = nullptr, plan_r = nullptr;

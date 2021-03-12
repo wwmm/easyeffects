@@ -65,9 +65,6 @@ void Spectrum::process(const std::vector<float>& left_in,
     return;
   }
 
-  // std::copy(left_in.begin(), left_in.end(), fft_left_in.begin());
-  // std::copy(right_in.begin(), right_in.end(), fft_right_in.begin());
-
   uint count = 0;
 
   for (uint n = 0; n < n_samples; n++) {
@@ -109,6 +106,6 @@ void Spectrum::process(const std::vector<float>& left_in,
       // std::cout << output[i] << std::endl;
     }
 
-    Glib::signal_idle().connect_once([=, this] { power.emit(output); });
+    Glib::signal_idle().connect_once([=, this] { power.emit(rate, n_bands, output); });
   }
 }

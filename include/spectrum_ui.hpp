@@ -22,6 +22,8 @@
 
 #include <giomm.h>
 #include <gtkmm.h>
+#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include <mutex>
 #include "util.hpp"
 
 class SpectrumUi : public Gtk::DrawingArea {
@@ -35,7 +37,7 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   static auto add_to_box(Gtk::Box* box) -> SpectrumUi*;
 
-  void on_new_spectrum(const std::vector<float>& magnitudes);
+  void on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes);
 
   void clear_spectrum();
 
@@ -53,14 +55,19 @@ class SpectrumUi : public Gtk::DrawingArea {
   int axis_height = 0;
   double mouse_intensity = 0.0, mouse_freq = 0.0;
 
-  uint min_spectrum_freq = 20U;     // Hz
-  uint max_spectrum_freq = 20000U;  // Hz
+  uint rate = 0, n_bands = 0;
+  uint start_index = 0U;
+  float spline_f0 = 0.0F, spline_df = 0.0F;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
+
+  std::mutex my_lock_guard;
 
   void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 
   void init_color();
+
+  void init_frequency_axis();
 
   void init_frequency_labels_color();
 
