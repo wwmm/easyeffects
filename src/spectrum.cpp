@@ -34,9 +34,9 @@ Spectrum::Spectrum(const std::string& tag,
   plan_l = fftwf_plan_dft_r2c_1d(n_bands, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
   plan_r = fftwf_plan_dft_r2c_1d(n_bands, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
 
-  bypass = !settings->get_boolean("show");
+  bypass = !settings->get_boolean("post-messages");
 
-  settings->signal_changed("show").connect([=, this](auto key) { bypass = !settings->get_boolean(key); });
+  settings->signal_changed("post-messages").connect([=, this](auto key) { bypass = !settings->get_boolean(key); });
 }
 
 Spectrum::~Spectrum() {

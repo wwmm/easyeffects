@@ -90,12 +90,19 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   init_gradient_color();
 
   set_content_height(settings->get_int("height"));
+
+  settings->set_boolean("post-messages", property_visible().get_value());
+
+  property_visible().signal_changed().connect(
+      [=, this]() { settings->set_boolean("post-messages", property_visible().get_value()); });
 }
 
 SpectrumUi::~SpectrumUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
+
+  settings->set_boolean("post-messages", false);
 
   util::debug(log_tag + "destroyed");
 }

@@ -4,6 +4,9 @@
         <key name="show" type="b">
             <default>true</default>
         </key>
+        <key name="post-messages" type="b">
+            <default>false</default>
+        </key>
         <key name="fill" type="b">
             <default>true</default>
         </key>
