@@ -112,6 +112,7 @@ pulseeffects_deps = [
 	dependency('boost', version: '>=1.72', modules:['filesystem']),
 	dependency('sndfile'),
 	dependency('fftw3f'),
+	dependency('libebur128',version: '>=1.2.0'),
 	dependency('threads')
 ]
 

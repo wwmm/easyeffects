@@ -40,6 +40,8 @@ Spectrum::Spectrum(const std::string& tag,
 }
 
 Spectrum::~Spectrum() {
+  util::debug(log_tag + name + " destroyed");
+
   fftwf_destroy_plan(plan_l);
   fftwf_destroy_plan(plan_r);
 

@@ -59,6 +59,7 @@ class EffectsBase {
 
   PipeManager* pm = nullptr;
 
+  std::shared_ptr<AutoGain> autogain;
   std::unique_ptr<OutputLevel> output_level;
   std::unique_ptr<Spectrum> spectrum;
 
@@ -69,7 +70,6 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
-  std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
   std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Convolver> convolver;

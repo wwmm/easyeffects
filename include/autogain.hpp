@@ -20,8 +20,9 @@
 #ifndef AUTOGAIN_HPP
 #define AUTOGAIN_HPP
 
+#include <ebur128.h>
+#include <mutex>
 #include "plugin_base.hpp"
-#include "util.hpp"
 
 class AutoGain : public PluginBase {
  public:
@@ -35,10 +36,26 @@ class AutoGain : public PluginBase {
   auto operator=(const AutoGain&&) -> AutoGain& = delete;
   ~AutoGain() override;
 
-  sigc::signal<void(float)> momentary, shortterm, integrated, relative, loudness, range, gain;
+  void setup() override;
+
+  void process(const std::vector<float>& left_in,
+               const std::vector<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
+  sigc::signal<void(double)> momentary, shortterm, integrated, relative, loudness, range, gain;
 
  private:
-  void bind_to_gsettings();
+  bool bypass = false;
+
+  double target = -23.0;  // target loudness level
+  double output_gain = 1.0;
+
+  std::vector<float> data;
+
+  ebur128_state* ebur_state = nullptr;
+
+  std::mutex my_lock_guard;
 };
 
 #endif

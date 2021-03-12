@@ -143,7 +143,9 @@ void StreamOutputEffects::change_output_device(const NodeInfo& node) {
 void StreamOutputEffects::connect_filters() {
   pm->lock();
 
-  pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
+  pm->link_nodes(pm->pe_sink_node.id, autogain->get_node_id());
+
+  pm->link_nodes(autogain->get_node_id(), spectrum->get_node_id());
 
   pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 

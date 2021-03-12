@@ -25,7 +25,9 @@ OutputLevel::OutputLevel(const std::string& tag,
                          PipeManager* pipe_manager)
     : PluginBase(tag, "output_level", schema, schema_path, pipe_manager) {}
 
-OutputLevel::~OutputLevel() {}
+OutputLevel::~OutputLevel() {
+  util::debug(log_tag + name + " destroyed");
+}
 
 void OutputLevel::setup() {}
 
