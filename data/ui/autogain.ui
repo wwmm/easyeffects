@@ -54,7 +54,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="m_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -86,7 +86,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="s_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -118,7 +118,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="i_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -150,7 +150,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="r_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -182,7 +182,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="lra_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -214,7 +214,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLevelBar">
+                    <object class="GtkLevelBar" id="l_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
                     </object>
@@ -222,6 +222,38 @@
 
                 <child>
                     <object class="GtkLabel" id="l_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="g_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Output Gain</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar" id="g_level">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="g_label">
                         <property name="halign">end</property>
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
@@ -291,6 +323,7 @@
             <widget name="r_title" />
             <widget name="lra_title" />
             <widget name="l_title" />
+            <widget name="g_title" />
         </widgets>
     </object>
 </interface>
