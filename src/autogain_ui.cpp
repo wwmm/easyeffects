@@ -45,21 +45,11 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   lra_label = builder->get_widget<Gtk::Label>("lra_label");
 
   reset_history = builder->get_widget<Gtk::Button>("reset");
-  // builder->get_widget("detect_silence", detect_silence);
-  // builder->get_widget("use_geometric_mean", use_geometric_mean);
-  // builder->get_widget("weight_m_grid", weight_m_grid);
-  // builder->get_widget("weight_s_grid", weight_s_grid);
-  // builder->get_widget("weight_i_grid", weight_i_grid);
-
   reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   input_gain = builder->get_object<Gtk::Adjustment>("input_gain");
   output_gain = builder->get_object<Gtk::Adjustment>("output_gain");
   target = builder->get_object<Gtk::Adjustment>("target");
-
-  // get_object(builder, "weight_m", weight_m);
-  // get_object(builder, "weight_s", weight_s);
-  // get_object(builder, "weight_i", weight_i);
 
   // gsettings bindings
 
@@ -67,21 +57,12 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value");
   settings->bind("output-gain", output_gain.get(), "value");
   settings->bind("target", target.get(), "value");
-  // settings->bind("weight-m", weight_m.get(), "value", flag);
-  // settings->bind("weight-s", weight_s.get(), "value", flag);
-  // settings->bind("weight-i", weight_i.get(), "value", flag);
-  // settings->bind("detect-silence", detect_silence, "active", flag);
-  // settings->bind("use-geometric-mean", use_geometric_mean, "active", flag);
-  // settings->bind("use-geometric-mean", weight_m_grid, "sensitive",
-  //                Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
-  // settings->bind("use-geometric-mean", weight_s_grid, "sensitive",
-  //                Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
-  // settings->bind("use-geometric-mean", weight_i_grid, "sensitive",
-  //                Gio::SettingsBindFlags::SETTINGS_BIND_GET | Gio::SettingsBindFlags::SETTINGS_BIND_INVERT_BOOLEAN);
 
-  reset_history->signal_clicked().connect([=, this]() { settings->set_boolean("reset", true); });
+  // it is ugly but will ensure that third party tools are able to reset this plugin history
 
-  // reset plugin
+  reset_history->signal_clicked().connect(
+      [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
+
   reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
@@ -100,55 +81,39 @@ auto AutoGainUi::add_to_stack(Gtk::Stack* stack) -> AutoGainUi* {
   return ui;
 }
 
+void AutoGainUi::on_new_results(const double& loudness,
+                                const double& gain,
+                                const double& momentary,
+                                const double& shortterm,
+                                const double& integrated,
+                                const double& relative,
+                                const double& range) {
+  l_level->set_value(util::db_to_linear(loudness));
+  l_label->set_text(level_to_localized_string(loudness, 0));
+
+  g_level->set_value(gain);
+  g_label->set_text(level_to_localized_string(util::linear_to_db(gain), 0));
+
+  m_level->set_value(util::db_to_linear(momentary));
+  m_label->set_text(level_to_localized_string(momentary, 0));
+
+  s_level->set_value(util::db_to_linear(shortterm));
+  s_label->set_text(level_to_localized_string(shortterm, 0));
+
+  i_level->set_value(util::db_to_linear(integrated));
+  i_label->set_text(level_to_localized_string(integrated, 0));
+
+  r_level->set_value(util::db_to_linear(relative));
+  r_label->set_text(level_to_localized_string(relative, 0));
+
+  lra_level->set_value(util::db_to_linear(range));
+  lra_label->set_text(level_to_localized_string(range, 0));
+}
+
 void AutoGainUi::reset() {
-  settings->reset("detect-silence");
-
-  settings->reset("use-geometric-mean");
-
   settings->reset("input-gain");
 
   settings->reset("output-gain");
 
   settings->reset("target");
-
-  settings->reset("weight-m");
-
-  settings->reset("weight-s");
-
-  settings->reset("weight-i");
-}
-
-void AutoGainUi::on_new_momentary(const float& value) {
-  m_level->set_value(util::db_to_linear(value));
-  m_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_shortterm(const float& value) {
-  s_level->set_value(util::db_to_linear(value));
-  s_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_integrated(const float& value) {
-  i_level->set_value(util::db_to_linear(value));
-  i_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_relative(const float& value) {
-  r_level->set_value(util::db_to_linear(value));
-  r_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_loudness(const float& value) {
-  l_level->set_value(util::db_to_linear(value));
-  l_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_range(const float& value) {
-  lra_level->set_value(util::db_to_linear(value));
-  lra_label->set_text(level_to_localized_string(value, 0));
-}
-
-void AutoGainUi::on_new_gain(const float& value) {
-  g_level->set_value(value);
-  g_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }

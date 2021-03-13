@@ -24,13 +24,9 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "autogain", schema, schema_path, pipe_manager) {
-  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
+  settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
 
-  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
+  settings->signal_changed("reset-history").connect([&, this](auto key) { init_ebur128(); });
 }
 
 AutoGain::~AutoGain() {
@@ -43,7 +39,9 @@ AutoGain::~AutoGain() {
   }
 }
 
-void AutoGain::setup() {
+void AutoGain::init_ebur128() {
+  std::lock_guard<std::mutex> lock(my_lock_guard);
+
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
 
@@ -55,6 +53,10 @@ void AutoGain::setup() {
 
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
+}
+
+void AutoGain::setup() {
+  init_ebur128();
 
   data.resize(n_samples * 2);
 }
@@ -160,20 +162,3 @@ void AutoGain::process(const std::vector<float>& left_in,
         [=, this] { results.emit(loudness, output_gain, momentary, shortterm, global, relative, range); });
   }
 }
-
-// void AutoGain::bind_to_gsettings() {
-//   // g_settings_bind_with_mapping(settings, "target", autogain, "target", G_SETTINGS_BIND_GET, util::double_to_float,
-//   //                              nullptr, nullptr, nullptr);
-
-//   // g_settings_bind(settings, "weight-m", autogain, "weight-m", G_SETTINGS_BIND_DEFAULT);
-
-//   // g_settings_bind(settings, "weight-s", autogain, "weight-s", G_SETTINGS_BIND_DEFAULT);
-
-//   // g_settings_bind(settings, "weight-i", autogain, "weight-i", G_SETTINGS_BIND_DEFAULT);
-
-//   // g_settings_bind(settings, "detect-silence", autogain, "detect-silence", G_SETTINGS_BIND_DEFAULT);
-
-//   // g_settings_bind(settings, "use-geometric-mean", autogain, "use-geometric-mean", G_SETTINGS_BIND_DEFAULT);
-
-//   // g_settings_bind(settings, "reset", autogain, "reset", G_SETTINGS_BIND_DEFAULT);
-// }

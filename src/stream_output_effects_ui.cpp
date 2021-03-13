@@ -23,7 +23,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
                                              const Glib::RefPtr<Gio::Settings>& refSettings,
                                              StreamOutputEffects* soe_ptr)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, soe_ptr->pm), soe(soe_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, soe_ptr), soe(soe_ptr) {
   // populate stack
 
   //   auto b_limiter = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/limiter.glade");
@@ -46,8 +46,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.glade"); auto b_stereo_tools =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.glade"); auto b_convolver =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.glade"); auto b_crystalizer =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_autogain =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/autogain.glade"); auto b_delay =
+  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_delay =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/delay.glade"); auto b_rnnoise =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
@@ -111,18 +110,11 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui, "com.github.wwmm.pulseeffects.crystalizer",
   //                                     "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
 
-  //   b_autogain->get_widget_derived("widgets_grid", autogain_ui, "com.github.wwmm.pulseeffects.autogain",
-  //                                  "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
-
   //   b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.delay",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
 
   //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
-
-  // add to stack
-
-  AutoGainUi::add_to_stack(stack_plugins);
 
   //   stack->add(*limiter_ui, limiter_ui->name);
   //   stack->add(*compressor_ui, compressor_ui->name);
@@ -142,7 +134,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*stereo_tools_ui, stereo_tools_ui->name);
   //   stack->add(*convolver_ui, convolver_ui->name);
   //   stack->add(*crystalizer_ui, crystalizer_ui->name);
-  //   stack->add(*autogain_ui, autogain_ui->name);
   //   stack->add(*delay_ui, delay_ui->name);
   //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
@@ -166,7 +157,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(stereo_tools_ui);
   //   add_to_listbox(convolver_ui);
   //   add_to_listbox(crystalizer_ui);
-  //   add_to_listbox(autogain_ui);
   //   add_to_listbox(delay_ui);
   //   add_to_listbox(rnnoise_ui);
 

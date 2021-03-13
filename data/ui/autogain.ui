@@ -67,7 +67,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -99,7 +99,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -131,7 +131,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -163,7 +163,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -186,6 +186,8 @@
                     <object class="GtkLevelBar" id="lra_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
+                        <property name="min-value">1</property>
+                        <property name="max-value">30</property>
                     </object>
                 </child>
 
@@ -195,7 +197,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -227,7 +229,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>
@@ -250,6 +252,7 @@
                     <object class="GtkLevelBar" id="g_level">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
+                        <property name="max-value">10</property>
                     </object>
                 </child>
 
@@ -259,7 +262,7 @@
                         <property name="margin-start">2</property>
                         <property name="margin-end">2</property>
                         <property name="label">0</property>
-                        <property name="width-chars">6</property>
+                        <property name="width-chars">4</property>
                     </object>
                 </child>
             </object>

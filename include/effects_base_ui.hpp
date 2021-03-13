@@ -26,6 +26,8 @@
 #include <gtkmm.h>
 #include <memory>
 #include <vector>
+#include "autogain_ui.hpp"
+#include "effects_base.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"
@@ -46,7 +48,7 @@ class EffectsBaseUi {
  public:
   EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                 Glib::RefPtr<Gio::Settings> refSettings,
-                PipeManager* pipe_manager);
+                EffectsBase* effects_base);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
   EffectsBaseUi(const EffectsBaseUi&&) = delete;
@@ -54,6 +56,8 @@ class EffectsBaseUi {
   virtual ~EffectsBaseUi();
 
  protected:
+  EffectsBase* effects_base = nullptr;
+
   Glib::RefPtr<Gio::Settings> settings;
 
   Glib::RefPtr<Gtk::StackPage> page_players = nullptr;
@@ -140,6 +144,8 @@ class EffectsBaseUi {
 
     return msg.str();
   }
+
+  void add_plugins_to_stack_plugins();
 
   void setup_listview_players();
 

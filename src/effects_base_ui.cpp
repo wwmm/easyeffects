@@ -28,9 +28,10 @@ auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
-                             PipeManager* pipe_manager)
-    : settings(std::move(refSettings)),
-      pm(pipe_manager),
+                             EffectsBase* effects_base)
+    : effects_base(effects_base),
+      settings(std::move(refSettings)),
+      pm(effects_base->pm),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
       blocklist(Gtk::StringList::create({"initial_value"})),
@@ -61,6 +62,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   listview_selected_plugins = builder->get_widget<Gtk::ListView>("listview_selected_plugins");
   entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
   stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
+
+  add_plugins_to_stack_plugins();
 
   // configuring widgets
 
@@ -146,6 +149,12 @@ EffectsBaseUi::~EffectsBaseUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
+}
+
+void EffectsBaseUi::add_plugins_to_stack_plugins() {
+  auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins);
+
+  effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
 }
 
 void EffectsBaseUi::setup_listview_players() {

@@ -61,6 +61,8 @@ class AutoGain : public PluginBase {
   ebur128_state* ebur_state = nullptr;
 
   std::mutex my_lock_guard;
+
+  void init_ebur128();
 };
 
 #endif

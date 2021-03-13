@@ -36,18 +36,18 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack) -> AutoGainUi*;
 
-  void on_new_momentary(const float& value);
-  void on_new_shortterm(const float& value);
-  void on_new_integrated(const float& value);
-  void on_new_relative(const float& value);
-  void on_new_loudness(const float& value);
-  void on_new_range(const float& value);
-  void on_new_gain(const float& value);
+  void on_new_results(const double& loudness,
+                      const double& gain,
+                      const double& momentary,
+                      const double& shortterm,
+                      const double& integrated,
+                      const double& relative,
+                      const double& range);
 
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target, weight_m, weight_s, weight_i;
+  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target;
 
   Gtk::LevelBar *m_level = nullptr, *s_level = nullptr, *i_level = nullptr, *r_level = nullptr, *g_level = nullptr,
                 *l_level = nullptr, *lra_level = nullptr;
@@ -56,10 +56,6 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
              *l_label = nullptr, *lra_label = nullptr;
 
   Gtk::Button* reset_history = nullptr;
-
-  Gtk::ToggleButton *detect_silence = nullptr, *use_geometric_mean = nullptr;
-
-  Gtk::Grid *weight_m_grid = nullptr, *weight_s_grid = nullptr, *weight_i_grid = nullptr;
 };
 
 #endif

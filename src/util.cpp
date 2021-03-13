@@ -106,7 +106,7 @@ auto db_to_linear(const float& db) -> float {
 }
 
 auto db_to_linear(const double& db) -> double {
-  return exp((db / 20.0) * logf(10.0));
+  return exp((db / 20.0) * log(10.0));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {

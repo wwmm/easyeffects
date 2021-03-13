@@ -23,7 +23,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            const Glib::RefPtr<Gtk::Builder>& refBuilder,
                                            const Glib::RefPtr<Gio::Settings>& refSettings,
                                            StreamInputEffects* sie_ptr)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr->pm), sie(sie_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr), sie(sie_ptr) {
   page_players->set_title(_("Recorders"));
 
   // populate stack

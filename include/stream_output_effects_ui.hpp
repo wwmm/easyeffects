@@ -20,7 +20,6 @@
 #ifndef STREAM_OUTPUT_EFFECTS_UI_HPP
 #define STREAM_OUTPUT_EFFECTS_UI_HPP
 
-#include "autogain_ui.hpp"
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
 // #include "bass_enhancer_ui.hpp"
