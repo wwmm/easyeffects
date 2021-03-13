@@ -85,9 +85,6 @@ class PluginBase {
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
   float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
 
-  float level_meter_time_window = 1.0F / 24.0F;  // seconds
-  float level_meter_dt = 0.0F;
-
   float notification_time_window = 1.0F / 24.0F;  // seconds
   float notification_dt = 0.0F;
 

@@ -155,12 +155,12 @@ void AutoGain::process(const std::vector<float>& left_in,
   std::transform(right_out.begin(), right_out.end(), right_out.begin(),
                  [=, this](float& c) { return c * output_gain; });
 
-  get_peaks(left_in, right_in, left_out, right_out);
-
   if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
     notification_dt += sample_duration;
 
-    if (notification_dt > notification_time_window) {
+    if (notification_dt >= notification_time_window) {
       Glib::signal_idle().connect_once(
           [=, this] { results.emit(loudness, output_gain, momentary, shortterm, global, relative, range); });
 

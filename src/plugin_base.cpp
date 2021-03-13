@@ -182,24 +182,6 @@ void PluginBase::get_peaks(const std::vector<float>& left_in,
 
   output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
   output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
-
-  if (level_meter_dt > level_meter_time_window) {
-    float input_peak_db_l = util::linear_to_db(input_peak_left);
-    float input_peak_db_r = util::linear_to_db(input_peak_right);
-
-    float output_peak_db_l = util::linear_to_db(output_peak_left);
-    float output_peak_db_r = util::linear_to_db(output_peak_right);
-
-    Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
-
-    Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });
-
-    level_meter_dt = 0.0F;
-    input_peak_left = util::minimum_linear_level;
-    input_peak_right = util::minimum_linear_level;
-    output_peak_left = util::minimum_linear_level;
-    output_peak_right = util::minimum_linear_level;
-  }
 }
 
 void PluginBase::notify() {
