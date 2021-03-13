@@ -143,15 +143,22 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
     scrolled_window_plugins->set_max_content_height(height);
   });
+
+  effects_base->autogain->post_messages = true;
+  effects_base->output_level->post_messages = true;
+  effects_base->spectrum->post_messages = true;
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
+  util::debug("effects_base_ui: destroyed");
+
   for (auto& c : connections) {
     c.disconnect();
   }
 
-  // effects_base->autogain->post_messages = false;
-  // effects_base->output_level->post_messages = false;
+  effects_base->autogain->post_messages = false;
+  effects_base->output_level->post_messages = false;
+  effects_base->spectrum->post_messages = false;
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {

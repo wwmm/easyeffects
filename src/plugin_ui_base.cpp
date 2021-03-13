@@ -34,16 +34,12 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
   output_level_right = builder->get_widget<Gtk::LevelBar>("output_level_right");
   output_level_left_label = builder->get_widget<Gtk::Label>("output_level_left_label");
   output_level_right_label = builder->get_widget<Gtk::Label>("output_level_right_label");
-
-  settings->set_boolean("post-messages", true);
 }
 
 PluginUiBase::~PluginUiBase() {
   for (auto& c : connections) {
     c.disconnect();
   }
-
-  settings->set_boolean("post-messages", false);
 }
 
 auto PluginUiBase::level_to_localized_string(const double& value, const int& places) -> std::string {

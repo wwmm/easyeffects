@@ -33,10 +33,6 @@ Spectrum::Spectrum(const std::string& tag,
 
   plan_l = fftwf_plan_dft_r2c_1d(n_bands, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
   plan_r = fftwf_plan_dft_r2c_1d(n_bands, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
-
-  bypass = !settings->get_boolean("post-messages");
-
-  settings->signal_changed("post-messages").connect([=, this](auto key) { bypass = !settings->get_boolean(key); });
 }
 
 Spectrum::~Spectrum() {
@@ -63,7 +59,7 @@ void Spectrum::process(const std::vector<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  if (bypass) {
+  if (!post_messages) {
     return;
   }
 
@@ -104,8 +100,6 @@ void Spectrum::process(const std::vector<float>& left_in,
       } else {
         output[i] = util::minimum_db_level;
       }
-
-      // std::cout << output[i] << std::endl;
     }
 
     Glib::signal_idle().connect_once([=, this] { power.emit(rate, n_bands, output); });

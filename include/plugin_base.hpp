@@ -59,6 +59,10 @@ class PluginBase {
 
   uint rate = 0;
 
+  float sample_duration = 0.0F;
+
+  bool post_messages = false;
+
   [[nodiscard]] auto get_node_id() const -> uint;
 
   virtual void setup();
@@ -77,13 +81,17 @@ class PluginBase {
   PipeManager* pm = nullptr;
 
   bool bypass = false;
-  bool post_messages = false;
 
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
   float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
 
-  float level_meter_time_window = 0.1F;  // 100 ms
+  float level_meter_time_window = 1.0F / 24.0F;  // seconds
   float level_meter_dt = 0.0F;
+
+  float notification_time_window = 1.0F / 24.0F;  // seconds
+  float notification_dt = 0.0F;
+
+  void notify();
 
   void get_peaks(const std::vector<float>& left_in,
                  const std::vector<float>& right_in,

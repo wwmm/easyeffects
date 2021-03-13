@@ -30,6 +30,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
+    d->pb->sample_duration = static_cast<float>(n_samples) / rate;
 
     d->pb->setup();
   }
@@ -141,12 +142,6 @@ PluginBase::PluginBase(std::string tag,
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   } while (node_id == SPA_ID_INVALID);
-
-  post_messages = settings->get_boolean("post-messages");
-
-  settings->signal_changed("post-messages").connect([&, this](auto key) {
-    post_messages = settings->get_boolean(key);
-  });
 }
 
 PluginBase::~PluginBase() {
@@ -188,8 +183,6 @@ void PluginBase::get_peaks(const std::vector<float>& left_in,
   output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
   output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
 
-  level_meter_dt += static_cast<float>(n_samples) / rate;
-
   if (level_meter_dt > level_meter_time_window) {
     float input_peak_db_l = util::linear_to_db(input_peak_left);
     float input_peak_db_r = util::linear_to_db(input_peak_right);
@@ -207,4 +200,20 @@ void PluginBase::get_peaks(const std::vector<float>& left_in,
     output_peak_left = util::minimum_linear_level;
     output_peak_right = util::minimum_linear_level;
   }
+}
+
+void PluginBase::notify() {
+  float input_peak_db_l = util::linear_to_db(input_peak_left);
+  float input_peak_db_r = util::linear_to_db(input_peak_right);
+
+  float output_peak_db_l = util::linear_to_db(output_peak_left);
+  float output_peak_db_r = util::linear_to_db(output_peak_right);
+
+  Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
+  Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });
+
+  input_peak_left = util::minimum_linear_level;
+  input_peak_right = util::minimum_linear_level;
+  output_peak_left = util::minimum_linear_level;
+  output_peak_right = util::minimum_linear_level;
 }

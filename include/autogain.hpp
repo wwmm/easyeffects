@@ -53,9 +53,6 @@ class AutoGain : public PluginBase {
   double target = -23.0;  // target loudness level
   double output_gain = 1.0;
 
-  float notification_time_window = 0.1F;  // 100 ms
-  float notification_dt = 0.0F;
-
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;
