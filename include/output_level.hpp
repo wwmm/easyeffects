@@ -40,13 +40,6 @@ class OutputLevel : public PluginBase {
                const std::vector<float>& right_in,
                std::span<float>& left_out,
                std::span<float>& right_out) override;
-
-  sigc::signal<void(float, float)> level;
-
- private:
-  float max_l = util::minimum_linear_level, max_r = util::minimum_linear_level;
-  float time_window = 0.1F;  // 100 ms
-  float dt = 0.0F;
 };
 
 #endif

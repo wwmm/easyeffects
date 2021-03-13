@@ -36,10 +36,10 @@ class PluginUiBase {
 
   std::string name;
 
-  void on_new_input_level(const std::array<double, 2>& peak);
-  void on_new_output_level(const std::array<double, 2>& peak);
-  void on_new_input_level_db(const std::array<double, 2>& peak);
-  void on_new_output_level_db(const std::array<double, 2>& peak);
+  void on_new_input_level(const float& left, const float& right);
+  void on_new_output_level(const float& left, const float& right);
+  void on_new_input_level_db(const float& left, const float& right);
+  void on_new_output_level_db(const float& left, const float& right);
 
   auto level_to_localized_string(const double& value, const int& places) -> std::string;
   auto level_to_localized_string(const float& value, const int& places) -> std::string;
@@ -79,9 +79,8 @@ class PluginUiBase {
                     const T2& w_left_label,
                     const T3& w_right,
                     const T4& w_right_label,
-                    const std::array<double, 2>& peak) {
-    auto left = peak[0];
-    auto right = peak[1];
+                    const float& left,
+                    const float& right) {
     auto left_db = util::linear_to_db(left);
     auto right_db = util::linear_to_db(right);
 
@@ -107,10 +106,8 @@ class PluginUiBase {
                        const T2& w_left_label,
                        const T3& w_right,
                        const T4& w_right_label,
-                       const std::array<double, 2>& peak) {
-    auto left = peak[0];
-    auto right = peak[1];
-
+                       const float& left,
+                       const float& right) {
     if (left >= -99.0) {
       auto db_value = util::db_to_linear(left);
 

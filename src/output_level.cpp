@@ -35,35 +35,8 @@ void OutputLevel::process(const std::vector<float>& left_in,
                           const std::vector<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out) {
-  //   util::warning(std::to_string(left_in.size()));
-
-  float peak_l = 0.0F;
-  float peak_r = 0.0F;
-
-  for (const auto& v : left_in) {
-    peak_l = (v > peak_l) ? v : peak_l;
-  }
-
-  for (const auto& v : right_in) {
-    peak_r = (v > peak_r) ? v : peak_r;
-  }
-
-  max_l = (peak_l > max_l) ? peak_l : max_l;
-  max_r = (peak_r > max_r) ? peak_r : max_r;
-
-  dt += static_cast<float>(n_samples) / rate;
-
-  if (dt > time_window) {
-    float max_l_db = util::linear_to_db(max_l);
-    float max_r_db = util::linear_to_db(max_r);
-
-    Glib::signal_idle().connect_once([=, this] { level.emit(max_l_db, max_r_db); });
-
-    dt = 0.0F;
-    max_l = util::minimum_linear_level;
-    max_r = util::minimum_linear_level;
-  }
-
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  get_peaks(left_in, right_in, left_out, right_out);
 }

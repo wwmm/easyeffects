@@ -25,13 +25,8 @@ AutoGain::AutoGain(const std::string& tag,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "autogain", schema, schema_path, pipe_manager) {
   target = settings->get_double("target");
-  post_messages = settings->get_boolean("post-messages");
 
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
-
-  settings->signal_changed("post-messages").connect([&, this](auto key) {
-    post_messages = settings->get_boolean(key);
-  });
 
   settings->signal_changed("reset-history").connect([&, this](auto key) { init_ebur128(); });
 }
@@ -159,6 +154,8 @@ void AutoGain::process(const std::vector<float>& left_in,
 
   std::transform(right_out.begin(), right_out.end(), right_out.begin(),
                  [=, this](float& c) { return c * output_gain; });
+
+  get_peaks(left_in, right_in, left_out, right_out);
 
   if (post_messages) {
     notification_dt += static_cast<float>(n_samples) / rate;

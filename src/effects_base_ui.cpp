@@ -149,11 +149,16 @@ EffectsBaseUi::~EffectsBaseUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
+
+  // effects_base->autogain->post_messages = false;
+  // effects_base->output_level->post_messages = false;
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {
   auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins);
 
+  effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db));
+  effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db));
   effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
 }
 

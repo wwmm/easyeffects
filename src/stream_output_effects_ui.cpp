@@ -221,7 +221,7 @@ void StreamOutputEffectsUi::level_meters_connections() {
   // global output level meter connection
 
   connections.emplace_back(
-      soe->output_level->level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
+      soe->output_level->output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
   // limiter level meters connections
 

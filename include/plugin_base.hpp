@@ -53,8 +53,6 @@ class PluginBase {
 
   std::string log_tag, name;
 
-  bool plugin_is_installed = false;
-
   pw_filter* filter = nullptr;
 
   uint n_samples = 0;
@@ -70,13 +68,27 @@ class PluginBase {
                        std::span<float>& left_out,
                        std::span<float>& right_out);
 
-  void enable();
-  void disable();
+  sigc::signal<void(float, float)> input_level;
+  sigc::signal<void(float, float)> output_level;
 
  protected:
   Glib::RefPtr<Gio::Settings> settings;
 
   PipeManager* pm = nullptr;
+
+  bool bypass = false;
+  bool post_messages = false;
+
+  float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
+  float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
+
+  float level_meter_time_window = 0.1F;  // 100 ms
+  float level_meter_dt = 0.0F;
+
+  void get_peaks(const std::vector<float>& left_in,
+                 const std::vector<float>& right_in,
+                 std::span<float>& left_out,
+                 std::span<float>& right_out);
 
  private:
   spa_hook listener{};

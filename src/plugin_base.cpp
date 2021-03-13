@@ -141,6 +141,12 @@ PluginBase::PluginBase(std::string tag,
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   } while (node_id == SPA_ID_INVALID);
+
+  post_messages = settings->get_boolean("post-messages");
+
+  settings->signal_changed("post-messages").connect([&, this](auto key) {
+    post_messages = settings->get_boolean(key);
+  });
 }
 
 PluginBase::~PluginBase() {
@@ -157,3 +163,48 @@ void PluginBase::process(const std::vector<float>& left_in,
                          const std::vector<float>& right_in,
                          std::span<float>& left_out,
                          std::span<float>& right_out) {}
+
+void PluginBase::get_peaks(const std::vector<float>& left_in,
+                           const std::vector<float>& right_in,
+                           std::span<float>& left_out,
+                           std::span<float>& right_out) {
+  if (!post_messages) {
+    return;
+  }
+
+  // input level
+
+  float peak_l = *std::max_element(left_in.begin(), left_in.end());
+  float peak_r = *std::max_element(right_in.begin(), right_in.end());
+
+  input_peak_left = (peak_l > input_peak_left) ? peak_l : input_peak_left;
+  input_peak_right = (peak_r > input_peak_right) ? peak_r : input_peak_right;
+
+  // output level
+
+  peak_l = *std::max_element(left_out.begin(), left_out.end());
+  peak_r = *std::max_element(right_out.begin(), right_out.end());
+
+  output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
+  output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
+
+  level_meter_dt += static_cast<float>(n_samples) / rate;
+
+  if (level_meter_dt > level_meter_time_window) {
+    float input_peak_db_l = util::linear_to_db(input_peak_left);
+    float input_peak_db_r = util::linear_to_db(input_peak_right);
+
+    float output_peak_db_l = util::linear_to_db(output_peak_left);
+    float output_peak_db_r = util::linear_to_db(output_peak_right);
+
+    Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
+
+    Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });
+
+    level_meter_dt = 0.0F;
+    input_peak_left = util::minimum_linear_level;
+    input_peak_right = util::minimum_linear_level;
+    output_peak_left = util::minimum_linear_level;
+    output_peak_right = util::minimum_linear_level;
+  }
+}
