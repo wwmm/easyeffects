@@ -24,7 +24,14 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "autogain", schema, schema_path, pipe_manager) {
+  target = settings->get_double("target");
+  post_messages = settings->get_boolean("post-messages");
+
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
+
+  settings->signal_changed("post-messages").connect([&, this](auto key) {
+    post_messages = settings->get_boolean(key);
+  });
 
   settings->signal_changed("reset-history").connect([&, this](auto key) { init_ebur128(); });
 }
@@ -153,12 +160,14 @@ void AutoGain::process(const std::vector<float>& left_in,
   std::transform(right_out.begin(), right_out.end(), right_out.begin(),
                  [=, this](float& c) { return c * output_gain; });
 
-  notification_dt += static_cast<float>(n_samples) / rate;
+  if (post_messages) {
+    notification_dt += static_cast<float>(n_samples) / rate;
 
-  if (notification_dt > notification_time_window) {
-    notification_dt = 0.0F;
+    if (notification_dt > notification_time_window) {
+      notification_dt = 0.0F;
 
-    Glib::signal_idle().connect_once(
-        [=, this] { results.emit(loudness, output_gain, momentary, shortterm, global, relative, range); });
+      Glib::signal_idle().connect_once(
+          [=, this] { results.emit(loudness, output_gain, momentary, shortterm, global, relative, range); });
+    }
   }
 }

@@ -19,54 +19,54 @@
 
 #include "filter.hpp"
 
-namespace {
+// namespace {
 
-void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
-  const auto post = g_settings_get_boolean(settings, key);
+// void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
+//   const auto post = g_settings_get_boolean(settings, key);
 
-  if (post) {
-    if (!l->input_level_connection.connected()) {
-      l->input_level_connection = Glib::signal_timeout().connect(
-          [l]() {
-            float inL = 0.0F;
-            float inR = 0.0F;
+//   if (post) {
+//     if (!l->input_level_connection.connected()) {
+//       l->input_level_connection = Glib::signal_timeout().connect(
+//           [l]() {
+//             float inL = 0.0F;
+//             float inR = 0.0F;
 
-            g_object_get(l->filter, "meter-inL", &inL, nullptr);
-            g_object_get(l->filter, "meter-inR", &inR, nullptr);
+//             g_object_get(l->filter, "meter-inL", &inL, nullptr);
+//             g_object_get(l->filter, "meter-inR", &inR, nullptr);
 
-            std::array<double, 2> in_peak = {inL, inR};
+//             std::array<double, 2> in_peak = {inL, inR};
 
-            l->input_level.emit(in_peak);
+//             l->input_level.emit(in_peak);
 
-            return true;
-          },
-          100);
-    }
+//             return true;
+//           },
+//           100);
+//     }
 
-    if (!l->output_level_connection.connected()) {
-      l->output_level_connection = Glib::signal_timeout().connect(
-          [l]() {
-            float outL = 0.0F;
-            float outR = 0.0F;
+//     if (!l->output_level_connection.connected()) {
+//       l->output_level_connection = Glib::signal_timeout().connect(
+//           [l]() {
+//             float outL = 0.0F;
+//             float outR = 0.0F;
 
-            g_object_get(l->filter, "meter-outL", &outL, nullptr);
-            g_object_get(l->filter, "meter-outR", &outR, nullptr);
+//             g_object_get(l->filter, "meter-outL", &outL, nullptr);
+//             g_object_get(l->filter, "meter-outR", &outR, nullptr);
 
-            std::array<double, 2> out_peak = {outL, outR};
+//             std::array<double, 2> out_peak = {outL, outR};
 
-            l->output_level.emit(out_peak);
+//             l->output_level.emit(out_peak);
 
-            return true;
-          },
-          100);
-    }
-  } else {
-    l->input_level_connection.disconnect();
-    l->output_level_connection.disconnect();
-  }
-}
+//             return true;
+//           },
+//           100);
+//     }
+//   } else {
+//     l->input_level_connection.disconnect();
+//     l->output_level_connection.disconnect();
+//   }
+// }
 
-}  // namespace
+// }  // namespace
 
 Filter::Filter(const std::string& tag,
                const std::string& schema,

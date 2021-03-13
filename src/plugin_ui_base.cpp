@@ -35,12 +35,7 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
   output_level_left_label = builder->get_widget<Gtk::Label>("output_level_left_label");
   output_level_right_label = builder->get_widget<Gtk::Label>("output_level_right_label");
 
-  // gsettings bindings
-
-  // connections.emplace_back(settings->signal_changed("state").connect(
-  //     [=, this](auto key) { settings->set_boolean("post-messages", settings->get_boolean(key)); }));
-
-  // settings->set_boolean("post-messages", settings->get_boolean("state"));
+  settings->set_boolean("post-messages", true);
 }
 
 PluginUiBase::~PluginUiBase() {

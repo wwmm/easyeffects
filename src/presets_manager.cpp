@@ -79,37 +79,39 @@ PresetsManager::PresetsManager()
 
   user_output_monitor = Gio::File::create_for_path(user_output_dir.string())->monitor_directory();
 
-  user_output_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-    switch (event) {
-      case Gio::FileMonitor::Event::CREATED: {
-        user_output_preset_created.emit(file);
-        break;
-      }
-      case Gio::FileMonitor::Event::DELETED: {
-        user_output_preset_removed.emit(file);
-        break;
-      }
-      default:
-        break;
-    }
-  });
+  user_output_monitor->signal_changed().connect(
+      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+        switch (event) {
+          case Gio::FileMonitor::Event::CREATED: {
+            user_output_preset_created.emit(file);
+            break;
+          }
+          case Gio::FileMonitor::Event::DELETED: {
+            user_output_preset_removed.emit(file);
+            break;
+          }
+          default:
+            break;
+        }
+      });
 
   user_input_monitor = Gio::File::create_for_path(user_input_dir.string())->monitor_directory();
 
-  user_input_monitor->signal_changed().connect([=](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-    switch (event) {
-      case Gio::FileMonitor::Event::CREATED: {
-        user_input_preset_created.emit(file);
-        break;
-      }
-      case Gio::FileMonitor::Event::DELETED: {
-        user_input_preset_removed.emit(file);
-        break;
-      }
-      default:
-        break;
-    }
-  });
+  user_input_monitor->signal_changed().connect(
+      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+        switch (event) {
+          case Gio::FileMonitor::Event::CREATED: {
+            user_input_preset_created.emit(file);
+            break;
+          }
+          case Gio::FileMonitor::Event::DELETED: {
+            user_input_preset_removed.emit(file);
+            break;
+          }
+          default:
+            break;
+        }
+      });
 }
 
 PresetsManager::~PresetsManager() {

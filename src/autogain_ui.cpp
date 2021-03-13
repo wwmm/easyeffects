@@ -24,7 +24,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
                        const std::string& schema,
                        const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "autogain";
+  name = "autogain_ui";
 
   // loading builder widgets
 
