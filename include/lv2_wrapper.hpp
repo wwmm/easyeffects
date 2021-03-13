@@ -56,12 +56,12 @@ class Lv2Wrapper {
   auto operator=(const Lv2Wrapper&&) -> Lv2Wrapper& = delete;
   ~Lv2Wrapper();
 
+  const LilvPlugin* plugin = nullptr;
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 
   LilvWorld* world = nullptr;
-
-  const LilvPlugin* plugin = nullptr;
 
   LilvInstance* instance = nullptr;
 

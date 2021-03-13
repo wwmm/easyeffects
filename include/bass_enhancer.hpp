@@ -20,6 +20,7 @@
 #ifndef BASS_ENHANCER_HPP
 #define BASS_ENHANCER_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class BassEnhancer : public PluginBase {
@@ -44,6 +45,10 @@ class BassEnhancer : public PluginBase {
   sigc::signal<void(double)> harmonics;
 
  private:
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  LilvInstance* lv2_instance = nullptr;
+
   void bind_to_gsettings();
 };
 

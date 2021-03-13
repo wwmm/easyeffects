@@ -19,7 +19,6 @@
 
 #include "application.hpp"
 #include "application_ui.hpp"
-#include "lv2_wrapper.hpp"
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.pulseeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
@@ -201,10 +200,6 @@ void Application::on_startup() {
 
     hold();
   }
-
-  // This is only for testing an idea. It will be moved from here in the future
-
-  // auto l = lv2::Lv2Wrapper("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
 }
 
 void Application::on_activate() {
