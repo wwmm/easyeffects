@@ -14,7 +14,7 @@
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>
-        <file>ui/autogain.glade</file>
+        <file>ui/autogain.ui</file>
         <file>ui/limiter.glade</file>
         <file>ui/compressor.glade</file>
         <file>ui/multiband_compressor.glade</file>

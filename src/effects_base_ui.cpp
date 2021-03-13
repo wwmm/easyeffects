@@ -60,6 +60,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   listview_plugins = builder->get_widget<Gtk::ListView>("listview_plugins");
   listview_selected_plugins = builder->get_widget<Gtk::ListView>("listview_selected_plugins");
   entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
+  stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
 
   // configuring widgets
 

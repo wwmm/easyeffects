@@ -4,7 +4,7 @@ data/schemas/com.github.wwmm.pulseeffects.gschema.xml
 data/ui/about.glade.in
 data/ui/app_info.ui
 data/ui/application_window.ui
-data/ui/autogain.glade
+data/ui/autogain.ui
 data/ui/bass_enhancer.glade
 data/ui/calibration.glade
 data/ui/calibration_signals.glade

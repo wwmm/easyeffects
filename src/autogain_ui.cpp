@@ -26,7 +26,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "autogain";
 
-  // loading glade widgets
+  // loading builder widgets
 
   m_level = builder->get_widget<Gtk::LevelBar>("m_level");
   s_level = builder->get_widget<Gtk::LevelBar>("s_level");
@@ -51,7 +51,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   // builder->get_widget("weight_s_grid", weight_s_grid);
   // builder->get_widget("weight_i_grid", weight_i_grid);
 
-  reset_button = builder->get_widget<Gtk::Button>("plugin_reset");
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   input_gain = builder->get_object<Gtk::Adjustment>("input_gain");
   output_gain = builder->get_object<Gtk::Adjustment>("output_gain");

@@ -122,6 +122,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   // add to stack
 
+  AutoGainUi::add_to_stack(stack_plugins);
+
   //   stack->add(*limiter_ui, limiter_ui->name);
   //   stack->add(*compressor_ui, compressor_ui->name);
   //   stack->add(*filter_ui, filter_ui->name);
