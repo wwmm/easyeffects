@@ -38,5 +38,15 @@ void OutputLevel::process(const std::vector<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
 }
