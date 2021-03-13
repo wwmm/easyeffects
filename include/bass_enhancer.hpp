@@ -34,7 +34,12 @@ class BassEnhancer : public PluginBase {
   auto operator=(const BassEnhancer&&) -> BassEnhancer& = delete;
   ~BassEnhancer() override;
 
-  sigc::connection harmonics_connection;
+  void setup() override;
+
+  void process(const std::vector<float>& left_in,
+               const std::vector<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> harmonics;
 
