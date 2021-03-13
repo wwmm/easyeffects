@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="hexpand">1</property>
+        <property name="vexpand">1</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
+        <property name="margin_top">6</property>
+        <property name="margin_bottom">6</property>
+        <property name="spacing">12</property>
+        <property name="orientation">vertical</property>
+
+        <child>
+            <object class="GtkButton" id="reset">
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Reset History</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Target</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkSpinButton">
+                        <property name="halign">start</property>
+                        <property name="adjustment">target</property>
+                        <property name="digits">1</property>
+                        <property name="update-policy">if-valid</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="m_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Momentary</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="m_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="s_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Short Term</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="s_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="i_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Integrated</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="i_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="r_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Relative</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="r_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="lra_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Range</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="lra_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="l_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Loudness</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="l_label">
+                        <property name="halign">end</property>
+                        <property name="margin-start">2</property>
+                        <property name="margin-end">2</property>
+                        <property name="label">0</property>
+                        <property name="width-chars">6</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkButton" id="reset_button">
+                        <property name="label" translatable="yes">Reset</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Based on</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label">libebur128</property>
+                        <attributes>
+                            <attribute name="weight" value="bold" />
+                        </attributes>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+    <object class="GtkAdjustment" id="input_gain">
+        <property name="lower">-20</property>
+        <property name="upper">20</property>
+        <property name="step-increment">0.1</property>
+        <property name="page-increment">1</property>
+    </object>
+    <object class="GtkAdjustment" id="output_gain">
+        <property name="lower">-20</property>
+        <property name="upper">20</property>
+        <property name="step-increment">0.1</property>
+        <property name="page-increment">1</property>
+    </object>
+    <object class="GtkAdjustment" id="target">
+        <property name="lower">-100</property>
+        <property name="value">-23</property>
+        <property name="step-increment">0.1</property>
+        <property name="page-increment">1</property>
+    </object>
+
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="m_title" />
+            <widget name="s_title" />
+            <widget name="i_title" />
+            <widget name="r_title" />
+            <widget name="lra_title" />
+            <widget name="l_title" />
+        </widgets>
+    </object>
+</interface>
