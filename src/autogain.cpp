@@ -34,7 +34,7 @@ AutoGain::AutoGain(const std::string& tag,
 AutoGain::~AutoGain() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(my_lock_guard);
+  std::lock_guard<std::mutex> lock(data_lock_guard);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
@@ -42,8 +42,6 @@ AutoGain::~AutoGain() {
 }
 
 void AutoGain::init_ebur128() {
-  std::lock_guard<std::mutex> lock(my_lock_guard);
-
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
 
@@ -58,6 +56,8 @@ void AutoGain::init_ebur128() {
 }
 
 void AutoGain::setup() {
+  std::lock_guard<std::mutex> lock(data_lock_guard);
+
   init_ebur128();
 
   data.resize(n_samples * 2);
@@ -74,12 +74,12 @@ void AutoGain::process(const std::vector<float>& left_in,
     return;
   }
 
+  std::lock_guard<std::mutex> lock(data_lock_guard);
+
   for (uint n = 0; n < n_samples; n++) {
     data[2 * n] = left_in[n];
     data[2 * n + 1] = right_in[n];
   }
-
-  std::lock_guard<std::mutex> lock(my_lock_guard);
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
 

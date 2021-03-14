@@ -58,6 +58,8 @@ class Lv2Wrapper {
 
   const LilvPlugin* plugin = nullptr;
 
+  bool found_plugin = false;
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 

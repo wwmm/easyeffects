@@ -28,24 +28,51 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
 BassEnhancer::~BassEnhancer() {
   util::debug(log_tag + name + " destroyed");
+
+  if (lv2_instance != nullptr) {
+    lilv_instance_deactivate(lv2_instance);
+    lilv_instance_free(lv2_instance);
+  }
 }
 
 void BassEnhancer::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  std::lock_guard<std::mutex> lock(data_lock_guard);
+
   // data.resize(n_samples * 2);
 
+  if (lv2_instance != nullptr) {
+    lilv_instance_deactivate(lv2_instance);
+    lilv_instance_free(lv2_instance);
+  }
+
   lv2_instance = lilv_plugin_instantiate(lv2_wrapper->plugin, rate, nullptr);
+
+  if (lv2_instance == nullptr) {
+    util::warning(log_tag + "failed to create the lv2 instance");
+  } else {
+  }
 }
 
 void BassEnhancer::process(const std::vector<float>& left_in,
                            const std::vector<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
   if (bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
     return;
   }
+
+  std::lock_guard<std::mutex> lock(data_lock_guard);
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());

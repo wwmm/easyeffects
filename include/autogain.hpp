@@ -21,7 +21,6 @@
 #define AUTOGAIN_HPP
 
 #include <ebur128.h>
-#include <mutex>
 #include "plugin_base.hpp"
 
 class AutoGain : public PluginBase {
@@ -56,8 +55,6 @@ class AutoGain : public PluginBase {
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;
-
-  std::mutex my_lock_guard;
 
   void init_ebur128();
 };

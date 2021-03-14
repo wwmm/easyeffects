@@ -6,13 +6,17 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) {
   world = lilv_world_new();
 
   if (world == nullptr) {
-    util::error(log_tag + "failed to initialized the world");
+    util::warning(log_tag + "failed to initialized the world");
+
+    return;
   }
 
   auto* uri = lilv_new_uri(world, plugin_uri.c_str());
 
   if (uri == nullptr) {
-    util::error(log_tag + "Invalid plugin URI: " + plugin_uri);
+    util::warning(log_tag + "Invalid plugin URI: " + plugin_uri);
+
+    return;
   }
 
   lilv_world_load_all(world);
@@ -24,8 +28,12 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) {
   lilv_node_free(uri);
 
   if (plugin == nullptr) {
-    util::error(log_tag + "Could not find the plugin: " + plugin_uri);
+    util::warning(log_tag + "Could not find the plugin: " + plugin_uri);
+
+    return;
   }
+
+  found_plugin = true;
 
   create_ports();
 }
