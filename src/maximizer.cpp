@@ -76,11 +76,9 @@ Maximizer::Maximizer(const std::string& tag, const std::string& schema, const st
     g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
     g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
 
-    // useless write just to force callback call
-
-    auto enable = g_settings_get_boolean(settings, "state");
-
-    g_settings_set_boolean(settings, "state", enable);
+    if (g_settings_get_boolean(settings, "state") != 0) {
+      enable();
+    }
   }
 }
 

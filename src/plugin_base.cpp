@@ -27,7 +27,7 @@ void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
   if (l->plugin_is_installed) {
     int enable = g_settings_get_boolean(settings, key);
 
-    if (enable == true) {
+    if (enable == 1) {
       l->enable();
     } else {
       l->disable();
@@ -142,6 +142,8 @@ PluginBase::PluginBase(std::string tag,
   g_object_unref(srcpad);
 
   bin = gst_bin_new((name + "_bin").c_str());
+
+  on_state_changed(settings, "state", this);
 }
 
 PluginBase::~PluginBase() {

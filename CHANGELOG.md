@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [5.0.2]
+
+### Added
+
+- New translations
+- Improved compatibility with dconf `0.40`. Now our plugins should be enabled when using this version.
+
 ## [5.0.1]
 
 ### Added

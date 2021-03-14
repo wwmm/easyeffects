@@ -79,11 +79,9 @@ Convolver::Convolver(const std::string& tag, const std::string& schema, const st
     g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
                                  util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr, nullptr);
 
-    // useless write just to force callback call
-
-    auto enable = g_settings_get_boolean(settings, "state");
-
-    g_settings_set_boolean(settings, "state", enable);
+    if (g_settings_get_boolean(settings, "state") != 0) {
+      enable();
+    }
   }
 }
 
