@@ -42,15 +42,15 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
 
 Lv2Wrapper::~Lv2Wrapper() {
   if (instance != nullptr) {
-    util::warning("free1");
-
     lilv_instance_deactivate(instance);
     lilv_instance_free(instance);
 
     instance = nullptr;
   }
 
-  lilv_world_free(world);
+  if (world != nullptr) {
+    lilv_world_free(world);
+  }
 }
 
 void Lv2Wrapper::check_required_features() {

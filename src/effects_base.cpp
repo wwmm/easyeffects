@@ -11,8 +11,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   autogain = std::make_shared<AutoGain>(log_tag, "com.github.wwmm.pulseeffects.autogain", path + "autogain/", pm);
 
-  bass_enhancer =
-      std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer", path + "bassenhancer/", pm);
+  // bass_enhancer =
+  //     std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer", path + "bassenhancer/",
+  //     pm);
 
   //   compressor =
   //       std::make_shared<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor", path + "compressor/", pm);
@@ -70,8 +71,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools", path + "stereotools/",
   //       pm);
 
-  plugins.insert(std::make_pair(autogain->name, autogain));
-  plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
+  // plugins.insert(std::make_pair(autogain->name, autogain));
+  // plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
   //   plugins.insert(std::make_pair(compressor->name, compressor));
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));

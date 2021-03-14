@@ -63,6 +63,13 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   //   }
   // }
 
+  std::string path = "/com.github.wwmm.pulseeffects.sinkinputs/";
+
+  std::replace(path.begin(), path.end(), '.', '/');
+
+  bass_enhancer =
+      std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer", path + "bassenhancer/", pm);
+
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
 

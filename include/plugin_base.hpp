@@ -82,6 +82,8 @@ class PluginBase {
 
   PipeManager* pm = nullptr;
 
+  spa_hook listener{};
+
   bool bypass = false;
 
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
@@ -98,8 +100,6 @@ class PluginBase {
                  std::span<float>& right_out);
 
  private:
-  spa_hook listener{};
-
   data pf_data = {};
 
   uint node_id = 0;

@@ -34,11 +34,24 @@ AutoGain::AutoGain(const std::string& tag,
 AutoGain::~AutoGain() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(data_lock_guard);
+  // std::lock_guard<std::mutex> lock(data_lock_guard);
+
+  pw_filter_set_active(filter, false);
+  // pw_filter_disconnect(filter);
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  spa_hook_remove(&listener);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
   }
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void AutoGain::init_ebur128() {
