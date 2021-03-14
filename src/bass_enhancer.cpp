@@ -35,16 +35,34 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
   lv2_wrapper->set_control_port_value("scope", static_cast<float>(settings->get_double("scope")));
 
+  lv2_wrapper->set_control_port_value("floor", static_cast<float>(settings->get_double("floor")));
+
+  lv2_wrapper->set_control_port_value("blend", static_cast<float>(settings->get_double("blend")));
+
+  lv2_wrapper->set_control_port_value("floor-active", static_cast<float>(settings->get_boolean("floor-active")));
+
+  // signal connection
+
   settings->signal_changed("amount").connect([=, this](auto key) {
-    lv2_wrapper->set_control_port_value("amount", static_cast<float>(util::db_to_linear(settings->get_double(key))));
+    lv2_wrapper->set_control_port_value(key, static_cast<float>(util::db_to_linear(settings->get_double(key))));
   });
 
   settings->signal_changed("harmonics").connect([=, this](auto key) {
-    lv2_wrapper->set_control_port_value("harmonics", settings->get_double(key));
+    lv2_wrapper->set_control_port_value(key, settings->get_double(key));
   });
 
   settings->signal_changed("scope").connect(
-      [=, this](auto key) { lv2_wrapper->set_control_port_value("scope", settings->get_double(key)); });
+      [=, this](auto key) { lv2_wrapper->set_control_port_value(key, settings->get_double(key)); });
+
+  settings->signal_changed("floor").connect(
+      [=, this](auto key) { lv2_wrapper->set_control_port_value(key, settings->get_double(key)); });
+
+  settings->signal_changed("blend").connect(
+      [=, this](auto key) { lv2_wrapper->set_control_port_value(key, settings->get_double(key)); });
+
+  settings->signal_changed("floor-active").connect([=, this](auto key) {
+    lv2_wrapper->set_control_port_value(key, settings->get_boolean(key));
+  });
 }
 
 BassEnhancer::~BassEnhancer() {
@@ -78,6 +96,9 @@ void BassEnhancer::process(std::vector<float>& left_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
   if (!lv2_wrapper->found_plugin) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
     return;
   }
 
