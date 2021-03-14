@@ -108,14 +108,10 @@ void BassEnhancer::process(std::vector<float>& left_in,
   }
 
   if (lv2_wrapper->get_n_samples() != left_in.size()) {
-    lv2_wrapper->deactivate();
-
     lv2_wrapper->set_n_samples(left_in.size());
-
-    lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
-
-    lv2_wrapper->activate();
   }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
 
   lv2_wrapper->run();
 
