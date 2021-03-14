@@ -57,37 +57,49 @@ class Lv2Wrapper {
   auto operator=(const Lv2Wrapper&&) -> Lv2Wrapper& = delete;
   virtual ~Lv2Wrapper();
 
-  LilvWorld* world = nullptr;
-
-  const LilvPlugin* plugin = nullptr;
-
-  LilvInstance* instance = nullptr;
-
   bool found_plugin = false;
-
-  std::vector<Port> ports;
 
   auto create_instance(const uint& rate) -> bool;
 
-  void connect_ports(std::vector<float>& left_in,
-                     std::vector<float>& right_in,
-                     std::span<float>& left_out,
-                     std::span<float>& right_out);
+  void set_n_samples(const uint& value);
 
-  void run(const uint& n_samples) const;
+  [[nodiscard]] auto get_n_samples() const -> uint;
+
+  void connect_data_ports(std::vector<float>& left_in,
+                          std::vector<float>& right_in,
+                          std::span<float>& left_out,
+                          std::span<float>& right_out);
+
+  void activate();
+
+  void run() const;
+
+  void deactivate();
 
  private:
   std::string log_tag = "lv2_wrapper: ";
 
   std::string plugin_uri;
 
+  LilvWorld* world = nullptr;
+
+  const LilvPlugin* plugin = nullptr;
+
+  LilvInstance* instance = nullptr;
+
   uint n_ports = 0;
   uint n_audio_in = 0;
   uint n_audio_out = 0;
 
+  uint n_samples = 0;
+
+  std::vector<Port> ports;
+
   void check_required_features();
 
   void create_ports();
+
+  void connect_control_ports();
 };
 
 }  // namespace lv2

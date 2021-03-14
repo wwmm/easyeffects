@@ -129,7 +129,7 @@ void Lv2Wrapper::create_ports() {
 
 auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   if (instance != nullptr) {
-    lilv_instance_deactivate(instance);
+    deactivate();
     lilv_instance_free(instance);
 
     instance = nullptr;
@@ -143,54 +143,71 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
     return false;
   }
 
-  lilv_instance_activate(instance);
+  connect_control_ports();
+
+  activate();
 
   return true;
 }
 
-void Lv2Wrapper::connect_ports(std::vector<float>& left_in,
-                               std::vector<float>& right_in,
-                               std::span<float>& left_out,
-                               std::span<float>& right_out) {
+void Lv2Wrapper::connect_control_ports() {
+  for (auto& p : ports) {
+    if (p.type == PortType::TYPE_CONTROL) {
+      lilv_instance_connect_port(instance, p.index, &p.value);
+    }
+  }
+}
+
+void Lv2Wrapper::connect_data_ports(std::vector<float>& left_in,
+                                    std::vector<float>& right_in,
+                                    std::span<float>& left_out,
+                                    std::span<float>& right_out) {
   int count_input = 0;
   int count_output = 0;
 
   for (auto& p : ports) {
-    switch (p.type) {
-      case lv2::PortType::TYPE_CONTROL: {
-        lilv_instance_connect_port(instance, p.index, &p.value);
-
-        break;
-      }
-      case lv2::PortType::TYPE_AUDIO: {
-        if (p.is_input) {
-          if (count_input == 0) {
-            lilv_instance_connect_port(instance, p.index, left_in.data());
-          } else if (count_input == 1) {
-            lilv_instance_connect_port(instance, p.index, right_in.data());
-          }
-
-          count_input++;
-        } else {
-          if (count_output == 0) {
-            lilv_instance_connect_port(instance, p.index, left_out.data());
-          } else if (count_output == 1) {
-            lilv_instance_connect_port(instance, p.index, right_out.data());
-          }
-
-          count_output++;
+    if (p.type == PortType::TYPE_AUDIO) {
+      if (p.is_input) {
+        if (count_input == 0) {
+          lilv_instance_connect_port(instance, p.index, left_in.data());
+        } else if (count_input == 1) {
+          lilv_instance_connect_port(instance, p.index, right_in.data());
         }
 
-        break;
+        count_input++;
+      } else {
+        if (count_output == 0) {
+          lilv_instance_connect_port(instance, p.index, left_out.data());
+        } else if (count_output == 1) {
+          lilv_instance_connect_port(instance, p.index, right_out.data());
+        }
+
+        count_output++;
       }
     }
   }
 }
 
-void Lv2Wrapper::run(const uint& n_samples) const {
+void Lv2Wrapper::set_n_samples(const uint& value) {
+  this->n_samples = value;
+}
+
+auto Lv2Wrapper::get_n_samples() const -> uint {
+  return this->n_samples;
+}
+
+void Lv2Wrapper::activate() {
+  lilv_instance_activate(instance);
+}
+
+void Lv2Wrapper::run() const {
   if (instance != nullptr) {
     lilv_instance_run(instance, n_samples);
   }
+}
+
+void Lv2Wrapper::deactivate() {
+  lilv_instance_deactivate(instance);
 }
 
 }  // namespace lv2

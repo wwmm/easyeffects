@@ -39,12 +39,6 @@ void BassEnhancer::setup() {
     return;
   }
 
-  // input_left.resize(n_samples);
-  // input_right.resize(n_samples);
-
-  // output_left.resize(n_samples);
-  // output_right.resize(n_samples);
-
   if (!lv2_wrapper->create_instance(rate)) {
     bypass = true;
   }
@@ -65,8 +59,17 @@ void BassEnhancer::process(std::vector<float>& left_in,
     return;
   }
 
-  lv2_wrapper->connect_ports(left_in, right_in, left_out, right_out);
-  lv2_wrapper->run(left_in.size());
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->deactivate();
+
+    lv2_wrapper->set_n_samples(left_in.size());
+
+    lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+    lv2_wrapper->activate();
+  }
+
+  lv2_wrapper->run();
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
