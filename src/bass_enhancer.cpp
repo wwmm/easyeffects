@@ -41,6 +41,8 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
   lv2_wrapper->set_control_port_value("floor-active", static_cast<float>(settings->get_boolean("floor-active")));
 
+  lv2_wrapper->set_control_port_value("listen", static_cast<float>(settings->get_boolean("listen")));
+
   // signal connection
 
   settings->signal_changed("amount").connect([=, this](auto key) {
@@ -63,6 +65,9 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   settings->signal_changed("floor-active").connect([=, this](auto key) {
     lv2_wrapper->set_control_port_value(key, settings->get_boolean(key));
   });
+
+  settings->signal_changed("listen").connect(
+      [=, this](auto key) { lv2_wrapper->set_control_port_value(key, settings->get_boolean(key)); });
 }
 
 BassEnhancer::~BassEnhancer() {
