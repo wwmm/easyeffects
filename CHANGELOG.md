@@ -2,19 +2,28 @@
 
 ## [Unreleased]
 
+## [4.8.5]
+
+### Added
+
+- Improved compatibility with dconf 0.40. Now our plugins should be enabled when using this version.
+
 ## [4.8.4]
 
 ### Added
+
 - Added Allpass filter in Equalizer plugin.
 
 ### Fixed
+
 - The equalizer UI is now correctly shown when a profile with 30 bands is loaded at startup.
 - Added a workaround for systems that were crashing because the locale is not correctly set at system level.
 
 ### Note to packagers
-- This is the last release supporting Pulseaudio. The following PulseEffects releases will be based on 
-the new Pipewire multimedia server and only fixes to critical bugs will be backported to the legacy 
-pulseaudio branch https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
+
+- This is the last release supporting Pulseaudio. The following PulseEffects releases will be based on
+  the new Pipewire multimedia server and only fixes to critical bugs will be backported to the legacy
+  pulseaudio branch https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
 
 ## [4.8.3]
 

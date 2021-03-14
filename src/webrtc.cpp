@@ -34,11 +34,9 @@ Webrtc::Webrtc(const std::string& tag,
 
     bind_to_gsettings();
 
-    // useless write just to force callback call
-
-    auto enable = g_settings_get_boolean(settings, "state");
-
-    g_settings_set_boolean(settings, "state", enable);
+    if (g_settings_get_boolean(settings, "state") != 0) {
+      enable();
+    }
   }
 }
 

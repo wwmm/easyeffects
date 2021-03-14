@@ -114,11 +114,9 @@ Limiter::Limiter(const std::string& tag, const std::string& schema, const std::s
 
     g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
 
-    // useless write just to force callback call
-
-    auto enable = g_settings_get_boolean(settings, "state");
-
-    g_settings_set_boolean(settings, "state", enable);
+    if (g_settings_get_boolean(settings, "state") != 0) {
+      enable();
+    }
   }
 }
 
