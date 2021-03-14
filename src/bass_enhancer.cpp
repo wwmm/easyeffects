@@ -100,14 +100,7 @@ void BassEnhancer::process(std::vector<float>& left_in,
                            std::vector<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
-  if (!lv2_wrapper->found_plugin) {
-    std::copy(left_in.begin(), left_in.end(), left_out.begin());
-    std::copy(right_in.begin(), right_in.end(), right_out.begin());
-
-    return;
-  }
-
-  if (bypass) {
+  if (!lv2_wrapper->found_plugin || bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -145,26 +138,4 @@ void BassEnhancer::bind_to_gsettings() {
 
   // g_settings_bind_with_mapping(settings, "output-gain", bass_enhancer, "level-out", G_SETTINGS_BIND_DEFAULT,
   //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "amount", bass_enhancer, "amount", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "harmonics", bass_enhancer, "drive", G_SETTINGS_BIND_GET,
-  //                              util::double_to_float, nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "scope", bass_enhancer, "freq", G_SETTINGS_BIND_GET,
-  // util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "floor", bass_enhancer, "floor", G_SETTINGS_BIND_GET,
-  // util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "blend", bass_enhancer, "blend", G_SETTINGS_BIND_GET,
-  // util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind(settings, "floor-active", bass_enhancer, "floor-active", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(settings, "listen", bass_enhancer, "listen", G_SETTINGS_BIND_DEFAULT);
 }
