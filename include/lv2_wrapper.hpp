@@ -60,6 +60,8 @@ class Lv2Wrapper {
 
   bool found_plugin = false;
 
+  std::vector<Port> ports;
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 
@@ -70,8 +72,6 @@ class Lv2Wrapper {
   uint n_ports = 0;
   uint n_audio_in = 0;
   uint n_audio_out = 0;
-
-  std::vector<Port> ports;
 
   void create_ports();
 };

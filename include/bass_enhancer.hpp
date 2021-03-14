@@ -49,6 +49,9 @@ class BassEnhancer : public PluginBase {
 
   LilvInstance* lv2_instance = nullptr;
 
+  std::vector<float> input_left, input_right;
+  std::vector<float> output_left, output_right;
+
   void bind_to_gsettings();
 };
 

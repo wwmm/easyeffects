@@ -42,7 +42,11 @@ void BassEnhancer::setup() {
 
   std::lock_guard<std::mutex> lock(data_lock_guard);
 
-  // data.resize(n_samples * 2);
+  input_left.resize(n_samples);
+  input_right.resize(n_samples);
+
+  output_left.resize(n_samples);
+  output_right.resize(n_samples);
 
   if (lv2_instance != nullptr) {
     lilv_instance_deactivate(lv2_instance);
@@ -51,9 +55,42 @@ void BassEnhancer::setup() {
 
   lv2_instance = lilv_plugin_instantiate(lv2_wrapper->plugin, rate, nullptr);
 
+  int count_input = 0;
+  int count_output = 0;
+
   if (lv2_instance == nullptr) {
     util::warning(log_tag + "failed to create the lv2 instance");
   } else {
+    for (auto& p : lv2_wrapper->ports) {
+      switch (p.type) {
+        case lv2::PortType::TYPE_CONTROL: {
+          lilv_instance_connect_port(lv2_instance, p.index, &p.value);
+
+          break;
+        }
+        case lv2::PortType::TYPE_AUDIO: {
+          if (p.is_input) {
+            if (count_input == 0) {
+              lilv_instance_connect_port(lv2_instance, p.index, input_left.data());
+            } else if (count_input == 1) {
+              lilv_instance_connect_port(lv2_instance, p.index, input_right.data());
+            }
+
+            count_input++;
+          } else {
+            if (count_output == 0) {
+              lilv_instance_connect_port(lv2_instance, p.index, output_left.data());
+            } else if (count_output == 1) {
+              lilv_instance_connect_port(lv2_instance, p.index, output_right.data());
+            }
+
+            count_output++;
+          }
+
+          break;
+        }
+      }
+    }
   }
 }
 
@@ -76,6 +113,14 @@ void BassEnhancer::process(const std::vector<float>& left_in,
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  std::copy(left_in.begin(), left_in.end(), input_left.begin());
+  std::copy(right_in.begin(), right_in.end(), input_right.begin());
+
+  // apply plugin
+
+  // std::copy(output_left.begin(), output_left.end(), left_out.begin());
+  // std::copy(output_right.begin(), output_right.end(), right_out.begin());
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
