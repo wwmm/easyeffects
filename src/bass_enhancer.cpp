@@ -29,6 +29,10 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     return;
   }
 
+  lv2_wrapper->bind_key_double_db(settings, "input-gain", "level_in");
+
+  lv2_wrapper->bind_key_double_db(settings, "output-gain", "level_out");
+
   lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
   lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
