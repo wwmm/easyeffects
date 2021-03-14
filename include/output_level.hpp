@@ -36,8 +36,8 @@ class OutputLevel : public PluginBase {
 
   void setup() override;
 
-  void process(std::vector<float>& left_in,
-               std::vector<float>& right_in,
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 };

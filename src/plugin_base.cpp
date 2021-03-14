@@ -24,8 +24,6 @@ namespace {
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
-  // std::lock_guard<std::mutex> lock(d->pb->data_lock_guard);
-
   auto n_samples = position->clock.duration;
   auto rate = position->clock.rate.denom;
 
@@ -45,9 +43,9 @@ void on_process(void* userdata, spa_io_position* position) {
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  std::vector<float> left_in{in_left, in_left + n_samples};
+  std::span left_in{in_left, in_left + n_samples};
   std::span left_out{out_left, out_left + n_samples};
-  std::vector<float> right_in{in_right, in_right + n_samples};
+  std::span right_in{in_right, in_right + n_samples};
   std::span right_out{out_right, out_right + n_samples};
 
   d->pb->process(left_in, right_in, left_out, right_out);
@@ -158,13 +156,13 @@ auto PluginBase::get_node_id() const -> uint {
 
 void PluginBase::setup() {}
 
-void PluginBase::process(std::vector<float>& left_in,
-                         std::vector<float>& right_in,
+void PluginBase::process(std::span<float>& left_in,
+                         std::span<float>& right_in,
                          std::span<float>& left_out,
                          std::span<float>& right_out) {}
 
-void PluginBase::get_peaks(const std::vector<float>& left_in,
-                           const std::vector<float>& right_in,
+void PluginBase::get_peaks(const std::span<float>& left_in,
+                           const std::span<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
   if (!post_messages) {

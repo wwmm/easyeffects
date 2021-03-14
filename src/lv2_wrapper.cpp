@@ -159,8 +159,8 @@ void Lv2Wrapper::connect_control_ports() {
   }
 }
 
-void Lv2Wrapper::connect_data_ports(std::vector<float>& left_in,
-                                    std::vector<float>& right_in,
+void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
+                                    std::span<float>& right_in,
                                     std::span<float>& left_out,
                                     std::span<float>& right_out) {
   int count_input = 0;
@@ -209,6 +209,36 @@ void Lv2Wrapper::run() const {
 
 void Lv2Wrapper::deactivate() {
   lilv_instance_deactivate(instance);
+}
+
+void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
+                                 const std::string& gsettings_key,
+                                 const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(gsettings_key)));
+
+  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(key)));
+  });
+}
+
+void Lv2Wrapper::bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
+                                    const std::string& gsettings_key,
+                                    const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(gsettings_key))));
+
+  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+    set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(key))));
+  });
+}
+
+void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
+                               const std::string& gsettings_key,
+                               const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(gsettings_key)));
+
+  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(key)));
+  });
 }
 
 }  // namespace lv2

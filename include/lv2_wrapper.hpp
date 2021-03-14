@@ -20,7 +20,7 @@
 #ifndef LV2_WRAPPER_HPP
 #define LV2_WRAPPER_HPP
 
-#include <cmath>
+#include <giomm.h>
 #include <span>
 #include "lilv/lilv.h"
 #include "lv2/core/lv2.h"
@@ -63,8 +63,8 @@ class Lv2Wrapper {
 
   [[nodiscard]] auto get_n_samples() const -> uint;
 
-  void connect_data_ports(std::vector<float>& left_in,
-                          std::vector<float>& right_in,
+  void connect_data_ports(std::span<float>& left_in,
+                          std::span<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out);
 
@@ -81,6 +81,18 @@ class Lv2Wrapper {
       }
     }
   }
+
+  void bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
+                       const std::string& gsettings_key,
+                       const std::string& lv2_symbol);
+
+  void bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
+                          const std::string& gsettings_key,
+                          const std::string& lv2_symbol);
+
+  void bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
+                     const std::string& gsettings_key,
+                     const std::string& lv2_symbol);
 
  private:
   std::string log_tag = "lv2_wrapper: ";

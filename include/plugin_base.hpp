@@ -66,8 +66,8 @@ class PluginBase {
 
   virtual void setup();
 
-  virtual void process(std::vector<float>& left_in,
-                       std::vector<float>& right_in,
+  virtual void process(std::span<float>& left_in,
+                       std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out);
 
@@ -91,8 +91,8 @@ class PluginBase {
 
   void notify();
 
-  void get_peaks(const std::vector<float>& left_in,
-                 const std::vector<float>& right_in,
+  void get_peaks(const std::span<float>& left_in,
+                 const std::span<float>& right_in,
                  std::span<float>& left_out,
                  std::span<float>& right_out);
 

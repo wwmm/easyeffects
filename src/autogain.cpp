@@ -69,8 +69,8 @@ void AutoGain::setup() {
   data.resize(n_samples * 2);
 }
 
-void AutoGain::process(std::vector<float>& left_in,
-                       std::vector<float>& right_in,
+void AutoGain::process(std::span<float>& left_in,
+                       std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
   if (bypass) {

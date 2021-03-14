@@ -62,8 +62,8 @@ Spectrum::~Spectrum() {
 
 void Spectrum::setup() {}
 
-void Spectrum::process(std::vector<float>& left_in,
-                       std::vector<float>& right_in,
+void Spectrum::process(std::span<float>& left_in,
+                       std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
   std::copy(left_in.begin(), left_in.end(), left_out.begin());

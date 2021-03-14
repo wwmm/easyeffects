@@ -41,8 +41,8 @@ OutputLevel::~OutputLevel() {
 
 void OutputLevel::setup() {}
 
-void OutputLevel::process(std::vector<float>& left_in,
-                          std::vector<float>& right_in,
+void OutputLevel::process(std::span<float>& left_in,
+                          std::span<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out) {
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
