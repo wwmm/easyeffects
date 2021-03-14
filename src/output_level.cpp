@@ -28,12 +28,9 @@ OutputLevel::OutputLevel(const std::string& tag,
 OutputLevel::~OutputLevel() {
   util::debug(log_tag + name + " destroyed");
 
-  pw_filter_set_active(filter, false);
-  // pw_filter_disconnect(filter);
-
   pw_thread_loop_lock(pm->thread_loop);
 
-  spa_hook_remove(&listener);
+  pw_filter_set_active(filter, false);
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 

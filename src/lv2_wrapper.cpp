@@ -89,25 +89,26 @@ void Lv2Wrapper::create_ports() {
   for (uint n = 0; n < n_ports; n++) {
     auto* port = &ports[n];
 
-    port->lilv_port = lilv_plugin_get_port_by_index(plugin, n);
+    const auto* lilv_port = lilv_plugin_get_port_by_index(plugin, n);
+
     port->index = n;
-    port->name = lilv_node_as_string(lilv_port_get_name(plugin, port->lilv_port));
-    port->symbol = lilv_node_as_string(lilv_port_get_symbol(plugin, port->lilv_port));
+    port->name = lilv_node_as_string(lilv_port_get_name(plugin, lilv_port));
+    port->symbol = lilv_node_as_string(lilv_port_get_symbol(plugin, lilv_port));
     port->value = std::isnan(values[n]) ? 0.0F : values[n];
-    port->optional = lilv_port_has_property(plugin, port->lilv_port, lv2_connectionOptional);
+    port->optional = lilv_port_has_property(plugin, lilv_port, lv2_connectionOptional);
 
     // util::warning("port name: " + port.name);
     // util::warning("port symbol: " + port->symbol);
 
-    if (lilv_port_is_a(plugin, port->lilv_port, lv2_InputPort)) {
+    if (lilv_port_is_a(plugin, lilv_port, lv2_InputPort)) {
       port->is_input = true;
-    } else if (!lilv_port_is_a(plugin, port->lilv_port, lv2_OutputPort) && !port->optional) {
+    } else if (!lilv_port_is_a(plugin, lilv_port, lv2_OutputPort) && !port->optional) {
       util::error(log_tag + "Port " + port->name + " is neither input nor output!");
     }
 
-    if (lilv_port_is_a(plugin, port->lilv_port, lv2_ControlPort)) {
+    if (lilv_port_is_a(plugin, lilv_port, lv2_ControlPort)) {
       port->type = TYPE_CONTROL;
-    } else if (lilv_port_is_a(plugin, port->lilv_port, lv2_AudioPort)) {
+    } else if (lilv_port_is_a(plugin, lilv_port, lv2_AudioPort)) {
       port->type = TYPE_AUDIO;
 
       n_audio_in = (port->is_input) ? n_audio_in + 1 : n_audio_in;

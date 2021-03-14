@@ -22,7 +22,6 @@
 
 #include <giomm.h>
 #include <pipewire/filter.h>
-#include <mutex>
 #include <span>
 #include "pipe_manager.hpp"
 
@@ -62,8 +61,6 @@ class PluginBase {
   float sample_duration = 0.0F;
 
   bool post_messages = false;
-
-  std::mutex data_lock_guard;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

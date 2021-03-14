@@ -31,8 +31,6 @@ namespace lv2 {
 enum PortType { TYPE_CONTROL, TYPE_AUDIO };
 
 struct Port {
-  const LilvPort* lilv_port;  // Port description
-
   PortType type;  // Datatype
 
   uint index;  // Port index

@@ -38,12 +38,15 @@ Spectrum::Spectrum(const std::string& tag,
 Spectrum::~Spectrum() {
   util::debug(log_tag + name + " destroyed");
 
-  pw_filter_set_active(filter, false);
-  // pw_filter_disconnect(filter);
-
   pw_thread_loop_lock(pm->thread_loop);
 
-  spa_hook_remove(&listener);
+  pw_filter_set_active(filter, false);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 
   fftwf_destroy_plan(plan_l);
   fftwf_destroy_plan(plan_r);
@@ -55,12 +58,6 @@ Spectrum::~Spectrum() {
   if (complex_right == nullptr) {
     fftwf_free(complex_right);
   }
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void Spectrum::setup() {}
