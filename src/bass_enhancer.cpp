@@ -24,7 +24,28 @@ BassEnhancer::BassEnhancer(const std::string& tag,
                            const std::string& schema_path,
                            PipeManager* pipe_manager)
     : PluginBase(tag, "bass_enhancer", schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/BassEnhancer")) {}
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/BassEnhancer")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  lv2_wrapper->set_control_port_value("amount", static_cast<float>(util::db_to_linear(settings->get_double("amount"))));
+
+  lv2_wrapper->set_control_port_value("harmonics", static_cast<float>(settings->get_double("harmonics")));
+
+  lv2_wrapper->set_control_port_value("scope", static_cast<float>(settings->get_double("scope")));
+
+  settings->signal_changed("amount").connect([=, this](auto key) {
+    lv2_wrapper->set_control_port_value("amount", static_cast<float>(util::db_to_linear(settings->get_double(key))));
+  });
+
+  settings->signal_changed("harmonics").connect([=, this](auto key) {
+    lv2_wrapper->set_control_port_value("harmonics", settings->get_double(key));
+  });
+
+  settings->signal_changed("scope").connect(
+      [=, this](auto key) { lv2_wrapper->set_control_port_value("scope", settings->get_double(key)); });
+}
 
 BassEnhancer::~BassEnhancer() {
   util::debug(log_tag + name + " destroyed");
@@ -47,6 +68,8 @@ void BassEnhancer::setup() {
 
   if (!lv2_wrapper->create_instance(rate)) {
     bypass = true;
+  } else {
+    lv2_wrapper->set_control_port_value("bypass", 0.0F);
   }
 }
 
