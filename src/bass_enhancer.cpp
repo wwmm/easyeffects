@@ -29,10 +29,9 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 BassEnhancer::~BassEnhancer() {
   util::debug(log_tag + name + " destroyed");
 
-  if (lv2_instance != nullptr) {
-    lilv_instance_deactivate(lv2_instance);
-    lilv_instance_free(lv2_instance);
-  }
+  // std::lock_guard<std::mutex> lock(data_lock_guard);
+
+  util::warning("free2");
 }
 
 void BassEnhancer::setup() {
@@ -40,62 +39,19 @@ void BassEnhancer::setup() {
     return;
   }
 
-  std::lock_guard<std::mutex> lock(data_lock_guard);
+  // input_left.resize(n_samples);
+  // input_right.resize(n_samples);
 
-  input_left.resize(n_samples);
-  input_right.resize(n_samples);
+  // output_left.resize(n_samples);
+  // output_right.resize(n_samples);
 
-  output_left.resize(n_samples);
-  output_right.resize(n_samples);
-
-  if (lv2_instance != nullptr) {
-    lilv_instance_deactivate(lv2_instance);
-    lilv_instance_free(lv2_instance);
-  }
-
-  lv2_instance = lilv_plugin_instantiate(lv2_wrapper->plugin, rate, nullptr);
-
-  int count_input = 0;
-  int count_output = 0;
-
-  if (lv2_instance == nullptr) {
-    util::warning(log_tag + "failed to create the lv2 instance");
-  } else {
-    for (auto& p : lv2_wrapper->ports) {
-      switch (p.type) {
-        case lv2::PortType::TYPE_CONTROL: {
-          lilv_instance_connect_port(lv2_instance, p.index, &p.value);
-
-          break;
-        }
-        case lv2::PortType::TYPE_AUDIO: {
-          if (p.is_input) {
-            if (count_input == 0) {
-              lilv_instance_connect_port(lv2_instance, p.index, input_left.data());
-            } else if (count_input == 1) {
-              lilv_instance_connect_port(lv2_instance, p.index, input_right.data());
-            }
-
-            count_input++;
-          } else {
-            if (count_output == 0) {
-              lilv_instance_connect_port(lv2_instance, p.index, output_left.data());
-            } else if (count_output == 1) {
-              lilv_instance_connect_port(lv2_instance, p.index, output_right.data());
-            }
-
-            count_output++;
-          }
-
-          break;
-        }
-      }
-    }
+  if (!lv2_wrapper->create_instance(rate)) {
+    bypass = true;
   }
 }
 
-void BassEnhancer::process(const std::vector<float>& left_in,
-                           const std::vector<float>& right_in,
+void BassEnhancer::process(std::vector<float>& left_in,
+                           std::vector<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
   if (!lv2_wrapper->found_plugin) {
@@ -109,18 +65,8 @@ void BassEnhancer::process(const std::vector<float>& left_in,
     return;
   }
 
-  std::lock_guard<std::mutex> lock(data_lock_guard);
-
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
-
-  std::copy(left_in.begin(), left_in.end(), input_left.begin());
-  std::copy(right_in.begin(), right_in.end(), input_right.begin());
-
-  // apply plugin
-
-  // std::copy(output_left.begin(), output_left.end(), left_out.begin());
-  // std::copy(output_right.begin(), output_right.end(), right_out.begin());
+  lv2_wrapper->connect_ports(left_in, right_in, left_out, right_out);
+  lv2_wrapper->run(left_in.size());
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

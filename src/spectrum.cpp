@@ -38,6 +38,8 @@ Spectrum::Spectrum(const std::string& tag,
 Spectrum::~Spectrum() {
   util::debug(log_tag + name + " destroyed");
 
+  std::lock_guard<std::mutex> lock(data_lock_guard);
+
   fftwf_destroy_plan(plan_l);
   fftwf_destroy_plan(plan_r);
 
@@ -52,8 +54,8 @@ Spectrum::~Spectrum() {
 
 void Spectrum::setup() {}
 
-void Spectrum::process(const std::vector<float>& left_in,
-                       const std::vector<float>& right_in,
+void Spectrum::process(std::vector<float>& left_in,
+                       std::vector<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -65,7 +67,7 @@ void Spectrum::process(const std::vector<float>& left_in,
 
   uint count = 0;
 
-  for (uint n = 0; n < n_samples; n++) {
+  for (uint n = 0; n < left_in.size(); n++) {
     uint k = total_count + n;
 
     if (k < n_bands) {

@@ -24,6 +24,8 @@ namespace {
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
+  std::lock_guard<std::mutex> lock(d->pb->data_lock_guard);
+
   auto n_samples = position->clock.duration;
   auto rate = position->clock.rate.denom;
 
@@ -154,8 +156,8 @@ auto PluginBase::get_node_id() const -> uint {
 
 void PluginBase::setup() {}
 
-void PluginBase::process(const std::vector<float>& left_in,
-                         const std::vector<float>& right_in,
+void PluginBase::process(std::vector<float>& left_in,
+                         std::vector<float>& right_in,
                          std::span<float>& left_out,
                          std::span<float>& right_out) {}
 

@@ -22,7 +22,6 @@
 
 #include <giomm.h>
 #include <pipewire/filter.h>
-#include <sigc++/sigc++.h>
 #include <mutex>
 #include <span>
 #include "pipe_manager.hpp"
@@ -64,12 +63,14 @@ class PluginBase {
 
   bool post_messages = false;
 
+  std::mutex data_lock_guard;
+
   [[nodiscard]] auto get_node_id() const -> uint;
 
   virtual void setup();
 
-  virtual void process(const std::vector<float>& left_in,
-                       const std::vector<float>& right_in,
+  virtual void process(std::vector<float>& left_in,
+                       std::vector<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out);
 
@@ -88,8 +89,6 @@ class PluginBase {
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
-
-  std::mutex data_lock_guard;
 
   void notify();
 

@@ -21,6 +21,7 @@
 #define LV2_WRAPPER_HPP
 
 #include <cmath>
+#include <span>
 #include "lilv/lilv.h"
 #include "lv2/core/lv2.h"
 #include "util.hpp"
@@ -54,24 +55,37 @@ class Lv2Wrapper {
   auto operator=(const Lv2Wrapper&) -> Lv2Wrapper& = delete;
   Lv2Wrapper(const Lv2Wrapper&&) = delete;
   auto operator=(const Lv2Wrapper&&) -> Lv2Wrapper& = delete;
-  ~Lv2Wrapper();
+  virtual ~Lv2Wrapper();
+
+  LilvWorld* world = nullptr;
 
   const LilvPlugin* plugin = nullptr;
+
+  LilvInstance* instance = nullptr;
 
   bool found_plugin = false;
 
   std::vector<Port> ports;
 
+  auto create_instance(const uint& rate) -> bool;
+
+  void connect_ports(std::vector<float>& left_in,
+                     std::vector<float>& right_in,
+                     std::span<float>& left_out,
+                     std::span<float>& right_out);
+
+  void run(const uint& n_samples) const;
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 
-  LilvWorld* world = nullptr;
-
-  LilvInstance* instance = nullptr;
+  std::string plugin_uri;
 
   uint n_ports = 0;
   uint n_audio_in = 0;
   uint n_audio_out = 0;
+
+  void check_required_features();
 
   void create_ports();
 };

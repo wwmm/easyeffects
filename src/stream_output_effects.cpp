@@ -143,15 +143,19 @@ void StreamOutputEffects::change_output_device(const NodeInfo& node) {
 void StreamOutputEffects::connect_filters() {
   pm->lock();
 
-  pm->link_nodes(pm->pe_sink_node.id, autogain->get_node_id());
+  // pm->link_nodes(pm->pe_sink_node.id, autogain->get_node_id());
 
-  pm->link_nodes(autogain->get_node_id(), bass_enhancer->get_node_id());
+  // pm->link_nodes(autogain->get_node_id(), bass_enhancer->get_node_id());
 
-  pm->link_nodes(bass_enhancer->get_node_id(), spectrum->get_node_id());
+  // pm->link_nodes(bass_enhancer->get_node_id(), spectrum->get_node_id());
 
-  pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
+  // pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
-  pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+  // pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+
+  pm->link_nodes(pm->pe_sink_node.id, bass_enhancer->get_node_id());
+
+  pm->link_nodes(bass_enhancer->get_node_id(), pm->default_sink.id);
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 

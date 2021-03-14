@@ -56,15 +56,13 @@ void AutoGain::init_ebur128() {
 }
 
 void AutoGain::setup() {
-  std::lock_guard<std::mutex> lock(data_lock_guard);
-
   init_ebur128();
 
   data.resize(n_samples * 2);
 }
 
-void AutoGain::process(const std::vector<float>& left_in,
-                       const std::vector<float>& right_in,
+void AutoGain::process(std::vector<float>& left_in,
+                       std::vector<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
   if (bypass) {
@@ -73,8 +71,6 @@ void AutoGain::process(const std::vector<float>& left_in,
 
     return;
   }
-
-  std::lock_guard<std::mutex> lock(data_lock_guard);
 
   for (uint n = 0; n < n_samples; n++) {
     data[2 * n] = left_in[n];

@@ -37,8 +37,8 @@ class BassEnhancer : public PluginBase {
 
   void setup() override;
 
-  void process(const std::vector<float>& left_in,
-               const std::vector<float>& right_in,
+  void process(std::vector<float>& left_in,
+               std::vector<float>& right_in,
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
@@ -46,11 +46,6 @@ class BassEnhancer : public PluginBase {
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
-
-  LilvInstance* lv2_instance = nullptr;
-
-  std::vector<float> input_left, input_right;
-  std::vector<float> output_left, output_right;
 
   void bind_to_gsettings();
 };

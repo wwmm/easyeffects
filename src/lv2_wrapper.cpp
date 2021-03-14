@@ -2,7 +2,7 @@
 
 namespace lv2 {
 
-Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) {
+Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
   if (world == nullptr) {
@@ -35,20 +35,44 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) {
 
   found_plugin = true;
 
+  check_required_features();
+
   create_ports();
 }
 
 Lv2Wrapper::~Lv2Wrapper() {
-  lilv_instance_free(instance);
+  if (instance != nullptr) {
+    util::warning("free1");
+
+    lilv_instance_deactivate(instance);
+    lilv_instance_free(instance);
+
+    instance = nullptr;
+  }
+
   lilv_world_free(world);
+}
+
+void Lv2Wrapper::check_required_features() {
+  LilvNodes* required_features = lilv_plugin_get_required_features(plugin);
+
+  if (required_features != nullptr) {
+    for (auto* i = lilv_nodes_begin(required_features); !lilv_nodes_is_end(required_features, i);
+         i = lilv_nodes_next(required_features, i)) {
+      const LilvNode* required_feature = lilv_nodes_get(required_features, i);
+      const char* required_feature_uri = lilv_node_as_uri(required_feature);
+
+      util::debug(log_tag + plugin_uri + " requires feature: " + required_feature_uri);
+    }
+
+    lilv_nodes_free(required_features);
+  }
 }
 
 void Lv2Wrapper::create_ports() {
   n_ports = lilv_plugin_get_num_ports(plugin);
 
   ports.resize(n_ports);
-
-  // util::warning("n ports: " + std::to_string(n_ports));
 
   // Get default values for all ports
 
@@ -101,6 +125,72 @@ void Lv2Wrapper::create_ports() {
   lilv_node_free(lv2_AudioPort);
   lilv_node_free(lv2_OutputPort);
   lilv_node_free(lv2_InputPort);
+}
+
+auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
+  if (instance != nullptr) {
+    lilv_instance_deactivate(instance);
+    lilv_instance_free(instance);
+
+    instance = nullptr;
+  }
+
+  instance = lilv_plugin_instantiate(plugin, rate, nullptr);
+
+  if (instance == nullptr) {
+    util::warning(log_tag + "failed to instantiate " + plugin_uri);
+
+    return false;
+  }
+
+  lilv_instance_activate(instance);
+
+  return true;
+}
+
+void Lv2Wrapper::connect_ports(std::vector<float>& left_in,
+                               std::vector<float>& right_in,
+                               std::span<float>& left_out,
+                               std::span<float>& right_out) {
+  int count_input = 0;
+  int count_output = 0;
+
+  for (auto& p : ports) {
+    switch (p.type) {
+      case lv2::PortType::TYPE_CONTROL: {
+        lilv_instance_connect_port(instance, p.index, &p.value);
+
+        break;
+      }
+      case lv2::PortType::TYPE_AUDIO: {
+        if (p.is_input) {
+          if (count_input == 0) {
+            lilv_instance_connect_port(instance, p.index, left_in.data());
+          } else if (count_input == 1) {
+            lilv_instance_connect_port(instance, p.index, right_in.data());
+          }
+
+          count_input++;
+        } else {
+          if (count_output == 0) {
+            lilv_instance_connect_port(instance, p.index, left_out.data());
+          } else if (count_output == 1) {
+            lilv_instance_connect_port(instance, p.index, right_out.data());
+          }
+
+          count_output++;
+        }
+
+        break;
+      }
+    }
+  }
+}
+
+void Lv2Wrapper::run(const uint& n_samples) const {
+  if (instance != nullptr) {
+    lilv_instance_run(instance, n_samples);
+  }
 }
 
 }  // namespace lv2

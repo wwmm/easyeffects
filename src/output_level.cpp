@@ -27,12 +27,14 @@ OutputLevel::OutputLevel(const std::string& tag,
 
 OutputLevel::~OutputLevel() {
   util::debug(log_tag + name + " destroyed");
+
+  std::lock_guard<std::mutex> lock(data_lock_guard);
 }
 
 void OutputLevel::setup() {}
 
-void OutputLevel::process(const std::vector<float>& left_in,
-                          const std::vector<float>& right_in,
+void OutputLevel::process(std::vector<float>& left_in,
+                          std::vector<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out) {
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
