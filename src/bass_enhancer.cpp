@@ -31,15 +31,15 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
   lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
-  lv2_wrapper->bind_key_double(settings, "harmonics", "harmonics");
+  lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
 
-  lv2_wrapper->bind_key_double(settings, "scope", "scope");
+  lv2_wrapper->bind_key_double(settings, "scope", "freq");
 
   lv2_wrapper->bind_key_double(settings, "floor", "floor");
 
   lv2_wrapper->bind_key_double(settings, "blend", "blend");
 
-  lv2_wrapper->bind_key_bool(settings, "floor-active", "floor-active");
+  lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
 }

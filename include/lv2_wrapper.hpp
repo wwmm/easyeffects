@@ -74,13 +74,7 @@ class Lv2Wrapper {
 
   void deactivate();
 
-  void set_control_port_value(const std::string& symbol, const float& value) {
-    for (auto& p : ports) {
-      if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
-        p.value = value;
-      }
-    }
-  }
+  void set_control_port_value(const std::string& symbol, const float& value);
 
   void bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
                        const std::string& gsettings_key,

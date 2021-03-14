@@ -211,6 +211,24 @@ void Lv2Wrapper::deactivate() {
   lilv_instance_deactivate(instance);
 }
 
+void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& value) {
+  bool found = false;
+
+  for (auto& p : ports) {
+    if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
+      p.value = value;
+
+      found = true;
+
+      break;
+    }
+  }
+
+  if (!found) {
+    util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
+  }
+}
+
 void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
                                  const std::string& gsettings_key,
                                  const std::string& lv2_symbol) {
