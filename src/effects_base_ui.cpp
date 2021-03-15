@@ -636,15 +636,18 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
   // setting the item selection callback
 
-  listview_selected_plugins->signal_activate().connect([=, this](guint position) {
-    auto pages = std::dynamic_pointer_cast<Gio::ListModel>(stack_plugins->get_pages());
+  listview_selected_plugins->signal_activate().connect([&, this](guint position) {
     auto selected_name = selected_plugins->get_string(position);
 
-    for (guint n = 0; n < pages->get_n_items(); n++) {
-      auto page = std::dynamic_pointer_cast<Gtk::StackPage>(pages->get_object(n));
+    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = stack_plugins->get_next_sibling()) {
+      auto page = stack_plugins->get_page(*child);
 
       if (page->get_name() == selected_name) {
         util::warning(selected_name);
+
+        stack_plugins->set_visible_child(*child);
+
+        return;
       }
     }
   });
