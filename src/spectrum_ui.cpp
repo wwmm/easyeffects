@@ -136,7 +136,7 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
     util::debug(std::string("Message from thrown exception was: ") + e.what());
   }
 
-  auto max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+  auto max_mag = std::ranges::max(spectrum_mag);
 
   if (max_mag > util::minimum_db_level) {
     for (float& v : spectrum_mag) {
@@ -180,7 +180,7 @@ void SpectrumUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     int usable_height = height - axis_height;
 
     if (use_gradient) {
-      float max_mag = *std::max_element(spectrum_mag.begin(), spectrum_mag.end());
+      float max_mag = std::ranges::max(spectrum_mag);
       double max_bar_height = static_cast<double>(usable_height) * max_mag;
 
       auto gradient = Cairo::LinearGradient::create(0.0, usable_height - max_bar_height, 0, usable_height);

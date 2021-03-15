@@ -23,41 +23,40 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
                                const Glib::RefPtr<Gtk::Builder>& builder,
                                const std::string& schema,
                                const std::string& schema_path)
-    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
+    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "bass_enhancer";
 
   // loading glade widgets
 
-  builder->get_widget("harmonics_levelbar", harmonics_levelbar);
-  builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
-  builder->get_widget("floor_active", floor_active);
-  builder->get_widget("floor_freq", floor_freq);
-  builder->get_widget("listen", listen);
-  builder->get_widget("plugin_reset", reset_button);
+  harmonics_levelbar = builder->get_widget<Gtk::LevelBar>("harmonics_levelbar");
+  harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
+  floor_active = builder->get_widget<Gtk::ToggleButton>("floor_active");
+  listen = builder->get_widget<Gtk::ToggleButton>("listen");
+  floor_freq = builder->get_widget<Gtk::SpinButton>("floor_freq");
 
-  get_object(builder, "amount", amount);
-  get_object(builder, "blend", blend);
-  get_object(builder, "floor", floorv);
-  get_object(builder, "harmonics", harmonics);
-  get_object(builder, "scope", scope);
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
+
+  // get_object(builder, "amount", amount);
+  // get_object(builder, "blend", blend);
+  // get_object(builder, "floor", floorv);
+  // get_object(builder, "harmonics", harmonics);
+  // get_object(builder, "scope", scope);
+  // get_object(builder, "input_gain", input_gain);
+  // get_object(builder, "output_gain", output_gain);
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("amount", amount.get(), "value", flag);
-  settings->bind("harmonics", harmonics.get(), "value", flag);
-  settings->bind("scope", scope.get(), "value", flag);
-  settings->bind("floor", floorv.get(), "value", flag);
-  settings->bind("blend", blend.get(), "value", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("listen", listen, "active", flag);
-  settings->bind("floor-active", floor_active, "active", flag);
-  settings->bind("floor-active", floor_freq, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
+  settings->bind("installed", this, "sensitive");
+  settings->bind("amount", amount.get(), "value");
+  settings->bind("harmonics", harmonics.get(), "value");
+  settings->bind("scope", scope.get(), "value");
+  settings->bind("floor", floorv.get(), "value");
+  settings->bind("blend", blend.get(), "value");
+  settings->bind("input-gain", input_gain.get(), "value");
+  settings->bind("output-gain", output_gain.get(), "value");
+  settings->bind("listen", listen, "active");
+  settings->bind("floor-active", floor_active, "active");
+  settings->bind("floor-active", floor_freq, "sensitive", Gio::Settings::BindFlags::GET);
 
   // reset plugin
   reset_button->signal_clicked().connect([=, this]() { reset(); });

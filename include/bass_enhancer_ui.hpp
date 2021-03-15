@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
+class BassEnhancerUi : public Gtk::Box, public PluginUiBase {
  public:
   BassEnhancerUi(BaseObjectType* cobject,
                  const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class BassEnhancerUi : public Gtk::Grid, public PluginUiBase {
   BassEnhancerUi(const BassEnhancerUi&) = delete;
   auto operator=(const BassEnhancerUi&) -> BassEnhancerUi& = delete;
   BassEnhancerUi(const BassEnhancerUi&&) = delete;
-  auto operator=(const BassEnhancerUi &&) -> BassEnhancerUi& = delete;
+  auto operator=(const BassEnhancerUi&&) -> BassEnhancerUi& = delete;
   ~BassEnhancerUi() override;
 
   void on_new_harmonics_level(double value);

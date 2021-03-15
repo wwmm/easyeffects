@@ -171,16 +171,16 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
 
   // input level
 
-  float peak_l = *std::max_element(left_in.begin(), left_in.end());
-  float peak_r = *std::max_element(right_in.begin(), right_in.end());
+  float peak_l = std::ranges::max(left_in);
+  float peak_r = std::ranges::max(right_in);
 
   input_peak_left = (peak_l > input_peak_left) ? peak_l : input_peak_left;
   input_peak_right = (peak_r > input_peak_right) ? peak_r : input_peak_right;
 
   // output level
 
-  peak_l = *std::max_element(left_out.begin(), left_out.end());
-  peak_r = *std::max_element(right_out.begin(), right_out.end());
+  peak_l = std::ranges::max(left_out);
+  peak_r = std::ranges::max(right_out);
 
   output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
   output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
