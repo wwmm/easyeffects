@@ -79,8 +79,7 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
   bool connected = false;
   auto blocklist = settings->get_string_array("blocklist");
 
-  forbidden_app =
-      std::find(std::begin(blocklist), std::end(blocklist), Glib::ustring(node_info.name)) != std::end(blocklist);
+  forbidden_app = std::ranges::find(blocklist, Glib::ustring(node_info.name)) != blocklist.end();
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == node_info.id && link.output_node_id == pm->pe_source_node.id) {

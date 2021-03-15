@@ -72,9 +72,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   setup_listview_plugins();
   setup_listview_selected_plugins();
 
-  auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
-
   // spectrum
+
+  auto* box_spectrum = builder->get_widget<Gtk::Box>("box_spectrum");
 
   spectrum_ui = SpectrumUi::add_to_box(box_spectrum);
 
@@ -606,14 +606,24 @@ void EffectsBaseUi::setup_listview_plugins() {
 void EffectsBaseUi::setup_listview_selected_plugins() {
   selected_plugins->remove(0);
 
-  for (auto& name : settings->get_string_array("selected-plugins")) {
-    selected_plugins->append(name);
+  if (settings->get_string_array("selected-plugins").empty()) {
+    stack_plugins->property_visible().set_value(false);
+  } else {
+    for (auto& name : settings->get_string_array("selected-plugins")) {
+      selected_plugins->append(name);
+    }
   }
 
   settings->signal_changed("selected-plugins").connect([=, this](auto key) {
     auto list = settings->get_string_array(key);
 
     selected_plugins->splice(0, selected_plugins->get_n_items(), list);
+
+    if (!list.empty()) {
+      stack_plugins->property_visible().set_value(true);
+    } else {
+      stack_plugins->property_visible().set_value(false);
+    }
   });
 
   // setting the listview model and factory
@@ -623,6 +633,21 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   auto factory = Gtk::SignalListItemFactory::create();
 
   listview_selected_plugins->set_factory(factory);
+
+  // setting the item selection callback
+
+  listview_selected_plugins->signal_activate().connect([=, this](guint position) {
+    auto pages = std::dynamic_pointer_cast<Gio::ListModel>(stack_plugins->get_pages());
+    auto selected_name = selected_plugins->get_string(position);
+
+    for (guint n = 0; n < pages->get_n_items(); n++) {
+      auto page = std::dynamic_pointer_cast<Gtk::StackPage>(pages->get_object(n));
+
+      if (page->get_name() == selected_name) {
+        util::warning(selected_name);
+      }
+    }
+  });
 
   // setting the factory callbacks
 
@@ -822,7 +847,7 @@ auto EffectsBaseUi::float_to_localized_string(const float& value, const int& pla
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
   std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
 
-  return std::find(std::begin(bl), std::end(bl), name) != std::end(bl);
+  return std::ranges::find(bl, name) != bl.end();
 }
 
 auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {

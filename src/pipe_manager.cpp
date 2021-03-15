@@ -675,8 +675,7 @@ void on_registry_global(void* data,
     const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE);
 
     if (key_media_role != nullptr) {
-      if (std::find(std::begin(pm->blocklist_media_role), std::end(pm->blocklist_media_role),
-                    std::string(key_media_role)) != std::end(pm->blocklist_media_role)) {
+      if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
         return;
       }
 
@@ -726,8 +725,7 @@ void on_registry_global(void* data,
           return;
         }
 
-        if (std::find(std::begin(pm->blocklist_node_name), std::end(pm->blocklist_node_name), name) !=
-            std::end(pm->blocklist_node_name)) {
+        if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
           return;
         }
 

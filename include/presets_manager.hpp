@@ -23,6 +23,7 @@
 #include <giomm.h>
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
+#include <algorithm>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>

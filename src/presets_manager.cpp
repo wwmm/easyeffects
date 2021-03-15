@@ -397,7 +397,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
 
           for (const auto& v : aux.get()) {
-            if (std::find(output_plugins.begin(), output_plugins.end(), v) == output_plugins.end()) {
+            if (std::ranges::find(output_plugins, v) == output_plugins.end()) {
               output_plugins.emplace_back(v);
             }
           }
@@ -446,7 +446,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
 
           for (const auto& v : aux.get()) {
-            if (std::find(input_plugins.begin(), input_plugins.end(), v) == input_plugins.end()) {
+            if (std::ranges::find(input_plugins, v) == input_plugins.end()) {
               input_plugins.emplace_back(v);
             }
           }
