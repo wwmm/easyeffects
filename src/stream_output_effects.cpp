@@ -76,6 +76,20 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   pw_thread_loop_wait(pm->thread_loop);
 
   pm->unlock();
+
+  settings->signal_changed("selected-plugins").connect([&, this](auto key) {
+    pm->lock();
+
+    disconnect_filters();
+
+    connect_filters();
+
+    // pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+    // pw_thread_loop_wait(pm->thread_loop);
+
+    pm->unlock();
+  });
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
@@ -170,4 +184,29 @@ void StreamOutputEffects::connect_filters() {
   pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
   pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+}
+
+void StreamOutputEffects::disconnect_filters() {
+  std::set<uint> list;
+
+  for (auto& plugin : plugins | std::views::values) {
+    auto filter_id = plugin->get_node_id();
+
+    for (auto& link : pm->list_links) {
+      if (link.input_node_id == filter_id || link.output_node_id == filter_id) {
+        list.insert(link.id);
+      }
+    }
+  }
+
+  for (auto& link : pm->list_links) {
+    if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
+        link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
+      list.insert(link.id);
+    }
+  }
+
+  for (const auto& id : list) {
+    pm->destroy_object(id);
+  }
 }

@@ -209,6 +209,8 @@ class PipeManager {
 
   auto link_nodes(const uint& output_node_id, const uint& input_node_id) -> bool;
 
+  void destroy_object(const int& id) const;
+
   void lock() const;
 
   void unlock() const;

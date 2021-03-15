@@ -1200,3 +1200,7 @@ void PipeManager::lock() const {
 void PipeManager::unlock() const {
   pw_thread_loop_unlock(thread_loop);
 }
+
+void PipeManager::destroy_object(const int& id) const {
+  pw_registry_destroy(registry, id);
+}
