@@ -60,6 +60,7 @@ void Lv2Wrapper::check_required_features() {
     for (auto* i = lilv_nodes_begin(required_features); !lilv_nodes_is_end(required_features, i);
          i = lilv_nodes_next(required_features, i)) {
       const LilvNode* required_feature = lilv_nodes_get(required_features, i);
+
       const char* required_feature_uri = lilv_node_as_uri(required_feature);
 
       util::debug(log_tag + plugin_uri + " requires feature: " + required_feature_uri);

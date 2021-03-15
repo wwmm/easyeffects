@@ -18,6 +18,7 @@
  */
 
 #include "stream_output_effects.hpp"
+#include <algorithm>
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", "com.github.wwmm.pulseeffects.sinkinputs", pipe_manager) {
@@ -78,8 +79,7 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
   bool connected = false;
   auto blocklist = settings->get_string_array("blocklist");
 
-  forbidden_app =
-      std::find(std::begin(blocklist), std::end(blocklist), Glib::ustring(node_info.name)) != std::end(blocklist);
+  forbidden_app = std::ranges::find(blocklist, Glib::ustring(node_info.name)) != blocklist.end();
 
   for (const auto& link : pm->list_links) {
     if (link.output_node_id == node_info.id && link.input_node_id == pm->pe_sink_node.id) {

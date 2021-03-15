@@ -119,7 +119,7 @@ void AutoGain::process(std::span<float>& left_in,
     failed = true;
   }
 
-  if (relative > -70.0F && !failed) {
+  if (relative > -70.0F && momentary > -70.0F && !failed) {
     double peak_L = 0.0;
     double peak_R = 0.0;
 

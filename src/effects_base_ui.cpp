@@ -583,7 +583,7 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto connection_add = add->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("selected-plugins");
 
-      if (std::find(std::begin(list), std::end(list), name) == std::end(list)) {
+      if (std::ranges::find(list, name) == list.end()) {
         list.emplace_back(name);
 
         settings->set_string_array("selected-plugins", list);
@@ -666,9 +666,9 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto connection_up = up->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("selected-plugins");
 
-      auto r = std::find(std::begin(list), std::end(list), name);
+      auto r = std::ranges::find(list, name);
 
-      if (r != std::begin(list)) {
+      if (r != list.end()) {
         std::iter_swap(r, r - 1);
 
         settings->set_string_array("selected-plugins", list);
@@ -678,7 +678,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto connection_down = down->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("selected-plugins");
 
-      auto r = std::find(std::begin(list), std::end(list), name);
+      auto r = std::ranges::find(list, name);
 
       if (r != std::end(list) - 1) {
         std::iter_swap(r, r + 1);

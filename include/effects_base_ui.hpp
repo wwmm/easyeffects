@@ -24,6 +24,7 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
+#include <algorithm>
 #include <memory>
 #include <vector>
 #include "autogain_ui.hpp"
