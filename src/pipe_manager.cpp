@@ -695,10 +695,8 @@ void on_registry_global(void* data,
 
           if (strcmp(key_node_description, "pulseeffects_filter") == 0) {
             const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-            const auto* node_nick = spa_dict_lookup(props, PW_KEY_NODE_NICK);
 
-            util::debug(pm->log_tag + "Filter " + node_nick + node_name + ", id = " + std::to_string(id) +
-                        ", was added");
+            util::debug(pm->log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
           }
         }
       }

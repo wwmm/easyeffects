@@ -20,6 +20,7 @@
 #ifndef STREAM_OUTPUT_EFFECTS_HPP
 #define STREAM_OUTPUT_EFFECTS_HPP
 
+#include <algorithm>
 #include "effects_base.hpp"
 
 class StreamOutputEffects : public EffectsBase {

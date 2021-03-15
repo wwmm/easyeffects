@@ -18,7 +18,7 @@
  */
 
 #include "stream_output_effects.hpp"
-#include <algorithm>
+#include <ranges>
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", "com.github.wwmm.pulseeffects.sinkinputs", pipe_manager) {
@@ -67,7 +67,15 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
 
+  pm->lock();
+
   connect_filters();
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pm->unlock();
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
@@ -141,21 +149,25 @@ void StreamOutputEffects::change_output_device(const NodeInfo& node) {
 }
 
 void StreamOutputEffects::connect_filters() {
-  pm->lock();
+  auto list = settings->get_string_array("selected-plugins");
 
-  pm->link_nodes(pm->pe_sink_node.id, autogain->get_node_id());
+  // for (auto& p : plugins | std::views::keys) {
+  //   std::cout << p << std::endl;
+  // }
 
-  pm->link_nodes(autogain->get_node_id(), bass_enhancer->get_node_id());
+  if (list.empty()) {
+    pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
+  } else {
+    pm->link_nodes(pm->pe_sink_node.id, plugins[list[0]]->get_node_id());
 
-  pm->link_nodes(bass_enhancer->get_node_id(), spectrum->get_node_id());
+    for (size_t n = 1; n < list.size(); n++) {
+      pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+    }
+
+    pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+  }
 
   pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
   pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pm->unlock();
 }

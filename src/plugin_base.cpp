@@ -68,16 +68,16 @@ PluginBase::PluginBase(std::string tag,
 
   auto* props_filter = pw_properties_new(nullptr, nullptr);
 
-  name.insert(0, "pe_filter_");
+  auto filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
 
-  pw_properties_set(props_filter, PW_KEY_NODE_NAME, name.c_str());
-  pw_properties_set(props_filter, PW_KEY_NODE_NICK, log_tag.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "pulseeffects_filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
 
-  filter = pw_filter_new(pm->core, plugin_name.c_str(), props_filter);
+  filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
 
   pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 
