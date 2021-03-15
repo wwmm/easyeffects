@@ -643,8 +643,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       auto page = stack_plugins->get_page(*child);
 
       if (page->get_name() == selected_name) {
-        util::warning(selected_name);
-
         stack_plugins->set_visible_child(*child);
 
         return;
