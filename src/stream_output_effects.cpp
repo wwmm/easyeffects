@@ -200,3 +200,33 @@ void StreamOutputEffects::disconnect_filters() {
     pm->destroy_object(id);
   }
 }
+
+void StreamOutputEffects::set_bypass(const bool& state) {
+  if (state) {
+    pm->lock();
+
+    disconnect_filters();
+
+    pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
+    pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
+    pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+
+    pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(pm->thread_loop);
+
+    pm->unlock();
+  } else {
+    pm->lock();
+
+    disconnect_filters();
+
+    connect_filters();
+
+    pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(pm->thread_loop);
+
+    pm->unlock();
+  }
+}
