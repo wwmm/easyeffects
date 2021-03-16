@@ -433,13 +433,13 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label" translatable="yes">Based on</property>
+                                <property name="label" translatable="yes">Based on a</property>
                             </object>
                         </child>
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Calf Studio Gears</property>
+                                <property name="label">Calf Studio Gears Plugin</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

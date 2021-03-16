@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="pulseeffects">
-    <enum id="com.github.wwmm.pulseeffects.cpupriority.enum">
-        <value nick="Niceness" value="0" />
-        <value nick="Real Time" value="1" />
-        <value nick="None" value="2" />
-    </enum>
     <enum id="com.github.wwmm.pulseeffects.spectrum.type.enum">
         <value nick="Bars" value="0" />
         <value nick="Lines" value="1" />
@@ -37,17 +32,6 @@
         <key name="custom-source" type="s">
             <default>""</default>
         </key>
-        <key name="cpu-priority" enum="com.github.wwmm.pulseeffects.cpupriority.enum">
-            <default>"None"</default>
-        </key>
-        <key name="realtime-priority" type="i">
-            <range min="0" max="99" />
-            <default>4</default>
-        </key>
-        <key name="niceness" type="i">
-            <range min="-20" max="19" />
-            <default>-10</default>
-        </key>
         <key name="window-width" type="i">
             <default>0</default>
         </key>
@@ -56,10 +40,6 @@
         </key>
         <key name="bypass" type="b">
             <default>false</default>
-        </key>
-        <key name="audio-activity-timeout" type="i">
-            <range min="1" max="3600" />
-            <default>5</default>
         </key>
     </schema>
 </schemalist>

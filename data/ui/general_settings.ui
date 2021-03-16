@@ -91,30 +91,6 @@
                         </layout>
                     </object>
                 </child>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">end</property>
-                        <property name="label" translatable="yes">Priority Type</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">4</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkComboBoxText" id="cpu_priority">
-                        <property name="halign">start</property>
-                        <items>
-                            <item translatable="yes">Niceness</item>
-                            <item translatable="yes">Real Time</item>
-                            <item translatable="yes">None</item>
-                        </items>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">4</property>
-                        </layout>
-                    </object>
-                </child>
             </object>
         </child>
 
@@ -133,71 +109,6 @@
                 <property name="spacing">6</property>
                 <property name="orientation">vertical</property>
                 <child>
-                    <object class="GtkSpinButton" id="spin_button_priority">
-                        <property name="numeric">1</property>
-                        <property name="adjustment">realtime_priority</property>
-                        <property name="xalign">1.0</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="margin_start">3</property>
-                                <property name="margin_end">3</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">Priority</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="spin_button_niceness">
-                        <property name="numeric">1</property>
-                        <property name="adjustment">niceness</property>
-                        <property name="xalign">1.0</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="margin_start">3</property>
-                                <property name="margin_end">3</property>
-                                <property name="halign">start</property>
-                                <property name="label" translatable="yes">Niceness</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="spin_button_activity_timeout">
-                        <property name="numeric">1</property>
-                        <property name="adjustment">audio_activity_timeout</property>
-                        <property name="xalign">1.0</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="halign">start</property>
-                                <property name="margin_start">3</property>
-                                <property name="margin_end">3</property>
-                                <property name="label" translatable="yes">Activity Timeout</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="margin_start">3</property>
-                                <property name="margin_end">3</property>
-                                <property name="halign">center</property>
-                                <property name="label" translatable="yes">s</property>
-                                <style>
-                                    <class name="dim-label" />
-                                </style>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-                <child>
                     <object class="GtkButton" id="reset_settings">
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">Reset All Settings</property>
@@ -211,24 +122,5 @@
                 </child>
             </object>
         </child>
-    </object>
-    <object class="GtkAdjustment" id="audio_activity_timeout">
-        <property name="lower">1</property>
-        <property name="upper">3600</property>
-        <property name="step-increment">1</property>
-        <property name="page-increment">10</property>
-    </object>
-    <object class="GtkAdjustment" id="niceness">
-        <property name="lower">-20</property>
-        <property name="upper">19</property>
-        <property name="value">-10</property>
-        <property name="step-increment">1</property>
-        <property name="page-increment">5</property>
-    </object>
-    <object class="GtkAdjustment" id="realtime_priority">
-        <property name="upper">99</property>
-        <property name="value">4</property>
-        <property name="step-increment">1</property>
-        <property name="page-increment">10</property>
     </object>
 </interface>

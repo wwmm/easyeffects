@@ -19,40 +19,6 @@
 
 #include "general_settings_ui.hpp"
 
-namespace {
-
-auto priority_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (std::strcmp(v, "Niceness") == 0) {
-    g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Real Time") == 0) {
-    g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "None") == 0) {
-    g_value_set_int(value, 2);
-  }
-
-  return 1;
-}
-
-auto int_to_priority_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
-    case 0:
-      return g_variant_new_string("Niceness");
-
-    case 1:
-      return g_variant_new_string("Real Time");
-
-    default:
-      return g_variant_new_string("None");
-  }
-}
-
-}  // namespace
-
 GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
                                      const Glib::RefPtr<Gtk::Builder>& builder,
                                      Application* application)
@@ -65,18 +31,6 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   enable_autostart = builder->get_widget<Gtk::Switch>("enable_autostart");
   reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
   about_button = builder->get_widget<Gtk::Button>("about_button");
-  spin_button_priority = builder->get_widget<Gtk::SpinButton>("spin_button_priority");
-  spin_button_niceness = builder->get_widget<Gtk::SpinButton>("spin_button_niceness");
-  spin_button_activity_timeout = builder->get_widget<Gtk::SpinButton>("spin_button_activity_timeout");
-  cpu_priority = builder->get_widget<Gtk::ComboBoxText>("cpu_priority");
-
-  realtime_priority = builder->get_object<Gtk::Adjustment>("realtime_priority");
-  niceness = builder->get_object<Gtk::Adjustment>("niceness");
-  audio_activity_timeout = builder->get_object<Gtk::Adjustment>("audio_activity_timeout");
-
-  // configuring widgets
-
-  prepare_spin_buttons();
 
   // signals connection
 
@@ -86,45 +40,11 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   about_button->signal_clicked().connect([=, this]() { app->activate_action("about"); });
 
-  // connections.emplace_back(settings->signal_changed("cpu-priority").connect([&](auto key) {
-  //   set_priority_controls_visibility();
-
-  //   app->sie->set_null_pipeline();
-  //   app->soe->set_null_pipeline();
-
-  //   app->sie->update_pipeline_state();
-  //   app->soe->update_pipeline_state();
-  // }));
-
-  // connections.emplace_back(settings->signal_changed("realtime-priority").connect([&](auto key) {
-  //   app->sie->set_null_pipeline();
-  //   app->soe->set_null_pipeline();
-
-  //   app->sie->update_pipeline_state();
-  //   app->soe->update_pipeline_state();
-  // }));
-
-  // connections.emplace_back(settings->signal_changed("niceness").connect([&](auto key) {
-  //   app->sie->set_null_pipeline();
-  //   app->soe->set_null_pipeline();
-
-  //   app->sie->update_pipeline_state();
-  //   app->soe->update_pipeline_state();
-  // }));
-
   settings->bind("use-dark-theme", theme_switch, "active");
   settings->bind("process-all-inputs", process_all_inputs, "active");
   settings->bind("process-all-outputs", process_all_outputs, "active");
-  settings->bind("realtime-priority", realtime_priority.get(), "value");
-  settings->bind("niceness", niceness.get(), "value");
-  settings->bind("audio-activity-timeout", audio_activity_timeout.get(), "value");
-
-  g_settings_bind_with_mapping(settings->gobj(), "cpu-priority", cpu_priority->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, priority_type_enum_to_int, int_to_priority_type_enum, nullptr,
-                               nullptr);
 
   init_autostart_switch();
-  set_priority_controls_visibility();
 }
 
 GeneralSettingsUi::~GeneralSettingsUi() {
@@ -141,28 +61,6 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "general_spectrum", _("General"));
-}
-
-void GeneralSettingsUi::prepare_spin_buttons() {
-  spin_button_priority->get_last_child()->insert_at_start(*spin_button_priority);
-
-  spin_button_niceness->get_last_child()->insert_at_start(*spin_button_niceness);
-
-  spin_button_activity_timeout->get_last_child()->insert_after(*spin_button_activity_timeout,
-                                                               *spin_button_activity_timeout->get_first_child());
-  spin_button_activity_timeout->get_last_child()->insert_at_start(*spin_button_activity_timeout);
-
-  // For some reason the spinbutton does not finish the childs we add to it
-
-  spin_button_priority->signal_hide().connect([=, this]() { spin_button_priority->get_first_child()->unparent(); });
-
-  spin_button_niceness->signal_hide().connect([=, this]() { spin_button_niceness->get_first_child()->unparent(); });
-
-  spin_button_activity_timeout->signal_hide().connect([=, this]() {
-    spin_button_activity_timeout->get_first_child()->unparent();
-
-    spin_button_activity_timeout->get_first_child()->get_next_sibling()->unparent();
-  });
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
@@ -214,28 +112,4 @@ auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
 
 void GeneralSettingsUi::on_reset_settings() {
   settings->reset("");
-}
-
-void GeneralSettingsUi::set_priority_controls_visibility() {
-  auto priority_type = settings->get_enum("cpu-priority");
-
-  switch (priority_type) {
-    case 0: {
-      spin_button_niceness->set_sensitive(true);
-      spin_button_priority->set_sensitive(false);
-      break;
-    }
-    case 1: {
-      spin_button_niceness->set_sensitive(false);
-      spin_button_priority->set_sensitive(true);
-      break;
-    }
-    case 2: {
-      spin_button_niceness->set_sensitive(false);
-      spin_button_priority->set_sensitive(false);
-      break;
-    }
-    default:
-      break;
-  }
 }

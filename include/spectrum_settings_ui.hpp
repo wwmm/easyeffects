@@ -52,19 +52,12 @@ class SpectrumSettingsUi : public Gtk::Box {
 
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
-  Gtk::SpinButton *spinbutton_n_points = nullptr, *spinbutton_height = nullptr, *spinbutton_line_width = nullptr,
-                  *spinbutton_sampling = nullptr, *spinbutton_minimum_frequency = nullptr,
-                  *spinbutton_maximum_frequency = nullptr;
+  Gtk::SpinButton *n_points = nullptr, *height = nullptr, *spinbutton_line_width = nullptr,
+                  *minimum_frequency = nullptr, *maximum_frequency = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> n_points, height, sampling_freq, line_width, minimum_frequency, maximum_frequency;
+  Glib::RefPtr<Gtk::Adjustment> line_width;
 
   std::vector<sigc::connection> connections;
-
-  void prepare_spin_buttons();
-
-  auto on_show_spectrum(bool state) -> bool;
-
-  void on_spectrum_sampling_freq_set();
 
   auto on_use_custom_color(bool state) -> bool;
 };

@@ -64,23 +64,13 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
 
-  spinbutton_n_points = builder->get_widget<Gtk::SpinButton>("spinbutton_n_points");
-  spinbutton_height = builder->get_widget<Gtk::SpinButton>("spinbutton_height");
+  n_points = builder->get_widget<Gtk::SpinButton>("n_points");
+  height = builder->get_widget<Gtk::SpinButton>("height");
   spinbutton_line_width = builder->get_widget<Gtk::SpinButton>("spinbutton_line_width");
-  spinbutton_sampling = builder->get_widget<Gtk::SpinButton>("spinbutton_sampling");
-  spinbutton_minimum_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_minimum_frequency");
-  spinbutton_maximum_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_maximum_frequency");
+  minimum_frequency = builder->get_widget<Gtk::SpinButton>("minimum_frequency");
+  maximum_frequency = builder->get_widget<Gtk::SpinButton>("maximum_frequency");
 
-  n_points = builder->get_object<Gtk::Adjustment>("n_points");
-  height = builder->get_object<Gtk::Adjustment>("height");
-  sampling_freq = builder->get_object<Gtk::Adjustment>("sampling_freq");
   line_width = builder->get_object<Gtk::Adjustment>("line_width");
-  maximum_frequency = builder->get_object<Gtk::Adjustment>("maximum_frequency");
-  minimum_frequency = builder->get_object<Gtk::Adjustment>("minimum_frequency");
-
-  // prepare widgets
-
-  prepare_spin_buttons();
 
   // signals connection
 
@@ -112,8 +102,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     gradient_color_button->set_rgba(color);
   }));
 
-  show->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_show_spectrum), false);
-
   spectrum_color_button->signal_color_set().connect([&]() {
     auto spectrum_color = spectrum_color_button->get_rgba();
 
@@ -143,44 +131,20 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   use_custom_color->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
 
-  sampling_freq->signal_value_changed().connect(
-      sigc::mem_fun(*this, &SpectrumSettingsUi::on_spectrum_sampling_freq_set), false);
-
-  minimum_frequency->signal_value_changed().connect([&]() {
-    if (minimum_frequency->get_value() < maximum_frequency->get_value()) {
-      // app->sie->min_spectrum_freq = minimum_frequency->get_value();
-      // app->soe->min_spectrum_freq = minimum_frequency->get_value();
-
-      // app->sie->init_spectrum();
-      // app->soe->init_spectrum();
-    }
-  });
-
-  maximum_frequency->signal_value_changed().connect([&]() {
-    if (maximum_frequency->get_value() > minimum_frequency->get_value()) {
-      // app->sie->max_spectrum_freq = maximum_frequency->get_value();
-      // app->soe->max_spectrum_freq = maximum_frequency->get_value();
-
-      // app->sie->init_spectrum();
-      // app->soe->init_spectrum();
-    }
-  });
-
   settings->bind("show", show, "active");
 
   settings->bind("fill", fill, "active");
   settings->bind("show-bar-border", show_bar_border, "active");
-  settings->bind("n-points", n_points.get(), "value");
-  settings->bind("height", height.get(), "value");
-  settings->bind("sampling-freq", sampling_freq.get(), "value");
+  settings->bind("n-points", n_points->get_adjustment().get(), "value");
+  settings->bind("height", height->get_adjustment().get(), "value");
   settings->bind("line-width", line_width.get(), "value");
   settings->bind("use-gradient", use_gradient, "active");
   settings->bind("use-custom-color", use_custom_color, "active");
   settings->bind("use-custom-color", spectrum_color_button, "sensitive");
   settings->bind("use-custom-color", gradient_color_button, "sensitive");
   settings->bind("use-custom-color", axis_color_button, "sensitive");
-  settings->bind("minimum-frequency", minimum_frequency.get(), "value");
-  settings->bind("maximum-frequency", maximum_frequency.get(), "value");
+  settings->bind("minimum-frequency", minimum_frequency->get_adjustment().get(), "value");
+  settings->bind("maximum-frequency", maximum_frequency->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "type", spectrum_type->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                spectrum_type_enum_to_int, int_to_spectrum_type_enum, nullptr, nullptr);
@@ -200,63 +164,6 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto* ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
-}
-
-void SpectrumSettingsUi::prepare_spin_buttons() {
-  spinbutton_n_points->get_last_child()->insert_at_start(*spinbutton_n_points);
-
-  spinbutton_height->get_last_child()->insert_at_start(*spinbutton_height);
-
-  spinbutton_line_width->get_last_child()->insert_at_start(*spinbutton_line_width);
-
-  spinbutton_sampling->get_last_child()->insert_after(*spinbutton_sampling, *spinbutton_sampling->get_first_child());
-  spinbutton_sampling->get_last_child()->insert_at_start(*spinbutton_sampling);
-
-  spinbutton_minimum_frequency->get_last_child()->insert_after(*spinbutton_minimum_frequency,
-                                                               *spinbutton_minimum_frequency->get_first_child());
-  spinbutton_minimum_frequency->get_last_child()->insert_at_start(*spinbutton_minimum_frequency);
-
-  spinbutton_maximum_frequency->get_last_child()->insert_after(*spinbutton_maximum_frequency,
-                                                               *spinbutton_maximum_frequency->get_first_child());
-  spinbutton_maximum_frequency->get_last_child()->insert_at_start(*spinbutton_maximum_frequency);
-
-  // For some reason the spinbutton does not finish the childs we add to it
-
-  spinbutton_n_points->signal_hide().connect([=, this]() { spinbutton_n_points->get_first_child()->unparent(); });
-
-  spinbutton_height->signal_hide().connect([=, this]() { spinbutton_height->get_first_child()->unparent(); });
-
-  spinbutton_line_width->signal_hide().connect([=, this]() { spinbutton_line_width->get_first_child()->unparent(); });
-
-  spinbutton_sampling->signal_hide().connect([=, this]() {
-    spinbutton_sampling->get_first_child()->unparent();
-
-    spinbutton_sampling->get_first_child()->get_next_sibling()->unparent();
-  });
-
-  spinbutton_minimum_frequency->signal_hide().connect([=, this]() {
-    spinbutton_minimum_frequency->get_first_child()->unparent();
-
-    spinbutton_minimum_frequency->get_first_child()->get_next_sibling()->unparent();
-  });
-
-  spinbutton_maximum_frequency->signal_hide().connect([=, this]() {
-    spinbutton_maximum_frequency->get_first_child()->unparent();
-
-    spinbutton_maximum_frequency->get_first_child()->get_next_sibling()->unparent();
-  });
-}
-
-auto SpectrumSettingsUi::on_show_spectrum(bool state) -> bool {
-  // if (state) {
-  //   app->sie->enable_spectrum();
-  //   app->soe->enable_spectrum();
-  // } else {
-  //   app->sie->disable_spectrum();
-  //   app->soe->disable_spectrum();
-  // }
-
-  return false;
 }
 
 auto SpectrumSettingsUi::on_use_custom_color(bool state) -> bool {
@@ -285,9 +192,4 @@ auto SpectrumSettingsUi::on_use_custom_color(bool state) -> bool {
   }
 
   return false;
-}
-
-void SpectrumSettingsUi::on_spectrum_sampling_freq_set() {
-  // app->sie->update_spectrum_interval(sampling_freq->get_value());
-  // app->soe->update_spectrum_interval(sampling_freq->get_value());
 }
