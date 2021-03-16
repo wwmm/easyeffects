@@ -58,34 +58,34 @@ auto int_to_filter_enum(const GValue* value, const GVariantType* expected_type, 
   const auto v = g_value_get_int(value);
 
   switch (v) {
-    case  0:
+    case 0:
       return g_variant_new_string("12dB/oct Lowpass");
 
-    case  1:
+    case 1:
       return g_variant_new_string("24dB/oct Lowpass");
 
-    case  2:
+    case 2:
       return g_variant_new_string("36dB/oct Lowpass");
 
-    case  3:
+    case 3:
       return g_variant_new_string("12dB/oct Highpass");
 
-    case  4:
+    case 4:
       return g_variant_new_string("24dB/oct Highpass");
 
-    case  5:
+    case 5:
       return g_variant_new_string("36dB/oct Highpass");
 
-    case  6:
+    case 6:
       return g_variant_new_string("6dB/oct Bandpass");
 
-    case  7:
+    case 7:
       return g_variant_new_string("12dB/oct Bandpass");
 
-    case  8:
+    case 8:
       return g_variant_new_string("18dB/oct Bandpass");
 
-    case  9:
+    case 9:
       return g_variant_new_string("6dB/oct Bandreject");
 
     case 10:
@@ -106,41 +106,45 @@ FilterUi::FilterUi(BaseObjectType* cobject,
                    const std::string& schema,
                    const std::string& schema_path)
     : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "filter";
+  name = plugin_name::filter;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("mode", mode);
-  builder->get_widget("preset_muted", preset_muted);
-  builder->get_widget("preset_disco", preset_disco);
-  builder->get_widget("preset_distant_headphones", preset_distant_headphones);
-  builder->get_widget("preset_default", preset_default);
-  builder->get_widget("plugin_reset", reset_button);
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+  frequency = builder->get_widget<Gtk::SpinButton>("frequency");
+  resonance = builder->get_widget<Gtk::SpinButton>("resonance");
+  inertia = builder->get_widget<Gtk::SpinButton>("inertia");
+  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
-  get_object(builder, "frequency", frequency);
-  get_object(builder, "resonance", resonance);
-  get_object(builder, "inertia", inertia);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("frequency", frequency.get(), "value", flag);
-  settings->bind("resonance", resonance.get(), "value", flag);
-  settings->bind("inertia", inertia.get(), "value", flag);
+  settings->bind("installed", this, "sensitive");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("frequency", frequency->get_adjustment().get(), "value");
+  settings->bind("resonance", resonance->get_adjustment().get(), "value");
+  settings->bind("inertia", inertia->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
-  init_presets_buttons();
+  reset_button->signal_clicked().connect([this]() { reset(); });
 
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(frequency, "Hz"); }, true);
+  frequency->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(frequency, new_value); }, true);
+
+  resonance->signal_output().connect([&, this]() { return parse_spinbutton_output(resonance, "dB"); }, true);
+  resonance->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(resonance, new_value); }, true);
+
+  inertia->signal_output().connect([&, this]() { return parse_spinbutton_output(inertia, "ms"); }, true);
+  inertia->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(inertia, new_value); },
+                                  true);
 }
 
 FilterUi::~FilterUi() {
@@ -159,34 +163,4 @@ void FilterUi::reset() {
   settings->reset("mode");
 
   settings->reset("inertia");
-}
-
-void FilterUi::init_presets_buttons() {
-  preset_muted->signal_clicked().connect([=]() {
-    frequency->set_value(10.0);
-    resonance->set_value(0.707);
-    mode->set_active(2);
-    inertia->set_value(20.0);
-  });
-
-  preset_disco->signal_clicked().connect([=]() {
-    frequency->set_value(193.821);
-    resonance->set_value(1.37956);
-    mode->set_active(0);
-    inertia->set_value(74.0);
-  });
-
-  preset_distant_headphones->signal_clicked().connect([=]() {
-    frequency->set_value(305.818);
-    resonance->set_value(0.707);
-    mode->set_active(3);
-    inertia->set_value(74.0);
-  });
-
-  preset_default->signal_clicked().connect([=]() {
-    settings->reset("frequency");
-    settings->reset("resonance");
-    settings->reset("mode");
-    settings->reset("inertia");
-  });
 }

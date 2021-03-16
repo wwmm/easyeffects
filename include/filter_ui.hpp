@@ -31,19 +31,22 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
   FilterUi(const FilterUi&) = delete;
   auto operator=(const FilterUi&) -> FilterUi& = delete;
   FilterUi(const FilterUi&&) = delete;
-  auto operator=(const FilterUi &&) -> FilterUi& = delete;
+  auto operator=(const FilterUi&&) -> FilterUi& = delete;
   ~FilterUi() override;
 
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, frequency, resonance, inertia;
-
   Gtk::ComboBoxText* mode = nullptr;
+
   Gtk::Button *preset_muted = nullptr, *preset_disco = nullptr, *preset_distant_headphones = nullptr,
               *preset_default = nullptr;
 
-  void init_presets_buttons();
+  Gtk::SpinButton *frequency = nullptr, *resonance = nullptr, *inertia = nullptr;
+
+  Gtk::ToggleButton* bypass = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif
