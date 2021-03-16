@@ -60,29 +60,10 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
 
   reset_button->signal_clicked().connect([=, this]() { reset(); });
 
-  target->signal_output().connect(
-      [&, this]() {
-        std::ostringstream str;
+  target->signal_output().connect([&, this]() { return parse_spinbutton_output(target, "dB"); }, true);
 
-        str.precision(target->get_digits());
-
-        str << std::fixed << target->get_adjustment()->get_value() << " dB";
-
-        target->set_text(str.str());
-
-        return true;
-      },
-      true);
-
-  target->signal_input().connect(
-      [&, this](double& new_value) {
-        std::istringstream str(target->get_text());
-
-        str >> new_value;
-
-        return true;
-      },
-      true);
+  target->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(target, new_value); },
+                                 true);
 }
 
 AutoGainUi::~AutoGainUi() {
