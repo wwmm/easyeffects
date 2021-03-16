@@ -97,11 +97,19 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkStack" id="stack_plugins">
-                                        <property name="hexpand">1</property>
-                                        <property name="vexpand">1</property>
-                                        <property name="transition_duration">250</property>
-                                        <property name="transition_type">slide-up-down</property>
+                                    <object class="GtkScrolledWindow">
+                                        <child>
+                                            <object class="GtkViewport">
+                                                <child>
+                                                    <object class="GtkStack" id="stack_plugins">
+                                                        <property name="hexpand">1</property>
+                                                        <property name="vexpand">1</property>
+                                                        <property name="transition_duration">250</property>
+                                                        <property name="transition_type">slide-up-down</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>

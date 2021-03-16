@@ -373,4 +373,16 @@
         <property name="step-increment">0.1</property>
         <property name="page-increment">1</property>
     </object>
+
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="input_level_title" />
+            <widget name="output_level_title" />
+            <widget name="input_level_left_label" />
+            <widget name="input_level_right_label" />
+            <widget name="output_level_left_label" />
+            <widget name="output_level_right_label" />
+        </widgets>
+    </object>
 </interface>
