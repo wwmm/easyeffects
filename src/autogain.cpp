@@ -156,10 +156,7 @@ void AutoGain::process(std::span<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  std::transform(left_out.begin(), left_out.end(), left_out.begin(), [=, this](float& c) { return c * output_gain; });
-
-  std::transform(right_out.begin(), right_out.end(), right_out.begin(),
-                 [=, this](float& c) { return c * output_gain; });
+  apply_gain(left_out, right_out, static_cast<float>(output_gain));
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

@@ -261,17 +261,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //   &ReverbUi::on_new_input_level))); connections.emplace_back(
   //       soe->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
 
-  //   // bass_enhancer level meters connections
-
-  //   connections.emplace_back(
-  //       soe->bass_enhancer_input_level.connect(sigc::mem_fun(*bass_enhancer_ui,
-  //       &BassEnhancerUi::on_new_input_level_db)));
-  //   connections.emplace_back(soe->bass_enhancer_output_level.connect(
-  //       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->bass_enhancer->harmonics.connect(sigc::mem_fun(*bass_enhancer_ui,
-  //       &BassEnhancerUi::on_new_harmonics_level)));
-
   //   // exciter level meters connections
 
   //   connections.emplace_back(
@@ -487,11 +476,6 @@ void StreamOutputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(reverb_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(reverb_ui); }));
   //   connections.emplace_back(reverb_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(reverb_ui); }));
-
-  //   connections.emplace_back(bass_enhancer_ui->plugin_up->signal_clicked().connect([=, this]() {
-  //   on_up(bass_enhancer_ui);
-  //   })); connections.emplace_back(
-  //       bass_enhancer_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(bass_enhancer_ui); }));
 
   //   connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(exciter_ui); }));
   //   connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(exciter_ui);

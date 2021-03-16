@@ -26,7 +26,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
   name = plugin_name::bass_enhancer;
 
-  // loading glade widgets
+  // loading builder widgets
 
   harmonics_levelbar = builder->get_widget<Gtk::LevelBar>("harmonics_levelbar");
   harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");

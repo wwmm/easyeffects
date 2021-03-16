@@ -83,9 +83,8 @@ class PluginBase {
   spa_hook listener{};
 
   bool bypass = false;
-
-  float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
-  float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
+  float input_gain = 1.0F;
+  float output_gain = 1.0F;
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
@@ -97,10 +96,15 @@ class PluginBase {
                  std::span<float>& left_out,
                  std::span<float>& right_out);
 
+  static void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain);
+
  private:
   data pf_data = {};
 
   uint node_id = 0;
+
+  float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
+  float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
 };
 
 #endif

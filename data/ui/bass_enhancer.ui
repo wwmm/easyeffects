@@ -458,4 +458,11 @@
             <widget name="harmonics_levelbar_label" />
         </widgets>
     </object>
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="bypass" />
+            <widget name="listen" />
+        </widgets>
+    </object>
 </interface>

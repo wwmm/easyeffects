@@ -31,9 +31,13 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
   settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
 
-  lv2_wrapper->bind_key_double_db(settings, "input-gain", "level_in");
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  lv2_wrapper->bind_key_double_db(settings, "output-gain", "level_out");
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
 
   lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
@@ -89,6 +93,8 @@ void BassEnhancer::process(std::span<float>& left_in,
     return;
   }
 
+  apply_gain(left_in, right_in, input_gain);
+
   if (lv2_wrapper->get_n_samples() != left_in.size()) {
     lv2_wrapper->set_n_samples(left_in.size());
   }
@@ -96,6 +102,8 @@ void BassEnhancer::process(std::span<float>& left_in,
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
 
   lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
