@@ -26,8 +26,6 @@ BassEnhancerPreset::BassEnhancerPreset()
 void BassEnhancerPreset::save(boost::property_tree::ptree& root,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".bass_enhancer.state", settings->get_boolean("state"));
-
   root.put(section + ".bass_enhancer.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".bass_enhancer.output-gain", settings->get_double("output-gain"));
@@ -43,15 +41,11 @@ void BassEnhancerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".bass_enhancer.blend", settings->get_double("blend"));
 
   root.put(section + ".bass_enhancer.floor-active", settings->get_boolean("floor-active"));
-
-  root.put(section + ".bass_enhancer.listen", settings->get_boolean("listen"));
 }
 
 void BassEnhancerPreset::load(const boost::property_tree::ptree& root,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".bass_enhancer.state");
-
   update_key<double>(root, settings, "input-gain", section + ".bass_enhancer.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".bass_enhancer.output-gain");
@@ -67,8 +61,6 @@ void BassEnhancerPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "blend", section + ".bass_enhancer.blend");
 
   update_key<bool>(root, settings, "floor-active", section + ".bass_enhancer.floor-active");
-
-  update_key<bool>(root, settings, "listen", section + ".bass_enhancer.listen");
 }
 
 void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

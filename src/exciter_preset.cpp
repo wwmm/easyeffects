@@ -26,8 +26,6 @@ ExciterPreset::ExciterPreset()
 void ExciterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".exciter.state", settings->get_boolean("state"));
-
   root.put(section + ".exciter.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".exciter.output-gain", settings->get_double("output-gain"));
@@ -43,15 +41,11 @@ void ExciterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".exciter.blend", settings->get_double("blend"));
 
   root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
-
-  root.put(section + ".exciter.listen", settings->get_boolean("listen"));
 }
 
 void ExciterPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".exciter.state");
-
   update_key<double>(root, settings, "input-gain", section + ".exciter.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".exciter.output-gain");
@@ -67,8 +61,6 @@ void ExciterPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "blend", section + ".exciter.blend");
 
   update_key<bool>(root, settings, "ceil-active", section + ".exciter.ceil-active");
-
-  update_key<bool>(root, settings, "listen", section + ".exciter.listen");
 }
 
 void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

@@ -26,16 +26,12 @@ AutoGainPreset::AutoGainPreset()
 void AutoGainPreset::save(boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".autogain.state", settings->get_boolean("state"));
-
   root.put(section + ".autogain.target", settings->get_double("target"));
 }
 
 void AutoGainPreset::load(const boost::property_tree::ptree& root,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".autogain.state");
-
   update_key<double>(root, settings, "target", section + ".autogain.target");
 }
 

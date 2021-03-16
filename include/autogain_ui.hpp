@@ -47,7 +47,7 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, target;
+  Gtk::SpinButton* target = nullptr;
 
   Gtk::LevelBar *m_level = nullptr, *s_level = nullptr, *i_level = nullptr, *r_level = nullptr, *g_level = nullptr,
                 *l_level = nullptr, *lra_level = nullptr;

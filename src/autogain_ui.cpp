@@ -47,15 +47,11 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   reset_history = builder->get_widget<Gtk::Button>("reset");
   reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
-  input_gain = builder->get_object<Gtk::Adjustment>("input_gain");
-  output_gain = builder->get_object<Gtk::Adjustment>("output_gain");
-  target = builder->get_object<Gtk::Adjustment>("target");
+  target = builder->get_widget<Gtk::SpinButton>("spinbutton_target");
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain.get(), "value");
-  settings->bind("output-gain", output_gain.get(), "value");
-  settings->bind("target", target.get(), "value");
+  settings->bind("target", target->get_adjustment().get(), "value");
 
   // it is ugly but will ensure that third party tools are able to reset this plugin history
 
@@ -63,6 +59,30 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
       [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
 
   reset_button->signal_clicked().connect([=, this]() { reset(); });
+
+  target->signal_output().connect(
+      [&, this]() {
+        std::ostringstream str;
+
+        str.precision(target->get_digits());
+
+        str << std::fixed << target->get_adjustment()->get_value() << " dB";
+
+        target->set_text(str.str());
+
+        return true;
+      },
+      true);
+
+  target->signal_input().connect(
+      [&, this](double& new_value) {
+        std::istringstream str(target->get_text());
+
+        str >> new_value;
+
+        return true;
+      },
+      true);
 }
 
 AutoGainUi::~AutoGainUi() {
