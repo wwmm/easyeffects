@@ -96,3 +96,15 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 EffectsBase::~EffectsBase() {
   util::debug("effects_base: destroyed");
 }
+
+void EffectsBase::activate_filters() {
+  for (auto& plugin : plugins | std::views::values) {
+    plugin->set_active(true);
+  }
+}
+
+void EffectsBase::deactivate_filters() {
+  for (auto& plugin : plugins | std::views::values) {
+    plugin->set_active(false);
+  }
+}

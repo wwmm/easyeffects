@@ -132,9 +132,21 @@ void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
   }
 
   if (want_to_play != apps_want_to_play) {
-    apps_want_to_play = want_to_play;
+    pm->lock();
 
-    // update_pipeline_state();
+    if (want_to_play) {
+      activate_filters();
+    } else {
+      deactivate_filters();
+    }
+
+    pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(pm->thread_loop);
+
+    pm->unlock();
+
+    apps_want_to_play = want_to_play;
   }
 }
 

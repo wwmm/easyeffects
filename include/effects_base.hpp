@@ -90,6 +90,10 @@ class EffectsBase {
   std::shared_ptr<Reverb> reverb;
   std::shared_ptr<RNNoise> rnnoise;
   std::shared_ptr<StereoTools> stereo_tools;
+
+  void activate_filters();
+
+  void deactivate_filters();
 };
 
 #endif

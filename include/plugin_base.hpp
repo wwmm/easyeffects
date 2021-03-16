@@ -65,6 +65,8 @@ class PluginBase {
 
   [[nodiscard]] auto get_node_id() const -> uint;
 
+  void set_active(const bool& state) const;
+
   virtual void setup();
 
   virtual void process(std::span<float>& left_in,

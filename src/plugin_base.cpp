@@ -152,6 +152,10 @@ auto PluginBase::get_node_id() const -> uint {
   return node_id;
 }
 
+void PluginBase::set_active(const bool& state) const {
+  pw_filter_set_active(filter, state);
+}
+
 void PluginBase::setup() {}
 
 void PluginBase::process(std::span<float>& left_in,
