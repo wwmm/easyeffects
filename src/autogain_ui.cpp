@@ -24,7 +24,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
                        const std::string& schema,
                        const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "autogain_ui";
+  name = plugin_name::autogain;
 
   // loading builder widgets
 
@@ -53,7 +53,6 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("input-gain", input_gain.get(), "value");
   settings->bind("output-gain", output_gain.get(), "value");
   settings->bind("target", target.get(), "value");

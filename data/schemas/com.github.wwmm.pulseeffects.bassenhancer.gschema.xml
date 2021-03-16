@@ -1,42 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema
-        id="com.github.wwmm.pulseeffects.bassenhancer">
+    <schema id="com.github.wwmm.pulseeffects.bassenhancer">
         <key name="state" type="b">
             <default>false</default>
         </key>
-        <key name="installed" type="b">
-            <default>true</default>
-        </key>
-        <key name="post-messages" type="b">
-            <default>true</default>
+        <key name="bypass" type="b">
+            <default>false</default>
         </key>
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1"/>
+            <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1"/>
+            <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
         <key name="amount" type="d">
-            <range min="-100" max="36.1"/>
+            <range min="-100" max="36.1" />
             <default>0</default>
         </key>
         <key name="harmonics" type="d">
-            <range min="0.1" max="10"/>
+            <range min="0.1" max="10" />
             <default>8.5</default>
         </key>
         <key name="scope" type="d">
-            <range min="10" max="250"/>
+            <range min="10" max="250" />
             <default>100</default>
         </key>
         <key name="floor" type="d">
-            <range min="10" max="120"/>
+            <range min="10" max="120" />
             <default>20</default>
         </key>
         <key name="blend" type="d">
-            <range min="-10" max="10"/>
+            <range min="-10" max="10" />
             <default>0</default>
         </key>
         <key name="floor-active" type="b">

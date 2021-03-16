@@ -24,7 +24,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
                                const std::string& schema,
                                const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "bass_enhancer";
+  name = plugin_name::bass_enhancer;
 
   // loading glade widgets
 
@@ -32,6 +32,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
   floor_active = builder->get_widget<Gtk::ToggleButton>("floor_active");
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   floor_freq = builder->get_widget<Gtk::SpinButton>("floor_freq");
 
   reset_button = builder->get_widget<Gtk::Button>("reset_button");
@@ -54,6 +55,7 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain.get(), "value");
   settings->bind("output-gain", output_gain.get(), "value");
   settings->bind("listen", listen, "active");
+  settings->bind("bypass", bypass, "active");
   settings->bind("floor-active", floor_active, "active");
   settings->bind("floor-active", floor_freq, "sensitive", Gio::Settings::BindFlags::GET);
 
@@ -94,6 +96,8 @@ void BassEnhancerUi::reset() {
   settings->reset("floor-active");
 
   settings->reset("listen");
+
+  settings->reset("bypass");
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {

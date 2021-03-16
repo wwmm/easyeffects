@@ -11,10 +11,23 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="listen">
+            <object class="GtkBox">
+                <property name="spacing">6</property>
                 <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Listen</property>
+                <child>
+                    <object class="GtkToggleButton" id="bypass">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Bypass</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkToggleButton" id="listen">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Listen</property>
+                    </object>
+                </child>
             </object>
         </child>
 

@@ -4,9 +4,6 @@
         <key name="state" type="b">
             <default>false</default>
         </key>
-        <key name="installed" type="b">
-            <default>true</default>
-        </key>
         <key name="input-gain" type="d">
             <range min="-20.0" max="20.0" />
             <default>0.0</default>

@@ -29,6 +29,8 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     return;
   }
 
+  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
+
   lv2_wrapper->bind_key_double_db(settings, "input-gain", "level_in");
 
   lv2_wrapper->bind_key_double_db(settings, "output-gain", "level_out");
