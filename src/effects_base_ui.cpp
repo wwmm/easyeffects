@@ -175,7 +175,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   // bass enhancer
 
-  // auto* bass_enhancer = BassEnhancerUi::add_to_stack(stack_plugins, path);
+  auto* bass_enhancer = BassEnhancerUi::add_to_stack(stack_plugins, path);
 }
 
 void EffectsBaseUi::setup_listview_players() {
