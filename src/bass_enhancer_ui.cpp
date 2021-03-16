@@ -33,31 +33,29 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   floor_active = builder->get_widget<Gtk::ToggleButton>("floor_active");
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
   bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
-  floor_freq = builder->get_widget<Gtk::SpinButton>("floor_freq");
+  floor = builder->get_widget<Gtk::SpinButton>("floor");
+  amount = builder->get_widget<Gtk::SpinButton>("amount");
+  harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
+  scope = builder->get_widget<Gtk::SpinButton>("scope");
+  blend = builder->get_widget<Gtk::Scale>("blend");
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
   reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
-  amount = builder->get_object<Gtk::Adjustment>("amount");
-  blend = builder->get_object<Gtk::Adjustment>("blend");
-  floorv = builder->get_object<Gtk::Adjustment>("floor");
-  harmonics = builder->get_object<Gtk::Adjustment>("harmonics");
-  scope = builder->get_object<Gtk::Adjustment>("scope");
-  input_gain = builder->get_object<Gtk::Adjustment>("input_gain");
-  output_gain = builder->get_object<Gtk::Adjustment>("output_gain");
-
   // gsettings bindings
 
-  settings->bind("amount", amount.get(), "value");
-  settings->bind("harmonics", harmonics.get(), "value");
-  settings->bind("scope", scope.get(), "value");
-  settings->bind("floor", floorv.get(), "value");
-  settings->bind("blend", blend.get(), "value");
-  settings->bind("input-gain", input_gain.get(), "value");
-  settings->bind("output-gain", output_gain.get(), "value");
+  settings->bind("amount", amount->get_adjustment().get(), "value");
+  settings->bind("harmonics", harmonics->get_adjustment().get(), "value");
+  settings->bind("scope", scope->get_adjustment().get(), "value");
+  settings->bind("floor", floor->get_adjustment().get(), "value");
+  settings->bind("blend", blend->get_adjustment().get(), "value");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("listen", listen, "active");
   settings->bind("bypass", bypass, "active");
   settings->bind("floor-active", floor_active, "active");
-  settings->bind("floor-active", floor_freq, "sensitive", Gio::Settings::BindFlags::GET);
+  settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
   // reset plugin
   reset_button->signal_clicked().connect([=, this]() { reset(); });

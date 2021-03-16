@@ -41,11 +41,14 @@ class BassEnhancerUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> amount, blend, floorv, harmonics, input_gain, output_gain, scope;
-
   Gtk::LevelBar* harmonics_levelbar = nullptr;
+
   Gtk::Label* harmonics_levelbar_label = nullptr;
-  Gtk::SpinButton* floor_freq = nullptr;
+
+  Gtk::SpinButton *floor = nullptr, *amount = nullptr, *harmonics = nullptr, *scope = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr, *blend = nullptr;
+
   Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr, *bypass = nullptr;
 };
 
