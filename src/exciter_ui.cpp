@@ -58,6 +58,17 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
   reset_button->signal_clicked().connect([=, this]() { reset(); });
+
+  amount->signal_output().connect([&, this]() { return parse_spinbutton_output(amount, "dB"); }, true);
+  amount->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(amount, new_value); },
+                                 true);
+
+  scope->signal_output().connect([&, this]() { return parse_spinbutton_output(scope, "dB"); }, true);
+  scope->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(scope, new_value); },
+                                true);
+
+  ceil->signal_output().connect([&, this]() { return parse_spinbutton_output(ceil, "Hz"); }, true);
+  ceil->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(ceil, new_value); }, true);
 }
 
 ExciterUi::~ExciterUi() {
