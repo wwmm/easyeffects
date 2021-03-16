@@ -229,6 +229,26 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
     util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
   }
 }
+auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
+  bool found = false;
+  float value = 0.0F;
+
+  for (auto& p : ports) {
+    if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
+      value = p.value;
+
+      found = true;
+
+      break;
+    }
+  }
+
+  if (!found) {
+    util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
+  }
+
+  return value;
+}
 
 void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
                                  const std::string& gsettings_key,

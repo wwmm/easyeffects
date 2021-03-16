@@ -183,6 +183,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level_db));
   effects_base->bass_enhancer->output_level.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db));
+  effects_base->bass_enhancer->harmonics.connect(
+      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
 }
 
 void EffectsBaseUi::setup_listview_players() {
@@ -636,6 +638,13 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     selected_plugins->splice(0, selected_plugins->get_n_items(), list);
 
     if (!list.empty()) {
+      auto visible_page_name = stack_plugins->get_page(*stack_plugins->get_visible_child())->get_name();
+
+      if (std::ranges::find(list, visible_page_name) == list.end()) {
+        listview_selected_plugins->get_model()->select_item(0, true);
+        listview_selected_plugins->get_first_child()->activate();
+      }
+
       stack_plugins->property_visible().set_value(true);
     } else {
       stack_plugins->property_visible().set_value(false);

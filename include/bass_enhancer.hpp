@@ -46,8 +46,6 @@ class BassEnhancer : public PluginBase {
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
-
-  void bind_to_gsettings();
 };
 
 #endif

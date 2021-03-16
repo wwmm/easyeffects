@@ -101,17 +101,13 @@ void BassEnhancer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float harmonics_value = lv2_wrapper->get_control_port_value("meter_drive");
+
+      Glib::signal_idle().connect_once([=, this] { harmonics.emit(harmonics_value); });
+
       notify();
 
       notification_dt = 0.0F;
     }
   }
-}
-
-void BassEnhancer::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "input-gain", bass_enhancer, "level-in", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "output-gain", bass_enhancer, "level-out", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 }
