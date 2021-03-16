@@ -57,8 +57,19 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("floor-active", floor_active, "active");
   settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
-  // reset plugin
   reset_button->signal_clicked().connect([=, this]() { reset(); });
+
+  amount->signal_output().connect([&, this]() { return parse_spinbutton_output(amount, "dB"); }, true);
+  amount->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(amount, new_value); },
+                                 true);
+
+  scope->signal_output().connect([&, this]() { return parse_spinbutton_output(scope, "dB"); }, true);
+  scope->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(scope, new_value); },
+                                true);
+
+  floor->signal_output().connect([&, this]() { return parse_spinbutton_output(floor, "dB"); }, true);
+  floor->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(floor, new_value); },
+                                true);
 }
 
 BassEnhancerUi::~BassEnhancerUi() {
