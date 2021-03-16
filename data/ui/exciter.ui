@@ -176,11 +176,11 @@
                         <property name="width-chars">10</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="lower">10</property>
-                                <property name="upper">250</property>
-                                <property name="value">100</property>
+                                <property name="lower">2000</property>
+                                <property name="upper">12000</property>
+                                <property name="value">7500</property>
                                 <property name="step-increment">1</property>
-                                <property name="page-increment">10</property>
+                                <property name="page-increment">100</property>
                             </object>
                         </property>
                         <property name="update-policy">if-valid</property>
@@ -208,11 +208,11 @@
                         <property name="width-chars">10</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="lower">10</property>
-                                <property name="upper">120</property>
-                                <property name="value">20</property>
+                                <property name="lower">10000</property>
+                                <property name="upper">20000</property>
+                                <property name="value">16000</property>
                                 <property name="step-increment">1</property>
-                                <property name="page-increment">10</property>
+                                <property name="page-increment">100</property>
                             </object>
                         </property>
                         <property name="update-policy">if-valid</property>
