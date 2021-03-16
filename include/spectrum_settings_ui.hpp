@@ -25,6 +25,7 @@
 #include <gtkmm.h>
 #include <cstring>
 #include "application.hpp"
+#include "spinbutton_helper.hpp"
 #include "util.hpp"
 
 class SpectrumSettingsUi : public Gtk::Box {

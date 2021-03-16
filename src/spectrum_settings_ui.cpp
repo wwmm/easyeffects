@@ -129,6 +129,16 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   use_custom_color->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
 
+  minimum_frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(minimum_frequency, "Hz"); },
+                                             true);
+  minimum_frequency->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(minimum_frequency, new_value); }, true);
+
+  maximum_frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(maximum_frequency, "Hz"); },
+                                             true);
+  maximum_frequency->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(maximum_frequency, new_value); }, true);
+
   settings->bind("show", show, "active");
   settings->bind("fill", fill, "active");
   settings->bind("show-bar-border", show_bar_border, "active");

@@ -7,6 +7,7 @@
         <child>
             <object class="GtkBox">
                 <property name="valign">center</property>
+                <property name="halign">center</property>
                 <property name="spacing">48</property>
                 <child>
                     <object class="GtkGrid">
@@ -240,8 +241,8 @@
                 <child>
                     <object class="GtkSpinButton" id="n_points">
                         <property name="halign">center</property>
+                        <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="width-chars">5</property>
                         <property name="digits">1</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
@@ -273,8 +274,8 @@
                 <child>
                     <object class="GtkSpinButton" id="height">
                         <property name="halign">center</property>
+                        <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="width-chars">5</property>
                         <property name="digits">1</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
@@ -307,8 +308,8 @@
                 <child>
                     <object class="GtkSpinButton" id="line_width">
                         <property name="halign">center</property>
+                        <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="width-chars">5</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -340,8 +341,8 @@
                 <child>
                     <object class="GtkSpinButton" id="minimum_frequency">
                         <property name="halign">center</property>
+                        <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="width-chars">5</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -373,8 +374,9 @@
                 <child>
                     <object class="GtkSpinButton" id="maximum_frequency">
                         <property name="halign">center</property>
+                        <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="width-chars">5</property>
+                        <property name="width-chars">10</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -393,6 +395,16 @@
                 </child>
             </object>
         </child>
+    </object>
 
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="n_points" />
+            <widget name="height" />
+            <widget name="line_width" />
+            <widget name="minimum_frequency" />
+            <widget name="maximum_frequency" />
+        </widgets>
     </object>
 </interface>
