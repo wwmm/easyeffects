@@ -27,10 +27,11 @@ auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder
 }
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                             Glib::RefPtr<Gio::Settings> refSettings,
-                             EffectsBase* effects_base)
+                             EffectsBase* effects_base,
+                             const std::string& schema)
     : effects_base(effects_base),
-      settings(std::move(refSettings)),
+      schema(schema),
+      settings(Gio::Settings::create(schema)),
       pm(effects_base->pm),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
@@ -162,11 +163,19 @@ EffectsBaseUi::~EffectsBaseUi() {
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {
-  auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins);
+  std::string path = "/" + schema + "/";
+
+  std::replace(path.begin(), path.end(), '.', '/');
+
+  auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
 
   effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db));
   effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db));
   effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
+
+  // bass enhancer
+
+  // auto* bass_enhancer = BassEnhancerUi::add_to_stack(stack_plugins, path);
 }
 
 void EffectsBaseUi::setup_listview_players() {

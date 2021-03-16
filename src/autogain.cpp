@@ -23,7 +23,7 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
-    : PluginBase(tag, "autogain", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
   target = settings->get_double("target");
 
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });

@@ -21,9 +21,9 @@
 
 StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                                           const Glib::RefPtr<Gio::Settings>& refSettings,
-                                           StreamInputEffects* sie_ptr)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, sie_ptr), sie(sie_ptr) {
+                                           StreamInputEffects* sie_ptr,
+                                           const std::string& schema)
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, sie_ptr, schema), sie(sie_ptr) {
   page_players->set_title(_("Recorders"));
 
   // populate stack
@@ -172,9 +172,8 @@ StreamInputEffectsUi::~StreamInputEffectsUi() {
 auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr) -> StreamInputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.ui");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
-
-  auto* ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", settings, sie_ptr);
+  auto* ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", sie_ptr,
+                                                                    "com.github.wwmm.pulseeffects.sourceoutputs");
 
   auto stack_page = stack->add(*ui, "stream_input");
 

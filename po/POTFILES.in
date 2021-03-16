@@ -5,7 +5,7 @@ data/ui/about.glade.in
 data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.ui
-data/ui/bass_enhancer.glade
+data/ui/bass_enhancer.ui
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade

@@ -23,7 +23,7 @@ BassEnhancer::BassEnhancer(const std::string& tag,
                            const std::string& schema,
                            const std::string& schema_path,
                            PipeManager* pipe_manager)
-    : PluginBase(tag, "bass_enhancer", schema, schema_path, pipe_manager),
+    : PluginBase(tag, plugin_name::bass_enhancer, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/BassEnhancer")) {
   if (!lv2_wrapper->found_plugin) {
     return;

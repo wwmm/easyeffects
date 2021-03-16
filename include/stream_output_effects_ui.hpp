@@ -22,7 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
-// #include "bass_enhancer_ui.hpp"
 // #include "compressor_ui.hpp"
 // #include "convolver_ui.hpp"
 // #include "crossfeed_ui.hpp"
@@ -48,8 +47,8 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
   StreamOutputEffectsUi(BaseObjectType* cobject,
                         const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                        const Glib::RefPtr<Gio::Settings>& refSettings,
-                        StreamOutputEffects* soe_ptr);
+                        StreamOutputEffects* soe_ptr,
+                        const std::string& schema);
   StreamOutputEffectsUi(const StreamOutputEffectsUi&) = delete;
   auto operator=(const StreamOutputEffectsUi&) -> StreamOutputEffectsUi& = delete;
   StreamOutputEffectsUi(const StreamOutputEffectsUi&&) = delete;
@@ -70,7 +69,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   // EqualizerUi* equalizer_ui = nullptr;
   // PitchUi* pitch_ui = nullptr;
   // ReverbUi* reverb_ui = nullptr;
-  // BassEnhancerUi* bass_enhancer_ui = nullptr;
   // ExciterUi* exciter_ui = nullptr;
   // CrossfeedUi* crossfeed_ui = nullptr;
   // MaximizerUi* maximizer_ui = nullptr;
@@ -82,7 +80,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   // StereoToolsUi* stereo_tools_ui = nullptr;
   // ConvolverUi* convolver_ui = nullptr;
   // CrystalizerUi* crystalizer_ui = nullptr;
-  // AutoGainUi* autogain_ui = nullptr;
   // DelayUi* delay_ui = nullptr;
   // RNNoiseUi* rnnoise_ui = nullptr;
 

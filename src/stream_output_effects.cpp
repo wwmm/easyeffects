@@ -84,10 +84,6 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
     connect_filters();
 
-    // pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-    // pw_thread_loop_wait(pm->thread_loop);
-
     pm->unlock();
   });
 }
@@ -165,10 +161,6 @@ void StreamOutputEffects::change_output_device(const NodeInfo& node) {
 void StreamOutputEffects::connect_filters() {
   auto list = settings->get_string_array("selected-plugins");
 
-  // for (auto& p : plugins | std::views::keys) {
-  //   std::cout << p << std::endl;
-  // }
-
   if (list.empty()) {
     pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
   } else {
@@ -190,10 +182,8 @@ void StreamOutputEffects::disconnect_filters() {
   std::set<uint> list;
 
   for (auto& plugin : plugins | std::views::values) {
-    auto filter_id = plugin->get_node_id();
-
     for (auto& link : pm->list_links) {
-      if (link.input_node_id == filter_id || link.output_node_id == filter_id) {
+      if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
         list.insert(link.id);
       }
     }

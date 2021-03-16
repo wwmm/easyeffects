@@ -41,8 +41,8 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
   StreamInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                       const Glib::RefPtr<Gio::Settings>& refSettings,
-                       StreamInputEffects* sie_ptr);
+                       StreamInputEffects* sie_ptr,
+                       const std::string& schema);
   StreamInputEffectsUi(const StreamInputEffectsUi&) = delete;
   auto operator=(const StreamInputEffectsUi&) -> StreamInputEffectsUi& = delete;
   StreamInputEffectsUi(const StreamInputEffectsUi&&) = delete;

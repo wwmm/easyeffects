@@ -21,9 +21,9 @@
 
 StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
-                                             const Glib::RefPtr<Gio::Settings>& refSettings,
-                                             StreamOutputEffects* soe_ptr)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, refSettings, soe_ptr), soe(soe_ptr) {
+                                             StreamOutputEffects* soe_ptr,
+                                             const std::string& schema)
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, soe_ptr, schema), soe(soe_ptr) {
   // populate stack
 
   //   auto b_limiter = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/limiter.glade");
@@ -32,8 +32,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_equalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_reverb = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/reverb.glade");
-  //   auto b_bass_enhancer =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/bass_enhancer.glade"); auto b_exciter =
+  // auto b_exciter =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/exciter.glade"); auto b_crossfeed =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade"); auto b_maximizer =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/maximizer.glade"); auto
@@ -70,10 +69,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.reverb",
   //                                "/com/github/wwmm/pulseeffects/sinkinputs/reverb/");
-
-  //   b_bass_enhancer->get_widget_derived("widgets_grid", bass_enhancer_ui,
-  //   "com.github.wwmm.pulseeffects.bassenhancer",
-  //                                       "/com/github/wwmm/pulseeffects/sinkinputs/bassenhancer/");
 
   //   b_exciter->get_widget_derived("widgets_grid", exciter_ui, "com.github.wwmm.pulseeffects.exciter",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
@@ -122,7 +117,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*equalizer_ui, equalizer_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*reverb_ui, reverb_ui->name);
-  //   stack->add(*bass_enhancer_ui, bass_enhancer_ui->name);
   //   stack->add(*exciter_ui, exciter_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*maximizer_ui, maximizer_ui->name);
@@ -145,7 +139,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(equalizer_ui);
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(reverb_ui);
-  //   add_to_listbox(bass_enhancer_ui);
   //   add_to_listbox(exciter_ui);
   //   add_to_listbox(crossfeed_ui);
   //   add_to_listbox(maximizer_ui);
@@ -198,17 +191,14 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 }
 
 StreamOutputEffectsUi::~StreamOutputEffectsUi() {
-  // soe->disable_spectrum();
-
   util::debug(log_tag + "destroyed");
 }
 
 auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/effects_base.ui");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
-
-  auto* ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", settings, soe_ptr);
+  auto* ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", soe_ptr,
+                                                                     "com.github.wwmm.pulseeffects.sinkinputs");
 
   auto stack_page = stack->add(*ui, "stream_output");
 

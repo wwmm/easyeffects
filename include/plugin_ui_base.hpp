@@ -22,7 +22,7 @@
 
 #include <giomm.h>
 #include <gtkmm.h>
-#include <array>
+#include "plugin_name.hpp"
 #include "util.hpp"
 
 class PluginUiBase {

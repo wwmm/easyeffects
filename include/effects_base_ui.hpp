@@ -28,6 +28,7 @@
 #include <memory>
 #include <vector>
 #include "autogain_ui.hpp"
+#include "bass_enhancer_ui.hpp"
 #include "effects_base.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
@@ -47,9 +48,7 @@ class NodeInfoHolder : public Glib::Object {
 
 class EffectsBaseUi {
  public:
-  EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
-                Glib::RefPtr<Gio::Settings> refSettings,
-                EffectsBase* effects_base);
+  EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder, EffectsBase* effects_base, const std::string& schema);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
   EffectsBaseUi(const EffectsBaseUi&&) = delete;
@@ -58,6 +57,8 @@ class EffectsBaseUi {
 
  protected:
   EffectsBase* effects_base = nullptr;
+
+  std::string schema;
 
   Glib::RefPtr<Gio::Settings> settings;
 
@@ -112,8 +113,8 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
 
-  std::map<std::string, std::string> plugins_names{{"autogain", _("Autogain")},
-                                                   {"bass_enhancer", _("Bass Enhancer")},
+  std::map<std::string, std::string> plugins_names{{plugin_name::autogain, _("Autogain")},
+                                                   {plugin_name::bass_enhancer, _("Bass Enhancer")},
                                                    {"compressor", _("Compressor")},
                                                    {"convolver", _("Convolver")},
                                                    {"crossfeed", _("Crossfeed")},

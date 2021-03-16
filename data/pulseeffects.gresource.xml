@@ -23,7 +23,7 @@
         <file>ui/equalizer_band.glade</file>
         <file>ui/equalizer_preset_row.glade</file>
         <file>ui/reverb.glade</file>
-        <file>ui/bass_enhancer.glade</file>
+        <file>ui/bass_enhancer.ui</file>
         <file>ui/exciter.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>

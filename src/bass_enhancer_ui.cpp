@@ -36,17 +36,16 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
 
   reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
-  // get_object(builder, "amount", amount);
-  // get_object(builder, "blend", blend);
-  // get_object(builder, "floor", floorv);
-  // get_object(builder, "harmonics", harmonics);
-  // get_object(builder, "scope", scope);
-  // get_object(builder, "input_gain", input_gain);
-  // get_object(builder, "output_gain", output_gain);
+  amount = builder->get_object<Gtk::Adjustment>("amount");
+  blend = builder->get_object<Gtk::Adjustment>("blend");
+  floorv = builder->get_object<Gtk::Adjustment>("floor");
+  harmonics = builder->get_object<Gtk::Adjustment>("harmonics");
+  scope = builder->get_object<Gtk::Adjustment>("scope");
+  input_gain = builder->get_object<Gtk::Adjustment>("input_gain");
+  output_gain = builder->get_object<Gtk::Adjustment>("output_gain");
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("amount", amount.get(), "value");
   settings->bind("harmonics", harmonics.get(), "value");
   settings->bind("scope", scope.get(), "value");
@@ -64,6 +63,17 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
 
 BassEnhancerUi::~BassEnhancerUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassEnhancerUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/bass_enhancer.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<BassEnhancerUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.bassenhancer", schema_path + "bassenhancer/");
+
+  auto stack_page = stack->add(*ui, plugin_name::bass_enhancer);
+
+  return ui;
 }
 
 void BassEnhancerUi::reset() {

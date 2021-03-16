@@ -70,13 +70,13 @@ AutoGainUi::~AutoGainUi() {
   util::debug(name + " ui destroyed");
 }
 
-auto AutoGainUi::add_to_stack(Gtk::Stack* stack) -> AutoGainUi* {
+auto AutoGainUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/autogain.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<AutoGainUi>(builder, "top_box", "com.github.wwmm.pulseeffects.autogain",
-                                                          "/com/github/wwmm/pulseeffects/sinkinputs/autogain/");
+                                                          schema_path + "autogain/");
 
-  auto stack_page = stack->add(*ui, "autogain");
+  auto stack_page = stack->add(*ui, plugin_name::autogain);
 
   return ui;
 }

@@ -24,6 +24,7 @@
 #include <pipewire/filter.h>
 #include <span>
 #include "pipe_manager.hpp"
+#include "plugin_name.hpp"
 
 class PluginBase {
  public:

@@ -34,7 +34,7 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const AutoGainUi&&) -> AutoGainUi& = delete;
   ~AutoGainUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack) -> AutoGainUi*;
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi*;
 
   void on_new_results(const double& loudness,
                       const double& gain,
