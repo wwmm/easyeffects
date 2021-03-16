@@ -259,7 +259,7 @@
                     <object class="GtkLabel" id="input_level_title">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Input Level</property>
+                        <property name="label" translatable="yes">Input</property>
                     </object>
                 </child>
 
@@ -317,7 +317,7 @@
                     <object class="GtkLabel" id="output_level_title">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Output Level</property>
+                        <property name="label" translatable="yes">Output</property>
                     </object>
                 </child>
 

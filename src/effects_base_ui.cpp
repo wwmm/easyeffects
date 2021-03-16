@@ -146,6 +146,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   });
 
   effects_base->autogain->post_messages = true;
+  effects_base->bass_enhancer->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->spectrum->post_messages = true;
 }
@@ -158,6 +159,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   }
 
   effects_base->autogain->post_messages = false;
+  effects_base->bass_enhancer->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->spectrum->post_messages = false;
 }
@@ -175,7 +177,12 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   // bass enhancer
 
-  auto* bass_enhancer = BassEnhancerUi::add_to_stack(stack_plugins, path);
+  auto* bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
+
+  effects_base->bass_enhancer->input_level.connect(
+      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level_db));
+  effects_base->bass_enhancer->output_level.connect(
+      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db));
 }
 
 void EffectsBaseUi::setup_listview_players() {
