@@ -230,7 +230,7 @@
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">end</property>
                         <property name="label" translatable="yes">Points</property>
                         <layout>
                             <property name="column">0</property>
