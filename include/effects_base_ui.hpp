@@ -30,6 +30,7 @@
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "effects_base.hpp"
+#include "exciter_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"
@@ -115,26 +116,26 @@ class EffectsBaseUi {
 
   std::map<std::string, std::string> plugins_names{{plugin_name::autogain, _("Autogain")},
                                                    {plugin_name::bass_enhancer, _("Bass Enhancer")},
-                                                   {"compressor", _("Compressor")},
-                                                   {"convolver", _("Convolver")},
-                                                   {"crossfeed", _("Crossfeed")},
-                                                   {"crystalizer", _("Crystalizer")},
-                                                   {"deesser", _("Deesser")},
-                                                   {"delay", _("Delay")},
-                                                   {"equalizer", _("Equalizer")},
-                                                   {"exciter", _("Exciter")},
-                                                   {"filter", _("Filter")},
-                                                   {"gate", _("Gate")},
-                                                   {"limiter", _("Limiter")},
-                                                   {"loudness", _("Loudness")},
-                                                   {"maximizer", _("Maximizer")},
-                                                   {"multiband_compressor", _("Multiband Compressor")},
-                                                   {"multiband_gate", _("Multiband Gate")},
-                                                   {"pitch", _("Pitch")},
-                                                   {"reverb", _("Reverberation")},
-                                                   {"rnnoise", _("Noise Reduction")},
-                                                   {"stereo_tools", _("Stereo Tools")},
-                                                   {"webrtc", _("WebRTC")}};
+                                                   {plugin_name::compressor, _("Compressor")},
+                                                   {plugin_name::convolver, _("Convolver")},
+                                                   {plugin_name::crossfeed, _("Crossfeed")},
+                                                   {plugin_name::crystalizer, _("Crystalizer")},
+                                                   {plugin_name::deesser, _("Deesser")},
+                                                   {plugin_name::delay, _("Delay")},
+                                                   {plugin_name::equalizer, _("Equalizer")},
+                                                   {plugin_name::exciter, _("Exciter")},
+                                                   {plugin_name::filter, _("Filter")},
+                                                   {plugin_name::gate, _("Gate")},
+                                                   {plugin_name::limiter, _("Limiter")},
+                                                   {plugin_name::loudness, _("Loudness")},
+                                                   {plugin_name::maximizer, _("Maximizer")},
+                                                   {plugin_name::multiband_compressor, _("Multiband Compressor")},
+                                                   {plugin_name::multiband_gate, _("Multiband Gate")},
+                                                   {plugin_name::pitch, _("Pitch")},
+                                                   {plugin_name::reverb, _("Reverberation")},
+                                                   {plugin_name::rnnoise, _("Noise Reduction")},
+                                                   {plugin_name::stereo_tools, _("Stereo Tools")},
+                                                   {plugin_name::webrtc, _("WebRTC")}};
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {

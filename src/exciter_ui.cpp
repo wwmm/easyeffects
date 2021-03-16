@@ -24,47 +24,55 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
                      const std::string& schema,
                      const std::string& schema_path)
     : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "exciter";
+  name = plugin_name::exciter;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("harmonics_levelbar", harmonics_levelbar);
-  builder->get_widget("harmonics_levelbar_label", harmonics_levelbar_label);
-  builder->get_widget("ceil_active", ceil_active);
-  builder->get_widget("ceil_freq", ceil_freq);
-  builder->get_widget("listen", listen);
-  builder->get_widget("plugin_reset", reset_button);
+  harmonics_levelbar = builder->get_widget<Gtk::LevelBar>("harmonics_levelbar");
+  harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
+  ceil_active = builder->get_widget<Gtk::ToggleButton>("ceil_active");
+  listen = builder->get_widget<Gtk::ToggleButton>("listen");
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+  ceil = builder->get_widget<Gtk::SpinButton>("ceil");
+  amount = builder->get_widget<Gtk::SpinButton>("amount");
+  harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
+  scope = builder->get_widget<Gtk::SpinButton>("scope");
+  blend = builder->get_widget<Gtk::Scale>("blend");
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "amount", amount);
-  get_object(builder, "blend", blend);
-  get_object(builder, "ceil", ceilv);
-  get_object(builder, "harmonics", harmonics);
-  get_object(builder, "scope", scope);
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("amount", amount->get_adjustment().get(), "value");
+  settings->bind("harmonics", harmonics->get_adjustment().get(), "value");
+  settings->bind("scope", scope->get_adjustment().get(), "value");
+  settings->bind("ceil", ceil->get_adjustment().get(), "value");
+  settings->bind("blend", blend->get_adjustment().get(), "value");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("listen", listen, "active");
+  settings->bind("bypass", bypass, "active");
+  settings->bind("ceil-active", ceil_active, "active");
+  settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("amount", amount.get(), "value", flag);
-  settings->bind("harmonics", harmonics.get(), "value", flag);
-  settings->bind("scope", scope.get(), "value", flag);
-  settings->bind("ceil", ceilv.get(), "value", flag);
-  settings->bind("blend", blend.get(), "value", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("listen", listen, "active", flag);
-  settings->bind("ceil-active", ceil_active, "active", flag);
-  settings->bind("ceil-active", ceil_freq, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 ExciterUi::~ExciterUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto ExciterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/exciter.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<ExciterUi>(builder, "top_box", "com.github.wwmm.pulseeffects.exciter",
+                                                         schema_path + "exciter/");
+
+  auto stack_page = stack->add(*ui, plugin_name::exciter);
+
+  return ui;
 }
 
 void ExciterUi::reset() {

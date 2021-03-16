@@ -21,7 +21,7 @@ data/ui/effects_base.ui
 data/ui/equalizer.glade
 data/ui/equalizer_band.glade
 data/ui/equalizer_preset_row.glade
-data/ui/exciter.glade
+data/ui/exciter.ui
 data/ui/filter.glade
 data/ui/general_settings.ui
 data/ui/gate.glade

@@ -35,7 +35,7 @@ pulseeffects_sources = [
 	'bass_enhancer.cpp',
 	'bass_enhancer_ui.cpp',
 	'exciter.cpp',
-	# 'exciter_ui.cpp',
+	'exciter_ui.cpp',
 	'crossfeed.cpp',
 	# 'crossfeed_ui.cpp',
 	'loudness.cpp',

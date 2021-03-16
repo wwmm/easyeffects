@@ -185,6 +185,13 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db));
   effects_base->bass_enhancer->harmonics.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
+
+  // exciter
+
+  auto* exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
+
+  // effects_base->exciter->input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level_db));
+  // effects_base->exciter->output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level_db));
 }
 
 void EffectsBaseUi::setup_listview_players() {
