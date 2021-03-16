@@ -145,8 +145,6 @@ PluginBase::PluginBase(std::string tag,
 }
 
 PluginBase::~PluginBase() {
-  pw_filter_disconnect(filter);
-
   spa_hook_remove(&listener);
 }
 

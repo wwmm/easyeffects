@@ -42,6 +42,8 @@ Spectrum::~Spectrum() {
 
   pw_filter_set_active(filter, false);
 
+  pw_filter_disconnect(filter);
+
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 
   pw_thread_loop_wait(pm->thread_loop);

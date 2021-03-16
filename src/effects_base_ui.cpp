@@ -648,7 +648,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   listview_selected_plugins->signal_activate().connect([&, this](guint position) {
     auto selected_name = selected_plugins->get_string(position);
 
-    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = stack_plugins->get_next_sibling()) {
+    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       auto page = stack_plugins->get_page(*child);
 
       if (page->get_name() == selected_name) {
