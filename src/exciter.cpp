@@ -19,104 +19,105 @@
 
 #include "exciter.hpp"
 
-// namespace {
-
-// void on_post_messages_changed(GSettings* settings, gchar* key, Exciter* l) {
-//   const auto post = g_settings_get_boolean(settings, key);
-
-//   if (post) {
-//     if (!l->harmonics_connection.connected()) {
-//       l->harmonics_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float harmonics = 0.0F;
-
-//             g_object_get(l->exciter, "meter-drive", &harmonics, nullptr);
-
-//             l->harmonics.emit(harmonics);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->harmonics_connection.disconnect();
-//   }
-// }
-
-// }  // namespace
-
 Exciter::Exciter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, "exciter", schema, schema_path, pipe_manager) {
-  // exciter = gst_element_factory_make("calf-sourceforge-net-plugins-Exciter", nullptr);
+    : PluginBase(tag, "exciter", schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Exciter")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // if (is_installed(exciter)) {
-  //   auto* in_level = gst_element_factory_make("level", "exciter_input_level");
-  //   auto* out_level = gst_element_factory_make("level", "exciter_output_level");
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "exciter_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "exciter_audioconvert_out");
+  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
 
-  //   gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, exciter, audioconvert_out, out_level, nullptr);
-  //   gst_element_link_many(in_level, audioconvert_in, exciter, audioconvert_out, out_level, nullptr);
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
+  lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
+  lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
 
-  //   g_object_set(exciter, "bypass", 0, nullptr);
+  lv2_wrapper->bind_key_double(settings, "scope", "freq");
 
-  //   bind_to_gsettings();
+  lv2_wrapper->bind_key_double(settings, "ceil", "ceil");
 
-  //   g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
+  lv2_wrapper->bind_key_double(settings, "blend", "blend");
 
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
+  lv2_wrapper->bind_key_bool(settings, "ceil-active", "ceil_active");
 
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
+  lv2_wrapper->bind_key_bool(settings, "listen", "listen");
 }
 
 Exciter::~Exciter() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Exciter::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "input-gain", exciter, "level-in", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+void Exciter::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // g_settings_bind_with_mapping(settings, "output-gain", exciter, "level-out", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+  if (!lv2_wrapper->create_instance(rate)) {
+    bypass = true;
+  } else {
+    lv2_wrapper->set_control_port_value("bypass", 0.0F);
+  }
+}
 
-  // g_settings_bind_with_mapping(settings, "amount", exciter, "amount", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+void Exciter::process(std::span<float>& left_in,
+                      std::span<float>& right_in,
+                      std::span<float>& left_out,
+                      std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  // g_settings_bind_with_mapping(settings, "harmonics", exciter, "drive", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
+    return;
+  }
 
-  // g_settings_bind_with_mapping(settings, "scope", exciter, "freq", G_SETTINGS_BIND_GET, util::double_to_float,
-  // nullptr,
-  //                              nullptr, nullptr);
+  apply_gain(left_in, right_in, input_gain);
 
-  // g_settings_bind_with_mapping(settings, "ceil", exciter, "ceil", G_SETTINGS_BIND_GET, util::double_to_float,
-  // nullptr,
-  //                              nullptr, nullptr);
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
 
-  // g_settings_bind_with_mapping(settings, "blend", exciter, "blend", G_SETTINGS_BIND_GET, util::double_to_float,
-  // nullptr,
-  //                              nullptr, nullptr);
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
 
-  // g_settings_bind(settings, "ceil-active", exciter, "ceil-active", G_SETTINGS_BIND_DEFAULT);
+  lv2_wrapper->run();
 
-  // g_settings_bind(settings, "listen", exciter, "listen", G_SETTINGS_BIND_DEFAULT);
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      float harmonics_value = lv2_wrapper->get_control_port_value("meter_drive");
+
+      Glib::signal_idle().connect_once([=, this] { harmonics.emit(harmonics_value); });
+
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
 }

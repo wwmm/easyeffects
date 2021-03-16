@@ -20,6 +20,7 @@
 #ifndef EXCITER_HPP
 #define EXCITER_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Exciter : public PluginBase {
@@ -31,12 +32,17 @@ class Exciter : public PluginBase {
   auto operator=(const Exciter&&) -> Exciter& = delete;
   ~Exciter() override;
 
-  sigc::connection harmonics_connection;
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> harmonics;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif
