@@ -66,11 +66,9 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   n_points = builder->get_widget<Gtk::SpinButton>("n_points");
   height = builder->get_widget<Gtk::SpinButton>("height");
-  spinbutton_line_width = builder->get_widget<Gtk::SpinButton>("spinbutton_line_width");
+  line_width = builder->get_widget<Gtk::SpinButton>("line_width");
   minimum_frequency = builder->get_widget<Gtk::SpinButton>("minimum_frequency");
   maximum_frequency = builder->get_widget<Gtk::SpinButton>("maximum_frequency");
-
-  line_width = builder->get_object<Gtk::Adjustment>("line_width");
 
   // signals connection
 
@@ -132,12 +130,11 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   use_custom_color->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
 
   settings->bind("show", show, "active");
-
   settings->bind("fill", fill, "active");
   settings->bind("show-bar-border", show_bar_border, "active");
   settings->bind("n-points", n_points->get_adjustment().get(), "value");
   settings->bind("height", height->get_adjustment().get(), "value");
-  settings->bind("line-width", line_width.get(), "value");
+  settings->bind("line-width", line_width->get_adjustment().get(), "value");
   settings->bind("use-gradient", use_gradient, "active");
   settings->bind("use-custom-color", use_custom_color, "active");
   settings->bind("use-custom-color", spectrum_color_button, "sensitive");
