@@ -21,8 +21,10 @@
 #define LV2_WRAPPER_HPP
 
 #include <giomm.h>
+#include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 #include <span>
 #include "lilv/lilv.h"
+#include "lv2/buf-size/buf-size.h"
 #include "lv2/core/lv2.h"
 #include "util.hpp"
 

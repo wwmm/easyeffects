@@ -2,6 +2,32 @@
 
 namespace lv2 {
 
+auto lv2_urid_map(LV2_URID_Map_Handle handle, const char* uri) -> LV2_URID {
+  return (LV2_URID)g_quark_from_string(uri);
+}
+
+auto lv2_urid_unmap(LV2_URID_Unmap_Handle handle, LV2_URID urid) -> const char* {
+  return g_quark_to_string((GQuark)urid);
+}
+
+LV2_URID_Map lv2_map = {
+    /* handle = */ nullptr, lv2_urid_map};
+
+LV2_URID_Unmap lv2_unmap = {
+    /* handle = */ nullptr, lv2_urid_unmap};
+
+const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
+const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
+
+// const LV2_Feature* lv2_features[] = {&lv2_map_feature, &lv2_unmap_feature, nullptr};
+
+// const LV2_Feature static_features[] = {{LV2_BUF_SIZE__powerOf2BlockLength, nullptr}};
+
+const std::array<const LV2_Feature, 1> static_features{{LV2_BUF_SIZE__powerOf2BlockLength, nullptr}};
+
+const std::array<const LV2_Feature*, 4> lv2_features{&lv2_map_feature, &lv2_unmap_feature, &static_features[0],
+                                                     nullptr};
+
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
@@ -137,7 +163,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
     instance = nullptr;
   }
 
-  instance = lilv_plugin_instantiate(plugin, rate, nullptr);
+  instance = lilv_plugin_instantiate(plugin, rate, lv2_features.data());
 
   if (instance == nullptr) {
     util::warning(log_tag + "failed to instantiate " + plugin_uri);
