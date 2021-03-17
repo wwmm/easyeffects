@@ -49,53 +49,94 @@ Maximizer::Maximizer(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, "maximizer", schema, schema_path, pipe_manager) {
-  // maximizer = gst_element_factory_make("ladspa-zamaximx2-ladspa-so-zamaximx2", nullptr);
+    : PluginBase(tag, plugin_name::maximizer, schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("urn:zamaudio:ZaMaximX2")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // if (is_installed(maximizer)) {
-  //   auto* in_level = gst_element_factory_make("level", "maximizer_input_level");
-  //   auto* out_level = gst_element_factory_make("level", "maximizer_output_level");
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "maximizer_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "maximizer_audioconvert_out");
+  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
 
-  //   gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, maximizer, audioconvert_out, out_level, nullptr);
-  //   gst_element_link_many(in_level, audioconvert_in, maximizer, audioconvert_out, out_level, nullptr);
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   bind_to_gsettings();
-
-  //   g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
 }
 
 Maximizer::~Maximizer() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Maximizer::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "release", maximizer, "release", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
+void Maximizer::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // g_settings_bind_with_mapping(settings, "ceiling", maximizer, "output-ceiling", G_SETTINGS_BIND_GET,
-  //                              util::double_to_float, nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "threshold", maximizer, "threshold", G_SETTINGS_BIND_GET,
-  //                              util::double_to_float, nullptr, nullptr, nullptr);
+  if (!lv2_wrapper->create_instance(rate)) {
+    bypass = true;
+  } else {
+    lv2_wrapper->set_control_port_value("bypass", 0.0F);
+  }
 }
+
+void Maximizer::process(std::span<float>& left_in,
+                        std::span<float>& right_in,
+                        std::span<float>& left_out,
+                        std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+  lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+// void Maximizer::bind_to_gsettings() {
+// g_settings_bind_with_mapping(settings, "release", maximizer, "release", G_SETTINGS_BIND_GET, util::double_to_float,
+//                              nullptr, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "ceiling", maximizer, "output-ceiling", G_SETTINGS_BIND_GET,
+//                              util::double_to_float, nullptr, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "threshold", maximizer, "threshold", G_SETTINGS_BIND_GET,
+//                              util::double_to_float, nullptr, nullptr, nullptr);
+// }

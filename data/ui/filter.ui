@@ -304,36 +304,6 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkLabel" id="harmonics_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Harmonics</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="harmonics_levelbar">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="harmonics_levelbar_label">
-                        <property name="halign">end</property>
-                        <property name="label">0</property>
-
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
                 <property name="layout-manager">
                     <object class="GtkBinLayout"></object>
                 </property>
@@ -383,8 +353,6 @@
             <widget name="input_level_right_label" />
             <widget name="output_level_left_label" />
             <widget name="output_level_right_label" />
-            <widget name="harmonics_title" />
-            <widget name="harmonics_levelbar_label" />
         </widgets>
     </object>
 </interface>
