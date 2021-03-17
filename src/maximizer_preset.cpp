@@ -28,8 +28,6 @@ MaximizerPreset::MaximizerPreset()
 void MaximizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".maximizer.state", settings->get_boolean("state"));
-
   root.put(section + ".maximizer.release", settings->get_double("release"));
 
   root.put(section + ".maximizer.ceiling", settings->get_double("ceiling"));
@@ -40,8 +38,6 @@ void MaximizerPreset::save(boost::property_tree::ptree& root,
 void MaximizerPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".maximizer.state");
-
   update_key<double>(root, settings, "release", section + ".maximizer.release");
 
   update_key<double>(root, settings, "ceiling", section + ".maximizer.ceiling");

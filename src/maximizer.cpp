@@ -19,32 +19,6 @@
 
 #include "maximizer.hpp"
 
-// namespace {
-
-// void on_post_messages_changed(GSettings* settings, gchar* key, Maximizer* l) {
-//   const auto post = g_settings_get_boolean(settings, key);
-
-//   if (post) {
-//     if (!l->reduction_connection.connected()) {
-//       l->reduction_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float reduction = 0.0F;
-
-//             g_object_get(l->maximizer, "gain-reduction", &reduction, nullptr);
-
-//             l->reduction.emit(reduction);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->reduction_connection.disconnect();
-//   }
-// }
-
-// }  // namespace
-
 Maximizer::Maximizer(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
@@ -64,11 +38,6 @@ Maximizer::Maximizer(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
-
-  std::hash<int> hash_int;
-  std::hash<const char*> hash_char;
-  std::cout << hash_int(7) << std::endl;
-  std::cout << hash_char("fisica") << std::endl;
 }
 
 Maximizer::~Maximizer() {
@@ -94,8 +63,6 @@ void Maximizer::setup() {
 
   if (!lv2_wrapper->create_instance(rate)) {
     bypass = true;
-  } else {
-    lv2_wrapper->set_control_port_value("bypass", 0.0F);
   }
 }
 
