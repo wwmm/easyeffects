@@ -41,6 +41,8 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
+  Gtk::ToggleButton* bypass = nullptr;
+
   Gtk::SpinButton *release = nullptr, *threshold = nullptr, *ceiling = nullptr;
 
   Gtk::LevelBar* reduction_levelbar = nullptr;

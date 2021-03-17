@@ -28,6 +28,7 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   reduction_levelbar = builder->get_widget<Gtk::LevelBar>("reduction_levelbar");
   release = builder->get_widget<Gtk::SpinButton>("release");
   threshold = builder->get_widget<Gtk::SpinButton>("threshold");
@@ -38,11 +39,24 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
+  settings->bind("bypass", bypass, "active");
   settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
   settings->bind("release", release->get_adjustment().get(), "value");
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
 
   reset_button->signal_clicked().connect([this]() { reset(); });
+
+  threshold->signal_output().connect([&, this]() { return parse_spinbutton_output(threshold, "dB"); }, true);
+  threshold->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(threshold, new_value); }, true);
+
+  ceiling->signal_output().connect([&, this]() { return parse_spinbutton_output(ceiling, "dB"); }, true);
+  ceiling->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(ceiling, new_value); },
+                                  true);
+
+  release->signal_output().connect([&, this]() { return parse_spinbutton_output(release, "ms"); }, true);
+  release->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(release, new_value); },
+                                  true);
 
   settings->set_boolean("bypass", false);
 }
