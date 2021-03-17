@@ -38,6 +38,12 @@ Maximizer::Maximizer(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  lv2_wrapper->bind_key_double(settings, "threshold", "thresh");
+
+  lv2_wrapper->bind_key_double(settings, "ceiling", "ceil");
+
+  lv2_wrapper->bind_key_double(settings, "release", "rel");
 }
 
 Maximizer::~Maximizer() {
@@ -95,20 +101,13 @@ void Maximizer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float reduction_value = lv2_wrapper->get_control_port_value("gr");
+
+      Glib::signal_idle().connect_once([=, this] { reduction.emit(reduction_value); });
+
       notify();
 
       notification_dt = 0.0F;
     }
   }
 }
-
-// void Maximizer::bind_to_gsettings() {
-// g_settings_bind_with_mapping(settings, "release", maximizer, "release", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "ceiling", maximizer, "output-ceiling", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "threshold", maximizer, "threshold", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-// }

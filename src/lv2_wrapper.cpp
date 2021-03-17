@@ -174,11 +174,13 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
     instance = nullptr;
   }
 
-  std::array<LV2_Options_Option, 4> options{
+  std::array<LV2_Options_Option, 5> options{
       {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
         &n_samples},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &n_samples},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
         &n_samples},
        {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}}};
 
