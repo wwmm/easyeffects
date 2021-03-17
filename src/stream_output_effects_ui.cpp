@@ -32,9 +32,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_reverb = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/reverb.glade");
   // auto b_crossfeed =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade"); auto b_maximizer =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/maximizer.glade"); auto
-  //   b_multiband_compressor =
+  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
+  //   auto b_multiband_compressor =
   //       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
   //   auto b_gate = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/gate.glade");
@@ -70,9 +69,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   b_crossfeed->get_widget_derived("widgets_grid", crossfeed_ui, "com.github.wwmm.pulseeffects.crossfeed",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
-
-  //   b_maximizer->get_widget_derived("widgets_grid", maximizer_ui, "com.github.wwmm.pulseeffects.maximizer",
-  //                                   "/com/github/wwmm/pulseeffects/sinkinputs/maximizer/");
 
   //   b_multiband_compressor->get_widget_derived("widgets_grid", multiband_compressor_ui,
   //                                              "com.github.wwmm.pulseeffects.multibandcompressor",
@@ -113,7 +109,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*reverb_ui, reverb_ui->name);
   //   stack->add(*exciter_ui, exciter_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
-  //   stack->add(*maximizer_ui, maximizer_ui->name);
   //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
   //   stack->add(*gate_ui, gate_ui->name);
@@ -134,7 +129,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(reverb_ui);
   //   add_to_listbox(exciter_ui);
   //   add_to_listbox(crossfeed_ui);
-  //   add_to_listbox(maximizer_ui);
   //   add_to_listbox(multiband_compressor_ui);
   //   add_to_listbox(loudness_ui);
   //   add_to_listbox(gate_ui);
@@ -263,15 +257,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //       soe->crossfeed_input_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level_db)));
   //   connections.emplace_back(
   //       soe->crossfeed_output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level_db)));
-
-  //   // maximizer level meters connections
-
-  //   connections.emplace_back(
-  //       soe->maximizer_input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->maximizer_output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction)));
 
   //   // multiband_compressor level meters connections
 
@@ -468,10 +453,6 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crossfeed_ui);
   //   })); connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(crossfeed_ui); }));
-
-  //   connections.emplace_back(maximizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(maximizer_ui);
-  //   })); connections.emplace_back(maximizer_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(maximizer_ui); }));
 
   //   connections.emplace_back(
   //       multiband_compressor_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(multiband_compressor_ui);

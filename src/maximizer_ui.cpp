@@ -38,16 +38,28 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
   settings->bind("release", release->get_adjustment().get(), "value");
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
 
   reset_button->signal_clicked().connect([this]() { reset(); });
+
+  settings->set_boolean("bypass", false);
 }
 
 MaximizerUi::~MaximizerUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/maximizer.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<MaximizerUi>(builder, "top_box", "com.github.wwmm.pulseeffects.maximizer",
+                                                           schema_path + "maximizer/");
+
+  auto stack_page = stack->add(*ui, plugin_name::maximizer);
+
+  return ui;
 }
 
 void MaximizerUi::reset() {

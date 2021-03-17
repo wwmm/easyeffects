@@ -34,6 +34,8 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const MaximizerUi&&) -> MaximizerUi& = delete;
   ~MaximizerUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi*;
+
   void on_new_reduction(double value);
 
   void reset() override;
