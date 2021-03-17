@@ -174,23 +174,13 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
     instance = nullptr;
   }
 
-  // const LV2_Options_Option options[ARRAY_SIZE(jalv->features.options)] = {
-  //   {LV2_OPTIONS_INSTANCE, 0, jalv->urids.param_sampleRate, sizeof(float), jalv->urids.atom_Float,
-  //   &jalv->sample_rate}, {LV2_OPTIONS_INSTANCE, 0, jalv->urids.bufsz_minBlockLength, sizeof(int32_t),
-  //   jalv->urids.atom_Int,
-  //    &jalv->block_length},
-  //   {LV2_OPTIONS_INSTANCE, 0, jalv->urids.bufsz_maxBlockLength, sizeof(int32_t), jalv->urids.atom_Int,
-  //    &jalv->block_length},
-  //   {LV2_OPTIONS_INSTANCE, 0, jalv->urids.bufsz_sequenceSize, sizeof(int32_t), jalv->urids.atom_Int,
-  //    &jalv->midi_buf_size},
-  //   {LV2_OPTIONS_INSTANCE, 0, jalv->urids.ui_updateRate, sizeof(float), jalv->urids.atom_Float, &jalv->ui_update_hz},
-  //   {LV2_OPTIONS_INSTANCE, 0, jalv->urids.ui_scaleFactor, sizeof(float), jalv->urids.atom_Float,
-  //    &jalv->ui_scale_factor},
-  //   {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, NULL}};
-
-  std::array<LV2_Options_Option, 1> options{{
-      {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
-  }};
+  std::array<LV2_Options_Option, 4> options{
+      {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &n_samples},
+       {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__maxBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
+        &n_samples},
+       {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}}};
 
   LV2_Feature options_feature = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
