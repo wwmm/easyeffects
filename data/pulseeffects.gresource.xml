@@ -11,6 +11,7 @@
         <file>ui/exciter.ui</file>
         <file>ui/filter.ui</file>
         <file>ui/general_settings.ui</file>
+        <file>ui/maximizer.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/spectrum.ui</file>
@@ -29,7 +30,6 @@
         <file>ui/reverb.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/maximizer.glade</file>
         <file>ui/stereo_tools.glade</file>
         <file>ui/gate.glade</file>
         <file>ui/multiband_gate.glade</file>

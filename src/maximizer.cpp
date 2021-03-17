@@ -64,6 +64,11 @@ Maximizer::Maximizer(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  std::hash<int> hash_int;
+  std::hash<const char*> hash_char;
+  std::cout << hash_int(7) << std::endl;
+  std::cout << hash_char("fisica") << std::endl;
 }
 
 Maximizer::~Maximizer() {
