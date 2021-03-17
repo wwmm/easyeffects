@@ -109,6 +109,3 @@ void Filter::process(std::span<float>& left_in,
     }
   }
 }
-
-// void Filter::bind_to_gsettings() {
-// g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);
