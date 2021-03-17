@@ -52,3 +52,6 @@ debian/*
 
 ppastats
 .autobuild
+
+#clion jetbrains ide adds an .idea folder
+.idea
