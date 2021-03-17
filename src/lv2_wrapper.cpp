@@ -280,4 +280,14 @@ void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
   });
 }
 
+void Lv2Wrapper::bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
+                               const std::string& gsettings_key,
+                               const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(gsettings_key)));
+
+  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(key)));
+  });
+}
+
 }  // namespace lv2

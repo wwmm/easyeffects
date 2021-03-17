@@ -42,6 +42,8 @@ Filter::Filter(const std::string& tag,
   lv2_wrapper->bind_key_double(settings, "frequency", "freq");
 
   lv2_wrapper->bind_key_double_db(settings, "resonance", "res");
+
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 }
 
 Filter::~Filter() {

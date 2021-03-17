@@ -90,6 +90,10 @@ class Lv2Wrapper {
                      const std::string& gsettings_key,
                      const std::string& lv2_symbol);
 
+  void bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
+                     const std::string& gsettings_key,
+                     const std::string& lv2_symbol);
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 

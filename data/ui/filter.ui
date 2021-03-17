@@ -60,6 +60,8 @@
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
+                        <property name="digits">1</property>
+                        <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">10</property>
@@ -69,8 +71,6 @@
                                 <property name="page-increment">100</property>
                             </object>
                         </property>
-                        <property name="digits">1</property>
-                        <property name="update-policy">if-valid</property>
                         <layout>
                             <property name="column">0</property>
                             <property name="row">1</property>
@@ -94,6 +94,8 @@
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
+                        <property name="digits">1</property>
+                        <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">-3</property>
@@ -103,8 +105,6 @@
                                 <property name="page-increment">1</property>
                             </object>
                         </property>
-                        <property name="digits">1</property>
-                        <property name="update-policy">if-valid</property>
                         <layout>
                             <property name="column">1</property>
                             <property name="row">1</property>
@@ -128,6 +128,8 @@
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
+                        <property name="digits">2</property>
+                        <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">5</property>
@@ -137,7 +139,6 @@
                                 <property name="page-increment">0.1</property>
                             </object>
                         </property>
-                        <property name="update-policy">if-valid</property>
                         <layout>
                             <property name="column">2</property>
                             <property name="row">1</property>
