@@ -212,7 +212,7 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
   std::vector<std::string> blocklist;
 
   switch (preset_type) {
-    case PresetType::output: {
+    case PresetType::input: {
       try {
         for (const auto& p : root.get_child("input.blocklist")) {
           blocklist.emplace_back(p.second.data());
@@ -225,7 +225,7 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
 
       break;
     }
-    case PresetType::input: {
+    case PresetType::output: {
       try {
         for (const auto& p : root.get_child("output.blocklist")) {
           blocklist.emplace_back(p.second.data());
