@@ -69,6 +69,8 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
 
   ceil->signal_output().connect([&, this]() { return parse_spinbutton_output(ceil, "Hz"); }, true);
   ceil->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(ceil, new_value); }, true);
+
+  settings->set_boolean("bypass", false);
 }
 
 ExciterUi::~ExciterUi() {

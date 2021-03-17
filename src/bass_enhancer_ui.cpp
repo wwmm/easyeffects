@@ -70,6 +70,8 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   floor->signal_output().connect([&, this]() { return parse_spinbutton_output(floor, "Hz"); }, true);
   floor->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(floor, new_value); },
                                 true);
+
+  settings->set_boolean("bypass", false);
 }
 
 BassEnhancerUi::~BassEnhancerUi() {

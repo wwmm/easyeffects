@@ -122,7 +122,7 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
+  settings->bind("bypass", bypass, "active");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("frequency", frequency->get_adjustment().get(), "value");
@@ -145,10 +145,23 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   inertia->signal_output().connect([&, this]() { return parse_spinbutton_output(inertia, "ms"); }, true);
   inertia->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(inertia, new_value); },
                                   true);
+
+  settings->set_boolean("bypass", false);
 }
 
 FilterUi::~FilterUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> FilterUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/filter.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<FilterUi>(builder, "top_box", "com.github.wwmm.pulseeffects.filter",
+                                                        schema_path + "filter/");
+
+  auto stack_page = stack->add(*ui, plugin_name::filter);
+
+  return ui;
 }
 
 void FilterUi::reset() {

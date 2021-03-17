@@ -16,6 +16,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   exciter = std::make_shared<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter", path + "exciter/", pm);
 
+  filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter", path + "filter/", pm);
+
   //   compressor =
   //       std::make_shared<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor", path + "compressor/", pm);
 
@@ -36,8 +38,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //   equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer", path + "equalizer/",
   //                                           "com.github.wwmm.pulseeffects.equalizer.channel",
   //                                           path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
-
-  //   filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter", path + "filter/", pm);
 
   //   gate = std::make_shared<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate", path + "gate/", pm);
 
@@ -73,6 +73,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
   plugins.insert(std::make_pair(exciter->name, exciter));
+  plugins.insert(std::make_pair(filter->name, filter));
   //   plugins.insert(std::make_pair(compressor->name, compressor));
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
@@ -80,7 +81,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //   plugins.insert(std::make_pair(delay->name, delay));
   //   plugins.insert(std::make_pair(deesser->name, deesser));
   //   plugins.insert(std::make_pair(equalizer->name, equalizer));
-  //   plugins.insert(std::make_pair(filter->name, filter));
   //   plugins.insert(std::make_pair(gate->name, gate));
   //   plugins.insert(std::make_pair(limiter->name, limiter));
   //   plugins.insert(std::make_pair(loudness->name, loudness));

@@ -19,113 +19,94 @@
 
 #include "filter.hpp"
 
-// namespace {
-
-// void on_post_messages_changed(GSettings* settings, gchar* key, Filter* l) {
-//   const auto post = g_settings_get_boolean(settings, key);
-
-//   if (post) {
-//     if (!l->input_level_connection.connected()) {
-//       l->input_level_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float inL = 0.0F;
-//             float inR = 0.0F;
-
-//             g_object_get(l->filter, "meter-inL", &inL, nullptr);
-//             g_object_get(l->filter, "meter-inR", &inR, nullptr);
-
-//             std::array<double, 2> in_peak = {inL, inR};
-
-//             l->input_level.emit(in_peak);
-
-//             return true;
-//           },
-//           100);
-//     }
-
-//     if (!l->output_level_connection.connected()) {
-//       l->output_level_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float outL = 0.0F;
-//             float outR = 0.0F;
-
-//             g_object_get(l->filter, "meter-outL", &outL, nullptr);
-//             g_object_get(l->filter, "meter-outR", &outR, nullptr);
-
-//             std::array<double, 2> out_peak = {outL, outR};
-
-//             l->output_level.emit(out_peak);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->input_level_connection.disconnect();
-//     l->output_level_connection.disconnect();
-//   }
-// }
-
-// }  // namespace
-
 Filter::Filter(const std::string& tag,
                const std::string& schema,
                const std::string& schema_path,
                PipeManager* pipe_manager)
-    : PluginBase(tag, "filter", schema, schema_path, pipe_manager) {
-  // filter = gst_element_factory_make("calf-sourceforge-net-plugins-Filter", "filter");
+    : PluginBase(tag, plugin_name::filter, schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Filter")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // if (is_installed(filter)) {
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "filter_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "filter_audioconvert_out");
+  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
 
-  //   gst_bin_add_many(GST_BIN(bin), audioconvert_in, filter, audioconvert_out, nullptr);
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   gst_element_link_many(audioconvert_in, filter, audioconvert_out, nullptr);
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
+  lv2_wrapper->bind_key_double(settings, "frequency", "freq");
 
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   g_object_set(filter, "bypass", 0, nullptr);
-
-  //   bind_to_gsettings();
-
-  //   g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
+  lv2_wrapper->bind_key_double_db(settings, "resonance", "res");
 }
 
 Filter::~Filter() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Filter::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "input-gain", filter, "level-in", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+void Filter::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // g_settings_bind_with_mapping(settings, "output-gain", filter, "level-out", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "frequency", filter, "freq", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "resonance", filter, "res", G_SETTINGS_BIND_DEFAULT,
-  // util::db20_gain_to_linear,
-  //                              util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind_with_mapping(settings, "inertia", filter, "inertia", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
+  if (!lv2_wrapper->create_instance(rate)) {
+    bypass = true;
+  } else {
+    lv2_wrapper->set_control_port_value("bypass", 0.0F);
+  }
 }
+
+void Filter::process(std::span<float>& left_in,
+                     std::span<float>& right_in,
+                     std::span<float>& left_out,
+                     std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+  lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+// void Filter::bind_to_gsettings() {
+// g_settings_bind(settings, "mode", filter, "mode", G_SETTINGS_BIND_DEFAULT);

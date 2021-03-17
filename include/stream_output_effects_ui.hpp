@@ -29,7 +29,6 @@
 // #include "deesser_ui.hpp"
 // #include "delay_ui.hpp"
 // #include "equalizer_ui.hpp"
-// #include "filter_ui.hpp"
 // #include "gate_ui.hpp"
 // #include "limiter_ui.hpp"
 // #include "loudness_ui.hpp"

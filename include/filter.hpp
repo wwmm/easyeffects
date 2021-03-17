@@ -20,7 +20,7 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-#include <array>
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Filter : public PluginBase {
@@ -30,14 +30,17 @@ class Filter : public PluginBase {
   auto operator=(const Filter&) -> Filter& = delete;
   Filter(const Filter&&) = delete;
   auto operator=(const Filter&&) -> Filter& = delete;
-  ~Filter();
+  ~Filter() override;
 
-  sigc::connection input_level_connection, output_level_connection;
+  void setup() override;
 
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

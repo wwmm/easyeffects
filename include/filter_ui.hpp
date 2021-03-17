@@ -34,13 +34,12 @@ class FilterUi : public Gtk::Grid, public PluginUiBase {
   auto operator=(const FilterUi&&) -> FilterUi& = delete;
   ~FilterUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> FilterUi*;
+
   void reset() override;
 
  private:
   Gtk::ComboBoxText* mode = nullptr;
-
-  Gtk::Button *preset_muted = nullptr, *preset_disco = nullptr, *preset_distant_headphones = nullptr,
-              *preset_default = nullptr;
 
   Gtk::SpinButton *frequency = nullptr, *resonance = nullptr, *inertia = nullptr;
 

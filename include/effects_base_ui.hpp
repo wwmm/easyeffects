@@ -31,6 +31,7 @@
 #include "bass_enhancer_ui.hpp"
 #include "effects_base.hpp"
 #include "exciter_ui.hpp"
+#include "filter_ui.hpp"
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"

@@ -62,6 +62,7 @@ class EffectsBase {
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
   std::shared_ptr<Exciter> exciter;
+  std::shared_ptr<Filter> filter;
   std::unique_ptr<OutputLevel> output_level;
   std::unique_ptr<Spectrum> spectrum;
 
@@ -79,7 +80,6 @@ class EffectsBase {
   std::shared_ptr<Deesser> deesser;
   std::shared_ptr<Delay> delay;
   std::shared_ptr<Equalizer> equalizer;
-  std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
   std::shared_ptr<Loudness> loudness;
