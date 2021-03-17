@@ -90,6 +90,8 @@ auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_p
 }
 
 void BassEnhancerUi::reset() {
+  settings->reset("bypass");
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

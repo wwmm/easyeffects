@@ -31,7 +31,7 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
   MaximizerUi(const MaximizerUi&) = delete;
   auto operator=(const MaximizerUi&) -> MaximizerUi& = delete;
   MaximizerUi(const MaximizerUi&&) = delete;
-  auto operator=(const MaximizerUi &&) -> MaximizerUi& = delete;
+  auto operator=(const MaximizerUi&&) -> MaximizerUi& = delete;
   ~MaximizerUi() override;
 
   void on_new_reduction(double value);
@@ -39,8 +39,10 @@ class MaximizerUi : public Gtk::Grid, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> release, threshold, ceiling;
-  Gtk::LevelBar* reduction = nullptr;
+  Gtk::SpinButton *release = nullptr, *threshold = nullptr, *ceiling = nullptr;
+
+  Gtk::LevelBar* reduction_levelbar = nullptr;
+
   Gtk::Label* reduction_label = nullptr;
 };
 

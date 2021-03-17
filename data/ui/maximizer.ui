@@ -138,24 +138,6 @@
                 </child>
 
                 <child>
-                    <object class="GtkScale" id="input_gain">
-                        <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">-36</property>
-                                <property name="upper">36</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
-                            </object>
-                        </property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">right</property>
-                    </object>
-                </child>
-
-                <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>
                         <child>
@@ -210,24 +192,6 @@
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
                         <property name="label" translatable="yes">Output</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkScale" id="output_gain">
-                        <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">-36</property>
-                                <property name="upper">36</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
-                            </object>
-                        </property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">0</property>
-                        <property name="value-pos">right</property>
                     </object>
                 </child>
 
@@ -297,7 +261,7 @@
                 </child>
 
                 <child>
-                    <object class="GtkLabel" id="reduction_levelbar_label">
+                    <object class="GtkLabel" id="reduction_label">
                         <property name="halign">end</property>
                         <property name="label">0</property>
 
@@ -360,7 +324,7 @@
             <widget name="input_level_right_label" />
             <widget name="output_level_left_label" />
             <widget name="output_level_right_label" />
-            <widget name="reduction_levelbar_label" />
+            <widget name="reduction_label" />
         </widgets>
     </object>
 </interface>

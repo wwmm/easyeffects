@@ -24,29 +24,26 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
                          const std::string& schema,
                          const std::string& schema_path)
     : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "maximizer";
+  name = plugin_name::maximizer;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("reduction", reduction);
-  builder->get_widget("reduction_label", reduction_label);
-  builder->get_widget("plugin_reset", reset_button);
+  reduction_levelbar = builder->get_widget<Gtk::LevelBar>("reduction_levelbar");
+  release = builder->get_widget<Gtk::SpinButton>("release");
+  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
+  ceiling = builder->get_widget<Gtk::SpinButton>("ceiling");
+  reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
 
-  get_object(builder, "ceiling", ceiling);
-  get_object(builder, "release", release);
-  get_object(builder, "threshold", threshold);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("installed", this, "sensitive");
+  settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
+  settings->bind("release", release->get_adjustment().get(), "value");
+  settings->bind("threshold", threshold->get_adjustment().get(), "value");
 
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("ceiling", ceiling.get(), "value", flag);
-  settings->bind("release", release.get(), "value", flag);
-  settings->bind("threshold", threshold.get(), "value", flag);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  reset_button->signal_clicked().connect([this]() { reset(); });
 }
 
 MaximizerUi::~MaximizerUi() {
@@ -54,6 +51,8 @@ MaximizerUi::~MaximizerUi() {
 }
 
 void MaximizerUi::reset() {
+  settings->reset("bypass");
+
   settings->reset("release");
 
   settings->reset("ceiling");
@@ -62,7 +61,7 @@ void MaximizerUi::reset() {
 }
 
 void MaximizerUi::on_new_reduction(double value) {
-  reduction->set_value(value);
+  reduction_levelbar->set_value(value);
 
   reduction_label->set_text(level_to_localized_string(value, 0));
 }

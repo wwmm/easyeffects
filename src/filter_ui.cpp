@@ -165,6 +165,8 @@ auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -
 }
 
 void FilterUi::reset() {
+  settings->reset("bypass");
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");
