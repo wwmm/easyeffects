@@ -37,7 +37,7 @@ const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
 
 const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
 
-const std::array<const LV2_Feature, 1> static_features{{LV2_BUF_SIZE__powerOf2BlockLength, nullptr}};
+const std::array<const LV2_Feature, 1> static_features{{{LV2_BUF_SIZE__powerOf2BlockLength, nullptr}}};
 
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
@@ -300,6 +300,10 @@ auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
   }
 
   return value;
+}
+
+auto Lv2Wrapper::has_instance() -> bool {
+  return instance != nullptr;
 }
 
 void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,

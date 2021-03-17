@@ -84,6 +84,8 @@ class Lv2Wrapper {
 
   auto get_control_port_value(const std::string& symbol) -> float;
 
+  auto has_instance() -> bool;
+
   void bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
                        const std::string& gsettings_key,
                        const std::string& lv2_symbol);

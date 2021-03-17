@@ -67,16 +67,14 @@ void Maximizer::setup() {
     return;
   }
 
-  if (!lv2_wrapper->create_instance(rate)) {
-    bypass = true;
-  }
+  lv2_wrapper->create_instance(rate);
 }
 
 void Maximizer::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
-  if (!lv2_wrapper->found_plugin || bypass) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance()) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -102,8 +100,12 @@ void Maximizer::process(std::span<float>& left_in,
 
     if (notification_dt >= notification_time_window) {
       float reduction_value = lv2_wrapper->get_control_port_value("gr");
+      float latency_value = lv2_wrapper->get_control_port_value("lv2_latency");
 
-      Glib::signal_idle().connect_once([=, this] { reduction.emit(reduction_value); });
+      Glib::signal_idle().connect_once([=, this] {
+        reduction.emit(reduction_value);
+        latency.emit(latency_value);
+      });
 
       notify();
 

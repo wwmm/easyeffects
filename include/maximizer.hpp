@@ -42,7 +42,7 @@ class Maximizer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> reduction;
+  sigc::signal<void(double)> reduction, latency;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

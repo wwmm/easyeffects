@@ -75,18 +75,14 @@ void Exciter::setup() {
     return;
   }
 
-  if (!lv2_wrapper->create_instance(rate)) {
-    bypass = true;
-  } else {
-    lv2_wrapper->set_control_port_value("bypass", 0.0F);
-  }
+  lv2_wrapper->create_instance(rate);
 }
 
 void Exciter::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
                       std::span<float>& right_out) {
-  if (!lv2_wrapper->found_plugin || bypass) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance()) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
