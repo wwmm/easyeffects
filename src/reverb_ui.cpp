@@ -76,54 +76,47 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
                    const std::string& schema,
                    const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "reverb";
+  name = plugin_name::reverb;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("room_size", room_size);
-  builder->get_widget("preset_room", preset_room);
-  builder->get_widget("preset_empty_walls", preset_empty_walls);
-  builder->get_widget("preset_ambience", preset_ambience);
-  builder->get_widget("preset_large_empty_hall", preset_large_empty_hall);
-  builder->get_widget("preset_disco", preset_disco);
-  builder->get_widget("preset_large_occupied_hall", preset_large_occupied_hall);
-  builder->get_widget("preset_default", preset_default);
-  builder->get_widget("plugin_reset", reset_button);
-
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
-  get_object(builder, "predelay", predelay);
-  get_object(builder, "decay_time", decay_time);
-  get_object(builder, "diffusion", diffusion);
-  get_object(builder, "amount", amount);
-  get_object(builder, "dry", dry);
-  get_object(builder, "hf_damp", hf_damp);
-  get_object(builder, "bass_cut", bass_cut);
-  get_object(builder, "treble_cut", treble_cut);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+  predelay = builder->get_widget<Gtk::SpinButton>("predelay");
+  decay_time = builder->get_widget<Gtk::SpinButton>("decay_time");
+  diffusion = builder->get_widget<Gtk::SpinButton>("diffusion");
+  amount = builder->get_widget<Gtk::SpinButton>("amount");
+  dry = builder->get_widget<Gtk::SpinButton>("dry");
+  hf_damp = builder->get_widget<Gtk::SpinButton>("hf_damp");
+  bass_cut = builder->get_widget<Gtk::SpinButton>("bass_cut");
+  treble_cut = builder->get_widget<Gtk::SpinButton>("treble_cut");
+  room_size = builder->get_widget<Gtk::ComboBoxText>("room_size");
+  preset_room = builder->get_widget<Gtk::Button>("preset_room");
+  preset_empty_walls = builder->get_widget<Gtk::Button>("preset_empty_walls");
+  preset_ambience = builder->get_widget<Gtk::Button>("preset_ambience");
+  preset_large_empty_hall = builder->get_widget<Gtk::Button>("preset_large_empty_hall");
+  preset_disco = builder->get_widget<Gtk::Button>("preset_disco");
+  preset_large_occupied_hall = builder->get_widget<Gtk::Button>("preset_large_occupied_hall");
+  preset_default = builder->get_widget<Gtk::Button>("preset_default");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("predelay", predelay.get(), "value", flag);
-  settings->bind("decay-time", decay_time.get(), "value", flag);
-  settings->bind("diffusion", diffusion.get(), "value", flag);
-  settings->bind("amount", amount.get(), "value", flag);
-  settings->bind("dry", dry.get(), "value", flag);
-  settings->bind("hf-damp", hf_damp.get(), "value", flag);
-  settings->bind("bass-cut", bass_cut.get(), "value", flag);
-  settings->bind("treble-cut", treble_cut.get(), "value", flag);
+  settings->bind("installed", this, "sensitive");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("predelay", predelay->get_adjustment().get(), "value");
+  settings->bind("decay-time", decay_time->get_adjustment().get(), "value");
+  settings->bind("diffusion", diffusion->get_adjustment().get(), "value");
+  settings->bind("amount", amount->get_adjustment().get(), "value");
+  settings->bind("dry", dry->get_adjustment().get(), "value");
+  settings->bind("hf-damp", hf_damp->get_adjustment().get(), "value");
+  settings->bind("bass-cut", bass_cut->get_adjustment().get(), "value");
+  settings->bind("treble-cut", treble_cut->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "room-size", room_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
   init_presets_buttons();
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 ReverbUi::~ReverbUi() {
@@ -155,7 +148,7 @@ void ReverbUi::reset() {
 }
 
 void ReverbUi::init_presets_buttons() {
-  preset_room->signal_clicked().connect([=]() {
+  preset_room->signal_clicked().connect([=, this]() {
     decay_time->set_value(0.445945);
     hf_damp->set_value(5508.46);
     room_size->set_active(4);
@@ -167,7 +160,7 @@ void ReverbUi::init_presets_buttons() {
     treble_cut->set_value(20000.0);
   });
 
-  preset_empty_walls->signal_clicked().connect([=]() {
+  preset_empty_walls->signal_clicked().connect([=, this]() {
     decay_time->set_value(0.505687);
     hf_damp->set_value(3971.64);
     room_size->set_active(4);
@@ -179,7 +172,7 @@ void ReverbUi::init_presets_buttons() {
     treble_cut->set_value(3303.47);
   });
 
-  preset_ambience->signal_clicked().connect([=]() {
+  preset_ambience->signal_clicked().connect([=, this]() {
     decay_time->set_value(1.10354);
     hf_damp->set_value(2182.58);
     room_size->set_active(4);
@@ -191,7 +184,7 @@ void ReverbUi::init_presets_buttons() {
     treble_cut->set_value(4064.15);
   });
 
-  preset_large_empty_hall->signal_clicked().connect([=]() {
+  preset_large_empty_hall->signal_clicked().connect([=, this]() {
     decay_time->set_value(2.00689);
     hf_damp->set_value(20000.0);
     amount->set_value(util::linear_to_db(0.366022));
@@ -203,7 +196,7 @@ void ReverbUi::init_presets_buttons() {
     settings->reset("treble-cut");
   });
 
-  preset_disco->signal_clicked().connect([=]() {
+  preset_disco->signal_clicked().connect([=, this]() {
     decay_time->set_value(1.0);
     hf_damp->set_value(3396.49);
     amount->set_value(util::linear_to_db(0.269807));
@@ -215,7 +208,7 @@ void ReverbUi::init_presets_buttons() {
     settings->reset("treble-cut");
   });
 
-  preset_large_occupied_hall->signal_clicked().connect([=]() {
+  preset_large_occupied_hall->signal_clicked().connect([=, this]() {
     decay_time->set_value(1.45397);
     hf_damp->set_value(9795.58);
     amount->set_value(util::linear_to_db(0.184284));
@@ -227,7 +220,7 @@ void ReverbUi::init_presets_buttons() {
     settings->reset("treble-cut");
   });
 
-  preset_default->signal_clicked().connect([=]() {
+  preset_default->signal_clicked().connect([=, this]() {
     settings->reset("decay-time");
     settings->reset("hf-damp");
     settings->reset("amount");

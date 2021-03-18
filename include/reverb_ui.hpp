@@ -37,14 +37,16 @@ class ReverbUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, predelay, decay_time, diffusion, amount, dry, hf_damp,
-      bass_cut, treble_cut;
+  Gtk::SpinButton *predelay = nullptr, *decay_time = nullptr, *diffusion = nullptr, *amount = nullptr, *dry = nullptr,
+                  *hf_damp = nullptr, *bass_cut = nullptr, *treble_cut = nullptr;
 
   Gtk::ComboBoxText* room_size = nullptr;
 
   Gtk::Button *preset_room = nullptr, *preset_empty_walls = nullptr, *preset_ambience = nullptr,
               *preset_large_empty_hall = nullptr, *preset_disco = nullptr, *preset_large_occupied_hall = nullptr,
               *preset_default = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   void init_presets_buttons();
 };
