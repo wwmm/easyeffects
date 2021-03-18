@@ -174,7 +174,7 @@
                             </object>
                         </property>
                         <property name="draw-value">1</property>
-                        <property name="digits">0</property>
+                        <property name="digits">1</property>
                         <property name="value-pos">right</property>
                     </object>
                 </child>
@@ -250,7 +250,7 @@
                             </object>
                         </property>
                         <property name="draw-value">1</property>
-                        <property name="digits">0</property>
+                        <property name="digits">1</property>
                         <property name="value-pos">right</property>
                     </object>
                 </child>
