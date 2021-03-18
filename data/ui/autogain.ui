@@ -45,6 +45,14 @@
                         <property name="label" translatable="yes">Reset History</property>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkToggleButton" id="bypass">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Bypass</property>
+                    </object>
+                </child>
             </object>
         </child>
 

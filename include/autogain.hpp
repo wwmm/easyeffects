@@ -47,8 +47,6 @@ class AutoGain : public PluginBase {
   sigc::signal<void(double, double, double, double, double, double, double)> results;
 
  private:
-  bool bypass = false;
-
   double target = -23.0;  // target loudness level
   double output_gain = 1.0;
 

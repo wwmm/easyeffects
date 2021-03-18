@@ -29,8 +29,6 @@ Maximizer::Maximizer(const std::string& tag,
     return;
   }
 
-  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
-
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });

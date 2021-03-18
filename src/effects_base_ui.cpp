@@ -179,6 +179,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
 
+  autogain_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->autogain->bypass = autogain_ui->bypass->get_active(); });
+
   effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level));
   effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level));
   effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
@@ -186,6 +189,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // bass enhancer
 
   auto* bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
+
+  bass_enhancer_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->bass_enhancer->bypass = bass_enhancer_ui->bypass->get_active(); });
 
   effects_base->bass_enhancer->input_level.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level));
@@ -197,6 +203,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // exciter
 
   auto* exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
+
+  exciter_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->exciter->bypass = exciter_ui->bypass->get_active(); });
 
   effects_base->exciter->input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level));
   effects_base->exciter->output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level));
@@ -215,6 +224,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // limiter
 
   auto* limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
+
+  limiter_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->limiter->bypass = limiter_ui->bypass->get_active(); });
 
   effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
   effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
