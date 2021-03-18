@@ -344,6 +344,76 @@
         </child>
     </object>
 
+    <object class="GtkPopover" id="popover_presets">
+        <child>
+            <object class="GtkBox">
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkButton" id="preset_ambience">
+                                <property name="label" translatable="yes">Ambience</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="preset_empty_walls">
+                                <property name="label" translatable="yes">Empty Walls</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="preset_room">
+                                <property name="label" translatable="yes">Room</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="preset_large_empty_hall">
+                                <property name="label" translatable="yes">Large Empty Hall</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkButton" id="preset_disco">
+                                <property name="label" translatable="yes">Disco</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="preset_large_occupied_hall">
+                                <property name="label" translatable="yes">Large Occupied Hall</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkButton" id="preset_default">
+                                <property name="label" translatable="yes">Default</property>
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>
         <widgets>
