@@ -34,6 +34,8 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const StereoToolsUi&&) -> StereoToolsUi& = delete;
   ~StereoToolsUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi*;
+
   void reset() override;
 
  private:

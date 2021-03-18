@@ -134,6 +134,17 @@ StereoToolsUi::~StereoToolsUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.stereotools", schema_path + "filter/");
+
+  auto stack_page = stack->add(*ui, plugin_name::stereo_tools);
+
+  return ui;
+}
+
 void StereoToolsUi::reset() {
   settings->reset("input-gain");
 
