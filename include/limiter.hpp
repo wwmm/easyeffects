@@ -20,7 +20,6 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
-#include <array>
 #include "plugin_base.hpp"
 
 class Limiter : public PluginBase {
@@ -32,9 +31,6 @@ class Limiter : public PluginBase {
   auto operator=(const Limiter&&) -> Limiter& = delete;
   ~Limiter() override;
 
-  sigc::connection input_level_connection, output_level_connection, attenuation_connection;
-
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
   sigc::signal<void(double)> attenuation;
 
  private:

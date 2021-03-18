@@ -88,39 +88,7 @@ Limiter::Limiter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, "limiter", schema, schema_path, pipe_manager) {
-  // limiter = gst_element_factory_make("calf-sourceforge-net-plugins-Limiter", nullptr);
-
-  // if (is_installed(limiter)) {
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "limiter_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "limiter_audioconvert_out");
-
-  //   gst_bin_add_many(GST_BIN(bin), audioconvert_in, limiter, audioconvert_out, nullptr);
-
-  //   gst_element_link_many(audioconvert_in, limiter, audioconvert_out, nullptr);
-
-  //   auto* pad_sink = gst_element_get_static_pad(audioconvert_in, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(audioconvert_out, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   g_object_set(limiter, "bypass", 0, nullptr);
-
-  //   bind_to_gsettings();
-
-  //   g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
-}
+    : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager) {}
 
 Limiter::~Limiter() {
   util::debug(log_tag + name + " destroyed");

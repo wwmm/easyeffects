@@ -149,6 +149,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->bass_enhancer->post_messages = true;
   effects_base->exciter->post_messages = true;
   effects_base->filter->post_messages = true;
+  effects_base->limiter->post_messages = true;
   effects_base->maximizer->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->spectrum->post_messages = true;
@@ -165,6 +166,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->bass_enhancer->post_messages = false;
   effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
+  effects_base->limiter->post_messages = false;
   effects_base->maximizer->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->spectrum->post_messages = false;
@@ -206,6 +208,14 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level_db));
   effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level_db));
+
+  // limiter
+
+  auto* limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
+
+  effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level_db));
+  effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level_db));
+  effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
   // maximizer
 

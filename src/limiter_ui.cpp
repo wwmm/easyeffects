@@ -45,8 +45,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
-
+  settings->bind("bypass", bypass, "active");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("limit", limit->get_adjustment().get(), "value");
   settings->bind("lookahead", lookahead->get_adjustment().get(), "value");
