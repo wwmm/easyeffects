@@ -110,7 +110,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   frequency = builder->get_widget<Gtk::SpinButton>("frequency");
@@ -122,7 +121,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("bypass", bypass, "active");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("frequency", frequency->get_adjustment().get(), "value");
@@ -145,8 +143,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   inertia->signal_output().connect([&, this]() { return parse_spinbutton_output(inertia, "ms"); }, true);
   inertia->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(inertia, new_value); },
                                   true);
-
-  settings->set_boolean("bypass", false);
 }
 
 FilterUi::~FilterUi() {
@@ -165,7 +161,7 @@ auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -
 }
 
 void FilterUi::reset() {
-  settings->reset("bypass");
+  bypass->set_active(false);
 
   settings->reset("input-gain");
 

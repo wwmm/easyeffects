@@ -32,7 +32,6 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
   floor_active = builder->get_widget<Gtk::ToggleButton>("floor_active");
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
-  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   floor = builder->get_widget<Gtk::SpinButton>("floor");
   amount = builder->get_widget<Gtk::SpinButton>("amount");
   harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
@@ -53,7 +52,6 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("listen", listen, "active");
-  settings->bind("bypass", bypass, "active");
   settings->bind("floor-active", floor_active, "active");
   settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
@@ -70,8 +68,6 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   floor->signal_output().connect([&, this]() { return parse_spinbutton_output(floor, "Hz"); }, true);
   floor->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(floor, new_value); },
                                 true);
-
-  settings->set_boolean("bypass", false);
 }
 
 BassEnhancerUi::~BassEnhancerUi() {
@@ -90,7 +86,7 @@ auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_p
 }
 
 void BassEnhancerUi::reset() {
-  settings->reset("bypass");
+  bypass->set_active(false);
 
   settings->reset("input-gain");
 

@@ -20,7 +20,7 @@
 #ifndef STEREO_TOOLS_HPP
 #define STEREO_TOOLS_HPP
 
-#include <array>
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class StereoTools : public PluginBase {
@@ -35,12 +35,15 @@ class StereoTools : public PluginBase {
   auto operator=(const StereoTools&&) -> StereoTools& = delete;
   ~StereoTools() override;
 
-  sigc::connection input_level_connection, output_level_connection;
+  void setup() override;
 
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

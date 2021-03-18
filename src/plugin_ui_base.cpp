@@ -23,7 +23,9 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
-  // get widgets
+  // get widgets that all plguins must have
+
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
   input_level_left = builder->get_widget<Gtk::LevelBar>("input_level_left");
   input_level_right = builder->get_widget<Gtk::LevelBar>("input_level_right");
@@ -79,13 +81,4 @@ void PluginUiBase::on_new_input_level(const float& left, const float& right) {
 
 void PluginUiBase::on_new_output_level(const float& left, const float& right) {
   update_level(output_level_left, output_level_left_label, output_level_right, output_level_right_label, left, right);
-}
-
-void PluginUiBase::on_new_input_level_db(const float& left, const float& right) {
-  update_level_db(input_level_left, input_level_left_label, input_level_right, input_level_right_label, left, right);
-}
-
-void PluginUiBase::on_new_output_level_db(const float& left, const float& right) {
-  update_level_db(output_level_left, output_level_left_label, output_level_right, output_level_right_label, left,
-                  right);
 }

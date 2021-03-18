@@ -179,8 +179,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
 
-  effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db));
-  effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db));
+  effects_base->autogain->input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level));
+  effects_base->autogain->output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level));
   effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
 
   // bass enhancer
@@ -188,9 +188,9 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   auto* bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
 
   effects_base->bass_enhancer->input_level.connect(
-      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level_db));
+      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_input_level));
   effects_base->bass_enhancer->output_level.connect(
-      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level_db));
+      sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level));
   effects_base->bass_enhancer->harmonics.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
 
@@ -198,31 +198,37 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   auto* exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
 
-  effects_base->exciter->input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level_db));
-  effects_base->exciter->output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level_db));
+  effects_base->exciter->input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level));
+  effects_base->exciter->output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level));
   effects_base->exciter->harmonics.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level));
 
   // filter
 
   auto* filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 
-  effects_base->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level_db));
-  effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level_db));
+  filter_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->filter->bypass = filter_ui->bypass->get_active(); });
+
+  effects_base->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level));
+  effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level));
 
   // limiter
 
   auto* limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
 
-  effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level_db));
-  effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level_db));
+  effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
+  effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
   effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
   // maximizer
 
   auto* maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
 
-  effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level_db));
-  effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level_db));
+  maximizer_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->maximizer->bypass = maximizer_ui->bypass->get_active(); });
+
+  effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level));
+  effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level));
   effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
 }
 

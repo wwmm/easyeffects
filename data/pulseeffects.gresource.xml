@@ -17,6 +17,7 @@
         <file>ui/presets_menu.ui</file>
         <file>ui/spectrum.ui</file>
         <file>ui/spectrum_settings.ui</file>
+        <file>ui/stereo_tools.ui</file>
         <file>ui/pipe_settings.glade</file>
         <file>ui/pipe_info.glade</file>
         <file>ui/module_info.glade</file>
@@ -30,7 +31,6 @@
         <file>ui/reverb.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/stereo_tools.glade</file>
         <file>ui/gate.glade</file>
         <file>ui/multiband_gate.glade</file>
         <file>ui/deesser.glade</file>

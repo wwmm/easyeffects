@@ -41,8 +41,6 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Gtk::ToggleButton* bypass = nullptr;
-
   Gtk::SpinButton *lookahead = nullptr, *release = nullptr, *limit = nullptr, *oversampling = nullptr,
                   *asc_level = nullptr;
 

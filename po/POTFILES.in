@@ -16,6 +16,7 @@ data/ui/preset_row.ui
 data/ui/presets_menu.ui
 data/ui/spectrum.ui
 data/ui/spectrum_settings.ui
+data/ui/stereo_tools.ui
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
@@ -41,7 +42,6 @@ data/ui/pipe_info.glade
 data/ui/pipe_conf_file_line.glade
 data/ui/pipe_settings.glade
 data/ui/reverb.glade
-data/ui/stereo_tools.glade
 data/ui/webrtc.glade
 data/ui/rnnoise.glade
 include/effects_base_ui.hpp

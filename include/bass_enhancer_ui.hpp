@@ -49,7 +49,7 @@ class BassEnhancerUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr, *blend = nullptr;
 
-  Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr, *bypass = nullptr;
+  Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr;
 };
 
 #endif

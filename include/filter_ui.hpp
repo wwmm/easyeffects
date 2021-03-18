@@ -43,8 +43,6 @@ class FilterUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SpinButton *frequency = nullptr, *resonance = nullptr, *inertia = nullptr;
 
-  Gtk::ToggleButton* bypass = nullptr;
-
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 

@@ -32,7 +32,6 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   harmonics_levelbar_label = builder->get_widget<Gtk::Label>("harmonics_levelbar_label");
   ceil_active = builder->get_widget<Gtk::ToggleButton>("ceil_active");
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
-  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   ceil = builder->get_widget<Gtk::SpinButton>("ceil");
   amount = builder->get_widget<Gtk::SpinButton>("amount");
   harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
@@ -53,7 +52,6 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("listen", listen, "active");
-  settings->bind("bypass", bypass, "active");
   settings->bind("ceil-active", ceil_active, "active");
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
@@ -69,8 +67,6 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
 
   ceil->signal_output().connect([&, this]() { return parse_spinbutton_output(ceil, "Hz"); }, true);
   ceil->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(ceil, new_value); }, true);
-
-  settings->set_boolean("bypass", false);
 }
 
 ExciterUi::~ExciterUi() {
@@ -89,7 +85,7 @@ auto ExciterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
 }
 
 void ExciterUi::reset() {
-  settings->reset("bypass");
+  bypass->set_active(false);
 
   settings->reset("input-gain");
 

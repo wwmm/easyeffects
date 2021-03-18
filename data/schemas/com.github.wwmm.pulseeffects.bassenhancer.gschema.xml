@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.bassenhancer">
-        <key name="bypass" type="b">
-            <default>false</default>
-        </key>
         <key name="input-gain" type="d">
             <range min="-36.1" max="36.1" />
             <default>0.0</default>

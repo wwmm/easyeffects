@@ -28,7 +28,6 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   reduction_levelbar = builder->get_widget<Gtk::LevelBar>("reduction_levelbar");
   release = builder->get_widget<Gtk::SpinButton>("release");
   threshold = builder->get_widget<Gtk::SpinButton>("threshold");
@@ -39,7 +38,6 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("bypass", bypass, "active");
   settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
   settings->bind("release", release->get_adjustment().get(), "value");
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
@@ -57,8 +55,6 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
   release->signal_output().connect([&, this]() { return parse_spinbutton_output(release, "ms"); }, true);
   release->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(release, new_value); },
                                   true);
-
-  settings->set_boolean("bypass", false);
 }
 
 MaximizerUi::~MaximizerUi() {
@@ -77,7 +73,7 @@ auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path
 }
 
 void MaximizerUi::reset() {
-  settings->reset("bypass");
+  bypass->set_active(false);
 
   settings->reset("release");
 

@@ -111,6 +111,8 @@ void AutoGainUi::on_new_results(const double& loudness,
 }
 
 void AutoGainUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

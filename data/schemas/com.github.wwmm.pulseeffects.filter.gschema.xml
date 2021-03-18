@@ -15,9 +15,6 @@
         <value nick="18dB/oct Bandreject" value="11" />
     </enum>
     <schema id="com.github.wwmm.pulseeffects.filter">
-        <key name="bypass" type="b">
-            <default>false</default>
-        </key>
         <key name="input-gain" type="d">
             <range min="-36.1" max="36.1" />
             <default>0.0</default>

@@ -28,7 +28,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
   auto_level = builder->get_widget<Gtk::ToggleButton>("auto_level");
   asc = builder->get_widget<Gtk::ToggleButton>("asc");
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
@@ -45,7 +44,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("bypass", bypass, "active");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("limit", limit->get_adjustment().get(), "value");
   settings->bind("lookahead", lookahead->get_adjustment().get(), "value");
@@ -69,8 +67,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   limit->signal_output().connect([&, this]() { return parse_spinbutton_output(limit, "dB"); }, true);
   limit->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(limit, new_value); },
                                 true);
-
-  settings->set_boolean("bypass", false);
 }
 
 LimiterUi::~LimiterUi() {
@@ -89,7 +85,7 @@ auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
 }
 
 void LimiterUi::reset() {
-  settings->reset("bypass");
+  bypass->set_active(false);
 
   settings->reset("input-gain");
 

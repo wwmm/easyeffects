@@ -35,26 +35,17 @@ class PluginUiBase {
   auto operator=(const PluginUiBase&&) -> PluginUiBase& = delete;
   virtual ~PluginUiBase();
 
-  std::string name;
+  Gtk::ToggleButton* bypass = nullptr;
 
   void on_new_input_level(const float& left, const float& right);
   void on_new_output_level(const float& left, const float& right);
-  void on_new_input_level_db(const float& left, const float& right);
-  void on_new_output_level_db(const float& left, const float& right);
-
-  auto level_to_localized_string(const double& value, const int& places) -> std::string;
-  auto level_to_localized_string(const float& value, const int& places) -> std::string;
-  auto string_to_float(const std::string& value) -> float;
-
-  // reset plugin method
-  virtual void reset() = 0;
 
  protected:
+  std::string name;
+
   Glib::RefPtr<Gio::Settings> settings;
 
   Gtk::Button* reset_button = nullptr;
-  Gtk::CheckButton* enable = nullptr;
-  Gtk::Box* controls = nullptr;
 
   Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
@@ -63,16 +54,12 @@ class PluginUiBase {
 
   std::vector<sigc::connection> connections;
 
-  template <typename T>
-  auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
-    std::ostringstream msg;
+  static auto level_to_localized_string(const double& value, const int& places) -> std::string;
+  static auto level_to_localized_string(const float& value, const int& places) -> std::string;
+  static auto string_to_float(const std::string& value) -> float;
 
-    msg.precision(places);
-
-    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
-
-    return msg.str();
-  }
+  // reset plugin method
+  virtual void reset() = 0;
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>
@@ -82,33 +69,6 @@ class PluginUiBase {
                     const T4& w_right_label,
                     const float& left,
                     const float& right) {
-    auto left_db = util::linear_to_db(left);
-    auto right_db = util::linear_to_db(right);
-
-    if (left_db >= -99.0) {
-      w_left->set_value(left);
-      w_left_label->set_text(level_to_localized_string(left_db, 0));
-    } else {
-      w_left->set_value(0.0);
-      w_left_label->set_text("-99");
-    }
-
-    if (right_db >= -99.0) {
-      w_right->set_value(right);
-      w_right_label->set_text(level_to_localized_string(right_db, 0));
-    } else {
-      w_right->set_value(0.0);
-      w_right_label->set_text("-99");
-    }
-  }
-
-  template <typename T1, typename T2, typename T3, typename T4>
-  void update_level_db(const T1& w_left,
-                       const T2& w_left_label,
-                       const T3& w_right,
-                       const T4& w_right_label,
-                       const float& left,
-                       const float& right) {
     if (left >= -99.0) {
       auto db_value = util::db_to_linear(left);
 

@@ -61,6 +61,8 @@ class PluginBase {
 
   float sample_duration = 0.0F;
 
+  bool bypass = false;
+
   bool post_messages = false;
 
   [[nodiscard]] auto get_node_id() const -> uint;
@@ -84,7 +86,6 @@ class PluginBase {
 
   spa_hook listener{};
 
-  bool bypass = false;
   float input_gain = 1.0F;
   float output_gain = 1.0F;
 
