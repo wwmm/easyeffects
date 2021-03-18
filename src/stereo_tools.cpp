@@ -41,6 +41,22 @@ StereoTools::StereoTools(const std::string& tag,
 
   lv2_wrapper->bind_key_double(settings, "balance-out", "balance_out");
 
+  lv2_wrapper->bind_key_double(settings, "sbal", "sbal");
+
+  lv2_wrapper->bind_key_double(settings, "mpan", "mpan");
+
+  lv2_wrapper->bind_key_double(settings, "stereo-base", "stereo_base");
+
+  lv2_wrapper->bind_key_double(settings, "delay", "delay");
+
+  lv2_wrapper->bind_key_double(settings, "sc-level", "sc_level");
+
+  lv2_wrapper->bind_key_double(settings, "stereo-phase", "stereo_phase");
+
+  lv2_wrapper->bind_key_double_db(settings, "slev", "slev");
+
+  lv2_wrapper->bind_key_double_db(settings, "mlev", "mlev");
+
   lv2_wrapper->bind_key_bool(settings, "softclip", "softclip");
 
   lv2_wrapper->bind_key_bool(settings, "mutel", "mutel");
@@ -50,8 +66,6 @@ StereoTools::StereoTools(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "phasel", "phasel");
 
   lv2_wrapper->bind_key_bool(settings, "phaser", "phaser");
-
-  lv2_wrapper->bind_key_double_db(settings, "slev", "slev");
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 }
@@ -115,24 +129,3 @@ void StereoTools::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "sbal", stereo_tools, "sbal", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "mlev", stereo_tools, "mlev", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "mpan", stereo_tools, "mpan", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "stereo-base", stereo_tools, "stereo-base", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "delay", stereo_tools, "delay", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "sc-level", stereo_tools, "sc-level", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "stereo-phase", stereo_tools, "stereo-phase", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
