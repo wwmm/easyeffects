@@ -669,6 +669,35 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
+                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkLabel" id="meter_phase_title">
+                        <property name="halign">end</property>
+                        <property name="xalign">1</property>
+                        <property name="label" translatable="yes">Phase Correlation</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLevelBar" id="meter_phase_levelbar">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="meter_phase_label">
+                        <property name="halign">end</property>
+                        <property name="label">0</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
                 <property name="layout-manager">
                     <object class="GtkBinLayout"></object>
                 </property>
@@ -714,10 +743,12 @@
         <widgets>
             <widget name="input_level_title" />
             <widget name="output_level_title" />
+            <widget name="meter_phase_title" />
             <widget name="input_level_left_label" />
             <widget name="input_level_right_label" />
             <widget name="output_level_left_label" />
             <widget name="output_level_right_label" />
+            <widget name="meter_phase_label" />
         </widgets>
     </object>
 </interface>

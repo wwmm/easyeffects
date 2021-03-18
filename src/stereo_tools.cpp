@@ -123,6 +123,10 @@ void StereoTools::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float correlation = lv2_wrapper->get_control_port_value("meter_phase");
+
+      Glib::signal_idle().connect_once([=, this] { new_correlation.emit(correlation); });
+
       notify();
 
       notification_dt = 0.0F;
