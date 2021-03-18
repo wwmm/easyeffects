@@ -57,10 +57,7 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   reset_history->signal_clicked().connect(
       [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
 
-  target->signal_output().connect([&, this]() { return parse_spinbutton_output(target, "dB"); }, true);
-
-  target->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(target, new_value); },
-                                 true);
+  prepare_spinbutton(target, "dB");
 }
 
 AutoGainUi::~AutoGainUi() {

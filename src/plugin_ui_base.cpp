@@ -54,3 +54,8 @@ void PluginUiBase::on_new_input_level(const float& left, const float& right) {
 void PluginUiBase::on_new_output_level(const float& left, const float& right) {
   update_level(output_level_left, output_level_left_label, output_level_right, output_level_right_label, left, right);
 }
+
+void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const std::string& unit) {
+  button->signal_output().connect([=]() { return parse_spinbutton_output(button, unit); }, true);
+  button->signal_input().connect([=](double& new_value) { return parse_spinbutton_input(button, new_value); }, true);
+}

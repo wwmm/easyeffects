@@ -153,6 +153,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->maximizer->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->spectrum->post_messages = true;
+  effects_base->stereo_tools->post_messages = true;
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -170,6 +171,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->maximizer->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->spectrum->post_messages = false;
+  effects_base->stereo_tools->post_messages = false;
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {

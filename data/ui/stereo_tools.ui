@@ -13,14 +13,13 @@
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
-                <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
             </object>
         </child>
 
         <child>
             <object class="GtkStackSwitcher" id="stack_switcher">
-                <property name="valign">center</property>
+                <property name="halign">center</property>
                 <property name="stack">stack</property>
             </object>
         </child>
@@ -28,7 +27,6 @@
         <child>
             <object class="GtkStack" id="stack">
                 <property name="hexpand">1</property>
-                <property name="vexpand">1</property>
                 <property name="hhomogeneous">0</property>
                 <property name="vhomogeneous">0</property>
                 <property name="transition_duration">250</property>
@@ -41,7 +39,6 @@
                         <property name="child">
                             <object class="GtkGrid">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">48</property>
                                 <child>
@@ -135,8 +132,7 @@
                         <property name="child">
                             <object class="GtkBox">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="spacing">6</property>
+                                <property name="spacing">24</property>
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkComboBoxText" id="mode">
@@ -150,6 +146,79 @@
                                             <item translatable="yes">LR &gt; L+R (Mono Sum L+R)</item>
                                             <item translatable="yes">LR &gt; RL (Stereo Flip Channels)</item>
                                         </items>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="hexpand">1</property>
+                                        <property name="spacing">48</property>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">start</property>
+                                                <property name="valign">center</property>
+                                                <property name="spacing">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Left</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="spacing">6</property>
+                                                        <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkToggleButton" id="mutel">
+                                                                <property name="label" translatable="yes">Mute</property>
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkToggleButton" id="phasel">
+                                                                <property name="label" translatable="yes">Invert Phase</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">end</property>
+                                                <property name="valign">center</property>
+                                                <property name="spacing">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="xalign">1</property>
+                                                        <property name="label" translatable="yes">Right</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkBox">
+                                                        <property name="spacing">6</property>
+                                                        <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkToggleButton" id="muter">
+                                                                <property name="label" translatable="yes">Mute</property>
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkToggleButton" id="phaser">
+                                                                <property name="label" translatable="yes">Invert Phase</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
 
@@ -292,77 +361,6 @@
                                         </child>
                                     </object>
                                 </child>
-
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">start</property>
-                                        <property name="valign">center</property>
-                                        <property name="spacing">24</property>
-                                        <child>
-                                            <object class="GtkBox">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
-                                                <property name="spacing">6</property>
-                                                <child>
-                                                    <object class="GtkLabel">
-                                                        <property name="halign">end</property>
-                                                        <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Left</property>
-                                                    </object>
-                                                </child>
-
-                                                <child>
-                                                    <object class="GtkBox">
-                                                        <property name="orientation">vertical</property>
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="mutel">
-                                                                <property name="label" translatable="yes">Mute</property>
-                                                            </object>
-                                                        </child>
-
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="phasel">
-                                                                <property name="label" translatable="yes">Invert Phase</property>
-                                                            </object>
-                                                        </child>
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkBox">
-                                                <property name="halign">end</property>
-                                                <property name="valign">center</property>
-                                                <property name="spacing">6</property>
-                                                <child>
-                                                    <object class="GtkLabel">
-                                                        <property name="halign">end</property>
-                                                        <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Right</property>
-                                                    </object>
-                                                </child>
-
-                                                <child>
-                                                    <object class="GtkBox">
-                                                        <property name="orientation">vertical</property>
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="muter">
-                                                                <property name="label" translatable="yes">Mute</property>
-                                                            </object>
-                                                        </child>
-
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="phaser">
-                                                                <property name="label" translatable="yes">Invert Phase</property>
-                                                            </object>
-                                                        </child>
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
                             </object>
                         </property>
                     </object>
@@ -375,7 +373,6 @@
                         <property name="child">
                             <object class="GtkGrid">
                                 <property name="halign">center</property>
-                                <property name="valign">center</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">48</property>
                                 <child>

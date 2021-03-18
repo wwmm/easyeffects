@@ -40,17 +40,9 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
   settings->bind("release", release->get_adjustment().get(), "value");
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
 
-  threshold->signal_output().connect([&, this]() { return parse_spinbutton_output(threshold, "dB"); }, true);
-  threshold->signal_input().connect(
-      [&, this](double& new_value) { return parse_spinbutton_input(threshold, new_value); }, true);
-
-  ceiling->signal_output().connect([&, this]() { return parse_spinbutton_output(ceiling, "dB"); }, true);
-  ceiling->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(ceiling, new_value); },
-                                  true);
-
-  release->signal_output().connect([&, this]() { return parse_spinbutton_output(release, "ms"); }, true);
-  release->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(release, new_value); },
-                                  true);
+  prepare_spinbutton(threshold, "dB");
+  prepare_spinbutton(ceiling, "dB");
+  prepare_spinbutton(release, "ms");
 }
 
 MaximizerUi::~MaximizerUi() {

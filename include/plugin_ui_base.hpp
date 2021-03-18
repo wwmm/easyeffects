@@ -68,6 +68,8 @@ class PluginUiBase {
     return msg.str();
   }
 
+  static void prepare_spinbutton(Gtk::SpinButton* button, const std::string& unit);
+
  private:
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,

@@ -126,6 +126,8 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
+
+  prepare_spinbutton(slev, "dB");
 }
 
 StereoToolsUi::~StereoToolsUi() {

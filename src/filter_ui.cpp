@@ -128,17 +128,9 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
-  frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(frequency, "Hz"); }, true);
-  frequency->signal_input().connect(
-      [&, this](double& new_value) { return parse_spinbutton_input(frequency, new_value); }, true);
-
-  resonance->signal_output().connect([&, this]() { return parse_spinbutton_output(resonance, "dB"); }, true);
-  resonance->signal_input().connect(
-      [&, this](double& new_value) { return parse_spinbutton_input(resonance, new_value); }, true);
-
-  inertia->signal_output().connect([&, this]() { return parse_spinbutton_output(inertia, "ms"); }, true);
-  inertia->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(inertia, new_value); },
-                                  true);
+  prepare_spinbutton(resonance, "dB");
+  prepare_spinbutton(frequency, "Hz");
+  prepare_spinbutton(inertia, "ms");
 }
 
 FilterUi::~FilterUi() {
