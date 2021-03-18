@@ -85,30 +85,28 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  builder->get_widget("softclip", softclip);
-  builder->get_widget("mutel", mutel);
-  builder->get_widget("muter", muter);
-  builder->get_widget("phasel", phasel);
-  builder->get_widget("phaser", phaser);
-  builder->get_widget("mode", mode);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+  balance_in = builder->get_widget<Gtk::SpinButton>("balance_in");
+  balance_out = builder->get_widget<Gtk::SpinButton>("balance_out");
+  slev = builder->get_widget<Gtk::SpinButton>("slev");
+  sbal = builder->get_widget<Gtk::SpinButton>("sbal");
+  mlev = builder->get_widget<Gtk::SpinButton>("mlev");
+  mpan = builder->get_widget<Gtk::SpinButton>("mpan");
+  stereo_base = builder->get_widget<Gtk::SpinButton>("stereo_base");
+  delay = builder->get_widget<Gtk::SpinButton>("delay");
+  sc_level = builder->get_widget<Gtk::SpinButton>("sc_level");
+  stereo_phase = builder->get_widget<Gtk::SpinButton>("stereo_phase");
+  softclip = builder->get_widget<Gtk::ToggleButton>("softclip");
+  mutel = builder->get_widget<Gtk::ToggleButton>("mutel");
+  muter = builder->get_widget<Gtk::ToggleButton>("muter");
+  phasel = builder->get_widget<Gtk::ToggleButton>("phasel");
+  phaser = builder->get_widget<Gtk::ToggleButton>("phaser");
+  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
-  get_object(builder, "balance_in", balance_in);
-  get_object(builder, "balance_out", balance_out);
-  get_object(builder, "slev", slev);
-  get_object(builder, "sbal", sbal);
-  get_object(builder, "mlev", mlev);
-  get_object(builder, "mpan", mpan);
-  get_object(builder, "stereo_base", stereo_base);
-  get_object(builder, "delay", delay);
-  get_object(builder, "sc_level", sc_level);
-  get_object(builder, "stereo_phase", stereo_phase);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   // gsettings bindings
-
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("installed", this, "sensitive", flag);
 
@@ -133,7 +131,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
 
-  // reset plugin
   reset_button->signal_clicked().connect([=]() { reset(); });
 }
 

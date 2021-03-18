@@ -37,12 +37,15 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, balance_in, balance_out, slev, sbal, mlev, mpan, stereo_base,
-      delay, sc_level, stereo_phase;
+  Gtk::SpinButton *balance_in = nullptr, *balance_out = nullptr, *slev = nullptr, *sbal = nullptr, *mlev = nullptr,
+                  *mpan = nullptr, *stereo_base = nullptr, *delay = nullptr, *sc_level = nullptr,
+                  *stereo_phase = nullptr;
 
   Gtk::ComboBoxText* mode = nullptr;
 
   Gtk::ToggleButton *softclip = nullptr, *mutel = nullptr, *muter = nullptr, *phasel = nullptr, *phaser = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif
