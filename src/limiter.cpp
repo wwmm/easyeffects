@@ -88,43 +88,46 @@ Limiter::Limiter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager) {}
+    : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Limiter")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  settings->signal_changed("bypass").connect([=, this](auto key) { bypass = settings->get_boolean(key); });
+
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  lv2_wrapper->bind_key_double(settings, "lookahead", "lookahead");
+
+  lv2_wrapper->bind_key_double(settings, "release", "release");
+
+  lv2_wrapper->bind_key_double(settings, "asc-level", "asc-coeff");
+
+  lv2_wrapper->bind_key_double_db(settings, "limit", "limit");
+
+  lv2_wrapper->bind_key_bool(settings, "auto-level", "auto_level");
+
+  lv2_wrapper->bind_key_bool(settings, "asc", "asc");
+
+  lv2_wrapper->bind_key_int(settings, "oversampling", "oversampling");
+}
 
 Limiter::~Limiter() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Limiter::bind_to_gsettings() {
-  //   g_settings_bind_with_mapping(settings, "input-gain", limiter, "level-in", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+//   // Calf limiter did automatic makeup gain by the same amount given as limit.
+//   // See https://github.com/calf-studio-gear/calf/issues/162
+//   // That is why we reduced the output level accordingly binding both limit and output-gain to the same,
+//   // gsettings key, but from 0.90.2 version the "auto-level" toggle was introduced, so we expose the
+//   // output gain as a separate parameter along with the automatic level button.
+//   // See changelog at https://freshcode.club/projects/calf
 
-  //   g_settings_bind_with_mapping(settings, "limit", limiter, "limit", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
-  //                                nullptr, nullptr, nullptr);
-
-  //   // Calf limiter did automatic makeup gain by the same amount given as limit.
-  //   // See https://github.com/calf-studio-gear/calf/issues/162
-  //   // That is why we reduced the output level accordingly binding both limit and output-gain to the same,
-  //   // gsettings key, but from 0.90.2 version the "auto-level" toggle was introduced, so we expose the
-  //   // output gain as a separate parameter along with the automatic level button.
-  //   // See changelog at https://freshcode.club/projects/calf
-
-  //   g_settings_bind_with_mapping(settings, "output-gain", limiter, "level-out", G_SETTINGS_BIND_GET,
-  //                                util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "lookahead", limiter, "attack", G_SETTINGS_BIND_GET,
-  //   util::double_to_float,
-  //                                nullptr, nullptr, nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "release", limiter, "release", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                                nullptr, nullptr, nullptr);
-
-  //   g_settings_bind(settings, "auto-level", limiter, "auto-level", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings, "asc-level", limiter, "asc-coeff", G_SETTINGS_BIND_GET,
-  //   util::double_to_float,
-  //                                nullptr, nullptr, nullptr);
-
-  //   g_settings_bind(settings, "oversampling", limiter, "oversampling", G_SETTINGS_BIND_DEFAULT);
-}
+//   g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);

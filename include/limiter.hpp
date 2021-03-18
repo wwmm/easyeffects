@@ -20,6 +20,7 @@
 #ifndef LIMITER_HPP
 #define LIMITER_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Limiter : public PluginBase {
@@ -31,10 +32,17 @@ class Limiter : public PluginBase {
   auto operator=(const Limiter&&) -> Limiter& = delete;
   ~Limiter() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
   sigc::signal<void(double)> attenuation;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

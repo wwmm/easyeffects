@@ -378,7 +378,7 @@
                     <object class="GtkLabel" id="attenuation_title">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Reduction</property>
+                        <property name="label" translatable="yes">Attenuation</property>
                     </object>
                 </child>
 
@@ -450,6 +450,7 @@
         <widgets>
             <widget name="input_level_title" />
             <widget name="output_level_title" />
+            <widget name="attenuation_title" />
             <widget name="input_level_left_label" />
             <widget name="input_level_right_label" />
             <widget name="output_level_left_label" />
