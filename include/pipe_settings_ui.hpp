@@ -32,7 +32,7 @@
 #include <gtkmm/togglebutton.h>
 #include "application.hpp"
 
-class PipeSettingsUi : public Gtk::Grid {
+class PipeSettingsUi : public Gtk::Box {
  public:
   PipeSettingsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, Application* application);
   PipeSettingsUi(const PipeSettingsUi&) = delete;

@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class GateUi : public Gtk::Grid, public PluginUiBase {
+class GateUi : public Gtk::Box, public PluginUiBase {
  public:
   GateUi(BaseObjectType* cobject,
          const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class GateUi : public Gtk::Grid, public PluginUiBase {
   GateUi(const GateUi&) = delete;
   auto operator=(const GateUi&) -> GateUi& = delete;
   GateUi(const GateUi&&) = delete;
-  auto operator=(const GateUi &&) -> GateUi& = delete;
+  auto operator=(const GateUi&&) -> GateUi& = delete;
   ~GateUi() override;
 
   void on_new_gating(double value);

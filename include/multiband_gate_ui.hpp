@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
+class MultibandGateUi : public Gtk::Box, public PluginUiBase {
  public:
   MultibandGateUi(BaseObjectType* cobject,
                   const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class MultibandGateUi : public Gtk::Grid, public PluginUiBase {
   MultibandGateUi(const MultibandGateUi&) = delete;
   auto operator=(const MultibandGateUi&) -> MultibandGateUi& = delete;
   MultibandGateUi(const MultibandGateUi&&) = delete;
-  auto operator=(const MultibandGateUi &&) -> MultibandGateUi& = delete;
+  auto operator=(const MultibandGateUi&&) -> MultibandGateUi& = delete;
   ~MultibandGateUi() override;
 
   void on_new_output0(double value);

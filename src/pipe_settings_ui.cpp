@@ -24,7 +24,7 @@
 PipeSettingsUi::PipeSettingsUi(BaseObjectType* cobject,
                                const Glib::RefPtr<Gtk::Builder>& builder,
                                Application* application)
-    : Gtk::Grid(cobject),
+    : Gtk::Box(cobject),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
       sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
       soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),

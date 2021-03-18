@@ -28,9 +28,9 @@ LimiterPreset::LimiterPreset()
 void LimiterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".limiter.state", settings->get_boolean("state"));
-
   root.put(section + ".limiter.input-gain", settings->get_double("input-gain"));
+
+  root.put(section + ".limiter.output-gain", settings->get_double("output-gain"));
 
   root.put(section + ".limiter.limit", settings->get_double("limit"));
 
@@ -45,16 +45,14 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
 
   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
-
-  root.put(section + ".limiter.output-gain", settings->get_double("output-gain"));
 }
 
 void LimiterPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".limiter.state");
-
   update_key<double>(root, settings, "input-gain", section + ".limiter.input-gain");
+
+  update_key<double>(root, settings, "output-gain", section + ".limiter.output-gain");
 
   update_key<double>(root, settings, "limit", section + ".limiter.limit");
 
@@ -69,8 +67,6 @@ void LimiterPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "asc-level", section + ".limiter.asc-level");
 
   update_key<int>(root, settings, "oversampling", section + ".limiter.oversampling");
-
-  update_key<double>(root, settings, "output-gain", section + ".limiter.output-gain");
 }
 
 void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {

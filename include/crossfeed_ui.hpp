@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
+class CrossfeedUi : public Gtk::Box, public PluginUiBase {
  public:
   CrossfeedUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class CrossfeedUi : public Gtk::Grid, public PluginUiBase {
   CrossfeedUi(const CrossfeedUi&) = delete;
   auto operator=(const CrossfeedUi&) -> CrossfeedUi& = delete;
   CrossfeedUi(const CrossfeedUi&&) = delete;
-  auto operator=(const CrossfeedUi &&) -> CrossfeedUi& = delete;
+  auto operator=(const CrossfeedUi&&) -> CrossfeedUi& = delete;
   ~CrossfeedUi() override;
 
   void reset() override;

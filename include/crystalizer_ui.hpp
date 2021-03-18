@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
+class CrystalizerUi : public Gtk::Box, public PluginUiBase {
  public:
   CrystalizerUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class CrystalizerUi : public Gtk::Grid, public PluginUiBase {
   CrystalizerUi(const CrystalizerUi&) = delete;
   auto operator=(const CrystalizerUi&) -> CrystalizerUi& = delete;
   CrystalizerUi(const CrystalizerUi&&) = delete;
-  auto operator=(const CrystalizerUi &&) -> CrystalizerUi& = delete;
+  auto operator=(const CrystalizerUi&&) -> CrystalizerUi& = delete;
   ~CrystalizerUi() override;
 
   void on_new_range_before(double value);

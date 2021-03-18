@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class MaximizerUi : public Gtk::Grid, public PluginUiBase {
+class MaximizerUi : public Gtk::Box, public PluginUiBase {
  public:
   MaximizerUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,

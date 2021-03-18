@@ -116,7 +116,7 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
                        const std::string& schema,
                        const std::string& schema_path)
-    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
+    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
   name = "loudness";
 
   // loading glade widgets

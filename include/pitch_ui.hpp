@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class PitchUi : public Gtk::Grid, public PluginUiBase {
+class PitchUi : public Gtk::Box, public PluginUiBase {
  public:
   PitchUi(BaseObjectType* cobject,
           const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class PitchUi : public Gtk::Grid, public PluginUiBase {
   PitchUi(const PitchUi&) = delete;
   auto operator=(const PitchUi&) -> PitchUi& = delete;
   PitchUi(const PitchUi&&) = delete;
-  auto operator=(const PitchUi &&) -> PitchUi& = delete;
+  auto operator=(const PitchUi&&) -> PitchUi& = delete;
   ~PitchUi() override;
 
   void reset() override;

@@ -25,7 +25,7 @@
 #include "glibmm/miscutils.h"
 #include "plugin_ui_base.hpp"
 
-class RNNoiseUi : public Gtk::Grid, public PluginUiBase {
+class RNNoiseUi : public Gtk::Box, public PluginUiBase {
  public:
   RNNoiseUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,

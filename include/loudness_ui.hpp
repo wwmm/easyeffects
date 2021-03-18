@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class LoudnessUi : public Gtk::Grid, public PluginUiBase {
+class LoudnessUi : public Gtk::Box, public PluginUiBase {
  public:
   LoudnessUi(BaseObjectType* cobject,
              const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class LoudnessUi : public Gtk::Grid, public PluginUiBase {
   LoudnessUi(const LoudnessUi&) = delete;
   auto operator=(const LoudnessUi&) -> LoudnessUi& = delete;
   LoudnessUi(const LoudnessUi&&) = delete;
-  auto operator=(const LoudnessUi &&) -> LoudnessUi& = delete;
+  auto operator=(const LoudnessUi&&) -> LoudnessUi& = delete;
   ~LoudnessUi() override;
 
   void reset() override;

@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class LimiterUi : public Gtk::Grid, public PluginUiBase {
+class LimiterUi : public Gtk::Box, public PluginUiBase {
  public:
   LimiterUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,20 +31,27 @@ class LimiterUi : public Gtk::Grid, public PluginUiBase {
   LimiterUi(const LimiterUi&) = delete;
   auto operator=(const LimiterUi&) -> LimiterUi& = delete;
   LimiterUi(const LimiterUi&&) = delete;
-  auto operator=(const LimiterUi &&) -> LimiterUi& = delete;
+  auto operator=(const LimiterUi&&) -> LimiterUi& = delete;
   ~LimiterUi() override;
+
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi*;
 
   void on_new_attenuation(double value);
 
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, limit, lookahead, release, oversampling, asc_level, output_gain;
+  Gtk::ToggleButton* bypass = nullptr;
+
+  Gtk::SpinButton *lookahead = nullptr, *release = nullptr, *limit = nullptr, *oversampling = nullptr,
+                  *asc_level = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::ToggleButton *auto_level = nullptr, *asc = nullptr;
-  Gtk::Grid* asc_grid = nullptr;
 
   Gtk::LevelBar* attenuation = nullptr;
+
   Gtk::Label* attenuation_label = nullptr;
 };
 

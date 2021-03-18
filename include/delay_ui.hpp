@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class DelayUi : public Gtk::Grid, public PluginUiBase {
+class DelayUi : public Gtk::Box, public PluginUiBase {
  public:
   DelayUi(BaseObjectType* cobject,
           const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class DelayUi : public Gtk::Grid, public PluginUiBase {
   DelayUi(const DelayUi&) = delete;
   auto operator=(const DelayUi&) -> DelayUi& = delete;
   DelayUi(const DelayUi&&) = delete;
-  auto operator=(const DelayUi &&) -> DelayUi& = delete;
+  auto operator=(const DelayUi&&) -> DelayUi& = delete;
   ~DelayUi() override;
 
   void reset() override;

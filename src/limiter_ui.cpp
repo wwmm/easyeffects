@@ -23,53 +23,66 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& schema,
                      const std::string& schema_path)
-    : Gtk::Grid(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "limiter";
+    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
+  name = plugin_name::limiter;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("auto-level", auto_level);
-  builder->get_widget("asc", asc);
-  builder->get_widget("asc_grid", asc_grid);
-  builder->get_widget("attenuation", attenuation);
-  builder->get_widget("attenuation_label", attenuation_label);
-  builder->get_widget("plugin_reset", reset_button);
+  bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+  auto_level = builder->get_widget<Gtk::ToggleButton>("auto_level");
+  asc = builder->get_widget<Gtk::ToggleButton>("asc");
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+  asc_level = builder->get_widget<Gtk::SpinButton>("asc_level");
+  limit = builder->get_widget<Gtk::SpinButton>("limit");
+  lookahead = builder->get_widget<Gtk::SpinButton>("lookahead");
+  release = builder->get_widget<Gtk::SpinButton>("release");
+  oversampling = builder->get_widget<Gtk::SpinButton>("oversampling");
+  attenuation = builder->get_widget<Gtk::LevelBar>("attenuation");
+  attenuation_label = builder->get_widget<Gtk::Label>("attenuation_label");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "limit", limit);
-  get_object(builder, "lookahead", lookahead);
-  get_object(builder, "release", release);
-  get_object(builder, "oversampling", oversampling);
-  get_object(builder, "asc_level", asc_level);
-  get_object(builder, "output_gain", output_gain);
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("installed", this, "sensitive");
 
-  settings->bind("installed", this, "sensitive", flag);
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("limit", limit->get_adjustment().get(), "value");
+  settings->bind("lookahead", lookahead->get_adjustment().get(), "value");
+  settings->bind("release", release->get_adjustment().get(), "value");
+  settings->bind("oversampling", oversampling->get_adjustment().get(), "value");
+  settings->bind("asc-level", asc_level->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("auto-level", auto_level, "active");
+  settings->bind("asc", asc, "active");
 
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("limit", limit.get(), "value", flag);
-  settings->bind("lookahead", lookahead.get(), "value", flag);
-  settings->bind("release", release.get(), "value", flag);
-  settings->bind("oversampling", oversampling.get(), "value", flag);
-  settings->bind("auto-level", auto_level, "active", flag);
-  settings->bind("asc", asc, "active", flag);
-  settings->bind("asc", asc_grid, "sensitive", Gio::SettingsBindFlags::SETTINGS_BIND_GET);
-  settings->bind("asc-level", asc_level.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
+  reset_button->signal_clicked().connect([this]() { reset(); });
 
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  settings->set_boolean("bypass", false);
 }
 
 LimiterUi::~LimiterUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/limiter.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<LimiterUi>(builder, "top_box", "com.github.wwmm.pulseeffects.limiter",
+                                                         schema_path + "limiter/");
+
+  auto stack_page = stack->add(*ui, plugin_name::limiter);
+
+  return ui;
+}
+
 void LimiterUi::reset() {
+  settings->reset("bypass");
+
   settings->reset("input-gain");
+
+  settings->reset("output-gain");
 
   settings->reset("limit");
 
@@ -84,8 +97,6 @@ void LimiterUi::reset() {
   settings->reset("asc-level");
 
   settings->reset("oversampling");
-
-  settings->reset("output-gain");
 }
 
 void LimiterUi::on_new_attenuation(double value) {

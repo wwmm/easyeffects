@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class DeesserUi : public Gtk::Grid, public PluginUiBase {
+class DeesserUi : public Gtk::Box, public PluginUiBase {
  public:
   DeesserUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class DeesserUi : public Gtk::Grid, public PluginUiBase {
   DeesserUi(const DeesserUi&) = delete;
   auto operator=(const DeesserUi&) -> DeesserUi& = delete;
   DeesserUi(const DeesserUi&&) = delete;
-  auto operator=(const DeesserUi &&) -> DeesserUi& = delete;
+  auto operator=(const DeesserUi&&) -> DeesserUi& = delete;
   ~DeesserUi() override;
 
   void on_new_compression(double value);

@@ -32,7 +32,7 @@
 #include "plugin_ui_base.hpp"
 #include "sigc++/functors/ptr_fun.h"
 
-class ConvolverUi : public Gtk::Grid, public PluginUiBase {
+class ConvolverUi : public Gtk::Box, public PluginUiBase {
  public:
   ConvolverUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,

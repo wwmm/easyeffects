@@ -218,7 +218,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
                          const std::string& schema_channel,
                          const std::string& schema_channel_left_path,
                          const std::string& schema_channel_right_path)
-    : Gtk::Grid(cobject),
+    : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
       settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
       settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)) {

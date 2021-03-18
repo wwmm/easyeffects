@@ -28,7 +28,7 @@
 #include <gtkmm/togglebutton.h>
 #include "calibration_mic.hpp"
 
-class CalibrationMicUi : public Gtk::Grid {
+class CalibrationMicUi : public Gtk::Box {
  public:
   CalibrationMicUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
   CalibrationMicUi(const CalibrationMicUi&) = delete;

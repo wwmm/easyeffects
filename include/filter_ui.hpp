@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class FilterUi : public Gtk::Grid, public PluginUiBase {
+class FilterUi : public Gtk::Box, public PluginUiBase {
  public:
   FilterUi(BaseObjectType* cobject,
            const Glib::RefPtr<Gtk::Builder>& builder,

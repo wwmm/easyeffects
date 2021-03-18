@@ -46,7 +46,7 @@ struct ImportedBand {
   float slope_dB;
 };
 
-class EqualizerUi : public Gtk::Grid, public PluginUiBase {
+class EqualizerUi : public Gtk::Box, public PluginUiBase {
  public:
   EqualizerUi(BaseObjectType* cobject,
               const Glib::RefPtr<Gtk::Builder>& builder,
@@ -58,7 +58,7 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
   EqualizerUi(const EqualizerUi&) = delete;
   auto operator=(const EqualizerUi&) -> EqualizerUi& = delete;
   EqualizerUi(const EqualizerUi&&) = delete;
-  auto operator=(const EqualizerUi &&) -> EqualizerUi& = delete;
+  auto operator=(const EqualizerUi&&) -> EqualizerUi& = delete;
   ~EqualizerUi() override;
 
   void reset() override;
@@ -85,8 +85,10 @@ class EqualizerUi : public Gtk::Grid, public PluginUiBase {
 
   void on_nbands_changed();
 
-  void build_bands(Gtk::Grid* bands_grid, const Glib::RefPtr<Gio::Settings>& cfg, const int& nbands,
-      const bool& split_mode);
+  void build_bands(Gtk::Grid* bands_grid,
+                   const Glib::RefPtr<Gio::Settings>& cfg,
+                   const int& nbands,
+                   const bool& split_mode);
 
   void on_flat_response();
 

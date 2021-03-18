@@ -11,6 +11,7 @@
         <file>ui/exciter.ui</file>
         <file>ui/filter.ui</file>
         <file>ui/general_settings.ui</file>
+        <file>ui/limiter.ui</file>
         <file>ui/maximizer.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
@@ -21,7 +22,6 @@
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>
-        <file>ui/limiter.glade</file>
         <file>ui/compressor.glade</file>
         <file>ui/multiband_compressor.glade</file>
         <file>ui/equalizer.glade</file>

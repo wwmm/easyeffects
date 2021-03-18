@@ -23,7 +23,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& schema,
                      const std::string& schema_path)
-    : Gtk::Grid(cobject),
+    : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
       model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
   name = "rnnoise";

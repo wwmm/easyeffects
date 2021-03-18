@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class ReverbUi : public Gtk::Grid, public PluginUiBase {
+class ReverbUi : public Gtk::Box, public PluginUiBase {
  public:
   ReverbUi(BaseObjectType* cobject,
            const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class ReverbUi : public Gtk::Grid, public PluginUiBase {
   ReverbUi(const ReverbUi&) = delete;
   auto operator=(const ReverbUi&) -> ReverbUi& = delete;
   ReverbUi(const ReverbUi&&) = delete;
-  auto operator=(const ReverbUi &&) -> ReverbUi& = delete;
+  auto operator=(const ReverbUi&&) -> ReverbUi& = delete;
   ~ReverbUi() override;
 
   void reset() override;

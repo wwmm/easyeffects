@@ -21,7 +21,7 @@
 #include "util.hpp"
 
 CalibrationSignalsUi::CalibrationSignalsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Grid(cobject), cs(std::make_unique<CalibrationSignals>()) {
+    : Gtk::Box(cobject), cs(std::make_unique<CalibrationSignals>()) {
   // loading glade widgets
 
   builder->get_widget("enable", enable);

@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
+class StereoToolsUi : public Gtk::Box, public PluginUiBase {
  public:
   StereoToolsUi(BaseObjectType* cobject,
                 const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class StereoToolsUi : public Gtk::Grid, public PluginUiBase {
   StereoToolsUi(const StereoToolsUi&) = delete;
   auto operator=(const StereoToolsUi&) -> StereoToolsUi& = delete;
   StereoToolsUi(const StereoToolsUi&&) = delete;
-  auto operator=(const StereoToolsUi &&) -> StereoToolsUi& = delete;
+  auto operator=(const StereoToolsUi&&) -> StereoToolsUi& = delete;
   ~StereoToolsUi() override;
 
   void reset() override;

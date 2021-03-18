@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
+class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
  public:
   MultibandCompressorUi(BaseObjectType* cobject,
                         const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class MultibandCompressorUi : public Gtk::Grid, public PluginUiBase {
   MultibandCompressorUi(const MultibandCompressorUi&) = delete;
   auto operator=(const MultibandCompressorUi&) -> MultibandCompressorUi& = delete;
   MultibandCompressorUi(const MultibandCompressorUi&&) = delete;
-  auto operator=(const MultibandCompressorUi &&) -> MultibandCompressorUi& = delete;
+  auto operator=(const MultibandCompressorUi&&) -> MultibandCompressorUi& = delete;
   ~MultibandCompressorUi() override;
 
   void on_new_output0(double value);

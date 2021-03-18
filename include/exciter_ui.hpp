@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class ExciterUi : public Gtk::Grid, public PluginUiBase {
+class ExciterUi : public Gtk::Box, public PluginUiBase {
  public:
   ExciterUi(BaseObjectType* cobject,
             const Glib::RefPtr<Gtk::Builder>& builder,

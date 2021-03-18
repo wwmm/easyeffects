@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class CompressorUi : public Gtk::Grid, public PluginUiBase {
+class CompressorUi : public Gtk::Box, public PluginUiBase {
  public:
   CompressorUi(BaseObjectType* cobject,
                const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class CompressorUi : public Gtk::Grid, public PluginUiBase {
   CompressorUi(const CompressorUi&) = delete;
   auto operator=(const CompressorUi&) -> CompressorUi& = delete;
   CompressorUi(const CompressorUi&&) = delete;
-  auto operator=(const CompressorUi &&) -> CompressorUi& = delete;
+  auto operator=(const CompressorUi&&) -> CompressorUi& = delete;
   ~CompressorUi() override;
 
   void on_new_reduction(double value);

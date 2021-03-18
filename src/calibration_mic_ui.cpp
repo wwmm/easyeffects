@@ -21,7 +21,7 @@
 #include "util.hpp"
 
 CalibrationMicUi::CalibrationMicUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::Grid(cobject), cm(std::make_unique<CalibrationMic>()) {
+    : Gtk::Box(cobject), cm(std::make_unique<CalibrationMic>()) {
   // loading glade widgets
 
   builder->get_widget("start", start);

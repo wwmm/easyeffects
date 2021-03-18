@@ -22,7 +22,7 @@
 
 #include "plugin_ui_base.hpp"
 
-class WebrtcUi : public Gtk::Grid, public PluginUiBase {
+class WebrtcUi : public Gtk::Box, public PluginUiBase {
  public:
   WebrtcUi(BaseObjectType* cobject,
            const Glib::RefPtr<Gtk::Builder>& builder,
@@ -31,7 +31,7 @@ class WebrtcUi : public Gtk::Grid, public PluginUiBase {
   WebrtcUi(const WebrtcUi&) = delete;
   auto operator=(const WebrtcUi&) -> WebrtcUi& = delete;
   WebrtcUi(const WebrtcUi&&) = delete;
-  auto operator=(const WebrtcUi &&) -> WebrtcUi& = delete;
+  auto operator=(const WebrtcUi&&) -> WebrtcUi& = delete;
   ~WebrtcUi() override;
 
   void reset() override;

@@ -28,13 +28,13 @@
 #include <gtkmm/switch.h>
 #include "calibration_signals.hpp"
 
-class CalibrationSignalsUi : public Gtk::Grid {
+class CalibrationSignalsUi : public Gtk::Box {
  public:
   CalibrationSignalsUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
   CalibrationSignalsUi(const CalibrationSignalsUi&) = delete;
   auto operator=(const CalibrationSignalsUi&) -> CalibrationSignalsUi& = delete;
   CalibrationSignalsUi(const CalibrationSignalsUi&&) = delete;
-  auto operator=(const CalibrationSignalsUi &&) -> CalibrationSignalsUi& = delete;
+  auto operator=(const CalibrationSignalsUi&&) -> CalibrationSignalsUi& = delete;
   ~CalibrationSignalsUi() override;
 
   std::unique_ptr<CalibrationSignals> cs;
