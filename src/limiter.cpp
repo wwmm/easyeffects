@@ -104,11 +104,11 @@ Limiter::Limiter(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  lv2_wrapper->bind_key_double(settings, "lookahead", "lookahead");
+  lv2_wrapper->bind_key_double(settings, "lookahead", "attack");
 
   lv2_wrapper->bind_key_double(settings, "release", "release");
 
-  lv2_wrapper->bind_key_double(settings, "asc-level", "asc-coeff");
+  lv2_wrapper->bind_key_double(settings, "asc-level", "asc_coeff");
 
   lv2_wrapper->bind_key_double_db(settings, "limit", "limit");
 
@@ -121,13 +121,60 @@ Limiter::Limiter(const std::string& tag,
 
 Limiter::~Limiter() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-//   // Calf limiter did automatic makeup gain by the same amount given as limit.
-//   // See https://github.com/calf-studio-gear/calf/issues/162
-//   // That is why we reduced the output level accordingly binding both limit and output-gain to the same,
-//   // gsettings key, but from 0.90.2 version the "auto-level" toggle was introduced, so we expose the
-//   // output gain as a separate parameter along with the automatic level button.
-//   // See changelog at https://freshcode.club/projects/calf
+void Limiter::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-//   g_settings_bind(settings, "asc", limiter, "asc", G_SETTINGS_BIND_DEFAULT);
+  lv2_wrapper->create_instance(rate);
+}
+
+void Limiter::process(std::span<float>& left_in,
+                      std::span<float>& right_in,
+                      std::span<float>& left_out,
+                      std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance()) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+  lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
