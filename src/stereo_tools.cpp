@@ -36,6 +36,24 @@ StereoTools::StereoTools(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  lv2_wrapper->bind_key_double(settings, "balance-in", "balance_in");
+
+  lv2_wrapper->bind_key_double(settings, "balance-out", "balance_out");
+
+  lv2_wrapper->bind_key_bool(settings, "softclip", "softclip");
+
+  lv2_wrapper->bind_key_bool(settings, "mutel", "mutel");
+
+  lv2_wrapper->bind_key_bool(settings, "muter", "muter");
+
+  lv2_wrapper->bind_key_bool(settings, "phasel", "phasel");
+
+  lv2_wrapper->bind_key_bool(settings, "phaser", "phaser");
+
+  lv2_wrapper->bind_key_double_db(settings, "slev", "slev");
+
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 }
 
 StereoTools::~StereoTools() {
@@ -97,33 +115,6 @@ void StereoTools::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "input-gain", stereo_tools, "level-in", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "output-gain", stereo_tools, "level-out", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "balance-in", stereo_tools, "balance-in", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "balance-out", stereo_tools, "balance-out", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind(settings, "softclip", stereo_tools, "softclip", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "mutel", stereo_tools, "mutel", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "muter", stereo_tools, "muter", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "phasel", stereo_tools, "phasel", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "phaser", stereo_tools, "phaser", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "mode", stereo_tools, "mode", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind_with_mapping(settings, "slev", stereo_tools, "slev", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
 // g_settings_bind_with_mapping(settings, "sbal", stereo_tools, "sbal", G_SETTINGS_BIND_GET, util::double_to_float,
 //                              nullptr, nullptr, nullptr);

@@ -128,6 +128,8 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
 
   prepare_spinbutton(slev, "dB");
+  prepare_spinbutton(mlev, "dB");
+  prepare_spinbutton(delay, "ms");
 }
 
 StereoToolsUi::~StereoToolsUi() {
