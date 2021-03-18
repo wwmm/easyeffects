@@ -23,7 +23,7 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
     : settings(Gio::Settings::create(schema, schema_path)) {
-  // get widgets that all plguins must have
+  // get widgets that all plugins must have
 
   bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
@@ -42,37 +42,6 @@ PluginUiBase::~PluginUiBase() {
   for (auto& c : connections) {
     c.disconnect();
   }
-}
-
-auto PluginUiBase::level_to_localized_string(const double& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.precision(places);
-
-  msg << std::fixed << value;
-
-  return msg.str();
-}
-
-auto PluginUiBase::level_to_localized_string(const float& value, const int& places) -> std::string {
-  std::ostringstream msg;
-
-  msg.precision(places);
-
-  msg << std::fixed << value;
-
-  return msg.str();
-}
-
-auto PluginUiBase::string_to_float(const std::string& value) -> float {
-  std::stringstream ss;
-
-  float fv = 0.0F;
-
-  ss << value;
-  ss >> fv;
-
-  return fv;
 }
 
 void PluginUiBase::on_new_input_level(const float& left, const float& right) {

@@ -54,12 +54,19 @@ class PluginUiBase {
 
   std::vector<sigc::connection> connections;
 
-  static auto level_to_localized_string(const double& value, const int& places) -> std::string;
-  static auto level_to_localized_string(const float& value, const int& places) -> std::string;
-  static auto string_to_float(const std::string& value) -> float;
-
   // reset plugin method
   virtual void reset() = 0;
+
+  template <typename T>
+  auto level_to_localized_string(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.precision(places);
+
+    msg << std::fixed << value;
+
+    return msg.str();
+  }
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>

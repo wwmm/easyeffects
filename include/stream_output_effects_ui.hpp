@@ -37,7 +37,6 @@
 // #include "reverb_ui.hpp"
 // #include "rnnoise.hpp"
 // #include "rnnoise_ui.hpp"
-// #include "stereo_tools_ui.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:

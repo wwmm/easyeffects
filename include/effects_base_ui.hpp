@@ -37,6 +37,7 @@
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "spectrum_ui.hpp"
+#include "stereo_tools_ui.hpp"
 
 class NodeInfoHolder : public Glib::Object {
  public:
