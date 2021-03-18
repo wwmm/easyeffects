@@ -81,7 +81,7 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
                              const std::string& schema,
                              const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "stereo_tools";
+  name = plugin_name::stereo_tools;
 
   // loading glade widgets
 
@@ -105,8 +105,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   mode = builder->get_widget<Gtk::ComboBoxText>("mode");
 
   // gsettings bindings
-
-  settings->bind("installed", this, "sensitive");
 
   settings->bind("softclip", softclip, "active");
   settings->bind("mutel", mutel, "active");
@@ -138,7 +136,7 @@ auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_pa
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
-      builder, "top_box", "com.github.wwmm.pulseeffects.stereotools", schema_path + "filter/");
+      builder, "top_box", "com.github.wwmm.pulseeffects.stereotools", schema_path + "stereotools/");
 
   auto stack_page = stack->add(*ui, plugin_name::stereo_tools);
 
