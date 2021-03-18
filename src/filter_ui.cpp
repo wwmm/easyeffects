@@ -117,8 +117,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   inertia = builder->get_widget<Gtk::SpinButton>("inertia");
   mode = builder->get_widget<Gtk::ComboBoxText>("mode");
 
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
-
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
@@ -129,8 +127,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
-
-  reset_button->signal_clicked().connect([this]() { reset(); });
 
   frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(frequency, "Hz"); }, true);
   frequency->signal_input().connect(

@@ -40,8 +40,6 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
-
   // gsettings bindings
 
   settings->bind("amount", amount->get_adjustment().get(), "value");
@@ -55,13 +53,11 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("floor-active", floor_active, "active");
   settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
-
   amount->signal_output().connect([&, this]() { return parse_spinbutton_output(amount, "dB"); }, true);
   amount->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(amount, new_value); },
                                  true);
 
-  scope->signal_output().connect([&, this]() { return parse_spinbutton_output(scope, "dB"); }, true);
+  scope->signal_output().connect([&, this]() { return parse_spinbutton_output(scope, "Hz"); }, true);
   scope->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(scope, new_value); },
                                 true);
 

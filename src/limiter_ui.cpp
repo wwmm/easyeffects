@@ -40,8 +40,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   attenuation = builder->get_widget<Gtk::LevelBar>("attenuation");
   attenuation_label = builder->get_widget<Gtk::Label>("attenuation_label");
 
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
-
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
@@ -53,8 +51,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("auto-level", auto_level, "active");
   settings->bind("asc", asc, "active");
-
-  reset_button->signal_clicked().connect([this]() { reset(); });
 
   release->signal_output().connect([&, this]() { return parse_spinbutton_output(release, "ms"); }, true);
   release->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(release, new_value); },

@@ -34,15 +34,11 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
   ceiling = builder->get_widget<Gtk::SpinButton>("ceiling");
   reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
 
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
-
   // gsettings bindings
 
   settings->bind("ceiling", ceiling->get_adjustment().get(), "value");
   settings->bind("release", release->get_adjustment().get(), "value");
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
-
-  reset_button->signal_clicked().connect([this]() { reset(); });
 
   threshold->signal_output().connect([&, this]() { return parse_spinbutton_output(threshold, "dB"); }, true);
   threshold->signal_input().connect(

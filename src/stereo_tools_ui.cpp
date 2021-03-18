@@ -104,34 +104,30 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   phaser = builder->get_widget<Gtk::ToggleButton>("phaser");
   mode = builder->get_widget<Gtk::ComboBoxText>("mode");
 
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
-
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive", flag);
+  settings->bind("installed", this, "sensitive");
 
-  settings->bind("softclip", softclip, "active", flag);
-  settings->bind("mutel", mutel, "active", flag);
-  settings->bind("muter", muter, "active", flag);
-  settings->bind("phasel", phasel, "active", flag);
-  settings->bind("phaser", phaser, "active", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("balance-in", balance_in.get(), "value", flag);
-  settings->bind("balance-out", balance_out.get(), "value", flag);
-  settings->bind("slev", slev.get(), "value", flag);
-  settings->bind("sbal", sbal.get(), "value", flag);
-  settings->bind("mlev", mlev.get(), "value", flag);
-  settings->bind("mpan", mpan.get(), "value", flag);
-  settings->bind("stereo-base", stereo_base.get(), "value", flag);
-  settings->bind("delay", delay.get(), "value", flag);
-  settings->bind("sc-level", sc_level.get(), "value", flag);
-  settings->bind("stereo-phase", stereo_phase.get(), "value", flag);
+  settings->bind("softclip", softclip, "active");
+  settings->bind("mutel", mutel, "active");
+  settings->bind("muter", muter, "active");
+  settings->bind("phasel", phasel, "active");
+  settings->bind("phaser", phaser, "active");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("balance-in", balance_in->get_adjustment().get(), "value");
+  settings->bind("balance-out", balance_out->get_adjustment().get(), "value");
+  settings->bind("slev", slev->get_adjustment().get(), "value");
+  settings->bind("sbal", sbal->get_adjustment().get(), "value");
+  settings->bind("mlev", mlev->get_adjustment().get(), "value");
+  settings->bind("mpan", mpan->get_adjustment().get(), "value");
+  settings->bind("stereo-base", stereo_base->get_adjustment().get(), "value");
+  settings->bind("delay", delay->get_adjustment().get(), "value");
+  settings->bind("sc-level", sc_level->get_adjustment().get(), "value");
+  settings->bind("stereo-phase", stereo_phase->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
-
-  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 StereoToolsUi::~StereoToolsUi() {

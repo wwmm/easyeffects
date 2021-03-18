@@ -45,7 +45,6 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
   lra_label = builder->get_widget<Gtk::Label>("lra_label");
 
   reset_history = builder->get_widget<Gtk::Button>("reset");
-  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   target = builder->get_widget<Gtk::SpinButton>("spinbutton_target");
 
@@ -57,8 +56,6 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
 
   reset_history->signal_clicked().connect(
       [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
-
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
 
   target->signal_output().connect([&, this]() { return parse_spinbutton_output(target, "dB"); }, true);
 

@@ -26,6 +26,7 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
   // get widgets that all plugins must have
 
   bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+  reset_button = builder->get_widget<Gtk::Button>("reset_button");
 
   input_level_left = builder->get_widget<Gtk::LevelBar>("input_level_left");
   input_level_right = builder->get_widget<Gtk::LevelBar>("input_level_right");
@@ -36,6 +37,8 @@ PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
   output_level_right = builder->get_widget<Gtk::LevelBar>("output_level_right");
   output_level_left_label = builder->get_widget<Gtk::Label>("output_level_left_label");
   output_level_right_label = builder->get_widget<Gtk::Label>("output_level_right_label");
+
+  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 PluginUiBase::~PluginUiBase() {
