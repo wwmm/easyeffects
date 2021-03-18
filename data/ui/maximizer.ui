@@ -266,7 +266,6 @@
                     <object class="GtkLabel" id="reduction_label">
                         <property name="halign">end</property>
                         <property name="label">0</property>
-
                     </object>
                 </child>
             </object>

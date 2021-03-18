@@ -172,6 +172,10 @@ void Limiter::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float attenuation_value = lv2_wrapper->get_control_port_value("att");
+
+      Glib::signal_idle().connect_once([=, this] { attenuation.emit(attenuation_value); });
+
       notify();
 
       notification_dt = 0.0F;

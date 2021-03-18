@@ -58,6 +58,18 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   reset_button->signal_clicked().connect([this]() { reset(); });
 
+  release->signal_output().connect([&, this]() { return parse_spinbutton_output(release, "ms"); }, true);
+  release->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(release, new_value); },
+                                  true);
+
+  lookahead->signal_output().connect([&, this]() { return parse_spinbutton_output(lookahead, "ms"); }, true);
+  lookahead->signal_input().connect(
+      [&, this](double& new_value) { return parse_spinbutton_input(lookahead, new_value); }, true);
+
+  limit->signal_output().connect([&, this]() { return parse_spinbutton_output(limit, "dB"); }, true);
+  limit->signal_input().connect([&, this](double& new_value) { return parse_spinbutton_input(limit, new_value); },
+                                true);
+
   settings->set_boolean("bypass", false);
 }
 
