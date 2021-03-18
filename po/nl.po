@@ -7,19 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pulseeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-20 19:56-0300\n"
+"POT-Creation-Date: 2021-03-17 23:03-0300\n"
 "PO-Revision-Date: 2021-03-13 21:24+0100\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl\n"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3 data/ui/application.glade:61
+#: data/com.github.wwmm.pulseeffects.desktop.in:3
+#: data/ui/application_window.ui:25
 msgid "PulseEffects"
 msgstr "PulseEffecten"
 
@@ -87,7 +88,7 @@ msgstr "Invoerbeperking"
 
 #: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
 #: data/ui/compressor.glade:110 data/ui/compressor.glade:589
-#: data/ui/webrtc.glade:633
+#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:122
 msgid "Compressor"
 msgstr "Compressor"
 
@@ -103,8 +104,8 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limiter;compressor;galm;equalizer;automatisch;volume;"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:44
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:47
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:24
+#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:27
 msgid "\"Presets\""
 msgstr "'Voorinstellingen'"
 
@@ -112,142 +113,115 @@ msgstr "'Voorinstellingen'"
 msgid "Audio effects for PulseAudio applications"
 msgstr "Audio-effecten voor PulseAudio-toepassingen"
 
-#: data/ui/app_button_row.glade:49
-msgid "Applications"
-msgstr "Toepassingen"
-
-#: data/ui/app_info.glade:203
+#: data/ui/app_info.ui:66
 msgid "Add to Blocklist"
 msgstr "Toevoegen aan zwarte lijst"
 
-#: data/ui/app_info.glade:239
+#: data/ui/app_info.ui:82
 msgid "Format"
 msgstr "Formaat"
 
-#: data/ui/app_info.glade:264 data/ui/convolver.glade:348
+#: data/ui/app_info.ui:108 data/ui/convolver.glade:348
 msgid "Rate"
 msgstr "Snelheid"
 
-#: data/ui/app_info.glade:289 data/ui/pipe_info.glade:239
-#: data/ui/stereo_tools.glade:756
+#: data/ui/app_info.ui:134 data/ui/stereo_tools.glade:756
 msgid "Channels"
 msgstr "Aantal kanalen"
 
-#: data/ui/app_info.glade:314 data/ui/pipe_settings.glade:190
-#: data/ui/pipe_settings.glade:290 data/ui/pipe_settings.glade:476
-#: data/ui/pipe_settings.glade:576
+#: data/ui/app_info.ui:160 data/ui/pipe_settings.glade:96
+#: data/ui/pipe_settings.glade:179
 msgid "Latency"
 msgstr "Vertraging"
 
-#: data/ui/app_info.glade:339
+#: data/ui/app_info.ui:186
 msgid "State"
 msgstr "Status"
 
-#: data/ui/application.glade:142 src/calibration_ui.cpp:64
-#: src/calibration_ui.cpp:191
+#: data/ui/application_window.ui:58 src/calibration_ui.cpp:56
+#: src/calibration_ui.cpp:182
 msgid "Test Signals"
 msgstr "Signalen testen"
 
-#: data/ui/application.glade:157
+#: data/ui/application_window.ui:69
 msgid "Global Bypass"
 msgstr "Globale omzeiling"
 
-#: data/ui/application.glade:172 data/ui/equalizer.glade:331
-#: data/ui/general_settings.glade:289
-msgid "Settings"
-msgstr "Instellingen"
-
-#: data/ui/application.glade:194
+#: data/ui/application_window.ui:80
 msgid "Help"
 msgstr "Hulp"
 
-#: data/ui/application.glade:217 data/ui/crossfeed.glade:240
-#: data/ui/equalizer.glade:403 data/ui/filter.glade:344
-#: data/ui/reverb.glade:401 src/presets_menu_ui.cpp:133
-#: src/presets_menu_ui.cpp:285 src/presets_menu_ui.cpp:286
-#: src/presets_menu_ui.cpp:303 src/presets_menu_ui.cpp:304
+#: data/ui/application_window.ui:91 data/ui/application_window.ui:142
+#: data/ui/equalizer.glade:331
+msgid "Settings"
+msgstr "Instellingen"
+
+#: data/ui/application_window.ui:105 data/ui/crossfeed.glade:240
+#: data/ui/equalizer.glade:403 data/ui/reverb.glade:401
+#: src/presets_menu_ui.cpp:180 src/presets_menu_ui.cpp:355
+#: src/presets_menu_ui.cpp:356 src/presets_menu_ui.cpp:373
+#: src/presets_menu_ui.cpp:374
 msgid "Presets"
 msgstr "Voorinstellingen"
 
-#: data/ui/autogain.glade:90
-msgid "Auto Gain"
-msgstr "Automatisch versterken"
-
-#: data/ui/autogain.glade:161 data/ui/bass_enhancer.glade:167
-#: data/ui/compressor.glade:214 data/ui/convolver.glade:218
-#: data/ui/crossfeed.glade:136 data/ui/crystalizer.glade:134
-#: data/ui/deesser.glade:182 data/ui/delay.glade:144
-#: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:187
-#: data/ui/equalizer_band.glade:230 data/ui/exciter.glade:167
-#: data/ui/filter.glade:243 data/ui/general_settings.glade:298
-#: data/ui/gate.glade:172 data/ui/limiter.glade:166 data/ui/loudness.glade:174
-#: data/ui/maximizer.glade:139 data/ui/multiband_compressor.glade:307
-#: data/ui/multiband_gate.glade:331 data/ui/pitch.glade:158
-#: data/ui/reverb.glade:299 data/ui/stereo_tools.glade:194
-#: data/ui/webrtc.glade:141 data/ui/rnnoise.glade:139
-msgid "Reset"
-msgstr "Standaardwaarden"
-
-#: data/ui/autogain.glade:185 data/ui/rnnoise.glade:163
-msgid "Based on"
-msgstr "Gebaseerd op"
-
-#: data/ui/autogain.glade:262
-msgid "Reset History"
-msgstr "Geschiedenis wissen"
-
-#: data/ui/autogain.glade:274
-msgid "Detect Silence"
-msgstr "Stilte herkennen"
-
-#: data/ui/autogain.glade:286
-msgid "Use Geometric Mean"
-msgstr "Geometrisch gemiddelde gebruiken"
-
-#: data/ui/autogain.glade:325
+#: data/ui/autogain.ui:22
 msgid "Target"
 msgstr "Doel"
 
-#: data/ui/autogain.glade:374 data/ui/autogain.glade:779
+#: data/ui/autogain.ui:45
+msgid "Reset History"
+msgstr "Geschiedenis wissen"
+
+#: data/ui/autogain.ui:60
 msgid "Momentary"
 msgstr "Kortstondig"
 
-#: data/ui/autogain.glade:434
-msgid "Weights"
-msgstr "Zwaarte"
-
-#: data/ui/autogain.glade:448 data/ui/autogain.glade:792
+#: data/ui/autogain.ui:89
 msgid "Short Term"
 msgstr "Korte termijn"
 
-#: data/ui/autogain.glade:497 data/ui/autogain.glade:805
+#: data/ui/autogain.ui:118
 msgid "Integrated"
 msgstr "Geïntegreerd"
 
-#: data/ui/autogain.glade:564 data/ui/autogain.glade:1076
-#: data/ui/bass_enhancer.glade:596 data/ui/compressor.glade:1086
-#: data/ui/convolver.glade:575 data/ui/crossfeed.glade:391
-#: data/ui/crystalizer.glade:250 data/ui/deesser.glade:783
-#: data/ui/delay.glade:328 data/ui/equalizer.glade:682
-#: data/ui/exciter.glade:596 data/ui/filter.glade:508 data/ui/gate.glade:689
-#: data/ui/limiter.glade:501 data/ui/loudness.glade:238
-#: data/ui/loudness.glade:431 data/ui/maximizer.glade:358
+#: data/ui/autogain.ui:147
+msgid "Relative"
+msgstr "Relatief"
+
+#: data/ui/autogain.ui:176
+msgid "Range"
+msgstr "Bereik"
+
+#: data/ui/autogain.ui:208 include/effects_base_ui.hpp:133
+msgid "Loudness"
+msgstr "Hardheid"
+
+#: data/ui/autogain.ui:238
+#, fuzzy
+msgid "Output Gain"
+msgstr "Uitvoer"
+
+#: data/ui/autogain.ui:269 data/ui/bass_enhancer.ui:237 data/ui/exciter.ui:237
+#: data/ui/filter.ui:160 data/ui/limiter.ui:229 data/ui/maximizer.ui:136
+#: data/ui/compressor.glade:1086 data/ui/convolver.glade:575
+#: data/ui/crossfeed.glade:391 data/ui/crystalizer.glade:250
+#: data/ui/deesser.glade:783 data/ui/delay.glade:328
+#: data/ui/equalizer.glade:682 data/ui/gate.glade:689
+#: data/ui/loudness.glade:238 data/ui/loudness.glade:431
 #: data/ui/multiband_compressor.glade:2103 data/ui/multiband_gate.glade:2262
-#: data/ui/pitch.glade:450 data/ui/presets_menu.glade:238
-#: data/ui/reverb.glade:753 data/ui/stereo_tools.glade:427
-#: data/ui/stereo_tools.glade:931 data/ui/webrtc.glade:780
-#: data/ui/rnnoise.glade:362
+#: data/ui/pitch.glade:450 data/ui/reverb.glade:753
+#: data/ui/stereo_tools.glade:427 data/ui/stereo_tools.glade:931
+#: data/ui/webrtc.glade:780 data/ui/rnnoise.glade:362
 msgid "Input"
 msgstr "Invoer"
 
-#: data/ui/autogain.glade:577 data/ui/autogain.glade:1020
-#: data/ui/bass_enhancer.glade:625 data/ui/compressor.glade:1099
-#: data/ui/convolver.glade:588 data/ui/crossfeed.glade:405
-#: data/ui/crystalizer.glade:263 data/ui/deesser.glade:797
-#: data/ui/delay.glade:341 data/ui/equalizer.glade:695
-#: data/ui/exciter.glade:625 data/ui/filter.glade:521 data/ui/gate.glade:703
-#: data/ui/limiter.glade:636 data/ui/loudness.glade:271
-#: data/ui/loudness.glade:445 data/ui/maximizer.glade:372
+#: data/ui/autogain.ui:327 data/ui/bass_enhancer.ui:313 data/ui/exciter.ui:313
+#: data/ui/filter.ui:236 data/ui/limiter.ui:305 data/ui/maximizer.ui:194
+#: data/ui/compressor.glade:1099 data/ui/convolver.glade:588
+#: data/ui/crossfeed.glade:405 data/ui/crystalizer.glade:263
+#: data/ui/deesser.glade:797 data/ui/delay.glade:341
+#: data/ui/equalizer.glade:695 data/ui/gate.glade:703
+#: data/ui/loudness.glade:271 data/ui/loudness.glade:445
 #: data/ui/multiband_compressor.glade:894
 #: data/ui/multiband_compressor.glade:1272
 #: data/ui/multiband_compressor.glade:1651
@@ -255,112 +229,354 @@ msgstr "Invoer"
 #: data/ui/multiband_compressor.glade:2116 data/ui/multiband_gate.glade:951
 #: data/ui/multiband_gate.glade:1363 data/ui/multiband_gate.glade:1776
 #: data/ui/multiband_gate.glade:2189 data/ui/multiband_gate.glade:2275
-#: data/ui/pitch.glade:463 data/ui/presets_menu.glade:137
-#: data/ui/reverb.glade:766 data/ui/stereo_tools.glade:901
-#: data/ui/stereo_tools.glade:944 data/ui/webrtc.glade:794
-#: data/ui/rnnoise.glade:375
+#: data/ui/pitch.glade:463 data/ui/reverb.glade:766
+#: data/ui/stereo_tools.glade:901 data/ui/stereo_tools.glade:944
+#: data/ui/webrtc.glade:794 data/ui/rnnoise.glade:375
 msgid "Output"
 msgstr "Uitvoer"
 
-#: data/ui/autogain.glade:899
-msgid "Relative"
-msgstr "Relatief"
+#: data/ui/autogain.ui:389 data/ui/bass_enhancer.ui:423 data/ui/exciter.ui:423
+#: data/ui/filter.ui:316 data/ui/limiter.ui:415 data/ui/maximizer.ui:287
+#: data/ui/compressor.glade:214 data/ui/convolver.glade:218
+#: data/ui/crossfeed.glade:136 data/ui/crystalizer.glade:134
+#: data/ui/deesser.glade:182 data/ui/delay.glade:144
+#: data/ui/equalizer.glade:450 data/ui/equalizer_band.glade:187
+#: data/ui/equalizer_band.glade:230 data/ui/gate.glade:172
+#: data/ui/loudness.glade:174 data/ui/multiband_compressor.glade:307
+#: data/ui/multiband_gate.glade:331 data/ui/pitch.glade:158
+#: data/ui/reverb.glade:299 data/ui/stereo_tools.glade:194
+#: data/ui/webrtc.glade:141 data/ui/rnnoise.glade:139
+msgid "Reset"
+msgstr "Standaardwaarden"
 
-#: data/ui/autogain.glade:912 data/ui/compressor.glade:1262
-msgid "Gain"
-msgstr "Versterking"
+#: data/ui/autogain.ui:402 data/ui/rnnoise.glade:163
+msgid "Based on"
+msgstr "Gebaseerd op"
 
-#: data/ui/autogain.glade:980
-msgid "Loudness"
-msgstr "Hardheid"
+#: data/ui/bass_enhancer.ui:21 data/ui/exciter.ui:21 data/ui/filter.ui:17
+#: data/ui/limiter.ui:39 data/ui/maximizer.ui:17
+#: data/ui/crystalizer_band.glade:40 data/ui/multiband_compressor.glade:580
+#: data/ui/multiband_compressor.glade:958
+#: data/ui/multiband_compressor.glade:1337
+#: data/ui/multiband_compressor.glade:1716 data/ui/multiband_gate.glade:604
+#: data/ui/multiband_gate.glade:1015 data/ui/multiband_gate.glade:1428
+#: data/ui/multiband_gate.glade:1841
+msgid "Bypass"
+msgstr "Omzeiling"
 
-#: data/ui/autogain.glade:1034
-msgid "Range"
-msgstr "Bereik"
-
-#: data/ui/bass_enhancer.glade:116
-msgid "Bass Enhancer"
-msgstr "Basversterker"
-
-#: data/ui/bass_enhancer.glade:191 data/ui/compressor.glade:238
-#: data/ui/crossfeed.glade:160 data/ui/deesser.glade:206
-#: data/ui/delay.glade:168 data/ui/equalizer.glade:474
-#: data/ui/exciter.glade:191 data/ui/filter.glade:267 data/ui/gate.glade:196
-#: data/ui/limiter.glade:190 data/ui/loudness.glade:143
-#: data/ui/maximizer.glade:163 data/ui/multiband_compressor.glade:331
-#: data/ui/multiband_gate.glade:355 data/ui/pitch.glade:182
-#: data/ui/reverb.glade:323 data/ui/stereo_tools.glade:218
-#: data/ui/webrtc.glade:165
-msgid "Provided by"
-msgstr "Geleverd door"
-
-#: data/ui/bass_enhancer.glade:259 data/ui/compressor.glade:602
-#: data/ui/deesser.glade:274 data/ui/exciter.glade:259
+#: data/ui/bass_enhancer.ui:28 data/ui/exciter.ui:28
+#: data/ui/compressor.glade:602 data/ui/deesser.glade:274
 msgid "Listen"
 msgstr "Beluisteren"
 
-#: data/ui/bass_enhancer.glade:302 data/ui/exciter.glade:303
-msgid "3rd"
-msgstr "3e"
-
-#: data/ui/bass_enhancer.glade:315 data/ui/exciter.glade:316
-msgid "2nd"
-msgstr "2e"
-
-#: data/ui/bass_enhancer.glade:327 data/ui/exciter.glade:328
+#: data/ui/bass_enhancer.ui:37 data/ui/exciter.ui:37
 msgid "Blend Harmonics"
 msgstr "Harmonieën mengen"
 
-#: data/ui/bass_enhancer.glade:355 data/ui/exciter.glade:357
-#: data/ui/reverb.glade:498
+#: data/ui/bass_enhancer.ui:49 data/ui/exciter.ui:49
+msgid "3rd"
+msgstr "3e"
+
+#: data/ui/bass_enhancer.ui:82 data/ui/exciter.ui:82
+msgid "2nd"
+msgstr "2e"
+
+#: data/ui/bass_enhancer.ui:98 data/ui/exciter.ui:98 data/ui/reverb.glade:498
 msgid "Amount"
 msgstr "Hoeveelheid"
 
-#: data/ui/bass_enhancer.glade:367 data/ui/bass_enhancer.glade:504
-#: data/ui/exciter.glade:369 data/ui/exciter.glade:504
+#: data/ui/bass_enhancer.ui:131 data/ui/bass_enhancer.ui:389
+#: data/ui/exciter.ui:131 data/ui/exciter.ui:389
 msgid "Harmonics"
 msgstr "Harmonieën"
 
-#: data/ui/bass_enhancer.glade:379 data/ui/exciter.glade:381
+#: data/ui/bass_enhancer.ui:165 data/ui/exciter.ui:165
 msgid "Scope"
 msgstr "Bereik"
 
-#: data/ui/bass_enhancer.glade:472
+#: data/ui/bass_enhancer.ui:196
 msgid "Floor"
 msgstr "Verdieping"
 
-#: data/ui/blocklist_settings.glade:52 data/ui/blocklist_settings.glade:155
-#: data/ui/presets_menu.glade:65 data/ui/presets_menu.glade:166
-msgid "Create Preset"
-msgstr "Voorinstelling maken"
+#: data/ui/bass_enhancer.ui:436 data/ui/exciter.ui:436 data/ui/filter.ui:329
+#: data/ui/limiter.ui:428 data/ui/maximizer.ui:300
+#, fuzzy
+msgid "Based on a"
+msgstr "Gebaseerd op"
 
-#: data/ui/blocklist_settings.glade:68 data/ui/blocklist_settings.glade:171
-#: data/ui/presets_menu.glade:52 data/ui/presets_menu.glade:153
+#: data/ui/effects_base.ui:73
+msgid "Add Plugin"
+msgstr ""
+
+#: data/ui/effects_base.ui:199
+msgid "Blocklist"
+msgstr "Zwarte lijst"
+
+#: data/ui/effects_base.ui:226
+msgid "Player Name"
+msgstr ""
+
+#: data/ui/effects_base.ui:313 data/ui/presets_menu.ui:87
+#: data/ui/presets_menu.ui:197
+msgid "Search"
+msgstr ""
+
+#: data/ui/exciter.ui:196
+msgid "ceil"
+msgstr ""
+
+#: data/ui/filter.ui:25
+msgid "12dB/oct Lowpass"
+msgstr "12dB/oct low-pass"
+
+#: data/ui/filter.ui:26
+msgid "24dB/oct Lowpass"
+msgstr "24dB/oct low-pass"
+
+#: data/ui/filter.ui:27
+msgid "36dB/oct Lowpass"
+msgstr "36dB/oct low-pass"
+
+#: data/ui/filter.ui:28
+msgid "12dB/oct Highpass"
+msgstr "12dB/oct high-pass"
+
+#: data/ui/filter.ui:29
+msgid "24dB/oct Highpass"
+msgstr "24dB/oct high-pass"
+
+#: data/ui/filter.ui:30
+msgid "36dB/oct Highpass"
+msgstr "36dB/oct high-pass"
+
+#: data/ui/filter.ui:31
+msgid "6dB/oct Bandpass"
+msgstr "6dB/oct band-pass"
+
+#: data/ui/filter.ui:32
+msgid "12dB/oct Bandpass"
+msgstr "12dB/oct band-pass"
+
+#: data/ui/filter.ui:33
+msgid "18dB/oct Bandpass"
+msgstr "18dB/oct band-pass"
+
+#: data/ui/filter.ui:34
+msgid "6dB/oct Bandreject"
+msgstr "6dB/oct band-reject"
+
+#: data/ui/filter.ui:35
+msgid "12dB/oct Bandreject"
+msgstr "12dB/oct band-reject"
+
+#: data/ui/filter.ui:36
+msgid "18dB/oct Bandreject"
+msgstr "18dB/oct band-reject"
+
+#: data/ui/filter.ui:51 data/ui/calibration_signals.glade:135
+#: data/ui/equalizer_band.glade:158
+msgid "Frequency"
+msgstr "Frequentie"
+
+#: data/ui/filter.ui:85 data/ui/equalizer_band.glade:70
+msgid "Resonance"
+msgstr "Resonantie"
+
+#: data/ui/filter.ui:119
+msgid "Inertia"
+msgstr "Traagheid"
+
+#: data/ui/general_settings.ui:17
+msgid "Start Service at Login"
+msgstr "Automatisch opstarten"
+
+#: data/ui/general_settings.ui:37
+msgid "Process All Outputs"
+msgstr "Alle uitvoerbronnen gebruiken"
+
+#: data/ui/general_settings.ui:57
+msgid "Process All Inputs"
+msgstr "Alle invoerbronnen gebruiken"
+
+#: data/ui/general_settings.ui:77
+msgid "Use Dark Theme"
+msgstr "Donker thema"
+
+#: data/ui/general_settings.ui:114
+#, fuzzy
+msgid "Reset All Settings"
+msgstr "Instellingen"
+
+#: data/ui/general_settings.ui:120
+#, fuzzy
+msgid "About PulseEffects"
+msgstr "PulseEffecten"
+
+#: data/ui/limiter.ui:23
+msgid "Automatic Leveling"
+msgstr "Automatische niveau's"
+
+#: data/ui/limiter.ui:31
+msgid "Automatic Smoothing Control"
+msgstr "Automatische afvlakking bedienen"
+
+#: data/ui/limiter.ui:55 data/ui/compressor.glade:716
+msgid "Lookahead"
+msgstr "Vooruitblik"
+
+#: data/ui/limiter.ui:89 data/ui/maximizer.ui:95 data/ui/compressor.glade:520
+#: data/ui/gate.glade:464 data/ui/multiband_compressor.glade:673
+#: data/ui/multiband_compressor.glade:1051
+#: data/ui/multiband_compressor.glade:1430
+#: data/ui/multiband_compressor.glade:1809 data/ui/multiband_gate.glade:697
+#: data/ui/multiband_gate.glade:1108 data/ui/multiband_gate.glade:1521
+#: data/ui/multiband_gate.glade:1934
+msgid "Release"
+msgstr "Vrijgave"
+
+#: data/ui/limiter.ui:123
+msgid "Limit"
+msgstr "Beperken"
+
+#: data/ui/limiter.ui:155
+msgid "Oversampling"
+msgstr "Oversamplen"
+
+#: data/ui/limiter.ui:189
+msgid "ASC"
+msgstr "ASC"
+
+#: data/ui/limiter.ui:381
+msgid "Attenuation"
+msgstr "Verzwakking"
+
+#: data/ui/maximizer.ui:31 data/ui/compressor.glade:386
+#: data/ui/deesser.glade:436 data/ui/gate.glade:498
+#: data/ui/multiband_compressor.glade:707
+#: data/ui/multiband_compressor.glade:1085
+#: data/ui/multiband_compressor.glade:1464
+#: data/ui/multiband_compressor.glade:1843 data/ui/multiband_gate.glade:731
+#: data/ui/multiband_gate.glade:1142 data/ui/multiband_gate.glade:1555
+#: data/ui/multiband_gate.glade:1968
+msgid "Threshold"
+msgstr "Drempelwaarde"
+
+#: data/ui/maximizer.ui:63
+msgid "Ceiling"
+msgstr "Plafond"
+
+#: data/ui/maximizer.ui:252 data/ui/deesser.glade:959
+#: data/ui/multiband_gate.glade:865 data/ui/multiband_gate.glade:1298
+#: data/ui/multiband_gate.glade:1711 data/ui/multiband_gate.glade:2124
+msgid "Reduction"
+msgstr "Verlaging"
+
+#: data/ui/preset_row.ui:17
+msgid "Load"
+msgstr "Laden"
+
+#: data/ui/preset_row.ui:24
+msgid "Save current settings to this preset file"
+msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
+
+#: data/ui/preset_row.ui:32
+msgid ""
+"Automatically apply this preset whenever the currently used device is "
+"plugged in the system"
+msgstr ""
+"Pas deze voorinstellingen automatisch toe zodra het huidige apparaat wordt "
+"aangekoppeld"
+
+#: data/ui/preset_row.ui:38
+msgid "Remove this preset file"
+msgstr "Verwijder dit voorinstellingsbestand"
+
+#: data/ui/presets_menu.ui:29
+msgid "Speakers"
+msgstr ""
+
+#: data/ui/presets_menu.ui:52 data/ui/presets_menu.ui:162
 #: data/ui/pipe_info.glade:50
 msgid "Name"
 msgstr "Naam"
 
-#: data/ui/blocklist_settings.glade:81
-msgid "Reconnect the microphone to apply new changes made to the Blocklist"
-msgstr ""
-"Plug de microfoon opnieuw in om de wijzigingen aan de zwarte lijst toe te "
-"passen"
+#: data/ui/presets_menu.ui:58 data/ui/presets_menu.ui:168
+msgid "Create Preset"
+msgstr "Voorinstelling maken"
 
-#: data/ui/blocklist_settings.glade:139 data/ui/pipe_settings.glade:383
-msgid "Input Effects"
-msgstr "Invoereffecten"
+#: data/ui/presets_menu.ui:75 data/ui/presets_menu.ui:185
+msgid "Import Presets"
+msgstr "Importeer voorinstellingen"
 
-#: data/ui/blocklist_settings.glade:230
-msgid "Restart the player to apply new changes made to the Blocklist"
-msgstr "Herstart de speler om de wijzigingen aan de zwarte lijst toe te passen"
+#: data/ui/presets_menu.ui:139
+#, fuzzy
+msgid "Microphone"
+msgstr "Microfoon kalibreren"
 
-#: data/ui/blocklist_settings.glade:242 data/ui/pipe_settings.glade:688
-msgid "Output Effects"
-msgstr "Uitvoereffecten"
+#: data/ui/spectrum_settings.ui:22
+msgid "Show Spectrum"
+msgstr "Spectrum tonen"
 
-#: data/ui/blocklist_settings.glade:265
-msgid "Show Blocklisted Apps in Main Tab"
-msgstr "Toepassingen op zwarte lijst tonen op hoofdtabblad"
+#: data/ui/spectrum_settings.ui:43
+msgid "Fill"
+msgstr "Opvullen"
+
+#: data/ui/spectrum_settings.ui:64
+msgid "Border"
+msgstr "Rand"
+
+#: data/ui/spectrum_settings.ui:85
+msgid "Use Custom Color"
+msgstr "Aangepaste kleur gebruiken"
+
+#: data/ui/spectrum_settings.ui:106
+msgid "Use Gradient"
+msgstr "Kleurverloop gebruiken"
+
+#: data/ui/spectrum_settings.ui:136
+msgid "Spectrum Type"
+msgstr "Soort spectrum"
+
+#: data/ui/spectrum_settings.ui:147
+msgid "Bars"
+msgstr "Balken"
+
+#: data/ui/spectrum_settings.ui:148
+msgid "Lines"
+msgstr "Lijnen"
+
+#: data/ui/spectrum_settings.ui:160
+msgid "Spectrum Color"
+msgstr "Spectrumkleur"
+
+#: data/ui/spectrum_settings.ui:181
+msgid "Gradient Color"
+msgstr "Kleurverloop"
+
+#: data/ui/spectrum_settings.ui:202
+msgid "Axis Color"
+msgstr "Askleur"
+
+#: data/ui/spectrum_settings.ui:234
+msgid "Points"
+msgstr "Points"
+
+#: data/ui/spectrum_settings.ui:267
+msgid "Height"
+msgstr "Lengte"
+
+#: data/ui/spectrum_settings.ui:301
+msgid "Line Width"
+msgstr "Lijnbreedte"
+
+#: data/ui/spectrum_settings.ui:334
+#, fuzzy
+msgid "Minimum"
+msgstr "Maximaal"
+
+#: data/ui/spectrum_settings.ui:367 data/ui/gate.glade:394
+msgid "Maximum"
+msgstr "Maximaal"
 
 #: data/ui/calibration_signals.glade:32
 msgid "Sine"
@@ -418,11 +634,6 @@ msgstr "Violet-ruis"
 msgid "Volume"
 msgstr "Volume"
 
-#: data/ui/calibration_signals.glade:135 data/ui/equalizer_band.glade:158
-#: data/ui/filter.glade:394
-msgid "Frequency"
-msgstr "Frequentie"
-
 #: data/ui/calibration_mic.glade:33
 msgid "Window"
 msgstr "Venster"
@@ -435,16 +646,23 @@ msgstr "Ruisniveau meten"
 msgid "Subtract Noise"
 msgstr "Ruis verwijderen"
 
-#: data/ui/compressor.glade:386 data/ui/deesser.glade:436
-#: data/ui/gate.glade:498 data/ui/maximizer.glade:242
-#: data/ui/multiband_compressor.glade:707
-#: data/ui/multiband_compressor.glade:1085
-#: data/ui/multiband_compressor.glade:1464
-#: data/ui/multiband_compressor.glade:1843 data/ui/multiband_gate.glade:731
-#: data/ui/multiband_gate.glade:1142 data/ui/multiband_gate.glade:1555
-#: data/ui/multiband_gate.glade:1968
-msgid "Threshold"
-msgstr "Drempelwaarde"
+#: data/ui/calibration_mic.glade:132
+msgid "Start"
+msgstr ""
+
+#: data/ui/calibration_mic.glade:144
+msgid "Stop"
+msgstr ""
+
+#: data/ui/compressor.glade:238 data/ui/crossfeed.glade:160
+#: data/ui/deesser.glade:206 data/ui/delay.glade:168
+#: data/ui/equalizer.glade:474 data/ui/gate.glade:196
+#: data/ui/loudness.glade:143 data/ui/multiband_compressor.glade:331
+#: data/ui/multiband_gate.glade:355 data/ui/pitch.glade:182
+#: data/ui/reverb.glade:323 data/ui/stereo_tools.glade:218
+#: data/ui/webrtc.glade:165
+msgid "Provided by"
+msgstr "Geleverd door"
 
 #: data/ui/compressor.glade:420 data/ui/deesser.glade:448
 #: data/ui/gate.glade:532 data/ui/multiband_compressor.glade:741
@@ -476,17 +694,6 @@ msgstr "Knie"
 msgid "Makeup"
 msgstr "Make-up"
 
-#: data/ui/compressor.glade:520 data/ui/gate.glade:464
-#: data/ui/limiter.glade:363 data/ui/maximizer.glade:266
-#: data/ui/multiband_compressor.glade:673
-#: data/ui/multiband_compressor.glade:1051
-#: data/ui/multiband_compressor.glade:1430
-#: data/ui/multiband_compressor.glade:1809 data/ui/multiband_gate.glade:697
-#: data/ui/multiband_gate.glade:1108 data/ui/multiband_gate.glade:1521
-#: data/ui/multiband_gate.glade:1934
-msgid "Release"
-msgstr "Vrijgave"
-
 #: data/ui/compressor.glade:532 data/ui/gate.glade:430
 #: data/ui/multiband_compressor.glade:639
 #: data/ui/multiband_compressor.glade:1017
@@ -516,10 +723,6 @@ msgstr "Voorversterking"
 #: data/ui/compressor.glade:683
 msgid "Reactivity"
 msgstr "Reactiviteit"
-
-#: data/ui/compressor.glade:716 data/ui/limiter.glade:375
-msgid "Lookahead"
-msgstr "Vooruitblik"
 
 #: data/ui/compressor.glade:730
 msgid "Feed-forward"
@@ -639,11 +842,15 @@ msgstr "36 dB/oct"
 msgid "Advanced"
 msgstr "Geavanceerd"
 
+#: data/ui/compressor.glade:1262
+msgid "Gain"
+msgstr "Versterking"
+
 #: data/ui/compressor.glade:1347
 msgid "Curve"
 msgstr "Curve"
 
-#: data/ui/convolver.glade:90
+#: data/ui/convolver.glade:90 include/effects_base_ui.hpp:123
 msgid "Convolver"
 msgstr "Convolutie"
 
@@ -679,7 +886,7 @@ msgstr "Impulse Response"
 msgid "Select the impulse Response File"
 msgstr "Kies een Impulse Response-bestand"
 
-#: data/ui/convolver.glade:477 src/spectrum_settings_ui.cpp:195
+#: data/ui/convolver.glade:477 src/spectrum_settings_ui.cpp:173
 msgid "Spectrum"
 msgstr "Spectrum"
 
@@ -687,7 +894,7 @@ msgstr "Spectrum"
 msgid "Stereo Width"
 msgstr "Stereobreedte"
 
-#: data/ui/crossfeed.glade:104
+#: data/ui/crossfeed.glade:104 include/effects_base_ui.hpp:124
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
@@ -695,8 +902,7 @@ msgstr "Crossfeed"
 msgid "Jmeier"
 msgstr "Jmeier"
 
-#: data/ui/crossfeed.glade:266 data/ui/filter.glade:183
-#: data/ui/reverb.glade:259
+#: data/ui/crossfeed.glade:266 data/ui/reverb.glade:259
 msgid "Default"
 msgstr "Standaard"
 
@@ -712,7 +918,7 @@ msgstr "Onderbreking"
 msgid "Feed"
 msgstr "Aanvoer"
 
-#: data/ui/crystalizer.glade:90
+#: data/ui/crystalizer.glade:90 include/effects_base_ui.hpp:125
 msgid "Crystalizer"
 msgstr "Kristalliseerder"
 
@@ -737,16 +943,7 @@ msgstr "Bereik van geluidssterkte"
 msgid "Mute"
 msgstr "Dempen"
 
-#: data/ui/crystalizer_band.glade:40 data/ui/multiband_compressor.glade:580
-#: data/ui/multiband_compressor.glade:958
-#: data/ui/multiband_compressor.glade:1337
-#: data/ui/multiband_compressor.glade:1716 data/ui/multiband_gate.glade:604
-#: data/ui/multiband_gate.glade:1015 data/ui/multiband_gate.glade:1428
-#: data/ui/multiband_gate.glade:1841
-msgid "Bypass"
-msgstr "Omzeiling"
-
-#: data/ui/deesser.glade:125
+#: data/ui/deesser.glade:125 include/effects_base_ui.hpp:126
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -786,21 +983,15 @@ msgstr "Breed"
 msgid "Split"
 msgstr "Splitsen"
 
-#: data/ui/deesser.glade:959 data/ui/multiband_gate.glade:865
-#: data/ui/multiband_gate.glade:1298 data/ui/multiband_gate.glade:1711
-#: data/ui/multiband_gate.glade:2124
-msgid "Reduction"
-msgstr "Verlaging"
-
 #: data/ui/deesser.glade:972
 msgid "Detected"
 msgstr "Gedetecteerd"
 
-#: data/ui/delay.glade:90
+#: data/ui/delay.glade:90 include/effects_base_ui.hpp:127
 msgid "Delay"
 msgstr "Vertraging"
 
-#: data/ui/equalizer.glade:44
+#: data/ui/equalizer.glade:44 include/effects_base_ui.hpp:128
 msgid "Equalizer"
 msgstr "Equalizer"
 
@@ -860,10 +1051,6 @@ msgstr "Low-shelf"
 msgid "Notch"
 msgstr "Inkeping"
 
-#: data/ui/equalizer_band.glade:70 data/ui/filter.glade:427
-msgid "Resonance"
-msgstr "Resonantie"
-
 #: data/ui/equalizer_band.glade:71
 msgid "All Pass"
 msgstr "All-pass"
@@ -921,127 +1108,7 @@ msgstr "Solo"
 msgid "Apply"
 msgstr "Toepassen"
 
-#: data/ui/exciter.glade:116
-msgid "Exciter"
-msgstr "Exciter"
-
-#: data/ui/exciter.glade:472 data/ui/maximizer.glade:254
-msgid "Ceiling"
-msgstr "Plafond"
-
-#: data/ui/filter.glade:97
-msgid "Filter"
-msgstr "Filter"
-
-#: data/ui/filter.glade:147
-msgid "Muted"
-msgstr "Gedempt"
-
-#: data/ui/filter.glade:159 data/ui/reverb.glade:233
-msgid "Disco"
-msgstr "Disco"
-
-#: data/ui/filter.glade:171
-msgid "Distant Headphones"
-msgstr "Koptelefoons veraf"
-
-#: data/ui/filter.glade:360
-msgid "12dB/oct Lowpass"
-msgstr "12dB/oct low-pass"
-
-#: data/ui/filter.glade:361
-msgid "24dB/oct Lowpass"
-msgstr "24dB/oct low-pass"
-
-#: data/ui/filter.glade:362
-msgid "36dB/oct Lowpass"
-msgstr "36dB/oct low-pass"
-
-#: data/ui/filter.glade:363
-msgid "12dB/oct Highpass"
-msgstr "12dB/oct high-pass"
-
-#: data/ui/filter.glade:364
-msgid "24dB/oct Highpass"
-msgstr "24dB/oct high-pass"
-
-#: data/ui/filter.glade:365
-msgid "36dB/oct Highpass"
-msgstr "36dB/oct high-pass"
-
-#: data/ui/filter.glade:366
-msgid "6dB/oct Bandpass"
-msgstr "6dB/oct band-pass"
-
-#: data/ui/filter.glade:367
-msgid "12dB/oct Bandpass"
-msgstr "12dB/oct band-pass"
-
-#: data/ui/filter.glade:368
-msgid "18dB/oct Bandpass"
-msgstr "18dB/oct band-pass"
-
-#: data/ui/filter.glade:369
-msgid "6dB/oct Bandreject"
-msgstr "6dB/oct band-reject"
-
-#: data/ui/filter.glade:370
-msgid "12dB/oct Bandreject"
-msgstr "12dB/oct band-reject"
-
-#: data/ui/filter.glade:371
-msgid "18dB/oct Bandreject"
-msgstr "18dB/oct band-reject"
-
-#: data/ui/filter.glade:460
-msgid "Inertia"
-msgstr "Traagheid"
-
-#: data/ui/general_settings.glade:58
-msgid "Start Service at Login"
-msgstr "Automatisch opstarten"
-
-#: data/ui/general_settings.glade:82
-msgid "Process All Outputs"
-msgstr "Alle uitvoerbronnen gebruiken"
-
-#: data/ui/general_settings.glade:94
-msgid "Process All Inputs"
-msgstr "Alle invoerbronnen gebruiken"
-
-#: data/ui/general_settings.glade:130
-msgid "Use Dark Theme"
-msgstr "Donker thema"
-
-#: data/ui/general_settings.glade:158 data/ui/general_settings.glade:220
-msgid "Niceness"
-msgstr "Niceness"
-
-#: data/ui/general_settings.glade:159
-msgid "Real Time"
-msgstr "Real-time"
-
-#: data/ui/general_settings.glade:160
-msgid "None"
-msgstr "Geen"
-
-#: data/ui/general_settings.glade:208
-msgid "Priority Type"
-msgstr "Soort prioriteit"
-
-#: data/ui/general_settings.glade:232
-msgid "Priority"
-msgstr "Prioriteit"
-
-#: data/ui/general_settings.glade:244
-msgid "Activity Timeout"
-msgstr "Activiteitstime-out"
-
-#: data/ui/general_settings.glade:325
-msgid "About"
-msgstr "Over"
-
-#: data/ui/gate.glade:97
+#: data/ui/gate.glade:97 include/effects_base_ui.hpp:131
 msgid "Gate"
 msgstr "Dosering"
 
@@ -1057,10 +1124,6 @@ msgstr "Stereo koppelen"
 msgid "Average"
 msgstr "Gemiddeld"
 
-#: data/ui/gate.glade:394
-msgid "Maximum"
-msgstr "Maximaal"
-
 #: data/ui/gate.glade:632
 msgid "Input Level"
 msgstr "Invoerniveau"
@@ -1070,34 +1133,6 @@ msgstr "Invoerniveau"
 #: data/ui/multiband_gate.glade:2149
 msgid "Gating"
 msgstr "Dosering"
-
-#: data/ui/limiter.glade:96 data/ui/webrtc.glade:612
-msgid "Limiter"
-msgstr "Limiter"
-
-#: data/ui/limiter.glade:266
-msgid "Automatic Smoothing Control"
-msgstr "Automatische afvlakking bedienen"
-
-#: data/ui/limiter.glade:278
-msgid "Automatic Leveling"
-msgstr "Automatische niveau's"
-
-#: data/ui/limiter.glade:308
-msgid "Limit"
-msgstr "Beperken"
-
-#: data/ui/limiter.glade:409
-msgid "Oversampling"
-msgstr "Oversamplen"
-
-#: data/ui/limiter.glade:447
-msgid "ASC"
-msgstr "ASC"
-
-#: data/ui/limiter.glade:595
-msgid "Attenuation"
-msgstr "Verzwakking"
 
 #: data/ui/loudness.glade:90
 msgid "Loudness Compensator"
@@ -1127,15 +1162,7 @@ msgstr "Robinson-Dadson"
 msgid "FFT Size"
 msgstr "FFT-grootte"
 
-#: data/ui/maximizer.glade:95
-msgid "Maximizer"
-msgstr "Maximizer"
-
-#: data/ui/maximizer.glade:386
-msgid "Gain Reduction"
-msgstr "Versterkingsverlaging"
-
-#: data/ui/multiband_compressor.glade:139
+#: data/ui/multiband_compressor.glade:139 include/effects_base_ui.hpp:135
 msgid "Multiband Compressor"
 msgstr "Multiband-compressie"
 
@@ -1182,11 +1209,11 @@ msgstr "Middelste band"
 msgid "High Band"
 msgstr "Hoge band"
 
-#: data/ui/multiband_gate.glade:139
+#: data/ui/multiband_gate.glade:139 include/effects_base_ui.hpp:136
 msgid "Multiband Gate"
 msgstr "Multiband-dosering"
 
-#: data/ui/pitch.glade:102
+#: data/ui/pitch.glade:102 include/effects_base_ui.hpp:137
 msgid "Pitch"
 msgstr "Toonhoogte"
 
@@ -1214,105 +1241,76 @@ msgstr "Sneller"
 msgid "Preserve Formant"
 msgstr "Formaat behouden"
 
-#: data/ui/preset_row.glade:55
-msgid "Load"
-msgstr "Laden"
-
-#: data/ui/preset_row.glade:70
-msgid "Save current settings to this preset file"
-msgstr "Sla de huidige instellingen op in dit voorinstellingsbestand"
-
-#: data/ui/preset_row.glade:84
-msgid "Remove this preset file"
-msgstr "Verwijder dit voorinstellingsbestand"
-
-#: data/ui/preset_row.glade:98
-msgid ""
-"Automatically apply this preset whenever the currently used device is "
-"plugged in the system"
-msgstr ""
-"Pas deze voorinstellingen automatisch toe zodra het huidige apparaat wordt "
-"aangekoppeld"
-
-#: data/ui/presets_menu.glade:81 data/ui/presets_menu.glade:182
-#: src/presets_menu_ui.cpp:129
-msgid "Import Presets"
-msgstr "Importeer voorinstellingen"
-
 #: data/ui/pipe_info.glade:77
-msgid "Version"
+#, fuzzy
+msgid "Header Version"
 msgstr "Versie"
 
 #: data/ui/pipe_info.glade:104
+#, fuzzy
+msgid "Default Clock Rate"
+msgstr "Standaard samplesnelheid"
+
+#: data/ui/pipe_info.glade:131
+#, fuzzy
+msgid "Library Version"
+msgstr "Versie"
+
+#: data/ui/pipe_info.glade:158
 msgid "Default Sink"
 msgstr "Standaard audiosink"
 
-#: data/ui/pipe_info.glade:116
+#: data/ui/pipe_info.glade:185
 msgid "Default Source"
 msgstr "Standaardbron"
 
-#: data/ui/pipe_info.glade:158
-msgid "Protocol"
-msgstr "Protocol"
-
-#: data/ui/pipe_info.glade:185
-msgid "Default Sample Format"
-msgstr "Standaard sampleformaat"
-
 #: data/ui/pipe_info.glade:212
-msgid "Default Sampling Rate"
-msgstr "Standaard samplesnelheid"
+#, fuzzy
+msgid "Minimum Quantum"
+msgstr "Minimale frequentie"
 
-#: data/ui/pipe_info.glade:266
-msgid "Channel Mapping"
-msgstr "Kanaaltoewijzing"
+#: data/ui/pipe_info.glade:224
+#, fuzzy
+msgid "Maximum Quantum"
+msgstr "Maximale versterking"
 
-#: data/ui/pipe_info.glade:291
+#: data/ui/pipe_info.glade:236
+msgid "Quantum"
+msgstr ""
+
+#: data/ui/pipe_info.glade:297
 msgid "Server"
 msgstr "Server"
 
-#: data/ui/pipe_info.glade:336
+#: data/ui/pipe_info.glade:342
 msgid "Modules"
 msgstr "Modules"
 
-#: data/ui/pipe_info.glade:382
+#: data/ui/pipe_info.glade:388
 msgid "Clients"
 msgstr "Clients"
 
-#: data/ui/pipe_info.glade:446
+#: data/ui/pipe_info.glade:448
 msgid "File"
 msgstr "Bestand"
 
-#: data/ui/pipe_info.glade:456
+#: data/ui/pipe_info.glade:458
 msgid "Configuration"
 msgstr "Instellingen"
 
-#: data/ui/pipe_info.glade:489
-msgid "Resamplers"
-msgstr "Hersamplers"
-
-#: data/ui/pipe_settings.glade:98 data/ui/pipe_settings.glade:403
+#: data/ui/pipe_settings.glade:58 data/ui/pipe_settings.glade:141
 msgid "Use Default"
 msgstr "Standaard gebruiken"
 
-#: data/ui/pipe_settings.glade:147 data/ui/pipe_settings.glade:452
-msgid "Pipeline Input"
-msgstr "Invoerpijplijn"
+#: data/ui/pipe_settings.glade:125
+msgid "Input Effects"
+msgstr "Invoereffecten"
 
-#: data/ui/pipe_settings.glade:159 data/ui/pipe_settings.glade:259
-#: data/ui/pipe_settings.glade:464 data/ui/pipe_settings.glade:564
-msgid "Buffer"
-msgstr "Buffer"
+#: data/ui/pipe_settings.glade:209
+msgid "Output Effects"
+msgstr "Uitvoereffecten"
 
-#: data/ui/pipe_settings.glade:247 data/ui/pipe_settings.glade:552
-msgid "Pipeline Output"
-msgstr "Uitvoerpijplijn"
-
-#: data/ui/pipe_settings.glade:347 data/ui/pipe_settings.glade:652
-msgid "Block Size"
-msgstr "Blokgrootte"
-
-#: data/ui/reverb.glade:130
+#: data/ui/reverb.glade:130 include/effects_base_ui.hpp:138
 msgid "Reverberation"
 msgstr "Galm"
 
@@ -1331,6 +1329,10 @@ msgstr "Kamer"
 #: data/ui/reverb.glade:220
 msgid "Large Empty Hall"
 msgstr "Grote, lege zaal"
+
+#: data/ui/reverb.glade:233
+msgid "Disco"
+msgstr "Disco"
 
 #: data/ui/reverb.glade:246
 msgid "Large Occupied Hall"
@@ -1392,75 +1394,7 @@ msgstr "Experimenteel"
 msgid "High Frequency Damping"
 msgstr "Hoge frequentiedemping"
 
-#: data/ui/spectrum_settings.glade:77
-msgid "Show Spectrum"
-msgstr "Spectrum tonen"
-
-#: data/ui/spectrum_settings.glade:89
-msgid "Fill"
-msgstr "Opvullen"
-
-#: data/ui/spectrum_settings.glade:125
-msgid "Border"
-msgstr "Rand"
-
-#: data/ui/spectrum_settings.glade:149
-msgid "Use Custom Color"
-msgstr "Aangepaste kleur gebruiken"
-
-#: data/ui/spectrum_settings.glade:173
-msgid "Use Gradient"
-msgstr "Kleurverloop gebruiken"
-
-#: data/ui/spectrum_settings.glade:315
-msgid "Points"
-msgstr "Points"
-
-#: data/ui/spectrum_settings.glade:327
-msgid "Height"
-msgstr "Lengte"
-
-#: data/ui/spectrum_settings.glade:339
-msgid "Line Width"
-msgstr "Lijnbreedte"
-
-#: data/ui/spectrum_settings.glade:351
-msgid "Sampling"
-msgstr "Sampling"
-
-#: data/ui/spectrum_settings.glade:363
-msgid "Minimum Frequency"
-msgstr "Minimale frequentie"
-
-#: data/ui/spectrum_settings.glade:375
-msgid "Maximum Frequency"
-msgstr "Maximale frequentie"
-
-#: data/ui/spectrum_settings.glade:410
-msgid "Spectrum Type"
-msgstr "Soort spectrum"
-
-#: data/ui/spectrum_settings.glade:423
-msgid "Bars"
-msgstr "Balken"
-
-#: data/ui/spectrum_settings.glade:424
-msgid "Lines"
-msgstr "Lijnen"
-
-#: data/ui/spectrum_settings.glade:437
-msgid "Spectrum Color"
-msgstr "Spectrumkleur"
-
-#: data/ui/spectrum_settings.glade:449
-msgid "Gradient Color"
-msgstr "Kleurverloop"
-
-#: data/ui/spectrum_settings.glade:461
-msgid "Axis Color"
-msgstr "Askleur"
-
-#: data/ui/stereo_tools.glade:108
+#: data/ui/stereo_tools.glade:108 include/effects_base_ui.hpp:140
 msgid "Stereo Tools"
 msgstr "Stereobediening"
 
@@ -1540,7 +1474,7 @@ msgstr "Stereobasis"
 msgid "Stereo Phase"
 msgstr "Stereofase"
 
-#: data/ui/webrtc.glade:96
+#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:141
 msgid "WebRTC"
 msgstr "WebRTC"
 
@@ -1609,6 +1543,10 @@ msgstr "Doelniveau"
 msgid "Maximum Gain"
 msgstr "Maximale versterking"
 
+#: data/ui/webrtc.glade:612 include/effects_base_ui.hpp:132
+msgid "Limiter"
+msgstr "Limiter"
+
 #: data/ui/webrtc.glade:672
 msgid "Detection Likelihood"
 msgstr "Detectieniveau"
@@ -1625,7 +1563,7 @@ msgstr "Erg laag"
 msgid "Voice Detector"
 msgstr "Stemherkenning"
 
-#: data/ui/rnnoise.glade:90
+#: data/ui/rnnoise.glade:90 include/effects_base_ui.hpp:139
 msgid "Noise Reduction"
 msgstr "Ruisverlaging"
 
@@ -1645,64 +1583,75 @@ msgstr "Huidig model"
 msgid "Standard RNNoise Model"
 msgstr "Standaard RNNoise-model"
 
-#: src/app_info_ui.cpp:119
-msgid "running"
-msgstr "actief"
+#: include/effects_base_ui.hpp:120
+#, fuzzy
+msgid "Autogain"
+msgstr "Automatisch versterken"
 
-#: src/app_info_ui.cpp:123
-msgid "suspended"
-msgstr "onderbroken"
+#: include/effects_base_ui.hpp:121
+msgid "Bass Enhancer"
+msgstr "Basversterker"
 
-#: src/app_info_ui.cpp:127
-msgid "idle"
-msgstr "inactief"
+#: include/effects_base_ui.hpp:129
+msgid "Exciter"
+msgstr "Exciter"
 
-#: src/app_info_ui.cpp:131
-msgid "creating"
-msgstr "bezig met aanmaken"
+#: include/effects_base_ui.hpp:130
+msgid "Filter"
+msgstr "Filter"
 
-#: src/app_info_ui.cpp:135
-msgid "error"
-msgstr "foutmelding"
+#: include/effects_base_ui.hpp:134
+msgid "Maximizer"
+msgstr "Maximizer"
 
-#: src/application.cpp:38
+#: src/application.cpp:30
 msgid "Quit PulseEffects. Useful when running in service mode."
 msgstr "Sluit PulseEffecten af - nuttig in dienstmodus."
 
-#: src/application.cpp:40
+#: src/application.cpp:32
 msgid "Show available presets."
 msgstr "Toon de beschikbare voorinstellingen."
 
-#: src/application.cpp:43
+#: src/application.cpp:35
 msgid "Load a preset. Example: pulseeffects -l music"
 msgstr "Laad een voorinstelling. Voorbeeld: pulseeffects -l music"
 
-#: src/application.cpp:45
+#: src/application.cpp:37
 msgid "Reset PulseEffects."
 msgstr "Zet PulseEffecten terug op de standaardwaarden."
 
-#: src/application.cpp:48
+#: src/application.cpp:40
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale omzeiling: 1 = inschakelen, 2 = uitschakelen, 3 = status opvragen"
 
-#: src/application.cpp:50
+#: src/application.cpp:42
 msgid "Hide the Window."
 msgstr "Verberg het venster."
 
-#: src/application.cpp:270
+#: src/application.cpp:259
 msgid "Output Presets: "
 msgstr "Uitvoer-voorinstellingen: "
 
-#: src/application.cpp:278
+#: src/application.cpp:267
 msgid "Input Presets: "
 msgstr "Invoer-voorinstellingen: "
 
-#: src/blocklist_settings_ui.cpp:191
-msgid "Blocklist"
-msgstr "Zwarte lijst"
+#. initializing the subtitle
+#: src/application_ui.cpp:63 src/application_ui.cpp:111
+msgid "stream outputs"
+msgstr ""
 
-#: src/calibration_ui.cpp:198
+#: src/application_ui.cpp:113
+msgid "stream inputs"
+msgstr ""
+
+#: src/application_ui.cpp:115
+#, fuzzy
+msgid "server"
+msgstr "Server"
+
+#: src/calibration_ui.cpp:189
 msgid "Calibration Microphone"
 msgstr "Microfoon kalibreren"
 
@@ -1710,13 +1659,13 @@ msgstr "Microfoon kalibreren"
 msgid "Import Impulse File"
 msgstr "Impulse-bestand importeren"
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
-#: src/presets_menu_ui.cpp:129
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:728
+#: src/presets_menu_ui.cpp:176
 msgid "Open"
 msgstr "Openen"
 
-#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:742
-#: src/presets_menu_ui.cpp:129
+#: src/convolver_ui.cpp:281 src/equalizer_ui.cpp:728
+#: src/presets_menu_ui.cpp:176
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -1728,22 +1677,136 @@ msgstr "Mislukt"
 msgid "Could Not Load The Impulse File"
 msgstr "Het Impulse-bestand kan niet worden geladen"
 
-#: src/equalizer_ui.cpp:380
+#: src/effects_base_ui.cpp:360 src/effects_base_ui.cpp:888
+msgid "running"
+msgstr "actief"
+
+#: src/effects_base_ui.cpp:364 src/effects_base_ui.cpp:890
+msgid "suspended"
+msgstr "onderbroken"
+
+#: src/effects_base_ui.cpp:368 src/effects_base_ui.cpp:892
+msgid "idle"
+msgstr "inactief"
+
+#: src/effects_base_ui.cpp:372 src/effects_base_ui.cpp:894
+msgid "creating"
+msgstr "bezig met aanmaken"
+
+#: src/effects_base_ui.cpp:376 src/effects_base_ui.cpp:896
+msgid "error"
+msgstr "foutmelding"
+
+#: src/equalizer_ui.cpp:382
 msgid "infinity"
 msgstr "oneindig"
 
-#: src/equalizer_ui.cpp:741
+#: src/equalizer_ui.cpp:727
 msgid "Import APO Preset File"
 msgstr "APO-voorinstellingsbestand importeren"
 
-#: src/equalizer_ui.cpp:746
+#: src/equalizer_ui.cpp:732
 msgid "APO Presets"
 msgstr "APO-voorinstellingen"
 
-#: src/general_settings_ui.cpp:149
+#: src/general_settings_ui.cpp:63
 msgid "General"
 msgstr "Algemeen"
 
-#: src/pipe_settings_ui.cpp:168
+#: src/pipe_settings_ui.cpp:108
 msgid "PipeWire"
 msgstr "PipeWire"
+
+#: src/presets_menu_ui.cpp:175
+#, fuzzy
+msgid "Import Preset"
+msgstr "Importeer voorinstellingen"
+
+#: src/stream_input_effects_ui.cpp:27
+#, fuzzy
+msgid "Recorders"
+msgstr "Rand"
+
+#~ msgid "Applications"
+#~ msgstr "Toepassingen"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Stilte herkennen"
+
+#~ msgid "Use Geometric Mean"
+#~ msgstr "Geometrisch gemiddelde gebruiken"
+
+#~ msgid "Weights"
+#~ msgstr "Zwaarte"
+
+#~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
+#~ msgstr ""
+#~ "Plug de microfoon opnieuw in om de wijzigingen aan de zwarte lijst toe te "
+#~ "passen"
+
+#~ msgid "Restart the player to apply new changes made to the Blocklist"
+#~ msgstr ""
+#~ "Herstart de speler om de wijzigingen aan de zwarte lijst toe te passen"
+
+#~ msgid "Show Blocklisted Apps in Main Tab"
+#~ msgstr "Toepassingen op zwarte lijst tonen op hoofdtabblad"
+
+#~ msgid "Muted"
+#~ msgstr "Gedempt"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Koptelefoons veraf"
+
+#~ msgid "Niceness"
+#~ msgstr "Niceness"
+
+#~ msgid "Real Time"
+#~ msgstr "Real-time"
+
+#~ msgid "None"
+#~ msgstr "Geen"
+
+#~ msgid "Priority Type"
+#~ msgstr "Soort prioriteit"
+
+#~ msgid "Priority"
+#~ msgstr "Prioriteit"
+
+#~ msgid "Activity Timeout"
+#~ msgstr "Activiteitstime-out"
+
+#~ msgid "About"
+#~ msgstr "Over"
+
+#~ msgid "Gain Reduction"
+#~ msgstr "Versterkingsverlaging"
+
+#~ msgid "Protocol"
+#~ msgstr "Protocol"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Standaard sampleformaat"
+
+#~ msgid "Channel Mapping"
+#~ msgstr "Kanaaltoewijzing"
+
+#~ msgid "Resamplers"
+#~ msgstr "Hersamplers"
+
+#~ msgid "Pipeline Input"
+#~ msgstr "Invoerpijplijn"
+
+#~ msgid "Buffer"
+#~ msgstr "Buffer"
+
+#~ msgid "Pipeline Output"
+#~ msgstr "Uitvoerpijplijn"
+
+#~ msgid "Block Size"
+#~ msgstr "Blokgrootte"
+
+#~ msgid "Sampling"
+#~ msgstr "Sampling"
+
+#~ msgid "Maximum Frequency"
+#~ msgstr "Maximale frequentie"
