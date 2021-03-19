@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [5.0.3]
+
+### Added
+
+- Improved compatibility with PipeWire 0.3.24. And this is now the minimum version supported.
+
 ## [5.0.2]
 
 ### Added

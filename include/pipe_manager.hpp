@@ -179,6 +179,8 @@ class PipeManager {
 
   static void set_node_mute(NodeInfo nd_info, const bool& state);
 
+  static auto json_object_find(const char* obj, const char* key, char* value, size_t len) -> int;
+
   sigc::signal<void, NodeInfo> source_added;
   sigc::signal<void, NodeInfo> source_changed;
   sigc::signal<void, NodeInfo> source_removed;
