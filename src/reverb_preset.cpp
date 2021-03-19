@@ -28,8 +28,6 @@ ReverbPreset::ReverbPreset()
 void ReverbPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".reverb.state", settings->get_boolean("state"));
-
   root.put(section + ".reverb.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".reverb.output-gain", settings->get_double("output-gain"));
@@ -56,8 +54,6 @@ void ReverbPreset::save(boost::property_tree::ptree& root,
 void ReverbPreset::load(const boost::property_tree::ptree& root,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".reverb.state");
-
   update_key<double>(root, settings, "input-gain", section + ".reverb.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".reverb.output-gain");
