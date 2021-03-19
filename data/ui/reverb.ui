@@ -31,8 +31,9 @@
         </child>
 
         <child>
-            <object class="GtkBox">
+            <object class="GtkBox" id="box_room_size">
                 <property name="halign">center</property>
+                <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
                 <child>
                     <object class="GtkBox">
@@ -48,7 +49,6 @@
 
                         <child>
                             <object class="GtkSpinButton" id="hf_damp">
-                                <property name="halign">center</property>
                                 <property name="width-chars">10</property>
                                 <property name="digits">0</property>
                                 <property name="update-policy">if-valid</property>
@@ -96,6 +96,7 @@
 
                 <child>
                     <object class="GtkBox">
+                        <property name="halign">end</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
@@ -128,7 +129,7 @@
         </child>
 
         <child>
-            <object class="GtkGrid">
+            <object class="GtkGrid" id="grid_spinbox">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
@@ -611,6 +612,14 @@
             <widget name="input_level_right_label" />
             <widget name="output_level_left_label" />
             <widget name="output_level_right_label" />
+        </widgets>
+    </object>
+
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="box_room_size" />
+            <widget name="grid_spinbox" />
         </widgets>
     </object>
 </interface>
