@@ -27,7 +27,6 @@
 // #include "crossfeed_ui.hpp"
 // #include "crystalizer_ui.hpp"
 // #include "deesser_ui.hpp"
-// #include "delay_ui.hpp"
 // #include "equalizer_ui.hpp"
 // #include "gate_ui.hpp"
 // #include "loudness_ui.hpp"
@@ -57,24 +56,17 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  private:
   StreamOutputEffects* soe = nullptr;
 
-  // LimiterUi* limiter_ui = nullptr;
   // CompressorUi* compressor_ui = nullptr;
-  // FilterUi* filter_ui = nullptr;
   // EqualizerUi* equalizer_ui = nullptr;
   // PitchUi* pitch_ui = nullptr;
-  // ReverbUi* reverb_ui = nullptr;
-  // ExciterUi* exciter_ui = nullptr;
   // CrossfeedUi* crossfeed_ui = nullptr;
-  // MaximizerUi* maximizer_ui = nullptr;
   // MultibandCompressorUi* multiband_compressor_ui = nullptr;
   // LoudnessUi* loudness_ui = nullptr;
   // GateUi* gate_ui = nullptr;
   // MultibandGateUi* multiband_gate_ui = nullptr;
   // DeesserUi* deesser_ui = nullptr;
-  // StereoToolsUi* stereo_tools_ui = nullptr;
   // ConvolverUi* convolver_ui = nullptr;
   // CrystalizerUi* crystalizer_ui = nullptr;
-  // DelayUi* delay_ui = nullptr;
   // RNNoiseUi* rnnoise_ui = nullptr;
 
   void level_meters_connections();

@@ -35,7 +35,6 @@ DelayUi::DelayUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("time-l", time_l->get_adjustment().get(), "value");
