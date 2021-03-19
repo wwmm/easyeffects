@@ -20,6 +20,7 @@
 #ifndef DELAY_HPP
 #define DELAY_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Delay : public PluginBase {
@@ -31,8 +32,15 @@ class Delay : public PluginBase {
   auto operator=(const Delay&&) -> Delay& = delete;
   ~Delay() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

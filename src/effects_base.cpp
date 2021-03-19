@@ -14,6 +14,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   bass_enhancer =
       std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer", path + "bassenhancer/", pm);
 
+  delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay", path + "delay/", pm);
+
   exciter = std::make_shared<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter", path + "exciter/", pm);
 
   filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter", path + "filter/", pm);
@@ -46,8 +48,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //       std::make_shared<Crystalizer>(log_tag, "com.github.wwmm.pulseeffects.crystalizer", path + "crystalizer/",
   //       pm);
 
-  //   delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay", path + "delay/", pm);
-
   //   deesser = std::make_shared<Deesser>(log_tag, "com.github.wwmm.pulseeffects.deesser", path + "deesser/", pm);
 
   //   equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer", path + "equalizer/",
@@ -70,6 +70,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
+  plugins.insert(std::make_pair(delay->name, delay));
   plugins.insert(std::make_pair(exciter->name, exciter));
   plugins.insert(std::make_pair(filter->name, filter));
   plugins.insert(std::make_pair(limiter->name, limiter));
@@ -80,7 +81,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
   //   plugins.insert(std::make_pair(crystalizer->name, crystalizer));
-  //   plugins.insert(std::make_pair(delay->name, delay));
   //   plugins.insert(std::make_pair(deesser->name, deesser));
   //   plugins.insert(std::make_pair(equalizer->name, equalizer));
   //   plugins.insert(std::make_pair(gate->name, gate));

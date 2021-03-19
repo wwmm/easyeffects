@@ -34,10 +34,14 @@ class DelayUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const DelayUi&&) -> DelayUi& = delete;
   ~DelayUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DelayUi*;
+
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, time_l, time_r;
+  Gtk::SpinButton *time_l = nullptr, *time_r = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif

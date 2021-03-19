@@ -24,33 +24,40 @@ DelayUi::DelayUi(BaseObjectType* cobject,
                  const std::string& schema,
                  const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "delay";
+  name = plugin_name::delay;
 
   // loading glade widgets
 
-  builder->get_widget("plugin_reset", reset_button);
-
-  get_object(builder, "time_l", time_l);
-  get_object(builder, "time_r", time_r);
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+  time_l = builder->get_widget<Gtk::SpinButton>("time_l");
+  time_r = builder->get_widget<Gtk::SpinButton>("time_r");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("installed", this, "sensitive");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("time-l", time_l->get_adjustment().get(), "value");
+  settings->bind("time-r", time_r->get_adjustment().get(), "value");
 
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("time-l", time_l.get(), "value", flag);
-  settings->bind("time-r", time_r.get(), "value", flag);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
+  prepare_spinbutton(time_l, "ms");
+  prepare_spinbutton(time_r, "ms");
 }
 
 DelayUi::~DelayUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto DelayUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DelayUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/delay.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<DelayUi>(builder, "top_box", "com.github.wwmm.pulseeffects.delay",
+                                                       schema_path + "delay/");
+
+  auto stack_page = stack->add(*ui, plugin_name::delay);
+
+  return ui;
 }
 
 void DelayUi::reset() {

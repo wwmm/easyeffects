@@ -7,6 +7,7 @@
         <file>ui/app_info.ui</file>
         <file>ui/autogain.ui</file>
         <file>ui/bass_enhancer.ui</file>
+        <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
         <file>ui/exciter.ui</file>
         <file>ui/filter.ui</file>
@@ -38,7 +39,6 @@
         <file>ui/irs_row.glade</file>
         <file>ui/crystalizer.glade</file>
         <file>ui/crystalizer_band.glade</file>
-        <file>ui/delay.glade</file>
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
         <file>ui/rnnoise.glade</file>

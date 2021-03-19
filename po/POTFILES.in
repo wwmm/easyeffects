@@ -6,6 +6,7 @@ data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.ui
 data/ui/bass_enhancer.ui
+data/ui/delay.ui
 data/ui/effects_base.ui
 data/ui/exciter.ui
 data/ui/filter.ui
@@ -28,7 +29,6 @@ data/ui/crossfeed.glade
 data/ui/crystalizer.glade
 data/ui/crystalizer_band.glade
 data/ui/deesser.glade
-data/ui/delay.glade
 data/ui/equalizer.glade
 data/ui/equalizer_band.glade
 data/ui/equalizer_preset_row.glade
