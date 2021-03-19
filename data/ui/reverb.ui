@@ -13,28 +13,80 @@
         <child>
             <object class="GtkToggleButton" id="bypass">
                 <property name="halign">center</property>
-                <property name="valign">center</property>
                 <property name="label" translatable="yes">Bypass</property>
             </object>
         </child>
 
         <child>
-            <object class="GtkComboBoxText" id="mode">
+            <object class="GtkMenuButton">
                 <property name="halign">center</property>
-                <items>
-                    <item translatable="yes">12dB/oct Lowpass</item>
-                    <item translatable="yes">24dB/oct Lowpass</item>
-                    <item translatable="yes">36dB/oct Lowpass</item>
-                    <item translatable="yes">12dB/oct Highpass</item>
-                    <item translatable="yes">24dB/oct Highpass</item>
-                    <item translatable="yes">36dB/oct Highpass</item>
-                    <item translatable="yes">6dB/oct Bandpass</item>
-                    <item translatable="yes">12dB/oct Bandpass</item>
-                    <item translatable="yes">18dB/oct Bandpass</item>
-                    <item translatable="yes">6dB/oct Bandreject</item>
-                    <item translatable="yes">12dB/oct Bandreject</item>
-                    <item translatable="yes">18dB/oct Bandreject</item>
-                </items>
+                <property name="valign">start</property>
+                <property name="popover">presets</property>
+                <property name="label" translatable="yes">Presets</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="halign">center</property>
+                <property name="spacing">24</property>
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">Room Size</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="room_size">
+                                <property name="halign">center</property>
+                                <items>
+                                    <item translatable="yes">Small</item>
+                                    <item translatable="yes">Medium</item>
+                                    <item translatable="yes">Large</item>
+                                    <item translatable="yes">Tunnel</item>
+                                    <item translatable="yes">Large/smooth</item>
+                                    <item translatable="yes">Experimental</item>
+                                </items>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">Diffusion</property>
+                            </object>
+                        </child>
+
+                        <object class="GtkSpinButton" id="diffusion">
+                            <property name="halign">center</property>
+                            <property name="orientation">vertical</property>
+                            <property name="width-chars">10</property>
+                            <property name="digits">2</property>
+                            <property name="update-policy">if-valid</property>
+                            <property name="adjustment">
+                                <object class="GtkAdjustment">
+                                    <property name="upper">1</property>
+                                    <property name="value">0.5</property>
+                                    <property name="step-increment">0.01</property>
+                                    <property name="page-increment">0.1</property>
+                                </object>
+                            </property>
+                        </object>
+                    </object>
+                </child>
             </object>
         </child>
 
@@ -43,7 +95,7 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
-                <property name="column-spacing">48</property>
+                <property name="column-spacing">24</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
