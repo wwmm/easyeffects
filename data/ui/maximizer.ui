@@ -153,6 +153,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -172,6 +173,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -211,6 +213,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -230,6 +233,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -265,6 +269,7 @@
                 <child>
                     <object class="GtkLabel" id="reduction_label">
                         <property name="halign">end</property>
+                        <property name="width-chars">4</property>
                         <property name="label">0</property>
                     </object>
                 </child>
@@ -321,11 +326,6 @@
             <widget name="input_level_title" />
             <widget name="output_level_title" />
             <widget name="reduction_title" />
-            <widget name="input_level_left_label" />
-            <widget name="input_level_right_label" />
-            <widget name="output_level_left_label" />
-            <widget name="output_level_right_label" />
-            <widget name="reduction_label" />
         </widgets>
     </object>
 </interface>

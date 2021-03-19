@@ -45,8 +45,7 @@ class ReverbUi : public Gtk::Box, public PluginUiBase {
   Gtk::ComboBoxText* room_size = nullptr;
 
   Gtk::Button *preset_room = nullptr, *preset_empty_walls = nullptr, *preset_ambience = nullptr,
-              *preset_large_empty_hall = nullptr, *preset_disco = nullptr, *preset_large_occupied_hall = nullptr,
-              *preset_default = nullptr;
+              *preset_large_empty_hall = nullptr, *preset_disco = nullptr, *preset_large_occupied_hall = nullptr;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 

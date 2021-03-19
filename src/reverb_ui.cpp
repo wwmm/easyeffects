@@ -97,7 +97,6 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
   preset_large_empty_hall = builder->get_widget<Gtk::Button>("preset_large_empty_hall");
   preset_disco = builder->get_widget<Gtk::Button>("preset_disco");
   preset_large_occupied_hall = builder->get_widget<Gtk::Button>("preset_large_occupied_hall");
-  preset_default = builder->get_widget<Gtk::Button>("preset_default");
 
   // gsettings bindings
 
@@ -222,18 +221,6 @@ void ReverbUi::init_presets_buttons() {
     decay_time->set_value(1.45397);
     hf_damp->set_value(9795.58);
     amount->set_value(util::linear_to_db(0.184284));
-    settings->reset("room-size");
-    settings->reset("diffusion");
-    settings->reset("dry");
-    settings->reset("predelay");
-    settings->reset("bass-cut");
-    settings->reset("treble-cut");
-  });
-
-  preset_default->signal_clicked().connect([=, this]() {
-    settings->reset("decay-time");
-    settings->reset("hf-damp");
-    settings->reset("amount");
     settings->reset("room-size");
     settings->reset("diffusion");
     settings->reset("dry");

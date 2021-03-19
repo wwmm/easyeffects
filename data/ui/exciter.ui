@@ -14,17 +14,14 @@
             <object class="GtkBox">
                 <property name="spacing">6</property>
                 <property name="halign">center</property>
+                <property name="homogeneous">1</property>
                 <child>
                     <object class="GtkToggleButton" id="bypass">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Bypass</property>
                     </object>
                 </child>
                 <child>
                     <object class="GtkToggleButton" id="listen">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Listen</property>
                     </object>
                 </child>
@@ -272,6 +269,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -291,6 +289,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -348,6 +347,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -367,6 +367,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -400,6 +401,7 @@
                 <child>
                     <object class="GtkLabel" id="harmonics_levelbar_label">
                         <property name="halign">end</property>
+                        <property name="width-chars">4</property>
                         <property name="label">0</property>
 
                     </object>
@@ -456,19 +458,7 @@
         <widgets>
             <widget name="input_level_title" />
             <widget name="output_level_title" />
-            <widget name="input_level_left_label" />
-            <widget name="input_level_right_label" />
-            <widget name="output_level_left_label" />
-            <widget name="output_level_right_label" />
             <widget name="harmonics_title" />
-            <widget name="harmonics_levelbar_label" />
-        </widgets>
-    </object>
-    <object class="GtkSizeGroup">
-        <property name="mode">horizontal</property>
-        <widgets>
-            <widget name="bypass" />
-            <widget name="listen" />
         </widgets>
     </object>
 </interface>

@@ -560,6 +560,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -579,6 +580,7 @@
                                 <child>
                                     <object class="GtkLabel" id="input_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -636,6 +638,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_left_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -655,6 +658,7 @@
                                 <child>
                                     <object class="GtkLabel" id="output_level_right_label">
                                         <property name="halign">end</property>
+                                        <property name="width-chars">4</property>
                                         <property name="label">0</property>
                                     </object>
                                 </child>
@@ -688,6 +692,7 @@
                 <child>
                     <object class="GtkLabel" id="meter_phase_label">
                         <property name="halign">end</property>
+                        <property name="width-chars">4</property>
                         <property name="label">0</property>
                     </object>
                 </child>
@@ -744,11 +749,6 @@
             <widget name="input_level_title" />
             <widget name="output_level_title" />
             <widget name="meter_phase_title" />
-            <widget name="input_level_left_label" />
-            <widget name="input_level_right_label" />
-            <widget name="output_level_left_label" />
-            <widget name="output_level_right_label" />
-            <widget name="meter_phase_label" />
         </widgets>
     </object>
 </interface>
