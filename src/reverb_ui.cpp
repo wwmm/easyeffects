@@ -114,6 +114,14 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "room-size", room_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
+  prepare_spinbutton(decay_time, "s");
+  prepare_spinbutton(hf_damp, "Hz");
+  prepare_spinbutton(amount, "dB");
+  prepare_spinbutton(dry, "dB");
+  prepare_spinbutton(predelay, "ms");
+  prepare_spinbutton(bass_cut, "Hz");
+  prepare_spinbutton(treble_cut, "Hz");
+
   init_presets_buttons();
 }
 

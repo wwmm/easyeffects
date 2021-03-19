@@ -204,7 +204,7 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Amount</property>
+                        <property name="label" translatable="yes">Wet</property>
                         <layout>
                             <property name="column">2</property>
                             <property name="row">0</property>

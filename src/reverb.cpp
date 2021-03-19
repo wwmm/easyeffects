@@ -37,11 +37,23 @@ Reverb::Reverb(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  // lv2_wrapper->bind_key_double(settings, "frequency", "freq");
+  lv2_wrapper->bind_key_double(settings, "decay-time", "decay_time");
 
-  // lv2_wrapper->bind_key_double_db(settings, "resonance", "res");
+  lv2_wrapper->bind_key_double(settings, "hf-damp", "hf_damp");
 
-  // lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_double(settings, "diffusion", "diffusion");
+
+  lv2_wrapper->bind_key_double(settings, "predelay", "predelay");
+
+  lv2_wrapper->bind_key_double(settings, "bass-cut", "bass_cut");
+
+  lv2_wrapper->bind_key_double(settings, "treble-cut", "treble_cut");
+
+  lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
+
+  lv2_wrapper->bind_key_double_db(settings, "dry", "dry");
+
+  lv2_wrapper->bind_key_enum(settings, "room-size", "room_size");
 }
 
 Reverb::~Reverb() {
@@ -103,39 +115,3 @@ void Reverb::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "input-gain", reverb, "level-in", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "output-gain", reverb, "level-out", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "room-size", reverb, "room-size", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind_with_mapping(settings, "decay-time", reverb, "decay-time", G_SETTINGS_BIND_GET,
-// util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "hf-damp", reverb, "hf-damp", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "diffusion", reverb, "diffusion", G_SETTINGS_BIND_GET,
-// util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "amount", reverb, "amount", G_SETTINGS_BIND_DEFAULT,
-// util::db20_gain_to_linear,
-//                              util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "dry", reverb, "dry", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
-//                              util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "predelay", reverb, "predelay", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "bass-cut", reverb, "bass-cut", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "treble-cut", reverb, "treble-cut", G_SETTINGS_BIND_GET,
-// util::double_to_float,
-//                              nullptr, nullptr, nullptr);
