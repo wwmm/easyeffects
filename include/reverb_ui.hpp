@@ -34,6 +34,8 @@ class ReverbUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const ReverbUi&&) -> ReverbUi& = delete;
   ~ReverbUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi*;
+
   void reset() override;
 
  private:

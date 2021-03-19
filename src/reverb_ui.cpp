@@ -101,7 +101,6 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("predelay", predelay->get_adjustment().get(), "value");
@@ -121,6 +120,17 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
 ReverbUi::~ReverbUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto ReverbUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/reverb.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<ReverbUi>(builder, "top_box", "com.github.wwmm.pulseeffects.reverb",
+                                                        schema_path + "reverb/");
+
+  auto stack_page = stack->add(*ui, plugin_name::reverb);
+
+  return ui;
 }
 
 void ReverbUi::reset() {
