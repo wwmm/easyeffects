@@ -29,6 +29,9 @@ Delay::Delay(const std::string& tag,
     return;
   }
 
+  lv2_wrapper->set_control_port_value("mode_l", 2);
+  lv2_wrapper->set_control_port_value("mode_r", 2);
+
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -100,11 +103,3 @@ void Delay::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "time-l", delay, "time-l", G_SETTINGS_BIND_GET, util::double_to_float,
-// nullptr,
-//                              nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "time-r", delay, "time-r", G_SETTINGS_BIND_GET, util::double_to_float,
-// nullptr,
-//                              nullptr, nullptr);
