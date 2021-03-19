@@ -30,7 +30,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_compressor = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/compressor.glade");
   //   auto b_equalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
-  //   auto b_reverb = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/reverb.glade");
   // auto b_crossfeed =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
   //   auto b_multiband_compressor =
@@ -60,9 +59,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
-
-  //   b_reverb->get_widget_derived("widgets_grid", reverb_ui, "com.github.wwmm.pulseeffects.reverb",
-  //                                "/com/github/wwmm/pulseeffects/sinkinputs/reverb/");
 
   //   b_exciter->get_widget_derived("widgets_grid", exciter_ui, "com.github.wwmm.pulseeffects.exciter",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
@@ -106,7 +102,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*compressor_ui, compressor_ui->name);
   //   stack->add(*equalizer_ui, equalizer_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
-  //   stack->add(*reverb_ui, reverb_ui->name);
   //   stack->add(*exciter_ui, exciter_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
@@ -126,7 +121,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(compressor_ui);
   //   add_to_listbox(equalizer_ui);
   //   add_to_listbox(pitch_ui);
-  //   add_to_listbox(reverb_ui);
   //   add_to_listbox(exciter_ui);
   //   add_to_listbox(crossfeed_ui);
   //   add_to_listbox(multiband_compressor_ui);
@@ -235,12 +229,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //   &PitchUi::on_new_input_level_db)));
   //   connections.emplace_back(soe->pitch_output_level.connect(sigc::mem_fun(*pitch_ui,
   //   &PitchUi::on_new_output_level_db)));
-
-  //   // reverb level meters connections
-
-  //   connections.emplace_back(soe->reverb->input_level.connect(sigc::mem_fun(*reverb_ui,
-  //   &ReverbUi::on_new_input_level))); connections.emplace_back(
-  //       soe->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level)));
 
   //   // exciter level meters connections
 
@@ -442,9 +430,6 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(equalizer_ui);
   //   })); connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(equalizer_ui); }));
-
-  //   connections.emplace_back(reverb_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(reverb_ui); }));
-  //   connections.emplace_back(reverb_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(reverb_ui); }));
 
   //   connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(exciter_ui); }));
   //   connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(exciter_ui);
