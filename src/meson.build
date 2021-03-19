@@ -99,7 +99,7 @@ pulseeffects_sources = [
 ]
 
 pulseeffects_deps = [
-	dependency('libpipewire-0.3', version: '>=0.3'),
+	dependency('libpipewire-0.3', version: '>=0.3.24'),
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('glibmm-2.68', version: '>=2.68'),
 	dependency('gtk4', version: '>=4.0.3'),

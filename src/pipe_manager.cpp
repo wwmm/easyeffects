@@ -567,46 +567,42 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   }
 
   if (str_key == "default.audio.sink") {
-    try {
-      uint v = std::stoul(str_value);
+    std::array<char, 1024> v{};
 
-      for (auto& node : pm->list_nodes) {
-        if (node.id == v) {
-          pm->default_sink = node;
+    PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-          if (node.name == "pulseeffects_sink") {
-            return 0;
-          }
+    for (auto& node : pm->list_nodes) {
+      if (node.name == v.data()) {
+        pm->default_sink = node;
 
-          Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
-
-          break;
+        if (node.name == "pulseeffects_sink") {
+          return 0;
         }
+
+        Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+
+        break;
       }
-    } catch (std::exception& e) {
-      util::warning(pm->log_tag + "could not parse the new default sink id: " + e.what());
     }
   }
 
   if (str_key == "default.audio.source") {
-    try {
-      uint v = std::stoul(str_value);
+    std::array<char, 1024> v{};
 
-      for (auto& node : pm->list_nodes) {
-        if (node.id == v) {
-          pm->default_source = node;
+    PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-          if (node.name == "pulseeffects_source") {
-            return 0;
-          }
+    for (auto& node : pm->list_nodes) {
+      if (node.name == v.data()) {
+        pm->default_source = node;
 
-          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
-
-          break;
+        if (node.name == "pulseeffects_source") {
+          return 0;
         }
+
+        Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+
+        break;
       }
-    } catch (std::exception& e) {
-      util::warning(pm->log_tag + "could not parse the new default source id: " + e.what());
     }
   }
 
@@ -1203,4 +1199,38 @@ void PipeManager::unlock() const {
 
 void PipeManager::destroy_object(const int& id) const {
   pw_registry_destroy(registry, id);
+}
+
+/*
+  Function inspired by code present in PipeWire's sources:
+  https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/spa/include/spa/utils/json.h#L350
+*/
+
+auto PipeManager::json_object_find(const char* obj, const char* key, char* value, size_t len) -> int {
+  const char* v = nullptr;
+
+  std::array<spa_json, 2> sjson{};
+  std::array<char, 128> res{};
+
+  spa_json_init(sjson.data(), obj, strlen(obj));
+
+  if (spa_json_enter_object(sjson.data(), sjson.data() + 1) <= 0) {
+    return -EINVAL;
+  }
+
+  while (spa_json_get_string(sjson.data() + 1, res.data(), res.size() * sizeof(char) - 1) > 0) {
+    if (strcmp(res.data(), key) == 0) {
+      if (spa_json_get_string(sjson.data() + 1, value, len) <= 0) {
+        continue;
+      }
+
+      return 0;
+    }
+
+    if (spa_json_next(sjson.data() + 1, &v) <= 0) {
+      break;
+    }
+  }
+
+  return -ENOENT;
 }

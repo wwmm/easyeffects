@@ -26,13 +26,13 @@
 #include <sigc++/sigc++.h>
 #include <spa/param/audio/format-utils.h>
 #include <spa/param/props.h>
+#include <spa/utils/json.h>
 #include <algorithm>
 #include <array>
 #include <cstring>
 #include <memory>
 #include <string>
 #include <vector>
-#include "spa/utils/defs.h"
 #include "util.hpp"
 
 struct NodeInfo {
@@ -214,6 +214,8 @@ class PipeManager {
   void lock() const;
 
   void unlock() const;
+
+  static auto json_object_find(const char* obj, const char* key, char* value, size_t len) -> int;
 
   sigc::signal<void(NodeInfo)> source_added;
   sigc::signal<void(NodeInfo)> source_changed;

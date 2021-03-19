@@ -119,35 +119,35 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
 }
 
 void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
-  bool want_to_play = false;
+  // bool want_to_play = false;
 
-  for (const auto& link : pm->list_links) {
-    if (link.input_node_id == pm->pe_sink_node.id) {
-      if (link.state == PW_LINK_STATE_ACTIVE) {
-        want_to_play = true;
+  // for (const auto& link : pm->list_links) {
+  //   if (link.input_node_id == pm->pe_sink_node.id) {
+  //     if (link.state == PW_LINK_STATE_ACTIVE) {
+  //       want_to_play = true;
 
-        break;
-      }
-    }
-  }
+  //       break;
+  //     }
+  //   }
+  // }
 
-  if (want_to_play != apps_want_to_play) {
-    pm->lock();
+  // if (want_to_play != apps_want_to_play) {
+  //   pm->lock();
 
-    if (want_to_play) {
-      activate_filters();
-    } else {
-      deactivate_filters();
-    }
+  //   if (want_to_play) {
+  //     activate_filters();
+  //   } else {
+  //     deactivate_filters();
+  //   }
 
-    pw_core_sync(pm->core, PW_ID_CORE, 0);
+  //   pw_core_sync(pm->core, PW_ID_CORE, 0);
 
-    pw_thread_loop_wait(pm->thread_loop);
+  //   pw_thread_loop_wait(pm->thread_loop);
 
-    pm->unlock();
+  //   pm->unlock();
 
-    apps_want_to_play = want_to_play;
-  }
+  //   apps_want_to_play = want_to_play;
+  // }
 }
 
 void StreamOutputEffects::change_output_device(const NodeInfo& node) {
