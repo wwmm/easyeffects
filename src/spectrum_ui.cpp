@@ -66,6 +66,12 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   connections.emplace_back(
       settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
 
+  connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) {
+    std::lock_guard<std::mutex> guard(my_lock_guard);
+
+    init_frequency_axis();
+  }));
+
   connections.emplace_back(settings->signal_changed("minimum-frequency").connect([&](auto key) {
     std::lock_guard<std::mutex> guard(my_lock_guard);
 
@@ -126,8 +132,8 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
   }
 
   try {
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline(magnitudes.begin() + start_index,
-                                                                      magnitudes.end(), spline_f0, spline_df);
+    boost::math::interpolators::cardinal_cubic_b_spline<float> spline(magnitudes.begin(), magnitudes.end(), spline_f0,
+                                                                      spline_df);
 
     for (uint n = 0U; n < spectrum_mag.size(); n++) {
       spectrum_mag[n] = spline(spectrum_x_axis[n]);
@@ -269,29 +275,13 @@ void SpectrumUi::init_color() {
 }
 
 void SpectrumUi::init_frequency_axis() {
-  spectrum_freqs.clear();
+  spectrum_freqs.resize(n_bands);
 
-  start_index = 0U;
-
-  for (uint n = 0U; n < n_bands; n++) {
-    auto f = rate * n / n_bands;
-
-    if (f > static_cast<uint>(settings->get_int("maximum-frequency"))) {
-      break;
-    }
-
-    if (f > static_cast<uint>(settings->get_int("minimum-frequency"))) {
-      spectrum_freqs.emplace_back(f);
-
-      if (start_index == 0U) {
-        start_index = n;
-      }
-    }
+  for (uint n = 0; n < n_bands; n++) {
+    spectrum_freqs[n] = 0.5F * rate * n / n_bands;
   }
 
   if (!spectrum_freqs.empty()) {
-    spectrum_mag.resize(spectrum_freqs.size());
-
     auto npoints = settings->get_int("n-points");
 
     spectrum_x_axis = util::logspace(log10f(static_cast<float>(settings->get_int("minimum-frequency"))),

@@ -72,7 +72,7 @@ void Spectrum::process(std::span<float>& left_in,
   for (uint n = 0; n < left_in.size(); n++) {
     uint k = total_count + n;
 
-    if (k < n_bands) {
+    if (k < real_input.size()) {
       // https://en.wikipedia.org/wiki/Hann_function
 
       auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * k / static_cast<float>(real_input.size() - 1)));
@@ -87,7 +87,7 @@ void Spectrum::process(std::span<float>& left_in,
 
   total_count += count;
 
-  if (total_count == n_bands) {
+  if (total_count == real_input.size()) {
     total_count = 0;
 
     fftwf_execute(plan);
@@ -106,6 +106,8 @@ void Spectrum::process(std::span<float>& left_in,
       }
     }
 
-    Glib::signal_idle().connect_once([=, this] { power.emit(rate, n_bands, output); });
+    auto output_copy = output;
+
+    Glib::signal_idle().connect_once([=, this] { power.emit(rate, output_copy.size(), output_copy); });
   }
 }

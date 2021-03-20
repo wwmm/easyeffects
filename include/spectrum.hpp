@@ -52,8 +52,6 @@ class Spectrum : public PluginBase {
 
   std::vector<float> real_input, output;
 
-  float threshold = util::minimum_db_level;
-
   uint n_bands = 4096, total_count = 0;
 };
 

@@ -30,10 +30,10 @@
 
 namespace util {
 
-const float minimum_db_level = -99.0F;
-const double minimum_db_d_level = -99.0;
-const float minimum_linear_level = 0.00001F;
-const double minimum_linear_d_level = 0.00001;
+const float minimum_db_level = -120.0F;
+const double minimum_db_d_level = -120.0;
+const float minimum_linear_level = 0.000001F;
+const double minimum_linear_d_level = 0.000001;
 
 void debug(const std::string& s);
 void error(const std::string& s);

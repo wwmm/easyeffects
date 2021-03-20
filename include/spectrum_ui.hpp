@@ -56,7 +56,6 @@ class SpectrumUi : public Gtk::DrawingArea {
   double mouse_intensity = 0.0, mouse_freq = 0.0;
 
   uint rate = 0, n_bands = 0;
-  uint start_index = 0U;
   float spline_f0 = 0.0F, spline_df = 0.0F;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
