@@ -371,6 +371,60 @@
                                                 </child>
                                             </object>
                                         </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">end</property>
+                                                <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">end</property>
+                                                        <property name="label" translatable="yes">High-pass Mode</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkComboBoxText" id="hpf_mode">
+                                                        <property name="halign">center</property>
+                                                        <items>
+                                                            <item translatable="yes">Off</item>
+                                                            <item translatable="yes">12 dB/oct</item>
+                                                            <item translatable="yes">24 dB/oct</item>
+                                                            <item translatable="yes">36 dB/oct</item>
+                                                        </items>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="halign">end</property>
+                                                <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">end</property>
+                                                        <property name="label" translatable="yes">Low-pass Mode</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkComboBoxText" id="lpf_mode">
+                                                        <property name="halign">center</property>
+                                                        <items>
+                                                            <item translatable="yes">Off</item>
+                                                            <item translatable="yes">12 dB/oct</item>
+                                                            <item translatable="yes">24 dB/oct</item>
+                                                            <item translatable="yes">36 dB/oct</item>
+                                                        </items>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
 
@@ -379,12 +433,12 @@
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="row-spacing">6</property>
-                                        <property name="column-spacing">48</property>
+                                        <property name="column-spacing">24</property>
                                         <child>
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Side Level</property>
+                                                <property name="label" translatable="yes">Pre-amplification</property>
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">0</property>
@@ -392,16 +446,15 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkSpinButton" id="slev">
+                                            <object class="GtkSpinButton" id="preamp">
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
+                                                <property name="digits">2</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
-                                                        <property name="lower">-36</property>
-                                                        <property name="upper">36</property>
+                                                        <property name="upper">40</property>
                                                         <property name="step-increment">0.1</property>
                                                         <property name="page-increment">1</property>
                                                     </object>
@@ -417,7 +470,7 @@
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Side Balance</property>
+                                                <property name="label" translatable="yes">Reactivity</property>
                                                 <layout>
                                                     <property name="column">1</property>
                                                     <property name="row">0</property>
@@ -425,7 +478,7 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkSpinButton" id="sbal">
+                                            <object class="GtkSpinButton" id="reactivity">
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
@@ -433,8 +486,8 @@
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
-                                                        <property name="lower">-1</property>
-                                                        <property name="upper">1</property>
+                                                        <property name="upper">250</property>
+                                                        <property name="value">10</property>
                                                         <property name="step-increment">0.01</property>
                                                         <property name="page-increment">0.1</property>
                                                     </object>
@@ -450,7 +503,7 @@
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Middle Level</property>
+                                                <property name="label" translatable="yes">Lookahead</property>
                                                 <layout>
                                                     <property name="column">2</property>
                                                     <property name="row">0</property>
@@ -458,7 +511,7 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkSpinButton" id="mlev">
+                                            <object class="GtkSpinButton" id="lookahead">
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
@@ -466,10 +519,9 @@
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
-                                                        <property name="lower">-36</property>
-                                                        <property name="upper">36</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
+                                                        <property name="upper">20</property>
+                                                        <property name="step-increment">0.01</property>
+                                                        <property name="page-increment">0.1</property>
                                                     </object>
                                                 </property>
                                                 <layout>
@@ -483,7 +535,7 @@
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Middle Panorama</property>
+                                                <property name="label" translatable="yes">High-pass Frequency</property>
                                                 <layout>
                                                     <property name="column">3</property>
                                                     <property name="row">0</property>
@@ -491,22 +543,57 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkSpinButton" id="mpan">
+                                            <object class="GtkSpinButton" id="hpf_freq">
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">2</property>
+                                                <property name="digits">1</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
-                                                        <property name="lower">-1</property>
-                                                        <property name="upper">1</property>
-                                                        <property name="step-increment">0.01</property>
-                                                        <property name="page-increment">0.1</property>
+                                                        <property name="lower">10</property>
+                                                        <property name="upper">20000</property>
+                                                        <property name="value">10</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="page-increment">10</property>
                                                     </object>
                                                 </property>
                                                 <layout>
                                                     <property name="column">3</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">Low-pass Frequency</property>
+                                                <layout>
+                                                    <property name="column">4</property>
+                                                    <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton" id="lpf_freq">
+                                                <property name="halign">center</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="width-chars">10</property>
+                                                <property name="digits">0</property>
+                                                <property name="update-policy">if-valid</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment">
+                                                        <property name="lower">10</property>
+                                                        <property name="upper">20000</property>
+                                                        <property name="value">20000</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="page-increment">10</property>
+                                                    </object>
+                                                </property>
+                                                <layout>
+                                                    <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
                                             </object>
