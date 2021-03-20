@@ -14,6 +14,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   bass_enhancer =
       std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.pulseeffects.bassenhancer", path + "bassenhancer/", pm);
 
+  compressor =
+      std::make_shared<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor", path + "compressor/", pm);
+
   delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay", path + "delay/", pm);
 
   exciter = std::make_shared<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter", path + "exciter/", pm);
@@ -34,9 +37,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools", path + "stereotools/", pm);
-
-  //   compressor =
-  //       std::make_shared<Compressor>(log_tag, "com.github.wwmm.pulseeffects.compressor", path + "compressor/", pm);
 
   //   convolver = std::make_shared<Convolver>(log_tag, "com.github.wwmm.pulseeffects.convolver", path + "convolver/",
   //   pm);
@@ -70,6 +70,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
+  plugins.insert(std::make_pair(compressor->name, compressor));
   plugins.insert(std::make_pair(delay->name, delay));
   plugins.insert(std::make_pair(exciter->name, exciter));
   plugins.insert(std::make_pair(filter->name, filter));
@@ -77,7 +78,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(maximizer->name, maximizer));
   plugins.insert(std::make_pair(reverb->name, reverb));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  //   plugins.insert(std::make_pair(compressor->name, compressor));
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
   //   plugins.insert(std::make_pair(crystalizer->name, crystalizer));

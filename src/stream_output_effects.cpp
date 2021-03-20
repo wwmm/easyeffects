@@ -18,7 +18,6 @@
  */
 
 #include "stream_output_effects.hpp"
-#include <ranges>
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", "com.github.wwmm.pulseeffects.sinkinputs", pipe_manager) {

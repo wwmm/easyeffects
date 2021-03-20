@@ -64,6 +64,7 @@ class EffectsBase {
 
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
+  std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Delay> delay;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Filter> filter;
@@ -79,7 +80,6 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
-  std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Convolver> convolver;
   std::shared_ptr<Crossfeed> crossfeed;
   std::shared_ptr<Crystalizer> crystalizer;

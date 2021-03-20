@@ -21,6 +21,7 @@
 #define STREAM_OUTPUT_EFFECTS_HPP
 
 #include <algorithm>
+#include <ranges>
 #include "effects_base.hpp"
 
 class StreamOutputEffects : public EffectsBase {
