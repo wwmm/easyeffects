@@ -236,7 +236,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive");
   settings->bind("attack", attack->get_adjustment().get(), "value");
   settings->bind("knee", knee->get_adjustment().get(), "value");
   settings->bind("makeup", makeup->get_adjustment().get(), "value");
@@ -278,6 +277,17 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
 CompressorUi::~CompressorUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/compressor.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<CompressorUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.compressor", schema_path + "compressor/");
+
+  auto stack_page = stack->add(*ui, plugin_name::compressor);
+
+  return ui;
 }
 
 void CompressorUi::reset() {

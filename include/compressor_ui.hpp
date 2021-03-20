@@ -35,6 +35,8 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const CompressorUi&&) -> CompressorUi& = delete;
   ~CompressorUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi*;
+
   void on_new_reduction(double value);
 
   void on_new_sidechain(double value);

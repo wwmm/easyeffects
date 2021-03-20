@@ -26,106 +26,86 @@
         <value nick="24 dB/oct" value="2" />
         <value nick="36 dB/oct" value="3" />
     </enum>
-    <schema
-        id="com.github.wwmm.pulseeffects.compressor">
-        <key name="state" type="b">
-            <default>false</default>
-        </key>
-        <key name="installed" type="b">
-            <default>true</default>
-        </key>
-        <key name="post-messages" type="b">
-            <default>true</default>
-        </key>
+    <schema id="com.github.wwmm.pulseeffects.compressor">
         <key name="input-gain" type="d">
-            <range min="-60.0" max="60.0"/>
+            <range min="-60.0" max="60.0" />
             <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-60.0" max="60.0"/>
+            <range min="-60.0" max="60.0" />
             <default>0.0</default>
         </key>
         <key name="mode" enum="com.github.wwmm.pulseeffects.compressor.mode.enum">
             <default>"Downward"</default>
         </key>
         <key name="attack" type="d">
-            <range min="0.0" max="2000.0"/>
+            <range min="0.0" max="2000.0" />
             <default>20.0</default>
         </key>
         <key name="release" type="d">
-            <range min="0.0" max="5000.0"/>
+            <range min="0.0" max="5000.0" />
             <default>100.0</default>
         </key>
         <key name="release-threshold" type="d">
-            <range min="-200.0" max="0.0"/>
+            <range min="-200.0" max="0.0" />
             <default>-200.0</default>
         </key>
         <key name="threshold" type="d">
-            <range min="-60.0" max="0.0"/>
+            <range min="-60.0" max="0.0" />
             <default>-12.0</default>
         </key>
         <key name="ratio" type="d">
-            <range min="1.0" max="100.0"/>
+            <range min="1.0" max="100.0" />
             <default>4.0</default>
         </key>
         <key name="knee" type="d">
-            <range min="-23.99" max="0.0"/>
+            <range min="-23.99" max="0.0" />
             <default>-6.0</default>
         </key>
         <key name="makeup" type="d">
-            <range min="-60.0" max="60.0"/>
+            <range min="-60.0" max="60.0" />
             <default>0.0</default>
         </key>
         <key name="boost-threshold" type="d">
-            <range min="-120.0" max="-60.0"/>
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="sidechain-listen" type="b">
             <default>false</default>
         </key>
-        <key
-            name="sidechain-type"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
+        <key name="sidechain-type" enum="com.github.wwmm.pulseeffects.compressor.sidechain.type.enum">
             <default>"Feed-forward"</default>
         </key>
-        <key
-            name="sidechain-mode"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
+        <key name="sidechain-mode" enum="com.github.wwmm.pulseeffects.compressor.sidechain.mode.enum">
             <default>"RMS"</default>
         </key>
-        <key
-            name="sidechain-source"
-            enum="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
+        <key name="sidechain-source" enum="com.github.wwmm.pulseeffects.compressor.sidechain.source.enum">
             <default>"Middle"</default>
         </key>
         <key name="sidechain-preamp" type="d">
-            <range min="0.0" max="40.0"/>
+            <range min="0.0" max="40.0" />
             <default>0.0</default>
         </key>
         <key name="sidechain-reactivity" type="d">
-            <range min="0.0" max="250.0"/>
+            <range min="0.0" max="250.0" />
             <default>10.0</default>
         </key>
         <key name="sidechain-lookahead" type="d">
-            <range min="0.0" max="20.0"/>
+            <range min="0.0" max="20.0" />
             <default>0.0</default>
         </key>
-        <key
-            name="hpf-mode"
-            enum="com.github.wwmm.pulseeffects.compressor.filter.mode.enum">
+        <key name="hpf-mode" enum="com.github.wwmm.pulseeffects.compressor.filter.mode.enum">
             <default>"off"</default>
         </key>
         <key name="hpf-frequency" type="d">
-            <range min="10.0" max="20000.0"/>
+            <range min="10.0" max="20000.0" />
             <default>10.0</default>
         </key>
-        <key
-            name="lpf-mode"
-            enum="com.github.wwmm.pulseeffects.compressor.filter.mode.enum">
+        <key name="lpf-mode" enum="com.github.wwmm.pulseeffects.compressor.filter.mode.enum">
             <default>"off"</default>
         </key>
         <key name="lpf-frequency" type="d">
-            <range min="10.0" max="20000.0"/>
+            <range min="10.0" max="20000.0" />
             <default>20000.0</default>
         </key>
     </schema>

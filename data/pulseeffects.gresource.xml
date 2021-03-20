@@ -7,6 +7,7 @@
         <file>ui/app_info.ui</file>
         <file>ui/autogain.ui</file>
         <file>ui/bass_enhancer.ui</file>
+        <file>ui/compressor.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
         <file>ui/exciter.ui</file>
@@ -25,7 +26,6 @@
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>
-        <file>ui/compressor.glade</file>
         <file>ui/multiband_compressor.glade</file>
         <file>ui/equalizer.glade</file>
         <file>ui/equalizer_band.glade</file>

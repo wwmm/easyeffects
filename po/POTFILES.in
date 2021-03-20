@@ -6,6 +6,7 @@ data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.ui
 data/ui/bass_enhancer.ui
+data/ui/compressor.ui
 data/ui/delay.ui
 data/ui/effects_base.ui
 data/ui/exciter.ui
@@ -23,7 +24,6 @@ data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
 data/ui/client_info.glade
-data/ui/compressor.glade
 data/ui/convolver.glade
 data/ui/crossfeed.glade
 data/ui/crystalizer.glade
