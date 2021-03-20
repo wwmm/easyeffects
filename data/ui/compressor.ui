@@ -277,61 +277,69 @@
 
                 <child>
                     <object class="GtkStackPage">
-                        <property name="name">page_stereo_matrix</property>
-                        <property name="title" translatable="yes">Stereo Matrix</property>
+                        <property name="name">page_sidechain</property>
+                        <property name="title" translatable="yes">Sidechain</property>
                         <property name="child">
                             <object class="GtkBox">
                                 <property name="halign">center</property>
                                 <property name="spacing">24</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                    <object class="GtkComboBoxText" id="mode">
-                                        <property name="halign">center</property>
-                                        <items>
-                                            <item translatable="yes">LR &gt; LR (Stereo Default)</item>
-                                            <item translatable="yes">LR &gt; MS (Stereo to Mid-Side)</item>
-                                            <item translatable="yes">MS &gt; LR (Mid-Side to Stereo)</item>
-                                            <item translatable="yes">LR &gt; LL (Mono Left Channel)</item>
-                                            <item translatable="yes">LR &gt; RR (Mono Right Channel)</item>
-                                            <item translatable="yes">LR &gt; L+R (Mono Sum L+R)</item>
-                                            <item translatable="yes">LR &gt; RL (Stereo Flip Channels)</item>
-                                        </items>
+                                    <object class="GtkToggleButton" id="listen">
+                                        <property name="label" translatable="yes">Listen</property>
                                     </object>
                                 </child>
 
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
-                                        <property name="hexpand">1</property>
+                                        <property name="homogeneous">1</property>
                                         <property name="spacing">48</property>
                                         <child>
                                             <object class="GtkBox">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
                                                 <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="halign">end</property>
-                                                        <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Left</property>
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">end</property>
+                                                        <property name="label" translatable="yes">Type</property>
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkBox">
-                                                        <property name="spacing">6</property>
-                                                        <property name="orientation">vertical</property>
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="mutel">
-                                                                <property name="label" translatable="yes">Mute</property>
-                                                            </object>
-                                                        </child>
+                                                    <object class="GtkComboBoxText" id="sidechain_type">
+                                                        <property name="halign">center</property>
+                                                        <items>
+                                                            <item translatable="yes">Feed-forward</item>
+                                                            <item translatable="yes">Feed-back</item>
+                                                        </items>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
 
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="phasel">
-                                                                <property name="label" translatable="yes">Invert Phase</property>
-                                                            </object>
-                                                        </child>
+                                        <child>
+                                            <object class="GtkBox">
+                                                <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">end</property>
+                                                        <property name="label" translatable="yes">Mode</property>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkComboBoxText" id="sidechain_mode">
+                                                        <property name="halign">center</property>
+                                                        <items>
+                                                            <item translatable="yes">Peak</item>
+                                                            <item translatable="yes">RMS</item>
+                                                            <item translatable="yes">Low-Pass</item>
+                                                            <item translatable="yes">Uniform</item>
+                                                        </items>
                                                     </object>
                                                 </child>
                                             </object>
@@ -340,31 +348,25 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <property name="halign">end</property>
-                                                <property name="valign">center</property>
                                                 <property name="spacing">6</property>
+                                                <property name="orientation">vertical</property>
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="halign">end</property>
-                                                        <property name="xalign">1</property>
-                                                        <property name="label" translatable="yes">Right</property>
+                                                        <property name="halign">center</property>
+                                                        <property name="valign">end</property>
+                                                        <property name="label" translatable="yes">Source</property>
                                                     </object>
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkBox">
-                                                        <property name="spacing">6</property>
-                                                        <property name="orientation">vertical</property>
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="muter">
-                                                                <property name="label" translatable="yes">Mute</property>
-                                                            </object>
-                                                        </child>
-
-                                                        <child>
-                                                            <object class="GtkToggleButton" id="phaser">
-                                                                <property name="label" translatable="yes">Invert Phase</property>
-                                                            </object>
-                                                        </child>
+                                                    <object class="GtkComboBoxText" id="sidechain_source">
+                                                        <property name="halign">center</property>
+                                                        <items>
+                                                            <item translatable="yes">Middle</item>
+                                                            <item translatable="yes">Side</item>
+                                                            <item translatable="yes">Left</item>
+                                                            <item translatable="yes">Right</item>
+                                                        </items>
                                                     </object>
                                                 </child>
                                             </object>
