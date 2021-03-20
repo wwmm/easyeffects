@@ -24,15 +24,12 @@ Spectrum::Spectrum(const std::string& tag,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {
-  fft_left_in.resize(n_bands);
-  fft_right_in.resize(n_bands);
+  real_input.resize(n_bands);
   output.resize(n_bands / 2 + 1);
 
-  complex_left = fftwf_alloc_complex(n_bands);
-  complex_right = fftwf_alloc_complex(n_bands);
+  complex_output = fftwf_alloc_complex(n_bands);
 
-  plan_l = fftwf_plan_dft_r2c_1d(n_bands, fft_left_in.data(), complex_left, FFTW_ESTIMATE);
-  plan_r = fftwf_plan_dft_r2c_1d(n_bands, fft_right_in.data(), complex_right, FFTW_ESTIMATE);
+  plan = fftwf_plan_dft_r2c_1d(n_bands, real_input.data(), complex_output, FFTW_ESTIMATE);
 }
 
 Spectrum::~Spectrum() {
@@ -50,15 +47,10 @@ Spectrum::~Spectrum() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  fftwf_destroy_plan(plan_l);
-  fftwf_destroy_plan(plan_r);
+  fftwf_destroy_plan(plan);
 
-  if (complex_left != nullptr) {
-    fftwf_free(complex_left);
-  }
-
-  if (complex_right == nullptr) {
-    fftwf_free(complex_right);
+  if (complex_output != nullptr) {
+    fftwf_free(complex_output);
   }
 }
 
@@ -81,8 +73,11 @@ void Spectrum::process(std::span<float>& left_in,
     uint k = total_count + n;
 
     if (k < n_bands) {
-      fft_left_in[k] = left_in[n];
-      fft_right_in[k] = right_in[n];
+      // https://en.wikipedia.org/wiki/Hann_function
+
+      auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * k / static_cast<float>(real_input.size() - 1)));
+
+      real_input[k] = 0.5F * (left_in[n] + right_in[n]) * w;
 
       count++;
     } else {
@@ -95,17 +90,14 @@ void Spectrum::process(std::span<float>& left_in,
   if (total_count == n_bands) {
     total_count = 0;
 
-    fftwf_execute(plan_l);
-    fftwf_execute(plan_r);
+    fftwf_execute(plan);
 
     for (uint i = 0; i < output.size(); i++) {
-      float sqr_l = complex_left[i][0] * complex_left[i][0] + complex_left[i][1] * complex_left[i][1];
-      float sqr_r = complex_right[i][0] * complex_right[i][0] + complex_right[i][1] * complex_right[i][1];
+      float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-      sqr_l /= static_cast<float>(n_samples * n_samples);
-      sqr_r /= static_cast<float>(n_samples * n_samples);
+      sqr /= static_cast<float>(n_samples * n_samples);
 
-      float v = 10.0F * log10f(0.5F * (sqr_l + sqr_r));
+      float v = 10.0F * log10f(0.5F * (sqr));
 
       if (!std::isinf(v)) {
         output[i] = (v > util::minimum_db_level) ? v : util::minimum_db_level;

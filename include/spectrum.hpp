@@ -21,6 +21,7 @@
 #define SPECTRUM_HPP
 
 #include <fftw3.h>
+#include <numbers>
 #include "plugin_base.hpp"
 
 class Spectrum : public PluginBase {
@@ -45,11 +46,11 @@ class Spectrum : public PluginBase {
   sigc::signal<void(uint, uint, std::vector<float>)> power;  // rate, nbands, magnitudes
 
  private:
-  fftwf_plan plan_l = nullptr, plan_r = nullptr;
+  fftwf_plan plan = nullptr;
 
-  fftwf_complex *complex_left = nullptr, *complex_right = nullptr;
+  fftwf_complex* complex_output = nullptr;
 
-  std::vector<float> fft_left_in, fft_right_in, output;
+  std::vector<float> real_input, output;
 
   float threshold = util::minimum_db_level;
 
