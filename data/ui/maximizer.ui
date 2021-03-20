@@ -302,13 +302,13 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label" translatable="yes">Based on a</property>
+                                <property name="label" translatable="yes">Using</property>
                             </object>
                         </child>
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">ZamAudio Plugin</property>
+                                <property name="label">ZamAudio Plugins</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

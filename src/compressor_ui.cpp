@@ -196,62 +196,63 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
                            const std::string& schema,
                            const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "compressor";
+  name = plugin_name::compressor;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("listen", listen);
-  builder->get_widget("compression_mode", compression_mode);
-  builder->get_widget("sidechain_type", sidechain_type);
-  builder->get_widget("sidechain_mode", sidechain_mode);
-  builder->get_widget("sidechain_source", sidechain_source);
-  builder->get_widget("hpf_mode", hpf_mode);
-  builder->get_widget("lpf_mode", lpf_mode);
-  builder->get_widget("reduction", reduction);
-  builder->get_widget("reduction_label", reduction_label);
-  builder->get_widget("sidechain", sidechain);
-  builder->get_widget("sidechain_label", sidechain_label);
-  builder->get_widget("curve", curve);
-  builder->get_widget("curve_label", curve_label);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "attack", attack);
-  get_object(builder, "knee", knee);
-  get_object(builder, "makeup", makeup);
-  get_object(builder, "ratio", ratio);
-  get_object(builder, "release", release);
-  get_object(builder, "threshold", threshold);
-  get_object(builder, "preamp", preamp);
-  get_object(builder, "reactivity", reactivity);
-  get_object(builder, "lookahead", lookahead);
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
-  get_object(builder, "release_threshold", release_threshold);
-  get_object(builder, "boost_threshold", boost_threshold);
-  get_object(builder, "hpf_freq", hpf_freq);
-  get_object(builder, "lpf_freq", lpf_freq);
+  attack = builder->get_widget<Gtk::SpinButton>("attack");
+  knee = builder->get_widget<Gtk::SpinButton>("knee");
+  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
+  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+  release = builder->get_widget<Gtk::SpinButton>("release");
+  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
+  preamp = builder->get_widget<Gtk::SpinButton>("preamp");
+  reactivity = builder->get_widget<Gtk::SpinButton>("reactivity");
+  lookahead = builder->get_widget<Gtk::SpinButton>("lookahead");
+  release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
+  boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
+  hpf_freq = builder->get_widget<Gtk::SpinButton>("hpf_freq");
+  lpf_freq = builder->get_widget<Gtk::SpinButton>("lpf_freq");
+
+  compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
+  sidechain_type = builder->get_widget<Gtk::ComboBoxText>("sidechain_type");
+  sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
+  sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
+  hpf_mode = builder->get_widget<Gtk::ComboBoxText>("hpf_mode");
+  lpf_mode = builder->get_widget<Gtk::ComboBoxText>("lpf_mode");
+
+  reduction = builder->get_widget<Gtk::LevelBar>("reduction");
+  sidechain = builder->get_widget<Gtk::LevelBar>("sidechain");
+  curve = builder->get_widget<Gtk::LevelBar>("curve");
+
+  listen = builder->get_widget<Gtk::ToggleButton>("listen");
+
+  reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
+  sidechain_label = builder->get_widget<Gtk::Label>("sidechain_label");
+  curve_label = builder->get_widget<Gtk::Label>("curve_label");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("attack", attack.get(), "value", flag);
-  settings->bind("knee", knee.get(), "value", flag);
-  settings->bind("makeup", makeup.get(), "value", flag);
-  settings->bind("ratio", ratio.get(), "value", flag);
-  settings->bind("release", release.get(), "value", flag);
-  settings->bind("threshold", threshold.get(), "value", flag);
-  settings->bind("sidechain-listen", listen, "active", flag);
-  settings->bind("sidechain-preamp", preamp.get(), "value", flag);
-  settings->bind("sidechain-reactivity", reactivity.get(), "value", flag);
-  settings->bind("sidechain-lookahead", lookahead.get(), "value", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("release-threshold", release_threshold.get(), "value", flag);
-  settings->bind("boost-threshold", boost_threshold.get(), "value", flag);
-  settings->bind("hpf-frequency", hpf_freq.get(), "value", flag);
-  settings->bind("lpf-frequency", lpf_freq.get(), "value", flag);
+  settings->bind("installed", this, "sensitive");
+  settings->bind("attack", attack->get_adjustment().get(), "value");
+  settings->bind("knee", knee->get_adjustment().get(), "value");
+  settings->bind("makeup", makeup->get_adjustment().get(), "value");
+  settings->bind("ratio", ratio->get_adjustment().get(), "value");
+  settings->bind("release", release->get_adjustment().get(), "value");
+  settings->bind("threshold", threshold->get_adjustment().get(), "value");
+  settings->bind("sidechain-listen", listen, "active");
+  settings->bind("sidechain-preamp", preamp->get_adjustment().get(), "value");
+  settings->bind("sidechain-reactivity", reactivity->get_adjustment().get(), "value");
+  settings->bind("sidechain-lookahead", lookahead->get_adjustment().get(), "value");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
+  settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
+  settings->bind("hpf-frequency", hpf_freq->get_adjustment().get(), "value");
+  settings->bind("lpf-frequency", lpf_freq->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
@@ -273,9 +274,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "lpf-mode", lpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 CompressorUi::~CompressorUi() {

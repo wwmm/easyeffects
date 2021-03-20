@@ -20,7 +20,7 @@
 #ifndef COMPRESSOR_HPP
 #define COMPRESSOR_HPP
 
-#include <array>
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Compressor : public PluginBase {
@@ -35,14 +35,17 @@ class Compressor : public PluginBase {
   auto operator=(const Compressor&&) -> Compressor& = delete;
   ~Compressor() override;
 
-  sigc::connection input_level_connection, output_level_connection, reduction_connection, sidechain_connection,
-      curve_connection;
+  void setup() override;
 
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
   sigc::signal<void(double)> reduction, sidechain, curve;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif
