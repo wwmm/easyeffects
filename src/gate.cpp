@@ -46,7 +46,20 @@
 // }  // namespace
 
 Gate::Gate(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager)
-    : PluginBase(tag, "gate", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, "gate", schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Gate")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
   // gate = gst_element_factory_make("calf-sourceforge-net-plugins-Gate", "gate");
 
   // if (is_installed(gate)) {
@@ -86,36 +99,90 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 
 Gate::~Gate() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Gate::bind_to_gsettings() {
-  // g_settings_bind(settings, "detection", gate, "detection", G_SETTINGS_BIND_DEFAULT);
-  // g_settings_bind(settings, "stereo-link", gate, "stereo-link", G_SETTINGS_BIND_DEFAULT);
+void Gate::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
 
-  // g_settings_bind_with_mapping(settings, "range", gate, "range", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "attack", gate, "attack", G_SETTINGS_BIND_GET, util::double_to_float,
-  // nullptr,
-  //                              nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "release", gate, "release", G_SETTINGS_BIND_GET, util::double_to_float,
-  //                              nullptr, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "ratio", gate, "ratio", G_SETTINGS_BIND_GET, util::double_to_float, nullptr,
-  //                              nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "threshold", gate, "threshold", G_SETTINGS_BIND_DEFAULT,
-  //                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "input", gate, "level-in", G_SETTINGS_BIND_DEFAULT,
-  // util::db20_gain_to_linear,
-  //                              util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "makeup", gate, "makeup", G_SETTINGS_BIND_DEFAULT,
-  // util::db20_gain_to_linear,
-  //                              util::linear_gain_to_db20, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings, "knee", gate, "knee", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
-  //                              util::linear_gain_to_db20, nullptr, nullptr);
+  lv2_wrapper->create_instance(rate);
 }
+
+void Gate::process(std::span<float>& left_in,
+                   std::span<float>& right_in,
+                   std::span<float>& left_out,
+                   std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+  lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+// g_settings_bind(settings, "detection", gate, "detection", G_SETTINGS_BIND_DEFAULT);
+// g_settings_bind(settings, "stereo-link", gate, "stereo-link", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind_with_mapping(settings, "range", gate, "range", G_SETTINGS_BIND_GET, util::db20_gain_to_linear,
+//                              nullptr, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "attack", gate, "attack", G_SETTINGS_BIND_GET, util::double_to_float,
+// nullptr,
+//                              nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "release", gate, "release", G_SETTINGS_BIND_GET, util::double_to_float,
+//                              nullptr, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "ratio", gate, "ratio", G_SETTINGS_BIND_GET, util::double_to_float, nullptr,
+//                              nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "threshold", gate, "threshold", G_SETTINGS_BIND_DEFAULT,
+//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "input", gate, "level-in", G_SETTINGS_BIND_DEFAULT,
+// util::db20_gain_to_linear,
+//                              util::linear_gain_to_db20, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "makeup", gate, "makeup", G_SETTINGS_BIND_DEFAULT,
+// util::db20_gain_to_linear,
+//                              util::linear_gain_to_db20, nullptr, nullptr);
+
+// g_settings_bind_with_mapping(settings, "knee", gate, "knee", G_SETTINGS_BIND_DEFAULT, util::db20_gain_to_linear,
+//                              util::linear_gain_to_db20, nullptr, nullptr);

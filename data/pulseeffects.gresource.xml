@@ -12,6 +12,7 @@
         <file>ui/effects_base.ui</file>
         <file>ui/exciter.ui</file>
         <file>ui/filter.ui</file>
+        <file>ui/gate.ui</file>
         <file>ui/general_settings.ui</file>
         <file>ui/limiter.ui</file>
         <file>ui/maximizer.ui</file>
@@ -32,7 +33,6 @@
         <file>ui/equalizer_preset_row.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/gate.glade</file>
         <file>ui/multiband_gate.glade</file>
         <file>ui/deesser.glade</file>
         <file>ui/convolver.glade</file>

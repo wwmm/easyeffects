@@ -76,8 +76,6 @@ Compressor::Compressor(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "makeup", "mk");
 
   lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
-
-  //   g_object_set(compressor, "pause", 1, nullptr);   // pause graph analysis
 }
 
 Compressor::~Compressor() {

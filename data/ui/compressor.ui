@@ -195,8 +195,8 @@
                                                         <property name="update-policy">if-valid</property>
                                                         <property name="adjustment">
                                                             <object class="GtkAdjustment">
-                                                                <property name="lower">-200</property>
-                                                                <property name="value">-200</property>
+                                                                <property name="lower">-120</property>
+                                                                <property name="value">-120</property>
                                                                 <property name="step-increment">0.1</property>
                                                                 <property name="page-increment">1</property>
                                                             </object>

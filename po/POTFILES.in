@@ -11,6 +11,7 @@ data/ui/delay.ui
 data/ui/effects_base.ui
 data/ui/exciter.ui
 data/ui/filter.ui
+data/ui/gate.ui
 data/ui/general_settings.ui
 data/ui/limiter.ui
 data/ui/maximizer.ui
@@ -32,7 +33,6 @@ data/ui/deesser.glade
 data/ui/equalizer.glade
 data/ui/equalizer_band.glade
 data/ui/equalizer_preset_row.glade
-data/ui/gate.glade
 data/ui/irs_row.glade
 data/ui/loudness.glade
 data/ui/module_info.glade

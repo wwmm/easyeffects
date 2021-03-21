@@ -23,6 +23,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter", path + "filter/", pm);
 
+  gate = std::make_shared<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate", path + "gate/", pm);
+
   limiter = std::make_shared<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter", path + "limiter/", pm);
 
   maximizer = std::make_shared<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer", path + "maximizer/", pm);
@@ -54,8 +56,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //                                           "com.github.wwmm.pulseeffects.equalizer.channel",
   //                                           path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
 
-  //   gate = std::make_shared<Gate>(log_tag, "com.github.wwmm.pulseeffects.gate", path + "gate/", pm);
-
   //   loudness = std::make_shared<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness", path + "loudness/", pm);
 
   //   multiband_compressor = std::make_shared<MultibandCompressor>(
@@ -78,12 +78,12 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(maximizer->name, maximizer));
   plugins.insert(std::make_pair(reverb->name, reverb));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
+  plugins.insert(std::make_pair(gate->name, gate));
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
   //   plugins.insert(std::make_pair(crystalizer->name, crystalizer));
   //   plugins.insert(std::make_pair(deesser->name, deesser));
   //   plugins.insert(std::make_pair(equalizer->name, equalizer));
-  //   plugins.insert(std::make_pair(gate->name, gate));
   //   plugins.insert(std::make_pair(loudness->name, loudness));
   //   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
   //   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));

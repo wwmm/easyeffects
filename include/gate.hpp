@@ -20,6 +20,7 @@
 #ifndef GATE_HPP
 #define GATE_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Gate : public PluginBase {
@@ -31,12 +32,17 @@ class Gate : public PluginBase {
   auto operator=(const Gate&&) -> Gate& = delete;
   ~Gate() override;
 
-  sigc::connection gating_connection;
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> gating;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

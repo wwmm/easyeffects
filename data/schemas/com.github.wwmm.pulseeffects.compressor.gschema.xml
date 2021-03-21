@@ -47,8 +47,8 @@
             <default>100.0</default>
         </key>
         <key name="release-threshold" type="d">
-            <range min="-200.0" max="0.0" />
-            <default>-200.0</default>
+            <range min="-120.0" max="0.0" />
+            <default>-120.0</default>
         </key>
         <key name="threshold" type="d">
             <range min="-60.0" max="0.0" />
