@@ -19,30 +19,6 @@
 
 #include "compressor.hpp"
 
-//     if (!l->curve_connection.connected()) {
-//       l->curve_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float v = 0.0F;
-
-//             g_object_get(l->compressor, "clm", &v, nullptr);
-
-//             l->curve.emit(v);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->input_level_connection.disconnect();
-//     l->output_level_connection.disconnect();
-//     l->reduction_connection.disconnect();
-//     l->sidechain_connection.disconnect();
-//     l->curve_connection.disconnect();
-//   }
-// }
-
-// }  // namespace
-
 Compressor::Compressor(const std::string& tag,
                        const std::string& schema,
                        const std::string& schema_path,
