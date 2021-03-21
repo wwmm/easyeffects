@@ -248,8 +248,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-lookahead", lookahead->get_adjustment().get(), "value");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  // settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
-  // settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
+  settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
+  settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
   settings->bind("hpf-frequency", hpf_freq->get_adjustment().get(), "value");
   settings->bind("lpf-frequency", lpf_freq->get_adjustment().get(), "value");
 
@@ -273,6 +273,23 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "lpf-mode", lpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
+
+  prepare_spinbutton(threshold, "dB");
+  prepare_spinbutton(attack, "ms");
+
+  prepare_spinbutton(release_threshold, "dB");
+  prepare_spinbutton(release, "ms");
+
+  prepare_spinbutton(boost_threshold, "dB");
+  prepare_spinbutton(knee, "dB");
+  prepare_spinbutton(makeup, "dB");
+
+  prepare_spinbutton(preamp, "dB");
+  prepare_spinbutton(lookahead, "ms");
+  prepare_spinbutton(reactivity, "ms");
+
+  prepare_spinbutton(hpf_freq, "Hz");
+  prepare_spinbutton(lpf_freq, "Hz");
 }
 
 CompressorUi::~CompressorUi() {
