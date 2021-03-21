@@ -37,7 +37,7 @@
                         <property name="name">page_compressor</property>
                         <property name="title" translatable="yes">Compressor</property>
                         <property name="child">
-                            <object class="GtkBox" id="top_box">
+                            <object class="GtkBox">
                                 <property name="spacing">12</property>
                                 <property name="orientation">vertical</property>
                                 <child>
@@ -185,7 +185,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
+                                                <property name="digits">2</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -219,7 +219,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">0</property>
+                                                <property name="digits">2</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -252,7 +252,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">0</property>
+                                                <property name="digits">1</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -286,6 +286,7 @@
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkToggleButton" id="listen">
+                                        <property name="halign">center</property>
                                         <property name="label" translatable="yes">Listen</property>
                                     </object>
                                 </child>
@@ -450,7 +451,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">2</property>
+                                                <property name="digits">1</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -515,7 +516,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
+                                                <property name="digits">2</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -547,7 +548,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="orientation">vertical</property>
                                                 <property name="width-chars">10</property>
-                                                <property name="digits">1</property>
+                                                <property name="digits">0</property>
                                                 <property name="update-policy">if-valid</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
@@ -964,13 +965,13 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label" translatable="yes">Based on a</property>
+                                <property name="label" translatable="yes">Using</property>
                             </object>
                         </child>
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Calf Studio Gears Plugin</property>
+                                <property name="label">Linux Studio Plugins</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

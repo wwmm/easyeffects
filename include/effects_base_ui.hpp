@@ -29,6 +29,7 @@
 #include <vector>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
+#include "compressor_ui.hpp"
 #include "delay_ui.hpp"
 #include "effects_base.hpp"
 #include "exciter_ui.hpp"

@@ -248,8 +248,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-lookahead", lookahead->get_adjustment().get(), "value");
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
-  settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
+  // settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
+  // settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
   settings->bind("hpf-frequency", hpf_freq->get_adjustment().get(), "value");
   settings->bind("lpf-frequency", lpf_freq->get_adjustment().get(), "value");
 

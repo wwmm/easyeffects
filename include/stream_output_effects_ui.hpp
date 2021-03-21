@@ -22,7 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
-// #include "compressor_ui.hpp"
 // #include "convolver_ui.hpp"
 // #include "crossfeed_ui.hpp"
 // #include "crystalizer_ui.hpp"

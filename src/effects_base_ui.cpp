@@ -147,6 +147,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
+  effects_base->compressor->post_messages = true;
   effects_base->delay->post_messages = true;
   effects_base->exciter->post_messages = true;
   effects_base->filter->post_messages = true;
@@ -167,6 +168,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
+  effects_base->compressor->post_messages = false;
   effects_base->delay->post_messages = false;
   effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
@@ -205,6 +207,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_output_level));
   effects_base->bass_enhancer->harmonics.connect(
       sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
+
+  // compressor
+
+  auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
+
+  compressor_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
+
+  effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level));
+  effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level));
 
   // delay
 
