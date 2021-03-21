@@ -46,7 +46,7 @@
 // }  // namespace
 
 Gate::Gate(const std::string& tag, const std::string& schema, const std::string& schema_path, PipeManager* pipe_manager)
-    : PluginBase(tag, "gate", schema, schema_path, pipe_manager),
+    : PluginBase(tag, plugin_name::gate, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Gate")) {
   if (!lv2_wrapper->found_plugin) {
     return;

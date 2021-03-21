@@ -83,28 +83,25 @@ GateUi::GateUi(BaseObjectType* cobject,
                const std::string& schema,
                const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "gate";
+  name = plugin_name::gate;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("detection", detection);
-  builder->get_widget("stereo_link", stereo_link);
-  builder->get_widget("gating", gating);
-  builder->get_widget("gating_label", gating_label);
-  builder->get_widget("plugin_reset", reset_button);
+  attack = builder->get_widget<Gtk::SpinButton>("attack");
+  knee = builder->get_widget<Gtk::SpinButton>("knee");
+  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
+  range = builder->get_widget<Gtk::SpinButton>("range");
+  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+  release = builder->get_widget<Gtk::SpinButton>("release");
+  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
 
-  get_object(builder, "attack", attack);
-  get_object(builder, "knee", knee);
-  get_object(builder, "input", input);
-  get_object(builder, "makeup", makeup);
-  get_object(builder, "range", range);
-  get_object(builder, "ratio", ratio);
-  get_object(builder, "release", release);
-  get_object(builder, "threshold", threshold);
+  detection = builder->get_widget<Gtk::ComboBoxText>("detection");
+  stereo_link = builder->get_widget<Gtk::ComboBoxText>("stereo_link");
+
+  gating = builder->get_widget<Gtk::LevelBar>("gating");
+  gating_label = builder->get_widget<Gtk::Label>("gating_label");
 
   // gsettings bindings
-
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
 
   settings->bind("installed", this, "sensitive", flag);
   settings->bind("attack", attack.get(), "value", flag);

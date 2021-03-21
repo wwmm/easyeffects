@@ -34,15 +34,23 @@ class GateUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const GateUi&&) -> GateUi& = delete;
   ~GateUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi*;
+
   void on_new_gating(double value);
 
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> attack, release, threshold, knee, ratio, range, input, makeup;
+  Gtk::SpinButton *attack = nullptr, *release = nullptr, *threshold = nullptr, *knee = nullptr, *ratio = nullptr,
+                  *range = nullptr, *input = nullptr, *makeup = nullptr;
+
   Gtk::LevelBar* gating = nullptr;
+
   Gtk::Label* gating_label = nullptr;
+
   Gtk::ComboBoxText *detection = nullptr, *stereo_link = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif
