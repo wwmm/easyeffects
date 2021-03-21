@@ -403,7 +403,6 @@
                         <property name="halign">end</property>
                         <property name="width-chars">4</property>
                         <property name="label">0</property>
-
                     </object>
                 </child>
             </object>
