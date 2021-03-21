@@ -830,7 +830,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
       auto r = std::ranges::find(list, name);
 
-      if (r != list.end()) {
+      if (r != list.begin()) {
         std::iter_swap(r, r - 1);
 
         settings->set_string_array("selected-plugins", list);
