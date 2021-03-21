@@ -42,7 +42,7 @@ class Compressor : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> reduction, sidechain, curve;
+  sigc::signal<void(double)> reduction, sidechain, curve, latency;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
