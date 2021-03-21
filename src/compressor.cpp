@@ -162,8 +162,6 @@ void Compressor::process(std::span<float>& left_in,
       float curve_value = lv2_wrapper->get_control_port_value("clm");
       float latency_value = lv2_wrapper->get_control_port_value("out_latency");
 
-      util::warning(std::to_string(latency_value));
-
       Glib::signal_idle().connect_once([=, this] {
         reduction.emit(reduction_value);
         sidechain.emit(sidechain_value);

@@ -906,6 +906,8 @@
                     <object class="GtkLevelBar" id="reduction">
                         <property name="valign">center</property>
                         <property name="hexpand">1</property>
+                        <property name="min-value">0</property>
+                        <property name="max-value">251</property>
                     </object>
                 </child>
 
