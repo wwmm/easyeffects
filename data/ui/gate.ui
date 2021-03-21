@@ -11,22 +11,8 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkBox">
-                <property name="halign">center</property>
-                <property name="homogeneous">1</property>
-                <property name="spacing">48</property>
-                <child>
-                    <object class="GtkMenuButton">
-                        <property name="popover">popover_presets</property>
-                        <property name="label" translatable="yes">Presets</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                    </object>
-                </child>
+            <object class="GtkToggleButton" id="bypass">
+                <property name="label" translatable="yes">Bypass</property>
             </object>
         </child>
 
@@ -43,24 +29,16 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
-                                <property name="label" translatable="yes">High Frequency Damping</property>
+                                <property name="label" translatable="yes">Detection</property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkSpinButton" id="hf_damp">
-                                <property name="width-chars">10</property>
-                                <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
-                                <property name="adjustment">
-                                    <object class="GtkAdjustment">
-                                        <property name="lower">2000</property>
-                                        <property name="upper">20000</property>
-                                        <property name="value">5000</property>
-                                        <property name="step-increment">1</property>
-                                        <property name="page-increment">100</property>
-                                    </object>
-                                </property>
+                            <object class="GtkComboBoxText" id="detection">
+                                <items>
+                                    <item translatable="yes">RMS</item>
+                                    <item translatable="yes">Peak</item>
+                                </items>
                             </object>
                         </child>
                     </object>
@@ -74,21 +52,24 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
-                                <property name="label" translatable="yes">Room Size</property>
+                                <property name="label" translatable="yes">Maximum Gain Reduction</property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkComboBoxText" id="room_size">
+                            <object class="GtkSpinButton" id="range">
                                 <property name="halign">center</property>
-                                <items>
-                                    <item translatable="yes">Small</item>
-                                    <item translatable="yes">Medium</item>
-                                    <item translatable="yes">Large</item>
-                                    <item translatable="yes">Tunnel</item>
-                                    <item translatable="yes">Large/smooth</item>
-                                    <item translatable="yes">Experimental</item>
-                                </items>
+                                <property name="width-chars">10</property>
+                                <property name="digits">1</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-95</property>
+                                        <property name="value">-24</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
                             </object>
                         </child>
                     </object>
@@ -103,24 +84,16 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
-                                <property name="label" translatable="yes">Diffusion</property>
+                                <property name="label" translatable="yes">Stereo Link</property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkSpinButton" id="diffusion">
-                                <property name="halign">center</property>
-                                <property name="width-chars">10</property>
-                                <property name="digits">2</property>
-                                <property name="update-policy">if-valid</property>
-                                <property name="adjustment">
-                                    <object class="GtkAdjustment">
-                                        <property name="upper">1</property>
-                                        <property name="value">0.5</property>
-                                        <property name="step-increment">0.01</property>
-                                        <property name="page-increment">0.1</property>
-                                    </object>
-                                </property>
+                            <object class="GtkComboBoxText" id="stereo_link">
+                                <items>
+                                    <item translatable="yes">Average</item>
+                                    <item translatable="yes">Maximum</item>
+                                </items>
                             </object>
                         </child>
                     </object>
@@ -529,72 +502,6 @@
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-            </object>
-        </child>
-    </object>
-
-    <object class="GtkPopover" id="popover_presets">
-        <child>
-            <object class="GtkBox">
-                <property name="margin_start">6</property>
-                <property name="margin_end">6</property>
-                <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
-                <property name="spacing">6</property>
-                <property name="orientation">vertical</property>
-                <child>
-                    <object class="GtkBox">
-                        <property name="homogeneous">1</property>
-                        <property name="spacing">6</property>
-                        <child>
-                            <object class="GtkButton" id="preset_ambience">
-                                <property name="label" translatable="yes">Ambience</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton" id="preset_empty_walls">
-                                <property name="label" translatable="yes">Empty Walls</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="homogeneous">1</property>
-                        <child>
-                            <object class="GtkButton" id="preset_room">
-                                <property name="label" translatable="yes">Room</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton" id="preset_large_empty_hall">
-                                <property name="label" translatable="yes">Large Empty Hall</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="homogeneous">1</property>
-                        <child>
-                            <object class="GtkButton" id="preset_disco">
-                                <property name="label" translatable="yes">Disco</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkButton" id="preset_large_occupied_hall">
-                                <property name="label" translatable="yes">Large Occupied Hall</property>
                             </object>
                         </child>
                     </object>

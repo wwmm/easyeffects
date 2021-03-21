@@ -103,15 +103,13 @@ GateUi::GateUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("attack", attack.get(), "value", flag);
-  settings->bind("knee", knee.get(), "value", flag);
-  settings->bind("input", input.get(), "value", flag);
-  settings->bind("makeup", makeup.get(), "value", flag);
-  settings->bind("range", range.get(), "value", flag);
-  settings->bind("ratio", ratio.get(), "value", flag);
-  settings->bind("release", release.get(), "value", flag);
-  settings->bind("threshold", threshold.get(), "value", flag);
+  settings->bind("attack", attack->get_adjustment().get(), "value");
+  settings->bind("knee", knee->get_adjustment().get(), "value");
+  settings->bind("makeup", makeup->get_adjustment().get(), "value");
+  settings->bind("range", range->get_adjustment().get(), "value");
+  settings->bind("ratio", ratio->get_adjustment().get(), "value");
+  settings->bind("release", release->get_adjustment().get(), "value");
+  settings->bind("threshold", threshold->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
@@ -119,8 +117,11 @@ GateUi::GateUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
 
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  prepare_spinbutton(attack, "ms");
+  prepare_spinbutton(release, "ms");
+  prepare_spinbutton(threshold, "dB");
+  prepare_spinbutton(knee, "dB");
+  prepare_spinbutton(makeup, "dB");
 }
 
 GateUi::~GateUi() {
