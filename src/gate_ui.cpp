@@ -87,6 +87,8 @@ GateUi::GateUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   attack = builder->get_widget<Gtk::SpinButton>("attack");
   knee = builder->get_widget<Gtk::SpinButton>("knee");
   makeup = builder->get_widget<Gtk::SpinButton>("makeup");
@@ -103,6 +105,8 @@ GateUi::GateUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("attack", attack->get_adjustment().get(), "value");
   settings->bind("knee", knee->get_adjustment().get(), "value");
   settings->bind("makeup", makeup->get_adjustment().get(), "value");

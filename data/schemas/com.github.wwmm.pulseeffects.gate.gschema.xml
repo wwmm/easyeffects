@@ -9,6 +9,14 @@
         <value nick="Maximum" value="1" />
     </enum>
     <schema id="com.github.wwmm.pulseeffects.gate">
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
         <key name="detection" enum="com.github.wwmm.pulseeffects.gate.detection.enum">
             <default>"RMS"</default>
         </key>

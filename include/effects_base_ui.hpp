@@ -34,6 +34,7 @@
 #include "effects_base.hpp"
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
+#include "gate_ui.hpp"
 #include "limiter_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "pipe_manager.hpp"

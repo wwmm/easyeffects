@@ -28,6 +28,10 @@ GatePreset::GatePreset()
 void GatePreset::save(boost::property_tree::ptree& root,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) {
+  root.put(section + ".gate.input-gain", settings->get_double("input-gain"));
+
+  root.put(section + ".gate.output-gain", settings->get_double("output-gain"));
+
   root.put(section + ".gate.detection", settings->get_string("detection"));
 
   root.put(section + ".gate.stereo-link", settings->get_string("stereo-link"));
@@ -50,6 +54,10 @@ void GatePreset::save(boost::property_tree::ptree& root,
 void GatePreset::load(const boost::property_tree::ptree& root,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) {
+  update_key<double>(root, settings, "input-gain", section + ".gate.input-gain");
+
+  update_key<double>(root, settings, "output-gain", section + ".gate.output-gain");
+
   update_string_key(root, settings, "detection", section + ".gate.detection");
 
   update_string_key(root, settings, "stereo-link", section + ".gate.stereo-link");

@@ -151,6 +151,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->delay->post_messages = true;
   effects_base->exciter->post_messages = true;
   effects_base->filter->post_messages = true;
+  effects_base->gate->post_messages = true;
   effects_base->limiter->post_messages = true;
   effects_base->maximizer->post_messages = true;
   effects_base->output_level->post_messages = true;
@@ -172,6 +173,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->delay->post_messages = false;
   effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
+  effects_base->gate->post_messages = false;
   effects_base->limiter->post_messages = false;
   effects_base->maximizer->post_messages = false;
   effects_base->output_level->post_messages = false;
@@ -251,6 +253,17 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->filter->input_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_input_level));
   effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level));
+
+  // gate
+
+  auto* gate_ui = GateUi::add_to_stack(stack_plugins, path);
+
+  gate_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->gate->bypass = gate_ui->bypass->get_active(); });
+
+  effects_base->gate->input_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level));
+  effects_base->gate->output_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_output_level));
+  effects_base->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating));
 
   // limiter
 
