@@ -593,9 +593,9 @@ void EffectsBaseUi::setup_listview_blocklist() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = new Gtk::Box();
-    auto* label = Gtk::manage(new Gtk::Label());
-    auto* btn = Gtk::manage(new Gtk::Button());
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* btn = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -683,9 +683,9 @@ void EffectsBaseUi::setup_listview_plugins() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = new Gtk::Box();
-    auto* label = Gtk::manage(new Gtk::Label());
-    auto* btn = Gtk::manage(new Gtk::Button());
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* btn = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -789,11 +789,11 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = new Gtk::Box();
-    auto* label = Gtk::manage(new Gtk::Label());
-    auto* up = Gtk::manage(new Gtk::Button());
-    auto* down = Gtk::manage(new Gtk::Button());
-    auto* remove = Gtk::manage(new Gtk::Button());
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* up = Gtk::make_managed<Gtk::Button>();
+    auto* down = Gtk::make_managed<Gtk::Button>();
+    auto* remove = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
