@@ -216,43 +216,9 @@
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Boost Threshold</property>
-                                                <layout>
-                                                    <property name="column">2</property>
-                                                    <property name="row">0</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSpinButton" id="boost_threshold">
-                                                <property name="halign">center</property>
-                                                <property name="orientation">vertical</property>
-                                                <property name="width-chars">10</property>
-                                                <property name="digits">2</property>
-                                                <property name="update-policy">if-valid</property>
-                                                <property name="adjustment">
-                                                    <object class="GtkAdjustment">
-                                                        <property name="lower">-120</property>
-                                                        <property name="upper">-60</property>
-                                                        <property name="value">-72</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
-                                                    </object>
-                                                </property>
-                                                <layout>
-                                                    <property name="column">2</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Ratio</property>
                                                 <layout>
-                                                    <property name="column">3</property>
+                                                    <property name="column">2</property>
                                                     <property name="row">0</property>
                                                 </layout>
                                             </object>
@@ -274,7 +240,7 @@
                                                     </object>
                                                 </property>
                                                 <layout>
-                                                    <property name="column">3</property>
+                                                    <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
                                             </object>
@@ -286,7 +252,7 @@
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Knee</property>
                                                 <layout>
-                                                    <property name="column">4</property>
+                                                    <property name="column">3</property>
                                                     <property name="row">0</property>
                                                 </layout>
                                             </object>
@@ -307,7 +273,7 @@
                                                     </object>
                                                 </property>
                                                 <layout>
-                                                    <property name="column">4</property>
+                                                    <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
                                             </object>
@@ -319,7 +285,7 @@
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Makeup</property>
                                                 <layout>
-                                                    <property name="column">5</property>
+                                                    <property name="column">4</property>
                                                     <property name="row">0</property>
                                                 </layout>
                                             </object>
@@ -335,6 +301,40 @@
                                                     <object class="GtkAdjustment">
                                                         <property name="lower">-60</property>
                                                         <property name="upper">60</property>
+                                                        <property name="step-increment">0.1</property>
+                                                        <property name="page-increment">1</property>
+                                                    </object>
+                                                </property>
+                                                <layout>
+                                                    <property name="column">4</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">Boost Threshold</property>
+                                                <layout>
+                                                    <property name="column">5</property>
+                                                    <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton" id="boost_threshold">
+                                                <property name="halign">center</property>
+                                                <property name="orientation">vertical</property>
+                                                <property name="width-chars">10</property>
+                                                <property name="digits">2</property>
+                                                <property name="update-policy">if-valid</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment">
+                                                        <property name="lower">-120</property>
+                                                        <property name="upper">-60</property>
+                                                        <property name="value">-72</property>
                                                         <property name="step-increment">0.1</property>
                                                         <property name="page-increment">1</property>
                                                     </object>
