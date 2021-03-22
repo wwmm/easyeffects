@@ -66,6 +66,7 @@ class EffectsBase {
   std::shared_ptr<BassEnhancer> bass_enhancer;
   std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Delay> delay;
+  std::shared_ptr<Equalizer> equalizer;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
@@ -85,7 +86,6 @@ class EffectsBase {
   std::shared_ptr<Crossfeed> crossfeed;
   std::shared_ptr<Crystalizer> crystalizer;
   std::shared_ptr<Deesser> deesser;
-  std::shared_ptr<Equalizer> equalizer;
   std::shared_ptr<Loudness> loudness;
   std::shared_ptr<MultibandCompressor> multiband_compressor;
   std::shared_ptr<MultibandGate> multiband_gate;

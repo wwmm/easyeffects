@@ -26,7 +26,6 @@
 // #include "crossfeed_ui.hpp"
 // #include "crystalizer_ui.hpp"
 // #include "deesser_ui.hpp"
-// #include "equalizer_ui.hpp"
 // #include "loudness_ui.hpp"
 // #include "multiband_compressor_ui.hpp"
 // #include "multiband_gate_ui.hpp"

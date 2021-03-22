@@ -32,6 +32,7 @@
 #include "compressor_ui.hpp"
 #include "delay_ui.hpp"
 #include "effects_base.hpp"
+#include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"

@@ -149,6 +149,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->bass_enhancer->post_messages = true;
   effects_base->compressor->post_messages = true;
   effects_base->delay->post_messages = true;
+  effects_base->equalizer->post_messages = true;
   effects_base->exciter->post_messages = true;
   effects_base->filter->post_messages = true;
   effects_base->gate->post_messages = true;
@@ -171,6 +172,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->bass_enhancer->post_messages = false;
   effects_base->compressor->post_messages = false;
   effects_base->delay->post_messages = false;
+  effects_base->equalizer->post_messages = false;
   effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
   effects_base->gate->post_messages = false;
@@ -232,6 +234,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->delay->input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level));
   effects_base->delay->output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level));
+
+  // equalizer
+
+  // auto* equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
+
+  // equalizer_ui->bypass->signal_toggled().connect(
+  //     [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
+
+  // effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
+  // effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
 
   // exciter
 
