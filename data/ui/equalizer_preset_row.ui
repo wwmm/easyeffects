@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+  <object class="GtkListBoxRow" id="preset_row">
+    <property name="margin-start">6</property>
+    <property name="margin-end">6</property>
+    <property name="margin-top">6</property>
+    <property name="margin-bottom">6</property>
+    <property name="activatable">False</property>
+    <property name="selectable">False</property>
+    <child>
+      <object class="GtkBox">
+        <property name="valign">center</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkLabel" id="name">
+            <property name="label">Name</property>
+            <property name="ellipsize">end</property>
+            <property name="single-line-mode">True</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="apply">
+            <property name="label" translatable="yes">Apply</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
