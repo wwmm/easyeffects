@@ -301,14 +301,16 @@ void EqualizerUi::on_nbands_changed() {
     c.disconnect();
   }
 
-  for (const auto& c : bands_box_left->get_children()) {
-    bands_box_left->remove(*c);
-    delete c;
+  for (auto* child = bands_box_left->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+    bands_box_left->remove(*child);
+
+    delete child;
   }
 
-  for (const auto& c : bands_box_right->get_children()) {
-    bands_box_right->remove(*c);
-    delete c;
+  for (auto* child = bands_box_right->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+    bands_box_right->remove(*child);
+
+    delete child;
   }
 
   connections_bands.clear();
@@ -324,42 +326,33 @@ void EqualizerUi::on_nbands_changed() {
   }
 }
 
-void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
+void EqualizerUi::build_bands(Gtk::Box* bands_box,
                               const Glib::RefPtr<Gio::Settings>& cfg,
                               const int& nbands,
                               const bool& split_mode) {
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
   for (int n = 0; n < nbands; n++) {
-    auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.ui");
 
-    Gtk::Grid* band_grid = nullptr;
-    Gtk::ComboBoxText* band_type = nullptr;
-    Gtk::ComboBoxText* band_mode = nullptr;
-    Gtk::ComboBoxText* band_slope = nullptr;
-    Gtk::Label* band_width = nullptr;
-    Gtk::Label* band_label = nullptr;
-    Gtk::Label* band_quality_label = nullptr;
-    Gtk::Label* band_gain_label = nullptr;
-    Gtk::Button* reset_frequency = nullptr;
-    Gtk::Button* reset_quality = nullptr;
     Gtk::ToggleButton* band_solo = nullptr;
     Gtk::ToggleButton* band_mute = nullptr;
     Gtk::Scale* band_scale = nullptr;
 
-    B->get_widget("band_grid", band_grid);
-    B->get_widget("band_type", band_type);
-    B->get_widget("band_mode", band_mode);
-    B->get_widget("band_slope", band_slope);
-    B->get_widget("band_width", band_width);
-    B->get_widget("band_label", band_label);
-    B->get_widget("band_quality_label", band_quality_label);
-    B->get_widget("band_gain_label", band_gain_label);
-    B->get_widget("band_solo", band_solo);
-    B->get_widget("band_mute", band_mute);
-    B->get_widget("band_scale", band_scale);
-    B->get_widget("reset_frequency", reset_frequency);
-    B->get_widget("reset_quality", reset_quality);
+    auto band_box = builder->get_widget<Gtk::Box>("band_box");
+
+    auto band_type = builder->get_widget<Gtk::ComboBoxText>("band_box");
+    auto band_mode = builder->get_widget<Gtk::ComboBoxText>("band_mode");
+    auto band_slope = builder->get_widget<Gtk::ComboBoxText>("band_slope");
+
+    auto band_width = builder->get_widget<Gtk::Label>("band_width");
+    auto band_label = builder->get_widget<Gtk::Label>("band_label");
+    auto band_quality_label = builder->get_widget<Gtk::Label>("band_quality_label");
+    auto band_gain_label = builder->get_widget<Gtk::Label>("band_gain_label");
+
+    auto reset_frequency = builder->get_widget<Gtk::Button>("reset_frequency");
+    auto reset_quality = builder->get_widget<Gtk::Button>("reset_quality");
+
+    auto band_solo = builder->get_widget<Gtk::ToggleButton>("band_solo");
+    auto band_mute = builder->get_widget<Gtk::ToggleButton>("band_mute");
 
     auto band_gain = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_gain"));
     auto band_frequency = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_frequency"));
@@ -389,7 +382,7 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
       }
     };
 
-    auto update_gain = [=, this]() {
+    auto update_gain = [=]() {
       const auto& g = band_gain->get_value();
 
       band_gain_label->set_text(level_to_localized_string_showpos(g, 2));
@@ -413,10 +406,10 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
       // split channels mode
 
       connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
-          [=, this]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
+          [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-frequency")); }));
 
       connections_bands.emplace_back(reset_quality->signal_clicked().connect(
-          [=, this]() { cfg->reset(std::string("band" + std::to_string(n) + "-q")); }));
+          [=]() { cfg->reset(std::string("band" + std::to_string(n) + "-q")); }));
     } else {
       // unified mode
 
@@ -485,11 +478,11 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
       }
     }));
 
-    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_gain.get(), "value", flag);
-    cfg->bind(std::string("band" + std::to_string(n) + "-frequency"), band_frequency.get(), "value", flag);
-    cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_quality.get(), "value", flag);
-    cfg->bind(std::string("band" + std::to_string(n) + "-solo"), band_solo, "active", flag);
-    cfg->bind(std::string("band" + std::to_string(n) + "-mute"), band_mute, "active", flag);
+    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_gain.get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-frequency"), band_frequency.get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_quality.get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-solo"), band_solo, "active");
+    cfg->bind(std::string("band" + std::to_string(n) + "-mute"), band_mute, "active");
 
     g_settings_bind_with_mapping(cfg->gobj(), std::string("band" + std::to_string(n) + "-type").c_str(),
                                  band_type->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
@@ -503,10 +496,10 @@ void EqualizerUi::build_bands(Gtk::Grid* bands_grid,
                                  band_slope->gobj(), "active", G_SETTINGS_BIND_DEFAULT, bandslope_enum_to_int,
                                  int_to_bandslope_enum, nullptr, nullptr);
 
-    bands_grid->add(*band_grid);
+    bands_box->append(*band_box);
   }
 
-  bands_grid->show_all();
+  bands_box->show();
 }
 
 void EqualizerUi::on_flat_response() {
