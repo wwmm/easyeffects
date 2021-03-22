@@ -19,6 +19,10 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.pulseeffects.delay", path + "delay/", pm);
 
+  equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer", path + "equalizer/",
+                                          "com.github.wwmm.pulseeffects.equalizer.channel",
+                                          path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
+
   exciter = std::make_shared<Exciter>(log_tag, "com.github.wwmm.pulseeffects.exciter", path + "exciter/", pm);
 
   filter = std::make_shared<Filter>(log_tag, "com.github.wwmm.pulseeffects.filter", path + "filter/", pm);
@@ -52,10 +56,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   //   deesser = std::make_shared<Deesser>(log_tag, "com.github.wwmm.pulseeffects.deesser", path + "deesser/", pm);
 
-  //   equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.pulseeffects.equalizer", path + "equalizer/",
-  //                                           "com.github.wwmm.pulseeffects.equalizer.channel",
-  //                                           path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
-
   //   loudness = std::make_shared<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness", path + "loudness/", pm);
 
   //   multiband_compressor = std::make_shared<MultibandCompressor>(
@@ -72,6 +72,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
   plugins.insert(std::make_pair(compressor->name, compressor));
   plugins.insert(std::make_pair(delay->name, delay));
+  plugins.insert(std::make_pair(equalizer->name, equalizer));
   plugins.insert(std::make_pair(exciter->name, exciter));
   plugins.insert(std::make_pair(filter->name, filter));
   plugins.insert(std::make_pair(limiter->name, limiter));
@@ -83,7 +84,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
   //   plugins.insert(std::make_pair(crystalizer->name, crystalizer));
   //   plugins.insert(std::make_pair(deesser->name, deesser));
-  //   plugins.insert(std::make_pair(equalizer->name, equalizer));
   //   plugins.insert(std::make_pair(loudness->name, loudness));
   //   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
   //   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));

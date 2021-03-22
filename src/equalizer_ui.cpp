@@ -296,6 +296,17 @@ EqualizerUi::~EqualizerUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto EqualizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<EqualizerUi>(builder, "top_box", "com.github.wwmm.pulseeffects.equalizer",
+                                                           schema_path + "equalizer/");
+
+  auto stack_page = stack->add(*ui, plugin_name::equalizer);
+
+  return ui;
+}
+
 void EqualizerUi::on_nbands_changed() {
   for (auto& c : connections_bands) {
     c.disconnect();

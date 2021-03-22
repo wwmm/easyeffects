@@ -26,8 +26,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, soe_ptr, schema), soe(soe_ptr) {
   // populate stack
 
-  //   auto b_limiter = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/limiter.glade");
-  //   auto b_compressor = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/compressor.glade");
   //   auto b_equalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   // auto b_crossfeed =
@@ -35,21 +33,12 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_multiband_compressor =
   //       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
-  //   auto b_gate = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/gate.glade");
   //   auto b_multiband_gate =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade"); auto b_deesser =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.glade"); auto b_stereo_tools =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/stereo_tools.glade"); auto b_convolver =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.glade"); auto b_crystalizer =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_delay =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/delay.glade"); auto b_rnnoise =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
-
-  //   b_limiter->get_widget_derived("widgets_grid", limiter_ui, "com.github.wwmm.pulseeffects.limiter",
-  //                                 "/com/github/wwmm/pulseeffects/sinkinputs/limiter/");
-
-  //   b_compressor->get_widget_derived("widgets_grid", compressor_ui, "com.github.wwmm.pulseeffects.compressor",
-  //                                    "/com/github/wwmm/pulseeffects/sinkinputs/compressor/");
 
   //   b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.equalizer",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/",
@@ -59,9 +48,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
-
-  //   b_exciter->get_widget_derived("widgets_grid", exciter_ui, "com.github.wwmm.pulseeffects.exciter",
-  //                                 "/com/github/wwmm/pulseeffects/sinkinputs/exciter/");
 
   //   b_crossfeed->get_widget_derived("widgets_grid", crossfeed_ui, "com.github.wwmm.pulseeffects.crossfeed",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
@@ -73,9 +59,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.loudness",
   //                                  "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
 
-  //   b_gate->get_widget_derived("widgets_grid", gate_ui, "com.github.wwmm.pulseeffects.gate",
-  //                              "/com/github/wwmm/pulseeffects/sinkinputs/gate/");
-
   //   b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui,
   //   "com.github.wwmm.pulseeffects.multibandgate",
   //                                        "/com/github/wwmm/pulseeffects/sinkinputs/multibandgate/");
@@ -83,55 +66,37 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/deesser/");
 
-  //   b_stereo_tools->get_widget_derived("widgets_grid", stereo_tools_ui, "com.github.wwmm.pulseeffects.stereotools",
-  //                                      "/com/github/wwmm/pulseeffects/sinkinputs/stereotools/");
-
   //   b_convolver->get_widget_derived("widgets_grid", convolver_ui, "com.github.wwmm.pulseeffects.convolver",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/convolver/");
 
   //   b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui, "com.github.wwmm.pulseeffects.crystalizer",
   //                                     "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
 
-  //   b_delay->get_widget_derived("widgets_grid", delay_ui, "com.github.wwmm.pulseeffects.delay",
-  //                               "/com/github/wwmm/pulseeffects/sinkinputs/delay/");
-
   //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
 
-  //   stack->add(*limiter_ui, limiter_ui->name);
-  //   stack->add(*compressor_ui, compressor_ui->name);
   //   stack->add(*equalizer_ui, equalizer_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
-  //   stack->add(*exciter_ui, exciter_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
-  //   stack->add(*gate_ui, gate_ui->name);
   //   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
   //   stack->add(*deesser_ui, deesser_ui->name);
-  //   stack->add(*stereo_tools_ui, stereo_tools_ui->name);
   //   stack->add(*convolver_ui, convolver_ui->name);
   //   stack->add(*crystalizer_ui, crystalizer_ui->name);
-  //   stack->add(*delay_ui, delay_ui->name);
   //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   // populate_listbox
 
-  //   add_to_listbox(limiter_ui);
-  //   add_to_listbox(compressor_ui);
   //   add_to_listbox(equalizer_ui);
   //   add_to_listbox(pitch_ui);
-  //   add_to_listbox(exciter_ui);
   //   add_to_listbox(crossfeed_ui);
   //   add_to_listbox(multiband_compressor_ui);
   //   add_to_listbox(loudness_ui);
-  //   add_to_listbox(gate_ui);
   //   add_to_listbox(multiband_gate_ui);
   //   add_to_listbox(deesser_ui);
-  //   add_to_listbox(stereo_tools_ui);
   //   add_to_listbox(convolver_ui);
   //   add_to_listbox(crystalizer_ui);
-  //   add_to_listbox(delay_ui);
   //   add_to_listbox(rnnoise_ui);
 
   // show only speaker icon before "Application" label
@@ -194,28 +159,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   connections.emplace_back(
       soe->output_level->output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
-  // limiter level meters connections
-
-  //   connections.emplace_back(
-  //       soe->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level)));
-  //   connections.emplace_back(
-  //       soe->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level)));
-  //   connections.emplace_back(
-  //       soe->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation)));
-
-  //   // compressor level meters connections
-
-  //   connections.emplace_back(
-  //       soe->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level)));
-  //   connections.emplace_back(
-  //       soe->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level)));
-  //   connections.emplace_back(
-  //       soe->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction)));
-  //   connections.emplace_back(
-  //       soe->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain)));
-  //   connections.emplace_back(soe->compressor->curve.connect(sigc::mem_fun(*compressor_ui,
-  //   &CompressorUi::on_new_curve)));
-
   //   // equalizer level meters connections
 
   //   connections.emplace_back(
@@ -229,15 +172,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //   &PitchUi::on_new_input_level_db)));
   //   connections.emplace_back(soe->pitch_output_level.connect(sigc::mem_fun(*pitch_ui,
   //   &PitchUi::on_new_output_level_db)));
-
-  //   // exciter level meters connections
-
-  //   connections.emplace_back(
-  //       soe->exciter_input_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->exciter_output_level.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->exciter->harmonics.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level)));
 
   //   // crossfeed level meters connections
 
@@ -321,14 +255,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //   connections.emplace_back(soe->deesser->detected.connect(sigc::mem_fun(*deesser_ui,
   //   &DeesserUi::on_new_detected)));
 
-  //   // stereo_tools level meters connections
-
-  //   connections.emplace_back(
-  //       soe->stereo_tools->input_level.connect(sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level)));
-  //   connections.emplace_back(
-  //       soe->stereo_tools->output_level.connect(sigc::mem_fun(*stereo_tools_ui,
-  //       &StereoToolsUi::on_new_output_level)));
-
   //   // convolver level meters connections
 
   //   connections.emplace_back(
@@ -347,93 +273,15 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //       soe->crystalizer->range_before.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_before)));
   //   connections.emplace_back(
   //       soe->crystalizer->range_after.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_after)));
-
-  //   // autogain level meters connections
-
-  //   connections.emplace_back(
-  //       soe->autogain_input_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->autogain_output_level.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->autogain->momentary.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_momentary)));
-  //   connections.emplace_back(
-  //       soe->autogain->shortterm.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_shortterm)));
-  //   connections.emplace_back(
-  //       soe->autogain->integrated.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_integrated)));
-  //   connections.emplace_back(soe->autogain->relative.connect(sigc::mem_fun(*autogain_ui,
-  //   &AutoGainUi::on_new_relative)));
-  //   connections.emplace_back(soe->autogain->loudness.connect(sigc::mem_fun(*autogain_ui,
-  //   &AutoGainUi::on_new_loudness)));
-  //   connections.emplace_back(soe->autogain->range.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_range)));
-  //   connections.emplace_back(soe->autogain->gain.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_gain)));
-
-  //   // delay level meters connections
-
-  //   connections.emplace_back(soe->delay_input_level.connect(sigc::mem_fun(*delay_ui,
-  //   &DelayUi::on_new_input_level_db)));
-  //   connections.emplace_back(soe->delay_output_level.connect(sigc::mem_fun(*delay_ui,
-  //   &DelayUi::on_new_output_level_db)));
-
-  //   // rnnoise level meters connections
-
-  //   connections.emplace_back(
-  //       soe->rnnoise_input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->rnnoise_output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level_db)));
 }
 
 void StreamOutputEffectsUi::up_down_connections() {
-  //   auto on_up = [=, this](auto p) {
-  //     auto order = Glib::Variant<std::vector<Glib::ustring>>();
-
-  //     settings->get_value("plugins", order);
-
-  //     auto vorder = order.get();
-
-  //     auto r = std::find(std::begin(vorder), std::end(vorder), p->name);
-
-  //     if (r != std::begin(vorder)) {
-  //       std::iter_swap(r, r - 1);
-
-  //       settings->set_string_array("plugins", vorder);
-  //     }
-  //   };
-
-  //   auto on_down = [=, this](auto p) {
-  //     auto order = Glib::Variant<std::vector<Glib::ustring>>();
-
-  //     settings->get_value("plugins", order);
-
-  //     auto vorder = order.get();
-
-  //     auto r = std::find(std::begin(vorder), std::end(vorder), p->name);
-
-  //     if (r != std::end(vorder) - 1) {
-  //       std::iter_swap(r, r + 1);
-
-  //       settings->set_string_array("plugins", vorder);
-  //     }
-  //   };
-
-  //   connections.emplace_back(limiter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(limiter_ui); }));
-  //   connections.emplace_back(limiter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(limiter_ui);
-  //   }));
-
-  //   connections.emplace_back(compressor_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(compressor_ui);
-  //   })); connections.emplace_back(compressor_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(compressor_ui);
-  //   }));
-
   //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(pitch_ui); }));
   //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(pitch_ui); }));
 
   //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(equalizer_ui);
   //   })); connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(equalizer_ui); }));
-
-  //   connections.emplace_back(exciter_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(exciter_ui); }));
-  //   connections.emplace_back(exciter_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(exciter_ui);
-  //   }));
 
   //   connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crossfeed_ui);
   //   })); connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=, this]() {
@@ -450,9 +298,6 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(loudness_ui);
   //   }));
 
-  //   connections.emplace_back(gate_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(gate_ui); }));
-  //   connections.emplace_back(gate_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(gate_ui); }));
-
   //   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=, this]() {
   //   on_up(multiband_gate_ui);
   //   })); connections.emplace_back(
@@ -462,11 +307,6 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(deesser_ui);
   //   }));
 
-  //   connections.emplace_back(stereo_tools_ui->plugin_up->signal_clicked().connect([=, this]() {
-  //   on_up(stereo_tools_ui);
-  //   })); connections.emplace_back(stereo_tools_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(stereo_tools_ui); }));
-
   //   connections.emplace_back(convolver_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(convolver_ui);
   //   })); connections.emplace_back(convolver_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(convolver_ui); }));
@@ -475,13 +315,6 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   })); connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(crystalizer_ui);
   //   }));
-
-  //   connections.emplace_back(autogain_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(autogain_ui); }));
-  //   connections.emplace_back(autogain_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(autogain_ui);
-  //   }));
-
-  //   connections.emplace_back(delay_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(delay_ui); }));
-  //   connections.emplace_back(delay_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(delay_ui); }));
 
   //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(rnnoise_ui); }));
   //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(rnnoise_ui);
