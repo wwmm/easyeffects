@@ -9,6 +9,9 @@ data/ui/bass_enhancer.ui
 data/ui/compressor.ui
 data/ui/delay.ui
 data/ui/effects_base.ui
+data/ui/equalizer.ui
+data/ui/equalizer_band.ui
+data/ui/equalizer_preset_row.ui
 data/ui/exciter.ui
 data/ui/filter.ui
 data/ui/gate.ui
@@ -30,9 +33,6 @@ data/ui/crossfeed.glade
 data/ui/crystalizer.glade
 data/ui/crystalizer_band.glade
 data/ui/deesser.glade
-data/ui/equalizer.glade
-data/ui/equalizer_band.glade
-data/ui/equalizer_preset_row.glade
 data/ui/irs_row.glade
 data/ui/loudness.glade
 data/ui/module_info.glade
