@@ -85,7 +85,7 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ListBox* presets_listbox = nullptr;
 
-  Gtk::Switch* split_channels = nullptr;
+  Gtk::ToggleButton* split_channels = nullptr;
 
   Gtk::Stack* stack = nullptr;
 

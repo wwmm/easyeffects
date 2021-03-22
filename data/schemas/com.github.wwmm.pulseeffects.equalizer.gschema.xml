@@ -7,8 +7,8 @@
     </enum>
     <schema id="com.github.wwmm.pulseeffects.equalizer">
         <key name="num-bands" type="i">
-            <range min="1" max="30" />
-            <default>30</default>
+            <range min="1" max="32" />
+            <default>32</default>
         </key>
         <key name="input-gain" type="d">
             <range min="-20" max="20.0" />

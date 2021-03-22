@@ -233,7 +233,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   presets_listbox = builder->get_widget<Gtk::ListBox>("presets_listbox");
 
-  split_channels = builder->get_widget<Gtk::Switch>("split_channels");
+  split_channels = builder->get_widget<Gtk::ToggleButton>("split_channels");
 
   stack = builder->get_widget<Gtk::Stack>("stack");
   stack_switcher = builder->get_widget<Gtk::StackSwitcher>("stack_switcher");
