@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
-    <object class="GtkPopover" id="menu">
+    <object class="GtkPopover" id="popover_menu">
         <object class="GtkBox">
             <property name="margin_start">6</property>
             <property name="margin_end">6</property>
@@ -215,4 +215,35 @@
             </child>
         </object>
     </object>
+
+    <child>
+        <object class="GtkBox" id="band_box">
+            <property name="spacing">6</property>
+            <property name="orientation">vertical</property>
+            <child>
+                <object class="GtkMenuButton">
+                    <property name="popover">popover_menu</property>
+                    <property name="icon-name">emblem-system-symbolic</property>
+                </object>
+            </child>
+
+            <child>
+                <object class="GtkLabel" id="band_label">
+                    <property name="label">band</property>
+                    <style>
+                        <class name="dim-label" />
+                    </style>
+                </object>
+            </child>
+
+            <child>
+                <object class="GtkLabel" id="band_quality_label">
+                    <property name="label">Q</property>
+                    <style>
+                        <class name="dim-label" />
+                    </style>
+                </object>
+            </child>
+        </object>
+    </child>
 </interface>
