@@ -59,3 +59,14 @@ void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const std::string
   button->signal_output().connect([=]() { return parse_spinbutton_output(button, unit); }, true);
   button->signal_input().connect([=](double& new_value) { return parse_spinbutton_input(button, new_value); }, true);
 }
+
+auto PluginUiBase::string_to_float(const std::string& value) -> float {
+  std::stringstream ss;
+
+  float fv = 0.0F;
+
+  ss << value;
+  ss >> fv;
+
+  return fv;
+}

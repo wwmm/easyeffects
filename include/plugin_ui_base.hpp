@@ -70,6 +70,8 @@ class PluginUiBase {
 
   static void prepare_spinbutton(Gtk::SpinButton* button, const std::string& unit);
 
+  static auto string_to_float(const std::string& value) -> float;
+
  private:
   template <typename T1, typename T2, typename T3, typename T4>
   void update_level(const T1& w_left,

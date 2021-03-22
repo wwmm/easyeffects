@@ -333,30 +333,28 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
   for (int n = 0; n < nbands; n++) {
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.ui");
 
-    Gtk::ToggleButton* band_solo = nullptr;
-    Gtk::ToggleButton* band_mute = nullptr;
-    Gtk::Scale* band_scale = nullptr;
+    auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
-    auto band_box = builder->get_widget<Gtk::Box>("band_box");
+    auto* band_type = builder->get_widget<Gtk::ComboBoxText>("band_box");
+    auto* band_mode = builder->get_widget<Gtk::ComboBoxText>("band_mode");
+    auto* band_slope = builder->get_widget<Gtk::ComboBoxText>("band_slope");
 
-    auto band_type = builder->get_widget<Gtk::ComboBoxText>("band_box");
-    auto band_mode = builder->get_widget<Gtk::ComboBoxText>("band_mode");
-    auto band_slope = builder->get_widget<Gtk::ComboBoxText>("band_slope");
+    auto* band_width = builder->get_widget<Gtk::Label>("band_width");
+    auto* band_label = builder->get_widget<Gtk::Label>("band_label");
+    auto* band_quality_label = builder->get_widget<Gtk::Label>("band_quality_label");
+    auto* band_gain_label = builder->get_widget<Gtk::Label>("band_gain_label");
 
-    auto band_width = builder->get_widget<Gtk::Label>("band_width");
-    auto band_label = builder->get_widget<Gtk::Label>("band_label");
-    auto band_quality_label = builder->get_widget<Gtk::Label>("band_quality_label");
-    auto band_gain_label = builder->get_widget<Gtk::Label>("band_gain_label");
+    auto* reset_frequency = builder->get_widget<Gtk::Button>("reset_frequency");
+    auto* reset_quality = builder->get_widget<Gtk::Button>("reset_quality");
 
-    auto reset_frequency = builder->get_widget<Gtk::Button>("reset_frequency");
-    auto reset_quality = builder->get_widget<Gtk::Button>("reset_quality");
+    auto* band_solo = builder->get_widget<Gtk::ToggleButton>("band_solo");
+    auto* band_mute = builder->get_widget<Gtk::ToggleButton>("band_mute");
 
-    auto band_solo = builder->get_widget<Gtk::ToggleButton>("band_solo");
-    auto band_mute = builder->get_widget<Gtk::ToggleButton>("band_mute");
+    auto* band_scale = builder->get_widget<Gtk::Scale>("band_scale");
 
-    auto band_gain = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_gain"));
-    auto band_frequency = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_frequency"));
-    auto band_quality = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_quality"));
+    auto* band_gain = builder->get_widget<Gtk::SpinButton>("band_gain");
+    auto* band_frequency = builder->get_widget<Gtk::SpinButton>("band_frequency");
+    auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
 
     auto update_quality_width = [=, this]() {
       const auto& q = band_quality->get_value();
@@ -382,15 +380,15 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       }
     };
 
-    auto update_gain = [=]() {
+    auto update_gain = [=, this]() {
       const auto& g = band_gain->get_value();
 
-      band_gain_label->set_text(level_to_localized_string_showpos(g, 2));
+      band_gain_label->set_text(level_to_localized_string(g, 2));
     };
 
     // set initial band gain in relative label
 
-    band_gain_label->set_text(level_to_localized_string_showpos(band_gain->get_value(), 2));
+    band_gain_label->set_text(level_to_localized_string(band_gain->get_value(), 2));
 
     // connections
 
@@ -466,7 +464,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       }));
     }
 
-    connections_bands.emplace_back(band_type->signal_changed().connect([=, this]() {
+    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
       const auto& row_num = band_type->get_active_row_number();
 
       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
@@ -478,9 +476,9 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       }
     }));
 
-    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_gain.get(), "value");
-    cfg->bind(std::string("band" + std::to_string(n) + "-frequency"), band_frequency.get(), "value");
-    cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_quality.get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_gain->get_adjustment().get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-frequency"), band_frequency->get_adjustment().get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_quality->get_adjustment().get(), "value");
     cfg->bind(std::string("band" + std::to_string(n) + "-solo"), band_solo, "active");
     cfg->bind(std::string("band" + std::to_string(n) + "-mute"), band_mute, "active");
 
@@ -627,7 +625,7 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
   auto name1 = row1->get_name();
   auto name2 = row2->get_name();
 
-  std::vector<std::string> names = {name1, name2};
+  std::vector<Glib::ustring> names = {name1, name2};
 
   std::sort(names.begin(), names.end());
 
@@ -643,10 +641,10 @@ auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) 
 }
 
 void EqualizerUi::populate_presets_listbox() {
-  auto children = presets_listbox->get_children();
+  for (auto* child = presets_listbox->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+    presets_listbox->remove(*child);
 
-  for (const auto& c : children) {
-    presets_listbox->remove(*c);
+    delete child;
   }
 
   auto names = Gio::Resource::enumerate_children_global(presets_path);
@@ -654,15 +652,11 @@ void EqualizerUi::populate_presets_listbox() {
   for (const auto& file_name : names) {
     auto name = file_name.substr(0, file_name.find('.'));
 
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.ui");
 
-    Gtk::ListBoxRow* row = nullptr;
-    Gtk::Button* apply_btn = nullptr;
-    Gtk::Label* label = nullptr;
-
-    b->get_widget("preset_row", row);
-    b->get_widget("apply", apply_btn);
-    b->get_widget("name", label);
+    auto* row = builder->get_widget<Gtk::ListBoxRow>("name");
+    auto* label = builder->get_widget<Gtk::Label>("name");
+    auto* apply_btn = builder->get_widget<Gtk::Button>("apply");
 
     row->set_name(name);
 
@@ -671,9 +665,9 @@ void EqualizerUi::populate_presets_listbox() {
     connections.emplace_back(
         apply_btn->signal_clicked().connect([=, this]() { load_preset(row->get_name() + ".json"); }));
 
-    presets_listbox->add(*row);
+    presets_listbox->append(*row);
 
-    presets_listbox->show_all();
+    presets_listbox->show();
   }
 }
 
@@ -710,11 +704,8 @@ void EqualizerUi::reset() {
 }
 
 void EqualizerUi::on_import_apo_preset_clicked() {
-  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
-
-  auto dialog =
-      Gtk::FileChooserNative::create(_("Import APO Preset File"), *main_window,
-                                     Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), Gtk::FileChooser::Action::OPEN, _("Open"),
+                                               _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
 
@@ -725,7 +716,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 
   dialog->signal_response().connect([=, this](const auto& response_id) {
     switch (response_id) {
-      case Gtk::ResponseType::RESPONSE_ACCEPT: {
+      case Gtk::ResponseType::ACCEPT: {
         import_apo_preset(dialog->get_file()->get_path());
 
         break;
