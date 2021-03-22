@@ -37,7 +37,7 @@ Equalizer::Equalizer(const std::string& tag,
     : PluginBase(tag, plugin_name::equalizer, schema, schema_path, pipe_manager),
       settings_left(Gio::Settings::create(schema_channel.c_str(), schema_channel_left_path.c_str())),
       settings_right(Gio::Settings::create(schema_channel.c_str(), schema_channel_right_path.c_str())),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Filter")) {
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
     return;
   }
@@ -50,36 +50,6 @@ Equalizer::Equalizer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  // equalizer = gst_element_factory_make("lsp-plug-in-plugins-lv2-para-equalizer-x32-lr", nullptr);
-
-  // if (is_installed(equalizer)) {
-  //   auto* input_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* in_level = gst_element_factory_make("level", "equalizer_input_level");
-  //   auto* out_level = gst_element_factory_make("level", "equalizer_output_level");
-  //   auto* output_gain = gst_element_factory_make("volume", nullptr);
-
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "eq_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "eq_audioconvert_out");
-
-  //   gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioconvert_in, equalizer, audioconvert_out, output_gain,
-  //                    out_level, nullptr);
-
-  //   gst_element_link_many(input_gain, in_level, audioconvert_in, equalizer, audioconvert_out, output_gain, out_level,
-  //                         nullptr);
-
-  //   // setting bin ghost pads
-
-  //   auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   // init
-
   //   g_object_set(equalizer, "enabled", 1, nullptr);
   //   g_object_set(equalizer, "bal", 0.0F, nullptr);
   //   g_object_set(equalizer, "fft", 0, nullptr);  // off
@@ -88,31 +58,7 @@ Equalizer::Equalizer(const std::string& tag,
   //     bind_band(equalizer, n);
   //   }
 
-  //   // connect signals
-
-  //   g_signal_connect(settings, "changed::num-bands", G_CALLBACK(on_num_bands_changed), this);
-
-  //   // gsettings bindings
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
   //   g_settings_bind(settings, "mode", equalizer, "mode", G_SETTINGS_BIND_DEFAULT);
-
-  //   // useless write just to force on_state_changed callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
 }
 
 Equalizer::~Equalizer() {
