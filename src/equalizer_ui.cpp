@@ -588,9 +588,18 @@ void EqualizerUi::reset() {
   }
 }
 
+void EqualizerUi::set_transient_window(Gtk::Window* transient_window) {}
+
 void EqualizerUi::on_import_apo_preset_clicked() {
-  auto dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), Gtk::FileChooser::Action::OPEN, _("Open"),
-                                               _("Cancel"));
+  Glib::RefPtr<Gtk::FileChooserNative> dialog;
+
+  if (transient_window != nullptr) {
+    dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), *transient_window,
+                                            Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
+  } else {
+    dialog = Gtk::FileChooserNative::create(_("Import APO Preset File"), Gtk::FileChooser::Action::OPEN, _("Open"),
+                                            _("Cancel"));
+  }
 
   auto dialog_filter = Gtk::FileFilter::create();
 

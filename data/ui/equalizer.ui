@@ -23,9 +23,10 @@
                 <property name="halign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">12</property>
-                <property name="column-homogeneous">1</property>
+                <!-- <property name="column-homogeneous">1</property> -->
                 <child>
                     <object class="GtkLabel">
+                        <property name="halign">end</property>
                         <property name="label" translatable="yes">Bands</property>
                         <layout>
                             <property name="column">0</property>
@@ -33,6 +34,17 @@
                         </layout>
                     </object>
                 </child>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Mode</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+
                 <child>
                     <object class="GtkSpinButton" id="nbands">
                         <property name="digits">0</property>
@@ -46,16 +58,6 @@
                                 <property name="page-increment">3</property>
                             </object>
                         </property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="label" translatable="yes">Mode</property>
                         <layout>
                             <property name="column">1</property>
                             <property name="row">0</property>
