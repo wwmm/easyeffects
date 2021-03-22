@@ -20,6 +20,11 @@
 #ifndef EQUALIZER_UI_HPP
 #define EQUALIZER_UI_HPP
 
+#include <glibmm/i18n.h>
+#include <boost/filesystem.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <regex>
 #include <unordered_map>
 #include "plugin_ui_base.hpp"
 
@@ -61,6 +66,8 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const EqualizerUi&&) -> EqualizerUi& = delete;
   ~EqualizerUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi*;
+
   void reset() override;
 
  private:
@@ -68,13 +75,22 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  Glib::RefPtr<Gtk::Adjustment> nbands, input_gain, output_gain;
-  Gtk::Grid *bands_grid_left = nullptr, *bands_grid_right = nullptr;
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
+
+  Gtk::SpinButton *nbands = nullptr, *resonance = nullptr, *inertia = nullptr;
+
+  Gtk::Box *bands_box_left = nullptr, *bands_box_right = nullptr;
+
   Gtk::Button *flat_response = nullptr, *calculate_freqs = nullptr, *import_apo = nullptr;
+
   Gtk::ListBox* presets_listbox = nullptr;
+
   Gtk::Switch* split_channels = nullptr;
+
   Gtk::Stack* stack = nullptr;
+
   Gtk::StackSwitcher* stack_switcher = nullptr;
+
   Gtk::ComboBoxText* mode = nullptr;
 
   std::vector<sigc::connection> connections_bands;

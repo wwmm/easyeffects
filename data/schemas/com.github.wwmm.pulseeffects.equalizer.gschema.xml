@@ -5,27 +5,17 @@
         <value nick="FIR" value="1" />
         <value nick="FFT" value="2" />
     </enum>
-    <schema
-        id="com.github.wwmm.pulseeffects.equalizer">
-        <key name="state" type="b">
-            <default>false</default>
-        </key>
-        <key name="installed" type="b">
-            <default>true</default>
-        </key>
-        <key name="post-messages" type="b">
-            <default>true</default>
-        </key>
+    <schema id="com.github.wwmm.pulseeffects.equalizer">
         <key name="num-bands" type="i">
-            <range min="1" max="30"/>
+            <range min="1" max="30" />
             <default>30</default>
         </key>
         <key name="input-gain" type="d">
-            <range min="-20" max="20.0"/>
+            <range min="-20" max="20.0" />
             <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-20" max="20.0"/>
+            <range min="-20" max="20.0" />
             <default>0.0</default>
         </key>
         <key name="split-channels" type="b">

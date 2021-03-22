@@ -18,11 +18,6 @@
  */
 
 #include "equalizer_ui.hpp"
-#include <glibmm/i18n.h>
-#include <boost/filesystem.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <regex>
 
 namespace {
 
@@ -222,25 +217,30 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
       PluginUiBase(builder, schema, schema_path),
       settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
       settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)) {
-  name = "equalizer";
+  name = plugin_name::equalizer;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("bands_grid_left", bands_grid_left);
-  builder->get_widget("bands_grid_right", bands_grid_right);
-  builder->get_widget("flat_response", flat_response);
-  builder->get_widget("import_apo", import_apo);
-  builder->get_widget("calculate_freqs", calculate_freqs);
-  builder->get_widget("presets_listbox", presets_listbox);
-  builder->get_widget("split_channels", split_channels);
-  builder->get_widget("stack", stack);
-  builder->get_widget("stack_switcher", stack_switcher);
-  builder->get_widget("mode", mode);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "nbands", nbands);
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  bands_box_left = builder->get_widget<Gtk::Box>("bands_box_left");
+  bands_box_right = builder->get_widget<Gtk::Box>("bands_box_right");
+
+  flat_response = builder->get_widget<Gtk::Button>("flat_response");
+  calculate_freqs = builder->get_widget<Gtk::Button>("calculate_freqs");
+  import_apo = builder->get_widget<Gtk::Button>("import_apo");
+
+  presets_listbox = builder->get_widget<Gtk::ListBox>("presets_listbox");
+
+  split_channels = builder->get_widget<Gtk::Switch>("split_channels");
+
+  stack = builder->get_widget<Gtk::Stack>("stack");
+  stack_switcher = builder->get_widget<Gtk::StackSwitcher>("stack_switcher");
+
+  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+
+  nbands = builder->get_widget<Gtk::SpinButton>("nbands");
 
   // signals connections
 
@@ -265,15 +265,11 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-  auto flag_get = Gio::SettingsBindFlags::SETTINGS_BIND_GET;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("num-bands", nbands.get(), "value", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("split-channels", split_channels, "active", flag);
-  settings->bind("split-channels", stack_switcher, "visible", flag_get);
+  settings->bind("num-bands", nbands->get_adjustment().get(), "value");
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("split-channels", split_channels, "active");
+  settings->bind("split-channels", stack_switcher, "visible", Gio::Settings::BindFlags::GET);
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
@@ -305,13 +301,13 @@ void EqualizerUi::on_nbands_changed() {
     c.disconnect();
   }
 
-  for (const auto& c : bands_grid_left->get_children()) {
-    bands_grid_left->remove(*c);
+  for (const auto& c : bands_box_left->get_children()) {
+    bands_box_left->remove(*c);
     delete c;
   }
 
-  for (const auto& c : bands_grid_right->get_children()) {
-    bands_grid_right->remove(*c);
+  for (const auto& c : bands_box_right->get_children()) {
+    bands_box_right->remove(*c);
     delete c;
   }
 
@@ -321,10 +317,10 @@ void EqualizerUi::on_nbands_changed() {
 
   const auto& nb = static_cast<int>(nbands->get_value());
 
-  build_bands(bands_grid_left, settings_left, nb, split);
+  build_bands(bands_box_left, settings_left, nb, split);
 
   if (split) {
-    build_bands(bands_grid_right, settings_right, nb, split);
+    build_bands(bands_box_right, settings_right, nb, split);
   }
 }
 
@@ -751,6 +747,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 }
 
 // returns false if we cannot parse given line successfully
+
 auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
   std::smatch matches;
 
@@ -789,13 +786,16 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
   if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
     std::regex_search(line, matches, re_dB_per_octave);
+
     // _xdB variants require the dB parameter
+
     if (((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB)) != 0U) && (matches.size() != 2U)) {
       return false;
     }
 
     if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
+
       filter.slope_dB = string_to_float(matches.str(1));
     }
   }
@@ -804,7 +804,9 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
   if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
     std::regex_search(line, matches, re_gain);
+
     // all Shelf types (i.e. all above except for Peaking) require the gain parameter
+
     if (((filter.type & PEAKING) == 0U) && (matches.size() != 2U)) {
       return false;
     }
@@ -817,7 +819,9 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get quality factor
   if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
     std::regex_search(line, matches, re_quality_factor);
+
     // Peaking and All-Pass filter types require the quality factor parameter
+
     if (((filter.type & (PEAKING | ALL_PASS)) != 0U) && (matches.size() != 2U)) {
       return false;
     }
