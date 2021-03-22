@@ -71,7 +71,7 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  int max_bands = 30;
+  int max_bands = 32;
 
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
@@ -83,8 +83,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Button *flat_response = nullptr, *calculate_freqs = nullptr, *import_apo = nullptr;
 
-  Gtk::ListBox* presets_listbox = nullptr;
-
   Gtk::ToggleButton* split_channels = nullptr;
 
   Gtk::Stack* stack = nullptr;
@@ -94,10 +92,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   Gtk::ComboBoxText* mode = nullptr;
 
   std::vector<sigc::connection> connections_bands;
-
-  std::string presets_path = "/com/github/wwmm/pulseeffects/presets/";
-
-  void load_preset(const std::string& file_name);
 
   void on_nbands_changed();
 
@@ -109,10 +103,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   void on_flat_response();
 
   void on_calculate_frequencies();
-
-  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
-
-  void populate_presets_listbox();
 
   void on_import_apo_preset_clicked();
 

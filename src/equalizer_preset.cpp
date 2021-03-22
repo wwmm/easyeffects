@@ -39,8 +39,6 @@ EqualizerPreset::EqualizerPreset()
 void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".equalizer.state", settings->get_boolean("state"));
-
   root.put(section + ".equalizer.mode", settings->get_string("mode"));
 
   const auto& nbands = settings->get_int("num-bands");
@@ -96,8 +94,6 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
 void EqualizerPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".equalizer.state");
-
   update_string_key(root, settings, "mode", section + ".equalizer.mode");
 
   update_key<int>(root, settings, "num-bands", section + ".equalizer.num-bands");

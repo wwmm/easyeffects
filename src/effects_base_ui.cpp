@@ -237,13 +237,13 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   // equalizer
 
-  // auto* equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
+  auto* equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
 
-  // equalizer_ui->bypass->signal_toggled().connect(
-  //     [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
+  equalizer_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
 
-  // effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
-  // effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
+  effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
+  effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
 
   // exciter
 

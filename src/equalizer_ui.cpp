@@ -231,8 +231,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   calculate_freqs = builder->get_widget<Gtk::Button>("calculate_freqs");
   import_apo = builder->get_widget<Gtk::Button>("import_apo");
 
-  presets_listbox = builder->get_widget<Gtk::ListBox>("presets_listbox");
-
   split_channels = builder->get_widget<Gtk::ToggleButton>("split_channels");
 
   stack = builder->get_widget<Gtk::Stack>("stack");
@@ -252,8 +250,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   flat_response->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_flat_response));
 
   calculate_freqs->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_calculate_frequencies));
-
-  presets_listbox->set_sort_func(sigc::ptr_fun(&EqualizerUi::on_listbox_sort));
 
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
@@ -284,8 +280,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   if (default_nbands.get() == settings->get_int("num-bands")) {
     on_nbands_changed();
   }
-
-  populate_presets_listbox();
 }
 
 EqualizerUi::~EqualizerUi() {
@@ -332,10 +326,10 @@ void EqualizerUi::on_nbands_changed() {
 
   const auto& nb = static_cast<int>(nbands->get_value());
 
-  build_bands(bands_box_left, settings_left, nb, split);
+  // build_bands(bands_box_left, settings_left, nb, split);
 
   if (split) {
-    build_bands(bands_box_right, settings_right, nb, split);
+    // build_bands(bands_box_right, settings_right, nb, split);
   }
 }
 
@@ -559,128 +553,6 @@ void EqualizerUi::on_calculate_frequencies() {
     config_band(settings_right, n, freq, q);
 
     freq0 = freq1;
-  }
-}
-
-void EqualizerUi::load_preset(const std::string& file_name) {
-  gsize dsize = 0;
-  std::stringstream ss;
-  boost::property_tree::ptree root;
-
-  auto bytes = Gio::Resource::lookup_data_global(presets_path + file_name);
-
-  const auto* rdata = static_cast<const char*>(bytes->get_data(dsize));
-
-  auto file_contents = std::string(rdata);
-
-  // std::cout << file_contents << std::endl;
-
-  ss << file_contents;
-
-  boost::property_tree::read_json(ss, root);
-
-  const auto& nbands = root.get<int>("equalizer.num-bands");
-
-  settings->set_int("num-bands", nbands);
-
-  settings->set_string("mode", root.get<std::string>("equalizer.mode"));
-
-  settings->set_double("input-gain", root.get<double>("equalizer.input-gain"));
-
-  settings->set_double("output-gain", root.get<double>("equalizer.output-gain"));
-
-  auto config_band = [&](const auto& cfg, const auto& n) {
-    double q = 0.0;
-
-    const auto& f = root.get<double>("equalizer.band" + std::to_string(n) + ".frequency");
-
-    try {
-      q = root.get<double>("equalizer.band" + std::to_string(n) + ".q");
-    } catch (const boost::property_tree::ptree_error& e) {
-      try {
-        const auto& w = root.get<double>("equalizer.band" + std::to_string(n) + ".width");
-
-        q = f / w;
-      } catch (const boost::property_tree::ptree_error& e) {
-      }
-    }
-
-    cfg->set_double(std::string("band" + std::to_string(n) + "-gain"),
-                    root.get<double>("equalizer.band" + std::to_string(n) + ".gain"));
-
-    cfg->set_double(std::string("band" + std::to_string(n) + "-frequency"), f);
-
-    cfg->set_double(std::string("band" + std::to_string(n) + "-q"), q);
-
-    cfg->set_string(std::string("band" + std::to_string(n) + "-type"),
-                    root.get<std::string>("equalizer.band" + std::to_string(n) + ".type"));
-
-    cfg->set_string(std::string("band" + std::to_string(n) + "-mode"),
-                    root.get<std::string>("equalizer.band" + std::to_string(n) + ".mode"));
-
-    cfg->set_string(std::string("band" + std::to_string(n) + "-slope"),
-                    root.get<std::string>("equalizer.band" + std::to_string(n) + ".slope"));
-
-    cfg->set_boolean(std::string("band" + std::to_string(n) + "-solo"),
-                     root.get<bool>("equalizer.band" + std::to_string(n) + ".solo"));
-
-    cfg->set_boolean(std::string("band" + std::to_string(n) + "-mute"),
-                     root.get<bool>("equalizer.band" + std::to_string(n) + ".mute"));
-  };
-
-  for (int n = 0; n < nbands; n++) {
-    config_band(settings_left, n);
-    config_band(settings_right, n);
-  }
-}
-
-auto EqualizerUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
-  auto name1 = row1->get_name();
-  auto name2 = row2->get_name();
-
-  std::vector<Glib::ustring> names = {name1, name2};
-
-  std::sort(names.begin(), names.end());
-
-  if (name1 == names[0]) {
-    return -1;
-  }
-
-  if (name2 == names[0]) {
-    return 1;
-  }
-
-  return 0;
-}
-
-void EqualizerUi::populate_presets_listbox() {
-  for (auto* child = presets_listbox->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-    presets_listbox->remove(*child);
-
-    delete child;
-  }
-
-  auto names = Gio::Resource::enumerate_children_global(presets_path);
-
-  for (const auto& file_name : names) {
-    auto name = file_name.substr(0, file_name.find('.'));
-
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_preset_row.ui");
-
-    auto* row = builder->get_widget<Gtk::ListBoxRow>("name");
-    auto* label = builder->get_widget<Gtk::Label>("name");
-    auto* apply_btn = builder->get_widget<Gtk::Button>("apply");
-
-    row->set_name(name);
-
-    label->set_text(name);
-
-    connections.emplace_back(
-        apply_btn->signal_clicked().connect([=, this]() { load_preset(row->get_name() + ".json"); }));
-
-    presets_listbox->append(*row);
-
-    presets_listbox->show();
   }
 }
 
