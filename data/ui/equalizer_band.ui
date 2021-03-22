@@ -1,2 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="pulseeffects"></interface>
+<interface domain="pulseeffects">
+    <object class="GtkPopover" id="menu">
+        <object class="GtkBox">
+            <property name="margin_start">6</property>
+            <property name="margin_end">6</property>
+            <property name="margin_top">6</property>
+            <property name="margin_bottom">6</property>
+            <property name="spacing">12</property>
+            <property name="orientation">vertical</property>
+            <child>
+                <object class="GtkGrid">
+                    <property name="halign">center</property>
+                    <property name="row-spacing">6</property>
+                    <property name="column-spacing">12</property>
+                    <child>
+                        <object class="GtkLabel">
+                            <property name="halign">center</property>
+                            <property name="label" translatable="yes">Type</property>
+                            <layout>
+                                <property name="column">0</property>
+                                <property name="row">0</property>
+                            </layout>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkComboBoxText" id="band_type">
+                            <items>
+                                <item translatable="yes">Off</item>
+                                <item translatable="yes">Bell</item>
+                                <item translatable="yes">High Pass</item>
+                                <item translatable="yes">High Shelf</item>
+                                <item translatable="yes">Low Pass</item>
+                                <item translatable="yes">Low Shelf</item>
+                                <item translatable="yes">Notch</item>
+                                <item translatable="yes">Resonance</item>
+                                <item translatable="yes">All Pass</item>
+                            </items>
+                            <layout>
+                                <property name="column">0</property>
+                                <property name="row">1</property>
+                            </layout>
+                        </object>
+                    </child>
+
+                    <child>
+                        <object class="GtkLabel">
+                            <property name="halign">center</property>
+                            <property name="label" translatable="yes">Mode</property>
+                            <layout>
+                                <property name="column">1</property>
+                                <property name="row">0</property>
+                            </layout>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkComboBoxText" id="band_mode">
+                            <items>
+                                <item translatable="yes">RLC (BT)</item>
+                                <item translatable="yes">RLC (MT)</item>
+                                <item translatable="yes">BWC (BT)</item>
+                                <item translatable="yes">BWC (MT)</item>
+                                <item translatable="yes">LRX (BT)</item>
+                                <item translatable="yes">LRX (MT)</item>
+                                <item translatable="yes">APO (DR)</item>
+                            </items>
+                            <layout>
+                                <property name="column">1</property>
+                                <property name="row">1</property>
+                            </layout>
+                        </object>
+                    </child>
+
+                    <child>
+                        <object class="GtkLabel">
+                            <property name="halign">center</property>
+                            <property name="label" translatable="yes">Slope</property>
+                            <layout>
+                                <property name="column">1</property>
+                                <property name="row">0</property>
+                            </layout>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkComboBoxText" id="band_slope">
+                            <items>
+                                <item>x1</item>
+                                <item>x2</item>
+                                <item>x3</item>
+                                <item>x4</item>
+                            </items>
+                            <layout>
+                                <property name="column">1</property>
+                                <property name="row">1</property>
+                            </layout>
+                        </object>
+                    </child>
+                </object>
+            </child>
+
+            <child>
+                <object class="GtkBox">
+                    <property name="spacing">12</property>
+
+                    <child>
+                        <object class="GtkBox">
+                            <property name="spacing">6</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                                <object class="GtkLabel">
+                                    <property name="halign">center</property>
+                                    <property name="label" translatable="yes">Frequency</property>
+                                </object>
+                            </child>
+
+                            <child>
+                                <object class="GtkSpinButton" id="band_frequency">
+                                    <property name="digits">0</property>
+                                    <property name="update-policy">if-valid</property>
+                                    <property name="adjustment">
+                                        <object class="GtkAdjustment">
+                                            <property name="lower">10</property>
+                                            <property name="upper">24000</property>
+                                            <property name="step-increment">1</property>
+                                            <property name="page-increment">10</property>
+                                        </object>
+                                    </property>
+                                </object>
+                            </child>
+
+                            <child>
+                                <object class="GtkButton" id="reset_frequency">
+                                    <property name="label" translatable="yes">Reset</property>
+                                    <property name="halign">center</property>
+                                </object>
+                            </child>
+                        </object>
+                    </child>
+
+                    <child>
+                        <object class="GtkBox">
+                            <property name="spacing">6</property>
+                            <property name="orientation">vertical</property>
+                            <child>
+                                <object class="GtkLabel">
+                                    <property name="halign">center</property>
+                                    <property name="label" translatable="yes">Quality</property>
+                                </object>
+                            </child>
+
+                            <child>
+                                <object class="GtkSpinButton" id="band_quality">
+                                    <property name="digits">0</property>
+                                    <property name="update-policy">if-valid</property>
+                                    <property name="adjustment">
+                                        <object class="GtkAdjustment">
+                                            <property name="upper">100</property>
+                                            <property name="value">4</property>
+                                            <property name="step-increment">0.01</property>
+                                            <property name="page-increment">0.10</property>
+                                        </object>
+                                    </property>
+                                </object>
+                            </child>
+
+                            <child>
+                                <object class="GtkButton" id="reset_quality">
+                                    <property name="label" translatable="yes">Reset</property>
+                                    <property name="halign">center</property>
+                                </object>
+                            </child>
+                        </object>
+                    </child>
+                </object>
+            </child>
+
+            <child>
+                <object class="GtkBox">
+                    <property name="spacing">12</property>
+                    <child>
+                        <object class="GtkToggleButton" id="band_solo">
+                            <property name="label" translatable="yes">Solo</property>
+                        </object>
+                    </child>
+
+                    <child>
+                        <object class="GtkToggleButton" id="band_mute">
+                            <property name="label" translatable="yes">Mute</property>
+                        </object>
+                    </child>
+                </object>
+            </child>
+        </object>
+    </object>
+</interface>
