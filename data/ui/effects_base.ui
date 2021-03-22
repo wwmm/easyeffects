@@ -9,10 +9,9 @@
                 <property name="hexpand">1</property>
             </object>
         </child>
+
         <child>
             <object class="GtkStack" id="stack_top">
-                <property name="hexpand">1</property>
-                <property name="vexpand">1</property>
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>
@@ -25,12 +24,8 @@
                                 <property name="spacing">6</property>
                                 <child>
                                     <object class="GtkScrolledWindow">
-                                        <property name="hexpand">1</property>
-                                        <property name="vexpand">1</property>
                                         <child>
                                             <object class="GtkViewport">
-                                                <property name="hexpand">1</property>
-                                                <property name="vexpand">1</property>
                                                 <child>
                                                     <object class="GtkListView" id="listview_players">
                                                         <property name="hexpand">1</property>
@@ -59,7 +54,6 @@
                                 <child>
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
-                                        <property name="vexpand">1</property>
                                         <property name="spacing">6</property>
                                         <child>
                                             <object class="GtkMenuButton" id="menubutton_plugins">
@@ -102,8 +96,6 @@
                                             <object class="GtkViewport">
                                                 <child>
                                                     <object class="GtkStack" id="stack_plugins">
-                                                        <property name="hexpand">1</property>
-                                                        <property name="vexpand">1</property>
                                                         <property name="transition_duration">250</property>
                                                         <property name="transition_type">slide-up-down</property>
                                                     </object>
