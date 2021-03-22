@@ -35,8 +35,21 @@ Equalizer::Equalizer(const std::string& tag,
                      const std::string& schema_channel_right_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::equalizer, schema, schema_path, pipe_manager),
-      settings_left(g_settings_new_with_path(schema_channel.c_str(), schema_channel_left_path.c_str())),
-      settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())) {
+      settings_left(Gio::Settings::create(schema_channel.c_str(), schema_channel_left_path.c_str())),
+      settings_right(Gio::Settings::create(schema_channel.c_str(), schema_channel_right_path.c_str())),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Filter")) {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
   // equalizer = gst_element_factory_make("lsp-plug-in-plugins-lv2-para-equalizer-x32-lr", nullptr);
 
   // if (is_installed(equalizer)) {
@@ -103,10 +116,63 @@ Equalizer::Equalizer(const std::string& tag,
 }
 
 Equalizer::~Equalizer() {
-  g_object_unref(settings_left);
-  g_object_unref(settings_right);
-
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
+}
+
+void Equalizer::setup() {
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
+  lv2_wrapper->create_instance(rate);
+}
+
+void Equalizer::process(std::span<float>& left_in,
+                        std::span<float>& right_in,
+                        std::span<float>& left_out,
+                        std::span<float>& right_out) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (lv2_wrapper->get_n_samples() != left_in.size()) {
+    lv2_wrapper->set_n_samples(left_in.size());
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+
+  lv2_wrapper->run();
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
 }
 
 // void Equalizer::bind_band(GstElement* equalizer, const int& index) {

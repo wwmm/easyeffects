@@ -20,6 +20,7 @@
 #ifndef EQUALIZER_HPP
 #define EQUALIZER_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Equalizer : public PluginBase {
@@ -37,12 +38,19 @@ class Equalizer : public PluginBase {
   auto operator=(const Equalizer&&) -> Equalizer& = delete;
   ~Equalizer() override;
 
-  void update_equalizer();
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
  private:
-  GSettings *settings_left = nullptr, *settings_right = nullptr;
+  Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  // void bind_band(GstElement* equalizer, const int& index);
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  void update_equalizer();
 };
 
 #endif
