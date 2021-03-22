@@ -46,29 +46,6 @@
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>
         <file>icons/pulseeffects-sine-symbolic.svg</file>
-        <file>icons/pulseeffects-us-symbolic.svg</file>
-        <file>icons/pulseeffects-db-symbolic.svg</file>
-        <file>icons/pulseeffects-ms-symbolic.svg</file>
-        <file>icons/pulseeffects-s-symbolic.svg</file>
-        <file>icons/pulseeffects-hz-symbolic.svg</file>
-        <file>icons/pulseeffects-celsius-symbolic.svg</file>
-        <file>icons/pulseeffects-zero-symbolic.svg</file>
-        <file>icons/pulseeffects-one-symbolic.svg</file>
-        <file>icons/pulseeffects-percent-symbolic.svg</file>
         <file>icons/pulseeffects-irs-symbolic.svg</file>
-        <file>presets/gstreamer_ballad.json</file>
-        <file>presets/gstreamer_classic.json</file>
-        <file>presets/gstreamer_club.json</file>
-        <file>presets/gstreamer_dance.json</file>
-        <file>presets/gstreamer_pop.json</file>
-        <file>presets/gstreamer_reggae.json</file>
-        <file>presets/gstreamer_rock.json</file>
-        <file>presets/gstreamer_ska.json</file>
-        <file>presets/gstreamer_soft.json</file>
-        <file>presets/gstreamer_techno.json</file>
-        <file>presets/gstreamer_party.json</file>
-        <file>presets/gstreamer_more_bass.json</file>
-        <file>presets/gstreamer_more_bass_and_treble.json</file>
-        <file>presets/ziyad_perfecteq.json</file>
     </gresource>
 </gresources>
