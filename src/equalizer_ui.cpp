@@ -295,7 +295,7 @@ auto EqualizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path
 
   auto* ui = Gtk::Builder::get_widget_derived<EqualizerUi>(
       builder, "top_box", "com.github.wwmm.pulseeffects.equalizer", schema_path + "equalizer/",
-      "com.github.wwmm.pulseeffects.equalizer", schema_path + "equalizer/leftchannel/",
+      "com.github.wwmm.pulseeffects.equalizer.channel", schema_path + "equalizer/leftchannel/",
       schema_path + "equalizer/rightchannel/");
 
   auto stack_page = stack->add(*ui, plugin_name::equalizer);
@@ -326,10 +326,10 @@ void EqualizerUi::on_nbands_changed() {
 
   const auto& nb = static_cast<int>(nbands->get_value());
 
-  // build_bands(bands_box_left, settings_left, nb, split);
+  build_bands(bands_box_left, settings_left, nb, split);
 
   if (split) {
-    // build_bands(bands_box_right, settings_right, nb, split);
+    build_bands(bands_box_right, settings_right, nb, split);
   }
 }
 
@@ -342,14 +342,13 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
-    auto* band_type = builder->get_widget<Gtk::ComboBoxText>("band_box");
+    auto* band_type = builder->get_widget<Gtk::ComboBoxText>("band_type");
     auto* band_mode = builder->get_widget<Gtk::ComboBoxText>("band_mode");
     auto* band_slope = builder->get_widget<Gtk::ComboBoxText>("band_slope");
 
     auto* band_width = builder->get_widget<Gtk::Label>("band_width");
     auto* band_label = builder->get_widget<Gtk::Label>("band_label");
     auto* band_quality_label = builder->get_widget<Gtk::Label>("band_quality_label");
-    auto* band_gain_label = builder->get_widget<Gtk::Label>("band_gain_label");
 
     auto* reset_frequency = builder->get_widget<Gtk::Button>("reset_frequency");
     auto* reset_quality = builder->get_widget<Gtk::Button>("reset_quality");
@@ -359,7 +358,6 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
     auto* band_scale = builder->get_widget<Gtk::Scale>("band_scale");
 
-    auto* band_gain = builder->get_widget<Gtk::SpinButton>("band_gain");
     auto* band_frequency = builder->get_widget<Gtk::SpinButton>("band_frequency");
     auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
 
@@ -387,16 +385,6 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       }
     };
 
-    auto update_gain = [=, this]() {
-      const auto& g = band_gain->get_value();
-
-      band_gain_label->set_text(level_to_localized_string(g, 2));
-    };
-
-    // set initial band gain in relative label
-
-    band_gain_label->set_text(level_to_localized_string(band_gain->get_value(), 2));
-
     // connections
 
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
@@ -404,8 +392,6 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
 
     connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
-
-    connections_bands.emplace_back(band_gain->signal_value_changed().connect(update_gain));
 
     if (split_mode) {
       // split channels mode
@@ -423,8 +409,8 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
          They have to be done before the bindings for the left channel.
        */
 
-      connections_bands.emplace_back(band_gain->signal_value_changed().connect([=, this]() {
-        settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), band_gain->get_value());
+      connections_bands.emplace_back(band_scale->signal_value_changed().connect([=, this]() {
+        settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), band_scale->get_value());
       }));
 
       connections_bands.emplace_back(band_frequency->signal_value_changed().connect([=, this]() {
@@ -483,7 +469,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       }
     }));
 
-    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_gain->get_adjustment().get(), "value");
+    cfg->bind(std::string("band" + std::to_string(n) + "-gain"), band_scale->get_adjustment().get(), "value");
     cfg->bind(std::string("band" + std::to_string(n) + "-frequency"), band_frequency->get_adjustment().get(), "value");
     cfg->bind(std::string("band" + std::to_string(n) + "-q"), band_quality->get_adjustment().get(), "value");
     cfg->bind(std::string("band" + std::to_string(n) + "-solo"), band_solo, "active");
