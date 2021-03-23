@@ -50,6 +50,8 @@ class Equalizer : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
+  void bind_band(const int& index);
+
   void update_equalizer();
 };
 

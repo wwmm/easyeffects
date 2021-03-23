@@ -697,9 +697,9 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 }
 
 void EqualizerUi::import_apo_preset(const std::string& file_path) {
-  boost::filesystem::path p{file_path};
+  std::filesystem::path p{file_path};
 
-  if (boost::filesystem::is_regular_file(p)) {
+  if (std::filesystem::is_regular_file(p)) {
     std::ifstream eq_file;
     std::vector<struct ImportedBand> bands;
 

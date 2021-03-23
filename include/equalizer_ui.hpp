@@ -21,9 +21,8 @@
 #define EQUALIZER_UI_HPP
 
 #include <glibmm/i18n.h>
-#include <boost/filesystem.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
+#include <filesystem>
+#include <fstream>
 #include <regex>
 #include <unordered_map>
 #include "plugin_ui_base.hpp"
