@@ -12,11 +12,11 @@
             <default>32</default>
         </key>
         <key name="input-gain" type="d">
-            <range min="-20" max="20.0" />
+            <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-20" max="20.0" />
+            <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
         <key name="split-channels" type="b">

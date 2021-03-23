@@ -50,6 +50,12 @@ Equalizer::Equalizer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+
+  for (uint n = 0; n < max_bands; n++) {
+    bind_band(n);
+  }
+
   settings->signal_changed("num-bands").connect([=, this](auto key) {
     int nbands = settings->get_int(key);
 
@@ -95,13 +101,7 @@ Equalizer::Equalizer(const std::string& tag,
     }
   });
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
-
-  for (uint n = 0; n < max_bands; n++) {
-    bind_band(n);
-  }
-
-  lv2_wrapper->set_control_port_value("enabled", 1);
+  // lv2_wrapper->set_control_port_value("enabled", 1);
 }
 
 Equalizer::~Equalizer() {
@@ -216,33 +216,4 @@ void Equalizer::bind_band(const int& index) {
 
   lv2_wrapper->bind_key_double_db(settings_right, std::string("band" + std::to_string(index) + "-q"),
                                   std::string("qr_" + std::to_string(index)));
-
-  //   g_settings_bind(settings_right, std::string("band" + std::to_string(index) + "-type").c_str(), equalizer,
-  //                   std::string("ftr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind(settings_right, std::string("band" + std::to_string(index) + "-mode").c_str(), equalizer,
-  //                   std::string("fmr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind(settings_right, std::string("band" + std::to_string(index) + "-slope").c_str(), equalizer,
-  //                   std::string("sr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind(settings_right, std::string("band" + std::to_string(index) + "-solo").c_str(), equalizer,
-  //                   std::string("xsr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind(settings_right, std::string("band" + std::to_string(index) + "-mute").c_str(), equalizer,
-  //                   std::string("xmr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings_right, std::string("band" + std::to_string(index) + "-frequency").c_str(),
-  //                                equalizer, std::string("fr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
-  //                                util::double_to_float, nullptr, nullptr, nullptr);
-
-  //   g_settings_bind_with_mapping(settings_right, std::string("band" + std::to_string(index) + "-q").c_str(),
-  //   equalizer,
-  //                                std::string("qr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
-  //                                util::double_to_float, nullptr, nullptr, nullptr);
-
-  //   g_settings_bind_with_mapping(settings_right, std::string("band" + std::to_string(index) + "-gain").c_str(),
-  //   equalizer,
-  //                                std::string("gr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
-  //                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
 }
