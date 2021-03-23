@@ -48,11 +48,6 @@ Equalizer::Equalizer(const std::string& tag,
     bind_band(n);
   }
 
-  // for (uint n = 0; n < max_bands; n++) {
-  //   lv2_wrapper->set_control_port_value("ftl_" + std::to_string(n), 1);
-  //   lv2_wrapper->set_control_port_value("ftr_" + std::to_string(n), 1);
-  // }
-
   settings->signal_changed("num-bands").connect([=, this](auto key) {
     int nbands = settings->get_int(key);
 
@@ -95,8 +90,6 @@ Equalizer::Equalizer(const std::string& tag,
                                  settings_left->get_double("band" + std::to_string(n) + "-q"));
     }
   });
-
-  // lv2_wrapper->set_control_port_value("enabled", 1);
 }
 
 Equalizer::~Equalizer() {
@@ -175,9 +168,10 @@ void Equalizer::bind_band(const int& index) {
   lv2_wrapper->bind_key_double(settings_left, "band" + std::to_string(index) + "-frequency",
                                "fl_" + std::to_string(index));
 
-  lv2_wrapper->bind_key_double(settings_left, "band" + std::to_string(index) + "-gain", "gl_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_left, "band" + std::to_string(index) + "-q", "ql_" + std::to_string(index));
 
-  lv2_wrapper->bind_key_double_db(settings_left, "band" + std::to_string(index) + "-q", "ql_" + std::to_string(index));
+  lv2_wrapper->bind_key_double_db(settings_left, "band" + std::to_string(index) + "-gain",
+                                  "gl_" + std::to_string(index));
 
   // right channel
 
@@ -194,7 +188,8 @@ void Equalizer::bind_band(const int& index) {
   lv2_wrapper->bind_key_double(settings_right, "band" + std::to_string(index) + "-frequency",
                                "fr_" + std::to_string(index));
 
-  lv2_wrapper->bind_key_double(settings_right, "band" + std::to_string(index) + "-gain", "gr_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_right, "band" + std::to_string(index) + "-q", "qr_" + std::to_string(index));
 
-  lv2_wrapper->bind_key_double_db(settings_right, "band" + std::to_string(index) + "-q", "qr_" + std::to_string(index));
+  lv2_wrapper->bind_key_double_db(settings_right, "band" + std::to_string(index) + "-gain",
+                                  "gr_" + std::to_string(index));
 }

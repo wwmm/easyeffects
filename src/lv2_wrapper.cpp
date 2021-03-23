@@ -37,8 +37,6 @@ const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
 
 const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
 
-const std::array<const LV2_Feature, 1> static_features{{{LV2_BUF_SIZE__powerOf2BlockLength, nullptr}}};
-
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
@@ -141,7 +139,7 @@ void Lv2Wrapper::create_ports() {
     if (lilv_port_is_a(plugin, lilv_port, lv2_InputPort)) {
       port->is_input = true;
     } else if (!lilv_port_is_a(plugin, lilv_port, lv2_OutputPort) && !port->optional) {
-      util::error(log_tag + "Port " + port->name + " is neither input nor output!");
+      util::warning(log_tag + "Port " + port->name + " is neither input nor output!");
     }
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_ControlPort)) {
@@ -152,7 +150,7 @@ void Lv2Wrapper::create_ports() {
       n_audio_in = (port->is_input) ? n_audio_in + 1 : n_audio_in;
       n_audio_out = (!port->is_input) ? n_audio_out + 1 : n_audio_out;
     } else if (!port->optional) {
-      util::error(log_tag + "Port " + port->name + " has un unsupported type!");
+      util::warning(log_tag + "Port " + port->name + " has un unsupported type!");
     }
   }
 
@@ -186,8 +184,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   LV2_Feature options_feature = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  const std::array<const LV2_Feature*, 5> lv2_features{&lv2_map_feature, &lv2_unmap_feature, &options_feature,
-                                                       &static_features[0], nullptr};
+  const std::array<const LV2_Feature*, 5> lv2_features{&lv2_map_feature, &lv2_unmap_feature, &options_feature, nullptr};
 
   instance = lilv_plugin_instantiate(plugin, rate, lv2_features.data());
 
@@ -206,7 +203,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
 void Lv2Wrapper::connect_control_ports() {
   for (auto& p : ports) {
-    if (p.type == PortType::TYPE_CONTROL) {
+    if (p.type == PortType::TYPE_CONTROL && p.is_input) {
       lilv_instance_connect_port(instance, p.index, &p.value);
     }
   }
@@ -269,6 +266,12 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
 
   for (auto& p : ports) {
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
+      if (!p.is_input) {
+        util::warning(log_tag + plugin_uri + " port " + symbol + " is not an input!");
+
+        return;
+      }
+
       p.value = value;
 
       found = true;
