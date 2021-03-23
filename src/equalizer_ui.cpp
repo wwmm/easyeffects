@@ -92,6 +92,8 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
     g_value_set_int(value, 1);
   } else if (std::strcmp(v, "FFT") == 0) {
     g_value_set_int(value, 2);
+  } else if (std::strcmp(v, "SPM") == 0) {
+    g_value_set_int(value, 3);
   }
 
   return 1;
@@ -109,6 +111,9 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 
     case 2:
       return g_variant_new_string("FFT");
+
+    case 3:
+      return g_variant_new_string("SPM");
 
     default:
       return g_variant_new_string("IIR");

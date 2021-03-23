@@ -69,6 +69,7 @@
                             <item translatable="yes">IIR</item>
                             <item translatable="yes">FIR</item>
                             <item translatable="yes">FFT</item>
+                            <item translatable="yes">SPM</item>
                         </items>
                         <layout>
                             <property name="column">1</property>

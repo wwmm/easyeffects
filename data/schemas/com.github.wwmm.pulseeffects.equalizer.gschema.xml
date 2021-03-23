@@ -4,6 +4,7 @@
         <value nick="IIR" value="0" />
         <value nick="FIR" value="1" />
         <value nick="FFT" value="2" />
+        <value nick="SPM" value="3" />
     </enum>
     <schema id="com.github.wwmm.pulseeffects.equalizer">
         <key name="num-bands" type="i">
