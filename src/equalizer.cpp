@@ -50,9 +50,20 @@ Equalizer::Equalizer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
+  settings->signal_changed("num-bands").connect([=, this](auto key) {
+    int nbands = settings->get_int(key);
+
+    for (uint n = nbands; n < max_bands; n++) {
+      // turn off unused band
+
+      settings_left->set_enum("band" + std::to_string(n) + "-type", 0);
+      settings_right->set_enum("band" + std::to_string(n) + "-type", 0);
+    }
+  });
+
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
-  for (int n = 0; n < 32; n++) {
+  for (uint n = 0; n < max_bands; n++) {
     bind_band(n);
   }
 }
@@ -198,16 +209,4 @@ void Equalizer::bind_band(const int& index) {
   //   equalizer,
   //                                std::string("gr-" + std::to_string(index)).c_str(), G_SETTINGS_BIND_GET,
   //                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
-}
-
-void Equalizer::update_equalizer() {
-  // int nbands = g_settings_get_int(settings, "num-bands");
-
-  // for (int n = nbands; n < 30; n++) {
-  //   // turn off unused band
-
-  //   g_object_set(equalizer, std::string("ftl-" + std::to_string(n)).c_str(), 0, nullptr);
-
-  //   g_object_set(equalizer, std::string("ftr-" + std::to_string(n)).c_str(), 0, nullptr);
-  // }
 }
