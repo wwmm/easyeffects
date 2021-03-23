@@ -2,40 +2,22 @@
 
 namespace lv2 {
 
-std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
-std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
+// std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
+// std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
 
-auto map_urid(const std::string& uri) -> LV2_URID {
-  if (map_uri_to_urid.contains(uri)) {
-    return map_uri_to_urid[uri];
-  }
+// auto map_urid(const std::string& uri) -> LV2_URID {
+//   if (map_uri_to_urid.contains(uri)) {
+//     return map_uri_to_urid[uri];
+//   }
 
-  auto hash = std::hash<std::string>{}(uri);
+//   auto hash = std::hash<std::string>{}(uri);
 
-  map_uri_to_urid[uri] = hash;
+//   map_uri_to_urid[uri] = hash;
 
-  map_urid_to_uri[hash] = uri;
+//   map_urid_to_uri[hash] = uri;
 
-  return static_cast<LV2_URID>(hash);
-}
-
-auto lv2_urid_map(LV2_URID_Map_Handle handle, const char* uri) -> LV2_URID {
-  return map_urid(uri);
-}
-
-auto lv2_urid_unmap(LV2_URID_Unmap_Handle handle, LV2_URID urid) -> const char* {
-  return map_urid_to_uri[urid].c_str();
-}
-
-LV2_URID_Map lv2_map = {
-    /* handle = */ nullptr, lv2_urid_map};
-
-LV2_URID_Unmap lv2_unmap = {
-    /* handle = */ nullptr, lv2_urid_unmap};
-
-const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
-
-const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
+//   return static_cast<LV2_URID>(hash);
+// }
 
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
@@ -171,6 +153,22 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
     instance = nullptr;
   }
+
+  LV2_URID_Map lv2_map = {this, [](LV2_URID_Map_Handle handle, const char* uri) {
+                            auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                            return lw->map_urid(uri);
+                          }};
+
+  LV2_URID_Unmap lv2_unmap = {this, [](LV2_URID_Unmap_Handle handle, LV2_URID urid) {
+                                auto* lw = static_cast<Lv2Wrapper*>(handle);
+
+                                return lw->map_urid_to_uri[urid].c_str();
+                              }};
+
+  const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
+
+  const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
 
   std::array<LV2_Options_Option, 5> options{
       {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
@@ -357,6 +355,20 @@ void Lv2Wrapper::bind_key_int(const Glib::RefPtr<Gio::Settings>& settings,
   settings->signal_changed(gsettings_key).connect([=, this](auto key) {
     set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(key)));
   });
+}
+
+auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
+  if (map_uri_to_urid.contains(uri)) {
+    return map_uri_to_urid[uri];
+  }
+
+  auto hash = std::hash<std::string>{}(uri);
+
+  map_uri_to_urid[uri] = hash;
+
+  map_urid_to_uri[hash] = uri;
+
+  return static_cast<LV2_URID>(hash);
 }
 
 }  // namespace lv2

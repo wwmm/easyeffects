@@ -145,6 +145,10 @@ void Equalizer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float latency_value = lv2_wrapper->get_control_port_value("out_latency");
+
+      Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+
       notify();
 
       notification_dt = 0.0F;

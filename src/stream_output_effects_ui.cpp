@@ -26,7 +26,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, soe_ptr, schema), soe(soe_ptr) {
   // populate stack
 
-  //   auto b_equalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   // auto b_crossfeed =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
@@ -39,12 +38,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.glade"); auto b_crystalizer =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_delay =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
-
-  //   b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.equalizer",
-  //                                   "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/",
-  //                                   "com.github.wwmm.pulseeffects.equalizer.channel",
-  //                                   "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/",
-  //                                   "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/");
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
@@ -75,7 +68,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
   //                                 "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
 
-  //   stack->add(*equalizer_ui, equalizer_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
@@ -88,7 +80,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   // populate_listbox
 
-  //   add_to_listbox(equalizer_ui);
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(crossfeed_ui);
   //   add_to_listbox(multiband_compressor_ui);
@@ -98,10 +89,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(convolver_ui);
   //   add_to_listbox(crystalizer_ui);
   //   add_to_listbox(rnnoise_ui);
-
-  // show only speaker icon before "Application" label
-
-  //   app_output_icon->set_visible(true);
 
   level_meters_connections();
   up_down_connections();
@@ -158,13 +145,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
 
   connections.emplace_back(
       soe->output_level->output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
-
-  //   // equalizer level meters connections
-
-  //   connections.emplace_back(
-  //       soe->equalizer_input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->equalizer_output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level_db)));
 
   //   // pitch level meters connections
 
@@ -278,10 +258,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
 void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(pitch_ui); }));
   //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(pitch_ui); }));
-
-  //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(equalizer_ui);
-  //   })); connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(equalizer_ui); }));
 
   //   connections.emplace_back(crossfeed_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crossfeed_ui);
   //   })); connections.emplace_back(crossfeed_ui->plugin_down->signal_clicked().connect([=, this]() {

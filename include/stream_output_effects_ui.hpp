@@ -30,7 +30,6 @@
 // #include "multiband_compressor_ui.hpp"
 // #include "multiband_gate_ui.hpp"
 // #include "pitch_ui.hpp"
-// #include "rnnoise.hpp"
 // #include "rnnoise_ui.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
@@ -53,13 +52,10 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  private:
   StreamOutputEffects* soe = nullptr;
 
-  // CompressorUi* compressor_ui = nullptr;
-  // EqualizerUi* equalizer_ui = nullptr;
   // PitchUi* pitch_ui = nullptr;
   // CrossfeedUi* crossfeed_ui = nullptr;
   // MultibandCompressorUi* multiband_compressor_ui = nullptr;
   // LoudnessUi* loudness_ui = nullptr;
-  // GateUi* gate_ui = nullptr;
   // MultibandGateUi* multiband_gate_ui = nullptr;
   // DeesserUi* deesser_ui = nullptr;
   // ConvolverUi* convolver_ui = nullptr;

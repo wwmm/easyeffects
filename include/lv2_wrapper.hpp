@@ -106,6 +106,8 @@ class Lv2Wrapper {
                     const std::string& gsettings_key,
                     const std::string& lv2_symbol);
 
+  auto map_urid(const std::string& uri) -> LV2_URID;
+
  private:
   std::string log_tag = "lv2_wrapper: ";
 
@@ -124,6 +126,9 @@ class Lv2Wrapper {
   uint n_samples = 0;
 
   std::vector<Port> ports;
+
+  std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
+  std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
 
   void check_required_features();
 

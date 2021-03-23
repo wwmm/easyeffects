@@ -45,6 +45,8 @@ class Equalizer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  sigc::signal<void(double)> latency;
+
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 

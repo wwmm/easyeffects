@@ -66,23 +66,13 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   connections.emplace_back(
       settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
 
-  connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) {
-    std::lock_guard<std::mutex> guard(my_lock_guard);
+  connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) { init_frequency_axis(); }));
 
-    init_frequency_axis();
-  }));
+  connections.emplace_back(
+      settings->signal_changed("minimum-frequency").connect([&](auto key) { init_frequency_axis(); }));
 
-  connections.emplace_back(settings->signal_changed("minimum-frequency").connect([&](auto key) {
-    std::lock_guard<std::mutex> guard(my_lock_guard);
-
-    init_frequency_axis();
-  }));
-
-  connections.emplace_back(settings->signal_changed("maximum-frequency").connect([&](auto key) {
-    std::lock_guard<std::mutex> guard(my_lock_guard);
-
-    init_frequency_axis();
-  }));
+  connections.emplace_back(
+      settings->signal_changed("maximum-frequency").connect([&](auto key) { init_frequency_axis(); }));
 
   settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
 
@@ -121,8 +111,6 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
   if (!settings->get_boolean("show")) {
     return;
   }
-
-  std::lock_guard<std::mutex> guard(my_lock_guard);
 
   if (this->rate != rate || this->n_bands != n_bands) {
     this->rate = rate;

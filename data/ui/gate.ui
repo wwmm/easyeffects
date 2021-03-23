@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="pulseeffects">
     <object class="GtkBox" id="top_box">
-        <property name="hexpand">1</property>
-        <property name="vexpand">1</property>
         <property name="margin_start">6</property>
         <property name="margin_end">6</property>
         <property name="margin_top">6</property>
