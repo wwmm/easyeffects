@@ -357,6 +357,8 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     auto* band_frequency = builder->get_widget<Gtk::SpinButton>("band_frequency");
     auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
 
+    prepare_spinbutton(band_frequency, "Hz");
+
     auto update_quality_width = [=, this]() {
       const auto& q = band_quality->get_value();
 

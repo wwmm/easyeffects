@@ -12,7 +12,6 @@
         <file>ui/effects_base.ui</file>
         <file>ui/equalizer.ui</file>
         <file>ui/equalizer_band.ui</file>
-        <file>ui/equalizer_preset_row.ui</file>
         <file>ui/exciter.ui</file>
         <file>ui/filter.ui</file>
         <file>ui/gate.ui</file>

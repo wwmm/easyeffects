@@ -11,7 +11,6 @@ data/ui/delay.ui
 data/ui/effects_base.ui
 data/ui/equalizer.ui
 data/ui/equalizer_band.ui
-data/ui/equalizer_preset_row.ui
 data/ui/exciter.ui
 data/ui/filter.ui
 data/ui/gate.ui
