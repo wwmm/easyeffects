@@ -2,23 +2,6 @@
 
 namespace lv2 {
 
-// std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
-// std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
-
-// auto map_urid(const std::string& uri) -> LV2_URID {
-//   if (map_uri_to_urid.contains(uri)) {
-//     return map_uri_to_urid[uri];
-//   }
-
-//   auto hash = std::hash<std::string>{}(uri);
-
-//   map_uri_to_urid[uri] = hash;
-
-//   map_urid_to_uri[hash] = uri;
-
-//   return static_cast<LV2_URID>(hash);
-// }
-
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
@@ -170,7 +153,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   const LV2_Feature lv2_unmap_feature = {LV2_URID__unmap, &lv2_unmap};
 
-  std::array<LV2_Options_Option, 5> options{
+  auto options = std::to_array<LV2_Options_Option>(
       {{LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_PARAMETERS__sampleRate), sizeof(float), map_urid(LV2_ATOM__Float), &rate},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__minBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
         &n_samples},
@@ -178,11 +161,12 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
         &n_samples},
        {LV2_OPTIONS_INSTANCE, 0, map_urid(LV2_BUF_SIZE__nominalBlockLength), sizeof(int32_t), map_urid(LV2_ATOM__Int),
         &n_samples},
-       {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}}};
+       {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
 
   LV2_Feature options_feature = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  const std::array<const LV2_Feature*, 5> lv2_features{&lv2_map_feature, &lv2_unmap_feature, &options_feature, nullptr};
+  const auto lv2_features =
+      std::to_array<const LV2_Feature*>({&lv2_map_feature, &lv2_unmap_feature, &options_feature, nullptr});
 
   instance = lilv_plugin_instantiate(plugin, rate, lv2_features.data());
 

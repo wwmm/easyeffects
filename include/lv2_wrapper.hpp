@@ -28,6 +28,7 @@
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 #include <lv2/options/options.h>
 #include <lv2/parameters/parameters.h>
+#include <array>
 #include <span>
 #include <unordered_map>
 #include "util.hpp"
