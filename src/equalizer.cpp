@@ -61,11 +61,47 @@ Equalizer::Equalizer(const std::string& tag,
     }
   });
 
+  settings->signal_changed("split-channels").connect([=, this](auto key) {
+    if (settings->get_boolean(key) == true) {
+      return;
+    }
+
+    for (uint n = 0; n < max_bands; n++) {
+      // turn off unused band
+
+      settings_right->set_enum("band" + std::to_string(n) + "-type",
+                               settings_left->get_enum("band" + std::to_string(n) + "-type"));
+
+      settings_right->set_enum("band" + std::to_string(n) + "-mode",
+                               settings_left->get_enum("band" + std::to_string(n) + "-mode"));
+
+      settings_right->set_enum("band" + std::to_string(n) + "-slope",
+                               settings_left->get_enum("band" + std::to_string(n) + "-slope"));
+
+      settings_right->set_boolean("band" + std::to_string(n) + "-solo",
+                                  settings_left->get_boolean("band" + std::to_string(n) + "-solo"));
+
+      settings_right->set_boolean("band" + std::to_string(n) + "-mute",
+                                  settings_left->get_boolean("band" + std::to_string(n) + "-mute"));
+
+      settings_right->set_double("band" + std::to_string(n) + "-frequency",
+                                 settings_left->get_double("band" + std::to_string(n) + "-frequency"));
+
+      settings_right->set_double("band" + std::to_string(n) + "-gain",
+                                 settings_left->get_double("band" + std::to_string(n) + "-gain"));
+
+      settings_right->set_double("band" + std::to_string(n) + "-q",
+                                 settings_left->get_double("band" + std::to_string(n) + "-q"));
+    }
+  });
+
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
   for (uint n = 0; n < max_bands; n++) {
     bind_band(n);
   }
+
+  lv2_wrapper->set_control_port_value("enabled", 1);
 }
 
 Equalizer::~Equalizer() {
