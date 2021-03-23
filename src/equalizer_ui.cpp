@@ -254,7 +254,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
   connections.emplace_back(settings->signal_changed("split-channels").connect([=, this](const auto& sc) {
-    stack->set_visible_child("left_channel");
+    stack->set_visible_child("page_left_channel");
 
     on_nbands_changed();
   }));
@@ -308,16 +308,12 @@ void EqualizerUi::on_nbands_changed() {
     c.disconnect();
   }
 
-  for (auto* child = bands_box_left->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+  for (auto* child = bands_box_left->get_last_child(); child != nullptr; child = bands_box_left->get_last_child()) {
     bands_box_left->remove(*child);
-
-    delete child;
   }
 
-  for (auto* child = bands_box_right->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+  for (auto* child = bands_box_right->get_last_child(); child != nullptr; child = bands_box_left->get_last_child()) {
     bands_box_right->remove(*child);
-
-    delete child;
   }
 
   connections_bands.clear();

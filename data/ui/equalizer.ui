@@ -131,6 +131,7 @@
 
         <child>
             <object class="GtkStack" id="stack">
+                <property name="halign">center</property>
                 <property name="transition_duration">250</property>
                 <property name="transition_type">slide-left-right</property>
                 <child>

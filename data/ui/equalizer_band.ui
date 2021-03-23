@@ -102,6 +102,7 @@
 
                 <child>
                     <object class="GtkBox">
+                        <property name="halign">center</property>
                         <property name="spacing">12</property>
                         <child>
                             <object class="GtkBox">
@@ -204,6 +205,7 @@
 
                 <child>
                     <object class="GtkBox">
+                        <property name="halign">center</property>
                         <property name="spacing">12</property>
                         <child>
                             <object class="GtkToggleButton" id="band_solo">
