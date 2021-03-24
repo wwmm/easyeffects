@@ -34,6 +34,8 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const MultibandCompressorUi&&) -> MultibandCompressorUi& = delete;
   ~MultibandCompressorUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*;
+
   void on_new_output0(double value);
   void on_new_output1(double value);
   void on_new_output2(double value);
@@ -47,11 +49,21 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;
-  Glib::RefPtr<Gtk::Adjustment> attack0, release0, threshold0, knee0, ratio0, makeup0;
-  Glib::RefPtr<Gtk::Adjustment> attack1, release1, threshold1, knee1, ratio1, makeup1;
-  Glib::RefPtr<Gtk::Adjustment> attack2, release2, threshold2, knee2, ratio2, makeup2;
-  Glib::RefPtr<Gtk::Adjustment> attack3, release3, threshold3, knee3, ratio3, makeup3;
+  Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
+
+  Gtk::SpinButton *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr, *ratio0 = nullptr,
+                  *makeup0 = nullptr;
+
+  Gtk::SpinButton *attack1 = nullptr, *release1 = nullptr, *threshold1 = nullptr, *knee1 = nullptr, *ratio1 = nullptr,
+                  *makeup1 = nullptr;
+
+  Gtk::SpinButton *attack2 = nullptr, *release2 = nullptr, *threshold2 = nullptr, *knee2 = nullptr, *ratio2 = nullptr,
+                  *makeup2 = nullptr;
+
+  Gtk::SpinButton *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr, *ratio3 = nullptr,
+                  *makeup3 = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;
 

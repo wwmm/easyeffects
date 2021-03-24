@@ -18,6 +18,7 @@
         <file>ui/general_settings.ui</file>
         <file>ui/limiter.ui</file>
         <file>ui/maximizer.ui</file>
+        <file>ui/multiband_compressor.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
@@ -29,7 +30,6 @@
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>
-        <file>ui/multiband_compressor.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
         <file>ui/multiband_gate.glade</file>

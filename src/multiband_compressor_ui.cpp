@@ -68,9 +68,6 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
     case 0:
       return g_variant_new_string("LR4");
 
-    case 1:
-      return g_variant_new_string("LR8");
-
     default:
       return g_variant_new_string("LR8");
   }
@@ -83,115 +80,115 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                              const std::string& schema,
                                              const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "multiband_compressor";
+  name = plugin_name::multiband_compressor;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("mode", mode);
-  builder->get_widget("bypass0", bypass0);
-  builder->get_widget("bypass1", bypass1);
-  builder->get_widget("bypass2", bypass2);
-  builder->get_widget("bypass3", bypass3);
-  builder->get_widget("solo0", solo0);
-  builder->get_widget("solo1", solo1);
-  builder->get_widget("solo2", solo2);
-  builder->get_widget("solo3", solo3);
-  builder->get_widget("detection0", detection0);
-  builder->get_widget("detection1", detection1);
-  builder->get_widget("detection2", detection2);
-  builder->get_widget("detection3", detection3);
-  builder->get_widget("output0", output0);
-  builder->get_widget("output0_label", output0_label);
-  builder->get_widget("output1", output1);
-  builder->get_widget("output1_label", output1_label);
-  builder->get_widget("output2", output2);
-  builder->get_widget("output2_label", output2_label);
-  builder->get_widget("output3", output3);
-  builder->get_widget("output3_label", output3_label);
-  builder->get_widget("compression0", compression0);
-  builder->get_widget("compression0_label", compression0_label);
-  builder->get_widget("compression1", compression1);
-  builder->get_widget("compression1_label", compression1_label);
-  builder->get_widget("compression2", compression2);
-  builder->get_widget("compression2_label", compression2_label);
-  builder->get_widget("compression3", compression3);
-  builder->get_widget("compression3_label", compression3_label);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
-  get_object(builder, "freq0", freq0);
-  get_object(builder, "freq1", freq1);
-  get_object(builder, "freq2", freq2);
-  get_object(builder, "threshold0", threshold0);
-  get_object(builder, "threshold1", threshold1);
-  get_object(builder, "threshold2", threshold2);
-  get_object(builder, "threshold3", threshold3);
-  get_object(builder, "ratio0", ratio0);
-  get_object(builder, "ratio1", ratio1);
-  get_object(builder, "ratio2", ratio2);
-  get_object(builder, "ratio3", ratio3);
-  get_object(builder, "attack0", attack0);
-  get_object(builder, "attack1", attack1);
-  get_object(builder, "attack2", attack2);
-  get_object(builder, "attack3", attack3);
-  get_object(builder, "release0", release0);
-  get_object(builder, "release1", release1);
-  get_object(builder, "release2", release2);
-  get_object(builder, "release3", release3);
-  get_object(builder, "makeup0", makeup0);
-  get_object(builder, "makeup1", makeup1);
-  get_object(builder, "makeup2", makeup2);
-  get_object(builder, "makeup3", makeup3);
-  get_object(builder, "knee0", knee0);
-  get_object(builder, "knee1", knee1);
-  get_object(builder, "knee2", knee2);
-  get_object(builder, "knee3", knee3);
+  freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
+  freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
+  freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
+  threshold0 = builder->get_widget<Gtk::SpinButton>("threshold0");
+  threshold1 = builder->get_widget<Gtk::SpinButton>("threshold1");
+  threshold2 = builder->get_widget<Gtk::SpinButton>("threshold2");
+  threshold3 = builder->get_widget<Gtk::SpinButton>("threshold3");
+  ratio0 = builder->get_widget<Gtk::SpinButton>("ratio0");
+  ratio1 = builder->get_widget<Gtk::SpinButton>("ratio1");
+  ratio2 = builder->get_widget<Gtk::SpinButton>("ratio2");
+  ratio3 = builder->get_widget<Gtk::SpinButton>("ratio3");
+  attack0 = builder->get_widget<Gtk::SpinButton>("attack0");
+  attack1 = builder->get_widget<Gtk::SpinButton>("attack1");
+  attack2 = builder->get_widget<Gtk::SpinButton>("attack2");
+  attack3 = builder->get_widget<Gtk::SpinButton>("attack3");
+  release0 = builder->get_widget<Gtk::SpinButton>("release0");
+  release1 = builder->get_widget<Gtk::SpinButton>("release1");
+  release2 = builder->get_widget<Gtk::SpinButton>("release2");
+  release3 = builder->get_widget<Gtk::SpinButton>("release3");
+  makeup0 = builder->get_widget<Gtk::SpinButton>("makeup0");
+  makeup1 = builder->get_widget<Gtk::SpinButton>("makeup1");
+  makeup2 = builder->get_widget<Gtk::SpinButton>("makeup2");
+  makeup3 = builder->get_widget<Gtk::SpinButton>("makeup3");
+  knee0 = builder->get_widget<Gtk::SpinButton>("knee0");
+  knee1 = builder->get_widget<Gtk::SpinButton>("knee1");
+  knee2 = builder->get_widget<Gtk::SpinButton>("knee2");
+  knee3 = builder->get_widget<Gtk::SpinButton>("knee3");
+
+  bypass0 = builder->get_widget<Gtk::ToggleButton>("bypass0");
+  bypass1 = builder->get_widget<Gtk::ToggleButton>("bypass1");
+  bypass2 = builder->get_widget<Gtk::ToggleButton>("bypass2");
+  bypass3 = builder->get_widget<Gtk::ToggleButton>("bypass3");
+  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
+  solo1 = builder->get_widget<Gtk::ToggleButton>("solo1");
+  solo2 = builder->get_widget<Gtk::ToggleButton>("solo2");
+  solo3 = builder->get_widget<Gtk::ToggleButton>("solo3");
+  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
+
+  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+  detection0 = builder->get_widget<Gtk::ComboBoxText>("detection0");
+  detection1 = builder->get_widget<Gtk::ComboBoxText>("detection1");
+  detection2 = builder->get_widget<Gtk::ComboBoxText>("detection2");
+  detection3 = builder->get_widget<Gtk::ComboBoxText>("detection3");
+
+  output0 = builder->get_widget<Gtk::LevelBar>("output0");
+  output1 = builder->get_widget<Gtk::LevelBar>("output1");
+  output2 = builder->get_widget<Gtk::LevelBar>("output2");
+  output3 = builder->get_widget<Gtk::LevelBar>("output3");
+  compression0 = builder->get_widget<Gtk::LevelBar>("compression0");
+  compression1 = builder->get_widget<Gtk::LevelBar>("compression1");
+  compression2 = builder->get_widget<Gtk::LevelBar>("compression2");
+  compression3 = builder->get_widget<Gtk::LevelBar>("compression3");
+
+  output0_label = builder->get_widget<Gtk::Label>("output0_label");
+  output1_label = builder->get_widget<Gtk::Label>("output1_label");
+  output2_label = builder->get_widget<Gtk::Label>("output2_label");
+  output3_label = builder->get_widget<Gtk::Label>("output3_label");
+  compression0_label = builder->get_widget<Gtk::Label>("compression0_label");
+  compression1_label = builder->get_widget<Gtk::Label>("compression1_label");
+  compression2_label = builder->get_widget<Gtk::Label>("compression2_label");
+  compression3_label = builder->get_widget<Gtk::Label>("compression3_label");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("freq0", freq0->get_adjustment().get(), "value");
+  settings->bind("freq1", freq1->get_adjustment().get(), "value");
+  settings->bind("freq2", freq2->get_adjustment().get(), "value");
+  settings->bind("threshold0", threshold0->get_adjustment().get(), "value");
+  settings->bind("threshold1", threshold1->get_adjustment().get(), "value");
+  settings->bind("threshold2", threshold2->get_adjustment().get(), "value");
+  settings->bind("threshold3", threshold3->get_adjustment().get(), "value");
+  settings->bind("ratio0", ratio0->get_adjustment().get(), "value");
+  settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
+  settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
+  settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
+  settings->bind("attack0", attack0->get_adjustment().get(), "value");
+  settings->bind("attack1", attack1->get_adjustment().get(), "value");
+  settings->bind("attack2", attack2->get_adjustment().get(), "value");
+  settings->bind("attack3", attack3->get_adjustment().get(), "value");
+  settings->bind("release0", release0->get_adjustment().get(), "value");
+  settings->bind("release1", release1->get_adjustment().get(), "value");
+  settings->bind("release2", release2->get_adjustment().get(), "value");
+  settings->bind("release3", release3->get_adjustment().get(), "value");
+  settings->bind("makeup0", makeup0->get_adjustment().get(), "value");
+  settings->bind("makeup1", makeup1->get_adjustment().get(), "value");
+  settings->bind("makeup2", makeup2->get_adjustment().get(), "value");
+  settings->bind("makeup3", makeup3->get_adjustment().get(), "value");
+  settings->bind("knee0", knee0->get_adjustment().get(), "value");
+  settings->bind("knee1", knee1->get_adjustment().get(), "value");
+  settings->bind("knee2", knee2->get_adjustment().get(), "value");
+  settings->bind("knee3", knee3->get_adjustment().get(), "value");
 
-  settings->bind("installed", this, "sensitive", flag);
-
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("freq0", freq0.get(), "value", flag);
-  settings->bind("freq1", freq1.get(), "value", flag);
-  settings->bind("freq2", freq2.get(), "value", flag);
-  settings->bind("threshold0", threshold0.get(), "value", flag);
-  settings->bind("threshold1", threshold1.get(), "value", flag);
-  settings->bind("threshold2", threshold2.get(), "value", flag);
-  settings->bind("threshold3", threshold3.get(), "value", flag);
-  settings->bind("ratio0", ratio0.get(), "value", flag);
-  settings->bind("ratio1", ratio1.get(), "value", flag);
-  settings->bind("ratio2", ratio2.get(), "value", flag);
-  settings->bind("ratio3", ratio3.get(), "value", flag);
-  settings->bind("attack0", attack0.get(), "value", flag);
-  settings->bind("attack1", attack1.get(), "value", flag);
-  settings->bind("attack2", attack2.get(), "value", flag);
-  settings->bind("attack3", attack3.get(), "value", flag);
-  settings->bind("release0", release0.get(), "value", flag);
-  settings->bind("release1", release1.get(), "value", flag);
-  settings->bind("release2", release2.get(), "value", flag);
-  settings->bind("release3", release3.get(), "value", flag);
-  settings->bind("makeup0", makeup0.get(), "value", flag);
-  settings->bind("makeup1", makeup1.get(), "value", flag);
-  settings->bind("makeup2", makeup2.get(), "value", flag);
-  settings->bind("makeup3", makeup3.get(), "value", flag);
-  settings->bind("knee0", knee0.get(), "value", flag);
-  settings->bind("knee1", knee1.get(), "value", flag);
-  settings->bind("knee2", knee2.get(), "value", flag);
-  settings->bind("knee3", knee3.get(), "value", flag);
-
-  settings->bind("bypass0", bypass0, "active", flag);
-  settings->bind("bypass1", bypass1, "active", flag);
-  settings->bind("bypass2", bypass2, "active", flag);
-  settings->bind("bypass3", bypass3, "active", flag);
-  settings->bind("solo0", solo0, "active", flag);
-  settings->bind("solo1", solo1, "active", flag);
-  settings->bind("solo2", solo2, "active", flag);
-  settings->bind("solo3", solo3, "active", flag);
+  settings->bind("bypass0", bypass0, "active");
+  settings->bind("bypass1", bypass1, "active");
+  settings->bind("bypass2", bypass2, "active");
+  settings->bind("bypass3", bypass3, "active");
+  settings->bind("solo0", solo0, "active");
+  settings->bind("solo1", solo1, "active");
+  settings->bind("solo2", solo2, "active");
+  settings->bind("solo3", solo3, "active");
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
@@ -207,13 +204,21 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.multibandcompressor", schema_path + "multibandcompressor/");
+
+  auto stack_page = stack->add(*ui, plugin_name::multiband_compressor);
+
+  return ui;
 }
 
 void MultibandCompressorUi::reset() {

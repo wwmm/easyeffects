@@ -96,6 +96,8 @@
                                             <object class="GtkViewport">
                                                 <child>
                                                     <object class="GtkStack" id="stack_plugins">
+                                                        <property name="hhomogeneous">0</property>
+                                                        <property name="vhomogeneous">0</property>
                                                         <property name="transition_duration">250</property>
                                                         <property name="transition_type">slide-up-down</property>
                                                     </object>

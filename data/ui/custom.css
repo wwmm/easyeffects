@@ -2,3 +2,7 @@
   background: white;
   border: 1px solid black;
 }
+
+.rounded_corners {
+  border-radius: 12px;
+}

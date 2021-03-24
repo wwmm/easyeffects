@@ -20,7 +20,7 @@
 #ifndef MULTIBAND_COMPRESSOR_HPP
 #define MULTIBAND_COMPRESSOR_HPP
 
-#include <array>
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class MultibandCompressor : public PluginBase {
@@ -35,17 +35,17 @@ class MultibandCompressor : public PluginBase {
   auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
 
-  sigc::connection input_level_connection, output_level_connection;
+  void setup() override;
 
-  sigc::connection output0_connection, output1_connection, output2_connection, output3_connection,
-      compression0_connection, compression1_connection, compression2_connection, compression3_connection;
-
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

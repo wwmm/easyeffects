@@ -28,8 +28,6 @@ MultibandCompressorPreset::MultibandCompressorPreset()
 void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".multiband_compressor.state", settings->get_boolean("state"));
-
   root.put(section + ".multiband_compressor.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".multiband_compressor.output-gain", settings->get_double("output-gain"));
@@ -126,8 +124,6 @@ void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
 void MultibandCompressorPreset::load(const boost::property_tree::ptree& root,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".multiband_compressor.state");
-
   update_key<double>(root, settings, "input-gain", section + ".multiband_compressor.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".multiband_compressor.output-gain");

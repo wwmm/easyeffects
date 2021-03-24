@@ -72,6 +72,7 @@ class EffectsBase {
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
   std::shared_ptr<Maximizer> maximizer;
+  std::shared_ptr<MultibandCompressor> multiband_compressor;
   std::shared_ptr<Reverb> reverb;
   std::shared_ptr<StereoTools> stereo_tools;
 
@@ -87,7 +88,6 @@ class EffectsBase {
   std::shared_ptr<Crystalizer> crystalizer;
   std::shared_ptr<Deesser> deesser;
   std::shared_ptr<Loudness> loudness;
-  std::shared_ptr<MultibandCompressor> multiband_compressor;
   std::shared_ptr<MultibandGate> multiband_gate;
   std::shared_ptr<Pitch> pitch;
   std::shared_ptr<RNNoise> rnnoise;
