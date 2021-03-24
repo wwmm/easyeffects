@@ -184,8 +184,9 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  auto features = std::to_array<const LV2_Feature*>(
-      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, &static_features[0], nullptr});
+  auto features =
+      std::to_array<const LV2_Feature*>({&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options,
+                                         &static_features[0], &static_features[1], nullptr});
 
   instance = lilv_plugin_instantiate(plugin, rate, features.data());
 
@@ -204,7 +205,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
 void Lv2Wrapper::connect_control_ports() {
   for (auto& p : ports) {
-    if (p.type == PortType::TYPE_CONTROL && p.is_input) {
+    if (p.type == PortType::TYPE_CONTROL) {
       lilv_instance_connect_port(instance, p.index, &p.value);
     }
   }
