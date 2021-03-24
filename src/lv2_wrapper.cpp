@@ -2,6 +2,18 @@
 
 namespace lv2 {
 
+auto lv2_printf(LV2_Log_Handle handle, LV2_URID type, const char* format, ...) -> int {
+  va_list args;
+
+  va_start(args, format);
+
+  int r = std::vprintf(format, args);
+
+  va_end(args);
+
+  return r;
+}
+
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
   world = lilv_world_new();
 
@@ -132,10 +144,15 @@ void Lv2Wrapper::create_ports() {
 auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
   if (instance != nullptr) {
     deactivate();
+
     lilv_instance_free(instance);
 
     instance = nullptr;
   }
+
+  LV2_Log_Log lv2_log = {this, &lv2_printf, [](LV2_Log_Handle handle, LV2_URID type, const char* fmt, va_list ap) {
+                           return std::vprintf(fmt, ap);
+                         }};
 
   LV2_URID_Map lv2_map = {this, [](LV2_URID_Map_Handle handle, const char* uri) {
                             auto* lw = static_cast<Lv2Wrapper*>(handle);
@@ -148,6 +165,8 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
                                 return lw->map_urid_to_uri[urid].c_str();
                               }};
+
+  const LV2_Feature lv2_log_feature = {LV2_LOG__log, &lv2_log};
 
   const LV2_Feature lv2_map_feature = {LV2_URID__map, &lv2_map};
 
@@ -163,12 +182,12 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
         &n_samples},
        {LV2_OPTIONS_INSTANCE, 0, 0, 0, 0, nullptr}});
 
-  LV2_Feature options_feature = {.URI = LV2_OPTIONS__options, .data = options.data()};
+  LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  const auto lv2_features =
-      std::to_array<const LV2_Feature*>({&lv2_map_feature, &lv2_unmap_feature, &options_feature, nullptr});
+  auto features = std::to_array<const LV2_Feature*>(
+      {&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options, &static_features[0], nullptr});
 
-  instance = lilv_plugin_instantiate(plugin, rate, lv2_features.data());
+  instance = lilv_plugin_instantiate(plugin, rate, features.data());
 
   if (instance == nullptr) {
     util::warning(log_tag + "failed to instantiate " + plugin_uri);

@@ -65,6 +65,7 @@ void Maximizer::setup() {
     return;
   }
 
+  lv2_wrapper->set_n_samples(n_samples);
   lv2_wrapper->create_instance(rate);
 }
 
@@ -80,10 +81,6 @@ void Maximizer::process(std::span<float>& left_in,
   }
 
   apply_gain(left_in, right_in, input_gain);
-
-  if (lv2_wrapper->get_n_samples() != left_in.size()) {
-    lv2_wrapper->set_n_samples(left_in.size());
-  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
 

@@ -25,6 +25,7 @@
 #include <lv2/atom/atom.h>
 #include <lv2/buf-size/buf-size.h>
 #include <lv2/core/lv2.h>
+#include <lv2/lv2plug.in/ns/ext/log/log.h>
 #include <lv2/lv2plug.in/ns/ext/urid/urid.h>
 #include <lv2/options/options.h>
 #include <lv2/parameters/parameters.h>
@@ -107,8 +108,6 @@ class Lv2Wrapper {
                     const std::string& gsettings_key,
                     const std::string& lv2_symbol);
 
-  auto map_urid(const std::string& uri) -> LV2_URID;
-
  private:
   std::string log_tag = "lv2_wrapper: ";
 
@@ -131,11 +130,15 @@ class Lv2Wrapper {
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
   std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
 
+  const std::array<const LV2_Feature, 1> static_features{{{LV2_BUF_SIZE__fixedBlockLength, nullptr}}};
+
   void check_required_features();
 
   void create_ports();
 
   void connect_control_ports();
+
+  auto map_urid(const std::string& uri) -> LV2_URID;
 };
 
 }  // namespace lv2
