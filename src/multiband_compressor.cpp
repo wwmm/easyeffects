@@ -36,6 +36,94 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+
+  lv2_wrapper->bind_key_double(settings, "freq0", "freq0");
+
+  lv2_wrapper->bind_key_double(settings, "freq1", "freq1");
+
+  lv2_wrapper->bind_key_double(settings, "freq2", "freq2");
+
+  // sub band
+
+  lv2_wrapper->bind_key_double_db(settings, "threshold0", "threshold0");
+
+  lv2_wrapper->bind_key_double_db(settings, "makeup0", "makeup0");
+
+  lv2_wrapper->bind_key_double_db(settings, "knee0", "knee0");
+
+  lv2_wrapper->bind_key_double(settings, "ratio0", "ratio0");
+
+  lv2_wrapper->bind_key_double(settings, "attack0", "attack0");
+
+  lv2_wrapper->bind_key_double(settings, "release0", "release0");
+
+  lv2_wrapper->bind_key_enum(settings, "detection0", "detection0");
+
+  lv2_wrapper->bind_key_bool(settings, "bypass0", "bypass0");
+
+  lv2_wrapper->bind_key_bool(settings, "solo0", "solo0");
+
+  // low band
+
+  lv2_wrapper->bind_key_double_db(settings, "threshold1", "threshold1");
+
+  lv2_wrapper->bind_key_double_db(settings, "makeup1", "makeup1");
+
+  lv2_wrapper->bind_key_double_db(settings, "knee1", "knee1");
+
+  lv2_wrapper->bind_key_double(settings, "ratio1", "ratio1");
+
+  lv2_wrapper->bind_key_double(settings, "attack1", "attack1");
+
+  lv2_wrapper->bind_key_double(settings, "release1", "release1");
+
+  lv2_wrapper->bind_key_enum(settings, "detection1", "detection1");
+
+  lv2_wrapper->bind_key_bool(settings, "bypass1", "bypass1");
+
+  lv2_wrapper->bind_key_bool(settings, "solo1", "solo1");
+
+  // mid band
+
+  lv2_wrapper->bind_key_double_db(settings, "threshold2", "threshold2");
+
+  lv2_wrapper->bind_key_double_db(settings, "makeup2", "makeup2");
+
+  lv2_wrapper->bind_key_double_db(settings, "knee2", "knee2");
+
+  lv2_wrapper->bind_key_double(settings, "ratio2", "ratio2");
+
+  lv2_wrapper->bind_key_double(settings, "attack2", "attack2");
+
+  lv2_wrapper->bind_key_double(settings, "release2", "release2");
+
+  lv2_wrapper->bind_key_enum(settings, "detection2", "detection2");
+
+  lv2_wrapper->bind_key_bool(settings, "bypass2", "bypass2");
+
+  lv2_wrapper->bind_key_bool(settings, "solo2", "solo2");
+
+  // high band
+
+  lv2_wrapper->bind_key_double_db(settings, "threshold3", "threshold3");
+
+  lv2_wrapper->bind_key_double_db(settings, "makeup3", "makeup3");
+
+  lv2_wrapper->bind_key_double_db(settings, "knee3", "knee3");
+
+  lv2_wrapper->bind_key_double(settings, "ratio3", "ratio3");
+
+  lv2_wrapper->bind_key_double(settings, "attack3", "attack3");
+
+  lv2_wrapper->bind_key_double(settings, "release3", "release3");
+
+  lv2_wrapper->bind_key_enum(settings, "detection3", "detection3");
+
+  lv2_wrapper->bind_key_bool(settings, "bypass3", "bypass3");
+
+  lv2_wrapper->bind_key_bool(settings, "solo3", "solo3");
 }
 
 MultibandCompressor::~MultibandCompressor() {
@@ -115,118 +203,3 @@ void MultibandCompressor::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "freq0", multiband_compressor, "freq0", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "freq1", multiband_compressor, "freq1", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "freq2", multiband_compressor, "freq2", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind(settings, "mode", multiband_compressor, "mode", G_SETTINGS_BIND_DEFAULT);
-
-// // sub band
-
-// g_settings_bind_with_mapping(settings, "threshold0", multiband_compressor, "threshold0", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "ratio0", multiband_compressor, "ratio0", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "attack0", multiband_compressor, "attack0", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "release0", multiband_compressor, "release0", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "makeup0", multiband_compressor, "makeup0", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "knee0", multiband_compressor, "knee0", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "detection0", multiband_compressor, "detection0", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "bypass0", multiband_compressor, "bypass0", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "solo0", multiband_compressor, "solo0", G_SETTINGS_BIND_DEFAULT);
-
-// // low band
-
-// g_settings_bind_with_mapping(settings, "threshold1", multiband_compressor, "threshold1", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "ratio1", multiband_compressor, "ratio1", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "attack1", multiband_compressor, "attack1", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "release1", multiband_compressor, "release1", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "makeup1", multiband_compressor, "makeup1", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "knee1", multiband_compressor, "knee1", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "detection1", multiband_compressor, "detection1", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "bypass1", multiband_compressor, "bypass1", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "solo1", multiband_compressor, "solo1", G_SETTINGS_BIND_DEFAULT);
-
-// // mid band
-
-// g_settings_bind_with_mapping(settings, "threshold2", multiband_compressor, "threshold2", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "ratio2", multiband_compressor, "ratio2", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "attack2", multiband_compressor, "attack2", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "release2", multiband_compressor, "release2", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "makeup2", multiband_compressor, "makeup2", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "knee2", multiband_compressor, "knee2", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "detection2", multiband_compressor, "detection2", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "bypass2", multiband_compressor, "bypass2", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "solo2", multiband_compressor, "solo2", G_SETTINGS_BIND_DEFAULT);
-
-// // high band
-
-// g_settings_bind_with_mapping(settings, "threshold3", multiband_compressor, "threshold3", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "ratio3", multiband_compressor, "ratio3", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "attack3", multiband_compressor, "attack3", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "release3", multiband_compressor, "release3", G_SETTINGS_BIND_GET,
-//                              util::double_to_float, nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "makeup3", multiband_compressor, "makeup3", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "knee3", multiband_compressor, "knee3", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "detection3", multiband_compressor, "detection3", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "bypass3", multiband_compressor, "bypass3", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "solo3", multiband_compressor, "solo3", G_SETTINGS_BIND_DEFAULT);
