@@ -36,8 +36,6 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
-
-  //   g_object_set(multiband_compressor, "bypass", 0, nullptr);
 }
 
 MultibandCompressor::~MultibandCompressor() {
@@ -89,6 +87,28 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float output0_value = lv2_wrapper->get_control_port_value("output0");
+      float output1_value = lv2_wrapper->get_control_port_value("output1");
+      float output2_value = lv2_wrapper->get_control_port_value("output2");
+      float output3_value = lv2_wrapper->get_control_port_value("output3");
+
+      float compression0_value = lv2_wrapper->get_control_port_value("compression0");
+      float compression1_value = lv2_wrapper->get_control_port_value("compression1");
+      float compression2_value = lv2_wrapper->get_control_port_value("compression2");
+      float compression3_value = lv2_wrapper->get_control_port_value("compression3");
+
+      Glib::signal_idle().connect_once([=, this] {
+        output0.emit(output0_value);
+        output1.emit(output1_value);
+        output2.emit(output2_value);
+        output3.emit(output3_value);
+
+        compression0.emit(compression0_value);
+        compression1.emit(compression1_value);
+        compression2.emit(compression2_value);
+        compression3.emit(compression3_value);
+      });
+
       notify();
 
       notification_dt = 0.0F;
