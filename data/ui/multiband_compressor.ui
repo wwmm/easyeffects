@@ -407,7 +407,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="output0_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Output</property>
@@ -437,7 +437,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="compression0_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Compression</property>
@@ -717,7 +717,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="output1_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Output</property>
@@ -747,7 +747,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="compression1_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Compression</property>
@@ -1027,7 +1027,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="output2_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Output</property>
@@ -1057,7 +1057,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="compression2_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Compression</property>
@@ -1337,7 +1337,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="output3_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Output</property>
@@ -1367,7 +1367,7 @@
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="compression3_title">
                                                 <property name="halign">end</property>
                                                 <property name="xalign">1</property>
                                                 <property name="label" translatable="yes">Compression</property>
@@ -1603,6 +1603,20 @@
         <widgets>
             <widget name="input_level_title" />
             <widget name="output_level_title" />
+        </widgets>
+    </object>
+
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="output0_title" />
+            <widget name="output1_title" />
+            <widget name="output2_title" />
+            <widget name="output3_title" />
+            <widget name="compression0_title" />
+            <widget name="compression1_title" />
+            <widget name="compression2_title" />
+            <widget name="compression3_title" />
         </widgets>
     </object>
 </interface>
