@@ -27,7 +27,6 @@
 // #include "crystalizer_ui.hpp"
 // #include "deesser_ui.hpp"
 // #include "loudness_ui.hpp"
-// #include "multiband_compressor_ui.hpp"
 // #include "multiband_gate_ui.hpp"
 // #include "pitch_ui.hpp"
 // #include "rnnoise_ui.hpp"
@@ -54,7 +53,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   // PitchUi* pitch_ui = nullptr;
   // CrossfeedUi* crossfeed_ui = nullptr;
-  // MultibandCompressorUi* multiband_compressor_ui = nullptr;
   // LoudnessUi* loudness_ui = nullptr;
   // MultibandGateUi* multiband_gate_ui = nullptr;
   // DeesserUi* deesser_ui = nullptr;

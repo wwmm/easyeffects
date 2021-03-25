@@ -29,8 +29,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   // auto b_crossfeed =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
-  //   auto b_multiband_compressor =
-  //       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
   //   auto b_multiband_gate =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade"); auto b_deesser =
@@ -44,10 +42,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   b_crossfeed->get_widget_derived("widgets_grid", crossfeed_ui, "com.github.wwmm.pulseeffects.crossfeed",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/");
-
-  //   b_multiband_compressor->get_widget_derived("widgets_grid", multiband_compressor_ui,
-  //                                              "com.github.wwmm.pulseeffects.multibandcompressor",
-  //                                              "/com/github/wwmm/pulseeffects/sinkinputs/multibandcompressor/");
 
   //   b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.loudness",
   //                                  "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
@@ -70,7 +64,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
-  //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
   //   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
   //   stack->add(*deesser_ui, deesser_ui->name);
@@ -82,7 +75,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(crossfeed_ui);
-  //   add_to_listbox(multiband_compressor_ui);
   //   add_to_listbox(loudness_ui);
   //   add_to_listbox(multiband_gate_ui);
   //   add_to_listbox(deesser_ui);

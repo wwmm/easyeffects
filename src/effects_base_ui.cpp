@@ -155,6 +155,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->gate->post_messages = true;
   effects_base->limiter->post_messages = true;
   effects_base->maximizer->post_messages = true;
+  effects_base->multiband_compressor->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->reverb->post_messages = true;
   effects_base->spectrum->post_messages = true;
@@ -178,6 +179,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->gate->post_messages = false;
   effects_base->limiter->post_messages = false;
   effects_base->maximizer->post_messages = false;
+  effects_base->multiband_compressor->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->reverb->post_messages = false;
   effects_base->spectrum->post_messages = false;
@@ -298,6 +300,36 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->maximizer->input_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_input_level));
   effects_base->maximizer->output_level.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_output_level));
   effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
+
+  // multiband compressor
+
+  auto* multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
+
+  multiband_compressor_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->multiband_compressor->bypass = multiband_compressor_ui->bypass->get_active(); });
+
+  effects_base->multiband_compressor->input_level.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level));
+  effects_base->multiband_compressor->output_level.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output_level));
+
+  effects_base->multiband_compressor->output0.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output0));
+  effects_base->multiband_compressor->output1.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output1));
+  effects_base->multiband_compressor->output2.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output2));
+  effects_base->multiband_compressor->output3.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output3));
+
+  effects_base->multiband_compressor->compression0.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression0));
+  effects_base->multiband_compressor->compression1.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression1));
+  effects_base->multiband_compressor->compression2.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression2));
+  effects_base->multiband_compressor->compression3.connect(
+      sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression3));
 
   // reverb
 
