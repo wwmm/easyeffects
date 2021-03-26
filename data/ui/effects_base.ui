@@ -119,7 +119,8 @@
 
                 <property name="title-widget">
                     <object class="GtkBox">
-                        <property name="spacing">6</property>
+                        <!-- <property name="spacing">6</property> -->
+                        <property name="homogeneous">1</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_players">
                                 <property name="active">1</property>
@@ -139,6 +140,10 @@
                                         </child>
                                     </object>
                                 </child>
+
+                                <style>
+                                    <class name="no_rounded_corners" />
+                                </style>
                             </object>
                         </child>
 
@@ -161,6 +166,10 @@
                                         </child>
                                     </object>
                                 </child>
+
+                                <style>
+                                    <class name="no_rounded_corners" />
+                                </style>
                             </object>
                         </child>
                     </object>

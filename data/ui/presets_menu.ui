@@ -110,9 +110,6 @@
                                                                 </style>
                                                             </object>
                                                         </child>
-                                                        <style>
-                                                            <class name="entry" />
-                                                        </style>
                                                     </object>
                                                 </child>
 
@@ -220,9 +217,6 @@
                                                                 </style>
                                                             </object>
                                                         </child>
-                                                        <style>
-                                                            <class name="entry" />
-                                                        </style>
                                                     </object>
                                                 </child>
 
