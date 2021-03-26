@@ -12,11 +12,6 @@
                 <property name="margin_bottom">6</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkStackSwitcher">
-                        <property name="halign">center</property>
-                        <property name="stack">stack</property>
-                    </object>
-
                     <object class="GtkBox">
                         <property name="spacing">6</property>
                         <property name="halign">center</property>
@@ -72,7 +67,7 @@
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
                         <property name="transition_duration">250</property>
-                        <property name="transition_type">slide-up-down</property>
+                        <property name="transition_type">slide-left-right</property>
 
                         <child>
                             <object class="GtkStackPage">

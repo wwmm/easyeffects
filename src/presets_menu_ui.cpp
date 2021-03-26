@@ -30,6 +30,11 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       input_string_list(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
 
+  stack = builder->get_widget<Gtk::Stack>("stack");
+
+  toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
+  toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
+
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
   output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
   output_name = builder->get_widget<Gtk::Text>("output_name");
@@ -55,6 +60,34 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   last_used_input->set_label(settings->get_string("last-used-input-preset"));
 
   // signals connection
+
+  toggle_output->signal_toggled().connect([=, this]() {
+    if (toggle_output->get_active()) {
+      for (auto* child = stack->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+        auto page = stack->get_page(*child);
+
+        if (page->get_name() == "page_output") {
+          stack->set_visible_child(*child);
+
+          return;
+        }
+      }
+    }
+  });
+
+  toggle_input->signal_toggled().connect([=, this]() {
+    if (toggle_input->get_active()) {
+      for (auto* child = stack->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+        auto page = stack->get_page(*child);
+
+        if (page->get_name() == "page_input") {
+          stack->set_visible_child(*child);
+
+          return;
+        }
+      }
+    }
+  });
 
   add_output->signal_clicked().connect([=, this]() { create_preset(PresetType::output); });
 

@@ -47,6 +47,8 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Application* app = nullptr;
 
+  Gtk::Stack* stack = nullptr;
+
   Gtk::Button *add_output = nullptr, *add_input = nullptr, *import_output = nullptr, *import_input = nullptr;
 
   Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
@@ -58,6 +60,8 @@ class PresetsMenuUi : public Gtk::Popover {
   Gtk::SearchEntry *output_search = nullptr, *input_search = nullptr;
 
   Gtk::Label *last_used_output = nullptr, *last_used_input = nullptr;
+
+  Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr;
 
   Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
 
