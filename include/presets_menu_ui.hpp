@@ -63,6 +63,8 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr;
 
+  Glib::RefPtr<Gtk::SelectionModel> stack_model;
+
   Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
 
   std::vector<sigc::connection> connections;

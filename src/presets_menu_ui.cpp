@@ -75,17 +75,26 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
   });
 
-  toggle_input->signal_toggled().connect([=, this]() {
+  stack_model = stack->get_pages();
+
+  stack->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+    toggle_output->set_active(stack_model->is_selected(0));
+    toggle_input->set_active(stack_model->is_selected(1));
+  });
+
+  toggle_output->signal_toggled().connect([&, this]() {
+    if (toggle_output->get_active()) {
+      stack->get_pages()->select_item(0, true);
+    } else {
+      toggle_output->set_active(stack_model->is_selected(0));
+    }
+  });
+
+  toggle_input->signal_toggled().connect([&, this]() {
     if (toggle_input->get_active()) {
-      for (auto* child = stack->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-        auto page = stack->get_page(*child);
-
-        if (page->get_name() == "page_input") {
-          stack->set_visible_child(*child);
-
-          return;
-        }
-      }
+      stack->get_pages()->select_item(1, true);
+    } else {
+      toggle_input->set_active(stack_model->is_selected(1));
     }
   });
 
