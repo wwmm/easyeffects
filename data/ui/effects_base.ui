@@ -118,10 +118,51 @@
                 <property name="show_title_buttons">0</property>
 
                 <property name="title-widget">
-                    <object class="GtkStackSwitcher">
-                        <property name="halign">center</property>
-                        <property name="valign">end</property>
-                        <property name="stack">stack_top</property>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_players">
+                                <property name="active">1</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">3</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">multimedia-player-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Players</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_plugins">
+                                <property name="group">toggle_players</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">3</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">application-x-addon-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Plugins</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
                 </property>
 

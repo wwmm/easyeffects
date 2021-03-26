@@ -3,6 +3,7 @@
     <object class="GtkPopover" id="PresetsMenuUi">
         <child>
             <object class="GtkBox" id="top_box">
+                <property name="orientation">vertical</property>
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
                 <property name="margin_start">6</property>
@@ -11,11 +12,61 @@
                 <property name="margin_bottom">6</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkStackSidebar">
+                    <object class="GtkStackSwitcher">
                         <property name="halign">center</property>
                         <property name="stack">stack</property>
                     </object>
+
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
+                        <property name="halign">center</property>
+                        <property name="homogeneous">1</property>
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_output">
+                                <property name="active">1</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">3</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-speakers-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Output</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_input">
+                                <property name="group">toggle_output</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">3</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Input</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
                 </child>
+
                 <child>
                     <object class="GtkStack" id="stack">
                         <property name="hexpand">1</property>

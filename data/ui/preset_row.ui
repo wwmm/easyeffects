@@ -38,7 +38,7 @@
                 <property name="tooltip_text" translatable="yes">Remove this preset file</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="icon_name">list-remove-symbolic</property>
+                <property name="icon_name">user-trash-symbolic</property>
             </object>
         </child>
     </object>

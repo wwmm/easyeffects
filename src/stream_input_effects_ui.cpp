@@ -24,26 +24,21 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            StreamInputEffects* sie_ptr,
                                            const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, sie_ptr, schema), sie(sie_ptr) {
-  page_players->set_title(_("Recorders"));
+  auto* toggle_players_icon = dynamic_cast<Gtk::Image*>(toggle_players->get_child()->get_first_child());
+  auto* toggle_players_label = dynamic_cast<Gtk::Label*>(toggle_players_icon->get_next_sibling());
+
+  toggle_players_icon->set_from_icon_name("media-record-symbolic");
+  toggle_players_label->set_text(_("Recorders"));
 
   // populate stack
 
-  //   auto b_equalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.glade");
   //   auto b_deesser = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_webrtc = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/webrtc.glade");
-  //   auto b_multiband_compressor =
-  //       Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.glade");
   //   auto b_multiband_gate =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
   // auto b_rnnoise =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
-
-  //   b_equalizer->get_widget_derived("widgets_grid", equalizer_ui, "com.github.wwmm.pulseeffects.equalizer",
-  //                                   "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/",
-  //                                   "com.github.wwmm.pulseeffects.equalizer.channel",
-  //                                   "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/",
-  //                                   "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/rightchannel/");
 
   //   b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
   //                                 "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/");
@@ -54,10 +49,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   //   b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.webrtc",
   //                                "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/");
 
-  //   b_multiband_compressor->get_widget_derived("widgets_grid", multiband_compressor_ui,
-  //                                              "com.github.wwmm.pulseeffects.multibandcompressor",
-  //                                              "/com/github/wwmm/pulseeffects/sourceoutputs/multibandcompressor/");
-
   //   b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui,
   //   "com.github.wwmm.pulseeffects.multibandgate",
   //                                        "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/");
@@ -67,21 +58,17 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   //   // add to stack
 
-  //   stack->add(*equalizer_ui, equalizer_ui->name);
   //   stack->add(*deesser_ui, deesser_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*webrtc_ui, webrtc_ui->name);
-  //   stack->add(*multiband_compressor_ui, multiband_compressor_ui->name);
   //   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
   //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   //   // populate listbox
 
-  //   add_to_listbox(equalizer_ui);
   //   add_to_listbox(deesser_ui);
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(webrtc_ui);
-  //   add_to_listbox(multiband_compressor_ui);
   //   add_to_listbox(multiband_gate_ui);
   //   add_to_listbox(rnnoise_ui);
 
@@ -132,7 +119,8 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
 
   auto stack_page = stack->add(*ui, "stream_input");
 
-  stack_page->set_icon_name("audio-input-microphone-symbolic");
+  // stack_page->set_icon_name("audio-input-microphone-symbolic");
+  stack_page->set_title(_("Input"));
 
   return ui;
 }
@@ -168,31 +156,6 @@ void StreamInputEffectsUi::level_meters_connections() {
   //   connections.emplace_back(
   //       sie->webrtc_output_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
 
-  //   // multiband_compressor level meters connections
-
-  //   connections.emplace_back(sie->multiband_compressor->input_level.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level)));
-  //   connections.emplace_back(sie->multiband_compressor->output_level.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output_level)));
-
-  //   connections.emplace_back(sie->multiband_compressor->output0.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output0)));
-  //   connections.emplace_back(sie->multiband_compressor->output1.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output1)));
-  //   connections.emplace_back(sie->multiband_compressor->output2.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output2)));
-  //   connections.emplace_back(sie->multiband_compressor->output3.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_output3)));
-
-  //   connections.emplace_back(sie->multiband_compressor->compression0.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression0)));
-  //   connections.emplace_back(sie->multiband_compressor->compression1.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression1)));
-  //   connections.emplace_back(sie->multiband_compressor->compression2.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression2)));
-  //   connections.emplace_back(sie->multiband_compressor->compression3.connect(
-  //       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression3)));
-
   //   // multiband_gate level meters connections
 
   //   connections.emplace_back(sie->multiband_gate->input_level.connect(
@@ -227,10 +190,6 @@ void StreamInputEffectsUi::level_meters_connections() {
 }
 
 void StreamInputEffectsUi::up_down_connections() {
-  //   connections.emplace_back(equalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(equalizer_ui);
-  //   })); connections.emplace_back(equalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(equalizer_ui); }));
-
   //   connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(deesser_ui); }));
   //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(deesser_ui);
   //   }));
@@ -240,13 +199,6 @@ void StreamInputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(webrtc_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(webrtc_ui); }));
   //   connections.emplace_back(webrtc_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(webrtc_ui); }));
-
-  //   connections.emplace_back(
-  //       multiband_compressor_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(multiband_compressor_ui);
-  //       }));
-  //   connections.emplace_back(
-  //       multiband_compressor_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //       on_down(multiband_compressor_ui); }));
 
   //   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=, this]() {
   //   on_up(multiband_gate_ui);

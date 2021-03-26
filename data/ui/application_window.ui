@@ -13,43 +13,13 @@
                 <!-- title and subtitle  -->
 
                 <property name="title-widget">
-                    <object class="GtkBox">
-                        <property name="orientation">vertical</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="single-line-mode">True</property>
-                                <property name="label" translatable="yes">PulseEffects</property>
-                                <style>
-                                    <class name="title" />
-                                </style>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel" id="subtitle">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
-                                <property name="single-line-mode">True</property>
-                                <property name="label"></property>
-                                <style>
-                                    <class name="subtitle" />
-                                </style>
-                            </object>
-                        </child>
-                    </object>
-                </property>
+                    <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
 
-                <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
-
-                <child>
                     <object class="GtkStackSwitcher" id="stack_switcher">
                         <property name="valign">center</property>
                         <property name="stack">stack</property>
                     </object>
-                </child>
+                </property>
 
                 <!-- calibration button -->
 

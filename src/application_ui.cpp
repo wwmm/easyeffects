@@ -36,7 +36,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
   help_button = builder->get_widget<Gtk::Button>("help_button");
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
-  subtitle = builder->get_widget<Gtk::Label>("subtitle");
+  // subtitle = builder->get_widget<Gtk::Label>("subtitle");
 
   presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -60,7 +60,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // initializing the subtitle
 
-  subtitle->set_text(_("stream outputs"));
+  // subtitle->set_text(_("stream outputs"));
 
   // binding properties to gsettings keys
 
@@ -107,13 +107,13 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 void ApplicationUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
-  if (name == "stream_output") {
-    subtitle->set_text(_("stream outputs"));
-  } else if (name == "stream_input") {
-    subtitle->set_text(_("stream inputs"));
-  } else if (name == "pipe_info") {
-    subtitle->set_text(_("server"));
-  }
+  // if (name == "stream_output") {
+  //   subtitle->set_text(_("stream outputs"));
+  // } else if (name == "stream_input") {
+  //   subtitle->set_text(_("stream inputs"));
+  // } else if (name == "pipe_info") {
+  //   subtitle->set_text(_("server"));
+  // }
 }
 
 void ApplicationUi::on_calibration_button_clicked() {

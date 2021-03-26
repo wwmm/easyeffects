@@ -47,8 +47,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
-
-  page_players = builder->get_object<Gtk::StackPage>("page_players");
+  toggle_players = builder->get_widget<Gtk::ToggleButton>("toggle_players");
+  toggle_plugins = builder->get_widget<Gtk::ToggleButton>("toggle_plugins");
 
   popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
   blocklist_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("blocklist_scrolled_window");
@@ -92,6 +92,34 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       menubutton_blocklist->set_visible(true);
     } else {
       menubutton_blocklist->set_visible(false);
+    }
+  });
+
+  toggle_players->signal_toggled().connect([=, this]() {
+    if (toggle_players->get_active()) {
+      for (auto* child = stack_top->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+        auto page = stack_top->get_page(*child);
+
+        if (page->get_name() == "page_players") {
+          stack_top->set_visible_child(*child);
+
+          return;
+        }
+      }
+    }
+  });
+
+  toggle_plugins->signal_toggled().connect([&, this]() {
+    if (toggle_plugins->get_active()) {
+      for (auto* child = stack_top->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+        auto page = stack_top->get_page(*child);
+
+        if (page->get_name() == "page_plugins") {
+          stack_top->set_visible_child(*child);
+
+          return;
+        }
+      }
     }
   });
 
@@ -857,7 +885,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     up->set_icon_name("go-up-symbolic");
     down->set_icon_name("go-down-symbolic");
-    remove->set_icon_name("list-remove-symbolic");
+    remove->set_icon_name("user-trash-symbolic");
 
     box->append(*label);
     box->append(*up);

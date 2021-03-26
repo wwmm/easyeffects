@@ -92,7 +92,6 @@ pulseeffects_sources = [
 	# 'calibration_signals.cpp',
 	# 'calibration_mic_ui.cpp',
 	# 'calibration_mic.cpp',
-	'realtime_kit.cpp',
 	'lv2_wrapper.cpp',
 	'util.cpp',
 	gresources
