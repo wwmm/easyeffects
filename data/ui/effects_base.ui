@@ -119,7 +119,7 @@
 
                 <property name="title-widget">
                     <object class="GtkBox">
-                        <!-- <property name="spacing">6</property> -->
+                        <property name="spacing">6</property>
                         <property name="homogeneous">1</property>
                         <property name="accessible-role">tab-list</property>
                         <child>
@@ -166,10 +166,6 @@
                                 </child>
                             </object>
                         </child>
-
-                        <style>
-                            <class name="linked" />
-                        </style>
                     </object>
                 </property>
 

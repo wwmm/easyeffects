@@ -61,20 +61,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   // signals connection
 
-  toggle_output->signal_toggled().connect([=, this]() {
-    if (toggle_output->get_active()) {
-      for (auto* child = stack->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-        auto page = stack->get_page(*child);
-
-        if (page->get_name() == "page_output") {
-          stack->set_visible_child(*child);
-
-          return;
-        }
-      }
-    }
-  });
-
   stack_model = stack->get_pages();
 
   stack->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {

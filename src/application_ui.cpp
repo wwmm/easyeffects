@@ -36,7 +36,8 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
   help_button = builder->get_widget<Gtk::Button>("help_button");
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
-  // subtitle = builder->get_widget<Gtk::Label>("subtitle");
+  toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
+  toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
 
   presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -51,16 +52,32 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // signals
 
-  stack->connect_property_changed("visible-child",
-                                  sigc::mem_fun(*this, &ApplicationUi::on_stack_visible_child_changed));
+  stack_model = stack->get_pages();
+
+  stack->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+    toggle_output->set_active(stack_model->is_selected(0));
+    toggle_input->set_active(stack_model->is_selected(1));
+  });
+
+  toggle_output->signal_toggled().connect([&, this]() {
+    if (toggle_output->get_active()) {
+      stack->get_pages()->select_item(0, true);
+    } else {
+      toggle_output->set_active(stack_model->is_selected(0));
+    }
+  });
+
+  toggle_input->signal_toggled().connect([&, this]() {
+    if (toggle_input->get_active()) {
+      stack->get_pages()->select_item(1, true);
+    } else {
+      toggle_input->set_active(stack_model->is_selected(1));
+    }
+  });
 
   help_button->signal_clicked().connect([=, this]() { app->activate_action("help"); });
 
   calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
-
-  // initializing the subtitle
-
-  // subtitle->set_text(_("stream outputs"));
 
   // binding properties to gsettings keys
 
@@ -102,18 +119,6 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
 
   Gtk::StyleContext::add_provider_for_display(display, provider, priority);
-}
-
-void ApplicationUi::on_stack_visible_child_changed() {
-  auto name = stack->get_visible_child_name();
-
-  // if (name == "stream_output") {
-  //   subtitle->set_text(_("stream outputs"));
-  // } else if (name == "stream_input") {
-  //   subtitle->set_text(_("stream inputs"));
-  // } else if (name == "pipe_info") {
-  //   subtitle->set_text(_("server"));
-  // }
 }
 
 void ApplicationUi::on_calibration_button_clicked() {

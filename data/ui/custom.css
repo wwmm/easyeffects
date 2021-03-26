@@ -6,7 +6,3 @@
 .rounded_corners {
   border-radius: 12px;
 }
-
-.no_rounded_corners {
-  border-radius: 0;
-}

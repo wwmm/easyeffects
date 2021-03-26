@@ -15,9 +15,66 @@
                 <property name="title-widget">
                     <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
 
-                    <object class="GtkStackSwitcher" id="stack_switcher">
-                        <property name="valign">center</property>
-                        <property name="stack">stack</property>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="homogeneous">1</property>
+                        <property name="accessible-role">tab-list</property>
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_output">
+                                <property name="active">1</property>
+                                <property name="accessible-role">tab</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">6</property>
+                                        <property name="margin_start">6</property>
+                                        <property name="margin_end">6</property>
+                                        <property name="margin_top">6</property>
+                                        <property name="margin_bottom">6</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-speakers-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Output</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_input">
+                                <property name="accessible-role">tab</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">6</property>
+                                        <property name="margin_start">6</property>
+                                        <property name="margin_end">6</property>
+                                        <property name="margin_top">6</property>
+                                        <property name="margin_bottom">6</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Input</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <style>
+                            <class name="linked" />
+                        </style>
                     </object>
                 </property>
 

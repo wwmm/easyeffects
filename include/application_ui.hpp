@@ -55,8 +55,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::Button *calibration_button = nullptr, *help_button = nullptr;
   Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
-  Gtk::Label* subtitle = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
+  Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr;
+
+  Glib::RefPtr<Gtk::SelectionModel> stack_model;
 
   std::vector<sigc::connection> connections;
 
@@ -69,8 +71,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   int soe_latency = 0, sie_latency = 0;
 
   static void apply_css_style(const std::string& css_file_name);
-
-  void on_stack_visible_child_changed();
 
   void on_calibration_button_clicked();
 };
