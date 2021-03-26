@@ -95,31 +95,26 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     }
   });
 
-  toggle_players->signal_toggled().connect([=, this]() {
+  stack_top_model = stack_top->get_pages();
+
+  stack_top->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+    toggle_players->set_active(stack_top_model->is_selected(0));
+    toggle_plugins->set_active(stack_top_model->is_selected(1));
+  });
+
+  toggle_players->signal_toggled().connect([&, this]() {
     if (toggle_players->get_active()) {
-      for (auto* child = stack_top->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-        auto page = stack_top->get_page(*child);
-
-        if (page->get_name() == "page_players") {
-          stack_top->set_visible_child(*child);
-
-          return;
-        }
-      }
+      stack_top->get_pages()->select_item(0, true);
+    } else {
+      toggle_players->set_active(stack_top_model->is_selected(0));
     }
   });
 
   toggle_plugins->signal_toggled().connect([&, this]() {
     if (toggle_plugins->get_active()) {
-      for (auto* child = stack_top->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-        auto page = stack_top->get_page(*child);
-
-        if (page->get_name() == "page_plugins") {
-          stack_top->set_visible_child(*child);
-
-          return;
-        }
-      }
+      stack_top->get_pages()->select_item(1, true);
+    } else {
+      toggle_plugins->set_active(stack_top_model->is_selected(1));
     }
   });
 

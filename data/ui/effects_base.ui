@@ -77,9 +77,9 @@
                                                             <object class="GtkListView" id="listview_selected_plugins">
                                                                 <property name="vexpand">1</property>
                                                                 <property name="show-separators">1</property>
-                                                                <property name="single-click-activate">1</property>
+                                                                <!-- <property name="single-click-activate">1</property> -->
                                                                 <style>
-                                                                    <class name="rich-list" />
+                                                                    <class name="navigation-sidebar" />
                                                                 </style>
                                                             </object>
                                                         </child>
@@ -121,9 +121,11 @@
                     <object class="GtkBox">
                         <!-- <property name="spacing">6</property> -->
                         <property name="homogeneous">1</property>
+                        <property name="accessible-role">tab-list</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_players">
                                 <property name="active">1</property>
+                                <property name="accessible-role">tab</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -140,16 +142,13 @@
                                         </child>
                                     </object>
                                 </child>
-
-                                <style>
-                                    <class name="no_rounded_corners" />
-                                </style>
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_plugins">
-                                <property name="group">toggle_players</property>
+                                <!-- <property name="group">toggle_players</property> -->
+                                <property name="accessible-role">tab</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -166,12 +165,12 @@
                                         </child>
                                     </object>
                                 </child>
-
-                                <style>
-                                    <class name="no_rounded_corners" />
-                                </style>
                             </object>
                         </child>
+
+                        <style>
+                            <class name="linked" />
+                        </style>
                     </object>
                 </property>
 
