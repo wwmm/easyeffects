@@ -874,30 +874,18 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = Gtk::make_managed<Gtk::Box>();
     auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* up = Gtk::make_managed<Gtk::Button>();
-    auto* down = Gtk::make_managed<Gtk::Button>();
     auto* remove = Gtk::make_managed<Gtk::Button>();
     auto* drag_handle = Gtk::make_managed<Gtk::Image>();
 
-    auto up_css_classes = up->get_css_classes();
-    auto down_css_classes = up->get_css_classes();
-    auto remove_css_classes = up->get_css_classes();
+    auto remove_css_classes = remove->get_css_classes();
 
-    up_css_classes.emplace_back("flat");
-    down_css_classes.emplace_back("flat");
     remove_css_classes.emplace_back("flat");
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
-
-    up->set_icon_name("go-up-symbolic");
-    up->set_css_classes(up_css_classes);
-
-    down->set_icon_name("go-down-symbolic");
-    down->set_css_classes(down_css_classes);
 
     remove->set_icon_name("user-trash-symbolic");
     remove->set_css_classes(remove_css_classes);
@@ -906,32 +894,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     box->set_spacing(6);
     box->append(*label);
-    box->append(*up);
-    box->append(*down);
     box->append(*remove);
     box->append(*drag_handle);
-
-    // up->set_visible(false);
-    // down->set_visible(false);
-    // remove->set_visible(false);
-
-    // auto controller = Gtk::EventControllerMotion::create();
-
-    // controller->signal_enter().connect([=](const double& x, const double& y) {
-    //   up->set_visible(true);
-    //   down->set_visible(true);
-    //   remove->set_visible(true);
-    // });
-
-    // controller->signal_leave().connect([=]() {
-    //   up->set_visible(false);
-    //   down->set_visible(false);
-    //   remove->set_visible(false);
-    // });
-
-    // box->add_controller(controller);
-
-    // drag and drop
 
     auto drag_source = Gtk::DragSource::create();
     auto drop_target = Gtk::DropTarget::create(Glib::Value<Glib::ustring>::value_type(), Gdk::DragAction::MOVE);
@@ -968,28 +932,38 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       drag_source->set_icon(paintable, row_box->get_allocated_width() - controller_widget->get_allocated_width() / 2,
                             row_box->get_allocated_height() / 2);
 
-      row_box->set_opacity(0.5);
-    });
-
-    drag_source->signal_drag_end().connect([=](const Glib::RefPtr<Gdk::Drag>& drag, bool delete_data) {
-      auto* controller_widget = drag_source->get_widget();
-      auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
-
-      row_box->set_opacity(1.0);
-
       controller_widget->set_data("dragged-item", nullptr);
     });
 
-    drag_source->signal_drag_cancel().connect(
-        [](const Glib::RefPtr<Gdk::Drag>& drag, Gdk::DragCancelReason reason) { return false; }, false);
-
     drop_target->signal_drop().connect(
-        [=](const Glib::ValueBase& v, const double& x, const double& y) {
+        [=, this](const Glib::ValueBase& v, const double& x, const double& y) {
           Glib::Value<Glib::ustring> name_value;
 
           name_value.init(v.gobj());
 
-          util::warning(name_value.get() + " -> " + label->get_name());
+          auto src = name_value.get();
+          auto dst = label->get_name();
+
+          if (src != dst) {
+            auto list = settings->get_string_array("selected-plugins");
+
+            auto iter_src = std::ranges::find(list, src);
+            auto iter_dst = std::ranges::find(list, dst);
+
+            auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
+
+            list.erase(iter_src);
+
+            iter_dst = std::ranges::find(list, dst);
+
+            if (insert_after) {
+              list.insert(iter_dst + 1, src);
+            } else {
+              list.insert(iter_dst, src);
+            }
+
+            settings->set_string_array("selected-plugins", list);
+          }
 
           return true;
         },
@@ -1001,8 +975,6 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     // setting list_item data
 
     list_item->set_data("name", label);
-    list_item->set_data("up", up);
-    list_item->set_data("down", down);
     list_item->set_data("remove", remove);
 
     list_item->set_child(*box);
@@ -1011,37 +983,11 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-    auto* up = static_cast<Gtk::Button*>(list_item->get_data("up"));
-    auto* down = static_cast<Gtk::Button*>(list_item->get_data("down"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(plugins_names[name]);
-
-    auto connection_up = up->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("selected-plugins");
-
-      auto r = std::ranges::find(list, name);
-
-      if (r != list.begin()) {
-        std::iter_swap(r, r - 1);
-
-        settings->set_string_array("selected-plugins", list);
-      }
-    });
-
-    auto connection_down = down->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("selected-plugins");
-
-      auto r = std::ranges::find(list, name);
-
-      if (r != std::end(list) - 1) {
-        std::iter_swap(r, r + 1);
-
-        settings->set_string_array("selected-plugins", list);
-      }
-    });
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("selected-plugins");
@@ -1054,18 +1000,12 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     // setting list_item data
 
-    list_item->set_data("connection_up", new sigc::connection(connection_up),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_down", new sigc::connection(connection_down),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_up", "connection_down", "connection_remove"}) {
+    for (const auto* conn : {"connection_remove"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
