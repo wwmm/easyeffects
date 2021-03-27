@@ -880,6 +880,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* up = Gtk::make_managed<Gtk::Button>();
     auto* down = Gtk::make_managed<Gtk::Button>();
     auto* remove = Gtk::make_managed<Gtk::Button>();
+    auto* drag_handle = Gtk::make_managed<Gtk::Image>();
 
     auto up_css_classes = up->get_css_classes();
     auto down_css_classes = up->get_css_classes();
@@ -901,11 +902,34 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     remove->set_icon_name("user-trash-symbolic");
     remove->set_css_classes(remove_css_classes);
 
+    drag_handle->set_from_icon_name("list-drag-handle-symbolic");
+
     box->set_spacing(6);
     box->append(*label);
     box->append(*up);
     box->append(*down);
     box->append(*remove);
+    box->append(*drag_handle);
+
+    // up->set_visible(false);
+    // down->set_visible(false);
+    // remove->set_visible(false);
+
+    // auto controller = Gtk::EventControllerMotion::create();
+
+    // controller->signal_enter().connect([=](const double& x, const double& y) {
+    //   up->set_visible(true);
+    //   down->set_visible(true);
+    //   remove->set_visible(true);
+    // });
+
+    // controller->signal_leave().connect([=]() {
+    //   up->set_visible(false);
+    //   down->set_visible(false);
+    //   remove->set_visible(false);
+    // });
+
+    // box->add_controller(controller);
 
     list_item->set_data("name", label);
     list_item->set_data("up", up);
@@ -913,6 +937,63 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     list_item->set_data("remove", remove);
 
     list_item->set_child(*box);
+
+    // drag and drop
+
+    auto drag_source = Gtk::DragSource::create();
+
+    drag_source->set_actions(Gdk::DragAction::MOVE);
+
+    drag_source->signal_prepare().connect(
+        [=](const double& x, const double& y) {
+          auto* controller_widget = drag_source->get_widget();
+
+          auto* item = controller_widget->get_ancestor(Gtk::Box::get_type());
+
+          controller_widget->set_data("dragged-item", item);
+
+          Glib::Value<Glib::ustring> name_value;
+
+          name_value.init(Glib::Value<Glib::ustring>::value_type());
+
+          name_value.set("test");
+
+          return Gdk::ContentProvider::create(name_value);
+        },
+        false);
+
+    drag_source->signal_drag_begin().connect([=](const Glib::RefPtr<Gdk::Drag>& drag) {
+      auto* controller_widget = drag_source->get_widget();
+
+      auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
+
+      auto paintable = Gtk::WidgetPaintable::create(*row_box);
+
+      drag_source->set_icon(paintable, row_box->get_allocated_width() - controller_widget->get_allocated_width() / 2,
+                            row_box->get_allocated_height() / 2);
+
+      row_box->set_opacity(0.5);
+    });
+
+    drag_source->signal_drag_end().connect([=](const Glib::RefPtr<Gdk::Drag>& drag, bool delete_data) {
+      auto* controller_widget = drag_source->get_widget();
+      auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
+
+      row_box->set_opacity(1.0);
+
+      controller_widget->set_data("dragged-item", nullptr);
+
+      util::warning("end");
+    });
+
+    drag_source->signal_drag_cancel().connect(
+        [](const Glib::RefPtr<Gdk::Drag>& drag, Gdk::DragCancelReason reason) {
+          util::warning("canceled");
+          return false;
+        },
+        false);
+
+    drag_handle->add_controller(drag_source);
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
