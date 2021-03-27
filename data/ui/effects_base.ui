@@ -76,8 +76,7 @@
                                                         <child>
                                                             <object class="GtkListView" id="listview_selected_plugins">
                                                                 <property name="vexpand">1</property>
-                                                                <property name="show-separators">1</property>
-                                                                <!-- <property name="single-click-activate">1</property> -->
+                                                                <!-- <property name="show-separators">1</property> -->
                                                                 <style>
                                                                     <class name="navigation-sidebar" />
                                                                 </style>

@@ -64,6 +64,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
   stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
 
+  stack_top_model = stack_top->get_pages();
+
   add_plugins_to_stack_plugins();
 
   // configuring widgets
@@ -95,9 +97,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     }
   });
 
-  stack_top_model = stack_top->get_pages();
-
-  stack_top->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+  stack_top_model->signal_selection_changed().connect([&, this](guint position, guint n_items) {
     toggle_players->set_active(stack_top_model->is_selected(0));
     toggle_plugins->set_active(stack_top_model->is_selected(1));
   });
@@ -852,16 +852,22 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
   // setting the item selection callback
 
-  listview_selected_plugins->signal_activate().connect([&, this](guint position) {
-    auto selected_name = selected_plugins->get_string(position);
+  listview_selected_plugins->get_model()->signal_selection_changed().connect([&](guint position, guint n_items) {
+    for (guint n = position; n < position + n_items; n++) {
+      bool is_selected = listview_selected_plugins->get_model()->is_selected(n);
 
-    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      auto page = stack_plugins->get_page(*child);
+      if (is_selected) {
+        auto selected_name = selected_plugins->get_string(n);
 
-      if (page->get_name() == selected_name) {
-        stack_plugins->set_visible_child(*child);
+        for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+          auto page = stack_plugins->get_page(*child);
 
-        return;
+          if (page->get_name() == selected_name) {
+            stack_plugins->set_visible_child(*child);
+
+            return;
+          }
+        }
       }
     }
   });
@@ -875,13 +881,27 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* down = Gtk::make_managed<Gtk::Button>();
     auto* remove = Gtk::make_managed<Gtk::Button>();
 
+    auto up_css_classes = up->get_css_classes();
+    auto down_css_classes = up->get_css_classes();
+    auto remove_css_classes = up->get_css_classes();
+
+    up_css_classes.emplace_back("flat");
+    down_css_classes.emplace_back("flat");
+    remove_css_classes.emplace_back("flat");
+
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
     up->set_icon_name("go-up-symbolic");
-    down->set_icon_name("go-down-symbolic");
-    remove->set_icon_name("user-trash-symbolic");
+    up->set_css_classes(up_css_classes);
 
+    down->set_icon_name("go-down-symbolic");
+    down->set_css_classes(down_css_classes);
+
+    remove->set_icon_name("user-trash-symbolic");
+    remove->set_css_classes(remove_css_classes);
+
+    box->set_spacing(6);
     box->append(*label);
     box->append(*up);
     box->append(*down);
