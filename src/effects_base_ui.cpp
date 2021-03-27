@@ -931,36 +931,11 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     // box->add_controller(controller);
 
-    list_item->set_data("name", label);
-    list_item->set_data("up", up);
-    list_item->set_data("down", down);
-    list_item->set_data("remove", remove);
-
-    list_item->set_child(*box);
-
     // drag and drop
 
     auto drag_source = Gtk::DragSource::create();
 
     drag_source->set_actions(Gdk::DragAction::MOVE);
-
-    drag_source->signal_prepare().connect(
-        [=](const double& x, const double& y) {
-          auto* controller_widget = drag_source->get_widget();
-
-          auto* item = controller_widget->get_ancestor(Gtk::Box::get_type());
-
-          controller_widget->set_data("dragged-item", item);
-
-          Glib::Value<Glib::ustring> name_value;
-
-          name_value.init(Glib::Value<Glib::ustring>::value_type());
-
-          name_value.set("test");
-
-          return Gdk::ContentProvider::create(name_value);
-        },
-        false);
 
     drag_source->signal_drag_begin().connect([=](const Glib::RefPtr<Gdk::Drag>& drag) {
       auto* controller_widget = drag_source->get_widget();
@@ -982,18 +957,26 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       row_box->set_opacity(1.0);
 
       controller_widget->set_data("dragged-item", nullptr);
-
-      util::warning("end");
     });
 
     drag_source->signal_drag_cancel().connect(
-        [](const Glib::RefPtr<Gdk::Drag>& drag, Gdk::DragCancelReason reason) {
-          util::warning("canceled");
-          return false;
-        },
-        false);
+        [](const Glib::RefPtr<Gdk::Drag>& drag, Gdk::DragCancelReason reason) { return false; }, false);
+
+    auto drop_target = Gtk::DropTarget::create(Glib::Value<Glib::ustring>::value_type(), Gdk::DragAction::MOVE);
 
     drag_handle->add_controller(drag_source);
+    drag_handle->add_controller(drop_target);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+    list_item->set_data("up", up);
+    list_item->set_data("down", down);
+    list_item->set_data("remove", remove);
+    list_item->set_data("drag_source", drag_source.get());
+    list_item->set_data("drop_target", drop_target.get());
+
+    list_item->set_child(*box);
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
@@ -1001,6 +984,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
     auto* up = static_cast<Gtk::Button*>(list_item->get_data("up"));
     auto* down = static_cast<Gtk::Button*>(list_item->get_data("down"));
+    auto* drag_source = static_cast<Gtk::DragSource*>(list_item->get_data("drag_source"));
+    auto* drop_target = static_cast<Gtk::DropTarget*>(list_item->get_data("drop_target"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -1039,6 +1024,40 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
       settings->set_string_array("selected-plugins", list);
     });
 
+    auto connection_drag_source = drag_source->signal_prepare().connect(
+        [=](const double& x, const double& y) {
+          auto* controller_widget = drag_source->get_widget();
+
+          auto* item = controller_widget->get_ancestor(Gtk::Box::get_type());
+
+          controller_widget->set_data("dragged-item", item);
+
+          Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
+
+          Glib::Value<Glib::ustring> name_value;
+
+          name_value.init(Glib::Value<Glib::ustring>::value_type());
+
+          name_value.set(name);
+
+          return Gdk::ContentProvider::create(name_value);
+        },
+        false);
+
+    auto connection_drop_target = drop_target->signal_drop().connect(
+        [](const Glib::ValueBase& v, const double& x, const double& y) {
+          Glib::Value<Glib::ustring> name_value;
+
+          name_value.init(v.gobj());
+
+          util::warning(name_value.get());
+
+          return true;
+        },
+        false);
+
+    // setting list_item data
+
     list_item->set_data("connection_up", new sigc::connection(connection_up),
                         Glib::destroy_notify_delete<sigc::connection>);
 
@@ -1047,10 +1066,17 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_drag_source", new sigc::connection(connection_drag_source),
+                        Glib::destroy_notify_delete<sigc::connection>);
+
+    list_item->set_data("connection_drop_target", new sigc::connection(connection_drop_target),
+                        Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_up", "connection_down", "connection_remove"}) {
+    for (const auto* conn : {"connection_up", "connection_down", "connection_remove", "connection_drag_source",
+                             "connection_drop_target"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
