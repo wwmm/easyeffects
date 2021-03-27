@@ -996,7 +996,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
         false);
 
     drag_handle->add_controller(drag_source);
-    drag_handle->add_controller(drop_target);
+    box->add_controller(drop_target);
 
     // setting list_item data
 
