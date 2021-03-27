@@ -27,10 +27,10 @@
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
                                         <property name="spacing">6</property>
-                                        <property name="margin_start">6</property>
-                                        <property name="margin_end">6</property>
-                                        <property name="margin_top">6</property>
-                                        <property name="margin_bottom">6</property>
+                                        <property name="margin_start">3</property>
+                                        <property name="margin_end">3</property>
+                                        <property name="margin_top">3</property>
+                                        <property name="margin_bottom">3</property>
                                         <child>
                                             <object class="GtkImage">
                                                 <property name="icon-name">audio-speakers-symbolic</property>
@@ -57,10 +57,10 @@
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
                                         <property name="spacing">6</property>
-                                        <property name="margin_start">6</property>
-                                        <property name="margin_end">6</property>
-                                        <property name="margin_top">6</property>
-                                        <property name="margin_bottom">6</property>
+                                        <!-- <property name="margin_start">3</property>
+                                        <property name="margin_end">3</property>
+                                        <property name="margin_top">3</property>
+                                        <property name="margin_bottom">3</property> -->
                                         <child>
                                             <object class="GtkImage">
                                                 <property name="icon-name">audio-input-microphone-symbolic</property>

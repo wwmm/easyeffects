@@ -112,14 +112,14 @@
                                                                 </style>
                                                             </object>
                                                         </child>
-                                                    </object>
-                                                </child>
-
-                                                <child>
-                                                    <object class="GtkButton" id="import_output">
-                                                        <property name="tooltip_text" translatable="yes">Import Presets</property>
-                                                        <property name="halign">center</property>
-                                                        <property name="icon_name">document-open-symbolic</property>
+                                                        <child>
+                                                            <object class="GtkButton" id="import_output">
+                                                                <property name="tooltip_text" translatable="yes">Import Presets</property>
+                                                                <property name="halign">center</property>
+                                                                <property name="valign">center</property>
+                                                                <property name="icon_name">document-open-symbolic</property>
+                                                            </object>
+                                                        </child>
                                                     </object>
                                                 </child>
                                             </object>
@@ -219,14 +219,14 @@
                                                                 </style>
                                                             </object>
                                                         </child>
-                                                    </object>
-                                                </child>
-
-                                                <child>
-                                                    <object class="GtkButton" id="import_input">
-                                                        <property name="tooltip_text" translatable="yes">Import Presets</property>
-                                                        <property name="halign">center</property>
-                                                        <property name="icon_name">document-open-symbolic</property>
+                                                        <child>
+                                                            <object class="GtkButton" id="import_input">
+                                                                <property name="tooltip_text" translatable="yes">Import Presets</property>
+                                                                <property name="halign">center</property>
+                                                                <property name="valign">center</property>
+                                                                <property name="icon_name">document-open-symbolic</property>
+                                                            </object>
+                                                        </child>
                                                     </object>
                                                 </child>
                                             </object>
