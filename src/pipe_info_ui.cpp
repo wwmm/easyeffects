@@ -191,29 +191,6 @@ void PipeInfoUi::update_clients_info() {
   }
 
   clients_model->splice(0, clients_model->get_n_items(), values);
-
-  // for (auto& client : pm->list_clients) {
-  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
-
-  //   Gtk::ListBoxRow* row = nullptr;
-  //   Gtk::Label* client_name = nullptr;
-  //   Gtk::Label* client_id = nullptr;
-  //   Gtk::Label* client_access = nullptr;
-  //   Gtk::Label* client_api = nullptr;
-
-  //   b->get_widget("client_row", row);
-  //   b->get_widget("client_name", client_name);
-  //   b->get_widget("client_id", client_id);
-  //   b->get_widget("client_access", client_access);
-  //   b->get_widget("client_api", client_api);
-
-  //   row->set_name(client.name);
-
-  //   client_name->set_text(client.name);
-  //   client_id->set_text(std::to_string(client.id));
-  //   client_access->set_text(client.access);
-  //   client_api->set_text(client.api);
-  // }
 }
 
 void PipeInfoUi::on_stack_visible_child_changed() {
