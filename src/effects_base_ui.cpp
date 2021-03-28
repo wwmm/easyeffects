@@ -879,20 +879,22 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* label = Gtk::make_managed<Gtk::Label>();
     auto* remove = Gtk::make_managed<Gtk::Button>();
     auto* drag_handle = Gtk::make_managed<Gtk::Image>();
-
-    auto remove_css_classes = remove->get_css_classes();
-
-    remove_css_classes.emplace_back("flat");
+    auto* plugin_icon = Gtk::make_managed<Gtk::Image>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
     remove->set_icon_name("user-trash-symbolic");
-    remove->set_css_classes(remove_css_classes);
+    remove->set_css_classes({"flat"});
 
     drag_handle->set_from_icon_name("list-drag-handle-symbolic");
 
+    plugin_icon->set_from_icon_name("emblem-system-symbolic");
+    plugin_icon->set_margin_start(6);
+    plugin_icon->set_margin_end(6);
+
     box->set_spacing(6);
+    box->append(*plugin_icon);
     box->append(*label);
     box->append(*remove);
     box->append(*drag_handle);
