@@ -85,11 +85,29 @@ void PipeInfoUi::setup_listview_modules() {
 
   // setting the factory callbacks
 
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+  factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.ui");
 
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+    auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+    list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
+    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
+    list_item->set_data("description", b->get_widget<Gtk::Label>("description"));
+
+    list_item->set_child(*top_box);
+  });
+
+  factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* id = static_cast<Gtk::Label*>(list_item->get_data("id"));
+    auto* name = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* description = static_cast<Gtk::Label*>(list_item->get_data("description"));
+
+    auto holder = std::dynamic_pointer_cast<ModuleInfoHolder>(list_item->get_item());
+
+    id->set_text(std::to_string(holder->info.id));
+    name->set_text(holder->info.name);
+    description->set_text(holder->info.description);
+  });
 }
 
 void PipeInfoUi::update_server_info() {
@@ -132,12 +150,6 @@ void PipeInfoUi::update_modules_info() {
 }
 
 void PipeInfoUi::update_clients_info() {
-  // auto children = listbox_clients->get_children();
-
-  // for (const auto& c : children) {
-  //   listbox_clients->remove(*c);
-  // }
-
   // for (auto& client : pm->list_clients) {
   //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
@@ -159,9 +171,6 @@ void PipeInfoUi::update_clients_info() {
   //   client_id->set_text(std::to_string(client.id));
   //   client_access->set_text(client.access);
   //   client_api->set_text(client.api);
-
-  //   listbox_clients->add(*row);
-  //   listbox_clients->show_all();
   // }
 }
 
