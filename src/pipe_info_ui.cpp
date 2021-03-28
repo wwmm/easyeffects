@@ -51,9 +51,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   max_quantum = builder->get_widget<Gtk::Label>("max_quantum");
   min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
   server_rate = builder->get_widget<Gtk::Label>("server_rate");
-  // config_file = builder->get_widget<Gtk::Label>("config_file");
-
-  // textview_config_file = builder->get_widget<Gtk::TextView>("textview_config_file");
 
   setup_listview_modules();
   setup_listview_clients();
@@ -63,8 +60,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   update_server_info();
   update_modules_info();
   update_clients_info();
-
-  get_pipe_conf();
 }
 
 PipeInfoUi::~PipeInfoUi() {
@@ -202,27 +197,5 @@ void PipeInfoUi::on_stack_visible_child_changed() {
     update_modules_info();
   } else if (name == "page_clients") {
     update_clients_info();
-  }
-}
-
-void PipeInfoUi::get_pipe_conf() {
-  std::string path = "/etc/pipewire/pipewire.conf";
-
-  // config_file->set_text(path);
-
-  if (!std::filesystem::is_regular_file(path)) {
-    util::debug("the file " + path + " does not exist!");
-  } else {
-    std::ifstream f;
-
-    f.open(path);
-
-    std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
-
-    // auto buffer = textview_config_file->get_buffer();
-
-    // buffer->set_text(str);
-
-    f.close();
   }
 }

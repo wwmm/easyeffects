@@ -69,12 +69,9 @@ class PipeInfoUi : public Gtk::Box {
   Gtk::Stack* stack = nullptr;
 
   Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
-             *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr,
-             *config_file = nullptr;
+             *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr;
 
   Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
-
-  Gtk::TextView* textview_config_file = nullptr;
 
   Glib::RefPtr<ModuleInfoHolder> modules_holder;
 
@@ -95,8 +92,6 @@ class PipeInfoUi : public Gtk::Box {
   void update_modules_info();
 
   void update_clients_info();
-
-  void get_pipe_conf();
 
   void on_stack_visible_child_changed();
 };
