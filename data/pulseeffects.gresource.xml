@@ -19,6 +19,7 @@
         <file>ui/limiter.ui</file>
         <file>ui/maximizer.ui</file>
         <file>ui/multiband_compressor.ui</file>
+        <file>ui/pipe_info.ui</file>
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
@@ -26,7 +27,6 @@
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
         <file>ui/pipe_settings.glade</file>
-        <file>ui/pipe_info.glade</file>
         <file>ui/module_info.glade</file>
         <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>

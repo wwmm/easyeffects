@@ -43,9 +43,9 @@ class PipeInfoUi : public Gtk::Box {
   PipeManager* pm = nullptr;
   Gtk::Stack* stack = nullptr;
 
-  Gtk::Label *server_name = nullptr, *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr,
-             *default_source = nullptr, *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr,
-             *quantum = nullptr, *config_file = nullptr;
+  Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
+             *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr,
+             *config_file = nullptr;
 
   Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
 

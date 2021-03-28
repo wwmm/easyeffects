@@ -24,12 +24,12 @@
 #include <gtkmm.h>
 #include "application.hpp"
 #include "general_settings_ui.hpp"
+#include "pipe_info_ui.hpp"
 #include "pipe_manager.hpp"
 #include "presets_menu_ui.hpp"
 #include "spectrum_settings_ui.hpp"
 #include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"
-// #include "pipe_info_ui.hpp"
 // #include "blocklist_settings_ui.hpp"
 // #include "calibration_ui.hpp"
 // #include "pipe_settings_ui.hpp"
@@ -56,7 +56,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
-  Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr;
+  Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr, *toggle_pipe_info = nullptr;
 
   Glib::RefPtr<Gtk::SelectionModel> stack_model;
 
@@ -65,7 +65,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   PresetsMenuUi* presets_menu_ui = nullptr;
   StreamOutputEffectsUi* soe_ui = nullptr;
   StreamInputEffectsUi* sie_ui = nullptr;
-  // PipeInfoUi* pipe_info_ui = nullptr;
+  PipeInfoUi* pipe_info_ui = nullptr;
   // CalibrationUi* calibration_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;

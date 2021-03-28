@@ -73,6 +73,33 @@
                                 </style>
                             </object>
                         </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_pipe_info">
+                                <property name="accessible-role">tab</property>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="spacing">6</property>
+                                        <child>
+                                            <object class="GtkImage">
+                                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">PipeWire</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <style>
+                                    <class name="flat" />
+                                    <class name="headerbar_title_button_font" />
+                                </style>
+                            </object>
+                        </child>
                     </object>
                 </property>
 

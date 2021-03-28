@@ -1,0 +1,285 @@
+<interface domain="pulseeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="spacing">6</property>
+        <child>
+            <object class="GtkStackSidebar">
+                <property name="stack">stack</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkStack" id="stack">
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
+                <property name="transition_duration">250</property>
+                <property name="transition_type">slide-left-right</property>
+                <property name="margin_start">6</property>
+                <property name="margin_end">6</property>
+                <property name="margin_top">6</property>
+                <property name="margin_bottom">6</property>
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_general</property>
+                        <property name="title" translatable="yes">General</property>
+                        <property name="child">
+                            <object class="GtkBox">
+                                <property name="spacing">24</property>
+                                <property name="halign">start</property>
+                                <property name="valign">start</property>
+                                <child>
+                                    <object class="GtkFrame">
+                                        <property name="label-xalign">0.5</property>
+                                        <child type="label">
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Version</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkGrid">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="row-spacing">6</property>
+                                                <property name="column-spacing">6</property>
+                                                <property name="margin_start">12</property>
+                                                <property name="margin_end">6</property>
+                                                <property name="margin_top">6</property>
+                                                <property name="margin_bottom">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Header Version</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="header_version">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Library Version</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="library_version">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkFrame">
+                                        <property name="label-xalign">0.5</property>
+                                        <child type="label">
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Default Devices and Sampling Rate</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkGrid">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="row-spacing">6</property>
+                                                <property name="column-spacing">6</property>
+                                                <property name="margin_start">12</property>
+                                                <property name="margin_end">6</property>
+                                                <property name="margin_top">6</property>
+                                                <property name="margin_bottom">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Output</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="default_sink">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Input</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="default_source">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Sampling Rate</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">2</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="server_rate">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">2</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkFrame">
+                                        <property name="label-xalign">0.5</property>
+                                        <child type="label">
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Quantum</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkGrid">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="row-spacing">6</property>
+                                                <property name="column-spacing">6</property>
+                                                <property name="margin_start">12</property>
+                                                <property name="margin_end">6</property>
+                                                <property name="margin_top">6</property>
+                                                <property name="margin_bottom">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Minimum</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="min_quantum">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">0</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Maximum</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="max_quantum">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="halign">end</property>
+                                                        <property name="label" translatable="yes">Value</property>
+                                                        <layout>
+                                                            <property name="column">0</property>
+                                                            <property name="row">2</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel" id="quantum">
+                                                        <property name="halign">start</property>
+                                                        <style>
+                                                            <class name="dim-label" />
+                                                        </style>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">2</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

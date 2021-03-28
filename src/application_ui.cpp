@@ -38,6 +38,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
   toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
+  toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
 
   presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
@@ -45,7 +46,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
-  // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
+  pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
   // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
 
   presets_menu_button->set_popover(*presets_menu_ui);
@@ -57,6 +58,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
     toggle_output->set_active(stack_model->is_selected(0));
     toggle_input->set_active(stack_model->is_selected(1));
+    toggle_pipe_info->set_active(stack_model->is_selected(2));
   });
 
   toggle_output->signal_toggled().connect([&, this]() {
@@ -72,6 +74,14 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       stack->get_pages()->select_item(1, true);
     } else {
       toggle_input->set_active(stack_model->is_selected(1));
+    }
+  });
+
+  toggle_pipe_info->signal_toggled().connect([&, this]() {
+    if (toggle_pipe_info->get_active()) {
+      stack->get_pages()->select_item(2, true);
+    } else {
+      toggle_pipe_info->set_active(stack_model->is_selected(2));
     }
   });
 

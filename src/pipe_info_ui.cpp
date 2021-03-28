@@ -23,10 +23,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     : Gtk::Box(cobject), pm(pm_ptr) {
   stack = builder->get_widget<Gtk::Stack>("stack");
 
-  listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
-  listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
+  // listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
+  // listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
 
-  server_name = builder->get_widget<Gtk::Label>("server_name");
   header_version = builder->get_widget<Gtk::Label>("header_version");
   library_version = builder->get_widget<Gtk::Label>("library_version");
   default_sink = builder->get_widget<Gtk::Label>("default_sink");
@@ -34,14 +33,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   quantum = builder->get_widget<Gtk::Label>("quantum");
   max_quantum = builder->get_widget<Gtk::Label>("max_quantum");
   min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
+  server_rate = builder->get_widget<Gtk::Label>("server_rate");
+  // config_file = builder->get_widget<Gtk::Label>("config_file");
 
-  builder->get_widget("server_rate", server_rate);
-  builder->get_widget("config_file", config_file);
-  builder->get_widget("textview_config_file", textview_config_file);
-
-  listbox_modules->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
-
-  listbox_clients->set_sort_func(sigc::ptr_fun(&PipeInfoUi::on_listbox_sort));
+  // textview_config_file = builder->get_widget<Gtk::TextView>("textview_config_file");
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
@@ -61,14 +56,11 @@ PipeInfoUi::~PipeInfoUi() {
 }
 
 auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_info.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pipe_info.ui");
 
-  PipeInfoUi* ui = nullptr;
+  auto* ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm);
 
-  builder->get_widget_derived("widgets_box", ui, pm);
-
-  stack->add(*ui, "pipe_info");
-  stack->child_property_icon_name(*ui).set_value("network-server-symbolic");
+  auto stack_page = stack->add(*ui, "pipe_info");
 
   return ui;
 }
@@ -76,8 +68,6 @@ auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi*
 void PipeInfoUi::update_server_info() {
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
-
-  server_name->set_text(pm->core_name);
 
   default_sink->set_text(pm->default_sink.name);
   default_source->set_text(pm->default_source.name);
@@ -89,93 +79,74 @@ void PipeInfoUi::update_server_info() {
 }
 
 void PipeInfoUi::update_modules_info() {
-  auto children = listbox_modules->get_children();
+  // auto children = listbox_modules->get_children();
 
-  for (const auto& c : children) {
-    listbox_modules->remove(*c);
-  }
+  // for (const auto& c : children) {
+  //   listbox_modules->remove(*c);
+  // }
 
-  for (auto& module : pm->list_modules) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
+  // for (auto& module : pm->list_modules) {
+  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
 
-    Gtk::ListBoxRow* row = nullptr;
-    Gtk::Label* module_name = nullptr;
-    Gtk::Label* module_argument = nullptr;
+  //   Gtk::ListBoxRow* row = nullptr;
+  //   Gtk::Label* module_name = nullptr;
+  //   Gtk::Label* module_argument = nullptr;
 
-    b->get_widget("module_row", row);
-    b->get_widget("module_name", module_name);
-    b->get_widget("module_argument", module_argument);
+  //   b->get_widget("module_row", row);
+  //   b->get_widget("module_name", module_name);
+  //   b->get_widget("module_argument", module_argument);
 
-    row->set_name(module.name);
-    module_name->set_text(module.name);
-    module_argument->set_text(module.description);
+  //   row->set_name(module.name);
+  //   module_name->set_text(module.name);
+  //   module_argument->set_text(module.description);
 
-    listbox_modules->add(*row);
-    listbox_modules->show_all();
-  }
+  //   listbox_modules->add(*row);
+  //   listbox_modules->show_all();
+  // }
 }
 
 void PipeInfoUi::update_clients_info() {
-  auto children = listbox_clients->get_children();
+  // auto children = listbox_clients->get_children();
 
-  for (const auto& c : children) {
-    listbox_clients->remove(*c);
-  }
+  // for (const auto& c : children) {
+  //   listbox_clients->remove(*c);
+  // }
 
-  for (auto& client : pm->list_clients) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
+  // for (auto& client : pm->list_clients) {
+  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 
-    Gtk::ListBoxRow* row = nullptr;
-    Gtk::Label* client_name = nullptr;
-    Gtk::Label* client_id = nullptr;
-    Gtk::Label* client_access = nullptr;
-    Gtk::Label* client_api = nullptr;
+  //   Gtk::ListBoxRow* row = nullptr;
+  //   Gtk::Label* client_name = nullptr;
+  //   Gtk::Label* client_id = nullptr;
+  //   Gtk::Label* client_access = nullptr;
+  //   Gtk::Label* client_api = nullptr;
 
-    b->get_widget("client_row", row);
-    b->get_widget("client_name", client_name);
-    b->get_widget("client_id", client_id);
-    b->get_widget("client_access", client_access);
-    b->get_widget("client_api", client_api);
+  //   b->get_widget("client_row", row);
+  //   b->get_widget("client_name", client_name);
+  //   b->get_widget("client_id", client_id);
+  //   b->get_widget("client_access", client_access);
+  //   b->get_widget("client_api", client_api);
 
-    row->set_name(client.name);
+  //   row->set_name(client.name);
 
-    client_name->set_text(client.name);
-    client_id->set_text(std::to_string(client.id));
-    client_access->set_text(client.access);
-    client_api->set_text(client.api);
+  //   client_name->set_text(client.name);
+  //   client_id->set_text(std::to_string(client.id));
+  //   client_access->set_text(client.access);
+  //   client_api->set_text(client.api);
 
-    listbox_clients->add(*row);
-    listbox_clients->show_all();
-  }
-}
-
-auto PipeInfoUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
-  auto name1 = row1->get_name();
-  auto name2 = row2->get_name();
-
-  std::vector<std::string> names = {name1, name2};
-
-  std::sort(names.begin(), names.end());
-
-  if (name1 == names[0]) {
-    return -1;
-  }
-
-  if (name2 == names[0]) {
-    return 1;
-  }
-
-  return 0;
+  //   listbox_clients->add(*row);
+  //   listbox_clients->show_all();
+  // }
 }
 
 void PipeInfoUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
-  if (name == std::string("page_server")) {
+  if (name == "page_server") {
     update_server_info();
-  } else if (name == std::string("page_modules")) {
+  } else if (name == "page_modules") {
     update_modules_info();
-  } else if (name == std::string("page_clients")) {
+  } else if (name == "page_clients") {
     update_clients_info();
   }
 }
@@ -183,7 +154,7 @@ void PipeInfoUi::on_stack_visible_child_changed() {
 void PipeInfoUi::get_pipe_conf() {
   std::string path = "/etc/pipewire/pipewire.conf";
 
-  config_file->set_text(path);
+  // config_file->set_text(path);
 
   if (!std::filesystem::is_regular_file(path)) {
     util::debug("the file " + path + " does not exist!");
@@ -194,9 +165,9 @@ void PipeInfoUi::get_pipe_conf() {
 
     std::string str((std::istreambuf_iterator<char>(f)), std::istreambuf_iterator<char>());
 
-    auto buffer = textview_config_file->get_buffer();
+    // auto buffer = textview_config_file->get_buffer();
 
-    buffer->set_text(str);
+    // buffer->set_text(str);
 
     f.close();
   }
