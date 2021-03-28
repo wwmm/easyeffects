@@ -897,6 +897,25 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     box->append(*remove);
     box->append(*drag_handle);
 
+    remove->set_opacity(0);
+    drag_handle->set_opacity(0);
+
+    auto controller = Gtk::EventControllerMotion::create();
+
+    controller->signal_enter().connect([=](const double& x, const double& y) {
+      remove->set_opacity(1);
+      drag_handle->set_opacity(1);
+    });
+
+    controller->signal_leave().connect([=]() {
+      remove->set_opacity(0);
+      drag_handle->set_opacity(0);
+    });
+
+    box->add_controller(controller);
+
+    // drag and drop
+
     auto drag_source = Gtk::DragSource::create();
     auto drop_target = Gtk::DropTarget::create(Glib::Value<Glib::ustring>::value_type(), Gdk::DragAction::MOVE);
 

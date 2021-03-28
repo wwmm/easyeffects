@@ -21,18 +21,21 @@
 
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject), pm(pm_ptr) {
-  builder->get_widget("stack", stack);
-  builder->get_widget("server_name", server_name);
-  builder->get_widget("header_version", header_version);
-  builder->get_widget("library_version", library_version);
-  builder->get_widget("default_sink", default_sink);
-  builder->get_widget("default_source", default_source);
-  builder->get_widget("quantum", quantum);
-  builder->get_widget("max_quantum", max_quantum);
-  builder->get_widget("min_quantum", min_quantum);
+  stack = builder->get_widget<Gtk::Stack>("stack");
+
+  listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
+  listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
+
+  server_name = builder->get_widget<Gtk::Label>("server_name");
+  header_version = builder->get_widget<Gtk::Label>("header_version");
+  library_version = builder->get_widget<Gtk::Label>("library_version");
+  default_sink = builder->get_widget<Gtk::Label>("default_sink");
+  default_source = builder->get_widget<Gtk::Label>("default_source");
+  quantum = builder->get_widget<Gtk::Label>("quantum");
+  max_quantum = builder->get_widget<Gtk::Label>("max_quantum");
+  min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
+
   builder->get_widget("server_rate", server_rate);
-  builder->get_widget("listbox_modules", listbox_modules);
-  builder->get_widget("listbox_clients", listbox_clients);
   builder->get_widget("config_file", config_file);
   builder->get_widget("textview_config_file", textview_config_file);
 

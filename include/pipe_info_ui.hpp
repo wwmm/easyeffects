@@ -20,17 +20,11 @@
 #ifndef PIPE_INFO_UI_HPP
 #define PIPE_INFO_UI_HPP
 
-#include <giomm/settings.h>
-#include <gtkmm/box.h>
-#include <gtkmm/builder.h>
-#include <gtkmm/label.h>
-#include <gtkmm/listbox.h>
-#include <gtkmm/stack.h>
-#include <gtkmm/textview.h>
+#include <giomm.h>
+#include <gtkmm.h>
 #include <filesystem>
 #include <fstream>
 #include "pipe_manager.hpp"
-#include "util.hpp"
 
 class PipeInfoUi : public Gtk::Box {
  public:
@@ -53,7 +47,7 @@ class PipeInfoUi : public Gtk::Box {
              *default_source = nullptr, *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr,
              *quantum = nullptr, *config_file = nullptr;
 
-  Gtk::ListBox *listbox_modules = nullptr, *listbox_clients = nullptr;
+  Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
 
   Gtk::TextView* textview_config_file = nullptr;
 
@@ -64,7 +58,6 @@ class PipeInfoUi : public Gtk::Box {
   void update_clients_info();
   void get_pipe_conf();
 
-  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
   void on_stack_visible_child_changed();
 };
 
