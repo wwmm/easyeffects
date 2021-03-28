@@ -203,6 +203,35 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  prepare_spinbutton(attack0, "dB");
+  prepare_spinbutton(attack1, "dB");
+  prepare_spinbutton(attack2, "dB");
+  prepare_spinbutton(attack3, "dB");
+
+  prepare_spinbutton(threshold0, "dB");
+  prepare_spinbutton(threshold1, "dB");
+  prepare_spinbutton(threshold2, "dB");
+  prepare_spinbutton(threshold3, "dB");
+
+  prepare_spinbutton(knee0, "dB");
+  prepare_spinbutton(knee1, "dB");
+  prepare_spinbutton(knee2, "dB");
+  prepare_spinbutton(knee3, "dB");
+
+  prepare_spinbutton(makeup0, "dB");
+  prepare_spinbutton(makeup1, "dB");
+  prepare_spinbutton(makeup2, "dB");
+  prepare_spinbutton(makeup3, "dB");
+
+  prepare_spinbutton(release0, "ms");
+  prepare_spinbutton(release1, "ms");
+  prepare_spinbutton(release2, "ms");
+  prepare_spinbutton(release3, "ms");
+
+  prepare_spinbutton(freq0, "Hz");
+  prepare_spinbutton(freq1, "Hz");
+  prepare_spinbutton(freq2, "Hz");
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {

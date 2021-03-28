@@ -59,7 +59,7 @@
                             <object class="GtkSpinButton" id="freq0">
                                 <property name="halign">center</property>
                                 <property name="width-chars">10</property>
-                                <property name="digits">1</property>
+                                <property name="digits">0</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
@@ -91,7 +91,7 @@
                             <object class="GtkSpinButton" id="freq1">
                                 <property name="halign">center</property>
                                 <property name="width-chars">10</property>
-                                <property name="digits">1</property>
+                                <property name="digits">0</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
@@ -123,7 +123,7 @@
                             <object class="GtkSpinButton" id="freq2">
                                 <property name="halign">center</property>
                                 <property name="width-chars">10</property>
-                                <property name="digits">1</property>
+                                <property name="digits">0</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">

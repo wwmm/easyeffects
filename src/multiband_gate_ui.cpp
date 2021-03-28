@@ -170,10 +170,10 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
   settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
   settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
-  settings->bind("range0", ratio0->get_adjustment().get(), "value");
-  settings->bind("range1", ratio1->get_adjustment().get(), "value");
-  settings->bind("range2", ratio2->get_adjustment().get(), "value");
-  settings->bind("range3", ratio3->get_adjustment().get(), "value");
+  settings->bind("range0", range0->get_adjustment().get(), "value");
+  settings->bind("range1", range1->get_adjustment().get(), "value");
+  settings->bind("range2", range2->get_adjustment().get(), "value");
+  settings->bind("range3", range3->get_adjustment().get(), "value");
   settings->bind("attack0", attack0->get_adjustment().get(), "value");
   settings->bind("attack1", attack1->get_adjustment().get(), "value");
   settings->bind("attack2", attack2->get_adjustment().get(), "value");
@@ -214,6 +214,40 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  prepare_spinbutton(range0, "dB");
+  prepare_spinbutton(range1, "dB");
+  prepare_spinbutton(range2, "dB");
+  prepare_spinbutton(range3, "dB");
+
+  prepare_spinbutton(attack0, "dB");
+  prepare_spinbutton(attack1, "dB");
+  prepare_spinbutton(attack2, "dB");
+  prepare_spinbutton(attack3, "dB");
+
+  prepare_spinbutton(threshold0, "dB");
+  prepare_spinbutton(threshold1, "dB");
+  prepare_spinbutton(threshold2, "dB");
+  prepare_spinbutton(threshold3, "dB");
+
+  prepare_spinbutton(knee0, "dB");
+  prepare_spinbutton(knee1, "dB");
+  prepare_spinbutton(knee2, "dB");
+  prepare_spinbutton(knee3, "dB");
+
+  prepare_spinbutton(makeup0, "dB");
+  prepare_spinbutton(makeup1, "dB");
+  prepare_spinbutton(makeup2, "dB");
+  prepare_spinbutton(makeup3, "dB");
+
+  prepare_spinbutton(release0, "ms");
+  prepare_spinbutton(release1, "ms");
+  prepare_spinbutton(release2, "ms");
+  prepare_spinbutton(release3, "ms");
+
+  prepare_spinbutton(freq0, "Hz");
+  prepare_spinbutton(freq1, "Hz");
+  prepare_spinbutton(freq2, "Hz");
 }
 
 MultibandGateUi::~MultibandGateUi() {
