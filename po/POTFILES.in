@@ -20,6 +20,7 @@ data/ui/limiter.ui
 data/ui/maximizer.ui
 data/ui/module_info.ui
 data/ui/multiband_compressor.ui
+data/ui/multiband_gate.ui
 data/ui/pipe_info.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
@@ -37,7 +38,6 @@ data/ui/crystalizer_band.glade
 data/ui/deesser.glade
 data/ui/irs_row.glade
 data/ui/loudness.glade
-data/ui/multiband_gate.glade
 data/ui/pitch.glade
 data/ui/pipe_conf_file_line.glade
 data/ui/pipe_settings.glade

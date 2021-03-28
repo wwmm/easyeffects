@@ -20,7 +20,7 @@
 #ifndef MULTIBAND_GATE_HPP
 #define MULTIBAND_GATE_HPP
 
-#include <array>
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class MultibandGate : public PluginBase {
@@ -35,17 +35,17 @@ class MultibandGate : public PluginBase {
   auto operator=(const MultibandGate&&) -> MultibandGate& = delete;
   ~MultibandGate() override;
 
-  sigc::connection input_level_connection, output_level_connection;
+  void setup() override;
 
-  sigc::connection output0_connection, output1_connection, output2_connection, output3_connection, gating0_connection,
-      gating1_connection, gating2_connection, gating3_connection;
-
-  sigc::signal<void(std::array<double, 2>)> input_level, output_level;
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

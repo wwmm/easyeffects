@@ -119,7 +119,6 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
 
   auto stack_page = stack->add(*ui, "stream_input");
 
-  // stack_page->set_icon_name("audio-input-microphone-symbolic");
   stack_page->set_title(_("Input"));
 
   return ui;

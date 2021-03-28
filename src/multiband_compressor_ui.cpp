@@ -18,7 +18,6 @@
  */
 
 #include "multiband_compressor_ui.hpp"
-#include <cstring>
 
 namespace {
 

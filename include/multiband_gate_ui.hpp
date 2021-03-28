@@ -20,6 +20,7 @@
 #ifndef MULTIBAND_GATE_UI_HPP
 #define MULTIBAND_GATE_UI_HPP
 
+#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class MultibandGateUi : public Gtk::Box, public PluginUiBase {
@@ -47,11 +48,21 @@ class MultibandGateUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> freq0, freq1, freq2, input_gain, output_gain;
-  Glib::RefPtr<Gtk::Adjustment> range0, attack0, release0, threshold0, knee0, ratio0, makeup0;
-  Glib::RefPtr<Gtk::Adjustment> range1, attack1, release1, threshold1, knee1, ratio1, makeup1;
-  Glib::RefPtr<Gtk::Adjustment> range2, attack2, release2, threshold2, knee2, ratio2, makeup2;
-  Glib::RefPtr<Gtk::Adjustment> range3, attack3, release3, threshold3, knee3, ratio3, makeup3;
+  Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
+
+  Gtk::SpinButton *range0 = nullptr, *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr,
+                  *ratio0 = nullptr, *makeup0 = nullptr;
+
+  Gtk::SpinButton *range1 = nullptr, *attack1 = nullptr, *release1 = nullptr, *threshold1 = nullptr, *knee1 = nullptr,
+                  *ratio1 = nullptr, *makeup1 = nullptr;
+
+  Gtk::SpinButton *range2 = nullptr, *attack2 = nullptr, *release2 = nullptr, *threshold2 = nullptr, *knee2 = nullptr,
+                  *ratio2 = nullptr, *makeup2 = nullptr;
+
+  Gtk::SpinButton *range3 = nullptr, *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr,
+                  *ratio3 = nullptr, *makeup3 = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;
 

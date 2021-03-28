@@ -20,6 +20,7 @@
 #ifndef MULTIBAND_COMPRESSOR_UI_HPP
 #define MULTIBAND_COMPRESSOR_UI_HPP
 
+#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {

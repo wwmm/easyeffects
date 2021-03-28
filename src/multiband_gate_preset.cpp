@@ -28,8 +28,6 @@ MultibandGatePreset::MultibandGatePreset()
 void MultibandGatePreset::save(boost::property_tree::ptree& root,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".multiband_gate.state", settings->get_boolean("state"));
-
   root.put(section + ".multiband_gate.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".multiband_gate.output-gain", settings->get_double("output-gain"));
@@ -134,8 +132,6 @@ void MultibandGatePreset::save(boost::property_tree::ptree& root,
 void MultibandGatePreset::load(const boost::property_tree::ptree& root,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".multiband_gate.state");
-
   update_key<double>(root, settings, "input-gain", section + ".multiband_gate.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".multiband_gate.output-gain");

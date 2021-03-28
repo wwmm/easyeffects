@@ -127,7 +127,6 @@ auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects*
 
   auto stack_page = stack->add(*ui, "stream_output");
 
-  // stack_page->set_icon_name("audio-speakers-symbolic");
   stack_page->set_title(_("Output"));
 
   return ui;
