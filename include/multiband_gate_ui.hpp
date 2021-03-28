@@ -35,6 +35,8 @@ class MultibandGateUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const MultibandGateUi&&) -> MultibandGateUi& = delete;
   ~MultibandGateUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi*;
+
   void on_new_output0(double value);
   void on_new_output1(double value);
   void on_new_output2(double value);

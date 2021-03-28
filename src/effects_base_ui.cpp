@@ -179,6 +179,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->limiter->post_messages = true;
   effects_base->maximizer->post_messages = true;
   effects_base->multiband_compressor->post_messages = true;
+  effects_base->multiband_gate->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->reverb->post_messages = true;
   effects_base->spectrum->post_messages = true;
@@ -203,6 +204,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->limiter->post_messages = false;
   effects_base->maximizer->post_messages = false;
   effects_base->multiband_compressor->post_messages = false;
+  effects_base->multiband_gate->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->reverb->post_messages = false;
   effects_base->spectrum->post_messages = false;
@@ -353,6 +355,28 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression2));
   effects_base->multiband_compressor->compression3.connect(
       sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_compression3));
+
+  // multiband gate
+
+  auto* multiband_gate_ui = MultibandGateUi::add_to_stack(stack_plugins, path);
+
+  multiband_gate_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->multiband_gate->bypass = multiband_gate_ui->bypass->get_active(); });
+
+  effects_base->multiband_gate->input_level.connect(
+      sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_input_level));
+  effects_base->multiband_gate->output_level.connect(
+      sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output_level));
+
+  effects_base->multiband_gate->output0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output0));
+  effects_base->multiband_gate->output1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output1));
+  effects_base->multiband_gate->output2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output2));
+  effects_base->multiband_gate->output3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output3));
+
+  effects_base->multiband_gate->gating0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating0));
+  effects_base->multiband_gate->gating1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1));
+  effects_base->multiband_gate->gating2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2));
+  effects_base->multiband_gate->gating3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3));
 
   // reverb
 

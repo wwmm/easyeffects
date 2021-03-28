@@ -220,6 +220,17 @@ MultibandGateUi::~MultibandGateUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.multibandgate", schema_path + "multibandgate/");
+
+  auto stack_page = stack->add(*ui, plugin_name::multiband_gate);
+
+  return ui;
+}
+
 void MultibandGateUi::reset() {
   settings->reset("input-gain");
 
