@@ -67,9 +67,6 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
     case 0:
       return g_variant_new_string("LR4");
 
-    case 1:
-      return g_variant_new_string("LR8");
-
     default:
       return g_variant_new_string("LR8");
   }
