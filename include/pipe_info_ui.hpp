@@ -38,6 +38,18 @@ class ModuleInfoHolder : public Glib::Object {
   ModuleInfoHolder(ModuleInfo info);
 };
 
+class ClientInfoHolder : public Glib::Object {
+ public:
+  ClientInfo info;
+
+  static auto create(const ClientInfo& info) -> Glib::RefPtr<ClientInfoHolder>;
+
+  sigc::signal<void(ClientInfo)> info_updated;
+
+ protected:
+  ClientInfoHolder(ClientInfo info);
+};
+
 class PipeInfoUi : public Gtk::Box {
  public:
   PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
@@ -68,13 +80,22 @@ class PipeInfoUi : public Gtk::Box {
 
   Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
 
+  Glib::RefPtr<ClientInfoHolder> clients_holder;
+
+  Glib::RefPtr<Gio::ListStore<ClientInfoHolder>> clients_model;
+
   std::vector<sigc::connection> connections;
 
   void setup_listview_modules();
 
+  void setup_listview_clients();
+
   void update_server_info();
+
   void update_modules_info();
+
   void update_clients_info();
+
   void get_pipe_conf();
 
   void on_stack_visible_child_changed();

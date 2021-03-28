@@ -26,12 +26,22 @@ auto ModuleInfoHolder::create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfo
   return Glib::make_refptr_for_instance<ModuleInfoHolder>(new ModuleInfoHolder(info));
 }
 
+ClientInfoHolder::ClientInfoHolder(ClientInfo info)
+    : Glib::ObjectBase(typeid(ClientInfoHolder)), Glib::Object(), info(std::move(info)) {}
+
+auto ClientInfoHolder::create(const ClientInfo& info) -> Glib::RefPtr<ClientInfoHolder> {
+  return Glib::make_refptr_for_instance<ClientInfoHolder>(new ClientInfoHolder(info));
+}
+
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
-    : Gtk::Box(cobject), pm(pm_ptr), modules_model(Gio::ListStore<ModuleInfoHolder>::create()) {
+    : Gtk::Box(cobject),
+      pm(pm_ptr),
+      modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
+      clients_model(Gio::ListStore<ClientInfoHolder>::create()) {
   stack = builder->get_widget<Gtk::Stack>("stack");
 
   listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
-  // listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
+  listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
 
   header_version = builder->get_widget<Gtk::Label>("header_version");
   library_version = builder->get_widget<Gtk::Label>("library_version");
@@ -46,6 +56,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   // textview_config_file = builder->get_widget<Gtk::TextView>("textview_config_file");
 
   setup_listview_modules();
+  setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
@@ -110,6 +121,45 @@ void PipeInfoUi::setup_listview_modules() {
   });
 }
 
+void PipeInfoUi::setup_listview_clients() {
+  // setting the listview model and factory
+
+  listview_clients->set_model(Gtk::NoSelection::create(clients_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_clients->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.ui");
+
+    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+
+    list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
+    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
+    list_item->set_data("api", b->get_widget<Gtk::Label>("api"));
+    list_item->set_data("access", b->get_widget<Gtk::Label>("access"));
+
+    list_item->set_child(*top_box);
+  });
+
+  factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* id = static_cast<Gtk::Label*>(list_item->get_data("id"));
+    auto* name = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* api = static_cast<Gtk::Label*>(list_item->get_data("api"));
+    auto* access = static_cast<Gtk::Label*>(list_item->get_data("access"));
+
+    auto holder = std::dynamic_pointer_cast<ClientInfoHolder>(list_item->get_item());
+
+    id->set_text(std::to_string(holder->info.id));
+    name->set_text(holder->info.name);
+    api->set_text(holder->info.api);
+    access->set_text(holder->info.access);
+  });
+}
+
 void PipeInfoUi::update_server_info() {
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
@@ -131,25 +181,17 @@ void PipeInfoUi::update_modules_info() {
   }
 
   modules_model->splice(0, modules_model->get_n_items(), values);
-
-  // for (auto& module : pm->list_modules) {
-  //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
-
-  //   Gtk::ListBoxRow* row = nullptr;
-  //   Gtk::Label* module_name = nullptr;
-  //   Gtk::Label* module_argument = nullptr;
-
-  //   b->get_widget("module_row", row);
-  //   b->get_widget("module_name", module_name);
-  //   b->get_widget("module_argument", module_argument);
-
-  //   row->set_name(module.name);
-  //   module_name->set_text(module.name);
-  //   module_argument->set_text(module.description);
-  // }
 }
 
 void PipeInfoUi::update_clients_info() {
+  std::vector<Glib::RefPtr<ClientInfoHolder>> values;
+
+  for (const auto& info : pm->list_clients) {
+    values.emplace_back(ClientInfoHolder::create(info));
+  }
+
+  clients_model->splice(0, clients_model->get_n_items(), values);
+
   // for (auto& client : pm->list_clients) {
   //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/client_info.glade");
 

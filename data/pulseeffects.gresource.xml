@@ -7,6 +7,7 @@
         <file>ui/app_info.ui</file>
         <file>ui/autogain.ui</file>
         <file>ui/bass_enhancer.ui</file>
+        <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
@@ -28,7 +29,6 @@
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
         <file>ui/pipe_settings.glade</file>
-        <file>ui/client_info.glade</file>
         <file>ui/pipe_conf_file_line.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>

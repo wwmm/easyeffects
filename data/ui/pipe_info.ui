@@ -288,11 +288,39 @@
                         <property name="child">
                             <object class="GtkFrame">
                                 <child>
-                                    <object class="GtkScrolledWindow" id="output_scrolled_window">
+                                    <object class="GtkScrolledWindow">
                                         <child>
                                             <object class="GtkViewport">
                                                 <child>
                                                     <object class="GtkListView" id="listview_modules">
+                                                        <property name="vexpand">1</property>
+                                                        <property name="show-separators">1</property>
+                                                        <style>
+                                                            <class name="rich-list" />
+                                                        </style>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_clients</property>
+                        <property name="title" translatable="yes">Clients</property>
+                        <property name="child">
+                            <object class="GtkFrame">
+                                <child>
+                                    <object class="GtkScrolledWindow">
+                                        <child>
+                                            <object class="GtkViewport">
+                                                <child>
+                                                    <object class="GtkListView" id="listview_clients">
                                                         <property name="vexpand">1</property>
                                                         <property name="show-separators">1</property>
                                                         <style>
