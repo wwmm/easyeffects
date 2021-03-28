@@ -26,6 +26,18 @@
 #include <fstream>
 #include "pipe_manager.hpp"
 
+class ModuleInfoHolder : public Glib::Object {
+ public:
+  ModuleInfo info;
+
+  static auto create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfoHolder>;
+
+  sigc::signal<void(ModuleInfo)> info_updated;
+
+ protected:
+  ModuleInfoHolder(ModuleInfo info);
+};
+
 class PipeInfoUi : public Gtk::Box {
  public:
   PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
@@ -41,6 +53,7 @@ class PipeInfoUi : public Gtk::Box {
   std::string log_tag = "pipe_info: ";
 
   PipeManager* pm = nullptr;
+
   Gtk::Stack* stack = nullptr;
 
   Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
@@ -51,7 +64,13 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::TextView* textview_config_file = nullptr;
 
+  Glib::RefPtr<ModuleInfoHolder> modules_holder;
+
+  Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
+
   std::vector<sigc::connection> connections;
+
+  void setup_listview_modules();
 
   void update_server_info();
   void update_modules_info();

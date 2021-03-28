@@ -19,11 +19,18 @@
 
 #include "pipe_info_ui.hpp"
 
+ModuleInfoHolder::ModuleInfoHolder(ModuleInfo info)
+    : Glib::ObjectBase(typeid(ModuleInfoHolder)), Glib::Object(), info(std::move(info)) {}
+
+auto ModuleInfoHolder::create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfoHolder> {
+  return Glib::make_refptr_for_instance<ModuleInfoHolder>(new ModuleInfoHolder(info));
+}
+
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
-    : Gtk::Box(cobject), pm(pm_ptr) {
+    : Gtk::Box(cobject), pm(pm_ptr), modules_model(Gio::ListStore<ModuleInfoHolder>::create()) {
   stack = builder->get_widget<Gtk::Stack>("stack");
 
-  // listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
+  listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
   // listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
 
   header_version = builder->get_widget<Gtk::Label>("header_version");
@@ -37,6 +44,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   // config_file = builder->get_widget<Gtk::Label>("config_file");
 
   // textview_config_file = builder->get_widget<Gtk::TextView>("textview_config_file");
+
+  setup_listview_modules();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
@@ -65,6 +74,24 @@ auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi*
   return ui;
 }
 
+void PipeInfoUi::setup_listview_modules() {
+  // setting the listview model and factory
+
+  listview_modules->set_model(Gtk::NoSelection::create(modules_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview_modules->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {});
+}
+
 void PipeInfoUi::update_server_info() {
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
@@ -79,11 +106,13 @@ void PipeInfoUi::update_server_info() {
 }
 
 void PipeInfoUi::update_modules_info() {
-  // auto children = listbox_modules->get_children();
+  std::vector<Glib::RefPtr<ModuleInfoHolder>> values;
 
-  // for (const auto& c : children) {
-  //   listbox_modules->remove(*c);
-  // }
+  for (const auto& info : pm->list_modules) {
+    values.emplace_back(ModuleInfoHolder::create(info));
+  }
+
+  modules_model->splice(0, modules_model->get_n_items(), values);
 
   // for (auto& module : pm->list_modules) {
   //   auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/module_info.glade");
@@ -99,9 +128,6 @@ void PipeInfoUi::update_modules_info() {
   //   row->set_name(module.name);
   //   module_name->set_text(module.name);
   //   module_argument->set_text(module.description);
-
-  //   listbox_modules->add(*row);
-  //   listbox_modules->show_all();
   // }
 }
 
