@@ -83,7 +83,7 @@
                                         <property name="spacing">6</property>
                                         <child>
                                             <object class="GtkImage">
-                                                <property name="icon-name">audio-input-microphone-symbolic</property>
+                                                <property name="icon-name">network-server-symbolic</property>
                                             </object>
                                         </child>
                                         <child>

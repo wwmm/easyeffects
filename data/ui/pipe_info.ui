@@ -26,6 +26,7 @@
                                 <property name="spacing">24</property>
                                 <property name="halign">start</property>
                                 <property name="valign">start</property>
+                                <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkFrame">
                                         <property name="label-xalign">0.5</property>
@@ -277,6 +278,14 @@
                                 </child>
                             </object>
                         </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_modules</property>
+                        <property name="title" translatable="yes">Modules</property>
+                        <property name="child"></property>
                     </object>
                 </child>
             </object>
