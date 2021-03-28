@@ -6,3 +6,11 @@
 .rounded_corners {
   border-radius: 12px;
 }
+
+.headerbar_title_button_font {
+  font-weight: normal;
+}
+
+.headerbar_title_button_font:checked {
+  font-weight: bold;
+}
