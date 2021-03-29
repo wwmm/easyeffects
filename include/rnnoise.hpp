@@ -50,6 +50,8 @@ class RNNoise : public PluginBase {
 
   RNNModel* model = nullptr;
   DenoiseState *state_left = nullptr, *state_right = nullptr;
+
+  std::mutex rnnoise_mutex;
 };
 
 #endif

@@ -68,16 +68,29 @@ RNNoise::~RNNoise() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 }
 
-void RNNoise::setup() {}
+void RNNoise::setup() {
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+}
 
 void RNNoise::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
                       std::span<float>& right_out) {
+  if (bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
