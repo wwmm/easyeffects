@@ -58,6 +58,8 @@ Deesser::Deesser(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "f2-level", "f2_level");
 
   lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
+
+  lv2_wrapper->bind_key_bool(settings, "sc-listen", "sc_listen");
 }
 
 Deesser::~Deesser() {
@@ -109,21 +111,17 @@ void Deesser::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      float detected_value = lv2_wrapper->get_control_port_value("detected");
+      float compression_value = lv2_wrapper->get_control_port_value("compression");
+
+      Glib::signal_idle().connect_once([=, this] {
+        detected.emit(detected_value);
+        compression.emit(compression_value);
+      });
+
       notify();
 
       notification_dt = 0.0F;
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "f1-freq", deesser, "f1-freq", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "f2-freq", deesser, "f2-freq", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "f2-q", deesser, "f2-q", G_SETTINGS_BIND_GET, util::double_to_float,
-// nullptr,
-//                              nullptr, nullptr);
-
-// g_settings_bind(settings, "sc-listen", deesser, "sc-listen", G_SETTINGS_BIND_DEFAULT);
