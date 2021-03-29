@@ -857,7 +857,14 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
       if (std::ranges::find(list, visible_page_name) == list.end()) {
         listview_selected_plugins->get_model()->select_item(0, true);
-        listview_selected_plugins->get_first_child()->activate();
+      } else {
+        for (size_t m = 0; m < list.size(); m++) {
+          if (list[m] == visible_page_name) {
+            listview_selected_plugins->get_model()->select_item(m, true);
+
+            break;
+          }
+        }
       }
 
       stack_plugins->property_visible().set_value(true);
@@ -1008,9 +1015,11 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
             }
 
             settings->set_string_array("selected-plugins", list);
+
+            return true;
           }
 
-          return true;
+          return false;
         },
         false);
 
