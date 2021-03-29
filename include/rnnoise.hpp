@@ -43,7 +43,7 @@ class RNNoise : public PluginBase {
  private:
   uint blocksize = 480;
 
-  std::deque<float> rnnoise_buffer;
+  std::deque<float> buffer_L, buffer_R;
 
   std::vector<float> data_L;
   std::vector<float> data_R;

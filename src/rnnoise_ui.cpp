@@ -72,6 +72,17 @@ RNNoiseUi::~RNNoiseUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(builder, "top_box", "com.github.wwmm.pulseeffects.rnnoise",
+                                                         schema_path + "rnnoise/");
+
+  auto stack_page = stack->add(*ui, plugin_name::rnnoise);
+
+  return ui;
+}
+
 void RNNoiseUi::on_import_model_clicked() {
   auto dialog =
       Gtk::FileChooserNative::create(_("Import Model File"), Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));

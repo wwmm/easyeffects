@@ -28,8 +28,6 @@ RNNoisePreset::RNNoisePreset()
 void RNNoisePreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".rnnoise.state", settings->get_boolean("state"));
-
   root.put(section + ".rnnoise.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".rnnoise.output-gain", settings->get_double("output-gain"));
@@ -40,8 +38,6 @@ void RNNoisePreset::save(boost::property_tree::ptree& root,
 void RNNoisePreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".rnnoise.state");
-
   update_key<double>(root, settings, "input-gain", section + ".rnnoise.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".rnnoise.output-gain");
