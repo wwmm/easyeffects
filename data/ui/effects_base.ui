@@ -55,6 +55,7 @@
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
                                         <property name="spacing">6</property>
+                                        <property name="css-name">listview</property>
                                         <child>
                                             <object class="GtkMenuButton" id="menubutton_plugins">
                                                 <property name="margin_start">6</property>
@@ -85,6 +86,12 @@
                                                 </child>
                                             </object>
                                         </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkSeparator">
+                                        <property name="orientation">vertical</property>
                                     </object>
                                 </child>
 
