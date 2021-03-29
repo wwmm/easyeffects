@@ -105,6 +105,16 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
       device_state->set_text(str.str());
     }
   }));
+
+  std::ostringstream str;
+
+  str << node_state_to_string(sie->pm->pe_source_node.state) << std::string(5, ' ');
+
+  str.precision(1);
+
+  str << std::fixed << sie->pm->pe_source_node.rate * 0.001F << " kHz" << std::string(5, ' ');
+
+  device_state->set_text(str.str());
 }
 
 StreamInputEffectsUi::~StreamInputEffectsUi() {
