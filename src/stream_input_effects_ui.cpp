@@ -49,10 +49,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   //   b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.webrtc",
   //                                "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/");
 
-  //   b_multiband_gate->get_widget_derived("widgets_grid", multiband_gate_ui,
-  //   "com.github.wwmm.pulseeffects.multibandgate",
-  //                                        "/com/github/wwmm/pulseeffects/sourceoutputs/multibandgate/");
-
   //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
   //                                 "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/");
 
@@ -61,7 +57,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*deesser_ui, deesser_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*webrtc_ui, webrtc_ui->name);
-  //   stack->add(*multiband_gate_ui, multiband_gate_ui->name);
   //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   //   // populate listbox
@@ -69,12 +64,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(deesser_ui);
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(webrtc_ui);
-  //   add_to_listbox(multiband_gate_ui);
   //   add_to_listbox(rnnoise_ui);
-
-  //   // show only mic icon before "Application" label
-
-  //   app_input_icon->set_visible(true);
 
   level_meters_connections();
   up_down_connections();
@@ -84,6 +74,8 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
       on_app_added(node);
     }
   }
+
+  connections.emplace_back(sie->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
 
   connections.emplace_back(
       sie->pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_added)));
@@ -137,8 +129,8 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
 void StreamInputEffectsUi::level_meters_connections() {
   //   // global output level meter connection
 
-  //   connections.emplace_back(
-  //       sie->global_output_level.connect(sigc::mem_fun(this, &StreamInputEffectsUi::on_new_output_level_db)));
+  connections.emplace_back(
+      sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
 
   //   // deesser level meters connections
 
@@ -165,31 +157,6 @@ void StreamInputEffectsUi::level_meters_connections() {
   //   connections.emplace_back(
   //       sie->webrtc_output_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
 
-  //   // multiband_gate level meters connections
-
-  //   connections.emplace_back(sie->multiband_gate->input_level.connect(
-  //       sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_input_level)));
-  //   connections.emplace_back(sie->multiband_gate->output_level.connect(
-  //       sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output_level)));
-
-  //   connections.emplace_back(
-  //       sie->multiband_gate->output0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output0)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->output1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output1)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->output2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output2)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->output3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_output3)));
-
-  //   connections.emplace_back(
-  //       sie->multiband_gate->gating0.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating0)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->gating1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->gating2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2)));
-  //   connections.emplace_back(
-  //       sie->multiband_gate->gating3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3)));
-
   //   // rnnoise level meters connections
 
   //   connections.emplace_back(
@@ -208,11 +175,6 @@ void StreamInputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(webrtc_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(webrtc_ui); }));
   //   connections.emplace_back(webrtc_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(webrtc_ui); }));
-
-  //   connections.emplace_back(multiband_gate_ui->plugin_up->signal_clicked().connect([=, this]() {
-  //   on_up(multiband_gate_ui);
-  //   })); connections.emplace_back(
-  //       multiband_gate_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(multiband_gate_ui); }));
 
   //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(rnnoise_ui); }));
   //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(rnnoise_ui);

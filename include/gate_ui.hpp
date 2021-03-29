@@ -42,7 +42,7 @@ class GateUi : public Gtk::Box, public PluginUiBase {
 
  private:
   Gtk::SpinButton *attack = nullptr, *release = nullptr, *threshold = nullptr, *knee = nullptr, *ratio = nullptr,
-                  *range = nullptr, *input = nullptr, *makeup = nullptr;
+                  *range = nullptr, *makeup = nullptr;
 
   Gtk::LevelBar* gating = nullptr;
 

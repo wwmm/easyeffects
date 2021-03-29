@@ -9,6 +9,7 @@
         <file>ui/bass_enhancer.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
+        <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
         <file>ui/equalizer.ui</file>
@@ -33,7 +34,6 @@
         <file>ui/pipe_conf_file_line.glade</file>
         <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/deesser.glade</file>
         <file>ui/convolver.glade</file>
         <file>ui/irs_row.glade</file>
         <file>ui/crystalizer.glade</file>

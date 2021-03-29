@@ -20,6 +20,7 @@
 #ifndef DEESSER_HPP
 #define DEESSER_HPP
 
+#include "lv2_wrapper.hpp"
 #include "plugin_base.hpp"
 
 class Deesser : public PluginBase {
@@ -31,12 +32,17 @@ class Deesser : public PluginBase {
   auto operator=(const Deesser&&) -> Deesser& = delete;
   ~Deesser() override;
 
-  sigc::connection compression_connection, detected_connection;
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
 
   sigc::signal<void(double)> compression, detected;
 
  private:
-  void bind_to_gsettings();
+  std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 
 #endif

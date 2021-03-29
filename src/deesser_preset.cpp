@@ -28,8 +28,6 @@ DeesserPreset::DeesserPreset()
 void DeesserPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".deesser.state", settings->get_boolean("state"));
-
   root.put(section + ".deesser.detection", settings->get_string("detection"));
 
   root.put(section + ".deesser.mode", settings->get_string("mode"));
@@ -58,8 +56,6 @@ void DeesserPreset::save(boost::property_tree::ptree& root,
 void DeesserPreset::load(const boost::property_tree::ptree& root,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".deesser.state");
-
   update_string_key(root, settings, "detection", section + ".deesser.detection");
 
   update_string_key(root, settings, "mode", section + ".deesser.mode");

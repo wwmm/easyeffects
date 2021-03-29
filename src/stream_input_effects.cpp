@@ -67,7 +67,25 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
   // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
+  pm->lock();
+
   connect_filters();
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pm->unlock();
+
+  settings->signal_changed("selected-plugins").connect([&, this](auto key) {
+    pm->lock();
+
+    disconnect_filters();
+
+    connect_filters();
+
+    pm->unlock();
+  });
 }
 
 StreamInputEffects::~StreamInputEffects() {
@@ -163,15 +181,44 @@ void StreamInputEffects::change_input_device(const NodeInfo& node) {
 }
 
 void StreamInputEffects::connect_filters() {
-  // pm->lock();
+  auto list = settings->get_string_array("selected-plugins");
 
-  // pm->link_nodes(pm->pe_sink_node.id, delay->get_node_id());
+  if (list.empty()) {
+    pm->link_nodes(pm->default_source.id, spectrum->get_node_id());
+  } else {
+    pm->link_nodes(pm->default_source.id, plugins[list[0]]->get_node_id());
 
-  // pm->link_nodes(delay->get_node_id(), pm->default_sink.id);
+    for (size_t n = 1; n < list.size(); n++) {
+      pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+    }
 
-  // pw_core_sync(pm->core, PW_ID_CORE, 0);
+    pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+  }
 
-  // pw_thread_loop_wait(pm->thread_loop);
+  pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
-  // pm->unlock();
+  pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
+}
+
+void StreamInputEffects::disconnect_filters() {
+  std::set<uint> list;
+
+  for (auto& plugin : plugins | std::views::values) {
+    for (auto& link : pm->list_links) {
+      if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
+        list.insert(link.id);
+      }
+    }
+  }
+
+  for (auto& link : pm->list_links) {
+    if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
+        link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
+      list.insert(link.id);
+    }
+  }
+
+  for (const auto& id : list) {
+    pm->destroy_object(id);
+  }
 }

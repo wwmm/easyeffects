@@ -83,57 +83,68 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
                      const std::string& schema,
                      const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "deesser";
+  name = plugin_name::deesser;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("detection", detection);
-  builder->get_widget("mode", mode);
-  builder->get_widget("compression", compression);
-  builder->get_widget("compression_label", compression_label);
-  builder->get_widget("detected", detected);
-  builder->get_widget("detected_label", detected_label);
-  builder->get_widget("sc_listen", sc_listen);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "makeup", makeup);
-  get_object(builder, "ratio", ratio);
-  get_object(builder, "threshold", threshold);
-  get_object(builder, "f1_freq", f1_freq);
-  get_object(builder, "f2_freq", f2_freq);
-  get_object(builder, "f1_level", f1_level);
-  get_object(builder, "f2_level", f2_level);
-  get_object(builder, "f2_q", f2_q);
-  get_object(builder, "laxity", laxity);
+  makeup = builder->get_widget<Gtk::SpinButton>("makeup");
+  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+  threshold = builder->get_widget<Gtk::SpinButton>("threshold");
+  ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+  f1_freq = builder->get_widget<Gtk::SpinButton>("f1_freq");
+  f2_freq = builder->get_widget<Gtk::SpinButton>("f2_freq");
+  f1_level = builder->get_widget<Gtk::SpinButton>("f1_level");
+  f2_level = builder->get_widget<Gtk::SpinButton>("f2_level");
+  f2_q = builder->get_widget<Gtk::SpinButton>("f2_q");
+  laxity = builder->get_widget<Gtk::SpinButton>("laxity");
+
+  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+  detection = builder->get_widget<Gtk::ComboBoxText>("detection");
+
+  compression = builder->get_widget<Gtk::LevelBar>("compression");
+  detected = builder->get_widget<Gtk::LevelBar>("detected");
+
+  compression_label = builder->get_widget<Gtk::Label>("compression_label");
+  detected_label = builder->get_widget<Gtk::Label>("detected_label");
+
+  sc_listen = builder->get_widget<Gtk::ToggleButton>("sc_listen");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("sc-listen", sc_listen, "active", flag);
-  settings->bind("makeup", makeup.get(), "value", flag);
-  settings->bind("ratio", ratio.get(), "value", flag);
-  settings->bind("threshold", threshold.get(), "value", flag);
-  settings->bind("f1-freq", f1_freq.get(), "value", flag);
-  settings->bind("f2-freq", f2_freq.get(), "value", flag);
-  settings->bind("f1-level", f1_level.get(), "value", flag);
-  settings->bind("f2-level", f2_level.get(), "value", flag);
-  settings->bind("f2-q", f2_q.get(), "value", flag);
-  settings->bind("laxity", laxity.get(), "value", flag);
+  settings->bind("sc-listen", sc_listen, "active");
+  settings->bind("makeup", makeup->get_adjustment().get(), "value");
+  settings->bind("ratio", ratio->get_adjustment().get(), "value");
+  settings->bind("threshold", threshold->get_adjustment().get(), "value");
+  settings->bind("f1-freq", f1_freq->get_adjustment().get(), "value");
+  settings->bind("f2-freq", f2_freq->get_adjustment().get(), "value");
+  settings->bind("f1-level", f1_level->get_adjustment().get(), "value");
+  settings->bind("f2-level", f2_level->get_adjustment().get(), "value");
+  settings->bind("f2-q", f2_q->get_adjustment().get(), "value");
+  settings->bind("laxity", laxity->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "detection", detection->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 DeesserUi::~DeesserUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto DeesserUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<DeesserUi>(builder, "top_box", "com.github.wwmm.pulseeffects.deesser",
+                                                         schema_path + "deesser/");
+
+  auto stack_page = stack->add(*ui, plugin_name::deesser);
+
+  return ui;
 }
 
 void DeesserUi::reset() {

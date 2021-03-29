@@ -8,6 +8,7 @@ data/ui/autogain.ui
 data/ui/bass_enhancer.ui
 data/ui/client_info.ui
 data/ui/compressor.ui
+data/ui/deesser.ui
 data/ui/delay.ui
 data/ui/effects_base.ui
 data/ui/equalizer.ui
@@ -35,7 +36,6 @@ data/ui/convolver.glade
 data/ui/crossfeed.glade
 data/ui/crystalizer.glade
 data/ui/crystalizer_band.glade
-data/ui/deesser.glade
 data/ui/irs_row.glade
 data/ui/loudness.glade
 data/ui/pitch.glade

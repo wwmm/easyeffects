@@ -34,17 +34,25 @@ class DeesserUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const DeesserUi&&) -> DeesserUi& = delete;
   ~DeesserUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi*;
+
   void on_new_compression(double value);
   void on_new_detected(double value);
 
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> threshold, ratio, makeup, f1_freq, f2_freq, f1_level, f2_level, f2_q, laxity;
+  Gtk::SpinButton *f1_freq = nullptr, *f2_freq = nullptr, *f1_level = nullptr, *f2_level = nullptr, *f2_q = nullptr,
+                  *threshold = nullptr, *ratio = nullptr, *laxity = nullptr, *makeup = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::LevelBar *compression = nullptr, *detected = nullptr;
+
   Gtk::Label *compression_label = nullptr, *detected_label = nullptr;
+
   Gtk::ComboBoxText *detection = nullptr, *mode = nullptr;
+
   Gtk::ToggleButton* sc_listen = nullptr;
 };
 
