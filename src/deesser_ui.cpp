@@ -130,6 +130,14 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
+
+  prepare_spinbutton(makeup, "dB");
+  prepare_spinbutton(threshold, "dB");
+  prepare_spinbutton(f1_level, "dB");
+  prepare_spinbutton(f2_level, "dB");
+
+  prepare_spinbutton(f1_freq, "Hz");
+  prepare_spinbutton(f2_freq, "Hz");
 }
 
 DeesserUi::~DeesserUi() {

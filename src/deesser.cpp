@@ -19,47 +19,6 @@
 
 #include "deesser.hpp"
 
-// namespace {
-
-// void on_post_messages_changed(GSettings* settings, gchar* key, Deesser* l) {
-//   const auto post = g_settings_get_boolean(settings, key);
-
-//   if (post) {
-//     if (!l->compression_connection.connected()) {
-//       l->compression_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float compression = 0.0F;
-
-//             g_object_get(l->deesser, "compression", &compression, nullptr);
-
-//             l->compression.emit(compression);
-
-//             return true;
-//           },
-//           100);
-//     }
-
-//     if (!l->detected_connection.connected()) {
-//       l->detected_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float detected = 0.0F;
-
-//             g_object_get(l->deesser, "detected", &detected, nullptr);
-
-//             l->detected.emit(detected);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->compression_connection.disconnect();
-//     l->detected_connection.disconnect();
-//   }
-// }
-
-// }  // namespace
-
 Deesser::Deesser(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
@@ -77,6 +36,28 @@ Deesser::Deesser(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+
+  lv2_wrapper->bind_key_enum(settings, "detection", "detection");
+
+  lv2_wrapper->bind_key_double(settings, "ratio", "ratio");
+
+  lv2_wrapper->bind_key_double(settings, "f1-freq", "f1_freq");
+
+  lv2_wrapper->bind_key_double(settings, "f2-freq", "f2_freq");
+
+  lv2_wrapper->bind_key_double(settings, "f2-q", "f2_q");
+
+  lv2_wrapper->bind_key_double_db(settings, "threshold", "threshold");
+
+  lv2_wrapper->bind_key_double_db(settings, "makeup", "makeup");
+
+  lv2_wrapper->bind_key_double_db(settings, "f1-level", "f1_level");
+
+  lv2_wrapper->bind_key_double_db(settings, "f2-level", "f2_level");
+
+  lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
 }
 
 Deesser::~Deesser() {
@@ -135,32 +116,11 @@ void Deesser::process(std::span<float>& left_in,
   }
 }
 
-// g_settings_bind(settings, "detection", deesser, "detection", G_SETTINGS_BIND_DEFAULT);
-// g_settings_bind(settings, "mode", deesser, "mode", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind_with_mapping(settings, "ratio", deesser, "ratio", G_SETTINGS_BIND_GET, util::double_to_float,
-// nullptr,
-//                              nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "threshold", deesser, "threshold", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind(settings, "laxity", deesser, "laxity", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind_with_mapping(settings, "makeup", deesser, "makeup", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
 // g_settings_bind_with_mapping(settings, "f1-freq", deesser, "f1-freq", G_SETTINGS_BIND_GET, util::double_to_float,
 //                              nullptr, nullptr, nullptr);
 
 // g_settings_bind_with_mapping(settings, "f2-freq", deesser, "f2-freq", G_SETTINGS_BIND_GET, util::double_to_float,
 //                              nullptr, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "f1-level", deesser, "f1-level", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "f2-level", deesser, "f2-level", G_SETTINGS_BIND_DEFAULT,
-//                              util::db20_gain_to_linear, util::linear_gain_to_db20, nullptr, nullptr);
 
 // g_settings_bind_with_mapping(settings, "f2-q", deesser, "f2-q", G_SETTINGS_BIND_GET, util::double_to_float,
 // nullptr,
