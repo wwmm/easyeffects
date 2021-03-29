@@ -319,6 +319,10 @@ void Application::create_actions() {
     auto* window = get_active_window();
 
     window->hide();
+
+    if ( ! settings->get_boolean("enable-run-in-background")) {
+      Application::quit();
+    };
   });
 
   set_accel_for_action("app.help", "F1");

@@ -120,6 +120,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("use-dark-theme", theme_switch, "active", flag);
   settings->bind("enable-all-sinkinputs", enable_all_sinkinputs, "active", flag);
   settings->bind("enable-all-sourceoutputs", enable_all_sourceoutputs, "active", flag);
+  settings->bind("enable-run-in-background", enable_run_in_background, "active", flag);
   settings->bind("realtime-priority", adjustment_priority.get(), "value", flag);
   settings->bind("niceness", adjustment_niceness.get(), "value", flag);
   settings->bind("audio-activity-timeout", adjustment_audio_activity_timeout.get(), "value", flag);
