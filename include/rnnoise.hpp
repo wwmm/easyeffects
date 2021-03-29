@@ -20,6 +20,8 @@
 #ifndef RNNOISE_HPP
 #define RNNOISE_HPP
 
+#include <rnnoise.h>
+#include <mutex>
 #include "plugin_base.hpp"
 
 class RNNoise : public PluginBase {
@@ -31,8 +33,23 @@ class RNNoise : public PluginBase {
   auto operator=(const RNNoise&&) -> RNNoise& = delete;
   ~RNNoise() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
  private:
-  void bind_to_gsettings();
+  uint blocksize = 480;
+
+  std::deque<float> rnnoise_buffer;
+
+  std::vector<float> data_L;
+  std::vector<float> data_R;
+
+  RNNModel* model = nullptr;
+  DenoiseState *state_left = nullptr, *state_right = nullptr;
 };
 
 #endif

@@ -19,37 +19,13 @@
 
 #include "rnnoise.hpp"
 
-// namespace {
-
-// void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, RNNoise* r) {
-//   int v = 0;
-//   int blocksize = 0;
-
-//   g_object_get(r->adapter, "n-input-samples", &v, nullptr);
-//   g_object_get(r->adapter, "blocksize", &blocksize, nullptr);
-
-//   util::debug(r->log_tag + "rnnoise: new input block size " + std::to_string(v) + " frames");
-//   util::debug(r->log_tag + "rnnoise: we will try to read in chunks of " + std::to_string(blocksize) + " frames");
-
-//   g_object_set(r->adapter_out, "blocksize", v, nullptr);
-// }
-
-// }  // namespace
-
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, "rnnoise", schema, schema_path, pipe_manager) {
-  // rnnoise = gst_element_factory_make("pernnoise", nullptr);
-
-  // if (is_installed(rnnoise)) {
-  //   auto* input_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* in_level = gst_element_factory_make("level", "rnnoise_input_level");
-  //   auto* output_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* out_level = gst_element_factory_make("level", "rnnoise_output_level");
-  //   capsfilter_out = gst_element_factory_make("capsfilter", nullptr);
-  //   capsfilter_in = gst_element_factory_make("capsfilter", nullptr);
+    : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager),
+      data_L(blocksize, 0),
+      data_R(blocksize, 0) {
   //   auto* audioresample_in = gst_element_factory_make("audioresample", "rnnoise_audioresample_in");
   //   auto* audioresample_out = gst_element_factory_make("audioresample", "rnnoise_audioresample_out");
   //   adapter = gst_element_factory_make("peadapter", nullptr);
@@ -76,32 +52,44 @@ RNNoise::RNNoise(const std::string& tag,
   //   set_caps_in();
 
   //   g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
-
-  //   bind_to_gsettings();
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
 }
 
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void RNNoise::bind_to_gsettings() {
-  // g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
+void RNNoise::setup() {}
+
+void RNNoise::process(std::span<float>& left_in,
+                      std::span<float>& right_in,
+                      std::span<float>& left_out,
+                      std::span<float>& right_out) {
+  std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
 }
+
+// g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
