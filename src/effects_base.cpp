@@ -46,6 +46,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   reverb = std::make_shared<Reverb>(log_tag, "com.github.wwmm.pulseeffects.reverb", path + "reverb/", pm);
 
+  rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise", path + "rnnoise/", pm);
+
   spectrum = std::make_unique<Spectrum>(log_tag, "com.github.wwmm.pulseeffects.spectrum",
                                         "/com/github/wwmm/pulseeffects/spectrum/", pm);
 
@@ -66,8 +68,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   //   pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch", path + "pitch/", pm);
 
-  //   rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise", path + "rnnoise/", pm);
-
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
   plugins.insert(std::make_pair(compressor->name, compressor));
@@ -76,19 +76,19 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(equalizer->name, equalizer));
   plugins.insert(std::make_pair(exciter->name, exciter));
   plugins.insert(std::make_pair(filter->name, filter));
+  plugins.insert(std::make_pair(gate->name, gate));
   plugins.insert(std::make_pair(limiter->name, limiter));
   plugins.insert(std::make_pair(maximizer->name, maximizer));
   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
   plugins.insert(std::make_pair(reverb->name, reverb));
+  plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  plugins.insert(std::make_pair(gate->name, gate));
   //   plugins.insert(std::make_pair(convolver->name, convolver));
   //   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
   //   plugins.insert(std::make_pair(crystalizer->name, crystalizer));
   //   plugins.insert(std::make_pair(loudness->name, loudness));
   //   plugins.insert(std::make_pair(pitch->name, pitch));
-  //   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
 }
 
 EffectsBase::~EffectsBase() {

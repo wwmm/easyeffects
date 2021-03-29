@@ -27,7 +27,6 @@
 // #include "crystalizer_ui.hpp"
 // #include "loudness_ui.hpp"
 // #include "pitch_ui.hpp"
-// #include "rnnoise_ui.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:

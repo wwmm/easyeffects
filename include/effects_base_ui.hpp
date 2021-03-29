@@ -44,6 +44,7 @@
 #include "pipe_manager.hpp"
 #include "preset_type.hpp"
 #include "reverb_ui.hpp"
+#include "rnnoise_ui.hpp"
 #include "spectrum_ui.hpp"
 #include "stereo_tools_ui.hpp"
 

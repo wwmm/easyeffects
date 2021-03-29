@@ -183,6 +183,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->multiband_gate->post_messages = true;
   effects_base->output_level->post_messages = true;
   effects_base->reverb->post_messages = true;
+  effects_base->rnnoise->post_messages = true;
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 }
@@ -209,6 +210,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->multiband_gate->post_messages = false;
   effects_base->output_level->post_messages = false;
   effects_base->reverb->post_messages = false;
+  effects_base->rnnoise->post_messages = false;
   effects_base->spectrum->post_messages = false;
   effects_base->stereo_tools->post_messages = false;
 }
@@ -401,6 +403,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->reverb->input_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_input_level));
   effects_base->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level));
+
+  // rnnoise
+
+  auto* rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
+
+  rnnoise_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->rnnoise->bypass = rnnoise_ui->bypass->get_active(); });
+
+  effects_base->rnnoise->input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level));
+  effects_base->rnnoise->output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level));
 
   // stereo tools
 
