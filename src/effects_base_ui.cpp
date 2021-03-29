@@ -171,6 +171,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
   effects_base->compressor->post_messages = true;
+  effects_base->deesser->post_messages = true;
   effects_base->delay->post_messages = true;
   effects_base->equalizer->post_messages = true;
   effects_base->exciter->post_messages = true;
@@ -196,6 +197,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
   effects_base->compressor->post_messages = false;
+  effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
   effects_base->equalizer->post_messages = false;
   effects_base->exciter->post_messages = false;
@@ -251,6 +253,18 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));
   effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain));
   effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
+
+  // deesser
+
+  auto* deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
+
+  deesser_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->deesser->bypass = deesser_ui->bypass->get_active(); });
+
+  effects_base->deesser->input_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level));
+  effects_base->deesser->output_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level));
+  effects_base->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression));
+  effects_base->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected));
 
   // delay
 
