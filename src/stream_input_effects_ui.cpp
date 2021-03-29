@@ -40,9 +40,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   // auto b_rnnoise =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
-  //   b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
-  //                                 "/com/github/wwmm/pulseeffects/sourceoutputs/deesser/");
-
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
 
@@ -61,7 +58,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   //   // populate listbox
 
-  //   add_to_listbox(deesser_ui);
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(webrtc_ui);
   //   add_to_listbox(rnnoise_ui);
@@ -132,17 +128,6 @@ void StreamInputEffectsUi::level_meters_connections() {
   connections.emplace_back(
       sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
 
-  //   // deesser level meters connections
-
-  //   connections.emplace_back(
-  //       sie->deesser_input_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       sie->deesser_output_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       sie->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
-  //   connections.emplace_back(sie->deesser->detected.connect(sigc::mem_fun(*deesser_ui,
-  //   &DeesserUi::on_new_detected)));
-
   //   // pitch level meters connections
 
   //   connections.emplace_back(sie->pitch_input_level.connect(sigc::mem_fun(*pitch_ui,
@@ -166,10 +151,6 @@ void StreamInputEffectsUi::level_meters_connections() {
 }
 
 void StreamInputEffectsUi::up_down_connections() {
-  //   connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(deesser_ui); }));
-  //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(deesser_ui);
-  //   }));
-
   //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(pitch_ui); }));
   //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(pitch_ui); }));
 

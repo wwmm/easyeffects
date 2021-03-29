@@ -18,7 +18,6 @@
  */
 
 #include "deesser_ui.hpp"
-#include <cstring>
 
 namespace {
 

@@ -20,6 +20,7 @@
 #ifndef DEESSER_UI_HPP
 #define DEESSER_UI_HPP
 
+#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class DeesserUi : public Gtk::Box, public PluginUiBase {

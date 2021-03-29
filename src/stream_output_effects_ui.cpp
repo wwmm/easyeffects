@@ -30,7 +30,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   // auto b_crossfeed =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.glade");
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.glade"); auto b_stereo_tools =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.glade"); auto b_crystalizer =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_delay =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
@@ -44,9 +43,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.loudness",
   //                                  "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
 
-  //   b_deesser->get_widget_derived("widgets_grid", deesser_ui, "com.github.wwmm.pulseeffects.deesser",
-  //                                 "/com/github/wwmm/pulseeffects/sinkinputs/deesser/");
-
   //   b_convolver->get_widget_derived("widgets_grid", convolver_ui, "com.github.wwmm.pulseeffects.convolver",
   //                                   "/com/github/wwmm/pulseeffects/sinkinputs/convolver/");
 
@@ -59,7 +55,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
-  //   stack->add(*deesser_ui, deesser_ui->name);
   //   stack->add(*convolver_ui, convolver_ui->name);
   //   stack->add(*crystalizer_ui, crystalizer_ui->name);
   //   stack->add(*rnnoise_ui, rnnoise_ui->name);
@@ -69,7 +64,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(crossfeed_ui);
   //   add_to_listbox(loudness_ui);
-  //   add_to_listbox(deesser_ui);
   //   add_to_listbox(convolver_ui);
   //   add_to_listbox(crystalizer_ui);
   //   add_to_listbox(rnnoise_ui);
@@ -161,24 +155,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //   connections.emplace_back(
   //       soe->loudness_output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
 
-  //   // gate level meters connections
-
-  //   connections.emplace_back(soe->gate_input_level.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_input_level_db)));
-  //   connections.emplace_back(soe->gate_output_level.connect(sigc::mem_fun(*gate_ui,
-  //   &GateUi::on_new_output_level_db))); connections.emplace_back(soe->gate->gating.connect(sigc::mem_fun(*gate_ui,
-  //   &GateUi::on_new_gating)));
-
-  //   // deesser level meters connections
-
-  //   connections.emplace_back(
-  //       soe->deesser_input_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->deesser_output_level.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->deesser->compression.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_compression)));
-  //   connections.emplace_back(soe->deesser->detected.connect(sigc::mem_fun(*deesser_ui,
-  //   &DeesserUi::on_new_detected)));
-
   //   // convolver level meters connections
 
   //   connections.emplace_back(
@@ -209,10 +185,6 @@ void StreamOutputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(loudness_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(loudness_ui); }));
   //   connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(loudness_ui);
-  //   }));
-
-  //   connections.emplace_back(deesser_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(deesser_ui); }));
-  //   connections.emplace_back(deesser_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(deesser_ui);
   //   }));
 
   //   connections.emplace_back(convolver_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(convolver_ui);
