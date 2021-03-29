@@ -22,7 +22,6 @@
 
 #include <glibmm/i18n.h>
 #include <filesystem>
-#include "glibmm/miscutils.h"
 #include "plugin_ui_base.hpp"
 
 class RNNoiseUi : public Gtk::Box, public PluginUiBase {
@@ -37,28 +36,27 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const RNNoiseUi&&) -> RNNoiseUi& = delete;
   ~RNNoiseUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi*;
+
   void reset() override;
 
  private:
   std::string log_tag = "rnnoise_ui: ";
   std::string default_model_name;
 
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::Button* import_model = nullptr;
+
   Gtk::Frame* model_list_frame = nullptr;
-  Gtk::ListBox* model_listbox = nullptr;
+
   Gtk::Label* active_model_name = nullptr;
 
   std::filesystem::path model_dir;
 
   void on_import_model_clicked();
 
-  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
-
   void import_model_file(const std::string& file_path);
-
-  void populate_model_listbox();
 
   auto get_model_names() -> std::vector<std::string>;
 

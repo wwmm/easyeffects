@@ -27,6 +27,7 @@
         <file>ui/preset_row.ui</file>
         <file>ui/presets_menu.ui</file>
         <file>ui/reverb.ui</file>
+        <file>ui/rnnoise.ui</file>
         <file>ui/spectrum.ui</file>
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
@@ -40,7 +41,6 @@
         <file>ui/crystalizer_band.glade</file>
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
-        <file>ui/rnnoise.glade</file>
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>

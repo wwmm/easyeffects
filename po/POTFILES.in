@@ -26,6 +26,7 @@ data/ui/pipe_info.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
 data/ui/reverb.ui
+data/ui/rnnoise.ui
 data/ui/spectrum.ui
 data/ui/spectrum_settings.ui
 data/ui/stereo_tools.ui
@@ -42,7 +43,6 @@ data/ui/pitch.glade
 data/ui/pipe_conf_file_line.glade
 data/ui/pipe_settings.glade
 data/ui/webrtc.glade
-data/ui/rnnoise.glade
 include/effects_base_ui.hpp
 src/application.cpp
 src/application_ui.cpp

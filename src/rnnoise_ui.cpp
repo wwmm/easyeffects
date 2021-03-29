@@ -26,37 +26,32 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
     : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
       model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
-  name = "rnnoise";
+  name = plugin_name::rnnoise;
+
   default_model_name = _("Standard RNNoise Model");
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("plugin_reset", reset_button);
-  builder->get_widget("import_model", import_model);
-  builder->get_widget("model_listbox", model_listbox);
-  builder->get_widget("model_list_frame", model_list_frame);
-  builder->get_widget("active_model_name", active_model_name);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  model_list_frame = builder->get_widget<Gtk::Frame>("model_list_frame");
+
+  import_model = builder->get_widget<Gtk::Button>("import_model");
+
+  active_model_name = builder->get_widget<Gtk::Label>("active_model_name");
 
   // signals connection
 
-  model_listbox->set_sort_func(sigc::ptr_fun(&RNNoiseUi::on_listbox_sort));
-
   import_model->signal_clicked().connect(sigc::mem_fun(*this, &RNNoiseUi::on_import_model_clicked));
-
-  reset_button->signal_clicked().connect([=]() { reset(); });
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-
-  connections.emplace_back(settings->signal_changed("model-path").connect([=](auto key) { set_active_model_label(); }));
+  connections.emplace_back(
+      settings->signal_changed("model-path").connect([=, this](auto key) { set_active_model_label(); }));
 
   // model dir
 
@@ -70,8 +65,6 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
     util::debug(log_tag + "model directory already exists: " + model_dir.string());
   }
 
-  populate_model_listbox();
-
   set_active_model_label();
 }
 
@@ -80,10 +73,8 @@ RNNoiseUi::~RNNoiseUi() {
 }
 
 void RNNoiseUi::on_import_model_clicked() {
-  auto* main_window = dynamic_cast<Gtk::Window*>(this->get_toplevel());
-
-  auto dialog = Gtk::FileChooserNative::create(
-      _("Import Model File"), *main_window, Gtk::FileChooserAction::FILE_CHOOSER_ACTION_OPEN, _("Open"), _("Cancel"));
+  auto dialog =
+      Gtk::FileChooserNative::create(_("Import Model File"), Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
 
   auto dialog_filter = Gtk::FileFilter::create();
 
@@ -92,12 +83,12 @@ void RNNoiseUi::on_import_model_clicked() {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=](auto response_id) {
+  dialog->signal_response().connect([=, this](auto response_id) {
     switch (response_id) {
-      case Gtk::ResponseType::RESPONSE_ACCEPT: {
+      case Gtk::ResponseType::ACCEPT: {
         import_model_file(dialog->get_file()->get_path());
 
-        populate_model_listbox();
+        // populate_model_listbox();
 
         break;
       }
@@ -108,25 +99,6 @@ void RNNoiseUi::on_import_model_clicked() {
 
   dialog->set_modal(true);
   dialog->show();
-}
-
-auto RNNoiseUi::on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int {
-  auto name1 = row1->get_name();
-  auto name2 = row2->get_name();
-
-  std::vector<std::string> names = {name1, name2};
-
-  std::sort(names.begin(), names.end());
-
-  if (name1 == names[0]) {
-    return -1;
-  }
-
-  if (name2 == names[0]) {
-    return 1;
-  }
-
-  return 0;
 }
 
 void RNNoiseUi::import_model_file(const std::string& file_path) {
@@ -145,53 +117,44 @@ void RNNoiseUi::import_model_file(const std::string& file_path) {
   }
 }
 
-void RNNoiseUi::populate_model_listbox() {
-  auto children = model_listbox->get_children();
+// void RNNoiseUi::populate_model_listbox() {
+//   auto names = get_model_names();
 
-  for (const auto& c : children) {
-    model_listbox->remove(*c);
-  }
+//   if (names.empty()) {
+//     settings->set_string("model-path", default_model_name);
+//     model_list_frame->set_visible(false);
+//   } else {
+//     model_list_frame->set_visible(true);
+//   }
 
-  auto names = get_model_names();
+//   for (const auto& name : names) {
+//     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
 
-  if (names.empty()) {
-    settings->set_string("model-path", default_model_name);
-    model_list_frame->set_visible(false);
-  } else {
-    model_list_frame->set_visible(true);
-  }
+//     Gtk::ListBoxRow* row = nullptr;
+//     Gtk::Button* remove_btn = nullptr;
+//     Gtk::Button* apply_btn = nullptr;
+//     Gtk::Label* label = nullptr;
 
-  for (const auto& name : names) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
+//     b->get_widget("irs_row", row);
+//     b->get_widget("remove", remove_btn);
+//     b->get_widget("apply", apply_btn);
+//     b->get_widget("name", label);
 
-    Gtk::ListBoxRow* row = nullptr;
-    Gtk::Button* remove_btn = nullptr;
-    Gtk::Button* apply_btn = nullptr;
-    Gtk::Label* label = nullptr;
+//     row->set_name(name);
+//     label->set_text(name);
 
-    b->get_widget("irs_row", row);
-    b->get_widget("remove", remove_btn);
-    b->get_widget("apply", apply_btn);
-    b->get_widget("name", label);
+//     connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
+//       remove_model_file(name);
+//       populate_model_listbox();
+//     }));
 
-    row->set_name(name);
-    label->set_text(name);
+//     connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
+//       auto model_file = model_dir / std::filesystem::path{row->get_name() + ".rnnn"};
 
-    connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-      remove_model_file(name);
-      populate_model_listbox();
-    }));
-
-    connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
-      auto model_file = model_dir / std::filesystem::path{row->get_name() + ".rnnn"};
-
-      settings->set_string("model-path", model_file.string());
-    }));
-
-    model_listbox->add(*row);
-    model_listbox->show_all();
-  }
-}
+//       settings->set_string("model-path", model_file.string());
+//     }));
+//   }
+// }
 
 auto RNNoiseUi::get_model_names() -> std::vector<std::string> {
   std::filesystem::directory_iterator it{model_dir};
