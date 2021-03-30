@@ -15,7 +15,7 @@ class Resampler {
   auto operator=(const Resampler&&) -> Resampler& = delete;
   ~Resampler();
 
-  auto process(std::span<float>& input) -> std::vector<float>;
+  auto process(std::span<float>& input, const bool& end_of_input) -> std::vector<float>;
 
  private:
   float resample_ratio = 1.0F;

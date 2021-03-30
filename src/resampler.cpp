@@ -12,7 +12,7 @@ Resampler::~Resampler() {
   }
 }
 
-auto Resampler::process(std::span<float>& input) -> std::vector<float> {
+auto Resampler::process(std::span<float>& input, const bool& end_of_input) -> std::vector<float> {
   output.resize(std::ceil(resample_ratio * input.size()));
 
   // The number of frames of data pointed to by data_in
@@ -31,7 +31,7 @@ auto Resampler::process(std::span<float>& input) -> std::vector<float> {
   src_data.src_ratio = resample_ratio;
 
   // Equal to 0 if more input data is available and 1 otherwise
-  src_data.end_of_input = 0;
+  src_data.end_of_input = static_cast<int>(end_of_input);
 
   src_process(src_state, &src_data);
 

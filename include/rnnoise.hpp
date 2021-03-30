@@ -45,14 +45,14 @@ class RNNoise : public PluginBase {
  private:
   uint blocksize = 480;
 
-  bool resample = false;
+  bool resample = true;
 
   std::deque<float> buffer_L, buffer_R;
 
   std::vector<float> data_L;
   std::vector<float> data_R;
 
-  std::unique_ptr<Resampler> resampler;
+  std::unique_ptr<Resampler> resampler_L, resampler_R;
 
   RNNModel* model = nullptr;
   DenoiseState *state_left = nullptr, *state_right = nullptr;

@@ -76,7 +76,8 @@ void RNNoise::setup() {
   resample = rate != 48000;
 
   if (resample) {
-    resampler = std::make_unique<Resampler>(rate, 48000);
+    resampler_L = std::make_unique<Resampler>(rate, 48000);
+    resampler_R = std::make_unique<Resampler>(rate, 48000);
   }
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
@@ -91,6 +92,11 @@ void RNNoise::process(std::span<float>& left_in,
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
     return;
+  }
+
+  if (resample) {
+    auto resampled_L = resampler_L->process(left_in, false);
+    auto resampled_R = resampler_R->process(right_in, false);
   }
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
