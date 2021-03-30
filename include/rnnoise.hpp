@@ -42,12 +42,16 @@ class RNNoise : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  auto get_latency() const -> float;
+
  private:
   uint blocksize = 480;
 
   uint rnnoise_rate = 44100;
 
   bool resample = false;
+
+  float latency = 0.0F;
 
   std::deque<float> buffer_L, buffer_R;
 

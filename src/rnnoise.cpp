@@ -110,7 +110,12 @@ void RNNoise::process(std::span<float>& left_in,
     deque_out_R.emplace_back(v);
   }
 
-  if (deque_out_L.size() > left_out.size()) {
+  // }
+
+  // util::warning(std::to_string(left_in.size()) + ", " + std::to_string(resampled_inL.size()) + ", " +
+  //               std::to_string(deque_out_L.size()));
+
+  if (deque_out_L.size() >= left_out.size()) {
     for (float& v : left_out) {
       v = deque_out_L.front();
 
@@ -123,8 +128,16 @@ void RNNoise::process(std::span<float>& left_in,
       deque_out_R.pop_front();
     }
   } else {
-    for (size_t n = 0; n < left_out.size(); n++) {
-      if (n < left_out.size() - deque_out_L.size()) {
+    uint offset = 2 * (left_out.size() - deque_out_L.size());
+
+    latency = static_cast<float>(offset) / rate;
+
+    util::debug("rnnoise latency: " + std::to_string(latency) + " s");
+
+    // util::warning(std::to_string(offset) + ", " + std::to_string(deque_out_L.size()));
+
+    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;
       } else {
@@ -136,11 +149,6 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   }
-
-  // }
-
-  // std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  // std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
@@ -155,6 +163,10 @@ void RNNoise::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
   }
+}
+
+auto RNNoise::get_latency() const -> float {
+  return latency;
 }
 
 // g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
