@@ -2,6 +2,7 @@
 #define RESAMPLER_HPP
 
 #include <samplerate.h>
+#include <cmath>
 #include <span>
 #include <vector>
 
