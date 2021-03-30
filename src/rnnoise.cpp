@@ -33,6 +33,14 @@ RNNoise::RNNoise(const std::string& tag,
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
 
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
   settings->signal_changed("model-path").connect([=, this](auto key) {
     std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
@@ -87,6 +95,8 @@ void RNNoise::process(std::span<float>& left_in,
 
     return;
   }
+
+  apply_gain(left_in, right_in, input_gain);
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
@@ -180,6 +190,8 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   }
+
+  apply_gain(left_out, right_out, output_gain);
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
