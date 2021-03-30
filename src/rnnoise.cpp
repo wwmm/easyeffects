@@ -73,6 +73,12 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::setup() {
+  resample = rate != 48000;
+
+  if (resample) {
+    resampler = std::make_unique<Resampler>(rate, 48000);
+  }
+
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 }
 

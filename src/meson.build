@@ -56,6 +56,7 @@ pulseeffects_sources = [
 	'reverb.cpp',
 	'reverb_preset.cpp',
 	'reverb_ui.cpp',
+	'resampler.cpp',
 	'rnnoise.cpp',
 	'rnnoise_preset.cpp',
 	'rnnoise_ui.cpp',
@@ -111,6 +112,7 @@ pulseeffects_deps = [
 	dependency('sndfile'),
 	dependency('fftw3f'),
 	dependency('libebur128',version: '>=1.2.0'),
+	dependency('samplerate'),
 	dependency('threads')
 ]
 

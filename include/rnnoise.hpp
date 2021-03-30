@@ -21,8 +21,10 @@
 #define RNNOISE_HPP
 
 #include <rnnoise.h>
+#include <memory>
 #include <mutex>
 #include "plugin_base.hpp"
+#include "resampler.hpp"
 
 class RNNoise : public PluginBase {
  public:
@@ -43,10 +45,14 @@ class RNNoise : public PluginBase {
  private:
   uint blocksize = 480;
 
+  bool resample = false;
+
   std::deque<float> buffer_L, buffer_R;
 
   std::vector<float> data_L;
   std::vector<float> data_R;
+
+  std::unique_ptr<Resampler> resampler;
 
   RNNModel* model = nullptr;
   DenoiseState *state_left = nullptr, *state_right = nullptr;
