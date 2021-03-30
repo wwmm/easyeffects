@@ -68,7 +68,7 @@ class RNNoise : public PluginBase {
 
   std::mutex rnnoise_mutex;
 
-  void init_model();
+  auto get_model_from_file() -> RNNModel*;
 
   void free_rnnoise();
 };

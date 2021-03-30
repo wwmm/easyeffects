@@ -44,10 +44,22 @@ RNNoise::RNNoise(const std::string& tag,
   settings->signal_changed("model-path").connect([=, this](auto key) {
     std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-    init_model();
+    free_rnnoise();
+
+    auto* m = get_model_from_file();
+
+    model = m;
+
+    state_left = rnnoise_create(model);
+    state_right = rnnoise_create(model);
   });
 
-  init_model();
+  auto* m = get_model_from_file();
+
+  model = m;
+
+  state_left = rnnoise_create(model);
+  state_right = rnnoise_create(model);
 }
 
 RNNoise::~RNNoise() {
@@ -214,9 +226,7 @@ void RNNoise::process(std::span<float>& left_in,
   }
 }
 
-void RNNoise::init_model() {
-  free_rnnoise();
-
+auto RNNoise::get_model_from_file() -> RNNModel* {
   const auto* path = settings->get_string("model-path").c_str();
 
   RNNModel* m = nullptr;
@@ -233,10 +243,7 @@ void RNNoise::init_model() {
     }
   }
 
-  model = m;
-
-  state_left = rnnoise_create(model);
-  state_right = rnnoise_create(model);
+  return m;
 }
 
 void RNNoise::free_rnnoise() {
@@ -260,5 +267,3 @@ void RNNoise::free_rnnoise() {
 auto RNNoise::get_latency() const -> float {
   return latency;
 }
-
-// g_settings_bind(settings, "model-path", rnnoise, "model-path", G_SETTINGS_BIND_DEFAULT);
