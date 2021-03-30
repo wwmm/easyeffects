@@ -23,36 +23,7 @@ RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager),
-      data_L(blocksize, 0),
-      data_R(blocksize, 0) {
-  //   auto* audioresample_in = gst_element_factory_make("audioresample", "rnnoise_audioresample_in");
-  //   auto* audioresample_out = gst_element_factory_make("audioresample", "rnnoise_audioresample_out");
-  //   adapter = gst_element_factory_make("peadapter", nullptr);
-  //   adapter_out = gst_element_factory_make("peadapter", nullptr);
-
-  //   gst_bin_add_many(GST_BIN(bin), input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise,
-  //   adapter_out,
-  //                    audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
-
-  //   gst_element_link_many(input_gain, in_level, audioresample_in, capsfilter_in, adapter, rnnoise, adapter_out,
-  //                         audioresample_out, capsfilter_out, output_gain, out_level, nullptr);
-
-  //   auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   g_object_set(adapter, "blocksize", 480, nullptr);
-
-  //   set_caps_in();
-
-  //   g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
-}
+    : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager), data_L(0), data_R(0) {}
 
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
@@ -75,6 +46,9 @@ RNNoise::~RNNoise() {
 void RNNoise::setup() {
   resample = rate != rnnoise_rate;
 
+  data_L.resize(0);
+  data_R.resize(0);
+
   resampler_inL = std::make_unique<Resampler>(rate, rnnoise_rate);
   resampler_inR = std::make_unique<Resampler>(rate, rnnoise_rate);
 
@@ -95,22 +69,51 @@ void RNNoise::process(std::span<float>& left_in,
     return;
   }
 
-  // if (resample) {
-  auto resampled_inL = resampler_inL->process(left_in, false);
-  auto resampled_inR = resampler_inR->process(right_in, false);
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
-  auto resampled_outL = resampler_outL->process(resampled_inL, false);
-  auto resampled_outR = resampler_outR->process(resampled_inR, false);
+  if (resample) {
+    auto resampled_inL = resampler_inL->process(left_in, false);
+    auto resampled_inR = resampler_inR->process(right_in, false);
 
-  for (auto v : resampled_outL) {
-    deque_out_L.emplace_back(v);
+    auto resampled_outL = resampler_outL->process(resampled_inL, false);
+    auto resampled_outR = resampler_outR->process(resampled_inR, false);
+
+    for (const auto& v : resampled_outL) {
+      deque_out_L.emplace_back(v);
+    }
+
+    for (const auto& v : resampled_outR) {
+      deque_out_R.emplace_back(v);
+    }
+  } else {
+    for (const auto& v : left_in) {
+      data_L.emplace_back(v);
+
+      if (data_L.size() == blocksize) {
+        // rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+
+        for (const auto& v : data_L) {
+          deque_out_L.emplace_back(v);
+        }
+
+        data_L.resize(0);
+      }
+    }
+
+    for (const auto& v : right_in) {
+      data_R.push_back(v);
+
+      if (data_R.size() == blocksize) {
+        // rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+
+        for (const auto& v : data_R) {
+          deque_out_R.emplace_back(v);
+        }
+
+        data_R.resize(0);
+      }
+    }
   }
-
-  for (auto v : resampled_outR) {
-    deque_out_R.emplace_back(v);
-  }
-
-  // }
 
   // util::warning(std::to_string(left_in.size()) + ", " + std::to_string(resampled_inL.size()) + ", " +
   //               std::to_string(deque_out_L.size()));
@@ -134,8 +137,6 @@ void RNNoise::process(std::span<float>& left_in,
 
     util::debug("rnnoise latency: " + std::to_string(latency) + " s");
 
-    // util::warning(std::to_string(offset) + ", " + std::to_string(deque_out_L.size()));
-
     for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
@@ -149,8 +150,6 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   }
-
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

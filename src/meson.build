@@ -112,6 +112,7 @@ pulseeffects_deps = [
 	dependency('sndfile'),
 	dependency('fftw3f'),
 	dependency('libebur128',version: '>=1.2.0'),
+	dependency('rnnoise', required: true),
 	dependency('samplerate'),
 	dependency('threads')
 ]
