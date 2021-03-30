@@ -2,6 +2,8 @@
 #define RESAMPLER_HPP
 
 #include <samplerate.h>
+#include <span>
+#include <vector>
 
 class Resampler {
  public:
@@ -12,10 +14,16 @@ class Resampler {
   auto operator=(const Resampler&&) -> Resampler& = delete;
   ~Resampler();
 
+  auto process(std::span<float>& input) -> std::vector<float>;
+
  private:
   float resample_ratio = 1.0F;
 
   SRC_STATE* src_state = nullptr;
+
+  SRC_DATA src_data{};
+
+  std::vector<float> output;
 };
 
 #endif
