@@ -19,12 +19,6 @@
 
 #include "rnnoise.hpp"
 
-namespace {
-
-const float inv_short_max = 1.0F / (SHRT_MAX + 1);
-
-}  // namespace
-
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
@@ -116,8 +110,13 @@ void RNNoise::process(std::span<float>& left_in,
     auto resampled_inL = resampler_inL->process(left_in, false);
     auto resampled_inR = resampler_inR->process(right_in, false);
 
-    auto resampled_outL = resampler_outL->process(resampled_inL, false);
-    auto resampled_outR = resampler_outR->process(resampled_inR, false);
+    resampled_data_L.resize(0);
+    resampled_data_R.resize(0);
+
+    remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
+
+    auto resampled_outL = resampler_outL->process(resampled_data_L, false);
+    auto resampled_outR = resampler_outR->process(resampled_data_R, false);
 
     for (const auto& v : resampled_outL) {
       deque_out_L.emplace_back(v);
@@ -127,45 +126,7 @@ void RNNoise::process(std::span<float>& left_in,
       deque_out_R.emplace_back(v);
     }
   } else {
-    for (const auto& v : left_in) {
-      data_L.emplace_back(v);
-
-      if (data_L.size() == blocksize) {
-        if (state_left != nullptr) {
-          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
-
-          rnnoise_process_frame(state_left, data_L.data(), data_L.data());
-
-          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * inv_short_max; });
-        }
-
-        for (const auto& v : data_L) {
-          deque_out_L.emplace_back(v);
-        }
-
-        data_L.resize(0);
-      }
-    }
-
-    for (const auto& v : right_in) {
-      data_R.emplace_back(v);
-
-      if (data_R.size() == blocksize) {
-        if (state_right != nullptr) {
-          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
-
-          rnnoise_process_frame(state_right, data_R.data(), data_R.data());
-
-          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * inv_short_max; });
-        }
-
-        for (const auto& v : data_R) {
-          deque_out_R.emplace_back(v);
-        }
-
-        data_R.resize(0);
-      }
-    }
+    remove_noise(left_in, right_in, deque_out_L, deque_out_R);
   }
 
   if (deque_out_L.size() >= left_out.size()) {
