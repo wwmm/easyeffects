@@ -23,7 +23,10 @@ RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager), data_L(0), data_R(0) {}
+    : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager), data_L(0), data_R(0) {
+  data_L.reserve(blocksize);
+  data_R.reserve(blocksize);
+}
 
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
@@ -101,7 +104,7 @@ void RNNoise::process(std::span<float>& left_in,
     }
 
     for (const auto& v : right_in) {
-      data_R.push_back(v);
+      data_R.emplace_back(v);
 
       if (data_R.size() == blocksize) {
         // rnnoise_process_frame(state_left, data_L.data(), data_L.data());
