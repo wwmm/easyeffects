@@ -19,6 +19,12 @@
 
 #include "rnnoise.hpp"
 
+namespace {
+
+const float inv_short_max = 1.0F / (SHRT_MAX + 1);
+
+}  // namespace
+
 RNNoise::RNNoise(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
@@ -26,10 +32,20 @@ RNNoise::RNNoise(const std::string& tag,
     : PluginBase(tag, plugin_name::rnnoise, schema, schema_path, pipe_manager), data_L(0), data_R(0) {
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
+
+  settings->signal_changed("model-path").connect([=, this](auto key) {
+    std::lock_guard<std::mutex> guard(rnnoise_mutex);
+
+    init_model();
+  });
+
+  init_model();
 }
 
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
+
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -43,10 +59,12 @@ RNNoise::~RNNoise() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+  free_rnnoise();
 }
 
 void RNNoise::setup() {
+  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+
   resample = rate != rnnoise_rate;
 
   data_L.resize(0);
@@ -57,8 +75,6 @@ void RNNoise::setup() {
 
   resampler_outL = std::make_unique<Resampler>(rnnoise_rate, rate);
   resampler_outR = std::make_unique<Resampler>(rnnoise_rate, rate);
-
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
 }
 
 void RNNoise::process(std::span<float>& left_in,
@@ -93,7 +109,13 @@ void RNNoise::process(std::span<float>& left_in,
       data_L.emplace_back(v);
 
       if (data_L.size() == blocksize) {
-        // rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+        if (state_left != nullptr) {
+          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
+
+          rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+
+          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * inv_short_max; });
+        }
 
         for (const auto& v : data_L) {
           deque_out_L.emplace_back(v);
@@ -107,7 +129,13 @@ void RNNoise::process(std::span<float>& left_in,
       data_R.emplace_back(v);
 
       if (data_R.size() == blocksize) {
-        // rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+        if (state_right != nullptr) {
+          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
+
+          rnnoise_process_frame(state_right, data_R.data(), data_R.data());
+
+          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * inv_short_max; });
+        }
 
         for (const auto& v : data_R) {
           deque_out_R.emplace_back(v);
@@ -117,9 +145,6 @@ void RNNoise::process(std::span<float>& left_in,
       }
     }
   }
-
-  // util::warning(std::to_string(left_in.size()) + ", " + std::to_string(resampled_inL.size()) + ", " +
-  //               std::to_string(deque_out_L.size()));
 
   if (deque_out_L.size() >= left_out.size()) {
     for (float& v : left_out) {
@@ -136,9 +161,11 @@ void RNNoise::process(std::span<float>& left_in,
   } else {
     uint offset = 2 * (left_out.size() - deque_out_L.size());
 
-    latency = static_cast<float>(offset) / rate;
+    if (offset != latency_n_frames) {
+      latency_n_frames = offset;
 
-    util::debug("rnnoise latency: " + std::to_string(latency) + " s");
+      notify_latency = true;
+    }
 
     for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
@@ -164,7 +191,58 @@ void RNNoise::process(std::span<float>& left_in,
 
       notification_dt = 0.0F;
     }
+
+    if (notify_latency) {
+      latency = static_cast<float>(latency_n_frames) / rate;
+
+      util::debug("rnnoise latency: " + std::to_string(latency) + " s");
+
+      notify_latency = false;
+    }
   }
+}
+
+void RNNoise::init_model() {
+  free_rnnoise();
+
+  const auto* path = settings->get_string("model-path").c_str();
+
+  RNNModel* m = nullptr;
+
+  if (path != nullptr) {
+    FILE* f = fopen(path, "r");
+
+    if (f != nullptr) {
+      util::debug("rnnoise plugin: loading model from file: " + std::string(path));
+
+      m = rnnoise_model_from_file(f);
+
+      fclose(f);
+    }
+  }
+
+  model = m;
+
+  state_left = rnnoise_create(model);
+  state_right = rnnoise_create(model);
+}
+
+void RNNoise::free_rnnoise() {
+  if (state_left != nullptr) {
+    rnnoise_destroy(state_left);
+  }
+
+  if (state_right != nullptr) {
+    rnnoise_destroy(state_right);
+  }
+
+  if (model != nullptr) {
+    rnnoise_model_free(model);
+  }
+
+  state_left = nullptr;
+  state_right = nullptr;
+  model = nullptr;
 }
 
 auto RNNoise::get_latency() const -> float {

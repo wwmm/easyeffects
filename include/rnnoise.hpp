@@ -48,9 +48,10 @@ class RNNoise : public PluginBase {
   uint blocksize = 480;
   uint rnnoise_rate = 48000;
 
-  bool resample = false;
+  bool resample = false, notify_latency = false;
 
   float latency = 0.0F;
+  uint latency_n_frames = 0;
 
   std::deque<float> buffer_L, buffer_R;
   std::deque<float> deque_in_L, deque_in_R;
@@ -66,6 +67,10 @@ class RNNoise : public PluginBase {
   DenoiseState *state_left = nullptr, *state_right = nullptr;
 
   std::mutex rnnoise_mutex;
+
+  void init_model();
+
+  void free_rnnoise();
 };
 
 #endif
