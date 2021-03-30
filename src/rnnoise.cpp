@@ -73,12 +73,13 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::setup() {
-  resample = rate != 48000;
+  resample = rate != rnnoise_rate;
 
-  if (resample) {
-    resampler_L = std::make_unique<Resampler>(rate, 48000);
-    resampler_R = std::make_unique<Resampler>(rate, 48000);
-  }
+  resampler_inL = std::make_unique<Resampler>(rate, rnnoise_rate);
+  resampler_inR = std::make_unique<Resampler>(rate, rnnoise_rate);
+
+  resampler_outL = std::make_unique<Resampler>(rnnoise_rate, rate);
+  resampler_outR = std::make_unique<Resampler>(rnnoise_rate, rate);
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 }
@@ -94,13 +95,53 @@ void RNNoise::process(std::span<float>& left_in,
     return;
   }
 
-  if (resample) {
-    auto resampled_L = resampler_L->process(left_in, false);
-    auto resampled_R = resampler_R->process(right_in, false);
+  // if (resample) {
+  auto resampled_inL = resampler_inL->process(left_in, false);
+  auto resampled_inR = resampler_inR->process(right_in, false);
+
+  auto resampled_outL = resampler_outL->process(resampled_inL, false);
+  auto resampled_outR = resampler_outR->process(resampled_inR, false);
+
+  // std::copy(resampled_outL.begin(), resampled_outL.end(), left_out.begin());
+  // std::copy(resampled_outR.begin(), resampled_outR.end(), right_out.begin());
+
+  for (auto v : resampled_outL) {
+    deque_out_L.emplace_back(v);
   }
 
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+  for (auto v : resampled_outR) {
+    deque_out_R.emplace_back(v);
+  }
+
+  // if (deque_out_L.size() > left_out.size()) {
+  //   for (float& v : left_out) {
+  //     v = deque_out_L[0];
+
+  //     deque_out_L.pop_front();
+  //   }
+
+  //   for (float& v : right_out) {
+  //     v = deque_out_R[0];
+
+  //     deque_out_R.pop_front();
+  //   }
+  // } else {
+  //   for (int n = 0; n < left_out.size(); n++) {
+  //     if (n < left_out.size() - deque_out_L.size()) {
+  //       left_out[n] = 0.0F;
+  //     } else {
+  //       left_out[n] = deque_out_L[0];
+
+  //       deque_out_L.pop_front();
+  //     }
+  //   }
+  // }
+
+  // util::warning(std::to_string(resampled_outL.size()));
+  // }
+
+  // std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  // std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
   std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
