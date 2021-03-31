@@ -1234,3 +1234,17 @@ void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
 
   util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");
 }
+
+void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
+  this->transient_window = transient_window;
+
+  for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+    auto page = stack_plugins->get_page(*child);
+
+    if (page->get_name() == plugin_name::equalizer) {
+      dynamic_cast<EqualizerUi*>(child)->set_transient_window(transient_window);
+    } else if (page->get_name() == plugin_name::rnnoise) {
+      dynamic_cast<RNNoiseUi*>(child)->set_transient_window(transient_window);
+    }
+  }
+}

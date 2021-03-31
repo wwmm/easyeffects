@@ -14,16 +14,16 @@
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="label" translatable="yes">Bypass</property>
-                    </object>
-                </child>
-                <child>
                     <object class="GtkButton" id="import_model">
-                        <property name="tooltip_text" translatable="yes">Import Model</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="icon_name">document-open-symbolic</property>
+                        <property name="label" translatable="yes">Import Model</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkToggleButton" id="bypass">
+                        <property name="label" translatable="yes">Bypass</property>
                     </object>
                 </child>
             </object>

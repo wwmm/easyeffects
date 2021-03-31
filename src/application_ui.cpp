@@ -51,6 +51,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   presets_menu_button->set_popover(*presets_menu_ui);
 
+  soe_ui->set_transient_window(this);
+  sie_ui->set_transient_window(this);
+
   // signals
 
   stack_model = stack->get_pages();

@@ -37,6 +37,8 @@ class PluginUiBase {
 
   Gtk::ToggleButton* bypass = nullptr;
 
+  void set_transient_window(Gtk::Window* transient_window);
+
   void on_new_input_level(const float& left, const float& right);
   void on_new_output_level(const float& left, const float& right);
 
@@ -51,6 +53,8 @@ class PluginUiBase {
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
   Gtk::Label *output_level_left_label = nullptr, *output_level_right_label = nullptr;
+
+  Gtk::Window* transient_window = nullptr;
 
   std::vector<sigc::connection> connections;
 

@@ -67,8 +67,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi*;
 
-  void set_transient_window(Gtk::Window* transient_window);
-
   void reset() override;
 
  private:
@@ -91,8 +89,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
   Gtk::StackSwitcher* stack_switcher = nullptr;
 
   Gtk::ComboBoxText* mode = nullptr;
-
-  Gtk::Window* transient_window = nullptr;
 
   std::vector<sigc::connection> connections_bands;
 

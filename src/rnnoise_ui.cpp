@@ -84,8 +84,15 @@ auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
 }
 
 void RNNoiseUi::on_import_model_clicked() {
-  auto dialog =
-      Gtk::FileChooserNative::create(_("Import Model File"), Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
+  Glib::RefPtr<Gtk::FileChooserNative> dialog;
+
+  if (transient_window != nullptr) {
+    dialog = Gtk::FileChooserNative::create(_("Import Model File"), *transient_window, Gtk::FileChooser::Action::OPEN,
+                                            _("Open"), _("Cancel"));
+  } else {
+    dialog =
+        Gtk::FileChooserNative::create(_("Import Model File"), Gtk::FileChooser::Action::OPEN, _("Open"), _("Cancel"));
+  }
 
   auto dialog_filter = Gtk::FileFilter::create();
 

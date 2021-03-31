@@ -69,6 +69,8 @@ class EffectsBaseUi {
   auto operator=(const EffectsBaseUi&&) -> EffectsBaseUi& = delete;
   virtual ~EffectsBaseUi();
 
+  void set_transient_window(Gtk::Window* transient_window);
+
  protected:
   EffectsBase* effects_base = nullptr;
 
@@ -83,6 +85,8 @@ class EffectsBaseUi {
   Gtk::ToggleButton *toggle_players = nullptr, *toggle_plugins = nullptr;
 
   Gtk::Stack* stack_plugins = nullptr;
+
+  Gtk::Window* transient_window = nullptr;
 
   SpectrumUi* spectrum_ui = nullptr;
 

@@ -577,8 +577,6 @@ void EqualizerUi::reset() {
   }
 }
 
-void EqualizerUi::set_transient_window(Gtk::Window* transient_window) {}
-
 void EqualizerUi::on_import_apo_preset_clicked() {
   Glib::RefPtr<Gtk::FileChooserNative> dialog;
 

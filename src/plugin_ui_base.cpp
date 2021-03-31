@@ -70,3 +70,7 @@ auto PluginUiBase::string_to_float(const std::string& value) -> float {
 
   return fv;
 }
+
+void PluginUiBase::set_transient_window(Gtk::Window* transient_window) {
+  this->transient_window = transient_window;
+}
