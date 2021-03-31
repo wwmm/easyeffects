@@ -42,7 +42,7 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
  private:
   std::string log_tag = "rnnoise_ui: ";
-  std::string default_model_name;
+  Glib::ustring default_model_name;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 

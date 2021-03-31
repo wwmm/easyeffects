@@ -25,11 +25,10 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
                      const std::string& schema_path)
     : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
-      string_list(Gtk::StringList::create({"initial_value"})),
+      default_model_name(_("Standard Model")),
+      string_list(Gtk::StringList::create({default_model_name})),
       model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
   name = plugin_name::rnnoise;
-
-  default_model_name = _("Standard RNNoise Model");
 
   // loading builder widgets
 
@@ -89,8 +88,6 @@ auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
 }
 
 void RNNoiseUi::setup_listview() {
-  string_list->remove(0);
-
   auto names = get_model_names();
 
   for (const auto& name : names) {
@@ -150,6 +147,10 @@ void RNNoiseUi::setup_listview() {
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
+
+    if (name == default_model_name) {
+      remove->hide();
+    }
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
