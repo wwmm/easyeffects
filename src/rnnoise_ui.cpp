@@ -113,10 +113,6 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
         break;
     }
   });
-
-  // initializing selecting the row that corresponds to the saved model
-
-  auto saved_name = std::filesystem::path{settings->get_string("model-path")}.stem().string();
 }
 
 RNNoiseUi::~RNNoiseUi() {
@@ -226,6 +222,20 @@ void RNNoiseUi::setup_listview() {
 
     settings->set_string("model-path", model_file.string());
   });
+
+  // initializing selecting the row that corresponds to the saved model
+
+  Glib::ustring saved_name = std::filesystem::path{settings->get_string("model-path")}.stem().string();
+
+  auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+
+  for (guint n = 0; n < single->get_n_items(); n++) {
+    auto name = single->get_object(n)->get_property<Glib::ustring>("string");
+
+    if (name == saved_name) {
+      single->select_item(n, true);
+    }
+  }
 }
 
 void RNNoiseUi::on_import_model_clicked() {
