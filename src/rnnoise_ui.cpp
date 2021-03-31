@@ -113,6 +113,10 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
         break;
     }
   });
+
+  // initializing selecting the row that corresponds to the saved model
+
+  auto saved_name = std::filesystem::path{settings->get_string("model-path")}.stem().string();
 }
 
 RNNoiseUi::~RNNoiseUi() {
@@ -173,7 +177,7 @@ void RNNoiseUi::setup_listview() {
     label->set_halign(Gtk::Align::START);
 
     remove->set_icon_name("user-trash-symbolic");
-    remove->set_css_classes({"flat"});
+    // remove->set_css_classes({"flat"});
 
     box->set_spacing(6);
     box->append(*label);
@@ -216,9 +220,11 @@ void RNNoiseUi::setup_listview() {
   listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
     auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-    auto name = single->get_selected_item()->get_property<Glib::ustring>("string");
+    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-    util::warning(name);
+    auto model_file = model_dir / std::filesystem::path{selected_name + ".rnnn"};
+
+    settings->set_string("model-path", model_file.string());
   });
 }
 
@@ -273,27 +279,6 @@ void RNNoiseUi::import_model_file(const std::string& file_path) {
     util::warning(log_tag + p.string() + " is not a file!");
   }
 }
-
-//   for (const auto& name : names) {
-//     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
-
-//     Gtk::ListBoxRow* row = nullptr;
-//     Gtk::Button* remove_btn = nullptr;
-//     Gtk::Button* apply_btn = nullptr;
-//     Gtk::Label* label = nullptr;
-
-//     b->get_widget("irs_row", row);
-//     b->get_widget("remove", remove_btn);
-//     b->get_widget("apply", apply_btn);
-//     b->get_widget("name", label);
-
-//     row->set_name(name);
-//     label->set_text(name);
-
-//     connections.emplace_back(remove_btn->signal_clicked().connect([=]() {
-//       remove_model_file(name);
-//       populate_model_listbox();
-//     }));
 
 //     connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
 //       auto model_file = model_dir / std::filesystem::path{row->get_name() + ".rnnn"};

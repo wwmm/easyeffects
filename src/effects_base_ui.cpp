@@ -910,21 +910,17 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   // setting the item selection callback
 
   listview_selected_plugins->get_model()->signal_selection_changed().connect([&](guint position, guint n_items) {
-    for (guint n = position; n < position + n_items; n++) {
-      bool is_selected = listview_selected_plugins->get_model()->is_selected(n);
+    auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview_selected_plugins->get_model());
 
-      if (is_selected) {
-        auto selected_name = selected_plugins->get_string(n);
+    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-        for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-          auto page = stack_plugins->get_page(*child);
+    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+      auto page = stack_plugins->get_page(*child);
 
-          if (page->get_name() == selected_name) {
-            stack_plugins->set_visible_child(*child);
+      if (page->get_name() == selected_name) {
+        stack_plugins->set_visible_child(*child);
 
-            return;
-          }
-        }
+        return;
       }
     }
   });
