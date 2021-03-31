@@ -127,5 +127,3 @@ executable(
 
 subdir('convolver')
 subdir('crystalizer')
-subdir('adapter')
-subdir('rnnoise')

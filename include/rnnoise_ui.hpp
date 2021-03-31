@@ -50,9 +50,15 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Frame* model_list_frame = nullptr;
 
+  Gtk::ListView* listview = nullptr;
+
   Gtk::Label* active_model_name = nullptr;
 
+  Glib::RefPtr<Gtk::StringList> string_list;
+
   std::filesystem::path model_dir;
+
+  void setup_listview();
 
   void on_import_model_clicked();
 

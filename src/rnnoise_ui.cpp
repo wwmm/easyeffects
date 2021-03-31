@@ -25,6 +25,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
                      const std::string& schema_path)
     : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
+      string_list(Gtk::StringList::create({"initial_value"})),
       model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
   name = plugin_name::rnnoise;
 
@@ -36,6 +37,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
   model_list_frame = builder->get_widget<Gtk::Frame>("model_list_frame");
+
+  listview = builder->get_widget<Gtk::ListView>("listview");
 
   import_model = builder->get_widget<Gtk::Button>("import_model");
 
@@ -65,6 +68,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
     util::debug(log_tag + "model directory already exists: " + model_dir.string());
   }
 
+  setup_listview();
+
   set_active_model_label();
 }
 
@@ -81,6 +86,79 @@ auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
   auto stack_page = stack->add(*ui, plugin_name::rnnoise);
 
   return ui;
+}
+
+void RNNoiseUi::setup_listview() {
+  string_list->remove(0);
+
+  auto names = get_model_names();
+
+  for (const auto& name : names) {
+    string_list->append(name);
+  }
+
+  if (names.empty()) {
+    settings->set_string("model-path", default_model_name);
+
+    model_list_frame->set_visible(false);
+  } else {
+    model_list_frame->set_visible(true);
+  }
+
+  // sorter
+
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+
+  // setting the listview model and factory
+
+  listview->set_model(Gtk::SingleSelection::create(sort_list_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* remove = Gtk::make_managed<Gtk::Button>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    remove->set_icon_name("user-trash-symbolic");
+    remove->set_css_classes({"flat"});
+
+    box->set_spacing(6);
+    box->append(*label);
+    box->append(*remove);
+
+    list_item->set_data("name", label);
+    list_item->set_data("remove", remove);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+    label->set_text(name);
+  });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
+      connection->disconnect();
+
+      list_item->set_data("connection_remove", nullptr);
+    }
+  });
 }
 
 void RNNoiseUi::on_import_model_clicked() {
@@ -134,16 +212,6 @@ void RNNoiseUi::import_model_file(const std::string& file_path) {
     util::warning(log_tag + p.string() + " is not a file!");
   }
 }
-
-// void RNNoiseUi::populate_model_listbox() {
-//   auto names = get_model_names();
-
-//   if (names.empty()) {
-//     settings->set_string("model-path", default_model_name);
-//     model_list_frame->set_visible(false);
-//   } else {
-//     model_list_frame->set_visible(true);
-//   }
 
 //   for (const auto& name : names) {
 //     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
