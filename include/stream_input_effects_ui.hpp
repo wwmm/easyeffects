@@ -22,20 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_input_effects.hpp"
-// #include "compressor_ui.hpp"
-// #include "deesser_ui.hpp"
-// #include "equalizer_ui.hpp"
-// #include "filter_ui.hpp"
-// #include "gate_ui.hpp"
-// #include "limiter_ui.hpp"
-// #include "maximizer_ui.hpp"
-// #include "multiband_compressor_ui.hpp"
-// #include "multiband_gate_ui.hpp"
-// #include "pitch_ui.hpp"
-// #include "reverb_ui.hpp"
-// #include "rnnoise_ui.hpp"
-// #include "stereo_tools_ui.hpp"
-// #include "webrtc_ui.hpp"
 
 class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
@@ -56,21 +42,6 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
  private:
   StreamInputEffects* sie = nullptr;
-
-  // LimiterUi* limiter_ui = nullptr;
-  // CompressorUi* compressor_ui = nullptr;
-  // FilterUi* filter_ui = nullptr;
-  // EqualizerUi* equalizer_ui = nullptr;
-  // ReverbUi* reverb_ui = nullptr;
-  // GateUi* gate_ui = nullptr;
-  // DeesserUi* deesser_ui = nullptr;
-  // PitchUi* pitch_ui = nullptr;
-  // WebrtcUi* webrtc_ui = nullptr;
-  // MultibandCompressorUi* multiband_compressor_ui = nullptr;
-  // MultibandGateUi* multiband_gate_ui = nullptr;
-  // StereoToolsUi* stereo_tools_ui = nullptr;
-  // MaximizerUi* maximizer_ui = nullptr;
-  // RNNoiseUi* rnnoise_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

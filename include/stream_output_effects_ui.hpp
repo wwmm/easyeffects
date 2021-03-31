@@ -54,7 +54,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   // DeesserUi* deesser_ui = nullptr;
   // ConvolverUi* convolver_ui = nullptr;
   // CrystalizerUi* crystalizer_ui = nullptr;
-  // RNNoiseUi* rnnoise_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

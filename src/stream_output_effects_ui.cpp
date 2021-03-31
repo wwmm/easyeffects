@@ -32,7 +32,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.glade"); auto b_crystalizer =
   //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade"); auto b_delay =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
@@ -49,15 +48,11 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui, "com.github.wwmm.pulseeffects.crystalizer",
   //                                     "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
 
-  //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
-  //                                 "/com/github/wwmm/pulseeffects/sinkinputs/rnnoise/");
-
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*crossfeed_ui, crossfeed_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
   //   stack->add(*convolver_ui, convolver_ui->name);
   //   stack->add(*crystalizer_ui, crystalizer_ui->name);
-  //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   // populate_listbox
 
@@ -66,7 +61,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   add_to_listbox(loudness_ui);
   //   add_to_listbox(convolver_ui);
   //   add_to_listbox(crystalizer_ui);
-  //   add_to_listbox(rnnoise_ui);
 
   level_meters_connections();
   up_down_connections();
@@ -194,9 +188,5 @@ void StreamOutputEffectsUi::up_down_connections() {
   //   connections.emplace_back(crystalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crystalizer_ui);
   //   })); connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
   //   on_down(crystalizer_ui);
-  //   }));
-
-  //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(rnnoise_ui); }));
-  //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(rnnoise_ui);
   //   }));
 }

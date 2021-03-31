@@ -32,13 +32,8 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   // populate stack
 
-  //   auto b_deesser = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/deesser.glade");
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_webrtc = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/webrtc.glade");
-  //   auto b_multiband_gate =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_gate.glade");
-  // auto b_rnnoise =
-  //   Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.glade");
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
@@ -46,21 +41,15 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   //   b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.webrtc",
   //                                "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/");
 
-  //   b_rnnoise->get_widget_derived("widgets_grid", rnnoise_ui, "com.github.wwmm.pulseeffects.rnnoise",
-  //                                 "/com/github/wwmm/pulseeffects/sourceoutputs/rnnoise/");
-
   //   // add to stack
 
-  //   stack->add(*deesser_ui, deesser_ui->name);
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*webrtc_ui, webrtc_ui->name);
-  //   stack->add(*rnnoise_ui, rnnoise_ui->name);
 
   //   // populate listbox
 
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(webrtc_ui);
-  //   add_to_listbox(rnnoise_ui);
 
   level_meters_connections();
   up_down_connections();
@@ -141,13 +130,6 @@ void StreamInputEffectsUi::level_meters_connections() {
   //       sie->webrtc_input_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_input_level_db)));
   //   connections.emplace_back(
   //       sie->webrtc_output_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
-
-  //   // rnnoise level meters connections
-
-  //   connections.emplace_back(
-  //       sie->rnnoise_input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       sie->rnnoise_output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level_db)));
 }
 
 void StreamInputEffectsUi::up_down_connections() {
@@ -156,8 +138,4 @@ void StreamInputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(webrtc_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(webrtc_ui); }));
   //   connections.emplace_back(webrtc_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(webrtc_ui); }));
-
-  //   connections.emplace_back(rnnoise_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(rnnoise_ui); }));
-  //   connections.emplace_back(rnnoise_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(rnnoise_ui);
-  //   }));
 }
