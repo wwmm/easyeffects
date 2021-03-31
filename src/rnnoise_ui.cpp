@@ -81,19 +81,30 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
         break;
       }
       case Gio::FileMonitor::Event::DELETED: {
+        Glib::ustring name_removed = util::remove_filename_extension(file->get_basename());
+
         int count = 0;
 
         auto name = string_list->get_string(count);
 
         while (name.c_str() != nullptr) {
-          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+          if (name_removed == name) {
             string_list->remove(count);
-            return;
+
+            break;
           }
 
           count++;
 
           name = string_list->get_string(count);
+        }
+
+        if (name_removed == settings->get_string("model-path")) {
+          for (guint n = 0; n < string_list->get_n_items(); n++) {
+            if (string_list->get_string(n) == default_model_name) {
+              listview->get_model()->select_item(n, true);
+            }
+          }
         }
 
         break;
@@ -129,7 +140,7 @@ void RNNoiseUi::setup_listview() {
   }
 
   if (names.empty()) {
-    settings->set_string("model-path", default_model_name);
+    settings->set_string("model-path", "");
 
     model_list_frame->set_visible(false);
   } else {
