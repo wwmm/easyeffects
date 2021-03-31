@@ -30,6 +30,13 @@
         </child>
 
         <child>
+            <object class="GtkLabel">
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Models</property>
+            </object>
+        </child>
+
+        <child>
             <object class="GtkFrame" id="model_list_frame">
                 <child>
                     <object class="GtkScrolledWindow">

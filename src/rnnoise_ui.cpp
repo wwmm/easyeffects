@@ -70,10 +70,44 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   setup_listview();
 
   set_active_model_label();
+
+  folder_monitor = Gio::File::create_for_path(model_dir.string())->monitor_directory();
+
+  folder_monitor->signal_changed().connect([=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+    switch (event) {
+      case Gio::FileMonitor::Event::CREATED: {
+        string_list->append(util::remove_filename_extension(file->get_basename()));
+
+        break;
+      }
+      case Gio::FileMonitor::Event::DELETED: {
+        int count = 0;
+
+        auto name = string_list->get_string(count);
+
+        while (name.c_str() != nullptr) {
+          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+            string_list->remove(count);
+            return;
+          }
+
+          count++;
+
+          name = string_list->get_string(count);
+        }
+
+        break;
+      }
+      default:
+        break;
+    }
+  });
 }
 
 RNNoiseUi::~RNNoiseUi() {
   util::debug(name + " ui destroyed");
+
+  folder_monitor->cancel();
 }
 
 auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
@@ -151,6 +185,11 @@ void RNNoiseUi::setup_listview() {
     if (name == default_model_name) {
       remove->hide();
     }
+
+    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_model_file(name); });
+
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {

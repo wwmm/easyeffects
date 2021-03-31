@@ -56,6 +56,8 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gtk::StringList> string_list;
 
+  Glib::RefPtr<Gio::FileMonitor> folder_monitor;
+
   std::filesystem::path model_dir;
 
   void setup_listview();
