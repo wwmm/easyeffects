@@ -99,13 +99,13 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
           name = string_list->get_string(count);
         }
 
-        if (name_removed == settings->get_string("model-path")) {
-          for (guint n = 0; n < string_list->get_n_items(); n++) {
-            if (string_list->get_string(n) == default_model_name) {
-              listview->get_model()->select_item(n, true);
-            }
-          }
-        }
+        // if (file->get_path() == settings->get_string("model-path")) {
+        //   for (guint n = 0; n < string_list->get_n_items(); n++) {
+        //     if (string_list->get_string(n) == default_model_name) {
+        //       listview->get_model()->select_item(n, true);
+        //     }
+        //   }
+        // }
 
         break;
       }
@@ -209,6 +209,16 @@ void RNNoiseUi::setup_listview() {
 
       list_item->set_data("connection_remove", nullptr);
     }
+  });
+
+  // selection callback
+
+  listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+    auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+
+    auto name = single->get_selected_item()->get_property<Glib::ustring>("string");
+
+    util::warning(name);
   });
 }
 
