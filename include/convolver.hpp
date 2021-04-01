@@ -24,8 +24,10 @@
 #include <algorithm>
 #include <mutex>
 #include <ranges>
+#include <sndfile.hh>
 #include <vector>
 #include "plugin_base.hpp"
+#include "resampler.hpp"
 
 class Convolver : public PluginBase {
  public:
@@ -50,11 +52,15 @@ class Convolver : public PluginBase {
   uint kernel_n_frames = 0;
   uint ir_width = 100;
 
-  std::vector<float> kernel_L, kernel_R;
+  std::vector<float> interleaved_kernel, kernel_L, kernel_R;
+
+  std::unique_ptr<Resampler> resampler_L, resampler_R;
 
   Convproc* conv = nullptr;
 
   std::mutex lock_guard_zita;
+
+  void read_kernel_file();
 
   void apply_kernel_autogain();
 

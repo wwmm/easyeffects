@@ -26,8 +26,6 @@ ConvolverPreset::ConvolverPreset()
 void ConvolverPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".convolver.state", settings->get_boolean("state"));
-
   root.put(section + ".convolver.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".convolver.output-gain", settings->get_double("output-gain"));
@@ -40,8 +38,6 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
 void ConvolverPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".convolver.state");
-
   update_key<double>(root, settings, "input-gain", section + ".convolver.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".convolver.output-gain");

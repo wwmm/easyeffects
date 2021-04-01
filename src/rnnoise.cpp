@@ -36,11 +36,11 @@ RNNoise::RNNoise(const std::string& tag,
   });
 
   settings->signal_changed("model-path").connect([=, this](auto key) {
-    std::lock_guard<std::mutex> guard(rnnoise_mutex);
-
     free_rnnoise();
 
     auto* m = get_model_from_file();
+
+    std::lock_guard<std::mutex> guard(rnnoise_mutex);
 
     model = m;
 

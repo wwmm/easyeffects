@@ -23,7 +23,23 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {}
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("ir-width").connect([=, this](auto key) { ir_width = settings->get_int(key); });
+
+  settings->signal_changed("model-path").connect([=, this](auto key) {
+    // resampler_L = std::make_unique<Resampler>(rate, rnnoise_rate);
+
+    std::lock_guard<std::mutex> guard(lock_guard_zita);
+  });
+}
 
 Convolver::~Convolver() {
   util::debug(log_tag + name + " destroyed");
@@ -73,6 +89,10 @@ void Convolver::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
   }
+}
+
+void Convolver::read_kernel_file() {
+  SndfileHandle file = SndfileHandle(settings->get_string("kernel-path"));
 }
 
 void Convolver::apply_kernel_autogain() {
