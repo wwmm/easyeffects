@@ -20,6 +20,9 @@
 #ifndef CROSSFEED_HPP
 #define CROSSFEED_HPP
 
+#include <bs2bclass.h>
+#include <mutex>
+#include <vector>
 #include "plugin_base.hpp"
 
 class Crossfeed : public PluginBase {
@@ -34,8 +37,21 @@ class Crossfeed : public PluginBase {
   auto operator=(const Crossfeed&&) -> Crossfeed& = delete;
   ~Crossfeed() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
  private:
-  void bind_to_gsettings();
+  const float inv_short_max = 1.0F / (SHRT_MAX + 1);
+
+  std::vector<float> data;
+
+  bs2b_base bs2b;
+
+  std::mutex bs2b_mutex;
 };
 
 #endif

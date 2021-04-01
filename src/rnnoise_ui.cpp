@@ -99,14 +99,6 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
           name = string_list->get_string(count);
         }
 
-        // if (file->get_path() == settings->get_string("model-path")) {
-        //   for (guint n = 0; n < string_list->get_n_items(); n++) {
-        //     if (string_list->get_string(n) == default_model_name) {
-        //       listview->get_model()->select_item(n, true);
-        //     }
-        //   }
-        // }
-
         break;
       }
       default:
@@ -173,7 +165,6 @@ void RNNoiseUi::setup_listview() {
     label->set_halign(Gtk::Align::START);
 
     remove->set_icon_name("user-trash-symbolic");
-    // remove->set_css_classes({"flat"});
 
     box->set_spacing(6);
     box->append(*label);

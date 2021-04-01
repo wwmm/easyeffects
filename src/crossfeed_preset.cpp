@@ -26,8 +26,6 @@ CrossfeedPreset::CrossfeedPreset()
 void CrossfeedPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".crossfeed.state", settings->get_boolean("state"));
-
   root.put(section + ".crossfeed.fcut", settings->get_int("fcut"));
 
   root.put(section + ".crossfeed.feed", settings->get_double("feed"));
@@ -36,8 +34,6 @@ void CrossfeedPreset::save(boost::property_tree::ptree& root,
 void CrossfeedPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "state", section + ".crossfeed.state");
-
   update_key<int>(root, settings, "fcut", section + ".crossfeed.fcut");
 
   update_key<double>(root, settings, "feed", section + ".crossfeed.feed");

@@ -24,34 +24,41 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
                          const std::string& schema,
                          const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "crossfeed";
+  name = plugin_name::crossfeed;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("preset_cmoy", preset_cmoy);
-  builder->get_widget("preset_default", preset_default);
-  builder->get_widget("preset_jmeier", preset_jmeier);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "fcut", fcut);
-  get_object(builder, "feed", feed);
+  fcut = builder->get_widget<Gtk::SpinButton>("fcut");
+  feed = builder->get_widget<Gtk::SpinButton>("feed");
+
+  preset_cmoy = builder->get_widget<Gtk::Button>("preset_cmoy");
+  preset_default = builder->get_widget<Gtk::Button>("preset_default");
+  preset_jmeier = builder->get_widget<Gtk::Button>("preset_jmeier");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("fcut", fcut.get(), "value", flag);
-  settings->bind("feed", feed.get(), "value", flag);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
+  settings->bind("fcut", fcut->get_adjustment().get(), "value");
+  settings->bind("feed", feed->get_adjustment().get(), "value");
 
   init_presets_buttons();
 }
 
 CrossfeedUi::~CrossfeedUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto CrossfeedUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrossfeedUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crossfeed.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<CrossfeedUi>(builder, "top_box", "com.github.wwmm.pulseeffects.crossfeed",
+                                                           schema_path + "crossfeed/");
+
+  auto stack_page = stack->add(*ui, plugin_name::crossfeed);
+
+  return ui;
 }
 
 void CrossfeedUi::reset() {

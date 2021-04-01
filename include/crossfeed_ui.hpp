@@ -34,10 +34,14 @@ class CrossfeedUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const CrossfeedUi&&) -> CrossfeedUi& = delete;
   ~CrossfeedUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrossfeedUi*;
+
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> fcut, feed;
+  Gtk::SpinButton *fcut = nullptr, *feed = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::Button *preset_cmoy = nullptr, *preset_default = nullptr, *preset_jmeier = nullptr;
 

@@ -23,48 +23,88 @@ Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, "crossfeed", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, plugin_name::crossfeed, schema, schema_path, pipe_manager) {
   // crossfeed = gst_element_factory_make("bs2b", nullptr);
 
-  // if (is_installed(crossfeed)) {
-  //   auto* in_level = gst_element_factory_make("level", "crossfeed_input_level");
-  //   auto* out_level = gst_element_factory_make("level", "crossfeed_output_level");
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "crossfeed_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "crossfeed_audioconvert_out");
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
 
-  //   gst_bin_add_many(GST_BIN(bin), in_level, audioconvert_in, crossfeed, audioconvert_out, out_level, nullptr);
-
-  //   gst_element_link_many(in_level, audioconvert_in, crossfeed, audioconvert_out, out_level, nullptr);
-
-  //   auto* pad_sink = gst_element_get_static_pad(in_level, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   bind_to_gsettings();
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
 }
 
 Crossfeed::~Crossfeed() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Crossfeed::bind_to_gsettings() {
-  // g_settings_bind(settings, "fcut", crossfeed, "fcut", G_SETTINGS_BIND_DEFAULT);
+void Crossfeed::setup() {
+  std::lock_guard<std::mutex> guard(bs2b_mutex);
 
-  // g_settings_bind_with_mapping(settings, "feed", crossfeed, "feed", G_SETTINGS_BIND_GET, util::double_x10_to_int,
-  //                              nullptr, nullptr, nullptr);
+  bs2b.set_srate(rate);
+
+  data.resize(2 * n_samples);
 }
+
+void Crossfeed::process(std::span<float>& left_in,
+                        std::span<float>& right_in,
+                        std::span<float>& left_out,
+                        std::span<float>& right_out) {
+  if (bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  std::lock_guard<std::mutex> guard(bs2b_mutex);
+
+  for (size_t n = 0; n < left_in.size(); n++) {
+    data[n * 2] = left_in[n] * (SHRT_MAX + 1);
+    data[n * 2 + 1] = right_in[n] * (SHRT_MAX + 1);
+  }
+
+  bs2b.cross_feed(data.data());
+
+  for (size_t n = 0; n < left_in.size(); n++) {
+    left_in[n] = data[n * 2] * inv_short_max;
+    right_in[n] = data[n * 2 + 1] * inv_short_max;
+  }
+
+  std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+// g_settings_bind(settings, "fcut", crossfeed, "fcut", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind_with_mapping(settings, "feed", crossfeed, "feed", G_SETTINGS_BIND_GET, util::double_x10_to_int,
+//                              nullptr, nullptr, nullptr);

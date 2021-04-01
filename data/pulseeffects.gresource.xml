@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
     <gresource prefix="/com/github/wwmm/pulseeffects">
-        <file>about.glade</file>
         <file>ui/custom.css</file>
         <file>ui/application_window.ui</file>
         <file>ui/app_info.ui</file>
@@ -9,6 +8,7 @@
         <file>ui/bass_enhancer.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
+        <file>ui/crossfeed.ui</file>
         <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
@@ -31,12 +31,10 @@
         <file>ui/spectrum.ui</file>
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
+        <file>about.glade</file>
         <file>ui/pipe_settings.glade</file>
-        <file>ui/pipe_conf_file_line.glade</file>
-        <file>ui/crossfeed.glade</file>
         <file>ui/loudness.glade</file>
         <file>ui/convolver.glade</file>
-        <file>ui/irs_row.glade</file>
         <file>ui/crystalizer.glade</file>
         <file>ui/crystalizer_band.glade</file>
         <file>ui/pitch.glade</file>

@@ -44,6 +44,8 @@ class RNNoise : public PluginBase {
 
   auto get_latency() const -> float;
 
+  sigc::signal<void(double)> new_latency;
+
  private:
   uint blocksize = 480;
   uint rnnoise_rate = 48000;

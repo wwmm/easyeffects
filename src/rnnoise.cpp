@@ -182,6 +182,8 @@ void RNNoise::process(std::span<float>& left_in,
 
       util::debug("rnnoise latency: " + std::to_string(latency) + " s");
 
+      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
       notify_latency = false;
     }
   }
