@@ -22,6 +22,7 @@
 
 #include <giomm.h>
 #include <pipewire/filter.h>
+#include <ranges>
 #include <span>
 #include "pipe_manager.hpp"
 #include "plugin_name.hpp"

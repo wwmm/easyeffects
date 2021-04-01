@@ -45,8 +45,6 @@ class Crossfeed : public PluginBase {
                std::span<float>& right_out) override;
 
  private:
-  const float inv_short_max = 1.0F / (SHRT_MAX + 1);
-
   std::vector<float> data;
 
   bs2b_base bs2b;

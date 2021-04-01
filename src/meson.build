@@ -98,6 +98,10 @@ pulseeffects_sources = [
 	gresources
 ]
 
+cxx = meson.get_compiler('cpp')
+
+zita_convolver = cxx.find_library('zita-convolver', required: true)
+
 pulseeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.24'),
 	dependency('glib-2.0', version: '>=2.56'),
@@ -114,6 +118,7 @@ pulseeffects_deps = [
 	dependency('libebur128',version: '>=1.2.0'),
 	dependency('rnnoise', required: true),
 	dependency('samplerate'),
+	zita_convolver,
 	dependency('threads')
 ]
 

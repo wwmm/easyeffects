@@ -19,83 +19,90 @@
 
 #include "convolver.hpp"
 
-// namespace {
-
-// void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Convolver* c) {
-//   int v = 0;
-//   int blocksize = 0;
-
-//   g_object_get(c->adapter, "n-input-samples", &v, nullptr);
-//   g_object_get(c->adapter, "blocksize", &blocksize, nullptr);
-
-//   util::debug(c->log_tag + "convolver: new input block size " + std::to_string(v) + " frames");
-// }
-
-// }  // namespace
-
 Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, "convolver", schema, schema_path, pipe_manager) {
-  // convolver = gst_element_factory_make("peconvolver", "convolver");
-
-  // if (is_installed(convolver)) {
-  //   auto* input_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* in_level = gst_element_factory_make("level", "convolver_input_level");
-  //   auto* out_level = gst_element_factory_make("level", "convolver_output_level");
-  //   auto* output_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "convolver_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "convolver_audioconvert_out");
-  //   adapter = gst_element_factory_make("peadapter", nullptr);
-
-  //   gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter, audioconvert_in, convolver, audioconvert_out,
-  //                    output_gain, out_level, nullptr);
-
-  //   gst_element_link_many(input_gain, in_level, adapter, audioconvert_in, convolver, audioconvert_out, output_gain,
-  //                         out_level, nullptr);
-
-  //   auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   g_object_set(adapter, "blocksize", 512, nullptr);
-  //   g_object_set(adapter, "passthrough", 1, nullptr);
-
-  //   g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
-
-  //   bind_to_gsettings();
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
-}
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {}
 
 Convolver::~Convolver() {
   util::debug(log_tag + name + " destroyed");
+
+  std::lock_guard<std::mutex> lock(lock_guard_zita);
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Convolver::bind_to_gsettings() {
-  // g_settings_bind(settings, "kernel-path", convolver, "kernel-path", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(settings, "ir-width", convolver, "ir-width", G_SETTINGS_BIND_DEFAULT);
+void Convolver::setup() {
+  std::lock_guard<std::mutex> guard(lock_guard_zita);
 }
+
+void Convolver::process(std::span<float>& left_in,
+                        std::span<float>& right_in,
+                        std::span<float>& left_out,
+                        std::span<float>& right_out) {
+  if (bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+void Convolver::apply_kernel_autogain() {
+  float abs_peak_L = std::ranges::max(kernel_L, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
+  float abs_peak_R = std::ranges::max(kernel_R, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
+
+  float peak = (abs_peak_L > abs_peak_R) ? abs_peak_L : abs_peak_R;
+
+  // normalize
+
+  std::ranges::for_each(kernel_L, [&](auto& v) { v /= peak; });
+  std::ranges::for_each(kernel_R, [&](auto& v) { v /= peak; });
+
+  // find average power
+
+  float power = 0.0F;
+
+  std::ranges::for_each(kernel_L, [&](auto& v) { power += v * v; });
+  std::ranges::for_each(kernel_R, [&](auto& v) { power += v * v; });
+
+  power *= 0.5F;
+
+  float autogain = std::min(1.0F, 1.0F / sqrtf(power));
+
+  util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
+
+  std::ranges::for_each(kernel_L, [&](auto& v) { v *= autogain; });
+  std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
+}
+
+// g_settings_bind(settings, "kernel-path", convolver, "kernel-path", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "ir-width", convolver, "ir-width", G_SETTINGS_BIND_DEFAULT);

@@ -189,9 +189,8 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {
-  std::transform(left.begin(), left.end(), left.begin(), [&](float& c) { return c * gain; });
-
-  std::transform(right.begin(), right.end(), right.begin(), [&](float& c) { return c * gain; });
+  std::ranges::for_each(left, [&](auto& v) { v *= gain; });
+  std::ranges::for_each(right, [&](auto& v) { v *= gain; });
 }
 
 void PluginBase::notify() {

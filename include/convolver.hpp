@@ -20,6 +20,11 @@
 #ifndef CONVOLVER_HPP
 #define CONVOLVER_HPP
 
+#include <zita-convolver.h>
+#include <algorithm>
+#include <mutex>
+#include <ranges>
+#include <vector>
 #include "plugin_base.hpp"
 
 class Convolver : public PluginBase {
@@ -34,8 +39,23 @@ class Convolver : public PluginBase {
   auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
  private:
-  void bind_to_gsettings();
+  uint kernel_n_frames = 0;
+
+  std::vector<float> kernel_L, kernel_R;
+
+  Convproc* conv = nullptr;
+
+  std::mutex lock_guard_zita;
+
+  void apply_kernel_autogain();
 };
 
 #endif

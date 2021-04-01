@@ -83,11 +83,11 @@ class RNNoise : public PluginBase {
 
       if (data_L.size() == blocksize) {
         if (state_left != nullptr) {
-          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
+          std::ranges::for_each(data_L, [](auto& v) { v *= (SHRT_MAX + 1); });
 
           rnnoise_process_frame(state_left, data_L.data(), data_L.data());
 
-          std::transform(data_L.begin(), data_L.end(), data_L.begin(), [&](float& c) { return c * inv_short_max; });
+          std::ranges::for_each(data_L, [&](auto& v) { v *= inv_short_max; });
         }
 
         for (const auto& v : data_L) {
@@ -103,11 +103,11 @@ class RNNoise : public PluginBase {
 
       if (data_R.size() == blocksize) {
         if (state_right != nullptr) {
-          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * (SHRT_MAX + 1); });
+          std::ranges::for_each(data_R, [](auto& v) { v *= (SHRT_MAX + 1); });
 
           rnnoise_process_frame(state_right, data_R.data(), data_R.data());
 
-          std::transform(data_R.begin(), data_R.end(), data_R.begin(), [&](float& c) { return c * inv_short_max; });
+          std::ranges::for_each(data_R, [&](auto& v) { v *= inv_short_max; });
         }
 
         for (const auto& v : data_R) {
