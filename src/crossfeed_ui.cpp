@@ -40,6 +40,8 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("fcut", fcut->get_adjustment().get(), "value");
   settings->bind("feed", feed->get_adjustment().get(), "value");
 

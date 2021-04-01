@@ -171,6 +171,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
   effects_base->compressor->post_messages = true;
+  effects_base->crossfeed->post_messages = true;
   effects_base->deesser->post_messages = true;
   effects_base->delay->post_messages = true;
   effects_base->equalizer->post_messages = true;
@@ -198,6 +199,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
   effects_base->compressor->post_messages = false;
+  effects_base->crossfeed->post_messages = false;
   effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
   effects_base->equalizer->post_messages = false;
@@ -255,6 +257,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));
   effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain));
   effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
+
+  // crossfeed
+
+  auto* crossfeed_ui = CrossfeedUi::add_to_stack(stack_plugins, path);
+
+  crossfeed_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->crossfeed->bypass = crossfeed_ui->bypass->get_active(); });
+
+  effects_base->crossfeed->input_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level));
+  effects_base->crossfeed->output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level));
 
   // deesser
 

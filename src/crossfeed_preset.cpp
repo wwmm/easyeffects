@@ -20,12 +20,18 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crossfeed",
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crossfeed",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/crossfeed/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crossfeed",
                                             "/com/github/wwmm/pulseeffects/sinkinputs/crossfeed/")) {}
 
 void CrossfeedPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
+  root.put(section + ".crossfeed.input-gain", settings->get_double("input-gain"));
+
+  root.put(section + ".crossfeed.output-gain", settings->get_double("output-gain"));
+
   root.put(section + ".crossfeed.fcut", settings->get_int("fcut"));
 
   root.put(section + ".crossfeed.feed", settings->get_double("feed"));
@@ -34,19 +40,33 @@ void CrossfeedPreset::save(boost::property_tree::ptree& root,
 void CrossfeedPreset::load(const boost::property_tree::ptree& root,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
+  update_key<double>(root, settings, "input-gain", section + ".crossfeed.input-gain");
+
+  update_key<double>(root, settings, "output-gain", section + ".crossfeed.output-gain");
+
   update_key<int>(root, settings, "fcut", section + ".crossfeed.fcut");
 
   update_key<double>(root, settings, "feed", section + ".crossfeed.feed");
 }
 
 void CrossfeedPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
 void CrossfeedPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

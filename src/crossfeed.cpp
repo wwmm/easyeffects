@@ -24,14 +24,24 @@ Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crossfeed, schema, schema_path, pipe_manager) {
-  // crossfeed = gst_element_factory_make("bs2b", nullptr);
-
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("fcut").connect([=, this](auto key) {
+    std::lock_guard<std::mutex> guard(bs2b_mutex);
+
+    bs2b.set_level_fcut(settings->get_int(key));
+  });
+
+  settings->signal_changed("feed").connect([=, this](auto key) {
+    std::lock_guard<std::mutex> guard(bs2b_mutex);
+
+    bs2b.set_level_feed(10 * settings->get_double(key));
   });
 }
 
@@ -75,19 +85,16 @@ void Crossfeed::process(std::span<float>& left_in,
   std::lock_guard<std::mutex> guard(bs2b_mutex);
 
   for (size_t n = 0; n < left_in.size(); n++) {
-    data[n * 2] = left_in[n] * (SHRT_MAX + 1);
-    data[n * 2 + 1] = right_in[n] * (SHRT_MAX + 1);
+    data[n * 2] = left_in[n];
+    data[n * 2 + 1] = right_in[n];
   }
 
-  bs2b.cross_feed(data.data());
+  bs2b.cross_feed(data.data(), n_samples);
 
-  for (size_t n = 0; n < left_in.size(); n++) {
-    left_in[n] = data[n * 2] * inv_short_max;
-    right_in[n] = data[n * 2 + 1] * inv_short_max;
+  for (size_t n = 0; n < left_out.size(); n++) {
+    left_out[n] = data[n * 2];
+    right_out[n] = data[n * 2 + 1];
   }
-
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
   apply_gain(left_out, right_out, output_gain);
 
@@ -103,8 +110,3 @@ void Crossfeed::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind(settings, "fcut", crossfeed, "fcut", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind_with_mapping(settings, "feed", crossfeed, "feed", G_SETTINGS_BIND_GET, util::double_x10_to_int,
-//                              nullptr, nullptr, nullptr);

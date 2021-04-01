@@ -17,6 +17,34 @@
         </child>
 
         <child>
+            <object class="GtkBox">
+                <property name="halign">center</property>
+                <property name="homogeneous">1</property>
+                <property name="spacing">48</property>
+                <child>
+                    <object class="GtkButton" id="preset_cmoy">
+                        <property name="label" translatable="yes">Cmoy</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="preset_default">
+                        <property name="label" translatable="yes">Default</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="preset_jmeier">
+                        <property name="label" translatable="yes">Jmeier</property>
+                        <property name="visible">True</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -26,7 +54,7 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Left</property>
+                        <property name="label" translatable="yes">Cutoff</property>
                         <layout>
                             <property name="column">0</property>
                             <property name="row">0</property>
@@ -34,17 +62,19 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="time_l">
+                    <object class="GtkSpinButton" id="fcut">
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
-                        <property name="digits">2</property>
+                        <property name="digits">0</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="upper">1000</property>
-                                <property name="step-increment">0.01</property>
-                                <property name="page-increment">0.1</property>
+                                <property name="lower">300</property>
+                                <property name="upper">2000</property>
+                                <property name="value">700</property>
+                                <property name="step-increment">1</property>
+                                <property name="page-increment">10</property>
                             </object>
                         </property>
                         <layout>
@@ -58,7 +88,7 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Right</property>
+                        <property name="label" translatable="yes">Feed</property>
                         <layout>
                             <property name="column">1</property>
                             <property name="row">0</property>
@@ -66,7 +96,7 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="time_r">
+                    <object class="GtkSpinButton" id="feed">
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
@@ -74,9 +104,11 @@
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="upper">1000</property>
-                                <property name="step-increment">0.01</property>
-                                <property name="page-increment">0.1</property>
+                                <property name="lower">1</property>
+                                <property name="upper">15</property>
+                                <property name="value">4.5</property>
+                                <property name="step-increment">0.1</property>
+                                <property name="page-increment">1</property>
                             </object>
                         </property>
                         <layout>
@@ -276,7 +308,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Linux Studio Plugins</property>
+                                <property name="label">bs2b</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.pulseeffects.crossfeed">
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
         <key name="fcut" type="i">
             <range min="300" max="2000" />
             <default>700</default>
