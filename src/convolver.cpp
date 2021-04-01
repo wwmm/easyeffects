@@ -103,6 +103,23 @@ void Convolver::apply_kernel_autogain() {
   std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
 }
 
+/*
+   Mid-Side based Stereo width effect
+   taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
+*/
+void Convolver::set_kernel_stereo_width() {
+  float w = ir_width * 0.01F;
+  float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
+
+  for (uint i = 0; i < kernel_L.size(); i++) {
+    float L = kernel_L[i];
+    float R = kernel_R[i];
+
+    kernel_L[i] = L + x * R;
+    kernel_R[i] = R + x * L;
+  }
+}
+
 // g_settings_bind(settings, "kernel-path", convolver, "kernel-path", G_SETTINGS_BIND_DEFAULT);
 
 // g_settings_bind(settings, "ir-width", convolver, "ir-width", G_SETTINGS_BIND_DEFAULT);

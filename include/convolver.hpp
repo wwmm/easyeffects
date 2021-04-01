@@ -48,6 +48,7 @@ class Convolver : public PluginBase {
 
  private:
   uint kernel_n_frames = 0;
+  uint ir_width = 100;
 
   std::vector<float> kernel_L, kernel_R;
 
@@ -56,6 +57,8 @@ class Convolver : public PluginBase {
   std::mutex lock_guard_zita;
 
   void apply_kernel_autogain();
+
+  void set_kernel_stereo_width();
 };
 
 #endif
