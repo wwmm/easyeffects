@@ -49,7 +49,10 @@ class Convolver : public PluginBase {
                std::span<float>& right_out) override;
 
  private:
+  bool kernel_is_initialized = false;
+
   uint kernel_n_frames = 0;
+
   uint ir_width = 100;
 
   std::vector<float> interleaved_kernel, kernel_L, kernel_R;
