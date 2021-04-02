@@ -44,13 +44,14 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
 
+  label_sampling_rate = builder->get_widget<Gtk::Label>("label_sampling_rate");
+  label_samples = builder->get_widget<Gtk::Label>("label_samples");
+  label_duration = builder->get_widget<Gtk::Label>("label_duration");
+  label_file_name = builder->get_widget<Gtk::Label>("label_file_name");
+
   // builder->get_widget("irs_menu_button", irs_menu_button);
   // builder->get_widget("left_plot", left_plot);
   // builder->get_widget("right_plot", right_plot);
-  // builder->get_widget("file_name", label_file_name);
-  // builder->get_widget("sampling_rate", label_sampling_rate);
-  // builder->get_widget("samples", label_samples);
-  // builder->get_widget("duration", label_duration);
 
   // font.set_family("Monospace");
   // font.set_weight(Pango::WEIGHT_BOLD);
@@ -70,8 +71,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   // impulse response import and selection callbacks
 
   // irs_menu_button->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
-
-  // irs_listbox->set_sort_func(sigc::ptr_fun(&ConvolverUi::on_listbox_sort));
 
   import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
