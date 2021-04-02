@@ -32,11 +32,37 @@ Convolver::Convolver(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("ir-width").connect([=, this](auto key) { ir_width = settings->get_int(key); });
+  settings->signal_changed("ir-width").connect([=, this](auto key) {
+    ir_width = settings->get_int(key);
+
+    std::lock_guard<std::mutex> guard(lock_guard_zita);
+
+    kernel_L = original_kernel_L;
+    kernel_R = original_kernel_R;
+
+    set_kernel_stereo_width();
+    apply_kernel_autogain();
+  });
 
   settings->signal_changed("model-path").connect([=, this](auto key) {
+    read_kernel_file();
+
     std::lock_guard<std::mutex> guard(lock_guard_zita);
+
+    kernel_L = original_kernel_L;
+    kernel_R = original_kernel_R;
+
+    set_kernel_stereo_width();
+    apply_kernel_autogain();
   });
+
+  read_kernel_file();
+
+  kernel_L = original_kernel_L;
+  kernel_R = original_kernel_R;
+
+  set_kernel_stereo_width();
+  apply_kernel_autogain();
 }
 
 Convolver::~Convolver() {
@@ -133,7 +159,7 @@ void Convolver::read_kernel_file() {
 
   file.readf(buffer.data(), file.frames());
 
-  if (file.samplerate() != rate) {
+  if (file.samplerate() != static_cast<int>(rate)) {
     for (size_t n = 0; n < buffer_L.size(); n++) {
       buffer_L[n] = buffer[2 * n];
       buffer_R[n] = buffer[2 * n + 1];
@@ -141,15 +167,15 @@ void Convolver::read_kernel_file() {
 
     auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
 
-    kernel_L = resampler->process(buffer_L, true);
-    kernel_R = resampler->process(buffer_R, true);
+    original_kernel_L = resampler->process(buffer_L, true);
+    original_kernel_R = resampler->process(buffer_R, true);
   } else {
-    kernel_L.resize(file.frames());
-    kernel_R.resize(file.frames());
+    original_kernel_L.resize(file.frames());
+    original_kernel_R.resize(file.frames());
 
-    for (size_t n = 0; n < kernel_L.size(); n++) {
-      kernel_L[n] = buffer[2 * n];
-      kernel_R[n] = buffer[2 * n + 1];
+    for (size_t n = 0; n < original_kernel_L.size(); n++) {
+      original_kernel_L[n] = buffer[2 * n];
+      original_kernel_R[n] = buffer[2 * n + 1];
     }
   }
 }
@@ -190,9 +216,9 @@ void Convolver::set_kernel_stereo_width() {
   float w = ir_width * 0.01F;
   float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0; i < kernel_L.size(); i++) {
-    float L = kernel_L[i];
-    float R = kernel_R[i];
+  for (uint i = 0; i < original_kernel_L.size(); i++) {
+    float L = original_kernel_L[i];
+    float R = original_kernel_R[i];
 
     kernel_L[i] = L + x * R;
     kernel_R[i] = R + x * L;
