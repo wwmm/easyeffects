@@ -168,6 +168,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     scrolled_window_plugins->set_max_content_height(height);
   });
 
+  // enabling notifications
+
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
   effects_base->compressor->post_messages = true;
@@ -196,6 +198,8 @@ EffectsBaseUi::~EffectsBaseUi() {
     c.disconnect();
   }
 
+  // do not send notifications when the window is closed
+
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
   effects_base->compressor->post_messages = false;
@@ -215,6 +219,28 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->rnnoise->post_messages = false;
   effects_base->spectrum->post_messages = false;
   effects_base->stereo_tools->post_messages = false;
+
+  // disabling bypass when closing the window
+
+  effects_base->autogain->bypass = false;
+  effects_base->bass_enhancer->bypass = false;
+  effects_base->compressor->bypass = false;
+  effects_base->crossfeed->bypass = false;
+  effects_base->deesser->bypass = false;
+  effects_base->delay->bypass = false;
+  effects_base->equalizer->bypass = false;
+  effects_base->exciter->bypass = false;
+  effects_base->filter->bypass = false;
+  effects_base->gate->bypass = false;
+  effects_base->limiter->bypass = false;
+  effects_base->maximizer->bypass = false;
+  effects_base->multiband_compressor->bypass = false;
+  effects_base->multiband_gate->bypass = false;
+  effects_base->output_level->bypass = false;
+  effects_base->reverb->bypass = false;
+  effects_base->rnnoise->bypass = false;
+  effects_base->spectrum->bypass = false;
+  effects_base->stereo_tools->bypass = false;
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {

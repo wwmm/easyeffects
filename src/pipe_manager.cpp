@@ -1086,6 +1086,10 @@ void PipeManager::connect_stream_output(NodeInfo nd_info) const {
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_sink_node.id).c_str());
 
+    pw_core_sync(core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(thread_loop);
+
     pw_thread_loop_unlock(thread_loop);
   }
 }
@@ -1095,6 +1099,10 @@ void PipeManager::disconnect_stream_output(NodeInfo nd_info) const {
     pw_thread_loop_lock(thread_loop);
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
+
+    pw_core_sync(core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(thread_loop);
 
     pw_thread_loop_unlock(thread_loop);
   }
@@ -1106,6 +1114,10 @@ void PipeManager::connect_stream_input(NodeInfo nd_info) const {
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(pe_source_node.id).c_str());
 
+    pw_core_sync(core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(thread_loop);
+
     pw_thread_loop_unlock(thread_loop);
   }
 }
@@ -1116,31 +1128,34 @@ void PipeManager::disconnect_stream_input(NodeInfo nd_info) const {
 
     pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_source.id).c_str());
 
+    pw_core_sync(core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(thread_loop);
+
     pw_thread_loop_unlock(thread_loop);
   }
 }
 
 void PipeManager::set_node_volume(NodeInfo nd_info, const float& value) {
-  float volumes[SPA_AUDIO_MAX_CHANNELS];
+  std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-  for (int i = 0; i < nd_info.n_volume_channels; i++) {
-    volumes[i] = value;
-  }
+  std::ranges::fill(volumes, 0.0F);
+  std::fill_n(volumes.begin(), nd_info.n_volume_channels, value);
 
-  char buffer[1024];
+  std::array<char, 1024> buffer{};
 
-  auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
+  auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
   pw_node_set_param((struct pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
                     (spa_pod*)spa_pod_builder_add_object(
                         &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
-                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes)));
+                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes.data())));
 }
 
 void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
-  char buffer[1024];
+  std::array<char, 1024> buffer{};
 
-  auto builder = SPA_POD_BUILDER_INIT(buffer, sizeof(buffer));
+  auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
   pw_node_set_param((pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
                     (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
