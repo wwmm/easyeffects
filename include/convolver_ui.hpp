@@ -20,17 +20,14 @@
 #ifndef CONVOLVER_UI_HPP
 #define CONVOLVER_UI_HPP
 
+#include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <gst/fft/gstfftf32.h>
-#include <boost/filesystem.hpp>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include <filesystem>
 #include <future>
 #include <mutex>
 #include <sndfile.hh>
-#include "glibmm/main.h"
-#include "glibmm/miscutils.h"
 #include "plugin_ui_base.hpp"
-#include "sigc++/functors/ptr_fun.h"
 
 class ConvolverUi : public Gtk::Box, public PluginUiBase {
  public:
@@ -44,20 +41,24 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const ConvolverUi&&) -> ConvolverUi& = delete;
   ~ConvolverUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi*;
+
   void reset() override;
 
  private:
   std::string log_tag = "convolver_ui: ";
 
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain, ir_width;
+  Gtk::SpinButton* ir_width = nullptr;
 
-  Gtk::ListBox* irs_listbox = nullptr;
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
+
+  Gtk::ListView* listview = nullptr;
 
   Gtk::MenuButton* irs_menu_button = nullptr;
 
-  Gtk::ScrolledWindow* irs_scrolled_window = nullptr;
+  Gtk::ScrolledWindow* scrolled_window = nullptr;
 
-  Gtk::Button* import_irs = nullptr;
+  Gtk::Button* import = nullptr;
 
   Gtk::DrawingArea *left_plot = nullptr, *right_plot = nullptr;
 
@@ -68,15 +69,18 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Pango::FontDescription font;
 
-  boost::filesystem::path irs_dir;
+  std::filesystem::path irs_dir;
 
-  bool mouse_inside = false, show_fft_spectrum = false;
-  unsigned int max_plot_points = 1000U;
+  bool show_fft_spectrum = false;
+
+  uint max_plot_points = 1000U;
+
   float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
   float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
   float max_time = 0.0F;
   float fft_min_left = 0.0F, fft_max_left = 0.0F, fft_min_right = 0.0F, fft_max_right = 0.0F;
   float fft_max_freq = 0.0F, fft_min_freq = 0.0F;
+
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 
@@ -92,10 +96,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   void remove_irs_file(const std::string& name);
 
-  void populate_irs_listbox();
-
-  static auto on_listbox_sort(Gtk::ListBoxRow* row1, Gtk::ListBoxRow* row2) -> int;
-
   void on_irs_menu_button_clicked();
 
   void on_import_irs_clicked();
@@ -108,21 +108,21 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
                     const Cairo::RefPtr<Cairo::Context>& ctx,
                     const std::vector<float>& magnitudes);
 
-  void update_mouse_info_L(GdkEventMotion* event);
+  // void update_mouse_info_L(GdkEventMotion* event);
 
-  void update_mouse_info_R(GdkEventMotion* event);
+  // void update_mouse_info_R(GdkEventMotion* event);
 
   auto on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  auto on_left_motion_notify_event(GdkEventMotion* event) -> bool;
+  // auto on_left_motion_notify_event(GdkEventMotion* event) -> bool;
 
   auto on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  auto on_right_motion_notify_event(GdkEventMotion* event) -> bool;
+  // auto on_right_motion_notify_event(GdkEventMotion* event) -> bool;
 
-  auto on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool;
+  // auto on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool;
 
-  auto on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool;
+  // auto on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool;
 };
 
 #endif

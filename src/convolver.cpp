@@ -100,6 +100,8 @@ void Convolver::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
+  std::lock_guard<std::mutex> lock(lock_guard_zita);
+
   apply_gain(left_out, right_out, output_gain);
 
   if (post_messages) {

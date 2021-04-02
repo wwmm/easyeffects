@@ -8,6 +8,7 @@
         <file>ui/bass_enhancer.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
+        <file>ui/convolver.ui</file>
         <file>ui/crossfeed.ui</file>
         <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
@@ -34,7 +35,6 @@
         <file>about.glade</file>
         <file>ui/pipe_settings.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/convolver.glade</file>
         <file>ui/crystalizer.glade</file>
         <file>ui/crystalizer_band.glade</file>
         <file>ui/pitch.glade</file>

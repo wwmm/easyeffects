@@ -13,7 +13,7 @@ pulseeffects_sources = [
 	'compressor_ui.cpp',
 	'convolver.cpp',
 	'convolver_preset.cpp',
-	# 'convolver_ui.cpp',
+	'convolver_ui.cpp',
 	'crossfeed.cpp',
 	'crossfeed_preset.cpp',
 	'crossfeed_ui.cpp',
