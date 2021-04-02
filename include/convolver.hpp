@@ -55,9 +55,7 @@ class Convolver : public PluginBase {
 
   uint ir_width = 100;
 
-  std::vector<float> interleaved_kernel, kernel_L, kernel_R;
-
-  std::unique_ptr<Resampler> resampler_L, resampler_R;
+  std::vector<float> kernel_L, kernel_R;
 
   Convproc* conv = nullptr;
 

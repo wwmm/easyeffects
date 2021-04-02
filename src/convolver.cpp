@@ -35,8 +35,6 @@ Convolver::Convolver(const std::string& tag,
   settings->signal_changed("ir-width").connect([=, this](auto key) { ir_width = settings->get_int(key); });
 
   settings->signal_changed("model-path").connect([=, this](auto key) {
-    // resampler_L = std::make_unique<Resampler>(rate, rnnoise_rate);
-
     std::lock_guard<std::mutex> guard(lock_guard_zita);
   });
 }
@@ -127,6 +125,32 @@ void Convolver::read_kernel_file() {
     util::warning(log_tag + "The impulse file was not loaded!");
 
     return;
+  }
+
+  std::vector<float> buffer(file.frames() * file.channels());
+  std::vector<float> buffer_L(file.frames());
+  std::vector<float> buffer_R(file.frames());
+
+  file.readf(buffer.data(), file.frames());
+
+  if (file.samplerate() != rate) {
+    for (size_t n = 0; n < buffer_L.size(); n++) {
+      buffer_L[n] = buffer[2 * n];
+      buffer_R[n] = buffer[2 * n + 1];
+    }
+
+    auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
+
+    kernel_L = resampler->process(buffer_L, true);
+    kernel_R = resampler->process(buffer_R, true);
+  } else {
+    kernel_L.resize(file.frames());
+    kernel_R.resize(file.frames());
+
+    for (size_t n = 0; n < kernel_L.size(); n++) {
+      kernel_L[n] = buffer[2 * n];
+      kernel_R[n] = buffer[2 * n + 1];
+    }
   }
 }
 
