@@ -33,13 +33,9 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
 
   root.put("spectrum.height", settings->get_int("height"));
 
-  root.put("spectrum.use-custom-color", settings->get_boolean("use-custom-color"));
-
   root.put("spectrum.fill", settings->get_boolean("fill"));
 
   root.put("spectrum.show-bar-border", settings->get_boolean("show-bar-border"));
-
-  root.put("spectrum.sampling-freq", settings->get_int("sampling-freq"));
 
   root.put("spectrum.line-width", settings->get_double("line-width"));
 
@@ -70,20 +66,6 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
   }
 
   root.add_child("spectrum.color-axis-labels", node_in);
-
-  // gradient color
-
-  node_in.clear();
-
-  settings->get_value("gradient-color", aux);
-
-  for (const auto& p : aux.get()) {
-    boost::property_tree::ptree node;
-    node.put("", p);
-    node_in.push_back(std::make_pair("", node));
-  }
-
-  root.add_child("spectrum.gradient-color", node_in);
 }
 
 void SpectrumPreset::load(const boost::property_tree::ptree& root,
@@ -95,13 +77,9 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
 
   update_key<int>(root, settings, "height", "spectrum.height");
 
-  update_key<bool>(root, settings, "use-custom-color", "spectrum.use-custom-color");
-
   update_key<bool>(root, settings, "fill", "spectrum.fill");
 
   update_key<bool>(root, settings, "show-bar-border", "spectrum.show-bar-border");
-
-  update_key<int>(root, settings, "sampling-freq", "spectrum.sampling-freq");
 
   update_key<double>(root, settings, "line-width", "spectrum.line-width");
 
@@ -137,22 +115,6 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
     settings->set_value("color-axis-labels", v);
   } catch (const boost::property_tree::ptree_error& e) {
     settings->reset("color-axis-labels");
-  }
-
-  // gradient color
-
-  try {
-    std::vector<double> color;
-
-    for (const auto& p : root.get_child("spectrum.gradient-color")) {
-      color.emplace_back(p.second.get<double>(""));
-    }
-
-    auto v = Glib::Variant<std::vector<double>>::create(color);
-
-    settings->set_value("gradient-color", v);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("gradient-color");
   }
 }
 

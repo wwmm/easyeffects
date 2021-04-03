@@ -55,12 +55,9 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   show = builder->get_widget<Gtk::Switch>("show");
   fill = builder->get_widget<Gtk::Switch>("fill");
   show_bar_border = builder->get_widget<Gtk::Switch>("show_bar_border");
-  use_custom_color = builder->get_widget<Gtk::Switch>("use_custom_color");
-  use_gradient = builder->get_widget<Gtk::Switch>("use_gradient");
 
   spectrum_color_button = builder->get_widget<Gtk::ColorButton>("spectrum_color_button");
   axis_color_button = builder->get_widget<Gtk::ColorButton>("axis_color_button");
-  gradient_color_button = builder->get_widget<Gtk::ColorButton>("gradient_color_button");
 
   spectrum_type = builder->get_widget<Gtk::ComboBoxText>("spectrum_type");
 
@@ -86,20 +83,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     spectrum_color_button->set_rgba(color);
   }));
 
-  connections.emplace_back(settings->signal_changed("gradient-color").connect([&](auto key) {
-    Glib::Variant<std::vector<double>> v;
-
-    settings->get_value("gradient-color", v);
-
-    auto rgba = v.get();
-
-    Gdk::RGBA color;
-
-    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-
-    gradient_color_button->set_rgba(color);
-  }));
-
   spectrum_color_button->signal_color_set().connect([&]() {
     auto spectrum_color = spectrum_color_button->get_rgba();
 
@@ -118,17 +101,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
     settings->set_value("color-axis-labels", v);
   });
 
-  gradient_color_button->signal_color_set().connect([&]() {
-    auto color = gradient_color_button->get_rgba();
-
-    auto v = Glib::Variant<std::vector<double>>::create(
-        std::vector<double>{color.get_red(), color.get_green(), color.get_blue(), color.get_alpha()});
-
-    settings->set_value("gradient-color", v);
-  });
-
-  use_custom_color->signal_state_set().connect(sigc::mem_fun(*this, &SpectrumSettingsUi::on_use_custom_color), false);
-
   minimum_frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(minimum_frequency, "Hz"); },
                                              true);
   minimum_frequency->signal_input().connect(
@@ -145,11 +117,6 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   settings->bind("n-points", n_points->get_adjustment().get(), "value");
   settings->bind("height", height->get_adjustment().get(), "value");
   settings->bind("line-width", line_width->get_adjustment().get(), "value");
-  settings->bind("use-gradient", use_gradient, "active");
-  settings->bind("use-custom-color", use_custom_color, "active");
-  settings->bind("use-custom-color", spectrum_color_button, "sensitive");
-  settings->bind("use-custom-color", gradient_color_button, "sensitive");
-  settings->bind("use-custom-color", axis_color_button, "sensitive");
   settings->bind("minimum-frequency", minimum_frequency->get_adjustment().get(), "value");
   settings->bind("maximum-frequency", maximum_frequency->get_adjustment().get(), "value");
 
@@ -171,32 +138,4 @@ void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   auto* ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
-}
-
-auto SpectrumSettingsUi::on_use_custom_color(bool state) -> bool {
-  if (state) {
-    Glib::Variant<std::vector<double>> v;
-
-    settings->get_value("color", v);
-
-    auto rgba = v.get();
-
-    Gdk::RGBA color;
-
-    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-
-    spectrum_color_button->set_rgba(color);
-
-    // background color
-
-    settings->get_value("gradient-color", v);
-
-    rgba = v.get();
-
-    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-
-    gradient_color_button->set_rgba(color);
-  }
-
-  return false;
 }

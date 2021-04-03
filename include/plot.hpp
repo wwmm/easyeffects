@@ -44,8 +44,6 @@ class Plot {
 
   void set_data(const std::vector<float>& x, const std::vector<float>& y);
 
-  void set_n_points(const uint& value);
-
   void set_background_color(const float& r, const float& g, const float& b, const float& alpha);
 
   void set_color(const float& r, const float& g, const float& b, const float& alpha);
@@ -76,10 +74,6 @@ class Plot {
   int n_x_labels = 10;
 
   double mouse_y = 0.0, mouse_x = 0.0;
-
-  uint n_points = 100;
-
-  float spline_f0 = 0.0F, spline_df = 0.0F;
 
   float x_min = 0.0F, x_max = 1.0F;
   float y_min = 0.0F, y_max = 1.0F;

@@ -85,10 +85,6 @@ void Plot::set_data(const std::vector<float>& x, const std::vector<float>& y) {
   da->queue_draw();
 }
 
-void Plot::set_n_points(const uint& value) {
-  n_points = value;
-}
-
 void Plot::init_axes() {
   x_min = std::ranges::min(original_x);
   x_max = std::ranges::max(original_x);

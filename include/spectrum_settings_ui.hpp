@@ -46,10 +46,9 @@ class SpectrumSettingsUi : public Gtk::Box {
 
   Application* app = nullptr;
 
-  Gtk::Switch *show = nullptr, *use_custom_color = nullptr, *fill = nullptr, *show_bar_border = nullptr,
-              *use_gradient = nullptr;
+  Gtk::Switch *show = nullptr, *fill = nullptr, *show_bar_border = nullptr;
 
-  Gtk::ColorButton *spectrum_color_button = nullptr, *gradient_color_button = nullptr, *axis_color_button = nullptr;
+  Gtk::ColorButton *spectrum_color_button = nullptr, *axis_color_button = nullptr;
 
   Gtk::ComboBoxText* spectrum_type = nullptr;
 
@@ -57,8 +56,6 @@ class SpectrumSettingsUi : public Gtk::Box {
                   *maximum_frequency = nullptr;
 
   std::vector<sigc::connection> connections;
-
-  auto on_use_custom_color(bool state) -> bool;
 };
 
 #endif

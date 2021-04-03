@@ -18,27 +18,14 @@
             <range min="0.1" max="100.0" />
             <default>2.0</default>
         </key>
-        <key name="use-custom-color" type="b">
-            <default>false</default>
-        </key>
-        <key name="use-gradient" type="b">
-            <default>true</default>
-        </key>
         <key name="color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
-        </key>
-        <key name="gradient-color" type="ad">
-            <default>[0.0,0.0,0.0,1.0]</default>
         </key>
         <key name="color-axis-labels" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>
         </key>
         <key name="height" type="i">
             <default>120</default>
-        </key>
-        <key name="sampling-freq" type="i">
-            <range min="1" max="200" />
-            <default>10</default>
         </key>
         <key name="type" enum="com.github.wwmm.pulseeffects.spectrum.type.enum">
             <default>"Bars"</default>
