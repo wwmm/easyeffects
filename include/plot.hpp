@@ -21,7 +21,6 @@
 #define PLOT_UI_HPP
 
 #include <gtkmm.h>
-#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <ranges>
 #include "util.hpp"
 
