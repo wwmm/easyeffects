@@ -52,6 +52,7 @@ pulseeffects_sources = [
 	'output_level.cpp',
 	'pipe_info_ui.cpp',
 	'pipe_manager.cpp',
+	'plot.cpp',
 	'plugin_base.cpp',
 	'plugin_ui_base.cpp',
 	'presets_menu_ui.cpp',

@@ -27,6 +27,50 @@
         </child>
 
         <child>
+            <object class="GtkBox">
+                <property name="spacing">12</property>
+                <child>
+                    <object class="GtkStackSwitcher">
+                        <property name="orientation">vertical</property>
+                        <property name="stack">stack</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStack" id="stack">
+                        <property name="transition_duration">250</property>
+                        <property name="transition_type">slide-left-right</property>
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">page_left</property>
+                                <property name="title" translatable="yes">L</property>
+                                <property name="child">
+                                    <object class="GtkDrawingArea" id="drawing_area_left">
+                                        <property name="hexpand">1</property>
+                                        <property name="content-height">100</property>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkStackPage">
+                                <property name="name">page_right</property>
+                                <property name="title" translatable="yes">R</property>
+                                <property name="child">
+                                    <object class="GtkDrawingArea" id="drawing_area_right">
+                                        <property name="hexpand">1</property>
+                                        <property name="content-height">100</property>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -373,7 +417,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Linux Studio Plugins</property>
+                                <property name="label">zita-convolver</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>
