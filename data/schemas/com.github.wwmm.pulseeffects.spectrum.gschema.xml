@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.pulseeffects.spectrum.type.enum">
+        <value nick="Bars" value="0" />
+        <value nick="Lines" value="1" />
+    </enum>
     <schema id="com.github.wwmm.pulseeffects.spectrum" path="/com/github/wwmm/pulseeffects/spectrum/">
         <key name="show" type="b">
             <default>true</default>

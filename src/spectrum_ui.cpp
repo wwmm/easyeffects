@@ -41,10 +41,30 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   connections.emplace_back(
       settings->signal_changed("maximum-frequency").connect([&](auto key) { init_frequency_axis(); }));
 
+  connections.emplace_back(settings->signal_changed("type").connect([&](auto key) { init_type(); }));
+
+  connections.emplace_back(
+      settings->signal_changed("fill").connect([&](auto key) { plot->set_fill_bars(settings->get_boolean(key)); }));
+
+  connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](auto key) {
+    plot->set_draw_bar_border(settings->get_boolean(key));
+  }));
+
+  connections.emplace_back(settings->signal_changed("line-width").connect([&](auto key) {
+    plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
+  }));
+
   settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
 
   init_color();
   init_frequency_labels_color();
+  init_type();
+
+  plot->set_fill_bars(settings->get_boolean("fill"));
+
+  plot->set_draw_bar_border(settings->get_boolean("show-bar-border"));
+
+  plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
 
   set_content_height(settings->get_int("height"));
 }
@@ -65,12 +85,6 @@ auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
   box->append(*ui);
 
   return ui;
-}
-
-void SpectrumUi::clear_spectrum() {
-  spectrum_mag.resize(0);
-
-  queue_draw();
 }
 
 void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes) {
@@ -135,6 +149,14 @@ void SpectrumUi::init_color() {
   auto rgba = v.get();
 
   plot->set_color(rgba[0], rgba[1], rgba[2], rgba[3]);
+}
+
+void SpectrumUi::init_type() {
+  if (settings->get_string("type") == "Bars") {
+    plot->set_plot_type(PlotType::bar);
+  } else if (settings->get_string("type") == "Lines") {
+    plot->set_plot_type(PlotType::line);
+  }
 }
 
 void SpectrumUi::init_frequency_axis() {

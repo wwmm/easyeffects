@@ -39,8 +39,6 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   void on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes);
 
-  void clear_spectrum();
-
  private:
   std::string log_tag = "spectrum_ui: ";
 
@@ -50,9 +48,6 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   std::vector<sigc::connection> connections;
 
-  int axis_height = 0;
-  double mouse_intensity = 0.0, mouse_freq = 0.0;
-
   uint rate = 0, n_bands = 0;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
@@ -60,6 +55,8 @@ class SpectrumUi : public Gtk::DrawingArea {
   std::vector<int> spectrum_bin_count;
 
   void init_color();
+
+  void init_type();
 
   void init_frequency_axis();
 

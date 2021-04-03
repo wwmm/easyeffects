@@ -148,9 +148,9 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
   if (n_points > 0) {
     auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
 
-    int axis_height = draw_x_labels(ctx, width, height);
+    x_axis_height = draw_x_labels(ctx, width, height);
 
-    int usable_height = height - axis_height;
+    int usable_height = height - x_axis_height;
 
     ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(), color.get_alpha());
 
