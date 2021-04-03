@@ -97,13 +97,7 @@ void Spectrum::process(std::span<float>& left_in,
 
       sqr /= static_cast<float>(n_samples * n_samples);
 
-      float v = 10.0F * log10f(sqr);
-
-      if (!std::isinf(v)) {
-        output[i] = (v > util::minimum_db_level) ? v : util::minimum_db_level;
-      } else {
-        output[i] = util::minimum_db_level;
-      }
+      output[i] = sqr;
     }
 
     auto output_copy = output;

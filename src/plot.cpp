@@ -19,21 +19,21 @@
 
 #include "plot.hpp"
 
-Plot::Plot(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
-    : Gtk::DrawingArea(cobject),
+Plot::Plot(Gtk::DrawingArea* drawing_area)
+    : da(drawing_area),
       controller_motion(Gtk::EventControllerMotion::create()),
       background_color(0.0, 0.0, 0.0, 1.0),
       color(1.0, 1.0, 1.0, 1.0),
       color_axis_labels(1.0, 1.0, 1.0, 1.0) {
-  set_draw_func(sigc::mem_fun(*this, &Plot::on_draw));
+  da->set_draw_func(sigc::mem_fun(*this, &Plot::on_draw));
 
   // signals connection
 
-  add_controller(controller_motion);
+  da->add_controller(controller_motion);
 
   controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
-    int width = get_width();
-    int height = get_height();
+    int width = da->get_width();
+    int height = da->get_height();
     int usable_height = height - x_axis_height;
 
     if (y < usable_height) {
@@ -46,36 +46,26 @@ Plot::Plot(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder)
 
           mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
 
-          mouse_y = y * (y_max - y_min) / usable_height;
+          mouse_y = (usable_height - y) / usable_height * (y_max - y_min) + y_min;
 
           break;
         }
         case PlotScale::linear: {
           mouse_x = x / static_cast<double>(width) * (x_max - x_min) + x_min;
 
-          mouse_y = y * (y_max - y_min) / usable_height;
+          mouse_y = (y_max - y_min) * (usable_height - y) / usable_height;
 
           break;
         }
       }
 
-      queue_draw();
+      da->queue_draw();
     }
   });
 }
 
 Plot::~Plot() {
   util::debug(log_tag + "destroyed");
-}
-
-auto Plot::add_to_box(Gtk::Box* box) -> Plot* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/plot.ui");
-
-  auto* ui = Gtk::Builder::get_widget_derived<Plot>(builder, "drawing_area");
-
-  box->append(*ui);
-
-  return ui;
 }
 
 void Plot::set_plot_type(const PlotType& value) {
@@ -92,52 +82,38 @@ void Plot::set_data(const std::vector<float>& x, const std::vector<float>& y) {
 
   init_axes();
 
-  queue_draw();
+  da->queue_draw();
 }
 
 void Plot::set_n_points(const uint& value) {
   n_points = value;
 }
 
-void Plot::set_x_range(const float& min, const float& max) {
-  x_min = min;
-  x_max = max;
-}
-
-void Plot::set_y_range(const float& min, const float& max) {
-  y_min = min;
-  y_max = max;
-}
-
 void Plot::init_axes() {
-  slice_x.resize(0);
-  slice_y.resize(0);
+  x_min = std::ranges::min(original_x);
+  x_max = std::ranges::max(original_x);
+
+  y_min = std::ranges::min(original_y);
+  y_max = std::ranges::max(original_y);
 
   x_axis.resize(0);
   y_axis.resize(0);
 
   for (const auto& v : original_x) {
     if (v >= x_min && v <= x_max) {
-      slice_x.emplace_back(v);
+      x_axis.emplace_back(v);
     }
   }
 
   for (const auto& v : original_y) {
     if (v >= y_min && v <= y_max) {
-      slice_y.emplace_back(v);
+      y_axis.emplace_back(v);
     }
   }
-
-  x_axis = slice_x;
-  y_axis = slice_y;
 
   // making each y value a number between 0 and 1
 
   std::ranges::for_each(y_axis, [&](auto& v) { v = (v - y_min) / (y_max - y_min); });
-}
-
-void Plot::set_normalize_y(const bool& v) {
-  normalize_y = v;
 }
 
 void Plot::set_background_color(const float& r, const float& g, const float& b, const float& alpha) {
@@ -239,7 +215,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 
       int text_width = 0;
       int text_height = 0;
-      auto layout = create_pango_layout(msg.str());
+      auto layout = da->create_pango_layout(msg.str());
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
@@ -296,7 +272,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     int text_width = 0;
     int text_height = 0;
 
-    auto layout = create_pango_layout(msg.str());
+    auto layout = da->create_pango_layout(msg.str());
     layout->set_font_description(font);
     layout->get_pixel_size(text_width, text_height);
 

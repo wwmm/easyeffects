@@ -23,6 +23,8 @@
 #include <giomm.h>
 #include <gtkmm.h>
 #include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
+#include <memory>
+#include "plot.hpp"
 #include "util.hpp"
 
 class SpectrumUi : public Gtk::DrawingArea {
@@ -45,6 +47,8 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   Glib::RefPtr<Gio::Settings> settings;
 
+  std::unique_ptr<Plot> plot;
+
   Glib::RefPtr<Gtk::EventControllerMotion> controller_motion;
 
   Gdk::RGBA color, color_frequency_axis_labels, gradient_color;
@@ -58,6 +62,8 @@ class SpectrumUi : public Gtk::DrawingArea {
   float spline_f0 = 0.0F, spline_df = 0.0F;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
+
+  std::vector<int> spectrum_bin_count;
 
   void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 

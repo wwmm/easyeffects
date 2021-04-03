@@ -23,56 +23,59 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     : Gtk::DrawingArea(cobject),
       settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")),
       controller_motion(Gtk::EventControllerMotion::create()) {
-  set_draw_func(sigc::mem_fun(*this, &SpectrumUi::on_draw));
+  plot = std::make_unique<Plot>(this);
+
+  // set_draw_func(sigc::mem_fun(*this, &SpectrumUi::on_draw));
 
   // signals connection
 
-  add_controller(controller_motion);
+  // add_controller(controller_motion);
 
-  controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
-    int width = get_width();
-    int height = get_height();
-    int usable_height = height - axis_height;
+  // controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
+  //   int width = get_width();
+  //   int height = get_height();
+  //   int usable_height = height - axis_height;
 
-    if (y < usable_height) {
-      double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
-      double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
-      double mouse_freq_log = x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
+  //   if (y < usable_height) {
+  //     double min_freq_log = log10(static_cast<double>(settings->get_int("minimum-frequency")));
+  //     double max_freq_log = log10(static_cast<double>(settings->get_int("maximum-frequency")));
+  //     double mouse_freq_log = x / static_cast<double>(width) * (max_freq_log - min_freq_log) + min_freq_log;
 
-      mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
+  //     mouse_freq = std::pow(10.0, mouse_freq_log);  // exp10 does not exist on FreeBSD
 
-      // intensity scale is in decibel
+  //     // intensity scale is in decibel
 
-      mouse_intensity = y * util::minimum_db_level / usable_height;
+  //     mouse_intensity = y * util::minimum_db_level / usable_height;
 
-      queue_draw();
-    }
-  });
+  //     queue_draw();
+  //   }
+  // });
 
-  connections.emplace_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
-    init_color();
-    init_frequency_labels_color();
-    init_gradient_color();
-  }));
+  // connections.emplace_back(settings->signal_changed("use-custom-color").connect([&](auto key) {
+  //   init_color();
+  //   init_frequency_labels_color();
+  //   init_gradient_color();
+  // }));
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
+  // connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("color-axis-labels").connect([&](auto key) { init_frequency_labels_color(); }));
+  // connections.emplace_back(
+  //     settings->signal_changed("color-axis-labels").connect([&](auto key) { init_frequency_labels_color(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
+  // connections.emplace_back(
+  //     settings->signal_changed("gradient-color").connect([&](auto key) { init_gradient_color(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
+  // connections.emplace_back(
+  //     settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height"));
+  //     }));
 
-  connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) { init_frequency_axis(); }));
+  // connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("minimum-frequency").connect([&](auto key) { init_frequency_axis(); }));
+  // connections.emplace_back(
+  //     settings->signal_changed("minimum-frequency").connect([&](auto key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("maximum-frequency").connect([&](auto key) { init_frequency_axis(); }));
+  // connections.emplace_back(
+  //     settings->signal_changed("maximum-frequency").connect([&](auto key) { init_frequency_axis(); }));
 
   settings->bind("show", this, "visible", Gio::Settings::BindFlags::GET);
 
@@ -119,30 +122,46 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
     init_frequency_axis();
   }
 
-  try {
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline(magnitudes.begin(), magnitudes.end(), spline_f0,
-                                                                      spline_df);
+  std::ranges::fill(spectrum_mag, 0.0F);
+  std::ranges::fill(spectrum_bin_count, 0);
 
-    for (uint n = 0U; n < spectrum_mag.size(); n++) {
-      spectrum_mag[n] = spline(spectrum_x_axis[n]);
-    }
-  } catch (const std::exception& e) {
-    util::debug(std::string("Message from thrown exception was: ") + e.what());
-  }
+  // reducing the amount of data so we can plot them
 
-  auto max_mag = std::ranges::max(spectrum_mag);
+  for (size_t j = 0; j < spectrum_freqs.size(); j++) {
+    for (size_t n = 0; n < spectrum_x_axis.size(); n++) {
+      if (n > 0) {
+        if (spectrum_freqs[j] <= spectrum_x_axis[n] && spectrum_freqs[j] > spectrum_x_axis[n - 1]) {
+          spectrum_mag[n] += magnitudes[j];
 
-  if (max_mag > util::minimum_db_level) {
-    for (float& v : spectrum_mag) {
-      if (util::minimum_db_level < v) {
-        v = (util::minimum_db_level - v) / util::minimum_db_level;
+          spectrum_bin_count[n]++;
+        }
       } else {
-        v = 0.0F;
+        if (spectrum_freqs[j] <= spectrum_x_axis[n]) {
+          spectrum_mag[n] += magnitudes[j];
+
+          spectrum_bin_count[n]++;
+        }
       }
     }
-
-    queue_draw();
   }
+
+  for (size_t n = 0; n < spectrum_bin_count.size(); n++) {
+    if (spectrum_bin_count[n] == 0 && n > 0) {
+      spectrum_mag[n] = spectrum_mag[n - 1];
+    }
+  }
+
+  std::ranges::for_each(spectrum_mag, [](auto& v) {
+    v = 10.0F * log10f(v);
+
+    if (!std::isinf(v)) {
+      v = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+    } else {
+      v = util::minimum_db_level;
+    }
+  });
+
+  plot->set_data(spectrum_x_axis, spectrum_mag);
 }
 
 void SpectrumUi::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
@@ -276,6 +295,8 @@ void SpectrumUi::init_frequency_axis() {
                                      log10f(static_cast<float>(settings->get_int("maximum-frequency"))), npoints);
 
     spectrum_mag.resize(npoints);
+
+    spectrum_bin_count.resize(npoints);
 
     spline_f0 = spectrum_freqs[0];
     spline_df = spectrum_freqs[1] - spectrum_freqs[0];

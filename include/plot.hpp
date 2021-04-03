@@ -29,16 +29,14 @@ enum class PlotType { bar, line };
 
 enum class PlotScale { linear, logarithmic };
 
-class Plot : public Gtk::DrawingArea {
+class Plot {
  public:
-  Plot(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder);
+  Plot(Gtk::DrawingArea* drawing_area);
   Plot(const Plot&) = delete;
   auto operator=(const Plot&) -> Plot& = delete;
   Plot(const Plot&&) = delete;
   auto operator=(const Plot&&) -> Plot& = delete;
-  ~Plot() override;
-
-  static auto add_to_box(Gtk::Box* box) -> Plot*;
+  ~Plot();
 
   void set_plot_type(const PlotType& value);
 
@@ -47,12 +45,6 @@ class Plot : public Gtk::DrawingArea {
   void set_data(const std::vector<float>& x, const std::vector<float>& y);
 
   void set_n_points(const uint& value);
-
-  void set_x_range(const float& min, const float& max);
-
-  void set_y_range(const float& min, const float& max);
-
-  void set_normalize_y(const bool& v);
 
   void set_background_color(const float& r, const float& g, const float& b, const float& alpha);
 
@@ -71,11 +63,12 @@ class Plot : public Gtk::DrawingArea {
  private:
   std::string log_tag = "plot: ";
 
+  Gtk::DrawingArea* da = nullptr;
+
   Glib::RefPtr<Gtk::EventControllerMotion> controller_motion;
 
   Gdk::RGBA background_color, color, color_axis_labels, gradient_color;
 
-  bool normalize_y = false;
   bool draw_bar_border = true;
   bool fill_bars = true;
 
@@ -98,7 +91,6 @@ class Plot : public Gtk::DrawingArea {
   PlotScale plot_scale = PlotScale::logarithmic;
 
   std::vector<float> original_x, original_y;
-  std::vector<float> slice_x, slice_y;
   std::vector<float> y_axis, x_axis;
 
   void init_axes();
