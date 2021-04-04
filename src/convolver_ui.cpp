@@ -334,45 +334,45 @@ void ConvolverUi::get_irs_info() {
 
   file.readf(kernel.data(), file.frames());
 
-  // build plot time axis
-
   float dt = 1.0F / static_cast<float>(file.samplerate());
 
   float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
 
-  uint max_points = (file.frames() > max_plot_points) ? max_plot_points : file.frames();
+  if (file.frames() <= max_plot_points) {
+    time_axis.resize(file.frames());
+    left_mag.resize(file.frames());
+    right_mag.resize(file.frames());
 
-  float plot_dt = duration / max_points;
+    for (uint n = 0; n < file.frames(); n++) {
+      time_axis[n] = n * dt;
 
-  time_axis.resize(max_points);
-  time_axis.shrink_to_fit();
+      left_mag[n] = kernel[2U * n];
 
-  for (uint n = 0; n < max_points; n++) {
-    time_axis[n] = n * plot_dt;
-  }
+      right_mag[n] = kernel[2U * n + 1U];
+    }
 
-  max_time = std::ranges::max(time_axis);
+    // max_time = std::ranges::max(time_axis);
+  } else {
+    // decimating the data so we can draw it
 
-  // deinterleaving channels
-
-  left_mag.resize(file.frames());
-  right_mag.resize(file.frames());
-
-  for (uint n = 0; n < file.frames(); n++) {
-    left_mag[n] = kernel[2U * n];
-    right_mag[n] = kernel[2U * n + 1U];
+    int bin_size = std::ceil(file.frames() / 1000);
   }
 
   // ensure that the fft can be computed
 
-  if (left_mag.size() % 2U != 0U) {
+  if (time_axis.size() % 2 != 0) {
+    time_axis.emplace_back((time_axis.size() - 1) * dt);
+  }
+
+  if (left_mag.size() % 2 != 0) {
     left_mag.emplace_back(0.0F);
   }
 
-  if (right_mag.size() % 2U != 0U) {
+  if (right_mag.size() % 2 != 0) {
     right_mag.emplace_back(0.0F);
   }
 
+  time_axis.shrink_to_fit();
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
@@ -404,14 +404,15 @@ void ConvolverUi::get_irs_info() {
 
   // find min and max values
 
-  min_left = *std::min_element(left_mag.begin(), left_mag.end());
-  max_left = *std::max_element(left_mag.begin(), left_mag.end());
-  min_right = *std::min_element(right_mag.begin(), right_mag.end());
-  max_right = *std::max_element(right_mag.begin(), right_mag.end());
+  min_left = std::ranges::min(left_mag);
+  max_left = std::ranges::max(left_mag);
+
+  min_right = std::ranges::min(right_mag);
+  max_right = std::ranges::max(right_mag);
 
   // rescaling between 0 and 1
 
-  for (uint n = 0U; n < max_points; n++) {
+  for (uint n = 0; n < max_points; n++) {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
