@@ -137,17 +137,11 @@ PluginBase::PluginBase(std::string tag,
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  auto dt = std::chrono::milliseconds(0);
-
   do {
     node_id = pw_filter_get_node_id(filter);
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-    dt += std::chrono::milliseconds(1);
   } while (node_id == SPA_ID_INVALID);
-
-  util::debug(log_tag + name + " filter connection time: " + std::to_string(dt.count()) + " ms");
 }
 
 PluginBase::~PluginBase() {

@@ -901,8 +901,12 @@ void on_registry_global(void* data,
 void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
   auto* pm = static_cast<PipeManager*>(data);
 
-  util::warning(pm->log_tag + "Remote error on id:" + std::to_string(id));
-  util::warning(pm->log_tag + "Remote error message:" + message);
+  if (id == PW_ID_CORE) {
+    util::warning(pm->log_tag + "Remote error res: " + spa_strerror(res));
+    util::warning(pm->log_tag + "Remote error message: " + message);
+
+    pw_thread_loop_signal(pm->thread_loop, false);
+  }
 }
 
 void on_core_info(void* data, const struct pw_core_info* info) {
@@ -938,9 +942,9 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 void on_core_done(void* data, uint32_t id, int seq) {
   auto* pm = static_cast<PipeManager*>(data);
 
-  util::debug(pm->log_tag + "connected to the core");
-
-  pw_thread_loop_signal(pm->thread_loop, false);
+  if (id == PW_ID_CORE) {
+    pw_thread_loop_signal(pm->thread_loop, false);
+  }
 }
 
 const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
@@ -966,7 +970,7 @@ PipeManager::PipeManager() {
   util::debug(log_tag + "compiled with pipewire: " + header_version);
   util::debug(log_tag + "linked to pipewire: " + library_version);
 
-  thread_loop = pw_thread_loop_new("pipewire-thread", nullptr);
+  thread_loop = pw_thread_loop_new("pe-pipewire-thread", nullptr);
 
   if (thread_loop == nullptr) {
     util::error(log_tag + "could not create pipewire loop");

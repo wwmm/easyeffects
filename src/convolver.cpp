@@ -35,7 +35,7 @@ Convolver::Convolver(const std::string& tag,
   settings->signal_changed("ir-width").connect([=, this](auto key) {
     ir_width = settings->get_int(key);
 
-    std::lock_guard<std::mutex> guard(lock_guard_zita);
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
 
     if (kernel_is_initialized) {
       kernel_L = original_kernel_L;
@@ -49,7 +49,7 @@ Convolver::Convolver(const std::string& tag,
   settings->signal_changed("model-path").connect([=, this](auto key) {
     read_kernel_file();
 
-    std::lock_guard<std::mutex> guard(lock_guard_zita);
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
 
     if (kernel_is_initialized) {
       kernel_L = original_kernel_L;
@@ -59,16 +59,6 @@ Convolver::Convolver(const std::string& tag,
       apply_kernel_autogain();
     }
   });
-
-  read_kernel_file();
-
-  if (kernel_is_initialized) {
-    kernel_L = original_kernel_L;
-    kernel_R = original_kernel_R;
-
-    set_kernel_stereo_width();
-    apply_kernel_autogain();
-  }
 }
 
 Convolver::~Convolver() {
@@ -87,10 +77,28 @@ Convolver::~Convolver() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  futures.clear();
 }
 
 void Convolver::setup() {
-  std::lock_guard<std::mutex> guard(lock_guard_zita);
+  auto f = [=, this]() {
+    std::lock_guard<std::mutex> lock(lock_guard_zita);
+
+    read_kernel_file();
+
+    if (kernel_is_initialized) {
+      kernel_L = original_kernel_L;
+      kernel_R = original_kernel_R;
+
+      set_kernel_stereo_width();
+      apply_kernel_autogain();
+    }
+  };
+
+  auto future = std::async(std::launch::async, f);
+
+  futures.emplace_back(std::move(future));
 }
 
 void Convolver::process(std::span<float>& left_in,
@@ -107,6 +115,9 @@ void Convolver::process(std::span<float>& left_in,
   apply_gain(left_in, right_in, input_gain);
 
   std::lock_guard<std::mutex> lock(lock_guard_zita);
+
+  std::copy(left_in.begin(), left_in.end(), left_out.begin());
+  std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
   apply_gain(left_out, right_out, output_gain);
 
@@ -134,7 +145,7 @@ void Convolver::read_kernel_file() {
     return;
   }
 
-  SndfileHandle file = SndfileHandle();
+  SndfileHandle file = SndfileHandle(path);
 
   if (file.channels() == 0 || file.frames() == 0) {
     kernel_is_initialized = false;
@@ -168,6 +179,8 @@ void Convolver::read_kernel_file() {
   file.readf(buffer.data(), file.frames());
 
   if (file.samplerate() != static_cast<int>(rate)) {
+    util::debug(log_tag + name + " resampling the kernel to " + std::to_string(rate));
+
     for (size_t n = 0; n < buffer_L.size(); n++) {
       buffer_L[n] = buffer[2 * n];
       buffer_R[n] = buffer[2 * n + 1];
@@ -186,6 +199,10 @@ void Convolver::read_kernel_file() {
       original_kernel_R[n] = buffer[2 * n + 1];
     }
   }
+
+  kernel_is_initialized = true;
+
+  util::debug(log_tag + name + " kernel initialized");
 }
 
 void Convolver::apply_kernel_autogain() {

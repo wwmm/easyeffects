@@ -36,7 +36,7 @@ class StreamInputEffects : public EffectsBase {
  private:
   void connect_filters();
 
-  void disconnect_filters();
+  auto disconnect_filters() -> uint;
 
   /*
     Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens

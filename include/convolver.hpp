@@ -22,6 +22,7 @@
 
 #include <zita-convolver.h>
 #include <algorithm>
+#include <future>
 #include <mutex>
 #include <ranges>
 #include <sndfile.hh>
@@ -57,6 +58,8 @@ class Convolver : public PluginBase {
 
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;
+
+  std::vector<std::future<void>> futures;
 
   Convproc* conv = nullptr;
 

@@ -69,6 +69,13 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   pm->lock();
 
+  uint n_disconnected_links = disconnect_filters();
+
+  if (n_disconnected_links != 0) {
+    util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
+                  " links in the initialization phase?!");
+  }
+
   connect_filters();
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
@@ -200,7 +207,7 @@ void StreamInputEffects::connect_filters() {
   pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
 }
 
-void StreamInputEffects::disconnect_filters() {
+auto StreamInputEffects::disconnect_filters() -> uint {
   std::set<uint> list;
 
   for (auto& plugin : plugins | std::views::values) {
@@ -221,4 +228,6 @@ void StreamInputEffects::disconnect_filters() {
   for (const auto& id : list) {
     pm->destroy_object(id);
   }
+
+  return list.size();
 }

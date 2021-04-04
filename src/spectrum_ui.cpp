@@ -129,6 +129,28 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
   for (size_t n = 0; n < spectrum_bin_count.size(); n++) {
     if (spectrum_bin_count[n] == 0 && n > 0) {
       spectrum_mag[n] = spectrum_mag[n - 1];
+
+      // doing a very poor interpolation for the bins without any count
+
+      // int count = 1;
+
+      // while (count + n < spectrum_bin_count.size()) {
+      //   if (spectrum_bin_count[count + n] != 0) {
+      //     break;
+      //   }
+
+      //   count++;
+      // }
+
+      // float last_mag = spectrum_mag[n + count];
+
+      // float delta = (last_mag - spectrum_mag[n - 1]) / static_cast<float>(count);
+
+      // for (int k = 0; k < count; k++) {
+      //   spectrum_mag[n + k] = spectrum_mag[n - 1] + k * delta;
+
+      //   spectrum_bin_count[n + k] = 1;
+      // }
     }
   }
 

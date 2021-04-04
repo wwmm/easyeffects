@@ -40,7 +40,7 @@ RNNoise::RNNoise(const std::string& tag,
 
     auto* m = get_model_from_file();
 
-    std::lock_guard<std::mutex> guard(rnnoise_mutex);
+    std::lock_guard<std::mutex> lock(rnnoise_mutex);
 
     model = m;
 
@@ -59,7 +59,7 @@ RNNoise::RNNoise(const std::string& tag,
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+  std::lock_guard<std::mutex> lock(rnnoise_mutex);
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -77,7 +77,7 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::setup() {
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+  std::lock_guard<std::mutex> lock(rnnoise_mutex);
 
   resample = rate != rnnoise_rate;
 
@@ -104,7 +104,7 @@ void RNNoise::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  std::lock_guard<std::mutex> guard(rnnoise_mutex);
+  std::lock_guard<std::mutex> lock(rnnoise_mutex);
 
   if (resample) {
     auto resampled_inL = resampler_inL->process(left_in, false);
