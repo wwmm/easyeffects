@@ -303,6 +303,14 @@ void ConvolverUi::on_import_irs_clicked() {
 void ConvolverUi::get_irs_info() {
   auto path = settings->get_string("kernel-path");
 
+  if (path.c_str() == nullptr) {
+    util::warning(log_tag + name + ": irs file path is null.");
+
+    return;
+  }
+
+  util::debug(log_tag + "reading the impulse file: " + path);
+
   SndfileHandle file = SndfileHandle(path);
 
   if (file.channels() != 2 || file.frames() == 0) {
@@ -425,6 +433,80 @@ void ConvolverUi::get_irs_info() {
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
+  util::debug(log_tag + "calculating the impulse fft...");
+
+  left_spectrum.resize(left_mag.size() / 2 + 1);
+  right_spectrum.resize(right_mag.size() / 2 + 1);
+
+  auto real_input = left_mag;
+
+  for (uint n = 0; n < real_input.size(); n++) {
+    // https://en.wikipedia.org/wiki/Hann_function
+
+    auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
+
+    real_input[n] *= w;
+  }
+
+  auto* complex_output = fftwf_alloc_complex(real_input.size());
+
+  auto* plan = fftwf_plan_dft_r2c_1d(real_input.size(), real_input.data(), complex_output, FFTW_ESTIMATE);
+
+  fftwf_execute(plan);
+
+  for (uint i = 0; i < left_spectrum.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+    sqr /= static_cast<float>(left_spectrum.size() * left_spectrum.size());
+
+    left_spectrum[i] = sqr;
+  }
+
+  // right channel fft
+
+  real_input = right_mag;
+
+  for (uint n = 0; n < real_input.size(); n++) {
+    // https://en.wikipedia.org/wiki/Hann_function
+
+    auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
+
+    real_input[n] *= w;
+  }
+
+  fftwf_execute(plan);
+
+  for (uint i = 0; i < right_spectrum.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+
+    sqr /= static_cast<float>(right_spectrum.size() * right_spectrum.size());
+
+    right_spectrum[i] = sqr;
+  }
+
+  // cleaning
+
+  fftwf_destroy_plan(plan);
+
+  if (complex_output != nullptr) {
+    fftwf_free(complex_output);
+  }
+
+  // find min and max values
+
+  fft_min_left = std::ranges::min(left_spectrum);
+  fft_max_left = std::ranges::max(left_spectrum);
+
+  fft_min_right = std::ranges::min(right_spectrum);
+  fft_max_right = std::ranges::max(right_spectrum);
+
+  // rescaling between 0 and 1
+
+  for (unsigned int n = 0; n < left_spectrum.size(); n++) {
+    left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
+    right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
+  }
+
   // uint nfft = left_mag.size();  // right_mag.size() should have the same value
 
   // GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, 0);
@@ -500,20 +582,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   //   }
   // } catch (const std::exception& e) {
   //   util::debug(std::string("Message from thrown exception was: ") + e.what());
-  // }
-
-  // // find min and max values
-
-  // fft_min_left = *std::min_element(left_spectrum.begin(), left_spectrum.end());
-  // fft_max_left = *std::max_element(left_spectrum.begin(), left_spectrum.end());
-  // fft_min_right = *std::min_element(right_spectrum.begin(), right_spectrum.end());
-  // fft_max_right = *std::max_element(right_spectrum.begin(), right_spectrum.end());
-
-  // // rescaling between 0 and 1
-
-  // for (unsigned int n = 0U; n < left_spectrum.size(); n++) {
-  //   left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
-  //   right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   // }
 
   // gst_fft_f32_free(fft_ctx);
