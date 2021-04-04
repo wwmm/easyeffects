@@ -66,9 +66,11 @@ PluginBase::PluginBase(std::string tag,
       pm(pipe_manager) {
   pf_data.pb = this;
 
-  auto* props_filter = pw_properties_new(nullptr, nullptr);
-
   auto filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  auto* props_filter = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
@@ -124,8 +126,6 @@ PluginBase::PluginBase(std::string tag,
 
   pf_data.out_right = static_cast<port*>(pw_filter_add_port(
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
-
-  pw_thread_loop_lock(pm->thread_loop);
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
     util::error(log_tag + "can not connect the filter to pipewire!");
