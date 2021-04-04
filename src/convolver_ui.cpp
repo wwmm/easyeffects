@@ -370,7 +370,7 @@ void ConvolverUi::get_irs_info() {
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  for (uint n = 0U; n < frames_in; n++) {
+  for (uint n = 0; n < frames_in; n++) {
     left_mag[n] = kernel[2U * n];
     right_mag[n] = kernel[2U * n + 1U];
   }
@@ -507,30 +507,6 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
 
-  // uint nfft = left_mag.size();  // right_mag.size() should have the same value
-
-  // GstFFTF32* fft_ctx = gst_fft_f32_new(nfft, 0);
-  // auto* freqdata_l = g_new0(GstFFTF32Complex, nfft / 2U + 1U);
-  // auto* freqdata_r = g_new0(GstFFTF32Complex, nfft / 2U + 1U);
-
-  // std::vector<float> tmp_l;
-  // std::vector<float> tmp_r;
-
-  // tmp_l.resize(nfft);
-  // tmp_r.resize(nfft);
-
-  // tmp_l.shrink_to_fit();
-  // tmp_r.shrink_to_fit();
-
-  // std::copy(left_mag.begin(), left_mag.end(), tmp_l.begin());
-  // std::copy(right_mag.begin(), right_mag.end(), tmp_r.begin());
-
-  // gst_fft_f32_fft(fft_ctx, tmp_l.data(), freqdata_l);
-  // gst_fft_f32_fft(fft_ctx, tmp_r.data(), freqdata_r);
-
-  // left_spectrum.resize(nfft / 2U + 1U);
-  // right_spectrum.resize(nfft / 2U + 1U);
-
   // for (uint i = 0U; i < nfft / 2U + 1U; i++) {
   //   float v_l = 0.0F;
   //   float v_r = 0.0F;
@@ -550,12 +526,12 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   //   right_spectrum[i] = v_r;
   // }
 
-  // uint max_points = std::min(static_cast<uint>(left_spectrum.size()), max_plot_points);
+  uint max_points = std::min(static_cast<uint>(left_spectrum.size()), max_plot_points);
 
-  // fft_min_freq = 1.0F;
-  // fft_max_freq = 0.5F * static_cast<float>(rate);
+  fft_min_freq = 1.0F;
+  fft_max_freq = 0.5F * static_cast<float>(rate);
 
-  // freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
+  freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
   // /*interpolating because we can not plot all the data in the irs file. It
   //   would be too slow
