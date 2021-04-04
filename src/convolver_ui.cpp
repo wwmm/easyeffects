@@ -376,7 +376,7 @@ void ConvolverUi::get_irs_info() {
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  get_irs_spectrum(file.samplerate());
+  // get_irs_spectrum(file.samplerate());
 
   /*interpolating because we can not plot all the data in the irs file. It
     would be too slow
