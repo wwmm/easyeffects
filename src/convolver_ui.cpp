@@ -135,6 +135,17 @@ ConvolverUi::~ConvolverUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/convolver.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<ConvolverUi>(builder, "top_box", "com.github.wwmm.pulseeffects.convolver",
+                                                           schema_path + "convolver/");
+
+  auto stack_page = stack->add(*ui, plugin_name::convolver);
+
+  return ui;
+}
+
 void ConvolverUi::reset() {
   settings->reset("state");
 

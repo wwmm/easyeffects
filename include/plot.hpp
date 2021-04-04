@@ -57,6 +57,10 @@ class Plot {
 
   void set_n_x_labels(const int& v);
 
+  void set_x_unit(const std::string& value);
+
+  void set_y_unit(const std::string& value);
+
  private:
   std::string log_tag = "plot: ";
 
@@ -82,6 +86,8 @@ class Plot {
   PlotType plot_type = PlotType::bar;
 
   PlotScale plot_scale = PlotScale::logarithmic;
+
+  std::string x_unit, y_unit;
 
   std::vector<float> original_x, original_y;
   std::vector<float> y_axis, x_axis;

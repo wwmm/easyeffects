@@ -66,6 +66,10 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
 
+  plot->set_x_unit("Hz");
+
+  plot->set_y_unit("dB");
+
   set_content_height(settings->get_int("height"));
 }
 
@@ -172,9 +176,9 @@ void SpectrumUi::init_frequency_axis() {
     spectrum_x_axis = util::logspace(log10f(static_cast<float>(settings->get_int("minimum-frequency"))),
                                      log10f(static_cast<float>(settings->get_int("maximum-frequency"))), npoints);
 
-    spectrum_mag.resize(npoints);
+    spectrum_mag.resize(spectrum_x_axis.size());
 
-    spectrum_bin_count.resize(npoints);
+    spectrum_bin_count.resize(spectrum_x_axis.size());
   }
 }
 

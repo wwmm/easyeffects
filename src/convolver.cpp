@@ -37,11 +37,13 @@ Convolver::Convolver(const std::string& tag,
 
     std::lock_guard<std::mutex> guard(lock_guard_zita);
 
-    kernel_L = original_kernel_L;
-    kernel_R = original_kernel_R;
+    if (kernel_is_initialized) {
+      kernel_L = original_kernel_L;
+      kernel_R = original_kernel_R;
 
-    set_kernel_stereo_width();
-    apply_kernel_autogain();
+      set_kernel_stereo_width();
+      apply_kernel_autogain();
+    }
   });
 
   settings->signal_changed("model-path").connect([=, this](auto key) {
@@ -49,20 +51,24 @@ Convolver::Convolver(const std::string& tag,
 
     std::lock_guard<std::mutex> guard(lock_guard_zita);
 
+    if (kernel_is_initialized) {
+      kernel_L = original_kernel_L;
+      kernel_R = original_kernel_R;
+
+      set_kernel_stereo_width();
+      apply_kernel_autogain();
+    }
+  });
+
+  read_kernel_file();
+
+  if (kernel_is_initialized) {
     kernel_L = original_kernel_L;
     kernel_R = original_kernel_R;
 
     set_kernel_stereo_width();
     apply_kernel_autogain();
-  });
-
-  read_kernel_file();
-
-  kernel_L = original_kernel_L;
-  kernel_R = original_kernel_R;
-
-  set_kernel_stereo_width();
-  apply_kernel_autogain();
+  }
 }
 
 Convolver::~Convolver() {
@@ -120,10 +126,10 @@ void Convolver::process(std::span<float>& left_in,
 void Convolver::read_kernel_file() {
   auto path = settings->get_string("kernel-path");
 
-  if (path == nullptr) {
+  if (path.c_str() == nullptr) {
     kernel_is_initialized = false;
 
-    util::warning(log_tag + "irs file path is null. Entering passthrough mode...");
+    util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
 
     return;
   }
@@ -133,24 +139,24 @@ void Convolver::read_kernel_file() {
   if (file.channels() == 0 || file.frames() == 0) {
     kernel_is_initialized = false;
 
-    util::warning(log_tag + "irs file does not exists or it is empty: " + path);
-    util::warning(log_tag + "Entering passthrough mode...");
+    util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path);
+    util::warning(log_tag + name + ": Entering passthrough mode...");
 
     return;
   }
 
-  util::debug(log_tag + "irs file: " + path);
-  util::debug(log_tag + "irs rate: " + std::to_string(file.samplerate()) + " Hz");
-  util::debug(log_tag + "irs channels: " + std::to_string(file.channels()));
-  util::debug(log_tag + "irs frames: " + std::to_string(file.frames()));
+  util::debug(log_tag + name + ": irs file: " + path);
+  util::debug(log_tag + name + ": irs rate: " + std::to_string(file.samplerate()) + " Hz");
+  util::debug(log_tag + name + ": irs channels: " + std::to_string(file.channels()));
+  util::debug(log_tag + name + ": irs frames: " + std::to_string(file.frames()));
 
   // for now only stereo irs files are supported
 
   if (file.channels() != 2) {
     kernel_is_initialized = false;
 
-    util::warning(log_tag + "Only stereo impulse responses are supported.");
-    util::warning(log_tag + "The impulse file was not loaded!");
+    util::warning(log_tag + name + " Only stereo impulse responses are supported.");
+    util::warning(log_tag + name + " The impulse file was not loaded!");
 
     return;
   }

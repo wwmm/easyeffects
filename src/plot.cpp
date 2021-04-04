@@ -140,6 +140,14 @@ void Plot::set_n_x_labels(const int& v) {
   n_x_labels = v;
 }
 
+void Plot::set_x_unit(const std::string& value) {
+  x_unit = value;
+}
+
+void Plot::set_y_unit(const std::string& value) {
+  y_unit = value;
+}
+
 void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
   ctx->paint();
 
@@ -202,8 +210,8 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 
       msg.precision(0);
 
-      msg << std::fixed << mouse_x << " Hz, ";
-      msg << std::fixed << mouse_y << " dB";
+      msg << std::fixed << mouse_x << " " << x_unit << " ";
+      msg << std::fixed << mouse_y << " " << y_unit;
 
       Pango::FontDescription font;
       font.set_family("Monospace");
@@ -255,10 +263,10 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
 
     if (label < 1000.0) {
       msg.precision(0);
-      msg << std::fixed << label << "Hz";
+      msg << std::fixed << label << x_unit;
     } else if (label > 1000.0) {
       msg.precision(1);
-      msg << std::fixed << label / 1000.0 << "kHz";
+      msg << std::fixed << label / 1000.0 << "k" << x_unit;
     }
 
     Pango::FontDescription font;

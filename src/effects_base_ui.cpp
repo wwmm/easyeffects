@@ -173,6 +173,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
   effects_base->compressor->post_messages = true;
+  effects_base->convolver->post_messages = true;
   effects_base->crossfeed->post_messages = true;
   effects_base->deesser->post_messages = true;
   effects_base->delay->post_messages = true;
@@ -203,6 +204,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
   effects_base->compressor->post_messages = false;
+  effects_base->convolver->post_messages = false;
   effects_base->crossfeed->post_messages = false;
   effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
@@ -225,6 +227,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->autogain->bypass = false;
   effects_base->bass_enhancer->bypass = false;
   effects_base->compressor->bypass = false;
+  effects_base->convolver->bypass = false;
   effects_base->crossfeed->bypass = false;
   effects_base->deesser->bypass = false;
   effects_base->delay->bypass = false;
@@ -283,6 +286,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));
   effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain));
   effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
+
+  // convolver
+
+  auto* convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
+
+  convolver_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
+
+  effects_base->convolver->input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level));
+  effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
 
   // crossfeed
 
@@ -768,7 +781,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
-    btn->set_icon_name("list-remove-symbolic");
+    btn->set_icon_name("user-trash-symbolic");
 
     box->append(*label);
     box->append(*btn);
