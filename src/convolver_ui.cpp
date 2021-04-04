@@ -404,18 +404,18 @@ void ConvolverUi::get_irs_info() {
 
   // find min and max values
 
-  min_left = std::ranges::min(left_mag);
-  max_left = std::ranges::max(left_mag);
+  // min_left = std::ranges::min(left_mag);
+  // max_left = std::ranges::max(left_mag);
 
-  min_right = std::ranges::min(right_mag);
-  max_right = std::ranges::max(right_mag);
+  // min_right = std::ranges::min(right_mag);
+  // max_right = std::ranges::max(right_mag);
 
   // rescaling between 0 and 1
 
-  for (uint n = 0; n < max_points; n++) {
-    left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
-    right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
-  }
+  // for (uint n = 0; n < max_points; n++) {
+  //   left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
+  //   right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
+  // }
 
   // updating interface with ir file info
 
