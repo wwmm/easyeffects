@@ -50,6 +50,8 @@ Limiter::Limiter(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "asc", "asc");
 
   lv2_wrapper->bind_key_int(settings, "oversampling", "oversampling");
+
+  initialize_listener();
 }
 
 Limiter::~Limiter() {

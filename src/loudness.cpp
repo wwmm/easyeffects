@@ -58,6 +58,8 @@ Loudness::Loudness(const std::string& tag,
 
   //   g_settings_set_boolean(settings, "state", enable);
   // }
+
+  initialize_listener();
 }
 
 Loudness::~Loudness() {

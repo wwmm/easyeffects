@@ -51,6 +51,8 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
   lv2_wrapper->bind_key_double_db(settings, "knee", "knee");
 
   lv2_wrapper->bind_key_double_db(settings, "makeup", "makeup");
+
+  initialize_listener();
 }
 
 Gate::~Gate() {

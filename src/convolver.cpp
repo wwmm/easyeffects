@@ -59,6 +59,8 @@ Convolver::Convolver(const std::string& tag,
       apply_kernel_autogain();
     }
   });
+
+  initialize_listener();
 }
 
 Convolver::~Convolver() {

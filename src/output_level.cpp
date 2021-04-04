@@ -23,7 +23,9 @@ OutputLevel::OutputLevel(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
-    : PluginBase(tag, "output_level", schema, schema_path, pipe_manager) {}
+    : PluginBase(tag, "output_level", schema, schema_path, pipe_manager) {
+  initialize_listener();
+}
 
 OutputLevel::~OutputLevel() {
   util::debug(log_tag + name + " destroyed");

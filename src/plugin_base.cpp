@@ -81,8 +81,6 @@ PluginBase::PluginBase(std::string tag,
 
   filter = pw_filter_new(pm->core, filter_name.c_str(), props_filter);
 
-  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
-
   // left channel input
 
   auto* props_in_left = pw_properties_new(nullptr, nullptr);
@@ -146,6 +144,10 @@ PluginBase::PluginBase(std::string tag,
 
 PluginBase::~PluginBase() {
   spa_hook_remove(&listener);
+}
+
+void PluginBase::initialize_listener() {
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 }
 
 auto PluginBase::get_node_id() const -> uint {

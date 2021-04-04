@@ -42,6 +42,8 @@ Delay::Delay(const std::string& tag,
 
   lv2_wrapper->bind_key_double(settings, "time-l", "time_l");
   lv2_wrapper->bind_key_double(settings, "time-r", "time_r");
+
+  initialize_listener();
 }
 
 Delay::~Delay() {

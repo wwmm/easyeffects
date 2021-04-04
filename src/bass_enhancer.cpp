@@ -50,6 +50,8 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+
+  initialize_listener();
 }
 
 BassEnhancer::~BassEnhancer() {

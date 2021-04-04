@@ -76,6 +76,8 @@ Compressor::Compressor(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "makeup", "mk");
 
   lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
+
+  initialize_listener();
 }
 
 Compressor::~Compressor() {

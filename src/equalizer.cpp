@@ -90,6 +90,8 @@ Equalizer::Equalizer(const std::string& tag,
                                  settings_left->get_double("band" + std::to_string(n) + "-q"));
     }
   });
+
+  initialize_listener();
 }
 
 Equalizer::~Equalizer() {

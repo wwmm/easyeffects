@@ -43,6 +43,8 @@ Crossfeed::Crossfeed(const std::string& tag,
 
     bs2b.set_level_feed(10 * settings->get_double(key));
   });
+
+  initialize_listener();
 }
 
 Crossfeed::~Crossfeed() {

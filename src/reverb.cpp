@@ -54,6 +54,8 @@ Reverb::Reverb(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "dry", "dry");
 
   lv2_wrapper->bind_key_enum(settings, "room-size", "room_size");
+
+  initialize_listener();
 }
 
 Reverb::~Reverb() {

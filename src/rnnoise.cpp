@@ -54,6 +54,8 @@ RNNoise::RNNoise(const std::string& tag,
 
   state_left = rnnoise_create(model);
   state_right = rnnoise_create(model);
+
+  initialize_listener();
 }
 
 RNNoise::~RNNoise() {

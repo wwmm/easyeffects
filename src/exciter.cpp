@@ -50,6 +50,8 @@ Exciter::Exciter(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "ceil-active", "ceil_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+
+  initialize_listener();
 }
 
 Exciter::~Exciter() {

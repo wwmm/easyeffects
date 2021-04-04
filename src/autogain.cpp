@@ -29,6 +29,8 @@ AutoGain::AutoGain(const std::string& tag,
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
 
   settings->signal_changed("reset-history").connect([&, this](auto key) { init_ebur128(); });
+
+  initialize_listener();
 }
 
 AutoGain::~AutoGain() {

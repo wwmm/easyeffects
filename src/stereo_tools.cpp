@@ -68,6 +68,8 @@ StereoTools::StereoTools(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "phaser", "phaser");
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+
+  initialize_listener();
 }
 
 StereoTools::~StereoTools() {

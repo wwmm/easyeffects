@@ -124,6 +124,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "bypass3", "bypass3");
 
   lv2_wrapper->bind_key_bool(settings, "solo3", "solo3");
+
+  initialize_listener();
 }
 
 MultibandCompressor::~MultibandCompressor() {

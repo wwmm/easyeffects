@@ -93,6 +93,8 @@ class PluginBase {
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
 
+  void initialize_listener();
+
   void notify();
 
   void get_peaks(const std::span<float>& left_in,

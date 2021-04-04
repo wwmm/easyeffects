@@ -60,6 +60,8 @@ Deesser::Deesser(const std::string& tag,
   lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
 
   lv2_wrapper->bind_key_bool(settings, "sc-listen", "sc_listen");
+
+  initialize_listener();
 }
 
 Deesser::~Deesser() {
