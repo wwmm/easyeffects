@@ -76,11 +76,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // show fft toggle button callback
 
-  // show_fft->signal_toggled().connect([=, this]() {
-  //   show_fft_spectrum = show_fft->get_active();
-  //   left_plot->queue_draw();
-  //   right_plot->queue_draw();
-  // });
+  show_fft->signal_toggled().connect([=, this]() {
+    show_fft_spectrum = show_fft->get_active();
+    //   left_plot->queue_draw();
+    //   right_plot->queue_draw();
+  });
 
   // gsettings bindings
 
@@ -104,29 +104,31 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // reading current configured irs file
 
-  // auto f = [=, this]() {
-  //   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-  //   get_irs_info();
-  // };
+  auto f = [=, this]() {
+    std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
-  // auto future = std::async(std::launch::async, f);
+    get_irs_info();
+  };
 
-  // futures.emplace_back(std::move(future));
+  auto future = std::async(std::launch::async, f);
+
+  futures.emplace_back(std::move(future));
 
   /* this is necessary to update the interface with the irs info when a preset
      is loaded
   */
 
-  // connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
-  //   auto f = [=, this]() {
-  //     std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-  //     get_irs_info();
-  //   };
+  connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
+    auto f = [=, this]() {
+      std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
-  //   auto future = std::async(std::launch::async, f);
+      get_irs_info();
+    };
 
-  //   futures.emplace_back(std::move(future));
-  // }));
+    auto future = std::async(std::launch::async, f);
+
+    futures.emplace_back(std::move(future));
+  }));
 }
 
 ConvolverUi::~ConvolverUi() {
@@ -371,24 +373,25 @@ void ConvolverUi::get_irs_info() {
     would be too slow
   */
 
-  try {
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0F, dt);
+  // try {
+  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0F, dt);
 
-    boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0F, dt);
+  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0F,
+  //   dt);
 
-    left_mag.resize(max_points);
-    right_mag.resize(max_points);
+  //   left_mag.resize(max_points);
+  //   right_mag.resize(max_points);
 
-    left_mag.shrink_to_fit();
-    right_mag.shrink_to_fit();
+  //   left_mag.shrink_to_fit();
+  //   right_mag.shrink_to_fit();
 
-    for (uint n = 0U; n < max_points; n++) {
-      left_mag[n] = spline_L(time_axis[n]);
-      right_mag[n] = spline_R(time_axis[n]);
-    }
-  } catch (const std::exception& e) {
-    util::debug(std::string("Message from thrown exception was: ") + e.what());
-  }
+  //   for (uint n = 0U; n < max_points; n++) {
+  //     left_mag[n] = spline_L(time_axis[n]);
+  //     right_mag[n] = spline_R(time_axis[n]);
+  //   }
+  // } catch (const std::exception& e) {
+  //   util::debug(std::string("Message from thrown exception was: ") + e.what());
+  // }
 
   // find min and max values
 
@@ -406,19 +409,19 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
-  Glib::signal_idle().connect_once([=, this]() {
-    label_sampling_rate->set_text(std::to_string(rate) + " Hz");
-    label_samples->set_text(std::to_string(frames_in));
+  // Glib::signal_idle().connect_once([=, this]() {
+  //   label_sampling_rate->set_text(std::to_string(rate) + " Hz");
+  //   label_samples->set_text(std::to_string(frames_in));
 
-    label_duration->set_text(level_to_localized_string(duration, 3) + " s");
+  //   label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
-    auto fpath = std::filesystem::path{path};
+  //   auto fpath = std::filesystem::path{path};
 
-    label_file_name->set_text(fpath.stem().string());
+  //   label_file_name->set_text(fpath.stem().string());
 
-    left_plot->queue_draw();
-    right_plot->queue_draw();
-  });
+  //   left_plot->queue_draw();
+  //   right_plot->queue_draw();
+  // });
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {

@@ -20,9 +20,9 @@
 #ifndef CONVOLVER_UI_HPP
 #define CONVOLVER_UI_HPP
 
+#include <fftw3.h>
 #include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <boost/math/interpolators/cardinal_cubic_b_spline.hpp>
 #include <filesystem>
 #include <future>
 #include <mutex>
@@ -74,6 +74,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   bool show_fft_spectrum = false;
 
   uint max_plot_points = 1000U;
+  uint fft_n_bands = 4096;
 
   float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
   float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
@@ -83,6 +84,11 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
+  std::vector<float> fft_real_input, fft_output;
+
+  fftwf_plan fft_plan = nullptr;
+
+  fftwf_complex* fft_complex_output = nullptr;
 
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 
