@@ -135,11 +135,11 @@ void Convolver::process(std::span<float>& left_in,
 }
 
 void Convolver::read_kernel_file() {
+  kernel_is_initialized = false;
+
   auto path = settings->get_string("kernel-path");
 
   if (path.c_str() == nullptr) {
-    kernel_is_initialized = false;
-
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
 
     return;
@@ -148,8 +148,6 @@ void Convolver::read_kernel_file() {
   SndfileHandle file = SndfileHandle(path);
 
   if (file.channels() == 0 || file.frames() == 0) {
-    kernel_is_initialized = false;
-
     util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path);
     util::warning(log_tag + name + ": Entering passthrough mode...");
 
@@ -164,8 +162,6 @@ void Convolver::read_kernel_file() {
   // for now only stereo irs files are supported
 
   if (file.channels() != 2) {
-    kernel_is_initialized = false;
-
     util::warning(log_tag + name + " Only stereo impulse responses are supported.");
     util::warning(log_tag + name + " The impulse file was not loaded!");
 
