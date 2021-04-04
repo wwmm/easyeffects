@@ -417,19 +417,19 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
-  // Glib::signal_idle().connect_once([=, this]() {
-  //   label_sampling_rate->set_text(std::to_string(rate) + " Hz");
-  //   label_samples->set_text(std::to_string(frames_in));
+  Glib::signal_idle().connect_once([=, this]() {
+    label_sampling_rate->set_text(std::to_string(rate) + " Hz");
+    label_samples->set_text(std::to_string(frames_in));
 
-  //   label_duration->set_text(level_to_localized_string(duration, 3) + " s");
+    label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
-  //   auto fpath = std::filesystem::path{path};
+    auto fpath = std::filesystem::path{path};
 
-  //   label_file_name->set_text(fpath.stem().string());
+    label_file_name->set_text(fpath.stem().string());
 
-  //   left_plot->queue_draw();
-  //   right_plot->queue_draw();
-  // });
+    // left_plot->queue_draw();
+    // right_plot->queue_draw();
+  });
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
