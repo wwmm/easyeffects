@@ -29,6 +29,7 @@
 #include <numbers>
 #include <ranges>
 #include <sndfile.hh>
+#include "plot.hpp"
 #include "plugin_ui_base.hpp"
 
 class ConvolverUi : public Gtk::Box, public PluginUiBase {
@@ -62,7 +63,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Button* import = nullptr;
 
-  Gtk::DrawingArea *left_plot = nullptr, *right_plot = nullptr;
+  Gtk::DrawingArea* drawing_area = nullptr;
 
   Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
              *label_duration = nullptr;
@@ -85,6 +86,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
+
+  std::unique_ptr<Plot> plot;
 
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 

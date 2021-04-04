@@ -49,9 +49,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   label_duration = builder->get_widget<Gtk::Label>("label_duration");
   label_file_name = builder->get_widget<Gtk::Label>("label_file_name");
 
+  drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
+
+  plot = std::make_unique<Plot>(drawing_area);
+
   // builder->get_widget("irs_menu_button", irs_menu_button);
-  // builder->get_widget("left_plot", left_plot);
-  // builder->get_widget("right_plot", right_plot);
 
   // font.set_family("Monospace");
   // font.set_weight(Pango::WEIGHT_BOLD);
@@ -328,34 +330,38 @@ void ConvolverUi::get_irs_info() {
     return;
   }
 
-  uint frames_in = file.frames();
-  uint total_frames_in = file.channels() * frames_in;
-  uint rate = file.samplerate();
+  std::vector<float> kernel(file.channels() * file.frames());
 
-  std::vector<float> kernel(total_frames_in);
-
-  file.readf(kernel.data(), frames_in);
+  file.readf(kernel.data(), file.frames());
 
   // build plot time axis
 
-  float dt = 1.0F / rate;
-  float duration = (static_cast<float>(frames_in) - 1.0F) * dt;
-  uint max_points = (frames_in > max_plot_points) ? max_plot_points : frames_in;
+  float dt = 1.0F / static_cast<float>(file.samplerate());
+
+  float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
+
+  uint max_points = (file.frames() > max_plot_points) ? max_plot_points : file.frames();
+
   float plot_dt = duration / max_points;
 
   time_axis.resize(max_points);
   time_axis.shrink_to_fit();
 
-  for (uint n = 0U; n < max_points; n++) {
+  for (uint n = 0; n < max_points; n++) {
     time_axis[n] = n * plot_dt;
   }
 
-  max_time = *std::max_element(time_axis.begin(), time_axis.end());
+  max_time = std::ranges::max(time_axis);
 
   // deinterleaving channels
 
-  left_mag.resize(frames_in);
-  right_mag.resize(frames_in);
+  left_mag.resize(file.frames());
+  right_mag.resize(file.frames());
+
+  for (uint n = 0; n < file.frames(); n++) {
+    left_mag[n] = kernel[2U * n];
+    right_mag[n] = kernel[2U * n + 1U];
+  }
 
   // ensure that the fft can be computed
 
@@ -370,12 +376,7 @@ void ConvolverUi::get_irs_info() {
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  for (uint n = 0; n < frames_in; n++) {
-    left_mag[n] = kernel[2U * n];
-    right_mag[n] = kernel[2U * n + 1U];
-  }
-
-  get_irs_spectrum(rate);
+  get_irs_spectrum(file.samplerate());
 
   /*interpolating because we can not plot all the data in the irs file. It
     would be too slow
@@ -418,8 +419,8 @@ void ConvolverUi::get_irs_info() {
   // updating interface with ir file info
 
   Glib::signal_idle().connect_once([=, this]() {
-    label_sampling_rate->set_text(std::to_string(rate) + " Hz");
-    label_samples->set_text(std::to_string(frames_in));
+    label_sampling_rate->set_text(std::to_string(file.samplerate()) + " Hz");
+    label_samples->set_text(std::to_string(file.frames()));
 
     label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
@@ -680,11 +681,11 @@ auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool
 
   ctx->paint();
 
-  if (show_fft_spectrum) {
-    draw_channel(left_plot, ctx, left_spectrum);
-  } else {
-    draw_channel(left_plot, ctx, left_mag);
-  }
+  // if (show_fft_spectrum) {
+  //   draw_channel(left_plot, ctx, left_spectrum);
+  // } else {
+  //   draw_channel(left_plot, ctx, left_mag);
+  // }
 
   return false;
 }
@@ -702,11 +703,11 @@ auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> boo
 
   ctx->paint();
 
-  if (show_fft_spectrum) {
-    draw_channel(right_plot, ctx, right_spectrum);
-  } else {
-    draw_channel(right_plot, ctx, right_mag);
-  }
+  // if (show_fft_spectrum) {
+  //   draw_channel(right_plot, ctx, right_spectrum);
+  // } else {
+  //   draw_channel(right_plot, ctx, right_mag);
+  // }
 
   return false;
 }

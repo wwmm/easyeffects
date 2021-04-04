@@ -30,6 +30,13 @@
             <object class="GtkBox">
                 <property name="spacing">12</property>
                 <child>
+                    <object class="GtkDrawingArea" id="drawing_area">
+                        <property name="hexpand">1</property>
+                        <property name="content-height">100</property>
+                    </object>
+                </child>
+
+                <!-- <child>
                     <object class="GtkStackSwitcher">
                         <property name="stack">stack</property>
                     </object>
@@ -65,7 +72,7 @@
                             </object>
                         </child>
                     </object>
-                </child>
+                </child> -->
 
                 <child>
                     <object class="GtkBox">
@@ -114,7 +121,7 @@
                             <object class="GtkToggleButton" id="show_fft">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="label" translatable="yes">View Spectrum</property>
+                                <property name="label" translatable="yes">Spectrum</property>
                             </object>
                         </child>
                     </object>
