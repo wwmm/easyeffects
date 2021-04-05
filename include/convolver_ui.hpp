@@ -76,13 +76,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   bool show_fft_spectrum = false;
 
-  uint max_plot_points = 1000U;
-
-  float mouse_intensity = 0.0F, mouse_time = 0.0F, mouse_freq = 0.0F;
-  float min_left = 0.0F, max_left = 0.0F, min_right = 0.0F, max_right = 0.0F;
-  float max_time = 0.0F;
-  float fft_min_left = 0.0F, fft_max_left = 0.0F, fft_min_right = 0.0F, fft_max_right = 0.0F;
-  float fft_max_freq = 0.0F, fft_min_freq = 0.0F;
+  uint max_plot_points = 1024U;
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
@@ -113,21 +107,9 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
                     const Cairo::RefPtr<Cairo::Context>& ctx,
                     const std::vector<float>& magnitudes);
 
-  // void update_mouse_info_L(GdkEventMotion* event);
-
-  // void update_mouse_info_R(GdkEventMotion* event);
-
   auto on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 
-  // auto on_left_motion_notify_event(GdkEventMotion* event) -> bool;
-
   auto on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
-
-  // auto on_right_motion_notify_event(GdkEventMotion* event) -> bool;
-
-  // auto on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool;
-
-  // auto on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool;
 };
 
 #endif

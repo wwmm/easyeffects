@@ -356,6 +356,8 @@ void ConvolverUi::get_irs_info() {
     right_mag[n] = kernel[2U * n + 1];
   }
 
+  get_irs_spectrum(file.samplerate());
+
   if (file.frames() > max_plot_points) {
     // decimating the data so we can draw it
 
@@ -419,46 +421,20 @@ void ConvolverUi::get_irs_info() {
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  get_irs_spectrum(file.samplerate());
-
-  /*interpolating because we can not plot all the data in the irs file. It
-    would be too slow
-  */
-
-  // try {
-  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_mag.begin(), left_mag.end(), 0.0F, dt);
-
-  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_mag.begin(), right_mag.end(), 0.0F,
-  //   dt);
-
-  //   left_mag.resize(max_points);
-  //   right_mag.resize(max_points);
-
-  //   left_mag.shrink_to_fit();
-  //   right_mag.shrink_to_fit();
-
-  //   for (uint n = 0U; n < max_points; n++) {
-  //     left_mag[n] = spline_L(time_axis[n]);
-  //     right_mag[n] = spline_R(time_axis[n]);
-  //   }
-  // } catch (const std::exception& e) {
-  //   util::debug(std::string("Message from thrown exception was: ") + e.what());
-  // }
-
   // find min and max values
 
-  // min_left = std::ranges::min(left_mag);
-  // max_left = std::ranges::max(left_mag);
+  auto min_left = std::ranges::min(left_mag);
+  auto max_left = std::ranges::max(left_mag);
 
-  // min_right = std::ranges::min(right_mag);
-  // max_right = std::ranges::max(right_mag);
+  auto min_right = std::ranges::min(right_mag);
+  auto max_right = std::ranges::max(right_mag);
 
   // rescaling between 0 and 1
 
-  // for (uint n = 0; n < max_points; n++) {
-  //   left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
-  //   right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
-  // }
+  for (size_t n = 0; n < left_mag.size(); n++) {
+    left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
+    right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
+  }
 
   // updating interface with ir file info
 
@@ -538,11 +514,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // find min and max values
 
-  fft_min_left = std::ranges::min(left_spectrum);
-  fft_max_left = std::ranges::max(left_spectrum);
+  auto fft_min_left = std::ranges::min(left_spectrum);
+  auto fft_max_left = std::ranges::max(left_spectrum);
 
-  fft_min_right = std::ranges::min(right_spectrum);
-  fft_max_right = std::ranges::max(right_spectrum);
+  auto fft_min_right = std::ranges::min(right_spectrum);
+  auto fft_max_right = std::ranges::max(right_spectrum);
 
   // rescaling between 0 and 1
 
@@ -570,12 +546,10 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   //   right_spectrum[i] = v_r;
   // }
 
-  uint max_points = std::min(static_cast<uint>(left_spectrum.size()), max_plot_points);
+  // fft_min_freq = 1.0F;
+  // fft_max_freq = 0.5F * static_cast<float>(rate);
 
-  fft_min_freq = 1.0F;
-  fft_max_freq = 0.5F * static_cast<float>(rate);
-
-  freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
+  // freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
 
   // /*interpolating because we can not plot all the data in the irs file. It
   //   would be too slow
@@ -673,52 +647,6 @@ void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
   }
 }
 
-// void ConvolverUi::update_mouse_info_L(GdkEventMotion* event) {
-//   auto allocation = left_plot->get_allocation();
-
-//   auto width = allocation.get_width();
-//   auto height = allocation.get_height();
-
-//   if (show_fft_spectrum) {
-//     float fft_min_freq_log = log10(fft_min_freq);
-//     float fft_max_freq_log = log10(fft_max_freq);
-//     float mouse_freq_log =
-//         static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
-
-//     mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
-
-//     mouse_intensity = (height - static_cast<float>(event->y)) / height * (fft_max_left - fft_min_left) +
-//     fft_min_left;
-//   } else {
-//     mouse_time = static_cast<float>(event->x) * max_time / width;
-
-//     mouse_intensity = (height - static_cast<float>(event->y)) / height * (max_left - min_left) + min_left;
-//   }
-// }
-
-// void ConvolverUi::update_mouse_info_R(GdkEventMotion* event) {
-//   auto allocation = right_plot->get_allocation();
-
-//   auto width = allocation.get_width();
-//   auto height = allocation.get_height();
-
-//   if (show_fft_spectrum) {
-//     float fft_min_freq_log = log10(fft_min_freq);
-//     float fft_max_freq_log = log10(fft_max_freq);
-//     float mouse_freq_log =
-//         static_cast<float>(event->x) / width * (fft_max_freq_log - fft_min_freq_log) + fft_min_freq_log;
-
-//     mouse_freq = std::pow(10.0F, mouse_freq_log);  // exp10 does not exist on FreeBSD
-
-//     mouse_intensity =
-//         (height - static_cast<float>(event->y)) / height * (fft_max_right - fft_min_right) + fft_min_right;
-//   } else {
-//     mouse_time = static_cast<float>(event->x) * max_time / width;
-
-//     mouse_intensity = static_cast<float>(event->y) / height * (max_right - min_right) + min_right;
-//   }
-// }
-
 auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
@@ -733,14 +661,6 @@ auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool
   return false;
 }
 
-// auto ConvolverUi::on_left_motion_notify_event(GdkEventMotion* event) -> bool {
-//   update_mouse_info_L(event);
-
-//   left_plot->queue_draw();
-
-//   return false;
-// }
-
 auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
   std::lock_guard<std::mutex> lock(lock_guard_irs_info);
 
@@ -754,21 +674,3 @@ auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> boo
 
   return false;
 }
-
-// auto ConvolverUi::on_right_motion_notify_event(GdkEventMotion* event) -> bool {
-//   update_mouse_info_R(event);
-
-//   right_plot->queue_draw();
-
-//   return false;
-// }
-
-// auto ConvolverUi::on_mouse_enter_notify_event(GdkEventCrossing* event) -> bool {
-//   mouse_inside = true;
-//   return false;
-// }
-
-// auto ConvolverUi::on_mouse_leave_notify_event(GdkEventCrossing* event) -> bool {
-//   mouse_inside = false;
-//   return false;
-// }
