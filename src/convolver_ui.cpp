@@ -43,6 +43,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   import = builder->get_widget<Gtk::Button>("import");
 
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
+  toggle_left = builder->get_widget<Gtk::ToggleButton>("toggle_left");
+  toggle_right = builder->get_widget<Gtk::ToggleButton>("toggle_right");
 
   label_sampling_rate = builder->get_widget<Gtk::Label>("label_sampling_rate");
   label_samples = builder->get_widget<Gtk::Label>("label_samples");
@@ -53,28 +55,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   plot = std::make_unique<Plot>(drawing_area);
 
-  plot->set_plot_type(PlotType::line);
-  plot->set_plot_scale(PlotScale::linear);
-  plot->set_fill_bars(false);
-  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
-  plot->set_x_unit("ms");
-
   // builder->get_widget("irs_menu_button", irs_menu_button);
-
-  // font.set_family("Monospace");
-  // font.set_weight(Pango::WEIGHT_BOLD);
-
-  // drawing area callbacks
-
-  // left_plot->signal_draw().connect(sigc::mem_fun(*this, &ConvolverUi::on_left_draw));
-  // left_plot->signal_motion_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_left_motion_notify_event));
-  // left_plot->signal_enter_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_mouse_enter_notify_event));
-  // left_plot->signal_leave_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
-
-  // right_plot->signal_draw().connect(sigc::mem_fun(*this, &ConvolverUi::on_right_draw));
-  // right_plot->signal_motion_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_right_motion_notify_event));
-  // right_plot->signal_enter_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_mouse_enter_notify_event));
-  // right_plot->signal_leave_notify_event().connect(sigc::mem_fun(*this, &ConvolverUi::on_mouse_leave_notify_event));
 
   // impulse response import and selection callbacks
 
@@ -82,12 +63,41 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
-  // show fft toggle button callback
+  toggle_left->signal_toggled().connect([&, this]() {
+    if (toggle_left->get_active()) {
+      if (show_fft->get_active()) {
+        plot_fft();
+      } else {
+        plot_waveform();
+      }
+    } else {
+      if (!toggle_right->get_active()) {
+        // toggle_left->set_active();
+        util::warning("left");
+      }
+    }
+  });
+
+  toggle_right->signal_toggled().connect([&, this]() {
+    if (toggle_right->get_active()) {
+      if (show_fft->get_active()) {
+        plot_fft();
+      } else {
+        plot_waveform();
+      }
+    } else {
+      // if (!toggle_left->get_active()) {
+      //   toggle_right->set_active();
+      // }
+    }
+  });
 
   show_fft->signal_toggled().connect([=, this]() {
-    show_fft_spectrum = show_fft->get_active();
-    //   left_plot->queue_draw();
-    //   right_plot->queue_draw();
+    if (show_fft->get_active()) {
+      plot_fft();
+    } else {
+      plot_waveform();
+    }
   });
 
   // gsettings bindings
@@ -110,7 +120,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     util::debug(log_tag + "irs directory already exists: " + irs_dir.string());
   }
 
-  // reading current configured irs file
+  // reading the current configured irs file
 
   auto f = [=, this]() {
     std::lock_guard<std::mutex> lock(lock_guard_irs_info);
@@ -448,7 +458,7 @@ void ConvolverUi::get_irs_info() {
 
     label_file_name->set_text(fpath.stem().string());
 
-    plot->set_data(time_axis, left_mag);
+    plot_waveform();
   });
 }
 
@@ -526,151 +536,40 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
-
-  // for (uint i = 0U; i < nfft / 2U + 1U; i++) {
-  //   float v_l = 0.0F;
-  //   float v_r = 0.0F;
-
-  //   // left
-  //   v_l = freqdata_l[i].r * freqdata_l[i].r;
-  //   v_l += freqdata_l[i].i * freqdata_l[i].i;
-  //   v_l = std::sqrt(v_l);
-
-  //   left_spectrum[i] = v_l;
-
-  //   // right
-  //   v_r = freqdata_r[i].r * freqdata_r[i].r;
-  //   v_r += freqdata_r[i].i * freqdata_r[i].i;
-  //   v_r = std::sqrt(v_r);
-
-  //   right_spectrum[i] = v_r;
-  // }
-
-  // fft_min_freq = 1.0F;
-  // fft_max_freq = 0.5F * static_cast<float>(rate);
-
-  // freq_axis = util::logspace(log10(fft_min_freq), log10(fft_max_freq), max_points);
-
-  // /*interpolating because we can not plot all the data in the irs file. It
-  //   would be too slow
-  // */
-
-  // try {
-  //   float dF = 0.5F * static_cast<float>(rate) / left_spectrum.size();
-
-  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_L(left_spectrum.begin(), left_spectrum.end(),
-  //                                                                       0.0F, dF);
-
-  //   boost::math::interpolators::cardinal_cubic_b_spline<float> spline_R(right_spectrum.begin(), right_spectrum.end(),
-  //                                                                       0.0F, dF);
-
-  //   left_spectrum.resize(max_points);
-  //   right_spectrum.resize(max_points);
-
-  //   left_spectrum.shrink_to_fit();
-  //   right_spectrum.shrink_to_fit();
-
-  //   for (uint n = 0U; n < max_points; n++) {
-  //     left_spectrum[n] = spline_L(freq_axis[n]);
-  //     right_spectrum[n] = spline_R(freq_axis[n]);
-  //   }
-  // } catch (const std::exception& e) {
-  //   util::debug(std::string("Message from thrown exception was: ") + e.what());
-  // }
-
-  // gst_fft_f32_free(fft_ctx);
-  // g_free(freqdata_l);
-  // g_free(freqdata_r);
 }
 
-void ConvolverUi::draw_channel(Gtk::DrawingArea* da,
-                               const Cairo::RefPtr<Cairo::Context>& ctx,
-                               const std::vector<float>& magnitudes) {
-  auto n_bars = magnitudes.size();
+void ConvolverUi::plot_waveform() {
+  plot->set_plot_type(PlotType::line);
 
-  if (n_bars > 0U) {
-    auto allocation = da->get_allocation();
-    auto width = allocation.get_width();
-    auto height = allocation.get_height();
-    auto n_bars = magnitudes.size();
-    auto x = util::linspace(0.0F, static_cast<float>(width), n_bars);
+  plot->set_plot_scale(PlotScale::linear);
 
-    for (uint n = 0U; n < n_bars - 1U; n++) {
-      auto bar_height = magnitudes[n] * height;
+  plot->set_fill_bars(false);
 
-      ctx->move_to(x[n], height - bar_height);
+  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
-      bar_height = magnitudes[n + 1U] * height;
+  plot->set_x_unit("ms");
 
-      ctx->line_to(x[n + 1U], height - bar_height);
-    }
-
-    if (spectrum_settings->get_boolean("use-custom-color")) {
-      Glib::Variant<std::vector<double>> v;
-      spectrum_settings->get_value("color", v);
-      auto rgba = v.get();
-
-      ctx->set_source_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
-    } else {
-      auto color = Gdk::RGBA();
-      auto style_ctx = da->get_style_context();
-
-      style_ctx->lookup_color("theme_selected_bg_color", color);
-
-      ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(), 1.0);
-    }
-
-    ctx->set_line_width(2.0);
-    ctx->stroke();
-
-    // if (mouse_inside) {
-    //   std::string msg;
-
-    //   if (show_fft_spectrum) {
-    //     msg.append(level_to_localized_string(mouse_freq, 0) + " Hz, ");
-    //     msg.append(level_to_localized_string(mouse_intensity, 3));
-    //   } else {
-    //     msg.append(level_to_localized_string(mouse_time, 3) + " s, ");
-    //     msg.append(level_to_localized_string(mouse_intensity, 3));
-    //   }
-
-    //   int text_width = 0;
-    //   int text_height = 0;
-    //   auto layout = create_pango_layout(msg);
-    //   layout->set_font_description(font);
-    //   layout->get_pixel_size(text_width, text_height);
-
-    //   ctx->move_to(width - text_width, 0);
-
-    //   layout->show_in_cairo_context(ctx);
-    // }
+  if (toggle_left->get_active()) {
+    plot->set_data(time_axis, left_mag);
+  } else if (toggle_right->get_active()) {
+    plot->set_data(time_axis, right_mag);
   }
 }
 
-auto ConvolverUi::on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
-  std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+void ConvolverUi::plot_fft() {
+  plot->set_plot_type(PlotType::line);
 
-  ctx->paint();
+  plot->set_plot_scale(PlotScale::logarithmic);
 
-  // if (show_fft_spectrum) {
-  //   draw_channel(left_plot, ctx, left_spectrum);
-  // } else {
-  //   draw_channel(left_plot, ctx, left_mag);
-  // }
+  plot->set_fill_bars(false);
 
-  return false;
-}
+  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
-auto ConvolverUi::on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool {
-  std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+  plot->set_x_unit("Hz");
 
-  ctx->paint();
-
-  // if (show_fft_spectrum) {
-  //   draw_channel(right_plot, ctx, right_spectrum);
-  // } else {
-  //   draw_channel(right_plot, ctx, right_mag);
-  // }
-
-  return false;
+  if (toggle_left->get_active()) {
+    plot->set_data(time_axis, left_spectrum);
+  } else if (toggle_right->get_active()) {
+    plot->set_data(time_axis, right_spectrum);
+  }
 }

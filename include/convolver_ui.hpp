@@ -68,13 +68,11 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
              *label_duration = nullptr;
 
-  Gtk::ToggleButton* show_fft = nullptr;
+  Gtk::ToggleButton *show_fft = nullptr, *toggle_left = nullptr, *toggle_right = nullptr;
 
   Pango::FontDescription font;
 
   std::filesystem::path irs_dir;
-
-  bool show_fft_spectrum = false;
 
   uint max_plot_points = 1024U;
 
@@ -103,13 +101,9 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   void get_irs_spectrum(const int& rate);
 
-  void draw_channel(Gtk::DrawingArea* da,
-                    const Cairo::RefPtr<Cairo::Context>& ctx,
-                    const std::vector<float>& magnitudes);
+  void plot_waveform();
 
-  auto on_left_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
-
-  auto on_right_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
+  void plot_fft();
 };
 
 #endif

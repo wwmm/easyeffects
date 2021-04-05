@@ -30,49 +30,42 @@
             <object class="GtkBox">
                 <property name="spacing">12</property>
                 <child>
+                    <object class="GtkBox">
+                        <property name="homogeneous">1</property>
+                        <property name="accessible-role">tab-list</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_left">
+                                <property name="valign">end</property>
+                                <property name="halign">center</property>
+                                <property name="active">1</property>
+                                <property name="accessible-role">tab</property>
+                                <property name="label" translatable="yes">L</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="toggle_right">
+                                <property name="valign">start</property>
+                                <property name="halign">center</property>
+                                <property name="accessible-role">tab</property>
+                                <property name="label" translatable="yes">R</property>
+                                <property name="group">toggle_left</property>
+                            </object>
+                        </child>
+
+                        <style>
+                            <class name="linked" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
                     <object class="GtkDrawingArea" id="drawing_area">
                         <property name="hexpand">1</property>
                         <property name="content-height">100</property>
                     </object>
                 </child>
-
-                <!-- <child>
-                    <object class="GtkStackSwitcher">
-                        <property name="stack">stack</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkStack" id="stack">
-                        <property name="transition_duration">250</property>
-                        <property name="transition_type">slide-left-right</property>
-                        <child>
-                            <object class="GtkStackPage">
-                                <property name="name">page_left</property>
-                                <property name="title" translatable="yes">L</property>
-                                <property name="child">
-                                    <object class="GtkDrawingArea" id="drawing_area_left">
-                                        <property name="hexpand">1</property>
-                                        <property name="content-height">100</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkStackPage">
-                                <property name="name">page_right</property>
-                                <property name="title" translatable="yes">R</property>
-                                <property name="child">
-                                    <object class="GtkDrawingArea" id="drawing_area_right">
-                                        <property name="hexpand">1</property>
-                                        <property name="content-height">100</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-                    </object>
-                </child> -->
 
                 <child>
                     <object class="GtkBox">
