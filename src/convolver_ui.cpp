@@ -53,6 +53,12 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   plot = std::make_unique<Plot>(drawing_area);
 
+  plot->set_plot_type(PlotType::line);
+  plot->set_plot_scale(PlotScale::linear);
+  plot->set_fill_bars(false);
+  plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
+  plot->set_x_unit("ms");
+
   // builder->get_widget("irs_menu_button", irs_menu_button);
 
   // font.set_family("Monospace");
@@ -338,30 +344,67 @@ void ConvolverUi::get_irs_info() {
 
   float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
 
-  if (file.frames() <= max_plot_points) {
-    time_axis.resize(file.frames());
-    left_mag.resize(file.frames());
-    right_mag.resize(file.frames());
+  time_axis.resize(file.frames());
+  left_mag.resize(file.frames());
+  right_mag.resize(file.frames());
 
-    for (uint n = 0; n < file.frames(); n++) {
-      time_axis[n] = n * dt;
+  for (uint n = 0; n < file.frames(); n++) {
+    time_axis[n] = n * dt;
 
-      left_mag[n] = kernel[2U * n];
+    left_mag[n] = kernel[2U * n];
 
-      right_mag[n] = kernel[2U * n + 1U];
-    }
+    right_mag[n] = kernel[2U * n + 1];
+  }
 
-    // max_time = std::ranges::max(time_axis);
-  } else {
+  if (file.frames() > max_plot_points) {
     // decimating the data so we can draw it
 
-    int bin_size = std::ceil(file.frames() / 1000);
+    std::vector<float> t;
+    std::vector<float> l;
+    std::vector<float> r;
+    std::vector<float> bin_x;
+    std::vector<float> bin_l_y;
+    std::vector<float> bin_r_y;
+
+    size_t bin_size = std::ceil(file.frames() / max_plot_points);
+
+    for (int n = 0; n < file.frames(); n++) {
+      bin_x.emplace_back(time_axis[n]);
+
+      bin_l_y.emplace_back(left_mag[n]);
+      bin_r_y.emplace_back(right_mag[n]);
+
+      if (bin_x.size() == bin_size) {
+        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
+
+        t.emplace_back(bin_x[min - bin_l_y.begin()]);
+        t.emplace_back(bin_x[max - bin_l_y.begin()]);
+
+        l.emplace_back(*min);
+        l.emplace_back(*max);
+
+        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
+
+        r.emplace_back(*minr);
+        r.emplace_back(*maxr);
+
+        bin_x.resize(0);
+        bin_l_y.resize(0);
+        bin_r_y.resize(0);
+      }
+    }
+
+    std::ranges::for_each(t, [](auto& v) { v *= 1000.0F; });  // converting to milliseconds
+
+    time_axis = t;
+    left_mag = l;
+    right_mag = r;
   }
 
   // ensure that the fft can be computed
 
   if (time_axis.size() % 2 != 0) {
-    time_axis.emplace_back((time_axis.size() - 1) * dt);
+    time_axis.emplace_back(static_cast<float>(time_axis.size() - 1) * dt);
   }
 
   if (left_mag.size() % 2 != 0) {
@@ -376,7 +419,7 @@ void ConvolverUi::get_irs_info() {
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();
 
-  // get_irs_spectrum(file.samplerate());
+  get_irs_spectrum(file.samplerate());
 
   /*interpolating because we can not plot all the data in the irs file. It
     would be too slow
@@ -429,8 +472,7 @@ void ConvolverUi::get_irs_info() {
 
     label_file_name->set_text(fpath.stem().string());
 
-    // left_plot->queue_draw();
-    // right_plot->queue_draw();
+    plot->set_data(time_axis, left_mag);
   });
 }
 
