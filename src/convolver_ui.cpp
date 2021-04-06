@@ -43,8 +43,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   import = builder->get_widget<Gtk::Button>("import");
 
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
-  toggle_left = builder->get_widget<Gtk::ToggleButton>("toggle_left");
-  toggle_right = builder->get_widget<Gtk::ToggleButton>("toggle_right");
+  check_left = builder->get_widget<Gtk::CheckButton>("check_left");
+  check_right = builder->get_widget<Gtk::CheckButton>("check_right");
 
   label_sampling_rate = builder->get_widget<Gtk::Label>("label_sampling_rate");
   label_samples = builder->get_widget<Gtk::Label>("label_samples");
@@ -63,32 +63,23 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
-  toggle_left->signal_toggled().connect([&, this]() {
-    if (toggle_left->get_active()) {
+  check_left->signal_toggled().connect([&, this]() {
+    if (check_left->get_active()) {
       if (show_fft->get_active()) {
         plot_fft();
       } else {
         plot_waveform();
-      }
-    } else {
-      if (!toggle_right->get_active()) {
-        // toggle_left->set_active();
-        util::warning("left");
       }
     }
   });
 
-  toggle_right->signal_toggled().connect([&, this]() {
-    if (toggle_right->get_active()) {
+  check_right->signal_toggled().connect([&, this]() {
+    if (check_right->get_active()) {
       if (show_fft->get_active()) {
         plot_fft();
       } else {
         plot_waveform();
       }
-    } else {
-      // if (!toggle_left->get_active()) {
-      //   toggle_right->set_active();
-      // }
     }
   });
 
@@ -549,9 +540,9 @@ void ConvolverUi::plot_waveform() {
 
   plot->set_x_unit("ms");
 
-  if (toggle_left->get_active()) {
+  if (check_left->get_active()) {
     plot->set_data(time_axis, left_mag);
-  } else if (toggle_right->get_active()) {
+  } else if (check_right->get_active()) {
     plot->set_data(time_axis, right_mag);
   }
 }
@@ -567,9 +558,9 @@ void ConvolverUi::plot_fft() {
 
   plot->set_x_unit("Hz");
 
-  if (toggle_left->get_active()) {
+  if (check_left->get_active()) {
     plot->set_data(time_axis, left_spectrum);
-  } else if (toggle_right->get_active()) {
+  } else if (check_right->get_active()) {
     plot->set_data(time_axis, right_spectrum);
   }
 }

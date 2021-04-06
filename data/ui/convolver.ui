@@ -35,7 +35,7 @@
                         <property name="accessible-role">tab-list</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkToggleButton" id="toggle_left">
+                            <object class="GtkCheckButton" id="check_left">
                                 <property name="valign">end</property>
                                 <property name="halign">center</property>
                                 <property name="active">1</property>
@@ -45,18 +45,14 @@
                         </child>
 
                         <child>
-                            <object class="GtkToggleButton" id="toggle_right">
+                            <object class="GtkCheckButton" id="check_right">
                                 <property name="valign">start</property>
                                 <property name="halign">center</property>
                                 <property name="accessible-role">tab</property>
+                                <property name="group">check_left</property>
                                 <property name="label" translatable="yes">R</property>
-                                <property name="group">toggle_left</property>
                             </object>
                         </child>
-
-                        <style>
-                            <class name="linked" />
-                        </style>
                     </object>
                 </child>
 

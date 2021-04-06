@@ -68,13 +68,15 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
              *label_duration = nullptr;
 
-  Gtk::ToggleButton *show_fft = nullptr, *toggle_left = nullptr, *toggle_right = nullptr;
+  Gtk::ToggleButton* show_fft = nullptr;
+
+  Gtk::CheckButton *check_left = nullptr, *check_right = nullptr;
 
   Pango::FontDescription font;
 
   std::filesystem::path irs_dir;
 
-  uint max_plot_points = 1024U;
+  uint max_plot_points = 1024;
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
