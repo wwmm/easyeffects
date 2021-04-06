@@ -527,8 +527,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  // auto log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), max_plot_points);
-  auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
+  auto log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), spectrum_settings->get_int("n-points"));
+  // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<int> bin_count(log_axis.size());
 
