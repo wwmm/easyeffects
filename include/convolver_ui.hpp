@@ -72,12 +72,16 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::CheckButton *check_left = nullptr, *check_right = nullptr;
 
+  Gtk::SearchEntry* entry_search = nullptr;
+
   Pango::FontDescription font;
 
   std::filesystem::path irs_dir;
 
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
+
+  Glib::RefPtr<Gtk::StringList> string_list;
 
   std::unique_ptr<Plot> plot;
 
@@ -86,6 +90,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   std::mutex lock_guard_irs_info;
 
   std::vector<std::future<void>> futures;
+
+  void setup_listview();
 
   auto get_irs_names() -> std::vector<std::string>;
 

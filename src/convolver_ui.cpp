@@ -26,6 +26,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     : Gtk::Box(cobject),
       PluginUiBase(builder, schema, schema_path),
       irs_dir(Glib::get_user_config_dir() + "/PulseEffects/irs"),
+      string_list(Gtk::StringList::create({"initial_value"})),
       spectrum_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   name = plugin_name::convolver;
 
@@ -52,6 +53,10 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   label_file_name = builder->get_widget<Gtk::Label>("label_file_name");
 
   drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
+
+  entry_search = builder->get_widget<Gtk::SearchEntry>("entry_search");
+
+  setup_listview();
 
   plot = std::make_unique<Plot>(drawing_area);
 
@@ -157,6 +162,120 @@ auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path
   return ui;
 }
 
+void ConvolverUi::setup_listview() {
+  string_list->remove(0);
+
+  auto names = get_irs_names();
+
+  for (const auto& name : names) {
+    string_list->append(name);
+  }
+
+  // filter
+
+  auto filter =
+      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto filter_model = Gtk::FilterListModel::create(string_list, filter);
+
+  filter_model->set_incremental(true);
+
+  Glib::Binding::bind_property(entry_search->property_text(), filter->property_search());
+
+  // sorter
+
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+
+  // setting the listview model and factory
+
+  listview->set_model(Gtk::SingleSelection::create(sort_list_model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* remove = Gtk::make_managed<Gtk::Button>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    remove->set_icon_name("user-trash-symbolic");
+
+    box->set_spacing(6);
+    box->append(*label);
+    box->append(*remove);
+
+    list_item->set_data("name", label);
+    list_item->set_data("remove", remove);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+    label->set_text(name);
+
+    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name); });
+
+    //     connections.emplace_back(apply_btn->signal_clicked().connect([=, this]() {
+    //       auto irs_file = irs_dir / std::filesystem::path{row->get_name() + ".irs"};
+
+    //       settings->set_string("kernel-path", irs_file.string());
+    //     }));
+
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
+  });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
+      connection->disconnect();
+
+      list_item->set_data("connection_remove", nullptr);
+    }
+  });
+
+  // selection callback
+
+  listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+    auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+
+    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+
+    util::warning(selected_name);
+
+    // auto model_file = model_dir / std::filesystem::path{selected_name + ".rnnn"};
+
+    // settings->set_string("model-path", model_file.string());
+  });
+
+  // initializing selecting the row that corresponds to the saved model
+
+  // Glib::ustring saved_name = std::filesystem::path{settings->get_string("model-path")}.stem().string();
+
+  // auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+
+  // for (guint n = 0; n < single->get_n_items(); n++) {
+  //   auto name = single->get_object(n)->get_property<Glib::ustring>("string");
+
+  //   if (name == saved_name) {
+  //     single->select_item(n, true);
+  //   }
+  // }
+}
+
 void ConvolverUi::reset() {
   settings->reset("state");
 
@@ -220,47 +339,6 @@ void ConvolverUi::remove_irs_file(const std::string& name) {
     util::debug(log_tag + "removed irs file: " + irs_file.string());
   }
 }
-
-// void ConvolverUi::populate_irs_listbox() {
-//   auto children = irs_listbox->get_children();
-
-//   for (const auto& c : children) {
-//     irs_listbox->remove(*c);
-//   }
-
-//   auto names = get_irs_names();
-
-//   for (const auto& name : names) {
-//     auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/irs_row.glade");
-
-//     Gtk::ListBoxRow* row = nullptr;
-//     Gtk::Button* remove_btn = nullptr;
-//     Gtk::Button* apply_btn = nullptr;
-//     Gtk::Label* label = nullptr;
-
-//     b->get_widget("irs_row", row);
-//     b->get_widget("remove", remove_btn);
-//     b->get_widget("apply", apply_btn);
-//     b->get_widget("name", label);
-
-//     row->set_name(name);
-//     label->set_text(name);
-
-//     connections.emplace_back(remove_btn->signal_clicked().connect([=, this]() {
-//       remove_irs_file(name);
-//       populate_irs_listbox();
-//     }));
-
-//     connections.emplace_back(apply_btn->signal_clicked().connect([=, this]() {
-//       auto irs_file = irs_dir / std::filesystem::path{row->get_name() + ".irs"};
-
-//       settings->set_string("kernel-path", irs_file.string());
-//     }));
-
-//     irs_listbox->add(*row);
-//     irs_listbox->show_all();
-//   }
-// }
 
 void ConvolverUi::on_irs_menu_button_clicked() {
   // const float scaling_factor = 0.7F;
