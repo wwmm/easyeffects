@@ -76,8 +76,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::filesystem::path irs_dir;
 
-  uint max_plot_points = 1024;
-
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 

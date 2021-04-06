@@ -359,7 +359,7 @@ void ConvolverUi::get_irs_info() {
 
   get_irs_spectrum(file.samplerate());
 
-  if (file.frames() > max_plot_points) {
+  if (file.frames() > spectrum_settings->get_int("n-points")) {
     // decimating the data so we can draw it
 
     std::vector<float> t;
@@ -369,7 +369,7 @@ void ConvolverUi::get_irs_info() {
     std::vector<float> bin_l_y;
     std::vector<float> bin_r_y;
 
-    size_t bin_size = std::ceil(file.frames() / max_plot_points);
+    size_t bin_size = std::ceil(file.frames() / spectrum_settings->get_int("n-points"));
 
     for (int n = 0; n < file.frames(); n++) {
       bin_x.emplace_back(time_axis[n]);
@@ -454,6 +454,10 @@ void ConvolverUi::get_irs_info() {
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
+  if (left_mag.empty() || right_mag.empty()) {
+    return;
+  }
+
   util::debug(log_tag + "calculating the impulse fft...");
 
   left_spectrum.resize(left_mag.size() / 2 + 1);
@@ -513,6 +517,63 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     fftwf_free(complex_output);
   }
 
+  // initializing the frequency axis
+
+  freq_axis.resize(left_spectrum.size());
+
+  for (uint n = 0; n < left_spectrum.size(); n++) {
+    freq_axis[n] = 0.5F * static_cast<float>(rate) * n / left_spectrum.size();
+  }
+
+  // initializing the logarithmic frequency axis
+
+  // auto log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), max_plot_points);
+  auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
+
+  std::vector<int> bin_count(log_axis.size());
+
+  std::vector<float> l(log_axis.size());
+  std::vector<float> r(log_axis.size());
+
+  std::ranges::fill(l, 0.0F);
+  std::ranges::fill(r, 0.0F);
+  std::ranges::fill(bin_count, 0);
+
+  // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
+
+  for (size_t j = 0; j < freq_axis.size(); j++) {
+    for (size_t n = 0; n < log_axis.size(); n++) {
+      if (n > 0) {
+        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1]) {
+          l[n] += left_spectrum[j];
+          r[n] += right_spectrum[j];
+
+          bin_count[n]++;
+        }
+      } else {
+        if (freq_axis[j] <= log_axis[n]) {
+          l[n] += left_spectrum[j];
+          r[n] += right_spectrum[j];
+
+          bin_count[n]++;
+        }
+      }
+    }
+  }
+
+  // fillint empty bins with their neighbors value
+
+  for (size_t n = 0; n < bin_count.size(); n++) {
+    if (bin_count[n] == 0 && n > 0) {
+      l[n] = l[n - 1];
+      r[n] = r[n - 1];
+    }
+  }
+
+  freq_axis = log_axis;
+  left_spectrum = l;
+  right_spectrum = r;
+
   // find min and max values
 
   auto fft_min_left = std::ranges::min(left_spectrum);
@@ -527,6 +588,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
+
+  Glib::signal_idle().connect_once([=, this]() { plot_fft(); });
 }
 
 void ConvolverUi::plot_waveform() {
@@ -559,8 +622,8 @@ void ConvolverUi::plot_fft() {
   plot->set_x_unit("Hz");
 
   if (check_left->get_active()) {
-    plot->set_data(time_axis, left_spectrum);
+    plot->set_data(freq_axis, left_spectrum);
   } else if (check_right->get_active()) {
-    plot->set_data(time_axis, right_spectrum);
+    plot->set_data(freq_axis, right_spectrum);
   }
 }
