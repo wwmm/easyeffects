@@ -10,7 +10,7 @@
         <value nick="Lines" value="1" />
     </enum>
     <schema id="com.github.wwmm.pulseeffects" path="/com/github/wwmm/pulseeffects/">
-        <key name="enable-run-in-background" tybe="b">
+        <key name="enable-run-in-background" type="b">
             <default>true</default>
         </key>
         <key name="enable-all-sinkinputs" type="b">
