@@ -43,6 +43,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   import = builder->get_widget<Gtk::Button>("import");
 
+  popover_menu = builder->get_widget<Gtk::Popover>("popover_menu");
+
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
   check_left = builder->get_widget<Gtk::CheckButton>("check_left");
   check_right = builder->get_widget<Gtk::CheckButton>("check_right");
@@ -64,7 +66,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // impulse response import and selection callbacks
 
-  // irs_menu_button->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_irs_menu_button_clicked));
+  popover_menu->signal_show().connect([=, this]() {
+    int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
+
+    scrolled_window->set_max_content_height(height);
+  });
 
   import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
 
@@ -338,16 +344,6 @@ void ConvolverUi::remove_irs_file(const std::string& name) {
 
     util::debug(log_tag + "removed irs file: " + irs_file.string());
   }
-}
-
-void ConvolverUi::on_irs_menu_button_clicked() {
-  // const float scaling_factor = 0.7F;
-
-  // int height = static_cast<int>(scaling_factor * static_cast<float>(this->get_toplevel()->get_allocated_height()));
-
-  // irs_scrolled_window->set_max_content_height(height);
-
-  // populate_irs_listbox();
 }
 
 void ConvolverUi::on_import_irs_clicked() {

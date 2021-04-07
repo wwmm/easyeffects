@@ -57,8 +57,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ListView* listview = nullptr;
 
-  Gtk::MenuButton* irs_menu_button = nullptr;
-
   Gtk::ScrolledWindow* scrolled_window = nullptr;
 
   Gtk::Button* import = nullptr;
@@ -74,7 +72,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SearchEntry* entry_search = nullptr;
 
-  Pango::FontDescription font;
+  Gtk::Popover* popover_menu = nullptr;
 
   std::filesystem::path irs_dir;
 
@@ -98,8 +96,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void import_irs_file(const std::string& file_path);
 
   void remove_irs_file(const std::string& name);
-
-  void on_irs_menu_button_clicked();
 
   void on_import_irs_clicked();
 
