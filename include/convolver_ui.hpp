@@ -76,6 +76,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::filesystem::path irs_dir;
 
+  Glib::RefPtr<Gio::FileMonitor> folder_monitor;
+
   std::vector<float> left_mag, right_mag, time_axis;
   std::vector<float> left_spectrum, right_spectrum, freq_axis;
 

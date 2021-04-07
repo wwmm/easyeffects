@@ -149,6 +149,41 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     futures.emplace_back(std::move(future));
   }));
+
+  folder_monitor = Gio::File::create_for_path(irs_dir.string())->monitor_directory();
+
+  folder_monitor->signal_changed().connect([=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+    switch (event) {
+      case Gio::FileMonitor::Event::CREATED: {
+        string_list->append(util::remove_filename_extension(file->get_basename()));
+
+        break;
+      }
+      case Gio::FileMonitor::Event::DELETED: {
+        Glib::ustring name_removed = util::remove_filename_extension(file->get_basename());
+
+        int count = 0;
+
+        auto name = string_list->get_string(count);
+
+        while (name.c_str() != nullptr) {
+          if (name_removed == name) {
+            string_list->remove(count);
+
+            break;
+          }
+
+          count++;
+
+          name = string_list->get_string(count);
+        }
+
+        break;
+      }
+      default:
+        break;
+    }
+  });
 }
 
 ConvolverUi::~ConvolverUi() {
