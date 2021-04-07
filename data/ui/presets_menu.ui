@@ -144,19 +144,13 @@
                                                         <property name="propagate_natural_width">1</property>
                                                         <property name="propagate_natural_height">1</property>
                                                         <child>
-                                                            <object class="GtkViewport">
+                                                            <object class="GtkListView" id="output_listview">
                                                                 <property name="hexpand">1</property>
                                                                 <property name="vexpand">1</property>
-                                                                <child>
-                                                                    <object class="GtkListView" id="output_listview">
-                                                                        <property name="hexpand">1</property>
-                                                                        <property name="vexpand">1</property>
-                                                                        <property name="show-separators">1</property>
-                                                                        <style>
-                                                                            <class name="rich-list" />
-                                                                        </style>
-                                                                    </object>
-                                                                </child>
+                                                                <property name="show-separators">1</property>
+                                                                <style>
+                                                                    <class name="rich-list" />
+                                                                </style>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -251,19 +245,13 @@
                                                         <property name="propagate_natural_width">1</property>
                                                         <property name="propagate_natural_height">1</property>
                                                         <child>
-                                                            <object class="GtkViewport">
+                                                            <object class="GtkListView" id="input_listview">
                                                                 <property name="hexpand">1</property>
                                                                 <property name="vexpand">1</property>
-                                                                <child>
-                                                                    <object class="GtkListView" id="input_listview">
-                                                                        <property name="hexpand">1</property>
-                                                                        <property name="vexpand">1</property>
-                                                                        <property name="show-separators">1</property>
-                                                                        <style>
-                                                                            <class name="rich-list" />
-                                                                        </style>
-                                                                    </object>
-                                                                </child>
+                                                                <property name="show-separators">1</property>
+                                                                <style>
+                                                                    <class name="rich-list" />
+                                                                </style>
                                                             </object>
                                                         </child>
                                                     </object>
