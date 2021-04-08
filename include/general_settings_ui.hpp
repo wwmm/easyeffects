@@ -51,7 +51,7 @@ class GeneralSettingsUi : public Gtk::Grid {
   Application* app = nullptr;
 
   Gtk::Switch *enable_autostart = nullptr, *enable_all_sinkinputs = nullptr, *enable_all_sourceoutputs = nullptr,
-              *theme_switch = nullptr;
+              *theme_switch = nullptr, *enable_run_in_background = nullptr;
 
   Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
 
