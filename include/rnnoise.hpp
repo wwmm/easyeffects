@@ -47,14 +47,13 @@ class RNNoise : public PluginBase {
   sigc::signal<void(double)> new_latency;
 
  private:
-  uint blocksize = 480;
-  uint rnnoise_rate = 48000;
-
   bool resample = false, notify_latency = false;
 
-  float latency = 0.0F;
+  uint blocksize = 480;
+  uint rnnoise_rate = 48000;
   uint latency_n_frames = 0;
 
+  float latency = 0.0F;
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
   std::deque<float> deque_in_L, deque_in_R;

@@ -81,9 +81,24 @@ Convolver::~Convolver() {
   pw_thread_loop_unlock(pm->thread_loop);
 
   futures.clear();
+
+  finish_zita();
 }
 
 void Convolver::setup() {
+  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+
+  if (!n_samples_is_power_of_2) {
+    blocksize = n_samples;
+
+    while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
+      blocksize--;
+    }
+
+    data_L.resize(0);
+    data_R.resize(0);
+  }
+
   auto f = [=, this]() {
     std::lock_guard<std::mutex> lock(lock_guard_zita);
 
@@ -120,6 +135,10 @@ void Convolver::process(std::span<float>& left_in,
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  if (n_samples_is_power_of_2) {
+  } else {
+  }
 
   apply_gain(left_out, right_out, output_gain);
 
@@ -248,6 +267,50 @@ void Convolver::set_kernel_stereo_width() {
   }
 }
 
-// g_settings_bind(settings, "kernel-path", convolver, "kernel-path", G_SETTINGS_BIND_DEFAULT);
+void Convolver::setup_zita() {
+  zita_ready = false;
 
-// g_settings_bind(settings, "ir-width", convolver, "ir-width", G_SETTINGS_BIND_DEFAULT);
+  if (rate == 0 || n_samples == 0 || !kernel_is_initialized) {
+    return;
+  }
+
+  bool failed = false;
+  int ret = 0;
+  int max_convolution_size = kernel_L.size();
+  int buffer_size = 0;
+  float density = 0.0F;
+
+  if (n_samples_is_power_of_2) {
+    buffer_size = n_samples;
+  } else {
+    buffer_size = blocksize;
+  }
+
+  conv = new Convproc();
+
+  conv->set_options(Convproc::OPT_VECTOR_MODE);
+
+#if ZITA_CONVOLVER_MAJOR_VERSION == 3
+  conv->set_density(density);
+
+  ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size);
+#endif
+
+#if ZITA_CONVOLVER_MAJOR_VERSION == 4
+  ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
+#endif
+}
+
+void Convolver::finish_zita() {
+  if (conv != nullptr) {
+    if (conv->state() != Convproc::ST_STOP) {
+      conv->stop_process();
+
+      conv->cleanup();
+
+      delete conv;
+
+      conv = nullptr;
+    }
+  }
+}

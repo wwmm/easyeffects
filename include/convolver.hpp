@@ -51,13 +51,22 @@ class Convolver : public PluginBase {
 
  private:
   bool kernel_is_initialized = false;
+  bool n_samples_is_power_of_2 = true;
+  bool zita_ready = false;
 
+  uint blocksize = 512;
   uint kernel_n_frames = 0;
-
   uint ir_width = 100;
+  uint latency_n_frames = 0;
+
+  float latency = 0.0F;
 
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;
+  std::vector<float> data_L, data_R;
+
+  std::deque<float> deque_in_L, deque_in_R;
+  std::deque<float> deque_out_L, deque_out_R;
 
   std::vector<std::future<void>> futures;
 
@@ -70,6 +79,10 @@ class Convolver : public PluginBase {
   void apply_kernel_autogain();
 
   void set_kernel_stereo_width();
+
+  void setup_zita();
+
+  void finish_zita();
 };
 
 #endif
