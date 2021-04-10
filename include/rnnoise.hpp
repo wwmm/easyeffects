@@ -22,7 +22,6 @@
 
 #include <rnnoise.h>
 #include <memory>
-#include <mutex>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
 
@@ -47,7 +46,10 @@ class RNNoise : public PluginBase {
   sigc::signal<void(double)> new_latency;
 
  private:
-  bool resample = false, notify_latency = false;
+  bool resample = false;
+  bool notify_latency = false;
+  bool rnnoise_ready = false;
+  bool resampler_ready = false;
 
   uint blocksize = 480;
   uint rnnoise_rate = 48000;
@@ -68,8 +70,6 @@ class RNNoise : public PluginBase {
   RNNModel* model = nullptr;
 
   DenoiseState *state_left = nullptr, *state_right = nullptr;
-
-  std::mutex rnnoise_mutex;
 
   auto get_model_from_file() -> RNNModel*;
 

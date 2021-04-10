@@ -22,6 +22,7 @@
 
 #include <giomm.h>
 #include <pipewire/filter.h>
+#include <mutex>
 #include <ranges>
 #include <span>
 #include "pipe_manager.hpp"
@@ -92,6 +93,8 @@ class PluginBase {
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
+
+  std::mutex data_mutex;
 
   void initialize_listener();
 

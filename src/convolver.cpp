@@ -43,7 +43,7 @@ Convolver::Convolver(const std::string& tag,
   settings->signal_changed("ir-width").connect([=, this](auto key) {
     ir_width = settings->get_int(key);
 
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
+    std::lock_guard<std::mutex> lock(data_mutex);
 
     if (kernel_is_initialized) {
       kernel_L = original_kernel_L;
@@ -55,12 +55,12 @@ Convolver::Convolver(const std::string& tag,
   });
 
   settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    lock_guard_zita.lock();
+    data_mutex.lock();
 
     kernel_is_initialized = false;
     zita_ready = false;
 
-    lock_guard_zita.unlock();
+    data_mutex.unlock();
 
     read_kernel_file();
 
@@ -81,7 +81,7 @@ Convolver::Convolver(const std::string& tag,
 Convolver::~Convolver() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(lock_guard_zita);
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -104,14 +104,12 @@ Convolver::~Convolver() {
 }
 
 void Convolver::setup() {
-  lock_guard_zita.lock();
+  data_mutex.lock();
 
   kernel_is_initialized = false;
   zita_ready = false;
 
-  lock_guard_zita.unlock();
-
-  util::warning(std::to_string(n_samples));
+  data_mutex.unlock();
 
   n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
 
@@ -149,7 +147,7 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(lock_guard_zita);
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   if (bypass || !kernel_is_initialized || !zita_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());

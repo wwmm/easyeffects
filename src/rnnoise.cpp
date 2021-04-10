@@ -36,16 +36,22 @@ RNNoise::RNNoise(const std::string& tag,
   });
 
   settings->signal_changed("model-path").connect([=, this](auto key) {
+    data_mutex.lock();
+
+    rnnoise_ready = false;
+
+    data_mutex.unlock();
+
     free_rnnoise();
 
     auto* m = get_model_from_file();
-
-    std::lock_guard<std::mutex> lock(rnnoise_mutex);
 
     model = m;
 
     state_left = rnnoise_create(model);
     state_right = rnnoise_create(model);
+
+    rnnoise_ready = true;
   });
 
   auto* m = get_model_from_file();
@@ -55,13 +61,15 @@ RNNoise::RNNoise(const std::string& tag,
   state_left = rnnoise_create(model);
   state_right = rnnoise_create(model);
 
+  rnnoise_ready = true;
+
   initialize_listener();
 }
 
 RNNoise::~RNNoise() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(rnnoise_mutex);
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -79,7 +87,9 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::setup() {
-  std::lock_guard<std::mutex> lock(rnnoise_mutex);
+  std::lock_guard<std::mutex> lock(data_mutex);
+
+  resampler_ready = false;
 
   resample = rate != rnnoise_rate;
 
@@ -91,13 +101,17 @@ void RNNoise::setup() {
 
   resampler_outL = std::make_unique<Resampler>(rnnoise_rate, rate);
   resampler_outR = std::make_unique<Resampler>(rnnoise_rate, rate);
+
+  resampler_ready = true;
 }
 
 void RNNoise::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
                       std::span<float>& right_out) {
-  if (bypass) {
+  std::lock_guard<std::mutex> lock(data_mutex);
+
+  if (bypass || !rnnoise_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -106,26 +120,29 @@ void RNNoise::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  std::lock_guard<std::mutex> lock(rnnoise_mutex);
-
   if (resample) {
-    auto resampled_inL = resampler_inL->process(left_in, false);
-    auto resampled_inR = resampler_inR->process(right_in, false);
+    if (resampler_ready) {
+      auto resampled_inL = resampler_inL->process(left_in, false);
+      auto resampled_inR = resampler_inR->process(right_in, false);
 
-    resampled_data_L.resize(0);
-    resampled_data_R.resize(0);
+      resampled_data_L.resize(0);
+      resampled_data_R.resize(0);
 
-    remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
+      remove_noise(resampled_inL, resampled_inR, resampled_data_L, resampled_data_R);
 
-    auto resampled_outL = resampler_outL->process(resampled_data_L, false);
-    auto resampled_outR = resampler_outR->process(resampled_data_R, false);
+      auto resampled_outL = resampler_outL->process(resampled_data_L, false);
+      auto resampled_outR = resampler_outR->process(resampled_data_R, false);
 
-    for (const auto& v : resampled_outL) {
-      deque_out_L.emplace_back(v);
-    }
+      for (const auto& v : resampled_outL) {
+        deque_out_L.emplace_back(v);
+      }
 
-    for (const auto& v : resampled_outR) {
-      deque_out_R.emplace_back(v);
+      for (const auto& v : resampled_outR) {
+        deque_out_R.emplace_back(v);
+      }
+    } else {
+      std::copy(left_in.begin(), left_in.end(), left_out.begin());
+      std::copy(right_in.begin(), right_in.end(), right_out.begin());
     }
   } else {
     remove_noise(left_in, right_in, deque_out_L, deque_out_R);
@@ -212,6 +229,8 @@ auto RNNoise::get_model_from_file() -> RNNModel* {
 }
 
 void RNNoise::free_rnnoise() {
+  rnnoise_ready = false;
+
   if (state_left != nullptr) {
     rnnoise_destroy(state_left);
   }
