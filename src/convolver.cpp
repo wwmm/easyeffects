@@ -56,7 +56,7 @@ Convolver::Convolver(const std::string& tag,
     }
   });
 
-  settings->signal_changed("model-path").connect([=, this](auto key) {
+  settings->signal_changed("kernel-path").connect([=, this](auto key) {
     read_kernel_file();
 
     std::lock_guard<std::mutex> lock(lock_guard_zita);
@@ -67,6 +67,9 @@ Convolver::Convolver(const std::string& tag,
 
       set_kernel_stereo_width();
       apply_kernel_autogain();
+
+      finish_zita();
+      setup_zita();
     }
   });
 
@@ -97,7 +100,12 @@ Convolver::~Convolver() {
 
 void Convolver::setup() {
   auto f = [=, this]() {
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
+    lock_guard_zita.lock();
+
+    kernel_is_initialized = false;
+    zita_ready = false;
+
+    lock_guard_zita.unlock();
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
 
@@ -136,7 +144,7 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
-  if (bypass || !kernel_is_initialized) {
+  if (bypass || !kernel_is_initialized || !zita_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -220,6 +228,9 @@ void Convolver::read_kernel_file() {
     auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
 
     original_kernel_L = resampler->process(buffer_L, true);
+
+    resampler = std::make_unique<Resampler>(file.samplerate(), rate);
+
     original_kernel_R = resampler->process(buffer_R, true);
   } else {
     original_kernel_L.resize(file.frames());
@@ -237,6 +248,10 @@ void Convolver::read_kernel_file() {
 }
 
 void Convolver::apply_kernel_autogain() {
+  if (kernel_L.empty() || kernel_R.empty()) {
+    return;
+  }
+
   float abs_peak_L = std::ranges::max(kernel_L, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
   float abs_peak_R = std::ranges::max(kernel_R, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
 
