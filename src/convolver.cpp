@@ -25,8 +25,6 @@ constexpr auto CONVPROC_SCHEDULER_PRIORITY = 0;
 
 constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
-constexpr auto THREAD_SYNC_MODE = true;
-
 }  // namespace
 
 Convolver::Convolver(const std::string& tag,
@@ -160,10 +158,11 @@ void Convolver::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
-
   if (n_samples_is_power_of_2) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    do_convolution(left_out, right_out);
   } else {
   }
 
@@ -310,14 +309,8 @@ void Convolver::setup_zita() {
 
   int ret = 0;
   int max_convolution_size = kernel_L.size();
-  int buffer_size = 0;
+  int buffer_size = get_zita_buffer_size();
   float density = 0.0F;
-
-  if (n_samples_is_power_of_2) {
-    buffer_size = n_samples;
-  } else {
-    buffer_size = blocksize;
-  }
 
   conv = new Convproc();
 
@@ -380,4 +373,12 @@ void Convolver::finish_zita() {
   }
 
   zita_ready = false;
+}
+
+auto Convolver::get_zita_buffer_size() -> int {
+  if (n_samples_is_power_of_2) {
+    return n_samples;
+  }
+
+  return blocksize;
 }

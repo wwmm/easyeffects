@@ -82,6 +82,28 @@ class Convolver : public PluginBase {
   void setup_zita();
 
   void finish_zita();
+
+  auto get_zita_buffer_size() -> int;
+
+  template <typename T1>
+  void do_convolution(const T1& data_left, const T1& data_right) {
+    std::span conv_left{conv->inpdata(0), conv->inpdata(0) + get_zita_buffer_size()};
+    std::span conv_right{conv->inpdata(1), conv->inpdata(1) + get_zita_buffer_size()};
+
+    std::copy(data_left.begin(), data_left.end(), conv_left.begin());
+    std::copy(data_right.begin(), data_right.end(), conv_right.begin());
+
+    int ret = conv->process(true);  // thread sync mode set to true
+
+    if (ret != 0) {
+      util::debug(log_tag + "IR: process failed: " + std::to_string(ret));
+
+      zita_ready = false;
+    } else {
+      std::copy(conv_left.begin(), conv_left.end(), data_left.begin());
+      std::copy(conv_right.begin(), conv_right.end(), data_right.begin());
+    }
+  }
 };
 
 #endif
