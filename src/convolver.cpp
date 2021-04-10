@@ -31,7 +31,7 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager), conv(new Convproc()) {
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -71,7 +71,6 @@ Convolver::Convolver(const std::string& tag,
       set_kernel_stereo_width();
       apply_kernel_autogain();
 
-      finish_zita();
       setup_zita();
     }
   });
@@ -98,33 +97,36 @@ Convolver::~Convolver() {
 
   futures.clear();
 
-  finish_zita();
+  conv->stop_process();
+  conv->cleanup();
+
+  delete conv;
 }
 
 void Convolver::setup() {
-  auto f = [=, this]() {
-    lock_guard_zita.lock();
+  lock_guard_zita.lock();
 
-    kernel_is_initialized = false;
-    zita_ready = false;
+  kernel_is_initialized = false;
+  zita_ready = false;
 
-    lock_guard_zita.unlock();
+  lock_guard_zita.unlock();
 
-    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+  util::warning(std::to_string(n_samples));
 
-    if (!n_samples_is_power_of_2) {
-      blocksize = n_samples;
+  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
 
-      while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
-        blocksize--;
-      }
+  if (!n_samples_is_power_of_2) {
+    blocksize = n_samples;
 
-      data_L.resize(0);
-      data_R.resize(0);
+    while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
+      blocksize--;
     }
 
-    finish_zita();
+    data_L.resize(0);
+    data_R.resize(0);
+  }
 
+  auto f = [=, this]() {
     read_kernel_file();
 
     if (kernel_is_initialized) {
@@ -243,7 +245,7 @@ void Convolver::read_kernel_file() {
 
   kernel_is_initialized = true;
 
-  util::debug(log_tag + name + " kernel initialized");
+  util::debug(log_tag + name + ": kernel initialized");
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -302,6 +304,9 @@ void Convolver::setup_zita() {
     return;
   }
 
+  conv->stop_process();
+  conv->cleanup();
+
   int ret = 0;
   int max_convolution_size = kernel_L.size();
   int buffer_size = get_zita_buffer_size();
@@ -309,8 +314,6 @@ void Convolver::setup_zita() {
   float density = 0.0F;
 
   options |= Convproc::OPT_VECTOR_MODE;
-
-  conv = new Convproc();
 
   conv->set_options(options);
 
@@ -351,28 +354,15 @@ void Convolver::setup_zita() {
   if (ret != 0) {
     util::debug(log_tag + "start_process failed: " + std::to_string(ret));
 
+    conv->stop_process();
+    conv->cleanup();
+
     return;
   }
 
   zita_ready = true;
 
   util::debug(log_tag + name + ": zita is ready");
-}
-
-void Convolver::finish_zita() {
-  if (conv != nullptr) {
-    if (conv->state() != Convproc::ST_STOP) {
-      conv->stop_process();
-
-      conv->cleanup();
-    }
-
-    delete conv;
-
-    conv = nullptr;
-  }
-
-  zita_ready = false;
 }
 
 auto Convolver::get_zita_buffer_size() -> int {
