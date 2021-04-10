@@ -55,7 +55,6 @@ class Convolver : public PluginBase {
   bool zita_ready = false;
 
   uint blocksize = 512;
-  uint kernel_n_frames = 0;
   uint ir_width = 100;
   uint latency_n_frames = 0;
 

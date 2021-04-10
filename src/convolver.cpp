@@ -19,6 +19,16 @@
 
 #include "convolver.hpp"
 
+namespace {
+
+constexpr auto CONVPROC_SCHEDULER_PRIORITY = 0;
+
+constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
+
+constexpr auto THREAD_SYNC_MODE = true;
+
+}  // namespace
+
 Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
@@ -86,21 +96,23 @@ Convolver::~Convolver() {
 }
 
 void Convolver::setup() {
-  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
-
-  if (!n_samples_is_power_of_2) {
-    blocksize = n_samples;
-
-    while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
-      blocksize--;
-    }
-
-    data_L.resize(0);
-    data_R.resize(0);
-  }
-
   auto f = [=, this]() {
     std::lock_guard<std::mutex> lock(lock_guard_zita);
+
+    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+
+    if (!n_samples_is_power_of_2) {
+      blocksize = n_samples;
+
+      while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
+        blocksize--;
+      }
+
+      data_L.resize(0);
+      data_R.resize(0);
+    }
+
+    finish_zita();
 
     read_kernel_file();
 
@@ -110,6 +122,8 @@ void Convolver::setup() {
 
       set_kernel_stereo_width();
       apply_kernel_autogain();
+
+      setup_zita();
     }
   };
 
@@ -274,7 +288,6 @@ void Convolver::setup_zita() {
     return;
   }
 
-  bool failed = false;
   int ret = 0;
   int max_convolution_size = kernel_L.size();
   int buffer_size = 0;
@@ -299,6 +312,38 @@ void Convolver::setup_zita() {
 #if ZITA_CONVOLVER_MAJOR_VERSION == 4
   ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
 #endif
+
+  if (ret != 0) {
+    util::warning(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
+
+    return;
+  }
+
+  ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, kernel_L.size());
+
+  if (ret != 0) {
+    util::debug(log_tag + "left impdata_create failed: " + std::to_string(ret));
+
+    return;
+  }
+
+  ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, kernel_R.size());
+
+  if (ret != 0) {
+    util::debug(log_tag + "right impdata_create failed: " + std::to_string(ret));
+
+    return;
+  }
+
+  ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
+
+  if (ret != 0) {
+    util::debug(log_tag + "start_process failed: " + std::to_string(ret));
+
+    return;
+  }
+
+  zita_ready = true;
 }
 
 void Convolver::finish_zita() {
@@ -307,10 +352,12 @@ void Convolver::finish_zita() {
       conv->stop_process();
 
       conv->cleanup();
-
-      delete conv;
-
-      conv = nullptr;
     }
+
+    delete conv;
+
+    conv = nullptr;
   }
+
+  zita_ready = false;
 }
