@@ -221,13 +221,13 @@ void Convolver::read_kernel_file() {
 
   file.readf(buffer.data(), file.frames());
 
+  for (size_t n = 0; n < buffer_L.size(); n++) {
+    buffer_L[n] = buffer[2 * n];
+    buffer_R[n] = buffer[2 * n + 1];
+  }
+
   if (file.samplerate() != static_cast<int>(rate)) {
     util::debug(log_tag + name + " resampling the kernel to " + std::to_string(rate));
-
-    for (size_t n = 0; n < buffer_L.size(); n++) {
-      buffer_L[n] = buffer[2 * n];
-      buffer_R[n] = buffer[2 * n + 1];
-    }
 
     auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
 
@@ -237,13 +237,8 @@ void Convolver::read_kernel_file() {
 
     original_kernel_R = resampler->process(buffer_R, true);
   } else {
-    original_kernel_L.resize(file.frames());
-    original_kernel_R.resize(file.frames());
-
-    for (size_t n = 0; n < original_kernel_L.size(); n++) {
-      original_kernel_L[n] = buffer[2 * n];
-      original_kernel_R[n] = buffer[2 * n + 1];
-    }
+    original_kernel_L = buffer_L;
+    original_kernel_R = buffer_R;
   }
 
   kernel_is_initialized = true;
@@ -310,11 +305,14 @@ void Convolver::setup_zita() {
   int ret = 0;
   int max_convolution_size = kernel_L.size();
   int buffer_size = get_zita_buffer_size();
+  uint options = 0;
   float density = 0.0F;
+
+  options |= Convproc::OPT_VECTOR_MODE;
 
   conv = new Convproc();
 
-  conv->set_options(Convproc::OPT_VECTOR_MODE);
+  conv->set_options(options);
 
 #if ZITA_CONVOLVER_MAJOR_VERSION == 3
   conv->set_density(density);
@@ -357,6 +355,8 @@ void Convolver::setup_zita() {
   }
 
   zita_ready = true;
+
+  util::debug(log_tag + name + ": zita is ready");
 }
 
 void Convolver::finish_zita() {

@@ -87,11 +87,14 @@ class Convolver : public PluginBase {
 
   template <typename T1>
   void do_convolution(const T1& data_left, const T1& data_right) {
-    std::span conv_left{conv->inpdata(0), conv->inpdata(0) + get_zita_buffer_size()};
-    std::span conv_right{conv->inpdata(1), conv->inpdata(1) + get_zita_buffer_size()};
+    std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + get_zita_buffer_size()};
+    std::span conv_right_in{conv->inpdata(1), conv->inpdata(1) + get_zita_buffer_size()};
 
-    std::copy(data_left.begin(), data_left.end(), conv_left.begin());
-    std::copy(data_right.begin(), data_right.end(), conv_right.begin());
+    std::span conv_left_out{conv->outdata(0), conv->outdata(0) + get_zita_buffer_size()};
+    std::span conv_right_out{conv->outdata(1), conv->outdata(1) + get_zita_buffer_size()};
+
+    std::copy(data_left.begin(), data_left.end(), conv_left_in.begin());
+    std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());
 
     int ret = conv->process(true);  // thread sync mode set to true
 
@@ -100,8 +103,8 @@ class Convolver : public PluginBase {
 
       zita_ready = false;
     } else {
-      std::copy(conv_left.begin(), conv_left.end(), data_left.begin());
-      std::copy(conv_right.begin(), conv_right.end(), data_right.begin());
+      std::copy(conv_left_out.begin(), conv_left_out.end(), data_left.begin());
+      std::copy(conv_right_out.begin(), conv_right_out.end(), data_right.begin());
     }
   }
 };
