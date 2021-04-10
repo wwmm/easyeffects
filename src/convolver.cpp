@@ -57,9 +57,14 @@ Convolver::Convolver(const std::string& tag,
   });
 
   settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    read_kernel_file();
+    lock_guard_zita.lock();
 
-    std::lock_guard<std::mutex> lock(lock_guard_zita);
+    kernel_is_initialized = false;
+    zita_ready = false;
+
+    lock_guard_zita.unlock();
+
+    read_kernel_file();
 
     if (kernel_is_initialized) {
       kernel_L = original_kernel_L;
@@ -144,6 +149,8 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
+  std::lock_guard<std::mutex> lock(lock_guard_zita);
+
   if (bypass || !kernel_is_initialized || !zita_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
@@ -152,8 +159,6 @@ void Convolver::process(std::span<float>& left_in,
   }
 
   apply_gain(left_in, right_in, input_gain);
-
-  std::lock_guard<std::mutex> lock(lock_guard_zita);
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
