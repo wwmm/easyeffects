@@ -295,26 +295,24 @@ void ConvolverUi::setup_listview() {
 
     auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-    util::warning(selected_name);
+    auto irs_file = irs_dir / std::filesystem::path{selected_name + ".irs"};
 
-    // auto model_file = model_dir / std::filesystem::path{selected_name + ".rnnn"};
-
-    // settings->set_string("model-path", model_file.string());
+    settings->set_string("kernel-path", irs_file.string());
   });
 
   // initializing selecting the row that corresponds to the saved model
 
-  // Glib::ustring saved_name = std::filesystem::path{settings->get_string("model-path")}.stem().string();
+  Glib::ustring saved_name = std::filesystem::path{settings->get_string("kernel-path")}.stem().string();
 
-  // auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+  auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  // for (guint n = 0; n < single->get_n_items(); n++) {
-  //   auto name = single->get_object(n)->get_property<Glib::ustring>("string");
+  for (guint n = 0; n < single->get_n_items(); n++) {
+    auto name = single->get_object(n)->get_property<Glib::ustring>("string");
 
-  //   if (name == saved_name) {
-  //     single->select_item(n, true);
-  //   }
-  // }
+    if (name == saved_name) {
+      single->select_item(n, true);
+    }
+  }
 }
 
 void ConvolverUi::reset() {

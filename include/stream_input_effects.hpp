@@ -42,11 +42,11 @@ class StreamInputEffects : public EffectsBase {
     Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens
   */
 
-  void on_app_added(NodeInfo node_info);
+  void on_app_added(const NodeInfo& node_info);
 
-  void on_link_changed(LinkInfo link_info);
+  void on_link_changed(const LinkInfo& link_info);
 
-  void on_source_changed(NodeInfo node_info);
+  void on_source_changed(const NodeInfo& node_info);
 };
 
 #endif

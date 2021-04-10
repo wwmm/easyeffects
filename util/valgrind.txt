@@ -1,1 +1,1 @@
-valgrind --suppressions=../../util/pulseaudio.supp --suppressions=../../util/gst.supp --leak-check=full --show-leak-kinds=definite
+valgrind --suppressions=/usr/share/gtk-4.0/valgrind/gtk.supp --suppressions=/usr/share/glib-2.0/valgrind/glib.supp --leak-check=full --show-leak-kinds=definite

@@ -99,7 +99,7 @@ StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamInputEffects::on_app_added(NodeInfo node_info) {
+void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
   bool forbidden_app = false;
   bool connected = false;
   auto blocklist = settings->get_string_array("blocklist");
@@ -125,7 +125,7 @@ void StreamInputEffects::on_app_added(NodeInfo node_info) {
   }
 }
 
-void StreamInputEffects::on_link_changed(LinkInfo link_info) {
+void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
   if (pm->default_source.id == pm->pe_source_node.id) {
     return;
   }
@@ -149,7 +149,7 @@ void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   }
 }
 
-void StreamInputEffects::on_source_changed(NodeInfo node_info) {
+void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
   // auto id = get_input_node_id();
 
   // if (node_info.id == id) {

@@ -349,16 +349,17 @@ void on_node_event_param(void* object,
           break;
         }
         case SPA_PROP_channelVolumes: {
-          float volumes[SPA_AUDIO_MAX_CHANNELS];
+          // float volumes[SPA_AUDIO_MAX_CHANNELS];
+          std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-          auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes, SPA_AUDIO_MAX_CHANNELS);
+          auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
 
           for (auto& node : nd->pm->list_nodes) {
             if (node.id == nd->nd_info.id) {
               float max = 0.0F;
 
               for (uint i = 0; i < n_volumes; i++) {
-                max = (volumes[i] > max) ? volumes[i] : max;
+                max = (volumes.at(i) > max) ? volumes.at(i) : max;
               }
 
               node.n_volume_channels = n_volumes;
@@ -1044,14 +1045,18 @@ PipeManager::PipeManager() {
 
   pw_thread_loop_unlock(thread_loop);
 
-  for (const auto& node : list_nodes) {
-    if (node.name == "pulseeffects_sink") {
-      pe_sink_node = node;
+  while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
+    for (const auto& node : list_nodes) {
+      if (node.name == "pulseeffects_sink") {
+        pe_sink_node = node;
+      }
+
+      if (node.name == "pulseeffects_source") {
+        pe_source_node = node;
+      }
     }
 
-    if (node.name == "pulseeffects_source") {
-      pe_source_node = node;
-    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
   }
 }
 
@@ -1084,7 +1089,7 @@ PipeManager::~PipeManager() {
   pw_thread_loop_destroy(thread_loop);
 }
 
-void PipeManager::connect_stream_output(NodeInfo nd_info) const {
+void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -1098,7 +1103,7 @@ void PipeManager::connect_stream_output(NodeInfo nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_output(NodeInfo nd_info) const {
+void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -1112,7 +1117,7 @@ void PipeManager::disconnect_stream_output(NodeInfo nd_info) const {
   }
 }
 
-void PipeManager::connect_stream_input(NodeInfo nd_info) const {
+void PipeManager::connect_stream_input(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -1126,7 +1131,7 @@ void PipeManager::connect_stream_input(NodeInfo nd_info) const {
   }
 }
 
-void PipeManager::disconnect_stream_input(NodeInfo nd_info) const {
+void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
     pw_thread_loop_lock(thread_loop);
 
@@ -1140,7 +1145,7 @@ void PipeManager::disconnect_stream_input(NodeInfo nd_info) const {
   }
 }
 
-void PipeManager::set_node_volume(NodeInfo nd_info, const float& value) {
+void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
   std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
   std::ranges::fill(volumes, 0.0F);
@@ -1156,7 +1161,7 @@ void PipeManager::set_node_volume(NodeInfo nd_info, const float& value) {
                         SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes.data())));
 }
 
-void PipeManager::set_node_mute(NodeInfo nd_info, const bool& state) {
+void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
   std::array<char, 1024> buffer{};
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
@@ -1192,8 +1197,8 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
         pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(input_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(inp.id).c_str());
 
-        auto* proxy =
-            pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0);
+        auto* proxy = static_cast<pw_proxy*>(
+            pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));
 
         if (proxy == nullptr) {
           util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +

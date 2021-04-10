@@ -98,7 +98,7 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(NodeInfo node_info) {
+void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
   bool forbidden_app = false;
   bool connected = false;
   auto blocklist = settings->get_string_array("blocklist");
@@ -124,7 +124,7 @@ void StreamOutputEffects::on_app_added(NodeInfo node_info) {
   }
 }
 
-void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
+void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
   // bool want_to_play = false;
 
   // for (const auto& link : pm->list_links) {

@@ -104,8 +104,10 @@ void Lv2Wrapper::create_ports() {
 
     const auto* lilv_port = lilv_plugin_get_port_by_index(plugin, n);
 
+    auto* port_name = lilv_port_get_name(plugin, lilv_port);
+
     port->index = n;
-    port->name = lilv_node_as_string(lilv_port_get_name(plugin, lilv_port));
+    port->name = lilv_node_as_string(port_name);
     port->symbol = lilv_node_as_string(lilv_port_get_symbol(plugin, lilv_port));
     port->value = std::isnan(values[n]) ? 0.0F : values[n];
     port->optional = lilv_port_has_property(plugin, lilv_port, lv2_connectionOptional);
@@ -129,6 +131,8 @@ void Lv2Wrapper::create_ports() {
     } else if (!port->optional) {
       util::warning(log_tag + "Port " + port->name + " has un unsupported type!");
     }
+
+    lilv_node_free(port_name);
   }
 
   // util::warning("n audio_in ports: " + std::to_string(n_audio_in));

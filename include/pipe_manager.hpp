@@ -39,7 +39,7 @@
 struct NodeInfo {
   pw_proxy* proxy = nullptr;
 
-  uint id = 0;
+  uint id = SPA_ID_INVALID;
 
   std::string name;
 
@@ -188,21 +188,17 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
-  /*
-    Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens
-  */
+  void connect_stream_output(const NodeInfo& nd_info) const;
 
-  void connect_stream_output(NodeInfo nd_info) const;
+  void connect_stream_input(const NodeInfo& nd_info) const;
 
-  void disconnect_stream_output(NodeInfo nd_info) const;
+  void disconnect_stream_output(const NodeInfo& nd_info) const;
 
-  void connect_stream_input(NodeInfo nd_info) const;
+  void disconnect_stream_input(const NodeInfo& nd_info) const;
 
-  void disconnect_stream_input(NodeInfo nd_info) const;
+  static void set_node_volume(const NodeInfo& nd_info, const float& value);
 
-  static void set_node_volume(NodeInfo nd_info, const float& value);
-
-  static void set_node_mute(NodeInfo nd_info, const bool& state);
+  static void set_node_mute(const NodeInfo& nd_info, const bool& state);
 
   /*
     Links the output ports of the node output_node_id to the input ports of the node input_node_id
