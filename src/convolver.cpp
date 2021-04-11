@@ -315,15 +315,7 @@ void Convolver::setup_zita() {
 
   conv->set_options(options);
 
-#if ZITA_CONVOLVER_MAJOR_VERSION == 3
-  conv->set_density(density);
-
-  ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size);
-#endif
-
-#if ZITA_CONVOLVER_MAJOR_VERSION == 4
   ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
-#endif
 
   if (ret != 0) {
     util::warning(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
