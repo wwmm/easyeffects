@@ -57,6 +57,10 @@ class Plot {
 
   void set_n_x_labels(const int& v);
 
+  void set_n_x_decimals(const int& v);
+
+  void set_n_y_decimals(const int& v);
+
   void set_x_unit(const std::string& value);
 
   void set_y_unit(const std::string& value);
@@ -75,6 +79,8 @@ class Plot {
 
   int x_axis_height = 0;
   int n_x_labels = 10;
+  int n_x_decimals = 1;
+  int n_y_decimals = 1;
 
   double mouse_y = 0.0, mouse_x = 0.0;
 
@@ -97,6 +103,17 @@ class Plot {
   void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 
   auto draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int;
+
+  template <typename T>
+  auto value_to_localized_string(const T& value, const int& places) -> std::string {
+    std::ostringstream msg;
+
+    msg.precision(places);
+
+    msg << std::fixed << value;
+
+    return msg.str();
+  }
 };
 
 #endif

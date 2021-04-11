@@ -62,9 +62,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   plot = std::make_unique<Plot>(drawing_area);
 
-  // builder->get_widget("irs_menu_button", irs_menu_button);
-
-  // impulse response import and selection callbacks
+  plot->set_n_x_labels(6);
 
   popover_menu->signal_show().connect([=, this]() {
     int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
@@ -269,12 +267,6 @@ void ConvolverUi::setup_listview() {
     label->set_text(name);
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name); });
-
-    //     connections.emplace_back(apply_btn->signal_clicked().connect([=, this]() {
-    //       auto irs_file = irs_dir / std::filesystem::path{row->get_name() + ".irs"};
-
-    //       settings->set_string("kernel-path", irs_file.string());
-    //     }));
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
@@ -504,8 +496,6 @@ void ConvolverUi::get_irs_info() {
       }
     }
 
-    std::ranges::for_each(t, [](auto& v) { v *= 1000.0F; });  // converting to milliseconds
-
     time_axis = t;
     left_mag = l;
     right_mag = r;
@@ -708,7 +698,9 @@ void ConvolverUi::plot_waveform() {
 
   plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
-  plot->set_x_unit("ms");
+  plot->set_x_unit("s");
+  plot->set_n_x_decimals(2);
+  plot->set_n_y_decimals(2);
 
   if (check_left->get_active()) {
     plot->set_data(time_axis, left_mag);
@@ -727,6 +719,8 @@ void ConvolverUi::plot_fft() {
   plot->set_line_width(static_cast<float>(spectrum_settings->get_double("line-width")));
 
   plot->set_x_unit("Hz");
+  plot->set_n_x_decimals(0);
+  plot->set_n_y_decimals(2);
 
   if (check_left->get_active()) {
     plot->set_data(freq_axis, left_spectrum);

@@ -140,6 +140,14 @@ void Plot::set_n_x_labels(const int& v) {
   n_x_labels = v;
 }
 
+void Plot::set_n_x_decimals(const int& v) {
+  n_x_decimals = v;
+}
+
+void Plot::set_n_y_decimals(const int& v) {
+  n_y_decimals = v;
+}
+
 void Plot::set_x_unit(const std::string& value) {
   x_unit = value;
 }
@@ -206,12 +214,8 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
     }
 
     if (controller_motion->contains_pointer()) {
-      std::ostringstream msg;
-
-      msg.precision(0);
-
-      msg << std::fixed << mouse_x << " " << x_unit << " ";
-      msg << std::fixed << mouse_y << " " << y_unit;
+      auto msg = "x = " + value_to_localized_string(mouse_x, n_x_decimals) + " " + x_unit +
+                 "  y = " + value_to_localized_string(mouse_y, n_y_decimals) + " " + y_unit;
 
       Pango::FontDescription font;
       font.set_family("Monospace");
@@ -219,7 +223,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 
       int text_width = 0;
       int text_height = 0;
-      auto layout = da->create_pango_layout(msg.str());
+      auto layout = da->create_pango_layout(msg);
       layout->set_font_description(font);
       layout->get_pixel_size(text_width, text_height);
 
@@ -257,17 +261,11 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
   */
 
   for (size_t n = 0; n < labels.size() - 1; n++) {
-    std::ostringstream msg;
+    Glib::ustring msg;
 
     auto label = labels[n];
 
-    if (label < 1000.0) {
-      msg.precision(0);
-      msg << std::fixed << label << x_unit;
-    } else if (label > 1000.0) {
-      msg.precision(1);
-      msg << std::fixed << label / 1000.0 << "k" << x_unit;
-    }
+    msg += value_to_localized_string(label, n_x_decimals) + " " + x_unit;
 
     Pango::FontDescription font;
     font.set_family("Monospace");
@@ -276,7 +274,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     int text_width = 0;
     int text_height = 0;
 
-    auto layout = da->create_pango_layout(msg.str());
+    auto layout = da->create_pango_layout(msg);
     layout->set_font_description(font);
     layout->get_pixel_size(text_width, text_height);
 

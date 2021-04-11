@@ -67,8 +67,10 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
 
   plot->set_x_unit("Hz");
-
   plot->set_y_unit("dB");
+
+  plot->set_n_x_decimals(0);
+  plot->set_n_y_decimals(1);
 
   set_content_height(settings->get_int("height"));
 }
