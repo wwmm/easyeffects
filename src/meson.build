@@ -131,5 +131,4 @@ executable(
 	install: true
 )
 
-subdir('convolver')
 subdir('crystalizer')
