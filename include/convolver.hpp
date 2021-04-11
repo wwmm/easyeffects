@@ -41,6 +41,8 @@ class Convolver : public PluginBase {
   auto operator=(const Convolver&&) -> Convolver& = delete;
   ~Convolver() override;
 
+  auto get_latency() const -> float;
+
   void setup() override;
 
   void process(std::span<float>& left_in,
@@ -48,10 +50,13 @@ class Convolver : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
+  sigc::signal<void(double)> new_latency;
+
  private:
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
   bool zita_ready = false;
+  bool notify_latency = false;
 
   uint blocksize = 512;
   uint ir_width = 100;
@@ -81,7 +86,7 @@ class Convolver : public PluginBase {
   auto get_zita_buffer_size() -> int;
 
   template <typename T1>
-  void do_convolution(const T1& data_left, const T1& data_right) {
+  void do_convolution(T1& data_left, T1& data_right) {
     std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + get_zita_buffer_size()};
     std::span conv_right_in{conv->inpdata(1), conv->inpdata(1) + get_zita_buffer_size()};
 

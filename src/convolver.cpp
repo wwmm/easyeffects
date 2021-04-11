@@ -116,13 +116,19 @@ void Convolver::setup() {
   if (!n_samples_is_power_of_2) {
     blocksize = n_samples;
 
-    while ((blocksize & (blocksize - 1)) == 0 && blocksize > 2) {
+    while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
       blocksize--;
     }
 
-    data_L.resize(0);
-    data_R.resize(0);
+    util::debug("convolver blocksize: " + std::to_string(blocksize));
   }
+
+  data_L.resize(0);
+  data_R.resize(0);
+
+  notify_latency = true;
+
+  latency_n_frames = 0;
 
   auto f = [=, this]() {
     read_kernel_file();
@@ -164,6 +170,62 @@ void Convolver::process(std::span<float>& left_in,
 
     do_convolution(left_out, right_out);
   } else {
+    for (size_t j = 0; j < left_in.size(); j++) {
+      data_L.emplace_back(left_in[j]);
+      data_R.emplace_back(right_in[j]);
+
+      if (data_L.size() == blocksize) {
+        do_convolution(data_L, data_R);
+
+        for (const auto& v : data_L) {
+          deque_out_L.emplace_back(v);
+        }
+
+        for (const auto& v : data_R) {
+          deque_out_R.emplace_back(v);
+        }
+
+        data_L.resize(0);
+        data_R.resize(0);
+      }
+    }
+
+    // copying the precessed samples to the output buffers
+
+    if (deque_out_L.size() >= left_out.size()) {
+      for (float& v : left_out) {
+        v = deque_out_L.front();
+
+        deque_out_L.pop_front();
+      }
+
+      for (float& v : right_out) {
+        v = deque_out_R.front();
+
+        deque_out_R.pop_front();
+      }
+    } else {
+      uint offset = 2 * (left_out.size() - deque_out_L.size());
+
+      if (offset != latency_n_frames) {
+        latency_n_frames = offset;
+
+        notify_latency = true;
+      }
+
+      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+        if (n < offset) {
+          left_out[n] = 0.0F;
+          right_out[n] = 0.0F;
+        } else {
+          left_out[n] = deque_out_L.front();
+          right_out[n] = deque_out_R.front();
+
+          deque_out_R.pop_front();
+          deque_out_L.pop_front();
+        }
+      }
+    }
   }
 
   apply_gain(left_out, right_out, output_gain);
@@ -177,6 +239,16 @@ void Convolver::process(std::span<float>& left_in,
       notify();
 
       notification_dt = 0.0F;
+    }
+
+    if (notify_latency) {
+      latency = static_cast<float>(latency_n_frames) / rate;
+
+      util::debug("convolver latency: " + std::to_string(latency) + " s");
+
+      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
+      notify_latency = false;
     }
   }
 }
@@ -361,4 +433,8 @@ auto Convolver::get_zita_buffer_size() -> int {
   }
 
   return blocksize;
+}
+
+auto Convolver::get_latency() const -> float {
+  return latency;
 }
