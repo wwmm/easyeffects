@@ -28,7 +28,11 @@ AutoGain::AutoGain(const std::string& tag,
 
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
 
-  settings->signal_changed("reset-history").connect([&, this](auto key) { init_ebur128(); });
+  settings->signal_changed("reset-history").connect([&, this](auto key) {
+    std::lock_guard<std::mutex> lock(data_mutex);
+
+    init_ebur128();
+  });
 
   initialize_listener();
 }
@@ -48,12 +52,16 @@ AutoGain::~AutoGain() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
+  std::lock_guard<std::mutex> lock(data_mutex);
+
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
   }
 }
 
 void AutoGain::init_ebur128() {
+  ebur128_ready = false;
+
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
 
@@ -65,9 +73,13 @@ void AutoGain::init_ebur128() {
 
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
+
+  ebur128_ready = ebur_state != nullptr;
 }
 
 void AutoGain::setup() {
+  std::lock_guard<std::mutex> lock(data_mutex);
+
   init_ebur128();
 
   data.resize(n_samples * 2);
@@ -77,7 +89,9 @@ void AutoGain::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
-  if (bypass) {
+  std::lock_guard<std::mutex> lock(data_mutex);
+
+  if (bypass || !ebur128_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 

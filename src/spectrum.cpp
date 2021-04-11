@@ -39,8 +39,6 @@ Spectrum::Spectrum(const std::string& tag,
 Spectrum::~Spectrum() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(data_mutex);
-
   pw_thread_loop_lock(pm->thread_loop);
 
   pw_filter_set_active(filter, false);
@@ -52,6 +50,8 @@ Spectrum::~Spectrum() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   fftw_ready = false;
 

@@ -81,8 +81,6 @@ Convolver::Convolver(const std::string& tag,
 Convolver::~Convolver() {
   util::debug(log_tag + name + " destroyed");
 
-  std::lock_guard<std::mutex> lock(data_mutex);
-
   pw_thread_loop_lock(pm->thread_loop);
 
   pw_filter_set_active(filter, false);
@@ -94,6 +92,8 @@ Convolver::~Convolver() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   futures.clear();
 
