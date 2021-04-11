@@ -21,7 +21,6 @@
 #define CROSSFEED_HPP
 
 #include <bs2bclass.h>
-#include <mutex>
 #include <vector>
 #include "plugin_base.hpp"
 
@@ -48,8 +47,6 @@ class Crossfeed : public PluginBase {
   std::vector<float> data;
 
   bs2b_base bs2b;
-
-  std::mutex bs2b_mutex;
 };
 
 #endif

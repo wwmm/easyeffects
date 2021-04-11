@@ -46,6 +46,8 @@ class Spectrum : public PluginBase {
   sigc::signal<void(uint, uint, std::vector<float>)> power;  // rate, nbands, magnitudes
 
  private:
+  bool fftw_ready = false;
+
   fftwf_plan plan = nullptr;
 
   fftwf_complex* complex_output = nullptr;

@@ -31,11 +31,15 @@ Spectrum::Spectrum(const std::string& tag,
 
   plan = fftwf_plan_dft_r2c_1d(n_bands, real_input.data(), complex_output, FFTW_ESTIMATE);
 
+  fftw_ready = true;
+
   initialize_listener();
 }
 
 Spectrum::~Spectrum() {
   util::debug(log_tag + name + " destroyed");
+
+  std::lock_guard<std::mutex> lock(data_mutex);
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -48,6 +52,8 @@ Spectrum::~Spectrum() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  fftw_ready = false;
 
   fftwf_destroy_plan(plan);
 
@@ -62,10 +68,12 @@ void Spectrum::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
+  std::lock_guard<std::mutex> lock(data_mutex);
+
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  if (!post_messages) {
+  if (!post_messages || !fftw_ready) {
     return;
   }
 

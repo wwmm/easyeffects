@@ -83,6 +83,8 @@ RNNoise::~RNNoise() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
+  resampler_ready = false;
+
   free_rnnoise();
 }
 
@@ -141,8 +143,13 @@ void RNNoise::process(std::span<float>& left_in,
         deque_out_R.emplace_back(v);
       }
     } else {
-      std::copy(left_in.begin(), left_in.end(), left_out.begin());
-      std::copy(right_in.begin(), right_in.end(), right_out.begin());
+      for (const auto& v : left_in) {
+        deque_out_L.emplace_back(v);
+      }
+
+      for (const auto& v : right_in) {
+        deque_out_R.emplace_back(v);
+      }
     }
   } else {
     remove_noise(left_in, right_in, deque_out_L, deque_out_R);
