@@ -54,6 +54,7 @@ class Crystalizer : public PluginBase {
 
   uint blocksize = 512;
   uint latency_n_frames = 0;
+  const uint nbands = 13;
 
   float latency = 0.0F;
 
