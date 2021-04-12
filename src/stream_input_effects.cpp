@@ -67,36 +67,32 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
   // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
-  pm->lock();
+  // uint n_disconnected_links = disconnect_filters();
 
-  uint n_disconnected_links = disconnect_filters();
-
-  if (n_disconnected_links != 0) {
-    util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
-                  " links in the initialization phase?!");
-  }
+  // if (n_disconnected_links != 0) {
+  //   util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
+  //                 " links in the initialization phase?!");
+  // }
 
   connect_filters();
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pm->unlock();
-
   settings->signal_changed("selected-plugins").connect([&, this](auto key) {
-    pm->lock();
+    // disconnect_filters();
+    pm->destroy_links(list_proxies);
 
-    disconnect_filters();
+    list_proxies.clear();
 
     connect_filters();
-
-    pm->unlock();
   });
 }
 
 StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
+
+  // disconnect_filters();
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
 }
 
 void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
@@ -191,20 +187,44 @@ void StreamInputEffects::connect_filters() {
   auto list = settings->get_string_array("selected-plugins");
 
   if (list.empty()) {
-    pm->link_nodes(pm->default_source.id, spectrum->get_node_id());
-  } else {
-    pm->link_nodes(pm->default_source.id, plugins[list[0]]->get_node_id());
+    auto links = pm->link_nodes(pm->default_source.id, spectrum->get_node_id());
 
-    for (size_t n = 1; n < list.size(); n++) {
-      pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
+    }
+  } else {
+    auto links = pm->link_nodes(pm->default_source.id, plugins[list[0]]->get_node_id());
+
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
     }
 
-    pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+    for (size_t n = 1; n < list.size(); n++) {
+      auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+
+      for (const auto& link : links) {
+        list_proxies.emplace_back(link);
+      }
+    }
+
+    links = pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
+    }
   }
 
-  pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
+  auto links = pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
-  pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
+  for (const auto& link : links) {
+    list_proxies.emplace_back(link);
+  }
+
+  links = pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
+
+  for (const auto& link : links) {
+    list_proxies.emplace_back(link);
+  }
 }
 
 auto StreamInputEffects::disconnect_filters() -> uint {

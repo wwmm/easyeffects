@@ -66,36 +66,32 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
 
-  pm->lock();
+  // uint n_disconnected_links = disconnect_filters();
 
-  uint n_disconnected_links = disconnect_filters();
-
-  if (n_disconnected_links != 0) {
-    util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
-                  " links in the initialization phase?!");
-  }
+  // if (n_disconnected_links != 0) {
+  //   util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
+  //                 " links in the initialization phase?!");
+  // }
 
   connect_filters();
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pm->unlock();
-
   settings->signal_changed("selected-plugins").connect([&, this](auto key) {
-    pm->lock();
+    // disconnect_filters();
+    pm->destroy_links(list_proxies);
 
-    disconnect_filters();
+    list_proxies.clear();
 
     connect_filters();
-
-    pm->unlock();
   });
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
+
+  // disconnect_filters();
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
 }
 
 void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
@@ -138,20 +134,6 @@ void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
   // }
 
   // if (want_to_play != apps_want_to_play) {
-  //   pm->lock();
-
-  //   if (want_to_play) {
-  //     activate_filters();
-  //   } else {
-  //     deactivate_filters();
-  //   }
-
-  //   pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  //   pw_thread_loop_wait(pm->thread_loop);
-
-  //   pm->unlock();
-
   //   apps_want_to_play = want_to_play;
   // }
 }
@@ -180,20 +162,44 @@ void StreamOutputEffects::connect_filters() {
   auto list = settings->get_string_array("selected-plugins");
 
   if (list.empty()) {
-    pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
-  } else {
-    pm->link_nodes(pm->pe_sink_node.id, plugins[list[0]]->get_node_id());
+    auto links = pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
 
-    for (size_t n = 1; n < list.size(); n++) {
-      pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
+    }
+  } else {
+    auto links = pm->link_nodes(pm->pe_sink_node.id, plugins[list[0]]->get_node_id());
+
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
     }
 
-    pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+    for (size_t n = 1; n < list.size(); n++) {
+      auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+
+      for (const auto& link : links) {
+        list_proxies.emplace_back(link);
+      }
+    }
+
+    links = pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
+    }
   }
 
-  pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
+  auto links = pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
 
-  pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+  for (const auto& link : links) {
+    list_proxies.emplace_back(link);
+  }
+
+  links = pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+
+  for (const auto& link : links) {
+    list_proxies.emplace_back(link);
+  }
 }
 
 auto StreamOutputEffects::disconnect_filters() -> uint {
@@ -223,30 +229,21 @@ auto StreamOutputEffects::disconnect_filters() -> uint {
 
 void StreamOutputEffects::set_bypass(const bool& state) {
   if (state) {
-    pm->lock();
+    // disconnect_filters();
+    pm->destroy_links(list_proxies);
 
-    disconnect_filters();
+    list_proxies.clear();
 
     pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
     pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
     pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
-
-    pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(pm->thread_loop);
-
-    pm->unlock();
   } else {
-    pm->lock();
+    // disconnect_filters();
 
-    disconnect_filters();
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
 
     connect_filters();
-
-    pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(pm->thread_loop);
-
-    pm->unlock();
   }
 }

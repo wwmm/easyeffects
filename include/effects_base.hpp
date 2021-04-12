@@ -92,6 +92,8 @@ class EffectsBase {
   std::shared_ptr<Loudness> loudness;
   std::shared_ptr<Pitch> pitch;
 
+  std::vector<pw_proxy*> list_proxies;
+
   void activate_filters();
 
   void deactivate_filters();

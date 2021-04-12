@@ -1171,7 +1171,8 @@ void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id) -> bool {
+auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id) -> std::vector<pw_proxy*> {
+  std::vector<pw_proxy*> list;
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
 
@@ -1188,6 +1189,8 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
   for (auto& outp : list_output_ports) {
     for (auto& inp : list_input_ports) {
       if (outp.audio_channel == inp.audio_channel) {
+        lock();
+
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
         pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
@@ -1204,13 +1207,23 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
           util::warning(log_tag + "failed to link the node " + std::to_string(output_node_id) + " to " +
                         std::to_string(input_node_id));
 
-          return false;
+          unlock();
+
+          return list;
         }
+
+        pw_core_sync(core, PW_ID_CORE, 0);
+
+        pw_thread_loop_wait(thread_loop);
+
+        unlock();
+
+        list.emplace_back(proxy);
       }
     }
   }
 
-  return true;
+  return list;
 }
 
 void PipeManager::lock() const {
@@ -1222,7 +1235,31 @@ void PipeManager::unlock() const {
 }
 
 void PipeManager::destroy_object(const int& id) const {
+  lock();
+
   pw_registry_destroy(registry, id);
+
+  pw_core_sync(core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(thread_loop);
+
+  unlock();
+}
+
+void PipeManager::destroy_links(const std::vector<pw_proxy*>& list) const {
+  for (auto* proxy : list) {
+    if (proxy != nullptr) {
+      lock();
+
+      pw_proxy_destroy(proxy);
+
+      pw_core_sync(core, PW_ID_CORE, 0);
+
+      pw_thread_loop_wait(thread_loop);
+
+      unlock();
+    }
+  }
 }
 
 /*

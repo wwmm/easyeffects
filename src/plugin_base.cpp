@@ -126,7 +126,7 @@ PluginBase::PluginBase(std::string tag,
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
-    util::error(log_tag + "can not connect the filter to pipewire!");
+    util::error(log_tag + name + " can not connect the filter to pipewire!");
   }
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
