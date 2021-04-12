@@ -23,12 +23,41 @@ Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
-    : PluginBase(tag, "crystalizer", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, "crystalizer", schema, schema_path, pipe_manager), conv(new Convproc()) {
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
   initialize_listener();
 }
 
 Crystalizer::~Crystalizer() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
+
+  std::lock_guard<std::mutex> lock(data_mutex);
+
+  futures.clear();
+
+  conv->stop_process();
+  conv->cleanup();
+
+  delete conv;
 }
 
 void Crystalizer::setup() {
