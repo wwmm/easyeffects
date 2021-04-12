@@ -20,6 +20,8 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
+#include <future>
+#include <vector>
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {
@@ -34,12 +36,33 @@ class Crystalizer : public PluginBase {
   auto operator=(const Crystalizer&&) -> Crystalizer& = delete;
   ~Crystalizer() override;
 
-  sigc::connection range_before_connection, range_after_connection;
+  auto get_latency() const -> float;
 
-  sigc::signal<void(double)> range_before, range_after;
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
+  sigc::signal<void(double)> new_latency;
 
  private:
-  void bind_to_gsettings();
+  bool n_samples_is_power_of_2 = true;
+  bool filters_are_ready = false;
+  bool notify_latency = false;
+
+  uint blocksize = 512;
+  uint latency_n_frames = 0;
+
+  float latency = 0.0F;
+
+  std::vector<float> data_L, data_R;
+
+  std::deque<float> deque_in_L, deque_in_R;
+  std::deque<float> deque_out_L, deque_out_R;
+
+  std::vector<std::future<void>> futures;
 };
 
 #endif

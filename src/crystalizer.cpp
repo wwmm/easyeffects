@@ -19,117 +19,11 @@
 
 #include "crystalizer.hpp"
 
-// namespace {
-
-// void on_post_messages_changed(GSettings* settings, gchar* key, Crystalizer* l) {
-//   const auto post = g_settings_get_boolean(settings, key);
-
-//   if (post) {
-//     if (!l->range_before_connection.connected()) {
-//       l->range_before_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float v = 0.0F;
-
-//             g_object_get(l->crystalizer, "lra-before", &v, nullptr);
-
-//             l->range_before.emit(v);
-
-//             return true;
-//           },
-//           100);
-//     }
-
-//     if (!l->range_after_connection.connected()) {
-//       l->range_after_connection = Glib::signal_timeout().connect(
-//           [l]() {
-//             float v = 0.0F;
-
-//             g_object_get(l->crystalizer, "lra-after", &v, nullptr);
-
-//             l->range_after.emit(v);
-
-//             return true;
-//           },
-//           100);
-//     }
-//   } else {
-//     l->range_before_connection.disconnect();
-//     l->range_after_connection.disconnect();
-//   }
-// }
-
-// void on_n_input_samples_changed(GObject* gobject, GParamSpec* pspec, Crystalizer* c) {
-//   int v = 0;
-//   int blocksize = 0;
-
-//   g_object_get(c->adapter, "n-input-samples", &v, nullptr);
-//   g_object_get(c->adapter, "blocksize", &blocksize, nullptr);
-
-//   util::debug(c->log_tag + "crystalizer: new input block size " + std::to_string(v) + " frames");
-// }
-
-// }  // namespace
-
 Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
     : PluginBase(tag, "crystalizer", schema, schema_path, pipe_manager) {
-  // crystalizer = gst_element_factory_make("pecrystalizer", nullptr);
-
-  // if (is_installed(crystalizer)) {
-  //   auto* input_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* in_level = gst_element_factory_make("level", "crystalizer_input_level");
-  //   auto* output_gain = gst_element_factory_make("volume", nullptr);
-  //   auto* out_level = gst_element_factory_make("level", "crystalizer_output_level");
-
-  //   auto* audioconvert_in = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_in");
-  //   auto* audioconvert_out = gst_element_factory_make("audioconvert", "crystalizer_audioconvert_out");
-
-  //   adapter = gst_element_factory_make("peadapter", nullptr);
-
-  //   gst_bin_add_many(GST_BIN(bin), input_gain, in_level, adapter, audioconvert_in, crystalizer, audioconvert_out,
-  //                    output_gain, out_level, nullptr);
-
-  //   gst_element_link_many(input_gain, in_level, adapter, audioconvert_in, crystalizer, audioconvert_out, output_gain,
-  //                         out_level, nullptr);
-
-  //   auto* pad_sink = gst_element_get_static_pad(input_gain, "sink");
-  //   auto* pad_src = gst_element_get_static_pad(out_level, "src");
-
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("sink", pad_sink));
-  //   gst_element_add_pad(bin, gst_ghost_pad_new("src", pad_src));
-
-  //   gst_object_unref(GST_OBJECT(pad_sink));
-  //   gst_object_unref(GST_OBJECT(pad_src));
-
-  //   g_object_set(adapter, "blocksize", 512, nullptr);
-  //   g_object_set(adapter, "passthrough", 1, nullptr);
-
-  //   g_signal_connect(adapter, "notify::n-input-samples", G_CALLBACK(on_n_input_samples_changed), this);
-
-  //   bind_to_gsettings();
-
-  //   g_signal_connect(settings, "changed::post-messages", G_CALLBACK(on_post_messages_changed), this);
-
-  //   g_settings_bind(settings, "post-messages", in_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-  //   g_settings_bind(settings, "post-messages", out_level, "post-messages", G_SETTINGS_BIND_DEFAULT);
-
-  //   g_settings_bind_with_mapping(settings, "input-gain", input_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   g_settings_bind_with_mapping(settings, "output-gain", output_gain, "volume", G_SETTINGS_BIND_DEFAULT,
-  //                                util::db20_gain_to_linear_double, util::linear_double_gain_to_db20, nullptr,
-  //                                nullptr);
-
-  //   // useless write just to force callback call
-
-  //   auto enable = g_settings_get_boolean(settings, "state");
-
-  //   g_settings_set_boolean(settings, "state", enable);
-  // }
-
   initialize_listener();
 }
 
@@ -137,20 +31,155 @@ Crystalizer::~Crystalizer() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Crystalizer::bind_to_gsettings() {
-  // g_settings_bind(settings, "post-messages", crystalizer, "notify-host", G_SETTINGS_BIND_DEFAULT);
+void Crystalizer::setup() {
+  data_mutex.lock();
 
-  // g_settings_bind(settings, "aggressive", crystalizer, "aggressive", G_SETTINGS_BIND_DEFAULT);
+  filters_are_ready = false;
 
-  // for (int n = 0; n < 13; n++) {
-  //   g_settings_bind_with_mapping(settings, std::string("intensity-band" + std::to_string(n)).c_str(), crystalizer,
-  //                                std::string("intensity-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_GET,
-  //                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
+  data_mutex.unlock();
 
-  //   g_settings_bind(settings, std::string("mute-band" + std::to_string(n)).c_str(), crystalizer,
-  //                   std::string("mute-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
+  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
 
-  //   g_settings_bind(settings, std::string("bypass-band" + std::to_string(n)).c_str(), crystalizer,
-  //                   std::string("bypass-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
-  // }
+  if (!n_samples_is_power_of_2) {
+    blocksize = n_samples;
+
+    while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
+      blocksize--;
+    }
+
+    util::debug("convolver blocksize: " + std::to_string(blocksize));
+  }
+
+  data_L.resize(0);
+  data_R.resize(0);
+
+  notify_latency = true;
+
+  latency_n_frames = 0;
+
+  // auto f = [=, this]() { setup_zita(); };
+
+  // auto future = std::async(std::launch::async, f);
+
+  // futures.emplace_back(std::move(future));
 }
+
+void Crystalizer::process(std::span<float>& left_in,
+                          std::span<float>& right_in,
+                          std::span<float>& left_out,
+                          std::span<float>& right_out) {
+  std::lock_guard<std::mutex> lock(data_mutex);
+
+  if (bypass || !filters_are_ready) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  if (n_samples_is_power_of_2) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    // do_convolution(left_out, right_out);
+  } else {
+    for (size_t j = 0; j < left_in.size(); j++) {
+      data_L.emplace_back(left_in[j]);
+      data_R.emplace_back(right_in[j]);
+
+      if (data_L.size() == blocksize) {
+        // do_convolution(data_L, data_R);
+
+        for (const auto& v : data_L) {
+          deque_out_L.emplace_back(v);
+        }
+
+        for (const auto& v : data_R) {
+          deque_out_R.emplace_back(v);
+        }
+
+        data_L.resize(0);
+        data_R.resize(0);
+      }
+    }
+
+    // copying the precessed samples to the output buffers
+
+    if (deque_out_L.size() >= left_out.size()) {
+      for (float& v : left_out) {
+        v = deque_out_L.front();
+
+        deque_out_L.pop_front();
+      }
+
+      for (float& v : right_out) {
+        v = deque_out_R.front();
+
+        deque_out_R.pop_front();
+      }
+    } else {
+      uint offset = 2 * (left_out.size() - deque_out_L.size());
+
+      if (offset != latency_n_frames) {
+        latency_n_frames = offset;
+
+        notify_latency = true;
+      }
+
+      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+        if (n < offset) {
+          left_out[n] = 0.0F;
+          right_out[n] = 0.0F;
+        } else {
+          left_out[n] = deque_out_L.front();
+          right_out[n] = deque_out_R.front();
+
+          deque_out_R.pop_front();
+          deque_out_L.pop_front();
+        }
+      }
+    }
+  }
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+
+    if (notify_latency) {
+      latency = static_cast<float>(latency_n_frames) / rate;
+
+      util::debug(name + " latency: " + std::to_string(latency) + " s");
+
+      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
+      notify_latency = false;
+    }
+  }
+}
+
+// g_settings_bind(settings, "post-messages", crystalizer, "notify-host", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "aggressive", crystalizer, "aggressive", G_SETTINGS_BIND_DEFAULT);
+
+// for (int n = 0; n < 13; n++) {
+//   g_settings_bind_with_mapping(settings, std::string("intensity-band" + std::to_string(n)).c_str(), crystalizer,
+//                                std::string("intensity-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_GET,
+//                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
+
+//   g_settings_bind(settings, std::string("mute-band" + std::to_string(n)).c_str(), crystalizer,
+//                   std::string("mute-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
+
+//   g_settings_bind(settings, std::string("bypass-band" + std::to_string(n)).c_str(), crystalizer,
+//                   std::string("bypass-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
+// }
