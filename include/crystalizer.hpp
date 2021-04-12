@@ -20,7 +20,6 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <zita-convolver.h>
 #include <future>
 #include <vector>
 #include "plugin_base.hpp"
@@ -64,8 +63,6 @@ class Crystalizer : public PluginBase {
   std::deque<float> deque_out_L, deque_out_R;
 
   std::vector<std::future<void>> futures;
-
-  Convproc* conv = nullptr;
 };
 
 #endif
