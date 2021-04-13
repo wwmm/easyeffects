@@ -2,6 +2,9 @@
 #define FIR_FILTER_BASE_HPP
 
 #include <zita-convolver.h>
+#include <algorithm>
+#include <numbers>
+#include <ranges>
 #include <span>
 #include "util.hpp"
 
@@ -21,12 +24,13 @@ class FirFilterBase {
   bool zita_ready = false;
   bool ready = false;
 
-  int kernel_size = 0;
   int n_samples = 0;
 
   std::vector<float> kernel;
 
   Convproc* conv = nullptr;
+
+  void create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band);
 
   void setup_zita();
 

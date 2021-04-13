@@ -26,6 +26,65 @@ FirFilterBase::~FirFilterBase() {
   }
 }
 
+void FirFilterBase::create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band) {
+  /*
+    transition band frequency as a fraction of the sample rate
+  */
+
+  float b = transition_band / rate;
+
+  /*
+      The kernel size must be odd: M + 1 where M is even. This is done so it can be symmetric around the main lobe
+      https://www.dspguide.com/ch16/1.htm
+
+      The kernel size is related to the transition bandwidth M = 4/BW
+  */
+
+  size_t M = std::ceil(4.0F / b);
+
+  M = (M % 2 == 0) ? M : M + 1;  // checking if M is even
+
+  kernel.resize(M + 1);
+
+  /*
+    cutoff frequency as a fraction of the sample rate
+  */
+
+  float fc = cutoff / rate;
+
+  float sum = 0.0F;
+
+  for (size_t n = 0; n < kernel.size(); n++) {
+    /*
+      windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
+    */
+
+    if (n == M / 2) {
+      kernel[n] = 2.0F * std::numbers::pi_v<float> * fc;
+    } else {
+      kernel[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<int>(M / 2))) /
+                  static_cast<float>(n - static_cast<int>(M / 2));
+    }
+
+    /*
+      Blackman window https://www.dspguide.com/ch16/1.htm
+    */
+
+    auto w = 0.42F - 0.5F * cosf(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
+             0.08F * cosf(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
+
+    kernel[n] *= w;
+
+    sum += kernel[n];
+  }
+
+  /*
+    Normalizing so that we have unit gain at zero frequency
+  */
+
+  std::ranges::for_each(kernel, [&](auto& v) { v /= sum; });
+}
+
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
