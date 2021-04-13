@@ -922,6 +922,20 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     for (auto& name : settings->get_string_array("selected-plugins")) {
       selected_plugins->append(name);
     }
+
+    // showing the first plugin in the list by default
+
+    auto selected_name = selected_plugins->get_string(0);
+
+    for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+      auto page = stack_plugins->get_page(*child);
+
+      if (page->get_name() == selected_name) {
+        stack_plugins->set_visible_child(*child);
+
+        break;
+      }
+    }
   }
 
   settings->signal_changed("selected-plugins").connect([=, this](auto key) {
