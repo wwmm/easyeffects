@@ -370,7 +370,7 @@ void Convolver::set_kernel_stereo_width() {
 void Convolver::setup_zita() {
   zita_ready = false;
 
-  if (rate == 0 || n_samples == 0 || !kernel_is_initialized) {
+  if (n_samples == 0 || !kernel_is_initialized) {
     return;
   }
 
