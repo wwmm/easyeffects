@@ -30,6 +30,20 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       spectrum_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.spectrum")) {
   name = plugin_name::convolver;
 
+  // irs dir
+
+  auto dir_exists = std::filesystem::is_directory(irs_dir);
+
+  if (!dir_exists) {
+    if (std::filesystem::create_directories(irs_dir)) {
+      util::debug(log_tag + "irs directory created: " + irs_dir.string());
+    } else {
+      util::warning(log_tag + "failed to create irs directory: " + irs_dir.string());
+    }
+  } else {
+    util::debug(log_tag + "irs directory already exists: " + irs_dir.string());
+  }
+
   // loading builder widgets
 
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
@@ -105,20 +119,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("ir-width", ir_width->get_adjustment().get(), "value");
-
-  // irs dir
-
-  auto dir_exists = std::filesystem::is_directory(irs_dir);
-
-  if (!dir_exists) {
-    if (std::filesystem::create_directories(irs_dir)) {
-      util::debug(log_tag + "irs directory created: " + irs_dir.string());
-    } else {
-      util::warning(log_tag + "failed to create irs directory: " + irs_dir.string());
-    }
-  } else {
-    util::debug(log_tag + "irs directory already exists: " + irs_dir.string());
-  }
 
   // reading the current configured irs file
 
