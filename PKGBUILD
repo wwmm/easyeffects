@@ -15,10 +15,10 @@ depends=('gtk3' 'gtkmm3' 'glibmm' 'pulseaudio'
          'libsamplerate' 'zita-convolver' 'libebur128'
          'calf' 'lsp-plugins' 'yelp')
 makedepends=('meson' 'boost' 'itstool' 'appstream-glib'
-             'zam-plugins' 'rubberband' 'librnnoise')
+             'zam-plugins' 'rubberband' 'rnnoise')
 optdepends=('zam-plugins: maximizer'
             'rubberband: pitch shifting'
-            'librnnoise: noise remover')
+            'rnnoise: noise remover')
 source=("git+https://github.com/wwmm/pulseeffects.git#branch=pulseaudio-legacy")
 conflicts=(pulseeffects)
 provides=(pulseeffects)
