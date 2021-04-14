@@ -107,8 +107,8 @@ void Application::on_startup() {
   util::debug(log_tag + "PE version: " + std::string(VERSION));
 
   settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-  auto soe_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
-  auto sie_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
+  soe_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
+  sie_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
 
   if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0U) {
     running_as_service = true;
@@ -130,57 +130,51 @@ void Application::on_startup() {
   pm->new_default_sink.connect([&](const NodeInfo& node) {
     util::debug("new default output device: " + node.name);
 
-    // if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-output-device")) {
-    //   soe->set_null_pipeline();
+    if (soe_settings->get_boolean("use-default-output-device")) {
+      if (pm->output_device.id != node.id) {
+        soe_settings->set_string("output-device", node.name);
 
-    //   soe->set_output_node_id(node.id);
+        Glib::signal_timeout().connect_seconds_once(
+            [=, this]() {
+              auto defaul_sink_name = pm->default_output_device.name;
 
-    //   soe->update_pipeline_state();
+              // checking if after 2 seconds this sink still is the default sink
+              if (node.name == defaul_sink_name) {
+                if (node.name != last_sink_dev_name) {
+                  last_sink_dev_name = node.name;
 
-    //   sie->webrtc->set_probe_input_node_id(node.id);
-    // }
-
-    Glib::signal_timeout().connect_seconds_once(
-        [=, this]() {
-          auto defaul_sink_name = pm->default_output_device.name;
-
-          // checking if after 2 seconds this sink still is the default sink
-          if (node.name == defaul_sink_name) {
-            if (node.name != last_sink_dev_name) {
-              last_sink_dev_name = node.name;
-
-              presets_manager->autoload(PresetType::output, node.name);
-            }
-          }
-        },
-        2);
+                  presets_manager->autoload(PresetType::output, node.name);
+                }
+              }
+            },
+            2);
+      }
+    }
   });
 
   pm->new_default_source.connect([&](const NodeInfo& node) {
     util::debug("new default input device: " + node.name);
 
-    // if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-input-device")) {
-    //   sie->set_null_pipeline();
+    if (sie_settings->get_boolean("use-default-input-device")) {
+      if (pm->input_device.id != node.id) {
+        sie_settings->set_string("input-device", node.name);
 
-    //   sie->change_input_device(node);
+        Glib::signal_timeout().connect_seconds_once(
+            [=, this]() {
+              auto defaul_source_name = pm->default_input_device.name;
 
-    //   sie->update_pipeline_state();
-    // }
+              // checking if after 2 seconds this source still is the default source
+              if (node.name == defaul_source_name) {
+                if (node.name != last_source_dev_name) {
+                  last_source_dev_name = node.name;
 
-    Glib::signal_timeout().connect_seconds_once(
-        [=, this]() {
-          auto defaul_source_name = pm->default_input_device.name;
-
-          // checking if after 2 seconds this source still is the default source
-          if (node.name == defaul_source_name) {
-            if (node.name != last_source_dev_name) {
-              last_source_dev_name = node.name;
-
-              presets_manager->autoload(PresetType::input, node.name);
-            }
-          }
-        },
-        3);
+                  presets_manager->autoload(PresetType::input, node.name);
+                }
+              }
+            },
+            2);
+      }
+    }
   });
 
   sie_settings->signal_changed("blocklist").connect([=, this](auto key) {

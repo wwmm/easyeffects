@@ -41,6 +41,8 @@ class Application : public Gtk::Application {
 
   static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
+  Glib::RefPtr<Gio::Settings> soe_settings;
+  Glib::RefPtr<Gio::Settings> sie_settings;
 
   std::unique_ptr<PipeManager> pm;
   std::unique_ptr<StreamOutputEffects> soe;

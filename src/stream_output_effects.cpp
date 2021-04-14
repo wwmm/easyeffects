@@ -28,7 +28,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   } else {
     bool found = false;
 
-    for (const auto& node : pipe_manager->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == std::string(settings->get_string("output-device"))) {
         pm->output_device = node;
 
@@ -46,7 +46,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
-    for (const auto& node : pipe_manager->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
@@ -68,6 +68,23 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   // }
 
   connect_filters();
+
+  settings->signal_changed("output-device").connect([&, this](auto key) {
+    for (const auto& node : pm->list_nodes) {
+      if (node.name == std::string(settings->get_string(key))) {
+        pm->output_device = node;
+
+        // disconnect_filters();
+        pm->destroy_links(list_proxies);
+
+        list_proxies.clear();
+
+        connect_filters();
+
+        break;
+      }
+    }
+  });
 
   settings->signal_changed("selected-plugins").connect([&, this](auto key) {
     // disconnect_filters();
