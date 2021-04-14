@@ -10,23 +10,11 @@
         <key name="use-dark-theme" type="b">
             <default>false</default>
         </key>
-        <key name="use-default-sink" type="b">
-            <default>true</default>
-        </key>
-        <key name="use-default-source" type="b">
-            <default>true</default>
-        </key>
         <key name="last-used-input-preset" type="s">
             <default l10n="messages">"Presets"</default>
         </key>
         <key name="last-used-output-preset" type="s">
             <default l10n="messages">"Presets"</default>
-        </key>
-        <key name="custom-sink" type="s">
-            <default>""</default>
-        </key>
-        <key name="custom-source" type="s">
-            <default>""</default>
         </key>
         <key name="window-width" type="i">
             <default>0</default>

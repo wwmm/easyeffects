@@ -7,6 +7,12 @@
         <key name="selected-plugins" type="as">
             <default>[]</default>
         </key>
+        <key name="use-default-output-device" type="b">
+            <default>true</default>
+        </key>
+        <key name="output-device" type="s">
+            <default>""</default>
+        </key>
         <key name="latency" type="i">
             <range min="1" max="10000000" />
             <default>50</default>

@@ -164,7 +164,9 @@ class PipeManager {
 
   NodeInfo pe_sink_node, pe_source_node;
 
-  NodeInfo default_sink, default_source;
+  NodeInfo default_output_device, default_input_device;
+
+  NodeInfo output_device, input_device;
 
   std::vector<Glib::ustring> blocklist_in;   // for input effects
   std::vector<Glib::ustring> blocklist_out;  // for output effects

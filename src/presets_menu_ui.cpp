@@ -324,7 +324,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     auto connection_autoload = autoload->signal_toggled().connect([=, this]() {
       switch (preset_type) {
         case PresetType::output: {
-          auto dev_name = app->pm->default_sink.name;
+          auto dev_name = app->pm->default_output_device.name;
 
           if (autoload->get_active()) {
             app->presets_manager->add_autoload(dev_name, name);
@@ -335,7 +335,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
           break;
         }
         case PresetType::input: {
-          auto dev_name = app->pm->default_source.name;
+          auto dev_name = app->pm->default_input_device.name;
 
           if (autoload->get_active()) {
             app->presets_manager->add_autoload(dev_name, name);
@@ -407,14 +407,14 @@ auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& nam
 
   switch (preset_type) {
     case PresetType::output: {
-      auto dev_name = app->pm->default_sink.name;
+      auto dev_name = app->pm->default_output_device.name;
 
       current_autoload = app->presets_manager->find_autoload(dev_name);
 
       break;
     }
     case PresetType::input: {
-      auto dev_name = app->pm->default_source.name;
+      auto dev_name = app->pm->default_input_device.name;
 
       current_autoload = app->presets_manager->find_autoload(dev_name);
 

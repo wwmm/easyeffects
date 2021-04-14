@@ -159,8 +159,8 @@ void PipeInfoUi::update_server_info() {
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
 
-  default_sink->set_text(pm->default_sink.name);
-  default_source->set_text(pm->default_source.name);
+  default_sink->set_text(pm->default_output_device.name);
+  default_source->set_text(pm->default_input_device.name);
   server_rate->set_text(pm->default_clock_rate);
 
   min_quantum->set_text(pm->default_min_quantum);

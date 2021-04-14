@@ -21,47 +21,41 @@
 
 StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", "com.github.wwmm.pulseeffects.sourceoutputs", pipe_manager) {
-  // auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
+  pm->input_device = pm->default_input_device;
 
-  // if (PULSE_SOURCE != nullptr) {
-  //   int node_id = -1;
+  if (settings->get_boolean("use-default-input-device")) {
+    settings->set_string("input-device", pm->input_device.name);
+  } else {
+    bool found = false;
 
-  //   for (const auto& node : pipe_manager->list_nodes) {
-  //     if (node.name == PULSE_SOURCE) {
-  //       node_id = node.id;
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == std::string(settings->get_string("input-device"))) {
+        pm->input_device = node;
 
-  //       break;
-  //     }
-  //   }
+        found = true;
 
-  //   if (node_id != -1) {
-  //     set_input_node_id(node_id);
-  //   }
-  // } else {
-  //   bool use_default_source = g_settings_get_boolean(settings, "use-default-source") != 0;
+        break;
+      }
+    }
 
-  //   if (!use_default_source) {
-  //     gchar* custom_source = g_settings_get_string(settings, "custom-source");
+    if (!found) {
+      settings->set_string("input-device", pm->input_device.name);
+    }
+  }
 
-  //     if (custom_source != nullptr) {
-  //       int node_id = -1;
+  auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
-  //       for (const auto& node : pipe_manager->list_nodes) {
-  //         if (node.name == custom_source) {
-  //           node_id = node.id;
+  if (PULSE_SOURCE != nullptr) {
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == PULSE_SOURCE) {
+        pm->input_device = node;
 
-  //           break;
-  //         }
-  //       }
+        settings->set_string("input-device", pm->input_device.name);
 
-  //       if (node_id != -1) {
-  //         set_output_node_id(node_id);
-  //       }
-
-  //       g_free(custom_source);
-  //     }
-  //   }
-  // }
+        break;
+      }
+    }
+  }
 
   pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
@@ -122,7 +116,7 @@ void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
 }
 
 void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
-  if (pm->default_source.id == pm->pe_source_node.id) {
+  if (pm->default_input_device.id == pm->pe_source_node.id) {
     return;
   }
 
@@ -187,13 +181,13 @@ void StreamInputEffects::connect_filters() {
   auto list = settings->get_string_array("selected-plugins");
 
   if (list.empty()) {
-    auto links = pm->link_nodes(pm->default_source.id, spectrum->get_node_id());
+    auto links = pm->link_nodes(pm->input_device.id, spectrum->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
     }
   } else {
-    auto links = pm->link_nodes(pm->default_source.id, plugins[list[0]]->get_node_id());
+    auto links = pm->link_nodes(pm->input_device.id, plugins[list[0]]->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);

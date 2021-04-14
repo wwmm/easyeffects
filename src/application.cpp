@@ -128,9 +128,9 @@ void Application::on_startup() {
   pm->blocklist_out = soe_settings->get_string_array("blocklist");
 
   pm->new_default_sink.connect([&](const NodeInfo& node) {
-    util::debug("new default sink: " + node.name);
+    util::debug("new default output device: " + node.name);
 
-    // if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-sink")) {
+    // if (soe->get_output_node_id() != node.id && settings->get_boolean("use-default-output-device")) {
     //   soe->set_null_pipeline();
 
     //   soe->set_output_node_id(node.id);
@@ -142,7 +142,7 @@ void Application::on_startup() {
 
     Glib::signal_timeout().connect_seconds_once(
         [=, this]() {
-          auto defaul_sink_name = pm->default_sink.name;
+          auto defaul_sink_name = pm->default_output_device.name;
 
           // checking if after 2 seconds this sink still is the default sink
           if (node.name == defaul_sink_name) {
@@ -157,9 +157,9 @@ void Application::on_startup() {
   });
 
   pm->new_default_source.connect([&](const NodeInfo& node) {
-    util::debug("new default source: " + node.name);
+    util::debug("new default input device: " + node.name);
 
-    // if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-source")) {
+    // if (sie->get_input_node_id() != node.id && settings->get_boolean("use-default-input-device")) {
     //   sie->set_null_pipeline();
 
     //   sie->change_input_device(node);
@@ -169,7 +169,7 @@ void Application::on_startup() {
 
     Glib::signal_timeout().connect_seconds_once(
         [=, this]() {
-          auto defaul_source_name = pm->default_source.name;
+          auto defaul_source_name = pm->default_input_device.name;
 
           // checking if after 2 seconds this source still is the default source
           if (node.name == defaul_source_name) {

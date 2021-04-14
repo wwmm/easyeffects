@@ -574,7 +574,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        pm->default_sink = node;
+        pm->default_output_device = node;
 
         if (node.name == "pulseeffects_sink") {
           return 0;
@@ -594,7 +594,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        pm->default_source = node;
+        pm->default_input_device = node;
 
         if (node.name == "pulseeffects_source") {
           return 0;
@@ -1107,7 +1107,8 @@ void PipeManager::disconnect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);
 
-    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_sink.id).c_str());
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id",
+                             std::to_string(default_output_device.id).c_str());
 
     pw_core_sync(core, PW_ID_CORE, 0);
 
@@ -1135,7 +1136,8 @@ void PipeManager::disconnect_stream_input(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Input/Audio") {
     pw_thread_loop_lock(thread_loop);
 
-    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id", std::to_string(default_source.id).c_str());
+    pw_metadata_set_property(metadata, nd_info.id, "target.node", "Spa:Id",
+                             std::to_string(default_input_device.id).c_str());
 
     pw_core_sync(core, PW_ID_CORE, 0);
 

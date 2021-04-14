@@ -21,47 +21,41 @@
 
 StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", "com.github.wwmm.pulseeffects.sinkinputs", pipe_manager) {
-  // auto* PULSE_SINK = std::getenv("PULSE_SINK");
+  pm->output_device = pm->default_output_device;
 
-  // if (PULSE_SINK != nullptr) {
-  //   int node_id = -1;
+  if (settings->get_boolean("use-default-output-device")) {
+    settings->set_string("output-device", pm->output_device.name);
+  } else {
+    bool found = false;
 
-  //   for (const auto& node : pipe_manager->list_nodes) {
-  //     if (node.name == PULSE_SINK) {
-  //       node_id = node.id;
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == std::string(settings->get_string("output-device"))) {
+        pm->output_device = node;
 
-  //       break;
-  //     }
-  //   }
+        found = true;
 
-  //   if (node_id != -1) {
-  //     set_output_node_id(node_id);
-  //   }
-  // } else {
-  //   bool use_default_sink = g_settings_get_boolean(settings, "use-default-sink") != 0;
+        break;
+      }
+    }
 
-  //   if (!use_default_sink) {
-  //     gchar* custom_sink = g_settings_get_string(settings, "custom-sink");
+    if (!found) {
+      settings->set_string("output-device", pm->output_device.name);
+    }
+  }
 
-  //     if (custom_sink != nullptr) {
-  //       int node_id = -1;
+  auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
-  //       for (const auto& node : pipe_manager->list_nodes) {
-  //         if (node.name == custom_sink) {
-  //           node_id = node.id;
+  if (PULSE_SINK != nullptr) {
+    for (const auto& node : pipe_manager->list_nodes) {
+      if (node.name == PULSE_SINK) {
+        pm->output_device = node;
 
-  //           break;
-  //         }
-  //       }
+        settings->set_string("output-device", pm->output_device.name);
 
-  //       if (node_id != -1) {
-  //         set_output_node_id(node_id);
-  //       }
-
-  //       g_free(custom_sink);
-  //     }
-  //   }
-  // }
+        break;
+      }
+    }
+  }
 
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
@@ -195,7 +189,7 @@ void StreamOutputEffects::connect_filters() {
     list_proxies.emplace_back(link);
   }
 
-  links = pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+  links = pm->link_nodes(output_level->get_node_id(), pm->output_device.id);
 
   for (const auto& link : links) {
     list_proxies.emplace_back(link);
@@ -236,7 +230,7 @@ void StreamOutputEffects::set_bypass(const bool& state) {
 
     pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
     pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
-    pm->link_nodes(output_level->get_node_id(), pm->default_sink.id);
+    pm->link_nodes(output_level->get_node_id(), pm->output_device.id);
   } else {
     // disconnect_filters();
 
