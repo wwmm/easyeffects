@@ -131,7 +131,7 @@ void Application::on_startup() {
     util::debug("new default output device: " + node.name);
 
     if (soe_settings->get_boolean("use-default-output-device")) {
-      if (pm->output_device.id != node.id) {
+      if (pm->output_device.name != node.name) {
         soe_settings->set_string("output-device", node.name);
 
         Glib::signal_timeout().connect_seconds_once(
@@ -156,7 +156,7 @@ void Application::on_startup() {
     util::debug("new default input device: " + node.name);
 
     if (sie_settings->get_boolean("use-default-input-device")) {
-      if (pm->input_device.id != node.id) {
+      if (pm->input_device.name != node.name) {
         sie_settings->set_string("input-device", node.name);
 
         Glib::signal_timeout().connect_seconds_once(
