@@ -92,6 +92,10 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
 auto port_info_from_props(const spa_dict* props) -> PortInfo {
   PortInfo info;
 
+  if (const auto* port_id = spa_dict_lookup(props, PW_KEY_PORT_ID)) {
+    info.port_id = std::stoi(port_id);
+  }
+
   if (const auto* name = spa_dict_lookup(props, PW_KEY_PORT_NAME)) {
     info.name = name;
   }
@@ -1190,7 +1194,7 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
 
   for (auto& outp : list_output_ports) {
     for (auto& inp : list_input_ports) {
-      if (outp.audio_channel == inp.audio_channel) {
+      if (outp.port_id == inp.port_id) {
         lock();
 
         pw_properties* props = pw_properties_new(nullptr, nullptr);

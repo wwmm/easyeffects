@@ -77,7 +77,7 @@ struct NodeInfo {
 struct LinkInfo {
   std::string path;
 
-  uint id = 0;
+  uint id = SPA_ID_INVALID;
 
   uint input_node_id = 0;
 
@@ -109,9 +109,11 @@ struct PortInfo {
 
   bool monitor = false;
 
-  uint id = 0;
+  uint id = SPA_ID_INVALID;
 
   uint node_id = 0;
+
+  uint port_id = 0;
 };
 
 struct ModuleInfo {
