@@ -11,9 +11,7 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
 
 FirFilterBase::~FirFilterBase() {
-  ready = false;
   zita_ready = false;
-  kernel_ready = false;
 
   if (conv != nullptr) {
     if (conv->state() != Convproc::ST_STOP) {
@@ -26,7 +24,10 @@ FirFilterBase::~FirFilterBase() {
   }
 }
 
-void FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) {
+auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) const
+    -> std::vector<float> {
+  std::vector<float> output;
+
   /*
     transition band frequency as a fraction of the sample rate
   */
@@ -44,7 +45,7 @@ void FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   M = (M % 2 == 0) ? M : M + 1;  // checking if M is even
 
-  kernel.resize(M + 1);
+  output.resize(M + 1);
 
   /*
     cutoff frequency as a fraction of the sample rate
@@ -54,15 +55,15 @@ void FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   float sum = 0.0F;
 
-  for (size_t n = 0; n < kernel.size(); n++) {
+  for (size_t n = 0; n < output.size(); n++) {
     /*
       windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
     */
 
     if (n == M / 2) {
-      kernel[n] = 2.0F * std::numbers::pi_v<float> * fc;
+      output[n] = 2.0F * std::numbers::pi_v<float> * fc;
     } else {
-      kernel[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<int>(M / 2))) /
+      output[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<int>(M / 2))) /
                   static_cast<float>(n - static_cast<int>(M / 2));
     }
 
@@ -73,22 +74,24 @@ void FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     auto w = 0.42F - 0.5F * cosf(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
              0.08F * cosf(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
 
-    kernel[n] *= w;
+    output[n] *= w;
 
-    sum += kernel[n];
+    sum += output[n];
   }
 
   /*
     Normalizing so that we have unit gain at zero frequency
   */
 
-  std::ranges::for_each(kernel, [&](auto& v) { v /= sum; });
+  std::ranges::for_each(output, [&](auto& v) { v /= sum; });
+
+  return output;
 }
 
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || !kernel_ready) {
+  if (n_samples == 0 || kernel.empty()) {
     return;
   }
 

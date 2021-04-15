@@ -20,9 +20,7 @@ class FirFilterBase {
  protected:
   std::string log_tag;
 
-  bool kernel_ready = false;
   bool zita_ready = false;
-  bool ready = false;
 
   uint n_samples = 0;
   uint rate = 0;
@@ -31,7 +29,8 @@ class FirFilterBase {
 
   Convproc* conv = nullptr;
 
-  void create_lowpass_kernel(const float& cutoff, const float& transition_band);
+  [[nodiscard]] auto create_lowpass_kernel(const float& cutoff, const float& transition_band) const
+      -> std::vector<float>;
 
   void setup_zita();
 

@@ -11,9 +11,7 @@ void FirFilterLowpass::setup(const uint& rate,
   this->rate = rate;
   this->n_samples = n_samples;
 
-  kernel_ready = false;
+  kernel = create_lowpass_kernel(cutoff, transition_band);
 
-  create_lowpass_kernel(cutoff, transition_band);
-
-  kernel_ready = true;
+  setup_zita();
 }
