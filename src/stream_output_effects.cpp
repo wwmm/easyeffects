@@ -60,12 +60,12 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed));
 
-  // uint n_disconnected_links = disconnect_filters();
+  uint n_disconnected_links = disconnect_filters();
 
-  // if (n_disconnected_links != 0) {
-  //   util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
-  //                 " links in the initialization phase?!");
-  // }
+  if (n_disconnected_links != 0) {
+    util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
+                  " links in the initialization phase?!");
+  }
 
   connect_filters();
 
@@ -80,7 +80,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       if (node.name == name) {
         pm->output_device = node;
 
-        // disconnect_filters();
+        disconnect_filters();
         pm->destroy_links(list_proxies);
 
         list_proxies.clear();
@@ -93,7 +93,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   });
 
   settings->signal_changed("selected-plugins").connect([&, this](auto key) {
-    // disconnect_filters();
+    disconnect_filters();
+
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
@@ -105,7 +106,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 
-  // disconnect_filters();
+  disconnect_filters();
+
   pm->destroy_links(list_proxies);
 
   list_proxies.clear();
@@ -246,7 +248,8 @@ auto StreamOutputEffects::disconnect_filters() -> uint {
 
 void StreamOutputEffects::set_bypass(const bool& state) {
   if (state) {
-    // disconnect_filters();
+    disconnect_filters();
+
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
@@ -255,7 +258,7 @@ void StreamOutputEffects::set_bypass(const bool& state) {
     pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
     pm->link_nodes(output_level->get_node_id(), pm->output_device.id);
   } else {
-    // disconnect_filters();
+    disconnect_filters();
 
     pm->destroy_links(list_proxies);
 

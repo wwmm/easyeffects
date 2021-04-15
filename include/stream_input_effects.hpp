@@ -33,6 +33,8 @@ class StreamInputEffects : public EffectsBase {
 
   void change_input_device(const NodeInfo& node);
 
+  void set_bypass(const bool& state);
+
  private:
   void connect_filters();
 

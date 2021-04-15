@@ -342,11 +342,11 @@ void Application::update_bypass_state(const std::string& key) {
     util::info(log_tag + "enabling global bypass");
 
     soe->set_bypass(true);
-    // sie->do_bypass(true);
+    sie->set_bypass(true);
   } else {
     util::info(log_tag + "disabling global bypass");
 
     soe->set_bypass(false);
-    // sie->do_bypass(false);
+    sie->set_bypass(false);
   }
 }
