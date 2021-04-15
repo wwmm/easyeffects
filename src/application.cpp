@@ -131,24 +131,28 @@ void Application::on_startup() {
     util::debug("new default output device: " + node.name);
 
     if (soe_settings->get_boolean("use-default-output-device")) {
-      if (pm->output_device.name != node.name) {
-        soe_settings->set_string("output-device", node.name);
+      /*
+        Depending on the hardware headphones can cause a node recreation hwere the id and the name are kept.
+        So we clear the key to force the callbacks to be called
+      */
 
-        Glib::signal_timeout().connect_seconds_once(
-            [=, this]() {
-              auto defaul_sink_name = pm->default_output_device.name;
+      soe_settings->set_string("output-device", "");
+      soe_settings->set_string("output-device", node.name);
 
-              // checking if after 2 seconds this sink still is the default sink
-              if (node.name == defaul_sink_name) {
-                if (node.name != last_sink_dev_name) {
-                  last_sink_dev_name = node.name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=, this]() {
+            auto defaul_sink_name = pm->default_output_device.name;
 
-                  presets_manager->autoload(PresetType::output, node.name);
-                }
+            // checking if after 2 seconds this sink still is the default sink
+            if (node.name == defaul_sink_name) {
+              if (node.name != last_sink_dev_name) {
+                last_sink_dev_name = node.name;
+
+                presets_manager->autoload(PresetType::output, node.name);
               }
-            },
-            2);
-      }
+            }
+          },
+          2);
     }
   });
 
@@ -156,24 +160,28 @@ void Application::on_startup() {
     util::debug("new default input device: " + node.name);
 
     if (sie_settings->get_boolean("use-default-input-device")) {
-      if (pm->input_device.name != node.name) {
-        sie_settings->set_string("input-device", node.name);
+      /*
+        Depending on the hardware microphones can cause a node recreation hwere the id and the name are kept.
+        So we clear the key to force the callbacks to be called
+      */
 
-        Glib::signal_timeout().connect_seconds_once(
-            [=, this]() {
-              auto defaul_source_name = pm->default_input_device.name;
+      sie_settings->set_string("input-device", "");
+      sie_settings->set_string("input-device", node.name);
 
-              // checking if after 2 seconds this source still is the default source
-              if (node.name == defaul_source_name) {
-                if (node.name != last_source_dev_name) {
-                  last_source_dev_name = node.name;
+      Glib::signal_timeout().connect_seconds_once(
+          [=, this]() {
+            auto defaul_source_name = pm->default_input_device.name;
 
-                  presets_manager->autoload(PresetType::input, node.name);
-                }
+            // checking if after 2 seconds this source still is the default source
+            if (node.name == defaul_source_name) {
+              if (node.name != last_source_dev_name) {
+                last_source_dev_name = node.name;
+
+                presets_manager->autoload(PresetType::input, node.name);
               }
-            },
-            2);
-      }
+            }
+          },
+          2);
     }
   });
 

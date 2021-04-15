@@ -70,8 +70,14 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   connect_filters();
 
   settings->signal_changed("output-device").connect([&, this](auto key) {
+    auto name = std::string(settings->get_string(key));
+
+    if (name.empty()) {
+      return;
+    }
+
     for (const auto& node : pm->list_nodes) {
-      if (node.name == std::string(settings->get_string(key))) {
+      if (node.name == name) {
         pm->output_device = node;
 
         // disconnect_filters();
