@@ -17,25 +17,6 @@ class FirFilterBase {
   auto operator=(const FirFilterBase&&) -> FirFilterBase& = delete;
   virtual ~FirFilterBase();
 
- protected:
-  std::string log_tag;
-
-  bool zita_ready = false;
-
-  uint n_samples = 0;
-  uint rate = 0;
-
-  std::vector<float> kernel;
-
-  Convproc* conv = nullptr;
-
-  [[nodiscard]] auto create_lowpass_kernel(const float& cutoff, const float& transition_band) const
-      -> std::vector<float>;
-
-  void setup_zita();
-
-  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
-
   template <typename T1>
   void process(T1& data_left, T1& data_right) {
     std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + n_samples};
@@ -60,6 +41,25 @@ class FirFilterBase {
       }
     }
   }
+
+ protected:
+  std::string log_tag;
+
+  bool zita_ready = false;
+
+  uint n_samples = 0;
+  uint rate = 0;
+
+  std::vector<float> kernel;
+
+  Convproc* conv = nullptr;
+
+  [[nodiscard]] auto create_lowpass_kernel(const float& cutoff, const float& transition_band) const
+      -> std::vector<float>;
+
+  void setup_zita();
+
+  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
 
 #endif
