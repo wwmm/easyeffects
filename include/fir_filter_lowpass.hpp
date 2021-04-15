@@ -13,8 +13,6 @@ class FirFilterLowpass : public FirFilterBase {
   ~FirFilterLowpass() override;
 
   void setup(const uint& rate, const uint& n_samples, const float& cutoff, const float& transition_band);
-
- private:
 };
 
 #endif

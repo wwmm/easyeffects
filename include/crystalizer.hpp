@@ -22,6 +22,7 @@
 
 #include <future>
 #include <vector>
+#include "fir_filter_lowpass.hpp"
 #include "plugin_base.hpp"
 
 class Crystalizer : public PluginBase {

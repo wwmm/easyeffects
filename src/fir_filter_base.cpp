@@ -28,6 +28,10 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     -> std::vector<float> {
   std::vector<float> output;
 
+  if (rate == 0) {
+    return output;
+  }
+
   /*
     transition band frequency as a fraction of the sample rate
   */
