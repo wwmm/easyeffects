@@ -1181,20 +1181,37 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
   std::vector<pw_proxy*> list;
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
+  bool use_audio_channel = true;
 
   for (auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
       list_output_ports.emplace_back(port);
+
+      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+        use_audio_channel = false;
+      }
     }
 
     if (port.node_id == input_node_id && port.direction == "in") {
       list_input_ports.emplace_back(port);
+
+      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+        use_audio_channel = false;
+      }
     }
   }
 
   for (auto& outp : list_output_ports) {
     for (auto& inp : list_input_ports) {
-      if (outp.port_id == inp.port_id) {
+      bool ports_match = false;
+
+      if (use_audio_channel) {
+        ports_match = outp.audio_channel == inp.audio_channel;
+      } else {
+        ports_match = outp.port_id == inp.port_id;
+      }
+
+      if (ports_match) {
         lock();
 
         pw_properties* props = pw_properties_new(nullptr, nullptr);
