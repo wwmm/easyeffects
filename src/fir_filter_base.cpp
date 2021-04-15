@@ -26,12 +26,12 @@ FirFilterBase::~FirFilterBase() {
   }
 }
 
-void FirFilterBase::create_lowpass_kernel(const float& rate, const float& cutoff, const float& transition_band) {
+void FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) {
   /*
     transition band frequency as a fraction of the sample rate
   */
 
-  float b = transition_band / rate;
+  float b = transition_band / static_cast<float>(rate);
 
   /*
       The kernel size must be odd: M + 1 where M is even. This is done so it can be symmetric around the main lobe
@@ -50,7 +50,7 @@ void FirFilterBase::create_lowpass_kernel(const float& rate, const float& cutoff
     cutoff frequency as a fraction of the sample rate
   */
 
-  float fc = cutoff / rate;
+  float fc = cutoff / static_cast<float>(rate);
 
   float sum = 0.0F;
 
