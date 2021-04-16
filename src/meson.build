@@ -34,6 +34,7 @@ pulseeffects_sources = [
 	'filter.cpp',
 	'filter_preset.cpp',
 	'filter_ui.cpp',
+	'fir_filter_bandpass.cpp',
 	'fir_filter_base.cpp',
 	'fir_filter_lowpass.cpp',
 	'fir_filter_highpass.cpp',

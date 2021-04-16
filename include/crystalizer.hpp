@@ -22,6 +22,8 @@
 
 #include <future>
 #include <vector>
+#include "fir_filter_bandpass.hpp"
+#include "fir_filter_highpass.hpp"
 #include "fir_filter_lowpass.hpp"
 #include "plugin_base.hpp"
 
