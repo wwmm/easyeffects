@@ -173,7 +173,7 @@ class PipeManager {
   std::vector<Glib::ustring> blocklist_in;   // for input effects
   std::vector<Glib::ustring> blocklist_out;  // for output effects
 
-  std::array<std::string, 13> blocklist_node_name = {"PulseEffects",
+  std::array<std::string, 14> blocklist_node_name = {"PulseEffects",
                                                      "pulseeffects",
                                                      "pulseeffects_soe",
                                                      "pulseeffects_sie",
@@ -184,6 +184,7 @@ class PipeManager {
                                                      "gsd-media-keys",
                                                      "GNOME Shell",
                                                      "speech-dispatcher",
+                                                     "speech-dispatcher-dummy",
                                                      "Mutter",
                                                      "gameoverlayui"};
 
