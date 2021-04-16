@@ -17,6 +17,18 @@ class FirFilterBase {
   auto operator=(const FirFilterBase&&) -> FirFilterBase& = delete;
   virtual ~FirFilterBase();
 
+  void set_rate(const uint& value);
+
+  void set_n_samples(const uint& value);
+
+  void set_min_frequency(const float& value);
+
+  void set_max_frequency(const float& value);
+
+  void set_transition_band(const float& value);
+
+  virtual void setup();
+
   template <typename T1>
   void process(T1& data_left, T1& data_right) {
     std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + n_samples};
@@ -49,6 +61,10 @@ class FirFilterBase {
 
   uint n_samples = 0;
   uint rate = 0;
+
+  float min_frequency = 20.0F;
+  float max_frequency = 20000.0F;
+  float transition_band = 100.0F;  // Hz
 
   std::vector<float> kernel;
 

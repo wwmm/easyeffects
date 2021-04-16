@@ -24,6 +24,28 @@ FirFilterBase::~FirFilterBase() {
   }
 }
 
+void FirFilterBase::set_rate(const uint& value) {
+  rate = value;
+}
+
+void FirFilterBase::set_n_samples(const uint& value) {
+  n_samples = value;
+}
+
+void FirFilterBase::set_min_frequency(const float& value) {
+  min_frequency = value;
+}
+
+void FirFilterBase::set_max_frequency(const float& value) {
+  max_frequency = value;
+}
+
+void FirFilterBase::set_transition_band(const float& value) {
+  transition_band = value;
+}
+
+void FirFilterBase::setup() {}
+
 auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) const
     -> std::vector<float> {
   std::vector<float> output;

@@ -4,14 +4,8 @@ FirFilterHighpass::FirFilterHighpass(std::string tag) : FirFilterBase(std::move(
 
 FirFilterHighpass::~FirFilterHighpass() = default;
 
-void FirFilterHighpass::setup(const uint& rate,
-                              const uint& n_samples,
-                              const float& cutoff,
-                              const float& transition_band) {
-  this->rate = rate;
-  this->n_samples = n_samples;
-
-  kernel = create_lowpass_kernel(cutoff, transition_band);
+void FirFilterHighpass::setup() {
+  kernel = create_lowpass_kernel(min_frequency, transition_band);
 
   std::ranges::for_each(kernel, [](auto& v) { v *= -1; });
 

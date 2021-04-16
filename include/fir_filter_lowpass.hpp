@@ -12,7 +12,7 @@ class FirFilterLowpass : public FirFilterBase {
   auto operator=(const FirFilterLowpass&&) -> FirFilterLowpass& = delete;
   ~FirFilterLowpass() override;
 
-  void setup(const uint& rate, const uint& n_samples, const float& cutoff, const float& transition_band);
+  void setup() override;
 };
 
 #endif
