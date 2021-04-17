@@ -139,6 +139,8 @@ void Crystalizer::setup() {
         filters.at(n)->set_max_frequency(frequencies.at(n));
         filters.at(n)->set_transition_band(transition_band);
       }
+
+      filters.at(n)->setup();
     }
   };
 
