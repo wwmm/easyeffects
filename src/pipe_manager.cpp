@@ -578,13 +578,17 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        pm->default_output_device = node;
-
         if (node.name == "pulseeffects_sink") {
+          pm->default_output_device.id = SPA_ID_INVALID;
+
           return 0;
         }
 
-        Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+        if (node.media_class == "Audio/Sink") {
+          pm->default_output_device = node;
+
+          Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+        }
 
         break;
       }
@@ -598,13 +602,17 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        pm->default_input_device = node;
-
         if (node.name == "pulseeffects_source") {
+          pm->default_input_device.id = SPA_ID_INVALID;
+
           return 0;
         }
 
-        Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+        if (node.media_class == "Audio/Source" || node.media_class == "Audio/Source/Virtual") {
+          pm->default_input_device = node;
+
+          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+        }
 
         break;
       }

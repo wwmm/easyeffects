@@ -43,7 +43,9 @@ OutputLevel::~OutputLevel() {
   pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void OutputLevel::setup() {}
+void OutputLevel::setup() {
+  util::debug(log_tag + name + ": new PipeWire blocksize: " + std::to_string(n_samples));
+}
 
 void OutputLevel::process(std::span<float>& left_in,
                           std::span<float>& right_in,

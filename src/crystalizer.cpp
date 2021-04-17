@@ -100,8 +100,6 @@ void Crystalizer::setup() {
       while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
         blocksize--;
       }
-
-      util::debug(name + " blocksize: " + std::to_string(blocksize));
     }
 
     notify_latency = true;
@@ -111,18 +109,16 @@ void Crystalizer::setup() {
     data_L.resize(0);
     data_R.resize(0);
 
-    for (auto& bd : band_data_L) {
-      bd.resize(blocksize);
-    }
+    for (uint n = 0; n < nbands; n++) {
+      band_data_L.at(n).resize(blocksize);
+      band_data_R.at(n).resize(blocksize);
 
-    for (auto& bd : band_data_R) {
-      bd.resize(blocksize);
+      band_second_derivative_L.at(n).resize(blocksize);
+      band_second_derivative_R.at(n).resize(blocksize);
     }
   };
 
-  auto future = std::async(std::launch::async, f);
-
-  futures.emplace_back(std::move(future));
+  futures.emplace_back(std::async(std::launch::async, f));
 }
 
 void Crystalizer::process(std::span<float>& left_in,

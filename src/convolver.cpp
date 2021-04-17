@@ -122,8 +122,6 @@ void Convolver::setup() {
       }
     }
 
-    util::debug("convolver blocksize: " + std::to_string(blocksize));
-
     data_L.resize(0);
     data_R.resize(0);
 
@@ -144,9 +142,7 @@ void Convolver::setup() {
     }
   };
 
-  auto future = std::async(std::launch::async, f);
-
-  futures.emplace_back(std::move(future));
+  futures.emplace_back(std::async(std::launch::async, f));
 }
 
 void Convolver::process(std::span<float>& left_in,
@@ -244,7 +240,7 @@ void Convolver::process(std::span<float>& left_in,
     if (notify_latency) {
       latency = static_cast<float>(latency_n_frames) / rate;
 
-      util::debug(name + " latency: " + std::to_string(latency) + " s");
+      util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
 
       Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
 
