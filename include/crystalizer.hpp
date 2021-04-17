@@ -54,11 +54,14 @@ class Crystalizer : public PluginBase {
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;
   bool notify_latency = false;
+  bool aggressive = false;
 
   uint blocksize = 512;
   uint latency_n_frames = 0;
 
   static constexpr uint nbands = 13;
+  static constexpr uint ndivs = 1000;
+  static constexpr uint dv = 1.0F / ndivs;
 
   float latency = 0.0F;
 
