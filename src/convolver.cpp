@@ -111,26 +111,26 @@ void Convolver::setup() {
 
   data_mutex.unlock();
 
-  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
-
-  if (!n_samples_is_power_of_2) {
+  auto f = [=, this]() {
     blocksize = n_samples;
 
-    while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
-      blocksize--;
+    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+
+    if (!n_samples_is_power_of_2) {
+      while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
+        blocksize--;
+      }
     }
 
     util::debug("convolver blocksize: " + std::to_string(blocksize));
-  }
 
-  data_L.resize(0);
-  data_R.resize(0);
+    data_L.resize(0);
+    data_R.resize(0);
 
-  notify_latency = true;
+    notify_latency = true;
 
-  latency_n_frames = 0;
+    latency_n_frames = 0;
 
-  auto f = [=, this]() {
     read_kernel_file();
 
     if (kernel_is_initialized) {

@@ -91,30 +91,38 @@ void Crystalizer::setup() {
 
   data_mutex.unlock();
 
-  n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
-
-  if (!n_samples_is_power_of_2) {
+  auto f = [=, this]() {
     blocksize = n_samples;
 
-    while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
-      blocksize--;
+    n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
+
+    if (!n_samples_is_power_of_2) {
+      while ((blocksize & (blocksize - 1)) != 0 && blocksize > 2) {
+        blocksize--;
+      }
+
+      util::debug(name + " blocksize: " + std::to_string(blocksize));
     }
 
-    util::debug("convolver blocksize: " + std::to_string(blocksize));
-  }
+    notify_latency = true;
 
-  data_L.resize(0);
-  data_R.resize(0);
+    latency_n_frames = 0;
 
-  notify_latency = true;
+    data_L.resize(0);
+    data_R.resize(0);
 
-  latency_n_frames = 0;
+    for (auto& bd : band_data_L) {
+      bd.resize(blocksize);
+    }
 
-  // auto f = [=, this]() { setup_zita(); };
+    for (auto& bd : band_data_R) {
+      bd.resize(blocksize);
+    }
+  };
 
-  // auto future = std::async(std::launch::async, f);
+  auto future = std::async(std::launch::async, f);
 
-  // futures.emplace_back(std::move(future));
+  futures.emplace_back(std::move(future));
 }
 
 void Crystalizer::process(std::span<float>& left_in,

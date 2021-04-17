@@ -78,7 +78,8 @@ class Crystalizer : public PluginBase {
   std::array<float, nbands> band_delayed_L;
   std::array<float, nbands> band_delayed_R;
 
-  std::array<std::vector<float>, nbands> band_data;
+  std::array<std::vector<float>, nbands> band_data_L;
+  std::array<std::vector<float>, nbands> band_data_R;
   std::array<std::vector<float>, nbands> band_gain;
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
