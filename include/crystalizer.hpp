@@ -57,11 +57,28 @@ class Crystalizer : public PluginBase {
 
   uint blocksize = 512;
   uint latency_n_frames = 0;
-  const uint nbands = 13;
+
+  static constexpr uint nbands = 13;
 
   float latency = 0.0F;
 
-  std::vector<float> data_L, data_R;
+  std::vector<float> data_L;
+  std::vector<float> data_R;
+
+  std::array<bool, nbands> band_mute;
+  std::array<bool, nbands> band_bypass;
+
+  std::array<float, nbands - 1> frequencies;
+  std::array<float, nbands> band_intensity;
+  std::array<float, nbands> band_last_L;
+  std::array<float, nbands> band_last_R;
+  std::array<float, nbands> band_delayed_L;
+  std::array<float, nbands> band_delayed_R;
+
+  std::array<std::vector<float>, nbands> band_data;
+  std::array<std::vector<float>, nbands> band_gain;
+
+  std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;

@@ -32,6 +32,35 @@ Crystalizer::Crystalizer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
+  for (uint n = 0; n < nbands; n++) {
+    if (n == 0) {
+      filters.at(n) = std::make_unique<FirFilterLowpass>("crystalizer band" + std::to_string(n));
+    } else if (n == nbands - 1) {
+      filters.at(n) = std::make_unique<FirFilterHighpass>("crystalizer band" + std::to_string(n));
+    } else {
+      filters.at(n) = std::make_unique<FirFilterBandpass>("crystalizer band" + std::to_string(n));
+    }
+  }
+
+  std::ranges::fill(band_mute, false);
+  std::ranges::fill(band_bypass, false);
+  std::ranges::fill(band_intensity, 1.0F);
+  std::ranges::fill(band_last_L, 0.0F);
+  std::ranges::fill(band_last_R, 0.0F);
+
+  frequencies[0] = 500.0F;
+  frequencies[1] = 1000.0F;
+  frequencies[2] = 2000.0F;
+  frequencies[3] = 3000.0F;
+  frequencies[4] = 4000.0F;
+  frequencies[5] = 5000.0F;
+  frequencies[6] = 6000.0F;
+  frequencies[7] = 7000.0F;
+  frequencies[8] = 8000.0F;
+  frequencies[9] = 9000.0F;
+  frequencies[10] = 10000.0F;
+  frequencies[11] = 15000.0F;
+
   initialize_listener();
 }
 
