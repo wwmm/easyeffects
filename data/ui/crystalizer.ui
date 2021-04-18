@@ -9,10 +9,20 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="bypass">
+            <object class="GtkBox">
+                <property name="spacing">6</property>
                 <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
+                <property name="homogeneous">1</property>
+                <child>
+                    <object class="GtkToggleButton" id="aggressive">
+                        <property name="label" translatable="yes">Aggressive Mode</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkToggleButton" id="bypass">
+                        <property name="label" translatable="yes">Bypass</property>
+                    </object>
+                </child>
             </object>
         </child>
 

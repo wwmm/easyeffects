@@ -22,7 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
-// #include "crystalizer_ui.hpp"
 // #include "loudness_ui.hpp"
 // #include "pitch_ui.hpp"
 
@@ -48,7 +47,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
   // PitchUi* pitch_ui = nullptr;
   // LoudnessUi* loudness_ui = nullptr;
-  // CrystalizerUi* crystalizer_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

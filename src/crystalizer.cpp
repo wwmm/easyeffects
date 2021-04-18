@@ -132,7 +132,7 @@ void Crystalizer::setup() {
         filters.at(n)->set_max_frequency(frequencies[0]);
         filters.at(n)->set_transition_band(transition_band);
       } else if (n == nbands - 1) {
-        filters.at(n)->set_min_frequency(frequencies.at(n));
+        filters.at(n)->set_min_frequency(frequencies.at(n - 1));  // the frequencies array has only 12 elements
         filters.at(n)->set_transition_band(transition_band);
       } else {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1));
@@ -140,7 +140,7 @@ void Crystalizer::setup() {
         filters.at(n)->set_transition_band(transition_band);
       }
 
-      filters.at(n)->setup();
+      // filters.at(n)->setup();
     }
 
     filters_are_ready = true;

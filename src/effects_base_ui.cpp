@@ -175,6 +175,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->compressor->post_messages = true;
   effects_base->convolver->post_messages = true;
   effects_base->crossfeed->post_messages = true;
+  effects_base->crystalizer->post_messages = true;
   effects_base->deesser->post_messages = true;
   effects_base->delay->post_messages = true;
   effects_base->equalizer->post_messages = true;
@@ -206,6 +207,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->compressor->post_messages = false;
   effects_base->convolver->post_messages = false;
   effects_base->crossfeed->post_messages = false;
+  effects_base->crystalizer->post_messages = false;
   effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
   effects_base->equalizer->post_messages = false;
@@ -229,6 +231,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->compressor->bypass = false;
   effects_base->convolver->bypass = false;
   effects_base->crossfeed->bypass = false;
+  effects_base->crystalizer->bypass = false;
   effects_base->deesser->bypass = false;
   effects_base->delay->bypass = false;
   effects_base->equalizer->bypass = false;
@@ -306,6 +309,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->crossfeed->input_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_input_level));
   effects_base->crossfeed->output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level));
+
+  // crystalizer
+
+  auto* crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
+
+  crystalizer_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->crystalizer->bypass = crystalizer_ui->bypass->get_active(); });
+
+  effects_base->crystalizer->input_level.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level));
+  effects_base->crystalizer->output_level.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level));
 
   // deesser
 

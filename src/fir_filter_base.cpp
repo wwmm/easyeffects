@@ -8,7 +8,7 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
 }  // namespace
 
-FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
+FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)), conv(new Convproc()) {}
 
 FirFilterBase::~FirFilterBase() {
   zita_ready = false;
@@ -117,7 +117,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || kernel.empty()) {
+  if (n_samples == 0 || kernel.empty() || conv == nullptr) {
     return;
   }
 
@@ -169,8 +169,6 @@ void FirFilterBase::setup_zita() {
   }
 
   zita_ready = true;
-
-  util::debug(log_tag + "zita is ready");
 }
 
 void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {

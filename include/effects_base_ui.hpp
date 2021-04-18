@@ -32,6 +32,7 @@
 #include "compressor_ui.hpp"
 #include "convolver_ui.hpp"
 #include "crossfeed_ui.hpp"
+#include "crystalizer_ui.hpp"
 #include "deesser_ui.hpp"
 #include "delay_ui.hpp"
 #include "effects_base.hpp"
