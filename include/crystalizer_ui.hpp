@@ -34,20 +34,16 @@ class CrystalizerUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const CrystalizerUi&&) -> CrystalizerUi& = delete;
   ~CrystalizerUi() override;
 
-  void on_new_range_before(double value);
-
-  void on_new_range_after(double value);
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi*;
 
   void reset() override;
 
  private:
-  Gtk::Grid* bands_grid = nullptr;
+  Gtk::Box* bands_box = nullptr;
 
-  Gtk::LevelBar *range_before = nullptr, *range_after = nullptr;
-  Gtk::Label *range_before_label = nullptr, *range_after_label = nullptr;
   Gtk::ToggleButton* aggressive = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> input_gain, output_gain;
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   void build_bands(const int& nbands);
 };

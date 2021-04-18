@@ -23,7 +23,7 @@ Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
-    : PluginBase(tag, "crystalizer", schema, schema_path, pipe_manager) {
+    : PluginBase(tag, plugin_name::crystalizer, schema, schema_path, pipe_manager) {
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -142,6 +142,8 @@ void Crystalizer::setup() {
 
       filters.at(n)->setup();
     }
+
+    filters_are_ready = true;
   };
 
   futures.emplace_back(std::async(std::launch::async, f));
@@ -250,8 +252,6 @@ void Crystalizer::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind(settings, "post-messages", crystalizer, "notify-host", G_SETTINGS_BIND_DEFAULT);
 
 // g_settings_bind(settings, "aggressive", crystalizer, "aggressive", G_SETTINGS_BIND_DEFAULT);
 

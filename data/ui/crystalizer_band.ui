@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="pulseeffects">
+    <object class="GtkPopover" id="popover_menu">
+        <child>
+            <object class="GtkBox">
+                <property name="halign">center</property>
+                <property name="spacing">12</property>
+                <child>
+                    <object class="GtkToggleButton" id="band_bypass">
+                        <property name="label" translatable="yes">Bypass</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkToggleButton" id="band_mute">
+                        <property name="label" translatable="yes">Mute</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+
+    <object class="GtkBox" id="band_box">
+        <property name="spacing">6</property>
+        <property name="orientation">vertical</property>
+        <child>
+            <object class="GtkMenuButton">
+                <property name="halign">center</property>
+                <property name="popover">popover_menu</property>
+                <property name="icon-name">emblem-system-symbolic</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkLabel" id="band_label">
+                <property name="label">band</property>
+                <style>
+                    <class name="dim-label" />
+                </style>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkScale" id="band_intensity">
+                <property name="vexpand">1</property>
+                <property name="halign">center</property>
+                <property name="orientation">vertical</property>
+                <property name="inverted">True</property>
+                <property name="draw-value">1</property>
+                <property name="digits">0</property>
+                <property name="value-pos">bottom</property>
+                <property name="adjustment">
+                    <object class="GtkAdjustment">
+                        <property name="lower">-40</property>
+                        <property name="upper">32</property>
+                        <property name="step-increment">1</property>
+                        <property name="page-increment">1</property>
+                    </object>
+                </property>
+            </object>
+        </child>
+    </object>
+</interface>

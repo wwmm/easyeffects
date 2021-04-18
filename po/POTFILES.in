@@ -10,6 +10,8 @@ data/ui/client_info.ui
 data/ui/compressor.ui
 data/ui/convolver.ui
 data/ui/crossfeed.ui
+data/ui/crystalizer.ui
+data/ui/crystalizer_band.ui
 data/ui/deesser.ui
 data/ui/delay.ui
 data/ui/effects_base.ui
@@ -35,8 +37,6 @@ data/ui/stereo_tools.ui
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
-data/ui/crystalizer.glade
-data/ui/crystalizer_band.glade
 data/ui/loudness.glade
 data/ui/pitch.glade
 data/ui/pipe_settings.glade

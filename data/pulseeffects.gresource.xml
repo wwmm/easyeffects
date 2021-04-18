@@ -10,6 +10,8 @@
         <file>ui/compressor.ui</file>
         <file>ui/convolver.ui</file>
         <file>ui/crossfeed.ui</file>
+        <file>ui/crystalizer.ui</file>
+        <file>ui/crystalizer_band.ui</file>
         <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
         <file>ui/effects_base.ui</file>
@@ -35,8 +37,6 @@
         <file>about.glade</file>
         <file>ui/pipe_settings.glade</file>
         <file>ui/loudness.glade</file>
-        <file>ui/crystalizer.glade</file>
-        <file>ui/crystalizer_band.glade</file>
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
         <file>ui/calibration.glade</file>

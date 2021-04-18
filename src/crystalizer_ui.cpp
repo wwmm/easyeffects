@@ -24,39 +24,39 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
                              const std::string& schema,
                              const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "crystalizer";
+  name = plugin_name::crystalizer;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("bands_grid", bands_grid);
-  builder->get_widget("range_before", range_before);
-  builder->get_widget("range_after", range_after);
-  builder->get_widget("range_before_label", range_before_label);
-  builder->get_widget("range_after_label", range_after_label);
-  builder->get_widget("aggressive", aggressive);
-  builder->get_widget("plugin_reset", reset_button);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "input_gain", input_gain);
-  get_object(builder, "output_gain", output_gain);
+  aggressive = builder->get_widget<Gtk::ToggleButton>("aggressive");
+
+  bands_box = builder->get_widget<Gtk::Box>("bands_box");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-
-  settings->bind("input-gain", input_gain.get(), "value", flag);
-  settings->bind("output-gain", output_gain.get(), "value", flag);
-  settings->bind("aggressive", aggressive, "active", flag);
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("aggressive", aggressive, "active");
 
   build_bands(13);
-
-  // reset plugin
-  reset_button->signal_clicked().connect([=, this]() { reset(); });
 }
 
 CrystalizerUi::~CrystalizerUi() {
   util::debug(name + " ui destroyed");
+}
+
+auto CrystalizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<CrystalizerUi>(
+      builder, "top_box", "com.github.wwmm.pulseeffects.crystalizer", schema_path + "crystalizer/");
+
+  auto stack_page = stack->add(*ui, plugin_name::crystalizer);
+
+  return ui;
 }
 
 void CrystalizerUi::reset() {
@@ -76,58 +76,31 @@ void CrystalizerUi::reset() {
 }
 
 void CrystalizerUi::build_bands(const int& nbands) {
-  for (const auto& c : bands_grid->get_children()) {
-    bands_grid->remove(*c);
-
-    delete c;
-  }
-
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
   for (int n = 0; n < nbands; n++) {
-    auto B = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer_band.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer_band.ui");
 
-    Gtk::Grid* band_grid;
-    Gtk::Label* band_label;
-    Gtk::Label* band_intensity_label;
-    Gtk::ToggleButton* band_mute;
-    Gtk::ToggleButton* band_bypass;
-    Gtk::Scale* band_scale;
+    auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
-    B->get_widget("band_grid", band_grid);
-    B->get_widget("band_label", band_label);
-    B->get_widget("band_intensity_label", band_intensity_label);
-    B->get_widget("band_mute", band_mute);
-    B->get_widget("band_bypass", band_bypass);
-    B->get_widget("band_scale", band_scale);
+    auto* band_label = builder->get_widget<Gtk::Label>("band_label");
 
-    auto band_intensity = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(B->get_object("band_intensity"));
+    auto* band_intensity = builder->get_widget<Gtk::Scale>("band_intensity");
 
-    // set initial band intensity in relative label
-
-    band_intensity_label->set_text(level_to_localized_string_showpos(band_intensity->get_value(), 0));
+    auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("band_bypass");
+    auto* band_mute = builder->get_widget<Gtk::ToggleButton>("band_mute");
 
     // connections
 
-    connections.emplace_back(band_intensity->signal_value_changed().connect([=, this]() {
-      auto bi = band_intensity->get_value();
-
-      band_intensity_label->set_text(level_to_localized_string_showpos(bi, 0));
-    }));
-
-    connections.emplace_back(band_mute->signal_toggled().connect([=, this]() {
+    connections.emplace_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {
-        band_scale->set_sensitive(false);
+        band_intensity->set_sensitive(false);
       } else {
-        band_scale->set_sensitive(true);
+        band_intensity->set_sensitive(true);
       }
     }));
 
-    settings->bind(std::string("intensity-band" + std::to_string(n)), band_intensity.get(), "value", flag);
-    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute, "active", flag);
-    settings->bind(std::string("bypass-band" + std::to_string(n)), band_bypass, "active", flag);
-
-    bands_grid->add(*band_grid);
+    settings->bind(std::string("intensity-band" + std::to_string(n)), band_intensity->get_adjustment().get(), "value");
+    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute, "active");
+    settings->bind(std::string("bypass-band" + std::to_string(n)), band_bypass, "active");
 
     switch (n) {
       case 0:
@@ -184,19 +157,9 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
         break;
     }
+
+    bands_box->append(*band_box);
   }
 
-  bands_grid->show_all();
-}
-
-void CrystalizerUi::on_new_range_before(double value) {
-  range_before->set_value(util::db_to_linear(value));
-
-  range_before_label->set_text(level_to_localized_string(value, 2));
-}
-
-void CrystalizerUi::on_new_range_after(double value) {
-  range_after->set_value(util::db_to_linear(value));
-
-  range_after_label->set_text(level_to_localized_string(value, 2));
+  bands_box->show();
 }
