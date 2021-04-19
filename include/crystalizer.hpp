@@ -20,7 +20,7 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <future>
+#include <thread>
 #include <vector>
 #include "fir_filter_bandpass.hpp"
 #include "fir_filter_highpass.hpp"
@@ -89,7 +89,7 @@ class Crystalizer : public PluginBase {
   std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
 
-  std::vector<std::future<void>> futures;
+  std::vector<std::jthread> threads;
 };
 
 #endif

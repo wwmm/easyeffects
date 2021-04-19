@@ -22,9 +22,9 @@
 
 #include <zita-convolver.h>
 #include <algorithm>
-#include <future>
 #include <ranges>
 #include <sndfile.hh>
+#include <thread>
 #include <vector>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
@@ -56,6 +56,7 @@ class Convolver : public PluginBase {
   bool kernel_is_initialized = false;
   bool n_samples_is_power_of_2 = true;
   bool zita_ready = false;
+  bool ready = false;
   bool notify_latency = false;
 
   uint blocksize = 512;
@@ -71,7 +72,7 @@ class Convolver : public PluginBase {
   std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
 
-  std::vector<std::future<void>> futures;
+  std::vector<std::jthread> threads;
 
   Convproc* conv = nullptr;
 

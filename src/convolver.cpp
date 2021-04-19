@@ -31,7 +31,7 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager), conv(new Convproc()) {
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -55,6 +55,10 @@ Convolver::Convolver(const std::string& tag,
   });
 
   settings->signal_changed("kernel-path").connect([=, this](auto key) {
+    if (n_samples == 0 || rate == 0) {
+      return;
+    }
+
     data_mutex.lock();
 
     kernel_is_initialized = false;
@@ -95,19 +99,23 @@ Convolver::~Convolver() {
 
   std::lock_guard<std::mutex> lock(data_mutex);
 
-  futures.clear();
+  threads.clear();
 
-  conv->stop_process();
-  conv->cleanup();
+  if (conv != nullptr) {
+    conv->stop_process();
 
-  delete conv;
+    conv->cleanup();
+
+    delete conv;
+  }
 }
 
 void Convolver::setup() {
+  threads.clear();
+
   data_mutex.lock();
 
-  kernel_is_initialized = false;
-  zita_ready = false;
+  ready = false;
 
   data_mutex.unlock();
 
@@ -140,9 +148,15 @@ void Convolver::setup() {
 
       setup_zita();
     }
+
+    data_mutex.lock();
+
+    ready = kernel_is_initialized && zita_ready;
+
+    data_mutex.unlock();
   };
 
-  futures.emplace_back(std::async(std::launch::async, f));
+  threads.emplace_back(f);
 }
 
 void Convolver::process(std::span<float>& left_in,
@@ -151,7 +165,7 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_out) {
   std::lock_guard<std::mutex> lock(data_mutex);
 
-  if (bypass || !kernel_is_initialized || !zita_ready) {
+  if (bypass || !ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -370,18 +384,22 @@ void Convolver::setup_zita() {
     return;
   }
 
-  conv->stop_process();
-  conv->cleanup();
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
+  }
+
+  conv = new Convproc();
 
   int ret = 0;
   int max_convolution_size = kernel_L.size();
   int buffer_size = get_zita_buffer_size();
-  uint options = 0;
   float density = 0.0F;
 
-  options |= Convproc::OPT_VECTOR_MODE;
-
-  conv->set_options(options);
+  conv->set_options(0);
 
   ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
 

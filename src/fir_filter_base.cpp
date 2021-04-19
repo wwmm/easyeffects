@@ -8,19 +8,17 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
 }  // namespace
 
-FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)), conv(new Convproc()) {}
+FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
 
 FirFilterBase::~FirFilterBase() {
   zita_ready = false;
 
   if (conv != nullptr) {
-    if (conv->state() != Convproc::ST_STOP) {
-      conv->stop_process();
+    conv->stop_process();
 
-      conv->cleanup();
+    conv->cleanup();
 
-      delete conv;
-    }
+    delete conv;
   }
 }
 
@@ -121,19 +119,22 @@ void FirFilterBase::setup_zita() {
     return;
   }
 
-  conv->stop_process();
-  conv->cleanup();
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
+  }
+
+  conv = new Convproc();
 
   int ret = 0;
-  int max_convolution_size = kernel.size();
-  uint options = 0;
   float density = 0.0F;
 
-  options |= Convproc::OPT_VECTOR_MODE;
+  conv->set_options(0);
 
-  conv->set_options(options);
-
-  ret = conv->configure(2, 2, max_convolution_size, n_samples, n_samples, n_samples, density);
+  ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, density);
 
   if (ret != 0) {
     util::warning(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
@@ -172,12 +173,12 @@ void FirFilterBase::setup_zita() {
 }
 
 void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1U) / 2U;
+  uint M = (c.size() + 1) / 2;
 
-  for (uint n = 0U; n < c.size(); n++) {
+  for (uint n = 0; n < c.size(); n++) {
     c[n] = 0.0F;
 
-    for (uint m = 0U; m < M; m++) {
+    for (uint m = 0; m < M; m++) {
       if (n > m && n - m < M) {
         c[n] += a[n - m] * b[m];
       }

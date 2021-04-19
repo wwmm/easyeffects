@@ -34,11 +34,11 @@ Crystalizer::Crystalizer(const std::string& tag,
 
   for (uint n = 0; n < nbands; n++) {
     if (n == 0) {
-      filters.at(n) = std::make_unique<FirFilterLowpass>("crystalizer band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + std::to_string(n));
     } else if (n == nbands - 1) {
-      filters.at(n) = std::make_unique<FirFilterHighpass>("crystalizer band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + std::to_string(n));
     } else {
-      filters.at(n) = std::make_unique<FirFilterBandpass>("crystalizer band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + std::to_string(n));
     }
   }
 
@@ -81,15 +81,21 @@ Crystalizer::~Crystalizer() {
 
   std::lock_guard<std::mutex> lock(data_mutex);
 
-  futures.clear();
+  threads.clear();
 }
 
 void Crystalizer::setup() {
+  threads.clear();
+
   data_mutex.lock();
 
   filters_are_ready = false;
 
   data_mutex.unlock();
+
+  if (n_samples == 0 || rate == 0) {
+    return;
+  }
 
   auto f = [=, this]() {
     blocksize = n_samples;
@@ -132,7 +138,7 @@ void Crystalizer::setup() {
         filters.at(n)->set_max_frequency(frequencies[0]);
         filters.at(n)->set_transition_band(transition_band);
       } else if (n == nbands - 1) {
-        filters.at(n)->set_min_frequency(frequencies.at(n - 1));  // the frequencies array has only 12 elements
+        filters.at(n)->set_min_frequency(frequencies.at(n - 1));  // frequencies array size = nbands - 1
         filters.at(n)->set_transition_band(transition_band);
       } else {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1));
@@ -140,13 +146,17 @@ void Crystalizer::setup() {
         filters.at(n)->set_transition_band(transition_band);
       }
 
-      // filters.at(n)->setup();
+      filters.at(n)->setup();
     }
 
+    data_mutex.lock();
+
     filters_are_ready = true;
+
+    data_mutex.unlock();
   };
 
-  futures.emplace_back(std::async(std::launch::async, f));
+  threads.emplace_back(f);
 }
 
 void Crystalizer::process(std::span<float>& left_in,
