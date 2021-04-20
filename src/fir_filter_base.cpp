@@ -8,7 +8,7 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
 }  // namespace
 
-FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
+FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)), conv(new Convproc()) {}
 
 FirFilterBase::~FirFilterBase() {
   zita_ready = false;
@@ -115,19 +115,12 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || kernel.empty() || conv == nullptr) {
+  if (n_samples == 0 || kernel.empty()) {
     return;
   }
 
-  if (conv != nullptr) {
-    conv->stop_process();
-
-    conv->cleanup();
-
-    delete conv;
-  }
-
-  conv = new Convproc();
+  conv->stop_process();
+  conv->cleanup();
 
   int ret = 0;
   float density = 0.0F;
@@ -145,7 +138,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, kernel.size());
 
   if (ret != 0) {
-    util::debug(log_tag + "left impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + "left impdata_create failed: " + std::to_string(ret));
 
     return;
   }
@@ -153,7 +146,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, kernel.size());
 
   if (ret != 0) {
-    util::debug(log_tag + "right impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + "right impdata_create failed: " + std::to_string(ret));
 
     return;
   }
@@ -161,13 +154,15 @@ void FirFilterBase::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::debug(log_tag + "start_process failed: " + std::to_string(ret));
+    util::warning(log_tag + "start_process failed: " + std::to_string(ret));
 
     conv->stop_process();
     conv->cleanup();
 
     return;
   }
+
+  // conv->print();
 
   zita_ready = true;
 }

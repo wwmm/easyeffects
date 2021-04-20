@@ -79,14 +79,14 @@ Crystalizer::~Crystalizer() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  std::lock_guard<std::mutex> lock(data_mutex);
+  data_mutex.lock();
 
-  threads.clear();
+  filters_are_ready = false;
+
+  data_mutex.unlock();
 }
 
 void Crystalizer::setup() {
-  threads.clear();
-
   data_mutex.lock();
 
   filters_are_ready = false;
@@ -97,7 +97,7 @@ void Crystalizer::setup() {
     return;
   }
 
-  auto f = [=, this]() {
+  Glib::signal_idle().connect_once([=, this] {
     blocksize = n_samples;
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
@@ -143,7 +143,7 @@ void Crystalizer::setup() {
       } else {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1));
         filters.at(n)->set_max_frequency(frequencies.at(n));
-        filters.at(n)->set_transition_band(transition_band);
+        filters.at(n)->set_transition_band(2.0F * transition_band);
       }
 
       filters.at(n)->setup();
@@ -154,9 +154,7 @@ void Crystalizer::setup() {
     filters_are_ready = true;
 
     data_mutex.unlock();
-  };
-
-  threads.emplace_back(f);
+  });
 }
 
 void Crystalizer::process(std::span<float>& left_in,
@@ -178,14 +176,14 @@ void Crystalizer::process(std::span<float>& left_in,
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-    // do_convolution(left_out, right_out);
+    enhance_peaks(left_out, right_out);
   } else {
     for (size_t j = 0; j < left_in.size(); j++) {
       data_L.emplace_back(left_in[j]);
       data_R.emplace_back(right_in[j]);
 
       if (data_L.size() == blocksize) {
-        // do_convolution(data_L, data_R);
+        enhance_peaks(data_L, data_R);
 
         for (const auto& v : data_L) {
           deque_out_L.emplace_back(v);

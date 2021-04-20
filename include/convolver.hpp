@@ -24,7 +24,6 @@
 #include <algorithm>
 #include <ranges>
 #include <sndfile.hh>
-#include <thread>
 #include <vector>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
@@ -71,8 +70,6 @@ class Convolver : public PluginBase {
 
   std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
-
-  std::vector<std::jthread> threads;
 
   Convproc* conv = nullptr;
 

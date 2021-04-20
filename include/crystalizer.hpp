@@ -20,7 +20,6 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <thread>
 #include <vector>
 #include "fir_filter_bandpass.hpp"
 #include "fir_filter_highpass.hpp"
@@ -89,7 +88,15 @@ class Crystalizer : public PluginBase {
   std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
 
-  std::vector<std::jthread> threads;
+  template <typename T1>
+  void enhance_peaks(T1& data_left, T1& data_right) {
+    for (uint n = 0; n < nbands; n++) {
+      std::copy(data_left.begin(), data_left.end(), band_data_L.at(n).begin());
+      std::copy(data_right.begin(), data_right.end(), band_data_R.at(n).begin());
+
+      filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
+    }
+  }
 };
 
 #endif
