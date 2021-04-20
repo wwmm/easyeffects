@@ -97,6 +97,12 @@ void Crystalizer::setup() {
     return;
   }
 
+  /*
+    As zita uses fftw we have to be care when reinitializing it. The thread that creates the fftw plan has to be the
+    same that destroys it. Otherwise segmentation faults can happen. As we do not want to do this initializing in the
+    plugin realtime thread we send it to the main thread through Glib::signal_idle().connect_once
+  */
+
   Glib::signal_idle().connect_once([=, this] {
     blocksize = n_samples;
 
