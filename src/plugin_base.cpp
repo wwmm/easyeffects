@@ -27,6 +27,10 @@ void on_process(void* userdata, spa_io_position* position) {
   auto n_samples = position->clock.duration;
   auto rate = position->clock.rate.denom;
 
+  if (n_samples == 0 || rate == 0) {
+    return;
+  }
+
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;

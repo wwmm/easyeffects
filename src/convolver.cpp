@@ -115,10 +115,6 @@ void Convolver::setup() {
 
   data_mutex.unlock();
 
-  if (n_samples == 0 || rate == 0) {
-    return;
-  }
-
   Glib::signal_idle().connect_once([=, this] {
     blocksize = n_samples;
 
