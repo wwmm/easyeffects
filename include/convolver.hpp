@@ -68,7 +68,6 @@ class Convolver : public PluginBase {
   std::vector<float> original_kernel_L, original_kernel_R;
   std::vector<float> data_L, data_R;
 
-  std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
 
   Convproc* conv = nullptr;

@@ -98,6 +98,9 @@ void RNNoise::setup() {
   data_L.resize(0);
   data_R.resize(0);
 
+  deque_out_L.resize(0);
+  deque_out_R.resize(0);
+
   resampler_inL = std::make_unique<Resampler>(rate, rnnoise_rate);
   resampler_inR = std::make_unique<Resampler>(rate, rnnoise_rate);
 

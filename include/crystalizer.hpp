@@ -54,6 +54,7 @@ class Crystalizer : public PluginBase {
   bool filters_are_ready = false;
   bool notify_latency = false;
   bool aggressive = false;
+  bool do_first_rotation = true;
 
   uint blocksize = 512;
   uint latency_n_frames = 0;
@@ -74,8 +75,8 @@ class Crystalizer : public PluginBase {
   std::array<float, nbands> band_intensity;
   std::array<float, nbands> band_last_L;
   std::array<float, nbands> band_last_R;
-  std::array<float, nbands> band_delayed_L;
-  std::array<float, nbands> band_delayed_R;
+  std::array<float, nbands> band_next_L;
+  std::array<float, nbands> band_next_R;
 
   std::array<std::vector<float>, nbands> band_data_L;
   std::array<std::vector<float>, nbands> band_data_R;
@@ -85,8 +86,42 @@ class Crystalizer : public PluginBase {
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
-  std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
+
+  template <typename T1>
+  void enhance_peaks(T1& data_left, T1& data_right) {
+    for (uint n = 0; n < nbands; n++) {
+      std::copy(data_left.begin(), data_left.end(), band_data_L.at(n).begin());
+      std::copy(data_right.begin(), data_right.end(), band_data_R.at(n).begin());
+
+      filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
+
+      /*
+      Later we will need to calculate the second derivative of each band. This
+      is done through the central difference method. In order to calculate
+      the derivative at the last elements of the array we have to know the first
+      element of the next buffer. As we do not have this information the only
+      way to do this calculation is delaying the signal by 1 sample.
+    */
+
+      // last (R,L) becomes the first
+
+      std::rotate(band_data_L.at(n).rbegin(), band_data_L.at(n).rbegin() + 1, band_data_L.at(n).rend());
+      std::rotate(band_data_R.at(n).rbegin(), band_data_R.at(n).rbegin() + 1, band_data_R.at(n).rend());
+
+      if (do_first_rotation) {
+        band_last_L.at(n) = 0.0F;
+        band_last_R.at(n) = 0.0F;
+
+        band_next_L.at(n) = band_data_L.at(n)[0];
+        band_next_R.at(n) = band_data_R.at(n)[0];
+
+        band_data_L.at(n)[0] = 0.0F;
+        band_data_R.at(n)[0] = 0.0F;
+      } else {
+      }
+    }
+  }
 };
 
 #endif

@@ -58,7 +58,6 @@ class RNNoise : public PluginBase {
   float latency = 0.0F;
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
-  std::deque<float> deque_in_L, deque_in_R;
   std::deque<float> deque_out_L, deque_out_R;
 
   std::vector<float> data_L, data_R;

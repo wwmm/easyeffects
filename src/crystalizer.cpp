@@ -111,14 +111,12 @@ void Crystalizer::setup() {
     }
 
     notify_latency = true;
+    do_first_rotation = true;
 
-    latency_n_frames = 0;
+    latency_n_frames = 1;  // the second derivative forces us to delay at least one sample
 
-    deque_in_L.resize(1);
-    deque_in_R.resize(1);
-
-    deque_in_L[0] = 0.0F;
-    deque_in_R[0] = 0.0F;
+    deque_out_L.resize(0);
+    deque_out_R.resize(0);
 
     data_L.resize(0);
     data_R.resize(0);
@@ -180,93 +178,66 @@ void Crystalizer::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  // buffer data
+  if (n_samples_is_power_of_2) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  for (auto& v : left_in) {
-    deque_in_L.emplace_back(v);
-  }
-
-  for (auto& v : right_in) {
-    deque_in_R.emplace_back(v);
-  }
-
-  // move data from the buffer to the work array
-
-  for (auto& v : deque_in_L) {
-    if (data_L.size() == blocksize) {
-      break;
-    }
-
-    data_L.emplace_back(v);
-
-    deque_in_L.pop_front();
-  }
-
-  for (auto& v : deque_in_R) {
-    if (data_R.size() == blocksize) {
-      break;
-    }
-
-    data_R.emplace_back(v);
-
-    deque_in_R.pop_front();
-  }
-
-  // enhancing peaks
-
-  if (data_L.size() == blocksize && data_R.size() == blocksize) {
-    for (uint n = 0; n < nbands; n++) {
-      std::copy(data_L.begin(), data_L.end(), band_data_L.at(n).begin());
-      std::copy(data_R.begin(), data_R.end(), band_data_R.at(n).begin());
-
-      filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
-    }
-
-    for (const auto& v : data_L) {
-      deque_out_L.emplace_back(v);
-    }
-
-    for (const auto& v : data_R) {
-      deque_out_R.emplace_back(v);
-    }
-
-    data_L.resize(0);
-    data_R.resize(0);
-  }
-
-  // copying the precessed samples to the output buffers
-
-  if (deque_out_L.size() >= left_out.size()) {
-    for (float& v : left_out) {
-      v = deque_out_L.front();
-
-      deque_out_L.pop_front();
-    }
-
-    for (float& v : right_out) {
-      v = deque_out_R.front();
-
-      deque_out_R.pop_front();
-    }
+    enhance_peaks(left_out, right_out);
   } else {
-    uint offset = 2 * (left_out.size() - deque_out_L.size());
+    for (size_t j = 0; j < left_in.size(); j++) {
+      data_L.emplace_back(left_in[j]);
+      data_R.emplace_back(right_in[j]);
 
-    if (offset != latency_n_frames) {
-      latency_n_frames = offset + 1;  // the second derivative forces us to delay at least one sample
+      if (data_L.size() == blocksize) {
+        enhance_peaks(data_L, data_R);
 
-      notify_latency = true;
+        for (const auto& v : data_L) {
+          deque_out_L.emplace_back(v);
+        }
+
+        for (const auto& v : data_R) {
+          deque_out_R.emplace_back(v);
+        }
+
+        data_L.resize(0);
+        data_R.resize(0);
+      }
     }
 
-    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
-      if (n < offset) {
-        left_out[n] = 0.0F;
-        right_out[n] = 0.0F;
-      } else {
-        left_out[n] = deque_out_L.front();
-        right_out[n] = deque_out_R.front();
+    // copying the processed samples to the output buffers
+
+    if (deque_out_L.size() >= left_out.size()) {
+      for (float& v : left_out) {
+        v = deque_out_L.front();
+
+        deque_out_L.pop_front();
+      }
+
+      for (float& v : right_out) {
+        v = deque_out_R.front();
 
         deque_out_R.pop_front();
-        deque_out_L.pop_front();
+      }
+    } else {
+      uint offset = 2 * (left_out.size() - deque_out_L.size());
+
+      if (offset != latency_n_frames) {
+        latency_n_frames = offset + 1;  // the second derivative forces us to delay at least one sample
+
+        notify_latency = true;
+      }
+
+      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+        if (n < offset) {
+          left_out[n] = 0.0F;
+          right_out[n] = 0.0F;
+        } else {
+          left_out[n] = deque_out_L.front();
+          right_out[n] = deque_out_R.front();
+
+          deque_out_R.pop_front();
+          deque_out_L.pop_front();
+        }
       }
     }
   }

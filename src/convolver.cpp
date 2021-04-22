@@ -129,6 +129,9 @@ void Convolver::setup() {
     data_L.resize(0);
     data_R.resize(0);
 
+    deque_out_L.resize(0);
+    deque_out_R.resize(0);
+
     notify_latency = true;
 
     latency_n_frames = 0;
