@@ -53,15 +53,12 @@ class Crystalizer : public PluginBase {
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;
   bool notify_latency = false;
-  bool aggressive = false;
   bool do_first_rotation = true;
 
   uint blocksize = 512;
   uint latency_n_frames = 0;
 
   static constexpr uint nbands = 13;
-  static constexpr uint ndivs = 1000;
-  static constexpr uint dv = 1.0F / ndivs;
 
   float latency = 0.0F;
 
@@ -110,15 +107,105 @@ class Crystalizer : public PluginBase {
       std::rotate(band_data_R.at(n).rbegin(), band_data_R.at(n).rbegin() + 1, band_data_R.at(n).rend());
 
       if (do_first_rotation) {
-        band_last_L.at(n) = 0.0F;
-        band_last_R.at(n) = 0.0F;
+        /*
+          band_data was rotated. Its first values are the last ones from the original array. we have to save them for
+          the next round.
+        */
 
         band_next_L.at(n) = band_data_L.at(n)[0];
         band_next_R.at(n) = band_data_R.at(n)[0];
 
+        band_last_L.at(n) = 0.0F;
+        band_last_R.at(n) = 0.0F;
+
         band_data_L.at(n)[0] = 0.0F;
         band_data_R.at(n)[0] = 0.0F;
+
       } else {
+        /*
+          band_data was rotated. Its first values are the last ones from the original array. we have to save them for
+          the next round.
+        */
+
+        float L = band_data_L.at(n)[0];
+        float R = band_data_R.at(n)[0];
+
+        band_data_L.at(n)[0] = band_next_L.at(n);
+        band_data_R.at(n)[0] = band_next_R.at(n);
+
+        band_next_L.at(n) = L;
+        band_next_R.at(n) = R;
+      }
+    }
+
+    for (uint n = 0; n < nbands; n++) {
+      // Calculating the second derivative
+
+      if (!band_bypass.at(n)) {
+        for (uint m = 0; m < blocksize; m++) {
+          float L = band_data_L.at(n)[m];
+          float R = band_data_R.at(n)[m];
+
+          if (m > 0 && m < blocksize - 1) {
+            float L_lower = band_data_L.at(n)[m - 1];
+            float R_lower = band_data_R.at(n)[m - 1];
+            float L_upper = band_data_L.at(n)[m + 1];
+            float R_upper = band_data_R.at(n)[m + 1];
+
+            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
+            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
+          } else if (m == 0U) {
+            float L_lower = band_last_L.at(n);
+            float R_lower = band_last_R.at(n);
+            float L_upper = band_data_L.at(n)[m + 1];
+            float R_upper = band_data_R.at(n)[m + 1];
+
+            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
+            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
+          } else if (m == blocksize - 1) {
+            float L_upper = band_next_L.at(n);
+            float R_upper = band_next_R.at(n);
+            float L_lower = band_data_L.at(n)[m - 1];
+            float R_lower = band_data_R.at(n)[m - 1];
+
+            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
+            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
+          }
+        }
+
+        // peak enhancing using second derivative
+
+        for (uint m = 0; m < blocksize; m++) {
+          float L = band_data_L.at(n)[m];
+          float R = band_data_R.at(n)[m];
+          float d2L = band_second_derivative_L.at(n)[m];
+          float d2R = band_second_derivative_R.at(n)[m];
+
+          band_data_L.at(n)[m] = L - band_intensity.at(n) * d2L;
+          band_data_R.at(n)[m] = R - band_intensity.at(n) * d2R;
+
+          if (m == blocksize - 1) {
+            band_last_L.at(n) = L;
+            band_last_R.at(n) = R;
+          }
+        }
+      } else {
+        band_last_L.at(n) = band_data_L.at(n)[blocksize - 1];
+        band_last_R.at(n) = band_data_R.at(n)[blocksize - 1];
+      }
+    }
+
+    // add bands
+
+    for (uint m = 0; m < blocksize; m++) {
+      data_left[m] = 0.0F;
+      data_right[m] = 0.0F;
+
+      for (uint n = 0; n < nbands; n++) {
+        if (!band_mute.at(n)) {
+          data_left[m] += band_data_L.at(n)[m];
+          data_right[m] += band_data_R.at(n)[m];
+        }
       }
     }
   }

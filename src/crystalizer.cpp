@@ -267,8 +267,6 @@ void Crystalizer::process(std::span<float>& left_in,
   }
 }
 
-// g_settings_bind(settings, "aggressive", crystalizer, "aggressive", G_SETTINGS_BIND_DEFAULT);
-
 // for (int n = 0; n < 13; n++) {
 //   g_settings_bind_with_mapping(settings, std::string("intensity-band" + std::to_string(n)).c_str(), crystalizer,
 //                                std::string("intensity-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_GET,
