@@ -123,6 +123,7 @@ class Crystalizer : public PluginBase {
         band_data_L.at(n)[0] = 0.0F;
         band_data_R.at(n)[0] = 0.0F;
 
+        do_first_rotation = false;
       } else {
         /*
           band_data was rotated. Its first values are the last ones from the original array. we have to save them for
