@@ -17,7 +17,8 @@
 
         <child>
             <object class="GtkBox" id="bands_box">
-                <property name="spacing">6</property>
+                <property name="halign">center</property>
+                <property name="spacing">24</property>
             </object>
         </child>
 
