@@ -24,14 +24,6 @@ Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crystalizer, schema, schema_path, pipe_manager) {
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   for (uint n = 0; n < nbands; n++) {
     if (n == 0) {
       filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + std::to_string(n));
@@ -60,6 +52,18 @@ Crystalizer::Crystalizer(const std::string& tag,
   frequencies[9] = 9000.0F;
   frequencies[10] = 10000.0F;
   frequencies[11] = 15000.0F;
+
+  settings->signal_changed("input-gain").connect([=, this](auto key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](auto key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  for (uint n = 0; n < nbands; n++) {
+    bind_band(n);
+  }
 
   initialize_listener();
 }
@@ -267,14 +271,20 @@ void Crystalizer::process(std::span<float>& left_in,
   }
 }
 
-// for (int n = 0; n < 13; n++) {
-//   g_settings_bind_with_mapping(settings, std::string("intensity-band" + std::to_string(n)).c_str(), crystalizer,
-//                                std::string("intensity-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_GET,
-//                                util::db20_gain_to_linear, nullptr, nullptr, nullptr);
+void Crystalizer::bind_band(const int& n) {
+  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + std::to_string(n)));
+  band_mute.at(n) = settings->get_boolean("mute-band" + std::to_string(n));
+  band_bypass.at(n) = settings->get_boolean("bypass-band" + std::to_string(n));
 
-//   g_settings_bind(settings, std::string("mute-band" + std::to_string(n)).c_str(), crystalizer,
-//                   std::string("mute-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
+  settings->signal_changed("intensity-band" + std::to_string(n)).connect([=, this](auto key) {
+    band_intensity.at(n) = util::db_to_linear(settings->get_double(key));
+  });
 
-//   g_settings_bind(settings, std::string("bypass-band" + std::to_string(n)).c_str(), crystalizer,
-//                   std::string("bypass-band" + std::to_string(n)).c_str(), G_SETTINGS_BIND_DEFAULT);
-// }
+  settings->signal_changed("mute-band" + std::to_string(n)).connect([=, this](auto key) {
+    band_mute.at(n) = settings->get_boolean(key);
+  });
+
+  settings->signal_changed("bypass-band" + std::to_string(n)).connect([=, this](auto key) {
+    band_bypass.at(n) = settings->get_boolean(key);
+  });
+}

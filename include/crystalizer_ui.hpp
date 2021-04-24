@@ -41,8 +41,6 @@ class CrystalizerUi : public Gtk::Box, public PluginUiBase {
  private:
   Gtk::Box* bands_box = nullptr;
 
-  Gtk::ToggleButton* aggressive = nullptr;
-
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   void build_bands(const int& nbands);

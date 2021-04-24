@@ -10,10 +10,6 @@
             <default>0.0</default>
         </key>
 
-        <key name="aggressive" type="b">
-            <default>false</default>
-        </key>
-
         <key name="intensity-band0" type="d">
             <range min="-40" max="32" />
             <default>12.0</default>

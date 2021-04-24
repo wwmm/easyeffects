@@ -20,14 +20,14 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crystalizer",
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crystalizer",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/crystalizer/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.crystalizer",
                                             "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/")) {}
 
 void CrystalizerPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".crystalizer.aggressive", settings->get_boolean("aggressive"));
-
   root.put(section + ".crystalizer.input-gain", settings->get_double("input-gain"));
 
   root.put(section + ".crystalizer.output-gain", settings->get_double("output-gain"));
@@ -47,8 +47,6 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 void CrystalizerPreset::load(const boost::property_tree::ptree& root,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "aggressive", section + ".crystalizer.aggressive");
-
   update_key<double>(root, settings, "input-gain", section + ".crystalizer.input-gain");
 
   update_key<double>(root, settings, "output-gain", section + ".crystalizer.output-gain");
@@ -66,13 +64,23 @@ void CrystalizerPreset::load(const boost::property_tree::ptree& root,
 }
 
 void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      save(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      save(root, "input", input_settings);
+      break;
   }
 }
 
 void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+  switch (preset_type) {
+    case PresetType::output:
+      load(root, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(root, "input", input_settings);
+      break;
   }
 }

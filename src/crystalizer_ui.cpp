@@ -31,15 +31,12 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  aggressive = builder->get_widget<Gtk::ToggleButton>("aggressive");
-
   bands_box = builder->get_widget<Gtk::Box>("bands_box");
 
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  settings->bind("aggressive", aggressive, "active");
 
   build_bands(13);
 }
@@ -60,8 +57,6 @@ auto CrystalizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_pa
 }
 
 void CrystalizerUi::reset() {
-  settings->reset("aggressive");
-
   settings->reset("input-gain");
 
   settings->reset("output-gain");

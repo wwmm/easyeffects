@@ -122,11 +122,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // reading the current configured irs file
 
-  auto f = [=, this]() {
-    std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-
-    get_irs_info();
-  };
+  auto f = [=, this]() { get_irs_info(); };
 
   auto future = std::async(std::launch::async, f);
 
@@ -137,11 +133,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   */
 
   connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    auto f = [=, this]() {
-      std::lock_guard<std::mutex> lock(lock_guard_irs_info);
-
-      get_irs_info();
-    };
+    auto f = [=, this]() { get_irs_info(); };
 
     auto future = std::async(std::launch::async, f);
 
@@ -409,6 +401,8 @@ void ConvolverUi::on_import_irs_clicked() {
 }
 
 void ConvolverUi::get_irs_info() {
+  std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+
   auto path = settings->get_string("kernel-path");
 
   if (path.c_str() == nullptr) {
