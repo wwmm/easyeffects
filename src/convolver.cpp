@@ -116,11 +116,7 @@ Convolver::~Convolver() {
 }
 
 void Convolver::setup() {
-  data_mutex.lock();
-
   ready = false;
-
-  data_mutex.unlock();
 
   /*
     As zita uses fftw we have to be careful when reinitializing it. The thread that creates the fftw plan has to be the
@@ -128,7 +124,7 @@ void Convolver::setup() {
     plugin realtime thread we send it to the main thread through Glib::signal_idle().connect_once
   */
 
-  Glib::signal_idle().connect_once([=, this] {
+  Glib::signal_idle().connect_once([&, this] {
     blocksize = n_samples;
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
@@ -161,11 +157,9 @@ void Convolver::setup() {
       setup_zita();
     }
 
-    data_mutex.lock();
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     ready = kernel_is_initialized && zita_ready;
-
-    data_mutex.unlock();
   });
 }
 
