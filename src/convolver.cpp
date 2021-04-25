@@ -31,7 +31,7 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager), conv(new Convproc()) {
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -116,6 +116,12 @@ Convolver::~Convolver() {
 }
 
 void Convolver::setup() {
+  data_mutex.lock();
+
+  ready = false;
+
+  data_mutex.unlock();
+
   /*
     As zita uses fftw we have to be careful when reinitializing it. The thread that creates the fftw plan has to be the
     same that destroys it. Otherwise segmentation faults can happen. As we do not want to do this initializing in the
@@ -123,12 +129,6 @@ void Convolver::setup() {
   */
 
   Glib::signal_idle().connect_once([=, this] {
-    data_mutex.lock();
-
-    ready = false;
-
-    data_mutex.unlock();
-
     blocksize = n_samples;
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
@@ -173,7 +173,7 @@ void Convolver::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -394,29 +394,21 @@ void Convolver::setup_zita() {
     return;
   }
 
-  if (conv != nullptr) {
-    conv->stop_process();
-
-    conv->cleanup();
-
-    delete conv;
-
-    conv = nullptr;
-  }
-
-  conv = new Convproc();
-
   int ret = 0;
   int max_convolution_size = kernel_L.size();
   int buffer_size = get_zita_buffer_size();
   float density = 0.0F;
+
+  conv->stop_process();
+
+  conv->cleanup();
 
   conv->set_options(0);
 
   ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
 
   if (ret != 0) {
-    util::warning(log_tag + "can't initialise zita-convolver engine: " + std::to_string(ret));
+    util::warning(log_tag + name + " can't initialise zita-convolver engine: " + std::to_string(ret));
 
     return;
   }
@@ -424,7 +416,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, kernel_L.size());
 
   if (ret != 0) {
-    util::warning(log_tag + "left impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " left impdata_create failed: " + std::to_string(ret));
 
     return;
   }
@@ -432,7 +424,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, kernel_R.size());
 
   if (ret != 0) {
-    util::warning(log_tag + "right impdata_create failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " right impdata_create failed: " + std::to_string(ret));
 
     return;
   }
@@ -440,14 +432,10 @@ void Convolver::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::warning(log_tag + "start_process failed: " + std::to_string(ret));
+    util::warning(log_tag + name + " start_process failed: " + std::to_string(ret));
 
     conv->stop_process();
     conv->cleanup();
-
-    delete conv;
-
-    conv = nullptr;
 
     return;
   }

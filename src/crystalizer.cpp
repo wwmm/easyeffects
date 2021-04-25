@@ -91,6 +91,12 @@ Crystalizer::~Crystalizer() {
 }
 
 void Crystalizer::setup() {
+  data_mutex.lock();
+
+  filters_are_ready = false;
+
+  data_mutex.unlock();
+
   /*
     As zita uses fftw we have to be careful when reinitializing it. The thread that creates the fftw plan has to be the
     same that destroys it. Otherwise segmentation faults can happen. As we do not want to do this initializing in the
@@ -98,12 +104,6 @@ void Crystalizer::setup() {
   */
 
   Glib::signal_idle().connect_once([=, this] {
-    data_mutex.lock();
-
-    filters_are_ready = false;
-
-    data_mutex.unlock();
-
     blocksize = n_samples;
 
     n_samples_is_power_of_2 = (n_samples & (n_samples - 1)) == 0 && n_samples != 0;
@@ -171,7 +171,7 @@ void Crystalizer::process(std::span<float>& left_in,
                           std::span<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !filters_are_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
