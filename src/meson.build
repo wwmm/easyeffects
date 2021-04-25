@@ -134,5 +134,3 @@ executable(
 	dependencies : pulseeffects_deps,
 	install: true
 )
-
-subdir('crystalizer')

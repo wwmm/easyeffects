@@ -28,7 +28,6 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_loudness = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.glade");
-  //   auto b_crystalizer = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.glade");
 
   //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
   //                               "/com/github/wwmm/pulseeffects/sinkinputs/pitch/");
@@ -36,18 +35,13 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   //   b_loudness->get_widget_derived("widgets_grid", loudness_ui, "com.github.wwmm.pulseeffects.loudness",
   //                                  "/com/github/wwmm/pulseeffects/sinkinputs/loudness/");
 
-  //   b_crystalizer->get_widget_derived("widgets_grid", crystalizer_ui, "com.github.wwmm.pulseeffects.crystalizer",
-  //                                     "/com/github/wwmm/pulseeffects/sinkinputs/crystalizer/");
-
   //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*loudness_ui, loudness_ui->name);
-  //   stack->add(*crystalizer_ui, crystalizer_ui->name);
 
   // populate_listbox
 
   //   add_to_listbox(pitch_ui);
   //   add_to_listbox(loudness_ui);
-  //   add_to_listbox(crystalizer_ui);
 
   level_meters_connections();
   up_down_connections();
@@ -128,18 +122,6 @@ void StreamOutputEffectsUi::level_meters_connections() {
   //       soe->loudness_input_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level_db)));
   //   connections.emplace_back(
   //       soe->loudness_output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level_db)));
-
-  //   // crystalizer level meters connections
-
-  //   connections.emplace_back(
-  //       soe->crystalizer_input_level.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       soe->crystalizer_output_level.connect(sigc::mem_fun(*crystalizer_ui,
-  //       &CrystalizerUi::on_new_output_level_db)));
-  //   connections.emplace_back(
-  //       soe->crystalizer->range_before.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_before)));
-  //   connections.emplace_back(
-  //       soe->crystalizer->range_after.connect(sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_range_after)));
 }
 
 void StreamOutputEffectsUi::up_down_connections() {
@@ -148,10 +130,5 @@ void StreamOutputEffectsUi::up_down_connections() {
 
   //   connections.emplace_back(loudness_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(loudness_ui); }));
   //   connections.emplace_back(loudness_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(loudness_ui);
-  //   }));
-
-  //   connections.emplace_back(crystalizer_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(crystalizer_ui);
-  //   })); connections.emplace_back(crystalizer_ui->plugin_down->signal_clicked().connect([=, this]() {
-  //   on_down(crystalizer_ui);
   //   }));
 }
