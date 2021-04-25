@@ -61,8 +61,7 @@ Convolver::Convolver(const std::string& tag,
 
     data_mutex.lock();
 
-    kernel_is_initialized = false;
-    zita_ready = false;
+    ready = false;
 
     data_mutex.unlock();
 
@@ -76,6 +75,12 @@ Convolver::Convolver(const std::string& tag,
       apply_kernel_autogain();
 
       setup_zita();
+
+      data_mutex.lock();
+
+      ready = kernel_is_initialized && zita_ready;
+
+      data_mutex.unlock();
     }
   });
 
@@ -98,6 +103,8 @@ Convolver::~Convolver() {
   pw_thread_loop_unlock(pm->thread_loop);
 
   std::lock_guard<std::mutex> lock(data_mutex);
+
+  ready = false;
 
   if (conv != nullptr) {
     conv->stop_process();
