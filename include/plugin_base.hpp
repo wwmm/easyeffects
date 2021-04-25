@@ -82,6 +82,8 @@ class PluginBase {
   sigc::signal<void(float, float)> output_level;
 
  protected:
+  std::mutex data_mutex;
+
   Glib::RefPtr<Gio::Settings> settings;
 
   PipeManager* pm = nullptr;
@@ -93,8 +95,6 @@ class PluginBase {
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;
-
-  std::mutex data_mutex;
 
   void initialize_listener();
 
