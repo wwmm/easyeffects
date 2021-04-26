@@ -117,24 +117,23 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
                        const std::string& schema,
                        const std::string& schema_path)
     : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
-  name = "loudness";
+  name = plugin_name::loudness;
 
-  // loading glade widgets
+  // loading builder widgets
 
-  builder->get_widget("plugin_reset", reset_button);
-  builder->get_widget("fft_size", fft_size);
-  builder->get_widget("standard", standard);
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  get_object(builder, "input", input);
-  get_object(builder, "volume", volume);
+  standard = builder->get_widget<Gtk::ComboBoxText>("standard");
+  fft_size = builder->get_widget<Gtk::ComboBoxText>("fft_size");
+
+  volume = builder->get_widget<Gtk::SpinButton>("volume");
 
   // gsettings bindings
 
-  auto flag = Gio::SettingsBindFlags::SETTINGS_BIND_DEFAULT;
-
-  settings->bind("installed", this, "sensitive", flag);
-  settings->bind("input", input.get(), "value", flag);
-  settings->bind("volume", volume.get(), "value", flag);
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+  settings->bind("volume", volume->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "fft", fft_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                fft_size_enum_to_int, int_to_fft_size_enum, nullptr, nullptr);
@@ -142,20 +141,28 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "std", standard->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                standard_enum_to_int, int_to_standard_enum, nullptr, nullptr);
 
-  // reset plugin
-  reset_button->signal_clicked().connect([=]() { reset(); });
+  prepare_spinbutton(volume, "dB");
 }
 
 LoudnessUi::~LoudnessUi() {
   util::debug(name + " ui destroyed");
 }
 
+auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi* {
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/loudness.ui");
+
+  auto* ui = Gtk::Builder::get_widget_derived<LoudnessUi>(builder, "top_box", "com.github.wwmm.pulseeffects.loudness",
+                                                          schema_path + "loudness/");
+
+  auto stack_page = stack->add(*ui, plugin_name::loudness);
+
+  return ui;
+}
+
 void LoudnessUi::reset() {
   settings->reset("fft");
 
   settings->reset("std");
-
-  settings->reset("input");
 
   settings->reset("volume");
 }

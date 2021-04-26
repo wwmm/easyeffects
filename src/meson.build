@@ -88,7 +88,7 @@ pulseeffects_sources = [
 	# 'pipe_settings_ui.cpp',
 	'loudness.cpp',
 	'loudness_preset.cpp',
-	# 'loudness_ui.cpp',
+	'loudness_ui.cpp',
 	'pitch.cpp',
 	'pitch_preset.cpp',
 	# 'pitch_ui.cpp',

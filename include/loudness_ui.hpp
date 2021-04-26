@@ -20,6 +20,7 @@
 #ifndef LOUDNESS_UI_HPP
 #define LOUDNESS_UI_HPP
 
+#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class LoudnessUi : public Gtk::Box, public PluginUiBase {
@@ -34,12 +35,16 @@ class LoudnessUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const LoudnessUi&&) -> LoudnessUi& = delete;
   ~LoudnessUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi*;
+
   void reset() override;
 
  private:
-  Glib::RefPtr<Gtk::Adjustment> input, volume;
-
   Gtk::ComboBoxText *fft_size = nullptr, *standard = nullptr;
+
+  Gtk::SpinButton* volume = nullptr;
+
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif

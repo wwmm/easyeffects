@@ -22,6 +22,7 @@
         <file>ui/gate.ui</file>
         <file>ui/general_settings.ui</file>
         <file>ui/limiter.ui</file>
+        <file>ui/loudness.ui</file>
         <file>ui/maximizer.ui</file>
         <file>ui/module_info.ui</file>
         <file>ui/multiband_compressor.ui</file>
@@ -36,13 +37,11 @@
         <file>ui/stereo_tools.ui</file>
         <file>about.glade</file>
         <file>ui/pipe_settings.glade</file>
-        <file>ui/loudness.glade</file>
         <file>ui/pitch.glade</file>
         <file>ui/webrtc.glade</file>
         <file>ui/calibration.glade</file>
         <file>ui/calibration_signals.glade</file>
         <file>ui/calibration_mic.glade</file>
         <file>icons/pulseeffects-sine-symbolic.svg</file>
-        <file>icons/pulseeffects-irs-symbolic.svg</file>
     </gresource>
 </gresources>

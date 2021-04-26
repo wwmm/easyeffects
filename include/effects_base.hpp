@@ -75,6 +75,7 @@ class EffectsBase {
   std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
+  std::shared_ptr<Loudness> loudness;
   std::shared_ptr<Maximizer> maximizer;
   std::shared_ptr<MultibandCompressor> multiband_compressor;
   std::shared_ptr<MultibandGate> multiband_gate;
@@ -89,7 +90,6 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
-  std::shared_ptr<Loudness> loudness;
   std::shared_ptr<Pitch> pitch;
 
   std::vector<pw_proxy*> list_proxies;

@@ -22,6 +22,7 @@ data/ui/filter.ui
 data/ui/gate.ui
 data/ui/general_settings.ui
 data/ui/limiter.ui
+data/ui/loudness.ui
 data/ui/maximizer.ui
 data/ui/module_info.ui
 data/ui/multiband_compressor.ui
@@ -37,7 +38,6 @@ data/ui/stereo_tools.ui
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
-data/ui/loudness.glade
 data/ui/pitch.glade
 data/ui/pipe_settings.glade
 data/ui/webrtc.glade

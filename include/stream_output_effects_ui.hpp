@@ -22,7 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
-// #include "loudness_ui.hpp"
 // #include "pitch_ui.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {

@@ -183,6 +183,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->filter->post_messages = true;
   effects_base->gate->post_messages = true;
   effects_base->limiter->post_messages = true;
+  effects_base->loudness->post_messages = true;
   effects_base->maximizer->post_messages = true;
   effects_base->multiband_compressor->post_messages = true;
   effects_base->multiband_gate->post_messages = true;
@@ -215,6 +216,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->filter->post_messages = false;
   effects_base->gate->post_messages = false;
   effects_base->limiter->post_messages = false;
+  effects_base->loudness->post_messages = false;
   effects_base->maximizer->post_messages = false;
   effects_base->multiband_compressor->post_messages = false;
   effects_base->multiband_gate->post_messages = false;
@@ -239,6 +241,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->filter->bypass = false;
   effects_base->gate->bypass = false;
   effects_base->limiter->bypass = false;
+  effects_base->loudness->bypass = false;
   effects_base->maximizer->bypass = false;
   effects_base->multiband_compressor->bypass = false;
   effects_base->multiband_gate->bypass = false;
@@ -394,6 +397,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
   effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
   effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
+
+  // loudness
+
+  auto* loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
+
+  loudness_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->loudness->bypass = loudness_ui->bypass->get_active(); });
+
+  effects_base->loudness->input_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_input_level));
+  effects_base->loudness->output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level));
 
   // maximizer
 

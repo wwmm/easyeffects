@@ -40,6 +40,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   limiter = std::make_shared<Limiter>(log_tag, "com.github.wwmm.pulseeffects.limiter", path + "limiter/", pm);
 
+  loudness = std::make_shared<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness", path + "loudness/", pm);
+
   maximizer = std::make_shared<Maximizer>(log_tag, "com.github.wwmm.pulseeffects.maximizer", path + "maximizer/", pm);
 
   multiband_compressor = std::make_shared<MultibandCompressor>(
@@ -61,8 +63,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools", path + "stereotools/", pm);
 
-  //   loudness = std::make_shared<Loudness>(log_tag, "com.github.wwmm.pulseeffects.loudness", path + "loudness/", pm);
-
   //   pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch", path + "pitch/", pm);
 
   plugins.insert(std::make_pair(autogain->name, autogain));
@@ -78,13 +78,13 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(filter->name, filter));
   plugins.insert(std::make_pair(gate->name, gate));
   plugins.insert(std::make_pair(limiter->name, limiter));
+  plugins.insert(std::make_pair(loudness->name, loudness));
   plugins.insert(std::make_pair(maximizer->name, maximizer));
   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
   plugins.insert(std::make_pair(reverb->name, reverb));
   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  //   plugins.insert(std::make_pair(loudness->name, loudness));
   //   plugins.insert(std::make_pair(pitch->name, pitch));
 }
 

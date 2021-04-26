@@ -41,6 +41,7 @@
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
 #include "limiter_ui.hpp"
+#include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
