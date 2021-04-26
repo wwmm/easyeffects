@@ -401,7 +401,7 @@ void ConvolverUi::on_import_irs_clicked() {
 }
 
 void ConvolverUi::get_irs_info() {
-  std::lock_guard<std::mutex> lock(lock_guard_irs_info);
+  std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
   auto path = settings->get_string("kernel-path");
 

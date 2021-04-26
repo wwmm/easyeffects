@@ -31,7 +31,7 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager), conv(new Convproc()) {
+    : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -43,7 +43,7 @@ Convolver::Convolver(const std::string& tag,
   settings->signal_changed("ir-width").connect([=, this](auto key) {
     ir_width = settings->get_int(key);
 
-    std::lock_guard<std::mutex> lock(data_mutex);
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     if (kernel_is_initialized) {
       kernel_L = original_kernel_L;
@@ -102,7 +102,7 @@ Convolver::~Convolver() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   ready = false;
 
@@ -392,6 +392,10 @@ void Convolver::setup_zita() {
   int max_convolution_size = kernel_L.size();
   int buffer_size = get_zita_buffer_size();
   float density = 0.0F;
+
+  if (conv == nullptr) {
+    conv = new Convproc();
+  }
 
   conv->stop_process();
 

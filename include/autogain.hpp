@@ -49,6 +49,8 @@ class AutoGain : public PluginBase {
  private:
   bool ebur128_ready = false;
 
+  uint old_rate = 0;
+
   double target = -23.0;  // target loudness level
   double output_gain = 1.0;
 

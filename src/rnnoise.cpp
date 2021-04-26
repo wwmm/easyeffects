@@ -81,7 +81,7 @@ RNNoise::~RNNoise() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   resampler_ready = false;
 
@@ -89,7 +89,7 @@ RNNoise::~RNNoise() {
 }
 
 void RNNoise::setup() {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   resampler_ready = false;
 
@@ -114,7 +114,7 @@ void RNNoise::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
                       std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !rnnoise_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());

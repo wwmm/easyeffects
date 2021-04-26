@@ -33,13 +33,13 @@ Crossfeed::Crossfeed(const std::string& tag,
   });
 
   settings->signal_changed("fcut").connect([=, this](auto key) {
-    std::lock_guard<std::mutex> lock(data_mutex);
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_fcut(settings->get_int(key));
   });
 
   settings->signal_changed("feed").connect([=, this](auto key) {
-    std::lock_guard<std::mutex> lock(data_mutex);
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     bs2b.set_level_feed(10 * settings->get_double(key));
   });
@@ -64,7 +64,7 @@ Crossfeed::~Crossfeed() {
 }
 
 void Crossfeed::setup() {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   bs2b.set_srate(rate);
 
@@ -75,7 +75,7 @@ void Crossfeed::process(std::span<float>& left_in,
                         std::span<float>& right_in,
                         std::span<float>& left_out,
                         std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());

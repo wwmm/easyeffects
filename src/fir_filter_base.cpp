@@ -8,7 +8,7 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
 }  // namespace
 
-FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)), conv(new Convproc()) {}
+FirFilterBase::FirFilterBase(std::string tag) : log_tag(std::move(tag)) {}
 
 FirFilterBase::~FirFilterBase() {
   zita_ready = false;
@@ -117,6 +117,10 @@ void FirFilterBase::setup_zita() {
 
   if (n_samples == 0 || kernel.empty()) {
     return;
+  }
+
+  if (conv == nullptr) {
+    conv = new Convproc();
   }
 
   conv->stop_process();

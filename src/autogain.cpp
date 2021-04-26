@@ -29,7 +29,7 @@ AutoGain::AutoGain(const std::string& tag,
   settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
 
   settings->signal_changed("reset-history").connect([&, this](auto key) {
-    std::lock_guard<std::mutex> lock(data_mutex);
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
     init_ebur128();
   });
@@ -52,7 +52,7 @@ AutoGain::~AutoGain() {
 
   pw_thread_loop_unlock(pm->thread_loop);
 
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
@@ -78,9 +78,13 @@ void AutoGain::init_ebur128() {
 }
 
 void AutoGain::setup() {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
-  init_ebur128();
+  if (rate != old_rate) {
+    old_rate = rate;
+
+    init_ebur128();
+  }
 
   data.resize(n_samples * 2);
 }
@@ -89,7 +93,7 @@ void AutoGain::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
-  std::lock_guard<std::mutex> lock(data_mutex);
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !ebur128_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
