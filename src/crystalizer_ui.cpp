@@ -57,6 +57,8 @@ auto CrystalizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_pa
 }
 
 void CrystalizerUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

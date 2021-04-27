@@ -263,6 +263,8 @@ auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_
 }
 
 void MultibandGateUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

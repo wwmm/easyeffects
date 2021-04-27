@@ -300,7 +300,7 @@ void ConvolverUi::setup_listview() {
 }
 
 void ConvolverUi::reset() {
-  settings->reset("state");
+  bypass->set_active(false);
 
   settings->reset("input-gain");
 

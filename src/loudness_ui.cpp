@@ -160,6 +160,12 @@ auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path)
 }
 
 void LoudnessUi::reset() {
+  bypass->set_active(false);
+
+  settings->reset("input-gain");
+
+  settings->reset("output-gain");
+
   settings->reset("fft");
 
   settings->reset("std");

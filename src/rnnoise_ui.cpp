@@ -327,6 +327,8 @@ void RNNoiseUi::set_active_model_label() {
 }
 
 void RNNoiseUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

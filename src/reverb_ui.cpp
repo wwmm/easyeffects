@@ -141,6 +141,8 @@ auto ReverbUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -
 }
 
 void ReverbUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

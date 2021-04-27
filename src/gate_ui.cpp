@@ -144,6 +144,12 @@ auto GateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> 
 }
 
 void GateUi::reset() {
+  bypass->set_active(false);
+
+  settings->reset("input-gain");
+
+  settings->reset("output-gain");
+
   settings->reset("detection");
 
   settings->reset("stereo-link");
@@ -159,8 +165,6 @@ void GateUi::reset() {
   settings->reset("ratio");
 
   settings->reset("knee");
-
-  settings->reset("input");
 
   settings->reset("makeup");
 }

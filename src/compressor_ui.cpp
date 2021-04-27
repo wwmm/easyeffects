@@ -308,6 +308,8 @@ auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_pat
 }
 
 void CompressorUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");

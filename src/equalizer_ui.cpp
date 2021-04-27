@@ -546,11 +546,15 @@ void EqualizerUi::on_calculate_frequencies() {
 }
 
 void EqualizerUi::reset() {
+  bypass->set_active(false);
+
+  settings->reset("input-gain");
+
+  settings->reset("output-gain");
+
   settings->reset("mode");
   settings->reset("num-bands");
   settings->reset("split-channels");
-  settings->reset("input-gain");
-  settings->reset("output-gain");
 
   for (int n = 0; n < max_bands; n++) {
     // left channel

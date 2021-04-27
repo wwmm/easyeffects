@@ -250,6 +250,8 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 }
 
 void MultibandCompressorUi::reset() {
+  bypass->set_active(false);
+
   settings->reset("input-gain");
 
   settings->reset("output-gain");
