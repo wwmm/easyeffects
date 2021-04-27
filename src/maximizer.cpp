@@ -29,14 +29,6 @@ Maximizer::Maximizer(const std::string& tag,
     return;
   }
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_double(settings, "threshold", "thresh");
 
   lv2_wrapper->bind_key_double(settings, "ceiling", "ceil");

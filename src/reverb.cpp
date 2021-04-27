@@ -29,6 +29,9 @@ Reverb::Reverb(const std::string& tag,
     return;
   }
 
+  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
+  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
+
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });

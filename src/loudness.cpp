@@ -29,6 +29,9 @@ Loudness::Loudness(const std::string& tag,
     return;
   }
 
+  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
+  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
+
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
@@ -36,6 +39,11 @@ Loudness::Loudness(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  lv2_wrapper->bind_key_enum(settings, "std", "std");
+  lv2_wrapper->bind_key_enum(settings, "fft", "fft");
+
+  lv2_wrapper->bind_key_double(settings, "volume", "volume");
 
   initialize_listener();
 }
@@ -99,14 +107,3 @@ void Loudness::process(std::span<float>& left_in,
     }
   }
 }
-
-// g_settings_bind_with_mapping(settings, "input", loudness, "input", G_SETTINGS_BIND_DEFAULT,
-// util::db20_gain_to_linear,
-//                              util::linear_gain_to_db20, nullptr, nullptr);
-
-// g_settings_bind_with_mapping(settings, "volume", loudness, "volume", G_SETTINGS_BIND_GET, util::double_to_float,
-//                              nullptr, nullptr, nullptr);
-
-// g_settings_bind(settings, "fft", loudness, "fft", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "std", loudness, "std", G_SETTINGS_BIND_DEFAULT);

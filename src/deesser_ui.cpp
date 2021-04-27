@@ -113,6 +113,8 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("sc-listen", sc_listen, "active");
   settings->bind("makeup", makeup->get_adjustment().get(), "value");
   settings->bind("ratio", ratio->get_adjustment().get(), "value");

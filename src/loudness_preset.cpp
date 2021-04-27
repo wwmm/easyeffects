@@ -20,8 +20,8 @@
 #include "loudness_preset.hpp"
 
 LoudnessPreset::LoudnessPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.maximizer",
-                                           "/com/github/wwmm/pulseeffects/sourceoutputs/maximizer/")),
+    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.loudness",
+                                           "/com/github/wwmm/pulseeffects/sourceoutputs/loudness/")),
       output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.loudness",
                                             "/com/github/wwmm/pulseeffects/sinkinputs/loudness/")) {}
 

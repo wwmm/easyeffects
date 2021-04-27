@@ -32,6 +32,9 @@ Delay::Delay(const std::string& tag,
   lv2_wrapper->set_control_port_value("mode_l", 2);
   lv2_wrapper->set_control_port_value("mode_r", 2);
 
+  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
+  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
+
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
