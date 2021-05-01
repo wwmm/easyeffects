@@ -42,6 +42,8 @@ class Pitch : public PluginBase {
  private:
   std::vector<float> data;
 
+  bool formant_preserving = true;
+
   double time_ratio = 0.0;
   double pitch_scale = 0.0;
 

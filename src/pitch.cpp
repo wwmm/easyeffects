@@ -144,6 +144,9 @@ void Pitch::init_strecher() {
 
   strecher = new RubberBand::RubberBandStretcher(rate, 2, options);
 
+  strecher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
+                                                : RubberBand::RubberBandStretcher::OptionFormantShifted);
+
   strecher->setTimeRatio(time_ratio);
   strecher->setPitchScale(pitch_scale);
 }
