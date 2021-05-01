@@ -45,7 +45,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   StreamOutputEffects* soe = nullptr;
 
   // PitchUi* pitch_ui = nullptr;
-  // LoudnessUi* loudness_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

@@ -71,20 +71,93 @@ Pitch::Pitch(const std::string& tag,
 
 Pitch::~Pitch() {
   util::debug(log_tag + name + " destroyed");
+
+  pw_thread_loop_lock(pm->thread_loop);
+
+  pw_filter_set_active(filter, false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void Pitch::bind_to_gsettings() {
-  // g_settings_bind_with_mapping(settings, "cents", pitch, "cents", G_SETTINGS_BIND_GET, util::double_to_float,
-  // nullptr,
-  //                              nullptr, nullptr);
+void Pitch::setup() {
+  std::scoped_lock<std::mutex> lock(data_mutex);
 
-  // g_settings_bind(settings, "semitones", pitch, "semitones", G_SETTINGS_BIND_DEFAULT);
+  data.resize(2 * n_samples);
 
-  // g_settings_bind(settings, "octaves", pitch, "octaves", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(settings, "crispness", pitch, "crispness", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(settings, "formant-preserving", pitch, "formant-preserving", G_SETTINGS_BIND_DEFAULT);
-
-  // g_settings_bind(settings, "faster", pitch, "faster", G_SETTINGS_BIND_DEFAULT);
+  init_strecher();
 }
+
+void Pitch::process(std::span<float>& left_in,
+                    std::span<float>& right_in,
+                    std::span<float>& left_out,
+                    std::span<float>& right_out) {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
+  if (bypass) {
+    std::copy(left_in.begin(), left_in.end(), left_out.begin());
+    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+    return;
+  }
+
+  apply_gain(left_in, right_in, input_gain);
+
+  for (size_t n = 0; n < left_in.size(); n++) {
+    data[n * 2] = left_in[n];
+    data[n * 2 + 1] = right_in[n];
+  }
+
+  // bs2b.cross_feed(data.data(), n_samples);
+
+  for (size_t n = 0; n < left_out.size(); n++) {
+    left_out[n] = data[n * 2];
+    right_out[n] = data[n * 2 + 1];
+  }
+
+  apply_gain(left_out, right_out, output_gain);
+
+  if (post_messages) {
+    get_peaks(left_in, right_in, left_out, right_out);
+
+    notification_dt += sample_duration;
+
+    if (notification_dt >= notification_time_window) {
+      notify();
+
+      notification_dt = 0.0F;
+    }
+  }
+}
+
+void Pitch::init_strecher() {
+  delete strecher;
+
+  RubberBand::RubberBandStretcher::Options options =
+      RubberBand::RubberBandStretcher::OptionProcessRealTime | RubberBand::RubberBandStretcher::OptionPitchHighQuality |
+      RubberBand::RubberBandStretcher::OptionChannelsTogether | RubberBand::RubberBandStretcher::OptionPhaseIndependent;
+
+  strecher = new RubberBand::RubberBandStretcher(rate, 2, options);
+
+  strecher->setTimeRatio(time_ratio);
+  strecher->setPitchScale(pitch_scale);
+}
+
+// g_settings_bind_with_mapping(settings, "cents", pitch, "cents", G_SETTINGS_BIND_GET, util::double_to_float,
+// nullptr,
+//                              nullptr, nullptr);
+
+// g_settings_bind(settings, "semitones", pitch, "semitones", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "octaves", pitch, "octaves", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "crispness", pitch, "crispness", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "formant-preserving", pitch, "formant-preserving", G_SETTINGS_BIND_DEFAULT);
+
+// g_settings_bind(settings, "faster", pitch, "faster", G_SETTINGS_BIND_DEFAULT);

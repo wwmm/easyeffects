@@ -20,6 +20,7 @@
 #ifndef PITCH_HPP
 #define PITCH_HPP
 
+#include <rubberband/RubberBandStretcher.h>
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {
@@ -31,8 +32,22 @@ class Pitch : public PluginBase {
   auto operator=(const Pitch&&) -> Pitch& = delete;
   ~Pitch() override;
 
+  void setup() override;
+
+  void process(std::span<float>& left_in,
+               std::span<float>& right_in,
+               std::span<float>& left_out,
+               std::span<float>& right_out) override;
+
  private:
-  void bind_to_gsettings();
+  std::vector<float> data;
+
+  double time_ratio = 0.0;
+  double pitch_scale = 0.0;
+
+  RubberBand::RubberBandStretcher* strecher = nullptr;
+
+  void init_strecher();
 };
 
 #endif
