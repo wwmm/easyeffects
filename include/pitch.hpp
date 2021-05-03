@@ -39,17 +39,31 @@ class Pitch : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
- private:
-  std::vector<float> data;
+  sigc::signal<void(double)> new_latency;
 
+ private:
   bool formant_preserving = true;
+  bool notify_latency = false;
+
+  int crispness = 0;
+
+  uint latency_n_frames = 0;
+
+  float latency = 0.0F;
 
   double time_ratio = 0.0;
   double pitch_scale = 0.0;
 
-  RubberBand::RubberBandStretcher* strecher = nullptr;
+  std::array<float*, 2> stretcher_in = {nullptr, nullptr};
+  std::array<float*, 2> stretcher_out = {nullptr, nullptr};
 
-  void init_strecher();
+  std::deque<float> deque_out_L, deque_out_R;
+
+  RubberBand::RubberBandStretcher* stretcher = nullptr;
+
+  void update_crispness();
+
+  void init_stretcher();
 };
 
 #endif

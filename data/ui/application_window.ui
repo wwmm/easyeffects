@@ -4,6 +4,8 @@
     <!-- main window widget -->
 
     <object class="GtkApplicationWindow" id="ApplicationUi">
+        <property name="icon-name">pulseeffects</property>
+
         <child type="titlebar">
 
             <!-- headerbar -->

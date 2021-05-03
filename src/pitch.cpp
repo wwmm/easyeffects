@@ -88,9 +88,7 @@ Pitch::~Pitch() {
 void Pitch::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  data.resize(2 * n_samples);
-
-  init_strecher();
+  init_stretcher();
 }
 
 void Pitch::process(std::span<float>& left_in,
@@ -108,16 +106,55 @@ void Pitch::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  for (size_t n = 0; n < left_in.size(); n++) {
-    data[n * 2] = left_in[n];
-    data[n * 2 + 1] = right_in[n];
+  stretcher_in[0] = left_in.data();
+  stretcher_in[1] = right_in.data();
+
+  stretcher->process(stretcher_in.data(), n_samples, false);
+
+  int n_available = stretcher->available();
+
+  if (n_available > 0) {
+    stretcher->retrieve(stretcher_out.data(), n_available);
+
+    for (int n = 0; n < n_available; n++) {
+      deque_out_L.emplace_back(stretcher_out[0][n]);
+      deque_out_R.emplace_back(stretcher_out[1][n]);
+    }
   }
 
-  // bs2b.cross_feed(data.data(), n_samples);
+  if (deque_out_L.size() >= left_out.size()) {
+    for (float& v : left_out) {
+      v = deque_out_L.front();
 
-  for (size_t n = 0; n < left_out.size(); n++) {
-    left_out[n] = data[n * 2];
-    right_out[n] = data[n * 2 + 1];
+      deque_out_L.pop_front();
+    }
+
+    for (float& v : right_out) {
+      v = deque_out_R.front();
+
+      deque_out_R.pop_front();
+    }
+  } else {
+    uint offset = 2 * (left_out.size() - deque_out_L.size());
+
+    if (offset != latency_n_frames) {
+      latency_n_frames = offset;
+
+      notify_latency = true;
+    }
+
+    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      if (n < offset) {
+        left_out[n] = 0.0F;
+        right_out[n] = 0.0F;
+      } else {
+        left_out[n] = deque_out_L.front();
+        right_out[n] = deque_out_R.front();
+
+        deque_out_R.pop_front();
+        deque_out_L.pop_front();
+      }
+    }
   }
 
   apply_gain(left_out, right_out, output_gain);
@@ -132,23 +169,85 @@ void Pitch::process(std::span<float>& left_in,
 
       notification_dt = 0.0F;
     }
+
+    if (notify_latency) {
+      latency = static_cast<float>(latency_n_frames) / rate;
+
+      util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
+
+      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
+      notify_latency = false;
+    }
   }
 }
 
-void Pitch::init_strecher() {
-  delete strecher;
+void Pitch::update_crispness() {
+  switch (crispness) {
+    case 0:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsSmooth);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseIndependent);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+    case 1:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsCrisp);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseIndependent);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorSoft);
+
+      break;
+    case 2:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsSmooth);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseIndependent);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+    case 3:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsSmooth);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseLaminar);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+    case 4:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsMixed);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseLaminar);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+    case 5:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsCrisp);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseLaminar);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+    case 6:
+      stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsCrisp);
+      stretcher->setPhaseOption(RubberBand::RubberBandStretcher::OptionPhaseIndependent);
+      stretcher->setDetectorOption(RubberBand::RubberBandStretcher::OptionDetectorCompound);
+
+      break;
+  }
+}
+
+void Pitch::init_stretcher() {
+  delete stretcher;
 
   RubberBand::RubberBandStretcher::Options options =
       RubberBand::RubberBandStretcher::OptionProcessRealTime | RubberBand::RubberBandStretcher::OptionPitchHighQuality |
       RubberBand::RubberBandStretcher::OptionChannelsTogether | RubberBand::RubberBandStretcher::OptionPhaseIndependent;
 
-  strecher = new RubberBand::RubberBandStretcher(rate, 2, options);
+  stretcher = new RubberBand::RubberBandStretcher(rate, 2, options);
 
-  strecher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
-                                                : RubberBand::RubberBandStretcher::OptionFormantShifted);
+  stretcher->setMaxProcessSize(n_samples);
 
-  strecher->setTimeRatio(time_ratio);
-  strecher->setPitchScale(pitch_scale);
+  stretcher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
+                                                 : RubberBand::RubberBandStretcher::OptionFormantShifted);
+
+  stretcher->setTimeRatio(time_ratio);
+
+  stretcher->setPitchScale(pitch_scale);
+
+  update_crispness();
 }
 
 // g_settings_bind_with_mapping(settings, "cents", pitch, "cents", G_SETTINGS_BIND_GET, util::double_to_float,
