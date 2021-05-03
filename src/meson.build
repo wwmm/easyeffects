@@ -63,7 +63,7 @@ pulseeffects_sources = [
 	'pipe_manager.cpp',
 	'pitch.cpp',
 	'pitch_preset.cpp',
-	# 'pitch_ui.cpp',
+	'pitch_ui.cpp',
 	'plot.cpp',
 	'plugin_base.cpp',
 	'plugin_ui_base.cpp',

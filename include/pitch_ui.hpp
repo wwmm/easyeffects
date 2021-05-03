@@ -34,12 +34,16 @@ class PitchUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const PitchUi&&) -> PitchUi& = delete;
   ~PitchUi() override;
 
+  static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> PitchUi*;
+
   void reset() override;
 
  private:
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
+
   Gtk::ToggleButton *faster = nullptr, *formant_preserving = nullptr;
 
-  Glib::RefPtr<Gtk::Adjustment> cents, crispness, semitones, octaves, input_gain, output_gain;
+  Gtk::SpinButton *cents = nullptr, *crispness = nullptr, *semitones = nullptr, *octaves = nullptr;
 };
 
 #endif

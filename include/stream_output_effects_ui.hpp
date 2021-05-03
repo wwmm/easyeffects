@@ -22,7 +22,6 @@
 
 #include "effects_base_ui.hpp"
 #include "stream_output_effects.hpp"
-// #include "pitch_ui.hpp"
 
 class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
@@ -43,8 +42,6 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
  private:
   StreamOutputEffects* soe = nullptr;
-
-  // PitchUi* pitch_ui = nullptr;
 
   void level_meters_connections();
   void up_down_connections();

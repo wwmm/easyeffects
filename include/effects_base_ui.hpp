@@ -46,6 +46,7 @@
 #include "multiband_compressor_ui.hpp"
 #include "multiband_gate_ui.hpp"
 #include "pipe_manager.hpp"
+#include "pitch_ui.hpp"
 #include "preset_type.hpp"
 #include "reverb_ui.hpp"
 #include "rnnoise_ui.hpp"

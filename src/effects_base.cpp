@@ -53,6 +53,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   output_level =
       std::make_unique<OutputLevel>(log_tag, "com.github.wwmm.pulseeffects.outputlevel", path + "outputlevel/", pm);
 
+  pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch", path + "pitch/", pm);
+
   reverb = std::make_shared<Reverb>(log_tag, "com.github.wwmm.pulseeffects.reverb", path + "reverb/", pm);
 
   rnnoise = std::make_shared<RNNoise>(log_tag, "com.github.wwmm.pulseeffects.rnnoise", path + "rnnoise/", pm);
@@ -62,8 +64,6 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.pulseeffects.stereotools", path + "stereotools/", pm);
-
-  //   pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.pulseeffects.pitch", path + "pitch/", pm);
 
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
@@ -82,10 +82,10 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(maximizer->name, maximizer));
   plugins.insert(std::make_pair(multiband_compressor->name, multiband_compressor));
   plugins.insert(std::make_pair(multiband_gate->name, multiband_gate));
+  plugins.insert(std::make_pair(pitch->name, pitch));
   plugins.insert(std::make_pair(reverb->name, reverb));
   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
-  //   plugins.insert(std::make_pair(pitch->name, pitch));
 }
 
 EffectsBase::~EffectsBase() {
