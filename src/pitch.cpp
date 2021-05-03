@@ -34,6 +34,8 @@ Pitch::Pitch(const std::string& tag,
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
+
+  initialize_listener();
 }
 
 Pitch::~Pitch() {
