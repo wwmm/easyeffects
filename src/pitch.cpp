@@ -93,6 +93,8 @@ void Pitch::process(std::span<float>& left_in,
   int n_available = stretcher->available();
 
   if (n_available > 0) {
+    // util::debug(log_tag + name + " available: " + std::to_string(n_available));
+
     data_L.resize(n_available);
     data_R.resize(n_available);
 
