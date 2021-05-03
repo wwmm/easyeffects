@@ -188,6 +188,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->multiband_compressor->post_messages = true;
   effects_base->multiband_gate->post_messages = true;
   effects_base->output_level->post_messages = true;
+  effects_base->pitch->post_messages = true;
   effects_base->reverb->post_messages = true;
   effects_base->rnnoise->post_messages = true;
   effects_base->spectrum->post_messages = true;
@@ -221,6 +222,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->multiband_compressor->post_messages = false;
   effects_base->multiband_gate->post_messages = false;
   effects_base->output_level->post_messages = false;
+  effects_base->pitch->post_messages = false;
   effects_base->reverb->post_messages = false;
   effects_base->rnnoise->post_messages = false;
   effects_base->spectrum->post_messages = false;
@@ -246,6 +248,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->multiband_compressor->bypass = false;
   effects_base->multiband_gate->bypass = false;
   effects_base->output_level->bypass = false;
+  effects_base->pitch->bypass = false;
   effects_base->reverb->bypass = false;
   effects_base->rnnoise->bypass = false;
   effects_base->spectrum->bypass = false;
@@ -470,6 +473,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   effects_base->multiband_gate->gating1.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating1));
   effects_base->multiband_gate->gating2.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating2));
   effects_base->multiband_gate->gating3.connect(sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3));
+
+  // pitch
+
+  auto* pitch_ui = PitchUi::add_to_stack(stack_plugins, path);
+
+  pitch_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->pitch->bypass = pitch_ui->bypass->get_active(); });
+
+  effects_base->pitch->input_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_input_level));
+  effects_base->pitch->output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level));
 
   // reverb
 

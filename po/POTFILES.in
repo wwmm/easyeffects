@@ -28,6 +28,7 @@ data/ui/module_info.ui
 data/ui/multiband_compressor.ui
 data/ui/multiband_gate.ui
 data/ui/pipe_info.ui
+data/ui/pitch.ui
 data/ui/preset_row.ui
 data/ui/presets_menu.ui
 data/ui/reverb.ui
@@ -38,7 +39,6 @@ data/ui/stereo_tools.ui
 data/ui/calibration.glade
 data/ui/calibration_signals.glade
 data/ui/calibration_mic.glade
-data/ui/pitch.glade
 data/ui/pipe_settings.glade
 data/ui/webrtc.glade
 include/effects_base_ui.hpp

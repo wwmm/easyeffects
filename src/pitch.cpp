@@ -55,9 +55,19 @@ Pitch::~Pitch() {
 }
 
 void Pitch::setup() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
+  rubberband_ready = false;
 
-  init_stretcher();
+  /*
+   RubberBand initialization is slow. It is better to do it outside of the plugin realtime thread
+ */
+
+  Glib::signal_idle().connect_once([&, this] {
+    init_stretcher();
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    rubberband_ready = true;
+  });
 }
 
 void Pitch::process(std::span<float>& left_in,
@@ -66,7 +76,7 @@ void Pitch::process(std::span<float>& left_in,
                     std::span<float>& right_out) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass) {
+  if (bypass || !rubberband_ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -83,11 +93,17 @@ void Pitch::process(std::span<float>& left_in,
   int n_available = stretcher->available();
 
   if (n_available > 0) {
+    data_L.resize(n_available);
+    data_R.resize(n_available);
+
+    stretcher_out[0] = data_L.data();
+    stretcher_out[1] = data_R.data();
+
     stretcher->retrieve(stretcher_out.data(), n_available);
 
     for (int n = 0; n < n_available; n++) {
-      deque_out_L.emplace_back(stretcher_out[0][n]);
-      deque_out_R.emplace_back(stretcher_out[1][n]);
+      deque_out_L.emplace_back(data_L[n]);
+      deque_out_R.emplace_back(data_R[n]);
     }
   }
 

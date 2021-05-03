@@ -44,6 +44,7 @@ class Pitch : public PluginBase {
  private:
   bool formant_preserving = true;
   bool notify_latency = false;
+  bool rubberband_ready = false;
 
   int crispness = 0;
 
@@ -51,8 +52,10 @@ class Pitch : public PluginBase {
 
   float latency = 0.0F;
 
-  double time_ratio = 0.0;
-  double pitch_scale = 0.0;
+  double time_ratio = 1.0;
+  double pitch_scale = 1.0;
+
+  std::vector<float> data_L, data_R;
 
   std::array<float*, 2> stretcher_in = {nullptr, nullptr};
   std::array<float*, 2> stretcher_out = {nullptr, nullptr};
