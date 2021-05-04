@@ -30,25 +30,13 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_icon->set_from_icon_name("media-record-symbolic");
   toggle_players_label->set_text(_("Recorders"));
 
-  // populate stack
-
-  //   auto b_pitch = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/pitch.glade");
   //   auto b_webrtc = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/webrtc.glade");
-
-  //   b_pitch->get_widget_derived("widgets_grid", pitch_ui, "com.github.wwmm.pulseeffects.pitch",
-  //                               "/com/github/wwmm/pulseeffects/sourceoutputs/pitch/");
 
   //   b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.pulseeffects.webrtc",
   //                                "/com/github/wwmm/pulseeffects/sourceoutputs/webrtc/");
 
-  //   // add to stack
-
-  //   stack->add(*pitch_ui, pitch_ui->name);
   //   stack->add(*webrtc_ui, webrtc_ui->name);
 
-  //   // populate listbox
-
-  //   add_to_listbox(pitch_ui);
   //   add_to_listbox(webrtc_ui);
 
   level_meters_connections();
@@ -59,6 +47,9 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
       on_app_added(node);
     }
   }
+
+  connections.emplace_back(
+      sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
 
   connections.emplace_back(sie->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
 
@@ -114,16 +105,6 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
 void StreamInputEffectsUi::level_meters_connections() {
   //   // global output level meter connection
 
-  connections.emplace_back(
-      sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
-
-  //   // pitch level meters connections
-
-  //   connections.emplace_back(sie->pitch_input_level.connect(sigc::mem_fun(*pitch_ui,
-  //   &PitchUi::on_new_input_level_db)));
-  //   connections.emplace_back(sie->pitch_output_level.connect(sigc::mem_fun(*pitch_ui,
-  //   &PitchUi::on_new_output_level_db)));
-
   //   // webrtc level meters connections
 
   //   connections.emplace_back(
@@ -133,9 +114,6 @@ void StreamInputEffectsUi::level_meters_connections() {
 }
 
 void StreamInputEffectsUi::up_down_connections() {
-  //   connections.emplace_back(pitch_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(pitch_ui); }));
-  //   connections.emplace_back(pitch_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(pitch_ui); }));
-
   //   connections.emplace_back(webrtc_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(webrtc_ui); }));
   //   connections.emplace_back(webrtc_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(webrtc_ui); }));
 }
