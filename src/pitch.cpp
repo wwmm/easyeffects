@@ -27,12 +27,23 @@ Pitch::Pitch(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
+  formant_preserving = settings->get_boolean("formant-preserving");
+  faster = settings->get_boolean("faster");
+
+  crispness = settings->get_int("crispness");
+
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
   settings->signal_changed("output-gain").connect([=, this](auto key) {
     output_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("crispness").connect([=, this](auto key) {
+    crispness = settings->get_int("crispness");
+
+    update_crispness();
   });
 
   initialize_listener();
@@ -56,6 +67,11 @@ Pitch::~Pitch() {
 
 void Pitch::setup() {
   rubberband_ready = false;
+
+  latency_n_frames = 0;
+
+  deque_out_L.resize(0);
+  deque_out_R.resize(0);
 
   /*
    RubberBand initialization is slow. It is better to do it outside of the plugin realtime thread
@@ -122,7 +138,7 @@ void Pitch::process(std::span<float>& left_in,
       deque_out_R.pop_front();
     }
   } else {
-    uint offset = 2 * (left_out.size() - deque_out_L.size());
+    uint offset = left_out.size() - deque_out_L.size();
 
     if (offset != latency_n_frames) {
       latency_n_frames = offset;

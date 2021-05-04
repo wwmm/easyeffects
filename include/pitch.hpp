@@ -42,11 +42,12 @@ class Pitch : public PluginBase {
   sigc::signal<void(double)> new_latency;
 
  private:
-  bool formant_preserving = true;
-  bool notify_latency = false;
   bool rubberband_ready = false;
+  bool notify_latency = false;
+  bool formant_preserving = false;
+  bool faster = false;
 
-  int crispness = 0;
+  int crispness = 3;
 
   uint latency_n_frames = 0;
 

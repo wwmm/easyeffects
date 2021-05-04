@@ -96,6 +96,8 @@ void RNNoise::setup() {
 
   resampler_ready = false;
 
+  latency_n_frames = 0;
+
   resample = rate != rnnoise_rate;
 
   data_L.resize(0);
