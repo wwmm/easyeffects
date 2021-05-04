@@ -67,24 +67,18 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   toggle_output->signal_toggled().connect([&, this]() {
     if (toggle_output->get_active()) {
       stack->get_pages()->select_item(0, true);
-    } else {
-      toggle_output->set_active(stack_model->is_selected(0));
     }
   });
 
   toggle_input->signal_toggled().connect([&, this]() {
     if (toggle_input->get_active()) {
       stack->get_pages()->select_item(1, true);
-    } else {
-      toggle_input->set_active(stack_model->is_selected(1));
     }
   });
 
   toggle_pipe_info->signal_toggled().connect([&, this]() {
     if (toggle_pipe_info->get_active()) {
       stack->get_pages()->select_item(2, true);
-    } else {
-      toggle_pipe_info->set_active(stack_model->is_selected(2));
     }
   });
 

@@ -52,6 +52,7 @@
                         <child>
                             <object class="GtkToggleButton" id="toggle_input">
                                 <property name="accessible-role">tab</property>
+                                <property name="group">toggle_output</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -79,6 +80,7 @@
                         <child>
                             <object class="GtkToggleButton" id="toggle_pipe_info">
                                 <property name="accessible-role">tab</property>
+                                <property name="group">toggle_output</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>

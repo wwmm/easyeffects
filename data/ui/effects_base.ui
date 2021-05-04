@@ -153,6 +153,7 @@
                         <child>
                             <object class="GtkToggleButton" id="toggle_plugins">
                                 <property name="accessible-role">tab</property>
+                                <property name="group">toggle_players</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>

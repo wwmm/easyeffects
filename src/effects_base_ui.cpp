@@ -105,16 +105,12 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   toggle_players->signal_toggled().connect([&, this]() {
     if (toggle_players->get_active()) {
       stack_top->get_pages()->select_item(0, true);
-    } else {
-      toggle_players->set_active(stack_top_model->is_selected(0));
     }
   });
 
   toggle_plugins->signal_toggled().connect([&, this]() {
     if (toggle_plugins->get_active()) {
       stack_top->get_pages()->select_item(1, true);
-    } else {
-      toggle_plugins->set_active(stack_top_model->is_selected(1));
     }
   });
 
