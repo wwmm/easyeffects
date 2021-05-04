@@ -9,7 +9,7 @@
             <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
-        <key name="cents" type="d">
+        <key name="cents" type="i">
             <range min="-100" max="100" />
             <default>0</default>
         </key>

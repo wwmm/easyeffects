@@ -48,13 +48,15 @@ class Pitch : public PluginBase {
   bool faster = false;
 
   int crispness = 3;
+  int cents = 0;
+  int semitones = 0;
+  int octaves = 0;
 
   uint latency_n_frames = 0;
 
   float latency = 0.0F;
 
   double time_ratio = 1.0;
-  double pitch_scale = 1.0;
 
   std::vector<float> data_L, data_R;
 
@@ -66,6 +68,8 @@ class Pitch : public PluginBase {
   RubberBand::RubberBandStretcher* stretcher = nullptr;
 
   void update_crispness();
+
+  void update_pitch_scale();
 
   void init_stretcher();
 };

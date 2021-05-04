@@ -31,6 +31,9 @@ Pitch::Pitch(const std::string& tag,
   faster = settings->get_boolean("faster");
 
   crispness = settings->get_int("crispness");
+  octaves = settings->get_int("octaves");
+  semitones = settings->get_int("semitones");
+  cents = settings->get_int("cents");
 
   settings->signal_changed("input-gain").connect([=, this](auto key) {
     input_gain = util::db_to_linear(settings->get_double(key));
@@ -43,7 +46,51 @@ Pitch::Pitch(const std::string& tag,
   settings->signal_changed("crispness").connect([=, this](auto key) {
     crispness = settings->get_int("crispness");
 
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
     update_crispness();
+  });
+
+  settings->signal_changed("formant-preserving").connect([=, this](auto key) {
+    formant_preserving = settings->get_boolean(key);
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    stretcher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
+                                                   : RubberBand::RubberBandStretcher::OptionFormantShifted);
+  });
+
+  settings->signal_changed("faster").connect([=, this](auto key) {
+    faster = settings->get_boolean(key);
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    stretcher->setPitchOption(faster ? RubberBand::RubberBandStretcher::OptionPitchHighSpeed
+                                     : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
+  });
+
+  settings->signal_changed("octaves").connect([=, this](auto key) {
+    octaves = settings->get_int(key);
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    update_pitch_scale();
+  });
+
+  settings->signal_changed("semitones").connect([=, this](auto key) {
+    semitones = settings->get_int(key);
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    update_pitch_scale();
+  });
+
+  settings->signal_changed("cents").connect([=, this](auto key) {
+    cents = settings->get_int(key);
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    update_pitch_scale();
   });
 
   initialize_listener();
@@ -232,6 +279,20 @@ void Pitch::update_crispness() {
   }
 }
 
+/*
+  Code based on the RubberBand LADSPA plugin
+
+  https://github.com/breakfastquay/rubberband/blob/cc937ebe655fc3c902ad0bc5cb63ce4e782720ee/ladspa/RubberBandPitchShifter.cpp#L377
+*/
+
+void Pitch::update_pitch_scale() {
+  double n_octaves = octaves + static_cast<double>(semitones) / 12.0 + static_cast<double>(cents) / 1200.0;
+
+  double ratio = std::pow(2, n_octaves);
+
+  stretcher->setPitchScale(ratio);
+}
+
 void Pitch::init_stretcher() {
   delete stretcher;
 
@@ -246,23 +307,11 @@ void Pitch::init_stretcher() {
   stretcher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
                                                  : RubberBand::RubberBandStretcher::OptionFormantShifted);
 
+  stretcher->setPitchOption(faster ? RubberBand::RubberBandStretcher::OptionPitchHighSpeed
+                                   : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
+
   stretcher->setTimeRatio(time_ratio);
 
-  stretcher->setPitchScale(pitch_scale);
-
   update_crispness();
+  update_pitch_scale();
 }
-
-// g_settings_bind_with_mapping(settings, "cents", pitch, "cents", G_SETTINGS_BIND_GET, util::double_to_float,
-// nullptr,
-//                              nullptr, nullptr);
-
-// g_settings_bind(settings, "semitones", pitch, "semitones", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "octaves", pitch, "octaves", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "crispness", pitch, "crispness", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "formant-preserving", pitch, "formant-preserving", G_SETTINGS_BIND_DEFAULT);
-
-// g_settings_bind(settings, "faster", pitch, "faster", G_SETTINGS_BIND_DEFAULT);

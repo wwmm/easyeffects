@@ -32,7 +32,7 @@ void PitchPreset::save(boost::property_tree::ptree& root,
 
   root.put(section + ".pitch.output-gain", settings->get_double("output-gain"));
 
-  root.put(section + ".pitch.cents", settings->get_double("cents"));
+  root.put(section + ".pitch.cents", settings->get_int("cents"));
 
   root.put(section + ".pitch.semitones", settings->get_int("semitones"));
 
@@ -52,7 +52,7 @@ void PitchPreset::load(const boost::property_tree::ptree& root,
 
   update_key<double>(root, settings, "output-gain", section + ".pitch.output-gain");
 
-  update_key<double>(root, settings, "cents", section + ".pitch.cents");
+  update_key<int>(root, settings, "cents", section + ".pitch.cents");
 
   update_key<int>(root, settings, "semitones", section + ".pitch.semitones");
 
