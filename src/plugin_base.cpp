@@ -52,7 +52,15 @@ void on_process(void* userdata, spa_io_position* position) {
   std::span right_in{in_right, in_right + n_samples};
   std::span right_out{out_right, out_right + n_samples};
 
-  d->pb->process(left_in, right_in, left_out, right_out);
+  if (!d->pb->enable_probe) {
+    d->pb->process(left_in, right_in, left_out, right_out);
+  } else {
+    auto* probe_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_left, n_samples));
+    auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
+
+    std::span l{probe_left, probe_left + n_samples};
+    std::span r{probe_right, probe_right + n_samples};
+  }
 }
 
 const struct pw_filter_events filter_events = {.process = on_process};
@@ -63,9 +71,11 @@ PluginBase::PluginBase(std::string tag,
                        std::string plugin_name,
                        const std::string& schema,
                        const std::string& schema_path,
-                       PipeManager* pipe_manager)
+                       PipeManager* pipe_manager,
+                       const bool& enable_probe)
     : log_tag(std::move(tag)),
       name(std::move(plugin_name)),
+      enable_probe(enable_probe),
       settings(Gio::Settings::create(schema.c_str(), schema_path.c_str())),
       pm(pipe_manager) {
   pf_data.pb = this;
@@ -129,6 +139,30 @@ PluginBase::PluginBase(std::string tag,
   pf_data.out_right = static_cast<port*>(pw_filter_add_port(
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
+  if (enable_probe) {
+    // probe left input
+
+    auto* props_left = pw_properties_new(nullptr, nullptr);
+
+    pw_properties_set(props_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+    pw_properties_set(props_left, PW_KEY_PORT_NAME, "probe_fl");
+    pw_properties_set(props_left, "audio.channel", "PROBE_FL");
+
+    pf_data.probe_left = static_cast<port*>(pw_filter_add_port(
+        filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_left, nullptr, 0));
+
+    // probe right input
+
+    auto* props_right = pw_properties_new(nullptr, nullptr);
+
+    pw_properties_set(props_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+    pw_properties_set(props_right, PW_KEY_PORT_NAME, "probe_fr");
+    pw_properties_set(props_right, "audio.channel", "PROBE_FR");
+
+    pf_data.probe_right = static_cast<port*>(pw_filter_add_port(
+        filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_right, nullptr, 0));
+  }
+
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
     util::error(log_tag + name + " can not connect the filter to pipewire!");
   }
@@ -168,6 +202,13 @@ void PluginBase::process(std::span<float>& left_in,
                          std::span<float>& right_in,
                          std::span<float>& left_out,
                          std::span<float>& right_out) {}
+
+void PluginBase::process(std::span<float>& left_in,
+                         std::span<float>& right_in,
+                         std::span<float>& left_out,
+                         std::span<float>& right_out,
+                         std::span<float>& probe_left,
+                         std::span<float>& probe_right) {}
 
 void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,

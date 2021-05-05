@@ -34,7 +34,8 @@ class PluginBase {
              std::string plugin_name,
              const std::string& schema,
              const std::string& schema_path,
-             PipeManager* pipe_manager);
+             PipeManager* pipe_manager,
+             const bool& enable_probe = false);
   PluginBase(const PluginBase&) = delete;
   auto operator=(const PluginBase&) -> PluginBase& = delete;
   PluginBase(const PluginBase&&) = delete;
@@ -48,7 +49,14 @@ class PluginBase {
   };
 
   struct data {
-    struct port *in_left = nullptr, *in_right = nullptr, *out_left = nullptr, *out_right = nullptr;
+    struct port* in_left = nullptr;
+    struct port* in_right = nullptr;
+
+    struct port* out_left = nullptr;
+    struct port* out_right = nullptr;
+
+    struct port* probe_left = nullptr;
+    struct port* probe_right = nullptr;
 
     PluginBase* pb = nullptr;
   };
@@ -56,6 +64,8 @@ class PluginBase {
   std::string log_tag, name;
 
   pw_filter* filter = nullptr;
+
+  bool enable_probe = false;
 
   uint n_samples = 0;
 
@@ -77,6 +87,13 @@ class PluginBase {
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out);
+
+  virtual void process(std::span<float>& left_in,
+                       std::span<float>& right_in,
+                       std::span<float>& left_out,
+                       std::span<float>& right_out,
+                       std::span<float>& probe_left,
+                       std::span<float>& probe_right);
 
   sigc::signal<void(float, float)> input_level;
   sigc::signal<void(float, float)> output_level;
