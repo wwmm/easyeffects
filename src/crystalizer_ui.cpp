@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "crystalizer_ui.hpp"
@@ -46,10 +46,10 @@ CrystalizerUi::~CrystalizerUi() {
 }
 
 auto CrystalizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<CrystalizerUi>(
-      builder, "top_box", "com.github.wwmm.pulseeffects.crystalizer", schema_path + "crystalizer/");
+      builder, "top_box", "com.github.wwmm.easyeffects.crystalizer", schema_path + "crystalizer/");
 
   auto stack_page = stack->add(*ui, plugin_name::crystalizer);
 
@@ -74,7 +74,7 @@ void CrystalizerUi::reset() {
 
 void CrystalizerUi::build_bands(const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/crystalizer_band.ui");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer_band.ui");
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 

@@ -7,7 +7,7 @@ jobs:
     environment:
       LANG: C
       DISPLAY: :10
-      G_MESSAGES_DEBUG: pulseeffects
+      G_MESSAGES_DEBUG: easyeffects
     steps:
       - run: date +%F > /tmp/date
       - run: |
@@ -60,7 +60,7 @@ jobs:
             - ccache-{{ checksum "/tmp/date" }}
       - checkout
       - run:
-          name: Compile and install PulseEffects
+          name: Compile and install EasyEffects
           command: |
             meson build && cd build && ninja -j 8 && ninja -j 8 install
       - save_cache:
@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Starting PE in background
           command: |
-            pulseeffects
+            easyeffects
           background: true
       # - run:
       #     name: Testing play/pause
@@ -101,23 +101,23 @@ jobs:
       #     name:         Testing presets
       #     command:      |
       #           sleep 5
-      #           cp -v .circleci/presets/soe_preset_disable_all.json /root/.config/PulseEffects/input
-      #           cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/PulseEffects/input
-      #           cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/PulseEffects/output
-      #           cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/PulseEffects/output
-      #           pulseeffects -l soe_preset_disable_all || true
+      #           cp -v .circleci/presets/soe_preset_disable_all.json /root/.config/easyeffects/input
+      #           cp -v .circleci/presets/soe_preset_enable_all.json /root/.config/easyeffects/input
+      #           cp -v .circleci/presets/sie_preset_disable_all.json /root/.config/easyeffects/output
+      #           cp -v .circleci/presets/sie_preset_enable_all.json /root/.config/easyeffects/output
+      #           easyeffects -l soe_preset_disable_all || true
       #           sleep 1
-      #           pulseeffects -l soe_preset_enable_all || true
+      #           easyeffects -l soe_preset_enable_all || true
       #           sleep 1
-      #           pulseeffects -l sie_preset_disable_all || true
+      #           easyeffects -l sie_preset_disable_all || true
       #           sleep 1
-      #           pulseeffects -l sie_preset_enalbe_all || true
+      #           easyeffects -l sie_preset_enalbe_all || true
       - run:
           name: Reset Configuration and finish
           command: |
             sleep 5
-            pulseeffects -r || true
-            pulseeffects -q || true
+            easyeffects -r || true
+            easyeffects -q || true
 
 workflows:
   version: 2

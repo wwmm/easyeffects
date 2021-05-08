@@ -11,18 +11,8 @@
     "sampling-freq": "10",
     "line-width": "2",
     "type": "Bars",
-    "color": [
-      "0",
-      "1",
-      "1",
-      "1"
-    ],
-    "gradient-color": [
-      "0",
-      "1",
-      "1",
-      "0.52364864864864868"
-    ]
+    "color": ["0", "1", "1", "1"],
+    "gradient-color": ["0", "1", "1", "0.52364864864864868"]
   },
   "output": {
     "blacklist": "",
@@ -202,7 +192,7 @@
       "output-gain": "0",
       "frequency": "2000",
       "resonance": "-3",
-      "mode": "12dB\/oct Lowpass",
+      "mode": "12dB/oct Lowpass",
       "inertia": "20"
     },
     "gate": {
@@ -399,7 +389,7 @@
       "state": "false",
       "input-gain": "0",
       "output-gain": "0",
-      "kernel-path": "\/home\/wallace\/.config\/PulseEffects\/irs\/Samsung SoundAlive ((48k Z-Edition)) 10.3D+Clarity.irs",
+      "kernel-path": "/home/wallace/.config/easyeffects/irs/Samsung SoundAlive ((48k Z-Edition)) 10.3D+Clarity.irs",
       "ir-width": "100",
       "blocksize": "512"
     },

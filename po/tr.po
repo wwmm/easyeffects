@@ -1,11 +1,11 @@
-# PulseEffects Türkçe Çeviri Dosyası.
+# EasyEffects Türkçe Çeviri Dosyası.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the pulseeffects package.
+# This file is distributed under the same license as the easyeffects package.
 # Serdar Sağlam <teknomobil@yandex.com>, 2019.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pulseeffects\n"
+"Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-10 13:00-0300\n"
 "PO-Revision-Date: 2019-09-13 19:47+0300\n"
@@ -24,10 +24,10 @@ msgid "Test Signals"
 msgstr "Test Sinyalleri"
 
 #: data/ui/application.glade:63
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3
-msgid "PulseEffects"
-msgstr "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
 #: data/ui/application.glade:135 data/ui/general_settings.glade:107
 #: data/ui/equalizer.glade:253
@@ -404,7 +404,7 @@ msgid "Attenuation"
 msgstr "Zayıflatma"
 
 #: data/ui/compressor.glade:30 data/ui/compressor.glade:442
-#: data/ui/webrtc.glade:482 data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/ui/webrtc.glade:482 data/com.github.wwmm.easyeffects.appdata.xml.in:52
 msgid "Compressor"
 msgstr "Sıkıştırıcı"
 
@@ -1402,105 +1402,105 @@ msgstr "Gürültü Ölçümü"
 msgid "Subtract Noise"
 msgstr "Gürültü Çıkar"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "PulseAudio Uygulamaları için Ses Efektleri"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects gelişmiş bir ses işleme aracıdır. Bir ekolayzır, sınırlayıcı, "
+"EasyEffects gelişmiş bir ses işleme aracıdır. Bir ekolayzır, sınırlayıcı, "
 "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
 "bir spektrum analizörü bulunmaktadır."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:16
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"PulseEffects, varsayılan PulseAudio ses sunucusunu kullandığından, "
+"EasyEffects, varsayılan PulseAudio ses sunucusunu kullandığından, "
 "kullandığınız uygulamaların tümü olmasa da çoğu ile çalışacaktır. "
 "Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
 "ana pencerede sunulur."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:22
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Ses çıkışını manipüle etmenin yanı sıra, PulseEffects, mikrofon gibi bir "
+"Ses çıkışını manipüle etmenin yanı sıra, EasyEffects, mikrofon gibi bir "
 "giriş cihazına da efektler uygulayabilir. Bu özellik ses kaydında da "
 "kullanışlıdır ve sesli konuşmalarda da iyi çalışır."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
+"When EasyEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"PulseEffects başlatıldığında, son oturumda kullanılan ayarlamaları "
+"EasyEffects başlatıldığında, son oturumda kullanılan ayarlamaları "
 "rahatlıkla hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek de "
 "mümkündür."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
 msgstr "Sesi ayarla ve efektleri aç/kapat"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
 msgstr "Yerleşik ön ayarlara sahip bir ekolayzır içerir"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr "Giriş Sınırlayıcı"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Kalibrasyon"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
 "sınırlayıcı,kompresör,yankı,ekolayzır,otomatikses;yükseltici;sıkıştırıcı;"
 
 #. Translators: This is an icon name, don't translate!
-#: data/com.github.wwmm.pulseeffects.desktop.in:10
-msgid "pulseeffects"
-msgstr "pulseeffects"
+#: data/com.github.wwmm.easyeffects.desktop.in:10
+msgid "easyeffects"
+msgstr "easyeffects"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:201
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:201
 msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
 #: src/application.cpp:19
-msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "PulseEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr "EasyEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
 #: src/application.cpp:21
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
 #: src/application.cpp:24
-msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "Bir ön ayar yükle. Örnek: pulseeffects -l music"
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
 #: src/application.cpp:26
-msgid "Reset PulseEffects."
-msgstr "PulseEffects’i Sıfırla."
+msgid "Reset EasyEffects."
+msgstr "EasyEffects’i Sıfırla."
 
 #: src/application.cpp:233
 msgid "Output Presets: "

@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "rnnoise_ui.hpp"
@@ -27,7 +27,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
       PluginUiBase(builder, schema, schema_path),
       default_model_name(_("Standard Model")),
       string_list(Gtk::StringList::create({default_model_name})),
-      model_dir(Glib::get_user_config_dir() + "/PulseEffects/rnnoise") {
+      model_dir(Glib::get_user_config_dir() + "/easyeffects/rnnoise") {
   name = plugin_name::rnnoise;
 
   // loading builder widgets
@@ -78,6 +78,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
       case Gio::FileMonitor::Event::CREATED: {
         string_list->append(util::remove_filename_extension(file->get_basename()));
 
+        util::warning(util::remove_filename_extension(file->get_basename()));
+
         break;
       }
       case Gio::FileMonitor::Event::DELETED: {
@@ -114,9 +116,9 @@ RNNoiseUi::~RNNoiseUi() {
 }
 
 auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/rnnoise.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(builder, "top_box", "com.github.wwmm.pulseeffects.rnnoise",
+  auto* ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(builder, "top_box", "com.github.wwmm.easyeffects.rnnoise",
                                                          schema_path + "rnnoise/");
 
   auto stack_page = stack->add(*ui, plugin_name::rnnoise);
@@ -133,10 +135,6 @@ void RNNoiseUi::setup_listview() {
 
   if (names.empty()) {
     settings->set_string("model-path", "");
-
-    model_list_frame->set_visible(false);
-  } else {
-    model_list_frame->set_visible(true);
   }
 
   // sorter
@@ -252,8 +250,6 @@ void RNNoiseUi::on_import_model_clicked() {
       case Gtk::ResponseType::ACCEPT: {
         import_model_file(dialog->get_file()->get_path());
 
-        // populate_model_listbox();
-
         break;
       }
       default:
@@ -280,14 +276,6 @@ void RNNoiseUi::import_model_file(const std::string& file_path) {
     util::warning(log_tag + p.string() + " is not a file!");
   }
 }
-
-//     connections.emplace_back(apply_btn->signal_clicked().connect([=]() {
-//       auto model_file = model_dir / std::filesystem::path{row->get_name() + ".rnnn"};
-
-//       settings->set_string("model-path", model_file.string());
-//     }));
-//   }
-// }
 
 auto RNNoiseUi::get_model_names() -> std::vector<std::string> {
   std::filesystem::directory_iterator it{model_dir};

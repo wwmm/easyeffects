@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.easyeffects.streaminputs" path="/com/github/wwmm/easyeffects/streaminputs/">
+        <key name="plugins" type="as">
+            <default>["gate","multiband_gate","webrtc","limiter","compressor", "multiband_compressor","filter","equalizer","deesser","reverb", "pitch","stereo_tools","maximizer","rnnoise"]</default>
+        </key>
+        <key name="selected-plugins" type="as">
+            <default>[]</default>
+        </key>
+        <key name="use-default-input-device" type="b">
+            <default>true</default>
+        </key>
+        <key name="input-device" type="s">
+            <default>""</default>
+        </key>
+        <key name="latency" type="i">
+            <range min="1" max="10000000" />
+            <default>50</default>
+        </key>
+        <key name="blocklist" type="as">
+            <default>[]</default>
+        </key>
+        <key name="show-blocklisted-apps" type="b">
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>

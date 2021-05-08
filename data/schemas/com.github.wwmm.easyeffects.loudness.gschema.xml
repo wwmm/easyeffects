@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="com.github.wwmm.easyeffects.loudness.fft.enum">
+        <value nick="256" value="0" />
+        <value nick="512" value="1" />
+        <value nick="1024" value="2" />
+        <value nick="2048" value="3" />
+        <value nick="4096" value="4" />
+        <value nick="8192" value="5" />
+        <value nick="16384" value="6" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.loudness.std.enum">
+        <value nick="Flat" value="0" />
+        <value nick="ISO226-2003" value="1" />
+        <value nick="Fletcher-Munson" value="2" />
+        <value nick="Robinson-Dadson" value="3" />
+    </enum>
+    <schema id="com.github.wwmm.easyeffects.loudness">
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="fft" enum="com.github.wwmm.easyeffects.loudness.fft.enum">
+            <default>"4096"</default>
+        </key>
+        <key name="std" enum="com.github.wwmm.easyeffects.loudness.std.enum">
+            <default>"ISO226-2003"</default>
+        </key>
+        <key name="input" type="d">
+            <range min="-60.0" max="72.0" />
+            <default>0.0</default>
+        </key>
+        <key name="volume" type="d">
+            <range min="-83.0" max="7.0" />
+            <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

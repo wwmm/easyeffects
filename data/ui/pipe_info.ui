@@ -1,4 +1,4 @@
-<interface domain="pulseeffects">
+<interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="spacing">6</property>
         <child>

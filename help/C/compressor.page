@@ -1,74 +1,47 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="compressor">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="compressor">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Compressor</title>
-    <p>
-        A compressor is used to reduce the audio signal dynamic range.
-    </p>
-    <p>
-        PulseEffects uses the compressor from Linux Studio Plugins.
-    </p>
+    <p>A compressor is used to reduce the audio signal dynamic range.</p>
+    <p>EasyEffects uses the compressor from Linux Studio Plugins.</p>
     <section>
         <terms>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Attack</em>
                 </title>
-                <p>
-                    Attack determines how many milliseconds (ms) it takes your compressor to apply 
-                    a full dose of compression to your audio signal once it passes the threshold. 
-                    If the signal peaks above the threshold and quickly returns to below the 
-                    threshold, it may never receive a full dose of compression.
-                </p>
+                <p>Attack determines how many milliseconds (ms) it takes your compressor to apply a full dose of compression to your audio signal once it passes the threshold. If the signal peaks above the threshold and quickly returns to below the threshold, it may never receive a full dose of compression.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Release</em>
                 </title>
-                <p>
-                    Release determines how many milliseconds (ms) it takes your compressor to stop
-                    attenuating gain once your audio signal drops below the threshold. A fast 
-                    release will cause your compressor to stop attenuating gain quickly once the 
-                    signal returns below the threshold. A slow release will cause your compressor 
-                    to stop attenuating gain slowly once the signal returns below the threshold.
-                </p>
+                <p>Release determines how many milliseconds (ms) it takes your compressor to stop attenuating gain once your audio signal drops below the threshold. A fast release will cause your compressor to stop attenuating gain quickly once the signal returns below the threshold. A slow release will cause your compressor to stop attenuating gain slowly once the signal returns below the threshold.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Threshold</em>
                 </title>
-                <p>
-                    If a signal surpass this level it will trigger the compression stage.
-                </p>
+                <p>If a signal surpass this level it will trigger the compression stage.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
-                <p>
-                    Set the ratio by which the signal will be reduced.
-                </p>
+                <p>Set the ratio by which the signal will be reduced.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Knee</em>
                 </title>
-                <p>
-                    Controls how smooth is the entrance in the gain reduction phase.
-                </p>
+                <p>Controls how smooth is the entrance in the gain reduction phase.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Makeup</em>
                 </title>
-                <p>
-                    It amplifies your signal after processing.
-                </p>
+                <p>It amplifies your signal after processing.</p>
             </item>
             <item>
                 <title>
@@ -78,12 +51,14 @@
                     <item>
                         <p>
                             <em style="strong">Downward</em>
-                            - Decreases the amplitude of the signal sections that are above the threshold.</p>
+                            - Decreases the amplitude of the signal sections that are above the threshold.
+                        </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Upwards</em>
-                            - Increases the amplitude of the signal sections that are below the threshold.</p>
+                            - Increases the amplitude of the signal sections that are below the threshold.
+                        </p>
                     </item>
                 </list>
             </item>
@@ -96,9 +71,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Listen</em>
                 </title>
-                <p>
-                    Allows to listen the processed sidechain signal.
-                </p>
+                <p>Allows to listen the processed sidechain signal.</p>
             </item>
             <item>
                 <title>
@@ -108,14 +81,14 @@
                     <item>
                         <p>
                             <em style="strong">Feed-forward</em>
-                            - The sidechain input is connected to compressor's input. More aggressive
-                            compression.</p>
+                            - The sidechain input is connected to compressor's input. More aggressive compression.
+                        </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Feed-back</em>
-                            - The sidechain input is connected to compressor's output. Vintage-style more
-                            accurate compression.</p>
+                            - The sidechain input is connected to compressor's output. Vintage-style more accurate compression.
+                        </p>
                     </item>
                 </list>
             </item>
@@ -185,25 +158,19 @@
                 <title>
                     <em style="strong" its:withinText="nested">Pre-amplification</em>
                 </title>
-                <p>
-                    Pre-amplification of the sidechain signal.
-                </p>
+                <p>Pre-amplification of the sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Reactivity</em>
                 </title>
-                <p>
-                    Reactivity of the sidechain signal.
-                </p>
+                <p>Reactivity of the sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Lookahead</em>
                 </title>
-                <p>
-                    Look-ahead time of the sidechain relative to the input signal.
-                </p>
+                <p>Look-ahead time of the sidechain relative to the input signal.</p>
             </item>
         </terms>
     </section>
@@ -214,51 +181,37 @@
                 <title>
                     <em style="strong" its:withinText="nested">Relative Release Threshold</em>
                 </title>
-                <p>
-                    Relative to the Attack Threshold that sets up the threshold of Release Time.
-                </p>
+                <p>Relative to the Attack Threshold that sets up the threshold of Release Time.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Boost Threshold</em>
                 </title>
-                <p>
-                    Related to upward compression mode only. It defines the threshold below which the
-                    constant amplification will be applied to the input signal. This prevents the
-                    compressor from applying infinite amplification to very quiet signals. 
-                </p>
+                <p>Related to upward compression mode only. It defines the threshold below which the constant amplification will be applied to the input signal. This prevents the compressor from applying infinite amplification to very quiet signals.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">High-pass Filter Mode</em>
                 </title>
-                <p>
-                    Sets the type of the high-pass filter applied to sidechain signal. 
-                </p>
+                <p>Sets the type of the high-pass filter applied to sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">High-pass Frequency</em>
                 </title>
-                <p>
-                    Sets the cut-off frequency of the high-pass filter. 
-                </p>
+                <p>Sets the cut-off frequency of the high-pass filter.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Low-pass Filter Mode</em>
                 </title>
-                <p>
-                    Sets the type of the low-pass filter applied to sidechain signal. 
-                </p>
+                <p>Sets the type of the low-pass filter applied to sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Low-pass Frequency</em>
                 </title>
-                <p>
-                    Sets the cut-off frequency of the low-pass filter. 
-                </p>
+                <p>Sets the cut-off frequency of the low-pass filter.</p>
             </item>
         </terms>
     </section>
@@ -267,29 +220,17 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression"
-                        its:translate="no">
-                        https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression
-                    </link>
+                    <link href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression" its:translate="no">https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link
-                        href="https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo"
-                        its:translate="no">
-                        https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo
-                    </link>
+                    <link href="https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo" its:translate="no">https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link
-                        href="https://en.wikipedia.org/wiki/Dynamic_range_compression"
-                        its:translate="no">
-                        https://en.wikipedia.org/wiki/Dynamic_range_compression
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression" its:translate="no">https://en.wikipedia.org/wiki/Dynamic_range_compression</link>
                 </p>
             </item>
         </list>

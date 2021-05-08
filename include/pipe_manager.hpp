@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #ifndef PIPE_MANAGER_HPP
@@ -173,11 +173,11 @@ class PipeManager {
   std::vector<Glib::ustring> blocklist_in;   // for input effects
   std::vector<Glib::ustring> blocklist_out;  // for output effects
 
-  std::array<std::string, 14> blocklist_node_name = {"PulseEffects",
-                                                     "pulseeffects",
-                                                     "pulseeffects_soe",
-                                                     "pulseeffects_sie",
-                                                     "PulseEffectsWebrtcProbe",
+  std::array<std::string, 14> blocklist_node_name = {"EasyEffects",
+                                                     "easyeffects",
+                                                     "easyeffects_soe",
+                                                     "easyeffects_sie",
+                                                     "EasyEffectsWebrtcProbe",
                                                      "pavucontrol",
                                                      "PulseAudio Volume Control",
                                                      "libcanberra",

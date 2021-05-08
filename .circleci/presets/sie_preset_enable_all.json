@@ -408,7 +408,7 @@
             "state": "true",
             "input-gain": "0",
             "output-gain": "0",
-            "kernel-path": "\/home\/wallace\/.config\/PulseEffects\/irs\/Samsung SoundAlive Small Room.irs",
+            "kernel-path": "\/home\/wallace\/.config\/easyeffects/\/irs\/Samsung SoundAlive Small Room.irs",
             "ir-width": "150"
         },
         "crystalizer": {

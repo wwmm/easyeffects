@@ -1,46 +1,28 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="filter">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="filter">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Filter</title>
-    <p>
-        Audio filters can amplify (boost), pass or attenuate (cut) some frequency
-        ranges.
-    </p>
-    <p>
-        PulseEffects uses the filter from Calf Studio. It can be used to remove defined
-        parts of a frequency spectrum.
-    </p>
+    <p>Audio filters can amplify (boost), pass or attenuate (cut) some frequency ranges.</p>
+    <p>EasyEffects uses the filter from Calf Studio. It can be used to remove defined parts of a frequency spectrum.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Frequency</em>
             </title>
-            <p>
-                The center or cut-off frequency of the filter.
-            </p>
+            <p>The center or cut-off frequency of the filter.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Resonance</em>
             </title>
-            <p>
-                Add an accentuation to the center frequency. When used on a bandpass the
-                surrounding frequencies are decreased in level and the band gets more narrow, a
-                bandreject is narrowed down to a thin needle.
-            </p>
+            <p>Add an accentuation to the center frequency. When used on a bandpass the surrounding frequencies are decreased in level and the band gets more narrow, a bandreject is narrowed down to a thin needle.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Inertia</em>
             </title>
-            <p>
-                Smooths the jumps between frequencies.
-            </p>
+            <p>Smooths the jumps between frequencies.</p>
         </item>
     </terms>
     <section>
@@ -48,16 +30,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Audio_filter" its:translate="no">
-                        https://en.wikipedia.org/wiki/Audio_filter
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Audio_filter" its:translate="no">https://en.wikipedia.org/wiki/Audio_filter</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Filter.html" its:translate="no">
-                        https://calf-studio-gear.org/doc/Filter.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Filter.html" its:translate="no">https://calf-studio-gear.org/doc/Filter.html</link>
                 </p>
             </item>
         </list>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="com.github.wwmm.easyeffects.webrtc.echo.suppression.level.enum">
+        <value nick="low" value="0" />
+        <value nick="moderate" value="1" />
+        <value nick="high" value="2" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.webrtc.noise.suppression.level.enum">
+        <value nick="low" value="0" />
+        <value nick="moderate" value="1" />
+        <value nick="high" value="2" />
+        <value nick="very-high" value="3" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.webrtc.gain.control.mode.enum">
+        <value nick="adaptive-digital" value="1" />
+        <value nick="fixed-digital" value="2" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.webrtc.voice.detection.likelihood.enum">
+        <value nick="very-low" value="0" />
+        <value nick="low" value="1" />
+        <value nick="moderate" value="2" />
+        <value nick="high" value="3" />
+    </enum>
+    <schema id="com.github.wwmm.easyeffects.webrtc">
+        <key name="state" type="b">
+            <default>false</default>
+        </key>
+        <key name="installed" type="b">
+            <default>true</default>
+        </key>
+        <key name="post-messages" type="b">
+            <default>true</default>
+        </key>
+        <key name="high-pass-filter" type="b">
+            <default>true</default>
+        </key>
+        <key name="echo-cancel" type="b">
+            <default>true</default>
+        </key>
+        <key name="echo-suppression-level" enum="com.github.wwmm.easyeffects.webrtc.echo.suppression.level.enum">
+            <default>"moderate"</default>
+        </key>
+        <key name="noise-suppression" type="b">
+            <default>true</default>
+        </key>
+        <key name="noise-suppression-level" enum="com.github.wwmm.easyeffects.webrtc.noise.suppression.level.enum">
+            <default>"moderate"</default>
+        </key>
+        <key name="gain-control" type="b">
+            <default>true</default>
+        </key>
+        <key name="extended-filter" type="b">
+            <default>true</default>
+        </key>
+        <key name="delay-agnostic" type="b">
+            <default>false</default>
+        </key>
+        <key name="target-level-dbfs" type="i">
+            <range min="0" max="31" />
+            <default>3</default>
+        </key>
+        <key name="compression-gain-db" type="i">
+            <range min="0" max="90" />
+            <default>9</default>
+        </key>
+        <key name="limiter" type="b">
+            <default>true</default>
+        </key>
+        <key name="gain-control-mode" enum="com.github.wwmm.easyeffects.webrtc.gain.control.mode.enum">
+            <default>"adaptive-digital"</default>
+        </key>
+        <key name="voice-detection" type="b">
+            <default>false</default>
+        </key>
+        <key name="voice-detection-frame-size-ms" type="i">
+            <range min="10" max="30" />
+            <default>10</default>
+        </key>
+        <key name="voice-detection-likelihood" enum="com.github.wwmm.easyeffects.webrtc.voice.detection.likelihood.enum">
+            <default>"low"</default>
+        </key>
+    </schema>
+</schemalist>

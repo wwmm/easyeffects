@@ -6,8 +6,8 @@
     <p>This tutorial was written by Markus Schmidt schmidt@boomshop.net on November 2019</p>
     <section>
         <title>Introduction</title>
-        <p>If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, PulseEffects is your salvation!</p>
-        <p>Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, PulseEffects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines.</p>
+        <p>If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, EasyEffects is your salvation!</p>
+        <p>Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, EasyEffects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines.</p>
         <p>This DSP software comes with everything needed to fatten the sound of your laptop speakers with a flexibility never found in other operating systems. Unfortunately the drawback of this flexibility is that average users will get lost in the sheer amount of possibilities. That's why this tutorial was created.</p>
     </section>
     <section>

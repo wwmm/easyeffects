@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "calibration_ui.hpp"
@@ -36,14 +36,14 @@ CalibrationUi::CalibrationUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Bu
                                   sigc::mem_fun(*this, &CalibrationUi::on_stack_visible_child_changed));
 
   auto builder_signals =
-      Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration_signals.glade");
-  auto builder_mic = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration_mic.glade");
+      Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/calibration_signals.glade");
+  auto builder_mic = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/calibration_mic.glade");
 
   builder_signals->get_widget_derived("widgets_grid", calibration_signals_ui);
   builder_mic->get_widget_derived("widgets_grid", calibration_mic_ui);
 
   stack->add(*calibration_signals_ui, "signals");
-  stack->child_property_icon_name(*calibration_signals_ui).set_value("pulseeffects-sine-symbolic");
+  stack->child_property_icon_name(*calibration_signals_ui).set_value("easyeffects-sine-symbolic");
 
   stack->add(*calibration_mic_ui, "mic");
   stack->child_property_icon_name(*calibration_mic_ui).set_value("audio-input-microphone-symbolic");
@@ -61,7 +61,7 @@ CalibrationUi::~CalibrationUi() {
 }
 
 auto CalibrationUi::create() -> CalibrationUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/calibration.glade");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/calibration.glade");
 
   CalibrationUi* window = nullptr;
 

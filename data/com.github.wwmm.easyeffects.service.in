@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.github.wwmm.easyeffects
+Exec=@bindir@/easyeffects --gapplication-service

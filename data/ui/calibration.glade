@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.38.1 -->
-<interface domain="pulseeffects">
-  <requires lib="gtk+" version="3.24"/>
+<interface domain="easyeffects">
+  <requires lib="gtk+" version="3.24" />
   <object class="GtkWindow" id="window">
     <property name="can-focus">False</property>
     <child>
@@ -27,10 +27,10 @@
                 <property name="events">GDK_POINTER_MOTION_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_STRUCTURE_MASK</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
-                <signal name="draw" handler="on_spectrum_draw" swapped="no"/>
-                <signal name="enter-notify-event" handler="on_spectrum_enter_notify_event" swapped="no"/>
-                <signal name="leave-notify-event" handler="on_spectrum_leave_notify_event" swapped="no"/>
-                <signal name="motion-notify-event" handler="on_spectrum_motion_notify_event" swapped="no"/>
+                <signal name="draw" handler="on_spectrum_draw" swapped="no" />
+                <signal name="enter-notify-event" handler="on_spectrum_enter_notify_event" swapped="no" />
+                <signal name="leave-notify-event" handler="on_spectrum_leave_notify_event" swapped="no" />
+                <signal name="motion-notify-event" handler="on_spectrum_motion_notify_event" swapped="no" />
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -228,7 +228,7 @@
             <property name="transition-duration">250</property>
             <property name="transition-type">crossfade</property>
             <child>
-              <placeholder/>
+              <placeholder />
             </child>
           </object>
           <packing>
@@ -242,7 +242,7 @@
       <object class="GtkHeaderBar" id="headerbar">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="title">PulseEffects</property>
+        <property name="title">EasyEffects</property>
         <property name="spacing">2</property>
         <property name="show-close-button">True</property>
         <child>

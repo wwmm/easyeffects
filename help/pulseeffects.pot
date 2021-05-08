@@ -26,7 +26,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/bassenhancer.page:16
-msgid "PulseEffects uses the bass enhancer developed by Calf Studio."
+msgid "EasyEffects uses the bass enhancer developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -150,7 +150,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/compressor.page:13
-msgid "PulseEffects uses the compressor from Linux Studio Plugins."
+msgid "EasyEffects uses the compressor from Linux Studio Plugins."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -449,7 +449,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/deesser.page:10
-msgid "PulseEffects uses the deesser developed by Calf Studio. A deesser is used to dynamically reduce high frequencies. The standard field of use is the reduction of \"sssss\" and \"shhhh\" in vocal tracks."
+msgid "EasyEffects uses the deesser developed by Calf Studio. A deesser is used to dynamically reduce high frequencies. The standard field of use is the reduction of \"sssss\" and \"shhhh\" in vocal tracks."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -549,7 +549,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/exciter.page:15
-msgid "PulseEffects uses the exciter developed by Calf Studio."
+msgid "EasyEffects uses the exciter developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -584,7 +584,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/filter.page:14
-msgid "PulseEffects uses the filter from Calf Studio. It can be used to remove defined parts of a frequency spectrum."
+msgid "EasyEffects uses the filter from Calf Studio. It can be used to remove defined parts of a frequency spectrum."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -630,7 +630,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/gate.page:14
-msgid "PulseEffects uses the gate developed by Calf Studio."
+msgid "EasyEffects uses the gate developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -705,12 +705,12 @@ msgstr ""
 
 #. (itstool) path: page/title
 #: C/index.page:8
-msgid "PulseEffects"
+msgid "EasyEffects"
 msgstr ""
 
 #. (itstool) path: page/p
 #: C/index.page:9
-msgid "PulseEffects applies audio effects to Pulseaudio applications. You can apply effects to applications output or to your microphone before sending its audio to a recording application."
+msgid "EasyEffects applies audio effects to Pulseaudio applications. You can apply effects to applications output or to your microphone before sending its audio to a recording application."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -748,7 +748,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/limiter.page:15
-msgid "PulseEffects uses the limiter developed by Calf Studio."
+msgid "EasyEffects uses the limiter developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -838,7 +838,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/loudness.page:10
-msgid "PulseEffects uses the loudness compensator from Linux Studio Plugins which applies equal loudness contour corrections to the input signal. This is a measure of sound pressure level (SPL), over the frequency spectrum, for which a listener perceives a constant loudness when presented with pure steady tones."
+msgid "EasyEffects uses the loudness compensator from Linux Studio Plugins which applies equal loudness contour corrections to the input signal. This is a measure of sound pressure level (SPL), over the frequency spectrum, for which a listener perceives a constant loudness when presented with pure steady tones."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -893,7 +893,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/multibandcompressor.page:14
-msgid "PulseEffects uses the multiband compressor developed by Calf Studio."
+msgid "EasyEffects uses the multiband compressor developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -993,7 +993,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/multibandgate.page:14
-msgid "PulseEffects uses the multiband gate developed by Calf Studio."
+msgid "EasyEffects uses the multiband gate developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1023,7 +1023,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/reverb.page:17
-msgid "PulseEffects uses the reverberation developed by Calf Studio."
+msgid "EasyEffects uses the reverberation developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1118,7 +1118,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/stereotools.page:10
-msgid "PulseEffects uses the stereo tools developed by Calf Studio."
+msgid "EasyEffects uses the stereo tools developed by Calf Studio."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1223,7 +1223,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/maximizer.page:21
-msgid "PulseEffects uses the maximizer from ZamAudio."
+msgid "EasyEffects uses the maximizer from ZamAudio."
 msgstr ""
 
 #. (itstool) path: item/p
@@ -1253,7 +1253,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/crossfeed.page:10
-msgid "PulseEffects uses the crossfeed from GStreamer. This plugin is based on the bs2b library and can be used to improve headphone listening of stereo audio records. It does so by mixing the left and right channel in a way that simulates a stereo speaker setup while using headphones."
+msgid "EasyEffects uses the crossfeed from GStreamer. This plugin is based on the bs2b library and can be used to improve headphone listening of stereo audio records. It does so by mixing the left and right channel in a way that simulates a stereo speaker setup while using headphones."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1283,7 +1283,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/equalizer.page:10
-msgid "PulseEffects uses the parametric equalizer from Linux Studio Plugins. You can choose between 1 and 30 bands. You also can change the center frequency and the width of each band as needed. There are a few presets but at this moment all of them have only 10 bands. Presets with other number of bands may be added in the future."
+msgid "EasyEffects uses the parametric equalizer from Linux Studio Plugins. You can choose between 1 and 30 bands. You also can change the center frequency and the width of each band as needed. There are a few presets but at this moment all of them have only 10 bands. Presets with other number of bands may be added in the future."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1506,7 +1506,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/pitch.page:14
-msgid "PulseEffects uses the pitch shifter from RubberBand."
+msgid "EasyEffects uses the pitch shifter from RubberBand."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1586,7 +1586,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/webrtc.page:10
-msgid "PulseEffects uses the webrtc from GStreamer. This plugin offers a voice enhancement filter based on WebRTC Audio Processing library. This library provides a broad variety of enhancement algorithms. This plugin tries to enable as many of those as possible. The currently enabled enhancements are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended filters."
+msgid "EasyEffects uses the webrtc from GStreamer. This plugin offers a voice enhancement filter based on WebRTC Audio Processing library. This library provides a broad variety of enhancement algorithms. This plugin tries to enable as many of those as possible. The currently enabled enhancements are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended filters."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -1762,7 +1762,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/convolver.page:20
-msgid "Import an impulse response file to PulseEffects configuration directory."
+msgid "Import an impulse response file to EasyEffects configuration directory."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1804,7 +1804,7 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: C/general.page:15
-msgid "Start PulseEffects as a service in the next login. This is done by creating an autostart file at <cmd its:withinText=\"yes\">~/.config/autostart</cmd>"
+msgid "Start EasyEffects as a service in the next login. This is done by creating an autostart file at <cmd its:withinText=\"yes\">~/.config/autostart</cmd>"
 msgstr ""
 
 #. (itstool) path: title/em
@@ -1995,7 +1995,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/pulseaudio.page:10
-msgid "PulseEffects has two GStreamer pipelines. One that applies effects for applications output and other that applies effects for microphone. Here the user can tweak a few advanced parameters for both pipelines."
+msgid "EasyEffects has two GStreamer pipelines. One that applies effects for applications output and other that applies effects for microphone. Here the user can tweak a few advanced parameters for both pipelines."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -2135,7 +2135,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/advancedinfo.page:12
-msgid "PulseEffects audio processing is composed by 3 main stages. Each of them needs a specific audio format and sampling rate. This information is show in the headerbar subtitle."
+msgid "EasyEffects audio processing is composed by 3 main stages. Each of them needs a specific audio format and sampling rate. This information is show in the headerbar subtitle."
 msgstr ""
 
 #. (itstool) path: page/p
@@ -2160,7 +2160,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/autogain.page:6
-msgid "PulseEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user."
+msgid "EasyEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user."
 msgstr ""
 
 #. (itstool) path: title/em
@@ -2295,12 +2295,12 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: C/guide_1.page:9
-msgid "If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, PulseEffects is your salvation!"
+msgid "If you're a notebook user relying on your internal speakers and you - like me - own a model suffering from a tinny, clanging sound, EasyEffects is your salvation!"
 msgstr ""
 
 #. (itstool) path: section/p
 #: C/guide_1.page:10
-msgid "Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, PulseEffects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines."
+msgid "Commercial operating systems on laptops these days often come with software like Dolby Theatre and the like to enhance the sound of lousy notebook speakers to something more substantial and acoustically rich. Under Linux, EasyEffects will do the job for you, although, compared to the commercial pendants, there's some manual tweaking required until the community sets up a database with presets for common machines."
 msgstr ""
 
 #. (itstool) path: section/p
@@ -2804,7 +2804,7 @@ msgstr ""
 
 #. (itstool) path: page/p
 #: C/rnnoise.page:13
-msgid "PulseEffects Noise Reduction is made on the library RNNoise which is based based on recurrent neural network, a class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence. This allows it to exhibit temporal dynamic behavior."
+msgid "EasyEffects Noise Reduction is made on the library RNNoise which is based based on recurrent neural network, a class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence. This allows it to exhibit temporal dynamic behavior."
 msgstr ""
 
 #. (itstool) path: page/p

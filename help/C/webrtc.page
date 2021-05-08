@@ -1,20 +1,9 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="webrtc">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="webrtc">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Webrtc</title>
-    <p>
-        PulseEffects uses the webrtc from GStreamer. This plugin offers a voice
-        enhancement filter based on WebRTC Audio Processing library. This library
-        provides a broad variety of enhancement algorithms. This plugin tries to enable
-        as many of those as possible. The currently enabled enhancements are High Pass Filter,
-        Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended
-        filters.
-    </p>
+    <p>EasyEffects uses the webrtc from GStreamer. This plugin offers a voice enhancement filter based on WebRTC Audio Processing library. This library provides a broad variety of enhancement algorithms. This plugin tries to enable as many of those as possible. The currently enabled enhancements are High Pass Filter, Echo Canceller, Noise Suppression, Automatic Gain Control, and some extended filters.</p>
     <section>
         <title>Echo Canceller</title>
         <terms>
@@ -22,34 +11,25 @@
                 <title>
                     <em style="strong" its:withinText="nested">Extended Filter</em>
                 </title>
-                <p>
-                    Enabled or disables the extended filter.
-                </p>
+                <p>Enabled or disables the extended filter.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">High Pass Filter</em>
                 </title>
-                <p>
-                    Enables or disables the high pass filter.
-                </p>
+                <p>Enables or disables the high pass filter.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Delay Agnostic</em>
                 </title>
-                <p>
-                    Enables or disables the delay agnostic mode.
-                </p>
+                <p>Enables or disables the delay agnostic mode.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Suppression Level</em>
                 </title>
-                <p>
-                    Controls the aggressiveness of the suppressor. A higher level trades off
-                    double-talk performance for increased echo suppression.
-                </p>
+                <p>Controls the aggressiveness of the suppressor. A higher level trades off double-talk performance for increased echo suppression.</p>
             </item>
         </terms>
     </section>
@@ -60,10 +40,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Suppression Level</em>
                 </title>
-                <p>
-                    Controls the aggressiveness of the suppression. Increasing the level will reduce
-                    the noise level at the expense of a higher speech distortion.
-                </p>
+                <p>Controls the aggressiveness of the suppression. Increasing the level will reduce the noise level at the expense of a higher speech distortion.</p>
             </item>
         </terms>
     </section>
@@ -74,9 +51,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Mode</em>
                 </title>
-                <p>
-                    Controls the mode of the compression stage.
-                </p>
+                <p>Controls the mode of the compression stage.</p>
             </item>
         </terms>
     </section>
@@ -87,28 +62,19 @@
                 <title>
                     <em style="strong" its:withinText="nested">Limiter</em>
                 </title>
-                <p>
-                    When enabled, the compression stage will hard limit the signal to the target
-                    level. Otherwise, the signal will be compressed but not limited above the target
-                    level.
-                </p>
+                <p>When enabled, the compression stage will hard limit the signal to the target level. Otherwise, the signal will be compressed but not limited above the target level.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Target Level</em>
                 </title>
-                <p>
-                    Sets the target peak level of the gain control in dBFS (decibels from digital
-                    full-scale).
-                </p>
+                <p>Sets the target peak level of the gain control in dBFS (decibels from digital full-scale).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Maximum Gain</em>
                 </title>
-                <p>
-                    Sets the maximum gain the digital compression stage may apply.
-                </p>
+                <p>Sets the maximum gain the digital compression stage may apply.</p>
             </item>
         </terms>
     </section>
@@ -119,9 +85,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Detection Likelihood</em>
                 </title>
-                <p>
-                    Specifies the likelihood that a frame will be declared to contain voice.
-                </p>
+                <p>Specifies the likelihood that a frame will be declared to contain voice.</p>
             </item>
         </terms>
         <terms>
@@ -129,10 +93,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Frame Size</em>
                 </title>
-                <p>
-                    Sets the size of the frames in ms on which the VAD will operate. Larger frames
-                    will improve detection accuracy, but reduce the frequency of updates.
-                </p>
+                <p>Sets the size of the frames in ms on which the VAD will operate. Larger frames will improve detection accuracy, but reduce the frequency of updates.</p>
             </item>
         </terms>
     </section>
@@ -141,11 +102,7 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html"
-                        its:translate="no">
-                        https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html
-                    </link>
+                    <link href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html" its:translate="no">https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad/html/gst-plugins-bad-plugins-webrtcdsp.html</link>
                 </p>
             </item>
         </list>

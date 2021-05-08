@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "presets_menu_ui.hpp"
@@ -150,9 +150,9 @@ PresetsMenuUi::~PresetsMenuUi() {
 }
 
 auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/presets_menu.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
+  auto settings = Gio::Settings::create("com.github.wwmm.easyeffects");
 
   return Gtk::Builder::get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
 }
@@ -273,7 +273,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/preset_row.ui");
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 

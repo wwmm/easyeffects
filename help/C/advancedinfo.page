@@ -1,21 +1,9 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="advancedinfo"
-    style="2column">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="advancedinfo" style="2column">
     <info>
-        <link type="guide" xref="index#ui"/>
+        <link type="guide" xref="index#ui" />
     </info>
     <title>Advanced Information</title>
-    <media type="image" src="figures/advancedinfo.png" its:translate="no"/>
-    <p>
-        PulseEffects audio processing is composed by 3 main stages. Each of them needs a
-        specific audio format and sampling rate. This information is show in the
-        headerbar subtitle.
-    </p>
-    <p>
-        Another important information is the latency introduced by the audio processing.
-        This the the last information shown. The displayed value is in milliseconds.
-    </p>
+    <media type="image" src="figures/advancedinfo.png" its:translate="no" />
+    <p>EasyEffects audio processing is composed by 3 main stages. Each of them needs a specific audio format and sampling rate. This information is show in the headerbar subtitle.</p>
+    <p>Another important information is the latency introduced by the audio processing. This the the last information shown. The displayed value is in milliseconds.</p>
 </page>

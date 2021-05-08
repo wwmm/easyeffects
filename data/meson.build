@@ -1,39 +1,39 @@
 schemadir = join_paths(datadir, 'glib-2.0', 'schemas')
 
 install_data([
-  'schemas/com.github.wwmm.pulseeffects.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.outputlevel.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.spectrum.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sinkinputs.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.autogain.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.limiter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.compressor.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.multibandcompressor.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.reverb.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.filter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.equalizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.equalizer.channel.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.exciter.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.bassenhancer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.crossfeed.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.maximizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.loudness.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.pitch.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.gate.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.multibandgate.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.stereotools.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.deesser.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.convolver.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.crystalizer.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.delay.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.sourceoutputs.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.webrtc.gschema.xml',
-  'schemas/com.github.wwmm.pulseeffects.rnnoise.gschema.xml'
+  'schemas/com.github.wwmm.easyeffects.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.outputlevel.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.spectrum.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.streamoutputs.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.autogain.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.limiter.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.compressor.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.multibandcompressor.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.reverb.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.filter.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.equalizer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.equalizer.channel.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.exciter.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.bassenhancer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.crossfeed.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.maximizer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.loudness.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.pitch.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.gate.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.multibandgate.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.stereotools.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.deesser.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.convolver.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.crystalizer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.delay.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.webrtc.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.rnnoise.gschema.xml'
 ], install_dir: schemadir)
 
 appdata_file = i18n_mod.merge_file(
-  input: 'com.github.wwmm.pulseeffects.appdata.xml.in',
-  output: 'com.github.wwmm.pulseeffects.appdata.xml',
+  input: 'com.github.wwmm.easyeffects.appdata.xml.in',
+  output: 'com.github.wwmm.easyeffects.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(datadir, 'metainfo')
@@ -48,8 +48,8 @@ if appstream_util.found()
 endif
 
 desktop_file = i18n_mod.merge_file(
-  input: 'com.github.wwmm.pulseeffects.desktop.in',
-  output: 'com.github.wwmm.pulseeffects.desktop',
+  input: 'com.github.wwmm.easyeffects.desktop.in',
+  output: 'com.github.wwmm.easyeffects.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -65,7 +65,7 @@ if desktop_utils.found()
 endif
 
 icondir = join_paths(datadir, 'icons', 'hicolor')
-install_data('pulseeffects.svg',
+install_data('easyeffects.svg',
   install_dir: join_paths(icondir, 'scalable', 'apps')
 )
 
@@ -77,8 +77,8 @@ glade_about = configure_file(input: 'ui/about.glade.in',
                configuration: conf_glade)
 
 gresources = gnome_mod.compile_resources(
-	'pulseeffects-resources',
-	'pulseeffects.gresource.xml',
+	'easyeffects-resources',
+	'easyeffects.gresource.xml',
 	c_name: meson.project_name(),
   dependencies: [glade_about]
 )
@@ -87,8 +87,8 @@ dbusconf = configuration_data()
 dbusconf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
 
 configure_file(
-  input: 'com.github.wwmm.pulseeffects.service.in',
-  output: 'com.github.wwmm.pulseeffects.service',
+  input: 'com.github.wwmm.easyeffects.service.in',
+  output: 'com.github.wwmm.easyeffects.service',
   configuration: dbusconf,
   install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services'),
 )

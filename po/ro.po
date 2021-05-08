@@ -1,11 +1,11 @@
-# Romanian translation for PulseEffects
+# Romanian translation for EasyEffects
 # Copyright (C) 2021
-# This file is distributed under the same license as the pulseeffects package.
+# This file is distributed under the same license as the easyeffects package.
 # Andrei Dobrete <andy3153@protonmail.com>, 2021.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pulseeffects\n"
+"Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-12-20 19:56-0300\n"
 "PO-Revision-Date: 2021-03-02 23:30+0200\n"
@@ -19,94 +19,94 @@ msgstr ""
 "%100<=19) ? 1 : 2);\n"
 "Language: ro\n"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3 data/ui/application.glade:61
-msgid "PulseEffects"
-msgstr "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3 data/ui/application.glade:61
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Efecte Audio pentru Aplicații PulseAudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects este un set avansat de unelte pentru manipularea audio. Numind "
+"EasyEffects este un set avansat de unelte pentru manipularea audio. Numind "
 "doar câteva din uneltele din acesta, sunt incluse un egalizator, limitator, "
 "compresor și o unealtă pentru reverberație."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:16
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Pentru că PulseEffects utilizează serverul de sunet prestabilit PulseAudio, "
+"Pentru că EasyEffects utilizează serverul de sunet prestabilit PulseAudio, "
 "acesta va funcționa cu majoritatea, dacă nu cumva chiar toate programele pe "
 "care le folosiți. Toate programele suportate sunt prezentate în fereastra "
 "principală, unde fiecare poate fi activată individual."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:22
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Pe lângă faptul că PulseEffects poate manipula output-ul de sunet, se poate "
+"Pe lângă faptul că EasyEffects poate manipula output-ul de sunet, se poate "
 "folosi și pentru a aplica efecte pe un dispozitiv de input, ca un microfon. "
 "Acest lucru este util, spre exemplu, în înregistrarea audio, dar "
 "funcționează bine și în timpul conversațiilor voce."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
+"When EasyEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"Când PulseEffects este pornit, acesta va reține configurația din sesiunea "
+"Când EasyEffects este pornit, acesta va reține configurația din sesiunea "
 "anterioară. Este de asemenea posibil să salvați setările curente ca și "
 "profile."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
 msgstr "Setează volumul și pornește/oprește efectele"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
 msgstr "Include un egalizator cu presetări încorporate."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr "Limitator de Input"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:52
 #: data/ui/compressor.glade:110 data/ui/compressor.glade:589
 #: data/ui/webrtc.glade:633
 msgid "Compressor"
 msgstr "Compresor"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "Calibrare"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Egalizator, compresor și Alte Efecte Audio"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limitator;compresor;reverberație;egalizator;autovolum"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:44
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:47
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:44
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:47
 msgid "\"Presets\""
 msgstr "”Presetări”"
 
@@ -1667,21 +1667,21 @@ msgid "error"
 msgstr "eroare"
 
 #: src/application.cpp:38
-msgid "Quit PulseEffects. Useful when running in service mode."
+msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
-"Închideți PulseEffects. Folositor când este folosit în modul de serviciu."
+"Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
 
 #: src/application.cpp:40
 msgid "Show available presets."
 msgstr "Arată presetările valabile."
 
 #: src/application.cpp:43
-msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "Încarcă o presetare. Exemplu: pulseeffects -l music"
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
 
 #: src/application.cpp:45
-msgid "Reset PulseEffects."
-msgstr "Resetează PulseEffects."
+msgid "Reset EasyEffects."
+msgstr "Resetează EasyEffects."
 
 #: src/application.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"

@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: pulseeffects
+Upstream-Name: easyeffects
 Upstream-Contact: Wellington Wallace <wellingtonwallace@gmail.com>
-Source: https://github.com/wwmm/pulseeffects
+Source: https://github.com/wwmm/easyeffects
 
 Files: *
 Copyright: 2017-2019 Wellington Wallace <wellingtonwallace@gmail.com>
@@ -20,7 +20,7 @@ Files: PKGBUILD
 Copyright: Wellington <wellingtonwallace@gmail.com>
 License: GPL-3.0+
 
-Files: data/com.github.wwmm.pulseeffects.appdata.xml.in
+Files: data/com.github.wwmm.easyeffects.appdata.xml.in
 Copyright: 2017 Patrik Nilsson <asavartzeth@gmail.com>
 License: CC0-1.0
 

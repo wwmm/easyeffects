@@ -1,40 +1,40 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "application.hpp"
 #include "application_ui.hpp"
 
 Application::Application()
-    : Gtk::Application("com.github.wwmm.pulseeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
-  Glib::set_application_name("PulseEffects");
+    : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
+  Glib::set_application_name("EasyEffects");
 
   signal_handle_local_options().connect(sigc::mem_fun(*this, &Application::on_handle_local_options), false);
 
   add_main_option_entry(Gio::Application::OptionType::BOOL, "quit", 'q',
-                        _("Quit PulseEffects. Useful when running in service mode."));
+                        _("Quit EasyEffects. Useful when running in service mode."));
 
   add_main_option_entry(Gio::Application::OptionType::BOOL, "presets", 'p', _("Show available presets."));
 
   add_main_option_entry(Gio::Application::OptionType::STRING, "load-preset", 'l',
-                        _("Load a preset. Example: pulseeffects -l music"));
+                        _("Load a preset. Example: easyeffects -l music"));
 
-  add_main_option_entry(Gio::Application::OptionType::BOOL, "reset", 'r', _("Reset PulseEffects."));
+  add_main_option_entry(Gio::Application::OptionType::BOOL, "reset", 'r', _("Reset EasyEffects."));
 
   add_main_option_entry(Gio::Application::OptionType::INT, "bypass", 'b',
                         _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
@@ -106,9 +106,9 @@ void Application::on_startup() {
 
   util::debug(log_tag + "PE version: " + std::string(VERSION));
 
-  settings = Gio::Settings::create("com.github.wwmm.pulseeffects");
-  soe_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs");
-  sie_settings = Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs");
+  settings = Gio::Settings::create("com.github.wwmm.easyeffects");
+  soe_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs");
+  sie_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs");
 
   if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0U) {
     running_as_service = true;
@@ -276,7 +276,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
 
     if (options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
-        auto cfg = Gio::Settings::create("com.github.wwmm.pulseeffects");
+        auto cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
 
         std::clog << cfg->get_boolean("bypass") << std::endl;
 
@@ -290,7 +290,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
 
 void Application::create_actions() {
   add_action("about", [&]() {
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/about.glade");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/about.glade");
 
     auto* dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
 
@@ -322,7 +322,7 @@ void Application::create_actions() {
 
     // show_uri has not been wrapped by GTKMM yet :-(
 
-    gtk_show_uri(window->gobj(), "help:pulseeffects", GDK_CURRENT_TIME);
+    gtk_show_uri(window->gobj(), "help:easyeffects", GDK_CURRENT_TIME);
   });
 
   add_action("quit", [&] {

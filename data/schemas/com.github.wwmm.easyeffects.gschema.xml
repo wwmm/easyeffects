@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="easyeffects">
+    <schema id="com.github.wwmm.easyeffects" path="/com/github/wwmm/easyeffects/">
+        <key name="process-all-outputs" type="b">
+            <default>true</default>
+        </key>
+        <key name="process-all-inputs" type="b">
+            <default>false</default>
+        </key>
+        <key name="use-dark-theme" type="b">
+            <default>false</default>
+        </key>
+        <key name="last-used-input-preset" type="s">
+            <default l10n="messages">"Presets"</default>
+        </key>
+        <key name="last-used-output-preset" type="s">
+            <default l10n="messages">"Presets"</default>
+        </key>
+        <key name="window-width" type="i">
+            <default>0</default>
+        </key>
+        <key name="window-height" type="i">
+            <default>0</default>
+        </key>
+        <key name="bypass" type="b">
+            <default>false</default>
+        </key>
+    </schema>
+</schemalist>

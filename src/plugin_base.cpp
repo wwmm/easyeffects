@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "plugin_base.hpp"
@@ -88,7 +88,7 @@ PluginBase::PluginBase(std::string tag,
 
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
-  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "pulseeffects_filter");
+  pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "easyeffects_filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");

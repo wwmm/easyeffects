@@ -6,9 +6,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PulseEffects\n"
+"Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 15:00-0300\n"
+"POT-Creation-Date: 2021-05-08 12:05-0300\n"
 "PO-Revision-Date: 2019-09-10 12:56-0300\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
@@ -20,93 +20,102 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3
-msgid "PulseEffects"
-msgstr "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3
+#, fuzzy
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#, fuzzy
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects é uma ferramenta avançada de edição de áudio. Ele inclui "
+"EasyEffects é uma ferramenta avançada de edição de áudio. Ele inclui "
 "equalizador, limitador, compressor e um plugin de reverberação. Estas "
 "ferramentas são complementadas por um analisador de espectro."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Como o PulseEffects usa o servidor de áudio padrão PulseAudio ele irá "
+"Como o EasyEffects usa o servidor de áudio padrão PulseAudio ele irá "
 "funcionar com a maioria das aplicações que você usa, senão todas. Todos os "
 "aplicativos suportados estão presentes na janela principal, onde cada uma "
 "pode ser habilitada individualmente."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#, fuzzy
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Além de manipular saída de som o PulseEffects também é capaz de aplicar "
+"Além de manipular saída de som o EasyEffects também é capaz de aplicar "
 "efeitos em dispositivos de entrada, como um microfone. Isto é útil, por "
 "exemplo, em gravação de áudio mas também funciona em conversas."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#, fuzzy
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
-"configuration used in the last session. It is also possible to save all the "
-"current settings as profiles."
+"When EasyEffects is launched it will conveniently remember the configuration "
+"used in the last session. It is also possible to save all the current "
+"settings as profiles."
 msgstr ""
-"Quando inicializado, o PulseEffects irá convenientemente lembrar das "
+"Quando inicializado, o EasyEffects irá convenientemente lembrar das "
 "configurações utilizadas na última sessão. Também é possível salvar todas as "
 "configurações\n"
 "como perfis."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:23
 msgid "Set the volume and turn on/off effects"
 msgstr "Definir o volume e ligar / desligar efeitos"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid "Includes an equalizer with built-in presets"
 msgstr "Inclui um equalizador com predefinições incorporadas"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:31
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52 data/ui/compressor.ui:36
-#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:142
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
+#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:144
 msgid "Compressor"
 msgstr "Compressor"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:39
 msgid "Calibration"
 msgstr "Calibração"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:5
+#, fuzzy
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
+
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limitador;compressor;reverberação;equalizador;autovolume;"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:14
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:17
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
 msgstr "\"Predefinições\""
 
@@ -140,64 +149,64 @@ msgstr "Latência"
 msgid "State"
 msgstr "Estado"
 
-#: data/ui/application_window.ui:37 data/ui/autogain.ui:343
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:343
 #: data/ui/bass_enhancer.ui:310 data/ui/compressor.ui:784
 #: data/ui/convolver.ui:295 data/ui/crossfeed.ui:210 data/ui/crystalizer.ui:112
 #: data/ui/deesser.ui:477 data/ui/delay.ui:178 data/ui/equalizer.ui:249
 #: data/ui/exciter.ui:310 data/ui/filter.ui:236 data/ui/gate.ui:398
-#: data/ui/limiter.ui:305 data/ui/loudness.ui:200 data/ui/maximizer.ui:194
+#: data/ui/limiter.ui:305 data/ui/loudness.ui:199 data/ui/maximizer.ui:194
 #: data/ui/multiband_compressor.ui:413 data/ui/multiband_compressor.ui:723
 #: data/ui/multiband_compressor.ui:1033 data/ui/multiband_compressor.ui:1343
 #: data/ui/multiband_compressor.ui:1488 data/ui/multiband_gate.ui:446
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1132
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1620
-#: data/ui/pipe_info.ui:119 data/ui/presets_menu.ui:35 data/ui/reverb.ui:425
-#: data/ui/rnnoise.ui:167 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:601 data/ui/pitch.glade:463 data/ui/webrtc.glade:794
-#: src/stream_output_effects_ui.cpp:101
+#: data/ui/pipe_info.ui:119 data/ui/pitch.ui:264 data/ui/presets_menu.ui:35
+#: data/ui/reverb.ui:425 data/ui/rnnoise.ui:167 data/ui/stereo_tools.ui:370
+#: data/ui/stereo_tools.ui:601 data/ui/webrtc.glade:794
+#: src/stream_output_effects_ui.cpp:82
 msgid "Output"
 msgstr "Saída"
 
-#: data/ui/application_window.ui:64 data/ui/autogain.ui:283
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:283
 #: data/ui/bass_enhancer.ui:232 data/ui/compressor.ui:706
 #: data/ui/convolver.ui:217 data/ui/crossfeed.ui:132 data/ui/crystalizer.ui:34
 #: data/ui/deesser.ui:399 data/ui/delay.ui:100 data/ui/equalizer.ui:171
 #: data/ui/exciter.ui:232 data/ui/filter.ui:158 data/ui/gate.ui:320
-#: data/ui/limiter.ui:227 data/ui/loudness.ui:122 data/ui/maximizer.ui:134
+#: data/ui/limiter.ui:227 data/ui/loudness.ui:121 data/ui/maximizer.ui:134
 #: data/ui/multiband_compressor.ui:1410 data/ui/multiband_gate.ui:1542
-#: data/ui/pipe_info.ui:142 data/ui/presets_menu.ui:57 data/ui/reverb.ui:347
-#: data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:523
-#: data/ui/pitch.glade:450 data/ui/webrtc.glade:780
-#: src/stream_input_effects_ui.cpp:109
+#: data/ui/pipe_info.ui:142 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
+#: data/ui/reverb.ui:347 data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36
+#: data/ui/stereo_tools.ui:523 data/ui/webrtc.glade:780
+#: src/stream_input_effects_ui.cpp:100
 msgid "Input"
 msgstr "Entrada"
 
-#: data/ui/application_window.ui:91 src/pipe_settings_ui.cpp:108
+#: data/ui/application_window.ui:95 src/pipe_settings_ui.cpp:108
 msgid "PipeWire"
 msgstr ""
 
-#: data/ui/application_window.ui:110 src/calibration_ui.cpp:56
+#: data/ui/application_window.ui:114 src/calibration_ui.cpp:56
 #: src/calibration_ui.cpp:182
 msgid "Test Signals"
 msgstr "Sinais de Teste"
 
-#: data/ui/application_window.ui:121
+#: data/ui/application_window.ui:125
 #, fuzzy
 msgid "Global Bypass"
 msgstr "Ignorar"
 
-#: data/ui/application_window.ui:132
+#: data/ui/application_window.ui:136
 msgid "Help"
 msgstr "Ajuda"
 
-#: data/ui/application_window.ui:143 data/ui/application_window.ui:195
+#: data/ui/application_window.ui:147 data/ui/application_window.ui:199
 msgid "Settings"
 msgstr "Configurações"
 
-#: data/ui/application_window.ui:157 data/ui/reverb.ui:19
-#: src/presets_menu_ui.cpp:208 src/presets_menu_ui.cpp:383
-#: src/presets_menu_ui.cpp:384 src/presets_menu_ui.cpp:401
-#: src/presets_menu_ui.cpp:402
+#: data/ui/application_window.ui:161 data/ui/reverb.ui:19
+#: src/presets_menu_ui.cpp:204 src/presets_menu_ui.cpp:379
+#: src/presets_menu_ui.cpp:380 src/presets_menu_ui.cpp:397
+#: src/presets_menu_ui.cpp:398
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -219,8 +228,8 @@ msgstr "Redefinir Histórico"
 #: data/ui/multiband_compressor.ui:794 data/ui/multiband_compressor.ui:1104
 #: data/ui/multiband_gate.ui:14 data/ui/multiband_gate.ui:174
 #: data/ui/multiband_gate.ui:517 data/ui/multiband_gate.ui:860
-#: data/ui/multiband_gate.ui:1203 data/ui/reverb.ui:25 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:14
+#: data/ui/multiband_gate.ui:1203 data/ui/pitch.ui:30 data/ui/reverb.ui:25
+#: data/ui/rnnoise.ui:26 data/ui/stereo_tools.ui:14
 msgid "Bypass"
 msgstr "Ignorar"
 
@@ -244,7 +253,7 @@ msgstr "Relativo"
 msgid "Range"
 msgstr "Alcance"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:153
+#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:155
 msgid "Loudness"
 msgstr "Sonoridade"
 
@@ -258,20 +267,20 @@ msgstr "Ganho de Entrada"
 #: data/ui/crystalizer.ui:186 data/ui/deesser.ui:619 data/ui/delay.ui:260
 #: data/ui/equalizer.ui:331 data/ui/equalizer_band.ui:137
 #: data/ui/equalizer_band.ui:199 data/ui/exciter.ui:422 data/ui/filter.ui:318
-#: data/ui/gate.ui:510 data/ui/limiter.ui:418 data/ui/loudness.ui:282
+#: data/ui/gate.ui:510 data/ui/limiter.ui:418 data/ui/loudness.ui:281
 #: data/ui/maximizer.ui:290 data/ui/multiband_compressor.ui:1570
-#: data/ui/multiband_gate.ui:1702 data/ui/reverb.ui:507 data/ui/rnnoise.ui:249
-#: data/ui/stereo_tools.ui:713 data/ui/pitch.glade:158 data/ui/webrtc.glade:141
+#: data/ui/multiband_gate.ui:1702 data/ui/pitch.ui:346 data/ui/reverb.ui:507
+#: data/ui/rnnoise.ui:249 data/ui/stereo_tools.ui:713 data/ui/webrtc.glade:141
 msgid "Reset"
 msgstr "Resetar"
 
 #: data/ui/autogain.ui:420 data/ui/compressor.ui:971 data/ui/convolver.ui:390
 #: data/ui/crossfeed.ui:305 data/ui/deesser.ui:632 data/ui/delay.ui:273
 #: data/ui/equalizer.ui:344 data/ui/exciter.ui:435 data/ui/filter.ui:331
-#: data/ui/gate.ui:523 data/ui/limiter.ui:431 data/ui/loudness.ui:295
+#: data/ui/gate.ui:523 data/ui/limiter.ui:431 data/ui/loudness.ui:294
 #: data/ui/maximizer.ui:303 data/ui/multiband_compressor.ui:1583
-#: data/ui/multiband_gate.ui:1715 data/ui/reverb.ui:520 data/ui/rnnoise.ui:262
-#: data/ui/stereo_tools.ui:726
+#: data/ui/multiband_gate.ui:1715 data/ui/pitch.ui:359 data/ui/reverb.ui:520
+#: data/ui/rnnoise.ui:262 data/ui/stereo_tools.ui:726
 msgid "Using"
 msgstr ""
 
@@ -318,7 +327,7 @@ msgid "Id"
 msgstr ""
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
-#: data/ui/presets_menu.ui:100 data/ui/presets_menu.ui:201
+#: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
 msgid "Name"
 msgstr "Nome"
 
@@ -553,8 +562,8 @@ msgstr "Duração"
 msgid "Import Impulse"
 msgstr "Importar Impulso"
 
-#: data/ui/convolver.ui:429 data/ui/effects_base.ui:346
-#: data/ui/presets_menu.ui:132 data/ui/presets_menu.ui:233
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:347
+#: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
 msgstr ""
 
@@ -636,15 +645,15 @@ msgstr ""
 msgid "Players"
 msgstr ""
 
-#: data/ui/effects_base.ui:167
+#: data/ui/effects_base.ui:168
 msgid "Plugins"
 msgstr ""
 
-#: data/ui/effects_base.ui:242
+#: data/ui/effects_base.ui:243
 msgid "Blocklist"
 msgstr "Lista Negra"
 
-#: data/ui/effects_base.ui:269
+#: data/ui/effects_base.ui:270
 msgid "Player Name"
 msgstr ""
 
@@ -868,8 +877,8 @@ msgstr "Configurações"
 
 #: data/ui/general_settings.ui:120
 #, fuzzy
-msgid "About PulseEffects"
-msgstr "PulseEffects"
+msgid "About EasyEffects"
+msgstr "EasyEffects"
 
 #: data/ui/limiter.ui:21
 msgid "Automatic Leveling"
@@ -1024,6 +1033,30 @@ msgstr "Módulos"
 msgid "Clients"
 msgstr "Clientes"
 
+#: data/ui/pitch.ui:18
+msgid "Faster"
+msgstr "Mais Rápido"
+
+#: data/ui/pitch.ui:24
+msgid "Preserve Formant"
+msgstr "Preservar Formante"
+
+#: data/ui/pitch.ui:46
+msgid "Cents"
+msgstr "Cents"
+
+#: data/ui/pitch.ui:79
+msgid "Semitones"
+msgstr "Semitons"
+
+#: data/ui/pitch.ui:112
+msgid "Octaves"
+msgstr "Oitavas"
+
+#: data/ui/pitch.ui:145
+msgid "Crispness"
+msgstr "Clareza"
+
 #: data/ui/preset_row.ui:16
 msgid "Load"
 msgstr ""
@@ -1044,19 +1077,19 @@ msgstr ""
 msgid "Remove this preset file"
 msgstr "Remover este arquivo de predefinição"
 
-#: data/ui/presets_menu.ui:77
+#: data/ui/presets_menu.ui:78
 msgid "Speakers"
 msgstr ""
 
-#: data/ui/presets_menu.ui:106 data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
 msgstr "Criar Predefinição"
 
-#: data/ui/presets_menu.ui:117 data/ui/presets_menu.ui:218
+#: data/ui/presets_menu.ui:118 data/ui/presets_menu.ui:219
 msgid "Import Presets"
 msgstr "Importar Predefinições"
 
-#: data/ui/presets_menu.ui:178
+#: data/ui/presets_menu.ui:179
 #, fuzzy
 msgid "Microphone"
 msgstr "Microfone de Calibração"
@@ -1365,38 +1398,6 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: data/ui/pitch.glade:102 include/effects_base_ui.hpp:157
-msgid "Pitch"
-msgstr "Altura"
-
-#: data/ui/pitch.glade:182 data/ui/webrtc.glade:165
-msgid "Provided by"
-msgstr ""
-
-#: data/ui/pitch.glade:270
-msgid "Cents"
-msgstr "Cents"
-
-#: data/ui/pitch.glade:300
-msgid "Semitones"
-msgstr "Semitons"
-
-#: data/ui/pitch.glade:330
-msgid "Octaves"
-msgstr "Oitavas"
-
-#: data/ui/pitch.glade:360
-msgid "Crispness"
-msgstr "Clareza"
-
-#: data/ui/pitch.glade:402
-msgid "Faster"
-msgstr "Mais Rápido"
-
-#: data/ui/pitch.glade:414
-msgid "Preserve Formant"
-msgstr "Preservar Formante"
-
 #: data/ui/pipe_settings.glade:58 data/ui/pipe_settings.glade:141
 msgid "Use Default"
 msgstr "Usar Padrão"
@@ -1409,8 +1410,12 @@ msgstr "Efeitos de Entrada"
 msgid "Output Effects"
 msgstr "Efeitos de Saída"
 
-#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:161
+#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:163
 msgid "WebRTC"
+msgstr ""
+
+#: data/ui/webrtc.glade:165
+msgid "Provided by"
 msgstr ""
 
 #: data/ui/webrtc.glade:256 data/ui/webrtc.glade:389 data/ui/webrtc.glade:460
@@ -1479,7 +1484,7 @@ msgstr "Nível Alvo"
 msgid "Maximum Gain"
 msgstr "Ganho Máximo"
 
-#: data/ui/webrtc.glade:612 include/effects_base_ui.hpp:152
+#: data/ui/webrtc.glade:612 include/effects_base_ui.hpp:154
 msgid "Limiter"
 msgstr "Limitador"
 
@@ -1499,91 +1504,95 @@ msgstr "Muito Baixo"
 msgid "Voice Detector"
 msgstr "Detector de Voz"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:142
 #, fuzzy
 msgid "Autogain"
 msgstr "Ganho Automático"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:143
 msgid "Bass Enhancer"
 msgstr "Reforçador de Graves"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:145
 msgid "Convolver"
 msgstr "Convolver"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:146
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:147
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:148
 msgid "Deesser"
 msgstr "Deesser"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:149
 msgid "Delay"
 msgstr "Atraso"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:150
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:151
 msgid "Exciter"
 msgstr "Excitador"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:152
 msgid "Filter"
 msgstr "Filtro"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:153
 msgid "Gate"
 msgstr "Gate"
 
-#: include/effects_base_ui.hpp:154
+#: include/effects_base_ui.hpp:156
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:157
 msgid "Multiband Compressor"
 msgstr "Compressor Multibandas"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:158
 msgid "Multiband Gate"
 msgstr "Gate Multibandas"
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:159
+msgid "Pitch"
+msgstr "Altura"
+
+#: include/effects_base_ui.hpp:160
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:161
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Redução de Ganho"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:162
 msgid "Stereo Tools"
 msgstr "Ferramentas Stereo"
 
 #: src/application.cpp:30
-msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "Sair do PulseEffects. Útil quando executando em modo de serviço."
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
 
 #: src/application.cpp:32
 msgid "Show available presets."
 msgstr "Mostrar predefinições disponíveis."
 
 #: src/application.cpp:35
-msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "Carregar uma predefinição. Exemplo: pulseeffects -l musica"
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
 #: src/application.cpp:37
-msgid "Reset PulseEffects."
-msgstr "Redefinir o PulseEffects."
+msgid "Reset EasyEffects."
+msgstr "Redefinir o EasyEffects."
 
 #: src/application.cpp:40
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -1609,13 +1618,13 @@ msgstr "Microfone de Calibração"
 msgid "Import Impulse File"
 msgstr "Importar Arquivo com a Resposta de Impulso"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:373 src/equalizer_ui.cpp:585
-#: src/equalizer_ui.cpp:587 src/presets_menu_ui.cpp:204
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:373 src/equalizer_ui.cpp:589
+#: src/equalizer_ui.cpp:591 src/presets_menu_ui.cpp:200
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:374 src/equalizer_ui.cpp:585
-#: src/equalizer_ui.cpp:588 src/presets_menu_ui.cpp:204
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:374 src/equalizer_ui.cpp:589
+#: src/equalizer_ui.cpp:592 src/presets_menu_ui.cpp:200
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -1631,24 +1640,24 @@ msgstr "Falhou"
 msgid "Could Not Load The Impulse File"
 msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
 
-#: src/effects_base_ui.cpp:626 src/effects_base_ui.cpp:1250
+#: src/effects_base_ui.cpp:648 src/effects_base_ui.cpp:1272
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:630 src/effects_base_ui.cpp:1252
+#: src/effects_base_ui.cpp:652 src/effects_base_ui.cpp:1274
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:634 src/effects_base_ui.cpp:1254
+#: src/effects_base_ui.cpp:656 src/effects_base_ui.cpp:1276
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:638 src/effects_base_ui.cpp:1256
+#: src/effects_base_ui.cpp:660 src/effects_base_ui.cpp:1278
 #, fuzzy
 msgid "creating"
 msgstr "Gating"
 
-#: src/effects_base_ui.cpp:642 src/effects_base_ui.cpp:1258
+#: src/effects_base_ui.cpp:664 src/effects_base_ui.cpp:1280
 msgid "error"
 msgstr ""
 
@@ -1656,17 +1665,17 @@ msgstr ""
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:584 src/equalizer_ui.cpp:587
+#: src/equalizer_ui.cpp:588 src/equalizer_ui.cpp:591
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Importar Predefinições"
 
-#: src/equalizer_ui.cpp:593
+#: src/equalizer_ui.cpp:597
 #, fuzzy
 msgid "APO Presets"
 msgstr "Predefinições"
 
-#: src/presets_menu_ui.cpp:203
+#: src/presets_menu_ui.cpp:199
 #, fuzzy
 msgid "Import Preset"
 msgstr "Importar Predefinições"

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema id="com.github.wwmm.easyeffects.maximizer">
+        <key name="release" type="d">
+            <range min="1" max="100" />
+            <default>25</default>
+        </key>
+        <key name="ceiling" type="d">
+            <range min="-30" max="0" />
+            <default>0.0</default>
+        </key>
+        <key name="threshold" type="d">
+            <range min="-30" max="0" />
+            <default>0.0</default>
+        </key>
+    </schema>
+</schemalist>

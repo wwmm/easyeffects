@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# This ugly script helps to build a new version of PulseEffects
+# This ugly script helps to build a new version of EasyEffects
 # Currently for DEB package only
 # Author: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 
-pkg_name="pulseeffects"
-git_upstream_url="https://github.com/wwmm/pulseeffects.git"
+pkg_name="easyeffects"
+git_upstream_url="https://github.com/wwmm/easyeffects.git"
 stdate="$(date +%s)"
 day_name="$(env LANG=c date --date="@${stdate}" +%a)"
 month_name="$(env LANG=c date --date="@${stdate}" +%b)"
@@ -113,7 +113,7 @@ local_test(){
 	dpkg-buildpackage
 	last_version="$(head -n 1 debian/changelog | tr -d "()" | awk -F ' ' '{print $2}')"
 	sudo apt install ../*${pkg_name}*${last_version}*.deb -y && \
-	if pulseeffects
+	if easyeffects
 		then return 0
 		else return 1
 	fi

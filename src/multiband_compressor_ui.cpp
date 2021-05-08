@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "multiband_compressor_ui.hpp"
@@ -239,10 +239,10 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 }
 
 auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/multiband_compressor.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
-      builder, "top_box", "com.github.wwmm.pulseeffects.multibandcompressor", schema_path + "multibandcompressor/");
+      builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
 
   auto stack_page = stack->add(*ui, plugin_name::multiband_compressor);
 

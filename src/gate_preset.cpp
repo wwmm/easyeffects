@@ -1,29 +1,29 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "gate_preset.hpp"
 
 GatePreset::GatePreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.gate",
-                                           "/com/github/wwmm/pulseeffects/sourceoutputs/gate/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.gate",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/gate/")) {}
+    : input_settings(
+          Gio::Settings::create("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streaminputs/gate/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.gate",
+                                            "/com/github/wwmm/easyeffects/streamoutputs/gate/")) {}
 
 void GatePreset::save(boost::property_tree::ptree& root,
                       const std::string& section,

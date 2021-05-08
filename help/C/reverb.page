@@ -1,96 +1,64 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="reverb">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="reverb">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Reverberation</title>
-    <p>
-        Reverberation, in psychoacoustics and acoustics, is a persistence of sound after
-        the sound is produced. A reverberation, or reverb, is created when a sound or
-        signal is reflected causing a large number of reflections to build up and then
-        decay as the sound is absorbed by the surfaces of objects in the space.
-        Reverberation plugins can be used to artificially produce this effect.
-    </p>
-    <p>
-        PulseEffects uses the reverberation developed by Calf Studio.
-    </p>
+    <p>Reverberation, in psychoacoustics and acoustics, is a persistence of sound after the sound is produced. A reverberation, or reverb, is created when a sound or signal is reflected causing a large number of reflections to build up and then decay as the sound is absorbed by the surfaces of objects in the space. Reverberation plugins can be used to artificially produce this effect.</p>
+    <p>EasyEffects uses the reverberation developed by Calf Studio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Pre Delay</em>
             </title>
-            <p>
-                Additional delay - corresponds to a distance between sound source and the
-                nearest wall.
-            </p>
+            <p>Additional delay - corresponds to a distance between sound source and the nearest wall.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Decay Time</em>
             </title>
-            <p>
-                Time it takes for reverberation to fade out.
-            </p>
+            <p>Time it takes for reverberation to fade out.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Amount</em>
             </title>
-            <p>
-                Amount of processed signal (reverberation) in the output.
-            </p>
+            <p>Amount of processed signal (reverberation) in the output.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Dry</em>
             </title>
-            <p>
-                Amount of unprocessed signal in the output.
-            </p>
+            <p>Amount of unprocessed signal in the output.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Bass Cut</em>
             </title>
-            <p>
-                Removes low frequencies from the reverberation.
-            </p>
+            <p>Removes low frequencies from the reverberation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Treble Cut</em>
             </title>
-            <p>
-                Removes high frequencies from the reverberation.
-            </p>
+            <p>Removes high frequencies from the reverberation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Diffusion</em>
             </title>
-            <p>
-                Increase its value for less uniform reverberation.
-            </p>
+            <p>Increase its value for less uniform reverberation.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Room Size</em>
             </title>
-            <p>
-                Size of the space that simulated reverberation occurs in - determines times
-                between reflections.
-            </p>
+            <p>Size of the space that simulated reverberation occurs in - determines times between reflections.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">High Frequency Damping</em>
             </title>
-            <p>
-                Cutoff reflections high frequencies - causes higher frequencies to decay faster.
-            </p>
+            <p>Cutoff reflections high frequencies - causes higher frequencies to decay faster.</p>
         </item>
     </terms>
     <section>
@@ -98,16 +66,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Reverberation" its:translate="no">
-                        https://en.wikipedia.org/wiki/Reverberation
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Reverberation" its:translate="no">https://en.wikipedia.org/wiki/Reverberation</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Reverb.html" its:translate="no">
-                        https://calf-studio-gear.org/doc/Reverb.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Reverb.html" its:translate="no">https://calf-studio-gear.org/doc/Reverb.html</link>
                 </p>
             </item>
         </list>

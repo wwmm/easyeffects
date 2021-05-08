@@ -1,135 +1,94 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="multibandgate">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="multibandgate">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Multiband Gate</title>
-    <p>
-        This kind of gate splits the signal in four different frequency ranges. These
-        ranges are processed separately and mixed together afterwards again.
-    </p>
-    <p>
-        PulseEffects uses the multiband gate developed by Calf Studio.
-    </p>
+    <p>This kind of gate splits the signal in four different frequency ranges. These ranges are processed separately and mixed together afterwards again.</p>
+    <p>EasyEffects uses the multiband gate developed by Calf Studio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Attack</em>
             </title>
-            <p>
-                Amount of milliseconds the signal has to rise above the threshold before gain
-                reduction starts.
-            </p>
+            <p>Amount of milliseconds the signal has to rise above the threshold before gain reduction starts.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Release</em>
             </title>
-            <p>
-                Amount of milliseconds the signal has to fall below the threshold before the
-                reduction is decreased again.
-            </p>
+            <p>Amount of milliseconds the signal has to fall below the threshold before the reduction is decreased again.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Reduction</em>
             </title>
-            <p>
-                The level of reduction in this strip.
-            </p>
+            <p>The level of reduction in this strip.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
-            <p>
-                If a signal rises above this level it will affect the gain reduction.
-            </p>
+            <p>If a signal rises above this level it will affect the gain reduction.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ratio</em>
             </title>
-            <p>
-                Set the ratio by which the signal will be reduced.
-            </p>
+            <p>Set the ratio by which the signal will be reduced.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Knee</em>
             </title>
-            <p>
-                Controls how smooth is the entrance in the gain reduction phase.
-            </p>
+            <p>Controls how smooth is the entrance in the gain reduction phase.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Makeup</em>
             </title>
-            <p>
-                It amplifies your signal after processing.
-            </p>
+            <p>It amplifies your signal after processing.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Bypass</em>
             </title>
-            <p>
-                Don't process anything, just bypass the signal of this strip.
-            </p>
+            <p>Don't process anything, just bypass the signal of this strip.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
-            <p>
-                Choose if the multibandgate should take the signal peak for detection or the RMS
-                value (it is smoother).
-            </p>
+            <p>Choose if the multibandgate should take the signal peak for detection or the RMS value (it is smoother).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Solo</em>
             </title>
-            <p>
-                Mute all strips not set to solo.
-            </p>
+            <p>Mute all strips not set to solo.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Mode</em>
             </title>
-            <p>
-                The crossover mode. You can choose between the fourth order Linkwitz-Riley(LR4)
-                and the eighth order Linkwitz-Riley(LR8).
-            </p>
+            <p>The crossover mode. You can choose between the fourth order Linkwitz-Riley(LR4) and the eighth order Linkwitz-Riley(LR8).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Split 1/2</em>
             </title>
-            <p>
-                Frequency that separates the sub band and the low band.
-            </p>
+            <p>Frequency that separates the sub band and the low band.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Split 2/3</em>
             </title>
-            <p>
-                Frequency that separates the low band and the mid band.
-            </p>
+            <p>Frequency that separates the low band and the mid band.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Split 3/4</em>
             </title>
-            <p>
-                Frequency that separates the mid band and the high band.
-            </p>
+            <p>Frequency that separates the mid band and the high band.</p>
         </item>
     </terms>
     <section>
@@ -137,18 +96,12 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="https://calf-studio-gear.org/doc/Multiband Gate.html"
-                        its:translate="no">
-                        https://calf-studio-gear.org/doc/Multiband Gate.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Multiband Gate.html" its:translate="no">https://calf-studio-gear.org/doc/Multiband Gate.html</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">
-                        https://en.wikipedia.org/wiki/Noise_gate
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">https://en.wikipedia.org/wiki/Noise_gate</link>
                 </p>
             </item>
         </list>

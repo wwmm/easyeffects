@@ -1,51 +1,28 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="maximizer">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="maximizer">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Maximizer</title>
-    <p>
-        Maximizer is a versatile plugin that can be tweaked to be a compressor, 
-        an amplifier and a limiter. It is basically controlled by only two 
-        parameters: ceiling and threshold. Threshold is a relative value 
-        representing the amplification of the signal while ceiling is the maximum 
-        allowed output peak level. Setting both values different from zero, the 
-        plugin will act as an upward compressor with a limiter on the ceiling 
-        level (overly amplified signal with ceiling set too low can result in 
-        distorted sound even without the presence of clipping). When only threshold 
-        is set equal to zero, it reduces the amplitude of the signal.
-    </p>
-    <p>
-        PulseEffects uses the maximizer from ZamAudio.
-    </p>
+    <p>Maximizer is a versatile plugin that can be tweaked to be a compressor, an amplifier and a limiter. It is basically controlled by only two parameters: ceiling and threshold. Threshold is a relative value representing the amplification of the signal while ceiling is the maximum allowed output peak level. Setting both values different from zero, the plugin will act as an upward compressor with a limiter on the ceiling level (overly amplified signal with ceiling set too low can result in distorted sound even without the presence of clipping). When only threshold is set equal to zero, it reduces the amplitude of the signal.</p>
+    <p>EasyEffects uses the maximizer from ZamAudio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
-            <p>
-                Relative value representing the amplification of the signal. 
-                Zero is no amplification. Lower values, higher amplification.
-            </p>
+            <p>Relative value representing the amplification of the signal. Zero is no amplification. Lower values, higher amplification.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ceiling</em>
             </title>
-            <p>
-                Maximum allowed peak level of the output signal.
-            </p>
+            <p>Maximum allowed peak level of the output signal.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Release</em>
             </title>
-            <p>
-                Set the release in milliseconds.
-            </p>
+            <p>Set the release in milliseconds.</p>
         </item>
     </terms>
     <!-- <section> <title>References</title> <list> <item> <p> <link

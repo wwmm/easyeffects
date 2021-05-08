@@ -1,9 +1,9 @@
 #!/bin/bash
-# I use this script to build and publish deb packages in ppa:mikhailnov/pulseeffects (https://launchpad.net/~mikhailnov/+archive/ubuntu/pulseeffects)
+# I use this script to build and publish deb packages in ppa:mikhailnov/easyeffects (https://launchpad.net/~mikhailnov/+archive/ubuntu/easyeffects)
 # I publish it to allow other people to use it and make it possible to maintain a new PPA easily in case I stop doing it for some reason
 # I think, it can also be used for maintaining packages in mainline Debian (minor modifications required)
 
-pkg_name="pulseeffects"
+pkg_name="easyeffects"
 
 # this allows the script to be ran both from the root of the source tree and from ./debian directory
 dir_start="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -53,10 +53,10 @@ do
 
 	cd ..
 
-	# change PPA names to yours, you may leave only one PPA; I upload pulseeffects to 2 different PPAs at the same time
-	for ppa_name in ppa:mikhailnov/pulseeffects ppa:mikhailnov/utils
+	# change PPA names to yours, you may leave only one PPA; I upload easyeffects to 2 different PPAs at the same time
+	for ppa_name in ppa:mikhailnov/easyeffects ppa:mikhailnov/utils
 	do
-		# example file name: pulseeffects_4.4.3-1~bionic1_source.changes
+		# example file name: easyeffects_4.4.3-1~bionic1_source.changes
 		if [ -f "${pkg_name}_${new_version}_source.changes" ]
 			then dput -f "$ppa_name" "${pkg_name}_${new_version}_source.changes"
 			else echo ".changes file ${pkg_name}_${new_version}_source.changes not found, not uploading anything!"

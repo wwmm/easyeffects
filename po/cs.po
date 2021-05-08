@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-26 15:00-0300\n"
+"POT-Creation-Date: 2021-05-08 12:05-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -17,91 +17,100 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Lokalize 19.04.0\n"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3
-msgid "PulseEffects"
-msgstr "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3
+#, fuzzy
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#, fuzzy
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects je pokročilým nástrojem pro zacházení se zvukem. Obsahuje mimo "
+"EasyEffects je pokročilým nástrojem pro zacházení se zvukem. Obsahuje mimo "
 "jiné nástroj ekvalizéru, omezovače (limiter), kompresoru a dozvuku. Na "
 "doplnění je také vestavěn analyzátor spektra."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#, fuzzy
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Protože PulseEffects používá výchozí zvukový server PulseAudio, bude "
-"pracovat s většinou, pokud už ne se všemi vámi používanými programy. Všechny "
+"Protože EasyEffects používá výchozí zvukový server PulseAudio, bude pracovat "
+"s většinou, pokud už ne se všemi vámi používanými programy. Všechny "
 "podporované programy jsou ukázány v hlavním okně, v němž je možné kterýkoli "
 "z nich ručně povolit."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#, fuzzy
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Vedle práce se zvukovým výstupem dokáže PulseEffects efekty použít i na "
+"Vedle práce se zvukovým výstupem dokáže EasyEffects efekty použít i na "
 "vstupní zařízení, jako je mikrofon. To je užitečné mimo jiné při nahrávání "
 "zvuku, pracuje to ale dobře během hlasových hovorů."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#, fuzzy
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
-"configuration used in the last session. It is also possible to save all the "
-"current settings as profiles."
+"When EasyEffects is launched it will conveniently remember the configuration "
+"used in the last session. It is also possible to save all the current "
+"settings as profiles."
 msgstr ""
-"Když je PulseEffects spuštěn, zapamatuje si příhodně nastavení používané při "
+"Když je EasyEffects spuštěn, zapamatuje si příhodně nastavení používané při "
 "posledním sezení. Je možné i uložení všech nynějších nastavení jako profilů."
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:23
 msgid "Set the volume and turn on/off effects"
 msgstr "Nastavit hlasitost a zapnout/vypnout efekty"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid "Includes an equalizer with built-in presets"
 msgstr "Zahrnuje ekvalizér s vestavěnými přednastaveními"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:31
 msgid "Input Limiter"
 msgstr "Omezovač vstupu"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52 data/ui/compressor.ui:36
-#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:142
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
+#: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:144
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:39
 msgid "Calibration"
 msgstr "Kalibrace"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:5
+#, fuzzy
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Zvukové efekty pro programy využívající PulseAudio"
+
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "omezovač (limiter);kompresor;dozvuk;ekvalizér;automatická hlasitost;"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:14
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:17
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
 msgstr "\"Přednastavení\""
 
@@ -135,63 +144,63 @@ msgstr "Prodleva"
 msgid "State"
 msgstr "Stav"
 
-#: data/ui/application_window.ui:37 data/ui/autogain.ui:343
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:343
 #: data/ui/bass_enhancer.ui:310 data/ui/compressor.ui:784
 #: data/ui/convolver.ui:295 data/ui/crossfeed.ui:210 data/ui/crystalizer.ui:112
 #: data/ui/deesser.ui:477 data/ui/delay.ui:178 data/ui/equalizer.ui:249
 #: data/ui/exciter.ui:310 data/ui/filter.ui:236 data/ui/gate.ui:398
-#: data/ui/limiter.ui:305 data/ui/loudness.ui:200 data/ui/maximizer.ui:194
+#: data/ui/limiter.ui:305 data/ui/loudness.ui:199 data/ui/maximizer.ui:194
 #: data/ui/multiband_compressor.ui:413 data/ui/multiband_compressor.ui:723
 #: data/ui/multiband_compressor.ui:1033 data/ui/multiband_compressor.ui:1343
 #: data/ui/multiband_compressor.ui:1488 data/ui/multiband_gate.ui:446
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1132
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1620
-#: data/ui/pipe_info.ui:119 data/ui/presets_menu.ui:35 data/ui/reverb.ui:425
-#: data/ui/rnnoise.ui:167 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:601 data/ui/pitch.glade:463 data/ui/webrtc.glade:794
-#: src/stream_output_effects_ui.cpp:101
+#: data/ui/pipe_info.ui:119 data/ui/pitch.ui:264 data/ui/presets_menu.ui:35
+#: data/ui/reverb.ui:425 data/ui/rnnoise.ui:167 data/ui/stereo_tools.ui:370
+#: data/ui/stereo_tools.ui:601 data/ui/webrtc.glade:794
+#: src/stream_output_effects_ui.cpp:82
 msgid "Output"
 msgstr "Výstup"
 
-#: data/ui/application_window.ui:64 data/ui/autogain.ui:283
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:283
 #: data/ui/bass_enhancer.ui:232 data/ui/compressor.ui:706
 #: data/ui/convolver.ui:217 data/ui/crossfeed.ui:132 data/ui/crystalizer.ui:34
 #: data/ui/deesser.ui:399 data/ui/delay.ui:100 data/ui/equalizer.ui:171
 #: data/ui/exciter.ui:232 data/ui/filter.ui:158 data/ui/gate.ui:320
-#: data/ui/limiter.ui:227 data/ui/loudness.ui:122 data/ui/maximizer.ui:134
+#: data/ui/limiter.ui:227 data/ui/loudness.ui:121 data/ui/maximizer.ui:134
 #: data/ui/multiband_compressor.ui:1410 data/ui/multiband_gate.ui:1542
-#: data/ui/pipe_info.ui:142 data/ui/presets_menu.ui:57 data/ui/reverb.ui:347
-#: data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:523
-#: data/ui/pitch.glade:450 data/ui/webrtc.glade:780
-#: src/stream_input_effects_ui.cpp:109
+#: data/ui/pipe_info.ui:142 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
+#: data/ui/reverb.ui:347 data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36
+#: data/ui/stereo_tools.ui:523 data/ui/webrtc.glade:780
+#: src/stream_input_effects_ui.cpp:100
 msgid "Input"
 msgstr "Vstup"
 
-#: data/ui/application_window.ui:91 src/pipe_settings_ui.cpp:108
+#: data/ui/application_window.ui:95 src/pipe_settings_ui.cpp:108
 msgid "PipeWire"
 msgstr ""
 
-#: data/ui/application_window.ui:110 src/calibration_ui.cpp:56
+#: data/ui/application_window.ui:114 src/calibration_ui.cpp:56
 #: src/calibration_ui.cpp:182
 msgid "Test Signals"
 msgstr "Zkušební signály"
 
-#: data/ui/application_window.ui:121
+#: data/ui/application_window.ui:125
 msgid "Global Bypass"
 msgstr "Přepustení"
 
-#: data/ui/application_window.ui:132
+#: data/ui/application_window.ui:136
 msgid "Help"
 msgstr "Nápověda"
 
-#: data/ui/application_window.ui:143 data/ui/application_window.ui:195
+#: data/ui/application_window.ui:147 data/ui/application_window.ui:199
 msgid "Settings"
 msgstr "Nastavení"
 
-#: data/ui/application_window.ui:157 data/ui/reverb.ui:19
-#: src/presets_menu_ui.cpp:208 src/presets_menu_ui.cpp:383
-#: src/presets_menu_ui.cpp:384 src/presets_menu_ui.cpp:401
-#: src/presets_menu_ui.cpp:402
+#: data/ui/application_window.ui:161 data/ui/reverb.ui:19
+#: src/presets_menu_ui.cpp:204 src/presets_menu_ui.cpp:379
+#: src/presets_menu_ui.cpp:380 src/presets_menu_ui.cpp:397
+#: src/presets_menu_ui.cpp:398
 msgid "Presets"
 msgstr "Přednastavení"
 
@@ -214,8 +223,8 @@ msgstr "Vymazat Historii"
 #: data/ui/multiband_compressor.ui:794 data/ui/multiband_compressor.ui:1104
 #: data/ui/multiband_gate.ui:14 data/ui/multiband_gate.ui:174
 #: data/ui/multiband_gate.ui:517 data/ui/multiband_gate.ui:860
-#: data/ui/multiband_gate.ui:1203 data/ui/reverb.ui:25 data/ui/rnnoise.ui:26
-#: data/ui/stereo_tools.ui:14
+#: data/ui/multiband_gate.ui:1203 data/ui/pitch.ui:30 data/ui/reverb.ui:25
+#: data/ui/rnnoise.ui:26 data/ui/stereo_tools.ui:14
 msgid "Bypass"
 msgstr "Překlenutí"
 
@@ -239,7 +248,7 @@ msgstr "Relativní"
 msgid "Range"
 msgstr "Rozsah"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:153
+#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:155
 msgid "Loudness"
 msgstr "Hlasitost"
 
@@ -253,20 +262,20 @@ msgstr "Vstupní zesílení"
 #: data/ui/crystalizer.ui:186 data/ui/deesser.ui:619 data/ui/delay.ui:260
 #: data/ui/equalizer.ui:331 data/ui/equalizer_band.ui:137
 #: data/ui/equalizer_band.ui:199 data/ui/exciter.ui:422 data/ui/filter.ui:318
-#: data/ui/gate.ui:510 data/ui/limiter.ui:418 data/ui/loudness.ui:282
+#: data/ui/gate.ui:510 data/ui/limiter.ui:418 data/ui/loudness.ui:281
 #: data/ui/maximizer.ui:290 data/ui/multiband_compressor.ui:1570
-#: data/ui/multiband_gate.ui:1702 data/ui/reverb.ui:507 data/ui/rnnoise.ui:249
-#: data/ui/stereo_tools.ui:713 data/ui/pitch.glade:158 data/ui/webrtc.glade:141
+#: data/ui/multiband_gate.ui:1702 data/ui/pitch.ui:346 data/ui/reverb.ui:507
+#: data/ui/rnnoise.ui:249 data/ui/stereo_tools.ui:713 data/ui/webrtc.glade:141
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
 #: data/ui/autogain.ui:420 data/ui/compressor.ui:971 data/ui/convolver.ui:390
 #: data/ui/crossfeed.ui:305 data/ui/deesser.ui:632 data/ui/delay.ui:273
 #: data/ui/equalizer.ui:344 data/ui/exciter.ui:435 data/ui/filter.ui:331
-#: data/ui/gate.ui:523 data/ui/limiter.ui:431 data/ui/loudness.ui:295
+#: data/ui/gate.ui:523 data/ui/limiter.ui:431 data/ui/loudness.ui:294
 #: data/ui/maximizer.ui:303 data/ui/multiband_compressor.ui:1583
-#: data/ui/multiband_gate.ui:1715 data/ui/reverb.ui:520 data/ui/rnnoise.ui:262
-#: data/ui/stereo_tools.ui:726
+#: data/ui/multiband_gate.ui:1715 data/ui/pitch.ui:359 data/ui/reverb.ui:520
+#: data/ui/rnnoise.ui:262 data/ui/stereo_tools.ui:726
 msgid "Using"
 msgstr ""
 
@@ -313,7 +322,7 @@ msgid "Id"
 msgstr ""
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
-#: data/ui/presets_menu.ui:100 data/ui/presets_menu.ui:201
+#: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
 msgid "Name"
 msgstr "Název"
 
@@ -548,8 +557,8 @@ msgstr "Doba trvání"
 msgid "Import Impulse"
 msgstr "Zavést impuls"
 
-#: data/ui/convolver.ui:429 data/ui/effects_base.ui:346
-#: data/ui/presets_menu.ui:132 data/ui/presets_menu.ui:233
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:347
+#: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
 msgstr ""
 
@@ -631,15 +640,15 @@ msgstr ""
 msgid "Players"
 msgstr ""
 
-#: data/ui/effects_base.ui:167
+#: data/ui/effects_base.ui:168
 msgid "Plugins"
 msgstr ""
 
-#: data/ui/effects_base.ui:242
+#: data/ui/effects_base.ui:243
 msgid "Blocklist"
 msgstr "Černá listina"
 
-#: data/ui/effects_base.ui:269
+#: data/ui/effects_base.ui:270
 msgid "Player Name"
 msgstr ""
 
@@ -863,8 +872,8 @@ msgstr "Nastavení"
 
 #: data/ui/general_settings.ui:120
 #, fuzzy
-msgid "About PulseEffects"
-msgstr "PulseEffects"
+msgid "About EasyEffects"
+msgstr "EasyEffects"
 
 #: data/ui/limiter.ui:21
 msgid "Automatic Leveling"
@@ -1019,6 +1028,30 @@ msgstr "Moduly"
 msgid "Clients"
 msgstr "Klienti"
 
+#: data/ui/pitch.ui:18
+msgid "Faster"
+msgstr "Rychleji"
+
+#: data/ui/pitch.ui:24
+msgid "Preserve Formant"
+msgstr "Zachovat složku rozhodující o barvě zvuku"
+
+#: data/ui/pitch.ui:46
+msgid "Cents"
+msgstr "Centy"
+
+#: data/ui/pitch.ui:79
+msgid "Semitones"
+msgstr "Půltóny"
+
+#: data/ui/pitch.ui:112
+msgid "Octaves"
+msgstr "Oktávy"
+
+#: data/ui/pitch.ui:145
+msgid "Crispness"
+msgstr "Křehkost"
+
 #: data/ui/preset_row.ui:16
 msgid "Load"
 msgstr "Načíst"
@@ -1039,19 +1072,19 @@ msgstr ""
 msgid "Remove this preset file"
 msgstr "Odstranit tento soubor s přednastavením"
 
-#: data/ui/presets_menu.ui:77
+#: data/ui/presets_menu.ui:78
 msgid "Speakers"
 msgstr ""
 
-#: data/ui/presets_menu.ui:106 data/ui/presets_menu.ui:207
+#: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
 msgstr "Vytvořit přednastavení"
 
-#: data/ui/presets_menu.ui:117 data/ui/presets_menu.ui:218
+#: data/ui/presets_menu.ui:118 data/ui/presets_menu.ui:219
 msgid "Import Presets"
 msgstr "Zavést přednastavení"
 
-#: data/ui/presets_menu.ui:178
+#: data/ui/presets_menu.ui:179
 #, fuzzy
 msgid "Microphone"
 msgstr "Kalibrace mikrofonu"
@@ -1360,38 +1393,6 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
-#: data/ui/pitch.glade:102 include/effects_base_ui.hpp:157
-msgid "Pitch"
-msgstr "Výška tónu"
-
-#: data/ui/pitch.glade:182 data/ui/webrtc.glade:165
-msgid "Provided by"
-msgstr "Poskytuje"
-
-#: data/ui/pitch.glade:270
-msgid "Cents"
-msgstr "Centy"
-
-#: data/ui/pitch.glade:300
-msgid "Semitones"
-msgstr "Půltóny"
-
-#: data/ui/pitch.glade:330
-msgid "Octaves"
-msgstr "Oktávy"
-
-#: data/ui/pitch.glade:360
-msgid "Crispness"
-msgstr "Křehkost"
-
-#: data/ui/pitch.glade:402
-msgid "Faster"
-msgstr "Rychleji"
-
-#: data/ui/pitch.glade:414
-msgid "Preserve Formant"
-msgstr "Zachovat složku rozhodující o barvě zvuku"
-
 #: data/ui/pipe_settings.glade:58 data/ui/pipe_settings.glade:141
 msgid "Use Default"
 msgstr "Použít Výchozí"
@@ -1404,9 +1405,13 @@ msgstr "Vstupní efekty"
 msgid "Output Effects"
 msgstr "Výstupní efekty"
 
-#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:161
+#: data/ui/webrtc.glade:96 include/effects_base_ui.hpp:163
 msgid "WebRTC"
 msgstr "WebRTC"
+
+#: data/ui/webrtc.glade:165
+msgid "Provided by"
+msgstr "Poskytuje"
 
 #: data/ui/webrtc.glade:256 data/ui/webrtc.glade:389 data/ui/webrtc.glade:460
 #: data/ui/webrtc.glade:648
@@ -1474,7 +1479,7 @@ msgstr "Úroveň cíle"
 msgid "Maximum Gain"
 msgstr "Největší zesílení"
 
-#: data/ui/webrtc.glade:612 include/effects_base_ui.hpp:152
+#: data/ui/webrtc.glade:612 include/effects_base_ui.hpp:154
 msgid "Limiter"
 msgstr "Omezovač"
 
@@ -1494,91 +1499,95 @@ msgstr "Velmi nízká"
 msgid "Voice Detector"
 msgstr "Zjišťovatel hlasu"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:142
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatické zesílení"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:143
 msgid "Bass Enhancer"
 msgstr "Zlepšovač hloubek"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:145
 msgid "Convolver"
 msgstr "Svinovač"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:146
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:147
 msgid "Crystalizer"
 msgstr "Krystalizátor"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:148
 msgid "Deesser"
 msgstr "Odstraňovač sykotu"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:149
 msgid "Delay"
 msgstr "Zpoždění"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:150
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:151
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:152
 msgid "Filter"
 msgstr "Filtr"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:153
 msgid "Gate"
 msgstr "Brána"
 
-#: include/effects_base_ui.hpp:154
+#: include/effects_base_ui.hpp:156
 msgid "Maximizer"
 msgstr "Zvětšovač"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:157
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:158
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:159
+msgid "Pitch"
+msgstr "Výška tónu"
+
+#: include/effects_base_ui.hpp:160
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:161
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Zmenšení zesílení"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:162
 msgid "Stereo Tools"
 msgstr "Nástroje sterea"
 
 #: src/application.cpp:30
-msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "Ukončit PulseEffects. Užitečné, když běži ve služebním režimu."
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr "Ukončit EasyEffects. Užitečné, když běži ve služebním režimu."
 
 #: src/application.cpp:32
 msgid "Show available presets."
 msgstr "Ukázat dostupná přednastavení."
 
 #: src/application.cpp:35
-msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "Nahrát přednastavení. Příklad: pulseeffects -l music"
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
 #: src/application.cpp:37
-msgid "Reset PulseEffects."
-msgstr "Vynulovat PulseEffects."
+msgid "Reset EasyEffects."
+msgstr "Vynulovat EasyEffects."
 
 #: src/application.cpp:40
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -1604,13 +1613,13 @@ msgstr "Kalibrace mikrofonu"
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:373 src/equalizer_ui.cpp:585
-#: src/equalizer_ui.cpp:587 src/presets_menu_ui.cpp:204
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:373 src/equalizer_ui.cpp:589
+#: src/equalizer_ui.cpp:591 src/presets_menu_ui.cpp:200
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:374 src/equalizer_ui.cpp:585
-#: src/equalizer_ui.cpp:588 src/presets_menu_ui.cpp:204
+#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:374 src/equalizer_ui.cpp:589
+#: src/equalizer_ui.cpp:592 src/presets_menu_ui.cpp:200
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -1626,24 +1635,24 @@ msgstr "Nepodařilo se"
 msgid "Could Not Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_base_ui.cpp:626 src/effects_base_ui.cpp:1250
+#: src/effects_base_ui.cpp:648 src/effects_base_ui.cpp:1272
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:630 src/effects_base_ui.cpp:1252
+#: src/effects_base_ui.cpp:652 src/effects_base_ui.cpp:1274
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:634 src/effects_base_ui.cpp:1254
+#: src/effects_base_ui.cpp:656 src/effects_base_ui.cpp:1276
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:638 src/effects_base_ui.cpp:1256
+#: src/effects_base_ui.cpp:660 src/effects_base_ui.cpp:1278
 #, fuzzy
 msgid "creating"
 msgstr "Hradlo"
 
-#: src/effects_base_ui.cpp:642 src/effects_base_ui.cpp:1258
+#: src/effects_base_ui.cpp:664 src/effects_base_ui.cpp:1280
 msgid "error"
 msgstr ""
 
@@ -1651,17 +1660,17 @@ msgstr ""
 msgid "infinity"
 msgstr "nekonečno"
 
-#: src/equalizer_ui.cpp:584 src/equalizer_ui.cpp:587
+#: src/equalizer_ui.cpp:588 src/equalizer_ui.cpp:591
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Zavést APO přednastavení"
 
-#: src/equalizer_ui.cpp:593
+#: src/equalizer_ui.cpp:597
 #, fuzzy
 msgid "APO Presets"
 msgstr "APO Přednastavení"
 
-#: src/presets_menu_ui.cpp:203
+#: src/presets_menu_ui.cpp:199
 #, fuzzy
 msgid "Import Preset"
 msgstr "Zavést přednastavení"

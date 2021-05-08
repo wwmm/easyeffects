@@ -1,51 +1,27 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="rnnoise">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="rnnoise">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Noise Reduction</title>
-    <p>
-        Noise reduction is the process of removing noise from a signal.
-    </p>
-    <p>
-        PulseEffects Noise Reduction is made on the library RNNoise which is based based on
-        recurrent neural network, a class of artificial neural networks where connections
-        between nodes form a directed graph along a temporal sequence. This allows it to
-        exhibit temporal dynamic behavior.
-    </p>
-    <p>
-        Standard RNNoise Model is used and custom models can be imported to perform different
-        types of noise reduction.
-    </p>
+    <p>Noise reduction is the process of removing noise from a signal.</p>
+    <p>EasyEffects Noise Reduction is made on the library RNNoise which is based based on recurrent neural network, a class of artificial neural networks where connections between nodes form a directed graph along a temporal sequence. This allows it to exhibit temporal dynamic behavior.</p>
+    <p>Standard RNNoise Model is used and custom models can be imported to perform different types of noise reduction.</p>
     <section>
         <title>References</title>
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Noise_reduction"
-                        its:translate="no">
-                        https://en.wikipedia.org/wiki/Noise_reduction
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Noise_reduction" its:translate="no">https://en.wikipedia.org/wiki/Noise_reduction</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Recurrent_neural_network"
-                        its:translate="no">
-                        https://en.wikipedia.org/wiki/Recurrent_neural_network
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Recurrent_neural_network" its:translate="no">https://en.wikipedia.org/wiki/Recurrent_neural_network</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link
-                        href="https://github.com/xiph/rnnoise"
-                        its:translate="no">
-                        https://github.com/xiph/rnnoise
-                    </link>
+                    <link href="https://github.com/xiph/rnnoise" its:translate="no">https://github.com/xiph/rnnoise</link>
                 </p>
             </item>
         </list>

@@ -1,31 +1,21 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="stereotools">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="stereotools">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Stereo Tools</title>
-    <p>
-        PulseEffects uses the stereo tools developed by Calf Studio.
-    </p>
+    <p>EasyEffects uses the stereo tools developed by Calf Studio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Softclip</em>
             </title>
-            <p>
-                Do kind of analog distortion instead of harsh digital 0db clipping.
-            </p>
+            <p>Do kind of analog distortion instead of harsh digital 0db clipping.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Balance</em>
             </title>
-            <p>
-                Set the balance between both channels.
-            </p>
+            <p>Set the balance between both channels.</p>
         </item>
         <item>
             <title>
@@ -37,59 +27,43 @@
             <title>
                 <em style="strong" its:withinText="nested">Mode</em>
             </title>
-            <p>
-                Choose normal stereo behavior (LR - LR) or convert between MS and LR.
-            </p>
+            <p>Choose normal stereo behavior (LR - LR) or convert between MS and LR.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Side Level</em>
             </title>
-            <p>
-                The level of the side signal.
-            </p>
+            <p>The level of the side signal.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Side Balance</em>
             </title>
-            <p>
-                The balance of the side signal.
-            </p>
+            <p>The balance of the side signal.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Middle Level</em>
             </title>
-            <p>
-                Middle signal position in the stereo panorama.
-            </p>
+            <p>Middle signal position in the stereo panorama.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Delay L/R</em>
             </title>
-            <p>
-                Delay the left or the right channel (milliseconds). Negative values delay the
-                left channel and positive values the right channel.
-            </p>
+            <p>Delay the left or the right channel (milliseconds). Negative values delay the left channel and positive values the right channel.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Stereo Base</em>
             </title>
-            <p>
-                Set the stereo base of your material seamless between Mono and inverted
-                Channels.
-            </p>
+            <p>Set the stereo base of your material seamless between Mono and inverted Channels.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Stereo Phase</em>
             </title>
-            <p>
-                Set the stereo phase of your material.
-            </p>
+            <p>Set the stereo phase of your material.</p>
         </item>
     </terms>
     <section>
@@ -97,11 +71,7 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="https://calf-studio-gear.org/doc/Stereo%20Tools.html"
-                        its:translate="no">
-                        https://calf-studio-gear.org/doc/Stereo%20Tools.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Stereo%20Tools.html" its:translate="no">https://calf-studio-gear.org/doc/Stereo%20Tools.html</link>
                 </p>
             </item>
         </list>

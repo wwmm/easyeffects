@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="pulseeffects">
+<interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="valign">center</property>
         <property name="spacing">24</property>

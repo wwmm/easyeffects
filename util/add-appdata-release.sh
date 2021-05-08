@@ -9,7 +9,7 @@ set -o noclobber
 #                                  Constants
 # -----------------------------------------------------------------------------
 
-readonly APP_ID='com.github.wwmm.pulseeffects'
+readonly APP_ID='com.github.wwmm.easyeffects'
 readonly SCRIPT_DEPS='date dirname realpath xmllint xsltproc'
 
 BASE_DIR='.'

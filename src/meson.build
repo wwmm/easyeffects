@@ -1,5 +1,5 @@
-pulseeffects_sources = [
-	'pulseeffects.cpp',
+easyeffects_sources = [
+	'easyeffects.cpp',
 	'application.cpp',
 	'application_ui.cpp',
 	'autogain.cpp',
@@ -107,7 +107,7 @@ cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
 
-pulseeffects_deps = [
+easyeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.24'),
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('glibmm-2.68', version: '>=2.68'),
@@ -130,8 +130,8 @@ pulseeffects_deps = [
 
 executable(
 	meson.project_name(),
-	pulseeffects_sources,
+	easyeffects_sources,
 	include_directories : [include_dir,config_h_dir],
-	dependencies : pulseeffects_deps,
+	dependencies : easyeffects_deps,
 	install: true
 )

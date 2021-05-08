@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="pulseeffects">
+<interface domain="easyeffects">
 
     <!-- main window widget -->
 
     <object class="GtkApplicationWindow" id="ApplicationUi">
-        <property name="icon-name">pulseeffects</property>
+        <property name="icon-name">easyeffects</property>
 
         <child type="titlebar">
 
@@ -114,7 +114,7 @@
                         <property name="tooltip_text" translatable="yes">Test Signals</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="icon_name">pulseeffects-sine-symbolic</property>
+                        <property name="icon_name">easyeffects-sine-symbolic</property>
                     </object>
                 </child>
 

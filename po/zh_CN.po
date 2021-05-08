@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the pulseeffects package.
+# This file is distributed under the same license as the easyeffects package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # eternal <www.eternalhui@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: pulseeffects\n"
+"Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-08 19:22+0200\n"
 "PO-Revision-Date: 2020-11-01 16:15+0800\n"
@@ -19,89 +19,89 @@ msgstr ""
 "X-Generator: Gtranslator 3.38.0\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3 data/ui/application.glade:61
-msgid "PulseEffects"
-msgstr "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3 data/ui/application.glade:61
+msgid "EasyEffects"
+msgstr "EasyEffects"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "PulseAudio 音频效果器"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffects 是一个高级音频处理工具。 它包括均衡器，限制器，压缩器和混响工"
+"EasyEffects 是一个高级音频处理工具。 它包括均衡器，限制器，压缩器和混响工"
 "具，等等。 比如，还有一个内置的频谱分析仪。"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:16
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"由于 PulseEffects 默认使用 PulseAudio 音频服务器，因此它将与您使用的大多数"
+"由于 EasyEffects 默认使用 PulseAudio 音频服务器，因此它将与您使用的大多数"
 "（并非全部）应用程序一起使用。 所有受支持的应用程序都显示在主窗口中，可以在其"
 "中单独启用每个应用程序。"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:22
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"除了处理音频输出外，PulseEffects 还可以将效果应用于输入设备，例如麦克风。 例"
+"除了处理音频输出外，EasyEffects 还可以将效果应用于输入设备，例如麦克风。 例"
 "如，在录音时很有用，并在语音通话时也能很好地工作。"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
+"When EasyEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"启动 PulseEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
+"启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
 "配置文件。"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
 msgstr "设置音量并 打开/关闭音效"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
 msgstr "包含内置的均衡器配置"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr "输入限制器"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:52
 #: data/ui/compressor.glade:110 data/ui/compressor.glade:488
 #: data/ui/webrtc.glade:540
 msgid "Compressor"
 msgstr "压缩器"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr "校准校准"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "均衡器, 压缩器和其他音效"
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "限制器;压缩器;混响;均衡器;自动音量;"
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:44
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:47
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:44
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:47
 msgid "\"Presets\""
 msgstr "\"配置\""
 
@@ -1625,20 +1625,20 @@ msgid "playing"
 msgstr "正在播放"
 
 #: src/application.cpp:38
-msgid "Quit PulseEffects. Useful when running in service mode."
-msgstr "退出 PulseEffects。 在服务模式下运行时很有用。"
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr "退出 EasyEffects。 在服务模式下运行时很有用。"
 
 #: src/application.cpp:40
 msgid "Show available presets."
 msgstr "显示可用配置。"
 
 #: src/application.cpp:43
-msgid "Load a preset. Example: pulseeffects -l music"
-msgstr "加载配置。 示例：pulseeffects -l music"
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "加载配置。 示例：easyeffects -l music"
 
 #: src/application.cpp:45
-msgid "Reset PulseEffects."
-msgstr "重设 PulseEffects。"
+msgid "Reset EasyEffects."
+msgstr "重设 EasyEffects。"
 
 #: src/application.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -1718,8 +1718,8 @@ msgstr "PulseAudio"
 #~ msgid "Reset Equalizer"
 #~ msgstr "重设均衡器"
 
-#~ msgid "PulseEffects was updated"
-#~ msgstr "PulseEffects 已经是最新版本"
+#~ msgid "EasyEffects was updated"
+#~ msgstr "EasyEffects 已经是最新版本"
 
 #~ msgid ""
 #~ "It is recommended to reset its configuration after an update. Do you want "

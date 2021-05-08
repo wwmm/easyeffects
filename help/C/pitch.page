@@ -1,19 +1,10 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="pitch">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="pitch">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Pitch</title>
-    <p>
-        Pitch shifting is a sound recording technique in which the original pitch of a
-        sound is raised or lowered.
-    </p>
-    <p>
-        PulseEffects uses the pitch shifter from RubberBand.
-    </p>
+    <p>Pitch shifting is a sound recording technique in which the original pitch of a sound is raised or lowered.</p>
+    <p>EasyEffects uses the pitch shifter from RubberBand.</p>
     <terms>
         <item>
             <title>
@@ -25,33 +16,25 @@
             <title>
                 <em style="strong" its:withinText="nested">Preserve Formant</em>
             </title>
-            <p>
-                Enable formant preservation when pitch shifting.
-            </p>
+            <p>Enable formant preservation when pitch shifting.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Cents</em>
             </title>
-            <p>
-                Number of cents the pitch will increased or decreased.
-            </p>
+            <p>Number of cents the pitch will increased or decreased.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Semitones</em>
             </title>
-            <p>
-                Number of semitones the pitch will increased or decreased.
-            </p>
+            <p>Number of semitones the pitch will increased or decreased.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Octaves</em>
             </title>
-            <p>
-                Number of octaves the pitch will increased or decreased.
-            </p>
+            <p>Number of octaves the pitch will increased or decreased.</p>
         </item>
         <item>
             <title>
@@ -59,26 +42,16 @@
             </title>
             <list type="none">
                 <item>
-                    <p>
-                        0 - Disable phase resynchronisation at transients, phase lamination and use
-                        longer processing window.
-                    </p>
+                    <p>0 - Disable phase resynchronisation at transients, phase lamination and use longer processing window.</p>
                 </item>
                 <item>
-                    <p>
-                        1 - Use soft transient detector, disable phase lamination and use longer
-                        processing window.
-                    </p>
+                    <p>1 - Use soft transient detector, disable phase lamination and use longer processing window.</p>
                 </item>
                 <item>
-                    <p>
-                        2 - Disable phase resynchronisation at transients and phase lamination.
-                    </p>
+                    <p>2 - Disable phase resynchronisation at transients and phase lamination.</p>
                 </item>
                 <item>
-                    <p>
-                        3 - Disable phase resynchronisation at transients.
-                    </p>
+                    <p>3 - Disable phase resynchronisation at transients.</p>
                 </item>
             </list>
         </item>
@@ -88,23 +61,17 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Pitch_shift" its:translate="no">
-                        https://en.wikipedia.org/wiki/Pitch_shift
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Pitch_shift" its:translate="no">https://en.wikipedia.org/wiki/Pitch_shift</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://breakfastquay.com/rubberband/" its:translate="no">
-                        https://breakfastquay.com/rubberband/
-                    </link>
+                    <link href="https://breakfastquay.com/rubberband/" its:translate="no">https://breakfastquay.com/rubberband/</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://breakfastquay.com/rubberband/usage.txt" its:translate="no">
-                        https://breakfastquay.com/rubberband/usage.txt
-                    </link>
+                    <link href="https://breakfastquay.com/rubberband/usage.txt" its:translate="no">https://breakfastquay.com/rubberband/usage.txt</link>
                 </p>
             </item>
         </list>

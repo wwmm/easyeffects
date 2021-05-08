@@ -3,7 +3,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>PulseEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user.</p>
+    <p>EasyEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user.</p>
     <terms>
         <item>
             <title>

@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "webrtc.hpp"
@@ -73,7 +73,7 @@ void Webrtc::build_probe_bin() {
   // auto* probe = gst_element_factory_make("webrtcechoprobe", nullptr);
   // auto* sink = gst_element_factory_make("fakesink", nullptr);
 
-  // auto* props = gst_structure_from_string("props,application.name=PulseEffectsWebrtcProbe", nullptr);
+  // auto* props = gst_structure_from_string("props,application.name=EasyEffectsWebrtcProbe", nullptr);
 
   // const auto* caps_str = "audio/x-raw,format=S16LE,channels=2,rate=48000";
   // auto* caps = gst_caps_from_string(caps_str);

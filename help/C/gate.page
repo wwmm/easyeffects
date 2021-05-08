@@ -1,95 +1,64 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="gate">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="gate">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Gate</title>
-    <p>
-        Gates attenuate signals that register below the threshold. This kind of signal
-        processing reduces disturbing noise between useful signals.
-    </p>
-    <p>
-        PulseEffects uses the gate developed by Calf Studio.
-    </p>
+    <p>Gates attenuate signals that register below the threshold. This kind of signal processing reduces disturbing noise between useful signals.</p>
+    <p>EasyEffects uses the gate developed by Calf Studio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Attack</em>
             </title>
-            <p>
-                Amount of milliseconds the signal has to rise above the threshold before gain
-                reduction stops.
-            </p>
+            <p>Amount of milliseconds the signal has to rise above the threshold before gain reduction stops.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Release</em>
             </title>
-            <p>
-                Amount of milliseconds the signal has to fall below the threshold before the
-                reduction is increased again.
-            </p>
+            <p>Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
-            <p>
-                If a signal rises above this level the gain reduction is released.
-            </p>
+            <p>If a signal rises above this level the gain reduction is released.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ratio</em>
             </title>
-            <p>
-                Set the ratio by which the signal will be reduced.
-            </p>
+            <p>Set the ratio by which the signal will be reduced.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Knee</em>
             </title>
-            <p>
-                Controls how smooth is the entrance in the gain reduction phase.
-            </p>
+            <p>Controls how smooth is the entrance in the gain reduction phase.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Makeup</em>
             </title>
-            <p>
-                It amplifies your signal after processing.
-            </p>
+            <p>It amplifies your signal after processing.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Stereo Link</em>
             </title>
-            <p>
-                Choose if the gain reduction is affected by the louder channel or by the average
-                level between the channels.
-            </p>
+            <p>Choose if the gain reduction is affected by the louder channel or by the average level between the channels.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
-            <p>
-                Choose if the gate should take the signal peak for detection or the RMS value
-                (it is smoother).
-            </p>
+            <p>Choose if the gate should take the signal peak for detection or the RMS value (it is smoother).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Gain Reduction</em>
             </title>
-            <p>
-                The level of gain reduction when the signal is below the threshold.
-            </p>
+            <p>The level of gain reduction when the signal is below the threshold.</p>
         </item>
     </terms>
     <section>
@@ -97,16 +66,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Gate.html" its:translate="no">
-                        https://calf-studio-gear.org/doc/Gate.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Gate.html" its:translate="no">https://calf-studio-gear.org/doc/Gate.html</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">
-                        https://en.wikipedia.org/wiki/Noise_gate
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">https://en.wikipedia.org/wiki/Noise_gate</link>
                 </p>
             </item>
         </list>

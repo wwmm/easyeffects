@@ -1,9 +1,9 @@
-Source: pulseeffects
+Source: easyeffects
 Section: sound
 Priority: optional
 Maintainer: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>
 Standards-Version: 4.1.4
-Homepage: https://github.com/wwmm/pulseeffects
+Homepage: https://github.com/wwmm/easyeffects
 Build-Depends: debhelper (>=11),
                scour,
                meson (>=0.40),
@@ -28,7 +28,7 @@ Build-Depends: debhelper (>=11),
                appstream-util,
                desktop-file-utils
 
-Package: pulseeffects
+Package: easyeffects
 Architecture: any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
@@ -37,32 +37,32 @@ Depends: ${misc:Depends},
          gstreamer1.0-plugins-good,
          gir1.2-gst-plugins-bad-1.0,
          gstreamer1.0-pulseaudio,
-         gstreamer1.0-adapter-pulseeffects
-# gstreamer1.0-adapter-pulseeffects is a strict dependency, not recommended
-# see https://github.com/wwmm/pulseeffects/issues/307#issuecomment-415078508
+         gstreamer1.0-adapter-easyeffects
+# gstreamer1.0-adapter-easyeffects is a strict dependency, not recommended
+# see https://github.com/wwmm/easyeffects/issues/307#issuecomment-415078508
 Recommends: calf-plugins (>= 0.90.0),
             zam-plugins,
             rubberband-ladspa,
             liblilv-0-0,
             lsp-plugins-lv2 (>= 1.1.24) | lsp-plugins (>= 1.1.24),
-            gstreamer1.0-convolver-pulseeffects,
-            gstreamer1.0-crystalizer-pulseeffects,
-            gstreamer1.0-autogain-pulseeffects
+            gstreamer1.0-convolver-easyeffects,
+            gstreamer1.0-crystalizer-easyeffects,
+            gstreamer1.0-autogain-easyeffects
 Description: Sound input and output effects for PulseAudio
  Many sound effects for PulseAudio input and output.
 
-Package: gstreamer1.0-convolver-pulseeffects
+Package: gstreamer1.0-convolver-easyeffects
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends},
          ${shlibs:Depends}
 Provides: peconvolver, gstreamer1.0-convolver
-Replaces: pulseeffects (<< 4.1.7-3)
+Replaces: easyeffects (<< 4.1.7-3)
 Description: Gstreamer convolver
  Simple Gstreamer crystalizer plugin based on
  the library Zita-convolver.
 
-Package: gstreamer1.0-crystalizer-pulseeffects
+Package: gstreamer1.0-crystalizer-easyeffects
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends},
@@ -72,7 +72,7 @@ Description: Gstreamer crystalizer
  Simple Gstreamer plugin useful to add more dynamic range
  to songs that were overly compressed.
 
-Package: gstreamer1.0-autogain-pulseeffects
+Package: gstreamer1.0-autogain-easyeffects
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends},
@@ -82,7 +82,7 @@ Description: Gstreamer crystalizer
  Simple Gstreamer plugin that changes audio gain
  to match the levels recommended by the ebur128 standard.
 
-Package: gstreamer1.0-adapter-pulseeffects
+Package: gstreamer1.0-adapter-easyeffects
 Architecture: any
 Multi-Arch: same
 Depends: ${misc:Depends},
@@ -92,6 +92,6 @@ Description: Gstreamer adapter
  Simple plugin that gives output buffers
  with the desired number of samples.
  .
- It is used in PulseEffects to ensure that
+ It is used in EasyEffects to ensure that
  the number of audio samples in the buffer
  is a power of 2. The convolver needs this.

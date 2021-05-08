@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/com/github/wwmm/easyeffects">
+        <file>ui/custom.css</file>
+        <file>ui/application_window.ui</file>
+        <file>ui/app_info.ui</file>
+        <file>ui/autogain.ui</file>
+        <file>ui/bass_enhancer.ui</file>
+        <file>ui/client_info.ui</file>
+        <file>ui/compressor.ui</file>
+        <file>ui/convolver.ui</file>
+        <file>ui/crossfeed.ui</file>
+        <file>ui/crystalizer.ui</file>
+        <file>ui/crystalizer_band.ui</file>
+        <file>ui/deesser.ui</file>
+        <file>ui/delay.ui</file>
+        <file>ui/effects_base.ui</file>
+        <file>ui/equalizer.ui</file>
+        <file>ui/equalizer_band.ui</file>
+        <file>ui/exciter.ui</file>
+        <file>ui/filter.ui</file>
+        <file>ui/gate.ui</file>
+        <file>ui/general_settings.ui</file>
+        <file>ui/limiter.ui</file>
+        <file>ui/loudness.ui</file>
+        <file>ui/maximizer.ui</file>
+        <file>ui/module_info.ui</file>
+        <file>ui/multiband_compressor.ui</file>
+        <file>ui/multiband_gate.ui</file>
+        <file>ui/pipe_info.ui</file>
+        <file>ui/pitch.ui</file>
+        <file>ui/preset_row.ui</file>
+        <file>ui/presets_menu.ui</file>
+        <file>ui/reverb.ui</file>
+        <file>ui/rnnoise.ui</file>
+        <file>ui/spectrum.ui</file>
+        <file>ui/spectrum_settings.ui</file>
+        <file>ui/stereo_tools.ui</file>
+        <file>about.glade</file>
+        <file>ui/pipe_settings.glade</file>
+        <file>ui/webrtc.glade</file>
+        <file>ui/calibration.glade</file>
+        <file>ui/calibration_signals.glade</file>
+        <file>ui/calibration_mic.glade</file>
+        <file>icons/easyeffects-sine-symbolic.svg</file>
+    </gresource>
+</gresources>

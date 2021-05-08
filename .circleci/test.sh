@@ -2,7 +2,7 @@
 # Use shellcheck to check this script after making changes
 # Try too keep it compatible with both GNU and BSD coreutils
 
-# This script is for testing PulseEffects.
+# This script is for testing EasyEffects.
 # Can be ran locally after making changes in code
 # or in continious integration systems.
 # Requirements for CI containers: bash ImageMagic scrot Xvfb
@@ -18,9 +18,9 @@ export LANG=c
 if [ "$(pwd | awk -F '/' '{print $NF}')" = "util" ]; then cd .. ; fi
 dir0="$PWD"
 
-# PulseEffects binary
+# EasyEffects binary
 # In PATH, relative or absolute
-PE_BIN="${PE_BIN:-pulseeffects}"
+PE_BIN="${PE_BIN:-easyeffects}"
 
 cleanup(){
 	( set +e +f
@@ -73,13 +73,13 @@ graphical_run_test(){
 	# export DISPLAY only after running Xephyr, otherwise Xephyr itself tries to use this $DISPLAY
 	export DISPLAY=":${virt_display}"
 	
-	# now run PulseEffects
+	# now run EasyEffects
 	"$PE_BIN" &
-	echo $! > "${tmp_dir}/pulseeffects.pid"
+	echo $! > "${tmp_dir}/easyeffects.pid"
 	
-	# Check that PulseEffects started
+	# Check that EasyEffects started
 	# TODO: improve this check
-	# PulseEffects start up time is different on different systems, you make set yours
+	# EasyEffects start up time is different on different systems, you make set yours
 	# TODO: writee better code and avois using sleep
 	SLEEP_TIME="${SLEEP_TIME:-10}"	
 	sleep "$SLEEP_TIME"

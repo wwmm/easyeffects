@@ -7,7 +7,7 @@ override_dh_missing:
 	dh_missing --fail-missing
 
 override_dh_auto_test:
-	echo "Auto-tests are disabled due to a very strange issue https://github.com/wwmm/pulseeffects/issues/304"
+	echo "Auto-tests are disabled due to a very strange issue https://github.com/wwmm/easyeffects/issues/304"
 
 %:
 	dh $@ --with scour

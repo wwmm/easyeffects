@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <enum id="com.github.wwmm.easyeffects.filter.enum">
+        <value nick="12dB/oct Lowpass" value="0" />
+        <value nick="24dB/oct Lowpass" value="1" />
+        <value nick="36dB/oct Lowpass" value="2" />
+        <value nick="12dB/oct Highpass" value="3" />
+        <value nick="24dB/oct Highpass" value="4" />
+        <value nick="36dB/oct Highpass" value="5" />
+        <value nick="6dB/oct Bandpass" value="6" />
+        <value nick="12dB/oct Bandpass" value="7" />
+        <value nick="18dB/oct Bandpass" value="8" />
+        <value nick="6dB/oct Bandreject" value="9" />
+        <value nick="12dB/oct Bandreject" value="10" />
+        <value nick="18dB/oct Bandreject" value="11" />
+    </enum>
+    <schema id="com.github.wwmm.easyeffects.filter">
+        <key name="input-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36.1" max="36.1" />
+            <default>0.0</default>
+        </key>
+        <key name="frequency" type="d">
+            <range min="10" max="20000" />
+            <default>2000</default>
+        </key>
+        <key name="resonance" type="d">
+            <range min="-3.0" max="30.1" />
+            <default>-3.0</default>
+        </key>
+        <key name="mode" enum="com.github.wwmm.easyeffects.filter.enum">
+            <default>"12dB/oct Lowpass"</default>
+        </key>
+        <key name="inertia" type="d">
+            <range min="5" max="100" />
+            <default>20.0</default>
+        </key>
+    </schema>
+</schemalist>

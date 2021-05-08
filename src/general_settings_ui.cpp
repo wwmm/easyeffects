@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "general_settings_ui.hpp"
@@ -22,7 +22,7 @@
 GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
                                      const Glib::RefPtr<Gtk::Builder>& builder,
                                      Application* application)
-    : Gtk::Box(cobject), settings(Gio::Settings::create("com.github.wwmm.pulseeffects")), app(application) {
+    : Gtk::Box(cobject), settings(Gio::Settings::create("com.github.wwmm.easyeffects")), app(application) {
   // loading builder widgets
 
   theme_switch = builder->get_widget<Gtk::Switch>("theme_switch");
@@ -56,7 +56,7 @@ GeneralSettingsUi::~GeneralSettingsUi() {
 }
 
 void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/general_settings.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/general_settings.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "top_box", app);
 
@@ -64,7 +64,7 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
-  auto path = Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop";
+  auto path = Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop";
 
   if (std::filesystem::is_regular_file(path)) {
     enable_autostart->set_active(true);
@@ -80,17 +80,17 @@ auto GeneralSettingsUi::on_enable_autostart(bool state) -> bool {
     std::filesystem::create_directories(autostart_dir);
   }
 
-  std::filesystem::path autostart_file{Glib::get_user_config_dir() + "/autostart/pulseeffects-service.desktop"};
+  std::filesystem::path autostart_file{Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop"};
 
   if (state) {
     if (!std::filesystem::exists(autostart_file)) {
       std::ofstream ofs{autostart_file};
 
       ofs << "[Desktop Entry]\n";
-      ofs << "Name=PulseEffects\n";
-      ofs << "Comment=PulseEffects Service\n";
-      ofs << "Exec=pulseeffects --gapplication-service\n";
-      ofs << "Icon=pulseeffects\n";
+      ofs << "Name=EasyEffects\n";
+      ofs << "Comment=EasyEffects Service\n";
+      ofs << "Exec=easyeffects --gapplication-service\n";
+      ofs << "Icon=easyeffects\n";
       ofs << "StartupNotify=false\n";
       ofs << "Terminal=false\n";
       ofs << "Type=Application\n";

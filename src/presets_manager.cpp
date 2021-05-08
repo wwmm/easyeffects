@@ -1,32 +1,32 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "presets_manager.hpp"
 
 PresetsManager::PresetsManager()
-    : user_presets_dir(Glib::get_user_config_dir() + "/PulseEffects"),
-      user_input_dir(Glib::get_user_config_dir() + "/PulseEffects/input"),
-      user_output_dir(Glib::get_user_config_dir() + "/PulseEffects/output"),
-      autoload_dir(Glib::get_user_config_dir() + "/PulseEffects/autoload"),
-      settings(Gio::Settings::create("com.github.wwmm.pulseeffects")),
-      soe_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sinkinputs")),
-      sie_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.sourceoutputs")),
+    : user_presets_dir(Glib::get_user_config_dir() + "/easyeffects/"),
+      user_input_dir(Glib::get_user_config_dir() + "/easyeffects/input"),
+      user_output_dir(Glib::get_user_config_dir() + "/easyeffects/output"),
+      autoload_dir(Glib::get_user_config_dir() + "/easyeffects/autoload"),
+      settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
+      soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
+      sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
       limiter(std::make_unique<LimiterPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
@@ -52,13 +52,13 @@ PresetsManager::PresetsManager()
       spectrum(std::make_unique<SpectrumPreset>()) {
   // system presets directories provided by Glib
   for (const auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dir.emplace_back(scd + "/PulseEffects/input");
-    system_output_dir.emplace_back(scd + "/PulseEffects/output");
+    system_input_dir.emplace_back(scd + "/easyeffects/input");
+    system_output_dir.emplace_back(scd + "/easyeffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates
-  system_input_dir.emplace_back("/etc/PulseEffects/input");
-  system_output_dir.emplace_back("/etc/PulseEffects/output");
+  system_input_dir.emplace_back("/etc/easyeffects/input");
+  system_output_dir.emplace_back("/etc/easyeffects/output");
   std::sort(system_input_dir.begin(), system_input_dir.end());
   std::sort(system_output_dir.begin(), system_output_dir.end());
   system_input_dir.erase(std::unique(system_input_dir.begin(), system_input_dir.end()), system_input_dir.end());

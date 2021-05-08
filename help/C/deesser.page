@@ -1,110 +1,75 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="deesser">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="deesser">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Deesser</title>
-    <p>
-        PulseEffects uses the deesser developed by Calf Studio. A deesser is used to
-        dynamically reduce high frequencies. The standard field of use is the reduction
-        of "sssss" and "shhhh" in vocal tracks.
-    </p>
+    <p>EasyEffects uses the deesser developed by Calf Studio. A deesser is used to dynamically reduce high frequencies. The standard field of use is the reduction of "sssss" and "shhhh" in vocal tracks.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Laxity</em>
             </title>
-            <p>
-                The reaction of the deesser. Higher values won't affect really short peaks.
-            </p>
+            <p>The reaction of the deesser. Higher values won't affect really short peaks.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
-            <p>
-                If a signal rises above this level it will affect the gain reduction.
-            </p>
+            <p>If a signal rises above this level it will affect the gain reduction.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ratio</em>
             </title>
-            <p>
-                Set the ratio by which the signal will be reduced.
-            </p>
+            <p>Set the ratio by which the signal will be reduced.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Makeup</em>
             </title>
-            <p>
-                It amplifies your signal after processing.
-            </p>
+            <p>It amplifies your signal after processing.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F1 Split</em>
             </title>
-            <p>
-                The split frequency. All signals above this frequency will affect the gain
-                reduction (and in split mode they are affected by the reduction too).
-            </p>
+            <p>The split frequency. All signals above this frequency will affect the gain reduction (and in split mode they are affected by the reduction too).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F1 Gain</em>
             </title>
-            <p>
-                It shifts the volume of the higher band. In wideband mode it affects the
-                sidechain. In split mode it also affects the processed high frequencies.
-            </p>
+            <p>It shifts the volume of the higher band. In wideband mode it affects the sidechain. In split mode it also affects the processed high frequencies.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F2 Peak</em>
             </title>
-            <p>
-                Center frequency of the bell filter. It allows a more precise selection of the
-                sidechain signal.
-            </p>
+            <p>Center frequency of the bell filter. It allows a more precise selection of the sidechain signal.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F2 Level</em>
             </title>
-            <p>
-                Increase or decrease the frequencies around the center bell frequency.
-            </p>
+            <p>Increase or decrease the frequencies around the center bell frequency.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F2 Peak Q</em>
             </title>
-            <p>
-                Set the quality of the bell. Higher values will affect a narrower frequency
-                range. Lower values will affect a wider band.
-            </p>
+            <p>Set the quality of the bell. Higher values will affect a narrower frequency range. Lower values will affect a wider band.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
-            <p>
-                Choose if the deesser should take the signal peak for detection or the RMS value
-                (it is smoother).
-            </p>
+            <p>Choose if the deesser should take the signal peak for detection or the RMS value (it is smoother).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Mode</em>
             </title>
-            <p>
-                Select your operation mode between wideband or split
-            </p>
+            <p>Select your operation mode between wideband or split</p>
         </item>
     </terms>
     <section>
@@ -112,16 +77,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/De-essing" its:translate="no">
-                        https://en.wikipedia.org/wiki/De-essing
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/De-essing" its:translate="no">https://en.wikipedia.org/wiki/De-essing</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Deesser.html" its:translate="no">
-                        https://calf-studio-gear.org/doc/Deesser.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Deesser.html" its:translate="no">https://calf-studio-gear.org/doc/Deesser.html</link>
                 </p>
             </item>
         </list>

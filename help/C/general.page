@@ -1,10 +1,6 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="general">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="general">
     <info>
-        <link type="guide" xref="settingsmenu"/>
+        <link type="guide" xref="settingsmenu" />
     </info>
     <title>General</title>
     <terms>
@@ -13,8 +9,7 @@
                 <em style="strong" its:withinText="nested">Start Service at Login</em>
             </title>
             <p>
-                Start PulseEffects as a service in the next login. This is done by creating an
-                autostart file at
+                Start EasyEffects as a service in the next login. This is done by creating an autostart file at
                 <cmd its:withinText="yes">~/.config/autostart</cmd>
             </p>
         </item>
@@ -22,61 +17,43 @@
             <title id="title_enable_all_apps">
                 <em style="strong" its:withinText="nested">Process All Outputs</em>
             </title>
-            <p>
-                Apply effects to the output of all audio applications. This will automatically
-                switch on the per application switch that can be seen in the Applications entry.
-            </p>
+            <p>Apply effects to the output of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Process All Inputs</em>
             </title>
-            <p>
-                Apply effects to the input(microphone) of all audio applications. This will
-                automatically switch on the per application switch that can be seen in the
-                Applications entry.
-            </p>
+            <p>Apply effects to the input(microphone) of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Use Dark Theme</em>
             </title>
-            <p>
-                Use the dark version of the GTK theme.
-            </p>
+            <p>Use the dark version of the GTK theme.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Reset</em>
             </title>
-            <p>
-                Reset all parameters to their default values. This will reset the plugins too.
-            </p>
+            <p>Reset all parameters to their default values. This will reset the plugins too.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Priority type</em>
             </title>
-            <p>
-                Choose between real time mode, niceness or none. This parameter allows to choose
-                a higher priority for the threads that process audio.
-            </p>
+            <p>Choose between real time mode, niceness or none. This parameter allows to choose a higher priority for the threads that process audio.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Niceness</em>
             </title>
-            <p>
-                Niceness value.
-            </p>
+            <p>Niceness value.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Priority</em>
             </title>
-            <p>
-                Real time priority.
-            </p>
+            <p>Real time priority.</p>
         </item>
     </terms>
 </page>

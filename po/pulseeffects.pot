@@ -1,12 +1,12 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the pulseeffects package.
+# This file is distributed under the same license as the easyeffects package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: pulseeffects\n"
+"Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-04-26 15:00-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -17,79 +17,79 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:5
-#: data/com.github.wwmm.pulseeffects.desktop.in:3
-msgid "PulseEffects"
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:3
+msgid "EasyEffects"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:8
-#: data/com.github.wwmm.pulseeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
 msgid ""
-"PulseEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:16
 msgid ""
-"Because PulseEffects uses the default PulseAudio sound server it will work "
+"Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:22
 msgid ""
-"Besides manipulating sound output, PulseEffects is able to apply effects to "
+"Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid ""
-"When PulseEffects is launched it will conveniently remember the "
+"When EasyEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:40
 msgid "Set the volume and turn on/off effects"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:44
 msgid "Includes an equalizer with built-in presets"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:48
 msgid "Input Limiter"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:52 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:52 data/ui/compressor.ui:36
 #: data/ui/webrtc.glade:633 include/effects_base_ui.hpp:142
 msgid "Compressor"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:56
 msgid "Calibration"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr ""
 
-#: data/com.github.wwmm.pulseeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
 
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:14
-#: data/schemas/com.github.wwmm.pulseeffects.gschema.xml:17
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
 msgstr ""
 
@@ -830,7 +830,7 @@ msgid "Reset All Settings"
 msgstr ""
 
 #: data/ui/general_settings.ui:120
-msgid "About PulseEffects"
+msgid "About EasyEffects"
 msgstr ""
 
 #: data/ui/limiter.ui:21
@@ -1514,7 +1514,7 @@ msgid "Stereo Tools"
 msgstr ""
 
 #: src/application.cpp:30
-msgid "Quit PulseEffects. Useful when running in service mode."
+msgid "Quit EasyEffects. Useful when running in service mode."
 msgstr ""
 
 #: src/application.cpp:32
@@ -1522,11 +1522,11 @@ msgid "Show available presets."
 msgstr ""
 
 #: src/application.cpp:35
-msgid "Load a preset. Example: pulseeffects -l music"
+msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/application.cpp:37
-msgid "Reset PulseEffects."
+msgid "Reset EasyEffects."
 msgstr ""
 
 #: src/application.cpp:40

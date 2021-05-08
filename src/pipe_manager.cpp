@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "pipe_manager.hpp"
@@ -578,7 +578,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        if (node.name == "pulseeffects_sink") {
+        if (node.name == "easyeffects_sink") {
           pm->default_output_device.id = SPA_ID_INVALID;
 
           return 0;
@@ -602,7 +602,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
-        if (node.name == "pulseeffects_source") {
+        if (node.name == "easyeffects_source") {
           pm->default_input_device.id = SPA_ID_INVALID;
 
           return 0;
@@ -702,7 +702,7 @@ void on_registry_global(void* data,
             return;
           }
 
-          if (strcmp(key_node_description, "pulseeffects_filter") == 0) {
+          if (strcmp(key_node_description, "easyeffects_filter") == 0) {
             const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
             util::debug(pm->log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
@@ -765,9 +765,9 @@ void on_registry_global(void* data,
 
         NodeInfo nd_info = pd->nd_info;
 
-        if (media_class == "Audio/Source" && nd_info.name != "pulseeffects_source") {
+        if (media_class == "Audio/Source" && nd_info.name != "easyeffects_source") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
-        } else if (media_class == "Audio/Sink" && nd_info.name != "pulseeffects_sink") {
+        } else if (media_class == "Audio/Sink" && nd_info.name != "easyeffects_sink") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
         } else if (media_class == "Stream/Output/Audio") {
           Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_added.emit(nd_info); });
@@ -1027,8 +1027,8 @@ PipeManager::PipeManager() {
 
   pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_sink, PW_KEY_NODE_NAME, "pulseeffects_sink");
-  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "PulseEffects Sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_NAME, "easyeffects_sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
   pw_properties_set(props_sink, "audio.position", "FL,FR");
@@ -1041,8 +1041,8 @@ PipeManager::PipeManager() {
 
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_source, PW_KEY_NODE_NAME, "pulseeffects_source");
-  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "PulseEffects Source");
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, "easyeffects_source");
+  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source/Virtual");
   pw_properties_set(props_source, "audio.position", "FL,FR");
@@ -1059,11 +1059,11 @@ PipeManager::PipeManager() {
 
   while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
     for (const auto& node : list_nodes) {
-      if (node.name == "pulseeffects_sink") {
+      if (node.name == "easyeffects_sink") {
         pe_sink_node = node;
       }
 
-      if (node.name == "pulseeffects_source") {
+      if (node.name == "easyeffects_source") {
         pe_source_node = node;
       }
     }

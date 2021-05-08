@@ -1,50 +1,33 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="pulseaudio">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="pulseaudio">
     <info>
-        <link type="guide" xref="settingsmenu"/>
+        <link type="guide" xref="settingsmenu" />
     </info>
     <title>Pulseaudio</title>
-    <p>
-        PulseEffects has two GStreamer pipelines. One that applies effects for
-        applications output and other that applies effects for microphone. Here the user
-        can tweak a few advanced parameters for both pipelines.
-    </p>
+    <p>EasyEffects has two GStreamer pipelines. One that applies effects for applications output and other that applies effects for microphone. Here the user can tweak a few advanced parameters for both pipelines.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Use Default</em>
             </title>
-            <p>
-                Use default input or output device.
-            </p>
+            <p>Use default input or output device.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Buffer</em>
             </title>
-            <p>
-                Pulsesrc plugin buffer size. It affects latency
-            </p>
+            <p>Pulsesrc plugin buffer size. It affects latency</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Latency</em>
             </title>
-            <p>
-                Pulsesrc plugin latency value.
-            </p>
+            <p>Pulsesrc plugin latency value.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Block Size</em>
             </title>
-            <p>
-                This controls the size of the audio buffer. Higher values increase latency but
-                decrease cpu usage of a few plugins.
-            </p>
+            <p>This controls the size of the audio buffer. Higher values increase latency but decrease cpu usage of a few plugins.</p>
         </item>
     </terms>
 </page>

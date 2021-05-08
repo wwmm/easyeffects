@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "equalizer_ui.hpp"
@@ -296,11 +296,11 @@ EqualizerUi::~EqualizerUi() {
 }
 
 auto EqualizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<EqualizerUi>(
-      builder, "top_box", "com.github.wwmm.pulseeffects.equalizer", schema_path + "equalizer/",
-      "com.github.wwmm.pulseeffects.equalizer.channel", schema_path + "equalizer/leftchannel/",
+      builder, "top_box", "com.github.wwmm.easyeffects.equalizer", schema_path + "equalizer/",
+      "com.github.wwmm.easyeffects.equalizer.channel", schema_path + "equalizer/leftchannel/",
       schema_path + "equalizer/rightchannel/");
 
   auto stack_page = stack->add(*ui, plugin_name::equalizer);
@@ -339,7 +339,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
                               const int& nbands,
                               const bool& split_mode) {
   for (int n = 0; n < nbands; n++) {
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/equalizer_band.ui");
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 

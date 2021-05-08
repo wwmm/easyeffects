@@ -1,4 +1,4 @@
-pulseeffects (%new_version%-1) unstable; urgency=low
+easyeffects (%new_version%-1) unstable; urgency=low
 
   * Version %new_version% upstream (autobuild)
 

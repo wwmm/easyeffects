@@ -1,20 +1,20 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "application_ui.hpp"
@@ -25,8 +25,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     : Gtk::ApplicationWindow(cobject), app(application), settings(app->settings) {
   apply_css_style("custom.css");
 
-  Gtk::IconTheme::get_for_display(Gdk::Display::get_default())
-      ->add_resource_path("/com/github/wwmm/pulseeffects/icons");
+  Gtk::IconTheme::get_for_display(Gdk::Display::get_default())->add_resource_path("/com/github/wwmm/easyeffects/icons");
 
   // loading builder widgets
 
@@ -112,7 +111,7 @@ ApplicationUi::~ApplicationUi() {
 }
 
 auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/pulseeffects/ui/application_window.ui");
+  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   return Gtk::Builder::get_widget_derived<ApplicationUi>(builder, "ApplicationUi", app_this);
 }
@@ -120,7 +119,7 @@ auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
 void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto provider = Gtk::CssProvider::create();
 
-  provider->load_from_resource("/com/github/wwmm/pulseeffects/ui/" + css_file_name);
+  provider->load_from_resource("/com/github/wwmm/easyeffects/ui/" + css_file_name);
 
   auto display = Gdk::Display::get_default();
   auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;

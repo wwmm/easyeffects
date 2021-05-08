@@ -1,40 +1,39 @@
 /*
  *  Copyright © 2017-2020 Wellington Wallace
  *
- *  This file is part of PulseEffects.
+ *  This file is part of EasyEffects.
  *
- *  PulseEffects is free software: you can redistribute it and/or modify
+ *  EasyEffects is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
  *
- *  PulseEffects is distributed in the hope that it will be useful,
+ *  EasyEffects is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
  *  You should have received a copy of the GNU General Public License
- *  along with PulseEffects.  If not, see <https://www.gnu.org/licenses/>.
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "equalizer_preset.hpp"
 #include "util.hpp"
 
 EqualizerPreset::EqualizerPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer",
-                                           "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/")),
-      input_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
-                                                "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/leftchannel/")),
-      input_settings_right(
-          Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
-                                "/com/github/wwmm/pulseeffects/sourceoutputs/equalizer/rightchannel/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer",
-                                            "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/")),
-      output_settings_left(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
-                                                 "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/leftchannel/")),
-      output_settings_right(Gio::Settings::create("com.github.wwmm.pulseeffects.equalizer.channel",
-                                                  "/com/github/wwmm/pulseeffects/sinkinputs/equalizer/rightchannel/")) {
-}
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
+                                           "/com/github/wwmm/easyeffects/streaminputs/equalizer/")),
+      input_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
+                                                "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/")),
+      input_settings_right(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
+                                                 "/com/github/wwmm/easyeffects/streaminputs/equalizer/rightchannel/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
+                                            "/com/github/wwmm/easyeffects/streamoutputs/equalizer/")),
+      output_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
+                                                 "/com/github/wwmm/easyeffects/streamoutputs/equalizer/leftchannel/")),
+      output_settings_right(
+          Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
+                                "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/")) {}
 
 void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,

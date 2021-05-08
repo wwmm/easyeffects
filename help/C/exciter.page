@@ -1,76 +1,52 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="exciter">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="exciter">
     <info>
-        <link type="guide" xref="index#plugins"/>
+        <link type="guide" xref="index#plugins" />
     </info>
     <title>Exciter</title>
-    <p>
-        An exciter is used to enhance a signal by dynamic equalization, phase
-        manipulation, harmonic synthesis of high frequency signals, and through the
-        addition of subtle harmonic distortion.
-    </p>
-    <p>
-        PulseEffects uses the exciter developed by Calf Studio.
-    </p>
+    <p>An exciter is used to enhance a signal by dynamic equalization, phase manipulation, harmonic synthesis of high frequency signals, and through the addition of subtle harmonic distortion.</p>
+    <p>EasyEffects uses the exciter developed by Calf Studio.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Amount</em>
             </title>
-            <p>
-                Amount of harmonics added to the original signal.
-            </p>
+            <p>Amount of harmonics added to the original signal.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Harmonics</em>
             </title>
-            <p>
-                Amount of newly created harmonics.
-            </p>
+            <p>Amount of newly created harmonics.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
-            <p>
-                The frequency harmonics are produced above.
-            </p>
+            <p>The frequency harmonics are produced above.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ceiling(button)</em>
             </title>
-            <p>
-                Constrain the excitement on the upper end.
-            </p>
+            <p>Constrain the excitement on the upper end.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Ceiling(value)</em>
             </title>
-            <p>
-                The frequency no harmonics are produced above.
-            </p>
+            <p>The frequency no harmonics are produced above.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Blend Harmonics</em>
             </title>
-            <p>
-                The "colour" (or octave) of the harmonics.
-            </p>
+            <p>The "colour" (or octave) of the harmonics.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Listen</em>
             </title>
-            <p>
-                Mute the original signal and listen to the harmonics exclusively.
-            </p>
+            <p>Mute the original signal and listen to the harmonics exclusively.</p>
         </item>
     </terms>
     <section>
@@ -78,16 +54,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Exciter.html" its:translate="no">
-                        https://calf-studio-gear.org/doc/Exciter.html
-                    </link>
+                    <link href="https://calf-studio-gear.org/doc/Exciter.html" its:translate="no">https://calf-studio-gear.org/doc/Exciter.html</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Exciter_(effect)" its:translate="no">
-                        https://en.wikipedia.org/wiki/Exciter_(effect)
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Exciter_(effect)" its:translate="no">https://en.wikipedia.org/wiki/Exciter_(effect)</link>
                 </p>
             </item>
         </list>
