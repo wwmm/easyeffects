@@ -860,15 +860,9 @@ void EffectsBaseUi::setup_listview_blocklist() {
 void EffectsBaseUi::setup_listview_plugins() {
   plugins->remove(0);
 
-  for (auto& name : settings->get_string_array("plugins")) {
-    plugins->append(name);
+  for (auto& translated_name : std::views::values(plugins_names)) {
+    plugins->append(translated_name);
   }
-
-  settings->signal_changed("plugins").connect([=, this](auto key) {
-    auto list = settings->get_string_array(key);
-
-    plugins->splice(0, plugins->get_n_items(), list);
-  });
 
   // filter
 
@@ -921,17 +915,25 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    auto translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
 
-    label->set_text(plugins_names[name]);
+    Glib::ustring key_name;
+
+    for (const auto& [key, value] : plugins_names) {
+      if (value == std::string(translated_name)) {
+        key_name = key;
+      }
+    }
+
+    label->set_text(translated_name);
 
     auto connection_add = add->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("selected-plugins");
+      auto list = settings->get_string_array("plugins");
 
-      if (std::ranges::find(list, name) == list.end()) {
-        list.emplace_back(name);
+      if (std::ranges::find(list, key_name) == list.end()) {
+        list.emplace_back(key_name);
 
-        settings->set_string_array("selected-plugins", list);
+        settings->set_string_array("plugins", list);
       }
     });
 
@@ -951,10 +953,10 @@ void EffectsBaseUi::setup_listview_plugins() {
 void EffectsBaseUi::setup_listview_selected_plugins() {
   selected_plugins->remove(0);
 
-  if (settings->get_string_array("selected-plugins").empty()) {
+  if (settings->get_string_array("plugins").empty()) {
     stack_plugins->property_visible().set_value(false);
   } else {
-    for (auto& name : settings->get_string_array("selected-plugins")) {
+    for (auto& name : settings->get_string_array("plugins")) {
       selected_plugins->append(name);
     }
 
@@ -973,7 +975,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     }
   }
 
-  settings->signal_changed("selected-plugins").connect([=, this](auto key) {
+  settings->signal_changed("plugins").connect([=, this](auto key) {
     auto list = settings->get_string_array(key);
 
     selected_plugins->splice(0, selected_plugins->get_n_items(), list);
@@ -983,6 +985,14 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
       if (std::ranges::find(list, visible_page_name) == list.end()) {
         listview_selected_plugins->get_model()->select_item(0, true);
+
+        for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
+          auto page = stack_plugins->get_page(*child);
+
+          if (page->get_name() == list[0]) {
+            stack_plugins->set_visible_child(*child);
+          }
+        }
       } else {
         for (size_t m = 0; m < list.size(); m++) {
           if (list[m] == visible_page_name) {
@@ -1119,7 +1129,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
           auto dst = label->get_name();
 
           if (src != dst) {
-            auto list = settings->get_string_array("selected-plugins");
+            auto list = settings->get_string_array("plugins");
 
             auto iter_src = std::ranges::find(list, src);
             auto iter_dst = std::ranges::find(list, dst);
@@ -1136,7 +1146,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
               list.insert(iter_dst, src);
             }
 
-            settings->set_string_array("selected-plugins", list);
+            settings->set_string_array("plugins", list);
 
             return true;
           }
@@ -1166,12 +1176,12 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     label->set_text(plugins_names[name]);
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
-      auto list = settings->get_string_array("selected-plugins");
+      auto list = settings->get_string_array("plugins");
 
       list.erase(std::remove_if(list.begin(), list.end(), [=](auto& plugin_name) { return plugin_name == name; }),
                  list.end());
 
-      settings->set_string_array("selected-plugins", list);
+      settings->set_string_array("plugins", list);
     });
 
     // setting list_item data

@@ -2,9 +2,6 @@
 <schemalist>
     <schema id="com.github.wwmm.easyeffects.streaminputs" path="/com/github/wwmm/easyeffects/streaminputs/">
         <key name="plugins" type="as">
-            <default>["gate","multiband_gate","webrtc","limiter","compressor", "multiband_compressor","filter","equalizer","deesser","reverb", "pitch","stereo_tools","maximizer","rnnoise"]</default>
-        </key>
-        <key name="selected-plugins" type="as">
             <default>[]</default>
         </key>
         <key name="use-default-input-device" type="b">

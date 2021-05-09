@@ -2,9 +2,6 @@
 <schemalist>
     <schema id="com.github.wwmm.easyeffects.streamoutputs" path="/com/github/wwmm/easyeffects/streamoutputs/">
         <key name="plugins" type="as">
-            <default>["limiter","autogain","gate","multiband_gate","compressor", "multiband_compressor","convolver","bass_enhancer","exciter", "crystalizer","stereo_tools","reverb","equalizer","delay", "deesser", "crossfeed","loudness","maximizer","filter","pitch","rnnoise"]</default>
-        </key>
-        <key name="selected-plugins" type="as">
             <default>[]</default>
         </key>
         <key name="use-default-output-device" type="b">

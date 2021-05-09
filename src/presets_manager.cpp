@@ -51,6 +51,7 @@ PresetsManager::PresetsManager()
       rnnoise(std::make_unique<RNNoisePreset>()),
       spectrum(std::make_unique<SpectrumPreset>()) {
   // system presets directories provided by Glib
+
   for (const auto& scd : Glib::get_system_config_dirs()) {
     system_input_dir.emplace_back(scd + "/easyeffects/input");
     system_output_dir.emplace_back(scd + "/easyeffects/output");
@@ -72,6 +73,7 @@ PresetsManager::PresetsManager()
   }
 
   // user presets directories
+
   create_user_directory(user_presets_dir);
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
@@ -381,13 +383,10 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         try {
           boost::property_tree::read_json(input_file.string(), root);
 
-          Glib::Variant<std::vector<Glib::ustring>> aux;
-          soe_settings->get_default_value("plugins", aux);
-
           for (const auto& p : root.get_child("output.plugins_order")) {
             const Glib::ustring value = p.second.data();
 
-            for (const auto& v : aux.get()) {
+            for (const auto& v : plugin_name::list) {
               if (v == value) {
                 output_plugins.emplace_back(value);
 
@@ -395,16 +394,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
               }
             }
           }
-
-          for (const auto& v : aux.get()) {
-            if (std::ranges::find(output_plugins, v) == output_plugins.end()) {
-              output_plugins.emplace_back(v);
-            }
-          }
         } catch (const boost::property_tree::ptree_error& e) {
-          Glib::Variant<std::vector<Glib::ustring>> aux;
-          soe_settings->get_default_value("plugins", aux);
-          output_plugins = aux.get();
+          output_plugins.clear();
         }
 
         soe_settings->set_string_array("plugins", output_plugins);
@@ -430,13 +421,10 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
         try {
           boost::property_tree::read_json(input_file.string(), root);
 
-          Glib::Variant<std::vector<Glib::ustring>> aux;
-          sie_settings->get_default_value("plugins", aux);
-
           for (const auto& p : root.get_child("input.plugins_order")) {
             const Glib::ustring value = p.second.data();
 
-            for (const auto& v : aux.get()) {
+            for (const auto& v : plugin_name::list) {
               if (v == value) {
                 input_plugins.emplace_back(value);
 
@@ -444,16 +432,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
               }
             }
           }
-
-          for (const auto& v : aux.get()) {
-            if (std::ranges::find(input_plugins, v) == input_plugins.end()) {
-              input_plugins.emplace_back(v);
-            }
-          }
         } catch (const boost::property_tree::ptree_error& e) {
-          Glib::Variant<std::vector<Glib::ustring>> aux;
-          sie_settings->get_default_value("plugins", aux);
-          input_plugins = aux.get();
+          input_plugins.clear();
         }
 
         sie_settings->set_string_array("plugins", input_plugins);

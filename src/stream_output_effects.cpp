@@ -92,7 +92,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   });
 
-  settings->signal_changed("selected-plugins").connect([&, this](auto key) {
+  settings->signal_changed("plugins").connect([&, this](auto key) {
     disconnect_filters();
 
     pm->destroy_links(list_proxies);
@@ -178,7 +178,7 @@ void StreamOutputEffects::change_output_device(const NodeInfo& node) {
 }
 
 void StreamOutputEffects::connect_filters() {
-  auto list = settings->get_string_array("selected-plugins");
+  auto list = settings->get_string_array("plugins");
 
   if (list.empty()) {
     auto links = pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());

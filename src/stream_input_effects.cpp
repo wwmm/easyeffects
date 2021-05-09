@@ -94,7 +94,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     }
   });
 
-  settings->signal_changed("selected-plugins").connect([&, this](auto key) {
+  settings->signal_changed("plugins").connect([&, this](auto key) {
     disconnect_filters();
 
     pm->destroy_links(list_proxies);
@@ -198,13 +198,11 @@ void StreamInputEffects::change_input_device(const NodeInfo& node) {
 
   // set_input_node_id(node.id);
 
-  // rnnoise->set_caps_out(sampling_rate);
-
   // update_pipeline_state();
 }
 
 void StreamInputEffects::connect_filters() {
-  auto list = settings->get_string_array("selected-plugins");
+  auto list = settings->get_string_array("plugins");
 
   if (list.empty()) {
     auto links = pm->link_nodes(pm->input_device.id, spectrum->get_node_id());

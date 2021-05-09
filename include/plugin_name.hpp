@@ -21,6 +21,8 @@ constexpr auto deesser = "deesser";
 
 constexpr auto delay = "delay";
 
+constexpr auto echo_canceller = "echo_canceller";
+
 constexpr auto equalizer = "equalizer";
 
 constexpr auto exciter = "exciter";
@@ -47,9 +49,10 @@ constexpr auto rnnoise = "rnnoise";
 
 constexpr auto stereo_tools = "stereo_tools";
 
-constexpr auto webrtc = "webrtc";
-
-constexpr std::array<const char* const, 2> list{autogain, bass_enhancer};
+constexpr std::array<const char* const, 21> list{
+    autogain,       bass_enhancer, compressor, convolver, crossfeed,   crystalizer, deesser,   delay,
+    equalizer,      exciter,       filter,     gate,      limiter,     loudness,    maximizer, multiband_compressor,
+    multiband_gate, pitch,         reverb,     rnnoise,   stereo_tools};
 
 }  // namespace plugin_name
 

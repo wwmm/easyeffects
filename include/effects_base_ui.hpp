@@ -159,8 +159,7 @@ class EffectsBaseUi {
                                                    {plugin_name::pitch, _("Pitch")},
                                                    {plugin_name::reverb, _("Reverberation")},
                                                    {plugin_name::rnnoise, _("Noise Reduction")},
-                                                   {plugin_name::stereo_tools, _("Stereo Tools")},
-                                                   {plugin_name::webrtc, _("WebRTC")}};
+                                                   {plugin_name::stereo_tools, _("Stereo Tools")}};
 
   template <typename T>
   auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
