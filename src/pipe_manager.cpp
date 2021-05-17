@@ -1032,7 +1032,7 @@ PipeManager::PipeManager() {
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
   pw_properties_set(props_sink, "audio.position", "FL,FR");
-  // pw_properties_set(props_sink, "monitor.channel-volumes", "false");
+  pw_properties_set(props_sink, "monitor.channel-volumes", "true");
 
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
@@ -1046,7 +1046,7 @@ PipeManager::PipeManager() {
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source/Virtual");
   pw_properties_set(props_source, "audio.position", "FL,FR");
-  // pw_properties_set(props_source, "monitor.channel-volumes", "false");
+  pw_properties_set(props_source, "monitor.channel-volumes", "true");
 
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));

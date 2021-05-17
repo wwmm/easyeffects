@@ -18,7 +18,6 @@
  */
 
 #include "filter_ui.hpp"
-#include <cstring>
 
 namespace {
 

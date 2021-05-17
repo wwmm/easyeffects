@@ -280,6 +280,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   // otherwise it's automatically invoked at startup by the functor on signal_value_changed
 
   Glib::Variant<gint32> default_nbands;
+
   settings->get_default_value("num-bands", default_nbands);
 
   if (default_nbands.get() == settings->get_int("num-bands")) {
@@ -317,7 +318,7 @@ void EqualizerUi::on_nbands_changed() {
     bands_box_left->remove(*child);
   }
 
-  for (auto* child = bands_box_right->get_last_child(); child != nullptr; child = bands_box_left->get_last_child()) {
+  for (auto* child = bands_box_right->get_last_child(); child != nullptr; child = bands_box_right->get_last_child()) {
     bands_box_right->remove(*child);
   }
 
@@ -363,6 +364,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
 
     prepare_spinbutton(band_frequency, "Hz");
+    prepare_spinbutton(band_quality, "");
 
     auto update_quality_width = [=, this]() {
       const auto& q = band_quality->get_value();

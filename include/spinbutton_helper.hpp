@@ -4,7 +4,7 @@
 #include <gtkmm.h>
 #include <sstream>
 
-inline auto parse_spinbutton_output(Gtk::SpinButton* button, const std::string unit) -> bool {
+inline auto parse_spinbutton_output(Gtk::SpinButton* button, const std::string& unit) -> bool {
   std::ostringstream str;
 
   str.precision(button->get_digits());
