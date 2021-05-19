@@ -52,7 +52,7 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkDropDown" id="input_device">
+                                                    <object class="GtkDropDown" id="dropdown_input_devices">
                                                         <property name="halign">start</property>
                                                     </object>
                                                 </child>
@@ -81,7 +81,7 @@
                                                 </child>
 
                                                 <child>
-                                                    <object class="GtkDropDown" id="output_device">
+                                                    <object class="GtkDropDown" id="dropdown_output_devices">
                                                         <property name="halign">start</property>
                                                     </object>
                                                 </child>

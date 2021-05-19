@@ -19,13 +19,6 @@
 
 #include "effects_base_ui.hpp"
 
-NodeInfoHolder::NodeInfoHolder(NodeInfo info)
-    : Glib::ObjectBase(typeid(NodeInfoHolder)), Glib::Object(), info(std::move(info)) {}
-
-auto NodeInfoHolder::create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder> {
-  return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(info));
-}
-
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
                              EffectsBase* effects_base,
                              const std::string& schema)

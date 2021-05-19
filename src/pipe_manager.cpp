@@ -177,6 +177,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     if (node.id == info->id) {
       const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME);
       const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
+      const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME);
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
@@ -195,6 +196,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       if (media_icon_name != nullptr) {
         nd->nd_info.media_icon_name = media_icon_name;
+      }
+
+      if (device_icon_name != nullptr) {
+        nd->nd_info.device_icon_name = device_icon_name;
       }
 
       if (media_name != nullptr) {

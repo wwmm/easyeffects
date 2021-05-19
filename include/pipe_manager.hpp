@@ -51,6 +51,8 @@ struct NodeInfo {
 
   std::string media_icon_name;
 
+  std::string device_icon_name;
+
   std::string media_name;
 
   std::string format;

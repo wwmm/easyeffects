@@ -40,6 +40,7 @@
 #include "exciter_ui.hpp"
 #include "filter_ui.hpp"
 #include "gate_ui.hpp"
+#include "info_holders.hpp"
 #include "limiter_ui.hpp"
 #include "loudness_ui.hpp"
 #include "maximizer_ui.hpp"
@@ -52,18 +53,6 @@
 #include "rnnoise_ui.hpp"
 #include "spectrum_ui.hpp"
 #include "stereo_tools_ui.hpp"
-
-class NodeInfoHolder : public Glib::Object {
- public:
-  NodeInfo info;
-
-  static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
-
-  sigc::signal<void(NodeInfo)> info_updated;
-
- protected:
-  NodeInfoHolder(NodeInfo info);
-};
 
 class EffectsBaseUi {
  public:

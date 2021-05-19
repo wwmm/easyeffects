@@ -45,6 +45,7 @@ easyeffects_sources = [
 	'gate_preset.cpp',
 	'gate_ui.cpp',
 	'general_settings_ui.cpp',
+	'info_holders.cpp',
 	'limiter.cpp',
 	'limiter_preset.cpp',
 	'limiter_ui.cpp',

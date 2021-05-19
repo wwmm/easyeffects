@@ -24,31 +24,8 @@
 #include <gtkmm.h>
 #include <filesystem>
 #include <fstream>
+#include "info_holders.hpp"
 #include "pipe_manager.hpp"
-
-class ModuleInfoHolder : public Glib::Object {
- public:
-  ModuleInfo info;
-
-  static auto create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfoHolder>;
-
-  sigc::signal<void(ModuleInfo)> info_updated;
-
- protected:
-  ModuleInfoHolder(ModuleInfo info);
-};
-
-class ClientInfoHolder : public Glib::Object {
- public:
-  ClientInfo info;
-
-  static auto create(const ClientInfo& info) -> Glib::RefPtr<ClientInfoHolder>;
-
-  sigc::signal<void(ClientInfo)> info_updated;
-
- protected:
-  ClientInfoHolder(ClientInfo info);
-};
 
 class PipeInfoUi : public Gtk::Box {
  public:
@@ -71,17 +48,25 @@ class PipeInfoUi : public Gtk::Box {
   Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
              *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr;
 
+  Gtk::DropDown *dropdown_input_devices = nullptr, *dropdown_output_devices = nullptr;
+
   Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
+
+  Glib::RefPtr<NodeInfoHolder> input_devices_holder, output_devices_holder;
 
   Glib::RefPtr<ModuleInfoHolder> modules_holder;
 
-  Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
-
   Glib::RefPtr<ClientInfoHolder> clients_holder;
+
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model, output_devices_model;
+
+  Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
 
   Glib::RefPtr<Gio::ListStore<ClientInfoHolder>> clients_model;
 
   std::vector<sigc::connection> connections;
+
+  void setup_dropdown_devices(Gtk::DropDown* dropdown, const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model);
 
   void setup_listview_modules();
 

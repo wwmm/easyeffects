@@ -19,26 +19,17 @@
 
 #include "pipe_info_ui.hpp"
 
-ModuleInfoHolder::ModuleInfoHolder(ModuleInfo info)
-    : Glib::ObjectBase(typeid(ModuleInfoHolder)), Glib::Object(), info(std::move(info)) {}
-
-auto ModuleInfoHolder::create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfoHolder> {
-  return Glib::make_refptr_for_instance<ModuleInfoHolder>(new ModuleInfoHolder(info));
-}
-
-ClientInfoHolder::ClientInfoHolder(ClientInfo info)
-    : Glib::ObjectBase(typeid(ClientInfoHolder)), Glib::Object(), info(std::move(info)) {}
-
-auto ClientInfoHolder::create(const ClientInfo& info) -> Glib::RefPtr<ClientInfoHolder> {
-  return Glib::make_refptr_for_instance<ClientInfoHolder>(new ClientInfoHolder(info));
-}
-
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject),
       pm(pm_ptr),
+      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
+      output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
       clients_model(Gio::ListStore<ClientInfoHolder>::create()) {
   stack = builder->get_widget<Gtk::Stack>("stack");
+
+  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
+  dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
 
   listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
   listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
@@ -52,10 +43,73 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
   server_rate = builder->get_widget<Gtk::Label>("server_rate");
 
+  setup_dropdown_devices(dropdown_input_devices, input_devices_model);
+  setup_dropdown_devices(dropdown_output_devices, output_devices_model);
+
   setup_listview_modules();
   setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
+
+  for (const auto& node : pm->list_nodes) {
+    if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
+      continue;
+    }
+
+    if (node.media_class == "Audio/Sink") {
+      output_devices_model->append(NodeInfoHolder::create(node));
+    } else if (node.media_class == "Audio/Source") {
+      input_devices_model->append(NodeInfoHolder::create(node));
+    }
+  }
+
+  pm->sink_added.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
+      auto item = output_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        return;
+      }
+    }
+
+    output_devices_model->append(NodeInfoHolder::create(info));
+  });
+
+  pm->sink_removed.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
+      auto item = output_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        output_devices_model->remove(n);
+
+        return;
+      }
+    }
+  });
+
+  pm->source_added.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+      auto item = input_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        return;
+      }
+    }
+
+    input_devices_model->append(NodeInfoHolder::create(info));
+  });
+
+  pm->source_removed.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+      auto item = input_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        input_devices_model->remove(n);
+
+        return;
+      }
+    }
+  });
 
   update_server_info();
   update_modules_info();
@@ -78,6 +132,57 @@ auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi*
   auto stack_page = stack->add(*ui, "pipe_info");
 
   return ui;
+}
+
+void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
+                                        const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model) {
+  // setting the dropdown model and factory
+
+  dropdown->set_model(Gtk::SingleSelection::create(model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* icon = Gtk::make_managed<Gtk::Image>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    icon->set_from_icon_name("emblem-system-symbolic");
+    // icon->set_margin_start(6);
+    // icon->set_margin_end(6);
+
+    box->set_spacing(6);
+    box->append(*icon);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+    list_item->set_data("icon", icon);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
+
+    auto name = holder->info.name;
+
+    icon->set_from_icon_name(holder->info.device_icon_name);
+
+    label->set_name(name);
+    label->set_text(name);
+  });
 }
 
 void PipeInfoUi::setup_listview_modules() {
