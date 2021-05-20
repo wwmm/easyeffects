@@ -57,12 +57,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   stack_model = stack->get_pages();
 
-  stack->get_pages()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
-    toggle_output->set_active(stack_model->is_selected(0));
-    toggle_input->set_active(stack_model->is_selected(1));
-    toggle_pipe_info->set_active(stack_model->is_selected(2));
-  });
-
   toggle_output->signal_toggled().connect([&, this]() {
     if (toggle_output->get_active()) {
       stack->get_pages()->select_item(0, true);
