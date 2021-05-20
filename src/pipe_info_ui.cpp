@@ -176,7 +176,11 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
 
     auto name = holder->info.name;
 
-    icon->set_from_icon_name(holder->info.device_icon_name);
+    if (holder->info.media_class == "Audio/Sink") {
+      icon->set_from_icon_name("audio-card-symbolic");
+    } else if (holder->info.media_class == "Audio/Source") {
+      icon->set_from_icon_name("audio-input-microphone-symbolic");
+    }
 
     label->set_name(name);
     label->set_text(name);
