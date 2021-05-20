@@ -45,12 +45,20 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::Stack* stack = nullptr;
 
+  Gtk::Switch* use_default_input = nullptr;
+
+  Gtk::Switch* use_default_output = nullptr;
+
   Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
              *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr;
 
   Gtk::DropDown *dropdown_input_devices = nullptr, *dropdown_output_devices = nullptr;
 
   Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
+
+  Glib::RefPtr<Gio::Settings> sie_settings;
+
+  Glib::RefPtr<Gio::Settings> soe_settings;
 
   Glib::RefPtr<NodeInfoHolder> input_devices_holder, output_devices_holder;
 

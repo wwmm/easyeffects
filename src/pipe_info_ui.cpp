@@ -22,11 +22,16 @@
 PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
     : Gtk::Box(cobject),
       pm(pm_ptr),
+      sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
+      soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
       input_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
       clients_model(Gio::ListStore<ClientInfoHolder>::create()) {
   stack = builder->get_widget<Gtk::Stack>("stack");
+
+  use_default_input = builder->get_widget<Gtk::Switch>("use_default_input");
+  use_default_output = builder->get_widget<Gtk::Switch>("use_default_output");
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
   dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
@@ -50,6 +55,14 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
+
+  sie_settings->bind("use-default-input-device", use_default_input, "active");
+  sie_settings->bind("use-default-input-device", dropdown_input_devices, "sensitive",
+                     Gio::Settings::BindFlags::INVERT_BOOLEAN);
+
+  soe_settings->bind("use-default-output-device", use_default_output, "active");
+  soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
+                     Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
   for (const auto& node : pm->list_nodes) {
     if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {

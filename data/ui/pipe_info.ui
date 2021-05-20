@@ -32,10 +32,90 @@
                                         <child>
                                             <object class="GtkLabel">
                                                 <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Header Version</property>
+                                                <property name="label" translatable="yes">Use Default Input</property>
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSwitch" id="use_default_input">
+                                                <property name="halign">start</property>
+                                                <property name="valign">center</property>
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">Use Default Output</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSwitch" id="use_default_output">
+                                                <property name="halign">start</property>
+                                                <property name="valign">center</property>
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">Input Device</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">2</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkDropDown" id="dropdown_input_devices">
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">2</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">Output Device</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkDropDown" id="dropdown_output_devices">
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">3</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">end</property>
+                                                <property name="label" translatable="yes">Header Version</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">4</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -47,7 +127,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">0</property>
+                                                    <property name="row">4</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -58,7 +138,7 @@
                                                 <property name="label" translatable="yes">Library Version</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">5</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -70,7 +150,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">5</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -81,7 +161,7 @@
                                                 <property name="label" translatable="yes">Default Input</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">2</property>
+                                                    <property name="row">6</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -93,7 +173,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">2</property>
+                                                    <property name="row">6</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -104,7 +184,7 @@
                                                 <property name="label" translatable="yes">Default Output</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">3</property>
+                                                    <property name="row">7</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -116,7 +196,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">3</property>
+                                                    <property name="row">7</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -127,7 +207,7 @@
                                                 <property name="label" translatable="yes">Sampling Rate</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">4</property>
+                                                    <property name="row">8</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -139,7 +219,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">4</property>
+                                                    <property name="row">8</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -150,7 +230,7 @@
                                                 <property name="label" translatable="yes">Minimum Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">5</property>
+                                                    <property name="row">9</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -162,7 +242,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">5</property>
+                                                    <property name="row">9</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -173,7 +253,7 @@
                                                 <property name="label" translatable="yes">Maximum Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">6</property>
+                                                    <property name="row">10</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -185,7 +265,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">6</property>
+                                                    <property name="row">10</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -196,7 +276,7 @@
                                                 <property name="label" translatable="yes">Default Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">7</property>
+                                                    <property name="row">11</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -208,87 +288,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">7</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Use Default Input</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">9</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSwitch" id="use_default_input">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">9</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Use Default Output</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">10</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSwitch" id="use_default_output">
-                                                <property name="halign">start</property>
-                                                <property name="valign">center</property>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">10</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Input Device</property>
-                                                <layout>
-                                                    <property name="column">0</property>
                                                     <property name="row">11</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkDropDown" id="dropdown_input_devices">
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">11</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Output Device</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">12</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkDropDown" id="dropdown_output_devices">
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">12</property>
                                                 </layout>
                                             </object>
                                         </child>
