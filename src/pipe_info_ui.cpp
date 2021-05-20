@@ -155,8 +155,6 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
     label->set_halign(Gtk::Align::START);
 
     icon->set_from_icon_name("emblem-system-symbolic");
-    // icon->set_margin_start(6);
-    // icon->set_margin_end(6);
 
     box->set_spacing(6);
     box->append(*icon);
