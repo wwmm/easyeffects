@@ -41,8 +41,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   header_version = builder->get_widget<Gtk::Label>("header_version");
   library_version = builder->get_widget<Gtk::Label>("library_version");
-  default_sink = builder->get_widget<Gtk::Label>("default_sink");
-  default_source = builder->get_widget<Gtk::Label>("default_source");
   quantum = builder->get_widget<Gtk::Label>("quantum");
   max_quantum = builder->get_widget<Gtk::Label>("max_quantum");
   min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
@@ -55,6 +53,26 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
+
+  use_default_input->signal_state_set().connect(
+      [=, this](bool state) {
+        if (state) {
+          sie_settings->set_string("input-device", pm->default_input_device.name);
+        }
+
+        return false;
+      },
+      true);
+
+  use_default_output->signal_state_set().connect(
+      [=, this](bool state) {
+        if (state) {
+          soe_settings->set_string("output-device", pm->default_output_device.name);
+        }
+
+        return true;
+      },
+      true);
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
   sie_settings->bind("use-default-input-device", dropdown_input_devices, "sensitive",
@@ -124,7 +142,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     }
   });
 
-  update_server_info();
+  header_version->set_text(pm->header_version);
+  library_version->set_text(pm->library_version);
+  server_rate->set_text(pm->default_clock_rate);
+  min_quantum->set_text(pm->default_min_quantum);
+  max_quantum->set_text(pm->default_max_quantum);
+  quantum->set_text(pm->default_quantum);
+
   update_modules_info();
   update_clients_info();
 }
@@ -151,11 +175,29 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
                                         const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model) {
   // setting the dropdown model and factory
 
-  dropdown->set_model(Gtk::SingleSelection::create(model));
+  auto selection_model = Gtk::SingleSelection::create(model);
+
+  dropdown->set_model(selection_model);
 
   auto factory = Gtk::SignalListItemFactory::create();
 
   dropdown->set_factory(factory);
+
+  // setting the item selection callback
+
+  dropdown->property_selected_item().signal_changed().connect([=, this]() {
+    if (dropdown->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown->get_selected_item());
+
+    if (holder->info.media_class == "Audio/Sink") {
+      soe_settings->set_string("output-device", holder->info.name);
+    } else if (holder->info.media_class == "Audio/Source") {
+      sie_settings->set_string("input-device", holder->info.name);
+    }
+  });
 
   // setting the factory callbacks
 
@@ -275,19 +317,6 @@ void PipeInfoUi::setup_listview_clients() {
   });
 }
 
-void PipeInfoUi::update_server_info() {
-  header_version->set_text(pm->header_version);
-  library_version->set_text(pm->library_version);
-
-  default_sink->set_text(pm->default_output_device.name);
-  default_source->set_text(pm->default_input_device.name);
-  server_rate->set_text(pm->default_clock_rate);
-
-  min_quantum->set_text(pm->default_min_quantum);
-  max_quantum->set_text(pm->default_max_quantum);
-  quantum->set_text(pm->default_quantum);
-}
-
 void PipeInfoUi::update_modules_info() {
   std::vector<Glib::RefPtr<ModuleInfoHolder>> values;
 
@@ -311,9 +340,7 @@ void PipeInfoUi::update_clients_info() {
 void PipeInfoUi::on_stack_visible_child_changed() {
   auto name = stack->get_visible_child_name();
 
-  if (name == "page_server") {
-    update_server_info();
-  } else if (name == "page_modules") {
+  if (name == "page_modules") {
     update_modules_info();
   } else if (name == "page_clients") {
     update_clients_info();

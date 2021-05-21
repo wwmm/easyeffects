@@ -25,17 +25,13 @@
                                 <child>
                                     <object class="GtkScrolledWindow">
                                         <child>
-                                            <object class="GtkViewport">
-                                                <child>
-                                                    <object class="GtkListView" id="listview_players">
-                                                        <property name="hexpand">1</property>
-                                                        <property name="vexpand">1</property>
-                                                        <property name="show-separators">1</property>
-                                                        <style>
-                                                            <class name="rich-list" />
-                                                        </style>
-                                                    </object>
-                                                </child>
+                                            <object class="GtkListView" id="listview_players">
+                                                <property name="hexpand">1</property>
+                                                <property name="vexpand">1</property>
+                                                <property name="show-separators">1</property>
+                                                <style>
+                                                    <class name="rich-list" />
+                                                </style>
                                             </object>
                                         </child>
                                     </object>
@@ -73,15 +69,11 @@
                                             <object class="GtkScrolledWindow">
                                                 <property name="propagate-natural-width">1</property>
                                                 <child>
-                                                    <object class="GtkViewport">
-                                                        <child>
-                                                            <object class="GtkListView" id="listview_selected_plugins">
-                                                                <property name="vexpand">1</property>
-                                                                <style>
-                                                                    <class name="navigation-sidebar" />
-                                                                </style>
-                                                            </object>
-                                                        </child>
+                                                    <object class="GtkListView" id="listview_selected_plugins">
+                                                        <property name="vexpand">1</property>
+                                                        <style>
+                                                            <class name="navigation-sidebar" />
+                                                        </style>
                                                     </object>
                                                 </child>
                                             </object>

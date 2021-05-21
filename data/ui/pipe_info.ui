@@ -158,56 +158,10 @@
                                         <child>
                                             <object class="GtkLabel">
                                                 <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Default Input</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">6</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="default_source">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">6</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
-                                                <property name="label" translatable="yes">Default Output</property>
-                                                <layout>
-                                                    <property name="column">0</property>
-                                                    <property name="row">7</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel" id="default_sink">
-                                                <property name="halign">start</property>
-                                                <style>
-                                                    <class name="dim-label" />
-                                                </style>
-                                                <layout>
-                                                    <property name="column">1</property>
-                                                    <property name="row">7</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Sampling Rate</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">8</property>
+                                                    <property name="row">6</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -219,7 +173,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">8</property>
+                                                    <property name="row">6</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -230,7 +184,7 @@
                                                 <property name="label" translatable="yes">Minimum Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">9</property>
+                                                    <property name="row">7</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -242,7 +196,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">9</property>
+                                                    <property name="row">7</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -253,7 +207,7 @@
                                                 <property name="label" translatable="yes">Maximum Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">10</property>
+                                                    <property name="row">8</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -265,7 +219,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">10</property>
+                                                    <property name="row">8</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -276,7 +230,7 @@
                                                 <property name="label" translatable="yes">Default Quantum</property>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">11</property>
+                                                    <property name="row">9</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -288,7 +242,7 @@
                                                 </style>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">11</property>
+                                                    <property name="row">9</property>
                                                 </layout>
                                             </object>
                                         </child>

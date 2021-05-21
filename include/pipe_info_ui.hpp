@@ -49,8 +49,8 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::Switch* use_default_output = nullptr;
 
-  Gtk::Label *header_version = nullptr, *library_version = nullptr, *default_sink = nullptr, *default_source = nullptr,
-             *server_rate = nullptr, *max_quantum = nullptr, *min_quantum = nullptr, *quantum = nullptr;
+  Gtk::Label *header_version = nullptr, *library_version = nullptr, *server_rate = nullptr, *max_quantum = nullptr,
+             *min_quantum = nullptr, *quantum = nullptr;
 
   Gtk::DropDown *dropdown_input_devices = nullptr, *dropdown_output_devices = nullptr;
 
@@ -79,8 +79,6 @@ class PipeInfoUi : public Gtk::Box {
   void setup_listview_modules();
 
   void setup_listview_clients();
-
-  void update_server_info();
 
   void update_modules_info();
 
