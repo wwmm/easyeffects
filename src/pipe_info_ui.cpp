@@ -28,6 +28,18 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
       output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
       clients_model(Gio::ListStore<ClientInfoHolder>::create()) {
+  for (const auto& node : pm->list_nodes) {
+    if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
+      continue;
+    }
+
+    if (node.media_class == "Audio/Sink") {
+      output_devices_model->append(NodeInfoHolder::create(node));
+    } else if (node.media_class == "Audio/Source") {
+      input_devices_model->append(NodeInfoHolder::create(node));
+    }
+  }
+
   stack = builder->get_widget<Gtk::Stack>("stack");
 
   use_default_input = builder->get_widget<Gtk::Switch>("use_default_input");
@@ -49,30 +61,92 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
 
+  // setting the displayed entry to the right value
+
+  {
+    auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
+
+    if (holder_selected != nullptr) {
+      auto input_device_name = std::string(sie_settings->get_string("input-device"));
+
+      if (holder_selected->info.name != input_device_name) {
+        for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+          auto holder = input_devices_model->get_item(n);
+
+          if (holder->info.name == input_device_name) {
+            dropdown_input_devices->set_selected(n);
+          }
+        }
+      }
+    }
+  }
+
+  {
+    auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+
+    if (holder_selected != nullptr) {
+      auto output_device_name = std::string(soe_settings->get_string("output-device"));
+
+      if (holder_selected->info.name != output_device_name) {
+        for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
+          auto holder = output_devices_model->get_item(n);
+
+          if (holder->info.name == output_device_name) {
+            dropdown_output_devices->set_selected(n);
+          }
+        }
+      }
+    }
+  }
+
   setup_listview_modules();
   setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
-  use_default_input->signal_state_set().connect(
-      [=, this](bool state) {
-        if (state) {
-          sie_settings->set_string("input-device", pm->default_input_device.name);
+  use_default_input->property_active().signal_changed().connect([=, this]() {
+    if (use_default_input->get_active()) {
+      sie_settings->set_string("input-device", pm->default_input_device.name);
+
+      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
+
+      if (holder != nullptr) {
+        if (holder->info.name != pm->default_input_device.name) {
+          for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+            auto holder = input_devices_model->get_item(n);
+
+            if (holder->info.name == pm->default_input_device.name) {
+              dropdown_input_devices->set_selected(n);
+
+              break;
+            }
+          }
         }
+      }
+    }
+  });
 
-        return false;
-      },
-      true);
+  use_default_output->property_active().signal_changed().connect([=, this]() {
+    if (use_default_output->get_active()) {
+      soe_settings->set_string("output-device", pm->default_output_device.name);
 
-  use_default_output->signal_state_set().connect(
-      [=, this](bool state) {
-        if (state) {
-          soe_settings->set_string("output-device", pm->default_output_device.name);
+      auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+
+      if (holder_selected != nullptr) {
+        if (holder_selected->info.name != pm->default_output_device.name) {
+          for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
+            auto holder = output_devices_model->get_item(n);
+
+            if (holder->info.name == pm->default_output_device.name) {
+              dropdown_output_devices->set_selected(n);
+
+              break;
+            }
+          }
         }
-
-        return true;
-      },
-      true);
+      }
+    }
+  });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
   sie_settings->bind("use-default-input-device", dropdown_input_devices, "sensitive",
@@ -81,18 +155,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   soe_settings->bind("use-default-output-device", use_default_output, "active");
   soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
-
-  for (const auto& node : pm->list_nodes) {
-    if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
-      continue;
-    }
-
-    if (node.media_class == "Audio/Sink") {
-      output_devices_model->append(NodeInfoHolder::create(node));
-    } else if (node.media_class == "Audio/Source") {
-      input_devices_model->append(NodeInfoHolder::create(node));
-    }
-  }
 
   pm->sink_added.connect([=, this](const NodeInfo& info) {
     for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
