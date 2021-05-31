@@ -20,6 +20,7 @@
 #ifndef ECHO_CANCELLER_HPP
 #define ECHO_CANCELLER_HPP
 
+#include <speex/speex_echo.h>
 #include <vector>
 #include "plugin_base.hpp"
 
@@ -45,7 +46,18 @@ class EchoCanceller : public PluginBase {
                std::span<float>& probe_right) override;
 
  private:
-  std::vector<float> data;
+  bool notify_latency = false;
+  bool ready = false;
+
+  uint blocksize = 512;
+  uint latency_n_frames = 0;
+
+  std::vector<float> data_L;
+  std::vector<float> data_R;
+
+  std::deque<float> deque_out_L, deque_out_R;
+
+  SpeexEchoState* echo_state = nullptr;
 };
 
 #endif

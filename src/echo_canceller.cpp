@@ -68,14 +68,34 @@ EchoCanceller::~EchoCanceller() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+
+  data_mutex.lock();
+
+  ready = false;
+
+  data_mutex.unlock();
 }
 
 void EchoCanceller::setup() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  // bs2b.set_srate(rate);
+  ready = false;
 
-  data.resize(2 * n_samples);
+  notify_latency = true;
+
+  latency_n_frames = 0;
+
+  deque_out_L.resize(0);
+  deque_out_R.resize(0);
+
+  data_L.resize(0);
+  data_R.resize(0);
+
+  if (echo_state != nullptr) {
+    speex_echo_state_reset(echo_state);
+  }
+
+  echo_state = speex_echo_state_init(blocksize, 5000);
 }
 
 void EchoCanceller::process(std::span<float>& left_in,
@@ -106,6 +126,8 @@ void EchoCanceller::process(std::span<float>& left_in,
   //   left_out[n] = data[n * 2];
   //   right_out[n] = data[n * 2 + 1];
   // }
+
+  // speex_echo_cancellation(echo_state, input_frame, echo_frame, output_frame);
 
   apply_gain(left_out, right_out, output_gain);
 
