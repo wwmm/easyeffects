@@ -33,8 +33,6 @@ class StreamOutputEffects : public EffectsBase {
   auto operator=(const StreamOutputEffects&&) -> StreamOutputEffects& = delete;
   ~StreamOutputEffects() override;
 
-  void change_output_device(const NodeInfo& node);
-
   void set_bypass(const bool& state);
 
  private:

@@ -49,10 +49,28 @@ constexpr auto rnnoise = "rnnoise";
 
 constexpr auto stereo_tools = "stereo_tools";
 
-constexpr std::array<const char* const, 21> list{
-    autogain,       bass_enhancer, compressor, convolver, crossfeed,   crystalizer, deesser,   delay,
-    equalizer,      exciter,       filter,     gate,      limiter,     loudness,    maximizer, multiband_compressor,
-    multiband_gate, pitch,         reverb,     rnnoise,   stereo_tools};
+constexpr std::array<const char* const, 22> list{autogain,
+                                                 bass_enhancer,
+                                                 compressor,
+                                                 convolver,
+                                                 crossfeed,
+                                                 crystalizer,
+                                                 deesser,
+                                                 delay,
+                                                 echo_canceller,
+                                                 equalizer,
+                                                 exciter,
+                                                 filter,
+                                                 gate,
+                                                 limiter,
+                                                 loudness,
+                                                 maximizer,
+                                                 multiband_compressor,
+                                                 multiband_gate,
+                                                 pitch,
+                                                 reverb,
+                                                 rnnoise,
+                                                 stereo_tools};
 
 }  // namespace plugin_name
 

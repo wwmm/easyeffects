@@ -14,6 +14,7 @@
         <file>ui/crystalizer_band.ui</file>
         <file>ui/deesser.ui</file>
         <file>ui/delay.ui</file>
+        <file>ui/echo_canceller.ui</file>
         <file>ui/effects_base.ui</file>
         <file>ui/equalizer.ui</file>
         <file>ui/equalizer_band.ui</file>

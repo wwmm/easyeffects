@@ -60,10 +60,23 @@ void on_process(void* userdata, spa_io_position* position) {
 
     std::span l{probe_left, probe_left + n_samples};
     std::span r{probe_right, probe_right + n_samples};
+
+    d->pb->process(left_in, right_in, left_out, right_out, l, r);
   }
 }
 
-const struct pw_filter_events filter_events = {.process = on_process};
+void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa_pod* param) {
+  auto* d = static_cast<PluginBase::data*>(data);
+
+  // switch (id) {
+  //   case SPA_PARAM_Latency:
+  //     break;
+  //   default:
+  //     break;
+  // }
+}
+
+const struct pw_filter_events filter_events = {.param_changed = on_param_changed, .process = on_process};
 
 }  // namespace
 

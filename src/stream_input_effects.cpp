@@ -165,42 +165,6 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
   }
 }
 
-void StreamInputEffects::on_source_changed(const NodeInfo& node_info) {
-  // auto id = get_input_node_id();
-
-  // if (node_info.id == id) {
-  //   if (node_info.rate != sampling_rate && node_info.rate != 0) {
-  //     util::debug(log_tag + "easyeffects_source sampling rate has changed. Restarting the pipeline...");
-
-  //     gst_element_set_state(pipeline, GST_STATE_NULL);
-
-  //     set_sampling_rate(node_info.rate);
-
-  //     rnnoise->set_caps_out(sampling_rate);
-
-  //     update_pipeline_state();
-  //   }
-  // }
-}
-
-void StreamInputEffects::change_input_device(const NodeInfo& node) {
-  // if (node.id == get_input_node_id()) {
-  //   return;
-  // }
-
-  // util::debug(log_tag + "The user has requested a new input device. Restarting the pipeline...");
-
-  // gst_element_set_state(pipeline, GST_STATE_NULL);
-
-  // if (node.rate != 0) {
-  //   set_sampling_rate(node.rate);
-  // }
-
-  // set_input_node_id(node.id);
-
-  // update_pipeline_state();
-}
-
 void StreamInputEffects::connect_filters() {
   auto list = settings->get_string_array("plugins");
 

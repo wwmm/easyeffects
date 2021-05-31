@@ -26,6 +26,8 @@ easyeffects_sources = [
 	'delay.cpp',
 	'delay_preset.cpp',
 	'delay_ui.cpp',
+	'echo_canceller.cpp',
+	'echo_canceller_ui.cpp',
 	'effects_base_ui.cpp',
 	'effects_base.cpp',
 	'equalizer.cpp',

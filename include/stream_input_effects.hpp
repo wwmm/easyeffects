@@ -31,8 +31,6 @@ class StreamInputEffects : public EffectsBase {
   auto operator=(const StreamInputEffects&&) -> StreamInputEffects& = delete;
   ~StreamInputEffects() override;
 
-  void change_input_device(const NodeInfo& node);
-
   void set_bypass(const bool& state);
 
  private:
@@ -47,8 +45,6 @@ class StreamInputEffects : public EffectsBase {
   void on_app_added(const NodeInfo& node_info);
 
   void on_link_changed(const LinkInfo& link_info);
-
-  void on_source_changed(const NodeInfo& node_info);
 };
 
 #endif

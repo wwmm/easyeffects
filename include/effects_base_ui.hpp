@@ -35,6 +35,7 @@
 #include "crystalizer_ui.hpp"
 #include "deesser_ui.hpp"
 #include "delay_ui.hpp"
+#include "echo_canceller_ui.hpp"
 #include "effects_base.hpp"
 #include "equalizer_ui.hpp"
 #include "exciter_ui.hpp"
@@ -136,6 +137,7 @@ class EffectsBaseUi {
                                                    {plugin_name::crystalizer, _("Crystalizer")},
                                                    {plugin_name::deesser, _("Deesser")},
                                                    {plugin_name::delay, _("Delay")},
+                                                   {plugin_name::echo_canceller, _("Echo Canceller")},
                                                    {plugin_name::equalizer, _("Equalizer")},
                                                    {plugin_name::exciter, _("Exciter")},
                                                    {plugin_name::filter, _("Filter")},

@@ -28,6 +28,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   delay = std::make_shared<Delay>(log_tag, "com.github.wwmm.easyeffects.delay", path + "delay/", pm);
 
+  echo_canceller = std::make_shared<EchoCanceller>(log_tag, "com.github.wwmm.easyeffects.echocanceller",
+                                                   path + "echocanceller/", pm);
+
   equalizer = std::make_shared<Equalizer>(log_tag, "com.github.wwmm.easyeffects.equalizer", path + "equalizer/",
                                           "com.github.wwmm.easyeffects.equalizer.channel",
                                           path + "equalizer/leftchannel/", path + "equalizer/rightchannel/", pm);
@@ -73,6 +76,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(crystalizer->name, crystalizer));
   plugins.insert(std::make_pair(deesser->name, deesser));
   plugins.insert(std::make_pair(delay->name, delay));
+  plugins.insert(std::make_pair(echo_canceller->name, echo_canceller));
   plugins.insert(std::make_pair(equalizer->name, equalizer));
   plugins.insert(std::make_pair(exciter->name, exciter));
   plugins.insert(std::make_pair(filter->name, filter));

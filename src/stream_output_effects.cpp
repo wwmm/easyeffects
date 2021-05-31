@@ -157,26 +157,6 @@ void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
   // }
 }
 
-void StreamOutputEffects::change_output_device(const NodeInfo& node) {
-  // if (node.id == get_output_node_id()) {
-  //   return;
-  // }
-
-  // util::debug(log_tag + "The user has requested a new output device. Restarting the pipeline...");
-
-  // gst_element_set_state(pipeline, GST_STATE_NULL);
-
-  // if (node.rate != 0) {
-  //   set_sampling_rate(node.rate);
-  // }
-
-  // set_output_node_id(node.id);
-
-  // rnnoise->set_caps_out(sampling_rate);
-
-  // update_pipeline_state();
-}
-
 void StreamOutputEffects::connect_filters() {
   auto list = settings->get_string_array("plugins");
 

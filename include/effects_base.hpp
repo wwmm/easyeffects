@@ -29,6 +29,7 @@
 #include "crystalizer.hpp"
 #include "deesser.hpp"
 #include "delay.hpp"
+#include "echo_canceller.hpp"
 #include "equalizer.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
@@ -70,6 +71,7 @@ class EffectsBase {
   std::shared_ptr<Crystalizer> crystalizer;
   std::shared_ptr<Deesser> deesser;
   std::shared_ptr<Delay> delay;
+  std::shared_ptr<EchoCanceller> echo_canceller;
   std::shared_ptr<Equalizer> equalizer;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Filter> filter;

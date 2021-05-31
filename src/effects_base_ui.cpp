@@ -162,6 +162,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->crystalizer->post_messages = true;
   effects_base->deesser->post_messages = true;
   effects_base->delay->post_messages = true;
+  effects_base->echo_canceller->post_messages = true;
   effects_base->equalizer->post_messages = true;
   effects_base->exciter->post_messages = true;
   effects_base->filter->post_messages = true;
@@ -196,6 +197,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->crystalizer->post_messages = false;
   effects_base->deesser->post_messages = false;
   effects_base->delay->post_messages = false;
+  effects_base->echo_canceller->post_messages = false;
   effects_base->equalizer->post_messages = false;
   effects_base->exciter->post_messages = false;
   effects_base->filter->post_messages = false;
@@ -222,6 +224,7 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->crystalizer->bypass = false;
   effects_base->deesser->bypass = false;
   effects_base->delay->bypass = false;
+  effects_base->echo_canceller->bypass = false;
   effects_base->equalizer->bypass = false;
   effects_base->exciter->bypass = false;
   effects_base->filter->bypass = false;
@@ -331,6 +334,18 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   effects_base->delay->input_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_input_level));
   effects_base->delay->output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level));
+
+  // echo_canceller
+
+  auto* echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
+
+  echo_canceller_ui->bypass->signal_toggled().connect(
+      [=, this]() { effects_base->echo_canceller->bypass = echo_canceller_ui->bypass->get_active(); });
+
+  effects_base->echo_canceller->input_level.connect(
+      sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_input_level));
+  effects_base->echo_canceller->output_level.connect(
+      sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_output_level));
 
   // equalizer
 
