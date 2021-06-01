@@ -1190,7 +1190,8 @@ void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id) -> std::vector<pw_proxy*> {
+auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link)
+    -> std::vector<pw_proxy*> {
   std::vector<pw_proxy*> list;
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
@@ -1200,16 +1201,24 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
     if (port.node_id == output_node_id && port.direction == "out") {
       list_output_ports.emplace_back(port);
 
-      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
-        use_audio_channel = false;
+      if (!probe_link) {
+        if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+          use_audio_channel = false;
+        }
       }
     }
 
     if (port.node_id == input_node_id && port.direction == "in") {
-      list_input_ports.emplace_back(port);
+      if (!probe_link) {
+        list_input_ports.emplace_back(port);
 
-      if (port.audio_channel != "FL" && port.audio_channel != "FR") {
-        use_audio_channel = false;
+        if (port.audio_channel != "FL" && port.audio_channel != "FR") {
+          use_audio_channel = false;
+        }
+      } else {
+        if (port.audio_channel == "PROBE_FL" || port.audio_channel == "PROBE_FR") {
+          list_input_ports.emplace_back(port);
+        }
       }
     }
   }
@@ -1218,10 +1227,20 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
     for (auto& inp : list_input_ports) {
       bool ports_match = false;
 
-      if (use_audio_channel) {
-        ports_match = outp.audio_channel == inp.audio_channel;
+      if (!probe_link) {
+        if (use_audio_channel) {
+          ports_match = outp.audio_channel == inp.audio_channel;
+        } else {
+          ports_match = outp.port_id == inp.port_id;
+        }
       } else {
-        ports_match = outp.port_id == inp.port_id;
+        if (outp.audio_channel == "FL" && inp.audio_channel == "PROBE_FL") {
+          ports_match = true;
+        }
+
+        if (outp.audio_channel == "FR" && inp.audio_channel == "PROBE_FR") {
+          ports_match = true;
+        }
       }
 
       if (ports_match) {

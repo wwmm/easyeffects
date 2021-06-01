@@ -194,6 +194,20 @@ void StreamInputEffects::connect_filters() {
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
     }
+
+    // checking if we have to link the echo_canceller probe to the output device
+
+    for (auto& name : list) {
+      if (name == plugin_name::echo_canceller) {
+        auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
+
+        for (const auto& link : links) {
+          list_proxies.emplace_back(link);
+        }
+
+        break;
+      }
+    }
   }
 
   auto links = pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
