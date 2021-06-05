@@ -259,7 +259,7 @@ void Crystalizer::process(std::span<float>& left_in,
     if (notify_latency) {
       latency = static_cast<float>(latency_n_frames) / rate;
 
-      util::debug(name + " latency: " + std::to_string(latency) + " s");
+      util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
 
       Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
 

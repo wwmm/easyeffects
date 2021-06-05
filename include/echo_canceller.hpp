@@ -45,19 +45,34 @@ class EchoCanceller : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
+  sigc::signal<void(double)> new_latency;
+
  private:
   bool notify_latency = false;
   bool ready = false;
 
   uint blocksize = 512;
+  uint blocksize_ms = 20;
+  uint filter_length_ms = 100;
   uint latency_n_frames = 0;
 
-  std::vector<float> data_L;
-  std::vector<float> data_R;
+  float latency = 0.0F;
+
+  const float inv_short_max = 1.0F / (SHRT_MAX + 1);
+
+  std::vector<spx_int16_t> data_L;
+  std::vector<spx_int16_t> data_R;
+  std::vector<spx_int16_t> probe_L;
+  std::vector<spx_int16_t> probe_R;
+  std::vector<spx_int16_t> filtered_L;
+  std::vector<spx_int16_t> filtered_R;
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  SpeexEchoState* echo_state = nullptr;
+  SpeexEchoState* echo_state_L = nullptr;
+  SpeexEchoState* echo_state_R = nullptr;
+
+  void init_speex();
 };
 
 #endif

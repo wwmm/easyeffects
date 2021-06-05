@@ -84,14 +84,7 @@ void EchoCanceller::setup() {
   deque_out_L.resize(0);
   deque_out_R.resize(0);
 
-  data_L.resize(0);
-  data_R.resize(0);
-
-  if (echo_state != nullptr) {
-    speex_echo_state_reset(echo_state);
-  }
-
-  echo_state = speex_echo_state_init(blocksize, 5000);
+  init_speex();
 }
 
 void EchoCanceller::process(std::span<float>& left_in,
@@ -111,19 +104,68 @@ void EchoCanceller::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  // for (size_t n = 0; n < left_in.size(); n++) {
-  //   data[n * 2] = left_in[n];
-  //   data[n * 2 + 1] = right_in[n];
-  // }
+  for (size_t j = 0; j < left_in.size(); j++) {
+    data_L.emplace_back(left_in[j] * (SHRT_MAX + 1));
+    data_R.emplace_back(right_in[j] * (SHRT_MAX + 1));
 
-  // bs2b.cross_feed(data.data(), n_samples);
+    probe_L.emplace_back(probe_left[j] * (SHRT_MAX + 1));
+    probe_R.emplace_back(probe_right[j] * (SHRT_MAX + 1));
 
-  // for (size_t n = 0; n < left_out.size(); n++) {
-  //   left_out[n] = data[n * 2];
-  //   right_out[n] = data[n * 2 + 1];
-  // }
+    if (data_L.size() == blocksize) {
+      speex_echo_cancellation(echo_state_L, data_L.data(), probe_L.data(), filtered_L.data());
+      speex_echo_cancellation(echo_state_R, data_R.data(), probe_R.data(), filtered_R.data());
 
-  // speex_echo_cancellation(echo_state, input_frame, echo_frame, output_frame);
+      for (const auto& v : filtered_L) {
+        deque_out_L.emplace_back(static_cast<float>(v) * inv_short_max);
+      }
+
+      for (const auto& v : filtered_R) {
+        deque_out_R.emplace_back(static_cast<float>(v) * inv_short_max);
+      }
+
+      data_L.resize(0);
+      data_R.resize(0);
+      probe_L.resize(0);
+      probe_R.resize(0);
+    }
+  }
+
+  // copying the processed samples to the output buffers
+
+  if (deque_out_L.size() >= left_out.size()) {
+    for (float& v : left_out) {
+      v = deque_out_L.front();
+
+      deque_out_L.pop_front();
+    }
+
+    for (float& v : right_out) {
+      v = deque_out_R.front();
+
+      deque_out_R.pop_front();
+    }
+  } else {
+    uint offset = left_out.size() - deque_out_L.size();
+
+    if (offset != latency_n_frames) {
+      latency_n_frames = offset;
+
+      notify_latency = true;
+    }
+
+    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      if (n < offset) {
+        left_out[n] = 0.0F;
+        right_out[n] = 0.0F;
+      } else {
+        left_out[n] = deque_out_L.front();
+        right_out[n] = deque_out_R.front();
+
+        deque_out_R.pop_front();
+        deque_out_L.pop_front();
+      }
+    }
+  }
 
   apply_gain(left_out, right_out, output_gain);
 
@@ -137,5 +179,45 @@ void EchoCanceller::process(std::span<float>& left_in,
 
       notification_dt = 0.0F;
     }
+
+    if (notify_latency) {
+      latency = static_cast<float>(latency_n_frames) / rate;
+
+      util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
+
+      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
+      notify_latency = false;
+    }
   }
+}
+
+void EchoCanceller::init_speex() {
+  data_L.resize(0);
+  data_R.resize(0);
+  probe_L.resize(0);
+  probe_R.resize(0);
+
+  blocksize = 0.001F * blocksize_ms * rate;
+
+  util::debug(log_tag + name + " blocksize: " + std::to_string(blocksize));
+
+  filtered_L.resize(blocksize);
+  filtered_R.resize(blocksize);
+
+  uint filter_length = 0.001F * filter_length_ms * rate;
+
+  util::debug(log_tag + name + " filter length: " + std::to_string(filter_length));
+
+  if (echo_state_L != nullptr) {
+    speex_echo_state_reset(echo_state_L);
+  }
+
+  echo_state_L = speex_echo_state_init(blocksize, filter_length);
+
+  if (echo_state_R != nullptr) {
+    speex_echo_state_reset(echo_state_R);
+  }
+
+  echo_state_R = speex_echo_state_init(blocksize, filter_length);
 }

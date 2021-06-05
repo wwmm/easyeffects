@@ -68,6 +68,8 @@ void on_process(void* userdata, spa_io_position* position) {
 void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa_pod* param) {
   auto* d = static_cast<PluginBase::data*>(data);
 
+  // spa_latency_info latency{};
+
   // switch (id) {
   //   case SPA_PARAM_Latency:
   //     break;
