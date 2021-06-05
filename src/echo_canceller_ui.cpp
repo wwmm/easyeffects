@@ -31,15 +31,18 @@ EchoCancellerUi::EchoCancellerUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  // fcut = builder->get_widget<Gtk::SpinButton>("fcut");
-  // feed = builder->get_widget<Gtk::SpinButton>("feed");
+  frame_size = builder->get_widget<Gtk::SpinButton>("frame_size");
+  filter_length = builder->get_widget<Gtk::SpinButton>("filter_length");
 
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  // settings->bind("fcut", fcut->get_adjustment().get(), "value");
-  // settings->bind("feed", feed->get_adjustment().get(), "value");
+  settings->bind("frame-size", frame_size->get_adjustment().get(), "value");
+  settings->bind("filter-length", filter_length->get_adjustment().get(), "value");
+
+  prepare_spinbutton(frame_size, "ms");
+  prepare_spinbutton(filter_length, "ms");
 }
 
 EchoCancellerUi::~EchoCancellerUi() {
@@ -64,7 +67,7 @@ void EchoCancellerUi::reset() {
 
   settings->reset("output-gain");
 
-  // settings->reset("fcut");
+  settings->reset("frame-size");
 
-  // settings->reset("feed");
+  settings->reset("filter-length");
 }

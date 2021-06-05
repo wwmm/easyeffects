@@ -35,17 +35,21 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  // settings->signal_changed("fcut").connect([=, this](auto key) {
-  //   std::scoped_lock<std::mutex> lock(data_mutex);
+  settings->signal_changed("frame-size").connect([=, this](auto key) {
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
-  //   bs2b.set_level_fcut(settings->get_int(key));
-  // });
+    blocksize_ms = settings->get_int(key);
 
-  // settings->signal_changed("feed").connect([=, this](auto key) {
-  //   std::scoped_lock<std::mutex> lock(data_mutex);
+    init_speex();
+  });
 
-  //   bs2b.set_level_feed(10 * settings->get_double(key));
-  // });
+  settings->signal_changed("filter-length").connect([=, this](auto key) {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    filter_length_ms = settings->get_int(key);
+
+    init_speex();
+  });
 
   initialize_listener();
 }

@@ -16,7 +16,7 @@
             </object>
         </child>
 
-        <!-- <child>
+        <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
                 <property name="valign">center</property>
@@ -26,7 +26,7 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Cutoff</property>
+                        <property name="label" translatable="yes">Frame Size</property>
                         <layout>
                             <property name="column">0</property>
                             <property name="row">0</property>
@@ -34,7 +34,7 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="fcut">
+                    <object class="GtkSpinButton" id="frame_size">
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
@@ -42,9 +42,9 @@
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
-                                <property name="lower">300</property>
-                                <property name="upper">2000</property>
-                                <property name="value">700</property>
+                                <property name="lower">1</property>
+                                <property name="upper">100</property>
+                                <property name="value">20</property>
                                 <property name="step-increment">1</property>
                                 <property name="page-increment">10</property>
                             </object>
@@ -60,7 +60,7 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Feed</property>
+                        <property name="label" translatable="yes">Filter Length</property>
                         <layout>
                             <property name="column">1</property>
                             <property name="row">0</property>
@@ -68,19 +68,19 @@
                     </object>
                 </child>
                 <child>
-                    <object class="GtkSpinButton" id="feed">
+                    <object class="GtkSpinButton" id="filter_length">
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
-                        <property name="digits">2</property>
+                        <property name="digits">0</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">1</property>
-                                <property name="upper">15</property>
-                                <property name="value">4.5</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
+                                <property name="upper">1000</property>
+                                <property name="value">100</property>
+                                <property name="step-increment">1</property>
+                                <property name="page-increment">10</property>
                             </object>
                         </property>
                         <layout>
@@ -90,7 +90,7 @@
                     </object>
                 </child>
             </object>
-        </child> -->
+        </child>
 
         <child>
             <object class="GtkBox">

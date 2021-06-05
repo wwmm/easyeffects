@@ -9,13 +9,13 @@
             <range min="-36.1" max="36.1" />
             <default>0.0</default>
         </key>
-        <key name="fcut" type="i">
-            <range min="300" max="2000" />
-            <default>700</default>
+        <key name="frame-size" type="i">
+            <range min="1" max="100" />
+            <default>10</default>
         </key>
-        <key name="feed" type="d">
-            <range min="1" max="15" />
-            <default>4.5</default>
+        <key name="filter-length" type="i">
+            <range min="1" max="1000" />
+            <default>100</default>
         </key>
     </schema>
 </schemalist>

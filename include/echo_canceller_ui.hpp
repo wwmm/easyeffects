@@ -39,7 +39,7 @@ class EchoCancellerUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Gtk::SpinButton *fcut = nullptr, *feed = nullptr;
+  Gtk::SpinButton *frame_size = nullptr, *filter_length = nullptr;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
