@@ -17,32 +17,27 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef WEBRTC_HPP
-#define WEBRTC_HPP
+#ifndef ECHO_CANCELLER_PRESET_HPP
+#define ECHO_CANCELLER_PRESET_HPP
 
-#include "plugin_base.hpp"
+#include "plugin_preset_base.hpp"
 
-class Webrtc : public PluginBase {
+class EchoCancellerPreset : public PluginPresetBase {
  public:
-  Webrtc(const std::string& tag,
-         const std::string& schema,
-         const std::string& schema_path,
-         const int& sampling_rate,
-         PipeManager* pipe_manager);
-  Webrtc(const Webrtc&) = delete;
-  auto operator=(const Webrtc&) -> Webrtc& = delete;
-  Webrtc(const Webrtc&&) = delete;
-  auto operator=(const Webrtc&&) -> Webrtc& = delete;
-  ~Webrtc() override;
+  EchoCancellerPreset();
 
-  int rate;
-
-  void set_probe_input_node_id(const uint& id) const;
+  void write(PresetType preset_type, boost::property_tree::ptree& root) override;
+  void read(PresetType preset_type, const boost::property_tree::ptree& root) override;
 
  private:
-  void build_probe_bin();
-  void build_dsp_bin();
-  void bind_to_gsettings();
+  Glib::RefPtr<Gio::Settings> input_settings, output_settings;
+
+  void save(boost::property_tree::ptree& root,
+            const std::string& section,
+            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void load(const boost::property_tree::ptree& root,
+            const std::string& section,
+            const Glib::RefPtr<Gio::Settings>& settings) override;
 };
 
 #endif

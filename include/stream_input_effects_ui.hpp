@@ -42,9 +42,6 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
 
  private:
   StreamInputEffects* sie = nullptr;
-
-  void level_meters_connections();
-  void up_down_connections();
 };
 
 #endif

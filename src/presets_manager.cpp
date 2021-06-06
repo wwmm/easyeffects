@@ -27,29 +27,29 @@ PresetsManager::PresetsManager()
       settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
       soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
       sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
-      limiter(std::make_unique<LimiterPreset>()),
+      autogain(std::make_unique<AutoGainPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
+      convolver(std::make_unique<ConvolverPreset>()),
       crossfeed(std::make_unique<CrossfeedPreset>()),
+      crystalizer(std::make_unique<CrystalizerPreset>()),
       deesser(std::make_unique<DeesserPreset>()),
+      delay(std::make_unique<DelayPreset>()),
+      echo_canceller(std::make_unique<EchoCancellerPreset>()),
       equalizer(std::make_unique<EqualizerPreset>()),
       exciter(std::make_unique<ExciterPreset>()),
       filter(std::make_unique<FilterPreset>()),
       gate(std::make_unique<GatePreset>()),
+      limiter(std::make_unique<LimiterPreset>()),
+      loudness(std::make_unique<LoudnessPreset>()),
       maximizer(std::make_unique<MaximizerPreset>()),
+      multiband_compressor(std::make_unique<MultibandCompressorPreset>()),
+      multiband_gate(std::make_unique<MultibandGatePreset>()),
       pitch(std::make_unique<PitchPreset>()),
       reverb(std::make_unique<ReverbPreset>()),
-      webrtc(std::make_unique<WebrtcPreset>()),
-      multiband_compressor(std::make_unique<MultibandCompressorPreset>()),
-      loudness(std::make_unique<LoudnessPreset>()),
-      multiband_gate(std::make_unique<MultibandGatePreset>()),
-      stereo_tools(std::make_unique<StereoToolsPreset>()),
-      convolver(std::make_unique<ConvolverPreset>()),
-      crystalizer(std::make_unique<CrystalizerPreset>()),
-      autogain(std::make_unique<AutoGainPreset>()),
-      delay(std::make_unique<DelayPreset>()),
       rnnoise(std::make_unique<RNNoisePreset>()),
-      spectrum(std::make_unique<SpectrumPreset>()) {
+      spectrum(std::make_unique<SpectrumPreset>()),
+      stereo_tools(std::make_unique<StereoToolsPreset>()) {
   // system presets directories provided by Glib
 
   for (const auto& scd : Glib::get_system_config_dirs()) {
@@ -317,28 +317,28 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
     }
   }
 
+  autogain->write(preset_type, root);
   bass_enhancer->write(preset_type, root);
   compressor->write(preset_type, root);
+  convolver->write(preset_type, root);
   crossfeed->write(preset_type, root);
+  crystalizer->write(preset_type, root);
   deesser->write(preset_type, root);
+  delay->write(preset_type, root);
+  echo_canceller->write(preset_type, root);
   equalizer->write(preset_type, root);
   exciter->write(preset_type, root);
   filter->write(preset_type, root);
   gate->write(preset_type, root);
   limiter->write(preset_type, root);
+  loudness->write(preset_type, root);
   maximizer->write(preset_type, root);
+  multiband_compressor->write(preset_type, root);
+  multiband_gate->write(preset_type, root);
   pitch->write(preset_type, root);
   reverb->write(preset_type, root);
-  webrtc->write(preset_type, root);
-  multiband_compressor->write(preset_type, root);
-  loudness->write(preset_type, root);
-  multiband_gate->write(preset_type, root);
-  stereo_tools->write(preset_type, root);
-  convolver->write(preset_type, root);
-  crystalizer->write(preset_type, root);
-  autogain->write(preset_type, root);
-  delay->write(preset_type, root);
   rnnoise->write(preset_type, root);
+  stereo_tools->write(preset_type, root);
 
   boost::property_tree::write_json(output_file.string(), root);
 
@@ -447,29 +447,29 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
   load_blocklist(preset_type, root);
 
-  spectrum->read(preset_type, root);
+  autogain->read(preset_type, root);
   bass_enhancer->read(preset_type, root);
   compressor->read(preset_type, root);
+  convolver->read(preset_type, root);
   crossfeed->read(preset_type, root);
+  crystalizer->read(preset_type, root);
   deesser->read(preset_type, root);
+  delay->read(preset_type, root);
+  echo_canceller->read(preset_type, root);
   equalizer->read(preset_type, root);
   exciter->read(preset_type, root);
   filter->read(preset_type, root);
   gate->read(preset_type, root);
   limiter->read(preset_type, root);
+  loudness->read(preset_type, root);
   maximizer->read(preset_type, root);
+  multiband_compressor->read(preset_type, root);
+  multiband_gate->read(preset_type, root);
   pitch->read(preset_type, root);
   reverb->read(preset_type, root);
-  webrtc->read(preset_type, root);
-  multiband_compressor->read(preset_type, root);
-  loudness->read(preset_type, root);
-  multiband_gate->read(preset_type, root);
-  stereo_tools->read(preset_type, root);
-  convolver->read(preset_type, root);
-  crystalizer->read(preset_type, root);
-  autogain->read(preset_type, root);
-  delay->read(preset_type, root);
   rnnoise->read(preset_type, root);
+  spectrum->read(preset_type, root);
+  stereo_tools->read(preset_type, root);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }

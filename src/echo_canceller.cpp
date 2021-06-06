@@ -73,6 +73,14 @@ EchoCanceller::~EchoCanceller() {
 
   ready = false;
 
+  if (echo_state_L != nullptr) {
+    speex_echo_state_destroy(echo_state_L);
+  }
+
+  if (echo_state_R != nullptr) {
+    speex_echo_state_destroy(echo_state_R);
+  }
+
   data_mutex.unlock();
 }
 
@@ -99,7 +107,7 @@ void EchoCanceller::process(std::span<float>& left_in,
                             std::span<float>& probe_right) {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  if (bypass) {
+  if (bypass || !ready) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -214,14 +222,16 @@ void EchoCanceller::init_speex() {
   util::debug(log_tag + name + " filter length: " + std::to_string(filter_length));
 
   if (echo_state_L != nullptr) {
-    speex_echo_state_reset(echo_state_L);
+    speex_echo_state_destroy(echo_state_L);
   }
 
   echo_state_L = speex_echo_state_init(blocksize, filter_length);
 
   if (echo_state_R != nullptr) {
-    speex_echo_state_reset(echo_state_R);
+    speex_echo_state_destroy(echo_state_R);
   }
 
   echo_state_R = speex_echo_state_init(blocksize, filter_length);
+
+  ready = true;
 }

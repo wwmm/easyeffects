@@ -39,4 +39,4 @@ gsettings set com.github.wwmm.easyeffects.multibandcompressor:/com/github/wwmm/e
 gsettings set com.github.wwmm.easyeffects.multibandgate:/com/github/wwmm/easyeffects/streaminputs/multibandgate/ state true
 gsettings set com.github.wwmm.easyeffects.pitch:/com/github/wwmm/easyeffects/streaminputs/pitch/ state true
 gsettings set com.github.wwmm.easyeffects.reverb:/com/github/wwmm/easyeffects/streaminputs/reverb/ state true
-gsettings set com.github.wwmm.easyeffects.webrtc:/com/github/wwmm/easyeffects/streaminputs/webrtc/ state true
+gsettings set com.github.wwmm.easyeffects.echocanceller:/com/github/wwmm/easyeffects/streaminputs/echocanceller/ state true

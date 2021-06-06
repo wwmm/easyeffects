@@ -59,7 +59,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
-  // pm->source_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_source_changed));
 
   uint n_disconnected_links = disconnect_filters();
 

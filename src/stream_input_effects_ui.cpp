@@ -30,18 +30,6 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_icon->set_from_icon_name("media-record-symbolic");
   toggle_players_label->set_text(_("Recorders"));
 
-  //   auto b_webrtc = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/webrtc.glade");
-
-  //   b_webrtc->get_widget_derived("widgets_grid", webrtc_ui, "com.github.wwmm.easyeffects.webrtc",
-  //                                "/com/github/wwmm/easyeffects/streaminputs/webrtc/");
-
-  //   stack->add(*webrtc_ui, webrtc_ui->name);
-
-  //   add_to_listbox(webrtc_ui);
-
-  level_meters_connections();
-  up_down_connections();
-
   for (auto& node : pm->list_nodes) {
     if (node.media_class == "Stream/Input/Audio") {
       on_app_added(node);
@@ -100,20 +88,4 @@ auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* s
   stack_page->set_title(_("Input"));
 
   return ui;
-}
-
-void StreamInputEffectsUi::level_meters_connections() {
-  //   // global output level meter connection
-
-  //   // webrtc level meters connections
-
-  //   connections.emplace_back(
-  //       sie->webrtc_input_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_input_level_db)));
-  //   connections.emplace_back(
-  //       sie->webrtc_output_level.connect(sigc::mem_fun(*webrtc_ui, &WebrtcUi::on_new_output_level_db)));
-}
-
-void StreamInputEffectsUi::up_down_connections() {
-  //   connections.emplace_back(webrtc_ui->plugin_up->signal_clicked().connect([=, this]() { on_up(webrtc_ui); }));
-  //   connections.emplace_back(webrtc_ui->plugin_down->signal_clicked().connect([=, this]() { on_down(webrtc_ui); }));
 }
