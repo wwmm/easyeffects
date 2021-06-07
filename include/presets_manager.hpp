@@ -24,11 +24,12 @@
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
-#include <boost/filesystem.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <iostream>
+#include <filesystem>
+#include <fstream>
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <vector>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
@@ -69,7 +70,7 @@ class PresetsManager {
   ~PresetsManager();
 
   auto get_names(PresetType preset_type) -> std::vector<Glib::ustring>;
-  static auto search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string>;
+  static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
   void add(PresetType preset_type, const Glib::ustring& name);
   void save(PresetType preset_type, const std::string& name);
   void remove(PresetType preset_type, const std::string& name);
@@ -89,9 +90,9 @@ class PresetsManager {
  private:
   std::string log_tag = "presets_manager: ";
 
-  boost::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_dir;
+  std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_dir;
 
-  std::vector<boost::filesystem::path> system_input_dir, system_output_dir;
+  std::vector<std::filesystem::path> system_input_dir, system_output_dir;
 
   Glib::RefPtr<Gio::Settings> settings, soe_settings, sie_settings;
 
@@ -168,7 +169,7 @@ class PresetsManager {
     return a != b;
   }
 
-  void create_user_directory(const boost::filesystem::path& path);
+  void create_user_directory(const std::filesystem::path& path);
 
   void save_blocklist(PresetType preset_type, boost::property_tree::ptree& root);
 

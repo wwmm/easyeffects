@@ -123,11 +123,11 @@ PresetsManager::~PresetsManager() {
   util::debug(log_tag + "destroyed");
 }
 
-void PresetsManager::create_user_directory(const boost::filesystem::path& path) {
-  auto dir_exists = boost::filesystem::is_directory(path);
+void PresetsManager::create_user_directory(const std::filesystem::path& path) {
+  auto dir_exists = std::filesystem::is_directory(path);
 
   if (!dir_exists) {
-    if (boost::filesystem::create_directories(path)) {
+    if (std::filesystem::create_directories(path)) {
       util::debug(log_tag + "user presets directory created: " + path.string());
     } else {
       util::warning(log_tag + "failed to create user presets directory: " + path.string());
@@ -139,9 +139,9 @@ void PresetsManager::create_user_directory(const boost::filesystem::path& path) 
 }
 
 auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustring> {
-  boost::filesystem::directory_iterator it;
+  std::filesystem::directory_iterator it;
   std::vector<Glib::ustring> names;
-  std::vector<boost::filesystem::path> sys_dirs;
+  std::vector<std::filesystem::path> sys_dirs;
 
   // system directories search
   switch (preset_type) {
@@ -154,8 +154,8 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustr
   }
 
   for (const auto& dir : sys_dirs) {
-    if (boost::filesystem::exists(dir)) {
-      it = boost::filesystem::directory_iterator{dir};
+    if (std::filesystem::exists(dir)) {
+      it = std::filesystem::directory_iterator{dir};
       auto vn = search_names(it);
       names.insert(names.end(), vn.begin(), vn.end());
     }
@@ -163,7 +163,7 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustr
 
   // user directory search
   auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
-  it = boost::filesystem::directory_iterator{user_dir};
+  it = std::filesystem::directory_iterator{user_dir};
 
   auto vn = search_names(it);
   names.insert(names.end(), vn.begin(), vn.end());
@@ -175,12 +175,12 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustr
   return names;
 }
 
-auto PresetsManager::search_names(boost::filesystem::directory_iterator& it) -> std::vector<std::string> {
+auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string> {
   std::vector<std::string> names;
 
   try {
-    while (it != boost::filesystem::directory_iterator{}) {
-      if (boost::filesystem::is_regular_file(it->status())) {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status())) {
         if (it->path().extension().string() == ".json") {
           names.emplace_back(it->path().stem().string());
         }
@@ -279,7 +279,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree root;
   boost::property_tree::ptree node_in;
   boost::property_tree::ptree node_out;
-  boost::filesystem::path output_file;
+  std::filesystem::path output_file;
 
   spectrum->write(preset_type, root);
   save_blocklist(preset_type, root);
@@ -296,7 +296,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
       root.add_child("output.plugins_order", node_out);
 
-      output_file = user_output_dir / boost::filesystem::path{name + ".json"};
+      output_file = user_output_dir / std::filesystem::path{name + ".json"};
 
       break;
     }
@@ -311,7 +311,7 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
       root.add_child("input.plugins_order", node_in);
 
-      output_file = user_input_dir / boost::filesystem::path{name + ".json"};
+      output_file = user_input_dir / std::filesystem::path{name + ".json"};
 
       break;
     }
@@ -346,24 +346,29 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 }
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
-  boost::filesystem::path preset_file;
+  std::filesystem::path preset_file;
   auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = user_dir / boost::filesystem::path{name + ".json"};
+  preset_file = user_dir / std::filesystem::path{name + ".json"};
 
-  if (boost::filesystem::exists(preset_file)) {
-    boost::filesystem::remove(preset_file);
+  if (std::filesystem::exists(preset_file)) {
+    std::filesystem::remove(preset_file);
 
     util::debug(log_tag + "removed preset: " + preset_file.string());
   }
 }
 
 void PresetsManager::load(PresetType preset_type, const std::string& name) {
+  nlohmann::json json;
+
   boost::property_tree::ptree root;
+
   std::vector<Glib::ustring> input_plugins;
   std::vector<Glib::ustring> output_plugins;
-  std::vector<boost::filesystem::path> conf_dirs;
-  boost::filesystem::path input_file;
+  std::vector<std::filesystem::path> conf_dirs;
+
+  std::filesystem::path input_file;
+
   bool preset_found = false;
 
   switch (preset_type) {
@@ -372,8 +377,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / boost::filesystem::path{name + ".json"};
-        if (boost::filesystem::exists(input_file)) {
+        input_file = dir / std::filesystem::path{name + ".json"};
+        if (std::filesystem::exists(input_file)) {
           preset_found = true;
           break;
         }
@@ -381,19 +386,24 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
       if (preset_found) {
         try {
-          boost::property_tree::read_json(input_file.string(), root);
+          std::ifstream is(input_file);
 
-          for (const auto& p : root.get_child("output.plugins_order")) {
-            const Glib::ustring value = p.second.data();
+          is >> json;
 
+          auto j_plugins_order = json["output"]["plugins_order"].get<std::vector<std::string>>();
+
+          for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
-              if (v == value) {
-                output_plugins.emplace_back(value);
+              if (v == p) {
+                output_plugins.emplace_back(p);
 
                 break;
               }
             }
           }
+
+          boost::property_tree::read_json(input_file.string(), root);
+
         } catch (const boost::property_tree::ptree_error& e) {
           output_plugins.clear();
         }
@@ -410,8 +420,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / boost::filesystem::path{name + ".json"};
-        if (boost::filesystem::exists(input_file)) {
+        input_file = dir / std::filesystem::path{name + ".json"};
+        if (std::filesystem::exists(input_file)) {
           preset_found = true;
           break;
         }
@@ -419,19 +429,24 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
       if (preset_found) {
         try {
-          boost::property_tree::read_json(input_file.string(), root);
+          std::ifstream is(input_file);
 
-          for (const auto& p : root.get_child("input.plugins_order")) {
-            const Glib::ustring value = p.second.data();
+          is >> json;
 
+          auto j_plugins_order = json["input"]["plugins_order"].get<std::vector<std::string>>();
+
+          for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
-              if (v == value) {
-                input_plugins.emplace_back(value);
+              if (v == p) {
+                output_plugins.emplace_back(p);
 
                 break;
               }
             }
           }
+
+          boost::property_tree::read_json(input_file.string(), root);
+
         } catch (const boost::property_tree::ptree_error& e) {
           input_plugins.clear();
         }
@@ -475,16 +490,16 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 }
 
 void PresetsManager::import(PresetType preset_type, const std::string& file_path) {
-  boost::filesystem::path p{file_path};
+  std::filesystem::path p{file_path};
 
-  if (boost::filesystem::is_regular_file(p)) {
+  if (std::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
-      boost::filesystem::path out_path;
+      std::filesystem::path out_path;
       auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
       out_path = user_dir / p.filename();
 
-      boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_option::overwrite_if_exists);
+      std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
       util::debug(log_tag + "imported preset to: " + out_path.string());
     }
@@ -495,9 +510,9 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
 
 void PresetsManager::add_autoload(const std::string& device, const std::string& name) {
   boost::property_tree::ptree root;
-  boost::filesystem::path output_file;
+  std::filesystem::path output_file;
 
-  output_file = autoload_dir / boost::filesystem::path{device + ".json"};
+  output_file = autoload_dir / std::filesystem::path{device + ".json"};
 
   root.put("name", name);
 
@@ -507,9 +522,9 @@ void PresetsManager::add_autoload(const std::string& device, const std::string& 
 }
 
 void PresetsManager::remove_autoload(const std::string& device, const std::string& name) {
-  auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
+  auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
 
-  if (boost::filesystem::is_regular_file(input_file)) {
+  if (std::filesystem::is_regular_file(input_file)) {
     boost::property_tree::ptree root;
 
     boost::property_tree::read_json(input_file.string(), root);
@@ -517,7 +532,7 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
     auto current_autoload = root.get<std::string>("name", "");
 
     if (current_autoload == name) {
-      boost::filesystem::remove(input_file);
+      std::filesystem::remove(input_file);
 
       util::debug(log_tag + "removed autoload: " + input_file.string());
     }
@@ -525,9 +540,9 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
 }
 
 auto PresetsManager::find_autoload(const std::string& device) -> std::string {
-  auto input_file = autoload_dir / boost::filesystem::path{device + ".json"};
+  auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
 
-  if (boost::filesystem::is_regular_file(input_file)) {
+  if (std::filesystem::is_regular_file(input_file)) {
     boost::property_tree::ptree root;
 
     boost::property_tree::read_json(input_file.string(), root);
@@ -558,8 +573,8 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
 }
 
 auto PresetsManager::preset_file_exists(PresetType preset_type, const std::string& name) -> bool {
-  boost::filesystem::path input_file;
-  std::vector<boost::filesystem::path> conf_dirs;
+  std::filesystem::path input_file;
+  std::vector<std::filesystem::path> conf_dirs;
 
   switch (preset_type) {
     case PresetType::output: {
@@ -567,8 +582,8 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / boost::filesystem::path{name + ".json"};
-        if (boost::filesystem::exists(input_file)) {
+        input_file = dir / std::filesystem::path{name + ".json"};
+        if (std::filesystem::exists(input_file)) {
           return true;
         }
       }
@@ -580,8 +595,8 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / boost::filesystem::path{name + ".json"};
-        if (boost::filesystem::exists(input_file)) {
+        input_file = dir / std::filesystem::path{name + ".json"};
+        if (std::filesystem::exists(input_file)) {
           return true;
         }
       }

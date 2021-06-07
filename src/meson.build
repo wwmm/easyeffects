@@ -126,6 +126,7 @@ easyeffects_deps = [
 	dependency('samplerate'),
 	dependency('rubberband'),
 	dependency('speexdsp'),
+	dependency('nlohmann_json', required: true),
 	dependency('threads'),
 	zita_convolver,
 ]
