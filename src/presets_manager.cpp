@@ -438,7 +438,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
-                output_plugins.emplace_back(p);
+                input_plugins.emplace_back(p);
 
                 break;
               }
