@@ -173,7 +173,7 @@ class PresetsManager {
 
   void save_blocklist(PresetType preset_type, boost::property_tree::ptree& root);
 
-  void load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root);
+  void load_blocklist(PresetType preset_type, const nlohmann::json& json);
 };
 
 #endif

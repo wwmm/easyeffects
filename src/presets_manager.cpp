@@ -242,14 +242,16 @@ void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree
   }
 }
 
-void PresetsManager::load_blocklist(PresetType preset_type, const boost::property_tree::ptree& root) {
+void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json& json) {
   std::vector<Glib::ustring> blocklist;
 
   switch (preset_type) {
     case PresetType::input: {
       try {
-        for (const auto& p : root.get_child("input.blocklist")) {
-          blocklist.emplace_back(p.second.data());
+        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
+
+        for (auto& l : list) {
+          blocklist.emplace_back(l);
         }
 
         sie_settings->set_string_array("blocklist", blocklist);
@@ -261,12 +263,14 @@ void PresetsManager::load_blocklist(PresetType preset_type, const boost::propert
     }
     case PresetType::output: {
       try {
-        for (const auto& p : root.get_child("output.blocklist")) {
-          blocklist.emplace_back(p.second.data());
+        auto list = json.at("output").at("blocklist").get<std::vector<std::string>>();
+
+        for (auto& l : list) {
+          blocklist.emplace_back(l);
         }
 
         soe_settings->set_string_array("blocklist", blocklist);
-      } catch (const boost::property_tree::ptree_error& e) {
+      } catch (const nlohmann::json::out_of_range& e) {
         soe_settings->reset("blocklist");
       }
 
@@ -460,7 +464,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
     }
   }
 
-  load_blocklist(preset_type, root);
+  load_blocklist(preset_type, json);
 
   autogain->read(preset_type, root);
   bass_enhancer->read(preset_type, root);
