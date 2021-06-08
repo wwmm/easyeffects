@@ -45,6 +45,12 @@ void RNNoisePreset::load(const boost::property_tree::ptree& root,
   update_string_key(root, settings, "model-path", section + ".rnnoise.model-path");
 }
 
+void RNNoisePreset::load(const nlohmann::json& json,
+                         const std::string& section,
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+  // update_key<double>(json, settings, "target", section + ".autogain.target");
+}
+
 void RNNoisePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   switch (preset_type) {
     case PresetType::output:

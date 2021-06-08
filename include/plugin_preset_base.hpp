@@ -23,26 +23,36 @@
 #include <giomm.h>
 #include <boost/property_tree/ptree.hpp>
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include "preset_type.hpp"
 
 class PluginPresetBase {
  public:
-  PluginPresetBase() {}
-  virtual ~PluginPresetBase() {}
+  PluginPresetBase() = default;
+  PluginPresetBase(const PluginPresetBase&) = delete;
+  auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
+  PluginPresetBase(const PluginPresetBase&&) = delete;
+  auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
+  virtual ~PluginPresetBase() = default;
 
   virtual void write(PresetType preset_type, boost::property_tree::ptree& root) = 0;
   virtual void read(PresetType preset_type, const boost::property_tree::ptree& root) = 0;
 
  protected:
-  virtual void save(boost::property_tree::ptree& root,
-                    const std::string& section,
-                    const Glib::RefPtr<Gio::Settings>& settings) = 0;
-  virtual void load(const boost::property_tree::ptree& root,
-                    const std::string& section,
-                    const Glib::RefPtr<Gio::Settings>& settings) = 0;
+  // virtual void save(boost::property_tree::ptree& root,
+  //                   const std::string& section,
+  //                   const Glib::RefPtr<Gio::Settings>& settings) = 0;
+
+  // virtual void load(const boost::property_tree::ptree& root,
+  //                   const std::string& section,
+  //                   const Glib::RefPtr<Gio::Settings>& settings) = 0;
+
+  // virtual void load(const nlohmann::json& json,
+  //                   const std::string& section,
+  //                   const Glib::RefPtr<Gio::Settings>& settings);
 
   template <typename T>
-  T get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) {
+  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
     Glib::Variant<T> value;
 
     settings->get_default_value(key, value);
@@ -85,7 +95,7 @@ class PluginPresetBase {
 
  private:
   template <typename T>
-  bool is_different(const T& a, const T& b) {
+  auto is_different(const T& a, const T& b) -> bool {
     return a != b;
   }
 };

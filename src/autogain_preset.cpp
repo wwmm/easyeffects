@@ -35,6 +35,12 @@ void AutoGainPreset::load(const boost::property_tree::ptree& root,
   update_key<double>(root, settings, "target", section + ".autogain.target");
 }
 
+void AutoGainPreset::load(const nlohmann::json& json,
+                          const std::string& section,
+                          const Glib::RefPtr<Gio::Settings>& settings) {
+  // update_key<double>(json, settings, "target", section + ".autogain.target");
+}
+
 void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);

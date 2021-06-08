@@ -118,6 +118,12 @@ void SpectrumPreset::load(const boost::property_tree::ptree& root,
   }
 }
 
+void SpectrumPreset::load(const nlohmann::json& json,
+                          const std::string& section,
+                          const Glib::RefPtr<Gio::Settings>& settings) {
+  // update_key<double>(json, settings, "target", section + ".autogain.target");
+}
+
 void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   save(root, "", settings);
 }

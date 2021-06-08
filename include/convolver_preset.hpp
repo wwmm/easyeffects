@@ -32,12 +32,13 @@ class ConvolverPreset : public PluginPresetBase {
  private:
   Glib::RefPtr<Gio::Settings> output_settings;
 
-  void save(boost::property_tree::ptree& root,
-            const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void save(boost::property_tree::ptree& root, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
+
   void load(const boost::property_tree::ptree& root,
             const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+            const Glib::RefPtr<Gio::Settings>& settings);
+
+  void load(const nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
 };
 
 #endif

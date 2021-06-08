@@ -217,6 +217,12 @@ void MultibandCompressorPreset::load(const boost::property_tree::ptree& root,
   update_key<bool>(root, settings, "solo3", section + ".multiband_compressor.highband.solo");
 }
 
+void MultibandCompressorPreset::load(const nlohmann::json& json,
+                                     const std::string& section,
+                                     const Glib::RefPtr<Gio::Settings>& settings) {
+  // update_key<double>(json, settings, "target", section + ".autogain.target");
+}
+
 void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   switch (preset_type) {
     case PresetType::output:

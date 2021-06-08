@@ -69,6 +69,12 @@ void LimiterPreset::load(const boost::property_tree::ptree& root,
   update_key<int>(root, settings, "oversampling", section + ".limiter.oversampling");
 }
 
+void LimiterPreset::load(const nlohmann::json& json,
+                         const std::string& section,
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+  // update_key<double>(json, settings, "target", section + ".autogain.target");
+}
+
 void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   switch (preset_type) {
     case PresetType::output:

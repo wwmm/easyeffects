@@ -35,12 +35,13 @@ class EqualizerPreset : public PluginPresetBase {
   Glib::RefPtr<Gio::Settings> input_settings, input_settings_left, input_settings_right, output_settings,
       output_settings_left, output_settings_right;
 
-  void save(boost::property_tree::ptree& root,
-            const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void save(boost::property_tree::ptree& root, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
+
   void load(const boost::property_tree::ptree& root,
             const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+            const Glib::RefPtr<Gio::Settings>& settings);
+
+  void load(const nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
 
   static void save_channel(boost::property_tree::ptree& root,
                            const std::string& section,

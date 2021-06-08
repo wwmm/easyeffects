@@ -255,8 +255,10 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
         }
 
         sie_settings->set_string_array("blocklist", blocklist);
-      } catch (const boost::property_tree::ptree_error& e) {
+      } catch (const nlohmann::json::exception& e) {
         sie_settings->reset("blocklist");
+
+        util::warning(log_tag + e.what());
       }
 
       break;
@@ -270,8 +272,10 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
         }
 
         soe_settings->set_string_array("blocklist", blocklist);
-      } catch (const nlohmann::json::out_of_range& e) {
+      } catch (const nlohmann::json::exception& e) {
         soe_settings->reset("blocklist");
+
+        util::warning(log_tag + e.what());
       }
 
       break;
@@ -389,12 +393,14 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       if (preset_found) {
+        boost::property_tree::read_json(input_file.string(), root);
+
         try {
           std::ifstream is(input_file);
 
           is >> json;
 
-          auto j_plugins_order = json["output"]["plugins_order"].get<std::vector<std::string>>();
+          auto j_plugins_order = json.at("output").at("plugins_order").get<std::vector<std::string>>();
 
           for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
@@ -406,10 +412,10 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
             }
           }
 
-          boost::property_tree::read_json(input_file.string(), root);
-
-        } catch (const boost::property_tree::ptree_error& e) {
+        } catch (const nlohmann::json::exception& e) {
           output_plugins.clear();
+
+          util::warning(log_tag + e.what());
         }
 
         soe_settings->set_string_array("plugins", output_plugins);
@@ -432,12 +438,14 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       if (preset_found) {
+        boost::property_tree::read_json(input_file.string(), root);
+
         try {
           std::ifstream is(input_file);
 
           is >> json;
 
-          auto j_plugins_order = json["input"]["plugins_order"].get<std::vector<std::string>>();
+          auto j_plugins_order = json.at("input").at("plugins_order").get<std::vector<std::string>>();
 
           for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
@@ -449,10 +457,10 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
             }
           }
 
-          boost::property_tree::read_json(input_file.string(), root);
-
-        } catch (const boost::property_tree::ptree_error& e) {
+        } catch (const nlohmann::json::exception& e) {
           input_plugins.clear();
+
+          util::warning(log_tag + e.what());
         }
 
         sie_settings->set_string_array("plugins", input_plugins);
