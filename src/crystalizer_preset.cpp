@@ -44,22 +44,22 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
   }
 }
 
-void CrystalizerPreset::load(const boost::property_tree::ptree& root,
+void CrystalizerPreset::load(const nlohmann::json& json,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".crystalizer.input-gain");
+  update_key<double>(json[section]["crystalizer"], settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".crystalizer.output-gain");
+  update_key<double>(json[section]["crystalizer"], settings, "output-gain", "output-gain");
 
   for (int n = 0; n < 13; n++) {
-    update_key<double>(root, settings, "intensity-band" + std::to_string(n),
-                       section + ".crystalizer.band" + std::to_string(n) + ".intensity");
+    update_key<double>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+                       "intensity-band" + std::to_string(n), "intensity");
 
-    update_key<bool>(root, settings, "mute-band" + std::to_string(n),
-                     section + ".crystalizer.band" + std::to_string(n) + ".mute");
+    update_key<bool>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+                     "mute-band" + std::to_string(n), "mute");
 
-    update_key<bool>(root, settings, "bypass-band" + std::to_string(n),
-                     section + ".crystalizer.band" + std::to_string(n) + ".bypass");
+    update_key<bool>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+                     "bypass-band" + std::to_string(n), "bypass");
   }
 }
 
@@ -74,13 +74,15 @@ void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptre
   }
 }
 
-void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void CrystalizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
   switch (preset_type) {
     case PresetType::output:
-      load(root, "output", output_settings);
+      load(json, "output", output_settings);
       break;
     case PresetType::input:
-      load(root, "input", input_settings);
+      load(json, "input", input_settings);
       break;
   }
 }
