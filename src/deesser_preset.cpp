@@ -53,32 +53,36 @@ void DeesserPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
 }
 
-void DeesserPreset::load(const boost::property_tree::ptree& root,
+void DeesserPreset::load(const nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_string_key(root, settings, "detection", section + ".deesser.detection");
+  update_key<double>(json[section]["deesser"], settings, "input-gain", "input-gain");
 
-  update_string_key(root, settings, "mode", section + ".deesser.mode");
+  update_key<double>(json[section]["deesser"], settings, "output-gain", "output-gain");
 
-  update_key<double>(root, settings, "threshold", section + ".deesser.threshold");
+  update_string_key(json[section]["deesser"], settings, "detection", "detection");
 
-  update_key<double>(root, settings, "ratio", section + ".deesser.ratio");
+  update_string_key(json[section]["deesser"], settings, "mode", "mode");
 
-  update_key<int>(root, settings, "laxity", section + ".deesser.laxity");
+  update_key<double>(json[section]["deesser"], settings, "threshold", "threshold");
 
-  update_key<double>(root, settings, "makeup", section + ".deesser.makeup");
+  update_key<double>(json[section]["deesser"], settings, "ratio", "ratio");
 
-  update_key<double>(root, settings, "f1-freq", section + ".deesser.f1-freq");
+  update_key<int>(json[section]["deesser"], settings, "laxity", "laxity");
 
-  update_key<double>(root, settings, "f2-freq", section + ".deesser.f2-freq");
+  update_key<double>(json[section]["deesser"], settings, "makeup", "makeup");
 
-  update_key<double>(root, settings, "f1-level", section + ".deesser.f1-level");
+  update_key<double>(json[section]["deesser"], settings, "f1-freq", "f1-freq");
 
-  update_key<double>(root, settings, "f2-level", section + ".deesser.f2-level");
+  update_key<double>(json[section]["deesser"], settings, "f2-freq", "f2-freq");
 
-  update_key<double>(root, settings, "f2-q", section + ".deesser.f2-q");
+  update_key<double>(json[section]["deesser"], settings, "f1-level", "f1-level");
 
-  update_key<bool>(root, settings, "sc-listen", section + ".deesser.sc-listen");
+  update_key<double>(json[section]["deesser"], settings, "f2-level", "f2-level");
+
+  update_key<double>(json[section]["deesser"], settings, "f2-q", "f2-q");
+
+  update_key<bool>(json[section]["deesser"], settings, "sc-listen", "sc-listen");
 }
 
 void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -92,13 +96,15 @@ void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void DeesserPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+void DeesserPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void DeesserPreset::read(PresetType preset_type, const nlohmann::json& json) {
   switch (preset_type) {
     case PresetType::output:
-      load(root, "output", output_settings);
+      load(json, "output", output_settings);
       break;
     case PresetType::input:
-      load(root, "input", input_settings);
+      load(json, "input", input_settings);
       break;
   }
 }

@@ -289,68 +289,68 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   boost::property_tree::ptree node_out;
   std::filesystem::path output_file;
 
-  spectrum->write(preset_type, root);
-  save_blocklist(preset_type, root);
+  // spectrum->write(preset_type, root);
+  // save_blocklist(preset_type, root);
 
-  switch (preset_type) {
-    case PresetType::output: {
-      std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
+  // switch (preset_type) {
+  //   case PresetType::output: {
+  //     std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
 
-      for (const auto& p : output_plugins) {
-        boost::property_tree::ptree node;
-        node.put("", p);
-        node_out.push_back(std::make_pair("", node));
-      }
+  //     for (const auto& p : output_plugins) {
+  //       boost::property_tree::ptree node;
+  //       node.put("", p);
+  //       node_out.push_back(std::make_pair("", node));
+  //     }
 
-      root.add_child("output.plugins_order", node_out);
+  //     root.add_child("output.plugins_order", node_out);
 
-      output_file = user_output_dir / std::filesystem::path{name + ".json"};
+  //     output_file = user_output_dir / std::filesystem::path{name + ".json"};
 
-      break;
-    }
-    case PresetType::input: {
-      std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
+  //     break;
+  //   }
+  //   case PresetType::input: {
+  //     std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
 
-      for (const auto& p : input_plugins) {
-        boost::property_tree::ptree node;
-        node.put("", p);
-        node_in.push_back(std::make_pair("", node));
-      }
+  //     for (const auto& p : input_plugins) {
+  //       boost::property_tree::ptree node;
+  //       node.put("", p);
+  //       node_in.push_back(std::make_pair("", node));
+  //     }
 
-      root.add_child("input.plugins_order", node_in);
+  //     root.add_child("input.plugins_order", node_in);
 
-      output_file = user_input_dir / std::filesystem::path{name + ".json"};
+  //     output_file = user_input_dir / std::filesystem::path{name + ".json"};
 
-      break;
-    }
-  }
+  //     break;
+  //   }
+  // }
 
-  autogain->write(preset_type, root);
-  bass_enhancer->write(preset_type, root);
-  compressor->write(preset_type, root);
-  convolver->write(preset_type, root);
-  crossfeed->write(preset_type, root);
-  crystalizer->write(preset_type, root);
-  deesser->write(preset_type, root);
-  delay->write(preset_type, root);
-  echo_canceller->write(preset_type, root);
-  equalizer->write(preset_type, root);
-  exciter->write(preset_type, root);
-  filter->write(preset_type, root);
-  gate->write(preset_type, root);
-  limiter->write(preset_type, root);
-  loudness->write(preset_type, root);
-  maximizer->write(preset_type, root);
-  multiband_compressor->write(preset_type, root);
-  multiband_gate->write(preset_type, root);
-  pitch->write(preset_type, root);
-  reverb->write(preset_type, root);
-  rnnoise->write(preset_type, root);
-  stereo_tools->write(preset_type, root);
+  // autogain->write(preset_type, root);
+  // bass_enhancer->write(preset_type, root);
+  // compressor->write(preset_type, root);
+  // convolver->write(preset_type, root);
+  // crossfeed->write(preset_type, root);
+  // crystalizer->write(preset_type, root);
+  // deesser->write(preset_type, root);
+  // delay->write(preset_type, root);
+  // echo_canceller->write(preset_type, root);
+  // equalizer->write(preset_type, root);
+  // exciter->write(preset_type, root);
+  // filter->write(preset_type, root);
+  // gate->write(preset_type, root);
+  // limiter->write(preset_type, root);
+  // loudness->write(preset_type, root);
+  // maximizer->write(preset_type, root);
+  // multiband_compressor->write(preset_type, root);
+  // multiband_gate->write(preset_type, root);
+  // pitch->write(preset_type, root);
+  // reverb->write(preset_type, root);
+  // rnnoise->write(preset_type, root);
+  // stereo_tools->write(preset_type, root);
 
-  boost::property_tree::write_json(output_file.string(), root);
+  // boost::property_tree::write_json(output_file.string(), root);
 
-  util::debug(log_tag + "saved preset: " + output_file.string());
+  // util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
@@ -480,8 +480,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   convolver->read(preset_type, json);
   crossfeed->read(preset_type, json);
   crystalizer->read(preset_type, json);
+  deesser->read(preset_type, json);
 
-  deesser->read(preset_type, root);
   delay->read(preset_type, root);
   echo_canceller->read(preset_type, root);
   equalizer->read(preset_type, root);
