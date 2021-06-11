@@ -22,7 +22,7 @@
 
 #include <giomm.h>
 #include <pipewire/filter.h>
-// #include <spa/param/latency-utils.h>
+#include <spa/param/latency-utils.h>
 #include <mutex>
 #include <ranges>
 #include <span>
@@ -61,6 +61,8 @@ class PluginBase {
 
     PluginBase* pb = nullptr;
   };
+
+  spa_latency_info latency_info{};
 
   std::string log_tag, name;
 

@@ -20,7 +20,9 @@
 #include "convolver_preset.hpp"
 
 ConvolverPreset::ConvolverPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
+                                           "/com/github/wwmm/easyeffects/streaminputs/convolver/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
                                             "/com/github/wwmm/easyeffects/streamoutputs/convolver/")) {}
 
 void ConvolverPreset::save(boost::property_tree::ptree& root,
@@ -35,16 +37,16 @@ void ConvolverPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
 }
 
-void ConvolverPreset::load(const boost::property_tree::ptree& root,
+void ConvolverPreset::load(const nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".convolver.input-gain");
+  update_key<double>(json[section]["convolver"], settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".convolver.output-gain");
+  update_key<double>(json[section]["convolver"], settings, "output-gain", "output-gain");
 
-  update_string_key(root, settings, "kernel-path", section + ".convolver.kernel-path");
+  update_string_key(json[section]["convolver"], settings, "kernel-path", "kernel-path");
 
-  update_key<int>(root, settings, "ir-width", section + ".convolver.ir-width");
+  update_key<int>(json[section]["convolver"], settings, "ir-width", "ir-width");
 }
 
 void ConvolverPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -53,8 +55,15 @@ void ConvolverPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void ConvolverPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void ConvolverPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void ConvolverPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(json, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(json, "input", input_settings);
+      break;
   }
 }

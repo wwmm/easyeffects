@@ -20,7 +20,9 @@
 #include "autogain_preset.hpp"
 
 AutoGainPreset::AutoGainPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
+                                           "/com/github/wwmm/easyeffects/streaminputs/autogain/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
                                             "/com/github/wwmm/easyeffects/streamoutputs/autogain/")) {}
 
 void AutoGainPreset::save(boost::property_tree::ptree& root,
@@ -29,16 +31,10 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".autogain.target", settings->get_double("target"));
 }
 
-void AutoGainPreset::load(const boost::property_tree::ptree& root,
-                          const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "target", section + ".autogain.target");
-}
-
 void AutoGainPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json[section]["autogain"], settings, "target", "target");
 }
 
 void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -47,8 +43,15 @@ void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& 
   }
 }
 
-void AutoGainPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void AutoGainPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void AutoGainPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(json, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(json, "input", input_settings);
+      break;
   }
 }

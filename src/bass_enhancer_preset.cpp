@@ -20,7 +20,9 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.bassenhancer",
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.bassenhancer",
+                                           "/com/github/wwmm/easyeffects/streaminputs/bassenhancer/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.bassenhancer",
                                             "/com/github/wwmm/easyeffects/streamoutputs/bassenhancer/")) {}
 
 void BassEnhancerPreset::save(boost::property_tree::ptree& root,
@@ -43,24 +45,24 @@ void BassEnhancerPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".bass_enhancer.floor-active", settings->get_boolean("floor-active"));
 }
 
-void BassEnhancerPreset::load(const boost::property_tree::ptree& root,
+void BassEnhancerPreset::load(const nlohmann::json& json,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".bass_enhancer.input-gain");
+  update_key<double>(json[section]["bass_enhancer"], settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".bass_enhancer.output-gain");
+  update_key<double>(json[section]["bass_enhancer"], settings, "output-gain", "output-gain");
 
-  update_key<double>(root, settings, "amount", section + ".bass_enhancer.amount");
+  update_key<double>(json[section]["bass_enhancer"], settings, "amount", "amount");
 
-  update_key<double>(root, settings, "harmonics", section + ".bass_enhancer.harmonics");
+  update_key<double>(json[section]["bass_enhancer"], settings, "harmonics", "harmonics");
 
-  update_key<double>(root, settings, "scope", section + ".bass_enhancer.scope");
+  update_key<double>(json[section]["bass_enhancer"], settings, "scope", "scope");
 
-  update_key<double>(root, settings, "floor", section + ".bass_enhancer.floor");
+  update_key<double>(json[section]["bass_enhancer"], settings, "floor", "floor");
 
-  update_key<double>(root, settings, "blend", section + ".bass_enhancer.blend");
+  update_key<double>(json[section]["bass_enhancer"], settings, "blend", "blend");
 
-  update_key<bool>(root, settings, "floor-active", section + ".bass_enhancer.floor-active");
+  update_key<bool>(json[section]["bass_enhancer"], settings, "floor-active", "floor-active");
 }
 
 void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -69,8 +71,15 @@ void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptr
   }
 }
 
-void BassEnhancerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void BassEnhancerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void BassEnhancerPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  switch (preset_type) {
+    case PresetType::output:
+      load(json, "output", output_settings);
+      break;
+    case PresetType::input:
+      load(json, "input", input_settings);
+      break;
   }
 }

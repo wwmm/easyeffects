@@ -474,11 +474,12 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
   load_blocklist(preset_type, json);
 
-  autogain->read(preset_type, root);
-  bass_enhancer->read(preset_type, root);
-  compressor->read(preset_type, root);
-  convolver->read(preset_type, root);
-  crossfeed->read(preset_type, root);
+  autogain->read(preset_type, json);
+  bass_enhancer->read(preset_type, json);
+  compressor->read(preset_type, json);
+  convolver->read(preset_type, json);
+  crossfeed->read(preset_type, json);
+
   crystalizer->read(preset_type, root);
   deesser->read(preset_type, root);
   delay->read(preset_type, root);

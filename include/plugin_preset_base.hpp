@@ -36,21 +36,10 @@ class PluginPresetBase {
   virtual ~PluginPresetBase() = default;
 
   virtual void write(PresetType preset_type, boost::property_tree::ptree& root) = 0;
+
   virtual void read(PresetType preset_type, const boost::property_tree::ptree& root) = 0;
 
  protected:
-  // virtual void save(boost::property_tree::ptree& root,
-  //                   const std::string& section,
-  //                   const Glib::RefPtr<Gio::Settings>& settings) = 0;
-
-  // virtual void load(const boost::property_tree::ptree& root,
-  //                   const std::string& section,
-  //                   const Glib::RefPtr<Gio::Settings>& settings) = 0;
-
-  // virtual void load(const nlohmann::json& json,
-  //                   const std::string& section,
-  //                   const Glib::RefPtr<Gio::Settings>& settings);
-
   template <typename T>
   auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
     Glib::Variant<T> value;
@@ -93,7 +82,44 @@ class PluginPresetBase {
     }
   }
 
+  template <typename T>
+  void update_key(const nlohmann::json& json,
+                  const Glib::RefPtr<Gio::Settings>& settings,
+                  const std::string& key,
+                  const std::string& json_key) {
+    Glib::Variant<T> aux;
+
+    settings->get_value(key, aux);
+
+    T current_value = aux.get();
+
+    T new_value = json.value(json_key, get_default<T>(settings, key));
+
+    if (is_different(current_value, new_value)) {
+      auto v = Glib::Variant<T>::create(new_value);
+
+      settings->set_value(key, v);
+    }
+  }
+
+  void update_string_key(const nlohmann::json& json,
+                         const Glib::RefPtr<Gio::Settings>& settings,
+                         const std::string& key,
+                         const std::string& json_key) {
+    std::string current_value = settings->get_string(key);
+
+    std::string new_value = json.value(json_key, get_default<std::string>(settings, key));
+
+    if (current_value != new_value) {
+      settings->set_string(key, new_value);
+    }
+  }
+
  private:
+  /*
+    Very naive test for equal values...
+  */
+
   template <typename T>
   auto is_different(const T& a, const T& b) -> bool {
     return a != b;

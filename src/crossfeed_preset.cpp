@@ -37,16 +37,16 @@ void CrossfeedPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".crossfeed.feed", settings->get_double("feed"));
 }
 
-void CrossfeedPreset::load(const boost::property_tree::ptree& root,
+void CrossfeedPreset::load(const nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".crossfeed.input-gain");
+  update_key<double>(json[section]["crossfeed"], settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".crossfeed.output-gain");
+  update_key<double>(json[section]["crossfeed"], settings, "output-gain", "output-gain");
 
-  update_key<int>(root, settings, "fcut", section + ".crossfeed.fcut");
+  update_key<int>(json[section]["crossfeed"], settings, "fcut", "fcut");
 
-  update_key<double>(root, settings, "feed", section + ".crossfeed.feed");
+  update_key<double>(json[section]["crossfeed"], settings, "feed", "feed");
 }
 
 void CrossfeedPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -60,13 +60,15 @@ void CrossfeedPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void CrossfeedPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+void CrossfeedPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void CrossfeedPreset::read(PresetType preset_type, const nlohmann::json& json) {
   switch (preset_type) {
     case PresetType::output:
-      load(root, "output", output_settings);
+      load(json, "output", output_settings);
       break;
     case PresetType::input:
-      load(root, "input", input_settings);
+      load(json, "input", input_settings);
       break;
   }
 }

@@ -73,52 +73,52 @@ void CompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".compressor.lpf-frequency", settings->get_double("lpf-frequency"));
 }
 
-void CompressorPreset::load(const boost::property_tree::ptree& root,
+void CompressorPreset::load(const nlohmann::json& json,
                             const std::string& section,
                             const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".compressor.input-gain");
+  update_key<double>(json[section]["compressor"], settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".compressor.output-gain");
+  update_key<double>(json[section]["compressor"], settings, "output-gain", "output-gain");
 
-  update_string_key(root, settings, "mode", section + ".compressor.mode");
+  update_string_key(json[section]["compressor"], settings, "mode", "mode");
 
-  update_key<double>(root, settings, "attack", section + ".compressor.attack");
+  update_key<double>(json[section]["compressor"], settings, "attack", "attack");
 
-  update_key<double>(root, settings, "release", section + ".compressor.release");
+  update_key<double>(json[section]["compressor"], settings, "release", "release");
 
-  update_key<double>(root, settings, "release-threshold", section + ".compressor.release-threshold");
+  update_key<double>(json[section]["compressor"], settings, "release-threshold", "release-threshold");
 
-  update_key<double>(root, settings, "threshold", section + ".compressor.threshold");
+  update_key<double>(json[section]["compressor"], settings, "threshold", "threshold");
 
-  update_key<double>(root, settings, "ratio", section + ".compressor.ratio");
+  update_key<double>(json[section]["compressor"], settings, "ratio", "ratio");
 
-  update_key<double>(root, settings, "knee", section + ".compressor.knee");
+  update_key<double>(json[section]["compressor"], settings, "knee", "knee");
 
-  update_key<double>(root, settings, "makeup", section + ".compressor.makeup");
+  update_key<double>(json[section]["compressor"], settings, "makeup", "makeup");
 
-  update_key<double>(root, settings, "boost-threshold", section + ".compressor.boost-threshold");
+  update_key<double>(json[section]["compressor"], settings, "boost-threshold", "boost-threshold");
 
-  update_key<bool>(root, settings, "sidechain-listen", section + ".compressor.sidechain.listen");
+  update_key<bool>(json[section]["compressor"]["sidechain"], settings, "sidechain-listen", "listen");
 
-  update_string_key(root, settings, "sidechain-type", section + ".compressor.sidechain.type");
+  update_string_key(json[section]["compressor"]["sidechain"], settings, "sidechain-type", "type");
 
-  update_string_key(root, settings, "sidechain-mode", section + ".compressor.sidechain.mode");
+  update_string_key(json[section]["compressor"]["sidechain"], settings, "sidechain-mode", "mode");
 
-  update_string_key(root, settings, "sidechain-source", section + ".compressor.sidechain.source");
+  update_string_key(json[section]["compressor"]["sidechain"], settings, "sidechain-source", "source");
 
-  update_key<double>(root, settings, "sidechain-preamp", section + ".compressor.sidechain.preamp");
+  update_key<double>(json[section]["compressor"]["sidechain"], settings, "sidechain-preamp", "preamp");
 
-  update_key<double>(root, settings, "sidechain-reactivity", section + ".compressor.sidechain.reactivity");
+  update_key<double>(json[section]["compressor"]["sidechain"], settings, "sidechain-reactivity", "reactivity");
 
-  update_key<double>(root, settings, "sidechain-lookahead", section + ".compressor.sidechain.lookahead");
+  update_key<double>(json[section]["compressor"]["sidechain"], settings, "sidechain-lookahead", "lookahead");
 
-  update_string_key(root, settings, "hpf-mode", section + ".compressor.hpf-mode");
+  update_string_key(json[section]["compressor"], settings, "hpf-mode", "hpf-mode");
 
-  update_key<double>(root, settings, "hpf-frequency", section + ".compressor.hpf-frequency");
+  update_key<double>(json[section]["compressor"], settings, "hpf-frequency", "hpf-frequency");
 
-  update_string_key(root, settings, "lpf-mode", section + ".compressor.lpf-mode");
+  update_string_key(json[section]["compressor"], settings, "lpf-mode", "lpf-mode");
 
-  update_key<double>(root, settings, "lpf-frequency", section + ".compressor.lpf-frequency");
+  update_key<double>(json[section]["compressor"], settings, "lpf-frequency", "lpf-frequency");
 }
 
 void CompressorPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -132,13 +132,15 @@ void CompressorPreset::write(PresetType preset_type, boost::property_tree::ptree
   }
 }
 
-void CompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
+void CompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void CompressorPreset::read(PresetType preset_type, const nlohmann::json& json) {
   switch (preset_type) {
     case PresetType::output:
-      load(root, "output", output_settings);
+      load(json, "output", output_settings);
       break;
     case PresetType::input:
-      load(root, "input", input_settings);
+      load(json, "input", input_settings);
       break;
   }
 }
