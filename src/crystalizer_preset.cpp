@@ -47,18 +47,18 @@ void CrystalizerPreset::save(boost::property_tree::ptree& root,
 void CrystalizerPreset::load(const nlohmann::json& json,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(json[section]["crystalizer"], settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at("crystalizer"), settings, "input-gain", "input-gain");
 
-  update_key<double>(json[section]["crystalizer"], settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at("crystalizer"), settings, "output-gain", "output-gain");
 
   for (int n = 0; n < 13; n++) {
-    update_key<double>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+    update_key<double>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
                        "intensity-band" + std::to_string(n), "intensity");
 
-    update_key<bool>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+    update_key<bool>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
                      "mute-band" + std::to_string(n), "mute");
 
-    update_key<bool>(json[section]["crystalizer"]["band" + std::to_string(n)], settings,
+    update_key<bool>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
                      "bypass-band" + std::to_string(n), "bypass");
   }
 }
@@ -77,12 +77,16 @@ void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptre
 void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
 
 void CrystalizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(json, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(json, "input", input_settings);
-      break;
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

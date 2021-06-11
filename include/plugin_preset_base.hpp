@@ -25,6 +25,7 @@
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include "preset_type.hpp"
+#include "util.hpp"
 
 class PluginPresetBase {
  public:

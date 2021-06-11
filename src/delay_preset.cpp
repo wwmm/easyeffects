@@ -20,7 +20,9 @@
 #include "delay_preset.hpp"
 
 DelayPreset::DelayPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.delay",
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.delay",
+                                           "/com/github/wwmm/easyeffects/streaminputs/delay/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.delay",
                                             "/com/github/wwmm/easyeffects/streamoutputs/delay/")) {}
 
 void DelayPreset::save(boost::property_tree::ptree& root,
@@ -34,16 +36,16 @@ void DelayPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".delay.time-r", settings->get_double("time-r"));
 }
 
-void DelayPreset::load(const boost::property_tree::ptree& root,
+void DelayPreset::load(const nlohmann::json& json,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".delay.input-gain");
+  update_key<double>(json.at(section).at("delay"), settings, "input-gain", "input-gain");
 
-  update_key<double>(root, settings, "output-gain", section + ".delay.output-gain");
+  update_key<double>(json.at(section).at("delay"), settings, "output-gain", "output-gain");
 
-  update_key<double>(root, settings, "time-l", section + ".delay.time-l");
+  update_key<double>(json.at(section).at("delay"), settings, "time-l", "time-l");
 
-  update_key<double>(root, settings, "time-r", section + ".delay.time-r");
+  update_key<double>(json.at(section).at("delay"), settings, "time-r", "time-r");
 }
 
 void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -52,8 +54,19 @@ void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& roo
   }
 }
 
-void DelayPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void DelayPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void DelayPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

@@ -34,7 +34,7 @@ void AutoGainPreset::save(boost::property_tree::ptree& root,
 void AutoGainPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(json[section]["autogain"], settings, "target", "target");
+  update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
 }
 
 void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -46,12 +46,16 @@ void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& 
 void AutoGainPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
 
 void AutoGainPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(json, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(json, "input", input_settings);
-      break;
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

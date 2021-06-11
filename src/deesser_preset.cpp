@@ -56,33 +56,33 @@ void DeesserPreset::save(boost::property_tree::ptree& root,
 void DeesserPreset::load(const nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(json[section]["deesser"], settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at("deesser"), settings, "input-gain", "input-gain");
 
-  update_key<double>(json[section]["deesser"], settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at("deesser"), settings, "output-gain", "output-gain");
 
-  update_string_key(json[section]["deesser"], settings, "detection", "detection");
+  update_string_key(json.at(section).at("deesser"), settings, "detection", "detection");
 
-  update_string_key(json[section]["deesser"], settings, "mode", "mode");
+  update_string_key(json.at(section).at("deesser"), settings, "mode", "mode");
 
-  update_key<double>(json[section]["deesser"], settings, "threshold", "threshold");
+  update_key<double>(json.at(section).at("deesser"), settings, "threshold", "threshold");
 
-  update_key<double>(json[section]["deesser"], settings, "ratio", "ratio");
+  update_key<double>(json.at(section).at("deesser"), settings, "ratio", "ratio");
 
-  update_key<int>(json[section]["deesser"], settings, "laxity", "laxity");
+  update_key<int>(json.at(section).at("deesser"), settings, "laxity", "laxity");
 
-  update_key<double>(json[section]["deesser"], settings, "makeup", "makeup");
+  update_key<double>(json.at(section).at("deesser"), settings, "makeup", "makeup");
 
-  update_key<double>(json[section]["deesser"], settings, "f1-freq", "f1-freq");
+  update_key<double>(json.at(section).at("deesser"), settings, "f1-freq", "f1-freq");
 
-  update_key<double>(json[section]["deesser"], settings, "f2-freq", "f2-freq");
+  update_key<double>(json.at(section).at("deesser"), settings, "f2-freq", "f2-freq");
 
-  update_key<double>(json[section]["deesser"], settings, "f1-level", "f1-level");
+  update_key<double>(json.at(section).at("deesser"), settings, "f1-level", "f1-level");
 
-  update_key<double>(json[section]["deesser"], settings, "f2-level", "f2-level");
+  update_key<double>(json.at(section).at("deesser"), settings, "f2-level", "f2-level");
 
-  update_key<double>(json[section]["deesser"], settings, "f2-q", "f2-q");
+  update_key<double>(json.at(section).at("deesser"), settings, "f2-q", "f2-q");
 
-  update_key<bool>(json[section]["deesser"], settings, "sc-listen", "sc-listen");
+  update_key<bool>(json.at(section).at("deesser"), settings, "sc-listen", "sc-listen");
 }
 
 void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -99,12 +99,16 @@ void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& r
 void DeesserPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
 
 void DeesserPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(json, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(json, "input", input_settings);
-      break;
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

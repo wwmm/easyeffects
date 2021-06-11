@@ -48,21 +48,21 @@ void BassEnhancerPreset::save(boost::property_tree::ptree& root,
 void BassEnhancerPreset::load(const nlohmann::json& json,
                               const std::string& section,
                               const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(json[section]["bass_enhancer"], settings, "input-gain", "input-gain");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "input-gain", "input-gain");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "output-gain", "output-gain");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "output-gain", "output-gain");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "amount", "amount");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "amount", "amount");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "harmonics", "harmonics");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "harmonics", "harmonics");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "scope", "scope");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "scope", "scope");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "floor", "floor");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "floor", "floor");
 
-  update_key<double>(json[section]["bass_enhancer"], settings, "blend", "blend");
+  update_key<double>(json.at(section).at("bass_enhancer"), settings, "blend", "blend");
 
-  update_key<bool>(json[section]["bass_enhancer"], settings, "floor-active", "floor-active");
+  update_key<bool>(json.at(section).at("bass_enhancer"), settings, "floor-active", "floor-active");
 }
 
 void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -74,12 +74,16 @@ void BassEnhancerPreset::write(PresetType preset_type, boost::property_tree::ptr
 void BassEnhancerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
 
 void BassEnhancerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(json, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(json, "input", input_settings);
-      break;
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

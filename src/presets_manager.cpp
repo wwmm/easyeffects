@@ -481,9 +481,9 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   crossfeed->read(preset_type, json);
   crystalizer->read(preset_type, json);
   deesser->read(preset_type, json);
+  delay->read(preset_type, json);
+  echo_canceller->read(preset_type, json);
 
-  delay->read(preset_type, root);
-  echo_canceller->read(preset_type, root);
   equalizer->read(preset_type, root);
   exciter->read(preset_type, root);
   filter->read(preset_type, root);
