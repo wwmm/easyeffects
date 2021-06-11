@@ -483,8 +483,8 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   deesser->read(preset_type, json);
   delay->read(preset_type, json);
   echo_canceller->read(preset_type, json);
+  equalizer->read(preset_type, json);
 
-  equalizer->read(preset_type, root);
   exciter->read(preset_type, root);
   filter->read(preset_type, root);
   gate->read(preset_type, root);

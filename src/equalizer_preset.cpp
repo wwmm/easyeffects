@@ -90,58 +90,50 @@ void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
   }
 }
 
-void EqualizerPreset::load(const boost::property_tree::ptree& root,
+void EqualizerPreset::load(const nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
-  update_string_key(root, settings, "mode", section + ".equalizer.mode");
+  update_key<double>(json.at(section).at("equalizer"), settings, "input-gain", "input-gain");
 
-  update_key<int>(root, settings, "num-bands", section + ".equalizer.num-bands");
+  update_key<double>(json.at(section).at("equalizer"), settings, "output-gain", "output-gain");
 
-  update_key<double>(root, settings, "input-gain", section + ".equalizer.input-gain");
+  update_string_key(json.at(section).at("equalizer"), settings, "mode", "mode");
 
-  update_key<double>(root, settings, "output-gain", section + ".equalizer.output-gain");
+  update_key<int>(json.at(section).at("equalizer"), settings, "num-bands", "num-bands");
+
+  update_key<bool>(json.at(section).at("equalizer"), settings, "split-channels", "split-channels");
 
   const auto& nbands = settings->get_int("num-bands");
 
-  update_key<bool>(root, settings, "split-channels", section + ".equalizer.split-channels");
-
   if (section == std::string("input")) {
-    load_channel(root, "input.equalizer.left", input_settings_left, nbands);
-    load_channel(root, "input.equalizer.right", input_settings_right, nbands);
+    load_channel(json.at(section).at("equalizer").at("left"), input_settings_left, nbands);
+    load_channel(json.at(section).at("equalizer").at("right"), input_settings_right, nbands);
   } else if (section == std::string("output")) {
-    load_channel(root, "output.equalizer.left", output_settings_left, nbands);
-    load_channel(root, "output.equalizer.right", output_settings_right, nbands);
+    load_channel(json.at(section).at("equalizer").at("left"), output_settings_left, nbands);
+    load_channel(json.at(section).at("equalizer").at("right"), output_settings_right, nbands);
   }
 }
 
-void EqualizerPreset::load_channel(const boost::property_tree::ptree& root,
-                                   const std::string& section,
+void EqualizerPreset::load_channel(const nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    update_string_key(root, settings, std::string("band" + std::to_string(n) + "-type"),
-                      section + ".band" + std::to_string(n) + ".type");
+    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-type", "type");
 
-    update_string_key(root, settings, std::string("band" + std::to_string(n) + "-mode"),
-                      section + ".band" + std::to_string(n) + ".mode");
+    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-mode", "mode");
 
-    update_string_key(root, settings, std::string("band" + std::to_string(n) + "-slope"),
-                      section + ".band" + std::to_string(n) + ".slope");
+    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-slope", "slope");
 
-    update_key<bool>(root, settings, std::string("band" + std::to_string(n) + "-solo"),
-                     section + ".band" + std::to_string(n) + ".solo");
+    update_key<bool>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-solo", "solo");
 
-    update_key<bool>(root, settings, std::string("band" + std::to_string(n) + "-mute"),
-                     section + ".band" + std::to_string(n) + ".mute");
+    update_key<bool>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-mute", "mute");
 
-    update_key<double>(root, settings, std::string("band" + std::to_string(n) + "-gain"),
-                       section + ".band" + std::to_string(n) + ".gain");
+    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-gain", "gain");
 
-    update_key<double>(root, settings, std::string("band" + std::to_string(n) + "-frequency"),
-                       section + ".band" + std::to_string(n) + ".frequency");
+    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-frequency",
+                       "frequency");
 
-    update_key<double>(root, settings, std::string("band" + std::to_string(n) + "-q"),
-                       section + ".band" + std::to_string(n) + ".q");
+    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-q", "q");
   }
 }
 
@@ -156,13 +148,19 @@ void EqualizerPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void EqualizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void EqualizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void EqualizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
