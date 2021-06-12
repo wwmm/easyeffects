@@ -47,32 +47,26 @@ void LimiterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
 }
 
-void LimiterPreset::load(const boost::property_tree::ptree& root,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".limiter.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".limiter.output-gain");
-
-  update_key<double>(root, settings, "limit", section + ".limiter.limit");
-
-  update_key<double>(root, settings, "lookahead", section + ".limiter.lookahead");
-
-  update_key<double>(root, settings, "release", section + ".limiter.release");
-
-  update_key<bool>(root, settings, "auto-level", section + ".limiter.auto-level");
-
-  update_key<bool>(root, settings, "asc", section + ".limiter.asc");
-
-  update_key<double>(root, settings, "asc-level", section + ".limiter.asc-level");
-
-  update_key<int>(root, settings, "oversampling", section + ".limiter.oversampling");
-}
-
 void LimiterPreset::load(const nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("limiter"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("limiter"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("limiter"), settings, "limit", "limit");
+
+  update_key<double>(json.at(section).at("limiter"), settings, "lookahead", "lookahead");
+
+  update_key<double>(json.at(section).at("limiter"), settings, "release", "release");
+
+  update_key<bool>(json.at(section).at("limiter"), settings, "auto-level", "auto-level");
+
+  update_key<bool>(json.at(section).at("limiter"), settings, "asc", "asc");
+
+  update_key<double>(json.at(section).at("limiter"), settings, "asc-level", "asc-level");
+
+  update_key<int>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
 }
 
 void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -86,13 +80,19 @@ void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void LimiterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void LimiterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void LimiterPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

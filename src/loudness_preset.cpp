@@ -35,20 +35,18 @@ void LoudnessPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".loudness.volume", settings->get_double("volume"));
 }
 
-void LoudnessPreset::load(const boost::property_tree::ptree& root,
-                          const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_string_key(root, settings, "fft", section + ".loudness.fft");
-
-  update_string_key(root, settings, "std", section + ".loudness.std");
-
-  update_key<double>(root, settings, "volume", section + ".loudness.volume");
-}
-
 void LoudnessPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("loudness"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("loudness"), settings, "output-gain", "output-gain");
+
+  update_string_key(json.at(section).at("loudness"), settings, "fft", "fft");
+
+  update_string_key(json.at(section).at("loudness"), settings, "std", "std");
+
+  update_key<double>(json.at(section).at("loudness"), settings, "volume", "volume");
 }
 
 void LoudnessPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -62,13 +60,19 @@ void LoudnessPreset::write(PresetType preset_type, boost::property_tree::ptree& 
   }
 }
 
-void LoudnessPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void LoudnessPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void LoudnessPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
