@@ -490,8 +490,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   limiter->read(preset_type, json);
   loudness->read(preset_type, json);
   maximizer->read(preset_type, json);
-
-  multiband_compressor->read(preset_type, root);
+  multiband_compressor->read(preset_type, json);
 
   multiband_gate->read(preset_type, root);
   pitch->read(preset_type, root);

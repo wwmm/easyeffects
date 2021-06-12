@@ -121,106 +121,100 @@ void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".multiband_compressor.highband.solo", settings->get_boolean("solo3"));
 }
 
-void MultibandCompressorPreset::load(const boost::property_tree::ptree& root,
-                                     const std::string& section,
-                                     const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".multiband_compressor.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".multiband_compressor.output-gain");
-
-  update_key<double>(root, settings, "freq0", section + ".multiband_compressor.freq0");
-
-  update_key<double>(root, settings, "freq1", section + ".multiband_compressor.freq1");
-
-  update_key<double>(root, settings, "freq2", section + ".multiband_compressor.freq2");
-
-  update_string_key(root, settings, "mode", section + ".multiband_compressor.mode");
-
-  // sub band
-
-  update_key<double>(root, settings, "threshold0", section + ".multiband_compressor.subband.threshold");
-
-  update_key<double>(root, settings, "ratio0", section + ".multiband_compressor.subband.ratio");
-
-  update_key<double>(root, settings, "attack0", section + ".multiband_compressor.subband.attack");
-
-  update_key<double>(root, settings, "release0", section + ".multiband_compressor.subband.release");
-
-  update_key<double>(root, settings, "makeup0", section + ".multiband_compressor.subband.makeup");
-
-  update_key<double>(root, settings, "knee0", section + ".multiband_compressor.subband.knee");
-
-  update_string_key(root, settings, "detection0", section + ".multiband_compressor.subband.detection");
-
-  update_key<bool>(root, settings, "bypass0", section + ".multiband_compressor.subband.bypass");
-
-  update_key<bool>(root, settings, "solo0", section + ".multiband_compressor.subband.solo");
-
-  // low band
-
-  update_key<double>(root, settings, "threshold1", section + ".multiband_compressor.lowband.threshold");
-
-  update_key<double>(root, settings, "ratio1", section + ".multiband_compressor.lowband.ratio");
-
-  update_key<double>(root, settings, "attack1", section + ".multiband_compressor.lowband.attack");
-
-  update_key<double>(root, settings, "release1", section + ".multiband_compressor.lowband.release");
-
-  update_key<double>(root, settings, "makeup1", section + ".multiband_compressor.lowband.makeup");
-
-  update_key<double>(root, settings, "knee1", section + ".multiband_compressor.lowband.knee");
-
-  update_string_key(root, settings, "detection1", section + ".multiband_compressor.lowband.detection");
-
-  update_key<bool>(root, settings, "bypass1", section + ".multiband_compressor.lowband.bypass");
-
-  update_key<bool>(root, settings, "solo1", section + ".multiband_compressor.lowband.solo");
-
-  // mid band
-
-  update_key<double>(root, settings, "threshold2", section + ".multiband_compressor.midband.threshold");
-
-  update_key<double>(root, settings, "ratio2", section + ".multiband_compressor.midband.ratio");
-
-  update_key<double>(root, settings, "attack2", section + ".multiband_compressor.midband.attack");
-
-  update_key<double>(root, settings, "release2", section + ".multiband_compressor.midband.release");
-
-  update_key<double>(root, settings, "makeup2", section + ".multiband_compressor.midband.makeup");
-
-  update_key<double>(root, settings, "knee2", section + ".multiband_compressor.midband.knee");
-
-  update_string_key(root, settings, "detection2", section + ".multiband_compressor.midband.detection");
-
-  update_key<bool>(root, settings, "bypass2", section + ".multiband_compressor.midband.bypass");
-
-  update_key<bool>(root, settings, "solo2", section + ".multiband_compressor.midband.solo");
-
-  // high band
-
-  update_key<double>(root, settings, "threshold3", section + ".multiband_compressor.highband.threshold");
-
-  update_key<double>(root, settings, "ratio3", section + ".multiband_compressor.highband.ratio");
-
-  update_key<double>(root, settings, "attack3", section + ".multiband_compressor.highband.attack");
-
-  update_key<double>(root, settings, "release3", section + ".multiband_compressor.highband.release");
-
-  update_key<double>(root, settings, "makeup3", section + ".multiband_compressor.highband.makeup");
-
-  update_key<double>(root, settings, "knee3", section + ".multiband_compressor.highband.knee");
-
-  update_string_key(root, settings, "detection3", section + ".multiband_compressor.highband.detection");
-
-  update_key<bool>(root, settings, "bypass3", section + ".multiband_compressor.highband.bypass");
-
-  update_key<bool>(root, settings, "solo3", section + ".multiband_compressor.highband.solo");
-}
-
 void MultibandCompressorPreset::load(const nlohmann::json& json,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "freq0", "freq0");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "freq1", "freq1");
+
+  update_key<double>(json.at(section).at("multiband_compressor"), settings, "freq2", "freq2");
+
+  update_string_key(json.at(section).at("multiband_compressor"), settings, "mode", "mode");
+
+  // sub band
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "threshold0", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "ratio0", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "attack0", "attack");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "release0", "release");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "makeup0", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("subband"), settings, "knee0", "knee");
+
+  update_string_key(json.at(section).at("multiband_compressor").at("subband"), settings, "detection0", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("subband"), settings, "bypass0", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("subband"), settings, "solo0", "solo");
+
+  // low band
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "threshold1", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "ratio1", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "attack1", "attack");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "release1", "release");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "makeup1", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("lowband"), settings, "knee1", "knee");
+
+  update_string_key(json.at(section).at("multiband_compressor").at("lowband"), settings, "detection1", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("lowband"), settings, "bypass1", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("lowband"), settings, "solo1", "solo");
+
+  // mid band
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "threshold2", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "ratio2", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "attack2", "attack");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "release2", "release");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "makeup2", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("midband"), settings, "knee2", "knee");
+
+  update_string_key(json.at(section).at("multiband_compressor").at("midband"), settings, "detection2", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("midband"), settings, "bypass2", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("midband"), settings, "solo2", "solo");
+
+  // high band
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "threshold3", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "ratio3", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "attack3", "attack");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "release3", "release");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "makeup3", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_compressor").at("highband"), settings, "knee3", "knee");
+
+  update_string_key(json.at(section).at("multiband_compressor").at("highband"), settings, "detection3", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("highband"), settings, "bypass3", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_compressor").at("highband"), settings, "solo3", "solo");
 }
 
 void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -234,13 +228,19 @@ void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tr
   }
 }
 
-void MultibandCompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void MultibandCompressorPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void MultibandCompressorPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
