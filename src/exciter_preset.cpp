@@ -20,7 +20,9 @@
 #include "exciter_preset.hpp"
 
 ExciterPreset::ExciterPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
+    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
+                                           "/com/github/wwmm/easyeffects/streaminputs/exciter/")),
+      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
                                             "/com/github/wwmm/easyeffects/streamoutputs/exciter/")) {}
 
 void ExciterPreset::save(boost::property_tree::ptree& root,
@@ -43,30 +45,24 @@ void ExciterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
 }
 
-void ExciterPreset::load(const boost::property_tree::ptree& root,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".exciter.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".exciter.output-gain");
-
-  update_key<double>(root, settings, "amount", section + ".exciter.amount");
-
-  update_key<double>(root, settings, "harmonics", section + ".exciter.harmonics");
-
-  update_key<double>(root, settings, "scope", section + ".exciter.scope");
-
-  update_key<double>(root, settings, "ceil", section + ".exciter.ceil");
-
-  update_key<double>(root, settings, "blend", section + ".exciter.blend");
-
-  update_key<bool>(root, settings, "ceil-active", section + ".exciter.ceil-active");
-}
-
 void ExciterPreset::load(const nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("exciter"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "amount", "amount");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "harmonics", "harmonics");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "scope", "scope");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "ceil", "ceil");
+
+  update_key<double>(json.at(section).at("exciter"), settings, "blend", "blend");
+
+  update_key<bool>(json.at(section).at("exciter"), settings, "ceil-active", "ceil-active");
 }
 
 void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -75,8 +71,19 @@ void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void ExciterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    load(root, "output", output_settings);
+void ExciterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void ExciterPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
