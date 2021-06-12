@@ -41,26 +41,20 @@ void FilterPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".filter.inertia", settings->get_double("inertia"));
 }
 
-void FilterPreset::load(const boost::property_tree::ptree& root,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".filter.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".filter.output-gain");
-
-  update_key<double>(root, settings, "frequency", section + ".filter.frequency");
-
-  update_key<double>(root, settings, "resonance", section + ".filter.resonance");
-
-  update_string_key(root, settings, "mode", section + ".filter.mode");
-
-  update_key<double>(root, settings, "inertia", section + ".filter.inertia");
-}
-
 void FilterPreset::load(const nlohmann::json& json,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("filter"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("filter"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("filter"), settings, "frequency", "frequency");
+
+  update_key<double>(json.at(section).at("filter"), settings, "resonance", "resonance");
+
+  update_string_key(json.at(section).at("filter"), settings, "mode", "mode");
+
+  update_key<double>(json.at(section).at("filter"), settings, "inertia", "inertia");
 }
 
 void FilterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -74,13 +68,19 @@ void FilterPreset::write(PresetType preset_type, boost::property_tree::ptree& ro
   }
 }
 
-void FilterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void FilterPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void FilterPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

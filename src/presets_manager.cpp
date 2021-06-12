@@ -485,9 +485,9 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   echo_canceller->read(preset_type, json);
   equalizer->read(preset_type, json);
   exciter->read(preset_type, json);
+  filter->read(preset_type, json);
+  gate->read(preset_type, json);
 
-  filter->read(preset_type, root);
-  gate->read(preset_type, root);
   limiter->read(preset_type, root);
   loudness->read(preset_type, root);
   maximizer->read(preset_type, root);

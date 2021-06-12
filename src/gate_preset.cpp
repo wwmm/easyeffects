@@ -51,36 +51,30 @@ void GatePreset::save(boost::property_tree::ptree& root,
   root.put(section + ".gate.makeup", settings->get_double("makeup"));
 }
 
-void GatePreset::load(const boost::property_tree::ptree& root,
-                      const std::string& section,
-                      const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".gate.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".gate.output-gain");
-
-  update_string_key(root, settings, "detection", section + ".gate.detection");
-
-  update_string_key(root, settings, "stereo-link", section + ".gate.stereo-link");
-
-  update_key<double>(root, settings, "range", section + ".gate.range");
-
-  update_key<double>(root, settings, "attack", section + ".gate.attack");
-
-  update_key<double>(root, settings, "release", section + ".gate.release");
-
-  update_key<double>(root, settings, "threshold", section + ".gate.threshold");
-
-  update_key<double>(root, settings, "ratio", section + ".gate.ratio");
-
-  update_key<double>(root, settings, "knee", section + ".gate.knee");
-
-  update_key<double>(root, settings, "makeup", section + ".gate.makeup");
-}
-
 void GatePreset::load(const nlohmann::json& json,
                       const std::string& section,
                       const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("gate"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("gate"), settings, "output-gain", "output-gain");
+
+  update_string_key(json.at(section).at("gate"), settings, "detection", "detection");
+
+  update_string_key(json.at(section).at("gate"), settings, "stereo-link", "stereo-link");
+
+  update_key<double>(json.at(section).at("gate"), settings, "range", "range");
+
+  update_key<double>(json.at(section).at("gate"), settings, "attack", "attack");
+
+  update_key<double>(json.at(section).at("gate"), settings, "release", "release");
+
+  update_key<double>(json.at(section).at("gate"), settings, "threshold", "threshold");
+
+  update_key<double>(json.at(section).at("gate"), settings, "ratio", "ratio");
+
+  update_key<double>(json.at(section).at("gate"), settings, "knee", "knee");
+
+  update_key<double>(json.at(section).at("gate"), settings, "makeup", "makeup");
 }
 
 void GatePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -94,13 +88,19 @@ void GatePreset::write(PresetType preset_type, boost::property_tree::ptree& root
   }
 }
 
-void GatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void GatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void GatePreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
