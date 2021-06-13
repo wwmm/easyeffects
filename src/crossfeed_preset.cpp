@@ -60,8 +60,6 @@ void CrossfeedPreset::write(PresetType preset_type, boost::property_tree::ptree&
   }
 }
 
-void CrossfeedPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void CrossfeedPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

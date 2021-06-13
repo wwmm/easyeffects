@@ -28,9 +28,7 @@ class CrystalizerPreset : public PluginPresetBase {
 
   void write(PresetType preset_type, boost::property_tree::ptree& root) override;
 
-  void read(PresetType preset_type, const boost::property_tree::ptree& root) override;
-
-  void read(PresetType preset_type, const nlohmann::json& json);
+  void read(PresetType preset_type, const nlohmann::json& json) override;
 
  private:
   Glib::RefPtr<Gio::Settings> input_settings, output_settings;

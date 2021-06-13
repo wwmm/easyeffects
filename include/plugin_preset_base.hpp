@@ -38,7 +38,7 @@ class PluginPresetBase {
 
   virtual void write(PresetType preset_type, boost::property_tree::ptree& root) = 0;
 
-  virtual void read(PresetType preset_type, const boost::property_tree::ptree& root) = 0;
+  virtual void read(PresetType preset_type, const nlohmann::json& json) = 0;
 
  protected:
   template <typename T>

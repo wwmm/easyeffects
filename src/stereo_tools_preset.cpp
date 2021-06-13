@@ -156,8 +156,6 @@ void StereoToolsPreset::write(PresetType preset_type, boost::property_tree::ptre
   }
 }
 
-void StereoToolsPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void StereoToolsPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

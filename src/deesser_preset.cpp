@@ -96,8 +96,6 @@ void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void DeesserPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void DeesserPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

@@ -54,8 +54,6 @@ void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& roo
   }
 }
 
-void DelayPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void DelayPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

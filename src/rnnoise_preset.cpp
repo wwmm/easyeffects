@@ -56,8 +56,6 @@ void RNNoisePreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void RNNoisePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void RNNoisePreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

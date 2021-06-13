@@ -102,8 +102,6 @@ void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& 
   save(root, "", settings);
 }
 
-void SpectrumPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void SpectrumPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     load(json, "", settings);

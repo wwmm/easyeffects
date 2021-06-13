@@ -60,8 +60,6 @@ void EchoCancellerPreset::write(PresetType preset_type, boost::property_tree::pt
   }
 }
 
-void EchoCancellerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void EchoCancellerPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {

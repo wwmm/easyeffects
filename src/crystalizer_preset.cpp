@@ -74,8 +74,6 @@ void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptre
   }
 }
 
-void CrystalizerPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
-
 void CrystalizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
   try {
     switch (preset_type) {
