@@ -45,30 +45,24 @@ void PitchPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".pitch.faster", settings->get_boolean("faster"));
 }
 
-void PitchPreset::load(const boost::property_tree::ptree& root,
-                       const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".pitch.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".pitch.output-gain");
-
-  update_key<int>(root, settings, "cents", section + ".pitch.cents");
-
-  update_key<int>(root, settings, "semitones", section + ".pitch.semitones");
-
-  update_key<int>(root, settings, "octaves", section + ".pitch.octaves");
-
-  update_key<int>(root, settings, "crispness", section + ".pitch.crispness");
-
-  update_key<bool>(root, settings, "formant-preserving", section + ".pitch.formant-preserving");
-
-  update_key<bool>(root, settings, "faster", section + ".pitch.faster");
-}
-
 void PitchPreset::load(const nlohmann::json& json,
                        const std::string& section,
                        const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("pitch"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("pitch"), settings, "output-gain", "output-gain");
+
+  update_key<int>(json.at(section).at("pitch"), settings, "cents", "cents");
+
+  update_key<int>(json.at(section).at("pitch"), settings, "semitones", "semitones");
+
+  update_key<int>(json.at(section).at("pitch"), settings, "octaves", "octaves");
+
+  update_key<int>(json.at(section).at("pitch"), settings, "crispness", "crispness");
+
+  update_key<bool>(json.at(section).at("pitch"), settings, "formant-preserving", "formant-preserving");
+
+  update_key<bool>(json.at(section).at("pitch"), settings, "faster", "faster");
 }
 
 void PitchPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -82,13 +76,19 @@ void PitchPreset::write(PresetType preset_type, boost::property_tree::ptree& roo
   }
 }
 
-void PitchPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void PitchPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void PitchPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

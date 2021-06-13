@@ -491,11 +491,12 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   loudness->read(preset_type, json);
   maximizer->read(preset_type, json);
   multiband_compressor->read(preset_type, json);
+  multiband_gate->read(preset_type, json);
+  pitch->read(preset_type, json);
+  reverb->read(preset_type, json);
 
-  multiband_gate->read(preset_type, root);
-  pitch->read(preset_type, root);
-  reverb->read(preset_type, root);
   rnnoise->read(preset_type, root);
+
   spectrum->read(preset_type, root);
   stereo_tools->read(preset_type, root);
 

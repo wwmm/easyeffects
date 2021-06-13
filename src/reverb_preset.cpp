@@ -51,36 +51,30 @@ void ReverbPreset::save(boost::property_tree::ptree& root,
   root.put(section + ".reverb.treble-cut", settings->get_double("treble-cut"));
 }
 
-void ReverbPreset::load(const boost::property_tree::ptree& root,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".reverb.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".reverb.output-gain");
-
-  update_string_key(root, settings, "room-size", section + ".reverb.room-size");
-
-  update_key<double>(root, settings, "decay-time", section + ".reverb.decay-time");
-
-  update_key<double>(root, settings, "hf-damp", section + ".reverb.hf-damp");
-
-  update_key<double>(root, settings, "diffusion", section + ".reverb.diffusion");
-
-  update_key<double>(root, settings, "amount", section + ".reverb.amount");
-
-  update_key<double>(root, settings, "dry", section + ".reverb.dry");
-
-  update_key<double>(root, settings, "predelay", section + ".reverb.predelay");
-
-  update_key<double>(root, settings, "bass-cut", section + ".reverb.bass-cut");
-
-  update_key<double>(root, settings, "treble-cut", section + ".reverb.treble-cut");
-}
-
 void ReverbPreset::load(const nlohmann::json& json,
                         const std::string& section,
                         const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("reverb"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "output-gain", "output-gain");
+
+  update_string_key(json.at(section).at("reverb"), settings, "room-size", "room-size");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "decay-time", "decay-time");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "hf-damp", "hf-damp");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "diffusion", "diffusion");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "amount", "amount");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "dry", "dry");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "predelay", "predelay");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "bass-cut", "bass-cut");
+
+  update_key<double>(json.at(section).at("reverb"), settings, "treble-cut", "treble-cut");
 }
 
 void ReverbPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -94,13 +88,19 @@ void ReverbPreset::write(PresetType preset_type, boost::property_tree::ptree& ro
   }
 }
 
-void ReverbPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void ReverbPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void ReverbPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

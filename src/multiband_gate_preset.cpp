@@ -129,114 +129,108 @@ void MultibandGatePreset::save(boost::property_tree::ptree& root,
   root.put(section + ".multiband_gate.highband.solo", settings->get_boolean("solo3"));
 }
 
-void MultibandGatePreset::load(const boost::property_tree::ptree& root,
-                               const std::string& section,
-                               const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".multiband_gate.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".multiband_gate.output-gain");
-
-  update_key<double>(root, settings, "freq0", section + ".multiband_gate.freq0");
-
-  update_key<double>(root, settings, "freq1", section + ".multiband_gate.freq1");
-
-  update_key<double>(root, settings, "freq2", section + ".multiband_gate.freq2");
-
-  update_string_key(root, settings, "mode", section + ".multiband_gate.mode");
-
-  // sub band
-
-  update_key<double>(root, settings, "range0", section + ".multiband_gate.subband.reduction");
-
-  update_key<double>(root, settings, "threshold0", section + ".multiband_gate.subband.threshold");
-
-  update_key<double>(root, settings, "ratio0", section + ".multiband_gate.subband.ratio");
-
-  update_key<double>(root, settings, "attack0", section + ".multiband_gate.subband.attack");
-
-  update_key<double>(root, settings, "release0", section + ".multiband_gate.subband.release");
-
-  update_key<double>(root, settings, "makeup0", section + ".multiband_gate.subband.makeup");
-
-  update_key<double>(root, settings, "knee0", section + ".multiband_gate.subband.knee");
-
-  update_string_key(root, settings, "detection0", section + ".multiband_gate.subband.detection");
-
-  update_key<bool>(root, settings, "bypass0", section + ".multiband_gate.subband.bypass");
-
-  update_key<bool>(root, settings, "solo0", section + ".multiband_gate.subband.solo");
-
-  // low band
-
-  update_key<double>(root, settings, "range1", section + ".multiband_gate.lowband.reduction");
-
-  update_key<double>(root, settings, "threshold1", section + ".multiband_gate.lowband.threshold");
-
-  update_key<double>(root, settings, "ratio1", section + ".multiband_gate.lowband.ratio");
-
-  update_key<double>(root, settings, "attack1", section + ".multiband_gate.lowband.attack");
-
-  update_key<double>(root, settings, "release1", section + ".multiband_gate.lowband.release");
-
-  update_key<double>(root, settings, "makeup1", section + ".multiband_gate.lowband.makeup");
-
-  update_key<double>(root, settings, "knee1", section + ".multiband_gate.lowband.knee");
-
-  update_string_key(root, settings, "detection1", section + ".multiband_gate.lowband.detection");
-
-  update_key<bool>(root, settings, "bypass1", section + ".multiband_gate.lowband.bypass");
-
-  update_key<bool>(root, settings, "solo1", section + ".multiband_gate.lowband.solo");
-
-  // mid band
-
-  update_key<double>(root, settings, "range2", section + ".multiband_gate.midband.reduction");
-
-  update_key<double>(root, settings, "threshold2", section + ".multiband_gate.midband.threshold");
-
-  update_key<double>(root, settings, "ratio2", section + ".multiband_gate.midband.ratio");
-
-  update_key<double>(root, settings, "attack2", section + ".multiband_gate.midband.attack");
-
-  update_key<double>(root, settings, "release2", section + ".multiband_gate.midband.release");
-
-  update_key<double>(root, settings, "makeup2", section + ".multiband_gate.midband.makeup");
-
-  update_key<double>(root, settings, "knee2", section + ".multiband_gate.midband.knee");
-
-  update_string_key(root, settings, "detection2", section + ".multiband_gate.midband.detection");
-
-  update_key<bool>(root, settings, "bypass2", section + ".multiband_gate.midband.bypass");
-
-  update_key<bool>(root, settings, "solo2", section + ".multiband_gate.midband.solo");
-
-  // high band
-
-  update_key<double>(root, settings, "range3", section + ".multiband_gate.highband.reduction");
-
-  update_key<double>(root, settings, "threshold3", section + ".multiband_gate.highband.threshold");
-
-  update_key<double>(root, settings, "ratio3", section + ".multiband_gate.highband.ratio");
-
-  update_key<double>(root, settings, "attack3", section + ".multiband_gate.highband.attack");
-
-  update_key<double>(root, settings, "release3", section + ".multiband_gate.highband.release");
-
-  update_key<double>(root, settings, "makeup3", section + ".multiband_gate.highband.makeup");
-
-  update_key<double>(root, settings, "knee3", section + ".multiband_gate.highband.knee");
-
-  update_string_key(root, settings, "detection3", section + ".multiband_gate.highband.detection");
-
-  update_key<bool>(root, settings, "bypass3", section + ".multiband_gate.highband.bypass");
-
-  update_key<bool>(root, settings, "solo3", section + ".multiband_gate.highband.solo");
-}
-
 void MultibandGatePreset::load(const nlohmann::json& json,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("multiband_gate"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("multiband_gate"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("multiband_gate"), settings, "freq0", "freq0");
+
+  update_key<double>(json.at(section).at("multiband_gate"), settings, "freq1", "freq1");
+
+  update_key<double>(json.at(section).at("multiband_gate"), settings, "freq2", "freq2");
+
+  update_string_key(json.at(section).at("multiband_gate"), settings, "mode", "mode");
+
+  // sub band
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "range0", "reduction");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "threshold0", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "ratio0", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "attack0", "attack");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "release0", "release");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "makeup0", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "knee0", "knee");
+
+  update_string_key(json.at(section).at("multiband_gate").at("subband"), settings, "detection0", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("subband"), settings, "bypass0", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("subband"), settings, "solo0", "solo");
+
+  // low band
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "range1", "reduction");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "threshold1", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "ratio1", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "attack1", "attack");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "release1", "release");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "makeup1", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("lowband"), settings, "knee1", "knee");
+
+  update_string_key(json.at(section).at("multiband_gate").at("lowband"), settings, "detection1", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("lowband"), settings, "bypass1", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("lowband"), settings, "solo1", "solo");
+
+  // mid band
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "range2", "reduction");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "threshold2", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "ratio2", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "attack2", "attack");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "release2", "release");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "makeup2", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("midband"), settings, "knee2", "knee");
+
+  update_string_key(json.at(section).at("multiband_gate").at("midband"), settings, "detection2", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("midband"), settings, "bypass2", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("midband"), settings, "solo2", "solo");
+
+  // high band
+
+  update_key<double>(json.at(section).at("multiband_gate").at("subband"), settings, "range3", "reduction");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "threshold3", "threshold");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "ratio3", "ratio");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "attack3", "attack");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "release3", "release");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "makeup3", "makeup");
+
+  update_key<double>(json.at(section).at("multiband_gate").at("highband"), settings, "knee3", "knee");
+
+  update_string_key(json.at(section).at("multiband_gate").at("highband"), settings, "detection3", "detection");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("highband"), settings, "bypass3", "bypass");
+
+  update_key<bool>(json.at(section).at("multiband_gate").at("highband"), settings, "solo3", "solo");
 }
 
 void MultibandGatePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -250,13 +244,19 @@ void MultibandGatePreset::write(PresetType preset_type, boost::property_tree::pt
   }
 }
 
-void MultibandGatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void MultibandGatePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void MultibandGatePreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }
