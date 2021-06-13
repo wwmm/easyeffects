@@ -494,11 +494,9 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   multiband_gate->read(preset_type, json);
   pitch->read(preset_type, json);
   reverb->read(preset_type, json);
-
-  rnnoise->read(preset_type, root);
-
-  spectrum->read(preset_type, root);
-  stereo_tools->read(preset_type, root);
+  rnnoise->read(preset_type, json);
+  spectrum->read(preset_type, json);
+  stereo_tools->read(preset_type, json);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }

@@ -68,66 +68,46 @@ void SpectrumPreset::save(boost::property_tree::ptree& root,
   root.add_child("spectrum.color-axis-labels", node_in);
 }
 
-void SpectrumPreset::load(const boost::property_tree::ptree& root,
-                          const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<bool>(root, settings, "show", "spectrum.show");
-
-  update_key<int>(root, settings, "n-points", "spectrum.n-points");
-
-  update_key<int>(root, settings, "height", "spectrum.height");
-
-  update_key<bool>(root, settings, "fill", "spectrum.fill");
-
-  update_key<bool>(root, settings, "show-bar-border", "spectrum.show-bar-border");
-
-  update_key<double>(root, settings, "line-width", "spectrum.line-width");
-
-  update_string_key(root, settings, "type", "spectrum.type");
-
-  // spectrum color
-
-  try {
-    std::vector<double> color;
-
-    for (const auto& p : root.get_child("spectrum.color")) {
-      color.emplace_back(p.second.get<double>(""));
-    }
-
-    auto v = Glib::Variant<std::vector<double>>::create(color);
-
-    settings->set_value("color", v);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("color");
-  }
-
-  // axis color
-
-  try {
-    std::vector<double> color;
-
-    for (const auto& p : root.get_child("spectrum.color-axis-labels")) {
-      color.emplace_back(p.second.get<double>(""));
-    }
-
-    auto v = Glib::Variant<std::vector<double>>::create(color);
-
-    settings->set_value("color-axis-labels", v);
-  } catch (const boost::property_tree::ptree_error& e) {
-    settings->reset("color-axis-labels");
-  }
-}
-
 void SpectrumPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<bool>(json.at("spectrum"), settings, "show", "show");
+
+  update_key<int>(json.at("spectrum"), settings, "n-points", "n-points");
+
+  update_key<int>(json.at("spectrum"), settings, "height", "height");
+
+  update_key<bool>(json.at("spectrum"), settings, "fill", "fill");
+
+  update_key<bool>(json.at("spectrum"), settings, "show-bar-border", "show-bar-border");
+
+  update_key<double>(json.at("spectrum"), settings, "line-width", "line-width");
+
+  update_string_key(json.at("spectrum"), settings, "type", "type");
+
+  // spectrum color
+
+  auto color = json.at("spectrum").at("color").get<std::vector<double>>();
+
+  settings->set_value("color", Glib::Variant<std::vector<double>>::create(color));
+
+  // axis color
+
+  color = json.at("spectrum").at("color-axis-labels").get<std::vector<double>>();
+
+  settings->set_value("color-axis-labels", Glib::Variant<std::vector<double>>::create(color));
 }
 
 void SpectrumPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   save(root, "", settings);
 }
 
-void SpectrumPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  load(root, "", settings);
+void SpectrumPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void SpectrumPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    load(json, "", settings);
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
+  }
 }

@@ -35,20 +35,14 @@ void RNNoisePreset::save(boost::property_tree::ptree& root,
   root.put(section + ".rnnoise.model-path", settings->get_string("model-path"));
 }
 
-void RNNoisePreset::load(const boost::property_tree::ptree& root,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  update_key<double>(root, settings, "input-gain", section + ".rnnoise.input-gain");
-
-  update_key<double>(root, settings, "output-gain", section + ".rnnoise.output-gain");
-
-  update_string_key(root, settings, "model-path", section + ".rnnoise.model-path");
-}
-
 void RNNoisePreset::load(const nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("rnnoise"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("rnnoise"), settings, "output-gain", "output-gain");
+
+  update_string_key(json.at(section).at("rnnoise"), settings, "model-path", "model-path");
 }
 
 void RNNoisePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -62,13 +56,19 @@ void RNNoisePreset::write(PresetType preset_type, boost::property_tree::ptree& r
   }
 }
 
-void RNNoisePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void RNNoisePreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void RNNoisePreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

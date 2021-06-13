@@ -108,7 +108,41 @@ void StereoToolsPreset::load(const boost::property_tree::ptree& root,
 void StereoToolsPreset::load(const nlohmann::json& json,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {
-  // update_key<double>(json, settings, "target", section + ".autogain.target");
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "output-gain", "output-gain");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "balance-in", "balance-in");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "balance-out", "balance-out");
+
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "softclip", "softclip");
+
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "mutel", "mutel");
+
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "muter", "muter");
+
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "phasel", "phasel");
+
+  update_key<bool>(json.at(section).at("stereo_tools"), settings, "phaser", "phaser");
+
+  update_string_key(json.at(section).at("stereo_tools"), settings, "mode", "mode");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "slev", "side-level");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "sbal", "side-balance");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "mlev", "middle-level");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "mpan", "middle-panorama");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "stereo-base", "stereo-base");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "delay", "delay");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "sc-level", "sc-level");
+
+  update_key<double>(json.at(section).at("stereo_tools"), settings, "stereo-phase", "stereo-phase");
 }
 
 void StereoToolsPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
@@ -122,13 +156,19 @@ void StereoToolsPreset::write(PresetType preset_type, boost::property_tree::ptre
   }
 }
 
-void StereoToolsPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      load(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      load(root, "input", input_settings);
-      break;
+void StereoToolsPreset::read(PresetType preset_type, const boost::property_tree::ptree& root) {}
+
+void StereoToolsPreset::read(PresetType preset_type, const nlohmann::json& json) {
+  try {
+    switch (preset_type) {
+      case PresetType::output:
+        load(json, "output", output_settings);
+        break;
+      case PresetType::input:
+        load(json, "input", input_settings);
+        break;
+    }
+  } catch (const nlohmann::json::exception& e) {
+    util::warning(e.what());
   }
 }

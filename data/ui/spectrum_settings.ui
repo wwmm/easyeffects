@@ -180,7 +180,7 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="digits">1</property>
+                        <property name="digits">0</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -213,7 +213,7 @@
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="orientation">vertical</property>
-                        <property name="digits">1</property>
+                        <property name="digits">0</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -248,6 +248,7 @@
                         <property name="valign">start</property>
                         <property name="orientation">vertical</property>
                         <property name="update-policy">if-valid</property>
+                        <property name="digits">1</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">0.1</property>

@@ -27,7 +27,10 @@ class StereoToolsPreset : public PluginPresetBase {
   StereoToolsPreset();
 
   void write(PresetType preset_type, boost::property_tree::ptree& root) override;
+
   void read(PresetType preset_type, const boost::property_tree::ptree& root) override;
+
+  void read(PresetType preset_type, const nlohmann::json& json);
 
  private:
   Glib::RefPtr<Gio::Settings> output_settings, input_settings;
