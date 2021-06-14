@@ -27,21 +27,17 @@ CrossfeedPreset::CrossfeedPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/crossfeed/");
 }
 
-// void CrossfeedPreset::save(boost::property_tree::ptree& root,
-//                            const std::string& section,
-//                            const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".crossfeed.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".crossfeed.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".crossfeed.fcut", settings->get_int("fcut"));
-
-//   root.put(section + ".crossfeed.feed", settings->get_double("feed"));
-// }
-
 void CrossfeedPreset::save(nlohmann::json& json,
                            const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {}
+                           const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["crossfeed"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["crossfeed"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["crossfeed"]["fcut"] = settings->get_int("fcut");
+
+  json[section]["crossfeed"]["feed"] = settings->get_double("feed");
+}
 
 void CrossfeedPreset::load(const nlohmann::json& json,
                            const std::string& section,

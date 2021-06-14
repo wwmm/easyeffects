@@ -27,54 +27,6 @@ CompressorPreset::CompressorPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/compressor/");
 }
 
-// void CompressorPreset::save(boost::property_tree::ptree& root,
-//                             const std::string& section,
-//                             const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".compressor.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".compressor.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".compressor.mode", settings->get_string("mode"));
-
-//   root.put(section + ".compressor.attack", settings->get_double("attack"));
-
-//   root.put(section + ".compressor.release", settings->get_double("release"));
-
-//   root.put(section + ".compressor.release-threshold", settings->get_double("release-threshold"));
-
-//   root.put(section + ".compressor.threshold", settings->get_double("threshold"));
-
-//   root.put(section + ".compressor.ratio", settings->get_double("ratio"));
-
-//   root.put(section + ".compressor.knee", settings->get_double("knee"));
-
-//   root.put(section + ".compressor.makeup", settings->get_double("makeup"));
-
-//   root.put(section + ".compressor.boost-threshold", settings->get_double("boost-threshold"));
-
-//   root.put(section + ".compressor.sidechain.listen", settings->get_boolean("sidechain-listen"));
-
-//   root.put(section + ".compressor.sidechain.type", settings->get_string("sidechain-type"));
-
-//   root.put(section + ".compressor.sidechain.mode", settings->get_string("sidechain-mode"));
-
-//   root.put(section + ".compressor.sidechain.source", settings->get_string("sidechain-source"));
-
-//   root.put(section + ".compressor.sidechain.preamp", settings->get_double("sidechain-preamp"));
-
-//   root.put(section + ".compressor.sidechain.reactivity", settings->get_double("sidechain-reactivity"));
-
-//   root.put(section + ".compressor.sidechain.lookahead", settings->get_double("sidechain-lookahead"));
-
-//   root.put(section + ".compressor.hpf-mode", settings->get_string("hpf-mode"));
-
-//   root.put(section + ".compressor.hpf-frequency", settings->get_double("hpf-frequency"));
-
-//   root.put(section + ".compressor.lpf-mode", settings->get_string("lpf-mode"));
-
-//   root.put(section + ".compressor.lpf-frequency", settings->get_double("lpf-frequency"));
-// }
-
 void CompressorPreset::save(nlohmann::json& json,
                             const std::string& section,
                             const Glib::RefPtr<Gio::Settings>& settings) {
