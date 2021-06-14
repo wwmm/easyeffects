@@ -19,11 +19,13 @@
 
 #include "multiband_compressor_preset.hpp"
 
-MultibandCompressorPreset::MultibandCompressorPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.multibandcompressor",
-                                           "/com/github/wwmm/easyeffects/streaminputs/multibandcompressor/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.multibandcompressor",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/multibandcompressor/")) {}
+MultibandCompressorPreset::MultibandCompressorPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandcompressor",
+                                         "/com/github/wwmm/easyeffects/streaminputs/multibandcompressor/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandcompressor",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/multibandcompressor/");
+}
 
 void MultibandCompressorPreset::save(boost::property_tree::ptree& root,
                                      const std::string& section,
@@ -225,20 +227,5 @@ void MultibandCompressorPreset::write(PresetType preset_type, boost::property_tr
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void MultibandCompressorPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

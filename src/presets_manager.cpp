@@ -48,7 +48,6 @@ PresetsManager::PresetsManager()
       pitch(std::make_unique<PitchPreset>()),
       reverb(std::make_unique<ReverbPreset>()),
       rnnoise(std::make_unique<RNNoisePreset>()),
-      spectrum(std::make_unique<SpectrumPreset>()),
       stereo_tools(std::make_unique<StereoToolsPreset>()) {
   // system presets directories provided by Glib
 
@@ -284,46 +283,48 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
 }
 
 void PresetsManager::save(PresetType preset_type, const std::string& name) {
+  nlohmann::json json;
+
   boost::property_tree::ptree root;
   boost::property_tree::ptree node_in;
   boost::property_tree::ptree node_out;
+
   std::filesystem::path output_file;
 
-  // spectrum->write(preset_type, root);
   // save_blocklist(preset_type, root);
 
-  // switch (preset_type) {
-  //   case PresetType::output: {
-  //     std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
+  switch (preset_type) {
+    case PresetType::output: {
+      std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
 
-  //     for (const auto& p : output_plugins) {
-  //       boost::property_tree::ptree node;
-  //       node.put("", p);
-  //       node_out.push_back(std::make_pair("", node));
-  //     }
+      // for (const auto& p : output_plugins) {
+      //   boost::property_tree::ptree node;
+      //   node.put("", p);
+      //   node_out.push_back(std::make_pair("", node));
+      // }
 
-  //     root.add_child("output.plugins_order", node_out);
+      // root.add_child("output.plugins_order", node_out);
 
-  //     output_file = user_output_dir / std::filesystem::path{name + ".json"};
+      output_file = user_output_dir / std::filesystem::path{name + ".json"};
 
-  //     break;
-  //   }
-  //   case PresetType::input: {
-  //     std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
+      break;
+    }
+    case PresetType::input: {
+      std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
 
-  //     for (const auto& p : input_plugins) {
-  //       boost::property_tree::ptree node;
-  //       node.put("", p);
-  //       node_in.push_back(std::make_pair("", node));
-  //     }
+      // for (const auto& p : input_plugins) {
+      //   boost::property_tree::ptree node;
+      //   node.put("", p);
+      //   node_in.push_back(std::make_pair("", node));
+      // }
 
-  //     root.add_child("input.plugins_order", node_in);
+      // root.add_child("input.plugins_order", node_in);
 
-  //     output_file = user_input_dir / std::filesystem::path{name + ".json"};
+      output_file = user_input_dir / std::filesystem::path{name + ".json"};
 
-  //     break;
-  //   }
-  // }
+      break;
+    }
+  }
 
   // autogain->write(preset_type, root);
   // bass_enhancer->write(preset_type, root);
@@ -350,7 +351,11 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
   // boost::property_tree::write_json(output_file.string(), root);
 
-  // util::debug(log_tag + "saved preset: " + output_file.string());
+  // std::ofstream o(output_file.string());
+
+  // o << std::setw(4) << json << std::endl;
+
+  util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
@@ -369,10 +374,9 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
 void PresetsManager::load(PresetType preset_type, const std::string& name) {
   nlohmann::json json;
 
-  boost::property_tree::ptree root;
-
   std::vector<Glib::ustring> input_plugins;
   std::vector<Glib::ustring> output_plugins;
+
   std::vector<std::filesystem::path> conf_dirs;
 
   std::filesystem::path input_file;
@@ -393,8 +397,6 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       if (preset_found) {
-        boost::property_tree::read_json(input_file.string(), root);
-
         try {
           std::ifstream is(input_file);
 
@@ -438,8 +440,6 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
       }
 
       if (preset_found) {
-        boost::property_tree::read_json(input_file.string(), root);
-
         try {
           std::ifstream is(input_file);
 
@@ -495,7 +495,6 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   pitch->read(preset_type, json);
   reverb->read(preset_type, json);
   rnnoise->read(preset_type, json);
-  spectrum->read(preset_type, json);
   stereo_tools->read(preset_type, json);
 
   util::debug(log_tag + "loaded preset: " + input_file.string());

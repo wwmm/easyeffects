@@ -19,11 +19,13 @@
 
 #include "echo_canceller_preset.hpp"
 
-EchoCancellerPreset::EchoCancellerPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.echocanceller",
-                                           "/com/github/wwmm/easyeffects/streaminputs/echocanceller/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.echocanceller",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/")) {}
+EchoCancellerPreset::EchoCancellerPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.echocanceller",
+                                         "/com/github/wwmm/easyeffects/streaminputs/echocanceller/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.echocanceller",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/");
+}
 
 void EchoCancellerPreset::save(boost::property_tree::ptree& root,
                                const std::string& section,
@@ -57,20 +59,5 @@ void EchoCancellerPreset::write(PresetType preset_type, boost::property_tree::pt
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void EchoCancellerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

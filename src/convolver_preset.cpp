@@ -19,11 +19,13 @@
 
 #include "convolver_preset.hpp"
 
-ConvolverPreset::ConvolverPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
-                                           "/com/github/wwmm/easyeffects/streaminputs/convolver/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/convolver/")) {}
+ConvolverPreset::ConvolverPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
+                                         "/com/github/wwmm/easyeffects/streaminputs/convolver/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/convolver/");
+}
 
 void ConvolverPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -52,20 +54,5 @@ void ConvolverPreset::load(const nlohmann::json& json,
 void ConvolverPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
-  }
-}
-
-void ConvolverPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

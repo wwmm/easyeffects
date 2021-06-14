@@ -21,19 +21,21 @@
 #include "util.hpp"
 
 EqualizerPreset::EqualizerPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
-                                           "/com/github/wwmm/easyeffects/streaminputs/equalizer/")),
-      input_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
+    : input_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
                                                 "/com/github/wwmm/easyeffects/streaminputs/equalizer/leftchannel/")),
       input_settings_right(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
                                                  "/com/github/wwmm/easyeffects/streaminputs/equalizer/rightchannel/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/equalizer/")),
       output_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
                                                  "/com/github/wwmm/easyeffects/streamoutputs/equalizer/leftchannel/")),
       output_settings_right(
           Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
-                                "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/")) {}
+                                "/com/github/wwmm/easyeffects/streamoutputs/equalizer/rightchannel/")) {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
+                                         "/com/github/wwmm/easyeffects/streaminputs/equalizer/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.equalizer",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/equalizer/");
+}
 
 void EqualizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -145,20 +147,5 @@ void EqualizerPreset::write(PresetType preset_type, boost::property_tree::ptree&
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void EqualizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

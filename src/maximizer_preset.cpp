@@ -19,11 +19,13 @@
 
 #include "maximizer_preset.hpp"
 
-MaximizerPreset::MaximizerPreset()
-    : output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/maximizer/")),
-      input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
-                                           "/com/github/wwmm/easyeffects/streaminputs/maximizer/")) {}
+MaximizerPreset::MaximizerPreset() {
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/maximizer/");
+
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
+                                         "/com/github/wwmm/easyeffects/streaminputs/maximizer/");
+}
 
 void MaximizerPreset::save(boost::property_tree::ptree& root,
                            const std::string& section,
@@ -53,20 +55,5 @@ void MaximizerPreset::write(PresetType preset_type, boost::property_tree::ptree&
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void MaximizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

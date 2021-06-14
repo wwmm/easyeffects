@@ -19,11 +19,13 @@
 
 #include "reverb_preset.hpp"
 
-ReverbPreset::ReverbPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.reverb",
-                                           "/com/github/wwmm/easyeffects/streaminputs/reverb/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.reverb",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/reverb/")) {}
+ReverbPreset::ReverbPreset() {
+  input_settings =
+      Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streaminputs/reverb/");
+
+  output_settings =
+      Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streamoutputs/reverb/");
+}
 
 void ReverbPreset::save(boost::property_tree::ptree& root,
                         const std::string& section,
@@ -85,20 +87,5 @@ void ReverbPreset::write(PresetType preset_type, boost::property_tree::ptree& ro
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void ReverbPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

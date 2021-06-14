@@ -19,11 +19,13 @@
 
 #include "autogain_preset.hpp"
 
-AutoGainPreset::AutoGainPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
-                                           "/com/github/wwmm/easyeffects/streaminputs/autogain/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/autogain/")) {}
+AutoGainPreset::AutoGainPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
+                                         "/com/github/wwmm/easyeffects/streaminputs/autogain/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/autogain/");
+}
 
 void AutoGainPreset::save(boost::property_tree::ptree& root,
                           const std::string& section,
@@ -40,20 +42,5 @@ void AutoGainPreset::load(const nlohmann::json& json,
 void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
-  }
-}
-
-void AutoGainPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

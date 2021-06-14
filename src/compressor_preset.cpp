@@ -19,11 +19,13 @@
 
 #include "compressor_preset.hpp"
 
-CompressorPreset::CompressorPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
-                                           "/com/github/wwmm/easyeffects/streaminputs/compressor/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/compressor/")) {}
+CompressorPreset::CompressorPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
+                                         "/com/github/wwmm/easyeffects/streaminputs/compressor/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/compressor/");
+}
 
 void CompressorPreset::save(boost::property_tree::ptree& root,
                             const std::string& section,
@@ -129,20 +131,5 @@ void CompressorPreset::write(PresetType preset_type, boost::property_tree::ptree
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void CompressorPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

@@ -19,11 +19,13 @@
 
 #include "multiband_gate_preset.hpp"
 
-MultibandGatePreset::MultibandGatePreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
-                                           "/com/github/wwmm/easyeffects/streaminputs/multibandgate/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/")) {}
+MultibandGatePreset::MultibandGatePreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
+                                         "/com/github/wwmm/easyeffects/streaminputs/multibandgate/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/");
+}
 
 void MultibandGatePreset::save(boost::property_tree::ptree& root,
                                const std::string& section,
@@ -241,20 +243,5 @@ void MultibandGatePreset::write(PresetType preset_type, boost::property_tree::pt
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void MultibandGatePreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

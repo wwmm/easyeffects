@@ -19,11 +19,13 @@
 
 #include "limiter_preset.hpp"
 
-LimiterPreset::LimiterPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
-                                           "/com/github/wwmm/easyeffects/streaminputs/limiter/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/limiter/")) {}
+LimiterPreset::LimiterPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
+                                         "/com/github/wwmm/easyeffects/streaminputs/limiter/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/limiter/");
+}
 
 void LimiterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -77,20 +79,5 @@ void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& r
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void LimiterPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

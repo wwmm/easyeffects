@@ -84,7 +84,6 @@ easyeffects_sources = [
 	'rnnoise_preset.cpp',
 	'rnnoise_ui.cpp',
 	'spectrum.cpp',
-	'spectrum_preset.cpp',
 	'spectrum_ui.cpp',
 	'spectrum_settings_ui.cpp',
 	'stereo_tools.cpp',

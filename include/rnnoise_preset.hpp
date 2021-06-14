@@ -28,14 +28,12 @@ class RNNoisePreset : public PluginPresetBase {
 
   void write(PresetType preset_type, boost::property_tree::ptree& root) override;
 
-  void read(PresetType preset_type, const nlohmann::json& json) override;
-
  private:
-  Glib::RefPtr<Gio::Settings> output_settings, input_settings;
-
   void save(boost::property_tree::ptree& root, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
 
-  void load(const nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
+  void load(const nlohmann::json& json,
+            const std::string& section,
+            const Glib::RefPtr<Gio::Settings>& settings) override;
 };
 
 #endif

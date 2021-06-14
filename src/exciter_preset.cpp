@@ -19,11 +19,13 @@
 
 #include "exciter_preset.hpp"
 
-ExciterPreset::ExciterPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
-                                           "/com/github/wwmm/easyeffects/streaminputs/exciter/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/exciter/")) {}
+ExciterPreset::ExciterPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
+                                         "/com/github/wwmm/easyeffects/streaminputs/exciter/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
+}
 
 void ExciterPreset::save(boost::property_tree::ptree& root,
                          const std::string& section,
@@ -68,20 +70,5 @@ void ExciterPreset::load(const nlohmann::json& json,
 void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
   if (preset_type == PresetType::output) {
     save(root, "output", output_settings);
-  }
-}
-
-void ExciterPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

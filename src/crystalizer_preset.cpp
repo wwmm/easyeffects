@@ -19,11 +19,13 @@
 
 #include "crystalizer_preset.hpp"
 
-CrystalizerPreset::CrystalizerPreset()
-    : input_settings(Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
-                                           "/com/github/wwmm/easyeffects/streaminputs/crystalizer/")),
-      output_settings(Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
-                                            "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/")) {}
+CrystalizerPreset::CrystalizerPreset() {
+  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
+                                         "/com/github/wwmm/easyeffects/streaminputs/crystalizer/");
+
+  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
+                                          "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/");
+}
 
 void CrystalizerPreset::save(boost::property_tree::ptree& root,
                              const std::string& section,
@@ -71,20 +73,5 @@ void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptre
     case PresetType::input:
       save(root, "input", input_settings);
       break;
-  }
-}
-
-void CrystalizerPreset::read(PresetType preset_type, const nlohmann::json& json) {
-  try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
-    }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
   }
 }

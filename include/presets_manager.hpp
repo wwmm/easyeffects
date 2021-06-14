@@ -56,7 +56,6 @@
 #include "preset_type.hpp"
 #include "reverb_preset.hpp"
 #include "rnnoise_preset.hpp"
-#include "spectrum_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "util.hpp"
 
@@ -119,7 +118,6 @@ class PresetsManager {
   std::unique_ptr<PitchPreset> pitch;
   std::unique_ptr<ReverbPreset> reverb;
   std::unique_ptr<RNNoisePreset> rnnoise;
-  std::unique_ptr<SpectrumPreset> spectrum;
   std::unique_ptr<StereoToolsPreset> stereo_tools;
 
   template <typename T>
