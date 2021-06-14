@@ -55,7 +55,7 @@ DeesserPreset::DeesserPreset() {
 //   root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
 // }
 
-void DeesserPreset::save(const nlohmann::json& json,
+void DeesserPreset::save(nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {}
 

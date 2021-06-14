@@ -31,9 +31,7 @@ class EqualizerPreset : public PluginPresetBase {
 
   Glib::RefPtr<Gio::Settings> input_settings_left, input_settings_right, output_settings_left, output_settings_right;
 
-  void save(const nlohmann::json& json,
-            const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) override;
 
   void load(const nlohmann::json& json,
             const std::string& section,

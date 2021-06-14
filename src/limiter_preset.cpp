@@ -49,7 +49,7 @@ LimiterPreset::LimiterPreset() {
 //   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
 // }
 
-void LimiterPreset::save(const nlohmann::json& json,
+void LimiterPreset::save(nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {}
 

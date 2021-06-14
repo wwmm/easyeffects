@@ -37,7 +37,7 @@ RNNoisePreset::RNNoisePreset() {
 //   root.put(section + ".rnnoise.model-path", settings->get_string("model-path"));
 // }
 
-void RNNoisePreset::save(const nlohmann::json& json,
+void RNNoisePreset::save(nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {}
 

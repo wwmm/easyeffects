@@ -35,7 +35,7 @@ class PluginPresetBase {
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
   virtual ~PluginPresetBase() = default;
 
-  void write(PresetType preset_type, const nlohmann::json& json) {
+  void write(PresetType preset_type, nlohmann::json& json) {
     try {
       switch (preset_type) {
         case PresetType::output:
@@ -68,9 +68,7 @@ class PluginPresetBase {
  protected:
   Glib::RefPtr<Gio::Settings> input_settings, output_settings;
 
-  virtual void save(const nlohmann::json& json,
-                    const std::string& section,
-                    const Glib::RefPtr<Gio::Settings>& settings) = 0;
+  virtual void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) = 0;
 
   virtual void load(const nlohmann::json& json,
                     const std::string& section,

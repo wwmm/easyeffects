@@ -37,7 +37,7 @@ MaximizerPreset::MaximizerPreset() {
 //   root.put(section + ".maximizer.threshold", settings->get_double("threshold"));
 // }
 
-void MaximizerPreset::save(const nlohmann::json& json,
+void MaximizerPreset::save(nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {}
 

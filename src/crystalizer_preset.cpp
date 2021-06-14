@@ -46,7 +46,7 @@ CrystalizerPreset::CrystalizerPreset() {
 //   }
 // }
 
-void CrystalizerPreset::save(const nlohmann::json& json,
+void CrystalizerPreset::save(nlohmann::json& json,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {}
 

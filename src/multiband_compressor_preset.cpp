@@ -123,7 +123,7 @@ MultibandCompressorPreset::MultibandCompressorPreset() {
 //   root.put(section + ".multiband_compressor.highband.solo", settings->get_boolean("solo3"));
 // }
 
-void MultibandCompressorPreset::save(const nlohmann::json& json,
+void MultibandCompressorPreset::save(nlohmann::json& json,
                                      const std::string& section,
                                      const Glib::RefPtr<Gio::Settings>& settings) {}
 

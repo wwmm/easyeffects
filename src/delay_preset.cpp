@@ -38,9 +38,7 @@ DelayPreset::DelayPreset() {
 //   root.put(section + ".delay.time-r", settings->get_double("time-r"));
 // }
 
-void DelayPreset::save(const nlohmann::json& json,
-                       const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {}
+void DelayPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void DelayPreset::load(const nlohmann::json& json,
                        const std::string& section,

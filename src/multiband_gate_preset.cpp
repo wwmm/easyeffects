@@ -131,7 +131,7 @@ MultibandGatePreset::MultibandGatePreset() {
 //   root.put(section + ".multiband_gate.highband.solo", settings->get_boolean("solo3"));
 // }
 
-void MultibandGatePreset::save(const nlohmann::json& json,
+void MultibandGatePreset::save(nlohmann::json& json,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {}
 

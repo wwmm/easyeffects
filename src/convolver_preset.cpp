@@ -39,7 +39,7 @@ ConvolverPreset::ConvolverPreset() {
 //   root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
 // }
 
-void ConvolverPreset::save(const nlohmann::json& json,
+void ConvolverPreset::save(nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {}
 

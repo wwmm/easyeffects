@@ -39,7 +39,7 @@ EchoCancellerPreset::EchoCancellerPreset() {
 //   root.put(section + ".echo_canceller.filter-length", settings->get_int("filter-length"));
 // }
 
-void EchoCancellerPreset::save(const nlohmann::json& json,
+void EchoCancellerPreset::save(nlohmann::json& json,
                                const std::string& section,
                                const Glib::RefPtr<Gio::Settings>& settings) {}
 

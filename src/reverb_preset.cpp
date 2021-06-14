@@ -53,9 +53,8 @@ ReverbPreset::ReverbPreset() {
 //   root.put(section + ".reverb.treble-cut", settings->get_double("treble-cut"));
 // }
 
-void ReverbPreset::save(const nlohmann::json& json,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {}
+void ReverbPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
+}
 
 void ReverbPreset::load(const nlohmann::json& json,
                         const std::string& section,

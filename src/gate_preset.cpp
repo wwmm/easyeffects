@@ -53,9 +53,7 @@ GatePreset::GatePreset() {
 //   root.put(section + ".gate.makeup", settings->get_double("makeup"));
 // }
 
-void GatePreset::save(const nlohmann::json& json,
-                      const std::string& section,
-                      const Glib::RefPtr<Gio::Settings>& settings) {}
+void GatePreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void GatePreset::load(const nlohmann::json& json,
                       const std::string& section,

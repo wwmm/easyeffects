@@ -43,9 +43,8 @@ FilterPreset::FilterPreset() {
 //   root.put(section + ".filter.inertia", settings->get_double("inertia"));
 // }
 
-void FilterPreset::save(const nlohmann::json& json,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {}
+void FilterPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
+}
 
 void FilterPreset::load(const nlohmann::json& json,
                         const std::string& section,

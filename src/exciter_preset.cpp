@@ -47,7 +47,7 @@ ExciterPreset::ExciterPreset() {
 //   root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
 // }
 
-void ExciterPreset::save(const nlohmann::json& json,
+void ExciterPreset::save(nlohmann::json& json,
                          const std::string& section,
                          const Glib::RefPtr<Gio::Settings>& settings) {}
 

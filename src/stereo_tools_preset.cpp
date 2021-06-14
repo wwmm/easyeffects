@@ -67,7 +67,7 @@ StereoToolsPreset::StereoToolsPreset() {
 //   root.put(section + ".stereo_tools.stereo-phase", settings->get_double("stereo-phase"));
 // }
 
-void StereoToolsPreset::save(const nlohmann::json& json,
+void StereoToolsPreset::save(nlohmann::json& json,
                              const std::string& section,
                              const Glib::RefPtr<Gio::Settings>& settings) {}
 

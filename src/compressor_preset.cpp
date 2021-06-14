@@ -75,9 +75,53 @@ CompressorPreset::CompressorPreset() {
 //   root.put(section + ".compressor.lpf-frequency", settings->get_double("lpf-frequency"));
 // }
 
-void CompressorPreset::save(const nlohmann::json& json,
+void CompressorPreset::save(nlohmann::json& json,
                             const std::string& section,
-                            const Glib::RefPtr<Gio::Settings>& settings) {}
+                            const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["compressor"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["compressor"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["compressor"]["mode"] = settings->get_string("mode").c_str();
+
+  json[section]["compressor"]["attack"] = settings->get_double("attack");
+
+  json[section]["compressor"]["release"] = settings->get_double("release");
+
+  json[section]["compressor"]["release-threshold"] = settings->get_double("release-threshold");
+
+  json[section]["compressor"]["threshold"] = settings->get_double("threshold");
+
+  json[section]["compressor"]["ratio"] = settings->get_double("ratio");
+
+  json[section]["compressor"]["knee"] = settings->get_double("knee");
+
+  json[section]["compressor"]["makeup"] = settings->get_double("makeup");
+
+  json[section]["compressor"]["boost-threshold"] = settings->get_double("boost-threshold");
+
+  json[section]["compressor"]["sidechain"]["listen"] = settings->get_boolean("sidechain-listen");
+
+  json[section]["compressor"]["sidechain"]["type"] = settings->get_string("sidechain-type").c_str();
+
+  json[section]["compressor"]["sidechain"]["mode"] = settings->get_string("sidechain-mode").c_str();
+
+  json[section]["compressor"]["sidechain"]["source"] = settings->get_string("sidechain-source").c_str();
+
+  json[section]["compressor"]["sidechain"]["preamp"] = settings->get_double("sidechain-preamp");
+
+  json[section]["compressor"]["sidechain"]["reactivity"] = settings->get_double("sidechain-reactivity");
+
+  json[section]["compressor"]["sidechain"]["lookahead"] = settings->get_double("sidechain-lookahead");
+
+  json[section]["compressor"]["hpf-mode"] = settings->get_string("hpf-mode").c_str();
+
+  json[section]["compressor"]["hpf-frequency"] = settings->get_double("hpf-frequency");
+
+  json[section]["compressor"]["lpf-mode"] = settings->get_string("lpf-mode").c_str();
+
+  json[section]["compressor"]["lpf-frequency"] = settings->get_double("lpf-frequency");
+}
 
 void CompressorPreset::load(const nlohmann::json& json,
                             const std::string& section,

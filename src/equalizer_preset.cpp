@@ -61,7 +61,7 @@ EqualizerPreset::EqualizerPreset()
 //   }
 // }
 
-void EqualizerPreset::save(const nlohmann::json& json,
+void EqualizerPreset::save(nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {}
 

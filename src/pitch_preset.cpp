@@ -47,9 +47,7 @@ PitchPreset::PitchPreset() {
 //   root.put(section + ".pitch.faster", settings->get_boolean("faster"));
 // }
 
-void PitchPreset::save(const nlohmann::json& json,
-                       const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {}
+void PitchPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void PitchPreset::load(const nlohmann::json& json,
                        const std::string& section,

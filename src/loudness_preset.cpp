@@ -37,7 +37,7 @@ LoudnessPreset::LoudnessPreset() {
 //   root.put(section + ".loudness.volume", settings->get_double("volume"));
 // }
 
-void LoudnessPreset::save(const nlohmann::json& json,
+void LoudnessPreset::save(nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {}
 

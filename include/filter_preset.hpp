@@ -27,9 +27,7 @@ class FilterPreset : public PluginPresetBase {
   FilterPreset();
 
  private:
-  void save(const nlohmann::json& json,
-            const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) override;
 
   void load(const nlohmann::json& json,
             const std::string& section,

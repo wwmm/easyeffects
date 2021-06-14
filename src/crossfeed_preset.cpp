@@ -39,7 +39,7 @@ CrossfeedPreset::CrossfeedPreset() {
 //   root.put(section + ".crossfeed.feed", settings->get_double("feed"));
 // }
 
-void CrossfeedPreset::save(const nlohmann::json& json,
+void CrossfeedPreset::save(nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {}
 

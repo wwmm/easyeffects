@@ -317,10 +317,12 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
     }
   }
 
-  // autogain->write(preset_type, root);
-  // bass_enhancer->write(preset_type, root);
-  // compressor->write(preset_type, root);
+  autogain->write(preset_type, json);
+  bass_enhancer->write(preset_type, json);
+  compressor->write(preset_type, json);
+
   // convolver->write(preset_type, root);
+
   // crossfeed->write(preset_type, root);
   // crystalizer->write(preset_type, root);
   // deesser->write(preset_type, root);
