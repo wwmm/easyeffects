@@ -36,23 +36,42 @@ class PluginPresetBase {
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
   virtual ~PluginPresetBase() = default;
 
-  virtual void write(PresetType preset_type, boost::property_tree::ptree& root) = 0;
-
-  virtual void read(PresetType preset_type, const nlohmann::json& json) try {
-    switch (preset_type) {
-      case PresetType::output:
-        load(json, "output", output_settings);
-        break;
-      case PresetType::input:
-        load(json, "input", input_settings);
-        break;
+  void write(PresetType preset_type, const nlohmann::json& json) {
+    try {
+      switch (preset_type) {
+        case PresetType::output:
+          save(json, "output", output_settings);
+          break;
+        case PresetType::input:
+          save(json, "input", input_settings);
+          break;
+      }
+    } catch (const nlohmann::json::exception& e) {
+      util::warning(e.what());
     }
-  } catch (const nlohmann::json::exception& e) {
-    util::warning(e.what());
+  }
+
+  void read(PresetType preset_type, const nlohmann::json& json) {
+    try {
+      switch (preset_type) {
+        case PresetType::output:
+          load(json, "output", output_settings);
+          break;
+        case PresetType::input:
+          load(json, "input", input_settings);
+          break;
+      }
+    } catch (const nlohmann::json::exception& e) {
+      util::warning(e.what());
+    }
   }
 
  protected:
   Glib::RefPtr<Gio::Settings> input_settings, output_settings;
+
+  virtual void save(const nlohmann::json& json,
+                    const std::string& section,
+                    const Glib::RefPtr<Gio::Settings>& settings) = 0;
 
   virtual void load(const nlohmann::json& json,
                     const std::string& section,

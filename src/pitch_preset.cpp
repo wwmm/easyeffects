@@ -27,25 +27,29 @@ PitchPreset::PitchPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.pitch", "/com/github/wwmm/easyeffects/streamoutputs/pitch/");
 }
 
-void PitchPreset::save(boost::property_tree::ptree& root,
+// void PitchPreset::save(boost::property_tree::ptree& root,
+//                        const std::string& section,
+//                        const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".pitch.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".pitch.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".pitch.cents", settings->get_int("cents"));
+
+//   root.put(section + ".pitch.semitones", settings->get_int("semitones"));
+
+//   root.put(section + ".pitch.octaves", settings->get_int("octaves"));
+
+//   root.put(section + ".pitch.crispness", settings->get_int("crispness"));
+
+//   root.put(section + ".pitch.formant-preserving", settings->get_boolean("formant-preserving"));
+
+//   root.put(section + ".pitch.faster", settings->get_boolean("faster"));
+// }
+
+void PitchPreset::save(const nlohmann::json& json,
                        const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".pitch.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".pitch.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".pitch.cents", settings->get_int("cents"));
-
-  root.put(section + ".pitch.semitones", settings->get_int("semitones"));
-
-  root.put(section + ".pitch.octaves", settings->get_int("octaves"));
-
-  root.put(section + ".pitch.crispness", settings->get_int("crispness"));
-
-  root.put(section + ".pitch.formant-preserving", settings->get_boolean("formant-preserving"));
-
-  root.put(section + ".pitch.faster", settings->get_boolean("faster"));
-}
+                       const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void PitchPreset::load(const nlohmann::json& json,
                        const std::string& section,
@@ -65,15 +69,4 @@ void PitchPreset::load(const nlohmann::json& json,
   update_key<bool>(json.at(section).at("pitch"), settings, "formant-preserving", "formant-preserving");
 
   update_key<bool>(json.at(section).at("pitch"), settings, "faster", "faster");
-}
-
-void PitchPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

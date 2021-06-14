@@ -27,15 +27,19 @@ LoudnessPreset::LoudnessPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/loudness/");
 }
 
-void LoudnessPreset::save(boost::property_tree::ptree& root,
+// void LoudnessPreset::save(boost::property_tree::ptree& root,
+//                           const std::string& section,
+//                           const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".loudness.fft", settings->get_string("fft"));
+
+//   root.put(section + ".loudness.std", settings->get_string("std"));
+
+//   root.put(section + ".loudness.volume", settings->get_double("volume"));
+// }
+
+void LoudnessPreset::save(const nlohmann::json& json,
                           const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".loudness.fft", settings->get_string("fft"));
-
-  root.put(section + ".loudness.std", settings->get_string("std"));
-
-  root.put(section + ".loudness.volume", settings->get_double("volume"));
-}
+                          const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void LoudnessPreset::load(const nlohmann::json& json,
                           const std::string& section,
@@ -49,15 +53,4 @@ void LoudnessPreset::load(const nlohmann::json& json,
   update_string_key(json.at(section).at("loudness"), settings, "std", "std");
 
   update_key<double>(json.at(section).at("loudness"), settings, "volume", "volume");
-}
-
-void LoudnessPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

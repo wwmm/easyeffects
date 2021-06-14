@@ -27,17 +27,21 @@ ConvolverPreset::ConvolverPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/convolver/");
 }
 
-void ConvolverPreset::save(boost::property_tree::ptree& root,
+// void ConvolverPreset::save(boost::property_tree::ptree& root,
+//                            const std::string& section,
+//                            const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".convolver.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".convolver.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".convolver.kernel-path", settings->get_string("kernel-path"));
+
+//   root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
+// }
+
+void ConvolverPreset::save(const nlohmann::json& json,
                            const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".convolver.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".convolver.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".convolver.kernel-path", settings->get_string("kernel-path"));
-
-  root.put(section + ".convolver.ir-width", settings->get_int("ir-width"));
-}
+                           const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void ConvolverPreset::load(const nlohmann::json& json,
                            const std::string& section,
@@ -49,10 +53,4 @@ void ConvolverPreset::load(const nlohmann::json& json,
   update_string_key(json.at(section).at("convolver"), settings, "kernel-path", "kernel-path");
 
   update_key<int>(json.at(section).at("convolver"), settings, "ir-width", "ir-width");
-}
-
-void ConvolverPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  }
 }

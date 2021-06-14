@@ -27,24 +27,28 @@ CrystalizerPreset::CrystalizerPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/");
 }
 
-void CrystalizerPreset::save(boost::property_tree::ptree& root,
+// void CrystalizerPreset::save(boost::property_tree::ptree& root,
+//                              const std::string& section,
+//                              const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".crystalizer.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".crystalizer.output-gain", settings->get_double("output-gain"));
+
+//   for (int n = 0; n < 13; n++) {
+//     root.put(section + ".crystalizer.band" + std::to_string(n) + ".intensity",
+//              settings->get_double("intensity-band" + std::to_string(n)));
+
+//     root.put(section + ".crystalizer.band" + std::to_string(n) + ".mute",
+//              settings->get_boolean("mute-band" + std::to_string(n)));
+
+//     root.put(section + ".crystalizer.band" + std::to_string(n) + ".bypass",
+//              settings->get_boolean("bypass-band" + std::to_string(n)));
+//   }
+// }
+
+void CrystalizerPreset::save(const nlohmann::json& json,
                              const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".crystalizer.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".crystalizer.output-gain", settings->get_double("output-gain"));
-
-  for (int n = 0; n < 13; n++) {
-    root.put(section + ".crystalizer.band" + std::to_string(n) + ".intensity",
-             settings->get_double("intensity-band" + std::to_string(n)));
-
-    root.put(section + ".crystalizer.band" + std::to_string(n) + ".mute",
-             settings->get_boolean("mute-band" + std::to_string(n)));
-
-    root.put(section + ".crystalizer.band" + std::to_string(n) + ".bypass",
-             settings->get_boolean("bypass-band" + std::to_string(n)));
-  }
-}
+                             const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void CrystalizerPreset::load(const nlohmann::json& json,
                              const std::string& section,
@@ -62,16 +66,5 @@ void CrystalizerPreset::load(const nlohmann::json& json,
 
     update_key<bool>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
                      "bypass-band" + std::to_string(n), "bypass");
-  }
-}
-
-void CrystalizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
   }
 }

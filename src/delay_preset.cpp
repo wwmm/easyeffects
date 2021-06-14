@@ -27,16 +27,20 @@ DelayPreset::DelayPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.delay", "/com/github/wwmm/easyeffects/streamoutputs/delay/");
 }
 
-void DelayPreset::save(boost::property_tree::ptree& root,
+// void DelayPreset::save(boost::property_tree::ptree& root,
+//                        const std::string& section,
+//                        const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".delay.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".delay.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".delay.time-l", settings->get_double("time-l"));
+//   root.put(section + ".delay.time-r", settings->get_double("time-r"));
+// }
+
+void DelayPreset::save(const nlohmann::json& json,
                        const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".delay.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".delay.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".delay.time-l", settings->get_double("time-l"));
-  root.put(section + ".delay.time-r", settings->get_double("time-r"));
-}
+                       const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void DelayPreset::load(const nlohmann::json& json,
                        const std::string& section,
@@ -48,10 +52,4 @@ void DelayPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("delay"), settings, "time-l", "time-l");
 
   update_key<double>(json.at(section).at("delay"), settings, "time-r", "time-r");
-}
-
-void DelayPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  }
 }

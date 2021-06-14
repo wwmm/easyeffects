@@ -27,25 +27,29 @@ ExciterPreset::ExciterPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
 }
 
-void ExciterPreset::save(boost::property_tree::ptree& root,
+// void ExciterPreset::save(boost::property_tree::ptree& root,
+//                          const std::string& section,
+//                          const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".exciter.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".exciter.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".exciter.amount", settings->get_double("amount"));
+
+//   root.put(section + ".exciter.harmonics", settings->get_double("harmonics"));
+
+//   root.put(section + ".exciter.scope", settings->get_double("scope"));
+
+//   root.put(section + ".exciter.ceil", settings->get_double("ceil"));
+
+//   root.put(section + ".exciter.blend", settings->get_double("blend"));
+
+//   root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
+// }
+
+void ExciterPreset::save(const nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".exciter.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".exciter.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".exciter.amount", settings->get_double("amount"));
-
-  root.put(section + ".exciter.harmonics", settings->get_double("harmonics"));
-
-  root.put(section + ".exciter.scope", settings->get_double("scope"));
-
-  root.put(section + ".exciter.ceil", settings->get_double("ceil"));
-
-  root.put(section + ".exciter.blend", settings->get_double("blend"));
-
-  root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
-}
+                         const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void ExciterPreset::load(const nlohmann::json& json,
                          const std::string& section,
@@ -65,10 +69,4 @@ void ExciterPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("exciter"), settings, "blend", "blend");
 
   update_key<bool>(json.at(section).at("exciter"), settings, "ceil-active", "ceil-active");
-}
-
-void ExciterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  }
 }

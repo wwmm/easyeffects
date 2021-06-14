@@ -37,29 +37,33 @@ EqualizerPreset::EqualizerPreset()
                                           "/com/github/wwmm/easyeffects/streamoutputs/equalizer/");
 }
 
-void EqualizerPreset::save(boost::property_tree::ptree& root,
+// void EqualizerPreset::save(boost::property_tree::ptree& root,
+//                            const std::string& section,
+//                            const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".equalizer.mode", settings->get_string("mode"));
+
+//   const auto& nbands = settings->get_int("num-bands");
+
+//   root.put(section + ".equalizer.num-bands", nbands);
+
+//   root.put(section + ".equalizer.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".equalizer.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".equalizer.split-channels", settings->get_boolean("split-channels"));
+
+//   if (section == "input") {
+//     save_channel(root, "input.equalizer.left", input_settings_left, nbands);
+//     save_channel(root, "input.equalizer.right", input_settings_right, nbands);
+//   } else if (section == "output") {
+//     save_channel(root, "output.equalizer.left", output_settings_left, nbands);
+//     save_channel(root, "output.equalizer.right", output_settings_right, nbands);
+//   }
+// }
+
+void EqualizerPreset::save(const nlohmann::json& json,
                            const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".equalizer.mode", settings->get_string("mode"));
-
-  const auto& nbands = settings->get_int("num-bands");
-
-  root.put(section + ".equalizer.num-bands", nbands);
-
-  root.put(section + ".equalizer.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".equalizer.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".equalizer.split-channels", settings->get_boolean("split-channels"));
-
-  if (section == "input") {
-    save_channel(root, "input.equalizer.left", input_settings_left, nbands);
-    save_channel(root, "input.equalizer.right", input_settings_right, nbands);
-  } else if (section == "output") {
-    save_channel(root, "output.equalizer.left", output_settings_left, nbands);
-    save_channel(root, "output.equalizer.right", output_settings_right, nbands);
-  }
-}
+                           const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void EqualizerPreset::save_channel(boost::property_tree::ptree& root,
                                    const std::string& section,
@@ -136,16 +140,5 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
                        "frequency");
 
     update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-q", "q");
-  }
-}
-
-void EqualizerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
   }
 }

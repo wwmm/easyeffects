@@ -27,33 +27,37 @@ DeesserPreset::DeesserPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/deesser/");
 }
 
-void DeesserPreset::save(boost::property_tree::ptree& root,
+// void DeesserPreset::save(boost::property_tree::ptree& root,
+//                          const std::string& section,
+//                          const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".deesser.detection", settings->get_string("detection"));
+
+//   root.put(section + ".deesser.mode", settings->get_string("mode"));
+
+//   root.put(section + ".deesser.threshold", settings->get_double("threshold"));
+
+//   root.put(section + ".deesser.ratio", settings->get_double("ratio"));
+
+//   root.put(section + ".deesser.laxity", settings->get_int("laxity"));
+
+//   root.put(section + ".deesser.makeup", settings->get_double("makeup"));
+
+//   root.put(section + ".deesser.f1-freq", settings->get_double("f1-freq"));
+
+//   root.put(section + ".deesser.f2-freq", settings->get_double("f2-freq"));
+
+//   root.put(section + ".deesser.f1-level", settings->get_double("f1-level"));
+
+//   root.put(section + ".deesser.f2-level", settings->get_double("f2-level"));
+
+//   root.put(section + ".deesser.f2-q", settings->get_double("f2-q"));
+
+//   root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
+// }
+
+void DeesserPreset::save(const nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".deesser.detection", settings->get_string("detection"));
-
-  root.put(section + ".deesser.mode", settings->get_string("mode"));
-
-  root.put(section + ".deesser.threshold", settings->get_double("threshold"));
-
-  root.put(section + ".deesser.ratio", settings->get_double("ratio"));
-
-  root.put(section + ".deesser.laxity", settings->get_int("laxity"));
-
-  root.put(section + ".deesser.makeup", settings->get_double("makeup"));
-
-  root.put(section + ".deesser.f1-freq", settings->get_double("f1-freq"));
-
-  root.put(section + ".deesser.f2-freq", settings->get_double("f2-freq"));
-
-  root.put(section + ".deesser.f1-level", settings->get_double("f1-level"));
-
-  root.put(section + ".deesser.f2-level", settings->get_double("f2-level"));
-
-  root.put(section + ".deesser.f2-q", settings->get_double("f2-q"));
-
-  root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
-}
+                         const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void DeesserPreset::load(const nlohmann::json& json,
                          const std::string& section,
@@ -85,15 +89,4 @@ void DeesserPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("deesser"), settings, "f2-q", "f2-q");
 
   update_key<bool>(json.at(section).at("deesser"), settings, "sc-listen", "sc-listen");
-}
-
-void DeesserPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

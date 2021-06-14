@@ -27,31 +27,35 @@ GatePreset::GatePreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streamoutputs/gate/");
 }
 
-void GatePreset::save(boost::property_tree::ptree& root,
+// void GatePreset::save(boost::property_tree::ptree& root,
+//                       const std::string& section,
+//                       const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".gate.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".gate.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".gate.detection", settings->get_string("detection"));
+
+//   root.put(section + ".gate.stereo-link", settings->get_string("stereo-link"));
+
+//   root.put(section + ".gate.range", settings->get_double("range"));
+
+//   root.put(section + ".gate.attack", settings->get_double("attack"));
+
+//   root.put(section + ".gate.release", settings->get_double("release"));
+
+//   root.put(section + ".gate.threshold", settings->get_double("threshold"));
+
+//   root.put(section + ".gate.ratio", settings->get_double("ratio"));
+
+//   root.put(section + ".gate.knee", settings->get_double("knee"));
+
+//   root.put(section + ".gate.makeup", settings->get_double("makeup"));
+// }
+
+void GatePreset::save(const nlohmann::json& json,
                       const std::string& section,
-                      const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".gate.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".gate.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".gate.detection", settings->get_string("detection"));
-
-  root.put(section + ".gate.stereo-link", settings->get_string("stereo-link"));
-
-  root.put(section + ".gate.range", settings->get_double("range"));
-
-  root.put(section + ".gate.attack", settings->get_double("attack"));
-
-  root.put(section + ".gate.release", settings->get_double("release"));
-
-  root.put(section + ".gate.threshold", settings->get_double("threshold"));
-
-  root.put(section + ".gate.ratio", settings->get_double("ratio"));
-
-  root.put(section + ".gate.knee", settings->get_double("knee"));
-
-  root.put(section + ".gate.makeup", settings->get_double("makeup"));
-}
+                      const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void GatePreset::load(const nlohmann::json& json,
                       const std::string& section,
@@ -77,15 +81,4 @@ void GatePreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("gate"), settings, "knee", "knee");
 
   update_key<double>(json.at(section).at("gate"), settings, "makeup", "makeup");
-}
-
-void GatePreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

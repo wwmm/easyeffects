@@ -27,17 +27,21 @@ EchoCancellerPreset::EchoCancellerPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/");
 }
 
-void EchoCancellerPreset::save(boost::property_tree::ptree& root,
+// void EchoCancellerPreset::save(boost::property_tree::ptree& root,
+//                                const std::string& section,
+//                                const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".echo_canceller.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".echo_canceller.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".echo_canceller.frame-size", settings->get_int("frame-size"));
+
+//   root.put(section + ".echo_canceller.filter-length", settings->get_int("filter-length"));
+// }
+
+void EchoCancellerPreset::save(const nlohmann::json& json,
                                const std::string& section,
-                               const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".echo_canceller.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".echo_canceller.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".echo_canceller.frame-size", settings->get_int("frame-size"));
-
-  root.put(section + ".echo_canceller.filter-length", settings->get_int("filter-length"));
-}
+                               const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void EchoCancellerPreset::load(const nlohmann::json& json,
                                const std::string& section,
@@ -49,15 +53,4 @@ void EchoCancellerPreset::load(const nlohmann::json& json,
   update_key<int>(json.at(section).at("echo_canceller"), settings, "frame-size", "frame-size");
 
   update_key<int>(json.at(section).at("echo_canceller"), settings, "filter-length", "filter-length");
-}
-
-void EchoCancellerPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

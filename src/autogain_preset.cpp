@@ -27,20 +27,18 @@ AutoGainPreset::AutoGainPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/autogain/");
 }
 
-void AutoGainPreset::save(boost::property_tree::ptree& root,
+// void AutoGainPreset::save(boost::property_tree::ptree& root,
+//                           const std::string& section,
+//                           const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".autogain.target", settings->get_double("target"));
+// }
+
+void AutoGainPreset::save(const nlohmann::json& json,
                           const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".autogain.target", settings->get_double("target"));
-}
+                          const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void AutoGainPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
   update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
-}
-
-void AutoGainPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  if (preset_type == PresetType::output) {
-    save(root, "output", output_settings);
-  }
 }

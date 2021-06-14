@@ -26,10 +26,10 @@ class CompressorPreset : public PluginPresetBase {
  public:
   CompressorPreset();
 
-  void write(PresetType preset_type, boost::property_tree::ptree& root) override;
-
  private:
-  void save(boost::property_tree::ptree& root, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings);
+  void save(const nlohmann::json& json,
+            const std::string& section,
+            const Glib::RefPtr<Gio::Settings>& settings) override;
 
   void load(const nlohmann::json& json,
             const std::string& section,

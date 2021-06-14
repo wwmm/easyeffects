@@ -27,27 +27,31 @@ LimiterPreset::LimiterPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/limiter/");
 }
 
-void LimiterPreset::save(boost::property_tree::ptree& root,
+// void LimiterPreset::save(boost::property_tree::ptree& root,
+//                          const std::string& section,
+//                          const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".limiter.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".limiter.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".limiter.limit", settings->get_double("limit"));
+
+//   root.put(section + ".limiter.lookahead", settings->get_double("lookahead"));
+
+//   root.put(section + ".limiter.release", settings->get_double("release"));
+
+//   root.put(section + ".limiter.auto-level", settings->get_boolean("auto-level"));
+
+//   root.put(section + ".limiter.asc", settings->get_boolean("asc"));
+
+//   root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
+
+//   root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
+// }
+
+void LimiterPreset::save(const nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".limiter.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".limiter.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".limiter.limit", settings->get_double("limit"));
-
-  root.put(section + ".limiter.lookahead", settings->get_double("lookahead"));
-
-  root.put(section + ".limiter.release", settings->get_double("release"));
-
-  root.put(section + ".limiter.auto-level", settings->get_boolean("auto-level"));
-
-  root.put(section + ".limiter.asc", settings->get_boolean("asc"));
-
-  root.put(section + ".limiter.asc-level", settings->get_double("asc-level"));
-
-  root.put(section + ".limiter.oversampling", settings->get_int("oversampling"));
-}
+                         const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void LimiterPreset::load(const nlohmann::json& json,
                          const std::string& section,
@@ -69,15 +73,4 @@ void LimiterPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("limiter"), settings, "asc-level", "asc-level");
 
   update_key<int>(json.at(section).at("limiter"), settings, "oversampling", "oversampling");
-}
-
-void LimiterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

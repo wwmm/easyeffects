@@ -27,21 +27,25 @@ FilterPreset::FilterPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.filter", "/com/github/wwmm/easyeffects/streamoutputs/filter/");
 }
 
-void FilterPreset::save(boost::property_tree::ptree& root,
+// void FilterPreset::save(boost::property_tree::ptree& root,
+//                         const std::string& section,
+//                         const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".filter.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".filter.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".filter.frequency", settings->get_double("frequency"));
+
+//   root.put(section + ".filter.resonance", settings->get_double("resonance"));
+
+//   root.put(section + ".filter.mode", settings->get_string("mode"));
+
+//   root.put(section + ".filter.inertia", settings->get_double("inertia"));
+// }
+
+void FilterPreset::save(const nlohmann::json& json,
                         const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".filter.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".filter.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".filter.frequency", settings->get_double("frequency"));
-
-  root.put(section + ".filter.resonance", settings->get_double("resonance"));
-
-  root.put(section + ".filter.mode", settings->get_string("mode"));
-
-  root.put(section + ".filter.inertia", settings->get_double("inertia"));
-}
+                        const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void FilterPreset::load(const nlohmann::json& json,
                         const std::string& section,
@@ -57,15 +61,4 @@ void FilterPreset::load(const nlohmann::json& json,
   update_string_key(json.at(section).at("filter"), settings, "mode", "mode");
 
   update_key<double>(json.at(section).at("filter"), settings, "inertia", "inertia");
-}
-
-void FilterPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }

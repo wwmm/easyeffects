@@ -27,31 +27,35 @@ ReverbPreset::ReverbPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streamoutputs/reverb/");
 }
 
-void ReverbPreset::save(boost::property_tree::ptree& root,
+// void ReverbPreset::save(boost::property_tree::ptree& root,
+//                         const std::string& section,
+//                         const Glib::RefPtr<Gio::Settings>& settings) {
+//   root.put(section + ".reverb.input-gain", settings->get_double("input-gain"));
+
+//   root.put(section + ".reverb.output-gain", settings->get_double("output-gain"));
+
+//   root.put(section + ".reverb.room-size", settings->get_string("room-size"));
+
+//   root.put(section + ".reverb.decay-time", settings->get_double("decay-time"));
+
+//   root.put(section + ".reverb.hf-damp", settings->get_double("hf-damp"));
+
+//   root.put(section + ".reverb.diffusion", settings->get_double("diffusion"));
+
+//   root.put(section + ".reverb.amount", settings->get_double("amount"));
+
+//   root.put(section + ".reverb.dry", settings->get_double("dry"));
+
+//   root.put(section + ".reverb.predelay", settings->get_double("predelay"));
+
+//   root.put(section + ".reverb.bass-cut", settings->get_double("bass-cut"));
+
+//   root.put(section + ".reverb.treble-cut", settings->get_double("treble-cut"));
+// }
+
+void ReverbPreset::save(const nlohmann::json& json,
                         const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
-  root.put(section + ".reverb.input-gain", settings->get_double("input-gain"));
-
-  root.put(section + ".reverb.output-gain", settings->get_double("output-gain"));
-
-  root.put(section + ".reverb.room-size", settings->get_string("room-size"));
-
-  root.put(section + ".reverb.decay-time", settings->get_double("decay-time"));
-
-  root.put(section + ".reverb.hf-damp", settings->get_double("hf-damp"));
-
-  root.put(section + ".reverb.diffusion", settings->get_double("diffusion"));
-
-  root.put(section + ".reverb.amount", settings->get_double("amount"));
-
-  root.put(section + ".reverb.dry", settings->get_double("dry"));
-
-  root.put(section + ".reverb.predelay", settings->get_double("predelay"));
-
-  root.put(section + ".reverb.bass-cut", settings->get_double("bass-cut"));
-
-  root.put(section + ".reverb.treble-cut", settings->get_double("treble-cut"));
-}
+                        const Glib::RefPtr<Gio::Settings>& settings) {}
 
 void ReverbPreset::load(const nlohmann::json& json,
                         const std::string& section,
@@ -77,15 +81,4 @@ void ReverbPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("reverb"), settings, "bass-cut", "bass-cut");
 
   update_key<double>(json.at(section).at("reverb"), settings, "treble-cut", "treble-cut");
-}
-
-void ReverbPreset::write(PresetType preset_type, boost::property_tree::ptree& root) {
-  switch (preset_type) {
-    case PresetType::output:
-      save(root, "output", output_settings);
-      break;
-    case PresetType::input:
-      save(root, "input", input_settings);
-      break;
-  }
 }
