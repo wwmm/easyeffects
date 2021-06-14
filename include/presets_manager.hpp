@@ -69,16 +69,27 @@ class PresetsManager {
   ~PresetsManager();
 
   auto get_names(PresetType preset_type) -> std::vector<Glib::ustring>;
+
   static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
+
   void add(PresetType preset_type, const Glib::ustring& name);
+
   void save(PresetType preset_type, const std::string& name);
+
   void remove(PresetType preset_type, const std::string& name);
+
   void load(PresetType preset_type, const std::string& name);
+
   void import(PresetType preset_type, const std::string& file_path);
+
   void add_autoload(const std::string& device, const std::string& name);
+
   void remove_autoload(const std::string& device, const std::string& name);
+
   auto find_autoload(const std::string& device) -> std::string;
+
   void autoload(PresetType preset_type, const std::string& device);
+
   auto preset_file_exists(PresetType preset_type, const std::string& name) -> bool;
 
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_created;
@@ -120,56 +131,9 @@ class PresetsManager {
   std::unique_ptr<RNNoisePreset> rnnoise;
   std::unique_ptr<StereoToolsPreset> stereo_tools;
 
-  template <typename T>
-  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
-    Glib::Variant<T> value;
-
-    settings->get_default_value(key, value);
-
-    return value.get();
-  }
-
-  template <typename T>
-  void update_key(const boost::property_tree::ptree& root,
-                  const Glib::RefPtr<Gio::Settings>& settings,
-                  const std::string& key,
-                  const std::string& json_key) {
-    Glib::Variant<T> aux;
-
-    settings->get_value(key, aux);
-
-    T current_value = aux.get();
-
-    T new_value = root.get<T>(json_key, get_default<T>(settings, key));
-
-    if (is_different(current_value, new_value)) {
-      auto v = Glib::Variant<T>::create(new_value);
-
-      settings->set_value(key, v);
-    }
-  }
-
-  void update_string_key(const boost::property_tree::ptree& root,
-                         const Glib::RefPtr<Gio::Settings>& settings,
-                         const std::string& key,
-                         const std::string& json_key) {
-    std::string current_value = settings->get_string(key);
-
-    std::string new_value = root.get<std::string>(json_key, get_default<std::string>(settings, key));
-
-    if (current_value != new_value) {
-      settings->set_string(key, new_value);
-    }
-  }
-
-  template <typename T>
-  auto is_different(const T& a, const T& b) -> bool {
-    return a != b;
-  }
-
   void create_user_directory(const std::filesystem::path& path);
 
-  void save_blocklist(PresetType preset_type, boost::property_tree::ptree& root);
+  void save_blocklist(PresetType preset_type, nlohmann::json& json);
 
   void load_blocklist(PresetType preset_type, const nlohmann::json& json);
 };

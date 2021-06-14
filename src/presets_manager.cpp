@@ -203,38 +203,29 @@ void PresetsManager::add(PresetType preset_type, const Glib::ustring& name) {
   save(preset_type, name);
 }
 
-void PresetsManager::save_blocklist(PresetType preset_type, boost::property_tree::ptree& root) {
-  std::vector<Glib::ustring> blocklist;
-  boost::property_tree::ptree node_in;
+void PresetsManager::save_blocklist(PresetType preset_type, nlohmann::json& json) {
+  std::vector<std::string> blocklist;
 
   switch (preset_type) {
     case PresetType::output: {
-      blocklist = soe_settings->get_string_array("blocklist");
+      auto list = soe_settings->get_string_array("blocklist");
 
-      node_in.clear();
-
-      for (const auto& p : blocklist) {
-        boost::property_tree::ptree node;
-        node.put("", p);
-        node_in.push_back(std::make_pair("", node));
+      for (const auto& l : list) {
+        blocklist.emplace_back(l);
       }
 
-      root.add_child("output.blocklist", node_in);
+      json["output"]["blocklist"] = blocklist;
 
       break;
     }
     case PresetType::input: {
-      blocklist = sie_settings->get_string_array("blocklist");
+      auto list = sie_settings->get_string_array("blocklist");
 
-      node_in.clear();
-
-      for (const auto& p : blocklist) {
-        boost::property_tree::ptree node;
-        node.put("", p);
-        node_in.push_back(std::make_pair("", node));
+      for (const auto& l : list) {
+        blocklist.emplace_back(l);
       }
 
-      root.add_child("input.blocklist", node_in);
+      json["input"]["blocklist"] = blocklist;
 
       break;
     }
@@ -285,25 +276,23 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
 void PresetsManager::save(PresetType preset_type, const std::string& name) {
   nlohmann::json json;
 
-  boost::property_tree::ptree root;
-  boost::property_tree::ptree node_in;
-  boost::property_tree::ptree node_out;
-
   std::filesystem::path output_file;
 
-  // save_blocklist(preset_type, root);
+  save_blocklist(preset_type, json);
 
   switch (preset_type) {
     case PresetType::output: {
       std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
 
-      // for (const auto& p : output_plugins) {
-      //   boost::property_tree::ptree node;
-      //   node.put("", p);
-      //   node_out.push_back(std::make_pair("", node));
-      // }
+      std::vector<std::string> list;
 
-      // root.add_child("output.plugins_order", node_out);
+      list.reserve(output_plugins.size());
+
+      for (const auto& p : output_plugins) {
+        list.emplace_back(p);
+      }
+
+      json["output"]["plugins_order"] = list;
 
       output_file = user_output_dir / std::filesystem::path{name + ".json"};
 
@@ -312,13 +301,15 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
     case PresetType::input: {
       std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
 
-      // for (const auto& p : input_plugins) {
-      //   boost::property_tree::ptree node;
-      //   node.put("", p);
-      //   node_in.push_back(std::make_pair("", node));
-      // }
+      std::vector<std::string> list;
 
-      // root.add_child("input.plugins_order", node_in);
+      list.reserve(input_plugins.size());
+
+      for (const auto& p : input_plugins) {
+        list.emplace_back(p);
+      }
+
+      json["input"]["plugins_order"] = list;
 
       output_file = user_input_dir / std::filesystem::path{name + ".json"};
 
@@ -354,6 +345,8 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   // std::ofstream o(output_file.string());
 
   // o << std::setw(4) << json << std::endl;
+
+  std::cout << std::setw(4) << json << std::endl;
 
   util::debug(log_tag + "saved preset: " + output_file.string());
 }
