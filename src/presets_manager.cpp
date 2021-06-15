@@ -330,10 +330,10 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   exciter->write(preset_type, json);
   filter->write(preset_type, json);
   gate->write(preset_type, json);
-
-  // limiter->write(preset_type, root);
+  limiter->write(preset_type, json);
 
   // loudness->write(preset_type, root);
+
   // maximizer->write(preset_type, root);
   // multiband_compressor->write(preset_type, root);
   // multiband_gate->write(preset_type, root);
