@@ -328,11 +328,11 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   echo_canceller->write(preset_type, json);
   equalizer->write(preset_type, json);
   exciter->write(preset_type, json);
+  filter->write(preset_type, json);
+  gate->write(preset_type, json);
 
-  // filter->write(preset_type, root);
-
-  // gate->write(preset_type, root);
   // limiter->write(preset_type, root);
+
   // loudness->write(preset_type, root);
   // maximizer->write(preset_type, root);
   // multiband_compressor->write(preset_type, root);
@@ -341,8 +341,6 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   // reverb->write(preset_type, root);
   // rnnoise->write(preset_type, root);
   // stereo_tools->write(preset_type, root);
-
-  // boost::property_tree::write_json(output_file.string(), root);
 
   // std::ofstream o(output_file.string());
 

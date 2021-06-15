@@ -27,23 +27,18 @@ FilterPreset::FilterPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.filter", "/com/github/wwmm/easyeffects/streamoutputs/filter/");
 }
 
-// void FilterPreset::save(boost::property_tree::ptree& root,
-//                         const std::string& section,
-//                         const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".filter.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".filter.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".filter.frequency", settings->get_double("frequency"));
-
-//   root.put(section + ".filter.resonance", settings->get_double("resonance"));
-
-//   root.put(section + ".filter.mode", settings->get_string("mode"));
-
-//   root.put(section + ".filter.inertia", settings->get_double("inertia"));
-// }
-
 void FilterPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["filter"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["filter"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["filter"]["frequency"] = settings->get_double("frequency");
+
+  json[section]["filter"]["resonance"] = settings->get_double("resonance");
+
+  json[section]["filter"]["mode"] = settings->get_string("mode").c_str();
+
+  json[section]["filter"]["inertia"] = settings->get_double("inertia");
 }
 
 void FilterPreset::load(const nlohmann::json& json,
