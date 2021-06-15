@@ -27,19 +27,19 @@ LoudnessPreset::LoudnessPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/loudness/");
 }
 
-// void LoudnessPreset::save(boost::property_tree::ptree& root,
-//                           const std::string& section,
-//                           const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".loudness.fft", settings->get_string("fft"));
-
-//   root.put(section + ".loudness.std", settings->get_string("std"));
-
-//   root.put(section + ".loudness.volume", settings->get_double("volume"));
-// }
-
 void LoudnessPreset::save(nlohmann::json& json,
                           const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {}
+                          const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["loudness"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["loudness"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["loudness"]["fft"] = settings->get_string("fft").c_str();
+
+  json[section]["loudness"]["std"] = settings->get_string("std").c_str();
+
+  json[section]["loudness"]["volume"] = settings->get_double("volume");
+}
 
 void LoudnessPreset::load(const nlohmann::json& json,
                           const std::string& section,

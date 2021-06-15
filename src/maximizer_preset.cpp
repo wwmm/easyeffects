@@ -27,19 +27,15 @@ MaximizerPreset::MaximizerPreset() {
                                          "/com/github/wwmm/easyeffects/streaminputs/maximizer/");
 }
 
-// void MaximizerPreset::save(boost::property_tree::ptree& root,
-//                            const std::string& section,
-//                            const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".maximizer.release", settings->get_double("release"));
-
-//   root.put(section + ".maximizer.ceiling", settings->get_double("ceiling"));
-
-//   root.put(section + ".maximizer.threshold", settings->get_double("threshold"));
-// }
-
 void MaximizerPreset::save(nlohmann::json& json,
                            const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {}
+                           const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["maximizer"]["release"] = settings->get_double("release");
+
+  json[section]["maximizer"]["ceiling"] = settings->get_double("ceiling");
+
+  json[section]["maximizer"]["threshold"] = settings->get_double("threshold");
+}
 
 void MaximizerPreset::load(const nlohmann::json& json,
                            const std::string& section,
