@@ -327,10 +327,10 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   delay->write(preset_type, json);
   echo_canceller->write(preset_type, json);
   equalizer->write(preset_type, json);
-
-  // exciter->write(preset_type, root);
+  exciter->write(preset_type, json);
 
   // filter->write(preset_type, root);
+
   // gate->write(preset_type, root);
   // limiter->write(preset_type, root);
   // loudness->write(preset_type, root);

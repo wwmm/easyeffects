@@ -27,29 +27,25 @@ ExciterPreset::ExciterPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
 }
 
-// void ExciterPreset::save(boost::property_tree::ptree& root,
-//                          const std::string& section,
-//                          const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".exciter.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".exciter.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".exciter.amount", settings->get_double("amount"));
-
-//   root.put(section + ".exciter.harmonics", settings->get_double("harmonics"));
-
-//   root.put(section + ".exciter.scope", settings->get_double("scope"));
-
-//   root.put(section + ".exciter.ceil", settings->get_double("ceil"));
-
-//   root.put(section + ".exciter.blend", settings->get_double("blend"));
-
-//   root.put(section + ".exciter.ceil-active", settings->get_boolean("ceil-active"));
-// }
-
 void ExciterPreset::save(nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {}
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["exciter"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["exciter"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["exciter"]["amount"] = settings->get_double("amount");
+
+  json[section]["exciter"]["harmonics"] = settings->get_double("harmonics");
+
+  json[section]["exciter"]["scope"] = settings->get_double("scope");
+
+  json[section]["exciter"]["ceil"] = settings->get_double("ceil");
+
+  json[section]["exciter"]["blend"] = settings->get_double("blend");
+
+  json[section]["exciter"]["ceil-active"] = settings->get_boolean("ceil-active");
+}
 
 void ExciterPreset::load(const nlohmann::json& json,
                          const std::string& section,
