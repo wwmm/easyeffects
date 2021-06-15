@@ -27,37 +27,35 @@ DeesserPreset::DeesserPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/deesser/");
 }
 
-// void DeesserPreset::save(boost::property_tree::ptree& root,
-//                          const std::string& section,
-//                          const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".deesser.detection", settings->get_string("detection"));
-
-//   root.put(section + ".deesser.mode", settings->get_string("mode"));
-
-//   root.put(section + ".deesser.threshold", settings->get_double("threshold"));
-
-//   root.put(section + ".deesser.ratio", settings->get_double("ratio"));
-
-//   root.put(section + ".deesser.laxity", settings->get_int("laxity"));
-
-//   root.put(section + ".deesser.makeup", settings->get_double("makeup"));
-
-//   root.put(section + ".deesser.f1-freq", settings->get_double("f1-freq"));
-
-//   root.put(section + ".deesser.f2-freq", settings->get_double("f2-freq"));
-
-//   root.put(section + ".deesser.f1-level", settings->get_double("f1-level"));
-
-//   root.put(section + ".deesser.f2-level", settings->get_double("f2-level"));
-
-//   root.put(section + ".deesser.f2-q", settings->get_double("f2-q"));
-
-//   root.put(section + ".deesser.sc-listen", settings->get_boolean("sc-listen"));
-// }
-
 void DeesserPreset::save(nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {}
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["deesser"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["deesser"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["deesser"]["detection"] = settings->get_string("detection").c_str();
+
+  json[section]["deesser"]["mode"] = settings->get_string("mode").c_str();
+
+  json[section]["deesser"]["ratio"] = settings->get_double("ratio");
+
+  json[section]["deesser"]["laxity"] = settings->get_int("laxity");
+
+  json[section]["deesser"]["makeup"] = settings->get_double("makeup");
+
+  json[section]["deesser"]["f1-freq"] = settings->get_double("f1-freq");
+
+  json[section]["deesser"]["f2-freq"] = settings->get_double("f2-freq");
+
+  json[section]["deesser"]["f1-level"] = settings->get_double("f1-level");
+
+  json[section]["deesser"]["f2-level"] = settings->get_double("f2-level");
+
+  json[section]["deesser"]["f2-q"] = settings->get_double("f2-q");
+
+  json[section]["deesser"]["sc-listen"] = settings->get_boolean("sc-listen");
+}
 
 void DeesserPreset::load(const nlohmann::json& json,
                          const std::string& section,

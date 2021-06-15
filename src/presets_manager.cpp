@@ -323,10 +323,10 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   convolver->write(preset_type, json);
   crossfeed->write(preset_type, json);
   crystalizer->write(preset_type, json);
-
-  // deesser->write(preset_type, root);
+  deesser->write(preset_type, json);
 
   // delay->write(preset_type, root);
+
   // echo_canceller->write(preset_type, root);
   // equalizer->write(preset_type, root);
   // exciter->write(preset_type, root);
