@@ -37,10 +37,7 @@ class EqualizerPreset : public PluginPresetBase {
             const std::string& section,
             const Glib::RefPtr<Gio::Settings>& settings) override;
 
-  static void save_channel(const nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings,
-                           const int& nbands);
+  static void save_channel(nlohmann::json& json, const Glib::RefPtr<Gio::Settings>& settings, const int& nbands);
 
   void load_channel(const nlohmann::json& json, const Glib::RefPtr<Gio::Settings>& settings, const int& nbands);
 

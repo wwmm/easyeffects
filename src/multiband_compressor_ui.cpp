@@ -232,6 +232,11 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   prepare_spinbutton(freq0, "Hz");
   prepare_spinbutton(freq1, "Hz");
   prepare_spinbutton(freq2, "Hz");
+
+  prepare_spinbutton(ratio0, "");
+  prepare_spinbutton(ratio1, "");
+  prepare_spinbutton(ratio2, "");
+  prepare_spinbutton(ratio3, "");
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {

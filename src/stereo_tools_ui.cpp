@@ -131,7 +131,16 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   prepare_spinbutton(slev, "dB");
   prepare_spinbutton(mlev, "dB");
+
   prepare_spinbutton(delay, "ms");
+
+  prepare_spinbutton(balance_in, "");
+  prepare_spinbutton(balance_out, "");
+  prepare_spinbutton(sc_level, "");
+  prepare_spinbutton(sbal, "");
+  prepare_spinbutton(mpan, "");
+  prepare_spinbutton(stereo_base, "");
+  prepare_spinbutton(stereo_phase, "");
 }
 
 StereoToolsUi::~StereoToolsUi() {

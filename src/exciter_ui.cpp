@@ -54,8 +54,11 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
   prepare_spinbutton(amount, "dB");
+
   prepare_spinbutton(scope, "Hz");
   prepare_spinbutton(ceil, "Hz");
+
+  prepare_spinbutton(harmonics, "");
 }
 
 ExciterUi::~ExciterUi() {

@@ -324,12 +324,12 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   crossfeed->write(preset_type, json);
   crystalizer->write(preset_type, json);
   deesser->write(preset_type, json);
+  delay->write(preset_type, json);
+  echo_canceller->write(preset_type, json);
+  equalizer->write(preset_type, json);
 
-  // delay->write(preset_type, root);
-
-  // echo_canceller->write(preset_type, root);
-  // equalizer->write(preset_type, root);
   // exciter->write(preset_type, root);
+
   // filter->write(preset_type, root);
   // gate->write(preset_type, root);
   // limiter->write(preset_type, root);

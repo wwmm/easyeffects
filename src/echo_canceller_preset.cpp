@@ -27,21 +27,17 @@ EchoCancellerPreset::EchoCancellerPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/echocanceller/");
 }
 
-// void EchoCancellerPreset::save(boost::property_tree::ptree& root,
-//                                const std::string& section,
-//                                const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".echo_canceller.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".echo_canceller.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".echo_canceller.frame-size", settings->get_int("frame-size"));
-
-//   root.put(section + ".echo_canceller.filter-length", settings->get_int("filter-length"));
-// }
-
 void EchoCancellerPreset::save(nlohmann::json& json,
                                const std::string& section,
-                               const Glib::RefPtr<Gio::Settings>& settings) {}
+                               const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["echo_canceller"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["echo_canceller"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["echo_canceller"]["frame-size"] = settings->get_int("frame-size");
+
+  json[section]["echo_canceller"]["filter-length"] = settings->get_int("filter-length");
+}
 
 void EchoCancellerPreset::load(const nlohmann::json& json,
                                const std::string& section,

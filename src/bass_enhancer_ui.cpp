@@ -54,8 +54,11 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
   prepare_spinbutton(amount, "dB");
+
   prepare_spinbutton(scope, "Hz");
   prepare_spinbutton(floor, "Hz");
+
+  prepare_spinbutton(harmonics, "");
 }
 
 BassEnhancerUi::~BassEnhancerUi() {
