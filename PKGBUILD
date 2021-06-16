@@ -1,5 +1,3 @@
-# Maintainer: Bleuzen <supgesu@gmail.com>
-# Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
