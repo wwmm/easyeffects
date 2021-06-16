@@ -24,8 +24,6 @@
 #include <glibmm.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
 #include <filesystem>
 #include <fstream>
 #include <memory>
