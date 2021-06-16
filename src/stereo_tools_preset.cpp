@@ -27,49 +27,45 @@ StereoToolsPreset::StereoToolsPreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/stereotools/");
 }
 
-// void StereoToolsPreset::save(boost::property_tree::ptree& root,
-//                              const std::string& section,
-//                              const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".stereo_tools.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".stereo_tools.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".stereo_tools.balance-in", settings->get_double("balance-in"));
-
-//   root.put(section + ".stereo_tools.balance-out", settings->get_double("balance-out"));
-
-//   root.put(section + ".stereo_tools.softclip", settings->get_boolean("softclip"));
-
-//   root.put(section + ".stereo_tools.mutel", settings->get_boolean("mutel"));
-
-//   root.put(section + ".stereo_tools.muter", settings->get_boolean("muter"));
-
-//   root.put(section + ".stereo_tools.phasel", settings->get_boolean("phasel"));
-
-//   root.put(section + ".stereo_tools.phaser", settings->get_boolean("phaser"));
-
-//   root.put(section + ".stereo_tools.mode", settings->get_string("mode"));
-
-//   root.put(section + ".stereo_tools.side-level", settings->get_double("slev"));
-
-//   root.put(section + ".stereo_tools.side-balance", settings->get_double("sbal"));
-
-//   root.put(section + ".stereo_tools.middle-level", settings->get_double("mlev"));
-
-//   root.put(section + ".stereo_tools.middle-panorama", settings->get_double("mpan"));
-
-//   root.put(section + ".stereo_tools.stereo-base", settings->get_double("stereo-base"));
-
-//   root.put(section + ".stereo_tools.delay", settings->get_double("delay"));
-
-//   root.put(section + ".stereo_tools.sc-level", settings->get_double("sc-level"));
-
-//   root.put(section + ".stereo_tools.stereo-phase", settings->get_double("stereo-phase"));
-// }
-
 void StereoToolsPreset::save(nlohmann::json& json,
                              const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {}
+                             const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["stereo_tools"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["stereo_tools"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["stereo_tools"]["balance-in"] = settings->get_double("balance-in");
+
+  json[section]["stereo_tools"]["balance-out"] = settings->get_double("balance-out");
+
+  json[section]["stereo_tools"]["softclip"] = settings->get_boolean("softclip");
+
+  json[section]["stereo_tools"]["mutel"] = settings->get_boolean("mutel");
+
+  json[section]["stereo_tools"]["muter"] = settings->get_boolean("muter");
+
+  json[section]["stereo_tools"]["phasel"] = settings->get_boolean("phasel");
+
+  json[section]["stereo_tools"]["phaser"] = settings->get_boolean("phaser");
+
+  json[section]["stereo_tools"]["mode"] = settings->get_string("mode").c_str();
+
+  json[section]["stereo_tools"]["side-level"] = settings->get_double("slev");
+
+  json[section]["stereo_tools"]["side-balance"] = settings->get_double("sbal");
+
+  json[section]["stereo_tools"]["middle-level"] = settings->get_double("mlev");
+
+  json[section]["stereo_tools"]["middle-panorama"] = settings->get_double("mpan");
+
+  json[section]["stereo_tools"]["stereo-base"] = settings->get_double("stereo-base");
+
+  json[section]["stereo_tools"]["delay"] = settings->get_double("delay");
+
+  json[section]["stereo_tools"]["sc-level"] = settings->get_double("sc-level");
+
+  json[section]["stereo_tools"]["stereo-phase"] = settings->get_double("stereo-phase");
+}
 
 void StereoToolsPreset::load(const nlohmann::json& json,
                              const std::string& section,

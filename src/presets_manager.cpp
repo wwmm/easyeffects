@@ -338,14 +338,13 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   pitch->write(preset_type, json);
   reverb->write(preset_type, json);
   rnnoise->write(preset_type, json);
+  stereo_tools->write(preset_type, json);
 
-  // stereo_tools->write(preset_type, root);
+  std::ofstream o(output_file.string());
 
-  // std::ofstream o(output_file.string());
+  o << std::setw(4) << json << std::endl;
 
-  // o << std::setw(4) << json << std::endl;
-
-  std::cout << std::setw(4) << json << std::endl;
+  // std::cout << std::setw(4) << json << std::endl;
 
   util::debug(log_tag + "saved preset: " + output_file.string());
 }
