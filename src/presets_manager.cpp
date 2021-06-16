@@ -365,8 +365,7 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
 void PresetsManager::load(PresetType preset_type, const std::string& name) {
   nlohmann::json json;
 
-  std::vector<Glib::ustring> input_plugins;
-  std::vector<Glib::ustring> output_plugins;
+  std::vector<Glib::ustring> plugins;
 
   std::vector<std::filesystem::path> conf_dirs;
 
@@ -377,12 +376,15 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
   switch (preset_type) {
     case PresetType::output: {
       conf_dirs.emplace_back(user_output_dir);
+
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + ".json"};
+
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
+
           break;
         }
       }
@@ -398,7 +400,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
-                output_plugins.emplace_back(p);
+                plugins.emplace_back(p);
 
                 break;
               }
@@ -406,12 +408,12 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
 
         } catch (const nlohmann::json::exception& e) {
-          output_plugins.clear();
+          plugins.clear();
 
           util::warning(log_tag + e.what());
         }
 
-        soe_settings->set_string_array("plugins", output_plugins);
+        soe_settings->set_string_array("plugins", plugins);
       } else {
         util::debug("can't found the preset " + name + " on the filesystem");
       }
@@ -420,12 +422,15 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
     }
     case PresetType::input: {
       conf_dirs.emplace_back(user_input_dir);
+
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + ".json"};
+
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
+
           break;
         }
       }
@@ -441,7 +446,7 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           for (const auto& p : j_plugins_order) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
-                input_plugins.emplace_back(p);
+                plugins.emplace_back(p);
 
                 break;
               }
@@ -449,12 +454,12 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
           }
 
         } catch (const nlohmann::json::exception& e) {
-          input_plugins.clear();
+          plugins.clear();
 
           util::warning(log_tag + e.what());
         }
 
-        sie_settings->set_string_array("plugins", input_plugins);
+        sie_settings->set_string_array("plugins", plugins);
       } else {
         util::debug("can't found the preset " + name + " on the filesystem");
       }
@@ -465,28 +470,53 @@ void PresetsManager::load(PresetType preset_type, const std::string& name) {
 
   load_blocklist(preset_type, json);
 
-  autogain->read(preset_type, json);
-  bass_enhancer->read(preset_type, json);
-  compressor->read(preset_type, json);
-  convolver->read(preset_type, json);
-  crossfeed->read(preset_type, json);
-  crystalizer->read(preset_type, json);
-  deesser->read(preset_type, json);
-  delay->read(preset_type, json);
-  echo_canceller->read(preset_type, json);
-  equalizer->read(preset_type, json);
-  exciter->read(preset_type, json);
-  filter->read(preset_type, json);
-  gate->read(preset_type, json);
-  limiter->read(preset_type, json);
-  loudness->read(preset_type, json);
-  maximizer->read(preset_type, json);
-  multiband_compressor->read(preset_type, json);
-  multiband_gate->read(preset_type, json);
-  pitch->read(preset_type, json);
-  reverb->read(preset_type, json);
-  rnnoise->read(preset_type, json);
-  stereo_tools->read(preset_type, json);
+  for (auto& name : plugins) {
+    if (name == plugin_name::autogain) {
+      autogain->read(preset_type, json);
+    } else if (name == plugin_name::bass_enhancer) {
+      bass_enhancer->read(preset_type, json);
+    } else if (name == plugin_name::compressor) {
+      compressor->read(preset_type, json);
+    } else if (name == plugin_name::convolver) {
+      convolver->read(preset_type, json);
+    } else if (name == plugin_name::crossfeed) {
+      crossfeed->read(preset_type, json);
+    } else if (name == plugin_name::crystalizer) {
+      crystalizer->read(preset_type, json);
+    } else if (name == plugin_name::deesser) {
+      deesser->read(preset_type, json);
+    } else if (name == plugin_name::delay) {
+      delay->read(preset_type, json);
+    } else if (name == plugin_name::echo_canceller) {
+      echo_canceller->read(preset_type, json);
+    } else if (name == plugin_name::equalizer) {
+      equalizer->read(preset_type, json);
+    } else if (name == plugin_name::exciter) {
+      exciter->read(preset_type, json);
+    } else if (name == plugin_name::filter) {
+      filter->read(preset_type, json);
+    } else if (name == plugin_name::gate) {
+      gate->read(preset_type, json);
+    } else if (name == plugin_name::limiter) {
+      limiter->read(preset_type, json);
+    } else if (name == plugin_name::loudness) {
+      loudness->read(preset_type, json);
+    } else if (name == plugin_name::maximizer) {
+      maximizer->read(preset_type, json);
+    } else if (name == plugin_name::multiband_compressor) {
+      multiband_compressor->read(preset_type, json);
+    } else if (name == plugin_name::multiband_gate) {
+      multiband_gate->read(preset_type, json);
+    } else if (name == plugin_name::pitch) {
+      pitch->read(preset_type, json);
+    } else if (name == plugin_name::reverb) {
+      reverb->read(preset_type, json);
+    } else if (name == plugin_name::rnnoise) {
+      rnnoise->read(preset_type, json);
+    } else if (name == plugin_name::stereo_tools) {
+      stereo_tools->read(preset_type, json);
+    }
+  }
 
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
