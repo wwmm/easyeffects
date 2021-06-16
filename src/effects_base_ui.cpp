@@ -57,8 +57,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   entry_plugins_search = builder->get_widget<Gtk::SearchEntry>("entry_plugins_search");
   stack_plugins = builder->get_widget<Gtk::Stack>("stack_plugins");
 
-  stack_top_model = stack_top->get_pages();
-
   add_plugins_to_stack_plugins();
 
   // configuring widgets

@@ -58,8 +58,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   Gtk::MenuButton* presets_menu_button = nullptr;
   Gtk::ToggleButton *toggle_output = nullptr, *toggle_input = nullptr, *toggle_pipe_info = nullptr;
 
-  Glib::RefPtr<Gtk::SelectionModel> stack_model;
-
   std::vector<sigc::connection> connections;
 
   PresetsMenuUi* presets_menu_ui = nullptr;

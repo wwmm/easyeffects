@@ -55,8 +55,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // signals
 
-  stack_model = stack->get_pages();
-
   toggle_output->signal_toggled().connect([&, this]() {
     if (toggle_output->get_active()) {
       stack->get_pages()->select_item(0, true);

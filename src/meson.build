@@ -117,7 +117,6 @@ easyeffects_deps = [
 	dependency('lilv-0', version: '>=0.22'),
 	dependency('lv2', version: '>=1.18.2'),
 	dependency('libbs2b'),
-	dependency('boost', version: '>=1.72', modules:['filesystem']),
 	dependency('sndfile'),
 	dependency('fftw3f'),
 	dependency('libebur128',version: '>=1.2.0'),

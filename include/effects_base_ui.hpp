@@ -121,8 +121,6 @@ class EffectsBaseUi {
 
   Gtk::SearchEntry* entry_plugins_search = nullptr;
 
-  Glib::RefPtr<Gtk::SelectionModel> stack_top_model;
-
   Glib::RefPtr<NodeInfoHolder> players_holder;
 
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> players_model, all_players_model;
