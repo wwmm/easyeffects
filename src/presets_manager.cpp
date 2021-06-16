@@ -278,17 +278,19 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
 
   std::filesystem::path output_file;
 
+  std::vector<Glib::ustring> plugins;
+
   save_blocklist(preset_type, json);
 
   switch (preset_type) {
     case PresetType::output: {
-      std::vector<Glib::ustring> output_plugins = soe_settings->get_string_array("plugins");
+      plugins = soe_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
-      list.reserve(output_plugins.size());
+      list.reserve(plugins.size());
 
-      for (const auto& p : output_plugins) {
+      for (const auto& p : plugins) {
         list.emplace_back(p);
       }
 
@@ -299,13 +301,13 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
       break;
     }
     case PresetType::input: {
-      std::vector<Glib::ustring> input_plugins = sie_settings->get_string_array("plugins");
+      plugins = sie_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
-      list.reserve(input_plugins.size());
+      list.reserve(plugins.size());
 
-      for (const auto& p : input_plugins) {
+      for (const auto& p : plugins) {
         list.emplace_back(p);
       }
 
@@ -317,28 +319,53 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
     }
   }
 
-  autogain->write(preset_type, json);
-  bass_enhancer->write(preset_type, json);
-  compressor->write(preset_type, json);
-  convolver->write(preset_type, json);
-  crossfeed->write(preset_type, json);
-  crystalizer->write(preset_type, json);
-  deesser->write(preset_type, json);
-  delay->write(preset_type, json);
-  echo_canceller->write(preset_type, json);
-  equalizer->write(preset_type, json);
-  exciter->write(preset_type, json);
-  filter->write(preset_type, json);
-  gate->write(preset_type, json);
-  limiter->write(preset_type, json);
-  loudness->write(preset_type, json);
-  maximizer->write(preset_type, json);
-  multiband_compressor->write(preset_type, json);
-  multiband_gate->write(preset_type, json);
-  pitch->write(preset_type, json);
-  reverb->write(preset_type, json);
-  rnnoise->write(preset_type, json);
-  stereo_tools->write(preset_type, json);
+  for (auto& name : plugins) {
+    if (name == plugin_name::autogain) {
+      autogain->write(preset_type, json);
+    } else if (name == plugin_name::bass_enhancer) {
+      bass_enhancer->write(preset_type, json);
+    } else if (name == plugin_name::compressor) {
+      compressor->write(preset_type, json);
+    } else if (name == plugin_name::convolver) {
+      convolver->write(preset_type, json);
+    } else if (name == plugin_name::crossfeed) {
+      crossfeed->write(preset_type, json);
+    } else if (name == plugin_name::crystalizer) {
+      crystalizer->write(preset_type, json);
+    } else if (name == plugin_name::deesser) {
+      deesser->write(preset_type, json);
+    } else if (name == plugin_name::delay) {
+      delay->write(preset_type, json);
+    } else if (name == plugin_name::echo_canceller) {
+      echo_canceller->write(preset_type, json);
+    } else if (name == plugin_name::equalizer) {
+      equalizer->write(preset_type, json);
+    } else if (name == plugin_name::exciter) {
+      exciter->write(preset_type, json);
+    } else if (name == plugin_name::filter) {
+      filter->write(preset_type, json);
+    } else if (name == plugin_name::gate) {
+      gate->write(preset_type, json);
+    } else if (name == plugin_name::limiter) {
+      limiter->write(preset_type, json);
+    } else if (name == plugin_name::loudness) {
+      loudness->write(preset_type, json);
+    } else if (name == plugin_name::maximizer) {
+      maximizer->write(preset_type, json);
+    } else if (name == plugin_name::multiband_compressor) {
+      multiband_compressor->write(preset_type, json);
+    } else if (name == plugin_name::multiband_gate) {
+      multiband_gate->write(preset_type, json);
+    } else if (name == plugin_name::pitch) {
+      pitch->write(preset_type, json);
+    } else if (name == plugin_name::reverb) {
+      reverb->write(preset_type, json);
+    } else if (name == plugin_name::rnnoise) {
+      rnnoise->write(preset_type, json);
+    } else if (name == plugin_name::stereo_tools) {
+      stereo_tools->write(preset_type, json);
+    }
+  }
 
   std::ofstream o(output_file.string());
 
