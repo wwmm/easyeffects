@@ -497,6 +497,7 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   if (std::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
       std::filesystem::path out_path;
+
       auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
       out_path = user_dir / p.filename();
@@ -511,14 +512,17 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
 }
 
 void PresetsManager::add_autoload(const std::string& device, const std::string& name) {
-  boost::property_tree::ptree root;
+  nlohmann::json json;
+
   std::filesystem::path output_file;
 
   output_file = autoload_dir / std::filesystem::path{device + ".json"};
 
-  root.put("name", name);
+  std::ofstream o(output_file.string());
 
-  boost::property_tree::write_json(output_file.string(), root);
+  json["name"] = name;
+
+  o << std::setw(4) << json << std::endl;
 
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
@@ -527,11 +531,13 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
   auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
 
   if (std::filesystem::is_regular_file(input_file)) {
-    boost::property_tree::ptree root;
+    nlohmann::json json;
 
-    boost::property_tree::read_json(input_file.string(), root);
+    std::ifstream is(input_file);
 
-    auto current_autoload = root.get<std::string>("name", "");
+    is >> json;
+
+    auto current_autoload = json.value("name", "");
 
     if (current_autoload == name) {
       std::filesystem::remove(input_file);
@@ -545,11 +551,13 @@ auto PresetsManager::find_autoload(const std::string& device) -> std::string {
   auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
 
   if (std::filesystem::is_regular_file(input_file)) {
-    boost::property_tree::ptree root;
+    nlohmann::json json;
 
-    boost::property_tree::read_json(input_file.string(), root);
+    std::ifstream is(input_file);
 
-    return root.get<std::string>("name", "");
+    is >> json;
+
+    return json.value("name", "");
   }
 
   return "";
@@ -581,10 +589,12 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
   switch (preset_type) {
     case PresetType::output: {
       conf_dirs.emplace_back(user_output_dir);
+
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + ".json"};
+
         if (std::filesystem::exists(input_file)) {
           return true;
         }
@@ -594,10 +604,12 @@ auto PresetsManager::preset_file_exists(PresetType preset_type, const std::strin
     }
     case PresetType::input: {
       conf_dirs.emplace_back(user_input_dir);
+
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
         input_file = dir / std::filesystem::path{name + ".json"};
+
         if (std::filesystem::exists(input_file)) {
           return true;
         }
