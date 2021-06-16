@@ -27,27 +27,23 @@ PitchPreset::PitchPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.pitch", "/com/github/wwmm/easyeffects/streamoutputs/pitch/");
 }
 
-// void PitchPreset::save(boost::property_tree::ptree& root,
-//                        const std::string& section,
-//                        const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".pitch.input-gain", settings->get_double("input-gain"));
+void PitchPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["pitch"]["input-gain"] = settings->get_double("input-gain");
 
-//   root.put(section + ".pitch.output-gain", settings->get_double("output-gain"));
+  json[section]["pitch"]["output-gain"] = settings->get_double("output-gain");
 
-//   root.put(section + ".pitch.cents", settings->get_int("cents"));
+  json[section]["pitch"]["cents"] = settings->get_int("cents");
 
-//   root.put(section + ".pitch.semitones", settings->get_int("semitones"));
+  json[section]["pitch"]["semitones"] = settings->get_int("semitones");
 
-//   root.put(section + ".pitch.octaves", settings->get_int("octaves"));
+  json[section]["pitch"]["octaves"] = settings->get_int("octaves");
 
-//   root.put(section + ".pitch.crispness", settings->get_int("crispness"));
+  json[section]["pitch"]["crispness"] = settings->get_int("crispness");
 
-//   root.put(section + ".pitch.formant-preserving", settings->get_boolean("formant-preserving"));
+  json[section]["pitch"]["formant-preserving"] = settings->get_boolean("formant-preserving");
 
-//   root.put(section + ".pitch.faster", settings->get_boolean("faster"));
-// }
-
-void PitchPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {}
+  json[section]["pitch"]["faster"] = settings->get_boolean("faster");
+}
 
 void PitchPreset::load(const nlohmann::json& json,
                        const std::string& section,

@@ -27,19 +27,15 @@ RNNoisePreset::RNNoisePreset() {
                                           "/com/github/wwmm/easyeffects/streamoutputs/rnnoise/");
 }
 
-// void RNNoisePreset::save(boost::property_tree::ptree& root,
-//                          const std::string& section,
-//                          const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".rnnoise.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".rnnoise.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".rnnoise.model-path", settings->get_string("model-path"));
-// }
-
 void RNNoisePreset::save(nlohmann::json& json,
                          const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {}
+                         const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["rnnoise"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["rnnoise"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["rnnoise"]["model-path"] = settings->get_string("model-path").c_str();
+}
 
 void RNNoisePreset::load(const nlohmann::json& json,
                          const std::string& section,

@@ -334,12 +334,11 @@ void PresetsManager::save(PresetType preset_type, const std::string& name) {
   loudness->write(preset_type, json);
   maximizer->write(preset_type, json);
   multiband_compressor->write(preset_type, json);
+  multiband_gate->write(preset_type, json);
+  pitch->write(preset_type, json);
+  reverb->write(preset_type, json);
+  rnnoise->write(preset_type, json);
 
-  // multiband_gate->write(preset_type, root);
-
-  // pitch->write(preset_type, root);
-  // reverb->write(preset_type, root);
-  // rnnoise->write(preset_type, root);
   // stereo_tools->write(preset_type, root);
 
   // std::ofstream o(output_file.string());

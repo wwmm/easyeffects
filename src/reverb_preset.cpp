@@ -27,33 +27,28 @@ ReverbPreset::ReverbPreset() {
       Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streamoutputs/reverb/");
 }
 
-// void ReverbPreset::save(boost::property_tree::ptree& root,
-//                         const std::string& section,
-//                         const Glib::RefPtr<Gio::Settings>& settings) {
-//   root.put(section + ".reverb.input-gain", settings->get_double("input-gain"));
-
-//   root.put(section + ".reverb.output-gain", settings->get_double("output-gain"));
-
-//   root.put(section + ".reverb.room-size", settings->get_string("room-size"));
-
-//   root.put(section + ".reverb.decay-time", settings->get_double("decay-time"));
-
-//   root.put(section + ".reverb.hf-damp", settings->get_double("hf-damp"));
-
-//   root.put(section + ".reverb.diffusion", settings->get_double("diffusion"));
-
-//   root.put(section + ".reverb.amount", settings->get_double("amount"));
-
-//   root.put(section + ".reverb.dry", settings->get_double("dry"));
-
-//   root.put(section + ".reverb.predelay", settings->get_double("predelay"));
-
-//   root.put(section + ".reverb.bass-cut", settings->get_double("bass-cut"));
-
-//   root.put(section + ".reverb.treble-cut", settings->get_double("treble-cut"));
-// }
-
 void ReverbPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["reverb"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["reverb"]["output-gain"] = settings->get_double("output-gain");
+
+  json[section]["reverb"]["room-size"] = settings->get_string("room-size").c_str();
+
+  json[section]["reverb"]["decay-time"] = settings->get_double("decay-time");
+
+  json[section]["reverb"]["hf-damp"] = settings->get_double("hf-damp");
+
+  json[section]["reverb"]["diffusion"] = settings->get_double("diffusion");
+
+  json[section]["reverb"]["amount"] = settings->get_double("amount");
+
+  json[section]["reverb"]["dry"] = settings->get_double("dry");
+
+  json[section]["reverb"]["predelay"] = settings->get_double("predelay");
+
+  json[section]["reverb"]["bass-cut"] = settings->get_double("bass-cut");
+
+  json[section]["reverb"]["treble-cut"] = settings->get_double("treble-cut");
 }
 
 void ReverbPreset::load(const nlohmann::json& json,
