@@ -140,21 +140,23 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 }
 
 void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
-  // bool want_to_play = false;
+  bool want_to_play = false;
 
-  // for (const auto& link : pm->list_links) {
-  //   if (link.input_node_id == pm->pe_sink_node.id) {
-  //     if (link.state == PW_LINK_STATE_ACTIVE) {
-  //       want_to_play = true;
+  for (const auto& link : pm->list_links) {
+    if (link.input_node_id == pm->pe_sink_node.id) {
+      if (link.state == PW_LINK_STATE_ACTIVE) {
+        want_to_play = true;
 
-  //       break;
-  //     }
-  //   }
-  // }
+        break;
+      }
+    }
+  }
 
-  // if (want_to_play != apps_want_to_play) {
-  //   apps_want_to_play = want_to_play;
-  // }
+  if (want_to_play) {
+    connect_filters();
+  } else {
+    disconnect_filters();
+  }
 }
 
 void StreamOutputEffects::connect_filters() {

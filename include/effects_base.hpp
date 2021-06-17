@@ -89,8 +89,6 @@ class EffectsBase {
  protected:
   Glib::RefPtr<Gio::Settings> settings, global_settings;
 
-  bool apps_want_to_play = false;
-
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies;

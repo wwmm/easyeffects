@@ -157,10 +157,10 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
     }
   }
 
-  if (want_to_play != apps_want_to_play) {
-    apps_want_to_play = want_to_play;
-
-    // update_pipeline_state();
+  if (want_to_play) {
+    connect_filters();
+  } else {
+    disconnect_filters();
   }
 }
 
