@@ -200,7 +200,7 @@ void PresetsManager::add(PresetType preset_type, const Glib::ustring& name) {
     }
   }
 
-  save(preset_type, name);
+  save_preset_file(preset_type, name);
 }
 
 void PresetsManager::save_blocklist(PresetType preset_type, nlohmann::json& json) {
@@ -273,7 +273,7 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
   }
 }
 
-void PresetsManager::save(PresetType preset_type, const std::string& name) {
+void PresetsManager::save_preset_file(PresetType preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
@@ -389,7 +389,7 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
   }
 }
 
-void PresetsManager::load(PresetType preset_type, const std::string& name) {
+void PresetsManager::load_preset_file(PresetType preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::vector<Glib::ustring> plugins;
@@ -626,7 +626,7 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
   if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device);
 
-    load(preset_type, name);
+    load_preset_file(preset_type, name);
 
     switch (preset_type) {
       case PresetType::output:

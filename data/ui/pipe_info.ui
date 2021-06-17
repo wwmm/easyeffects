@@ -12,7 +12,7 @@
                 <property name="hexpand">1</property>
                 <property name="vexpand">1</property>
                 <property name="transition_duration">250</property>
-                <property name="transition_type">slide-left-right</property>
+                <property name="transition_type">slide-up-down</property>
                 <property name="margin_start">6</property>
                 <property name="margin_end">6</property>
                 <property name="margin_top">6</property>
@@ -246,6 +246,114 @@
                                                 </layout>
                                             </object>
                                         </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_presets_autoloading</property>
+                        <property name="title" translatable="yes">Presets Autoloading</property>
+                        <property name="child">
+                            <object class="GtkBox">
+                                <property name="spacing">12</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                    <object class="GtkStack" id="stack_presets_autoloading">
+                                        <property name="hexpand">1</property>
+                                        <property name="vexpand">1</property>
+                                        <property name="transition_duration">250</property>
+                                        <property name="transition_type">slide-left-right</property>
+                                        <property name="margin_start">6</property>
+                                        <property name="margin_end">6</property>
+                                        <property name="margin_top">6</property>
+                                        <property name="margin_bottom">6</property>
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">page_output</property>
+                                                <property name="title" translatable="yes">Output</property>
+                                                <property name="child">
+                                                    <object class="GtkBox">
+                                                        <property name="spacing">6</property>
+                                                        <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkGrid">
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">start</property>
+                                                                <property name="row-spacing">12</property>
+                                                                <property name="column-spacing">6</property>
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="dropdown_autoloading_output_devices">
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">0</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="dropdown_autoloading_output_presets">
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">page_input</property>
+                                                <property name="title" translatable="yes">Input</property>
+                                                <property name="child">
+                                                    <object class="GtkBox">
+                                                        <property name="spacing">6</property>
+                                                        <property name="orientation">vertical</property>
+                                                        <child>
+                                                            <object class="GtkGrid">
+                                                                <property name="halign">start</property>
+                                                                <property name="valign">start</property>
+                                                                <property name="row-spacing">12</property>
+                                                                <property name="column-spacing">6</property>
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="dropdown_autoloading_input_devices">
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">0</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkDropDown" id="dropdown_autoloading_input_presets">
+                                                                        <layout>
+                                                                            <property name="column">0</property>
+                                                                            <property name="row">1</property>
+                                                                        </layout>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkStackSwitcher">
+                                        <property name="halign">center</property>
+                                        <property name="valign">end</property>
+                                        <property name="stack">stack_presets_autoloading</property>
                                     </object>
                                 </child>
                             </object>

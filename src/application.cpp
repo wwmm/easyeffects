@@ -66,11 +66,11 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
       util::debug(log_tag + "failed to load preset: " + name);
     } else {
       if (presets_manager->preset_file_exists(PresetType::input, name)) {
-        presets_manager->load(PresetType::input, name);
+        presets_manager->load_preset_file(PresetType::input, name);
       }
 
       if (presets_manager->preset_file_exists(PresetType::output, name)) {
-        presets_manager->load(PresetType::output, name);
+        presets_manager->load_preset_file(PresetType::output, name);
       }
     }
   } else if (options->contains("reset")) {

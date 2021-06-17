@@ -47,6 +47,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
   dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
+  dropdown_autoloading_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_output_devices");
+  dropdown_autoloading_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_input_devices");
 
   listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
   listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
@@ -60,6 +62,28 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
+  setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
+  setup_dropdown_devices(dropdown_autoloading_input_devices, input_devices_model);
+
+  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
+    if (dropdown_input_devices->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
+
+    sie_settings->set_string("input-device", holder->info.name);
+  });
+
+  dropdown_output_devices->property_selected_item().signal_changed().connect([=, this]() {
+    if (dropdown_output_devices->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+
+    soe_settings->set_string("output-device", holder->info.name);
+  });
 
   // setting the displayed entry to the right value
 
@@ -244,22 +268,6 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
   auto factory = Gtk::SignalListItemFactory::create();
 
   dropdown->set_factory(factory);
-
-  // setting the item selection callback
-
-  dropdown->property_selected_item().signal_changed().connect([=, this]() {
-    if (dropdown->get_selected_item() == nullptr) {
-      return;
-    }
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown->get_selected_item());
-
-    if (holder->info.media_class == "Audio/Sink") {
-      soe_settings->set_string("output-device", holder->info.name);
-    } else if (holder->info.media_class == "Audio/Source") {
-      sie_settings->set_string("input-device", holder->info.name);
-    }
-  });
 
   // setting the factory callbacks
 

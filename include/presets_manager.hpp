@@ -72,11 +72,11 @@ class PresetsManager {
 
   void add(PresetType preset_type, const Glib::ustring& name);
 
-  void save(PresetType preset_type, const std::string& name);
+  void save_preset_file(PresetType preset_type, const std::string& name);
 
   void remove(PresetType preset_type, const std::string& name);
 
-  void load(PresetType preset_type, const std::string& name);
+  void load_preset_file(PresetType preset_type, const std::string& name);
 
   void import(PresetType preset_type, const std::string& file_path);
 

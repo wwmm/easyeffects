@@ -306,11 +306,11 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
           break;
       }
 
-      app->presets_manager->load(preset_type, name);
+      app->presets_manager->load_preset_file(preset_type, name);
     });
 
     auto connection_save =
-        save->signal_clicked().connect([=, this]() { app->presets_manager->save(preset_type, name); });
+        save->signal_clicked().connect([=, this]() { app->presets_manager->save_preset_file(preset_type, name); });
 
     auto connection_autoload = autoload->signal_toggled().connect([=, this]() {
       switch (preset_type) {
