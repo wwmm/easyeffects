@@ -9,7 +9,7 @@ url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=('gtkmm-4.0' 'glibmm-2.68' 'pipewire' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json')
-makedepends=('meson' 'itstool' 'appstream-glib' 'calf' 'zam-plugins')
+makedepends=('meson' 'itstool' 'appstream-glib')
 optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'lsp-plugins: equalizer, delay'
             'zam-plugins: maximizer'
