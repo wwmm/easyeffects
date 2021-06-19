@@ -19,15 +19,21 @@
 
 #include "pipe_info_ui.hpp"
 
-PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr)
+PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
+                       const Glib::RefPtr<Gtk::Builder>& builder,
+                       PipeManager* pm_ptr,
+                       PresetsManager* presets_manager)
     : Gtk::Box(cobject),
       pm(pm_ptr),
+      presets_manager(presets_manager),
       sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
       soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
       input_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
-      clients_model(Gio::ListStore<ClientInfoHolder>::create()) {
+      clients_model(Gio::ListStore<ClientInfoHolder>::create()),
+      output_presets_string_list(Gtk::StringList::create({"initial_value"})),
+      input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
   for (const auto& node : pm->list_nodes) {
     if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
       continue;
@@ -228,6 +234,48 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
     }
   });
 
+  presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+    output_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
+  });
+
+  presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+    int count = 0;
+    auto name = output_presets_string_list->get_string(count);
+
+    while (name.c_str() != nullptr) {
+      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+        output_presets_string_list->remove(count);
+
+        return;
+      }
+
+      count++;
+
+      name = output_presets_string_list->get_string(count);
+    }
+  });
+
+  presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+    input_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
+  });
+
+  presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+    int count = 0;
+    auto name = input_presets_string_list->get_string(count);
+
+    while (name.c_str() != nullptr) {
+      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+        input_presets_string_list->remove(count);
+
+        return;
+      }
+
+      count++;
+
+      name = input_presets_string_list->get_string(count);
+    }
+  });
+
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
   server_rate->set_text(pm->default_clock_rate);
@@ -247,10 +295,10 @@ PipeInfoUi::~PipeInfoUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi* {
+auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi* {
   auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm);
+  auto* ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm, presets_manager);
 
   auto stack_page = stack->add(*ui, "pipe_info");
 

@@ -45,8 +45,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
-  pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get());
-  // PipeSettingsUi::add_to_stack(stack_menu_settings, app);
+  pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
 
   presets_menu_button->set_popover(*presets_menu_ui);
 

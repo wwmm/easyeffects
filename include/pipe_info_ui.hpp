@@ -26,22 +26,28 @@
 #include <fstream>
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
+#include "presets_manager.hpp"
 
 class PipeInfoUi : public Gtk::Box {
  public:
-  PipeInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PipeManager* pm_ptr);
+  PipeInfoUi(BaseObjectType* cobject,
+             const Glib::RefPtr<Gtk::Builder>& builder,
+             PipeManager* pm_ptr,
+             PresetsManager* presets_manager);
   PipeInfoUi(const PipeInfoUi&) = delete;
   auto operator=(const PipeInfoUi&) -> PipeInfoUi& = delete;
   PipeInfoUi(const PipeInfoUi&&) = delete;
   auto operator=(const PipeInfoUi&&) -> PipeInfoUi& = delete;
   ~PipeInfoUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm) -> PipeInfoUi*;
+  static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi*;
 
  private:
   std::string log_tag = "pipe_info: ";
 
   PipeManager* pm = nullptr;
+
+  PresetsManager* presets_manager = nullptr;
 
   Gtk::Stack* stack = nullptr;
 
@@ -78,9 +84,14 @@ class PipeInfoUi : public Gtk::Box {
 
   Glib::RefPtr<Gio::ListStore<ClientInfoHolder>> clients_model;
 
+  Glib::RefPtr<Gtk::StringList> output_presets_string_list;
+
+  Glib::RefPtr<Gtk::StringList> input_presets_string_list;
+
   std::vector<sigc::connection> connections;
 
-  void setup_dropdown_devices(Gtk::DropDown* dropdown, const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model);
+  static void setup_dropdown_devices(Gtk::DropDown* dropdown,
+                                     const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model);
 
   void setup_listview_modules();
 
