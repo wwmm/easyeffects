@@ -247,6 +247,9 @@ void on_node_event_param(void* object,
                   case SPA_AUDIO_FORMAT_F64_LE:
                     format_str = "F64LE";
                     break;
+                  case SPA_AUDIO_FORMAT_F32P:
+                    format_str = "F32P";
+                    break;
                   default:
                     format_str = std::to_string(format);
                     // util::warning(format_str + " " + std::to_string(SPA_AUDIO_FORMAT_F32_LE));
@@ -755,11 +758,11 @@ void on_registry_global(void* data,
         return;
       }
 
-      pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
+      if (std::strcmp(name, "default") == 0) {
+        pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
-      pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
-
-      return;
+        pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+      }
     }
 
     return;

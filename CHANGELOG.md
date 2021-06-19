@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [5.0.4]
+
+### Added
+
+- Improved compatibility with PipeWire `0.3.31` (still to be released)
+
 ## [5.0.3]
 
 ### Added
