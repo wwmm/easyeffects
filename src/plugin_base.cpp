@@ -23,7 +23,7 @@
 
 namespace {
 
-void on_state_changed(GSettings* settings, gchar* key, PluginBase* l) {
+void on_state_changed(GSettings* settings, const gchar* key, PluginBase* l) {
   if (l->plugin_is_installed) {
     int enable = g_settings_get_boolean(settings, key);
 

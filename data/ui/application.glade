@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.1 -->
+<!-- Generated with glade 3.38.2 -->
 <interface domain="pulseeffects">
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkImage" id="image_bypass">
@@ -25,6 +25,7 @@
   </object>
   <object class="GtkApplicationWindow" id="ApplicationUi">
     <property name="can-focus">False</property>
+    <property name="icon-name">pulseeffects</property>
     <child>
       <object class="GtkStack" id="stack">
         <property name="visible">True</property>
