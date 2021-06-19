@@ -34,7 +34,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
-    d->pb->sample_duration = static_cast<float>(n_samples) / rate;
+    d->pb->sample_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
 
     d->pb->setup();
   }
@@ -68,18 +68,25 @@ void on_process(void* userdata, spa_io_position* position) {
 void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa_pod* param) {
   auto* d = static_cast<PluginBase::data*>(data);
 
-  // util::warning(std::to_string(id));
-
   switch (id) {
     case SPA_PARAM_Latency: {
-      util::warning("oi");
-
       if (spa_latency_parse(param, &d->pb->latency_info) < 0) {
         break;
       }
 
-      util::warning(std::to_string(d->pb->latency_info.min_ns));
-      util::warning(std::to_string(d->pb->latency_info.max_ns));
+      // util::warning(d->pb->log_tag + d->pb->name);
+      // util::warning(std::to_string(d->pb->latency_info.min_ns));
+      // util::warning(std::to_string(d->pb->latency_info.max_ns));
+      // util::warning(std::to_string(d->pb->latency_info.min_rate));
+      // util::warning(std::to_string(d->pb->latency_info.max_rate));
+      // util::warning(std::to_string(d->pb->latency_info.min_quantum));
+      // util::warning(std::to_string(d->pb->latency_info.max_quantum));
+
+      // if (d->pb->latency_info.direction == SPA_DIRECTION_INPUT) {
+      //   util::warning("direction: input");
+      // } else {
+      //   util::warning("direction: output");
+      // }
 
       // std::array<char, 1024> buffer{};
 

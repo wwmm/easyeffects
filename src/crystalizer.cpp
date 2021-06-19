@@ -257,11 +257,24 @@ void Crystalizer::process(std::span<float>& left_in,
     }
 
     if (notify_latency) {
-      latency = static_cast<float>(latency_n_frames) / rate;
+      latency = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
       util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
 
       Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+
+      // std::array<char, 1024> buffer{};
+
+      // spa_pod_builder b{};
+
+      // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+      // latency_info.min_ns = static_cast<uint64_t>(latency * 1000000000.0F);
+      // latency_info.max_ns = static_cast<uint64_t>(latency * 1000000000.0F);
+
+      // const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
+
+      // pw_filter_update_params(filter, nullptr, &param, 1);
 
       notify_latency = false;
     }

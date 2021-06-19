@@ -122,7 +122,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // reading the current configured irs file
 
-  auto f = [=, this]() { get_irs_info(); };
+  auto f = [=, this]() {
+    std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
+
+    get_irs_info();
+  };
 
   auto future = std::async(std::launch::async, f);
 
@@ -133,7 +137,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   */
 
   connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    auto f = [=, this]() { get_irs_info(); };
+    auto f = [=, this]() {
+      std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
+
+      get_irs_info();
+    };
 
     auto future = std::async(std::launch::async, f);
 
@@ -401,8 +409,6 @@ void ConvolverUi::on_import_irs_clicked() {
 }
 
 void ConvolverUi::get_irs_info() {
-  std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
-
   auto path = settings->get_string("kernel-path");
 
   if (path.c_str() == nullptr) {
@@ -566,7 +572,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   auto* complex_output = fftwf_alloc_complex(real_input.size());
 
-  auto* plan = fftwf_plan_dft_r2c_1d(real_input.size(), real_input.data(), complex_output, FFTW_ESTIMATE);
+  auto* plan =
+      fftwf_plan_dft_r2c_1d(static_cast<int>(real_input.size()), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   fftwf_execute(plan);
 
@@ -613,7 +620,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   freq_axis.resize(left_spectrum.size());
 
   for (uint n = 0; n < left_spectrum.size(); n++) {
-    freq_axis[n] = 0.5F * static_cast<float>(rate) * n / left_spectrum.size();
+    freq_axis[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(left_spectrum.size());
   }
 
   // initializing the logarithmic frequency axis
