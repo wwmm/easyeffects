@@ -55,6 +55,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
   dropdown_autoloading_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_output_devices");
   dropdown_autoloading_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_input_devices");
+  dropdown_autoloading_output_presets = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_output_presets");
+  dropdown_autoloading_input_presets = builder->get_widget<Gtk::DropDown>("dropdown_autoloading_input_presets");
 
   listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
   listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
@@ -70,6 +72,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
   setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
   setup_dropdown_devices(dropdown_autoloading_input_devices, input_devices_model);
+
+  setup_dropdown_presets(PresetType::input, input_presets_string_list);
+  setup_dropdown_presets(PresetType::output, output_presets_string_list);
 
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
     if (dropdown_input_devices->get_selected_item() == nullptr) {
@@ -354,6 +359,80 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
     } else if (holder->info.media_class == "Audio/Source") {
       icon->set_from_icon_name("audio-input-microphone-symbolic");
     }
+
+    label->set_name(name);
+    label->set_text(name);
+  });
+}
+
+void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefPtr<Gtk::StringList>& string_list) {
+  Gtk::DropDown* dropdown = nullptr;
+
+  switch (preset_type) {
+    case PresetType::input:
+      dropdown = dropdown_autoloading_input_presets;
+
+      break;
+    case PresetType::output:
+      dropdown = dropdown_autoloading_output_presets;
+
+      break;
+  }
+
+  string_list->remove(0);
+
+  auto names = presets_manager->get_names(preset_type);
+
+  for (const auto& name : names) {
+    string_list->append(name);
+  }
+
+  // sorter
+
+  auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+
+  // setting the dropdown model and factory
+
+  auto selection_model = Gtk::SingleSelection::create(sort_list_model);
+
+  dropdown->set_model(selection_model);
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* icon = Gtk::make_managed<Gtk::Image>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    icon->set_from_icon_name("emblem-system-symbolic");
+
+    box->set_spacing(6);
+    box->append(*icon);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+    list_item->set_data("icon", icon);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
+
+    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(name);

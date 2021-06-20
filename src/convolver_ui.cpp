@@ -122,30 +122,22 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // reading the current configured irs file
 
-  auto f = [=, this]() {
+  std::jthread jt{[this]() {
     std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
     get_irs_info();
-  };
-
-  auto future = std::async(std::launch::async, f);
-
-  futures.emplace_back(std::move(future));
+  }};
 
   /* this is necessary to update the interface with the irs info when a preset
      is loaded
   */
 
   connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    auto f = [=, this]() {
+    std::jthread jt{[this]() {
       std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
       get_irs_info();
-    };
-
-    auto future = std::async(std::launch::async, f);
-
-    futures.emplace_back(std::move(future));
+    }};
   }));
 
   folder_monitor = Gio::File::create_for_path(irs_dir.string())->monitor_directory();
@@ -185,8 +177,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 }
 
 ConvolverUi::~ConvolverUi() {
-  futures.clear();
-
   util::debug(name + " ui destroyed");
 }
 

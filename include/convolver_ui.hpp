@@ -24,11 +24,11 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <filesystem>
-#include <future>
 #include <mutex>
 #include <numbers>
 #include <ranges>
 #include <sndfile.hh>
+#include <thread>
 #include "plot.hpp"
 #include "plugin_ui_base.hpp"
 
@@ -88,8 +88,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 
   std::mutex lock_guard_irs_info;
-
-  std::vector<std::future<void>> futures;
 
   void setup_listview();
 

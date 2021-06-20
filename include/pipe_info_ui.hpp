@@ -66,6 +66,10 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::DropDown* dropdown_autoloading_input_devices = nullptr;
 
+  Gtk::DropDown* dropdown_autoloading_output_presets = nullptr;
+
+  Gtk::DropDown* dropdown_autoloading_input_presets = nullptr;
+
   Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
 
   Glib::RefPtr<Gio::Settings> sie_settings;
@@ -92,6 +96,8 @@ class PipeInfoUi : public Gtk::Box {
 
   static void setup_dropdown_devices(Gtk::DropDown* dropdown,
                                      const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model);
+
+  void setup_dropdown_presets(PresetType preset_type, const Glib::RefPtr<Gtk::StringList>& string_list);
 
   void setup_listview_modules();
 

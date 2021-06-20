@@ -281,7 +281,7 @@
                                                         <property name="orientation">vertical</property>
                                                         <child>
                                                             <object class="GtkGrid">
-                                                                <property name="halign">start</property>
+                                                                <property name="halign">center</property>
                                                                 <property name="valign">start</property>
                                                                 <property name="row-spacing">12</property>
                                                                 <property name="column-spacing">6</property>
@@ -302,6 +302,42 @@
                                                                         </layout>
                                                                     </object>
                                                                 </child>
+
+                                                                <child>
+                                                                    <object class="GtkButton" id="autoloading_add_output_profile">
+                                                                        <property name="tooltip_text" translatable="yes">Create Association</property>
+                                                                        <property name="halign">center</property>
+                                                                        <property name="valign">center</property>
+                                                                        <property name="icon_name">list-add-symbolic</property>
+                                                                        <layout>
+                                                                            <property name="column">1</property>
+                                                                            <property name="row">0</property>
+                                                                            <property name="row-span">2</property>
+                                                                        </layout>
+                                                                        <style>
+                                                                            <class name="suggested-action" />
+                                                                        </style>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkFrame">
+                                                                <child>
+                                                                    <object class="GtkScrolledWindow">
+                                                                        <child>
+                                                                            <object class="GtkListView" id="listview_autoloading_output">
+                                                                                <property name="vexpand">1</property>
+                                                                                <property name="hexpand">1</property>
+                                                                                <property name="show-separators">1</property>
+                                                                                <style>
+                                                                                    <class name="rich-list" />
+                                                                                </style>
+                                                                            </object>
+                                                                        </child>
+                                                                    </object>
+                                                                </child>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -319,7 +355,7 @@
                                                         <property name="orientation">vertical</property>
                                                         <child>
                                                             <object class="GtkGrid">
-                                                                <property name="halign">start</property>
+                                                                <property name="halign">center</property>
                                                                 <property name="valign">start</property>
                                                                 <property name="row-spacing">12</property>
                                                                 <property name="column-spacing">6</property>
@@ -338,6 +374,41 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
+                                                                    </object>
+                                                                </child>
+
+                                                                <child>
+                                                                    <object class="GtkButton" id="autoloading_add_input_profile">
+                                                                        <property name="tooltip_text" translatable="yes">Create Association</property>
+                                                                        <property name="halign">center</property>
+                                                                        <property name="valign">center</property>
+                                                                        <property name="icon_name">list-add-symbolic</property>
+                                                                        <layout>
+                                                                            <property name="column">1</property>
+                                                                            <property name="row">0</property>
+                                                                            <property name="row-span">2</property>
+                                                                        </layout>
+                                                                        <style>
+                                                                            <class name="suggested-action" />
+                                                                        </style>
+                                                                    </object>
+                                                                </child>
+                                                            </object>
+                                                        </child>
+
+                                                        <child>
+                                                            <object class="GtkFrame">
+                                                                <child>
+                                                                    <object class="GtkScrolledWindow">
+                                                                        <child>
+                                                                            <object class="GtkListView" id="listview_autoloading_input">
+                                                                                <property name="vexpand">1</property>
+                                                                                <property name="show-separators">1</property>
+                                                                                <style>
+                                                                                    <class name="rich-list" />
+                                                                                </style>
+                                                                            </object>
+                                                                        </child>
                                                                     </object>
                                                                 </child>
                                                             </object>
