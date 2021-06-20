@@ -32,6 +32,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       output_devices_model(Gio::ListStore<NodeInfoHolder>::create()),
       modules_model(Gio::ListStore<ModuleInfoHolder>::create()),
       clients_model(Gio::ListStore<ClientInfoHolder>::create()),
+      autoloading_output_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
+      autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
   for (const auto& node : pm->list_nodes) {
@@ -60,6 +62,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   listview_modules = builder->get_widget<Gtk::ListView>("listview_modules");
   listview_clients = builder->get_widget<Gtk::ListView>("listview_clients");
+  listview_autoloading_output = builder->get_widget<Gtk::ListView>("listview_autoloading_output");
+  listview_autoloading_input = builder->get_widget<Gtk::ListView>("listview_autoloading_input");
 
   header_version = builder->get_widget<Gtk::Label>("header_version");
   library_version = builder->get_widget<Gtk::Label>("library_version");
@@ -75,6 +79,12 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   setup_dropdown_presets(PresetType::input, input_presets_string_list);
   setup_dropdown_presets(PresetType::output, output_presets_string_list);
+
+  setup_listview_autoloading(listview_autoloading_output, autoloading_output_model);
+  setup_listview_autoloading(listview_autoloading_input, autoloading_input_model);
+
+  setup_listview_modules();
+  setup_listview_clients();
 
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
     if (dropdown_input_devices->get_selected_item() == nullptr) {
@@ -133,9 +143,6 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       }
     }
   }
-
-  setup_listview_modules();
-  setup_listview_clients();
 
   stack->connect_property_changed("visible-child", sigc::mem_fun(*this, &PipeInfoUi::on_stack_visible_child_changed));
 
@@ -423,20 +430,29 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
     // setting list_item data
 
     list_item->set_data("name", label);
-    list_item->set_data("icon", icon);
 
     list_item->set_child(*box);
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(name);
   });
+}
+
+void PipeInfoUi::setup_listview_autoloading(Gtk::ListView* listview,
+                                            const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model) {
+  // setting the listview model and factory
+
+  listview->set_model(Gtk::NoSelection::create(model));
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  listview->set_factory(factory);
 }
 
 void PipeInfoUi::setup_listview_modules() {

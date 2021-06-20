@@ -70,7 +70,13 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::DropDown* dropdown_autoloading_input_presets = nullptr;
 
-  Gtk::ListView *listview_modules = nullptr, *listview_clients = nullptr;
+  Gtk::ListView* listview_modules = nullptr;
+
+  Gtk::ListView* listview_clients = nullptr;
+
+  Gtk::ListView* listview_autoloading_output = nullptr;
+
+  Gtk::ListView* listview_autoloading_input = nullptr;
 
   Glib::RefPtr<Gio::Settings> sie_settings;
 
@@ -82,11 +88,19 @@ class PipeInfoUi : public Gtk::Box {
 
   Glib::RefPtr<ClientInfoHolder> clients_holder;
 
+  Glib::RefPtr<PresetsAutoloadingHolder> autoloading_output_holder;
+
+  Glib::RefPtr<PresetsAutoloadingHolder> autoloading_input_holder;
+
   Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model, output_devices_model;
 
   Glib::RefPtr<Gio::ListStore<ModuleInfoHolder>> modules_model;
 
   Glib::RefPtr<Gio::ListStore<ClientInfoHolder>> clients_model;
+
+  Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>> autoloading_output_model;
+
+  Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>> autoloading_input_model;
 
   Glib::RefPtr<Gtk::StringList> output_presets_string_list;
 
@@ -102,6 +116,9 @@ class PipeInfoUi : public Gtk::Box {
   void setup_listview_modules();
 
   void setup_listview_clients();
+
+  void setup_listview_autoloading(Gtk::ListView* listview,
+                                  const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model);
 
   void update_modules_info();
 
