@@ -258,15 +258,18 @@ void Convolver::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
 
-    if (notify_latency) {
-      latency = static_cast<float>(latency_n_frames) / rate;
+    // if (notify_latency) {
+    //   latency = static_cast<float>(latency_n_frames) / rate;
 
-      util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
+    //   util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
 
-      Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
+    //   Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
 
-      notify_latency = false;
-    }
+    //   notify_latency = false;
+
+    //   latency_info.min_ns = static_cast<uint64_t>(latency * 1000000000.0F);
+    //   latency_info.max_ns = static_cast<uint64_t>(latency * 1000000000.0F);
+    // }
   }
 }
 

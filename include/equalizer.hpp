@@ -54,6 +54,8 @@ class Equalizer : public PluginBase {
 
   uint max_bands = 32;
 
+  uint latency_n_frames = 0;
+
   void bind_band(const int& index);
 };
 

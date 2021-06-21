@@ -62,7 +62,9 @@ class PluginBase {
     PluginBase* pb = nullptr;
   };
 
-  spa_latency_info latency_info{};
+  spa_latency_info chain_latency_info{};
+
+  spa_latency_info plugin_latency_info{};
 
   std::string log_tag, name;
 
@@ -110,6 +112,8 @@ class PluginBase {
 
   spa_hook listener{};
 
+  data pf_data = {};
+
   float input_gain = 1.0F;
   float output_gain = 1.0F;
 
@@ -128,8 +132,6 @@ class PluginBase {
   static void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain);
 
  private:
-  data pf_data = {};
-
   uint node_id = 0;
 
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;

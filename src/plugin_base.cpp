@@ -70,33 +70,39 @@ void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa
 
   switch (id) {
     case SPA_PARAM_Latency: {
-      if (spa_latency_parse(param, &d->pb->latency_info) < 0) {
+      spa_latency_info latency_info{};
+
+      if (spa_latency_parse(param, &d->pb->chain_latency_info) < 0) {
         break;
       }
 
+      latency_info.min_ns = d->pb->chain_latency_info.min_ns + d->pb->plugin_latency_info.min_ns;
+      latency_info.max_ns = d->pb->chain_latency_info.max_ns + d->pb->plugin_latency_info.max_ns;
+
       // util::warning(d->pb->log_tag + d->pb->name);
-      // util::warning(std::to_string(d->pb->latency_info.min_ns));
-      // util::warning(std::to_string(d->pb->latency_info.max_ns));
+      // util::warning(std::to_string(latency_info.min_ns));
+      // util::warning(std::to_string(latency_info.max_ns));
       // util::warning(std::to_string(d->pb->latency_info.min_rate));
       // util::warning(std::to_string(d->pb->latency_info.max_rate));
       // util::warning(std::to_string(d->pb->latency_info.min_quantum));
       // util::warning(std::to_string(d->pb->latency_info.max_quantum));
 
-      // if (d->pb->latency_info.direction == SPA_DIRECTION_INPUT) {
+      // if (latency_info.direction == SPA_DIRECTION_INPUT) {
       //   util::warning("direction: input");
       // } else {
       //   util::warning("direction: output");
       // }
 
-      // std::array<char, 1024> buffer{};
+      std::array<char, 1024> buffer{};
 
-      // spa_pod_builder b{};
+      spa_pod_builder b{};
 
-      // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+      spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
 
-      // const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
+      const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
 
-      // pw_filter_update_params(filter, nullptr, &param, 1);
+      pw_filter_update_params(d->pb->filter, d->in_left, &param, 1);
+      pw_filter_update_params(d->pb->filter, d->in_right, &param, 1);
 
       break;
     }
