@@ -1,0 +1,69 @@
+<interface domain="easyeffects">
+    <object class="GtkBox" id="top_box">
+        <property name="spacing">6</property>
+        <property name="margin_start">6</property>
+        <property name="margin_end">6</property>
+        <child>
+            <object class="GtkGrid">
+                <property name="valign">center</property>
+                <property name="hexpand">1</property>
+                <property name="row-spacing">6</property>
+                <property name="column-spacing">6</property>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Device</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="device">
+                        <property name="halign">start</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">Preset</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkLabel" id="preset_name">
+                        <property name="halign">start</property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkButton" id="remove">
+                <property name="tooltip_text" translatable="yes">Remove</property>
+                <property name="halign">end</property>
+                <property name="valign">center</property>
+                <property name="icon_name">user-trash-symbolic</property>
+            </object>
+        </child>
+    </object>
+</interface>

@@ -5,6 +5,7 @@
         <file>ui/application_window.ui</file>
         <file>ui/app_info.ui</file>
         <file>ui/autogain.ui</file>
+        <file>ui/autoload_row.ui</file>
         <file>ui/bass_enhancer.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>

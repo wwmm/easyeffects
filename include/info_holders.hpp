@@ -42,14 +42,14 @@ class ClientInfoHolder : public Glib::Object {
 
 class PresetsAutoloadingHolder : public Glib::Object {
  public:
-  std::string device_name;
+  std::string device;
   std::string preset_name;
 
-  static auto create(const std::string& device_name, const std::string& preset_name)
+  static auto create(const std::string& device, const std::string& preset_name)
       -> Glib::RefPtr<PresetsAutoloadingHolder>;
 
  protected:
-  PresetsAutoloadingHolder(std::string device_name, std::string preset_name);
+  PresetsAutoloadingHolder(std::string device, std::string preset_name);
 };
 
 #endif

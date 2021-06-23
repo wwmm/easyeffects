@@ -74,14 +74,15 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
-  setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
+
   setup_dropdown_devices(dropdown_autoloading_input_devices, input_devices_model);
+  setup_dropdown_devices(dropdown_autoloading_output_devices, output_devices_model);
 
   setup_dropdown_presets(PresetType::input, input_presets_string_list);
   setup_dropdown_presets(PresetType::output, output_presets_string_list);
 
-  setup_listview_autoloading(listview_autoloading_output, autoloading_output_model);
-  setup_listview_autoloading(listview_autoloading_input, autoloading_input_model);
+  setup_listview_autoloading(PresetType::input, listview_autoloading_input, autoloading_input_model);
+  setup_listview_autoloading(PresetType::output, listview_autoloading_output, autoloading_output_model);
 
   setup_listview_modules();
   setup_listview_clients();
@@ -444,8 +445,18 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
   });
 }
 
-void PipeInfoUi::setup_listview_autoloading(Gtk::ListView* listview,
+void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
+                                            Gtk::ListView* listview,
                                             const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model) {
+  auto profiles = presets_manager->get_autoload_profiles(preset_type);
+
+  for (const auto& json : profiles) {
+    std::string device = json.value("device", "");
+    std::string preset_name = json.value("preset-name", "");
+
+    model->append(PresetsAutoloadingHolder::create(device, preset_name));
+  }
+
   // setting the listview model and factory
 
   listview->set_model(Gtk::NoSelection::create(model));
@@ -453,6 +464,45 @@ void PipeInfoUi::setup_listview_autoloading(Gtk::ListView* listview,
   auto factory = Gtk::SignalListItemFactory::create();
 
   listview->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
+
+    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+
+    list_item->set_data("device", b->get_widget<Gtk::Label>("device"));
+    list_item->set_data("preset_name", b->get_widget<Gtk::Label>("preset_name"));
+    list_item->set_data("remove", b->get_widget<Gtk::Button>("remove"));
+
+    list_item->set_child(*top_box);
+  });
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* device = static_cast<Gtk::Label*>(list_item->get_data("device"));
+    auto* preset_name = static_cast<Gtk::Label*>(list_item->get_data("preset_name"));
+    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+
+    auto holder = std::dynamic_pointer_cast<PresetsAutoloadingHolder>(list_item->get_item());
+
+    device->set_text(holder->device);
+    preset_name->set_text(holder->preset_name);
+
+    auto connection_remove =
+        remove->signal_clicked().connect([=, this]() { presets_manager->remove(preset_type, holder->device); });
+
+    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                        Glib::destroy_notify_delete<sigc::connection>);
+  });
+
+  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
+      connection->disconnect();
+
+      list_item->set_data("connection_remove", nullptr);
+    }
+  });
 }
 
 void PipeInfoUi::setup_listview_modules() {

@@ -188,6 +188,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
       it++;
     }
   } catch (std::exception& e) {
+    util::warning(e.what());
   }
 
   return names;
@@ -577,7 +578,8 @@ void PresetsManager::add_autoload(const std::string& device, const std::string& 
 
   std::ofstream o(output_file.string());
 
-  json["name"] = name;
+  json["device"] = device;
+  json["preset-name"] = name;
 
   o << std::setw(4) << json << std::endl;
 
@@ -594,7 +596,7 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
 
     is >> json;
 
-    auto current_autoload = json.value("name", "");
+    auto current_autoload = json.value("preset-name", "");
 
     if (current_autoload == name) {
       std::filesystem::remove(input_file);
@@ -614,7 +616,7 @@ auto PresetsManager::find_autoload(const std::string& device) -> std::string {
 
     is >> json;
 
-    return json.value("name", "");
+    return json.value("preset-name", "");
   }
 
   return "";
@@ -636,6 +638,35 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
         settings->set_string("last-used-input-preset", name);
         break;
     }
+  }
+}
+
+auto PresetsManager::get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json> {
+  auto it = std::filesystem::directory_iterator{autoload_dir};
+  std::vector<nlohmann::json> list;
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status())) {
+        if (it->path().extension().string() == ".json") {
+          nlohmann::json json;
+
+          std::ifstream is(autoload_dir / it->path());
+
+          is >> json;
+
+          list.emplace_back(json);
+        }
+      }
+
+      it++;
+    }
+
+    return list;
+  } catch (std::exception& e) {
+    util::warning(log_tag + e.what());
+
+    return list;
   }
 }
 

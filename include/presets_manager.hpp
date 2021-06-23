@@ -88,6 +88,8 @@ class PresetsManager {
 
   void autoload(PresetType preset_type, const std::string& device);
 
+  auto get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json>;
+
   auto preset_file_exists(PresetType preset_type, const std::string& name) -> bool;
 
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_created;

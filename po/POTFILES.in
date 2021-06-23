@@ -5,6 +5,7 @@ data/ui/about.glade.in
 data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.ui
+data/ui/autoload_row.ui
 data/ui/bass_enhancer.ui
 data/ui/client_info.ui
 data/ui/compressor.ui
