@@ -248,6 +248,16 @@ auto StreamInputEffects::disconnect_filters() -> uint {
 }
 
 void StreamInputEffects::set_bypass(const bool& state) {
+  /*
+    If bypass is enable to do touch the plugin pipeline
+  */
+
+  if (bypass) {
+    return;
+  }
+
+  bypass = state;
+
   if (state) {
     disconnect_filters();
 

@@ -34,6 +34,8 @@ class StreamInputEffects : public EffectsBase {
   void set_bypass(const bool& state);
 
  private:
+  bool bypass = false;
+
   void connect_filters();
 
   auto disconnect_filters() -> uint;
