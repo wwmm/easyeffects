@@ -155,24 +155,16 @@ void Equalizer::process(std::span<float>& left_in,
 
     Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
 
-    plugin_latency_info.min_ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
-    plugin_latency_info.max_ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    // std::array<char, 1024> buffer{};
 
-    spa_latency_info latency_info{};
+    // spa_pod_builder b{};
 
-    latency_info.min_ns = chain_latency_info.min_ns + plugin_latency_info.min_ns;
-    latency_info.max_ns = chain_latency_info.max_ns + plugin_latency_info.max_ns;
+    // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
 
-    std::array<char, 1024> buffer{};
+    // const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
 
-    spa_pod_builder b{};
-
-    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
-
-    const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
-
-    pw_filter_update_params(filter, pf_data.in_left, &param, 1);
-    pw_filter_update_params(filter, pf_data.in_right, &param, 1);
+    // pw_filter_update_params(filter, pf_data.in_left, &param, 1);
+    // pw_filter_update_params(filter, pf_data.in_right, &param, 1);
   }
 
   if (post_messages) {

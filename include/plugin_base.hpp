@@ -62,10 +62,6 @@ class PluginBase {
     PluginBase* pb = nullptr;
   };
 
-  spa_latency_info chain_latency_info{};
-
-  spa_latency_info plugin_latency_info{};
-
   std::string log_tag, name;
 
   pw_filter* filter = nullptr;

@@ -145,6 +145,14 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
     return;
   }
 
+  /*
+    If bypass is enable to do touch the plugin pipeline
+  */
+
+  if (bypass) {
+    return;
+  }
+
   bool want_to_play = false;
 
   for (const auto& link : pm->list_links) {
@@ -248,14 +256,6 @@ auto StreamInputEffects::disconnect_filters() -> uint {
 }
 
 void StreamInputEffects::set_bypass(const bool& state) {
-  /*
-    If bypass is enable to do touch the plugin pipeline
-  */
-
-  if (bypass) {
-    return;
-  }
-
   bypass = state;
 
   if (state) {
