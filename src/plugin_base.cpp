@@ -74,7 +74,7 @@ void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa
       break;
     }
     case SPA_PARAM_Latency: {
-      spa_latency_info latency_info{};
+      // spa_latency_info latency_info{};
 
       // if (spa_latency_parse(param, &d->pb->chain_latency_info) < 0) {
       //   break;
