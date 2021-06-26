@@ -500,8 +500,8 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
     device->set_text(holder->device);
     preset_name->set_text(holder->preset_name);
 
-    auto connection_remove =
-        remove->signal_clicked().connect([=, this]() { presets_manager->remove(preset_type, holder->device); });
+    auto connection_remove = remove->signal_clicked().connect(
+        [=, this]() { presets_manager->remove_autoload(preset_type, holder->device, holder->preset_name); });
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);

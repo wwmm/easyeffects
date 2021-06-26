@@ -381,6 +381,7 @@ void PresetsManager::save_preset_file(PresetType preset_type, const std::string&
 
 void PresetsManager::remove(PresetType preset_type, const std::string& name) {
   std::filesystem::path preset_file;
+
   auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
   preset_file = user_dir / std::filesystem::path{name + ".json"};
