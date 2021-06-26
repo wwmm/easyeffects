@@ -329,6 +329,19 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
   });
 
+  presets_manager->autoload_input_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
+    std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
+
+    for (const auto& json : profiles) {
+      std::string device = json.value("device", "");
+      std::string preset_name = json.value("preset-name", "");
+
+      list.emplace_back(PresetsAutoloadingHolder::create(device, preset_name));
+    }
+
+    autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
+  });
+
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
   server_rate->set_text(pm->default_clock_rate);
