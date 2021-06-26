@@ -97,6 +97,9 @@ class PresetsManager {
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_input_preset_created;
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_input_preset_removed;
 
+  sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_input_profiles_changed;
+  sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
+
  private:
   std::string log_tag = "presets_manager: ";
 
@@ -107,6 +110,8 @@ class PresetsManager {
   Glib::RefPtr<Gio::Settings> settings, soe_settings, sie_settings;
 
   Glib::RefPtr<Gio::FileMonitor> user_output_monitor, user_input_monitor;
+
+  Glib::RefPtr<Gio::FileMonitor> autoload_output_monitor, autoload_input_monitor;
 
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<BassEnhancerPreset> bass_enhancer;

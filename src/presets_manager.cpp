@@ -115,11 +115,54 @@ PresetsManager::PresetsManager()
             break;
         }
       });
+
+  autoload_input_monitor = Gio::File::create_for_path(autoload_input_dir.string())->monitor_directory();
+
+  autoload_input_monitor->signal_changed().connect(
+      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+        auto profiles = get_autoload_profiles(PresetType::input);
+
+        switch (event) {
+          case Gio::FileMonitor::Event::CREATED: {
+            autoload_input_profiles_changed.emit(profiles);
+            break;
+          }
+          case Gio::FileMonitor::Event::DELETED: {
+            autoload_input_profiles_changed.emit(profiles);
+            break;
+          }
+          default:
+            break;
+        }
+      });
+
+  autoload_output_monitor = Gio::File::create_for_path(autoload_output_dir.string())->monitor_directory();
+
+  autoload_output_monitor->signal_changed().connect(
+      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+        auto profiles = get_autoload_profiles(PresetType::output);
+
+        switch (event) {
+          case Gio::FileMonitor::Event::CREATED: {
+            autoload_output_profiles_changed.emit(profiles);
+            break;
+          }
+          case Gio::FileMonitor::Event::DELETED: {
+            autoload_output_profiles_changed.emit(profiles);
+            break;
+          }
+          default:
+            break;
+        }
+      });
 }
 
 PresetsManager::~PresetsManager() {
   user_output_monitor->cancel();
   user_input_monitor->cancel();
+
+  autoload_input_monitor->cancel();
+  autoload_output_monitor->cancel();
 
   util::debug(log_tag + "destroyed");
 }

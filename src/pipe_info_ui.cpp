@@ -195,11 +195,27 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   });
 
   autoloading_add_output_profile->signal_clicked().connect([=, this]() {
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+    if (dropdown_autoloading_output_devices->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_autoloading_output_devices->get_selected_item());
 
     auto id = dropdown_autoloading_output_presets->get_selected();
 
     presets_manager->add_autoload(PresetType::output, holder->info.name, output_presets_string_list->get_string(id));
+  });
+
+  autoloading_add_input_profile->signal_clicked().connect([=, this]() {
+    if (dropdown_autoloading_input_devices->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_autoloading_input_devices->get_selected_item());
+
+    auto id = dropdown_autoloading_input_presets->get_selected();
+
+    presets_manager->add_autoload(PresetType::input, holder->info.name, input_presets_string_list->get_string(id));
   });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
@@ -298,6 +314,19 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       name = input_presets_string_list->get_string(count);
     }
+  });
+
+  presets_manager->autoload_output_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
+    std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
+
+    for (const auto& json : profiles) {
+      std::string device = json.value("device", "");
+      std::string preset_name = json.value("preset-name", "");
+
+      list.emplace_back(PresetsAutoloadingHolder::create(device, preset_name));
+    }
+
+    autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
   });
 
   header_version->set_text(pm->header_version);
