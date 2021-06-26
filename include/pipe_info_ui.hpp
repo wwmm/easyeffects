@@ -78,6 +78,10 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::ListView* listview_autoloading_input = nullptr;
 
+  Gtk::Button* autoloading_add_output_profile = nullptr;
+
+  Gtk::Button* autoloading_add_input_profile = nullptr;
+
   Glib::RefPtr<Gio::Settings> sie_settings;
 
   Glib::RefPtr<Gio::Settings> soe_settings;

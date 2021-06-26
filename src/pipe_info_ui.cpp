@@ -65,6 +65,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   listview_autoloading_output = builder->get_widget<Gtk::ListView>("listview_autoloading_output");
   listview_autoloading_input = builder->get_widget<Gtk::ListView>("listview_autoloading_input");
 
+  autoloading_add_input_profile = builder->get_widget<Gtk::Button>("autoloading_add_input_profile");
+  autoloading_add_output_profile = builder->get_widget<Gtk::Button>("autoloading_add_output_profile");
+
   header_version = builder->get_widget<Gtk::Label>("header_version");
   library_version = builder->get_widget<Gtk::Label>("library_version");
   quantum = builder->get_widget<Gtk::Label>("quantum");
@@ -189,6 +192,14 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         }
       }
     }
+  });
+
+  autoloading_add_output_profile->signal_clicked().connect([=, this]() {
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
+
+    auto id = dropdown_autoloading_output_presets->get_selected();
+
+    presets_manager->add_autoload(holder->info.name, output_presets_string_list->get_string(id));
   });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
