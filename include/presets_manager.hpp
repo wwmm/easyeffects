@@ -80,11 +80,11 @@ class PresetsManager {
 
   void import(PresetType preset_type, const std::string& file_path);
 
-  void add_autoload(const std::string& device, const std::string& name);
+  void add_autoload(PresetType preset_type, const std::string& device, const std::string& name);
 
-  void remove_autoload(const std::string& device, const std::string& name);
+  void remove_autoload(PresetType preset_type, const std::string& device, const std::string& name);
 
-  auto find_autoload(const std::string& device) -> std::string;
+  auto find_autoload(PresetType preset_type, const std::string& device) -> std::string;
 
   void autoload(PresetType preset_type, const std::string& device);
 
@@ -100,7 +100,7 @@ class PresetsManager {
  private:
   std::string log_tag = "presets_manager: ";
 
-  std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_dir;
+  std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
 
   std::vector<std::filesystem::path> system_input_dir, system_output_dir;
 

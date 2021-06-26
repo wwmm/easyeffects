@@ -23,7 +23,8 @@ PresetsManager::PresetsManager()
     : user_presets_dir(Glib::get_user_config_dir() + "/easyeffects/"),
       user_input_dir(Glib::get_user_config_dir() + "/easyeffects/input"),
       user_output_dir(Glib::get_user_config_dir() + "/easyeffects/output"),
-      autoload_dir(Glib::get_user_config_dir() + "/easyeffects/autoload"),
+      autoload_input_dir(Glib::get_user_config_dir() + "/easyeffects/autoload/input"),
+      autoload_output_dir(Glib::get_user_config_dir() + "/easyeffects/autoload/output"),
       settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
       soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
       sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
@@ -76,7 +77,8 @@ PresetsManager::PresetsManager()
   create_user_directory(user_presets_dir);
   create_user_directory(user_input_dir);
   create_user_directory(user_output_dir);
-  create_user_directory(autoload_dir);
+  create_user_directory(autoload_input_dir);
+  create_user_directory(autoload_output_dir);
 
   user_output_monitor = Gio::File::create_for_path(user_output_dir.string())->monitor_directory();
 
@@ -569,12 +571,19 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   }
 }
 
-void PresetsManager::add_autoload(const std::string& device, const std::string& name) {
+void PresetsManager::add_autoload(PresetType preset_type, const std::string& device, const std::string& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
 
-  output_file = autoload_dir / std::filesystem::path{device + ".json"};
+  switch (preset_type) {
+    case PresetType::output:
+      output_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      break;
+    case PresetType::input:
+      output_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      break;
+  }
 
   std::ofstream o(output_file.string());
 
@@ -586,8 +595,17 @@ void PresetsManager::add_autoload(const std::string& device, const std::string& 
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
 
-void PresetsManager::remove_autoload(const std::string& device, const std::string& name) {
-  auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
+void PresetsManager::remove_autoload(PresetType preset_type, const std::string& device, const std::string& name) {
+  std::filesystem::path input_file;
+
+  switch (preset_type) {
+    case PresetType::output:
+      input_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      break;
+    case PresetType::input:
+      input_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      break;
+  }
 
   if (std::filesystem::is_regular_file(input_file)) {
     nlohmann::json json;
@@ -606,8 +624,17 @@ void PresetsManager::remove_autoload(const std::string& device, const std::strin
   }
 }
 
-auto PresetsManager::find_autoload(const std::string& device) -> std::string {
-  auto input_file = autoload_dir / std::filesystem::path{device + ".json"};
+auto PresetsManager::find_autoload(PresetType preset_type, const std::string& device) -> std::string {
+  std::filesystem::path input_file;
+
+  switch (preset_type) {
+    case PresetType::output:
+      input_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      break;
+    case PresetType::input:
+      input_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      break;
+  }
 
   if (std::filesystem::is_regular_file(input_file)) {
     nlohmann::json json;
@@ -623,7 +650,7 @@ auto PresetsManager::find_autoload(const std::string& device) -> std::string {
 }
 
 void PresetsManager::autoload(PresetType preset_type, const std::string& device) {
-  auto name = find_autoload(device);
+  auto name = find_autoload(preset_type, device);
 
   if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device);
@@ -642,8 +669,20 @@ void PresetsManager::autoload(PresetType preset_type, const std::string& device)
 }
 
 auto PresetsManager::get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json> {
-  auto it = std::filesystem::directory_iterator{autoload_dir};
+  std::filesystem::path autoload_dir;
   std::vector<nlohmann::json> list;
+
+  switch (preset_type) {
+    case PresetType::output:
+      autoload_dir = autoload_output_dir;
+
+      break;
+    case PresetType::input:
+      autoload_dir = autoload_input_dir;
+      break;
+  }
+
+  auto it = std::filesystem::directory_iterator{autoload_dir};
 
   try {
     while (it != std::filesystem::directory_iterator{}) {

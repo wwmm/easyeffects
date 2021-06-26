@@ -199,7 +199,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto id = dropdown_autoloading_output_presets->get_selected();
 
-    presets_manager->add_autoload(holder->info.name, output_presets_string_list->get_string(id));
+    presets_manager->add_autoload(PresetType::output, holder->info.name, output_presets_string_list->get_string(id));
   });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");

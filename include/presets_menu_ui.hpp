@@ -77,8 +77,6 @@ class PresetsMenuUi : public Gtk::Popover {
 
   void reset_menu_button_label();
 
-  auto is_autoloaded(PresetType preset_type, const std::string& name) -> bool;
-
   void on_show() override;
 };
 

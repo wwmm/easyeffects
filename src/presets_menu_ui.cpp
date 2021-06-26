@@ -275,7 +275,6 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
     list_item->set_data("apply", b->get_widget<Gtk::Button>("apply"));
     list_item->set_data("save", b->get_widget<Gtk::Button>("save"));
-    list_item->set_data("autoload", b->get_widget<Gtk::ToggleButton>("autoload"));
     list_item->set_data("remove", b->get_widget<Gtk::Button>("remove"));
 
     list_item->set_child(*top_box);
@@ -285,16 +284,11 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
     auto* save = static_cast<Gtk::Button*>(list_item->get_data("save"));
-    auto* autoload = static_cast<Gtk::ToggleButton*>(list_item->get_data("autoload"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
-
-    if (is_autoloaded(preset_type, name)) {
-      autoload->set_active(true);
-    }
 
     auto connection_apply = apply->signal_clicked().connect([=, this]() {
       switch (preset_type) {
@@ -312,33 +306,6 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     auto connection_save =
         save->signal_clicked().connect([=, this]() { app->presets_manager->save_preset_file(preset_type, name); });
 
-    auto connection_autoload = autoload->signal_toggled().connect([=, this]() {
-      switch (preset_type) {
-        case PresetType::output: {
-          auto dev_name = app->pm->default_output_device.name;
-
-          if (autoload->get_active()) {
-            app->presets_manager->add_autoload(dev_name, name);
-          } else {
-            app->presets_manager->remove_autoload(dev_name, name);
-          }
-
-          break;
-        }
-        case PresetType::input: {
-          auto dev_name = app->pm->default_input_device.name;
-
-          if (autoload->get_active()) {
-            app->presets_manager->add_autoload(dev_name, name);
-          } else {
-            app->presets_manager->remove_autoload(dev_name, name);
-          }
-
-          break;
-        }
-      }
-    });
-
     auto connection_remove =
         remove->signal_clicked().connect([=, this]() { app->presets_manager->remove(preset_type, name); });
 
@@ -348,15 +315,12 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     list_item->set_data("connection_save", new sigc::connection(connection_save),
                         Glib::destroy_notify_delete<sigc::connection>);
 
-    list_item->set_data("connection_autoload", new sigc::connection(connection_autoload),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_apply", "connection_save", "connection_autoload", "connection_remove"}) {
+    for (const auto* conn : {"connection_apply", "connection_save", "connection_remove"}) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
@@ -391,29 +355,6 @@ void PresetsMenuUi::reset_menu_button_label() {
 
   settings->set_string("last-used-output-preset", _("Presets"));
   settings->set_string("last-used-input-preset", _("Presets"));
-}
-
-auto PresetsMenuUi::is_autoloaded(PresetType preset_type, const std::string& name) -> bool {
-  std::string current_autoload;
-
-  switch (preset_type) {
-    case PresetType::output: {
-      auto dev_name = app->pm->default_output_device.name;
-
-      current_autoload = app->presets_manager->find_autoload(dev_name);
-
-      break;
-    }
-    case PresetType::input: {
-      auto dev_name = app->pm->default_input_device.name;
-
-      current_autoload = app->presets_manager->find_autoload(dev_name);
-
-      break;
-    }
-  }
-
-  return current_autoload == name;
 }
 
 void PresetsMenuUi::on_show() {

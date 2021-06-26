@@ -11,6 +11,7 @@
                 <property name="label">Name</property>
             </object>
         </child>
+
         <child>
             <object class="GtkButton" id="apply">
                 <property name="label" translatable="yes">Load</property>
@@ -18,6 +19,7 @@
                 <property name="valign">center</property>
             </object>
         </child>
+
         <child>
             <object class="GtkButton" id="save">
                 <property name="tooltip_text" translatable="yes">Save current settings to this preset file</property>
@@ -26,12 +28,7 @@
                 <property name="icon_name">document-save-symbolic</property>
             </object>
         </child>
-        <child>
-            <object class="GtkToggleButton" id="autoload">
-                <property name="tooltip_text" translatable="yes">Automatically apply this preset whenever the currently used device is plugged in the system</property>
-                <property name="icon_name">emblem-synchronizing-symbolic</property>
-            </object>
-        </child>
+
         <child>
             <object class="GtkButton" id="remove">
                 <property name="tooltip_text" translatable="yes">Remove this preset file</property>
