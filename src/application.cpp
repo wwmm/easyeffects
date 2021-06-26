@@ -138,21 +138,6 @@ void Application::on_startup() {
 
       soe_settings->set_string("output-device", "");
       soe_settings->set_string("output-device", node.name);
-
-      Glib::signal_timeout().connect_seconds_once(
-          [=, this]() {
-            auto defaul_sink_name = pm->default_output_device.name;
-
-            // checking if after 2 seconds this sink still is the default sink
-            if (node.name == defaul_sink_name) {
-              if (node.name != last_sink_dev_name) {
-                last_sink_dev_name = node.name;
-
-                presets_manager->autoload(PresetType::output, node.name);
-              }
-            }
-          },
-          2);
     }
   });
 
@@ -167,21 +152,6 @@ void Application::on_startup() {
 
       sie_settings->set_string("input-device", "");
       sie_settings->set_string("input-device", node.name);
-
-      Glib::signal_timeout().connect_seconds_once(
-          [=, this]() {
-            auto defaul_source_name = pm->default_input_device.name;
-
-            // checking if after 2 seconds this source still is the default source
-            if (node.name == defaul_source_name) {
-              if (node.name != last_source_dev_name) {
-                last_source_dev_name = node.name;
-
-                presets_manager->autoload(PresetType::input, node.name);
-              }
-            }
-          },
-          2);
     }
   });
 
@@ -191,6 +161,26 @@ void Application::on_startup() {
 
   soe_settings->signal_changed("blocklist").connect([=, this](auto key) {
     pm->blocklist_out = sie_settings->get_string_array("blocklist");
+  });
+
+  soe_settings->signal_changed("output-device").connect([&, this](auto key) {
+    auto name = std::string(soe_settings->get_string(key));
+
+    if (name.empty()) {
+      return;
+    }
+
+    presets_manager->autoload(PresetType::output, name);
+  });
+
+  sie_settings->signal_changed("input-device").connect([&, this](auto key) {
+    auto name = std::string(sie_settings->get_string(key));
+
+    if (name.empty()) {
+      return;
+    }
+
+    presets_manager->autoload(PresetType::input, name);
   });
 
   settings->signal_changed("bypass").connect([=, this](auto key) { update_bypass_state(key); });

@@ -69,10 +69,6 @@ void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa
   auto* d = static_cast<PluginBase::data*>(data);
 
   switch (id) {
-    case SPA_PARAM_ProcessLatency: {
-      util::warning(d->pb->log_tag + d->pb->name);
-      break;
-    }
     case SPA_PARAM_Latency: {
       // spa_latency_info latency_info{};
 
