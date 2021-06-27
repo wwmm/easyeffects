@@ -40,7 +40,7 @@ class StreamOutputEffects : public EffectsBase {
 
   void connect_filters();
 
-  auto disconnect_filters() -> uint;
+  void disconnect_filters();
 
   /*
     Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens

@@ -60,13 +60,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added));
   pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed));
 
-  uint n_disconnected_links = disconnect_filters();
-
-  if (n_disconnected_links != 0) {
-    util::warning(log_tag + "disconnecting " + std::to_string(n_disconnected_links) +
-                  " links in the initialization phase?!");
-  }
-
   connect_filters();
 
   settings->signal_changed("input-device").connect([&, this](auto key) {
@@ -82,10 +75,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
         disconnect_filters();
 
-        pm->destroy_links(list_proxies);
-
-        list_proxies.clear();
-
         connect_filters();
 
         break;
@@ -96,10 +85,6 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   settings->signal_changed("plugins").connect([&, this](auto key) {
     disconnect_filters();
 
-    pm->destroy_links(list_proxies);
-
-    list_proxies.clear();
-
     connect_filters();
   });
 }
@@ -108,10 +93,6 @@ StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 
   disconnect_filters();
-
-  pm->destroy_links(list_proxies);
-
-  list_proxies.clear();
 }
 
 void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
@@ -165,10 +146,14 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
     }
   }
 
-  if (want_to_play) {
-    connect_filters();
-  } else {
+  if (!want_to_play) {
     disconnect_filters();
+
+    return;
+  }
+
+  if (list_proxies.empty()) {
+    connect_filters();
   }
 }
 
@@ -230,7 +215,7 @@ void StreamInputEffects::connect_filters() {
   }
 }
 
-auto StreamInputEffects::disconnect_filters() -> uint {
+void StreamInputEffects::disconnect_filters() {
   std::set<uint> list;
 
   for (auto& plugin : plugins | std::views::values) {
@@ -249,10 +234,12 @@ auto StreamInputEffects::disconnect_filters() -> uint {
   }
 
   for (const auto& id : list) {
-    pm->destroy_object(id);
+    pm->destroy_object(static_cast<int>(id));
   }
 
-  return list.size();
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
 }
 
 void StreamInputEffects::set_bypass(const bool& state) {
@@ -261,19 +248,11 @@ void StreamInputEffects::set_bypass(const bool& state) {
   if (state) {
     disconnect_filters();
 
-    pm->destroy_links(list_proxies);
-
-    list_proxies.clear();
-
     pm->link_nodes(pm->input_device.id, spectrum->get_node_id());
     pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
     pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
   } else {
     disconnect_filters();
-
-    pm->destroy_links(list_proxies);
-
-    list_proxies.clear();
 
     connect_filters();
   }
