@@ -138,6 +138,20 @@ struct ClientInfo {
   std::string api;
 };
 
+struct DeviceInfo {
+  uint id;
+
+  std::string name;
+
+  std::string description;
+
+  std::string nick;
+
+  std::string media_class;
+
+  std::string api;
+};
+
 class PipeManager {
  public:
   PipeManager();
@@ -165,6 +179,8 @@ class PipeManager {
   std::vector<ModuleInfo> list_modules;
 
   std::vector<ClientInfo> list_clients;
+
+  std::vector<DeviceInfo> list_devices;
 
   NodeInfo pe_sink_node, pe_source_node;
 

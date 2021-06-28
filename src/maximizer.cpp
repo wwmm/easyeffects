@@ -109,8 +109,7 @@ void Maximizer::process(std::span<float>& left_in,
 
     // const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
 
-    // pw_filter_update_params(filter, pf_data.in_left, &param, 1);
-    // pw_filter_update_params(filter, pf_data.in_right, &param, 1);
+    // pw_filter_update_params(filter, nullptr, &param, 1);
   }
 
   if (post_messages) {

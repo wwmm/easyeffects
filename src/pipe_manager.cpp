@@ -183,8 +183,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
 
       nd->nd_info.state = info->state;
-      nd->nd_info.n_input_ports = info->n_input_ports;
-      nd->nd_info.n_output_ports = info->n_output_ports;
+      nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
+      nd->nd_info.n_output_ports = static_cast<int>(info->n_output_ports);
 
       if (prio_session != nullptr) {
         nd->nd_info.priority = std::stoi(prio_session);
@@ -550,6 +550,47 @@ void on_destroy_client_proxy(void* data) {
       pd->pm->list_clients.end());
 }
 
+void on_device_info(void* object, const struct pw_device_info* info) {
+  auto* ld = static_cast<proxy_data*>(object);
+
+  for (auto& device : ld->pm->list_devices) {
+    if (device.id == info->id) {
+      const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME);
+      const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME);
+      const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION);
+      const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API);
+
+      if (name != nullptr) {
+        device.name = name;
+      }
+
+      if (nick != nullptr) {
+        device.nick = nick;
+      }
+
+      if (description != nullptr) {
+        device.description = description;
+      }
+
+      if (api != nullptr) {
+        device.api = api;
+      }
+
+      break;
+    }
+  }
+}
+
+void on_destroy_device_proxy(void* data) {
+  auto* pd = static_cast<proxy_data*>(data);
+
+  spa_hook_remove(&pd->proxy_listener);
+
+  pd->pm->list_devices.erase(
+      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(), [=](auto& n) { return n.id == pd->id; }),
+      pd->pm->list_devices.end());
+}
+
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
@@ -653,6 +694,12 @@ const struct pw_proxy_events client_proxy_events = {.destroy = on_destroy_client
                                                     .done = nullptr,
                                                     .error = nullptr};
 
+const struct pw_proxy_events device_proxy_events = {.destroy = on_destroy_device_proxy,
+                                                    .bound = nullptr,
+                                                    .removed = on_removed_proxy,
+                                                    .done = nullptr,
+                                                    .error = nullptr};
+
 const struct pw_proxy_events node_proxy_events = {.destroy = on_destroy_node_proxy,
                                                   .bound = nullptr,
                                                   .removed = on_removed_node_proxy,
@@ -675,6 +722,10 @@ const struct pw_module_events module_events = {
 
 const struct pw_client_events client_events = {
     .info = on_client_info,
+};
+
+const struct pw_device_events device_events = {
+    .info = on_device_info,
 };
 
 void on_registry_global(void* data,
@@ -909,6 +960,34 @@ void on_registry_global(void* data,
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
         pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+      }
+    }
+
+    return;
+  }
+
+  if (strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
+    const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
+
+    if (key_media_class != nullptr) {
+      std::string media_class = key_media_class;
+
+      if (media_class == "Audio/Device") {
+        auto* proxy =
+            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_DEVICE, sizeof(proxy_data)));
+
+        auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+
+        pd->proxy = proxy;
+        pd->pm = pm;
+        pd->id = id;
+
+        pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);
+        pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
+
+        DeviceInfo d_info{.id = id, .media_class = media_class};
+
+        pm->list_devices.emplace_back(d_info);
       }
     }
 
