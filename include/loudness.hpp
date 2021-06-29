@@ -45,6 +45,8 @@ class Loudness : public PluginBase {
   sigc::signal<void(double)> latency;
 
  private:
+  uint latency_n_frames = 0;
+
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 

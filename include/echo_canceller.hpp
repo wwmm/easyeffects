@@ -45,7 +45,7 @@ class EchoCanceller : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  sigc::signal<void(double)> new_latency;
+  sigc::signal<void(double)> latency;
 
  private:
   bool notify_latency = false;
@@ -55,8 +55,6 @@ class EchoCanceller : public PluginBase {
   uint blocksize_ms = 20;
   uint filter_length_ms = 100;
   uint latency_n_frames = 0;
-
-  float latency = 0.0F;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 

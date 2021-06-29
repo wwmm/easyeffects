@@ -39,7 +39,7 @@ class Pitch : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> new_latency;
+  sigc::signal<void(double)> latency;
 
  private:
   bool rubberband_ready = false;
@@ -53,8 +53,6 @@ class Pitch : public PluginBase {
   int octaves = 0;
 
   uint latency_n_frames = 0;
-
-  float latency = 0.0F;
 
   double time_ratio = 1.0;
 
