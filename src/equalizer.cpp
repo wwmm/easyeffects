@@ -155,16 +155,19 @@ void Equalizer::process(std::span<float>& left_in,
 
     Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
 
-    // std::array<char, 1024> buffer{};
+    spa_process_latency_info latency_info{};
 
-    // spa_pod_builder b{};
+    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
 
-    // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+    std::array<char, 1024> buffer{};
 
-    // const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
+    spa_pod_builder b{};
 
-    // pw_filter_update_params(filter, pf_data.in_left, &param, 1);
-    // pw_filter_update_params(filter, pf_data.in_right, &param, 1);
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+    pw_filter_update_params(filter, nullptr, &param, 1);
   }
 
   if (post_messages) {

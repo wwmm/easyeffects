@@ -65,57 +65,7 @@ void on_process(void* userdata, spa_io_position* position) {
   }
 }
 
-void on_param_changed(void* data, void* port_data, uint32_t id, const struct spa_pod* param) {
-  auto* d = static_cast<PluginBase::data*>(data);
-
-  switch (id) {
-    case SPA_PARAM_Latency: {
-      // spa_latency_info latency_info{};
-
-      // if (spa_latency_parse(param, &d->pb->chain_latency_info) < 0) {
-      //   break;
-      // }
-
-      // latency_info.min_ns = d->pb->chain_latency_info.min_ns + d->pb->plugin_latency_info.min_ns;
-      // latency_info.max_ns = d->pb->chain_latency_info.max_ns + d->pb->plugin_latency_info.max_ns;
-      // latency_info.min_quantum = d->pb->chain_latency_info.min_quantum + d->pb->plugin_latency_info.min_quantum;
-      // latency_info.max_quantum = d->pb->chain_latency_info.max_quantum + d->pb->plugin_latency_info.max_quantum;
-      // latency_info.min_rate = d->pb->chain_latency_info.min_rate + d->pb->plugin_latency_info.min_rate;
-      // latency_info.max_rate = d->pb->chain_latency_info.max_rate + d->pb->plugin_latency_info.max_rate;
-
-      util::warning(d->pb->log_tag + d->pb->name);
-      // util::debug(std::to_string(latency_info.min_ns));
-      // util::debug(std::to_string(latency_info.max_ns));
-      // util::debug(std::to_string(latency_info.min_rate));
-      // util::debug(std::to_string(latency_info.max_rate));
-      // util::debug(std::to_string(latency_info.min_quantum));
-      // util::debug(std::to_string(latency_info.max_quantum));
-
-      // if (latency_info.direction == SPA_DIRECTION_INPUT) {
-      //   util::warning("direction: input");
-      // } else {
-      //   util::warning("direction: output");
-      // }
-
-      // std::array<char, 1024> buffer{};
-
-      // spa_pod_builder b{};
-
-      // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
-
-      // const spa_pod* param = spa_latency_build(&b, SPA_PARAM_Latency, &latency_info);
-
-      // pw_filter_update_params(d->pb->filter, d->in_left, &param, 1);
-      // pw_filter_update_params(d->pb->filter, d->in_right, &param, 1);
-
-      break;
-    }
-    default:
-      break;
-  }
-}
-
-const struct pw_filter_events filter_events = {.param_changed = on_param_changed, .process = on_process};
+const struct pw_filter_events filter_events = {.process = on_process};
 
 }  // namespace
 

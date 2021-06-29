@@ -107,7 +107,7 @@ cxx = meson.get_compiler('cpp')
 zita_convolver = cxx.find_library('zita-convolver', required: true)
 
 easyeffects_deps = [
-	dependency('libpipewire-0.3', version: '>=0.3.30'),
+	dependency('libpipewire-0.3', version: '>=0.3.31'),
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('glibmm-2.68', version: '>=2.68'),
 	dependency('gtk4', version: '>=4.2.1'),

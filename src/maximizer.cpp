@@ -97,19 +97,19 @@ void Maximizer::process(std::span<float>& left_in,
 
     Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
 
-    // spa_process_latency_info latency_info{};
+    spa_process_latency_info latency_info{};
 
-    // latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
 
-    // std::array<char, 1024> buffer{};
+    std::array<char, 1024> buffer{};
 
-    // spa_pod_builder b{};
+    spa_pod_builder b{};
 
-    // spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
 
-    // const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
 
-    // pw_filter_update_params(filter, nullptr, &param, 1);
+    pw_filter_update_params(filter, nullptr, &param, 1);
   }
 
   if (post_messages) {
