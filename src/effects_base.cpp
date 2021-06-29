@@ -90,6 +90,48 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(reverb->name, reverb));
   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
+
+  for (auto& key : plugins | std::views::keys) {
+    plugins_latency[key] = 0.0F;
+  }
+
+  compressor->latency.connect([=, this](float v) {
+    plugins_latency[compressor->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  echo_canceller->latency.connect([=, this](float v) {
+    plugins_latency[echo_canceller->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  equalizer->latency.connect([=, this](float v) {
+    plugins_latency[equalizer->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  loudness->latency.connect([=, this](float v) {
+    plugins_latency[loudness->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  maximizer->latency.connect([=, this](float v) {
+    plugins_latency[maximizer->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  pitch->latency.connect([=, this](float v) {
+    plugins_latency[pitch->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  settings->signal_changed("plugins").connect([&, this](auto key) { broadcast_pipeline_latency(); });
 }
 
 EffectsBase::~EffectsBase() {
@@ -106,4 +148,24 @@ void EffectsBase::deactivate_filters() {
   for (auto& plugin : plugins | std::views::values) {
     plugin->set_active(false);
   }
+}
+
+auto EffectsBase::get_pipeline_latency() -> float {
+  auto selected_plugins = settings->get_string_array("plugins");
+
+  float total = 0.0F;
+
+  for (auto& name : selected_plugins) {
+    total += plugins_latency[name];
+  }
+
+  total *= 1000.0F;
+
+  return total;
+}
+
+void EffectsBase::broadcast_pipeline_latency() {
+  float latency_value = get_pipeline_latency();
+
+  util::debug(log_tag + "pipeline latency: " + std::to_string(latency_value) + " ms");
 }

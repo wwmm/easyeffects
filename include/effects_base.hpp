@@ -91,11 +91,17 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
+  std::map<std::string, float> plugins_latency;
+
   std::vector<pw_proxy*> list_proxies;
 
   void activate_filters();
 
   void deactivate_filters();
+
+  auto get_pipeline_latency() -> float;
+
+  void broadcast_pipeline_latency();
 };
 
 #endif
