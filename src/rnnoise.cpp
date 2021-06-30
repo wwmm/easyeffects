@@ -200,6 +200,30 @@ void RNNoise::process(std::span<float>& left_in,
 
   apply_gain(left_out, right_out, output_gain);
 
+  if (notify_latency) {
+    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+
+    spa_process_latency_info latency_info{};
+
+    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+
+    std::array<char, 1024> buffer{};
+
+    spa_pod_builder b{};
+
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+    pw_filter_update_params(filter, nullptr, &param, 1);
+
+    notify_latency = false;
+  }
+
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
@@ -210,19 +234,6 @@ void RNNoise::process(std::span<float>& left_in,
 
       notification_dt = 0.0F;
     }
-
-    // if (notify_latency) {
-    //   latency = static_cast<float>(latency_n_frames) / rate;
-
-    //   util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
-
-    //   Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
-
-    //   notify_latency = false;
-
-    //   latency_info.min_ns = static_cast<uint64_t>(latency * 1000000000.0F);
-    //   latency_info.max_ns = static_cast<uint64_t>(latency * 1000000000.0F);
-    // }
   }
 }
 
@@ -264,8 +275,4 @@ void RNNoise::free_rnnoise() {
   state_left = nullptr;
   state_right = nullptr;
   model = nullptr;
-}
-
-auto RNNoise::get_latency() const -> float {
-  return latency;
 }

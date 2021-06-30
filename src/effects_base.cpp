@@ -143,6 +143,12 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   });
 
+  rnnoise->latency.connect([=, this](float v) {
+    plugins_latency[rnnoise->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
   settings->signal_changed("plugins").connect([&, this](auto key) { broadcast_pipeline_latency(); });
 }
 

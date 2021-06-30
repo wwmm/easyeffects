@@ -41,9 +41,7 @@ class RNNoise : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  auto get_latency() const -> float;
-
-  sigc::signal<void(double)> new_latency;
+  sigc::signal<void(double)> latency;
 
  private:
   bool resample = false;
@@ -55,7 +53,6 @@ class RNNoise : public PluginBase {
   uint rnnoise_rate = 48000;
   uint latency_n_frames = 0;
 
-  float latency = 0.0F;
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
   std::deque<float> deque_out_L, deque_out_R;
