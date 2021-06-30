@@ -169,5 +169,5 @@ void EffectsBase::broadcast_pipeline_latency() {
 
   util::debug(log_tag + "pipeline latency: " + std::to_string(latency_value) + " ms");
 
-  pipeline_latency.emit(latency_value);
+  Glib::signal_idle().connect_once([=, this] { pipeline_latency.emit(latency_value); });
 }

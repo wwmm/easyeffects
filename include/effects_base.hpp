@@ -86,6 +86,8 @@ class EffectsBase {
   std::shared_ptr<RNNoise> rnnoise;
   std::shared_ptr<StereoTools> stereo_tools;
 
+  auto get_pipeline_latency() -> float;
+
   sigc::signal<void(float)> pipeline_latency;
 
  protected:
@@ -100,8 +102,6 @@ class EffectsBase {
   void activate_filters();
 
   void deactivate_filters();
-
-  auto get_pipeline_latency() -> float;
 
   void broadcast_pipeline_latency();
 };

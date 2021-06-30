@@ -178,7 +178,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  effects_base->pipeline_latency.connect([=, this](float v) {
+  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](float v) {
     std::ostringstream str;
 
     str.precision(1);
@@ -186,7 +186,15 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     str << std::fixed << v << " ms" << std::string(5, ' ');
 
     latency_status->set_text(str.str());
-  });
+  }));
+
+  std::ostringstream str;
+
+  str.precision(1);
+
+  str << std::fixed << effects_base->get_pipeline_latency() << " ms" << std::string(5, ' ');
+
+  latency_status->set_text(str.str());
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
