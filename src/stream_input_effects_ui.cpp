@@ -56,7 +56,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
       str.precision(1);
 
-      str << std::fixed << sie->pm->pe_source_node.rate * 0.001F << " kHz" << std::string(5, ' ');
+      str << std::fixed << static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
 
       device_state->set_text(str.str());
     }
@@ -68,7 +68,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   str.precision(1);
 
-  str << std::fixed << sie->pm->pe_source_node.rate * 0.001F << " kHz" << std::string(5, ' ');
+  str << std::fixed << static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
 
   device_state->set_text(str.str());
 }

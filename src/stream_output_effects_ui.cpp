@@ -50,7 +50,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
       str.precision(1);
 
-      str << std::fixed << soe->pm->pe_sink_node.rate * 0.001F << " kHz" << std::string(5, ' ');
+      str << std::fixed << static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
 
       device_state->set_text(str.str());
     }
@@ -62,7 +62,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   str.precision(1);
 
-  str << std::fixed << soe->pm->pe_sink_node.rate * 0.001F << " kHz" << std::string(5, ' ');
+  str << std::fixed << static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
 
   device_state->set_text(str.str());
 }

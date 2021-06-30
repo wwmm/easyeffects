@@ -36,6 +36,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
   global_output_level_right = builder->get_widget<Gtk::Label>("global_output_level_right");
   device_state = builder->get_widget<Gtk::Label>("device_state");
+  latency_status = builder->get_widget<Gtk::Label>("latency_status");
   saturation_icon = builder->get_widget<Gtk::Image>("saturation_icon");
   listview_players = builder->get_widget<Gtk::ListView>("listview_players");
   menubutton_blocklist = builder->get_widget<Gtk::MenuButton>("menubutton_blocklist");
@@ -176,6 +177,16 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->rnnoise->post_messages = true;
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
+
+  effects_base->pipeline_latency.connect([=, this](float v) {
+    std::ostringstream str;
+
+    str.precision(1);
+
+    str << std::fixed << v << " ms" << std::string(5, ' ');
+
+    latency_status->set_text(str.str());
+  });
 }
 
 EffectsBaseUi::~EffectsBaseUi() {

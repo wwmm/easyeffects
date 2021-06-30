@@ -168,4 +168,6 @@ void EffectsBase::broadcast_pipeline_latency() {
   float latency_value = get_pipeline_latency();
 
   util::debug(log_tag + "pipeline latency: " + std::to_string(latency_value) + " ms");
+
+  pipeline_latency.emit(latency_value);
 }

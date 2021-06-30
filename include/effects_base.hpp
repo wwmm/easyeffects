@@ -86,6 +86,8 @@ class EffectsBase {
   std::shared_ptr<RNNoise> rnnoise;
   std::shared_ptr<StereoTools> stereo_tools;
 
+  sigc::signal<void(float)> pipeline_latency;
+
  protected:
   Glib::RefPtr<Gio::Settings> settings, global_settings;
 

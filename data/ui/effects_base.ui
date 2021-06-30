@@ -179,6 +179,17 @@
                 </child>
 
                 <child>
+                    <object class="GtkLabel" id="latency_status">
+                        <property name="halign">start</property>
+                        <property name="valign">center</property>
+                        <property name="label"></property>
+                        <style>
+                            <class name="dim-label" />
+                        </style>
+                    </object>
+                </child>
+
+                <child>
                     <object class="GtkBox">
                         <property name="halign">center</property>
                         <property name="valign">center</property>

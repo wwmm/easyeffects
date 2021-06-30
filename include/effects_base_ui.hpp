@@ -75,7 +75,9 @@ class EffectsBaseUi {
 
   Gtk::Image* saturation_icon = nullptr;
 
-  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr, *device_state = nullptr;
+  Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
+
+  Gtk::Label *device_state = nullptr, *latency_status = nullptr;
 
   Gtk::ToggleButton *toggle_players = nullptr, *toggle_plugins = nullptr;
 
