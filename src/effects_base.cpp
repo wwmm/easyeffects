@@ -101,6 +101,18 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   });
 
+  convolver->latency.connect([=, this](float v) {
+    plugins_latency[convolver->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
+  crystalizer->latency.connect([=, this](float v) {
+    plugins_latency[crystalizer->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
   echo_canceller->latency.connect([=, this](float v) {
     plugins_latency[echo_canceller->name] = v;
 

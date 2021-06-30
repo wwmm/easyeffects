@@ -47,7 +47,7 @@ class Crystalizer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> new_latency;
+  sigc::signal<void(double)> latency;
 
  private:
   bool n_samples_is_power_of_2 = true;
@@ -59,8 +59,6 @@ class Crystalizer : public PluginBase {
   uint latency_n_frames = 0;
 
   static constexpr uint nbands = 13;
-
-  float latency = 0.0F;
 
   std::vector<float> data_L;
   std::vector<float> data_R;

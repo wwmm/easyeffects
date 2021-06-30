@@ -247,6 +247,30 @@ void Convolver::process(std::span<float>& left_in,
 
   apply_gain(left_out, right_out, output_gain);
 
+  if (notify_latency) {
+    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+
+    spa_process_latency_info latency_info{};
+
+    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+
+    std::array<char, 1024> buffer{};
+
+    spa_pod_builder b{};
+
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+    pw_filter_update_params(filter, nullptr, &param, 1);
+
+    notify_latency = false;
+  }
+
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
@@ -257,19 +281,6 @@ void Convolver::process(std::span<float>& left_in,
 
       notification_dt = 0.0F;
     }
-
-    // if (notify_latency) {
-    //   latency = static_cast<float>(latency_n_frames) / rate;
-
-    //   util::debug(log_tag + name + " latency: " + std::to_string(latency) + " s");
-
-    //   Glib::signal_idle().connect_once([=, this] { new_latency.emit(latency); });
-
-    //   notify_latency = false;
-
-    //   latency_info.min_ns = static_cast<uint64_t>(latency * 1000000000.0F);
-    //   latency_info.max_ns = static_cast<uint64_t>(latency * 1000000000.0F);
-    // }
   }
 }
 
@@ -375,7 +386,7 @@ void Convolver::apply_kernel_autogain() {
    taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 */
 void Convolver::set_kernel_stereo_width() {
-  float w = ir_width * 0.01F;
+  float w = static_cast<float>(ir_width) * 0.01F;
   float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
   for (uint i = 0; i < original_kernel_L.size(); i++) {
@@ -395,8 +406,8 @@ void Convolver::setup_zita() {
   }
 
   int ret = 0;
-  int max_convolution_size = kernel_L.size();
-  int buffer_size = get_zita_buffer_size();
+  uint max_convolution_size = kernel_L.size();
+  uint buffer_size = get_zita_buffer_size();
   float density = 0.0F;
 
   if (conv == nullptr) {
@@ -417,7 +428,7 @@ void Convolver::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, kernel_L.size());
+  ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, static_cast<int>(kernel_L.size()));
 
   if (ret != 0) {
     util::warning(log_tag + name + " left impdata_create failed: " + std::to_string(ret));
@@ -425,7 +436,7 @@ void Convolver::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, kernel_R.size());
+  ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, static_cast<int>(kernel_R.size()));
 
   if (ret != 0) {
     util::warning(log_tag + name + " right impdata_create failed: " + std::to_string(ret));
@@ -449,14 +460,10 @@ void Convolver::setup_zita() {
   util::debug(log_tag + name + ": zita is ready");
 }
 
-auto Convolver::get_zita_buffer_size() -> int {
+auto Convolver::get_zita_buffer_size() -> uint {
   if (n_samples_is_power_of_2) {
     return n_samples;
   }
 
   return blocksize;
-}
-
-auto Convolver::get_latency() const -> float {
-  return latency;
 }
