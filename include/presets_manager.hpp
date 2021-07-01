@@ -80,13 +80,20 @@ class PresetsManager {
 
   void import(PresetType preset_type, const std::string& file_path);
 
-  void add_autoload(PresetType preset_type, const std::string& device, const std::string& name);
+  void add_autoload(PresetType preset_type,
+                    const std::string& preset_name,
+                    const std::string& device_name,
+                    const std::string& device_profile);
 
-  void remove_autoload(PresetType preset_type, const std::string& device, const std::string& name);
+  void remove_autoload(PresetType preset_type,
+                       const std::string& preset_name,
+                       const std::string& device_name,
+                       const std::string& device_profile);
 
-  auto find_autoload(PresetType preset_type, const std::string& device) -> std::string;
+  auto find_autoload(PresetType preset_type, const std::string& device_name, const std::string& device_profile)
+      -> std::string;
 
-  void autoload(PresetType preset_type, const std::string& device);
+  void autoload(PresetType preset_type, const std::string& device_name, const std::string& device_profile);
 
   auto get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json>;
 

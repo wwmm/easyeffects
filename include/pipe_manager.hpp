@@ -41,6 +41,8 @@ struct NodeInfo {
 
   uint id = SPA_ID_INVALID;
 
+  uint device_id = SPA_ID_INVALID;
+
   std::string name;
 
   std::string description;
@@ -150,6 +152,8 @@ struct DeviceInfo {
   std::string media_class;
 
   std::string api;
+
+  std::string profile_name;
 };
 
 class PipeManager {

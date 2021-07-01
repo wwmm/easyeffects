@@ -203,7 +203,18 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto id = dropdown_autoloading_output_presets->get_selected();
 
-    presets_manager->add_autoload(PresetType::output, holder->info.name, output_presets_string_list->get_string(id));
+    std::string device_profile;
+
+    for (auto& device : pm->list_devices) {
+      if (device.id == holder->info.device_id) {
+        device_profile = device.profile_name;
+
+        break;
+      }
+    }
+
+    presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id), holder->info.name,
+                                  device_profile);
   });
 
   autoloading_add_input_profile->signal_clicked().connect([=, this]() {
@@ -215,7 +226,18 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto id = dropdown_autoloading_input_presets->get_selected();
 
-    presets_manager->add_autoload(PresetType::input, holder->info.name, input_presets_string_list->get_string(id));
+    std::string device_profile;
+
+    for (auto& device : pm->list_devices) {
+      if (device.id == holder->info.device_id) {
+        device_profile = device.profile_name;
+
+        break;
+      }
+    }
+
+    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id), holder->info.name,
+                                  device_profile);
   });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
@@ -321,9 +343,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     for (const auto& json : profiles) {
       std::string device = json.value("device", "");
+      std::string device_profile = json.value("device-profile", "");
       std::string preset_name = json.value("preset-name", "");
 
-      list.emplace_back(PresetsAutoloadingHolder::create(device, preset_name));
+      list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
     }
 
     autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
@@ -334,9 +357,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     for (const auto& json : profiles) {
       std::string device = json.value("device", "");
+      std::string device_profile = json.value("device-profile", "");
       std::string preset_name = json.value("preset-name", "");
 
-      list.emplace_back(PresetsAutoloadingHolder::create(device, preset_name));
+      list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
     }
 
     autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
@@ -505,9 +529,10 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
 
   for (const auto& json : profiles) {
     std::string device = json.value("device", "");
+    std::string device_profile = json.value("device-profile", "");
     std::string preset_name = json.value("preset-name", "");
 
-    model->append(PresetsAutoloadingHolder::create(device, preset_name));
+    model->append(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
   }
 
   // setting the listview model and factory
@@ -542,8 +567,9 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
     device->set_text(holder->device);
     preset_name->set_text(holder->preset_name);
 
-    auto connection_remove = remove->signal_clicked().connect(
-        [=, this]() { presets_manager->remove_autoload(preset_type, holder->device, holder->preset_name); });
+    auto connection_remove = remove->signal_clicked().connect([=, this]() {
+      presets_manager->remove_autoload(preset_type, holder->preset_name, holder->device, holder->device_profile);
+    });
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);

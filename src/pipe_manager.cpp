@@ -181,6 +181,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
       const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
       const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
+      const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID);
 
       nd->nd_info.state = info->state;
       nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
@@ -218,6 +219,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         nd->nd_info.rate = std::stoi(rate_str);
 
         nd->nd_info.latency = std::stof(latency_str) / static_cast<float>(nd->nd_info.rate);
+      }
+
+      if (device_id != nullptr) {
+        nd->nd_info.device_id = std::stoi(device_id);
       }
 
       node = nd->nd_info;
@@ -358,7 +363,6 @@ void on_node_event_param(void* object,
           break;
         }
         case SPA_PROP_channelVolumes: {
-          // float volumes[SPA_AUDIO_MAX_CHANNELS];
           std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
           auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
@@ -576,7 +580,59 @@ void on_device_info(void* object, const struct pw_device_info* info) {
         device.api = api;
       }
 
+      if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
+        for (uint i = 0; i < info->n_params; i++) {
+          if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
+            continue;
+          }
+
+          auto id = info->params[i].id;
+
+          if (id == SPA_PARAM_Profile) {
+            pw_device_enum_params((struct pw_device*)ld->proxy, 0, id, 0, -1, nullptr);
+          }
+        }
+      }
+
       break;
+    }
+  }
+}
+
+void on_device_event_param(void* object,
+                           int seq,
+                           uint32_t id,
+                           uint32_t index,
+                           uint32_t next,
+                           const struct spa_pod* param) {
+  auto* dd = static_cast<proxy_data*>(object);
+
+  if (param != nullptr) {
+    spa_pod_prop* pod_prop = nullptr;
+    auto* obj = (spa_pod_object*)param;
+
+    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
+      switch (pod_prop->key) {
+        case SPA_PARAM_PROFILE_name: {
+          const char* name = nullptr;
+
+          spa_pod_get_string(&pod_prop->value, &name);
+
+          if (name != nullptr) {
+            for (auto& device : dd->pm->list_devices) {
+              if (device.id == dd->id) {
+                device.profile_name = name;
+
+                break;
+              }
+            }
+          }
+
+          break;
+        }
+        default:
+          break;
+      }
     }
   }
 }
@@ -724,9 +780,7 @@ const struct pw_client_events client_events = {
     .info = on_client_info,
 };
 
-const struct pw_device_events device_events = {
-    .info = on_device_info,
-};
+const struct pw_device_events device_events = {.info = on_device_info, .param = on_device_event_param};
 
 void on_registry_global(void* data,
                         uint32_t id,

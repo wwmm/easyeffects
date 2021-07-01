@@ -170,7 +170,25 @@ void Application::on_startup() {
       return;
     }
 
-    presets_manager->autoload(PresetType::output, name);
+    uint device_id = SPA_ID_INVALID;
+
+    for (auto& node : pm->list_nodes) {
+      if (node.name == name) {
+        device_id = node.device_id;
+
+        break;
+      }
+    }
+
+    if (device_id != SPA_ID_INVALID) {
+      for (auto& device : pm->list_devices) {
+        if (device.id == device_id) {
+          presets_manager->autoload(PresetType::output, name, device.profile_name);
+
+          break;
+        }
+      }
+    }
   });
 
   sie_settings->signal_changed("input-device").connect([&, this](auto key) {
@@ -180,7 +198,25 @@ void Application::on_startup() {
       return;
     }
 
-    presets_manager->autoload(PresetType::input, name);
+    uint device_id = SPA_ID_INVALID;
+
+    for (auto& node : pm->list_nodes) {
+      if (node.name == name) {
+        device_id = node.device_id;
+
+        break;
+      }
+    }
+
+    if (device_id != SPA_ID_INVALID) {
+      for (auto& device : pm->list_devices) {
+        if (device.id == device_id) {
+          presets_manager->autoload(PresetType::input, name, device.profile_name);
+
+          break;
+        }
+      }
+    }
   });
 
   settings->signal_changed("bypass").connect([=, this](auto key) { update_bypass_state(key); });

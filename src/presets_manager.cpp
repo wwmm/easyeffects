@@ -615,39 +615,46 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   }
 }
 
-void PresetsManager::add_autoload(PresetType preset_type, const std::string& device, const std::string& name) {
+void PresetsManager::add_autoload(PresetType preset_type,
+                                  const std::string& preset_name,
+                                  const std::string& device_name,
+                                  const std::string& device_profile) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
 
   switch (preset_type) {
     case PresetType::output:
-      output_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
     case PresetType::input:
-      output_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
   }
 
   std::ofstream o(output_file.string());
 
-  json["device"] = device;
-  json["preset-name"] = name;
+  json["device"] = device_name;
+  json["device-profile"] = device_profile;
+  json["preset-name"] = preset_name;
 
   o << std::setw(4) << json << std::endl;
 
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
 
-void PresetsManager::remove_autoload(PresetType preset_type, const std::string& device, const std::string& name) {
+void PresetsManager::remove_autoload(PresetType preset_type,
+                                     const std::string& preset_name,
+                                     const std::string& device_name,
+                                     const std::string& device_profile) {
   std::filesystem::path input_file;
 
   switch (preset_type) {
     case PresetType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
     case PresetType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
   }
 
@@ -658,9 +665,7 @@ void PresetsManager::remove_autoload(PresetType preset_type, const std::string& 
 
     is >> json;
 
-    auto current_autoload = json.value("preset-name", "");
-
-    if (current_autoload == name) {
+    if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
       std::filesystem::remove(input_file);
 
       util::debug(log_tag + "removed autoload: " + input_file.string());
@@ -668,17 +673,21 @@ void PresetsManager::remove_autoload(PresetType preset_type, const std::string& 
   }
 }
 
-auto PresetsManager::find_autoload(PresetType preset_type, const std::string& device) -> std::string {
+auto PresetsManager::find_autoload(PresetType preset_type,
+                                   const std::string& device_name,
+                                   const std::string& device_profile) -> std::string {
   std::filesystem::path input_file;
 
   switch (preset_type) {
     case PresetType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device + ".json"};
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
     case PresetType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device + ".json"};
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
       break;
   }
+
+  util::warning(input_file.string());
 
   if (std::filesystem::is_regular_file(input_file)) {
     nlohmann::json json;
@@ -693,11 +702,13 @@ auto PresetsManager::find_autoload(PresetType preset_type, const std::string& de
   return "";
 }
 
-void PresetsManager::autoload(PresetType preset_type, const std::string& device) {
-  auto name = find_autoload(preset_type, device);
+void PresetsManager::autoload(PresetType preset_type,
+                              const std::string& device_name,
+                              const std::string& device_profile) {
+  auto name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
-    util::debug(log_tag + "autoloading preset " + name + " for device " + device);
+    util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
 
     load_preset_file(preset_type, name);
 

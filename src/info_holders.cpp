@@ -23,13 +23,18 @@ auto ClientInfoHolder::create(const ClientInfo& info) -> Glib::RefPtr<ClientInfo
   return Glib::make_refptr_for_instance<ClientInfoHolder>(new ClientInfoHolder(info));
 }
 
-PresetsAutoloadingHolder::PresetsAutoloadingHolder(std::string device, std::string preset_name)
+PresetsAutoloadingHolder::PresetsAutoloadingHolder(std::string device,
+                                                   std::string device_profile,
+                                                   std::string preset_name)
     : Glib::ObjectBase(typeid(PresetsAutoloadingHolder)),
       Glib::Object(),
       device(std::move(device)),
+      device_profile(std::move(device_profile)),
       preset_name(std::move(preset_name)) {}
 
-auto PresetsAutoloadingHolder::create(const std::string& device, const std::string& preset_name)
-    -> Glib::RefPtr<PresetsAutoloadingHolder> {
-  return Glib::make_refptr_for_instance<PresetsAutoloadingHolder>(new PresetsAutoloadingHolder(device, preset_name));
+auto PresetsAutoloadingHolder::create(const std::string& device,
+                                      const std::string& device_profile,
+                                      const std::string& preset_name) -> Glib::RefPtr<PresetsAutoloadingHolder> {
+  return Glib::make_refptr_for_instance<PresetsAutoloadingHolder>(
+      new PresetsAutoloadingHolder(device, device_profile, preset_name));
 }
