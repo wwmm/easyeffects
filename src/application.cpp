@@ -156,7 +156,25 @@ void Application::on_startup() {
   });
 
   pm->device_changed.connect([&](const DeviceInfo& device) {
-    util::debug("device " + device.name + " has changed profile to: " + device.profile_name);
+    util::debug(log_tag + "device " + device.name + " has changed profile to: " + device.profile_name);
+
+    NodeInfo target_node;
+
+    for (auto& node : pm->list_nodes) {
+      if (node.device_id == device.id) {
+        target_node = node;
+
+        break;
+      }
+    }
+
+    if (target_node.id != SPA_ID_INVALID) {
+      if (target_node.media_class == "Audio/Source") {
+        presets_manager->autoload(PresetType::input, target_node.name, device.profile_name);
+      } else if (target_node.media_class == "Audio/Sink") {
+        presets_manager->autoload(PresetType::output, target_node.name, device.profile_name);
+      }
+    }
   });
 
   sie_settings->signal_changed("blocklist").connect([=, this](auto key) {
