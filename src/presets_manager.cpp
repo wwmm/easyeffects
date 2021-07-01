@@ -687,8 +687,6 @@ auto PresetsManager::find_autoload(PresetType preset_type,
       break;
   }
 
-  util::warning(input_file.string());
-
   if (std::filesystem::is_regular_file(input_file)) {
     nlohmann::json json;
 

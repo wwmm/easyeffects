@@ -551,6 +551,7 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("device", b->get_widget<Gtk::Label>("device"));
+    list_item->set_data("device_profile", b->get_widget<Gtk::Label>("device_profile"));
     list_item->set_data("preset_name", b->get_widget<Gtk::Label>("preset_name"));
     list_item->set_data("remove", b->get_widget<Gtk::Button>("remove"));
 
@@ -559,12 +560,14 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* device = static_cast<Gtk::Label*>(list_item->get_data("device"));
+    auto* device_profile = static_cast<Gtk::Label*>(list_item->get_data("device_profile"));
     auto* preset_name = static_cast<Gtk::Label*>(list_item->get_data("preset_name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     auto holder = std::dynamic_pointer_cast<PresetsAutoloadingHolder>(list_item->get_item());
 
     device->set_text(holder->device);
+    device_profile->set_text(holder->device_profile);
     preset_name->set_text(holder->preset_name);
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
