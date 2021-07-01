@@ -621,7 +621,13 @@ void on_device_event_param(void* object,
           if (name != nullptr) {
             for (auto& device : dd->pm->list_devices) {
               if (device.id == dd->id) {
-                device.profile_name = name;
+                if (name != device.profile_name) {
+                  auto* pm = dd->pm;
+
+                  device.profile_name = name;
+
+                  Glib::signal_idle().connect_once([pm, device] { pm->device_changed.emit(device); });
+                }
 
                 break;
               }

@@ -262,6 +262,7 @@ class PipeManager {
   sigc::signal<void(NodeInfo)> stream_input_added;
   sigc::signal<void(NodeInfo)> stream_input_changed;
   sigc::signal<void(NodeInfo)> stream_input_removed;
+  sigc::signal<void(DeviceInfo)> device_changed;
 
   sigc::signal<void(LinkInfo)> link_changed;
 

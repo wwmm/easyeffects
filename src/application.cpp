@@ -155,6 +155,10 @@ void Application::on_startup() {
     }
   });
 
+  pm->device_changed.connect([&](const DeviceInfo& device) {
+    util::debug("device " + device.name + " has changed profile to: " + device.profile_name);
+  });
+
   sie_settings->signal_changed("blocklist").connect([=, this](auto key) {
     pm->blocklist_in = sie_settings->get_string_array("blocklist");
   });
