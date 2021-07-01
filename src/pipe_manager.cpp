@@ -837,6 +837,7 @@ void on_registry_global(void* data,
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
         const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
         const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
+        const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID);
 
         if (node_name == nullptr) {
           return;
@@ -870,6 +871,10 @@ void on_registry_global(void* data,
 
         if (prio_session != nullptr) {
           pd->nd_info.priority = std::stoi(prio_session);
+        }
+
+        if (device_id != nullptr) {
+          pd->nd_info.device_id = std::stoi(device_id);
         }
 
         pw_node_add_listener(proxy, &pd->object_listener, &node_events, pd);
