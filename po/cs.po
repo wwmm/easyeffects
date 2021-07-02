@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-19 12:56-0300\n"
+"POT-Creation-Date: 2021-07-02 11:07-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -88,7 +88,7 @@ msgid "Input Limiter"
 msgstr "Omezovač vstupu"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
-#: include/effects_base_ui.hpp:132
+#: include/effects_base_ui.hpp:134
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -167,7 +167,7 @@ msgstr "Výstup"
 #: data/ui/exciter.ui:232 data/ui/filter.ui:158 data/ui/gate.ui:320
 #: data/ui/limiter.ui:227 data/ui/loudness.ui:121 data/ui/maximizer.ui:134
 #: data/ui/multiband_compressor.ui:1410 data/ui/multiband_gate.ui:1542
-#: data/ui/pipe_info.ui:315 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
+#: data/ui/pipe_info.ui:351 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
 #: data/ui/reverb.ui:347 data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36
 #: data/ui/stereo_tools.ui:523 src/stream_input_effects_ui.cpp:88
 msgid "Input"
@@ -195,9 +195,9 @@ msgid "Settings"
 msgstr "Nastavení"
 
 #: data/ui/application_window.ui:161 data/ui/reverb.ui:19
-#: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:374
-#: src/presets_menu_ui.cpp:375 src/presets_menu_ui.cpp:392
-#: src/presets_menu_ui.cpp:393
+#: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
+#: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
+#: src/presets_menu_ui.cpp:357
 msgid "Presets"
 msgstr "Přednastavení"
 
@@ -245,7 +245,7 @@ msgstr "Relativní"
 msgid "Range"
 msgstr "Rozsah"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:144
+#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:146
 msgid "Loudness"
 msgstr "Hlasitost"
 
@@ -274,6 +274,24 @@ msgstr "Vrátit na výchozí"
 #: data/ui/multiband_gate.ui:1715 data/ui/pitch.ui:359 data/ui/reverb.ui:520
 #: data/ui/rnnoise.ui:262 data/ui/stereo_tools.ui:726
 msgid "Using"
+msgstr ""
+
+#: data/ui/autoload_row.ui:15
+#, fuzzy
+msgid "Device"
+msgstr "Omezovač vstupu"
+
+#: data/ui/autoload_row.ui:38
+msgid "Profile"
+msgstr ""
+
+#: data/ui/autoload_row.ui:62
+#, fuzzy
+msgid "Preset"
+msgstr "Přednastavení"
+
+#: data/ui/autoload_row.ui:86
+msgid "Remove"
 msgstr ""
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:367 data/ui/deesser.ui:23
@@ -552,7 +570,7 @@ msgstr "Doba trvání"
 msgid "Import Impulse"
 msgstr "Zavést impuls"
 
-#: data/ui/convolver.ui:429 data/ui/effects_base.ui:339
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:350
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
 msgstr ""
@@ -639,11 +657,11 @@ msgstr ""
 msgid "Plugins"
 msgstr ""
 
-#: data/ui/effects_base.ui:235
+#: data/ui/effects_base.ui:246
 msgid "Blocklist"
 msgstr "Černá listina"
 
-#: data/ui/effects_base.ui:262
+#: data/ui/effects_base.ui:273
 msgid "Player Name"
 msgstr ""
 
@@ -1032,11 +1050,15 @@ msgstr "Výchozí zeslabení"
 msgid "Presets Autoloading"
 msgstr ""
 
-#: data/ui/pipe_info.ui:367
+#: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
+msgid "Create Association"
+msgstr ""
+
+#: data/ui/pipe_info.ui:438
 msgid "Modules"
 msgstr "Moduly"
 
-#: data/ui/pipe_info.ui:391
+#: data/ui/pipe_info.ui:462
 msgid "Clients"
 msgstr "Klienti"
 
@@ -1064,23 +1086,15 @@ msgstr "Oktávy"
 msgid "Crispness"
 msgstr "Křehkost"
 
-#: data/ui/preset_row.ui:16
+#: data/ui/preset_row.ui:17
 msgid "Load"
 msgstr "Načíst"
 
-#: data/ui/preset_row.ui:23
+#: data/ui/preset_row.ui:25
 msgid "Save current settings to this preset file"
 msgstr "Uložit nynější nastavení do tohoto souboru s přednastavením"
 
-#: data/ui/preset_row.ui:31
-msgid ""
-"Automatically apply this preset whenever the currently used device is "
-"plugged in the system"
-msgstr ""
-"Automaticky použít toto přednastavení, když je nyní používané zařízení "
-"zapojeno v systému"
-
-#: data/ui/preset_row.ui:37
+#: data/ui/preset_row.ui:34
 msgid "Remove this preset file"
 msgstr "Odstranit tento soubor s přednastavením"
 
@@ -1334,85 +1348,85 @@ msgstr "Fáze sterea"
 msgid "Phase Correlation"
 msgstr ""
 
-#: include/effects_base_ui.hpp:130
+#: include/effects_base_ui.hpp:132
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatické zesílení"
 
-#: include/effects_base_ui.hpp:131
+#: include/effects_base_ui.hpp:133
 msgid "Bass Enhancer"
 msgstr "Zlepšovač hloubek"
 
-#: include/effects_base_ui.hpp:133
+#: include/effects_base_ui.hpp:135
 msgid "Convolver"
 msgstr "Svinovač"
 
-#: include/effects_base_ui.hpp:134
+#: include/effects_base_ui.hpp:136
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: include/effects_base_ui.hpp:135
+#: include/effects_base_ui.hpp:137
 msgid "Crystalizer"
 msgstr "Krystalizátor"
 
-#: include/effects_base_ui.hpp:136
+#: include/effects_base_ui.hpp:138
 msgid "Deesser"
 msgstr "Odstraňovač sykotu"
 
-#: include/effects_base_ui.hpp:137
+#: include/effects_base_ui.hpp:139
 msgid "Delay"
 msgstr "Zpoždění"
 
-#: include/effects_base_ui.hpp:138
+#: include/effects_base_ui.hpp:140
 msgid "Echo Canceller"
 msgstr "Potlačovač echa"
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:141
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:142
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:143
 msgid "Filter"
 msgstr "Filtr"
 
-#: include/effects_base_ui.hpp:142
+#: include/effects_base_ui.hpp:144
 msgid "Gate"
 msgstr "Brána"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:145
 msgid "Limiter"
 msgstr "Omezovač"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:147
 msgid "Maximizer"
 msgstr "Zvětšovač"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:148
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:149
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:150
 msgid "Pitch"
 msgstr "Výška tónu"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:151
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:152
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Zmenšení zesílení"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:153
 msgid "Stereo Tools"
 msgstr "Nástroje sterea"
 
@@ -1440,11 +1454,11 @@ msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získán
 msgid "Hide the Window."
 msgstr "Skrýt Okno"
 
-#: src/application.cpp:261
+#: src/application.cpp:309
 msgid "Output Presets: "
 msgstr "Výstupní přednastavení:"
 
-#: src/application.cpp:269
+#: src/application.cpp:317
 msgid "Input Presets: "
 msgstr "Vstupní přednastavení:"
 
@@ -1452,50 +1466,50 @@ msgstr "Vstupní přednastavení:"
 msgid "Calibration Microphone"
 msgstr "Kalibrace mikrofonu"
 
-#: src/convolver_ui.cpp:378 src/convolver_ui.cpp:381
+#: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_ui.cpp:379 src/convolver_ui.cpp:381 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:371 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:593 src/presets_menu_ui.cpp:195
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_ui.cpp:379 src/convolver_ui.cpp:382 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:372 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:594 src/presets_menu_ui.cpp:195
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/convolver_ui.cpp:387
+#: src/convolver_ui.cpp:377
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_ui.cpp:428 src/convolver_ui.cpp:429 src/convolver_ui.cpp:431
+#: src/convolver_ui.cpp:418 src/convolver_ui.cpp:419 src/convolver_ui.cpp:421
 msgid "Failed"
 msgstr "Nepodařilo se"
 
-#: src/convolver_ui.cpp:433
+#: src/convolver_ui.cpp:423
 msgid "Could Not Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_base_ui.cpp:649 src/effects_base_ui.cpp:1283
+#: src/effects_base_ui.cpp:668 src/effects_base_ui.cpp:1302
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:653 src/effects_base_ui.cpp:1285
+#: src/effects_base_ui.cpp:672 src/effects_base_ui.cpp:1304
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:657 src/effects_base_ui.cpp:1287
+#: src/effects_base_ui.cpp:676 src/effects_base_ui.cpp:1306
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:661 src/effects_base_ui.cpp:1289
+#: src/effects_base_ui.cpp:680 src/effects_base_ui.cpp:1308
 #, fuzzy
 msgid "creating"
 msgstr "Hradlo"
 
-#: src/effects_base_ui.cpp:665 src/effects_base_ui.cpp:1291
+#: src/effects_base_ui.cpp:684 src/effects_base_ui.cpp:1310
 msgid "error"
 msgstr ""
 
@@ -1522,6 +1536,13 @@ msgstr "Zavést přednastavení"
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Automaticky použít toto přednastavení, když je nyní používané zařízení "
+#~ "zapojeno v systému"
 
 #, fuzzy
 #~ msgid "Version"
