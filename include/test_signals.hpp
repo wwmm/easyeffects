@@ -40,7 +40,8 @@ class TestSignals {
   };
 
   struct data {
-    struct port* out = nullptr;
+    struct port* out_left = nullptr;
+    struct port* out_right = nullptr;
 
     TestSignals* ts = nullptr;
   };

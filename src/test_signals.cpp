@@ -38,9 +38,11 @@ void on_process(void* userdata, spa_io_position* position) {
 
   // util::warning("processing: " + std::to_string(n_samples));
 
-  auto* out = static_cast<float*>(pw_filter_get_dsp_buffer(d->out, n_samples));
+  auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
+  auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
 
-  std::span output{out, out + n_samples};
+  std::span left_out{out_left, out_left + n_samples};
+  std::span right_out{out_right, out_right + n_samples};
 }
 
 const struct pw_filter_events filter_events = {.process = on_process};
@@ -61,20 +63,31 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager) {
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
-  //   pw_properties_set(props_filter, PW_KEY_MEDIA_CLASS, "Stream/Output/Audio");
+  // pw_properties_set(props_filter, PW_KEY_MEDIA_CLASS, "Stream/Output/Audio");
 
   filter = pw_filter_new(pm->core, filter_name, props_filter);
 
-  // output channel
+  // left channel output
 
-  auto* props_out = pw_properties_new(nullptr, nullptr);
+  auto* props_out_left = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_out, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_out, PW_KEY_PORT_NAME, "output");
-  pw_properties_set(props_out, "audio.channel", "FL");
+  pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
+  pw_properties_set(props_out_left, "audio.channel", "FL");
 
-  pf_data.out = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
-                                                      sizeof(port), props_out, nullptr, 0));
+  pf_data.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
+                                                           sizeof(port), props_out_left, nullptr, 0));
+
+  // right channel output
+
+  auto* props_out_right = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
+  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
+  pw_properties_set(props_out_right, "audio.channel", "FR");
+
+  pf_data.out_right = static_cast<port*>(pw_filter_add_port(
+      filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
     util::error(log_tag + filter_name + " can not connect the filter to pipewire!");
