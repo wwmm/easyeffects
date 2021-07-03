@@ -479,6 +479,19 @@
                         </property>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkStackPage">
+                        <property name="name">page_test_signals</property>
+                        <property name="title" translatable="yes">Test Signals</property>
+                        <property name="child">
+                            <object class="GtkBox">
+                                <property name="spacing">12</property>
+                                <property name="orientation">vertical</property>
+                            </object>
+                        </property>
+                    </object>
+                </child>
             </object>
         </child>
     </object>

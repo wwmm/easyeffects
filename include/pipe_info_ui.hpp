@@ -24,9 +24,11 @@
 #include <gtkmm.h>
 #include <filesystem>
 #include <fstream>
+#include <memory>
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
+#include "test_signals.hpp"
 
 class PipeInfoUi : public Gtk::Box {
  public:
@@ -48,6 +50,8 @@ class PipeInfoUi : public Gtk::Box {
   PipeManager* pm = nullptr;
 
   PresetsManager* presets_manager = nullptr;
+
+  std::unique_ptr<TestSignals> ts;
 
   Gtk::Stack* stack = nullptr;
 

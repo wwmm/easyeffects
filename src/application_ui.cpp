@@ -32,8 +32,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   stack = builder->get_widget<Gtk::Stack>("stack");
   stack_menu_settings = builder->get_widget<Gtk::Stack>("stack_menu_settings");
   presets_menu_button = builder->get_widget<Gtk::MenuButton>("presets_menu_button");
-  calibration_button = builder->get_widget<Gtk::Button>("calibration_button");
-  help_button = builder->get_widget<Gtk::Button>("help_button");
   bypass_button = builder->get_widget<Gtk::ToggleButton>("bypass_button");
   toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
@@ -71,10 +69,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
       stack->get_pages()->select_item(2, true);
     }
   });
-
-  help_button->signal_clicked().connect([=, this]() { app->activate_action("help"); });
-
-  calibration_button->signal_clicked().connect(sigc::mem_fun(*this, &ApplicationUi::on_calibration_button_clicked));
 
   // binding properties to gsettings keys
 
@@ -116,21 +110,4 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   auto priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
 
   Gtk::StyleContext::add_provider_for_display(display, provider, priority);
-}
-
-void ApplicationUi::on_calibration_button_clicked() {
-  // calibration_ui = CalibrationUi::create();
-
-  // auto c = app->pm->new_default_source.connect(
-  //     [=](const NodeInfo& node_info) { calibration_ui->set_input_node_id(node_info.id); });
-
-  // calibration_ui->signal_hide().connect([=]() {
-  //   c->disconnect();
-
-  //   delete calibration_ui;
-  // });
-
-  // calibration_ui->set_transient_for(*this);
-
-  // calibration_ui->show_all();
 }

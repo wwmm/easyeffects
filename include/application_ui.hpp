@@ -30,7 +30,6 @@
 #include "spectrum_settings_ui.hpp"
 #include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"
-// #include "calibration_ui.hpp"
 
 class ApplicationUi : public Gtk::ApplicationWindow {
  public:
@@ -50,7 +49,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   Glib::RefPtr<Gio::Settings> settings;
 
-  Gtk::Button *calibration_button = nullptr, *help_button = nullptr;
   Gtk::ToggleButton* bypass_button = nullptr;
   Gtk::Stack *stack = nullptr, *stack_menu_settings = nullptr;
   Gtk::MenuButton* presets_menu_button = nullptr;
@@ -62,13 +60,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   StreamOutputEffectsUi* soe_ui = nullptr;
   StreamInputEffectsUi* sie_ui = nullptr;
   PipeInfoUi* pipe_info_ui = nullptr;
-  // CalibrationUi* calibration_ui = nullptr;
 
   int soe_latency = 0, sie_latency = 0;
 
   static void apply_css_style(const std::string& css_file_name);
-
-  void on_calibration_button_clicked();
 };
 
 #endif

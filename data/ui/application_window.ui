@@ -107,17 +107,6 @@
                     </object>
                 </property>
 
-                <!-- calibration button -->
-
-                <child>
-                    <object class="GtkButton" id="calibration_button">
-                        <property name="tooltip_text" translatable="yes">Test Signals</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">easyeffects-sine-symbolic</property>
-                    </object>
-                </child>
-
                 <!-- bypass button  -->
 
                 <child>
@@ -126,17 +115,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="icon_name">media-playlist-shuffle-symbolic</property>
-                    </object>
-                </child>
-
-                <!-- help button -->
-
-                <child>
-                    <object class="GtkButton" id="help_button">
-                        <property name="tooltip_text" translatable="yes">Help</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">help-faq-symbolic</property>
                     </object>
                 </child>
 

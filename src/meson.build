@@ -93,6 +93,7 @@ easyeffects_sources = [
 	'stream_output_effects.cpp',
 	'stream_input_effects_ui.cpp',
 	'stream_input_effects.cpp',
+	'test_signals.cpp',
 	'util.cpp',
 	# 'calibration_ui.cpp',
 	# 'calibration_signals_ui.cpp',
