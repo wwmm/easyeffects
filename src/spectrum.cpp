@@ -29,7 +29,7 @@ Spectrum::Spectrum(const std::string& tag,
 
   complex_output = fftwf_alloc_complex(n_bands);
 
-  plan = fftwf_plan_dft_r2c_1d(n_bands, real_input.data(), complex_output, FFTW_ESTIMATE);
+  plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   fftw_ready = true;
 

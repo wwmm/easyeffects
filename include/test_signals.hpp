@@ -21,6 +21,7 @@
 #define TEST_SIGNALS_HPP
 
 #include <pipewire/filter.h>
+#include <numbers>
 #include <span>
 #include "pipe_manager.hpp"
 
@@ -53,6 +54,10 @@ class TestSignals {
   uint n_samples = 0;
 
   uint rate = 0;
+
+  float sine_phase = 0.0F;
+
+  float sine_frequency = 1000.0F;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

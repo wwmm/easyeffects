@@ -34,6 +34,8 @@ void on_process(void* userdata, spa_io_position* position) {
   if (rate != d->ts->rate || n_samples != d->ts->n_samples) {
     d->ts->rate = rate;
     d->ts->n_samples = n_samples;
+
+    d->ts->sine_phase = 0.0F;
   }
 
   // util::warning("processing: " + std::to_string(n_samples));
@@ -43,6 +45,21 @@ void on_process(void* userdata, spa_io_position* position) {
 
   std::span left_out{out_left, out_left + n_samples};
   std::span right_out{out_right, out_right + n_samples};
+
+  // Generate a sine wave
+
+  for (uint n = 0; n < n_samples; n++) {
+    d->ts->sine_phase += 2.0F * std::numbers::pi_v<float> * d->ts->sine_frequency / static_cast<float>(rate);
+
+    float signal = 0.5F * sinf(d->ts->sine_phase);
+
+    left_out[n] = signal;
+    right_out[n] = signal;
+  }
+
+  if (d->ts->sine_phase > 2.0F * std::numbers::pi_v<float>) {
+    d->ts->sine_phase -= 2.0F * std::numbers::pi_v<float>;
+  }
 }
 
 const struct pw_filter_events filter_events = {.process = on_process};
