@@ -1334,8 +1334,10 @@ void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
 
-auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link)
-    -> std::vector<pw_proxy*> {
+auto PipeManager::link_nodes(const uint& output_node_id,
+                             const uint& input_node_id,
+                             const bool& probe_link,
+                             const bool& link_passive) -> std::vector<pw_proxy*> {
   std::vector<pw_proxy*> list;
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
@@ -1392,7 +1394,12 @@ auto PipeManager::link_nodes(const uint& output_node_id, const uint& input_node_
 
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
-        pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
+        if (link_passive) {
+          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
+        } else {
+          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "false");
+        }
+
         pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(output_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());

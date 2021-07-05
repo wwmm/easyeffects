@@ -179,7 +179,7 @@ class EffectsBaseUi {
 
   void remove_blocklist_entry(const Glib::ustring& name);
 
-  auto float_to_localized_string(const float& value, const int& places) -> std::string;
+  static auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
 
 #endif

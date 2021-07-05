@@ -77,8 +77,9 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager) {
 
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name);
   pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, "easyeffects_filter");
+  pw_properties_set(props_filter, PW_KEY_NODE_DRIVER, "true");
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
-  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
+  pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Source");
   pw_properties_set(props_filter, PW_KEY_MEDIA_ROLE, "DSP");
   // pw_properties_set(props_filter, PW_KEY_MEDIA_CLASS, "Stream/Output/Audio");
 
@@ -141,4 +142,18 @@ TestSignals::~TestSignals() {
   pw_thread_loop_wait(pm->thread_loop);
 
   pw_thread_loop_unlock(pm->thread_loop);
+}
+
+void TestSignals::set_state(const bool& state) {
+  if (state) {
+    auto links = pm->link_nodes(node_id, pm->pe_sink_node.id, false, false);
+
+    for (const auto& link : links) {
+      list_proxies.emplace_back(link);
+    }
+  } else {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+  }
 }

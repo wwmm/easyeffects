@@ -59,6 +59,8 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::Switch* use_default_output = nullptr;
 
+  Gtk::Switch* enable_test_signal = nullptr;
+
   Gtk::Label *header_version = nullptr, *library_version = nullptr, *server_rate = nullptr, *max_quantum = nullptr,
              *min_quantum = nullptr, *quantum = nullptr;
 

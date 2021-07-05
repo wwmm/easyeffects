@@ -107,6 +107,16 @@
                     </object>
                 </property>
 
+                <!-- button for the presets menu -->
+
+                <child>
+                    <object class="GtkMenuButton" id="presets_menu_button">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">Presets</property>
+                    </object>
+                </child>
+
                 <!-- bypass button  -->
 
                 <child>
@@ -127,16 +137,6 @@
                         <property name="valign">center</property>
                         <property name="icon_name">format-justify-fill-symbolic</property>
                         <property name="popover">settings_menu</property>
-                    </object>
-                </child>
-
-                <!-- button for the presets menu -->
-
-                <child type="end">
-                    <object class="GtkMenuButton" id="presets_menu_button">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Presets</property>
                     </object>
                 </child>
 

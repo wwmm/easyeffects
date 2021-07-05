@@ -59,6 +59,8 @@ class TestSignals {
 
   float sine_frequency = 1000.0F;
 
+  void set_state(const bool& state);
+
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
@@ -71,6 +73,8 @@ class TestSignals {
   data pf_data = {};
 
   uint node_id = 0;
+
+  std::vector<pw_proxy*> list_proxies;
 };
 
 #endif

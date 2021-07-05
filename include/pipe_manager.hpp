@@ -231,8 +231,10 @@ class PipeManager {
     Links the output ports of the node output_node_id to the input ports of the node input_node_id
   */
 
-  auto link_nodes(const uint& output_node_id, const uint& input_node_id, const bool& probe_link = false)
-      -> std::vector<pw_proxy*>;
+  auto link_nodes(const uint& output_node_id,
+                  const uint& input_node_id,
+                  const bool& probe_link = false,
+                  const bool& link_passive = true) -> std::vector<pw_proxy*>;
 
   void destroy_object(const int& id) const;
 

@@ -53,6 +53,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   use_default_input = builder->get_widget<Gtk::Switch>("use_default_input");
   use_default_output = builder->get_widget<Gtk::Switch>("use_default_output");
+  enable_test_signal = builder->get_widget<Gtk::Switch>("enable_test_signal");
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
   dropdown_output_devices = builder->get_widget<Gtk::DropDown>("dropdown_output_devices");
@@ -194,6 +195,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       }
     }
   });
+
+  enable_test_signal->property_active().signal_changed().connect(
+      [=, this]() { ts->set_state(enable_test_signal->get_active()); });
 
   autoloading_add_output_profile->signal_clicked().connect([=, this]() {
     if (dropdown_autoloading_output_devices->get_selected_item() == nullptr) {

@@ -483,11 +483,64 @@
                 <child>
                     <object class="GtkStackPage">
                         <property name="name">page_test_signals</property>
-                        <property name="title" translatable="yes">Test Signals</property>
+                        <property name="title" translatable="yes">Test Signal</property>
                         <property name="child">
-                            <object class="GtkBox">
-                                <property name="spacing">12</property>
-                                <property name="orientation">vertical</property>
+                            <object class="GtkGrid">
+                                <property name="row-spacing">6</property>
+                                <property name="column-spacing">6</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Enable</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSwitch" id="enable_test_signal">
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Frequency</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkSpinButton" id="spinbutton_test_signal_frequency">
+                                        <property name="halign">start</property>
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="lower">20</property>
+                                                <property name="upper">22000</property>
+                                                <property name="value">1000</property>
+                                                <property name="step-increment">1</property>
+                                                <property name="page-increment">100</property>
+                                            </object>
+                                        </property>
+                                        <property name="digits">0</property>
+                                        <property name="update-policy">if-valid</property>
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                    </object>
+                                </child>
                             </object>
                         </property>
                     </object>
