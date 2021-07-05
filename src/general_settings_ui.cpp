@@ -29,6 +29,8 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   process_all_inputs = builder->get_widget<Gtk::Switch>("process_all_inputs");
   process_all_outputs = builder->get_widget<Gtk::Switch>("process_all_outputs");
   enable_autostart = builder->get_widget<Gtk::Switch>("enable_autostart");
+  run_in_background = builder->get_widget<Gtk::Switch>("run_in_background");
+
   reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
   about_button = builder->get_widget<Gtk::Button>("about_button");
 
@@ -43,6 +45,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("use-dark-theme", theme_switch, "active");
   settings->bind("process-all-inputs", process_all_inputs, "active");
   settings->bind("process-all-outputs", process_all_outputs, "active");
+  settings->bind("run-in-background", run_in_background, "active");
 
   init_autostart_switch();
 }

@@ -278,6 +278,10 @@ void Application::on_activate() {
 
           delete window;
 
+          if (!settings->get_boolean("run-in-background")) {
+            release();
+          }
+
           return false;
         },
         false);

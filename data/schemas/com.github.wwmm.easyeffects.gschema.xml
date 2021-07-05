@@ -25,5 +25,8 @@
         <key name="bypass" type="b">
             <default>false</default>
         </key>
+        <key name="run-in-background" type="b">
+            <default>true</default>
+        </key>
     </schema>
 </schemalist>
