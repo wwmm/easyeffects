@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 11:07-0300\n"
+"POT-Creation-Date: 2021-07-05 14:48-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -177,29 +177,20 @@ msgstr "Vstup"
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: data/ui/application_window.ui:114 src/calibration_ui.cpp:56
-#: src/calibration_ui.cpp:182
-msgid "Test Signals"
-msgstr "Skúšobné signály"
-
-#: data/ui/application_window.ui:125
-msgid "Global Bypass"
-msgstr "Globálne premostenie"
-
-#: data/ui/application_window.ui:136
-msgid "Help"
-msgstr "Pomocník"
-
-#: data/ui/application_window.ui:147 data/ui/application_window.ui:199
-msgid "Settings"
-msgstr "Nastavenia"
-
-#: data/ui/application_window.ui:161 data/ui/reverb.ui:19
+#: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
 #: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
 #: src/presets_menu_ui.cpp:357
 msgid "Presets"
 msgstr "Predvoľby"
+
+#: data/ui/application_window.ui:124
+msgid "Global Bypass"
+msgstr "Globálne premostenie"
+
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+msgid "Settings"
+msgstr "Nastavenia"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -472,12 +463,12 @@ msgid "Side"
 msgstr "Postranný"
 
 #: data/ui/compressor.ui:438 data/ui/delay.ui:29 data/ui/equalizer.ui:138
-#: data/ui/stereo_tools.ui:164
+#: data/ui/pipe_info.ui:533 data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr "Ľavý"
 
 #: data/ui/compressor.ui:439 data/ui/delay.ui:61 data/ui/equalizer.ui:150
-#: data/ui/stereo_tools.ui:197
+#: data/ui/pipe_info.ui:543 data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr "Pravý"
 
@@ -487,6 +478,7 @@ msgid "High-pass"
 msgstr "Horné pásmo"
 
 #: data/ui/compressor.ui:486 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
+#: data/ui/pipe_info.ui:569
 msgid "Frequency"
 msgstr "Frekvencia"
 
@@ -853,24 +845,28 @@ msgstr "Hradlo"
 msgid "Start Service at Login"
 msgstr "Spustiť službu pri prihlásení"
 
-#: data/ui/general_settings.ui:37
+#: data/ui/general_settings.ui:38
 msgid "Process All Outputs"
 msgstr "Spracovať všetky výstupy"
 
-#: data/ui/general_settings.ui:57
+#: data/ui/general_settings.ui:59
 msgid "Process All Inputs"
 msgstr "Spracovať všetky vstupy"
 
-#: data/ui/general_settings.ui:77
+#: data/ui/general_settings.ui:80
 msgid "Use Dark Theme"
 msgstr "Použiť tmavý motív"
 
-#: data/ui/general_settings.ui:114
+#: data/ui/general_settings.ui:101
+msgid "Run in Background"
+msgstr ""
+
+#: data/ui/general_settings.ui:138
 #, fuzzy
 msgid "Reset All Settings"
 msgstr "Nastavenia"
 
-#: data/ui/general_settings.ui:120
+#: data/ui/general_settings.ui:144
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "Vstupné efekty"
@@ -978,7 +974,7 @@ msgstr "Stredné pásmo"
 msgid "High Band"
 msgstr "Vysoké pásmo"
 
-#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:63
+#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:66
 msgid "General"
 msgstr "Všeobecné"
 
@@ -1047,6 +1043,24 @@ msgstr "Moduly"
 #: data/ui/pipe_info.ui:462
 msgid "Clients"
 msgstr "Klienti"
+
+#: data/ui/pipe_info.ui:486
+#, fuzzy
+msgid "Test Signal"
+msgstr "Skúšobné signály"
+
+#: data/ui/pipe_info.ui:495
+msgid "Enable"
+msgstr "Povolené"
+
+#: data/ui/pipe_info.ui:517
+#, fuzzy
+msgid "Channel"
+msgstr "Kanály"
+
+#: data/ui/pipe_info.ui:553
+msgid "Both"
+msgstr ""
 
 #: data/ui/pitch.ui:18
 msgid "Faster"
@@ -1441,17 +1455,13 @@ msgstr ""
 msgid "Hide the Window."
 msgstr "Skryť okno"
 
-#: src/application.cpp:309
+#: src/application.cpp:313
 msgid "Output Presets: "
 msgstr "Výstupné predvoľby: "
 
-#: src/application.cpp:317
+#: src/application.cpp:321
 msgid "Input Presets: "
 msgstr "Vstupné predvoľby: "
-
-#: src/calibration_ui.cpp:189
-msgid "Calibration Microphone"
-msgstr "Kalibrovať mikrofón"
 
 #: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
 msgid "Import Impulse File"
@@ -1520,6 +1530,12 @@ msgstr "Načítať predvoľbu"
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
+
+#~ msgid "Help"
+#~ msgstr "Pomocník"
+
+#~ msgid "Calibration Microphone"
+#~ msgstr "Kalibrovať mikrofón"
 
 #~ msgid "Applications"
 #~ msgstr "Aplikácie"
@@ -1739,9 +1755,6 @@ msgstr "Okraj"
 
 #~ msgid "WebRTC"
 #~ msgstr "WebRTC"
-
-#~ msgid "Enable"
-#~ msgstr "Povolené"
 
 #~ msgid "Extended Filter"
 #~ msgstr "Rozšírený filter"

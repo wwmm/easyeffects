@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 11:07-0300\n"
+"POT-Creation-Date: 2021-07-05 14:48-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -178,29 +178,20 @@ msgstr "Entrada"
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: data/ui/application_window.ui:114 src/calibration_ui.cpp:56
-#: src/calibration_ui.cpp:182
-msgid "Test Signals"
-msgstr "Sinais de proba"
-
-#: data/ui/application_window.ui:125
-msgid "Global Bypass"
-msgstr "Desvío global"
-
-#: data/ui/application_window.ui:136
-msgid "Help"
-msgstr "Axuda"
-
-#: data/ui/application_window.ui:147 data/ui/application_window.ui:199
-msgid "Settings"
-msgstr "Configuración"
-
-#: data/ui/application_window.ui:161 data/ui/reverb.ui:19
+#: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
 #: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
 #: src/presets_menu_ui.cpp:357
 msgid "Presets"
 msgstr "Preconfiguracións"
+
+#: data/ui/application_window.ui:124
+msgid "Global Bypass"
+msgstr "Desvío global"
+
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+msgid "Settings"
+msgstr "Configuración"
 
 #: data/ui/autogain.ui:19
 msgid "Target"
@@ -475,12 +466,12 @@ msgid "Side"
 msgstr "Lado"
 
 #: data/ui/compressor.ui:438 data/ui/delay.ui:29 data/ui/equalizer.ui:138
-#: data/ui/stereo_tools.ui:164
+#: data/ui/pipe_info.ui:533 data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr "Esquerda"
 
 #: data/ui/compressor.ui:439 data/ui/delay.ui:61 data/ui/equalizer.ui:150
-#: data/ui/stereo_tools.ui:197
+#: data/ui/pipe_info.ui:543 data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr "Dereita"
 
@@ -490,6 +481,7 @@ msgid "High-pass"
 msgstr "Frecuencias altas"
 
 #: data/ui/compressor.ui:486 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
+#: data/ui/pipe_info.ui:569
 msgid "Frequency"
 msgstr "Frecuencia"
 
@@ -855,24 +847,28 @@ msgstr "Limiar dinámico"
 msgid "Start Service at Login"
 msgstr "Iniciar automaticamente coa sesión"
 
-#: data/ui/general_settings.ui:37
+#: data/ui/general_settings.ui:38
 msgid "Process All Outputs"
 msgstr "Procesar todas as saí­das"
 
-#: data/ui/general_settings.ui:57
+#: data/ui/general_settings.ui:59
 msgid "Process All Inputs"
 msgstr "Procesar todas as entradas"
 
-#: data/ui/general_settings.ui:77
+#: data/ui/general_settings.ui:80
 msgid "Use Dark Theme"
 msgstr "Empregar tema escuro"
 
-#: data/ui/general_settings.ui:114
+#: data/ui/general_settings.ui:101
+msgid "Run in Background"
+msgstr ""
+
+#: data/ui/general_settings.ui:138
 #, fuzzy
 msgid "Reset All Settings"
 msgstr "Configuración"
 
-#: data/ui/general_settings.ui:120
+#: data/ui/general_settings.ui:144
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -980,7 +976,7 @@ msgstr "Banda media"
 msgid "High Band"
 msgstr "Banda alta"
 
-#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:63
+#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:66
 msgid "General"
 msgstr "Xeral"
 
@@ -1049,6 +1045,24 @@ msgstr "Módulos"
 #: data/ui/pipe_info.ui:462
 msgid "Clients"
 msgstr "Clientes"
+
+#: data/ui/pipe_info.ui:486
+#, fuzzy
+msgid "Test Signal"
+msgstr "Sinais de proba"
+
+#: data/ui/pipe_info.ui:495
+msgid "Enable"
+msgstr "Activar"
+
+#: data/ui/pipe_info.ui:517
+#, fuzzy
+msgid "Channel"
+msgstr "Canles"
+
+#: data/ui/pipe_info.ui:553
+msgid "Both"
+msgstr ""
 
 #: data/ui/pitch.ui:18
 msgid "Faster"
@@ -1440,17 +1454,13 @@ msgstr ""
 msgid "Hide the Window."
 msgstr "Agochar a xanela."
 
-#: src/application.cpp:309
+#: src/application.cpp:313
 msgid "Output Presets: "
 msgstr "Preconfiguracións de saída: "
 
-#: src/application.cpp:317
+#: src/application.cpp:321
 msgid "Input Presets: "
 msgstr "Preconfiguracións de entrada: "
-
-#: src/calibration_ui.cpp:189
-msgid "Calibration Microphone"
-msgstr "Calibración do micrófono"
 
 #: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
 msgid "Import Impulse File"
@@ -1519,6 +1529,12 @@ msgstr "Importar preconfiguración"
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordo"
+
+#~ msgid "Help"
+#~ msgstr "Axuda"
+
+#~ msgid "Calibration Microphone"
+#~ msgstr "Calibración do micrófono"
 
 #~ msgid ""
 #~ "Automatically apply this preset whenever the currently used device is "
@@ -1596,9 +1612,6 @@ msgstr "Bordo"
 
 #~ msgid "Provided by"
 #~ msgstr "Fornecido por"
-
-#~ msgid "Enable"
-#~ msgstr "Activar"
 
 #~ msgid "Extended Filter"
 #~ msgstr "Filtro estendido"

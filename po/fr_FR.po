@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-02 11:07-0300\n"
+"POT-Creation-Date: 2021-07-05 14:48-0300\n"
 "PO-Revision-Date: 2017-08-29 11:00+0200\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -181,30 +181,20 @@ msgstr "Entrée"
 msgid "PipeWire"
 msgstr ""
 
-#: data/ui/application_window.ui:114 src/calibration_ui.cpp:56
-#: src/calibration_ui.cpp:182
-#, fuzzy
-msgid "Test Signals"
-msgstr "Signal de test"
-
-#: data/ui/application_window.ui:125
-msgid "Global Bypass"
-msgstr ""
-
-#: data/ui/application_window.ui:136
-msgid "Help"
-msgstr ""
-
-#: data/ui/application_window.ui:147 data/ui/application_window.ui:199
-msgid "Settings"
-msgstr "Paramètres"
-
-#: data/ui/application_window.ui:161 data/ui/reverb.ui:19
+#: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
 #: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
 #: src/presets_menu_ui.cpp:357
 msgid "Presets"
 msgstr "Préréglage"
+
+#: data/ui/application_window.ui:124
+msgid "Global Bypass"
+msgstr ""
+
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+msgid "Settings"
+msgstr "Paramètres"
 
 #: data/ui/autogain.ui:19
 #, fuzzy
@@ -491,12 +481,12 @@ msgid "Side"
 msgstr "Gain d'entrée [dB]"
 
 #: data/ui/compressor.ui:438 data/ui/delay.ui:29 data/ui/equalizer.ui:138
-#: data/ui/stereo_tools.ui:164
+#: data/ui/pipe_info.ui:533 data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr ""
 
 #: data/ui/compressor.ui:439 data/ui/delay.ui:61 data/ui/equalizer.ui:150
-#: data/ui/stereo_tools.ui:197
+#: data/ui/pipe_info.ui:543 data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr ""
 
@@ -506,6 +496,7 @@ msgid "High-pass"
 msgstr "Passe-haut"
 
 #: data/ui/compressor.ui:486 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
+#: data/ui/pipe_info.ui:569
 #, fuzzy
 msgid "Frequency"
 msgstr "Fréquence [Hz]"
@@ -887,24 +878,28 @@ msgstr ""
 msgid "Start Service at Login"
 msgstr ""
 
-#: data/ui/general_settings.ui:37
+#: data/ui/general_settings.ui:38
 msgid "Process All Outputs"
 msgstr ""
 
-#: data/ui/general_settings.ui:57
+#: data/ui/general_settings.ui:59
 msgid "Process All Inputs"
 msgstr ""
 
-#: data/ui/general_settings.ui:77
+#: data/ui/general_settings.ui:80
 msgid "Use Dark Theme"
 msgstr "Utiliser thème sombre"
 
-#: data/ui/general_settings.ui:114
+#: data/ui/general_settings.ui:101
+msgid "Run in Background"
+msgstr ""
+
+#: data/ui/general_settings.ui:138
 #, fuzzy
 msgid "Reset All Settings"
 msgstr "Paramètres"
 
-#: data/ui/general_settings.ui:120
+#: data/ui/general_settings.ui:144
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -1021,7 +1016,7 @@ msgstr "Gain d'entrée [dB]"
 msgid "High Band"
 msgstr "Passe-haut"
 
-#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:63
+#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:66
 msgid "General"
 msgstr "Général"
 
@@ -1084,6 +1079,24 @@ msgstr ""
 
 #: data/ui/pipe_info.ui:462
 msgid "Clients"
+msgstr ""
+
+#: data/ui/pipe_info.ui:486
+#, fuzzy
+msgid "Test Signal"
+msgstr "Signal de test"
+
+#: data/ui/pipe_info.ui:495
+#, fuzzy
+msgid "Enable"
+msgstr "Table sinusoïdale"
+
+#: data/ui/pipe_info.ui:517
+msgid "Channel"
+msgstr ""
+
+#: data/ui/pipe_info.ui:553
+msgid "Both"
 msgstr ""
 
 #: data/ui/pitch.ui:18
@@ -1509,20 +1522,15 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:309
+#: src/application.cpp:313
 #, fuzzy
 msgid "Output Presets: "
 msgstr "Préréglage"
 
-#: src/application.cpp:317
+#: src/application.cpp:321
 #, fuzzy
 msgid "Input Presets: "
 msgstr "Ouvrir préréglage"
-
-#: src/calibration_ui.cpp:189
-#, fuzzy
-msgid "Calibration Microphone"
-msgstr "Calibration de la correction microphone"
 
 #: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
 #, fuzzy
@@ -1597,6 +1605,10 @@ msgstr "Ouvrir préréglage"
 msgid "Recorders"
 msgstr ""
 
+#, fuzzy
+#~ msgid "Calibration Microphone"
+#~ msgstr "Calibration de la correction microphone"
+
 #~ msgid "Sine"
 #~ msgstr "Sinusoïde"
 
@@ -1657,10 +1669,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Output Effects"
 #~ msgstr "Limiteur d'entrée"
-
-#, fuzzy
-#~ msgid "Enable"
-#~ msgstr "Table sinusoïdale"
 
 #, fuzzy
 #~ msgid "High Pass Filter"
