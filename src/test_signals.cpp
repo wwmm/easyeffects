@@ -53,8 +53,16 @@ void on_process(void* userdata, spa_io_position* position) {
 
     float signal = 0.5F * sinf(d->ts->sine_phase);
 
-    left_out[n] = signal;
-    right_out[n] = signal;
+    left_out[n] = 0.0F;
+    right_out[n] = 0.0F;
+
+    if (d->ts->create_left_channel) {
+      left_out[n] = signal;
+    }
+
+    if (d->ts->create_right_channel) {
+      right_out[n] = signal;
+    }
   }
 
   if (d->ts->sine_phase > 2.0F * std::numbers::pi_v<float>) {
@@ -145,6 +153,8 @@ TestSignals::~TestSignals() {
 }
 
 void TestSignals::set_state(const bool& state) {
+  sine_phase = 0.0F;
+
   if (state) {
     auto links = pm->link_nodes(node_id, pm->pe_sink_node.id, false, false);
 
@@ -156,4 +166,10 @@ void TestSignals::set_state(const bool& state) {
 
     list_proxies.clear();
   }
+}
+
+void TestSignals::set_frequency(const float& value) {
+  sine_frequency = value;
+
+  sine_phase = 0.0F;
 }

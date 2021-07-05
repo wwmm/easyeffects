@@ -28,6 +28,7 @@
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
+#include "spinbutton_helper.hpp"
 #include "test_signals.hpp"
 
 class PipeInfoUi : public Gtk::Box {
@@ -87,6 +88,14 @@ class PipeInfoUi : public Gtk::Box {
   Gtk::Button* autoloading_add_output_profile = nullptr;
 
   Gtk::Button* autoloading_add_input_profile = nullptr;
+
+  Gtk::SpinButton* spinbutton_test_signal_frequency = nullptr;
+
+  Gtk::CheckButton* checkbutton_channel_left = nullptr;
+
+  Gtk::CheckButton* checkbutton_channel_right = nullptr;
+
+  Gtk::CheckButton* checkbutton_channel_both = nullptr;
 
   Glib::RefPtr<Gio::Settings> sie_settings;
 

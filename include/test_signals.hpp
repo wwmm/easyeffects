@@ -55,11 +55,17 @@ class TestSignals {
 
   uint rate = 0;
 
+  bool create_left_channel = true;
+
+  bool create_right_channel = true;
+
   float sine_phase = 0.0F;
 
   float sine_frequency = 1000.0F;
 
   void set_state(const bool& state);
+
+  void set_frequency(const float& value);
 
   [[nodiscard]] auto get_node_id() const -> uint;
 

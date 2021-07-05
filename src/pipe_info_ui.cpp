@@ -77,6 +77,12 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   min_quantum = builder->get_widget<Gtk::Label>("min_quantum");
   server_rate = builder->get_widget<Gtk::Label>("server_rate");
 
+  spinbutton_test_signal_frequency = builder->get_widget<Gtk::SpinButton>("spinbutton_test_signal_frequency");
+
+  checkbutton_channel_left = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_left");
+  checkbutton_channel_right = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_right");
+  checkbutton_channel_both = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_both");
+
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
 
@@ -243,6 +249,37 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id), holder->info.name,
                                   device_profile);
+  });
+
+  spinbutton_test_signal_frequency->signal_output().connect(
+      [=, this]() { return parse_spinbutton_output(spinbutton_test_signal_frequency, "Hz"); }, true);
+
+  spinbutton_test_signal_frequency->signal_input().connect(
+      [=, this](double& new_value) { return parse_spinbutton_input(spinbutton_test_signal_frequency, new_value); },
+      true);
+
+  spinbutton_test_signal_frequency->signal_value_changed().connect(
+      [=, this]() { ts->set_frequency(static_cast<float>(spinbutton_test_signal_frequency->get_value())); });
+
+  checkbutton_channel_left->signal_toggled().connect([&, this]() {
+    if (checkbutton_channel_left->get_active()) {
+      ts->create_left_channel = true;
+      ts->create_right_channel = false;
+    }
+  });
+
+  checkbutton_channel_right->signal_toggled().connect([&, this]() {
+    if (checkbutton_channel_right->get_active()) {
+      ts->create_left_channel = false;
+      ts->create_right_channel = true;
+    }
+  });
+
+  checkbutton_channel_both->signal_toggled().connect([&, this]() {
+    if (checkbutton_channel_both->get_active()) {
+      ts->create_left_channel = true;
+      ts->create_right_channel = true;
+    }
   });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");

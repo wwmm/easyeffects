@@ -514,10 +514,62 @@
                                     <object class="GtkLabel">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Frequency</property>
+                                        <property name="label" translatable="yes">Channel</property>
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">1</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="homogeneous">1</property>
+                                        <property name="accessible-role">tab-list</property>
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_channel_left">
+                                                <property name="valign">end</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="label" translatable="yes">Left</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_channel_right">
+                                                <property name="valign">start</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="group">checkbutton_channel_left</property>
+                                                <property name="label" translatable="yes">Right</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_channel_both">
+                                                <property name="valign">start</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="group">checkbutton_channel_left</property>
+                                                <property name="label" translatable="yes">Both</property>
+                                                <property name="active">1</property>
+                                            </object>
+                                        </child>
+
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Frequency</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">2</property>
                                         </layout>
                                     </object>
                                 </child>
@@ -535,9 +587,10 @@
                                         </property>
                                         <property name="digits">0</property>
                                         <property name="update-policy">if-valid</property>
+                                        <property name="width-chars">10</property>
                                         <layout>
                                             <property name="column">1</property>
-                                            <property name="row">1</property>
+                                            <property name="row">2</property>
                                         </layout>
                                     </object>
                                 </child>
