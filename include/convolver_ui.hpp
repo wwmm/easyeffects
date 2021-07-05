@@ -87,6 +87,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 
+  // std::vector<sigc::connection> connections;
+
   std::mutex lock_guard_irs_info;
 
   void setup_listview();

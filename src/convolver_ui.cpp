@@ -177,6 +177,14 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 }
 
 ConvolverUi::~ConvolverUi() {
+  lock_guard_irs_info.lock();
+
+  for (auto& c : connections) {
+    c.disconnect();
+  }
+
+  lock_guard_irs_info.unlock();
+
   util::debug(name + " ui destroyed");
 }
 
@@ -414,14 +422,16 @@ void ConvolverUi::get_irs_info() {
   if (file.channels() != 2 || file.frames() == 0) {
     // warning user that there is a problem
 
-    Glib::signal_idle().connect_once([=, this]() {
+    connections.emplace_back(Glib::signal_idle().connect([=, this]() {
       label_sampling_rate->set_text(_("Failed"));
       label_samples->set_text(_("Failed"));
 
       label_duration->set_text(_("Failed"));
 
       label_file_name->set_text(_("Could Not Load The Impulse File"));
-    });
+
+      return false;
+    }));
 
     return;
   }
@@ -526,7 +536,7 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
-  Glib::signal_idle().connect_once([=, this]() {
+  connections.emplace_back(Glib::signal_idle().connect([=, this]() {
     label_sampling_rate->set_text(std::to_string(file.samplerate()) + " Hz");
     label_samples->set_text(std::to_string(file.frames()));
 
@@ -537,7 +547,9 @@ void ConvolverUi::get_irs_info() {
     label_file_name->set_text(fpath.stem().string());
 
     plot_waveform();
-  });
+
+    return false;
+  }));
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
@@ -677,7 +689,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
 
-  Glib::signal_idle().connect_once([=, this]() { plot_fft(); });
+  connections.emplace_back(Glib::signal_idle().connect([=, this]() {
+    plot_fft();
+
+    return false;
+  }));
 }
 
 void ConvolverUi::plot_waveform() {
