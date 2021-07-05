@@ -179,10 +179,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 ConvolverUi::~ConvolverUi() {
   lock_guard_irs_info.lock();
 
-  for (auto& c : connections) {
-    c.disconnect();
-  }
-
   lock_guard_irs_info.unlock();
 
   util::debug(name + " ui destroyed");
