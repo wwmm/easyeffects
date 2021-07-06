@@ -106,9 +106,9 @@ Stable releases are hosted on
 
 ```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.easyeffects -->
+flatpak install flathub com.github.wwmm.easyeffects
 
-```
+``` -->
 
 #### Installing from source
 
@@ -143,4 +143,7 @@ See the wiki: [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki
 ## License
 
 EasyEffects is licensed under GNU General Public License version 3. See [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE.md).
+
+```
+
 ```
