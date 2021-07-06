@@ -2,6 +2,33 @@
 
 ## [Unreleased]
 
+## [6.0.0]
+
+This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about
+everything here. The following are the most import ones.
+
+### Added
+
+- The application and its repository have been renamed from PulseEffects to `EasyEffects`
+- gtkmm3 was replaced by gtkmm4
+- Gstreamer was replaced by native PipeWire filters.
+- Many features were reimplemented from scratch. The preset autoloading is one example. Another remarkable change
+  will be seen in the plugins selection menu. Now the user can show in the window only the plugins that he/she wants
+  to use.
+
+### Changed
+
+- Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some
+  patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully
+  someone will come up with a script for this in the feature.
+- New libraries are being used and some of the librarires that were optional before are now required
+
+## [5.0.4]
+
+### Added
+
+-Improved compatibility with PipeWire 0.3.31 (still to be released)
+
 ## [5.0.3]
 
 ### Added
