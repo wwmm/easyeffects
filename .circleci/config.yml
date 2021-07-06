@@ -39,7 +39,7 @@ jobs:
           command: |
             dbus-uuidgen > /var/lib/dbus/machine-id
             mkdir -p /var/run/dbus
-            DBUS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS
+            DBUS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address | cut -d "=" -f3) && echo $DBUS
             #echo "export $DBUS" >> $BASH_ENV
             #echo $BASH_ENV
       - run:
