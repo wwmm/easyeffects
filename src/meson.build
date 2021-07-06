@@ -95,11 +95,6 @@ easyeffects_sources = [
 	'stream_input_effects.cpp',
 	'test_signals.cpp',
 	'util.cpp',
-	# 'calibration_ui.cpp',
-	# 'calibration_signals_ui.cpp',
-	# 'calibration_signals.cpp',
-	# 'calibration_mic_ui.cpp',
-	# 'calibration_mic.cpp',
 	gresources
 ]
 
