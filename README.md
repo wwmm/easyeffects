@@ -11,8 +11,6 @@ Audio effects for PipeWire applications.
 
 ## Effects available
 
-### Applications output
-
 - Auto gain
 - Bass enhancer
 - Compressor
