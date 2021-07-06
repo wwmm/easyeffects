@@ -14,7 +14,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
             'lsp-plugins: equalizer, delay'
             'zam-plugins: maximizer'
             'yelp: in-app help')
-source=("easyeffects::git+https://github.com/wwmm/pulseeffects.git")
+source=("easyeffects::git+https://github.com/wwmm/easyeffects.git")
 conflicts=(easyeffects)
 provides=(easyeffects)
 sha512sums=('SKIP')
