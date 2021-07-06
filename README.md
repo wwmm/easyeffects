@@ -5,11 +5,9 @@
 
 Audio effects for PipeWire applications.
 
-![](images/easyeffects.png)
-![](images/equalizer1.png)
-![](images/equalizer2.png)
+![](images/easyeffects_players.png)
+![](images/easyeffects_plugins.png)
 ![](images/convolver.png)
-![](images/test_signals.png)
 
 ## Effects available
 
