@@ -36,6 +36,7 @@
                                 </layout>
                             </object>
                         </child>
+
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
@@ -57,6 +58,7 @@
                                 </layout>
                             </object>
                         </child>
+
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
@@ -75,6 +77,169 @@
                                 <layout>
                                     <property name="column">1</property>
                                     <property name="row">2</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Points</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">3</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="n_points">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="digits">0</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">2</property>
+                                        <property name="upper">1000</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">10</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">3</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Height</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">4</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="height">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="digits">0</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">1</property>
+                                        <property name="upper">1000</property>
+                                        <property name="value">100</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">10</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">4</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Line Width</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">5</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="line_width">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="digits">1</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.1</property>
+                                        <property name="upper">100</property>
+                                        <property name="value">2</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">5</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Minimum</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">6</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="minimum_frequency">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">20</property>
+                                        <property name="upper">22000</property>
+                                        <property name="value">20</property>
+                                        <property name="step-increment">10</property>
+                                        <property name="page-increment">100</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">6</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Maximum</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">7</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="maximum_frequency">
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="width-chars">10</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">20</property>
+                                        <property name="upper">22000</property>
+                                        <property name="value">20</property>
+                                        <property name="step-increment">10</property>
+                                        <property name="page-increment">100</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">7</property>
                                 </layout>
                             </object>
                         </child>
@@ -111,6 +276,7 @@
                                 </layout>
                             </object>
                         </child>
+
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
@@ -132,6 +298,7 @@
                                 </layout>
                             </object>
                         </child>
+
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
@@ -153,182 +320,6 @@
                                 </layout>
                             </object>
                         </child>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkGrid">
-                <property name="halign">center</property>
-                <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">24</property>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">end</property>
-                        <property name="label" translatable="yes">Points</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="n_points">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="digits">0</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">2</property>
-                                <property name="upper">1000</property>
-                                <property name="step-increment">1</property>
-                                <property name="page-increment">10</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Height</property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="height">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="digits">0</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">1</property>
-                                <property name="upper">1000</property>
-                                <property name="value">100</property>
-                                <property name="step-increment">1</property>
-                                <property name="page-increment">10</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Line Width</property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="line_width">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="digits">1</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">0.1</property>
-                                <property name="upper">100</property>
-                                <property name="value">2</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Minimum</property>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="minimum_frequency">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">20</property>
-                                <property name="upper">22000</property>
-                                <property name="value">20</property>
-                                <property name="step-increment">10</property>
-                                <property name="page-increment">100</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Maximum</property>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="maximum_frequency">
-                        <property name="halign">center</property>
-                        <property name="valign">start</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">20</property>
-                                <property name="upper">22000</property>
-                                <property name="value">20</property>
-                                <property name="step-increment">10</property>
-                                <property name="page-increment">100</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">1</property>
-                        </layout>
                     </object>
                 </child>
             </object>

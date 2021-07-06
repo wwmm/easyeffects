@@ -67,6 +67,24 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   minimum_frequency = builder->get_widget<Gtk::SpinButton>("minimum_frequency");
   maximum_frequency = builder->get_widget<Gtk::SpinButton>("maximum_frequency");
 
+  // init color buttons
+
+  Glib::Variant<std::vector<double>> v;
+
+  settings->get_value("color", v);
+
+  Gdk::RGBA rgba;
+
+  rgba.set_rgba(v.get()[0], v.get()[1], v.get()[2], v.get()[3]);
+
+  spectrum_color_button->set_rgba(rgba);
+
+  settings->get_value("color-axis-labels", v);
+
+  rgba.set_rgba(v.get()[0], v.get()[1], v.get()[2], v.get()[3]);
+
+  axis_color_button->set_rgba(rgba);
+
   // signals connection
 
   connections.emplace_back(settings->signal_changed("color").connect([&](auto key) {
