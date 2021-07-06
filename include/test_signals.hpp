@@ -22,8 +22,11 @@
 
 #include <pipewire/filter.h>
 #include <numbers>
+#include <random>
 #include <span>
 #include "pipe_manager.hpp"
+
+enum class TestSignalType { sine_wave, gaussian, pink };
 
 class TestSignals {
  public:
@@ -63,6 +66,8 @@ class TestSignals {
 
   float sine_frequency = 1000.0F;
 
+  TestSignalType signal_type = TestSignalType::sine_wave;
+
   void set_state(const bool& state);
 
   void set_frequency(const float& value);
@@ -70,6 +75,10 @@ class TestSignals {
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
+
+  void set_signal_type(const TestSignalType& value);
+
+  auto white_noise() -> float;
 
  private:
   PipeManager* pm = nullptr;
@@ -81,6 +90,12 @@ class TestSignals {
   uint node_id = 0;
 
   std::vector<pw_proxy*> list_proxies;
+
+  std::random_device rd{};
+
+  std::mt19937 random_generator;
+
+  std::normal_distribution<float> normal_distribution{0.0F, 0.3F};
 };
 
 #endif

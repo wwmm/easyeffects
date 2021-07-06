@@ -523,6 +523,7 @@
                                 </child>
                                 <child>
                                     <object class="GtkBox">
+                                        <property name="halign">start</property>
                                         <property name="homogeneous">1</property>
                                         <property name="accessible-role">tab-list</property>
                                         <child>
@@ -566,10 +567,64 @@
                                     <object class="GtkLabel">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Frequency</property>
+                                        <property name="label" translatable="yes">Signal</property>
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">start</property>
+                                        <property name="homogeneous">1</property>
+                                        <property name="accessible-role">tab-list</property>
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_signal_sine">
+                                                <property name="valign">end</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="label" translatable="yes">Sine Wave</property>
+                                                <property name="active">1</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_signal_gaussian">
+                                                <property name="valign">start</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="group">checkbutton_signal_sine</property>
+                                                <property name="label" translatable="yes">White Noise</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkCheckButton" id="checkbutton_signal_pink">
+                                                <property name="valign">start</property>
+                                                <property name="halign">center</property>
+                                                <property name="accessible-role">tab</property>
+                                                <property name="group">checkbutton_signal_sine</property>
+                                                <property name="label" translatable="yes">Pink Noise</property>
+                                            </object>
+                                        </child>
+
+                                        <layout>
+                                            <property name="column">1</property>
+                                            <property name="row">2</property>
+                                        </layout>
+                                    </object>
+                                </child>
+
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Frequency</property>
+                                        <layout>
+                                            <property name="column">0</property>
+                                            <property name="row">3</property>
                                         </layout>
                                     </object>
                                 </child>
@@ -590,7 +645,7 @@
                                         <property name="width-chars">10</property>
                                         <layout>
                                             <property name="column">1</property>
-                                            <property name="row">2</property>
+                                            <property name="row">3</property>
                                         </layout>
                                     </object>
                                 </child>

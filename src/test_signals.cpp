@@ -46,15 +46,28 @@ void on_process(void* userdata, spa_io_position* position) {
   std::span left_out{out_left, out_left + n_samples};
   std::span right_out{out_right, out_right + n_samples};
 
-  // Generate a sine wave
-
   for (uint n = 0; n < n_samples; n++) {
-    d->ts->sine_phase += 2.0F * std::numbers::pi_v<float> * d->ts->sine_frequency / static_cast<float>(rate);
-
-    float signal = 0.5F * sinf(d->ts->sine_phase);
-
+    float signal = 0.0F;
     left_out[n] = 0.0F;
     right_out[n] = 0.0F;
+
+    switch (d->ts->signal_type) {
+      case TestSignalType::sine_wave: {
+        d->ts->sine_phase += 2.0F * std::numbers::pi_v<float> * d->ts->sine_frequency / static_cast<float>(rate);
+
+        signal = 0.5F * sinf(d->ts->sine_phase);
+
+        break;
+      }
+      case TestSignalType::gaussian: {
+        signal = d->ts->white_noise();
+
+        break;
+      }
+      case TestSignalType::pink: {
+        break;
+      }
+    }
 
     if (d->ts->create_left_channel) {
       left_out[n] = signal;
@@ -74,7 +87,7 @@ const struct pw_filter_events filter_events = {.process = on_process};
 
 }  // namespace
 
-TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager) {
+TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_generator(rd()) {
   pf_data.ts = this;
 
   const auto* filter_name = "pe_test_signals";
@@ -172,4 +185,14 @@ void TestSignals::set_frequency(const float& value) {
   sine_frequency = value;
 
   sine_phase = 0.0F;
+}
+
+auto TestSignals::white_noise() -> float {
+  auto v = normal_distribution(random_generator);
+
+  v = (v > 1.0F) ? 1.0F : v;
+
+  v = (v < -1.0F) ? -1.0F : v;
+
+  return v;
 }

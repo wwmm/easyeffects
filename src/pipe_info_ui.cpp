@@ -82,6 +82,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   checkbutton_channel_left = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_left");
   checkbutton_channel_right = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_right");
   checkbutton_channel_both = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_both");
+  checkbutton_signal_sine = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_sine");
+  checkbutton_signal_gaussian = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_gaussian");
+  checkbutton_signal_pink = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_pink");
 
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
@@ -279,6 +282,31 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     if (checkbutton_channel_both->get_active()) {
       ts->create_left_channel = true;
       ts->create_right_channel = true;
+    }
+  });
+
+  checkbutton_signal_sine->signal_toggled().connect([&, this]() {
+    if (checkbutton_signal_sine->get_active()) {
+      ts->signal_type = TestSignalType::sine_wave;
+      ts->sine_phase = 0.0F;
+
+      spinbutton_test_signal_frequency->set_sensitive(true);
+    }
+  });
+
+  checkbutton_signal_gaussian->signal_toggled().connect([&, this]() {
+    if (checkbutton_signal_gaussian->get_active()) {
+      ts->signal_type = TestSignalType::gaussian;
+
+      spinbutton_test_signal_frequency->set_sensitive(false);
+    }
+  });
+
+  checkbutton_signal_pink->signal_toggled().connect([&, this]() {
+    if (checkbutton_signal_pink->get_active()) {
+      ts->signal_type = TestSignalType::pink;
+
+      spinbutton_test_signal_frequency->set_sensitive(false);
     }
   });
 

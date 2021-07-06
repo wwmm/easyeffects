@@ -97,6 +97,12 @@ class PipeInfoUi : public Gtk::Box {
 
   Gtk::CheckButton* checkbutton_channel_both = nullptr;
 
+  Gtk::CheckButton* checkbutton_signal_sine = nullptr;
+
+  Gtk::CheckButton* checkbutton_signal_gaussian = nullptr;
+
+  Gtk::CheckButton* checkbutton_signal_pink = nullptr;
+
   Glib::RefPtr<Gio::Settings> sie_settings;
 
   Glib::RefPtr<Gio::Settings> soe_settings;
