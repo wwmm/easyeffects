@@ -5,7 +5,7 @@
 ## [6.0.0]
 
 This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about
-everything here. The following are just the most import ones. People interested on the journy that got us here can take
+everything here. The following are just the most import ones. People interested on the journey that got us here can take
 a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/wwmm/easyeffects/issues/874.
 
 ### Added
