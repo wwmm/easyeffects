@@ -97,7 +97,7 @@ class EffectsBase {
 
   std::map<std::string, float> plugins_latency;
 
-  std::vector<pw_proxy*> list_proxies;
+  std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 
   void activate_filters();
 

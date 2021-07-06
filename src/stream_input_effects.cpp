@@ -257,3 +257,17 @@ void StreamInputEffects::set_bypass(const bool& state) {
     connect_filters();
   }
 }
+
+void StreamInputEffects::set_listen_to_mic(const bool& state) {
+  if (state) {
+    auto links = pm->link_nodes(pm->pe_source_node.id, pm->output_device.id, false, false);
+
+    for (const auto& link : links) {
+      list_proxies_listen_mic.emplace_back(link);
+    }
+  } else {
+    pm->destroy_links(list_proxies_listen_mic);
+
+    list_proxies_listen_mic.clear();
+  }
+}

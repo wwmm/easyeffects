@@ -79,9 +79,11 @@ class EffectsBaseUi {
 
   Gtk::Label *device_state = nullptr, *latency_status = nullptr;
 
-  Gtk::ToggleButton *toggle_players = nullptr, *toggle_plugins = nullptr;
+  Gtk::ToggleButton *toggle_players = nullptr, *toggle_plugins = nullptr, *toggle_listen_mic = nullptr;
 
   Gtk::Stack* stack_plugins = nullptr;
+
+  Gtk::Stack* stack_top = nullptr;
 
   Gtk::Window* transient_window = nullptr;
 
@@ -104,8 +106,6 @@ class EffectsBaseUi {
   static auto node_state_to_string(const pw_node_state& state) -> std::string;
 
  private:
-  Gtk::Stack* stack_top = nullptr;
-
   Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_plugins = nullptr,
                 *listview_selected_plugins = nullptr;
 

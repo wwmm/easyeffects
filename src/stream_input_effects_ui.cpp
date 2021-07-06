@@ -30,6 +30,18 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_icon->set_from_icon_name("media-record-symbolic");
   toggle_players_label->set_text(_("Recorders"));
 
+  stack_top->connect_property_changed("visible-child", [=, this]() {
+    auto name = stack_top->get_visible_child_name();
+
+    if (name == "page_players") {
+      toggle_listen_mic->set_visible(false);
+    } else {
+      toggle_listen_mic->set_visible(true);
+    }
+  });
+
+  toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
+
   for (auto& node : pm->list_nodes) {
     if (node.media_class == "Stream/Input/Audio") {
       on_app_added(node);
