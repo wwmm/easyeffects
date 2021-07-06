@@ -84,7 +84,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   checkbutton_channel_both = builder->get_widget<Gtk::CheckButton>("checkbutton_channel_both");
   checkbutton_signal_sine = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_sine");
   checkbutton_signal_gaussian = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_gaussian");
-  checkbutton_signal_pink = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_pink");
+  // checkbutton_signal_pink = builder->get_widget<Gtk::CheckButton>("checkbutton_signal_pink");
 
   setup_dropdown_devices(dropdown_input_devices, input_devices_model);
   setup_dropdown_devices(dropdown_output_devices, output_devices_model);
@@ -302,13 +302,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   });
 
-  checkbutton_signal_pink->signal_toggled().connect([&, this]() {
-    if (checkbutton_signal_pink->get_active()) {
-      ts->signal_type = TestSignalType::pink;
+  // checkbutton_signal_pink->signal_toggled().connect([&, this]() {
+  //   if (checkbutton_signal_pink->get_active()) {
+  //     ts->signal_type = TestSignalType::pink;
 
-      spinbutton_test_signal_frequency->set_sensitive(false);
-    }
-  });
+  //     spinbutton_test_signal_frequency->set_sensitive(false);
+  //   }
+  // });
 
   sie_settings->bind("use-default-input-device", use_default_input, "active");
   sie_settings->bind("use-default-input-device", dropdown_input_devices, "sensitive",

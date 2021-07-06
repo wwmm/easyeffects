@@ -599,7 +599,7 @@
                                             </object>
                                         </child>
 
-                                        <child>
+                                        <!-- <child>
                                             <object class="GtkCheckButton" id="checkbutton_signal_pink">
                                                 <property name="valign">start</property>
                                                 <property name="halign">center</property>
@@ -607,7 +607,7 @@
                                                 <property name="group">checkbutton_signal_sine</property>
                                                 <property name="label" translatable="yes">Pink Noise</property>
                                             </object>
-                                        </child>
+                                        </child> -->
 
                                         <layout>
                                             <property name="column">1</property>
