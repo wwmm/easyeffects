@@ -56,6 +56,10 @@ Pitch::Pitch(const std::string& tag,
 
     std::scoped_lock<std::mutex> lock(data_mutex);
 
+    if (!rubberband_ready) {
+      return;
+    }
+
     stretcher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
                                                    : RubberBand::RubberBandStretcher::OptionFormantShifted);
   });
@@ -64,6 +68,10 @@ Pitch::Pitch(const std::string& tag,
     faster = settings->get_boolean(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
+
+    if (!rubberband_ready) {
+      return;
+    }
 
     stretcher->setPitchOption(faster ? RubberBand::RubberBandStretcher::OptionPitchHighSpeed
                                      : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
@@ -247,6 +255,10 @@ void Pitch::process(std::span<float>& left_in,
 }
 
 void Pitch::update_crispness() {
+  if (!rubberband_ready) {
+    return;
+  }
+
   switch (crispness) {
     case 0:
       stretcher->setTransientsOption(RubberBand::RubberBandStretcher::OptionTransientsSmooth);
@@ -300,6 +312,10 @@ void Pitch::update_crispness() {
 */
 
 void Pitch::update_pitch_scale() {
+  if (!rubberband_ready) {
+    return;
+  }
+
   double n_octaves = octaves + static_cast<double>(semitones) / 12.0 + static_cast<double>(cents) / 1200.0;
 
   double ratio = std::pow(2, n_octaves);

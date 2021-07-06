@@ -219,6 +219,10 @@ void EchoCanceller::process(std::span<float>& left_in,
 }
 
 void EchoCanceller::init_speex() {
+  if (n_samples == 0 || rate == 0) {
+    return;
+  }
+
   data_L.resize(0);
   data_R.resize(0);
   probe_L.resize(0);

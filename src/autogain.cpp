@@ -62,6 +62,10 @@ AutoGain::~AutoGain() {
 void AutoGain::init_ebur128() {
   ebur128_ready = false;
 
+  if (n_samples == 0 || rate == 0) {
+    return;
+  }
+
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
 
