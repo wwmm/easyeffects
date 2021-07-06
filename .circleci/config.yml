@@ -4,6 +4,9 @@ jobs:
   archlinux:
     docker:
       - image: archlinux/base:latest
+        auth:
+          username: wellingtonwallace
+          password: $DOCKERHUB_PASSWORD # context / project UI env-var reference
     environment:
       LANG: C
       DISPLAY: :10
