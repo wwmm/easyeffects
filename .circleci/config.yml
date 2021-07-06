@@ -37,11 +37,10 @@ jobs:
       - run:
           name: Starting dbus
           command: |
-            systemctl start dbus
-            #dbus-uuidgen > /var/lib/dbus/machine-id
-            #mkdir -p /var/run/dbus
+            dbus-uuidgen > /var/lib/dbus/machine-id
+            mkdir -p /var/run/dbus
             #DBUS=$(dbus-launch | awk -F, '{print $1;exit}') && echo $DBUS
-            #dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
+            dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address
             #pipewire
             # echo "export $DBUS" >> $BASH_ENV
             # echo $BASH_ENV
