@@ -38,6 +38,5 @@
         <file>ui/spectrum.ui</file>
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
-        <file>about.glade</file>
     </gresource>
 </gresources>

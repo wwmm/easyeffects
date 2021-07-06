@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-05 14:48-0300\n"
+"POT-Creation-Date: 2021-07-06 14:44-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -115,10 +115,6 @@ msgstr "obmedzovač;kompresor;ozvena;ekvalizér;automatická hlasitosť;"
 msgid "\"Presets\""
 msgstr "\"Predvoľby\""
 
-#: data/ui/about.glade.in:11
-msgid "Audio effects for PulseAudio applications"
-msgstr "Zvukové efekty pre aplikácie PulseAudio"
-
 #: data/ui/app_info.ui:66
 msgid "Add to Blocklist"
 msgstr "Pridať na zoznam blokovaných"
@@ -169,7 +165,7 @@ msgstr "Výstup"
 #: data/ui/multiband_compressor.ui:1410 data/ui/multiband_gate.ui:1542
 #: data/ui/pipe_info.ui:351 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
 #: data/ui/reverb.ui:347 data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36
-#: data/ui/stereo_tools.ui:523 src/stream_input_effects_ui.cpp:88
+#: data/ui/stereo_tools.ui:523 src/stream_input_effects_ui.cpp:100
 msgid "Input"
 msgstr "Vstup"
 
@@ -188,7 +184,7 @@ msgstr "Predvoľby"
 msgid "Global Bypass"
 msgstr "Globálne premostenie"
 
-#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:178
 msgid "Settings"
 msgstr "Nastavenia"
 
@@ -463,12 +459,12 @@ msgid "Side"
 msgstr "Postranný"
 
 #: data/ui/compressor.ui:438 data/ui/delay.ui:29 data/ui/equalizer.ui:138
-#: data/ui/pipe_info.ui:533 data/ui/stereo_tools.ui:164
+#: data/ui/pipe_info.ui:534 data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr "Ľavý"
 
 #: data/ui/compressor.ui:439 data/ui/delay.ui:61 data/ui/equalizer.ui:150
-#: data/ui/pipe_info.ui:543 data/ui/stereo_tools.ui:197
+#: data/ui/pipe_info.ui:544 data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr "Pravý"
 
@@ -478,7 +474,7 @@ msgid "High-pass"
 msgstr "Horné pásmo"
 
 #: data/ui/compressor.ui:486 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
-#: data/ui/pipe_info.ui:569
+#: data/ui/pipe_info.ui:624
 msgid "Frequency"
 msgstr "Frekvencia"
 
@@ -555,7 +551,7 @@ msgstr "Trvanie"
 msgid "Import Impulse"
 msgstr "Importovať impulz"
 
-#: data/ui/convolver.ui:429 data/ui/effects_base.ui:350
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
 msgstr ""
@@ -641,7 +637,7 @@ msgstr ""
 msgid "Blocklist"
 msgstr "Zoznam blokovaných"
 
-#: data/ui/effects_base.ui:273
+#: data/ui/effects_base.ui:300
 msgid "Player Name"
 msgstr ""
 
@@ -1058,9 +1054,23 @@ msgstr "Povolené"
 msgid "Channel"
 msgstr "Kanály"
 
-#: data/ui/pipe_info.ui:553
+#: data/ui/pipe_info.ui:554
 msgid "Both"
 msgstr ""
+
+#: data/ui/pipe_info.ui:570
+#, fuzzy
+msgid "Signal"
+msgstr "Skúšobné signály"
+
+#: data/ui/pipe_info.ui:587
+#, fuzzy
+msgid "Sine Wave"
+msgstr "Sínusová tabuľka"
+
+#: data/ui/pipe_info.ui:598
+msgid "White Noise"
+msgstr "Biely šum"
 
 #: data/ui/pitch.ui:18
 msgid "Faster"
@@ -1463,49 +1473,54 @@ msgstr "Výstupné predvoľby: "
 msgid "Input Presets: "
 msgstr "Vstupné predvoľby: "
 
-#: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
+#: src/application.cpp:349
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Zvukové efekty pre aplikácie využívajúce PulseAudio"
+
+#: src/convolver_ui.cpp:372 src/convolver_ui.cpp:375
 msgid "Import Impulse File"
 msgstr "Načítať súbor impulzu"
 
-#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:371 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:373 src/convolver_ui.cpp:375 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:593 src/presets_menu_ui.cpp:195
 msgid "Open"
 msgstr "Otvoriť"
 
-#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:372 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:373 src/convolver_ui.cpp:376 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:594 src/presets_menu_ui.cpp:195
 msgid "Cancel"
 msgstr "Zrušiť"
 
-#: src/convolver_ui.cpp:377
+#: src/convolver_ui.cpp:381
 msgid "Impulse Response"
 msgstr "Odpoveď impulzu"
 
-#: src/convolver_ui.cpp:418 src/convolver_ui.cpp:419 src/convolver_ui.cpp:421
+#: src/convolver_ui.cpp:422 src/convolver_ui.cpp:423 src/convolver_ui.cpp:425
 msgid "Failed"
 msgstr "Zlyhalo"
 
-#: src/convolver_ui.cpp:423
+#: src/convolver_ui.cpp:427
 msgid "Could Not Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_base_ui.cpp:668 src/effects_base_ui.cpp:1302
+#: src/effects_base_ui.cpp:730 src/effects_base_ui.cpp:1364
 msgid "running"
 msgstr "beží"
 
-#: src/effects_base_ui.cpp:672 src/effects_base_ui.cpp:1304
+#: src/effects_base_ui.cpp:734 src/effects_base_ui.cpp:1366
 msgid "suspended"
 msgstr "pozastavené"
 
-#: src/effects_base_ui.cpp:676 src/effects_base_ui.cpp:1306
+#: src/effects_base_ui.cpp:738 src/effects_base_ui.cpp:1368
 msgid "idle"
 msgstr "nečinné"
 
-#: src/effects_base_ui.cpp:680 src/effects_base_ui.cpp:1308
+#: src/effects_base_ui.cpp:742 src/effects_base_ui.cpp:1370
 msgid "creating"
 msgstr "vytváram"
 
-#: src/effects_base_ui.cpp:684 src/effects_base_ui.cpp:1310
+#: src/effects_base_ui.cpp:746 src/effects_base_ui.cpp:1372
 msgid "error"
 msgstr "chyba"
 
@@ -1530,6 +1545,9 @@ msgstr "Načítať predvoľbu"
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
+
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Zvukové efekty pre aplikácie PulseAudio"
 
 #~ msgid "Help"
 #~ msgstr "Pomocník"
@@ -1581,14 +1599,8 @@ msgstr "Okraj"
 #~ msgid "Silence"
 #~ msgstr "Ticho"
 
-#~ msgid "White Noise"
-#~ msgstr "Biely šum"
-
 #~ msgid "Pink Noise"
 #~ msgstr "Ružový Šum"
-
-#~ msgid "Sine Table"
-#~ msgstr "Sínusová tabuľka"
 
 #~ msgid "Ticks"
 #~ msgstr "Tiky"

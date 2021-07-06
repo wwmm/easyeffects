@@ -342,30 +342,22 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
 
 void Application::create_actions() {
   add_action("about", [&]() {
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/about.glade");
+    auto* dialog = new Gtk::AboutDialog();
 
-    auto* dialog = (Gtk::Dialog*)builder->get_object("about_dialog").get();
+    dialog->set_program_name("EasyEffects");
+    dialog->set_version(VERSION);
+    dialog->set_comments(_("Audio effects for PipeWire applications"));
+    dialog->set_authors({"Wellington Wallace"});
+    dialog->set_logo_icon_name("easyeffects");
+    dialog->set_license_type(Gtk::License::GPL_3_0);
+    dialog->set_website("https://github.com/wwmm/pulseeffects");
 
-    dialog->signal_response().connect([=, this](auto response_id) {
-      switch (response_id) {
-        case Gtk::ResponseType::CLOSE:
-        case Gtk::ResponseType::CANCEL:
-        case Gtk::ResponseType::DELETE_EVENT: {
-          dialog->hide();
-          util::debug(log_tag + "hiding the about dialog window");
-          break;
-        }
-        default:
-          util::debug(log_tag + "unexpected about dialog response!");
-          break;
-      }
-    });
+    dialog->set_modal(true);
 
     dialog->set_transient_for(*get_active_window());
 
-    dialog->show();
+    dialog->set_hide_on_close(true);
 
-    // Bring it to the front, in case it was already shown:
     dialog->present();
   });
 

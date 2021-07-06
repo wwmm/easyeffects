@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-05 14:48-0300\n"
+"POT-Creation-Date: 2021-07-06 14:44-0300\n"
 "PO-Revision-Date: 2017-10-14 10:20+0200\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: \n"
@@ -118,11 +118,6 @@ msgstr ""
 msgid "\"Presets\""
 msgstr "Profiler"
 
-#: data/ui/about.glade.in:11
-#, fuzzy
-msgid "Audio effects for PulseAudio applications"
-msgstr "Ljudeffekter för PulseAudio applikationer"
-
 #: data/ui/app_info.ui:66
 msgid "Add to Blocklist"
 msgstr ""
@@ -173,7 +168,7 @@ msgstr "Utgång"
 #: data/ui/multiband_compressor.ui:1410 data/ui/multiband_gate.ui:1542
 #: data/ui/pipe_info.ui:351 data/ui/pitch.ui:186 data/ui/presets_menu.ui:58
 #: data/ui/reverb.ui:347 data/ui/rnnoise.ui:89 data/ui/stereo_tools.ui:36
-#: data/ui/stereo_tools.ui:523 src/stream_input_effects_ui.cpp:88
+#: data/ui/stereo_tools.ui:523 src/stream_input_effects_ui.cpp:100
 msgid "Input"
 msgstr "Ingång"
 
@@ -192,7 +187,7 @@ msgstr "Profiler"
 msgid "Global Bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:178
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -482,12 +477,12 @@ msgid "Side"
 msgstr "Ingångsförstärkning (dB)"
 
 #: data/ui/compressor.ui:438 data/ui/delay.ui:29 data/ui/equalizer.ui:138
-#: data/ui/pipe_info.ui:533 data/ui/stereo_tools.ui:164
+#: data/ui/pipe_info.ui:534 data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr ""
 
 #: data/ui/compressor.ui:439 data/ui/delay.ui:61 data/ui/equalizer.ui:150
-#: data/ui/pipe_info.ui:543 data/ui/stereo_tools.ui:197
+#: data/ui/pipe_info.ui:544 data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr ""
 
@@ -497,7 +492,7 @@ msgid "High-pass"
 msgstr "Högpass"
 
 #: data/ui/compressor.ui:486 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
-#: data/ui/pipe_info.ui:569
+#: data/ui/pipe_info.ui:624
 #, fuzzy
 msgid "Frequency"
 msgstr "Frekvens (Hz)"
@@ -580,7 +575,7 @@ msgstr "Kalibrering"
 msgid "Import Impulse"
 msgstr "Platt respons"
 
-#: data/ui/convolver.ui:429 data/ui/effects_base.ui:350
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
 msgstr ""
@@ -674,7 +669,7 @@ msgstr ""
 msgid "Blocklist"
 msgstr ""
 
-#: data/ui/effects_base.ui:273
+#: data/ui/effects_base.ui:300
 msgid "Player Name"
 msgstr ""
 
@@ -1100,9 +1095,23 @@ msgstr "Sinustabell"
 msgid "Channel"
 msgstr "Kanaler"
 
-#: data/ui/pipe_info.ui:553
+#: data/ui/pipe_info.ui:554
 msgid "Both"
 msgstr ""
+
+#: data/ui/pipe_info.ui:570
+#, fuzzy
+msgid "Signal"
+msgstr "Testsignal"
+
+#: data/ui/pipe_info.ui:587
+#, fuzzy
+msgid "Sine Wave"
+msgstr "Sinustabell"
+
+#: data/ui/pipe_info.ui:598
+msgid "White Noise"
+msgstr "Vitt brus"
 
 #: data/ui/pitch.ui:18
 msgid "Faster"
@@ -1538,53 +1547,58 @@ msgstr "Profiler"
 msgid "Input Presets: "
 msgstr "Öppna förinställning"
 
-#: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371
+#: src/application.cpp:349
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#: src/convolver_ui.cpp:372 src/convolver_ui.cpp:375
 #, fuzzy
 msgid "Import Impulse File"
 msgstr "Platt respons"
 
-#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:371 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:373 src/convolver_ui.cpp:375 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:593 src/presets_menu_ui.cpp:195
 msgid "Open"
 msgstr ""
 
-#: src/convolver_ui.cpp:369 src/convolver_ui.cpp:372 src/equalizer_ui.cpp:591
+#: src/convolver_ui.cpp:373 src/convolver_ui.cpp:376 src/equalizer_ui.cpp:591
 #: src/equalizer_ui.cpp:594 src/presets_menu_ui.cpp:195
 #, fuzzy
 msgid "Cancel"
 msgstr "Ljudförstärkare"
 
-#: src/convolver_ui.cpp:377
+#: src/convolver_ui.cpp:381
 #, fuzzy
 msgid "Impulse Response"
 msgstr "Platt respons"
 
-#: src/convolver_ui.cpp:418 src/convolver_ui.cpp:419 src/convolver_ui.cpp:421
+#: src/convolver_ui.cpp:422 src/convolver_ui.cpp:423 src/convolver_ui.cpp:425
 msgid "Failed"
 msgstr ""
 
-#: src/convolver_ui.cpp:423
+#: src/convolver_ui.cpp:427
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_base_ui.cpp:668 src/effects_base_ui.cpp:1302
+#: src/effects_base_ui.cpp:730 src/effects_base_ui.cpp:1364
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:672 src/effects_base_ui.cpp:1304
+#: src/effects_base_ui.cpp:734 src/effects_base_ui.cpp:1366
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:676 src/effects_base_ui.cpp:1306
+#: src/effects_base_ui.cpp:738 src/effects_base_ui.cpp:1368
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:680 src/effects_base_ui.cpp:1308
+#: src/effects_base_ui.cpp:742 src/effects_base_ui.cpp:1370
 #, fuzzy
 msgid "creating"
 msgstr "Inställningar"
 
-#: src/effects_base_ui.cpp:684 src/effects_base_ui.cpp:1310
+#: src/effects_base_ui.cpp:746 src/effects_base_ui.cpp:1372
 msgid "error"
 msgstr ""
 
@@ -1612,6 +1626,10 @@ msgid "Recorders"
 msgstr ""
 
 #, fuzzy
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#, fuzzy
 #~ msgid "Calibration Microphone"
 #~ msgstr "Kalibrering och mikrofon korrigering"
 
@@ -1631,14 +1649,8 @@ msgstr ""
 #~ msgid "Silence"
 #~ msgstr "Tystnad"
 
-#~ msgid "White Noise"
-#~ msgstr "Vitt brus"
-
 #~ msgid "Pink Noise"
 #~ msgstr "Skärt brus"
-
-#~ msgid "Sine Table"
-#~ msgstr "Sinustabell"
 
 #~ msgid "Ticks"
 #~ msgstr "Tickande"

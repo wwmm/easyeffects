@@ -72,15 +72,10 @@ install_data('easyeffects.svg',
 conf_glade = configuration_data()
 conf_glade.set('PROJECT_VERSION', meson.project_version())
 
-glade_about = configure_file(input: 'ui/about.glade.in',
-               output: 'about.glade',
-               configuration: conf_glade)
-
 gresources = gnome_mod.compile_resources(
 	'easyeffects-resources',
 	'easyeffects.gresource.xml',
-	c_name: meson.project_name(),
-  dependencies: [glade_about]
+	c_name: meson.project_name()
 )
 
 dbusconf = configuration_data()

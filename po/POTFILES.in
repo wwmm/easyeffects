@@ -1,7 +1,6 @@
 data/com.github.wwmm.easyeffects.appdata.xml.in
 data/com.github.wwmm.easyeffects.desktop.in
 data/schemas/com.github.wwmm.easyeffects.gschema.xml
-data/ui/about.glade.in
 data/ui/app_info.ui
 data/ui/application_window.ui
 data/ui/autogain.ui
