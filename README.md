@@ -20,6 +20,7 @@ Audio effects for PipeWire applications.
 - Crossfeed
 - Crystalizer
 - De-esser
+- Echo Canceller
 - Equalizer
 - Exciter
 - Expander
@@ -35,30 +36,10 @@ Audio effects for PipeWire applications.
 - Reverberation
 - Stereo tools
 
-### Applications input
-
-- Compressor
-- De-esser
-- Equalizer
-- Filter (low-pass, high-pass, band-pass and band-reject modes)
-- Gate
-- Limiter
-- Maximizer
-- Multiband compressor
-- Multiband gate
-- Noise reduction
-- Pitch
-- Reverberation
-- Stereo tools
-- WebRTC
-
 The user has full control over the effects order. Just use the up/down arrows
 next to the plugin label at the left side. To be able to use all plugins you
 must have the following installed in your system:
 
-- [GStreamer plugins for "PipeWire"](https://gitlab.freedesktop.org/pipewire/pipewire)
-- [GStreamer plugins "Good"](https://github.com/GStreamer/gst-plugins-good). Version 1.12.5 or higher
-- [GStreamer plugins "Bad"](https://github.com/GStreamer/gst-plugins-bad). Version 1.12.5 or higher
 - [Linux Studio plugins](http://lsp-plug.in/?page=home). Version 1.1.24 or higher.
 - [Calf Studio plugins](https://calf-studio-gear.org/). Version 0.90.1 or higher.
 - [libebur128](https://github.com/jiixyj/libebur128). For Auto Gain.
@@ -68,13 +49,10 @@ must have the following installed in your system:
 - [RNNoise](https://github.com/xiph/rnnoise). For Noise Reduction.
 - [libsamplerate](http://www.mega-nerd.com/SRC/index.html)
 - [libsndfile](http://www.mega-nerd.com/libsndfile/)
-
-## Note for users that did not moved from Pulseaudio to PipeWire
-
-From version `5.0.0` onward EasyEffects needs PipeWire. Pulseaudio users need to instal one of the `4.x` releases or
-building a package directly from our legacy Pulseaudio branch https://github.com/wwmm/easyeffects/tree/pulseaudio-legacy.
-Arch Linux users can also use the PKGBUILD on the same branch. This branch will receive updates for critical bugs as
-time goes by. So if PipeWire is not for you yet it is fine to use the legacy branch.
+- [libbs2b](https://sourceforge.net/projects/bs2b/files/libbs2b/)
+- [fftw](https://fftw.org/)
+- [speexdsp](https://www.speex.org/)
+- [nlohmann json](https://github.com/nlohmann/json)
 
 ## Donate
 
@@ -100,7 +78,7 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 
 ### GNU/Linux packages
 
-- [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
+<!-- - [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
 - [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/easyeffects/template)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/easyeffects)
 - [ROSA](https://abf.io/import/easyeffects/)
@@ -109,26 +87,27 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 - [CRUX](https://crux.nu/portdb/?a=search&q=easyeffects)
 - [openSUSE](https://software.opensuse.org/package/easyeffects)
 - [NixOS](https://search.nixos.org/packages?channel=unstable&show=easyeffects&query=easyeffects)
-- [Debian (buster)](https://packages.debian.org/buster-backports/easyeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/easyeffects)
+- [Debian (buster)](https://packages.debian.org/buster-backports/easyeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/easyeffects) -->
 
 #### Community packages
 
-These are community maintained repositories of distribution packages. You can
+<!-- These are community maintained repositories of distribution packages. You can
 find more information about these in the
 [wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#package-repositories).
 
-- [Ubuntu and Debian](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#debian--ubuntu)
+- [Ubuntu and Debian](https://github.com/wwmm/easyeffects/wiki/Package-Repositories#debian--ubuntu) -->
 
 ### Flatpak
 
-[Flatpak](https://flatpak.org/) packages support multiple Linux distributions and are sandboxed.
+<!-- [Flatpak](https://flatpak.org/) packages support multiple Linux distributions and are sandboxed.
 
 Stable releases are hosted on
 [Flathub](https://flathub.org/apps/details/com.github.wwmm.easyeffects):
 
 ```
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.easyeffects
+flatpak install flathub com.github.wwmm.easyeffects -->
+
 ```
 
 #### Installing from source
@@ -164,3 +143,4 @@ See the wiki: [Translating EasyEffects](https://github.com/wwmm/easyeffects/wiki
 ## License
 
 EasyEffects is licensed under GNU General Public License version 3. See [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE.md).
+```
