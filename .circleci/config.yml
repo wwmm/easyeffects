@@ -30,43 +30,43 @@ jobs:
           paths:
             - pacman_cache
       - run: rm -rf pacman_cache
-      - run:
-          name: Starting Xvfb
-          command: Xvfb $DISPLAY -screen 0 1280x1024x24
-          background: true
-      - run:
-          name: Starting dbus
-          command: |
-            dbus-uuidgen > /var/lib/dbus/machine-id
-            mkdir -p /var/run/dbus
-            DBUS_SESSION_BUS_ADDRESS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS_SESSION_BUS_ADDRESS
-            echo "export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> $BASH_ENV
-      - run:
-          name: Starting PipeWire in background
-          command: |
-            sleep 5
-            DISABLE_RTKIT=1 PIPEWIRE_DEBUG=4 pipewire
-          background: true
-      - run:
-          name: Starting pipewire-pulse in background
-          command: |
-            sleep 5
-            DISABLE_RTKIT=1 pipewire-pulse
-          background: true
-      - run:
-          name: Starting pipewire-media-session in background
-          command: |
-            sleep 5
-            DISABLE_RTKIT=1 pipewire-media-session
-          background: true
-      - run:
-          name: loading devices
-          command: |
-            sleep 5
-            pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
-            pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
-            pw-cli list-objects Node
-          background: true
+      # - run:
+      #     name: Starting Xvfb
+      #     command: Xvfb $DISPLAY -screen 0 1280x1024x24
+      #     background: true
+      # - run:
+      #     name: Starting dbus
+      #     command: |
+      #       dbus-uuidgen > /var/lib/dbus/machine-id
+      #       mkdir -p /var/run/dbus
+      #       DBUS_SESSION_BUS_ADDRESS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS_SESSION_BUS_ADDRESS
+      #       echo "export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> $BASH_ENV
+      # - run:
+      #     name: Starting PipeWire in background
+      #     command: |
+      #       sleep 5
+      #       DISABLE_RTKIT=1 PIPEWIRE_DEBUG=4 pipewire
+      #     background: true
+      # - run:
+      #     name: Starting pipewire-pulse in background
+      #     command: |
+      #       sleep 5
+      #       DISABLE_RTKIT=1 pipewire-pulse
+      #     background: true
+      # - run:
+      #     name: Starting pipewire-media-session in background
+      #     command: |
+      #       sleep 5
+      #       DISABLE_RTKIT=1 pipewire-media-session
+      #     background: true
+      # - run:
+      #     name: loading devices
+      #     command: |
+      #       sleep 5
+      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Sink sink_name=my-sink audio.position=FL,FR
+      #       pactl load-module module-null-sink object.linger=1 media.class=Audio/Source sink_name=my-source audio.position=FL,FR
+      #       pw-cli list-objects Node
+      #     background: true
       - restore_cache:
           keys:
             - ccache-{{ checksum "/tmp/date" }}
@@ -79,11 +79,11 @@ jobs:
           key: ccache-{{ checksum "/tmp/date" }}
           paths:
             - /root/.ccache
-      - run:
-          name: Starting PE in background
-          command: |
-            easyeffects
-          background: true
+      # - run:
+      #     name: Starting PE in background
+      #     command: |
+      #       easyeffects
+      #     background: true
       # - run:
       #     name: Testing play/pause
       #     command: |
@@ -124,12 +124,12 @@ jobs:
       #           easyeffects -l sie_preset_disable_all || true
       #           sleep 1
       #           easyeffects -l sie_preset_enalbe_all || true
-      - run:
-          name: Reset Configuration and finish
-          command: |
-            sleep 5
-            easyeffects -r || true
-            easyeffects -q || true
+      # - run:
+      #     name: Reset Configuration and finish
+      #     command: |
+      #       sleep 5
+      #       easyeffects -r || true
+      #       easyeffects -q || true
 
 workflows:
   version: 2
