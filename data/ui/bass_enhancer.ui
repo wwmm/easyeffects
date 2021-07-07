@@ -433,7 +433,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label" translatable="yes">using</property>
+                                <property name="label" translatable="yes">Using</property>
                             </object>
                         </child>
                         <child>
