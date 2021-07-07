@@ -8,42 +8,40 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-06 14:44-0300\n"
-"PO-Revision-Date: 2020-01-12 17:49+0100\n"
-"Last-Translator: David Keller <blobcodes@protonmail.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2021-07-07 17:28+0200\n"
+"Last-Translator: David Keller <davidkeller@tuta.io>\n"
+"Language-Team: Bleuzen, BlobCodes\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 msgid "Audio Effects for PulseAudio Applications"
-msgstr "Audio Effekte für Pulseaudio Anwendungen"
+msgstr "Audio-Effekte für Pulseaudio Anwendungen"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects ist ein Audio-Manipulations-Tool. Es enthält einen Equalizer, "
-"Limiter, Kompressor, Hall und ein Spektrumanalysator."
+"EasyEffects ist ein fortgeschrittenes Audio-Manipulations-Tool. Es enthält "
+"einen Equalizer, Limiter, Kompressor, einen Hall und viele weitere. Dies "
+"wird zudem mit einem eingebauten Spektrumanalysator ergänzt."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
@@ -51,33 +49,32 @@ msgid ""
 msgstr ""
 "Da EasyEffects den Standard PulseAudio Sound Server benutzt, funktioniert es "
 "mit so ziemlich allen Anwendungen. Alle unterstützten Anwendungen werden im "
-"Hauptfenster angezeigt, wo alle individuell Ein-/Ausgeschaltet werden können."
+"Hauptfenster angezeigt, wo diese individuell Ein-/Ausgeschaltet werden "
+"können."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Neben der Sound Manipulation des Ausgangs, kann EasyEffects auch Effekte auf "
+"Neben der Audiomanipulation des Ausgangs kann EasyEffects auch Effekte auf "
 "Eingabegeräte, z.B. Mikrofone, anwenden. Dies ist sinnvoll für z.B. "
 "Audioaufnahmen oder VOIP Anwendungen."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
 "Wenn EasyEffects startet, stellt es die Konfiguration der letzten Sitzung "
-"wieder her. Es ist auch möglich, die aktuellen Einstellungen als Profil / "
-"Preset in einer Datei zu speichern."
+"wieder her. Es ist auch möglich, die aktuellen Einstellungen als Profile zu "
+"speichern."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:23
 msgid "Set the volume and turn on/off effects"
-msgstr "Einstellen der Lautstärke und Ein-/Ausschalten von Effekten"
+msgstr "Setze die Lautstärke und schalte Effekte ein/aus"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:27
 msgid "Includes an equalizer with built-in presets"
@@ -101,9 +98,8 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizer, Kompressor und andere Audioeffekte"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Audio Effekte für Pulseaudio Anwendungen"
+msgstr "Audio Effekte für PipeWire Anwendungen"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -115,9 +111,8 @@ msgid "\"Presets\""
 msgstr "\"Presets\""
 
 #: data/ui/app_info.ui:66
-#, fuzzy
 msgid "Add to Blocklist"
-msgstr "Sperrliste"
+msgstr "Zur Sperrliste hinzufügen"
 
 #: data/ui/app_info.ui:82
 msgid "Format"
@@ -171,7 +166,7 @@ msgstr "Eingang"
 
 #: data/ui/application_window.ui:95
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
@@ -209,7 +204,7 @@ msgstr "Verlauf löschen"
 #: data/ui/multiband_gate.ui:1203 data/ui/pitch.ui:30 data/ui/reverb.ui:25
 #: data/ui/rnnoise.ui:26 data/ui/stereo_tools.ui:14
 msgid "Bypass"
-msgstr "Umleitung"
+msgstr "Umleiten"
 
 #: data/ui/autogain.ui:65
 msgid "Momentary"
@@ -236,9 +231,8 @@ msgid "Loudness"
 msgstr "Lautstärke"
 
 #: data/ui/autogain.ui:252
-#, fuzzy
 msgid "Output Gain"
-msgstr "Eingabeverstärkung"
+msgstr "Ausgangsverstärkung"
 
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:423
 #: data/ui/compressor.ui:958 data/ui/convolver.ui:377 data/ui/crossfeed.ui:292
@@ -260,25 +254,23 @@ msgstr "Zurücksetzen"
 #: data/ui/multiband_gate.ui:1715 data/ui/pitch.ui:359 data/ui/reverb.ui:520
 #: data/ui/rnnoise.ui:262 data/ui/stereo_tools.ui:726
 msgid "Using"
-msgstr ""
+msgstr "Nutze"
 
 #: data/ui/autoload_row.ui:15
-#, fuzzy
 msgid "Device"
-msgstr "Limiter"
+msgstr "Gerät"
 
 #: data/ui/autoload_row.ui:38
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:62
-#, fuzzy
 msgid "Preset"
-msgstr "Presets"
+msgstr "Preset"
 
 #: data/ui/autoload_row.ui:86
 msgid "Remove"
-msgstr ""
+msgstr "Entfernen"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:367 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:23
@@ -316,11 +308,11 @@ msgstr "Boden"
 
 #: data/ui/bass_enhancer.ui:436
 msgid "using"
-msgstr ""
+msgstr "nutzt"
 
 #: data/ui/client_info.ui:12 data/ui/module_info.ui:12
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
 #: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
@@ -329,11 +321,11 @@ msgstr "Name"
 
 #: data/ui/client_info.ui:58
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/client_info.ui:81
 msgid "Access"
-msgstr ""
+msgstr "Zugriff"
 
 #: data/ui/compressor.ui:49 data/ui/compressor.ui:405 data/ui/compressor.ui:475
 #: data/ui/deesser.ui:65 data/ui/equalizer.ui:56 data/ui/equalizer_band.ui:51
@@ -358,9 +350,8 @@ msgid "Attack"
 msgstr "Anstiegszeit"
 
 #: data/ui/compressor.ui:92
-#, fuzzy
 msgid "Time"
-msgstr "Echtzeit"
+msgstr "Zeit"
 
 #: data/ui/compressor.ui:103 data/ui/deesser.ui:292 data/ui/gate.ui:181
 #: data/ui/maximizer.ui:29 data/ui/multiband_compressor.ui:274
@@ -405,9 +396,8 @@ msgid "Makeup"
 msgstr "Hebung"
 
 #: data/ui/compressor.ui:319
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Schwelle"
+msgstr "Verstärkungsschwelle"
 
 #: data/ui/compressor.ui:358 data/ui/compressor.ui:892
 msgid "Sidechain"
@@ -472,7 +462,6 @@ msgid "Right"
 msgstr "Rechts"
 
 #: data/ui/compressor.ui:464
-#, fuzzy
 msgid "High-pass"
 msgstr "Hochpass"
 
@@ -487,22 +476,18 @@ msgid "Off"
 msgstr "Aus"
 
 #: data/ui/compressor.ui:497 data/ui/compressor.ui:555
-#, fuzzy
 msgid "12 dB/oct"
-msgstr "12dB/okt Tiefpass"
+msgstr "12 dB/okt"
 
 #: data/ui/compressor.ui:498 data/ui/compressor.ui:556
-#, fuzzy
 msgid "24 dB/oct"
-msgstr "24dB/okt Tiefpass"
+msgstr "24 dB/okt"
 
 #: data/ui/compressor.ui:499 data/ui/compressor.ui:557
-#, fuzzy
 msgid "36 dB/oct"
-msgstr "36dB/okt Tiefpass"
+msgstr "36 dB/okt"
 
 #: data/ui/compressor.ui:544
-#, fuzzy
 msgid "Low-pass"
 msgstr "Tiefpass"
 
@@ -537,9 +522,8 @@ msgid "R"
 msgstr "R"
 
 #: data/ui/convolver.ui:79
-#, fuzzy
 msgid "Impulses"
-msgstr "Impulsantwort"
+msgstr "Impulse"
 
 #: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:140
 msgid "Spectrum"
@@ -560,7 +544,7 @@ msgstr "Impuls importieren"
 #: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: data/ui/crossfeed.ui:26
 msgid "Cmoy"
@@ -600,29 +584,24 @@ msgid "Split"
 msgstr "Teilen"
 
 #: data/ui/deesser.ui:88
-#, fuzzy
 msgid "F1 Split"
-msgstr "Teilen"
+msgstr "F1 Teilen"
 
 #: data/ui/deesser.ui:120
-#, fuzzy
 msgid "F2 Peak"
-msgstr "Hochpunkt"
+msgstr "F2 Peak"
 
 #: data/ui/deesser.ui:156
-#, fuzzy
 msgid "F1 Gain"
-msgstr "Verstärkung"
+msgstr "F1 Verstärkung"
 
 #: data/ui/deesser.ui:190
-#, fuzzy
 msgid "F2 Level"
-msgstr "Ebene"
+msgstr "F2 Level"
 
 #: data/ui/deesser.ui:224
-#, fuzzy
 msgid "F2 Peak Q"
-msgstr "Höchstwert Q"
+msgstr "F2 Peak Q"
 
 #: data/ui/deesser.ui:258
 msgid "Laxity"
@@ -634,15 +613,15 @@ msgstr "Erkannt"
 
 #: data/ui/effects_base.ui:64
 msgid "Add Plugin"
-msgstr ""
+msgstr "Plugin hinzufügen"
 
 #: data/ui/effects_base.ui:137
 msgid "Players"
-msgstr ""
+msgstr "Spieler"
 
 #: data/ui/effects_base.ui:160
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: data/ui/effects_base.ui:246
 msgid "Blocklist"
@@ -650,7 +629,7 @@ msgstr "Sperrliste"
 
 #: data/ui/effects_base.ui:300
 msgid "Player Name"
-msgstr ""
+msgstr "Spielername"
 
 #: data/ui/equalizer.ui:26
 msgid "Bands"
@@ -670,7 +649,7 @@ msgstr "FFT"
 
 #: data/ui/equalizer.ui:70
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:91
 msgid "Split Channels"
@@ -678,16 +657,15 @@ msgstr "Kanäle trennen"
 
 #: data/ui/equalizer.ui:97
 msgid "Flat Response"
-msgstr "Glätten"
+msgstr "Flacher Frequenzgang"
 
 #: data/ui/equalizer.ui:104
 msgid "Calculate Frequencies"
 msgstr "Frequenzen berechnen"
 
 #: data/ui/equalizer.ui:111
-#, fuzzy
 msgid "Load APO Preset"
-msgstr "Presets"
+msgstr "APO Preset laden"
 
 #: data/ui/equalizer_band.ui:32
 msgid "Bell"
@@ -718,9 +696,8 @@ msgid "Resonance"
 msgstr "Resonanz"
 
 #: data/ui/equalizer_band.ui:39
-#, fuzzy
 msgid "All Pass"
-msgstr "Tiefpass"
+msgstr "Allpass"
 
 #: data/ui/equalizer_band.ui:61
 msgid "RLC (BT)"
@@ -772,7 +749,7 @@ msgstr "Solo"
 
 #: data/ui/exciter.ui:191
 msgid "ceil"
-msgstr ""
+msgstr "Begrenzen"
 
 #: data/ui/filter.ui:23
 msgid "12dB/oct Lowpass"
@@ -827,9 +804,8 @@ msgid "Inertia"
 msgstr "Trägheit"
 
 #: data/ui/gate.ui:54
-#, fuzzy
 msgid "Maximum Gain Reduction"
-msgstr "Amplitudenreduktion"
+msgstr "Maximale Amplitudenreduktion"
 
 #: data/ui/gate.ui:86
 msgid "Stereo Link"
@@ -867,25 +843,23 @@ msgstr "Benutze dunkles Thema"
 
 #: data/ui/general_settings.ui:101
 msgid "Run in Background"
-msgstr ""
+msgstr "Im Hintergrund ausführen"
 
 #: data/ui/general_settings.ui:138
-#, fuzzy
 msgid "Reset All Settings"
-msgstr "Einstellungen"
+msgstr "Alle Einstellungen zurücksetzen"
 
 #: data/ui/general_settings.ui:144
-#, fuzzy
 msgid "About EasyEffects"
-msgstr "EasyEffects"
+msgstr "Über EasyEffects"
 
 #: data/ui/limiter.ui:21
 msgid "Automatic Leveling"
-msgstr ""
+msgstr "Automatisches Leveling"
 
 #: data/ui/limiter.ui:29
 msgid "Automatic Smoothing Control"
-msgstr ""
+msgstr "Automatische Glättungsregelung"
 
 #: data/ui/limiter.ui:121
 msgid "Limit"
@@ -905,42 +879,39 @@ msgstr "Dämpfung"
 
 #: data/ui/loudness.ui:32
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: data/ui/loudness.ui:40
 msgid "Flat"
-msgstr ""
+msgstr "Flach"
 
 #: data/ui/loudness.ui:41
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: data/ui/loudness.ui:42
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: data/ui/loudness.ui:43
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: data/ui/loudness.ui:58
-#, fuzzy
 msgid "FFT Size"
-msgstr "Rahmengröße"
+msgstr "FFT-Größe"
 
 #: data/ui/loudness.ui:87
-#, fuzzy
 msgid "Output Volume"
-msgstr "Ausgang"
+msgstr "Ausgangslautstärke"
 
 #: data/ui/maximizer.ui:61
 msgid "Ceiling"
 msgstr "Grenze"
 
 #: data/ui/module_info.ui:58
-#, fuzzy
 msgid "Description"
-msgstr "Erkennung"
+msgstr "Beschreibung"
 
 #: data/ui/multiband_compressor.ui:38 data/ui/multiband_gate.ui:38
 msgid "LR4"
@@ -988,62 +959,52 @@ msgid "General"
 msgstr "Allgemein"
 
 #: data/ui/pipe_info.ui:35
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Vorgabe verwenden"
+msgstr "Standardeingang nutzen"
 
 #: data/ui/pipe_info.ui:56
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Vorgabe verwenden"
+msgstr "Standardausgang nutzen"
 
 #: data/ui/pipe_info.ui:77
-#, fuzzy
 msgid "Input Device"
-msgstr "Limiter"
+msgstr "Eingabegerät"
 
 #: data/ui/pipe_info.ui:96
-#, fuzzy
 msgid "Output Device"
-msgstr "Eingabeverstärkung"
+msgstr "Ausgabegerät"
 
 #: data/ui/pipe_info.ui:115
-#, fuzzy
 msgid "Header Version"
-msgstr "Version"
+msgstr "Header-Version"
 
 #: data/ui/pipe_info.ui:138
-#, fuzzy
 msgid "Library Version"
-msgstr "Version"
+msgstr "Bibliotheksversion"
 
 #: data/ui/pipe_info.ui:161
-#, fuzzy
 msgid "Sampling Rate"
 msgstr "Abtastrate"
 
 #: data/ui/pipe_info.ui:184
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Frequenz"
+msgstr "Minimales Quantum"
 
 #: data/ui/pipe_info.ui:207
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Maximale Verstärkung"
+msgstr "Maximales Quantum"
 
 #: data/ui/pipe_info.ui:230
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Standard Audiosenke"
+msgstr "Standard Quantum"
 
 #: data/ui/pipe_info.ui:259
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Presets automatisch laden"
 
 #: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
 msgid "Create Association"
-msgstr ""
+msgstr "Assoziation erstellen"
 
 #: data/ui/pipe_info.ui:438
 msgid "Modules"
@@ -1054,32 +1015,28 @@ msgid "Clients"
 msgstr "Clients"
 
 #: data/ui/pipe_info.ui:486
-#, fuzzy
 msgid "Test Signal"
-msgstr "Testsignale"
+msgstr "Testsignal"
 
 #: data/ui/pipe_info.ui:495
 msgid "Enable"
 msgstr "Aktivieren"
 
 #: data/ui/pipe_info.ui:517
-#, fuzzy
 msgid "Channel"
-msgstr "Kanäle"
+msgstr "Kanal"
 
 #: data/ui/pipe_info.ui:554
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
 #: data/ui/pipe_info.ui:570
-#, fuzzy
 msgid "Signal"
-msgstr "Testsignale"
+msgstr "Signal"
 
 #: data/ui/pipe_info.ui:587
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinustabelle"
+msgstr "Sinuswelle"
 
 #: data/ui/pipe_info.ui:598
 msgid "White Noise"
@@ -1111,7 +1068,7 @@ msgstr "Klarheit"
 
 #: data/ui/preset_row.ui:17
 msgid "Load"
-msgstr ""
+msgstr "Laden"
 
 #: data/ui/preset_row.ui:25
 msgid "Save current settings to this preset file"
@@ -1123,7 +1080,7 @@ msgstr "Diese Preset-Datei entfernen"
 
 #: data/ui/presets_menu.ui:78
 msgid "Speakers"
-msgstr ""
+msgstr "Lautsprecher"
 
 #: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
@@ -1134,9 +1091,8 @@ msgid "Import Presets"
 msgstr "Presets importieren"
 
 #: data/ui/presets_menu.ui:179
-#, fuzzy
 msgid "Microphone"
-msgstr "Kalibrationsmikrofon"
+msgstr "Mikrofon"
 
 #: data/ui/reverb.ui:44
 msgid "High Frequency Damping"
@@ -1183,9 +1139,8 @@ msgid "Decay Time"
 msgstr "Abklingzeit"
 
 #: data/ui/reverb.ui:205
-#, fuzzy
 msgid "Wet"
-msgstr "Gewichte"
+msgstr "Nass"
 
 #: data/ui/reverb.ui:239
 msgid "Dry"
@@ -1224,23 +1179,20 @@ msgid "Large Occupied Hall"
 msgstr "Große besetzte Halle"
 
 #: data/ui/rnnoise.ui:21
-#, fuzzy
 msgid "Import Model"
-msgstr "Impuls importieren"
+msgstr "Modell importieren"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modus"
+msgstr "Modelle"
 
 #: data/ui/rnnoise.ui:65
-#, fuzzy
 msgid "Active Model"
-msgstr "Aggressiver Modus"
+msgstr "Aktives Modell"
 
 #: data/ui/rnnoise.ui:71
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "Standard RNNoise-Modell"
 
 #: data/ui/spectrum_settings.ui:22
 msgid "Show Spectrum"
@@ -1272,7 +1224,7 @@ msgstr "Spektrumfarbe"
 
 #: data/ui/spectrum_settings.ui:139
 msgid "Axis Color"
-msgstr ""
+msgstr "Achsenfarbe"
 
 #: data/ui/spectrum_settings.ui:171
 msgid "Points"
@@ -1287,9 +1239,8 @@ msgid "Line Width"
 msgstr "Linienbreite"
 
 #: data/ui/spectrum_settings.ui:272
-#, fuzzy
 msgid "Minimum"
-msgstr "Maximum"
+msgstr "Minimum"
 
 #: data/ui/stereo_tools.ui:46 data/ui/stereo_tools.ui:380
 msgid "Balance"
@@ -1369,10 +1320,9 @@ msgstr "Stereo Phase"
 
 #: data/ui/stereo_tools.ui:679
 msgid "Phase Correlation"
-msgstr ""
+msgstr "Phasenkorrelation"
 
 #: include/effects_base_ui.hpp:132
-#, fuzzy
 msgid "Autogain"
 msgstr "Automatische Verstärkungsregelung"
 
@@ -1445,9 +1395,8 @@ msgid "Reverberation"
 msgstr "Nachhall"
 
 #: include/effects_base_ui.hpp:152
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Amplitudenreduktion"
+msgstr "Rauschreduzierung"
 
 #: include/effects_base_ui.hpp:153
 msgid "Stereo Tools"
@@ -1477,7 +1426,7 @@ msgstr ""
 
 #: src/application.cpp:42
 msgid "Hide the Window."
-msgstr ""
+msgstr "Fenster verstecken."
 
 #: src/application.cpp:313
 msgid "Output Presets: "
@@ -1488,9 +1437,8 @@ msgid "Input Presets: "
 msgstr "Eingangs-Presets: "
 
 #: src/application.cpp:349
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Audio Effekte für Pulseaudio Anwendungen"
+msgstr "Audioeffekte für PipeWire Anwendungen"
 
 #: src/convolver_ui.cpp:372 src/convolver_ui.cpp:375
 msgid "Import Impulse File"
@@ -1520,48 +1468,43 @@ msgstr "Die Impulsdatei konnte nicht geladen werden"
 
 #: src/effects_base_ui.cpp:730 src/effects_base_ui.cpp:1364
 msgid "running"
-msgstr ""
+msgstr "läuft"
 
 #: src/effects_base_ui.cpp:734 src/effects_base_ui.cpp:1366
 msgid "suspended"
-msgstr ""
+msgstr "suspendiert"
 
 #: src/effects_base_ui.cpp:738 src/effects_base_ui.cpp:1368
 msgid "idle"
-msgstr ""
+msgstr "inaktiv"
 
 #: src/effects_base_ui.cpp:742 src/effects_base_ui.cpp:1370
-#, fuzzy
 msgid "creating"
-msgstr "Gating"
+msgstr "erstelle"
 
 #: src/effects_base_ui.cpp:746 src/effects_base_ui.cpp:1372
 msgid "error"
-msgstr ""
+msgstr "fehler"
 
 #: src/equalizer_ui.cpp:379
 msgid "infinity"
-msgstr "Unendlich"
+msgstr "unendlich"
 
 #: src/equalizer_ui.cpp:590 src/equalizer_ui.cpp:593
-#, fuzzy
 msgid "Import APO Preset File"
-msgstr "Presets importieren"
+msgstr "APO Preset-Datei importieren"
 
 #: src/equalizer_ui.cpp:599
-#, fuzzy
 msgid "APO Presets"
-msgstr "Presets"
+msgstr "APO Presets"
 
 #: src/presets_menu_ui.cpp:194
-#, fuzzy
 msgid "Import Preset"
-msgstr "Presets importieren"
+msgstr "Preset importieren"
 
 #: src/stream_input_effects_ui.cpp:31
-#, fuzzy
 msgid "Recorders"
-msgstr "Grenze"
+msgstr "Rekorder"
 
 #~ msgid "Audio effects for PulseAudio applications"
 #~ msgstr "Audioeffekte für Pulseaudio-Anwendungen"
