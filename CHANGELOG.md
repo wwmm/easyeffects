@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-## [6.0.0]
+## [0.0.1]
 
 This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about
 everything here. The following are just the most import ones. People interested on the journey that got us here can take
@@ -19,6 +19,9 @@ a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/
 
 ### Changed
 
+- As the application was renamed I think it also makes sense to reset the version number. So this reelase will be
+  `0.0.1` instead of `6.0.0`. As the package maintainers will have to rename their packages this should not bring any
+  problem.
 - Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some
   patience it is possible to edit PulseEffects presets in a text editor and make them work in EasyEffects. Hopefully
   someone will come up with a script for this in the feature.

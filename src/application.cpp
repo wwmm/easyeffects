@@ -104,7 +104,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
 void Application::on_startup() {
   Gtk::Application::on_startup();
 
-  util::debug(log_tag + "PE version: " + std::string(VERSION));
+  util::debug(log_tag + "easyeffects version: " + std::string(VERSION));
 
   settings = Gio::Settings::create("com.github.wwmm.easyeffects");
   soe_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs");
