@@ -19,7 +19,7 @@ a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/
 
 ### Changed
 
-- As the application was renamed I think it also makes sense to reset the version number. So this reelase will be
+- As the application was renamed I think it also makes sense to reset the version number. So this release will be called
   `0.0.1` instead of `6.0.0`. As the package maintainers will have to rename their packages this should not bring any
   problem.
 - Boost is no longer a dependency. The price paid for that was a little change in our presets structures. With some
