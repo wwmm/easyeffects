@@ -48,8 +48,8 @@ jobs:
           name: Starting PipeWire in background
           command: |
             echo $DBUS_SESSION_BUS_ADDRESS
-            #sleep 5
-            #pipewire
+            sleep 5
+            pipewire
           background: true
       - run:
           name: loading devices
