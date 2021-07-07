@@ -1,9 +1,9 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=5.0.1.r544.gc1d3c52a
+pkgver=6.0.0.r0.g2ee3f0b7
 pkgrel=1
-pkgdesc='Audio Effects for Pulseaudio Applications'
+pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')

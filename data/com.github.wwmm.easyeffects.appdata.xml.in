@@ -5,11 +5,11 @@
   <name>EasyEffects</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
-  <summary>Audio Effects for PulseAudio Applications</summary>
+  <summary>Audio Effects for PipeWire Applications</summary>
   <developer_name>Wellington Wallace</developer_name>
   <description>
     <p>EasyEffects is an advanced audio manipulation tools. It includes an equalizer, limiter, compressor and a reverberation tool, just to mention a few. To complement this there is also a built in spectrum analyzer.</p>
-    <p>Because EasyEffects uses the default PulseAudio sound server it will work with most, if not all, applications you use. All supported applications are presented in the main window, where each can be enabled individually.</p>
+    <p>Because EasyEffects uses the default PipeWire sound server it will work with most, if not all, applications you use. All supported applications are presented in the main window, where each can be enabled individually.</p>
     <p>Besides manipulating sound output, EasyEffects is able to apply effects to an input device, such as a microphone. This is, for example, useful in audio recording, but it also works well during voice conversations.</p>
     <p>When EasyEffects is launched it will conveniently remember the configuration used in the last session. It is also possible to save all the current settings as profiles.</p>
   </description>
