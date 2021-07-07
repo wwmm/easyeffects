@@ -68,6 +68,10 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
     <td>https://www.patreon.com/wellingtonwallace?fan_landing=true</td>
     <td>Patreon</td>
   </tr>
+  <tr>
+    <td>https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE</td>
+    <td>PayPal</td>
+  </tr>
 </table>
 
 ## Changelog
