@@ -39,12 +39,8 @@ jobs:
           command: |
             dbus-uuidgen > /var/lib/dbus/machine-id
             mkdir -p /var/run/dbus
-            # DBUS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address | cut -d "=" -f3) && echo $DBUS
-            DBUS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS
-            DBUS_SESSION_BUS_ADDRESS=$DBUS
+            DBUS_SESSION_BUS_ADDRESS=$(dbus-daemon --config-file=/usr/share/dbus-1/system.conf --print-address) && echo $DBUS_SESSION_BUS_ADDRESS
             echo "export DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS" >> $BASH_ENV
-            echo $DBUS_SESSION_BUS_ADDRESS
-            echo $BASH_ENV
       - run:
           name: Starting PipeWire in background
           command: |
