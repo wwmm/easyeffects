@@ -46,7 +46,7 @@ jobs:
           command: |
             echo $DBUS_SESSION_BUS_ADDRESS
             sleep 5
-            pipewire
+            PIPEWIRE_DEBUG=4 pipewire
           background: true
       - run:
           name: loading devices
