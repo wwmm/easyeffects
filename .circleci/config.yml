@@ -51,13 +51,13 @@ jobs:
           name: Starting pipewire-pulse in background
           command: |
             sleep 5
-            pipewire-pulse
+            DISABLE_RTKIT=1 pipewire-pulse
           background: true
       - run:
           name: Starting pipewire-media-session in background
           command: |
             sleep 5
-            pipewire-media-session
+            DISABLE_RTKIT=1 pipewire-media-session
           background: true
       - run:
           name: loading devices
