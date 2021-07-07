@@ -44,9 +44,20 @@ jobs:
       - run:
           name: Starting PipeWire in background
           command: |
-            echo $DBUS_SESSION_BUS_ADDRESS
             sleep 5
             DISABLE_RTKIT=1 PIPEWIRE_DEBUG=4 pipewire
+          background: true
+      - run:
+          name: Starting pipewire-pulse in background
+          command: |
+            sleep 5
+            pipewire-pulse
+          background: true
+      - run:
+          name: Starting pipewire-media-session in background
+          command: |
+            sleep 5
+            pipewire-media-session
           background: true
       - run:
           name: loading devices
