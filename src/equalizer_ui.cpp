@@ -739,15 +739,29 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
       if (n < static_cast<int>(bands.size())) {
         settings_left->set_string(std::string("band" + std::to_string(n) + "-mode"), "APO (DR)");
 
-        settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
-        settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
-        settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
-        settings_left->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+        if (!settings->get_boolean("split-channels")) {
+          settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+          settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+          settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+          settings_left->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
 
-        settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
-        settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
-        settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
-        settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+          settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+          settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+          settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+          settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+        } else {
+          if (stack->get_visible_child_name() == "page_left_channel") {
+            settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+            settings_left->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+            settings_left->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+            settings_left->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+          } else {
+            settings_right->set_string(std::string("band" + std::to_string(n) + "-type"), "Bell");
+            settings_right->set_double(std::string("band" + std::to_string(n) + "-gain"), bands[n].gain);
+            settings_right->set_double(std::string("band" + std::to_string(n) + "-frequency"), bands[n].freq);
+            settings_right->set_double(std::string("band" + std::to_string(n) + "-q"), bands[n].quality_factor);
+          }
+        }
       } else {
         settings_left->set_string(std::string("band" + std::to_string(n) + "-type"), "Off");
 

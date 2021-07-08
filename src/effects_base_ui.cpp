@@ -341,6 +341,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       compressor_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
 
+      compressor_ui->set_pipe_manager_ptr(pm);
+
       effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level));
       effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level));
       effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));

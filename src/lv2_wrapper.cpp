@@ -245,6 +245,42 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
   }
 }
 
+void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
+                                    std::span<float>& right_in,
+                                    std::span<float>& left_out,
+                                    std::span<float>& right_out,
+                                    std::span<float>& probe_left,
+                                    std::span<float>& probe_right) {
+  int count_input = 0;
+  int count_output = 0;
+
+  for (auto& p : ports) {
+    if (p.type == PortType::TYPE_AUDIO) {
+      if (p.is_input) {
+        if (count_input == 0) {
+          lilv_instance_connect_port(instance, p.index, left_in.data());
+        } else if (count_input == 1) {
+          lilv_instance_connect_port(instance, p.index, right_in.data());
+        } else if (count_input == 2) {
+          lilv_instance_connect_port(instance, p.index, probe_left.data());
+        } else if (count_input == 3) {
+          lilv_instance_connect_port(instance, p.index, probe_right.data());
+        }
+
+        count_input++;
+      } else {
+        if (count_output == 0) {
+          lilv_instance_connect_port(instance, p.index, left_out.data());
+        } else if (count_output == 1) {
+          lilv_instance_connect_port(instance, p.index, right_out.data());
+        }
+
+        count_output++;
+      }
+    }
+  }
+}
+
 void Lv2Wrapper::set_n_samples(const uint& value) {
   this->n_samples = value;
 }

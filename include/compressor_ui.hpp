@@ -21,6 +21,7 @@
 #define COMPRESSOR_UI_HPP
 
 #include <cstring>
+#include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
 
 class CompressorUi : public Gtk::Box, public PluginUiBase {
@@ -43,6 +44,8 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
 
   void on_new_curve(double value);
 
+  void set_pipe_manager_ptr(PipeManager* pipe_manager);
+
   void reset() override;
 
  private:
@@ -60,6 +63,14 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
                     *sidechain_source = nullptr, *lpf_mode = nullptr, *hpf_mode = nullptr;
 
   Gtk::ToggleButton* listen = nullptr;
+
+  Gtk::DropDown* dropdown_input_devices = nullptr;
+
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model;
+
+  PipeManager* pm = nullptr;
+
+  void setup_dropdown_input_devices();
 };
 
 #endif

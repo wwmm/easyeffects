@@ -76,6 +76,13 @@ class Lv2Wrapper {
                           std::span<float>& left_out,
                           std::span<float>& right_out);
 
+  void connect_data_ports(std::span<float>& left_in,
+                          std::span<float>& right_in,
+                          std::span<float>& left_out,
+                          std::span<float>& right_out,
+                          std::span<float>& probe_left,
+                          std::span<float>& probe_right);
+
   void activate();
 
   void run() const;

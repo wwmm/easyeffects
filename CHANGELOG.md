@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+### Added
+
+- When `split-channels` is enabled in the equalizer the imported APO preset will be applied only to the channel being
+  visualized in the window. This will allow to import different presets for each channel instead of just settings the same
+  values to both.
+
 ## [6.0.0]
 
 This is one of the biggest releases that I have ever made. The amount of changes is so big that it is hard to talk about

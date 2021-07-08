@@ -23,8 +23,8 @@ Compressor::Compressor(const std::string& tag,
                        const std::string& schema,
                        const std::string& schema_path,
                        PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::compressor, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/compressor_stereo")) {
+    : PluginBase(tag, plugin_name::compressor, schema, schema_path, pipe_manager, true),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_compressor_stereo")) {
   if (!lv2_wrapper->found_plugin) {
     return;
   }
@@ -111,7 +111,9 @@ void Compressor::setup() {
 void Compressor::process(std::span<float>& left_in,
                          std::span<float>& right_in,
                          std::span<float>& left_out,
-                         std::span<float>& right_out) {
+                         std::span<float>& right_out,
+                         std::span<float>& probe_left,
+                         std::span<float>& probe_right) {
   if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
@@ -121,7 +123,7 @@ void Compressor::process(std::span<float>& left_in,
 
   apply_gain(left_in, right_in, input_gain);
 
-  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
   lv2_wrapper->run();
 
   apply_gain(left_out, right_out, output_gain);

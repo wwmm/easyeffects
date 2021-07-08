@@ -55,6 +55,8 @@ auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_
     g_value_set_int(value, 0);
   } else if (std::strcmp(v, "Feed-back") == 0) {
     g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "External") == 0) {
+    g_value_set_int(value, 2);
   }
 
   return 1;
@@ -70,6 +72,9 @@ auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expecte
 
     case 1:
       return g_variant_new_string("Feed-back");
+
+    case 2:
+      return g_variant_new_string("External");
 
     default:
       return g_variant_new_string("Feed-forward");
@@ -195,7 +200,9 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
                            const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
                            const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
+    : Gtk::Box(cobject),
+      PluginUiBase(builder, schema, schema_path),
+      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()) {
   name = plugin_name::compressor;
 
   // loading builder widgets
@@ -233,6 +240,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
   sidechain_label = builder->get_widget<Gtk::Label>("sidechain_label");
   curve_label = builder->get_widget<Gtk::Label>("curve_label");
+
+  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
+
+  setup_dropdown_input_devices();
 
   // gsettings bindings
 
@@ -274,6 +285,14 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "lpf-mode", lpf_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
 
+  connections.emplace_back(settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
+    if (settings->get_string(key) != "External") {
+      dropdown_input_devices->set_sensitive(false);
+    } else {
+      dropdown_input_devices->set_sensitive(true);
+    }
+  }));
+
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(attack, "ms");
 
@@ -290,6 +309,12 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   prepare_spinbutton(hpf_freq, "Hz");
   prepare_spinbutton(lpf_freq, "Hz");
+
+  if (settings->get_string("sidechain-type") != "External") {
+    dropdown_input_devices->set_sensitive(false);
+  } else {
+    dropdown_input_devices->set_sensitive(true);
+  }
 }
 
 CompressorUi::~CompressorUi() {
@@ -371,4 +396,86 @@ void CompressorUi::on_new_curve(double value) {
   curve->set_value(value);
 
   curve_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
+
+void CompressorUi::setup_dropdown_input_devices() {
+  // setting the dropdown model and factory
+
+  auto selection_model = Gtk::SingleSelection::create(input_devices_model);
+
+  dropdown_input_devices->set_model(selection_model);
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown_input_devices->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* box = Gtk::make_managed<Gtk::Box>();
+    auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* icon = Gtk::make_managed<Gtk::Image>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    icon->set_from_icon_name("audio-input-microphone-symbolic");
+
+    box->set_spacing(6);
+    box->append(*icon);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
+
+    auto name = holder->info.name;
+
+    label->set_name(name);
+    label->set_text(name);
+  });
+}
+
+void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
+  pm = pipe_manager;
+
+  input_devices_model->append(NodeInfoHolder::create(pm->pe_source_node));
+
+  for (const auto& node : pm->list_nodes) {
+    if (node.media_class == "Audio/Source") {
+      input_devices_model->append(NodeInfoHolder::create(node));
+    }
+  }
+
+  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+      auto item = input_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        return;
+      }
+    }
+
+    input_devices_model->append(NodeInfoHolder::create(info));
+  }));
+
+  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
+    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+      auto item = input_devices_model->get_item(n);
+
+      if (item->info.id == info.id) {
+        input_devices_model->remove(n);
+
+        return;
+      }
+    }
+  }));
 }
