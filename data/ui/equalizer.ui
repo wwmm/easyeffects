@@ -14,6 +14,56 @@
                 <child>
                     <object class="GtkBox">
                         <property name="spacing">6</property>
+                        <property name="hexpand">1</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                            <object class="GtkStackSwitcher" id="stack_switcher">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="stack">stack</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkScrolledWindow">
+                                <child>
+                                    <object class="GtkStack" id="stack">
+                                        <property name="halign">end</property>
+                                        <property name="transition_duration">250</property>
+                                        <property name="transition_type">slide-left-right</property>
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">page_left_channel</property>
+                                                <property name="title" translatable="yes">Left</property>
+                                                <property name="child">
+                                                    <object class="GtkBox" id="bands_box_left">
+                                                        <property name="spacing">6</property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkStackPage">
+                                                <property name="name">page_right_channel</property>
+                                                <property name="title" translatable="yes">Right</property>
+                                                <property name="child">
+                                                    <object class="GtkBox" id="bands_box_right">
+                                                        <property name="spacing">6</property>
+                                                    </object>
+                                                </property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <property name="valign">center</property>
                         <child>
@@ -110,51 +160,6 @@
                             <object class="GtkButton" id="import_apo">
                                 <property name="label" translatable="yes">Load APO Preset</property>
                                 <property name="valign">center</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkStackSwitcher" id="stack_switcher">
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="stack">stack</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkStack" id="stack">
-                                <property name="halign">center</property>
-                                <property name="transition_duration">250</property>
-                                <property name="transition_type">slide-left-right</property>
-                                <child>
-                                    <object class="GtkStackPage">
-                                        <property name="name">page_left_channel</property>
-                                        <property name="title" translatable="yes">Left</property>
-                                        <property name="child">
-                                            <object class="GtkBox" id="bands_box_left">
-                                                <property name="spacing">6</property>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkStackPage">
-                                        <property name="name">page_right_channel</property>
-                                        <property name="title" translatable="yes">Right</property>
-                                        <property name="child">
-                                            <object class="GtkBox" id="bands_box_right">
-                                                <property name="spacing">6</property>
-                                            </object>
-                                        </property>
-                                    </object>
-                                </child>
                             </object>
                         </child>
                     </object>

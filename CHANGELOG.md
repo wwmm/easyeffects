@@ -4,6 +4,7 @@
 
 ### Added
 
+- Improved equalizer interface.
 - Now we use a sidechain LSP compressor that allows the user to select and external source as the sidechain input.
 - We now support the LSP compressor `Boosting` mode.
 - When `split-channels` is enabled in the equalizer the imported APO preset will be applied only to the channel being

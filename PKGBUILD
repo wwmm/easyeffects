@@ -17,6 +17,7 @@ optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
 source=("easyeffects::git+https://github.com/wwmm/easyeffects.git")
 conflicts=(easyeffects)
 provides=(easyeffects)
+replaces=('pulseeffects')
 sha512sums=('SKIP')
 
 pkgver() {
