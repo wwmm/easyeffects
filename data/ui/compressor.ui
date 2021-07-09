@@ -56,6 +56,7 @@
                                                 <items>
                                                     <item translatable="yes">Downward</item>
                                                     <item translatable="yes">Upward</item>
+                                                    <item translatable="yes">Boosting</item>
                                                 </items>
                                             </object>
                                         </child>

@@ -28,6 +28,8 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
     g_value_set_int(value, 0);
   } else if (std::strcmp(v, "Upward") == 0) {
     g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "Boosting") == 0) {
+    g_value_set_int(value, 2);
   }
 
   return 1;
@@ -42,6 +44,9 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 
     case 1:
       return g_variant_new_string("Upward");
+
+    case 2:
+      return g_variant_new_string("Boosting");
 
     default:
       return g_variant_new_string("Downward");
