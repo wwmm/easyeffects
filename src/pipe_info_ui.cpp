@@ -318,7 +318,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
-  pm->sink_added.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo& info) {
     for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
       auto item = output_devices_model->get_item(n);
 
@@ -328,9 +328,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
 
     output_devices_model->append(NodeInfoHolder::create(info));
-  });
+  }));
 
-  pm->sink_removed.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo& info) {
     for (guint n = 0; n < output_devices_model->get_n_items(); n++) {
       auto item = output_devices_model->get_item(n);
 
@@ -340,9 +340,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         return;
       }
     }
-  });
+  }));
 
-  pm->source_added.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
     for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
@@ -352,9 +352,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
 
     input_devices_model->append(NodeInfoHolder::create(info));
-  });
+  }));
 
-  pm->source_removed.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
     for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
@@ -364,77 +364,83 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         return;
       }
     }
-  });
+  }));
 
-  presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    output_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
-  });
+  connections.emplace_back(
+      presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+        output_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
+      }));
 
-  presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    int count = 0;
-    auto name = output_presets_string_list->get_string(count);
+  connections.emplace_back(
+      presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+        int count = 0;
+        auto name = output_presets_string_list->get_string(count);
 
-    while (name.c_str() != nullptr) {
-      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-        output_presets_string_list->remove(count);
+        while (name.c_str() != nullptr) {
+          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+            output_presets_string_list->remove(count);
 
-        return;
-      }
+            return;
+          }
 
-      count++;
+          count++;
 
-      name = output_presets_string_list->get_string(count);
-    }
-  });
+          name = output_presets_string_list->get_string(count);
+        }
+      }));
 
-  presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    input_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
-  });
+  connections.emplace_back(
+      presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+        input_presets_string_list->append(util::remove_filename_extension(file->get_basename()));
+      }));
 
-  presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    int count = 0;
-    auto name = input_presets_string_list->get_string(count);
+  connections.emplace_back(
+      presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
+        int count = 0;
+        auto name = input_presets_string_list->get_string(count);
 
-    while (name.c_str() != nullptr) {
-      if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-        input_presets_string_list->remove(count);
+        while (name.c_str() != nullptr) {
+          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
+            input_presets_string_list->remove(count);
 
-        return;
-      }
+            return;
+          }
 
-      count++;
+          count++;
 
-      name = input_presets_string_list->get_string(count);
-    }
-  });
+          name = input_presets_string_list->get_string(count);
+        }
+      }));
 
-  presets_manager->autoload_output_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
-    std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
+  connections.emplace_back(
+      presets_manager->autoload_output_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
+        std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
-    for (const auto& json : profiles) {
-      std::string device = json.value("device", "");
-      std::string device_profile = json.value("device-profile", "");
-      std::string preset_name = json.value("preset-name", "");
+        for (const auto& json : profiles) {
+          std::string device = json.value("device", "");
+          std::string device_profile = json.value("device-profile", "");
+          std::string preset_name = json.value("preset-name", "");
 
-      list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
-    }
+          list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
+        }
 
-    autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
-  });
+        autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
+      }));
 
-  presets_manager->autoload_input_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
-    std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
+  connections.emplace_back(
+      presets_manager->autoload_input_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
+        std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
-    for (const auto& json : profiles) {
-      std::string device = json.value("device", "");
-      std::string device_profile = json.value("device-profile", "");
-      std::string preset_name = json.value("preset-name", "");
+        for (const auto& json : profiles) {
+          std::string device = json.value("device", "");
+          std::string device_profile = json.value("device-profile", "");
+          std::string preset_name = json.value("preset-name", "");
 
-      list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
-    }
+          list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
+        }
 
-    autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
-  });
+        autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
+      }));
 
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
