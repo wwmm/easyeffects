@@ -40,6 +40,58 @@ Compressor::Compressor(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
+  settings->signal_changed("sidechain-type").connect([=, this](auto key) {
+    if (settings->get_string(key) == "External") {
+      auto device_name = settings->get_string("sidechain-input-device");
+
+      NodeInfo input_device = pm->pe_source_node;
+
+      for (const auto& node : pm->list_nodes) {
+        if (node.name == std::string(device_name)) {
+          input_device = node;
+
+          break;
+        }
+      }
+
+      auto links = pm->link_nodes(input_device.id, get_node_id(), true);
+
+      for (const auto& link : links) {
+        list_proxies.emplace_back(link);
+      }
+    } else {
+      pm->destroy_links(list_proxies);
+
+      list_proxies.clear();
+    }
+  });
+
+  settings->signal_changed("sidechain-input-device").connect([=, this](auto key) {
+    if (settings->get_string("sidechain-type") == "External") {
+      auto device_name = settings->get_string(key);
+
+      NodeInfo input_device = pm->pe_source_node;
+
+      for (const auto& node : pm->list_nodes) {
+        if (node.name == std::string(device_name)) {
+          input_device = node;
+
+          break;
+        }
+      }
+
+      pm->destroy_links(list_proxies);
+
+      list_proxies.clear();
+
+      auto links = pm->link_nodes(input_device.id, get_node_id(), true);
+
+      for (const auto& link : links) {
+        list_proxies.emplace_back(link);
+      }
+    }
+  });
+
   lv2_wrapper->bind_key_enum(settings, "mode", "cm");
 
   lv2_wrapper->bind_key_enum(settings, "sidechain-type", "sct");

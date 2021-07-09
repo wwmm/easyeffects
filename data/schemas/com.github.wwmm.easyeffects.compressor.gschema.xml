@@ -109,5 +109,8 @@
             <range min="10.0" max="20000.0" />
             <default>20000.0</default>
         </key>
+        <key name="sidechain-input-device" type="s">
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>

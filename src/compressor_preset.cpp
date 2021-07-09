@@ -52,8 +52,6 @@ void CompressorPreset::save(nlohmann::json& json,
 
   json[section]["compressor"]["boost-threshold"] = settings->get_double("boost-threshold");
 
-  json[section]["compressor"]["sidechain"]["listen"] = settings->get_boolean("sidechain-listen");
-
   json[section]["compressor"]["sidechain"]["type"] = settings->get_string("sidechain-type").c_str();
 
   json[section]["compressor"]["sidechain"]["mode"] = settings->get_string("sidechain-mode").c_str();
@@ -99,8 +97,6 @@ void CompressorPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("compressor"), settings, "makeup", "makeup");
 
   update_key<double>(json.at(section).at("compressor"), settings, "boost-threshold", "boost-threshold");
-
-  update_key<bool>(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-listen", "listen");
 
   update_string_key(json.at(section).at("compressor").at("sidechain"), settings, "sidechain-type", "type");
 

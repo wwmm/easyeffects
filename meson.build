@@ -4,7 +4,7 @@ project(
 	'cpp',
 	default_options : ['cpp_std=c++20','buildtype=debugoptimized'],
 	version: '6.0.0',
-	meson_version: '>= 0.40.0'
+	meson_version: '>= 0.57.0'
 )
 
 add_global_arguments('-DG_LOG_DOMAIN="easyeffects"', language : 'c')

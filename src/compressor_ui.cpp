@@ -243,6 +243,16 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
 
+  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
+    if (dropdown_input_devices->get_selected_item() == nullptr) {
+      return;
+    }
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
+
+    settings->set_string("sidechain-input-device", holder->info.name);
+  });
+
   setup_dropdown_input_devices();
 
   // gsettings bindings
