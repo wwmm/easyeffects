@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.0.1]
+
 ### Added
 
 - Improved equalizer interface.
