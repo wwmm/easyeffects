@@ -31,6 +31,7 @@
 #include <vector>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
+#include "bass_loudness_preset.hpp"
 #include "compressor_preset.hpp"
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
@@ -122,6 +123,7 @@ class PresetsManager {
 
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<BassEnhancerPreset> bass_enhancer;
+  std::unique_ptr<BassLoudnessPreset> bass_loudness;
   std::unique_ptr<CompressorPreset> compressor;
   std::unique_ptr<ConvolverPreset> convolver;
   std::unique_ptr<CrossfeedPreset> crossfeed;

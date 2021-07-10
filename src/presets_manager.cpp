@@ -30,6 +30,7 @@ PresetsManager::PresetsManager()
       sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
       autogain(std::make_unique<AutoGainPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
+      bass_loudness(std::make_unique<BassLoudnessPreset>()),
       compressor(std::make_unique<CompressorPreset>()),
       convolver(std::make_unique<ConvolverPreset>()),
       crossfeed(std::make_unique<CrossfeedPreset>()),
@@ -370,6 +371,8 @@ void PresetsManager::save_preset_file(PresetType preset_type, const std::string&
       autogain->write(preset_type, json);
     } else if (name == plugin_name::bass_enhancer) {
       bass_enhancer->write(preset_type, json);
+    } else if (name == plugin_name::bass_loudness) {
+      bass_loudness->write(preset_type, json);
     } else if (name == plugin_name::compressor) {
       compressor->write(preset_type, json);
     } else if (name == plugin_name::convolver) {
@@ -549,6 +552,8 @@ void PresetsManager::load_preset_file(PresetType preset_type, const std::string&
       autogain->read(preset_type, json);
     } else if (name == plugin_name::bass_enhancer) {
       bass_enhancer->read(preset_type, json);
+    } else if (name == plugin_name::bass_loudness) {
+      bass_loudness->read(preset_type, json);
     } else if (name == plugin_name::compressor) {
       compressor->read(preset_type, json);
     } else if (name == plugin_name::convolver) {
