@@ -17,16 +17,16 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "bass_enhancer.hpp"
+#include "bass_loudness.hpp"
 
-BassEnhancer::BassEnhancer(const std::string& tag,
+BassLoudness::BassLoudness(const std::string& tag,
                            const std::string& schema,
                            const std::string& schema_path,
                            PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::bass_enhancer, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/BassEnhancer")) {
+    : PluginBase(tag, plugin_name::bass_loudness, schema, schema_path, pipe_manager),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://drobilla.net/plugins/mda/Loudness")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://calf.sourceforge.net/plugins/BassEnhancer is not installed");
+    util::warning(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
 
     return;
   }
@@ -42,24 +42,16 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
+  lv2_wrapper->bind_key_double_db(settings, "loudness", "loudness");
 
-  lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
+  lv2_wrapper->bind_key_double_db(settings, "output", "output");
 
-  lv2_wrapper->bind_key_double(settings, "scope", "freq");
-
-  lv2_wrapper->bind_key_double(settings, "floor", "floor");
-
-  lv2_wrapper->bind_key_double(settings, "blend", "blend");
-
-  lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
-
-  lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+  lv2_wrapper->bind_key_double_db(settings, "link", "link");
 
   initialize_listener();
 }
 
-BassEnhancer::~BassEnhancer() {
+BassLoudness::~BassLoudness() {
   util::debug(log_tag + name + " destroyed");
 
   pw_thread_loop_lock(pm->thread_loop);
@@ -75,7 +67,7 @@ BassEnhancer::~BassEnhancer() {
   pw_thread_loop_unlock(pm->thread_loop);
 }
 
-void BassEnhancer::setup() {
+void BassLoudness::setup() {
   if (!lv2_wrapper->found_plugin) {
     return;
   }
@@ -84,7 +76,7 @@ void BassEnhancer::setup() {
   lv2_wrapper->create_instance(rate);
 }
 
-void BassEnhancer::process(std::span<float>& left_in,
+void BassLoudness::process(std::span<float>& left_in,
                            std::span<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
@@ -108,10 +100,6 @@ void BassEnhancer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float harmonics_value = lv2_wrapper->get_control_port_value("meter_drive");
-
-      Glib::signal_idle().connect_once([=, this] { harmonics.emit(harmonics_value); });
-
       notify();
 
       notification_dt = 0.0F;

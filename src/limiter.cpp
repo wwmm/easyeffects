@@ -26,6 +26,8 @@ Limiter::Limiter(const std::string& tag,
     : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Limiter")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "http://calf.sourceforge.net/plugins/Limiter is not installed");
+
     return;
   }
 

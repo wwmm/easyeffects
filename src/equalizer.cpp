@@ -31,6 +31,8 @@ Equalizer::Equalizer(const std::string& tag,
       settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
+
     return;
   }
 

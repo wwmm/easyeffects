@@ -7,6 +7,7 @@
         <file>ui/autogain.ui</file>
         <file>ui/autoload_row.ui</file>
         <file>ui/bass_enhancer.ui</file>
+        <file>ui/bass_loudness.ui</file>
         <file>ui/client_info.ui</file>
         <file>ui/compressor.ui</file>
         <file>ui/convolver.ui</file>

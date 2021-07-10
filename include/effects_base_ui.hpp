@@ -29,6 +29,7 @@
 #include <vector>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
+#include "bass_loudness_ui.hpp"
 #include "compressor_ui.hpp"
 #include "convolver_ui.hpp"
 #include "crossfeed_ui.hpp"
@@ -131,6 +132,7 @@ class EffectsBaseUi {
 
   std::map<std::string, std::string> plugins_names{{plugin_name::autogain, _("Autogain")},
                                                    {plugin_name::bass_enhancer, _("Bass Enhancer")},
+                                                   {plugin_name::bass_loudness, _("Bass Loudness")},
                                                    {plugin_name::compressor, _("Compressor")},
                                                    {plugin_name::convolver, _("Convolver")},
                                                    {plugin_name::crossfeed, _("Crossfeed")},

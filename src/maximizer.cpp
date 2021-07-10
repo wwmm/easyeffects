@@ -26,6 +26,8 @@ Maximizer::Maximizer(const std::string& tag,
     : PluginBase(tag, plugin_name::maximizer, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("urn:zamaudio:ZaMaximX2")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "urn:zamaudio:ZaMaximX2 is not installed");
+
     return;
   }
 

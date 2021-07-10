@@ -26,6 +26,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     : PluginBase(tag, plugin_name::multiband_compressor, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/MultibandCompressor")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "http://calf.sourceforge.net/plugins/MultibandCompressor is not installed");
+
     return;
   }
 

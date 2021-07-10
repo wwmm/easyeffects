@@ -26,6 +26,8 @@ Exciter::Exciter(const std::string& tag,
     : PluginBase(tag, plugin_name::exciter, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Exciter")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "http://calf.sourceforge.net/plugins/Exciter is not installed");
+
     return;
   }
 

@@ -23,6 +23,7 @@
 #include <giomm.h>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
+#include "bass_loudness.hpp"
 #include "compressor.hpp"
 #include "convolver.hpp"
 #include "crossfeed.hpp"
@@ -65,6 +66,7 @@ class EffectsBase {
 
   std::shared_ptr<AutoGain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
+  std::shared_ptr<BassLoudness> bass_loudness;
   std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Convolver> convolver;
   std::shared_ptr<Crossfeed> crossfeed;

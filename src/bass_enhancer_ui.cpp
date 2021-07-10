@@ -96,8 +96,6 @@ void BassEnhancerUi::reset() {
   settings->reset("floor-active");
 
   settings->reset("listen");
-
-  settings->reset("bypass");
 }
 
 void BassEnhancerUi::on_new_harmonics_level(double value) {

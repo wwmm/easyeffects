@@ -26,6 +26,8 @@ Reverb::Reverb(const std::string& tag,
     : PluginBase(tag, plugin_name::reverb, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Reverb")) {
   if (!lv2_wrapper->found_plugin) {
+    util::warning(log_tag + "http://calf.sourceforge.net/plugins/Reverb is not installed");
+
     return;
   }
 

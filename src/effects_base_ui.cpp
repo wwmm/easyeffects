@@ -158,6 +158,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   effects_base->autogain->post_messages = true;
   effects_base->bass_enhancer->post_messages = true;
+  effects_base->bass_loudness->post_messages = true;
   effects_base->compressor->post_messages = true;
   effects_base->convolver->post_messages = true;
   effects_base->crossfeed->post_messages = true;
@@ -211,6 +212,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   effects_base->autogain->post_messages = false;
   effects_base->bass_enhancer->post_messages = false;
+  effects_base->bass_loudness->post_messages = false;
   effects_base->compressor->post_messages = false;
   effects_base->convolver->post_messages = false;
   effects_base->crossfeed->post_messages = false;
@@ -238,6 +240,7 @@ EffectsBaseUi::~EffectsBaseUi() {
 
   effects_base->autogain->bypass = false;
   effects_base->bass_enhancer->bypass = false;
+  effects_base->bass_loudness->bypass = false;
   effects_base->compressor->bypass = false;
   effects_base->convolver->bypass = false;
   effects_base->crossfeed->bypass = false;
@@ -335,6 +338,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
 
       effects_base->bass_enhancer->bypass = false;
+    } else if (name == plugin_name::bass_loudness) {
+      auto* bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
+
+      bass_loudness_ui->bypass->signal_toggled().connect(
+          [=, this]() { effects_base->bass_loudness->bypass = bass_loudness_ui->bypass->get_active(); });
+
+      effects_base->bass_loudness->input_level.connect(
+          sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_input_level));
+      effects_base->bass_loudness->output_level.connect(
+          sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_output_level));
     } else if (name == plugin_name::compressor) {
       auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 

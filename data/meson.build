@@ -4,6 +4,7 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.autogain.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.bassenhancer.gschema.xml',
+  'schemas/com.github.wwmm.easyeffects.bassloudness.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.compressor.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.convolver.gschema.xml',
   'schemas/com.github.wwmm.easyeffects.crossfeed.gschema.xml',

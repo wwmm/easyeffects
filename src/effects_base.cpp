@@ -14,6 +14,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   bass_enhancer =
       std::make_shared<BassEnhancer>(log_tag, "com.github.wwmm.easyeffects.bassenhancer", path + "bassenhancer/", pm);
 
+  bass_loudness =
+      std::make_shared<BassLoudness>(log_tag, "com.github.wwmm.easyeffects.bassloudness", path + "bassloudness/", pm);
+
   compressor =
       std::make_shared<Compressor>(log_tag, "com.github.wwmm.easyeffects.compressor", path + "compressor/", pm);
 
@@ -70,6 +73,7 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
+  plugins.insert(std::make_pair(bass_loudness->name, bass_loudness));
   plugins.insert(std::make_pair(compressor->name, compressor));
   plugins.insert(std::make_pair(convolver->name, convolver));
   plugins.insert(std::make_pair(crossfeed->name, crossfeed));
