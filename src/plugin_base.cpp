@@ -183,7 +183,9 @@ PluginBase::PluginBase(std::string tag,
 }
 
 PluginBase::~PluginBase() {
-  spa_hook_remove(&listener);
+  if (listener.link.next != nullptr || listener.link.prev != nullptr) {
+    spa_hook_remove(&listener);
+  }
 }
 
 void PluginBase::initialize_listener() {

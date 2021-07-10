@@ -27,8 +27,6 @@ Deesser::Deesser(const std::string& tag,
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Deesser")) {
   if (!lv2_wrapper->found_plugin) {
     util::warning(log_tag + "http://calf.sourceforge.net/plugins/Deesser is not installed");
-
-    return;
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));

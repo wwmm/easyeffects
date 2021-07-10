@@ -32,8 +32,6 @@ Equalizer::Equalizer(const std::string& tag,
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
     util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
-
-    return;
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));

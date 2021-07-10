@@ -7,6 +7,10 @@
 - The Loudness plugin is being used again for the reasons described at https://github.com/wwmm/easyeffects/issues/820.
   This means that http://drobilla.net/plugins/mda/Loudness is an optional dependency again.
 
+### Fixed
+
+- Fixed a segmentation fault that happened when optional dependencies were not installed
+
 ## [6.0.1]
 
 ### Added
