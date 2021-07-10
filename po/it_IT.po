@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-08 21:57-0300\n"
-"PO-Revision-Date: 2021-01-08 17:38+0100\n"
-"Last-Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2021-07-10 16:01+0200\n"
+"Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
 "MIME-Version: 1.0\n"
@@ -18,49 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Translator: Albano Battistellal\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Effetti Audio per Applicazioni PulseAudio"
+msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects è uno strumento avanzato di manipolazione dell'audio. Include "
-"diversi plugin tra cui un equalizzatore, un limitatore, un compressore e uno "
-"strumento per il riverbero. È dotato inoltre di un analizzatore di spettro."
+"EasyEffects è uno strumento avanzato di manipolazione dell'audio. Include un "
+"equalizzatore, un limitatore, un compressore e uno strumento per il "
+"riverbero. È dotato inoltre di un analizzatore di spettro."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Utilizzando il server audio predefinito PulseAudio, EasyEffects funzionerà "
-"con quasi tutte le applicazione installate. Le applicazioni supportate sono "
-"mostrate nella finestra principale dove si possono abilitare individualmente."
+"Utilizzando il server audio predefinito PipeWire, EasyEffects funzionerà con "
+"quasi tutte le applicazione installate. Le applicazioni supportate sono "
+"mostrate nella finestra principale, dove si possono abilitare "
+"individualmente."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -71,7 +67,6 @@ msgstr ""
 "nelle registrazioni audio e nelle conversazioni vocali."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
@@ -79,7 +74,7 @@ msgid ""
 msgstr ""
 "All'avvio di EasyEffects verrà caricata la configurazione usata nell'ultima "
 "sessione. È anche possibile salvare tutte le impostazioni correnti in file "
-"di profili."
+"come profili."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:23
 msgid "Set the volume and turn on/off effects"
@@ -172,7 +167,7 @@ msgstr "Ingresso"
 
 #: data/ui/application_window.ui:95
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
@@ -261,25 +256,23 @@ msgstr "Reset"
 #: data/ui/pitch.ui:359 data/ui/reverb.ui:520 data/ui/rnnoise.ui:262
 #: data/ui/stereo_tools.ui:726
 msgid "Using"
-msgstr ""
+msgstr "In uso"
 
 #: data/ui/autoload_row.ui:15 data/ui/compressor.ui:470
-#, fuzzy
 msgid "Device"
-msgstr "Livello in Ingresso"
+msgstr "Dispositivo"
 
 #: data/ui/autoload_row.ui:38
 msgid "Profile"
-msgstr ""
+msgstr "Profilo"
 
 #: data/ui/autoload_row.ui:62
-#, fuzzy
 msgid "Preset"
-msgstr "Profili"
+msgstr "Profilo"
 
 #: data/ui/autoload_row.ui:86
 msgid "Remove"
-msgstr ""
+msgstr "Rimuovi"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:367 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:23
@@ -317,7 +310,7 @@ msgstr "Limite Inferiore"
 
 #: data/ui/client_info.ui:12 data/ui/module_info.ui:12
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
 #: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
@@ -326,11 +319,11 @@ msgstr "Nome"
 
 #: data/ui/client_info.ui:58
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/client_info.ui:81
 msgid "Access"
-msgstr ""
+msgstr "Accesso"
 
 #: data/ui/compressor.ui:49 data/ui/compressor.ui:385 data/ui/compressor.ui:635
 #: data/ui/deesser.ui:65 data/ui/equalizer.ui:56 data/ui/equalizer_band.ui:51
@@ -355,9 +348,8 @@ msgid "Attack"
 msgstr "Attacco"
 
 #: data/ui/compressor.ui:92
-#, fuzzy
 msgid "Time"
-msgstr "Tempo Reale"
+msgstr "Tempo"
 
 #: data/ui/compressor.ui:103 data/ui/deesser.ui:292 data/ui/gate.ui:181
 #: data/ui/maximizer.ui:29 data/ui/multiband_compressor.ui:274
@@ -469,7 +461,7 @@ msgstr "Prelievo in uscita"
 
 #: data/ui/compressor.ui:484
 msgid "External"
-msgstr ""
+msgstr "Esterno"
 
 #: data/ui/compressor.ui:507
 msgid "Pre-amplification"
@@ -484,12 +476,10 @@ msgid "Lookahead"
 msgstr "Lookahead"
 
 #: data/ui/compressor.ui:612
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Sidechain"
+msgstr "Filtri Sidechain"
 
 #: data/ui/compressor.ui:623
-#, fuzzy
 msgid "High-pass"
 msgstr "Passa Alto"
 
@@ -516,7 +506,6 @@ msgid "36 dB/oct"
 msgstr "36 dB/ott"
 
 #: data/ui/compressor.ui:695
-#, fuzzy
 msgid "Low-pass"
 msgstr "Passa Basso"
 
@@ -539,9 +528,8 @@ msgid "R"
 msgstr "D"
 
 #: data/ui/convolver.ui:79
-#, fuzzy
 msgid "Impulses"
-msgstr "Risposta Impulsiva"
+msgstr "Risposte Impulsive"
 
 #: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:158
 msgid "Spectrum"
@@ -562,7 +550,7 @@ msgstr "Importa Impulso"
 #: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: data/ui/crossfeed.ui:26
 msgid "Cmoy"
@@ -631,15 +619,15 @@ msgstr "Rilevato"
 
 #: data/ui/effects_base.ui:64
 msgid "Add Plugin"
-msgstr ""
+msgstr "Aggiungi Modulo"
 
 #: data/ui/effects_base.ui:137
 msgid "Players"
-msgstr ""
+msgstr "Riproduzione"
 
 #: data/ui/effects_base.ui:160
 msgid "Plugins"
-msgstr ""
+msgstr "Moduli"
 
 #: data/ui/effects_base.ui:246
 msgid "Blocklist"
@@ -647,7 +635,7 @@ msgstr "App Escluse"
 
 #: data/ui/effects_base.ui:300
 msgid "Player Name"
-msgstr ""
+msgstr "Nome Riproduttore"
 
 #: data/ui/equalizer.ui:26
 msgid "Bands"
@@ -667,7 +655,7 @@ msgstr "FFT"
 
 #: data/ui/equalizer.ui:70
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:91
 msgid "Split Channels"
@@ -682,9 +670,8 @@ msgid "Calculate Frequencies"
 msgstr "Calcola Frequenze"
 
 #: data/ui/equalizer.ui:111
-#, fuzzy
 msgid "Load APO Preset"
-msgstr "Profili APO"
+msgstr "Carica Profilo APO"
 
 #: data/ui/equalizer_band.ui:32
 msgid "Bell"
@@ -768,7 +755,7 @@ msgstr "Isola"
 
 #: data/ui/exciter.ui:191
 msgid "ceil"
-msgstr ""
+msgstr "limite superiore"
 
 #: data/ui/filter.ui:23
 msgid "12dB/oct Lowpass"
@@ -862,17 +849,15 @@ msgstr "Usa Tema Scuro"
 
 #: data/ui/general_settings.ui:101
 msgid "Run in Background"
-msgstr ""
+msgstr "Esegui in Sottofondo"
 
 #: data/ui/general_settings.ui:138
-#, fuzzy
 msgid "Reset All Settings"
-msgstr "Impostazioni"
+msgstr "Azzera Tutte le Impostazioni"
 
 #: data/ui/general_settings.ui:144
-#, fuzzy
 msgid "About EasyEffects"
-msgstr "EasyEffects"
+msgstr "Info su EasyEffects"
 
 #: data/ui/limiter.ui:21
 msgid "Automatic Leveling"
@@ -923,18 +908,16 @@ msgid "FFT Size"
 msgstr "Dimensione FFT"
 
 #: data/ui/loudness.ui:87
-#, fuzzy
 msgid "Output Volume"
-msgstr "Uscita"
+msgstr "Volume in Uscita"
 
 #: data/ui/maximizer.ui:61
 msgid "Ceiling"
 msgstr "Limite Superiore"
 
 #: data/ui/module_info.ui:58
-#, fuzzy
 msgid "Description"
-msgstr "Rilevamento"
+msgstr "Descrizione"
 
 #: data/ui/multiband_compressor.ui:38 data/ui/multiband_gate.ui:38
 msgid "LR4"
@@ -982,62 +965,52 @@ msgid "General"
 msgstr "Generale"
 
 #: data/ui/pipe_info.ui:35
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Usa Predefinito"
+msgstr "Usa Ingresso Predefinito"
 
 #: data/ui/pipe_info.ui:56
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Usa Predefinito"
+msgstr "Usa Uscita Predefinita"
 
 #: data/ui/pipe_info.ui:77
-#, fuzzy
 msgid "Input Device"
-msgstr "Livello in Ingresso"
+msgstr "Dispositivo di Ingresso"
 
 #: data/ui/pipe_info.ui:96
-#, fuzzy
 msgid "Output Device"
-msgstr "Guadagno in Uscita"
+msgstr "Dispositivo di Uscita"
 
 #: data/ui/pipe_info.ui:115
-#, fuzzy
 msgid "Header Version"
-msgstr "Versione"
+msgstr "Versione Intestazione"
 
 #: data/ui/pipe_info.ui:138
-#, fuzzy
 msgid "Library Version"
-msgstr "Versione"
+msgstr "Versione Libreria"
 
 #: data/ui/pipe_info.ui:161
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Campionamento"
+msgstr "Frequenza di Campionamento"
 
 #: data/ui/pipe_info.ui:184
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Frequenza Minima"
+msgstr "Quanto Minimo"
 
 #: data/ui/pipe_info.ui:207
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Guadagno Massimo"
+msgstr "Quanto Massimo"
 
 #: data/ui/pipe_info.ui:230
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Sink Predefinito"
+msgstr "Quanto Predefinito"
 
 #: data/ui/pipe_info.ui:259
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Autocaricamento Profili"
 
 #: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
 msgid "Create Association"
-msgstr ""
+msgstr "Crea Associazione"
 
 #: data/ui/pipe_info.ui:438
 msgid "Modules"
@@ -1048,32 +1021,28 @@ msgid "Clients"
 msgstr "Client"
 
 #: data/ui/pipe_info.ui:486
-#, fuzzy
 msgid "Test Signal"
-msgstr "Segnali di Test"
+msgstr "Segnale di Test"
 
 #: data/ui/pipe_info.ui:495
 msgid "Enable"
 msgstr "Attiva"
 
 #: data/ui/pipe_info.ui:517
-#, fuzzy
 msgid "Channel"
-msgstr "Canali"
+msgstr "Canale"
 
 #: data/ui/pipe_info.ui:554
 msgid "Both"
-msgstr ""
+msgstr "Entrambi"
 
 #: data/ui/pipe_info.ui:570
-#, fuzzy
 msgid "Signal"
-msgstr "Segnali di Test"
+msgstr "Segnale"
 
 #: data/ui/pipe_info.ui:587
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Tabella sinusoidale"
+msgstr "Onda Sinusoidale"
 
 #: data/ui/pipe_info.ui:598
 msgid "White Noise"
@@ -1117,7 +1086,7 @@ msgstr "Rimuovi questo profilo"
 
 #: data/ui/presets_menu.ui:78
 msgid "Speakers"
-msgstr ""
+msgstr "Altoparlanti"
 
 #: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
@@ -1128,9 +1097,8 @@ msgid "Import Presets"
 msgstr "Importa Profili"
 
 #: data/ui/presets_menu.ui:179
-#, fuzzy
 msgid "Microphone"
-msgstr "Calibrazione Microfono"
+msgstr "Microfono"
 
 #: data/ui/reverb.ui:44
 msgid "High Frequency Damping"
@@ -1177,13 +1145,12 @@ msgid "Decay Time"
 msgstr "Decadimento"
 
 #: data/ui/reverb.ui:205
-#, fuzzy
 msgid "Wet"
-msgstr "Ampiezze"
+msgstr "Umido"
 
 #: data/ui/reverb.ui:239
 msgid "Dry"
-msgstr "Trascuranza"
+msgstr "Secco"
 
 #: data/ui/reverb.ui:272
 msgid "Bass Cut"
@@ -1222,9 +1189,8 @@ msgid "Import Model"
 msgstr "Importa Modello"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modalità"
+msgstr "Modelli"
 
 #: data/ui/rnnoise.ui:65
 msgid "Active Model"
@@ -1259,9 +1225,8 @@ msgid "Line Width"
 msgstr "Spessore Linea"
 
 #: data/ui/spectrum_settings.ui:186
-#, fuzzy
 msgid "Minimum"
-msgstr "Massima"
+msgstr "Minima"
 
 #: data/ui/spectrum_settings.ui:259
 msgid "Spectrum Type"
@@ -1361,10 +1326,9 @@ msgstr "Fase Stereo"
 
 #: data/ui/stereo_tools.ui:679
 msgid "Phase Correlation"
-msgstr ""
+msgstr "Correlazione di Fase"
 
 #: include/effects_base_ui.hpp:132
-#, fuzzy
 msgid "Autogain"
 msgstr "Auto Guadagno"
 
@@ -1466,7 +1430,7 @@ msgstr "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per lo stato"
 
 #: src/application.cpp:42
 msgid "Hide the Window."
-msgstr "Nascondi la Finestra"
+msgstr "Nascondi la Finestra."
 
 #: src/application.cpp:313
 msgid "Output Presets: "
@@ -1477,9 +1441,8 @@ msgid "Input Presets: "
 msgstr "Profili Ingresso: "
 
 #: src/application.cpp:349
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Effetti Audio per Applicazioni PulseAudio"
+msgstr "Effetti Audio per Applicazioni PipeWire"
 
 #: src/convolver_ui.cpp:372 src/convolver_ui.cpp:375
 msgid "Import Impulse File"
@@ -1533,344 +1496,16 @@ msgstr "infinito"
 
 #: src/equalizer_ui.cpp:590 src/equalizer_ui.cpp:593
 msgid "Import APO Preset File"
-msgstr "Importa Profilo APO"
+msgstr "Importa File Profilo APO"
 
 #: src/equalizer_ui.cpp:599
 msgid "APO Presets"
 msgstr "Profili APO"
 
 #: src/presets_menu_ui.cpp:194
-#, fuzzy
 msgid "Import Preset"
-msgstr "Importa Profili"
+msgstr "Importa Profilo"
 
 #: src/stream_input_effects_ui.cpp:31
-#, fuzzy
 msgid "Recorders"
-msgstr "Bordo"
-
-#~ msgid "Audio Effects for PulseAudio Applications"
-#~ msgstr "Effetti Audio per Applicazioni PulseAudio"
-
-#~ msgid "Audio effects for PulseAudio applications"
-#~ msgstr "Effetti audio per applicazioni PulseAudio"
-
-#~ msgid "Help"
-#~ msgstr "Aiuto"
-
-#~ msgid "Calibration Microphone"
-#~ msgstr "Calibrazione Microfono"
-
-#~ msgid ""
-#~ "Automatically apply this preset whenever the currently used device is "
-#~ "plugged in the system"
-#~ msgstr ""
-#~ "Applica automaticamente questo profilo ogni volta che il dispositivo "
-#~ "viene connesso al sistema"
-
-#, fuzzy
-#~ msgid "Version"
-#~ msgstr "Versione"
-
-#~ msgid "Sine"
-#~ msgstr "Sinusoidale"
-
-#~ msgid "Square"
-#~ msgstr "Quadra"
-
-#~ msgid "Saw"
-#~ msgstr "A Dente di Sega"
-
-#~ msgid "Triangle"
-#~ msgstr "Triangolare"
-
-#~ msgid "Silence"
-#~ msgstr "Silenzio"
-
-#~ msgid "Pink Noise"
-#~ msgstr "Rumore Rosa"
-
-#~ msgid "Ticks"
-#~ msgstr "Battiti"
-
-#~ msgid "Gaussian Noise"
-#~ msgstr "Rumore Gaussiano"
-
-#~ msgid "Red Noise"
-#~ msgstr "Rumore Rosso"
-
-#~ msgid "Blue Noise"
-#~ msgstr "Rumore Blu"
-
-#~ msgid "Violet Noise"
-#~ msgstr "Rumore Viola"
-
-#~ msgid "Volume"
-#~ msgstr "Volume"
-
-#~ msgid "Window"
-#~ msgstr "Finestra"
-
-#~ msgid "Measure Noise"
-#~ msgstr "Misura Rumore"
-
-#~ msgid "Subtract Noise"
-#~ msgstr "Sottrai Rumore"
-
-#~ msgid "Input Effects"
-#~ msgstr "Effetti in Ingresso"
-
-#~ msgid "Output Effects"
-#~ msgstr "Effetti in Uscita"
-
-#~ msgid "WebRTC"
-#~ msgstr "WebRTC"
-
-#~ msgid "Provided by"
-#~ msgstr "Fornito da"
-
-#~ msgid "Extended Filter"
-#~ msgstr "Filtro Esteso"
-
-#~ msgid "High Pass Filter"
-#~ msgstr "Filtro Passa Alto"
-
-#~ msgid "Low"
-#~ msgstr "Basso"
-
-#~ msgid "Moderate"
-#~ msgstr "Moderato"
-
-#~ msgid "High"
-#~ msgstr "Alto"
-
-#~ msgid "Suppression Level"
-#~ msgstr "Livello Soppressione"
-
-#~ msgid "Delay Agnostic"
-#~ msgstr "Ritardo Agnostico"
-
-#~ msgid "Very High"
-#~ msgstr "Molto Alto"
-
-#~ msgid "Noise Suppressor"
-#~ msgstr "Soppressore Rumore"
-
-#~ msgid "Adaptive Digital"
-#~ msgstr "Digitale Adattivo"
-
-#~ msgid "Fixed Digital"
-#~ msgstr "Digitale Fisso"
-
-#~ msgid "Gain Controller"
-#~ msgstr "Controllo Guadagno"
-
-#~ msgid "Target Level"
-#~ msgstr "Livello Soglia"
-
-#~ msgid "Maximum Gain"
-#~ msgstr "Guadagno Massimo"
-
-#~ msgid "Detection Likelihood"
-#~ msgstr "Probabilità Rilevamento"
-
-#~ msgid "Frame Size"
-#~ msgstr "Dimensione frame"
-
-#~ msgid "Very Low"
-#~ msgstr "Molto Basso"
-
-#~ msgid "Voice Detector"
-#~ msgstr "Rilevatore Voce"
-
-#~ msgid "Use Custom Color"
-#~ msgstr "Personalizza Colore"
-
-#~ msgid "Use Gradient"
-#~ msgstr "Usa Sfumatura"
-
-#~ msgid "Gradient Color"
-#~ msgstr "Colore Sfumatura"
-
-#~ msgid "Import Impulse Response File"
-#~ msgstr "Importa File di Risposta Impulsiva"
-
-#~ msgid "Select the impulse Response File"
-#~ msgstr "Seleziona il File di Risposta Impulsiva"
-
-#~ msgid "Stereo Width"
-#~ msgstr "Ampiezza Stereo"
-
-#~ msgid "Aggressive Mode"
-#~ msgstr "Modalità Aggressiva"
-
-#~ msgid "Before"
-#~ msgstr "Prima"
-
-#~ msgid "After"
-#~ msgstr "Dopo"
-
-#~ msgid "Loudness Range"
-#~ msgstr "Gamma Loudness"
-
-#~ msgid "Loudness Compensator"
-#~ msgstr "Bilanciamento Loudness"
-
-#~ msgid "Apply"
-#~ msgstr "Applica"
-
-#~ msgid "Based on"
-#~ msgstr "Basato su"
-
-#~ msgid "Import Model File"
-#~ msgstr "Importa File di Modello"
-
-#, fuzzy
-#~ msgid "Default Clock Rate"
-#~ msgstr "Frequenza di Campionamento Predefinita"
-
-#~ msgid "Default Source"
-#~ msgstr "Sorgente Predefinita"
-
-#~ msgid "Server"
-#~ msgstr "Server"
-
-#~ msgid "File"
-#~ msgstr "File"
-
-#~ msgid "Configuration"
-#~ msgstr "Configurazione"
-
-#, fuzzy
-#~ msgid "server"
-#~ msgstr "Server"
-
-#, fuzzy
-#~ msgid "Based on a"
-#~ msgstr "Basato su"
-
-#~ msgid "Compression Mode"
-#~ msgstr "Modalità di compressione"
-
-#~ msgid "Relative Release Threshold"
-#~ msgstr "Soglia di Rilascio Relativa"
-
-#~ msgid "High-pass Frequency"
-#~ msgstr "Frequenza Passa-Alto"
-
-#~ msgid "Low-pass Frequency"
-#~ msgstr "Frequenza Passa-Basso"
-
-#~ msgid "High-pass Filter Mode"
-#~ msgstr "Filtro Passa-Alto"
-
-#~ msgid "Low-pass Filter Mode"
-#~ msgstr "Filtro Passa-Basso"
-
-#~ msgid "Advanced"
-#~ msgstr "Avanzate"
-
-#~ msgid "Gain"
-#~ msgstr "Guadagno"
-
-#~ msgid "Apply APO Preset"
-#~ msgstr "Applica Profilo APO"
-
-#~ msgid "Auto Gain"
-#~ msgstr "Auto Guadagno"
-
-#~ msgid "Detect Silence"
-#~ msgstr "Rilevazione Silenzio"
-
-#~ msgid "Use Geometric Mean"
-#~ msgstr "Usa Media Geometrica"
-
-#~ msgid "Muted"
-#~ msgstr "Silenziato"
-
-#~ msgid "Distant Headphones"
-#~ msgstr "Cuffie Distanti"
-
-#~ msgid "Priority Type"
-#~ msgstr "Tipo Priorità"
-
-#~ msgid "Niceness"
-#~ msgstr "Livello Nice"
-
-#~ msgid "None"
-#~ msgstr "Nessuna"
-
-#~ msgid "Priority"
-#~ msgstr "Valore Priorità"
-
-#~ msgid "Activity Timeout"
-#~ msgstr "Timeout Attività"
-
-#~ msgid "Gain Reduction"
-#~ msgstr "Riduzione Guadagno"
-
-#~ msgid "Minimum Frequency"
-#~ msgstr "Frequenza Minima"
-
-#~ msgid "Maximum Frequency"
-#~ msgstr "Frequenza Massima"
-
-#~ msgid "Applications"
-#~ msgstr "Applicazioni"
-
-#~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
-#~ msgstr "Riconnetti il microfono per applicare le modifiche alle App Escluse"
-
-#~ msgid "Restart the player to apply new changes made to the Blocklist"
-#~ msgstr "Riavvia il media player per applicare le modifiche alle App Escluse"
-
-#~ msgid "Show Blocklisted Apps in Main Tab"
-#~ msgstr "Mostra Applicazioni Escluse nella Scheda Principale"
-
-#~ msgid "About"
-#~ msgstr "Info"
-
-#~ msgid "Protocol"
-#~ msgstr "Protocollo"
-
-#~ msgid "Default Sample Format"
-#~ msgstr "Formato di Campionamento Predefinito"
-
-#~ msgid "Channel Mapping"
-#~ msgstr "Mappatura Canali"
-
-#~ msgid "Resamplers"
-#~ msgstr "Ricampionamento"
-
-#~ msgid "Pipeline Input"
-#~ msgstr "In Ingresso alla Pipeline"
-
-#~ msgid "Buffer"
-#~ msgstr "Buffer"
-
-#~ msgid "Pipeline Output"
-#~ msgstr "In Uscita alla Pipeline"
-
-#~ msgid "Block Size"
-#~ msgstr "Dimensione Blocco"
-
-#~ msgid "Resampler"
-#~ msgstr "Ricampionamento"
-
-#~ msgid "paused"
-#~ msgstr "pausa"
-
-#~ msgid "playing"
-#~ msgstr "riproduzione"
-
-#~ msgid "Pulseaudio"
-#~ msgstr "Pulseaudio"
-
-#~ msgid "Import APO Presets"
-#~ msgstr "Importa Profili APO"
-
-#~ msgid "Reference Signal"
-#~ msgstr "Segnale di Riferimento"
-
-#~ msgid "Input Gain"
-#~ msgstr "Guadagno in Ingresso"
+msgstr "Registrazione"
