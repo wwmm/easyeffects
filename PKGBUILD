@@ -1,7 +1,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=6.0.0.r0.g2ee3f0b7
+pkgver=6.0.1.r8.g60b08b2c
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
@@ -10,9 +10,10 @@ license=('GPL3')
 depends=('gtkmm-4.0' 'glibmm-2.68' 'pipewire' 'lilv' 'lv2' 'libsigc++-3.0' 'libsndfile' 'libsamplerate' 'zita-convolver' 
          'libebur128' 'rnnoise' 'rubberband' 'fftw' 'libbs2b' 'speexdsp' 'nlohmann-json')
 makedepends=('meson' 'itstool' 'appstream-glib')
-optdepends=('calf: limiter, compressor exciter, bass enhancer and others'
-            'lsp-plugins: equalizer, delay'
+optdepends=('calf: limiter, exciter, bass enhancer and others'
+            'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
+            'mda.lv2: bass loudness'
             'yelp: in-app help')
 source=("easyeffects::git+https://github.com/wwmm/easyeffects.git")
 conflicts=(easyeffects)

@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.0.2]
+
 ### Added
 
 - The Loudness plugin is being used again for the reasons described at https://github.com/wwmm/easyeffects/issues/820.
