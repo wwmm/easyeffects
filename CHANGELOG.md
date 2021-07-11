@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Transient windows are now propoerly set for some plugins dialogs
+
 ## [6.0.2]
 
 ### Added

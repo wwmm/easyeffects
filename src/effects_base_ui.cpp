@@ -369,6 +369,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       convolver_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
 
+      convolver_ui->set_transient_window(transient_window);
+
       effects_base->convolver->input_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_input_level));
       effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
 
@@ -434,6 +436,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       equalizer_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
+
+      equalizer_ui->set_transient_window(transient_window);
 
       effects_base->equalizer->input_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_input_level));
       effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
@@ -588,6 +592,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       rnnoise_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->rnnoise->bypass = rnnoise_ui->bypass->get_active(); });
+
+      rnnoise_ui->set_transient_window(transient_window);
 
       effects_base->rnnoise->input_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_input_level));
       effects_base->rnnoise->output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level));
