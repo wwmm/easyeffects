@@ -224,7 +224,7 @@ void ConvolverUi::setup_listview() {
 
   // setting the listview model and factory
 
-  listview->set_model(Gtk::SingleSelection::create(sort_list_model));
+  listview->set_model(Gtk::NoSelection::create(sort_list_model));
 
   auto factory = Gtk::SignalListItemFactory::create();
 
@@ -235,18 +235,23 @@ void ConvolverUi::setup_listview() {
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* box = Gtk::make_managed<Gtk::Box>();
     auto* label = Gtk::make_managed<Gtk::Label>();
+    auto* load = Gtk::make_managed<Gtk::Button>();
     auto* remove = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
+    load->set_label(_("Load"));
+
     remove->set_icon_name("user-trash-symbolic");
 
     box->set_spacing(6);
     box->append(*label);
+    box->append(*load);
     box->append(*remove);
 
     list_item->set_data("name", label);
+    list_item->set_data("load", load);
     list_item->set_data("remove", remove);
 
     list_item->set_child(*box);
@@ -254,19 +259,35 @@ void ConvolverUi::setup_listview() {
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* load = static_cast<Gtk::Button*>(list_item->get_data("load"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
+    auto connection_load = load->signal_clicked().connect([=, this]() {
+      auto irs_file = irs_dir / std::filesystem::path{name + ".irs"};
+
+      settings->set_string("kernel-path", irs_file.string());
+    });
+
     auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name); });
+
+    list_item->set_data("connection_load", new sigc::connection(connection_load),
+                        Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_remove", new sigc::connection(connection_remove),
                         Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_load"))) {
+      connection->disconnect();
+
+      list_item->set_data("connection_load", nullptr);
+    }
+
     if (auto* connection = static_cast<sigc::connection*>(list_item->get_data("connection_remove"))) {
       connection->disconnect();
 
@@ -276,29 +297,29 @@ void ConvolverUi::setup_listview() {
 
   // selection callback
 
-  listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
-    auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+  // listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+  //   auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+  //   auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-    auto irs_file = irs_dir / std::filesystem::path{selected_name + ".irs"};
+  //   auto irs_file = irs_dir / std::filesystem::path{selected_name + ".irs"};
 
-    settings->set_string("kernel-path", irs_file.string());
-  });
+  //   settings->set_string("kernel-path", irs_file.string());
+  // });
 
   // initializing selecting the row that corresponds to the saved model
 
-  Glib::ustring saved_name = std::filesystem::path{settings->get_string("kernel-path")}.stem().string();
+  // Glib::ustring saved_name = std::filesystem::path{settings->get_string("kernel-path")}.stem().string();
 
-  auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+  // auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  for (guint n = 0; n < single->get_n_items(); n++) {
-    auto name = single->get_object(n)->get_property<Glib::ustring>("string");
+  // for (guint n = 0; n < single->get_n_items(); n++) {
+  //   auto name = single->get_object(n)->get_property<Glib::ustring>("string");
 
-    if (name == saved_name) {
-      single->select_item(n, true);
-    }
-  }
+  //   if (name == saved_name) {
+  //     single->select_item(n, true);
+  //   }
+  // }
 }
 
 void ConvolverUi::reset() {

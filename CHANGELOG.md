@@ -5,6 +5,8 @@
 ### Fixed
 
 - Transient windows are now propoerly set for some plugins dialogs
+- The concolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when
+  only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011
 
 ## [6.0.2]
 
