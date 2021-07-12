@@ -170,9 +170,14 @@ void Application::on_startup() {
 
     if (target_node.id != SPA_ID_INVALID) {
       if (target_node.media_class == "Audio/Source") {
-        presets_manager->autoload(PresetType::input, target_node.name, device.profile_name);
+        if (target_node.name == std::string(sie_settings->get_string("input-device"))) {
+          presets_manager->autoload(PresetType::input, target_node.name, device.profile_name);
+        }
+
       } else if (target_node.media_class == "Audio/Sink") {
-        presets_manager->autoload(PresetType::output, target_node.name, device.profile_name);
+        if (target_node.name == std::string(soe_settings->get_string("output-device"))) {
+          presets_manager->autoload(PresetType::output, target_node.name, device.profile_name);
+        }
       }
     }
   });
