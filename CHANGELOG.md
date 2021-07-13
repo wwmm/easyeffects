@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Improved the resampler used in the plugins that require one
+
 ### Fixed
 
 - Multiple autoloading presets should be working properly now.
