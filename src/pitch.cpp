@@ -255,7 +255,7 @@ void Pitch::process(std::span<float>& left_in,
 }
 
 void Pitch::update_crispness() {
-  if (!rubberband_ready) {
+  if (stretcher == nullptr) {
     return;
   }
 
@@ -312,7 +312,7 @@ void Pitch::update_crispness() {
 */
 
 void Pitch::update_pitch_scale() {
-  if (!rubberband_ready) {
+  if (stretcher == nullptr) {
     return;
   }
 
@@ -326,9 +326,10 @@ void Pitch::update_pitch_scale() {
 void Pitch::init_stretcher() {
   delete stretcher;
 
-  RubberBand::RubberBandStretcher::Options options =
-      RubberBand::RubberBandStretcher::OptionProcessRealTime | RubberBand::RubberBandStretcher::OptionPitchHighQuality |
-      RubberBand::RubberBandStretcher::OptionChannelsTogether | RubberBand::RubberBandStretcher::OptionPhaseIndependent;
+  RubberBand::RubberBandStretcher::Options options = RubberBand::RubberBandStretcher::OptionProcessRealTime |
+                                                     RubberBand::RubberBandStretcher::OptionPitchHighConsistency |
+                                                     RubberBand::RubberBandStretcher::OptionChannelsTogether |
+                                                     RubberBand::RubberBandStretcher::OptionPhaseIndependent;
 
   stretcher = new RubberBand::RubberBandStretcher(rate, 2, options);
 
