@@ -8,76 +8,70 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-12 11:52+0200\n"
-"PO-Revision-Date: 2021-03-13 21:24+0100\n"
-"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"PO-Revision-Date: 2021-07-14 14:30+0200\n"
+"Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "PulseEffecten"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Audio-effecten voor PulseAudio-toepassingen"
+msgstr "Audio-effecten voor PipeWire-toepassingen"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"PulseEffecten is een uitgebreid hulpmiddel om audio mee naar uw eigen hand "
-"te zetten. Het bevat een equalizer, limiter, compressor, galmhulpmiddel en "
-"nog een aantal hulpmiddelen. Daarnaast bevat de toepassing ook een "
+"EasyEffects is een uitgebreid hulpmiddel waarmee u audio zeer gericht kunt "
+"afstellen. Het bevat een equalizer, limiter, compressor, galmhulpmiddel en "
+"een aantal andere hulpmiddelen. Verder bevat de toepassing een "
 "spectrumanalyse-hulpmiddel."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:12
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"PulseEffecten maakt gebruik van de PulseAudio-geluidsserver en werkt "
-"daardoor met nagenoeg alle, zo niet alle, toepassingen die u gebruikt. Alle "
+"EasyEffects maakt gebruik van de PipeWire-geluidsserver en werkt daardoor "
+"met nagenoeg alle, zo niet alle, toepassingen die u gebruikt. Alle "
 "ondersteunde toepassingen worden getoond in het hoofdvenster, waar elke "
 "toepassing op elk moment kan worden in- of uitgeschakeld."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:13
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Naast het aanpassen van geluidsuitvoer, past PulseEffecten ook het geluid "
-"van invoerapparaten, zoals een microfoon, aan. Dit is onder meer nuttig bij "
-"het opnemen van audio of voeren van audiogesprekken."
+"Naast het aanpassen van geluidsuitvoer, past EasyEffects ook het geluid van "
+"invoerapparaten, zoals microfoons, aan. Dit is onder meer nuttig bij het "
+"opnemen van audio of voeren van audiogesprekken."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:14
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"Na het opstarten toont PulseEffecten de in de vorige sessie gebruikte "
-"instellingen. Ook kunnen instellen worden opgeslagen als profielen."
+"Na het opstarten toont EasyEffects de in de vorige sessie gebruikte "
+"instellingen. Ook kunnen instellingen worden opgeslagen als profielen."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:23
 msgid "Set the volume and turn on/off effects"
@@ -106,12 +100,12 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;galm;equalizer;automatisch;volume;"
+msgstr "limiter;compressor;galm;equalizer;autovolume;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
-msgstr "'Voorinstellingen'"
+msgstr "‘Voorinstellingen’"
 
 #: data/ui/app_info.ui:66
 msgid "Add to Blocklist"
@@ -235,9 +229,8 @@ msgid "Loudness"
 msgstr "Hardheid"
 
 #: data/ui/autogain.ui:252
-#, fuzzy
 msgid "Output Gain"
-msgstr "Uitvoer"
+msgstr "Uitvoerversterking"
 
 #: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:423
 #: data/ui/compressor.ui:1007 data/ui/convolver.ui:377 data/ui/crossfeed.ui:292
@@ -260,25 +253,23 @@ msgstr "Standaardwaarden"
 #: data/ui/pitch.ui:359 data/ui/reverb.ui:520 data/ui/rnnoise.ui:262
 #: data/ui/stereo_tools.ui:726
 msgid "Using"
-msgstr ""
+msgstr "Gebruikmakend van"
 
 #: data/ui/autoload_row.ui:15 data/ui/compressor.ui:471
-#, fuzzy
 msgid "Device"
-msgstr "Invoerniveau"
+msgstr "Apparaat"
 
 #: data/ui/autoload_row.ui:38
 msgid "Profile"
-msgstr ""
+msgstr "Profiel"
 
 #: data/ui/autoload_row.ui:62
-#, fuzzy
 msgid "Preset"
-msgstr "Voorinstellingen"
+msgstr "Voorinstelling"
 
 #: data/ui/autoload_row.ui:86
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:368 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:23
@@ -316,7 +307,7 @@ msgstr "Verdieping"
 
 #: data/ui/client_info.ui:12 data/ui/module_info.ui:12
 msgid "Id"
-msgstr ""
+msgstr "ID"
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
 #: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
@@ -325,11 +316,11 @@ msgstr "Naam"
 
 #: data/ui/client_info.ui:58
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/client_info.ui:81
 msgid "Access"
-msgstr ""
+msgstr "Toegang"
 
 #: data/ui/compressor.ui:49 data/ui/compressor.ui:386 data/ui/compressor.ui:636
 #: data/ui/deesser.ui:65 data/ui/equalizer.ui:106 data/ui/equalizer_band.ui:51
@@ -347,7 +338,7 @@ msgstr "Omhoog"
 
 #: data/ui/compressor.ui:59
 msgid "Boosting"
-msgstr ""
+msgstr "Versterking"
 
 #: data/ui/compressor.ui:82 data/ui/gate.ui:113
 #: data/ui/multiband_compressor.ui:206 data/ui/multiband_compressor.ui:516
@@ -358,9 +349,8 @@ msgid "Attack"
 msgstr "Aanval"
 
 #: data/ui/compressor.ui:93
-#, fuzzy
 msgid "Time"
-msgstr "Real-time"
+msgstr "Duur"
 
 #: data/ui/compressor.ui:104 data/ui/deesser.ui:292 data/ui/gate.ui:181
 #: data/ui/maximizer.ui:29 data/ui/multiband_compressor.ui:274
@@ -472,7 +462,7 @@ msgstr "Teruggeven"
 
 #: data/ui/compressor.ui:485
 msgid "External"
-msgstr ""
+msgstr "Extern"
 
 #: data/ui/compressor.ui:508
 msgid "Pre-amplification"
@@ -487,12 +477,10 @@ msgid "Lookahead"
 msgstr "Vooruitblik"
 
 #: data/ui/compressor.ui:613
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Zijketen"
+msgstr "Zijketenfilters"
 
 #: data/ui/compressor.ui:624
-#, fuzzy
 msgid "High-pass"
 msgstr "High-pass"
 
@@ -519,7 +507,6 @@ msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:696
-#, fuzzy
 msgid "Low-pass"
 msgstr "Low-pass"
 
@@ -542,9 +529,8 @@ msgid "R"
 msgstr "R"
 
 #: data/ui/convolver.ui:79
-#, fuzzy
 msgid "Impulses"
-msgstr "Impulse Response"
+msgstr "Impulsen"
 
 #: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:158
 msgid "Spectrum"
@@ -565,7 +551,7 @@ msgstr "Impulse importeren"
 #: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
 #: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: data/ui/crossfeed.ui:26
 msgid "Cmoy"
@@ -634,15 +620,15 @@ msgstr "Gedetecteerd"
 
 #: data/ui/effects_base.ui:64
 msgid "Add Plugin"
-msgstr ""
+msgstr "Plug-in toevoegen"
 
 #: data/ui/effects_base.ui:137
 msgid "Players"
-msgstr ""
+msgstr "Spelers"
 
 #: data/ui/effects_base.ui:160
 msgid "Plugins"
-msgstr ""
+msgstr "Plug-ins"
 
 #: data/ui/effects_base.ui:246
 msgid "Blocklist"
@@ -650,7 +636,7 @@ msgstr "Zwarte lijst"
 
 #: data/ui/effects_base.ui:300
 msgid "Player Name"
-msgstr ""
+msgstr "Spelernaam"
 
 #: data/ui/equalizer.ui:76
 msgid "Bands"
@@ -670,7 +656,7 @@ msgstr "FFT"
 
 #: data/ui/equalizer.ui:120
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:141
 msgid "Split Channels"
@@ -685,9 +671,8 @@ msgid "Calculate Frequencies"
 msgstr "Frequenties berekenen"
 
 #: data/ui/equalizer.ui:161
-#, fuzzy
 msgid "Load APO Preset"
-msgstr "APO-voorinstellingen"
+msgstr "APO-voorinstelling laden"
 
 #: data/ui/equalizer_band.ui:32
 msgid "Bell"
@@ -771,7 +756,7 @@ msgstr "Solo"
 
 #: data/ui/exciter.ui:191
 msgid "ceil"
-msgstr ""
+msgstr "ceil"
 
 #: data/ui/filter.ui:23
 msgid "12dB/oct Lowpass"
@@ -865,17 +850,15 @@ msgstr "Donker thema"
 
 #: data/ui/general_settings.ui:101
 msgid "Run in Background"
-msgstr ""
+msgstr "Uitvoeren op achtergrond"
 
 #: data/ui/general_settings.ui:138
-#, fuzzy
 msgid "Reset All Settings"
-msgstr "Instellingen"
+msgstr "Standaardwaarden herstellen"
 
 #: data/ui/general_settings.ui:144
-#, fuzzy
 msgid "About EasyEffects"
-msgstr "PulseEffecten"
+msgstr "Over EasyEffects"
 
 #: data/ui/limiter.ui:21
 msgid "Automatic Leveling"
@@ -926,18 +909,16 @@ msgid "FFT Size"
 msgstr "FFT-grootte"
 
 #: data/ui/loudness.ui:87
-#, fuzzy
 msgid "Output Volume"
-msgstr "Uitvoer"
+msgstr "Uitvoervolume"
 
 #: data/ui/maximizer.ui:61
 msgid "Ceiling"
 msgstr "Plafond"
 
 #: data/ui/module_info.ui:58
-#, fuzzy
 msgid "Description"
-msgstr "Detectie"
+msgstr "Omschrijving"
 
 #: data/ui/multiband_compressor.ui:38 data/ui/multiband_gate.ui:38
 msgid "LR4"
@@ -985,62 +966,52 @@ msgid "General"
 msgstr "Algemeen"
 
 #: data/ui/pipe_info.ui:35
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Standaard gebruiken"
+msgstr "Standaardinvoer gebruiken"
 
 #: data/ui/pipe_info.ui:56
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Standaard gebruiken"
+msgstr "Standaarduitvoer gebruiken"
 
 #: data/ui/pipe_info.ui:77
-#, fuzzy
 msgid "Input Device"
-msgstr "Invoerniveau"
+msgstr "Invoerapparaat"
 
 #: data/ui/pipe_info.ui:96
-#, fuzzy
 msgid "Output Device"
-msgstr "Uitvoer"
+msgstr "Uitvoerapparaat"
 
 #: data/ui/pipe_info.ui:115
-#, fuzzy
 msgid "Header Version"
-msgstr "Versie"
+msgstr "Kopversie"
 
 #: data/ui/pipe_info.ui:138
-#, fuzzy
 msgid "Library Version"
-msgstr "Versie"
+msgstr "Bibliotheekversie"
 
 #: data/ui/pipe_info.ui:161
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Sampling"
+msgstr "Samplesnelheid"
 
 #: data/ui/pipe_info.ui:184
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Minimale frequentie"
+msgstr "Minimale quantum"
 
 #: data/ui/pipe_info.ui:207
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Maximale versterking"
+msgstr "Maximale quantum"
 
 #: data/ui/pipe_info.ui:230
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Standaard audiosink"
+msgstr "Standaard quantum"
 
 #: data/ui/pipe_info.ui:259
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Voorinstellingen automatisch inladen"
 
 #: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
 msgid "Create Association"
-msgstr ""
+msgstr "Toewijzing maken"
 
 #: data/ui/pipe_info.ui:438
 msgid "Modules"
@@ -1051,32 +1022,28 @@ msgid "Clients"
 msgstr "Clients"
 
 #: data/ui/pipe_info.ui:486
-#, fuzzy
 msgid "Test Signal"
-msgstr "Signalen testen"
+msgstr "Signaal testen"
 
 #: data/ui/pipe_info.ui:495
 msgid "Enable"
 msgstr "Inschakelen"
 
 #: data/ui/pipe_info.ui:517
-#, fuzzy
 msgid "Channel"
-msgstr "Aantal kanalen"
+msgstr "Kanaal"
 
 #: data/ui/pipe_info.ui:554
 msgid "Both"
-msgstr ""
+msgstr "Beide"
 
 #: data/ui/pipe_info.ui:570
-#, fuzzy
 msgid "Signal"
-msgstr "Signalen testen"
+msgstr "Signaal"
 
 #: data/ui/pipe_info.ui:587
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Sinustabel"
+msgstr "Sinusgolf"
 
 #: data/ui/pipe_info.ui:598
 msgid "White Noise"
@@ -1120,7 +1087,7 @@ msgstr "Verwijder dit voorinstellingsbestand"
 
 #: data/ui/presets_menu.ui:78
 msgid "Speakers"
-msgstr ""
+msgstr "Luidsprekers"
 
 #: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
@@ -1131,9 +1098,8 @@ msgid "Import Presets"
 msgstr "Importeer voorinstellingen"
 
 #: data/ui/presets_menu.ui:179
-#, fuzzy
 msgid "Microphone"
-msgstr "Microfoon kalibreren"
+msgstr "Microfoon"
 
 #: data/ui/reverb.ui:44
 msgid "High Frequency Damping"
@@ -1180,9 +1146,8 @@ msgid "Decay Time"
 msgstr "Vervaltijd"
 
 #: data/ui/reverb.ui:205
-#, fuzzy
 msgid "Wet"
-msgstr "Zwaarte"
+msgstr "Nat"
 
 #: data/ui/reverb.ui:239
 msgid "Dry"
@@ -1225,9 +1190,8 @@ msgid "Import Model"
 msgstr "Model importeren"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Modus"
+msgstr "Modellen"
 
 #: data/ui/rnnoise.ui:65
 msgid "Active Model"
@@ -1262,9 +1226,8 @@ msgid "Line Width"
 msgstr "Lijnbreedte"
 
 #: data/ui/spectrum_settings.ui:186
-#, fuzzy
 msgid "Minimum"
-msgstr "Maximaal"
+msgstr "Minimaal"
 
 #: data/ui/spectrum_settings.ui:259
 msgid "Spectrum Type"
@@ -1364,10 +1327,9 @@ msgstr "Stereofase"
 
 #: data/ui/stereo_tools.ui:679
 msgid "Phase Correlation"
-msgstr ""
+msgstr "Fasecorrelatie"
 
 #: include/effects_base_ui.hpp:133
-#, fuzzy
 msgid "Autogain"
 msgstr "Automatisch versterken"
 
@@ -1376,9 +1338,8 @@ msgid "Bass Enhancer"
 msgstr "Basversterker"
 
 #: include/effects_base_ui.hpp:135
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Hardheid"
+msgstr "Hardheid van bas"
 
 #: include/effects_base_ui.hpp:137
 msgid "Convolver"
@@ -1486,9 +1447,8 @@ msgid "Input Presets: "
 msgstr "Invoer-voorinstellingen: "
 
 #: src/application.cpp:349
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Audio-effecten voor PulseAudio-toepassingen"
+msgstr "Audio-effecten voor PipeWire-toepassingen"
 
 #: src/convolver_ui.cpp:367 src/convolver_ui.cpp:370
 msgid "Import Impulse File"
@@ -1549,14 +1509,12 @@ msgid "APO Presets"
 msgstr "APO-voorinstellingen"
 
 #: src/presets_menu_ui.cpp:194
-#, fuzzy
 msgid "Import Preset"
-msgstr "Importeer voorinstellingen"
+msgstr "Voorinstelling importeren"
 
 #: src/stream_input_effects_ui.cpp:31
-#, fuzzy
 msgid "Recorders"
-msgstr "Rand"
+msgstr "Opname-apparaten"
 
 #~ msgid "Audio Effects for PulseAudio Applications"
 #~ msgstr "Audio-effecten voor PulseAudio-toepassingen"
