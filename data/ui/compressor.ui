@@ -74,7 +74,6 @@
                                                 <property name="valign">center</property>
                                                 <property name="row-spacing">6</property>
                                                 <property name="column-spacing">6</property>
-                                                <property name="column-homogeneous">1</property>
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">center</property>
@@ -147,7 +146,8 @@
                                                 </child>
                                                 <layout>
                                                     <property name="column">0</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">0</property>
+                                                    <property name="row-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -208,7 +208,8 @@
                                                 </child>
                                                 <layout>
                                                     <property name="column">1</property>
-                                                    <property name="row">1</property>
+                                                    <property name="row">0</property>
+                                                    <property name="row-span">2</property>
                                                 </layout>
                                             </object>
                                         </child>
@@ -616,7 +617,6 @@
                                 <property name="halign">center</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">6</property>
-                                <property name="column-homogeneous">1</property>
                                 <child>
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
