@@ -13,6 +13,7 @@
 - The concolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when
   only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011
 - Fixed a bug that could make the pitch plugin to not be properly initialized
+- The saturation warning should not displace its neighbor widgets anymore
 
 ## [6.0.2]
 

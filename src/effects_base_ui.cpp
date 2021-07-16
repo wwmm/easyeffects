@@ -1373,9 +1373,9 @@ void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right
   // saturation icon notification
 
   if (left > 0.0 || right > 0.0) {
-    saturation_icon->set_visible(true);
+    saturation_icon->set_opacity(1.0);
   } else {
-    saturation_icon->set_visible(false);
+    saturation_icon->set_opacity(0.0);
   }
 }
 
