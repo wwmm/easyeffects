@@ -325,6 +325,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   prepare_spinbutton(hpf_freq, "Hz");
   prepare_spinbutton(lpf_freq, "Hz");
 
+  prepare_spinbutton(ratio, "");
+
   if (settings->get_string("sidechain-type") != "External") {
     dropdown_input_devices->set_sensitive(false);
   } else {

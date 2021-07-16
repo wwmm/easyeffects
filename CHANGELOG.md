@@ -14,6 +14,7 @@
   only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011
 - Fixed a bug that could make the pitch plugin to not be properly initialized
 - The saturation warning should not displace its neighbor widgets anymore
+- Fixed the locale in a few widgets
 
 ## [6.0.2]
 
