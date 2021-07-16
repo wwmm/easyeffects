@@ -34,6 +34,7 @@
 
                         <child>
                             <object class="GtkComboBoxText" id="detection">
+                                <property name="halign">center</property>
                                 <items>
                                     <item translatable="yes">RMS</item>
                                     <item translatable="yes">Peak</item>
@@ -89,6 +90,7 @@
 
                         <child>
                             <object class="GtkComboBoxText" id="stereo_link">
+                                <property name="halign">center</property>
                                 <items>
                                     <item translatable="yes">Average</item>
                                     <item translatable="yes">Maximum</item>

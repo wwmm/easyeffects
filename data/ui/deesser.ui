@@ -656,12 +656,4 @@
             <widget name="compression_title" />
         </widgets>
     </object>
-
-    <object class="GtkSizeGroup">
-        <property name="mode">horizontal</property>
-        <widgets>
-            <widget name="box_detection" />
-            <widget name="grid_spinbox" />
-        </widgets>
-    </object>
 </interface>
