@@ -124,6 +124,7 @@ GateUi::GateUi(BaseObjectType* cobject,
   prepare_spinbutton(attack, "ms");
   prepare_spinbutton(release, "ms");
 
+  prepare_spinbutton(range, "dB");
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(knee, "dB");
   prepare_spinbutton(makeup, "dB");

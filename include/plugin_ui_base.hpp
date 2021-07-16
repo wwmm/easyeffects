@@ -23,6 +23,7 @@
 #include <giomm.h>
 #include <gtkmm.h>
 #include "plugin_name.hpp"
+#include "scale_helper.hpp"
 #include "spinbutton_helper.hpp"
 #include "util.hpp"
 
