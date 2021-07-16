@@ -115,12 +115,17 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
 
   prepare_spinbutton(decay_time, "s");
-  prepare_spinbutton(hf_damp, "Hz");
+
   prepare_spinbutton(amount, "dB");
   prepare_spinbutton(dry, "dB");
+
   prepare_spinbutton(predelay, "ms");
+
+  prepare_spinbutton(hf_damp, "Hz");
   prepare_spinbutton(bass_cut, "Hz");
   prepare_spinbutton(treble_cut, "Hz");
+
+  prepare_spinbutton(diffusion, "");
 
   init_presets_buttons();
 }
