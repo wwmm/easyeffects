@@ -308,6 +308,9 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
     }
   }));
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(attack, "ms");
 

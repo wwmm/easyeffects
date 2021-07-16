@@ -121,6 +121,9 @@ GateUi::GateUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(attack, "ms");
   prepare_spinbutton(release, "ms");
 

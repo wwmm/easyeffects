@@ -41,6 +41,9 @@ EchoCancellerUi::EchoCancellerUi(BaseObjectType* cobject,
   settings->bind("frame-size", frame_size->get_adjustment().get(), "value");
   settings->bind("filter-length", filter_length->get_adjustment().get(), "value");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(frame_size, "ms");
   prepare_spinbutton(filter_length, "ms");
 }

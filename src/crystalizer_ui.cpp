@@ -38,6 +38,9 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   build_bands(13);
 }
 

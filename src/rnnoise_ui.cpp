@@ -55,6 +55,9 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   connections.emplace_back(
       settings->signal_changed("model-path").connect([=, this](auto key) { set_active_model_label(); }));
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   // model dir
 
   if (!std::filesystem::is_directory(model_dir)) {

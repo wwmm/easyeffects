@@ -53,6 +53,10 @@ BassEnhancerUi::BassEnhancerUi(BaseObjectType* cobject,
   settings->bind("floor-active", floor_active, "active");
   settings->bind("floor-active", floor, "sensitive", Gio::Settings::BindFlags::GET);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+  prepare_scale(blend, "");
+
   prepare_spinbutton(amount, "dB");
 
   prepare_spinbutton(scope, "Hz");

@@ -204,6 +204,9 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(attack0, "dB");
   prepare_spinbutton(attack1, "dB");
   prepare_spinbutton(attack2, "dB");

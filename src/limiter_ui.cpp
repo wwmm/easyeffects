@@ -52,6 +52,9 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("auto-level", auto_level, "active");
   settings->bind("asc", asc, "active");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(limit, "dB");
   prepare_spinbutton(release, "ms");
   prepare_spinbutton(lookahead, "ms");

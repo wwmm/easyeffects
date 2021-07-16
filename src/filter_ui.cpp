@@ -127,6 +127,9 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(resonance, "dB");
   prepare_spinbutton(frequency, "Hz");
   prepare_spinbutton(inertia, "ms");

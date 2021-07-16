@@ -49,6 +49,9 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("octaves", octaves->get_adjustment().get(), "value");
   settings->bind("faster", faster, "active");
   settings->bind("formant-preserving", formant_preserving, "active");
+
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
 }
 
 PitchUi::~PitchUi() {

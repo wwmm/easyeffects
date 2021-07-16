@@ -72,6 +72,9 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   entry_search = builder->get_widget<Gtk::SearchEntry>("entry_search");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   setup_listview();
 
   plot = std::make_unique<Plot>(drawing_area);

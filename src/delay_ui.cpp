@@ -40,6 +40,9 @@ DelayUi::DelayUi(BaseObjectType* cobject,
   settings->bind("time-l", time_l->get_adjustment().get(), "value");
   settings->bind("time-r", time_r->get_adjustment().get(), "value");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(time_l, "ms");
   prepare_spinbutton(time_r, "ms");
 }

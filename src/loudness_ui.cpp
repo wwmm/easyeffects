@@ -141,6 +141,9 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "std", standard->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                standard_enum_to_int, int_to_standard_enum, nullptr, nullptr);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   prepare_spinbutton(volume, "dB");
 }
 

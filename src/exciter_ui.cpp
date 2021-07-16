@@ -53,6 +53,10 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("ceil-active", ceil_active, "active");
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+  prepare_scale(blend, "");
+
   prepare_spinbutton(amount, "dB");
 
   prepare_spinbutton(scope, "Hz");

@@ -275,6 +275,9 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   // explicitly invoke the method to build equalizer bands (fixes #843)
   // if the preset num-bands value is equal to the default schema value
   // otherwise it's automatically invoked at startup by the functor on signal_value_changed
@@ -362,6 +365,8 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
     auto* band_frequency = builder->get_widget<Gtk::SpinButton>("band_frequency");
     auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
+
+    prepare_scale(band_scale, "");
 
     prepare_spinbutton(band_frequency, "Hz");
     prepare_spinbutton(band_quality, "");

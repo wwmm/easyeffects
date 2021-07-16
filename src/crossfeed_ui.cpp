@@ -45,6 +45,9 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   settings->bind("fcut", fcut->get_adjustment().get(), "value");
   settings->bind("feed", feed->get_adjustment().get(), "value");
 
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+
   init_presets_buttons();
 }
 
