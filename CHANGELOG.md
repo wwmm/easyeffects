@@ -2,19 +2,22 @@
 
 ## [Unreleased]
 
+## [6.0.3]
+
 ### Added
 
-- Improved the resampler used in the plugins that require one
+- Improved the resampler used in the plugins that require one(like the rnnoise plugin)
 
 ### Fixed
 
-- Multiple autoloading presets should be working properly now.
-- Transient windows are now propoerly set for some plugins dialogs
-- The concolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when
+- Setting multiple autoloading presets should be fine now
+- Transient windows are now properly set for some plugins dialogs
+- The convolver impulse response menu was improved to workaround an issue where the impulse files was not loaded when
   only one was available in the menu https://github.com/wwmm/easyeffects/issues/1011
 - Fixed a bug that could make the pitch plugin to not be properly initialized
 - The saturation warning should not displace its neighbor widgets anymore
 - Fixed the locale in a few widgets
+- Fixed wrong alignment in a few widgets
 
 ## [6.0.2]
 

@@ -1,7 +1,7 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=6.0.2.r14.gaff5e805
+pkgver=6.0.2.r21.g4b5a60ab
 pkgrel=1
 pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
