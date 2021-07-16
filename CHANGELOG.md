@@ -7,6 +7,7 @@
 ### Added
 
 - Improved the resampler used in the plugins that require one(like the rnnoise plugin)
+- Updated translations
 
 ### Fixed
 
