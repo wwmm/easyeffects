@@ -24,9 +24,9 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                                          const std::string& schema_path,
                                          PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::multiband_compressor, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/MultibandCompressor")) {
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/mb_compressor_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://calf.sourceforge.net/plugins/MultibandCompressor is not installed");
+    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -40,93 +40,41 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
+  lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
 
-  lv2_wrapper->bind_key_double(settings, "freq0", "freq0");
+  lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
-  lv2_wrapper->bind_key_double(settings, "freq1", "freq1");
+  for (uint n = 0; n < n_bands; n++) {
+    if (n > 0) {
+      lv2_wrapper->bind_key_bool(settings, "enable-band" + std::to_string(n), "cbe_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double(settings, "freq2", "freq2");
+      lv2_wrapper->bind_key_double(settings, "split-frequency" + std::to_string(n), "sf_" + std::to_string(n));
+    }
 
-  // sub band
+    lv2_wrapper->bind_key_enum(settings, "sidechain-source" + std::to_string(n), "scs_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double_db(settings, "threshold0", "threshold0");
+    lv2_wrapper->bind_key_enum(settings, "sidechain-mode" + std::to_string(n), "scm_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double_db(settings, "makeup0", "makeup0");
+    lv2_wrapper->bind_key_double(settings, "sidechain-lookahead" + std::to_string(n), "sla_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double_db(settings, "knee0", "knee0");
+    lv2_wrapper->bind_key_double(settings, "sidechain-reactivity" + std::to_string(n), "scr_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double(settings, "ratio0", "ratio0");
+    lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp" + std::to_string(n), "scp_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double(settings, "attack0", "attack0");
+    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-lowcut-filter" + std::to_string(n),
+                               "sclc_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_double(settings, "release0", "release0");
+    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-highcut-filter" + std::to_string(n),
+                               "schc_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_enum(settings, "detection0", "detection0");
+    lv2_wrapper->bind_key_double(settings, "sidechain-lowcut-frequency" + std::to_string(n),
+                                 "sclf_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_bool(settings, "bypass0", "bypass0");
+    lv2_wrapper->bind_key_double(settings, "sidechain-highcut-frequency" + std::to_string(n),
+                                 "schf_" + std::to_string(n));
 
-  lv2_wrapper->bind_key_bool(settings, "solo0", "solo0");
-
-  // low band
-
-  lv2_wrapper->bind_key_double_db(settings, "threshold1", "threshold1");
-
-  lv2_wrapper->bind_key_double_db(settings, "makeup1", "makeup1");
-
-  lv2_wrapper->bind_key_double_db(settings, "knee1", "knee1");
-
-  lv2_wrapper->bind_key_double(settings, "ratio1", "ratio1");
-
-  lv2_wrapper->bind_key_double(settings, "attack1", "attack1");
-
-  lv2_wrapper->bind_key_double(settings, "release1", "release1");
-
-  lv2_wrapper->bind_key_enum(settings, "detection1", "detection1");
-
-  lv2_wrapper->bind_key_bool(settings, "bypass1", "bypass1");
-
-  lv2_wrapper->bind_key_bool(settings, "solo1", "solo1");
-
-  // mid band
-
-  lv2_wrapper->bind_key_double_db(settings, "threshold2", "threshold2");
-
-  lv2_wrapper->bind_key_double_db(settings, "makeup2", "makeup2");
-
-  lv2_wrapper->bind_key_double_db(settings, "knee2", "knee2");
-
-  lv2_wrapper->bind_key_double(settings, "ratio2", "ratio2");
-
-  lv2_wrapper->bind_key_double(settings, "attack2", "attack2");
-
-  lv2_wrapper->bind_key_double(settings, "release2", "release2");
-
-  lv2_wrapper->bind_key_enum(settings, "detection2", "detection2");
-
-  lv2_wrapper->bind_key_bool(settings, "bypass2", "bypass2");
-
-  lv2_wrapper->bind_key_bool(settings, "solo2", "solo2");
-
-  // high band
-
-  lv2_wrapper->bind_key_double_db(settings, "threshold3", "threshold3");
-
-  lv2_wrapper->bind_key_double_db(settings, "makeup3", "makeup3");
-
-  lv2_wrapper->bind_key_double_db(settings, "knee3", "knee3");
-
-  lv2_wrapper->bind_key_double(settings, "ratio3", "ratio3");
-
-  lv2_wrapper->bind_key_double(settings, "attack3", "attack3");
-
-  lv2_wrapper->bind_key_double(settings, "release3", "release3");
-
-  lv2_wrapper->bind_key_enum(settings, "detection3", "detection3");
-
-  lv2_wrapper->bind_key_bool(settings, "bypass3", "bypass3");
-
-  lv2_wrapper->bind_key_bool(settings, "solo3", "solo3");
+    lv2_wrapper->bind_key_enum(settings, "compression-mode" + std::to_string(n), "cm_" + std::to_string(n));
+  }
 
   initialize_listener();
 }
@@ -180,26 +128,26 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float output0_value = lv2_wrapper->get_control_port_value("output0");
-      float output1_value = lv2_wrapper->get_control_port_value("output1");
-      float output2_value = lv2_wrapper->get_control_port_value("output2");
-      float output3_value = lv2_wrapper->get_control_port_value("output3");
+      // float output0_value = lv2_wrapper->get_control_port_value("output0");
+      // float output1_value = lv2_wrapper->get_control_port_value("output1");
+      // float output2_value = lv2_wrapper->get_control_port_value("output2");
+      // float output3_value = lv2_wrapper->get_control_port_value("output3");
 
-      float compression0_value = lv2_wrapper->get_control_port_value("compression0");
-      float compression1_value = lv2_wrapper->get_control_port_value("compression1");
-      float compression2_value = lv2_wrapper->get_control_port_value("compression2");
-      float compression3_value = lv2_wrapper->get_control_port_value("compression3");
+      // float compression0_value = lv2_wrapper->get_control_port_value("compression0");
+      // float compression1_value = lv2_wrapper->get_control_port_value("compression1");
+      // float compression2_value = lv2_wrapper->get_control_port_value("compression2");
+      // float compression3_value = lv2_wrapper->get_control_port_value("compression3");
 
       Glib::signal_idle().connect_once([=, this] {
-        output0.emit(output0_value);
-        output1.emit(output1_value);
-        output2.emit(output2_value);
-        output3.emit(output3_value);
+        // output0.emit(output0_value);
+        // output1.emit(output1_value);
+        // output2.emit(output2_value);
+        // output3.emit(output3_value);
 
-        compression0.emit(compression0_value);
-        compression1.emit(compression1_value);
-        compression2.emit(compression2_value);
-        compression3.emit(compression3_value);
+        // compression0.emit(compression0_value);
+        // compression1.emit(compression1_value);
+        // compression2.emit(compression2_value);
+        // compression3.emit(compression3_value);
       });
 
       notify();

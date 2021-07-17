@@ -45,6 +45,8 @@ class MultibandCompressor : public PluginBase {
   sigc::signal<void(double)> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
 
  private:
+  static constexpr uint n_bands = 8;
+
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 

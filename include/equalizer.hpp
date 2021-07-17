@@ -52,7 +52,7 @@ class Equalizer : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
-  uint max_bands = 32;
+  const uint max_bands = 32;
 
   uint latency_n_frames = 0;
 
