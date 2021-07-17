@@ -1547,4 +1547,12 @@
             <widget name="compression3_title" />
         </widgets>
     </object>
+
+    <object class="GtkSizeGroup">
+        <property name="mode">horizontal</property>
+        <widgets>
+            <widget name="output_gain" />
+            <widget name="input_gain" />
+        </widgets>
+    </object>
 </interface>
