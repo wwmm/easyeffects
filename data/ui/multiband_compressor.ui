@@ -16,7 +16,7 @@
         </child>
 
         <child>
-            <object class="GtkBox" id="idtest-header">
+            <object class="GtkBox">
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
