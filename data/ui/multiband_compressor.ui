@@ -16,7 +16,7 @@
         </child>
 
         <child>
-            <object class="GtkBox">
+            <object class="GtkBox" id="idtest-header">
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -28,22 +28,20 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
-                                <property name="label" translatable="yes">Mode</property>
+                                <property name="label" translatable="yes">Operating Mode</property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkComboBoxText" id="mode">
+                            <object class="GtkComboBoxText" id="operating-mode">
                                 <items>
-                                    <item translatable="yes">LR4</item>
-                                    <item translatable="yes">LR8</item>
+                                    <item translatable="yes">Classic</item>
+                                    <item translatable="yes">Modern</item>
                                 </items>
                             </object>
                         </child>
                     </object>
-                </child>
 
-                <child>
                     <object class="GtkBox">
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
@@ -51,89 +49,19 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
-                                <property name="label" translatable="yes">Split 1/2</property>
+                                <property name="label" translatable="yes">Sidechain Boost</property>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkSpinButton" id="freq0">
-                                <property name="halign">center</property>
-                                <property name="width-chars">10</property>
-                                <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
-                                <property name="adjustment">
-                                    <object class="GtkAdjustment">
-                                        <property name="lower">10</property>
-                                        <property name="upper">20000</property>
-                                        <property name="value">120</property>
-                                        <property name="step-increment">1</property>
-                                        <property name="page-increment">100</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
-                                <property name="label" translatable="yes">Split 2/3</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkSpinButton" id="freq1">
-                                <property name="halign">center</property>
-                                <property name="width-chars">10</property>
-                                <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
-                                <property name="adjustment">
-                                    <object class="GtkAdjustment">
-                                        <property name="lower">10</property>
-                                        <property name="upper">20000</property>
-                                        <property name="value">1000</property>
-                                        <property name="step-increment">1</property>
-                                        <property name="page-increment">100</property>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
-                                <property name="label" translatable="yes">Split 3/4</property>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkSpinButton" id="freq2">
-                                <property name="halign">center</property>
-                                <property name="width-chars">10</property>
-                                <property name="digits">0</property>
-                                <property name="update-policy">if-valid</property>
-                                <property name="adjustment">
-                                    <object class="GtkAdjustment">
-                                        <property name="lower">10</property>
-                                        <property name="upper">20000</property>
-                                        <property name="value">6000</property>
-                                        <property name="step-increment">1</property>
-                                        <property name="page-increment">100</property>
-                                    </object>
-                                </property>
+                            <object class="GtkComboBoxText" id="sidechain-boost">
+                                <items>
+                                    <item translatable="yes">None</item>
+                                    <item translatable="yes">Pink BT</item>
+                                    <item translatable="yes">Pink MT</item>
+                                    <item translatable="yes">Brown BT</item>
+                                    <item translatable="yes">Brown MT</item>
+                                </items>
                             </object>
                         </child>
                     </object>

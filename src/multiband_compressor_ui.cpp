@@ -83,7 +83,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  /*input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
   freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
@@ -239,7 +239,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   prepare_spinbutton(ratio0, "");
   prepare_spinbutton(ratio1, "");
   prepare_spinbutton(ratio2, "");
-  prepare_spinbutton(ratio3, "");
+  prepare_spinbutton(ratio3, "");*/
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {

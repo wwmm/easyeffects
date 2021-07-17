@@ -168,7 +168,7 @@
             <range min="0.0" max="2000.0" />
             <default>150.0</default>
         </key>
-        <key name="attack-time2" type="d">
+        <key name="attack-time1" type="d">
             <range min="0.0" max="2000.0" />
             <default>150.0</default>
         </key>
@@ -389,35 +389,35 @@
             <default>6.0</default>
         </key>
         <key name="boost-threshold0" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold1" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold2" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold3" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold4" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold5" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold6" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="boost-threshold7" type="d">
-            <range min="-60.0" max="-120.0" />
+            <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
         <key name="makeup0" type="d">
