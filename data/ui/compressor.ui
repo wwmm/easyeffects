@@ -24,6 +24,7 @@
 
         <child>
             <object class="GtkStack" id="stack">
+                <property name="margin_top">6</property>
                 <property name="hexpand">1</property>
                 <property name="hhomogeneous">0</property>
                 <property name="vhomogeneous">0</property>
@@ -39,17 +40,22 @@
                                 <property name="spacing">12</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                    <object class="GtkBox">
-                                        <property name="spacing">6</property>
-                                        <property name="orientation">vertical</property>
+                                    <object class="GtkGrid">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="row-spacing">6</property>
+                                        <property name="column-spacing">24</property>
                                         <child>
                                             <object class="GtkLabel">
                                                 <property name="halign">center</property>
                                                 <property name="valign">end</property>
                                                 <property name="label" translatable="yes">Mode</property>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">0</property>
+                                                </layout>
                                             </object>
                                         </child>
-
                                         <child>
                                             <object class="GtkComboBoxText" id="compression_mode">
                                                 <property name="halign">center</property>
@@ -58,6 +64,76 @@
                                                     <item translatable="yes">Upward</item>
                                                     <item translatable="yes">Boosting</item>
                                                 </items>
+                                                <layout>
+                                                    <property name="column">0</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">Boost Threshold</property>
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton" id="boost_threshold">
+                                                <property name="halign">center</property>
+                                                <property name="width-chars">10</property>
+                                                <property name="digits">0</property>
+                                                <property name="update-policy">if-valid</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment">
+                                                        <property name="lower">-120</property>
+                                                        <property name="upper">-60</property>
+                                                        <property name="value">-72</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="page-increment">10</property>
+                                                    </object>
+                                                </property>
+                                                <layout>
+                                                    <property name="column">1</property>
+                                                    <property name="row">1</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                                <property name="label" translatable="yes">Boost Amount</property>
+                                                <layout>
+                                                    <property name="column">2</property>
+                                                    <property name="row">0</property>
+                                                </layout>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkSpinButton" id="boost_amount">
+                                                <property name="halign">center</property>
+                                                <property name="width-chars">10</property>
+                                                <property name="digits">0</property>
+                                                <property name="update-policy">if-valid</property>
+                                                <property name="adjustment">
+                                                    <object class="GtkAdjustment">
+                                                        <property name="lower">0</property>
+                                                        <property name="upper">72</property>
+                                                        <property name="value">6</property>
+                                                        <property name="step-increment">1</property>
+                                                        <property name="page-increment">10</property>
+                                                    </object>
+                                                </property>
+                                                <layout>
+                                                    <property name="column">2</property>
+                                                    <property name="row">1</property>
+                                                </layout>
                                             </object>
                                         </child>
                                     </object>
@@ -309,40 +385,6 @@
                                                 </property>
                                                 <layout>
                                                     <property name="column">4</property>
-                                                    <property name="row">1</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Boost Threshold</property>
-                                                <layout>
-                                                    <property name="column">5</property>
-                                                    <property name="row">0</property>
-                                                </layout>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkSpinButton" id="boost_threshold">
-                                                <property name="halign">center</property>
-                                                <property name="orientation">vertical</property>
-                                                <property name="width-chars">10</property>
-                                                <property name="digits">2</property>
-                                                <property name="update-policy">if-valid</property>
-                                                <property name="adjustment">
-                                                    <object class="GtkAdjustment">
-                                                        <property name="lower">-120</property>
-                                                        <property name="upper">-60</property>
-                                                        <property name="value">-72</property>
-                                                        <property name="step-increment">0.1</property>
-                                                        <property name="page-increment">1</property>
-                                                    </object>
-                                                </property>
-                                                <layout>
-                                                    <property name="column">5</property>
                                                     <property name="row">1</property>
                                                 </layout>
                                             </object>

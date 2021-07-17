@@ -226,6 +226,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   lookahead = builder->get_widget<Gtk::SpinButton>("lookahead");
   release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
   boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
+  boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
   hpf_freq = builder->get_widget<Gtk::SpinButton>("hpf_freq");
   lpf_freq = builder->get_widget<Gtk::SpinButton>("lpf_freq");
 
@@ -276,6 +277,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
   settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
+  settings->bind("boost-amount", boost_amount->get_adjustment().get(), "value");
   settings->bind("hpf-frequency", hpf_freq->get_adjustment().get(), "value");
   settings->bind("lpf-frequency", lpf_freq->get_adjustment().get(), "value");
 
@@ -318,6 +320,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   prepare_spinbutton(release, "ms");
 
   prepare_spinbutton(boost_threshold, "dB");
+  prepare_spinbutton(boost_amount, "dB");
   prepare_spinbutton(knee, "dB");
   prepare_spinbutton(makeup, "dB");
 

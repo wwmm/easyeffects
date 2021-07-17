@@ -124,6 +124,8 @@ Compressor::Compressor(const std::string& tag,
 
   lv2_wrapper->bind_key_double_db(settings, "boost-threshold", "bth");
 
+  lv2_wrapper->bind_key_double_db(settings, "boost-amount", "bsa");
+
   lv2_wrapper->bind_key_double_db(settings, "threshold", "al");
 
   lv2_wrapper->bind_key_double_db(settings, "knee", "kn");
