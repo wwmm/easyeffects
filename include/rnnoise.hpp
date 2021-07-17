@@ -63,11 +63,15 @@ class RNNoise : public PluginBase {
   uint rnnoise_rate = 48000U;
   uint latency_n_frames = 0U;
 
+  float vad_thres = 0.95F;
+  float wet_ratio = 1.0F;
+  uint release = 2;
+
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  std::vector<float> data_L, data_R;
+  std::vector<float> data_L, data_R, data_tmp;
   std::vector<float> resampled_data_L, resampled_data_R;
 
   std::unique_ptr<Resampler> resampler_inL, resampler_outL;
@@ -78,6 +82,9 @@ class RNNoise : public PluginBase {
   RNNModel* model = nullptr;
 
   DenoiseState *state_left = nullptr, *state_right = nullptr;
+
+  float vad_prob_left, vad_prob_right;
+  int vad_grace_left, vad_grace_right;
 
   auto get_model_from_file() -> RNNModel*;
 
@@ -92,9 +99,23 @@ class RNNoise : public PluginBase {
         if (state_left != nullptr) {
           std::ranges::for_each(data_L, [](auto& v) { v *= static_cast<float>(SHRT_MAX + 1); });
 
-          rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+          data_tmp = data_L;
 
-          std::ranges::for_each(data_L, [&](auto& v) { v *= inv_short_max; });
+          vad_prob_left = rnnoise_process_frame(state_left, data_L.data(), data_L.data());
+
+          if (vad_prob_left >= vad_thres) {
+            vad_grace_left = release;
+          }
+
+          if (vad_grace_left >= 0) {
+            --vad_grace_left;
+            for (size_t i = 0; i < data_L.size(); i++) {
+              data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+              data_L[i] *= inv_short_max;
+            }
+          } else {
+            std::ranges::for_each(data_L, [&](auto& v) { v = 0; });
+          }
         }
 
         for (const auto& v : data_L) {
@@ -112,9 +133,23 @@ class RNNoise : public PluginBase {
         if (state_right != nullptr) {
           std::ranges::for_each(data_R, [](auto& v) { v *= static_cast<float>(SHRT_MAX + 1); });
 
-          rnnoise_process_frame(state_right, data_R.data(), data_R.data());
+          data_tmp = data_R;
 
-          std::ranges::for_each(data_R, [&](auto& v) { v *= inv_short_max; });
+          vad_prob_right = rnnoise_process_frame(state_right, data_R.data(), data_R.data());
+
+          if (vad_prob_right >= vad_thres) {
+            vad_grace_right = release;
+          }
+
+          if (vad_grace_right >= 0) {
+            --vad_grace_right;
+            for (size_t i = 0; i < data_R.size(); i++) {
+              data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1 - wet_ratio);
+              data_R[i] *= inv_short_max;
+            }
+          } else {
+            std::ranges::for_each(data_R, [&](auto& v) { v = 0; });
+          }
         }
 
         for (const auto& v : data_R) {

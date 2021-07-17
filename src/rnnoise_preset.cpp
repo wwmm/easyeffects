@@ -36,6 +36,9 @@ void RNNoisePreset::save(nlohmann::json& json) {
   json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
   json[section][instance_name]["model-path"] = util::gsettings_get_string(settings, "model-path");
+  json[section][instance_name]["vad-thres"] = g_settings_get_double(settings, "vad-thres");
+  json[section][instance_name]["wet-ratio"] = g_settings_get_double(settings, "wet-ratio");
+  json[section][instance_name]["release"] = g_settings_get_double(settings, "release");
 }
 
 void RNNoisePreset::load(const nlohmann::json& json) {
@@ -46,4 +49,7 @@ void RNNoisePreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
 
   update_key<gchar*>(json.at(section).at(instance_name), settings, "model-path", "model-path");
+  update_key<double>(json.at(section).at(instance_name), settings, "vad-thres", "vad-thres");
+  update_key<double>(json.at(section).at(instance_name), settings, "wet-ratio", "wet-ratio");
+  update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
 }
