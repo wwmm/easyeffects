@@ -42,7 +42,9 @@ class MultibandCompressor : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
+  sigc::signal<void(double)> /*output0, output1, output2, output3, output4, output5, output6, output7,*/
+        compression0, compression1, compression2, compression3,
+        compression4, compression5, compression6, compression7;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

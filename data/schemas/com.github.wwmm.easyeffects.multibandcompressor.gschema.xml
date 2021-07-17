@@ -43,9 +43,6 @@
         <key name="sidechain-boost" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainboost.enum">
             <default>"None"</default>
         </key>
-        <key name="enable-band0" type="b">
-            <default>true</default>
-        </key>
         <key name="enable-band1" type="b">
             <default>true</default>
         </key>
