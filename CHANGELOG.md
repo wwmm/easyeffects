@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- The threshold parameter from the deesser plugin is now saved to the preset file
+
 ## [6.0.3]
 
 ### Added

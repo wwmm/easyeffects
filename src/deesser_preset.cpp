@@ -38,6 +38,8 @@ void DeesserPreset::save(nlohmann::json& json,
 
   json[section]["deesser"]["mode"] = settings->get_string("mode").c_str();
 
+  json[section]["deesser"]["threshold"] = settings->get_double("threshold");
+
   json[section]["deesser"]["ratio"] = settings->get_double("ratio");
 
   json[section]["deesser"]["laxity"] = settings->get_int("laxity");
