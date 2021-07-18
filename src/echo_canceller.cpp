@@ -245,11 +245,19 @@ void EchoCanceller::init_speex() {
 
   echo_state_L = speex_echo_state_init(blocksize, filter_length);
 
+  if (speex_echo_ctl(echo_state_L, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
+    util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
+  }
+
   if (echo_state_R != nullptr) {
     speex_echo_state_destroy(echo_state_R);
   }
 
   echo_state_R = speex_echo_state_init(blocksize, filter_length);
+
+  if (speex_echo_ctl(echo_state_R, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
+    util::warning(log_tag + name + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
+  }
 
   ready = true;
 }
