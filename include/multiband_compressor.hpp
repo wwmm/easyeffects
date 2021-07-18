@@ -35,6 +35,8 @@ class MultibandCompressor : public PluginBase {
   auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
 
+  static constexpr uint n_bands = 8;
+
   void setup() override;
 
   void process(std::span<float>& left_in,
@@ -42,10 +44,12 @@ class MultibandCompressor : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> output0, output1, output2, output3, compression0, compression1, compression2, compression3;
+  sigc::signal<void(double)> latency;
+
+  sigc::signal<void(std::array<double, n_bands>)> reduction, envelope, curve;
 
  private:
-  static constexpr uint n_bands = 8;
+  uint latency_n_frames = 0;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

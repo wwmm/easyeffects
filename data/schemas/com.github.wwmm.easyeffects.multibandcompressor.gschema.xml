@@ -658,38 +658,7 @@
             <range min="-24.0" max="0.0" />
             <default>-6.0</default>
         </key>
-        <key name="boost-amount0" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount1" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount2" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount3" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount4" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount5" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount6" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
-        <key name="boost-amount7" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
-        </key>
+
         <key name="boost-threshold0" type="d">
             <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
@@ -722,6 +691,41 @@
             <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
+
+        <key name="boost-amount0" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount1" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount2" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount3" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount4" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount5" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount6" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+        <key name="boost-amount7" type="d">
+            <range min="0.0" max="72.0" />
+            <default>6.0</default>
+        </key>
+
+
         <key name="makeup0" type="d">
             <range min="-60.0" max="60.0" />
             <default>0.0</default>

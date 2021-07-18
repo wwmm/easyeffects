@@ -90,6 +90,12 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     lv2_wrapper->bind_key_double(settings, "ratio" + std::to_string(n), "cr_" + std::to_string(n));
 
     lv2_wrapper->bind_key_double_db(settings, "knee" + std::to_string(n), "kn_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "boost-threshold" + std::to_string(n), "bth_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "boost-amount" + std::to_string(n), "bsa_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "makeup" + std::to_string(n), "mk_" + std::to_string(n));
   }
 
   initialize_listener();
@@ -138,32 +144,58 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
   apply_gain(left_out, right_out, output_gain);
 
+  /*
+   This plugin gives the latency in number of samples
+ */
+
+  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+
+  if (latency_n_frames != lv) {
+    latency_n_frames = lv;
+
+    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+
+    spa_process_latency_info latency_info{};
+
+    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+
+    std::array<char, 1024> buffer{};
+
+    spa_pod_builder b{};
+
+    spa_pod_builder_init(&b, buffer.data(), sizeof(buffer));
+
+    const spa_pod* param = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency, &latency_info);
+
+    pw_filter_update_params(filter, nullptr, &param, 1);
+  }
+
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      // float output0_value = lv2_wrapper->get_control_port_value("output0");
-      // float output1_value = lv2_wrapper->get_control_port_value("output1");
-      // float output2_value = lv2_wrapper->get_control_port_value("output2");
-      // float output3_value = lv2_wrapper->get_control_port_value("output3");
+      std::array<double, n_bands> envelope_array{};
+      std::array<double, n_bands> curve_array{};
+      std::array<double, n_bands> reduction_array{};
 
-      // float compression0_value = lv2_wrapper->get_control_port_value("compression0");
-      // float compression1_value = lv2_wrapper->get_control_port_value("compression1");
-      // float compression2_value = lv2_wrapper->get_control_port_value("compression2");
-      // float compression3_value = lv2_wrapper->get_control_port_value("compression3");
+      for (uint n = 0; n < n_bands; n++) {
+        envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + std::to_string(n));
+
+        curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + std::to_string(n));
+
+        reduction_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + std::to_string(n));
+      }
 
       Glib::signal_idle().connect_once([=, this] {
-        // output0.emit(output0_value);
-        // output1.emit(output1_value);
-        // output2.emit(output2_value);
-        // output3.emit(output3_value);
-
-        // compression0.emit(compression0_value);
-        // compression1.emit(compression1_value);
-        // compression2.emit(compression2_value);
-        // compression3.emit(compression3_value);
+        envelope.emit(envelope_array);
+        curve.emit(curve_array);
+        reduction.emit(reduction_array);
       });
 
       notify();
