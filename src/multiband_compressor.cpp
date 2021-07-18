@@ -74,6 +74,22 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                                  "schf_" + std::to_string(n));
 
     lv2_wrapper->bind_key_enum(settings, "compression-mode" + std::to_string(n), "cm_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_bool(settings, "solo" + std::to_string(n), "bs_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_bool(settings, "mute" + std::to_string(n), "bm_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "attack-threshold" + std::to_string(n), "al_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double(settings, "attack-time" + std::to_string(n), "at_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "release-threshold" + std::to_string(n), "rrl_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double(settings, "release-time" + std::to_string(n), "rt_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double(settings, "ratio" + std::to_string(n), "cr_" + std::to_string(n));
+
+    lv2_wrapper->bind_key_double_db(settings, "knee" + std::to_string(n), "kn_" + std::to_string(n));
   }
 
   initialize_listener();

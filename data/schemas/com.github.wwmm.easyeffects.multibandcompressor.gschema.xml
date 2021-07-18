@@ -386,38 +386,81 @@
             <default>"Down"</default>
         </key>
 
-        <key name="attack-time0" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable0" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time1" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable1" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time2" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable2" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time3" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable3" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time4" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable4" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time5" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable5" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time6" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable6" type="b">
+            <default>true</default>
         </key>
-        <key name="attack-time7" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>150.0</default>
+        <key name="compressor-enable7" type="b">
+            <default>true</default>
         </key>
+
+        <key name="solo0" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo1" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo2" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo3" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo4" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo5" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo6" type="b">
+            <default>false</default>
+        </key>
+        <key name="solo7" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="mute0" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute1" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute2" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute3" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute4" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute5" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute6" type="b">
+            <default>false</default>
+        </key>
+        <key name="mute7" type="b">
+            <default>false</default>
+        </key>
+
         <key name="attack-threshold0" type="d">
             <range min="-60.0" max="0.0" />
             <default>-12.0</default>
@@ -450,38 +493,40 @@
             <range min="-60.0" max="0.0" />
             <default>-12.0</default>
         </key>
-        <key name="release-time0" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+
+        <key name="attack-time0" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time1" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time1" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time2" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time2" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time3" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time3" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time4" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time4" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time5" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time5" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time6" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time6" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
-        <key name="release-time7" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>300.0</default>
+        <key name="attack-time7" type="d">
+            <range min="0.0" max="2000.0" />
+            <default>20.0</default>
         </key>
+
         <key name="release-threshold0" type="d">
             <range min="-120.0" max="36.0" />
             <default>-120.0</default>
@@ -514,38 +559,73 @@
             <range min="-120.0" max="36.0" />
             <default>-120.0</default>
         </key>
+
+        <key name="release-time0" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time1" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time2" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time3" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time4" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time5" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time6" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="release-time7" type="d">
+            <range min="0.00" max="5000.0" />
+            <default>100.0</default>
+        </key>
+
         <key name="ratio0" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio1" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio2" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio3" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio4" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio5" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio6" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
         <key name="ratio7" type="d">
             <range min="1.0" max="100.0" />
-            <default>2.0</default>
+            <default>1.0</default>
         </key>
+
         <key name="knee0" type="d">
             <range min="-24.0" max="0.0" />
             <default>-6.0</default>
@@ -673,55 +753,6 @@
         <key name="makeup7" type="d">
             <range min="-60.0" max="60.0" />
             <default>0.0</default>
-        </key>
-
-        <key name="mute0" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute1" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute2" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute3" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute4" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute5" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute6" type="b">
-            <default>false</default>
-        </key>
-        <key name="mute7" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo0" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo1" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo2" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo3" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo4" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo5" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo6" type="b">
-            <default>false</default>
-        </key>
-        <key name="solo7" type="b">
-            <default>false</default>
         </key>
 
     </schema>
