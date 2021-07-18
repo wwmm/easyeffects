@@ -64,6 +64,30 @@
         <key name="enable-band7" type="b">
             <default>false</default>
         </key>
+        <key name="compressor-enable0" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable1" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable2" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable3" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable4" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable5" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable6" type="b">
+            <default>true</default>
+        </key>
+        <key name="compressor-enable7" type="b">
+            <default>true</default>
+        </key>
         <key name="split-frequency1" type="d">
             <range min="10.0" max="20000.0" />
             <default>40.0</default>

@@ -52,6 +52,15 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "enable-band6", "cbe_6");
   lv2_wrapper->bind_key_bool(settings, "enable-band7", "cbe_7");
 
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable0", "cm_0");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable1", "cm_1");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable2", "cm_2");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable3", "cm_3");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable4", "cm_4");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable5", "cm_5");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable6", "cm_6");
+  lv2_wrapper->bind_key_bool(settings, "compressor-enable7", "cm_7");
+
   lv2_wrapper->bind_key_double(settings, "split-frequency1", "sf_1");
   lv2_wrapper->bind_key_double(settings, "split-frequency2", "sf_2");
   lv2_wrapper->bind_key_double(settings, "split-frequency3", "sf_3");
