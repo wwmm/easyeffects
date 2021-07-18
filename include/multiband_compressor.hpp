@@ -47,6 +47,8 @@ class MultibandCompressor : public PluginBase {
         compression4, compression5, compression6, compression7;
 
  private:
+  static constexpr uint n_bands = 8;
+
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 

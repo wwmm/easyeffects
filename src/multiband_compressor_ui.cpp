@@ -21,33 +21,6 @@
 
 namespace {
 
-auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  const auto* v = g_variant_get_string(variant, nullptr);
-
-  if (std::strcmp(v, "RMS") == 0) {
-    g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Peak") == 0) {
-    g_value_set_int(value, 1);
-  }
-
-  return 1;
-}
-
-auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
-    case 0:
-      return g_variant_new_string("RMS");
-
-    case 1:
-      return g_variant_new_string("Peak");
-
-    default:
-      return g_variant_new_string("RMS");
-  }
-}
-
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
@@ -72,6 +45,49 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
   }
 }
 
+auto envelope_boost_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (std::strcmp(v, "None") == 0) {
+    g_value_set_int(value, 0);
+  } else if (std::strcmp(v, "Pink BT") == 0) {
+    g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "Pink MT") == 0) {
+    g_value_set_int(value, 2);
+  } else if (std::strcmp(v, "Brown BT") == 0) {
+    g_value_set_int(value, 3);
+  } else if (std::strcmp(v, "Brown MT") == 0) {
+    g_value_set_int(value, 4);
+  }
+
+  return 1;
+}
+
+auto int_to_envelope_boost_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
+  const auto v = g_value_get_int(value);
+
+  switch (v) {
+    case 0:
+      return g_variant_new_string("None");
+
+    case 1:
+      return g_variant_new_string("Pink BT");
+
+    case 2:
+      return g_variant_new_string("Pink MT");
+
+    case 3:
+      return g_variant_new_string("Brown BT");
+
+    case 4:
+      return g_variant_new_string("Brown MT");
+
+    default:
+      return g_variant_new_string("None");
+  }
+}
+
 }  // namespace
 
 MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
@@ -83,163 +99,169 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  /*input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
-  freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
-  freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
-  threshold0 = builder->get_widget<Gtk::SpinButton>("threshold0");
-  threshold1 = builder->get_widget<Gtk::SpinButton>("threshold1");
-  threshold2 = builder->get_widget<Gtk::SpinButton>("threshold2");
-  threshold3 = builder->get_widget<Gtk::SpinButton>("threshold3");
-  ratio0 = builder->get_widget<Gtk::SpinButton>("ratio0");
-  ratio1 = builder->get_widget<Gtk::SpinButton>("ratio1");
-  ratio2 = builder->get_widget<Gtk::SpinButton>("ratio2");
-  ratio3 = builder->get_widget<Gtk::SpinButton>("ratio3");
-  attack0 = builder->get_widget<Gtk::SpinButton>("attack0");
-  attack1 = builder->get_widget<Gtk::SpinButton>("attack1");
-  attack2 = builder->get_widget<Gtk::SpinButton>("attack2");
-  attack3 = builder->get_widget<Gtk::SpinButton>("attack3");
-  release0 = builder->get_widget<Gtk::SpinButton>("release0");
-  release1 = builder->get_widget<Gtk::SpinButton>("release1");
-  release2 = builder->get_widget<Gtk::SpinButton>("release2");
-  release3 = builder->get_widget<Gtk::SpinButton>("release3");
-  makeup0 = builder->get_widget<Gtk::SpinButton>("makeup0");
-  makeup1 = builder->get_widget<Gtk::SpinButton>("makeup1");
-  makeup2 = builder->get_widget<Gtk::SpinButton>("makeup2");
-  makeup3 = builder->get_widget<Gtk::SpinButton>("makeup3");
-  knee0 = builder->get_widget<Gtk::SpinButton>("knee0");
-  knee1 = builder->get_widget<Gtk::SpinButton>("knee1");
-  knee2 = builder->get_widget<Gtk::SpinButton>("knee2");
-  knee3 = builder->get_widget<Gtk::SpinButton>("knee3");
+  // freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
+  // freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
+  // freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
+  // threshold0 = builder->get_widget<Gtk::SpinButton>("threshold0");
+  // threshold1 = builder->get_widget<Gtk::SpinButton>("threshold1");
+  // threshold2 = builder->get_widget<Gtk::SpinButton>("threshold2");
+  // threshold3 = builder->get_widget<Gtk::SpinButton>("threshold3");
+  // ratio0 = builder->get_widget<Gtk::SpinButton>("ratio0");
+  // ratio1 = builder->get_widget<Gtk::SpinButton>("ratio1");
+  // ratio2 = builder->get_widget<Gtk::SpinButton>("ratio2");
+  // ratio3 = builder->get_widget<Gtk::SpinButton>("ratio3");
+  // attack0 = builder->get_widget<Gtk::SpinButton>("attack0");
+  // attack1 = builder->get_widget<Gtk::SpinButton>("attack1");
+  // attack2 = builder->get_widget<Gtk::SpinButton>("attack2");
+  // attack3 = builder->get_widget<Gtk::SpinButton>("attack3");
+  // release0 = builder->get_widget<Gtk::SpinButton>("release0");
+  // release1 = builder->get_widget<Gtk::SpinButton>("release1");
+  // release2 = builder->get_widget<Gtk::SpinButton>("release2");
+  // release3 = builder->get_widget<Gtk::SpinButton>("release3");
+  // makeup0 = builder->get_widget<Gtk::SpinButton>("makeup0");
+  // makeup1 = builder->get_widget<Gtk::SpinButton>("makeup1");
+  // makeup2 = builder->get_widget<Gtk::SpinButton>("makeup2");
+  // makeup3 = builder->get_widget<Gtk::SpinButton>("makeup3");
+  // knee0 = builder->get_widget<Gtk::SpinButton>("knee0");
+  // knee1 = builder->get_widget<Gtk::SpinButton>("knee1");
+  // knee2 = builder->get_widget<Gtk::SpinButton>("knee2");
+  // knee3 = builder->get_widget<Gtk::SpinButton>("knee3");
 
-  bypass0 = builder->get_widget<Gtk::ToggleButton>("bypass0");
-  bypass1 = builder->get_widget<Gtk::ToggleButton>("bypass1");
-  bypass2 = builder->get_widget<Gtk::ToggleButton>("bypass2");
-  bypass3 = builder->get_widget<Gtk::ToggleButton>("bypass3");
-  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
-  solo1 = builder->get_widget<Gtk::ToggleButton>("solo1");
-  solo2 = builder->get_widget<Gtk::ToggleButton>("solo2");
-  solo3 = builder->get_widget<Gtk::ToggleButton>("solo3");
-  solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
+  // bypass0 = builder->get_widget<Gtk::ToggleButton>("bypass0");
+  // bypass1 = builder->get_widget<Gtk::ToggleButton>("bypass1");
+  // bypass2 = builder->get_widget<Gtk::ToggleButton>("bypass2");
+  // bypass3 = builder->get_widget<Gtk::ToggleButton>("bypass3");
+  // solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
+  // solo1 = builder->get_widget<Gtk::ToggleButton>("solo1");
+  // solo2 = builder->get_widget<Gtk::ToggleButton>("solo2");
+  // solo3 = builder->get_widget<Gtk::ToggleButton>("solo3");
+  // solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
 
-  mode = builder->get_widget<Gtk::ComboBoxText>("mode");
-  detection0 = builder->get_widget<Gtk::ComboBoxText>("detection0");
-  detection1 = builder->get_widget<Gtk::ComboBoxText>("detection1");
-  detection2 = builder->get_widget<Gtk::ComboBoxText>("detection2");
-  detection3 = builder->get_widget<Gtk::ComboBoxText>("detection3");
+  // mode = builder->get_widget<Gtk::ComboBoxText>("mode");
+  // envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
+  // detection0 = builder->get_widget<Gtk::ComboBoxText>("detection0");
+  // detection1 = builder->get_widget<Gtk::ComboBoxText>("detection1");
+  // detection2 = builder->get_widget<Gtk::ComboBoxText>("detection2");
+  // detection3 = builder->get_widget<Gtk::ComboBoxText>("detection3");
 
-  output0 = builder->get_widget<Gtk::LevelBar>("output0");
-  output1 = builder->get_widget<Gtk::LevelBar>("output1");
-  output2 = builder->get_widget<Gtk::LevelBar>("output2");
-  output3 = builder->get_widget<Gtk::LevelBar>("output3");
-  compression0 = builder->get_widget<Gtk::LevelBar>("compression0");
-  compression1 = builder->get_widget<Gtk::LevelBar>("compression1");
-  compression2 = builder->get_widget<Gtk::LevelBar>("compression2");
-  compression3 = builder->get_widget<Gtk::LevelBar>("compression3");
+  // output0 = builder->get_widget<Gtk::LevelBar>("output0");
+  // output1 = builder->get_widget<Gtk::LevelBar>("output1");
+  // output2 = builder->get_widget<Gtk::LevelBar>("output2");
+  // output3 = builder->get_widget<Gtk::LevelBar>("output3");
+  // compression0 = builder->get_widget<Gtk::LevelBar>("compression0");
+  // compression1 = builder->get_widget<Gtk::LevelBar>("compression1");
+  // compression2 = builder->get_widget<Gtk::LevelBar>("compression2");
+  // compression3 = builder->get_widget<Gtk::LevelBar>("compression3");
 
-  output0_label = builder->get_widget<Gtk::Label>("output0_label");
-  output1_label = builder->get_widget<Gtk::Label>("output1_label");
-  output2_label = builder->get_widget<Gtk::Label>("output2_label");
-  output3_label = builder->get_widget<Gtk::Label>("output3_label");
-  compression0_label = builder->get_widget<Gtk::Label>("compression0_label");
-  compression1_label = builder->get_widget<Gtk::Label>("compression1_label");
-  compression2_label = builder->get_widget<Gtk::Label>("compression2_label");
-  compression3_label = builder->get_widget<Gtk::Label>("compression3_label");
+  // output0_label = builder->get_widget<Gtk::Label>("output0_label");
+  // output1_label = builder->get_widget<Gtk::Label>("output1_label");
+  // output2_label = builder->get_widget<Gtk::Label>("output2_label");
+  // output3_label = builder->get_widget<Gtk::Label>("output3_label");
+  // compression0_label = builder->get_widget<Gtk::Label>("compression0_label");
+  // compression1_label = builder->get_widget<Gtk::Label>("compression1_label");
+  // compression2_label = builder->get_widget<Gtk::Label>("compression2_label");
+  // compression3_label = builder->get_widget<Gtk::Label>("compression3_label");
 
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  settings->bind("freq0", freq0->get_adjustment().get(), "value");
-  settings->bind("freq1", freq1->get_adjustment().get(), "value");
-  settings->bind("freq2", freq2->get_adjustment().get(), "value");
-  settings->bind("threshold0", threshold0->get_adjustment().get(), "value");
-  settings->bind("threshold1", threshold1->get_adjustment().get(), "value");
-  settings->bind("threshold2", threshold2->get_adjustment().get(), "value");
-  settings->bind("threshold3", threshold3->get_adjustment().get(), "value");
-  settings->bind("ratio0", ratio0->get_adjustment().get(), "value");
-  settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
-  settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
-  settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
-  settings->bind("attack0", attack0->get_adjustment().get(), "value");
-  settings->bind("attack1", attack1->get_adjustment().get(), "value");
-  settings->bind("attack2", attack2->get_adjustment().get(), "value");
-  settings->bind("attack3", attack3->get_adjustment().get(), "value");
-  settings->bind("release0", release0->get_adjustment().get(), "value");
-  settings->bind("release1", release1->get_adjustment().get(), "value");
-  settings->bind("release2", release2->get_adjustment().get(), "value");
-  settings->bind("release3", release3->get_adjustment().get(), "value");
-  settings->bind("makeup0", makeup0->get_adjustment().get(), "value");
-  settings->bind("makeup1", makeup1->get_adjustment().get(), "value");
-  settings->bind("makeup2", makeup2->get_adjustment().get(), "value");
-  settings->bind("makeup3", makeup3->get_adjustment().get(), "value");
-  settings->bind("knee0", knee0->get_adjustment().get(), "value");
-  settings->bind("knee1", knee1->get_adjustment().get(), "value");
-  settings->bind("knee2", knee2->get_adjustment().get(), "value");
-  settings->bind("knee3", knee3->get_adjustment().get(), "value");
 
-  settings->bind("bypass0", bypass0, "active");
-  settings->bind("bypass1", bypass1, "active");
-  settings->bind("bypass2", bypass2, "active");
-  settings->bind("bypass3", bypass3, "active");
-  settings->bind("solo0", solo0, "active");
-  settings->bind("solo1", solo1, "active");
-  settings->bind("solo2", solo2, "active");
-  settings->bind("solo3", solo3, "active");
+  // settings->bind("freq0", freq0->get_adjustment().get(), "value");
+  // settings->bind("freq1", freq1->get_adjustment().get(), "value");
+  // settings->bind("freq2", freq2->get_adjustment().get(), "value");
+  // settings->bind("threshold0", threshold0->get_adjustment().get(), "value");
+  // settings->bind("threshold1", threshold1->get_adjustment().get(), "value");
+  // settings->bind("threshold2", threshold2->get_adjustment().get(), "value");
+  // settings->bind("threshold3", threshold3->get_adjustment().get(), "value");
+  // settings->bind("ratio0", ratio0->get_adjustment().get(), "value");
+  // settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
+  // settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
+  // settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
+  // settings->bind("attack0", attack0->get_adjustment().get(), "value");
+  // settings->bind("attack1", attack1->get_adjustment().get(), "value");
+  // settings->bind("attack2", attack2->get_adjustment().get(), "value");
+  // settings->bind("attack3", attack3->get_adjustment().get(), "value");
+  // settings->bind("release0", release0->get_adjustment().get(), "value");
+  // settings->bind("release1", release1->get_adjustment().get(), "value");
+  // settings->bind("release2", release2->get_adjustment().get(), "value");
+  // settings->bind("release3", release3->get_adjustment().get(), "value");
+  // settings->bind("makeup0", makeup0->get_adjustment().get(), "value");
+  // settings->bind("makeup1", makeup1->get_adjustment().get(), "value");
+  // settings->bind("makeup2", makeup2->get_adjustment().get(), "value");
+  // settings->bind("makeup3", makeup3->get_adjustment().get(), "value");
+  // settings->bind("knee0", knee0->get_adjustment().get(), "value");
+  // settings->bind("knee1", knee1->get_adjustment().get(), "value");
+  // settings->bind("knee2", knee2->get_adjustment().get(), "value");
+  // settings->bind("knee3", knee3->get_adjustment().get(), "value");
 
-  g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
+  // settings->bind("bypass0", bypass0, "active");
+  // settings->bind("bypass1", bypass1, "active");
+  // settings->bind("bypass2", bypass2, "active");
+  // settings->bind("bypass3", bypass3, "active");
+  // settings->bind("solo0", solo0, "active");
+  // settings->bind("solo1", solo1, "active");
+  // settings->bind("solo2", solo2, "active");
+  // settings->bind("solo3", solo3, "active");
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection0", detection0->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+  // g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+  //                              mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection1", detection1->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+  // g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
+  //                              G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,
+  //                              nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection2", detection2->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+  // g_settings_bind_with_mapping(settings->gobj(), "detection0", detection0->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                               detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+  // g_settings_bind_with_mapping(settings->gobj(), "detection1", detection1->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  // g_settings_bind_with_mapping(settings->gobj(), "detection2", detection2->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+
+  // g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
 
-  prepare_spinbutton(attack0, "dB");
-  prepare_spinbutton(attack1, "dB");
-  prepare_spinbutton(attack2, "dB");
-  prepare_spinbutton(attack3, "dB");
+  // prepare_spinbutton(attack0, "dB");
+  // prepare_spinbutton(attack1, "dB");
+  // prepare_spinbutton(attack2, "dB");
+  // prepare_spinbutton(attack3, "dB");
 
-  prepare_spinbutton(threshold0, "dB");
-  prepare_spinbutton(threshold1, "dB");
-  prepare_spinbutton(threshold2, "dB");
-  prepare_spinbutton(threshold3, "dB");
+  // prepare_spinbutton(threshold0, "dB");
+  // prepare_spinbutton(threshold1, "dB");
+  // prepare_spinbutton(threshold2, "dB");
+  // prepare_spinbutton(threshold3, "dB");
 
-  prepare_spinbutton(knee0, "dB");
-  prepare_spinbutton(knee1, "dB");
-  prepare_spinbutton(knee2, "dB");
-  prepare_spinbutton(knee3, "dB");
+  // prepare_spinbutton(knee0, "dB");
+  // prepare_spinbutton(knee1, "dB");
+  // prepare_spinbutton(knee2, "dB");
+  // prepare_spinbutton(knee3, "dB");
 
-  prepare_spinbutton(makeup0, "dB");
-  prepare_spinbutton(makeup1, "dB");
-  prepare_spinbutton(makeup2, "dB");
-  prepare_spinbutton(makeup3, "dB");
+  // prepare_spinbutton(makeup0, "dB");
+  // prepare_spinbutton(makeup1, "dB");
+  // prepare_spinbutton(makeup2, "dB");
+  // prepare_spinbutton(makeup3, "dB");
 
-  prepare_spinbutton(release0, "ms");
-  prepare_spinbutton(release1, "ms");
-  prepare_spinbutton(release2, "ms");
-  prepare_spinbutton(release3, "ms");
+  // prepare_spinbutton(release0, "ms");
+  // prepare_spinbutton(release1, "ms");
+  // prepare_spinbutton(release2, "ms");
+  // prepare_spinbutton(release3, "ms");
 
-  prepare_spinbutton(freq0, "Hz");
-  prepare_spinbutton(freq1, "Hz");
-  prepare_spinbutton(freq2, "Hz");
+  // prepare_spinbutton(freq0, "Hz");
+  // prepare_spinbutton(freq1, "Hz");
+  // prepare_spinbutton(freq2, "Hz");
 
-  prepare_spinbutton(ratio0, "");
-  prepare_spinbutton(ratio1, "");
-  prepare_spinbutton(ratio2, "");
-  prepare_spinbutton(ratio3, "");*/
+  // prepare_spinbutton(ratio0, "");
+  // prepare_spinbutton(ratio1, "");
+  // prepare_spinbutton(ratio2, "");
+  // prepare_spinbutton(ratio3, "");
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {
@@ -264,93 +286,93 @@ void MultibandCompressorUi::reset() {
 
   settings->reset("output-gain");
 
-  settings->reset("freq0");
+  // settings->reset("freq0");
 
-  settings->reset("freq1");
+  // settings->reset("freq1");
 
-  settings->reset("freq2");
+  // settings->reset("freq2");
 
-  settings->reset("mode");
+  // settings->reset("mode");
 
-  // sub band
+  // // sub band
 
-  settings->reset("threshold0");
+  // settings->reset("threshold0");
 
-  settings->reset("ratio0");
+  // settings->reset("ratio0");
 
-  settings->reset("attack0");
+  // settings->reset("attack0");
 
-  settings->reset("release0");
+  // settings->reset("release0");
 
-  settings->reset("makeup0");
+  // settings->reset("makeup0");
 
-  settings->reset("knee0");
+  // settings->reset("knee0");
 
-  settings->reset("detection0");
+  // settings->reset("detection0");
 
-  settings->reset("bypass0");
+  // settings->reset("bypass0");
 
-  settings->reset("solo0");
+  // settings->reset("solo0");
 
-  // low band
+  // // low band
 
-  settings->reset("threshold1");
+  // settings->reset("threshold1");
 
-  settings->reset("ratio1");
+  // settings->reset("ratio1");
 
-  settings->reset("attack1");
+  // settings->reset("attack1");
 
-  settings->reset("release1");
+  // settings->reset("release1");
 
-  settings->reset("makeup1");
+  // settings->reset("makeup1");
 
-  settings->reset("knee1");
+  // settings->reset("knee1");
 
-  settings->reset("detection1");
+  // settings->reset("detection1");
 
-  settings->reset("bypass1");
+  // settings->reset("bypass1");
 
-  settings->reset("solo1");
+  // settings->reset("solo1");
 
-  // mid band
+  // // mid band
 
-  settings->reset("threshold2");
+  // settings->reset("threshold2");
 
-  settings->reset("ratio2");
+  // settings->reset("ratio2");
 
-  settings->reset("attack2");
+  // settings->reset("attack2");
 
-  settings->reset("release2");
+  // settings->reset("release2");
 
-  settings->reset("makeup2");
+  // settings->reset("makeup2");
 
-  settings->reset("knee2");
+  // settings->reset("knee2");
 
-  settings->reset("detection2");
+  // settings->reset("detection2");
 
-  settings->reset("bypass2");
+  // settings->reset("bypass2");
 
-  settings->reset("solo2");
+  // settings->reset("solo2");
 
-  // high band
+  // // high band
 
-  settings->reset("threshold3");
+  // settings->reset("threshold3");
 
-  settings->reset("ratio3");
+  // settings->reset("ratio3");
 
-  settings->reset("attack3");
+  // settings->reset("attack3");
 
-  settings->reset("release3");
+  // settings->reset("release3");
 
-  settings->reset("makeup3");
+  // settings->reset("makeup3");
 
-  settings->reset("knee3");
+  // settings->reset("knee3");
 
-  settings->reset("detection3");
+  // settings->reset("detection3");
 
-  settings->reset("bypass3");
+  // settings->reset("bypass3");
 
-  settings->reset("solo3");
+  // settings->reset("solo3");
 }
 
 void MultibandCompressorUi::on_new_output0(double value) {

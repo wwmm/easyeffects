@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <enum id="com.github.wwmm.easyeffects.multibandcompressor.operatingmode.enum">
+    <enum id="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
         <value nick="Classic" value="0" />
         <value nick="Modern" value="1" />
     </enum>
-    <enum id="com.github.wwmm.easyeffects.multibandcompressor.sidechainboost.enum">
+    <enum id="com.github.wwmm.easyeffects.multibandcompressor.envelopeboost.enum">
         <value nick="None" value="0" />
         <value nick="Pink BT" value="1" />
         <value nick="Pink MT" value="2" />
         <value nick="Brown BT" value="3" />
         <value nick="Brown MT" value="4" />
     </enum>
-    <enum id="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
+    <enum id="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
         <value nick="Down" value="0" />
         <value nick="Up" value="1" />
         <value nick="Boost" value="2" />
@@ -37,12 +37,14 @@
             <range min="-40.0" max="20.0" />
             <default>0.0</default>
         </key>
-        <key name="operating-mode" enum="com.github.wwmm.easyeffects.multibandcompressor.operatingmode.enum">
+
+        <key name="compressor-mode" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
             <default>"Modern"</default>
         </key>
-        <key name="sidechain-boost" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainboost.enum">
+        <key name="envelope-boost" enum="com.github.wwmm.easyeffects.multibandcompressor.envelopeboost.enum">
             <default>"None"</default>
         </key>
+
         <key name="enable-band1" type="b">
             <default>true</default>
         </key>
@@ -54,6 +56,7 @@
         </key>
         <key name="enable-band4" type="b">
             <default>false</default>
+
         </key>
         <key name="enable-band5" type="b">
             <default>false</default>
@@ -64,6 +67,7 @@
         <key name="enable-band7" type="b">
             <default>false</default>
         </key>
+
         <key name="compressor-enable0" type="b">
             <default>true</default>
         </key>
@@ -88,6 +92,7 @@
         <key name="compressor-enable7" type="b">
             <default>true</default>
         </key>
+
         <key name="split-frequency1" type="d">
             <range min="10.0" max="20000.0" />
             <default>40.0</default>
@@ -116,30 +121,7 @@
             <range min="10.0" max="20000.0" />
             <default>10000.0</default>
         </key>
-        <key name="compressor-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode1" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode2" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode3" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode4" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode5" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode6" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
-        <key name="compressor-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
-            <default>"Down"</default>
-        </key>
+
         <key name="sidechain-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
@@ -164,6 +146,7 @@
         <key name="sidechain-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>
+
         <key name="sidechain-source0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
@@ -188,6 +171,247 @@
         <key name="sidechain-source7" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainsource.enum">
             <default>"Middle"</default>
         </key>
+
+        <key name="sidechain-lookahead0" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead1" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead2" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead3" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead4" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead5" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead6" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-lookahead7" type="d">
+            <range min="0.0" max="20.0" />
+            <default>0.0</default>
+        </key>
+
+        <key name="sidechain-reactivity0" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity1" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity2" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity3" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity4" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity5" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity6" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-reactivity7" type="d">
+            <range min="0.0" max="250.0" />
+            <default>10.0</default>
+        </key>
+
+        <key name="sidechain-preamp0" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp1" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp2" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp3" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp4" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp5" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp6" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="sidechain-preamp7" type="d">
+            <range min="-120.0" max="40.0" />
+            <default>0.0</default>
+        </key>
+
+        <key name="sidechain-custom-lowcut-filter0" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter1" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter2" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter3" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter4" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter5" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter6" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-lowcut-filter7" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="sidechain-custom-highcut-filter0" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter1" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter2" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter3" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter4" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter5" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter6" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-custom-highcut-filter7" type="b">
+            <default>false</default>
+        </key>
+
+        <key name="sidechain-lowcut-frequency0" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>10.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency1" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>40.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency2" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency3" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>252.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency4" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>632.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency5" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>1587.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency6" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>3984.0</default>
+        </key>
+        <key name="sidechain-lowcut-frequency7" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>10000.0</default>
+        </key>
+
+        <key name="sidechain-highcut-frequency0" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>40.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency1" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>100.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency2" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>252.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency3" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>632.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency4" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>1587.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency5" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>3984.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency6" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>10000.0</default>
+        </key>
+        <key name="sidechain-highcut-frequency7" type="d">
+            <range min="10.0" max="20000.0" />
+            <default>20000.0</default>
+        </key>
+
+        <key name="compression-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode1" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode2" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode3" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode4" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode5" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode6" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+        <key name="compression-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
+            <default>"Down"</default>
+        </key>
+
         <key name="attack-time0" type="d">
             <range min="0.0" max="2000.0" />
             <default>150.0</default>
@@ -224,6 +448,7 @@
             <range min="-60.0" max="0.0" />
             <default>-12.0</default>
         </key>
+
         <key name="attack-threshold1" type="d">
             <range min="-60.0" max="0.0" />
             <default>-12.0</default>
@@ -252,6 +477,7 @@
             <range min="-60.0" max="0.0" />
             <default>-12.0</default>
         </key>
+
         <key name="release-time0" type="d">
             <range min="0.00" max="5000.0" />
             <default>300.0</default>
@@ -284,6 +510,7 @@
             <range min="0.00" max="5000.0" />
             <default>300.0</default>
         </key>
+
         <key name="release-threshold0" type="d">
             <range min="-120.0" max="36.0" />
             <default>-120.0</default>
@@ -316,6 +543,7 @@
             <range min="-120.0" max="36.0" />
             <default>-120.0</default>
         </key>
+
         <key name="ratio0" type="d">
             <range min="1.0" max="100.0" />
             <default>2.0</default>
@@ -348,6 +576,7 @@
             <range min="1.0" max="100.0" />
             <default>2.0</default>
         </key>
+
         <key name="knee0" type="d">
             <range min="-24.0" max="0.0" />
             <default>-6.0</default>
@@ -380,6 +609,7 @@
             <range min="-24.0" max="0.0" />
             <default>-6.0</default>
         </key>
+
         <key name="boost-amount0" type="d">
             <range min="0.0" max="72.0" />
             <default>6.0</default>
@@ -412,6 +642,7 @@
             <range min="0.0" max="72.0" />
             <default>6.0</default>
         </key>
+
         <key name="boost-threshold0" type="d">
             <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
@@ -444,7 +675,8 @@
             <range min="-120.0" max="-60.0" />
             <default>-72.0</default>
         </key>
-        <key name="makeup0" type="d">
+  
+      <key name="makeup0" type="d">
             <range min="-60.0" max="60.0" />
             <default>0.0</default>
         </key>
@@ -476,118 +708,7 @@
             <range min="-60.0" max="60.0" />
             <default>0.0</default>
         </key>
-        <key name="highcut-filter-0" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-1" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-2" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-3" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-4" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-5" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-6" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-filter-7" type="b">
-            <default>false</default>
-        </key>
-        <key name="highcut-frequency-0" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>40.0</default>
-        </key>
-        <key name="highcut-frequency-1" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>100.0</default>
-        </key>
-        <key name="highcut-frequency-2" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>252.0</default>
-        </key>
-        <key name="highcut-frequency-3" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>632.0</default>
-        </key>
-        <key name="highcut-frequency-4" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>1587.0</default>
-        </key>
-        <key name="highcut-frequency-5" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>3984.0</default>
-        </key>
-        <key name="highcut-frequency-6" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>10000.0</default>
-        </key>
-        <key name="highcut-frequency-7" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>20000.0</default>
-        </key>
-        <key name="lowcut-filter-0" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-1" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-2" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-3" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-4" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-5" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-6" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-filter-7" type="b">
-            <default>false</default>
-        </key>
-        <key name="lowcut-frequency-0" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>10.0</default>
-        </key>
-        <key name="lowcut-frequency-1" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>40.0</default>
-        </key>
-        <key name="lowcut-frequency-2" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>100.0</default>
-        </key>
-        <key name="lowcut-frequency-3" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>252.0</default>
-        </key>
-        <key name="lowcut-frequency-4" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>632.0</default>
-        </key>
-        <key name="lowcut-frequency-5" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>1587.0</default>
-        </key>
-        <key name="lowcut-frequency-6" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>3984.0</default>
-        </key>
-        <key name="lowcut-frequency-7" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>10000.0</default>
-        </key>
+
         <key name="mute0" type="b">
             <default>false</default>
         </key>
@@ -612,6 +733,7 @@
         <key name="mute7" type="b">
             <default>false</default>
         </key>
+
         <key name="solo0" type="b">
             <default>false</default>
         </key>
@@ -636,6 +758,7 @@
         <key name="solo7" type="b">
             <default>false</default>
         </key>
+
         <key name="sidechain-preamp-0" type="d">
             <range min="-120.0" max="40.0" />
             <default>0.0</default>
@@ -668,6 +791,7 @@
             <range min="-120.0" max="40.0" />
             <default>0.0</default>
         </key>
+
         <key name="sidechain-reactivity-0" type="d">
             <range min="0.0" max="250.0" />
             <default>10.0</default>
@@ -700,6 +824,7 @@
             <range min="0.0" max="250.0" />
             <default>10.0</default>
         </key>
+ 
         <key name="sidechain-lookahead-0" type="d">
             <range min="0.0" max="20.0" />
             <default>0.0</default>

@@ -50,8 +50,9 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
 
  private:
   Gtk::SpinButton *attack = nullptr, *release = nullptr, *release_threshold = nullptr, *threshold = nullptr,
-                  *knee = nullptr, *ratio = nullptr, *makeup = nullptr, *boost_threshold = nullptr, *preamp = nullptr,
-                  *reactivity = nullptr, *lookahead = nullptr, *hpf_freq = nullptr, *lpf_freq = nullptr;
+                  *knee = nullptr, *ratio = nullptr, *makeup = nullptr, *boost_threshold = nullptr,
+                  *boost_amount = nullptr, *preamp = nullptr, *reactivity = nullptr, *lookahead = nullptr,
+                  *hpf_freq = nullptr, *lpf_freq = nullptr;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 

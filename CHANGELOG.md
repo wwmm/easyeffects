@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Added
+
+- Added support for the compressor parameter `Boost Amount`
+
+### Fixed
+
+- The threshold parameter from the deesser plugin is now saved to the preset file
+- Depending on the input gain or output gain values the corresponding level bars could not be aligned.
+
 ## [6.0.3]
 
 ### Added
