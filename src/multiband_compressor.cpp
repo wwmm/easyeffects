@@ -180,11 +180,14 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
+      std::array<double, n_bands> frequency_range_array{};
       std::array<double, n_bands> envelope_array{};
       std::array<double, n_bands> curve_array{};
       std::array<double, n_bands> reduction_array{};
 
       for (uint n = 0; n < n_bands; n++) {
+        frequency_range_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + std::to_string(n));
+
         envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + std::to_string(n));
 
         curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + std::to_string(n));
@@ -193,8 +196,12 @@ void MultibandCompressor::process(std::span<float>& left_in,
       }
 
       Glib::signal_idle().connect_once([=, this] {
+        frequency_range.emit(frequency_range_array);
+
         envelope.emit(envelope_array);
+
         curve.emit(curve_array);
+
         reduction.emit(reduction_array);
       });
 

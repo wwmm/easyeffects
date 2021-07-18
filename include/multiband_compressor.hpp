@@ -46,7 +46,7 @@ class MultibandCompressor : public PluginBase {
 
   sigc::signal<void(double)> latency;
 
-  sigc::signal<void(std::array<double, n_bands>)> reduction, envelope, curve;
+  sigc::signal<void(std::array<double, n_bands>)> reduction, envelope, curve, frequency_range;
 
  private:
   uint latency_n_frames = 0;
