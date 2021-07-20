@@ -17,8 +17,6 @@
 
         <child>
             <object class="GtkBox">
-                <property name="halign">center</property>
-                <property name="homogeneous">1</property>
                 <property name="spacing">6</property>
                 <child>
                     <object class="GtkStack" id="stack">
@@ -31,9 +29,209 @@
                 </child>
 
                 <child>
-                    <object class="GtkStackSidebar">
-                        <property name="halign">center</property>
-                        <property name="stack">stack</property>
+                    <object class="GtkFrame">
+                        <child>
+                            <object class="GtkListBox" id="listbox">
+                                <property name="halign">end</property>
+                                <property name="selection-mode">single</property>
+                                <property name="show-separators">1</property>
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 0</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 1</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band1">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 2</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band2">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 3</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band3">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 4</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band4">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 5</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band5">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 6</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band6">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 7</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="checkbutton_band7">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">10</property>
+                                                        <property name="margin-end">10</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <style>
+                                    <class name="rich-list" />
+                                </style>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
@@ -227,7 +425,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Calf Studio Gears</property>
+                                <property name="label">Linux Studio Plugins</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

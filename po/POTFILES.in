@@ -26,6 +26,7 @@ data/ui/loudness.ui
 data/ui/maximizer.ui
 data/ui/module_info.ui
 data/ui/multiband_compressor.ui
+data/ui/multiband_compressor_band.ui
 data/ui/multiband_gate.ui
 data/ui/pipe_info.ui
 data/ui/pitch.ui

@@ -29,6 +29,7 @@
         <file>ui/maximizer.ui</file>
         <file>ui/module_info.ui</file>
         <file>ui/multiband_compressor.ui</file>
+        <file>ui/multiband_compressor_band.ui</file>
         <file>ui/multiband_gate.ui</file>
         <file>ui/pipe_info.ui</file>
         <file>ui/pitch.ui</file>

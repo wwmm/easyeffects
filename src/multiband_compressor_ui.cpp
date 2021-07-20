@@ -215,68 +215,9 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
-  // freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
-  // freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
-  // freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
-  // threshold0 = builder->get_widget<Gtk::SpinButton>("threshold0");
-  // threshold1 = builder->get_widget<Gtk::SpinButton>("threshold1");
-  // threshold2 = builder->get_widget<Gtk::SpinButton>("threshold2");
-  // threshold3 = builder->get_widget<Gtk::SpinButton>("threshold3");
-  // ratio0 = builder->get_widget<Gtk::SpinButton>("ratio0");
-  // ratio1 = builder->get_widget<Gtk::SpinButton>("ratio1");
-  // ratio2 = builder->get_widget<Gtk::SpinButton>("ratio2");
-  // ratio3 = builder->get_widget<Gtk::SpinButton>("ratio3");
-  // attack0 = builder->get_widget<Gtk::SpinButton>("attack0");
-  // attack1 = builder->get_widget<Gtk::SpinButton>("attack1");
-  // attack2 = builder->get_widget<Gtk::SpinButton>("attack2");
-  // attack3 = builder->get_widget<Gtk::SpinButton>("attack3");
-  // release0 = builder->get_widget<Gtk::SpinButton>("release0");
-  // release1 = builder->get_widget<Gtk::SpinButton>("release1");
-  // release2 = builder->get_widget<Gtk::SpinButton>("release2");
-  // release3 = builder->get_widget<Gtk::SpinButton>("release3");
-  // makeup0 = builder->get_widget<Gtk::SpinButton>("makeup0");
-  // makeup1 = builder->get_widget<Gtk::SpinButton>("makeup1");
-  // makeup2 = builder->get_widget<Gtk::SpinButton>("makeup2");
-  // makeup3 = builder->get_widget<Gtk::SpinButton>("makeup3");
-  // knee0 = builder->get_widget<Gtk::SpinButton>("knee0");
-  // knee1 = builder->get_widget<Gtk::SpinButton>("knee1");
-  // knee2 = builder->get_widget<Gtk::SpinButton>("knee2");
-  // knee3 = builder->get_widget<Gtk::SpinButton>("knee3");
+  stack = builder->get_widget<Gtk::Stack>("stack");
 
-  // bypass0 = builder->get_widget<Gtk::ToggleButton>("bypass0");
-  // bypass1 = builder->get_widget<Gtk::ToggleButton>("bypass1");
-  // bypass2 = builder->get_widget<Gtk::ToggleButton>("bypass2");
-  // bypass3 = builder->get_widget<Gtk::ToggleButton>("bypass3");
-  // solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
-  // solo1 = builder->get_widget<Gtk::ToggleButton>("solo1");
-  // solo2 = builder->get_widget<Gtk::ToggleButton>("solo2");
-  // solo3 = builder->get_widget<Gtk::ToggleButton>("solo3");
-  // solo0 = builder->get_widget<Gtk::ToggleButton>("solo0");
-
-  // mode = builder->get_widget<Gtk::ComboBoxText>("mode");
-  // envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
-  // detection0 = builder->get_widget<Gtk::ComboBoxText>("detection0");
-  // detection1 = builder->get_widget<Gtk::ComboBoxText>("detection1");
-  // detection2 = builder->get_widget<Gtk::ComboBoxText>("detection2");
-  // detection3 = builder->get_widget<Gtk::ComboBoxText>("detection3");
-
-  // output0 = builder->get_widget<Gtk::LevelBar>("output0");
-  // output1 = builder->get_widget<Gtk::LevelBar>("output1");
-  // output2 = builder->get_widget<Gtk::LevelBar>("output2");
-  // output3 = builder->get_widget<Gtk::LevelBar>("output3");
-  // compression0 = builder->get_widget<Gtk::LevelBar>("compression0");
-  // compression1 = builder->get_widget<Gtk::LevelBar>("compression1");
-  // compression2 = builder->get_widget<Gtk::LevelBar>("compression2");
-  // compression3 = builder->get_widget<Gtk::LevelBar>("compression3");
-
-  // output0_label = builder->get_widget<Gtk::Label>("output0_label");
-  // output1_label = builder->get_widget<Gtk::Label>("output1_label");
-  // output2_label = builder->get_widget<Gtk::Label>("output2_label");
-  // output3_label = builder->get_widget<Gtk::Label>("output3_label");
-  // compression0_label = builder->get_widget<Gtk::Label>("compression0_label");
-  // compression1_label = builder->get_widget<Gtk::Label>("compression1_label");
-  // compression2_label = builder->get_widget<Gtk::Label>("compression2_label");
-  // compression3_label = builder->get_widget<Gtk::Label>("compression3_label");
+  listbox = builder->get_widget<Gtk::ListBox>("listbox");
 
   // gsettings bindings
 
@@ -321,7 +262,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   // settings->bind("solo3", solo3, "active");
 
   // g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
+  //                              compressor_mode_enum_to_int, int_to_compressor_mode_enum, nullptr, nullptr);
 
   // g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
   //                              G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,

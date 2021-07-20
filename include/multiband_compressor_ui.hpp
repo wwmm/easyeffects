@@ -50,6 +50,12 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
+  static constexpr uint n_bands = 8;
+
+  Gtk::Stack* stack = nullptr;
+
+  Gtk::ListBox* listbox = nullptr;
+
   Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
 
   Gtk::SpinButton *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr, *ratio0 = nullptr,
