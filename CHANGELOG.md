@@ -8,6 +8,7 @@
 
 ### Fixed
 
+- The echo canceller sampling rate is now properly set.
 - The threshold parameter from the deesser plugin is now saved to the preset file
 - Depending on the input gain or output gain values the corresponding level bars could not be aligned.
 
