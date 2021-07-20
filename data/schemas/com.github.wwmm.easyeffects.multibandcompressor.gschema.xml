@@ -12,9 +12,9 @@
         <value nick="Brown MT" value="4" />
     </enum>
     <enum id="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-        <value nick="Down" value="0" />
-        <value nick="Up" value="1" />
-        <value nick="Boost" value="2" />
+        <value nick="Downward" value="0" />
+        <value nick="Upward" value="1" />
+        <value nick="Boosting" value="2" />
     </enum>
     <enum id="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
         <value nick="Peak" value="0" />
@@ -362,28 +362,28 @@
         </key>
 
         <key name="compression-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode1" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode2" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode3" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode4" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode5" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode6" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
         <key name="compression-mode7" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
-            <default>"Down"</default>
+            <default>"Downward"</default>
         </key>
 
         <key name="compressor-enable0" type="b">

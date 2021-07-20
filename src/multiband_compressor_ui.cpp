@@ -21,27 +21,31 @@
 
 namespace {
 
-auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+auto compressor_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "LR4") == 0) {
+  if (std::strcmp(v, "Classic") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "LR8") == 0) {
+  } else if (std::strcmp(v, "Modern") == 0) {
     g_value_set_int(value, 1);
   }
 
   return 1;
 }
 
-auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
+auto int_to_compressor_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
   const auto v = g_value_get_int(value);
 
   switch (v) {
     case 0:
-      return g_variant_new_string("LR4");
+      return g_variant_new_string("Classic");
+
+    case 1:
+      return g_variant_new_string("Modern");
 
     default:
-      return g_variant_new_string("LR8");
+      return g_variant_new_string("Classic");
   }
 }
 
@@ -85,6 +89,115 @@ auto int_to_envelope_boost_enum(const GValue* value, const GVariantType* expecte
 
     default:
       return g_variant_new_string("None");
+  }
+}
+
+auto compression_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (std::strcmp(v, "Downward") == 0) {
+    g_value_set_int(value, 0);
+  } else if (std::strcmp(v, "Upward") == 0) {
+    g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "Boosting") == 0) {
+    g_value_set_int(value, 2);
+  }
+
+  return 1;
+}
+
+auto int_to_compression_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
+  const auto v = g_value_get_int(value);
+
+  switch (v) {
+    case 0:
+      return g_variant_new_string("Downward");
+
+    case 1:
+      return g_variant_new_string("Upward");
+
+    case 2:
+      return g_variant_new_string("Boosting");
+
+    default:
+      return g_variant_new_string("Downward");
+  }
+}
+
+auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (std::strcmp(v, "Peak") == 0) {
+    g_value_set_int(value, 0);
+  } else if (std::strcmp(v, "RMS") == 0) {
+    g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "Low-Pass") == 0) {
+    g_value_set_int(value, 2);
+  } else if (std::strcmp(v, "Uniform") == 0) {
+    g_value_set_int(value, 3);
+  }
+
+  return 1;
+}
+
+auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
+  const auto v = g_value_get_int(value);
+
+  switch (v) {
+    case 0:
+      return g_variant_new_string("Peak");
+
+    case 1:
+      return g_variant_new_string("RMS");
+
+    case 2:
+      return g_variant_new_string("Low-Pass");
+
+    case 3:
+      return g_variant_new_string("Uniform");
+
+    default:
+      return g_variant_new_string("RMS");
+  }
+}
+
+auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (std::strcmp(v, "Middle") == 0) {
+    g_value_set_int(value, 0);
+  } else if (std::strcmp(v, "Side") == 0) {
+    g_value_set_int(value, 1);
+  } else if (std::strcmp(v, "Left") == 0) {
+    g_value_set_int(value, 2);
+  } else if (std::strcmp(v, "Right") == 0) {
+    g_value_set_int(value, 3);
+  }
+
+  return 1;
+}
+
+auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
+    -> GVariant* {
+  const auto v = g_value_get_int(value);
+
+  switch (v) {
+    case 0:
+      return g_variant_new_string("Middle");
+
+    case 1:
+      return g_variant_new_string("Side");
+
+    case 2:
+      return g_variant_new_string("Left");
+
+    case 3:
+      return g_variant_new_string("Right");
+
+    default:
+      return g_variant_new_string("Middle");
   }
 }
 
