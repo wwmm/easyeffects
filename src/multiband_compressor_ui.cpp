@@ -219,6 +219,8 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   listbox = builder->get_widget<Gtk::ListBox>("listbox");
 
+  listbox->select_row(*listbox->get_row_at_index(0));
+
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
@@ -316,6 +318,8 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   // prepare_spinbutton(ratio1, "");
   // prepare_spinbutton(ratio2, "");
   // prepare_spinbutton(ratio3, "");
+
+  prepare_bands();
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {
@@ -331,6 +335,16 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
   auto stack_page = stack->add(*ui, plugin_name::multiband_compressor);
 
   return ui;
+}
+
+void MultibandCompressorUi::prepare_bands() {
+  for (int n = 0; n < n_bands; n++) {
+    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
+
+    auto* top_box = builder->get_widget<Gtk::Box>("top_box");
+
+    stack->add(*top_box, "band" + std::to_string(n));
+  }
 }
 
 void MultibandCompressorUi::reset() {

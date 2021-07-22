@@ -86,6 +86,8 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ToggleButton *bypass0 = nullptr, *bypass1 = nullptr, *bypass2 = nullptr, *bypass3 = nullptr, *solo0 = nullptr,
                     *solo1 = nullptr, *solo2 = nullptr, *solo3 = nullptr;
+
+  void prepare_bands();
 };
 
 #endif
