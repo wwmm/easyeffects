@@ -48,6 +48,9 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
 
+  prepare_spinbutton(fcut, "Hz");
+  prepare_spinbutton(feed, "dB");
+
   init_presets_buttons();
 }
 
