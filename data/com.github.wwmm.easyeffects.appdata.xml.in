@@ -17,26 +17,15 @@
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>
-  <screenshots>
+  <screenshots>    
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/appdata-screenshot-01.png</image>
-      <caption>Set the volume and turn on/off effects</caption>
+      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_players.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/appdata-screenshot-02.png</image>
-      <caption>Includes an equalizer with built-in presets</caption>
+      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_plugins.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/appdata-screenshot-03.png</image>
-      <caption>Input Limiter</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/appdata-screenshot-04.png</image>
-      <caption>Compressor</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/appdata-screenshot-05.png</image>
-      <caption>Calibration</caption>
+      <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/convolver.png</image>
     </screenshot>
   </screenshots>
   <releases>
