@@ -221,6 +221,12 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   listbox->select_row(*listbox->get_row_at_index(0));
 
+  listbox->signal_selected_rows_changed().connect([=, this]() {
+    int row = listbox->get_selected_row()->get_index();
+
+    stack->set_visible_child("band" + std::to_string(row));
+  });
+
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");

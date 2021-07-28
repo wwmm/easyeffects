@@ -41,7 +41,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 0</property>
+                                                        <property name="label" translatable="yes">Band 1</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -58,7 +58,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 1</property>
+                                                        <property name="label" translatable="yes">Band 2</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -83,7 +83,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 2</property>
+                                                        <property name="label" translatable="yes">Band 3</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -108,7 +108,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 3</property>
+                                                        <property name="label" translatable="yes">Band 4</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -133,7 +133,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 4</property>
+                                                        <property name="label" translatable="yes">Band 5</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -158,7 +158,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 5</property>
+                                                        <property name="label" translatable="yes">Band 6</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -183,7 +183,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 6</property>
+                                                        <property name="label" translatable="yes">Band 7</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
@@ -208,7 +208,7 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 7</property>
+                                                        <property name="label" translatable="yes">Band 8</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
                                                         <property name="hexpand">1</property>
