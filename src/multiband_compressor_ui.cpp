@@ -344,10 +344,28 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 }
 
 void MultibandCompressorUi::prepare_bands() {
-  for (int n = 0; n < n_bands; n++) {
+  for (uint n = 0; n < n_bands; n++) {
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
     auto* top_box = builder->get_widget<Gtk::Box>("top_box");
+
+    // linking widgets
+
+    // removing split frequency from band 0
+
+    if (n == 0) {
+      auto* sf_box = builder->get_widget<Gtk::Box>("split_frequency_box");
+
+      for (auto* child = sf_box->get_last_child(); child != nullptr; child = sf_box->get_last_child()) {
+        sf_box->remove(*child);
+      }
+
+      auto sf_label = Gtk::Label("0 Hz", Gtk::Align::CENTER);
+
+      sf_box->append(sf_label);
+    }
+
+    // add to stack
 
     stack->add(*top_box, "band" + std::to_string(n));
   }

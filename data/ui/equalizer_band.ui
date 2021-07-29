@@ -3,10 +3,10 @@
     <object class="GtkPopover" id="popover_menu">
         <child>
             <object class="GtkBox">
-                <property name="margin_start">6</property>
-                <property name="margin_end">6</property>
-                <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="spacing">12</property>
                 <property name="orientation">vertical</property>
                 <child>

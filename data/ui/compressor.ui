@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
-        <property name="margin_start">6</property>
-        <property name="margin_end">6</property>
-        <property name="margin_top">6</property>
-        <property name="margin_bottom">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="spacing">12</property>
         <property name="orientation">vertical</property>
 
@@ -24,7 +24,7 @@
 
         <child>
             <object class="GtkStack" id="stack">
-                <property name="margin_top">6</property>
+                <property name="margin-top">6</property>
                 <property name="hexpand">1</property>
                 <property name="hhomogeneous">0</property>
                 <property name="vhomogeneous">0</property>
@@ -165,6 +165,7 @@
                                                     <object class="GtkLabel">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
+                                                        <property name="margin-end">6</property>
                                                         <property name="label" translatable="yes">Time</property>
                                                         <layout>
                                                             <property name="column">0</property>
@@ -176,6 +177,7 @@
                                                     <object class="GtkLabel">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
+                                                        <property name="margin-end">6</property>
                                                         <property name="label" translatable="yes">Threshold</property>
                                                         <layout>
                                                             <property name="column">0</property>
@@ -233,7 +235,6 @@
                                                 <property name="valign">center</property>
                                                 <property name="row-spacing">6</property>
                                                 <property name="column-spacing">6</property>
-                                                <property name="column-homogeneous">1</property>
                                                 <child>
                                                     <object class="GtkLabel">
                                                         <property name="halign">center</property>
