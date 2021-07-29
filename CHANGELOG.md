@@ -11,6 +11,7 @@
 - The echo canceller sampling rate is now properly set.
 - The threshold parameter from the deesser plugin is now saved to the preset file
 - Depending on the input gain or output gain values the corresponding level bars could not be aligned.
+- When adding more equalizer bands they are set to `Bell` instead of `Off`.
 
 ## [6.0.3]
 
