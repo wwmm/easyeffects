@@ -52,13 +52,20 @@ Equalizer::Equalizer(const std::string& tag,
   }
 
   settings->signal_changed("num-bands").connect([=, this](auto key) {
-    int nbands = settings->get_int(key);
+    uint nbands = settings->get_int(key);
 
-    for (uint n = nbands; n < max_bands; n++) {
-      // turn off unused band
+    for (uint n = 0; n < max_bands; n++) {
+      if (n < nbands) {
+        settings_left->set_enum("band" + std::to_string(n) + "-type", 1);
+        settings_right->set_enum("band" + std::to_string(n) + "-type", 1);
+      }
 
-      settings_left->set_enum("band" + std::to_string(n) + "-type", 0);
-      settings_right->set_enum("band" + std::to_string(n) + "-type", 0);
+      // turn off unused bands
+
+      if (n >= nbands) {
+        settings_left->set_enum("band" + std::to_string(n) + "-type", 0);
+        settings_right->set_enum("band" + std::to_string(n) + "-type", 0);
+      }
     }
   });
 
