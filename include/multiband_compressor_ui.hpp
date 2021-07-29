@@ -56,20 +56,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ListBox* listbox = nullptr;
 
-  Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
-
-  Gtk::SpinButton *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr, *ratio0 = nullptr,
-                  *makeup0 = nullptr;
-
-  Gtk::SpinButton *attack1 = nullptr, *release1 = nullptr, *threshold1 = nullptr, *knee1 = nullptr, *ratio1 = nullptr,
-                  *makeup1 = nullptr;
-
-  Gtk::SpinButton *attack2 = nullptr, *release2 = nullptr, *threshold2 = nullptr, *knee2 = nullptr, *ratio2 = nullptr,
-                  *makeup2 = nullptr;
-
-  Gtk::SpinButton *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr, *ratio3 = nullptr,
-                  *makeup3 = nullptr;
-
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;

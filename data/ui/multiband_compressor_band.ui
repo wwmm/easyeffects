@@ -294,7 +294,7 @@
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="upper">2000</property>
-                                        <property name="value">150</property>
+                                        <property name="value">20</property>
                                         <property name="step-increment">0.01</property>
                                         <property name="page-increment">0.1</property>
                                     </object>
@@ -351,7 +351,7 @@
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="upper">2000</property>
-                                        <property name="value">300</property>
+                                        <property name="value">100</property>
                                         <property name="step-increment">0.01</property>
                                         <property name="page-increment">0.1</property>
                                     </object>
@@ -419,7 +419,7 @@
                                     <object class="GtkAdjustment">
                                         <property name="lower">1</property>
                                         <property name="upper">100</property>
-                                        <property name="value">4</property>
+                                        <property name="value">1</property>
                                         <property name="step-increment">0.01</property>
                                         <property name="page-increment">0.1</property>
                                     </object>
@@ -455,7 +455,8 @@
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">-24</property>
-                                        <property name="value">0</property>
+                                        <property name="upper">0</property>
+                                        <property name="value">-6</property>
                                         <property name="step-increment">0.01</property>
                                         <property name="page-increment">0.1</property>
                                     </object>
