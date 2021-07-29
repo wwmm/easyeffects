@@ -9,15 +9,97 @@
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="bypass">
+            <object class="GtkGrid">
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-            </object>
-        </child>
+                <property name="valign">center</property>
+                <property name="row-spacing">24</property>
+                <property name="column-spacing">24</property>
 
-        <child>
-            <object class="GtkBox">
-                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkGrid">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">24</property>
+
+                        <child>
+                            <object class="GtkToggleButton" id="bypass">
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">Bypass</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Operating Mode</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="compressor_mode">
+                                <property name="halign">center</property>
+                                <items>
+                                    <item translatable="yes">Classic</item>
+                                    <item translatable="yes">Modern</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Sidechain Boost</property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="sidechain_boost">
+                                <property name="halign">center</property>
+                                <items>
+                                    <item translatable="yes">None</item>
+                                    <item translatable="yes">Pink BT</item>
+                                    <item translatable="yes">Pink MT</item>
+                                    <item translatable="yes">Brown BT</item>
+                                    <item translatable="yes">Brown MT</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+
                 <child>
                     <object class="GtkStack" id="stack">
                         <property name="hexpand">1</property>
@@ -27,11 +109,19 @@
                         <property name="vhomogeneous">0</property>
                         <property name="transition_duration">250</property>
                         <property name="transition_type">slide-left-right</property>
+
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
                     </object>
                 </child>
 
                 <child>
                     <object class="GtkFrame">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+
                         <child>
                             <object class="GtkListBox" id="listbox">
                                 <property name="halign">end</property>
@@ -228,6 +318,12 @@
                                 </style>
                             </object>
                         </child>
+
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                            <property name="row-span">2</property>
+                        </layout>
                     </object>
                 </child>
             </object>

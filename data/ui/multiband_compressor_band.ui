@@ -519,38 +519,10 @@
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Operating Mode</property>
-
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkComboBoxText" id="compressor_mode">
-                        <property name="halign">center</property>
-                        <items>
-                            <item translatable="yes">Classic</item>
-                            <item translatable="yes">Modern</item>
-                        </items>
-
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Compression Mode</property>
 
                         <layout>
-                            <property name="column">1</property>
+                            <property name="column">0</property>
                             <property name="row">0</property>
                         </layout>
                     </object>
@@ -566,7 +538,7 @@
                         </items>
 
                         <layout>
-                            <property name="column">1</property>
+                            <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
                     </object>
@@ -579,7 +551,7 @@
                         <property name="label" translatable="yes">Sidechain Mode</property>
 
                         <layout>
-                            <property name="column">2</property>
+                            <property name="column">1</property>
                             <property name="row">0</property>
                         </layout>
                     </object>
@@ -596,7 +568,7 @@
                         </items>
 
                         <layout>
-                            <property name="column">2</property>
+                            <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
                     </object>
@@ -609,7 +581,7 @@
                         <property name="label" translatable="yes">Sidechain Source</property>
 
                         <layout>
-                            <property name="column">3</property>
+                            <property name="column">2</property>
                             <property name="row">0</property>
                         </layout>
                     </object>
@@ -626,38 +598,7 @@
                         </items>
 
                         <layout>
-                            <property name="column">3</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Sidechain Boost</property>
-
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkComboBoxText" id="sidechain_boost">
-                        <property name="halign">center</property>
-                        <items>
-                            <item translatable="yes">None</item>
-                            <item translatable="yes">Pink BT</item>
-                            <item translatable="yes">Pink MT</item>
-                            <item translatable="yes">Brown BT</item>
-                            <item translatable="yes">Brown MT</item>
-                        </items>
-
-                        <layout>
-                            <property name="column">4</property>
+                            <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
                     </object>
