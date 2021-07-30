@@ -52,6 +52,8 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
  private:
   static constexpr uint n_bands = 8;
 
+  Gtk::ComboBoxText *compressor_mode = nullptr, *envelope_boost = nullptr;
+
   Gtk::Stack* stack = nullptr;
 
   Gtk::ListBox* listbox = nullptr;
@@ -66,12 +68,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Label *compression0_label = nullptr, *compression1_label = nullptr, *compression2_label = nullptr,
              *compression3_label = nullptr;
-
-  Gtk::ComboBoxText *mode = nullptr, *envelope_boost = nullptr, *detection0 = nullptr, *detection1 = nullptr,
-                    *detection2 = nullptr, *detection3 = nullptr;
-
-  Gtk::ToggleButton *bypass0 = nullptr, *bypass1 = nullptr, *bypass2 = nullptr, *bypass3 = nullptr, *solo0 = nullptr,
-                    *solo1 = nullptr, *solo2 = nullptr, *solo3 = nullptr;
 
   void prepare_bands();
 };

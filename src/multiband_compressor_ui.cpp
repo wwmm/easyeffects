@@ -215,6 +215,10 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
+  compressor_mode = builder->get_widget<Gtk::ComboBoxText>("compressor_mode");
+
+  envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
+
   stack = builder->get_widget<Gtk::Stack>("stack");
 
   listbox = builder->get_widget<Gtk::ListBox>("listbox");
@@ -232,8 +236,26 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
+  g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", compressor_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, compressor_mode_enum_to_int, int_to_compressor_mode_enum,
+                               nullptr, nullptr);
+
+  g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,
+                               nullptr, nullptr);
+
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
+
+  // band checkbuttons
+
+  for (uint n = 1; n < n_bands; n++) {
+    auto nstr = std::to_string(n);
+
+    auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
+
+    settings->bind("enable-band" + nstr, enable_band, "active");
+  }
 
   prepare_bands();
 }
@@ -255,7 +277,7 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 
 void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0; n < n_bands; n++) {
-    std::string nstr = std::to_string(n);
+    auto nstr = std::to_string(n);
 
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
@@ -281,6 +303,16 @@ void MultibandCompressorUi::prepare_bands() {
     }
 
     // loading builder widgets
+
+    auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+
+    auto* mute = builder->get_widget<Gtk::ToggleButton>("mute");
+
+    auto* solo = builder->get_widget<Gtk::ToggleButton>("solo");
+
+    auto* lowcut_filter = builder->get_widget<Gtk::CheckButton>("lowcut_filter");
+
+    auto* highcut_filter = builder->get_widget<Gtk::CheckButton>("highcut_filter");
 
     auto* lowcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("lowcut_filter_frequency");
 
@@ -310,7 +342,23 @@ void MultibandCompressorUi::prepare_bands() {
 
     auto* boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
 
+    auto* compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
+
+    auto* sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
+
+    auto* sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
+
     // gsettings bindings
+
+    settings->bind("compressor-enable" + nstr, band_bypass, "active", Gio::Settings::BindFlags::INVERT_BOOLEAN);
+
+    settings->bind("mute" + nstr, mute, "active");
+
+    settings->bind("solo" + nstr, solo, "active");
+
+    settings->bind("sidechain-custom-lowcut-filter" + nstr, lowcut_filter, "active");
+
+    settings->bind("sidechain-custom-highcut-filter" + nstr, highcut_filter, "active");
 
     settings->bind("sidechain-lowcut-frequency" + nstr, lowcut_filter_frequency->get_adjustment().get(), "value");
 
@@ -339,6 +387,17 @@ void MultibandCompressorUi::prepare_bands() {
     settings->bind("boost-amount" + nstr, boost_amount->get_adjustment().get(), "value");
 
     settings->bind("boost-threshold" + nstr, boost_threshold->get_adjustment().get(), "value");
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode" + nstr).c_str(),
+                                 compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT, compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode" + nstr).c_str(),
+                                 sidechain_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                                 sidechain_mode_enum_to_int, int_to_sidechain_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source" + nstr).c_str(),
+                                 sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                                 sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
 
     // prepare widgets
 

@@ -76,7 +76,7 @@
                         </child>
 
                         <child>
-                            <object class="GtkComboBoxText" id="sidechain_boost">
+                            <object class="GtkComboBoxText" id="envelope_boost">
                                 <property name="halign">center</property>
                                 <items>
                                     <item translatable="yes">None</item>
@@ -158,7 +158,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band1">
+                                                    <object class="GtkCheckButton" id="enable_band1">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -182,7 +182,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band2">
+                                                    <object class="GtkCheckButton" id="enable_band2">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -206,7 +206,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band3">
+                                                    <object class="GtkCheckButton" id="enable_band3">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -230,7 +230,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band4">
+                                                    <object class="GtkCheckButton" id="enable_band4">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -254,7 +254,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band5">
+                                                    <object class="GtkCheckButton" id="enable_band5">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -278,7 +278,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band6">
+                                                    <object class="GtkCheckButton" id="enable_band6">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
@@ -302,7 +302,7 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band7">
+                                                    <object class="GtkCheckButton" id="enable_band7">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
