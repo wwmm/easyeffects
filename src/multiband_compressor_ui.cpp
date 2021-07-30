@@ -215,109 +215,47 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
+  compressor_mode = builder->get_widget<Gtk::ComboBoxText>("compressor_mode");
+
+  envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
+
   stack = builder->get_widget<Gtk::Stack>("stack");
 
   listbox = builder->get_widget<Gtk::ListBox>("listbox");
 
   listbox->select_row(*listbox->get_row_at_index(0));
 
+  listbox->signal_selected_rows_changed().connect([=, this]() {
+    int row = listbox->get_selected_row()->get_index();
+
+    stack->set_visible_child("band" + std::to_string(row));
+  });
+
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
-  // settings->bind("freq0", freq0->get_adjustment().get(), "value");
-  // settings->bind("freq1", freq1->get_adjustment().get(), "value");
-  // settings->bind("freq2", freq2->get_adjustment().get(), "value");
-  // settings->bind("threshold0", threshold0->get_adjustment().get(), "value");
-  // settings->bind("threshold1", threshold1->get_adjustment().get(), "value");
-  // settings->bind("threshold2", threshold2->get_adjustment().get(), "value");
-  // settings->bind("threshold3", threshold3->get_adjustment().get(), "value");
-  // settings->bind("ratio0", ratio0->get_adjustment().get(), "value");
-  // settings->bind("ratio1", ratio1->get_adjustment().get(), "value");
-  // settings->bind("ratio2", ratio2->get_adjustment().get(), "value");
-  // settings->bind("ratio3", ratio3->get_adjustment().get(), "value");
-  // settings->bind("attack0", attack0->get_adjustment().get(), "value");
-  // settings->bind("attack1", attack1->get_adjustment().get(), "value");
-  // settings->bind("attack2", attack2->get_adjustment().get(), "value");
-  // settings->bind("attack3", attack3->get_adjustment().get(), "value");
-  // settings->bind("release0", release0->get_adjustment().get(), "value");
-  // settings->bind("release1", release1->get_adjustment().get(), "value");
-  // settings->bind("release2", release2->get_adjustment().get(), "value");
-  // settings->bind("release3", release3->get_adjustment().get(), "value");
-  // settings->bind("makeup0", makeup0->get_adjustment().get(), "value");
-  // settings->bind("makeup1", makeup1->get_adjustment().get(), "value");
-  // settings->bind("makeup2", makeup2->get_adjustment().get(), "value");
-  // settings->bind("makeup3", makeup3->get_adjustment().get(), "value");
-  // settings->bind("knee0", knee0->get_adjustment().get(), "value");
-  // settings->bind("knee1", knee1->get_adjustment().get(), "value");
-  // settings->bind("knee2", knee2->get_adjustment().get(), "value");
-  // settings->bind("knee3", knee3->get_adjustment().get(), "value");
+  g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", compressor_mode->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, compressor_mode_enum_to_int, int_to_compressor_mode_enum,
+                               nullptr, nullptr);
 
-  // settings->bind("bypass0", bypass0, "active");
-  // settings->bind("bypass1", bypass1, "active");
-  // settings->bind("bypass2", bypass2, "active");
-  // settings->bind("bypass3", bypass3, "active");
-  // settings->bind("solo0", solo0, "active");
-  // settings->bind("solo1", solo1, "active");
-  // settings->bind("solo2", solo2, "active");
-  // settings->bind("solo3", solo3, "active");
-
-  // g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              compressor_mode_enum_to_int, int_to_compressor_mode_enum, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
-  //                              G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,
-  //                              nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings->gobj(), "detection0", detection0->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings->gobj(), "detection1", detection1->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings->gobj(), "detection2", detection2->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
-
-  // g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-  //                              detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
+                               G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,
+                               nullptr, nullptr);
 
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
 
-  // prepare_spinbutton(attack0, "dB");
-  // prepare_spinbutton(attack1, "dB");
-  // prepare_spinbutton(attack2, "dB");
-  // prepare_spinbutton(attack3, "dB");
+  // band checkbuttons
 
-  // prepare_spinbutton(threshold0, "dB");
-  // prepare_spinbutton(threshold1, "dB");
-  // prepare_spinbutton(threshold2, "dB");
-  // prepare_spinbutton(threshold3, "dB");
+  for (uint n = 1; n < n_bands; n++) {
+    auto nstr = std::to_string(n);
 
-  // prepare_spinbutton(knee0, "dB");
-  // prepare_spinbutton(knee1, "dB");
-  // prepare_spinbutton(knee2, "dB");
-  // prepare_spinbutton(knee3, "dB");
+    auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
 
-  // prepare_spinbutton(makeup0, "dB");
-  // prepare_spinbutton(makeup1, "dB");
-  // prepare_spinbutton(makeup2, "dB");
-  // prepare_spinbutton(makeup3, "dB");
-
-  // prepare_spinbutton(release0, "ms");
-  // prepare_spinbutton(release1, "ms");
-  // prepare_spinbutton(release2, "ms");
-  // prepare_spinbutton(release3, "ms");
-
-  // prepare_spinbutton(freq0, "Hz");
-  // prepare_spinbutton(freq1, "Hz");
-  // prepare_spinbutton(freq2, "Hz");
-
-  // prepare_spinbutton(ratio0, "");
-  // prepare_spinbutton(ratio1, "");
-  // prepare_spinbutton(ratio2, "");
-  // prepare_spinbutton(ratio3, "");
+    settings->bind("enable-band" + nstr, enable_band, "active");
+  }
 
   prepare_bands();
 }
@@ -338,12 +276,164 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 }
 
 void MultibandCompressorUi::prepare_bands() {
-  for (int n = 0; n < n_bands; n++) {
+  for (uint n = 0; n < n_bands; n++) {
+    auto nstr = std::to_string(n);
+
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
+
+
+    if (n > 0U) {
+      auto* split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
+
+      settings->bind("split-frequency" + nstr, split_frequency->get_adjustment().get(), "value");
+
+      prepare_spinbutton(split_frequency, "Hz");
+    } else {
+      // removing split frequency from band 0
+
+      auto* sf_box = builder->get_widget<Gtk::Box>("split_frequency_box");
+
+      for (auto* child = sf_box->get_last_child(); child != nullptr; child = sf_box->get_last_child()) {
+        sf_box->remove(*child);
+      }
+
+      auto sf_label = Gtk::Label("0 Hz", Gtk::Align::CENTER);
+
+      sf_box->append(sf_label);
+    }
+
+    // loading builder widgets
+
+    auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+
+    auto* mute = builder->get_widget<Gtk::ToggleButton>("mute");
+
+    auto* solo = builder->get_widget<Gtk::ToggleButton>("solo");
+
+    auto* lowcut_filter = builder->get_widget<Gtk::CheckButton>("lowcut_filter");
+
+    auto* highcut_filter = builder->get_widget<Gtk::CheckButton>("highcut_filter");
+
+    auto* lowcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("lowcut_filter_frequency");
+
+    auto* highcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("highcut_filter_frequency");
+
+    auto* attack_time = builder->get_widget<Gtk::SpinButton>("attack_time");
+
+    auto* attack_threshold = builder->get_widget<Gtk::SpinButton>("attack_threshold");
+
+    auto* release_time = builder->get_widget<Gtk::SpinButton>("release_time");
+
+    auto* release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
+
+    auto* ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+
+    auto* knee = builder->get_widget<Gtk::SpinButton>("knee");
+
+    auto* makeup = builder->get_widget<Gtk::SpinButton>("makeup");
+
+    auto* sidechain_preamp = builder->get_widget<Gtk::SpinButton>("sidechain_preamp");
+
+    auto* sidechain_reactivity = builder->get_widget<Gtk::SpinButton>("sidechain_reactivity");
+
+    auto* sidechain_lookahead = builder->get_widget<Gtk::SpinButton>("sidechain_lookahead");
+
+    auto* boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
+
+    auto* boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
+
+    auto* compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
+
+    auto* sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
+
+    auto* sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
+
+    // gsettings bindings
+
+    settings->bind("compressor-enable" + nstr, band_bypass, "active", Gio::Settings::BindFlags::INVERT_BOOLEAN);
+
+    settings->bind("mute" + nstr, mute, "active");
+
+    settings->bind("solo" + nstr, solo, "active");
+
+    settings->bind("sidechain-custom-lowcut-filter" + nstr, lowcut_filter, "active");
+
+    settings->bind("sidechain-custom-highcut-filter" + nstr, highcut_filter, "active");
+
+    settings->bind("sidechain-lowcut-frequency" + nstr, lowcut_filter_frequency->get_adjustment().get(), "value");
+
+    settings->bind("sidechain-highcut-frequency" + nstr, highcut_filter_frequency->get_adjustment().get(), "value");
+
+    settings->bind("attack-time" + nstr, attack_time->get_adjustment().get(), "value");
+
+    settings->bind("attack-threshold" + nstr, attack_threshold->get_adjustment().get(), "value");
+
+    settings->bind("release-time" + nstr, release_time->get_adjustment().get(), "value");
+
+    settings->bind("release-threshold" + nstr, release_threshold->get_adjustment().get(), "value");
+
+    settings->bind("ratio" + nstr, ratio->get_adjustment().get(), "value");
+
+    settings->bind("knee" + nstr, knee->get_adjustment().get(), "value");
+
+    settings->bind("makeup" + nstr, makeup->get_adjustment().get(), "value");
+
+    settings->bind("sidechain-preamp" + nstr, sidechain_preamp->get_adjustment().get(), "value");
+
+    settings->bind("sidechain-reactivity" + nstr, sidechain_reactivity->get_adjustment().get(), "value");
+
+    settings->bind("sidechain-lookahead" + nstr, sidechain_lookahead->get_adjustment().get(), "value");
+
+    settings->bind("boost-amount" + nstr, boost_amount->get_adjustment().get(), "value");
+
+    settings->bind("boost-threshold" + nstr, boost_threshold->get_adjustment().get(), "value");
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode" + nstr).c_str(),
+                                 compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT, compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode" + nstr).c_str(),
+                                 sidechain_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                                 sidechain_mode_enum_to_int, int_to_sidechain_mode_enum, nullptr, nullptr);
+
+    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source" + nstr).c_str(),
+                                 sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                                 sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
+
+    // prepare widgets
+
+    prepare_spinbutton(lowcut_filter_frequency, "Hz");
+
+    prepare_spinbutton(highcut_filter_frequency, "Hz");
+
+    prepare_spinbutton(attack_time, "ms");
+
+    prepare_spinbutton(attack_threshold, "db");
+
+    prepare_spinbutton(release_time, "ms");
+
+    prepare_spinbutton(release_threshold, "db");
+
+    prepare_spinbutton(ratio, "");
+
+    prepare_spinbutton(knee, "db");
+
+    prepare_spinbutton(makeup, "db");
+
+    prepare_spinbutton(sidechain_preamp, "db");
+
+    prepare_spinbutton(sidechain_reactivity, "ms");
+
+    prepare_spinbutton(sidechain_lookahead, "ms");
+
+    prepare_spinbutton(boost_amount, "db");
+
+    prepare_spinbutton(boost_threshold, "db");
+
+    // add to stack
 
     auto* top_box = builder->get_widget<Gtk::Box>("top_box");
 
-    stack->add(*top_box, "band" + std::to_string(n));
+    stack->add(*top_box, "band" + nstr);
   }
 }
 

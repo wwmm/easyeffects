@@ -1,38 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
-        <property name="margin_start">6</property>
-        <property name="margin_end">6</property>
-        <property name="margin_top">6</property>
-        <property name="margin_bottom">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="spacing">24</property>
         <property name="orientation">vertical</property>
 
         <child>
-            <object class="GtkToggleButton" id="bypass">
+            <object class="GtkGrid">
                 <property name="halign">center</property>
-                <property name="label" translatable="yes">Bypass</property>
-            </object>
-        </child>
+                <property name="valign">center</property>
+                <property name="row-spacing">24</property>
+                <property name="column-spacing">24</property>
 
-        <child>
-            <object class="GtkBox">
-                <property name="spacing">6</property>
+                <child>
+                    <object class="GtkGrid">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">24</property>
+
+                        <child>
+                            <object class="GtkToggleButton" id="bypass">
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">Bypass</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Operating Mode</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="compressor_mode">
+                                <property name="halign">center</property>
+                                <items>
+                                    <item translatable="yes">Classic</item>
+                                    <item translatable="yes">Modern</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Sidechain Boost</property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="envelope_boost">
+                                <property name="halign">center</property>
+                                <items>
+                                    <item translatable="yes">None</item>
+                                    <item translatable="yes">Pink BT</item>
+                                    <item translatable="yes">Pink MT</item>
+                                    <item translatable="yes">Brown BT</item>
+                                    <item translatable="yes">Brown MT</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+
                 <child>
                     <object class="GtkStack" id="stack">
                         <property name="hexpand">1</property>
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="hhomogeneous">0</property>
                         <property name="vhomogeneous">0</property>
                         <property name="transition_duration">250</property>
                         <property name="transition_type">slide-left-right</property>
+
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
                     </object>
                 </child>
 
                 <child>
                     <object class="GtkFrame">
+                        <property name="halign">end</property>
+                        <property name="valign">center</property>
+
                         <child>
                             <object class="GtkListBox" id="listbox">
                                 <property name="halign">end</property>
+                                <property name="valign">center</property>
                                 <property name="selection-mode">single</property>
                                 <property name="show-separators">1</property>
                                 <child>
@@ -41,35 +134,10 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 0</property>
-                                                        <property name="halign">start</property>
-                                                        <property name="valign">center</property>
-                                                        <property name="hexpand">1</property>
-                                                    </object>
-                                                </child>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkListBoxRow">
-                                        <child>
-                                            <object class="GtkBox">
-                                                <child>
-                                                    <object class="GtkLabel">
-                                                        <property name="label" translatable="yes">Band 1</property>
-                                                        <property name="halign">start</property>
-                                                        <property name="valign">center</property>
-                                                        <property name="hexpand">1</property>
-                                                    </object>
-                                                </child>
-                                                <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band1">
-                                                        <property name="halign">end</property>
-                                                        <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                      <property name="label" translatable="yes">Band 1</property>
+                                                      <property name="halign">start</property>
+                                                      <property name="valign">center</property>
+                                                      <property name="hexpand">1</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -90,11 +158,10 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band2">
+                                                    <object class="GtkCheckButton" id="enable_band1">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -115,11 +182,10 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band3">
+                                                    <object class="GtkCheckButton" id="enable_band2">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -140,11 +206,10 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band4">
+                                                    <object class="GtkCheckButton" id="enable_band3">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -165,11 +230,10 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band5">
+                                                    <object class="GtkCheckButton" id="enable_band4">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -190,11 +254,10 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band6">
+                                                    <object class="GtkCheckButton" id="enable_band5">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -215,11 +278,34 @@
                                                     </object>
                                                 </child>
                                                 <child>
-                                                    <object class="GtkCheckButton" id="checkbutton_band7">
+                                                    <object class="GtkCheckButton" id="enable_band6">
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
-                                                        <property name="margin-start">10</property>
-                                                        <property name="margin-end">10</property>
+                                                        <property name="margin-start">4</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkListBoxRow">
+                                        <child>
+                                            <object class="GtkBox">
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <property name="label" translatable="yes">Band 8</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkCheckButton" id="enable_band7">
+                                                        <property name="halign">end</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="margin-start">4</property>
                                                     </object>
                                                 </child>
                                             </object>
@@ -232,6 +318,12 @@
                                 </style>
                             </object>
                         </child>
+
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">0</property>
+                            <property name="row-span">2</property>
+                        </layout>
                     </object>
                 </child>
             </object>

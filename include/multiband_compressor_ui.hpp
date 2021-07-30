@@ -52,23 +52,11 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
  private:
   static constexpr uint n_bands = 8;
 
+  Gtk::ComboBoxText *compressor_mode = nullptr, *envelope_boost = nullptr;
+
   Gtk::Stack* stack = nullptr;
 
   Gtk::ListBox* listbox = nullptr;
-
-  Gtk::SpinButton *freq0 = nullptr, *freq1 = nullptr, *freq2 = nullptr;
-
-  Gtk::SpinButton *attack0 = nullptr, *release0 = nullptr, *threshold0 = nullptr, *knee0 = nullptr, *ratio0 = nullptr,
-                  *makeup0 = nullptr;
-
-  Gtk::SpinButton *attack1 = nullptr, *release1 = nullptr, *threshold1 = nullptr, *knee1 = nullptr, *ratio1 = nullptr,
-                  *makeup1 = nullptr;
-
-  Gtk::SpinButton *attack2 = nullptr, *release2 = nullptr, *threshold2 = nullptr, *knee2 = nullptr, *ratio2 = nullptr,
-                  *makeup2 = nullptr;
-
-  Gtk::SpinButton *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr, *ratio3 = nullptr,
-                  *makeup3 = nullptr;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
@@ -80,12 +68,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Label *compression0_label = nullptr, *compression1_label = nullptr, *compression2_label = nullptr,
              *compression3_label = nullptr;
-
-  Gtk::ComboBoxText *mode = nullptr, *envelope_boost = nullptr, *detection0 = nullptr, *detection1 = nullptr,
-                    *detection2 = nullptr, *detection3 = nullptr;
-
-  Gtk::ToggleButton *bypass0 = nullptr, *bypass1 = nullptr, *bypass2 = nullptr, *bypass3 = nullptr, *solo0 = nullptr,
-                    *solo1 = nullptr, *solo2 = nullptr, *solo3 = nullptr;
 
   void prepare_bands();
 };

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
-        <property name="margin_start">6</property>
-        <property name="margin_end">6</property>
-        <property name="margin_top">6</property>
-        <property name="margin_bottom">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
+        <property name="margin-top">6</property>
+        <property name="margin-bottom">6</property>
         <property name="spacing">24</property>
         <property name="orientation">vertical</property>
 
@@ -538,10 +538,10 @@
     <object class="GtkPopover" id="popover_presets">
         <child>
             <object class="GtkBox">
-                <property name="margin_start">6</property>
-                <property name="margin_end">6</property>
-                <property name="margin_top">6</property>
-                <property name="margin_bottom">6</property>
+                <property name="margin-start">6</property>
+                <property name="margin-end">6</property>
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="spacing">6</property>
                 <property name="orientation">vertical</property>
                 <child>

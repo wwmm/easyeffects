@@ -1,8 +1,8 @@
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="spacing">6</property>
-        <property name="margin_start">6</property>
-        <property name="margin_end">6</property>
+        <property name="margin-start">6</property>
+        <property name="margin-end">6</property>
         <child>
             <object class="GtkGrid">
                 <property name="valign">center</property>
