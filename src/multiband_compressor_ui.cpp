@@ -453,93 +453,63 @@ void MultibandCompressorUi::reset() {
 
   settings->reset("output-gain");
 
-  // settings->reset("freq0");
+  settings->reset("compressor-mode");
 
-  // settings->reset("freq1");
+  settings->reset("envelope-boost");
 
-  // settings->reset("freq2");
+  for (uint n = 0; n < n_bands; n++) {
+    auto nstr = std::to_string(n);
 
-  // settings->reset("mode");
+    if (n > 0) {
+      settings->reset("enable-band" + nstr);
 
-  // // sub band
+      settings->reset("split-frequency" + nstr);
+    }
 
-  // settings->reset("threshold0");
+    settings->reset("compressor-enable" + nstr);
 
-  // settings->reset("ratio0");
+    settings->reset("solo" + nstr);
 
-  // settings->reset("attack0");
+    settings->reset("mute" + nstr);
 
-  // settings->reset("release0");
+    settings->reset("attack-threshold" + nstr);
 
-  // settings->reset("makeup0");
+    settings->reset("attack-time" + nstr);
 
-  // settings->reset("knee0");
+    settings->reset("release-threshold" + nstr);
 
-  // settings->reset("detection0");
+    settings->reset("release-time" + nstr);
 
-  // settings->reset("bypass0");
+    settings->reset("ratio" + nstr);
 
-  // settings->reset("solo0");
+    settings->reset("knee" + nstr);
 
-  // // low band
+    settings->reset("makeup" + nstr);
 
-  // settings->reset("threshold1");
+    settings->reset("compression-mode" + nstr);
 
-  // settings->reset("ratio1");
+    settings->reset("sidechain-mode" + nstr);
 
-  // settings->reset("attack1");
+    settings->reset("sidechain-source" + nstr);
 
-  // settings->reset("release1");
+    settings->reset("sidechain-lookahead" + nstr);
 
-  // settings->reset("makeup1");
+    settings->reset("sidechain-reactivity" + nstr);
 
-  // settings->reset("knee1");
+    settings->reset("sidechain-preamp" + nstr);
 
-  // settings->reset("detection1");
+    settings->reset("sidechain-custom-lowcut-filter" + nstr);
 
-  // settings->reset("bypass1");
+    settings->reset("sidechain-custom-highcut-filter" + nstr);
 
-  // settings->reset("solo1");
+    settings->reset("sidechain-lowcut-frequency" + nstr);
 
-  // // mid band
+    settings->reset("sidechain-highcut-frequency" + nstr);
 
-  // settings->reset("threshold2");
+    settings->reset("boost-threshold" + nstr);
 
-  // settings->reset("ratio2");
-
-  // settings->reset("attack2");
-
-  // settings->reset("release2");
-
-  // settings->reset("makeup2");
-
-  // settings->reset("knee2");
-
-  // settings->reset("detection2");
-
-  // settings->reset("bypass2");
-
-  // settings->reset("solo2");
-
-  // // high band
-
-  // settings->reset("threshold3");
-
-  // settings->reset("ratio3");
-
-  // settings->reset("attack3");
-
-  // settings->reset("release3");
-
-  // settings->reset("makeup3");
-
-  // settings->reset("knee3");
-
-  // settings->reset("detection3");
-
-  // settings->reset("bypass3");
-
-  // settings->reset("solo3");
+    settings->reset("boost-amount" + nstr);
+  }
 }
 
 void MultibandCompressorUi::on_new_output0(double value) {
