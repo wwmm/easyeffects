@@ -51,32 +51,25 @@ void MultibandCompressorPreset::save(nlohmann::json& json,
     json[section]["multiband_compressor"]["band" + nstr]["compressor-enable"] =
         settings->get_boolean("compressor-enable" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["solo"] =
-        settings->get_boolean("solo" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["solo"] = settings->get_boolean("solo" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["mute"] =
-        settings->get_boolean("mute" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["mute"] = settings->get_boolean("mute" + nstr);
 
     json[section]["multiband_compressor"]["band" + nstr]["attack-threshold"] =
         settings->get_double("attack-threshold" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["attack-time"] =
-        settings->get_double("attack-time" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["attack-time"] = settings->get_double("attack-time" + nstr);
 
     json[section]["multiband_compressor"]["band" + nstr]["release-threshold"] =
         settings->get_double("release-threshold" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["release-time"] =
-        settings->get_double("release-time" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["release-time"] = settings->get_double("release-time" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["ratio"] =
-        settings->get_double("ratio" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["ratio"] = settings->get_double("ratio" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["knee"] =
-        settings->get_double("knee" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["knee"] = settings->get_double("knee" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["makeup"] =
-        settings->get_double("makeup" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["makeup"] = settings->get_double("makeup" + nstr);
 
     json[section]["multiband_compressor"]["band" + nstr]["compression-mode"] =
         settings->get_string("compression-mode" + nstr).c_str();
@@ -111,8 +104,7 @@ void MultibandCompressorPreset::save(nlohmann::json& json,
     json[section]["multiband_compressor"]["band" + nstr]["boost-threshold"] =
         settings->get_double("boost-threshold" + nstr);
 
-    json[section]["multiband_compressor"]["band" + nstr]["boost-amount"] =
-        settings->get_double("boost-amount" + nstr);
+    json[section]["multiband_compressor"]["band" + nstr]["boost-amount"] = settings->get_double("boost-amount" + nstr);
   }
 }
 
@@ -131,77 +123,66 @@ void MultibandCompressorPreset::load(const nlohmann::json& json,
     auto nstr = std::to_string(n);
 
     if (n > 0) {
-      update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-          "enable-band" + nstr, "enable-band");
+      update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings, "enable-band" + nstr,
+                       "enable-band");
 
-      update_key<double>(json.at(section).at("multiband_compressor"), settings,
-          "split-frequency" + nstr, "split-frequency");
+      update_key<double>(json.at(section).at("multiband_compressor"), settings, "split-frequency" + nstr,
+                         "split-frequency");
     }
 
     update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-        "compressor-enable" + nstr, "compressor-enable");
+                     "compressor-enable" + nstr, "compressor-enable");
+
+    update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings, "solo" + nstr, "solo");
+
+    update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings, "mute" + nstr, "mute");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "attack-threshold" + nstr,
+                       "attack-threshold");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "attack-time" + nstr, "attack-time");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "release-threshold" + nstr,
+                       "release-threshold");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "release-time" + nstr, "release-time");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "ratio" + nstr, "ratio");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "knee" + nstr, "knee");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "makeup" + nstr, "makeup");
+
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "compression-mode", "compression-mode");
+
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-mode", "sidechain-mode");
+
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-source", "sidechain-source");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-lookahead" + nstr,
+                       "sidechain-lookahead");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-reactivity" + nstr,
+                       "sidechain-reactivity");
+
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-preamp" + nstr,
+                       "sidechain-preamp");
 
     update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-        "solo" + nstr, "solo");
+                     "sidechain-custom-lowcut-filter" + nstr, "sidechain-custom-lowcut-filter");
 
     update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-        "mute" + nstr, "mute");
+                     "sidechain-custom-highcut-filter" + nstr, "sidechain-custom-highcut-filter");
 
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "attack-threshold" + nstr, "attack-threshold");
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-lowcut-frequency" + nstr,
+                       "sidechain-lowcut-frequency");
 
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "attack-time" + nstr, "attack-time");
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-highcut-frequency" + nstr,
+                       "sidechain-highcut-frequency");
 
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "release-threshold" + nstr, "release-threshold");
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "boost-threshold" + nstr,
+                       "boost-threshold");
 
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "release-time" + nstr, "release-time");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "ratio" + nstr, "ratio");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "knee" + nstr, "knee");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "makeup" + nstr, "makeup");
-
-    update_string_key(json.at(section).at("multiband_compressor"), settings,
-        "compression-mode", "compression-mode");
-
-    update_string_key(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-mode", "sidechain-mode");
-
-    update_string_key(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-source", "sidechain-source");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-lookahead" + nstr, "sidechain-lookahead");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-reactivity" + nstr, "sidechain-reactivity");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-preamp" + nstr, "sidechain-preamp");
-
-    update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-        "sidechain-custom-lowcut-filter" + nstr, "sidechain-custom-lowcut-filter");
-
-    update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
-        "sidechain-custom-highcut-filter" + nstr, "sidechain-custom-highcut-filter");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-lowcut-frequency" + nstr, "sidechain-lowcut-frequency");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "sidechain-highcut-frequency" + nstr, "sidechain-highcut-frequency");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "boost-threshold" + nstr, "boost-threshold");
-
-    update_key<double>(json.at(section).at("multiband_compressor"), settings,
-        "boost-amount" + nstr, "boost-amount");
+    update_key<double>(json.at(section).at("multiband_compressor"), settings, "boost-amount" + nstr, "boost-amount");
   }
 }

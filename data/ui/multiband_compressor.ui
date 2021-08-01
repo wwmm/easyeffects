@@ -132,10 +132,10 @@
                                             <object class="GtkBox">
                                                 <child>
                                                     <object class="GtkLabel">
-                                                      <property name="label" translatable="yes">Band 1</property>
-                                                      <property name="halign">start</property>
-                                                      <property name="valign">center</property>
-                                                      <property name="hexpand">1</property>
+                                                        <property name="label" translatable="yes">Band 1</property>
+                                                        <property name="halign">start</property>
+                                                        <property name="valign">center</property>
+                                                        <property name="hexpand">1</property>
                                                     </object>
                                                 </child>
                                             </object>

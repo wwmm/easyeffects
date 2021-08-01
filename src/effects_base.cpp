@@ -147,6 +147,12 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   });
 
+  multiband_compressor->latency.connect([=, this](float v) {
+    plugins_latency[multiband_compressor->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
   pitch->latency.connect([=, this](float v) {
     plugins_latency[pitch->name] = v;
 

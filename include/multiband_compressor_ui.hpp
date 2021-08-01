@@ -35,23 +35,21 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const MultibandCompressorUi&&) -> MultibandCompressorUi& = delete;
   ~MultibandCompressorUi() override;
 
+  static constexpr uint n_bands = 8;
+
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*;
 
-  void on_new_output0(double value);
-  void on_new_output1(double value);
-  void on_new_output2(double value);
-  void on_new_output3(double value);
+  void on_new_frequency_range(std::array<double, n_bands>);
 
-  void on_new_compression0(double value);
-  void on_new_compression1(double value);
-  void on_new_compression2(double value);
-  void on_new_compression3(double value);
+  void on_new_envelope(std::array<double, n_bands>);
+
+  void on_new_curve(std::array<double, n_bands>);
+
+  void on_new_reduction(std::array<double, n_bands>);
 
   void reset() override;
 
  private:
-  static constexpr uint n_bands = 8;
-
   Gtk::ComboBoxText *compressor_mode = nullptr, *envelope_boost = nullptr;
 
   Gtk::Stack* stack = nullptr;
@@ -60,14 +58,9 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
-  Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;
+  std::array<Gtk::Label*, n_bands> bands_end, bands_gain_label;
 
-  Gtk::Label *output0_label = nullptr, *output1_label = nullptr, *output2_label = nullptr, *output3_label = nullptr;
-
-  Gtk::LevelBar *compression0 = nullptr, *compression1 = nullptr, *compression2 = nullptr, *compression3 = nullptr;
-
-  Gtk::Label *compression0_label = nullptr, *compression1_label = nullptr, *compression2_label = nullptr,
-             *compression3_label = nullptr;
+  std::array<Gtk::LevelBar*, n_bands> bands_gain;
 
   void prepare_bands();
 };

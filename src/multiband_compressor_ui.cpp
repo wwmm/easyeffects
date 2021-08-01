@@ -250,8 +250,8 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                nullptr, nullptr);
 
   g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
-                               G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum,
-                               nullptr, nullptr);
+                               G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum, nullptr,
+                               nullptr);
 
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
@@ -290,7 +290,6 @@ void MultibandCompressorUi::prepare_bands() {
 
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
-
     if (n > 0U) {
       auto* split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
 
@@ -312,6 +311,12 @@ void MultibandCompressorUi::prepare_bands() {
     }
 
     // loading builder widgets
+
+    bands_end.at(n) = builder->get_widget<Gtk::Label>("band_end");
+
+    bands_gain_label.at(n) = builder->get_widget<Gtk::Label>("band_gain_label");
+
+    bands_gain.at(n) = builder->get_widget<Gtk::LevelBar>("band_gain");
 
     auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
@@ -398,11 +403,12 @@ void MultibandCompressorUi::prepare_bands() {
     settings->bind("boost-threshold" + nstr, boost_threshold->get_adjustment().get(), "value");
 
     g_settings_bind_with_mapping(settings->gobj(), std::string("compression-mode" + nstr).c_str(),
-                                 compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT, compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
+                                 compression_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                                 compression_mode_enum_to_int, int_to_compression_mode_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode" + nstr).c_str(),
-                                 sidechain_mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
-                                 sidechain_mode_enum_to_int, int_to_sidechain_mode_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-mode" + nstr).c_str(), sidechain_mode->gobj(),
+                                 "active", G_SETTINGS_BIND_DEFAULT, sidechain_mode_enum_to_int,
+                                 int_to_sidechain_mode_enum, nullptr, nullptr);
 
     g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source" + nstr).c_str(),
                                  sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
@@ -512,50 +518,16 @@ void MultibandCompressorUi::reset() {
   }
 }
 
-void MultibandCompressorUi::on_new_output0(double value) {
-  output0->set_value(value);
-
-  output0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+void MultibandCompressorUi::on_new_frequency_range(std::array<double, n_bands> values) {
+  for (size_t n = 0; n < values.size(); n++) {
+    bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
+  }
 }
 
-void MultibandCompressorUi::on_new_output1(double value) {
-  output1->set_value(value);
+void MultibandCompressorUi::on_new_reduction(std::array<double, n_bands> values) {
+  for (size_t n = 0; n < values.size(); n++) {
+    bands_gain.at(n)->set_value(values.at(n));
 
-  output1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_output2(double value) {
-  output2->set_value(value);
-
-  output2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_output3(double value) {
-  output3->set_value(value);
-
-  output3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_compression0(double value) {
-  compression0->set_value(1.0 - value);
-
-  compression0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_compression1(double value) {
-  compression1->set_value(1.0 - value);
-
-  compression1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_compression2(double value) {
-  compression2->set_value(1.0 - value);
-
-  compression2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
-}
-
-void MultibandCompressorUi::on_new_compression3(double value) {
-  compression3->set_value(1.0 - value);
-
-  compression3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+    bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
+  }
 }
