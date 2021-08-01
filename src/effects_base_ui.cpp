@@ -521,6 +521,12 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->multiband_compressor->frequency_range.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_frequency_range));
 
+      effects_base->multiband_compressor->envelope.connect(
+          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_envelope));
+
+      effects_base->multiband_compressor->curve.connect(
+          sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_curve));
+
       effects_base->multiband_compressor->reduction.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_reduction));
 

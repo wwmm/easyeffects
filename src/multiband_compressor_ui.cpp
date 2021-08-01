@@ -318,6 +318,14 @@ void MultibandCompressorUi::prepare_bands() {
 
     bands_gain.at(n) = builder->get_widget<Gtk::LevelBar>("band_gain");
 
+    bands_envelope_label.at(n) = builder->get_widget<Gtk::Label>("band_envelope_label");
+
+    bands_envelope.at(n) = builder->get_widget<Gtk::LevelBar>("band_envelope");
+
+    bands_curve_label.at(n) = builder->get_widget<Gtk::Label>("band_curve_label");
+
+    bands_curve.at(n) = builder->get_widget<Gtk::LevelBar>("band_curve");
+
     auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
     auto* mute = builder->get_widget<Gtk::ToggleButton>("mute");
@@ -521,6 +529,22 @@ void MultibandCompressorUi::reset() {
 void MultibandCompressorUi::on_new_frequency_range(std::array<double, n_bands> values) {
   for (size_t n = 0; n < values.size(); n++) {
     bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
+  }
+}
+
+void MultibandCompressorUi::on_new_envelope(std::array<double, n_bands> values) {
+  for (size_t n = 0; n < values.size(); n++) {
+    bands_envelope.at(n)->set_value(values.at(n));
+
+    bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
+  }
+}
+
+void MultibandCompressorUi::on_new_curve(std::array<double, n_bands> values) {
+  for (size_t n = 0; n < values.size(); n++) {
+    bands_curve.at(n)->set_value(values.at(n));
+
+    bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
