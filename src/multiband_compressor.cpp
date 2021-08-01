@@ -45,57 +45,57 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
   for (uint n = 0; n < n_bands; n++) {
-    if (n > 0) {
-      lv2_wrapper->bind_key_bool(settings, "enable-band" + std::to_string(n), "cbe_" + std::to_string(n));
+    auto nstr = std::to_string(n);
 
-      lv2_wrapper->bind_key_double(settings, "split-frequency" + std::to_string(n), "sf_" + std::to_string(n));
+    if (n > 0) {
+      lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
+
+      lv2_wrapper->bind_key_double(settings, "split-frequency" + nstr, "sf_" + nstr);
     }
 
-    lv2_wrapper->bind_key_enum(settings, "sidechain-source" + std::to_string(n), "scs_" + std::to_string(n));
+    lv2_wrapper->bind_key_enum(settings, "sidechain-source" + nstr, "scs_" + nstr);
 
-    lv2_wrapper->bind_key_enum(settings, "sidechain-mode" + std::to_string(n), "scm_" + std::to_string(n));
+    lv2_wrapper->bind_key_enum(settings, "sidechain-mode" + nstr, "scm_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "sidechain-lookahead" + std::to_string(n), "sla_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "sidechain-lookahead" + nstr, "sla_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "sidechain-reactivity" + std::to_string(n), "scr_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "sidechain-reactivity" + nstr, "scr_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp" + std::to_string(n), "scp_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp" + nstr, "scp_" + nstr);
 
-    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-lowcut-filter" + std::to_string(n),
-                               "sclc_" + std::to_string(n));
+    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-lowcut-filter" + nstr, "sclc_" + nstr);
 
-    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-highcut-filter" + std::to_string(n),
-                               "schc_" + std::to_string(n));
+    lv2_wrapper->bind_key_bool(settings, "sidechain-custom-highcut-filter" + nstr, "schc_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "sidechain-lowcut-frequency" + std::to_string(n),
-                                 "sclf_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "sidechain-lowcut-frequency" + nstr, "sclf_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "sidechain-highcut-frequency" + std::to_string(n),
-                                 "schf_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "sidechain-highcut-frequency" + nstr, "schf_" + nstr);
 
-    lv2_wrapper->bind_key_enum(settings, "compression-mode" + std::to_string(n), "cm_" + std::to_string(n));
+    lv2_wrapper->bind_key_enum(settings, "compression-mode" + nstr, "cm_" + nstr);
 
-    lv2_wrapper->bind_key_bool(settings, "solo" + std::to_string(n), "bs_" + std::to_string(n));
+    lv2_wrapper->bind_key_bool(settings, "compressor-enable" + nstr, "ce_" + nstr);
 
-    lv2_wrapper->bind_key_bool(settings, "mute" + std::to_string(n), "bm_" + std::to_string(n));
+    lv2_wrapper->bind_key_bool(settings, "solo" + nstr, "bs_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "attack-threshold" + std::to_string(n), "al_" + std::to_string(n));
+    lv2_wrapper->bind_key_bool(settings, "mute" + nstr, "bm_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "attack-time" + std::to_string(n), "at_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "attack-threshold" + nstr, "al_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "release-threshold" + std::to_string(n), "rrl_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "attack-time" + nstr, "at_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "release-time" + std::to_string(n), "rt_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "release-threshold" + nstr, "rrl_" + nstr);
 
-    lv2_wrapper->bind_key_double(settings, "ratio" + std::to_string(n), "cr_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "release-time" + nstr, "rt_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "knee" + std::to_string(n), "kn_" + std::to_string(n));
+    lv2_wrapper->bind_key_double(settings, "ratio" + nstr, "cr_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "boost-threshold" + std::to_string(n), "bth_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "knee" + nstr, "kn_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "boost-amount" + std::to_string(n), "bsa_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "boost-threshold" + nstr, "bth_" + nstr);
 
-    lv2_wrapper->bind_key_double_db(settings, "makeup" + std::to_string(n), "mk_" + std::to_string(n));
+    lv2_wrapper->bind_key_double_db(settings, "boost-amount" + nstr, "bsa_" + nstr);
+
+    lv2_wrapper->bind_key_double_db(settings, "makeup" + nstr, "mk_" + nstr);
   }
 
   initialize_listener();
@@ -180,23 +180,25 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      std::array<double, n_bands> frequency_range_array{};
+      std::array<double, n_bands> frequency_range_end_array{};
       std::array<double, n_bands> envelope_array{};
       std::array<double, n_bands> curve_array{};
       std::array<double, n_bands> reduction_array{};
 
       for (uint n = 0; n < n_bands; n++) {
-        frequency_range_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + std::to_string(n));
+        auto nstr = std::to_string(n);
 
-        envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + std::to_string(n));
+        frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
 
-        curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + std::to_string(n));
+        envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
 
-        reduction_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + std::to_string(n));
+        curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
+
+        reduction_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
       }
 
       Glib::signal_idle().connect_once([=, this] {
-        frequency_range.emit(frequency_range_array);
+        frequency_range.emit(frequency_range_end_array);
 
         envelope.emit(envelope_array);
 
