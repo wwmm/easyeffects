@@ -153,11 +153,13 @@ void MultibandCompressorPreset::load(const nlohmann::json& json,
 
     update_key<double>(json.at(section).at("multiband_compressor"), settings, "makeup" + nstr, "makeup");
 
-    update_string_key(json.at(section).at("multiband_compressor"), settings, "compression-mode", "compression-mode");
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "compression-mode" + nstr,
+                      "compression-mode");
 
-    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-mode", "sidechain-mode");
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-mode" + nstr, "sidechain-mode");
 
-    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-source", "sidechain-source");
+    update_string_key(json.at(section).at("multiband_compressor"), settings, "sidechain-source" + nstr,
+                      "sidechain-source");
 
     update_key<double>(json.at(section).at("multiband_compressor"), settings, "sidechain-lookahead" + nstr,
                        "sidechain-lookahead");
