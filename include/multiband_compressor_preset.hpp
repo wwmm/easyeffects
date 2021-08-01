@@ -27,6 +27,8 @@ class MultibandCompressorPreset : public PluginPresetBase {
   MultibandCompressorPreset();
 
  private:
+  static constexpr uint n_bands = 8;
+
   void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) override;
 
   void load(const nlohmann::json& json,
