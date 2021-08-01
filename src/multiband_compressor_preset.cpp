@@ -126,8 +126,8 @@ void MultibandCompressorPreset::load(const nlohmann::json& json,
       update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings, "enable-band" + nstr,
                        "enable-band");
 
-      update_key<double>(json.at(section).at("multiband_compressor"), settings, "split-frequency" + nstr,
-                         "split-frequency");
+      update_key<double>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
+                         "split-frequency" + nstr, "split-frequency");
     }
 
     update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings,
