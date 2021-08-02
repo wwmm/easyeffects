@@ -119,7 +119,7 @@ void AutoGain::process(std::span<float>& left_in,
   double global = 0.0;
   double relative = 0.0;
   double range = 0.0;
-  double loudness = 0.0F;
+  double loudness = 0.0;
 
   if (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) {
     failed = true;
