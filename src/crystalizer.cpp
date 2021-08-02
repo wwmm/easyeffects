@@ -25,12 +25,14 @@ Crystalizer::Crystalizer(const std::string& tag,
                          PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crystalizer, schema, schema_path, pipe_manager) {
   for (uint n = 0U; n < nbands; n++) {
+    auto nstr = std::to_string(n);
+
     if (n == 0U) {
-      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + nstr);
     } else if (n == nbands - 1U) {
-      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + nstr);
     } else {
-      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + nstr);
     }
   }
 
@@ -283,19 +285,21 @@ void Crystalizer::process(std::span<float>& left_in,
 }
 
 void Crystalizer::bind_band(const int& n) {
-  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + std::to_string(n)));
-  band_mute.at(n) = settings->get_boolean("mute-band" + std::to_string(n));
-  band_bypass.at(n) = settings->get_boolean("bypass-band" + std::to_string(n));
+  auto nstr = std::to_string(n);
 
-  settings->signal_changed("intensity-band" + std::to_string(n)).connect([=, this](auto key) {
+  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + nstr));
+  band_mute.at(n) = settings->get_boolean("mute-band" + nstr);
+  band_bypass.at(n) = settings->get_boolean("bypass-band" + nstr);
+
+  settings->signal_changed("intensity-band" + nstr).connect([=, this](auto key) {
     band_intensity.at(n) = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("mute-band" + std::to_string(n)).connect([=, this](auto key) {
+  settings->signal_changed("mute-band" + nstr).connect([=, this](auto key) {
     band_mute.at(n) = settings->get_boolean(key);
   });
 
-  settings->signal_changed("bypass-band" + std::to_string(n)).connect([=, this](auto key) {
+  settings->signal_changed("bypass-band" + nstr).connect([=, this](auto key) {
     band_bypass.at(n) = settings->get_boolean(key);
   });
 }
