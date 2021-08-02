@@ -67,11 +67,13 @@ void CrystalizerUi::reset() {
   settings->reset("output-gain");
 
   for (int n = 0; n < 13; n++) {
-    settings->reset("intensity-band" + std::to_string(n));
+    auto nstr = std::to_string(n);
 
-    settings->reset("mute-band" + std::to_string(n));
+    settings->reset("intensity-band" + nstr);
 
-    settings->reset("bypass-band" + std::to_string(n));
+    settings->reset("mute-band" + nstr);
+
+    settings->reset("bypass-band" + nstr);
   }
 }
 
@@ -98,9 +100,11 @@ void CrystalizerUi::build_bands(const int& nbands) {
       }
     }));
 
-    settings->bind(std::string("intensity-band" + std::to_string(n)), band_intensity->get_adjustment().get(), "value");
-    settings->bind(std::string("mute-band" + std::to_string(n)), band_mute, "active");
-    settings->bind(std::string("bypass-band" + std::to_string(n)), band_bypass, "active");
+    auto nstr = std::to_string(n);
+
+    settings->bind(std::string("intensity-band" + nstr), band_intensity->get_adjustment().get(), "value");
+    settings->bind(std::string("mute-band" + nstr), band_mute, "active");
+    settings->bind(std::string("bypass-band" + nstr), band_bypass, "active");
 
     switch (n) {
       case 0:
