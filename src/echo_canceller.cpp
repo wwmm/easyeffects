@@ -91,7 +91,7 @@ void EchoCanceller::setup() {
 
   notify_latency = true;
 
-  latency_n_frames = 0;
+  latency_n_frames = 0U;
 
   deque_out_L.resize(0);
   deque_out_R.resize(0);
@@ -165,7 +165,7 @@ void EchoCanceller::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;
@@ -219,7 +219,7 @@ void EchoCanceller::process(std::span<float>& left_in,
 }
 
 void EchoCanceller::init_speex() {
-  if (n_samples == 0 || rate == 0) {
+  if (n_samples == 0U || rate == 0U) {
     return;
   }
 

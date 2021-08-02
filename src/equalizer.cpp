@@ -47,14 +47,14 @@ Equalizer::Equalizer(const std::string& tag,
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
-  for (uint n = 0; n < max_bands; n++) {
+  for (uint n = 0U; n < max_bands; n++) {
     bind_band(n);
   }
 
   settings->signal_changed("num-bands").connect([=, this](auto key) {
     uint nbands = settings->get_int(key);
 
-    for (uint n = 0; n < max_bands; n++) {
+    for (uint n = 0U; n < max_bands; n++) {
       if (n < nbands) {
         settings_left->set_enum("band" + std::to_string(n) + "-type", 1);
         settings_right->set_enum("band" + std::to_string(n) + "-type", 1);
@@ -74,7 +74,7 @@ Equalizer::Equalizer(const std::string& tag,
       return;
     }
 
-    for (uint n = 0; n < max_bands; n++) {
+    for (uint n = 0U; n < max_bands; n++) {
       settings_right->set_enum("band" + std::to_string(n) + "-type",
                                settings_left->get_enum("band" + std::to_string(n) + "-type"));
 

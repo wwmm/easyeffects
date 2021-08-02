@@ -59,8 +59,8 @@ class FirFilterBase {
 
   bool zita_ready = false;
 
-  uint n_samples = 0;
-  uint rate = 0;
+  uint n_samples = 0U;
+  uint rate = 0U;
 
   float min_frequency = 20.0F;
   float max_frequency = 20000.0F;

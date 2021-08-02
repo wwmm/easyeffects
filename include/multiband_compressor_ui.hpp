@@ -35,7 +35,7 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const MultibandCompressorUi&&) -> MultibandCompressorUi& = delete;
   ~MultibandCompressorUi() override;
 
-  static constexpr uint n_bands = 8;
+  static constexpr uint n_bands = 8U;
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*;
 

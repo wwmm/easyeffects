@@ -51,10 +51,10 @@ class EchoCanceller : public PluginBase {
   bool notify_latency = false;
   bool ready = false;
 
-  uint blocksize = 512;
-  uint blocksize_ms = 20;
-  uint filter_length_ms = 100;
-  uint latency_n_frames = 0;
+  uint blocksize = 512U;
+  uint blocksize_ms = 20U;
+  uint filter_length_ms = 100U;
+  uint latency_n_frames = 0U;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 

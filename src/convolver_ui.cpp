@@ -442,12 +442,12 @@ void ConvolverUi::get_irs_info() {
   left_mag.resize(file.frames());
   right_mag.resize(file.frames());
 
-  for (uint n = 0; n < file.frames(); n++) {
+  for (uint n = 0U; n < file.frames(); n++) {
     time_axis[n] = n * dt;
 
     left_mag[n] = kernel[2U * n];
 
-    right_mag[n] = kernel[2U * n + 1];
+    right_mag[n] = kernel[2U * n + 1U];
   }
 
   get_irs_spectrum(file.samplerate());
@@ -558,7 +558,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   auto real_input = left_mag;
 
-  for (uint n = 0; n < real_input.size(); n++) {
+  for (uint n = 0U; n < real_input.size(); n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
     auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
@@ -573,7 +573,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0; i < left_spectrum.size(); i++) {
+  for (uint i = 0U; i < left_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
     sqr /= static_cast<float>(left_spectrum.size() * left_spectrum.size());
@@ -585,7 +585,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   real_input = right_mag;
 
-  for (uint n = 0; n < real_input.size(); n++) {
+  for (uint n = 0U; n < real_input.size(); n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
     auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
@@ -595,7 +595,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0; i < right_spectrum.size(); i++) {
+  for (uint i = 0U; i < right_spectrum.size(); i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
     sqr /= static_cast<float>(right_spectrum.size() * right_spectrum.size());
@@ -615,7 +615,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   freq_axis.resize(left_spectrum.size());
 
-  for (uint n = 0; n < left_spectrum.size(); n++) {
+  for (uint n = 0U; n < left_spectrum.size(); n++) {
     freq_axis[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(left_spectrum.size());
   }
 

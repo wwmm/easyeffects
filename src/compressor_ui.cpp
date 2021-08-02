@@ -479,7 +479,7 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
   }
 
   connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {
@@ -491,7 +491,7 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
   }));
 
   connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {

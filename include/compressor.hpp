@@ -47,7 +47,7 @@ class Compressor : public PluginBase {
   sigc::signal<void(double)> reduction, sidechain, curve, latency;
 
  private:
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 

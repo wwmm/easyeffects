@@ -117,7 +117,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
           listview_players->set_model(nullptr);
 
-          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             players_model->append(all_players_model->get_item(n));
           }
 
@@ -127,7 +127,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
           listview_players->set_model(nullptr);
 
-          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             auto item = all_players_model->get_item(n);
 
             if (!app_is_blocklisted(item->info.name)) {
@@ -875,12 +875,12 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   blocklist->signal_items_changed().connect([=, this](guint position, guint removed, guint added) {
-    if (removed > 0) {
+    if (removed > 0U) {
       players_model->remove_all();
 
       listview_players->set_model(nullptr);
 
-      for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+      for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
         players_model->append(all_players_model->get_item(n));
       }
 
@@ -1301,7 +1301,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 void EffectsBaseUi::on_app_added(NodeInfo node_info) {
   // do not add the same stream twice
 
-  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     auto item = all_players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
@@ -1325,7 +1325,7 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
-  for (guint n = 0; n < players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < players_model->get_n_items(); n++) {
     auto* item = players_model->get_item(n).get();
 
     if (item->info.id == node_info.id) {
@@ -1338,7 +1338,7 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
-  for (guint n = 0; n < players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < players_model->get_n_items(); n++) {
     auto item = players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
@@ -1348,7 +1348,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
     }
   }
 
-  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     auto item = all_players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
