@@ -93,7 +93,7 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="label" translatable="yes">Hz</property>
+                                <property name="label">Hz</property>
                             </object>
                         </child>
                     </object>
@@ -822,131 +822,109 @@
                     </object>
                 </child>
             </object>
-
         </child>
 
         <child>
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
+                <property name="homogeneous">1</property>
 
                 <child>
-                    <object class="GtkLabel" id="band_gain_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Band Gain</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="band_gain">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="max-value">3981.072998</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">6</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="band_gain_label">
+                    <object class="GtkBox">
                         <property name="halign">center</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="band_gain_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Band Gain</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="band_gain_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
-                        <property name="halign">start</property>
-                        <property name="margin-start">2</property>
-                        <property name="label">db</property>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="band_envelope_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Band Envelope</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="band_envelope_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="band_curve_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Band Curve</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="band_curve_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
         </child>
 
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-
-                <child>
-                    <object class="GtkLabel" id="band_envelope_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Band Envelope</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="band_envelope">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="max-value">15.848930</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">6</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="band_envelope_label">
-                        <property name="halign">center</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">start</property>
-                        <property name="margin-start">2</property>
-                        <property name="label">db</property>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-
-                <child>
-                    <object class="GtkLabel" id="band_curve_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Band Curve</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="band_curve">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="max-value">15.848930</property>
-                        <property name="margin-start">6</property>
-                        <property name="margin-end">6</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="band_curve_label">
-                        <property name="halign">center</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">start</property>
-                        <property name="margin-start">2</property>
-                        <property name="label">db</property>
-                    </object>
-                </child>
-            </object>
-        </child>
     </object>
 
     <object class="GtkSizeGroup">
@@ -955,15 +933,6 @@
             <widget name="band_gain_title" />
             <widget name="band_envelope_title" />
             <widget name="band_curve_title" />
-        </widgets>
-    </object>
-
-    <object class="GtkSizeGroup">
-        <property name="mode">horizontal</property>
-        <widgets>
-            <widget name="band_envelope" />
-            <widget name="band_curve" />
-            <widget name="band_gain" />
         </widgets>
     </object>
 </interface>
