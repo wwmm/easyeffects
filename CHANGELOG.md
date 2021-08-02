@@ -4,6 +4,7 @@
 
 ### Added
 
+- Updated Chinese translation.
 - Added support for the compressor parameter `Boost Amount`
 - The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins
   instead of the one from Calf Studio.
