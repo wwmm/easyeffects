@@ -56,9 +56,9 @@ class Convolver : public PluginBase {
   bool ready = false;
   bool notify_latency = false;
 
-  uint blocksize = 512;
-  uint ir_width = 100;
-  uint latency_n_frames = 0;
+  uint blocksize = 512U;
+  uint ir_width = 100U;
+  uint latency_n_frames = 0U;
 
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;

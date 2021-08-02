@@ -258,7 +258,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // band checkbuttons
 
-  for (uint n = 1; n < n_bands; n++) {
+  for (uint n = 1U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
     auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
@@ -285,7 +285,7 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 }
 
 void MultibandCompressorUi::prepare_bands() {
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
@@ -471,10 +471,10 @@ void MultibandCompressorUi::reset() {
 
   settings->reset("envelope-boost");
 
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
-    if (n > 0) {
+    if (n > 0U) {
       settings->reset("enable-band" + nstr);
 
       settings->reset("split-frequency" + nstr);

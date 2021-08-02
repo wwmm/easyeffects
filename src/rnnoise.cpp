@@ -96,7 +96,7 @@ void RNNoise::setup() {
 
   resampler_ready = false;
 
-  latency_n_frames = 0;
+  latency_n_frames = 0U;
 
   resample = rate != rnnoise_rate;
 
@@ -184,7 +184,7 @@ void RNNoise::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;

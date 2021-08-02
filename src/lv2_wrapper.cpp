@@ -99,7 +99,7 @@ void Lv2Wrapper::create_ports() {
   LilvNode* lv2_ControlPort = lilv_new_uri(world, LV2_CORE__ControlPort);
   LilvNode* lv2_connectionOptional = lilv_new_uri(world, LV2_CORE__connectionOptional);
 
-  for (uint n = 0; n < n_ports; n++) {
+  for (uint n = 0U; n < n_ports; n++) {
     auto* port = &ports[n];
 
     const auto* lilv_port = lilv_plugin_get_port_by_index(plugin, n);

@@ -221,7 +221,7 @@ void RNNoiseUi::setup_listview() {
 
   auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  for (guint n = 0; n < single->get_n_items(); n++) {
+  for (guint n = 0U; n < single->get_n_items(); n++) {
     auto name = single->get_object(n)->get_property<Glib::ustring>("string");
 
     if (name == saved_name) {

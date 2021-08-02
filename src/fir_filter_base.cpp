@@ -115,7 +115,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || kernel.empty()) {
+  if (n_samples == 0U || kernel.empty()) {
     return;
   }
 
@@ -172,12 +172,12 @@ void FirFilterBase::setup_zita() {
 }
 
 void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1) / 2;
+  uint M = (c.size() + 1U) / 2U;
 
-  for (uint n = 0; n < c.size(); n++) {
+  for (uint n = 0U; n < c.size(); n++) {
     c[n] = 0.0F;
 
-    for (uint m = 0; m < M; m++) {
+    for (uint m = 0U; m < M; m++) {
       if (n > m && n - m < M) {
         c[n] += a[n - m] * b[m];
       }

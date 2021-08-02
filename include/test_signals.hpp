@@ -54,9 +54,9 @@ class TestSignals {
 
   pw_filter* filter = nullptr;
 
-  uint n_samples = 0;
+  uint n_samples = 0U;
 
-  uint rate = 0;
+  uint rate = 0U;
 
   bool create_left_channel = true;
 
@@ -87,7 +87,7 @@ class TestSignals {
 
   data pf_data = {};
 
-  uint node_id = 0;
+  uint node_id = 0U;
 
   std::vector<pw_proxy*> list_proxies;
 
