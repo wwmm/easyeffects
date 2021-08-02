@@ -106,9 +106,9 @@ void AutoGain::process(std::span<float>& left_in,
     return;
   }
 
-  for (uint n = 0; n < n_samples; n++) {
-    data[2 * n] = left_in[n];
-    data[2 * n + 1] = right_in[n];
+  for (uint n = 0U; n < n_samples; n++) {
+    data[2U * n] = left_in[n];
+    data[2U * n + 1U] = right_in[n];
   }
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
@@ -119,7 +119,7 @@ void AutoGain::process(std::span<float>& left_in,
   double global = 0.0;
   double relative = 0.0;
   double range = 0.0;
-  double loudness = 0.0F;
+  double loudness = 0.0;
 
   if (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) {
     failed = true;

@@ -190,7 +190,7 @@ void SpectrumUi::init_type() {
 void SpectrumUi::init_frequency_axis() {
   spectrum_freqs.resize(n_bands);
 
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     spectrum_freqs[n] = 0.5F * rate * n / n_bands;
   }
 

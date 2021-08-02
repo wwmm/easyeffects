@@ -24,13 +24,15 @@ Crystalizer::Crystalizer(const std::string& tag,
                          const std::string& schema_path,
                          PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crystalizer, schema, schema_path, pipe_manager) {
-  for (uint n = 0; n < nbands; n++) {
-    if (n == 0) {
-      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + std::to_string(n));
-    } else if (n == nbands - 1) {
-      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + std::to_string(n));
+  for (uint n = 0U; n < nbands; n++) {
+    auto nstr = std::to_string(n);
+
+    if (n == 0U) {
+      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + nstr);
+    } else if (n == nbands - 1U) {
+      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + nstr);
     } else {
-      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + std::to_string(n));
+      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + nstr);
     }
   }
 
@@ -64,7 +66,7 @@ Crystalizer::Crystalizer(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  for (uint n = 0; n < nbands; n++) {
+  for (uint n = 0U; n < nbands; n++) {
     bind_band(n);
   }
 
@@ -116,7 +118,7 @@ void Crystalizer::setup() {
     notify_latency = true;
     do_first_rotation = true;
 
-    latency_n_frames = 1;  // the second derivative forces us to delay at least one sample
+    latency_n_frames = 1U;  // the second derivative forces us to delay at least one sample
 
     deque_out_L.resize(0);
     deque_out_R.resize(0);
@@ -124,7 +126,7 @@ void Crystalizer::setup() {
     data_L.resize(0);
     data_R.resize(0);
 
-    for (uint n = 0; n < nbands; n++) {
+    for (uint n = 0U; n < nbands; n++) {
       band_data_L.at(n).resize(blocksize);
       band_data_R.at(n).resize(blocksize);
 
@@ -139,18 +141,18 @@ void Crystalizer::setup() {
 
     float transition_band = 100.0F;  // Hz
 
-    for (uint n = 0; n < nbands; n++) {
+    for (uint n = 0U; n < nbands; n++) {
       filters.at(n)->set_n_samples(blocksize);
       filters.at(n)->set_rate(rate);
 
-      if (n == 0) {
+      if (n == 0U) {
         filters.at(n)->set_max_frequency(frequencies[0]);
         filters.at(n)->set_transition_band(transition_band);
-      } else if (n == nbands - 1) {
-        filters.at(n)->set_min_frequency(frequencies.at(n - 1));  // frequencies array size = nbands - 1
+      } else if (n == nbands - 1U) {
+        filters.at(n)->set_min_frequency(frequencies.at(n - 1U));  // frequencies array size = nbands - 1
         filters.at(n)->set_transition_band(transition_band);
       } else {
-        filters.at(n)->set_min_frequency(frequencies.at(n - 1));
+        filters.at(n)->set_min_frequency(frequencies.at(n - 1U));
         filters.at(n)->set_max_frequency(frequencies.at(n));
         filters.at(n)->set_transition_band(2.0F * transition_band);
       }
@@ -223,12 +225,12 @@ void Crystalizer::process(std::span<float>& left_in,
       uint offset = 2 * (left_out.size() - deque_out_L.size());
 
       if (offset != latency_n_frames) {
-        latency_n_frames = offset + 1;  // the second derivative forces us to delay at least one sample
+        latency_n_frames = offset + 1U;  // the second derivative forces us to delay at least one sample
 
         notify_latency = true;
       }
 
-      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
         if (n < offset) {
           left_out[n] = 0.0F;
           right_out[n] = 0.0F;
@@ -283,19 +285,21 @@ void Crystalizer::process(std::span<float>& left_in,
 }
 
 void Crystalizer::bind_band(const int& n) {
-  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + std::to_string(n)));
-  band_mute.at(n) = settings->get_boolean("mute-band" + std::to_string(n));
-  band_bypass.at(n) = settings->get_boolean("bypass-band" + std::to_string(n));
+  auto nstr = std::to_string(n);
 
-  settings->signal_changed("intensity-band" + std::to_string(n)).connect([=, this](auto key) {
+  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + nstr));
+  band_mute.at(n) = settings->get_boolean("mute-band" + nstr);
+  band_bypass.at(n) = settings->get_boolean("bypass-band" + nstr);
+
+  settings->signal_changed("intensity-band" + nstr).connect([=, this](auto key) {
     band_intensity.at(n) = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("mute-band" + std::to_string(n)).connect([=, this](auto key) {
+  settings->signal_changed("mute-band" + nstr).connect([=, this](auto key) {
     band_mute.at(n) = settings->get_boolean(key);
   });
 
-  settings->signal_changed("bypass-band" + std::to_string(n)).connect([=, this](auto key) {
+  settings->signal_changed("bypass-band" + nstr).connect([=, this](auto key) {
     band_bypass.at(n) = settings->get_boolean(key);
   });
 }

@@ -126,11 +126,11 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
-  uint n_ports = 0;
-  uint n_audio_in = 0;
-  uint n_audio_out = 0;
+  uint n_ports = 0U;
+  uint n_audio_in = 0U;
+  uint n_audio_out = 0U;
 
-  uint n_samples = 0;
+  uint n_samples = 0U;
 
   std::vector<Port> ports;
 

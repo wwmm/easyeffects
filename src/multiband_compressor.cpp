@@ -44,10 +44,10 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
-    if (n > 0) {
+    if (n > 0U) {
       lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
 
       lv2_wrapper->bind_key_double(settings, "split-frequency" + nstr, "sf_" + nstr);
@@ -185,7 +185,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
       std::array<double, n_bands> curve_array{};
       std::array<double, n_bands> reduction_array{};
 
-      for (uint n = 0; n < n_bands; n++) {
+      for (uint n = 0U; n < n_bands; n++) {
         auto nstr = std::to_string(n);
 
         frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);

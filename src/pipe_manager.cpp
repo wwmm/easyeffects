@@ -42,7 +42,7 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
-  uint id = 0;
+  uint id = 0U;
 };
 
 void on_removed_proxy(void* data) {
@@ -228,7 +228,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       node = nd->nd_info;
 
       if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
-        for (uint i = 0; i < info->n_params; i++) {
+        for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
             continue;
           }
@@ -277,7 +277,7 @@ void on_node_event_param(void* object,
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
         case SPA_FORMAT_AUDIO_format: {
-          uint format = 0;
+          uint format = 0U;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
             for (auto& node : nd->pm->list_nodes) {
@@ -371,7 +371,7 @@ void on_node_event_param(void* object,
             if (node.id == nd->nd_info.id) {
               float max = 0.0F;
 
-              for (uint i = 0; i < n_volumes; i++) {
+              for (uint i = 0U; i < n_volumes; i++) {
                 max = (volumes.at(i) > max) ? volumes.at(i) : max;
               }
 
@@ -581,7 +581,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
       }
 
       if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
-        for (uint i = 0; i < info->n_params; i++) {
+        for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
             continue;
           }

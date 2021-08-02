@@ -54,7 +54,7 @@ class Spectrum : public PluginBase {
 
   std::vector<float> real_input, output;
 
-  uint n_bands = 4096, total_count = 0;
+  uint n_bands = 4096U, total_count = 0U;
 };
 
 #endif

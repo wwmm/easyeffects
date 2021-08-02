@@ -52,7 +52,7 @@ class Pitch : public PluginBase {
   int semitones = 0;
   int octaves = 0;
 
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   double time_ratio = 1.0;
 

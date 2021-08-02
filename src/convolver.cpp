@@ -58,7 +58,7 @@ Convolver::Convolver(const std::string& tag,
   });
 
   settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    if (n_samples == 0 || rate == 0) {
+    if (n_samples == 0U || rate == 0U) {
       return;
     }
 
@@ -146,7 +146,7 @@ void Convolver::setup() {
 
     notify_latency = true;
 
-    latency_n_frames = 0;
+    latency_n_frames = 0U;
 
     read_kernel_file();
 
@@ -230,7 +230,7 @@ void Convolver::process(std::span<float>& left_in,
         notify_latency = true;
       }
 
-      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
         if (n < offset) {
           left_out[n] = 0.0F;
           right_out[n] = 0.0F;
@@ -389,7 +389,7 @@ void Convolver::set_kernel_stereo_width() {
   float w = static_cast<float>(ir_width) * 0.01F;
   float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0; i < original_kernel_L.size(); i++) {
+  for (uint i = 0U; i < original_kernel_L.size(); i++) {
     float L = original_kernel_L[i];
     float R = original_kernel_R[i];
 
@@ -401,7 +401,7 @@ void Convolver::set_kernel_stereo_width() {
 void Convolver::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || !kernel_is_initialized) {
+  if (n_samples == 0U || !kernel_is_initialized) {
     return;
   }
 

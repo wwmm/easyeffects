@@ -89,7 +89,7 @@
             <default>"Middle"</default>
         </key>
         <key name="sidechain-preamp" type="d">
-            <range min="0.0" max="40.0" />
+            <range min="-120.0" max="40.0" />
             <default>0.0</default>
         </key>
         <key name="sidechain-reactivity" type="d">

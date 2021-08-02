@@ -35,7 +35,7 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   auto operator=(const MultibandCompressorUi&&) -> MultibandCompressorUi& = delete;
   ~MultibandCompressorUi() override;
 
-  static constexpr uint n_bands = 8;
+  static constexpr uint n_bands = 8U;
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*;
 
@@ -59,8 +59,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
   std::array<Gtk::Label*, n_bands> bands_end, bands_gain_label, bands_envelope_label, bands_curve_label;
-
-  std::array<Gtk::LevelBar*, n_bands> bands_gain, bands_envelope, bands_curve;
 
   void prepare_bands();
 };

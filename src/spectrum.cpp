@@ -25,7 +25,7 @@ Spectrum::Spectrum(const std::string& tag,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {
   real_input.resize(n_bands);
-  output.resize(n_bands / 2 + 1);
+  output.resize(n_bands / 2U + 1U);
 
   complex_output = fftwf_alloc_complex(n_bands);
 
@@ -77,9 +77,9 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  uint count = 0;
+  uint count = 0U;
 
-  for (uint n = 0; n < left_in.size(); n++) {
+  for (uint n = 0U; n < left_in.size(); n++) {
     uint k = total_count + n;
 
     if (k < real_input.size()) {
@@ -98,11 +98,11 @@ void Spectrum::process(std::span<float>& left_in,
   total_count += count;
 
   if (total_count == real_input.size()) {
-    total_count = 0;
+    total_count = 0U;
 
     fftwf_execute(plan);
 
-    for (uint i = 0; i < output.size(); i++) {
+    for (uint i = 0U; i < output.size(); i++) {
       float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
       sqr /= static_cast<float>(n_samples * n_samples);

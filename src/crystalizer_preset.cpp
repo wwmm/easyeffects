@@ -35,23 +35,16 @@ void CrystalizerPreset::save(nlohmann::json& json,
   json[section]["crystalizer"]["output-gain"] = settings->get_double("output-gain");
 
   for (int n = 0; n < 13; n++) {
-    // root.put(section + ".crystalizer.band" + std::to_string(n) + ".intensity",
-    //          settings->get_double("intensity-band" + std::to_string(n)));
+    auto nstr = std::to_string(n);
 
-    // root.put(section + ".crystalizer.band" + std::to_string(n) + ".mute",
-    //          settings->get_boolean("mute-band" + std::to_string(n)));
+    json[section]["crystalizer"]["band" + nstr]["intensity"] =
+        settings->get_double("intensity-band" + nstr);
 
-    // root.put(section + ".crystalizer.band" + std::to_string(n) + ".bypass",
-    //          settings->get_boolean("bypass-band" + std::to_string(n)));
+    json[section]["crystalizer"]["band" + nstr]["mute"] =
+        settings->get_boolean("mute-band" + nstr);
 
-    json[section]["crystalizer"]["band" + std::to_string(n)]["intensity"] =
-        settings->get_double("intensity-band" + std::to_string(n));
-
-    json[section]["crystalizer"]["band" + std::to_string(n)]["mute"] =
-        settings->get_boolean("mute-band" + std::to_string(n));
-
-    json[section]["crystalizer"]["band" + std::to_string(n)]["bypass"] =
-        settings->get_boolean("bypass-band" + std::to_string(n));
+    json[section]["crystalizer"]["band" + nstr]["bypass"] =
+        settings->get_boolean("bypass-band" + nstr);
   }
 }
 
@@ -63,13 +56,15 @@ void CrystalizerPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("crystalizer"), settings, "output-gain", "output-gain");
 
   for (int n = 0; n < 13; n++) {
-    update_key<double>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
-                       "intensity-band" + std::to_string(n), "intensity");
+    auto nstr = std::to_string(n);
 
-    update_key<bool>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
-                     "mute-band" + std::to_string(n), "mute");
+    update_key<double>(json.at(section).at("crystalizer")["band" + nstr], settings,
+                       "intensity-band" + nstr, "intensity");
 
-    update_key<bool>(json.at(section).at("crystalizer")["band" + std::to_string(n)], settings,
-                     "bypass-band" + std::to_string(n), "bypass");
+    update_key<bool>(json.at(section).at("crystalizer")["band" + nstr], settings,
+                     "mute-band" + nstr, "mute");
+
+    update_key<bool>(json.at(section).at("crystalizer")["band" + nstr], settings,
+                     "bypass-band" + nstr, "bypass");
   }
 }
