@@ -165,8 +165,28 @@ PluginBase::PluginBase(std::string tag,
         filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_right, nullptr, 0));
   }
 
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
+}
+
+PluginBase::~PluginBase() {
+  if (listener.link.next != nullptr || listener.link.prev != nullptr) {
+    spa_hook_remove(&listener);
+  }
+}
+
+void PluginBase::connect_to_pw() {
+  pw_thread_loop_lock(pm->thread_loop);
+
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
     util::error(log_tag + name + " can not connect the filter to pipewire!");
+  } else {
+    util::debug(log_tag + name + " connected to pipewire graph");
+
+    connected_to_pw = true;
   }
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
@@ -180,12 +200,8 @@ PluginBase::PluginBase(std::string tag,
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
   } while (node_id == SPA_ID_INVALID);
-}
 
-PluginBase::~PluginBase() {
-  if (listener.link.next != nullptr || listener.link.prev != nullptr) {
-    spa_hook_remove(&listener);
-  }
+  initialize_listener();
 }
 
 void PluginBase::initialize_listener() {
@@ -198,6 +214,20 @@ auto PluginBase::get_node_id() const -> uint {
 
 void PluginBase::set_active(const bool& state) const {
   pw_filter_set_active(filter, state);
+}
+
+void PluginBase::disconnect_from_pw() {
+  pw_thread_loop_lock(pm->thread_loop);
+
+  set_active(false);
+
+  pw_filter_disconnect(filter);
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void PluginBase::setup() {}
