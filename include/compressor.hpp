@@ -44,7 +44,7 @@ class Compressor : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  sigc::signal<void(double)> reduction, sidechain, curve, latency;
+  sigc::signal<void(double)> reduction, sidechain, curve, envelope, latency;
 
  private:
   uint latency_n_frames = 0U;

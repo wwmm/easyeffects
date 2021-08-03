@@ -237,15 +237,12 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   hpf_mode = builder->get_widget<Gtk::ComboBoxText>("hpf_mode");
   lpf_mode = builder->get_widget<Gtk::ComboBoxText>("lpf_mode");
 
-  reduction = builder->get_widget<Gtk::LevelBar>("reduction");
-  sidechain = builder->get_widget<Gtk::LevelBar>("sidechain");
-  curve = builder->get_widget<Gtk::LevelBar>("curve");
-
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
 
-  reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
+  reduction_label = builder->get_widget<Gtk::Label>("gain_label");
   sidechain_label = builder->get_widget<Gtk::Label>("sidechain_label");
   curve_label = builder->get_widget<Gtk::Label>("curve_label");
+  envelope_label = builder->get_widget<Gtk::Label>("envelope_label");
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
 
@@ -404,20 +401,18 @@ void CompressorUi::reset() {
 }
 
 void CompressorUi::on_new_reduction(double value) {
-  reduction->set_value(value);
-
   reduction_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::on_new_sidechain(double value) {
-  sidechain->set_value(value);
+void CompressorUi::on_new_envelope(double value) {
+  envelope_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
 
+void CompressorUi::on_new_sidechain(double value) {
   sidechain_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
 void CompressorUi::on_new_curve(double value) {
-  curve->set_value(value);
-
   curve_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
