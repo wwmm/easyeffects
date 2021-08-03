@@ -791,6 +791,138 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
+                <property name="homogeneous">1</property>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="gain_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Band Gain</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="gain_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="envelope_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Envelope</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="envelope_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="sidechain_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Sidechain</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="sidechain_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="curve_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Curve</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="curve_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">5</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="margin-start">2</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
                 <property name="spacing">6</property>
                 <child>
                     <object class="GtkLabel" id="input_level_title">
@@ -947,98 +1079,6 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkLabel" id="curve_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Curve</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="curve">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="curve_label">
-                        <property name="halign">end</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkLabel" id="sidechain_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Sidechain</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="sidechain">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="sidechain_label">
-                        <property name="halign">end</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkLabel" id="reduction_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Reduction</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="reduction">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                        <property name="min-value">0</property>
-                        <property name="max-value">251</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="reduction_label">
-                        <property name="halign">end</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
                 <property name="layout-manager">
                     <object class="GtkBinLayout"></object>
                 </property>
@@ -1086,7 +1126,8 @@
             <widget name="output_level_title" />
             <widget name="curve_title" />
             <widget name="sidechain_title" />
-            <widget name="reduction_title" />
+            <widget name="gain_title" />
+            <widget name="envelope_title" />
         </widgets>
     </object>
 
