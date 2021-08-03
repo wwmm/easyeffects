@@ -846,7 +846,7 @@
                         <child>
                             <object class="GtkLabel" id="band_gain_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -854,7 +854,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
@@ -877,7 +876,7 @@
                         <child>
                             <object class="GtkLabel" id="band_envelope_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -885,7 +884,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
@@ -908,7 +906,7 @@
                         <child>
                             <object class="GtkLabel" id="band_curve_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -916,7 +914,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>

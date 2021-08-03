@@ -37,7 +37,7 @@
                         <property name="title" translatable="yes">Compressor</property>
                         <property name="child">
                             <object class="GtkBox">
-                                <property name="spacing">12</property>
+                                <property name="spacing">24</property>
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkGrid">
@@ -406,12 +406,6 @@
                                 <property name="halign">center</property>
                                 <property name="spacing">24</property>
                                 <property name="orientation">vertical</property>
-                                <child>
-                                    <object class="GtkToggleButton" id="listen">
-                                        <property name="halign">center</property>
-                                        <property name="label" translatable="yes">Listen</property>
-                                    </object>
-                                </child>
 
                                 <child>
                                     <object class="GtkBox">
@@ -422,7 +416,7 @@
                                             <object class="GtkGrid">
                                                 <property name="valign">center</property>
                                                 <property name="row-spacing">6</property>
-                                                <property name="column-spacing">6</property>
+                                                <property name="column-spacing">18</property>
                                                 <property name="column-homogeneous">1</property>
                                                 <child>
                                                     <object class="GtkLabel">
@@ -450,11 +444,22 @@
                                                 </child>
 
                                                 <child>
+                                                    <object class="GtkToggleButton" id="listen">
+                                                        <property name="halign">center</property>
+                                                        <property name="label" translatable="yes">Listen</property>
+                                                        <layout>
+                                                            <property name="column">1</property>
+                                                            <property name="row">1</property>
+                                                        </layout>
+                                                    </object>
+                                                </child>
+
+                                                <child>
                                                     <object class="GtkLabel">
                                                         <property name="valign">end</property>
                                                         <property name="label" translatable="yes">Source</property>
                                                         <layout>
-                                                            <property name="column">1</property>
+                                                            <property name="column">2</property>
                                                             <property name="row">0</property>
                                                         </layout>
                                                     </object>
@@ -468,7 +473,7 @@
                                                             <item translatable="yes">Right</item>
                                                         </items>
                                                         <layout>
-                                                            <property name="column">1</property>
+                                                            <property name="column">2</property>
                                                             <property name="row">1</property>
                                                         </layout>
                                                     </object>
@@ -792,6 +797,8 @@
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
                 <property name="homogeneous">1</property>
+                <property name="margin-top">4</property>
+                <property name="margin-bottom">4</property>
 
                 <child>
                     <object class="GtkBox">
@@ -802,14 +809,14 @@
                             <object class="GtkLabel" id="gain_title">
                                 <property name="halign">end</property>
                                 <property name="xalign">1</property>
-                                <property name="label" translatable="yes">Band Gain</property>
+                                <property name="label" translatable="yes">Gain</property>
                             </object>
                         </child>
 
                         <child>
                             <object class="GtkLabel" id="gain_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -817,7 +824,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
@@ -840,7 +846,7 @@
                         <child>
                             <object class="GtkLabel" id="envelope_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -848,7 +854,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
@@ -871,7 +876,7 @@
                         <child>
                             <object class="GtkLabel" id="sidechain_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -879,7 +884,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
@@ -902,7 +906,7 @@
                         <child>
                             <object class="GtkLabel" id="curve_label">
                                 <property name="halign">center</property>
-                                <property name="width-chars">5</property>
+                                <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
                         </child>
@@ -910,7 +914,6 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">start</property>
-                                <property name="margin-start">2</property>
                                 <property name="label">db</property>
                             </object>
                         </child>
