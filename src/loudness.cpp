@@ -44,24 +44,14 @@ Loudness::Loudness(const std::string& tag,
   lv2_wrapper->bind_key_enum(settings, "fft", "fft");
 
   lv2_wrapper->bind_key_double(settings, "volume", "volume");
-
-  initialize_listener();
 }
 
 Loudness::~Loudness() {
   util::debug(log_tag + name + " destroyed");
 
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 }
 
 void Loudness::setup() {

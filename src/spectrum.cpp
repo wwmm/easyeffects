@@ -32,8 +32,6 @@ Spectrum::Spectrum(const std::string& tag,
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   fftw_ready = true;
-
-  initialize_listener();
 }
 
 Spectrum::~Spectrum() {
@@ -41,9 +39,9 @@ Spectrum::~Spectrum() {
 
   pw_thread_loop_lock(pm->thread_loop);
 
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 
   pw_core_sync(pm->core, PW_ID_CORE, 0);
 

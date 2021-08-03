@@ -76,11 +76,17 @@ class PluginBase {
 
   bool bypass = false;
 
+  bool connected_to_pw = false;
+
   bool post_messages = false;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
+
+  void connect_to_pw();
+
+  void disconnect_from_pw();
 
   virtual void setup();
 

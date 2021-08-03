@@ -67,9 +67,16 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
 
   spectrum = std::make_unique<Spectrum>(log_tag, "com.github.wwmm.easyeffects.spectrum",
                                         "/com/github/wwmm/easyeffects/spectrum/", pm);
-
   stereo_tools =
       std::make_shared<StereoTools>(log_tag, "com.github.wwmm.easyeffects.stereotools", path + "stereotools/", pm);
+
+  if (!output_level->connected_to_pw) {
+    output_level->connect_to_pw();
+  }
+
+  if (!spectrum->connected_to_pw) {
+    spectrum->connect_to_pw();
+  }
 
   plugins.insert(std::make_pair(autogain->name, autogain));
   plugins.insert(std::make_pair(bass_enhancer->name, bass_enhancer));
