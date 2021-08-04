@@ -72,8 +72,6 @@ Crystalizer::Crystalizer(const std::string& tag,
 }
 
 Crystalizer::~Crystalizer() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -83,6 +81,8 @@ Crystalizer::~Crystalizer() {
   filters_are_ready = false;
 
   data_mutex.unlock();
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Crystalizer::setup() {

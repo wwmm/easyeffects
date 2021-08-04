@@ -36,8 +36,6 @@ AutoGain::AutoGain(const std::string& tag,
 }
 
 AutoGain::~AutoGain() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -47,6 +45,8 @@ AutoGain::~AutoGain() {
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void AutoGain::init_ebur128() {

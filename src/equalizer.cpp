@@ -107,11 +107,11 @@ Equalizer::Equalizer(const std::string& tag,
 }
 
 Equalizer::~Equalizer() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Equalizer::setup() {

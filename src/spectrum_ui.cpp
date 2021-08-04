@@ -110,8 +110,8 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
 
   // reducing the amount of data so we can plot them
 
-  for (size_t j = 0; j < spectrum_freqs.size(); j++) {
-    for (size_t n = 0; n < spectrum_x_axis.size(); n++) {
+  for (size_t j = 0, y = spectrum_freqs.size(); j < y; j++) {
+    for (size_t n = 0, m = spectrum_x_axis.size(); n < m; n++) {
       if (n > 0) {
         if (spectrum_freqs[j] <= spectrum_x_axis[n] && spectrum_freqs[j] > spectrum_x_axis[n - 1]) {
           spectrum_mag[n] += magnitudes[j];
@@ -128,7 +128,7 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
     }
   }
 
-  for (size_t n = 0; n < spectrum_bin_count.size(); n++) {
+  for (size_t n = 0, m = spectrum_bin_count.size(); n < m; n++) {
     if (spectrum_bin_count[n] == 0 && n > 0) {
       spectrum_mag[n] = spectrum_mag[n - 1];
 

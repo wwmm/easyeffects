@@ -521,25 +521,25 @@ void MultibandCompressorUi::reset() {
 }
 
 void MultibandCompressorUi::on_new_frequency_range(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_envelope(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_curve(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_reduction(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }

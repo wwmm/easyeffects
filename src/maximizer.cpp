@@ -37,11 +37,11 @@ Maximizer::Maximizer(const std::string& tag,
 }
 
 Maximizer::~Maximizer() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Maximizer::setup() {

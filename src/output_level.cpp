@@ -26,11 +26,11 @@ OutputLevel::OutputLevel(const std::string& tag,
     : PluginBase(tag, "output_level", schema, schema_path, pipe_manager) {}
 
 OutputLevel::~OutputLevel() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void OutputLevel::setup() {

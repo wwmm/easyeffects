@@ -90,9 +90,9 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
-  util::debug(log_tag + "destroyed");
-
   disconnect_filters();
+
+  util::debug(log_tag + "destroyed");
 }
 
 void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {

@@ -130,7 +130,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       auto input_device_name = std::string(sie_settings->get_string("input-device"));
 
       if (holder_selected->info.name != input_device_name) {
-        for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+        for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
           auto holder = input_devices_model->get_item(n);
 
           if (holder->info.name == input_device_name) {
@@ -148,7 +148,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       auto output_device_name = std::string(soe_settings->get_string("output-device"));
 
       if (holder_selected->info.name != output_device_name) {
-        for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
+        for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
           auto holder = output_devices_model->get_item(n);
 
           if (holder->info.name == output_device_name) {
@@ -169,7 +169,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder != nullptr) {
         if (holder->info.name != pm->default_input_device.name) {
-          for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+          for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
             auto holder = input_devices_model->get_item(n);
 
             if (holder->info.name == pm->default_input_device.name) {
@@ -191,7 +191,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder_selected != nullptr) {
         if (holder_selected->info.name != pm->default_output_device.name) {
-          for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
+          for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
             auto holder = output_devices_model->get_item(n);
 
             if (holder->info.name == pm->default_output_device.name) {
@@ -319,7 +319,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
   connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
+    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
       auto item = output_devices_model->get_item(n);
 
       if (item->info.id == info.id) {
@@ -331,7 +331,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
+    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
       auto item = output_devices_model->get_item(n);
 
       if (item->info.id == info.id) {
@@ -343,7 +343,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {
@@ -355,7 +355,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {

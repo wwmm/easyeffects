@@ -68,8 +68,6 @@ RNNoise::RNNoise(const std::string& tag,
 }
 
 RNNoise::~RNNoise() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -79,6 +77,8 @@ RNNoise::~RNNoise() {
   resampler_ready = false;
 
   free_rnnoise();
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void RNNoise::setup() {
@@ -174,7 +174,7 @@ void RNNoise::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
+    for (uint n = 0U, m = left_out.size(); !deque_out_L.empty() && n < m; n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;
