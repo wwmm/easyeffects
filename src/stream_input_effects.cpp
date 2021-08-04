@@ -167,21 +167,28 @@ void StreamInputEffects::connect_filters() {
       list_proxies.emplace_back(link);
     }
   } else {
+    auto list_size = list.size();
     auto links = pm->link_nodes(pm->input_device.id, plugins[list[0]]->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
     }
 
-    for (size_t n = 1; n < list.size(); n++) {
-      auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+    for (size_t n = 0; n < list_size; n++) {
+      if (!plugins[list[n]]->connected_to_pw) {
+        plugins[list[n]]->connect_to_pw();
+      }
 
-      for (const auto& link : links) {
-        list_proxies.emplace_back(link);
+      if (n > 0) {
+        auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+
+        for (const auto& link : links) {
+          list_proxies.emplace_back(link);
+        }
       }
     }
 
-    links = pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+    links = pm->link_nodes(plugins[list[list_size - 1]]->get_node_id(), spectrum->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
