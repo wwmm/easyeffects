@@ -324,10 +324,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->autogain->results.connect(sigc::mem_fun(*autogain_ui, &AutoGainUi::on_new_results));
 
       effects_base->autogain->bypass = false;
-
-      if (!effects_base->autogain->connected_to_pw) {
-        effects_base->autogain->connect_to_pw();
-      }
     } else if (name == plugin_name::bass_enhancer) {
       auto* bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
 
@@ -342,10 +338,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*bass_enhancer_ui, &BassEnhancerUi::on_new_harmonics_level));
 
       effects_base->bass_enhancer->bypass = false;
-
-      if (!effects_base->bass_enhancer->connected_to_pw) {
-        effects_base->bass_enhancer->connect_to_pw();
-      }
     } else if (name == plugin_name::bass_loudness) {
       auto* bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
 
@@ -358,10 +350,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_output_level));
 
       effects_base->bass_loudness->bypass = false;
-
-      if (!effects_base->bass_loudness->connected_to_pw) {
-         effects_base->bass_loudness->connect_to_pw();
-      }
     } else if (name == plugin_name::compressor) {
       auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 
@@ -378,10 +366,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
 
       effects_base->compressor->bypass = false;
-
-      if (!effects_base->compressor->connected_to_pw) {
-        effects_base->compressor->connect_to_pw();
-      }
     } else if (name == plugin_name::convolver) {
       auto* convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
 
@@ -394,10 +378,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->convolver->output_level.connect(sigc::mem_fun(*convolver_ui, &ConvolverUi::on_new_output_level));
 
       effects_base->convolver->bypass = false;
-
-      if (!effects_base->convolver->connected_to_pw) {
-        effects_base->convolver->connect_to_pw();
-      }
     } else if (name == plugin_name::crossfeed) {
       auto* crossfeed_ui = CrossfeedUi::add_to_stack(stack_plugins, path);
 
@@ -408,10 +388,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->crossfeed->output_level.connect(sigc::mem_fun(*crossfeed_ui, &CrossfeedUi::on_new_output_level));
 
       effects_base->crossfeed->bypass = false;
-
-      if (!effects_base->crossfeed->connected_to_pw) {
-        effects_base->crossfeed->connect_to_pw();
-      }
     } else if (name == plugin_name::crystalizer) {
       auto* crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
 
@@ -424,10 +400,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*crystalizer_ui, &CrystalizerUi::on_new_output_level));
 
       effects_base->crystalizer->bypass = false;
-
-      if (!effects_base->crystalizer->connected_to_pw) {
-        effects_base->crystalizer->connect_to_pw();
-      }
     } else if (name == plugin_name::deesser) {
       auto* deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
@@ -440,10 +412,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->deesser->detected.connect(sigc::mem_fun(*deesser_ui, &DeesserUi::on_new_detected));
 
       effects_base->deesser->bypass = false;
-
-      if (!effects_base->deesser->connected_to_pw) {
-        effects_base->deesser->connect_to_pw();
-      }
     } else if (name == plugin_name::delay) {
       auto* delay_ui = DelayUi::add_to_stack(stack_plugins, path);
 
@@ -454,10 +422,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->delay->output_level.connect(sigc::mem_fun(*delay_ui, &DelayUi::on_new_output_level));
 
       effects_base->delay->bypass = false;
-
-      if (!effects_base->delay->connected_to_pw) {
-        effects_base->delay->connect_to_pw();
-      }
     } else if (name == plugin_name::echo_canceller) {
       auto* echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
 
@@ -470,10 +434,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*echo_canceller_ui, &EchoCancellerUi::on_new_output_level));
 
       effects_base->echo_canceller->bypass = false;
-
-      if (!effects_base->echo_canceller->connected_to_pw) {
-        effects_base->echo_canceller->connect_to_pw();
-      }
     } else if (name == plugin_name::equalizer) {
       auto* equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
 
@@ -486,10 +446,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->equalizer->output_level.connect(sigc::mem_fun(*equalizer_ui, &EqualizerUi::on_new_output_level));
 
       effects_base->equalizer->bypass = false;
-
-      if (!effects_base->equalizer->connected_to_pw) {
-        effects_base->equalizer->connect_to_pw();
-      }
     } else if (name == plugin_name::exciter) {
       auto* exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
 
@@ -501,10 +457,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->exciter->harmonics.connect(sigc::mem_fun(*exciter_ui, &ExciterUi::on_new_harmonics_level));
 
       effects_base->exciter->bypass = false;
-
-      if (!effects_base->exciter->connected_to_pw) {
-        effects_base->exciter->connect_to_pw();
-      }
     } else if (name == plugin_name::filter) {
       auto* filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 
@@ -515,10 +467,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->filter->output_level.connect(sigc::mem_fun(*filter_ui, &FilterUi::on_new_output_level));
 
       effects_base->filter->bypass = false;
-
-      if (!effects_base->filter->connected_to_pw) {
-        effects_base->filter->connect_to_pw();
-      }
     } else if (name == plugin_name::gate) {
       auto* gate_ui = GateUi::add_to_stack(stack_plugins, path);
 
@@ -530,10 +478,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->gate->gating.connect(sigc::mem_fun(*gate_ui, &GateUi::on_new_gating));
 
       effects_base->gate->bypass = false;
-
-      if (!effects_base->gate->connected_to_pw) {
-        effects_base->gate->connect_to_pw();
-      }
     } else if (name == plugin_name::limiter) {
       auto* limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
 
@@ -545,10 +489,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
       effects_base->limiter->bypass = false;
-
-      if (!effects_base->limiter->connected_to_pw) {
-        effects_base->limiter->connect_to_pw();
-      }
     } else if (name == plugin_name::loudness) {
       auto* loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
 
@@ -559,10 +499,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->loudness->output_level.connect(sigc::mem_fun(*loudness_ui, &LoudnessUi::on_new_output_level));
 
       effects_base->loudness->bypass = false;
-
-      if (!effects_base->loudness->connected_to_pw) {
-        effects_base->loudness->connect_to_pw();
-      }
     } else if (name == plugin_name::maximizer) {
       auto* maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
 
@@ -574,10 +510,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->maximizer->reduction.connect(sigc::mem_fun(*maximizer_ui, &MaximizerUi::on_new_reduction));
 
       effects_base->maximizer->bypass = false;
-
-      if (!effects_base->maximizer->connected_to_pw) {
-        effects_base->maximizer->connect_to_pw();
-      }
     } else if (name == plugin_name::multiband_compressor) {
       auto* multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 
@@ -602,10 +534,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_reduction));
 
       effects_base->multiband_compressor->bypass = false;
-
-      if (!effects_base->multiband_compressor->connected_to_pw) {
-        effects_base->multiband_compressor->connect_to_pw();
-      }
     } else if (name == plugin_name::multiband_gate) {
       auto* multiband_gate_ui = MultibandGateUi::add_to_stack(stack_plugins, path);
 
@@ -636,10 +564,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*multiband_gate_ui, &MultibandGateUi::on_new_gating3));
 
       effects_base->multiband_gate->bypass = false;
-
-      if (!effects_base->multiband_gate->connected_to_pw) {
-        effects_base->multiband_gate->connect_to_pw();
-      }
     } else if (name == plugin_name::pitch) {
       auto* pitch_ui = PitchUi::add_to_stack(stack_plugins, path);
 
@@ -650,10 +574,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->pitch->output_level.connect(sigc::mem_fun(*pitch_ui, &PitchUi::on_new_output_level));
 
       effects_base->pitch->bypass = false;
-
-      if (!effects_base->pitch->connected_to_pw) {
-        effects_base->pitch->connect_to_pw();
-      }
     } else if (name == plugin_name::reverb) {
       auto* reverb_ui = ReverbUi::add_to_stack(stack_plugins, path);
 
@@ -664,10 +584,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->reverb->output_level.connect(sigc::mem_fun(*reverb_ui, &ReverbUi::on_new_output_level));
 
       effects_base->reverb->bypass = false;
-
-      if (!effects_base->reverb->connected_to_pw) {
-        effects_base->reverb->connect_to_pw();
-      }
     } else if (name == plugin_name::rnnoise) {
       auto* rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
 
@@ -680,10 +596,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->rnnoise->output_level.connect(sigc::mem_fun(*rnnoise_ui, &RNNoiseUi::on_new_output_level));
 
       effects_base->rnnoise->bypass = false;
-
-      if (!effects_base->rnnoise->connected_to_pw) {
-        effects_base->rnnoise->connect_to_pw();
-      }
     } else if (name == plugin_name::stereo_tools) {
       auto* stereo_tools_ui = StereoToolsUi::add_to_stack(stack_plugins, path);
 
@@ -698,10 +610,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_phase_correlation));
 
       effects_base->stereo_tools->bypass = false;
-
-      if (!effects_base->stereo_tools->connected_to_pw) {
-        effects_base->stereo_tools->connect_to_pw();
-      }
     }
   }
 }
