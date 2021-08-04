@@ -57,11 +57,11 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
 }
 
 Gate::~Gate() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Gate::setup() {

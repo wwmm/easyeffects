@@ -53,11 +53,11 @@ Crossfeed::Crossfeed(const std::string& tag,
 }
 
 Crossfeed::~Crossfeed() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Crossfeed::setup() {

@@ -79,7 +79,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   float sum = 0.0F;
 
-  for (size_t n = 0; n < output.size(); n++) {
+  for (size_t n = 0, m = output.size(); n < m; n++) {
     /*
       windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
     */
@@ -172,9 +172,10 @@ void FirFilterBase::setup_zita() {
 }
 
 void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1U) / 2U;
+  auto cs = c.size();
+  uint M = (cs + 1U) / 2U;
 
-  for (uint n = 0U; n < c.size(); n++) {
+  for (uint n = 0U; n < cs; n++) {
     c[n] = 0.0F;
 
     for (uint m = 0U; m < M; m++) {

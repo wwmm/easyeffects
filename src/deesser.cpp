@@ -66,11 +66,11 @@ Deesser::Deesser(const std::string& tag,
 }
 
 Deesser::~Deesser() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Deesser::setup() {

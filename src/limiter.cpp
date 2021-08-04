@@ -56,11 +56,11 @@ Limiter::Limiter(const std::string& tag,
 }
 
 Limiter::~Limiter() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Limiter::setup() {

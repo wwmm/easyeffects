@@ -100,11 +100,11 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 }
 
 MultibandCompressor::~MultibandCompressor() {
-  util::debug(log_tag + name + " destroyed");
-
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void MultibandCompressor::setup() {

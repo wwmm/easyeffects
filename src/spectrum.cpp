@@ -35,8 +35,6 @@ Spectrum::Spectrum(const std::string& tag,
 }
 
 Spectrum::~Spectrum() {
-  util::debug(log_tag + name + " destroyed");
-
   pw_thread_loop_lock(pm->thread_loop);
 
   if (connected_to_pw) {
@@ -58,6 +56,8 @@ Spectrum::~Spectrum() {
   if (complex_output != nullptr) {
     fftwf_free(complex_output);
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Spectrum::setup() {}
@@ -77,7 +77,7 @@ void Spectrum::process(std::span<float>& left_in,
 
   uint count = 0U;
 
-  for (uint n = 0U; n < left_in.size(); n++) {
+  for (uint n = 0U, m = left_in.size(); n < m; n++) {
     uint k = total_count + n;
 
     if (k < real_input.size()) {
@@ -100,7 +100,7 @@ void Spectrum::process(std::span<float>& left_in,
 
     fftwf_execute(plan);
 
-    for (uint i = 0U; i < output.size(); i++) {
+    for (uint i = 0U, m = output.size(); i < m; i++) {
       float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
       sqr /= static_cast<float>(n_samples * n_samples);
