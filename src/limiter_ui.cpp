@@ -28,34 +28,34 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  auto_level = builder->get_widget<Gtk::ToggleButton>("auto_level");
-  asc = builder->get_widget<Gtk::ToggleButton>("asc");
+  //auto_level = builder->get_widget<Gtk::ToggleButton>("auto_level");
+  //asc = builder->get_widget<Gtk::ToggleButton>("asc");
   input_gain = builder->get_widget<Gtk::Scale>("input_gain");
   output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-  asc_level = builder->get_widget<Gtk::SpinButton>("asc_level");
-  limit = builder->get_widget<Gtk::SpinButton>("limit");
+  //asc_level = builder->get_widget<Gtk::SpinButton>("asc_level");
+  //limit = builder->get_widget<Gtk::SpinButton>("limit");
   lookahead = builder->get_widget<Gtk::SpinButton>("lookahead");
   release = builder->get_widget<Gtk::SpinButton>("release");
-  oversampling = builder->get_widget<Gtk::SpinButton>("oversampling");
-  attenuation = builder->get_widget<Gtk::LevelBar>("attenuation");
-  attenuation_label = builder->get_widget<Gtk::Label>("attenuation_label");
+  //oversampling = builder->get_widget<Gtk::SpinButton>("oversampling");
+  //attenuation = builder->get_widget<Gtk::LevelBar>("attenuation");
+  //attenuation_label = builder->get_widget<Gtk::Label>("attenuation_label");
 
   // gsettings bindings
 
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("limit", limit->get_adjustment().get(), "value");
+  //settings->bind("limit", limit->get_adjustment().get(), "value");
   settings->bind("lookahead", lookahead->get_adjustment().get(), "value");
   settings->bind("release", release->get_adjustment().get(), "value");
-  settings->bind("oversampling", oversampling->get_adjustment().get(), "value");
-  settings->bind("asc-level", asc_level->get_adjustment().get(), "value");
+  //settings->bind("oversampling", oversampling->get_adjustment().get(), "value");
+  //settings->bind("asc-level", asc_level->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-  settings->bind("auto-level", auto_level, "active");
-  settings->bind("asc", asc, "active");
+  //settings->bind("auto-level", auto_level, "active");
+  //settings->bind("asc", asc, "active");
 
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
 
-  prepare_spinbutton(limit, "dB");
+  //prepare_spinbutton(limit, "dB");
   prepare_spinbutton(release, "ms");
   prepare_spinbutton(lookahead, "ms");
 }
@@ -82,23 +82,23 @@ void LimiterUi::reset() {
 
   settings->reset("output-gain");
 
-  settings->reset("limit");
+  //settings->reset("limit");
 
   settings->reset("lookahead");
 
   settings->reset("release");
 
-  settings->reset("auto-level");
+  //settings->reset("auto-level");
 
-  settings->reset("asc");
+  //settings->reset("asc");
 
-  settings->reset("asc-level");
+  //settings->reset("asc-level");
 
-  settings->reset("oversampling");
+  //settings->reset("oversampling");
 }
 
 void LimiterUi::on_new_attenuation(double value) {
-  attenuation->set_value(1.0 - value);
+  //attenuation->set_value(1.0 - value);
 
-  attenuation_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+  //attenuation_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
