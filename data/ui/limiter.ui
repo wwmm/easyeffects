@@ -5,211 +5,600 @@
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
-        <property name="spacing">12</property>
+        <property name="spacing">24</property>
         <property name="orientation">vertical</property>
+
+        <child>
+            <object class="GtkToggleButton" id="bypass">
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Bypass</property>
+            </object>
+        </child>
 
         <child>
             <object class="GtkBox">
                 <property name="halign">center</property>
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
+                <property name="valign">center</property>
+                <property name="spacing">24</property>
+
                 <child>
-                    <object class="GtkToggleButton" id="auto_level">
+                    <object class="GtkGrid">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Automatic Leveling</property>
+                        <property name="valign">end</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">12</property>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Mode</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Oversampling</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Dither</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">2</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="mode">
+                                <property name="hexpand">1</property>
+                                <property name="valign">center</property>
+                                <items>
+                                    <item translatable="yes">Herm Thin</item>
+                                    <item translatable="yes">Herm Wide</item>
+                                    <item translatable="yes">Herm Tail</item>
+                                    <item translatable="yes">Herm Duck</item>
+                                    <item translatable="yes">Exp Thin</item>
+                                    <item translatable="yes">Exp Wide</item>
+                                    <item translatable="yes">Exp Tail</item>
+                                    <item translatable="yes">Exp Duck</item>
+                                    <item translatable="yes">Line Thin</item>
+                                    <item translatable="yes">Line Wide</item>
+                                    <item translatable="yes">Line Tail</item>
+                                    <item translatable="yes">Line Duck</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="oversampling">
+                                <property name="hexpand">1</property>
+                                <property name="valign">center</property>
+                                <items>
+                                    <item translatable="yes">None</item>
+                                    <item translatable="yes">Half x2(2L)</item>
+                                    <item translatable="yes">Half x2(3L)</item>
+                                    <item translatable="yes">Half x3(2L)</item>
+                                    <item translatable="yes">Half x3(3L)</item>
+                                    <item translatable="yes">Half x4(2L)</item>
+                                    <item translatable="yes">Half x4(3L)</item>
+                                    <item translatable="yes">Half x6(2L)</item>
+                                    <item translatable="yes">Half x6(3L)</item>
+                                    <item translatable="yes">Half x8(2L)</item>
+                                    <item translatable="yes">Half x8(3L)</item>
+                                    <item translatable="yes">Full x2(2L)</item>
+                                    <item translatable="yes">Full x2(3L)</item>
+                                    <item translatable="yes">Full x3(2L)</item>
+                                    <item translatable="yes">Full x3(3L)</item>
+                                    <item translatable="yes">Full x4(2L)</item>
+                                    <item translatable="yes">Full x4(3L)</item>
+                                    <item translatable="yes">Full x6(2L)</item>
+                                    <item translatable="yes">Full x6(3L)</item>
+                                    <item translatable="yes">Full x8(2L)</item>
+                                    <item translatable="yes">Full x8(3L)</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkComboBoxText" id="dither">
+                                <property name="hexpand">1</property>
+                                <property name="valign">center</property>
+                                <items>
+                                    <item translatable="yes">None</item>
+                                    <item translatable="yes">7bit</item>
+                                    <item translatable="yes">8bit</item>
+                                    <item translatable="yes">11bit</item>
+                                    <item translatable="yes">12bit</item>
+                                    <item translatable="yes">15bit</item>
+                                    <item translatable="yes">16bit</item>
+                                    <item translatable="yes">23bit</item>
+                                    <item translatable="yes">24bit</item>
+                                </items>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">2</property>
+                                </layout>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkToggleButton" id="asc">
+                    <object class="GtkGrid">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Automatic Smoothing Control</property>
-                    </object>
-                </child>
+                        <property name="valign">end</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">12</property>
 
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Bypass</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">Lookahead</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="lookahead">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.1</property>
+                                        <property name="upper">20</property>
+                                        <property name="value">5</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">Attack</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="attack">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.25</property>
+                                        <property name="upper">20</property>
+                                        <property name="value">5</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">Release</property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="release">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.25</property>
+                                        <property name="upper">20</property>
+                                        <property name="value">5</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkBox">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="orientation">vertical</property>
+
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="spacing">6</property>
+
+                                        <child>
+                                            <object class="GtkCheckButton" id="gain_boost">
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                            </object>
+                                        </child>
+
+                                        <child>
+                                            <object class="GtkLabel">
+                                                <property name="label" translatable="yes">Boost</property>
+                                                <property name="halign">center</property>
+                                                <property name="valign">center</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Threshold</property>
+                                    </object>
+                                </child>
+
+                                <layout>
+                                    <property name="column">3</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="threshold">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">1</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-48</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">3</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">end</property>
+                                <property name="label" translatable="yes">SC Preamp</property>
+
+                                <layout>
+                                    <property name="column">4</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="scpreamp">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">1</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-120</property>
+                                        <property name="upper">40</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">4</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
         </child>
 
         <child>
-            <object class="GtkGrid">
+            <object class="GtkBox">
+                <property name="visible">0</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
-                <property name="row-spacing">6</property>
-                <property name="column-spacing">48</property>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Lookahead</property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="lookahead">
-                        <property name="halign">center</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="digits">2</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">0.1</property>
-                                <property name="upper">10</property>
-                                <property name="value">5</property>
-                                <property name="step-increment">0.01</property>
-                                <property name="page-increment">0.1</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">0</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
+                <property name="spacing">6</property>
 
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Release</property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="release">
-                        <property name="halign">center</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="digits">2</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">1</property>
-                                <property name="upper">1000</property>
-                                <property name="value">50</property>
-                                <property name="step-increment">0.01</property>
-                                <property name="page-increment">0.1</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">1</property>
-                            <property name="row">1</property>
-                        </layout>
+                        <property name="label" translatable="yes">Device</property>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkDropDown" id="dropdown_input_devices">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Limit</property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">0</property>
-                        </layout>
                     </object>
                 </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="visible">1</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="spacing">24</property>
+
                 <child>
-                    <object class="GtkSpinButton" id="limit">
+                    <object class="GtkToggleButton" id="alr">
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="label" translatable="yes">Auto Leveling</property>
+                </object>
+                </child>
+
+                <child>
+                    <object class="GtkGrid" id="alr_grid">
                         <property name="halign">center</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="digits">1</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">-24</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
+                        <property name="valign">end</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">12</property>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Attack</property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">0</property>
+                                </layout>
                             </object>
-                        </property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">1</property>
-                        </layout>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="alr_attack">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.1</property>
+                                        <property name="upper">200</property>
+                                        <property name="value">5</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Release</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="alr_release">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">10</property>
+                                        <property name="upper">1000</property>
+                                        <property name="value">50</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Knee</property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinButton" id="alr_knee">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-12</property>
+                                        <property name="upper">-12</property>
+                                        <property name="step-increment">1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="hexpand">1</property>
+                <property name="vexpand">0</property>
+                <property name="homogeneous">1</property>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="halign">center</property>
+                        <property name="valign">center</property>
+
+                        <child>
+                            <object class="GtkLabel" id="gain_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Gain</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="gain_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">6</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkBox">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Oversampling</property>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="oversampling">
-                        <property name="halign">center</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="digits">0</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">1</property>
-                                <property name="upper">4</property>
-                                <property name="value">1</property>
-                                <property name="step-increment">1</property>
-                                <property name="page-increment">1</property>
-                            </object>
-                        </property>
-                        <layout>
-                            <property name="column">3</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
 
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">ASC</property>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">0</property>
-                        </layout>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkSpinButton" id="asc_level">
-                        <property name="halign">center</property>
-                        <property name="orientation">vertical</property>
-                        <property name="width-chars">10</property>
-                        <property name="digits">2</property>
-                        <property name="update-policy">if-valid</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="upper">1</property>
-                                <property name="value">0.5</property>
-                                <property name="step-increment">0.01</property>
-                                <property name="page-increment">0.1</property>
+                        <child>
+                            <object class="GtkLabel" id="sidechain_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Sidechain</property>
                             </object>
-                        </property>
-                        <layout>
-                            <property name="column">4</property>
-                            <property name="row">1</property>
-                        </layout>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel" id="sidechain_label">
+                                <property name="halign">center</property>
+                                <property name="width-chars">6</property>
+                                <property name="label">0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="halign">start</property>
+                                <property name="label">db</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
@@ -375,37 +764,6 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
-                    <object class="GtkLabel" id="attenuation_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Attenuation</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="attenuation">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="attenuation_label">
-                        <property name="halign">end</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
                 <property name="layout-manager">
                     <object class="GtkBinLayout"></object>
                 </property>
@@ -434,7 +792,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">Calf Studio Gears</property>
+                                <property name="label">Linux Studio Plugins</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>
@@ -451,7 +809,6 @@
         <widgets>
             <widget name="input_level_title" />
             <widget name="output_level_title" />
-            <widget name="attenuation_title" />
         </widgets>
     </object>
 

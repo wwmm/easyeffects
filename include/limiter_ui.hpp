@@ -41,14 +41,15 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Gtk::SpinButton *lookahead = nullptr, *release = nullptr, *limit = nullptr, *oversampling = nullptr,
-                  *asc_level = nullptr;
+  Gtk::SpinButton *lookahead = nullptr, *release = nullptr;
+
+  //Gtk::SpinButton *limit, *oversampling = nullptr, *asc_level = nullptr;
 
   Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 
-  Gtk::ToggleButton *auto_level = nullptr, *asc = nullptr;
+  //Gtk::ToggleButton *auto_level = nullptr, *asc = nullptr;
 
-  Gtk::LevelBar* attenuation = nullptr;
+  //Gtk::LevelBar* attenuation = nullptr;
 
   Gtk::Label* attenuation_label = nullptr;
 };
