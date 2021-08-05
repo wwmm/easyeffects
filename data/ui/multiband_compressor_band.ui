@@ -175,7 +175,7 @@
                 <child>
                     <object class="GtkGrid">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">start</property>
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">12</property>
 
@@ -207,12 +207,39 @@
 
                         <child>
                             <object class="GtkLabel">
+                                <property name="visible">0</property>
+                                <property name="halign">end</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Device</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">3</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Attack</property>
 
                                 <layout>
                                     <property name="column">1</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="margin-start">12</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Release</property>
+
+                                <layout>
+                                    <property name="column">2</property>
                                     <property name="row">0</property>
                                 </layout>
                             </object>
@@ -261,20 +288,6 @@
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
-                                <property name="margin-start">12</property>
-                                <property name="halign">center</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Release</property>
-
-                                <layout>
-                                    <property name="column">2</property>
-                                    <property name="row">0</property>
-                                </layout>
-                            </object>
-                        </child>
-
-                        <child>
                             <object class="GtkSpinButton" id="release_time">
                                 <property name="margin-start">12</property>
                                 <property name="digits">2</property>
@@ -318,13 +331,27 @@
                                 </layout>
                             </object>
                         </child>
+
+                        <child>
+                            <object class="GtkDropDown" id="dropdown_input_devices">
+                                <property name="visible">0</property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">1</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="column-span">2</property>
+                                    <property name="row">3</property>
+                                </layout>
+                            </object>
+                        </child>
                     </object>
                 </child>
 
                 <child>
                     <object class="GtkGrid">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">start</property>
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">24</property>
 
@@ -548,7 +575,6 @@
                                                 <property name="label" translatable="yes">Low-Cut Filter</property>
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">1</property>
                                             </object>
                                         </child>
                                     </object>
@@ -600,7 +626,6 @@
                                                 <property name="label" translatable="yes">High-Cut Filter</property>
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="hexpand">1</property>
                                             </object>
                                         </child>
                                     </object>
