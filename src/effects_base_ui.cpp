@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -348,6 +348,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_input_level));
       effects_base->bass_loudness->output_level.connect(
           sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_output_level));
+
+      effects_base->bass_loudness->bypass = false;
     } else if (name == plugin_name::compressor) {
       auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 

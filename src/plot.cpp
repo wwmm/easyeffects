@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -260,7 +260,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     would start to be drawn at the border of the window.
   */
 
-  for (size_t n = 0; n < labels.size() - 1; n++) {
+  for (size_t n = 0, m = labels.size(); n < m - 1; n++) {
     Glib::ustring msg;
 
     auto label = labels[n];
@@ -282,7 +282,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
 
     layout->show_in_cairo_context(ctx);
 
-    if (n == labels.size() - 2U) {
+    if (n == m - 2U) {
       return text_height;
     }
   }

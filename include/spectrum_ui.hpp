@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *

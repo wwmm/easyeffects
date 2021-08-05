@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -100,24 +100,14 @@ Pitch::Pitch(const std::string& tag,
 
     update_pitch_scale();
   });
-
-  initialize_listener();
 }
 
 Pitch::~Pitch() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void Pitch::setup() {
@@ -201,7 +191,7 @@ void Pitch::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
+    for (uint n = 0U, m = left_out.size(); !deque_out_L.empty() && n < m; n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;

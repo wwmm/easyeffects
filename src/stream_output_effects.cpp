@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -90,9 +90,9 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
-  util::debug(log_tag + "destroyed");
-
   disconnect_filters();
+
+  util::debug(log_tag + "destroyed");
 }
 
 void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
@@ -163,13 +163,23 @@ void StreamOutputEffects::connect_filters() {
       list_proxies.emplace_back(link);
     }
   } else {
+    if (!plugins[list[0]]->connected_to_pw) {
+      plugins[list[0]]->connect_to_pw();
+    }
+
     auto links = pm->link_nodes(pm->pe_sink_node.id, plugins[list[0]]->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
     }
 
-    for (size_t n = 1; n < list.size(); n++) {
+    auto list_size = list.size();
+
+    for (size_t n = 1; n < list_size; n++) {
+      if (!plugins[list[n]]->connected_to_pw) {
+        plugins[list[n]]->connect_to_pw();
+      }
+
       auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
 
       for (const auto& link : links) {
@@ -177,7 +187,7 @@ void StreamOutputEffects::connect_filters() {
       }
     }
 
-    links = pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
+    links = pm->link_nodes(plugins[list[list_size - 1]]->get_node_id(), spectrum->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);

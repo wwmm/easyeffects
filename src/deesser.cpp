@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -63,24 +63,14 @@ Deesser::Deesser(const std::string& tag,
   lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
 
   lv2_wrapper->bind_key_bool(settings, "sc-listen", "sc_listen");
-
-  initialize_listener();
 }
 
 Deesser::~Deesser() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void Deesser::setup() {
