@@ -486,7 +486,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
       effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
-      effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
+      //effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
 
       effects_base->limiter->bypass = false;
     } else if (name == plugin_name::loudness) {
