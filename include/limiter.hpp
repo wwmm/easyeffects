@@ -39,7 +39,7 @@ class Limiter : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> attenuation;
+  sigc::signal<void(double)> gain_left, gain_right, sidechain_left, sidechain_right;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
