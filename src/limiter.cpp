@@ -110,13 +110,15 @@ void Limiter::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      //float attenuation_value = lv2_wrapper->get_control_port_value("att");
       float gain_l = lv2_wrapper->get_control_port_value("grlm_l");
       float gain_r = lv2_wrapper->get_control_port_value("grlm_r");
       float sidechain_l = lv2_wrapper->get_control_port_value("sclm_l");
       float sidechain_r = lv2_wrapper->get_control_port_value("sclm_r");
 
-      //Glib::signal_idle().connect_once([=, this] { attenuation.emit(attenuation_value); });
+      Glib::signal_idle().connect_once([=, this] { gain_left.emit(gain_l); });
+      Glib::signal_idle().connect_once([=, this] { gain_right.emit(gain_r); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_left.emit(sidechain_l); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_right.emit(sidechain_r); });
 
       notify();
 
