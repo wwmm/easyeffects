@@ -37,7 +37,10 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi*;
 
-  void on_new_attenuation(double value);
+  void on_new_left_gain(double value);
+  void on_new_right_gain(double value);
+  void on_new_left_sidechain(double value);
+  void on_new_right_sidechain(double value);
 
   void reset() override;
 

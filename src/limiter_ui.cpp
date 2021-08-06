@@ -424,8 +424,18 @@ void LimiterUi::reset() {
   settings->reset("alr-knee");
 }
 
-void LimiterUi::on_new_attenuation(double value) {
-  //attenuation->set_value(1.0 - value);
+void LimiterUi::on_new_left_gain(double value) {
+  gain_left->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
 
-  //attenuation_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+void LimiterUi::on_new_right_gain(double value) {
+  gain_right->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
+
+void LimiterUi::on_new_left_sidechain(double value) {
+  sidechain_left->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
+
+void LimiterUi::on_new_right_sidechain(double value) {
+  sidechain_right->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
