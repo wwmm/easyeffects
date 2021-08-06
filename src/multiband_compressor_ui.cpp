@@ -446,6 +446,27 @@ void MultibandCompressorUi::prepare_bands() {
 
     prepare_spinbutton(boost_threshold, "db");
 
+    // set boost spinbuttons sensitivity on compression mode
+
+    auto set_boost_spinbuttons_sensitivity = [=, this]() {
+      auto row_id = compression_mode->get_active_id();
+
+      if (row_id == "upward_mode") {
+        boost_threshold->set_sensitive(true);
+        boost_amount->set_sensitive(false);
+      } else if (row_id == "boosting_mode") {
+        boost_threshold->set_sensitive(false);
+        boost_amount->set_sensitive(true);
+      } else {
+        boost_threshold->set_sensitive(false);
+        boost_amount->set_sensitive(false);
+      }
+    };
+
+    set_boost_spinbuttons_sensitivity();
+
+    compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
+
     // add to stack
 
     auto* top_box = builder->get_widget<Gtk::Box>("top_box");

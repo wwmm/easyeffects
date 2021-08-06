@@ -358,7 +358,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   prepare_spinbutton(alr_release, "ms");
   prepare_spinbutton(alr_knee, "db");
 
-  // set alr spinbuttons sensitive on alr button
+  // set alr spinbuttons sensitivity on alr button
 
   auto set_alr_spinbuttons_sensitivity = [=, this]() {
     const auto& active = alr->get_active();
