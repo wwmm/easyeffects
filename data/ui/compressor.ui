@@ -60,9 +60,9 @@
                                             <object class="GtkComboBoxText" id="compression_mode">
                                                 <property name="halign">center</property>
                                                 <items>
-                                                    <item translatable="yes">Downward</item>
-                                                    <item translatable="yes">Upward</item>
-                                                    <item translatable="yes">Boosting</item>
+                                                    <item id="downward_mode" translatable="yes">Downward</item>
+                                                    <item id="upward_mode" translatable="yes">Upward</item>
+                                                    <item id="boosting_mode" translatable="yes">Boosting</item>
                                                 </items>
                                                 <layout>
                                                     <property name="column">0</property>
