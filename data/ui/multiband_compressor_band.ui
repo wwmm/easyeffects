@@ -268,15 +268,15 @@
 
                         <child>
                             <object class="GtkSpinButton" id="attack_threshold">
-                                <property name="digits">2</property>
+                                <property name="digits">1</property>
                                 <property name="width-chars">10</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">-60</property>
                                         <property name="value">-12</property>
-                                        <property name="step-increment">0.01</property>
-                                        <property name="page-increment">0.1</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
                                     </object>
                                 </property>
 
@@ -312,7 +312,7 @@
                         <child>
                             <object class="GtkSpinButton" id="release_threshold">
                                 <property name="margin-start">12</property>
-                                <property name="digits">2</property>
+                                <property name="digits">1</property>
                                 <property name="width-chars">10</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
@@ -320,8 +320,8 @@
                                         <property name="lower">-120</property>
                                         <property name="upper">-36</property>
                                         <property name="value">-120</property>
-                                        <property name="step-increment">0.01</property>
-                                        <property name="page-increment">0.1</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
                                     </object>
                                 </property>
 
@@ -409,15 +409,15 @@
                                 <property name="halign">center</property>
                                 <property name="orientation">vertical</property>
                                 <property name="width-chars">10</property>
-                                <property name="digits">2</property>
+                                <property name="digits">1</property>
                                 <property name="update-policy">if-valid</property>
                                 <property name="adjustment">
                                     <object class="GtkAdjustment">
                                         <property name="lower">-24</property>
                                         <property name="upper">0</property>
                                         <property name="value">-6</property>
-                                        <property name="step-increment">0.01</property>
-                                        <property name="page-increment">0.1</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
                                     </object>
                                 </property>
 
@@ -789,15 +789,15 @@
                                         <property name="halign">center</property>
                                         <property name="orientation">vertical</property>
                                         <property name="width-chars">10</property>
-                                        <property name="digits">0</property>
+                                        <property name="digits">1</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">0</property>
                                                 <property name="upper">72</property>
                                                 <property name="value">6</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <property name="step-increment">0.1</property>
+                                                <property name="page-increment">1</property>
                                             </object>
                                         </property>
                                         <layout>
@@ -825,15 +825,15 @@
                                         <property name="halign">center</property>
                                         <property name="orientation">vertical</property>
                                         <property name="width-chars">10</property>
-                                        <property name="digits">0</property>
+                                        <property name="digits">1</property>
                                         <property name="update-policy">if-valid</property>
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
                                                 <property name="lower">-120</property>
                                                 <property name="upper">-60</property>
                                                 <property name="value">-72</property>
-                                                <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <property name="step-increment">0.1</property>
+                                                <property name="page-increment">1</property>
                                             </object>
                                         </property>
                                         <layout>
