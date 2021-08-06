@@ -100,7 +100,7 @@
                         <property name="halign">center</property>
                         <property name="orientation">vertical</property>
                         <property name="width-chars">10</property>
-                        <property name="digits">2</property>
+                        <property name="digits">1</property>
                         <property name="update-policy">if-valid</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
