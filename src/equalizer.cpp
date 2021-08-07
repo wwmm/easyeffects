@@ -31,7 +31,7 @@ Equalizer::Equalizer(const std::string& tag,
       settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -79,29 +79,21 @@ Equalizer::Equalizer(const std::string& tag,
     for (uint n = 0U; n < max_bands; n++) {
       auto nstr = std::to_string(n);
 
-      settings_right->set_enum("band" + nstr + "-type",
-                               settings_left->get_enum("band" + nstr + "-type"));
+      settings_right->set_enum("band" + nstr + "-type", settings_left->get_enum("band" + nstr + "-type"));
 
-      settings_right->set_enum("band" + nstr + "-mode",
-                               settings_left->get_enum("band" + nstr + "-mode"));
+      settings_right->set_enum("band" + nstr + "-mode", settings_left->get_enum("band" + nstr + "-mode"));
 
-      settings_right->set_enum("band" + nstr + "-slope",
-                               settings_left->get_enum("band" + nstr + "-slope"));
+      settings_right->set_enum("band" + nstr + "-slope", settings_left->get_enum("band" + nstr + "-slope"));
 
-      settings_right->set_boolean("band" + nstr + "-solo",
-                                  settings_left->get_boolean("band" + nstr + "-solo"));
+      settings_right->set_boolean("band" + nstr + "-solo", settings_left->get_boolean("band" + nstr + "-solo"));
 
-      settings_right->set_boolean("band" + nstr + "-mute",
-                                  settings_left->get_boolean("band" + nstr + "-mute"));
+      settings_right->set_boolean("band" + nstr + "-mute", settings_left->get_boolean("band" + nstr + "-mute"));
 
-      settings_right->set_double("band" + nstr + "-frequency",
-                                 settings_left->get_double("band" + nstr + "-frequency"));
+      settings_right->set_double("band" + nstr + "-frequency", settings_left->get_double("band" + nstr + "-frequency"));
 
-      settings_right->set_double("band" + nstr + "-gain",
-                                 settings_left->get_double("band" + nstr + "-gain"));
+      settings_right->set_double("band" + nstr + "-gain", settings_left->get_double("band" + nstr + "-gain"));
 
-      settings_right->set_double("band" + nstr + "-q",
-                                 settings_left->get_double("band" + nstr + "-q"));
+      settings_right->set_double("band" + nstr + "-q", settings_left->get_double("band" + nstr + "-q"));
     }
   });
 }
@@ -199,13 +191,11 @@ void Equalizer::bind_band(const int& index) {
 
   lv2_wrapper->bind_key_bool(settings_left, "band" + istr + "-mute", "xml_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-frequency",
-                               "fl_" + istr);
+  lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-frequency", "fl_" + istr);
 
   lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-q", "ql_" + istr);
 
-  lv2_wrapper->bind_key_double_db(settings_left, "band" + istr + "-gain",
-                                  "gl_" + istr);
+  lv2_wrapper->bind_key_double_db(settings_left, "band" + istr + "-gain", "gl_" + istr);
 
   // right channel
 
@@ -219,11 +209,9 @@ void Equalizer::bind_band(const int& index) {
 
   lv2_wrapper->bind_key_bool(settings_right, "band" + istr + "-mute", "xmr_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-frequency",
-                               "fr_" + istr);
+  lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-frequency", "fr_" + istr);
 
   lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-q", "qr_" + istr);
 
-  lv2_wrapper->bind_key_double_db(settings_right, "band" + istr + "-gain",
-                                  "gr_" + istr);
+  lv2_wrapper->bind_key_double_db(settings_right, "band" + istr + "-gain", "gr_" + istr);
 }

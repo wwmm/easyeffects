@@ -26,7 +26,7 @@ BassLoudness::BassLoudness(const std::string& tag,
     : PluginBase(tag, plugin_name::bass_loudness, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://drobilla.net/plugins/mda/Loudness")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
+    util::debug(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
