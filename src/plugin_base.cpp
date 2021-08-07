@@ -178,36 +178,20 @@ PluginBase::~PluginBase() {
   }
 }
 
-bool PluginBase::connect_to_pw() {
-  bool thread_lock = false, success = false;
+auto PluginBase::connect_to_pw() -> bool {
+  bool success = false;
 
-  try {
-    pw_thread_loop_lock(pm->thread_loop);
+  pw_thread_loop_lock(pm->thread_loop);
 
-    thread_lock = true;
-
-    if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
-      connected_to_pw = true;
-    }
-
-    pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(pm->thread_loop);
-
-    pw_thread_loop_unlock(pm->thread_loop);
-
-    thread_lock = false;
-  } catch (...) {
-    if (thread_lock) {
-      util::error(log_tag + name + " exception raised during connection to pipewire graph!");
-
-      pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-      pw_thread_loop_wait(pm->thread_loop);
-
-      pw_thread_loop_unlock(pm->thread_loop);
-    }
+  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
+    connected_to_pw = true;
   }
+
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 
   if (connected_to_pw) {
     do {
