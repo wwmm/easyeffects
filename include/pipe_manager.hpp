@@ -268,8 +268,6 @@ class PipeManager {
 
   sigc::signal<void(LinkInfo)> link_changed;
 
-  sigc::signal<void(PortInfo)> port_changed;
-
  private:
   bool context_ready = false;
 
