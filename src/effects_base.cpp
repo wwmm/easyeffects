@@ -167,6 +167,12 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   });
 
+  limiter->latency.connect([=, this](float v) {
+    plugins_latency[limiter->name] = v;
+
+    broadcast_pipeline_latency();
+  });
+
   maximizer->latency.connect([=, this](float v) {
     plugins_latency[maximizer->name] = v;
 
