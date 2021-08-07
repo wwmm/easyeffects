@@ -178,30 +178,54 @@ PluginBase::~PluginBase() {
   }
 }
 
-void PluginBase::connect_to_pw() {
-  pw_thread_loop_lock(pm->thread_loop);
+bool PluginBase::connect_to_pw() {
+  bool thread_lock = false, success = false;
 
-  if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
-    util::error(log_tag + name + " can not connect the filter to pipewire!");
-  } else {
-    util::debug(log_tag + name + " connected to pipewire graph");
+  try {
+    pw_thread_loop_lock(pm->thread_loop);
 
-    connected_to_pw = true;
+    thread_lock = true;
+
+    if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
+      connected_to_pw = true;
+    }
+
+    pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+    pw_thread_loop_wait(pm->thread_loop);
+
+    pw_thread_loop_unlock(pm->thread_loop);
+
+    thread_lock = false;
+  } catch (...) {
+    if (thread_lock) {
+      util::error(log_tag + name + " exception raised during connection to pipewire graph!");
+
+      pw_core_sync(pm->core, PW_ID_CORE, 0);
+
+      pw_thread_loop_wait(pm->thread_loop);
+
+      pw_thread_loop_unlock(pm->thread_loop);
+    }
   }
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
+  if (connected_to_pw) {
+    do {
+      node_id = pw_filter_get_node_id(filter);
 
-  pw_thread_loop_wait(pm->thread_loop);
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
+    } while (node_id == SPA_ID_INVALID);
 
-  pw_thread_loop_unlock(pm->thread_loop);
+    initialize_listener();
 
-  do {
-    node_id = pw_filter_get_node_id(filter);
+    success = true;
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-  } while (node_id == SPA_ID_INVALID);
+    util::debug(log_tag + name + " successfully connected to pipewire graph");
+  } else {
+    util::error(log_tag + name + " can not connect the filter to pipewire!");
+  }
 
-  initialize_listener();
+  return success;
 }
 
 void PluginBase::initialize_listener() {

@@ -24,9 +24,9 @@ Limiter::Limiter(const std::string& tag,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Limiter")) {
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/limiter_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://calf.sourceforge.net/plugins/Limiter is not installed");
+    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/limiter_stereo is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -40,19 +40,33 @@ Limiter::Limiter(const std::string& tag,
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  lv2_wrapper->bind_key_double(settings, "lookahead", "attack");
+  lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
-  lv2_wrapper->bind_key_double(settings, "release", "release");
+  lv2_wrapper->bind_key_enum(settings, "oversampling", "ovs");
 
-  lv2_wrapper->bind_key_double(settings, "asc-level", "asc_coeff");
+  lv2_wrapper->bind_key_enum(settings, "dithering", "dith");
 
-  lv2_wrapper->bind_key_double_db(settings, "limit", "limit");
+  lv2_wrapper->bind_key_double(settings, "lookahead", "lk");
 
-  lv2_wrapper->bind_key_bool(settings, "auto-level", "auto_level");
+  lv2_wrapper->bind_key_double(settings, "attack", "at");
 
-  lv2_wrapper->bind_key_bool(settings, "asc", "asc");
+  lv2_wrapper->bind_key_double(settings, "release", "rt");
 
-  lv2_wrapper->bind_key_int(settings, "oversampling", "oversampling");
+  lv2_wrapper->bind_key_double_db(settings, "threshold", "th");
+
+  lv2_wrapper->bind_key_bool(settings, "gain-boost", "boost");
+
+  lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
+
+  lv2_wrapper->bind_key_double(settings, "stereo-link", "slink");
+
+  lv2_wrapper->bind_key_bool(settings, "alr", "alr");
+
+  lv2_wrapper->bind_key_double(settings, "alr-attack", "alr_at");
+
+  lv2_wrapper->bind_key_double(settings, "alr-release", "alr_rt");
+
+  lv2_wrapper->bind_key_double_db(settings, "alr-knee", "knee");
 }
 
 Limiter::~Limiter() {
@@ -96,9 +110,15 @@ void Limiter::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float attenuation_value = lv2_wrapper->get_control_port_value("att");
+      float gain_l = lv2_wrapper->get_control_port_value("grlm_l");
+      float gain_r = lv2_wrapper->get_control_port_value("grlm_r");
+      float sidechain_l = lv2_wrapper->get_control_port_value("sclm_l");
+      float sidechain_r = lv2_wrapper->get_control_port_value("sclm_r");
 
-      Glib::signal_idle().connect_once([=, this] { attenuation.emit(attenuation_value); });
+      Glib::signal_idle().connect_once([=, this] { gain_left.emit(gain_l); });
+      Glib::signal_idle().connect_once([=, this] { gain_right.emit(gain_r); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_left.emit(sidechain_l); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_right.emit(sidechain_r); });
 
       notify();
 
