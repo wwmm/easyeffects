@@ -463,16 +463,16 @@ void on_port_info(void* object, const struct pw_port_info* info) {
   for (auto& port : pd->pm->list_ports) {
     if (port.id == info->id) {
       port_info = port_info_from_props(info->props);
-      port_info.id = port.id;
 
-      port = port_info;
+      port.name = (!port_info.name.empty()) ? port_info.name : port.name;
+      port.audio_channel = (!port_info.audio_channel.empty()) ? port_info.audio_channel : port.audio_channel;
+      port.direction = (!port_info.direction.empty()) ? port_info.direction : port.direction;
+      port.format_dsp = (!port_info.format_dsp.empty()) ? port_info.format_dsp : port.format_dsp;
+      port.path = (!port_info.path.empty()) ? port_info.path : port.path;
 
       break;
     }
   }
-
-  // const struct spa_dict_item* item = nullptr;
-  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_destroy_port_proxy(void* data) {
