@@ -26,7 +26,7 @@ Delay::Delay(const std::string& tag,
     : PluginBase(tag, plugin_name::delay, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed");
   }
 
   lv2_wrapper->set_control_port_value("mode_l", 2);
