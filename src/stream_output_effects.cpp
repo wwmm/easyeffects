@@ -163,31 +163,36 @@ void StreamOutputEffects::connect_filters() {
       list_proxies.emplace_back(link);
     }
   } else {
-    if (!plugins[list[0]]->connected_to_pw) {
-      plugins[list[0]]->connect_to_pw();
-    }
+    bool plugin_connected = false;
+    uint prev = 0U;
 
-    auto links = pm->link_nodes(pm->pe_sink_node.id, plugins[list[0]]->get_node_id());
+    plugin_connected = (!plugins[list[prev]]->connected_to_pw) ? plugins[list[prev]]->connect_to_pw() : true;
 
-    for (const auto& link : links) {
-      list_proxies.emplace_back(link);
-    }
+    if (plugin_connected) {
+      auto links = pm->link_nodes(pm->pe_sink_node.id, plugins[list[prev]]->get_node_id());
 
-    auto list_size = list.size();
-
-    for (size_t n = 1; n < list_size; n++) {
-      if (!plugins[list[n]]->connected_to_pw) {
-        plugins[list[n]]->connect_to_pw();
-      }
-
-      auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+      prev++;
 
       for (const auto& link : links) {
         list_proxies.emplace_back(link);
       }
     }
 
-    links = pm->link_nodes(plugins[list[list_size - 1]]->get_node_id(), spectrum->get_node_id());
+    for (size_t n = 1, list_size = list.size(); n < list_size; n++) {
+      plugin_connected = (!plugins[list[prev]]->connected_to_pw) ? plugins[list[prev]]->connect_to_pw() : true;
+
+      if (plugin_connected) {
+        auto links = pm->link_nodes(plugins[list[prev - 1]]->get_node_id(), plugins[list[prev]]->get_node_id());
+
+        prev++;
+
+        for (const auto& link : links) {
+          list_proxies.emplace_back(link);
+        }
+      }
+    }
+
+    auto links = pm->link_nodes(plugins[list[prev - 1]]->get_node_id(), spectrum->get_node_id());
 
     for (const auto& link : links) {
       list_proxies.emplace_back(link);
@@ -197,10 +202,12 @@ void StreamOutputEffects::connect_filters() {
 
     for (auto& name : list) {
       if (name == plugin_name::echo_canceller) {
-        auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
+        if (plugins[name]->connected_to_pw) {
+          auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
 
-        for (const auto& link : links) {
-          list_proxies.emplace_back(link);
+          for (const auto& link : links) {
+            list_proxies.emplace_back(link);
+          }
         }
 
         break;
