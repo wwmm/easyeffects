@@ -457,7 +457,6 @@ void on_destroy_link_proxy(void* data) {
 
 void on_port_info(void* object, const struct pw_port_info* info) {
   auto* pd = static_cast<proxy_data*>(object);
-  auto* pm = pd->pm;
 
   PortInfo port_info;
 
@@ -468,10 +467,8 @@ void on_port_info(void* object, const struct pw_port_info* info) {
 
       port = port_info;
 
-      Glib::signal_idle().connect_once([pm, port_info] { pm->port_changed.emit(port_info); });
+      break;
     }
-
-    break;
   }
 
   // const struct spa_dict_item* item = nullptr;
