@@ -84,7 +84,7 @@ class PluginBase {
 
   void set_active(const bool& state) const;
 
-  bool connect_to_pw();
+  auto connect_to_pw() -> bool;
 
   void disconnect_from_pw();
 

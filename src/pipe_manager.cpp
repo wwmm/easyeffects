@@ -1390,8 +1390,6 @@ auto PipeManager::link_nodes(const uint& output_node_id,
       }
 
       if (ports_match) {
-        lock();
-
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
         if (link_passive) {
@@ -1405,6 +1403,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(input_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(inp.id).c_str());
+
+        lock();
 
         auto* proxy = static_cast<pw_proxy*>(
             pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));
