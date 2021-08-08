@@ -156,16 +156,17 @@ void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
 void StreamOutputEffects::connect_filters() {
   auto list = settings->get_string_array("plugins");
 
-  uint prev_node_id = pm->pe_sink_node.id, next_node_id = 0U;
+  uint prev_node_id = pm->pe_sink_node.id;
+  uint next_node_id = 0U;
 
   // link plugins
 
   if (!list.empty()) {
-    for (size_t n = 0, list_size = list.size(); n < list_size; n++) {
-      bool plugin_connected = (!plugins[list[n]]->connected_to_pw) ? plugins[list[n]]->connect_to_pw() : true;
+    for (auto& name : list) {
+      bool plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
 
       if (plugin_connected) {
-        next_node_id = plugins[list[n]]->get_node_id();
+        next_node_id = plugins[name]->get_node_id();
 
         auto links = pm->link_nodes(prev_node_id, next_node_id);
 
@@ -175,7 +176,12 @@ void StreamOutputEffects::connect_filters() {
           list_proxies.emplace_back(links[n]);
         }
 
-        prev_node_id = (link_size < 2) ? prev_node_id : next_node_id;
+        if (link_size == 2) {
+          prev_node_id = next_node_id;
+        } else {
+          util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
+                        std::to_string(prev_node_id) + " failed");
+        }
       }
     }
 
@@ -200,7 +206,7 @@ void StreamOutputEffects::connect_filters() {
 
   auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->output_device.id};
 
-  for (auto& node_id : node_id_list) {
+  for (const auto& node_id : node_id_list) {
     next_node_id = node_id;
 
     auto links = pm->link_nodes(prev_node_id, next_node_id);
