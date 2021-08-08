@@ -277,7 +277,7 @@ void Crystalizer::process(std::span<float>& left_in,
 void Crystalizer::bind_band(const int& n) {
   auto nstr = std::to_string(n);
 
-  band_intensity.at(n) = util::db_to_linear(settings->get_double("intensity-band" + nstr));
+  band_intensity.at(n) = static_cast<float>(util::db_to_linear(settings->get_double("intensity-band" + nstr)));
   band_mute.at(n) = settings->get_boolean("mute-band" + nstr);
   band_bypass.at(n) = settings->get_boolean("bypass-band" + nstr);
 
