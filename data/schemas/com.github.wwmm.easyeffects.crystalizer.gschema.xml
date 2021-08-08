@@ -40,27 +40,27 @@
         </key>
         <key name="intensity-band7" type="d">
             <range min="-40" max="32" />
-            <default>-7.0</default>
+            <default>-5.0</default>
         </key>
         <key name="intensity-band8" type="d">
             <range min="-40" max="32" />
-            <default>-8.0</default>
+            <default>-4.0</default>
         </key>
         <key name="intensity-band9" type="d">
             <range min="-40" max="32" />
-            <default>-9.0</default>
+            <default>-3.0</default>
         </key>
         <key name="intensity-band10" type="d">
             <range min="-40" max="32" />
-            <default>-10.0</default>
+            <default>-2.0</default>
         </key>
         <key name="intensity-band11" type="d">
             <range min="-40" max="32" />
-            <default>-11.0</default>
+            <default>-1.0</default>
         </key>
         <key name="intensity-band12" type="d">
             <range min="-40" max="32" />
-            <default>-12.0</default>
+            <default>0.0</default>
         </key>
 
         <key name="mute-band0" type="b">
