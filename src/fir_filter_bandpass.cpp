@@ -34,11 +34,19 @@ void FirFilterBandpass::setup() {
 
   highpass_kernel[(highpass_kernel.size() - 1) / 2] += 1;
 
-  // convolving the low-pass and the high-pass kernel to generate the bandpass kernel
+  kernel.resize(highpass_kernel.size());
 
-  kernel.resize(2 * highpass_kernel.size() - 1);
+  /*
+    Creating a bandpass from a band reject through spectral inversion https://www.dspguide.com/ch16/4.htm
+  */
 
-  direct_conv(lowpass_kernel, highpass_kernel, kernel);
+  for (size_t n = 0; n < kernel.size(); n++) {
+    kernel[n] = lowpass_kernel[n] + highpass_kernel[n];
+  }
+
+  std::ranges::for_each(kernel, [](auto& v) { v *= -1; });
+
+  kernel[(kernel.size() - 1) / 2] += 1;
 
   setup_zita();
 }

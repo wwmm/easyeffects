@@ -93,8 +93,6 @@ class FirFilterBase {
       -> std::vector<float>;
 
   void setup_zita();
-
-  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
 
 #endif

@@ -189,18 +189,3 @@ void FirFilterBase::setup_zita() {
 
   zita_ready = true;
 }
-
-void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  auto cs = c.size();
-  uint M = (cs + 1U) / 2U;
-
-  for (uint n = 0U; n < cs; n++) {
-    c[n] = 0.0F;
-
-    for (uint m = 0U; m < M; m++) {
-      if (n > m && n - m < M) {
-        c[n] += a[n - m] * b[m];
-      }
-    }
-  }
-}
