@@ -158,6 +158,12 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
 }
 
 void StreamInputEffects::connect_filters() {
+  if (pm->input_device.id == SPA_ID_INVALID) {
+    util::debug(log_tag + "Input device id is invalid. Aborting the link between filters in the microphone pipeline");
+
+    return;
+  }
+
   auto list = settings->get_string_array("plugins");
 
   uint prev_node_id = pm->input_device.id;
@@ -210,7 +216,7 @@ void StreamInputEffects::connect_filters() {
 
   auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_source_node.id};
 
-  for (auto& node_id : node_id_list) {
+  for (const auto& node_id : node_id_list) {
     next_node_id = node_id;
 
     auto links = pm->link_nodes(prev_node_id, next_node_id);

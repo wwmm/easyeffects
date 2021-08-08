@@ -105,6 +105,8 @@ void Crystalizer::setup() {
       }
     }
 
+    util::debug(log_tag + name + " blocksize: " + std::to_string(blocksize));
+
     notify_latency = true;
     do_first_rotation = true;
 
@@ -124,27 +126,17 @@ void Crystalizer::setup() {
       band_second_derivative_R.at(n).resize(blocksize);
     }
 
-    /*
-      Bandpass transition band has to be twice the value used for lowpass and
-      highpass. This way all filters will have the same delay.
-    */
-
-    float transition_band = 50.0F;  // Hz
-
     for (uint n = 0U; n < nbands; n++) {
       filters.at(n)->set_n_samples(blocksize);
       filters.at(n)->set_rate(rate);
 
       if (n == 0U) {
         filters.at(n)->set_max_frequency(frequencies[0]);
-        filters.at(n)->set_transition_band(transition_band);
       } else if (n == nbands - 1U) {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1U));  // frequencies array size = nbands - 1
-        filters.at(n)->set_transition_band(transition_band);
       } else {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1U));
         filters.at(n)->set_max_frequency(frequencies.at(n));
-        filters.at(n)->set_transition_band(transition_band);
       }
 
       filters.at(n)->setup();
