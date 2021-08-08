@@ -48,7 +48,9 @@ struct proxy_data {
 void on_removed_proxy(void* data) {
   auto* pd = static_cast<proxy_data*>(data);
 
-  spa_hook_remove(&pd->object_listener);
+  if (pd->object_listener.link.next != nullptr || pd->object_listener.link.prev != nullptr) {
+    spa_hook_remove(&pd->object_listener);
+  }
 
   pw_proxy_destroy(pd->proxy);
 }
@@ -455,26 +457,6 @@ void on_destroy_link_proxy(void* data) {
       ld->pm->list_links.end());
 }
 
-void on_port_info(void* object, const struct pw_port_info* info) {
-  auto* pd = static_cast<proxy_data*>(object);
-
-  PortInfo port_info;
-
-  for (auto& port : pd->pm->list_ports) {
-    if (port.id == info->id) {
-      port_info = port_info_from_props(info->props);
-
-      port.name = (!port_info.name.empty()) ? port_info.name : port.name;
-      port.audio_channel = (!port_info.audio_channel.empty()) ? port_info.audio_channel : port.audio_channel;
-      port.direction = (!port_info.direction.empty()) ? port_info.direction : port.direction;
-      port.format_dsp = (!port_info.format_dsp.empty()) ? port_info.format_dsp : port.format_dsp;
-      port.path = (!port_info.path.empty()) ? port_info.path : port.path;
-
-      break;
-    }
-  }
-}
-
 void on_destroy_port_proxy(void* data) {
   auto* ld = static_cast<proxy_data*>(data);
 
@@ -771,10 +753,6 @@ const struct pw_link_events link_events = {
     .info = on_link_info,
 };
 
-const struct pw_port_events port_events = {
-    .info = on_port_info,
-};
-
 const struct pw_module_events module_events = {
     .info = on_module_info,
 };
@@ -950,12 +928,14 @@ void on_registry_global(void* data,
     pd->pm = pm;
     pd->id = id;
 
-    pw_port_add_listener(proxy, &pd->object_listener, &port_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
 
     auto port_info = port_info_from_props(props);
 
     port_info.id = id;
+
+    // std::cout << port_info.name << "\t" << port_info.audio_channel << "\t" << port_info.direction << "\t"
+    //           << port_info.format_dsp << "\t" << port_info.port_id << "\t" << port_info.node_id << std::endl;
 
     pm->list_ports.emplace_back(port_info);
 
