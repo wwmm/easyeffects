@@ -1389,12 +1389,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
       if (ports_match) {
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
-        if (link_passive) {
-          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
-        } else {
-          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "false");
-        }
-
+        pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
         pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(output_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());
