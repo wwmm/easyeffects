@@ -94,12 +94,12 @@ class Crystalizer : public PluginBase {
       filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
 
       /*
-      Later we will need to calculate the second derivative of each band. This
-      is done through the central difference method. In order to calculate
-      the derivative at the last elements of the array we have to know the first
-      element of the next buffer. As we do not have this information the only
-      way to do this calculation is delaying the signal by 1 sample.
-    */
+        Later we will need to calculate the second derivative of each band. This
+        is done through the central difference method. In order to calculate
+        the derivative at the last elements of the array we have to know the first
+        element of the next buffer. As we do not have this information the only
+        way to do this calculation is delaying the signal by 1 sample.
+      */
 
       // last (R,L) becomes the first
 
@@ -186,8 +186,8 @@ class Crystalizer : public PluginBase {
           band_data_R.at(n)[m] = R - band_intensity.at(n) * d2R;
 
           if (m == blocksize - 1U) {
-            band_last_L.at(n) = L;
-            band_last_R.at(n) = R;
+            band_last_L.at(n) = band_data_L.at(n)[m];
+            band_last_R.at(n) = band_data_R.at(n)[m];
           }
         }
       } else {

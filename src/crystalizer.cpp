@@ -67,7 +67,7 @@ Crystalizer::Crystalizer(const std::string& tag,
   });
 
   for (uint n = 0U; n < nbands; n++) {
-    bind_band(n);
+    bind_band(static_cast<int>(n));
   }
 }
 
