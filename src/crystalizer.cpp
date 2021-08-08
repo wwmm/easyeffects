@@ -129,7 +129,7 @@ void Crystalizer::setup() {
       highpass. This way all filters will have the same delay.
     */
 
-    float transition_band = 100.0F;  // Hz
+    float transition_band = 50.0F;  // Hz
 
     for (uint n = 0U; n < nbands; n++) {
       filters.at(n)->set_n_samples(blocksize);
@@ -144,7 +144,7 @@ void Crystalizer::setup() {
       } else {
         filters.at(n)->set_min_frequency(frequencies.at(n - 1U));
         filters.at(n)->set_max_frequency(frequencies.at(n));
-        filters.at(n)->set_transition_band(2.0F * transition_band);
+        filters.at(n)->set_transition_band(transition_band);
       }
 
       filters.at(n)->setup();
