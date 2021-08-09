@@ -188,7 +188,7 @@
 
                 <child>
                     <object class="GtkToggleButton" id="ceil_active">
-                        <property name="label" translatable="yes">ceil</property>
+                        <property name="label" translatable="yes">Ceil</property>
                         <property name="halign">center</property>
                         <layout>
                             <property name="column">3</property>
