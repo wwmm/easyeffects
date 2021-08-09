@@ -15,7 +15,7 @@ readonly SCRIPT_DEPS='date dirname realpath xmllint xsltproc'
 BASE_DIR='.'
 CMD_DIR=''
 REPO_DIR=''
-APPDATA_FILE=''
+METAINFO_FILE=''
 
 # Configurable
 DATA_DIR='data'
@@ -31,7 +31,7 @@ init() {
   readonly CMD_DIR="$(dirname "${cmd}")"
   readonly REPO_DIR="$(realpath "${CMD_DIR}"/..)"
   readonly DATA_DIR="${REPO_DIR}/${DATA_DIR}"
-  readonly APPDATA_FILE="${DATA_DIR}/${APP_ID}.appdata.xml.in"
+  readonly METAINFO_FILE="${DATA_DIR}/${APP_ID}.metainfo.xml.in"
 
   if [[ "${BASE_DIR}" != "${REPO_DIR}" ]]; then
     log_info 'Changing current working directory to repo.'
@@ -66,18 +66,18 @@ check_deps() {
   fi
 }
 
-check_appdata_releases() {
+check_metainfo_releases() {
   local new_version="$1"
   local old_version=''
   local xpath='string(//release[1]/@version)'
 
-  old_version="$(xmllint --xpath "${xpath}" "${APPDATA_FILE}")"
+  old_version="$(xmllint --xpath "${xpath}" "${METAINFO_FILE}")"
   if [[ "$?" -ne 0 ]]; then
-    exit_err "Failed to find any existing releases in ${APPDATA_FILE}."
+    exit_err "Failed to find any existing releases in ${METAINFO_FILE}."
   fi
 
   if [[ "${old_version}" == "${new_version}" ]]; then
-    log_info 'Current app release is already in appdata. No action taken.'
+    log_info 'Current app release is already in metainfo. No action taken.'
     exit 0
   fi
 }
@@ -111,21 +111,21 @@ get_date() {
 }
 
 add_new_release() {
-  local xsl_file="${CMD_DIR}/add-appdata-release.xsl"
+  local xsl_file="${CMD_DIR}/add-metainfo-release.xsl"
   local version=''
   local date=''
 
   version="$(get_version)" || exit 1
-  check_appdata_releases "${version}"
+  check_metainfo_releases "${version}"
   date="$(get_date)" || exit 1
 
-  log_info "Adding release information for ${version} to appdata file."
+  log_info "Adding release information for ${version} to metainfo file."
   xsltproc \
     --stringparam version "${version}" \
     --stringparam date "${date}" \
-    -o "${APPDATA_FILE}" "${xsl_file}" "${APPDATA_FILE}"
+    -o "${METAINFO_FILE}" "${xsl_file}" "${METAINFO_FILE}"
   if [[ "$?" -ne 0 ]]; then
-    exit_err "Failed to apply changes to ${APPDATA_FILE}."
+    exit_err "Failed to apply changes to ${METAINFO_FILE}."
   fi
 }
 
