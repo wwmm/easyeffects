@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -58,7 +58,7 @@ Convolver::Convolver(const std::string& tag,
   });
 
   settings->signal_changed("kernel-path").connect([=, this](auto key) {
-    if (n_samples == 0 || rate == 0) {
+    if (n_samples == 0U || rate == 0U) {
       return;
     }
 
@@ -86,24 +86,12 @@ Convolver::Convolver(const std::string& tag,
       data_mutex.unlock();
     }
   });
-
-  initialize_listener();
 }
 
 Convolver::~Convolver() {
-  util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -116,6 +104,8 @@ Convolver::~Convolver() {
 
     delete conv;
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Convolver::setup() {
@@ -146,7 +136,7 @@ void Convolver::setup() {
 
     notify_latency = true;
 
-    latency_n_frames = 0;
+    latency_n_frames = 0U;
 
     read_kernel_file();
 
@@ -230,7 +220,7 @@ void Convolver::process(std::span<float>& left_in,
         notify_latency = true;
       }
 
-      for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
         if (n < offset) {
           left_out[n] = 0.0F;
           right_out[n] = 0.0F;
@@ -389,7 +379,7 @@ void Convolver::set_kernel_stereo_width() {
   float w = static_cast<float>(ir_width) * 0.01F;
   float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0; i < original_kernel_L.size(); i++) {
+  for (uint i = 0U; i < original_kernel_L.size(); i++) {
     float L = original_kernel_L[i];
     float R = original_kernel_R[i];
 
@@ -401,7 +391,7 @@ void Convolver::set_kernel_stereo_width() {
 void Convolver::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || !kernel_is_initialized) {
+  if (n_samples == 0U || !kernel_is_initialized) {
     return;
   }
 

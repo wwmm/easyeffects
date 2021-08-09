@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -33,30 +33,20 @@ AutoGain::AutoGain(const std::string& tag,
 
     init_ebur128();
   });
-
-  initialize_listener();
 }
 
 AutoGain::~AutoGain() {
-  util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (ebur_state != nullptr) {
     ebur128_destroy(&ebur_state);
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void AutoGain::init_ebur128() {
@@ -106,9 +96,9 @@ void AutoGain::process(std::span<float>& left_in,
     return;
   }
 
-  for (uint n = 0; n < n_samples; n++) {
-    data[2 * n] = left_in[n];
-    data[2 * n + 1] = right_in[n];
+  for (uint n = 0U; n < n_samples; n++) {
+    data[2U * n] = left_in[n];
+    data[2U * n + 1U] = right_in[n];
   }
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
@@ -119,7 +109,7 @@ void AutoGain::process(std::span<float>& left_in,
   double global = 0.0;
   double relative = 0.0;
   double range = 0.0;
-  double loudness = 0.0F;
+  double loudness = 0.0;
 
   if (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) {
     failed = true;

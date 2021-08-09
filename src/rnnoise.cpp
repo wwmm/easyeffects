@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -65,30 +65,20 @@ RNNoise::RNNoise(const std::string& tag,
   state_right = rnnoise_create(model);
 
   rnnoise_ready = true;
-
-  initialize_listener();
 }
 
 RNNoise::~RNNoise() {
-  util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   resampler_ready = false;
 
   free_rnnoise();
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void RNNoise::setup() {
@@ -96,7 +86,7 @@ void RNNoise::setup() {
 
   resampler_ready = false;
 
-  latency_n_frames = 0;
+  latency_n_frames = 0U;
 
   resample = rate != rnnoise_rate;
 
@@ -184,7 +174,7 @@ void RNNoise::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0; !deque_out_L.empty() && n < left_out.size(); n++) {
+    for (uint n = 0U, m = left_out.size(); !deque_out_L.empty() && n < m; n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;

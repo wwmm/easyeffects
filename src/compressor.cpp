@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -26,7 +26,7 @@ Compressor::Compressor(const std::string& tag,
     : PluginBase(tag, plugin_name::compressor, schema, schema_path, pipe_manager, true),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_compressor_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -133,24 +133,14 @@ Compressor::Compressor(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "makeup", "mk");
 
   lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
-
-  initialize_listener();
 }
 
 Compressor::~Compressor() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void Compressor::setup() {
@@ -221,11 +211,13 @@ void Compressor::process(std::span<float>& left_in,
       float reduction_value = lv2_wrapper->get_control_port_value("rlm");
       float sidechain_value = lv2_wrapper->get_control_port_value("slm");
       float curve_value = lv2_wrapper->get_control_port_value("clm");
+      float envelope_value = lv2_wrapper->get_control_port_value("elm");
 
       Glib::signal_idle().connect_once([=, this] {
         reduction.emit(reduction_value);
         sidechain.emit(sidechain_value);
         curve.emit(curve_value);
+        envelope.emit(envelope_value);
       });
 
       notify();

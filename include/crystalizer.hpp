@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -55,10 +55,10 @@ class Crystalizer : public PluginBase {
   bool notify_latency = false;
   bool do_first_rotation = true;
 
-  uint blocksize = 512;
-  uint latency_n_frames = 0;
+  uint blocksize = 512U;
+  uint latency_n_frames = 0U;
 
-  static constexpr uint nbands = 13;
+  static constexpr uint nbands = 13U;
 
   std::vector<float> data_L;
   std::vector<float> data_R;
@@ -87,19 +87,19 @@ class Crystalizer : public PluginBase {
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
-    for (uint n = 0; n < nbands; n++) {
+    for (uint n = 0U; n < nbands; n++) {
       std::copy(data_left.begin(), data_left.end(), band_data_L.at(n).begin());
       std::copy(data_right.begin(), data_right.end(), band_data_R.at(n).begin());
 
       filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
 
       /*
-      Later we will need to calculate the second derivative of each band. This
-      is done through the central difference method. In order to calculate
-      the derivative at the last elements of the array we have to know the first
-      element of the next buffer. As we do not have this information the only
-      way to do this calculation is delaying the signal by 1 sample.
-    */
+        Later we will need to calculate the second derivative of each band. This
+        is done through the central difference method. In order to calculate
+        the derivative at the last elements of the array we have to know the first
+        element of the next buffer. As we do not have this information the only
+        way to do this calculation is delaying the signal by 1 sample.
+      */
 
       // last (R,L) becomes the first
 
@@ -139,19 +139,19 @@ class Crystalizer : public PluginBase {
       }
     }
 
-    for (uint n = 0; n < nbands; n++) {
+    for (uint n = 0U; n < nbands; n++) {
       // Calculating the second derivative
 
       if (!band_bypass.at(n)) {
-        for (uint m = 0; m < blocksize; m++) {
+        for (uint m = 0U; m < blocksize; m++) {
           float L = band_data_L.at(n)[m];
           float R = band_data_R.at(n)[m];
 
           if (m > 0 && m < blocksize - 1) {
-            float L_lower = band_data_L.at(n)[m - 1];
-            float R_lower = band_data_R.at(n)[m - 1];
-            float L_upper = band_data_L.at(n)[m + 1];
-            float R_upper = band_data_R.at(n)[m + 1];
+            float L_lower = band_data_L.at(n)[m - 1U];
+            float R_lower = band_data_R.at(n)[m - 1U];
+            float L_upper = band_data_L.at(n)[m + 1U];
+            float R_upper = band_data_R.at(n)[m + 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
@@ -166,8 +166,8 @@ class Crystalizer : public PluginBase {
           } else if (m == blocksize - 1) {
             float L_upper = band_next_L.at(n);
             float R_upper = band_next_R.at(n);
-            float L_lower = band_data_L.at(n)[m - 1];
-            float R_lower = band_data_R.at(n)[m - 1];
+            float L_lower = band_data_L.at(n)[m - 1U];
+            float R_lower = band_data_R.at(n)[m - 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
@@ -176,7 +176,7 @@ class Crystalizer : public PluginBase {
 
         // peak enhancing using second derivative
 
-        for (uint m = 0; m < blocksize; m++) {
+        for (uint m = 0U; m < blocksize; m++) {
           float L = band_data_L.at(n)[m];
           float R = band_data_R.at(n)[m];
           float d2L = band_second_derivative_L.at(n)[m];
@@ -185,7 +185,7 @@ class Crystalizer : public PluginBase {
           band_data_L.at(n)[m] = L - band_intensity.at(n) * d2L;
           band_data_R.at(n)[m] = R - band_intensity.at(n) * d2R;
 
-          if (m == blocksize - 1) {
+          if (m == blocksize - 1U) {
             band_last_L.at(n) = L;
             band_last_R.at(n) = R;
           }
@@ -198,7 +198,7 @@ class Crystalizer : public PluginBase {
 
     // add bands
 
-    for (uint m = 0; m < blocksize; m++) {
+    for (uint m = 0U; m < blocksize; m++) {
       data_left[m] = 0.0F;
       data_right[m] = 0.0F;
 

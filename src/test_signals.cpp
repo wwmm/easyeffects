@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -46,7 +46,7 @@ void on_process(void* userdata, spa_io_position* position) {
   std::span left_out{out_left, out_left + n_samples};
   std::span right_out{out_right, out_right + n_samples};
 
-  for (uint n = 0; n < n_samples; n++) {
+  for (uint n = 0U; n < n_samples; n++) {
     float signal = 0.0F;
     left_out[n] = 0.0F;
     right_out[n] = 0.0F;

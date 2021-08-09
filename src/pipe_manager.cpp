@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -42,13 +42,15 @@ struct proxy_data {
 
   PipeManager* pm = nullptr;
 
-  uint id = 0;
+  uint id = 0U;
 };
 
 void on_removed_proxy(void* data) {
   auto* pd = static_cast<proxy_data*>(data);
 
-  spa_hook_remove(&pd->object_listener);
+  if (pd->object_listener.link.next != nullptr || pd->object_listener.link.prev != nullptr) {
+    spa_hook_remove(&pd->object_listener);
+  }
 
   pw_proxy_destroy(pd->proxy);
 }
@@ -228,7 +230,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       node = nd->nd_info;
 
       if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
-        for (uint i = 0; i < info->n_params; i++) {
+        for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
             continue;
           }
@@ -277,7 +279,7 @@ void on_node_event_param(void* object,
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
         case SPA_FORMAT_AUDIO_format: {
-          uint format = 0;
+          uint format = 0U;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
             for (auto& node : nd->pm->list_nodes) {
@@ -371,7 +373,7 @@ void on_node_event_param(void* object,
             if (node.id == nd->nd_info.id) {
               float max = 0.0F;
 
-              for (uint i = 0; i < n_volumes; i++) {
+              for (uint i = 0U; i < n_volumes; i++) {
                 max = (volumes.at(i) > max) ? volumes.at(i) : max;
               }
 
@@ -453,29 +455,6 @@ void on_destroy_link_proxy(void* data) {
   ld->pm->list_links.erase(
       std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
       ld->pm->list_links.end());
-}
-
-void on_port_info(void* object, const struct pw_port_info* info) {
-  auto* pd = static_cast<proxy_data*>(object);
-  auto* pm = pd->pm;
-
-  PortInfo port_info;
-
-  for (auto& port : pd->pm->list_ports) {
-    if (port.id == info->id) {
-      port_info = port_info_from_props(info->props);
-      port_info.id = port.id;
-
-      port = port_info;
-
-      Glib::signal_idle().connect_once([pm, port_info] { pm->port_changed.emit(port_info); });
-    }
-
-    break;
-  }
-
-  // const struct spa_dict_item* item = nullptr;
-  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_destroy_port_proxy(void* data) {
@@ -581,7 +560,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
       }
 
       if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
-        for (uint i = 0; i < info->n_params; i++) {
+        for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
             continue;
           }
@@ -774,10 +753,6 @@ const struct pw_link_events link_events = {
     .info = on_link_info,
 };
 
-const struct pw_port_events port_events = {
-    .info = on_port_info,
-};
-
 const struct pw_module_events module_events = {
     .info = on_module_info,
 };
@@ -953,12 +928,14 @@ void on_registry_global(void* data,
     pd->pm = pm;
     pd->id = id;
 
-    pw_port_add_listener(proxy, &pd->object_listener, &port_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
 
     auto port_info = port_info_from_props(props);
 
     port_info.id = id;
+
+    // std::cout << port_info.name << "\t" << port_info.audio_channel << "\t" << port_info.direction << "\t"
+    //           << port_info.format_dsp << "\t" << port_info.port_id << "\t" << port_info.node_id << std::endl;
 
     pm->list_ports.emplace_back(port_info);
 
@@ -1390,21 +1367,16 @@ auto PipeManager::link_nodes(const uint& output_node_id,
       }
 
       if (ports_match) {
-        lock();
-
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
-        if (link_passive) {
-          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "true");
-        } else {
-          pw_properties_set(props, PW_KEY_LINK_PASSIVE, "false");
-        }
-
+        pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
         pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, std::to_string(output_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, std::to_string(outp.id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, std::to_string(input_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, std::to_string(inp.id).c_str());
+
+        lock();
 
         auto* proxy = static_cast<pw_proxy*>(
             pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));

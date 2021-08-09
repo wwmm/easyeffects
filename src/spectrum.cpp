@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2021 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -25,31 +25,19 @@ Spectrum::Spectrum(const std::string& tag,
                    PipeManager* pipe_manager)
     : PluginBase(tag, "spectrum", schema, schema_path, pipe_manager) {
   real_input.resize(n_bands);
-  output.resize(n_bands / 2 + 1);
+  output.resize(n_bands / 2U + 1U);
 
   complex_output = fftwf_alloc_complex(n_bands);
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   fftw_ready = true;
-
-  initialize_listener();
 }
 
 Spectrum::~Spectrum() {
-  util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -60,6 +48,8 @@ Spectrum::~Spectrum() {
   if (complex_output != nullptr) {
     fftwf_free(complex_output);
   }
+
+  util::debug(log_tag + name + " destroyed");
 }
 
 void Spectrum::setup() {}
@@ -77,9 +67,9 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  uint count = 0;
+  uint count = 0U;
 
-  for (uint n = 0; n < left_in.size(); n++) {
+  for (uint n = 0U, m = left_in.size(); n < m; n++) {
     uint k = total_count + n;
 
     if (k < real_input.size()) {
@@ -98,11 +88,11 @@ void Spectrum::process(std::span<float>& left_in,
   total_count += count;
 
   if (total_count == real_input.size()) {
-    total_count = 0;
+    total_count = 0U;
 
     fftwf_execute(plan);
 
-    for (uint i = 0; i < output.size(); i++) {
+    for (uint i = 0U, m = output.size(); i < m; i++) {
       float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
       sqr /= static_cast<float>(n_samples * n_samples);

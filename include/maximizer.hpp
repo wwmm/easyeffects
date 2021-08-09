@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -45,7 +45,7 @@ class Maximizer : public PluginBase {
   sigc::signal<void(double)> reduction, latency;
 
  private:
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

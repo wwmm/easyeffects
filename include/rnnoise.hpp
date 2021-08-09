@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -49,9 +49,9 @@ class RNNoise : public PluginBase {
   bool rnnoise_ready = false;
   bool resampler_ready = false;
 
-  uint blocksize = 480;
-  uint rnnoise_rate = 48000;
-  uint latency_n_frames = 0;
+  uint blocksize = 480U;
+  uint rnnoise_rate = 48000U;
+  uint latency_n_frames = 0U;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1);
 

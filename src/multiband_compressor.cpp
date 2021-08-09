@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -26,7 +26,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     : PluginBase(tag, plugin_name::multiband_compressor, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/mb_compressor_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -44,10 +44,10 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
-    if (n > 0) {
+    if (n > 0U) {
       lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
 
       lv2_wrapper->bind_key_double(settings, "split-frequency" + nstr, "sf_" + nstr);
@@ -97,24 +97,14 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
     lv2_wrapper->bind_key_double_db(settings, "makeup" + nstr, "mk_" + nstr);
   }
-
-  initialize_listener();
 }
 
 MultibandCompressor::~MultibandCompressor() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void MultibandCompressor::setup() {
@@ -185,7 +175,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
       std::array<double, n_bands> curve_array{};
       std::array<double, n_bands> reduction_array{};
 
-      for (uint n = 0; n < n_bands; n++) {
+      for (uint n = 0U; n < n_bands; n++) {
         auto nstr = std::to_string(n);
 
         frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);

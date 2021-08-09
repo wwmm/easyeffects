@@ -92,33 +92,39 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
+                <property name="homogeneous">1</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkLabel" id="input_level_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Input</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkScale" id="input_gain">
+                    <object class="GtkBox">
                         <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">-36</property>
-                                <property name="upper">36</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
+                        <property name="vexpand">0</property>
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkLabel" id="input_level_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Input</property>
                             </object>
-                        </property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">1</property>
-                        <property name="value-pos">right</property>
+                        </child>
+                        <child>
+                            <object class="GtkScale" id="input_gain">
+                                <property name="hexpand">1</property>
+                                <property name="valign">center</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-36</property>
+                                        <property name="upper">36</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">1</property>
+                                <property name="value-pos">right</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
-
                 <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>
@@ -131,7 +137,6 @@
                                         <property name="hexpand">1</property>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkLabel" id="input_level_left_label">
                                         <property name="halign">end</property>
@@ -141,7 +146,6 @@
                                 </child>
                             </object>
                         </child>
-
                         <child>
                             <object class="GtkBox">
                                 <property name="spacing">6</property>
@@ -151,7 +155,6 @@
                                         <property name="hexpand">1</property>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkLabel" id="input_level_right_label">
                                         <property name="halign">end</property>
@@ -170,33 +173,39 @@
             <object class="GtkBox">
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
+                <property name="homogeneous">1</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkLabel" id="output_level_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Output</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkScale" id="output_gain">
+                    <object class="GtkBox">
                         <property name="hexpand">1</property>
-                        <property name="valign">center</property>
-                        <property name="adjustment">
-                            <object class="GtkAdjustment">
-                                <property name="lower">-36</property>
-                                <property name="upper">36</property>
-                                <property name="step-increment">0.1</property>
-                                <property name="page-increment">1</property>
+                        <property name="vexpand">0</property>
+                        <property name="spacing">6</property>
+                        <child>
+                            <object class="GtkLabel" id="output_level_title">
+                                <property name="halign">end</property>
+                                <property name="xalign">1</property>
+                                <property name="label" translatable="yes">Output</property>
                             </object>
-                        </property>
-                        <property name="draw-value">1</property>
-                        <property name="digits">1</property>
-                        <property name="value-pos">right</property>
+                        </child>
+                        <child>
+                            <object class="GtkScale" id="output_gain">
+                                <property name="hexpand">1</property>
+                                <property name="valign">center</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-36</property>
+                                        <property name="upper">36</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
+                                    </object>
+                                </property>
+                                <property name="draw-value">1</property>
+                                <property name="digits">1</property>
+                                <property name="value-pos">right</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
-
                 <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>
@@ -209,7 +218,6 @@
                                         <property name="hexpand">1</property>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkLabel" id="output_level_left_label">
                                         <property name="halign">end</property>
@@ -219,7 +227,6 @@
                                 </child>
                             </object>
                         </child>
-
                         <child>
                             <object class="GtkBox">
                                 <property name="spacing">6</property>
@@ -229,7 +236,6 @@
                                         <property name="hexpand">1</property>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkLabel" id="output_level_right_label">
                                         <property name="halign">end</property>

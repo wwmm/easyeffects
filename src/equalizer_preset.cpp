@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -65,21 +65,23 @@ void EqualizerPreset::save_channel(nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    json["band" + std::to_string(n)]["type"] = settings->get_string("band" + std::to_string(n) + "-type").c_str();
+    auto nstr = std::to_string(n);
 
-    json["band" + std::to_string(n)]["mode"] = settings->get_string("band" + std::to_string(n) + "-mode").c_str();
+    json["band" + nstr]["type"] = settings->get_string("band" + nstr + "-type").c_str();
 
-    json["band" + std::to_string(n)]["slope"] = settings->get_string("band" + std::to_string(n) + "-slope").c_str();
+    json["band" + nstr]["mode"] = settings->get_string("band" + nstr + "-mode").c_str();
 
-    json["band" + std::to_string(n)]["solo"] = settings->get_boolean("band" + std::to_string(n) + "-solo");
+    json["band" + nstr]["slope"] = settings->get_string("band" + nstr + "-slope").c_str();
 
-    json["band" + std::to_string(n)]["mute"] = settings->get_boolean("band" + std::to_string(n) + "-mute");
+    json["band" + nstr]["solo"] = settings->get_boolean("band" + nstr + "-solo");
 
-    json["band" + std::to_string(n)]["gain"] = settings->get_double("band" + std::to_string(n) + "-gain");
+    json["band" + nstr]["mute"] = settings->get_boolean("band" + nstr + "-mute");
 
-    json["band" + std::to_string(n)]["frequency"] = settings->get_double("band" + std::to_string(n) + "-frequency");
+    json["band" + nstr]["gain"] = settings->get_double("band" + nstr + "-gain");
 
-    json["band" + std::to_string(n)]["q"] = settings->get_double("band" + std::to_string(n) + "-q");
+    json["band" + nstr]["frequency"] = settings->get_double("band" + nstr + "-frequency");
+
+    json["band" + nstr]["q"] = settings->get_double("band" + nstr + "-q");
   }
 }
 
@@ -111,21 +113,23 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-type", "type");
+    auto nstr = std::to_string(n);
 
-    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-mode", "mode");
+    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-type", "type");
 
-    update_string_key(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-slope", "slope");
+    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-mode", "mode");
 
-    update_key<bool>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-solo", "solo");
+    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-slope", "slope");
 
-    update_key<bool>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-mute", "mute");
+    update_key<bool>(json.at("band" + nstr), settings, "band" + nstr + "-solo", "solo");
 
-    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-gain", "gain");
+    update_key<bool>(json.at("band" + nstr), settings, "band" + nstr + "-mute", "mute");
 
-    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-frequency",
+    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-gain", "gain");
+
+    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-frequency",
                        "frequency");
 
-    update_key<double>(json.at("band" + std::to_string(n)), settings, "band" + std::to_string(n) + "-q", "q");
+    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-q", "q");
   }
 }

@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -117,7 +117,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
           listview_players->set_model(nullptr);
 
-          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             players_model->append(all_players_model->get_item(n));
           }
 
@@ -127,7 +127,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
           listview_players->set_model(nullptr);
 
-          for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+          for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             auto item = all_players_model->get_item(n);
 
             if (!app_is_blocklisted(item->info.name)) {
@@ -348,6 +348,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_input_level));
       effects_base->bass_loudness->output_level.connect(
           sigc::mem_fun(*bass_loudness_ui, &BassLoudnessUi::on_new_output_level));
+
+      effects_base->bass_loudness->bypass = false;
     } else if (name == plugin_name::compressor) {
       auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 
@@ -359,6 +361,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->compressor->input_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_input_level));
       effects_base->compressor->output_level.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_output_level));
       effects_base->compressor->reduction.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_reduction));
+      effects_base->compressor->envelope.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_envelope));
       effects_base->compressor->sidechain.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_sidechain));
       effects_base->compressor->curve.connect(sigc::mem_fun(*compressor_ui, &CompressorUi::on_new_curve));
 
@@ -483,7 +486,12 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
       effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
-      effects_base->limiter->attenuation.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_attenuation));
+      effects_base->limiter->gain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_gain));
+      effects_base->limiter->gain_right.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_gain));
+      effects_base->limiter->sidechain_left.connect(
+          sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_sidechain));
+      effects_base->limiter->sidechain_right.connect(
+          sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_sidechain));
 
       effects_base->limiter->bypass = false;
     } else if (name == plugin_name::loudness) {
@@ -875,12 +883,12 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   blocklist->signal_items_changed().connect([=, this](guint position, guint removed, guint added) {
-    if (removed > 0) {
+    if (removed > 0U) {
       players_model->remove_all();
 
       listview_players->set_model(nullptr);
 
-      for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+      for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
         players_model->append(all_players_model->get_item(n));
       }
 
@@ -1301,7 +1309,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 void EffectsBaseUi::on_app_added(NodeInfo node_info) {
   // do not add the same stream twice
 
-  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     auto item = all_players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
@@ -1325,7 +1333,7 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
-  for (guint n = 0; n < players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < players_model->get_n_items(); n++) {
     auto* item = players_model->get_item(n).get();
 
     if (item->info.id == node_info.id) {
@@ -1338,7 +1346,7 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
-  for (guint n = 0; n < players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < players_model->get_n_items(); n++) {
     auto item = players_model->get_item(n);
 
     if (item->info.id == node_info.id) {
@@ -1348,7 +1356,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
     }
   }
 
-  for (guint n = 0; n < all_players_model->get_n_items(); n++) {
+  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     auto item = all_players_model->get_item(n);
 
     if (item->info.id == node_info.id) {

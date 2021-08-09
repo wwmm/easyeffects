@@ -1,5 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.easyeffects.limiter.mode.enum">
+        <value nick="Herm Thin" value="0" />
+        <value nick="Herm Wide" value="1" />
+        <value nick="Herm Tail" value="2" />
+        <value nick="Herm Duck" value="3" />
+        <value nick="Exp Thin" value="4" />
+        <value nick="Exp Wide" value="5" />
+        <value nick="Exp Tail" value="6" />
+        <value nick="Exp Duck" value="7" />
+        <value nick="Line Thin" value="8" />
+        <value nick="Line Wide" value="9" />
+        <value nick="Line Tail" value="10" />
+        <value nick="Line Duck" value="11" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.limiter.oversampling.enum">
+        <value nick="None" value="0" />
+        <value nick="Half x2(2L)" value="1" />
+        <value nick="Half x2(3L)" value="2" />
+        <value nick="Half x3(2L)" value="3" />
+        <value nick="Half x3(3L)" value="4" />
+        <value nick="Half x4(2L)" value="5" />
+        <value nick="Half x4(3L)" value="6" />
+        <value nick="Half x6(2L)" value="7" />
+        <value nick="Half x6(3L)" value="8" />
+        <value nick="Half x8(2L)" value="9" />
+        <value nick="Half x8(3L)" value="10" />
+        <value nick="Full x2(2L)" value="11" />
+        <value nick="Full x2(3L)" value="12" />
+        <value nick="Full x3(2L)" value="13" />
+        <value nick="Full x3(3L)" value="14" />
+        <value nick="Full x4(2L)" value="15" />
+        <value nick="Full x4(3L)" value="16" />
+        <value nick="Full x6(2L)" value="17" />
+        <value nick="Full x6(3L)" value="18" />
+        <value nick="Full x8(2L)" value="19" />
+        <value nick="Full x8(3L)" value="20" />
+    </enum>
+    <enum id="com.github.wwmm.easyeffects.limiter.dithering.enum">
+        <value nick="None" value="0" />
+        <value nick="7bit" value="1" />
+        <value nick="8bit" value="2" />
+        <value nick="11bit" value="3" />
+        <value nick="12bit" value="4" />
+        <value nick="15bit" value="5" />
+        <value nick="16bit" value="6" />
+        <value nick="23bit" value="7" />
+        <value nick="24bit" value="8" />
+    </enum>
     <schema id="com.github.wwmm.easyeffects.limiter">
         <key name="input-gain" type="d">
             <range min="-36.0" max="36.0" />
@@ -9,31 +57,56 @@
             <range min="-36.0" max="36.0" />
             <default>0.0</default>
         </key>
-        <key name="limit" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>0.0</default>
+        <key name="mode" enum="com.github.wwmm.easyeffects.limiter.mode.enum">
+            <default>"Herm Thin"</default>
+        </key>
+        <key name="oversampling" enum="com.github.wwmm.easyeffects.limiter.oversampling.enum">
+            <default>"None"</default>
+        </key>
+        <key name="dithering" enum="com.github.wwmm.easyeffects.limiter.dithering.enum">
+            <default>"None"</default>
         </key>
         <key name="lookahead" type="d">
-            <range min="0.1" max="10" />
+            <range min="0.1" max="20.0" />
+            <default>5.0</default>
+        </key>
+        <key name="attack" type="d">
+            <range min="0.25" max="20.0" />
             <default>5.0</default>
         </key>
         <key name="release" type="d">
-            <range min="1" max="1000" />
+            <range min="0.25" max="20.0" />
+            <default>5.0</default>
+        </key>
+        <key name="threshold" type="d">
+            <range min="-48.0" max="0.0" />
+            <default>0.0</default>
+        </key>
+        <key name="gain-boost" type="b">
+            <default>true</default>
+        </key>
+        <key name="sidechain-preamp" type="d">
+            <range min="-120" max="40.0" />
+            <default>0.0</default>
+        </key>
+        <key name="stereo-link" type="d">
+            <range min="0.0" max="100.0" />
+            <default>100.0</default>
+        </key>
+        <key name="alr" type="b">
+            <default>false</default>
+        </key>
+        <key name="alr-attack" type="d">
+            <range min="0.10" max="200.0" />
+            <default>5.0</default>
+        </key>
+        <key name="alr-release" type="d">
+            <range min="10.0" max="1000.0" />
             <default>50.0</default>
         </key>
-        <key name="auto-level" type="b">
-            <default>false</default>
-        </key>
-        <key name="asc" type="b">
-            <default>false</default>
-        </key>
-        <key name="asc-level" type="d">
-            <range min="0" max="1" />
-            <default>0.5</default>
-        </key>
-        <key name="oversampling" type="i">
-            <range min="1" max="4" />
-            <default>1</default>
+        <key name="alr-knee" type="d">
+            <range min="-12.0" max="12.0" />
+            <default>0.0</default>
         </key>
     </schema>
 </schemalist>

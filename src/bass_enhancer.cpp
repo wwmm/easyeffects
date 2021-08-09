@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -26,7 +26,7 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     : PluginBase(tag, plugin_name::bass_enhancer, schema, schema_path, pipe_manager),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/BassEnhancer")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://calf.sourceforge.net/plugins/BassEnhancer is not installed");
+    util::debug(log_tag + "http://calf.sourceforge.net/plugins/BassEnhancer is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -53,24 +53,14 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
-
-  initialize_listener();
 }
 
 BassEnhancer::~BassEnhancer() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void BassEnhancer::setup() {

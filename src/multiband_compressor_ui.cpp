@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -258,7 +258,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // band checkbuttons
 
-  for (uint n = 1; n < n_bands; n++) {
+  for (uint n = 1U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
     auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
@@ -285,7 +285,7 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 }
 
 void MultibandCompressorUi::prepare_bands() {
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
     auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
@@ -316,15 +316,9 @@ void MultibandCompressorUi::prepare_bands() {
 
     bands_gain_label.at(n) = builder->get_widget<Gtk::Label>("band_gain_label");
 
-    bands_gain.at(n) = builder->get_widget<Gtk::LevelBar>("band_gain");
-
     bands_envelope_label.at(n) = builder->get_widget<Gtk::Label>("band_envelope_label");
 
-    bands_envelope.at(n) = builder->get_widget<Gtk::LevelBar>("band_envelope");
-
     bands_curve_label.at(n) = builder->get_widget<Gtk::Label>("band_curve_label");
-
-    bands_curve.at(n) = builder->get_widget<Gtk::LevelBar>("band_curve");
 
     auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
@@ -452,6 +446,30 @@ void MultibandCompressorUi::prepare_bands() {
 
     prepare_spinbutton(boost_threshold, "db");
 
+    // set boost spinbuttons sensitivity on compression mode
+
+    auto set_boost_spinbuttons_sensitivity = [=, this]() {
+      auto row_id = compression_mode->get_active_id();
+
+      if (row_id == "downward_mode") {
+        boost_threshold->set_sensitive(false);
+        boost_amount->set_sensitive(false);
+      } else if (row_id == "upward_mode") {
+        boost_threshold->set_sensitive(true);
+        boost_amount->set_sensitive(false);
+      } else if (row_id == "boosting_mode") {
+        boost_threshold->set_sensitive(false);
+        boost_amount->set_sensitive(true);
+      } else {
+        boost_threshold->set_sensitive(true);
+        boost_amount->set_sensitive(true);
+      }
+    };
+
+    set_boost_spinbuttons_sensitivity();
+
+    compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
+
     // add to stack
 
     auto* top_box = builder->get_widget<Gtk::Box>("top_box");
@@ -471,10 +489,10 @@ void MultibandCompressorUi::reset() {
 
   settings->reset("envelope-boost");
 
-  for (uint n = 0; n < n_bands; n++) {
+  for (uint n = 0U; n < n_bands; n++) {
     auto nstr = std::to_string(n);
 
-    if (n > 0) {
+    if (n > 0U) {
       settings->reset("enable-band" + nstr);
 
       settings->reset("split-frequency" + nstr);
@@ -527,31 +545,25 @@ void MultibandCompressorUi::reset() {
 }
 
 void MultibandCompressorUi::on_new_frequency_range(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_envelope(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
-    bands_envelope.at(n)->set_value(values.at(n));
-
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_curve(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
-    bands_curve.at(n)->set_value(values.at(n));
-
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_reduction(std::array<double, n_bands> values) {
-  for (size_t n = 0; n < values.size(); n++) {
-    bands_gain.at(n)->set_value(values.at(n));
-
+  for (size_t n = 0, m = values.size(); n < m; n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }

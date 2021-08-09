@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -48,7 +48,7 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   std::vector<sigc::connection> connections;
 
-  uint rate = 0, n_bands = 0;
+  uint rate = 0U, n_bands = 0U;
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
 

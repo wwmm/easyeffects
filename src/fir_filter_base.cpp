@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2022 Wellington Wallace
+ *
+ *  This file is part of EasyEffects.
+ *
+ *  EasyEffects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  EasyEffects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "fir_filter_base.hpp"
 
 namespace {
@@ -115,7 +134,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 void FirFilterBase::setup_zita() {
   zita_ready = false;
 
-  if (n_samples == 0 || kernel.empty()) {
+  if (n_samples == 0U || kernel.empty()) {
     return;
   }
 
@@ -169,18 +188,4 @@ void FirFilterBase::setup_zita() {
   // conv->print();
 
   zita_ready = true;
-}
-
-void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1) / 2;
-
-  for (uint n = 0; n < c.size(); n++) {
-    c[n] = 0.0F;
-
-    for (uint m = 0; m < M; m++) {
-      if (n > m && n - m < M) {
-        c[n] += a[n - m] * b[m];
-      }
-    }
-  }
 }

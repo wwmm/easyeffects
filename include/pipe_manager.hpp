@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -69,7 +69,7 @@ struct NodeInfo {
 
   int n_output_ports = 0;
 
-  uint rate = 0;
+  uint rate = 0U;
 
   int n_volume_channels = 0;
 
@@ -83,13 +83,13 @@ struct LinkInfo {
 
   uint id = SPA_ID_INVALID;
 
-  uint input_node_id = 0;
+  uint input_node_id = 0U;
 
-  uint input_port_id = 0;
+  uint input_port_id = 0U;
 
-  uint output_node_id = 0;
+  uint output_node_id = 0U;
 
-  uint output_port_id = 0;
+  uint output_port_id = 0U;
 
   bool passive = false;  // does not cause the graph to be runnable
 
@@ -115,9 +115,9 @@ struct PortInfo {
 
   uint id = SPA_ID_INVALID;
 
-  uint node_id = 0;
+  uint node_id = 0U;
 
-  uint port_id = 0;
+  uint port_id = 0U;
 };
 
 struct ModuleInfo {
@@ -267,8 +267,6 @@ class PipeManager {
   sigc::signal<void(DeviceInfo)> device_changed;
 
   sigc::signal<void(LinkInfo)> link_changed;
-
-  sigc::signal<void(PortInfo)> port_changed;
 
  private:
   bool context_ready = false;

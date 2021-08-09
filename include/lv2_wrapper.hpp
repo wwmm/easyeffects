@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -126,11 +126,11 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
-  uint n_ports = 0;
-  uint n_audio_in = 0;
-  uint n_audio_out = 0;
+  uint n_ports = 0U;
+  uint n_audio_in = 0U;
+  uint n_audio_out = 0U;
 
-  uint n_samples = 0;
+  uint n_samples = 0U;
 
   std::vector<Port> ports;
 

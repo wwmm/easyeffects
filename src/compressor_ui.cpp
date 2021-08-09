@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -237,15 +237,12 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   hpf_mode = builder->get_widget<Gtk::ComboBoxText>("hpf_mode");
   lpf_mode = builder->get_widget<Gtk::ComboBoxText>("lpf_mode");
 
-  reduction = builder->get_widget<Gtk::LevelBar>("reduction");
-  sidechain = builder->get_widget<Gtk::LevelBar>("sidechain");
-  curve = builder->get_widget<Gtk::LevelBar>("curve");
-
   listen = builder->get_widget<Gtk::ToggleButton>("listen");
 
-  reduction_label = builder->get_widget<Gtk::Label>("reduction_label");
+  reduction_label = builder->get_widget<Gtk::Label>("gain_label");
   sidechain_label = builder->get_widget<Gtk::Label>("sidechain_label");
   curve_label = builder->get_widget<Gtk::Label>("curve_label");
+  envelope_label = builder->get_widget<Gtk::Label>("envelope_label");
 
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
 
@@ -338,6 +335,30 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   } else {
     dropdown_input_devices->set_sensitive(true);
   }
+
+  // set boost spinbuttons sensitivity on compression mode
+
+  auto set_boost_spinbuttons_sensitivity = [=, this]() {
+    auto row_id = compression_mode->get_active_id();
+
+    if (row_id == "downward_mode") {
+      boost_threshold->set_sensitive(false);
+      boost_amount->set_sensitive(false);
+    } else if (row_id == "upward_mode") {
+      boost_threshold->set_sensitive(true);
+      boost_amount->set_sensitive(false);
+    } else if (row_id == "boosting_mode") {
+      boost_threshold->set_sensitive(false);
+      boost_amount->set_sensitive(true);
+    } else {
+      boost_threshold->set_sensitive(true);
+      boost_amount->set_sensitive(true);
+    }
+  };
+
+  set_boost_spinbuttons_sensitivity();
+
+  compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
 }
 
 CompressorUi::~CompressorUi() {
@@ -404,20 +425,18 @@ void CompressorUi::reset() {
 }
 
 void CompressorUi::on_new_reduction(double value) {
-  reduction->set_value(value);
-
   reduction_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::on_new_sidechain(double value) {
-  sidechain->set_value(value);
+void CompressorUi::on_new_envelope(double value) {
+  envelope_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
 
+void CompressorUi::on_new_sidechain(double value) {
   sidechain_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
 void CompressorUi::on_new_curve(double value) {
-  curve->set_value(value);
-
   curve_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
@@ -479,7 +498,7 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
   }
 
   connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {
@@ -491,7 +510,7 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
   }));
 
   connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0; n < input_devices_model->get_n_items(); n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       auto item = input_devices_model->get_item(n);
 
       if (item->info.id == info.id) {

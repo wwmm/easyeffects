@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -31,7 +31,7 @@ Equalizer::Equalizer(const std::string& tag,
       settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
-    util::warning(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
   }
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
@@ -47,24 +47,26 @@ Equalizer::Equalizer(const std::string& tag,
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
-  for (uint n = 0; n < max_bands; n++) {
+  for (uint n = 0U; n < max_bands; n++) {
     bind_band(n);
   }
 
   settings->signal_changed("num-bands").connect([=, this](auto key) {
     uint nbands = settings->get_int(key);
 
-    for (uint n = 0; n < max_bands; n++) {
+    for (uint n = 0U; n < max_bands; n++) {
+      auto nstr = std::to_string(n);
+
       if (n < nbands) {
-        settings_left->set_enum("band" + std::to_string(n) + "-type", 1);
-        settings_right->set_enum("band" + std::to_string(n) + "-type", 1);
+        settings_left->set_enum("band" + nstr + "-type", 1);
+        settings_right->set_enum("band" + nstr + "-type", 1);
       }
 
       // turn off unused bands
 
       if (n >= nbands) {
-        settings_left->set_enum("band" + std::to_string(n) + "-type", 0);
-        settings_right->set_enum("band" + std::to_string(n) + "-type", 0);
+        settings_left->set_enum("band" + nstr + "-type", 0);
+        settings_right->set_enum("band" + nstr + "-type", 0);
       }
     }
   });
@@ -74,50 +76,34 @@ Equalizer::Equalizer(const std::string& tag,
       return;
     }
 
-    for (uint n = 0; n < max_bands; n++) {
-      settings_right->set_enum("band" + std::to_string(n) + "-type",
-                               settings_left->get_enum("band" + std::to_string(n) + "-type"));
+    for (uint n = 0U; n < max_bands; n++) {
+      auto nstr = std::to_string(n);
 
-      settings_right->set_enum("band" + std::to_string(n) + "-mode",
-                               settings_left->get_enum("band" + std::to_string(n) + "-mode"));
+      settings_right->set_enum("band" + nstr + "-type", settings_left->get_enum("band" + nstr + "-type"));
 
-      settings_right->set_enum("band" + std::to_string(n) + "-slope",
-                               settings_left->get_enum("band" + std::to_string(n) + "-slope"));
+      settings_right->set_enum("band" + nstr + "-mode", settings_left->get_enum("band" + nstr + "-mode"));
 
-      settings_right->set_boolean("band" + std::to_string(n) + "-solo",
-                                  settings_left->get_boolean("band" + std::to_string(n) + "-solo"));
+      settings_right->set_enum("band" + nstr + "-slope", settings_left->get_enum("band" + nstr + "-slope"));
 
-      settings_right->set_boolean("band" + std::to_string(n) + "-mute",
-                                  settings_left->get_boolean("band" + std::to_string(n) + "-mute"));
+      settings_right->set_boolean("band" + nstr + "-solo", settings_left->get_boolean("band" + nstr + "-solo"));
 
-      settings_right->set_double("band" + std::to_string(n) + "-frequency",
-                                 settings_left->get_double("band" + std::to_string(n) + "-frequency"));
+      settings_right->set_boolean("band" + nstr + "-mute", settings_left->get_boolean("band" + nstr + "-mute"));
 
-      settings_right->set_double("band" + std::to_string(n) + "-gain",
-                                 settings_left->get_double("band" + std::to_string(n) + "-gain"));
+      settings_right->set_double("band" + nstr + "-frequency", settings_left->get_double("band" + nstr + "-frequency"));
 
-      settings_right->set_double("band" + std::to_string(n) + "-q",
-                                 settings_left->get_double("band" + std::to_string(n) + "-q"));
+      settings_right->set_double("band" + nstr + "-gain", settings_left->get_double("band" + nstr + "-gain"));
+
+      settings_right->set_double("band" + nstr + "-q", settings_left->get_double("band" + nstr + "-q"));
     }
   });
-
-  initialize_listener();
 }
 
 Equalizer::~Equalizer() {
+  if (connected_to_pw) {
+    disconnect_from_pw();
+  }
+
   util::debug(log_tag + name + " destroyed");
-
-  pw_thread_loop_lock(pm->thread_loop);
-
-  pw_filter_set_active(filter, false);
-
-  pw_filter_disconnect(filter);
-
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void Equalizer::setup() {
@@ -191,43 +177,41 @@ void Equalizer::process(std::span<float>& left_in,
 }
 
 void Equalizer::bind_band(const int& index) {
+  auto istr = std::to_string(index);
+
   // left channel
 
-  lv2_wrapper->bind_key_enum(settings_left, "band" + std::to_string(index) + "-type", "ftl_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-type", "ftl_" + istr);
 
-  lv2_wrapper->bind_key_enum(settings_left, "band" + std::to_string(index) + "-mode", "fml_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-mode", "fml_" + istr);
 
-  lv2_wrapper->bind_key_enum(settings_left, "band" + std::to_string(index) + "-slope", "sl_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_left, "band" + istr + "-slope", "sl_" + istr);
 
-  lv2_wrapper->bind_key_bool(settings_left, "band" + std::to_string(index) + "-solo", "xsl_" + std::to_string(index));
+  lv2_wrapper->bind_key_bool(settings_left, "band" + istr + "-solo", "xsl_" + istr);
 
-  lv2_wrapper->bind_key_bool(settings_left, "band" + std::to_string(index) + "-mute", "xml_" + std::to_string(index));
+  lv2_wrapper->bind_key_bool(settings_left, "band" + istr + "-mute", "xml_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_left, "band" + std::to_string(index) + "-frequency",
-                               "fl_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-frequency", "fl_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_left, "band" + std::to_string(index) + "-q", "ql_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_left, "band" + istr + "-q", "ql_" + istr);
 
-  lv2_wrapper->bind_key_double_db(settings_left, "band" + std::to_string(index) + "-gain",
-                                  "gl_" + std::to_string(index));
+  lv2_wrapper->bind_key_double_db(settings_left, "band" + istr + "-gain", "gl_" + istr);
 
   // right channel
 
-  lv2_wrapper->bind_key_enum(settings_right, "band" + std::to_string(index) + "-type", "ftr_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-type", "ftr_" + istr);
 
-  lv2_wrapper->bind_key_enum(settings_right, "band" + std::to_string(index) + "-mode", "fmr_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-mode", "fmr_" + istr);
 
-  lv2_wrapper->bind_key_enum(settings_right, "band" + std::to_string(index) + "-slope", "sr_" + std::to_string(index));
+  lv2_wrapper->bind_key_enum(settings_right, "band" + istr + "-slope", "sr_" + istr);
 
-  lv2_wrapper->bind_key_bool(settings_right, "band" + std::to_string(index) + "-solo", "xsr_" + std::to_string(index));
+  lv2_wrapper->bind_key_bool(settings_right, "band" + istr + "-solo", "xsr_" + istr);
 
-  lv2_wrapper->bind_key_bool(settings_right, "band" + std::to_string(index) + "-mute", "xmr_" + std::to_string(index));
+  lv2_wrapper->bind_key_bool(settings_right, "band" + istr + "-mute", "xmr_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_right, "band" + std::to_string(index) + "-frequency",
-                               "fr_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-frequency", "fr_" + istr);
 
-  lv2_wrapper->bind_key_double(settings_right, "band" + std::to_string(index) + "-q", "qr_" + std::to_string(index));
+  lv2_wrapper->bind_key_double(settings_right, "band" + istr + "-q", "qr_" + istr);
 
-  lv2_wrapper->bind_key_double_db(settings_right, "band" + std::to_string(index) + "-gain",
-                                  "gr_" + std::to_string(index));
+  lv2_wrapper->bind_key_double_db(settings_right, "band" + istr + "-gain", "gr_" + istr);
 }

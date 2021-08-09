@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -44,10 +44,10 @@ class Compressor : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  sigc::signal<void(double)> reduction, sidechain, curve, latency;
+  sigc::signal<void(double)> reduction, sidechain, curve, envelope, latency;
 
  private:
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 

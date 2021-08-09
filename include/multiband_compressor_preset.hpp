@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -27,7 +27,7 @@ class MultibandCompressorPreset : public PluginPresetBase {
   MultibandCompressorPreset();
 
  private:
-  static constexpr uint n_bands = 8;
+  static constexpr uint n_bands = 8U;
 
   void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) override;
 

@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -49,7 +49,7 @@ class AutoGain : public PluginBase {
  private:
   bool ebur128_ready = false;
 
-  uint old_rate = 0;
+  uint old_rate = 0U;
 
   double target = -23.0;  // target loudness level
   double output_gain = 1.0;

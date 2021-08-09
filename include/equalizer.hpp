@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects
  *
@@ -52,9 +52,9 @@ class Equalizer : public PluginBase {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
-  const uint max_bands = 32;
+  const uint max_bands = 32U;
 
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   void bind_band(const int& index);
 };

@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -158,43 +158,53 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
 }
 
 void StreamInputEffects::connect_filters() {
+  if (pm->input_device.id == SPA_ID_INVALID) {
+    util::debug(log_tag + "Input device id is invalid. Aborting the link between filters in the microphone pipeline");
+
+    return;
+  }
+
   auto list = settings->get_string_array("plugins");
 
-  if (list.empty()) {
-    auto links = pm->link_nodes(pm->input_device.id, spectrum->get_node_id());
+  uint prev_node_id = pm->input_device.id;
+  uint next_node_id = 0U;
 
-    for (const auto& link : links) {
-      list_proxies.emplace_back(link);
-    }
-  } else {
-    auto links = pm->link_nodes(pm->input_device.id, plugins[list[0]]->get_node_id());
+  // link plugins
 
-    for (const auto& link : links) {
-      list_proxies.emplace_back(link);
-    }
+  if (!list.empty()) {
+    for (auto& name : list) {
+      bool plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
 
-    for (size_t n = 1; n < list.size(); n++) {
-      auto links = pm->link_nodes(plugins[list[n - 1]]->get_node_id(), plugins[list[n]]->get_node_id());
+      if (plugin_connected) {
+        next_node_id = plugins[name]->get_node_id();
 
-      for (const auto& link : links) {
-        list_proxies.emplace_back(link);
+        auto links = pm->link_nodes(prev_node_id, next_node_id);
+
+        auto link_size = links.size();
+
+        for (size_t n = 0; n < link_size; n++) {
+          list_proxies.emplace_back(links[n]);
+        }
+
+        if (link_size == 2) {
+          prev_node_id = next_node_id;
+        } else {
+          util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
+                        std::to_string(prev_node_id) + " failed");
+        }
       }
-    }
-
-    links = pm->link_nodes(plugins[list[list.size() - 1]]->get_node_id(), spectrum->get_node_id());
-
-    for (const auto& link : links) {
-      list_proxies.emplace_back(link);
     }
 
     // checking if we have to link the echo_canceller probe to the output device
 
     for (auto& name : list) {
       if (name == plugin_name::echo_canceller) {
-        auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
+        if (plugins[name]->connected_to_pw) {
+          auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
 
-        for (const auto& link : links) {
-          list_proxies.emplace_back(link);
+          for (const auto& link : links) {
+            list_proxies.emplace_back(link);
+          }
         }
 
         break;
@@ -202,16 +212,22 @@ void StreamInputEffects::connect_filters() {
     }
   }
 
-  auto links = pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
+  // link spectrum, output level meter and input device
 
-  for (const auto& link : links) {
-    list_proxies.emplace_back(link);
-  }
+  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_source_node.id};
 
-  links = pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
+  for (const auto& node_id : node_id_list) {
+    next_node_id = node_id;
 
-  for (const auto& link : links) {
-    list_proxies.emplace_back(link);
+    auto links = pm->link_nodes(prev_node_id, next_node_id);
+
+    auto link_size = links.size();
+
+    for (size_t n = 0; n < link_size; n++) {
+      list_proxies.emplace_back(links[n]);
+    }
+
+    prev_node_id = (link_size < 2) ? prev_node_id : next_node_id;
   }
 }
 

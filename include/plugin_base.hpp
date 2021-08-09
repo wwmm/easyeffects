@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -68,19 +68,25 @@ class PluginBase {
 
   bool enable_probe = false;
 
-  uint n_samples = 0;
+  uint n_samples = 0U;
 
-  uint rate = 0;
+  uint rate = 0U;
 
   float sample_duration = 0.0F;
 
   bool bypass = false;
+
+  bool connected_to_pw = false;
 
   bool post_messages = false;
 
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
+
+  auto connect_to_pw() -> bool;
+
+  void disconnect_from_pw();
 
   virtual void setup();
 
@@ -128,7 +134,7 @@ class PluginBase {
   static void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain);
 
  private:
-  uint node_id = 0;
+  uint node_id = 0U;
 
   float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
   float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;

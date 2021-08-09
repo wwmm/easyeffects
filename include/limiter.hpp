@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -39,9 +39,13 @@ class Limiter : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> attenuation;
+  sigc::signal<void(double)> latency;
+
+  sigc::signal<void(double)> gain_left, gain_right, sidechain_left, sidechain_right;
 
  private:
+  uint latency_n_frames = 0U;
+
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
 

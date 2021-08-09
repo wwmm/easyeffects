@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2020 Wellington Wallace
+ *  Copyright © 2017-2022 Wellington Wallace
  *
  *  This file is part of EasyEffects.
  *
@@ -35,7 +35,7 @@ class MultibandCompressor : public PluginBase {
   auto operator=(const MultibandCompressor&&) -> MultibandCompressor& = delete;
   ~MultibandCompressor() override;
 
-  static constexpr uint n_bands = 8;
+  static constexpr uint n_bands = 8U;
 
   void setup() override;
 
@@ -49,7 +49,7 @@ class MultibandCompressor : public PluginBase {
   sigc::signal<void(std::array<double, n_bands>)> reduction, envelope, curve, frequency_range;
 
  private:
-  uint latency_n_frames = 0;
+  uint latency_n_frames = 0U;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
