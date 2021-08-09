@@ -35,8 +35,8 @@
                         <child>
                             <object class="GtkComboBoxText" id="mode">
                                 <items>
-                                    <item translatable="yes">LR4</item>
-                                    <item translatable="yes">LR8</item>
+                                    <item>LR4</item>
+                                    <item>LR8</item>
                                 </items>
                             </object>
                         </child>

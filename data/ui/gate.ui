@@ -16,12 +16,13 @@
         </child>
 
         <child>
-            <object class="GtkBox" id="box_room_size">
+            <object class="GtkBox" id="box_reduction_option">
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
                 <child>
                     <object class="GtkBox">
+                        <property name="halign">end</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
@@ -46,6 +47,7 @@
 
                 <child>
                     <object class="GtkBox">
+                        <property name="halign">center</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
@@ -77,7 +79,7 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="halign">end</property>
+                        <property name="halign">start</property>
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
@@ -558,7 +560,7 @@
     <object class="GtkSizeGroup">
         <property name="mode">horizontal</property>
         <widgets>
-            <widget name="box_room_size" />
+            <widget name="box_reduction_option" />
             <widget name="grid_spinbox" />
         </widgets>
     </object>

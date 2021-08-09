@@ -17,7 +17,7 @@
         </child>
 
         <child>
-            <object class="GtkBox" id="box_room_size">
+            <object class="GtkBox">
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -38,9 +38,9 @@
                                 <property name="halign">center</property>
                                 <items>
                                     <item translatable="yes">Flat</item>
-                                    <item translatable="yes">ISO226-2003</item>
-                                    <item translatable="yes">Fletcher-Munson</item>
-                                    <item translatable="yes">Robinson-Dadson</item>
+                                    <item>ISO226-2003</item>
+                                    <item>Fletcher-Munson</item>
+                                    <item>Robinson-Dadson</item>
                                 </items>
                             </object>
                         </child>

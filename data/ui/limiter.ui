@@ -34,6 +34,7 @@
                                 <property name="valign">end</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">12</property>
+                                <property name="margin-end">12</property>
 
                                 <child>
                                     <object class="GtkLabel">
@@ -174,7 +175,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">end</property>
-                                        <property name="label" translatable="yes">SC PreAmp</property>
+                                        <property name="label" translatable="yes">Preamp</property>
                                     </object>
                                 </child>
 

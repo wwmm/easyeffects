@@ -668,7 +668,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">SC PreAmp</property>
+                                        <property name="label" translatable="yes">Preamp</property>
 
                                         <layout>
                                             <property name="column">0</property>
@@ -704,7 +704,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">SC Reactivity</property>
+                                        <property name="label" translatable="yes">Reactivity</property>
 
                                         <layout>
                                             <property name="column">1</property>
@@ -740,7 +740,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">SC LookAhead</property>
+                                        <property name="label" translatable="yes">Lookahead</property>
 
                                         <layout>
                                             <property name="column">2</property>
