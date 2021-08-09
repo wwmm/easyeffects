@@ -24,7 +24,7 @@ msgid "Test Signals"
 msgstr "Test Sinyalleri"
 
 #: data/ui/application.glade:63
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
 msgstr "EasyEffects"
@@ -404,7 +404,7 @@ msgid "Attenuation"
 msgstr "Zayıflatma"
 
 #: data/ui/compressor.glade:30 data/ui/compressor.glade:442
-#: data/ui/webrtc.glade:482 data/com.github.wwmm.easyeffects.appdata.xml.in:52
+#: data/ui/webrtc.glade:482 data/com.github.wwmm.easyeffects.metainfo.xml.in:52
 msgid "Compressor"
 msgstr "Sıkıştırıcı"
 
@@ -1402,16 +1402,16 @@ msgstr "Gürültü Ölçümü"
 msgid "Subtract Noise"
 msgstr "Gürültü Çıkar"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PulseAudio Applications"
 msgstr "PulseAudio Uygulamaları için Ses Efektleri"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -1421,7 +1421,7 @@ msgstr ""
 "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
 "bir spektrum analizörü bulunmaktadır."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:16
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 msgid ""
 "Because EasyEffects uses the default PulseAudio sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
@@ -1432,7 +1432,7 @@ msgstr ""
 "Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
 "ana pencerede sunulur."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:22
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:22
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -1442,7 +1442,7 @@ msgstr ""
 "giriş cihazına da efektler uygulayabilir. Bu özellik ses kaydında da "
 "kullanışlıdır ve sesli konuşmalarda da iyi çalışır."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid ""
 "When EasyEffects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
@@ -1452,19 +1452,19 @@ msgstr ""
 "rahatlıkla hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek de "
 "mümkündür."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:40
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Set the volume and turn on/off effects"
 msgstr "Sesi ayarla ve efektleri aç/kapat"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:44
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
 msgid "Includes an equalizer with built-in presets"
 msgstr "Yerleşik ön ayarlara sahip bir ekolayzır içerir"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:48
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
 msgid "Input Limiter"
 msgstr "Giriş Sınırlayıcı"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:56
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
 msgid "Calibration"
 msgstr "Kalibrasyon"
 
