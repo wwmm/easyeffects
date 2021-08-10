@@ -7,1404 +7,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-10 13:00-0300\n"
-"PO-Revision-Date: 2019-09-13 19:47+0300\n"
+"POT-Creation-Date: 2021-07-12 11:52+0200\n"
+"PO-Revision-Date: 2021-08-09 22:30-0700\n"
 "Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
 "Language-Team: Turkish <teknomobil@yandex.com>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/ui/application.glade:41 src/calibration_ui.cpp:39
-#: src/calibration_ui.cpp:164
-msgid "Test Signals"
-msgstr "Test Sinyalleri"
-
-#: data/ui/application.glade:63
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/ui/application.glade:135 data/ui/general_settings.glade:107
-#: data/ui/equalizer.glade:253
-msgid "Settings"
-msgstr "Ayarlar"
-
-#: data/ui/application.glade:157
-msgid "Help"
-msgstr "Yardım"
-
-#: data/ui/application.glade:180 data/ui/filter.glade:204
-#: data/ui/equalizer.glade:309 data/ui/reverb.glade:284
-#: data/ui/crossfeed.glade:47 src/presets_menu_ui.cpp:115
-#: src/presets_menu_ui.cpp:274 src/presets_menu_ui.cpp:291
-msgid "Presets"
-msgstr "Ön Ayarlar"
-
-#: data/ui/spectrum_settings.glade:59
-msgid "Show Spectrum"
-msgstr "Spektrumu Göster"
-
-#: data/ui/spectrum_settings.glade:84
-msgid "Fill"
-msgstr "Dolgu"
-
-#: data/ui/spectrum_settings.glade:109
-msgid "Border"
-msgstr "Kenar"
-
-#: data/ui/spectrum_settings.glade:134
-msgid "Use Custom Color"
-msgstr "Özel Renk Kullan"
-
-#: data/ui/spectrum_settings.glade:159
-msgid "Use Gradient"
-msgstr "Geçişli Renk Kullan"
-
-#: data/ui/spectrum_settings.glade:185
-msgid "Spectrum Color"
-msgstr "Spektrum Rengi"
-
-#: data/ui/spectrum_settings.glade:213
-msgid "Gradient Color"
-msgstr "Geçiş Rengi"
-
-#: data/ui/spectrum_settings.glade:241
-msgid "Spectrum Type"
-msgstr "Spektrum Türü"
-
-#: data/ui/spectrum_settings.glade:255
-msgid "Bars"
-msgstr "Barlar"
-
-#: data/ui/spectrum_settings.glade:256
-msgid "Lines"
-msgstr "Çizgiler"
-
-#: data/ui/spectrum_settings.glade:271
-msgid "Points"
-msgstr "Noktalar"
-
-#: data/ui/spectrum_settings.glade:303
-msgid "Height"
-msgstr "Yükseklik"
-
-#: data/ui/spectrum_settings.glade:336
-msgid "Scale"
-msgstr "Ölçek"
-
-#: data/ui/spectrum_settings.glade:369
-msgid "Exponent"
-msgstr "Katsayı"
-
-#: data/ui/spectrum_settings.glade:402
-msgid "Sampling"
-msgstr "Örnekleme"
-
-#: data/ui/spectrum_settings.glade:433
-msgid "Line Width"
-msgstr "Hat Genişliği"
-
-#: data/ui/pulse_settings.glade:98 data/ui/pulse_settings.glade:387
-msgid "Use Default"
-msgstr "Öntanımlıyı Kullan"
-
-#: data/ui/pulse_settings.glade:150 data/ui/pulse_settings.glade:438
-msgid "Block Size"
-msgstr "Blok Boyutu"
-
-#: data/ui/pulse_settings.glade:195 data/ui/pulse_settings.glade:483
-msgid "Pipeline Input"
-msgstr "Pipeline Giriş"
-
-#: data/ui/pulse_settings.glade:209 data/ui/pulse_settings.glade:299
-#: data/ui/pulse_settings.glade:497 data/ui/pulse_settings.glade:587
-#: data/ui/app_info.glade:159
-msgid "Buffer"
-msgstr "Arabellek"
-
-#: data/ui/pulse_settings.glade:242 data/ui/pulse_settings.glade:332
-#: data/ui/pulse_settings.glade:510 data/ui/pulse_settings.glade:600
-#: data/ui/app_info.glade:186
-msgid "Latency"
-msgstr "Gecikme"
-
-#: data/ui/pulse_settings.glade:285 data/ui/pulse_settings.glade:573
-msgid "Pipeline Output"
-msgstr "Pipeline Çıkış"
-
-#: data/ui/pulse_settings.glade:368 data/ui/blocklist_settings.glade:130
-msgid "Input Effects"
-msgstr "Giriş Efektleri"
-
-#: data/ui/pulse_settings.glade:656 data/ui/blocklist_settings.glade:224
-msgid "Output Effects"
-msgstr "Çıkış Efektleri"
-
-#: data/ui/blocklist_settings.glade:53 data/ui/blocklist_settings.glade:147
-#: data/ui/presets_menu.glade:68 data/ui/presets_menu.glade:177
-msgid "Create Preset"
-msgstr "Hazır Ayar Oluştur"
-
-#: data/ui/blocklist_settings.glade:72 data/ui/blocklist_settings.glade:166
-#: data/ui/pulse_info.glade:49 data/ui/presets_menu.glade:55
-#: data/ui/presets_menu.glade:164
-msgid "Name"
-msgstr "İsim"
-
-#: data/ui/general_settings.glade:31
-msgid "Start Service at Login"
-msgstr "Oturum Açarken Hizmeti Başlat"
-
-#: data/ui/general_settings.glade:56
-msgid "Process All Outputs"
-msgstr "Tüm Çıkışları İşle"
-
-#: data/ui/general_settings.glade:81
-msgid "Use Dark Theme"
-msgstr "Koyu Tema Kullan"
-
-#: data/ui/general_settings.glade:116 data/ui/equalizer_band.glade:183
-#: data/ui/equalizer_band.glade:229
-msgid "Reset"
-msgstr "Sıfırla"
-
-#: data/ui/general_settings.glade:133 data/ui/general_settings.glade:206
-msgid "Niceness"
-msgstr "Hassaslık"
-
-#: data/ui/general_settings.glade:134
-msgid "Real Time"
-msgstr "Eş Zamanlı"
-
-#: data/ui/general_settings.glade:135
-msgid "None"
-msgstr "Hiçbiri"
-
-#: data/ui/general_settings.glade:151
-msgid "Priority Type"
-msgstr "Öncelik Türü"
-
-#: data/ui/general_settings.glade:161
-msgid "About"
-msgstr "Hakkında"
-
-#: data/ui/general_settings.glade:180
-msgid "Process All Inputs"
-msgstr "Tüm Girişleri İşle"
-
-#: data/ui/general_settings.glade:232
-msgid "Priority"
-msgstr "Öncelik"
-
-#: data/ui/about.glade.in:11
-msgid "Audio effects for PulseAudio applications"
-msgstr "PulseAudio uygulamaları için ses efektleri"
-
-#: data/ui/app_info.glade:51
-msgid "Format"
-msgstr "Biçim"
-
-#: data/ui/app_info.glade:78 data/ui/convolver.glade:257
-msgid "Rate"
-msgstr "Oran"
-
-#: data/ui/app_info.glade:105 data/ui/pulse_info.glade:238
-#: data/ui/stereo_tools.glade:629
-msgid "Channels"
-msgstr "Kanallar"
-
-#: data/ui/app_info.glade:132
-msgid "Resampler"
-msgstr "Örnekleme"
-
-#: data/ui/app_info.glade:213
-msgid "State"
-msgstr "Durum"
-
-#: data/ui/pulse_info.glade:76
-msgid "Version"
-msgstr "Sürüm"
-
-#: data/ui/pulse_info.glade:103
-msgid "Default Sink"
-msgstr "Öntanımlı Sink"
-
-#: data/ui/pulse_info.glade:115
-msgid "Default Source"
-msgstr "Öntanımlı Kaynak"
-
-#: data/ui/pulse_info.glade:157
-msgid "Protocol"
-msgstr "Protokol"
-
-#: data/ui/pulse_info.glade:184
-msgid "Default Sample Format"
-msgstr "Öntanımlı Örnek Biçimi"
-
-#: data/ui/pulse_info.glade:211
-msgid "Default Sampling Rate"
-msgstr "Öntanımlı Örnekleme Hızı"
-
-#: data/ui/pulse_info.glade:265
-msgid "Channel Mapping"
-msgstr "Kanal Eşleme"
-
-#: data/ui/pulse_info.glade:290
-msgid "Server"
-msgstr "Sunucu"
-
-#: data/ui/pulse_info.glade:335
-msgid "Modules"
-msgstr "Modüller"
-
-#: data/ui/pulse_info.glade:381
-msgid "Clients"
-msgstr "İstemciler"
-
-#: data/ui/pulse_info.glade:444
-msgid "File"
-msgstr "Dosya"
-
-#: data/ui/pulse_info.glade:454
-msgid "Configuration"
-msgstr "Yapılandırma"
-
-#: data/ui/pulse_info.glade:487
-msgid "Resamplers"
-msgstr "Örnekleyiciler"
-
-#: data/ui/autogain.glade:24
-msgid "Auto Gain"
-msgstr "Otomatik Kazanç"
-
-#: data/ui/autogain.glade:145
-msgid "Reset History"
-msgstr "Geçmişi Sıfırla"
-
-#: data/ui/autogain.glade:157
-msgid "Detect Silence"
-msgstr "Sessizliği Algıla"
-
-#: data/ui/autogain.glade:188 data/ui/autogain.glade:567
-msgid "Momentary"
-msgstr "Anlık"
-
-#: data/ui/autogain.glade:203 data/ui/autogain.glade:580
-msgid "Short Term"
-msgstr "Kısa Süreli"
-
-#: data/ui/autogain.glade:218 data/ui/autogain.glade:593
-msgid "Integrated"
-msgstr "Tümleşik"
-
-#: data/ui/autogain.glade:289
-msgid "Weights"
-msgstr "Ağırlık"
-
-#: data/ui/autogain.glade:323
-msgid "Target"
-msgstr "Hedef"
-
-#: data/ui/autogain.glade:354 data/ui/autogain.glade:546
-#: data/ui/limiter.glade:365 data/ui/compressor.glade:718
-#: data/ui/multiband_compressor.glade:1958 data/ui/filter.glade:368
-#: data/ui/equalizer.glade:516 data/ui/reverb.glade:630
-#: data/ui/bass_enhancer.glade:479 data/ui/exciter.glade:483
-#: data/ui/stereo_tools.glade:299 data/ui/stereo_tools.glade:804
-#: data/ui/crossfeed.glade:202 data/ui/maximizer.glade:239
-#: data/ui/loudness.glade:244 data/ui/gate.glade:487
-#: data/ui/multiband_gate.glade:2107 data/ui/deesser.glade:568
-#: data/ui/convolver.glade:477 data/ui/crystalizer.glade:228
-#: data/ui/pitch.glade:322 data/ui/webrtc.glade:624 data/ui/delay.glade:210
-#: data/ui/presets_menu.glade:255
-msgid "Input"
-msgstr "Giriş"
-
-#: data/ui/autogain.glade:369 data/ui/autogain.glade:802
-#: data/ui/limiter.glade:380 data/ui/compressor.glade:733
-#: data/ui/multiband_compressor.glade:753
-#: data/ui/multiband_compressor.glade:1130
-#: data/ui/multiband_compressor.glade:1508
-#: data/ui/multiband_compressor.glade:1886
-#: data/ui/multiband_compressor.glade:1973 data/ui/filter.glade:383
-#: data/ui/equalizer.glade:531 data/ui/reverb.glade:645
-#: data/ui/bass_enhancer.glade:511 data/ui/exciter.glade:515
-#: data/ui/stereo_tools.glade:776 data/ui/stereo_tools.glade:818
-#: data/ui/crossfeed.glade:217 data/ui/maximizer.glade:254
-#: data/ui/loudness.glade:162 data/ui/loudness.glade:259 data/ui/gate.glade:502
-#: data/ui/multiband_gate.glade:806 data/ui/multiband_gate.glade:1215
-#: data/ui/multiband_gate.glade:1625 data/ui/multiband_gate.glade:2035
-#: data/ui/multiband_gate.glade:2122 data/ui/deesser.glade:583
-#: data/ui/convolver.glade:492 data/ui/crystalizer.glade:243
-#: data/ui/pitch.glade:336 data/ui/webrtc.glade:639 data/ui/delay.glade:225
-#: data/ui/presets_menu.glade:146
-msgid "Output"
-msgstr "Çıkış"
-
-#: data/ui/autogain.glade:684
-msgid "Relative"
-msgstr "Göreceli"
-
-#: data/ui/autogain.glade:697 data/ui/compressor.glade:900
-#: data/ui/deesser.glade:295
-msgid "Gain"
-msgstr "Kazanç"
-
-#: data/ui/autogain.glade:763 data/ui/loudness.glade:24
-#: data/ui/loudness.glade:128
-msgid "Loudness"
-msgstr "Yüksek Ses"
-
-#: data/ui/autogain.glade:816
-msgid "Range"
-msgstr "Sınır"
-
-#: data/ui/limiter.glade:30 data/ui/webrtc.glade:395
-msgid "Limiter"
-msgstr "Sınırlayıcı"
-
-#: data/ui/limiter.glade:149
-msgid "Input Gain"
-msgstr "Giriş Kazancı"
-
-#: data/ui/limiter.glade:182
-msgid "Limit"
-msgstr "Limit"
-
-#: data/ui/limiter.glade:237 data/ui/compressor.glade:373
-#: data/ui/multiband_compressor.glade:534
-#: data/ui/multiband_compressor.glade:907
-#: data/ui/multiband_compressor.glade:1285
-#: data/ui/multiband_compressor.glade:1663 data/ui/maximizer.glade:213
-#: data/ui/gate.glade:299 data/ui/multiband_gate.glade:554
-#: data/ui/multiband_gate.glade:960 data/ui/multiband_gate.glade:1370
-#: data/ui/multiband_gate.glade:1780
-msgid "Release"
-msgstr "Bırak"
-
-#: data/ui/limiter.glade:250 data/ui/compressor.glade:570
-msgid "Lookahead"
-msgstr "İlerleme"
-
-#: data/ui/limiter.glade:285
-msgid "Oversampling"
-msgstr "Aşırı Örnekleme"
-
-#: data/ui/limiter.glade:334
-msgid "ASC"
-msgstr "ASC"
-
-#: data/ui/limiter.glade:395
-msgid "Attenuation"
-msgstr "Zayıflatma"
-
-#: data/ui/compressor.glade:30 data/ui/compressor.glade:442
-#: data/ui/webrtc.glade:482 data/com.github.wwmm.easyeffects.metainfo.xml.in:52
-msgid "Compressor"
-msgstr "Sıkıştırıcı"
-
-#: data/ui/compressor.glade:239 data/ui/multiband_compressor.glade:568
-#: data/ui/multiband_compressor.glade:942
-#: data/ui/multiband_compressor.glade:1320
-#: data/ui/multiband_compressor.glade:1698 data/ui/maximizer.glade:126
-#: data/ui/gate.glade:333 data/ui/multiband_gate.glade:588
-#: data/ui/multiband_gate.glade:995 data/ui/multiband_gate.glade:1405
-#: data/ui/multiband_gate.glade:1815 data/ui/deesser.glade:458
-msgid "Threshold"
-msgstr "Eşik"
-
-#: data/ui/compressor.glade:272 data/ui/multiband_compressor.glade:601
-#: data/ui/multiband_compressor.glade:976
-#: data/ui/multiband_compressor.glade:1354
-#: data/ui/multiband_compressor.glade:1732 data/ui/gate.glade:366
-#: data/ui/multiband_gate.glade:621 data/ui/multiband_gate.glade:1029
-#: data/ui/multiband_gate.glade:1439 data/ui/multiband_gate.glade:1849
-#: data/ui/deesser.glade:491
-msgid "Ratio"
-msgstr "Oran"
-
-#: data/ui/compressor.glade:304 data/ui/multiband_compressor.glade:633
-#: data/ui/multiband_compressor.glade:1009
-#: data/ui/multiband_compressor.glade:1387
-#: data/ui/multiband_compressor.glade:1765 data/ui/gate.glade:398
-#: data/ui/multiband_gate.glade:653 data/ui/multiband_gate.glade:1062
-#: data/ui/multiband_gate.glade:1472 data/ui/multiband_gate.glade:1882
-msgid "Knee"
-msgstr "Oynak"
-
-#: data/ui/compressor.glade:338 data/ui/multiband_compressor.glade:667
-#: data/ui/multiband_compressor.glade:1044
-#: data/ui/multiband_compressor.glade:1422
-#: data/ui/multiband_compressor.glade:1800 data/ui/gate.glade:432
-#: data/ui/multiband_gate.glade:687 data/ui/multiband_gate.glade:1097
-#: data/ui/multiband_gate.glade:1507 data/ui/multiband_gate.glade:1917
-#: data/ui/deesser.glade:522
-msgid "Makeup"
-msgstr "Süs"
-
-#: data/ui/compressor.glade:386 data/ui/multiband_compressor.glade:500
-#: data/ui/multiband_compressor.glade:872
-#: data/ui/multiband_compressor.glade:1250
-#: data/ui/multiband_compressor.glade:1628 data/ui/gate.glade:265
-#: data/ui/multiband_gate.glade:520 data/ui/multiband_gate.glade:925
-#: data/ui/multiband_gate.glade:1335 data/ui/multiband_gate.glade:1745
-msgid "Attack"
-msgstr "Atak"
-
-#: data/ui/compressor.glade:413
-msgid "Downward"
-msgstr "Aşağıya"
-
-#: data/ui/compressor.glade:414
-msgid "Upward"
-msgstr "Yukarıya"
-
-#: data/ui/compressor.glade:426
-msgid "Compression Mode"
-msgstr "Sıkıştırma Kipi"
-
-#: data/ui/compressor.glade:454 data/ui/bass_enhancer.glade:145
-#: data/ui/exciter.glade:145 data/ui/deesser.glade:162
-msgid "Listen"
-msgstr "Liste"
-
-#: data/ui/compressor.glade:500
-msgid "Pre-amplification"
-msgstr "Öntanımlı-yükselticiler"
-
-#: data/ui/compressor.glade:535
-msgid "Reactivity"
-msgstr "Tepkinirlik"
-
-#: data/ui/compressor.glade:583
-msgid "Feed-forward"
-msgstr "İleri-besleme"
-
-#: data/ui/compressor.glade:584
-msgid "Feed-back"
-msgstr "Geri-besleme"
-
-#: data/ui/compressor.glade:598 data/ui/equalizer_band.glade:48
-msgid "Type"
-msgstr "Tür"
-
-#: data/ui/compressor.glade:612 data/ui/multiband_compressor.glade:473
-#: data/ui/multiband_compressor.glade:845
-#: data/ui/multiband_compressor.glade:1223
-#: data/ui/multiband_compressor.glade:1601 data/ui/gate.glade:220
-#: data/ui/multiband_gate.glade:493 data/ui/multiband_gate.glade:898
-#: data/ui/multiband_gate.glade:1308 data/ui/multiband_gate.glade:1718
-#: data/ui/deesser.glade:218 data/ui/deesser.glade:328
-msgid "Peak"
-msgstr "Doruk"
-
-#: data/ui/compressor.glade:613 data/ui/multiband_compressor.glade:472
-#: data/ui/multiband_compressor.glade:844
-#: data/ui/multiband_compressor.glade:1222
-#: data/ui/multiband_compressor.glade:1600 data/ui/gate.glade:219
-#: data/ui/multiband_gate.glade:492 data/ui/multiband_gate.glade:897
-#: data/ui/multiband_gate.glade:1307 data/ui/multiband_gate.glade:1717
-#: data/ui/deesser.glade:217
-msgid "RMS"
-msgstr "RMS"
-
-#: data/ui/compressor.glade:614
-msgid "Low-Pass"
-msgstr "Düşük-Geçiş"
-
-#: data/ui/compressor.glade:615
-msgid "Uniform"
-msgstr "Aynı"
-
-#: data/ui/compressor.glade:629 data/ui/multiband_compressor.glade:283
-#: data/ui/equalizer.glade:200 data/ui/equalizer_band.glade:79
-#: data/ui/stereo_tools.glade:461 data/ui/multiband_gate.glade:303
-#: data/ui/deesser.glade:204 data/ui/webrtc.glade:350
-msgid "Mode"
-msgstr "Kip"
-
-#: data/ui/compressor.glade:643
-msgid "Middle"
-msgstr "Orta"
-
-#: data/ui/compressor.glade:644
-msgid "Side"
-msgstr "Yan"
-
-#: data/ui/compressor.glade:645 data/ui/equalizer.glade:448
-#: data/ui/stereo_tools.glade:524 data/ui/delay.glade:131
-msgid "Left"
-msgstr "Sol"
-
-#: data/ui/compressor.glade:646 data/ui/equalizer.glade:489
-#: data/ui/stereo_tools.glade:596 data/ui/delay.glade:163
-msgid "Right"
-msgstr "Sağ"
-
-#: data/ui/compressor.glade:660
-msgid "Source"
-msgstr "Kaynak"
-
-#: data/ui/compressor.glade:676 data/ui/compressor.glade:913
-msgid "Sidechain"
-msgstr "Yanzincir"
-
-#: data/ui/compressor.glade:989
-msgid "Curve"
-msgstr "Eğri"
-
-#: data/ui/multiband_compressor.glade:70
-msgid "Multiband Compressor"
-msgstr "Çoklu Bant Şıkıştırıcı"
-
-#: data/ui/multiband_compressor.glade:297 data/ui/multiband_gate.glade:317
-msgid "LR4"
-msgstr "LR4"
-
-#: data/ui/multiband_compressor.glade:298 data/ui/multiband_gate.glade:318
-msgid "LR8"
-msgstr "LR8"
-
-#: data/ui/multiband_compressor.glade:312 data/ui/multiband_gate.glade:332
-msgid "Split 1/2"
-msgstr "1/2 Böl"
-
-#: data/ui/multiband_compressor.glade:325 data/ui/multiband_gate.glade:345
-msgid "Split 2/3"
-msgstr "2/3 Böl"
-
-#: data/ui/multiband_compressor.glade:338 data/ui/multiband_gate.glade:358
-msgid "Split 3/4"
-msgstr "3/4 Böl"
-
-#: data/ui/multiband_compressor.glade:442
-#: data/ui/multiband_compressor.glade:814
-#: data/ui/multiband_compressor.glade:1192
-#: data/ui/multiband_compressor.glade:1570 data/ui/multiband_gate.glade:462
-#: data/ui/multiband_gate.glade:867 data/ui/multiband_gate.glade:1277
-#: data/ui/multiband_gate.glade:1687 data/ui/crystalizer_band.glade:39
-msgid "Bypass"
-msgstr "Atla"
-
-#: data/ui/multiband_compressor.glade:455
-#: data/ui/multiband_compressor.glade:827
-#: data/ui/multiband_compressor.glade:1205
-#: data/ui/multiband_compressor.glade:1583 data/ui/equalizer_band.glade:302
-#: data/ui/multiband_gate.glade:475 data/ui/multiband_gate.glade:880
-#: data/ui/multiband_gate.glade:1290 data/ui/multiband_gate.glade:1700
-msgid "Solo"
-msgstr "Tekli"
-
-#: data/ui/multiband_compressor.glade:713
-#: data/ui/multiband_compressor.glade:1090
-#: data/ui/multiband_compressor.glade:1468
-#: data/ui/multiband_compressor.glade:1846
-msgid "Compression"
-msgstr "Sıkıştırma"
-
-#: data/ui/multiband_compressor.glade:796 data/ui/multiband_gate.glade:849
-msgid "Sub Band"
-msgstr "Alt Bant"
-
-#: data/ui/multiband_compressor.glade:1173 data/ui/multiband_gate.glade:1258
-msgid "Low Band"
-msgstr "Düşük Bant"
-
-#: data/ui/multiband_compressor.glade:1551 data/ui/multiband_gate.glade:1668
-msgid "Mid Band"
-msgstr "Orta Bant"
-
-#: data/ui/multiband_compressor.glade:1929 data/ui/multiband_gate.glade:2078
-msgid "High Band"
-msgstr "Yüksek Bant"
-
-#: data/ui/filter.glade:31
-msgid "Filter"
-msgstr "Süzgeç"
-
-#: data/ui/filter.glade:123
-msgid "Muted"
-msgstr "Sessiz"
-
-#: data/ui/filter.glade:135 data/ui/reverb.glade:209
-msgid "Disco"
-msgstr "Disko"
-
-#: data/ui/filter.glade:147
-msgid "Distant Headphones"
-msgstr "Uzak Kulaklıklar"
-
-#: data/ui/filter.glade:159 data/ui/reverb.glade:235 data/ui/crossfeed.glade:72
-msgid "Default"
-msgstr "Öntanımlı"
-
-#: data/ui/filter.glade:220
-msgid "12dB/oct Lowpass"
-msgstr "12dB/oct Düşük geçiş"
-
-#: data/ui/filter.glade:221
-msgid "24dB/oct Lowpass"
-msgstr "24dB/oct Düşük geçiş"
-
-#: data/ui/filter.glade:222
-msgid "36dB/oct Lowpass"
-msgstr "36dB/oct Düşük geçiş"
-
-#: data/ui/filter.glade:223
-msgid "12dB/oct Highpass"
-msgstr "12dB/oct Yüksek geçiş"
-
-#: data/ui/filter.glade:224
-msgid "24dB/oct Highpass"
-msgstr "24dB/oct Yüksek geçiş"
-
-#: data/ui/filter.glade:225
-msgid "36dB/oct Highpass"
-msgstr "36dB/oct Yüksek geçiş"
-
-#: data/ui/filter.glade:226
-msgid "6dB/oct Bandpass"
-msgstr "6dB/oct Bant geçişi"
-
-#: data/ui/filter.glade:227
-msgid "12dB/oct Bandpass"
-msgstr "12dB/oct Bant geçişi"
-
-#: data/ui/filter.glade:228
-msgid "18dB/oct Bandpass"
-msgstr "18dB/oct Bant geçişi"
-
-#: data/ui/filter.glade:229
-msgid "6dB/oct Bandreject"
-msgstr "6dB/oct Bant reddet"
-
-#: data/ui/filter.glade:230
-msgid "12dB/oct Bandreject"
-msgstr "12dB/oct Bant reddet"
-
-#: data/ui/filter.glade:231
-msgid "18dB/oct Bandreject"
-msgstr "12dB/oct Bant reddet"
-
-#: data/ui/filter.glade:254 data/ui/equalizer_band.glade:152
-#: data/ui/calibration_signals.glade:32
-msgid "Frequency"
-msgstr "Sıklık"
-
-#: data/ui/filter.glade:288 data/ui/equalizer_band.glade:67
-msgid "Resonance"
-msgstr "Çınlama"
-
-#: data/ui/filter.glade:323
-msgid "Inertia"
-msgstr "Durağan"
-
-#: data/ui/equalizer.glade:24
-msgid "Equalizer"
-msgstr "Ekolayzır"
-
-#: data/ui/equalizer.glade:129
-msgid "Split Channels"
-msgstr "Kanalları Böl"
-
-#: data/ui/equalizer.glade:155
-msgid "IIR"
-msgstr "IIR"
-
-#: data/ui/equalizer.glade:156
-msgid "FIR"
-msgstr "FIR"
-
-#: data/ui/equalizer.glade:157
-msgid "FFT"
-msgstr "FFT"
-
-#: data/ui/equalizer.glade:187
-msgid "Bands"
-msgstr "Bantlar"
-
-#: data/ui/equalizer.glade:209
-msgid "Flat Response"
-msgstr "Düz Yanıt"
-
-#: data/ui/equalizer.glade:224
-msgid "Calculate Frequencies"
-msgstr "Frekansları Hesapla"
-
-#: data/ui/equalizer.glade:238
-msgid "Reset Equalizer"
-msgstr "Ekolayzır Sıfırla"
-
-#: data/ui/equalizer_band.glade:60
-msgid "Off"
-msgstr "Kapalı"
-
-#: data/ui/equalizer_band.glade:61
-msgid "Bell"
-msgstr "Çan"
-
-#: data/ui/equalizer_band.glade:62
-msgid "High Pass"
-msgstr "Yüksek Geçiş"
-
-#: data/ui/equalizer_band.glade:63
-msgid "High Shelf"
-msgstr "Yüksek Sığlık"
-
-#: data/ui/equalizer_band.glade:64
-msgid "Low Pass"
-msgstr "Düşük Geçiş"
-
-#: data/ui/equalizer_band.glade:65
-msgid "Low Shelf"
-msgstr "Düşük Sığlık"
-
-#: data/ui/equalizer_band.glade:66
-msgid "Notch"
-msgstr "Çentik"
-
-#: data/ui/equalizer_band.glade:91
-msgid "RLC (BT)"
-msgstr "RLC (BT)"
-
-#: data/ui/equalizer_band.glade:92
-msgid "RLC (MT)"
-msgstr "RLC (MT)"
-
-#: data/ui/equalizer_band.glade:93
-msgid "BWC (BT)"
-msgstr "BWC (BT)"
-
-#: data/ui/equalizer_band.glade:94
-msgid "BWC (MT)"
-msgstr "BWC (MT)"
-
-#: data/ui/equalizer_band.glade:95
-msgid "LRX (BT)"
-msgstr "LRX (BT)"
-
-#: data/ui/equalizer_band.glade:96
-msgid "LRX (MT)"
-msgstr "LRX (MT)"
-
-#: data/ui/equalizer_band.glade:97
-msgid "APO (DR)"
-msgstr "APO (DR)"
-
-#: data/ui/equalizer_band.glade:109
-msgid "Slope"
-msgstr "Eğim"
-
-#: data/ui/equalizer_band.glade:121
-msgid "x1"
-msgstr "x1"
-
-#: data/ui/equalizer_band.glade:122
-msgid "x2"
-msgstr "x2"
-
-#: data/ui/equalizer_band.glade:123
-msgid "x3"
-msgstr "x3"
-
-#: data/ui/equalizer_band.glade:124
-msgid "x4"
-msgstr "x4"
-
-#: data/ui/equalizer_band.glade:201
-msgid "Quality"
-msgstr "Kalite"
-
-#: data/ui/equalizer_band.glade:252
-msgid "Width"
-msgstr "Genişlik"
-
-#: data/ui/equalizer_band.glade:314 data/ui/stereo_tools.glade:550
-#: data/ui/stereo_tools.glade:609 data/ui/crystalizer_band.glade:27
-msgid "Mute"
-msgstr "Sessiz"
-
-#: data/ui/equalizer_preset_row.glade:37 data/ui/irs_row.glade:59
-#: data/ui/preset_row.glade:51
-msgid "Apply"
-msgstr "Uygula"
-
-#: data/ui/reverb.glade:64
-msgid "Reverberation"
-msgstr "Yankılanma"
-
-#: data/ui/reverb.glade:157
-msgid "Ambience"
-msgstr "Ortam"
-
-#: data/ui/reverb.glade:170
-msgid "Empty Walls"
-msgstr "Boş Duvarlar"
-
-#: data/ui/reverb.glade:183
-msgid "Room"
-msgstr "Oda"
-
-#: data/ui/reverb.glade:196
-msgid "Large Empty Hall"
-msgstr "Büyük Boş Salon"
-
-#: data/ui/reverb.glade:222
-msgid "Large Occupied Hall"
-msgstr "Büyük Dolu Salon"
-
-#: data/ui/reverb.glade:334
-msgid "Pre Delay"
-msgstr "Ön Gecikme"
-
-#: data/ui/reverb.glade:347
-msgid "Decay Time"
-msgstr "Bozunma Süresi"
-
-#: data/ui/reverb.glade:380 data/ui/bass_enhancer.glade:242
-#: data/ui/exciter.glade:245
-msgid "Amount"
-msgstr "Miktar"
-
-#: data/ui/reverb.glade:412
-msgid "Dry"
-msgstr "Sertlik"
-
-#: data/ui/reverb.glade:444
-msgid "Bass Cut"
-msgstr "Bas Kesim"
-
-#: data/ui/reverb.glade:495
-msgid "Treble Cut"
-msgstr "Tiz Kesim"
-
-#: data/ui/reverb.glade:538
-msgid "Diffusion"
-msgstr "Yayılma"
-
-#: data/ui/reverb.glade:550
-msgid "Room Size"
-msgstr "Oda Boyutu"
-
-#: data/ui/reverb.glade:563
-msgid "Small"
-msgstr "Küçük"
-
-#: data/ui/reverb.glade:564
-msgid "Medium"
-msgstr "Orta"
-
-#: data/ui/reverb.glade:565
-msgid "Large"
-msgstr "Büyük"
-
-#: data/ui/reverb.glade:566
-msgid "Tunnel"
-msgstr "Tünel"
-
-#: data/ui/reverb.glade:567
-msgid "Large/smooth"
-msgstr "Büyük/pürüzsüz"
-
-#: data/ui/reverb.glade:568
-msgid "Experimental"
-msgstr "Deneysel"
-
-#: data/ui/reverb.glade:581
-msgid "High Frequency Damping"
-msgstr "Yüksek Frekans Sönümleme"
-
-#: data/ui/bass_enhancer.glade:50
-msgid "Bass Enhancer"
-msgstr "Bas Yükseltici"
-
-#: data/ui/bass_enhancer.glade:186 data/ui/exciter.glade:187
-msgid "3rd"
-msgstr "3."
-
-#: data/ui/bass_enhancer.glade:198 data/ui/exciter.glade:199
-msgid "2nd"
-msgstr "2."
-
-#: data/ui/bass_enhancer.glade:210 data/ui/exciter.glade:211
-msgid "Blend Harmonics"
-msgstr "Harmonik Karışımları"
-
-#: data/ui/bass_enhancer.glade:254 data/ui/bass_enhancer.glade:386
-#: data/ui/exciter.glade:258 data/ui/exciter.glade:390
-msgid "Harmonics"
-msgstr "Harmonikler"
-
-#: data/ui/bass_enhancer.glade:266 data/ui/exciter.glade:271
-msgid "Scope"
-msgstr "Kapsam"
-
-#: data/ui/bass_enhancer.glade:355
-msgid "Floor"
-msgstr "Zemin"
-
-#: data/ui/exciter.glade:50
-msgid "Exciter"
-msgstr "Uyarıcı"
-
-#: data/ui/exciter.glade:358 data/ui/maximizer.glade:159
-msgid "Ceiling"
-msgstr "Tavan"
-
-#: data/ui/stereo_tools.glade:42
-msgid "Stereo Tools"
-msgstr "Stereo Araçları"
-
-#: data/ui/stereo_tools.glade:207
-msgid "Softclip"
-msgstr "Yumuşak kırpım"
-
-#: data/ui/stereo_tools.glade:231 data/ui/stereo_tools.glade:647
-msgid "Balance"
-msgstr "Denge"
-
-#: data/ui/stereo_tools.glade:263
-msgid "S/C Level"
-msgstr "S/C Seviye"
-
-#: data/ui/stereo_tools.glade:321
-msgid "Side Level"
-msgstr "Seviye Tarafı"
-
-#: data/ui/stereo_tools.glade:372
-msgid "Side Balance"
-msgstr "Denge Tarafı"
-
-#: data/ui/stereo_tools.glade:404
-msgid "Middle Level"
-msgstr "Orta Seviye"
-
-#: data/ui/stereo_tools.glade:417
-msgid "Middle Panorama"
-msgstr "Orta Panorama"
-
-#: data/ui/stereo_tools.glade:475
-msgid "LR > LR (Stereo Default)"
-msgstr "LR > LR (Stereo Öntanımlı)"
-
-#: data/ui/stereo_tools.glade:476
-msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (Stereo Orta Tarafa)"
-
-#: data/ui/stereo_tools.glade:477
-msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (Orta Taraftan Stereo)"
-
-#: data/ui/stereo_tools.glade:478
-msgid "LR > LL (Mono Left Channel)"
-msgstr "LR > LL (Mono Sol Kanal)"
-
-#: data/ui/stereo_tools.glade:479
-msgid "LR > RR (Mono Right Channel)"
-msgstr "LR > RR (Mono Sağ Kanal)"
-
-#: data/ui/stereo_tools.glade:480
-msgid "LR > L+R (Mono Sum L+R)"
-msgstr "LR > L+R (Mono İşlem L+R)"
-
-#: data/ui/stereo_tools.glade:481
-msgid "LR > RL (Stereo Flip Channels)"
-msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
-
-#: data/ui/stereo_tools.glade:498
-msgid "Stereo Matrix"
-msgstr "Stereo Matris"
-
-#: data/ui/stereo_tools.glade:537 data/ui/stereo_tools.glade:578
-msgid "Invert Phase"
-msgstr "Ters Faz"
-
-#: data/ui/stereo_tools.glade:679
-msgid "Delay L/R"
-msgstr "Gecikme L/R"
-
-#: data/ui/stereo_tools.glade:713
-msgid "Stereo Base"
-msgstr "Stereo Taban"
-
-#: data/ui/stereo_tools.glade:746
-msgid "Stereo Phase"
-msgstr "Stereo Faz"
-
-#: data/ui/crossfeed.glade:59
-msgid "Jmeier"
-msgstr "Jmeier"
-
-#: data/ui/crossfeed.glade:85
-msgid "Cmoy"
-msgstr "Cmoy"
-
-#: data/ui/crossfeed.glade:122
-msgid "Cutoff"
-msgstr "Kesici"
-
-#: data/ui/crossfeed.glade:155
-msgid "Feed"
-msgstr "Akış"
-
-#: data/ui/crossfeed.glade:392
-msgid "Crossfeed"
-msgstr "Çapraz Besleme"
-
-#: data/ui/maximizer.glade:29
-msgid "Maximizer"
-msgstr "Yükseltici"
-
-#: data/ui/maximizer.glade:269 data/ui/gate.glade:190
-msgid "Gain Reduction"
-msgstr "Kazanç Azaltma"
-
-#: data/ui/loudness.glade:196
-msgid "Link"
-msgstr "Bağ"
-
-#: data/ui/gate.glade:31
-msgid "Gate"
-msgstr "Aralık"
-
-#: data/ui/gate.glade:162 data/ui/deesser.glade:190
-msgid "Detection"
-msgstr "Keşif"
-
-#: data/ui/gate.glade:176
-msgid "Stereo Link"
-msgstr "Stereo Bağ"
-
-#: data/ui/gate.glade:235
-msgid "Average"
-msgstr "Ortalama"
-
-#: data/ui/gate.glade:236
-msgid "Maximum"
-msgstr "Azami"
-
-#: data/ui/gate.glade:667 data/ui/multiband_gate.glade:766
-#: data/ui/multiband_gate.glade:1175 data/ui/multiband_gate.glade:1585
-#: data/ui/multiband_gate.glade:1995
-msgid "Gating"
-msgstr "Geçitleme"
-
-#: data/ui/multiband_gate.glade:70
-msgid "Multiband Gate"
-msgstr "Çoklu Bant Geçitleme"
-
-#: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
-#: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
-#: data/ui/deesser.glade:748
-msgid "Reduction"
-msgstr "Azalım"
-
-#: data/ui/deesser.glade:61
-msgid "Deesser"
-msgstr "Deesser"
-
-#: data/ui/deesser.glade:232
-msgid "Wide"
-msgstr "Geniş"
-
-#: data/ui/deesser.glade:233 data/ui/deesser.glade:262
-msgid "Split"
-msgstr "Ayır"
-
-#: data/ui/deesser.glade:381
-msgid "Level"
-msgstr "Seviye"
-
-#: data/ui/deesser.glade:394
-msgid "Peak Q"
-msgstr "Q Doruk"
-
-#: data/ui/deesser.glade:426
-msgid "Laxity"
-msgstr "Gevşeklik"
-
-#: data/ui/deesser.glade:761
-msgid "Detected"
-msgstr "Saptanan"
-
-#: data/ui/convolver.glade:24
-msgid "Convolver"
-msgstr "Sarsıcı"
-
-#: data/ui/convolver.glade:101
-msgid "Import Impulse"
-msgstr "Dürtü Dosyasını İçeri Al"
-
-#: data/ui/convolver.glade:105
-msgid "Import Impulse Response File"
-msgstr "Dürtü Yanıt Dosyasını İçeri Aktar"
-
-#: data/ui/convolver.glade:221
-msgid "L"
-msgstr "L"
-
-#: data/ui/convolver.glade:235
-msgid "R"
-msgstr "R"
-
-#: data/ui/convolver.glade:298
-msgid "Duration"
-msgstr "Süre"
-
-#: data/ui/convolver.glade:309
-msgid "Samples"
-msgstr "Örnekler"
-
-#: data/ui/convolver.glade:342 src/convolver_ui.cpp:251
-msgid "Impulse Response"
-msgstr "Dürtü Yanıtı"
-
-#: data/ui/convolver.glade:362
-msgid "Select the impulse Response File"
-msgstr "Dürtü Yanıt Dosyasını Seç"
-
-#: data/ui/convolver.glade:382 src/spectrum_settings_ui.cpp:143
-msgid "Spectrum"
-msgstr "Spektrum"
-
-#: data/ui/convolver.glade:423
-msgid "Stereo Width"
-msgstr "Stereo Genişliği"
-
-#: data/ui/crystalizer.glade:48
-msgid "Crystalizer"
-msgstr "Kristalleştirici"
-
-#: data/ui/crystalizer.glade:161
-msgid "Aggressive Mode"
-msgstr "Agresif Kip"
-
-#: data/ui/crystalizer.glade:420
-msgid "Loudness Range"
-msgstr "Yüksek Ses Aralığı"
-
-#: data/ui/crystalizer.glade:439
-msgid "Before"
-msgstr "Öncesi"
-
-#: data/ui/crystalizer.glade:452
-msgid "After"
-msgstr "Sonrası"
-
-#: data/ui/pitch.glade:36
-msgid "Pitch"
-msgstr "Perde"
-
-#: data/ui/pitch.glade:142
-msgid "Faster"
-msgstr "Daha Hızlı"
-
-#: data/ui/pitch.glade:156
-msgid "Preserve Formant"
-msgstr "Biçimlendiriciyi Koru"
-
-#: data/ui/pitch.glade:180
-msgid "Cents"
-msgstr "Küsür"
-
-#: data/ui/pitch.glade:211
-msgid "Semitones"
-msgstr "Yarım Ses"
-
-#: data/ui/pitch.glade:242
-msgid "Octaves"
-msgstr "Oktav"
-
-#: data/ui/pitch.glade:273
-msgid "Crispness"
-msgstr "Canlılık"
-
-#: data/ui/webrtc.glade:30
-msgid "Webrtc"
-msgstr "Webrtc"
-
-#: data/ui/webrtc.glade:137 data/ui/webrtc.glade:257 data/ui/webrtc.glade:327
-#: data/ui/webrtc.glade:496
-msgid "Enable"
-msgstr "Etkinleştir"
-
-#: data/ui/webrtc.glade:158
-msgid "Extended Filter"
-msgstr "Genişletilmiş Süzgeç"
-
-#: data/ui/webrtc.glade:171
-msgid "Delay Agnostic"
-msgstr "Agnostik Gecikme"
-
-#: data/ui/webrtc.glade:183
-msgid "High Pass Filter"
-msgstr "Yüksek Geçiş Süzgeci"
-
-#: data/ui/webrtc.glade:212 data/ui/webrtc.glade:280
-msgid "Suppresion Level"
-msgstr "Bastırma Seviyesi"
-
-#: data/ui/webrtc.glade:225 data/ui/webrtc.glade:293 data/ui/webrtc.glade:548
-msgid "Low"
-msgstr "Düşük"
-
-#: data/ui/webrtc.glade:226 data/ui/webrtc.glade:294 data/ui/webrtc.glade:549
-msgid "Moderate"
-msgstr "Ölçülü"
-
-#: data/ui/webrtc.glade:227 data/ui/webrtc.glade:295 data/ui/webrtc.glade:550
-msgid "High"
-msgstr "Yüksek"
-
-#: data/ui/webrtc.glade:244
-msgid "Echo Canceller"
-msgstr "Yankı Önleyici"
-
-#: data/ui/webrtc.glade:296
-msgid "Very High"
-msgstr "Çok Yüksek"
-
-#: data/ui/webrtc.glade:313
-msgid "Noise Suppressor"
-msgstr "Gürültü Baskılayıcı"
-
-#: data/ui/webrtc.glade:363
-msgid "Adaptive Digital"
-msgstr "Dijital Uyarlamalı"
-
-#: data/ui/webrtc.glade:364
-msgid "Fixed Digital"
-msgstr "Dijital Sabitleyici"
-
-#: data/ui/webrtc.glade:381
-msgid "Gain Controller"
-msgstr "Kazanç Denetleyicisi"
-
-#: data/ui/webrtc.glade:419
-msgid "Target Level"
-msgstr "Hedef Seviye"
-
-#: data/ui/webrtc.glade:448
-msgid "Maximum Gain"
-msgstr "Azami Kazanç"
-
-#: data/ui/webrtc.glade:521
-msgid "Detection Likelihood"
-msgstr "Algılama Olasılığı"
-
-#: data/ui/webrtc.glade:534
-msgid "Frame Size"
-msgstr "Çerçeve Boyutu"
-
-#: data/ui/webrtc.glade:547
-msgid "Very Low"
-msgstr "Çok Düşük"
-
-#: data/ui/webrtc.glade:584
-msgid "Voice Detector"
-msgstr "Ses Dedektörü"
-
-#: data/ui/delay.glade:24
-msgid "Delay"
-msgstr "Gecikme"
-
-#: data/ui/preset_row.glade:68
-msgid "Save current settings to this preset file"
-msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
-
-#: data/ui/preset_row.glade:84
-msgid "Remove this preset file"
-msgstr "Hazır ayar dosyasını kaldır"
-
-#: data/ui/preset_row.glade:100
-msgid ""
-"Automatically apply this preset whenever the currently used device is "
-"plugged in the system"
-msgstr ""
-"Şu anda kullanılan cihaz sisteme takılı olduğunda bu ön ayarı otomatik "
-"olarak uygula"
-
-#: data/ui/presets_menu.glade:86 data/ui/presets_menu.glade:195
-#: src/presets_menu_ui.cpp:110
-msgid "Import Presets"
-msgstr "Önayarları İçe Aktar"
-
-#: data/ui/calibration_signals.glade:64
-msgid "Volume"
-msgstr "Ses"
-
-#: data/ui/calibration_signals.glade:108
-msgid "Sine"
-msgstr "Sinüs"
-
-#: data/ui/calibration_signals.glade:109
-msgid "Square"
-msgstr "Kare"
-
-#: data/ui/calibration_signals.glade:110
-msgid "Saw"
-msgstr "Kesir"
-
-#: data/ui/calibration_signals.glade:111
-msgid "Triangle"
-msgstr "Üçgen"
-
-#: data/ui/calibration_signals.glade:112
-msgid "Silence"
-msgstr "Sessizlik"
-
-#: data/ui/calibration_signals.glade:113
-msgid "White Noise"
-msgstr "Beyaz Gürültü"
-
-#: data/ui/calibration_signals.glade:114
-msgid "Pink Noise"
-msgstr "Pembe Gürültü"
-
-#: data/ui/calibration_signals.glade:115
-msgid "Sine Table"
-msgstr "Sinüs Tablosu"
-
-#: data/ui/calibration_signals.glade:116
-msgid "Ticks"
-msgstr "İşaretler"
-
-#: data/ui/calibration_signals.glade:117
-msgid "Gaussian Noise"
-msgstr "Gauss Gürültü"
-
-#: data/ui/calibration_signals.glade:118
-msgid "Red Noise"
-msgstr "Kırmızı Gürültü"
-
-#: data/ui/calibration_signals.glade:119
-msgid "Blue Noise"
-msgstr "Mavi Gürültü"
-
-#: data/ui/calibration_signals.glade:120
-msgid "Violet Noise"
-msgstr "Menekşe Gürültü"
-
-#: data/ui/calibration_mic.glade:29
-msgid "Window"
-msgstr "Pencere"
-
-#: data/ui/calibration_mic.glade:70
-msgid "Measure Noise"
-msgstr "Gürültü Ölçümü"
-
-#: data/ui/calibration_mic.glade:99
-msgid "Subtract Noise"
-msgstr "Gürültü Çıkar"
-
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-msgid "Audio Effects for PulseAudio Applications"
+#, fuzzy
+#| msgid "Audio Effects for PulseAudio Applications"
+msgid "Audio Effects for PipeWire Applications"
 msgstr "PulseAudio Uygulamaları için Ses Efektleri"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
@@ -1412,8 +35,13 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+#, fuzzy
+#| msgid ""
+#| "EasyEffects is an advanced audio manipulation tools. It includes an "
+#| "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#| "a few. To complement this there is also a built in spectrum analyzer."
 msgid ""
-"EasyEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
@@ -1421,10 +49,21 @@ msgstr ""
 "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
 "bir spektrum analizörü bulunmaktadır."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
-"Because EasyEffects uses the default PulseAudio sound server it will work "
-"with most, if not all, applications you use. All supported applications are "
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#, fuzzy
+#| msgid ""
+#| "Because EasyEffects uses the default PulseAudio sound server it will work "
+#| "with most, if not all, applications you use. All supported applications "
+#| "are presented in the main window, where each can be enabled individually."
+msgid ""
+"Because EasyEffects uses the default PipeWire sound server it will work with "
+"most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
 "EasyEffects, varsayılan PulseAudio ses sunucusunu kullandığından, "
@@ -1432,7 +71,7 @@ msgstr ""
 "Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
 "ana pencerede sunulur."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:22
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -1442,29 +81,33 @@ msgstr ""
 "giriş cihazına da efektler uygulayabilir. Bu özellik ses kaydında da "
 "kullanışlıdır ve sesli konuşmalarda da iyi çalışır."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:15
 msgid ""
-"When EasyEffects is launched it will conveniently remember the "
-"configuration used in the last session. It is also possible to save all the "
-"current settings as profiles."
+"When EasyEffects is launched it will conveniently remember the configuration "
+"used in the last session. It is also possible to save all the current "
+"settings as profiles."
 msgstr ""
-"EasyEffects başlatıldığında, son oturumda kullanılan ayarlamaları "
-"rahatlıkla hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek de "
-"mümkündür."
+"EasyEffects başlatıldığında, son oturumda kullanılan ayarlamaları rahatlıkla "
+"hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek de mümkündür."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:24
 msgid "Set the volume and turn on/off effects"
 msgstr "Sesi ayarla ve efektleri aç/kapat"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:44
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:28
 msgid "Includes an equalizer with built-in presets"
 msgstr "Yerleşik ön ayarlara sahip bir ekolayzır içerir"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:48
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:32
 msgid "Input Limiter"
 msgstr "Giriş Sınırlayıcı"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:56
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:36 data/ui/compressor.ui:37
+#: include/effects_base_ui.hpp:136
+msgid "Compressor"
+msgstr "Sıkıştırıcı"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Calibration"
 msgstr "Kalibrasyon"
 
@@ -1477,87 +120,1765 @@ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
 "sınırlayıcı,kompresör,yankı,ekolayzır,otomatikses;yükseltici;sıkıştırıcı;"
 
-#. Translators: This is an icon name, don't translate!
-#: data/com.github.wwmm.easyeffects.desktop.in:10
-msgid "easyeffects"
-msgstr "easyeffects"
-
-#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:201
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
+#: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
 msgid "\"Presets\""
 msgstr "\"Ön Ayarlar\""
 
-#: src/application.cpp:19
-msgid "Quit EasyEffects. Useful when running in service mode."
-msgstr "EasyEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
+#: data/ui/app_info.ui:66
+#, fuzzy
+#| msgid "Blocklist"
+msgid "Add to Blocklist"
+msgstr "Karaliste"
 
-#: src/application.cpp:21
-msgid "Show available presets."
-msgstr "Kullanılabilir hazır ayarları göster."
+#: data/ui/app_info.ui:82
+msgid "Format"
+msgstr "Biçim"
 
-#: src/application.cpp:24
-msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
+#: data/ui/app_info.ui:108 data/ui/convolver.ui:131
+msgid "Rate"
+msgstr "Oran"
 
-#: src/application.cpp:26
-msgid "Reset EasyEffects."
-msgstr "EasyEffects’i Sıfırla."
+#: data/ui/app_info.ui:134
+msgid "Channels"
+msgstr "Kanallar"
 
-#: src/application.cpp:233
-msgid "Output Presets: "
-msgstr "Çıkış Ön Ayarları: "
+#: data/ui/app_info.ui:160
+msgid "Latency"
+msgstr "Gecikme"
 
-#: src/application.cpp:241
-msgid "Input Presets: "
-msgstr "Giriş Ön Ayarları: "
+#: data/ui/app_info.ui:186
+msgid "State"
+msgstr "Durum"
 
-#: src/effects_base_ui.cpp:27
-msgid "Applications"
-msgstr "Uygulamalar"
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:343
+#: data/ui/bass_enhancer.ui:310 data/ui/compressor.ui:833
+#: data/ui/convolver.ui:295 data/ui/crossfeed.ui:210 data/ui/crystalizer.ui:112
+#: data/ui/deesser.ui:477 data/ui/delay.ui:178 data/ui/equalizer.ui:257
+#: data/ui/exciter.ui:310 data/ui/filter.ui:236 data/ui/gate.ui:398
+#: data/ui/limiter.ui:305 data/ui/loudness.ui:199 data/ui/maximizer.ui:194
+#: data/ui/multiband_compressor.ui:413 data/ui/multiband_compressor.ui:723
+#: data/ui/multiband_compressor.ui:1033 data/ui/multiband_compressor.ui:1343
+#: data/ui/multiband_compressor.ui:1488 data/ui/multiband_gate.ui:446
+#: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1132
+#: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1620
+#: data/ui/pipe_info.ui:277 data/ui/pitch.ui:264 data/ui/presets_menu.ui:35
+#: data/ui/reverb.ui:425 data/ui/rnnoise.ui:167 data/ui/stereo_tools.ui:370
+#: data/ui/stereo_tools.ui:601 src/stream_output_effects_ui.cpp:82
+msgid "Output"
+msgstr "Çıkış"
 
-#: src/blocklist_settings_ui.cpp:71
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:283
+#: data/ui/bass_enhancer.ui:232 data/ui/compressor.ui:448
+#: data/ui/compressor.ui:755 data/ui/convolver.ui:217 data/ui/crossfeed.ui:132
+#: data/ui/crystalizer.ui:34 data/ui/deesser.ui:399 data/ui/delay.ui:100
+#: data/ui/equalizer.ui:179 data/ui/exciter.ui:232 data/ui/filter.ui:158
+#: data/ui/gate.ui:320 data/ui/limiter.ui:227 data/ui/loudness.ui:121
+#: data/ui/maximizer.ui:134 data/ui/multiband_compressor.ui:1410
+#: data/ui/multiband_gate.ui:1542 data/ui/pipe_info.ui:351 data/ui/pitch.ui:186
+#: data/ui/presets_menu.ui:58 data/ui/reverb.ui:347 data/ui/rnnoise.ui:89
+#: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:523
+#: src/stream_input_effects_ui.cpp:100
+msgid "Input"
+msgstr "Giriş"
+
+#: data/ui/application_window.ui:95
+msgid "PipeWire"
+msgstr ""
+
+#: data/ui/application_window.ui:116 data/ui/reverb.ui:19
+#: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
+#: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
+#: src/presets_menu_ui.cpp:357
+msgid "Presets"
+msgstr "Ön Ayarlar"
+
+#: data/ui/application_window.ui:124
+#, fuzzy
+#| msgid "Bypass"
+msgid "Global Bypass"
+msgstr "Atla"
+
+#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: data/ui/autogain.ui:19
+msgid "Target"
+msgstr "Hedef"
+
+#: data/ui/autogain.ui:42
+msgid "Reset History"
+msgstr "Geçmişi Sıfırla"
+
+#: data/ui/autogain.ui:50 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
+#: data/ui/convolver.ui:15 data/ui/crossfeed.ui:15 data/ui/crystalizer.ui:14
+#: data/ui/crystalizer_band.ui:10 data/ui/deesser.ui:18 data/ui/delay.ui:15
+#: data/ui/equalizer.ui:134 data/ui/exciter.ui:18 data/ui/filter.ui:15
+#: data/ui/gate.ui:14 data/ui/limiter.ui:37 data/ui/loudness.ui:15
+#: data/ui/maximizer.ui:15 data/ui/multiband_compressor.ui:14
+#: data/ui/multiband_compressor.ui:174 data/ui/multiband_compressor.ui:484
+#: data/ui/multiband_compressor.ui:794 data/ui/multiband_compressor.ui:1104
+#: data/ui/multiband_gate.ui:14 data/ui/multiband_gate.ui:174
+#: data/ui/multiband_gate.ui:517 data/ui/multiband_gate.ui:860
+#: data/ui/multiband_gate.ui:1203 data/ui/pitch.ui:30 data/ui/reverb.ui:25
+#: data/ui/rnnoise.ui:26 data/ui/stereo_tools.ui:14
+msgid "Bypass"
+msgstr "Atla"
+
+#: data/ui/autogain.ui:65
+msgid "Momentary"
+msgstr "Anlık"
+
+#: data/ui/autogain.ui:96
+msgid "Short Term"
+msgstr "Kısa Süreli"
+
+#: data/ui/autogain.ui:127
+msgid "Integrated"
+msgstr "Tümleşik"
+
+#: data/ui/autogain.ui:158
+msgid "Relative"
+msgstr "Göreceli"
+
+#: data/ui/autogain.ui:188
+msgid "Range"
+msgstr "Sınır"
+
+#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:148
+msgid "Loudness"
+msgstr "Yüksek Ses"
+
+#: data/ui/autogain.ui:252
+#, fuzzy
+#| msgid "Input Gain"
+msgid "Output Gain"
+msgstr "Giriş Kazancı"
+
+#: data/ui/autogain.ui:407 data/ui/bass_enhancer.ui:423
+#: data/ui/compressor.ui:1007 data/ui/convolver.ui:377 data/ui/crossfeed.ui:292
+#: data/ui/crystalizer.ui:186 data/ui/deesser.ui:619 data/ui/delay.ui:260
+#: data/ui/equalizer.ui:339 data/ui/equalizer_band.ui:137
+#: data/ui/equalizer_band.ui:199 data/ui/exciter.ui:422 data/ui/filter.ui:318
+#: data/ui/gate.ui:510 data/ui/limiter.ui:418 data/ui/loudness.ui:281
+#: data/ui/maximizer.ui:290 data/ui/multiband_compressor.ui:1570
+#: data/ui/multiband_gate.ui:1702 data/ui/pitch.ui:346 data/ui/reverb.ui:507
+#: data/ui/rnnoise.ui:249 data/ui/stereo_tools.ui:713
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: data/ui/autogain.ui:420 data/ui/bass_enhancer.ui:436
+#: data/ui/compressor.ui:1020 data/ui/convolver.ui:390 data/ui/crossfeed.ui:305
+#: data/ui/deesser.ui:632 data/ui/delay.ui:273 data/ui/equalizer.ui:352
+#: data/ui/exciter.ui:435 data/ui/filter.ui:331 data/ui/gate.ui:523
+#: data/ui/limiter.ui:431 data/ui/loudness.ui:294 data/ui/maximizer.ui:303
+#: data/ui/multiband_compressor.ui:1583 data/ui/multiband_gate.ui:1715
+#: data/ui/pitch.ui:359 data/ui/reverb.ui:520 data/ui/rnnoise.ui:262
+#: data/ui/stereo_tools.ui:726
+msgid "Using"
+msgstr ""
+
+#: data/ui/autoload_row.ui:15 data/ui/compressor.ui:471
+msgid "Device"
+msgstr ""
+
+#: data/ui/autoload_row.ui:38
+msgid "Profile"
+msgstr ""
+
+#: data/ui/autoload_row.ui:62
+#, fuzzy
+#| msgid "Presets"
+msgid "Preset"
+msgstr "Ön Ayarlar"
+
+#: data/ui/autoload_row.ui:86
+msgid "Remove"
+msgstr ""
+
+#: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:368 data/ui/deesser.ui:23
+#: data/ui/exciter.ui:23
+msgid "Listen"
+msgstr "Liste"
+
+#: data/ui/bass_enhancer.ui:32 data/ui/exciter.ui:32
+msgid "Blend Harmonics"
+msgstr "Harmonik Karışımları"
+
+#: data/ui/bass_enhancer.ui:44 data/ui/exciter.ui:44
+msgid "3rd"
+msgstr "3."
+
+#: data/ui/bass_enhancer.ui:77 data/ui/exciter.ui:77
+msgid "2nd"
+msgstr "2."
+
+#: data/ui/bass_enhancer.ui:93 data/ui/exciter.ui:93
+msgid "Amount"
+msgstr "Miktar"
+
+#: data/ui/bass_enhancer.ui:126 data/ui/bass_enhancer.ui:388
+#: data/ui/exciter.ui:126 data/ui/exciter.ui:388
+msgid "Harmonics"
+msgstr "Harmonikler"
+
+#: data/ui/bass_enhancer.ui:160 data/ui/exciter.ui:160
+msgid "Scope"
+msgstr "Kapsam"
+
+#: data/ui/bass_enhancer.ui:191
+msgid "Floor"
+msgstr "Zemin"
+
+#: data/ui/client_info.ui:12 data/ui/module_info.ui:12
+msgid "Id"
+msgstr ""
+
+#: data/ui/client_info.ui:35 data/ui/module_info.ui:35
+#: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
+msgid "Name"
+msgstr "İsim"
+
+#: data/ui/client_info.ui:58
+msgid "API"
+msgstr ""
+
+#: data/ui/client_info.ui:81
+msgid "Access"
+msgstr ""
+
+#: data/ui/compressor.ui:49 data/ui/compressor.ui:386 data/ui/compressor.ui:636
+#: data/ui/deesser.ui:65 data/ui/equalizer.ui:106 data/ui/equalizer_band.ui:51
+#: data/ui/multiband_compressor.ui:31 data/ui/multiband_gate.ui:31
+msgid "Mode"
+msgstr "Kip"
+
+#: data/ui/compressor.ui:57
+msgid "Downward"
+msgstr "Aşağıya"
+
+#: data/ui/compressor.ui:58
+msgid "Upward"
+msgstr "Yukarıya"
+
+#: data/ui/compressor.ui:59
+msgid "Boosting"
+msgstr ""
+
+#: data/ui/compressor.ui:82 data/ui/gate.ui:113
+#: data/ui/multiband_compressor.ui:206 data/ui/multiband_compressor.ui:516
+#: data/ui/multiband_compressor.ui:826 data/ui/multiband_compressor.ui:1136
+#: data/ui/multiband_gate.ui:206 data/ui/multiband_gate.ui:549
+#: data/ui/multiband_gate.ui:892 data/ui/multiband_gate.ui:1235
+msgid "Attack"
+msgstr "Atak"
+
+#: data/ui/compressor.ui:93
+#, fuzzy
+#| msgid "Real Time"
+msgid "Time"
+msgstr "Eş Zamanlı"
+
+#: data/ui/compressor.ui:104 data/ui/deesser.ui:292 data/ui/gate.ui:181
+#: data/ui/maximizer.ui:29 data/ui/multiband_compressor.ui:274
+#: data/ui/multiband_compressor.ui:584 data/ui/multiband_compressor.ui:894
+#: data/ui/multiband_compressor.ui:1204 data/ui/multiband_gate.ui:274
+#: data/ui/multiband_gate.ui:617 data/ui/multiband_gate.ui:960
+#: data/ui/multiband_gate.ui:1303
+msgid "Threshold"
+msgstr "Eşik"
+
+#: data/ui/compressor.ui:165 data/ui/gate.ui:147 data/ui/limiter.ui:87
+#: data/ui/maximizer.ui:93 data/ui/multiband_compressor.ui:240
+#: data/ui/multiband_compressor.ui:550 data/ui/multiband_compressor.ui:860
+#: data/ui/multiband_compressor.ui:1170 data/ui/multiband_gate.ui:240
+#: data/ui/multiband_gate.ui:583 data/ui/multiband_gate.ui:926
+#: data/ui/multiband_gate.ui:1269
+msgid "Release"
+msgstr "Bırak"
+
+#: data/ui/compressor.ui:220 data/ui/deesser.ui:325 data/ui/gate.ui:214
+#: data/ui/multiband_compressor.ui:307 data/ui/multiband_compressor.ui:617
+#: data/ui/multiband_compressor.ui:927 data/ui/multiband_compressor.ui:1237
+#: data/ui/multiband_gate.ui:307 data/ui/multiband_gate.ui:650
+#: data/ui/multiband_gate.ui:993 data/ui/multiband_gate.ui:1336
+msgid "Ratio"
+msgstr "Oran"
+
+#: data/ui/compressor.ui:254 data/ui/gate.ui:248
+#: data/ui/multiband_compressor.ui:341 data/ui/multiband_compressor.ui:651
+#: data/ui/multiband_compressor.ui:961 data/ui/multiband_compressor.ui:1271
+#: data/ui/multiband_gate.ui:341 data/ui/multiband_gate.ui:684
+#: data/ui/multiband_gate.ui:1027 data/ui/multiband_gate.ui:1370
+msgid "Knee"
+msgstr "Oynak"
+
+#: data/ui/compressor.ui:287 data/ui/deesser.ui:360 data/ui/gate.ui:281
+#: data/ui/multiband_compressor.ui:374 data/ui/multiband_compressor.ui:684
+#: data/ui/multiband_compressor.ui:994 data/ui/multiband_compressor.ui:1304
+#: data/ui/multiband_gate.ui:374 data/ui/multiband_gate.ui:717
+#: data/ui/multiband_gate.ui:1060 data/ui/multiband_gate.ui:1403
+msgid "Makeup"
+msgstr "Süs"
+
+#: data/ui/compressor.ui:320
+#, fuzzy
+#| msgid "Threshold"
+msgid "Boost Threshold"
+msgstr "Eşik"
+
+#: data/ui/compressor.ui:359 data/ui/compressor.ui:941
+msgid "Sidechain"
+msgstr "Yanzincir"
+
+#: data/ui/compressor.ui:396 data/ui/deesser.ui:50 data/ui/gate.ui:39
+#: data/ui/multiband_compressor.ui:189 data/ui/multiband_compressor.ui:499
+#: data/ui/multiband_compressor.ui:809 data/ui/multiband_compressor.ui:1119
+#: data/ui/multiband_gate.ui:189 data/ui/multiband_gate.ui:532
+#: data/ui/multiband_gate.ui:875 data/ui/multiband_gate.ui:1218
+msgid "Peak"
+msgstr "Doruk"
+
+#: data/ui/compressor.ui:397 data/ui/deesser.ui:49 data/ui/gate.ui:38
+#: data/ui/multiband_compressor.ui:188 data/ui/multiband_compressor.ui:498
+#: data/ui/multiband_compressor.ui:808 data/ui/multiband_compressor.ui:1118
+#: data/ui/multiband_gate.ui:188 data/ui/multiband_gate.ui:531
+#: data/ui/multiband_gate.ui:874 data/ui/multiband_gate.ui:1217
+msgid "RMS"
+msgstr "RMS"
+
+#: data/ui/compressor.ui:398
+msgid "Low-Pass"
+msgstr "Düşük-Geçiş"
+
+#: data/ui/compressor.ui:399
+msgid "Uniform"
+msgstr "Aynı"
+
+#: data/ui/compressor.ui:411
+msgid "Source"
+msgstr "Kaynak"
+
+#: data/ui/compressor.ui:421
+msgid "Middle"
+msgstr "Orta"
+
+#: data/ui/compressor.ui:422
+msgid "Side"
+msgstr "Yan"
+
+#: data/ui/compressor.ui:423 data/ui/delay.ui:29 data/ui/equalizer.ui:37
+#: data/ui/pipe_info.ui:534 data/ui/stereo_tools.ui:164
+msgid "Left"
+msgstr "Sol"
+
+#: data/ui/compressor.ui:424 data/ui/delay.ui:61 data/ui/equalizer.ui:49
+#: data/ui/pipe_info.ui:544 data/ui/stereo_tools.ui:197
+msgid "Right"
+msgstr "Sağ"
+
+#: data/ui/compressor.ui:460 data/ui/equalizer_band.ui:21
+msgid "Type"
+msgstr "Tür"
+
+#: data/ui/compressor.ui:483
+msgid "Feed-forward"
+msgstr "İleri-besleme"
+
+#: data/ui/compressor.ui:484
+msgid "Feed-back"
+msgstr "Geri-besleme"
+
+#: data/ui/compressor.ui:485
+msgid "External"
+msgstr ""
+
+#: data/ui/compressor.ui:508
+msgid "Pre-amplification"
+msgstr "Öntanımlı-yükselticiler"
+
+#: data/ui/compressor.ui:541
+msgid "Reactivity"
+msgstr "Tepkinirlik"
+
+#: data/ui/compressor.ui:575 data/ui/limiter.ui:53
+msgid "Lookahead"
+msgstr "İlerleme"
+
+#: data/ui/compressor.ui:613
+#, fuzzy
+#| msgid "Sidechain"
+msgid "Sidechain Filters"
+msgstr "Yanzincir"
+
+#: data/ui/compressor.ui:624
+#, fuzzy
+#| msgid "High Pass"
+msgid "High-pass"
+msgstr "Yüksek Geçiş"
+
+#: data/ui/compressor.ui:648 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
+#: data/ui/pipe_info.ui:624
+msgid "Frequency"
+msgstr "Sıklık"
+
+#: data/ui/compressor.ui:659 data/ui/compressor.ui:707
+#: data/ui/equalizer_band.ui:31
+msgid "Off"
+msgstr "Kapalı"
+
+#: data/ui/compressor.ui:660 data/ui/compressor.ui:708
+#, fuzzy
+#| msgid "12dB/oct Lowpass"
+msgid "12 dB/oct"
+msgstr "12dB/oct Düşük geçiş"
+
+#: data/ui/compressor.ui:661 data/ui/compressor.ui:709
+#, fuzzy
+#| msgid "24dB/oct Lowpass"
+msgid "24 dB/oct"
+msgstr "24dB/oct Düşük geçiş"
+
+#: data/ui/compressor.ui:662 data/ui/compressor.ui:710
+#, fuzzy
+#| msgid "36dB/oct Lowpass"
+msgid "36 dB/oct"
+msgstr "36dB/oct Düşük geçiş"
+
+#: data/ui/compressor.ui:696
+#, fuzzy
+#| msgid "Low-Pass"
+msgid "Low-pass"
+msgstr "Düşük-Geçiş"
+
+#: data/ui/compressor.ui:911
+msgid "Curve"
+msgstr "Eğri"
+
+#: data/ui/compressor.ui:971 data/ui/deesser.ui:585 data/ui/maximizer.ui:254
+#: data/ui/multiband_gate.ui:406 data/ui/multiband_gate.ui:749
+#: data/ui/multiband_gate.ui:1092 data/ui/multiband_gate.ui:1435
+msgid "Reduction"
+msgstr "Azalım"
+
+#: data/ui/convolver.ui:43
+msgid "L"
+msgstr "L"
+
+#: data/ui/convolver.ui:53
+msgid "R"
+msgstr "R"
+
+#: data/ui/convolver.ui:79
+#, fuzzy
+#| msgid "Impulse Response"
+msgid "Impulses"
+msgstr "Dürtü Yanıtı"
+
+#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:158
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: data/ui/convolver.ui:157
+msgid "Samples"
+msgstr "Örnekler"
+
+#: data/ui/convolver.ui:183
+msgid "Duration"
+msgstr "Süre"
+
+#: data/ui/convolver.ui:421
+msgid "Import Impulse"
+msgstr "Dürtü Dosyasını İçeri Al"
+
+#: data/ui/convolver.ui:429 data/ui/effects_base.ui:377
+#: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
+msgid "Search"
+msgstr ""
+
+#: data/ui/crossfeed.ui:26
+msgid "Cmoy"
+msgstr "Cmoy"
+
+#: data/ui/crossfeed.ui:32
+msgid "Default"
+msgstr "Öntanımlı"
+
+#: data/ui/crossfeed.ui:38
+msgid "Jmeier"
+msgstr "Jmeier"
+
+#: data/ui/crossfeed.ui:57
+msgid "Cutoff"
+msgstr "Kesici"
+
+#: data/ui/crossfeed.ui:91
+msgid "Feed"
+msgstr "Akış"
+
+#: data/ui/crystalizer_band.ui:16 data/ui/equalizer_band.ui:220
+#: data/ui/stereo_tools.ui:174 data/ui/stereo_tools.ui:207
+msgid "Mute"
+msgstr "Sessiz"
+
+#: data/ui/deesser.ui:42 data/ui/gate.ui:31
+msgid "Detection"
+msgstr "Keşif"
+
+#: data/ui/deesser.ui:72
+msgid "Wide"
+msgstr "Geniş"
+
+#: data/ui/deesser.ui:73
+msgid "Split"
+msgstr "Ayır"
+
+#: data/ui/deesser.ui:88
+#, fuzzy
+#| msgid "Split"
+msgid "F1 Split"
+msgstr "Ayır"
+
+#: data/ui/deesser.ui:120
+#, fuzzy
+#| msgid "Peak"
+msgid "F2 Peak"
+msgstr "Doruk"
+
+#: data/ui/deesser.ui:156
+#, fuzzy
+#| msgid "Gain"
+msgid "F1 Gain"
+msgstr "Kazanç"
+
+#: data/ui/deesser.ui:190
+#, fuzzy
+#| msgid "Level"
+msgid "F2 Level"
+msgstr "Seviye"
+
+#: data/ui/deesser.ui:224
+#, fuzzy
+#| msgid "Peak Q"
+msgid "F2 Peak Q"
+msgstr "Q Doruk"
+
+#: data/ui/deesser.ui:258
+msgid "Laxity"
+msgstr "Gevşeklik"
+
+#: data/ui/deesser.ui:555
+msgid "Detected"
+msgstr "Saptanan"
+
+#: data/ui/effects_base.ui:64
+msgid "Add Plugin"
+msgstr ""
+
+#: data/ui/effects_base.ui:137
+msgid "Players"
+msgstr ""
+
+#: data/ui/effects_base.ui:160
+msgid "Plugins"
+msgstr ""
+
+#: data/ui/effects_base.ui:246
 msgid "Blocklist"
 msgstr "Karaliste"
 
-#: src/general_settings_ui.cpp:121
+#: data/ui/effects_base.ui:300
+msgid "Player Name"
+msgstr ""
+
+#: data/ui/equalizer.ui:76
+msgid "Bands"
+msgstr "Bantlar"
+
+#: data/ui/equalizer.ui:117
+msgid "IIR"
+msgstr "IIR"
+
+#: data/ui/equalizer.ui:118
+msgid "FIR"
+msgstr "FIR"
+
+#: data/ui/equalizer.ui:119
+msgid "FFT"
+msgstr "FFT"
+
+#: data/ui/equalizer.ui:120
+msgid "SPM"
+msgstr ""
+
+#: data/ui/equalizer.ui:141
+msgid "Split Channels"
+msgstr "Kanalları Böl"
+
+#: data/ui/equalizer.ui:147
+msgid "Flat Response"
+msgstr "Düz Yanıt"
+
+#: data/ui/equalizer.ui:154
+msgid "Calculate Frequencies"
+msgstr "Frekansları Hesapla"
+
+#: data/ui/equalizer.ui:161
+msgid "Load APO Preset"
+msgstr ""
+
+#: data/ui/equalizer_band.ui:32
+msgid "Bell"
+msgstr "Çan"
+
+#: data/ui/equalizer_band.ui:33
+msgid "High Pass"
+msgstr "Yüksek Geçiş"
+
+#: data/ui/equalizer_band.ui:34
+msgid "High Shelf"
+msgstr "Yüksek Sığlık"
+
+#: data/ui/equalizer_band.ui:35
+msgid "Low Pass"
+msgstr "Düşük Geçiş"
+
+#: data/ui/equalizer_band.ui:36
+msgid "Low Shelf"
+msgstr "Düşük Sığlık"
+
+#: data/ui/equalizer_band.ui:37
+msgid "Notch"
+msgstr "Çentik"
+
+#: data/ui/equalizer_band.ui:38 data/ui/filter.ui:83
+msgid "Resonance"
+msgstr "Çınlama"
+
+#: data/ui/equalizer_band.ui:39
+#, fuzzy
+#| msgid "Low Pass"
+msgid "All Pass"
+msgstr "Düşük Geçiş"
+
+#: data/ui/equalizer_band.ui:61
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: data/ui/equalizer_band.ui:62
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: data/ui/equalizer_band.ui:63
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: data/ui/equalizer_band.ui:64
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: data/ui/equalizer_band.ui:65
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: data/ui/equalizer_band.ui:66
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: data/ui/equalizer_band.ui:67
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
+#: data/ui/equalizer_band.ui:79
+msgid "Slope"
+msgstr "Eğim"
+
+#: data/ui/equalizer_band.ui:153
+msgid "Width"
+msgstr "Genişlik"
+
+#: data/ui/equalizer_band.ui:176
+msgid "Quality"
+msgstr "Kalite"
+
+#: data/ui/equalizer_band.ui:214 data/ui/multiband_compressor.ui:181
+#: data/ui/multiband_compressor.ui:491 data/ui/multiband_compressor.ui:801
+#: data/ui/multiband_compressor.ui:1111 data/ui/multiband_gate.ui:181
+#: data/ui/multiband_gate.ui:524 data/ui/multiband_gate.ui:867
+#: data/ui/multiband_gate.ui:1210
+msgid "Solo"
+msgstr "Tekli"
+
+#: data/ui/exciter.ui:191
+msgid "ceil"
+msgstr ""
+
+#: data/ui/filter.ui:23
+msgid "12dB/oct Lowpass"
+msgstr "12dB/oct Düşük geçiş"
+
+#: data/ui/filter.ui:24
+msgid "24dB/oct Lowpass"
+msgstr "24dB/oct Düşük geçiş"
+
+#: data/ui/filter.ui:25
+msgid "36dB/oct Lowpass"
+msgstr "36dB/oct Düşük geçiş"
+
+#: data/ui/filter.ui:26
+msgid "12dB/oct Highpass"
+msgstr "12dB/oct Yüksek geçiş"
+
+#: data/ui/filter.ui:27
+msgid "24dB/oct Highpass"
+msgstr "24dB/oct Yüksek geçiş"
+
+#: data/ui/filter.ui:28
+msgid "36dB/oct Highpass"
+msgstr "36dB/oct Yüksek geçiş"
+
+#: data/ui/filter.ui:29
+msgid "6dB/oct Bandpass"
+msgstr "6dB/oct Bant geçişi"
+
+#: data/ui/filter.ui:30
+msgid "12dB/oct Bandpass"
+msgstr "12dB/oct Bant geçişi"
+
+#: data/ui/filter.ui:31
+msgid "18dB/oct Bandpass"
+msgstr "18dB/oct Bant geçişi"
+
+#: data/ui/filter.ui:32
+msgid "6dB/oct Bandreject"
+msgstr "6dB/oct Bant reddet"
+
+#: data/ui/filter.ui:33
+msgid "12dB/oct Bandreject"
+msgstr "12dB/oct Bant reddet"
+
+#: data/ui/filter.ui:34
+msgid "18dB/oct Bandreject"
+msgstr "12dB/oct Bant reddet"
+
+#: data/ui/filter.ui:117
+msgid "Inertia"
+msgstr "Durağan"
+
+#: data/ui/gate.ui:54
+#, fuzzy
+#| msgid "Gain Reduction"
+msgid "Maximum Gain Reduction"
+msgstr "Kazanç Azaltma"
+
+#: data/ui/gate.ui:86
+msgid "Stereo Link"
+msgstr "Stereo Bağ"
+
+#: data/ui/gate.ui:93
+msgid "Average"
+msgstr "Ortalama"
+
+#: data/ui/gate.ui:94 data/ui/spectrum_settings.ui:218
+msgid "Maximum"
+msgstr "Azami"
+
+#: data/ui/gate.ui:476 data/ui/multiband_gate.ui:476
+#: data/ui/multiband_gate.ui:819 data/ui/multiband_gate.ui:1162
+#: data/ui/multiband_gate.ui:1505
+msgid "Gating"
+msgstr "Geçitleme"
+
+#: data/ui/general_settings.ui:17
+msgid "Start Service at Login"
+msgstr "Oturum Açarken Hizmeti Başlat"
+
+#: data/ui/general_settings.ui:38
+msgid "Process All Outputs"
+msgstr "Tüm Çıkışları İşle"
+
+#: data/ui/general_settings.ui:59
+msgid "Process All Inputs"
+msgstr "Tüm Girişleri İşle"
+
+#: data/ui/general_settings.ui:80
+msgid "Use Dark Theme"
+msgstr "Koyu Tema Kullan"
+
+#: data/ui/general_settings.ui:101
+msgid "Run in Background"
+msgstr ""
+
+#: data/ui/general_settings.ui:138
+#, fuzzy
+#| msgid "Settings"
+msgid "Reset All Settings"
+msgstr "Ayarlar"
+
+#: data/ui/general_settings.ui:144
+#, fuzzy
+#| msgid "EasyEffects"
+msgid "About EasyEffects"
+msgstr "EasyEffects"
+
+#: data/ui/limiter.ui:21
+msgid "Automatic Leveling"
+msgstr ""
+
+#: data/ui/limiter.ui:29
+msgid "Automatic Smoothing Control"
+msgstr ""
+
+#: data/ui/limiter.ui:121
+msgid "Limit"
+msgstr "Limit"
+
+#: data/ui/limiter.ui:153
+msgid "Oversampling"
+msgstr "Aşırı Örnekleme"
+
+#: data/ui/limiter.ui:187
+msgid "ASC"
+msgstr "ASC"
+
+#: data/ui/limiter.ui:383
+msgid "Attenuation"
+msgstr "Zayıflatma"
+
+#: data/ui/loudness.ui:32
+msgid "Standard"
+msgstr ""
+
+#: data/ui/loudness.ui:40
+msgid "Flat"
+msgstr ""
+
+#: data/ui/loudness.ui:41
+msgid "ISO226-2003"
+msgstr ""
+
+#: data/ui/loudness.ui:42
+msgid "Fletcher-Munson"
+msgstr ""
+
+#: data/ui/loudness.ui:43
+msgid "Robinson-Dadson"
+msgstr ""
+
+#: data/ui/loudness.ui:58
+#, fuzzy
+#| msgid "Frame Size"
+msgid "FFT Size"
+msgstr "Çerçeve Boyutu"
+
+#: data/ui/loudness.ui:87
+#, fuzzy
+#| msgid "Output"
+msgid "Output Volume"
+msgstr "Çıkış"
+
+#: data/ui/maximizer.ui:61
+msgid "Ceiling"
+msgstr "Tavan"
+
+#: data/ui/module_info.ui:58
+#, fuzzy
+#| msgid "Detection"
+msgid "Description"
+msgstr "Keşif"
+
+#: data/ui/multiband_compressor.ui:38 data/ui/multiband_gate.ui:38
+msgid "LR4"
+msgstr "LR4"
+
+#: data/ui/multiband_compressor.ui:39 data/ui/multiband_gate.ui:39
+msgid "LR8"
+msgstr "LR8"
+
+#: data/ui/multiband_compressor.ui:54 data/ui/multiband_gate.ui:54
+msgid "Split 1/2"
+msgstr "1/2 Böl"
+
+#: data/ui/multiband_compressor.ui:86 data/ui/multiband_gate.ui:86
+msgid "Split 2/3"
+msgstr "2/3 Böl"
+
+#: data/ui/multiband_compressor.ui:118 data/ui/multiband_gate.ui:118
+msgid "Split 3/4"
+msgstr "3/4 Böl"
+
+#: data/ui/multiband_compressor.ui:161 data/ui/multiband_gate.ui:161
+msgid "Sub Band"
+msgstr "Alt Bant"
+
+#: data/ui/multiband_compressor.ui:443 data/ui/multiband_compressor.ui:753
+#: data/ui/multiband_compressor.ui:1063 data/ui/multiband_compressor.ui:1373
+msgid "Compression"
+msgstr "Sıkıştırma"
+
+#: data/ui/multiband_compressor.ui:471 data/ui/multiband_gate.ui:504
+msgid "Low Band"
+msgstr "Düşük Bant"
+
+#: data/ui/multiband_compressor.ui:781 data/ui/multiband_gate.ui:847
+msgid "Mid Band"
+msgstr "Orta Bant"
+
+#: data/ui/multiband_compressor.ui:1091 data/ui/multiband_gate.ui:1190
+msgid "High Band"
+msgstr "Yüksek Bant"
+
+#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:66
 msgid "General"
 msgstr "Genel"
 
-#: src/pulse_settings_ui.cpp:138
-msgid "Pulseaudio"
-msgstr "Pulseaudio"
+#: data/ui/pipe_info.ui:35
+#, fuzzy
+#| msgid "Use Default"
+msgid "Use Default Input"
+msgstr "Öntanımlıyı Kullan"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
-msgid "Open"
-msgstr "Aç"
+#: data/ui/pipe_info.ui:56
+#, fuzzy
+#| msgid "Use Default"
+msgid "Use Default Output"
+msgstr "Öntanımlıyı Kullan"
 
-#: src/presets_menu_ui.cpp:111 src/convolver_ui.cpp:247
-msgid "Cancel"
-msgstr "İptal"
+#: data/ui/pipe_info.ui:77
+#, fuzzy
+#| msgid "Input Effects"
+msgid "Input Device"
+msgstr "Giriş Efektleri"
 
-#: src/app_info_ui.cpp:85
-msgid "paused"
-msgstr "durdurulmuş"
+#: data/ui/pipe_info.ui:96
+#, fuzzy
+#| msgid "Output Effects"
+msgid "Output Device"
+msgstr "Çıkış Efektleri"
 
-#: src/app_info_ui.cpp:87
-msgid "playing"
-msgstr "oynatılıyor"
+#: data/ui/pipe_info.ui:115
+#, fuzzy
+#| msgid "Version"
+msgid "Header Version"
+msgstr "Sürüm"
 
-#: src/calibration_ui.cpp:171
-msgid "Calibration Microphone"
+#: data/ui/pipe_info.ui:138
+#, fuzzy
+#| msgid "Version"
+msgid "Library Version"
+msgstr "Sürüm"
+
+#: data/ui/pipe_info.ui:161
+#, fuzzy
+#| msgid "Default Sampling Rate"
+msgid "Sampling Rate"
+msgstr "Öntanımlı Örnekleme Hızı"
+
+#: data/ui/pipe_info.ui:184
+msgid "Minimum Quantum"
+msgstr ""
+
+#: data/ui/pipe_info.ui:207
+#, fuzzy
+#| msgid "Maximum Gain"
+msgid "Maximum Quantum"
+msgstr "Azami Kazanç"
+
+#: data/ui/pipe_info.ui:230
+#, fuzzy
+#| msgid "Default Sink"
+msgid "Default Quantum"
+msgstr "Öntanımlı Sink"
+
+#: data/ui/pipe_info.ui:259
+msgid "Presets Autoloading"
+msgstr ""
+
+#: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
+msgid "Create Association"
+msgstr ""
+
+#: data/ui/pipe_info.ui:438
+msgid "Modules"
+msgstr "Modüller"
+
+#: data/ui/pipe_info.ui:462
+msgid "Clients"
+msgstr "İstemciler"
+
+#: data/ui/pipe_info.ui:486
+#, fuzzy
+#| msgid "Test Signals"
+msgid "Test Signal"
+msgstr "Test Sinyalleri"
+
+#: data/ui/pipe_info.ui:495
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: data/ui/pipe_info.ui:517
+#, fuzzy
+#| msgid "Channels"
+msgid "Channel"
+msgstr "Kanallar"
+
+#: data/ui/pipe_info.ui:554
+msgid "Both"
+msgstr ""
+
+#: data/ui/pipe_info.ui:570
+#, fuzzy
+#| msgid "Test Signals"
+msgid "Signal"
+msgstr "Test Sinyalleri"
+
+#: data/ui/pipe_info.ui:587
+#, fuzzy
+#| msgid "Sine Table"
+msgid "Sine Wave"
+msgstr "Sinüs Tablosu"
+
+#: data/ui/pipe_info.ui:598
+msgid "White Noise"
+msgstr "Beyaz Gürültü"
+
+#: data/ui/pitch.ui:18
+msgid "Faster"
+msgstr "Daha Hızlı"
+
+#: data/ui/pitch.ui:24
+msgid "Preserve Formant"
+msgstr "Biçimlendiriciyi Koru"
+
+#: data/ui/pitch.ui:46
+msgid "Cents"
+msgstr "Küsür"
+
+#: data/ui/pitch.ui:79
+msgid "Semitones"
+msgstr "Yarım Ses"
+
+#: data/ui/pitch.ui:112
+msgid "Octaves"
+msgstr "Oktav"
+
+#: data/ui/pitch.ui:145
+msgid "Crispness"
+msgstr "Canlılık"
+
+#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:244
+msgid "Load"
+msgstr ""
+
+#: data/ui/preset_row.ui:25
+msgid "Save current settings to this preset file"
+msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
+
+#: data/ui/preset_row.ui:34
+msgid "Remove this preset file"
+msgstr "Hazır ayar dosyasını kaldır"
+
+#: data/ui/presets_menu.ui:78
+msgid "Speakers"
+msgstr ""
+
+#: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
+msgid "Create Preset"
+msgstr "Hazır Ayar Oluştur"
+
+#: data/ui/presets_menu.ui:118 data/ui/presets_menu.ui:219
+msgid "Import Presets"
+msgstr "Önayarları İçe Aktar"
+
+#: data/ui/presets_menu.ui:179
+#, fuzzy
+#| msgid "Calibration Microphone"
+msgid "Microphone"
 msgstr "Mikrofon Kalibrasyonu"
 
-#: src/convolver_ui.cpp:246
+#: data/ui/reverb.ui:44
+msgid "High Frequency Damping"
+msgstr "Yüksek Frekans Sönümleme"
+
+#: data/ui/reverb.ui:75
+msgid "Room Size"
+msgstr "Oda Boyutu"
+
+#: data/ui/reverb.ui:83
+msgid "Small"
+msgstr "Küçük"
+
+#: data/ui/reverb.ui:84
+msgid "Medium"
+msgstr "Orta"
+
+#: data/ui/reverb.ui:85
+msgid "Large"
+msgstr "Büyük"
+
+#: data/ui/reverb.ui:86
+msgid "Tunnel"
+msgstr "Tünel"
+
+#: data/ui/reverb.ui:87
+msgid "Large/smooth"
+msgstr "Büyük/pürüzsüz"
+
+#: data/ui/reverb.ui:88
+msgid "Experimental"
+msgstr "Deneysel"
+
+#: data/ui/reverb.ui:104
+msgid "Diffusion"
+msgstr "Yayılma"
+
+#: data/ui/reverb.ui:139
+msgid "Pre Delay"
+msgstr "Ön Gecikme"
+
+#: data/ui/reverb.ui:171
+msgid "Decay Time"
+msgstr "Bozunma Süresi"
+
+#: data/ui/reverb.ui:205
+#, fuzzy
+#| msgid "Webrtc"
+msgid "Wet"
+msgstr "Webrtc"
+
+#: data/ui/reverb.ui:239
+msgid "Dry"
+msgstr "Sertlik"
+
+#: data/ui/reverb.ui:272
+msgid "Bass Cut"
+msgstr "Bas Kesim"
+
+#: data/ui/reverb.ui:306
+msgid "Treble Cut"
+msgstr "Tiz Kesim"
+
+#: data/ui/reverb.ui:553
+msgid "Ambience"
+msgstr "Ortam"
+
+#: data/ui/reverb.ui:559
+msgid "Empty Walls"
+msgstr "Boş Duvarlar"
+
+#: data/ui/reverb.ui:571
+msgid "Room"
+msgstr "Oda"
+
+#: data/ui/reverb.ui:577
+msgid "Large Empty Hall"
+msgstr "Büyük Boş Salon"
+
+#: data/ui/reverb.ui:589
+msgid "Disco"
+msgstr "Disko"
+
+#: data/ui/reverb.ui:595
+msgid "Large Occupied Hall"
+msgstr "Büyük Dolu Salon"
+
+#: data/ui/rnnoise.ui:21
+#, fuzzy
+#| msgid "Import Impulse"
+msgid "Import Model"
+msgstr "Dürtü Dosyasını İçeri Al"
+
+#: data/ui/rnnoise.ui:35
+#, fuzzy
+#| msgid "Mode"
+msgid "Models"
+msgstr "Kip"
+
+#: data/ui/rnnoise.ui:65
+#, fuzzy
+#| msgid "Aggressive Mode"
+msgid "Active Model"
+msgstr "Agresif Kip"
+
+#: data/ui/rnnoise.ui:71
+msgid "Standard RNNoise Model"
+msgstr ""
+
+#: data/ui/spectrum_settings.ui:22
+msgid "Show Spectrum"
+msgstr "Spektrumu Göster"
+
+#: data/ui/spectrum_settings.ui:44
+msgid "Fill"
+msgstr "Dolgu"
+
+#: data/ui/spectrum_settings.ui:66
+msgid "Border"
+msgstr "Kenar"
+
+#: data/ui/spectrum_settings.ui:88
+msgid "Points"
+msgstr "Noktalar"
+
+#: data/ui/spectrum_settings.ui:120
+msgid "Height"
+msgstr "Yükseklik"
+
+#: data/ui/spectrum_settings.ui:153
+msgid "Line Width"
+msgstr "Hat Genişliği"
+
+#: data/ui/spectrum_settings.ui:186
+#, fuzzy
+#| msgid "Maximum"
+msgid "Minimum"
+msgstr "Azami"
+
+#: data/ui/spectrum_settings.ui:259
+msgid "Spectrum Type"
+msgstr "Spektrum Türü"
+
+#: data/ui/spectrum_settings.ui:270
+msgid "Bars"
+msgstr "Barlar"
+
+#: data/ui/spectrum_settings.ui:271
+msgid "Lines"
+msgstr "Çizgiler"
+
+#: data/ui/spectrum_settings.ui:284
+msgid "Spectrum Color"
+msgstr "Spektrum Rengi"
+
+#: data/ui/spectrum_settings.ui:306
+msgid "Axis Color"
+msgstr ""
+
+#: data/ui/stereo_tools.ui:46 data/ui/stereo_tools.ui:380
+msgid "Balance"
+msgstr "Denge"
+
+#: data/ui/stereo_tools.ui:79
+msgid "Softclip"
+msgstr "Yumuşak kırpım"
+
+#: data/ui/stereo_tools.ui:92
+msgid "S/C Level"
+msgstr "S/C Seviye"
+
+#: data/ui/stereo_tools.ui:129
+msgid "Stereo Matrix"
+msgstr "Stereo Matris"
+
+#: data/ui/stereo_tools.ui:139
+msgid "LR > LR (Stereo Default)"
+msgstr "LR > LR (Stereo Öntanımlı)"
+
+#: data/ui/stereo_tools.ui:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "LR > MS (Stereo Orta Tarafa)"
+
+#: data/ui/stereo_tools.ui:141
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "MS > LR (Orta Taraftan Stereo)"
+
+#: data/ui/stereo_tools.ui:142
+msgid "LR > LL (Mono Left Channel)"
+msgstr "LR > LL (Mono Sol Kanal)"
+
+#: data/ui/stereo_tools.ui:143
+msgid "LR > RR (Mono Right Channel)"
+msgstr "LR > RR (Mono Sağ Kanal)"
+
+#: data/ui/stereo_tools.ui:144
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "LR > L+R (Mono İşlem L+R)"
+
+#: data/ui/stereo_tools.ui:145
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
+
+#: data/ui/stereo_tools.ui:180 data/ui/stereo_tools.ui:213
+msgid "Invert Phase"
+msgstr "Ters Faz"
+
+#: data/ui/stereo_tools.ui:233
+msgid "Side Level"
+msgstr "Seviye Tarafı"
+
+#: data/ui/stereo_tools.ui:266
+msgid "Side Balance"
+msgstr "Denge Tarafı"
+
+#: data/ui/stereo_tools.ui:299
+msgid "Middle Level"
+msgstr "Orta Seviye"
+
+#: data/ui/stereo_tools.ui:332
+msgid "Middle Panorama"
+msgstr "Orta Panorama"
+
+#: data/ui/stereo_tools.ui:413
+msgid "Delay L/R"
+msgstr "Gecikme L/R"
+
+#: data/ui/stereo_tools.ui:446
+msgid "Stereo Base"
+msgstr "Stereo Taban"
+
+#: data/ui/stereo_tools.ui:479
+msgid "Stereo Phase"
+msgstr "Stereo Faz"
+
+#: data/ui/stereo_tools.ui:679
+msgid "Phase Correlation"
+msgstr ""
+
+#: include/effects_base_ui.hpp:133
+#, fuzzy
+#| msgid "Auto Gain"
+msgid "Autogain"
+msgstr "Otomatik Kazanç"
+
+#: include/effects_base_ui.hpp:134
+msgid "Bass Enhancer"
+msgstr "Bas Yükseltici"
+
+#: include/effects_base_ui.hpp:135
+#, fuzzy
+#| msgid "Loudness"
+msgid "Bass Loudness"
+msgstr "Yüksek Ses"
+
+#: include/effects_base_ui.hpp:137
+msgid "Convolver"
+msgstr "Sarsıcı"
+
+#: include/effects_base_ui.hpp:138
+msgid "Crossfeed"
+msgstr "Çapraz Besleme"
+
+#: include/effects_base_ui.hpp:139
+msgid "Crystalizer"
+msgstr "Kristalleştirici"
+
+#: include/effects_base_ui.hpp:140
+msgid "Deesser"
+msgstr "Deesser"
+
+#: include/effects_base_ui.hpp:141
+msgid "Delay"
+msgstr "Gecikme"
+
+#: include/effects_base_ui.hpp:142
+msgid "Echo Canceller"
+msgstr "Yankı Önleyici"
+
+#: include/effects_base_ui.hpp:143
+msgid "Equalizer"
+msgstr "Ekolayzır"
+
+#: include/effects_base_ui.hpp:144
+msgid "Exciter"
+msgstr "Uyarıcı"
+
+#: include/effects_base_ui.hpp:145
+msgid "Filter"
+msgstr "Süzgeç"
+
+#: include/effects_base_ui.hpp:146
+msgid "Gate"
+msgstr "Aralık"
+
+#: include/effects_base_ui.hpp:147
+msgid "Limiter"
+msgstr "Sınırlayıcı"
+
+#: include/effects_base_ui.hpp:149
+msgid "Maximizer"
+msgstr "Yükseltici"
+
+#: include/effects_base_ui.hpp:150
+msgid "Multiband Compressor"
+msgstr "Çoklu Bant Şıkıştırıcı"
+
+#: include/effects_base_ui.hpp:151
+msgid "Multiband Gate"
+msgstr "Çoklu Bant Geçitleme"
+
+#: include/effects_base_ui.hpp:152
+msgid "Pitch"
+msgstr "Perde"
+
+#: include/effects_base_ui.hpp:153
+msgid "Reverberation"
+msgstr "Yankılanma"
+
+#: include/effects_base_ui.hpp:154
+#, fuzzy
+#| msgid "Gain Reduction"
+msgid "Noise Reduction"
+msgstr "Kazanç Azaltma"
+
+#: include/effects_base_ui.hpp:155
+msgid "Stereo Tools"
+msgstr "Stereo Araçları"
+
+#: src/application.cpp:30
+msgid "Quit EasyEffects. Useful when running in service mode."
+msgstr "EasyEffects'ten çık. Servis kipinde çalışırken kullanışlıdır."
+
+#: src/application.cpp:32
+msgid "Show available presets."
+msgstr "Kullanılabilir hazır ayarları göster."
+
+#: src/application.cpp:35
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
+
+#: src/application.cpp:37
+msgid "Reset EasyEffects."
+msgstr "EasyEffects’i Sıfırla."
+
+#: src/application.cpp:40
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/application.cpp:42
+msgid "Hide the Window."
+msgstr ""
+
+#: src/application.cpp:313
+msgid "Output Presets: "
+msgstr "Çıkış Ön Ayarları: "
+
+#: src/application.cpp:321
+msgid "Input Presets: "
+msgstr "Giriş Ön Ayarları: "
+
+#: src/application.cpp:349
+#, fuzzy
+#| msgid "Audio effects for PulseAudio applications"
+msgid "Audio effects for PipeWire applications"
+msgstr "PulseAudio uygulamaları için ses efektleri"
+
+#: src/convolver_ui.cpp:367 src/convolver_ui.cpp:370
 msgid "Import Impulse File"
 msgstr "Dürtü Dosyasını İçe Aktar"
 
-#: src/convolver_ui.cpp:290 src/convolver_ui.cpp:291 src/convolver_ui.cpp:293
+#: src/convolver_ui.cpp:368 src/convolver_ui.cpp:370 src/equalizer_ui.cpp:591
+#: src/equalizer_ui.cpp:593 src/presets_menu_ui.cpp:195
+msgid "Open"
+msgstr "Aç"
+
+#: src/convolver_ui.cpp:368 src/convolver_ui.cpp:371 src/equalizer_ui.cpp:591
+#: src/equalizer_ui.cpp:594 src/presets_menu_ui.cpp:195
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/convolver_ui.cpp:376
+msgid "Impulse Response"
+msgstr "Dürtü Yanıtı"
+
+#: src/convolver_ui.cpp:417 src/convolver_ui.cpp:418 src/convolver_ui.cpp:420
 msgid "Failed"
 msgstr "Başarısız"
 
-#: src/convolver_ui.cpp:295
+#: src/convolver_ui.cpp:422
 msgid "Could Not Load The Impulse File"
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/equalizer_ui.cpp:307 src/equalizer_ui.cpp:426
+#: src/effects_base_ui.cpp:751 src/effects_base_ui.cpp:1385
+msgid "running"
+msgstr ""
+
+#: src/effects_base_ui.cpp:755 src/effects_base_ui.cpp:1387
+msgid "suspended"
+msgstr ""
+
+#: src/effects_base_ui.cpp:759 src/effects_base_ui.cpp:1389
+msgid "idle"
+msgstr ""
+
+#: src/effects_base_ui.cpp:763 src/effects_base_ui.cpp:1391
+#, fuzzy
+#| msgid "Gating"
+msgid "creating"
+msgstr "Geçitleme"
+
+#: src/effects_base_ui.cpp:767 src/effects_base_ui.cpp:1393
+msgid "error"
+msgstr ""
+
+#: src/equalizer_ui.cpp:379
 msgid "infinity"
 msgstr "sonsuzluk"
+
+#: src/equalizer_ui.cpp:590 src/equalizer_ui.cpp:593
+#, fuzzy
+#| msgid "Import Presets"
+msgid "Import APO Preset File"
+msgstr "Önayarları İçe Aktar"
+
+#: src/equalizer_ui.cpp:599
+#, fuzzy
+#| msgid "Presets"
+msgid "APO Presets"
+msgstr "Ön Ayarlar"
+
+#: src/presets_menu_ui.cpp:194
+#, fuzzy
+#| msgid "Import Presets"
+msgid "Import Preset"
+msgstr "Önayarları İçe Aktar"
+
+#: src/stream_input_effects_ui.cpp:31
+#, fuzzy
+#| msgid "Border"
+msgid "Recorders"
+msgstr "Kenar"
+
+#~ msgid "Help"
+#~ msgstr "Yardım"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Özel Renk Kullan"
+
+#~ msgid "Use Gradient"
+#~ msgstr "Geçişli Renk Kullan"
+
+#~ msgid "Gradient Color"
+#~ msgstr "Geçiş Rengi"
+
+#~ msgid "Scale"
+#~ msgstr "Ölçek"
+
+#~ msgid "Exponent"
+#~ msgstr "Katsayı"
+
+#~ msgid "Sampling"
+#~ msgstr "Örnekleme"
+
+#~ msgid "Block Size"
+#~ msgstr "Blok Boyutu"
+
+#~ msgid "Pipeline Input"
+#~ msgstr "Pipeline Giriş"
+
+#~ msgid "Buffer"
+#~ msgstr "Arabellek"
+
+#~ msgid "Pipeline Output"
+#~ msgstr "Pipeline Çıkış"
+
+#~ msgid "Niceness"
+#~ msgstr "Hassaslık"
+
+#~ msgid "None"
+#~ msgstr "Hiçbiri"
+
+#~ msgid "Priority Type"
+#~ msgstr "Öncelik Türü"
+
+#~ msgid "About"
+#~ msgstr "Hakkında"
+
+#~ msgid "Priority"
+#~ msgstr "Öncelik"
+
+#~ msgid "Resampler"
+#~ msgstr "Örnekleme"
+
+#~ msgid "Default Source"
+#~ msgstr "Öntanımlı Kaynak"
+
+#~ msgid "Protocol"
+#~ msgstr "Protokol"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Öntanımlı Örnek Biçimi"
+
+#~ msgid "Channel Mapping"
+#~ msgstr "Kanal Eşleme"
+
+#~ msgid "Server"
+#~ msgstr "Sunucu"
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "Configuration"
+#~ msgstr "Yapılandırma"
+
+#~ msgid "Resamplers"
+#~ msgstr "Örnekleyiciler"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Sessizliği Algıla"
+
+#~ msgid "Weights"
+#~ msgstr "Ağırlık"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Sıkıştırma Kipi"
+
+#~ msgid "Muted"
+#~ msgstr "Sessiz"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Uzak Kulaklıklar"
+
+#~ msgid "Reset Equalizer"
+#~ msgstr "Ekolayzır Sıfırla"
+
+#~ msgid "x1"
+#~ msgstr "x1"
+
+#~ msgid "x2"
+#~ msgstr "x2"
+
+#~ msgid "x3"
+#~ msgstr "x3"
+
+#~ msgid "x4"
+#~ msgstr "x4"
+
+#~ msgid "Apply"
+#~ msgstr "Uygula"
+
+#~ msgid "Link"
+#~ msgstr "Bağ"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Dürtü Yanıt Dosyasını İçeri Aktar"
+
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Dürtü Yanıt Dosyasını Seç"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereo Genişliği"
+
+#~ msgid "Loudness Range"
+#~ msgstr "Yüksek Ses Aralığı"
+
+#~ msgid "Before"
+#~ msgstr "Öncesi"
+
+#~ msgid "After"
+#~ msgstr "Sonrası"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Genişletilmiş Süzgeç"
+
+#~ msgid "Delay Agnostic"
+#~ msgstr "Agnostik Gecikme"
+
+#~ msgid "High Pass Filter"
+#~ msgstr "Yüksek Geçiş Süzgeci"
+
+#~ msgid "Suppresion Level"
+#~ msgstr "Bastırma Seviyesi"
+
+#~ msgid "Low"
+#~ msgstr "Düşük"
+
+#~ msgid "Moderate"
+#~ msgstr "Ölçülü"
+
+#~ msgid "High"
+#~ msgstr "Yüksek"
+
+#~ msgid "Very High"
+#~ msgstr "Çok Yüksek"
+
+#~ msgid "Noise Suppressor"
+#~ msgstr "Gürültü Baskılayıcı"
+
+#~ msgid "Adaptive Digital"
+#~ msgstr "Dijital Uyarlamalı"
+
+#~ msgid "Fixed Digital"
+#~ msgstr "Dijital Sabitleyici"
+
+#~ msgid "Gain Controller"
+#~ msgstr "Kazanç Denetleyicisi"
+
+#~ msgid "Target Level"
+#~ msgstr "Hedef Seviye"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Algılama Olasılığı"
+
+#~ msgid "Very Low"
+#~ msgstr "Çok Düşük"
+
+#~ msgid "Voice Detector"
+#~ msgstr "Ses Dedektörü"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Şu anda kullanılan cihaz sisteme takılı olduğunda bu ön ayarı otomatik "
+#~ "olarak uygula"
+
+#~ msgid "Volume"
+#~ msgstr "Ses"
+
+#~ msgid "Sine"
+#~ msgstr "Sinüs"
+
+#~ msgid "Square"
+#~ msgstr "Kare"
+
+#~ msgid "Saw"
+#~ msgstr "Kesir"
+
+#~ msgid "Triangle"
+#~ msgstr "Üçgen"
+
+#~ msgid "Silence"
+#~ msgstr "Sessizlik"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Pembe Gürültü"
+
+#~ msgid "Ticks"
+#~ msgstr "İşaretler"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gauss Gürültü"
+
+#~ msgid "Red Noise"
+#~ msgstr "Kırmızı Gürültü"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Mavi Gürültü"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Menekşe Gürültü"
+
+#~ msgid "Window"
+#~ msgstr "Pencere"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Gürültü Ölçümü"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Gürültü Çıkar"
+
+#~ msgid "easyeffects"
+#~ msgstr "easyeffects"
+
+#~ msgid "Applications"
+#~ msgstr "Uygulamalar"
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
+
+#~ msgid "paused"
+#~ msgstr "durdurulmuş"
+
+#~ msgid "playing"
+#~ msgstr "oynatılıyor"
