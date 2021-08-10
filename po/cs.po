@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-12 11:52+0200\n"
-"PO-Revision-Date: 2019-08-25 21:29+0200\n"
+"PO-Revision-Date: 2021-08-09 21:58-0700\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "Language: cs\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 19.04.0\n"
+"X-Generator: Poedit 2.4.3\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -45,6 +45,12 @@ msgstr ""
 "doplnění je také vestavěn analyzátor spektra."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -56,7 +62,7 @@ msgstr ""
 "podporované programy jsou ukázány v hlavním okně, v němž je možné kterýkoli "
 "z nich ručně povolit."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 #, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
@@ -67,7 +73,7 @@ msgstr ""
 "vstupní zařízení, jako je mikrofon. To je užitečné mimo jiné při nahrávání "
 "zvuku, pracuje to ale dobře během hlasových hovorů."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:15
 #, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
@@ -77,24 +83,24 @@ msgstr ""
 "Když je EasyEffects spuštěn, zapamatuje si příhodně nastavení používané při "
 "posledním sezení. Je možné i uložení všech nynějších nastavení jako profilů."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:24
 msgid "Set the volume and turn on/off effects"
 msgstr "Nastavit hlasitost a zapnout/vypnout efekty"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:28
 msgid "Includes an equalizer with built-in presets"
 msgstr "Zahrnuje ekvalizér s vestavěnými přednastaveními"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:32
 msgid "Input Limiter"
 msgstr "Omezovač vstupu"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:36 data/ui/compressor.ui:37
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Calibration"
 msgstr "Kalibrace"
 

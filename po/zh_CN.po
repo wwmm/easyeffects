@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-12 11:52+0200\n"
-"PO-Revision-Date: 2021-08-02 11:43+0800\n"
+"PO-Revision-Date: 2021-08-09 22:02-0700\n"
 "Last-Translator: eternal <www.eternalhui@gmail.com>\n"
 "Language-Team: Chinese - China <null>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Gtranslator 40.0\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Poedit 2.4.3\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -26,7 +26,6 @@ msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#| msgid "Audio Effects for PulseAudio Applications"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
 
@@ -44,10 +43,12 @@ msgstr ""
 "等等。 比如，还有一个内置的频谱分析仪。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#| msgid ""
-#| "Because EasyEffects uses the default PulseAudio sound server it will work "
-#| "with most, if not all, applications you use. All supported applications "
-#| "are presented in the main window, where each can be enabled individually."
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
@@ -57,7 +58,7 @@ msgstr ""
 "全部）应用程序一起使用。 所有受支持的应用程序都显示在主窗口中，可以在其中单独"
 "启用每个应用程序。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -66,7 +67,7 @@ msgstr ""
 "除了处理音频输出外，EasyEffects 还可以将效果应用于输入设备，例如麦克风。 例"
 "如，在录音时很有用，并在语音通话时也能很好地工作。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:15
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
@@ -75,24 +76,24 @@ msgstr ""
 "启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
 "配置文件。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:24
 msgid "Set the volume and turn on/off effects"
 msgstr "设置音量和 打开/关闭音效"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:28
 msgid "Includes an equalizer with built-in presets"
 msgstr "包含预设的均衡器"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:32
 msgid "Input Limiter"
 msgstr "输入限幅器"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:36 data/ui/compressor.ui:37
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "压缩器"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Calibration"
 msgstr "校准"
 
@@ -231,7 +232,6 @@ msgid "Loudness"
 msgstr "响度"
 
 #: data/ui/autogain.ui:252
-#| msgid "Input Gain"
 msgid "Output Gain"
 msgstr "输出增益"
 
@@ -269,7 +269,6 @@ msgid "Profile"
 msgstr "概述"
 
 #: data/ui/autoload_row.ui:62
-#| msgid "Presets"
 msgid "Preset"
 msgstr "预设"
 
@@ -490,7 +489,6 @@ msgid "Sidechain Filters"
 msgstr "侧链过滤器"
 
 #: data/ui/compressor.ui:624
-#| msgid "High-pass Frequency"
 msgid "High-pass"
 msgstr "高通"
 
@@ -517,7 +515,6 @@ msgid "36 dB/oct"
 msgstr ""
 
 #: data/ui/compressor.ui:696
-#| msgid "Low-Pass"
 msgid "Low-pass"
 msgstr "低通"
 
@@ -540,7 +537,6 @@ msgid "R"
 msgstr "右"
 
 #: data/ui/convolver.ui:79
-#| msgid "Impulse Response"
 msgid "Impulses"
 msgstr ""
 
@@ -683,7 +679,6 @@ msgid "Calculate Frequencies"
 msgstr "频率响应"
 
 #: data/ui/equalizer.ui:161
-#| msgid "APO Presets"
 msgid "Load APO Preset"
 msgstr "加载 APO 预设"
 
@@ -866,12 +861,10 @@ msgid "Run in Background"
 msgstr "后台运行"
 
 #: data/ui/general_settings.ui:138
-#| msgid "Settings"
 msgid "Reset All Settings"
 msgstr "重置所有设置"
 
 #: data/ui/general_settings.ui:144
-#| msgid "EasyEffects"
 msgid "About EasyEffects"
 msgstr "关于 EasyEffects"
 
@@ -924,7 +917,6 @@ msgid "FFT Size"
 msgstr "FFT 大小"
 
 #: data/ui/loudness.ui:87
-#| msgid "Output"
 msgid "Output Volume"
 msgstr "输出音量"
 
@@ -933,7 +925,6 @@ msgid "Ceiling"
 msgstr "上限"
 
 #: data/ui/module_info.ui:58
-#| msgid "Detection"
 msgid "Description"
 msgstr "描述"
 
@@ -983,37 +974,30 @@ msgid "General"
 msgstr "通用"
 
 #: data/ui/pipe_info.ui:35
-#| msgid "Use Default"
 msgid "Use Default Input"
 msgstr "使用默认输入"
 
 #: data/ui/pipe_info.ui:56
-#| msgid "Use Default"
 msgid "Use Default Output"
 msgstr "使用默认输出"
 
 #: data/ui/pipe_info.ui:77
-#| msgid "Input Level"
 msgid "Input Device"
 msgstr "输入设备"
 
 #: data/ui/pipe_info.ui:96
-#| msgid "Output Effects"
 msgid "Output Device"
 msgstr "输出设备"
 
 #: data/ui/pipe_info.ui:115
-#| msgid "Version"
 msgid "Header Version"
 msgstr "头文件版本"
 
 #: data/ui/pipe_info.ui:138
-#| msgid "Version"
 msgid "Library Version"
 msgstr "库文件版本"
 
 #: data/ui/pipe_info.ui:161
-#| msgid "Default Sampling Rate"
 msgid "Sampling Rate"
 msgstr "采样率"
 
@@ -1053,7 +1037,6 @@ msgid "Clients"
 msgstr "客户端"
 
 #: data/ui/pipe_info.ui:486
-#| msgid "Test Signals"
 msgid "Test Signal"
 msgstr "测试信号"
 
@@ -1072,12 +1055,10 @@ msgid "Both"
 msgstr ""
 
 #: data/ui/pipe_info.ui:570
-#| msgid "Test Signals"
 msgid "Signal"
 msgstr "测试信号"
 
 #: data/ui/pipe_info.ui:587
-#| msgid "Sine Table"
 msgid "Sine Wave"
 msgstr "正弦波"
 
@@ -1134,7 +1115,6 @@ msgid "Import Presets"
 msgstr "加载预设"
 
 #: data/ui/presets_menu.ui:179
-#| msgid "Calibration Microphone"
 msgid "Microphone"
 msgstr "麦克风"
 
@@ -1225,17 +1205,14 @@ msgid "Large Occupied Hall"
 msgstr "拥挤的大厅"
 
 #: data/ui/rnnoise.ui:21
-#| msgid "Import Impulse"
 msgid "Import Model"
 msgstr "导入模型"
 
 #: data/ui/rnnoise.ui:35
-#| msgid "Mode"
 msgid "Models"
 msgstr "模型"
 
 #: data/ui/rnnoise.ui:65
-#| msgid "Aggressive Mode"
 msgid "Active Model"
 msgstr "激活模型"
 
@@ -1268,7 +1245,6 @@ msgid "Line Width"
 msgstr "线宽"
 
 #: data/ui/spectrum_settings.ui:186
-#| msgid "Maximum"
 msgid "Minimum"
 msgstr "最低"
 
@@ -1373,7 +1349,6 @@ msgid "Phase Correlation"
 msgstr "相位相关"
 
 #: include/effects_base_ui.hpp:133
-#| msgid "Auto Gain"
 msgid "Autogain"
 msgstr "自动增益"
 
@@ -1382,7 +1357,6 @@ msgid "Bass Enhancer"
 msgstr "低音增强"
 
 #: include/effects_base_ui.hpp:135
-#| msgid "Loudness"
 msgid "Bass Loudness"
 msgstr "低音响度"
 
@@ -1451,7 +1425,6 @@ msgid "Reverberation"
 msgstr "混响"
 
 #: include/effects_base_ui.hpp:154
-#| msgid "Gain Reduction"
 msgid "Noise Reduction"
 msgstr "降噪"
 
@@ -1492,7 +1465,6 @@ msgid "Input Presets: "
 msgstr "输入预设: "
 
 #: src/application.cpp:349
-#| msgid "Audio effects for PulseAudio applications"
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
@@ -1535,7 +1507,6 @@ msgid "idle"
 msgstr "空闲"
 
 #: src/effects_base_ui.cpp:763 src/effects_base_ui.cpp:1391
-#| msgid "Gating"
 msgid "creating"
 msgstr "创建"
 
@@ -1556,11 +1527,9 @@ msgid "APO Presets"
 msgstr "APO 预设"
 
 #: src/presets_menu_ui.cpp:194
-#| msgid "Import Presets"
 msgid "Import Preset"
 msgstr "导入预设"
 
 #: src/stream_input_effects_ui.cpp:31
-#| msgid "Border"
 msgid "Recorders"
 msgstr "录音程序"
