@@ -18,23 +18,23 @@ msgstr ""
 "X-Generator: Poedit 2.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 #, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 #, fuzzy
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Penerap Efek Suara untuk Aplikasi Berbasis Pulseaudio"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 #, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
@@ -45,7 +45,7 @@ msgstr ""
 "seperti ekualiser, pembatas, kompresor, dan modul penggema. Dilengkapi juga "
 "dengan Penganalisis Spektrum untuk memantau efek yang diterapkan."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -55,7 +55,7 @@ msgstr ""
 "EasyEffects bekerja dengan aplikasi berbasis PulseAudio. Aplikasi yang "
 "mendukung EasyEffects akan ditampilkan pada jendela utama aplikasi."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 #, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
@@ -66,7 +66,7 @@ msgstr ""
 "seperti pada mikrofon dan pengakat masukan lainnya. EasyEffects juga bekerja "
 "dengan baik ketika dipakai dalam percakapan suara."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 #, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
@@ -77,24 +77,24 @@ msgstr ""
 "otomatis. Anda juga dapat menyimpan pengaturan yang telah dibuat ke dalam "
 "profil tersendiri."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "Set the volume and turn on/off effects"
 msgstr "Atur Volume dan hidupkan/matikan Efek"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "Includes an equalizer with built-in presets"
 msgstr "Dilengkapi dengan Ekualiser dengan Preset Bawaan"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "Input Limiter"
 msgstr "Pembatas Masukan"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
 msgid "Calibration"
 msgstr "Kalibrasi"
 

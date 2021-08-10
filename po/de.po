@@ -18,21 +18,21 @@ msgstr ""
 "X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Audio Effekte für PipeWire Anwendungen"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -42,7 +42,7 @@ msgstr ""
 "einen Equalizer, Limiter, Kompressor, einen Hall und viele weitere. Dies "
 "wird zudem mit einem eingebauten Spektrumanalysator ergänzt."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -54,7 +54,7 @@ msgstr ""
 "Hauptfenster angezeigt, wo diese individuell Ein-/Ausgeschaltet werden "
 "können."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -64,7 +64,7 @@ msgstr ""
 "Eingabegeräte, z.B. Mikrofone, anwenden. Dies ist sinnvoll für z.B. "
 "Audioaufnahmen oder VOIP Anwendungen."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
@@ -74,24 +74,24 @@ msgstr ""
 "wieder her. Es ist auch möglich, die aktuellen Einstellungen als Profile zu "
 "speichern."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "Set the volume and turn on/off effects"
 msgstr "Setze die Lautstärke und schalte Effekte ein/aus"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "Includes an equalizer with built-in presets"
 msgstr "Enthält einen Equalizer mit integrierten Presets"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "Input Limiter"
 msgstr "Eingabe-Limiter"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "Kompressor"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
 msgid "Calibration"
 msgstr "Kalibrierung"
 
