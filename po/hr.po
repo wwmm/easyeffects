@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-09 11:52+0200\n"
+"POT-Creation-Date: 2021-08-10 20:35+0000\n"
 "PO-Revision-Date: 2018-11-22 20:12+0200\n"
 "Last-Translator: flipwise <tyx027@gmail.com>\n"
 "Language-Team: Croatian\n"
@@ -39,7 +39,7 @@ msgstr "Wellington Wallace"
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
 #, fuzzy
 msgid ""
-"EasyEffects is an advanced audio manipulation tools. It includes an "
+"EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
@@ -48,6 +48,12 @@ msgstr ""
 "ugrađeni analizator spektra."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -59,7 +65,7 @@ msgstr ""
 "aplikacije su prikazane u glavnom prozoru, gdje se na svaku pojedinačno može "
 "omogućiti utjecaj efekata."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
 #, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
@@ -70,7 +76,7 @@ msgstr ""
 "ulazni uređaj, poput mikrofona. To je na primjer korisno pri snimanju zvuka, "
 "ali isto tako funkcionira dobro i tijekom glasovnih razgovora."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#: data/com.github.wwmm.easyeffects.appdata.xml.in:15
 #, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
