@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-07-12 11:52+0200\n"
-"PO-Revision-Date: 2019-09-10 12:56-0300\n"
+"PO-Revision-Date: 2021-08-09 22:01-0700\n"
 "Last-Translator: Patrik Nilsson <translation_AT_hembas.se>\n"
 "Language-Team: Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -48,6 +48,12 @@ msgstr ""
 "ferramentas são complementadas por um analisador de espectro."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+msgid ""
+"EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -59,7 +65,7 @@ msgstr ""
 "aplicativos suportados estão presentes na janela principal, onde cada uma "
 "pode ser habilitada individualmente."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 #, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
@@ -70,7 +76,7 @@ msgstr ""
 "efeitos em dispositivos de entrada, como um microfone. Isto é útil, por "
 "exemplo, em gravação de áudio mas também funciona em conversas."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:15
 #, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
@@ -82,24 +88,24 @@ msgstr ""
 "configurações\n"
 "como perfis."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:24
 msgid "Set the volume and turn on/off effects"
 msgstr "Definir o volume e ligar / desligar efeitos"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:28
 msgid "Includes an equalizer with built-in presets"
 msgstr "Inclui um equalizador com predefinições incorporadas"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:32
 msgid "Input Limiter"
 msgstr "Limitador de Entrada"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:36 data/ui/compressor.ui:37
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "Compressor"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:40
 msgid "Calibration"
 msgstr "Calibração"
 
