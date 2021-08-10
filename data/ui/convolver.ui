@@ -84,7 +84,7 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="label">Stereo Width</property>
+                                <property name="label" translatable="yes">Stereo Width</property>
                             </object>
                         </child>
 
@@ -398,7 +398,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">zita-convolver</property>
+                                <property name="label">Zita-convolver</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

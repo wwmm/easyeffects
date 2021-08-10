@@ -286,7 +286,7 @@
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
-                                <property name="label">speexdsp</property>
+                                <property name="label">SpeexDSP</property>
                                 <attributes>
                                     <attribute name="weight" value="bold" />
                                 </attributes>

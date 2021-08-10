@@ -345,7 +345,7 @@
                             <object class="GtkLabel">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
-                                <property name="label">Show Blocklisted Players</property>
+                                <property name="label" translatable="yes">Show Blocklisted Players</property>
                             </object>
                         </child>
 

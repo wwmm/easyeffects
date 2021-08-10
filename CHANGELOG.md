@@ -5,16 +5,22 @@
 ### Added
 
 - Updated Chinese translation.
+- Updated Italian translation.
 - Added support for the compressor parameter `Boost Amount`
 - The multiband compressor plugin now uses the stereo multiband compressor plugin from Linux Studio Plugins
   instead of the one from Calf Studio.
+- The limiter plugin now uses the stereo limiter plugin from Linux Studio Plugins instead of the one from
+  Calf Studio.
+- LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected
+  until EasyEffects shutdown.
 
 ### Fixed
 
 - The echo canceller sampling rate is now properly set.
-- The threshold parameter from the deesser plugin is now saved to the preset file
+- The threshold parameter from the deesser plugin is now saved to the preset file.
 - Depending on the input gain or output gain values the corresponding level bars could not be aligned.
 - When adding more equalizer bands they are set to `Bell` instead of `Off`.
+- Improved linking management between port filter nodes in PipeWire.
 
 ## [6.0.3]
 
