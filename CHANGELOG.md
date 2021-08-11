@@ -13,6 +13,7 @@
   Calf Studio.
 - LV2 filters now are spawned in PipeWire graph only when loaded the first time. Once loaded, they remain connected
   until EasyEffects shutdown.
+- Equalizer APO presets loading is now working properly on locales different than C.
 
 ### Fixed
 
