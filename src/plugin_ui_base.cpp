@@ -18,6 +18,7 @@
  */
 
 #include "plugin_ui_base.hpp"
+#include <charconv>
 
 PluginUiBase::PluginUiBase(const Glib::RefPtr<Gtk::Builder>& builder,
                            const std::string& schema,
@@ -61,14 +62,13 @@ void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const std::string
 }
 
 auto PluginUiBase::string_to_float(const std::string& value) -> float {
-  std::stringstream ss;
+  // this conversion must be locale independent
 
-  float fv = 0.0F;
+  float n;
 
-  ss << value;
-  ss >> fv;
+  auto [ptr, ec] = std::from_chars(value.data(), value.data() + value.size(), n);
 
-  return fv;
+  return (ec == std::errc()) ? n : 0.0F;
 }
 
 void PluginUiBase::set_transient_window(Gtk::Window* transient_window) {
