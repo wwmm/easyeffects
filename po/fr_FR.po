@@ -8,34 +8,31 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-10 20:35+0000\n"
-"PO-Revision-Date: 2017-08-29 11:00+0200\n"
+"PO-Revision-Date: 2021-08-10 17:08-0700\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Effets audio pour applications PulseAudio"
+msgstr "Effets audio pour applications PipeWire"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -50,21 +47,22 @@ msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects est le successeur de PulseEffects. EasyEffects supporte "
+"uniquement le serveur audio de PipeWire. Les utilisateurs de PulseAudio "
+"devraient plutôt utiliser PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:13
-#, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
 "most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Parce que EasyEffects utilise le serveur PulseAudio par défaut, cet outil "
+"Parce que EasyEffects utilise le serveur PipeWire par défaut, cet outil "
 "fonctionne avec la grande majorité des applications. Les applications "
 "compatibles sont présentées dans la fenêtre principale, où vous pouvez les "
 "activer manuellement."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:14
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -75,13 +73,12 @@ msgstr ""
 "pour l'enregistrement audio ou pour une conversation."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:15
-#, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
 "settings as profiles."
 msgstr ""
-"PuseEffets se rappelle de la configuration utilisée lors du lancement "
+"EasyEffects se rappelle de la configuration utilisée lors du lancement "
 "précédent. Il est aussi possible de sauvegarder tous les paramètres dans des "
 "profils personnalisés."
 
@@ -90,13 +87,11 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
-#, fuzzy
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
 
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:14
 #: data/schemas/com.github.wwmm.easyeffects.gschema.xml:17
-#, fuzzy
 msgid "\"Presets\""
 msgstr "Préréglage"
 
