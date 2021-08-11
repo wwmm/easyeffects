@@ -18,6 +18,7 @@
 
 - The echo canceller sampling rate is now properly set.
 - The threshold parameter from the deesser plugin is now saved to the preset file.
+- Improved band splitting for crystalizer with new default intensity values.
 - Depending on the input gain or output gain values the corresponding level bars could not be aligned.
 - When adding more equalizer bands they are set to `Bell` instead of `Off`.
 - Improved linking management between port filter nodes in PipeWire.
