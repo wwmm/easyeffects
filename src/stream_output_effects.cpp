@@ -172,15 +172,15 @@ void StreamOutputEffects::connect_filters() {
 
         auto link_size = links.size();
 
-        for (size_t n = 0; n < link_size; n++) {
+        for (size_t n = 0U; n < link_size; n++) {
           list_proxies.emplace_back(links[n]);
         }
 
-        if (link_size == 2) {
+        if (link_size == 2U) {
           prev_node_id = next_node_id;
         } else {
           util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                        std::to_string(prev_node_id) + " failed");
+                        std::to_string(next_node_id) + " failed");
         }
       }
     }
@@ -202,9 +202,9 @@ void StreamOutputEffects::connect_filters() {
     }
   }
 
-  // link spectrum, output level meter and output device
+  // link spectrum and output level meter
 
-  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->output_device.id};
+  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id()};
 
   for (const auto& node_id : node_id_list) {
     next_node_id = node_id;
@@ -213,11 +213,33 @@ void StreamOutputEffects::connect_filters() {
 
     auto link_size = links.size();
 
-    for (size_t n = 0; n < link_size; n++) {
+    for (size_t n = 0U; n < link_size; n++) {
       list_proxies.emplace_back(links[n]);
     }
 
-    prev_node_id = (link_size < 2) ? prev_node_id : next_node_id;
+    if (link_size == 2U) {
+      prev_node_id = next_node_id;
+    } else {
+      util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
+                    std::to_string(next_node_id) + " failed");
+    }
+  }
+
+  // link output device
+
+  next_node_id = pm->output_device.id;
+
+  auto links = pm->link_nodes(prev_node_id, next_node_id);
+
+  auto link_size = links.size();
+
+  for (size_t n = 0U; n < link_size; n++) {
+    list_proxies.emplace_back(links[n]);
+  }
+
+  if (link_size < 2U) {
+    util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
+                  std::to_string(next_node_id) + " failed");
   }
 }
 
