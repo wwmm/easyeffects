@@ -9,27 +9,25 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-10 20:35+0000\n"
-"PO-Revision-Date: 2018-07-18 22:14+0300\n"
+"PO-Revision-Date: 2021-08-11 02:19+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
-#, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Аудиоэффекты для приложений PulseAudio"
+msgstr "Звуковые эффекты для приложений PipeWire"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:9
 msgid "Wellington Wallace"
@@ -101,9 +99,8 @@ msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
 #: data/ui/app_info.ui:66
-#, fuzzy
 msgid "Add to Blocklist"
-msgstr "Черный список"
+msgstr "Добавить в черный список"
 
 #: data/ui/app_info.ui:82
 msgid "Format"
@@ -166,7 +163,7 @@ msgstr "Вход"
 
 #: data/ui/application_window.ui:95
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: data/ui/application_window.ui:116 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
@@ -176,9 +173,8 @@ msgid "Presets"
 msgstr "Предустановки"
 
 #: data/ui/application_window.ui:124
-#, fuzzy
 msgid "Global Bypass"
-msgstr "Обход"
+msgstr "Общий обход"
 
 #: data/ui/application_window.ui:135 data/ui/application_window.ui:177
 msgid "Settings"
@@ -237,9 +233,8 @@ msgid "Loudness"
 msgstr "Громкость"
 
 #: data/ui/autogain.ui:252
-#, fuzzy
 msgid "Output Gain"
-msgstr "Уровень предусиления"
+msgstr "Усиление выхода"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:429
 #: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:298
@@ -267,22 +262,20 @@ msgstr ""
 # #, fuzzy
 #: data/ui/autoload_row.ui:15 data/ui/compressor.ui:520 data/ui/limiter.ui:471
 #: data/ui/multiband_compressor_band.ui:213
-#, fuzzy
 msgid "Device"
-msgstr "Ограничитель ввода"
+msgstr "Устройство"
 
 #: data/ui/autoload_row.ui:38
 msgid "Profile"
-msgstr ""
+msgstr "Профиль"
 
 #: data/ui/autoload_row.ui:62
-#, fuzzy
 msgid "Preset"
-msgstr "Предустановки"
+msgstr "Предустановка"
 
 #: data/ui/autoload_row.ui:86
 msgid "Remove"
-msgstr ""
+msgstr "Удалить"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:449 data/ui/deesser.ui:23
 #: data/ui/exciter.ui:23
@@ -320,7 +313,7 @@ msgstr "Нижний порог"
 
 #: data/ui/client_info.ui:12 data/ui/module_info.ui:12
 msgid "Id"
-msgstr ""
+msgstr "Id"
 
 #: data/ui/client_info.ui:35 data/ui/module_info.ui:35
 #: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
@@ -329,11 +322,11 @@ msgstr "Название"
 
 #: data/ui/client_info.ui:58
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/client_info.ui:81
 msgid "Access"
-msgstr ""
+msgstr "Доступ"
 
 #: data/ui/compressor.ui:37 include/effects_base_ui.hpp:136
 msgid "Compressor"
@@ -359,9 +352,8 @@ msgid "Boosting"
 msgstr ""
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:814
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Порог срабатывания"
+msgstr "Порог усиления"
 
 #: data/ui/compressor.ui:111 data/ui/multiband_compressor_band.ui:778
 #, fuzzy
@@ -376,9 +368,8 @@ msgid "Attack"
 msgstr "Атака"
 
 #: data/ui/compressor.ui:169 data/ui/multiband_compressor_band.ui:186
-#, fuzzy
 msgid "Time"
-msgstr "Режим реального времени"
+msgstr "Время"
 
 #: data/ui/compressor.ui:181 data/ui/deesser.ui:292 data/ui/gate.ui:185
 #: data/ui/limiter.ui:353 data/ui/maximizer.ui:29
@@ -506,9 +497,8 @@ msgid "Sidechain Filters"
 msgstr "Усиление ввода [дБ]"
 
 #: data/ui/compressor.ui:673
-#, fuzzy
 msgid "High-pass"
-msgstr "Высокачастотный фильтр"
+msgstr "Высокочастотный фильтр"
 
 #: data/ui/compressor.ui:697 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
 #: data/ui/pipe_info.ui:624
@@ -522,20 +512,19 @@ msgstr "Выкл"
 
 #: data/ui/compressor.ui:709 data/ui/compressor.ui:757
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 Дб/окт"
 
 #: data/ui/compressor.ui:710 data/ui/compressor.ui:758
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 Дб/окт"
 
 #: data/ui/compressor.ui:711 data/ui/compressor.ui:759
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 Дб/окт"
 
 #: data/ui/compressor.ui:745
-#, fuzzy
 msgid "Low-pass"
-msgstr "Фильтр низких частот"
+msgstr "Низкочастотный фильтр"
 
 #: data/ui/compressor.ui:812
 msgid "Gain"
@@ -543,7 +532,7 @@ msgstr "Усиление"
 
 #: data/ui/compressor.ui:842
 msgid "Envelope"
-msgstr ""
+msgstr "Огибающая"
 
 #: data/ui/compressor.ui:902
 msgid "Curve"
@@ -558,9 +547,8 @@ msgid "R"
 msgstr "Пр"
 
 #: data/ui/convolver.ui:79
-#, fuzzy
 msgid "Impulses"
-msgstr "Импульсная реакция"
+msgstr "Импульсы"
 
 #: data/ui/convolver.ui:87
 msgid "Stereo Width"
@@ -666,7 +654,7 @@ msgstr "Увеличение ослабления"
 
 #: data/ui/effects_base.ui:64
 msgid "Add Plugin"
-msgstr ""
+msgstr "Добавить плагин"
 
 #: data/ui/effects_base.ui:137
 msgid "Players"
@@ -674,7 +662,7 @@ msgstr ""
 
 #: data/ui/effects_base.ui:160
 msgid "Plugins"
-msgstr ""
+msgstr "Плагины"
 
 #: data/ui/effects_base.ui:247
 msgid "Blocklist"
@@ -694,19 +682,19 @@ msgstr "Кол-во полос эквалайзера"
 
 #: data/ui/equalizer.ui:117
 msgid "IIR"
-msgstr ""
+msgstr "IIR"
 
 #: data/ui/equalizer.ui:118
 msgid "FIR"
-msgstr ""
+msgstr "FIR"
 
 #: data/ui/equalizer.ui:119
 msgid "FFT"
-msgstr ""
+msgstr "FFT"
 
 #: data/ui/equalizer.ui:120
 msgid "SPM"
-msgstr ""
+msgstr "SPM"
 
 #: data/ui/equalizer.ui:141
 msgid "Split Channels"
@@ -903,7 +891,7 @@ msgstr "Исп. тёмную тему"
 
 #: data/ui/general_settings.ui:101
 msgid "Run in Background"
-msgstr ""
+msgstr "Запускать в фоновом режиме"
 
 #: data/ui/general_settings.ui:138
 #, fuzzy
@@ -911,9 +899,8 @@ msgid "Reset All Settings"
 msgstr "Настройки"
 
 #: data/ui/general_settings.ui:144
-#, fuzzy
 msgid "About EasyEffects"
-msgstr "EasyEffects"
+msgstr "Об EasyEffects"
 
 #: data/ui/limiter.ui:56
 msgid "Oversampling"
@@ -921,7 +908,7 @@ msgstr "Передискретизация"
 
 #: data/ui/limiter.ui:69
 msgid "Dither"
-msgstr ""
+msgstr "Подмешивание шума"
 
 #: data/ui/limiter.ui:82
 msgid "Herm Thin"
@@ -1061,7 +1048,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:178 data/ui/multiband_compressor_band.ui:671
 msgid "Preamp"
-msgstr ""
+msgstr "Предусилитель"
 
 #: data/ui/limiter.ui:403
 msgid "Boost"
@@ -1104,28 +1091,25 @@ msgstr ""
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/loudness.ui:58
-#, fuzzy
 msgid "FFT Size"
-msgstr "Размер кадра"
+msgstr "Размер FFT"
 
 #: data/ui/loudness.ui:87
-#, fuzzy
 msgid "Output Volume"
-msgstr "Выход"
+msgstr "Громкость на выходе"
 
 #: data/ui/maximizer.ui:61
 msgid "Ceiling"
 msgstr "Верхний порог"
 
 #: data/ui/module_info.ui:58
-#, fuzzy
 msgid "Description"
-msgstr "Определение"
+msgstr "Описание"
 
 #: data/ui/multiband_compressor.ui:47
 #, fuzzy
 msgid "Operating Mode"
-msgstr "Импортировать импульс"
+msgstr "Импортировать модель"
 
 #: data/ui/multiband_compressor.ui:60
 msgid "Classic"
@@ -1159,62 +1143,52 @@ msgid "Brown MT"
 msgstr ""
 
 #: data/ui/multiband_compressor.ui:135
-#, fuzzy
 msgid "Band 1"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 1"
 
 #: data/ui/multiband_compressor.ui:152
-#, fuzzy
 msgid "Band 2"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 2"
 
 #: data/ui/multiband_compressor.ui:176
-#, fuzzy
 msgid "Band 3"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 3"
 
 #: data/ui/multiband_compressor.ui:200
-#, fuzzy
 msgid "Band 4"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 4"
 
 #: data/ui/multiband_compressor.ui:224
-#, fuzzy
 msgid "Band 5"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 5"
 
 #: data/ui/multiband_compressor.ui:248
-#, fuzzy
 msgid "Band 6"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 6"
 
 #: data/ui/multiband_compressor.ui:272
-#, fuzzy
 msgid "Band 7"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 7"
 
 #: data/ui/multiband_compressor.ui:296
-#, fuzzy
 msgid "Band 8"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Полоса 8"
 
 #: data/ui/multiband_compressor_band.ui:22
 msgid "Band Start"
-msgstr ""
+msgstr "Начало полосы"
 
 #: data/ui/multiband_compressor_band.ui:64
-#, fuzzy
 msgid "Band End"
-msgstr "Кол-во полос эквалайзера"
+msgstr "Конец полосы"
 
 #: data/ui/multiband_compressor_band.ui:106
 msgid "Compression Mode"
 msgstr "Редим сжатия"
 
 #: data/ui/multiband_compressor_band.ui:134
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Обход"
+msgstr "Обход полосы"
 
 # #, fuzzy
 #: data/ui/multiband_compressor_band.ui:477
@@ -1239,7 +1213,7 @@ msgstr "Уровень предусиления"
 
 #: data/ui/multiband_compressor_band.ui:897
 msgid "Band Envelope"
-msgstr ""
+msgstr "Огибающая полосы"
 
 #: data/ui/multiband_compressor_band.ui:927
 #, fuzzy
@@ -1290,14 +1264,12 @@ msgstr "По умолчанию"
 
 # #, fuzzy
 #: data/ui/pipe_info.ui:77
-#, fuzzy
 msgid "Input Device"
-msgstr "Ограничитель ввода"
+msgstr "Устройство ввода"
 
 #: data/ui/pipe_info.ui:96
-#, fuzzy
 msgid "Output Device"
-msgstr "Уровень предусиления"
+msgstr "Устройство вывода"
 
 #: data/ui/pipe_info.ui:115
 #, fuzzy
@@ -1310,9 +1282,8 @@ msgid "Library Version"
 msgstr "Версия"
 
 #: data/ui/pipe_info.ui:161
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Передискретизация"
+msgstr "Частота дискретизации"
 
 #: data/ui/pipe_info.ui:184
 #, fuzzy
@@ -1331,7 +1302,7 @@ msgstr "Устройство вывода по умолчанию"
 
 #: data/ui/pipe_info.ui:259
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Автозагрузка предустановок"
 
 #: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
 msgid "Create Association"
@@ -1355,23 +1326,20 @@ msgid "Enable"
 msgstr "Включить"
 
 #: data/ui/pipe_info.ui:517
-#, fuzzy
 msgid "Channel"
-msgstr "Каналы"
+msgstr "Канал"
 
 #: data/ui/pipe_info.ui:554
 msgid "Both"
 msgstr ""
 
 #: data/ui/pipe_info.ui:570
-#, fuzzy
 msgid "Signal"
-msgstr "Проверочный сигнал"
+msgstr "Сигнал"
 
 #: data/ui/pipe_info.ui:587
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Таблица синусоид"
+msgstr "Синусоида"
 
 #: data/ui/pipe_info.ui:598
 msgid "White Noise"
@@ -1403,7 +1371,7 @@ msgstr "Чёткость"
 
 #: data/ui/preset_row.ui:17 src/convolver_ui.cpp:247
 msgid "Load"
-msgstr ""
+msgstr "Загрузить"
 
 #: data/ui/preset_row.ui:25
 msgid "Save current settings to this preset file"
@@ -1415,7 +1383,7 @@ msgstr "Удалить этот файл с предустановками"
 
 #: data/ui/presets_menu.ui:78
 msgid "Speakers"
-msgstr ""
+msgstr "Динамики"
 
 #: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
 msgid "Create Preset"
@@ -1426,9 +1394,8 @@ msgid "Import Presets"
 msgstr "Импортировать предустановки"
 
 #: data/ui/presets_menu.ui:179
-#, fuzzy
 msgid "Microphone"
-msgstr "Калибровка корректировки микрофона"
+msgstr "Микрофон"
 
 #: data/ui/reverb.ui:44
 msgid "High Frequency Damping"
@@ -1518,19 +1485,16 @@ msgid "Large Occupied Hall"
 msgstr "Большой занятый чем-то зал"
 
 #: data/ui/rnnoise.ui:21
-#, fuzzy
 msgid "Import Model"
-msgstr "Импортировать импульс"
+msgstr "Импортировать модель"
 
 #: data/ui/rnnoise.ui:35
-#, fuzzy
 msgid "Models"
-msgstr "Режим"
+msgstr "Модели"
 
 #: data/ui/rnnoise.ui:65
-#, fuzzy
 msgid "Active Model"
-msgstr "Агрессивный режим"
+msgstr "Активная модель"
 
 #: data/ui/rnnoise.ui:71
 msgid "Standard RNNoise Model"
@@ -1561,9 +1525,8 @@ msgid "Line Width"
 msgstr "Ширина линии"
 
 #: data/ui/spectrum_settings.ui:186
-#, fuzzy
 msgid "Minimum"
-msgstr "Максимум"
+msgstr "Минимум"
 
 #: data/ui/spectrum_settings.ui:259
 msgid "Spectrum Type"
@@ -1663,7 +1626,7 @@ msgstr "Стерео фаза"
 
 #: data/ui/stereo_tools.ui:685
 msgid "Phase Correlation"
-msgstr ""
+msgstr "Корреляция фазы"
 
 #: include/effects_base_ui.hpp:133
 #, fuzzy
@@ -1748,9 +1711,8 @@ msgid "Reverberation"
 msgstr "Ревербация"
 
 #: include/effects_base_ui.hpp:154
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Увеличение ослабления"
+msgstr "Подавление шума"
 
 #: include/effects_base_ui.hpp:155
 msgid "Stereo Tools"
@@ -1855,9 +1817,8 @@ msgid "APO Presets"
 msgstr "Предустановки"
 
 #: src/presets_menu_ui.cpp:194
-#, fuzzy
 msgid "Import Preset"
-msgstr "Импортировать предустановки"
+msgstr "Импортировать предустановку"
 
 #: src/stream_input_effects_ui.cpp:31
 #, fuzzy
@@ -1884,6 +1845,15 @@ msgstr "Граница"
 
 #~ msgid "Attenuation"
 #~ msgstr "Затухание"
+
+#~ msgid "ISO226-2003"
+#~ msgstr "ISO226-2003"
+
+#~ msgid "LR4"
+#~ msgstr "LR4"
+
+#~ msgid "LR8"
+#~ msgstr "LR8"
 
 #~ msgid "Compression"
 #~ msgstr "Сжатие"

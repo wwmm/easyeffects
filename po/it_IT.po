@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-08-10 20:35+0000\n"
-"PO-Revision-Date: 2021-07-12 12:52+0200\n"
+"PO-Revision-Date: 2021-08-11 10:33+0200\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -36,21 +36,24 @@ msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:11
-#, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects è uno strumento avanzato di manipolazione dell'audio. Include un "
-"equalizzatore, un limitatore, un compressore e uno strumento per il "
-"riverbero. È dotato inoltre di un analizzatore di spettro."
+"EasyEffects è un'applicazione utile per la manipolazione dell'audio. Tra i "
+"diversi moduli disponibili include un equalizzatore, un limitatore, un "
+"compressore e uno strumento per il riverbero. È dotato inoltre di un "
+"analizzatore di spettro."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:12
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"EasyEffects è il successore di PulseEffects. EasyEffects supporta soltanto "
+"il server audio PipeWire. Gli utenti su PulseAudio possono usare invece "
+"PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.appdata.xml.in:13
 msgid ""
@@ -423,7 +426,7 @@ msgstr "Intermedia"
 
 #: data/ui/compressor.ui:471 data/ui/multiband_compressor_band.ui:544
 msgid "Side"
-msgstr "Laterale"
+msgstr "Side"
 
 #: data/ui/compressor.ui:472 data/ui/delay.ui:29 data/ui/equalizer.ui:37
 #: data/ui/multiband_compressor_band.ui:545 data/ui/pipe_info.ui:534
@@ -627,7 +630,7 @@ msgstr "Aggiungi Modulo"
 
 #: data/ui/effects_base.ui:137
 msgid "Players"
-msgstr "Riproduzione"
+msgstr "Player"
 
 #: data/ui/effects_base.ui:160
 msgid "Plugins"
@@ -928,87 +931,87 @@ msgstr "Off"
 
 #: data/ui/limiter.ui:109
 msgid "Half x2(2L)"
-msgstr "Metà x2(2L)"
+msgstr "Parziale x2(2L)"
 
 #: data/ui/limiter.ui:110
 msgid "Half x2(3L)"
-msgstr "Half x2(3L)"
+msgstr "Parziale x2(3L)"
 
 #: data/ui/limiter.ui:111
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Parziale x3(2L)"
 
 #: data/ui/limiter.ui:112
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Parziale x3(3L)"
 
 #: data/ui/limiter.ui:113
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Parziale x4(2L)"
 
 #: data/ui/limiter.ui:114
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Parziale x4(3L)"
 
 #: data/ui/limiter.ui:115
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Parziale x6(2L)"
 
 #: data/ui/limiter.ui:116
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Parziale x6(3L)"
 
 #: data/ui/limiter.ui:117
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Parziale x8(2L)"
 
 #: data/ui/limiter.ui:118
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Parziale x8(3L)"
 
 #: data/ui/limiter.ui:119
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Intero x2(2L)"
 
 #: data/ui/limiter.ui:120
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Intero x2(3L)"
 
 #: data/ui/limiter.ui:121
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Intero x3(2L)"
 
 #: data/ui/limiter.ui:122
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Intero x3(3L)"
 
 #: data/ui/limiter.ui:123
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Intero x4(2L)"
 
 #: data/ui/limiter.ui:124
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Intero x4(3L)"
 
 #: data/ui/limiter.ui:125
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Intero x6(2L)"
 
 #: data/ui/limiter.ui:126
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Intero x6(3L)"
 
 #: data/ui/limiter.ui:127
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Intero x8(2L)"
 
 #: data/ui/limiter.ui:128
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Intero x8(3L)"
 
 #: data/ui/limiter.ui:178 data/ui/multiband_compressor_band.ui:671
 msgid "Preamp"
-msgstr ""
+msgstr "Preamp"
 
 #: data/ui/limiter.ui:403
 msgid "Boost"
@@ -1372,7 +1375,7 @@ msgstr "Pre Ritardo"
 
 #: data/ui/reverb.ui:171
 msgid "Decay Time"
-msgstr "Decadimento"
+msgstr "Tempo Decay"
 
 #: data/ui/reverb.ui:205
 msgid "Wet"
@@ -1516,7 +1519,7 @@ msgstr "SD > DD (Canale Destro Mono)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr "SD > S+D (Somma Canali a Mono)"
+msgstr "SD > S+D (Mono Somma S+D)"
 
 #: data/ui/stereo_tools.ui:145
 msgid "LR > RL (Stereo Flip Channels)"
@@ -1556,7 +1559,7 @@ msgstr "Fase Stereo"
 
 #: data/ui/stereo_tools.ui:685
 msgid "Phase Correlation"
-msgstr "Correlazione di Fase"
+msgstr "Correlazione Fase"
 
 #: include/effects_base_ui.hpp:133
 msgid "Autogain"
@@ -1644,7 +1647,7 @@ msgstr "Strumenti Stereo"
 
 #: src/application.cpp:30
 msgid "Quit EasyEffects. Useful when running in service mode."
-msgstr "Esci da EasyEffects. Utile quando in esecuzione come servizio."
+msgstr "Esci da EasyEffects. Utile in esecuzione come servizio."
 
 #: src/application.cpp:32
 msgid "Show available presets."
@@ -1660,7 +1663,8 @@ msgstr "Reset EasyEffects."
 
 #: src/application.cpp:40
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per lo stato"
+msgstr ""
+"Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
 #: src/application.cpp:42
 msgid "Hide the Window."
