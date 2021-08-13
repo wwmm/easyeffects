@@ -138,6 +138,8 @@ See the wiki: [Command Line Options](https://github.com/wwmm/easyeffects/wiki/Co
 
 See the wiki: [Community presets](https://github.com/wwmm/easyeffects/wiki/Community-presets)
 
+This page also has instructions for converting PulseEffects presets to EasyEffects presets.
+
 ## Reporting bugs
 
 See the wiki: [Reporting Bugs](https://github.com/wwmm/easyeffects/wiki/Reporting-bugs)

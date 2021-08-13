@@ -42,7 +42,7 @@ Crystalizer::Crystalizer(const std::string& tag,
   std::ranges::fill(band_last_L, 0.0F);
   std::ranges::fill(band_last_R, 0.0F);
 
-  frequencies[0] = 500.0F;
+  frequencies[0] = 2500;  // 500.0F;
   frequencies[1] = 1000.0F;
   frequencies[2] = 2000.0F;
   frequencies[3] = 3000.0F;
@@ -53,7 +53,7 @@ Crystalizer::Crystalizer(const std::string& tag,
   frequencies[8] = 8000.0F;
   frequencies[9] = 9000.0F;
   frequencies[10] = 10000.0F;
-  frequencies[11] = 15000.0F;
+  frequencies[11] = 2500;  // 15000.0F;
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
@@ -141,6 +141,9 @@ void Crystalizer::setup() {
 
       filters.at(n)->setup();
     }
+
+    util::warning(std::to_string(filters.at(0)->get_delay()));
+    util::warning(std::to_string(filters.at(12)->get_delay()));
 
     std::scoped_lock<std::mutex> lock(data_mutex);
 

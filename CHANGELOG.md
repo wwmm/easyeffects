@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.1.0]
+
 ### Added
 
 - Updated Chinese translation.
@@ -21,6 +23,7 @@
 - Depending on the input gain or output gain values the corresponding level bars could not be aligned.
 - When adding more equalizer bands they are set to `Bell` instead of `Off`.
 - Improved linking management between port filter nodes in PipeWire.
+- The crystalizer plugin signal amplification was too high before. It should be within more reasonable levels now.
 
 ## [6.0.3]
 

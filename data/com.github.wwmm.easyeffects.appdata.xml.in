@@ -18,7 +18,7 @@
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="help">https://github.com/wwmm/easyeffects/blob/master/README.md</url>
-  <screenshots>    
+  <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects_players.png</image>
     </screenshot>
@@ -30,6 +30,7 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="6.1.0" date="2021-08-10"/>
     <release version="6.0.3" date="2021-07-16"/>
     <release version="6.0.2" date="2021-07-11"/>
     <release version="6.0.1" date="2021-07-09"/>

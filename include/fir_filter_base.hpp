@@ -48,6 +48,8 @@ class FirFilterBase {
 
   virtual void setup();
 
+  [[nodiscard]] auto get_delay() const -> float;
+
   template <typename T1>
   void process(T1& data_left, T1& data_right) {
     std::span conv_left_in{conv->inpdata(0), conv->inpdata(0) + n_samples};
@@ -83,7 +85,8 @@ class FirFilterBase {
 
   float min_frequency = 20.0F;
   float max_frequency = 20000.0F;
-  float transition_band = 100.0F;  // Hz
+  float transition_band = 200.0F;  // Hz
+  float delay = 0.0F;
 
   std::vector<float> kernel;
 
@@ -93,6 +96,8 @@ class FirFilterBase {
       -> std::vector<float>;
 
   void setup_zita();
+
+  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
 
 #endif

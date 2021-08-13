@@ -34,19 +34,29 @@ void FirFilterBandpass::setup() {
 
   highpass_kernel[(highpass_kernel.size() - 1) / 2] += 1;
 
-  kernel.resize(highpass_kernel.size());
+  std::vector<float> tmp(highpass_kernel.size());
 
   /*
     Creating a bandpass from a band reject through spectral inversion https://www.dspguide.com/ch16/4.htm
   */
 
-  for (size_t n = 0; n < kernel.size(); n++) {
-    kernel[n] = lowpass_kernel[n] + highpass_kernel[n];
+  for (size_t n = 0; n < tmp.size(); n++) {
+    tmp[n] = lowpass_kernel[n] + highpass_kernel[n];
   }
 
-  std::ranges::for_each(kernel, [](auto& v) { v *= -1; });
+  std::ranges::for_each(tmp, [](auto& v) { v *= -1; });
 
-  kernel[(kernel.size() - 1) / 2] += 1;
+  tmp[(tmp.size() - 1) / 2] += 1;
+
+  /*
+    Convolving the kernel with itself to increase the stopband attenuation https://www.dspguide.com/ch16/4.htm
+  */
+
+  kernel.resize(2 * tmp.size() - 1);
+
+  direct_conv(tmp, tmp, kernel);
+
+  delay = 0.5F * static_cast<float>(kernel.size() - 1) / static_cast<float>(rate);
 
   setup_zita();
 }

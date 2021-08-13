@@ -158,7 +158,7 @@ void FirFilterBase::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, kernel.size());
+  ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
     util::warning(log_tag + "left impdata_create failed: " + std::to_string(ret));
@@ -166,7 +166,7 @@ void FirFilterBase::setup_zita() {
     return;
   }
 
-  ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, kernel.size());
+  ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
     util::warning(log_tag + "right impdata_create failed: " + std::to_string(ret));
@@ -188,4 +188,22 @@ void FirFilterBase::setup_zita() {
   // conv->print();
 
   zita_ready = true;
+}
+
+void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
+  uint M = (c.size() + 1U) / 2U;
+
+  for (uint n = 0U; n < c.size(); n++) {
+    c[n] = 0.0F;
+
+    for (uint m = 0U; m < M; m++) {
+      if (n > m && n - m < M) {
+        c[n] += a[n - m] * b[m];
+      }
+    }
+  }
+}
+
+auto FirFilterBase::get_delay() const -> float {
+  return delay;
 }
