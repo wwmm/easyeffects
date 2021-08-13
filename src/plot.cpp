@@ -260,7 +260,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     would start to be drawn at the border of the window.
   */
 
-  for (size_t n = 0, m = labels.size(); n < m - 1; n++) {
+  for (size_t n = 0U, m = labels.size(); n < m - 1U; n++) {
     Glib::ustring msg;
 
     auto label = labels[n];

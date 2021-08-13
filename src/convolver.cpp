@@ -177,7 +177,7 @@ void Convolver::process(std::span<float>& left_in,
 
     do_convolution(left_out, right_out);
   } else {
-    for (size_t j = 0; j < left_in.size(); j++) {
+    for (size_t j = 0U; j < left_in.size(); j++) {
       data_L.emplace_back(left_in[j]);
       data_R.emplace_back(right_in[j]);
 
@@ -314,9 +314,9 @@ void Convolver::read_kernel_file() {
 
   file.readf(buffer.data(), file.frames());
 
-  for (size_t n = 0; n < buffer_L.size(); n++) {
-    buffer_L[n] = buffer[2 * n];
-    buffer_R[n] = buffer[2 * n + 1];
+  for (size_t n = 0U; n < buffer_L.size(); n++) {
+    buffer_L[n] = buffer[2U * n];
+    buffer_R[n] = buffer[2U * n + 1U];
   }
 
   if (file.samplerate() != static_cast<int>(rate)) {

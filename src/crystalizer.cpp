@@ -169,7 +169,7 @@ void Crystalizer::process(std::span<float>& left_in,
 
     enhance_peaks(left_out, right_out);
   } else {
-    for (size_t j = 0; j < left_in.size(); j++) {
+    for (size_t j = 0U; j < left_in.size(); j++) {
       data_L.emplace_back(left_in[j]);
       data_R.emplace_back(right_in[j]);
 

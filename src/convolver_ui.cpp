@@ -523,7 +523,7 @@ void ConvolverUi::get_irs_info() {
 
   // rescaling between 0 and 1
 
-  for (size_t n = 0; n < left_mag.size(); n++) {
+  for (size_t n = 0U; n < left_mag.size(); n++) {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
@@ -624,21 +624,21 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   auto log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), spectrum_settings->get_int("n-points"));
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
-  std::vector<int> bin_count(log_axis.size());
+  std::vector<uint> bin_count(log_axis.size());
 
   std::vector<float> l(log_axis.size());
   std::vector<float> r(log_axis.size());
 
   std::ranges::fill(l, 0.0F);
   std::ranges::fill(r, 0.0F);
-  std::ranges::fill(bin_count, 0);
+  std::ranges::fill(bin_count, 0U);
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  for (size_t j = 0; j < freq_axis.size(); j++) {
-    for (size_t n = 0; n < log_axis.size(); n++) {
-      if (n > 0) {
-        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1]) {
+  for (size_t j = 0U; j < freq_axis.size(); j++) {
+    for (size_t n = 0U; n < log_axis.size(); n++) {
+      if (n > 0U) {
+        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
           l[n] += left_spectrum[j];
           r[n] += right_spectrum[j];
 
@@ -657,10 +657,10 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // fillint empty bins with their neighbors value
 
-  for (size_t n = 0; n < bin_count.size(); n++) {
-    if (bin_count[n] == 0 && n > 0) {
-      l[n] = l[n - 1];
-      r[n] = r[n - 1];
+  for (size_t n = 0U; n < bin_count.size(); n++) {
+    if (bin_count[n] == 0U && n > 0U) {
+      l[n] = l[n - 1U];
+      r[n] = r[n - 1U];
     }
   }
 

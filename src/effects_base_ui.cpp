@@ -1103,7 +1103,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
           }
         }
       } else {
-        for (size_t m = 0; m < list.size(); m++) {
+        for (size_t m = 0U; m < list.size(); m++) {
           if (list[m] == visible_page_name) {
             listview_selected_plugins->get_model()->select_item(m, true);
 
