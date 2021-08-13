@@ -40,7 +40,7 @@ void FirFilterBandpass::setup() {
     Creating a bandpass from a band reject through spectral inversion https://www.dspguide.com/ch16/4.htm
   */
 
-  for (size_t n = 0U; n < kernel.size(); n++) {
+  for (size_t n = 0U, k_size = kernel.size(); n < k_size; n++) {
     kernel[n] = lowpass_kernel[n] + highpass_kernel[n];
   }
 

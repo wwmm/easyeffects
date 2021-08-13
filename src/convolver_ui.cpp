@@ -523,7 +523,7 @@ void ConvolverUi::get_irs_info() {
 
   // rescaling between 0 and 1
 
-  for (size_t n = 0U; n < left_mag.size(); n++) {
+  for (size_t n = 0U, lm_size = left_mag.size(); n < lm_size; n++) {
     left_mag[n] = (left_mag[n] - min_left) / (max_left - min_left);
     right_mag[n] = (right_mag[n] - min_right) / (max_right - min_right);
   }
@@ -558,7 +558,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   auto real_input = left_mag;
 
-  for (uint n = 0U; n < real_input.size(); n++) {
+  for (uint n = 0U, ri_size = real_input.size(); n < ri_size; n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
     auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
@@ -573,7 +573,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0U; i < left_spectrum.size(); i++) {
+  for (uint i = 0U, ls_size = left_spectrum.size(); i < ls_size; i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
     sqr /= static_cast<float>(left_spectrum.size() * left_spectrum.size());
@@ -585,7 +585,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   real_input = right_mag;
 
-  for (uint n = 0U; n < real_input.size(); n++) {
+  for (uint n = 0U, ri_size = real_input.size(); n < ri_size; n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
     auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
@@ -595,7 +595,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   fftwf_execute(plan);
 
-  for (uint i = 0U; i < right_spectrum.size(); i++) {
+  for (uint i = 0U, rs_size = right_spectrum.size(); i < rs_size; i++) {
     float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
     sqr /= static_cast<float>(right_spectrum.size() * right_spectrum.size());
@@ -615,7 +615,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   freq_axis.resize(left_spectrum.size());
 
-  for (uint n = 0U; n < left_spectrum.size(); n++) {
+  for (uint n = 0U, ls_size = left_spectrum.size(); n < ls_size; n++) {
     freq_axis[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(left_spectrum.size());
   }
 
@@ -635,8 +635,8 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  for (size_t j = 0U; j < freq_axis.size(); j++) {
-    for (size_t n = 0U; n < log_axis.size(); n++) {
+  for (size_t j = 0U, fa_size = freq_axis.size(); j < fa_size; j++) {
+    for (size_t n = 0U, la_size = log_axis.size(); n < la_size; n++) {
       if (n > 0U) {
         if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
           l[n] += left_spectrum[j];
@@ -657,7 +657,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // fillint empty bins with their neighbors value
 
-  for (size_t n = 0U; n < bin_count.size(); n++) {
+  for (size_t n = 0U, bc_size = bin_count.size(); n < bc_size; n++) {
     if (bin_count[n] == 0U && n > 0U) {
       l[n] = l[n - 1U];
       r[n] = r[n - 1U];
@@ -678,7 +678,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // rescaling between 0 and 1
 
-  for (unsigned int n = 0; n < left_spectrum.size(); n++) {
+  for (uint n = 0, ls_size = left_spectrum.size(); n < ls_size; n++) {
     left_spectrum[n] = (left_spectrum[n] - fft_min_left) / (fft_max_left - fft_min_left);
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }

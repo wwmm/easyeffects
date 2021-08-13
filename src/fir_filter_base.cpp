@@ -98,7 +98,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   float sum = 0.0F;
 
-  for (size_t n = 0U; n < output.size(); n++) {
+  for (size_t n = 0U, output_size = output.size(); n < output_size; n++) {
     /*
       windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
     */
