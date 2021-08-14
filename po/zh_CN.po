@@ -19,22 +19,22 @@ msgstr ""
 "X-Generator: Gtranslator 40.0\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 #| msgid "Audio Effects for PulseAudio Applications"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
 "EasyEffects is an advanced audio manipulation tools. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -43,7 +43,7 @@ msgstr ""
 "EasyEffects 是一个高级音频处理工具。 它包括均衡器，限幅器，压缩器和混响工具，"
 "等等。 比如，还有一个内置的频谱分析仪。"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #| msgid ""
 #| "Because EasyEffects uses the default PulseAudio sound server it will work "
 #| "with most, if not all, applications you use. All supported applications "
@@ -57,7 +57,7 @@ msgstr ""
 "全部）应用程序一起使用。 所有受支持的应用程序都显示在主窗口中，可以在其中单独"
 "启用每个应用程序。"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -66,7 +66,7 @@ msgstr ""
 "除了处理音频输出外，EasyEffects 还可以将效果应用于输入设备，例如麦克风。 例"
 "如，在录音时很有用，并在语音通话时也能很好地工作。"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "
 "used in the last session. It is also possible to save all the current "
@@ -75,24 +75,24 @@ msgstr ""
 "启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存为"
 "配置文件。"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:23
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:23
 msgid "Set the volume and turn on/off effects"
 msgstr "设置音量和 打开/关闭音效"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:27
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:27
 msgid "Includes an equalizer with built-in presets"
 msgstr "包含预设的均衡器"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:31
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:31
 msgid "Input Limiter"
 msgstr "输入限幅器"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:35 data/ui/compressor.ui:36
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:35 data/ui/compressor.ui:36
 #: include/effects_base_ui.hpp:136
 msgid "Compressor"
 msgstr "压缩器"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:39
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:39
 msgid "Calibration"
 msgstr "校准"
 

@@ -166,6 +166,8 @@ void StreamInputEffects::connect_filters() {
 
   auto list = settings->get_string_array("plugins");
 
+  bool mic_linked = false;
+
   uint prev_node_id = pm->input_device.id;
   uint next_node_id = 0U;
 
@@ -182,15 +184,19 @@ void StreamInputEffects::connect_filters() {
 
         auto link_size = links.size();
 
-        for (size_t n = 0; n < link_size; n++) {
+        for (size_t n = 0U; n < link_size; n++) {
           list_proxies.emplace_back(links[n]);
         }
 
-        if (link_size == 2) {
+        if ((mic_linked && (link_size == 2U)) || (!mic_linked && (link_size > 0U))) {
           prev_node_id = next_node_id;
+
+          if (!mic_linked) {
+            mic_linked = true;
+          }
         } else {
           util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
-                        std::to_string(prev_node_id) + " failed");
+                        std::to_string(next_node_id) + " failed");
         }
       }
     }
@@ -212,7 +218,7 @@ void StreamInputEffects::connect_filters() {
     }
   }
 
-  // link spectrum, output level meter and input device
+  // link spectrum, output level meter and source node
 
   auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_source_node.id};
 
@@ -223,11 +229,20 @@ void StreamInputEffects::connect_filters() {
 
     auto link_size = links.size();
 
-    for (size_t n = 0; n < link_size; n++) {
+    for (size_t n = 0U; n < link_size; n++) {
       list_proxies.emplace_back(links[n]);
     }
 
-    prev_node_id = (link_size < 2) ? prev_node_id : next_node_id;
+    if ((mic_linked && (link_size == 2U)) || (!mic_linked && (link_size > 0U))) {
+      prev_node_id = next_node_id;
+
+      if (!mic_linked) {
+        mic_linked = true;
+      }
+    } else {
+      util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
+                    std::to_string(next_node_id) + " failed");
+    }
   }
 }
 
