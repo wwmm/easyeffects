@@ -20,7 +20,7 @@ Files: PKGBUILD
 Copyright: Wellington <wellingtonwallace@gmail.com>
 License: GPL-3.0+
 
-Files: data/com.github.wwmm.easyeffects.appdata.xml.in
+Files: data/com.github.wwmm.easyeffects.metainfo.xml.in
 Copyright: 2017 Patrik Nilsson <asavartzeth@gmail.com>
 License: CC0-1.0
 

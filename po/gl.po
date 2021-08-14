@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-10 20:35+0000\n"
+"POT-Creation-Date: 2021-08-13 18:43+0000\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -18,23 +18,23 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:5
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 #, fuzzy
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:8
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 #, fuzzy
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efectos de son para as aplicacións de PulseAudio"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:9
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:11
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 #, fuzzy
 msgid ""
 "EasyEffects is an advanced audio manipulation tool. It includes an "
@@ -46,13 +46,13 @@ msgstr ""
 "mencionar só algunhas. Para complementalas, incorpora tamén un analizador de "
 "espectros."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:12
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
 "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:13
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 #, fuzzy
 msgid ""
 "Because EasyEffects uses the default PipeWire sound server it will work with "
@@ -64,7 +64,7 @@ msgstr ""
 "aplicacións admitidas preséntanse na xanela principal, na que é posíbel "
 "activar cada unha delas individualmente."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:14
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:14
 #, fuzzy
 msgid ""
 "Besides manipulating sound output, EasyEffects is able to apply effects to "
@@ -75,7 +75,7 @@ msgstr ""
 "dispositivo de entrada, como un micrófono. Isto é útil, por exemplo, para "
 "gravar son, mais tamén funciona ben durante as conversas."
 
-#: data/com.github.wwmm.easyeffects.appdata.xml.in:15
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:15
 #, fuzzy
 msgid ""
 "When EasyEffects is launched it will conveniently remember the configuration "

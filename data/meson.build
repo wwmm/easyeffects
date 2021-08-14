@@ -32,19 +32,19 @@ install_data([
   'schemas/com.github.wwmm.easyeffects.streaminputs.gschema.xml'
 ], install_dir: schemadir)
 
-appdata_file = i18n_mod.merge_file(
-  input: 'com.github.wwmm.easyeffects.appdata.xml.in',
-  output: 'com.github.wwmm.easyeffects.appdata.xml',
+metainfo_file = i18n_mod.merge_file(
+  input: 'com.github.wwmm.easyeffects.metainfo.xml.in',
+  output: 'com.github.wwmm.easyeffects.metainfo.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(datadir, 'metainfo')
 )
 
-# Validate merged AppStream appdata file
+# Validate merged AppStream metainfo file
 appstream_util = find_program('appstream-util', required: false)
 if appstream_util.found()
   test('Validate appstream file', appstream_util,
-    args: ['validate-strict', '--nonet', appdata_file]
+    args: ['validate-strict', '--nonet', metainfo_file]
   )
 endif
 
