@@ -66,7 +66,7 @@ class Crystalizer : public PluginBase {
   std::array<bool, nbands> band_mute;
   std::array<bool, nbands> band_bypass;
 
-  std::array<float, nbands - 1> frequencies;
+  std::array<float, nbands + 1> frequencies;
   std::array<float, nbands> band_intensity;
   std::array<float, nbands> band_last_L;
   std::array<float, nbands> band_last_R;

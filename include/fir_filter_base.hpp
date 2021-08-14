@@ -84,8 +84,8 @@ class FirFilterBase {
   uint rate = 0U;
 
   float min_frequency = 20.0F;
-  float max_frequency = 20000.0F;
-  float transition_band = 200.0F;  // Hz
+  float max_frequency = 22000.0F;
+  float transition_band = 100.0F;  // Hz
   float delay = 0.0F;
 
   std::vector<float> kernel;

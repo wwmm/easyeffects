@@ -24,15 +24,7 @@ FirFilterLowpass::FirFilterLowpass(std::string tag) : FirFilterBase(std::move(ta
 FirFilterLowpass::~FirFilterLowpass() = default;
 
 void FirFilterLowpass::setup() {
-  auto tmp = create_lowpass_kernel(max_frequency, transition_band);
-
-  /*
-    Convolving the kernel with itself to increase the stopband attenuation https://www.dspguide.com/ch16/4.htm
-  */
-
-  kernel.resize(2 * tmp.size() - 1);
-
-  direct_conv(tmp, tmp, kernel);
+  kernel = create_lowpass_kernel(max_frequency, transition_band);
 
   delay = 0.5F * static_cast<float>(kernel.size() - 1) / static_cast<float>(rate);
 

@@ -27,13 +27,7 @@ Crystalizer::Crystalizer(const std::string& tag,
   for (uint n = 0U; n < nbands; n++) {
     auto nstr = std::to_string(n);
 
-    if (n == 0U) {
-      filters.at(n) = std::make_unique<FirFilterLowpass>(log_tag + name + " band" + nstr);
-    } else if (n == nbands - 1U) {
-      filters.at(n) = std::make_unique<FirFilterHighpass>(log_tag + name + " band" + nstr);
-    } else {
-      filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + nstr);
-    }
+    filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name + " band" + nstr);
   }
 
   std::ranges::fill(band_mute, false);
@@ -42,18 +36,20 @@ Crystalizer::Crystalizer(const std::string& tag,
   std::ranges::fill(band_last_L, 0.0F);
   std::ranges::fill(band_last_R, 0.0F);
 
-  frequencies[0] = 2500;  // 500.0F;
-  frequencies[1] = 1000.0F;
-  frequencies[2] = 2000.0F;
-  frequencies[3] = 3000.0F;
-  frequencies[4] = 4000.0F;
-  frequencies[5] = 5000.0F;
-  frequencies[6] = 6000.0F;
-  frequencies[7] = 7000.0F;
-  frequencies[8] = 8000.0F;
-  frequencies[9] = 9000.0F;
-  frequencies[10] = 10000.0F;
-  frequencies[11] = 2500;  // 15000.0F;
+  frequencies[0] = 20.0F;
+  frequencies[1] = 520.0F;
+  frequencies[2] = 1020.0F;
+  frequencies[3] = 2020.0F;
+  frequencies[4] = 3020.0F;
+  frequencies[5] = 4020.0F;
+  frequencies[6] = 5020.0F;
+  frequencies[7] = 6020.0F;
+  frequencies[8] = 7020.0F;
+  frequencies[9] = 8020.0F;
+  frequencies[10] = 9020.0F;
+  frequencies[11] = 10020.0F;
+  frequencies[12] = 15020.0F;
+  frequencies[13] = 20020.0F;
 
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
@@ -130,20 +126,11 @@ void Crystalizer::setup() {
       filters.at(n)->set_n_samples(blocksize);
       filters.at(n)->set_rate(rate);
 
-      if (n == 0U) {
-        filters.at(n)->set_max_frequency(frequencies[0]);
-      } else if (n == nbands - 1U) {
-        filters.at(n)->set_min_frequency(frequencies.at(n - 1U));  // frequencies array size = nbands - 1
-      } else {
-        filters.at(n)->set_min_frequency(frequencies.at(n - 1U));
-        filters.at(n)->set_max_frequency(frequencies.at(n));
-      }
+      filters.at(n)->set_min_frequency(frequencies.at(n));
+      filters.at(n)->set_max_frequency(frequencies.at(n + 1U));
 
       filters.at(n)->setup();
     }
-
-    util::warning(std::to_string(filters.at(0)->get_delay()));
-    util::warning(std::to_string(filters.at(12)->get_delay()));
 
     std::scoped_lock<std::mutex> lock(data_mutex);
 
