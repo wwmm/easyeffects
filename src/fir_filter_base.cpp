@@ -98,16 +98,16 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   float sum = 0.0F;
 
-  for (size_t n = 0; n < output.size(); n++) {
+  for (size_t n = 0U, output_size = output.size(); n < output_size; n++) {
     /*
       windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
     */
 
-    if (n == M / 2) {
+    if (n == M / 2U) {
       output[n] = 2.0F * std::numbers::pi_v<float> * fc;
     } else {
-      output[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<int>(M / 2))) /
-                  static_cast<float>(n - static_cast<int>(M / 2));
+      output[n] = std::sin(2.0F * std::numbers::pi_v<float> * fc * static_cast<float>(n - static_cast<uint>(M / 2U))) /
+                  static_cast<float>(n - static_cast<uint>(M / 2U));
     }
 
     /*

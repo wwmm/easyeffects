@@ -52,7 +52,7 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   std::vector<float> spectrum_mag, spectrum_freqs, spectrum_x_axis;
 
-  std::vector<int> spectrum_bin_count;
+  std::vector<uint> spectrum_bin_count;
 
   void init_color();
 
