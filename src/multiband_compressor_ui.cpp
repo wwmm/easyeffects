@@ -232,7 +232,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
     auto* selected_row = listbox->get_selected_row();
 
     if (selected_row != nullptr) {
-      int row = selected_row->get_index();
+      const auto row = selected_row->get_index();
 
       if (row > -1) {
         stack->set_visible_child("band" + std::to_string(row));
