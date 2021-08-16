@@ -301,60 +301,60 @@
         </key>
         <key name="sidechain-lowcut-frequency1" type="d">
             <range min="10.0" max="20000.0" />
-            <default>40.0</default>
+            <default>500.0</default>
         </key>
         <key name="sidechain-lowcut-frequency2" type="d">
             <range min="10.0" max="20000.0" />
-            <default>100.0</default>
+            <default>1000.0</default>
         </key>
         <key name="sidechain-lowcut-frequency3" type="d">
             <range min="10.0" max="20000.0" />
-            <default>252.0</default>
+            <default>2000.0</default>
         </key>
         <key name="sidechain-lowcut-frequency4" type="d">
             <range min="10.0" max="20000.0" />
-            <default>632.0</default>
+            <default>4000.0</default>
         </key>
         <key name="sidechain-lowcut-frequency5" type="d">
             <range min="10.0" max="20000.0" />
-            <default>1587.0</default>
+            <default>8000.0</default>
         </key>
         <key name="sidechain-lowcut-frequency6" type="d">
             <range min="10.0" max="20000.0" />
-            <default>3984.0</default>
+            <default>12000.0</default>
         </key>
         <key name="sidechain-lowcut-frequency7" type="d">
             <range min="10.0" max="20000.0" />
-            <default>10000.0</default>
+            <default>16000.0</default>
         </key>
 
         <key name="sidechain-highcut-frequency0" type="d">
             <range min="10.0" max="20000.0" />
-            <default>40.0</default>
+            <default>500.0</default>
         </key>
         <key name="sidechain-highcut-frequency1" type="d">
             <range min="10.0" max="20000.0" />
-            <default>100.0</default>
+            <default>1000.0</default>
         </key>
         <key name="sidechain-highcut-frequency2" type="d">
             <range min="10.0" max="20000.0" />
-            <default>252.0</default>
+            <default>2000.0</default>
         </key>
         <key name="sidechain-highcut-frequency3" type="d">
             <range min="10.0" max="20000.0" />
-            <default>632.0</default>
+            <default>4000.0</default>
         </key>
         <key name="sidechain-highcut-frequency4" type="d">
             <range min="10.0" max="20000.0" />
-            <default>1587.0</default>
+            <default>8000.0</default>
         </key>
         <key name="sidechain-highcut-frequency5" type="d">
             <range min="10.0" max="20000.0" />
-            <default>3984.0</default>
+            <default>12000.0</default>
         </key>
         <key name="sidechain-highcut-frequency6" type="d">
             <range min="10.0" max="20000.0" />
-            <default>10000.0</default>
+            <default>16000.0</default>
         </key>
         <key name="sidechain-highcut-frequency7" type="d">
             <range min="10.0" max="20000.0" />
