@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: 2018-06-21 21:34+0200\n"
 "Last-Translator: Piotr Komur, pkomur@gmail.com\n"
 "Language-Team: \n"
@@ -901,7 +901,7 @@ msgid "Use Dark Theme"
 msgstr "Używaj ciemnego motywu"
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
+msgid "Shutdown on Window Close"
 msgstr ""
 
 #: data/ui/general_settings.ui:138

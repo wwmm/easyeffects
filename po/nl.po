@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: 2021-07-14 14:30+0200\n"
 "Last-Translator: Heimen Stoffels <vistausss@fastmail.com>\n"
 "Language-Team: \n"
@@ -855,8 +855,8 @@ msgid "Use Dark Theme"
 msgstr "Donker thema"
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
-msgstr "Uitvoeren op achtergrond"
+msgid "Shutdown on Window Close"
+msgstr ""
 
 #: data/ui/general_settings.ui:138
 msgid "Reset All Settings"
@@ -1774,6 +1774,9 @@ msgstr "Voorinstelling importeren"
 #: src/stream_input_effects_ui.cpp:31
 msgid "Recorders"
 msgstr "Opname-apparaten"
+
+#~ msgid "Run in Background"
+#~ msgstr "Uitvoeren op achtergrond"
 
 #~ msgid "ceil"
 #~ msgstr "ceil"

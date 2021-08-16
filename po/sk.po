@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: 2021-07-01 17:22+0200\n"
 "Last-Translator: Jose Riha\n"
 "Language-Team: \n"
@@ -867,7 +867,7 @@ msgid "Use Dark Theme"
 msgstr "Použiť tmavý motív"
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
+msgid "Shutdown on Window Close"
 msgstr ""
 
 #: data/ui/general_settings.ui:138

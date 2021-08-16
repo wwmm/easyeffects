@@ -283,7 +283,7 @@ void Application::on_activate() {
 
           delete window;
 
-          if (!settings->get_boolean("run-in-background")) {
+          if (settings->get_boolean("shutdown-on-window-close")) {
             release();
           }
 

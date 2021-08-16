@@ -25,8 +25,8 @@
         <key name="bypass" type="b">
             <default>false</default>
         </key>
-        <key name="run-in-background" type="b">
-            <default>true</default>
+        <key name="shutdown-on-window-close" type="b">
+            <default>false</default>
         </key>
     </schema>
 </schemalist>

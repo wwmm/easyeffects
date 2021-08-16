@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: 2021-08-11 10:33+0200\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -857,8 +857,8 @@ msgid "Use Dark Theme"
 msgstr "Usa Tema Scuro"
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
-msgstr "Esegui in Background"
+msgid "Shutdown on Window Close"
+msgstr ""
 
 #: data/ui/general_settings.ui:138
 msgid "Reset All Settings"
@@ -1747,3 +1747,6 @@ msgstr "Importa Profilo"
 #: src/stream_input_effects_ui.cpp:31
 msgid "Recorders"
 msgstr "Registrazione"
+
+#~ msgid "Run in Background"
+#~ msgstr "Esegui in Background"
