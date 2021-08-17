@@ -175,7 +175,7 @@ void StreamInputEffects::connect_filters() {
 
   if (!list.empty()) {
     for (auto& name : list) {
-      bool plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
+      auto plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
 
       if (plugin_connected) {
         next_node_id = plugins[name]->get_node_id();
@@ -188,12 +188,11 @@ void StreamInputEffects::connect_filters() {
           list_proxies.emplace_back(links[n]);
         }
 
-        if ((mic_linked && (link_size == 2U)) || (!mic_linked && (link_size > 0U))) {
+        if (mic_linked && (link_size == 2U)) {
           prev_node_id = next_node_id;
-
-          if (!mic_linked) {
-            mic_linked = true;
-          }
+        } else if (!mic_linked && (link_size > 0U)) {
+          prev_node_id = next_node_id;
+          mic_linked = true;
         } else {
           util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
                         std::to_string(next_node_id) + " failed");
@@ -233,12 +232,11 @@ void StreamInputEffects::connect_filters() {
       list_proxies.emplace_back(links[n]);
     }
 
-    if ((mic_linked && (link_size == 2U)) || (!mic_linked && (link_size > 0U))) {
+    if (mic_linked && (link_size == 2U)) {
       prev_node_id = next_node_id;
-
-      if (!mic_linked) {
-        mic_linked = true;
-      }
+    } else if (!mic_linked && (link_size > 0U)) {
+      prev_node_id = next_node_id;
+      mic_linked = true;
     } else {
       util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
                     std::to_string(next_node_id) + " failed");
