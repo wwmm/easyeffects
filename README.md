@@ -82,20 +82,20 @@ You can help me to keep developing EasyEffects through donations. Any amount wil
 
 ## Installation
 
-### GNU/Linux packages
+### Distribution packages
 
-<!-- - [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
-- [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/easyeffects/template)
+- [Arch Linux](https://www.archlinux.org/packages/community/x86_64/easyeffects/) / [AUR Git version](https://aur.archlinux.org/packages/easyeffects-git/)
+- [openSUSE](https://software.opensuse.org/package/easyeffects)
+- [NixOS](https://search.nixos.org/packages?channel=unstable&show=easyeffects&query=easyeffects)
 - [Gentoo](https://packages.gentoo.org/packages/media-sound/easyeffects)
+
+<!--
+- [Void Linux](https://github.com/void-linux/void-packages/blob/master/srcpkgs/easyeffects/template)
 - [ROSA](https://abf.io/import/easyeffects/)
 - [ALT Linux](https://packages.altlinux.org/Sisyphus/srpms/easyeffects/)
 - [Fedora GNU/Linux](https://apps.fedoraproject.org/packages/easyeffects)
 - [CRUX](https://crux.nu/portdb/?a=search&q=easyeffects)
-- [openSUSE](https://software.opensuse.org/package/easyeffects)
-- [NixOS](https://search.nixos.org/packages?channel=unstable&show=easyeffects&query=easyeffects)
 - [Debian (buster)](https://packages.debian.org/buster-backports/easyeffects) / [Debian (bullseye)](https://packages.debian.org/bullseye/easyeffects) -->
-
-#### Community packages
 
 <!-- These are community maintained repositories of distribution packages. You can
 find more information about these in the
@@ -105,18 +105,13 @@ find more information about these in the
 
 ### Flatpak
 
-<!-- [Flatpak](https://flatpak.org/) packages support multiple Linux distributions and are sandboxed.
+<a href='https://flathub.org/apps/details/com.github.wwmm.easyeffects'><img width='240' alt='Download EasyEffects on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
-Stable releases are hosted on
-[Flathub](https://flathub.org/apps/details/com.github.wwmm.easyeffects):
+Flatpak packages support most Linux distributions and are sandboxed. EasyEffects Flatpak also includes all available plugins.
 
-```
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.wwmm.easyeffects
+If your distribution does not yet include packages required to build EasyEffects Flatpak is a convenient option.
 
-``` -->
-
-#### Installing from source
+### Installing from source
 
 See the wiki: [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source), for detailed instructions.
 
