@@ -42,6 +42,8 @@ class StreamOutputEffects : public EffectsBase {
 
   void disconnect_filters();
 
+  void connect_output_device();
+
   /*
     Do not pass nd_info by reference. Sometimes it dies before we use it and a segmentation fault happens
   */

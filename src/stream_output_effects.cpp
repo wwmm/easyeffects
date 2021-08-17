@@ -202,9 +202,9 @@ void StreamOutputEffects::connect_filters() {
     }
   }
 
-  // link spectrum and output level meter
+  // link spectrum, output level meter and output virtual device
 
-  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id()};
+  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_virtual_output_device.id};
 
   for (const auto& node_id : node_id_list) {
     next_node_id = node_id;
@@ -225,22 +225,22 @@ void StreamOutputEffects::connect_filters() {
     }
   }
 
-  // link output device
+  // connect virtual and physical output devices
 
-  next_node_id = pm->output_device.id;
+  connect_output_device();
+}
 
-  auto links = pm->link_nodes(prev_node_id, next_node_id);
+void StreamOutputEffects::connect_output_device() {
+  pw_thread_loop_lock(pm->thread_loop);
 
-  auto link_size = links.size();
+  pw_metadata_set_property(pm->metadata, pm->pe_virtual_output_device.id, "target.node", "Spa:Id",
+                           std::to_string(pm->output_device.id).c_str());
 
-  for (size_t n = 0U; n < link_size; n++) {
-    list_proxies.emplace_back(links[n]);
-  }
+  pw_core_sync(pm->core, PW_ID_CORE, 0);
 
-  if (link_size < 2U) {
-    util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
-                  std::to_string(next_node_id) + " failed");
-  }
+  pw_thread_loop_wait(pm->thread_loop);
+
+  pw_thread_loop_unlock(pm->thread_loop);
 }
 
 void StreamOutputEffects::disconnect_filters() {
@@ -278,7 +278,9 @@ void StreamOutputEffects::set_bypass(const bool& state) {
 
     pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
     pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
-    pm->link_nodes(output_level->get_node_id(), pm->output_device.id);
+    pm->link_nodes(output_level->get_node_id(), pm->pe_virtual_output_device.id);
+
+    connect_output_device();
   } else {
     disconnect_filters();
 

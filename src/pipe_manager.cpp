@@ -1163,6 +1163,20 @@ PipeManager::PipeManager() {
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
 
+  // loading our virtual output device (needed for output channel down/upmixing)
+
+  pw_properties* props_virtual = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_virtual, PW_KEY_NODE_NAME, "easyeffects_virtual_output_device");
+  pw_properties_set(props_virtual, PW_KEY_NODE_DESCRIPTION, "Virtual Output Device");
+  pw_properties_set(props_virtual, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_virtual, PW_KEY_MEDIA_CLASS, "Audio/Source/Virtual");
+  pw_properties_set(props_virtual, "audio.position", "FL,FR");
+  pw_properties_set(props_virtual, "monitor.channel-volumes", "true");
+
+  proxy_stream_virtual_output = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_virtual->dict, 0));
+
   // loading our source
 
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
@@ -1183,7 +1197,8 @@ PipeManager::PipeManager() {
 
   pw_thread_loop_unlock(thread_loop);
 
-  while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
+  while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID ||
+         pe_virtual_output_device.id == SPA_ID_INVALID) {
     for (const auto& node : list_nodes) {
       if (node.name == "easyeffects_sink") {
         pe_sink_node = node;
@@ -1191,6 +1206,10 @@ PipeManager::PipeManager() {
 
       if (node.name == "easyeffects_source") {
         pe_source_node = node;
+      }
+
+      if (node.name == "easyeffects_virtual_output_device") {
+        pe_virtual_output_device = node;
       }
     }
 

@@ -186,7 +186,7 @@ class PipeManager {
 
   std::vector<DeviceInfo> list_devices;
 
-  NodeInfo pe_sink_node, pe_source_node;
+  NodeInfo pe_sink_node, pe_source_node, pe_virtual_output_device;
 
   NodeInfo default_output_device, default_input_device;
 
@@ -272,7 +272,7 @@ class PipeManager {
   bool context_ready = false;
 
   pw_context* context = nullptr;
-  pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
+  pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_virtual_output = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
 };
