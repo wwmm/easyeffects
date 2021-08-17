@@ -163,7 +163,7 @@ void StreamOutputEffects::connect_filters() {
 
   if (!list.empty()) {
     for (auto& name : list) {
-      bool plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
+      auto plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
 
       if (plugin_connected) {
         next_node_id = plugins[name]->get_node_id();

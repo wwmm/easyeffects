@@ -858,7 +858,7 @@ msgstr "Usa Tema Scuro"
 
 #: data/ui/general_settings.ui:101
 msgid "Shutdown on Window Close"
-msgstr ""
+msgstr "Termina alla Chiusura della Finestra"
 
 #: data/ui/general_settings.ui:138
 msgid "Reset All Settings"
