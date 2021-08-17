@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -836,7 +836,7 @@ msgid "Use Dark Theme"
 msgstr ""
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
+msgid "Shutdown on Window Close"
 msgstr ""
 
 #: data/ui/general_settings.ui:138

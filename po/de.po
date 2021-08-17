@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-13 18:43+0000\n"
+"POT-Creation-Date: 2021-08-16 17:19-0300\n"
 "PO-Revision-Date: 2021-07-07 17:28+0200\n"
 "Last-Translator: David Keller <davidkeller@tuta.io>\n"
 "Language-Team: Bleuzen, BlobCodes\n"
@@ -856,8 +856,8 @@ msgid "Use Dark Theme"
 msgstr "Benutze dunkles Thema"
 
 #: data/ui/general_settings.ui:101
-msgid "Run in Background"
-msgstr "Im Hintergrund ausführen"
+msgid "Shutdown on Window Close"
+msgstr ""
 
 #: data/ui/general_settings.ui:138
 msgid "Reset All Settings"
@@ -1776,6 +1776,9 @@ msgstr "Preset importieren"
 #: src/stream_input_effects_ui.cpp:31
 msgid "Recorders"
 msgstr "Rekorder"
+
+#~ msgid "Run in Background"
+#~ msgstr "Im Hintergrund ausführen"
 
 #~ msgid "ceil"
 #~ msgstr "Begrenzen"
