@@ -385,17 +385,10 @@ void Application::create_actions() {
 }
 
 void Application::update_bypass_state(const std::string& key) {
-  auto state = settings->get_boolean(key);
+  const auto& state = settings->get_boolean(key);
 
-  if (state) {
-    util::info(log_tag + "enabling global bypass");
+  soe->set_bypass(state);
+  sie->set_bypass(state);
 
-    soe->set_bypass(true);
-    sie->set_bypass(true);
-  } else {
-    util::info(log_tag + "disabling global bypass");
-
-    soe->set_bypass(false);
-    sie->set_bypass(false);
-  }
+  util::info(log_tag + ((state) ? "enabling" : "disabling") + " global bypass");
 }

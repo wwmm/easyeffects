@@ -123,7 +123,7 @@ void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
 
 void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
   /*
-    If bypass is enable to do touch the plugin pipeline
+    If bypass is enabled do not touch the plugin pipeline
   */
 
   if (bypass) {
@@ -153,8 +153,8 @@ void StreamOutputEffects::on_link_changed(const LinkInfo& link_info) {
   }
 }
 
-void StreamOutputEffects::connect_filters() {
-  auto list = settings->get_string_array("plugins");
+void StreamOutputEffects::connect_filters(const bool& bypass) {
+  const auto& list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
 
   uint prev_node_id = pm->pe_sink_node.id;
   uint next_node_id = 0U;
@@ -273,15 +273,7 @@ void StreamOutputEffects::disconnect_filters() {
 void StreamOutputEffects::set_bypass(const bool& state) {
   bypass = state;
 
-  if (state) {
-    disconnect_filters();
+  disconnect_filters();
 
-    pm->link_nodes(pm->pe_sink_node.id, spectrum->get_node_id());
-    pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
-    pm->link_nodes(output_level->get_node_id(), pm->output_device.id);
-  } else {
-    disconnect_filters();
-
-    connect_filters();
-  }
+  connect_filters(state);
 }
