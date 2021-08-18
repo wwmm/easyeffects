@@ -127,7 +127,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
   }
 
   /*
-    If bypass is enable to do touch the plugin pipeline
+    If bypass is enabled do not touch the plugin pipeline
   */
 
   if (bypass) {
@@ -157,14 +157,14 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
   }
 }
 
-void StreamInputEffects::connect_filters() {
+void StreamInputEffects::connect_filters(const bool& bypass) {
   if (pm->input_device.id == SPA_ID_INVALID) {
     util::debug(log_tag + "Input device id is invalid. Aborting the link between filters in the microphone pipeline");
 
     return;
   }
 
-  auto list = settings->get_string_array("plugins");
+  const auto& list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
 
   bool mic_linked = false;
 
@@ -274,17 +274,9 @@ void StreamInputEffects::disconnect_filters() {
 void StreamInputEffects::set_bypass(const bool& state) {
   bypass = state;
 
-  if (state) {
-    disconnect_filters();
+  disconnect_filters();
 
-    pm->link_nodes(pm->input_device.id, spectrum->get_node_id());
-    pm->link_nodes(spectrum->get_node_id(), output_level->get_node_id());
-    pm->link_nodes(output_level->get_node_id(), pm->pe_source_node.id);
-  } else {
-    disconnect_filters();
-
-    connect_filters();
-  }
+  connect_filters(state);
 }
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {

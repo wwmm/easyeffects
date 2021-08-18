@@ -38,7 +38,7 @@ class StreamOutputEffects : public EffectsBase {
  private:
   bool bypass = false;
 
-  void connect_filters();
+  void connect_filters(const bool& bypass = false);
 
   void disconnect_filters();
 
