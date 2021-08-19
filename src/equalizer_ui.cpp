@@ -379,18 +379,14 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       band_quality_label->set_text("Q " + level_to_localized_string(q, 2));
 
       if (q > 0.0) {
-        const auto& f = band_frequency->get_value();
-
-        band_width->set_text(level_to_localized_string(f / q, 1) + " Hz");
+        band_width->set_text(level_to_localized_string(band_frequency->get_value() / q, 1) + " Hz");
       } else {
         band_width->set_text(_("infinity"));
       }
     };
 
     auto update_band_label = [=, this]() {
-      const auto& f = band_frequency->get_value();
-
-      if (f > 1000.0) {
+      if (const auto& f = band_frequency->get_value(); f > 1000.0) {
         band_label->set_text(level_to_localized_string(f / 1000.0, 1) + " kHz");
       } else {
         band_label->set_text(level_to_localized_string(f, 0) + " Hz");
@@ -470,11 +466,9 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     }
 
     connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
-      const auto& row_num = band_type->get_active_row_number();
-
       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
 
-      if (row_num == 0 || row_num == 2 || row_num == 4) {
+      if (const auto& row = band_type->get_active_row_number(); row == 0 || row == 2 || row == 4) {
         band_scale->set_sensitive(false);
       } else {
         band_scale->set_sensitive(true);
@@ -732,9 +726,8 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
 
       while (getline(eq_file, line)) {
         struct ImportedBand filter {};
-        bool parsed = this->parse_apo_filter(line, filter);
 
-        if (parsed) {
+        if (this->parse_apo_filter(line, filter)) {
           bands.push_back(filter);
         }
       }

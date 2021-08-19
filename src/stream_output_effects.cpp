@@ -163,9 +163,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (!list.empty()) {
     for (auto& name : list) {
-      auto plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
-
-      if (plugin_connected) {
+      if ((!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true) {
         next_node_id = plugins[name]->get_node_id();
 
         auto links = pm->link_nodes(prev_node_id, next_node_id);
@@ -204,9 +202,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum and output level meter
 
-  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id()};
-
-  for (const auto& node_id : node_id_list) {
+  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id()}) {
     next_node_id = node_id;
 
     auto links = pm->link_nodes(prev_node_id, next_node_id);

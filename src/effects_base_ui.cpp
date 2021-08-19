@@ -83,9 +83,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   // signals connections
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    auto name = stack_top->get_visible_child_name();
-
-    if (name == "page_players") {
+    if (const auto& name = stack_top->get_visible_child_name(); name == "page_players") {
       menubutton_blocklist->set_visible(true);
     } else {
       menubutton_blocklist->set_visible(false);
@@ -128,9 +126,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
           listview_players->set_model(nullptr);
 
           for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-            auto item = all_players_model->get_item(n);
-
-            if (!app_is_blocklisted(item->info.name)) {
+            if (const auto& item = all_players_model->get_item(n); !app_is_blocklisted(item->info.name)) {
               players_model->append(item);
             }
           }
@@ -273,12 +269,10 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // removing plugins that are not in the list
 
   for (auto* child = stack_plugins->get_first_child(); child != nullptr;) {
-    auto page = stack_plugins->get_page(*child);
-
     bool found = false;
 
-    for (auto& name : settings->get_string_array("plugins")) {
-      if (name == page->get_name()) {
+    for (const auto& name : settings->get_string_array("plugins")) {
+      if (name == stack_plugins->get_page(*child)->get_name()) {
         found = true;
 
         break;
@@ -296,13 +290,11 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
   // Adding to the stack the plugins in the list that are not there yet
 
-  for (auto& name : settings->get_string_array("plugins")) {
+  for (const auto& name : settings->get_string_array("plugins")) {
     bool found = false;
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      auto page = stack_plugins->get_page(*child);
-
-      if (name == page->get_name()) {
+      if (name == stack_plugins->get_page(*child)->get_name()) {
         found = true;
 
         break;
@@ -1068,9 +1060,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto selected_name = selected_plugins->get_string(0);
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      auto page = stack_plugins->get_page(*child);
-
-      if (page->get_name() == selected_name) {
+      if (stack_plugins->get_page(*child)->get_name() == selected_name) {
         stack_plugins->set_visible_child(*child);
 
         break;
@@ -1096,9 +1086,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
         listview_selected_plugins->get_model()->select_item(0, true);
 
         for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-          auto page = stack_plugins->get_page(*child);
-
-          if (page->get_name() == list[0]) {
+          if (stack_plugins->get_page(*child)->get_name() == list[0]) {
             stack_plugins->set_visible_child(*child);
           }
         }
@@ -1130,9 +1118,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-      auto page = stack_plugins->get_page(*child);
-
-      if (page->get_name() == selected_name) {
+      if (stack_plugins->get_page(*child)->get_name() == selected_name) {
         stack_plugins->set_visible_child(*child);
 
         return;
@@ -1321,9 +1307,7 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
 
   // Blocklist check
 
-  auto forbidden_app = app_is_blocklisted(node_info.name);
-
-  if (forbidden_app) {
+  if (app_is_blocklisted(node_info.name)) {
     if (!settings->get_boolean("show-blocklisted-apps")) {
       return;
     }
@@ -1334,9 +1318,7 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
 
 void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    auto* item = players_model->get_item(n).get();
-
-    if (item->info.id == node_info.id) {
+    if (auto* item = players_model->get_item(n).get(); item->info.id == node_info.id) {
       item->info = node_info;
       item->info_updated.emit(node_info);
 
@@ -1347,9 +1329,7 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
 
 void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    auto item = players_model->get_item(n);
-
-    if (item->info.id == node_info.id) {
+    if (players_model->get_item(n)->info.id == node_info.id) {
       players_model->remove(n);
 
       break;
@@ -1357,9 +1337,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
   }
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    auto item = all_players_model->get_item(n);
-
-    if (item->info.id == node_info.id) {
+    if (all_players_model->get_item(n)->info.id == node_info.id) {
       all_players_model->remove(n);
 
       break;
@@ -1374,11 +1352,7 @@ void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right
 
   // saturation icon notification
 
-  if (left > 0.0 || right > 0.0) {
-    saturation_icon->set_opacity(1.0);
-  } else {
-    saturation_icon->set_opacity(0.0);
-  }
+  saturation_icon->set_opacity((left > 0.0 || right > 0.0) ? 1.0 : 0.0);
 }
 
 auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::string {
@@ -1450,7 +1424,7 @@ void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
   this->transient_window = transient_window;
 
   for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-    auto page = stack_plugins->get_page(*child);
+    const auto& page = stack_plugins->get_page(*child);
 
     if (page->get_name() == plugin_name::equalizer) {
       dynamic_cast<EqualizerUi*>(child)->set_transient_window(transient_window);

@@ -31,9 +31,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_label->set_text(_("Recorders"));
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    auto name = stack_top->get_visible_child_name();
-
-    if (name == "page_players") {
+    if (stack_top->get_visible_child_name() == "page_players") {
       toggle_listen_mic->set_visible(false);
     } else {
       toggle_listen_mic->set_visible(true);

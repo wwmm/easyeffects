@@ -60,11 +60,8 @@ Equalizer::Equalizer(const std::string& tag,
       if (n < nbands) {
         settings_left->set_enum("band" + nstr + "-type", 1);
         settings_right->set_enum("band" + nstr + "-type", 1);
-      }
-
-      // turn off unused bands
-
-      if (n >= nbands) {
+      } else {
+        // turn off unused bands
         settings_left->set_enum("band" + nstr + "-type", 0);
         settings_right->set_enum("band" + nstr + "-type", 0);
       }

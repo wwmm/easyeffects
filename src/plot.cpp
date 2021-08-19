@@ -32,17 +32,16 @@ Plot::Plot(Gtk::DrawingArea* drawing_area)
   da->add_controller(controller_motion);
 
   controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
-    int width = da->get_width();
-    int height = da->get_height();
-    int usable_height = height - x_axis_height;
+    const auto& width = da->get_width();
+    const auto& height = da->get_height();
 
-    if (y < usable_height) {
+    if (const auto& usable_height = height - x_axis_height; y < usable_height) {
       switch (plot_scale) {
         case PlotScale::logarithmic: {
-          double x_min_log = log10(x_min);
-          double x_max_log = log10(x_max);
+          const double& x_min_log = log10(x_min);
+          const double& x_max_log = log10(x_max);
 
-          double mouse_x_log = x / static_cast<double>(width) * (x_max_log - x_min_log) + x_min_log;
+          const double& mouse_x_log = x / static_cast<double>(width) * (x_max_log - x_min_log) + x_min_log;
 
           mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
 
@@ -159,9 +158,7 @@ void Plot::set_y_unit(const std::string& value) {
 void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
   ctx->paint();
 
-  auto n_points = y_axis.size();
-
-  if (n_points > 0) {
+  if (const auto& n_points = y_axis.size(); n_points > 0) {
     auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
 
     x_axis_height = draw_x_labels(ctx, width, height);

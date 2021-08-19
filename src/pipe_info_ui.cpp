@@ -320,9 +320,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo& info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-      auto item = output_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+      if (output_devices_model->get_item(n)->info.id == info.id) {
         return;
       }
     }
@@ -332,9 +330,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo& info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-      auto item = output_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+      if (output_devices_model->get_item(n)->info.id == info.id) {
         output_devices_model->remove(n);
 
         return;
@@ -344,9 +340,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-      auto item = input_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+      if (input_devices_model->get_item(n)->info.id == info.id) {
         return;
       }
     }
@@ -356,9 +350,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-      auto item = input_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+      if (input_devices_model->get_item(n)->info.id == info.id) {
         input_devices_model->remove(n);
 
         return;
@@ -374,18 +366,14 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   connections.emplace_back(
       presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         int count = 0;
-        auto name = output_presets_string_list->get_string(count);
 
-        while (name.c_str() != nullptr) {
+        for (auto name = output_presets_string_list->get_string(count); name.c_str() != nullptr;
+             name = output_presets_string_list->get_string(++count)) {
           if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-            output_presets_string_list->remove(count);
+           output_presets_string_list->remove(count);
 
-            return;
+           return;
           }
-
-          count++;
-
-          name = output_presets_string_list->get_string(count);
         }
       }));
 
@@ -397,18 +385,14 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   connections.emplace_back(
       presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         int count = 0;
-        auto name = input_presets_string_list->get_string(count);
 
-        while (name.c_str() != nullptr) {
+        for (auto name = input_presets_string_list->get_string(count); name.c_str() != nullptr;
+             name = input_presets_string_list->get_string(++count)) {
           if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
             input_presets_string_list->remove(count);
 
             return;
           }
-
-          count++;
-
-          name = input_presets_string_list->get_string(count);
         }
       }));
 
@@ -513,13 +497,13 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    auto name = holder->info.name;
-
     if (holder->info.media_class == "Audio/Sink") {
       icon->set_from_icon_name("audio-card-symbolic");
     } else if (holder->info.media_class == "Audio/Source") {
       icon->set_from_icon_name("audio-input-microphone-symbolic");
     }
+
+    auto name = holder->info.name;
 
     label->set_name(name);
     label->set_text(name);
@@ -759,9 +743,7 @@ void PipeInfoUi::update_clients_info() {
 }
 
 void PipeInfoUi::on_stack_visible_child_changed() {
-  auto name = stack->get_visible_child_name();
-
-  if (name == "page_modules") {
+  if (const auto& name = stack->get_visible_child_name(); name == "page_modules") {
     update_modules_info();
   } else if (name == "page_clients") {
     update_clients_info();

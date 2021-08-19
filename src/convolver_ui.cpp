@@ -32,9 +32,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // irs dir
 
-  auto dir_exists = std::filesystem::is_directory(irs_dir);
-
-  if (!dir_exists) {
+  if (!std::filesystem::is_directory(irs_dir)) {
     if (std::filesystem::create_directories(irs_dir)) {
       util::debug(log_tag + "irs directory created: " + irs_dir.string());
     } else {
@@ -312,17 +310,14 @@ void ConvolverUi::reset() {
 }
 
 auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
-  std::filesystem::directory_iterator it{irs_dir};
   std::vector<std::string> names;
 
-  while (it != std::filesystem::directory_iterator{}) {
+  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; it++) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().string() == ".irs") {
         names.emplace_back(it->path().stem().string());
       }
     }
-
-    it++;
   }
 
   return names;
@@ -332,9 +327,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
   std::filesystem::path p{file_path};
 
   if (std::filesystem::is_regular_file(p)) {
-    SndfileHandle file = SndfileHandle(file_path);
-
-    if (file.channels() != 2 || file.frames() == 0) {
+    if (SndfileHandle file = SndfileHandle(file_path); file.channels() != 2 || file.frames() == 0) {
       util::warning(log_tag + " Only stereo impulse files are supported!");
       util::warning(log_tag + file_path + " loading failed");
 

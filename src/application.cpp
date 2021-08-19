@@ -84,9 +84,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
       w->hide();
     }
   } else if (options->contains("bypass")) {
-    int bypass_arg = 2;
-
-    if (options->lookup_value("bypass", bypass_arg)) {
+    if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 1) {
         settings->set_boolean("bypass", true);
       } else if (bypass_arg == 2) {
@@ -110,7 +108,7 @@ void Application::on_startup() {
   soe_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs");
   sie_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs");
 
-  if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0U) {
+  if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0) {
     running_as_service = true;
   }
 
@@ -329,9 +327,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   }
 
   if (options->contains("bypass")) {
-    int bypass_arg = 2;
-
-    if (options->lookup_value("bypass", bypass_arg)) {
+    if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
         auto cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
 

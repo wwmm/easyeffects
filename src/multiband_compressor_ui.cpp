@@ -229,12 +229,8 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
     // some core dumps happened here
     // checking pointer and int row integrity might fix them
 
-    auto* selected_row = listbox->get_selected_row();
-
-    if (selected_row != nullptr) {
-      const auto row = selected_row->get_index();
-
-      if (row > -1) {
+    if (const auto* selected_row = listbox->get_selected_row(); selected_row != nullptr) {
+      if (const auto& row = selected_row->get_index(); row > -1) {
         stack->set_visible_child("band" + std::to_string(row));
       }
     }
