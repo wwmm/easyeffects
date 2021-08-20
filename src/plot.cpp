@@ -159,7 +159,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
   ctx->paint();
 
   if (const auto& n_points = y_axis.size(); n_points > 0) {
-    auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
+    const auto& objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
 
     x_axis_height = draw_x_labels(ctx, width, height);
 
@@ -187,7 +187,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
         ctx->move_to(0, usable_height);
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          auto bar_height = y_axis[n] * static_cast<float>(usable_height);
+          const auto& bar_height = y_axis[n] * static_cast<float>(usable_height);
 
           ctx->line_to(objects_x[n], static_cast<float>(usable_height) - bar_height);
         }
@@ -211,7 +211,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
     }
 
     if (controller_motion->contains_pointer()) {
-      auto msg = "x = " + value_to_localized_string(mouse_x, n_x_decimals) + " " + x_unit +
+      const auto& msg = "x = " + value_to_localized_string(mouse_x, n_x_decimals) + " " + x_unit +
                  "  y = " + value_to_localized_string(mouse_y, n_y_decimals) + " " + y_unit;
 
       Pango::FontDescription font;
@@ -258,11 +258,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
   */
 
   for (size_t n = 0U, m = labels.size(); n < m - 1U; n++) {
-    Glib::ustring msg;
-
-    auto label = labels[n];
-
-    msg += value_to_localized_string(label, n_x_decimals) + " " + x_unit;
+    const auto& msg = value_to_localized_string(labels[n], n_x_decimals) + " " + x_unit;
 
     Pango::FontDescription font;
     font.set_family("Monospace");

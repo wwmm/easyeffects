@@ -32,31 +32,29 @@ Compressor::Compressor(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("sidechain-type").connect([=, this](auto key) {
+  settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
     if (settings->get_string(key) == "External") {
-      auto device_name = settings->get_string("sidechain-input-device");
+      const auto& device_name = std::string(settings->get_string("sidechain-input-device"));
 
       NodeInfo input_device = pm->pe_source_node;
 
       for (const auto& node : pm->list_nodes) {
-        if (node.name == std::string(device_name)) {
+        if (node.name == device_name) {
           input_device = node;
 
           break;
         }
       }
 
-      auto links = pm->link_nodes(input_device.id, get_node_id(), true);
-
-      for (const auto& link : links) {
+      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
         list_proxies.emplace_back(link);
       }
     } else {
@@ -66,14 +64,14 @@ Compressor::Compressor(const std::string& tag,
     }
   });
 
-  settings->signal_changed("sidechain-input-device").connect([=, this](auto key) {
+  settings->signal_changed("sidechain-input-device").connect([=, this](const auto& key) {
     if (settings->get_string("sidechain-type") == "External") {
-      auto device_name = settings->get_string(key);
+      const auto& device_name = std::string(settings->get_string(key));
 
       NodeInfo input_device = pm->pe_source_node;
 
       for (const auto& node : pm->list_nodes) {
-        if (node.name == std::string(device_name)) {
+        if (node.name == device_name) {
           input_device = node;
 
           break;
@@ -84,9 +82,7 @@ Compressor::Compressor(const std::string& tag,
 
       list_proxies.clear();
 
-      auto links = pm->link_nodes(input_device.id, get_node_id(), true);
-
-      for (const auto& link : links) {
+      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
         list_proxies.emplace_back(link);
       }
     }

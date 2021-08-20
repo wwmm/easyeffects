@@ -67,38 +67,44 @@ class PresetsManager {
   auto operator=(const PresetsManager&&) -> PresetsManager& = delete;
   ~PresetsManager();
 
-  auto get_names(PresetType preset_type) -> std::vector<Glib::ustring>;
+  auto get_names(const PresetType& preset_type) -> std::vector<Glib::ustring>;
 
   static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
 
-  void add(PresetType preset_type, const Glib::ustring& name);
+  void add(const PresetType& preset_type, const Glib::ustring& name);
 
-  void save_preset_file(PresetType preset_type, const std::string& name);
+  void save_preset_file(const PresetType& preset_type, const std::string& name);
 
-  void remove(PresetType preset_type, const std::string& name);
+  void write_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+                            nlohmann::json& json);
 
-  void load_preset_file(PresetType preset_type, const std::string& name);
+  void remove(const PresetType& preset_type, const std::string& name);
 
-  void import(PresetType preset_type, const std::string& file_path);
+  void load_preset_file(const PresetType& preset_type, const std::string& name);
 
-  void add_autoload(PresetType preset_type,
+  void read_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+                           const nlohmann::json& json);
+
+  void import(const PresetType& preset_type, const std::string& file_path);
+
+  void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
                     const std::string& device_name,
                     const std::string& device_profile);
 
-  void remove_autoload(PresetType preset_type,
+  void remove_autoload(const PresetType& preset_type,
                        const std::string& preset_name,
                        const std::string& device_name,
                        const std::string& device_profile);
 
-  auto find_autoload(PresetType preset_type, const std::string& device_name, const std::string& device_profile)
+  auto find_autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile)
       -> std::string;
 
-  void autoload(PresetType preset_type, const std::string& device_name, const std::string& device_profile);
+  void autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile);
 
-  auto get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json>;
+  auto get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json>;
 
-  auto preset_file_exists(PresetType preset_type, const std::string& name) -> bool;
+  auto preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool;
 
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_created;
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_removed;
@@ -147,9 +153,9 @@ class PresetsManager {
 
   void create_user_directory(const std::filesystem::path& path);
 
-  void save_blocklist(PresetType preset_type, nlohmann::json& json);
+  void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
-  void load_blocklist(PresetType preset_type, const nlohmann::json& json);
+  void load_blocklist(const PresetType& preset_type, const nlohmann::json& json);
 };
 
 #endif

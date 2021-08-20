@@ -127,7 +127,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      auto input_device_name = std::string(sie_settings->get_string("input-device"));
+      const auto& input_device_name = std::string(sie_settings->get_string("input-device"));
 
       if (holder_selected->info.name != input_device_name) {
         for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
@@ -145,7 +145,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      auto output_device_name = std::string(soe_settings->get_string("output-device"));
+      const auto& output_device_name = std::string(soe_settings->get_string("output-device"));
 
       if (holder_selected->info.name != output_device_name) {
         for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
@@ -215,17 +215,17 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_autoloading_output_devices->get_selected_item());
 
-    auto id = dropdown_autoloading_output_presets->get_selected();
-
     std::string device_profile;
 
-    for (auto& device : pm->list_devices) {
+    for (const auto& device : pm->list_devices) {
       if (device.id == holder->info.device_id) {
         device_profile = device.profile_name;
 
         break;
       }
     }
+
+    const auto& id = dropdown_autoloading_output_presets->get_selected();
 
     presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id), holder->info.name,
                                   device_profile);
@@ -238,17 +238,17 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_autoloading_input_devices->get_selected_item());
 
-    auto id = dropdown_autoloading_input_presets->get_selected();
-
     std::string device_profile;
 
-    for (auto& device : pm->list_devices) {
+    for (const auto& device : pm->list_devices) {
       if (device.id == holder->info.device_id) {
         device_profile = device.profile_name;
 
         break;
       }
     }
+
+    const auto& id = dropdown_autoloading_input_presets->get_selected();
 
     presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id), holder->info.name,
                                   device_profile);
@@ -370,9 +370,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         for (auto name = output_presets_string_list->get_string(count); name.c_str() != nullptr;
              name = output_presets_string_list->get_string(++count)) {
           if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-           output_presets_string_list->remove(count);
+            output_presets_string_list->remove(count);
 
-           return;
+            return;
           }
         }
       }));
@@ -446,11 +446,11 @@ PipeInfoUi::~PipeInfoUi() {
 }
 
 auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm, presets_manager);
 
-  auto stack_page = stack->add(*ui, "pipe_info");
+  stack->add(*ui, "pipe_info");
 
   return ui;
 }
@@ -503,10 +503,8 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
       icon->set_from_icon_name("audio-input-microphone-symbolic");
     }
 
-    auto name = holder->info.name;
-
-    label->set_name(name);
-    label->set_text(name);
+    label->set_name(holder->info.name);
+    label->set_text(holder->info.name);
   });
 }
 
@@ -526,9 +524,7 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
 
   string_list->remove(0);
 
-  auto names = presets_manager->get_names(preset_type);
-
-  for (const auto& name : names) {
+  for (const auto& name : presets_manager->get_names(preset_type)) {
     string_list->append(name);
   }
 
@@ -575,7 +571,7 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(name);
@@ -606,7 +602,7 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
+    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -659,7 +655,7 @@ void PipeInfoUi::setup_listview_modules() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
+    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -695,7 +691,7 @@ void PipeInfoUi::setup_listview_clients() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
+    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 

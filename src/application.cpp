@@ -51,7 +51,7 @@ auto Application::create() -> Glib::RefPtr<Application> {
 }
 
 auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
-  auto options = command_line->get_options_dict();
+  const auto& options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
     for (const auto& w : get_windows()) {
@@ -158,7 +158,7 @@ void Application::on_startup() {
 
     NodeInfo target_node;
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.device_id == device.id) {
         target_node = node;
 
@@ -180,16 +180,16 @@ void Application::on_startup() {
     }
   });
 
-  sie_settings->signal_changed("blocklist").connect([=, this](auto key) {
+  sie_settings->signal_changed("blocklist").connect([=, this](const auto& key) {
     pm->blocklist_in = sie_settings->get_string_array("blocklist");
   });
 
-  soe_settings->signal_changed("blocklist").connect([=, this](auto key) {
+  soe_settings->signal_changed("blocklist").connect([=, this](const auto& key) {
     pm->blocklist_out = sie_settings->get_string_array("blocklist");
   });
 
-  soe_settings->signal_changed("output-device").connect([&, this](auto key) {
-    auto name = std::string(soe_settings->get_string(key));
+  soe_settings->signal_changed("output-device").connect([&, this](const auto& key) {
+    const auto& name = std::string(soe_settings->get_string(key));
 
     if (name.empty()) {
       return;
@@ -197,7 +197,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == name) {
         device_id = node.device_id;
 
@@ -206,7 +206,7 @@ void Application::on_startup() {
     }
 
     if (device_id != SPA_ID_INVALID) {
-      for (auto& device : pm->list_devices) {
+      for (const auto& device : pm->list_devices) {
         if (device.id == device_id) {
           presets_manager->autoload(PresetType::output, name, device.profile_name);
 
@@ -216,8 +216,8 @@ void Application::on_startup() {
     }
   });
 
-  sie_settings->signal_changed("input-device").connect([&, this](auto key) {
-    auto name = std::string(sie_settings->get_string(key));
+  sie_settings->signal_changed("input-device").connect([&, this](const auto& key) {
+    const auto& name = std::string(sie_settings->get_string(key));
 
     if (name.empty()) {
       return;
@@ -225,7 +225,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == name) {
         device_id = node.device_id;
 
@@ -234,7 +234,7 @@ void Application::on_startup() {
     }
 
     if (device_id != SPA_ID_INVALID) {
-      for (auto& device : pm->list_devices) {
+      for (const auto& device : pm->list_devices) {
         if (device.id == device_id) {
           presets_manager->autoload(PresetType::input, name, device.profile_name);
 
@@ -244,7 +244,7 @@ void Application::on_startup() {
     }
   });
 
-  settings->signal_changed("bypass").connect([=, this](auto key) { update_bypass_state(key); });
+  settings->signal_changed("bypass").connect([=, this](const auto& key) { update_bypass_state(key); });
 
   update_bypass_state("bypass");
 
@@ -329,7 +329,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   if (options->contains("bypass")) {
     if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
-        auto cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
+        const auto& cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
 
         std::clog << cfg->get_boolean("bypass") << std::endl;
 

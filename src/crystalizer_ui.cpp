@@ -49,12 +49,12 @@ CrystalizerUi::~CrystalizerUi() {
 }
 
 auto CrystalizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrystalizerUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<CrystalizerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.crystalizer", schema_path + "crystalizer/");
 
-  auto stack_page = stack->add(*ui, plugin_name::crystalizer);
+  stack->add(*ui, plugin_name::crystalizer);
 
   return ui;
 }
@@ -67,7 +67,7 @@ void CrystalizerUi::reset() {
   settings->reset("output-gain");
 
   for (int n = 0; n < 13; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     settings->reset("intensity-band" + nstr);
 
@@ -79,7 +79,7 @@ void CrystalizerUi::reset() {
 
 void CrystalizerUi::build_bands(const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer_band.ui");
+    const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crystalizer_band.ui");
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
@@ -102,7 +102,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
       }
     }));
 
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     settings->bind(std::string("intensity-band" + nstr), band_intensity->get_adjustment().get(), "value");
     settings->bind(std::string("mute-band" + nstr), band_mute, "active");

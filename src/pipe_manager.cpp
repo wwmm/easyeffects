@@ -151,12 +151,12 @@ void on_destroy_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
   auto* pm = pd->pm;
 
-  auto nd_info = pd->nd_info;
+  const auto& nd_info = pd->nd_info;
 
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
-                                          [=](auto& n) { return n.id == pd->nd_info.id; }),
+                                          [=](const auto& n) { return n.id == pd->nd_info.id; }),
                            pd->pm->list_nodes.end());
 
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
@@ -358,7 +358,8 @@ void on_node_event_param(void* object,
         case SPA_PROP_channelVolumes: {
           std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-          auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
+          const auto& n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(),
+                                                     SPA_AUDIO_MAX_CHANNELS);
 
           for (auto& node : nd->pm->list_nodes) {
             if (node.id == nd->nd_info.id) {
@@ -444,7 +445,8 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
 
   ld->pm->list_links.erase(
-      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
+      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
+                     [=](const auto& n) { return n.id == ld->id; }),
       ld->pm->list_links.end());
 }
 
@@ -454,7 +456,8 @@ void on_destroy_port_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
 
   ld->pm->list_ports.erase(
-      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(), [=](auto& n) { return n.id == ld->id; }),
+      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(),
+                     [=](const auto& n) { return n.id == ld->id; }),
       ld->pm->list_ports.end());
 }
 
@@ -482,7 +485,8 @@ void on_destroy_module_proxy(void* data) {
   spa_hook_remove(&md->proxy_listener);
 
   md->pm->list_modules.erase(
-      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
+      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(),
+                     [=](const auto& n) { return n.id == md->id; }),
       md->pm->list_modules.end());
 }
 
@@ -514,7 +518,8 @@ void on_destroy_client_proxy(void* data) {
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_clients.erase(
-      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(), [=](auto& n) { return n.id == pd->id; }),
+      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(),
+                     [=](const auto& n) { return n.id == pd->id; }),
       pd->pm->list_clients.end());
 }
 
@@ -606,7 +611,8 @@ void on_destroy_device_proxy(void* data) {
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_devices.erase(
-      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(), [=](auto& n) { return n.id == pd->id; }),
+      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(),
+                     [=](const auto& n) { return n.id == pd->id; }),
       pd->pm->list_devices.end());
 }
 
@@ -616,9 +622,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   std::string str_key = (key != nullptr) ? key : std::string();
   std::string str_type = (type != nullptr) ? type : std::string();
   std::string str_value = (value != nullptr) ? value :std::string();
-  auto str_id = std::to_string(id);
 
-  util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
+  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
+              ", " + str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -629,7 +635,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_sink") {
           pm->default_output_device.id = SPA_ID_INVALID;
@@ -653,7 +659,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_source") {
           pm->default_input_device.id = SPA_ID_INVALID;
@@ -858,7 +864,7 @@ void on_registry_global(void* data,
     NodeInfo input_node;
     NodeInfo output_node;
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (link_info.input_node_id == node.id) {
         found_input = true;
 
@@ -1268,7 +1274,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   std::vector<PortInfo> list_input_ports;
   bool use_audio_channel = true;
 
-  for (auto& port : list_ports) {
+  for (const auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
       list_output_ports.emplace_back(port);
 
@@ -1294,8 +1300,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
     }
   }
 
-  for (auto& outp : list_output_ports) {
-    for (auto& inp : list_input_ports) {
+  for (const auto& outp : list_output_ports) {
+    for (const auto& inp : list_input_ports) {
       bool ports_match = false;
 
       if (!probe_link) {

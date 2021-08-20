@@ -40,7 +40,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
-  for (auto& node : pm->list_nodes) {
+  for (const auto& node : pm->list_nodes) {
     if (node.media_class == "Stream/Input/Audio") {
       on_app_added(node);
     }
@@ -58,7 +58,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(sie->pm->source_changed.connect([&](auto nd_info) {
+  connections.emplace_back(sie->pm->source_changed.connect([&](const auto& nd_info) {
     if (nd_info.id == sie->pm->pe_source_node.id) {
       std::ostringstream str;
 
@@ -88,7 +88,7 @@ StreamInputEffectsUi::~StreamInputEffectsUi() {
 }
 
 auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr) -> StreamInputEffectsUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", sie_ptr,
                                                                     "com.github.wwmm.easyeffects.streaminputs");

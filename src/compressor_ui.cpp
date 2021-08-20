@@ -36,9 +36,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Downward");
 
@@ -69,9 +67,7 @@ auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_
 
 auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Feed-forward");
 
@@ -104,9 +100,7 @@ auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_
 
 auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Peak");
 
@@ -142,9 +136,7 @@ auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer use
 
 auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Middle");
 
@@ -179,9 +171,7 @@ auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_dat
 }
 
 auto int_to_filter_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("off");
 
@@ -339,7 +329,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   // set boost spinbuttons sensitivity on compression mode
 
   auto set_boost_spinbuttons_sensitivity = [=, this]() {
-    auto row_id = compression_mode->get_active_id();
+    const auto& row_id = compression_mode->get_active_id();
 
     if (row_id == "downward_mode") {
       boost_threshold->set_sensitive(false);
@@ -366,12 +356,12 @@ CompressorUi::~CompressorUi() {
 }
 
 auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<CompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");
 
-  auto stack_page = stack->add(*ui, plugin_name::compressor);
+  stack->add(*ui, plugin_name::compressor);
 
   return ui;
 }
@@ -479,10 +469,8 @@ void CompressorUi::setup_dropdown_input_devices() {
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    auto name = holder->info.name;
-
-    label->set_name(name);
-    label->set_text(name);
+    label->set_name(holder->info.name);
+    label->set_text(holder->info.name);
   });
 }
 

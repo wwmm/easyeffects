@@ -114,8 +114,9 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
       Blackman window https://www.dspguide.com/ch16/1.htm
     */
 
-    auto w = 0.42F - 0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
-             0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
+    const auto& w = 0.42F -
+                    0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
+                    0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
 
     output[n] *= w;
 

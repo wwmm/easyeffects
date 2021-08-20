@@ -35,9 +35,7 @@ auto compressor_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user
 
 auto int_to_compressor_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Classic");
 
@@ -69,9 +67,7 @@ auto envelope_boost_enum_to_int(GValue* value, GVariant* variant, gpointer user_
 
 auto int_to_envelope_boost_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("None");
 
@@ -108,9 +104,7 @@ auto compression_mode_enum_to_int(GValue* value, GVariant* variant, gpointer use
 
 auto int_to_compression_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Downward");
 
@@ -143,9 +137,7 @@ auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_
 
 auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Peak");
 
@@ -181,9 +173,7 @@ auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer use
 
 auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Middle");
 
@@ -255,7 +245,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   // band checkbuttons
 
   for (uint n = 1U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
 
@@ -270,21 +260,21 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 }
 
 auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
 
-  auto stack_page = stack->add(*ui, plugin_name::multiband_compressor);
+  stack->add(*ui, plugin_name::multiband_compressor);
 
   return ui;
 }
 
 void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
+    const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
     if (n > 0U) {
       auto* split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
@@ -445,7 +435,7 @@ void MultibandCompressorUi::prepare_bands() {
     // set boost spinbuttons sensitivity on compression mode
 
     auto set_boost_spinbuttons_sensitivity = [=, this]() {
-      auto row_id = compression_mode->get_active_id();
+      const auto& row_id = compression_mode->get_active_id();
 
       if (row_id == "downward_mode") {
         boost_threshold->set_sensitive(false);
@@ -486,7 +476,7 @@ void MultibandCompressorUi::reset() {
   settings->reset("envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     if (n > 0U) {
       settings->reset("enable-band" + nstr);

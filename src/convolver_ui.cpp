@@ -133,7 +133,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
      is loaded
   */
 
-  connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](auto key) {
+  connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
     std::jthread jt{[this]() {
       std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
@@ -143,38 +143,35 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   folder_monitor = Gio::File::create_for_path(irs_dir.string())->monitor_directory();
 
-  folder_monitor->signal_changed().connect([=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-    switch (event) {
-      case Gio::FileMonitor::Event::CREATED: {
-        string_list->append(util::remove_filename_extension(file->get_basename()));
+  folder_monitor->signal_changed().connect(
+    [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
+      switch (event) {
+        case Gio::FileMonitor::Event::CREATED: {
+          string_list->append(util::remove_filename_extension(file->get_basename()));
 
-        break;
-      }
-      case Gio::FileMonitor::Event::DELETED: {
-        Glib::ustring name_removed = util::remove_filename_extension(file->get_basename());
+          break;
+        }
+        case Gio::FileMonitor::Event::DELETED: {
+          const Glib::ustring& name_removed = util::remove_filename_extension(file->get_basename());
 
-        int count = 0;
+          int count = 0;
 
-        auto name = string_list->get_string(count);
+          for (auto name = string_list->get_string(count); name.c_str() != nullptr;) {
+            if (name_removed == name) {
+              string_list->remove(count);
 
-        while (name.c_str() != nullptr) {
-          if (name_removed == name) {
-            string_list->remove(count);
+              break;
+            }
 
-            break;
+            name = string_list->get_string(++count);
           }
 
-          count++;
-
-          name = string_list->get_string(count);
+          break;
         }
-
-        break;
+        default:
+          break;
       }
-      default:
-        break;
-    }
-  });
+    });
 }
 
 ConvolverUi::~ConvolverUi() {
@@ -186,12 +183,12 @@ ConvolverUi::~ConvolverUi() {
 }
 
 auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<ConvolverUi>(builder, "top_box", "com.github.wwmm.easyeffects.convolver",
                                                            schema_path + "convolver/");
 
-  auto stack_page = stack->add(*ui, plugin_name::convolver);
+  stack->add(*ui, plugin_name::convolver);
 
   return ui;
 }
@@ -199,9 +196,7 @@ auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path
 void ConvolverUi::setup_listview() {
   string_list->remove(0);
 
-  auto names = get_irs_names();
-
-  for (const auto& name : names) {
+  for (const auto& name : get_irs_names()) {
     string_list->append(name);
   }
 
@@ -263,12 +258,12 @@ void ConvolverUi::setup_listview() {
     auto* load = static_cast<Gtk::Button*>(list_item->get_data("load"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
     auto connection_load = load->signal_clicked().connect([=, this]() {
-      auto irs_file = irs_dir / std::filesystem::path{name + ".irs"};
+      const auto& irs_file = irs_dir / std::filesystem::path{name + ".irs"};
 
       settings->set_string("kernel-path", irs_file.string());
     });
@@ -375,7 +370,7 @@ void ConvolverUi::on_import_irs_clicked() {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=, this](auto response_id) {
+  dialog->signal_response().connect([=, this](const auto& response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
         import_irs_file(dialog->get_file()->get_path());
@@ -394,7 +389,7 @@ void ConvolverUi::on_import_irs_clicked() {
 }
 
 void ConvolverUi::get_irs_info() {
-  auto path = settings->get_string("kernel-path");
+  const auto& path = settings->get_string("kernel-path");
 
   if (path.c_str() == nullptr) {
     util::warning(log_tag + name + ": irs file path is null.");
@@ -529,7 +524,7 @@ void ConvolverUi::get_irs_info() {
 
     label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
-    auto fpath = std::filesystem::path{path};
+    const auto& fpath = std::filesystem::path{path};
 
     label_file_name->set_text(fpath.stem().string());
 
@@ -663,11 +658,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // find min and max values
 
-  auto fft_min_left = std::ranges::min(left_spectrum);
-  auto fft_max_left = std::ranges::max(left_spectrum);
+  const auto& fft_min_left = std::ranges::min(left_spectrum);
+  const auto& fft_max_left = std::ranges::max(left_spectrum);
 
-  auto fft_min_right = std::ranges::min(right_spectrum);
-  auto fft_max_right = std::ranges::max(right_spectrum);
+  const auto& fft_min_right = std::ranges::min(right_spectrum);
+  const auto& fft_max_right = std::ranges::max(right_spectrum);
 
   // rescaling between 0 and 1
 

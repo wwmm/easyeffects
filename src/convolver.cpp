@@ -35,15 +35,15 @@ Convolver::Convolver(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("ir-width").connect([=, this](auto key) {
+  settings->signal_changed("ir-width").connect([=, this](const auto& key) {
     ir_width = settings->get_int(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -57,7 +57,7 @@ Convolver::Convolver(const std::string& tag,
     }
   });
 
-  settings->signal_changed("kernel-path").connect([=, this](auto key) {
+  settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
     if (n_samples == 0U || rate == 0U) {
       return;
     }
@@ -277,7 +277,7 @@ void Convolver::process(std::span<float>& left_in,
 void Convolver::read_kernel_file() {
   kernel_is_initialized = false;
 
-  auto path = settings->get_string("kernel-path");
+  const auto& path = settings->get_string("kernel-path");
 
   if (path.c_str() == nullptr) {
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
@@ -344,8 +344,8 @@ void Convolver::apply_kernel_autogain() {
     return;
   }
 
-  float abs_peak_L = std::ranges::max(kernel_L, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
-  float abs_peak_R = std::ranges::max(kernel_R, [](auto& a, auto& b) { return (std::fabs(a) < std::fabs(b)); });
+  float abs_peak_L = std::ranges::max(kernel_L, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
+  float abs_peak_R = std::ranges::max(kernel_R, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
 
   float peak = (abs_peak_L > abs_peak_R) ? abs_peak_L : abs_peak_R;
 
@@ -358,8 +358,8 @@ void Convolver::apply_kernel_autogain() {
 
   float power = 0.0F;
 
-  std::ranges::for_each(kernel_L, [&](auto& v) { power += v * v; });
-  std::ranges::for_each(kernel_R, [&](auto& v) { power += v * v; });
+  std::ranges::for_each(kernel_L, [&](const auto& v) { power += v * v; });
+  std::ranges::for_each(kernel_R, [&](const auto& v) { power += v * v; });
 
   power *= 0.5F;
 

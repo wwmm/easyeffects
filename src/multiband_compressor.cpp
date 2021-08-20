@@ -32,11 +32,11 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
@@ -45,7 +45,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
   for (uint n = 0U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     if (n > 0U) {
       lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
@@ -176,7 +176,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
       std::array<double, n_bands> reduction_array{};
 
       for (uint n = 0U; n < n_bands; n++) {
-        auto nstr = std::to_string(n);
+        const auto& nstr = std::to_string(n);
 
         frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
 

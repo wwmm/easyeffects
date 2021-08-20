@@ -27,15 +27,15 @@ EchoCanceller::EchoCanceller(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("frame-size").connect([=, this](auto key) {
+  settings->signal_changed("frame-size").connect([=, this](const auto& key) {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     blocksize_ms = settings->get_int(key);
@@ -43,7 +43,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
     init_speex();
   });
 
-  settings->signal_changed("filter-length").connect([=, this](auto key) {
+  settings->signal_changed("filter-length").connect([=, this](const auto& key) {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     filter_length_ms = settings->get_int(key);

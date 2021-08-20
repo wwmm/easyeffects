@@ -43,9 +43,7 @@ auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_room_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Small");
 
@@ -138,12 +136,12 @@ ReverbUi::~ReverbUi() {
 }
 
 auto ReverbUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/reverb.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/reverb.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<ReverbUi>(builder, "top_box", "com.github.wwmm.easyeffects.reverb",
                                                         schema_path + "reverb/");
 
-  auto stack_page = stack->add(*ui, plugin_name::reverb);
+  stack->add(*ui, plugin_name::reverb);
 
   return ui;
 }

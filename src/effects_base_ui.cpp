@@ -68,7 +68,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   setup_listview_plugins();
   setup_listview_selected_plugins();
 
-  settings->signal_changed("plugins").connect([&, this](auto key) { add_plugins_to_stack_plugins(); });
+  settings->signal_changed("plugins").connect([&, this](const auto& key) { add_plugins_to_stack_plugins(); });
 
   // spectrum
 
@@ -109,7 +109,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   });
 
   show_blocklisted_apps->signal_state_set().connect(
-      [=, this](bool state) {
+      [=, this](const auto& state) {
         if (state) {
           players_model->remove_all();
 
@@ -178,7 +178,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](float v) {
+  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](const float& v) {
     std::ostringstream str;
 
     str.precision(1);
@@ -623,7 +623,7 @@ void EffectsBaseUi::setup_listview_players() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
+    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -662,7 +662,7 @@ void EffectsBaseUi::setup_listview_players() {
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
     auto connection_enable = enable->signal_state_set().connect(
-        [=, this](bool state) {
+        [=, this](const auto& state) {
           if (state) {
             if (holder->info.media_class == "Stream/Output/Audio") {
               pm->connect_stream_output(holder->info);
@@ -864,17 +864,17 @@ void EffectsBaseUi::setup_listview_players() {
 void EffectsBaseUi::setup_listview_blocklist() {
   blocklist->remove(0);
 
-  for (auto& name : settings->get_string_array("blocklist")) {
+  for (const auto& name : settings->get_string_array("blocklist")) {
     blocklist->append(name);
   }
 
-  settings->signal_changed("blocklist").connect([=, this](auto key) {
-    auto list = settings->get_string_array(key);
+  settings->signal_changed("blocklist").connect([=, this](const auto& key) {
+    const auto& list = settings->get_string_array(key);
 
     blocklist->splice(0, blocklist->get_n_items(), list);
   });
 
-  blocklist->signal_items_changed().connect([=, this](guint position, guint removed, guint added) {
+  blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
     if (removed > 0U) {
       players_model->remove_all();
 
@@ -928,7 +928,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -957,7 +957,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
 void EffectsBaseUi::setup_listview_plugins() {
   plugins->remove(0);
 
-  for (auto& translated_name : std::views::values(plugins_names)) {
+  for (const auto& translated_name : std::views::values(plugins_names)) {
     plugins->append(translated_name);
   }
 
@@ -1057,7 +1057,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     // showing the first plugin in the list by default
 
-    auto selected_name = selected_plugins->get_string(0);
+    const auto& selected_name = selected_plugins->get_string(0);
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       if (stack_plugins->get_page(*child)->get_name() == selected_name) {
@@ -1068,8 +1068,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     }
   }
 
-  settings->signal_changed("plugins").connect([=, this](auto key) {
-    auto list = settings->get_string_array(key);
+  settings->signal_changed("plugins").connect([=, this](const auto& key) {
+    const auto& list = settings->get_string_array(key);
 
     selected_plugins->splice(0, selected_plugins->get_n_items(), list);
 
@@ -1080,7 +1080,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
         return;
       }
 
-      auto visible_page_name = stack_plugins->get_page(*visible_child)->get_name();
+      const auto& visible_page_name = stack_plugins->get_page(*visible_child)->get_name();
 
       if (std::ranges::find(list, visible_page_name) == list.end()) {
         listview_selected_plugins->get_model()->select_item(0, true);
@@ -1115,7 +1115,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   listview_selected_plugins->get_model()->signal_selection_changed().connect([&](guint position, guint n_items) {
     auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview_selected_plugins->get_model());
 
-    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+    const auto& selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       if (stack_plugins->get_page(*child)->get_name() == selected_name) {
@@ -1216,26 +1216,22 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           name_value.init(v.gobj());
 
-          auto src = name_value.get();
-          auto dst = label->get_name();
+          const auto& src = name_value.get();
+          const auto& dst = label->get_name();
 
           if (src != dst) {
             auto list = settings->get_string_array("plugins");
 
-            auto iter_src = std::ranges::find(list, src);
+            const auto iter_src = std::ranges::find(list, src);
             auto iter_dst = std::ranges::find(list, dst);
 
-            auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
+            const auto& insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
 
             list.erase(iter_src);
 
             iter_dst = std::ranges::find(list, dst);
 
-            if (insert_after) {
-              list.insert(iter_dst + 1, src);
-            } else {
-              list.insert(iter_dst, src);
-            }
+            list.insert(((insert_after) ? (iter_dst + 1) : iter_dst), src);
 
             settings->set_string_array("plugins", list);
 
@@ -1261,7 +1257,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(plugins_names[name]);
@@ -1296,9 +1292,7 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
   // do not add the same stream twice
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    auto item = all_players_model->get_item(n);
-
-    if (item->info.id == node_info.id) {
+    if (all_players_model->get_item(n)->info.id == node_info.id) {
       return;
     }
   }
@@ -1395,7 +1389,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
 
   std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
 
-  if (std::any_of(bl.cbegin(), bl.cend(), [&](auto str) { return str == name; })) {
+  if (std::any_of(bl.cbegin(), bl.cend(), [&](const auto& str) { return str == name; })) {
     util::debug("blocklist_settings_ui: entry already present in the list");
 
     return false;

@@ -25,32 +25,32 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   // signals connection
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](auto key) { init_color(); }));
+  connections.emplace_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
 
   connections.emplace_back(
-      settings->signal_changed("color-axis-labels").connect([&](auto key) { init_frequency_labels_color(); }));
+      settings->signal_changed("color-axis-labels").connect([&](const auto& key) { init_frequency_labels_color(); }));
 
   connections.emplace_back(
-      settings->signal_changed("height").connect([&](auto key) { set_content_height(settings->get_int("height")); }));
+      settings->signal_changed("height").connect([&](const auto& key) { set_content_height(settings->get_int("height")); }));
 
-  connections.emplace_back(settings->signal_changed("n-points").connect([&](auto key) { init_frequency_axis(); }));
-
-  connections.emplace_back(
-      settings->signal_changed("minimum-frequency").connect([&](auto key) { init_frequency_axis(); }));
+  connections.emplace_back(settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
 
   connections.emplace_back(
-      settings->signal_changed("maximum-frequency").connect([&](auto key) { init_frequency_axis(); }));
-
-  connections.emplace_back(settings->signal_changed("type").connect([&](auto key) { init_type(); }));
+      settings->signal_changed("minimum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
   connections.emplace_back(
-      settings->signal_changed("fill").connect([&](auto key) { plot->set_fill_bars(settings->get_boolean(key)); }));
+      settings->signal_changed("maximum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
+
+  connections.emplace_back(
+      settings->signal_changed("fill").connect([&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
+
+  connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
     plot->set_draw_bar_border(settings->get_boolean(key));
   }));
 
-  connections.emplace_back(settings->signal_changed("line-width").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("line-width").connect([&](const auto& key) {
     plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
   }));
 
@@ -84,7 +84,7 @@ SpectrumUi::~SpectrumUi() {
 }
 
 auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "drawing_area");
 
@@ -174,7 +174,7 @@ void SpectrumUi::init_color() {
 
   settings->get_value("color", v);
 
-  auto rgba = v.get();
+  const auto& rgba = v.get();
 
   plot->set_color(rgba[0], rgba[1], rgba[2], rgba[3]);
 }
@@ -195,10 +195,9 @@ void SpectrumUi::init_frequency_axis() {
   }
 
   if (!spectrum_freqs.empty()) {
-    auto npoints = settings->get_int("n-points");
-
     spectrum_x_axis = util::logspace(log10f(static_cast<float>(settings->get_int("minimum-frequency"))),
-                                     log10f(static_cast<float>(settings->get_int("maximum-frequency"))), npoints);
+                                     log10f(static_cast<float>(settings->get_int("maximum-frequency"))),
+                                     settings->get_int("n-points"));
 
     spectrum_mag.resize(spectrum_x_axis.size());
 
@@ -211,7 +210,7 @@ void SpectrumUi::init_frequency_labels_color() {
 
   settings->get_value("color-axis-labels", v);
 
-  auto rgba = v.get();
+  const auto& rgba = v.get();
 
   plot->set_axis_labels_color(rgba[0], rgba[1], rgba[2], rgba[3]);
 }

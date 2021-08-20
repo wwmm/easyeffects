@@ -53,7 +53,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
   connections.emplace_back(
-      settings->signal_changed("model-path").connect([=, this](auto key) { set_active_model_label(); }));
+      settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
 
   prepare_scale(input_gain, "");
   prepare_scale(output_gain, "");
@@ -76,40 +76,37 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   folder_monitor = Gio::File::create_for_path(model_dir.string())->monitor_directory();
 
-  folder_monitor->signal_changed().connect([=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-    switch (event) {
-      case Gio::FileMonitor::Event::CREATED: {
-        string_list->append(util::remove_filename_extension(file->get_basename()));
+  folder_monitor->signal_changed().connect(
+    [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
+      switch (event) {
+        case Gio::FileMonitor::Event::CREATED: {
+          string_list->append(util::remove_filename_extension(file->get_basename()));
 
-        util::warning(util::remove_filename_extension(file->get_basename()));
+          util::warning(util::remove_filename_extension(file->get_basename()));
 
-        break;
-      }
-      case Gio::FileMonitor::Event::DELETED: {
-        Glib::ustring name_removed = util::remove_filename_extension(file->get_basename());
+          break;
+        }
+        case Gio::FileMonitor::Event::DELETED: {
+          const Glib::ustring& name_removed = util::remove_filename_extension(file->get_basename());
 
-        int count = 0;
+          int count = 0;
 
-        auto name = string_list->get_string(count);
+          for (auto name = string_list->get_string(count); name.c_str() != nullptr;) {
+            if (name_removed == name) {
+              string_list->remove(count);
 
-        while (name.c_str() != nullptr) {
-          if (name_removed == name) {
-            string_list->remove(count);
+              break;
+            }
 
-            break;
+            name = string_list->get_string(++count);
           }
 
-          count++;
-
-          name = string_list->get_string(count);
+          break;
         }
-
-        break;
+        default:
+          break;
       }
-      default:
-        break;
-    }
-  });
+    });
 }
 
 RNNoiseUi::~RNNoiseUi() {
@@ -119,18 +116,18 @@ RNNoiseUi::~RNNoiseUi() {
 }
 
 auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(builder, "top_box", "com.github.wwmm.easyeffects.rnnoise",
                                                          schema_path + "rnnoise/");
 
-  auto stack_page = stack->add(*ui, plugin_name::rnnoise);
+  stack->add(*ui, plugin_name::rnnoise);
 
   return ui;
 }
 
 void RNNoiseUi::setup_listview() {
-  auto names = get_model_names();
+  const auto& names = get_model_names();
 
   for (const auto& name : names) {
     string_list->append(name);
@@ -181,7 +178,7 @@ void RNNoiseUi::setup_listview() {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -205,12 +202,12 @@ void RNNoiseUi::setup_listview() {
 
   // selection callback
 
-  listview->get_model()->signal_selection_changed().connect([&, this](guint position, guint n_items) {
+  listview->get_model()->signal_selection_changed().connect([&, this](const guint& position, const guint& n_items) {
     auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-    auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+    const auto& selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-    auto model_file = model_dir / std::filesystem::path{selected_name + ".rnnn"};
+    const auto& model_file = model_dir / std::filesystem::path{selected_name + ".rnnn"};
 
     settings->set_string("model-path", model_file.string());
   });
@@ -246,7 +243,7 @@ void RNNoiseUi::on_import_model_clicked() {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=, this](auto response_id) {
+  dialog->signal_response().connect([=, this](const auto& response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
         import_model_file(dialog->get_file()->get_path());
@@ -296,7 +293,7 @@ auto RNNoiseUi::get_model_names() -> std::vector<std::string> {
 }
 
 void RNNoiseUi::remove_model_file(const std::string& name) {
-  auto model_file = model_dir / std::filesystem::path{name + ".rnnn"};
+  const auto& model_file = model_dir / std::filesystem::path{name + ".rnnn"};
 
   if (std::filesystem::exists(model_file)) {
     std::filesystem::remove(model_file);
@@ -306,7 +303,7 @@ void RNNoiseUi::remove_model_file(const std::string& name) {
 }
 
 void RNNoiseUi::set_active_model_label() {
-  auto path = std::filesystem::path{settings->get_string("model-path")};
+  const auto& path = std::filesystem::path{settings->get_string("model-path")};
 
   if (settings->get_string("model-path").empty()) {
     active_model_name->set_text(default_model_name);

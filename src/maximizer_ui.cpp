@@ -50,12 +50,12 @@ MaximizerUi::~MaximizerUi() {
 }
 
 auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/maximizer.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/maximizer.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<MaximizerUi>(builder, "top_box", "com.github.wwmm.easyeffects.maximizer",
                                                            schema_path + "maximizer/");
 
-  auto stack_page = stack->add(*ui, plugin_name::maximizer);
+  stack->add(*ui, plugin_name::maximizer);
 
   return ui;
 }

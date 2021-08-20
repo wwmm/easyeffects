@@ -45,9 +45,7 @@ auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_da
 }
 
 auto int_to_stereo_tools_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("LR > LR (Stereo Default)");
 
@@ -151,12 +149,12 @@ StereoToolsUi::~StereoToolsUi() {
 }
 
 auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.stereotools", schema_path + "stereotools/");
 
-  auto stack_page = stack->add(*ui, plugin_name::stereo_tools);
+  stack->add(*ui, plugin_name::stereo_tools);
 
   return ui;
 }

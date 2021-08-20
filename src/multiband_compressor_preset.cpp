@@ -39,7 +39,7 @@ void MultibandCompressorPreset::save(nlohmann::json& json,
   json[section]["multiband_compressor"]["envelope-boost"] = settings->get_string("envelope-boost").c_str();
 
   for (uint n = 0U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     if (n > 0U) {
       json[section]["multiband_compressor"]["band" + nstr]["enable-band"] = settings->get_boolean("enable-band" + nstr);
@@ -120,7 +120,7 @@ void MultibandCompressorPreset::load(const nlohmann::json& json,
   update_string_key(json.at(section).at("multiband_compressor"), settings, "envelope-boost", "envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     if (n > 0U) {
       update_key<bool>(json.at(section).at("multiband_compressor").at("band" + nstr), settings, "enable-band" + nstr,

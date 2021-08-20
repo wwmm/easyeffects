@@ -84,7 +84,7 @@ PresetsManager::PresetsManager()
   user_output_monitor = Gio::File::create_for_path(user_output_dir.string())->monitor_directory();
 
   user_output_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
             user_output_preset_created.emit(file);
@@ -102,7 +102,7 @@ PresetsManager::PresetsManager()
   user_input_monitor = Gio::File::create_for_path(user_input_dir.string())->monitor_directory();
 
   user_input_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
+      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
             user_input_preset_created.emit(file);
@@ -120,8 +120,8 @@ PresetsManager::PresetsManager()
   autoload_input_monitor = Gio::File::create_for_path(autoload_input_dir.string())->monitor_directory();
 
   autoload_input_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-        auto profiles = get_autoload_profiles(PresetType::input);
+      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
+        const auto& profiles = get_autoload_profiles(PresetType::input);
 
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
@@ -140,8 +140,8 @@ PresetsManager::PresetsManager()
   autoload_output_monitor = Gio::File::create_for_path(autoload_output_dir.string())->monitor_directory();
 
   autoload_output_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, auto other_f, auto event) {
-        auto profiles = get_autoload_profiles(PresetType::output);
+      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
+        const auto& profiles = get_autoload_profiles(PresetType::output);
 
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
@@ -169,9 +169,7 @@ PresetsManager::~PresetsManager() {
 }
 
 void PresetsManager::create_user_directory(const std::filesystem::path& path) {
-  auto dir_exists = std::filesystem::is_directory(path);
-
-  if (!dir_exists) {
+  if (!std::filesystem::is_directory(path)) {
     if (std::filesystem::create_directories(path)) {
       util::debug(log_tag + "user presets directory created: " + path.string());
     } else {
@@ -183,7 +181,7 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   }
 }
 
-auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustring> {
+auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Glib::ustring> {
   std::filesystem::directory_iterator it;
   std::vector<Glib::ustring> names;
   std::vector<std::filesystem::path> sys_dirs;
@@ -201,16 +199,16 @@ auto PresetsManager::get_names(PresetType preset_type) -> std::vector<Glib::ustr
   for (const auto& dir : sys_dirs) {
     if (std::filesystem::exists(dir)) {
       it = std::filesystem::directory_iterator{dir};
-      auto vn = search_names(it);
+      const auto& vn = search_names(it);
       names.insert(names.end(), vn.begin(), vn.end());
     }
   }
 
   // user directory search
-  auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
   it = std::filesystem::directory_iterator{user_dir};
 
-  auto vn = search_names(it);
+  const auto& vn = search_names(it);
   names.insert(names.end(), vn.begin(), vn.end());
 
   // removing duplicates
@@ -240,7 +238,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
   return names;
 }
 
-void PresetsManager::add(PresetType preset_type, const Glib::ustring& name) {
+void PresetsManager::add(const PresetType& preset_type, const Glib::ustring& name) {
   for (const auto& p : get_names(preset_type)) {
     if (p == name) {
       return;
@@ -250,14 +248,12 @@ void PresetsManager::add(PresetType preset_type, const Glib::ustring& name) {
   save_preset_file(preset_type, name);
 }
 
-void PresetsManager::save_blocklist(PresetType preset_type, nlohmann::json& json) {
+void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {
   std::vector<std::string> blocklist;
 
   switch (preset_type) {
     case PresetType::output: {
-      auto list = soe_settings->get_string_array("blocklist");
-
-      for (const auto& l : list) {
+      for (const auto& l : soe_settings->get_string_array("blocklist")) {
         blocklist.emplace_back(l);
       }
 
@@ -266,9 +262,7 @@ void PresetsManager::save_blocklist(PresetType preset_type, nlohmann::json& json
       break;
     }
     case PresetType::input: {
-      auto list = sie_settings->get_string_array("blocklist");
-
-      for (const auto& l : list) {
+      for (const auto& l : sie_settings->get_string_array("blocklist")) {
         blocklist.emplace_back(l);
       }
 
@@ -279,15 +273,13 @@ void PresetsManager::save_blocklist(PresetType preset_type, nlohmann::json& json
   }
 }
 
-void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json& json) {
+void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) {
   std::vector<Glib::ustring> blocklist;
 
   switch (preset_type) {
     case PresetType::input: {
       try {
-        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
-
-        for (auto& l : list) {
+        for (const auto& l : json.at("input").at("blocklist").get<std::vector<std::string>>()) {
           blocklist.emplace_back(l);
         }
 
@@ -302,9 +294,7 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
     }
     case PresetType::output: {
       try {
-        auto list = json.at("output").at("blocklist").get<std::vector<std::string>>();
-
-        for (auto& l : list) {
+        for (const auto& l : json.at("output").at("blocklist").get<std::vector<std::string>>()) {
           blocklist.emplace_back(l);
         }
 
@@ -320,18 +310,16 @@ void PresetsManager::load_blocklist(PresetType preset_type, const nlohmann::json
   }
 }
 
-void PresetsManager::save_preset_file(PresetType preset_type, const std::string& name) {
+void PresetsManager::save_preset_file(const PresetType& preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
-
-  std::vector<Glib::ustring> plugins;
 
   save_blocklist(preset_type, json);
 
   switch (preset_type) {
     case PresetType::output: {
-      plugins = soe_settings->get_string_array("plugins");
+      const auto& plugins = soe_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
@@ -343,12 +331,14 @@ void PresetsManager::save_preset_file(PresetType preset_type, const std::string&
 
       json["output"]["plugins_order"] = list;
 
+      write_plugins_preset(preset_type, plugins, json);
+
       output_file = user_output_dir / std::filesystem::path{name + ".json"};
 
       break;
     }
     case PresetType::input: {
-      plugins = sie_settings->get_string_array("plugins");
+      const auto& plugins = sie_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
@@ -360,13 +350,26 @@ void PresetsManager::save_preset_file(PresetType preset_type, const std::string&
 
       json["input"]["plugins_order"] = list;
 
+      write_plugins_preset(preset_type, plugins, json);
+
       output_file = user_input_dir / std::filesystem::path{name + ".json"};
 
       break;
     }
   }
 
-  for (auto& name : plugins) {
+  std::ofstream o(output_file.string());
+
+  o << std::setw(4) << json << std::endl;
+
+  // std::cout << std::setw(4) << json << std::endl;
+
+  util::debug(log_tag + "saved preset: " + output_file.string());
+}
+
+void PresetsManager::write_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+                                          nlohmann::json& json) {
+  for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
       autogain->write(preset_type, json);
     } else if (name == plugin_name::bass_enhancer) {
@@ -415,20 +418,12 @@ void PresetsManager::save_preset_file(PresetType preset_type, const std::string&
       stereo_tools->write(preset_type, json);
     }
   }
-
-  std::ofstream o(output_file.string());
-
-  o << std::setw(4) << json << std::endl;
-
-  // std::cout << std::setw(4) << json << std::endl;
-
-  util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
-void PresetsManager::remove(PresetType preset_type, const std::string& name) {
+void PresetsManager::remove(const PresetType& preset_type, const std::string& name) {
   std::filesystem::path preset_file;
 
-  auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
   preset_file = user_dir / std::filesystem::path{name + ".json"};
 
@@ -439,7 +434,7 @@ void PresetsManager::remove(PresetType preset_type, const std::string& name) {
   }
 }
 
-void PresetsManager::load_preset_file(PresetType preset_type, const std::string& name) {
+void PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::vector<Glib::ustring> plugins;
@@ -472,9 +467,7 @@ void PresetsManager::load_preset_file(PresetType preset_type, const std::string&
 
           is >> json;
 
-          auto j_plugins_order = json.at("output").at("plugins_order").get<std::vector<std::string>>();
-
-          for (const auto& p : j_plugins_order) {
+          for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
                 plugins.emplace_back(p);
@@ -518,9 +511,7 @@ void PresetsManager::load_preset_file(PresetType preset_type, const std::string&
 
           is >> json;
 
-          auto j_plugins_order = json.at("input").at("plugins_order").get<std::vector<std::string>>();
-
-          for (const auto& p : j_plugins_order) {
+          for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
                 plugins.emplace_back(p);
@@ -547,7 +538,14 @@ void PresetsManager::load_preset_file(PresetType preset_type, const std::string&
 
   load_blocklist(preset_type, json);
 
-  for (auto& name : plugins) {
+  read_plugins_preset(preset_type, plugins, json);
+
+  util::debug(log_tag + "loaded preset: " + input_file.string());
+}
+
+void PresetsManager::read_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+                         const nlohmann::json& json) {
+  for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
       autogain->read(preset_type, json);
     } else if (name == plugin_name::bass_enhancer) {
@@ -596,18 +594,16 @@ void PresetsManager::load_preset_file(PresetType preset_type, const std::string&
       stereo_tools->read(preset_type, json);
     }
   }
-
-  util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
-void PresetsManager::import(PresetType preset_type, const std::string& file_path) {
+void PresetsManager::import(const PresetType& preset_type, const std::string& file_path) {
   std::filesystem::path p{file_path};
 
   if (std::filesystem::is_regular_file(p)) {
     if (p.extension().string() == ".json") {
       std::filesystem::path out_path;
 
-      auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+      const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
       out_path = user_dir / p.filename();
 
@@ -620,7 +616,7 @@ void PresetsManager::import(PresetType preset_type, const std::string& file_path
   }
 }
 
-void PresetsManager::add_autoload(PresetType preset_type,
+void PresetsManager::add_autoload(const PresetType& preset_type,
                                   const std::string& preset_name,
                                   const std::string& device_name,
                                   const std::string& device_profile) {
@@ -648,7 +644,7 @@ void PresetsManager::add_autoload(PresetType preset_type,
   util::debug(log_tag + "added autoload preset file: " + output_file.string());
 }
 
-void PresetsManager::remove_autoload(PresetType preset_type,
+void PresetsManager::remove_autoload(const PresetType& preset_type,
                                      const std::string& preset_name,
                                      const std::string& device_name,
                                      const std::string& device_profile) {
@@ -678,7 +674,7 @@ void PresetsManager::remove_autoload(PresetType preset_type,
   }
 }
 
-auto PresetsManager::find_autoload(PresetType preset_type,
+auto PresetsManager::find_autoload(const PresetType& preset_type,
                                    const std::string& device_name,
                                    const std::string& device_profile) -> std::string {
   std::filesystem::path input_file;
@@ -705,10 +701,10 @@ auto PresetsManager::find_autoload(PresetType preset_type,
   return "";
 }
 
-void PresetsManager::autoload(PresetType preset_type,
+void PresetsManager::autoload(const PresetType& preset_type,
                               const std::string& device_name,
                               const std::string& device_profile) {
-  auto name = find_autoload(preset_type, device_name, device_profile);
+  const auto& name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
@@ -726,7 +722,7 @@ void PresetsManager::autoload(PresetType preset_type,
   }
 }
 
-auto PresetsManager::get_autoload_profiles(PresetType preset_type) -> std::vector<nlohmann::json> {
+auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json> {
   std::filesystem::path autoload_dir;
   std::vector<nlohmann::json> list;
 
@@ -767,7 +763,7 @@ auto PresetsManager::get_autoload_profiles(PresetType preset_type) -> std::vecto
   }
 }
 
-auto PresetsManager::preset_file_exists(PresetType preset_type, const std::string& name) -> bool {
+auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
   std::filesystem::path input_file;
   std::vector<std::filesystem::path> conf_dirs;
 

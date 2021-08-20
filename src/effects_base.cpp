@@ -121,83 +121,83 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   plugins.insert(std::make_pair(rnnoise->name, rnnoise));
   plugins.insert(std::make_pair(stereo_tools->name, stereo_tools));
 
-  for (auto& key : plugins | std::views::keys) {
+  for (const auto& key : plugins | std::views::keys) {
     plugins_latency[key] = 0.0F;
   }
 
-  compressor->latency.connect([=, this](float v) {
+  compressor->latency.connect([=, this](const float& v) {
     plugins_latency[compressor->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  convolver->latency.connect([=, this](float v) {
+  convolver->latency.connect([=, this](const float& v) {
     plugins_latency[convolver->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  crystalizer->latency.connect([=, this](float v) {
+  crystalizer->latency.connect([=, this](const float& v) {
     plugins_latency[crystalizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  delay->latency.connect([=, this](float v) {
+  delay->latency.connect([=, this](const float& v) {
     plugins_latency[delay->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  echo_canceller->latency.connect([=, this](float v) {
+  echo_canceller->latency.connect([=, this](const float& v) {
     plugins_latency[echo_canceller->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  equalizer->latency.connect([=, this](float v) {
+  equalizer->latency.connect([=, this](const float& v) {
     plugins_latency[equalizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  loudness->latency.connect([=, this](float v) {
+  loudness->latency.connect([=, this](const float& v) {
     plugins_latency[loudness->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  limiter->latency.connect([=, this](float v) {
+  limiter->latency.connect([=, this](const float& v) {
     plugins_latency[limiter->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  maximizer->latency.connect([=, this](float v) {
+  maximizer->latency.connect([=, this](const float& v) {
     plugins_latency[maximizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  multiband_compressor->latency.connect([=, this](float v) {
+  multiband_compressor->latency.connect([=, this](const float& v) {
     plugins_latency[multiband_compressor->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  pitch->latency.connect([=, this](float v) {
+  pitch->latency.connect([=, this](const float& v) {
     plugins_latency[pitch->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  rnnoise->latency.connect([=, this](float v) {
+  rnnoise->latency.connect([=, this](const float& v) {
     plugins_latency[rnnoise->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  settings->signal_changed("plugins").connect([&, this](auto key) { broadcast_pipeline_latency(); });
+  settings->signal_changed("plugins").connect([&, this](const auto& key) { broadcast_pipeline_latency(); });
 }
 
 EffectsBase::~EffectsBase() {
@@ -217,17 +217,13 @@ void EffectsBase::deactivate_filters() {
 }
 
 auto EffectsBase::get_pipeline_latency() -> float {
-  auto selected_plugins = settings->get_string_array("plugins");
-
   float total = 0.0F;
 
-  for (auto& name : selected_plugins) {
+  for (const auto& name : settings->get_string_array("plugins")) {
     total += plugins_latency[name];
   }
 
-  total *= 1000.0F;
-
-  return total;
+  return total * 1000.0F;
 }
 
 void EffectsBase::broadcast_pipeline_latency() {

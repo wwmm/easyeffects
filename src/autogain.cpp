@@ -26,9 +26,9 @@ AutoGain::AutoGain(const std::string& tag,
     : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
   target = settings->get_double("target");
 
-  settings->signal_changed("target").connect([&, this](auto key) { target = settings->get_double(key); });
+  settings->signal_changed("target").connect([&, this](const auto& key) { target = settings->get_double(key); });
 
-  settings->signal_changed("reset-history").connect([&, this](auto key) {
+  settings->signal_changed("reset-history").connect([&, this](const auto& key) {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
     init_ebur128();

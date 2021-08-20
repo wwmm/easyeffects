@@ -207,7 +207,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  auto features =
+  const auto& features =
       std::to_array<const LV2_Feature*>({&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options,
                                          &static_features[0], &static_features[1], nullptr});
 
@@ -241,7 +241,7 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
   int count_input = 0;
   int count_output = 0;
 
-  for (auto& p : ports) {
+  for (const auto& p : ports) {
     if (p.type == PortType::TYPE_AUDIO) {
       if (p.is_input) {
         if (count_input == 0) {
@@ -273,7 +273,7 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
   int count_input = 0;
   int count_output = 0;
 
-  for (auto& p : ports) {
+  for (const auto& p : ports) {
     if (p.type == PortType::TYPE_AUDIO) {
       if (p.is_input) {
         if (count_input == 0) {
@@ -375,7 +375,7 @@ void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
                                  const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(gsettings_key)));
 
-  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
     set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(key)));
   });
 }
@@ -385,7 +385,7 @@ void Lv2Wrapper::bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
                                     const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(gsettings_key))));
 
-  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
     set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(key))));
   });
 }
@@ -395,7 +395,7 @@ void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
                                const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(gsettings_key)));
 
-  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
     set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(key)));
   });
 }
@@ -405,7 +405,7 @@ void Lv2Wrapper::bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
                                const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(gsettings_key)));
 
-  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
     set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(key)));
   });
 }
@@ -415,7 +415,7 @@ void Lv2Wrapper::bind_key_int(const Glib::RefPtr<Gio::Settings>& settings,
                               const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(gsettings_key)));
 
-  settings->signal_changed(gsettings_key).connect([=, this](auto key) {
+  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
     set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(key)));
   });
 }
@@ -425,7 +425,7 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
     return map_uri_to_urid[uri];
   }
 
-  auto hash = std::hash<std::string>{}(uri);
+  const auto& hash = std::hash<std::string>{}(uri);
 
   map_uri_to_urid[uri] = hash;
 
