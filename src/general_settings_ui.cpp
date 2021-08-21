@@ -67,7 +67,7 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
-  auto path = Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop";
+  const auto& path = Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop";
 
   if (std::filesystem::is_regular_file(path)) {
     enable_autostart->set_active(true);

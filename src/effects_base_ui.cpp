@@ -1047,12 +1047,13 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
 
-    auto translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& translated_name_str = std::string(translated_name);
 
     Glib::ustring key_name;
 
     for (const auto& [key, value] : plugins_names) {
-      if (value == std::string(translated_name)) {
+      if (value == translated_name_str) {
         key_name = key;
       }
     }
@@ -1237,7 +1238,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
       auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
 
-      auto paintable = Gtk::WidgetPaintable::create(*row_box);
+      const auto& paintable = Gtk::WidgetPaintable::create(*row_box);
 
       drag_source->set_icon(paintable, row_box->get_allocated_width() - controller_widget->get_allocated_width() / 2,
                             row_box->get_allocated_height() / 2);
@@ -1257,7 +1258,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
           if (src != dst) {
             auto list = settings->get_string_array("plugins");
 
-            const auto iter_src = std::ranges::find(list, src);
+            const auto& iter_src = std::ranges::find(list, src);
             auto iter_dst = std::ranges::find(list, dst);
 
             const auto& insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;

@@ -218,9 +218,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
                                    Glib::RefPtr<Gtk::StringList>& string_list) {
   string_list->remove(0);
 
-  auto names = app->presets_manager->get_names(preset_type);
-
-  for (const auto& name : names) {
+  for (const auto& name : app->presets_manager->get_names(preset_type)) {
     string_list->append(name);
   }
 

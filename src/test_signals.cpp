@@ -169,9 +169,7 @@ void TestSignals::set_state(const bool& state) {
   sine_phase = 0.0F;
 
   if (state) {
-    auto links = pm->link_nodes(node_id, pm->pe_sink_node.id, false, false);
-
-    for (const auto& link : links) {
+    for (const auto& link : pm->link_nodes(node_id, pm->pe_sink_node.id, false, false)) {
       list_proxies.emplace_back(link);
     }
   } else {

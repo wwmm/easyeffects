@@ -242,7 +242,7 @@ void StreamInputEffects::disconnect_filters() {
   std::set<uint> list;
 
   for (const auto& plugin : plugins | std::views::values) {
-    for (auto& link : pm->list_links) {
+    for (const auto& link : pm->list_links) {
       if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
         list.insert(link.id);
       }

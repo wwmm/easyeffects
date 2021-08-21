@@ -459,7 +459,7 @@ void ConvolverUi::get_irs_info() {
       bin_r_y.emplace_back(right_mag[n]);
 
       if (bin_x.size() == bin_size) {
-        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
+        const auto& [min, max] = std::ranges::minmax_element(bin_l_y);
 
         t.emplace_back(bin_x[min - bin_l_y.begin()]);
         t.emplace_back(bin_x[max - bin_l_y.begin()]);
@@ -467,7 +467,7 @@ void ConvolverUi::get_irs_info() {
         l.emplace_back(*min);
         l.emplace_back(*max);
 
-        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
+        const auto& [minr, maxr] = std::ranges::minmax_element(bin_r_y);
 
         r.emplace_back(*minr);
         r.emplace_back(*maxr);
@@ -503,11 +503,11 @@ void ConvolverUi::get_irs_info() {
 
   // find min and max values
 
-  auto min_left = std::ranges::min(left_mag);
-  auto max_left = std::ranges::max(left_mag);
+  const auto& min_left = std::ranges::min(left_mag);
+  const auto& max_left = std::ranges::max(left_mag);
 
-  auto min_right = std::ranges::min(right_mag);
-  auto max_right = std::ranges::max(right_mag);
+  const auto& min_right = std::ranges::min(right_mag);
+  const auto& max_right = std::ranges::max(right_mag);
 
   // rescaling between 0 and 1
 
@@ -609,7 +609,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  auto log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), spectrum_settings->get_int("n-points"));
+  const auto& log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), spectrum_settings->get_int("n-points"));
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<uint> bin_count(log_axis.size());
