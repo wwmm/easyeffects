@@ -225,6 +225,18 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       }
     }
 
+    // first we remove any autoloading profile associated to the target device so that our ui is updated
+
+    for (guint n = 0; n < autoloading_output_model->get_n_items(); n++) {
+      auto item = autoloading_output_model->get_item(n);
+
+      if (holder->info.name == item->device) {
+        presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device, item->device_profile);
+
+        break;
+      }
+    }
+
     const auto& id = dropdown_autoloading_output_presets->get_selected();
 
     presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id), holder->info.name,
@@ -243,6 +255,18 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     for (const auto& device : pm->list_devices) {
       if (device.id == holder->info.device_id) {
         device_profile = device.profile_name;
+
+        break;
+      }
+    }
+
+    // first we remove any autoloading profile associated to the target device so that our ui is updated
+
+    for (guint n = 0; n < autoloading_input_model->get_n_items(); n++) {
+      auto item = autoloading_input_model->get_item(n);
+
+      if (holder->info.name == item->device) {
+        presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device, item->device_profile);
 
         break;
       }

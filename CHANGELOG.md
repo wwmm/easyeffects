@@ -6,6 +6,8 @@
 
 - When an app is removed from the blocklist clicking on the checkbutton inside the application list, the state
   before it was added to the blocklist is restored.
+- When trying to add an autoloading profile for a device already in the list its target preset will be updated. This
+  way we can change the profile preset without having to remove and recreating it.
 
 ### Fixed
 
