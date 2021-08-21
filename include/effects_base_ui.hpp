@@ -181,6 +181,10 @@ class EffectsBaseUi {
 
   void remove_blocklist_entry(const Glib::ustring& name);
 
+  void connect_stream(const std::shared_ptr<NodeInfoHolder>& holder);
+
+  void disconnect_stream(const std::shared_ptr<NodeInfoHolder>& holder);
+
   static auto float_to_localized_string(const float& value, const int& places) -> std::string;
 };
 

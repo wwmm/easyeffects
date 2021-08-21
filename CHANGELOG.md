@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+### Added
+
+- When an app is removed from the blocklist clicking on the checkbutton inside the application list, the state
+  before it was added to the blocklist is restored.
+
+### Fixed
+
 ## [6.1.0]
 
 ### Added
@@ -227,7 +234,7 @@ a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/
 - Our interface now shows third party Plugins credits.
 - Each plugin now has a reset button
 - Improved convolver impulse response files plot
-- Applications entry now have a blacklist button to make it easier to blacklist an application the user does not want
+- Applications entry now have a blocklist button to make it easier to blocklist an application the user does not want
   effects to be applied.
 
 ### Fixed
@@ -316,7 +323,7 @@ a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/
 ### Added
 
 - Improved preset auto loading. This should fix https://github.com/wwmm/pulseeffects/issues/520
-- Improved built-in applications blacklist. We now use the applications id where possible as they are not changed by
+- Improved built-in applications blocklist. We now use the applications id where possible as they are not changed by
   translations. This should avoid Pavucontrol probes being shown in PE window.
 
 ## [4.6.5]
@@ -602,7 +609,7 @@ Last release of 2018! Happy new year! :D
   this issue opened in our page https://github.com/wwmm/pulseeffects/issues/353 to
   know more.
 - The spectrum has more customization options.
-- The applications blacklist is saved to the user preset.
+- The applications blocklist is saved to the user preset.
 - When alternating presets a large disk activity was generated. In order to
   avoid this we now check if each gsettings key really needs to be updated. As
   gsettings does not do that we had to implement our own checks.
@@ -741,7 +748,7 @@ Last release of 2018! Happy new year! :D
 
 - The about dialog window "hide" method is explicitly called now. This may fix
   an issue where this window was not closed for users not using gnome
-- The user can blacklist applications he/she does not want effects being applied.
+- The user can blocklist applications he/she does not want effects being applied.
 - We check if there is any forbidden character in the name of the preset that
   the user is adding. If there is we just clear the field and do not try to add
   the preset.

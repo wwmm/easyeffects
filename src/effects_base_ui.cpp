@@ -664,18 +664,17 @@ void EffectsBaseUi::setup_listview_players() {
     auto connection_enable = enable->signal_state_set().connect(
         [=, this](const auto& state) {
           if (state) {
-            if (holder->info.media_class == "Stream/Output/Audio") {
-              pm->connect_stream_output(holder->info);
-            } else if (holder->info.media_class == "Stream/Input/Audio") {
-              pm->connect_stream_input(holder->info);
-            }
+            connect_stream(holder);
           } else {
-            if (holder->info.media_class == "Stream/Output/Audio") {
-              pm->disconnect_stream_output(holder->info);
-            } else if (holder->info.media_class == "Stream/Input/Audio") {
-              pm->disconnect_stream_input(holder->info);
-            }
+            disconnect_stream(holder);
           }
+
+          holder->enabled = state;
+
+          if (!holder->app_blocklisted) {
+            holder->pre_blocklisted_state = state;
+          }
+
           return false;
         },
         false);
@@ -703,13 +702,33 @@ void EffectsBaseUi::setup_listview_players() {
       if (blocklist->get_active()) {
         add_new_blocklist_entry(holder->info.name);
 
+        holder->app_blocklisted = true;
+
+        holder->pre_blocklisted_state = holder->enabled;
+
+        holder->enabled = false;
+
         enable->set_active(false);
 
         enable->set_sensitive(false);
       } else {
         remove_blocklist_entry(holder->info.name);
 
+        holder->app_blocklisted = false;
+
+        holder->enabled = holder->pre_blocklisted_state;
+
+        holder->pre_blocklisted_state = holder->enabled;
+
         enable->set_sensitive(true);
+
+        enable->set_active(holder->enabled);
+
+        if (holder->enabled) {
+          // restore the state the app had before it was added to the blocklist
+
+          connect_stream(holder);
+        }
       }
     });
 
@@ -789,11 +808,11 @@ void EffectsBaseUi::setup_listview_players() {
         }
       }
 
-      bool is_blocklisted = app_is_blocklisted(holder->info.name);
+      holder->app_blocklisted = app_is_blocklisted(holder->info.name);
+      holder->enabled = !holder->app_blocklisted && is_enabled;
 
-      enable->set_active(is_enabled);
-      enable->set_active(is_enabled && !is_blocklisted);
-      enable->set_sensitive(!is_blocklisted);
+      enable->set_active(holder->enabled);
+      enable->set_sensitive(!holder->app_blocklisted);
 
       pointer_connection_enable->unblock();
 
@@ -827,7 +846,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_blocklist->block();
 
-      blocklist->set_active(is_blocklisted);
+      blocklist->set_active(holder->app_blocklisted);
 
       pointer_connection_blocklist->unblock();
     });
@@ -859,6 +878,22 @@ void EffectsBaseUi::setup_listview_players() {
       }
     }
   });
+}
+
+void EffectsBaseUi::connect_stream(const std::shared_ptr<NodeInfoHolder>& holder) {
+  if (holder->info.media_class == "Stream/Output/Audio") {
+    pm->connect_stream_output(holder->info);
+  } else if (holder->info.media_class == "Stream/Input/Audio") {
+    pm->connect_stream_input(holder->info);
+  }
+}
+
+void EffectsBaseUi::disconnect_stream(const std::shared_ptr<NodeInfoHolder>& holder) {
+  if (holder->info.media_class == "Stream/Output/Audio") {
+    pm->disconnect_stream_output(holder->info);
+  } else if (holder->info.media_class == "Stream/Input/Audio") {
+    pm->disconnect_stream_input(holder->info);
+  }
 }
 
 void EffectsBaseUi::setup_listview_blocklist() {
@@ -935,7 +970,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("blocklist");
 
-      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& player_name) { return player_name == name; }),
+      list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& player_name) { return player_name == name; }),
                  list.end());
 
       settings->set_string_array("blocklist", list);
@@ -1051,7 +1086,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   selected_plugins->remove(0);
 
   if (!settings->get_string_array("plugins").empty()) {
-    for (auto& name : settings->get_string_array("plugins")) {
+    for (const auto& name : settings->get_string_array("plugins")) {
       selected_plugins->append(name);
     }
 
@@ -1265,7 +1300,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
 
-      list.erase(std::remove_if(list.begin(), list.end(), [=](auto& plugin_name) { return plugin_name == name; }),
+      list.erase(std::remove_if(list.begin(), list.end(), [=](const auto& plugin_name) { return plugin_name == name; }),
                  list.end());
 
       settings->set_string_array("plugins", list);
@@ -1407,7 +1442,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
 void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
   std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
 
-  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](auto& a) { return a == name; }), bl.end());
+  bl.erase(std::remove_if(bl.begin(), bl.end(), [=](const auto& a) { return a == name; }), bl.end());
 
   settings->set_string_array("blocklist", bl);
 
