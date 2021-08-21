@@ -11,6 +11,7 @@
 
 - Sometimes when removing imported models from the noise reduction plugin the current used model was not properly
   updated. This should be fixed now.
+- When editing presets files in an external editor duplicated entries were shown in our presets menu.
 
 ## [6.1.0]
 

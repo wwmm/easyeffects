@@ -92,7 +92,15 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    output_string_list->append(util::remove_filename_extension(file->get_basename()));
+    auto preset_name = util::remove_filename_extension(file->get_basename());
+
+    for (guint n = 0; n < output_string_list->get_n_items(); n++) {
+      if (preset_name == std::string(output_string_list->get_string(n))) {
+        return;
+      }
+    }
+
+    output_string_list->append(preset_name);
   });
 
   app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
@@ -109,7 +117,15 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    input_string_list->append(util::remove_filename_extension(file->get_basename()));
+    auto preset_name = util::remove_filename_extension(file->get_basename());
+
+    for (guint n = 0; n < input_string_list->get_n_items(); n++) {
+      if (preset_name == std::string(input_string_list->get_string(n))) {
+        return;
+      }
+    }
+
+    input_string_list->append(preset_name);
   });
 
   app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
