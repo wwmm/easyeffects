@@ -745,10 +745,16 @@ void EffectsBaseUi::setup_listview_players() {
       channels->set_text(std::to_string(i.n_volume_channels));
       latency->set_text(float_to_localized_string(i.latency, 2) + " s");
 
+      bool icon_available = false;
+
       if (!i.app_icon_name.empty()) {
         app_icon->set_from_icon_name(i.app_icon_name);
+
+        icon_available = true;
       } else if (!i.media_icon_name.empty()) {
         app_icon->set_from_icon_name(i.media_icon_name);
+
+        icon_available = true;
       } else {
         auto str = i.name;
 
@@ -757,7 +763,13 @@ void EffectsBaseUi::setup_listview_players() {
         std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 
         app_icon->set_from_icon_name(str);
+
+        icon_available = true;
       }
+
+      // Hide icon if not provided
+
+      app_icon->set_opacity((icon_available) ? 1.0 : 0.0);
 
       switch (i.state) {
         case PW_NODE_STATE_RUNNING:
