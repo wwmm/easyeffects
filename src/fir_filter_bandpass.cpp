@@ -24,7 +24,7 @@ FirFilterBandpass::FirFilterBandpass(std::string tag) : FirFilterBase(std::move(
 FirFilterBandpass::~FirFilterBandpass() = default;
 
 void FirFilterBandpass::setup() {
-  auto lowpass_kernel = create_lowpass_kernel(max_frequency, transition_band);
+  const auto& lowpass_kernel = create_lowpass_kernel(max_frequency, transition_band);
 
   // high-pass kernel
 

@@ -34,9 +34,7 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("RMS");
 
@@ -61,9 +59,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Wide");
 
@@ -151,12 +147,12 @@ DeesserUi::~DeesserUi() {
 }
 
 auto DeesserUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<DeesserUi>(builder, "top_box", "com.github.wwmm.easyeffects.deesser",
                                                          schema_path + "deesser/");
 
-  auto stack_page = stack->add(*ui, plugin_name::deesser);
+  stack->add(*ui, plugin_name::deesser);
 
   return ui;
 }

@@ -59,12 +59,12 @@ CrossfeedUi::~CrossfeedUi() {
 }
 
 auto CrossfeedUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CrossfeedUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crossfeed.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/crossfeed.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<CrossfeedUi>(builder, "top_box", "com.github.wwmm.easyeffects.crossfeed",
                                                            schema_path + "crossfeed/");
 
-  auto stack_page = stack->add(*ui, plugin_name::crossfeed);
+  stack->add(*ui, plugin_name::crossfeed);
 
   return ui;
 }

@@ -59,12 +59,12 @@ PitchUi::~PitchUi() {
 }
 
 auto PitchUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> PitchUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pitch.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pitch.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<PitchUi>(builder, "top_box", "com.github.wwmm.easyeffects.pitch",
                                                        schema_path + "pitch/");
 
-  auto stack_page = stack->add(*ui, plugin_name::pitch);
+  stack->add(*ui, plugin_name::pitch);
 
   return ui;
 }

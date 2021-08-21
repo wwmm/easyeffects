@@ -48,9 +48,7 @@ auto bandtype_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandtype_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Off");
 
@@ -100,9 +98,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("IIR");
 
@@ -143,9 +139,7 @@ auto bandmode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_bandmode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("RLC (BT)");
 
@@ -189,9 +183,7 @@ auto bandslope_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_bandslope_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("x1");
 
@@ -300,14 +292,14 @@ EqualizerUi::~EqualizerUi() {
 }
 
 auto EqualizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<EqualizerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.equalizer", schema_path + "equalizer/",
       "com.github.wwmm.easyeffects.equalizer.channel", schema_path + "equalizer/leftchannel/",
       schema_path + "equalizer/rightchannel/");
 
-  auto stack_page = stack->add(*ui, plugin_name::equalizer);
+  stack->add(*ui, plugin_name::equalizer);
 
   return ui;
 }
@@ -343,9 +335,9 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
                               const int& nbands,
                               const bool& split_mode) {
   for (int n = 0; n < nbands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
-    auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
+    const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
@@ -379,18 +371,14 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
       band_quality_label->set_text("Q " + level_to_localized_string(q, 2));
 
       if (q > 0.0) {
-        const auto& f = band_frequency->get_value();
-
-        band_width->set_text(level_to_localized_string(f / q, 1) + " Hz");
+        band_width->set_text(level_to_localized_string(band_frequency->get_value() / q, 1) + " Hz");
       } else {
         band_width->set_text(_("infinity"));
       }
     };
 
     auto update_band_label = [=, this]() {
-      const auto& f = band_frequency->get_value();
-
-      if (f > 1000.0) {
+      if (const auto& f = band_frequency->get_value(); f > 1000.0) {
         band_label->set_text(level_to_localized_string(f / 1000.0, 1) + " kHz");
       } else {
         band_label->set_text(level_to_localized_string(f, 0) + " Hz");
@@ -470,11 +458,9 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     }
 
     connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
-      const auto& row_num = band_type->get_active_row_number();
-
       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
 
-      if (row_num == 0 || row_num == 2 || row_num == 4) {
+      if (const auto& row = band_type->get_active_row_number(); row == 0 || row == 2 || row == 4) {
         band_scale->set_sensitive(false);
       } else {
         band_scale->set_sensitive(true);
@@ -507,7 +493,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
 void EqualizerUi::on_flat_response() {
   for (int n = 0; n < max_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     // left channel
 
@@ -535,7 +521,7 @@ void EqualizerUi::on_calculate_frequencies() {
   freq0 = min_freq;
 
   auto config_band = [&](const auto& cfg, const auto& n, const auto& freq, const auto& q) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     cfg->set_double(std::string("band" + nstr + "-frequency"), freq);
 
@@ -570,7 +556,7 @@ void EqualizerUi::reset() {
   settings->reset("split-channels");
 
   for (int n = 0; n < max_bands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     // left channel
 
@@ -635,7 +621,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
   std::smatch matches;
 
-  auto i = std::regex::icase;
+  const auto& i = std::regex::icase;
   std::regex re_filter_type(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i);
   std::regex re_freq(R"(fc\s++(\d++\.?+\d*+)\s*+hz)", i);
   std::regex re_dB_per_octave(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i);
@@ -732,9 +718,8 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
 
       while (getline(eq_file, line)) {
         struct ImportedBand filter {};
-        bool parsed = this->parse_apo_filter(line, filter);
 
-        if (parsed) {
+        if (this->parse_apo_filter(line, filter)) {
           bands.push_back(filter);
         }
       }
@@ -749,7 +734,7 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
     settings->set_int("num-bands", bands.size());
 
     for (int n = 0; n < max_bands; n++) {
-      auto nstr = std::to_string(n);
+      const auto& nstr = std::to_string(n);
 
       if (n < static_cast<int>(bands.size())) {
         settings_left->set_string(std::string("band" + nstr + "-mode"), "APO (DR)");

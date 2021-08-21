@@ -35,13 +35,16 @@ auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_d
 
 auto int_to_spectrum_type_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  const auto v = g_value_get_int(value);
+  switch (g_value_get_int(value)) {
+    case 0:
+      return g_variant_new_string("Bars");
 
-  if (v == 0) {
-    return g_variant_new_string("Bars");
+    case 1:
+      return g_variant_new_string("Lines");
+
+    default:
+      return g_variant_new_string("Bars");
   }
-
-  return g_variant_new_string("Lines");
 }
 
 }  // namespace
@@ -87,12 +90,12 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](auto key) {
+  connections.emplace_back(settings->signal_changed("color").connect([&](const auto& key) {
     Glib::Variant<std::vector<double>> v;
 
     settings->get_value("color", v);
 
-    auto rgba = v.get();
+    const auto& rgba = v.get();
 
     Gdk::RGBA color;
 
@@ -102,18 +105,18 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   }));
 
   spectrum_color_button->signal_color_set().connect([&]() {
-    auto spectrum_color = spectrum_color_button->get_rgba();
+    const auto& spectrum_color = spectrum_color_button->get_rgba();
 
-    auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+    const auto& v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
         spectrum_color.get_red(), spectrum_color.get_green(), spectrum_color.get_blue(), spectrum_color.get_alpha()});
 
     settings->set_value("color", v);
   });
 
   axis_color_button->signal_color_set().connect([&]() {
-    auto axis_color = axis_color_button->get_rgba();
+    const auto& axis_color = axis_color_button->get_rgba();
 
-    auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+    const auto& v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
         axis_color.get_red(), axis_color.get_green(), axis_color.get_blue(), axis_color.get_alpha()});
 
     settings->set_value("color-axis-labels", v);
@@ -151,7 +154,7 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 }
 
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum_settings.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum_settings.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 

@@ -62,8 +62,8 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
   connect_filters();
 
-  settings->signal_changed("output-device").connect([&, this](auto key) {
-    auto name = std::string(settings->get_string(key));
+  settings->signal_changed("output-device").connect([&, this](const auto& key) {
+    const auto& name = std::string(settings->get_string(key));
 
     if (name.empty()) {
       return;
@@ -82,7 +82,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
   });
 
-  settings->signal_changed("plugins").connect([&, this](auto key) {
+  settings->signal_changed("plugins").connect([&, this](const auto& key) {
     disconnect_filters();
 
     connect_filters();
@@ -98,7 +98,7 @@ StreamOutputEffects::~StreamOutputEffects() {
 void StreamOutputEffects::on_app_added(const NodeInfo& node_info) {
   bool forbidden_app = false;
   bool connected = false;
-  auto blocklist = settings->get_string_array("blocklist");
+  const auto& blocklist = settings->get_string_array("blocklist");
 
   forbidden_app = std::ranges::find(blocklist, Glib::ustring(node_info.name)) != blocklist.end();
 
@@ -162,15 +162,13 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   // link plugins
 
   if (!list.empty()) {
-    for (auto& name : list) {
-      auto plugin_connected = (!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true;
-
-      if (plugin_connected) {
+    for (const auto& name : list) {
+      if ((!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true) {
         next_node_id = plugins[name]->get_node_id();
 
-        auto links = pm->link_nodes(prev_node_id, next_node_id);
+        const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-        auto link_size = links.size();
+        const auto& link_size = links.size();
 
         for (size_t n = 0U; n < link_size; n++) {
           list_proxies.emplace_back(links[n]);
@@ -187,12 +185,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
     // checking if we have to link the echo_canceller probe to the output device
 
-    for (auto& name : list) {
+    for (const auto& name : list) {
       if (name == plugin_name::echo_canceller) {
         if (plugins[name]->connected_to_pw) {
-          auto links = pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true);
-
-          for (const auto& link : links) {
+          for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.emplace_back(link);
           }
         }
@@ -204,14 +200,12 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum and output level meter
 
-  auto node_id_list = {spectrum->get_node_id(), output_level->get_node_id()};
-
-  for (const auto& node_id : node_id_list) {
+  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id()}) {
     next_node_id = node_id;
 
-    auto links = pm->link_nodes(prev_node_id, next_node_id);
+    const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-    auto link_size = links.size();
+    const auto& link_size = links.size();
 
     for (size_t n = 0U; n < link_size; n++) {
       list_proxies.emplace_back(links[n]);
@@ -229,9 +223,9 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   next_node_id = pm->output_device.id;
 
-  auto links = pm->link_nodes(prev_node_id, next_node_id);
+  const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-  auto link_size = links.size();
+  const auto& link_size = links.size();
 
   for (size_t n = 0U; n < link_size; n++) {
     list_proxies.emplace_back(links[n]);
@@ -246,15 +240,15 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 void StreamOutputEffects::disconnect_filters() {
   std::set<uint> list;
 
-  for (auto& plugin : plugins | std::views::values) {
-    for (auto& link : pm->list_links) {
+  for (const auto& plugin : plugins | std::views::values) {
+    for (const auto& link : pm->list_links) {
       if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
         list.insert(link.id);
       }
     }
   }
 
-  for (auto& link : pm->list_links) {
+  for (const auto& link : pm->list_links) {
     if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
         link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
       list.insert(link.id);

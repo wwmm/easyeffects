@@ -35,9 +35,7 @@ auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data)
 }
 
 auto int_to_detection_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("RMS");
 
@@ -62,9 +60,7 @@ auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_dat
 }
 
 auto int_to_stereo_link_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Average");
 
@@ -140,12 +136,12 @@ GateUi::~GateUi() {
 }
 
 auto GateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<GateUi>(builder, "top_box", "com.github.wwmm.easyeffects.gate",
                                                       schema_path + "gate/");
 
-  auto stack_page = stack->add(*ui, plugin_name::gate);
+  stack->add(*ui, plugin_name::gate);
 
   return ui;
 }

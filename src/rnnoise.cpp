@@ -30,15 +30,15 @@ RNNoise::RNNoise(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("model-path").connect([=, this](auto key) {
+  settings->signal_changed("model-path").connect([=, this](const auto& key) {
     data_mutex.lock();
 
     rnnoise_ready = false;
@@ -122,8 +122,8 @@ void RNNoise::process(std::span<float>& left_in,
 
   if (resample) {
     if (resampler_ready) {
-      auto resampled_inL = resampler_inL->process(left_in, false);
-      auto resampled_inR = resampler_inR->process(right_in, false);
+      const auto& resampled_inL = resampler_inL->process(left_in, false);
+      const auto& resampled_inR = resampler_inR->process(right_in, false);
 
       resampled_data_L.resize(0);
       resampled_data_R.resize(0);

@@ -31,6 +31,12 @@ class NodeInfoHolder : public Glib::Object {
 
   sigc::signal<void(NodeInfo)> info_updated;
 
+  bool enabled = false;
+
+  bool app_blocklisted = false;
+
+  bool pre_blocklisted_state = false;
+
  protected:
   NodeInfoHolder(NodeInfo info);
 };

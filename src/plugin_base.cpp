@@ -24,8 +24,8 @@ namespace {
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
-  auto n_samples = position->clock.duration;
-  auto rate = position->clock.rate.denom;
+  const auto& n_samples = position->clock.duration;
+  const auto& rate = position->clock.rate.denom;
 
   if (n_samples == 0 || rate == 0) {
     return;
@@ -82,7 +82,7 @@ PluginBase::PluginBase(std::string tag,
       pm(pipe_manager) {
   pf_data.pb = this;
 
-  auto filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
+  const auto& filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
 
   pw_thread_loop_lock(pm->thread_loop);
 

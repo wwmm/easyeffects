@@ -151,12 +151,12 @@ void on_destroy_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
   auto* pm = pd->pm;
 
-  auto nd_info = pd->nd_info;
+  const auto& nd_info = pd->nd_info;
 
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
-                                          [=](auto& n) { return n.id == pd->nd_info.id; }),
+                                          [=](const auto& n) { return n.id == pd->nd_info.id; }),
                            pd->pm->list_nodes.end());
 
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
@@ -177,53 +177,45 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   for (auto& node : nd->pm->list_nodes) {
     if (node.id == info->id) {
-      const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME);
-      const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME);
-      const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME);
-      const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME);
-      const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION);
-      const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY);
-      const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID);
-
       nd->nd_info.state = info->state;
       nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
       nd->nd_info.n_output_ports = static_cast<int>(info->n_output_ports);
 
-      if (prio_session != nullptr) {
+      if (const auto* prio_session = spa_dict_lookup(info->props, PW_KEY_PRIORITY_SESSION)) {
         nd->nd_info.priority = std::stoi(prio_session);
       }
 
-      if (app_icon_name != nullptr) {
+      if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
         nd->nd_info.app_icon_name = app_icon_name;
       }
 
-      if (media_icon_name != nullptr) {
+      if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
         nd->nd_info.media_icon_name = media_icon_name;
       }
 
-      if (device_icon_name != nullptr) {
+      if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
         nd->nd_info.device_icon_name = device_icon_name;
       }
 
-      if (media_name != nullptr) {
+      if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
         nd->nd_info.media_name = media_name;
       }
 
-      if (node_latency != nullptr) {
-        auto str = std::string(node_latency);
+      if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
+        const auto& str = std::string(node_latency);
 
-        auto delimiter_pos = str.find('/');
+        const auto& delimiter_pos = str.find('/');
 
-        auto latency_str = str.substr(0, delimiter_pos);
+        const auto& latency_str = str.substr(0, delimiter_pos);
 
-        auto rate_str = str.substr(delimiter_pos + 1);
+        const auto& rate_str = str.substr(delimiter_pos + 1);
 
         nd->nd_info.rate = std::stoi(rate_str);
 
         nd->nd_info.latency = std::stof(latency_str) / static_cast<float>(nd->nd_info.rate);
       }
 
-      if (device_id != nullptr) {
+      if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
         nd->nd_info.device_id = std::stoi(device_id);
       }
 
@@ -235,9 +227,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
             continue;
           }
 
-          auto id = info->params[i].id;
-
-          if (id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
+          if (const auto& id = info->params[i].id;
+              id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
             pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -367,7 +358,8 @@ void on_node_event_param(void* object,
         case SPA_PROP_channelVolumes: {
           std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-          auto n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
+          const auto& n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(),
+                                                     SPA_AUDIO_MAX_CHANNELS);
 
           for (auto& node : nd->pm->list_nodes) {
             if (node.id == nd->nd_info.id) {
@@ -453,7 +445,8 @@ void on_destroy_link_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
 
   ld->pm->list_links.erase(
-      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(), [=](auto& n) { return n.id == ld->id; }),
+      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
+                     [=](const auto& n) { return n.id == ld->id; }),
       ld->pm->list_links.end());
 }
 
@@ -463,7 +456,8 @@ void on_destroy_port_proxy(void* data) {
   spa_hook_remove(&ld->proxy_listener);
 
   ld->pm->list_ports.erase(
-      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(), [=](auto& n) { return n.id == ld->id; }),
+      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(),
+                     [=](const auto& n) { return n.id == ld->id; }),
       ld->pm->list_ports.end());
 }
 
@@ -476,9 +470,7 @@ void on_module_info(void* object, const struct pw_module_info* info) {
         module.filename = info->filename;
       }
 
-      const auto* description = spa_dict_lookup(info->props, PW_KEY_MODULE_DESCRIPTION);
-
-      if (description != nullptr) {
+      if (const auto* description = spa_dict_lookup(info->props, PW_KEY_MODULE_DESCRIPTION)) {
         module.description = description;
       }
 
@@ -493,7 +485,8 @@ void on_destroy_module_proxy(void* data) {
   spa_hook_remove(&md->proxy_listener);
 
   md->pm->list_modules.erase(
-      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(), [=](auto& n) { return n.id == md->id; }),
+      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(),
+                     [=](const auto& n) { return n.id == md->id; }),
       md->pm->list_modules.end());
 }
 
@@ -502,19 +495,15 @@ void on_client_info(void* object, const struct pw_client_info* info) {
 
   for (auto& client : ld->pm->list_clients) {
     if (client.id == info->id) {
-      const auto* name = spa_dict_lookup(info->props, PW_KEY_APP_NAME);
-      const auto* access = spa_dict_lookup(info->props, PW_KEY_ACCESS);
-      const auto* api = spa_dict_lookup(info->props, PW_KEY_CLIENT_API);
-
-      if (name != nullptr) {
+      if (const auto* name = spa_dict_lookup(info->props, PW_KEY_APP_NAME)) {
         client.name = name;
       }
 
-      if (access != nullptr) {
+      if (const auto* access = spa_dict_lookup(info->props, PW_KEY_ACCESS)) {
         client.access = access;
       }
 
-      if (api != nullptr) {
+      if (const auto* api = spa_dict_lookup(info->props, PW_KEY_CLIENT_API)) {
         client.api = api;
       }
 
@@ -529,7 +518,8 @@ void on_destroy_client_proxy(void* data) {
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_clients.erase(
-      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(), [=](auto& n) { return n.id == pd->id; }),
+      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(),
+                     [=](const auto& n) { return n.id == pd->id; }),
       pd->pm->list_clients.end());
 }
 
@@ -538,24 +528,19 @@ void on_device_info(void* object, const struct pw_device_info* info) {
 
   for (auto& device : ld->pm->list_devices) {
     if (device.id == info->id) {
-      const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME);
-      const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME);
-      const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION);
-      const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API);
-
-      if (name != nullptr) {
+      if (const auto* name = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
         device.name = name;
       }
 
-      if (nick != nullptr) {
+      if (const auto* nick = spa_dict_lookup(info->props, PW_KEY_DEVICE_NAME)) {
         device.nick = nick;
       }
 
-      if (description != nullptr) {
+      if (const auto* description = spa_dict_lookup(info->props, PW_KEY_DEVICE_DESCRIPTION)) {
         device.description = description;
       }
 
-      if (api != nullptr) {
+      if (const auto* api = spa_dict_lookup(info->props, PW_KEY_DEVICE_API)) {
         device.api = api;
       }
 
@@ -565,9 +550,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
             continue;
           }
 
-          auto id = info->params[i].id;
-
-          if (id == SPA_PARAM_Profile) {
+          if (const auto& id = info->params[i].id; id == SPA_PARAM_Profile) {
             pw_device_enum_params((struct pw_device*)ld->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -628,31 +611,20 @@ void on_destroy_device_proxy(void* data) {
   spa_hook_remove(&pd->proxy_listener);
 
   pd->pm->list_devices.erase(
-      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(), [=](auto& n) { return n.id == pd->id; }),
+      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(),
+                     [=](const auto& n) { return n.id == pd->id; }),
       pd->pm->list_devices.end());
 }
 
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
-  std::string str_key;
-  std::string str_type;
-  std::string str_value;
-  auto str_id = std::to_string(id);
+  std::string str_key = (key != nullptr) ? key : std::string();
+  std::string str_type = (type != nullptr) ? type : std::string();
+  std::string str_value = (value != nullptr) ? value :std::string();
 
-  if (key != nullptr) {
-    str_key = key;
-  }
-
-  if (type != nullptr) {
-    str_type = type;
-  }
-
-  if (value != nullptr) {
-    str_value = value;
-  }
-
-  util::debug(pm->log_tag + "new metadata property: " + str_id + ", " + str_key + ", " + str_type + ", " + str_value);
+  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
+              ", " + str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -663,7 +635,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_sink") {
           pm->default_output_device.id = SPA_ID_INVALID;
@@ -687,7 +659,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_source") {
           pm->default_input_device.id = SPA_ID_INVALID;
@@ -772,9 +744,7 @@ void on_registry_global(void* data,
   auto* pm = static_cast<PipeManager*>(data);
 
   if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
-    const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE);
-
-    if (key_media_role != nullptr) {
+    if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
       if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
         return;
       }
@@ -802,17 +772,12 @@ void on_registry_global(void* data,
       }
     }
 
-    const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
-
-    if (key_media_class != nullptr) {
+    if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       std::string media_class = key_media_class;
 
       if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Source/Virtual" ||
           media_class == "Stream/Output/Audio" || media_class == "Stream/Input/Audio") {
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
-        const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-        const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION);
-        const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID);
 
         if (node_name == nullptr) {
           return;
@@ -840,15 +805,15 @@ void on_registry_global(void* data,
         pd->nd_info.media_class = media_class;
         pd->nd_info.name = name;
 
-        if (node_description != nullptr) {
+        if (const auto* node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION)) {
           pd->nd_info.description = node_description;
         }
 
-        if (prio_session != nullptr) {
+        if (const auto* prio_session = spa_dict_lookup(props, PW_KEY_PRIORITY_SESSION)) {
           pd->nd_info.priority = std::stoi(prio_session);
         }
 
-        if (device_id != nullptr) {
+        if (const auto* device_id = spa_dict_lookup(props, PW_KEY_DEVICE_ID)) {
           pd->nd_info.device_id = std::stoi(device_id);
         }
 
@@ -899,7 +864,7 @@ void on_registry_global(void* data,
     NodeInfo input_node;
     NodeInfo output_node;
 
-    for (auto& node : pm->list_nodes) {
+    for (const auto& node : pm->list_nodes) {
       if (link_info.input_node_id == node.id) {
         found_input = true;
 
@@ -957,9 +922,7 @@ void on_registry_global(void* data,
 
     ModuleInfo m_info{.id = id};
 
-    const auto* name = spa_dict_lookup(props, PW_KEY_MODULE_NAME);
-
-    if (name != nullptr) {
+    if (const auto* name = spa_dict_lookup(props, PW_KEY_MODULE_NAME)) {
       m_info.name = name;
     }
 
@@ -989,9 +952,7 @@ void on_registry_global(void* data,
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
-    const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME);
-
-    if (name != nullptr) {
+    if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
       util::debug(pm->log_tag + "found metadata: " + name);
 
       if (pm->metadata != nullptr) {
@@ -1009,9 +970,7 @@ void on_registry_global(void* data,
   }
 
   if (strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
-    const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS);
-
-    if (key_media_class != nullptr) {
+    if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       std::string media_class = key_media_class;
 
       if (media_class == "Audio/Device") {
@@ -1054,26 +1013,21 @@ void on_core_info(void* data, const struct pw_core_info* info) {
   util::debug(pm->log_tag + "core version: " + info->version);
   util::debug(pm->log_tag + "core name: " + info->name);
 
-  const auto* rate = spa_dict_lookup(info->props, "default.clock.rate");
-  const auto* min_quantum = spa_dict_lookup(info->props, "default.clock.min-quantum");
-  const auto* max_quantum = spa_dict_lookup(info->props, "default.clock.max-quantum");
-  const auto* quantum = spa_dict_lookup(info->props, "default.clock.quantum");
-
   pm->core_name = info->name;
 
-  if (rate != nullptr) {
+  if (const auto* rate = spa_dict_lookup(info->props, "default.clock.rate")) {
     pm->default_clock_rate = rate;
   }
 
-  if (min_quantum != nullptr) {
+  if (const auto* min_quantum = spa_dict_lookup(info->props, "default.clock.min-quantum")) {
     pm->default_min_quantum = min_quantum;
   }
 
-  if (max_quantum != nullptr) {
+  if (const auto* max_quantum = spa_dict_lookup(info->props, "default.clock.max-quantum")) {
     pm->default_max_quantum = max_quantum;
   }
 
-  if (quantum != nullptr) {
+  if (const auto* quantum = spa_dict_lookup(info->props, "default.clock.quantum")) {
     pm->default_quantum = quantum;
   }
 }
@@ -1320,7 +1274,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   std::vector<PortInfo> list_input_ports;
   bool use_audio_channel = true;
 
-  for (auto& port : list_ports) {
+  for (const auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
       list_output_ports.emplace_back(port);
 
@@ -1346,8 +1300,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
     }
   }
 
-  for (auto& outp : list_output_ports) {
-    for (auto& inp : list_input_ports) {
+  for (const auto& outp : list_output_ports) {
+    for (const auto& inp : list_input_ports) {
       bool ports_match = false;
 
       if (!probe_link) {

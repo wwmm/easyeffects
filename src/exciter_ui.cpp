@@ -70,12 +70,12 @@ ExciterUi::~ExciterUi() {
 }
 
 auto ExciterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/exciter.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/exciter.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<ExciterUi>(builder, "top_box", "com.github.wwmm.easyeffects.exciter",
                                                          schema_path + "exciter/");
 
-  auto stack_page = stack->add(*ui, plugin_name::exciter);
+  stack->add(*ui, plugin_name::exciter);
 
   return ui;
 }

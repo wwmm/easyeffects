@@ -83,11 +83,11 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   import_input->signal_clicked().connect([=, this]() { import_preset(PresetType::input); });
 
-  settings->signal_changed("last-used-output-preset").connect([=, this](auto key) {
+  settings->signal_changed("last-used-output-preset").connect([=, this](const auto& key) {
     last_used_output->set_label(settings->get_string("last-used-output-preset"));
   });
 
-  settings->signal_changed("last-used-input-preset").connect([=, this](auto key) {
+  settings->signal_changed("last-used-input-preset").connect([=, this](const auto& key) {
     last_used_input->set_label(settings->get_string("last-used-input-preset"));
   });
 
@@ -97,17 +97,14 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     int count = 0;
-    auto name = output_string_list->get_string(count);
 
-    while (name.c_str() != nullptr) {
+    for (auto name = output_string_list->get_string(count); name.c_str() != nullptr;) {
       if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
         output_string_list->remove(count);
         return;
       }
 
-      count++;
-
-      name = output_string_list->get_string(count);
+      name = output_string_list->get_string(++count);
     }
   });
 
@@ -117,17 +114,14 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
     int count = 0;
-    auto name = input_string_list->get_string(count);
 
-    while (name.c_str() != nullptr) {
+    for (auto name = input_string_list->get_string(count); name.c_str() != nullptr;) {
       if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
         input_string_list->remove(count);
         return;
       }
 
-      count++;
-
-      name = input_string_list->get_string(count);
+      name = input_string_list->get_string(++count);
     }
   });
 
@@ -145,15 +139,15 @@ PresetsMenuUi::~PresetsMenuUi() {
 }
 
 auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/presets_menu.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
-  auto settings = Gio::Settings::create("com.github.wwmm.easyeffects");
+  const auto& settings = Gio::Settings::create("com.github.wwmm.easyeffects");
 
   return Gtk::Builder::get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
 }
 
 void PresetsMenuUi::create_preset(PresetType preset_type) {
-  std::string name = (preset_type == PresetType::output) ? output_name->get_text() : input_name->get_text();
+  const auto& name = (preset_type == PresetType::output) ? output_name->get_text() : input_name->get_text();
 
   if (!name.empty()) {
     std::string illegalChars = "\\/";
@@ -201,10 +195,10 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
   dialog->add_filter(dialog_filter);
 
-  dialog->signal_response().connect([=, this](auto response_id) {
+  dialog->signal_response().connect([=, this](const auto& response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
-        auto f = dialog->get_file();
+        const auto& f = dialog->get_file();
 
         app->presets_manager->import(preset_type, f->get_path());
 
@@ -224,9 +218,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
                                    Glib::RefPtr<Gtk::StringList>& string_list) {
   string_list->remove(0);
 
-  auto names = app->presets_manager->get_names(preset_type);
-
-  for (const auto& name : names) {
+  for (const auto& name : app->presets_manager->get_names(preset_type)) {
     string_list->append(name);
   }
 
@@ -268,7 +260,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
+    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
     auto* top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -286,7 +278,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     auto* save = static_cast<Gtk::Button*>(list_item->get_data("save"));
     auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -331,8 +323,8 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 }
 
 void PresetsMenuUi::reset_menu_button_label() {
-  auto names_input = app->presets_manager->get_names(PresetType::input);
-  auto names_output = app->presets_manager->get_names(PresetType::output);
+  const auto& names_input = app->presets_manager->get_names(PresetType::input);
+  const auto& names_output = app->presets_manager->get_names(PresetType::output);
 
   if (names_input.empty() && names_output.empty()) {
     settings->set_string("last-used-output-preset", _("Presets"));

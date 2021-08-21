@@ -35,15 +35,15 @@ Pitch::Pitch(const std::string& tag,
   semitones = settings->get_int("semitones");
   cents = settings->get_int("cents");
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("crispness").connect([=, this](auto key) {
+  settings->signal_changed("crispness").connect([=, this](const auto& key) {
     crispness = settings->get_int("crispness");
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -51,7 +51,7 @@ Pitch::Pitch(const std::string& tag,
     update_crispness();
   });
 
-  settings->signal_changed("formant-preserving").connect([=, this](auto key) {
+  settings->signal_changed("formant-preserving").connect([=, this](const auto& key) {
     formant_preserving = settings->get_boolean(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -64,7 +64,7 @@ Pitch::Pitch(const std::string& tag,
                                                    : RubberBand::RubberBandStretcher::OptionFormantShifted);
   });
 
-  settings->signal_changed("faster").connect([=, this](auto key) {
+  settings->signal_changed("faster").connect([=, this](const auto& key) {
     faster = settings->get_boolean(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -77,7 +77,7 @@ Pitch::Pitch(const std::string& tag,
                                      : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
   });
 
-  settings->signal_changed("octaves").connect([=, this](auto key) {
+  settings->signal_changed("octaves").connect([=, this](const auto& key) {
     octaves = settings->get_int(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -85,7 +85,7 @@ Pitch::Pitch(const std::string& tag,
     update_pitch_scale();
   });
 
-  settings->signal_changed("semitones").connect([=, this](auto key) {
+  settings->signal_changed("semitones").connect([=, this](const auto& key) {
     semitones = settings->get_int(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -93,7 +93,7 @@ Pitch::Pitch(const std::string& tag,
     update_pitch_scale();
   });
 
-  settings->signal_changed("cents").connect([=, this](auto key) {
+  settings->signal_changed("cents").connect([=, this](const auto& key) {
     cents = settings->get_int(key);
 
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -151,9 +151,7 @@ void Pitch::process(std::span<float>& left_in,
 
   stretcher->process(stretcher_in.data(), n_samples, false);
 
-  int n_available = stretcher->available();
-
-  if (n_available > 0) {
+  if (const auto& n_available = stretcher->available(); n_available > 0) {
     // util::debug(log_tag + name + " available: " + std::to_string(n_available));
 
     data_L.resize(n_available);

@@ -35,7 +35,7 @@ void CrystalizerPreset::save(nlohmann::json& json,
   json[section]["crystalizer"]["output-gain"] = settings->get_double("output-gain");
 
   for (int n = 0; n < 13; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     json[section]["crystalizer"]["band" + nstr]["intensity"] =
         settings->get_double("intensity-band" + nstr);
@@ -56,7 +56,7 @@ void CrystalizerPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("crystalizer"), settings, "output-gain", "output-gain");
 
   for (int n = 0; n < 13; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     update_key<double>(json.at(section).at("crystalizer")["band" + nstr], settings,
                        "intensity-band" + nstr, "intensity");

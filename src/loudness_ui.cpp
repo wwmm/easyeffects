@@ -44,9 +44,7 @@ auto fft_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_fft_size_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("256");
 
@@ -90,9 +88,7 @@ auto standard_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) 
 }
 
 auto int_to_standard_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Flat");
 
@@ -152,12 +148,12 @@ LoudnessUi::~LoudnessUi() {
 }
 
 auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<LoudnessUi>(builder, "top_box", "com.github.wwmm.easyeffects.loudness",
                                                           schema_path + "loudness/");
 
-  auto stack_page = stack->add(*ui, plugin_name::loudness);
+  stack->add(*ui, plugin_name::loudness);
 
   return ui;
 }

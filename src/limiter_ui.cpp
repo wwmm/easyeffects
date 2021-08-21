@@ -54,9 +54,7 @@ auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> g
 }
 
 auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("Herm Thin");
 
@@ -149,9 +147,7 @@ auto ovs_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gb
 }
 
 auto int_to_ovs_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("None");
 
@@ -247,9 +243,7 @@ auto dither_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) ->
 }
 
 auto int_to_dither_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  const auto v = g_value_get_int(value);
-
-  switch (v) {
+  switch (g_value_get_int(value)) {
     case 0:
       return g_variant_new_string("None");
 
@@ -378,12 +372,12 @@ LimiterUi::~LimiterUi() {
 }
 
 auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<LimiterUi>(builder, "top_box", "com.github.wwmm.easyeffects.limiter",
                                                          schema_path + "limiter/");
 
-  auto stack_page = stack->add(*ui, plugin_name::limiter);
+  stack->add(*ui, plugin_name::limiter);
 
   return ui;
 }

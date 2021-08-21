@@ -65,12 +65,12 @@ AutoGainUi::~AutoGainUi() {
 }
 
 auto AutoGainUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> AutoGainUi* {
-  auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autogain.ui");
+  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autogain.ui");
 
   auto* ui = Gtk::Builder::get_widget_derived<AutoGainUi>(builder, "top_box", "com.github.wwmm.easyeffects.autogain",
                                                           schema_path + "autogain/");
 
-  auto stack_page = stack->add(*ui, plugin_name::autogain);
+  stack->add(*ui, plugin_name::autogain);
 
   return ui;
 }

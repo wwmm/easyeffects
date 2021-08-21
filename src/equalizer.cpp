@@ -37,11 +37,11 @@ Equalizer::Equalizer(const std::string& tag,
   input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
   output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](auto key) {
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
     input_gain = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("output-gain").connect([=, this](auto key) {
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
     output_gain = util::db_to_linear(settings->get_double(key));
   });
 
@@ -51,33 +51,30 @@ Equalizer::Equalizer(const std::string& tag,
     bind_band(n);
   }
 
-  settings->signal_changed("num-bands").connect([=, this](auto key) {
-    uint nbands = settings->get_int(key);
+  settings->signal_changed("num-bands").connect([=, this](const auto& key) {
+    const uint& nbands = settings->get_int(key);
 
     for (uint n = 0U; n < max_bands; n++) {
-      auto nstr = std::to_string(n);
+      const auto& nstr = std::to_string(n);
 
       if (n < nbands) {
         settings_left->set_enum("band" + nstr + "-type", 1);
         settings_right->set_enum("band" + nstr + "-type", 1);
-      }
-
-      // turn off unused bands
-
-      if (n >= nbands) {
+      } else {
+        // turn off unused bands
         settings_left->set_enum("band" + nstr + "-type", 0);
         settings_right->set_enum("band" + nstr + "-type", 0);
       }
     }
   });
 
-  settings->signal_changed("split-channels").connect([=, this](auto key) {
+  settings->signal_changed("split-channels").connect([=, this](const auto& key) {
     if (settings->get_boolean(key) == true) {
       return;
     }
 
     for (uint n = 0U; n < max_bands; n++) {
-      auto nstr = std::to_string(n);
+      const auto& nstr = std::to_string(n);
 
       settings_right->set_enum("band" + nstr + "-type", settings_left->get_enum("band" + nstr + "-type"));
 
@@ -177,7 +174,7 @@ void Equalizer::process(std::span<float>& left_in,
 }
 
 void Equalizer::bind_band(const int& index) {
-  auto istr = std::to_string(index);
+  const auto& istr = std::to_string(index);
 
   // left channel
 

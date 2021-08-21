@@ -65,7 +65,7 @@ void EqualizerPreset::save_channel(nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     json["band" + nstr]["type"] = settings->get_string("band" + nstr + "-type").c_str();
 
@@ -113,7 +113,7 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    auto nstr = std::to_string(n);
+    const auto& nstr = std::to_string(n);
 
     update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-type", "type");
 
