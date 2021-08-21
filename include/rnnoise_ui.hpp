@@ -65,6 +65,8 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   void on_import_model_clicked();
 
+  void on_selection_changed();
+
   void import_model_file(const std::string& file_path);
 
   auto get_model_names() -> std::vector<std::string>;

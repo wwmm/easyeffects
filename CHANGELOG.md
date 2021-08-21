@@ -9,6 +9,9 @@
 
 ### Fixed
 
+- Sometimes when removing imported models from the noise reduction plugin the current used model was not properly
+  updated. This should be fixed now.
+
 ## [6.1.0]
 
 ### Added
