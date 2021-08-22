@@ -384,10 +384,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        auto preset_name = util::remove_filename_extension(file->get_basename());
+        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
 
-        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
-          if (preset_name == std::string(output_presets_string_list->get_string(n))) {
+        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+          if (output_presets_string_list->get_string(n) == preset_name) {
             return;
           }
         }
@@ -397,12 +397,11 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        int count = 0;
+        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
 
-        for (auto name = output_presets_string_list->get_string(count); name.c_str() != nullptr;
-             name = output_presets_string_list->get_string(++count)) {
-          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-            output_presets_string_list->remove(count);
+        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+          if (output_presets_string_list->get_string(n) == preset_name) {
+            output_presets_string_list->remove(n);
 
             return;
           }
@@ -411,10 +410,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        auto preset_name = util::remove_filename_extension(file->get_basename());
+        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
 
-        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
-          if (preset_name == std::string(input_presets_string_list->get_string(n))) {
+        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+          if (input_presets_string_list->get_string(n) == preset_name) {
             return;
           }
         }
@@ -424,12 +423,11 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        int count = 0;
+        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
 
-        for (auto name = input_presets_string_list->get_string(count); name.c_str() != nullptr;
-             name = input_presets_string_list->get_string(++count)) {
-          if (util::remove_filename_extension(file->get_basename()) == std::string(name)) {
-            input_presets_string_list->remove(count);
+        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+          if (input_presets_string_list->get_string(n) == preset_name) {
+            input_presets_string_list->remove(n);
 
             return;
           }

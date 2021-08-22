@@ -147,23 +147,27 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
       switch (event) {
         case Gio::FileMonitor::Event::CREATED: {
-          string_list->append(util::remove_filename_extension(file->get_basename()));
+          const auto& new_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+
+          for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            if (string_list->get_string(n) == new_name) {
+              return;
+            }
+          }
+
+          string_list->append(new_name);
 
           break;
         }
         case Gio::FileMonitor::Event::DELETED: {
-          const Glib::ustring& name_removed = util::remove_filename_extension(file->get_basename());
+          const auto& name_to_remove = Glib::ustring(util::remove_filename_extension(file->get_basename()));
 
-          int count = 0;
-
-          for (auto name = string_list->get_string(count); name.c_str() != nullptr;) {
-            if (name_removed == name) {
-              string_list->remove(count);
+          for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            if (string_list->get_string(n) == name_to_remove) {
+              string_list->remove(n);
 
               break;
             }
-
-            name = string_list->get_string(++count);
           }
 
           break;
