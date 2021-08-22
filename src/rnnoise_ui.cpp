@@ -285,7 +285,7 @@ auto RNNoiseUi::get_model_names() -> std::vector<std::string> {
       }
     }
 
-    it++;
+    ++it;
   }
 
   return names;

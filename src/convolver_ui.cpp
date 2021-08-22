@@ -311,7 +311,7 @@ void ConvolverUi::reset() {
 auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
   std::vector<std::string> names;
 
-  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; it++) {
+  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().string() == ".irs") {
         names.emplace_back(it->path().stem().string());

@@ -229,7 +229,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
         }
       }
 
-      it++;
+      ++it;
     }
   } catch (std::exception& e) {
     util::warning(e.what());
@@ -752,7 +752,7 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
         }
       }
 
-      it++;
+      ++it;
     }
 
     return list;
