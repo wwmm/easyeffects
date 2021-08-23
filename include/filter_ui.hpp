@@ -20,7 +20,6 @@
 #ifndef FILTER_UI_HPP
 #define FILTER_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class FilterUi : public Gtk::Box, public PluginUiBase {

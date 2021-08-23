@@ -62,7 +62,9 @@ class PluginBase {
     PluginBase* pb = nullptr;
   };
 
-  std::string log_tag, name;
+  const std::string log_tag;
+
+  std::string name;
 
   pw_filter* filter = nullptr;
 
@@ -102,8 +104,8 @@ class PluginBase {
                        std::span<float>& probe_left,
                        std::span<float>& probe_right);
 
-  sigc::signal<void(float, float)> input_level;
-  sigc::signal<void(float, float)> output_level;
+  sigc::signal<void(const float&, const float&)> input_level;
+  sigc::signal<void(const float&, const float&)> output_level;
 
  protected:
   std::mutex data_mutex;

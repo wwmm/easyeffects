@@ -24,9 +24,9 @@ namespace {
 auto spectrum_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Bars") == 0) {
+  if (g_strcmp0(v, "Bars") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Lines") == 0) {
+  } else if (g_strcmp0(v, "Lines") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -156,7 +156,7 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum_settings.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
+  auto* const ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 
   stack->add(*ui, "settings_spectrum", _("Spectrum"));
 }

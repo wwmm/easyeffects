@@ -39,7 +39,7 @@ class Deesser : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> compression, detected;
+  sigc::signal<void(const double&)> compression, detected;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

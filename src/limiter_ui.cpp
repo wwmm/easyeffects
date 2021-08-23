@@ -24,29 +24,29 @@ namespace {
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Herm Thin") == 0) {
+  if (g_strcmp0(v, "Herm Thin") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Herm Wide") == 0) {
+  } else if (g_strcmp0(v, "Herm Wide") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Herm Tail") == 0) {
+  } else if (g_strcmp0(v, "Herm Tail") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Herm Duck") == 0) {
+  } else if (g_strcmp0(v, "Herm Duck") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "Exp Thin") == 0) {
+  } else if (g_strcmp0(v, "Exp Thin") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "Exp Wide") == 0) {
+  } else if (g_strcmp0(v, "Exp Wide") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "Exp Tail") == 0) {
+  } else if (g_strcmp0(v, "Exp Tail") == 0) {
     g_value_set_int(value, 6);
-  } else if (std::strcmp(v, "Exp Duck") == 0) {
+  } else if (g_strcmp0(v, "Exp Duck") == 0) {
     g_value_set_int(value, 7);
-  } else if (std::strcmp(v, "Line Thin") == 0) {
+  } else if (g_strcmp0(v, "Line Thin") == 0) {
     g_value_set_int(value, 8);
-  } else if (std::strcmp(v, "Line Wide") == 0) {
+  } else if (g_strcmp0(v, "Line Wide") == 0) {
     g_value_set_int(value, 9);
-  } else if (std::strcmp(v, "Line Tail") == 0) {
+  } else if (g_strcmp0(v, "Line Tail") == 0) {
     g_value_set_int(value, 10);
-  } else if (std::strcmp(v, "Line Duck") == 0) {
+  } else if (g_strcmp0(v, "Line Duck") == 0) {
     g_value_set_int(value, 11);
   }
 
@@ -99,47 +99,47 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 auto ovs_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "None") == 0) {
+  if (g_strcmp0(v, "None") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Half x2(2L)") == 0) {
+  } else if (g_strcmp0(v, "Half x2(2L)") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Half x2(3L)") == 0) {
+  } else if (g_strcmp0(v, "Half x2(3L)") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Half x3(2L)") == 0) {
+  } else if (g_strcmp0(v, "Half x3(2L)") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "Half x3(3L)") == 0) {
+  } else if (g_strcmp0(v, "Half x3(3L)") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "Half x4(2L)") == 0) {
+  } else if (g_strcmp0(v, "Half x4(2L)") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "Half x4(3L)") == 0) {
+  } else if (g_strcmp0(v, "Half x4(3L)") == 0) {
     g_value_set_int(value, 6);
-  } else if (std::strcmp(v, "Half x6(2L)") == 0) {
+  } else if (g_strcmp0(v, "Half x6(2L)") == 0) {
     g_value_set_int(value, 7);
-  } else if (std::strcmp(v, "Half x6(3L)") == 0) {
+  } else if (g_strcmp0(v, "Half x6(3L)") == 0) {
     g_value_set_int(value, 8);
-  } else if (std::strcmp(v, "Half x8(2L)") == 0) {
+  } else if (g_strcmp0(v, "Half x8(2L)") == 0) {
     g_value_set_int(value, 9);
-  } else if (std::strcmp(v, "Half x8(3L)") == 0) {
+  } else if (g_strcmp0(v, "Half x8(3L)") == 0) {
     g_value_set_int(value, 10);
-  } else if (std::strcmp(v, "Full x2(2L)") == 0) {
+  } else if (g_strcmp0(v, "Full x2(2L)") == 0) {
     g_value_set_int(value, 11);
-  } else if (std::strcmp(v, "Full x2(3L)") == 0) {
+  } else if (g_strcmp0(v, "Full x2(3L)") == 0) {
     g_value_set_int(value, 12);
-  } else if (std::strcmp(v, "Full x3(2L)") == 0) {
+  } else if (g_strcmp0(v, "Full x3(2L)") == 0) {
     g_value_set_int(value, 13);
-  } else if (std::strcmp(v, "Full x3(3L)") == 0) {
+  } else if (g_strcmp0(v, "Full x3(3L)") == 0) {
     g_value_set_int(value, 14);
-  } else if (std::strcmp(v, "Full x4(2L)") == 0) {
+  } else if (g_strcmp0(v, "Full x4(2L)") == 0) {
     g_value_set_int(value, 15);
-  } else if (std::strcmp(v, "Full x4(3L)") == 0) {
+  } else if (g_strcmp0(v, "Full x4(3L)") == 0) {
     g_value_set_int(value, 16);
-  } else if (std::strcmp(v, "Full x6(2L)") == 0) {
+  } else if (g_strcmp0(v, "Full x6(2L)") == 0) {
     g_value_set_int(value, 17);
-  } else if (std::strcmp(v, "Full x6(3L)") == 0) {
+  } else if (g_strcmp0(v, "Full x6(3L)") == 0) {
     g_value_set_int(value, 18);
-  } else if (std::strcmp(v, "Full x8(2L)") == 0) {
+  } else if (g_strcmp0(v, "Full x8(2L)") == 0) {
     g_value_set_int(value, 19);
-  } else if (std::strcmp(v, "Full x8(3L)") == 0) {
+  } else if (g_strcmp0(v, "Full x8(3L)") == 0) {
     g_value_set_int(value, 20);
   }
 
@@ -219,23 +219,23 @@ auto int_to_ovs_enum(const GValue* value, const GVariantType* expected_type, gpo
 auto dither_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "None") == 0) {
+  if (g_strcmp0(v, "None") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "7bit") == 0) {
+  } else if (g_strcmp0(v, "7bit") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "8bit") == 0) {
+  } else if (g_strcmp0(v, "8bit") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "11bit") == 0) {
+  } else if (g_strcmp0(v, "11bit") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "12bit") == 0) {
+  } else if (g_strcmp0(v, "12bit") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "15bit") == 0) {
+  } else if (g_strcmp0(v, "15bit") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "16bit") == 0) {
+  } else if (g_strcmp0(v, "16bit") == 0) {
     g_value_set_int(value, 6);
-  } else if (std::strcmp(v, "23bit") == 0) {
+  } else if (g_strcmp0(v, "23bit") == 0) {
     g_value_set_int(value, 7);
-  } else if (std::strcmp(v, "24bit") == 0) {
+  } else if (g_strcmp0(v, "24bit") == 0) {
     g_value_set_int(value, 8);
   }
 
@@ -374,7 +374,7 @@ LimiterUi::~LimiterUi() {
 auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<LimiterUi>(builder, "top_box", "com.github.wwmm.easyeffects.limiter",
+  auto* const ui = Gtk::Builder::get_widget_derived<LimiterUi>(builder, "top_box", "com.github.wwmm.easyeffects.limiter",
                                                          schema_path + "limiter/");
 
   stack->add(*ui, plugin_name::limiter);
@@ -418,18 +418,18 @@ void LimiterUi::reset() {
   settings->reset("alr-knee");
 }
 
-void LimiterUi::on_new_left_gain(double value) {
+void LimiterUi::on_new_left_gain(const float& value) {
   gain_left->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void LimiterUi::on_new_right_gain(double value) {
+void LimiterUi::on_new_right_gain(const float& value) {
   gain_right->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void LimiterUi::on_new_left_sidechain(double value) {
+void LimiterUi::on_new_left_sidechain(const float& value) {
   sidechain_left->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void LimiterUi::on_new_right_sidechain(double value) {
+void LimiterUi::on_new_right_sidechain(const float& value) {
   sidechain_right->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }

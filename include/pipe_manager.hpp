@@ -30,10 +30,8 @@
 #include <spa/utils/result.h>
 #include <algorithm>
 #include <array>
-#include <cstring>
 #include <memory>
 #include <string>
-#include <vector>
 #include "util.hpp"
 
 struct NodeInfo {
@@ -165,7 +163,7 @@ class PipeManager {
   auto operator=(const PipeManager&&) -> PipeManager& = delete;
   ~PipeManager();
 
-  std::string log_tag = "pipe_manager: ";
+  const std::string log_tag = "pipe_manager: ";
 
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;
@@ -191,9 +189,6 @@ class PipeManager {
   NodeInfo default_output_device, default_input_device;
 
   NodeInfo output_device, input_device;
-
-  std::vector<Glib::ustring> blocklist_in;   // for input effects
-  std::vector<Glib::ustring> blocklist_out;  // for output effects
 
   std::array<std::string, 14> blocklist_node_name = {"EasyEffects",
                                                      "easyeffects",
@@ -248,7 +243,11 @@ class PipeManager {
 
   void unlock() const;
 
-  static auto json_object_find(const char* obj, const char* key, char* value, size_t len) -> int;
+  static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
+
+  /*
+    Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
+  */
 
   sigc::signal<void(NodeInfo)> source_added;
   sigc::signal<void(NodeInfo)> source_changed;

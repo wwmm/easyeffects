@@ -39,7 +39,7 @@ class Gate : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> gating;
+  sigc::signal<void(const double&)> gating;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

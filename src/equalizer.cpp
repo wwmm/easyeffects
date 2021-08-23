@@ -55,15 +55,15 @@ Equalizer::Equalizer(const std::string& tag,
     const uint& nbands = settings->get_int(key);
 
     for (uint n = 0U; n < max_bands; n++) {
-      const auto& nstr = std::to_string(n);
+      const auto& bandn = "band" + std::to_string(n);
 
       if (n < nbands) {
-        settings_left->set_enum("band" + nstr + "-type", 1);
-        settings_right->set_enum("band" + nstr + "-type", 1);
+        settings_left->set_enum(bandn + "-type", 1);
+        settings_right->set_enum(bandn + "-type", 1);
       } else {
         // turn off unused bands
-        settings_left->set_enum("band" + nstr + "-type", 0);
-        settings_right->set_enum("band" + nstr + "-type", 0);
+        settings_left->set_enum(bandn + "-type", 0);
+        settings_right->set_enum(bandn + "-type", 0);
       }
     }
   });
@@ -74,23 +74,23 @@ Equalizer::Equalizer(const std::string& tag,
     }
 
     for (uint n = 0U; n < max_bands; n++) {
-      const auto& nstr = std::to_string(n);
+      const auto& bandn = "band" + std::to_string(n);
 
-      settings_right->set_enum("band" + nstr + "-type", settings_left->get_enum("band" + nstr + "-type"));
+      settings_right->set_enum(bandn + "-type", settings_left->get_enum(bandn + "-type"));
 
-      settings_right->set_enum("band" + nstr + "-mode", settings_left->get_enum("band" + nstr + "-mode"));
+      settings_right->set_enum(bandn + "-mode", settings_left->get_enum(bandn + "-mode"));
 
-      settings_right->set_enum("band" + nstr + "-slope", settings_left->get_enum("band" + nstr + "-slope"));
+      settings_right->set_enum(bandn + "-slope", settings_left->get_enum(bandn + "-slope"));
 
-      settings_right->set_boolean("band" + nstr + "-solo", settings_left->get_boolean("band" + nstr + "-solo"));
+      settings_right->set_boolean(bandn + "-solo", settings_left->get_boolean(bandn + "-solo"));
 
-      settings_right->set_boolean("band" + nstr + "-mute", settings_left->get_boolean("band" + nstr + "-mute"));
+      settings_right->set_boolean(bandn + "-mute", settings_left->get_boolean(bandn + "-mute"));
 
-      settings_right->set_double("band" + nstr + "-frequency", settings_left->get_double("band" + nstr + "-frequency"));
+      settings_right->set_double(bandn + "-frequency", settings_left->get_double(bandn + "-frequency"));
 
-      settings_right->set_double("band" + nstr + "-gain", settings_left->get_double("band" + nstr + "-gain"));
+      settings_right->set_double(bandn + "-gain", settings_left->get_double(bandn + "-gain"));
 
-      settings_right->set_double("band" + nstr + "-q", settings_left->get_double("band" + nstr + "-q"));
+      settings_right->set_double(bandn + "-q", settings_left->get_double(bandn + "-q"));
     }
   });
 }
@@ -134,12 +134,12 @@ void Equalizer::process(std::span<float>& left_in,
     This plugin gives the latency in number of samples
   */
 
-  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 

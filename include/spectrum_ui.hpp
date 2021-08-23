@@ -37,10 +37,10 @@ class SpectrumUi : public Gtk::DrawingArea {
 
   static auto add_to_box(Gtk::Box* box) -> SpectrumUi*;
 
-  void on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes);
+  void on_new_spectrum(uint rate, uint n_bands, std::vector<float> magnitudes);
 
  private:
-  std::string log_tag = "spectrum_ui: ";
+  const std::string log_tag = "spectrum_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

@@ -55,7 +55,7 @@ void PluginUiBase::on_new_output_level(const float& left, const float& right) {
   update_level(output_level_left, output_level_left_label, output_level_right, output_level_right_label, left, right);
 }
 
-void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const std::string& unit) {
+void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustring& unit) {
   button->signal_output().connect([=]() { return parse_spinbutton_output(button, unit); }, true);
   button->signal_input().connect([=](double& new_value) { return parse_spinbutton_input(button, new_value); }, true);
 }
@@ -63,15 +63,7 @@ void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const std::string
 auto PluginUiBase::string_to_float(const std::string& value) -> float {
   // this conversion must be locale independent
 
-  std::stringstream ss;
-  ss.imbue(std::locale::classic());
-
-  float fv = 0.0F;
-
-  ss << value;
-  ss >> fv;
-
-  return fv;
+  return std::stof(value);
 }
 
 void PluginUiBase::set_transient_window(Gtk::Window* transient_window) {

@@ -20,7 +20,6 @@
 #ifndef LOUDNESS_UI_HPP
 #define LOUDNESS_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class LoudnessUi : public Gtk::Box, public PluginUiBase {

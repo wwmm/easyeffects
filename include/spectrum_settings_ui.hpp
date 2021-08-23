@@ -23,7 +23,6 @@
 #include <giomm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
-#include <cstring>
 #include "application.hpp"
 #include "spinbutton_helper.hpp"
 #include "util.hpp"
@@ -40,7 +39,7 @@ class SpectrumSettingsUi : public Gtk::Box {
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
-  std::string log_tag = "spectrum_settings_ui: ";
+  const std::string log_tag = "spectrum_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

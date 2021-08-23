@@ -26,10 +26,12 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   if (settings->get_boolean("use-default-input-device")) {
     settings->set_string("input-device", pm->input_device.name);
   } else {
-    bool found = false;
+    auto found = false;
+
+    const auto* input_device = settings->get_string("input-device").c_str();
 
     for (const auto& node : pm->list_nodes) {
-      if (node.name == std::string(settings->get_string("input-device"))) {
+      if (node.name == input_device) {
         pm->input_device = node;
 
         found = true;
@@ -63,7 +65,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   connect_filters();
 
   settings->signal_changed("input-device").connect([&, this](const auto& key) {
-    const auto& name = std::string(settings->get_string(key));
+    const auto& name = settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -95,12 +97,12 @@ StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 }
 
-void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
-  bool forbidden_app = false;
-  bool connected = false;
+void StreamInputEffects::on_app_added(NodeInfo node_info) {
+  auto forbidden_app = false;
+  auto connected = false;
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  forbidden_app = std::ranges::find(blocklist, Glib::ustring(node_info.name)) != blocklist.end();
+  forbidden_app = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
   for (const auto& link : pm->list_links) {
     if (link.input_node_id == node_info.id && link.output_node_id == pm->pe_source_node.id) {
@@ -121,7 +123,7 @@ void StreamInputEffects::on_app_added(const NodeInfo& node_info) {
   }
 }
 
-void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
+void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   if (pm->default_input_device.id == pm->pe_source_node.id) {
     return;
   }
@@ -134,7 +136,7 @@ void StreamInputEffects::on_link_changed(const LinkInfo& link_info) {
     return;
   }
 
-  bool want_to_play = false;
+  auto want_to_play = false;
 
   for (const auto& link : pm->list_links) {
     if (link.output_node_id == pm->pe_source_node.id) {
@@ -166,7 +168,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   const auto& list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
 
-  bool mic_linked = false;
+  auto mic_linked = false;
 
   uint prev_node_id = pm->input_device.id;
   uint next_node_id = 0U;

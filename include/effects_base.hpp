@@ -57,7 +57,7 @@ class EffectsBase {
   auto operator=(const EffectsBase&&) -> EffectsBase& = delete;
   virtual ~EffectsBase();
 
-  std::string log_tag;
+  const std::string log_tag;
 
   PipeManager* pm = nullptr;
 
@@ -90,7 +90,7 @@ class EffectsBase {
 
   auto get_pipeline_latency() -> float;
 
-  sigc::signal<void(float)> pipeline_latency;
+  sigc::signal<void(const float&)> pipeline_latency;
 
  protected:
   Glib::RefPtr<Gio::Settings> settings, global_settings;

@@ -26,11 +26,11 @@ FirFilterHighpass::~FirFilterHighpass() = default;
 void FirFilterHighpass::setup() {
   kernel = create_lowpass_kernel(min_frequency, transition_band);
 
-  std::ranges::for_each(kernel, [](auto& v) { v *= -1; });
+  std::ranges::for_each(kernel, [](auto& v) { v *= -1.0F; });
 
-  kernel[(kernel.size() - 1) / 2] += 1;
+  kernel[(kernel.size() - 1U) / 2U] += 1.0F;
 
-  delay = 0.5F * static_cast<float>(kernel.size() - 1) / static_cast<float>(rate);
+  delay = 0.5F * static_cast<float>(kernel.size() - 1U) / static_cast<float>(rate);
 
   setup_zita();
 }

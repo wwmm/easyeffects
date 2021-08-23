@@ -36,7 +36,7 @@ class ExciterUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi*;
 
-  void on_new_harmonics_level(double value);
+  void on_new_harmonics_level(const double& value);
 
   void reset() override;
 

@@ -166,7 +166,7 @@ void RNNoise::process(std::span<float>& left_in,
       deque_out_R.pop_front();
     }
   } else {
-    uint offset = 2U * (left_out.size() - deque_out_L.size());
+    const uint offset = 2U * (left_out.size() - deque_out_L.size());
 
     if (offset != latency_n_frames) {
       latency_n_frames = offset;
@@ -191,7 +191,7 @@ void RNNoise::process(std::span<float>& left_in,
   apply_gain(left_out, right_out, output_gain);
 
   if (notify_latency) {
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 

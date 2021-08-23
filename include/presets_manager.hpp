@@ -69,18 +69,18 @@ class PresetsManager {
 
   auto get_names(const PresetType& preset_type) -> std::vector<Glib::ustring>;
 
-  static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
+  static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring>;
 
   void add(const PresetType& preset_type, const Glib::ustring& name);
 
-  void save_preset_file(const PresetType& preset_type, const std::string& name);
+  void save_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
   void write_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
                             nlohmann::json& json);
 
-  void remove(const PresetType& preset_type, const std::string& name);
+  void remove(const PresetType& preset_type, const Glib::ustring& name);
 
-  void load_preset_file(const PresetType& preset_type, const std::string& name);
+  void load_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
   void read_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
                            const nlohmann::json& json);
@@ -98,13 +98,13 @@ class PresetsManager {
                        const std::string& device_profile);
 
   auto find_autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile)
-      -> std::string;
+      -> Glib::ustring;
 
   void autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile);
 
   auto get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json>;
 
-  auto preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool;
+  auto preset_file_exists(const PresetType& preset_type, const Glib::ustring& name) -> bool;
 
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_created;
   sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_removed;
@@ -115,7 +115,9 @@ class PresetsManager {
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
 
  private:
-  std::string log_tag = "presets_manager: ";
+  const std::string log_tag = "presets_manager: ";
+
+  const std::string json_ext = ".json";
 
   std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
 

@@ -42,7 +42,7 @@ class StereoTools : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> new_correlation;
+  sigc::signal<void(const double&)> new_correlation;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

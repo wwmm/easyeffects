@@ -26,7 +26,7 @@ FirFilterLowpass::~FirFilterLowpass() = default;
 void FirFilterLowpass::setup() {
   kernel = create_lowpass_kernel(max_frequency, transition_band);
 
-  delay = 0.5F * static_cast<float>(kernel.size() - 1) / static_cast<float>(rate);
+  delay = 0.5F * static_cast<float>(kernel.size() - 1U) / static_cast<float>(rate);
 
   setup_zita();
 }

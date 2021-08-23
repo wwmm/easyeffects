@@ -85,12 +85,12 @@ void Loudness::process(std::span<float>& left_in,
    This plugin gives the latency in number of samples
  */
 
-  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 

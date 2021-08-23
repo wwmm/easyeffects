@@ -22,8 +22,6 @@
 
 #include <giomm.h>
 #include <gtkmm.h>
-#include <filesystem>
-#include <fstream>
 #include <memory>
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
@@ -46,7 +44,7 @@ class PipeInfoUi : public Gtk::Box {
   static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi*;
 
  private:
-  std::string log_tag = "pipe_info: ";
+  const std::string log_tag = "pipe_info: ";
 
   PipeManager* pm = nullptr;
 

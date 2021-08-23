@@ -52,12 +52,12 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
     return output;
   }
 
-  float delta = (stop - start) / npoints;
+  const float delta = (stop - start) / static_cast<float>(npoints);
 
   float v = start;
 
   while (v <= stop) {
-    output.emplace_back(powf(10.0F, v));
+    output.emplace_back(std::pow(10.0F, v));
 
     v += delta;
   }
@@ -72,7 +72,7 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
     return output;
   }
 
-  float delta = (stop - start) / npoints;
+  const float delta = (stop - start) / static_cast<float>(npoints);
 
   float v = start;
 
@@ -87,7 +87,7 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
 
 auto linear_to_db(const float& amp) -> float {
   if (amp >= minimum_linear_level) {
-    return 20.0F * log10f(amp);
+    return 20.0F * std::log10(amp);
   }
 
   return minimum_db_level;
@@ -95,24 +95,22 @@ auto linear_to_db(const float& amp) -> float {
 
 auto linear_to_db(const double& amp) -> double {
   if (amp >= minimum_linear_d_level) {
-    return 20.0 * log10(amp);
+    return 20.0 * std::log10(amp);
   }
 
   return minimum_db_d_level;
 }
 
 auto db_to_linear(const float& db) -> float {
-  return expf((db / 20.0F) * logf(10.0F));
+  return std::exp((db / 20.0F) * std::log(10.0F));
 }
 
 auto db_to_linear(const double& db) -> double {
-  return exp((db / 20.0) * log(10.0));
+  return std::exp((db / 20.0) * std::log(10.0));
 }
 
 auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  double v_db = g_variant_get_double(variant);
-
-  float v_linear = powf(10.0F, static_cast<float>(v_db) / 20.0F);
+  const gfloat v_linear = std::pow(10.0F, static_cast<float>(g_variant_get_double(variant)) / 20.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -120,17 +118,13 @@ auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 }
 
 auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
-  float v_linear = g_value_get_float(value);
-
-  double v_db = 20.0 * log10(static_cast<double>(v_linear));
+  const gdouble v_db = 20.0 * std::log10(static_cast<double>(g_value_get_float(value)));
 
   return g_variant_new_double(v_db);
 }
 
 auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  double v_db = g_variant_get_double(variant);
-
-  float v_linear = powf(10.0F, static_cast<float>(v_db) / 10.0F);
+  const gfloat v_linear = std::pow(10.0F, static_cast<float>(g_variant_get_double(variant)) / 10.0F);
 
   g_value_set_float(value, v_linear);
 
@@ -138,17 +132,13 @@ auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -
 }
 
 auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  float v_d = g_variant_get_double(variant);
-
-  g_value_set_float(value, v_d);
+  g_value_set_float(value, static_cast<gfloat>(g_variant_get_double(variant)));
 
   return 1;
 }
 
 auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  double v_db = g_variant_get_double(variant);
-
-  double v_linear = pow(10.0, v_db / 20.0);
+  const gdouble v_linear = std::pow(10.0, g_variant_get_double(variant) / 20.0);
 
   g_value_set_double(value, v_linear);
 
@@ -157,31 +147,25 @@ auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_
 
 auto linear_double_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data)
     -> GVariant* {
-  double v_linear = g_value_get_double(value);
-
-  double v_db = 20.0 * log10(v_linear);
+  const gdouble v_db = 20.0 * std::log10(g_value_get_double(value));
 
   return g_variant_new_double(v_db);
 }
 
 auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  double v_d = g_variant_get_double(variant);
-
-  g_value_set_int(value, v_d * 10);
+  g_value_set_int(value, static_cast<gint>(g_variant_get_double(variant) * 10.0));
 
   return 1;
 }
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
-  guint64 v_ns = g_variant_get_double(variant) * 1000000.0;
-
-  g_value_set_uint64(value, v_ns);
+  g_value_set_uint64(value, static_cast<guint64>(g_variant_get_double(variant) * 1000000.0));
 
   return 1;
 }
 
-auto remove_filename_extension(const std::string& basename) -> std::string {
-  return basename.substr(0, basename.find_last_of('.'));
+auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring {
+  return basename.substr(0, basename.find_last_of("."));
 }
 
 }  // namespace util

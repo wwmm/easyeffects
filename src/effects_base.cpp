@@ -125,73 +125,73 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     plugins_latency[key] = 0.0F;
   }
 
-  compressor->latency.connect([=, this](const float& v) {
+  compressor->latency.connect([=, this](const auto& v) {
     plugins_latency[compressor->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  convolver->latency.connect([=, this](const float& v) {
+  convolver->latency.connect([=, this](const auto& v) {
     plugins_latency[convolver->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  crystalizer->latency.connect([=, this](const float& v) {
+  crystalizer->latency.connect([=, this](const auto& v) {
     plugins_latency[crystalizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  delay->latency.connect([=, this](const float& v) {
+  delay->latency.connect([=, this](const auto& v) {
     plugins_latency[delay->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  echo_canceller->latency.connect([=, this](const float& v) {
+  echo_canceller->latency.connect([=, this](const auto& v) {
     plugins_latency[echo_canceller->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  equalizer->latency.connect([=, this](const float& v) {
+  equalizer->latency.connect([=, this](const auto& v) {
     plugins_latency[equalizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  loudness->latency.connect([=, this](const float& v) {
+  loudness->latency.connect([=, this](const auto& v) {
     plugins_latency[loudness->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  limiter->latency.connect([=, this](const float& v) {
+  limiter->latency.connect([=, this](const auto& v) {
     plugins_latency[limiter->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  maximizer->latency.connect([=, this](const float& v) {
+  maximizer->latency.connect([=, this](const auto& v) {
     plugins_latency[maximizer->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  multiband_compressor->latency.connect([=, this](const float& v) {
+  multiband_compressor->latency.connect([=, this](const auto& v) {
     plugins_latency[multiband_compressor->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  pitch->latency.connect([=, this](const float& v) {
+  pitch->latency.connect([=, this](const auto& v) {
     plugins_latency[pitch->name] = v;
 
     broadcast_pipeline_latency();
   });
 
-  rnnoise->latency.connect([=, this](const float& v) {
+  rnnoise->latency.connect([=, this](const auto& v) {
     plugins_latency[rnnoise->name] = v;
 
     broadcast_pipeline_latency();
@@ -227,7 +227,7 @@ auto EffectsBase::get_pipeline_latency() -> float {
 }
 
 void EffectsBase::broadcast_pipeline_latency() {
-  float latency_value = get_pipeline_latency();
+  const auto& latency_value = get_pipeline_latency();
 
   util::debug(log_tag + "pipeline latency: " + std::to_string(latency_value) + " ms");
 

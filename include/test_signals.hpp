@@ -50,8 +50,6 @@ class TestSignals {
     TestSignals* ts = nullptr;
   };
 
-  std::string log_tag = "test signals: ";
-
   pw_filter* filter = nullptr;
 
   uint n_samples = 0U;
@@ -81,6 +79,8 @@ class TestSignals {
   auto white_noise() -> float;
 
  private:
+  const std::string log_tag = "test signals: ";
+
   PipeManager* pm = nullptr;
 
   spa_hook listener{};

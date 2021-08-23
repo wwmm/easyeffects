@@ -75,7 +75,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     transition band frequency as a fraction of the sample rate
   */
 
-  float b = transition_band / static_cast<float>(rate);
+  const float b = transition_band / static_cast<float>(rate);
 
   /*
       The kernel size must be odd: M + 1 where M is even. This is done so it can be symmetric around the main lobe
@@ -94,7 +94,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     cutoff frequency as a fraction of the sample rate
   */
 
-  float fc = cutoff / static_cast<float>(rate);
+  const float fc = cutoff / static_cast<float>(rate);
 
   float sum = 0.0F;
 
@@ -114,9 +114,9 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
       Blackman window https://www.dspguide.com/ch16/1.htm
     */
 
-    const auto& w = 0.42F -
-                    0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
-                    0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
+    const float w =
+        0.42F - 0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
+        0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
 
     output[n] *= w;
 
@@ -147,7 +147,7 @@ void FirFilterBase::setup_zita() {
   conv->cleanup();
 
   int ret = 0;
-  float density = 0.0F;
+  const float density = 0.0F;
 
   conv->set_options(0);
 
@@ -192,7 +192,7 @@ void FirFilterBase::setup_zita() {
 }
 
 void FirFilterBase::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  uint M = (c.size() + 1U) / 2U;
+  const uint M = (c.size() + 1U) / 2U;
 
   for (uint n = 0U; n < c.size(); n++) {
     c[n] = 0.0F;

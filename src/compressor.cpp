@@ -42,7 +42,7 @@ Compressor::Compressor(const std::string& tag,
 
   settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
     if (settings->get_string(key) == "External") {
-      const auto& device_name = std::string(settings->get_string("sidechain-input-device"));
+      const auto* device_name = settings->get_string("sidechain-input-device").c_str();
 
       NodeInfo input_device = pm->pe_source_node;
 
@@ -66,7 +66,7 @@ Compressor::Compressor(const std::string& tag,
 
   settings->signal_changed("sidechain-input-device").connect([=, this](const auto& key) {
     if (settings->get_string("sidechain-type") == "External") {
-      const auto& device_name = std::string(settings->get_string(key));
+      const auto* device_name = settings->get_string(key).c_str();
 
       NodeInfo input_device = pm->pe_source_node;
 
@@ -172,12 +172,12 @@ void Compressor::process(std::span<float>& left_in,
    This plugin gives the latency in number of samples
  */
 
-  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -204,10 +204,10 @@ void Compressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float reduction_value = lv2_wrapper->get_control_port_value("rlm");
-      float sidechain_value = lv2_wrapper->get_control_port_value("slm");
-      float curve_value = lv2_wrapper->get_control_port_value("clm");
-      float envelope_value = lv2_wrapper->get_control_port_value("elm");
+      const float& reduction_value = lv2_wrapper->get_control_port_value("rlm");
+      const float& sidechain_value = lv2_wrapper->get_control_port_value("slm");
+      const float& curve_value = lv2_wrapper->get_control_port_value("clm");
+      const float& envelope_value = lv2_wrapper->get_control_port_value("elm");
 
       Glib::signal_idle().connect_once([=, this] {
         reduction.emit(reduction_value);

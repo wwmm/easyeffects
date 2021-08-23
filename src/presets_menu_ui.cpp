@@ -92,10 +92,16 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+    if (preset_name.empty()) {
+      util::warning("Can't retrieve information about the preset file");
+
+      return;
+    }
 
     for (guint n = 0, list_size = output_string_list->get_n_items(); n < list_size; n++) {
-      if (output_string_list->get_string(n) == preset_name) {
+      if (preset_name == output_string_list->get_string(n)) {
         return;
       }
     }
@@ -104,10 +110,16 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+    if (preset_name.empty()) {
+      util::warning("Can't retrieve information about the preset file");
+
+      return;
+    }
 
     for (guint n = 0, list_size = output_string_list->get_n_items(); n < list_size; n++) {
-      if (output_string_list->get_string(n) == preset_name) {
+      if (preset_name == output_string_list->get_string(n)) {
         output_string_list->remove(n);
 
         return;
@@ -116,7 +128,13 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+    if (preset_name.empty()) {
+      util::warning("Can't retrieve information about the preset file");
+
+      return;
+    }
 
     for (guint n = 0, list_size = input_string_list->get_n_items(); n < list_size; n++) {
       if (input_string_list->get_string(n) == preset_name) {
@@ -128,7 +146,13 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+    if (preset_name.empty()) {
+      util::warning("Can't retrieve information about the preset file");
+
+      return;
+    }
 
     for (guint n = 0, list_size = input_string_list->get_n_items(); n < list_size; n++) {
       if (input_string_list->get_string(n) == preset_name) {
@@ -161,39 +185,42 @@ auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
 }
 
 void PresetsMenuUi::create_preset(PresetType preset_type) {
-  const auto& name = (preset_type == PresetType::output) ? output_name->get_text() : input_name->get_text();
+  Gtk::Text* preset_name_box = nullptr;
 
-  if (!name.empty()) {
-    std::string illegalChars = "\\/";
-
-    for (const auto& c : name) {
-      if (illegalChars.find(c) != std::string::npos) {
-        switch (preset_type) {
-          case PresetType::output:
-            output_name->set_text("");
-            break;
-          case PresetType::input:
-            input_name->set_text("");
-            break;
-        }
-
-        util::debug(log_tag + " name " + name + " has illegal file name characters. Aborting preset creation!");
-
-        return;
-      }
-    }
-
-    switch (preset_type) {
-      case PresetType::output:
-        output_name->set_text("");
-        break;
-      case PresetType::input:
-        input_name->set_text("");
-        break;
-    }
-
-    app->presets_manager->add(preset_type, name);
+  switch (preset_type) {
+    case PresetType::output:
+      preset_name_box = output_name;
+      break;
+    case PresetType::input:
+      preset_name_box = input_name;
+      break;
+    default:
+      return;
   }
+
+  // Parse to have a valid UTF-8 string
+
+  auto name = preset_name_box->get_text().make_valid();
+
+  if (name.empty()) {
+    return;
+  }
+
+  preset_name_box->set_text("");
+
+  // Truncate if longer then 100 characters
+
+  if (name.length() > 100U) {
+    name.resize(100U);
+  }
+
+  if (name.find_first_of("\\/") != Glib::ustring::npos) {
+    util::debug(log_tag + " name " + name + " has illegal file name characters. Aborting preset creation!");
+
+    return;
+  }
+
+  app->presets_manager->add(preset_type, name);
 }
 
 void PresetsMenuUi::import_preset(PresetType preset_type) {
@@ -212,9 +239,7 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   dialog->signal_response().connect([=, this](const auto& response_id) {
     switch (response_id) {
       case Gtk::ResponseType::ACCEPT: {
-        const auto& f = dialog->get_file();
-
-        app->presets_manager->import(preset_type, f->get_path());
+        app->presets_manager->import(preset_type, dialog->get_file()->get_path());
 
         break;
       }
@@ -258,10 +283,10 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 
   // sorter
 
-  auto sorter =
+  const auto& sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -276,7 +301,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
-    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
     list_item->set_data("apply", b->get_widget<Gtk::Button>("apply"));
@@ -287,10 +312,10 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
-    auto* save = static_cast<Gtk::Button*>(list_item->get_data("save"));
-    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
+    auto* const save = static_cast<Gtk::Button*>(list_item->get_data("save"));
+    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -364,9 +389,9 @@ void PresetsMenuUi::reset_menu_button_label() {
 }
 
 void PresetsMenuUi::on_show() {
-  auto* parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
+  auto* const parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
 
-  int height = static_cast<int>(0.5F * static_cast<float>(parent->get_allocated_height()));
+  const int height = static_cast<int>(0.5F * static_cast<float>(parent->get_allocated_height()));
 
   output_scrolled_window->set_max_content_height(height);
   input_scrolled_window->set_max_content_height(height);

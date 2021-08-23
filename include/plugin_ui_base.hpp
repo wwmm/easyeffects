@@ -22,6 +22,7 @@
 
 #include <giomm.h>
 #include <gtkmm.h>
+#include <iomanip>
 #include "plugin_name.hpp"
 #include "scale_helper.hpp"
 #include "spinbutton_helper.hpp"
@@ -63,17 +64,11 @@ class PluginUiBase {
   virtual void reset() = 0;
 
   template <typename T>
-  auto level_to_localized_string(const T& value, const int& places) -> std::string {
-    std::ostringstream msg;
-
-    msg.precision(places);
-
-    msg << std::fixed << value;
-
-    return msg.str();
+  auto level_to_localized_string(const T& value, const int& places) -> Glib::ustring {
+    return Glib::ustring::format(std::setprecision(places), std::fixed, value);
   }
 
-  static void prepare_spinbutton(Gtk::SpinButton* button, const std::string& unit);
+  static void prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustring& unit);
 
   static auto string_to_float(const std::string& value) -> float;
 
@@ -85,8 +80,7 @@ class PluginUiBase {
                     const T4& w_right_label,
                     const float& left,
                     const float& right) {
-    if (left >= -99.0) {
-      auto db_value = util::db_to_linear(left);
+    if (auto db_value = util::db_to_linear(left); left >= -99.0) {
 
       if (db_value < 0.0) {
         db_value = 0.0;
@@ -101,8 +95,7 @@ class PluginUiBase {
       w_left_label->set_text("-99");
     }
 
-    if (right >= -99.0) {
-      auto db_value = util::db_to_linear(right);
+    if (auto db_value = util::db_to_linear(right); right >= -99.0) {
 
       if (db_value < 0.0) {
         db_value = 0.0;

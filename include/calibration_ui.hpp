@@ -44,7 +44,7 @@ class CalibrationUi : public Gtk::Window {
   void set_input_node_id(const uint& id);
 
  private:
-  std::string log_tag = "calibration_ui: ";
+  const std::string log_tag = "calibration_ui: ";
 
   Gtk::Stack* stack = nullptr;
   Gtk::DrawingArea* spectrum = nullptr;
@@ -59,7 +59,7 @@ class CalibrationUi : public Gtk::Window {
   CalibrationSignalsUi* calibration_signals_ui = nullptr;
   CalibrationMicUi* calibration_mic_ui = nullptr;
 
-  void on_new_spectrum(const std::vector<float>& magnitudes);
+  void on_new_spectrum(std::vector<float> magnitudes);
 
   auto on_spectrum_draw(const Cairo::RefPtr<Cairo::Context>& ctx) -> bool;
 

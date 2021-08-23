@@ -21,7 +21,6 @@
 #define PLUGIN_PRESET_BASE_HPP
 
 #include <giomm.h>
-#include <iostream>
 #include <nlohmann/json.hpp>
 #include "preset_type.hpp"
 #include "util.hpp"
@@ -75,7 +74,7 @@ class PluginPresetBase {
                     const Glib::RefPtr<Gio::Settings>& settings) = 0;
 
   template <typename T>
-  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const std::string& key) -> T {
+  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const Glib::ustring& key) -> T {
     Glib::Variant<T> value;
 
     settings->get_default_value(key, value);
@@ -86,30 +85,28 @@ class PluginPresetBase {
   template <typename T>
   void update_key(const nlohmann::json& json,
                   const Glib::RefPtr<Gio::Settings>& settings,
-                  const std::string& key,
+                  const Glib::ustring& key,
                   const std::string& json_key) {
     Glib::Variant<T> aux;
 
     settings->get_value(key, aux);
 
-    T current_value = aux.get();
+    const T& current_value = aux.get();
 
-    T new_value = json.value(json_key, get_default<T>(settings, key));
+    const T& new_value = json.value(json_key, get_default<T>(settings, key));
 
     if (is_different(current_value, new_value)) {
-      auto v = Glib::Variant<T>::create(new_value);
-
-      settings->set_value(key, v);
+      settings->set_value(key, Glib::Variant<T>::create(new_value));
     }
   }
 
   void update_string_key(const nlohmann::json& json,
                          const Glib::RefPtr<Gio::Settings>& settings,
-                         const std::string& key,
+                         const Glib::ustring& key,
                          const std::string& json_key) {
-    std::string current_value = settings->get_string(key);
+    const auto& current_value = settings->get_string(key);
 
-    std::string new_value = json.value(json_key, get_default<std::string>(settings, key));
+    const Glib::ustring& new_value = json.value(json_key, get_default<std::string>(settings, key));
 
     if (current_value != new_value) {
       settings->set_string(key, new_value);

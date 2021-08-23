@@ -22,9 +22,9 @@
 
 #include <glib-object.h>
 #include <glib.h>
+#include <glibmm/ustring.h>
 #include <cmath>
 #include <iostream>
-#include <sstream>
 #include <thread>
 #include <vector>
 
@@ -67,7 +67,7 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
-auto remove_filename_extension(const std::string& basename) -> std::string;
+auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring;
 
 void print_thread_id();
 

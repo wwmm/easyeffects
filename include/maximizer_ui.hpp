@@ -36,7 +36,7 @@ class MaximizerUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi*;
 
-  void on_new_reduction(double value);
+  void on_new_reduction(const double& value);
 
   void reset() override;
 

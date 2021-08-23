@@ -36,7 +36,7 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi*;
 
-  void on_new_phase_correlation(double value);
+  void on_new_phase_correlation(const double& value);
 
   void reset() override;
 

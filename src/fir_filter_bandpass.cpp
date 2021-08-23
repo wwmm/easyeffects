@@ -30,9 +30,9 @@ void FirFilterBandpass::setup() {
 
   auto highpass_kernel = create_lowpass_kernel(min_frequency, transition_band);
 
-  std::ranges::for_each(highpass_kernel, [](auto& v) { v *= -1; });
+  std::ranges::for_each(highpass_kernel, [](auto& v) { v *= -1.0F; });
 
-  highpass_kernel[(highpass_kernel.size() - 1) / 2] += 1;
+  highpass_kernel[(highpass_kernel.size() - 1U) / 2U] += 1.0F;
 
   kernel.resize(highpass_kernel.size());
 
@@ -44,11 +44,11 @@ void FirFilterBandpass::setup() {
     kernel[n] = lowpass_kernel[n] + highpass_kernel[n];
   }
 
-  std::ranges::for_each(kernel, [](auto& v) { v *= -1; });
+  std::ranges::for_each(kernel, [](auto& v) { v *= -1.0F; });
 
-  kernel[(kernel.size() - 1) / 2] += 1;
+  kernel[(kernel.size() - 1U) / 2U] += 1.0F;
 
-  delay = 0.5F * static_cast<float>(kernel.size() - 1) / static_cast<float>(rate);
+  delay = 0.5F * static_cast<float>(kernel.size() - 1U) / static_cast<float>(rate);
 
   setup_zita();
 }

@@ -40,7 +40,7 @@ class GeneralSettingsUi : public Gtk::Box {
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
-  std::string log_tag = "general_settings_ui: ";
+  const std::string log_tag = "general_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

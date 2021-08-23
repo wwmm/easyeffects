@@ -24,29 +24,29 @@ namespace {
 auto filter_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "12dB/oct Lowpass") == 0) {
+  if (g_strcmp0(v, "12dB/oct Lowpass") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "24dB/oct Lowpass") == 0) {
+  } else if (g_strcmp0(v, "24dB/oct Lowpass") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "36dB/oct Lowpass") == 0) {
+  } else if (g_strcmp0(v, "36dB/oct Lowpass") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "12dB/oct Highpass") == 0) {
+  } else if (g_strcmp0(v, "12dB/oct Highpass") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "24dB/oct Highpass") == 0) {
+  } else if (g_strcmp0(v, "24dB/oct Highpass") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "36dB/oct Highpass") == 0) {
+  } else if (g_strcmp0(v, "36dB/oct Highpass") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "6dB/oct Bandpass") == 0) {
+  } else if (g_strcmp0(v, "6dB/oct Bandpass") == 0) {
     g_value_set_int(value, 6);
-  } else if (std::strcmp(v, "12dB/oct Bandpass") == 0) {
+  } else if (g_strcmp0(v, "12dB/oct Bandpass") == 0) {
     g_value_set_int(value, 7);
-  } else if (std::strcmp(v, "18dB/oct Bandpass") == 0) {
+  } else if (g_strcmp0(v, "18dB/oct Bandpass") == 0) {
     g_value_set_int(value, 8);
-  } else if (std::strcmp(v, "6dB/oct Bandreject") == 0) {
+  } else if (g_strcmp0(v, "6dB/oct Bandreject") == 0) {
     g_value_set_int(value, 9);
-  } else if (std::strcmp(v, "12dB/oct Bandreject") == 0) {
+  } else if (g_strcmp0(v, "12dB/oct Bandreject") == 0) {
     g_value_set_int(value, 10);
-  } else if (std::strcmp(v, "18dB/oct Bandreject") == 0) {
+  } else if (g_strcmp0(v, "18dB/oct Bandreject") == 0) {
     g_value_set_int(value, 11);
   }
 
@@ -140,7 +140,7 @@ FilterUi::~FilterUi() {
 auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> FilterUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/filter.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<FilterUi>(builder, "top_box", "com.github.wwmm.easyeffects.filter",
+  auto* const ui = Gtk::Builder::get_widget_derived<FilterUi>(builder, "top_box", "com.github.wwmm.easyeffects.filter",
                                                         schema_path + "filter/");
 
   stack->add(*ui, plugin_name::filter);

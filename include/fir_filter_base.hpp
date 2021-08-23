@@ -62,7 +62,7 @@ class FirFilterBase {
     std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());
 
     if (zita_ready) {
-      int ret = conv->process(true);  // thread sync mode set to true
+      const int& ret = conv->process(true);  // thread sync mode set to true
 
       if (ret != 0) {
         util::debug(log_tag + "IR: process failed: " + std::to_string(ret));
@@ -76,7 +76,7 @@ class FirFilterBase {
   }
 
  protected:
-  std::string log_tag;
+  const std::string log_tag;
 
   bool zita_ready = false;
 

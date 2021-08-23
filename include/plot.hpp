@@ -21,6 +21,7 @@
 #define PLOT_UI_HPP
 
 #include <gtkmm.h>
+#include <iomanip>
 #include <ranges>
 #include "util.hpp"
 
@@ -61,12 +62,12 @@ class Plot {
 
   void set_n_y_decimals(const int& v);
 
-  void set_x_unit(const std::string& value);
+  void set_x_unit(const Glib::ustring& value);
 
-  void set_y_unit(const std::string& value);
+  void set_y_unit(const Glib::ustring& value);
 
  private:
-  std::string log_tag = "plot: ";
+  const std::string log_tag = "plot: ";
 
   Gtk::DrawingArea* da = nullptr;
 
@@ -93,7 +94,7 @@ class Plot {
 
   PlotScale plot_scale = PlotScale::logarithmic;
 
-  std::string x_unit, y_unit;
+  Glib::ustring x_unit, y_unit;
 
   std::vector<float> original_x, original_y;
   std::vector<float> y_axis, x_axis;
@@ -103,17 +104,6 @@ class Plot {
   void on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height);
 
   auto draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int;
-
-  template <typename T>
-  auto value_to_localized_string(const T& value, const int& places) -> std::string {
-    std::ostringstream msg;
-
-    msg.precision(places);
-
-    msg << std::fixed << value;
-
-    return msg.str();
-  }
 };
 
 #endif

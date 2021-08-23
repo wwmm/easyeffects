@@ -96,7 +96,9 @@ void BassEnhancer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float harmonics_value = lv2_wrapper->get_control_port_value("meter_drive");
+      // harmonics needed as double for levelbar widget ui, so we convert it here 
+
+      const double& harmonics_value = static_cast<double>(lv2_wrapper->get_control_port_value("meter_drive"));
 
       Glib::signal_idle().connect_once([=, this] { harmonics.emit(harmonics_value); });
 

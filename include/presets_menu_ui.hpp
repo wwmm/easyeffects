@@ -41,7 +41,7 @@ class PresetsMenuUi : public Gtk::Popover {
   static auto create(Application* app) -> PresetsMenuUi*;
 
  private:
-  std::string log_tag = "presets_menu_ui: ";
+  const std::string log_tag = "presets_menu_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

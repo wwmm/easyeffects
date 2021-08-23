@@ -55,7 +55,7 @@ EchoCancellerUi::~EchoCancellerUi() {
 auto EchoCancellerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EchoCancellerUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/echo_canceller.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<EchoCancellerUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<EchoCancellerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.echocanceller", schema_path + "echocanceller/");
 
   stack->add(*ui, plugin_name::echo_canceller);

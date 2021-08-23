@@ -47,7 +47,7 @@ class Crystalizer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> latency;
+  sigc::signal<void(const float&)> latency;
 
  private:
   bool n_samples_is_power_of_2 = true;
@@ -128,8 +128,8 @@ class Crystalizer : public PluginBase {
           the next round.
         */
 
-        float L = band_data_L.at(n)[0];
-        float R = band_data_R.at(n)[0];
+        const float& L = band_data_L.at(n)[0];
+        const float& R = band_data_R.at(n)[0];
 
         band_data_L.at(n)[0] = band_next_L.at(n);
         band_data_R.at(n)[0] = band_next_R.at(n);
@@ -144,30 +144,30 @@ class Crystalizer : public PluginBase {
 
       if (!band_bypass.at(n)) {
         for (uint m = 0U; m < blocksize; m++) {
-          float L = band_data_L.at(n)[m];
-          float R = band_data_R.at(n)[m];
+          const float& L = band_data_L.at(n)[m];
+          const float& R = band_data_R.at(n)[m];
 
           if (m > 0 && m < blocksize - 1) {
-            float L_lower = band_data_L.at(n)[m - 1U];
-            float R_lower = band_data_R.at(n)[m - 1U];
-            float L_upper = band_data_L.at(n)[m + 1U];
-            float R_upper = band_data_R.at(n)[m + 1U];
+            const float& L_lower = band_data_L.at(n)[m - 1U];
+            const float& R_lower = band_data_R.at(n)[m - 1U];
+            const float& L_upper = band_data_L.at(n)[m + 1U];
+            const float& R_upper = band_data_R.at(n)[m + 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
           } else if (m == 0U) {
-            float L_lower = band_last_L.at(n);
-            float R_lower = band_last_R.at(n);
-            float L_upper = band_data_L.at(n)[m + 1];
-            float R_upper = band_data_R.at(n)[m + 1];
+            const float& L_lower = band_last_L.at(n);
+            const float& R_lower = band_last_R.at(n);
+            const float& L_upper = band_data_L.at(n)[m + 1];
+            const float& R_upper = band_data_R.at(n)[m + 1];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
           } else if (m == blocksize - 1) {
-            float L_upper = band_next_L.at(n);
-            float R_upper = band_next_R.at(n);
-            float L_lower = band_data_L.at(n)[m - 1U];
-            float R_lower = band_data_R.at(n)[m - 1U];
+            const float& L_upper = band_next_L.at(n);
+            const float& R_upper = band_next_R.at(n);
+            const float& L_lower = band_data_L.at(n)[m - 1U];
+            const float& R_lower = band_data_R.at(n)[m - 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
@@ -177,10 +177,10 @@ class Crystalizer : public PluginBase {
         // peak enhancing using second derivative
 
         for (uint m = 0U; m < blocksize; m++) {
-          float L = band_data_L.at(n)[m];
-          float R = band_data_R.at(n)[m];
-          float d2L = band_second_derivative_L.at(n)[m];
-          float d2R = band_second_derivative_R.at(n)[m];
+          const float& L = band_data_L.at(n)[m];
+          const float& R = band_data_R.at(n)[m];
+          const float& d2L = band_second_derivative_L.at(n)[m];
+          const float& d2R = band_second_derivative_R.at(n)[m];
 
           band_data_L.at(n)[m] = L - band_intensity.at(n) * d2L;
           band_data_R.at(n)[m] = R - band_intensity.at(n) * d2R;

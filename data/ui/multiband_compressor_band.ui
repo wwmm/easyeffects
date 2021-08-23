@@ -207,7 +207,7 @@
 
                         <child>
                             <object class="GtkLabel">
-                                <property name="visible">0</property>
+                                <property name="visible">False</property>
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Device</property>
@@ -334,7 +334,7 @@
 
                         <child>
                             <object class="GtkDropDown" id="dropdown_input_devices">
-                                <property name="visible">0</property>
+                                <property name="visible">False</property>
                                 <property name="valign">center</property>
                                 <property name="hexpand">1</property>
 

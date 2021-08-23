@@ -127,13 +127,11 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      const auto& input_device_name = std::string(sie_settings->get_string("input-device"));
+      const auto* input_device_name = sie_settings->get_string("input-device").c_str();
 
       if (holder_selected->info.name != input_device_name) {
         for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-          auto holder = input_devices_model->get_item(n);
-
-          if (holder->info.name == input_device_name) {
+          if (input_devices_model->get_item(n)->info.name == input_device_name) {
             dropdown_input_devices->set_selected(n);
           }
         }
@@ -145,13 +143,11 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      const auto& output_device_name = std::string(soe_settings->get_string("output-device"));
+      const auto* output_device_name = soe_settings->get_string("output-device").c_str();
 
       if (holder_selected->info.name != output_device_name) {
         for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-          auto holder = output_devices_model->get_item(n);
-
-          if (holder->info.name == output_device_name) {
+          if (output_devices_model->get_item(n)->info.name == output_device_name) {
             dropdown_output_devices->set_selected(n);
           }
         }
@@ -170,9 +166,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       if (holder != nullptr) {
         if (holder->info.name != pm->default_input_device.name) {
           for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-            auto holder = input_devices_model->get_item(n);
-
-            if (holder->info.name == pm->default_input_device.name) {
+            if (input_devices_model->get_item(n)->info.name == pm->default_input_device.name) {
               dropdown_input_devices->set_selected(n);
 
               break;
@@ -192,9 +186,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       if (holder_selected != nullptr) {
         if (holder_selected->info.name != pm->default_output_device.name) {
           for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-            auto holder = output_devices_model->get_item(n);
-
-            if (holder->info.name == pm->default_output_device.name) {
+            if (output_devices_model->get_item(n)->info.name == pm->default_output_device.name) {
               dropdown_output_devices->set_selected(n);
 
               break;
@@ -228,7 +220,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     // first we remove any autoloading profile associated to the target device so that our ui is updated
 
     for (guint n = 0; n < autoloading_output_model->get_n_items(); n++) {
-      auto item = autoloading_output_model->get_item(n);
+      const auto& item = autoloading_output_model->get_item(n);
 
       if (holder->info.name == item->device) {
         presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device, item->device_profile);
@@ -239,8 +231,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     const auto& id = dropdown_autoloading_output_presets->get_selected();
 
-    presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id), holder->info.name,
-                                  device_profile);
+    presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id).raw(),
+                                  holder->info.name, device_profile);
   });
 
   autoloading_add_input_profile->signal_clicked().connect([=, this]() {
@@ -263,7 +255,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     // first we remove any autoloading profile associated to the target device so that our ui is updated
 
     for (guint n = 0; n < autoloading_input_model->get_n_items(); n++) {
-      auto item = autoloading_input_model->get_item(n);
+      const auto& item = autoloading_input_model->get_item(n);
 
       if (holder->info.name == item->device) {
         presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device, item->device_profile);
@@ -274,8 +266,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     const auto& id = dropdown_autoloading_input_presets->get_selected();
 
-    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id), holder->info.name,
-                                  device_profile);
+    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id).raw(),
+                                  holder->info.name, device_profile);
   });
 
   spinbutton_test_signal_frequency->signal_output().connect(
@@ -342,7 +334,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
-  connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->sink_added.connect([=, this](NodeInfo info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
       if (output_devices_model->get_item(n)->info.id == info.id) {
         return;
@@ -352,7 +344,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     output_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->sink_removed.connect([=, this](NodeInfo info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
       if (output_devices_model->get_item(n)->info.id == info.id) {
         output_devices_model->remove(n);
@@ -362,7 +354,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }));
 
-  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->source_added.connect([=, this](NodeInfo info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
       if (input_devices_model->get_item(n)->info.id == info.id) {
         return;
@@ -372,7 +364,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     input_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
+  connections.emplace_back(pm->source_removed.connect([=, this](NodeInfo info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
       if (input_devices_model->get_item(n)->info.id == info.id) {
         input_devices_model->remove(n);
@@ -384,7 +376,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+        if (preset_name.empty()) {
+          util::warning("Can't retrieve information about the preset file");
+
+          return;
+        }
 
         for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
@@ -397,7 +395,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+        if (preset_name.empty()) {
+          util::warning("Can't retrieve information about the preset file");
+
+          return;
+        }
 
         for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
@@ -410,7 +414,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+        if (preset_name.empty()) {
+          util::warning("Can't retrieve information about the preset file");
+
+          return;
+        }
 
         for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
@@ -423,7 +433,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.emplace_back(
       presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = Glib::ustring(util::remove_filename_extension(file->get_basename()));
+        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+
+        if (preset_name.empty()) {
+          util::warning("Can't retrieve information about the preset file");
+
+          return;
+        }
 
         for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
@@ -439,9 +455,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
         for (const auto& json : profiles) {
-          std::string device = json.value("device", "");
-          std::string device_profile = json.value("device-profile", "");
-          std::string preset_name = json.value("preset-name", "");
+          const auto& device = json.value("device", "");
+          const auto& device_profile = json.value("device-profile", "");
+          const auto& preset_name = json.value("preset-name", "");
 
           list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
@@ -454,9 +470,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
         for (const auto& json : profiles) {
-          std::string device = json.value("device", "");
-          std::string device_profile = json.value("device-profile", "");
-          std::string preset_name = json.value("preset-name", "");
+          const auto& device = json.value("device", "");
+          const auto& device_profile = json.value("device-profile", "");
+          const auto& preset_name = json.value("preset-name", "");
 
           list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
@@ -486,7 +502,7 @@ PipeInfoUi::~PipeInfoUi() {
 auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm, presets_manager);
+  auto* const ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm, presets_manager);
 
   stack->add(*ui, "pipe_info");
 
@@ -497,7 +513,7 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
                                         const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model) {
   // setting the dropdown model and factory
 
-  auto selection_model = Gtk::SingleSelection::create(model);
+  const auto& selection_model = Gtk::SingleSelection::create(model);
 
   dropdown->set_model(selection_model);
 
@@ -508,9 +524,9 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* icon = Gtk::make_managed<Gtk::Image>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const icon = Gtk::make_managed<Gtk::Image>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -530,8 +546,8 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -568,14 +584,14 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
 
   // sorter
 
-  auto sorter =
+  const auto& sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+  const auto& sort_list_model = Gtk::SortListModel::create(string_list, sorter);
 
   // setting the dropdown model and factory
 
-  auto selection_model = Gtk::SingleSelection::create(sort_list_model);
+  const auto& selection_model = Gtk::SingleSelection::create(sort_list_model);
 
   dropdown->set_model(selection_model);
 
@@ -586,9 +602,9 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* icon = Gtk::make_managed<Gtk::Image>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const icon = Gtk::make_managed<Gtk::Image>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -607,7 +623,7 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
 
     const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -619,12 +635,12 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
 void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
                                             Gtk::ListView* listview,
                                             const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model) {
-  auto profiles = presets_manager->get_autoload_profiles(preset_type);
+  const auto& profiles = presets_manager->get_autoload_profiles(preset_type);
 
   for (const auto& json : profiles) {
-    std::string device = json.value("device", "");
-    std::string device_profile = json.value("device-profile", "");
-    std::string preset_name = json.value("preset-name", "");
+    const auto& device = json.value("device", "");
+    const auto& device_profile = json.value("device-profile", "");
+    const auto& preset_name = json.value("preset-name", "");
 
     model->append(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
   }
@@ -642,7 +658,7 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
 
-    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("device", b->get_widget<Gtk::Label>("device"));
     list_item->set_data("device_profile", b->get_widget<Gtk::Label>("device_profile"));
@@ -653,10 +669,10 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* device = static_cast<Gtk::Label*>(list_item->get_data("device"));
-    auto* device_profile = static_cast<Gtk::Label*>(list_item->get_data("device_profile"));
-    auto* preset_name = static_cast<Gtk::Label*>(list_item->get_data("preset_name"));
-    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const device = static_cast<Gtk::Label*>(list_item->get_data("device"));
+    auto* const device_profile = static_cast<Gtk::Label*>(list_item->get_data("device_profile"));
+    auto* const preset_name = static_cast<Gtk::Label*>(list_item->get_data("preset_name"));
+    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     auto holder = std::dynamic_pointer_cast<PresetsAutoloadingHolder>(list_item->get_item());
 
@@ -695,7 +711,7 @@ void PipeInfoUi::setup_listview_modules() {
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
 
-    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
     list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
@@ -705,13 +721,13 @@ void PipeInfoUi::setup_listview_modules() {
   });
 
   factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* id = static_cast<Gtk::Label*>(list_item->get_data("id"));
-    auto* name = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* description = static_cast<Gtk::Label*>(list_item->get_data("description"));
+    auto* const id = static_cast<Gtk::Label*>(list_item->get_data("id"));
+    auto* const name = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const description = static_cast<Gtk::Label*>(list_item->get_data("description"));
 
     auto holder = std::dynamic_pointer_cast<ModuleInfoHolder>(list_item->get_item());
 
-    id->set_text(std::to_string(holder->info.id));
+    id->set_text(Glib::ustring::format(holder->info.id));
     name->set_text(holder->info.name);
     description->set_text(holder->info.description);
   });
@@ -731,7 +747,7 @@ void PipeInfoUi::setup_listview_clients() {
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
 
-    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("id", b->get_widget<Gtk::Label>("id"));
     list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
@@ -742,14 +758,14 @@ void PipeInfoUi::setup_listview_clients() {
   });
 
   factory->signal_bind().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* id = static_cast<Gtk::Label*>(list_item->get_data("id"));
-    auto* name = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* api = static_cast<Gtk::Label*>(list_item->get_data("api"));
-    auto* access = static_cast<Gtk::Label*>(list_item->get_data("access"));
+    auto* const id = static_cast<Gtk::Label*>(list_item->get_data("id"));
+    auto* const name = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const api = static_cast<Gtk::Label*>(list_item->get_data("api"));
+    auto* const access = static_cast<Gtk::Label*>(list_item->get_data("access"));
 
     auto holder = std::dynamic_pointer_cast<ClientInfoHolder>(list_item->get_item());
 
-    id->set_text(std::to_string(holder->info.id));
+    id->set_text(Glib::ustring::format(holder->info.id));
     name->set_text(holder->info.name);
     api->set_text(holder->info.api);
     access->set_text(holder->info.access);
