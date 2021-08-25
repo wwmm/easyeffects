@@ -27,6 +27,7 @@
 #include <filesystem>
 #include "application.hpp"
 #include "util.hpp"
+#include "libportal/background.h"
 
 class GeneralSettingsUi : public Gtk::Box {
  public:

@@ -124,6 +124,7 @@ easyeffects_deps = [
 	dependency('speexdsp'),
 	dependency('nlohmann_json', required: true),
 	dependency('threads'),
+	dependency('libportal'),
 	zita_convolver,
 ]
 
