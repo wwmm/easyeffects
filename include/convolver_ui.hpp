@@ -49,7 +49,9 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  std::string log_tag = "convolver_ui: ";
+  const std::string log_tag = "convolver_ui: ";
+
+  const std::string irs_ext = ".irs";
 
   Gtk::SpinButton* ir_width = nullptr;
 
@@ -93,7 +95,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   void setup_listview();
 
-  auto get_irs_names() -> std::vector<std::string>;
+  auto get_irs_names() -> std::vector<Glib::ustring>;
 
   void import_irs_file(const std::string& file_path);
 

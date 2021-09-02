@@ -23,7 +23,7 @@
 #include "gtkmm/window.h"
 
 auto sigterm(void* data) -> bool {
-  auto* app = static_cast<Application*>(data);
+  auto* const app = static_cast<Application*>(data);
 
   for (const auto& w : app->get_windows()) {
     w->hide();

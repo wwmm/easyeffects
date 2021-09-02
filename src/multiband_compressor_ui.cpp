@@ -24,9 +24,9 @@ namespace {
 auto compressor_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Classic") == 0) {
+  if (g_strcmp0(v, "Classic") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Modern") == 0) {
+  } else if (g_strcmp0(v, "Modern") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -50,15 +50,15 @@ auto int_to_compressor_mode_enum(const GValue* value, const GVariantType* expect
 auto envelope_boost_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "None") == 0) {
+  if (g_strcmp0(v, "None") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Pink BT") == 0) {
+  } else if (g_strcmp0(v, "Pink BT") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Pink MT") == 0) {
+  } else if (g_strcmp0(v, "Pink MT") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Brown BT") == 0) {
+  } else if (g_strcmp0(v, "Brown BT") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "Brown MT") == 0) {
+  } else if (g_strcmp0(v, "Brown MT") == 0) {
     g_value_set_int(value, 4);
   }
 
@@ -91,11 +91,11 @@ auto int_to_envelope_boost_enum(const GValue* value, const GVariantType* expecte
 auto compression_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Downward") == 0) {
+  if (g_strcmp0(v, "Downward") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Upward") == 0) {
+  } else if (g_strcmp0(v, "Upward") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Boosting") == 0) {
+  } else if (g_strcmp0(v, "Boosting") == 0) {
     g_value_set_int(value, 2);
   }
 
@@ -122,13 +122,13 @@ auto int_to_compression_mode_enum(const GValue* value, const GVariantType* expec
 auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Peak") == 0) {
+  if (g_strcmp0(v, "Peak") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "RMS") == 0) {
+  } else if (g_strcmp0(v, "RMS") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Low-Pass") == 0) {
+  } else if (g_strcmp0(v, "Low-Pass") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Uniform") == 0) {
+  } else if (g_strcmp0(v, "Uniform") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -158,13 +158,13 @@ auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expecte
 auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Middle") == 0) {
+  if (g_strcmp0(v, "Middle") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Side") == 0) {
+  } else if (g_strcmp0(v, "Side") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Left") == 0) {
+  } else if (g_strcmp0(v, "Left") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Right") == 0) {
+  } else if (g_strcmp0(v, "Right") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -247,7 +247,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   for (uint n = 1U; n < n_bands; n++) {
     const auto& nstr = std::to_string(n);
 
-    auto* enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
+    auto* const enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
 
     settings->bind("enable-band" + nstr, enable_band, "active");
   }
@@ -262,7 +262,7 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
 
   stack->add(*ui, plugin_name::multiband_compressor);
@@ -277,7 +277,7 @@ void MultibandCompressorUi::prepare_bands() {
     const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
     if (n > 0U) {
-      auto* split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
+      auto* const split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
 
       settings->bind("split-frequency" + nstr, split_frequency->get_adjustment().get(), "value");
 
@@ -285,7 +285,7 @@ void MultibandCompressorUi::prepare_bands() {
     } else {
       // removing split frequency from band 0
 
-      auto* sf_box = builder->get_widget<Gtk::Box>("split_frequency_box");
+      auto* const sf_box = builder->get_widget<Gtk::Box>("split_frequency_box");
 
       for (auto* child = sf_box->get_last_child(); child != nullptr; child = sf_box->get_last_child()) {
         sf_box->remove(*child);
@@ -306,49 +306,49 @@ void MultibandCompressorUi::prepare_bands() {
 
     bands_curve_label.at(n) = builder->get_widget<Gtk::Label>("band_curve_label");
 
-    auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
+    auto* const band_bypass = builder->get_widget<Gtk::ToggleButton>("bypass");
 
-    auto* mute = builder->get_widget<Gtk::ToggleButton>("mute");
+    auto* const mute = builder->get_widget<Gtk::ToggleButton>("mute");
 
-    auto* solo = builder->get_widget<Gtk::ToggleButton>("solo");
+    auto* const solo = builder->get_widget<Gtk::ToggleButton>("solo");
 
-    auto* lowcut_filter = builder->get_widget<Gtk::CheckButton>("lowcut_filter");
+    auto* const lowcut_filter = builder->get_widget<Gtk::CheckButton>("lowcut_filter");
 
-    auto* highcut_filter = builder->get_widget<Gtk::CheckButton>("highcut_filter");
+    auto* const highcut_filter = builder->get_widget<Gtk::CheckButton>("highcut_filter");
 
-    auto* lowcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("lowcut_filter_frequency");
+    auto* const lowcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("lowcut_filter_frequency");
 
-    auto* highcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("highcut_filter_frequency");
+    auto* const highcut_filter_frequency = builder->get_widget<Gtk::SpinButton>("highcut_filter_frequency");
 
-    auto* attack_time = builder->get_widget<Gtk::SpinButton>("attack_time");
+    auto* const attack_time = builder->get_widget<Gtk::SpinButton>("attack_time");
 
-    auto* attack_threshold = builder->get_widget<Gtk::SpinButton>("attack_threshold");
+    auto* const attack_threshold = builder->get_widget<Gtk::SpinButton>("attack_threshold");
 
-    auto* release_time = builder->get_widget<Gtk::SpinButton>("release_time");
+    auto* const release_time = builder->get_widget<Gtk::SpinButton>("release_time");
 
-    auto* release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
+    auto* const release_threshold = builder->get_widget<Gtk::SpinButton>("release_threshold");
 
-    auto* ratio = builder->get_widget<Gtk::SpinButton>("ratio");
+    auto* const ratio = builder->get_widget<Gtk::SpinButton>("ratio");
 
-    auto* knee = builder->get_widget<Gtk::SpinButton>("knee");
+    auto* const knee = builder->get_widget<Gtk::SpinButton>("knee");
 
-    auto* makeup = builder->get_widget<Gtk::SpinButton>("makeup");
+    auto* const makeup = builder->get_widget<Gtk::SpinButton>("makeup");
 
-    auto* sidechain_preamp = builder->get_widget<Gtk::SpinButton>("sidechain_preamp");
+    auto* const sidechain_preamp = builder->get_widget<Gtk::SpinButton>("sidechain_preamp");
 
-    auto* sidechain_reactivity = builder->get_widget<Gtk::SpinButton>("sidechain_reactivity");
+    auto* const sidechain_reactivity = builder->get_widget<Gtk::SpinButton>("sidechain_reactivity");
 
-    auto* sidechain_lookahead = builder->get_widget<Gtk::SpinButton>("sidechain_lookahead");
+    auto* const sidechain_lookahead = builder->get_widget<Gtk::SpinButton>("sidechain_lookahead");
 
-    auto* boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
+    auto* const boost_amount = builder->get_widget<Gtk::SpinButton>("boost_amount");
 
-    auto* boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
+    auto* const boost_threshold = builder->get_widget<Gtk::SpinButton>("boost_threshold");
 
-    auto* compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
+    auto* const compression_mode = builder->get_widget<Gtk::ComboBoxText>("compression_mode");
 
-    auto* sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
+    auto* const sidechain_mode = builder->get_widget<Gtk::ComboBoxText>("sidechain_mode");
 
-    auto* sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
+    auto* const sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
 
     // gsettings bindings
 
@@ -458,7 +458,7 @@ void MultibandCompressorUi::prepare_bands() {
 
     // add to stack
 
-    auto* top_box = builder->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = builder->get_widget<Gtk::Box>("top_box");
 
     stack->add(*top_box, "band" + nstr);
   }
@@ -530,25 +530,25 @@ void MultibandCompressorUi::reset() {
   }
 }
 
-void MultibandCompressorUi::on_new_frequency_range(std::array<double, n_bands> values) {
+void MultibandCompressorUi::on_new_frequency_range(const std::array<float, n_bands>& values) {
   for (size_t n = 0U, m = values.size(); n < m; n++) {
     bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
   }
 }
 
-void MultibandCompressorUi::on_new_envelope(std::array<double, n_bands> values) {
+void MultibandCompressorUi::on_new_envelope(const std::array<float, n_bands>& values) {
   for (size_t n = 0U, m = values.size(); n < m; n++) {
     bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
-void MultibandCompressorUi::on_new_curve(std::array<double, n_bands> values) {
+void MultibandCompressorUi::on_new_curve(const std::array<float, n_bands>& values) {
   for (size_t n = 0U, m = values.size(); n < m; n++) {
     bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
-void MultibandCompressorUi::on_new_reduction(std::array<double, n_bands> values) {
+void MultibandCompressorUi::on_new_reduction(const std::array<float, n_bands>& values) {
   for (size_t n = 0U, m = values.size(); n < m; n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }

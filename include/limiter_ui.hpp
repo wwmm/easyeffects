@@ -20,7 +20,6 @@
 #ifndef LIMITER_UI_HPP
 #define LIMITER_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class LimiterUi : public Gtk::Box, public PluginUiBase {
@@ -37,10 +36,10 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi*;
 
-  void on_new_left_gain(double value);
-  void on_new_right_gain(double value);
-  void on_new_left_sidechain(double value);
-  void on_new_right_sidechain(double value);
+  void on_new_left_gain(const float& value);
+  void on_new_right_gain(const float& value);
+  void on_new_left_sidechain(const float& value);
+  void on_new_right_sidechain(const float& value);
 
   void reset() override;
 

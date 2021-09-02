@@ -147,7 +147,7 @@ void EchoCanceller::process(std::span<float>& left_in,
       deque_out_R.pop_front();
     }
   } else {
-    uint offset = left_out.size() - deque_out_L.size();
+    const uint offset = left_out.size() - deque_out_L.size();
 
     if (offset != latency_n_frames) {
       latency_n_frames = offset;
@@ -172,7 +172,7 @@ void EchoCanceller::process(std::span<float>& left_in,
   apply_gain(left_out, right_out, output_gain);
 
   if (notify_latency) {
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -225,7 +225,7 @@ void EchoCanceller::init_speex() {
   filtered_L.resize(blocksize);
   filtered_R.resize(blocksize);
 
-  uint filter_length = 0.001F * filter_length_ms * rate;
+  const uint filter_length = 0.001F * filter_length_ms * rate;
 
   util::debug(log_tag + name + " filter length: " + std::to_string(filter_length));
 

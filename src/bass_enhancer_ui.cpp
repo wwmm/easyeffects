@@ -72,7 +72,7 @@ BassEnhancerUi::~BassEnhancerUi() {
 auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassEnhancerUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<BassEnhancerUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<BassEnhancerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.bassenhancer", schema_path + "bassenhancer/");
 
   stack->add(*ui, plugin_name::bass_enhancer);
@@ -102,7 +102,7 @@ void BassEnhancerUi::reset() {
   settings->reset("listen");
 }
 
-void BassEnhancerUi::on_new_harmonics_level(double value) {
+void BassEnhancerUi::on_new_harmonics_level(const double& value) {
   harmonics_levelbar->set_value(value);
 
   harmonics_levelbar_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));

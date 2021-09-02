@@ -24,19 +24,19 @@ namespace {
 auto fft_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "256") == 0) {
+  if (g_strcmp0(v, "256") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "512") == 0) {
+  } else if (g_strcmp0(v, "512") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "1024") == 0) {
+  } else if (g_strcmp0(v, "1024") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "2048") == 0) {
+  } else if (g_strcmp0(v, "2048") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "4096") == 0) {
+  } else if (g_strcmp0(v, "4096") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "8192") == 0) {
+  } else if (g_strcmp0(v, "8192") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "16384") == 0) {
+  } else if (g_strcmp0(v, "16384") == 0) {
     g_value_set_int(value, 6);
   }
 
@@ -74,13 +74,13 @@ auto int_to_fft_size_enum(const GValue* value, const GVariantType* expected_type
 auto standard_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Flat") == 0) {
+  if (g_strcmp0(v, "Flat") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "ISO226-2003") == 0) {
+  } else if (g_strcmp0(v, "ISO226-2003") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Fletcher-Munson") == 0) {
+  } else if (g_strcmp0(v, "Fletcher-Munson") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Robinson-Dadson") == 0) {
+  } else if (g_strcmp0(v, "Robinson-Dadson") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -150,7 +150,7 @@ LoudnessUi::~LoudnessUi() {
 auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<LoudnessUi>(builder, "top_box", "com.github.wwmm.easyeffects.loudness",
+  auto* const ui = Gtk::Builder::get_widget_derived<LoudnessUi>(builder, "top_box", "com.github.wwmm.easyeffects.loudness",
                                                           schema_path + "loudness/");
 
   stack->add(*ui, plugin_name::loudness);

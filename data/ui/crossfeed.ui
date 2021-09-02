@@ -36,7 +36,6 @@
                 <child>
                     <object class="GtkButton" id="preset_jmeier">
                         <property name="label" translatable="yes">Jmeier</property>
-                        <property name="visible">True</property>
                         <property name="can-focus">True</property>
                         <property name="receives-default">True</property>
                     </object>

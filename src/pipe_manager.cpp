@@ -219,8 +219,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         nd->nd_info.device_id = std::stoi(device_id);
       }
 
-      node = nd->nd_info;
-
       if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
         for (uint i = 0U; i < info->n_params; i++) {
           if ((info->params[i].flags & SPA_PARAM_INFO_READ) == 0U) {
@@ -234,16 +232,20 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         }
       }
 
+      // sometimes PipeWire destroys the pointer before signal_idle is called,
+      // therefore we make a copy
+
+      NodeInfo nd_info_copy = nd->nd_info;
       auto* pm = nd->pm;
 
-      if (node.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([pm, node] { pm->stream_output_changed.emit(node); });
-      } else if (node.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([pm, node] { pm->stream_input_changed.emit(node); });
-      } else if (nd->nd_info.media_class == "Audio/Source") {
-        Glib::signal_idle().connect_once([pm, node] { pm->source_changed.emit(node); });
-      } else if (nd->nd_info.media_class == "Audio/Sink") {
-        Glib::signal_idle().connect_once([pm, node] { pm->sink_changed.emit(node); });
+      if (nd_info_copy.media_class == "Stream/Output/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Stream/Input/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Audio/Source") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Audio/Sink") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
       }
 
       break;
@@ -265,7 +267,7 @@ void on_node_event_param(void* object,
   if (param != nullptr) {
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
-    bool notify = false;
+    auto notify = false;
 
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
@@ -335,7 +337,7 @@ void on_node_event_param(void* object,
           break;
         }
         case SPA_PROP_mute: {
-          bool v = false;
+          auto v = false;
 
           if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
             for (auto& node : nd->pm->list_nodes) {
@@ -391,25 +393,28 @@ void on_node_event_param(void* object,
     }
 
     if (notify) {
+      // sometimes PipeWire destroys the pointer before signal_idle is called,
+      // therefore we make a copy
+
+      NodeInfo nd_info_copy = nd->nd_info;
       auto* pm = nd->pm;
-      NodeInfo nd_info = nd->nd_info;  // sometimes PipeWire destroys the pointer before signal_idle is called
 
-      if (nd_info.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_changed.emit(nd_info); });
-      } else if (nd_info.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_changed.emit(nd_info); });
-      } else if (nd_info.media_class == "Audio/Source/Virtual") {
-        if (nd_info.id == pm->pe_source_node.id) {
-          pm->pe_source_node = nd_info;
+      if (nd_info_copy.media_class == "Stream/Output/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Stream/Input/Audio") {
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Audio/Source/Virtual") {
+        if (nd_info_copy.id == pm->pe_source_node.id) {
+          pm->pe_source_node = nd_info_copy;
         }
 
-        Glib::signal_idle().connect_once([pm, nd_info] { pm->source_changed.emit(nd_info); });
-      } else if (nd_info.media_class == "Audio/Sink") {
-        if (nd_info.id == pm->pe_sink_node.id) {
-          pm->pe_sink_node = nd_info;
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
+      } else if (nd_info_copy.media_class == "Audio/Sink") {
+        if (nd_info_copy.id == pm->pe_sink_node.id) {
+          pm->pe_sink_node = nd_info_copy;
         }
 
-        Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_changed.emit(nd_info); });
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
       }
     }
   }
@@ -419,15 +424,15 @@ void on_link_info(void* object, const struct pw_link_info* info) {
   auto* ld = static_cast<proxy_data*>(object);
   auto* pm = ld->pm;
 
-  LinkInfo link;
+  LinkInfo link_copy;
 
   for (auto& l : ld->pm->list_links) {
     if (l.id == ld->id) {
       l.state = info->state;
 
-      link = l;
+      link_copy = l;
 
-      Glib::signal_idle().connect_once([pm, link] { pm->link_changed.emit(link); });
+      Glib::signal_idle().connect_once([pm, link_copy] { pm->link_changed.emit(link_copy); });
 
       // util::warning(pw_link_state_as_string(l.state));
 
@@ -619,9 +624,9 @@ void on_destroy_device_proxy(void* data) {
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* pm = static_cast<PipeManager*>(data);
 
-  std::string str_key = (key != nullptr) ? key : std::string();
-  std::string str_type = (type != nullptr) ? type : std::string();
-  std::string str_value = (value != nullptr) ? value :std::string();
+  const std::string str_key = (key != nullptr) ? key : std::string();
+  const std::string str_type = (type != nullptr) ? type : std::string();
+  const std::string str_value = (value != nullptr) ? value :std::string();
 
   util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
               ", " + str_value);
@@ -773,7 +778,7 @@ void on_registry_global(void* data,
     }
 
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
-      std::string media_class = key_media_class;
+      const std::string media_class = key_media_class;
 
       if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Source/Virtual" ||
           media_class == "Stream/Output/Audio" || media_class == "Stream/Input/Audio") {
@@ -783,7 +788,7 @@ void on_registry_global(void* data,
           return;
         }
 
-        std::string name = node_name;
+        const std::string name = node_name;
 
         if (name.empty()) {
           return;
@@ -824,16 +829,19 @@ void on_registry_global(void* data,
 
         util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
 
-        NodeInfo nd_info = pd->nd_info;
+        // sometimes PipeWire destroys the pointer before signal_idle is called,
+        // therefore we make a copy
 
-        if (media_class == "Audio/Source" && nd_info.name != "easyeffects_source") {
-          Glib::signal_idle().connect_once([pm, nd_info] { pm->source_added.emit(nd_info); });
-        } else if (media_class == "Audio/Sink" && nd_info.name != "easyeffects_sink") {
-          Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_added.emit(nd_info); });
+        NodeInfo nd_info_copy = pd->nd_info;
+
+        if (media_class == "Audio/Source" && nd_info_copy.name != "easyeffects_source") {
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
+        } else if (media_class == "Audio/Sink" && nd_info_copy.name != "easyeffects_sink") {
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == "Stream/Output/Audio") {
-          Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_added.emit(nd_info); });
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_added.emit(nd_info_copy); });
         } else if (media_class == "Stream/Input/Audio") {
-          Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_added.emit(nd_info); });
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_added.emit(nd_info_copy); });
         }
       }
     }
@@ -859,8 +867,8 @@ void on_registry_global(void* data,
 
     pm->list_links.emplace_back(link_info);
 
-    bool found_input = false;
-    bool found_output = false;
+    auto found_input = false;
+    auto found_output = false;
     NodeInfo input_node;
     NodeInfo output_node;
 
@@ -959,7 +967,7 @@ void on_registry_global(void* data,
         return;
       }
 
-      if (std::strcmp(name, "default") == 0) {
+      if (g_strcmp0(name, "default") == 0) {
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
         pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
@@ -971,7 +979,7 @@ void on_registry_global(void* data,
 
   if (strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
-      std::string media_class = key_media_class;
+      const std::string media_class = key_media_class;
 
       if (media_class == "Audio/Device") {
         auto* proxy =
@@ -1272,7 +1280,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
   std::vector<pw_proxy*> list;
   std::vector<PortInfo> list_output_ports;
   std::vector<PortInfo> list_input_ports;
-  bool use_audio_channel = true;
+  auto use_audio_channel = true;
 
   for (const auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
@@ -1399,7 +1407,7 @@ void PipeManager::destroy_links(const std::vector<pw_proxy*>& list) const {
   https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/spa/include/spa/utils/json.h#L350
 */
 
-auto PipeManager::json_object_find(const char* obj, const char* key, char* value, size_t len) -> int {
+auto PipeManager::json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int {
   const char* v = nullptr;
 
   std::array<spa_json, 2> sjson{};

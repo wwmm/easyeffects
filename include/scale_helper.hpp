@@ -21,17 +21,13 @@
 #define SCALE_HELPER_HPP
 
 #include <gtkmm.h>
-#include <sstream>
 
 inline auto prepare_scale(Gtk::Scale* scale, const std::string& unit) {
-  scale->set_format_value_func([=](double value) {
-    std::ostringstream str;
+  scale->set_format_value_func([=](const auto& value) {
+    const auto& v_str = Glib::ustring::format(std::setprecision(scale->get_digits()), std::fixed,
+                                              scale->get_adjustment()->get_value());
 
-    str.precision(scale->get_digits());
-
-    str << std::fixed << scale->get_adjustment()->get_value() << " " << unit;
-
-    return str.str();
+    return v_str + ((unit.empty()) ? "" : (" " + unit));
   });
 }
 

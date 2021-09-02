@@ -18,24 +18,23 @@
  */
 
 #include "reverb_ui.hpp"
-#include <cstring>
 
 namespace {
 
 auto room_size_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Small") == 0) {
+  if (g_strcmp0(v, "Small") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Medium") == 0) {
+  } else if (g_strcmp0(v, "Medium") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Large") == 0) {
+  } else if (g_strcmp0(v, "Large") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Tunnel-like") == 0) {
+  } else if (g_strcmp0(v, "Tunnel-like") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "Large/smooth") == 0) {
+  } else if (g_strcmp0(v, "Large/smooth") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "Experimental") == 0) {
+  } else if (g_strcmp0(v, "Experimental") == 0) {
     g_value_set_int(value, 5);
   }
 
@@ -138,7 +137,7 @@ ReverbUi::~ReverbUi() {
 auto ReverbUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/reverb.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<ReverbUi>(builder, "top_box", "com.github.wwmm.easyeffects.reverb",
+  auto* const ui = Gtk::Builder::get_widget_derived<ReverbUi>(builder, "top_box", "com.github.wwmm.easyeffects.reverb",
                                                         schema_path + "reverb/");
 
   stack->add(*ui, plugin_name::reverb);

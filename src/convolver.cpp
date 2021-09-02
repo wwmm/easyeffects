@@ -212,7 +212,7 @@ void Convolver::process(std::span<float>& left_in,
         deque_out_R.pop_front();
       }
     } else {
-      uint offset = 2 * (left_out.size() - deque_out_L.size());
+      const uint offset = 2U * (left_out.size() - deque_out_L.size());
 
       if (offset != latency_n_frames) {
         latency_n_frames = offset;
@@ -238,7 +238,7 @@ void Convolver::process(std::span<float>& left_in,
   apply_gain(left_out, right_out, output_gain);
 
   if (notify_latency) {
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -279,13 +279,15 @@ void Convolver::read_kernel_file() {
 
   const auto& path = settings->get_string("kernel-path");
 
-  if (path.c_str() == nullptr) {
+  if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
 
     return;
   }
 
-  SndfileHandle file = SndfileHandle(path);
+  // SndfileHandle might have issues with std::string, so we provide cstring
+
+  SndfileHandle file = SndfileHandle(path.c_str());
 
   if (file.channels() == 0 || file.frames() == 0) {
     util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path);
@@ -344,10 +346,12 @@ void Convolver::apply_kernel_autogain() {
     return;
   }
 
-  float abs_peak_L = std::ranges::max(kernel_L, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
-  float abs_peak_R = std::ranges::max(kernel_R, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
+  const float abs_peak_L =
+      std::ranges::max(kernel_L, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
+  const float abs_peak_R =
+      std::ranges::max(kernel_R, [](const auto& a, const auto& b) { return (std::fabs(a) < std::fabs(b)); });
 
-  float peak = (abs_peak_L > abs_peak_R) ? abs_peak_L : abs_peak_R;
+  const float peak = (abs_peak_L > abs_peak_R) ? abs_peak_L : abs_peak_R;
 
   // normalize
 
@@ -363,7 +367,7 @@ void Convolver::apply_kernel_autogain() {
 
   power *= 0.5F;
 
-  float autogain = std::min(1.0F, 1.0F / sqrtf(power));
+  const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
 
   util::debug(log_tag + "autogain factor: " + std::to_string(autogain));
 
@@ -376,12 +380,12 @@ void Convolver::apply_kernel_autogain() {
    taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
 */
 void Convolver::set_kernel_stereo_width() {
-  float w = static_cast<float>(ir_width) * 0.01F;
-  float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
+  const float w = static_cast<float>(ir_width) * 0.01F;
+  const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
   for (uint i = 0U, okl_size = original_kernel_L.size(); i < okl_size; i++) {
-    float L = original_kernel_L[i];
-    float R = original_kernel_R[i];
+    const auto& L = original_kernel_L[i];
+    const auto& R = original_kernel_R[i];
 
     kernel_L[i] = L + x * R;
     kernel_R[i] = R + x * L;
@@ -396,9 +400,9 @@ void Convolver::setup_zita() {
   }
 
   int ret = 0;
-  uint max_convolution_size = kernel_L.size();
-  uint buffer_size = get_zita_buffer_size();
-  float density = 0.0F;
+  const uint max_convolution_size = kernel_L.size();
+  const uint buffer_size = get_zita_buffer_size();
+  const float density = 0.0F;
 
   if (conv == nullptr) {
     conv = new Convproc();

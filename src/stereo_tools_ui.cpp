@@ -18,26 +18,25 @@
  */
 
 #include "stereo_tools_ui.hpp"
-#include <cstring>
 
 namespace {
 
 auto stereo_tools_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "LR > LR (Stereo Default)") == 0) {
+  if (g_strcmp0(v, "LR > LR (Stereo Default)") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "LR > MS (Stereo to Mid-Side)") == 0) {
+  } else if (g_strcmp0(v, "LR > MS (Stereo to Mid-Side)") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "MS > LR (Mid-Side to Stereo)") == 0) {
+  } else if (g_strcmp0(v, "MS > LR (Mid-Side to Stereo)") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "LR > LL (Mono Left Channel)") == 0) {
+  } else if (g_strcmp0(v, "LR > LL (Mono Left Channel)") == 0) {
     g_value_set_int(value, 3);
-  } else if (std::strcmp(v, "LR > RR (Mono Right Channel)") == 0) {
+  } else if (g_strcmp0(v, "LR > RR (Mono Right Channel)") == 0) {
     g_value_set_int(value, 4);
-  } else if (std::strcmp(v, "LR > L+R (Mono Sum L+R)") == 0) {
+  } else if (g_strcmp0(v, "LR > L+R (Mono Sum L+R)") == 0) {
     g_value_set_int(value, 5);
-  } else if (std::strcmp(v, "LR > RL (Stereo Flip Channels)") == 0) {
+  } else if (g_strcmp0(v, "LR > RL (Stereo Flip Channels)") == 0) {
     g_value_set_int(value, 6);
   }
 
@@ -151,7 +150,7 @@ StereoToolsUi::~StereoToolsUi() {
 auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.stereotools", schema_path + "stereotools/");
 
   stack->add(*ui, plugin_name::stereo_tools);
@@ -199,7 +198,7 @@ void StereoToolsUi::reset() {
   settings->reset("stereo-phase");
 }
 
-void StereoToolsUi::on_new_phase_correlation(double value) {
+void StereoToolsUi::on_new_phase_correlation(const double& value) {
   meter_phase_levelbar->set_value(value);
 
   meter_phase_label->set_text(level_to_localized_string(value, 0));

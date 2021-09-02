@@ -36,7 +36,7 @@ class GateUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi*;
 
-  void on_new_gating(double value);
+  void on_new_gating(const double& value);
 
   void reset() override;
 

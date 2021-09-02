@@ -83,11 +83,9 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   // signals connections
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    if (const auto& name = stack_top->get_visible_child_name(); name == "page_players") {
-      menubutton_blocklist->set_visible(true);
-    } else {
-      menubutton_blocklist->set_visible(false);
-    }
+    const auto& name = stack_top->get_visible_child_name();
+
+    menubutton_blocklist->set_visible((name == "page_players") ? true : false);
   });
 
   toggle_players->signal_toggled().connect([&, this]() {
@@ -139,13 +137,13 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       false);
 
   popover_blocklist->signal_show().connect([=, this]() {
-    int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
+    const int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
 
     blocklist_scrolled_window->set_max_content_height(height);
   });
 
   popover_plugins->signal_show().connect([=, this]() {
-    int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
+    const int height = static_cast<int>(0.5F * static_cast<float>(stack_top->get_allocated_height()));
 
     scrolled_window_plugins->set_max_content_height(height);
   });
@@ -178,23 +176,15 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](const float& v) {
-    std::ostringstream str;
+  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
+    const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, v);
 
-    str.precision(1);
-
-    str << std::fixed << v << " ms" << std::string(5, ' ');
-
-    latency_status->set_text(str.str());
+    latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
   }));
 
-  std::ostringstream str;
+  const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, effects_base->get_pipeline_latency());
 
-  str.precision(1);
-
-  str << std::fixed << effects_base->get_pipeline_latency() << " ms" << std::string(5, ' ');
-
-  latency_status->set_text(str.str());
+  latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -269,7 +259,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // removing plugins that are not in the list
 
   for (auto* child = stack_plugins->get_first_child(); child != nullptr;) {
-    bool found = false;
+    auto found = false;
 
     for (const auto& name : settings->get_string_array("plugins")) {
       if (name == stack_plugins->get_page(*child)->get_name()) {
@@ -291,7 +281,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
   // Adding to the stack the plugins in the list that are not there yet
 
   for (const auto& name : settings->get_string_array("plugins")) {
-    bool found = false;
+    auto found = false;
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       if (name == stack_plugins->get_page(*child)->get_name()) {
@@ -306,7 +296,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
     }
 
     if (name == plugin_name::autogain) {
-      auto* autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
+      auto* const autogain_ui = AutoGainUi::add_to_stack(stack_plugins, path);
 
       autogain_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->autogain->bypass = autogain_ui->bypass->get_active(); });
@@ -317,7 +307,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->autogain->bypass = false;
     } else if (name == plugin_name::bass_enhancer) {
-      auto* bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
+      auto* const bass_enhancer_ui = BassEnhancerUi::add_to_stack(stack_plugins, path);
 
       bass_enhancer_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->bass_enhancer->bypass = bass_enhancer_ui->bypass->get_active(); });
@@ -331,7 +321,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->bass_enhancer->bypass = false;
     } else if (name == plugin_name::bass_loudness) {
-      auto* bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
+      auto* const bass_loudness_ui = BassLoudnessUi::add_to_stack(stack_plugins, path);
 
       bass_loudness_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->bass_loudness->bypass = bass_loudness_ui->bypass->get_active(); });
@@ -343,7 +333,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->bass_loudness->bypass = false;
     } else if (name == plugin_name::compressor) {
-      auto* compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
+      auto* const compressor_ui = CompressorUi::add_to_stack(stack_plugins, path);
 
       compressor_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->compressor->bypass = compressor_ui->bypass->get_active(); });
@@ -359,7 +349,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->compressor->bypass = false;
     } else if (name == plugin_name::convolver) {
-      auto* convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
+      auto* const convolver_ui = ConvolverUi::add_to_stack(stack_plugins, path);
 
       convolver_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->convolver->bypass = convolver_ui->bypass->get_active(); });
@@ -371,7 +361,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->convolver->bypass = false;
     } else if (name == plugin_name::crossfeed) {
-      auto* crossfeed_ui = CrossfeedUi::add_to_stack(stack_plugins, path);
+      auto* const crossfeed_ui = CrossfeedUi::add_to_stack(stack_plugins, path);
 
       crossfeed_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->crossfeed->bypass = crossfeed_ui->bypass->get_active(); });
@@ -381,7 +371,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->crossfeed->bypass = false;
     } else if (name == plugin_name::crystalizer) {
-      auto* crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
+      auto* const crystalizer_ui = CrystalizerUi::add_to_stack(stack_plugins, path);
 
       crystalizer_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->crystalizer->bypass = crystalizer_ui->bypass->get_active(); });
@@ -393,7 +383,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->crystalizer->bypass = false;
     } else if (name == plugin_name::deesser) {
-      auto* deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
+      auto* const deesser_ui = DeesserUi::add_to_stack(stack_plugins, path);
 
       deesser_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->deesser->bypass = deesser_ui->bypass->get_active(); });
@@ -405,7 +395,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->deesser->bypass = false;
     } else if (name == plugin_name::delay) {
-      auto* delay_ui = DelayUi::add_to_stack(stack_plugins, path);
+      auto* const delay_ui = DelayUi::add_to_stack(stack_plugins, path);
 
       delay_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->delay->bypass = delay_ui->bypass->get_active(); });
@@ -415,7 +405,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->delay->bypass = false;
     } else if (name == plugin_name::echo_canceller) {
-      auto* echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
+      auto* const echo_canceller_ui = EchoCancellerUi::add_to_stack(stack_plugins, path);
 
       echo_canceller_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->echo_canceller->bypass = echo_canceller_ui->bypass->get_active(); });
@@ -427,7 +417,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->echo_canceller->bypass = false;
     } else if (name == plugin_name::equalizer) {
-      auto* equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
+      auto* const equalizer_ui = EqualizerUi::add_to_stack(stack_plugins, path);
 
       equalizer_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->equalizer->bypass = equalizer_ui->bypass->get_active(); });
@@ -439,7 +429,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->equalizer->bypass = false;
     } else if (name == plugin_name::exciter) {
-      auto* exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
+      auto* const exciter_ui = ExciterUi::add_to_stack(stack_plugins, path);
 
       exciter_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->exciter->bypass = exciter_ui->bypass->get_active(); });
@@ -450,7 +440,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->exciter->bypass = false;
     } else if (name == plugin_name::filter) {
-      auto* filter_ui = FilterUi::add_to_stack(stack_plugins, path);
+      auto* const filter_ui = FilterUi::add_to_stack(stack_plugins, path);
 
       filter_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->filter->bypass = filter_ui->bypass->get_active(); });
@@ -460,7 +450,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->filter->bypass = false;
     } else if (name == plugin_name::gate) {
-      auto* gate_ui = GateUi::add_to_stack(stack_plugins, path);
+      auto* const gate_ui = GateUi::add_to_stack(stack_plugins, path);
 
       gate_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->gate->bypass = gate_ui->bypass->get_active(); });
@@ -471,7 +461,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->gate->bypass = false;
     } else if (name == plugin_name::limiter) {
-      auto* limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
+      auto* const limiter_ui = LimiterUi::add_to_stack(stack_plugins, path);
 
       limiter_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->limiter->bypass = limiter_ui->bypass->get_active(); });
@@ -487,7 +477,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->limiter->bypass = false;
     } else if (name == plugin_name::loudness) {
-      auto* loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
+      auto* const loudness_ui = LoudnessUi::add_to_stack(stack_plugins, path);
 
       loudness_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->loudness->bypass = loudness_ui->bypass->get_active(); });
@@ -497,7 +487,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->loudness->bypass = false;
     } else if (name == plugin_name::maximizer) {
-      auto* maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
+      auto* const maximizer_ui = MaximizerUi::add_to_stack(stack_plugins, path);
 
       maximizer_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->maximizer->bypass = maximizer_ui->bypass->get_active(); });
@@ -508,7 +498,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->maximizer->bypass = false;
     } else if (name == plugin_name::multiband_compressor) {
-      auto* multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
+      auto* const multiband_compressor_ui = MultibandCompressorUi::add_to_stack(stack_plugins, path);
 
       multiband_compressor_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->multiband_compressor->bypass = multiband_compressor_ui->bypass->get_active(); });
@@ -520,19 +510,16 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->multiband_compressor->frequency_range.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_frequency_range));
-
       effects_base->multiband_compressor->envelope.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_envelope));
-
       effects_base->multiband_compressor->curve.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_curve));
-
       effects_base->multiband_compressor->reduction.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_reduction));
 
       effects_base->multiband_compressor->bypass = false;
     } else if (name == plugin_name::multiband_gate) {
-      auto* multiband_gate_ui = MultibandGateUi::add_to_stack(stack_plugins, path);
+      auto* const multiband_gate_ui = MultibandGateUi::add_to_stack(stack_plugins, path);
 
       multiband_gate_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->multiband_gate->bypass = multiband_gate_ui->bypass->get_active(); });
@@ -562,7 +549,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->multiband_gate->bypass = false;
     } else if (name == plugin_name::pitch) {
-      auto* pitch_ui = PitchUi::add_to_stack(stack_plugins, path);
+      auto* const pitch_ui = PitchUi::add_to_stack(stack_plugins, path);
 
       pitch_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->pitch->bypass = pitch_ui->bypass->get_active(); });
@@ -572,7 +559,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->pitch->bypass = false;
     } else if (name == plugin_name::reverb) {
-      auto* reverb_ui = ReverbUi::add_to_stack(stack_plugins, path);
+      auto* const reverb_ui = ReverbUi::add_to_stack(stack_plugins, path);
 
       reverb_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->reverb->bypass = reverb_ui->bypass->get_active(); });
@@ -582,7 +569,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->reverb->bypass = false;
     } else if (name == plugin_name::rnnoise) {
-      auto* rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
+      auto* const rnnoise_ui = RNNoiseUi::add_to_stack(stack_plugins, path);
 
       rnnoise_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->rnnoise->bypass = rnnoise_ui->bypass->get_active(); });
@@ -594,7 +581,7 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 
       effects_base->rnnoise->bypass = false;
     } else if (name == plugin_name::stereo_tools) {
-      auto* stereo_tools_ui = StereoToolsUi::add_to_stack(stack_plugins, path);
+      auto* const stereo_tools_ui = StereoToolsUi::add_to_stack(stack_plugins, path);
 
       stereo_tools_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->stereo_tools->bypass = stereo_tools_ui->bypass->get_active(); });
@@ -625,7 +612,7 @@ void EffectsBaseUi::setup_listview_players() {
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
 
-    auto* top_box = b->get_widget<Gtk::Box>("top_box");
+    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
     list_item->set_data("enable", b->get_widget<Gtk::Switch>("enable"));
     list_item->set_data("app_icon", b->get_widget<Gtk::Image>("app_icon"));
@@ -645,35 +632,31 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
-    auto* media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
-    auto* format = static_cast<Gtk::Label*>(list_item->get_data("format"));
-    auto* rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
-    auto* channels = static_cast<Gtk::Label*>(list_item->get_data("channels"));
-    auto* latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
-    auto* state = static_cast<Gtk::Label*>(list_item->get_data("state"));
-    auto* enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
-    auto* app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
-    auto* scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
-    auto* volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
-    auto* mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
-    auto* blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
+    auto* const app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
+    auto* const media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
+    auto* const format = static_cast<Gtk::Label*>(list_item->get_data("format"));
+    auto* const rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
+    auto* const channels = static_cast<Gtk::Label*>(list_item->get_data("channels"));
+    auto* const latency = static_cast<Gtk::Label*>(list_item->get_data("latency"));
+    auto* const state = static_cast<Gtk::Label*>(list_item->get_data("state"));
+    auto* const enable = static_cast<Gtk::Switch*>(list_item->get_data("enable"));
+    auto* const app_icon = static_cast<Gtk::Image*>(list_item->get_data("app_icon"));
+    auto* const scale_volume = static_cast<Gtk::Scale*>(list_item->get_data("scale_volume"));
+    auto* const volume = static_cast<Gtk::Adjustment*>(list_item->get_data("volume"));
+    auto* const mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
+    auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
     auto connection_enable = enable->signal_state_set().connect(
         [=, this](const auto& state) {
-          if (state) {
-            connect_stream(holder);
-          } else {
-            disconnect_stream(holder);
+          if (!app_is_blocklisted(holder->info.name)) {
+            (state) ? connect_stream(holder->info) : disconnect_stream(holder->info);
+
+            enabled_app_list.insert_or_assign(holder->info.id, state);
           }
 
-          holder->enabled = state;
-
-          if (!holder->app_blocklisted) {
-            holder->pre_blocklisted_state = state;
-          }
+          holder->info_updated.emit(holder->info);
 
           return false;
         },
@@ -683,7 +666,7 @@ void EffectsBaseUi::setup_listview_players() {
         [=]() { PipeManager::set_node_volume(holder->info, static_cast<float>(volume->get_value()) / 100.0F); });
 
     auto connection_mute = mute->signal_toggled().connect([=]() {
-      bool state = mute->get_active();
+      const auto& state = mute->get_active();
 
       if (state) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
@@ -698,143 +681,82 @@ void EffectsBaseUi::setup_listview_players() {
       PipeManager::set_node_mute(holder->info, state);
     });
 
-    auto connection_blocklist = blocklist->signal_toggled().connect([=, this]() {
+    auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
+        enabled_app_list.insert_or_assign(holder->info.id, enable->get_active());
+
         add_new_blocklist_entry(holder->info.name);
-
-        holder->app_blocklisted = true;
-
-        holder->pre_blocklisted_state = holder->enabled;
-
-        holder->enabled = false;
-
-        enable->set_active(false);
-
-        enable->set_sensitive(false);
       } else {
         remove_blocklist_entry(holder->info.name);
-
-        holder->app_blocklisted = false;
-
-        holder->enabled = holder->pre_blocklisted_state;
-
-        holder->pre_blocklisted_state = holder->enabled;
-
-        enable->set_sensitive(true);
-
-        enable->set_active(holder->enabled);
-
-        if (holder->enabled) {
-          // restore the state the app had before it was added to the blocklist
-
-          connect_stream(holder);
-        }
       }
+
+      // Stream connection/disconnection will be done in blocklist items signal changed
     });
 
     auto* pointer_connection_enable = new sigc::connection(connection_enable);
     auto* pointer_connection_volume = new sigc::connection(connection_volume);
     auto* pointer_connection_mute = new sigc::connection(connection_mute);
-    auto* pointer_connection_blocklist = new sigc::connection(connection_blocklist);
+    auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
-    auto connection_info = holder->info_updated.connect([=, this](const NodeInfo& i) {
+    auto connection_info = holder->info_updated.connect([=, this](NodeInfo i) {
       app_name->set_text(i.name);
       media_name->set_text(i.media_name);
       format->set_text(i.format);
-      rate->set_text(std::to_string(i.rate) + " Hz");
-      channels->set_text(std::to_string(i.n_volume_channels));
-      latency->set_text(float_to_localized_string(i.latency, 2) + " s");
+      rate->set_text(Glib::ustring::format(i.rate) + " Hz");
+      channels->set_text(Glib::ustring::format(i.n_volume_channels));
+      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, i.latency) + " s");
+      state->set_text(node_state_to_ustring(i.state));
 
-      bool icon_available = false;
+      if (i.state != PW_NODE_STATE_CREATING) {
+        // For unknown reasons PW_NODE_STATE_CREATING causes icon name to be set even if it's empty,
+        // showing a broken image. Therefore we skip it's update on that state.
 
-      if (!i.app_icon_name.empty()) {
-        app_icon->set_from_icon_name(i.app_icon_name);
+        if (!i.app_icon_name.empty()) {
+          app_icon->set_from_icon_name(i.app_icon_name);
 
-        icon_available = true;
-      } else if (!i.media_icon_name.empty()) {
-        app_icon->set_from_icon_name(i.media_icon_name);
+          app_icon->set_visible(true);
+        } else if (!i.media_icon_name.empty()) {
+          app_icon->set_from_icon_name(i.media_icon_name);
 
-        icon_available = true;
-      } else {
-        auto str = i.name;
+          app_icon->set_visible(true);
+        } else {
+          app_icon->set_from_icon_name(Glib::ustring(i.name).lowercase());
 
-        // We need this to make Firefox icon visible =/
-
-        std::transform(str.begin(), str.end(), str.begin(), ::tolower);
-
-        app_icon->set_from_icon_name(str);
-
-        icon_available = true;
-      }
-
-      // Hide icon if not provided
-
-      app_icon->set_opacity((icon_available) ? 1.0 : 0.0);
-
-      switch (i.state) {
-        case PW_NODE_STATE_RUNNING:
-          state->set_text(_("running"));
-
-          break;
-        case PW_NODE_STATE_SUSPENDED:
-          state->set_text(_("suspended"));
-
-          break;
-        case PW_NODE_STATE_IDLE:
-          state->set_text(_("idle"));
-
-          break;
-        case PW_NODE_STATE_CREATING:
-          state->set_text(_("creating"));
-
-          break;
-        case PW_NODE_STATE_ERROR:
-          state->set_text(_("error"));
-
-          break;
-        default:
-          break;
+          app_icon->set_visible(true);
+        }
       }
 
       // initializing the switch
 
       pointer_connection_enable->block();
 
-      bool is_enabled = false;
+      const auto& is_enabled = app_is_enabled(holder->info);
+      const auto& is_blocklisted = app_is_blocklisted(holder->info.name);
 
-      if (holder->info.media_class == "Stream/Output/Audio") {
-        for (const auto& link : pm->list_links) {
-          if (link.output_node_id == holder->info.id && link.input_node_id == pm->pe_sink_node.id) {
-            is_enabled = true;
-
-            break;
-          }
-        }
-      } else if (holder->info.media_class == "Stream/Input/Audio") {
-        for (const auto& link : pm->list_links) {
-          if (link.output_node_id == pm->pe_source_node.id && link.input_node_id == holder->info.id) {
-            is_enabled = true;
-
-            break;
-          }
-        }
-      }
-
-      holder->app_blocklisted = app_is_blocklisted(holder->info.name);
-      holder->enabled = !holder->app_blocklisted && is_enabled;
-
-      enable->set_active(holder->enabled);
-      enable->set_sensitive(!holder->app_blocklisted);
+      enable->set_sensitive(is_enabled || !is_blocklisted);
+      enable->set_active(is_enabled);
 
       pointer_connection_enable->unblock();
 
+      // save app enabled state only the first time when is not preset in the map
+
+      enabled_app_list.try_emplace(holder->info.id, is_enabled);
+
       // initializing the volume slide
 
-      pointer_connection_volume->block();
+      if (i.state != PW_NODE_STATE_CREATING) {
+        // Volume can't be set on PW_NODE_STATE_CREATING, so we leave it hidden on this state
 
-      volume->set_value(100 * holder->info.volume);
+        pointer_connection_volume->block();
 
-      pointer_connection_volume->unblock();
+        scale_volume->set_visible(true);
+
+        scale_volume->set_sensitive(true);
+
+        volume->set_value(100 * holder->info.volume);
+
+        pointer_connection_volume->unblock();
+      }
 
       // initializing the mute button
 
@@ -856,14 +778,16 @@ void EffectsBaseUi::setup_listview_players() {
 
       // initializing the blocklist checkbutton
 
-      pointer_connection_blocklist->block();
+      pointer_connection_blocklist_checkbutton->block();
 
-      blocklist->set_active(holder->app_blocklisted);
+      blocklist->set_active(is_blocklisted);
 
-      pointer_connection_blocklist->unblock();
+      pointer_connection_blocklist_checkbutton->unblock();
     });
 
-    scale_volume->set_format_value_func([=](double v) { return std::to_string(static_cast<int>(v)) + " %"; });
+    scale_volume->set_format_value_func([=](const auto& v) {
+      return Glib::ustring::format(static_cast<int>(v)) + " %";
+    });
 
     holder->info_updated.emit(holder->info);
 
@@ -873,7 +797,7 @@ void EffectsBaseUi::setup_listview_players() {
 
     list_item->set_data("connection_mute", pointer_connection_mute, Glib::destroy_notify_delete<sigc::connection>);
 
-    list_item->set_data("connection_blocklist", pointer_connection_blocklist,
+    list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
                         Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_info", new sigc::connection(connection_info),
@@ -881,8 +805,12 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn :
-         {"connection_enable", "connection_volume", "connection_mute", "connection_blocklist", "connection_info"}) {
+    const auto& connections_list = {
+      "connection_enable", "connection_volume", "connection_mute",
+      "connection_blocklist_checkbutton", "connection_info"
+    };
+
+    for (const auto* conn : connections_list) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
         connection->disconnect();
 
@@ -892,19 +820,19 @@ void EffectsBaseUi::setup_listview_players() {
   });
 }
 
-void EffectsBaseUi::connect_stream(const std::shared_ptr<NodeInfoHolder>& holder) {
-  if (holder->info.media_class == "Stream/Output/Audio") {
-    pm->connect_stream_output(holder->info);
-  } else if (holder->info.media_class == "Stream/Input/Audio") {
-    pm->connect_stream_input(holder->info);
+void EffectsBaseUi::connect_stream(const NodeInfo& node_info) {
+  if (node_info.media_class == "Stream/Output/Audio") {
+    pm->connect_stream_output(node_info);
+  } else if (node_info.media_class == "Stream/Input/Audio") {
+    pm->connect_stream_input(node_info);
   }
 }
 
-void EffectsBaseUi::disconnect_stream(const std::shared_ptr<NodeInfoHolder>& holder) {
-  if (holder->info.media_class == "Stream/Output/Audio") {
-    pm->disconnect_stream_output(holder->info);
-  } else if (holder->info.media_class == "Stream/Input/Audio") {
-    pm->disconnect_stream_input(holder->info);
+void EffectsBaseUi::disconnect_stream(const NodeInfo& node_info) {
+  if (node_info.media_class == "Stream/Output/Audio") {
+    pm->disconnect_stream_output(node_info);
+  } else if (node_info.media_class == "Stream/Input/Audio") {
+    pm->disconnect_stream_input(node_info);
   }
 }
 
@@ -922,7 +850,11 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
+    util::debug("blocklist->signal_items_changed");
+
     if (removed > 0U) {
+      // Some items removed from the blocklist, so the listview_players might show an item hidden before
+
       players_model->remove_all();
 
       listview_players->set_model(nullptr);
@@ -933,14 +865,44 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
       listview_players->set_model(Gtk::NoSelection::create(players_model));
     }
+
+    // Updating the enabled state of items added/removed to/from blocklist
+
+    for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
+      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(all_players_model->get_item(n));
+
+      if (app_is_blocklisted(holder->info.name)) {
+        if (app_is_enabled(holder->info)) {
+          disconnect_stream(holder->info);
+        }
+      } else if (!app_is_enabled(holder->info)) {
+        // Try to restore the previous enabled state, if needed
+
+        try {
+          if (enabled_app_list.at(holder->info.id)) {
+            connect_stream(holder->info);
+          }
+        } catch (...) {
+          connect_stream(holder->info);
+
+          util::warning("Can't retrieve enabled state of node " + std::to_string(holder->info.id));
+
+          enabled_app_list.insert_or_assign(holder->info.id, true);
+        }
+      }
+
+      // enabled switch state will be updated in holder info_updated signal handler
+
+      holder->info_updated.emit(holder->info);
+    }
   });
 
   // sorter
 
-  auto sorter =
+  const auto& sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
+  const auto& sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
 
   // setting the listview model and factory
 
@@ -953,9 +915,9 @@ void EffectsBaseUi::setup_listview_blocklist() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* btn = Gtk::make_managed<Gtk::Button>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const btn = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -972,8 +934,8 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -1021,10 +983,10 @@ void EffectsBaseUi::setup_listview_plugins() {
 
   // sorter
 
-  auto sorter =
+  const auto& sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -1037,9 +999,9 @@ void EffectsBaseUi::setup_listview_plugins() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* btn = Gtk::make_managed<Gtk::Button>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const btn = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -1056,16 +1018,15 @@ void EffectsBaseUi::setup_listview_plugins() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* add = static_cast<Gtk::Button*>(list_item->get_data("add"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const add = static_cast<Gtk::Button*>(list_item->get_data("add"));
 
     const auto& translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
-    const auto& translated_name_str = std::string(translated_name);
 
     Glib::ustring key_name;
 
     for (const auto& [key, value] : plugins_names) {
-      if (value == translated_name_str) {
+      if (translated_name == value.c_str()) {
         key_name = key;
       }
     }
@@ -1177,11 +1138,11 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* remove = Gtk::make_managed<Gtk::Button>();
-    auto* drag_handle = Gtk::make_managed<Gtk::Image>();
-    auto* plugin_icon = Gtk::make_managed<Gtk::Image>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const remove = Gtk::make_managed<Gtk::Button>();
+    auto* const drag_handle = Gtk::make_managed<Gtk::Image>();
+    auto* const plugin_icon = Gtk::make_managed<Gtk::Image>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -1227,9 +1188,9 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     drag_source->signal_prepare().connect(
         [=](const double& x, const double& y) {
-          auto* controller_widget = drag_source->get_widget();
+          auto* const controller_widget = drag_source->get_widget();
 
-          auto* item = controller_widget->get_ancestor(Gtk::Box::get_type());
+          auto* const item = controller_widget->get_ancestor(Gtk::Box::get_type());
 
           controller_widget->set_data("dragged-item", item);
 
@@ -1302,8 +1263,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -1350,6 +1311,8 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
   // Blocklist check
 
   if (app_is_blocklisted(node_info.name)) {
+    disconnect_stream(node_info);
+
     if (!settings->get_boolean("show-blocklisted-apps")) {
       return;
     }
@@ -1362,6 +1325,7 @@ void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
     if (auto* item = players_model->get_item(n).get(); item->info.id == node_info.id) {
       item->info = node_info;
+
       item->info_updated.emit(node_info);
 
       break;
@@ -1388,16 +1352,18 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
 }
 
 void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
-  global_output_level_left->set_text(level_to_localized_string_showpos(left, 0));
+  global_output_level_left->set_text(((left > 0.0) ? "+" : "") +
+      Glib::ustring::format(std::setprecision(0), std::fixed, left));
 
-  global_output_level_right->set_text(level_to_localized_string_showpos(right, 0));
+  global_output_level_right->set_text(((right > 0.0) ? "+" : "") +
+      Glib::ustring::format(std::setprecision(0), std::fixed, right));
 
   // saturation icon notification
 
   saturation_icon->set_opacity((left > 0.0 || right > 0.0) ? 1.0 : 0.0);
 }
 
-auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::string {
+auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::ustring {
   switch (state) {
     case PW_NODE_STATE_RUNNING:
       return _("running");
@@ -1410,22 +1376,30 @@ auto EffectsBaseUi::node_state_to_string(const pw_node_state& state) -> std::str
     case PW_NODE_STATE_ERROR:
       return _("error");
     default:
-      return "";
+      return _("unknown");
   }
 }
 
-auto EffectsBaseUi::float_to_localized_string(const float& value, const int& places) -> std::string {
-  std::ostringstream msg;
+auto EffectsBaseUi::app_is_enabled(const NodeInfo& node_info) -> bool {
+  if (node_info.media_class == "Stream/Output/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == node_info.id && link.input_node_id == pm->pe_sink_node.id) {
+        return true;
+      }
+    }
+  } else if (node_info.media_class == "Stream/Input/Audio") {
+    for (const auto& link : pm->list_links) {
+      if (link.output_node_id == pm->pe_source_node.id && link.input_node_id == node_info.id) {
+        return true;
+      }
+    }
+  }
 
-  msg.precision(places);
-
-  msg << std::fixed << value;
-
-  return msg.str();
+  return false;
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
-  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+  const auto& bl = settings->get_string_array("blocklist");
 
   return std::ranges::find(bl, name) != bl.end();
 }
@@ -1435,7 +1409,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
     return false;
   }
 
-  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+  auto bl = settings->get_string_array("blocklist");
 
   if (std::any_of(bl.cbegin(), bl.cend(), [&](const auto& str) { return str == name; })) {
     util::debug("blocklist_settings_ui: entry already present in the list");
@@ -1453,7 +1427,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
 }
 
 void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
-  std::vector<Glib::ustring> bl = settings->get_string_array("blocklist");
+  auto bl = settings->get_string_array("blocklist");
 
   bl.erase(std::remove_if(bl.begin(), bl.end(), [=](const auto& a) { return a == name; }), bl.end());
 

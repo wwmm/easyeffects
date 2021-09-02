@@ -179,7 +179,7 @@ PluginBase::~PluginBase() {
 }
 
 auto PluginBase::connect_to_pw() -> bool {
-  bool success = false;
+  auto success = false;
 
   pw_thread_loop_lock(pm->thread_loop);
 
@@ -287,14 +287,18 @@ void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, con
 }
 
 void PluginBase::notify() {
-  float input_peak_db_l = util::linear_to_db(input_peak_left);
-  float input_peak_db_r = util::linear_to_db(input_peak_right);
+  const auto& input_peak_db_l = util::linear_to_db(input_peak_left);
+  const auto& input_peak_db_r = util::linear_to_db(input_peak_right);
 
-  float output_peak_db_l = util::linear_to_db(output_peak_left);
-  float output_peak_db_r = util::linear_to_db(output_peak_right);
+  const auto& output_peak_db_l = util::linear_to_db(output_peak_left);
+  const auto& output_peak_db_r = util::linear_to_db(output_peak_right);
 
-  Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
-  Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });
+  Glib::signal_idle().connect_once([=, this] {
+    input_level.emit(input_peak_db_l, input_peak_db_r);
+  });
+  Glib::signal_idle().connect_once([=, this] {
+    output_level.emit(output_peak_db_l, output_peak_db_r);
+  });
 
   input_peak_left = util::minimum_linear_level;
   input_peak_right = util::minimum_linear_level;

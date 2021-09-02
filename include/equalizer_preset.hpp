@@ -27,7 +27,7 @@ class EqualizerPreset : public PluginPresetBase {
   EqualizerPreset();
 
  private:
-  std::string log_tag = "equalizer_preset: ";
+  const std::string log_tag = "equalizer_preset: ";
 
   Glib::RefPtr<Gio::Settings> input_settings_left, input_settings_right, output_settings_left, output_settings_right;
 

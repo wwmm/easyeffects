@@ -25,6 +25,7 @@
 
                 <child>
                     <object class="GtkImage" id="app_icon">
+                        <property name="visible">False</property>
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="icon_size">large</property>
@@ -222,6 +223,7 @@
 
                 <child>
                     <object class="GtkScale" id="scale_volume">
+                        <property name="visible">False</property>
                         <property name="hexpand">1</property>
                         <property name="valign">center</property>
                         <property name="adjustment">volume</property>

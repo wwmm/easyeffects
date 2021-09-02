@@ -58,12 +58,12 @@ class Application : public Gtk::Application {
   void on_activate() override;
 
  private:
-  std::string log_tag = "application: ";
+  const std::string log_tag = "application: ";
 
   bool running_as_service = false;
 
   void create_actions();
-  void update_bypass_state(const std::string& key);
+  void update_bypass_state(const Glib::ustring& key);
 };
 
 #endif

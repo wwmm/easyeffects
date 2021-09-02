@@ -24,7 +24,6 @@
 #include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
-#include <algorithm>
 #include <memory>
 #include <vector>
 #include "autogain_ui.hpp"
@@ -95,7 +94,7 @@ class EffectsBaseUi {
   std::vector<sigc::connection> connections;
 
   /*
-    Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens
+    Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
   void on_app_added(NodeInfo node_info);
@@ -104,7 +103,7 @@ class EffectsBaseUi {
 
   void on_new_output_level_db(const float& left, const float& right);
 
-  static auto node_state_to_string(const pw_node_state& state) -> std::string;
+  static auto node_state_to_ustring(const pw_node_state& state) -> Glib::ustring;
 
  private:
   Gtk::ListView *listview_players = nullptr, *listview_blocklist = nullptr, *listview_plugins = nullptr,
@@ -154,16 +153,10 @@ class EffectsBaseUi {
                                                    {plugin_name::rnnoise, _("Noise Reduction")},
                                                    {plugin_name::stereo_tools, _("Stereo Tools")}};
 
-  template <typename T>
-  auto level_to_localized_string_showpos(const T& value, const int& places) -> std::string {
-    std::ostringstream msg;
+  /* enabled_app_list saves the "enabled state" of processed apps regardless of their presence in the blocklist,
+     useful to restore the enabled state when the app is removed from the blocklist */
 
-    msg.precision(places);
-
-    msg << ((value > 0.0) ? "+" : "") << std::fixed << value;
-
-    return msg.str();
-  }
+  std::map<uint, bool> enabled_app_list;
 
   void add_plugins_to_stack_plugins();
 
@@ -175,17 +168,17 @@ class EffectsBaseUi {
 
   void setup_listview_selected_plugins();
 
+  auto app_is_enabled(const NodeInfo& node_info) -> bool;
+
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 
   auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;
 
   void remove_blocklist_entry(const Glib::ustring& name);
 
-  void connect_stream(const std::shared_ptr<NodeInfoHolder>& holder);
+  void connect_stream(const NodeInfo& node_info);
 
-  void disconnect_stream(const std::shared_ptr<NodeInfoHolder>& holder);
-
-  static auto float_to_localized_string(const float& value, const int& places) -> std::string;
+  void disconnect_stream(const NodeInfo& node_info);
 };
 
 #endif

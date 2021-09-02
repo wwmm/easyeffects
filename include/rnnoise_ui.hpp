@@ -41,7 +41,9 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  std::string log_tag = "rnnoise_ui: ";
+  const std::string log_tag = "rnnoise_ui: ";
+
+  const std::string rnnn_ext = ".rnnn";
 
   Glib::ustring default_model_name;
 
@@ -69,9 +71,9 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   void import_model_file(const std::string& file_path);
 
-  auto get_model_names() -> std::vector<std::string>;
+  auto get_model_names() -> std::vector<Glib::ustring>;
 
-  void remove_model_file(const std::string& name);
+  void remove_model_file(const Glib::ustring& name);
 
   void set_active_model_label();
 };

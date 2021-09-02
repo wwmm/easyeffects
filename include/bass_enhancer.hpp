@@ -42,7 +42,7 @@ class BassEnhancer : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> harmonics;
+  sigc::signal<void(const double&)> harmonics;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

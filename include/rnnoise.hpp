@@ -41,7 +41,7 @@ class RNNoise : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> latency;
+  sigc::signal<void(const float&)> latency;
 
  private:
   bool resample = false;
@@ -78,7 +78,7 @@ class RNNoise : public PluginBase {
 
       if (data_L.size() == blocksize) {
         if (state_left != nullptr) {
-          std::ranges::for_each(data_L, [](auto& v) { v *= (SHRT_MAX + 1); });
+          std::ranges::for_each(data_L, [](auto& v) { v *= static_cast<float>(SHRT_MAX + 1); });
 
           rnnoise_process_frame(state_left, data_L.data(), data_L.data());
 
@@ -98,7 +98,7 @@ class RNNoise : public PluginBase {
 
       if (data_R.size() == blocksize) {
         if (state_right != nullptr) {
-          std::ranges::for_each(data_R, [](auto& v) { v *= (SHRT_MAX + 1); });
+          std::ranges::for_each(data_R, [](auto& v) { v *= static_cast<float>(SHRT_MAX + 1); });
 
           rnnoise_process_frame(state_right, data_R.data(), data_R.data());
 

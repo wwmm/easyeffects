@@ -20,7 +20,6 @@
 #ifndef MULTIBAND_GATE_UI_HPP
 #define MULTIBAND_GATE_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class MultibandGateUi : public Gtk::Box, public PluginUiBase {
@@ -37,15 +36,15 @@ class MultibandGateUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi*;
 
-  void on_new_output0(double value);
-  void on_new_output1(double value);
-  void on_new_output2(double value);
-  void on_new_output3(double value);
+  void on_new_output0(const double& value);
+  void on_new_output1(const double& value);
+  void on_new_output2(const double& value);
+  void on_new_output3(const double& value);
 
-  void on_new_gating0(double value);
-  void on_new_gating1(double value);
-  void on_new_gating2(double value);
-  void on_new_gating3(double value);
+  void on_new_gating0(const double& value);
+  void on_new_gating1(const double& value);
+  void on_new_gating2(const double& value);
+  void on_new_gating3(const double& value);
 
   void reset() override;
 

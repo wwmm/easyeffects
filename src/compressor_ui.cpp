@@ -24,11 +24,11 @@ namespace {
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Downward") == 0) {
+  if (g_strcmp0(v, "Downward") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Upward") == 0) {
+  } else if (g_strcmp0(v, "Upward") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Boosting") == 0) {
+  } else if (g_strcmp0(v, "Boosting") == 0) {
     g_value_set_int(value, 2);
   }
 
@@ -54,11 +54,11 @@ auto int_to_mode_enum(const GValue* value, const GVariantType* expected_type, gp
 auto sidechain_type_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Feed-forward") == 0) {
+  if (g_strcmp0(v, "Feed-forward") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Feed-back") == 0) {
+  } else if (g_strcmp0(v, "Feed-back") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "External") == 0) {
+  } else if (g_strcmp0(v, "External") == 0) {
     g_value_set_int(value, 2);
   }
 
@@ -85,13 +85,13 @@ auto int_to_sidechain_type_enum(const GValue* value, const GVariantType* expecte
 auto sidechain_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Peak") == 0) {
+  if (g_strcmp0(v, "Peak") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "RMS") == 0) {
+  } else if (g_strcmp0(v, "RMS") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Low-Pass") == 0) {
+  } else if (g_strcmp0(v, "Low-Pass") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Uniform") == 0) {
+  } else if (g_strcmp0(v, "Uniform") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -121,13 +121,13 @@ auto int_to_sidechain_mode_enum(const GValue* value, const GVariantType* expecte
 auto sidechain_source_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Middle") == 0) {
+  if (g_strcmp0(v, "Middle") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Side") == 0) {
+  } else if (g_strcmp0(v, "Side") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "Left") == 0) {
+  } else if (g_strcmp0(v, "Left") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "Right") == 0) {
+  } else if (g_strcmp0(v, "Right") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -157,13 +157,13 @@ auto int_to_sidechain_source_enum(const GValue* value, const GVariantType* expec
 auto filter_mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "off") == 0) {
+  if (g_strcmp0(v, "off") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "12 dB/oct") == 0) {
+  } else if (g_strcmp0(v, "12 dB/oct") == 0) {
     g_value_set_int(value, 1);
-  } else if (std::strcmp(v, "24 dB/oct") == 0) {
+  } else if (g_strcmp0(v, "24 dB/oct") == 0) {
     g_value_set_int(value, 2);
-  } else if (std::strcmp(v, "36 dB/oct") == 0) {
+  } else if (g_strcmp0(v, "36 dB/oct") == 0) {
     g_value_set_int(value, 3);
   }
 
@@ -358,7 +358,7 @@ CompressorUi::~CompressorUi() {
 auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<CompressorUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<CompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");
 
   stack->add(*ui, plugin_name::compressor);
@@ -414,19 +414,19 @@ void CompressorUi::reset() {
   settings->reset("lpf-frequency");
 }
 
-void CompressorUi::on_new_reduction(double value) {
+void CompressorUi::on_new_reduction(const float& value) {
   reduction_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::on_new_envelope(double value) {
+void CompressorUi::on_new_envelope(const float& value) {
   envelope_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::on_new_sidechain(double value) {
+void CompressorUi::on_new_sidechain(const float& value) {
   sidechain_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void CompressorUi::on_new_curve(double value) {
+void CompressorUi::on_new_curve(const float& value) {
   curve_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
@@ -444,9 +444,9 @@ void CompressorUi::setup_dropdown_input_devices() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* icon = Gtk::make_managed<Gtk::Image>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const icon = Gtk::make_managed<Gtk::Image>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -465,7 +465,7 @@ void CompressorUi::setup_dropdown_input_devices() {
   });
 
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
@@ -485,11 +485,9 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
     }
   }
 
-  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      const auto& item = input_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+  connections.emplace_back(pm->source_added.connect([=, this](NodeInfo info) {
+    for (guint n = 0U, list_size = input_devices_model->get_n_items(); n < list_size; n++) {
+      if (input_devices_model->get_item(n)->info.id == info.id) {
         return;
       }
     }
@@ -497,11 +495,9 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
     input_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo& info) {
-    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
-      auto item = input_devices_model->get_item(n);
-
-      if (item->info.id == info.id) {
+  connections.emplace_back(pm->source_removed.connect([=, this](NodeInfo info) {
+    for (guint n = 0U, list_size = input_devices_model->get_n_items(); n < list_size; n++) {
+      if (input_devices_model->get_item(n)->info.id == info.id) {
         input_devices_model->remove(n);
 
         return;

@@ -20,7 +20,6 @@
 #ifndef DEESSER_UI_HPP
 #define DEESSER_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class DeesserUi : public Gtk::Box, public PluginUiBase {
@@ -37,8 +36,8 @@ class DeesserUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi*;
 
-  void on_new_compression(double value);
-  void on_new_detected(double value);
+  void on_new_compression(const double& value);
+  void on_new_detected(const double& value);
 
   void reset() override;
 

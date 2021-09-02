@@ -18,7 +18,6 @@
  */
 
 #include "equalizer_preset.hpp"
-#include "util.hpp"
 
 EqualizerPreset::EqualizerPreset()
     : input_settings_left(Gio::Settings::create("com.github.wwmm.easyeffects.equalizer.channel",
@@ -65,23 +64,23 @@ void EqualizerPreset::save_channel(nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto& bandn = "band" + std::to_string(n);
 
-    json["band" + nstr]["type"] = settings->get_string("band" + nstr + "-type").c_str();
+    json[bandn]["type"] = settings->get_string(bandn + "-type").c_str();
 
-    json["band" + nstr]["mode"] = settings->get_string("band" + nstr + "-mode").c_str();
+    json[bandn]["mode"] = settings->get_string(bandn + "-mode").c_str();
 
-    json["band" + nstr]["slope"] = settings->get_string("band" + nstr + "-slope").c_str();
+    json[bandn]["slope"] = settings->get_string(bandn + "-slope").c_str();
 
-    json["band" + nstr]["solo"] = settings->get_boolean("band" + nstr + "-solo");
+    json[bandn]["solo"] = settings->get_boolean(bandn + "-solo");
 
-    json["band" + nstr]["mute"] = settings->get_boolean("band" + nstr + "-mute");
+    json[bandn]["mute"] = settings->get_boolean(bandn + "-mute");
 
-    json["band" + nstr]["gain"] = settings->get_double("band" + nstr + "-gain");
+    json[bandn]["gain"] = settings->get_double(bandn + "-gain");
 
-    json["band" + nstr]["frequency"] = settings->get_double("band" + nstr + "-frequency");
+    json[bandn]["frequency"] = settings->get_double(bandn + "-frequency");
 
-    json["band" + nstr]["q"] = settings->get_double("band" + nstr + "-q");
+    json[bandn]["q"] = settings->get_double(bandn + "-q");
   }
 }
 
@@ -100,10 +99,10 @@ void EqualizerPreset::load(const nlohmann::json& json,
 
   const auto& nbands = settings->get_int("num-bands");
 
-  if (section == std::string("input")) {
+  if (section == "input") {
     load_channel(json.at(section).at("equalizer").at("left"), input_settings_left, nbands);
     load_channel(json.at(section).at("equalizer").at("right"), input_settings_right, nbands);
-  } else if (section == std::string("output")) {
+  } else if (section == "output") {
     load_channel(json.at(section).at("equalizer").at("left"), output_settings_left, nbands);
     load_channel(json.at(section).at("equalizer").at("right"), output_settings_right, nbands);
   }
@@ -113,23 +112,23 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto& bandn = "band" + std::to_string(n);
 
-    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-type", "type");
+    update_string_key(json.at(bandn), settings, bandn + "-type", "type");
 
-    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-mode", "mode");
+    update_string_key(json.at(bandn), settings, bandn + "-mode", "mode");
 
-    update_string_key(json.at("band" + nstr), settings, "band" + nstr + "-slope", "slope");
+    update_string_key(json.at(bandn), settings, bandn + "-slope", "slope");
 
-    update_key<bool>(json.at("band" + nstr), settings, "band" + nstr + "-solo", "solo");
+    update_key<bool>(json.at(bandn), settings, bandn + "-solo", "solo");
 
-    update_key<bool>(json.at("band" + nstr), settings, "band" + nstr + "-mute", "mute");
+    update_key<bool>(json.at(bandn), settings, bandn + "-mute", "mute");
 
-    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-gain", "gain");
+    update_key<double>(json.at(bandn), settings, bandn + "-gain", "gain");
 
-    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-frequency",
+    update_key<double>(json.at(bandn), settings, bandn + "-frequency",
                        "frequency");
 
-    update_key<double>(json.at("band" + nstr), settings, "band" + nstr + "-q", "q");
+    update_key<double>(json.at(bandn), settings, bandn + "-q", "q");
   }
 }

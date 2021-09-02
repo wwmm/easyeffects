@@ -43,7 +43,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   static auto create(Application* app) -> ApplicationUi*;
 
  private:
-  std::string log_tag = "application_ui: ";
+  const std::string log_tag = "application_ui: ";
 
   Application* app;
 

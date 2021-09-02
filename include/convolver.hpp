@@ -47,7 +47,7 @@ class Convolver : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> latency;
+  sigc::signal<void(const float&)> latency;
 
  private:
   bool kernel_is_initialized = false;
@@ -90,7 +90,7 @@ class Convolver : public PluginBase {
     std::copy(data_right.begin(), data_right.end(), conv_right_in.begin());
 
     if (zita_ready) {
-      int ret = conv->process(true);  // thread sync mode set to true
+      const int& ret = conv->process(true);  // thread sync mode set to true
 
       if (ret != 0) {
         util::debug(log_tag + "IR: process failed: " + std::to_string(ret));

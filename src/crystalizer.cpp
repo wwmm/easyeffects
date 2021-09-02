@@ -192,7 +192,7 @@ void Crystalizer::process(std::span<float>& left_in,
         deque_out_R.pop_front();
       }
     } else {
-      uint offset = 2 * (left_out.size() - deque_out_L.size());
+      uint offset = 2U * (left_out.size() - deque_out_L.size());
 
       if (offset != latency_n_frames) {
         latency_n_frames = offset + 1U;  // the second derivative forces us to delay at least one sample
@@ -218,7 +218,7 @@ void Crystalizer::process(std::span<float>& left_in,
   apply_gain(left_out, right_out, output_gain);
 
   if (notify_latency) {
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -255,21 +255,21 @@ void Crystalizer::process(std::span<float>& left_in,
 }
 
 void Crystalizer::bind_band(const int& n) {
-  const auto& nstr = std::to_string(n);
+  const auto& bandn = "band" + std::to_string(n);
 
-  band_intensity.at(n) = static_cast<float>(util::db_to_linear(settings->get_double("intensity-band" + nstr)));
-  band_mute.at(n) = settings->get_boolean("mute-band" + nstr);
-  band_bypass.at(n) = settings->get_boolean("bypass-band" + nstr);
+  band_intensity.at(n) = static_cast<float>(util::db_to_linear(settings->get_double("intensity-" + bandn)));
+  band_mute.at(n) = settings->get_boolean("mute-" + bandn);
+  band_bypass.at(n) = settings->get_boolean("bypass-" + bandn);
 
-  settings->signal_changed("intensity-band" + nstr).connect([=, this](const auto& key) {
+  settings->signal_changed("intensity-" + bandn).connect([=, this](const auto& key) {
     band_intensity.at(n) = util::db_to_linear(settings->get_double(key));
   });
 
-  settings->signal_changed("mute-band" + nstr).connect([=, this](const auto& key) {
+  settings->signal_changed("mute-" + bandn).connect([=, this](const auto& key) {
     band_mute.at(n) = settings->get_boolean(key);
   });
 
-  settings->signal_changed("bypass-band" + nstr).connect([=, this](const auto& key) {
+  settings->signal_changed("bypass-" + bandn).connect([=, this](const auto& key) {
     band_bypass.at(n) = settings->get_boolean(key);
   });
 }

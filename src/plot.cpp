@@ -38,8 +38,8 @@ Plot::Plot(Gtk::DrawingArea* drawing_area)
     if (const auto& usable_height = height - x_axis_height; y < usable_height) {
       switch (plot_scale) {
         case PlotScale::logarithmic: {
-          const double& x_min_log = log10(x_min);
-          const double& x_max_log = log10(x_max);
+          const double& x_min_log = std::log10(x_min);
+          const double& x_max_log = std::log10(x_max);
 
           const double& mouse_x_log = x / static_cast<double>(width) * (x_max_log - x_min_log) + x_min_log;
 
@@ -147,11 +147,11 @@ void Plot::set_n_y_decimals(const int& v) {
   n_y_decimals = v;
 }
 
-void Plot::set_x_unit(const std::string& value) {
+void Plot::set_x_unit(const Glib::ustring& value) {
   x_unit = value;
 }
 
-void Plot::set_y_unit(const std::string& value) {
+void Plot::set_y_unit(const Glib::ustring& value) {
   y_unit = value;
 }
 
@@ -211,8 +211,9 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
     }
 
     if (controller_motion->contains_pointer()) {
-      const auto& msg = "x = " + value_to_localized_string(mouse_x, n_x_decimals) + " " + x_unit +
-                 "  y = " + value_to_localized_string(mouse_y, n_y_decimals) + " " + y_unit;
+      const auto& msg = "x = " + Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, mouse_x) +
+                        " " + x_unit + "  y = " +
+                        Glib::ustring::format(std::setprecision(n_y_decimals), std::fixed, mouse_y) + " " + y_unit;
 
       Pango::FontDescription font;
       font.set_family("Monospace");
@@ -232,13 +233,13 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 }
 
 auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int {
-  double labels_offset = width / static_cast<double>(n_x_labels);
+  const double labels_offset = width / static_cast<double>(n_x_labels);
 
   std::vector<float> labels;
 
   switch (plot_scale) {
     case PlotScale::logarithmic: {
-      labels = util::logspace(log10f(static_cast<float>(x_min)), log10f(static_cast<float>(x_max)), n_x_labels);
+      labels = util::logspace(std::log10(static_cast<float>(x_min)), std::log10(static_cast<float>(x_max)), n_x_labels);
 
       break;
     }
@@ -258,7 +259,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
   */
 
   for (size_t n = 0U, m = labels.size(); n < m - 1U; n++) {
-    const auto& msg = value_to_localized_string(labels[n], n_x_decimals) + " " + x_unit;
+    const auto& msg = Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, labels[n]) + " " + x_unit;
 
     Pango::FontDescription font;
     font.set_family("Monospace");

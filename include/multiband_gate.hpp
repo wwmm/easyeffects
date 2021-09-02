@@ -42,7 +42,7 @@ class MultibandGate : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(double)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
+  sigc::signal<void(const double&)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
 
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;

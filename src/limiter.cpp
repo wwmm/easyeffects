@@ -108,12 +108,12 @@ void Limiter::process(std::span<float>& left_in,
    This plugin gives the latency in number of samples
  */
 
-  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -140,10 +140,10 @@ void Limiter::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      float gain_l = lv2_wrapper->get_control_port_value("grlm_l");
-      float gain_r = lv2_wrapper->get_control_port_value("grlm_r");
-      float sidechain_l = lv2_wrapper->get_control_port_value("sclm_l");
-      float sidechain_r = lv2_wrapper->get_control_port_value("sclm_r");
+      const float& gain_l = lv2_wrapper->get_control_port_value("grlm_l");
+      const float& gain_r = lv2_wrapper->get_control_port_value("grlm_r");
+      const float& sidechain_l = lv2_wrapper->get_control_port_value("sclm_l");
+      const float& sidechain_r = lv2_wrapper->get_control_port_value("sclm_r");
 
       Glib::signal_idle().connect_once([=, this] { gain_left.emit(gain_l); });
       Glib::signal_idle().connect_once([=, this] { gain_right.emit(gain_r); });

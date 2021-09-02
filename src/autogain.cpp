@@ -103,7 +103,7 @@ void AutoGain::process(std::span<float>& left_in,
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
 
-  bool failed = false;
+  auto failed = false;
   double momentary = 0.0;
   double shortterm = 0.0;
   double global = 0.0;
@@ -146,17 +146,17 @@ void AutoGain::process(std::span<float>& left_in,
     if (!failed) {
       loudness = std::cbrt(momentary * shortterm * global);
 
-      double diff = target - loudness;
+      const double diff = target - loudness;
 
       // 10^(diff/20). The way below should be faster than using pow
-      double gain = exp((diff / 20.0) * log(10.0));
+      const double gain = std::exp((diff / 20.0) * std::log(10.0));
 
-      double peak = (peak_L > peak_R) ? peak_L : peak_R;
+      const double peak = (peak_L > peak_R) ? peak_L : peak_R;
 
-      double db_peak = util::linear_to_db(peak);
+      const auto& db_peak = util::linear_to_db(peak);
 
       if (db_peak > util::minimum_db_level) {
-        if (gain * peak < 1.0F) {
+        if (gain * peak < 1.0) {
           output_gain = gain;
         }
       }

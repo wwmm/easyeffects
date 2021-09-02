@@ -52,7 +52,7 @@ MaximizerUi::~MaximizerUi() {
 auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MaximizerUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/maximizer.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<MaximizerUi>(builder, "top_box", "com.github.wwmm.easyeffects.maximizer",
+  auto* const ui = Gtk::Builder::get_widget_derived<MaximizerUi>(builder, "top_box", "com.github.wwmm.easyeffects.maximizer",
                                                            schema_path + "maximizer/");
 
   stack->add(*ui, plugin_name::maximizer);
@@ -70,7 +70,7 @@ void MaximizerUi::reset() {
   settings->reset("threshold");
 }
 
-void MaximizerUi::on_new_reduction(double value) {
+void MaximizerUi::on_new_reduction(const double& value) {
   reduction_levelbar->set_value(value);
 
   reduction_label->set_text(level_to_localized_string(value, 0));

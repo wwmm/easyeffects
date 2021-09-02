@@ -459,7 +459,7 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="visible">0</property>
+                        <property name="visible">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="spacing">6</property>
@@ -483,7 +483,6 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="visible">1</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="spacing">24</property>

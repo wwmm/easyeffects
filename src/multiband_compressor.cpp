@@ -138,12 +138,12 @@ void MultibandCompressor::process(std::span<float>& left_in,
    This plugin gives the latency in number of samples
  */
 
-  uint lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
@@ -170,30 +170,24 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      std::array<double, n_bands> frequency_range_end_array{};
-      std::array<double, n_bands> envelope_array{};
-      std::array<double, n_bands> curve_array{};
-      std::array<double, n_bands> reduction_array{};
+      std::array<float, n_bands> frequency_range_end_array{};
+      std::array<float, n_bands> envelope_array{};
+      std::array<float, n_bands> curve_array{};
+      std::array<float, n_bands> reduction_array{};
 
       for (uint n = 0U; n < n_bands; n++) {
         const auto& nstr = std::to_string(n);
 
         frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
-
         envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
-
         curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
-
         reduction_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
       }
 
       Glib::signal_idle().connect_once([=, this] {
         frequency_range.emit(frequency_range_end_array);
-
         envelope.emit(envelope_array);
-
         curve.emit(curve_array);
-
         reduction.emit(reduction_array);
       });
 

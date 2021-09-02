@@ -18,16 +18,15 @@
  */
 
 #include "gate_ui.hpp"
-#include <cstring>
 
 namespace {
 
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "RMS") == 0) {
+  if (g_strcmp0(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Peak") == 0) {
+  } else if (g_strcmp0(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -50,9 +49,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 auto stereo_link_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Average") == 0) {
+  if (g_strcmp0(v, "Average") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Maximum") == 0) {
+  } else if (g_strcmp0(v, "Maximum") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -138,7 +137,7 @@ GateUi::~GateUi() {
 auto GateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<GateUi>(builder, "top_box", "com.github.wwmm.easyeffects.gate",
+  auto* const ui = Gtk::Builder::get_widget_derived<GateUi>(builder, "top_box", "com.github.wwmm.easyeffects.gate",
                                                       schema_path + "gate/");
 
   stack->add(*ui, plugin_name::gate);
@@ -172,7 +171,7 @@ void GateUi::reset() {
   settings->reset("makeup");
 }
 
-void GateUi::on_new_gating(double value) {
+void GateUi::on_new_gating(const double& value) {
   gating->set_value(1.0 - value);
 
   gating_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));

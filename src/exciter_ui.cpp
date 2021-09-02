@@ -72,7 +72,7 @@ ExciterUi::~ExciterUi() {
 auto ExciterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/exciter.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<ExciterUi>(builder, "top_box", "com.github.wwmm.easyeffects.exciter",
+  auto* const ui = Gtk::Builder::get_widget_derived<ExciterUi>(builder, "top_box", "com.github.wwmm.easyeffects.exciter",
                                                          schema_path + "exciter/");
 
   stack->add(*ui, plugin_name::exciter);
@@ -102,7 +102,7 @@ void ExciterUi::reset() {
   settings->reset("listen");
 }
 
-void ExciterUi::on_new_harmonics_level(double value) {
+void ExciterUi::on_new_harmonics_level(const double& value) {
   harmonics_levelbar->set_value(value);
 
   harmonics_levelbar_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));

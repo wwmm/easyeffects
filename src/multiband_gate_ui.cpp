@@ -24,9 +24,9 @@ namespace {
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "RMS") == 0) {
+  if (g_strcmp0(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Peak") == 0) {
+  } else if (g_strcmp0(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -49,9 +49,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "LR4") == 0) {
+  if (g_strcmp0(v, "LR4") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "LR8") == 0) {
+  } else if (g_strcmp0(v, "LR8") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -258,7 +258,7 @@ MultibandGateUi::~MultibandGateUi() {
 auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
+  auto* const ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandgate", schema_path + "multibandgate/");
 
   stack->add(*ui, plugin_name::multiband_gate);
@@ -370,49 +370,49 @@ void MultibandGateUi::reset() {
   settings->reset("solo3");
 }
 
-void MultibandGateUi::on_new_output0(double value) {
+void MultibandGateUi::on_new_output0(const double& value) {
   output0->set_value(value);
 
   output0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_output1(double value) {
+void MultibandGateUi::on_new_output1(const double& value) {
   output1->set_value(value);
 
   output1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_output2(double value) {
+void MultibandGateUi::on_new_output2(const double& value) {
   output2->set_value(value);
 
   output2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_output3(double value) {
+void MultibandGateUi::on_new_output3(const double& value) {
   output3->set_value(value);
 
   output3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_gating0(double value) {
+void MultibandGateUi::on_new_gating0(const double& value) {
   gating0->set_value(1.0 - value);
 
   gating0_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_gating1(double value) {
+void MultibandGateUi::on_new_gating1(const double& value) {
   gating1->set_value(1.0 - value);
 
   gating1_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_gating2(double value) {
+void MultibandGateUi::on_new_gating2(const double& value) {
   gating2->set_value(1.0 - value);
 
   gating2_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void MultibandGateUi::on_new_gating3(double value) {
+void MultibandGateUi::on_new_gating3(const double& value) {
   gating3->set_value(1.0 - value);
 
   gating3_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));

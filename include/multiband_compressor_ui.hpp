@@ -20,7 +20,6 @@
 #ifndef MULTIBAND_COMPRESSOR_UI_HPP
 #define MULTIBAND_COMPRESSOR_UI_HPP
 
-#include <cstring>
 #include "plugin_ui_base.hpp"
 
 class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
@@ -39,13 +38,13 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi*;
 
-  void on_new_frequency_range(std::array<double, n_bands>);
+  void on_new_frequency_range(const std::array<float, n_bands>& values);
 
-  void on_new_envelope(std::array<double, n_bands>);
+  void on_new_envelope(const std::array<float, n_bands>& values);
 
-  void on_new_curve(std::array<double, n_bands>);
+  void on_new_curve(const std::array<float, n_bands>& values);
 
-  void on_new_reduction(std::array<double, n_bands>);
+  void on_new_reduction(const std::array<float, n_bands>& values);
 
   void reset() override;
 

@@ -40,7 +40,7 @@ class CalibrationMicUi : public Gtk::Box {
   std::unique_ptr<CalibrationMic> cm;
 
  private:
-  std::string log_tag = "calibration_mic_ui: ";
+  const std::string log_tag = "calibration_mic_ui: ";
 
   const double default_time_window = 2.0;  // seconds
 

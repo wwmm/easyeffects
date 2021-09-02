@@ -22,7 +22,6 @@
 
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
-#include <iostream>
 #include <vector>
 
 class CalibrationMic {
@@ -33,8 +32,6 @@ class CalibrationMic {
   CalibrationMic(const CalibrationMic&&) = delete;
   auto operator=(const CalibrationMic&&) -> CalibrationMic& = delete;
   ~CalibrationMic();
-
-  std::string log_tag = "calibration_mic: ";
 
   GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr, *spectrum = nullptr;
 
@@ -57,6 +54,8 @@ class CalibrationMic {
   void set_input_node_id(const uint& id) const;
 
  private:
+  const std::string log_tag = "calibration_mic: ";
+
   GstBus* bus = nullptr;
 };
 

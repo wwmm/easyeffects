@@ -45,7 +45,7 @@ class EchoCanceller : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  sigc::signal<void(double)> latency;
+  sigc::signal<void(const float&)> latency;
 
  private:
   bool notify_latency = false;

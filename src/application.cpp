@@ -122,10 +122,7 @@ void Application::on_startup() {
     presets_manager = std::make_unique<PresetsManager>();
   }
 
-  pm->blocklist_in = sie_settings->get_string_array("blocklist");
-  pm->blocklist_out = soe_settings->get_string_array("blocklist");
-
-  pm->new_default_sink.connect([&](const NodeInfo& node) {
+  pm->new_default_sink.connect([&](NodeInfo node) {
     util::debug("new default output device: " + node.name);
 
     if (soe_settings->get_boolean("use-default-output-device")) {
@@ -139,7 +136,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->new_default_source.connect([&](const NodeInfo& node) {
+  pm->new_default_source.connect([&](NodeInfo node) {
     util::debug("new default input device: " + node.name);
 
     if (sie_settings->get_boolean("use-default-input-device")) {
@@ -153,7 +150,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->device_changed.connect([&](const DeviceInfo& device) {
+  pm->device_changed.connect([&](DeviceInfo device) {
     util::debug(log_tag + "device " + device.name + " has changed profile to: " + device.profile_name);
 
     NodeInfo target_node;
@@ -168,28 +165,20 @@ void Application::on_startup() {
 
     if (target_node.id != SPA_ID_INVALID) {
       if (target_node.media_class == "Audio/Source") {
-        if (target_node.name == std::string(sie_settings->get_string("input-device"))) {
+        if (target_node.name.c_str() == sie_settings->get_string("input-device")) {
           presets_manager->autoload(PresetType::input, target_node.name, device.profile_name);
         }
 
       } else if (target_node.media_class == "Audio/Sink") {
-        if (target_node.name == std::string(soe_settings->get_string("output-device"))) {
+        if (target_node.name.c_str() == soe_settings->get_string("output-device")) {
           presets_manager->autoload(PresetType::output, target_node.name, device.profile_name);
         }
       }
     }
   });
 
-  sie_settings->signal_changed("blocklist").connect([=, this](const auto& key) {
-    pm->blocklist_in = sie_settings->get_string_array("blocklist");
-  });
-
-  soe_settings->signal_changed("blocklist").connect([=, this](const auto& key) {
-    pm->blocklist_out = sie_settings->get_string_array("blocklist");
-  });
-
   soe_settings->signal_changed("output-device").connect([&, this](const auto& key) {
-    const auto& name = std::string(soe_settings->get_string(key));
+    const auto& name = soe_settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -217,7 +206,7 @@ void Application::on_startup() {
   });
 
   sie_settings->signal_changed("input-device").connect([&, this](const auto& key) {
-    const auto& name = std::string(sie_settings->get_string(key));
+    const auto& name = sie_settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -263,7 +252,7 @@ void Application::on_activate() {
       widgets.
     */
 
-    auto* window = ApplicationUi::create(this);
+    auto* const window = ApplicationUi::create(this);
 
     add_window(*window);
 
@@ -343,7 +332,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
 
 void Application::create_actions() {
   add_action("about", [&]() {
-    auto* dialog = new Gtk::AboutDialog();
+    auto* const dialog = new Gtk::AboutDialog();
 
     dialog->set_program_name("EasyEffects");
     dialog->set_version(VERSION);
@@ -363,7 +352,7 @@ void Application::create_actions() {
   });
 
   add_action("help", [&] {
-    auto* window = get_active_window();
+    auto* const window = get_active_window();
 
     // show_uri has not been wrapped by GTKMM yet :-(
 
@@ -371,7 +360,7 @@ void Application::create_actions() {
   });
 
   add_action("quit", [&] {
-    auto* window = get_active_window();
+    auto* const window = get_active_window();
 
     window->hide();
   });
@@ -380,7 +369,7 @@ void Application::create_actions() {
   set_accel_for_action("app.quit", "<Ctrl>Q");
 }
 
-void Application::update_bypass_state(const std::string& key) {
+void Application::update_bypass_state(const Glib::ustring& key) {
   const auto& state = settings->get_boolean(key);
 
   soe->set_bypass(state);

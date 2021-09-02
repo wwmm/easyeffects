@@ -22,7 +22,6 @@
 
 #include <gst/gst.h>
 #include <sigc++/sigc++.h>
-#include <iostream>
 #include <vector>
 
 class CalibrationSignals {
@@ -33,8 +32,6 @@ class CalibrationSignals {
   CalibrationSignals(const CalibrationSignals&&) = delete;
   auto operator=(const CalibrationSignals&&) -> CalibrationSignals& = delete;
   ~CalibrationSignals();
-
-  std::string log_tag = "calibration_signals: ";
 
   GstElement *pipeline = nullptr, *source = nullptr, *sink = nullptr, *spectrum = nullptr;
 
@@ -55,6 +52,8 @@ class CalibrationSignals {
   void set_volume(const double& value) const;
 
  private:
+  const std::string log_tag = "calibration_signals: ";
+
   GstBus* bus = nullptr;
 };
 

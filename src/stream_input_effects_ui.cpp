@@ -31,11 +31,9 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_label->set_text(_("Recorders"));
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    if (stack_top->get_visible_child_name() == "page_players") {
-      toggle_listen_mic->set_visible(false);
-    } else {
-      toggle_listen_mic->set_visible(true);
-    }
+    const auto& child_name = stack_top->get_visible_child_name();
+
+    toggle_listen_mic->set_visible((child_name == "page_players") ? false : true);
   });
 
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
@@ -58,29 +56,21 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(sie->pm->source_changed.connect([&](const auto& nd_info) {
+  connections.emplace_back(sie->pm->source_changed.connect([&](auto nd_info) {
+    // nd_info is a reference of a copy previously made
+
     if (nd_info.id == sie->pm->pe_source_node.id) {
-      std::ostringstream str;
+      const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
+                                            static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F);
 
-      str << node_state_to_string(sie->pm->pe_source_node.state) << std::string(5, ' ');
-
-      str.precision(1);
-
-      str << std::fixed << static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
-
-      device_state->set_text(str.str());
+      device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
     }
   }));
 
-  std::ostringstream str;
+  const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
+                                        static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F);
 
-  str << node_state_to_string(sie->pm->pe_source_node.state) << std::string(5, ' ');
-
-  str.precision(1);
-
-  str << std::fixed << static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F << " kHz" << std::string(5, ' ');
-
-  device_state->set_text(str.str());
+  device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }
 
 StreamInputEffectsUi::~StreamInputEffectsUi() {
@@ -90,7 +80,7 @@ StreamInputEffectsUi::~StreamInputEffectsUi() {
 auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr) -> StreamInputEffectsUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", sie_ptr,
+  auto* const ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", sie_ptr,
                                                                     "com.github.wwmm.easyeffects.streaminputs");
 
   auto stack_page = stack->add(*ui, "stream_input");

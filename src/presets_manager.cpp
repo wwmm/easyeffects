@@ -184,9 +184,10 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
 auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Glib::ustring> {
   std::filesystem::directory_iterator it;
   std::vector<Glib::ustring> names;
-  std::vector<std::filesystem::path> sys_dirs;
 
   // system directories search
+  std::vector<std::filesystem::path> sys_dirs;
+
   switch (preset_type) {
     case PresetType::output:
       sys_dirs.insert(sys_dirs.end(), system_output_dir.begin(), system_output_dir.end());
@@ -199,6 +200,7 @@ auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Gli
   for (const auto& dir : sys_dirs) {
     if (std::filesystem::exists(dir)) {
       it = std::filesystem::directory_iterator{dir};
+
       const auto& vn = search_names(it);
       names.insert(names.end(), vn.begin(), vn.end());
     }
@@ -218,20 +220,22 @@ auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Gli
   return names;
 }
 
-auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string> {
-  std::vector<std::string> names;
+auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring> {
+  std::vector<Glib::ustring> names;
+
+  const std::string json_ext = ".json";
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().string() == ".json") {
-          names.emplace_back(it->path().stem().string());
+        if (it->path().extension().c_str() == json_ext) {
+          names.emplace_back(it->path().stem().c_str());
         }
       }
 
-      it++;
+      ++it;
     }
-  } catch (std::exception& e) {
+  } catch (const std::exception& e) {
     util::warning(e.what());
   }
 
@@ -254,7 +258,7 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
   switch (preset_type) {
     case PresetType::output: {
       for (const auto& l : soe_settings->get_string_array("blocklist")) {
-        blocklist.emplace_back(l);
+        blocklist.emplace_back(l.c_str());
       }
 
       json["output"]["blocklist"] = blocklist;
@@ -263,7 +267,7 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
     }
     case PresetType::input: {
       for (const auto& l : sie_settings->get_string_array("blocklist")) {
-        blocklist.emplace_back(l);
+        blocklist.emplace_back(l.c_str());
       }
 
       json["input"]["blocklist"] = blocklist;
@@ -310,7 +314,7 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
   }
 }
 
-void PresetsManager::save_preset_file(const PresetType& preset_type, const std::string& name) {
+void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib::ustring& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
@@ -326,14 +330,14 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.emplace_back(p);
+        list.emplace_back(p.raw());
       }
 
       json["output"]["plugins_order"] = list;
 
       write_plugins_preset(preset_type, plugins, json);
 
-      output_file = user_output_dir / std::filesystem::path{name + ".json"};
+      output_file = user_output_dir / std::filesystem::path{name.c_str() + json_ext};
 
       break;
     }
@@ -345,20 +349,20 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.emplace_back(p);
+        list.emplace_back(p.raw());
       }
 
       json["input"]["plugins_order"] = list;
 
       write_plugins_preset(preset_type, plugins, json);
 
-      output_file = user_input_dir / std::filesystem::path{name + ".json"};
+      output_file = user_input_dir / std::filesystem::path{name.c_str() + json_ext};
 
       break;
     }
   }
 
-  std::ofstream o(output_file.string());
+  std::ofstream o(output_file.c_str());
 
   o << std::setw(4) << json << std::endl;
 
@@ -420,12 +424,12 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type, const s
   }
 }
 
-void PresetsManager::remove(const PresetType& preset_type, const std::string& name) {
+void PresetsManager::remove(const PresetType& preset_type, const Glib::ustring& name) {
   std::filesystem::path preset_file;
 
   const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = user_dir / std::filesystem::path{name + ".json"};
+  preset_file = user_dir / std::filesystem::path{name.c_str() + json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
@@ -434,7 +438,7 @@ void PresetsManager::remove(const PresetType& preset_type, const std::string& na
   }
 }
 
-void PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) {
+void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib::ustring& name) {
   nlohmann::json json;
 
   std::vector<Glib::ustring> plugins;
@@ -443,7 +447,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const std::
 
   std::filesystem::path input_file;
 
-  bool preset_found = false;
+  auto preset_found = false;
 
   switch (preset_type) {
     case PresetType::output: {
@@ -452,7 +456,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const std::
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + ".json"};
+        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
@@ -496,7 +500,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const std::
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + ".json"};
+        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
@@ -600,7 +604,7 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
   std::filesystem::path p{file_path};
 
   if (std::filesystem::is_regular_file(p)) {
-    if (p.extension().string() == ".json") {
+    if (p.extension().c_str() == json_ext) {
       std::filesystem::path out_path;
 
       const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
@@ -626,14 +630,14 @@ void PresetsManager::add_autoload(const PresetType& preset_type,
 
   switch (preset_type) {
     case PresetType::output:
-      output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
     case PresetType::input:
-      output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
 
-  std::ofstream o(output_file.string());
+  std::ofstream o(output_file.c_str());
 
   json["device"] = device_name;
   json["device-profile"] = device_profile;
@@ -652,10 +656,10 @@ void PresetsManager::remove_autoload(const PresetType& preset_type,
 
   switch (preset_type) {
     case PresetType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
     case PresetType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
 
@@ -676,15 +680,15 @@ void PresetsManager::remove_autoload(const PresetType& preset_type,
 
 auto PresetsManager::find_autoload(const PresetType& preset_type,
                                    const std::string& device_name,
-                                   const std::string& device_profile) -> std::string {
+                                   const std::string& device_profile) -> Glib::ustring {
   std::filesystem::path input_file;
 
   switch (preset_type) {
     case PresetType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
     case PresetType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + ".json"};
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
 
@@ -741,7 +745,7 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().string() == ".json") {
+        if (it->path().extension().c_str() == json_ext) {
           nlohmann::json json;
 
           std::ifstream is(autoload_dir / it->path());
@@ -752,18 +756,18 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
         }
       }
 
-      it++;
+      ++it;
     }
 
     return list;
-  } catch (std::exception& e) {
+  } catch (const std::exception& e) {
     util::warning(log_tag + e.what());
 
     return list;
   }
 }
 
-auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
+auto PresetsManager::preset_file_exists(const PresetType& preset_type, const Glib::ustring& name) -> bool {
   std::filesystem::path input_file;
   std::vector<std::filesystem::path> conf_dirs;
 
@@ -774,7 +778,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + ".json"};
+        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           return true;
@@ -789,7 +793,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const std
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name + ".json"};
+        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           return true;

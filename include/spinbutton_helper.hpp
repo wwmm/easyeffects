@@ -23,26 +23,19 @@
 #include <gtkmm.h>
 #include <sstream>
 
-inline auto parse_spinbutton_output(Gtk::SpinButton* button, const std::string& unit) -> bool {
-  std::ostringstream str;
+inline auto parse_spinbutton_output(Gtk::SpinButton* button, const Glib::ustring& unit) -> bool {
+  const auto& value = Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed,
+                                            button->get_adjustment()->get_value());
 
-  str.precision(button->get_digits());
-
-  str << std::fixed << button->get_adjustment()->get_value() << " " << unit;
-
-  button->set_text(str.str());
+  button->set_text(value + ((unit.empty()) ? "" : (" " + unit)));
 
   return true;
 }
 
 inline auto parse_spinbutton_input(Gtk::SpinButton* button, double& new_value) {
-  std::istringstream str(button->get_text());
+  std::istringstream str(button->get_text().c_str());
 
-  if (str >> new_value) {
-    return 1;
-  }
-
-  return GTK_INPUT_ERROR;
+  return (str >> new_value) ? 1 : GTK_INPUT_ERROR;
 }
 
 #endif

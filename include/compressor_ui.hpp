@@ -20,7 +20,6 @@
 #ifndef COMPRESSOR_UI_HPP
 #define COMPRESSOR_UI_HPP
 
-#include <cstring>
 #include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
 
@@ -38,13 +37,13 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi*;
 
-  void on_new_reduction(double value);
+  void on_new_reduction(const float& value);
 
-  void on_new_envelope(double value);
+  void on_new_envelope(const float& value);
 
-  void on_new_sidechain(double value);
+  void on_new_sidechain(const float& value);
 
-  void on_new_curve(double value);
+  void on_new_curve(const float& value);
 
   void set_pipe_manager_ptr(PipeManager* pipe_manager);
 

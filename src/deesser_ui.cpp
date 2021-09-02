@@ -24,9 +24,9 @@ namespace {
 auto detection_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "RMS") == 0) {
+  if (g_strcmp0(v, "RMS") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Peak") == 0) {
+  } else if (g_strcmp0(v, "Peak") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -49,9 +49,9 @@ auto int_to_detection_enum(const GValue* value, const GVariantType* expected_typ
 auto mode_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
   const auto* v = g_variant_get_string(variant, nullptr);
 
-  if (std::strcmp(v, "Wide") == 0) {
+  if (g_strcmp0(v, "Wide") == 0) {
     g_value_set_int(value, 0);
-  } else if (std::strcmp(v, "Split") == 0) {
+  } else if (g_strcmp0(v, "Split") == 0) {
     g_value_set_int(value, 1);
   }
 
@@ -149,7 +149,7 @@ DeesserUi::~DeesserUi() {
 auto DeesserUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<DeesserUi>(builder, "top_box", "com.github.wwmm.easyeffects.deesser",
+  auto* const ui = Gtk::Builder::get_widget_derived<DeesserUi>(builder, "top_box", "com.github.wwmm.easyeffects.deesser",
                                                          schema_path + "deesser/");
 
   stack->add(*ui, plugin_name::deesser);
@@ -189,13 +189,13 @@ void DeesserUi::reset() {
   settings->reset("sc-listen");
 }
 
-void DeesserUi::on_new_compression(double value) {
+void DeesserUi::on_new_compression(const double& value) {
   compression->set_value(1.0 - value);
 
   compression_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));
 }
 
-void DeesserUi::on_new_detected(double value) {
+void DeesserUi::on_new_detected(const double& value) {
   detected->set_value(value);
 
   detected_label->set_text(level_to_localized_string(util::linear_to_db(value), 0));

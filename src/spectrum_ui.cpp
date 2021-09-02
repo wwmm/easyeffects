@@ -86,14 +86,14 @@ SpectrumUi::~SpectrumUi() {
 auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "drawing_area");
+  auto* const ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "drawing_area");
 
   box->append(*ui);
 
   return ui;
 }
 
-void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const std::vector<float>& magnitudes) {
+void SpectrumUi::on_new_spectrum(uint rate, uint n_bands, std::vector<float> magnitudes) {
   if (!settings->get_boolean("show")) {
     return;
   }
@@ -157,7 +157,7 @@ void SpectrumUi::on_new_spectrum(const uint& rate, const uint& n_bands, const st
   }
 
   std::ranges::for_each(spectrum_mag, [](auto& v) {
-    v = 10.0F * log10f(v);
+    v = 10.0F * std::log10(v);
 
     if (!std::isinf(v)) {
       v = (v > util::minimum_db_level) ? v : util::minimum_db_level;
@@ -191,12 +191,12 @@ void SpectrumUi::init_frequency_axis() {
   spectrum_freqs.resize(n_bands);
 
   for (uint n = 0U; n < n_bands; n++) {
-    spectrum_freqs[n] = 0.5F * rate * n / n_bands;
+    spectrum_freqs[n] = 0.5F * rate * static_cast<float>(n) / static_cast<float>(n_bands);
   }
 
   if (!spectrum_freqs.empty()) {
-    spectrum_x_axis = util::logspace(log10f(static_cast<float>(settings->get_int("minimum-frequency"))),
-                                     log10f(static_cast<float>(settings->get_int("maximum-frequency"))),
+    spectrum_x_axis = util::logspace(std::log10(static_cast<float>(settings->get_int("minimum-frequency"))),
+                                     std::log10(static_cast<float>(settings->get_int("maximum-frequency"))),
                                      settings->get_int("n-points"));
 
     spectrum_mag.resize(spectrum_x_axis.size());

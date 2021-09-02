@@ -89,30 +89,18 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   check_left->signal_toggled().connect([&, this]() {
     if (check_left->get_active()) {
-      if (show_fft->get_active()) {
-        plot_fft();
-      } else {
-        plot_waveform();
-      }
+      (show_fft->get_active()) ? plot_fft() : plot_waveform();
     }
   });
 
   check_right->signal_toggled().connect([&, this]() {
     if (check_right->get_active()) {
-      if (show_fft->get_active()) {
-        plot_fft();
-      } else {
-        plot_waveform();
-      }
+      (show_fft->get_active()) ? plot_fft() : plot_waveform();
     }
   });
 
   show_fft->signal_toggled().connect([=, this]() {
-    if (show_fft->get_active()) {
-      plot_fft();
-    } else {
-      plot_waveform();
-    }
+    (show_fft->get_active()) ? plot_fft() : plot_waveform();
   });
 
   // gsettings bindings
@@ -145,25 +133,33 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   folder_monitor->signal_changed().connect(
     [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
+      const auto& irs_filename = util::remove_filename_extension(file->get_basename());
+
+      if (irs_filename.empty()) {
+        util::warning("Can't retrieve information about irs file");
+
+        return;
+      }
+
       switch (event) {
         case Gio::FileMonitor::Event::CREATED: {
-          string_list->append(util::remove_filename_extension(file->get_basename()));
+          for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            if (string_list->get_string(n) == irs_filename) {
+              return;
+            }
+          }
+
+          string_list->append(irs_filename);
 
           break;
         }
         case Gio::FileMonitor::Event::DELETED: {
-          const Glib::ustring& name_removed = util::remove_filename_extension(file->get_basename());
-
-          int count = 0;
-
-          for (auto name = string_list->get_string(count); name.c_str() != nullptr;) {
-            if (name_removed == name) {
-              string_list->remove(count);
+          for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            if (string_list->get_string(n) == irs_filename) {
+              string_list->remove(n);
 
               break;
             }
-
-            name = string_list->get_string(++count);
           }
 
           break;
@@ -185,7 +181,7 @@ ConvolverUi::~ConvolverUi() {
 auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
 
-  auto* ui = Gtk::Builder::get_widget_derived<ConvolverUi>(builder, "top_box", "com.github.wwmm.easyeffects.convolver",
+  auto* const ui = Gtk::Builder::get_widget_derived<ConvolverUi>(builder, "top_box", "com.github.wwmm.easyeffects.convolver",
                                                            schema_path + "convolver/");
 
   stack->add(*ui, plugin_name::convolver);
@@ -213,10 +209,10 @@ void ConvolverUi::setup_listview() {
 
   // sorter
 
-  auto sorter =
+  const auto& sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -229,10 +225,10 @@ void ConvolverUi::setup_listview() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* box = Gtk::make_managed<Gtk::Box>();
-    auto* label = Gtk::make_managed<Gtk::Label>();
-    auto* load = Gtk::make_managed<Gtk::Button>();
-    auto* remove = Gtk::make_managed<Gtk::Button>();
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const load = Gtk::make_managed<Gtk::Button>();
+    auto* const remove = Gtk::make_managed<Gtk::Button>();
 
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
@@ -254,21 +250,21 @@ void ConvolverUi::setup_listview() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* load = static_cast<Gtk::Button*>(list_item->get_data("load"));
-    auto* remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+    auto* const load = static_cast<Gtk::Button*>(list_item->get_data("load"));
+    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
     const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
     auto connection_load = load->signal_clicked().connect([=, this]() {
-      const auto& irs_file = irs_dir / std::filesystem::path{name + ".irs"};
+      const auto& irs_file = irs_dir / std::filesystem::path{name.c_str() + irs_ext};
 
-      settings->set_string("kernel-path", irs_file.string());
+      settings->set_string("kernel-path", irs_file.c_str());
     });
 
-    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name); });
+    auto connection_remove = remove->signal_clicked().connect([=, this]() { remove_irs_file(name.raw()); });
 
     list_item->set_data("connection_load", new sigc::connection(connection_load),
                         Glib::destroy_notify_delete<sigc::connection>);
@@ -304,13 +300,13 @@ void ConvolverUi::reset() {
   settings->reset("ir-width");
 }
 
-auto ConvolverUi::get_irs_names() -> std::vector<std::string> {
-  std::vector<std::string> names;
+auto ConvolverUi::get_irs_names() -> std::vector<Glib::ustring> {
+  std::vector<Glib::ustring> names;
 
-  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; it++) {
+  for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
     if (std::filesystem::is_regular_file(it->status())) {
-      if (it->path().extension().string() == ".irs") {
-        names.emplace_back(it->path().stem().string());
+      if (it->path().extension().c_str() == irs_ext) {
+        names.emplace_back(it->path().stem().c_str());
       }
     }
   }
@@ -322,7 +318,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
   std::filesystem::path p{file_path};
 
   if (std::filesystem::is_regular_file(p)) {
-    if (SndfileHandle file = SndfileHandle(file_path); file.channels() != 2 || file.frames() == 0) {
+    if (SndfileHandle file = SndfileHandle(file_path.c_str()); file.channels() != 2 || file.frames() == 0) {
       util::warning(log_tag + " Only stereo impulse files are supported!");
       util::warning(log_tag + file_path + " loading failed");
 
@@ -331,7 +327,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
 
     auto out_path = irs_dir / p.filename();
 
-    out_path.replace_extension(".irs");
+    out_path.replace_extension(irs_ext);
 
     std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -342,7 +338,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
 }
 
 void ConvolverUi::remove_irs_file(const std::string& name) {
-  auto irs_file = irs_dir / std::filesystem::path{name + ".irs"};
+  const auto& irs_file = irs_dir / std::filesystem::path{name + irs_ext};
 
   if (std::filesystem::exists(irs_file)) {
     std::filesystem::remove(irs_file);
@@ -391,7 +387,7 @@ void ConvolverUi::on_import_irs_clicked() {
 void ConvolverUi::get_irs_info() {
   const auto& path = settings->get_string("kernel-path");
 
-  if (path.c_str() == nullptr) {
+  if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null.");
 
     return;
@@ -399,7 +395,7 @@ void ConvolverUi::get_irs_info() {
 
   util::debug(log_tag + "reading the impulse file: " + path);
 
-  SndfileHandle file = SndfileHandle(path);
+  SndfileHandle file = SndfileHandle(path.c_str());
 
   if (file.channels() != 2 || file.frames() == 0) {
     // warning user that there is a problem
@@ -422,20 +418,20 @@ void ConvolverUi::get_irs_info() {
 
   file.readf(kernel.data(), file.frames());
 
-  float dt = 1.0F / static_cast<float>(file.samplerate());
+  const float dt = 1.0F / static_cast<float>(file.samplerate());
 
-  float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
+  const float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
 
   time_axis.resize(file.frames());
   left_mag.resize(file.frames());
   right_mag.resize(file.frames());
 
-  for (uint n = 0U; n < file.frames(); n++) {
+  for (int n = 0; n < file.frames(); n++) {
     time_axis[n] = n * dt;
 
-    left_mag[n] = kernel[2U * n];
+    left_mag[n] = kernel[2 * n];
 
-    right_mag[n] = kernel[2U * n + 1U];
+    right_mag[n] = kernel[2 * n + 1];
   }
 
   get_irs_spectrum(file.samplerate());
@@ -485,15 +481,15 @@ void ConvolverUi::get_irs_info() {
 
   // ensure that the fft can be computed
 
-  if (time_axis.size() % 2 != 0) {
-    time_axis.emplace_back(static_cast<float>(time_axis.size() - 1) * dt);
+  if (time_axis.size() % 2U != 0U) {
+    time_axis.emplace_back(static_cast<float>(time_axis.size() - 1U) * dt);
   }
 
-  if (left_mag.size() % 2 != 0) {
+  if (left_mag.size() % 2U != 0U) {
     left_mag.emplace_back(0.0F);
   }
 
-  if (right_mag.size() % 2 != 0) {
+  if (right_mag.size() % 2U != 0U) {
     right_mag.emplace_back(0.0F);
   }
 
@@ -519,14 +515,14 @@ void ConvolverUi::get_irs_info() {
   // updating interface with ir file info
 
   connections.emplace_back(Glib::signal_idle().connect([=, this]() {
-    label_sampling_rate->set_text(std::to_string(file.samplerate()) + " Hz");
-    label_samples->set_text(std::to_string(file.frames()));
+    label_sampling_rate->set_text(Glib::ustring::format(file.samplerate()) + " Hz");
+    label_samples->set_text(Glib::ustring::format(file.frames()));
 
     label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
-    const auto& fpath = std::filesystem::path{path};
+    const auto& fpath = std::filesystem::path{path.raw()};
 
-    label_file_name->set_text(fpath.stem().string());
+    label_file_name->set_text(fpath.stem().c_str());
 
     plot_waveform();
 
@@ -541,15 +537,17 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   util::debug(log_tag + "calculating the impulse fft...");
 
-  left_spectrum.resize(left_mag.size() / 2 + 1);
-  right_spectrum.resize(right_mag.size() / 2 + 1);
+  left_spectrum.resize(left_mag.size() / 2U + 1U);
+  right_spectrum.resize(right_mag.size() / 2U + 1U);
 
   auto real_input = left_mag;
 
   for (uint n = 0U, ri_size = real_input.size(); n < ri_size; n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
-    auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
+    const float w =
+        0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+        static_cast<float>(real_input.size() - 1U)));
 
     real_input[n] *= w;
   }
@@ -576,7 +574,9 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   for (uint n = 0U, ri_size = real_input.size(); n < ri_size; n++) {
     // https://en.wikipedia.org/wiki/Hann_function
 
-    auto w = 0.5F * (1.0F - cosf(2.0F * std::numbers::pi_v<float> * n / static_cast<float>(real_input.size() - 1)));
+    const float w =
+        0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+        static_cast<float>(real_input.size() - 1U)));
 
     real_input[n] *= w;
   }
@@ -609,13 +609,12 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  const auto& log_axis = util::logspace(log10f(20.0F), log10f(22000.0F), spectrum_settings->get_int("n-points"));
+  const auto& log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), spectrum_settings->get_int("n-points"));
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
-
-  std::vector<uint> bin_count(log_axis.size());
 
   std::vector<float> l(log_axis.size());
   std::vector<float> r(log_axis.size());
+  std::vector<uint> bin_count(log_axis.size());
 
   std::ranges::fill(l, 0.0F);
   std::ranges::fill(r, 0.0F);

@@ -42,7 +42,7 @@ Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri) : plugin_uri(plugin_uri) {
     return;
   }
 
-  auto* uri = lilv_new_uri(world, plugin_uri.c_str());
+  auto* const uri = lilv_new_uri(world, plugin_uri.c_str());
 
   if (uri == nullptr) {
     util::warning(log_tag + "Invalid plugin URI: " + plugin_uri);
@@ -323,7 +323,7 @@ void Lv2Wrapper::deactivate() {
 }
 
 void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& value) {
-  bool found = false;
+  auto found = false;
 
   for (auto& p : ports) {
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
@@ -346,24 +346,15 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
   }
 }
 auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
-  bool found = false;
-  float value = 0.0F;
-
-  for (auto& p : ports) {
+  for (const auto& p : ports) {
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
-      value = p.value;
-
-      found = true;
-
-      break;
+      return p.value;
     }
   }
 
-  if (!found) {
-    util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
-  }
+  util::warning(log_tag + plugin_uri + " port symbol not found: " + symbol);
 
-  return value;
+  return 0.0F;
 }
 
 auto Lv2Wrapper::has_instance() -> bool {
@@ -371,7 +362,7 @@ auto Lv2Wrapper::has_instance() -> bool {
 }
 
 void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
-                                 const std::string& gsettings_key,
+                                 const Glib::ustring& gsettings_key,
                                  const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(gsettings_key)));
 
@@ -381,7 +372,7 @@ void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
 }
 
 void Lv2Wrapper::bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
-                                    const std::string& gsettings_key,
+                                    const Glib::ustring& gsettings_key,
                                     const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(gsettings_key))));
 
@@ -391,7 +382,7 @@ void Lv2Wrapper::bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
 }
 
 void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
-                               const std::string& gsettings_key,
+                               const Glib::ustring& gsettings_key,
                                const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(gsettings_key)));
 
@@ -401,7 +392,7 @@ void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
 }
 
 void Lv2Wrapper::bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
-                               const std::string& gsettings_key,
+                               const Glib::ustring& gsettings_key,
                                const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(gsettings_key)));
 
@@ -411,7 +402,7 @@ void Lv2Wrapper::bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
 }
 
 void Lv2Wrapper::bind_key_int(const Glib::RefPtr<Gio::Settings>& settings,
-                              const std::string& gsettings_key,
+                              const Glib::ustring& gsettings_key,
                               const std::string& lv2_symbol) {
   set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(gsettings_key)));
 
