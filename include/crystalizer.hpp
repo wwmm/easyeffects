@@ -128,8 +128,8 @@ class Crystalizer : public PluginBase {
           the next round.
         */
 
-        const float& L = band_data_L.at(n)[0];
-        const float& R = band_data_R.at(n)[0];
+        const float L = band_data_L.at(n)[0];
+        const float R = band_data_R.at(n)[0];
 
         band_data_L.at(n)[0] = band_next_L.at(n);
         band_data_R.at(n)[0] = band_next_R.at(n);
@@ -144,8 +144,8 @@ class Crystalizer : public PluginBase {
 
       if (!band_bypass.at(n)) {
         for (uint m = 0U; m < blocksize; m++) {
-          const float& L = band_data_L.at(n)[m];
-          const float& R = band_data_R.at(n)[m];
+          const float L = band_data_L.at(n)[m];
+          const float R = band_data_R.at(n)[m];
 
           if (m > 0 && m < blocksize - 1) {
             const float& L_lower = band_data_L.at(n)[m - 1U];
@@ -177,8 +177,8 @@ class Crystalizer : public PluginBase {
         // peak enhancing using second derivative
 
         for (uint m = 0U; m < blocksize; m++) {
-          const float& L = band_data_L.at(n)[m];
-          const float& R = band_data_R.at(n)[m];
+          const float L = band_data_L.at(n)[m];
+          const float R = band_data_R.at(n)[m];
           const float& d2L = band_second_derivative_L.at(n)[m];
           const float& d2R = band_second_derivative_R.at(n)[m];
 
