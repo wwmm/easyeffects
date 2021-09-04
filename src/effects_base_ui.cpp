@@ -787,8 +787,6 @@ void EffectsBaseUi::setup_listview_players() {
       return Glib::ustring::format(static_cast<int>(v)) + " %";
     });
 
-    holder->info_updated.emit(holder->info);
-
     list_item->set_data("connection_enable", pointer_connection_enable, Glib::destroy_notify_delete<sigc::connection>);
 
     list_item->set_data("connection_volume", pointer_connection_volume, Glib::destroy_notify_delete<sigc::connection>);
