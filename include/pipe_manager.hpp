@@ -210,6 +210,8 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
+  auto stream_is_connected(const std::string& media_class, const uint& node_id) -> bool;
+
   void connect_stream_output(const NodeInfo& nd_info) const;
 
   void connect_stream_input(const NodeInfo& nd_info) const;

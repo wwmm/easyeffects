@@ -1189,6 +1189,24 @@ PipeManager::~PipeManager() {
   pw_thread_loop_destroy(thread_loop);
 }
 
+auto PipeManager::stream_is_connected(const std::string& media_class, const uint& node_id) -> bool {
+  if (media_class == "Stream/Output/Audio") {
+    for (const auto& link : list_links) {
+      if (link.output_node_id == node_id && link.input_node_id == pe_sink_node.id) {
+        return true;
+      }
+    }
+  } else if (media_class == "Stream/Input/Audio") {
+    for (const auto& link : list_links) {
+      if (link.output_node_id == pe_source_node.id && link.input_node_id == node_id) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
   if (nd_info.media_class == "Stream/Output/Audio") {
     pw_thread_loop_lock(thread_loop);

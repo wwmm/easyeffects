@@ -707,8 +707,34 @@ void EffectsBaseUi::setup_listview_players() {
       latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, i.latency) + " s");
       state->set_text(node_state_to_ustring(i.state));
 
+      // set the enable switch
+
+      pointer_connection_enable->block();
+
+      const auto& is_enabled = pm->stream_is_connected(holder->info.media_class, holder->info.id);
+      const auto& is_blocklisted = app_is_blocklisted(holder->info.name);
+
+      enable->set_sensitive(is_enabled || !is_blocklisted);
+      enable->set_active(is_enabled);
+
+      pointer_connection_enable->unblock();
+
+      // set the blocklist checkbutton
+
+      pointer_connection_blocklist_checkbutton->block();
+
+      blocklist->set_active(is_blocklisted);
+
+      pointer_connection_blocklist_checkbutton->unblock();
+
+      // save app enabled state only the first time when is not preset in the enabled_app_list map
+
+      enabled_app_list.try_emplace(holder->info.id, is_enabled);
+
+      // set the icon name and the volume slider
+
       if (i.state != PW_NODE_STATE_CREATING) {
-        // For unknown reasons PW_NODE_STATE_CREATING causes icon name to be set even if it's empty,
+        // PW_NODE_STATE_CREATING causes icon name to be set even if it's empty,
         // showing a broken image. Therefore we skip it's update on that state.
 
         if (!i.app_icon_name.empty()) {
@@ -724,27 +750,7 @@ void EffectsBaseUi::setup_listview_players() {
 
           app_icon->set_visible(true);
         }
-      }
 
-      // initializing the switch
-
-      pointer_connection_enable->block();
-
-      const auto& is_enabled = app_is_enabled(holder->info);
-      const auto& is_blocklisted = app_is_blocklisted(holder->info.name);
-
-      enable->set_sensitive(is_enabled || !is_blocklisted);
-      enable->set_active(is_enabled);
-
-      pointer_connection_enable->unblock();
-
-      // save app enabled state only the first time when is not preset in the map
-
-      enabled_app_list.try_emplace(holder->info.id, is_enabled);
-
-      // initializing the volume slide
-
-      if (i.state != PW_NODE_STATE_CREATING) {
         // Volume can't be set on PW_NODE_STATE_CREATING, so we leave it hidden on this state
 
         pointer_connection_volume->block();
@@ -758,7 +764,7 @@ void EffectsBaseUi::setup_listview_players() {
         pointer_connection_volume->unblock();
       }
 
-      // initializing the mute button
+      // set the mute button
 
       pointer_connection_mute->block();
 
@@ -775,14 +781,6 @@ void EffectsBaseUi::setup_listview_players() {
       mute->set_active(holder->info.mute);
 
       pointer_connection_mute->unblock();
-
-      // initializing the blocklist checkbutton
-
-      pointer_connection_blocklist_checkbutton->block();
-
-      blocklist->set_active(is_blocklisted);
-
-      pointer_connection_blocklist_checkbutton->unblock();
     });
 
     scale_volume->set_format_value_func([=](const auto& v) {
@@ -871,11 +869,13 @@ void EffectsBaseUi::setup_listview_blocklist() {
     for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
       auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(all_players_model->get_item(n));
 
+      const auto& app_is_enabled = pm->stream_is_connected(holder->info.media_class, holder->info.id);
+
       if (app_is_blocklisted(holder->info.name)) {
-        if (app_is_enabled(holder->info)) {
+        if (app_is_enabled) {
           disconnect_stream(holder->info);
         }
-      } else if (!app_is_enabled(holder->info)) {
+      } else if (!app_is_enabled) {
         // Try to restore the previous enabled state, if needed
 
         try {
@@ -1310,12 +1310,8 @@ void EffectsBaseUi::on_app_added(NodeInfo node_info) {
 
   // Blocklist check
 
-  if (app_is_blocklisted(node_info.name)) {
-    disconnect_stream(node_info);
-
-    if (!settings->get_boolean("show-blocklisted-apps")) {
-      return;
-    }
+  if (app_is_blocklisted(node_info.name) && !settings->get_boolean("show-blocklisted-apps")) {
+    return;
   }
 
   players_model->append(NodeInfoHolder::create(node_info));
@@ -1378,24 +1374,6 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
     default:
       return _("unknown");
   }
-}
-
-auto EffectsBaseUi::app_is_enabled(const NodeInfo& node_info) -> bool {
-  if (node_info.media_class == "Stream/Output/Audio") {
-    for (const auto& link : pm->list_links) {
-      if (link.output_node_id == node_info.id && link.input_node_id == pm->pe_sink_node.id) {
-        return true;
-      }
-    }
-  } else if (node_info.media_class == "Stream/Input/Audio") {
-    for (const auto& link : pm->list_links) {
-      if (link.output_node_id == pm->pe_source_node.id && link.input_node_id == node_info.id) {
-        return true;
-      }
-    }
-  }
-
-  return false;
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
