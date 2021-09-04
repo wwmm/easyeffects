@@ -616,16 +616,11 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
   std::smatch matches;
 
-  const auto& i = std::regex::icase;
-  std::regex re_filter_type(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i);
-  std::regex re_freq(R"(fc\s++(\d++\.?+\d*+)\s*+hz)", i);
-  std::regex re_dB_per_octave(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i);
-  std::regex re_gain(R"(gain\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i);
-  std::regex re_quality_factor(R"(q\s++(\d++\.?+\d*+))", i);
+  const auto i = std::regex::icase;
 
   // get filter type
 
-  std::regex_search(line, matches, re_filter_type);
+  std::regex_search(line, matches, std::regex(R"(filter\s++\d*+:\s*+on\s++([a-z]++))", i));
 
   if (matches.size() != 2U) {
     return false;
@@ -639,7 +634,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
   // get center frequency
 
-  std::regex_search(line, matches, re_freq);
+  std::regex_search(line, matches, std::regex(R"(fc\s++(\d++\.?+\d*+)\s*+hz)", i));
 
   if (matches.size() != 2U) {
     return false;
@@ -650,7 +645,8 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get slope
 
   if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches, re_dB_per_octave);
+    std::regex_search(line, matches,
+                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i));
 
     // _xdB variants require the dB parameter
 
@@ -668,7 +664,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get gain
 
   if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches, re_gain);
+    std::regex_search(line, matches, std::regex(R"(gain\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i));
 
     // all Shelf types (i.e. all above except for Peaking) require the gain parameter
 
@@ -683,7 +679,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
   // get quality factor
   if ((filter.type & (PEAKING | LOW_PASS_Q | HIGH_PASS_Q | LOW_SHELF_xdB | HIGH_SHELF_xdB | NOTCH | ALL_PASS)) != 0U) {
-    std::regex_search(line, matches, re_quality_factor);
+    std::regex_search(line, matches, std::regex(R"(q\s++(\d++\.?+\d*+))", i));
 
     // Peaking and All-Pass filter types require the quality factor parameter
 

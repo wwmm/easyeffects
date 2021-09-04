@@ -792,9 +792,7 @@ void on_registry_global(void* data,
 
         if (name.empty()) {
           return;
-        }
-
-        if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
+        } else if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
           return;
         }
 
