@@ -85,6 +85,12 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   });
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) {
+    if (global_settings->get_boolean("bypass")) {
+      global_settings->set_boolean("bypass", false);
+
+      return; // filter connected through update_bypass_state
+    }
+
     disconnect_filters();
 
     connect_filters();
