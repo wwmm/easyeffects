@@ -172,6 +172,8 @@ class PipeManager {
 
   spa_hook metadata_listener{};
 
+  std::map<uint, NodeInfo> node_map;
+
   std::vector<NodeInfo> list_nodes;
 
   std::vector<LinkInfo> list_links;
