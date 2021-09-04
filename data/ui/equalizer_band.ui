@@ -239,6 +239,7 @@
 
         <child>
             <object class="GtkLabel" id="band_label">
+                <property name="width-chars">10</property>
                 <property name="label">band</property>
                 <style>
                     <class name="dim-label" />
@@ -248,6 +249,7 @@
 
         <child>
             <object class="GtkLabel" id="band_quality_label">
+                <property name="width-chars">10</property>
                 <property name="label">Q</property>
                 <style>
                     <class name="dim-label" />
