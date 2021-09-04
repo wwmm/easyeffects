@@ -640,7 +640,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     return false;
   }
 
-  filter.freq = string_to_float(matches.str(1));
+  filter.freq = std::stof(matches.str(1));
 
   // get slope
 
@@ -657,7 +657,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
 
-      filter.slope_dB = string_to_float(matches.str(1));
+      filter.slope_dB = std::stof(matches.str(1));
     }
   }
 
@@ -673,7 +673,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.gain = string_to_float(matches.str(1));
+      filter.gain = std::stof(matches.str(1));
     }
   }
 
@@ -688,7 +688,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.quality_factor = string_to_float(matches.str(1));
+      filter.quality_factor = std::stof(matches.str(1));
     }
   }
 

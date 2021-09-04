@@ -60,12 +60,6 @@ void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustri
   button->signal_input().connect([=](double& new_value) { return parse_spinbutton_input(button, new_value); }, true);
 }
 
-auto PluginUiBase::string_to_float(const std::string& value) -> float {
-  // this conversion must be locale independent
-
-  return std::stof(value);
-}
-
 void PluginUiBase::set_transient_window(Gtk::Window* transient_window) {
   this->transient_window = transient_window;
 }
