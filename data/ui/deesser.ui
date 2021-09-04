@@ -275,7 +275,7 @@
                                 <property name="upper">100</property>
                                 <property name="value">15</property>
                                 <property name="step-increment">1</property>
-                                <property name="page-increment">1</property>
+                                <property name="page-increment">10</property>
                             </object>
                         </property>
                         <layout>

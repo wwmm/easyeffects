@@ -85,6 +85,12 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   });
 
   settings->signal_changed("plugins").connect([&, this](const auto& key) {
+    if (global_settings->get_boolean("bypass")) {
+      global_settings->set_boolean("bypass", false);
+
+      return; // filter connected through update_bypass_state
+    }
+
     disconnect_filters();
 
     connect_filters();
@@ -98,28 +104,14 @@ StreamOutputEffects::~StreamOutputEffects() {
 }
 
 void StreamOutputEffects::on_app_added(NodeInfo node_info) {
-  auto forbidden_app = false;
-  auto connected = false;
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  forbidden_app = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
+  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
-  for (const auto& link : pm->list_links) {
-    if (link.output_node_id == node_info.id && link.input_node_id == pm->pe_sink_node.id) {
-      connected = true;
-
-      break;
-    }
-  }
-
-  if (connected) {
-    if (forbidden_app) {
-      pm->disconnect_stream_output(node_info);
-    }
-  } else {
-    if (!forbidden_app && global_settings->get_boolean("process-all-outputs")) {
-      pm->connect_stream_output(node_info);
-    }
+  if (is_blocklisted) {
+    pm->disconnect_stream_output(node_info);
+  } else if (global_settings->get_boolean("process-all-outputs")) {
+    pm->connect_stream_output(node_info);
   }
 }
 

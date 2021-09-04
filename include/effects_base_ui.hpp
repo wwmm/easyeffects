@@ -168,8 +168,6 @@ class EffectsBaseUi {
 
   void setup_listview_selected_plugins();
 
-  auto app_is_enabled(const NodeInfo& node_info) -> bool;
-
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 
   auto add_new_blocklist_entry(const Glib::ustring& name) -> bool;

@@ -62,7 +62,7 @@
                                 <property name="lower">-100</property>
                                 <property name="upper">100</property>
                                 <property name="step-increment">1</property>
-                                <property name="page-increment">1</property>
+                                <property name="page-increment">10</property>
                             </object>
                         </property>
                         <layout>

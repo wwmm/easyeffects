@@ -83,7 +83,7 @@ auto link_info_from_props(const spa_dict* props) -> LinkInfo {
   }
 
   if (const auto* passive = spa_dict_lookup(props, PW_KEY_LINK_PASSIVE)) {
-    if (strcmp(passive, "true") == 0) {
+    if (g_strcmp0(passive, "true") == 0) {
       info.passive = true;
     }
   }
@@ -119,19 +119,19 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
   }
 
   if (const auto* port_physical = spa_dict_lookup(props, PW_KEY_PORT_PHYSICAL)) {
-    if (strcmp(port_physical, "true") == 0) {
+    if (g_strcmp0(port_physical, "true") == 0) {
       info.physical = true;
     }
   }
 
   if (const auto* port_terminal = spa_dict_lookup(props, PW_KEY_PORT_TERMINAL)) {
-    if (strcmp(port_terminal, "true") == 0) {
+    if (g_strcmp0(port_terminal, "true") == 0) {
       info.terminal = true;
     }
   }
 
   if (const auto* port_monitor = spa_dict_lookup(props, PW_KEY_PORT_MONITOR)) {
-    if (strcmp(port_monitor, "true") == 0) {
+    if (g_strcmp0(port_monitor, "true") == 0) {
       info.monitor = true;
     }
   }
@@ -748,27 +748,27 @@ void on_registry_global(void* data,
                         const struct spa_dict* props) {
   auto* pm = static_cast<PipeManager*>(data);
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Node) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Node) == 0) {
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
       if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
         return;
       }
 
-      if (strcmp(key_media_role, "DSP") == 0) {
+      if (g_strcmp0(key_media_role, "DSP") == 0) {
         const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY);
 
         if (key_media_category == nullptr) {
           return;
         }
 
-        if (strcmp(key_media_category, "Filter") == 0) {
+        if (g_strcmp0(key_media_category, "Filter") == 0) {
           const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
 
           if (key_node_description == nullptr) {
             return;
           }
 
-          if (strcmp(key_node_description, "easyeffects_filter") == 0) {
+          if (g_strcmp0(key_node_description, "easyeffects_filter") == 0) {
             const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
             util::debug(pm->log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
@@ -792,9 +792,7 @@ void on_registry_global(void* data,
 
         if (name.empty()) {
           return;
-        }
-
-        if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
+        } else if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
           return;
         }
 
@@ -849,7 +847,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Link) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
 
     auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
@@ -892,7 +890,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(proxy_data)));
 
     auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
@@ -915,7 +913,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Module) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Module) == 0) {
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(proxy_data)));
 
@@ -939,7 +937,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Client) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Client) == 0) {
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_CLIENT, sizeof(proxy_data)));
 
@@ -959,7 +957,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Metadata) == 0) {
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
       util::debug(pm->log_tag + "found metadata: " + name);
 
@@ -977,7 +975,7 @@ void on_registry_global(void* data,
     return;
   }
 
-  if (strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
+  if (g_strcmp0(type, PW_TYPE_INTERFACE_Device) == 0) {
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       const std::string media_class = key_media_class;
 
@@ -1187,6 +1185,24 @@ PipeManager::~PipeManager() {
 
   util::debug(log_tag + "Destroying Pipewire loop...");
   pw_thread_loop_destroy(thread_loop);
+}
+
+auto PipeManager::stream_is_connected(const std::string& media_class, const uint& node_id) -> bool {
+  if (media_class == "Stream/Output/Audio") {
+    for (const auto& link : list_links) {
+      if (link.output_node_id == node_id && link.input_node_id == pe_sink_node.id) {
+        return true;
+      }
+    }
+  } else if (media_class == "Stream/Input/Audio") {
+    for (const auto& link : list_links) {
+      if (link.output_node_id == pe_source_node.id && link.input_node_id == node_id) {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 void PipeManager::connect_stream_output(const NodeInfo& nd_info) const {
@@ -1420,7 +1436,7 @@ auto PipeManager::json_object_find(const char* obj, const char* key, char* value
   }
 
   while (spa_json_get_string(sjson.data() + 1, res.data(), res.size() * sizeof(char) - 1) > 0) {
-    if (strcmp(res.data(), key) == 0) {
+    if (g_strcmp0(res.data(), key) == 0) {
       if (spa_json_get_string(sjson.data() + 1, value, len) <= 0) {
         continue;
       }
