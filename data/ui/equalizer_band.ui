@@ -126,7 +126,7 @@
                                                 <property name="lower">10</property>
                                                 <property name="upper">24000</property>
                                                 <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <property name="page-increment">100</property>
                                             </object>
                                         </property>
                                     </object>
@@ -188,7 +188,7 @@
                                                 <property name="upper">100</property>
                                                 <property name="value">4</property>
                                                 <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.10</property>
+                                                <property name="page-increment">0.1</property>
                                             </object>
                                         </property>
                                     </object>
@@ -271,7 +271,7 @@
                         <property name="lower">-35</property>
                         <property name="upper">35</property>
                         <property name="step-increment">0.01</property>
-                        <property name="page-increment">0.01</property>
+                        <property name="page-increment">0.1</property>
                     </object>
                 </property>
             </object>
