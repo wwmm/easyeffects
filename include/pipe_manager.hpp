@@ -249,8 +249,8 @@ class PipeManager {
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
-  sigc::signal<void(uint, std::string, std::string)> stream_output_added;
-  sigc::signal<void(uint, std::string, std::string)> stream_input_added;
+  sigc::signal<void(const uint, const std::string, const std::string)> stream_output_added;
+  sigc::signal<void(const uint, const std::string, const std::string)> stream_input_added;
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.

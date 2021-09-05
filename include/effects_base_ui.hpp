@@ -93,7 +93,7 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  void on_app_added(uint id, std::string name, std::string media_class);
+  void on_app_added(const uint id, const std::string name, const std::string media_class);
   void on_app_changed(NodeInfo node_info);
   void on_app_removed(NodeInfo node_info);
 

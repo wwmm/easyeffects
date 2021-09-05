@@ -1309,7 +1309,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 }
 
-void EffectsBaseUi::on_app_added(uint id, std::string name, std::string media_class) {
+void EffectsBaseUi::on_app_added(const uint id, const std::string name, const std::string media_class) {
   // do not add the same stream twice
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {

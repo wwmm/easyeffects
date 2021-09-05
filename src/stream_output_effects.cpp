@@ -103,7 +103,7 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(uint id, std::string name, std::string media_class) {
+void StreamOutputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
   const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
