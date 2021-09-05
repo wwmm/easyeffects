@@ -95,7 +95,7 @@ class EffectsBaseUi {
 
   void on_app_added(const uint id, const std::string name, const std::string media_class);
   void on_app_changed(const uint id);
-  void on_app_removed(NodeInfo node_info);
+  void on_app_removed(const uint id);
 
   void on_new_output_level_db(const float& left, const float& right);
 

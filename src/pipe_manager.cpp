@@ -149,9 +149,6 @@ void on_removed_node_proxy(void* data) {
 
 void on_destroy_node_proxy(void* data) {
   auto* pd = static_cast<node_data*>(data);
-  auto* pm = pd->pm;
-
-  const auto& nd_info = pd->nd_info;
 
   spa_hook_remove(&pd->proxy_listener);
 
@@ -163,14 +160,24 @@ void on_destroy_node_proxy(void* data) {
 
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 
+  auto* pm = pd->pm;
+
   if (pd->nd_info.media_class == "Audio/Source") {
-    Glib::signal_idle().connect_once([pm, nd_info] { pm->source_removed.emit(nd_info); });
+    auto nd_info_copy = pd->nd_info;
+
+    Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
   } else if (pd->nd_info.media_class == "Audio/Sink") {
-    Glib::signal_idle().connect_once([pm, nd_info] { pm->sink_removed.emit(nd_info); });
+    auto nd_info_copy = pd->nd_info;
+
+    Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
   } else if (pd->nd_info.media_class == "Stream/Output/Audio") {
-    Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_output_removed.emit(nd_info); });
+    auto node_id = pd->nd_info.id;
+
+    Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_removed.emit(node_id); });
   } else if (pd->nd_info.media_class == "Stream/Input/Audio") {
-    Glib::signal_idle().connect_once([pm, nd_info] { pm->stream_input_removed.emit(nd_info); });
+    auto node_id = pd->nd_info.id;
+
+    Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
   }
 }
 

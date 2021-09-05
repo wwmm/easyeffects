@@ -1340,9 +1340,9 @@ void EffectsBaseUi::on_app_changed(const uint id) {
   }
 }
 
-void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
+void EffectsBaseUi::on_app_removed(const uint id) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    if (players_model->get_item(n)->info.id == node_info.id) {
+    if (players_model->get_item(n)->info.id == id) {
       players_model->remove(n);
 
       break;
@@ -1350,7 +1350,7 @@ void EffectsBaseUi::on_app_removed(NodeInfo node_info) {
   }
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (all_players_model->get_item(n)->info.id == node_info.id) {
+    if (all_players_model->get_item(n)->info.id == id) {
       all_players_model->remove(n);
 
       break;
