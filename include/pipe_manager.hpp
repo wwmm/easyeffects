@@ -251,6 +251,8 @@ class PipeManager {
 
   sigc::signal<void(const uint, const std::string, const std::string)> stream_output_added;
   sigc::signal<void(const uint, const std::string, const std::string)> stream_input_added;
+  sigc::signal<void(const uint)> stream_output_changed;
+  sigc::signal<void(const uint)> stream_input_changed;
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
@@ -264,9 +266,7 @@ class PipeManager {
   sigc::signal<void(NodeInfo)> sink_removed;
   sigc::signal<void(NodeInfo)> new_default_sink;
   sigc::signal<void(NodeInfo)> new_default_source;
-  sigc::signal<void(NodeInfo)> stream_output_changed;
   sigc::signal<void(NodeInfo)> stream_output_removed;
-  sigc::signal<void(NodeInfo)> stream_input_changed;
   sigc::signal<void(NodeInfo)> stream_input_removed;
   sigc::signal<void(DeviceInfo)> device_changed;
 

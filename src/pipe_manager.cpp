@@ -242,15 +242,21 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
-    NodeInfo nd_info_copy = nd->nd_info;
+    if (nd->nd_info.media_class == "Stream/Output/Audio") {
+      auto node_id = nd->nd_info.id;
 
-    if (nd_info_copy.media_class == "Stream/Output/Audio") {
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_changed.emit(nd_info_copy); });
-    } else if (nd_info_copy.media_class == "Stream/Input/Audio") {
-      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_changed.emit(nd_info_copy); });
-    } else if (nd_info_copy.media_class == "Audio/Source") {
+      Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
+    } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
+      auto node_id = nd->nd_info.id;
+
+      Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_changed.emit(node_id); });
+    } else if (nd->nd_info.media_class == "Audio/Source") {
+      auto nd_info_copy = nd->nd_info;
+
       Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
-    } else if (nd_info_copy.media_class == "Audio/Sink") {
+    } else if (nd->nd_info.media_class == "Audio/Sink") {
+      auto nd_info_copy = nd->nd_info;
+
       Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
     }
   }
@@ -382,23 +388,30 @@ void on_node_event_param(void* object,
     }
 
     if (notify) {
+      auto* pm = nd->pm;
+
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      NodeInfo nd_info_copy = nd->nd_info;
-      auto* pm = nd->pm;
+      if (nd->nd_info.media_class == "Stream/Output/Audio") {
+        auto node_id = nd->nd_info.id;
 
-      if (nd_info_copy.media_class == "Stream/Output/Audio") {
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_changed.emit(nd_info_copy); });
-      } else if (nd_info_copy.media_class == "Stream/Input/Audio") {
-        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_changed.emit(nd_info_copy); });
-      } else if (nd_info_copy.media_class == "Audio/Source/Virtual") {
+        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
+      } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
+        auto node_id = nd->nd_info.id;
+
+        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_changed.emit(node_id); });
+      } else if (nd->nd_info.media_class == "Audio/Source/Virtual") {
+        auto nd_info_copy = nd->nd_info;
+
         if (nd_info_copy.id == pm->pe_source_node.id) {
           pm->pe_source_node = nd_info_copy;
         }
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
-      } else if (nd_info_copy.media_class == "Audio/Sink") {
+      } else if (nd->nd_info.media_class == "Audio/Sink") {
+        auto nd_info_copy = nd->nd_info;
+
         if (nd_info_copy.id == pm->pe_sink_node.id) {
           pm->pe_sink_node = nd_info_copy;
         }
@@ -822,11 +835,11 @@ void on_registry_global(void* data,
         // therefore we make a copy of NodeInfo
 
         if (media_class == "Audio/Source" && name != "easyeffects_source") {
-          NodeInfo nd_info_copy = pd->nd_info;
+          auto nd_info_copy = pd->nd_info;
 
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
         } else if (media_class == "Audio/Sink" && name != "easyeffects_sink") {
-          NodeInfo nd_info_copy = pd->nd_info;
+          auto nd_info_copy = pd->nd_info;
 
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == "Stream/Output/Audio") {

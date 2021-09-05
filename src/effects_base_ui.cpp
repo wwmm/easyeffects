@@ -704,31 +704,26 @@ void EffectsBaseUi::setup_listview_players() {
     auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
     auto application_info_update = [=, this]() {
-      NodeInfo i;
-
-      // retrive NodeInfo updated at the last state
-      try {i = pm->node_map.at(holder->info.id);} catch (...) { return; }
-
-      if (i.state == PW_NODE_STATE_CREATING) {
+      if (holder->info.state == PW_NODE_STATE_CREATING) {
         // PW_NODE_STATE_CREATING is useless and does not give any meaningful info,
         // therefore skip it
         return;
       }
 
-      app_name->set_text(i.name);
-      media_name->set_text(i.media_name);
-      format->set_text(i.format);
-      rate->set_text(Glib::ustring::format(i.rate) + " Hz");
-      channels->set_text(Glib::ustring::format(i.n_volume_channels));
-      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, i.latency) + " s");
-      state->set_text(node_state_to_ustring(i.state));
+      app_name->set_text(holder->info.name);
+      media_name->set_text(holder->info.media_name);
+      format->set_text(holder->info.format);
+      rate->set_text(Glib::ustring::format(holder->info.rate) + " Hz");
+      channels->set_text(Glib::ustring::format(holder->info.n_volume_channels));
+      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, holder->info.latency) + " s");
+      state->set_text(node_state_to_ustring(holder->info.state));
 
       // set the enable switch
 
       pointer_connection_enable->block();
 
-      const auto& is_enabled = pm->stream_is_connected(i.id, i.media_class);
-      const auto& is_blocklisted = app_is_blocklisted(i.name);
+      const auto& is_enabled = pm->stream_is_connected(holder->info.id, holder->info.media_class);
+      const auto& is_blocklisted = app_is_blocklisted(holder->info.name);
 
       enable->set_sensitive(is_enabled || !is_blocklisted);
       enable->set_active(is_enabled);
@@ -745,20 +740,20 @@ void EffectsBaseUi::setup_listview_players() {
 
       // save app enabled state only the first time when is not preset in the enabled_app_list map
 
-      enabled_app_list.try_emplace(i.id, is_enabled);
+      enabled_app_list.try_emplace(holder->info.id, is_enabled);
 
       // set the icon name
 
-      if (!i.app_icon_name.empty()) {
-        app_icon->set_from_icon_name(i.app_icon_name);
+      if (!holder->info.app_icon_name.empty()) {
+        app_icon->set_from_icon_name(holder->info.app_icon_name);
 
         app_icon->set_visible(true);
-      } else if (!i.media_icon_name.empty()) {
-        app_icon->set_from_icon_name(i.media_icon_name);
+      } else if (!holder->info.media_icon_name.empty()) {
+        app_icon->set_from_icon_name(holder->info.media_icon_name);
 
         app_icon->set_visible(true);
       } else {
-        app_icon->set_from_icon_name(Glib::ustring(i.name).lowercase());
+        app_icon->set_from_icon_name(Glib::ustring(holder->info.name).lowercase());
 
         app_icon->set_visible(true);
       }
@@ -769,7 +764,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       scale_volume->set_sensitive(true);
 
-      volume->set_value(100 * i.volume);
+      volume->set_value(100 * holder->info.volume);
 
       pointer_connection_volume->unblock();
 
@@ -777,7 +772,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_mute->block();
 
-      if (i.mute) {
+      if (holder->info.mute) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
 
         scale_volume->set_sensitive(false);
@@ -787,7 +782,7 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      mute->set_active(i.mute);
+      mute->set_active(holder->info.mute);
 
       pointer_connection_mute->unblock();
     };
@@ -1322,11 +1317,7 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
 
   try { node_info = pm->node_map.at(id); } catch (...) { return; }
 
-  auto holder = NodeInfoHolder::create(node_info);
-
-  holder->info = node_info;
-
-  all_players_model->append(holder);
+  all_players_model->append(NodeInfoHolder::create(node_info));
 
   // Blocklist check
 
@@ -1334,17 +1325,13 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
     return;
   }
 
-  holder = NodeInfoHolder::create(node_info);
-
-  holder->info = node_info;
-
-  players_model->append(holder);
+  players_model->append(NodeInfoHolder::create(node_info));
 }
 
-void EffectsBaseUi::on_app_changed(NodeInfo node_info) {
+void EffectsBaseUi::on_app_changed(const uint id) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    if (auto* item = players_model->get_item(n).get(); item->info.id == node_info.id) {
-      item->info = node_info;
+    if (auto* item = players_model->get_item(n).get(); item->info.id == id) {
+      try { item->info = pm->node_map.at(id); } catch (...) { return; }
 
       item->info_updated.emit();
 
