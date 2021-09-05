@@ -30,7 +30,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
     const auto* input_device = settings->get_string("input-device").c_str();
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == input_device) {
         pm->input_device = node;
 
@@ -48,7 +48,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr) {
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SOURCE) {
         pm->input_device = node;
 
@@ -71,7 +71,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         pm->input_device = node;
 

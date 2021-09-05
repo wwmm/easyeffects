@@ -37,7 +37,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
-  for (const auto& node : pm->list_nodes) {
+  for (const auto& [id, node] : pm->node_map) {
     if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
       continue;
     }

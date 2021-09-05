@@ -24,7 +24,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              StreamOutputEffects* soe_ptr,
                                              const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, soe_ptr, schema), soe(soe_ptr) {
-  for (const auto& [key, node] : pm->node_map) {
+  for (const auto& [id, node] : pm->node_map) {
     if (node.media_class == "Stream/Output/Audio") {
       on_app_added(node.id, node.name, node.media_class);
     }

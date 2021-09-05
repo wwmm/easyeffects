@@ -152,10 +152,6 @@ void on_destroy_node_proxy(void* data) {
 
   spa_hook_remove(&pd->proxy_listener);
 
-  pd->pm->list_nodes.erase(std::remove_if(pd->pm->list_nodes.begin(), pd->pm->list_nodes.end(),
-                                          [=](const auto& n) { return n.id == pd->nd_info.id; }),
-                           pd->pm->list_nodes.end());
-
   pd->pm->node_map.erase(pd->nd_info.id);
 
   util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
@@ -649,7 +645,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [key, node] : pm->node_map) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_sink") {
           pm->default_output_device.id = SPA_ID_INVALID;
@@ -673,7 +669,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [key, node] : pm->node_map) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == "easyeffects_source") {
           pm->default_input_device.id = SPA_ID_INVALID;
@@ -831,8 +827,6 @@ void on_registry_global(void* data,
 
         pw_node_add_listener(proxy, &pd->object_listener, &node_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &node_proxy_events, pd);
-
-        pm->list_nodes.emplace_back(pd->nd_info);
 
         pm->node_map.insert_or_assign(pd->nd_info.id, pd->nd_info);
 
@@ -1148,7 +1142,7 @@ PipeManager::PipeManager() {
   pw_thread_loop_unlock(thread_loop);
 
   while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
-    for (const auto& [key, node] : node_map) {
+    for (const auto& [id, node] : node_map) {
       if (node.name == "easyeffects_sink") {
         pe_sink_node = node;
       }

@@ -30,7 +30,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
     const auto* output_device = settings->get_string("output-device").c_str();
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == output_device) {
         pm->output_device = node;
 
@@ -48,7 +48,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
@@ -71,7 +71,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         pm->output_device = node;
 

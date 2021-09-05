@@ -479,7 +479,7 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
 
   input_devices_model->append(NodeInfoHolder::create(pm->pe_source_node));
 
-  for (const auto& node : pm->list_nodes) {
+  for (const auto& [id, node] : pm->node_map) {
     if (node.media_class == "Audio/Source") {
       input_devices_model->append(NodeInfoHolder::create(node));
     }

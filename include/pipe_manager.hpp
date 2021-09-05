@@ -174,8 +174,6 @@ class PipeManager {
 
   std::map<uint, NodeInfo> node_map;
 
-  std::vector<NodeInfo> list_nodes;
-
   std::vector<LinkInfo> list_links;
 
   std::vector<PortInfo> list_ports;
