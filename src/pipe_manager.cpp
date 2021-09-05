@@ -819,25 +819,23 @@ void on_registry_global(void* data,
         util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
 
         // sometimes PipeWire destroys the pointer before signal_idle is called,
-        // therefore we make a copy
+        // therefore we make a copy of NodeInfo
 
-        NodeInfo nd_info_copy = pd->nd_info;  // TO REMOVE
+        if (media_class == "Audio/Source" && name != "easyeffects_source") {
+          NodeInfo nd_info_copy = pd->nd_info;
 
-        uint nd_id = pd->nd_info.id;
-        std::string nd_name = pd->nd_info.name;
-        std::string nd_media_class = pd->nd_info.media_class;
-
-        if (media_class == "Audio/Source" && nd_info_copy.name != "easyeffects_source") {
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
-        } else if (media_class == "Audio/Sink" && nd_info_copy.name != "easyeffects_sink") {
+        } else if (media_class == "Audio/Sink" && name != "easyeffects_sink") {
+          NodeInfo nd_info_copy = pd->nd_info;
+
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == "Stream/Output/Audio") {
-          Glib::signal_idle().connect_once([pm, nd_id, nd_name, nd_media_class] {
-            pm->stream_output_added.emit(nd_id, nd_name, nd_media_class);
+          Glib::signal_idle().connect_once([pm, id, name, media_class] {
+            pm->stream_output_added.emit(id, name, media_class);
           });
         } else if (media_class == "Stream/Input/Audio") {
-          Glib::signal_idle().connect_once([pm, nd_id, nd_name, nd_media_class] {
-            pm->stream_input_added.emit(nd_id, nd_name, nd_media_class);
+          Glib::signal_idle().connect_once([pm, id, name, media_class] {
+            pm->stream_input_added.emit(id, name, media_class);
           });
         }
       }
