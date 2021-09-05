@@ -667,8 +667,10 @@ void EffectsBaseUi::setup_listview_players() {
         },
         false);
 
-    auto connection_volume = volume->signal_value_changed().connect(
-        [=]() { PipeManager::set_node_volume(holder->info, static_cast<float>(volume->get_value()) / 100.0F); });
+    auto connection_volume = volume->signal_value_changed().connect([=]() {
+      PipeManager::set_node_volume(holder->info.proxy, holder->info.n_volume_channels,
+                                   static_cast<float>(volume->get_value()) / 100.0F); }
+    );
 
     auto connection_mute = mute->signal_toggled().connect([=]() {
       const auto& state = mute->get_active();
@@ -683,7 +685,7 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      PipeManager::set_node_mute(holder->info, state);
+      PipeManager::set_node_mute(holder->info.proxy, state);
     });
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {

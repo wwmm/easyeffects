@@ -220,9 +220,9 @@ class PipeManager {
 
   void disconnect_stream_input(const uint& id, const std::string& media_class) const;
 
-  static void set_node_volume(const NodeInfo& nd_info, const float& value);
+  static void set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value);
 
-  static void set_node_mute(const NodeInfo& nd_info, const bool& state);
+  static void set_node_mute(pw_proxy* proxy, const bool& state);
 
   /*
     Links the output ports of the node output_node_id to the input ports of the node input_node_id

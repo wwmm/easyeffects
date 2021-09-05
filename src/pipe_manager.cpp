@@ -1259,28 +1259,28 @@ void PipeManager::disconnect_stream_input(const uint& id, const std::string& med
   }
 }
 
-void PipeManager::set_node_volume(const NodeInfo& nd_info, const float& value) {
+void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value) {
   std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
   std::ranges::fill(volumes, 0.0F);
-  std::fill_n(volumes.begin(), nd_info.n_volume_channels, value);
+  std::fill_n(volumes.begin(), n_vol_ch, value);
 
   std::array<char, 1024> buffer{};
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
-  pw_node_set_param((struct pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
+  pw_node_set_param((struct pw_node*)proxy, SPA_PARAM_Props, 0,
                     (spa_pod*)spa_pod_builder_add_object(
                         &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
-                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, nd_info.n_volume_channels, volumes.data())));
+                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
 }
 
-void PipeManager::set_node_mute(const NodeInfo& nd_info, const bool& state) {
+void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
   std::array<char, 1024> buffer{};
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
-  pw_node_set_param((pw_node*)nd_info.proxy, SPA_PARAM_Props, 0,
+  pw_node_set_param((pw_node*)proxy, SPA_PARAM_Props, 0,
                     (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
 }
