@@ -38,9 +38,9 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
-  for (const auto& node : pm->list_nodes) {
+  for (const auto& [key, node] : pm->node_map) {
     if (node.media_class == "Stream/Input/Audio") {
-      on_app_added(node);
+      on_app_added(node.id, node.name, node.media_class);
     }
   }
 

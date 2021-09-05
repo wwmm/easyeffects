@@ -223,7 +223,6 @@
 
                 <child>
                     <object class="GtkScale" id="scale_volume">
-                        <property name="visible">False</property>
                         <property name="hexpand">1</property>
                         <property name="valign">center</property>
                         <property name="adjustment">volume</property>

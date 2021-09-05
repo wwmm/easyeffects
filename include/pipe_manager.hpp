@@ -212,15 +212,15 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
-  auto stream_is_connected(const std::string& media_class, const uint& node_id) -> bool;
+  auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
 
-  void connect_stream_output(const NodeInfo& nd_info) const;
+  void connect_stream_output(const uint& id, const std::string& media_class) const;
 
-  void connect_stream_input(const NodeInfo& nd_info) const;
+  void connect_stream_input(const uint& id, const std::string& media_class) const;
 
-  void disconnect_stream_output(const NodeInfo& nd_info) const;
+  void disconnect_stream_output(const uint& id, const std::string& media_class) const;
 
-  void disconnect_stream_input(const NodeInfo& nd_info) const;
+  void disconnect_stream_input(const uint& id, const std::string& media_class) const;
 
   static void set_node_volume(const NodeInfo& nd_info, const float& value);
 
@@ -249,6 +249,9 @@ class PipeManager {
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
+  sigc::signal<void(uint, std::string, std::string)> stream_output_added;
+  sigc::signal<void(uint, std::string, std::string)> stream_input_added;
+
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
@@ -261,10 +264,8 @@ class PipeManager {
   sigc::signal<void(NodeInfo)> sink_removed;
   sigc::signal<void(NodeInfo)> new_default_sink;
   sigc::signal<void(NodeInfo)> new_default_source;
-  sigc::signal<void(NodeInfo)> stream_output_added;
   sigc::signal<void(NodeInfo)> stream_output_changed;
   sigc::signal<void(NodeInfo)> stream_output_removed;
-  sigc::signal<void(NodeInfo)> stream_input_added;
   sigc::signal<void(NodeInfo)> stream_input_changed;
   sigc::signal<void(NodeInfo)> stream_input_removed;
   sigc::signal<void(DeviceInfo)> device_changed;

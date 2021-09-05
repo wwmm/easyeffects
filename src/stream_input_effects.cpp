@@ -103,15 +103,15 @@ StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 }
 
-void StreamInputEffects::on_app_added(NodeInfo node_info) {
+void StreamInputEffects::on_app_added(uint id, std::string name, std::string media_class) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();;
+  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();;
 
   if (is_blocklisted) {
-    pm->disconnect_stream_input(node_info);
+    pm->disconnect_stream_input(id, media_class);
   } else if (global_settings->get_boolean("process-all-inputs")) {
-    pm->connect_stream_input(node_info);
+    pm->connect_stream_input(id, media_class);
   }
 }
 
