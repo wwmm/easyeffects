@@ -55,8 +55,6 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ListBox* listbox = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   std::array<Gtk::Label*, n_bands> bands_end, bands_gain_label, bands_envelope_label, bands_curve_label;
 
   void prepare_bands();

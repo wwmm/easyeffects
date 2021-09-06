@@ -41,8 +41,6 @@ class CrossfeedUi : public Gtk::Box, public PluginUiBase {
  private:
   Gtk::SpinButton *fcut = nullptr, *feed = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::Button *preset_cmoy = nullptr, *preset_default = nullptr, *preset_jmeier = nullptr;
 
   void init_presets_buttons();

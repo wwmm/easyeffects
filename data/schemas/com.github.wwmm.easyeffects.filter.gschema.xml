@@ -16,27 +16,27 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.filter">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="frequency" type="d">
             <range min="10" max="20000" />
             <default>2000</default>
         </key>
         <key name="resonance" type="d">
-            <range min="-3.0" max="30.1" />
-            <default>-3.0</default>
+            <range min="-3" max="30.1" />
+            <default>-3</default>
         </key>
         <key name="mode" enum="com.github.wwmm.easyeffects.filter.enum">
             <default>"12dB/oct Lowpass"</default>
         </key>
         <key name="inertia" type="d">
             <range min="5" max="100" />
-            <default>20.0</default>
+            <default>20</default>
         </key>
     </schema>
 </schemalist>

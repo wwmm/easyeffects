@@ -82,8 +82,6 @@ GateUi::GateUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   attack = builder->get_widget<Gtk::SpinButton>("attack");
   knee = builder->get_widget<Gtk::SpinButton>("knee");
   makeup = builder->get_widget<Gtk::SpinButton>("makeup");
@@ -100,8 +98,6 @@ GateUi::GateUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("attack", attack->get_adjustment().get(), "value");
   settings->bind("knee", knee->get_adjustment().get(), "value");
   settings->bind("makeup", makeup->get_adjustment().get(), "value");
@@ -116,9 +112,6 @@ GateUi::GateUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "stereo-link", stereo_link->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_link_enum_to_int, int_to_stereo_link_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(attack, "ms");
   prepare_spinbutton(release, "ms");
 
@@ -128,6 +121,8 @@ GateUi::GateUi(BaseObjectType* cobject,
   prepare_spinbutton(makeup, "dB");
 
   prepare_spinbutton(ratio, "");
+
+  setup_input_output_gain(builder);
 }
 
 GateUi::~GateUi() {

@@ -202,9 +202,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   compressor_mode = builder->get_widget<Gtk::ComboBoxText>("compressor_mode");
 
   envelope_boost = builder->get_widget<Gtk::ComboBoxText>("envelope_boost");
@@ -228,9 +225,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-
   g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", compressor_mode->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, compressor_mode_enum_to_int, int_to_compressor_mode_enum,
                                nullptr, nullptr);
@@ -238,9 +232,6 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "envelope-boost", envelope_boost->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum, nullptr,
                                nullptr);
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   // band checkbuttons
 
@@ -253,6 +244,8 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   }
 
   prepare_bands();
+
+  setup_input_output_gain(builder);
 }
 
 MultibandCompressorUi::~MultibandCompressorUi() {

@@ -47,6 +47,17 @@ PluginUiBase::~PluginUiBase() {
   }
 }
 
+void PluginUiBase::setup_input_output_gain(const Glib::RefPtr<Gtk::Builder>& builder) {
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+}
+
 void PluginUiBase::on_new_input_level(const float& left, const float& right) {
   update_level(input_level_left, input_level_left_label, input_level_right, input_level_right_label, left, right);
 }

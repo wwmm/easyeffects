@@ -29,17 +29,6 @@ MultibandGate::MultibandGate(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/MultibandGate is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
   lv2_wrapper->bind_key_double(settings, "freq0", "freq0");
@@ -135,6 +124,8 @@ MultibandGate::MultibandGate(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "bypass3", "bypass3");
 
   lv2_wrapper->bind_key_bool(settings, "solo3", "solo3");
+
+  setup_input_output_gain();
 }
 
 MultibandGate::~MultibandGate() {

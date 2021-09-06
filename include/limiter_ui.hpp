@@ -55,8 +55,6 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
   Gtk::ToggleButton* alr = nullptr;
 
   Gtk::Label *gain_left = nullptr, *gain_right = nullptr, *sidechain_left = nullptr, *sidechain_right = nullptr;
-
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif

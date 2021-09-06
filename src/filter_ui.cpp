@@ -107,8 +107,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   frequency = builder->get_widget<Gtk::SpinButton>("frequency");
   resonance = builder->get_widget<Gtk::SpinButton>("resonance");
   inertia = builder->get_widget<Gtk::SpinButton>("inertia");
@@ -116,8 +114,6 @@ FilterUi::FilterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("frequency", frequency->get_adjustment().get(), "value");
   settings->bind("resonance", resonance->get_adjustment().get(), "value");
   settings->bind("inertia", inertia->get_adjustment().get(), "value");
@@ -125,12 +121,11 @@ FilterUi::FilterUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                filter_enum_to_int, int_to_filter_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(resonance, "dB");
   prepare_spinbutton(frequency, "Hz");
   prepare_spinbutton(inertia, "ms");
+
+  setup_input_output_gain(builder);
 }
 
 FilterUi::~FilterUi() {

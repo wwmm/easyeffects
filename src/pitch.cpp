@@ -24,9 +24,6 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema_path,
              PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::pitch, schema, schema_path, pipe_manager) {
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
   formant_preserving = settings->get_boolean("formant-preserving");
   faster = settings->get_boolean("faster");
 
@@ -34,14 +31,6 @@ Pitch::Pitch(const std::string& tag,
   octaves = settings->get_int("octaves");
   semitones = settings->get_int("semitones");
   cents = settings->get_int("cents");
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
 
   settings->signal_changed("crispness").connect([=, this](const auto& key) {
     crispness = settings->get_int("crispness");
@@ -100,6 +89,8 @@ Pitch::Pitch(const std::string& tag,
 
     update_pitch_scale();
   });
+
+  setup_input_output_gain();
 }
 
 Pitch::~Pitch() {

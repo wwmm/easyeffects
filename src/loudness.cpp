@@ -29,21 +29,12 @@ Loudness::Loudness(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/loud_comp_stereo is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "std", "std");
   lv2_wrapper->bind_key_enum(settings, "fft", "fft");
 
   lv2_wrapper->bind_key_double(settings, "volume", "volume");
+
+  setup_input_output_gain();
 }
 
 Loudness::~Loudness() {

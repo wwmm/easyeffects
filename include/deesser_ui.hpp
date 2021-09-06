@@ -45,8 +45,6 @@ class DeesserUi : public Gtk::Box, public PluginUiBase {
   Gtk::SpinButton *f1_freq = nullptr, *f2_freq = nullptr, *f1_level = nullptr, *f2_level = nullptr, *f2_q = nullptr,
                   *threshold = nullptr, *ratio = nullptr, *laxity = nullptr, *makeup = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::LevelBar *compression = nullptr, *detected = nullptr;
 
   Gtk::Label *compression_label = nullptr, *detected_label = nullptr;

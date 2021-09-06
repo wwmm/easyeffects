@@ -10,12 +10,12 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.multibandgate">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="freq0" type="d">
             <range min="10" max="20000" />
@@ -33,11 +33,11 @@
             <default>"LR8"</default>
         </key>
         <key name="range0" type="d">
-            <range min="-95.0" max="0" />
+            <range min="-95" max="0" />
             <default>-24</default>
         </key>
         <key name="threshold0" type="d">
-            <range min="-60.0" max="0" />
+            <range min="-60" max="0" />
             <default>-12</default>
         </key>
         <key name="ratio0" type="d">
@@ -46,15 +46,15 @@
         </key>
         <key name="attack0" type="d">
             <range min="0.01" max="2000" />
-            <default>150.0</default>
+            <default>150</default>
         </key>
         <key name="release0" type="d">
             <range min="0.01" max="2000" />
-            <default>300.0</default>
+            <default>300</default>
         </key>
         <key name="makeup0" type="d">
             <range min="0" max="36" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
         <key name="knee0" type="d">
             <range min="0" max="18" />
@@ -70,11 +70,11 @@
             <default>false</default>
         </key>
         <key name="range1" type="d">
-            <range min="-95.0" max="0" />
+            <range min="-95" max="0" />
             <default>-24</default>
         </key>
         <key name="threshold1" type="d">
-            <range min="-60.0" max="0" />
+            <range min="-60" max="0" />
             <default>-12</default>
         </key>
         <key name="ratio1" type="d">
@@ -83,15 +83,15 @@
         </key>
         <key name="attack1" type="d">
             <range min="0.01" max="2000" />
-            <default>150.0</default>
+            <default>150</default>
         </key>
         <key name="release1" type="d">
             <range min="0.01" max="2000" />
-            <default>300.0</default>
+            <default>300</default>
         </key>
         <key name="makeup1" type="d">
             <range min="0" max="36" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
         <key name="knee1" type="d">
             <range min="0" max="18" />
@@ -107,11 +107,11 @@
             <default>false</default>
         </key>
         <key name="range2" type="d">
-            <range min="-95.0" max="0" />
+            <range min="-95" max="0" />
             <default>-24</default>
         </key>
         <key name="threshold2" type="d">
-            <range min="-60.0" max="0" />
+            <range min="-60" max="0" />
             <default>-12</default>
         </key>
         <key name="ratio2" type="d">
@@ -120,15 +120,15 @@
         </key>
         <key name="attack2" type="d">
             <range min="0.01" max="2000" />
-            <default>150.0</default>
+            <default>150</default>
         </key>
         <key name="release2" type="d">
             <range min="0.01" max="2000" />
-            <default>300.0</default>
+            <default>300</default>
         </key>
         <key name="makeup2" type="d">
             <range min="0" max="36" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
         <key name="knee2" type="d">
             <range min="0" max="18" />
@@ -144,11 +144,11 @@
             <default>false</default>
         </key>
         <key name="range3" type="d">
-            <range min="-95.0" max="0" />
+            <range min="-95" max="0" />
             <default>-24</default>
         </key>
         <key name="threshold3" type="d">
-            <range min="-60.0" max="0" />
+            <range min="-60" max="0" />
             <default>-12</default>
         </key>
         <key name="ratio3" type="d">
@@ -157,15 +157,15 @@
         </key>
         <key name="attack3" type="d">
             <range min="0.01" max="2000" />
-            <default>150.0</default>
+            <default>150</default>
         </key>
         <key name="release3" type="d">
             <range min="0.01" max="2000" />
-            <default>300.0</default>
+            <default>300</default>
         </key>
         <key name="makeup3" type="d">
             <range min="0" max="36" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
         <key name="knee3" type="d">
             <range min="0" max="18" />

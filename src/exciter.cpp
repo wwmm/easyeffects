@@ -29,17 +29,6 @@ Exciter::Exciter(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Exciter is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
   lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
@@ -53,6 +42,8 @@ Exciter::Exciter(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "ceil-active", "ceil_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+
+  setup_input_output_gain();
 }
 
 Exciter::~Exciter() {

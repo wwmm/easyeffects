@@ -19,8 +19,8 @@
             <default>100</default>
         </key>
         <key name="line-width" type="d">
-            <range min="0.1" max="100.0" />
-            <default>2.0</default>
+            <range min="0.1" max="100" />
+            <default>2</default>
         </key>
         <key name="color" type="ad">
             <default>[1.0,1.0,1.0,1.0]</default>

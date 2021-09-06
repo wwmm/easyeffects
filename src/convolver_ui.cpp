@@ -44,9 +44,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   ir_width = builder->get_widget<Gtk::SpinButton>("ir_width");
 
   listview = builder->get_widget<Gtk::ListView>("listview");
@@ -69,9 +66,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   drawing_area = builder->get_widget<Gtk::DrawingArea>("drawing_area");
 
   entry_search = builder->get_widget<Gtk::SearchEntry>("entry_search");
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   setup_listview();
 
@@ -105,9 +99,9 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("ir-width", ir_width->get_adjustment().get(), "value");
+
+  setup_input_output_gain(builder);
 
   // reading the current configured irs file
 

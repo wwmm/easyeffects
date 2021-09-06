@@ -29,17 +29,6 @@ Deesser::Deesser(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Deesser is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
   lv2_wrapper->bind_key_enum(settings, "detection", "detection");
@@ -63,6 +52,8 @@ Deesser::Deesser(const std::string& tag,
   lv2_wrapper->bind_key_int(settings, "laxity", "laxity");
 
   lv2_wrapper->bind_key_bool(settings, "sc-listen", "sc_listen");
+
+  setup_input_output_gain();
 }
 
 Deesser::~Deesser() {

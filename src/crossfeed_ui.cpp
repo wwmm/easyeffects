@@ -28,9 +28,6 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   fcut = builder->get_widget<Gtk::SpinButton>("fcut");
   feed = builder->get_widget<Gtk::SpinButton>("feed");
 
@@ -40,18 +37,15 @@ CrossfeedUi::CrossfeedUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("fcut", fcut->get_adjustment().get(), "value");
   settings->bind("feed", feed->get_adjustment().get(), "value");
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   prepare_spinbutton(fcut, "Hz");
   prepare_spinbutton(feed, "dB");
 
   init_presets_buttons();
+
+  setup_input_output_gain(builder);
 }
 
 CrossfeedUi::~CrossfeedUi() {

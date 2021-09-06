@@ -77,8 +77,6 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   predelay = builder->get_widget<Gtk::SpinButton>("predelay");
   decay_time = builder->get_widget<Gtk::SpinButton>("decay_time");
   diffusion = builder->get_widget<Gtk::SpinButton>("diffusion");
@@ -97,8 +95,6 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("predelay", predelay->get_adjustment().get(), "value");
   settings->bind("decay-time", decay_time->get_adjustment().get(), "value");
   settings->bind("diffusion", diffusion->get_adjustment().get(), "value");
@@ -110,9 +106,6 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
 
   g_settings_bind_with_mapping(settings->gobj(), "room-size", room_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                room_size_enum_to_int, int_to_room_size_enum, nullptr, nullptr);
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   prepare_spinbutton(decay_time, "s");
 
@@ -128,6 +121,8 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
   prepare_spinbutton(diffusion, "");
 
   init_presets_buttons();
+
+  setup_input_output_gain(builder);
 }
 
 ReverbUi::~ReverbUi() {

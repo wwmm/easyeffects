@@ -34,17 +34,6 @@ Equalizer::Equalizer(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
   for (uint n = 0U; n < max_bands; n++) {
@@ -93,6 +82,8 @@ Equalizer::Equalizer(const std::string& tag,
       settings_right->set_double(bandn + "-q", settings_left->get_double(bandn + "-q"));
     }
   });
+
+  setup_input_output_gain();
 }
 
 Equalizer::~Equalizer() {

@@ -2,20 +2,20 @@
 <schemalist>
     <schema id="com.github.wwmm.easyeffects.delay">
         <key name="input-gain" type="d">
-            <range min="-20.0" max="20.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-20.0" max="20.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="time-l" type="d">
             <range min="0" max="1000" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
         <key name="time-r" type="d">
             <range min="0" max="1000" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

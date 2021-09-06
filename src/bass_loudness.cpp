@@ -29,22 +29,13 @@ BassLoudness::BassLoudness(const std::string& tag,
     util::debug(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_double_db(settings, "loudness", "loudness");
 
   lv2_wrapper->bind_key_double_db(settings, "output", "output");
 
   lv2_wrapper->bind_key_double_db(settings, "link", "link");
+
+  setup_input_output_gain();
 }
 
 BassLoudness::~BassLoudness() {

@@ -29,17 +29,6 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/mb_compressor_stereo is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
 
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
@@ -97,6 +86,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
     lv2_wrapper->bind_key_double_db(settings, "makeup" + nstr, "mk_" + nstr);
   }
+
+  setup_input_output_gain();
 }
 
 MultibandCompressor::~MultibandCompressor() {

@@ -30,6 +30,10 @@ MaximizerPreset::MaximizerPreset() {
 void MaximizerPreset::save(nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["maximizer"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["maximizer"]["output-gain"] = settings->get_double("output-gain");
+
   json[section]["maximizer"]["release"] = settings->get_double("release");
 
   json[section]["maximizer"]["ceiling"] = settings->get_double("ceiling");
@@ -40,6 +44,10 @@ void MaximizerPreset::save(nlohmann::json& json,
 void MaximizerPreset::load(const nlohmann::json& json,
                            const std::string& section,
                            const Glib::RefPtr<Gio::Settings>& settings) {
+  update_key<double>(json.at(section).at("maximizer"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("maximizer"), settings, "output-gain", "output-gain");
+
   update_key<double>(json.at(section).at("maximizer"), settings, "release", "release");
 
   update_key<double>(json.at(section).at("maximizer"), settings, "ceiling", "ceiling");

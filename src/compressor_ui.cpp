@@ -202,9 +202,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   attack = builder->get_widget<Gtk::SpinButton>("attack");
   knee = builder->get_widget<Gtk::SpinButton>("knee");
   makeup = builder->get_widget<Gtk::SpinButton>("makeup");
@@ -260,8 +257,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   settings->bind("sidechain-preamp", preamp->get_adjustment().get(), "value");
   settings->bind("sidechain-reactivity", reactivity->get_adjustment().get(), "value");
   settings->bind("sidechain-lookahead", lookahead->get_adjustment().get(), "value");
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("release-threshold", release_threshold->get_adjustment().get(), "value");
   settings->bind("boost-threshold", boost_threshold->get_adjustment().get(), "value");
   settings->bind("boost-amount", boost_amount->get_adjustment().get(), "value");
@@ -296,9 +291,6 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
       dropdown_input_devices->set_sensitive(true);
     }
   }));
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(attack, "ms");
@@ -349,6 +341,8 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   set_boost_spinbuttons_sensitivity();
 
   compression_mode->signal_changed().connect(set_boost_spinbuttons_sensitivity);
+
+  setup_input_output_gain(builder);
 }
 
 CompressorUi::~CompressorUi() {

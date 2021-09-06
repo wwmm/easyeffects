@@ -34,6 +34,8 @@ Maximizer::Maximizer(const std::string& tag,
   lv2_wrapper->bind_key_double(settings, "ceiling", "ceil");
 
   lv2_wrapper->bind_key_double(settings, "release", "rel");
+
+  setup_input_output_gain();
 }
 
 Maximizer::~Maximizer() {

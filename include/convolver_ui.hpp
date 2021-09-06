@@ -55,8 +55,6 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SpinButton* ir_width = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::ListView* listview = nullptr;
 
   Gtk::ScrolledWindow* scrolled_window = nullptr;

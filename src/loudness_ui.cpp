@@ -117,9 +117,6 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   standard = builder->get_widget<Gtk::ComboBoxText>("standard");
   fft_size = builder->get_widget<Gtk::ComboBoxText>("fft_size");
 
@@ -127,8 +124,6 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("volume", volume->get_adjustment().get(), "value");
 
   g_settings_bind_with_mapping(settings->gobj(), "fft", fft_size->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
@@ -137,10 +132,9 @@ LoudnessUi::LoudnessUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "std", standard->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                standard_enum_to_int, int_to_standard_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(volume, "dB");
+
+  setup_input_output_gain(builder);
 }
 
 LoudnessUi::~LoudnessUi() {

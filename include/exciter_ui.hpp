@@ -47,7 +47,7 @@ class ExciterUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SpinButton *ceil = nullptr, *amount = nullptr, *harmonics = nullptr, *scope = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr, *blend = nullptr;
+  Gtk::Scale* blend = nullptr;
 
   Gtk::ToggleButton *ceil_active = nullptr, *listen = nullptr;
 };

@@ -28,24 +28,18 @@ EchoCancellerUi::EchoCancellerUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   frame_size = builder->get_widget<Gtk::SpinButton>("frame_size");
   filter_length = builder->get_widget<Gtk::SpinButton>("filter_length");
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("frame-size", frame_size->get_adjustment().get(), "value");
   settings->bind("filter-length", filter_length->get_adjustment().get(), "value");
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(frame_size, "ms");
   prepare_spinbutton(filter_length, "ms");
+
+  setup_input_output_gain(builder);
 }
 
 EchoCancellerUi::~EchoCancellerUi() {

@@ -49,8 +49,6 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ToggleButton *softclip = nullptr, *mutel = nullptr, *muter = nullptr, *phasel = nullptr, *phaser = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::LevelBar* meter_phase_levelbar = nullptr;
 
   Gtk::Label* meter_phase_label = nullptr;

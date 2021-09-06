@@ -51,6 +51,8 @@ class PluginUiBase {
 
   Gtk::Button* reset_button = nullptr;
 
+  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
+
   Gtk::LevelBar *input_level_left = nullptr, *input_level_right = nullptr;
   Gtk::LevelBar *output_level_left = nullptr, *output_level_right = nullptr;
   Gtk::Label *input_level_left_label = nullptr, *input_level_right_label = nullptr;
@@ -59,6 +61,8 @@ class PluginUiBase {
   Gtk::Window* transient_window = nullptr;
 
   std::vector<sigc::connection> connections;
+
+  void setup_input_output_gain(const Glib::RefPtr<Gtk::Builder>& builder);
 
   // reset plugin method
   virtual void reset() = 0;

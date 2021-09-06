@@ -24,17 +24,6 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::echo_canceller, schema, schema_path, pipe_manager, true) {
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   settings->signal_changed("frame-size").connect([=, this](const auto& key) {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -50,6 +39,8 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
     init_speex();
   });
+
+  setup_input_output_gain();
 }
 
 EchoCanceller::~EchoCanceller() {

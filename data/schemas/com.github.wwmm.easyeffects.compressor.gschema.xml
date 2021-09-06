@@ -30,51 +30,51 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.compressor">
         <key name="input-gain" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="mode" enum="com.github.wwmm.easyeffects.compressor.mode.enum">
             <default>"Downward"</default>
         </key>
         <key name="attack" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="release" type="d">
-            <range min="0.0" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-threshold" type="d">
-            <range min="-120.0" max="0.0" />
-            <default>-120.0</default>
+            <range min="-120" max="0" />
+            <default>-120</default>
         </key>
         <key name="threshold" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="ratio" type="d">
-            <range min="1.0" max="100.0" />
-            <default>4.0</default>
+            <range min="1" max="100" />
+            <default>4</default>
         </key>
         <key name="knee" type="d">
-            <range min="-23.99" max="0.0" />
-            <default>-6.0</default>
+            <range min="-23.99" max="0" />
+            <default>-6</default>
         </key>
         <key name="makeup" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="boost-amount" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-threshold" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="sidechain-listen" type="b">
             <default>false</default>
@@ -89,30 +89,30 @@
             <default>"Middle"</default>
         </key>
         <key name="sidechain-preamp" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-reactivity" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-lookahead" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="hpf-mode" enum="com.github.wwmm.easyeffects.compressor.filter.mode.enum">
             <default>"off"</default>
         </key>
         <key name="hpf-frequency" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>10.0</default>
+            <range min="10" max="20000" />
+            <default>10</default>
         </key>
         <key name="lpf-mode" enum="com.github.wwmm.easyeffects.compressor.filter.mode.enum">
             <default>"off"</default>
         </key>
         <key name="lpf-frequency" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>20000.0</default>
+            <range min="10" max="20000" />
+            <default>20000</default>
         </key>
         <key name="sidechain-input-device" type="s">
             <default>""</default>
