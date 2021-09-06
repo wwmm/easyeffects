@@ -1035,7 +1035,7 @@ void EffectsBaseUi::setup_listview_plugins() {
     Glib::ustring key_name;
 
     for (const auto& [key, value] : plugins_names) {
-      if (translated_name == value.c_str()) {
+      if (translated_name == value) {
         key_name = key;
       }
     }
@@ -1045,11 +1045,26 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto connection_add = add->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
 
-      if (std::ranges::find(list, key_name) == list.end()) {
-        list.emplace_back(key_name);
-
-        settings->set_string_array("plugins", list);
+      if (std::ranges::find(list, key_name) != list.end()) {
+        return;
       }
+
+      const auto& list_size = list.size();
+
+      const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
+
+      if (list_size > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
+                                        [&](const auto& str) { return str == list.at(list_size - 1); })) {
+        // If the user is careful protecting his/her device with a plugin of
+        // type limiter at the last position of the filter chain, we follow
+        // this behaviour inserting the new plugin at the second last position
+
+        list.emplace(list.cend() - 1U, key_name);
+      } else {
+        list.emplace_back(key_name);
+      }
+
+      settings->set_string_array("plugins", list);
     });
 
     list_item->set_data("connection_add", new sigc::connection(connection_add),

@@ -125,7 +125,7 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
 
-  std::map<std::string, std::string> plugins_names{{plugin_name::autogain, _("Autogain")},
+  std::map<Glib::ustring, Glib::ustring> plugins_names{{plugin_name::autogain, _("Autogain")},
                                                    {plugin_name::bass_enhancer, _("Bass Enhancer")},
                                                    {plugin_name::bass_loudness, _("Bass Loudness")},
                                                    {plugin_name::compressor, _("Compressor")},
