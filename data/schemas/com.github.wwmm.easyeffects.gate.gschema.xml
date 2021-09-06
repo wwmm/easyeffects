@@ -10,12 +10,12 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.gate">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="detection" enum="com.github.wwmm.easyeffects.gate.detection.enum">
             <default>"RMS"</default>
@@ -24,19 +24,19 @@
             <default>"Average"</default>
         </key>
         <key name="range" type="d">
-            <range min="-95.0" max="0" />
+            <range min="-95" max="0" />
             <default>-24</default>
         </key>
         <key name="attack" type="d">
             <range min="0.01" max="2000" />
-            <default>20.0</default>
+            <default>20</default>
         </key>
         <key name="release" type="d">
             <range min="0.01" max="2000" />
-            <default>250.0</default>
+            <default>250</default>
         </key>
         <key name="threshold" type="d">
-            <range min="-60.0" max="0" />
+            <range min="-60" max="0" />
             <default>-18</default>
         </key>
         <key name="ratio" type="d">
@@ -49,7 +49,7 @@
         </key>
         <key name="makeup" type="d">
             <range min="0" max="36" />
-            <default>0.0</default>
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

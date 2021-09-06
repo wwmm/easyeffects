@@ -30,11 +30,19 @@ AutoGainPreset::AutoGainPreset() {
 void AutoGainPreset::save(nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
+  json[section]["autogain"]["input-gain"] = settings->get_double("input-gain");
+
+  json[section]["autogain"]["output-gain"] = settings->get_double("output-gain");
+
   json[section]["autogain"]["target"] = settings->get_double("target");
 }
 
 void AutoGainPreset::load(const nlohmann::json& json,
                           const std::string& section,
                           const Glib::RefPtr<Gio::Settings>& settings) {
+  update_key<double>(json.at(section).at("autogain"), settings, "input-gain", "input-gain");
+
+  update_key<double>(json.at(section).at("autogain"), settings, "output-gain", "output-gain");
+
   update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
 }

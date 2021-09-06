@@ -277,6 +277,19 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
   output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
 }
 
+void PluginBase::setup_input_output_gain() {
+  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
+  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
+
+  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
+    input_gain = util::db_to_linear(settings->get_double(key));
+  });
+
+  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
+    output_gain = util::db_to_linear(settings->get_double(key));
+  });
+}
+
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {
   if (left.empty() || right.empty()) {
     return;

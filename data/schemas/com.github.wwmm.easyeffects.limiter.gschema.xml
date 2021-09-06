@@ -50,12 +50,12 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.limiter">
         <key name="input-gain" type="d">
-            <range min="-36.0" max="36.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.0" max="36.0" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="mode" enum="com.github.wwmm.easyeffects.limiter.mode.enum">
             <default>"Herm Thin"</default>
@@ -67,46 +67,46 @@
             <default>"None"</default>
         </key>
         <key name="lookahead" type="d">
-            <range min="0.1" max="20.0" />
-            <default>5.0</default>
+            <range min="0.1" max="20" />
+            <default>5</default>
         </key>
         <key name="attack" type="d">
-            <range min="0.25" max="20.0" />
-            <default>5.0</default>
+            <range min="0.25" max="20" />
+            <default>5</default>
         </key>
         <key name="release" type="d">
-            <range min="0.25" max="20.0" />
-            <default>5.0</default>
+            <range min="0.25" max="20" />
+            <default>5</default>
         </key>
         <key name="threshold" type="d">
-            <range min="-48.0" max="0.0" />
-            <default>0.0</default>
+            <range min="-48" max="0" />
+            <default>0</default>
         </key>
         <key name="gain-boost" type="b">
             <default>true</default>
         </key>
         <key name="sidechain-preamp" type="d">
-            <range min="-120" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="stereo-link" type="d">
-            <range min="0.0" max="100.0" />
-            <default>100.0</default>
+            <range min="0" max="100" />
+            <default>100</default>
         </key>
         <key name="alr" type="b">
             <default>false</default>
         </key>
         <key name="alr-attack" type="d">
-            <range min="0.10" max="200.0" />
-            <default>5.0</default>
+            <range min="0.10" max="200" />
+            <default>5</default>
         </key>
         <key name="alr-release" type="d">
-            <range min="10.0" max="1000.0" />
-            <default>50.0</default>
+            <range min="10" max="1000" />
+            <default>50</default>
         </key>
         <key name="alr-knee" type="d">
-            <range min="-12.0" max="12.0" />
-            <default>0.0</default>
+            <range min="-12" max="12" />
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

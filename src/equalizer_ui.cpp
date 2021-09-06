@@ -218,9 +218,6 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   bands_box_left = builder->get_widget<Gtk::Box>("bands_box_left");
   bands_box_right = builder->get_widget<Gtk::Box>("bands_box_right");
 
@@ -259,16 +256,13 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
   // gsettings bindings
 
   settings->bind("num-bands", nbands->get_adjustment().get(), "value");
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("split-channels", split_channels, "active");
   settings->bind("split-channels", stack_switcher, "visible", Gio::Settings::BindFlags::GET);
 
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
+  setup_input_output_gain(builder);
 
   // explicitly invoke the method to build equalizer bands (fixes #843)
   // if the preset num-bands value is equal to the default schema value
@@ -640,7 +634,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     return false;
   }
 
-  filter.freq = string_to_float(matches.str(1));
+  filter.freq = std::stof(matches.str(1));
 
   // get slope
 
@@ -657,7 +651,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     if (matches.size() == 2U) {
       // we satisfied the condition, now assign the paramater if given
 
-      filter.slope_dB = string_to_float(matches.str(1));
+      filter.slope_dB = std::stof(matches.str(1));
     }
   }
 
@@ -673,7 +667,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.gain = string_to_float(matches.str(1));
+      filter.gain = std::stof(matches.str(1));
     }
   }
 
@@ -688,7 +682,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
     }
 
     if (matches.size() == 2U) {
-      filter.quality_factor = string_to_float(matches.str(1));
+      filter.quality_factor = std::stof(matches.str(1));
     }
   }
 

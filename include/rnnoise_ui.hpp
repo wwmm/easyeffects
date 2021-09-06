@@ -47,8 +47,6 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
 
   Glib::ustring default_model_name;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::Button* import_model = nullptr;
 
   Gtk::Frame* model_list_frame = nullptr;

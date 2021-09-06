@@ -2,12 +2,12 @@
 <schemalist>
     <schema id="com.github.wwmm.easyeffects.echocanceller">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="frame-size" type="i">
             <range min="1" max="100" />

@@ -28,9 +28,6 @@ PitchUi::PitchUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   crispness = builder->get_widget<Gtk::SpinButton>("crispness");
   cents = builder->get_widget<Gtk::SpinButton>("cents");
   semitones = builder->get_widget<Gtk::SpinButton>("semitones");
@@ -41,8 +38,6 @@ PitchUi::PitchUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("cents", cents->get_adjustment().get(), "value");
   settings->bind("crispness", crispness->get_adjustment().get(), "value");
   settings->bind("semitones", semitones->get_adjustment().get(), "value");
@@ -50,8 +45,7 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("faster", faster, "active");
   settings->bind("formant-preserving", formant_preserving, "active");
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
+  setup_input_output_gain(builder);
 }
 
 PitchUi::~PitchUi() {

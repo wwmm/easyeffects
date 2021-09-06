@@ -39,8 +39,6 @@ class PitchUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::ToggleButton *faster = nullptr, *formant_preserving = nullptr;
 
   Gtk::SpinButton *cents = nullptr, *crispness = nullptr, *semitones = nullptr, *octaves = nullptr;

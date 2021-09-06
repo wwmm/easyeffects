@@ -34,6 +34,8 @@ Maximizer::Maximizer(const std::string& tag,
   lv2_wrapper->bind_key_double(settings, "ceiling", "ceil");
 
   lv2_wrapper->bind_key_double(settings, "release", "rel");
+
+  setup_input_output_gain();
 }
 
 Maximizer::~Maximizer() {
@@ -64,13 +66,17 @@ void Maximizer::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
 
   lv2_wrapper->run();
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   /*
     This plugin gives the latency in number of samples

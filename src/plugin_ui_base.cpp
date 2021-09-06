@@ -47,6 +47,17 @@ PluginUiBase::~PluginUiBase() {
   }
 }
 
+void PluginUiBase::setup_input_output_gain(const Glib::RefPtr<Gtk::Builder>& builder) {
+  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
+  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
+
+  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
+  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
+
+  prepare_scale(input_gain, "");
+  prepare_scale(output_gain, "");
+}
+
 void PluginUiBase::on_new_input_level(const float& left, const float& right) {
   update_level(input_level_left, input_level_left_label, input_level_right, input_level_right_label, left, right);
 }
@@ -58,12 +69,6 @@ void PluginUiBase::on_new_output_level(const float& left, const float& right) {
 void PluginUiBase::prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustring& unit) {
   button->signal_output().connect([=]() { return parse_spinbutton_output(button, unit); }, true);
   button->signal_input().connect([=](double& new_value) { return parse_spinbutton_input(button, new_value); }, true);
-}
-
-auto PluginUiBase::string_to_float(const std::string& value) -> float {
-  // this conversion must be locale independent
-
-  return std::stof(value);
 }
 
 void PluginUiBase::set_transient_window(Gtk::Window* transient_window) {

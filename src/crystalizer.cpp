@@ -49,20 +49,11 @@ Crystalizer::Crystalizer(const std::string& tag,
   frequencies[12] = 15020.0F;
   frequencies[13] = 20020.0F;
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   for (uint n = 0U; n < nbands; n++) {
     bind_band(static_cast<int>(n));
   }
+
+  setup_input_output_gain();
 }
 
 Crystalizer::~Crystalizer() {
@@ -149,7 +140,9 @@ void Crystalizer::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   if (n_samples_is_power_of_2) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -215,7 +208,9 @@ void Crystalizer::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

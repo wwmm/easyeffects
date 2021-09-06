@@ -82,9 +82,6 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   makeup = builder->get_widget<Gtk::SpinButton>("makeup");
   ratio = builder->get_widget<Gtk::SpinButton>("ratio");
   threshold = builder->get_widget<Gtk::SpinButton>("threshold");
@@ -109,8 +106,6 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("sc-listen", sc_listen, "active");
   settings->bind("makeup", makeup->get_adjustment().get(), "value");
   settings->bind("ratio", ratio->get_adjustment().get(), "value");
@@ -128,9 +123,6 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                mode_enum_to_int, int_to_mode_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(makeup, "dB");
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(f1_level, "dB");
@@ -140,6 +132,8 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   prepare_spinbutton(f2_freq, "Hz");
 
   prepare_spinbutton(f2_q, "");
+
+  setup_input_output_gain(builder);
 }
 
 DeesserUi::~DeesserUi() {

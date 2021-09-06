@@ -63,8 +63,6 @@ class MultibandGateUi : public Gtk::Box, public PluginUiBase {
   Gtk::SpinButton *range3 = nullptr, *attack3 = nullptr, *release3 = nullptr, *threshold3 = nullptr, *knee3 = nullptr,
                   *ratio3 = nullptr, *makeup3 = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::LevelBar *output0 = nullptr, *output1 = nullptr, *output2 = nullptr, *output3 = nullptr;
 
   Gtk::Label *output0_label = nullptr, *output1_label = nullptr, *output2_label = nullptr, *output3_label = nullptr;

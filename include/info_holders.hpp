@@ -29,7 +29,7 @@ class NodeInfoHolder : public Glib::Object {
 
   static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
 
-  sigc::signal<void(NodeInfo)> info_updated;
+  sigc::signal<void()> info_updated;
 
  protected:
   NodeInfoHolder(NodeInfo info);

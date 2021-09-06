@@ -79,9 +79,6 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   freq0 = builder->get_widget<Gtk::SpinButton>("freq0");
   freq1 = builder->get_widget<Gtk::SpinButton>("freq1");
   freq2 = builder->get_widget<Gtk::SpinButton>("freq2");
@@ -150,8 +147,6 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("freq0", freq0->get_adjustment().get(), "value");
   settings->bind("freq1", freq1->get_adjustment().get(), "value");
   settings->bind("freq2", freq2->get_adjustment().get(), "value");
@@ -208,9 +203,6 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "detection3", detection3->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                detection_enum_to_int, int_to_detection_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(range0, "dB");
   prepare_spinbutton(range1, "dB");
   prepare_spinbutton(range2, "dB");
@@ -249,6 +241,8 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   prepare_spinbutton(ratio1, "");
   prepare_spinbutton(ratio2, "");
   prepare_spinbutton(ratio3, "");
+
+  setup_input_output_gain(builder);
 }
 
 MultibandGateUi::~MultibandGateUi() {

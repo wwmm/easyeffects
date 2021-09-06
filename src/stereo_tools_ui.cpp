@@ -82,8 +82,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   balance_in = builder->get_widget<Gtk::SpinButton>("balance_in");
   balance_out = builder->get_widget<Gtk::SpinButton>("balance_out");
   slev = builder->get_widget<Gtk::SpinButton>("slev");
@@ -110,8 +108,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   settings->bind("muter", muter, "active");
   settings->bind("phasel", phasel, "active");
   settings->bind("phaser", phaser, "active");
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("balance-in", balance_in->get_adjustment().get(), "value");
   settings->bind("balance-out", balance_out->get_adjustment().get(), "value");
   settings->bind("slev", slev->get_adjustment().get(), "value");
@@ -126,9 +122,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "mode", mode->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                stereo_tools_enum_to_int, int_to_stereo_tools_enum, nullptr, nullptr);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(slev, "dB");
   prepare_spinbutton(mlev, "dB");
 
@@ -141,6 +134,8 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   prepare_spinbutton(mpan, "");
   prepare_spinbutton(stereo_base, "");
   prepare_spinbutton(stereo_phase, "");
+
+  setup_input_output_gain(builder);
 }
 
 StereoToolsUi::~StereoToolsUi() {

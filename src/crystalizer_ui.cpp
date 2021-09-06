@@ -28,20 +28,13 @@ CrystalizerUi::CrystalizerUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   bands_box = builder->get_widget<Gtk::Box>("bands_box");
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   build_bands(13);
+
+  setup_input_output_gain(builder);
 }
 
 CrystalizerUi::~CrystalizerUi() {

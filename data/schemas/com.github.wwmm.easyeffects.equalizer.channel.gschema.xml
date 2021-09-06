@@ -190,7 +190,7 @@
         </key>
         <key name="band8-frequency" type="d">
             <range min="10" max="24000" />
-            <default>126.0</default>
+            <default>126</default>
         </key>
         <key name="band9-frequency" type="d">
             <range min="10" max="24000" />

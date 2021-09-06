@@ -37,8 +37,6 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   harmonics = builder->get_widget<Gtk::SpinButton>("harmonics");
   scope = builder->get_widget<Gtk::SpinButton>("scope");
   blend = builder->get_widget<Gtk::Scale>("blend");
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
   // gsettings bindings
 
@@ -47,14 +45,10 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("scope", scope->get_adjustment().get(), "value");
   settings->bind("ceil", ceil->get_adjustment().get(), "value");
   settings->bind("blend", blend->get_adjustment().get(), "value");
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("listen", listen, "active");
   settings->bind("ceil-active", ceil_active, "active");
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
   prepare_scale(blend, "");
 
   prepare_spinbutton(amount, "dB");
@@ -63,6 +57,8 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   prepare_spinbutton(ceil, "Hz");
 
   prepare_spinbutton(harmonics, "");
+
+  setup_input_output_gain(builder);
 }
 
 ExciterUi::~ExciterUi() {

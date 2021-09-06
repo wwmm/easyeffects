@@ -155,7 +155,7 @@ void Application::on_startup() {
 
     NodeInfo target_node;
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.device_id == device.id) {
         target_node = node;
 
@@ -186,7 +186,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         device_id = node.device_id;
 
@@ -214,7 +214,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         device_id = node.device_id;
 

@@ -30,7 +30,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
     const auto* output_device = settings->get_string("output-device").c_str();
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == output_device) {
         pm->output_device = node;
 
@@ -48,7 +48,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr) {
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
@@ -71,7 +71,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         pm->output_device = node;
 
@@ -103,15 +103,15 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(NodeInfo node_info) {
+void StreamOutputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
+  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
-    pm->disconnect_stream_output(node_info);
+    pm->disconnect_stream_output(id, media_class);
   } else if (global_settings->get_boolean("process-all-outputs")) {
-    pm->connect_stream_output(node_info);
+    pm->connect_stream_output(id, media_class);
   }
 }
 

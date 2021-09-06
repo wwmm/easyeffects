@@ -55,8 +55,6 @@ class CompressorUi : public Gtk::Box, public PluginUiBase {
                   *boost_amount = nullptr, *preamp = nullptr, *reactivity = nullptr, *lookahead = nullptr,
                   *hpf_freq = nullptr, *lpf_freq = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::Label *reduction_label = nullptr, *sidechain_label = nullptr, *curve_label = nullptr, *envelope_label = nullptr;
 
   Gtk::ComboBoxText *compression_mode = nullptr, *sidechain_type = nullptr, *sidechain_mode = nullptr,

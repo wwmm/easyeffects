@@ -29,24 +29,13 @@ Compressor::Compressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
     if (settings->get_string(key) == "External") {
       const auto* device_name = settings->get_string("sidechain-input-device").c_str();
 
       NodeInfo input_device = pm->pe_source_node;
 
-      for (const auto& node : pm->list_nodes) {
+      for (const auto& [id, node] : pm->node_map) {
         if (node.name == device_name) {
           input_device = node;
 
@@ -70,7 +59,7 @@ Compressor::Compressor(const std::string& tag,
 
       NodeInfo input_device = pm->pe_source_node;
 
-      for (const auto& node : pm->list_nodes) {
+      for (const auto& [id, node] : pm->node_map) {
         if (node.name == device_name) {
           input_device = node;
 
@@ -129,6 +118,8 @@ Compressor::Compressor(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "makeup", "mk");
 
   lv2_wrapper->bind_key_double_db(settings, "sidechain-preamp", "scp");
+
+  setup_input_output_gain();
 }
 
 Compressor::~Compressor() {
@@ -161,12 +152,16 @@ void Compressor::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
   lv2_wrapper->run();
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   /*
    This plugin gives the latency in number of samples

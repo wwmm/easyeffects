@@ -40,8 +40,6 @@ class DelayUi : public Gtk::Box, public PluginUiBase {
 
  private:
   Gtk::SpinButton *time_l = nullptr, *time_r = nullptr;
-
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif

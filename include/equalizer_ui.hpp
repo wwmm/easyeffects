@@ -74,8 +74,6 @@ class EqualizerUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
-
   Gtk::SpinButton *nbands = nullptr, *resonance = nullptr, *inertia = nullptr;
 
   Gtk::Box *bands_box_left = nullptr, *bands_box_right = nullptr;

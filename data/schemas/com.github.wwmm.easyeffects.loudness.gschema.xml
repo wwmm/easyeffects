@@ -17,12 +17,12 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.loudness">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="fft" enum="com.github.wwmm.easyeffects.loudness.fft.enum">
             <default>"4096"</default>
@@ -31,12 +31,12 @@
             <default>"ISO226-2003"</default>
         </key>
         <key name="input" type="d">
-            <range min="-60.0" max="72.0" />
-            <default>0.0</default>
+            <range min="-60" max="72" />
+            <default>0</default>
         </key>
         <key name="volume" type="d">
-            <range min="-83.0" max="7.0" />
-            <default>0.0</default>
+            <range min="-83" max="7" />
+            <default>0</default>
         </key>
     </schema>
 </schemalist>

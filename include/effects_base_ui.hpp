@@ -93,13 +93,9 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  /*
-    Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens.
-  */
-
-  void on_app_added(NodeInfo node_info);
-  void on_app_changed(NodeInfo node_info);
-  void on_app_removed(NodeInfo node_info);
+  void on_app_added(const uint id, const std::string name, const std::string media_class);
+  void on_app_changed(const uint id);
+  void on_app_removed(const uint id);
 
   void on_new_output_level_db(const float& left, const float& right);
 
@@ -174,9 +170,9 @@ class EffectsBaseUi {
 
   void remove_blocklist_entry(const Glib::ustring& name);
 
-  void connect_stream(const NodeInfo& node_info);
+  void connect_stream(const uint& id, const std::string& media_class);
 
-  void disconnect_stream(const NodeInfo& node_info);
+  void disconnect_stream(const uint& id, const std::string& media_class);
 };
 
 #endif

@@ -28,23 +28,18 @@ DelayUi::DelayUi(BaseObjectType* cobject,
 
   // loading glade widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
   time_l = builder->get_widget<Gtk::SpinButton>("time_l");
   time_r = builder->get_widget<Gtk::SpinButton>("time_r");
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("time-l", time_l->get_adjustment().get(), "value");
   settings->bind("time-r", time_r->get_adjustment().get(), "value");
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
-
   prepare_spinbutton(time_l, "ms");
   prepare_spinbutton(time_r, "ms");
+
+  setup_input_output_gain(builder);
 }
 
 DelayUi::~DelayUi() {

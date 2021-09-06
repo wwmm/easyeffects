@@ -26,17 +26,6 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Gate is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_enum(settings, "detection", "detection");
 
   lv2_wrapper->bind_key_enum(settings, "stereo-link", "stereo_link");
@@ -54,6 +43,8 @@ Gate::Gate(const std::string& tag, const std::string& schema, const std::string&
   lv2_wrapper->bind_key_double_db(settings, "knee", "knee");
 
   lv2_wrapper->bind_key_double_db(settings, "makeup", "makeup");
+
+  setup_input_output_gain();
 }
 
 Gate::~Gate() {
@@ -84,12 +75,16 @@ void Gate::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
   lv2_wrapper->run();
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

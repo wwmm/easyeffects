@@ -24,20 +24,9 @@ Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crossfeed, schema, schema_path, pipe_manager) {
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
   bs2b.set_level_fcut(settings->get_int("fcut"));
 
   bs2b.set_level_feed(10 * static_cast<int>(settings->get_double("feed")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
 
   settings->signal_changed("fcut").connect([=, this](const auto& key) {
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -50,6 +39,8 @@ Crossfeed::Crossfeed(const std::string& tag,
 
     bs2b.set_level_feed(10 * settings->get_double(key));
   });
+
+  setup_input_output_gain();
 }
 
 Crossfeed::~Crossfeed() {
@@ -81,7 +72,9 @@ void Crossfeed::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   for (size_t n = 0U, li_size = left_in.size(); n < li_size; n++) {
     data[n * 2U] = left_in[n];
@@ -95,7 +88,9 @@ void Crossfeed::process(std::span<float>& left_in,
     right_out[n] = data[n * 2U + 1U];
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

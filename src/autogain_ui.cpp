@@ -58,6 +58,8 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
       [=, this]() { settings->set_boolean("reset-history", !settings->get_boolean("reset-history")); });
 
   prepare_spinbutton(target, "dB");
+
+  setup_input_output_gain(builder);
 }
 
 AutoGainUi::~AutoGainUi() {

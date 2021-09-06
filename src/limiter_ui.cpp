@@ -287,9 +287,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   mode = builder->get_widget<Gtk::ComboBoxText>("mode");
   oversampling = builder->get_widget<Gtk::ComboBoxText>("oversampling");
   dither = builder->get_widget<Gtk::ComboBoxText>("dither");
@@ -314,8 +311,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
   settings->bind("sidechain-preamp", sc_preamp->get_adjustment().get(), "value");
   settings->bind("lookahead", lookahead->get_adjustment().get(), "value");
   settings->bind("attack", attack->get_adjustment().get(), "value");
@@ -338,9 +333,6 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
                               G_SETTINGS_BIND_DEFAULT, dither_enum_to_int, int_to_dither_enum, nullptr, nullptr);
 
   // prepare widgets
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   prepare_spinbutton(sc_preamp, "db");
   prepare_spinbutton(lookahead, "ms");
@@ -365,6 +357,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   set_alr_spinbuttons_sensitivity();
 
   alr->signal_toggled().connect(set_alr_spinbuttons_sensitivity);
+
+  setup_input_output_gain(builder);
 }
 
 LimiterUi::~LimiterUi() {

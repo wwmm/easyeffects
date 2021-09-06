@@ -42,11 +42,7 @@ class StreamInputEffects : public EffectsBase {
 
   void disconnect_filters();
 
-  /*
-    Do not pass node_info by reference. Sometimes it dies before we use it and a segmentation fault happens.
-  */
-
-  void on_app_added(NodeInfo node_info);
+  void on_app_added(const uint id, const std::string name, const std::string media_class);
 
   void on_link_changed(LinkInfo link_info);
 };

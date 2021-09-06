@@ -29,17 +29,6 @@ Reverb::Reverb(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/Reverb is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_double(settings, "decay-time", "decay_time");
 
   lv2_wrapper->bind_key_double(settings, "hf-damp", "hf_damp");
@@ -57,6 +46,8 @@ Reverb::Reverb(const std::string& tag,
   lv2_wrapper->bind_key_double_db(settings, "dry", "dry");
 
   lv2_wrapper->bind_key_enum(settings, "room-size", "room_size");
+
+  setup_input_output_gain();
 }
 
 Reverb::~Reverb() {
@@ -87,12 +78,16 @@ void Reverb::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
   lv2_wrapper->run();
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

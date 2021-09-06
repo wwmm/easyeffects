@@ -29,17 +29,6 @@ BassEnhancer::BassEnhancer(const std::string& tag,
     util::debug(log_tag + "http://calf.sourceforge.net/plugins/BassEnhancer is not installed");
   }
 
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   lv2_wrapper->bind_key_double_db(settings, "amount", "amount");
 
   lv2_wrapper->bind_key_double(settings, "harmonics", "drive");
@@ -53,6 +42,8 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   lv2_wrapper->bind_key_bool(settings, "floor-active", "floor_active");
 
   lv2_wrapper->bind_key_bool(settings, "listen", "listen");
+
+  setup_input_output_gain();
 }
 
 BassEnhancer::~BassEnhancer() {
@@ -83,12 +74,16 @@ void BassEnhancer::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
   lv2_wrapper->run();
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
@@ -96,7 +91,7 @@ void BassEnhancer::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      // harmonics needed as double for levelbar widget ui, so we convert it here 
+      // harmonics needed as double for levelbar widget ui, so we convert it here
 
       const double& harmonics_value = static_cast<double>(lv2_wrapper->get_control_port_value("meter_drive"));
 

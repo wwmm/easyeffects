@@ -40,8 +40,6 @@ class BassLoudnessUi : public Gtk::Box, public PluginUiBase {
 
  private:
   Gtk::SpinButton *loudness = nullptr, *output = nullptr, *link = nullptr;
-
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif

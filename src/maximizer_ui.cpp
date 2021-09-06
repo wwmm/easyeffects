@@ -43,6 +43,8 @@ MaximizerUi::MaximizerUi(BaseObjectType* cobject,
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(ceiling, "dB");
   prepare_spinbutton(release, "ms");
+
+  setup_input_output_gain(builder);
 }
 
 MaximizerUi::~MaximizerUi() {
@@ -62,6 +64,10 @@ auto MaximizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path
 
 void MaximizerUi::reset() {
   bypass->set_active(false);
+
+  settings->reset("input-gain");
+
+  settings->reset("output-gain");
 
   settings->reset("release");
 

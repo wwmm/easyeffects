@@ -47,7 +47,7 @@ class BassEnhancerUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SpinButton *floor = nullptr, *amount = nullptr, *harmonics = nullptr, *scope = nullptr;
 
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr, *blend = nullptr;
+  Gtk::Scale* blend = nullptr;
 
   Gtk::ToggleButton *floor_active = nullptr, *listen = nullptr;
 };

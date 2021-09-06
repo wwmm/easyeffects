@@ -30,12 +30,12 @@
     </enum>
     <schema id="com.github.wwmm.easyeffects.multibandcompressor">
         <key name="input-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
         <key name="output-gain" type="d">
-            <range min="-36.1" max="36.1" />
-            <default>0.0</default>
+            <range min="-36" max="36" />
+            <default>0</default>
         </key>
 
         <key name="compressor-mode" enum="com.github.wwmm.easyeffects.multibandcompressor.compressormode.enum">
@@ -68,32 +68,32 @@
         </key>
 
         <key name="split-frequency1" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>500.0</default>
+            <range min="10" max="20000" />
+            <default>500</default>
         </key>
         <key name="split-frequency2" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>1000.0</default>
+            <range min="10" max="20000" />
+            <default>1000</default>
         </key>
         <key name="split-frequency3" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>2000.0</default>
+            <range min="10" max="20000" />
+            <default>2000</default>
         </key>
         <key name="split-frequency4" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>4000.0</default>
+            <range min="10" max="20000" />
+            <default>4000</default>
         </key>
         <key name="split-frequency5" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>8000.0</default>
+            <range min="10" max="20000" />
+            <default>8000</default>
         </key>
         <key name="split-frequency6" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>12000.0</default>
+            <range min="10" max="20000" />
+            <default>12000</default>
         </key>
         <key name="split-frequency7" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>16000.0</default>
+            <range min="10" max="20000" />
+            <default>16000</default>
         </key>
 
         <key name="sidechain-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
@@ -147,102 +147,102 @@
         </key>
 
         <key name="sidechain-lookahead0" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead1" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead2" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead3" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead4" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead5" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead6" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
         <key name="sidechain-lookahead7" type="d">
-            <range min="0.0" max="20.0" />
-            <default>0.0</default>
+            <range min="0" max="20" />
+            <default>0</default>
         </key>
 
         <key name="sidechain-reactivity0" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity1" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity2" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity3" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity4" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity5" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity6" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
         <key name="sidechain-reactivity7" type="d">
-            <range min="0.0" max="250.0" />
-            <default>10.0</default>
+            <range min="0" max="250" />
+            <default>10</default>
         </key>
 
         <key name="sidechain-preamp0" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp1" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp2" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp3" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp4" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp5" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp6" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
         <key name="sidechain-preamp7" type="d">
-            <range min="-120.0" max="40.0" />
-            <default>0.0</default>
+            <range min="-120" max="40" />
+            <default>0</default>
         </key>
 
         <key name="sidechain-custom-lowcut-filter0" type="b">
@@ -296,69 +296,69 @@
         </key>
 
         <key name="sidechain-lowcut-frequency0" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>10.0</default>
+            <range min="10" max="20000" />
+            <default>10</default>
         </key>
         <key name="sidechain-lowcut-frequency1" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>500.0</default>
+            <range min="10" max="20000" />
+            <default>500</default>
         </key>
         <key name="sidechain-lowcut-frequency2" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>1000.0</default>
+            <range min="10" max="20000" />
+            <default>1000</default>
         </key>
         <key name="sidechain-lowcut-frequency3" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>2000.0</default>
+            <range min="10" max="20000" />
+            <default>2000</default>
         </key>
         <key name="sidechain-lowcut-frequency4" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>4000.0</default>
+            <range min="10" max="20000" />
+            <default>4000</default>
         </key>
         <key name="sidechain-lowcut-frequency5" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>8000.0</default>
+            <range min="10" max="20000" />
+            <default>8000</default>
         </key>
         <key name="sidechain-lowcut-frequency6" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>12000.0</default>
+            <range min="10" max="20000" />
+            <default>12000</default>
         </key>
         <key name="sidechain-lowcut-frequency7" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>16000.0</default>
+            <range min="10" max="20000" />
+            <default>16000</default>
         </key>
 
         <key name="sidechain-highcut-frequency0" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>500.0</default>
+            <range min="10" max="20000" />
+            <default>500</default>
         </key>
         <key name="sidechain-highcut-frequency1" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>1000.0</default>
+            <range min="10" max="20000" />
+            <default>1000</default>
         </key>
         <key name="sidechain-highcut-frequency2" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>2000.0</default>
+            <range min="10" max="20000" />
+            <default>2000</default>
         </key>
         <key name="sidechain-highcut-frequency3" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>4000.0</default>
+            <range min="10" max="20000" />
+            <default>4000</default>
         </key>
         <key name="sidechain-highcut-frequency4" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>8000.0</default>
+            <range min="10" max="20000" />
+            <default>8000</default>
         </key>
         <key name="sidechain-highcut-frequency5" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>12000.0</default>
+            <range min="10" max="20000" />
+            <default>12000</default>
         </key>
         <key name="sidechain-highcut-frequency6" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>16000.0</default>
+            <range min="10" max="20000" />
+            <default>16000</default>
         </key>
         <key name="sidechain-highcut-frequency7" type="d">
-            <range min="10.0" max="20000.0" />
-            <default>20000.0</default>
+            <range min="10" max="20000" />
+            <default>20000</default>
         </key>
 
         <key name="compression-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.compressionmode.enum">
@@ -462,301 +462,301 @@
         </key>
 
         <key name="attack-threshold0" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold1" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold2" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold3" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold4" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold5" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold6" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
         <key name="attack-threshold7" type="d">
-            <range min="-60.0" max="0.0" />
-            <default>-12.0</default>
+            <range min="-60" max="0" />
+            <default>-12</default>
         </key>
 
         <key name="attack-time0" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time1" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time2" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time3" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time4" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time5" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time6" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
         <key name="attack-time7" type="d">
-            <range min="0.0" max="2000.0" />
-            <default>20.0</default>
+            <range min="0" max="2000" />
+            <default>20</default>
         </key>
 
         <key name="release-threshold0" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold1" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold2" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold3" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold4" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold5" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold6" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
         <key name="release-threshold7" type="d">
-            <range min="-120.0" max="36.0" />
-            <default>-120.0</default>
+            <range min="-120" max="36" />
+            <default>-120</default>
         </key>
 
         <key name="release-time0" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time1" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time2" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time3" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time4" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time5" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time6" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
         <key name="release-time7" type="d">
-            <range min="0.00" max="5000.0" />
-            <default>100.0</default>
+            <range min="0" max="5000" />
+            <default>100</default>
         </key>
 
         <key name="ratio0" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio1" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio2" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio3" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio4" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio5" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio6" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
         <key name="ratio7" type="d">
-            <range min="1.0" max="100.0" />
-            <default>1.0</default>
+            <range min="1" max="100" />
+            <default>1</default>
         </key>
 
         <key name="knee0" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee1" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee2" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee3" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee4" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee5" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee6" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
         <key name="knee7" type="d">
-            <range min="-24.0" max="0.0" />
-            <default>-6.0</default>
+            <range min="-24" max="0" />
+            <default>-6</default>
         </key>
 
         <key name="boost-threshold0" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold1" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold2" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold3" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold4" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold5" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold6" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
         <key name="boost-threshold7" type="d">
-            <range min="-120.0" max="-60.0" />
-            <default>-72.0</default>
+            <range min="-120" max="-60" />
+            <default>-72</default>
         </key>
 
         <key name="boost-amount0" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount1" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount2" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount3" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount4" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount5" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount6" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
         <key name="boost-amount7" type="d">
-            <range min="0.0" max="72.0" />
-            <default>6.0</default>
+            <range min="0" max="72" />
+            <default>6</default>
         </key>
 
 
         <key name="makeup0" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup1" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup2" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup3" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup4" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup5" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup6" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
         <key name="makeup7" type="d">
-            <range min="-60.0" max="60.0" />
-            <default>0.0</default>
+            <range min="-60" max="60" />
+            <default>0</default>
         </key>
 
     </schema>

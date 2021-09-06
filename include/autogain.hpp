@@ -56,7 +56,7 @@ class AutoGain : public PluginBase {
   uint old_rate = 0U;
 
   double target = -23.0;  // target loudness level
-  double output_gain = 1.0;
+  double internal_output_gain = 1.0;
 
   std::vector<float> data;
 

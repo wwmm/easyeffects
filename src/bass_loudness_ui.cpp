@@ -31,20 +31,18 @@ BassLoudnessUi::BassLoudnessUi(BaseObjectType* cobject,
   loudness = builder->get_widget<Gtk::SpinButton>("loudness");
   output = builder->get_widget<Gtk::SpinButton>("output");
   link = builder->get_widget<Gtk::SpinButton>("link");
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
 
   // gsettings bindings
 
   settings->bind("loudness", loudness->get_adjustment().get(), "value");
   settings->bind("output", output->get_adjustment().get(), "value");
   settings->bind("link", link->get_adjustment().get(), "value");
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
   prepare_spinbutton(loudness, "dB");
   prepare_spinbutton(output, "dB");
   prepare_spinbutton(link, "dB");
+
+  setup_input_output_gain(builder);
 }
 
 BassLoudnessUi::~BassLoudnessUi() {

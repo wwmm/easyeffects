@@ -32,17 +32,6 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
-
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
-
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
-
   settings->signal_changed("ir-width").connect([=, this](const auto& key) {
     ir_width = settings->get_int(key);
 
@@ -86,6 +75,8 @@ Convolver::Convolver(const std::string& tag,
       data_mutex.unlock();
     }
   });
+
+  setup_input_output_gain();
 }
 
 Convolver::~Convolver() {
@@ -169,7 +160,9 @@ void Convolver::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   if (n_samples_is_power_of_2) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -235,7 +228,9 @@ void Convolver::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

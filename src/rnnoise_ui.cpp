@@ -32,9 +32,6 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   // loading builder widgets
 
-  input_gain = builder->get_widget<Gtk::Scale>("input_gain");
-  output_gain = builder->get_widget<Gtk::Scale>("output_gain");
-
   model_list_frame = builder->get_widget<Gtk::Frame>("model_list_frame");
 
   listview = builder->get_widget<Gtk::ListView>("listview");
@@ -49,14 +46,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
-  settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
-
   connections.emplace_back(
       settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
-
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
 
   // model dir
 
@@ -69,6 +60,8 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
   } else {
     util::debug(log_tag + "model directory already exists: " + model_dir.string());
   }
+
+  setup_input_output_gain(builder);
 
   setup_listview();
 

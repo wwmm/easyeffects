@@ -30,7 +30,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
     const auto* input_device = settings->get_string("input-device").c_str();
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == input_device) {
         pm->input_device = node;
 
@@ -48,7 +48,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr) {
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SOURCE) {
         pm->input_device = node;
 
@@ -71,7 +71,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& node : pm->list_nodes) {
+    for (const auto& [id, node] : pm->node_map) {
       if (node.name == name) {
         pm->input_device = node;
 
@@ -103,15 +103,15 @@ StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 }
 
-void StreamInputEffects::on_app_added(NodeInfo node_info) {
+void StreamInputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();;
+  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();;
 
   if (is_blocklisted) {
-    pm->disconnect_stream_input(node_info);
+    pm->disconnect_stream_input(id, media_class);
   } else if (global_settings->get_boolean("process-all-inputs")) {
-    pm->connect_stream_input(node_info);
+    pm->connect_stream_input(id, media_class);
   }
 }
 

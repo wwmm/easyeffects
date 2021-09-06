@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
     <schema id="com.github.wwmm.easyeffects.autogain">
+        <key name="input-gain" type="d">
+            <range min="-36" max="36" />
+            <default>0</default>
+        </key>
+        <key name="output-gain" type="d">
+            <range min="-36" max="36" />
+            <default>0</default>
+        </key>
         <key name="target" type="d">
-            <range min="-100.0" max="0.0" />
-            <default>-23.0</default>
+            <range min="-100" max="0" />
+            <default>-23</default>
         </key>
         <key name="reset-history" type="b">
             <default>false</default>

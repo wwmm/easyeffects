@@ -42,8 +42,6 @@ class FilterUi : public Gtk::Box, public PluginUiBase {
   Gtk::ComboBoxText* mode = nullptr;
 
   Gtk::SpinButton *frequency = nullptr, *resonance = nullptr, *inertia = nullptr;
-
-  Gtk::Scale *input_gain = nullptr, *output_gain = nullptr;
 };
 
 #endif
