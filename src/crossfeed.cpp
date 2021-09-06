@@ -72,7 +72,9 @@ void Crossfeed::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   for (size_t n = 0U, li_size = left_in.size(); n < li_size; n++) {
     data[n * 2U] = left_in[n];
@@ -86,7 +88,9 @@ void Crossfeed::process(std::span<float>& left_in,
     right_out[n] = data[n * 2U + 1U];
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);

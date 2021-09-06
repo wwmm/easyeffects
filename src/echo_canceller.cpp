@@ -95,7 +95,9 @@ void EchoCanceller::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   for (size_t j = 0U, li_size = left_in.size(); j < li_size; j++) {
     data_L.emplace_back(left_in[j] * (SHRT_MAX + 1));
@@ -160,7 +162,9 @@ void EchoCanceller::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

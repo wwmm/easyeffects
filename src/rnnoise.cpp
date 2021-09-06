@@ -109,7 +109,9 @@ void RNNoise::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   if (resample) {
     if (resampler_ready) {
@@ -179,7 +181,9 @@ void RNNoise::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

@@ -160,7 +160,9 @@ void Convolver::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   if (n_samples_is_power_of_2) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
@@ -226,7 +228,9 @@ void Convolver::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

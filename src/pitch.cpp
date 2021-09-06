@@ -135,7 +135,9 @@ void Pitch::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   stretcher_in[0] = left_in.data();
   stretcher_in[1] = right_in.data();
@@ -194,7 +196,9 @@ void Pitch::process(std::span<float>& left_in,
     }
   }
 
-  apply_gain(left_out, right_out, output_gain);
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);

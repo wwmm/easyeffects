@@ -98,7 +98,9 @@ void AutoGain::process(std::span<float>& left_in,
     return;
   }
 
-  apply_gain(left_in, right_in, input_gain);
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
 
   for (uint n = 0U; n < n_samples; n++) {
     data[2U * n] = left_in[n];
@@ -170,8 +172,13 @@ void AutoGain::process(std::span<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  apply_gain(left_out, right_out, static_cast<float>(internal_output_gain));
-  apply_gain(left_out, right_out, output_gain);
+  if (internal_output_gain != 1.0F) {
+    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain));
+  }
+
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
 
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
