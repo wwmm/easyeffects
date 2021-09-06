@@ -33,7 +33,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   stack_top->connect_property_changed("visible-child", [=, this]() {
     const auto& child_name = stack_top->get_visible_child_name();
 
-    toggle_listen_mic->set_visible((child_name == "page_players") ? false : true);
+    toggle_listen_mic->set_visible(child_name != "page_players");
   });
 
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
