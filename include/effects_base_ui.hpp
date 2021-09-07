@@ -69,9 +69,15 @@ class EffectsBaseUi {
  protected:
   EffectsBase* effects_base = nullptr;
 
+  const std::string log_tag = "effects_base_ui: ";
+
   std::string schema;
 
   Glib::RefPtr<Gio::Settings> settings;
+
+  // The Icon Theme object is needed to lookup app icon names
+
+  Glib::RefPtr<Gtk::IconTheme> icon_theme;
 
   Gtk::Image* saturation_icon = nullptr;
 
@@ -163,6 +169,8 @@ class EffectsBaseUi {
   void setup_listview_plugins();
 
   void setup_listview_selected_plugins();
+
+  auto get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring;
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 
