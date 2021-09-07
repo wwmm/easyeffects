@@ -222,7 +222,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     for (guint n = 0; n < autoloading_output_model->get_n_items(); n++) {
       const auto& item = autoloading_output_model->get_item(n);
 
-      if (holder->info.name == item->device) {
+      if (holder->info.name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device, item->device_profile);
 
         break;
@@ -257,7 +257,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     for (guint n = 0; n < autoloading_input_model->get_n_items(); n++) {
       const auto& item = autoloading_input_model->get_item(n);
 
-      if (holder->info.name == item->device) {
+      if (holder->info.name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device, item->device_profile);
 
         break;
