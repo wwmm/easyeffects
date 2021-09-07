@@ -151,7 +151,13 @@ struct DeviceInfo {
 
   std::string api;
 
-  std::string profile_name;
+  std::string input_route_name;
+
+  std::string output_route_name;
+
+  spa_param_availability input_route_available;
+
+  spa_param_availability output_route_available;
 };
 
 class PipeManager {
@@ -266,7 +272,8 @@ class PipeManager {
   sigc::signal<void(NodeInfo)> sink_removed;
   sigc::signal<void(NodeInfo)> new_default_sink;
   sigc::signal<void(NodeInfo)> new_default_source;
-  sigc::signal<void(DeviceInfo)> device_changed;
+  sigc::signal<void(DeviceInfo)> device_input_route_changed;
+  sigc::signal<void(DeviceInfo)> device_output_route_changed;
 
   sigc::signal<void(LinkInfo)> link_changed;
 

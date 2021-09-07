@@ -211,7 +211,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     for (const auto& device : pm->list_devices) {
       if (device.id == holder->info.device_id) {
-        device_profile = device.profile_name;
+        device_profile = device.output_route_name;
 
         break;
       }
@@ -246,7 +246,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     for (const auto& device : pm->list_devices) {
       if (device.id == holder->info.device_id) {
-        device_profile = device.profile_name;
+        device_profile = device.input_route_name;
 
         break;
       }
@@ -266,8 +266,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     const auto& id = dropdown_autoloading_input_presets->get_selected();
 
-    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id).raw(),
-                                  holder->info.name, device_profile);
+    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id).raw(), holder->info.name,
+                                  device_profile);
   });
 
   spinbutton_test_signal_frequency->signal_output().connect(

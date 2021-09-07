@@ -8,6 +8,8 @@
   before it was added to the blocklist is restored.
 - When trying to add an autoloading profile for a device already in the list its target preset will be updated. This
   way we can change the profile preset without having to remove and recreating it.
+- The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more
+  information see https://github.com/wwmm/easyeffects/issues/1051
 
 ### Fixed
 

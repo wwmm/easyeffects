@@ -150,13 +150,17 @@ void Application::on_startup() {
     }
   });
 
-  pm->device_changed.connect([&](DeviceInfo device) {
-    util::debug(log_tag + "device " + device.name + " has changed profile to: " + device.profile_name);
+  pm->device_input_route_changed.connect([&](DeviceInfo device) {
+    if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
+      return;
+    }
+
+    util::debug(log_tag + "device " + device.name + " has changed its input route to: " + device.input_route_name);
 
     NodeInfo target_node;
 
     for (const auto& [id, node] : pm->node_map) {
-      if (node.device_id == device.id) {
+      if (node.device_id == device.id && node.media_class == "Audio/Source") {
         target_node = node;
 
         break;
@@ -164,15 +168,32 @@ void Application::on_startup() {
     }
 
     if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.media_class == "Audio/Source") {
-        if (target_node.name.c_str() == sie_settings->get_string("input-device")) {
-          presets_manager->autoload(PresetType::input, target_node.name, device.profile_name);
-        }
+      if (target_node.name.c_str() == sie_settings->get_string("input-device")) {
+        presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
+      }
+    }
+  });
 
-      } else if (target_node.media_class == "Audio/Sink") {
-        if (target_node.name.c_str() == soe_settings->get_string("output-device")) {
-          presets_manager->autoload(PresetType::output, target_node.name, device.profile_name);
-        }
+  pm->device_output_route_changed.connect([&](DeviceInfo device) {
+    if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
+      return;
+    }
+
+    util::debug(log_tag + "device " + device.name + " has changed its output route to: " + device.output_route_name);
+
+    NodeInfo target_node;
+
+    for (const auto& [id, node] : pm->node_map) {
+      if (node.device_id == device.id && node.media_class == "Audio/Sink") {
+        target_node = node;
+
+        break;
+      }
+    }
+
+    if (target_node.id != SPA_ID_INVALID) {
+      if (target_node.name.c_str() == soe_settings->get_string("output-device")) {
+        presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
       }
     }
   });
@@ -197,7 +218,7 @@ void Application::on_startup() {
     if (device_id != SPA_ID_INVALID) {
       for (const auto& device : pm->list_devices) {
         if (device.id == device_id) {
-          presets_manager->autoload(PresetType::output, name, device.profile_name);
+          presets_manager->autoload(PresetType::output, name, device.output_route_name);
 
           break;
         }
@@ -225,7 +246,7 @@ void Application::on_startup() {
     if (device_id != SPA_ID_INVALID) {
       for (const auto& device : pm->list_devices) {
         if (device.id == device_id) {
-          presets_manager->autoload(PresetType::input, name, device.profile_name);
+          presets_manager->autoload(PresetType::input, name, device.input_route_name);
 
           break;
         }

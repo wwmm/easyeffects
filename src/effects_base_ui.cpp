@@ -191,7 +191,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   try {
     icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
 
-    const auto & icon_theme_name = icon_theme->get_theme_name();
+    const auto& icon_theme_name = icon_theme->get_theme_name();
 
     if (icon_theme_name.empty()) {
       util::debug(log_tag + "Icon Theme detected, but the name is empty");
@@ -488,10 +488,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
       effects_base->limiter->gain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_gain));
       effects_base->limiter->gain_right.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_gain));
-      effects_base->limiter->sidechain_left.connect(
-          sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_sidechain));
-      effects_base->limiter->sidechain_right.connect(
-          sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_sidechain));
+      effects_base->limiter->sidechain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_sidechain));
+      effects_base->limiter->sidechain_right.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_right_sidechain));
 
       effects_base->limiter->bypass = false;
     } else if (name == plugin_name::loudness) {
@@ -664,17 +662,16 @@ void EffectsBaseUi::setup_listview_players() {
     auto* const mute = static_cast<Gtk::ToggleButton*>(list_item->get_data("mute"));
     auto* const blocklist = static_cast<Gtk::CheckButton*>(list_item->get_data("blocklist"));
 
-    scale_volume->set_format_value_func([=](const auto& v) {
-      return Glib::ustring::format(static_cast<int>(v)) + " %";
-    });
+    scale_volume->set_format_value_func(
+        [=](const auto& v) { return Glib::ustring::format(static_cast<int>(v)) + " %"; });
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
     auto connection_enable = enable->signal_state_set().connect(
         [=, this](const auto& state) {
           if (!app_is_blocklisted(holder->info.name)) {
-            (state) ? connect_stream(holder->info.id, holder->info.media_class) :
-                      disconnect_stream(holder->info.id, holder->info.media_class);
+            (state) ? connect_stream(holder->info.id, holder->info.media_class)
+                    : disconnect_stream(holder->info.id, holder->info.media_class);
 
             enabled_app_list.insert_or_assign(holder->info.id, state);
           }
@@ -687,8 +684,8 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto connection_volume = volume->signal_value_changed().connect([=]() {
       PipeManager::set_node_volume(holder->info.proxy, holder->info.n_volume_channels,
-                                   static_cast<float>(volume->get_value()) / 100.0F); }
-    );
+                                   static_cast<float>(volume->get_value()) / 100.0F);
+    });
 
     auto connection_mute = mute->signal_toggled().connect([=]() {
       const auto& state = mute->get_active();
@@ -775,7 +772,7 @@ void EffectsBaseUi::setup_listview_players() {
               app_icon->set_visible(false);
 
               util::warning(log_tag + icon_name + " icon name not installed in the " +
-                            icon_theme->get_theme_name().raw() +  " icon theme in use. " +
+                            icon_theme->get_theme_name().raw() + " icon theme in use. " +
                             "The application icon has been hidden.");
             }
 
@@ -840,10 +837,8 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& connections_list = {
-      "connection_enable", "connection_volume", "connection_mute",
-      "connection_blocklist_checkbutton", "connection_info"
-    };
+    const auto& connections_list = {"connection_enable", "connection_volume", "connection_mute",
+                                    "connection_blocklist_checkbutton", "connection_info"};
 
     for (const auto* conn : connections_list) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
@@ -1360,7 +1355,11 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
 
   NodeInfo node_info;
 
-  try { node_info = pm->node_map.at(id); } catch (...) { return; }
+  try {
+    node_info = pm->node_map.at(id);
+  } catch (...) {
+    return;
+  }
 
   all_players_model->append(NodeInfoHolder::create(node_info));
 
@@ -1376,7 +1375,11 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
 void EffectsBaseUi::on_app_changed(const uint id) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
     if (auto* item = players_model->get_item(n).get(); item->info.id == id) {
-      try { item->info = pm->node_map.at(id); } catch (...) { return; }
+      try {
+        item->info = pm->node_map.at(id);
+      } catch (...) {
+        return;
+      }
 
       item->info_updated.emit();
 
@@ -1405,10 +1408,10 @@ void EffectsBaseUi::on_app_removed(const uint id) {
 
 void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
   global_output_level_left->set_text(((left > 0.0) ? "+" : "") +
-      Glib::ustring::format(std::setprecision(0), std::fixed, left));
+                                     Glib::ustring::format(std::setprecision(0), std::fixed, left));
 
   global_output_level_right->set_text(((right > 0.0) ? "+" : "") +
-      Glib::ustring::format(std::setprecision(0), std::fixed, right));
+                                      Glib::ustring::format(std::setprecision(0), std::fixed, right));
 
   // saturation icon notification
 

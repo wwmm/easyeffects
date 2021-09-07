@@ -322,7 +322,8 @@ void on_node_event_param(void* object,
               nd->nd_info.format = format_str;
 
               notify = true;
-            } catch (...) {}
+            } catch (...) {
+            }
           }
 
           break;
@@ -339,7 +340,8 @@ void on_node_event_param(void* object,
               nd->nd_info.rate = rate;
 
               notify = true;
-            } catch (...) {}
+            } catch (...) {
+            }
           }
 
           break;
@@ -356,7 +358,8 @@ void on_node_event_param(void* object,
               nd->nd_info.mute = v;
 
               notify = true;
-            } catch (...) {}
+            } catch (...) {
+            }
           }
 
           break;
@@ -367,12 +370,13 @@ void on_node_event_param(void* object,
 
             std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-            const auto& n_volumes = spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(),
-                                                       SPA_AUDIO_MAX_CHANNELS);
+            const auto& n_volumes =
+                spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
 
             float max = 0.0F;
 
-            for (uint i = 0U; i < n_volumes; max = std::max(volumes.at(i++), max));
+            for (uint i = 0U; i < n_volumes; max = std::max(volumes.at(i++), max))
+              ;
 
             node.n_volume_channels = n_volumes;
             node.volume = max;
@@ -381,7 +385,8 @@ void on_node_event_param(void* object,
             nd->nd_info.volume = max;
 
             notify = true;
-          } catch (...) {}
+          } catch (...) {
+          }
 
           break;
         }
@@ -454,10 +459,9 @@ void on_destroy_link_proxy(void* data) {
 
   spa_hook_remove(&ld->proxy_listener);
 
-  ld->pm->list_links.erase(
-      std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
-                     [=](const auto& n) { return n.id == ld->id; }),
-      ld->pm->list_links.end());
+  ld->pm->list_links.erase(std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
+                                          [=](const auto& n) { return n.id == ld->id; }),
+                           ld->pm->list_links.end());
 }
 
 void on_destroy_port_proxy(void* data) {
@@ -465,10 +469,9 @@ void on_destroy_port_proxy(void* data) {
 
   spa_hook_remove(&ld->proxy_listener);
 
-  ld->pm->list_ports.erase(
-      std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(),
-                     [=](const auto& n) { return n.id == ld->id; }),
-      ld->pm->list_ports.end());
+  ld->pm->list_ports.erase(std::remove_if(ld->pm->list_ports.begin(), ld->pm->list_ports.end(),
+                                          [=](const auto& n) { return n.id == ld->id; }),
+                           ld->pm->list_ports.end());
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
@@ -494,10 +497,9 @@ void on_destroy_module_proxy(void* data) {
 
   spa_hook_remove(&md->proxy_listener);
 
-  md->pm->list_modules.erase(
-      std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(),
-                     [=](const auto& n) { return n.id == md->id; }),
-      md->pm->list_modules.end());
+  md->pm->list_modules.erase(std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(),
+                                            [=](const auto& n) { return n.id == md->id; }),
+                             md->pm->list_modules.end());
 }
 
 void on_client_info(void* object, const struct pw_client_info* info) {
@@ -527,10 +529,9 @@ void on_destroy_client_proxy(void* data) {
 
   spa_hook_remove(&pd->proxy_listener);
 
-  pd->pm->list_clients.erase(
-      std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(),
-                     [=](const auto& n) { return n.id == pd->id; }),
-      pd->pm->list_clients.end());
+  pd->pm->list_clients.erase(std::remove_if(pd->pm->list_clients.begin(), pd->pm->list_clients.end(),
+                                            [=](const auto& n) { return n.id == pd->id; }),
+                             pd->pm->list_clients.end());
 }
 
 void on_device_info(void* object, const struct pw_device_info* info) {
@@ -560,7 +561,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
             continue;
           }
 
-          if (const auto& id = info->params[i].id; id == SPA_PARAM_Profile) {
+          if (const auto& id = info->params[i].id; id == SPA_PARAM_Route) {
             pw_device_enum_params((struct pw_device*)ld->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -579,37 +580,40 @@ void on_device_event_param(void* object,
                            const struct spa_pod* param) {
   auto* dd = static_cast<proxy_data*>(object);
 
-  if (param != nullptr) {
-    spa_pod_prop* pod_prop = nullptr;
-    auto* obj = (spa_pod_object*)param;
+  if (id == SPA_PARAM_Route) {
+    const char* name = nullptr;
+    enum spa_direction direction {};
+    enum spa_param_availability available {};
 
-    SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
-      switch (pod_prop->key) {
-        case SPA_PARAM_PROFILE_name: {
-          const char* name = nullptr;
+    if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
+                             SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
+                             SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {
+      return;
+    }
 
-          spa_pod_get_string(&pod_prop->value, &name);
+    if (name != nullptr) {
+      for (auto& device : dd->pm->list_devices) {
+        if (device.id == dd->id) {
+          auto* pm = dd->pm;
 
-          if (name != nullptr) {
-            for (auto& device : dd->pm->list_devices) {
-              if (device.id == dd->id) {
-                if (name != device.profile_name) {
-                  auto* pm = dd->pm;
+          if (direction == SPA_DIRECTION_INPUT) {
+            if (name != device.input_route_name || available != device.input_route_available) {
+              device.input_route_name = name;
+              device.input_route_available = available;
 
-                  device.profile_name = name;
+              Glib::signal_idle().connect_once([pm, device] { pm->device_input_route_changed.emit(device); });
+            }
+          } else if (direction == SPA_DIRECTION_OUTPUT) {
+            if (name != device.output_route_name || available != device.output_route_available) {
+              device.output_route_name = name;
+              device.output_route_available = available;
 
-                  Glib::signal_idle().connect_once([pm, device] { pm->device_changed.emit(device); });
-                }
-
-                break;
-              }
+              Glib::signal_idle().connect_once([pm, device] { pm->device_output_route_changed.emit(device); });
             }
           }
 
           break;
         }
-        default:
-          break;
       }
     }
   }
@@ -620,10 +624,9 @@ void on_destroy_device_proxy(void* data) {
 
   spa_hook_remove(&pd->proxy_listener);
 
-  pd->pm->list_devices.erase(
-      std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(),
-                     [=](const auto& n) { return n.id == pd->id; }),
-      pd->pm->list_devices.end());
+  pd->pm->list_devices.erase(std::remove_if(pd->pm->list_devices.begin(), pd->pm->list_devices.end(),
+                                            [=](const auto& n) { return n.id == pd->id; }),
+                             pd->pm->list_devices.end());
 }
 
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
@@ -631,10 +634,10 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
   const std::string str_key = (key != nullptr) ? key : std::string();
   const std::string str_type = (type != nullptr) ? type : std::string();
-  const std::string str_value = (value != nullptr) ? value :std::string();
+  const std::string str_value = (value != nullptr) ? value : std::string();
 
-  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
-              ", " + str_value);
+  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type + ", " +
+              str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -844,13 +847,11 @@ void on_registry_global(void* data,
 
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == "Stream/Output/Audio") {
-          Glib::signal_idle().connect_once([pm, id, name, media_class] {
-            pm->stream_output_added.emit(id, name, media_class);
-          });
+          Glib::signal_idle().connect_once(
+              [pm, id, name, media_class] { pm->stream_output_added.emit(id, name, media_class); });
         } else if (media_class == "Stream/Input/Audio") {
-          Glib::signal_idle().connect_once([pm, id, name, media_class] {
-            pm->stream_input_added.emit(id, name, media_class);
-          });
+          Glib::signal_idle().connect_once(
+              [pm, id, name, media_class] { pm->stream_input_added.emit(id, name, media_class); });
         }
       }
     }
@@ -883,7 +884,8 @@ void on_registry_global(void* data,
 
       util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
-    } catch (...) {}
+    } catch (...) {
+    }
 
     return;
   }
@@ -1269,10 +1271,10 @@ void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const fl
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
-  pw_node_set_param((struct pw_node*)proxy, SPA_PARAM_Props, 0,
-                    (spa_pod*)spa_pod_builder_add_object(
-                        &builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
-                        SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
+  pw_node_set_param(
+      (struct pw_node*)proxy, SPA_PARAM_Props, 0,
+      (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
+                                           SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
 }
 
 void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
