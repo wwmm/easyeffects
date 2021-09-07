@@ -84,7 +84,7 @@ PluginBase::PluginBase(std::string tag,
 
   const auto& filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
 
-  pw_thread_loop_lock(pm->thread_loop);
+  pm->lock();
 
   auto* props_filter = pw_properties_new(nullptr, nullptr);
 
@@ -165,11 +165,7 @@ PluginBase::PluginBase(std::string tag,
         filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_right, nullptr, 0));
   }
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  pm->sync_wait_unlock();
 }
 
 PluginBase::~PluginBase() {
@@ -181,17 +177,13 @@ PluginBase::~PluginBase() {
 auto PluginBase::connect_to_pw() -> bool {
   auto success = false;
 
-  pw_thread_loop_lock(pm->thread_loop);
+  pm->lock();
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) == 0) {
     connected_to_pw = true;
   }
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  pm->sync_wait_unlock();
 
   if (connected_to_pw) {
     do {
@@ -225,17 +217,13 @@ void PluginBase::set_active(const bool& state) const {
 }
 
 void PluginBase::disconnect_from_pw() {
-  pw_thread_loop_lock(pm->thread_loop);
+  pm->lock();
 
   set_active(false);
 
   pw_filter_disconnect(filter);
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  pm->sync_wait_unlock();
 }
 
 void PluginBase::setup() {}
@@ -306,12 +294,8 @@ void PluginBase::notify() {
   const auto& output_peak_db_l = util::linear_to_db(output_peak_left);
   const auto& output_peak_db_r = util::linear_to_db(output_peak_right);
 
-  Glib::signal_idle().connect_once([=, this] {
-    input_level.emit(input_peak_db_l, input_peak_db_r);
-  });
-  Glib::signal_idle().connect_once([=, this] {
-    output_level.emit(output_peak_db_l, output_peak_db_r);
-  });
+  Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
+  Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });
 
   input_peak_left = util::minimum_linear_level;
   input_peak_right = util::minimum_linear_level;

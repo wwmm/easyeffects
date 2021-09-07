@@ -4,18 +4,20 @@
 
 ### Added
 
-- When an app is removed from the blocklist clicking on the checkbutton inside the application list, the state
-  before it was added to the blocklist is restored.
+- Removing an application from the blocklist, its previous enabled state is restored.
 - When trying to add an autoloading profile for a device already in the list its target preset will be updated. This
   way we can change the profile preset without having to remove and recreating it.
 - The preset autoloading support implementation was redesigned again. It should work on more hardware now. For more
-  information see https://github.com/wwmm/easyeffects/issues/1051
+  information see issue [1051](https://github.com/wwmm/easyeffects/issues/1051).
 
 ### Fixed
 
 - Sometimes when removing imported models from the noise reduction plugin the current used model was not properly
   updated. This should be fixed now.
-- When editing presets files in an external editor duplicated entries were shown in our presets menu.
+- When editing presets files in an external editor, duplicated entries won't be shown in our presets menu.
+- Now the blocklist is correctly set when switching presets.
+- Now the status of the global bypass button is correctly updated when changing plugin stack.
+- Missing icons on the system should not be shown inside the application info UI.
 
 ## [6.1.0]
 

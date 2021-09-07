@@ -1079,7 +1079,7 @@ PipeManager::PipeManager() {
     util::error(log_tag + "could not start the loop");
   }
 
-  pw_thread_loop_lock(thread_loop);
+  lock();
 
   pw_properties* props_context = pw_properties_new(nullptr, nullptr);
 
@@ -1137,19 +1137,13 @@ PipeManager::PipeManager() {
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
-  pw_core_sync(core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(thread_loop);
-
-  pw_thread_loop_unlock(thread_loop);
+  sync_wait_unlock();
 
   while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
     for (const auto& [id, node] : node_map) {
       if (node.name == "easyeffects_sink") {
         pe_sink_node = node;
-      }
-
-      if (node.name == "easyeffects_source") {
+      } else if (node.name == "easyeffects_source") {
         pe_source_node = node;
       }
     }
@@ -1159,7 +1153,7 @@ PipeManager::PipeManager() {
 }
 
 PipeManager::~PipeManager() {
-  pw_thread_loop_lock(thread_loop);
+  lock();
 
   spa_hook_remove(&registry_listener);
   spa_hook_remove(&core_listener);
@@ -1207,57 +1201,41 @@ auto PipeManager::stream_is_connected(const uint& id, const std::string& media_c
 
 void PipeManager::connect_stream_output(const uint& id, const std::string& media_class) const {
   if (media_class == "Stream/Output/Audio") {
-    pw_thread_loop_lock(thread_loop);
+    lock();
 
     pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(pe_sink_node.id).c_str());
 
-    pw_core_sync(core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(thread_loop);
-
-    pw_thread_loop_unlock(thread_loop);
+    sync_wait_unlock();
   }
 }
 
 void PipeManager::disconnect_stream_output(const uint& id, const std::string& media_class) const {
   if (media_class == "Stream/Output/Audio") {
-    pw_thread_loop_lock(thread_loop);
+    lock();
 
     pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(default_output_device.id).c_str());
 
-    pw_core_sync(core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(thread_loop);
-
-    pw_thread_loop_unlock(thread_loop);
+    sync_wait_unlock();
   }
 }
 
 void PipeManager::connect_stream_input(const uint& id, const std::string& media_class) const {
   if (media_class == "Stream/Input/Audio") {
-    pw_thread_loop_lock(thread_loop);
+    lock();
 
     pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(pe_source_node.id).c_str());
 
-    pw_core_sync(core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(thread_loop);
-
-    pw_thread_loop_unlock(thread_loop);
+    sync_wait_unlock();
   }
 }
 
 void PipeManager::disconnect_stream_input(const uint& id, const std::string& media_class) const {
   if (media_class == "Stream/Input/Audio") {
-    pw_thread_loop_lock(thread_loop);
+    lock();
 
     pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(default_input_device.id).c_str());
 
-    pw_core_sync(core, PW_ID_CORE, 0);
-
-    pw_thread_loop_wait(thread_loop);
-
-    pw_thread_loop_unlock(thread_loop);
+    sync_wait_unlock();
   }
 }
 
@@ -1366,11 +1344,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
           return list;
         }
 
-        pw_core_sync(core, PW_ID_CORE, 0);
-
-        pw_thread_loop_wait(thread_loop);
-
-        unlock();
+        sync_wait_unlock();
 
         list.emplace_back(proxy);
       }
@@ -1388,16 +1362,20 @@ void PipeManager::unlock() const {
   pw_thread_loop_unlock(thread_loop);
 }
 
+void PipeManager::sync_wait_unlock() const {
+  pw_core_sync(core, PW_ID_CORE, 0);
+
+  pw_thread_loop_wait(thread_loop);
+
+  pw_thread_loop_unlock(thread_loop);
+}
+
 void PipeManager::destroy_object(const int& id) const {
   lock();
 
   pw_registry_destroy(registry, id);
 
-  pw_core_sync(core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(thread_loop);
-
-  unlock();
+  sync_wait_unlock();
 }
 
 void PipeManager::destroy_links(const std::vector<pw_proxy*>& list) const {
@@ -1407,11 +1385,7 @@ void PipeManager::destroy_links(const std::vector<pw_proxy*>& list) const {
 
       pw_proxy_destroy(proxy);
 
-      pw_core_sync(core, PW_ID_CORE, 0);
-
-      pw_thread_loop_wait(thread_loop);
-
-      unlock();
+      sync_wait_unlock();
     }
   }
 }

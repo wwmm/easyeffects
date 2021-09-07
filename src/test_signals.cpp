@@ -92,7 +92,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
 
   const auto* filter_name = "pe_test_signals";
 
-  pw_thread_loop_lock(pm->thread_loop);
+  pm->lock();
 
   auto* props_filter = pw_properties_new(nullptr, nullptr);
 
@@ -132,11 +132,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
     util::error(log_tag + filter_name + " can not connect the filter to pipewire!");
   }
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  pm->sync_wait_unlock();
 
   do {
     node_id = pw_filter_get_node_id(filter);
@@ -152,17 +148,13 @@ TestSignals::~TestSignals() {
 
   spa_hook_remove(&listener);
 
-  pw_thread_loop_lock(pm->thread_loop);
+  pm->lock();
 
   pw_filter_set_active(filter, false);
 
   pw_filter_disconnect(filter);
 
-  pw_core_sync(pm->core, PW_ID_CORE, 0);
-
-  pw_thread_loop_wait(pm->thread_loop);
-
-  pw_thread_loop_unlock(pm->thread_loop);
+  pm->sync_wait_unlock();
 }
 
 void TestSignals::set_state(const bool& state) {
