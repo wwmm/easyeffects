@@ -185,6 +185,24 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, effects_base->get_pipeline_latency());
 
   latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
+
+  // Icon Theme object initialization
+
+  try {
+    icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
+
+    const auto & icon_theme_name = icon_theme->get_theme_name();
+
+    if (icon_theme_name.empty()) {
+      util::debug(log_tag + "Icon Theme detected, but the name is empty");
+    } else {
+      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
+    }
+  } catch (...) {
+    icon_theme = nullptr;
+
+    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
+  }
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -746,18 +764,28 @@ void EffectsBaseUi::setup_listview_players() {
 
       // set the icon name
 
-      if (!holder->info.app_icon_name.empty()) {
-        app_icon->set_from_icon_name(holder->info.app_icon_name);
+      if (icon_theme != nullptr) {
+        if (const auto& icon_name = get_app_icon_name(holder->info); !icon_name.empty()) {
+          if (app_icon->get_icon_name() != icon_name) {
+            // app icon changed or not set, so we try to update it
 
-        app_icon->set_visible(true);
-      } else if (!holder->info.media_icon_name.empty()) {
-        app_icon->set_from_icon_name(holder->info.media_icon_name);
+            if (icon_theme->has_icon(icon_name)) {
+              app_icon->set_visible(true);
+            } else {
+              app_icon->set_visible(false);
 
-        app_icon->set_visible(true);
+              util::warning(log_tag + icon_name + " icon name not installed in the " +
+                            icon_theme->get_theme_name().raw() +  " icon theme in use. " +
+                            "The application icon has been hidden.");
+            }
+
+            app_icon->set_from_icon_name(icon_name);
+          }
+        } else {
+          app_icon->set_visible(false);
+        }
       } else {
-        app_icon->set_from_icon_name(Glib::ustring(holder->info.name).lowercase());
-
-        app_icon->set_visible(true);
+        app_icon->set_visible(false);
       }
 
       // set the volume slider
@@ -1402,6 +1430,19 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
     default:
       return _("unknown");
   }
+}
+
+auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
+  if (!node_info.app_icon_name.empty()) {
+    return node_info.app_icon_name;
+  } else if (!node_info.media_icon_name.empty()) {
+    return node_info.media_icon_name;
+  } else if (!node_info.name.empty()) {
+    // This is needed to show Firefox icon
+    return Glib::ustring(node_info.name).lowercase();
+  }
+
+  return "";
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {

@@ -489,7 +489,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         soe_settings->set_string_array("plugins", plugins);
       } else {
-        util::debug("can't found the preset " + name + " on the filesystem");
+        util::debug("can't find the preset " + name + " on the filesystem");
       }
 
       break;
@@ -533,7 +533,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         sie_settings->set_string_array("plugins", plugins);
       } else {
-        util::debug("can't found the preset " + name + " on the filesystem");
+        util::debug("can't find the preset " + name + " on the filesystem");
       }
 
       break;
