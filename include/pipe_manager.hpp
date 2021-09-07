@@ -251,6 +251,8 @@ class PipeManager {
 
   void unlock() const;
 
+  void sync_wait_unlock() const;
+
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
   sigc::signal<void(const uint, const std::string, const std::string)> stream_output_added;
