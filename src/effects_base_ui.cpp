@@ -1203,10 +1203,10 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
-    remove->set_icon_name("user-trash-symbolic");
+    remove->set_icon_name("edit-delete-symbolic");
     remove->set_css_classes({"flat"});
 
-    drag_handle->set_from_icon_name("list-drag-handle-symbolic");
+    drag_handle->set_from_icon_name("view-app-grid-symbolic");
 
     plugin_icon->set_from_icon_name("emblem-system-symbolic");
     plugin_icon->set_margin_start(6);

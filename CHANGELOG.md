@@ -20,6 +20,7 @@
 - Now the blocklist is correctly set when switching presets.
 - Now the status of the global bypass button is correctly updated when changing plugin stack.
 - Missing icons on the system should not be shown inside the application info UI.
+- Some icons not showing in Plasma DE with Breeze icon theme should appear now.
 
 ## [6.1.0]
 
