@@ -196,22 +196,22 @@ class PipeManager {
 
   NodeInfo output_device, input_device;
 
-  std::array<std::string, 14> blocklist_node_name = {"EasyEffects",
-                                                     "easyeffects",
-                                                     "easyeffects_soe",
-                                                     "easyeffects_sie",
-                                                     "EasyEffectsWebrtcProbe",
-                                                     "pavucontrol",
-                                                     "PulseAudio Volume Control",
-                                                     "libcanberra",
-                                                     "gsd-media-keys",
-                                                     "GNOME Shell",
-                                                     "speech-dispatcher",
-                                                     "speech-dispatcher-dummy",
-                                                     "Mutter",
-                                                     "gameoverlayui"};
+  std::array<std::string, 14U> blocklist_node_name = {"EasyEffects",
+                                                      "easyeffects",
+                                                      "easyeffects_soe",
+                                                      "easyeffects_sie",
+                                                      "EasyEffectsWebrtcProbe",
+                                                      "pavucontrol",
+                                                      "PulseAudio Volume Control",
+                                                      "libcanberra",
+                                                      "gsd-media-keys",
+                                                      "GNOME Shell",
+                                                      "speech-dispatcher",
+                                                      "speech-dispatcher-dummy",
+                                                      "Mutter",
+                                                      "gameoverlayui"};
 
-  std::array<std::string, 2> blocklist_media_role = {"event", "Notification"};
+  std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;

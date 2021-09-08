@@ -70,7 +70,7 @@ constexpr auto rnnoise = "rnnoise";
 
 constexpr auto stereo_tools = "stereo_tools";
 
-constexpr std::array<const char* const, 23> list{
+constexpr std::array<const char* const, 23U> list{
     autogain,  bass_enhancer,        bass_loudness,  compressor, convolver, crossfeed, crystalizer, deesser,
     delay,     echo_canceller,       equalizer,      exciter,    filter,    gate,      limiter,     loudness,
     maximizer, multiband_compressor, multiband_gate, pitch,      reverb,    rnnoise,   stereo_tools};

@@ -644,7 +644,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   }
 
   if (str_key == "default.audio.sink") {
-    std::array<char, 1024> v{};
+    std::array<char, 1024U> v{};
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
@@ -668,7 +668,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   }
 
   if (str_key == "default.audio.source") {
-    std::array<char, 1024> v{};
+    std::array<char, 1024U> v{};
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
@@ -1245,7 +1245,7 @@ void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const fl
   std::ranges::fill(volumes, 0.0F);
   std::fill_n(volumes.begin(), n_vol_ch, value);
 
-  std::array<char, 1024> buffer{};
+  std::array<char, 1024U> buffer{};
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
@@ -1256,7 +1256,7 @@ void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const fl
 }
 
 void PipeManager::set_node_mute(pw_proxy* proxy, const bool& state) {
-  std::array<char, 1024> buffer{};
+  std::array<char, 1024U> buffer{};
 
   auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
@@ -1398,8 +1398,8 @@ void PipeManager::destroy_links(const std::vector<pw_proxy*>& list) const {
 auto PipeManager::json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int {
   const char* v = nullptr;
 
-  std::array<spa_json, 2> sjson{};
-  std::array<char, 128> res{};
+  std::array<spa_json, 2U> sjson{};
+  std::array<char, 128U> res{};
 
   spa_json_init(sjson.data(), obj, strlen(obj));
 

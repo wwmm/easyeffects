@@ -95,7 +95,7 @@ void Loudness::process(std::span<float>& left_in,
 
     latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
 
-    std::array<char, 1024> buffer{};
+    std::array<char, 1024U> buffer{};
 
     spa_pod_builder b{};
 
