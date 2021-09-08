@@ -79,7 +79,7 @@ class EffectsBaseUi {
 
   Glib::RefPtr<Gtk::IconTheme> icon_theme;
 
-  Gtk::Image* saturation_icon = nullptr;
+  Gtk::Image *saturation_icon = nullptr, *toggle_plugins_icon = nullptr;
 
   Gtk::Label *global_output_level_left = nullptr, *global_output_level_right = nullptr;
 
@@ -132,28 +132,28 @@ class EffectsBaseUi {
   Glib::RefPtr<Gtk::StringList> blocklist, plugins, selected_plugins;
 
   std::map<Glib::ustring, Glib::ustring> plugins_names{{plugin_name::autogain, _("Autogain")},
-                                                   {plugin_name::bass_enhancer, _("Bass Enhancer")},
-                                                   {plugin_name::bass_loudness, _("Bass Loudness")},
-                                                   {plugin_name::compressor, _("Compressor")},
-                                                   {plugin_name::convolver, _("Convolver")},
-                                                   {plugin_name::crossfeed, _("Crossfeed")},
-                                                   {plugin_name::crystalizer, _("Crystalizer")},
-                                                   {plugin_name::deesser, _("Deesser")},
-                                                   {plugin_name::delay, _("Delay")},
-                                                   {plugin_name::echo_canceller, _("Echo Canceller")},
-                                                   {plugin_name::equalizer, _("Equalizer")},
-                                                   {plugin_name::exciter, _("Exciter")},
-                                                   {plugin_name::filter, _("Filter")},
-                                                   {plugin_name::gate, _("Gate")},
-                                                   {plugin_name::limiter, _("Limiter")},
-                                                   {plugin_name::loudness, _("Loudness")},
-                                                   {plugin_name::maximizer, _("Maximizer")},
-                                                   {plugin_name::multiband_compressor, _("Multiband Compressor")},
-                                                   {plugin_name::multiband_gate, _("Multiband Gate")},
-                                                   {plugin_name::pitch, _("Pitch")},
-                                                   {plugin_name::reverb, _("Reverberation")},
-                                                   {plugin_name::rnnoise, _("Noise Reduction")},
-                                                   {plugin_name::stereo_tools, _("Stereo Tools")}};
+                                                       {plugin_name::bass_enhancer, _("Bass Enhancer")},
+                                                       {plugin_name::bass_loudness, _("Bass Loudness")},
+                                                       {plugin_name::compressor, _("Compressor")},
+                                                       {plugin_name::convolver, _("Convolver")},
+                                                       {plugin_name::crossfeed, _("Crossfeed")},
+                                                       {plugin_name::crystalizer, _("Crystalizer")},
+                                                       {plugin_name::deesser, _("Deesser")},
+                                                       {plugin_name::delay, _("Delay")},
+                                                       {plugin_name::echo_canceller, _("Echo Canceller")},
+                                                       {plugin_name::equalizer, _("Equalizer")},
+                                                       {plugin_name::exciter, _("Exciter")},
+                                                       {plugin_name::filter, _("Filter")},
+                                                       {plugin_name::gate, _("Gate")},
+                                                       {plugin_name::limiter, _("Limiter")},
+                                                       {plugin_name::loudness, _("Loudness")},
+                                                       {plugin_name::maximizer, _("Maximizer")},
+                                                       {plugin_name::multiband_compressor, _("Multiband Compressor")},
+                                                       {plugin_name::multiband_gate, _("Multiband Gate")},
+                                                       {plugin_name::pitch, _("Pitch")},
+                                                       {plugin_name::reverb, _("Reverberation")},
+                                                       {plugin_name::rnnoise, _("Noise Reduction")},
+                                                       {plugin_name::stereo_tools, _("Stereo Tools")}};
 
   /* enabled_app_list saves the "enabled state" of processed apps regardless of their presence in the blocklist,
      useful to restore the enabled state when the app is removed from the blocklist */

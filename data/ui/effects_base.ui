@@ -151,7 +151,7 @@
                                         <property name="halign">center</property>
                                         <property name="spacing">3</property>
                                         <child>
-                                            <object class="GtkImage">
+                                            <object class="GtkImage" id="toggle_plugins_icon">
                                                 <property name="icon-name">application-x-addon-symbolic</property>
                                             </object>
                                         </child>
