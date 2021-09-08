@@ -1175,7 +1175,7 @@ PipeManager::~PipeManager() {
   util::debug(log_tag + "Destroying Pipewire context...");
   pw_context_destroy(context);
 
-  pw_thread_loop_unlock(thread_loop);
+  unlock();
 
   util::debug(log_tag + "Destroying Pipewire loop...");
   pw_thread_loop_destroy(thread_loop);
