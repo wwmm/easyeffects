@@ -31,6 +31,24 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       blocklist(Gtk::StringList::create({"initial_value"})),
       plugins(Gtk::StringList::create({"initial_value"})),
       selected_plugins(Gtk::StringList::create({"initial_value"})) {
+  // Icon Theme object initialization
+
+  try {
+    icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
+
+    const auto& icon_theme_name = icon_theme->get_theme_name();
+
+    if (icon_theme_name.empty()) {
+      util::debug(log_tag + "Icon Theme detected, but the name is empty");
+    } else {
+      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
+    }
+  } catch (...) {
+    icon_theme = nullptr;
+
+    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
+  }
+
   // loading builder widgets
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");
@@ -43,6 +61,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   stack_top = builder->get_widget<Gtk::Stack>("stack_top");
   toggle_players = builder->get_widget<Gtk::ToggleButton>("toggle_players");
   toggle_plugins = builder->get_widget<Gtk::ToggleButton>("toggle_plugins");
+  toggle_plugins_icon = builder->get_widget<Gtk::Image>("toggle_plugins_icon");
   toggle_listen_mic = builder->get_widget<Gtk::ToggleButton>("toggle_listen_mic");
 
   popover_blocklist = builder->get_widget<Gtk::Popover>("popover_blocklist");
@@ -93,6 +112,14 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       stack_top->get_pages()->select_item(0, true);
     }
   });
+
+  // fallback toggle_plugins_icon for Plasma DE (issues #1047 and #1050)
+
+  if (icon_theme != nullptr) {
+    if (!icon_theme->has_icon(toggle_plugins_icon->get_icon_name())) {
+      toggle_plugins_icon->set_from_icon_name("extension-symbolic");
+    }
+  }
 
   toggle_plugins->signal_toggled().connect([&, this]() {
     if (toggle_plugins->get_active()) {
@@ -185,24 +212,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, effects_base->get_pipeline_latency());
 
   latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
-
-  // Icon Theme object initialization
-
-  try {
-    icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
-
-    const auto& icon_theme_name = icon_theme->get_theme_name();
-
-    if (icon_theme_name.empty()) {
-      util::debug(log_tag + "Icon Theme detected, but the name is empty");
-    } else {
-      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
-    }
-  } catch (...) {
-    icon_theme = nullptr;
-
-    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
-  }
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -1194,10 +1203,10 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     label->set_hexpand(true);
     label->set_halign(Gtk::Align::START);
 
-    remove->set_icon_name("user-trash-symbolic");
+    remove->set_icon_name("edit-delete-symbolic");
     remove->set_css_classes({"flat"});
 
-    drag_handle->set_from_icon_name("list-drag-handle-symbolic");
+    drag_handle->set_from_icon_name("view-app-grid-symbolic");
 
     plugin_icon->set_from_icon_name("emblem-system-symbolic");
     plugin_icon->set_margin_start(6);

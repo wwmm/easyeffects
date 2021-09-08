@@ -58,8 +58,8 @@ class Pitch : public PluginBase {
 
   std::vector<float> data_L, data_R;
 
-  std::array<float*, 2> stretcher_in = {nullptr, nullptr};
-  std::array<float*, 2> stretcher_out = {nullptr, nullptr};
+  std::array<float*, 2U> stretcher_in = {nullptr, nullptr};
+  std::array<float*, 2U> stretcher_out = {nullptr, nullptr};
 
   std::deque<float> deque_out_L, deque_out_R;
 
