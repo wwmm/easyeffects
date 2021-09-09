@@ -199,7 +199,7 @@ void Application::on_startup() {
   });
 
   soe_settings->signal_changed("output-device").connect([&, this](const auto& key) {
-    const auto& name = soe_settings->get_string(key).raw();
+    const auto name = soe_settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -227,7 +227,7 @@ void Application::on_startup() {
   });
 
   sie_settings->signal_changed("input-device").connect([&, this](const auto& key) {
-    const auto& name = sie_settings->get_string(key).raw();
+    const auto name = sie_settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
