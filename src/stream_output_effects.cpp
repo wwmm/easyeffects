@@ -65,7 +65,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   connect_filters();
 
   settings->signal_changed("output-device").connect([&, this](const auto& key) {
-    const auto& name = settings->get_string(key).raw();
+    const auto name = settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -88,7 +88,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     if (global_settings->get_boolean("bypass")) {
       global_settings->set_boolean("bypass", false);
 
-      return; // filter connected through update_bypass_state
+      return;  // filter connected through update_bypass_state
     }
 
     disconnect_filters();

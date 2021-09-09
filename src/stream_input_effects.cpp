@@ -65,7 +65,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   connect_filters();
 
   settings->signal_changed("input-device").connect([&, this](const auto& key) {
-    const auto& name = settings->get_string(key).raw();
+    const auto name = settings->get_string(key).raw();
 
     if (name.empty()) {
       return;
@@ -88,7 +88,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     if (global_settings->get_boolean("bypass")) {
       global_settings->set_boolean("bypass", false);
 
-      return; // filter connected through update_bypass_state
+      return;  // filter connected through update_bypass_state
     }
 
     disconnect_filters();
@@ -106,7 +106,8 @@ StreamInputEffects::~StreamInputEffects() {
 void StreamInputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();;
+  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
+  ;
 
   if (is_blocklisted) {
     pm->disconnect_stream_input(id, media_class);
