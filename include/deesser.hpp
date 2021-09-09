@@ -41,6 +41,9 @@ class Deesser : public PluginBase {
 
   sigc::signal<void(const double&)> compression, detected;
 
+  double compression_port_value = 0.0;
+  double detected_port_value = 0.0;
+
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

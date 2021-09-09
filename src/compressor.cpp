@@ -172,15 +172,15 @@ void Compressor::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
 
     spa_process_latency_info latency_info{};
 
-    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
 
     std::array<char, 1024U> buffer{};
 
@@ -199,16 +199,16 @@ void Compressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      const float& reduction_value = lv2_wrapper->get_control_port_value("rlm");
-      const float& sidechain_value = lv2_wrapper->get_control_port_value("slm");
-      const float& curve_value = lv2_wrapper->get_control_port_value("clm");
-      const float& envelope_value = lv2_wrapper->get_control_port_value("elm");
+      reduction_port_value = lv2_wrapper->get_control_port_value("rlm");
+      sidechain_port_value = lv2_wrapper->get_control_port_value("slm");
+      curve_port_value = lv2_wrapper->get_control_port_value("clm");
+      envelope_port_value = lv2_wrapper->get_control_port_value("elm");
 
       Glib::signal_idle().connect_once([=, this] {
-        reduction.emit(reduction_value);
-        sidechain.emit(sidechain_value);
-        curve.emit(curve_value);
-        envelope.emit(envelope_value);
+        reduction.emit(reduction_port_value);
+        sidechain.emit(sidechain_port_value);
+        curve.emit(curve_port_value);
+        envelope.emit(envelope_port_value);
       });
 
       notify();

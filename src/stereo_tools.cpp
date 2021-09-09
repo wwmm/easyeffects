@@ -111,9 +111,9 @@ void StereoTools::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       // correlation needed as double for levelbar widget ui, so we convert it here
 
-      const double& correlation = static_cast<double>(lv2_wrapper->get_control_port_value("meter_phase"));
+      correlation_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("meter_phase"));
 
-      Glib::signal_idle().connect_once([=, this] { new_correlation.emit(correlation); });
+      Glib::signal_idle().connect_once([=, this] { new_correlation.emit(correlation_port_value); });
 
       notify();
 

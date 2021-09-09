@@ -41,6 +41,8 @@ class Gate : public PluginBase {
 
   sigc::signal<void(const double&)> gating;
 
+  double gating_port_value = 0.0;
+
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

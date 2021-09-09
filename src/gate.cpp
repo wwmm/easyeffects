@@ -94,9 +94,9 @@ void Gate::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       // gating needed as double for levelbar widget ui, so we convert it here
 
-      const double& gating_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating"));
+      gating_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating"));
 
-      Glib::signal_idle().connect_once([=, this] { gating.emit(gating_value); });
+      Glib::signal_idle().connect_once([=, this] { gating.emit(gating_port_value); });
 
       notify();
 

@@ -41,6 +41,8 @@ class Delay : public PluginBase {
 
   sigc::signal<void(const float&)> latency;
 
+  float latency_port_value = 0.0F;
+
  private:
   uint latency_n_frames = 0U;
 

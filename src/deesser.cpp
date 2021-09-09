@@ -103,12 +103,12 @@ void Deesser::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       // values needed as double for levelbars widget ui, so we convert them here
 
-      const double& detected_value = static_cast<double>(lv2_wrapper->get_control_port_value("detected"));
-      const double& compression_value = static_cast<double>(lv2_wrapper->get_control_port_value("compression"));
+      detected_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("detected"));
+      compression_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("compression"));
 
       Glib::signal_idle().connect_once([=, this] {
-        detected.emit(detected_value);
-        compression.emit(compression_value);
+        detected.emit(detected_port_value);
+        compression.emit(compression_port_value);
       });
 
       notify();

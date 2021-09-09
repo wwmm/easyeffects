@@ -39,9 +39,13 @@ class Limiter : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(const float&)> latency;
+  sigc::signal<void(const float&)> gain_left, gain_right, sidechain_left, sidechain_right, latency;
 
-  sigc::signal<void(const float&)> gain_left, gain_right, sidechain_left, sidechain_right;
+  float gain_l_port_value = 0.0F;
+  float gain_r_port_value = 0.0F;
+  float sidechain_l_port_value = 0.0F;
+  float sidechain_r_port_value = 0.0F;
+  float latency_port_value = 0.0F;
 
  private:
   uint latency_n_frames = 0U;

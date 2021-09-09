@@ -87,15 +87,15 @@ void Maximizer::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
 
     spa_process_latency_info latency_info{};
 
-    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
 
     std::array<char, 1024U> buffer{};
 
@@ -116,9 +116,9 @@ void Maximizer::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       // reduction needed as double for levelbar widget ui, so we convert it here
 
-      const double& reduction_value = static_cast<double>(lv2_wrapper->get_control_port_value("gr"));
+      reduction_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gr"));
 
-      Glib::signal_idle().connect_once([=, this] { reduction.emit(reduction_value); });
+      Glib::signal_idle().connect_once([=, this] { reduction.emit(reduction_port_value); });
 
       notify();
 

@@ -48,6 +48,13 @@ class MultibandCompressor : public PluginBase {
 
   sigc::signal<void(const std::array<float, n_bands>&)> reduction, envelope, curve, frequency_range;
 
+  float latency_port_value = 0.0F;
+
+  std::array<float, n_bands> frequency_range_end_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
+  std::array<float, n_bands> envelope_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
+  std::array<float, n_bands> curve_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
+  std::array<float, n_bands> reduction_port_array = {0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F};
+
  private:
   uint latency_n_frames = 0U;
 

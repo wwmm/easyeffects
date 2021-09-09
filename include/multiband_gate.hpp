@@ -44,6 +44,16 @@ class MultibandGate : public PluginBase {
 
   sigc::signal<void(const double&)> output0, output1, output2, output3, gating0, gating1, gating2, gating3;
 
+  double output0_port_value = 0.0;
+  double output1_port_value = 0.0;
+  double output2_port_value = 0.0;
+  double output3_port_value = 0.0;
+
+  double gating0_port_value = 0.0;
+  double gating1_port_value = 0.0;
+  double gating2_port_value = 0.0;
+  double gating3_port_value = 0.0;
+
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };
