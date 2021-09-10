@@ -211,9 +211,9 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
     }
 
     if (controller_motion->contains_pointer()) {
-      const auto& msg = "x = " + Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, mouse_x) +
-                        " " + x_unit + "  y = " +
-                        Glib::ustring::format(std::setprecision(n_y_decimals), std::fixed, mouse_y) + " " + y_unit;
+      const auto& msg =
+          "x = " + Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, mouse_x) + " " + x_unit +
+          "  y = " + Glib::ustring::format(std::setprecision(n_y_decimals), std::fixed, mouse_y) + " " + y_unit;
 
       Pango::FontDescription font;
       font.set_family("Monospace");

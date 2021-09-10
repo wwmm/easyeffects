@@ -21,9 +21,10 @@
 
 StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                                           Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                                            StreamInputEffects* sie_ptr,
                                            const std::string& schema)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, sie_ptr, schema), sie(sie_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, sie_ptr, schema), sie(sie_ptr) {
   auto* toggle_players_icon = dynamic_cast<Gtk::Image*>(toggle_players->get_child()->get_first_child());
   auto* toggle_players_label = dynamic_cast<Gtk::Label*>(toggle_players_icon->get_next_sibling());
 
@@ -77,11 +78,13 @@ StreamInputEffectsUi::~StreamInputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr) -> StreamInputEffectsUi* {
+auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack,
+                                        StreamInputEffects* sie_ptr,
+                                        Glib::RefPtr<Gtk::IconTheme> icon_ptr) -> StreamInputEffectsUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", sie_ptr,
-                                                                    "com.github.wwmm.easyeffects.streaminputs");
+  auto* const ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", icon_ptr, sie_ptr,
+                                                                          "com.github.wwmm.easyeffects.streaminputs");
 
   auto stack_page = stack->add(*ui, "stream_input");
 

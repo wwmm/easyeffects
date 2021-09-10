@@ -41,6 +41,8 @@ class Exciter : public PluginBase {
 
   sigc::signal<void(const double&)> harmonics;
 
+  double harmonics_port_value = 0.0;
+
  private:
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 };

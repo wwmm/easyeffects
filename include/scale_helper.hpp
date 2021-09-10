@@ -24,8 +24,8 @@
 
 inline auto prepare_scale(Gtk::Scale* scale, const std::string& unit) {
   scale->set_format_value_func([=](const auto& value) {
-    const auto& v_str = Glib::ustring::format(std::setprecision(scale->get_digits()), std::fixed,
-                                              scale->get_adjustment()->get_value());
+    const auto& v_str =
+        Glib::ustring::format(std::setprecision(scale->get_digits()), std::fixed, scale->get_adjustment()->get_value());
 
     return v_str + ((unit.empty()) ? "" : (" " + unit));
   });

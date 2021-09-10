@@ -138,15 +138,15 @@ void MultibandCompressor::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
 
     spa_process_latency_info latency_info{};
 
-    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
 
     std::array<char, 1024U> buffer{};
 
@@ -165,25 +165,20 @@ void MultibandCompressor::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      std::array<float, n_bands> frequency_range_end_array{};
-      std::array<float, n_bands> envelope_array{};
-      std::array<float, n_bands> curve_array{};
-      std::array<float, n_bands> reduction_array{};
-
       for (uint n = 0U; n < n_bands; n++) {
         const auto& nstr = std::to_string(n);
 
-        frequency_range_end_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
-        envelope_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
-        curve_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
-        reduction_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
+        frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
+        envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);
+        curve_port_array.at(n) = lv2_wrapper->get_control_port_value("clm_" + nstr);
+        reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
       }
 
       Glib::signal_idle().connect_once([=, this] {
-        frequency_range.emit(frequency_range_end_array);
-        envelope.emit(envelope_array);
-        curve.emit(curve_array);
-        reduction.emit(reduction_array);
+        frequency_range.emit(frequency_range_end_port_array);
+        envelope.emit(envelope_port_array);
+        curve.emit(curve_port_array);
+        reduction.emit(reduction_port_array);
       });
 
       notify();

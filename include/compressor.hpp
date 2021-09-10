@@ -46,6 +46,12 @@ class Compressor : public PluginBase {
 
   sigc::signal<void(const float&)> reduction, sidechain, curve, envelope, latency;
 
+  float reduction_port_value = 0.0F;
+  float sidechain_port_value = 0.0F;
+  float curve_port_value = 0.0F;
+  float envelope_port_value = 0.0F;
+  float latency_port_value = 0.0F;
+
  private:
   uint latency_n_frames = 0U;
 

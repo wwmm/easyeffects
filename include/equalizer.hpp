@@ -47,6 +47,8 @@ class Equalizer : public PluginBase {
 
   sigc::signal<void(const float&)> latency;
 
+  float latency_port_value = 0.0F;
+
  private:
   Glib::RefPtr<Gio::Settings> settings_left, settings_right;
 

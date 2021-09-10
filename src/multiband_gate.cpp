@@ -175,26 +175,26 @@ void MultibandGate::process(std::span<float>& left_in,
     if (notification_dt >= notification_time_window) {
       // values needed as double for levelbars widget ui, so we convert them here
 
-      const double& output0_value = static_cast<double>(lv2_wrapper->get_control_port_value("output0"));
-      const double& output1_value = static_cast<double>(lv2_wrapper->get_control_port_value("output1"));
-      const double& output2_value = static_cast<double>(lv2_wrapper->get_control_port_value("output2"));
-      const double& output3_value = static_cast<double>(lv2_wrapper->get_control_port_value("output3"));
+      output0_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output0"));
+      output1_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output1"));
+      output2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output2"));
+      output3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("output3"));
 
-      const double& gating0_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating0"));
-      const double& gating1_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating1"));
-      const double& gating2_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating2"));
-      const double& gating3_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating3"));
+      gating0_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating0"));
+      gating1_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating1"));
+      gating2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating2"));
+      gating3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating3"));
 
       Glib::signal_idle().connect_once([=, this] {
-        output0.emit(output0_value);
-        output1.emit(output1_value);
-        output2.emit(output2_value);
-        output3.emit(output3_value);
+        output0.emit(output0_port_value);
+        output1.emit(output1_port_value);
+        output2.emit(output2_port_value);
+        output3.emit(output3_port_value);
 
-        gating0.emit(gating0_value);
-        gating1.emit(gating1_value);
-        gating2.emit(gating2_value);
-        gating3.emit(gating3_value);
+        gating0.emit(gating0_port_value);
+        gating1.emit(gating1_port_value);
+        gating2.emit(gating2_port_value);
+        gating3.emit(gating3_port_value);
       });
 
       notify();

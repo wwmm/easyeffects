@@ -57,7 +57,10 @@
 
 class EffectsBaseUi {
  public:
-  EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder, EffectsBase* effects_base, const std::string& schema);
+  EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
+                Glib::RefPtr<Gtk::IconTheme> icon_ptr,
+                EffectsBase* effects_base,
+                const std::string& schema);
   EffectsBaseUi(const EffectsBaseUi&) = delete;
   auto operator=(const EffectsBaseUi&) -> EffectsBaseUi& = delete;
   EffectsBaseUi(const EffectsBaseUi&&) = delete;

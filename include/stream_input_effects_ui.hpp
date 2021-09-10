@@ -27,6 +27,7 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
  public:
   StreamInputEffectsUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                       Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                        StreamInputEffects* sie_ptr,
                        const std::string& schema);
   StreamInputEffectsUi(const StreamInputEffectsUi&) = delete;
@@ -35,7 +36,8 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
   auto operator=(const StreamInputEffectsUi&&) -> StreamInputEffectsUi& = delete;
   ~StreamInputEffectsUi() override;
 
-  static auto add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr) -> StreamInputEffectsUi*;
+  static auto add_to_stack(Gtk::Stack* stack, StreamInputEffects* sie_ptr, Glib::RefPtr<Gtk::IconTheme> icon_ptr)
+      -> StreamInputEffectsUi*;
 
  protected:
   const std::string log_tag = "sie_ui: ";

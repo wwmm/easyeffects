@@ -108,15 +108,15 @@ void Limiter::process(std::span<float>& left_in,
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
 
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_port_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
+    util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
 
     spa_process_latency_info latency_info{};
 
-    latency_info.ns = static_cast<uint64_t>(latency_value * 1000000000.0F);
+    latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
 
     std::array<char, 1024U> buffer{};
 
@@ -135,15 +135,15 @@ void Limiter::process(std::span<float>& left_in,
     notification_dt += sample_duration;
 
     if (notification_dt >= notification_time_window) {
-      const float& gain_l = lv2_wrapper->get_control_port_value("grlm_l");
-      const float& gain_r = lv2_wrapper->get_control_port_value("grlm_r");
-      const float& sidechain_l = lv2_wrapper->get_control_port_value("sclm_l");
-      const float& sidechain_r = lv2_wrapper->get_control_port_value("sclm_r");
+      gain_l_port_value = lv2_wrapper->get_control_port_value("grlm_l");
+      gain_r_port_value = lv2_wrapper->get_control_port_value("grlm_r");
+      sidechain_l_port_value = lv2_wrapper->get_control_port_value("sclm_l");
+      sidechain_r_port_value = lv2_wrapper->get_control_port_value("sclm_r");
 
-      Glib::signal_idle().connect_once([=, this] { gain_left.emit(gain_l); });
-      Glib::signal_idle().connect_once([=, this] { gain_right.emit(gain_r); });
-      Glib::signal_idle().connect_once([=, this] { sidechain_left.emit(sidechain_l); });
-      Glib::signal_idle().connect_once([=, this] { sidechain_right.emit(sidechain_r); });
+      Glib::signal_idle().connect_once([=, this] { gain_left.emit(gain_l_port_value); });
+      Glib::signal_idle().connect_once([=, this] { gain_right.emit(gain_r_port_value); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_left.emit(sidechain_l_port_value); });
+      Glib::signal_idle().connect_once([=, this] { sidechain_right.emit(sidechain_r_port_value); });
 
       notify();
 

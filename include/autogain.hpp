@@ -42,13 +42,14 @@ class AutoGain : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(const double&,              // loudness
-                    const double&,              // gain
-                    const double&,              // momentary
-                    const double&,              // shortterm
-                    const double&,              // integrated
-                    const double&,              // relative
-                    const double&)> results;    // range
+  sigc::signal<void(const double&,  // loudness
+                    const double&,  // gain
+                    const double&,  // momentary
+                    const double&,  // shortterm
+                    const double&,  // integrated
+                    const double&,  // relative
+                    const double&)>
+      results;  // range
 
  private:
   bool ebur128_ready = false;
