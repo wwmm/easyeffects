@@ -79,12 +79,19 @@ gresources = gnome_mod.compile_resources(
 	c_name: meson.project_name()
 )
 
-dbusconf = configuration_data()
-dbusconf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
+serviceconf = configuration_data()
+serviceconf.set('bindir', join_paths(get_option('prefix'), get_option('bindir')))
 
 configure_file(
   input: 'com.github.wwmm.easyeffects.service.in',
   output: 'com.github.wwmm.easyeffects.service',
-  configuration: dbusconf,
+  configuration: serviceconf,
   install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services'),
+)
+
+configure_file(
+  input: 'easyeffects.service.in',
+  output: 'easyeffects.service',
+  configuration: serviceconf,
+  install_dir: join_paths(get_option('libdir'), 'systemd', 'user'),
 )
