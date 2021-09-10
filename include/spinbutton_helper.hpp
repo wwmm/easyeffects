@@ -24,8 +24,8 @@
 #include <sstream>
 
 inline auto parse_spinbutton_output(Gtk::SpinButton* button, const Glib::ustring& unit) -> bool {
-  const auto& value = Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed,
-                                            button->get_adjustment()->get_value());
+  const auto& value =
+      Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed, button->get_adjustment()->get_value());
 
   button->set_text(value + ((unit.empty()) ? "" : (" " + unit)));
 

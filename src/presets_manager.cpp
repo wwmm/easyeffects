@@ -371,7 +371,8 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
   util::debug(log_tag + "saved preset: " + output_file.string());
 }
 
-void PresetsManager::write_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+void PresetsManager::write_plugins_preset(const PresetType& preset_type,
+                                          const std::vector<Glib::ustring>& plugins,
                                           nlohmann::json& json) {
   for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
@@ -547,8 +548,9 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
   util::debug(log_tag + "loaded preset: " + input_file.string());
 }
 
-void PresetsManager::read_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
-                         const nlohmann::json& json) {
+void PresetsManager::read_plugins_preset(const PresetType& preset_type,
+                                         const std::vector<Glib::ustring>& plugins,
+                                         const nlohmann::json& json) {
   for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
       autogain->read(preset_type, json);

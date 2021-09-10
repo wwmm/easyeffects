@@ -30,10 +30,11 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   connections.emplace_back(
       settings->signal_changed("color-axis-labels").connect([&](const auto& key) { init_frequency_labels_color(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("height").connect([&](const auto& key) { set_content_height(settings->get_int("height")); }));
+  connections.emplace_back(settings->signal_changed("height").connect(
+      [&](const auto& key) { set_content_height(settings->get_int("height")); }));
 
-  connections.emplace_back(settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
+  connections.emplace_back(
+      settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
 
   connections.emplace_back(
       settings->signal_changed("minimum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
@@ -43,8 +44,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   connections.emplace_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
 
-  connections.emplace_back(
-      settings->signal_changed("fill").connect([&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
+  connections.emplace_back(settings->signal_changed("fill").connect(
+      [&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
 
   connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
     plot->set_draw_bar_border(settings->get_boolean(key));

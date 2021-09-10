@@ -73,9 +73,8 @@ void Spectrum::process(std::span<float>& left_in,
     if (const uint& k = total_count + n; k < real_input.size()) {
       // https://en.wikipedia.org/wiki/Hann_function
 
-      const float w =
-          0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(k) /
-          static_cast<float>(real_input.size() - 1U)));
+      const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(k) /
+                                              static_cast<float>(real_input.size() - 1U)));
 
       real_input[k] = 0.5F * (left_in[n] + right_in[n]) * w;
     } else {

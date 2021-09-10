@@ -229,10 +229,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       }
     }
 
-    const auto& id = dropdown_autoloading_output_presets->get_selected();
+    const auto preset_name =
+        dropdown_autoloading_output_presets->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    presets_manager->add_autoload(PresetType::output, output_presets_string_list->get_string(id).raw(),
-                                  holder->info.name, device_profile);
+    presets_manager->add_autoload(PresetType::output, preset_name, holder->info.name, device_profile);
   });
 
   autoloading_add_input_profile->signal_clicked().connect([=, this]() {
@@ -264,10 +264,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       }
     }
 
-    const auto& id = dropdown_autoloading_input_presets->get_selected();
+    const auto preset_name =
+        dropdown_autoloading_input_presets->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    presets_manager->add_autoload(PresetType::input, input_presets_string_list->get_string(id).raw(), holder->info.name,
-                                  device_profile);
+    presets_manager->add_autoload(PresetType::input, preset_name, holder->info.name, device_profile);
   });
 
   spinbutton_test_signal_frequency->signal_output().connect(

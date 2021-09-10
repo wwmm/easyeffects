@@ -75,14 +75,16 @@ class PresetsManager {
 
   void save_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
-  void write_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+  void write_plugins_preset(const PresetType& preset_type,
+                            const std::vector<Glib::ustring>& plugins,
                             nlohmann::json& json);
 
   void remove(const PresetType& preset_type, const Glib::ustring& name);
 
   void load_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
-  void read_plugins_preset(const PresetType& preset_type, const std::vector<Glib::ustring>& plugins,
+  void read_plugins_preset(const PresetType& preset_type,
+                           const std::vector<Glib::ustring>& plugins,
                            const nlohmann::json& json);
 
   void import(const PresetType& preset_type, const std::string& file_path);
