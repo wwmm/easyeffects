@@ -25,8 +25,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
     : Gtk::ApplicationWindow(cobject), app(application), settings(app->settings) {
   apply_css_style("custom.css");
 
-  Gtk::IconTheme::get_for_display(Gdk::Display::get_default())->add_resource_path("/com/github/wwmm/easyeffects/icons");
-
   // loading builder widgets
 
   stack = builder->get_widget<Gtk::Stack>("stack");
@@ -41,8 +39,9 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
-  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get());
-  sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get());
+  auto icon_theme = setup_icon_theme();
+  soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
+  sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
   pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
 
   presets_menu_button->set_popover(*presets_menu_ui);
@@ -108,4 +107,26 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
   const auto& priority = GTK_STYLE_PROVIDER_PRIORITY_APPLICATION;
 
   Gtk::StyleContext::add_provider_for_display(display, provider, priority);
+}
+
+auto ApplicationUi::setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme> {
+  try {
+    Glib::RefPtr<Gtk::IconTheme> icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
+
+    const auto& icon_theme_name = icon_theme->get_theme_name();
+
+    if (icon_theme_name.empty()) {
+      util::debug(log_tag + "Icon Theme detected, but the name is empty");
+    } else {
+      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
+    }
+
+    icon_theme->add_resource_path("/com/github/wwmm/easyeffects/icons");
+
+    return icon_theme;
+  } catch (...) {
+    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
+
+    return nullptr;
+  }
 }

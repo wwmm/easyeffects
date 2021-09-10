@@ -20,35 +20,19 @@
 #include "effects_base_ui.hpp"
 
 EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
+                             Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                              EffectsBase* effects_base,
                              const std::string& schema)
     : effects_base(effects_base),
       schema(schema),
       settings(Gio::Settings::create(schema)),
+      icon_theme(icon_ptr),
       pm(effects_base->pm),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
       blocklist(Gtk::StringList::create({"initial_value"})),
       plugins(Gtk::StringList::create({"initial_value"})),
       selected_plugins(Gtk::StringList::create({"initial_value"})) {
-  // Icon Theme object initialization
-
-  try {
-    icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
-
-    const auto& icon_theme_name = icon_theme->get_theme_name();
-
-    if (icon_theme_name.empty()) {
-      util::debug(log_tag + "Icon Theme detected, but the name is empty");
-    } else {
-      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
-    }
-  } catch (...) {
-    icon_theme = nullptr;
-
-    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
-  }
-
   // loading builder widgets
 
   global_output_level_left = builder->get_widget<Gtk::Label>("global_output_level_left");

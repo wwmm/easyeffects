@@ -21,9 +21,10 @@
 
 StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
+                                             Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                                              StreamOutputEffects* soe_ptr,
                                              const std::string& schema)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, soe_ptr, schema), soe(soe_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, soe_ptr, schema), soe(soe_ptr) {
   for (const auto& [id, node] : pm->node_map) {
     if (node.media_class == "Stream/Output/Audio") {
       on_app_added(node.id, node.name, node.media_class);
@@ -51,8 +52,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     }
   }));
 
-  const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                        static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F);
+  const auto& v =
+      Glib::ustring::format(std::setprecision(1), std::fixed, static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F);
 
   device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }
@@ -61,11 +62,13 @@ StreamOutputEffectsUi::~StreamOutputEffectsUi() {
   util::debug(log_tag + "destroyed");
 }
 
-auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack, StreamOutputEffects* soe_ptr) -> StreamOutputEffectsUi* {
+auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack,
+                                         StreamOutputEffects* soe_ptr,
+                                         Glib::RefPtr<Gtk::IconTheme> icon_ptr) -> StreamOutputEffectsUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", soe_ptr,
-                                                                     "com.github.wwmm.easyeffects.streamoutputs");
+  auto* const ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", icon_ptr, soe_ptr,
+                                                                           "com.github.wwmm.easyeffects.streamoutputs");
 
   auto stack_page = stack->add(*ui, "stream_output");
 

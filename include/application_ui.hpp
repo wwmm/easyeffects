@@ -64,6 +64,8 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   int soe_latency = 0, sie_latency = 0;
 
   static void apply_css_style(const std::string& css_file_name);
+
+  auto setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme>;
 };
 
 #endif
