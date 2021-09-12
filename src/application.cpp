@@ -170,7 +170,11 @@ void Application::on_startup() {
     if (target_node.id != SPA_ID_INVALID) {
       if (target_node.name.c_str() == sie_settings->get_string("input-device")) {
         presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
+      } else {
+        util::debug(log_tag + "input autoloading: the target node name does not match the input device name");
       }
+    } else {
+      util::debug(log_tag + "input autoloading: could not find the target node");
     }
   });
 
@@ -194,7 +198,11 @@ void Application::on_startup() {
     if (target_node.id != SPA_ID_INVALID) {
       if (target_node.name.c_str() == soe_settings->get_string("output-device")) {
         presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
+      } else {
+        util::debug(log_tag + "output autoloading: the target node name does not match the output device name");
       }
+    } else {
+      util::debug(log_tag + "output autoloading: could not find the target node");
     }
   });
 
