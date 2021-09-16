@@ -759,7 +759,7 @@ void EffectsBaseUi::setup_listview_players() {
           if (app_icon->get_icon_name() != icon_name) {
             // app icon changed or not set, so we try to update it
 
-            if (icon_theme->has_icon(icon_name)) {
+            if (icon_available(icon_name)) {
               app_icon->set_visible(true);
             } else {
               app_icon->set_visible(false);
@@ -1429,16 +1429,55 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
 }
 
 auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
+  // map to handle cases where Pipewire does not set icon name string or app name equal to icon name.
+  static std::map<Glib::ustring, Glib::ustring> icon_map{
+      {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
+
+  Glib::ustring icon_name;
+
   if (!node_info.app_icon_name.empty()) {
-    return node_info.app_icon_name;
+    icon_name = node_info.app_icon_name;
   } else if (!node_info.media_icon_name.empty()) {
-    return node_info.media_icon_name;
+    icon_name = node_info.media_icon_name;
   } else if (!node_info.name.empty()) {
-    // This is needed to show Firefox icon
-    return Glib::ustring(node_info.name).lowercase();
+    // get lowercase name so if it changes in the future, we have a chance to pick the same index
+    icon_name = Glib::ustring(node_info.name).lowercase();
   }
 
-  return "";
+  try {
+    return icon_map.at(icon_name);
+  } catch (...) {
+    return icon_name;
+  }
+}
+
+auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
+  if (icon_theme->has_icon(icon_name)) {
+    return true;
+  }
+
+  // the icon object can't loopup icons in pixmaps directories,
+  // so we check their existence there also
+
+  static auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
+
+  for (const auto& dir : pixmaps_dirs) {
+    try {
+      for (std::filesystem::directory_iterator it{dir}; it != std::filesystem::directory_iterator{}; ++it) {
+        if (std::filesystem::is_regular_file(it->status())) {
+          if (it->path().stem().c_str() == icon_name) {
+            util::debug(log_tag + icon_name + " icon name not included in the icon theme, but found in " + dir);
+
+            return true;
+          }
+        }
+      }
+    } catch (...) {
+      util::debug(log_tag + "cannot lookup application icon " + icon_name + " in " + dir);
+    }
+  }
+
+  return false;
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {

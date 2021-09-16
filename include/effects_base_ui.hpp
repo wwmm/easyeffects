@@ -106,6 +106,8 @@ class EffectsBaseUi {
   void on_app_changed(const uint id);
   void on_app_removed(const uint id);
 
+  auto icon_available(const Glib::ustring& icon_name) -> bool;
+
   void on_new_output_level_db(const float& left, const float& right);
 
   static auto node_state_to_ustring(const pw_node_state& state) -> Glib::ustring;
