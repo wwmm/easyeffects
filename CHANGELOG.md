@@ -19,7 +19,8 @@
 - When editing presets files in an external editor, duplicated entries won't be shown in our presets menu.
 - Now the blocklist is correctly set when switching presets.
 - Now the status of the global bypass button is correctly updated when changing plugin stack.
-- Missing icons on the system should not be shown inside the application info UI.
+- Missing icons on the system should not be shown inside the application info UI (if an application icon could not be
+  shown even if you're sure it's correctly installed, please open an issue).
 - Some icons not showing in Plasma DE with Breeze icon theme should appear now.
 
 ## [6.1.0]

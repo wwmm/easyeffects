@@ -39,7 +39,10 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
-  auto icon_theme = setup_icon_theme();
+  if (icon_theme == nullptr) {
+    icon_theme = setup_icon_theme();
+  }
+
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
   pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
@@ -111,21 +114,19 @@ void ApplicationUi::apply_css_style(const std::string& css_file_name) {
 
 auto ApplicationUi::setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme> {
   try {
-    Glib::RefPtr<Gtk::IconTheme> icon_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
+    Glib::RefPtr<Gtk::IconTheme> ic_theme = Gtk::IconTheme::get_for_display(Gdk::Display::get_default());
 
-    const auto& icon_theme_name = icon_theme->get_theme_name();
+    const auto& icon_theme_name = ic_theme->get_theme_name();
 
     if (icon_theme_name.empty()) {
-      util::debug(log_tag + "Icon Theme detected, but the name is empty");
+      util::debug("application_ui: Icon Theme detected, but the name is empty");
     } else {
-      util::debug(log_tag + "Icon Theme " + icon_theme_name.raw() + " detected");
+      util::debug("application_ui: Icon Theme " + icon_theme_name.raw() + " detected");
     }
 
-    icon_theme->add_resource_path("/com/github/wwmm/easyeffects/icons");
-
-    return icon_theme;
+    return ic_theme;
   } catch (...) {
-    util::warning(log_tag + "Can't retrieve the icon theme in use on the system. App icons won't be shown.");
+    util::warning("application_ui: Can't retrieve the icon theme in use on the system. App icons won't be shown.");
 
     return nullptr;
   }
