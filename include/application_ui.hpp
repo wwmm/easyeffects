@@ -42,6 +42,10 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   static auto create(Application* app) -> ApplicationUi*;
 
+  static auto setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme>;
+
+  inline static Glib::RefPtr<Gtk::IconTheme> icon_theme = nullptr;
+
  private:
   const std::string log_tag = "application_ui: ";
 
@@ -64,8 +68,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   int soe_latency = 0, sie_latency = 0;
 
   static void apply_css_style(const std::string& css_file_name);
-
-  auto setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme>;
 };
 
 #endif
