@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.1.1]
+
 ### Added
 
 - When trying to add an autoloading profile for a device already in the list its target preset will be updated. This
