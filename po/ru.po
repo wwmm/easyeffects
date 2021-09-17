@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-16 17:19-0300\n"
+"POT-Creation-Date: 2021-09-17 16:55+0200\n"
 "PO-Revision-Date: 2021-08-11 02:19+0300\n"
 "Last-Translator: Mikhail Novosyolov <mikhailnov@dumalogiya.ru>\n"
 "Language-Team: \n"
@@ -98,42 +98,42 @@ msgstr "лимитер;компрессор;ребербатор;эквалай�
 msgid "\"Presets\""
 msgstr "\"Предустановки\""
 
-#: data/ui/app_info.ui:66
+#: data/ui/app_info.ui:67
 msgid "Add to Blocklist"
 msgstr "Добавить в черный список"
 
-#: data/ui/app_info.ui:82
+#: data/ui/app_info.ui:83
 msgid "Format"
 msgstr "Формат"
 
-#: data/ui/app_info.ui:108 data/ui/convolver.ui:131
+#: data/ui/app_info.ui:109 data/ui/convolver.ui:131
 msgid "Rate"
 msgstr "Частота"
 
-#: data/ui/app_info.ui:134
+#: data/ui/app_info.ui:135
 msgid "Channels"
 msgstr "Каналы"
 
-#: data/ui/app_info.ui:160
+#: data/ui/app_info.ui:161
 msgid "Latency"
 msgstr "Задержка"
 
-#: data/ui/app_info.ui:186
+#: data/ui/app_info.ui:187
 msgid "State"
 msgstr "Состояние"
 
 #: data/ui/application_window.ui:39 data/ui/autogain.ui:370
 #: data/ui/bass_enhancer.ui:319 data/ui/compressor.ui:1021
-#: data/ui/convolver.ui:303 data/ui/crossfeed.ui:219 data/ui/crystalizer.ui:121
+#: data/ui/convolver.ui:303 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
 #: data/ui/deesser.ui:486 data/ui/delay.ui:187 data/ui/equalizer.ui:266
 #: data/ui/exciter.ui:319 data/ui/filter.ui:245 data/ui/gate.ui:411
-#: data/ui/limiter.ui:846 data/ui/loudness.ui:208 data/ui/maximizer.ui:221
+#: data/ui/limiter.ui:845 data/ui/loudness.ui:208 data/ui/maximizer.ui:221
 #: data/ui/multiband_compressor.ui:420 data/ui/multiband_gate.ui:446
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1132
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1629
 #: data/ui/pipe_info.ui:277 data/ui/pitch.ui:273 data/ui/presets_menu.ui:35
 #: data/ui/reverb.ui:434 data/ui/rnnoise.ui:176 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:82
+#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:75
 msgid "Output"
 msgstr "Выход"
 
@@ -149,15 +149,15 @@ msgstr "Выход"
 # ###############################################
 #: data/ui/application_window.ui:67 data/ui/autogain.ui:289
 #: data/ui/bass_enhancer.ui:238 data/ui/compressor.ui:497
-#: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:138
+#: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:137
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:405 data/ui/delay.ui:106
 #: data/ui/equalizer.ui:185 data/ui/exciter.ui:238 data/ui/filter.ui:164
-#: data/ui/gate.ui:330 data/ui/limiter.ui:765 data/ui/loudness.ui:127
+#: data/ui/gate.ui:330 data/ui/limiter.ui:764 data/ui/loudness.ui:127
 #: data/ui/maximizer.ui:140 data/ui/multiband_compressor.ui:339
 #: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:351 data/ui/pitch.ui:192
 #: data/ui/presets_menu.ui:58 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
 #: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:529
-#: src/stream_input_effects_ui.cpp:100
+#: src/stream_input_effects_ui.cpp:91
 msgid "Input"
 msgstr "Вход"
 
@@ -166,9 +166,9 @@ msgid "PipeWire"
 msgstr "PipeWire"
 
 #: data/ui/application_window.ui:116 data/ui/reverb.ui:19
-#: src/presets_menu_ui.cpp:199 src/presets_menu_ui.cpp:338
-#: src/presets_menu_ui.cpp:339 src/presets_menu_ui.cpp:356
-#: src/presets_menu_ui.cpp:357
+#: src/presets_menu_ui.cpp:234 src/presets_menu_ui.cpp:369
+#: src/presets_menu_ui.cpp:370 src/presets_menu_ui.cpp:387
+#: src/presets_menu_ui.cpp:388
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -228,7 +228,7 @@ msgstr "Относительное значение"
 msgid "Range"
 msgstr "Диапазон"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:148
+#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:154
 msgid "Loudness"
 msgstr "Громкость"
 
@@ -237,11 +237,11 @@ msgid "Output Gain"
 msgstr "Усиление выхода"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:429
-#: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:298
+#: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:297
 #: data/ui/crystalizer.ui:192 data/ui/deesser.ui:625 data/ui/delay.ui:266
 #: data/ui/equalizer.ui:345 data/ui/equalizer_band.ui:137
 #: data/ui/equalizer_band.ui:199 data/ui/exciter.ui:428 data/ui/filter.ui:324
-#: data/ui/gate.ui:520 data/ui/limiter.ui:925 data/ui/loudness.ui:287
+#: data/ui/gate.ui:520 data/ui/limiter.ui:924 data/ui/loudness.ui:287
 #: data/ui/maximizer.ui:332 data/ui/multiband_compressor.ui:499
 #: data/ui/multiband_gate.ui:1708 data/ui/pitch.ui:352 data/ui/reverb.ui:513
 #: data/ui/rnnoise.ui:255 data/ui/stereo_tools.ui:719
@@ -249,10 +249,10 @@ msgid "Reset"
 msgstr "Сбросить"
 
 #: data/ui/autogain.ui:462 data/ui/bass_enhancer.ui:442
-#: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:311
+#: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:310
 #: data/ui/deesser.ui:638 data/ui/delay.ui:279 data/ui/equalizer.ui:358
 #: data/ui/exciter.ui:441 data/ui/filter.ui:337 data/ui/gate.ui:533
-#: data/ui/limiter.ui:938 data/ui/loudness.ui:300 data/ui/maximizer.ui:345
+#: data/ui/limiter.ui:937 data/ui/loudness.ui:300 data/ui/maximizer.ui:345
 #: data/ui/multiband_compressor.ui:512 data/ui/multiband_gate.ui:1721
 #: data/ui/pitch.ui:365 data/ui/reverb.ui:526 data/ui/rnnoise.ui:268
 #: data/ui/stereo_tools.ui:732
@@ -328,7 +328,7 @@ msgstr "API"
 msgid "Access"
 msgstr "Доступ"
 
-#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:136
+#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:142
 msgid "Compressor"
 msgstr "Компрессор"
 
@@ -361,7 +361,7 @@ msgid "Boost Amount"
 msgstr "Величина"
 
 #: data/ui/compressor.ui:157 data/ui/gate.ui:117 data/ui/limiter.ui:265
-#: data/ui/limiter.ui:510 data/ui/multiband_compressor_band.ui:225
+#: data/ui/limiter.ui:509 data/ui/multiband_compressor_band.ui:225
 #: data/ui/multiband_gate.ui:206 data/ui/multiband_gate.ui:549
 #: data/ui/multiband_gate.ui:892 data/ui/multiband_gate.ui:1235
 msgid "Attack"
@@ -380,7 +380,7 @@ msgid "Threshold"
 msgstr "Порог срабатывания"
 
 #: data/ui/compressor.ui:242 data/ui/gate.ui:151 data/ui/limiter.ui:309
-#: data/ui/limiter.ui:547 data/ui/maximizer.ui:93
+#: data/ui/limiter.ui:546 data/ui/maximizer.ui:93
 #: data/ui/multiband_compressor_band.ui:239 data/ui/multiband_gate.ui:240
 #: data/ui/multiband_gate.ui:583 data/ui/multiband_gate.ui:926
 #: data/ui/multiband_gate.ui:1269
@@ -394,7 +394,7 @@ msgstr "Восстановление"
 msgid "Ratio"
 msgstr "Степень сжатия"
 
-#: data/ui/compressor.ui:332 data/ui/gate.ui:252 data/ui/limiter.ui:584
+#: data/ui/compressor.ui:332 data/ui/gate.ui:252 data/ui/limiter.ui:583
 #: data/ui/multiband_compressor_band.ui:398 data/ui/multiband_gate.ui:341
 #: data/ui/multiband_gate.ui:684 data/ui/multiband_gate.ui:1027
 #: data/ui/multiband_gate.ui:1370
@@ -554,7 +554,7 @@ msgstr "Импульсы"
 msgid "Stereo Width"
 msgstr "Ширина стерео"
 
-#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:158
+#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:161
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -587,11 +587,11 @@ msgstr "По умолчанию"
 msgid "Jmeier"
 msgstr ""
 
-#: data/ui/crossfeed.ui:57
+#: data/ui/crossfeed.ui:56
 msgid "Cutoff"
 msgstr "Усечение"
 
-#: data/ui/crossfeed.ui:91
+#: data/ui/crossfeed.ui:90
 msgid "Feed"
 msgstr "Подача"
 
@@ -1054,29 +1054,29 @@ msgstr "Предусилитель"
 msgid "Boost"
 msgstr ""
 
-#: data/ui/limiter.ui:495
+#: data/ui/limiter.ui:494
 #, fuzzy
 msgid "Auto Leveling"
 msgstr "Контроль громкости по EBU R 128"
 
-#: data/ui/limiter.ui:637
+#: data/ui/limiter.ui:636
 #, fuzzy
 msgid "Gain Left"
 msgstr "Левый"
 
-#: data/ui/limiter.ui:667
+#: data/ui/limiter.ui:666
 #, fuzzy
 msgid "Gain Right"
 msgstr "Правый"
 
 # #, fuzzy
-#: data/ui/limiter.ui:697
+#: data/ui/limiter.ui:696
 #, fuzzy
 msgid "Sidechain Left"
 msgstr "Усиление ввода [дБ]"
 
 # #, fuzzy
-#: data/ui/limiter.ui:727
+#: data/ui/limiter.ui:726
 #, fuzzy
 msgid "Sidechain Right"
 msgstr "Усиление ввода [дБ]"
@@ -1369,7 +1369,7 @@ msgstr "Октавы"
 msgid "Crispness"
 msgstr "Чёткость"
 
-#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:247
+#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:230
 msgid "Load"
 msgstr "Загрузить"
 
@@ -1628,93 +1628,93 @@ msgstr "Стерео фаза"
 msgid "Phase Correlation"
 msgstr "Корреляция фазы"
 
-#: include/effects_base_ui.hpp:133
+#: include/effects_base_ui.hpp:139
 #, fuzzy
 msgid "Autogain"
 msgstr "Контроль громкости по EBU R 128"
 
 # Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
 # «Бас-Энхансер» или «Глубокий бас»
-#: include/effects_base_ui.hpp:134
+#: include/effects_base_ui.hpp:140
 msgid "Bass Enhancer"
 msgstr "Усиление басов (бас-энхансер)"
 
-#: include/effects_base_ui.hpp:135
+#: include/effects_base_ui.hpp:141
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Громкость"
 
-#: include/effects_base_ui.hpp:137
+#: include/effects_base_ui.hpp:143
 msgid "Convolver"
 msgstr "Конвольвер"
 
-#: include/effects_base_ui.hpp:138
+#: include/effects_base_ui.hpp:144
 msgid "Crossfeed"
 msgstr "Перекрестная подача"
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:145
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:146
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:147
 msgid "Delay"
 msgstr "Задержка"
 
-#: include/effects_base_ui.hpp:142
+#: include/effects_base_ui.hpp:148
 msgid "Echo Canceller"
 msgstr "Эхо и шумо подавление"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:149
 msgid "Equalizer"
 msgstr "Эквалайзер"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:150
 msgid "Exciter"
 msgstr "Генератор"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:151
 msgid "Filter"
 msgstr "Фильтр"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:152
 msgid "Gate"
 msgstr "Шумовые ворота (гейт)"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:153
 msgid "Limiter"
 msgstr "Ограничитель уровня звука (лимитер)"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:155
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:156
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:157
 msgid "Multiband Gate"
 msgstr "Многополосные шумовые ворота"
 
-#: include/effects_base_ui.hpp:152
+#: include/effects_base_ui.hpp:158
 msgid "Pitch"
 msgstr "Высота тона"
 
-#: include/effects_base_ui.hpp:153
+#: include/effects_base_ui.hpp:159
 msgid "Reverberation"
 msgstr "Ревербация"
 
-#: include/effects_base_ui.hpp:154
+#: include/effects_base_ui.hpp:160
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:161
 msgid "Stereo Tools"
 msgstr "Стереокорректоры"
 
@@ -1742,85 +1742,89 @@ msgstr ""
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:318
+#: src/application.cpp:334
 msgid "Output Presets: "
 msgstr "Выходные предустановки: "
 
-#: src/application.cpp:326
+#: src/application.cpp:342
 msgid "Input Presets: "
 msgstr "Входные предустановки: "
 
-#: src/application.cpp:354
+#: src/application.cpp:368
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Аудиоэффекты для приложений PulseAudio"
 
-#: src/convolver_ui.cpp:370 src/convolver_ui.cpp:373
+#: src/convolver_ui.cpp:348 src/convolver_ui.cpp:351
 msgid "Import Impulse File"
 msgstr "Импортировать импульс"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:373 src/equalizer_ui.cpp:604
-#: src/equalizer_ui.cpp:606 src/presets_menu_ui.cpp:195
+#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:351 src/equalizer_ui.cpp:579
+#: src/equalizer_ui.cpp:581 src/presets_menu_ui.cpp:230
 msgid "Open"
 msgstr "Открыть"
 
-#: src/convolver_ui.cpp:371 src/convolver_ui.cpp:374 src/equalizer_ui.cpp:604
-#: src/equalizer_ui.cpp:607 src/presets_menu_ui.cpp:195
+#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:352 src/equalizer_ui.cpp:579
+#: src/equalizer_ui.cpp:582 src/presets_menu_ui.cpp:230
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/convolver_ui.cpp:379
+#: src/convolver_ui.cpp:357
 msgid "Impulse Response"
 msgstr "Импульсная реакция"
 
-#: src/convolver_ui.cpp:420 src/convolver_ui.cpp:421 src/convolver_ui.cpp:423
+#: src/convolver_ui.cpp:398 src/convolver_ui.cpp:399 src/convolver_ui.cpp:401
 msgid "Failed"
 msgstr "Не получилось"
 
-#: src/convolver_ui.cpp:425
+#: src/convolver_ui.cpp:403
 msgid "Could Not Load The Impulse File"
 msgstr "Не смогли загрузить файл с импульсными реакциями"
 
-#: src/effects_base_ui.cpp:753 src/effects_base_ui.cpp:1387
+#: src/effects_base_ui.cpp:1417
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:757 src/effects_base_ui.cpp:1389
+#: src/effects_base_ui.cpp:1419
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:761 src/effects_base_ui.cpp:1391
+#: src/effects_base_ui.cpp:1421
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:765 src/effects_base_ui.cpp:1393
+#: src/effects_base_ui.cpp:1423
 #, fuzzy
 msgid "creating"
 msgstr "Настройки"
 
-#: src/effects_base_ui.cpp:769 src/effects_base_ui.cpp:1395
+#: src/effects_base_ui.cpp:1425
 msgid "error"
 msgstr ""
 
-#: src/equalizer_ui.cpp:386
+#: src/effects_base_ui.cpp:1427
+msgid "unknown"
+msgstr ""
+
+#: src/equalizer_ui.cpp:370
 msgid "infinity"
 msgstr ""
 
-#: src/equalizer_ui.cpp:603 src/equalizer_ui.cpp:606
+#: src/equalizer_ui.cpp:578 src/equalizer_ui.cpp:581
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Импортировать предустановки"
 
-#: src/equalizer_ui.cpp:612
+#: src/equalizer_ui.cpp:587
 #, fuzzy
 msgid "APO Presets"
 msgstr "Предустановки"
 
-#: src/presets_menu_ui.cpp:194
+#: src/presets_menu_ui.cpp:229
 msgid "Import Preset"
 msgstr "Импортировать предустановку"
 
-#: src/stream_input_effects_ui.cpp:31
+#: src/stream_input_effects_ui.cpp:32
 #, fuzzy
 msgid "Recorders"
 msgstr "Граница"
