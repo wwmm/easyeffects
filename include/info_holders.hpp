@@ -31,6 +31,8 @@ class NodeInfoHolder : public Glib::Object {
 
   sigc::signal<void()> info_updated;
 
+  bool scheduled_update = false;
+
  protected:
   NodeInfoHolder(NodeInfo info);
 };
