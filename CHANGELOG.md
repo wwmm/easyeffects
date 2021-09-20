@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [6.1.2]
+
+### Added
+
+- Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the
+  built-in PipeWire session manager. More information at https://github.com/wwmm/easyeffects/issues/1144
+
 ## [6.1.1]
 
 ### Added
