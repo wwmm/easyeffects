@@ -119,29 +119,23 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   show_blocklisted_apps->signal_state_set().connect(
       [=, this](const auto& state) {
+        players_model->remove_all();
+
+        listview_players->set_model(nullptr);
+
         if (state) {
-          players_model->remove_all();
-
-          listview_players->set_model(nullptr);
-
           for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             players_model->append(all_players_model->get_item(n));
           }
-
-          listview_players->set_model(Gtk::NoSelection::create(players_model));
         } else {
-          players_model->remove_all();
-
-          listview_players->set_model(nullptr);
-
           for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
             if (const auto& item = all_players_model->get_item(n); !app_is_blocklisted(item->info.name)) {
               players_model->append(item);
             }
           }
-
-          listview_players->set_model(Gtk::NoSelection::create(players_model));
         }
+
+        listview_players->set_model(Gtk::NoSelection::create(players_model));
 
         return false;
       },
@@ -669,7 +663,8 @@ void EffectsBaseUi::setup_listview_players() {
             enabled_app_list.insert_or_assign(holder->info.id, state);
           }
 
-          holder->info_updated.emit();
+          // no need to trigger an info_updated signal here because
+          // Pipewire will do it on stream connection/disconnection
 
           return false;
         },
@@ -805,6 +800,8 @@ void EffectsBaseUi::setup_listview_players() {
       mute->set_active(holder->info.mute);
 
       pointer_connection_mute->unblock();
+
+      holder->scheduled_update = false;
     };
 
     // update the app info ui for the very first time,
@@ -918,7 +915,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
       // enabled switch state will be updated in holder info_updated signal handler
 
-      holder->info_updated.emit();
+      Glib::signal_idle().connect_once([=] { holder->info_updated.emit(); });
     }
   });
 
@@ -1354,7 +1351,9 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
     return;
   }
 
-  all_players_model->append(NodeInfoHolder::create(node_info));
+  auto node_info_holder = NodeInfoHolder::create(node_info);
+
+  all_players_model->append(node_info_holder);
 
   // Blocklist check
 
@@ -1362,7 +1361,7 @@ void EffectsBaseUi::on_app_added(const uint id, const std::string name, const st
     return;
   }
 
-  players_model->append(NodeInfoHolder::create(node_info));
+  players_model->append(node_info_holder);
 }
 
 void EffectsBaseUi::on_app_changed(const uint id) {
@@ -1370,11 +1369,31 @@ void EffectsBaseUi::on_app_changed(const uint id) {
     if (auto* item = players_model->get_item(n).get(); item->info.id == id) {
       try {
         item->info = pm->node_map.at(id);
+
+        if (!item->scheduled_update) {
+          item->scheduled_update = true;
+
+          Glib::signal_idle().connect_once([=] { item->info_updated.emit(); });
+        }
       } catch (...) {
-        return;
       }
 
-      item->info_updated.emit();
+      break;
+    }
+  }
+
+  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
+    if (auto* item = all_players_model->get_item(n).get(); item->info.id == id) {
+      try {
+        item->info = pm->node_map.at(id);
+
+        if (!item->scheduled_update) {
+          item->scheduled_update = true;
+
+          Glib::signal_idle().connect_once([=] { item->info_updated.emit(); });
+        }
+      } catch (...) {
+      }
 
       break;
     }
