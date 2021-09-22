@@ -196,13 +196,20 @@ void SpectrumUi::init_frequency_axis() {
   }
 
   if (!spectrum_freqs.empty()) {
-    spectrum_x_axis = util::logspace(std::log10(static_cast<float>(settings->get_int("minimum-frequency"))),
-                                     std::log10(static_cast<float>(settings->get_int("maximum-frequency"))),
-                                     settings->get_int("n-points"));
+    const auto min_freq = static_cast<float>(settings->get_int("minimum-frequency"));
+    const auto max_freq = static_cast<float>(settings->get_int("maximum-frequency"));
 
-    spectrum_mag.resize(spectrum_x_axis.size());
+    if (min_freq > (max_freq - 100.0F)) {
+      return;
+    }
 
-    spectrum_bin_count.resize(spectrum_x_axis.size());
+    spectrum_x_axis = util::logspace(std::log10(min_freq), std::log10(max_freq), settings->get_int("n-points"));
+
+    const auto& x_axis_size = spectrum_x_axis.size();
+
+    spectrum_mag.resize(x_axis_size);
+
+    spectrum_bin_count.resize(x_axis_size);
   }
 }
 

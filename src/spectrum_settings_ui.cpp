@@ -124,13 +124,41 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   minimum_frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(minimum_frequency, "Hz"); },
                                              true);
+
   minimum_frequency->signal_input().connect(
-      [&, this](double& new_value) { return parse_spinbutton_input(minimum_frequency, new_value); }, true);
+      [&, this](double& min_freq) {
+        const auto parse_result = parse_spinbutton_input(minimum_frequency, min_freq);
+
+        if (parse_result != GTK_INPUT_ERROR) {
+          const auto& max_freq = static_cast<double>(settings->get_int("maximum-frequency"));
+
+          if (const auto valid_min_freq = max_freq - 100.0; min_freq > valid_min_freq) {
+            min_freq = valid_min_freq;
+          }
+        }
+
+        return parse_result;
+      },
+      true);
 
   maximum_frequency->signal_output().connect([&, this]() { return parse_spinbutton_output(maximum_frequency, "Hz"); },
                                              true);
+
   maximum_frequency->signal_input().connect(
-      [&, this](double& new_value) { return parse_spinbutton_input(maximum_frequency, new_value); }, true);
+      [&, this](double& max_freq) {
+        const auto parse_result = parse_spinbutton_input(maximum_frequency, max_freq);
+
+        if (parse_spinbutton_input(maximum_frequency, max_freq) != GTK_INPUT_ERROR) {
+          const auto& min_freq = static_cast<double>(settings->get_int("minimum-frequency"));
+
+          if (const auto valid_max_freq = min_freq + 100.0; max_freq < valid_max_freq) {
+            max_freq = valid_max_freq;
+          }
+        }
+
+        return parse_result;
+      },
+      true);
 
   settings->bind("show", show, "active");
   settings->bind("fill", fill, "active");
