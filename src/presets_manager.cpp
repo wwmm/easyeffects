@@ -223,8 +223,6 @@ auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Gli
 auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring> {
   std::vector<Glib::ustring> names;
 
-  const std::string json_ext = ".json";
-
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {

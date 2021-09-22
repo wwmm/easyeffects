@@ -394,10 +394,8 @@ void Convolver::setup_zita() {
     return;
   }
 
-  int ret = 0;
   const uint max_convolution_size = kernel_L.size();
   const uint buffer_size = get_zita_buffer_size();
-  const float density = 0.0F;
 
   if (conv == nullptr) {
     conv = new Convproc();
@@ -409,7 +407,7 @@ void Convolver::setup_zita() {
 
   conv->set_options(0);
 
-  ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, density);
+  int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
 
   if (ret != 0) {
     util::warning(log_tag + name + " can't initialise zita-convolver engine: " + std::to_string(ret));

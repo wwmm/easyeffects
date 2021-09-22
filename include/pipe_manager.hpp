@@ -169,7 +169,7 @@ class PipeManager {
   auto operator=(const PipeManager&&) -> PipeManager& = delete;
   ~PipeManager();
 
-  const std::string log_tag = "pipe_manager: ";
+  inline static const std::string log_tag = "pipe_manager: ";
 
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;

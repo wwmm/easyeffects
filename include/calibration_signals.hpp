@@ -52,7 +52,7 @@ class CalibrationSignals {
   void set_volume(const double& value) const;
 
  private:
-  const std::string log_tag = "calibration_signals: ";
+  inline static const std::string log_tag = "calibration_signals: ";
 
   GstBus* bus = nullptr;
 };

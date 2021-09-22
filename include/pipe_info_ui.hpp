@@ -44,7 +44,7 @@ class PipeInfoUi : public Gtk::Box {
   static auto add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi*;
 
  private:
-  const std::string log_tag = "pipe_info: ";
+  inline static const std::string log_tag = "pipe_info: ";
 
   PipeManager* pm = nullptr;
 

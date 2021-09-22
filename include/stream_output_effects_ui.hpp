@@ -40,7 +40,7 @@ class StreamOutputEffectsUi : public Gtk::Box, public EffectsBaseUi {
       -> StreamOutputEffectsUi*;
 
  protected:
-  const std::string log_tag = "soe_ui: ";
+  inline static const std::string log_tag = "soe_ui: ";
 
  private:
   StreamOutputEffects* soe = nullptr;

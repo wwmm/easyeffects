@@ -79,7 +79,7 @@ class TestSignals {
   auto white_noise() -> float;
 
  private:
-  const std::string log_tag = "test signals: ";
+  inline static const std::string log_tag = "test signals: ";
 
   PipeManager* pm = nullptr;
 
