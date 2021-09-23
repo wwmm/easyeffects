@@ -44,7 +44,7 @@ class CalibrationUi : public Gtk::Window {
   void set_input_node_id(const uint& id);
 
  private:
-  const std::string log_tag = "calibration_ui: ";
+  inline static const std::string log_tag = "calibration_ui: ";
 
   Gtk::Stack* stack = nullptr;
   Gtk::DrawingArea* spectrum = nullptr;

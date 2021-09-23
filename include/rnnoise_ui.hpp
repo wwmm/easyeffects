@@ -41,7 +41,7 @@ class RNNoiseUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  const std::string log_tag = "rnnoise_ui: ";
+  inline static const std::string log_tag = "rnnoise_ui: ";
 
   const std::string rnnn_ext = ".rnnn";
 

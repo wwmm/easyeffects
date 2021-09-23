@@ -58,7 +58,7 @@ class Application : public Gtk::Application {
   void on_activate() override;
 
  private:
-  const std::string log_tag = "application: ";
+  inline static const std::string log_tag = "application: ";
 
   bool running_as_service = false;
 

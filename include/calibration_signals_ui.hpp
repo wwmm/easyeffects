@@ -40,7 +40,7 @@ class CalibrationSignalsUi : public Gtk::Box {
   std::unique_ptr<CalibrationSignals> cs;
 
  private:
-  const std::string log_tag = "calibration_signals_ui: ";
+  inline static const std::string log_tag = "calibration_signals_ui: ";
 
   Gtk::Switch* enable = nullptr;
   Gtk::Scale* volume = nullptr;

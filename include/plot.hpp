@@ -67,7 +67,7 @@ class Plot {
   void set_y_unit(const Glib::ustring& value);
 
  private:
-  const std::string log_tag = "plot: ";
+  inline static const std::string log_tag = "plot: ";
 
   Gtk::DrawingArea* da = nullptr;
 

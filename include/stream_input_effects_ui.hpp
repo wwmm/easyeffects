@@ -40,7 +40,7 @@ class StreamInputEffectsUi : public Gtk::Box, public EffectsBaseUi {
       -> StreamInputEffectsUi*;
 
  protected:
-  const std::string log_tag = "sie_ui: ";
+  inline static const std::string log_tag = "sie_ui: ";
 
  private:
   StreamInputEffects* sie = nullptr;

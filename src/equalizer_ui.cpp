@@ -390,11 +390,10 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     if (split_mode) {
       // split channels mode
 
-      connections_bands.emplace_back(reset_frequency->signal_clicked().connect(
-          [=]() { cfg->reset(bandn + "-frequency"); }));
+      connections_bands.emplace_back(
+          reset_frequency->signal_clicked().connect([=]() { cfg->reset(bandn + "-frequency"); }));
 
-      connections_bands.emplace_back(reset_quality->signal_clicked().connect(
-          [=]() { cfg->reset(bandn + "-q"); }));
+      connections_bands.emplace_back(reset_quality->signal_clicked().connect([=]() { cfg->reset(bandn + "-q"); }));
     } else {
       // unified mode
 
@@ -403,37 +402,29 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
          They have to be done before the bindings for the left channel.
        */
 
-      connections_bands.emplace_back(band_scale->signal_value_changed().connect([=, this]() {
-        settings_right->set_double(bandn + "-gain", band_scale->get_value());
-      }));
+      connections_bands.emplace_back(band_scale->signal_value_changed().connect(
+          [=, this]() { settings_right->set_double(bandn + "-gain", band_scale->get_value()); }));
 
-      connections_bands.emplace_back(band_frequency->signal_value_changed().connect([=, this]() {
-        settings_right->set_double(bandn + "-frequency", band_frequency->get_value());
-      }));
+      connections_bands.emplace_back(band_frequency->signal_value_changed().connect(
+          [=, this]() { settings_right->set_double(bandn + "-frequency", band_frequency->get_value()); }));
 
-      connections_bands.emplace_back(band_quality->signal_value_changed().connect([=, this]() {
-        settings_right->set_double(bandn + "-q", band_quality->get_value());
-      }));
+      connections_bands.emplace_back(band_quality->signal_value_changed().connect(
+          [=, this]() { settings_right->set_double(bandn + "-q", band_quality->get_value()); }));
 
-      connections_bands.emplace_back(band_type->signal_changed().connect([=, this]() {
-        settings_right->set_enum(bandn + "-type", band_type->get_active_row_number());
-      }));
+      connections_bands.emplace_back(band_type->signal_changed().connect(
+          [=, this]() { settings_right->set_enum(bandn + "-type", band_type->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_mode->signal_changed().connect([=, this]() {
-        settings_right->set_enum(bandn + "-mode", band_mode->get_active_row_number());
-      }));
+      connections_bands.emplace_back(band_mode->signal_changed().connect(
+          [=, this]() { settings_right->set_enum(bandn + "-mode", band_mode->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_slope->signal_changed().connect([=, this]() {
-        settings_right->set_enum(bandn + "-slope", band_slope->get_active_row_number());
-      }));
+      connections_bands.emplace_back(band_slope->signal_changed().connect(
+          [=, this]() { settings_right->set_enum(bandn + "-slope", band_slope->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_solo->signal_toggled().connect([=, this]() {
-        settings_right->set_boolean(bandn + "-solo", band_solo->get_active());
-      }));
+      connections_bands.emplace_back(band_solo->signal_toggled().connect(
+          [=, this]() { settings_right->set_boolean(bandn + "-solo", band_solo->get_active()); }));
 
-      connections_bands.emplace_back(band_mute->signal_toggled().connect([=, this]() {
-        settings_right->set_boolean(bandn + "-mute", band_mute->get_active());
-      }));
+      connections_bands.emplace_back(band_mute->signal_toggled().connect(
+          [=, this]() { settings_right->set_boolean(bandn + "-mute", band_mute->get_active()); }));
 
       // Left channel
 
@@ -464,17 +455,15 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     cfg->bind(bandn + "-solo", band_solo, "active");
     cfg->bind(bandn + "-mute", band_mute, "active");
 
-    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-type").c_str(), band_type->gobj(),
-                                 "active", G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int,
-                                 int_to_bandtype_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-type").c_str(), band_type->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, bandtype_enum_to_int, int_to_bandtype_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-mode").c_str(), band_mode->gobj(),
-                                 "active", G_SETTINGS_BIND_DEFAULT, bandmode_enum_to_int,
-                                 int_to_bandmode_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-mode").c_str(), band_mode->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, bandmode_enum_to_int, int_to_bandmode_enum, nullptr, nullptr);
 
-    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-slope").c_str(), band_slope->gobj(),
-                                 "active", G_SETTINGS_BIND_DEFAULT, bandslope_enum_to_int,
-                                 int_to_bandslope_enum, nullptr, nullptr);
+    g_settings_bind_with_mapping(cfg->gobj(), std::string(bandn + "-slope").c_str(), band_slope->gobj(), "active",
+                                 G_SETTINGS_BIND_DEFAULT, bandslope_enum_to_int, int_to_bandslope_enum, nullptr,
+                                 nullptr);
 
     bands_box->append(*band_box);
   }
@@ -497,8 +486,9 @@ void EqualizerUi::on_flat_response() {
 }
 
 void EqualizerUi::on_calculate_frequencies() {
-  const double min_freq = 20.0;
-  const double max_freq = 20000.0;
+  static const double min_freq = 20.0;
+  static const double max_freq = 20000.0;
+
   double freq0 = min_freq;
   double freq1 = 0.0;
 
@@ -610,7 +600,7 @@ void EqualizerUi::on_import_apo_preset_clicked() {
 auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand& filter) -> bool {
   std::smatch matches;
 
-  const auto i = std::regex::icase;
+  static const auto i = std::regex::icase;
 
   // get filter type
 

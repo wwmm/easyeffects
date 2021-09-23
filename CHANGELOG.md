@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Prevented a case in which Spectrum were crashing.
+
 ## [6.1.2]
 
 ### Added

@@ -49,7 +49,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  const std::string log_tag = "convolver_ui: ";
+  inline static const std::string log_tag = "convolver_ui: ";
 
   const std::string irs_ext = ".irs";
 

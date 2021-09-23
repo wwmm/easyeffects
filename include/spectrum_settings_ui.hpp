@@ -39,7 +39,7 @@ class SpectrumSettingsUi : public Gtk::Box {
   static void add_to_stack(Gtk::Stack* stack, Application* app);
 
  private:
-  const std::string log_tag = "spectrum_settings_ui: ";
+  inline static const std::string log_tag = "spectrum_settings_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

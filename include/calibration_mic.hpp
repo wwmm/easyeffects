@@ -54,7 +54,7 @@ class CalibrationMic {
   void set_input_node_id(const uint& id) const;
 
  private:
-  const std::string log_tag = "calibration_mic: ";
+  inline static const std::string log_tag = "calibration_mic: ";
 
   GstBus* bus = nullptr;
 };

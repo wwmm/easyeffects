@@ -40,7 +40,7 @@ class SpectrumUi : public Gtk::DrawingArea {
   void on_new_spectrum(uint rate, uint n_bands, std::vector<float> magnitudes);
 
  private:
-  const std::string log_tag = "spectrum_ui: ";
+  inline static const std::string log_tag = "spectrum_ui: ";
 
   Glib::RefPtr<Gio::Settings> settings;
 

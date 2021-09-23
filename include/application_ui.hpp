@@ -47,7 +47,7 @@ class ApplicationUi : public Gtk::ApplicationWindow {
   inline static Glib::RefPtr<Gtk::IconTheme> icon_theme = nullptr;
 
  private:
-  const std::string log_tag = "application_ui: ";
+  inline static const std::string log_tag = "application_ui: ";
 
   Application* app;
 

@@ -72,7 +72,7 @@ class EffectsBaseUi {
  protected:
   EffectsBase* effects_base = nullptr;
 
-  const std::string log_tag = "effects_base_ui: ";
+  inline static const std::string log_tag = "effects_base_ui: ";
 
   std::string schema;
 
