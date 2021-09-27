@@ -22,6 +22,7 @@
 
 #include <glibmm.h>
 #include <pipewire/extensions/metadata.h>
+#include <pipewire/impl.h>
 #include <pipewire/pipewire.h>
 #include <sigc++/sigc++.h>
 #include <spa/param/audio/format-utils.h>
@@ -162,7 +163,7 @@ struct DeviceInfo {
 
 class PipeManager {
  public:
-  PipeManager();
+  PipeManager(const bool& lb_mode);
   PipeManager(const PipeManager&) = delete;
   auto operator=(const PipeManager&) -> PipeManager& = delete;
   PipeManager(const PipeManager&&) = delete;
@@ -171,10 +172,14 @@ class PipeManager {
 
   inline static const std::string log_tag = "pipe_manager: ";
 
+  const bool loopback_mode;
+  bool use_output_loopback = false;
+
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;
   pw_registry* registry = nullptr;
   pw_metadata* metadata = nullptr;
+  pw_impl_module* loopback_module = nullptr;
 
   spa_hook metadata_listener{};
 
@@ -190,7 +195,13 @@ class PipeManager {
 
   std::vector<DeviceInfo> list_devices;
 
-  NodeInfo pe_sink_node, pe_source_node;
+  NodeInfo ee_sink_node, ee_source_node, ee_loopback_sink, ee_loopback_output;
+
+  const std::string ee_source_name = "easyeffects_source";
+  const std::string ee_sink_name = "easyeffects_sink";
+
+  const std::string loopback_output_name = "easyeffects_loopback_output";
+  const std::string loopback_sink_name = "easyeffects_loopback_sink";
 
   NodeInfo default_output_device, default_input_device;
 
@@ -218,13 +229,13 @@ class PipeManager {
 
   auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
 
-  void connect_stream_output(const uint& id, const std::string& media_class) const;
+  void connect_stream_output(const uint& id) const;
 
-  void connect_stream_input(const uint& id, const std::string& media_class) const;
+  void connect_stream_input(const uint& id) const;
 
-  void disconnect_stream_output(const uint& id, const std::string& media_class) const;
+  void disconnect_stream_output(const uint& id) const;
 
-  void disconnect_stream_input(const uint& id, const std::string& media_class) const;
+  void disconnect_stream_input(const uint& id) const;
 
   static void set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value);
 
@@ -255,8 +266,8 @@ class PipeManager {
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
-  sigc::signal<void(const uint, const std::string, const std::string)> stream_output_added;
-  sigc::signal<void(const uint, const std::string, const std::string)> stream_input_added;
+  sigc::signal<void(const uint, const std::string)> stream_output_added;
+  sigc::signal<void(const uint, const std::string)> stream_input_added;
   sigc::signal<void(const uint)> stream_output_changed;
   sigc::signal<void(const uint)> stream_input_changed;
   sigc::signal<void(const uint)> stream_output_removed;
@@ -279,6 +290,8 @@ class PipeManager {
 
   sigc::signal<void(LinkInfo)> link_changed;
 
+  sigc::signal<void()> loopback_mode_disabled;
+
  private:
   bool context_ready = false;
 
@@ -286,6 +299,8 @@ class PipeManager {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
+
+  void set_metadata_target_node(const uint& origin_id, const uint& target_id) const;
 };
 
 #endif

@@ -7,6 +7,9 @@
         <key name="process-all-inputs" type="b">
             <default>false</default>
         </key>
+        <key name="loopback-mode" type="b">
+            <default>false</default>
+        </key>
         <key name="use-dark-theme" type="b">
             <default>false</default>
         </key>

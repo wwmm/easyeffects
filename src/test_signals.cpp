@@ -111,7 +111,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
   auto* props_out_left = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
+  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_FL");
   pw_properties_set(props_out_left, "audio.channel", "FL");
 
   pf_data.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
@@ -122,7 +122,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
   auto* props_out_right = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
+  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_FR");
   pw_properties_set(props_out_right, "audio.channel", "FR");
 
   pf_data.out_right = static_cast<port*>(pw_filter_add_port(
@@ -161,7 +161,7 @@ void TestSignals::set_state(const bool& state) {
   sine_phase = 0.0F;
 
   if (state) {
-    for (const auto& link : pm->link_nodes(node_id, pm->pe_sink_node.id, false, false)) {
+    for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false, false)) {
       list_proxies.emplace_back(link);
     }
   } else {

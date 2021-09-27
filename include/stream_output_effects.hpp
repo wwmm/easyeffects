@@ -40,9 +40,11 @@ class StreamOutputEffects : public EffectsBase {
 
   void disconnect_filters();
 
-  void on_app_added(const uint id, const std::string name, const std::string media_class);
+  void on_app_added(const uint id, const std::string name);
 
   void on_link_changed(LinkInfo link_info);
+
+  void on_loopback_mode_disabled();
 };
 
 #endif

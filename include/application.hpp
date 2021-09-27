@@ -39,6 +39,8 @@ class Application : public Gtk::Application {
   auto operator=(const Application&&) -> Application& = delete;
   ~Application() override;
 
+  inline static bool loopback_mode = false;
+
   static auto create() -> Glib::RefPtr<Application>;
   Glib::RefPtr<Gio::Settings> settings;
   Glib::RefPtr<Gio::Settings> soe_settings;

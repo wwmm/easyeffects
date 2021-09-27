@@ -154,8 +154,6 @@ void on_destroy_node_proxy(void* data) {
 
   pd->pm->node_map.erase(pd->nd_info.id);
 
-  util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
-
   auto* pm = pd->pm;
 
   if (pd->nd_info.media_class == "Audio/Source") {
@@ -175,12 +173,54 @@ void on_destroy_node_proxy(void* data) {
 
     Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
   }
+
+  util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 }
 
 void on_node_info(void* object, const struct pw_node_info* info) {
   auto* nd = static_cast<node_data*>(object);
 
   if (nd->pm->node_map.contains(info->id)) {
+    if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
+      // This is a workaround for issue #1128
+
+      /* Sometimes monitor streams like Pavucontrol can't be blocklisted inside on_registry_global
+         because PipeWire sets localized app name in PW_KEY_NODE_NAME or PW_KEY_STREAM_MONITOR is
+         empty and set afterwards.
+         Therefore we check here the PW_KEY_STREAM_MONITOR of already added nodes inside the map
+         and remove them accordingly.
+      */
+
+      spa_hook_remove(&nd->proxy_listener);
+
+      nd->pm->node_map.erase(nd->nd_info.id);
+
+      auto* pm = nd->pm;
+
+      if (nd->nd_info.media_class == "Audio/Source") {
+        auto nd_info_copy = nd->nd_info;
+
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
+      } else if (nd->nd_info.media_class == "Audio/Sink") {
+        auto nd_info_copy = nd->nd_info;
+
+        Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
+      } else if (nd->nd_info.media_class == "Stream/Output/Audio") {
+        auto node_id = nd->nd_info.id;
+
+        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_removed.emit(node_id); });
+      } else if (nd->nd_info.media_class == "Stream/Input/Audio") {
+        auto node_id = nd->nd_info.id;
+
+        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
+      }
+
+      util::debug(nd->pm->log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
+                  " was removed");
+
+      return;
+    }
+
     nd->nd_info.state = info->state;
     nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
     nd->nd_info.n_output_ports = static_cast<int>(info->n_output_ports);
@@ -245,7 +285,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
-    if (nd->nd_info.media_class == "Stream/Output/Audio") {
+    if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_output_name) {
       auto node_id = nd->nd_info.id;
 
       Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
@@ -401,7 +441,7 @@ void on_node_event_param(void* object,
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      if (nd->nd_info.media_class == "Stream/Output/Audio") {
+      if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_output_name) {
         auto node_id = nd->nd_info.id;
 
         Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
@@ -412,16 +452,16 @@ void on_node_event_param(void* object,
       } else if (nd->nd_info.media_class == "Audio/Source/Virtual") {
         auto nd_info_copy = nd->nd_info;
 
-        if (nd_info_copy.id == pm->pe_source_node.id) {
-          pm->pe_source_node = nd_info_copy;
+        if (nd_info_copy.id == pm->ee_source_node.id) {
+          pm->ee_source_node = nd_info_copy;
         }
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == "Audio/Sink") {
         auto nd_info_copy = nd->nd_info;
 
-        if (nd_info_copy.id == pm->pe_sink_node.id) {
-          pm->pe_sink_node = nd_info_copy;
+        if (nd_info_copy.id == pm->ee_sink_node.id) {
+          pm->ee_sink_node = nd_info_copy;
         }
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
@@ -650,7 +690,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == v.data()) {
-        if (node.name == "easyeffects_sink") {
+        if (node.name == pm->ee_sink_name || node.name == pm->loopback_output_name) {
           pm->default_output_device.id = SPA_ID_INVALID;
 
           return 0;
@@ -674,7 +714,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == v.data()) {
-        if (node.name == "easyeffects_source") {
+        if (node.name == pm->ee_source_name) {
           pm->default_input_device.id = SPA_ID_INVALID;
 
           return 0;
@@ -788,8 +828,11 @@ void on_registry_global(void* data,
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       const std::string media_class = key_media_class;
 
-      if (media_class == "Audio/Sink" || media_class == "Audio/Source" || media_class == "Audio/Source/Virtual" ||
-          media_class == "Stream/Output/Audio" || media_class == "Stream/Input/Audio") {
+      static const auto allowed_media_class = {"Stream/Output/Audio", "Stream/Input/Audio", "Audio/Sink",
+                                               "Audio/Source", "Audio/Source/Virtual"};
+
+      if (std::any_of(allowed_media_class.begin(), allowed_media_class.end(),
+                      [&](const auto& str) { return str == media_class; })) {
         const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
         if (node_name == nullptr) {
@@ -833,25 +876,28 @@ void on_registry_global(void* data,
 
         pm->node_map.insert_or_assign(pd->nd_info.id, pd->nd_info);
 
-        util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
+        static const auto ee_nodes = {pm->ee_sink_name, pm->ee_source_name, pm->loopback_sink_name,
+                                      pm->loopback_output_name};
 
-        // sometimes PipeWire destroys the pointer before signal_idle is called,
-        // therefore we make a copy of NodeInfo
+        if (!std::any_of(ee_nodes.begin(), ee_nodes.end(), [&](const auto& str) { return str == name; })) {
+          // sometimes PipeWire destroys the pointer before signal_idle is called,
+          // therefore we make a copy of NodeInfo
 
-        if (media_class == "Audio/Source" && name != "easyeffects_source") {
-          auto nd_info_copy = pd->nd_info;
+          if (media_class == "Audio/Source") {
+            auto nd_info_copy = pd->nd_info;
 
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
-        } else if (media_class == "Audio/Sink" && name != "easyeffects_sink") {
-          auto nd_info_copy = pd->nd_info;
+            Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
+          } else if (media_class == "Audio/Sink") {
+            auto nd_info_copy = pd->nd_info;
 
-          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
-        } else if (media_class == "Stream/Output/Audio") {
-          Glib::signal_idle().connect_once(
-              [pm, id, name, media_class] { pm->stream_output_added.emit(id, name, media_class); });
-        } else if (media_class == "Stream/Input/Audio") {
-          Glib::signal_idle().connect_once(
-              [pm, id, name, media_class] { pm->stream_input_added.emit(id, name, media_class); });
+            Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
+          } else if (media_class == "Stream/Output/Audio") {
+            Glib::signal_idle().connect_once([pm, id, name] { pm->stream_output_added.emit(id, name); });
+          } else if (media_class == "Stream/Input/Audio") {
+            Glib::signal_idle().connect_once([pm, id, name] { pm->stream_input_added.emit(id, name); });
+          }
+
+          util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
         }
       }
     }
@@ -884,6 +930,20 @@ void on_registry_global(void* data,
 
       util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
+
+      if (pm->use_output_loopback && output_node.name == pm->loopback_output_name &&
+          (input_node.name == pm->ee_sink_name || input_node.name == pm->loopback_sink_name)) {
+        // disabling loopback mode due to a bad configuration made outside EasyEffects
+
+        pm->use_output_loopback = false;
+
+        Glib::signal_idle().connect_once([pm] { pm->loopback_mode_disabled.emit(); });
+
+        util::warning(pm->log_tag + pm->loopback_output_name +
+                      " connected to a wrong sink! The loopback mode has been disabled." +
+                      " Please connect the loopback output stream only to the output device and" +
+                      " restart EasyEffects to re-enable it.");
+      }
     } catch (...) {
     }
 
@@ -1057,7 +1117,7 @@ const struct pw_registry_events registry_events = {
 
 }  // namespace
 
-PipeManager::PipeManager() {
+PipeManager::PipeManager(const bool& lb_mode) : loopback_mode(lb_mode) {
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);
@@ -1109,11 +1169,11 @@ PipeManager::PipeManager() {
 
   pw_core_add_listener(core, &core_listener, &core_events, this);
 
-  // loading our sink
+  // loading EasyEffects sink
 
   pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_sink, PW_KEY_NODE_NAME, "easyeffects_sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_NAME, ee_sink_name.c_str());
   pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "EasyEffects Sink");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, "Audio/Sink");
@@ -1123,11 +1183,11 @@ PipeManager::PipeManager() {
   proxy_stream_output_sink = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
 
-  // loading our source
+  // loading EasyEffects source
 
   pw_properties* props_source = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_source, PW_KEY_NODE_NAME, "easyeffects_source");
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, ee_source_name.c_str());
   pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "EasyEffects Source");
   pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, "Audio/Source/Virtual");
@@ -1137,19 +1197,72 @@ PipeManager::PipeManager() {
   proxy_stream_input_source = static_cast<pw_proxy*>(
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
+  if (loopback_mode) {
+    auto props_lb_capture = std::string();
+    auto props_loopback = std::string();
+
+    props_lb_capture += "{ ";
+    props_lb_capture += std::string(PW_KEY_NODE_NAME) + " = " + loopback_sink_name + " ";
+    props_lb_capture += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Loopback Sink\" ";
+    props_lb_capture += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Loopback Sink\" ";
+    props_lb_capture += std::string(PW_KEY_MEDIA_CLASS) + " = Audio/Sink ";
+    props_lb_capture += std::string(PW_KEY_NODE_AUTOCONNECT) + " = false ";
+    props_lb_capture += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
+    props_lb_capture += std::string(PW_KEY_STREAM_DONT_REMIX) + " = true ";
+    props_lb_capture += "}";
+
+    props_loopback += "{ ";
+    props_loopback += "audio.position = \"FL,FR\" ";
+    props_loopback += std::string(PW_KEY_NODE_NAME) + " = " + loopback_output_name + " ";
+    props_loopback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
+    props_loopback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
+    props_loopback += std::string(PW_KEY_MEDIA_CLASS) + " = Stream/Output/Audio ";
+    props_loopback += "capture.props = " + props_lb_capture + " ";
+    props_loopback += "}";
+
+    // loading EasyEffects Channel Remapping Loopback
+
+    loopback_module = pw_context_load_module(context, "libpipewire-module-loopback", props_loopback.c_str(), nullptr);
+
+    if (loopback_module == nullptr) {
+      util::warning(log_tag + "Loopback module initialization failed with argument " + props_loopback);
+
+      use_output_loopback = false;
+    } else {
+      util::debug(log_tag + "Loopback module successfully initialized with argument " + props_loopback);
+
+      use_output_loopback = true;
+    }
+  }
+
   sync_wait_unlock();
 
-  while (pe_sink_node.id == SPA_ID_INVALID || pe_source_node.id == SPA_ID_INVALID) {
+  do {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
     for (const auto& [id, node] : node_map) {
-      if (node.name == "easyeffects_sink") {
-        pe_sink_node = node;
-      } else if (node.name == "easyeffects_source") {
-        pe_source_node = node;
+      if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
+        ee_sink_node = node;
+
+        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(id));
+      } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
+        ee_source_node = node;
+
+        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(id));
+      } else if (use_output_loopback) {
+        if (ee_loopback_sink.name.empty() && node.name == loopback_sink_name) {
+          ee_loopback_sink = node;
+
+          util::debug(log_tag + loopback_sink_name + " successfully retrieved with id " + std::to_string(id));
+        } else if (ee_loopback_output.name.empty() && node.name == loopback_output_name) {
+          ee_loopback_output = node;
+
+          util::debug(log_tag + loopback_output_name + " successfully retrieved with id " + std::to_string(id));
+        }
       }
     }
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-  }
+  } while ((ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID) ||
+           (use_output_loopback && (ee_loopback_sink.id == SPA_ID_INVALID || ee_loopback_output.id == SPA_ID_INVALID)));
 }
 
 PipeManager::~PipeManager() {
@@ -1161,6 +1274,10 @@ PipeManager::~PipeManager() {
 
   if (metadata != nullptr) {
     pw_proxy_destroy((struct pw_proxy*)metadata);
+  }
+
+  if (loopback_module != nullptr) {
+    pw_impl_module_destroy(loopback_module);
   }
 
   pw_proxy_destroy(proxy_stream_output_sink);
@@ -1184,13 +1301,13 @@ PipeManager::~PipeManager() {
 auto PipeManager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {
   if (media_class == "Stream/Output/Audio") {
     for (const auto& link : list_links) {
-      if (link.output_node_id == id && link.input_node_id == pe_sink_node.id) {
+      if (link.output_node_id == id && link.input_node_id == ee_sink_node.id) {
         return true;
       }
     }
   } else if (media_class == "Stream/Input/Audio") {
     for (const auto& link : list_links) {
-      if (link.output_node_id == pe_source_node.id && link.input_node_id == id) {
+      if (link.output_node_id == ee_source_node.id && link.input_node_id == id) {
         return true;
       }
     }
@@ -1199,44 +1316,28 @@ auto PipeManager::stream_is_connected(const uint& id, const std::string& media_c
   return false;
 }
 
-void PipeManager::connect_stream_output(const uint& id, const std::string& media_class) const {
-  if (media_class == "Stream/Output/Audio") {
-    lock();
-
-    pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(pe_sink_node.id).c_str());
-
-    sync_wait_unlock();
-  }
+void PipeManager::connect_stream_output(const uint& id) const {
+  set_metadata_target_node(id, ee_sink_node.id);
 }
 
-void PipeManager::disconnect_stream_output(const uint& id, const std::string& media_class) const {
-  if (media_class == "Stream/Output/Audio") {
-    lock();
-
-    pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(default_output_device.id).c_str());
-
-    sync_wait_unlock();
-  }
+void PipeManager::disconnect_stream_output(const uint& id) const {
+  set_metadata_target_node(id, default_output_device.id);
 }
 
-void PipeManager::connect_stream_input(const uint& id, const std::string& media_class) const {
-  if (media_class == "Stream/Input/Audio") {
-    lock();
-
-    pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(pe_source_node.id).c_str());
-
-    sync_wait_unlock();
-  }
+void PipeManager::connect_stream_input(const uint& id) const {
+  set_metadata_target_node(id, ee_source_node.id);
 }
 
-void PipeManager::disconnect_stream_input(const uint& id, const std::string& media_class) const {
-  if (media_class == "Stream/Input/Audio") {
-    lock();
+void PipeManager::disconnect_stream_input(const uint& id) const {
+  set_metadata_target_node(id, default_input_device.id);
+}
 
-    pw_metadata_set_property(metadata, id, "target.node", "Spa:Id", std::to_string(default_input_device.id).c_str());
+void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& target_id) const {
+  lock();
 
-    sync_wait_unlock();
-  }
+  pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", std::to_string(target_id).c_str());
+
+  sync_wait_unlock();
 }
 
 void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value) {

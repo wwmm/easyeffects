@@ -114,7 +114,9 @@ void Application::on_startup() {
 
   create_actions();
 
-  pm = std::make_unique<PipeManager>();
+  loopback_mode = settings->get_boolean("loopback-mode");
+
+  pm = std::make_unique<PipeManager>(loopback_mode);
   soe = std::make_unique<StreamOutputEffects>(pm.get());
   sie = std::make_unique<StreamInputEffects>(pm.get());
 
@@ -127,7 +129,7 @@ void Application::on_startup() {
 
     if (soe_settings->get_boolean("use-default-output-device")) {
       /*
-        Depending on the hardware headphones can cause a node recreation hwere the id and the name are kept.
+        Depending on the hardware headphones can cause a node recreation here the id and the name are kept.
         So we clear the key to force the callbacks to be called
       */
 

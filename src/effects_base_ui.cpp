@@ -842,17 +842,17 @@ void EffectsBaseUi::setup_listview_players() {
 
 void EffectsBaseUi::connect_stream(const uint& id, const std::string& media_class) {
   if (media_class == "Stream/Output/Audio") {
-    pm->connect_stream_output(id, media_class);
+    pm->connect_stream_output(id);
   } else if (media_class == "Stream/Input/Audio") {
-    pm->connect_stream_input(id, media_class);
+    pm->connect_stream_input(id);
   }
 }
 
 void EffectsBaseUi::disconnect_stream(const uint& id, const std::string& media_class) {
   if (media_class == "Stream/Output/Audio") {
-    pm->disconnect_stream_output(id, media_class);
+    pm->disconnect_stream_output(id);
   } else if (media_class == "Stream/Input/Audio") {
-    pm->disconnect_stream_input(id, media_class);
+    pm->disconnect_stream_input(id);
   }
 }
 
@@ -1334,7 +1334,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 }
 
-void EffectsBaseUi::on_app_added(const uint id, const std::string name, const std::string media_class) {
+void EffectsBaseUi::on_app_added(const uint id, const std::string name) {
   // do not add the same stream twice
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {

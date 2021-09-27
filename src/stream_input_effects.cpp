@@ -103,21 +103,21 @@ StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 }
 
-void StreamInputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
+void StreamInputEffects::on_app_added(const uint id, const std::string name) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
   const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
   ;
 
   if (is_blocklisted) {
-    pm->disconnect_stream_input(id, media_class);
+    pm->disconnect_stream_input(id);
   } else if (global_settings->get_boolean("process-all-inputs")) {
-    pm->connect_stream_input(id, media_class);
+    pm->connect_stream_input(id);
   }
 }
 
 void StreamInputEffects::on_link_changed(LinkInfo link_info) {
-  if (pm->default_input_device.id == pm->pe_source_node.id) {
+  if (pm->default_input_device.id == pm->ee_source_node.id) {
     return;
   }
 
@@ -132,7 +132,7 @@ void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   auto want_to_play = false;
 
   for (const auto& link : pm->list_links) {
-    if (link.output_node_id == pm->pe_source_node.id) {
+    if (link.output_node_id == pm->ee_source_node.id) {
       if (link.state == PW_LINK_STATE_ACTIVE) {
         want_to_play = true;
 
@@ -210,7 +210,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum, output level meter and source node
 
-  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_source_node.id}) {
+  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->ee_source_node.id}) {
     next_node_id = node_id;
 
     const auto& links = pm->link_nodes(prev_node_id, next_node_id);
@@ -270,7 +270,7 @@ void StreamInputEffects::set_bypass(const bool& state) {
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
-    for (const auto& link : pm->link_nodes(pm->pe_source_node.id, pm->output_device.id, false, false)) {
+    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, pm->output_device.id, false, false)) {
       list_proxies_listen_mic.emplace_back(link);
     }
   } else {
