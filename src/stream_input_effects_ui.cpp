@@ -40,8 +40,8 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
   for (const auto& [id, node] : pm->node_map) {
-    if (node.media_class == "Stream/Input/Audio") {
-      on_app_added(node.id, node.name, node.media_class);
+    if (node.media_class == pm->media_class_input_stream) {
+      on_app_added(node.id, node.name);
     }
   }
 
@@ -60,16 +60,16 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(sie->pm->source_changed.connect([&](auto nd_info) {
     // nd_info is a reference of a copy previously made
 
-    if (nd_info.id == sie->pm->pe_source_node.id) {
+    if (nd_info.id == sie->pm->ee_source_node.id) {
       const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                            static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F);
+                                            static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
 
       device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
     }
   }));
 
   const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                        static_cast<float>(sie->pm->pe_source_node.rate) * 0.001F);
+                                        static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
 
   device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }

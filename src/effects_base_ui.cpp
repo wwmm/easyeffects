@@ -841,18 +841,18 @@ void EffectsBaseUi::setup_listview_players() {
 }
 
 void EffectsBaseUi::connect_stream(const uint& id, const std::string& media_class) {
-  if (media_class == "Stream/Output/Audio") {
-    pm->connect_stream_output(id, media_class);
-  } else if (media_class == "Stream/Input/Audio") {
-    pm->connect_stream_input(id, media_class);
+  if (media_class == pm->media_class_output_stream) {
+    pm->connect_stream_output(id);
+  } else if (media_class == pm->media_class_input_stream) {
+    pm->connect_stream_input(id);
   }
 }
 
 void EffectsBaseUi::disconnect_stream(const uint& id, const std::string& media_class) {
-  if (media_class == "Stream/Output/Audio") {
-    pm->disconnect_stream_output(id, media_class);
-  } else if (media_class == "Stream/Input/Audio") {
-    pm->disconnect_stream_input(id, media_class);
+  if (media_class == pm->media_class_output_stream) {
+    pm->disconnect_stream_output(id);
+  } else if (media_class == pm->media_class_input_stream) {
+    pm->disconnect_stream_input(id);
   }
 }
 
@@ -1064,7 +1064,7 @@ void EffectsBaseUi::setup_listview_plugins() {
 
       const auto& list_size = list.size();
 
-      const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
+      static const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
 
       if (list_size > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
                                         [&](const auto& str) { return str == list.at(list_size - 1); })) {
@@ -1334,7 +1334,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 }
 
-void EffectsBaseUi::on_app_added(const uint id, const std::string name, const std::string media_class) {
+void EffectsBaseUi::on_app_added(const uint id, const std::string name) {
   // do not add the same stream twice
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {

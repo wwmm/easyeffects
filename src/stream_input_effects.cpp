@@ -30,13 +30,15 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
     const auto* input_device = settings->get_string("input-device").c_str();
 
-    for (const auto& [id, node] : pm->node_map) {
-      if (node.name == input_device) {
-        pm->input_device = node;
+    if (input_device != pm->ee_source_name) {
+      for (const auto& [id, node] : pm->node_map) {
+        if (node.name == input_device) {
+          pm->input_device = node;
 
-        found = true;
+          found = true;
 
-        break;
+          break;
+        }
       }
     }
 
@@ -47,7 +49,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
-  if (PULSE_SOURCE != nullptr) {
+  if (PULSE_SOURCE != nullptr && PULSE_SOURCE != pm->ee_source_name) {
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SOURCE) {
         pm->input_device = node;
@@ -64,7 +66,17 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   connect_filters();
 
-  settings->signal_changed("input-device").connect([&, this](const auto& key) {
+  auto reset_filter_connection = [=, this]() {
+    if (global_settings->get_boolean("bypass")) {
+      global_settings->set_boolean("bypass", false);
+
+      return;  // filter connected through update_bypass_state
+    }
+
+    set_bypass(false);
+  };
+
+  settings->signal_changed("input-device").connect([=, this](const auto& key) {
     const auto name = settings->get_string(key).raw();
 
     if (name.empty()) {
@@ -75,49 +87,36 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
       if (node.name == name) {
         pm->input_device = node;
 
-        disconnect_filters();
-
-        connect_filters();
+        reset_filter_connection();
 
         break;
       }
     }
   });
 
-  settings->signal_changed("plugins").connect([&, this](const auto& key) {
-    if (global_settings->get_boolean("bypass")) {
-      global_settings->set_boolean("bypass", false);
-
-      return;  // filter connected through update_bypass_state
-    }
-
-    disconnect_filters();
-
-    connect_filters();
-  });
+  settings->signal_changed("plugins").connect([=, this](const auto& key) { reset_filter_connection(); });
 }
 
 StreamInputEffects::~StreamInputEffects() {
-  util::debug(log_tag + "destroyed");
-
   disconnect_filters();
+
+  util::debug(log_tag + "destroyed");
 }
 
-void StreamInputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
+void StreamInputEffects::on_app_added(const uint id, const std::string name) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
   const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
-  ;
 
   if (is_blocklisted) {
-    pm->disconnect_stream_input(id, media_class);
+    pm->disconnect_stream_input(id);
   } else if (global_settings->get_boolean("process-all-inputs")) {
-    pm->connect_stream_input(id, media_class);
+    pm->connect_stream_input(id);
   }
 }
 
 void StreamInputEffects::on_link_changed(LinkInfo link_info) {
-  if (pm->default_input_device.id == pm->pe_source_node.id) {
+  if (pm->default_input_device.id == pm->ee_source_node.id) {
     return;
   }
 
@@ -132,7 +131,7 @@ void StreamInputEffects::on_link_changed(LinkInfo link_info) {
   auto want_to_play = false;
 
   for (const auto& link : pm->list_links) {
-    if (link.output_node_id == pm->pe_source_node.id) {
+    if (link.output_node_id == pm->ee_source_node.id) {
       if (link.state == PW_LINK_STATE_ACTIVE) {
         want_to_play = true;
 
@@ -210,7 +209,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum, output level meter and source node
 
-  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->pe_source_node.id}) {
+  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->ee_source_node.id}) {
     next_node_id = node_id;
 
     const auto& links = pm->link_nodes(prev_node_id, next_node_id);
@@ -270,7 +269,7 @@ void StreamInputEffects::set_bypass(const bool& state) {
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
-    for (const auto& link : pm->link_nodes(pm->pe_source_node.id, pm->output_device.id, false, false)) {
+    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, pm->output_device.id, false, false)) {
       list_proxies_listen_mic.emplace_back(link);
     }
   } else {
