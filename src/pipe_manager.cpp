@@ -1207,8 +1207,6 @@ PipeManager::PipeManager(const bool& lb_mode) : loopback_mode(lb_mode) {
     props_lb_capture += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Loopback Sink\" ";
     props_lb_capture += std::string(PW_KEY_MEDIA_CLASS) + " = Audio/Sink ";
     props_lb_capture += std::string(PW_KEY_NODE_AUTOCONNECT) + " = false ";
-    props_lb_capture += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
-    props_lb_capture += std::string(PW_KEY_STREAM_DONT_REMIX) + " = true ";
     props_lb_capture += "}";
 
     props_loopback += "{ ";
