@@ -1199,23 +1199,34 @@ PipeManager::PipeManager(const bool& lb_mode) : loopback_mode(lb_mode) {
 
   if (loopback_mode) {
     auto props_lb_capture = std::string();
+    auto props_lb_playback = std::string();
     auto props_loopback = std::string();
 
     props_lb_capture += "{ ";
+    props_lb_capture += "audio.position = \"FL,FR\" ";
     props_lb_capture += std::string(PW_KEY_NODE_NAME) + " = " + loopback_sink_name + " ";
     props_lb_capture += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Loopback Sink\" ";
     props_lb_capture += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Loopback Sink\" ";
     props_lb_capture += std::string(PW_KEY_MEDIA_CLASS) + " = Audio/Sink ";
     props_lb_capture += std::string(PW_KEY_NODE_AUTOCONNECT) + " = false ";
+    props_lb_capture += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
+    props_lb_capture += std::string(PW_KEY_STREAM_DONT_REMIX) + " = false ";
     props_lb_capture += "}";
 
+    props_lb_playback += "{ ";
+    props_lb_playback += "audio.position = \"FL,FR\" ";
+    props_lb_playback += std::string(PW_KEY_NODE_NAME) + " = " + loopback_output_name + " ";
+    props_lb_playback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
+    props_lb_playback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
+    props_lb_playback += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
+    props_lb_playback += "}";
+
     props_loopback += "{ ";
-    props_loopback += "audio.position = \"FL,FR\" ";
-    props_loopback += std::string(PW_KEY_NODE_NAME) + " = " + loopback_output_name + " ";
+    props_loopback += std::string(PW_KEY_NODE_NAME) + " = easyeffects_loopback ";
     props_loopback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
     props_loopback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
-    props_loopback += std::string(PW_KEY_MEDIA_CLASS) + " = Stream/Output/Audio ";
     props_loopback += "capture.props = " + props_lb_capture + " ";
+    props_loopback += "playback.props = " + props_lb_playback + " ";
     props_loopback += "}";
 
     // loading EasyEffects Channel Remapping Loopback

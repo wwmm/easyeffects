@@ -200,7 +200,7 @@ class PipeManager {
   const std::string ee_source_name = "easyeffects_source";
   const std::string ee_sink_name = "easyeffects_sink";
 
-  const std::string loopback_output_name = "easyeffects_loopback_output";
+  const std::string loopback_output_name = "easyeffects_loopback_playback";
   const std::string loopback_sink_name = "easyeffects_loopback_sink";
 
   NodeInfo default_output_device, default_input_device;
