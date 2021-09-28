@@ -1373,7 +1373,7 @@ void EffectsBaseUi::on_app_changed(const uint id) {
         if (!item->scheduled_update) {
           item->scheduled_update = true;
 
-          Glib::signal_idle().connect_once([=] { item->info_updated.emit(); });
+          item->info_updated.emit();
         }
       } catch (...) {
       }
@@ -1390,7 +1390,7 @@ void EffectsBaseUi::on_app_changed(const uint id) {
         if (!item->scheduled_update) {
           item->scheduled_update = true;
 
-          Glib::signal_idle().connect_once([=] { item->info_updated.emit(); });
+          item->info_updated.emit();
         }
       } catch (...) {
       }
