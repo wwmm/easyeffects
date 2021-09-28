@@ -801,7 +801,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_mute->unblock();
 
-      // holder->scheduled_update = false;
+      holder->scheduled_update = false;
     };
 
     // update the app info ui for the very first time,
