@@ -801,7 +801,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_mute->unblock();
 
-      holder->scheduled_update = false;
+      // holder->scheduled_update = false;
     };
 
     // update the app info ui for the very first time,
@@ -822,8 +822,8 @@ void EffectsBaseUi::setup_listview_players() {
     list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
                         Glib::destroy_notify_delete<sigc::connection>);
 
-    list_item->set_data("connection_info", new sigc::connection(connection_info),
-                        Glib::destroy_notify_delete<sigc::connection>);
+    // list_item->set_data("connection_info", new sigc::connection(connection_info),
+    //                     Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {

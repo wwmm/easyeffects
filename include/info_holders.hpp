@@ -23,11 +23,16 @@
 #include <glibmm.h>
 #include "pipe_manager.hpp"
 
+/*
+  For some reason I really do not understand we have to pass by value the structures given as argument to the "create"
+  methos below.
+*/
+
 class NodeInfoHolder : public Glib::Object {
  public:
   NodeInfo info;
 
-  static auto create(const NodeInfo& info) -> Glib::RefPtr<NodeInfoHolder>;
+  static auto create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder>;
 
   sigc::signal<void()> info_updated;
 
@@ -41,7 +46,7 @@ class ModuleInfoHolder : public Glib::Object {
  public:
   ModuleInfo info;
 
-  static auto create(const ModuleInfo& info) -> Glib::RefPtr<ModuleInfoHolder>;
+  static auto create(ModuleInfo info) -> Glib::RefPtr<ModuleInfoHolder>;
 
   sigc::signal<void(ModuleInfo)> info_updated;
 
@@ -53,7 +58,7 @@ class ClientInfoHolder : public Glib::Object {
  public:
   ClientInfo info;
 
-  static auto create(const ClientInfo& info) -> Glib::RefPtr<ClientInfoHolder>;
+  static auto create(ClientInfo info) -> Glib::RefPtr<ClientInfoHolder>;
 
   sigc::signal<void(ClientInfo)> info_updated;
 
