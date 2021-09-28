@@ -127,7 +127,7 @@ void Application::on_startup() {
 
     if (soe_settings->get_boolean("use-default-output-device")) {
       /*
-        Depending on the hardware headphones can cause a node recreation hwere the id and the name are kept.
+        Depending on the hardware headphones can cause a node recreation here the id and the name are kept.
         So we clear the key to force the callbacks to be called
       */
 
@@ -160,7 +160,7 @@ void Application::on_startup() {
     NodeInfo target_node;
 
     for (const auto& [id, node] : pm->node_map) {
-      if (node.device_id == device.id && node.media_class == "Audio/Source") {
+      if (node.device_id == device.id && node.media_class == pm->media_class_source) {
         target_node = node;
 
         break;
@@ -188,7 +188,7 @@ void Application::on_startup() {
     NodeInfo target_node;
 
     for (const auto& [id, node] : pm->node_map) {
-      if (node.device_id == device.id && node.media_class == "Audio/Sink") {
+      if (node.device_id == device.id && node.media_class == pm->media_class_sink) {
         target_node = node;
 
         break;

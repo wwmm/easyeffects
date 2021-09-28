@@ -33,7 +33,7 @@ Compressor::Compressor(const std::string& tag,
     if (settings->get_string(key) == "External") {
       const auto* device_name = settings->get_string("sidechain-input-device").c_str();
 
-      NodeInfo input_device = pm->pe_source_node;
+      NodeInfo input_device = pm->ee_source_node;
 
       for (const auto& [id, node] : pm->node_map) {
         if (node.name == device_name) {
@@ -57,7 +57,7 @@ Compressor::Compressor(const std::string& tag,
     if (settings->get_string("sidechain-type") == "External") {
       const auto* device_name = settings->get_string(key).c_str();
 
-      NodeInfo input_device = pm->pe_source_node;
+      NodeInfo input_device = pm->ee_source_node;
 
       for (const auto& [id, node] : pm->node_map) {
         if (node.name == device_name) {

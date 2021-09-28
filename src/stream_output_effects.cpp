@@ -30,13 +30,15 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
     const auto* output_device = settings->get_string("output-device").c_str();
 
-    for (const auto& [id, node] : pm->node_map) {
-      if (node.name == output_device) {
-        pm->output_device = node;
+    if (output_device != pm->ee_sink_name) {
+      for (const auto& [id, node] : pm->node_map) {
+        if (node.name == output_device) {
+          pm->output_device = node;
 
-        found = true;
+          found = true;
 
-        break;
+          break;
+        }
       }
     }
 
@@ -47,7 +49,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
-  if (PULSE_SINK != nullptr) {
+  if (PULSE_SINK != nullptr && PULSE_SINK != pm->ee_sink_name) {
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
@@ -64,7 +66,17 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
   connect_filters();
 
-  settings->signal_changed("output-device").connect([&, this](const auto& key) {
+  auto reset_filter_connection = [=, this]() {
+    if (global_settings->get_boolean("bypass")) {
+      global_settings->set_boolean("bypass", false);
+
+      return;  // filter connected through update_bypass_state
+    }
+
+    set_bypass(false);
+  };
+
+  settings->signal_changed("output-device").connect([=, this](const auto& key) {
     const auto name = settings->get_string(key).raw();
 
     if (name.empty()) {
@@ -75,26 +87,14 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       if (node.name == name) {
         pm->output_device = node;
 
-        disconnect_filters();
-
-        connect_filters();
+        reset_filter_connection();
 
         break;
       }
     }
   });
 
-  settings->signal_changed("plugins").connect([&, this](const auto& key) {
-    if (global_settings->get_boolean("bypass")) {
-      global_settings->set_boolean("bypass", false);
-
-      return;  // filter connected through update_bypass_state
-    }
-
-    disconnect_filters();
-
-    connect_filters();
-  });
+  settings->signal_changed("plugins").connect([=, this](const auto& key) { reset_filter_connection(); });
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
@@ -103,15 +103,15 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(const uint id, const std::string name, const std::string media_class) {
+void StreamOutputEffects::on_app_added(const uint id, const std::string name) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
   const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
-    pm->disconnect_stream_output(id, media_class);
+    pm->disconnect_stream_output(id);
   } else if (global_settings->get_boolean("process-all-outputs")) {
-    pm->connect_stream_output(id, media_class);
+    pm->connect_stream_output(id);
   }
 }
 
@@ -127,7 +127,7 @@ void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
   auto want_to_play = false;
 
   for (const auto& link : pm->list_links) {
-    if (link.input_node_id == pm->pe_sink_node.id) {
+    if (link.input_node_id == pm->ee_sink_node.id) {
       if (link.state == PW_LINK_STATE_ACTIVE) {
         want_to_play = true;
 
@@ -150,7 +150,7 @@ void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
 void StreamOutputEffects::connect_filters(const bool& bypass) {
   const auto& list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
 
-  uint prev_node_id = pm->pe_sink_node.id;
+  uint prev_node_id = pm->ee_sink_node.id;
   uint next_node_id = 0U;
 
   // link plugins

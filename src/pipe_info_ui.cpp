@@ -38,13 +38,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
   for (const auto& [id, node] : pm->node_map) {
-    if (node.name == "easyeffects_sink" || node.name == "easyeffects_source") {
+    if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
       continue;
     }
 
-    if (node.media_class == "Audio/Sink") {
+    if (node.media_class == pm->media_class_sink) {
       output_devices_model->append(NodeInfoHolder::create(node));
-    } else if (node.media_class == "Audio/Source") {
+    } else if (node.media_class == pm->media_class_source) {
       input_devices_model->append(NodeInfoHolder::create(node));
     }
   }
@@ -545,15 +545,15 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
     list_item->set_child(*box);
   });
 
-  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const icon = static_cast<Gtk::Image*>(list_item->get_data("icon"));
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    if (holder->info.media_class == "Audio/Sink") {
+    if (holder->info.media_class == pm->media_class_sink) {
       icon->set_from_icon_name("audio-card-symbolic");
-    } else if (holder->info.media_class == "Audio/Source") {
+    } else if (holder->info.media_class == pm->media_class_source) {
       icon->set_from_icon_name("audio-input-microphone-symbolic");
     }
 

@@ -26,8 +26,8 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, soe_ptr, schema), soe(soe_ptr) {
   for (const auto& [id, node] : pm->node_map) {
-    if (node.media_class == "Stream/Output/Audio") {
-      on_app_added(node.id, node.name, node.media_class);
+    if (node.media_class == pm->media_class_output_stream) {
+      on_app_added(node.id, node.name);
     }
   }
 
@@ -44,16 +44,16 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
       soe->pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_removed)));
 
   connections.emplace_back(soe->pm->sink_changed.connect([&](auto nd_info) {
-    if (nd_info.id == soe->pm->pe_sink_node.id) {
+    if (nd_info.id == soe->pm->ee_sink_node.id) {
       const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                            static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F);
+                                            static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);
 
       device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
     }
   }));
 
   const auto& v =
-      Glib::ustring::format(std::setprecision(1), std::fixed, static_cast<float>(soe->pm->pe_sink_node.rate) * 0.001F);
+      Glib::ustring::format(std::setprecision(1), std::fixed, static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);
 
   device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }

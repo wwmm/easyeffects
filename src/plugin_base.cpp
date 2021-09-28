@@ -102,7 +102,7 @@ PluginBase::PluginBase(std::string tag,
   auto* props_in_left = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_in_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "input_fl");
+  pw_properties_set(props_in_left, PW_KEY_PORT_NAME, "input_FL");
   pw_properties_set(props_in_left, "audio.channel", "FL");
 
   pf_data.in_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
@@ -113,7 +113,7 @@ PluginBase::PluginBase(std::string tag,
   auto* props_in_right = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_in_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "input_fr");
+  pw_properties_set(props_in_right, PW_KEY_PORT_NAME, "input_FR");
   pw_properties_set(props_in_right, "audio.channel", "FR");
 
   pf_data.in_right = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_INPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
@@ -124,7 +124,7 @@ PluginBase::PluginBase(std::string tag,
   auto* props_out_left = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_out_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_fl");
+  pw_properties_set(props_out_left, PW_KEY_PORT_NAME, "output_FL");
   pw_properties_set(props_out_left, "audio.channel", "FL");
 
   pf_data.out_left = static_cast<port*>(pw_filter_add_port(filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS,
@@ -135,7 +135,7 @@ PluginBase::PluginBase(std::string tag,
   auto* props_out_right = pw_properties_new(nullptr, nullptr);
 
   pw_properties_set(props_out_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_fr");
+  pw_properties_set(props_out_right, PW_KEY_PORT_NAME, "output_FR");
   pw_properties_set(props_out_right, "audio.channel", "FR");
 
   pf_data.out_right = static_cast<port*>(pw_filter_add_port(
@@ -147,7 +147,7 @@ PluginBase::PluginBase(std::string tag,
     auto* props_left = pw_properties_new(nullptr, nullptr);
 
     pw_properties_set(props_left, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-    pw_properties_set(props_left, PW_KEY_PORT_NAME, "probe_fl");
+    pw_properties_set(props_left, PW_KEY_PORT_NAME, "probe_FL");
     pw_properties_set(props_left, "audio.channel", "PROBE_FL");
 
     pf_data.probe_left = static_cast<port*>(pw_filter_add_port(
@@ -158,7 +158,7 @@ PluginBase::PluginBase(std::string tag,
     auto* props_right = pw_properties_new(nullptr, nullptr);
 
     pw_properties_set(props_right, PW_KEY_FORMAT_DSP, "32 bit float mono audio");
-    pw_properties_set(props_right, PW_KEY_PORT_NAME, "probe_fr");
+    pw_properties_set(props_right, PW_KEY_PORT_NAME, "probe_FR");
     pw_properties_set(props_right, "audio.channel", "PROBE_FR");
 
     pf_data.probe_right = static_cast<port*>(pw_filter_add_port(
