@@ -174,7 +174,7 @@ void on_destroy_node_proxy(void* data) {
     Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
   }
 
-  util::debug(pd->pm->log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
+  util::debug(PipeManager::log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 }
 
 void on_node_info(void* object, const struct pw_node_info* info) {
@@ -215,7 +215,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
       }
 
-      util::debug(nd->pm->log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
+      util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
                   " was removed");
 
       return;
@@ -676,8 +676,8 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   const std::string str_type = (type != nullptr) ? type : std::string();
   const std::string str_value = (value != nullptr) ? value : std::string();
 
-  util::debug(pm->log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type + ", " +
-              str_value);
+  util::debug(PipeManager::log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
+              ", " + str_value);
 
   if (str_value.empty()) {
     return 0;
@@ -819,7 +819,7 @@ void on_registry_global(void* data,
           if (g_strcmp0(key_node_description, "easyeffects_filter") == 0) {
             const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
 
-            util::debug(pm->log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
+            util::debug(PipeManager::log_tag + "Filter " + node_name + ", id = " + std::to_string(id) + ", was added");
           }
         }
       }
@@ -892,7 +892,8 @@ void on_registry_global(void* data,
           Glib::signal_idle().connect_once([pm, id, name] { pm->stream_input_added.emit(id, name); });
         }
 
-        util::debug(pm->log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name + " was added");
+        util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name +
+                    " was added");
       }
     }
 
@@ -922,7 +923,7 @@ void on_registry_global(void* data,
 
       const auto& output_node = pm->node_map.at(link_info.output_node_id);
 
-      util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
+      util::debug(PipeManager::log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
     } catch (...) {
     }
@@ -999,7 +1000,7 @@ void on_registry_global(void* data,
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Metadata) == 0) {
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
-      util::debug(pm->log_tag + "found metadata: " + name);
+      util::debug(PipeManager::log_tag + "found metadata: " + name);
 
       if (pm->metadata != nullptr) {
         return;
@@ -1008,7 +1009,11 @@ void on_registry_global(void* data,
       if (g_strcmp0(name, "default") == 0) {
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
-        pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+        if (pm->metadata != nullptr) {
+          pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+        } else {
+          util::warning(PipeManager::log_tag + "pw_registry_bind returned a null metadata object");
+        }
       }
     }
 
@@ -1046,8 +1051,8 @@ void on_core_error(void* data, uint32_t id, int seq, int res, const char* messag
   auto* pm = static_cast<PipeManager*>(data);
 
   if (id == PW_ID_CORE) {
-    util::warning(pm->log_tag + "Remote error res: " + spa_strerror(res));
-    util::warning(pm->log_tag + "Remote error message: " + message);
+    util::warning(PipeManager::log_tag + "Remote error res: " + spa_strerror(res));
+    util::warning(PipeManager::log_tag + "Remote error message: " + message);
 
     pw_thread_loop_signal(pm->thread_loop, false);
   }
@@ -1074,8 +1079,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
     pm->default_quantum = quantum;
   }
 
-  util::debug(pm->log_tag + "core version: " + info->version);
-  util::debug(pm->log_tag + "core name: " + info->name);
+  util::debug(PipeManager::log_tag + "core version: " + info->version);
+  util::debug(PipeManager::log_tag + "core name: " + info->name);
 }
 
 void on_core_done(void* data, uint32_t id, int seq) {
