@@ -30,7 +30,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
     const auto* output_device = settings->get_string("output-device").c_str();
 
-    if (output_device != pm->ee_sink_name && output_device != pm->loopback_output_name) {
+    if (output_device != pm->ee_sink_name && output_device != pm->loopback_playback_name) {
       for (const auto& [id, node] : pm->node_map) {
         if (node.name == output_device) {
           pm->output_device = node;
@@ -49,7 +49,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
-  if (PULSE_SINK != nullptr && PULSE_SINK != pm->ee_sink_name && PULSE_SINK != pm->loopback_output_name) {
+  if (PULSE_SINK != nullptr && PULSE_SINK != pm->ee_sink_name && PULSE_SINK != pm->loopback_playback_name) {
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
@@ -79,10 +79,6 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   };
 
   settings->signal_changed("output-device").connect([=, this](const auto& key) {
-    if (pm->use_output_loopback) {
-      return;
-    }
-
     const auto name = settings->get_string(key).raw();
 
     if (name.empty()) {
@@ -93,9 +89,13 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       if (node.name == name) {
         pm->output_device = node;
 
-        reset_filter_connection();
+        if (pm->use_output_loopback) {
+          pm->set_loopback_target_node(pm->output_device.id);
+        } else {
+          reset_filter_connection();
+        }
 
-        break;
+        return;
       }
     }
   });
@@ -238,6 +238,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   if (link_size < 2U) {
     util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
                   std::to_string(next_node_id) + " failed");
+  }
+
+  if (pm->use_output_loopback) {
+    pm->set_loopback_target_node(pm->output_device.id);
   }
 }
 

@@ -195,12 +195,12 @@ class PipeManager {
 
   std::vector<DeviceInfo> list_devices;
 
-  NodeInfo ee_sink_node, ee_source_node, ee_loopback_sink, ee_loopback_output;
+  NodeInfo ee_sink_node, ee_source_node, ee_loopback_sink, ee_loopback_playback;
 
   const std::string ee_source_name = "easyeffects_source";
   const std::string ee_sink_name = "easyeffects_sink";
 
-  const std::string loopback_output_name = "easyeffects_loopback_playback";
+  const std::string loopback_playback_name = "easyeffects_loopback_playback";
   const std::string loopback_sink_name = "easyeffects_loopback_sink";
 
   NodeInfo default_output_device, default_input_device;
@@ -236,6 +236,8 @@ class PipeManager {
   void disconnect_stream_output(const uint& id) const;
 
   void disconnect_stream_input(const uint& id) const;
+
+  void set_loopback_target_node(const uint& id);
 
   static void set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value);
 
@@ -301,6 +303,9 @@ class PipeManager {
   spa_hook core_listener{}, registry_listener{};
 
   void set_metadata_target_node(const uint& origin_id, const uint& target_id) const;
+
+  auto get_loopback_capture_property() -> std::string;
+  auto get_loopback_playback_property(const char* target_id = nullptr) -> std::string;
 };
 
 #endif

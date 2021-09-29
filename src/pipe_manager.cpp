@@ -285,7 +285,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
-    if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_output_name) {
+    if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_playback_name) {
       auto node_id = nd->nd_info.id;
 
       Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
@@ -441,7 +441,7 @@ void on_node_event_param(void* object,
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_output_name) {
+      if (nd->nd_info.media_class == "Stream/Output/Audio" && nd->nd_info.name != pm->loopback_playback_name) {
         auto node_id = nd->nd_info.id;
 
         Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
@@ -690,7 +690,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     for (const auto& [id, node] : pm->node_map) {
       if (node.name == v.data()) {
-        if (node.name == pm->ee_sink_name || node.name == pm->loopback_output_name) {
+        if (node.name == pm->ee_sink_name || node.name == pm->loopback_playback_name) {
           pm->default_output_device.id = SPA_ID_INVALID;
 
           return 0;
@@ -877,7 +877,7 @@ void on_registry_global(void* data,
         pm->node_map.insert_or_assign(pd->nd_info.id, pd->nd_info);
 
         static const auto ee_nodes = {pm->ee_sink_name, pm->ee_source_name, pm->loopback_sink_name,
-                                      pm->loopback_output_name};
+                                      pm->loopback_playback_name};
 
         if (!std::any_of(ee_nodes.begin(), ee_nodes.end(), [&](const auto& str) { return str == name; })) {
           // sometimes PipeWire destroys the pointer before signal_idle is called,
@@ -931,7 +931,7 @@ void on_registry_global(void* data,
       util::debug(pm->log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
 
-      if (pm->use_output_loopback && output_node.name == pm->loopback_output_name &&
+      if (pm->use_output_loopback && output_node.name == pm->loopback_playback_name &&
           (input_node.name == pm->ee_sink_name || input_node.name == pm->loopback_sink_name)) {
         // disabling loopback mode due to a bad configuration made outside EasyEffects
 
@@ -939,7 +939,7 @@ void on_registry_global(void* data,
 
         Glib::signal_idle().connect_once([pm] { pm->loopback_mode_disabled.emit(); });
 
-        util::warning(pm->log_tag + pm->loopback_output_name +
+        util::warning(pm->log_tag + pm->loopback_playback_name +
                       " connected to a wrong sink! The loopback mode has been disabled." +
                       " Please connect the loopback output stream only to the output device and" +
                       " restart EasyEffects to re-enable it.");
@@ -1198,35 +1198,14 @@ PipeManager::PipeManager(const bool& lb_mode) : loopback_mode(lb_mode) {
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
   if (loopback_mode) {
-    auto props_lb_capture = std::string();
-    auto props_lb_playback = std::string();
     auto props_loopback = std::string();
-
-    props_lb_capture += "{ ";
-    props_lb_capture += "audio.position = \"FL,FR\" ";
-    props_lb_capture += std::string(PW_KEY_NODE_NAME) + " = " + loopback_sink_name + " ";
-    props_lb_capture += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Loopback Sink\" ";
-    props_lb_capture += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Loopback Sink\" ";
-    props_lb_capture += std::string(PW_KEY_MEDIA_CLASS) + " = Audio/Sink ";
-    props_lb_capture += std::string(PW_KEY_NODE_AUTOCONNECT) + " = false ";
-    props_lb_capture += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
-    props_lb_capture += std::string(PW_KEY_STREAM_DONT_REMIX) + " = false ";
-    props_lb_capture += "}";
-
-    props_lb_playback += "{ ";
-    props_lb_playback += "audio.position = \"FL,FR\" ";
-    props_lb_playback += std::string(PW_KEY_NODE_NAME) + " = " + loopback_output_name + " ";
-    props_lb_playback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
-    props_lb_playback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
-    props_lb_playback += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
-    props_lb_playback += "}";
 
     props_loopback += "{ ";
     props_loopback += std::string(PW_KEY_NODE_NAME) + " = easyeffects_loopback ";
     props_loopback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
     props_loopback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
-    props_loopback += "capture.props = " + props_lb_capture + " ";
-    props_loopback += "playback.props = " + props_lb_playback + " ";
+    props_loopback += "capture.props = " + get_loopback_capture_property() + " ";
+    props_loopback += "playback.props = " + get_loopback_playback_property() + " ";
     props_loopback += "}";
 
     // loading EasyEffects Channel Remapping Loopback
@@ -1263,15 +1242,16 @@ PipeManager::PipeManager(const bool& lb_mode) : loopback_mode(lb_mode) {
           ee_loopback_sink = node;
 
           util::debug(log_tag + loopback_sink_name + " successfully retrieved with id " + std::to_string(id));
-        } else if (ee_loopback_output.name.empty() && node.name == loopback_output_name) {
-          ee_loopback_output = node;
+        } else if (ee_loopback_playback.name.empty() && node.name == loopback_playback_name) {
+          ee_loopback_playback = node;
 
-          util::debug(log_tag + loopback_output_name + " successfully retrieved with id " + std::to_string(id));
+          util::debug(log_tag + loopback_playback_name + " successfully retrieved with id " + std::to_string(id));
         }
       }
     }
-  } while ((ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID) ||
-           (use_output_loopback && (ee_loopback_sink.id == SPA_ID_INVALID || ee_loopback_output.id == SPA_ID_INVALID)));
+  } while (
+      (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID) ||
+      (use_output_loopback && (ee_loopback_sink.id == SPA_ID_INVALID || ee_loopback_playback.id == SPA_ID_INVALID)));
 }
 
 PipeManager::~PipeManager() {
@@ -1347,6 +1327,45 @@ void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& ta
   pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", std::to_string(target_id).c_str());
 
   sync_wait_unlock();
+}
+
+void PipeManager::set_loopback_target_node(const uint& id) {
+  const auto id_str = std::to_string(id);
+
+  const auto props_loopback = pw_impl_module_get_properties(loopback_module);
+
+  if (g_strcmp0(pw_properties_get(props_loopback, PW_KEY_NODE_TARGET), id_str.c_str()) == 0) {
+    return;
+  }
+
+  auto props_loopback_str = std::string();
+
+  props_loopback_str += "{ ";
+  props_loopback_str += std::string(PW_KEY_NODE_NAME) + " = easyeffects_loopback ";
+  props_loopback_str += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
+  props_loopback_str += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
+  props_loopback_str += "capture.props = " + get_loopback_capture_property() + " ";
+  props_loopback_str += "playback.props = " + get_loopback_playback_property(id_str.c_str()) + " ";
+  props_loopback_str += "}";
+
+  auto* new_loopback_prop = pw_properties_new_string(props_loopback_str.c_str());
+
+  int changed = 0;
+
+  lock();
+
+  changed += pw_impl_module_update_properties(loopback_module, &new_loopback_prop->dict);
+
+  sync_wait_unlock();
+
+  util::debug(log_tag + loopback_playback_name + " redirected to new output device " + id_str);
+
+  if (changed > 0) {
+    util::debug(log_tag + std::to_string(changed) + " key/s updated in " + loopback_playback_name +
+                " property object: " + props_loopback_str);
+  }
+
+  pw_properties_free(new_loopback_prop);
 }
 
 void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value) {
@@ -1532,4 +1551,36 @@ auto PipeManager::json_object_find(const char* obj, const char* key, char* value
   }
 
   return -ENOENT;
+}
+
+auto PipeManager::get_loopback_capture_property() -> std::string {
+  std::string props_lb_capture;
+
+  props_lb_capture += "{ ";
+  props_lb_capture += "audio.position = \"FL,FR\" ";
+  props_lb_capture += std::string(PW_KEY_NODE_NAME) + " = " + loopback_sink_name + " ";
+  props_lb_capture += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Loopback Sink\" ";
+  props_lb_capture += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Loopback Sink\" ";
+  props_lb_capture += std::string(PW_KEY_MEDIA_CLASS) + " = Audio/Sink ";
+  props_lb_capture += std::string(PW_KEY_NODE_AUTOCONNECT) + " = false ";
+  props_lb_capture += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
+  props_lb_capture += std::string(PW_KEY_STREAM_DONT_REMIX) + " = false ";
+  props_lb_capture += "}";
+
+  return props_lb_capture;
+}
+
+auto PipeManager::get_loopback_playback_property(const char* target_id) -> std::string {
+  std::string props_lb_playback;
+
+  props_lb_playback += "{ ";
+  props_lb_playback += "audio.position = \"FL,FR\" ";
+  props_lb_playback += std::string(PW_KEY_NODE_NAME) + " = " + loopback_playback_name + " ";
+  props_lb_playback += std::string(PW_KEY_MEDIA_NAME) + " = \"EasyEffects Channel Remapping Loopback\" ";
+  props_lb_playback += std::string(PW_KEY_NODE_DESCRIPTION) + " = \"EasyEffects Channel Remapping Loopback\" ";
+  props_lb_playback += std::string(PW_KEY_NODE_PASSIVE) + " = true ";
+  props_lb_playback += (target_id) ? (std::string(PW_KEY_NODE_TARGET) + " = " + target_id + " ") : "";
+  props_lb_playback += "}";
+
+  return props_lb_playback;
 }

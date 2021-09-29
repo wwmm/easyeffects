@@ -37,7 +37,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
-  static const auto ee_nodes = {pm->ee_sink_name, pm->ee_source_name, pm->loopback_sink_name, pm->loopback_output_name};
+  static const auto ee_nodes = {pm->ee_sink_name, pm->ee_source_name, pm->loopback_sink_name, pm->loopback_playback_name};
 
   for (const auto& [id, node] : pm->node_map) {
     if (std::any_of(ee_nodes.begin(), ee_nodes.end(), [&](const auto& str) { return str == node.name; })) {
