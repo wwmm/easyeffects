@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
-    <schema id="com.github.wwmm.easyeffects.outputlevel">
-        <key name="state" type="b">
-            <default>false</default>
-        </key>
-    </schema>
+    <schema id="com.github.wwmm.easyeffects.outputlevel"></schema>
 </schemalist>

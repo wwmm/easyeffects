@@ -41,6 +41,7 @@
 #include "multiband_compressor.hpp"
 #include "multiband_gate.hpp"
 #include "output_level.hpp"
+#include "output_stream.hpp"
 #include "pipe_manager.hpp"
 #include "pitch.hpp"
 #include "reverb.hpp"
@@ -62,6 +63,7 @@ class EffectsBase {
   PipeManager* pm = nullptr;
 
   std::unique_ptr<OutputLevel> output_level;
+  std::unique_ptr<OutputStream> output_stream;
   std::unique_ptr<Spectrum> spectrum;
 
   std::shared_ptr<AutoGain> autogain;

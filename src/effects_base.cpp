@@ -78,6 +78,8 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   output_level =
       std::make_unique<OutputLevel>(log_tag, "com.github.wwmm.easyeffects.outputlevel", path + "outputlevel/", pm);
 
+  output_stream = std::make_unique<OutputStream>(log_tag, pm);
+
   pitch = std::make_shared<Pitch>(log_tag, "com.github.wwmm.easyeffects.pitch", path + "pitch/", pm);
 
   reverb = std::make_shared<Reverb>(log_tag, "com.github.wwmm.easyeffects.reverb", path + "reverb/", pm);
@@ -92,6 +94,9 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
   if (!output_level->connected_to_pw) {
     output_level->connect_to_pw();
   }
+
+  output_stream->connect_filter_to_pw();
+  output_stream->connect_stream_to_pw();
 
   if (!spectrum->connected_to_pw) {
     spectrum->connect_to_pw();
