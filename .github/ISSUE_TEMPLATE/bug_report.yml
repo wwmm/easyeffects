@@ -1,0 +1,46 @@
+name: Bug Report
+description: Report an EasyEffects bug
+body:
+- type: input
+  attributes:
+    label: EasyEffects Version
+    description: What version of EasyEffects are you using?
+    placeholder: 6.1.2
+  validations:
+    required: true
+- type: dropdown
+  attributes:
+    label: What package are you using?
+    options:
+      - Arch Official (easyeffects)
+      - AUR (easyeffects-git)
+      - Flatpak (Flathub)
+      - Gentoo
+      - NixOS
+      - openSUSE
+      - Other (specify below)
+  validations:
+    required: true
+- type: input
+  attributes:
+    label: Distribution
+    description: What distribution are you using?
+    placeholder: "e.g. Fedora 34, Ubuntu 20.04 or Arch Linux"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Expected Behavior
+    description: A clear and concise description of what you expected to happen.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Actual Behavior
+    description: A clear description of what actually happens.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Additional Information
+    description: If your problem needs further explanation please add more information here.
