@@ -235,6 +235,8 @@ class PipeManager {
 
   void disconnect_stream_input(const uint& id) const;
 
+  void set_metadata_target_node(const uint& origin_id, const uint& target_id) const;
+
   static void set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value);
 
   static void set_node_mute(pw_proxy* proxy, const bool& state);
@@ -295,8 +297,6 @@ class PipeManager {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
-
-  void set_metadata_target_node(const uint& origin_id, const uint& target_id) const;
 };
 
 #endif

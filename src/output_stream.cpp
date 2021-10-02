@@ -30,13 +30,30 @@ void playback_destroy(void* userdata) {
 }
 
 void playback_param_changed(void* userdata, uint32_t id, const struct spa_pod* param) {
-  // auto* os = static_cast<OutputStream*>(userdata);
+  auto* os = static_cast<OutputStream*>(userdata);
 
-  // switch (id) {
-  //   case SPA_PARAM_Latency:
-  //     param_latency_changed(os, param, os->capture);
-  //     break;
-  // }
+  switch (id) {
+    case SPA_PARAM_Latency: {
+      spa_latency_info latency{};
+
+      if (spa_latency_parse(param, &latency) < 0) {
+        return;
+      }
+
+      std::array<uint8_t, 1024U> buffer{};
+      std::array<const spa_pod*, 1> params{};
+
+      struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+
+      params[0] = spa_latency_build(&b, SPA_PARAM_Latency, &latency);
+
+      if (latency.direction == SPA_DIRECTION_OUTPUT) {
+        pw_stream_update_params(os->playback, params.data(), 1);
+      }
+
+      break;
+    }
+  }
 }
 
 const struct pw_stream_events out_stream_events = {
@@ -79,9 +96,68 @@ void on_process(void* userdata, spa_io_position* position) {
   }
 
   auto* buffer = b->buffer;
+
+  if (buffer->datas[0].data == nullptr) {
+    return;
+  }
+
+  auto stride = 2 * sizeof(float);  // 2 channels
+  auto n_stream_frames = buffer->datas[0].maxsize / stride;
+
+  if (n_samples != n_stream_frames) {
+    util::warning(d->os->log_tag + "n_samples(" + std::to_string(n_samples) + ") != " + " n_stream_frames(" +
+                  std::to_string(n_stream_frames) + ")");
+
+    // return;
+  }
+
+  auto* dst_ptr = static_cast<float*>(buffer->datas[0].data);
+
+  std::span dst{dst_ptr, dst_ptr + 2 * n_stream_frames};
+
+  for (size_t n = 0; n < left_in.size(); n++) {
+    dst[2 * n] = left_in[n];
+
+    dst[2 * n + 1] = right_in[n];
+  }
+
+  buffer->datas[0].chunk->offset = 0;
+  buffer->datas[0].chunk->stride = static_cast<int>(stride);
+  buffer->datas[0].chunk->size = n_stream_frames * stride;
+
+  pw_stream_queue_buffer(d->os->playback, b);
 }
 
-const struct pw_filter_events filter_events = {.process = on_process};
+void filter_param_changed(void* userdata, void* port_data, uint32_t id, const struct spa_pod* param) {
+  auto* os = static_cast<OutputStream*>(userdata);
+
+  switch (id) {
+    case SPA_PARAM_Latency: {
+      spa_latency_info latency{};
+
+      if (spa_latency_parse(param, &latency) < 0) {
+        return;
+      }
+
+      util::warning("new filter latency");
+
+      std::array<uint8_t, 1024U> buffer{};
+      std::array<const spa_pod*, 1> params{};
+
+      struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+
+      params[0] = spa_latency_build(&b, SPA_PARAM_Latency, &latency);
+
+      if (latency.direction == SPA_DIRECTION_OUTPUT) {
+        pw_stream_update_params(os->playback, params.data(), 1);
+      }
+
+      break;
+    }
+  }
+}
+
+const struct pw_filter_events filter_events = {.param_changed = filter_param_changed, .process = on_process};
 
 }  // namespace
 
@@ -160,8 +236,12 @@ OutputStream::~OutputStream() {
   util::debug(log_tag + filter_name + " destroyed");
 }
 
-void OutputStream::setup() {
-  util::debug(log_tag + filter_name + ": new PipeWire blocksize: " + std::to_string(n_samples));
+auto OutputStream::get_filter_id() const -> uint {
+  return filter_id;
+}
+
+auto OutputStream::get_stream_id() const -> uint {
+  return stream_id;
 }
 
 auto OutputStream::connect_filter_to_pw() -> bool {
@@ -177,10 +257,10 @@ auto OutputStream::connect_filter_to_pw() -> bool {
 
   if (filter_connected_to_pw) {
     do {
-      node_id = pw_filter_get_node_id(filter);
+      filter_id = pw_filter_get_node_id(filter);
 
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    } while (node_id == SPA_ID_INVALID);
+    } while (filter_id == SPA_ID_INVALID);
 
     pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 
@@ -217,10 +297,10 @@ auto OutputStream::connect_stream_to_pw() -> bool {
 
   if (stream_connected_to_pw) {
     do {
-      node_id = pw_stream_get_node_id(playback);
+      stream_id = pw_stream_get_node_id(playback);
 
       std::this_thread::sleep_for(std::chrono::milliseconds(1));
-    } while (node_id == SPA_ID_INVALID);
+    } while (stream_id == SPA_ID_INVALID);
 
     pw_stream_add_listener(playback, &playback_listener, &out_stream_events, this);
 
@@ -248,6 +328,10 @@ void OutputStream::disconnect_stream_from_pw() {
   pw_stream_disconnect(playback);
 
   pm->sync_wait_unlock();
+}
+
+void OutputStream::setup() {
+  util::debug(log_tag + filter_name + ": new PipeWire blocksize: " + std::to_string(n_samples));
 }
 
 void OutputStream::process(std::span<float>& left_in, std::span<float>& right_in) {

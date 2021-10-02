@@ -71,6 +71,10 @@ class OutputStream {
 
   spa_hook playback_listener{};
 
+  [[nodiscard]] auto get_filter_id() const -> uint;
+
+  [[nodiscard]] auto get_stream_id() const -> uint;
+
   auto connect_filter_to_pw() -> bool;
 
   auto connect_stream_to_pw() -> bool;
@@ -84,7 +88,7 @@ class OutputStream {
   void process(std::span<float>& left_in, std::span<float>& right_in);
 
  private:
-  uint node_id = 0U;
+  uint filter_id = 0U, stream_id = 0U;
 
   float notification_time_window = 1.0F / 20.0F;  // seconds
   float notification_dt = 0.0F;

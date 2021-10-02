@@ -194,7 +194,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum and output level meter
 
-  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id()}) {
+  for (const auto& node_id : {spectrum->get_node_id(), output_stream->get_filter_id()}) {
     next_node_id = node_id;
 
     const auto& links = pm->link_nodes(prev_node_id, next_node_id);
@@ -215,20 +215,22 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // link output device
 
-  next_node_id = pm->output_device.id;
+  pm->set_metadata_target_node(output_stream->get_stream_id(), pm->output_device.id);
 
-  const auto& links = pm->link_nodes(prev_node_id, next_node_id);
+  // next_node_id = pm->output_device.id;
 
-  const auto& link_size = links.size();
+  // const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-  for (size_t n = 0U; n < link_size; n++) {
-    list_proxies.emplace_back(links[n]);
-  }
+  // const auto& link_size = links.size();
 
-  if (link_size < 2U) {
-    util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
-                  std::to_string(next_node_id) + " failed");
-  }
+  // for (size_t n = 0U; n < link_size; n++) {
+  //   list_proxies.emplace_back(links[n]);
+  // }
+
+  // if (link_size < 2U) {
+  //   util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
+  //                 std::to_string(next_node_id) + " failed");
+  // }
 }
 
 void StreamOutputEffects::disconnect_filters() {
