@@ -30,11 +30,14 @@
 #include <spa/utils/result.h>
 #include <algorithm>
 #include <array>
+#include <chrono>
 #include <memory>
 #include <string>
 #include "util.hpp"
 
 struct NodeInfo {
+  std::string timestamp;
+
   pw_proxy* proxy = nullptr;
 
   uint id = SPA_ID_INVALID;
@@ -67,9 +70,9 @@ struct NodeInfo {
 
   int n_output_ports = 0;
 
-  uint rate = 0U;
+  int rate = 0U;
 
-  int n_volume_channels = 0;
+  uint n_volume_channels = 0;
 
   float latency = 0.0F;
 
@@ -178,7 +181,14 @@ class PipeManager {
 
   spa_hook metadata_listener{};
 
-  std::map<uint, NodeInfo> node_map;
+  /*
+    Nodes are tracked in a map and indexed by the creation date UNIX timestamp
+    converted as string.
+    This way we try to avoid issues caused by bad applications that create and
+    destroy too many streams in a short time.
+  */
+
+  std::map<std::string, NodeInfo> node_map;
 
   std::vector<LinkInfo> list_links;
 
@@ -199,7 +209,7 @@ class PipeManager {
   const std::string media_class_input_stream = "Stream/Input/Audio";
   const std::string media_class_output_stream = "Stream/Output/Audio";
 
-  NodeInfo ee_sink_node, ee_source_node, ee_loopback_sink, ee_loopback_output;
+  NodeInfo ee_sink_node, ee_source_node;
 
   NodeInfo default_output_device, default_input_device;
 
@@ -225,6 +235,12 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
+  auto get_node_by_id(const uint& id) -> NodeInfo&;
+
+  auto get_nodeptr(const std::string& ts) -> NodeInfo*;
+
+  auto get_nodeptr_by_id(const uint& id) -> NodeInfo*;
+
   auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
 
   void connect_stream_output(const uint& id) const;
@@ -235,7 +251,7 @@ class PipeManager {
 
   void disconnect_stream_input(const uint& id) const;
 
-  static void set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value);
+  static void set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value);
 
   static void set_node_mute(pw_proxy* proxy, const bool& state);
 
@@ -264,29 +280,29 @@ class PipeManager {
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
-  sigc::signal<void(const uint, const std::string)> stream_output_added;
-  sigc::signal<void(const uint, const std::string)> stream_input_added;
-  sigc::signal<void(const uint)> stream_output_changed;
-  sigc::signal<void(const uint)> stream_input_changed;
-  sigc::signal<void(const uint)> stream_output_removed;
-  sigc::signal<void(const uint)> stream_input_removed;
+  sigc::signal<void(const NodeInfo)> stream_output_added;
+  sigc::signal<void(const NodeInfo)> stream_input_added;
+  sigc::signal<void(const std::string)> stream_output_changed;
+  sigc::signal<void(const std::string)> stream_input_changed;
+  sigc::signal<void(const std::string)> stream_output_removed;
+  sigc::signal<void(const std::string)> stream_input_removed;
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
-  sigc::signal<void(NodeInfo)> source_added;
-  sigc::signal<void(NodeInfo)> source_changed;
-  sigc::signal<void(NodeInfo)> source_removed;
-  sigc::signal<void(NodeInfo)> sink_added;
-  sigc::signal<void(NodeInfo)> sink_changed;
-  sigc::signal<void(NodeInfo)> sink_removed;
-  sigc::signal<void(NodeInfo)> new_default_sink;
-  sigc::signal<void(NodeInfo)> new_default_source;
-  sigc::signal<void(DeviceInfo)> device_input_route_changed;
-  sigc::signal<void(DeviceInfo)> device_output_route_changed;
+  sigc::signal<void(const NodeInfo)> source_added;
+  sigc::signal<void(const NodeInfo)> source_changed;
+  sigc::signal<void(const NodeInfo)> source_removed;
+  sigc::signal<void(const NodeInfo)> sink_added;
+  sigc::signal<void(const NodeInfo)> sink_changed;
+  sigc::signal<void(const NodeInfo)> sink_removed;
+  sigc::signal<void(const NodeInfo)> new_default_sink;
+  sigc::signal<void(const NodeInfo)> new_default_source;
+  sigc::signal<void(const DeviceInfo)> device_input_route_changed;
+  sigc::signal<void(const DeviceInfo)> device_output_route_changed;
 
-  sigc::signal<void(LinkInfo)> link_changed;
+  sigc::signal<void(const LinkInfo)> link_changed;
 
  private:
   bool context_ready = false;

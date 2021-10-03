@@ -46,7 +46,7 @@ struct proxy_data {
 };
 
 void on_removed_proxy(void* data) {
-  auto* pd = static_cast<proxy_data*>(data);
+  auto* const pd = static_cast<proxy_data*>(data);
 
   if (pd->object_listener.link.next != nullptr || pd->object_listener.link.prev != nullptr) {
     spa_hook_remove(&pd->object_listener);
@@ -140,7 +140,7 @@ auto port_info_from_props(const spa_dict* props) -> PortInfo {
 }
 
 void on_removed_node_proxy(void* data) {
-  auto* pd = static_cast<node_data*>(data);
+  auto* const pd = static_cast<node_data*>(data);
 
   spa_hook_remove(&pd->object_listener);
 
@@ -148,39 +148,53 @@ void on_removed_node_proxy(void* data) {
 }
 
 void on_destroy_node_proxy(void* data) {
-  auto* pd = static_cast<node_data*>(data);
+  auto* const pd = static_cast<node_data*>(data);
+
+  auto* const pm = pd->pm;
 
   spa_hook_remove(&pd->proxy_listener);
 
-  pd->pm->node_map.erase(pd->nd_info.id);
+  try {
+    pd->nd_info.proxy = nullptr;
 
-  auto* pm = pd->pm;
+    pm->node_map.at(pd->nd_info.timestamp).proxy = nullptr;
+
+    // for safety reasons, we wait for scheduled updates to be executed before deleting the node
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+    pm->node_map.erase(pd->nd_info.timestamp);
+  } catch (...) {
+    return;
+  }
 
   if (pd->nd_info.media_class == pm->media_class_source) {
-    auto nd_info_copy = pd->nd_info;
+    const auto nd_info_copy = pd->nd_info;
 
     Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
   } else if (pd->nd_info.media_class == pm->media_class_sink) {
-    auto nd_info_copy = pd->nd_info;
+    const auto nd_info_copy = pd->nd_info;
 
     Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
   } else if (pd->nd_info.media_class == pm->media_class_output_stream) {
-    auto node_id = pd->nd_info.id;
+    const auto node_ts = pd->nd_info.timestamp;
 
-    Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_removed.emit(node_id); });
+    Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
   } else if (pd->nd_info.media_class == pm->media_class_input_stream) {
-    auto node_id = pd->nd_info.id;
+    const auto node_ts = pd->nd_info.timestamp;
 
-    Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
+    Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
   }
 
   util::debug(PipeManager::log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 }
 
 void on_node_info(void* object, const struct pw_node_info* info) {
-  auto* nd = static_cast<node_data*>(object);
+  auto* const nd = static_cast<node_data*>(object);
 
-  if (nd->pm->node_map.contains(info->id)) {
+  auto* const pm = nd->pm;
+
+  if (pm->node_map.contains(nd->nd_info.timestamp)) {
     if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
       /*
         This is a workaround for issue #1128.
@@ -193,26 +207,38 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       spa_hook_remove(&nd->proxy_listener);
 
-      nd->pm->node_map.erase(nd->nd_info.id);
+      try {
+        nd->nd_info.proxy = nullptr;
 
-      auto* pm = nd->pm;
+        pm->node_map.at(nd->nd_info.timestamp).proxy = nullptr;
+
+        if (nd->nd_info.name != pm->ee_sink_name && nd->nd_info.name != pm->ee_source_name) {
+          // for safety reasons, we wait for scheduled updates to be executed before deleting the node
+
+          std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        }
+
+        pm->node_map.erase(nd->nd_info.timestamp);
+      } catch (...) {
+        return;
+      }
 
       if (nd->nd_info.media_class == pm->media_class_source) {
-        auto nd_info_copy = nd->nd_info;
+        const auto nd_info_copy = nd->nd_info;
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_sink) {
-        auto nd_info_copy = nd->nd_info;
+        const auto nd_info_copy = nd->nd_info;
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        auto node_id = nd->nd_info.id;
+        const auto node_ts = nd->nd_info.timestamp;
 
-        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_removed.emit(node_id); });
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        auto node_id = nd->nd_info.id;
+        const auto node_ts = nd->nd_info.timestamp;
 
-        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_removed.emit(node_id); });
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
       }
 
       util::debug(PipeManager::log_tag + " monitor stream " + nd->nd_info.media_class + " " + nd->nd_info.name +
@@ -221,7 +247,14 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       return;
     }
 
-    nd->nd_info.state = info->state;
+    auto app_info_ui_changed = false;
+
+    if (info->state != nd->nd_info.state) {
+      nd->nd_info.state = info->state;
+
+      app_info_ui_changed = true;
+    }
+
     nd->nd_info.n_input_ports = static_cast<int>(info->n_input_ports);
     nd->nd_info.n_output_ports = static_cast<int>(info->n_output_ports);
 
@@ -230,11 +263,19 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
     if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
-      nd->nd_info.app_icon_name = app_icon_name;
+      if (app_icon_name != nd->nd_info.app_icon_name) {
+        nd->nd_info.app_icon_name = app_icon_name;
+
+        app_info_ui_changed = true;
+      }
     }
 
     if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
-      nd->nd_info.media_icon_name = media_icon_name;
+      if (media_icon_name == nd->nd_info.media_icon_name) {
+        nd->nd_info.media_icon_name = media_icon_name;
+
+        app_info_ui_changed = true;
+      }
     }
 
     if (const auto* device_icon_name = spa_dict_lookup(info->props, PW_KEY_DEVICE_ICON_NAME)) {
@@ -242,7 +283,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
     if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
-      nd->nd_info.media_name = media_name;
+      if (media_name == nd->nd_info.media_name) {
+        nd->nd_info.media_name = media_name;
+
+        app_info_ui_changed = true;
+      }
     }
 
     if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
@@ -254,9 +299,18 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       const auto& rate_str = str.substr(delimiter_pos + 1);
 
-      nd->nd_info.rate = std::stoi(rate_str);
+      if (auto rate = std::stoi(rate_str); rate != nd->nd_info.rate) {
+        nd->nd_info.rate = rate;
 
-      nd->nd_info.latency = std::stof(latency_str) / static_cast<float>(nd->nd_info.rate);
+        app_info_ui_changed = true;
+      }
+
+      if (auto latency = (std::stof(latency_str) / static_cast<float>(nd->nd_info.rate));
+          latency != nd->nd_info.latency) {
+        nd->nd_info.latency = latency;
+
+        app_info_ui_changed = true;
+      }
     }
 
     if (const auto* device_id = spa_dict_lookup(info->props, PW_KEY_DEVICE_ID)) {
@@ -276,29 +330,27 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
     }
 
-    auto* pm = nd->pm;
-
     // update NodeInfo inside map
 
-    pm->node_map.insert_or_assign(nd->nd_info.id, nd->nd_info);
+    pm->node_map.insert_or_assign(nd->nd_info.timestamp, nd->nd_info);
 
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
 
-    if (nd->nd_info.media_class == pm->media_class_output_stream) {
-      auto node_id = nd->nd_info.id;
+    if (app_info_ui_changed) {
+      const auto node_ts = nd->nd_info.timestamp;
 
-      Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
-    } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-      auto node_id = nd->nd_info.id;
-
-      Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_changed.emit(node_id); });
+      if (nd->nd_info.media_class == pm->media_class_output_stream) {
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
+      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
+      }
     } else if (nd->nd_info.media_class == pm->media_class_source) {
-      auto nd_info_copy = nd->nd_info;
+      const auto nd_info_copy = nd->nd_info;
 
       Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
     } else if (nd->nd_info.media_class == pm->media_class_sink) {
-      auto nd_info_copy = nd->nd_info;
+      const auto nd_info_copy = nd->nd_info;
 
       Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_changed.emit(nd_info_copy); });
     }
@@ -314,12 +366,16 @@ void on_node_event_param(void* object,
                          uint32_t index,
                          uint32_t next,
                          const struct spa_pod* param) {
-  auto* nd = static_cast<node_data*>(object);
+  auto* const nd = static_cast<node_data*>(object);
+
+  auto* const pm = nd->pm;
 
   if (param != nullptr) {
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
+
     auto notify = false;
+    auto app_info_ui_changed = false;
 
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
@@ -327,9 +383,7 @@ void on_node_event_param(void* object,
           uint format = 0U;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
-            try {
-              auto& node = nd->pm->node_map.at(nd->nd_info.id);
-
+            if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
               std::string format_str;
 
               switch (format) {
@@ -357,12 +411,15 @@ void on_node_event_param(void* object,
                   break;
               }
 
-              node.format = format_str;
+              if (format_str != nd->nd_info.format) {
+                node->format = format_str;
 
-              nd->nd_info.format = format_str;
+                nd->nd_info.format = format_str;
 
-              notify = true;
-            } catch (...) {
+                app_info_ui_changed = true;
+
+                notify = true;
+              }
             }
           }
 
@@ -372,15 +429,16 @@ void on_node_event_param(void* object,
           int rate = 1;
 
           if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
-            try {
-              auto& node = nd->pm->node_map.at(nd->nd_info.id);
+            if (rate != nd->nd_info.rate) {
+              if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
+                node->rate = rate;
 
-              node.rate = rate;
+                nd->nd_info.rate = rate;
 
-              nd->nd_info.rate = rate;
+                app_info_ui_changed = true;
 
-              notify = true;
-            } catch (...) {
+                notify = true;
+              }
             }
           }
 
@@ -390,24 +448,23 @@ void on_node_event_param(void* object,
           auto v = false;
 
           if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
-            try {
-              auto& node = nd->pm->node_map.at(nd->nd_info.id);
+            if (v != nd->nd_info.mute) {
+              if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
+                node->mute = v;
 
-              node.mute = v;
+                nd->nd_info.mute = v;
 
-              nd->nd_info.mute = v;
+                app_info_ui_changed = true;
 
-              notify = true;
-            } catch (...) {
+                notify = true;
+              }
             }
           }
 
           break;
         }
         case SPA_PROP_channelVolumes: {
-          try {
-            auto& node = nd->pm->node_map.at(nd->nd_info.id);
-
+          if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
             std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
             const auto& n_volumes =
@@ -418,14 +475,17 @@ void on_node_event_param(void* object,
             for (uint i = 0U; i < n_volumes; max = std::max(volumes.at(i++), max))
               ;
 
-            node.n_volume_channels = n_volumes;
-            node.volume = max;
+            if (n_volumes != nd->nd_info.n_volume_channels || max != nd->nd_info.volume) {
+              node->n_volume_channels = n_volumes;
+              node->volume = max;
 
-            nd->nd_info.n_volume_channels = n_volumes;
-            nd->nd_info.volume = max;
+              nd->nd_info.n_volume_channels = n_volumes;
+              nd->nd_info.volume = max;
 
-            notify = true;
-          } catch (...) {
+              app_info_ui_changed = true;
+
+              notify = true;
+            }
           }
 
           break;
@@ -436,21 +496,19 @@ void on_node_event_param(void* object,
     }
 
     if (notify) {
-      auto* pm = nd->pm;
-
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      if (nd->nd_info.media_class == pm->media_class_output_stream) {
-        auto node_id = nd->nd_info.id;
+      if (app_info_ui_changed) {
+        const auto node_ts = nd->nd_info.timestamp;
 
-        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_output_changed.emit(node_id); });
-      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-        auto node_id = nd->nd_info.id;
-
-        Glib::signal_idle().connect_once([pm, node_id] { pm->stream_input_changed.emit(node_id); });
+        if (nd->nd_info.media_class == pm->media_class_output_stream) {
+          Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
+        } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
+          Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
+        }
       } else if (nd->nd_info.media_class == pm->media_class_virtual_source) {
-        auto nd_info_copy = nd->nd_info;
+        const auto nd_info_copy = nd->nd_info;
 
         if (nd_info_copy.id == pm->ee_source_node.id) {
           pm->ee_source_node = nd_info_copy;
@@ -458,7 +516,7 @@ void on_node_event_param(void* object,
 
         Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_changed.emit(nd_info_copy); });
       } else if (nd->nd_info.media_class == pm->media_class_sink) {
-        auto nd_info_copy = nd->nd_info;
+        const auto nd_info_copy = nd->nd_info;
 
         if (nd_info_copy.id == pm->ee_sink_node.id) {
           pm->ee_sink_node = nd_info_copy;
@@ -471,8 +529,8 @@ void on_node_event_param(void* object,
 }
 
 void on_link_info(void* object, const struct pw_link_info* info) {
-  auto* ld = static_cast<proxy_data*>(object);
-  auto* pm = ld->pm;
+  auto* const ld = static_cast<proxy_data*>(object);
+  auto* const pm = ld->pm;
 
   LinkInfo link_copy;
 
@@ -495,7 +553,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 }
 
 void on_destroy_link_proxy(void* data) {
-  auto* ld = static_cast<proxy_data*>(data);
+  auto* const ld = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&ld->proxy_listener);
 
@@ -505,7 +563,7 @@ void on_destroy_link_proxy(void* data) {
 }
 
 void on_destroy_port_proxy(void* data) {
-  auto* ld = static_cast<proxy_data*>(data);
+  auto* const ld = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&ld->proxy_listener);
 
@@ -515,7 +573,7 @@ void on_destroy_port_proxy(void* data) {
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
-  auto* ld = static_cast<proxy_data*>(object);
+  auto* const ld = static_cast<proxy_data*>(object);
 
   for (auto& module : ld->pm->list_modules) {
     if (module.id == info->id) {
@@ -533,7 +591,7 @@ void on_module_info(void* object, const struct pw_module_info* info) {
 }
 
 void on_destroy_module_proxy(void* data) {
-  auto* md = static_cast<proxy_data*>(data);
+  auto* const md = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&md->proxy_listener);
 
@@ -543,7 +601,7 @@ void on_destroy_module_proxy(void* data) {
 }
 
 void on_client_info(void* object, const struct pw_client_info* info) {
-  auto* ld = static_cast<proxy_data*>(object);
+  auto* const ld = static_cast<proxy_data*>(object);
 
   for (auto& client : ld->pm->list_clients) {
     if (client.id == info->id) {
@@ -565,7 +623,7 @@ void on_client_info(void* object, const struct pw_client_info* info) {
 }
 
 void on_destroy_client_proxy(void* data) {
-  auto* pd = static_cast<proxy_data*>(data);
+  auto* const pd = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&pd->proxy_listener);
 
@@ -575,7 +633,7 @@ void on_destroy_client_proxy(void* data) {
 }
 
 void on_device_info(void* object, const struct pw_device_info* info) {
-  auto* ld = static_cast<proxy_data*>(object);
+  auto* const ld = static_cast<proxy_data*>(object);
 
   for (auto& device : ld->pm->list_devices) {
     if (device.id == info->id) {
@@ -618,7 +676,7 @@ void on_device_event_param(void* object,
                            uint32_t index,
                            uint32_t next,
                            const struct spa_pod* param) {
-  auto* dd = static_cast<proxy_data*>(object);
+  auto* const dd = static_cast<proxy_data*>(object);
 
   if (id == SPA_PARAM_Route) {
     const char* name = nullptr;
@@ -634,7 +692,7 @@ void on_device_event_param(void* object,
     if (name != nullptr) {
       for (auto& device : dd->pm->list_devices) {
         if (device.id == dd->id) {
-          auto* pm = dd->pm;
+          auto* const pm = dd->pm;
 
           if (direction == SPA_DIRECTION_INPUT) {
             if (name != device.input_route_name || available != device.input_route_available) {
@@ -660,7 +718,7 @@ void on_device_event_param(void* object,
 }
 
 void on_destroy_device_proxy(void* data) {
-  auto* pd = static_cast<proxy_data*>(data);
+  auto* const pd = static_cast<proxy_data*>(data);
 
   spa_hook_remove(&pd->proxy_listener);
 
@@ -670,7 +728,7 @@ void on_destroy_device_proxy(void* data) {
 }
 
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
-  auto* pm = static_cast<PipeManager*>(data);
+  auto* const pm = static_cast<PipeManager*>(data);
 
   const std::string str_key = (key != nullptr) ? key : std::string();
   const std::string str_type = (type != nullptr) ? type : std::string();
@@ -688,7 +746,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == pm->ee_sink_name) {
           pm->default_output_device.id = SPA_ID_INVALID;
@@ -712,7 +770,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     PipeManager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == v.data()) {
         if (node.name == pm->ee_source_name) {
           pm->default_input_device.id = SPA_ID_INVALID;
@@ -794,7 +852,12 @@ void on_registry_global(void* data,
                         const char* type,
                         uint32_t version,
                         const struct spa_dict* props) {
-  auto* pm = static_cast<PipeManager*>(data);
+  if (id == SPA_ID_INVALID) {
+    // If PipeWire send us a wrong id, we don't have issues
+    return;
+  }
+
+  auto* const pm = static_cast<PipeManager*>(data);
 
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Node) == 0) {
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
@@ -805,16 +868,8 @@ void on_registry_global(void* data,
       if (g_strcmp0(key_media_role, "DSP") == 0) {
         const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY);
 
-        if (key_media_category == nullptr) {
-          return;
-        }
-
         if (g_strcmp0(key_media_category, "Filter") == 0) {
           const auto* key_node_description = spa_dict_lookup(props, PW_KEY_NODE_DESCRIPTION);
-
-          if (key_node_description == nullptr) {
-            return;
-          }
 
           if (g_strcmp0(key_node_description, "easyeffects_filter") == 0) {
             const auto* node_name = spa_dict_lookup(props, PW_KEY_NODE_NAME);
@@ -846,13 +901,20 @@ void on_registry_global(void* data,
           return;
         }
 
+        // New node can be added in the node map
+
+        std::string ts = std::to_string(
+            std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now().time_since_epoch())
+                .count());
+
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 
-        auto* pd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
+        auto* const pd = static_cast<node_data*>(pw_proxy_get_user_data(proxy));
 
         pd->proxy = proxy;
         pd->pm = pm;
+        pd->nd_info.timestamp = ts;
         pd->nd_info.proxy = proxy;
         pd->nd_info.id = id;
         pd->nd_info.media_class = media_class;
@@ -873,27 +935,25 @@ void on_registry_global(void* data,
         pw_node_add_listener(proxy, &pd->object_listener, &node_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &node_proxy_events, pd);
 
-        pm->node_map.insert_or_assign(pd->nd_info.id, pd->nd_info);
+        pm->node_map.insert_or_assign(ts, pd->nd_info);
 
         // sometimes PipeWire destroys the pointer before signal_idle is called,
         // therefore we make a copy of NodeInfo
 
-        if (media_class == pm->media_class_source && name != pm->ee_source_name) {
-          auto nd_info_copy = pd->nd_info;
+        const auto nd_info_copy = pd->nd_info;
 
+        if (media_class == pm->media_class_source && name != pm->ee_source_name) {
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_sink && name != pm->ee_sink_name) {
-          auto nd_info_copy = pd->nd_info;
-
           Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_output_stream) {
-          Glib::signal_idle().connect_once([pm, id, name] { pm->stream_output_added.emit(id, name); });
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_output_added.emit(nd_info_copy); });
         } else if (media_class == pm->media_class_input_stream) {
-          Glib::signal_idle().connect_once([pm, id, name] { pm->stream_input_added.emit(id, name); });
+          Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->stream_input_added.emit(nd_info_copy); });
         }
 
         util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + pd->nd_info.name +
-                    " was added");
+                    " with timestamp " + pd->nd_info.timestamp + " was added");
       }
     }
 
@@ -903,7 +963,7 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Link) == 0) {
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
 
-    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
     pd->proxy = proxy;
     pd->pm = pm;
@@ -919,9 +979,9 @@ void on_registry_global(void* data,
     pm->list_links.emplace_back(link_info);
 
     try {
-      const auto& input_node = pm->node_map.at(link_info.input_node_id);
+      const auto& input_node = pm->get_node_by_id(link_info.input_node_id);
 
-      const auto& output_node = pm->node_map.at(link_info.output_node_id);
+      const auto& output_node = pm->get_node_by_id(link_info.output_node_id);
 
       util::debug(PipeManager::log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
@@ -934,7 +994,7 @@ void on_registry_global(void* data,
   if (g_strcmp0(type, PW_TYPE_INTERFACE_Port) == 0) {
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(proxy_data)));
 
-    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
     pd->proxy = proxy;
     pd->pm = pm;
@@ -958,7 +1018,7 @@ void on_registry_global(void* data,
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(proxy_data)));
 
-    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
     pd->proxy = proxy;
     pd->pm = pm;
@@ -982,7 +1042,7 @@ void on_registry_global(void* data,
     auto* proxy =
         static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_CLIENT, sizeof(proxy_data)));
 
-    auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
     pd->proxy = proxy;
     pd->pm = pm;
@@ -1028,7 +1088,7 @@ void on_registry_global(void* data,
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_DEVICE, sizeof(proxy_data)));
 
-        auto* pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
+        auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
 
         pd->proxy = proxy;
         pd->pm = pm;
@@ -1048,7 +1108,7 @@ void on_registry_global(void* data,
 }
 
 void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
-  auto* pm = static_cast<PipeManager*>(data);
+  auto* const pm = static_cast<PipeManager*>(data);
 
   if (id == PW_ID_CORE) {
     util::warning(PipeManager::log_tag + "Remote error res: " + spa_strerror(res));
@@ -1059,7 +1119,7 @@ void on_core_error(void* data, uint32_t id, int seq, int res, const char* messag
 }
 
 void on_core_info(void* data, const struct pw_core_info* info) {
-  auto* pm = static_cast<PipeManager*>(data);
+  auto* const pm = static_cast<PipeManager*>(data);
 
   pm->core_name = info->name;
 
@@ -1084,7 +1144,7 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 }
 
 void on_core_done(void* data, uint32_t id, int seq) {
-  auto* pm = static_cast<PipeManager*>(data);
+  auto* const pm = static_cast<PipeManager*>(data);
 
   if (id == PW_ID_CORE) {
     pw_thread_loop_signal(pm->thread_loop, false);
@@ -1187,15 +1247,17 @@ PipeManager::PipeManager() {
   do {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-    for (const auto& [id, node] : node_map) {
+    for (const auto& [ts, node] : node_map) {
       if (ee_sink_node.name.empty() && node.name == ee_sink_name) {
         ee_sink_node = node;
 
-        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(id));
+        util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(node.id) +
+                    " and timestamp " + node.timestamp);
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
-        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(id));
+        util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(node.id) +
+                    " and timestamp " + node.timestamp);
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
@@ -1228,6 +1290,42 @@ PipeManager::~PipeManager() {
 
   util::debug(log_tag + "Destroying Pipewire loop...");
   pw_thread_loop_destroy(thread_loop);
+}
+
+auto PipeManager::get_node_by_id(const uint& id) -> NodeInfo& {
+  for (auto& [ts, node] : node_map) {
+    if (node.id == id) {
+      return node;
+    }
+  }
+
+  throw std::out_of_range("");
+}
+
+auto PipeManager::get_nodeptr(const std::string& ts) -> NodeInfo* {
+  // we don't want always wrap a node getter in a try catch statement
+  // so we get a pointer to check for nullptr
+
+  try {
+    auto& node = node_map.at(ts);
+
+    return &node;
+  } catch (...) {
+    return nullptr;
+  }
+}
+
+auto PipeManager::get_nodeptr_by_id(const uint& id) -> NodeInfo* {
+  // we don't want always wrap a node getter in a try catch statement
+  // so we get a pointer to check for nullptr
+
+  for (auto& [ts, node] : node_map) {
+    if (node.id == id) {
+      return &node;
+    }
+  }
+
+  return nullptr;
 }
 
 auto PipeManager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {
@@ -1272,7 +1370,7 @@ void PipeManager::set_metadata_target_node(const uint& origin_id, const uint& ta
   sync_wait_unlock();
 }
 
-void PipeManager::set_node_volume(pw_proxy* proxy, const int& n_vol_ch, const float& value) {
+void PipeManager::set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) {
   std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
   std::ranges::fill(volumes, 0.0F);

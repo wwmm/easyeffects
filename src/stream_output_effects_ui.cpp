@@ -25,9 +25,9 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              StreamOutputEffects* soe_ptr,
                                              const std::string& schema)
     : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, soe_ptr, schema), soe(soe_ptr) {
-  for (const auto& [id, node] : pm->node_map) {
+  for (const auto& [ts, node] : pm->node_map) {
     if (node.media_class == pm->media_class_output_stream) {
-      on_app_added(node.id, node.name);
+      on_app_added(node);
     }
   }
 
@@ -43,7 +43,7 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       soe->pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(soe->pm->sink_changed.connect([&](auto nd_info) {
+  connections.emplace_back(soe->pm->sink_changed.connect([&](const auto nd_info) {
     if (nd_info.id == soe->pm->ee_sink_node.id) {
       const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
                                             static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);

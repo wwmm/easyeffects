@@ -102,9 +102,13 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  void on_app_added(const uint id, const std::string name);
-  void on_app_changed(const uint id);
-  void on_app_removed(const uint id);
+  // operations on modifying listview_players are mutually exclusive
+
+  GMutex listview_players_mutex;
+
+  void on_app_added(const NodeInfo);
+  void on_app_changed(const std::string& ts);
+  void on_app_removed(const std::string& ts);
 
   auto icon_available(const Glib::ustring& icon_name) -> bool;
 

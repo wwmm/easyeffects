@@ -35,7 +35,7 @@ Compressor::Compressor(const std::string& tag,
 
       NodeInfo input_device = pm->ee_source_node;
 
-      for (const auto& [id, node] : pm->node_map) {
+      for (const auto& [ts, node] : pm->node_map) {
         if (node.name == device_name) {
           input_device = node;
 
@@ -59,7 +59,7 @@ Compressor::Compressor(const std::string& tag,
 
       NodeInfo input_device = pm->ee_source_node;
 
-      for (const auto& [id, node] : pm->node_map) {
+      for (const auto& [ts, node] : pm->node_map) {
         if (node.name == device_name) {
           input_device = node;
 
