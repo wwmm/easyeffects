@@ -2,9 +2,12 @@
 
 ## [Unreleased]
 
+## [6.1.3]
+
 ### Fixed
 
 - Prevented a case in which Spectrum were crashing.
+- Hopefully crashes like the one reported at https://github.com/wwmm/easyeffects/issues/1172 are fixed
 
 ## [6.1.2]
 
