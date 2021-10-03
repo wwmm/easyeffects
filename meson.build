@@ -2,7 +2,7 @@ project(
 	'easyeffects',
 	'c',
 	'cpp',
-	default_options : ['cpp_std=c++20','buildtype=debugoptimized'],
+	default_options : ['cpp_std=c++20','buildtype=release'],
 	version: '6.1.2',
 	meson_version: '>= 0.57.0'
 )

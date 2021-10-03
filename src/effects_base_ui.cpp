@@ -822,8 +822,8 @@ void EffectsBaseUi::setup_listview_players() {
     list_item->set_data("connection_blocklist_checkbutton", pointer_connection_blocklist_checkbutton,
                         Glib::destroy_notify_delete<sigc::connection>);
 
-    // list_item->set_data("connection_info", new sigc::connection(connection_info),
-    //                     Glib::destroy_notify_delete<sigc::connection>);
+    list_item->set_data("connection_info", new sigc::connection(connection_info),
+                        Glib::destroy_notify_delete<sigc::connection>);
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
@@ -870,7 +870,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
-    util::debug("blocklist->signal_items_changed");
+    util::debug(log_tag + "blocklist->signal_items_changed");
 
     if (removed > 0U) {
       // Some items removed from the blocklist, so the listview_players might show an item hidden before
@@ -907,7 +907,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
         } catch (...) {
           connect_stream(holder->info.id, holder->info.media_class);
 
-          util::warning("Can't retrieve enabled state of node " + std::to_string(holder->info.id));
+          util::warning(log_tag + "Can't retrieve enabled state of node " + std::to_string(holder->info.id));
 
           enabled_app_list.insert_or_assign(holder->info.id, true);
         }
