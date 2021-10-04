@@ -160,8 +160,10 @@ class EffectsBaseUi {
                                                        {plugin_name::rnnoise, _("Noise Reduction")},
                                                        {plugin_name::stereo_tools, _("Stereo Tools")}};
 
-  /* enabled_app_list saves the "enabled state" of processed apps regardless of their presence in the blocklist,
-     useful to restore the enabled state when the app is removed from the blocklist */
+  /*
+    enabled_app_list map saves the "enabled state" of processed apps regardless of their presence in the blocklist,
+     useful to restore the enabled state when the app is removed from the blocklist
+  */
 
   std::map<uint, bool> enabled_app_list;
 
