@@ -129,8 +129,8 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
           }
         } else {
           for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-            if (const auto& item = all_players_model->get_item(n); !app_is_blocklisted(item->info.name)) {
-              players_model->append(item);
+            if (auto holder = all_players_model->get_item(n); !app_is_blocklisted(holder->name)) {
+              players_model->append(holder);
             }
           }
         }
@@ -635,7 +635,7 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
+    auto* const app_name_label = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
     auto* const media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
     auto* const format = static_cast<Gtk::Label*>(list_item->get_data("format"));
     auto* const rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
@@ -654,28 +654,36 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
+    const auto timestamp = holder->ts;
+    const auto stream_id = holder->id;
+    const auto app_name = holder->name;
+    const auto media_class = holder->media_class;
+
     auto connection_enable = enable->signal_state_set().connect(
         [=, this](const auto& state) {
-          if (!app_is_blocklisted(holder->info.name)) {
-            (state) ? connect_stream(holder->info.id, holder->info.media_class)
-                    : disconnect_stream(holder->info.id, holder->info.media_class);
+          if (!app_is_blocklisted(app_name)) {
+            (state) ? connect_stream(stream_id, media_class) : disconnect_stream(stream_id, media_class);
 
-            enabled_app_list.insert_or_assign(holder->info.id, state);
+            enabled_app_list.insert_or_assign(stream_id, state);
           }
 
           // no need to trigger an info_updated signal here because
-          // Pipewire will do it on stream connection/disconnection
+          // PipeWire will do it on stream connection/disconnection
 
           return false;
         },
         false);
 
-    auto connection_volume = volume->signal_value_changed().connect([=]() {
-      PipeManager::set_node_volume(holder->info.proxy, holder->info.n_volume_channels,
-                                   static_cast<float>(volume->get_value()) / 100.0F);
+    auto connection_volume = volume->signal_value_changed().connect([=, this]() {
+      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
+        if (node_it->second.proxy != nullptr) {
+          pm->set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels,
+                              static_cast<float>(volume->get_value()) / 100.0F);
+        }
+      }
     });
 
-    auto connection_mute = mute->signal_toggled().connect([=]() {
+    auto connection_mute = mute->signal_toggled().connect([=, this]() {
       const auto& state = mute->get_active();
 
       if (state) {
@@ -688,16 +696,20 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      PipeManager::set_node_mute(holder->info.proxy, state);
+      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
+        if (node_it->second.proxy != nullptr) {
+          PipeManager::set_node_mute(node_it->second.proxy, state);
+        }
+      }
     });
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
-        enabled_app_list.insert_or_assign(holder->info.id, enable->get_active());
+        enabled_app_list.insert_or_assign(stream_id, enable->get_active());
 
-        add_new_blocklist_entry(holder->info.name);
+        add_new_blocklist_entry(app_name);
       } else {
-        remove_blocklist_entry(holder->info.name);
+        remove_blocklist_entry(app_name);
       }
 
       // Stream connection/disconnection will be done in blocklist items signal changed
@@ -708,27 +720,27 @@ void EffectsBaseUi::setup_listview_players() {
     auto* pointer_connection_mute = new sigc::connection(connection_mute);
     auto* pointer_connection_blocklist_checkbutton = new sigc::connection(connection_blocklist_checkbutton);
 
-    auto application_info_update = [=, this]() {
-      if (holder->info.state == PW_NODE_STATE_CREATING) {
+    auto application_info_update = [=, this](const NodeInfo node_info) {
+      if (node_info.state == PW_NODE_STATE_CREATING) {
         // PW_NODE_STATE_CREATING is useless and does not give any meaningful info,
         // therefore skip it
         return;
       }
 
-      app_name->set_text(holder->info.name);
-      media_name->set_text(holder->info.media_name);
-      format->set_text(holder->info.format);
-      rate->set_text(Glib::ustring::format(holder->info.rate) + " Hz");
-      channels->set_text(Glib::ustring::format(holder->info.n_volume_channels));
-      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, holder->info.latency) + " s");
-      state->set_text(node_state_to_ustring(holder->info.state));
+      app_name_label->set_text(node_info.name);
+      media_name->set_text(node_info.media_name);
+      format->set_text(node_info.format);
+      rate->set_text(Glib::ustring::format(node_info.rate) + " Hz");
+      channels->set_text(Glib::ustring::format(node_info.n_volume_channels));
+      latency->set_text(Glib::ustring::format(std::setprecision(2), std::fixed, node_info.latency) + " s");
+      state->set_text(node_state_to_ustring(node_info.state));
 
       // set the enable switch
 
       pointer_connection_enable->block();
 
-      const auto& is_enabled = pm->stream_is_connected(holder->info.id, holder->info.media_class);
-      const auto& is_blocklisted = app_is_blocklisted(holder->info.name);
+      const auto& is_enabled = pm->stream_is_connected(node_info.id, node_info.media_class);
+      const auto& is_blocklisted = app_is_blocklisted(node_info.name);
 
       enable->set_sensitive(is_enabled || !is_blocklisted);
       enable->set_active(is_enabled);
@@ -743,14 +755,16 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_blocklist_checkbutton->unblock();
 
-      // save app enabled state only the first time when is not preset in the enabled_app_list map
+      // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
-      enabled_app_list.try_emplace(holder->info.id, is_enabled);
+      if (auto state_it = enabled_app_list.find(node_info.id); state_it == enabled_app_list.end()) {
+        state_it->second = is_enabled;
+      }
 
       // set the icon name
 
       if (icon_theme != nullptr) {
-        if (const auto& icon_name = get_app_icon_name(holder->info); !icon_name.empty()) {
+        if (const auto& icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
           if (app_icon->get_icon_name() != icon_name) {
             // app icon changed or not set, so we try to update it
 
@@ -779,7 +793,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       scale_volume->set_sensitive(true);
 
-      volume->set_value(100 * holder->info.volume);
+      volume->set_value(100 * node_info.volume);
 
       pointer_connection_volume->unblock();
 
@@ -787,7 +801,7 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_mute->block();
 
-      if (holder->info.mute) {
+      if (node_info.mute) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
 
         scale_volume->set_sensitive(false);
@@ -797,17 +811,17 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      mute->set_active(holder->info.mute);
+      mute->set_active(node_info.mute);
 
       pointer_connection_mute->unblock();
-
-      holder->scheduled_update = false;
     };
 
     // update the app info ui for the very first time,
     // needed for interface initialization in service mode
 
-    application_info_update();
+    if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
+      application_info_update(node_it->second);
+    }
 
     // connect the app info update lambda to holder info_updated signal
 
@@ -870,53 +884,47 @@ void EffectsBaseUi::setup_listview_blocklist() {
   });
 
   blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
-    util::debug(log_tag + "blocklist->signal_items_changed");
+    const auto& show_blocklisted_apps = settings->get_boolean("show-blocklisted-apps");
 
-    if (removed > 0U) {
-      // Some items removed from the blocklist, so the listview_players might show an item hidden before
+    players_model->remove_all();
 
-      players_model->remove_all();
-
-      listview_players->set_model(nullptr);
-
-      for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-        players_model->append(all_players_model->get_item(n));
-      }
-
-      listview_players->set_model(Gtk::NoSelection::create(players_model));
-    }
-
-    // Updating the enabled state of items added/removed to/from blocklist
+    listview_players->set_model(nullptr);
 
     for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(all_players_model->get_item(n));
+      auto holder = all_players_model->get_item(n);
 
-      const auto& app_is_enabled = pm->stream_is_connected(holder->info.id, holder->info.media_class);
+      const auto& app_is_enabled = pm->stream_is_connected(holder->id, holder->media_class);
 
-      if (app_is_blocklisted(holder->info.name)) {
+      if (app_is_blocklisted(holder->name)) {
         if (app_is_enabled) {
-          disconnect_stream(holder->info.id, holder->info.media_class);
+          disconnect_stream(holder->id, holder->media_class);
         }
-      } else if (!app_is_enabled) {
-        // Try to restore the previous enabled state, if needed
 
-        try {
-          if (enabled_app_list.at(holder->info.id)) {
-            connect_stream(holder->info.id, holder->info.media_class);
+        if (show_blocklisted_apps) {
+          players_model->append(holder);
+        }
+      } else {
+        if (!app_is_enabled) {
+          // Try to restore the previous enabled state, if needed
+
+          try {
+            if (enabled_app_list.at(holder->id)) {
+              connect_stream(holder->id, holder->media_class);
+            }
+          } catch (...) {
+            connect_stream(holder->id, holder->media_class);
+
+            util::warning("Can't retrieve enabled state of node " + std::to_string(holder->id));
+
+            enabled_app_list.insert({holder->id, true});
           }
-        } catch (...) {
-          connect_stream(holder->info.id, holder->info.media_class);
-
-          util::warning(log_tag + "Can't retrieve enabled state of node " + std::to_string(holder->info.id));
-
-          enabled_app_list.insert_or_assign(holder->info.id, true);
         }
+
+        players_model->append(holder);
       }
-
-      // enabled switch state will be updated in holder info_updated signal handler
-
-      Glib::signal_idle().connect_once([=] { holder->info_updated.emit(); });
     }
+
+    listview_players->set_model(Gtk::NoSelection::create(players_model));
   });
 
   // sorter
@@ -1334,83 +1342,45 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   });
 }
 
-void EffectsBaseUi::on_app_added(const uint id, const std::string name) {
+void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
   // do not add the same stream twice
 
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (all_players_model->get_item(n)->info.id == id) {
+    if (all_players_model->get_item(n)->ts == node_info.timestamp) {
       return;
     }
-  }
-
-  NodeInfo node_info;
-
-  try {
-    node_info = pm->node_map.at(id);
-  } catch (...) {
-    return;
   }
 
   auto node_info_holder = NodeInfoHolder::create(node_info);
 
   all_players_model->append(node_info_holder);
 
-  // Blocklist check
-
-  if (app_is_blocklisted(name) && !settings->get_boolean("show-blocklisted-apps")) {
-    return;
+  if (settings->get_boolean("show-blocklisted-apps") || !app_is_blocklisted(node_info.name)) {
+    players_model->append(node_info_holder);
   }
-
-  players_model->append(node_info_holder);
 }
 
-void EffectsBaseUi::on_app_changed(const uint id) {
+void EffectsBaseUi::on_app_changed(const util::time_point ts) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    if (auto* item = players_model->get_item(n).get(); item->info.id == id) {
-      try {
-        item->info = pm->node_map.at(id);
-
-        if (!item->scheduled_update) {
-          item->scheduled_update = true;
-
-          item->info_updated.emit();
-        }
-      } catch (...) {
+    if (auto holder = players_model->get_item(n); holder->ts == ts) {
+      if (const auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+        holder->info_updated.emit(node_it->second);
       }
-
-      break;
-    }
-  }
-
-  for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (auto* item = all_players_model->get_item(n).get(); item->info.id == id) {
-      try {
-        item->info = pm->node_map.at(id);
-
-        if (!item->scheduled_update) {
-          item->scheduled_update = true;
-
-          item->info_updated.emit();
-        }
-      } catch (...) {
-      }
-
-      break;
     }
   }
 }
 
-void EffectsBaseUi::on_app_removed(const uint id) {
-  for (guint n = 0U; n < players_model->get_n_items(); n++) {
-    if (players_model->get_item(n)->info.id == id) {
-      players_model->remove(n);
-
-      break;
-    }
-  }
-
+void EffectsBaseUi::on_app_removed(const util::time_point ts) {
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
-    if (all_players_model->get_item(n)->info.id == id) {
+    if (all_players_model->get_item(n)->ts == ts) {
+      for (guint i = 0U; i < players_model->get_n_items(); i++) {
+        if (players_model->get_item(i)->ts == ts) {
+          players_model->remove(i);
+
+          break;
+        }
+      }
+
       all_players_model->remove(n);
 
       break;
@@ -1448,7 +1418,7 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
 }
 
 auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
-  // map to handle cases where Pipewire does not set icon name string or app name equal to icon name.
+  // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
   static std::map<Glib::ustring, Glib::ustring> icon_map{
       {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
 
@@ -1513,7 +1483,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
   auto bl = settings->get_string_array("blocklist");
 
   if (std::any_of(bl.cbegin(), bl.cend(), [&](const auto& str) { return str == name; })) {
-    util::debug("blocklist_settings_ui: entry already present in the list");
+    util::debug(log_tag + "entry already present in the list");
 
     return false;
   }
@@ -1522,7 +1492,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
 
   settings->set_string_array("blocklist", bl);
 
-  util::debug("blocklist_settings_ui: new entry has been added to the blocklist");
+  util::debug(log_tag + "new entry has been added to the blocklist");
 
   return true;
 }
@@ -1534,7 +1504,7 @@ void EffectsBaseUi::remove_blocklist_entry(const Glib::ustring& name) {
 
   settings->set_string_array("blocklist", bl);
 
-  util::debug("blocklist_settings_ui: an entry has been removed from the blocklist");
+  util::debug(log_tag + "an entry has been removed from the blocklist");
 }
 
 void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {

@@ -23,20 +23,23 @@
 #include <glibmm.h>
 #include "pipe_manager.hpp"
 
-/*
-  For some reason I really do not understand we have to pass by value the structures given as argument to the "create"
-  methos below.
-*/
+// we had issues with holders, therefore for safety we pass arguments as value
 
 class NodeInfoHolder : public Glib::Object {
  public:
-  NodeInfo info;
+  util::time_point ts;
+
+  uint id = SPA_ID_INVALID;
+
+  uint device_id = SPA_ID_INVALID;
+
+  std::string name;
+
+  std::string media_class;
 
   static auto create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder>;
 
-  sigc::signal<void()> info_updated;
-
-  bool scheduled_update = false;
+  sigc::signal<void(const NodeInfo)> info_updated;
 
  protected:
   NodeInfoHolder(NodeInfo info);

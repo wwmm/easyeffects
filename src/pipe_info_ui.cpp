@@ -37,7 +37,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       autoloading_input_model(Gio::ListStore<PresetsAutoloadingHolder>::create()),
       output_presets_string_list(Gtk::StringList::create({"initial_value"})),
       input_presets_string_list(Gtk::StringList::create({"initial_value"})) {
-  for (const auto& [id, node] : pm->node_map) {
+  for (const auto& [ts, node] : pm->node_map) {
     if (node.name == pm->ee_sink_name || node.name == pm->ee_source_name) {
       continue;
     }
@@ -108,7 +108,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
-    sie_settings->set_string("input-device", holder->info.name);
+    sie_settings->set_string("input-device", holder->name);
   });
 
   dropdown_output_devices->property_selected_item().signal_changed().connect([=, this]() {
@@ -118,7 +118,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
-    soe_settings->set_string("output-device", holder->info.name);
+    soe_settings->set_string("output-device", holder->name);
   });
 
   // setting the displayed entry to the right value
@@ -129,9 +129,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     if (holder_selected != nullptr) {
       const auto* input_device_name = sie_settings->get_string("input-device").c_str();
 
-      if (holder_selected->info.name != input_device_name) {
+      if (holder_selected->name != input_device_name) {
         for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-          if (input_devices_model->get_item(n)->info.name == input_device_name) {
+          if (input_devices_model->get_item(n)->name == input_device_name) {
             dropdown_input_devices->set_selected(n);
           }
         }
@@ -145,9 +145,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     if (holder_selected != nullptr) {
       const auto* output_device_name = soe_settings->get_string("output-device").c_str();
 
-      if (holder_selected->info.name != output_device_name) {
+      if (holder_selected->name != output_device_name) {
         for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-          if (output_devices_model->get_item(n)->info.name == output_device_name) {
+          if (output_devices_model->get_item(n)->name == output_device_name) {
             dropdown_output_devices->set_selected(n);
           }
         }
@@ -164,9 +164,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
       if (holder != nullptr) {
-        if (holder->info.name != pm->default_input_device.name) {
+        if (holder->name != pm->default_input_device.name) {
           for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-            if (input_devices_model->get_item(n)->info.name == pm->default_input_device.name) {
+            if (input_devices_model->get_item(n)->name == pm->default_input_device.name) {
               dropdown_input_devices->set_selected(n);
 
               break;
@@ -184,9 +184,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
       if (holder_selected != nullptr) {
-        if (holder_selected->info.name != pm->default_output_device.name) {
+        if (holder_selected->name != pm->default_output_device.name) {
           for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-            if (output_devices_model->get_item(n)->info.name == pm->default_output_device.name) {
+            if (output_devices_model->get_item(n)->name == pm->default_output_device.name) {
               dropdown_output_devices->set_selected(n);
 
               break;
@@ -210,7 +210,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     std::string device_profile;
 
     for (const auto& device : pm->list_devices) {
-      if (device.id == holder->info.device_id) {
+      if (device.id == holder->device_id) {
         device_profile = device.output_route_name;
 
         break;
@@ -222,7 +222,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     for (guint n = 0; n < autoloading_output_model->get_n_items(); n++) {
       const auto& item = autoloading_output_model->get_item(n);
 
-      if (holder->info.name == item->device && device_profile == item->device_profile) {
+      if (holder->name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device, item->device_profile);
 
         break;
@@ -232,7 +232,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     const auto preset_name =
         dropdown_autoloading_output_presets->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    presets_manager->add_autoload(PresetType::output, preset_name, holder->info.name, device_profile);
+    presets_manager->add_autoload(PresetType::output, preset_name, holder->name, device_profile);
   });
 
   autoloading_add_input_profile->signal_clicked().connect([=, this]() {
@@ -245,7 +245,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     std::string device_profile;
 
     for (const auto& device : pm->list_devices) {
-      if (device.id == holder->info.device_id) {
+      if (device.id == holder->device_id) {
         device_profile = device.input_route_name;
 
         break;
@@ -257,7 +257,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     for (guint n = 0; n < autoloading_input_model->get_n_items(); n++) {
       const auto& item = autoloading_input_model->get_item(n);
 
-      if (holder->info.name == item->device && device_profile == item->device_profile) {
+      if (holder->name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device, item->device_profile);
 
         break;
@@ -267,7 +267,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     const auto preset_name =
         dropdown_autoloading_input_presets->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    presets_manager->add_autoload(PresetType::input, preset_name, holder->info.name, device_profile);
+    presets_manager->add_autoload(PresetType::input, preset_name, holder->name, device_profile);
   });
 
   spinbutton_test_signal_frequency->signal_output().connect(
@@ -334,9 +334,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
-  connections.emplace_back(pm->sink_added.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-      if (output_devices_model->get_item(n)->info.id == info.id) {
+      if (output_devices_model->get_item(n)->id == info.id) {
         return;
       }
     }
@@ -344,9 +344,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     output_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->sink_removed.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
-      if (output_devices_model->get_item(n)->info.id == info.id) {
+      if (output_devices_model->get_item(n)->id == info.id) {
         output_devices_model->remove(n);
 
         return;
@@ -354,9 +354,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }));
 
-  connections.emplace_back(pm->source_added.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-      if (input_devices_model->get_item(n)->info.id == info.id) {
+      if (input_devices_model->get_item(n)->id == info.id) {
         return;
       }
     }
@@ -364,9 +364,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     input_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->source_removed.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
-      if (input_devices_model->get_item(n)->info.id == info.id) {
+      if (input_devices_model->get_item(n)->id == info.id) {
         input_devices_model->remove(n);
 
         return;
@@ -551,14 +551,14 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    if (holder->info.media_class == pm->media_class_sink) {
+    if (holder->media_class == pm->media_class_sink) {
       icon->set_from_icon_name("audio-card-symbolic");
-    } else if (holder->info.media_class == pm->media_class_source) {
+    } else if (holder->media_class == pm->media_class_source) {
       icon->set_from_icon_name("audio-input-microphone-symbolic");
     }
 
-    label->set_name(holder->info.name);
-    label->set_text(holder->info.name);
+    label->set_name(holder->name);
+    label->set_text(holder->name);
   });
 }
 

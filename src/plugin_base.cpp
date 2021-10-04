@@ -196,9 +196,9 @@ auto PluginBase::connect_to_pw() -> bool {
 
     success = true;
 
-    util::debug(log_tag + name + " successfully connected to pipewire graph");
+    util::debug(log_tag + name + " successfully connected to PipeWire graph");
   } else {
-    util::error(log_tag + name + " can not connect the filter to pipewire!");
+    util::error(log_tag + name + " cannot connect the filter to PipeWire!");
   }
 
   return success;

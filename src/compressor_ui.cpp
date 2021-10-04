@@ -240,7 +240,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
-    settings->set_string("sidechain-input-device", holder->info.name);
+    settings->set_string("sidechain-input-device", holder->name);
   });
 
   setup_dropdown_input_devices();
@@ -463,8 +463,8 @@ void CompressorUi::setup_dropdown_input_devices() {
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
-    label->set_name(holder->info.name);
-    label->set_text(holder->info.name);
+    label->set_name(holder->name);
+    label->set_text(holder->name);
   });
 }
 
@@ -473,15 +473,15 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
 
   input_devices_model->append(NodeInfoHolder::create(pm->ee_source_node));
 
-  for (const auto& [id, node] : pm->node_map) {
+  for (const auto& [ts, node] : pm->node_map) {
     if (node.media_class == pm->media_class_source) {
       input_devices_model->append(NodeInfoHolder::create(node));
     }
   }
 
-  connections.emplace_back(pm->source_added.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, list_size = input_devices_model->get_n_items(); n < list_size; n++) {
-      if (input_devices_model->get_item(n)->info.id == info.id) {
+      if (input_devices_model->get_item(n)->id == info.id) {
         return;
       }
     }
@@ -489,9 +489,9 @@ void CompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
     input_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->source_removed.connect([=, this](NodeInfo info) {
+  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo info) {
     for (guint n = 0U, list_size = input_devices_model->get_n_items(); n < list_size; n++) {
-      if (input_devices_model->get_item(n)->info.id == info.id) {
+      if (input_devices_model->get_item(n)->id == info.id) {
         input_devices_model->remove(n);
 
         return;

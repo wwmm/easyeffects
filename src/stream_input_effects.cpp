@@ -31,7 +31,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     const auto* input_device = settings->get_string("input-device").c_str();
 
     if (input_device != pm->ee_source_name) {
-      for (const auto& [id, node] : pm->node_map) {
+      for (const auto& [ts, node] : pm->node_map) {
         if (node.name == input_device) {
           pm->input_device = node;
 
@@ -50,7 +50,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != pm->ee_source_name) {
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == PULSE_SOURCE) {
         pm->input_device = node;
 
@@ -83,7 +83,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == name) {
         pm->input_device = node;
 
@@ -103,19 +103,19 @@ StreamInputEffects::~StreamInputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamInputEffects::on_app_added(const uint id, const std::string name) {
+void StreamInputEffects::on_app_added(const NodeInfo node_info) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
+  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
-    pm->disconnect_stream_input(id);
+    pm->disconnect_stream_input(node_info.id);
   } else if (global_settings->get_boolean("process-all-inputs")) {
-    pm->connect_stream_input(id);
+    pm->connect_stream_input(node_info.id);
   }
 }
 
-void StreamInputEffects::on_link_changed(LinkInfo link_info) {
+void StreamInputEffects::on_link_changed(const LinkInfo link_info) {
   if (pm->default_input_device.id == pm->ee_source_node.id) {
     return;
   }

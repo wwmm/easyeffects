@@ -122,7 +122,7 @@ void Application::on_startup() {
     presets_manager = std::make_unique<PresetsManager>();
   }
 
-  pm->new_default_sink.connect([&](NodeInfo node) {
+  pm->new_default_sink.connect([&](const NodeInfo node) {
     util::debug("new default output device: " + node.name);
 
     if (soe_settings->get_boolean("use-default-output-device")) {
@@ -136,7 +136,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->new_default_source.connect([&](NodeInfo node) {
+  pm->new_default_source.connect([&](const NodeInfo node) {
     util::debug("new default input device: " + node.name);
 
     if (sie_settings->get_boolean("use-default-input-device")) {
@@ -150,7 +150,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->device_input_route_changed.connect([&](DeviceInfo device) {
+  pm->device_input_route_changed.connect([&](const DeviceInfo device) {
     if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -159,7 +159,7 @@ void Application::on_startup() {
 
     NodeInfo target_node;
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.device_id == device.id && node.media_class == pm->media_class_source) {
         target_node = node;
 
@@ -178,7 +178,7 @@ void Application::on_startup() {
     }
   });
 
-  pm->device_output_route_changed.connect([&](DeviceInfo device) {
+  pm->device_output_route_changed.connect([&](const DeviceInfo device) {
     if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
     }
@@ -187,7 +187,7 @@ void Application::on_startup() {
 
     NodeInfo target_node;
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.device_id == device.id && node.media_class == pm->media_class_sink) {
         target_node = node;
 
@@ -215,7 +215,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == name) {
         device_id = node.device_id;
 
@@ -243,7 +243,7 @@ void Application::on_startup() {
 
     uint device_id = SPA_ID_INVALID;
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == name) {
         device_id = node.device_id;
 

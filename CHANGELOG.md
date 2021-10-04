@@ -4,17 +4,22 @@
 
 ## [6.1.3]
 
+### Added
+
+- PipeWire monitor streams are now excluded and removed from the applications list.
+
 ### Fixed
 
-- Prevented a case in which Spectrum were crashing.
-- Hopefully crashes like the one reported at https://github.com/wwmm/easyeffects/issues/1172 are fixed
+- Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed.
+- Prevented a case in which Spectrum was crashing.
+- Pavucontrol is not added anymore to input applications list on systems with localization different than English.
 
 ## [6.1.2]
 
 ### Added
 
 - Improved compatibility with WirePlumber. This is needed to run on systems that decided to use it instead of the
-  built-in PipeWire session manager. More information at https://github.com/wwmm/easyeffects/issues/1144
+  built-in PipeWire session manager. More information at issue [1144](https://github.com/wwmm/easyeffects/issues/1144).
 
 ## [6.1.1]
 
@@ -174,7 +179,7 @@ a look at https://github.com/wwmm/easyeffects/issues/904 and https://github.com/
 ### Note to packagers
 
 - This is the last release supporting Pulseaudio. The following PulseEffects releases will be based on
-  the new Pipewire multimedia server and only fixes to critical bugs will be backported to the legacy
+  the new PipeWire multimedia server and only fixes to critical bugs will be backported to the legacy
   pulseaudio branch https://github.com/wwmm/pulseeffects/tree/pulseaudio-legacy.
 
 ## [4.8.3]

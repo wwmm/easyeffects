@@ -129,7 +129,7 @@ TestSignals::TestSignals(PipeManager* pipe_manager) : pm(pipe_manager), random_g
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) < 0) {
-    util::error(log_tag + filter_name + " can not connect the filter to pipewire!");
+    util::error(log_tag + filter_name + " cannot connect the filter to PipeWire!");
   }
 
   pm->sync_wait_unlock();

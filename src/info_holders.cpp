@@ -22,7 +22,13 @@
 #include <utility>
 
 NodeInfoHolder::NodeInfoHolder(NodeInfo info)
-    : Glib::ObjectBase(typeid(NodeInfoHolder)), Glib::Object(), info(std::move(info)) {}
+    : Glib::ObjectBase(typeid(NodeInfoHolder)),
+      Glib::Object(),
+      ts(info.timestamp),
+      id(info.id),
+      device_id(info.device_id),
+      name(info.name),
+      media_class(info.media_class) {}
 
 auto NodeInfoHolder::create(NodeInfo info) -> Glib::RefPtr<NodeInfoHolder> {
   return Glib::make_refptr_for_instance<NodeInfoHolder>(new NodeInfoHolder(std::move(info)));

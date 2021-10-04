@@ -39,9 +39,9 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
 
   toggle_listen_mic->signal_toggled().connect([&, this]() { sie->set_listen_to_mic(toggle_listen_mic->get_active()); });
 
-  for (const auto& [id, node] : pm->node_map) {
+  for (const auto& [ts, node] : pm->node_map) {
     if (node.media_class == pm->media_class_input_stream) {
-      on_app_added(node.id, node.name);
+      on_app_added(node);
     }
   }
 
@@ -57,7 +57,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   connections.emplace_back(
       sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(sie->pm->source_changed.connect([&](auto nd_info) {
+  connections.emplace_back(sie->pm->source_changed.connect([&](const auto nd_info) {
     // nd_info is a reference of a copy previously made
 
     if (nd_info.id == sie->pm->ee_source_node.id) {

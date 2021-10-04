@@ -31,7 +31,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     const auto* output_device = settings->get_string("output-device").c_str();
 
     if (output_device != pm->ee_sink_name) {
-      for (const auto& [id, node] : pm->node_map) {
+      for (const auto& [ts, node] : pm->node_map) {
         if (node.name == output_device) {
           pm->output_device = node;
 
@@ -50,7 +50,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != pm->ee_sink_name) {
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
@@ -83,7 +83,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       return;
     }
 
-    for (const auto& [id, node] : pm->node_map) {
+    for (const auto& [ts, node] : pm->node_map) {
       if (node.name == name) {
         pm->output_device = node;
 
@@ -103,19 +103,19 @@ StreamOutputEffects::~StreamOutputEffects() {
   util::debug(log_tag + "destroyed");
 }
 
-void StreamOutputEffects::on_app_added(const uint id, const std::string name) {
+void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
   const auto& blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, name.c_str()) != blocklist.end();
+  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
-    pm->disconnect_stream_output(id);
+    pm->disconnect_stream_output(node_info.id);
   } else if (global_settings->get_boolean("process-all-outputs")) {
-    pm->connect_stream_output(id);
+    pm->connect_stream_output(node_info.id);
   }
 }
 
-void StreamOutputEffects::on_link_changed(LinkInfo link_info) {
+void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
   /*
     If bypass is enabled do not touch the plugin pipeline
   */
