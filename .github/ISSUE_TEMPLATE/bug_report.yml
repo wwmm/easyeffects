@@ -4,8 +4,7 @@ body:
 - type: input
   attributes:
     label: EasyEffects Version
-    description: What version of EasyEffects are you using?
-    placeholder: 6.1.2
+    placeholder: EasyEffects Settings > About EasyEffects
   validations:
     required: true
 - type: dropdown
@@ -14,6 +13,7 @@ body:
     options:
       - Arch Official (easyeffects)
       - AUR (easyeffects-git)
+      - Fedora
       - Flatpak (Flathub)
       - Gentoo
       - NixOS
@@ -24,23 +24,34 @@ body:
 - type: input
   attributes:
     label: Distribution
-    description: What distribution are you using?
-    placeholder: "e.g. Fedora 34, Ubuntu 20.04 or Arch Linux"
+    placeholder: "e.g. Arch Linux, Fedora 34 or Ubuntu 20.04"
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Describe the bug
+    description: A clear description of the bug you've experienced.
   validations:
     required: true
 - type: textarea
   attributes:
     label: Expected Behavior
     description: A clear and concise description of what you expected to happen.
-  validations:
-    required: true
 - type: textarea
   attributes:
-    label: Actual Behavior
-    description: A clear description of what actually happens.
-  validations:
-    required: true
+    label: Debug Log
+    description: If relevant, please add a log by launching with `G_MESSAGES_DEBUG=easyeffects`
+    value: "<details><summary>Debug Log</summary><br/>  
+    
+    
+           ```  
+           
+           Paste your log here  
+           
+           ```  
+           
+           </details>"
 - type: textarea
   attributes:
     label: Additional Information
-    description: If your problem needs further explanation please add more information here.
+    description: If your problem needs further explanation please add more information here. See https://github.com/wwmm/easyeffects/wiki/Reporting-Bugs for suggestions on what you might want to include.

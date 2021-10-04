@@ -10,7 +10,7 @@
 
 ### Fixed
 
-- Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed
+- Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed.
 - Prevented a case in which Spectrum was crashing.
 - Pavucontrol is not added anymore to input applications list on systems with localization different than English.
 
