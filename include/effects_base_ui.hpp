@@ -102,10 +102,6 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  // operations on modifying listview_players are mutually exclusive
-
-  GMutex listview_players_mutex;
-
   void on_app_added(const NodeInfo);
   void on_app_changed(const std::string& ts);
   void on_app_removed(const std::string& ts);

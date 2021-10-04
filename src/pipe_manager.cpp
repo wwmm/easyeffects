@@ -154,19 +154,11 @@ void on_destroy_node_proxy(void* data) {
 
   spa_hook_remove(&pd->proxy_listener);
 
-  try {
-    pd->nd_info.proxy = nullptr;
+  pd->nd_info.proxy = nullptr;
 
-    pm->node_map.at(pd->nd_info.timestamp).proxy = nullptr;
+  pm->node_map.at(pd->nd_info.timestamp).proxy = nullptr;
 
-    // for safety reasons, we wait for scheduled updates to be executed before deleting the node
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(200));
-
-    pm->node_map.erase(pd->nd_info.timestamp);
-  } catch (...) {
-    return;
-  }
+  pm->node_map.erase(pd->nd_info.timestamp);
 
   if (pd->nd_info.media_class == pm->media_class_source) {
     const auto nd_info_copy = pd->nd_info;
@@ -207,21 +199,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       spa_hook_remove(&nd->proxy_listener);
 
-      try {
-        nd->nd_info.proxy = nullptr;
+      nd->nd_info.proxy = nullptr;
 
-        pm->node_map.at(nd->nd_info.timestamp).proxy = nullptr;
+      pm->node_map.at(nd->nd_info.timestamp).proxy = nullptr;
 
-        if (nd->nd_info.name != pm->ee_sink_name && nd->nd_info.name != pm->ee_source_name) {
-          // for safety reasons, we wait for scheduled updates to be executed before deleting the node
-
-          std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        }
-
-        pm->node_map.erase(nd->nd_info.timestamp);
-      } catch (...) {
-        return;
-      }
+      pm->node_map.erase(nd->nd_info.timestamp);
 
       if (nd->nd_info.media_class == pm->media_class_source) {
         const auto nd_info_copy = nd->nd_info;

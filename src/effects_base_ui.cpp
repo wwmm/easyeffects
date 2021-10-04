@@ -119,8 +119,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
 
   show_blocklisted_apps->signal_state_set().connect(
       [=, this](const auto& state) {
-        g_mutex_lock(&listview_players_mutex);
-
         players_model->remove_all();
 
         listview_players->set_model(nullptr);
@@ -138,8 +136,6 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
         }
 
         listview_players->set_model(Gtk::NoSelection::create(players_model));
-
-        g_mutex_unlock(&listview_players_mutex);
 
         return false;
       },
@@ -258,8 +254,6 @@ EffectsBaseUi::~EffectsBaseUi() {
   effects_base->rnnoise->bypass = false;
   effects_base->spectrum->bypass = false;
   effects_base->stereo_tools->bypass = false;
-
-  g_mutex_clear(&listview_players_mutex);
 }
 
 void EffectsBaseUi::add_plugins_to_stack_plugins() {
@@ -608,8 +602,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
 }
 
 void EffectsBaseUi::setup_listview_players() {
-  g_mutex_init(&listview_players_mutex);
-
   // setting the listview model and factory
 
   listview_players->set_model(Gtk::NoSelection::create(players_model));
@@ -888,8 +880,6 @@ void EffectsBaseUi::setup_listview_blocklist() {
   blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
     const auto& show_blocklisted_apps = settings->get_boolean("show-blocklisted-apps");
 
-    g_mutex_lock(&listview_players_mutex);
-
     players_model->remove_all();
 
     listview_players->set_model(nullptr);
@@ -929,8 +919,6 @@ void EffectsBaseUi::setup_listview_blocklist() {
     }
 
     listview_players->set_model(Gtk::NoSelection::create(players_model));
-
-    g_mutex_unlock(&listview_players_mutex);
   });
 
   // sorter
@@ -1351,12 +1339,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
   // do not add the same stream twice
 
-  g_mutex_lock(&listview_players_mutex);
-
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     if (all_players_model->get_item(n)->ts == node_info.timestamp) {
-      g_mutex_unlock(&listview_players_mutex);
-
       return;
     }
   }
@@ -1369,8 +1353,6 @@ void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
     if (settings->get_boolean("show-blocklisted-apps") || !app_is_blocklisted(node_info.name)) {
       players_model->append(node_info_holder);
     }
-
-    g_mutex_unlock(&listview_players_mutex);
   }
 }
 
@@ -1385,8 +1367,6 @@ void EffectsBaseUi::on_app_changed(const std::string& ts) {
 }
 
 void EffectsBaseUi::on_app_removed(const std::string& ts) {
-  g_mutex_lock(&listview_players_mutex);
-
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     if (all_players_model->get_item(n)->ts == ts) {
       for (guint i = 0U; i < players_model->get_n_items(); i++) {
@@ -1402,8 +1382,6 @@ void EffectsBaseUi::on_app_removed(const std::string& ts) {
       break;
     }
   }
-
-  g_mutex_unlock(&listview_players_mutex);
 }
 
 void EffectsBaseUi::on_new_output_level_db(const float& left, const float& right) {
