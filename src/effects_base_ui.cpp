@@ -635,7 +635,7 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const app_name = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
+    auto* const app_name_label = static_cast<Gtk::Label*>(list_item->get_data("app_name"));
     auto* const media_name = static_cast<Gtk::Label*>(list_item->get_data("media_name"));
     auto* const format = static_cast<Gtk::Label*>(list_item->get_data("format"));
     auto* const rate = static_cast<Gtk::Label*>(list_item->get_data("rate"));
@@ -654,13 +654,17 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
 
+    const auto timestamp = holder->ts;
+    const auto stream_id = holder->id;
+    const auto app_name = holder->name;
+    const auto media_class = holder->media_class;
+
     auto connection_enable = enable->signal_state_set().connect(
         [=, this](const auto& state) {
-          if (!app_is_blocklisted(holder->name)) {
-            (state) ? connect_stream(holder->id, holder->media_class)
-                    : disconnect_stream(holder->id, holder->media_class);
+          if (!app_is_blocklisted(app_name)) {
+            (state) ? connect_stream(stream_id, media_class) : disconnect_stream(stream_id, media_class);
 
-            enabled_app_list.insert_or_assign(holder->id, state);
+            enabled_app_list.insert_or_assign(stream_id, state);
           }
 
           // no need to trigger an info_updated signal here because
@@ -671,7 +675,7 @@ void EffectsBaseUi::setup_listview_players() {
         false);
 
     auto connection_volume = volume->signal_value_changed().connect([=, this]() {
-      if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
         if (node_it->second.proxy != nullptr) {
           pm->set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels,
                               static_cast<float>(volume->get_value()) / 100.0F);
@@ -692,7 +696,7 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+      if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
         if (node_it->second.proxy != nullptr) {
           PipeManager::set_node_mute(node_it->second.proxy, state);
         }
@@ -701,11 +705,11 @@ void EffectsBaseUi::setup_listview_players() {
 
     auto connection_blocklist_checkbutton = blocklist->signal_toggled().connect([=, this]() {
       if (blocklist->get_active()) {
-        enabled_app_list.insert_or_assign(holder->id, enable->get_active());
+        enabled_app_list.insert_or_assign(stream_id, enable->get_active());
 
-        add_new_blocklist_entry(holder->name);
+        add_new_blocklist_entry(app_name);
       } else {
-        remove_blocklist_entry(holder->name);
+        remove_blocklist_entry(app_name);
       }
 
       // Stream connection/disconnection will be done in blocklist items signal changed
@@ -723,7 +727,7 @@ void EffectsBaseUi::setup_listview_players() {
         return;
       }
 
-      app_name->set_text(node_info.name);
+      app_name_label->set_text(node_info.name);
       media_name->set_text(node_info.media_name);
       format->set_text(node_info.format);
       rate->set_text(Glib::ustring::format(node_info.rate) + " Hz");
@@ -751,9 +755,11 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_blocklist_checkbutton->unblock();
 
-      // save app enabled state only the first time when is not preset in the enabled_app_list map
+      // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
-      enabled_app_list.try_emplace(node_info.id, is_enabled);
+      if (auto state_it = enabled_app_list.find(node_info.id); state_it == enabled_app_list.end()) {
+        state_it->second = is_enabled;
+      }
 
       // set the icon name
 
@@ -813,7 +819,7 @@ void EffectsBaseUi::setup_listview_players() {
     // update the app info ui for the very first time,
     // needed for interface initialization in service mode
 
-    if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+    if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
       application_info_update(node_it->second);
     }
 
@@ -910,7 +916,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
             util::warning("Can't retrieve enabled state of node " + std::to_string(holder->id));
 
-            enabled_app_list.insert_or_assign(holder->id, true);
+            enabled_app_list.insert({holder->id, true});
           }
         }
 
