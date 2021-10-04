@@ -2,12 +2,15 @@
 
 ## [Unreleased]
 
+## [6.1.3]
+
 ### Added
 
 - PipeWire monitor streams are now excluded and removed from the applications list.
 
 ### Fixed
 
+- Hopefully crashes like the one reported at [1172](https://github.com/wwmm/easyeffects/issues/1172) are fixed
 - Prevented a case in which Spectrum was crashing.
 - Pavucontrol is not added anymore to input applications list on systems with localization different than English.
 
