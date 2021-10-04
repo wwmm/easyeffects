@@ -152,33 +152,35 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = pd->pm;
 
-  spa_hook_remove(&pd->proxy_listener);
+  if (auto node_it = pm->node_map.find(pd->nd_info.timestamp); node_it != pm->node_map.end()) {
+    pd->nd_info.proxy = nullptr;
 
-  pd->nd_info.proxy = nullptr;
+    node_it->second.proxy = nullptr;
 
-  pm->node_map.at(pd->nd_info.timestamp).proxy = nullptr;
+    spa_hook_remove(&pd->proxy_listener);
 
-  pm->node_map.erase(pd->nd_info.timestamp);
+    pm->node_map.erase(node_it);
 
-  if (pd->nd_info.media_class == pm->media_class_source) {
-    const auto nd_info_copy = pd->nd_info;
+    if (pd->nd_info.media_class == pm->media_class_source) {
+      const auto nd_info_copy = pd->nd_info;
 
-    Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
-  } else if (pd->nd_info.media_class == pm->media_class_sink) {
-    const auto nd_info_copy = pd->nd_info;
+      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->source_removed.emit(nd_info_copy); });
+    } else if (pd->nd_info.media_class == pm->media_class_sink) {
+      const auto nd_info_copy = pd->nd_info;
 
-    Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
-  } else if (pd->nd_info.media_class == pm->media_class_output_stream) {
-    const auto node_ts = pd->nd_info.timestamp;
+      Glib::signal_idle().connect_once([pm, nd_info_copy] { pm->sink_removed.emit(nd_info_copy); });
+    } else if (pd->nd_info.media_class == pm->media_class_output_stream) {
+      const auto node_ts = pd->nd_info.timestamp;
 
-    Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
-  } else if (pd->nd_info.media_class == pm->media_class_input_stream) {
-    const auto node_ts = pd->nd_info.timestamp;
+      Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_removed.emit(node_ts); });
+    } else if (pd->nd_info.media_class == pm->media_class_input_stream) {
+      const auto node_ts = pd->nd_info.timestamp;
 
-    Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
+      Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_removed.emit(node_ts); });
+    }
+
+    util::debug(PipeManager::log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
   }
-
-  util::debug(PipeManager::log_tag + pd->nd_info.media_class + " " + pd->nd_info.name + " was removed");
 }
 
 void on_node_info(void* object, const struct pw_node_info* info) {
@@ -186,7 +188,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   auto* const pm = nd->pm;
 
-  if (pm->node_map.contains(nd->nd_info.timestamp)) {
+  if (auto node_it = pm->node_map.find(nd->nd_info.timestamp); node_it != pm->node_map.end()) {
     if (g_strcmp0(spa_dict_lookup(info->props, PW_KEY_STREAM_MONITOR), "true") == 0) {
       /*
         This is a workaround for issue #1128.
@@ -197,13 +199,13 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         and remove them accordingly.
       */
 
-      spa_hook_remove(&nd->proxy_listener);
-
       nd->nd_info.proxy = nullptr;
 
-      pm->node_map.at(nd->nd_info.timestamp).proxy = nullptr;
+      node_it->second.proxy = nullptr;
 
-      pm->node_map.erase(nd->nd_info.timestamp);
+      spa_hook_remove(&nd->proxy_listener);
+
+      pm->node_map.erase(node_it);
 
       if (nd->nd_info.media_class == pm->media_class_source) {
         const auto nd_info_copy = nd->nd_info;
@@ -314,7 +316,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     // update NodeInfo inside map
 
-    pm->node_map.insert_or_assign(nd->nd_info.timestamp, nd->nd_info);
+    node_it->second = nd->nd_info;
 
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy
@@ -356,6 +358,8 @@ void on_node_event_param(void* object,
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
 
+    const auto& ts = nd->nd_info.timestamp;
+
     auto notify = false;
     auto app_info_ui_changed = false;
 
@@ -365,7 +369,7 @@ void on_node_event_param(void* object,
           uint format = 0U;
 
           if (spa_pod_get_id(&pod_prop->value, &format) == 0) {
-            if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
+            if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
               std::string format_str;
 
               switch (format) {
@@ -394,7 +398,7 @@ void on_node_event_param(void* object,
               }
 
               if (format_str != nd->nd_info.format) {
-                node->format = format_str;
+                node_it->second.format = format_str;
 
                 nd->nd_info.format = format_str;
 
@@ -412,8 +416,8 @@ void on_node_event_param(void* object,
 
           if (spa_pod_get_int(&pod_prop->value, &rate) == 0) {
             if (rate != nd->nd_info.rate) {
-              if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
-                node->rate = rate;
+              if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+                node_it->second.rate = rate;
 
                 nd->nd_info.rate = rate;
 
@@ -431,8 +435,8 @@ void on_node_event_param(void* object,
 
           if (spa_pod_get_bool(&pod_prop->value, &v) == 0) {
             if (v != nd->nd_info.mute) {
-              if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
-                node->mute = v;
+              if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+                node_it->second.mute = v;
 
                 nd->nd_info.mute = v;
 
@@ -446,7 +450,7 @@ void on_node_event_param(void* object,
           break;
         }
         case SPA_PROP_channelVolumes: {
-          if (auto* node = pm->get_nodeptr(nd->nd_info.timestamp); node != nullptr) {
+          if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
             std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
             const auto& n_volumes =
@@ -458,8 +462,8 @@ void on_node_event_param(void* object,
               ;
 
             if (n_volumes != nd->nd_info.n_volume_channels || max != nd->nd_info.volume) {
-              node->n_volume_channels = n_volumes;
-              node->volume = max;
+              node_it->second.n_volume_channels = n_volumes;
+              node_it->second.volume = max;
 
               nd->nd_info.n_volume_channels = n_volumes;
               nd->nd_info.volume = max;
@@ -482,7 +486,7 @@ void on_node_event_param(void* object,
       // therefore we make a copy
 
       if (app_info_ui_changed) {
-        const auto node_ts = nd->nd_info.timestamp;
+        const auto node_ts = ts;
 
         if (nd->nd_info.media_class == pm->media_class_output_stream) {
           Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
@@ -914,10 +918,16 @@ void on_registry_global(void* data,
           pd->nd_info.device_id = std::stoi(device_id);
         }
 
+        const auto [node_it, success] = pm->node_map.insert({ts, pd->nd_info});
+
+        if (!success) {
+          util::warning(PipeManager::log_tag + "Cannot add " + name + " " + std::to_string(id) + " to the node map");
+
+          return;
+        }
+
         pw_node_add_listener(proxy, &pd->object_listener, &node_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &node_proxy_events, pd);
-
-        pm->node_map.insert_or_assign(ts, pd->nd_info);
 
         // sometimes PipeWire destroys the pointer before signal_idle is called,
         // therefore we make a copy of NodeInfo
@@ -961,9 +971,9 @@ void on_registry_global(void* data,
     pm->list_links.emplace_back(link_info);
 
     try {
-      const auto& input_node = pm->get_node_by_id(link_info.input_node_id);
+      const auto& input_node = pm->node_map_at_id(link_info.input_node_id);
 
-      const auto& output_node = pm->get_node_by_id(link_info.output_node_id);
+      const auto& output_node = pm->node_map_at_id(link_info.output_node_id);
 
       util::debug(PipeManager::log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));
@@ -1274,7 +1284,9 @@ PipeManager::~PipeManager() {
   pw_thread_loop_destroy(thread_loop);
 }
 
-auto PipeManager::get_node_by_id(const uint& id) -> NodeInfo& {
+auto PipeManager::node_map_at_id(const uint& id) -> NodeInfo& {
+  // helper method to access easily a node by id, same functionality as map.at()
+
   for (auto& [ts, node] : node_map) {
     if (node.id == id) {
       return node;
@@ -1282,32 +1294,6 @@ auto PipeManager::get_node_by_id(const uint& id) -> NodeInfo& {
   }
 
   throw std::out_of_range("");
-}
-
-auto PipeManager::get_nodeptr(const std::string& ts) -> NodeInfo* {
-  // we don't want always wrap a node getter in a try catch statement
-  // so we get a pointer to check for nullptr
-
-  try {
-    auto& node = node_map.at(ts);
-
-    return &node;
-  } catch (...) {
-    return nullptr;
-  }
-}
-
-auto PipeManager::get_nodeptr_by_id(const uint& id) -> NodeInfo* {
-  // we don't want always wrap a node getter in a try catch statement
-  // so we get a pointer to check for nullptr
-
-  for (auto& [ts, node] : node_map) {
-    if (node.id == id) {
-      return &node;
-    }
-  }
-
-  return nullptr;
 }
 
 auto PipeManager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {

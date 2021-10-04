@@ -671,9 +671,9 @@ void EffectsBaseUi::setup_listview_players() {
         false);
 
     auto connection_volume = volume->signal_value_changed().connect([=, this]() {
-      if (const auto* node_info = pm->get_nodeptr(holder->ts); node_info != nullptr) {
-        if (node_info->proxy != nullptr) {
-          pm->set_node_volume(node_info->proxy, node_info->n_volume_channels,
+      if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+        if (node_it->second.proxy != nullptr) {
+          pm->set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels,
                               static_cast<float>(volume->get_value()) / 100.0F);
         }
       }
@@ -692,9 +692,9 @@ void EffectsBaseUi::setup_listview_players() {
         scale_volume->set_sensitive(true);
       }
 
-      if (const auto* node_info = pm->get_nodeptr(holder->ts); node_info != nullptr) {
-        if (node_info->proxy != nullptr) {
-          PipeManager::set_node_mute(node_info->proxy, state);
+      if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+        if (node_it->second.proxy != nullptr) {
+          PipeManager::set_node_mute(node_it->second.proxy, state);
         }
       }
     });
@@ -813,8 +813,8 @@ void EffectsBaseUi::setup_listview_players() {
     // update the app info ui for the very first time,
     // needed for interface initialization in service mode
 
-    if (const auto* node_info = pm->get_nodeptr(holder->ts); node_info != nullptr) {
-      application_info_update(*node_info);
+    if (const auto node_it = pm->node_map.find(holder->ts); node_it != pm->node_map.end()) {
+      application_info_update(node_it->second);
     }
 
     // connect the app info update lambda to holder info_updated signal
@@ -1345,22 +1345,20 @@ void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
     }
   }
 
-  if (const auto* nd_info = pm->get_nodeptr(node_info.timestamp); nd_info != nullptr) {
-    auto node_info_holder = NodeInfoHolder::create(*nd_info);
+  auto node_info_holder = NodeInfoHolder::create(node_info);
 
-    all_players_model->append(node_info_holder);
+  all_players_model->append(node_info_holder);
 
-    if (settings->get_boolean("show-blocklisted-apps") || !app_is_blocklisted(node_info.name)) {
-      players_model->append(node_info_holder);
-    }
+  if (settings->get_boolean("show-blocklisted-apps") || !app_is_blocklisted(node_info.name)) {
+    players_model->append(node_info_holder);
   }
 }
 
 void EffectsBaseUi::on_app_changed(const std::string& ts) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
     if (auto holder = players_model->get_item(n); holder->ts == ts) {
-      if (const auto* node_info = pm->get_nodeptr(ts); node_info != nullptr) {
-        holder->info_updated.emit(*node_info);
+      if (const auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
+        holder->info_updated.emit(node_it->second);
       }
     }
   }

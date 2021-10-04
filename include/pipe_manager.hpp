@@ -235,11 +235,7 @@ class PipeManager {
   std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
       default_quantum;
 
-  auto get_node_by_id(const uint& id) -> NodeInfo&;
-
-  auto get_nodeptr(const std::string& ts) -> NodeInfo*;
-
-  auto get_nodeptr_by_id(const uint& id) -> NodeInfo*;
+  auto node_map_at_id(const uint& id) -> NodeInfo&;
 
   auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
 
