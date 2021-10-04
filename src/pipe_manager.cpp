@@ -361,7 +361,6 @@ void on_node_event_param(void* object,
     const auto& ts = nd->nd_info.timestamp;
 
     auto notify = false;
-    auto app_info_ui_changed = false;
 
     SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
       switch (pod_prop->key) {
@@ -402,8 +401,6 @@ void on_node_event_param(void* object,
 
                 nd->nd_info.format = format_str;
 
-                app_info_ui_changed = true;
-
                 notify = true;
               }
             }
@@ -420,8 +417,6 @@ void on_node_event_param(void* object,
                 node_it->second.rate = rate;
 
                 nd->nd_info.rate = rate;
-
-                app_info_ui_changed = true;
 
                 notify = true;
               }
@@ -440,8 +435,6 @@ void on_node_event_param(void* object,
 
                 nd->nd_info.mute = v;
 
-                app_info_ui_changed = true;
-
                 notify = true;
               }
             }
@@ -458,8 +451,9 @@ void on_node_event_param(void* object,
 
             float max = 0.0F;
 
-            for (uint i = 0U; i < n_volumes; max = std::max(volumes.at(i++), max))
-              ;
+            for (uint i = 0U; i < n_volumes; i++) {
+              max = std::max(volumes.at(i++), max);
+            }
 
             if (n_volumes != nd->nd_info.n_volume_channels || max != nd->nd_info.volume) {
               node_it->second.n_volume_channels = n_volumes;
@@ -467,8 +461,6 @@ void on_node_event_param(void* object,
 
               nd->nd_info.n_volume_channels = n_volumes;
               nd->nd_info.volume = max;
-
-              app_info_ui_changed = true;
 
               notify = true;
             }
@@ -485,14 +477,14 @@ void on_node_event_param(void* object,
       // sometimes PipeWire destroys the pointer before signal_idle is called,
       // therefore we make a copy
 
-      if (app_info_ui_changed) {
+      if (nd->nd_info.media_class == pm->media_class_output_stream) {
         const auto node_ts = ts;
 
-        if (nd->nd_info.media_class == pm->media_class_output_stream) {
-          Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
-        } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
-          Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
-        }
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_output_changed.emit(node_ts); });
+      } else if (nd->nd_info.media_class == pm->media_class_input_stream) {
+        const auto node_ts = ts;
+
+        Glib::signal_idle().connect_once([pm, node_ts] { pm->stream_input_changed.emit(node_ts); });
       } else if (nd->nd_info.media_class == pm->media_class_virtual_source) {
         const auto nd_info_copy = nd->nd_info;
 
@@ -743,7 +735,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
         if (node.media_class == pm->media_class_sink) {
           pm->default_output_device = node;
 
-          Glib::signal_idle().connect_once([pm, node] { pm->new_default_sink.emit(node); });
+          auto node_copy = node;
+
+          Glib::signal_idle().connect_once([pm, node_copy] { pm->new_default_sink.emit(node_copy); });
         }
 
         break;
@@ -767,7 +761,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
         if (node.media_class == pm->media_class_source || node.media_class == pm->media_class_virtual_source) {
           pm->default_input_device = node;
 
-          Glib::signal_idle().connect_once([pm, node] { pm->new_default_source.emit(node); });
+          auto node_copy = node;
+
+          Glib::signal_idle().connect_once([pm, node_copy] { pm->new_default_source.emit(node_copy); });
         }
 
         break;
@@ -883,7 +879,9 @@ void on_registry_global(void* data,
 
         if (name.empty()) {
           return;
-        } else if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
+        }
+
+        if (std::ranges::find(pm->blocklist_node_name, name) != pm->blocklist_node_name.end()) {
           return;
         }
 
@@ -1506,7 +1504,7 @@ auto PipeManager::json_object_find(const char* obj, const char* key, char* value
 
   while (spa_json_get_string(sjson.data() + 1, res.data(), res.size() * sizeof(char) - 1) > 0) {
     if (g_strcmp0(res.data(), key) == 0) {
-      if (spa_json_get_string(sjson.data() + 1, value, len) <= 0) {
+      if (spa_json_get_string(sjson.data() + 1, value, static_cast<int>(len)) <= 0) {
         continue;
       }
 

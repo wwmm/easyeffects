@@ -19,12 +19,14 @@
 
 #include "stream_input_effects_ui.hpp"
 
+#include <utility>
+
 StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
                                            const Glib::RefPtr<Gtk::Builder>& refBuilder,
                                            Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                                            StreamInputEffects* sie_ptr,
                                            const std::string& schema)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, sie_ptr, schema), sie(sie_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, std::move(icon_ptr), sie_ptr, schema), sie(sie_ptr) {
   auto* toggle_players_icon = dynamic_cast<Gtk::Image*>(toggle_players->get_child()->get_first_child());
   auto* toggle_players_label = dynamic_cast<Gtk::Label*>(toggle_players_icon->get_next_sibling());
 

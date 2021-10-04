@@ -19,12 +19,14 @@
 
 #include "stream_output_effects_ui.hpp"
 
+#include <utility>
+
 StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& refBuilder,
                                              Glib::RefPtr<Gtk::IconTheme> icon_ptr,
                                              StreamOutputEffects* soe_ptr,
                                              const std::string& schema)
-    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, icon_ptr, soe_ptr, schema), soe(soe_ptr) {
+    : Gtk::Box(cobject), EffectsBaseUi(refBuilder, std::move(icon_ptr), soe_ptr, schema), soe(soe_ptr) {
   for (const auto& [ts, node] : pm->node_map) {
     if (node.media_class == pm->media_class_output_stream) {
       on_app_added(node);
