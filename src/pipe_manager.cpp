@@ -716,9 +716,9 @@ void on_destroy_device_proxy(void* data) {
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* const pm = static_cast<PipeManager*>(data);
 
-  const std::string str_key = (key != nullptr) ? key : std::string();
-  const std::string str_type = (type != nullptr) ? type : std::string();
-  const std::string str_value = (value != nullptr) ? value : std::string();
+  const std::string str_key = (key != nullptr) ? key : "";
+  const std::string str_type = (type != nullptr) ? type : "";
+  const std::string str_value = (value != nullptr) ? value : "";
 
   util::debug(PipeManager::log_tag + "new metadata property: " + std::to_string(id) + ", " + str_key + ", " + str_type +
               ", " + str_value);
