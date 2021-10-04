@@ -27,7 +27,7 @@
 
 class NodeInfoHolder : public Glib::Object {
  public:
-  std::string ts;
+  util::time_point ts;
 
   uint id = SPA_ID_INVALID;
 

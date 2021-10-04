@@ -664,7 +664,7 @@ void EffectsBaseUi::setup_listview_players() {
           }
 
           // no need to trigger an info_updated signal here because
-          // Pipewire will do it on stream connection/disconnection
+          // PipeWire will do it on stream connection/disconnection
 
           return false;
         },
@@ -1354,7 +1354,7 @@ void EffectsBaseUi::on_app_added(const NodeInfo node_info) {
   }
 }
 
-void EffectsBaseUi::on_app_changed(const std::string& ts) {
+void EffectsBaseUi::on_app_changed(const util::time_point ts) {
   for (guint n = 0U; n < players_model->get_n_items(); n++) {
     if (auto holder = players_model->get_item(n); holder->ts == ts) {
       if (const auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
@@ -1364,7 +1364,7 @@ void EffectsBaseUi::on_app_changed(const std::string& ts) {
   }
 }
 
-void EffectsBaseUi::on_app_removed(const std::string& ts) {
+void EffectsBaseUi::on_app_removed(const util::time_point ts) {
   for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
     if (all_players_model->get_item(n)->ts == ts) {
       for (guint i = 0U; i < players_model->get_n_items(); i++) {
@@ -1412,7 +1412,7 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
 }
 
 auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
-  // map to handle cases where Pipewire does not set icon name string or app name equal to icon name.
+  // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
   static std::map<Glib::ustring, Glib::ustring> icon_map{
       {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
 

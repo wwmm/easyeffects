@@ -30,13 +30,12 @@
 #include <spa/utils/result.h>
 #include <algorithm>
 #include <array>
-#include <chrono>
 #include <memory>
 #include <string>
 #include "util.hpp"
 
 struct NodeInfo {
-  std::string timestamp;
+  util::time_point timestamp;
 
   pw_proxy* proxy = nullptr;
 
@@ -182,13 +181,13 @@ class PipeManager {
   spa_hook metadata_listener{};
 
   /*
-    Nodes are tracked in a map and indexed by the creation date UNIX timestamp
-    converted as string.
-    This way we try to avoid issues caused by bad applications that create and
-    destroy too many streams in a short time.
+    Nodes are tracked in a map and indexed by the creation date UNIX timestamp.
+    This way we should have always a different index for any streams while PipeWire
+    try to reassign already used ID and maybe we should avoid issues with bad
+    applications creating and destroying too many streams in a very short time.
   */
 
-  std::map<std::string, NodeInfo> node_map;
+  std::map<util::time_point, NodeInfo> node_map;
 
   std::vector<LinkInfo> list_links;
 
@@ -278,10 +277,10 @@ class PipeManager {
 
   sigc::signal<void(const NodeInfo)> stream_output_added;
   sigc::signal<void(const NodeInfo)> stream_input_added;
-  sigc::signal<void(const std::string)> stream_output_changed;
-  sigc::signal<void(const std::string)> stream_input_changed;
-  sigc::signal<void(const std::string)> stream_output_removed;
-  sigc::signal<void(const std::string)> stream_input_removed;
+  sigc::signal<void(const util::time_point)> stream_output_changed;
+  sigc::signal<void(const util::time_point)> stream_input_changed;
+  sigc::signal<void(const util::time_point)> stream_output_removed;
+  sigc::signal<void(const util::time_point)> stream_input_removed;
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.

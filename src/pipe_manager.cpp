@@ -889,10 +889,6 @@ void on_registry_global(void* data,
 
         // New node can be added in the node map
 
-        std::string ts = std::to_string(
-            std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::system_clock::now().time_since_epoch())
-                .count());
-
         auto* proxy =
             static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 
@@ -900,7 +896,7 @@ void on_registry_global(void* data,
 
         nd->proxy = proxy;
         nd->pm = pm;
-        nd->nd_info.timestamp = ts;
+        nd->nd_info.timestamp = std::chrono::system_clock::now();
         nd->nd_info.proxy = proxy;
         nd->nd_info.id = id;
         nd->nd_info.media_class = media_class;
@@ -918,10 +914,12 @@ void on_registry_global(void* data,
           nd->nd_info.device_id = std::stoi(device_id);
         }
 
-        const auto [node_it, success] = pm->node_map.insert({ts, nd->nd_info});
+        const auto [node_it, success] = pm->node_map.insert({nd->nd_info.timestamp, nd->nd_info});
 
         if (!success) {
-          util::warning(PipeManager::log_tag + "Cannot add " + name + " " + std::to_string(id) + " to the node map");
+          util::warning(PipeManager::log_tag + "Cannot insert node " + std::to_string(id) + " " + name +
+                        " into the node map because there's already an existing timestamp " +
+                        util::timestamp_str(nd->nd_info.timestamp));
 
           return;
         }
@@ -945,7 +943,7 @@ void on_registry_global(void* data,
         }
 
         util::debug(PipeManager::log_tag + media_class + " " + std::to_string(id) + " " + nd->nd_info.name +
-                    " with timestamp " + nd->nd_info.timestamp + " was added");
+                    " with timestamp " + util::timestamp_str(nd->nd_info.timestamp) + " was added");
       }
     }
 
@@ -1163,13 +1161,13 @@ PipeManager::PipeManager() {
   header_version = pw_get_headers_version();
   library_version = pw_get_library_version();
 
-  util::debug(log_tag + "compiled with pipewire: " + header_version);
-  util::debug(log_tag + "linked to pipewire: " + library_version);
+  util::debug(log_tag + "compiled with PipeWire: " + header_version);
+  util::debug(log_tag + "linked to PipeWire: " + library_version);
 
   thread_loop = pw_thread_loop_new("pe-pipewire-thread", nullptr);
 
   if (thread_loop == nullptr) {
-    util::error(log_tag + "could not create pipewire loop");
+    util::error(log_tag + "could not create PipeWire loop");
   }
 
   if (pw_thread_loop_start(thread_loop) != 0) {
@@ -1187,7 +1185,7 @@ PipeManager::PipeManager() {
   context = pw_context_new(pw_thread_loop_get_loop(thread_loop), props_context, 0);
 
   if (context == nullptr) {
-    util::error(log_tag + "could not create pipewire context");
+    util::error(log_tag + "could not create PipeWire context");
   }
 
   core = pw_context_connect(context, nullptr, 0);
@@ -1244,12 +1242,12 @@ PipeManager::PipeManager() {
         ee_sink_node = node;
 
         util::debug(log_tag + ee_sink_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + node.timestamp);
+                    " and timestamp " + util::timestamp_str(node.timestamp));
       } else if (ee_source_node.name.empty() && node.name == ee_source_name) {
         ee_source_node = node;
 
         util::debug(log_tag + ee_source_name + " node successfully retrieved with id " + std::to_string(node.id) +
-                    " and timestamp " + node.timestamp);
+                    " and timestamp " + util::timestamp_str(node.timestamp));
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
@@ -1269,18 +1267,18 @@ PipeManager::~PipeManager() {
   pw_proxy_destroy(proxy_stream_output_sink);
   pw_proxy_destroy(proxy_stream_input_source);
 
-  util::debug(log_tag + "Destroying Pipewire registry...");
+  util::debug(log_tag + "Destroying PipeWire registry...");
   pw_proxy_destroy((struct pw_proxy*)registry);
 
-  util::debug(log_tag + "Disconnecting Pipewire core...");
+  util::debug(log_tag + "Disconnecting PipeWire core...");
   pw_core_disconnect(core);
 
-  util::debug(log_tag + "Destroying Pipewire context...");
+  util::debug(log_tag + "Destroying PipeWire context...");
   pw_context_destroy(context);
 
   unlock();
 
-  util::debug(log_tag + "Destroying Pipewire loop...");
+  util::debug(log_tag + "Destroying PipeWire loop...");
   pw_thread_loop_destroy(thread_loop);
 }
 

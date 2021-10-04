@@ -103,8 +103,8 @@ class EffectsBaseUi {
   std::vector<sigc::connection> connections;
 
   void on_app_added(const NodeInfo);
-  void on_app_changed(const std::string& ts);
-  void on_app_removed(const std::string& ts);
+  void on_app_changed(const util::time_point ts);
+  void on_app_removed(const util::time_point ts);
 
   auto icon_available(const Glib::ustring& icon_name) -> bool;
 

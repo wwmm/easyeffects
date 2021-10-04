@@ -23,12 +23,15 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <glibmm/ustring.h>
+#include <chrono>
 #include <cmath>
 #include <iostream>
 #include <thread>
 #include <vector>
 
 namespace util {
+
+typedef std::chrono::time_point<std::chrono::system_clock> time_point;
 
 const float minimum_db_level = -100.0F;
 const double minimum_db_d_level = -100.0;
@@ -68,6 +71,8 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
 auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring;
+
+auto timestamp_str(const time_point ts) -> std::string;
 
 void print_thread_id();
 

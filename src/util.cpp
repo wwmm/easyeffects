@@ -168,4 +168,8 @@ auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring {
   return basename.substr(0, basename.find_last_of("."));
 }
 
+auto timestamp_str(const time_point ts) -> std::string {
+  return std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
+}
+
 }  // namespace util
