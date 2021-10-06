@@ -96,13 +96,13 @@ void Plot::init_axes() {
 
   for (const auto& v : original_x) {
     if (v >= x_min && v <= x_max) {
-      x_axis.emplace_back(v);
+      x_axis.push_back(v);
     }
   }
 
   for (const auto& v : original_y) {
     if (v >= y_min && v <= y_max) {
-      y_axis.emplace_back(v);
+      y_axis.push_back(v);
     }
   }
 

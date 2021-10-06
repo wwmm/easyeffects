@@ -33,19 +33,19 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
     }
   }
 
-  connections.emplace_back(
+  connections.push_back(
       soe->output_level->output_level.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_new_output_level_db)));
 
-  connections.emplace_back(soe->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  connections.push_back(soe->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
 
-  connections.emplace_back(
+  connections.push_back(
       soe->pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_added)));
-  connections.emplace_back(
+  connections.push_back(
       soe->pm->stream_output_changed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_changed)));
-  connections.emplace_back(
+  connections.push_back(
       soe->pm->stream_output_removed.connect(sigc::mem_fun(*this, &StreamOutputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(soe->pm->sink_changed.connect([&](const auto nd_info) {
+  connections.push_back(soe->pm->sink_changed.connect([&](const auto nd_info) {
     if (nd_info.id == soe->pm->ee_sink_node.id) {
       const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
                                             static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);

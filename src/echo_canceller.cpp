@@ -100,22 +100,22 @@ void EchoCanceller::process(std::span<float>& left_in,
   }
 
   for (size_t j = 0U, li_size = left_in.size(); j < li_size; j++) {
-    data_L.emplace_back(left_in[j] * (SHRT_MAX + 1));
-    data_R.emplace_back(right_in[j] * (SHRT_MAX + 1));
+    data_L.push_back(left_in[j] * (SHRT_MAX + 1));
+    data_R.push_back(right_in[j] * (SHRT_MAX + 1));
 
-    probe_L.emplace_back(probe_left[j] * (SHRT_MAX + 1));
-    probe_R.emplace_back(probe_right[j] * (SHRT_MAX + 1));
+    probe_L.push_back(probe_left[j] * (SHRT_MAX + 1));
+    probe_R.push_back(probe_right[j] * (SHRT_MAX + 1));
 
     if (data_L.size() == blocksize) {
       speex_echo_cancellation(echo_state_L, data_L.data(), probe_L.data(), filtered_L.data());
       speex_echo_cancellation(echo_state_R, data_R.data(), probe_R.data(), filtered_R.data());
 
       for (const auto& v : filtered_L) {
-        deque_out_L.emplace_back(static_cast<float>(v) * inv_short_max);
+        deque_out_L.push_back(static_cast<float>(v) * inv_short_max);
       }
 
       for (const auto& v : filtered_R) {
-        deque_out_R.emplace_back(static_cast<float>(v) * inv_short_max);
+        deque_out_R.push_back(static_cast<float>(v) * inv_short_max);
       }
 
       data_L.resize(0);

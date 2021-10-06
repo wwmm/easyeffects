@@ -46,7 +46,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
 
   // model dir
@@ -280,7 +280,7 @@ auto RNNoiseUi::get_model_names() -> std::vector<Glib::ustring> {
   while (it != std::filesystem::directory_iterator{}) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().c_str() == rnnn_ext) {
-        names.emplace_back(it->path().stem().c_str());
+        names.push_back(it->path().stem().c_str());
       }
     }
 

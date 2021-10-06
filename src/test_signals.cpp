@@ -162,7 +162,7 @@ void TestSignals::set_state(const bool& state) {
 
   if (state) {
     for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false, false)) {
-      list_proxies.emplace_back(link);
+      list_proxies.push_back(link);
     }
   } else {
     pm->destroy_links(list_proxies);

@@ -156,8 +156,8 @@ void Pitch::process(std::span<float>& left_in,
     stretcher->retrieve(stretcher_out.data(), n_available);
 
     for (int n = 0; n < n_available; n++) {
-      deque_out_L.emplace_back(data_L[n]);
-      deque_out_R.emplace_back(data_R[n]);
+      deque_out_L.push_back(data_L[n]);
+      deque_out_R.push_back(data_R[n]);
     }
   }
 

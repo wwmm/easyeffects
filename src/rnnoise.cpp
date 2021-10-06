@@ -127,19 +127,19 @@ void RNNoise::process(std::span<float>& left_in,
       auto resampled_outR = resampler_outR->process(resampled_data_R, false);
 
       for (const auto& v : resampled_outL) {
-        deque_out_L.emplace_back(v);
+        deque_out_L.push_back(v);
       }
 
       for (const auto& v : resampled_outR) {
-        deque_out_R.emplace_back(v);
+        deque_out_R.push_back(v);
       }
     } else {
       for (const auto& v : left_in) {
-        deque_out_L.emplace_back(v);
+        deque_out_L.push_back(v);
       }
 
       for (const auto& v : right_in) {
-        deque_out_R.emplace_back(v);
+        deque_out_R.push_back(v);
       }
     }
   } else {

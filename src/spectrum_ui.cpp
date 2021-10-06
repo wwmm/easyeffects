@@ -25,33 +25,33 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   // signals connection
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
+  connections.push_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("color-axis-labels").connect([&](const auto& key) { init_frequency_labels_color(); }));
 
-  connections.emplace_back(settings->signal_changed("height").connect(
+  connections.push_back(settings->signal_changed("height").connect(
       [&](const auto& key) { set_content_height(settings->get_int("height")); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("minimum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("maximum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
+  connections.push_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
 
-  connections.emplace_back(settings->signal_changed("fill").connect(
+  connections.push_back(settings->signal_changed("fill").connect(
       [&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
 
-  connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
+  connections.push_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
     plot->set_draw_bar_border(settings->get_boolean(key));
   }));
 
-  connections.emplace_back(settings->signal_changed("line-width").connect([&](const auto& key) {
+  connections.push_back(settings->signal_changed("line-width").connect([&](const auto& key) {
     plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
   }));
 

@@ -181,7 +181,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
+  connections.push_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
     const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, v);
 
     latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
@@ -1080,9 +1080,9 @@ void EffectsBaseUi::setup_listview_plugins() {
         // type limiter at the last position of the filter chain, we follow
         // this behaviour inserting the new plugin at the second last position
 
-        list.emplace(list.cend() - 1U, key_name);
+        list.insert(list.cend() - 1U, key_name);
       } else {
-        list.emplace_back(key_name);
+        list.push_back(key_name);
       }
 
       settings->set_string_array("plugins", list);
@@ -1488,7 +1488,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
     return false;
   }
 
-  bl.emplace_back(name);
+  bl.push_back(name);
 
   settings->set_string_array("blocklist", bl);
 

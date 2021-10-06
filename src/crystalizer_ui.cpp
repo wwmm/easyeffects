@@ -87,7 +87,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
 
     // connections
 
-    connections.emplace_back(band_mute->signal_toggled().connect([=]() {
+    connections.push_back(band_mute->signal_toggled().connect([=]() {
       if (band_mute->get_active()) {
         band_intensity->set_sensitive(false);
       } else {

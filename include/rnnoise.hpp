@@ -74,7 +74,7 @@ class RNNoise : public PluginBase {
   template <typename T1, typename T2>
   void remove_noise(const T1& left_in, const T1& right_in, T2& out_L, T2& out_R) {
     for (const auto& v : left_in) {
-      data_L.emplace_back(v);
+      data_L.push_back(v);
 
       if (data_L.size() == blocksize) {
         if (state_left != nullptr) {
@@ -86,7 +86,7 @@ class RNNoise : public PluginBase {
         }
 
         for (const auto& v : data_L) {
-          out_L.emplace_back(v);
+          out_L.push_back(v);
         }
 
         data_L.resize(0);
@@ -94,7 +94,7 @@ class RNNoise : public PluginBase {
     }
 
     for (const auto& v : right_in) {
-      data_R.emplace_back(v);
+      data_R.push_back(v);
 
       if (data_R.size() == blocksize) {
         if (state_right != nullptr) {
@@ -106,7 +106,7 @@ class RNNoise : public PluginBase {
         }
 
         for (const auto& v : data_R) {
-          out_R.emplace_back(v);
+          out_R.push_back(v);
         }
 
         data_R.resize(0);

@@ -151,18 +151,18 @@ void Crystalizer::process(std::span<float>& left_in,
     enhance_peaks(left_out, right_out);
   } else {
     for (size_t j = 0U, li_size = left_in.size(); j < li_size; j++) {
-      data_L.emplace_back(left_in[j]);
-      data_R.emplace_back(right_in[j]);
+      data_L.push_back(left_in[j]);
+      data_R.push_back(right_in[j]);
 
       if (data_L.size() == blocksize) {
         enhance_peaks(data_L, data_R);
 
         for (const auto& v : data_L) {
-          deque_out_L.emplace_back(v);
+          deque_out_L.push_back(v);
         }
 
         for (const auto& v : data_R) {
-          deque_out_R.emplace_back(v);
+          deque_out_R.push_back(v);
         }
 
         data_L.resize(0);

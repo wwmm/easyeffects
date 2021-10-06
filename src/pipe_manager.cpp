@@ -964,7 +964,7 @@ void on_registry_global(void* data,
 
     link_info.id = id;
 
-    pm->list_links.emplace_back(link_info);
+    pm->list_links.push_back(link_info);
 
     try {
       const auto& input_node = pm->node_map_at_id(link_info.input_node_id);
@@ -997,7 +997,7 @@ void on_registry_global(void* data,
     // std::cout << port_info.name << "\t" << port_info.audio_channel << "\t" << port_info.direction << "\t"
     //           << port_info.format_dsp << "\t" << port_info.port_id << "\t" << port_info.node_id << std::endl;
 
-    pm->list_ports.emplace_back(port_info);
+    pm->list_ports.push_back(port_info);
 
     return;
   }
@@ -1021,7 +1021,7 @@ void on_registry_global(void* data,
       m_info.name = name;
     }
 
-    pm->list_modules.emplace_back(m_info);
+    pm->list_modules.push_back(m_info);
 
     return;
   }
@@ -1041,7 +1041,7 @@ void on_registry_global(void* data,
 
     ClientInfo c_info{.id = id};
 
-    pm->list_clients.emplace_back(c_info);
+    pm->list_clients.push_back(c_info);
 
     return;
   }
@@ -1087,7 +1087,7 @@ void on_registry_global(void* data,
 
         DeviceInfo d_info{.id = id, .media_class = media_class};
 
-        pm->list_devices.emplace_back(d_info);
+        pm->list_devices.push_back(d_info);
       }
     }
 
@@ -1371,7 +1371,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
 
   for (const auto& port : list_ports) {
     if (port.node_id == output_node_id && port.direction == "out") {
-      list_output_ports.emplace_back(port);
+      list_output_ports.push_back(port);
 
       if (!probe_link) {
         if (port.audio_channel != "FL" && port.audio_channel != "FR") {
@@ -1382,14 +1382,14 @@ auto PipeManager::link_nodes(const uint& output_node_id,
 
     if (port.node_id == input_node_id && port.direction == "in") {
       if (!probe_link) {
-        list_input_ports.emplace_back(port);
+        list_input_ports.push_back(port);
 
         if (port.audio_channel != "FL" && port.audio_channel != "FR") {
           use_audio_channel = false;
         }
       } else {
         if (port.audio_channel == "PROBE_FL" || port.audio_channel == "PROBE_FR") {
-          list_input_ports.emplace_back(port);
+          list_input_ports.push_back(port);
         }
       }
     }
@@ -1441,7 +1441,7 @@ auto PipeManager::link_nodes(const uint& output_node_id,
 
         sync_wait_unlock();
 
-        list.emplace_back(proxy);
+        list.push_back(proxy);
       }
     }
   }

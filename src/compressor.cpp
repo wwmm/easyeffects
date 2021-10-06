@@ -44,7 +44,7 @@ Compressor::Compressor(const std::string& tag,
       }
 
       for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-        list_proxies.emplace_back(link);
+        list_proxies.push_back(link);
       }
     } else {
       pm->destroy_links(list_proxies);
@@ -72,7 +72,7 @@ Compressor::Compressor(const std::string& tag,
       list_proxies.clear();
 
       for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-        list_proxies.emplace_back(link);
+        list_proxies.push_back(link);
       }
     }
   });

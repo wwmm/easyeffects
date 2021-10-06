@@ -115,7 +115,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
      is loaded
   */
 
-  connections.emplace_back(settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
+  connections.push_back(settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
     std::jthread jt{[this]() {
       std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
@@ -300,7 +300,7 @@ auto ConvolverUi::get_irs_names() -> std::vector<Glib::ustring> {
   for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().c_str() == irs_ext) {
-        names.emplace_back(it->path().stem().c_str());
+        names.push_back(it->path().stem().c_str());
       }
     }
   }
@@ -394,7 +394,7 @@ void ConvolverUi::get_irs_info() {
   if (file.channels() != 2 || file.frames() == 0) {
     // warning user that there is a problem
 
-    connections.emplace_back(Glib::signal_idle().connect([=, this]() {
+    connections.push_back(Glib::signal_idle().connect([=, this]() {
       label_sampling_rate->set_text(_("Failed"));
       label_samples->set_text(_("Failed"));
 
@@ -443,24 +443,24 @@ void ConvolverUi::get_irs_info() {
     size_t bin_size = std::ceil(file.frames() / spectrum_settings->get_int("n-points"));
 
     for (int n = 0; n < file.frames(); n++) {
-      bin_x.emplace_back(time_axis[n]);
+      bin_x.push_back(time_axis[n]);
 
-      bin_l_y.emplace_back(left_mag[n]);
-      bin_r_y.emplace_back(right_mag[n]);
+      bin_l_y.push_back(left_mag[n]);
+      bin_r_y.push_back(right_mag[n]);
 
       if (bin_x.size() == bin_size) {
         const auto& [min, max] = std::ranges::minmax_element(bin_l_y);
 
-        t.emplace_back(bin_x[min - bin_l_y.begin()]);
-        t.emplace_back(bin_x[max - bin_l_y.begin()]);
+        t.push_back(bin_x[min - bin_l_y.begin()]);
+        t.push_back(bin_x[max - bin_l_y.begin()]);
 
-        l.emplace_back(*min);
-        l.emplace_back(*max);
+        l.push_back(*min);
+        l.push_back(*max);
 
         const auto& [minr, maxr] = std::ranges::minmax_element(bin_r_y);
 
-        r.emplace_back(*minr);
-        r.emplace_back(*maxr);
+        r.push_back(*minr);
+        r.push_back(*maxr);
 
         bin_x.resize(0);
         bin_l_y.resize(0);
@@ -476,15 +476,15 @@ void ConvolverUi::get_irs_info() {
   // ensure that the fft can be computed
 
   if (time_axis.size() % 2U != 0U) {
-    time_axis.emplace_back(static_cast<float>(time_axis.size() - 1U) * dt);
+    time_axis.push_back(static_cast<float>(time_axis.size() - 1U) * dt);
   }
 
   if (left_mag.size() % 2U != 0U) {
-    left_mag.emplace_back(0.0F);
+    left_mag.push_back(0.0F);
   }
 
   if (right_mag.size() % 2U != 0U) {
-    right_mag.emplace_back(0.0F);
+    right_mag.push_back(0.0F);
   }
 
   time_axis.shrink_to_fit();
@@ -508,7 +508,7 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
-  connections.emplace_back(Glib::signal_idle().connect([=, this]() {
+  connections.push_back(Glib::signal_idle().connect([=, this]() {
     label_sampling_rate->set_text(Glib::ustring::format(file.samplerate()) + " Hz");
     label_samples->set_text(Glib::ustring::format(file.frames()));
 
@@ -664,7 +664,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     right_spectrum[n] = (right_spectrum[n] - fft_min_right) / (fft_max_right - fft_min_right);
   }
 
-  connections.emplace_back(Glib::signal_idle().connect([=, this]() {
+  connections.push_back(Glib::signal_idle().connect([=, this]() {
     plot_fft();
 
     return false;
