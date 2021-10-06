@@ -28,7 +28,6 @@
 #include <fstream>
 #include <memory>
 #include <nlohmann/json.hpp>
-#include <vector>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
 #include "bass_loudness_preset.hpp"

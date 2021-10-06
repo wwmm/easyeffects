@@ -21,7 +21,6 @@
 #define CROSSFEED_HPP
 
 #include <bs2bclass.h>
-#include <vector>
 #include "plugin_base.hpp"
 
 class Crossfeed : public PluginBase {
