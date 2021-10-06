@@ -757,8 +757,8 @@ void EffectsBaseUi::setup_listview_players() {
 
       // save app "enabled state" only the first time when it is not present in the enabled_app_list map
 
-      if (auto state_it = enabled_app_list.find(node_info.id); state_it == enabled_app_list.end()) {
-        state_it->second = is_enabled;
+      if (enabled_app_list.find(node_info.id) == enabled_app_list.end()) {
+        enabled_app_list.insert({node_info.id, is_enabled});
       }
 
       // set the icon name
