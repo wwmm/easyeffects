@@ -21,6 +21,7 @@
 #define PITCH_HPP
 
 #include <rubberband/RubberBandStretcher.h>
+#include <deque>
 #include "plugin_base.hpp"
 
 class Pitch : public PluginBase {

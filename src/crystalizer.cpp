@@ -150,7 +150,7 @@ void Crystalizer::process(std::span<float>& left_in,
 
     enhance_peaks(left_out, right_out);
   } else {
-    for (size_t j = 0U, li_size = left_in.size(); j < li_size; j++) {
+    for (size_t j = 0U; j < left_in.size(); j++) {
       data_L.push_back(left_in[j]);
       data_R.push_back(right_in[j]);
 
@@ -193,7 +193,7 @@ void Crystalizer::process(std::span<float>& left_in,
         notify_latency = true;
       }
 
-      for (uint n = 0U, lo_size = left_out.size(); !deque_out_L.empty() && n < lo_size; n++) {
+      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
         if (n < offset) {
           left_out[n] = 0.0F;
           right_out[n] = 0.0F;

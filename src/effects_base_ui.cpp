@@ -1070,12 +1070,10 @@ void EffectsBaseUi::setup_listview_plugins() {
         return;
       }
 
-      const auto& list_size = list.size();
-
       static const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
 
-      if (list_size > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                        [&](const auto& str) { return str == list.at(list_size - 1); })) {
+      if (list.size() > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
+                                          [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
         // If the user is careful protecting his/her device with a plugin of
         // type limiter at the last position of the filter chain, we follow
         // this behaviour inserting the new plugin at the second last position
@@ -1145,7 +1143,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
           }
         }
       } else {
-        for (size_t m = 0U, list_size = list.size(); m < list_size; m++) {
+        for (size_t m = 0U; m < list.size(); m++) {
           if (list[m] == visible_page_name) {
             listview_selected_plugins->get_model()->select_item(m, true);
 

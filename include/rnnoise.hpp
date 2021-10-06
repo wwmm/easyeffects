@@ -21,6 +21,7 @@
 #define RNNOISE_HPP
 
 #include <rnnoise.h>
+#include <deque>
 #include <memory>
 #include "plugin_base.hpp"
 #include "resampler.hpp"

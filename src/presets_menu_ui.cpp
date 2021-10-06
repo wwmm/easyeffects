@@ -100,7 +100,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       return;
     }
 
-    for (guint n = 0, list_size = output_string_list->get_n_items(); n < list_size; n++) {
+    for (guint n = 0; n < output_string_list->get_n_items(); n++) {
       if (preset_name == output_string_list->get_string(n)) {
         return;
       }
@@ -118,7 +118,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       return;
     }
 
-    for (guint n = 0, list_size = output_string_list->get_n_items(); n < list_size; n++) {
+    for (guint n = 0; n < output_string_list->get_n_items(); n++) {
       if (preset_name == output_string_list->get_string(n)) {
         output_string_list->remove(n);
 
@@ -136,7 +136,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       return;
     }
 
-    for (guint n = 0, list_size = input_string_list->get_n_items(); n < list_size; n++) {
+    for (guint n = 0; n < input_string_list->get_n_items(); n++) {
       if (input_string_list->get_string(n) == preset_name) {
         return;
       }
@@ -154,7 +154,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       return;
     }
 
-    for (guint n = 0, list_size = input_string_list->get_n_items(); n < list_size; n++) {
+    for (guint n = 0; n < input_string_list->get_n_items(); n++) {
       if (input_string_list->get_string(n) == preset_name) {
         input_string_list->remove(n);
 

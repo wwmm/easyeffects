@@ -170,7 +170,7 @@ void Convolver::process(std::span<float>& left_in,
 
     do_convolution(left_out, right_out);
   } else {
-    for (size_t j = 0U, li_size = left_in.size(); j < li_size; j++) {
+    for (size_t j = 0U; j < left_in.size(); j++) {
       data_L.push_back(left_in[j]);
       data_R.push_back(right_in[j]);
 
@@ -311,7 +311,7 @@ void Convolver::read_kernel_file() {
 
   file.readf(buffer.data(), file.frames());
 
-  for (size_t n = 0U, bl_size = buffer_L.size(); n < bl_size; n++) {
+  for (size_t n = 0U; n < buffer_L.size(); n++) {
     buffer_L[n] = buffer[2U * n];
     buffer_R[n] = buffer[2U * n + 1U];
   }
@@ -378,7 +378,7 @@ void Convolver::set_kernel_stereo_width() {
   const float w = static_cast<float>(ir_width) * 0.01F;
   const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
-  for (uint i = 0U, okl_size = original_kernel_L.size(); i < okl_size; i++) {
+  for (uint i = 0U; i < original_kernel_L.size(); i++) {
     const auto& L = original_kernel_L[i];
     const auto& R = original_kernel_R[i];
 

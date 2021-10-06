@@ -167,7 +167,7 @@ void RNNoise::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0U, m = left_out.size(); !deque_out_L.empty() && n < m; n++) {
+    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;

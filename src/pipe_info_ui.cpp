@@ -130,7 +130,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       const auto* input_device_name = sie_settings->get_string("input-device").c_str();
 
       if (holder_selected->name != input_device_name) {
-        for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+        for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
           if (input_devices_model->get_item(n)->name == input_device_name) {
             dropdown_input_devices->set_selected(n);
           }
@@ -146,7 +146,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       const auto* output_device_name = soe_settings->get_string("output-device").c_str();
 
       if (holder_selected->name != output_device_name) {
-        for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+        for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
           if (output_devices_model->get_item(n)->name == output_device_name) {
             dropdown_output_devices->set_selected(n);
           }
@@ -165,7 +165,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder != nullptr) {
         if (holder->name != pm->default_input_device.name) {
-          for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+          for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
             if (input_devices_model->get_item(n)->name == pm->default_input_device.name) {
               dropdown_input_devices->set_selected(n);
 
@@ -185,7 +185,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder_selected != nullptr) {
         if (holder_selected->name != pm->default_output_device.name) {
-          for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+          for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
             if (output_devices_model->get_item(n)->name == pm->default_output_device.name) {
               dropdown_output_devices->set_selected(n);
 
@@ -335,7 +335,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
   connections.push_back(pm->sink_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
       if (output_devices_model->get_item(n)->id == info.id) {
         return;
       }
@@ -345,7 +345,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.push_back(pm->sink_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
       if (output_devices_model->get_item(n)->id == info.id) {
         output_devices_model->remove(n);
 
@@ -355,7 +355,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       if (input_devices_model->get_item(n)->id == info.id) {
         return;
       }
@@ -365,7 +365,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   }));
 
   connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       if (input_devices_model->get_item(n)->id == info.id) {
         input_devices_model->remove(n);
 
@@ -384,7 +384,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
             return;
           }
@@ -403,7 +403,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
             output_presets_string_list->remove(n);
 
@@ -422,7 +422,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
             return;
           }
@@ -441,7 +441,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
             input_presets_string_list->remove(n);
 
