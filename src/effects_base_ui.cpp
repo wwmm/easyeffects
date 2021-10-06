@@ -1417,7 +1417,7 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
 
 auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
-  static std::map<Glib::ustring, Glib::ustring> icon_map{
+  static const std::map<Glib::ustring, Glib::ustring> icon_map{
       {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
 
   Glib::ustring icon_name;
@@ -1446,7 +1446,7 @@ auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
   // the icon object can't loopup icons in pixmaps directories,
   // so we check their existence there also
 
-  static auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
+  static const auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
 
   for (const auto& dir : pixmaps_dirs) {
     try {
