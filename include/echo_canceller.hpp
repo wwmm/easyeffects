@@ -21,7 +21,7 @@
 #define ECHO_CANCELLER_HPP
 
 #include <speex/speex_echo.h>
-#include <vector>
+#include <deque>
 #include "plugin_base.hpp"
 
 class EchoCanceller : public PluginBase {

@@ -44,8 +44,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   static auto setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme>;
 
-  inline static Glib::RefPtr<Gtk::IconTheme> icon_theme = nullptr;
-
  private:
   inline static const std::string log_tag = "application_ui: ";
 

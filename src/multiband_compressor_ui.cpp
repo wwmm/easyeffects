@@ -267,7 +267,8 @@ void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0U; n < n_bands; n++) {
     const auto& nstr = std::to_string(n);
 
-    const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
+    const auto& builder =
+        Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
     if (n > 0U) {
       auto* const split_frequency = builder->get_widget<Gtk::SpinButton>("split_frequency");
@@ -524,25 +525,25 @@ void MultibandCompressorUi::reset() {
 }
 
 void MultibandCompressorUi::on_new_frequency_range(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U, m = values.size(); n < m; n++) {
+  for (size_t n = 0U; n < values.size(); n++) {
     bands_end.at(n)->set_text(level_to_localized_string(values.at(n), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_envelope(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U, m = values.size(); n < m; n++) {
+  for (size_t n = 0U; n < values.size(); n++) {
     bands_envelope_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_curve(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U, m = values.size(); n < m; n++) {
+  for (size_t n = 0U; n < values.size(); n++) {
     bands_curve_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }
 
 void MultibandCompressorUi::on_new_reduction(const std::array<float, n_bands>& values) {
-  for (size_t n = 0U, m = values.size(); n < m; n++) {
+  for (size_t n = 0U; n < values.size(); n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
 }

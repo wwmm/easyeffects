@@ -46,7 +46,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   // gsettings bindings
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("model-path").connect([=, this](const auto& key) { set_active_model_label(); }));
 
   // model dir
@@ -81,7 +81,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
-            for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            for (guint n = 0; n < string_list->get_n_items(); n++) {
               if (string_list->get_string(n) == rnn_filename) {
                 return;
               }
@@ -92,7 +92,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
             break;
           }
           case Gio::FileMonitor::Event::DELETED: {
-            for (guint n = 0, list_size = string_list->get_n_items(); n < list_size; n++) {
+            for (guint n = 0; n < string_list->get_n_items(); n++) {
               if (string_list->get_string(n) == rnn_filename) {
                 string_list->remove(n);
 
@@ -121,8 +121,8 @@ RNNoiseUi::~RNNoiseUi() {
 auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(builder, "top_box", "com.github.wwmm.easyeffects.rnnoise",
-                                                         schema_path + "rnnoise/");
+  auto* const ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(
+      builder, "top_box", "com.github.wwmm.easyeffects.rnnoise", schema_path + "rnnoise/");
 
   stack->add(*ui, plugin_name::rnnoise);
 
@@ -216,7 +216,7 @@ void RNNoiseUi::setup_listview() {
 
   auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  for (guint n = 0U, m = single->get_n_items(); n < m; n++) {
+  for (guint n = 0U; n < single->get_n_items(); n++) {
     if (single->get_object(n)->get_property<Glib::ustring>("string") == saved_name) {
       single->select_item(n, true);
     }
@@ -280,7 +280,7 @@ auto RNNoiseUi::get_model_names() -> std::vector<Glib::ustring> {
   while (it != std::filesystem::directory_iterator{}) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().c_str() == rnnn_ext) {
-        names.emplace_back(it->path().stem().c_str());
+        names.push_back(it->path().stem().c_str());
       }
     }
 

@@ -22,9 +22,8 @@
 
 #include <zita-convolver.h>
 #include <algorithm>
-#include <ranges>
+#include <deque>
 #include <sndfile.hh>
-#include <vector>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
 

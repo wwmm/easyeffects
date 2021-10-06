@@ -130,7 +130,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       const auto* input_device_name = sie_settings->get_string("input-device").c_str();
 
       if (holder_selected->name != input_device_name) {
-        for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+        for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
           if (input_devices_model->get_item(n)->name == input_device_name) {
             dropdown_input_devices->set_selected(n);
           }
@@ -146,7 +146,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
       const auto* output_device_name = soe_settings->get_string("output-device").c_str();
 
       if (holder_selected->name != output_device_name) {
-        for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+        for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
           if (output_devices_model->get_item(n)->name == output_device_name) {
             dropdown_output_devices->set_selected(n);
           }
@@ -165,7 +165,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder != nullptr) {
         if (holder->name != pm->default_input_device.name) {
-          for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+          for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
             if (input_devices_model->get_item(n)->name == pm->default_input_device.name) {
               dropdown_input_devices->set_selected(n);
 
@@ -185,7 +185,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
       if (holder_selected != nullptr) {
         if (holder_selected->name != pm->default_output_device.name) {
-          for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+          for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
             if (output_devices_model->get_item(n)->name == pm->default_output_device.name) {
               dropdown_output_devices->set_selected(n);
 
@@ -334,8 +334,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
   soe_settings->bind("use-default-output-device", dropdown_output_devices, "sensitive",
                      Gio::Settings::BindFlags::INVERT_BOOLEAN);
 
-  connections.emplace_back(pm->sink_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+  connections.push_back(pm->sink_added.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
       if (output_devices_model->get_item(n)->id == info.id) {
         return;
       }
@@ -344,8 +344,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     output_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->sink_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = output_devices_model->get_n_items(); n < m; n++) {
+  connections.push_back(pm->sink_removed.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {
       if (output_devices_model->get_item(n)->id == info.id) {
         output_devices_model->remove(n);
 
@@ -354,8 +354,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }));
 
-  connections.emplace_back(pm->source_added.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+  connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       if (input_devices_model->get_item(n)->id == info.id) {
         return;
       }
@@ -364,8 +364,8 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     input_devices_model->append(NodeInfoHolder::create(info));
   }));
 
-  connections.emplace_back(pm->source_removed.connect([=, this](const NodeInfo info) {
-    for (guint n = 0U, m = input_devices_model->get_n_items(); n < m; n++) {
+  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
       if (input_devices_model->get_item(n)->id == info.id) {
         input_devices_model->remove(n);
 
@@ -374,7 +374,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         const auto& preset_name = util::remove_filename_extension(file->get_basename());
 
@@ -384,7 +384,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
             return;
           }
@@ -393,7 +393,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         output_presets_string_list->append(preset_name);
       }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         const auto& preset_name = util::remove_filename_extension(file->get_basename());
 
@@ -403,7 +403,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = output_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
           if (output_presets_string_list->get_string(n) == preset_name) {
             output_presets_string_list->remove(n);
 
@@ -412,7 +412,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         }
       }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         const auto& preset_name = util::remove_filename_extension(file->get_basename());
 
@@ -422,7 +422,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
             return;
           }
@@ -431,7 +431,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         input_presets_string_list->append(preset_name);
       }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
         const auto& preset_name = util::remove_filename_extension(file->get_basename());
 
@@ -441,7 +441,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           return;
         }
 
-        for (guint n = 0, list_size = input_presets_string_list->get_n_items(); n < list_size; n++) {
+        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
           if (input_presets_string_list->get_string(n) == preset_name) {
             input_presets_string_list->remove(n);
 
@@ -450,7 +450,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         }
       }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->autoload_output_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
@@ -459,13 +459,13 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           const auto& device_profile = json.value("device-profile", "");
           const auto& preset_name = json.value("preset-name", "");
 
-          list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
+          list.push_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
 
         autoloading_output_model->splice(0, autoloading_output_model->get_n_items(), list);
       }));
 
-  connections.emplace_back(
+  connections.push_back(
       presets_manager->autoload_input_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
@@ -474,7 +474,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
           const auto& device_profile = json.value("device-profile", "");
           const auto& preset_name = json.value("preset-name", "");
 
-          list.emplace_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
+          list.push_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
 
         autoloading_input_model->splice(0, autoloading_input_model->get_n_items(), list);
@@ -776,7 +776,7 @@ void PipeInfoUi::update_modules_info() {
   std::vector<Glib::RefPtr<ModuleInfoHolder>> values;
 
   for (const auto& info : pm->list_modules) {
-    values.emplace_back(ModuleInfoHolder::create(info));
+    values.push_back(ModuleInfoHolder::create(info));
   }
 
   modules_model->splice(0, modules_model->get_n_items(), values);
@@ -786,7 +786,7 @@ void PipeInfoUi::update_clients_info() {
   std::vector<Glib::RefPtr<ClientInfoHolder>> values;
 
   for (const auto& info : pm->list_clients) {
-    values.emplace_back(ClientInfoHolder::create(info));
+    values.push_back(ClientInfoHolder::create(info));
   }
 
   clients_model->splice(0, clients_model->get_n_items(), values);

@@ -25,7 +25,6 @@
 #include <glibmm/i18n.h>
 #include <gtkmm.h>
 #include <memory>
-#include <vector>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "bass_loudness_ui.hpp"

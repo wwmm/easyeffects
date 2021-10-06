@@ -20,7 +20,7 @@
 #ifndef CRYSTALIZER_HPP
 #define CRYSTALIZER_HPP
 
-#include <vector>
+#include <deque>
 #include "fir_filter_bandpass.hpp"
 #include "fir_filter_highpass.hpp"
 #include "fir_filter_lowpass.hpp"

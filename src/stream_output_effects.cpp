@@ -162,13 +162,11 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
         const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-        const auto& link_size = links.size();
-
-        for (size_t n = 0U; n < link_size; n++) {
-          list_proxies.emplace_back(links[n]);
+        for (size_t n = 0U; n < links.size(); n++) {
+          list_proxies.push_back(links[n]);
         }
 
-        if (link_size == 2U) {
+        if (links.size() == 2U) {
           prev_node_id = next_node_id;
         } else {
           util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
@@ -183,7 +181,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
       if (name == plugin_name::echo_canceller) {
         if (plugins[name]->connected_to_pw) {
           for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
-            list_proxies.emplace_back(link);
+            list_proxies.push_back(link);
           }
         }
 
@@ -199,13 +197,11 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
     const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-    const auto& link_size = links.size();
-
-    for (size_t n = 0U; n < link_size; n++) {
-      list_proxies.emplace_back(links[n]);
+    for (size_t n = 0U; n < links.size(); n++) {
+      list_proxies.push_back(links[n]);
     }
 
-    if (link_size == 2U) {
+    if (links.size() == 2U) {
       prev_node_id = next_node_id;
     } else {
       util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to node " +
@@ -219,13 +215,11 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-  const auto& link_size = links.size();
-
-  for (size_t n = 0U; n < link_size; n++) {
-    list_proxies.emplace_back(links[n]);
+  for (size_t n = 0U; n < links.size(); n++) {
+    list_proxies.push_back(links[n]);
   }
 
-  if (link_size < 2U) {
+  if (links.size() < 2U) {
     util::warning(log_tag + " link from node " + std::to_string(prev_node_id) + " to output device " +
                   std::to_string(next_node_id) + " failed");
   }

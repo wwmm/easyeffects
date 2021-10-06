@@ -174,15 +174,13 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
         const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-        const auto& link_size = links.size();
-
-        for (size_t n = 0U; n < link_size; n++) {
-          list_proxies.emplace_back(links[n]);
+        for (size_t n = 0U; n < links.size(); n++) {
+          list_proxies.push_back(links[n]);
         }
 
-        if (mic_linked && (link_size == 2U)) {
+        if (mic_linked && (links.size() == 2U)) {
           prev_node_id = next_node_id;
-        } else if (!mic_linked && (link_size > 0U)) {
+        } else if (!mic_linked && (links.size() > 0U)) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
@@ -198,7 +196,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       if (name == plugin_name::echo_canceller) {
         if (plugins[name]->connected_to_pw) {
           for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
-            list_proxies.emplace_back(link);
+            list_proxies.push_back(link);
           }
         }
 
@@ -214,15 +212,13 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
     const auto& links = pm->link_nodes(prev_node_id, next_node_id);
 
-    const auto& link_size = links.size();
-
-    for (size_t n = 0U; n < link_size; n++) {
-      list_proxies.emplace_back(links[n]);
+    for (size_t n = 0U; n < links.size(); n++) {
+      list_proxies.push_back(links[n]);
     }
 
-    if (mic_linked && (link_size == 2U)) {
+    if (mic_linked && (links.size() == 2U)) {
       prev_node_id = next_node_id;
-    } else if (!mic_linked && (link_size > 0U)) {
+    } else if (!mic_linked && (links.size() > 0U)) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {
@@ -270,7 +266,7 @@ void StreamInputEffects::set_bypass(const bool& state) {
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, pm->output_device.id, false, false)) {
-      list_proxies_listen_mic.emplace_back(link);
+      list_proxies_listen_mic.push_back(link);
     }
   } else {
     pm->destroy_links(list_proxies_listen_mic);

@@ -156,8 +156,8 @@ void Pitch::process(std::span<float>& left_in,
     stretcher->retrieve(stretcher_out.data(), n_available);
 
     for (int n = 0; n < n_available; n++) {
-      deque_out_L.emplace_back(data_L[n]);
-      deque_out_R.emplace_back(data_R[n]);
+      deque_out_L.push_back(data_L[n]);
+      deque_out_R.push_back(data_R[n]);
     }
   }
 
@@ -182,7 +182,7 @@ void Pitch::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0U, m = left_out.size(); !deque_out_L.empty() && n < m; n++) {
+    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
       if (n < offset) {
         left_out[n] = 0.0F;
         right_out[n] = 0.0F;

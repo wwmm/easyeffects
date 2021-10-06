@@ -39,9 +39,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
-  if (icon_theme == nullptr) {
-    icon_theme = setup_icon_theme();
-  }
+  auto icon_theme = setup_icon_theme();
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);

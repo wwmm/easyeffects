@@ -25,33 +25,32 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
 
   // signals connection
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
+  connections.push_back(settings->signal_changed("color").connect([&](const auto& key) { init_color(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("color-axis-labels").connect([&](const auto& key) { init_frequency_labels_color(); }));
 
-  connections.emplace_back(settings->signal_changed("height").connect(
+  connections.push_back(settings->signal_changed("height").connect(
       [&](const auto& key) { set_content_height(settings->get_int("height")); }));
 
-  connections.emplace_back(
-      settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
+  connections.push_back(settings->signal_changed("n-points").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("minimum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(
+  connections.push_back(
       settings->signal_changed("maximum-frequency").connect([&](const auto& key) { init_frequency_axis(); }));
 
-  connections.emplace_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
+  connections.push_back(settings->signal_changed("type").connect([&](const auto& key) { init_type(); }));
 
-  connections.emplace_back(settings->signal_changed("fill").connect(
+  connections.push_back(settings->signal_changed("fill").connect(
       [&](const auto& key) { plot->set_fill_bars(settings->get_boolean(key)); }));
 
-  connections.emplace_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
+  connections.push_back(settings->signal_changed("show-bar-border").connect([&](const auto& key) {
     plot->set_draw_bar_border(settings->get_boolean(key));
   }));
 
-  connections.emplace_back(settings->signal_changed("line-width").connect([&](const auto& key) {
+  connections.push_back(settings->signal_changed("line-width").connect([&](const auto& key) {
     plot->set_line_width(static_cast<float>(settings->get_double("line-width")));
   }));
 
@@ -111,8 +110,8 @@ void SpectrumUi::on_new_spectrum(uint rate, uint n_bands, std::vector<float> mag
 
   // reducing the amount of data so we can plot them
 
-  for (size_t j = 0U, y = spectrum_freqs.size(); j < y; j++) {
-    for (size_t n = 0U, m = spectrum_x_axis.size(); n < m; n++) {
+  for (size_t j = 0U; j < spectrum_freqs.size(); j++) {
+    for (size_t n = 0U; n < spectrum_x_axis.size(); n++) {
       if (n > 0U) {
         if (spectrum_freqs[j] <= spectrum_x_axis[n] && spectrum_freqs[j] > spectrum_x_axis[n - 1U]) {
           spectrum_mag[n] += magnitudes[j];
@@ -129,7 +128,7 @@ void SpectrumUi::on_new_spectrum(uint rate, uint n_bands, std::vector<float> mag
     }
   }
 
-  for (size_t n = 0U, m = spectrum_bin_count.size(); n < m; n++) {
+  for (size_t n = 0U; n < spectrum_bin_count.size(); n++) {
     if (spectrum_bin_count[n] == 0U && n > 0U) {
       spectrum_mag[n] = spectrum_mag[n - 1U];
 

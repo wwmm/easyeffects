@@ -47,19 +47,19 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
     }
   }
 
-  connections.emplace_back(
+  connections.push_back(
       sie->output_level->output_level.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_new_output_level_db)));
 
-  connections.emplace_back(sie->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
+  connections.push_back(sie->spectrum->power.connect(sigc::mem_fun(*spectrum_ui, &SpectrumUi::on_new_spectrum)));
 
-  connections.emplace_back(
+  connections.push_back(
       sie->pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_added)));
-  connections.emplace_back(
+  connections.push_back(
       sie->pm->stream_input_changed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_changed)));
-  connections.emplace_back(
+  connections.push_back(
       sie->pm->stream_input_removed.connect(sigc::mem_fun(*this, &StreamInputEffectsUi::on_app_removed)));
 
-  connections.emplace_back(sie->pm->source_changed.connect([&](const auto nd_info) {
+  connections.push_back(sie->pm->source_changed.connect([&](const auto nd_info) {
     // nd_info is a reference of a copy previously made
 
     if (nd_info.id == sie->pm->ee_source_node.id) {

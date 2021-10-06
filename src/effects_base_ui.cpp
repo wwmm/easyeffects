@@ -181,7 +181,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  connections.emplace_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
+  connections.push_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
     const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, v);
 
     latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
@@ -1070,19 +1070,17 @@ void EffectsBaseUi::setup_listview_plugins() {
         return;
       }
 
-      const auto& list_size = list.size();
-
       static const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
 
-      if (list_size > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                        [&](const auto& str) { return str == list.at(list_size - 1); })) {
+      if (list.size() > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
+                                          [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
         // If the user is careful protecting his/her device with a plugin of
         // type limiter at the last position of the filter chain, we follow
         // this behaviour inserting the new plugin at the second last position
 
-        list.emplace(list.cend() - 1U, key_name);
+        list.insert(list.cend() - 1U, key_name);
       } else {
-        list.emplace_back(key_name);
+        list.push_back(key_name);
       }
 
       settings->set_string_array("plugins", list);
@@ -1145,7 +1143,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
           }
         }
       } else {
-        for (size_t m = 0U, list_size = list.size(); m < list_size; m++) {
+        for (size_t m = 0U; m < list.size(); m++) {
           if (list[m] == visible_page_name) {
             listview_selected_plugins->get_model()->select_item(m, true);
 
@@ -1419,7 +1417,7 @@ auto EffectsBaseUi::node_state_to_ustring(const pw_node_state& state) -> Glib::u
 
 auto EffectsBaseUi::get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
-  static std::map<Glib::ustring, Glib::ustring> icon_map{
+  static const std::map<Glib::ustring, Glib::ustring> icon_map{
       {"chromium-browser", "chromium"}, {"firefox", "firefox"}, {"obs", "com.obsproject.Studio"}};
 
   Glib::ustring icon_name;
@@ -1448,7 +1446,7 @@ auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
   // the icon object can't loopup icons in pixmaps directories,
   // so we check their existence there also
 
-  static auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
+  static const auto pixmaps_dirs = {"/usr/share/pixmaps", "/usr/local/share/pixmaps"};
 
   for (const auto& dir : pixmaps_dirs) {
     try {
@@ -1488,7 +1486,7 @@ auto EffectsBaseUi::add_new_blocklist_entry(const Glib::ustring& name) -> bool {
     return false;
   }
 
-  bl.emplace_back(name);
+  bl.push_back(name);
 
   settings->set_string_array("blocklist", bl);
 

@@ -90,7 +90,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   // signals connection
 
-  connections.emplace_back(settings->signal_changed("color").connect([&](const auto& key) {
+  connections.push_back(settings->signal_changed("color").connect([&](const auto& key) {
     Glib::Variant<std::vector<double>> v;
 
     settings->get_value("color", v);

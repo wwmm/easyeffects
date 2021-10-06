@@ -96,13 +96,13 @@ void Plot::init_axes() {
 
   for (const auto& v : original_x) {
     if (v >= x_min && v <= x_max) {
-      x_axis.emplace_back(v);
+      x_axis.push_back(v);
     }
   }
 
   for (const auto& v : original_y) {
     if (v >= y_min && v <= y_max) {
-      y_axis.emplace_back(v);
+      y_axis.push_back(v);
     }
   }
 
@@ -258,7 +258,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     would start to be drawn at the border of the window.
   */
 
-  for (size_t n = 0U, m = labels.size(); n < m - 1U; n++) {
+  for (size_t n = 0U; n < labels.size() - 1U; n++) {
     const auto& msg = Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, labels[n]) + " " + x_unit;
 
     Pango::FontDescription font;
@@ -276,7 +276,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
 
     layout->show_in_cairo_context(ctx);
 
-    if (n == m - 2U) {
+    if (n == labels.size() - 2U) {
       return text_height;
     }
   }

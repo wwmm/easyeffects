@@ -82,7 +82,7 @@ PluginBase::PluginBase(std::string tag,
       pm(pipe_manager) {
   pf_data.pb = this;
 
-  const auto& filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2) + "_" + name;
+  const auto& filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2U) + "_" + name;
 
   pm->lock();
 

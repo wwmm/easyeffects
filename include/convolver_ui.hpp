@@ -26,9 +26,7 @@
 #include <filesystem>
 #include <mutex>
 #include <numbers>
-#include <ranges>
 #include <sndfile.hh>
-#include <thread>
 #include "plot.hpp"
 #include "plugin_ui_base.hpp"
 

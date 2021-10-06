@@ -247,7 +247,7 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   import_apo->signal_clicked().connect(sigc::mem_fun(*this, &EqualizerUi::on_import_apo_preset_clicked));
 
-  connections.emplace_back(settings->signal_changed("split-channels").connect([=, this](const auto& sc) {
+  connections.push_back(settings->signal_changed("split-channels").connect([=, this](const auto& sc) {
     stack->set_visible_child("page_left_channel");
 
     on_nbands_changed();
@@ -381,19 +381,19 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
     // connections
 
-    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_quality_width));
+    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_quality_width));
 
-    connections_bands.emplace_back(band_frequency->signal_value_changed().connect(update_band_label));
+    connections_bands.push_back(band_frequency->signal_value_changed().connect(update_band_label));
 
-    connections_bands.emplace_back(band_quality->signal_value_changed().connect(update_quality_width));
+    connections_bands.push_back(band_quality->signal_value_changed().connect(update_quality_width));
 
     if (split_mode) {
       // split channels mode
 
-      connections_bands.emplace_back(
+      connections_bands.push_back(
           reset_frequency->signal_clicked().connect([=]() { cfg->reset(bandn + "-frequency"); }));
 
-      connections_bands.emplace_back(reset_quality->signal_clicked().connect([=]() { cfg->reset(bandn + "-q"); }));
+      connections_bands.push_back(reset_quality->signal_clicked().connect([=]() { cfg->reset(bandn + "-q"); }));
     } else {
       // unified mode
 
@@ -402,46 +402,46 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
          They have to be done before the bindings for the left channel.
        */
 
-      connections_bands.emplace_back(band_scale->signal_value_changed().connect(
+      connections_bands.push_back(band_scale->signal_value_changed().connect(
           [=, this]() { settings_right->set_double(bandn + "-gain", band_scale->get_value()); }));
 
-      connections_bands.emplace_back(band_frequency->signal_value_changed().connect(
+      connections_bands.push_back(band_frequency->signal_value_changed().connect(
           [=, this]() { settings_right->set_double(bandn + "-frequency", band_frequency->get_value()); }));
 
-      connections_bands.emplace_back(band_quality->signal_value_changed().connect(
+      connections_bands.push_back(band_quality->signal_value_changed().connect(
           [=, this]() { settings_right->set_double(bandn + "-q", band_quality->get_value()); }));
 
-      connections_bands.emplace_back(band_type->signal_changed().connect(
+      connections_bands.push_back(band_type->signal_changed().connect(
           [=, this]() { settings_right->set_enum(bandn + "-type", band_type->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_mode->signal_changed().connect(
+      connections_bands.push_back(band_mode->signal_changed().connect(
           [=, this]() { settings_right->set_enum(bandn + "-mode", band_mode->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_slope->signal_changed().connect(
+      connections_bands.push_back(band_slope->signal_changed().connect(
           [=, this]() { settings_right->set_enum(bandn + "-slope", band_slope->get_active_row_number()); }));
 
-      connections_bands.emplace_back(band_solo->signal_toggled().connect(
+      connections_bands.push_back(band_solo->signal_toggled().connect(
           [=, this]() { settings_right->set_boolean(bandn + "-solo", band_solo->get_active()); }));
 
-      connections_bands.emplace_back(band_mute->signal_toggled().connect(
+      connections_bands.push_back(band_mute->signal_toggled().connect(
           [=, this]() { settings_right->set_boolean(bandn + "-mute", band_mute->get_active()); }));
 
       // Left channel
 
-      connections_bands.emplace_back(reset_frequency->signal_clicked().connect([=, this]() {
+      connections_bands.push_back(reset_frequency->signal_clicked().connect([=, this]() {
         settings_left->reset(bandn + "-frequency");
 
         settings_right->reset(bandn + "-frequency");
       }));
 
-      connections_bands.emplace_back(reset_quality->signal_clicked().connect([=, this]() {
+      connections_bands.push_back(reset_quality->signal_clicked().connect([=, this]() {
         settings_left->reset(bandn + "-q");
 
         settings_right->reset(bandn + "-q");
       }));
     }
 
-    connections_bands.emplace_back(band_type->signal_changed().connect([=]() {
+    connections_bands.push_back(band_type->signal_changed().connect([=]() {
       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
 
       const auto& row = band_type->get_active_row_number();

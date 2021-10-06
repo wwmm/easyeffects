@@ -54,13 +54,13 @@ PresetsManager::PresetsManager()
   // system presets directories provided by Glib
 
   for (const auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dir.emplace_back(scd + "/easyeffects/input");
-    system_output_dir.emplace_back(scd + "/easyeffects/output");
+    system_input_dir.push_back(scd + "/easyeffects/input");
+    system_output_dir.push_back(scd + "/easyeffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates
-  system_input_dir.emplace_back("/etc/easyeffects/input");
-  system_output_dir.emplace_back("/etc/easyeffects/output");
+  system_input_dir.push_back("/etc/easyeffects/input");
+  system_output_dir.push_back("/etc/easyeffects/output");
   std::sort(system_input_dir.begin(), system_input_dir.end());
   std::sort(system_output_dir.begin(), system_output_dir.end());
   system_input_dir.erase(std::unique(system_input_dir.begin(), system_input_dir.end()), system_input_dir.end());
@@ -227,7 +227,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
         if (it->path().extension().c_str() == json_ext) {
-          names.emplace_back(it->path().stem().c_str());
+          names.push_back(it->path().stem().c_str());
         }
       }
 
@@ -256,7 +256,7 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
   switch (preset_type) {
     case PresetType::output: {
       for (const auto& l : soe_settings->get_string_array("blocklist")) {
-        blocklist.emplace_back(l.c_str());
+        blocklist.push_back(l.c_str());
       }
 
       json["output"]["blocklist"] = blocklist;
@@ -265,7 +265,7 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
     }
     case PresetType::input: {
       for (const auto& l : sie_settings->get_string_array("blocklist")) {
-        blocklist.emplace_back(l.c_str());
+        blocklist.push_back(l.c_str());
       }
 
       json["input"]["blocklist"] = blocklist;
@@ -282,7 +282,7 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
     case PresetType::input: {
       try {
         for (const auto& l : json.at("input").at("blocklist").get<std::vector<std::string>>()) {
-          blocklist.emplace_back(l);
+          blocklist.push_back(l);
         }
 
         sie_settings->set_string_array("blocklist", blocklist);
@@ -297,7 +297,7 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
     case PresetType::output: {
       try {
         for (const auto& l : json.at("output").at("blocklist").get<std::vector<std::string>>()) {
-          blocklist.emplace_back(l);
+          blocklist.push_back(l);
         }
 
         soe_settings->set_string_array("blocklist", blocklist);
@@ -328,7 +328,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.emplace_back(p.raw());
+        list.push_back(p.raw());
       }
 
       json["output"]["plugins_order"] = list;
@@ -347,7 +347,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.emplace_back(p.raw());
+        list.push_back(p.raw());
       }
 
       json["input"]["plugins_order"] = list;
@@ -450,7 +450,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
   switch (preset_type) {
     case PresetType::output: {
-      conf_dirs.emplace_back(user_output_dir);
+      conf_dirs.push_back(user_output_dir);
 
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
@@ -473,7 +473,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
           for (const auto& p : json.at("output").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
-                plugins.emplace_back(p);
+                plugins.push_back(p);
 
                 break;
               }
@@ -494,7 +494,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
       break;
     }
     case PresetType::input: {
-      conf_dirs.emplace_back(user_input_dir);
+      conf_dirs.push_back(user_input_dir);
 
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
@@ -517,7 +517,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
           for (const auto& p : json.at("input").at("plugins_order").get<std::vector<std::string>>()) {
             for (const auto& v : plugin_name::list) {
               if (v == p) {
-                plugins.emplace_back(p);
+                plugins.push_back(p);
 
                 break;
               }
@@ -752,7 +752,7 @@ auto PresetsManager::get_autoload_profiles(const PresetType& preset_type) -> std
 
           is >> json;
 
-          list.emplace_back(json);
+          list.push_back(json);
         }
       }
 
@@ -773,7 +773,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const Gli
 
   switch (preset_type) {
     case PresetType::output: {
-      conf_dirs.emplace_back(user_output_dir);
+      conf_dirs.push_back(user_output_dir);
 
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
@@ -788,7 +788,7 @@ auto PresetsManager::preset_file_exists(const PresetType& preset_type, const Gli
       break;
     }
     case PresetType::input: {
-      conf_dirs.emplace_back(user_input_dir);
+      conf_dirs.push_back(user_input_dir);
 
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 

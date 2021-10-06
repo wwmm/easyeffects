@@ -69,7 +69,7 @@ void Spectrum::process(std::span<float>& left_in,
 
   uint count = 0U;
 
-  for (uint n = 0U, m = left_in.size(); n < m; n++, count++) {
+  for (uint n = 0U; n < left_in.size(); n++, count++) {
     if (const uint& k = total_count + n; k < real_input.size()) {
       // https://en.wikipedia.org/wiki/Hann_function
 
@@ -89,7 +89,7 @@ void Spectrum::process(std::span<float>& left_in,
 
     fftwf_execute(plan);
 
-    for (uint i = 0U, m = output.size(); i < m; i++) {
+    for (uint i = 0U; i < output.size(); i++) {
       float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
       sqr /= static_cast<float>(n_samples * n_samples);
