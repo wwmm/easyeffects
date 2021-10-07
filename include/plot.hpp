@@ -20,7 +20,6 @@
 #ifndef PLOT_UI_HPP
 #define PLOT_UI_HPP
 
-#include <gtkmm.h>
 #include <iomanip>
 #include <ranges>
 #include "util.hpp"

@@ -20,6 +20,7 @@
 #ifndef PIPE_MANAGER_HPP
 #define PIPE_MANAGER_HPP
 
+#include <giomm.h>
 #include <glibmm.h>
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/pipewire.h>

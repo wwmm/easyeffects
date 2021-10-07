@@ -21,7 +21,6 @@
 #define SPECTRUM_UI_HPP
 
 #include <giomm.h>
-#include <gtkmm.h>
 #include <memory>
 #include "plot.hpp"
 #include "util.hpp"

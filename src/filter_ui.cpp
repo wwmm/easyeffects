@@ -136,7 +136,7 @@ auto FilterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/filter.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<FilterUi>(builder, "top_box", "com.github.wwmm.easyeffects.filter",
-                                                        schema_path + "filter/");
+                                                              schema_path + "filter/");
 
   stack->add(*ui, plugin_name::filter);
 

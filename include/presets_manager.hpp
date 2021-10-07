@@ -20,8 +20,6 @@
 #ifndef PRESETS_MANAGER_HPP
 #define PRESETS_MANAGER_HPP
 
-#include <giomm.h>
-#include <glibmm.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <filesystem>

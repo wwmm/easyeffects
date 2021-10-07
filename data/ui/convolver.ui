@@ -32,14 +32,12 @@
                 <child>
                     <object class="GtkBox">
                         <property name="homogeneous">1</property>
-                        <property name="accessible-role">tab-list</property>
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkCheckButton" id="check_left">
                                 <property name="valign">end</property>
                                 <property name="halign">center</property>
                                 <property name="active">1</property>
-                                <property name="accessible-role">tab</property>
                                 <property name="label" translatable="yes">L</property>
                             </object>
                         </child>
@@ -48,7 +46,6 @@
                             <object class="GtkCheckButton" id="check_right">
                                 <property name="valign">start</property>
                                 <property name="halign">center</property>
-                                <property name="accessible-role">tab</property>
                                 <property name="group">check_left</property>
                                 <property name="label" translatable="yes">R</property>
                             </object>

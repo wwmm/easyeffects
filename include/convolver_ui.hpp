@@ -21,7 +21,6 @@
 #define CONVOLVER_UI_HPP
 
 #include <fftw3.h>
-#include <glibmm.h>
 #include <glibmm/i18n.h>
 #include <filesystem>
 #include <mutex>

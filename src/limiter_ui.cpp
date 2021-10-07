@@ -329,8 +329,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "oversampling", oversampling->gobj(), "active",
                                G_SETTINGS_BIND_DEFAULT, ovs_enum_to_int, int_to_ovs_enum, nullptr, nullptr);
 
-  g_settings_bind_with_mapping(settings->gobj(), "dithering", dither->gobj(), "active",
-                              G_SETTINGS_BIND_DEFAULT, dither_enum_to_int, int_to_dither_enum, nullptr, nullptr);
+  g_settings_bind_with_mapping(settings->gobj(), "dithering", dither->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               dither_enum_to_int, int_to_dither_enum, nullptr, nullptr);
 
   // prepare widgets
 
@@ -368,8 +368,8 @@ LimiterUi::~LimiterUi() {
 auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi* {
   const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<LimiterUi>(builder, "top_box", "com.github.wwmm.easyeffects.limiter",
-                                                         schema_path + "limiter/");
+  auto* const ui = Gtk::Builder::get_widget_derived<LimiterUi>(
+      builder, "top_box", "com.github.wwmm.easyeffects.limiter", schema_path + "limiter/");
 
   stack->add(*ui, plugin_name::limiter);
 

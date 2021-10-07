@@ -489,10 +489,10 @@
 
                         <child>
                             <object class="GtkToggleButton" id="alr">
-                            <property name="halign">center</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">Auto Leveling</property>
-                        </object>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Auto Leveling</property>
+                            </object>
                         </child>
 
                         <child>

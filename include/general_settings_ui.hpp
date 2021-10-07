@@ -21,9 +21,7 @@
 #define GENERAL_SETTINGS_UI_HPP
 
 #include <giomm.h>
-#include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm.h>
 #include <filesystem>
 #include "application.hpp"
 #include "util.hpp"

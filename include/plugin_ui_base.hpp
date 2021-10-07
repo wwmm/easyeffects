@@ -21,7 +21,6 @@
 #define PLUGIN_UI_BASE_HPP
 
 #include <giomm.h>
-#include <gtkmm.h>
 #include <iomanip>
 #include "plugin_name.hpp"
 #include "scale_helper.hpp"
@@ -83,7 +82,6 @@ class PluginUiBase {
                     const float& left,
                     const float& right) {
     if (auto db_value = util::db_to_linear(left); left >= -99.0) {
-
       if (db_value < 0.0) {
         db_value = 0.0;
       } else if (db_value > 1.0) {
@@ -98,7 +96,6 @@ class PluginUiBase {
     }
 
     if (auto db_value = util::db_to_linear(right); right >= -99.0) {
-
       if (db_value < 0.0) {
         db_value = 0.0;
       } else if (db_value > 1.0) {

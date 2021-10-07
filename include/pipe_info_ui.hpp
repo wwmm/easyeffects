@@ -20,9 +20,6 @@
 #ifndef PIPE_INFO_UI_HPP
 #define PIPE_INFO_UI_HPP
 
-#include <giomm.h>
-#include <gtkmm.h>
-#include <memory>
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"

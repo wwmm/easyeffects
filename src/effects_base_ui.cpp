@@ -1237,7 +1237,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           controller_widget->set_data("dragged-item", item);
 
-          Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
+          // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
           Glib::Value<Glib::ustring> name_value;
 

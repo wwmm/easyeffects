@@ -20,7 +20,6 @@
 #ifndef SPINBUTTON_HELPER_HPP
 #define SPINBUTTON_HELPER_HPP
 
-#include <gtkmm.h>
 #include <sstream>
 
 inline auto parse_spinbutton_output(Gtk::SpinButton* button, const Glib::ustring& unit) -> bool {
