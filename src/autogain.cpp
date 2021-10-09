@@ -26,6 +26,8 @@ AutoGain::AutoGain(const std::string& tag,
     : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
   target = settings->get_double("target");
 
+  reference = parse_reference_key(settings->get_string("reference"));
+
   settings->signal_changed("target").connect([&, this](const auto& key) { target = settings->get_double(key); });
 
   settings->signal_changed("reset-history").connect([&, this](const auto& key) {
@@ -35,15 +37,7 @@ AutoGain::AutoGain(const std::string& tag,
   });
 
   settings->signal_changed("reference").connect([&, this](const auto& key) {
-    if (settings->get_string(key) == "Momentary") {
-      reference = Reference::momentary;
-    } else if (settings->get_string(key) == "Shortterm") {
-      reference = Reference::shortterm;
-    } else if (settings->get_string(key) == "Integrated") {
-      reference = Reference::integrated;
-    } else if (settings->get_string(key) == "Geometric Mean") {
-      reference = Reference::geometric_mean;
-    }
+    reference = parse_reference_key(settings->get_string(key));
   });
 
   setup_input_output_gain();
@@ -83,6 +77,22 @@ void AutoGain::init_ebur128() {
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
   ebur128_ready = ebur_state != nullptr;
+}
+
+auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
+  if (key == "Momentary") {
+    return Reference::momentary;
+  }
+
+  if (key == "Shortterm") {
+    return Reference::shortterm;
+  }
+
+  if (key == "Integrated") {
+    return Reference::integrated;
+  }
+
+  return Reference::geometric_mean;
 }
 
 void AutoGain::setup() {
