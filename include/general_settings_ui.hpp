@@ -45,7 +45,7 @@ class GeneralSettingsUi : public Gtk::Box {
   Application* app = nullptr;
 
   Gtk::Switch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
-              *theme_switch = nullptr, *shutdown_on_window_close = nullptr;
+              *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr;
 
   Gtk::Button *reset_settings = nullptr, *about_button = nullptr;
 

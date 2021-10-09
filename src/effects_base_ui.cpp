@@ -26,6 +26,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
     : effects_base(effects_base),
       schema(schema),
       settings(Gio::Settings::create(schema)),
+      app_settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
       icon_theme(icon_ptr),
       pm(effects_base->pm),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
@@ -676,8 +677,13 @@ void EffectsBaseUi::setup_listview_players() {
     auto connection_volume = volume->signal_value_changed().connect([=, this]() {
       if (const auto node_it = pm->node_map.find(timestamp); node_it != pm->node_map.end()) {
         if (node_it->second.proxy != nullptr) {
+          auto vol = static_cast<float>(volume->get_value()) / 100.0F;
+
+          if (app_settings->get_boolean("use-cubic-volumes")) {
+            vol = vol * vol * vol;
+          }
           pm->set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels,
-                              static_cast<float>(volume->get_value()) / 100.0F);
+                              vol);
         }
       }
     });
@@ -792,7 +798,11 @@ void EffectsBaseUi::setup_listview_players() {
 
       scale_volume->set_sensitive(true);
 
-      volume->set_value(100 * node_info.volume);
+      if (app_settings->get_boolean("use-cubic-volumes")) {
+        volume->set_value(100 * std::cbrt(node_info.volume));
+      } else {
+        volume->set_value(100 * node_info.volume);
+      }
 
       pointer_connection_volume->unblock();
 

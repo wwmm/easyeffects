@@ -72,6 +72,7 @@ class EffectsBaseUi {
   std::string schema;
 
   Glib::RefPtr<Gio::Settings> settings;
+  Glib::RefPtr<Gio::Settings> app_settings;
 
   // The Icon Theme object is needed to lookup app icon names
 
