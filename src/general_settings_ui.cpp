@@ -30,6 +30,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   process_all_outputs = builder->get_widget<Gtk::Switch>("process_all_outputs");
   enable_autostart = builder->get_widget<Gtk::Switch>("enable_autostart");
   shutdown_on_window_close = builder->get_widget<Gtk::Switch>("shutdown_on_window_close");
+  use_cubic_volumes = builder->get_widget<Gtk::Switch>("use_cubic_volumes");
 
   reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
   about_button = builder->get_widget<Gtk::Button>("about_button");
@@ -46,6 +47,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   settings->bind("process-all-inputs", process_all_inputs, "active");
   settings->bind("process-all-outputs", process_all_outputs, "active");
   settings->bind("shutdown-on-window-close", shutdown_on_window_close, "active");
+  settings->bind("use-cubic-volumes", use_cubic_volumes, "active");
 
   init_autostart_switch();
 }
