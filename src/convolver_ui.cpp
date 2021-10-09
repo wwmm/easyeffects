@@ -125,7 +125,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   folder_monitor->signal_changed().connect(
       [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto& irs_filename = util::remove_filename_extension(file->get_basename());
+        const auto irs_filename = util::remove_filename_extension(file->get_basename());
 
         if (irs_filename.empty()) {
           util::warning("Can't retrieve information about irs file");
@@ -171,7 +171,7 @@ ConvolverUi::~ConvolverUi() {
 }
 
 auto ConvolverUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ConvolverUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/convolver.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<ConvolverUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.convolver", schema_path + "convolver/");
@@ -201,10 +201,10 @@ void ConvolverUi::setup_listview() {
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -246,12 +246,12 @@ void ConvolverUi::setup_listview() {
     auto* const load = static_cast<Gtk::Button*>(list_item->get_data("load"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
     auto connection_load = load->signal_clicked().connect([=, this]() {
-      const auto& irs_file = irs_dir / std::filesystem::path{name.c_str() + irs_ext};
+      const auto irs_file = irs_dir / std::filesystem::path{name.c_str() + irs_ext};
 
       settings->set_string("kernel-path", irs_file.c_str());
     });
@@ -330,7 +330,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
 }
 
 void ConvolverUi::remove_irs_file(const std::string& name) {
-  const auto& irs_file = irs_dir / std::filesystem::path{name + irs_ext};
+  const auto irs_file = irs_dir / std::filesystem::path{name + irs_ext};
 
   if (std::filesystem::exists(irs_file)) {
     std::filesystem::remove(irs_file);
@@ -377,7 +377,7 @@ void ConvolverUi::on_import_irs_clicked() {
 }
 
 void ConvolverUi::get_irs_info() {
-  const auto& path = settings->get_string("kernel-path");
+  const auto path = settings->get_string("kernel-path");
 
   if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null.");
@@ -447,7 +447,7 @@ void ConvolverUi::get_irs_info() {
       bin_r_y.push_back(right_mag[n]);
 
       if (bin_x.size() == bin_size) {
-        const auto& [min, max] = std::ranges::minmax_element(bin_l_y);
+        const auto [min, max] = std::ranges::minmax_element(bin_l_y);
 
         t.push_back(bin_x[min - bin_l_y.begin()]);
         t.push_back(bin_x[max - bin_l_y.begin()]);
@@ -455,7 +455,7 @@ void ConvolverUi::get_irs_info() {
         l.push_back(*min);
         l.push_back(*max);
 
-        const auto& [minr, maxr] = std::ranges::minmax_element(bin_r_y);
+        const auto [minr, maxr] = std::ranges::minmax_element(bin_r_y);
 
         r.push_back(*minr);
         r.push_back(*maxr);
@@ -491,11 +491,11 @@ void ConvolverUi::get_irs_info() {
 
   // find min and max values
 
-  const auto& min_left = std::ranges::min(left_mag);
-  const auto& max_left = std::ranges::max(left_mag);
+  const auto min_left = std::ranges::min(left_mag);
+  const auto max_left = std::ranges::max(left_mag);
 
-  const auto& min_right = std::ranges::min(right_mag);
-  const auto& max_right = std::ranges::max(right_mag);
+  const auto min_right = std::ranges::min(right_mag);
+  const auto max_right = std::ranges::max(right_mag);
 
   // rescaling between 0 and 1
 
@@ -512,7 +512,7 @@ void ConvolverUi::get_irs_info() {
 
     label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
-    const auto& fpath = std::filesystem::path{path.raw()};
+    const auto fpath = std::filesystem::path{path.raw()};
 
     label_file_name->set_text(fpath.stem().c_str());
 
@@ -599,8 +599,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  const auto& log_axis =
-      util::logspace(std::log10(20.0F), std::log10(22000.0F), spectrum_settings->get_int("n-points"));
+  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), spectrum_settings->get_int("n-points"));
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<float> l(log_axis.size());
@@ -648,11 +647,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // find min and max values
 
-  const auto& fft_min_left = std::ranges::min(left_spectrum);
-  const auto& fft_max_left = std::ranges::max(left_spectrum);
+  const auto fft_min_left = std::ranges::min(left_spectrum);
+  const auto fft_max_left = std::ranges::max(left_spectrum);
 
-  const auto& fft_min_right = std::ranges::min(right_spectrum);
-  const auto& fft_max_right = std::ranges::max(right_spectrum);
+  const auto fft_min_right = std::ranges::min(right_spectrum);
+  const auto fft_max_right = std::ranges::max(right_spectrum);
 
   // rescaling between 0 and 1
 

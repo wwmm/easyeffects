@@ -44,7 +44,7 @@ Equalizer::Equalizer(const std::string& tag,
     const uint& nbands = settings->get_int(key);
 
     for (uint n = 0U; n < max_bands; n++) {
-      const auto& bandn = "band" + std::to_string(n);
+      const auto bandn = "band" + std::to_string(n);
 
       if (n < nbands) {
         settings_left->set_enum(bandn + "-type", 1);
@@ -63,7 +63,7 @@ Equalizer::Equalizer(const std::string& tag,
     }
 
     for (uint n = 0U; n < max_bands; n++) {
-      const auto& bandn = "band" + std::to_string(n);
+      const auto bandn = "band" + std::to_string(n);
 
       settings_right->set_enum(bandn + "-type", settings_left->get_enum(bandn + "-type"));
 
@@ -129,7 +129,7 @@ void Equalizer::process(std::span<float>& left_in,
     This plugin gives the latency in number of samples
   */
 
-  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
@@ -169,7 +169,7 @@ void Equalizer::process(std::span<float>& left_in,
 }
 
 void Equalizer::bind_band(const int& index) {
-  const auto& istr = std::to_string(index);
+  const auto istr = std::to_string(index);
 
   // left channel
 

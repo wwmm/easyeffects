@@ -59,7 +59,7 @@ GeneralSettingsUi::~GeneralSettingsUi() {
 }
 
 void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/general_settings.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/general_settings.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<GeneralSettingsUi>(builder, "top_box", app);
 
@@ -67,7 +67,7 @@ void GeneralSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
 }
 
 void GeneralSettingsUi::init_autostart_switch() {
-  const auto& path = Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop";
+  const auto path = Glib::get_user_config_dir() + "/autostart/easyeffects-service.desktop";
 
   enable_autostart->set_active(std::filesystem::is_regular_file(path) ? true : false);
 }

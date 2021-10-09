@@ -92,7 +92,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+    const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
       util::warning("Can't retrieve information about the preset file");
@@ -110,7 +110,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+    const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
       util::warning("Can't retrieve information about the preset file");
@@ -128,7 +128,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+    const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
       util::warning("Can't retrieve information about the preset file");
@@ -146,7 +146,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   });
 
   app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto& preset_name = util::remove_filename_extension(file->get_basename());
+    const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
       util::warning("Can't retrieve information about the preset file");
@@ -177,9 +177,9 @@ PresetsMenuUi::~PresetsMenuUi() {
 }
 
 auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/presets_menu.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
-  const auto& settings = Gio::Settings::create("com.github.wwmm.easyeffects");
+  const auto settings = Gio::Settings::create("com.github.wwmm.easyeffects");
 
   return Gtk::Builder::get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
 }
@@ -283,10 +283,10 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -299,7 +299,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
+    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -317,7 +317,7 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
     auto* const save = static_cast<Gtk::Button*>(list_item->get_data("save"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -362,8 +362,8 @@ void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
 }
 
 void PresetsMenuUi::reset_menu_button_label() {
-  const auto& names_input = app->presets_manager->get_names(PresetType::input);
-  const auto& names_output = app->presets_manager->get_names(PresetType::output);
+  const auto names_input = app->presets_manager->get_names(PresetType::input);
+  const auto names_output = app->presets_manager->get_names(PresetType::output);
 
   if (names_input.empty() && names_output.empty()) {
     settings->set_string("last-used-output-preset", _("Presets"));

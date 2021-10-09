@@ -95,7 +95,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
     settings->get_value("color", v);
 
-    const auto& rgba = v.get();
+    const auto rgba = v.get();
 
     Gdk::RGBA color;
 
@@ -105,18 +105,18 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
   }));
 
   spectrum_color_button->signal_color_set().connect([&]() {
-    const auto& spectrum_color = spectrum_color_button->get_rgba();
+    const auto spectrum_color = spectrum_color_button->get_rgba();
 
-    const auto& v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+    const auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
         spectrum_color.get_red(), spectrum_color.get_green(), spectrum_color.get_blue(), spectrum_color.get_alpha()});
 
     settings->set_value("color", v);
   });
 
   axis_color_button->signal_color_set().connect([&]() {
-    const auto& axis_color = axis_color_button->get_rgba();
+    const auto axis_color = axis_color_button->get_rgba();
 
-    const auto& v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
+    const auto v = Glib::Variant<std::vector<double>>::create(std::vector<double>{
         axis_color.get_red(), axis_color.get_green(), axis_color.get_blue(), axis_color.get_alpha()});
 
     settings->set_value("color-axis-labels", v);
@@ -130,7 +130,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
         const auto parse_result = parse_spinbutton_input(minimum_frequency, min_freq);
 
         if (parse_result != GTK_INPUT_ERROR) {
-          const auto& max_freq = static_cast<double>(settings->get_int("maximum-frequency"));
+          const auto max_freq = static_cast<double>(settings->get_int("maximum-frequency"));
 
           if (const auto valid_min_freq = max_freq - 100.0; min_freq > valid_min_freq) {
             min_freq = valid_min_freq;
@@ -149,7 +149,7 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
         const auto parse_result = parse_spinbutton_input(maximum_frequency, max_freq);
 
         if (parse_spinbutton_input(maximum_frequency, max_freq) != GTK_INPUT_ERROR) {
-          const auto& min_freq = static_cast<double>(settings->get_int("minimum-frequency"));
+          const auto min_freq = static_cast<double>(settings->get_int("minimum-frequency"));
 
           if (const auto valid_max_freq = min_freq + 100.0; max_freq < valid_max_freq) {
             max_freq = valid_max_freq;
@@ -182,7 +182,7 @@ SpectrumSettingsUi::~SpectrumSettingsUi() {
 }
 
 void SpectrumSettingsUi::add_to_stack(Gtk::Stack* stack, Application* app) {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum_settings.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum_settings.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<SpectrumSettingsUi>(builder, "top_box", app);
 

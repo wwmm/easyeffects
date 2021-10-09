@@ -71,7 +71,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
 
   folder_monitor->signal_changed().connect(
       [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto& rnn_filename = util::remove_filename_extension(file->get_basename());
+        const auto rnn_filename = util::remove_filename_extension(file->get_basename());
 
         if (rnn_filename.empty()) {
           util::warning("Can't retrieve information about the rnn file");
@@ -119,7 +119,7 @@ RNNoiseUi::~RNNoiseUi() {
 }
 
 auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> RNNoiseUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/rnnoise.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<RNNoiseUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.rnnoise", schema_path + "rnnoise/");
@@ -130,7 +130,7 @@ auto RNNoiseUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) 
 }
 
 void RNNoiseUi::setup_listview() {
-  const auto& names = get_model_names();
+  const auto names = get_model_names();
 
   for (const auto& name : names) {
     string_list->append(name);
@@ -142,10 +142,10 @@ void RNNoiseUi::setup_listview() {
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
 
   // setting the listview model and factory
 
@@ -181,7 +181,7 @@ void RNNoiseUi::setup_listview() {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -291,7 +291,7 @@ auto RNNoiseUi::get_model_names() -> std::vector<Glib::ustring> {
 }
 
 void RNNoiseUi::remove_model_file(const Glib::ustring& name) {
-  const auto& model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
+  const auto model_file = model_dir / std::filesystem::path{name.c_str() + rnnn_ext};
 
   if (std::filesystem::exists(model_file)) {
     std::filesystem::remove(model_file);
@@ -301,7 +301,7 @@ void RNNoiseUi::remove_model_file(const Glib::ustring& name) {
 }
 
 void RNNoiseUi::set_active_model_label() {
-  const auto& path = std::filesystem::path{settings->get_string("model-path")};
+  const auto path = std::filesystem::path{settings->get_string("model-path")};
 
   if (settings->get_string("model-path").empty()) {
     active_model_name->set_text(default_model_name);
@@ -313,9 +313,9 @@ void RNNoiseUi::set_active_model_label() {
 void RNNoiseUi::on_selection_changed() {
   auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  const auto& selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+  const auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
-  const auto& model_file = model_dir / std::filesystem::path{selected_name.c_str() + rnnn_ext};
+  const auto model_file = model_dir / std::filesystem::path{selected_name.c_str() + rnnn_ext};
 
   settings->set_string("model-path", model_file.c_str());
 }

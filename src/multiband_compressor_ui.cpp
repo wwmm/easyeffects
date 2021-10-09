@@ -217,7 +217,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
     // checking pointer and int row integrity might fix them
 
     if (const auto* selected_row = listbox->get_selected_row(); selected_row != nullptr) {
-      if (const auto& row = selected_row->get_index(); row > -1) {
+      if (const auto row = selected_row->get_index(); row > -1) {
         stack->set_visible_child("band" + std::to_string(row));
       }
     }
@@ -236,7 +236,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
   // band checkbuttons
 
   for (uint n = 1U; n < n_bands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto nstr = std::to_string(n);
 
     auto* const enable_band = builder->get_widget<Gtk::CheckButton>("enable_band" + nstr);
 
@@ -253,7 +253,7 @@ MultibandCompressorUi::~MultibandCompressorUi() {
 }
 
 auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandCompressorUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<MultibandCompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandcompressor", schema_path + "multibandcompressor/");
@@ -265,9 +265,9 @@ auto MultibandCompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& s
 
 void MultibandCompressorUi::prepare_bands() {
   for (uint n = 0U; n < n_bands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto nstr = std::to_string(n);
 
-    const auto& builder =
+    const auto builder =
         Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_compressor_band.ui");
 
     if (n > 0U) {
@@ -429,7 +429,7 @@ void MultibandCompressorUi::prepare_bands() {
     // set boost spinbuttons sensitivity on compression mode
 
     auto set_boost_spinbuttons_sensitivity = [=, this]() {
-      const auto& row_id = compression_mode->get_active_id();
+      const auto row_id = compression_mode->get_active_id();
 
       if (row_id == "downward_mode") {
         boost_threshold->set_sensitive(false);
@@ -470,7 +470,7 @@ void MultibandCompressorUi::reset() {
   settings->reset("envelope-boost");
 
   for (uint n = 0U; n < n_bands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto nstr = std::to_string(n);
 
     if (n > 0U) {
       settings->reset("enable-band" + nstr);

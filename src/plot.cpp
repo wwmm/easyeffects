@@ -32,10 +32,10 @@ Plot::Plot(Gtk::DrawingArea* drawing_area)
   da->add_controller(controller_motion);
 
   controller_motion->signal_motion().connect([=, this](const double& x, const double& y) {
-    const auto& width = da->get_width();
-    const auto& height = da->get_height();
+    const auto width = da->get_width();
+    const auto height = da->get_height();
 
-    if (const auto& usable_height = height - x_axis_height; y < usable_height) {
+    if (const auto usable_height = height - x_axis_height; y < usable_height) {
       switch (plot_scale) {
         case PlotScale::logarithmic: {
           const double& x_min_log = std::log10(x_min);
@@ -158,8 +158,8 @@ void Plot::set_y_unit(const Glib::ustring& value) {
 void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
   ctx->paint();
 
-  if (const auto& n_points = y_axis.size(); n_points > 0) {
-    const auto& objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
+  if (const auto n_points = y_axis.size(); n_points > 0) {
+    const auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
 
     x_axis_height = draw_x_labels(ctx, width, height);
 
@@ -187,7 +187,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
         ctx->move_to(0, usable_height);
 
         for (uint n = 0U; n < n_points - 1U; n++) {
-          const auto& bar_height = y_axis[n] * static_cast<float>(usable_height);
+          const auto bar_height = y_axis[n] * static_cast<float>(usable_height);
 
           ctx->line_to(objects_x[n], static_cast<float>(usable_height) - bar_height);
         }
@@ -211,9 +211,9 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
     }
 
     if (controller_motion->contains_pointer()) {
-      const auto& msg =
-          "x = " + Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, mouse_x) + " " + x_unit +
-          "  y = " + Glib::ustring::format(std::setprecision(n_y_decimals), std::fixed, mouse_y) + " " + y_unit;
+      const auto msg = "x = " + Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, mouse_x) + " " +
+                       x_unit + "  y = " + Glib::ustring::format(std::setprecision(n_y_decimals), std::fixed, mouse_y) +
+                       " " + y_unit;
 
       Pango::FontDescription font;
       font.set_family("Monospace");
@@ -259,7 +259,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
   */
 
   for (size_t n = 0U; n < labels.size() - 1U; n++) {
-    const auto& msg = Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, labels[n]) + " " + x_unit;
+    const auto msg = Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, labels[n]) + " " + x_unit;
 
     Pango::FontDescription font;
     font.set_family("Monospace");

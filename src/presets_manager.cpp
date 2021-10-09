@@ -121,7 +121,7 @@ PresetsManager::PresetsManager()
 
   autoload_input_monitor->signal_changed().connect(
       [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto& profiles = get_autoload_profiles(PresetType::input);
+        const auto profiles = get_autoload_profiles(PresetType::input);
 
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
@@ -141,7 +141,7 @@ PresetsManager::PresetsManager()
 
   autoload_output_monitor->signal_changed().connect(
       [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto& profiles = get_autoload_profiles(PresetType::output);
+        const auto profiles = get_autoload_profiles(PresetType::output);
 
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
@@ -201,16 +201,16 @@ auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Gli
     if (std::filesystem::exists(dir)) {
       it = std::filesystem::directory_iterator{dir};
 
-      const auto& vn = search_names(it);
+      const auto vn = search_names(it);
       names.insert(names.end(), vn.begin(), vn.end());
     }
   }
 
   // user directory search
-  const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
   it = std::filesystem::directory_iterator{user_dir};
 
-  const auto& vn = search_names(it);
+  const auto vn = search_names(it);
   names.insert(names.end(), vn.begin(), vn.end());
 
   // removing duplicates
@@ -321,7 +321,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
 
   switch (preset_type) {
     case PresetType::output: {
-      const auto& plugins = soe_settings->get_string_array("plugins");
+      const auto plugins = soe_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
@@ -340,7 +340,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
       break;
     }
     case PresetType::input: {
-      const auto& plugins = sie_settings->get_string_array("plugins");
+      const auto plugins = sie_settings->get_string_array("plugins");
 
       std::vector<std::string> list;
 
@@ -426,7 +426,7 @@ void PresetsManager::write_plugins_preset(const PresetType& preset_type,
 void PresetsManager::remove(const PresetType& preset_type, const Glib::ustring& name) {
   std::filesystem::path preset_file;
 
-  const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
   preset_file = user_dir / std::filesystem::path{name.c_str() + json_ext};
 
@@ -607,7 +607,7 @@ void PresetsManager::import(const PresetType& preset_type, const std::string& fi
     if (p.extension().c_str() == json_ext) {
       std::filesystem::path out_path;
 
-      const auto& user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+      const auto user_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
 
       out_path = user_dir / p.filename();
 
@@ -708,7 +708,7 @@ auto PresetsManager::find_autoload(const PresetType& preset_type,
 void PresetsManager::autoload(const PresetType& preset_type,
                               const std::string& device_name,
                               const std::string& device_profile) {
-  const auto& name = find_autoload(preset_type, device_name, device_profile);
+  const auto name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
     util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);

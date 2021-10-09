@@ -34,7 +34,7 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
   toggle_players_label->set_text(_("Recorders"));
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    const auto& child_name = stack_top->get_visible_child_name();
+    const auto child_name = stack_top->get_visible_child_name();
 
     toggle_listen_mic->set_visible(child_name != "page_players");
   });
@@ -62,15 +62,15 @@ StreamInputEffectsUi::StreamInputEffectsUi(BaseObjectType* cobject,
     // nd_info is a reference of a copy previously made
 
     if (nd_info.id == sie->pm->ee_source_node.id) {
-      const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                            static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
+      const auto v = Glib::ustring::format(std::setprecision(1), std::fixed,
+                                           static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
 
       device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
     }
   }));
 
-  const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                        static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
+  const auto v = Glib::ustring::format(std::setprecision(1), std::fixed,
+                                       static_cast<float>(sie->pm->ee_source_node.rate) * 0.001F);
 
   device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
 }
@@ -82,7 +82,7 @@ StreamInputEffectsUi::~StreamInputEffectsUi() {
 auto StreamInputEffectsUi::add_to_stack(Gtk::Stack* stack,
                                         StreamInputEffects* sie_ptr,
                                         Glib::RefPtr<Gtk::IconTheme> icon_ptr) -> StreamInputEffectsUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<StreamInputEffectsUi>(builder, "top_box", icon_ptr, sie_ptr,
                                                                           "com.github.wwmm.easyeffects.streaminputs");

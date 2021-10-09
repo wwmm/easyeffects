@@ -207,7 +207,7 @@ auto Lv2Wrapper::create_instance(const uint& rate) -> bool {
 
   LV2_Feature feature_options = {.URI = LV2_OPTIONS__options, .data = options.data()};
 
-  const auto& features =
+  const auto features =
       std::to_array<const LV2_Feature*>({&lv2_log_feature, &lv2_map_feature, &lv2_unmap_feature, &feature_options,
                                          &static_features[0], &static_features[1], nullptr});
 
@@ -416,7 +416,7 @@ auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {
     return map_uri_to_urid[uri];
   }
 
-  const auto& hash = std::hash<std::string>{}(uri);
+  const auto hash = std::hash<std::string>{}(uri);
 
   map_uri_to_urid[uri] = hash;
 

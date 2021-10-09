@@ -66,7 +66,7 @@ BassEnhancerUi::~BassEnhancerUi() {
 }
 
 auto BassEnhancerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> BassEnhancerUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/bass_enhancer.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<BassEnhancerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.bassenhancer", schema_path + "bassenhancer/");

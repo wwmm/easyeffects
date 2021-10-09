@@ -250,7 +250,7 @@ MultibandGateUi::~MultibandGateUi() {
 }
 
 auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandgate", schema_path + "multibandgate/");

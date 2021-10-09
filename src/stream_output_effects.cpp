@@ -104,9 +104,9 @@ StreamOutputEffects::~StreamOutputEffects() {
 }
 
 void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
-  const auto& blocklist = settings->get_string_array("blocklist");
+  const auto blocklist = settings->get_string_array("blocklist");
 
-  const auto& is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
+  const auto is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
     pm->disconnect_stream_output(node_info.id);
@@ -148,7 +148,7 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
-  const auto& list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
+  const auto list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
 
   uint prev_node_id = pm->ee_sink_node.id;
   uint next_node_id = 0U;
@@ -160,7 +160,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
       if ((!plugins[name]->connected_to_pw) ? plugins[name]->connect_to_pw() : true) {
         next_node_id = plugins[name]->get_node_id();
 
-        const auto& links = pm->link_nodes(prev_node_id, next_node_id);
+        const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
         for (size_t n = 0U; n < links.size(); n++) {
           list_proxies.push_back(links[n]);
@@ -195,7 +195,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id()}) {
     next_node_id = node_id;
 
-    const auto& links = pm->link_nodes(prev_node_id, next_node_id);
+    const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
     for (size_t n = 0U; n < links.size(); n++) {
       list_proxies.push_back(links[n]);
@@ -213,7 +213,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   next_node_id = pm->output_device.id;
 
-  const auto& links = pm->link_nodes(prev_node_id, next_node_id);
+  const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
   for (size_t n = 0U; n < links.size(); n++) {
     list_proxies.push_back(links[n]);

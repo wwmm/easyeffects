@@ -130,7 +130,7 @@ GateUi::~GateUi() {
 }
 
 auto GateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> GateUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/gate.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<GateUi>(builder, "top_box", "com.github.wwmm.easyeffects.gate",
                                                             schema_path + "gate/");

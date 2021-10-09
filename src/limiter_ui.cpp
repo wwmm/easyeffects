@@ -347,7 +347,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   // set alr spinbuttons sensitivity on alr button
 
   auto set_alr_spinbuttons_sensitivity = [=, this]() {
-    const auto& active = alr->get_active();
+    const auto active = alr->get_active();
 
     alr_attack->set_sensitive(active);
     alr_release->set_sensitive(active);
@@ -366,7 +366,7 @@ LimiterUi::~LimiterUi() {
 }
 
 auto LimiterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LimiterUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/limiter.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<LimiterUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.limiter", schema_path + "limiter/");

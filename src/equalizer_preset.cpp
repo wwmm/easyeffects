@@ -47,7 +47,7 @@ void EqualizerPreset::save(nlohmann::json& json,
 
   json[section]["equalizer"]["split-channels"] = settings->get_boolean("split-channels");
 
-  const auto& nbands = settings->get_int("num-bands");
+  const auto nbands = settings->get_int("num-bands");
 
   json[section]["equalizer"]["num-bands"] = nbands;
 
@@ -64,7 +64,7 @@ void EqualizerPreset::save_channel(nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
     json[bandn]["type"] = settings->get_string(bandn + "-type").c_str();
 
@@ -97,7 +97,7 @@ void EqualizerPreset::load(const nlohmann::json& json,
 
   update_key<bool>(json.at(section).at("equalizer"), settings, "split-channels", "split-channels");
 
-  const auto& nbands = settings->get_int("num-bands");
+  const auto nbands = settings->get_int("num-bands");
 
   if (section == "input") {
     load_channel(json.at(section).at("equalizer").at("left"), input_settings_left, nbands);
@@ -112,7 +112,7 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
                                    const Glib::RefPtr<Gio::Settings>& settings,
                                    const int& nbands) {
   for (int n = 0; n < nbands; n++) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
     update_string_key(json.at(bandn), settings, bandn + "-type", "type");
 
@@ -126,8 +126,7 @@ void EqualizerPreset::load_channel(const nlohmann::json& json,
 
     update_key<double>(json.at(bandn), settings, bandn + "-gain", "gain");
 
-    update_key<double>(json.at(bandn), settings, bandn + "-frequency",
-                       "frequency");
+    update_key<double>(json.at(bandn), settings, bandn + "-frequency", "frequency");
 
     update_key<double>(json.at(bandn), settings, bandn + "-q", "q");
   }

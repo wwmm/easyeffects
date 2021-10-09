@@ -275,13 +275,13 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
     if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
-      const auto& str = std::string(node_latency);
+      const auto str = std::string(node_latency);
 
-      const auto& delimiter_pos = str.find('/');
+      const auto delimiter_pos = str.find('/');
 
-      const auto& latency_str = str.substr(0, delimiter_pos);
+      const auto latency_str = str.substr(0, delimiter_pos);
 
-      const auto& rate_str = str.substr(delimiter_pos + 1);
+      const auto rate_str = str.substr(delimiter_pos + 1);
 
       if (auto rate = std::stoi(rate_str); rate != nd->nd_info.rate) {
         nd->nd_info.rate = rate;
@@ -307,7 +307,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
           continue;
         }
 
-        if (const auto& id = info->params[i].id;
+        if (const auto id = info->params[i].id;
             id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
           pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
         }
@@ -358,7 +358,7 @@ void on_node_event_param(void* object,
     spa_pod_prop* pod_prop = nullptr;
     auto* obj = (spa_pod_object*)param;
 
-    const auto& ts = nd->nd_info.timestamp;
+    const auto ts = nd->nd_info.timestamp;
 
     auto notify = false;
 
@@ -446,7 +446,7 @@ void on_node_event_param(void* object,
           if (auto node_it = pm->node_map.find(ts); node_it != pm->node_map.end()) {
             std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-            const auto& n_volumes =
+            const auto n_volumes =
                 spa_pod_copy_array(&pod_prop->value, SPA_TYPE_Float, volumes.data(), SPA_AUDIO_MAX_CHANNELS);
 
             float max = 0.0F;
@@ -637,7 +637,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
             continue;
           }
 
-          if (const auto& id = info->params[i].id; id == SPA_PARAM_Route) {
+          if (const auto id = info->params[i].id; id == SPA_PARAM_Route) {
             pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
           }
         }
@@ -967,9 +967,9 @@ void on_registry_global(void* data,
     pm->list_links.push_back(link_info);
 
     try {
-      const auto& input_node = pm->node_map_at_id(link_info.input_node_id);
+      const auto input_node = pm->node_map_at_id(link_info.input_node_id);
 
-      const auto& output_node = pm->node_map_at_id(link_info.output_node_id);
+      const auto output_node = pm->node_map_at_id(link_info.output_node_id);
 
       util::debug(PipeManager::log_tag + output_node.name + " port " + std::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name + " port " + std::to_string(link_info.input_port_id));

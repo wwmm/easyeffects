@@ -142,7 +142,7 @@ LoudnessUi::~LoudnessUi() {
 }
 
 auto LoudnessUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> LoudnessUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/loudness.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<LoudnessUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.loudness", schema_path + "loudness/");

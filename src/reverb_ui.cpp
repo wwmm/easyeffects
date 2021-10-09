@@ -130,7 +130,7 @@ ReverbUi::~ReverbUi() {
 }
 
 auto ReverbUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ReverbUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/reverb.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/reverb.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<ReverbUi>(builder, "top_box", "com.github.wwmm.easyeffects.reverb",
                                                               schema_path + "reverb/");

@@ -272,7 +272,7 @@ void Convolver::process(std::span<float>& left_in,
 void Convolver::read_kernel_file() {
   kernel_is_initialized = false;
 
-  const auto& path = settings->get_string("kernel-path");
+  const auto path = settings->get_string("kernel-path");
 
   if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
@@ -379,8 +379,8 @@ void Convolver::set_kernel_stereo_width() {
   const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
 
   for (uint i = 0U; i < original_kernel_L.size(); i++) {
-    const auto& L = original_kernel_L[i];
-    const auto& R = original_kernel_R[i];
+    const auto L = original_kernel_L[i];
+    const auto R = original_kernel_R[i];
 
     kernel_L[i] = L + x * R;
     kernel_R[i] = R + x * L;
