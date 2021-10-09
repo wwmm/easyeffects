@@ -54,8 +54,8 @@ void PluginUiBase::setup_input_output_gain(const Glib::RefPtr<Gtk::Builder>& bui
   settings->bind("input-gain", input_gain->get_adjustment().get(), "value");
   settings->bind("output-gain", output_gain->get_adjustment().get(), "value");
 
-  prepare_scale(input_gain, "");
-  prepare_scale(output_gain, "");
+  prepare_scale(input_gain, "dB", 8);
+  prepare_scale(output_gain, "dB", 8);
 }
 
 void PluginUiBase::on_new_input_level(const float& left, const float& right) {

@@ -220,7 +220,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     // first we remove any autoloading profile associated to the target device so that our ui is updated
 
     for (guint n = 0; n < autoloading_output_model->get_n_items(); n++) {
-      const auto& item = autoloading_output_model->get_item(n);
+      const auto item = autoloading_output_model->get_item(n);
 
       if (holder->name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::output, item->preset_name, item->device, item->device_profile);
@@ -255,7 +255,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     // first we remove any autoloading profile associated to the target device so that our ui is updated
 
     for (guint n = 0; n < autoloading_input_model->get_n_items(); n++) {
-      const auto& item = autoloading_input_model->get_item(n);
+      const auto item = autoloading_input_model->get_item(n);
 
       if (holder->name == item->device && device_profile == item->device_profile) {
         presets_manager->remove_autoload(PresetType::input, item->preset_name, item->device, item->device_profile);
@@ -376,7 +376,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.push_back(
       presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+        const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
           util::warning("Can't retrieve information about the preset file");
@@ -395,7 +395,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.push_back(
       presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+        const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
           util::warning("Can't retrieve information about the preset file");
@@ -414,7 +414,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.push_back(
       presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+        const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
           util::warning("Can't retrieve information about the preset file");
@@ -433,7 +433,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   connections.push_back(
       presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto& preset_name = util::remove_filename_extension(file->get_basename());
+        const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
           util::warning("Can't retrieve information about the preset file");
@@ -455,9 +455,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
         for (const auto& json : profiles) {
-          const auto& device = json.value("device", "");
-          const auto& device_profile = json.value("device-profile", "");
-          const auto& preset_name = json.value("preset-name", "");
+          const auto device = json.value("device", "");
+          const auto device_profile = json.value("device-profile", "");
+          const auto preset_name = json.value("preset-name", "");
 
           list.push_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
@@ -470,9 +470,9 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         std::vector<Glib::RefPtr<PresetsAutoloadingHolder>> list;
 
         for (const auto& json : profiles) {
-          const auto& device = json.value("device", "");
-          const auto& device_profile = json.value("device-profile", "");
-          const auto& preset_name = json.value("preset-name", "");
+          const auto device = json.value("device", "");
+          const auto device_profile = json.value("device-profile", "");
+          const auto preset_name = json.value("preset-name", "");
 
           list.push_back(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
         }
@@ -500,7 +500,7 @@ PipeInfoUi::~PipeInfoUi() {
 }
 
 auto PipeInfoUi::add_to_stack(Gtk::Stack* stack, PipeManager* pm, PresetsManager* presets_manager) -> PipeInfoUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/pipe_info.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<PipeInfoUi>(builder, "top_box", pm, presets_manager);
 
@@ -513,7 +513,7 @@ void PipeInfoUi::setup_dropdown_devices(Gtk::DropDown* dropdown,
                                         const Glib::RefPtr<Gio::ListStore<NodeInfoHolder>>& model) {
   // setting the dropdown model and factory
 
-  const auto& selection_model = Gtk::SingleSelection::create(model);
+  const auto selection_model = Gtk::SingleSelection::create(model);
 
   dropdown->set_model(selection_model);
 
@@ -584,14 +584,14 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
 
   // setting the dropdown model and factory
 
-  const auto& selection_model = Gtk::SingleSelection::create(sort_list_model);
+  const auto selection_model = Gtk::SingleSelection::create(sort_list_model);
 
   dropdown->set_model(selection_model);
 
@@ -625,7 +625,7 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
   factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(name);
@@ -635,12 +635,12 @@ void PipeInfoUi::setup_dropdown_presets(PresetType preset_type, const Glib::RefP
 void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
                                             Gtk::ListView* listview,
                                             const Glib::RefPtr<Gio::ListStore<PresetsAutoloadingHolder>>& model) {
-  const auto& profiles = presets_manager->get_autoload_profiles(preset_type);
+  const auto profiles = presets_manager->get_autoload_profiles(preset_type);
 
   for (const auto& json : profiles) {
-    const auto& device = json.value("device", "");
-    const auto& device_profile = json.value("device-profile", "");
-    const auto& preset_name = json.value("preset-name", "");
+    const auto device = json.value("device", "");
+    const auto device_profile = json.value("device-profile", "");
+    const auto preset_name = json.value("preset-name", "");
 
     model->append(PresetsAutoloadingHolder::create(device, device_profile, preset_name));
   }
@@ -656,7 +656,7 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
+    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/autoload_row.ui");
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -709,7 +709,7 @@ void PipeInfoUi::setup_listview_modules() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
+    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/module_info.ui");
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -745,7 +745,7 @@ void PipeInfoUi::setup_listview_clients() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
+    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/client_info.ui");
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -793,7 +793,7 @@ void PipeInfoUi::update_clients_info() {
 }
 
 void PipeInfoUi::on_stack_visible_child_changed() {
-  if (const auto& name = stack->get_visible_child_name(); name == "page_modules") {
+  if (const auto name = stack->get_visible_child_name(); name == "page_modules") {
     update_modules_info();
   } else if (name == "page_clients") {
     update_clients_info();

@@ -84,7 +84,7 @@ SpectrumUi::~SpectrumUi() {
 }
 
 auto SpectrumUi::add_to_box(Gtk::Box* box) -> SpectrumUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/spectrum.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<SpectrumUi>(builder, "drawing_area");
 
@@ -174,7 +174,7 @@ void SpectrumUi::init_color() {
 
   settings->get_value("color", v);
 
-  const auto& rgba = v.get();
+  const auto rgba = v.get();
 
   plot->set_color(rgba[0], rgba[1], rgba[2], rgba[3]);
 }
@@ -204,7 +204,7 @@ void SpectrumUi::init_frequency_axis() {
 
     spectrum_x_axis = util::logspace(std::log10(min_freq), std::log10(max_freq), settings->get_int("n-points"));
 
-    const auto& x_axis_size = spectrum_x_axis.size();
+    const auto x_axis_size = spectrum_x_axis.size();
 
     spectrum_mag.resize(x_axis_size);
 
@@ -217,7 +217,7 @@ void SpectrumUi::init_frequency_labels_color() {
 
   settings->get_value("color-axis-labels", v);
 
-  const auto& rgba = v.get();
+  const auto rgba = v.get();
 
   plot->set_axis_labels_color(rgba[0], rgba[1], rgba[2], rgba[3]);
 }

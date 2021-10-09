@@ -51,7 +51,7 @@ auto Application::create() -> Glib::RefPtr<Application> {
 }
 
 auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
-  const auto& options = command_line->get_options_dict();
+  const auto options = command_line->get_options_dict();
 
   if (options->contains("quit")) {
     for (const auto& w : get_windows()) {
@@ -347,7 +347,7 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   if (options->contains("bypass")) {
     if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
       if (bypass_arg == 3) {
-        const auto& cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
+        const auto cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
 
         std::clog << cfg->get_boolean("bypass") << std::endl;
 
@@ -399,7 +399,7 @@ void Application::create_actions() {
 }
 
 void Application::update_bypass_state(const Glib::ustring& key) {
-  const auto& state = settings->get_boolean(key);
+  const auto state = settings->get_boolean(key);
 
   soe->set_bypass(state);
   sie->set_bypass(state);

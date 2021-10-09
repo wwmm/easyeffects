@@ -250,7 +250,7 @@ void Crystalizer::process(std::span<float>& left_in,
 }
 
 void Crystalizer::bind_band(const int& n) {
-  const auto& bandn = "band" + std::to_string(n);
+  const auto bandn = "band" + std::to_string(n);
 
   band_intensity.at(n) = static_cast<float>(util::db_to_linear(settings->get_double("intensity-" + bandn)));
   band_mute.at(n) = settings->get_boolean("mute-" + bandn);

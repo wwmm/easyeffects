@@ -20,11 +20,7 @@
 #ifndef EFFECTS_BASE_UI_HPP
 #define EFFECTS_BASE_UI_HPP
 
-#include <giomm.h>
-#include <glibmm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm.h>
-#include <memory>
 #include "autogain_ui.hpp"
 #include "bass_enhancer_ui.hpp"
 #include "bass_loudness_ui.hpp"

@@ -310,7 +310,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   prepare_spinbutton(hpf_freq, "Hz");
   prepare_spinbutton(lpf_freq, "Hz");
 
-  prepare_spinbutton(ratio, "");
+  prepare_spinbutton(ratio);
 
   if (settings->get_string("sidechain-type") != "External") {
     dropdown_input_devices->set_sensitive(false);
@@ -321,7 +321,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   // set boost spinbuttons sensitivity on compression mode
 
   auto set_boost_spinbuttons_sensitivity = [=, this]() {
-    const auto& row_id = compression_mode->get_active_id();
+    const auto row_id = compression_mode->get_active_id();
 
     if (row_id == "downward_mode") {
       boost_threshold->set_sensitive(false);
@@ -350,7 +350,7 @@ CompressorUi::~CompressorUi() {
 }
 
 auto CompressorUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> CompressorUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/compressor.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<CompressorUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.compressor", schema_path + "compressor/");

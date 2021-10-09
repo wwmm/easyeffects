@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkBox" id="top_box">
         <property name="spacing">6</property>
@@ -525,12 +526,10 @@
                                     <object class="GtkBox">
                                         <property name="halign">start</property>
                                         <property name="homogeneous">1</property>
-                                        <property name="accessible-role">tab-list</property>
                                         <child>
                                             <object class="GtkCheckButton" id="checkbutton_channel_left">
                                                 <property name="valign">end</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="label" translatable="yes">Left</property>
                                             </object>
                                         </child>
@@ -539,7 +538,6 @@
                                             <object class="GtkCheckButton" id="checkbutton_channel_right">
                                                 <property name="valign">start</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="group">checkbutton_channel_left</property>
                                                 <property name="label" translatable="yes">Right</property>
                                             </object>
@@ -549,7 +547,6 @@
                                             <object class="GtkCheckButton" id="checkbutton_channel_both">
                                                 <property name="valign">start</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="group">checkbutton_channel_left</property>
                                                 <property name="label" translatable="yes">Both</property>
                                                 <property name="active">1</property>
@@ -578,12 +575,10 @@
                                     <object class="GtkBox">
                                         <property name="halign">start</property>
                                         <property name="homogeneous">1</property>
-                                        <property name="accessible-role">tab-list</property>
                                         <child>
                                             <object class="GtkCheckButton" id="checkbutton_signal_sine">
                                                 <property name="valign">end</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="label" translatable="yes">Sine Wave</property>
                                                 <property name="active">1</property>
                                             </object>
@@ -593,7 +588,6 @@
                                             <object class="GtkCheckButton" id="checkbutton_signal_gaussian">
                                                 <property name="valign">start</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="group">checkbutton_signal_sine</property>
                                                 <property name="label" translatable="yes">White Noise</property>
                                             </object>
@@ -603,7 +597,6 @@
                                             <object class="GtkCheckButton" id="checkbutton_signal_pink">
                                                 <property name="valign">start</property>
                                                 <property name="halign">center</property>
-                                                <property name="accessible-role">tab</property>
                                                 <property name="group">checkbutton_signal_sine</property>
                                                 <property name="label" translatable="yes">Pink Noise</property>
                                             </object>

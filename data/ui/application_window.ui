@@ -20,11 +20,14 @@
                     <object class="GtkBox">
                         <property name="halign">center</property>
                         <property name="homogeneous">1</property>
-                        <property name="accessible-role">tab-list</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_output">
                                 <property name="active">1</property>
-                                <property name="accessible-role">tab</property>
+
+                                <accessibility>
+                                    <property name="label" translatable="yes">Output Effects</property>
+                                </accessibility>
+
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -51,8 +54,12 @@
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_input">
-                                <property name="accessible-role">tab</property>
                                 <property name="group">toggle_output</property>
+
+                                <accessibility>
+                                    <property name="label" translatable="yes">Input effects</property>
+                                </accessibility>
+
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -79,8 +86,12 @@
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_pipe_info">
-                                <property name="accessible-role">tab</property>
                                 <property name="group">toggle_output</property>
+
+                                <accessibility>
+                                    <property name="label" translatable="yes">PipeWire Information</property>
+                                </accessibility>
+
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -114,6 +125,9 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Presets</property>
+                        <accessibility>
+                            <property name="label">Presets Menu</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -125,6 +139,9 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="icon_name">media-playlist-shuffle-symbolic</property>
+                        <accessibility>
+                            <property name="label">Global Bypass</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -137,6 +154,9 @@
                         <property name="valign">center</property>
                         <property name="icon_name">format-justify-fill-symbolic</property>
                         <property name="popover">settings_menu</property>
+                        <accessibility>
+                            <property name="label">Settings</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -159,9 +179,17 @@
         <style>
             <class name="rounded_corners" />
         </style>
+
+        <accessibility>
+            <property name="label" translatable="yes">EasyEffects Window</property>
+        </accessibility>
     </object>
 
     <object class="GtkPopover" id="settings_menu">
+        <accessibility>
+            <property name="label" translatable="yes">Settings Menu</property>
+        </accessibility>
+
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

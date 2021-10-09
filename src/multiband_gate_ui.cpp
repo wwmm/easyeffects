@@ -237,10 +237,10 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   prepare_spinbutton(freq1, "Hz");
   prepare_spinbutton(freq2, "Hz");
 
-  prepare_spinbutton(ratio0, "");
-  prepare_spinbutton(ratio1, "");
-  prepare_spinbutton(ratio2, "");
-  prepare_spinbutton(ratio3, "");
+  prepare_spinbutton(ratio0);
+  prepare_spinbutton(ratio1);
+  prepare_spinbutton(ratio2);
+  prepare_spinbutton(ratio3);
 
   setup_input_output_gain(builder);
 }
@@ -250,7 +250,7 @@ MultibandGateUi::~MultibandGateUi() {
 }
 
 auto MultibandGateUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> MultibandGateUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/multiband_gate.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<MultibandGateUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.multibandgate", schema_path + "multibandgate/");

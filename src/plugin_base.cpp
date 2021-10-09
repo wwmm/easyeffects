@@ -24,8 +24,8 @@ namespace {
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
-  const auto& n_samples = position->clock.duration;
-  const auto& rate = position->clock.rate.denom;
+  const auto n_samples = position->clock.duration;
+  const auto rate = position->clock.rate.denom;
 
   if (n_samples == 0 || rate == 0) {
     return;
@@ -82,7 +82,7 @@ PluginBase::PluginBase(std::string tag,
       pm(pipe_manager) {
   pf_data.pb = this;
 
-  const auto& filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2U) + "_" + name;
+  const auto filter_name = "pe_" + log_tag.substr(0, log_tag.size() - 2U) + "_" + name;
 
   pm->lock();
 
@@ -288,11 +288,11 @@ void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, con
 }
 
 void PluginBase::notify() {
-  const auto& input_peak_db_l = util::linear_to_db(input_peak_left);
-  const auto& input_peak_db_r = util::linear_to_db(input_peak_right);
+  const auto input_peak_db_l = util::linear_to_db(input_peak_left);
+  const auto input_peak_db_r = util::linear_to_db(input_peak_right);
 
-  const auto& output_peak_db_l = util::linear_to_db(output_peak_left);
-  const auto& output_peak_db_r = util::linear_to_db(output_peak_right);
+  const auto output_peak_db_l = util::linear_to_db(output_peak_left);
+  const auto output_peak_db_r = util::linear_to_db(output_peak_right);
 
   Glib::signal_idle().connect_once([=, this] { input_level.emit(input_peak_db_l, input_peak_db_r); });
   Glib::signal_idle().connect_once([=, this] { output_level.emit(output_peak_db_l, output_peak_db_r); });

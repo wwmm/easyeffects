@@ -131,7 +131,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   prepare_spinbutton(f1_freq, "Hz");
   prepare_spinbutton(f2_freq, "Hz");
 
-  prepare_spinbutton(f2_q, "");
+  prepare_spinbutton(f2_q);
 
   setup_input_output_gain(builder);
 }
@@ -141,10 +141,10 @@ DeesserUi::~DeesserUi() {
 }
 
 auto DeesserUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DeesserUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/deesser.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<DeesserUi>(builder, "top_box", "com.github.wwmm.easyeffects.deesser",
-                                                         schema_path + "deesser/");
+  auto* const ui = Gtk::Builder::get_widget_derived<DeesserUi>(
+      builder, "top_box", "com.github.wwmm.easyeffects.deesser", schema_path + "deesser/");
 
   stack->add(*ui, plugin_name::deesser);
 

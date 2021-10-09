@@ -47,14 +47,14 @@ StreamOutputEffectsUi::StreamOutputEffectsUi(BaseObjectType* cobject,
 
   connections.push_back(soe->pm->sink_changed.connect([&](const auto nd_info) {
     if (nd_info.id == soe->pm->ee_sink_node.id) {
-      const auto& v = Glib::ustring::format(std::setprecision(1), std::fixed,
-                                            static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);
+      const auto v = Glib::ustring::format(std::setprecision(1), std::fixed,
+                                           static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);
 
       device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
     }
   }));
 
-  const auto& v =
+  const auto v =
       Glib::ustring::format(std::setprecision(1), std::fixed, static_cast<float>(soe->pm->ee_sink_node.rate) * 0.001F);
 
   device_state->set_text(v + " kHz" + Glib::ustring(5, ' '));
@@ -67,7 +67,7 @@ StreamOutputEffectsUi::~StreamOutputEffectsUi() {
 auto StreamOutputEffectsUi::add_to_stack(Gtk::Stack* stack,
                                          StreamOutputEffects* soe_ptr,
                                          Glib::RefPtr<Gtk::IconTheme> icon_ptr) -> StreamOutputEffectsUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/effects_base.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<StreamOutputEffectsUi>(builder, "top_box", icon_ptr, soe_ptr,
                                                                            "com.github.wwmm.easyeffects.streamoutputs");

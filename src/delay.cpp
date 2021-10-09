@@ -81,7 +81,7 @@ void Delay::process(std::span<float>& left_in,
     This plugin gives the latency in number of samples
   */
 
-  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;

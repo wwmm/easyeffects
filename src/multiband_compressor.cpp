@@ -34,7 +34,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   lv2_wrapper->bind_key_enum(settings, "envelope-boost", "envb");
 
   for (uint n = 0U; n < n_bands; n++) {
-    const auto& nstr = std::to_string(n);
+    const auto nstr = std::to_string(n);
 
     if (n > 0U) {
       lv2_wrapper->bind_key_bool(settings, "enable-band" + nstr, "cbe_" + nstr);
@@ -133,7 +133,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
    This plugin gives the latency in number of samples
  */
 
-  const auto& lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
@@ -166,7 +166,7 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
     if (notification_dt >= notification_time_window) {
       for (uint n = 0U; n < n_bands; n++) {
-        const auto& nstr = std::to_string(n);
+        const auto nstr = std::to_string(n);
 
         frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
         envelope_port_array.at(n) = lv2_wrapper->get_control_port_value("elm_" + nstr);

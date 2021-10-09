@@ -16,11 +16,9 @@
                         <property name="spacing">6</property>
                         <property name="halign">center</property>
                         <property name="homogeneous">1</property>
-                        <property name="accessible-role">tab-list</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_output">
                                 <property name="active">1</property>
-                                <property name="accessible-role">tab</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -42,7 +40,6 @@
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_input">
-                                <property name="accessible-role">tab</property>
                                 <property name="group">toggle_output</property>
                                 <child>
                                     <object class="GtkBox">
@@ -97,7 +94,6 @@
                                                             <object class="GtkText" id="output_name">
                                                                 <property name="valign">center</property>
                                                                 <property name="hexpand">1</property>
-                                                                <property name="accessible_role">text-box</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
                                                             </object>
@@ -198,7 +194,6 @@
                                                             <object class="GtkText" id="input_name">
                                                                 <property name="valign">center</property>
                                                                 <property name="hexpand">1</property>
-                                                                <property name="accessible_role">text-box</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
                                                             </object>

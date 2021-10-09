@@ -20,9 +20,7 @@
 #ifndef PRESETS_MENU_UI_HPP
 #define PRESETS_MENU_UI_HPP
 
-#include <giomm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm.h>
 #include "application.hpp"
 #include "preset_type.hpp"
 

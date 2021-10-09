@@ -24,8 +24,8 @@ namespace {
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<TestSignals::data*>(userdata);
 
-  const auto& n_samples = position->clock.duration;
-  const auto& rate = position->clock.rate.denom;
+  const auto n_samples = position->clock.duration;
+  const auto rate = position->clock.rate.denom;
 
   if (n_samples == 0 || rate == 0) {
     return;
@@ -178,7 +178,7 @@ void TestSignals::set_frequency(const float& value) {
 }
 
 auto TestSignals::white_noise() -> float {
-  const auto& v = normal_distribution(random_generator);
+  const auto v = normal_distribution(random_generator);
 
   return (v > 1.0F) ? 1.0F : ((v < -1.0F) ? -1.0F : v);
 }

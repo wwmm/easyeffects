@@ -127,13 +127,13 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
 
   prepare_spinbutton(delay, "ms");
 
-  prepare_spinbutton(balance_in, "");
-  prepare_spinbutton(balance_out, "");
-  prepare_spinbutton(sc_level, "");
-  prepare_spinbutton(sbal, "");
-  prepare_spinbutton(mpan, "");
-  prepare_spinbutton(stereo_base, "");
-  prepare_spinbutton(stereo_phase, "");
+  prepare_spinbutton(balance_in);
+  prepare_spinbutton(balance_out);
+  prepare_spinbutton(sc_level);
+  prepare_spinbutton(sbal);
+  prepare_spinbutton(mpan);
+  prepare_spinbutton(stereo_base);
+  prepare_spinbutton(stereo_phase);
 
   setup_input_output_gain(builder);
 }
@@ -143,7 +143,7 @@ StereoToolsUi::~StereoToolsUi() {
 }
 
 auto StereoToolsUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/stereo_tools.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<StereoToolsUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.stereotools", schema_path + "stereotools/");

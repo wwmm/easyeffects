@@ -20,10 +20,7 @@
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include <giomm.h>
 #include <glibmm/i18n.h>
-#include <gtkmm.h>
-#include <memory>
 #include "config.h"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"

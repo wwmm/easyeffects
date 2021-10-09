@@ -115,8 +115,8 @@ void RNNoise::process(std::span<float>& left_in,
 
   if (resample) {
     if (resampler_ready) {
-      const auto& resampled_inL = resampler_inL->process(left_in, false);
-      const auto& resampled_inR = resampler_inR->process(right_in, false);
+      const auto resampled_inL = resampler_inL->process(left_in, false);
+      const auto resampled_inR = resampler_inR->process(right_in, false);
 
       resampled_data_L.resize(0);
       resampled_data_R.resize(0);

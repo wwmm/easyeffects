@@ -20,7 +20,6 @@
 #ifndef INFO_HOLDERS_HPP
 #define INFO_HOLDERS_HPP
 
-#include <glibmm.h>
 #include "pipe_manager.hpp"
 
 // we had issues with holders, therefore for safety we pass arguments as value

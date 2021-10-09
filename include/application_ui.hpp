@@ -21,7 +21,6 @@
 #define APPLICATION_WINDOW_HPP
 
 #include <glibmm/i18n.h>
-#include <gtkmm.h>
 #include "application.hpp"
 #include "general_settings_ui.hpp"
 #include "pipe_info_ui.hpp"

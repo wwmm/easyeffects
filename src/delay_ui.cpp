@@ -47,10 +47,10 @@ DelayUi::~DelayUi() {
 }
 
 auto DelayUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> DelayUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/delay.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/delay.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<DelayUi>(builder, "top_box", "com.github.wwmm.easyeffects.delay",
-                                                       schema_path + "delay/");
+                                                             schema_path + "delay/");
 
   stack->add(*ui, plugin_name::delay);
 

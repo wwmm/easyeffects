@@ -20,14 +20,12 @@
 #ifndef SPINBUTTON_HELPER_HPP
 #define SPINBUTTON_HELPER_HPP
 
-#include <gtkmm.h>
 #include <sstream>
 
 inline auto parse_spinbutton_output(Gtk::SpinButton* button, const Glib::ustring& unit) -> bool {
-  const auto& value =
-      Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed, button->get_adjustment()->get_value());
-
-  button->set_text(value + ((unit.empty()) ? "" : (" " + unit)));
+  button->set_text(Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed,
+                                         button->get_adjustment()->get_value()) +
+                   ((unit.empty()) ? "" : (" " + unit)));
 
   return true;
 }

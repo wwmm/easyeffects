@@ -20,7 +20,6 @@
 #ifndef PLUGIN_BASE_HPP
 #define PLUGIN_BASE_HPP
 
-#include <giomm.h>
 #include <pipewire/filter.h>
 #include <spa/param/latency-utils.h>
 #include <mutex>

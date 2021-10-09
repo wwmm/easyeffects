@@ -22,12 +22,13 @@
 
 #include <gtkmm.h>
 
-inline auto prepare_scale(Gtk::Scale* scale, const std::string& unit) {
+inline auto prepare_scale(Gtk::Scale* scale, const std::string& unit = "", const int width = 0) {
   scale->set_format_value_func([=](const auto& value) {
-    const auto& v_str =
-        Glib::ustring::format(std::setprecision(scale->get_digits()), std::fixed, scale->get_adjustment()->get_value());
+    const auto label = Glib::ustring::format(std::setprecision(scale->get_digits()), std::fixed,
+                                             scale->get_adjustment()->get_value()) +
+                       ((unit.empty()) ? "" : (" " + unit));
 
-    return v_str + ((unit.empty()) ? "" : (" " + unit));
+    return (width > 0) ? Glib::ustring::format(std::setw(width), label) : label;
   });
 }
 

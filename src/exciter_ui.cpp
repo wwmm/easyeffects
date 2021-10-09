@@ -49,14 +49,14 @@ ExciterUi::ExciterUi(BaseObjectType* cobject,
   settings->bind("ceil-active", ceil_active, "active");
   settings->bind("ceil-active", ceil, "sensitive", Gio::Settings::BindFlags::GET);
 
-  prepare_scale(blend, "");
+  prepare_scale(blend);
 
   prepare_spinbutton(amount, "dB");
 
   prepare_spinbutton(scope, "Hz");
   prepare_spinbutton(ceil, "Hz");
 
-  prepare_spinbutton(harmonics, "");
+  prepare_spinbutton(harmonics);
 
   setup_input_output_gain(builder);
 }
@@ -66,10 +66,10 @@ ExciterUi::~ExciterUi() {
 }
 
 auto ExciterUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> ExciterUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/exciter.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/exciter.ui");
 
-  auto* const ui = Gtk::Builder::get_widget_derived<ExciterUi>(builder, "top_box", "com.github.wwmm.easyeffects.exciter",
-                                                         schema_path + "exciter/");
+  auto* const ui = Gtk::Builder::get_widget_derived<ExciterUi>(
+      builder, "top_box", "com.github.wwmm.easyeffects.exciter", schema_path + "exciter/");
 
   stack->add(*ui, plugin_name::exciter);
 

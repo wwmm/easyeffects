@@ -118,11 +118,9 @@
                     <object class="GtkBox">
                         <property name="spacing">6</property>
                         <property name="homogeneous">1</property>
-                        <property name="accessible-role">tab-list</property>
                         <child>
                             <object class="GtkToggleButton" id="toggle_players">
                                 <property name="active">1</property>
-                                <property name="accessible-role">tab</property>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -144,7 +142,6 @@
 
                         <child>
                             <object class="GtkToggleButton" id="toggle_plugins">
-                                <property name="accessible-role">tab</property>
                                 <property name="group">toggle_players</property>
                                 <child>
                                     <object class="GtkBox">
@@ -297,7 +294,6 @@
                             <object class="GtkText" id="blocklist_player_name">
                                 <property name="valign">center</property>
                                 <property name="hexpand">1</property>
-                                <property name="accessible_role">text-box</property>
                                 <property name="placeholder_text" translatable="yes">Player Name</property>
                             </object>
                         </child>

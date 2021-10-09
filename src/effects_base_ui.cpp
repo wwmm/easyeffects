@@ -86,7 +86,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   // signals connections
 
   stack_top->connect_property_changed("visible-child", [=, this]() {
-    const auto& name = stack_top->get_visible_child_name();
+    const auto name = stack_top->get_visible_child_name();
 
     menubutton_blocklist->set_visible((name == "page_players") ? true : false);
   });
@@ -181,15 +181,14 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->spectrum->post_messages = true;
   effects_base->stereo_tools->post_messages = true;
 
-  connections.push_back(effects_base->pipeline_latency.connect([=, this](const auto& v) {
-    const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, v);
+  auto set_latency = [=, this](const auto& v) {
+    latency_status->set_text(Glib::ustring::format(std::setprecision(1), std::fixed, v) + " ms" +
+                             Glib::ustring(5, ' '));
+  };
 
-    latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
-  }));
+  set_latency(effects_base->get_pipeline_latency());
 
-  const auto& lv = Glib::ustring::format(std::setprecision(1), std::fixed, effects_base->get_pipeline_latency());
-
-  latency_status->set_text(lv + " ms" + Glib::ustring(5, ' '));
+  connections.push_back(effects_base->pipeline_latency.connect(set_latency));
 }
 
 EffectsBaseUi::~EffectsBaseUi() {
@@ -613,7 +612,7 @@ void EffectsBaseUi::setup_listview_players() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
+    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/app_info.ui");
 
     auto* const top_box = b->get_widget<Gtk::Box>("top_box");
 
@@ -684,7 +683,7 @@ void EffectsBaseUi::setup_listview_players() {
     });
 
     auto connection_mute = mute->signal_toggled().connect([=, this]() {
-      const auto& state = mute->get_active();
+      const auto state = mute->get_active();
 
       if (state) {
         mute->property_icon_name().set_value("audio-volume-muted-symbolic");
@@ -739,8 +738,8 @@ void EffectsBaseUi::setup_listview_players() {
 
       pointer_connection_enable->block();
 
-      const auto& is_enabled = pm->stream_is_connected(node_info.id, node_info.media_class);
-      const auto& is_blocklisted = app_is_blocklisted(node_info.name);
+      const auto is_enabled = pm->stream_is_connected(node_info.id, node_info.media_class);
+      const auto is_blocklisted = app_is_blocklisted(node_info.name);
 
       enable->set_sensitive(is_enabled || !is_blocklisted);
       enable->set_active(is_enabled);
@@ -764,7 +763,7 @@ void EffectsBaseUi::setup_listview_players() {
       // set the icon name
 
       if (icon_theme != nullptr) {
-        if (const auto& icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
+        if (const auto icon_name = get_app_icon_name(node_info); !icon_name.empty()) {
           if (app_icon->get_icon_name() != icon_name) {
             // app icon changed or not set, so we try to update it
 
@@ -841,8 +840,8 @@ void EffectsBaseUi::setup_listview_players() {
   });
 
   factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto& connections_list = {"connection_enable", "connection_volume", "connection_mute",
-                                    "connection_blocklist_checkbutton", "connection_info"};
+    const auto connections_list = {"connection_enable", "connection_volume", "connection_mute",
+                                   "connection_blocklist_checkbutton", "connection_info"};
 
     for (const auto* conn : connections_list) {
       if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
@@ -878,13 +877,13 @@ void EffectsBaseUi::setup_listview_blocklist() {
   }
 
   settings->signal_changed("blocklist").connect([=, this](const auto& key) {
-    const auto& list = settings->get_string_array(key);
+    const auto list = settings->get_string_array(key);
 
     blocklist->splice(0, blocklist->get_n_items(), list);
   });
 
   blocklist->signal_items_changed().connect([=, this](const guint& position, const guint& removed, const guint& added) {
-    const auto& show_blocklisted_apps = settings->get_boolean("show-blocklisted-apps");
+    const auto show_blocklisted_apps = settings->get_boolean("show-blocklisted-apps");
 
     players_model->remove_all();
 
@@ -893,7 +892,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     for (guint n = 0U; n < all_players_model->get_n_items(); n++) {
       auto holder = all_players_model->get_item(n);
 
-      const auto& app_is_enabled = pm->stream_is_connected(holder->id, holder->media_class);
+      const auto app_is_enabled = pm->stream_is_connected(holder->id, holder->media_class);
 
       if (app_is_blocklisted(holder->name)) {
         if (app_is_enabled) {
@@ -929,10 +928,10 @@ void EffectsBaseUi::setup_listview_blocklist() {
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(blocklist, sorter);
 
   // setting the listview model and factory
 
@@ -967,7 +966,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_text(name);
 
@@ -1013,10 +1012,10 @@ void EffectsBaseUi::setup_listview_plugins() {
 
   // sorter
 
-  const auto& sorter =
+  const auto sorter =
       Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
 
-  const auto& sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
+  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
 
   // setting the listview model and factory
 
@@ -1051,7 +1050,7 @@ void EffectsBaseUi::setup_listview_plugins() {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const add = static_cast<Gtk::Button*>(list_item->get_data("add"));
 
-    const auto& translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto translated_name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     Glib::ustring key_name;
 
@@ -1109,7 +1108,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     // showing the first plugin in the list by default
 
-    const auto& selected_name = selected_plugins->get_string(0);
+    const auto selected_name = selected_plugins->get_string(0);
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       if (stack_plugins->get_page(*child)->get_name() == selected_name) {
@@ -1121,7 +1120,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   }
 
   settings->signal_changed("plugins").connect([=, this](const auto& key) {
-    const auto& list = settings->get_string_array(key);
+    const auto list = settings->get_string_array(key);
 
     selected_plugins->splice(0, selected_plugins->get_n_items(), list);
 
@@ -1132,7 +1131,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
         return;
       }
 
-      const auto& visible_page_name = stack_plugins->get_page(*visible_child)->get_name();
+      const auto visible_page_name = stack_plugins->get_page(*visible_child)->get_name();
 
       if (std::ranges::find(list, visible_page_name) == list.end()) {
         listview_selected_plugins->get_model()->select_item(0, true);
@@ -1167,7 +1166,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   listview_selected_plugins->get_model()->signal_selection_changed().connect([&](guint position, guint n_items) {
     auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview_selected_plugins->get_model());
 
-    const auto& selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
+    const auto selected_name = single->get_selected_item()->get_property<Glib::ustring>("string");
 
     for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
       if (stack_plugins->get_page(*child)->get_name() == selected_name) {
@@ -1237,7 +1236,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           controller_widget->set_data("dragged-item", item);
 
-          Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
+          // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
           Glib::Value<Glib::ustring> name_value;
 
@@ -1254,7 +1253,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
       auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
 
-      const auto& paintable = Gtk::WidgetPaintable::create(*row_box);
+      const auto paintable = Gtk::WidgetPaintable::create(*row_box);
 
       drag_source->set_icon(paintable, row_box->get_allocated_width() - controller_widget->get_allocated_width() / 2,
                             row_box->get_allocated_height() / 2);
@@ -1268,16 +1267,16 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           name_value.init(v.gobj());
 
-          const auto& src = name_value.get();
-          const auto& dst = label->get_name();
+          const auto src = name_value.get();
+          const auto dst = label->get_name();
 
           if (src != dst) {
             auto list = settings->get_string_array("plugins");
 
-            const auto& iter_src = std::ranges::find(list, src);
+            const auto iter_src = std::ranges::find(list, src);
             auto iter_dst = std::ranges::find(list, dst);
 
-            const auto& insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
+            const auto insert_after = (iter_src - list.begin() < iter_dst - list.begin()) ? true : false;
 
             list.erase(iter_src);
 
@@ -1309,7 +1308,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
 
-    const auto& name = list_item->get_item()->get_property<Glib::ustring>("string");
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
     label->set_name(name);
     label->set_text(plugins_names[name]);
@@ -1468,7 +1467,7 @@ auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
 }
 
 auto EffectsBaseUi::app_is_blocklisted(const Glib::ustring& name) -> bool {
-  const auto& bl = settings->get_string_array("blocklist");
+  const auto bl = settings->get_string_array("blocklist");
 
   return std::ranges::find(bl, name) != bl.end();
 }
@@ -1509,7 +1508,7 @@ void EffectsBaseUi::set_transient_window(Gtk::Window* transient_window) {
   this->transient_window = transient_window;
 
   for (auto* child = stack_plugins->get_first_child(); child != nullptr; child = child->get_next_sibling()) {
-    const auto& page = stack_plugins->get_page(*child);
+    const auto page = stack_plugins->get_page(*child);
 
     if (page->get_name() == plugin_name::equalizer) {
       dynamic_cast<EqualizerUi*>(child)->set_transient_window(transient_window);

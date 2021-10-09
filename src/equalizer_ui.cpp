@@ -286,7 +286,7 @@ EqualizerUi::~EqualizerUi() {
 }
 
 auto EqualizerUi::add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> EqualizerUi* {
-  const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer.ui");
+  const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer.ui");
 
   auto* const ui = Gtk::Builder::get_widget_derived<EqualizerUi>(
       builder, "top_box", "com.github.wwmm.easyeffects.equalizer", schema_path + "equalizer/",
@@ -313,9 +313,9 @@ void EqualizerUi::on_nbands_changed() {
 
   connections_bands.clear();
 
-  const auto& split = settings->get_boolean("split-channels");
+  const auto split = settings->get_boolean("split-channels");
 
-  const auto& nb = static_cast<int>(nbands->get_value());
+  const auto nb = static_cast<int>(nbands->get_value());
 
   build_bands(bands_box_left, settings_left, nb, split);
 
@@ -329,9 +329,9 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
                               const int& nbands,
                               const bool& split_mode) {
   for (int n = 0; n < nbands; n++) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
-    const auto& builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
+    const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/equalizer_band.ui");
 
     auto* band_box = builder->get_widget<Gtk::Box>("band_box");
 
@@ -354,13 +354,13 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     auto* band_frequency = builder->get_widget<Gtk::SpinButton>("band_frequency");
     auto* band_quality = builder->get_widget<Gtk::SpinButton>("band_quality");
 
-    prepare_scale(band_scale, "");
+    prepare_scale(band_scale);
 
     prepare_spinbutton(band_frequency, "Hz");
-    prepare_spinbutton(band_quality, "");
+    prepare_spinbutton(band_quality);
 
     auto update_quality_width = [=, this]() {
-      const auto& q = band_quality->get_value();
+      const auto q = band_quality->get_value();
 
       band_quality_label->set_text("Q " + level_to_localized_string(q, 2));
 
@@ -372,7 +372,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     };
 
     auto update_band_label = [=, this]() {
-      if (const auto& f = band_frequency->get_value(); f > 1000.0) {
+      if (const auto f = band_frequency->get_value(); f > 1000.0) {
         band_label->set_text(level_to_localized_string(f / 1000.0, 1) + " kHz");
       } else {
         band_label->set_text(level_to_localized_string(f, 0) + " Hz");
@@ -444,7 +444,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
     connections_bands.push_back(band_type->signal_changed().connect([=]() {
       // disable gain scale if type is "Off", "Hi-pass" or "Lo-pass"
 
-      const auto& row = band_type->get_active_row_number();
+      const auto row = band_type->get_active_row_number();
 
       band_scale->set_sensitive((row == 0 || row == 2 || row == 4) ? false : true);
     }));
@@ -473,7 +473,7 @@ void EqualizerUi::build_bands(Gtk::Box* bands_box,
 
 void EqualizerUi::on_flat_response() {
   for (int n = 0; n < max_bands; n++) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
     // left channel
 
@@ -492,7 +492,7 @@ void EqualizerUi::on_calculate_frequencies() {
   double freq0 = min_freq;
   double freq1 = 0.0;
 
-  const auto& nbands = settings->get_int("num-bands");
+  const auto nbands = settings->get_int("num-bands");
 
   // code taken from gstreamer equalizer sources: gstiirequalizer.c
   // function: gst_iir_equalizer_compute_frequencies
@@ -500,7 +500,7 @@ void EqualizerUi::on_calculate_frequencies() {
   const double step = std::pow(max_freq / min_freq, 1.0 / static_cast<double>(nbands));
 
   auto config_band = [&](const auto& cfg, const auto& n, const auto& freq, const auto& q) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
     cfg->set_double(bandn + "-frequency", freq);
 
@@ -535,7 +535,7 @@ void EqualizerUi::reset() {
   settings->reset("split-channels");
 
   for (int n = 0; n < max_bands; n++) {
-    const auto& bandn = "band" + std::to_string(n);
+    const auto bandn = "band" + std::to_string(n);
 
     // left channel
 
@@ -729,7 +729,7 @@ void EqualizerUi::import_apo_preset(const std::string& file_path) {
     settings->set_double("input-gain", preamp);
 
     for (int n = 0; n < max_bands; n++) {
-      const auto& bandn = "band" + std::to_string(n);
+      const auto bandn = "band" + std::to_string(n);
 
       if (n < static_cast<int>(bands.size())) {
         settings_left->set_string(bandn + "-mode", "APO (DR)");
