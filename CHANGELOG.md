@@ -5,6 +5,7 @@
 ### Added
 
 - The autogain filter now allows the user to select which loudness is used as reference for the volume correction.
+- The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.
 
 ## [6.1.3]
 
