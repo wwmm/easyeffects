@@ -34,6 +34,18 @@ AutoGain::AutoGain(const std::string& tag,
     init_ebur128();
   });
 
+  settings->signal_changed("reference").connect([&, this](const auto& key) {
+    if (settings->get_string(key) == "Momentary") {
+      reference = Reference::momentary;
+    } else if (settings->get_string(key) == "Shortterm") {
+      reference = Reference::shortterm;
+    } else if (settings->get_string(key) == "Integrated") {
+      reference = Reference::integrated;
+    } else if (settings->get_string(key) == "Geometric Mean") {
+      reference = Reference::geometric_mean;
+    }
+  });
+
   setup_input_output_gain();
 }
 
@@ -150,7 +162,20 @@ void AutoGain::process(std::span<float>& left_in,
     }
 
     if (!failed) {
-      loudness = std::cbrt(momentary * shortterm * global);
+      switch (reference) {
+        case Reference::momentary: {
+          loudness = momentary;
+        }
+        case Reference::shortterm: {
+          loudness = shortterm;
+        }
+        case Reference::integrated: {
+          loudness = global;
+        }
+        case Reference::geometric_mean: {
+          loudness = std::cbrt(momentary * shortterm * global);
+        }
+      }
 
       const double diff = target - loudness;
 
