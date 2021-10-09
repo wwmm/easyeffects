@@ -83,7 +83,7 @@ void CrystalizerUi::build_bands(const int& nbands) {
     auto* band_bypass = builder->get_widget<Gtk::ToggleButton>("band_bypass");
     auto* band_mute = builder->get_widget<Gtk::ToggleButton>("band_mute");
 
-    prepare_scale(band_intensity, "");
+    prepare_scale(band_intensity);
 
     // connections
 

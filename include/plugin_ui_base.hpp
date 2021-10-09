@@ -71,7 +71,7 @@ class PluginUiBase {
     return Glib::ustring::format(std::setprecision(places), std::fixed, value);
   }
 
-  static void prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustring& unit);
+  static void prepare_spinbutton(Gtk::SpinButton* button, const Glib::ustring& unit = "");
 
  private:
   template <typename T1, typename T2, typename T3, typename T4>

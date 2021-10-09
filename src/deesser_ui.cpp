@@ -131,7 +131,7 @@ DeesserUi::DeesserUi(BaseObjectType* cobject,
   prepare_spinbutton(f1_freq, "Hz");
   prepare_spinbutton(f2_freq, "Hz");
 
-  prepare_spinbutton(f2_q, "");
+  prepare_spinbutton(f2_q);
 
   setup_input_output_gain(builder);
 }

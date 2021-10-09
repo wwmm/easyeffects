@@ -120,7 +120,7 @@ GateUi::GateUi(BaseObjectType* cobject,
   prepare_spinbutton(knee, "dB");
   prepare_spinbutton(makeup, "dB");
 
-  prepare_spinbutton(ratio, "");
+  prepare_spinbutton(ratio);
 
   setup_input_output_gain(builder);
 }

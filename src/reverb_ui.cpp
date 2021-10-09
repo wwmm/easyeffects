@@ -118,7 +118,7 @@ ReverbUi::ReverbUi(BaseObjectType* cobject,
   prepare_spinbutton(bass_cut, "Hz");
   prepare_spinbutton(treble_cut, "Hz");
 
-  prepare_spinbutton(diffusion, "");
+  prepare_spinbutton(diffusion);
 
   init_presets_buttons();
 

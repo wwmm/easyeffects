@@ -410,7 +410,7 @@ void MultibandCompressorUi::prepare_bands() {
 
     prepare_spinbutton(release_threshold, "db");
 
-    prepare_spinbutton(ratio, "");
+    prepare_spinbutton(ratio);
 
     prepare_spinbutton(knee, "db");
 

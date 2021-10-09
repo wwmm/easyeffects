@@ -237,10 +237,10 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   prepare_spinbutton(freq1, "Hz");
   prepare_spinbutton(freq2, "Hz");
 
-  prepare_spinbutton(ratio0, "");
-  prepare_spinbutton(ratio1, "");
-  prepare_spinbutton(ratio2, "");
-  prepare_spinbutton(ratio3, "");
+  prepare_spinbutton(ratio0);
+  prepare_spinbutton(ratio1);
+  prepare_spinbutton(ratio2);
+  prepare_spinbutton(ratio3);
 
   setup_input_output_gain(builder);
 }
