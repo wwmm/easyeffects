@@ -165,15 +165,23 @@ void AutoGain::process(std::span<float>& left_in,
       switch (reference) {
         case Reference::momentary: {
           loudness = momentary;
+
+          break;
         }
         case Reference::shortterm: {
           loudness = shortterm;
+
+          break;
         }
         case Reference::integrated: {
           loudness = global;
+
+          break;
         }
         case Reference::geometric_mean: {
           loudness = std::cbrt(momentary * shortterm * global);
+
+          break;
         }
       }
 
