@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- The autogain filter now allows the user to select which loudness is used as reference for the volume correction.
+
 ## [6.1.3]
 
 ### Added

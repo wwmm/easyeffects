@@ -35,6 +35,8 @@ void AutoGainPreset::save(nlohmann::json& json,
   json[section]["autogain"]["output-gain"] = settings->get_double("output-gain");
 
   json[section]["autogain"]["target"] = settings->get_double("target");
+
+  json[section]["autogain"]["reference"] = settings->get_string("reference").c_str();
 }
 
 void AutoGainPreset::load(const nlohmann::json& json,
@@ -45,4 +47,6 @@ void AutoGainPreset::load(const nlohmann::json& json,
   update_key<double>(json.at(section).at("autogain"), settings, "output-gain", "output-gain");
 
   update_key<double>(json.at(section).at("autogain"), settings, "target", "target");
+
+  update_string_key(json.at(section).at("autogain"), settings, "reference", "reference");
 }

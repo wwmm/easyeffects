@@ -19,6 +19,42 @@
 
 #include "autogain_ui.hpp"
 
+namespace {
+
+auto reference_enum_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean {
+  const auto* v = g_variant_get_string(variant, nullptr);
+
+  if (g_strcmp0(v, "Momentary") == 0) {
+    g_value_set_int(value, 0);
+  } else if (g_strcmp0(v, "Shortterm") == 0) {
+    g_value_set_int(value, 1);
+  } else if (g_strcmp0(v, "Integrated") == 0) {
+    g_value_set_int(value, 2);
+  } else if (g_strcmp0(v, "Geometric Mean") == 0) {
+    g_value_set_int(value, 3);
+  }
+
+  return 1;
+}
+
+auto int_to_reference_enum(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant* {
+  switch (g_value_get_int(value)) {
+    case 0:
+      return g_variant_new_string("Momentary");
+
+    case 1:
+      return g_variant_new_string("Shortterm");
+
+    case 2:
+      return g_variant_new_string("Integrated");
+
+    default:
+      return g_variant_new_string("Geometric Mean");
+  }
+}
+
+}  // namespace
+
 AutoGainUi::AutoGainUi(BaseObjectType* cobject,
                        const Glib::RefPtr<Gtk::Builder>& builder,
                        const std::string& schema,
@@ -48,9 +84,14 @@ AutoGainUi::AutoGainUi(BaseObjectType* cobject,
 
   target = builder->get_widget<Gtk::SpinButton>("spinbutton_target");
 
+  reference = builder->get_widget<Gtk::ComboBoxText>("reference");
+
   // gsettings bindings
 
   settings->bind("target", target->get_adjustment().get(), "value");
+
+  g_settings_bind_with_mapping(settings->gobj(), "reference", reference->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
+                               reference_enum_to_int, int_to_reference_enum, nullptr, nullptr);
 
   // it is ugly but will ensure that third party tools are able to reset this plugin history
 

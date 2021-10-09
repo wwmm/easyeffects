@@ -56,6 +56,8 @@ class AutoGainUi : public Gtk::Box, public PluginUiBase {
              *l_label = nullptr, *lra_label = nullptr;
 
   Gtk::Button* reset_history = nullptr;
+
+  Gtk::ComboBoxText* reference = nullptr;
 };
 
 #endif

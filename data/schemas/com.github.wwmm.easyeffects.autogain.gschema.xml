@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
+    <enum id="com.github.wwmm.easyeffects.autogain.reference.enum">
+        <value nick="Momentary" value="0" />
+        <value nick="Shortterm" value="1" />
+        <value nick="Integrated" value="2" />
+        <value nick="Geometric Mean" value="3" />
+    </enum>
     <schema id="com.github.wwmm.easyeffects.autogain">
         <key name="input-gain" type="d">
             <range min="-36" max="36" />
@@ -15,6 +21,9 @@
         </key>
         <key name="reset-history" type="b">
             <default>false</default>
+        </key>
+        <key name="reference" enum="com.github.wwmm.easyeffects.autogain.reference.enum">
+            <default>"Geometric Mean"</default>
         </key>
     </schema>
 </schemalist>
