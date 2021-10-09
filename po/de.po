@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-17 16:55+0200\n"
+"POT-Creation-Date: 2021-10-09 13:02-0300\n"
 "PO-Revision-Date: 2021-07-07 17:28+0200\n"
 "Last-Translator: David Keller <davidkeller@tuta.io>\n"
 "Language-Team: Bleuzen, BlobCodes\n"
@@ -118,7 +118,7 @@ msgstr "Latenz"
 msgid "State"
 msgstr "Status"
 
-#: data/ui/application_window.ui:39 data/ui/autogain.ui:370
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:415
 #: data/ui/bass_enhancer.ui:319 data/ui/compressor.ui:1021
 #: data/ui/convolver.ui:303 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
 #: data/ui/deesser.ui:486 data/ui/delay.ui:187 data/ui/equalizer.ui:266
@@ -129,11 +129,11 @@ msgstr "Status"
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1629
 #: data/ui/pipe_info.ui:277 data/ui/pitch.ui:273 data/ui/presets_menu.ui:35
 #: data/ui/reverb.ui:434 data/ui/rnnoise.ui:176 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:75
+#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:77
 msgid "Output"
 msgstr "Ausgang"
 
-#: data/ui/application_window.ui:67 data/ui/autogain.ui:289
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:334
 #: data/ui/bass_enhancer.ui:238 data/ui/compressor.ui:497
 #: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:137
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:405 data/ui/delay.ui:106
@@ -143,7 +143,7 @@ msgstr "Ausgang"
 #: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:351 data/ui/pitch.ui:192
 #: data/ui/presets_menu.ui:58 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
 #: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:529
-#: src/stream_input_effects_ui.cpp:91
+#: src/stream_input_effects_ui.cpp:93
 msgid "Input"
 msgstr "Eingang"
 
@@ -166,15 +166,37 @@ msgstr "Globale Umleitung"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: data/ui/autogain.ui:19
+#: data/ui/autogain.ui:21
 msgid "Target"
 msgstr "Ziel"
 
-#: data/ui/autogain.ui:42
+#: data/ui/autogain.ui:52
+msgid "Reference"
+msgstr ""
+
+#: data/ui/autogain.ui:63 data/ui/autogain.ui:110
+msgid "Momentary"
+msgstr "Momentan"
+
+#: data/ui/autogain.ui:64
+#, fuzzy
+msgid "Shortterm"
+msgstr "Kurzfristig"
+
+#: data/ui/autogain.ui:65 data/ui/autogain.ui:172
+msgid "Integrated"
+msgstr "Integriert"
+
+#: data/ui/autogain.ui:66
+#, fuzzy
+msgid "Geometric Mean"
+msgstr "Geometrisches Mittel nutzen"
+
+#: data/ui/autogain.ui:78
 msgid "Reset History"
 msgstr "Verlauf löschen"
 
-#: data/ui/autogain.ui:50 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
+#: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
 #: data/ui/convolver.ui:15 data/ui/crossfeed.ui:15 data/ui/crystalizer.ui:14
 #: data/ui/crystalizer_band.ui:10 data/ui/deesser.ui:18 data/ui/delay.ui:15
 #: data/ui/equalizer.ui:134 data/ui/exciter.ui:18 data/ui/filter.ui:15
@@ -187,35 +209,27 @@ msgstr "Verlauf löschen"
 msgid "Bypass"
 msgstr "Umleiten"
 
-#: data/ui/autogain.ui:65
-msgid "Momentary"
-msgstr "Momentan"
-
-#: data/ui/autogain.ui:96
+#: data/ui/autogain.ui:141
 msgid "Short Term"
 msgstr "Kurzfristig"
 
-#: data/ui/autogain.ui:127
-msgid "Integrated"
-msgstr "Integriert"
-
-#: data/ui/autogain.ui:158
+#: data/ui/autogain.ui:203
 msgid "Relative"
 msgstr "Relativ"
 
-#: data/ui/autogain.ui:188
+#: data/ui/autogain.ui:233
 msgid "Range"
 msgstr "Umfang"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:154
+#: data/ui/autogain.ui:266 include/effects_base_ui.hpp:153
 msgid "Loudness"
 msgstr "Lautstärke"
 
-#: data/ui/autogain.ui:252
+#: data/ui/autogain.ui:297
 msgid "Output Gain"
 msgstr "Ausgangsverstärkung"
 
-#: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:429
+#: data/ui/autogain.ui:494 data/ui/bass_enhancer.ui:429
 #: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:297
 #: data/ui/crystalizer.ui:192 data/ui/deesser.ui:625 data/ui/delay.ui:266
 #: data/ui/equalizer.ui:345 data/ui/equalizer_band.ui:137
@@ -227,7 +241,7 @@ msgstr "Ausgangsverstärkung"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: data/ui/autogain.ui:462 data/ui/bass_enhancer.ui:442
+#: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:442
 #: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:310
 #: data/ui/deesser.ui:638 data/ui/delay.ui:279 data/ui/equalizer.ui:358
 #: data/ui/exciter.ui:441 data/ui/filter.ui:337 data/ui/gate.ui:533
@@ -306,7 +320,7 @@ msgstr "API"
 msgid "Access"
 msgstr "Zugriff"
 
-#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:142
+#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:141
 msgid "Compressor"
 msgstr "Kompressor"
 
@@ -529,7 +543,7 @@ msgstr "Impulse"
 msgid "Stereo Width"
 msgstr "Stereo-Breite"
 
-#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:161
+#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:189
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1332,7 +1346,7 @@ msgstr "Oktaven"
 msgid "Crispness"
 msgstr "Klarheit"
 
-#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:230
+#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:228
 msgid "Load"
 msgstr "Laden"
 
@@ -1588,88 +1602,88 @@ msgstr "Stereo Phase"
 msgid "Phase Correlation"
 msgstr "Phasenkorrelation"
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:138
 msgid "Autogain"
 msgstr "Automatische Verstärkungsregelung"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:139
 msgid "Bass Enhancer"
 msgstr "Bassverstärker"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:140
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Lautstärke"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:142
 msgid "Convolver"
 msgstr "Convolver"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:143
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:144
 msgid "Crystalizer"
 msgstr "Crystalizer"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:145
 msgid "Deesser"
 msgstr "Deesser"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:146
 msgid "Delay"
 msgstr "Verzögerung"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:147
 msgid "Echo Canceller"
 msgstr "Echounterdrückung"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:148
 msgid "Equalizer"
 msgstr "Equalizer"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:149
 msgid "Exciter"
 msgstr "Exciter"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:150
 msgid "Filter"
 msgstr "Filter"
 
-#: include/effects_base_ui.hpp:152
+#: include/effects_base_ui.hpp:151
 msgid "Gate"
 msgstr "Gate"
 
-#: include/effects_base_ui.hpp:153
+#: include/effects_base_ui.hpp:152
 msgid "Limiter"
 msgstr "Limiter"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:154
 msgid "Maximizer"
 msgstr "Maximierer"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:155
 msgid "Multiband Compressor"
 msgstr "Multiband-Kompressor"
 
-#: include/effects_base_ui.hpp:157
+#: include/effects_base_ui.hpp:156
 msgid "Multiband Gate"
 msgstr "Multiband Gate"
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:157
 msgid "Pitch"
 msgstr "Tonhöhe"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:158
 msgid "Reverberation"
 msgstr "Nachhall"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:159
 msgid "Noise Reduction"
 msgstr "Rauschreduzierung"
 
-#: include/effects_base_ui.hpp:161
+#: include/effects_base_ui.hpp:160
 msgid "Stereo Tools"
 msgstr "Stereowerkzeuge"
 
@@ -1711,53 +1725,53 @@ msgstr "Eingangs-Presets: "
 msgid "Audio effects for PipeWire applications"
 msgstr "Audioeffekte für PipeWire Anwendungen"
 
-#: src/convolver_ui.cpp:348 src/convolver_ui.cpp:351
+#: src/convolver_ui.cpp:346 src/convolver_ui.cpp:349
 msgid "Import Impulse File"
 msgstr "Impulsdatei importieren"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:351 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:581 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:349 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:571 src/presets_menu_ui.cpp:230
 msgid "Open"
 msgstr "Öffnen"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:352 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:582 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:350 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:572 src/presets_menu_ui.cpp:230
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/convolver_ui.cpp:357
+#: src/convolver_ui.cpp:355
 msgid "Impulse Response"
 msgstr "Impulsantwort"
 
-#: src/convolver_ui.cpp:398 src/convolver_ui.cpp:399 src/convolver_ui.cpp:401
+#: src/convolver_ui.cpp:396 src/convolver_ui.cpp:397 src/convolver_ui.cpp:399
 msgid "Failed"
 msgstr "Gescheitert"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:401
 msgid "Could Not Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_base_ui.cpp:1417
+#: src/effects_base_ui.cpp:1404
 msgid "running"
 msgstr "läuft"
 
-#: src/effects_base_ui.cpp:1419
+#: src/effects_base_ui.cpp:1406
 msgid "suspended"
 msgstr "suspendiert"
 
-#: src/effects_base_ui.cpp:1421
+#: src/effects_base_ui.cpp:1408
 msgid "idle"
 msgstr "inaktiv"
 
-#: src/effects_base_ui.cpp:1423
+#: src/effects_base_ui.cpp:1410
 msgid "creating"
 msgstr "erstelle"
 
-#: src/effects_base_ui.cpp:1425
+#: src/effects_base_ui.cpp:1412
 msgid "error"
 msgstr "fehler"
 
-#: src/effects_base_ui.cpp:1427
+#: src/effects_base_ui.cpp:1414
 msgid "unknown"
 msgstr ""
 
@@ -1765,11 +1779,11 @@ msgstr ""
 msgid "infinity"
 msgstr "unendlich"
 
-#: src/equalizer_ui.cpp:578 src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:568 src/equalizer_ui.cpp:571
 msgid "Import APO Preset File"
 msgstr "APO Preset-Datei importieren"
 
-#: src/equalizer_ui.cpp:587
+#: src/equalizer_ui.cpp:577
 msgid "APO Presets"
 msgstr "APO Presets"
 
@@ -1777,7 +1791,7 @@ msgstr "APO Presets"
 msgid "Import Preset"
 msgstr "Preset importieren"
 
-#: src/stream_input_effects_ui.cpp:32
+#: src/stream_input_effects_ui.cpp:34
 msgid "Recorders"
 msgstr "Rekorder"
 
@@ -2037,9 +2051,6 @@ msgstr "Rekorder"
 
 #~ msgid "Detect Silence"
 #~ msgstr "Stille erkennen"
-
-#~ msgid "Use Geometric Mean"
-#~ msgstr "Geometrisches Mittel nutzen"
 
 #~ msgid "Muted"
 #~ msgstr "Stumm"

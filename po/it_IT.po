@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-17 16:55+0200\n"
+"POT-Creation-Date: 2021-10-09 13:02-0300\n"
 "PO-Revision-Date: 2021-09-17 17:03+0200\n"
 "Last-Translator: Gianluca Boiano <morf3089@gmail.com>\n"
 "Language-Team: \n"
@@ -123,7 +123,7 @@ msgstr "Latenza"
 msgid "State"
 msgstr "Stato"
 
-#: data/ui/application_window.ui:39 data/ui/autogain.ui:370
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:415
 #: data/ui/bass_enhancer.ui:319 data/ui/compressor.ui:1021
 #: data/ui/convolver.ui:303 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
 #: data/ui/deesser.ui:486 data/ui/delay.ui:187 data/ui/equalizer.ui:266
@@ -134,11 +134,11 @@ msgstr "Stato"
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1629
 #: data/ui/pipe_info.ui:277 data/ui/pitch.ui:273 data/ui/presets_menu.ui:35
 #: data/ui/reverb.ui:434 data/ui/rnnoise.ui:176 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:75
+#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:77
 msgid "Output"
 msgstr "Uscita"
 
-#: data/ui/application_window.ui:67 data/ui/autogain.ui:289
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:334
 #: data/ui/bass_enhancer.ui:238 data/ui/compressor.ui:497
 #: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:137
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:405 data/ui/delay.ui:106
@@ -148,7 +148,7 @@ msgstr "Uscita"
 #: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:351 data/ui/pitch.ui:192
 #: data/ui/presets_menu.ui:58 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
 #: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:529
-#: src/stream_input_effects_ui.cpp:91
+#: src/stream_input_effects_ui.cpp:93
 msgid "Input"
 msgstr "Ingresso"
 
@@ -171,15 +171,36 @@ msgstr "Bypass Globale"
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: data/ui/autogain.ui:19
+#: data/ui/autogain.ui:21
 msgid "Target"
 msgstr "Livello"
 
-#: data/ui/autogain.ui:42
+#: data/ui/autogain.ui:52
+msgid "Reference"
+msgstr ""
+
+#: data/ui/autogain.ui:63 data/ui/autogain.ui:110
+msgid "Momentary"
+msgstr "Momentaneo"
+
+#: data/ui/autogain.ui:64
+#, fuzzy
+msgid "Shortterm"
+msgstr "Breve Termine"
+
+#: data/ui/autogain.ui:65 data/ui/autogain.ui:172
+msgid "Integrated"
+msgstr "Integrato"
+
+#: data/ui/autogain.ui:66
+msgid "Geometric Mean"
+msgstr ""
+
+#: data/ui/autogain.ui:78
 msgid "Reset History"
 msgstr "Reset Cronologia"
 
-#: data/ui/autogain.ui:50 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
+#: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
 #: data/ui/convolver.ui:15 data/ui/crossfeed.ui:15 data/ui/crystalizer.ui:14
 #: data/ui/crystalizer_band.ui:10 data/ui/deesser.ui:18 data/ui/delay.ui:15
 #: data/ui/equalizer.ui:134 data/ui/exciter.ui:18 data/ui/filter.ui:15
@@ -192,35 +213,27 @@ msgstr "Reset Cronologia"
 msgid "Bypass"
 msgstr "Bypass"
 
-#: data/ui/autogain.ui:65
-msgid "Momentary"
-msgstr "Momentaneo"
-
-#: data/ui/autogain.ui:96
+#: data/ui/autogain.ui:141
 msgid "Short Term"
 msgstr "Breve Termine"
 
-#: data/ui/autogain.ui:127
-msgid "Integrated"
-msgstr "Integrato"
-
-#: data/ui/autogain.ui:158
+#: data/ui/autogain.ui:203
 msgid "Relative"
 msgstr "Relativo"
 
-#: data/ui/autogain.ui:188
+#: data/ui/autogain.ui:233
 msgid "Range"
 msgstr "Gamma"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:154
+#: data/ui/autogain.ui:266 include/effects_base_ui.hpp:153
 msgid "Loudness"
 msgstr "Loudness"
 
-#: data/ui/autogain.ui:252
+#: data/ui/autogain.ui:297
 msgid "Output Gain"
 msgstr "Guadagno in Uscita"
 
-#: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:429
+#: data/ui/autogain.ui:494 data/ui/bass_enhancer.ui:429
 #: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:297
 #: data/ui/crystalizer.ui:192 data/ui/deesser.ui:625 data/ui/delay.ui:266
 #: data/ui/equalizer.ui:345 data/ui/equalizer_band.ui:137
@@ -232,7 +245,7 @@ msgstr "Guadagno in Uscita"
 msgid "Reset"
 msgstr "Reset"
 
-#: data/ui/autogain.ui:462 data/ui/bass_enhancer.ui:442
+#: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:442
 #: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:310
 #: data/ui/deesser.ui:638 data/ui/delay.ui:279 data/ui/equalizer.ui:358
 #: data/ui/exciter.ui:441 data/ui/filter.ui:337 data/ui/gate.ui:533
@@ -311,7 +324,7 @@ msgstr "API"
 msgid "Access"
 msgstr "Accesso"
 
-#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:142
+#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:141
 msgid "Compressor"
 msgstr "Compressore"
 
@@ -531,7 +544,7 @@ msgstr "Risposte Impulsive"
 msgid "Stereo Width"
 msgstr "Ampiezza Stereo"
 
-#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:161
+#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:189
 msgid "Spectrum"
 msgstr "Spettro"
 
@@ -1305,7 +1318,7 @@ msgstr "Ottave"
 msgid "Crispness"
 msgstr "Chiarezza"
 
-#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:230
+#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:228
 msgid "Load"
 msgstr "Carica"
 
@@ -1561,87 +1574,87 @@ msgstr "Fase Stereo"
 msgid "Phase Correlation"
 msgstr "Correlazione Fase"
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:138
 msgid "Autogain"
 msgstr "Auto Guadagno"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:139
 msgid "Bass Enhancer"
 msgstr "Enfasi Bassi"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:140
 msgid "Bass Loudness"
 msgstr "Loudness Bassi"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:142
 msgid "Convolver"
 msgstr "Convolutore"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:143
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:144
 msgid "Crystalizer"
 msgstr "Crystalizer"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:145
 msgid "Deesser"
 msgstr "Deesser"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:146
 msgid "Delay"
 msgstr "Delay"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:147
 msgid "Echo Canceller"
 msgstr "Rimozione Eco"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:148
 msgid "Equalizer"
 msgstr "Equalizzatore"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:149
 msgid "Exciter"
 msgstr "Exciter"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:150
 msgid "Filter"
 msgstr "Filtro"
 
-#: include/effects_base_ui.hpp:152
+#: include/effects_base_ui.hpp:151
 msgid "Gate"
 msgstr "Gate"
 
-#: include/effects_base_ui.hpp:153
+#: include/effects_base_ui.hpp:152
 msgid "Limiter"
 msgstr "Limitatore"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:154
 msgid "Maximizer"
 msgstr "Maximizer"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:155
 msgid "Multiband Compressor"
 msgstr "Compressore Multibanda"
 
-#: include/effects_base_ui.hpp:157
+#: include/effects_base_ui.hpp:156
 msgid "Multiband Gate"
 msgstr "Gate Multibanda"
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:157
 msgid "Pitch"
 msgstr "Intonazione"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:158
 msgid "Reverberation"
 msgstr "Riverbero"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:159
 msgid "Noise Reduction"
 msgstr "Riduzione Rumore"
 
-#: include/effects_base_ui.hpp:161
+#: include/effects_base_ui.hpp:160
 msgid "Stereo Tools"
 msgstr "Strumenti Stereo"
 
@@ -1682,53 +1695,53 @@ msgstr "Profili Ingresso: "
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
-#: src/convolver_ui.cpp:348 src/convolver_ui.cpp:351
+#: src/convolver_ui.cpp:346 src/convolver_ui.cpp:349
 msgid "Import Impulse File"
 msgstr "Importa File di Impulso"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:351 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:581 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:349 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:571 src/presets_menu_ui.cpp:230
 msgid "Open"
 msgstr "Apri"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:352 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:582 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:350 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:572 src/presets_menu_ui.cpp:230
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/convolver_ui.cpp:357
+#: src/convolver_ui.cpp:355
 msgid "Impulse Response"
 msgstr "Risposta Impulsiva"
 
-#: src/convolver_ui.cpp:398 src/convolver_ui.cpp:399 src/convolver_ui.cpp:401
+#: src/convolver_ui.cpp:396 src/convolver_ui.cpp:397 src/convolver_ui.cpp:399
 msgid "Failed"
 msgstr "Non Riuscito"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:401
 msgid "Could Not Load The Impulse File"
 msgstr "Impossibile Caricare il File di Impulso"
 
-#: src/effects_base_ui.cpp:1417
+#: src/effects_base_ui.cpp:1404
 msgid "running"
 msgstr "in esecuzione"
 
-#: src/effects_base_ui.cpp:1419
+#: src/effects_base_ui.cpp:1406
 msgid "suspended"
 msgstr "sospeso"
 
-#: src/effects_base_ui.cpp:1421
+#: src/effects_base_ui.cpp:1408
 msgid "idle"
 msgstr "inattivo"
 
-#: src/effects_base_ui.cpp:1423
+#: src/effects_base_ui.cpp:1410
 msgid "creating"
 msgstr "creazione in corso"
 
-#: src/effects_base_ui.cpp:1425
+#: src/effects_base_ui.cpp:1412
 msgid "error"
 msgstr "errore"
 
-#: src/effects_base_ui.cpp:1427
+#: src/effects_base_ui.cpp:1414
 msgid "unknown"
 msgstr "sconosciuto"
 
@@ -1736,11 +1749,11 @@ msgstr "sconosciuto"
 msgid "infinity"
 msgstr "infinito"
 
-#: src/equalizer_ui.cpp:578 src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:568 src/equalizer_ui.cpp:571
 msgid "Import APO Preset File"
 msgstr "Importa File Profilo APO"
 
-#: src/equalizer_ui.cpp:587
+#: src/equalizer_ui.cpp:577
 msgid "APO Presets"
 msgstr "Profili APO"
 
@@ -1748,7 +1761,7 @@ msgstr "Profili APO"
 msgid "Import Preset"
 msgstr "Importa Profilo"
 
-#: src/stream_input_effects_ui.cpp:32
+#: src/stream_input_effects_ui.cpp:34
 msgid "Recorders"
 msgstr "Registrazione"
 

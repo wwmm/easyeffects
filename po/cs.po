@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-17 16:55+0200\n"
+"POT-Creation-Date: 2021-10-09 13:02-0300\n"
 "PO-Revision-Date: 2019-08-25 21:29+0200\n"
 "Last-Translator: Mlocik97\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -121,7 +121,7 @@ msgstr "Prodleva"
 msgid "State"
 msgstr "Stav"
 
-#: data/ui/application_window.ui:39 data/ui/autogain.ui:370
+#: data/ui/application_window.ui:39 data/ui/autogain.ui:415
 #: data/ui/bass_enhancer.ui:319 data/ui/compressor.ui:1021
 #: data/ui/convolver.ui:303 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
 #: data/ui/deesser.ui:486 data/ui/delay.ui:187 data/ui/equalizer.ui:266
@@ -132,11 +132,11 @@ msgstr "Stav"
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1629
 #: data/ui/pipe_info.ui:277 data/ui/pitch.ui:273 data/ui/presets_menu.ui:35
 #: data/ui/reverb.ui:434 data/ui/rnnoise.ui:176 data/ui/stereo_tools.ui:370
-#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:75
+#: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:77
 msgid "Output"
 msgstr "Výstup"
 
-#: data/ui/application_window.ui:67 data/ui/autogain.ui:289
+#: data/ui/application_window.ui:67 data/ui/autogain.ui:334
 #: data/ui/bass_enhancer.ui:238 data/ui/compressor.ui:497
 #: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:137
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:405 data/ui/delay.ui:106
@@ -146,7 +146,7 @@ msgstr "Výstup"
 #: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:351 data/ui/pitch.ui:192
 #: data/ui/presets_menu.ui:58 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
 #: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:529
-#: src/stream_input_effects_ui.cpp:91
+#: src/stream_input_effects_ui.cpp:93
 msgid "Input"
 msgstr "Vstup"
 
@@ -169,16 +169,39 @@ msgstr "Přepustení"
 msgid "Settings"
 msgstr "Nastavení"
 
-#: data/ui/autogain.ui:19
+#: data/ui/autogain.ui:21
 msgid "Target"
 msgstr "Cíl"
 
-#: data/ui/autogain.ui:42
+#: data/ui/autogain.ui:52
+#, fuzzy
+msgid "Reference"
+msgstr "Referenční Signál"
+
+#: data/ui/autogain.ui:63 data/ui/autogain.ui:110
+msgid "Momentary"
+msgstr "Chvilkové"
+
+#: data/ui/autogain.ui:64
+#, fuzzy
+msgid "Shortterm"
+msgstr "Jednorázové"
+
+#: data/ui/autogain.ui:65 data/ui/autogain.ui:172
+msgid "Integrated"
+msgstr "Sjednocené"
+
+#: data/ui/autogain.ui:66
+#, fuzzy
+msgid "Geometric Mean"
+msgstr "Použít přechod"
+
+#: data/ui/autogain.ui:78
 #, fuzzy
 msgid "Reset History"
 msgstr "Vymazat Historii"
 
-#: data/ui/autogain.ui:50 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
+#: data/ui/autogain.ui:90 data/ui/bass_enhancer.ui:18 data/ui/compressor.ui:14
 #: data/ui/convolver.ui:15 data/ui/crossfeed.ui:15 data/ui/crystalizer.ui:14
 #: data/ui/crystalizer_band.ui:10 data/ui/deesser.ui:18 data/ui/delay.ui:15
 #: data/ui/equalizer.ui:134 data/ui/exciter.ui:18 data/ui/filter.ui:15
@@ -191,36 +214,28 @@ msgstr "Vymazat Historii"
 msgid "Bypass"
 msgstr "Překlenutí"
 
-#: data/ui/autogain.ui:65
-msgid "Momentary"
-msgstr "Chvilkové"
-
-#: data/ui/autogain.ui:96
+#: data/ui/autogain.ui:141
 msgid "Short Term"
 msgstr "Jednorázové"
 
-#: data/ui/autogain.ui:127
-msgid "Integrated"
-msgstr "Sjednocené"
-
-#: data/ui/autogain.ui:158
+#: data/ui/autogain.ui:203
 msgid "Relative"
 msgstr "Relativní"
 
-#: data/ui/autogain.ui:188
+#: data/ui/autogain.ui:233
 msgid "Range"
 msgstr "Rozsah"
 
-#: data/ui/autogain.ui:221 include/effects_base_ui.hpp:154
+#: data/ui/autogain.ui:266 include/effects_base_ui.hpp:153
 msgid "Loudness"
 msgstr "Hlasitost"
 
-#: data/ui/autogain.ui:252
+#: data/ui/autogain.ui:297
 #, fuzzy
 msgid "Output Gain"
 msgstr "Vstupní zesílení"
 
-#: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:429
+#: data/ui/autogain.ui:494 data/ui/bass_enhancer.ui:429
 #: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:297
 #: data/ui/crystalizer.ui:192 data/ui/deesser.ui:625 data/ui/delay.ui:266
 #: data/ui/equalizer.ui:345 data/ui/equalizer_band.ui:137
@@ -232,7 +247,7 @@ msgstr "Vstupní zesílení"
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
-#: data/ui/autogain.ui:462 data/ui/bass_enhancer.ui:442
+#: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:442
 #: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:310
 #: data/ui/deesser.ui:638 data/ui/delay.ui:279 data/ui/equalizer.ui:358
 #: data/ui/exciter.ui:441 data/ui/filter.ui:337 data/ui/gate.ui:533
@@ -313,7 +328,7 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:142
+#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:141
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -544,7 +559,7 @@ msgstr "Odpověď impulsu"
 msgid "Stereo Width"
 msgstr "Šířka sterea"
 
-#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:161
+#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:189
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -1375,7 +1390,7 @@ msgstr "Oktávy"
 msgid "Crispness"
 msgstr "Křehkost"
 
-#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:230
+#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:228
 msgid "Load"
 msgstr "Načíst"
 
@@ -1637,90 +1652,90 @@ msgstr "Fáze sterea"
 msgid "Phase Correlation"
 msgstr ""
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:138
 #, fuzzy
 msgid "Autogain"
 msgstr "Automatické zesílení"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:139
 msgid "Bass Enhancer"
 msgstr "Zlepšovač hloubek"
 
-#: include/effects_base_ui.hpp:141
+#: include/effects_base_ui.hpp:140
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Hlasitost"
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:142
 msgid "Convolver"
 msgstr "Svinovač"
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:143
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:144
 msgid "Crystalizer"
 msgstr "Krystalizátor"
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:145
 msgid "Deesser"
 msgstr "Odstraňovač sykotu"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:146
 msgid "Delay"
 msgstr "Zpoždění"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:147
 msgid "Echo Canceller"
 msgstr "Potlačovač echa"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:148
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:149
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:150
 msgid "Filter"
 msgstr "Filtr"
 
-#: include/effects_base_ui.hpp:152
+#: include/effects_base_ui.hpp:151
 msgid "Gate"
 msgstr "Brána"
 
-#: include/effects_base_ui.hpp:153
+#: include/effects_base_ui.hpp:152
 msgid "Limiter"
 msgstr "Omezovač"
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:154
 msgid "Maximizer"
 msgstr "Zvětšovač"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:155
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: include/effects_base_ui.hpp:157
+#: include/effects_base_ui.hpp:156
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:157
 msgid "Pitch"
 msgstr "Výška tónu"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:158
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:159
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Zmenšení zesílení"
 
-#: include/effects_base_ui.hpp:161
+#: include/effects_base_ui.hpp:160
 msgid "Stereo Tools"
 msgstr "Nástroje sterea"
 
@@ -1761,54 +1776,54 @@ msgstr "Vstupní přednastavení:"
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: src/convolver_ui.cpp:348 src/convolver_ui.cpp:351
+#: src/convolver_ui.cpp:346 src/convolver_ui.cpp:349
 msgid "Import Impulse File"
 msgstr "Zavést soubor s impulsem"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:351 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:581 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:349 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:571 src/presets_menu_ui.cpp:230
 msgid "Open"
 msgstr "Otevřít"
 
-#: src/convolver_ui.cpp:349 src/convolver_ui.cpp:352 src/equalizer_ui.cpp:579
-#: src/equalizer_ui.cpp:582 src/presets_menu_ui.cpp:230
+#: src/convolver_ui.cpp:347 src/convolver_ui.cpp:350 src/equalizer_ui.cpp:569
+#: src/equalizer_ui.cpp:572 src/presets_menu_ui.cpp:230
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/convolver_ui.cpp:357
+#: src/convolver_ui.cpp:355
 msgid "Impulse Response"
 msgstr "Odpověď impulsu"
 
-#: src/convolver_ui.cpp:398 src/convolver_ui.cpp:399 src/convolver_ui.cpp:401
+#: src/convolver_ui.cpp:396 src/convolver_ui.cpp:397 src/convolver_ui.cpp:399
 msgid "Failed"
 msgstr "Nepodařilo se"
 
-#: src/convolver_ui.cpp:403
+#: src/convolver_ui.cpp:401
 msgid "Could Not Load The Impulse File"
 msgstr "Nepodařilo se nahrát soubor s impulsem"
 
-#: src/effects_base_ui.cpp:1417
+#: src/effects_base_ui.cpp:1404
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1419
+#: src/effects_base_ui.cpp:1406
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1421
+#: src/effects_base_ui.cpp:1408
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1423
+#: src/effects_base_ui.cpp:1410
 #, fuzzy
 msgid "creating"
 msgstr "Hradlo"
 
-#: src/effects_base_ui.cpp:1425
+#: src/effects_base_ui.cpp:1412
 msgid "error"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1427
+#: src/effects_base_ui.cpp:1414
 msgid "unknown"
 msgstr ""
 
@@ -1816,12 +1831,12 @@ msgstr ""
 msgid "infinity"
 msgstr "nekonečno"
 
-#: src/equalizer_ui.cpp:578 src/equalizer_ui.cpp:581
+#: src/equalizer_ui.cpp:568 src/equalizer_ui.cpp:571
 #, fuzzy
 msgid "Import APO Preset File"
 msgstr "Zavést APO přednastavení"
 
-#: src/equalizer_ui.cpp:587
+#: src/equalizer_ui.cpp:577
 #, fuzzy
 msgid "APO Presets"
 msgstr "APO Přednastavení"
@@ -1831,7 +1846,7 @@ msgstr "APO Přednastavení"
 msgid "Import Preset"
 msgstr "Zavést přednastavení"
 
-#: src/stream_input_effects_ui.cpp:32
+#: src/stream_input_effects_ui.cpp:34
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
@@ -2103,10 +2118,6 @@ msgstr "Okraj"
 #~ msgid "Detect Silence"
 #~ msgstr "Zjištění Ticha"
 
-#, fuzzy
-#~ msgid "Use Geometric Mean"
-#~ msgstr "Použít přechod"
-
 #~ msgid "Muted"
 #~ msgstr "Ztlumeno"
 
@@ -2181,9 +2192,6 @@ msgstr "Okraj"
 
 #~ msgid "Import APO Presets"
 #~ msgstr "Zavést APO Přednastavení"
-
-#~ msgid "Reference Signal"
-#~ msgstr "Referenční Signál"
 
 #, fuzzy
 #~ msgid "Gain Detection"
