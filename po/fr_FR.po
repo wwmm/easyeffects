@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-09 13:02-0300\n"
+"POT-Creation-Date: 2021-10-09 19:30-0300\n"
 "PO-Revision-Date: 2021-08-10 17:08-0700\n"
 "Last-Translator: Nathan Graule <solarliner@gmail.com>\n"
 "Language-Team: \n"
@@ -103,7 +103,7 @@ msgstr ""
 msgid "Format"
 msgstr ""
 
-#: data/ui/app_info.ui:109 data/ui/convolver.ui:131
+#: data/ui/app_info.ui:109 data/ui/convolver.ui:128
 msgid "Rate"
 msgstr ""
 
@@ -119,52 +119,76 @@ msgstr "Latence"
 msgid "State"
 msgstr ""
 
-#: data/ui/application_window.ui:39 data/ui/autogain.ui:415
+#: data/ui/application_window.ui:28
+#, fuzzy
+msgid "Output Effects"
+msgstr "Limiteur d'entrée"
+
+#: data/ui/application_window.ui:42 data/ui/autogain.ui:415
 #: data/ui/bass_enhancer.ui:319 data/ui/compressor.ui:1021
-#: data/ui/convolver.ui:303 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
+#: data/ui/convolver.ui:300 data/ui/crossfeed.ui:218 data/ui/crystalizer.ui:121
 #: data/ui/deesser.ui:486 data/ui/delay.ui:187 data/ui/equalizer.ui:266
 #: data/ui/exciter.ui:319 data/ui/filter.ui:245 data/ui/gate.ui:411
-#: data/ui/limiter.ui:845 data/ui/loudness.ui:208 data/ui/maximizer.ui:221
+#: data/ui/limiter.ui:845 data/ui/loudness.ui:208 data/ui/maximizer.ui:234
 #: data/ui/multiband_compressor.ui:420 data/ui/multiband_gate.ui:446
 #: data/ui/multiband_gate.ui:789 data/ui/multiband_gate.ui:1132
 #: data/ui/multiband_gate.ui:1475 data/ui/multiband_gate.ui:1629
-#: data/ui/pipe_info.ui:277 data/ui/pitch.ui:273 data/ui/presets_menu.ui:35
+#: data/ui/pipe_info.ui:278 data/ui/pitch.ui:273 data/ui/presets_menu.ui:33
 #: data/ui/reverb.ui:434 data/ui/rnnoise.ui:176 data/ui/stereo_tools.ui:370
 #: data/ui/stereo_tools.ui:610 src/stream_output_effects_ui.cpp:77
 msgid "Output"
 msgstr "Sortie"
 
-#: data/ui/application_window.ui:67 data/ui/autogain.ui:334
+#: data/ui/application_window.ui:60
+#, fuzzy
+msgid "Input effects"
+msgstr "EasyEffects"
+
+#: data/ui/application_window.ui:74 data/ui/autogain.ui:334
 #: data/ui/bass_enhancer.ui:238 data/ui/compressor.ui:497
-#: data/ui/compressor.ui:940 data/ui/convolver.ui:222 data/ui/crossfeed.ui:137
+#: data/ui/compressor.ui:940 data/ui/convolver.ui:219 data/ui/crossfeed.ui:137
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:405 data/ui/delay.ui:106
 #: data/ui/equalizer.ui:185 data/ui/exciter.ui:238 data/ui/filter.ui:164
 #: data/ui/gate.ui:330 data/ui/limiter.ui:764 data/ui/loudness.ui:127
-#: data/ui/maximizer.ui:140 data/ui/multiband_compressor.ui:339
-#: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:351 data/ui/pitch.ui:192
-#: data/ui/presets_menu.ui:58 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
+#: data/ui/maximizer.ui:150 data/ui/multiband_compressor.ui:339
+#: data/ui/multiband_gate.ui:1548 data/ui/pipe_info.ui:352 data/ui/pitch.ui:192
+#: data/ui/presets_menu.ui:55 data/ui/reverb.ui:353 data/ui/rnnoise.ui:95
 #: data/ui/stereo_tools.ui:36 data/ui/stereo_tools.ui:529
-#: src/stream_input_effects_ui.cpp:93
+#: src/stream_input_effects_ui.cpp:92
 msgid "Input"
 msgstr "Entrée"
 
-#: data/ui/application_window.ui:95
+#: data/ui/application_window.ui:92
+msgid "PipeWire Information"
+msgstr ""
+
+#: data/ui/application_window.ui:106
 msgid "PipeWire"
 msgstr ""
 
-#: data/ui/application_window.ui:116 data/ui/reverb.ui:19
+#: data/ui/application_window.ui:127 data/ui/reverb.ui:19
 #: src/presets_menu_ui.cpp:234 src/presets_menu_ui.cpp:369
 #: src/presets_menu_ui.cpp:370 src/presets_menu_ui.cpp:387
 #: src/presets_menu_ui.cpp:388
 msgid "Presets"
 msgstr "Préréglage"
 
-#: data/ui/application_window.ui:124
+#: data/ui/application_window.ui:138
 msgid "Global Bypass"
 msgstr ""
 
-#: data/ui/application_window.ui:135 data/ui/application_window.ui:177
+#: data/ui/application_window.ui:152 data/ui/application_window.ui:205
 msgid "Settings"
+msgstr "Paramètres"
+
+#: data/ui/application_window.ui:184
+#, fuzzy
+msgid "EasyEffects Window"
+msgstr "EasyEffects"
+
+#: data/ui/application_window.ui:190
+#, fuzzy
+msgid "Settings Menu"
 msgstr "Paramètres"
 
 #: data/ui/autogain.ui:21
@@ -221,7 +245,7 @@ msgstr ""
 msgid "Range"
 msgstr ""
 
-#: data/ui/autogain.ui:266 include/effects_base_ui.hpp:153
+#: data/ui/autogain.ui:266 include/effects_base_ui.hpp:150
 msgid "Loudness"
 msgstr ""
 
@@ -231,44 +255,44 @@ msgid "Output Gain"
 msgstr "Gain d'entrée [dB]"
 
 #: data/ui/autogain.ui:494 data/ui/bass_enhancer.ui:429
-#: data/ui/compressor.ui:1100 data/ui/convolver.ui:382 data/ui/crossfeed.ui:297
+#: data/ui/compressor.ui:1100 data/ui/convolver.ui:379 data/ui/crossfeed.ui:297
 #: data/ui/crystalizer.ui:192 data/ui/deesser.ui:625 data/ui/delay.ui:266
 #: data/ui/equalizer.ui:345 data/ui/equalizer_band.ui:137
 #: data/ui/equalizer_band.ui:199 data/ui/exciter.ui:428 data/ui/filter.ui:324
 #: data/ui/gate.ui:520 data/ui/limiter.ui:924 data/ui/loudness.ui:287
-#: data/ui/maximizer.ui:332 data/ui/multiband_compressor.ui:499
+#: data/ui/maximizer.ui:348 data/ui/multiband_compressor.ui:499
 #: data/ui/multiband_gate.ui:1708 data/ui/pitch.ui:352 data/ui/reverb.ui:513
 #: data/ui/rnnoise.ui:255 data/ui/stereo_tools.ui:719
 msgid "Reset"
 msgstr "Remettre à zéro"
 
 #: data/ui/autogain.ui:507 data/ui/bass_enhancer.ui:442
-#: data/ui/compressor.ui:1113 data/ui/convolver.ui:395 data/ui/crossfeed.ui:310
+#: data/ui/compressor.ui:1113 data/ui/convolver.ui:392 data/ui/crossfeed.ui:310
 #: data/ui/deesser.ui:638 data/ui/delay.ui:279 data/ui/equalizer.ui:358
 #: data/ui/exciter.ui:441 data/ui/filter.ui:337 data/ui/gate.ui:533
-#: data/ui/limiter.ui:937 data/ui/loudness.ui:300 data/ui/maximizer.ui:345
+#: data/ui/limiter.ui:937 data/ui/loudness.ui:300 data/ui/maximizer.ui:361
 #: data/ui/multiband_compressor.ui:512 data/ui/multiband_gate.ui:1721
 #: data/ui/pitch.ui:365 data/ui/reverb.ui:526 data/ui/rnnoise.ui:268
 #: data/ui/stereo_tools.ui:732
 msgid "Using"
 msgstr ""
 
-#: data/ui/autoload_row.ui:15 data/ui/compressor.ui:520 data/ui/limiter.ui:471
+#: data/ui/autoload_row.ui:16 data/ui/compressor.ui:520 data/ui/limiter.ui:471
 #: data/ui/multiband_compressor_band.ui:213
 #, fuzzy
 msgid "Device"
 msgstr "Limiteur d'entrée"
 
-#: data/ui/autoload_row.ui:38
+#: data/ui/autoload_row.ui:39
 msgid "Profile"
 msgstr ""
 
-#: data/ui/autoload_row.ui:62
+#: data/ui/autoload_row.ui:63
 #, fuzzy
 msgid "Preset"
 msgstr "Préréglage"
 
-#: data/ui/autoload_row.ui:86
+#: data/ui/autoload_row.ui:87
 msgid "Remove"
 msgstr ""
 
@@ -306,24 +330,24 @@ msgstr ""
 msgid "Floor"
 msgstr ""
 
-#: data/ui/client_info.ui:12 data/ui/module_info.ui:12
+#: data/ui/client_info.ui:13 data/ui/module_info.ui:13
 msgid "Id"
 msgstr ""
 
-#: data/ui/client_info.ui:35 data/ui/module_info.ui:35
-#: data/ui/presets_menu.ui:101 data/ui/presets_menu.ui:202
+#: data/ui/client_info.ui:36 data/ui/module_info.ui:36
+#: data/ui/presets_menu.ui:97 data/ui/presets_menu.ui:197
 msgid "Name"
 msgstr ""
 
-#: data/ui/client_info.ui:58
+#: data/ui/client_info.ui:59
 msgid "API"
 msgstr ""
 
-#: data/ui/client_info.ui:81
+#: data/ui/client_info.ui:82
 msgid "Access"
 msgstr ""
 
-#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:141
+#: data/ui/compressor.ui:37 include/effects_base_ui.hpp:138
 msgid "Compressor"
 msgstr "Compresseur"
 
@@ -377,7 +401,7 @@ msgid "Threshold"
 msgstr "Seuil [dB]"
 
 #: data/ui/compressor.ui:242 data/ui/gate.ui:151 data/ui/limiter.ui:309
-#: data/ui/limiter.ui:546 data/ui/maximizer.ui:93
+#: data/ui/limiter.ui:546 data/ui/maximizer.ui:100
 #: data/ui/multiband_compressor_band.ui:239 data/ui/multiband_gate.ui:240
 #: data/ui/multiband_gate.ui:583 data/ui/multiband_gate.ui:926
 #: data/ui/multiband_gate.ui:1269
@@ -452,13 +476,13 @@ msgid "Side"
 msgstr "Gain d'entrée [dB]"
 
 #: data/ui/compressor.ui:472 data/ui/delay.ui:29 data/ui/equalizer.ui:37
-#: data/ui/multiband_compressor_band.ui:545 data/ui/pipe_info.ui:534
+#: data/ui/multiband_compressor_band.ui:545 data/ui/pipe_info.ui:533
 #: data/ui/stereo_tools.ui:164
 msgid "Left"
 msgstr ""
 
 #: data/ui/compressor.ui:473 data/ui/delay.ui:61 data/ui/equalizer.ui:49
-#: data/ui/multiband_compressor_band.ui:546 data/ui/pipe_info.ui:544
+#: data/ui/multiband_compressor_band.ui:546 data/ui/pipe_info.ui:542
 #: data/ui/stereo_tools.ui:197
 msgid "Right"
 msgstr ""
@@ -505,7 +529,7 @@ msgid "High-pass"
 msgstr "Passe-haut"
 
 #: data/ui/compressor.ui:697 data/ui/equalizer_band.ui:114 data/ui/filter.ui:49
-#: data/ui/pipe_info.ui:624
+#: data/ui/pipe_info.ui:617
 #, fuzzy
 msgid "Frequency"
 msgstr "Fréquence [Hz]"
@@ -545,44 +569,44 @@ msgstr ""
 msgid "Curve"
 msgstr ""
 
-#: data/ui/convolver.ui:43
+#: data/ui/convolver.ui:41
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:53
+#: data/ui/convolver.ui:50
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:79
+#: data/ui/convolver.ui:76
 #, fuzzy
 msgid "Impulses"
 msgstr "Réponse plane"
 
-#: data/ui/convolver.ui:87
+#: data/ui/convolver.ui:84
 #, fuzzy
 msgid "Stereo Width"
 msgstr "Amélioration audio"
 
-#: data/ui/convolver.ui:113 src/spectrum_settings_ui.cpp:189
+#: data/ui/convolver.ui:110 src/spectrum_settings_ui.cpp:189
 msgid "Spectrum"
 msgstr "Spectromètre"
 
-#: data/ui/convolver.ui:157
+#: data/ui/convolver.ui:154
 msgid "Samples"
 msgstr ""
 
-#: data/ui/convolver.ui:183
+#: data/ui/convolver.ui:180
 #, fuzzy
 msgid "Duration"
 msgstr "Calibration"
 
-#: data/ui/convolver.ui:426
+#: data/ui/convolver.ui:423
 #, fuzzy
 msgid "Import Impulse"
 msgstr "Réponse plane"
 
-#: data/ui/convolver.ui:434 data/ui/effects_base.ui:378
-#: data/ui/presets_menu.ui:133 data/ui/presets_menu.ui:234
+#: data/ui/convolver.ui:431 data/ui/effects_base.ui:374
+#: data/ui/presets_menu.ui:129 data/ui/presets_menu.ui:229
 msgid "Search"
 msgstr ""
 
@@ -658,7 +682,7 @@ msgstr ""
 msgid "Detected"
 msgstr "Atténuation"
 
-#: data/ui/deesser.ui:591 data/ui/maximizer.ui:296
+#: data/ui/deesser.ui:591 data/ui/maximizer.ui:312
 #: data/ui/multiband_gate.ui:406 data/ui/multiband_gate.ui:749
 #: data/ui/multiband_gate.ui:1092 data/ui/multiband_gate.ui:1435
 #, fuzzy
@@ -669,23 +693,23 @@ msgstr "Réduction de gain"
 msgid "Add Plugin"
 msgstr ""
 
-#: data/ui/effects_base.ui:137
+#: data/ui/effects_base.ui:135
 msgid "Players"
 msgstr ""
 
-#: data/ui/effects_base.ui:160
+#: data/ui/effects_base.ui:157
 msgid "Plugins"
 msgstr ""
 
-#: data/ui/effects_base.ui:247
+#: data/ui/effects_base.ui:244
 msgid "Blocklist"
 msgstr ""
 
-#: data/ui/effects_base.ui:301
+#: data/ui/effects_base.ui:297
 msgid "Player Name"
 msgstr ""
 
-#: data/ui/effects_base.ui:348
+#: data/ui/effects_base.ui:344
 msgid "Show Blocklisted Players"
 msgstr ""
 
@@ -908,12 +932,16 @@ msgstr "Utiliser thème sombre"
 msgid "Shutdown on Window Close"
 msgstr ""
 
-#: data/ui/general_settings.ui:138
+#: data/ui/general_settings.ui:122
+msgid "Use cubic volumes"
+msgstr ""
+
+#: data/ui/general_settings.ui:159
 #, fuzzy
 msgid "Reset All Settings"
 msgstr "Paramètres"
 
-#: data/ui/general_settings.ui:144
+#: data/ui/general_settings.ui:165
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -1113,12 +1141,21 @@ msgstr "Taille pièce"
 msgid "Output Volume"
 msgstr "Sortie"
 
-#: data/ui/maximizer.ui:61
+#: data/ui/maximizer.ui:65
 #, fuzzy
 msgid "Ceiling"
 msgstr "Limite [dB]"
 
-#: data/ui/module_info.ui:58
+#: data/ui/maximizer.ui:169
+msgid "Plugin input gain"
+msgstr ""
+
+#: data/ui/maximizer.ui:253
+#, fuzzy
+msgid "Plugin Output Gain"
+msgstr "Gain d'entrée [dB]"
+
+#: data/ui/module_info.ui:59
 #, fuzzy
 msgid "Description"
 msgstr "Atténuation"
@@ -1265,100 +1302,100 @@ msgstr "Gain d'entrée [dB]"
 msgid "High Band"
 msgstr "Passe-haut"
 
-#: data/ui/pipe_info.ui:23 src/general_settings_ui.cpp:66
+#: data/ui/pipe_info.ui:24 src/general_settings_ui.cpp:68
 msgid "General"
 msgstr "Général"
 
-#: data/ui/pipe_info.ui:35
+#: data/ui/pipe_info.ui:36
 msgid "Use Default Input"
 msgstr ""
 
-#: data/ui/pipe_info.ui:56
+#: data/ui/pipe_info.ui:57
 msgid "Use Default Output"
 msgstr ""
 
-#: data/ui/pipe_info.ui:77
+#: data/ui/pipe_info.ui:78
 #, fuzzy
 msgid "Input Device"
 msgstr "Limiteur d'entrée"
 
-#: data/ui/pipe_info.ui:96
+#: data/ui/pipe_info.ui:97
 #, fuzzy
 msgid "Output Device"
 msgstr "Gain d'entrée [dB]"
 
-#: data/ui/pipe_info.ui:115
+#: data/ui/pipe_info.ui:116
 msgid "Header Version"
 msgstr ""
 
-#: data/ui/pipe_info.ui:138
+#: data/ui/pipe_info.ui:139
 msgid "Library Version"
 msgstr ""
 
-#: data/ui/pipe_info.ui:161
+#: data/ui/pipe_info.ui:162
 msgid "Sampling Rate"
 msgstr ""
 
-#: data/ui/pipe_info.ui:184
+#: data/ui/pipe_info.ui:185
 #, fuzzy
 msgid "Minimum Quantum"
 msgstr "Fréquence [Hz]"
 
-#: data/ui/pipe_info.ui:207
+#: data/ui/pipe_info.ui:208
 #, fuzzy
 msgid "Maximum Quantum"
 msgstr "Fréquence [Hz]"
 
-#: data/ui/pipe_info.ui:230
+#: data/ui/pipe_info.ui:231
 #, fuzzy
 msgid "Default Quantum"
 msgstr "Fréquence [Hz]"
 
-#: data/ui/pipe_info.ui:259
+#: data/ui/pipe_info.ui:260
 msgid "Presets Autoloading"
 msgstr ""
 
-#: data/ui/pipe_info.ui:308 data/ui/pipe_info.ui:382
+#: data/ui/pipe_info.ui:309 data/ui/pipe_info.ui:383
 msgid "Create Association"
 msgstr ""
 
-#: data/ui/pipe_info.ui:438
+#: data/ui/pipe_info.ui:439
 msgid "Modules"
 msgstr ""
 
-#: data/ui/pipe_info.ui:462
+#: data/ui/pipe_info.ui:463
 msgid "Clients"
 msgstr ""
 
-#: data/ui/pipe_info.ui:486
+#: data/ui/pipe_info.ui:487
 #, fuzzy
 msgid "Test Signal"
 msgstr "Signal de test"
 
-#: data/ui/pipe_info.ui:495
+#: data/ui/pipe_info.ui:496
 #, fuzzy
 msgid "Enable"
 msgstr "Table sinusoïdale"
 
-#: data/ui/pipe_info.ui:517
+#: data/ui/pipe_info.ui:518
 msgid "Channel"
 msgstr ""
 
-#: data/ui/pipe_info.ui:554
+#: data/ui/pipe_info.ui:551
 msgid "Both"
 msgstr ""
 
-#: data/ui/pipe_info.ui:570
+#: data/ui/pipe_info.ui:567
 #, fuzzy
 msgid "Signal"
 msgstr "Signal de test"
 
-#: data/ui/pipe_info.ui:587
+#: data/ui/pipe_info.ui:582
 #, fuzzy
 msgid "Sine Wave"
 msgstr "Table sinusoïdale"
 
-#: data/ui/pipe_info.ui:598
+#: data/ui/pipe_info.ui:592
 msgid "White Noise"
 msgstr "Bruit blanc"
 
@@ -1386,33 +1423,33 @@ msgstr ""
 msgid "Crispness"
 msgstr ""
 
-#: data/ui/preset_row.ui:17 src/convolver_ui.cpp:228
+#: data/ui/preset_row.ui:18 src/convolver_ui.cpp:228
 msgid "Load"
 msgstr ""
 
-#: data/ui/preset_row.ui:25
+#: data/ui/preset_row.ui:26
 msgid "Save current settings to this preset file"
 msgstr ""
 
-#: data/ui/preset_row.ui:34
+#: data/ui/preset_row.ui:35
 msgid "Remove this preset file"
 msgstr ""
 
-#: data/ui/presets_menu.ui:78
+#: data/ui/presets_menu.ui:75
 msgid "Speakers"
 msgstr ""
 
-#: data/ui/presets_menu.ui:107 data/ui/presets_menu.ui:208
+#: data/ui/presets_menu.ui:103 data/ui/presets_menu.ui:203
 #, fuzzy
 msgid "Create Preset"
 msgstr "Sauvegarder préglage"
 
-#: data/ui/presets_menu.ui:118 data/ui/presets_menu.ui:219
+#: data/ui/presets_menu.ui:114 data/ui/presets_menu.ui:214
 #, fuzzy
 msgid "Import Presets"
 msgstr "Ouvrir préréglage"
 
-#: data/ui/presets_menu.ui:179
+#: data/ui/presets_menu.ui:175
 #, fuzzy
 msgid "Microphone"
 msgstr "Calibration de la correction microphone"
@@ -1670,96 +1707,96 @@ msgstr "Amélioration audio"
 msgid "Phase Correlation"
 msgstr ""
 
-#: include/effects_base_ui.hpp:138
+#: include/effects_base_ui.hpp:135
 #, fuzzy
 msgid "Autogain"
 msgstr "Gain d'entrée [dB]"
 
-#: include/effects_base_ui.hpp:139
+#: include/effects_base_ui.hpp:136
 #, fuzzy
 msgid "Bass Enhancer"
 msgstr "Amélioration audio"
 
-#: include/effects_base_ui.hpp:140
+#: include/effects_base_ui.hpp:137
 msgid "Bass Loudness"
 msgstr ""
 
-#: include/effects_base_ui.hpp:142
+#: include/effects_base_ui.hpp:139
 msgid "Convolver"
 msgstr ""
 
-#: include/effects_base_ui.hpp:143
+#: include/effects_base_ui.hpp:140
 msgid "Crossfeed"
 msgstr ""
 
-#: include/effects_base_ui.hpp:144
+#: include/effects_base_ui.hpp:141
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Égaliseur"
 
-#: include/effects_base_ui.hpp:145
+#: include/effects_base_ui.hpp:142
 msgid "Deesser"
 msgstr ""
 
-#: include/effects_base_ui.hpp:146
+#: include/effects_base_ui.hpp:143
 #, fuzzy
 msgid "Delay"
 msgstr "Relâche [ms]"
 
-#: include/effects_base_ui.hpp:147
+#: include/effects_base_ui.hpp:144
 #, fuzzy
 msgid "Echo Canceller"
 msgstr "Amélioration audio"
 
-#: include/effects_base_ui.hpp:148
+#: include/effects_base_ui.hpp:145
 msgid "Equalizer"
 msgstr "Égaliseur"
 
-#: include/effects_base_ui.hpp:149
+#: include/effects_base_ui.hpp:146
 msgid "Exciter"
 msgstr ""
 
-#: include/effects_base_ui.hpp:150
+#: include/effects_base_ui.hpp:147
 msgid "Filter"
 msgstr ""
 
-#: include/effects_base_ui.hpp:151
+#: include/effects_base_ui.hpp:148
 msgid "Gate"
 msgstr ""
 
-#: include/effects_base_ui.hpp:152
+#: include/effects_base_ui.hpp:149
 #, fuzzy
 msgid "Limiter"
 msgstr "Limite [dB]"
 
-#: include/effects_base_ui.hpp:154
+#: include/effects_base_ui.hpp:151
 msgid "Maximizer"
 msgstr ""
 
-#: include/effects_base_ui.hpp:155
+#: include/effects_base_ui.hpp:152
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Compresseur"
 
-#: include/effects_base_ui.hpp:156
+#: include/effects_base_ui.hpp:153
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Compresseur"
 
-#: include/effects_base_ui.hpp:157
+#: include/effects_base_ui.hpp:154
 msgid "Pitch"
 msgstr ""
 
-#: include/effects_base_ui.hpp:158
+#: include/effects_base_ui.hpp:155
 msgid "Reverberation"
 msgstr "Réverberation"
 
-#: include/effects_base_ui.hpp:159
+#: include/effects_base_ui.hpp:156
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Réduction de gain"
 
-#: include/effects_base_ui.hpp:160
+#: include/effects_base_ui.hpp:157
 #, fuzzy
 msgid "Stereo Tools"
 msgstr "Amélioration audio"
@@ -1833,28 +1870,28 @@ msgstr ""
 msgid "Could Not Load The Impulse File"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1404
+#: src/effects_base_ui.cpp:1414
 msgid "running"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1406
+#: src/effects_base_ui.cpp:1416
 msgid "suspended"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1408
+#: src/effects_base_ui.cpp:1418
 msgid "idle"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1410
+#: src/effects_base_ui.cpp:1420
 #, fuzzy
 msgid "creating"
 msgstr "Paramètres"
 
-#: src/effects_base_ui.cpp:1412
+#: src/effects_base_ui.cpp:1422
 msgid "error"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1414
+#: src/effects_base_ui.cpp:1424
 msgid "unknown"
 msgstr ""
 
@@ -1955,14 +1992,6 @@ msgstr ""
 
 #~ msgid "Subtract Noise"
 #~ msgstr "Enlever le bruit"
-
-#, fuzzy
-#~ msgid "Input Effects"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
-#~ msgid "Output Effects"
-#~ msgstr "Limiteur d'entrée"
 
 #, fuzzy
 #~ msgid "High"

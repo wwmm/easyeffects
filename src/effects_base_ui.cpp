@@ -27,7 +27,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
       schema(schema),
       settings(Gio::Settings::create(schema)),
       app_settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
-      icon_theme(icon_ptr),
+      icon_theme(std::move(icon_ptr)),
       pm(effects_base->pm),
       players_model(Gio::ListStore<NodeInfoHolder>::create()),
       all_players_model(Gio::ListStore<NodeInfoHolder>::create()),
@@ -89,7 +89,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   stack_top->connect_property_changed("visible-child", [=, this]() {
     const auto name = stack_top->get_visible_child_name();
 
-    menubutton_blocklist->set_visible((name == "page_players") ? true : false);
+    menubutton_blocklist->set_visible(name == "page_players");
   });
 
   toggle_players->signal_toggled().connect([&, this]() {
@@ -682,8 +682,8 @@ void EffectsBaseUi::setup_listview_players() {
           if (app_settings->get_boolean("use-cubic-volumes")) {
             vol = vol * vol * vol;
           }
-          pm->set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels,
-                              vol);
+
+          PipeManager::set_node_volume(node_it->second.proxy, node_it->second.n_volume_channels, vol);
         }
       }
     });
@@ -1081,8 +1081,8 @@ void EffectsBaseUi::setup_listview_plugins() {
 
       static const auto limiter_plugins = {plugin_name::limiter, plugin_name::maximizer};
 
-      if (list.size() > 0U && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
-                                          [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
+      if (!list.empty() && std::any_of(limiter_plugins.begin(), limiter_plugins.end(),
+                                       [&](const auto& str) { return str == list.at(list.size() - 1U); })) {
         // If the user is careful protecting his/her device with a plugin of
         // type limiter at the last position of the filter chain, we follow
         // this behaviour inserting the new plugin at the second last position

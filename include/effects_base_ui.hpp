@@ -67,7 +67,7 @@ class EffectsBaseUi {
  protected:
   EffectsBase* effects_base = nullptr;
 
-  inline static const std::string log_tag = "effects_base_ui: ";
+  const std::string log_tag = "effects_base_ui: ";
 
   std::string schema;
 
@@ -98,9 +98,9 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  void on_app_added(const NodeInfo);
-  void on_app_changed(const util::time_point ts);
-  void on_app_removed(const util::time_point ts);
+  void on_app_added(NodeInfo);
+  void on_app_changed(util::time_point ts);
+  void on_app_removed(util::time_point ts);
 
   auto icon_available(const Glib::ustring& icon_name) -> bool;
 
@@ -173,7 +173,7 @@ class EffectsBaseUi {
 
   void setup_listview_selected_plugins();
 
-  auto get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring;
+  static auto get_app_icon_name(const NodeInfo& node_info) -> Glib::ustring;
 
   auto app_is_blocklisted(const Glib::ustring& name) -> bool;
 

@@ -152,7 +152,7 @@ class PresetsManager {
   std::unique_ptr<RNNoisePreset> rnnoise;
   std::unique_ptr<StereoToolsPreset> stereo_tools;
 
-  void create_user_directory(const std::filesystem::path& path);
+  static void create_user_directory(const std::filesystem::path& path);
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
