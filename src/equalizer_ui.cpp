@@ -601,7 +601,7 @@ bool EqualizerUi::parse_apo_preamp(const std::string& line, double& preamp) {
 
   static const auto i = std::regex::icase;
 
-  std::regex_search(line, matches, std::regex(R"(preamp:\s*+([\+-]?+\d++\.?+\d*+)\s*+db)", i));
+  std::regex_search(line, matches, std::regex(R"(preamp:\s*+([+-]?+\d++\.?+\d*+)\s*+db)", i));
 
   if (matches.size() != 2U) {
     return false;
@@ -646,7 +646,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
 
   if ((filter.type & (LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
     std::regex_search(line, matches,
-                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i));
+                      std::regex(R"(filter\s++\d*+:\s*+on\s++[a-z]++\s++([+-]?+\d++\.?+\d*+)\s*+db)", i));
 
     // _xdB variants require the dB parameter
 
@@ -664,7 +664,7 @@ auto EqualizerUi::parse_apo_filter(const std::string& line, struct ImportedBand&
   // get gain
 
   if ((filter.type & (PEAKING | LOW_SHELF_xdB | HIGH_SHELF_xdB | LOW_SHELF | HIGH_SHELF)) != 0U) {
-    std::regex_search(line, matches, std::regex(R"(gain\s++([\+-]?+\d++\.?+\d*+)\s*+db)", i));
+    std::regex_search(line, matches, std::regex(R"(gain\s++([+-]?+\d++\.?+\d*+)\s*+db)", i));
 
     // all Shelf types (i.e. all above except for Peaking) require the gain parameter
 
