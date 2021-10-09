@@ -184,7 +184,7 @@ void AutoGain::process(std::span<float>& left_in,
 
       const double peak = (peak_L > peak_R) ? peak_L : peak_R;
 
-      const auto& db_peak = util::linear_to_db(peak);
+      const auto db_peak = util::linear_to_db(peak);
 
       if (db_peak > util::minimum_db_level) {
         if (gain * peak < 1.0) {
