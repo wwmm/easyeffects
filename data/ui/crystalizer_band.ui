@@ -57,6 +57,9 @@
                         <property name="page-increment">1</property>
                     </object>
                 </property>
+                <accessibility>
+                    <relation name="labelled-by">band_label</relation>
+                </accessibility>
             </object>
         </child>
     </object>

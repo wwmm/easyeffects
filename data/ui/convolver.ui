@@ -78,7 +78,7 @@
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="ir_width_label">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Stereo Width</property>
@@ -100,6 +100,9 @@
                                         <property name="page-increment">10</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <relation name="labelled-by">ir_width_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 

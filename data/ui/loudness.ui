@@ -81,7 +81,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="volume_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Output Volume</property>
@@ -102,6 +102,9 @@
                                         <property name="page-increment">1</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <relation name="labelled-by">volume_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

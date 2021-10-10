@@ -72,7 +72,7 @@
                                 <property name="column-spacing">6</property>
                                 <property name="hexpand">0</property>
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="nbands_label">
                                         <property name="label" translatable="yes">Bands</property>
                                         <layout>
                                             <property name="column">0</property>
@@ -98,6 +98,9 @@
                                             <property name="column">1</property>
                                             <property name="row">0</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">nbands_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
 

@@ -38,7 +38,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="hf_damp_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">High Frequency Damping</property>
@@ -59,6 +59,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <relation name="labelled-by">hf_damp</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -98,7 +101,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="diffusion_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Diffusion</property>
@@ -119,6 +122,9 @@
                                         <property name="page-increment">0.1</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <relation name="labelled-by">diffusion_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -133,7 +139,7 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">24</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="predelay_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Pre Delay</property>
@@ -161,11 +167,14 @@
                             <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">predelay_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="decay_time_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Decay Time</property>
@@ -195,6 +204,9 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">decay_time_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -229,6 +241,9 @@
                             <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Wet Level</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -262,11 +277,14 @@
                             <property name="column">3</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Dry Level</property>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="bass_cut_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Bass Cut</property>
@@ -296,11 +314,14 @@
                             <property name="column">4</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">bass_cut_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="treble_cut_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Treble Cut</property>
@@ -330,6 +351,9 @@
                             <property name="column">5</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">treble_cut_label</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>

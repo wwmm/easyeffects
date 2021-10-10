@@ -242,6 +242,9 @@
                             <mark value="90" position="bottom"></mark>
                             <mark value="100" position="bottom"></mark>
                         </marks>
+                        <accessibility>
+                            <property name="label" translatable="yes">Application Volume</property>
+                        </accessibility>
                     </object>
                 </child>
             </object>

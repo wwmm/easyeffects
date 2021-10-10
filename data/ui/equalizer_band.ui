@@ -109,7 +109,7 @@
                                 <property name="spacing">6</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="band_frequency_label">
                                         <property name="halign">center</property>
                                         <property name="label" translatable="yes">Frequency</property>
                                     </object>
@@ -129,6 +129,9 @@
                                                 <property name="page-increment">100</property>
                                             </object>
                                         </property>
+                                        <accessibility>
+                                            <relation name="labelled-by">band_frequency_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
 
@@ -171,7 +174,7 @@
                                 <property name="spacing">6</property>
                                 <property name="orientation">vertical</property>
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="band_quality_spinbutton_label">
                                         <property name="halign">center</property>
                                         <property name="label" translatable="yes">Quality</property>
                                     </object>
@@ -191,6 +194,9 @@
                                                 <property name="page-increment">0.1</property>
                                             </object>
                                         </property>
+                                        <accessibility>
+                                            <relation name="labelled-by">band_quality_spinbutton_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
 
@@ -274,6 +280,9 @@
                         <property name="page-increment">0.1</property>
                     </object>
                 </property>
+                <accessibility>
+                    <relation name="labelled-by">band_label</relation>
+                </accessibility>
             </object>
         </child>
     </object>

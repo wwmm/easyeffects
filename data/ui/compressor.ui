@@ -72,7 +72,7 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="boost_threshold_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Boost Threshold</property>
@@ -101,11 +101,14 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">boost_threshold_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="boost_amount_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Boost Amount</property>
@@ -134,6 +137,9 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">boost_amount_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -202,6 +208,9 @@
                                                             <property name="column">1</property>
                                                             <property name="row">1</property>
                                                         </layout>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Attack Time</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                                 <child>
@@ -220,6 +229,9 @@
                                                             <property name="column">1</property>
                                                             <property name="row">2</property>
                                                         </layout>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Attack Threshold</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                                 <layout>
@@ -262,6 +274,9 @@
                                                             <property name="column">1</property>
                                                             <property name="row">1</property>
                                                         </layout>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Release Time</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                                 <child>
@@ -281,6 +296,9 @@
                                                             <property name="column">1</property>
                                                             <property name="row">2</property>
                                                         </layout>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Release Threshold</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                                 <layout>
@@ -292,7 +310,7 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="ratio_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Ratio</property>
@@ -322,11 +340,14 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">ratio_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="knee_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Knee</property>
@@ -355,11 +376,14 @@
                                                     <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">knee_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="makeup_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Makeup</property>
@@ -388,6 +412,9 @@
                                                     <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">makeup_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -551,10 +578,10 @@
 
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="preamp_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
-                                                <property name="label" translatable="yes">Pre-amplification</property>
+                                                <property name="label" translatable="yes">PreAmplification</property>
                                                 <layout>
                                                     <property name="column">2</property>
                                                     <property name="row">0</property>
@@ -581,11 +608,14 @@
                                                     <property name="row">1</property>
                                                     <property name="row-span">2</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">preamp_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="reactivity_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Reactivity</property>
@@ -615,11 +645,14 @@
                                                     <property name="row">1</property>
                                                     <property name="row-span">2</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">reactivity_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="lookahead_label">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Lookahead</property>
@@ -648,6 +681,9 @@
                                                     <property name="row">1</property>
                                                     <property name="row-span">2</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">lookahead_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -670,7 +706,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">High-pass</property>
+                                        <property name="label" translatable="yes">High-Pass</property>
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">0</property>
@@ -735,6 +771,9 @@
                                             <property name="column">1</property>
                                             <property name="row">2</property>
                                         </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">High-Pass Filter Frequency</property>
+                                        </accessibility>
                                     </object>
                                 </child>
 
@@ -742,7 +781,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Low-pass</property>
+                                        <property name="label" translatable="yes">Low-Pass</property>
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
@@ -783,6 +822,9 @@
                                             <property name="column">2</property>
                                             <property name="row">2</property>
                                         </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">High-Pass Filter Frequency</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
