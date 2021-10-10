@@ -54,7 +54,6 @@
                         <accessibility>
                             <relation name="labelled-by">threshold_label</relation>
                         </accessibility>
-
                     </object>
                 </child>
 
@@ -166,7 +165,7 @@
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
                                 <accessibility>
-                                    <property name="label" translatable="yes">Plugin input gain</property>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
                                 </accessibility>
                             </object>
                         </child>
