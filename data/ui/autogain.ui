@@ -64,7 +64,7 @@
                         <property name="halign">center</property>
                         <items>
                             <item translatable="yes">Momentary</item>
-                            <item translatable="yes">Shortterm</item>
+                            <item translatable="yes">Short-Term</item>
                             <item translatable="yes">Integrated</item>
                             <item translatable="yes">Geometric Mean</item>
                         </items>
