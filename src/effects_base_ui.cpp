@@ -799,9 +799,9 @@ void EffectsBaseUi::setup_listview_players() {
       scale_volume->set_sensitive(true);
 
       if (app_settings->get_boolean("use-cubic-volumes")) {
-        volume->set_value(100 * std::cbrt(node_info.volume));
+        volume->set_value(100.0 * std::cbrt(static_cast<double>(node_info.volume)));
       } else {
-        volume->set_value(100 * node_info.volume);
+        volume->set_value(100.0 * static_cast<double>(node_info.volume));
       }
 
       pointer_connection_volume->unblock();

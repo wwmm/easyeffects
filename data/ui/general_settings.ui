@@ -119,7 +119,7 @@
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">end</property>
-                        <property name="label" translatable="yes">Use cubic volumes</property>
+                        <property name="label" translatable="yes">Use Cubic Volume</property>
                         <layout>
                             <property name="column">0</property>
                             <property name="row">5</property>
