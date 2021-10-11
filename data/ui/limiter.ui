@@ -37,7 +37,7 @@
                                 <property name="margin-end">12</property>
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="mode_label">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Mode</property>
@@ -49,7 +49,7 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="oversampling_label">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Oversampling</property>
@@ -61,7 +61,7 @@
                                     </object>
                                 </child>
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="dither_label">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Dither</property>
@@ -93,6 +93,9 @@
                                             <property name="column">1</property>
                                             <property name="row">0</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">mode_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                                 <child>
@@ -126,6 +129,9 @@
                                             <property name="column">1</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">oversampling_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                                 <child>
@@ -147,6 +153,9 @@
                                             <property name="column">1</property>
                                             <property name="row">2</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">dither_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                                 <layout>

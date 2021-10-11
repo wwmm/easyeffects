@@ -33,6 +33,9 @@
                     <item translatable="yes">12dB/oct Bandreject</item>
                     <item translatable="yes">18dB/oct Bandreject</item>
                 </items>
+                <accessibility>
+                    <property name="label">Mode</property>
+                </accessibility>
             </object>
         </child>
 

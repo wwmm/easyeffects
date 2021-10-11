@@ -26,7 +26,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="detection_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Detection</property>
@@ -40,6 +40,9 @@
                                     <item translatable="yes">RMS</item>
                                     <item translatable="yes">Peak</item>
                                 </items>
+                                <accessibility>
+                                    <relation name="labelled-by">detection_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -73,8 +76,8 @@
                                     </object>
                                 </property>
                                 <accessibility>
-                            <relation name="labelled-by">range_label</relation>
-                        </accessibility>
+                                    <relation name="labelled-by">range_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -86,7 +89,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="stereo_link_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Stereo Link</property>
@@ -100,6 +103,9 @@
                                     <item translatable="yes">Average</item>
                                     <item translatable="yes">Maximum</item>
                                 </items>
+                                <accessibility>
+                                    <relation name="labelled-by">stereo_link_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

@@ -31,13 +31,15 @@
                                 <property name="label" translatable="yes">Mode</property>
                             </object>
                         </child>
-
                         <child>
                             <object class="GtkComboBoxText" id="mode">
                                 <items>
                                     <item>LR4</item>
                                     <item>LR8</item>
                                 </items>
+                                <accessibility>
+                                    <property name="label">Split Mode</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -197,6 +199,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -561,6 +566,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -925,6 +933,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -1289,6 +1300,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>

@@ -18,6 +18,9 @@
                 <property name="label" translatable="yes">Load</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
+                <accessibility>
+                    <relation name="labelled-by">name</relation>
+                </accessibility>
             </object>
         </child>
 
@@ -27,6 +30,9 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="icon_name">document-save-symbolic</property>
+                <accessibility>
+                    <relation name="labelled-by">name</relation>
+                </accessibility>
             </object>
         </child>
 
@@ -36,6 +42,9 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="icon_name">user-trash-symbolic</property>
+                <accessibility>
+                    <relation name="labelled-by">name</relation>
+                </accessibility>
             </object>
         </child>
     </object>

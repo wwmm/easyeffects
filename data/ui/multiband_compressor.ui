@@ -27,12 +27,10 @@
                                 <property name="valign">start</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">24</property>
-
                                 <child>
                                     <object class="GtkToggleButton" id="bypass">
                                         <property name="halign">center</property>
                                         <property name="label" translatable="yes">Bypass</property>
-
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">1</property>
@@ -41,18 +39,16 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="compressor_mode_label">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Operating Mode</property>
-
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkComboBoxText" id="compressor_mode">
                                         <property name="halign">center</property>
@@ -60,27 +56,27 @@
                                             <item translatable="yes">Classic</item>
                                             <item translatable="yes">Modern</item>
                                         </items>
-
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">compressor_mode_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="envelope_boost_label">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Sidechain Boost</property>
-
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkComboBoxText" id="envelope_boost">
                                         <property name="halign">center</property>
@@ -91,11 +87,13 @@
                                             <item translatable="yes">Brown BT</item>
                                             <item translatable="yes">Brown MT</item>
                                         </items>
-
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">envelope_boost_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
@@ -119,7 +117,6 @@
                     <object class="GtkFrame">
                         <property name="halign">center</property>
                         <property name="valign">start</property>
-
                         <child>
                             <object class="GtkListBox" id="listbox">
                                 <property name="halign">center</property>

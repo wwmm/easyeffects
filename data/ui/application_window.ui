@@ -189,7 +189,6 @@
         <accessibility>
             <property name="label" translatable="yes">Settings Menu</property>
         </accessibility>
-
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

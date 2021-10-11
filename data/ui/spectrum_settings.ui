@@ -253,7 +253,7 @@
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">6</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="spectrum_type_label">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Spectrum Type</property>
@@ -274,6 +274,9 @@
                                     <property name="column">1</property>
                                     <property name="row">0</property>
                                 </layout>
+                                <accessibility>
+                                    <relation name="labelled-by">spectrum_type_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 

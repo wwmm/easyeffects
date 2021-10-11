@@ -381,6 +381,9 @@
                         <property name="valign">start</property>
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
+                        <accessibility>
+                            <property name="label">Search Plugin</property>
+                        </accessibility>
                     </object>
                 </child>
 

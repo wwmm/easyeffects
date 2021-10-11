@@ -26,7 +26,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="standard_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Standard</property>
@@ -42,6 +42,9 @@
                                     <item>Fletcher-Munson</item>
                                     <item>Robinson-Dadson</item>
                                 </items>
+                                <accessibility>
+                                    <relation name="labelled-by">standard_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -71,6 +74,9 @@
                                     <item>8192</item>
                                     <item>16384</item>
                                 </items>
+                                <accessibility>
+                                    <property name="label">Fast Fourier Transform Size</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

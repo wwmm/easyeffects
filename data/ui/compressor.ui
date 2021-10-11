@@ -68,6 +68,9 @@
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label">Compression Mode</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -467,6 +470,9 @@
                                                             <property name="column">0</property>
                                                             <property name="row">1</property>
                                                         </layout>
+                                                        <accessibility>
+                                                            <property name="label">Sidechain Mode</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
 
@@ -564,6 +570,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label">Sidechain Type</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                         <child>
@@ -750,6 +759,9 @@
                                             <property name="column">1</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <property name="label">High-Pass Filter Mode</property>
+                                        </accessibility>
                                     </object>
                                 </child>
 
@@ -801,6 +813,9 @@
                                             <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <property name="label">Low-Pass Filter Mode</property>
+                                        </accessibility>
                                     </object>
                                 </child>
 

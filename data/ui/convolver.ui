@@ -439,6 +439,9 @@
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
                     </object>
+                    <accessibility>
+                        <property name="label">Search Impulse File</property>
+                    </accessibility>
                 </child>
 
                 <child>

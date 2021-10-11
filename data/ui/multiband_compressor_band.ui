@@ -97,7 +97,6 @@
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Compression Mode</property>
-
                         <layout>
                             <property name="column">2</property>
                             <property name="row">0</property>
@@ -112,11 +111,13 @@
                             <item id="upward_mode" translatable="yes">Upward</item>
                             <item id="boosting_mode" translatable="yes">Boosting</item>
                         </items>
-
                         <layout>
                             <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label">Band Compression Mode</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -124,7 +125,6 @@
                     <object class="GtkToggleButton" id="bypass">
                         <property name="halign">center</property>
                         <property name="label" translatable="yes">Band Bypass</property>
-
                         <layout>
                             <property name="column">3</property>
                             <property name="row">1</property>
@@ -135,7 +135,6 @@
                     <object class="GtkToggleButton" id="mute">
                         <property name="halign">center</property>
                         <property name="label" translatable="yes">Mute</property>
-
                         <layout>
                             <property name="column">4</property>
                             <property name="row">1</property>
@@ -146,7 +145,6 @@
                     <object class="GtkToggleButton" id="solo">
                         <property name="halign">center</property>
                         <property name="label" translatable="yes">Solo</property>
-
                         <layout>
                             <property name="column">5</property>
                             <property name="row">1</property>
@@ -161,14 +159,12 @@
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="spacing">24</property>
-
                 <child>
                     <object class="GtkGrid">
                         <property name="halign">center</property>
                         <property name="valign">start</property>
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">12</property>
-
                         <child>
                             <object class="GtkLabel">
                                 <property name="halign">end</property>
@@ -465,7 +461,6 @@
                         <property name="label" translatable="yes">Band Sidechain Options</property>
                     </object>
                 </child>
-
                 <child>
                     <object class="GtkBox">
                         <property name="orientation">vertical</property>

@@ -1072,6 +1072,8 @@ void EffectsBaseUi::setup_listview_plugins() {
 
     label->set_text(translated_name);
 
+    add->update_property(Gtk::Accessible::Property::LABEL, glib_value(Glib::ustring(_("Add")) + " " + translated_name));
+
     auto connection_add = add->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
 
@@ -1239,7 +1241,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     drag_source->set_actions(Gdk::DragAction::MOVE);
 
     drag_source->signal_prepare().connect(
-        [=](const double& x, const double& y) {
+        [=, this](const double& x, const double& y) {
           auto* const controller_widget = drag_source->get_widget();
 
           auto* const item = controller_widget->get_ancestor(Gtk::Box::get_type());
@@ -1248,13 +1250,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
-          Glib::Value<Glib::ustring> name_value;
-
-          name_value.init(Glib::Value<Glib::ustring>::value_type());
-
-          name_value.set(label->get_name());
-
-          return Gdk::ContentProvider::create(name_value);
+          return Gdk::ContentProvider::create(glib_value(label->get_name()));
         },
         false);
 
@@ -1320,8 +1316,13 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
+    auto translated_name = plugins_names[name];
+
     label->set_name(name);
-    label->set_text(plugins_names[name]);
+    label->set_text(translated_name);
+
+    remove->update_property(Gtk::Accessible::Property::LABEL,
+                            glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
