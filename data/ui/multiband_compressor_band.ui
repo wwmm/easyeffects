@@ -454,8 +454,11 @@
 
         <child>
             <object class="GtkExpander">
+                <accessibility>
+                    <relation name="labelled-by">sidechain_options_label</relation>
+                </accessibility>
                 <child type="label">
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="sidechain_options_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Band Sidechain Options</property>
@@ -547,10 +550,13 @@
                                             <object class="GtkCheckButton" id="lowcut_filter">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
+                                                <accessibility>
+                                                    <relation name="labelled-by">lowcut_filter_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="lowcut_filter_label">
                                                 <property name="label" translatable="yes">Low-Cut Filter</property>
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
@@ -597,10 +603,13 @@
                                             <object class="GtkCheckButton" id="highcut_filter">
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>
+                                                <accessibility>
+                                                    <relation name="labelled-by">highcut_filter_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="highcut_filter_label">
                                                 <property name="label" translatable="yes">High-Cut Filter</property>
                                                 <property name="halign">center</property>
                                                 <property name="valign">center</property>

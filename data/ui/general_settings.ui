@@ -11,7 +11,7 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">6</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="enable_autostart_label">
                         <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Start Service at Login</property>
@@ -29,11 +29,14 @@
                             <property name="column">1</property>
                             <property name="row">0</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">enable_autostart_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="process_all_outputs_label">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Process All Outputs</property>
                         <layout>
@@ -50,11 +53,14 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">process_all_outputs_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="process_all_inputs_label">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Process All Inputs</property>
                         <layout>
@@ -71,11 +77,14 @@
                             <property name="column">1</property>
                             <property name="row">2</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">process_all_inputs_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="theme_switch_label">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Use Dark Theme</property>
                         <layout>
@@ -92,11 +101,14 @@
                             <property name="column">1</property>
                             <property name="row">3</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">theme_switch_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="shutdown_on_window_close_label">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Shutdown on Window Close</property>
                         <layout>
@@ -113,11 +125,14 @@
                             <property name="column">1</property>
                             <property name="row">4</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">shutdown_on_window_close_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="use_cubic_volumes_label">
                         <property name="halign">end</property>
                         <property name="label" translatable="yes">Use Cubic Volume</property>
                         <layout>
@@ -134,6 +149,9 @@
                             <property name="column">1</property>
                             <property name="row">5</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">use_cubic_volumes_label</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>

@@ -31,7 +31,7 @@
                                         <property name="row-spacing">12</property>
                                         <property name="column-spacing">6</property>
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="use_default_input_label">
                                                 <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Use Default Input</property>
                                                 <layout>
@@ -48,17 +48,23 @@
                                                     <property name="column">1</property>
                                                     <property name="row">0</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">use_default_input_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="use_default_output_label">
                                                 <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Use Default Output</property>
                                                 <layout>
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">use_default_output_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
                                         <child>
@@ -318,6 +324,9 @@
                                                                         <style>
                                                                             <class name="suggested-action" />
                                                                         </style>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Add Autoloading Output Preset</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -395,6 +404,9 @@
                                                                         <style>
                                                                             <class name="suggested-action" />
                                                                         </style>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Add Autoloading Input Preset</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
                                                             </object>
@@ -520,6 +532,9 @@
                                             <property name="column">1</property>
                                             <property name="row">0</property>
                                         </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Enable Test Signal</property>
+                                        </accessibility>
                                     </object>
                                 </child>
 

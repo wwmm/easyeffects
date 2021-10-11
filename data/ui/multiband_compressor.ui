@@ -123,6 +123,9 @@
                                 <property name="valign">center</property>
                                 <property name="selection-mode">single</property>
                                 <property name="show-separators">1</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Bands List</property>
+                                </accessibility>
                                 <child>
                                     <object class="GtkListBoxRow">
                                         <child>
@@ -145,7 +148,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band1_label">
                                                         <property name="label" translatable="yes">Band 2</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -157,6 +160,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band1_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -169,7 +175,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band2_label">
                                                         <property name="label" translatable="yes">Band 3</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -181,6 +187,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band2_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -193,7 +202,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band3_label">
                                                         <property name="label" translatable="yes">Band 4</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -205,6 +214,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band3_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -217,7 +229,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band4_label">
                                                         <property name="label" translatable="yes">Band 5</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -229,6 +241,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band4_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -241,7 +256,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band5_label">
                                                         <property name="label" translatable="yes">Band 6</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -253,6 +268,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band5_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -265,7 +283,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band6_label">
                                                         <property name="label" translatable="yes">Band 7</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -277,6 +295,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band6_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -289,7 +310,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band7_label">
                                                         <property name="label" translatable="yes">Band 8</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -301,6 +322,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band7_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>

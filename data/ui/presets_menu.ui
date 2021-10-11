@@ -102,6 +102,7 @@
                                                                 <property name="hexpand">1</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
+                                                                <property name="accessible_role">text-box</property>
                                                                 <accessibility>
                                                                     <property name="label">New Output Preset Name</property>
                                                                 </accessibility>
@@ -211,6 +212,7 @@
                                                                 <property name="hexpand">1</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
+                                                                <property name="accessible_role">text-box</property>
                                                                 <accessibility>
                                                                     <property name="label">New Input Preset Name</property>
                                                                 </accessibility>

@@ -68,6 +68,9 @@
                         <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Add to Blocklist</property>
+                        <accessibility>
+                            <relation name="labelled-by">app_name</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>

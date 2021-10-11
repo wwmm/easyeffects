@@ -148,6 +148,9 @@
                                     <object class="GtkButton" id="reset_frequency">
                                         <property name="label" translatable="yes">Reset</property>
                                         <property name="halign">center</property>
+                                        <accessibility>
+                                            <relation name="labelled-by">band_frequency_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
@@ -213,6 +216,9 @@
                                     <object class="GtkButton" id="reset_quality">
                                         <property name="label" translatable="yes">Reset</property>
                                         <property name="halign">center</property>
+                                        <accessibility>
+                                            <relation name="labelled-by">band_quality_spinbutton_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

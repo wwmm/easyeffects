@@ -16,7 +16,7 @@
                         <property name="row-spacing">6</property>
                         <property name="column-spacing">6</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="show_label">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Show Spectrum</property>
@@ -34,11 +34,14 @@
                                     <property name="column">1</property>
                                     <property name="row">0</property>
                                 </layout>
+                                <accessibility>
+                                    <relation name="labelled-by">show_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="fill_label">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Fill</property>
@@ -56,11 +59,14 @@
                                     <property name="column">1</property>
                                     <property name="row">1</property>
                                 </layout>
+                                <accessibility>
+                                    <relation name="labelled-by">fill_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="show_bar_border_label">
                                 <property name="halign">end</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Border</property>
@@ -78,6 +84,9 @@
                                     <property name="column">1</property>
                                     <property name="row">2</property>
                                 </layout>
+                                <accessibility>
+                                    <relation name="labelled-by">show_bar_border_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 
