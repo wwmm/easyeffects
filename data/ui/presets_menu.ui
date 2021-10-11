@@ -148,6 +148,9 @@
                                                                 <style>
                                                                     <class name="rich-list" />
                                                                 </style>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Output Presets List</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -248,6 +251,9 @@
                                                                 <style>
                                                                     <class name="rich-list" />
                                                                 </style>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Input Presets List</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                     </object>

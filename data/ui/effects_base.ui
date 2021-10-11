@@ -32,6 +32,9 @@
                                                 <style>
                                                     <class name="rich-list" />
                                                 </style>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Applications List</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -74,6 +77,9 @@
                                                         <style>
                                                             <class name="navigation-sidebar" />
                                                         </style>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Used Plugins List</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -327,6 +333,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Blocklisted Applications List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
@@ -389,6 +398,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Plugins List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

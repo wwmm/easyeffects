@@ -455,6 +455,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Impulse Files List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

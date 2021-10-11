@@ -335,6 +335,9 @@
                                                                                 <style>
                                                                                     <class name="rich-list" />
                                                                                 </style>
+                                                                                <accessibility>
+                                                                                    <property name="label" translatable="yes">Output Autoloading Presets List</property>
+                                                                                </accessibility>
                                                                             </object>
                                                                         </child>
                                                                     </object>
@@ -408,6 +411,9 @@
                                                                                 <style>
                                                                                     <class name="rich-list" />
                                                                                 </style>
+                                                                                <accessibility>
+                                                                                    <property name="label" translatable="yes">Input Autoloading Presets List</property>
+                                                                                </accessibility>
                                                                             </object>
                                                                         </child>
                                                                     </object>
@@ -448,6 +454,9 @@
                                                 <style>
                                                     <class name="rich-list" />
                                                 </style>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Modules List</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -472,6 +481,9 @@
                                                 <style>
                                                     <class name="rich-list" />
                                                 </style>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Clients List</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
