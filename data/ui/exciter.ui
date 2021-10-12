@@ -27,7 +27,7 @@
         </child>
 
         <child>
-            <object class="GtkLabel">
+            <object class="GtkLabel" id="blend_label">
                 <property name="halign">center</property>
                 <property name="label" translatable="yes">Blend Harmonics</property>
             </object>
@@ -38,7 +38,7 @@
                 <property name="spacing">6</property>
                 <property name="halign">center</property>
                 <child>
-                    <object class="GtkLabel" id="blend_label">
+                    <object class="GtkLabel">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
                         <property name="label" translatable="yes">3rd</property>
