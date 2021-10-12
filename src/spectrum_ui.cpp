@@ -174,9 +174,8 @@ void SpectrumUi::init_color() {
 
   settings->get_value("color", v);
 
-  const auto rgba = v.get();
-
-  plot->set_color(rgba[0], rgba[1], rgba[2], rgba[3]);
+  plot->set_color(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]), static_cast<float>(v.get()[2]),
+                  static_cast<float>(v.get()[3]));
 }
 
 void SpectrumUi::init_type() {
@@ -191,7 +190,7 @@ void SpectrumUi::init_frequency_axis() {
   spectrum_freqs.resize(n_bands);
 
   for (uint n = 0U; n < n_bands; n++) {
-    spectrum_freqs[n] = 0.5F * rate * static_cast<float>(n) / static_cast<float>(n_bands);
+    spectrum_freqs[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(n_bands);
   }
 
   if (!spectrum_freqs.empty()) {
@@ -217,7 +216,6 @@ void SpectrumUi::init_frequency_labels_color() {
 
   settings->get_value("color-axis-labels", v);
 
-  const auto rgba = v.get();
-
-  plot->set_axis_labels_color(rgba[0], rgba[1], rgba[2], rgba[3]);
+  plot->set_axis_labels_color(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]),
+                              static_cast<float>(v.get()[2]), static_cast<float>(v.get()[3]));
 }

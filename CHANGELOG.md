@@ -8,6 +8,11 @@
 - The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.
 - Optional Cubic Volume can be enabled in General Settings.
 
+### Fixed
+
+- The spectrum plugin was supposed to enter passthrough whenever it was not visible but this was happening only when
+  our window was closed.
+
 ## [6.1.3]
 
 ### Added
