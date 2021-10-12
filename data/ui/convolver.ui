@@ -39,6 +39,9 @@
                                 <property name="halign">center</property>
                                 <property name="active">1</property>
                                 <property name="label" translatable="yes">L</property>
+                                <accessibility>
+                                    <property name="label">Left Channel</property>
+                                </accessibility>
                             </object>
                         </child>
 
@@ -48,6 +51,9 @@
                                 <property name="halign">center</property>
                                 <property name="group">check_left</property>
                                 <property name="label" translatable="yes">R</property>
+                                <accessibility>
+                                    <property name="label">Right Channel</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -438,10 +444,10 @@
                         <property name="valign">start</property>
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
+                        <accessibility>
+                            <property name="label">Search Impulse File</property>
+                        </accessibility>
                     </object>
-                    <accessibility>
-                        <property name="label">Search Impulse File</property>
-                    </accessibility>
                 </child>
 
                 <child>
