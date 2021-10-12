@@ -8,6 +8,10 @@
 - The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.
 - Optional Cubic Volume can be enabled in General Settings.
 
+### Fixed
+
+- Improved support for Assistive Technology.
+
 ## [6.1.3]
 
 ### Added
