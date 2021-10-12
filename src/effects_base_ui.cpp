@@ -1216,19 +1216,19 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     box->append(*remove);
     box->append(*drag_handle);
 
-    remove->set_opacity(0);
-    drag_handle->set_opacity(0);
+    remove->set_opacity(0.0);
+    drag_handle->set_opacity(0.0);
 
     auto controller = Gtk::EventControllerMotion::create();
 
     controller->signal_enter().connect([=](const double& x, const double& y) {
-      remove->set_opacity(1);
-      drag_handle->set_opacity(1);
+      remove->set_opacity(1.0);
+      drag_handle->set_opacity(1.0);
     });
 
     controller->signal_leave().connect([=]() {
-      remove->set_opacity(0);
-      drag_handle->set_opacity(0);
+      remove->set_opacity(0.0);
+      drag_handle->set_opacity(0.0);
     });
 
     box->add_controller(controller);
