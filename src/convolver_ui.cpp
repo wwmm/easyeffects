@@ -250,6 +250,12 @@ void ConvolverUi::setup_listview() {
 
     label->set_text(name);
 
+    load->update_property(Gtk::Accessible::Property::LABEL,
+                          util::glib_value(Glib::ustring(_("Load Impulse")) + " " + name));
+
+    remove->update_property(Gtk::Accessible::Property::LABEL,
+                            util::glib_value(Glib::ustring(_("Remove Impulse")) + " " + name));
+
     auto connection_load = load->signal_clicked().connect([=, this]() {
       const auto irs_file = irs_dir / std::filesystem::path{name.c_str() + irs_ext};
 

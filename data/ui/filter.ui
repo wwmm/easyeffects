@@ -34,7 +34,7 @@
                     <item translatable="yes">18dB/oct Bandreject</item>
                 </items>
                 <accessibility>
-                    <property name="label">Mode</property>
+                    <property name="label">Filter Mode</property>
                 </accessibility>
             </object>
         </child>

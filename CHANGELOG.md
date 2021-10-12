@@ -10,8 +10,9 @@
 
 ### Fixed
 
-- The spectrum plugin was supposed to enter passthrough whenever it was not visible but this was happening only when
+- The Spectrum plugin was supposed to enter passthrough whenever it was not visible, but this was happening only when
   our window was closed.
+- Improved support for Assistive Technology.
 
 ## [6.1.3]
 
