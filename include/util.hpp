@@ -32,7 +32,7 @@
 
 namespace util {
 
-typedef std::chrono::time_point<std::chrono::system_clock> time_point;
+using time_point = std::chrono::time_point<std::chrono::system_clock>;
 
 const float minimum_db_level = -100.0F;
 const double minimum_db_d_level = -100.0;
@@ -78,15 +78,15 @@ auto timestamp_str(const time_point ts) -> std::string;
 void print_thread_id();
 
 template <typename T>
-  auto glib_value(const T& cppvalue) -> Glib::Value<T> {
-    Glib::Value<T> gval;
+auto glib_value(const T& cppvalue) -> Glib::Value<T> {
+  Glib::Value<T> gval;
 
-    gval.init(Glib::Value<T>::value_type());
+  gval.init(Glib::Value<T>::value_type());
 
-    gval.set(cppvalue);
+  gval.set(cppvalue);
 
-    return gval;
-  }
+  return gval;
+}
 
 }  // namespace util
 
