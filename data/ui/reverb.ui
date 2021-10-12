@@ -60,7 +60,7 @@
                                     </object>
                                 </property>
                                 <accessibility>
-                                    <relation name="labelled-by">hf_damp</relation>
+                                    <relation name="labelled-by">hf_damp_label</relation>
                                 </accessibility>
                             </object>
                         </child>

@@ -183,6 +183,9 @@
                                             <object class="GtkToggleButton" id="bypass0">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
+                                                <accessibility>
+                                                    <property name="label">Band 1 Bypass</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -190,6 +193,9 @@
                                             <object class="GtkToggleButton" id="solo0">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
+                                                <accessibility>
+                                                    <property name="label">Band 1 Solo</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -200,7 +206,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Detection 1</property>
+                                                    <property name="label">Band 1 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -245,7 +251,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Attack 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Attack</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -282,7 +288,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Release 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Release</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -318,7 +324,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Threshold 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Threshold</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -355,7 +361,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Ratio 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Ratio</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -391,7 +397,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Knee 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Knee</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -426,7 +432,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Makeup 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Makeup</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -462,7 +468,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Reduction 1</property>
+                                                    <property name="label" translatable="yes">Band 1 Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -550,6 +556,9 @@
                                             <object class="GtkToggleButton" id="bypass1">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
+                                                <accessibility>
+                                                    <property name="label">Band 2 Bypass</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -557,6 +566,9 @@
                                             <object class="GtkToggleButton" id="solo1">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
+                                                <accessibility>
+                                                    <property name="label">Band 2 Solo</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -567,7 +579,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Detection 2</property>
+                                                    <property name="label">Band 2 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -612,7 +624,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Attack 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Attack</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -649,7 +661,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Release 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Release</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -685,7 +697,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Threshold 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Threshold</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -722,7 +734,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Ratio 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Ratio</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -758,7 +770,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Knee 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Knee</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -793,7 +805,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Makeup 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Makeup</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -829,7 +841,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Reduction 2</property>
+                                                    <property name="label" translatable="yes">Band 2 Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -917,6 +929,9 @@
                                             <object class="GtkToggleButton" id="bypass2">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
+                                                <accessibility>
+                                                    <property name="label">Band 3 Bypass</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -924,6 +939,9 @@
                                             <object class="GtkToggleButton" id="solo2">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
+                                                <accessibility>
+                                                    <property name="label">Band 3 Solo</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -934,7 +952,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Detection 3</property>
+                                                    <property name="label">Band 3 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -979,7 +997,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Attack 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Attack</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1016,7 +1034,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Release 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Release</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1052,7 +1070,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Threshold 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Threshold</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1089,7 +1107,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Ratio 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Ratio</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1125,7 +1143,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Knee 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Knee</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1160,7 +1178,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Makeup 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Makeup</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1196,7 +1214,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Reduction 3</property>
+                                                    <property name="label" translatable="yes">Band 3 Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1284,6 +1302,9 @@
                                             <object class="GtkToggleButton" id="bypass3">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
+                                                <accessibility>
+                                                    <property name="label">Band 4 Bypass</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1291,6 +1312,9 @@
                                             <object class="GtkToggleButton" id="solo3">
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
+                                                <accessibility>
+                                                    <property name="label">Band 4 Solo</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1301,7 +1325,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Detection 4</property>
+                                                    <property name="label">Band 4 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1346,7 +1370,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Attack 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Attack</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1383,7 +1407,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Release 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Release</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1419,7 +1443,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Threshold 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Threshold</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1456,7 +1480,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Ratio 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Ratio</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1492,7 +1516,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Knee 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Knee</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1527,7 +1551,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Makeup 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Makeup</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1563,7 +1587,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Reduction 4</property>
+                                                    <property name="label" translatable="yes">Band 4 Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>

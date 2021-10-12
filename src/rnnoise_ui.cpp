@@ -185,6 +185,9 @@ void RNNoiseUi::setup_listview() {
 
     label->set_text(name);
 
+    remove->update_property(Gtk::Accessible::Property::LABEL,
+                            util::glib_value(Glib::ustring(_("Remove Model")) + " " + name));
+
     if (name == default_model_name) {
       remove->hide();
     }
