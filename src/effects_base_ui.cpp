@@ -799,9 +799,9 @@ void EffectsBaseUi::setup_listview_players() {
       scale_volume->set_sensitive(true);
 
       if (app_settings->get_boolean("use-cubic-volumes")) {
-        volume->set_value(100 * std::cbrt(node_info.volume));
+        volume->set_value(100.0 * std::cbrt(static_cast<double>(node_info.volume)));
       } else {
-        volume->set_value(100 * node_info.volume);
+        volume->set_value(100.0 * static_cast<double>(node_info.volume));
       }
 
       pointer_connection_volume->unblock();
@@ -1072,6 +1072,9 @@ void EffectsBaseUi::setup_listview_plugins() {
 
     label->set_text(translated_name);
 
+    add->update_property(Gtk::Accessible::Property::LABEL,
+                         util::glib_value(Glib::ustring(_("Add")) + " " + translated_name));
+
     auto connection_add = add->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
 
@@ -1214,19 +1217,19 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     box->append(*remove);
     box->append(*drag_handle);
 
-    remove->set_opacity(0);
-    drag_handle->set_opacity(0);
+    remove->set_opacity(0.0);
+    drag_handle->set_opacity(0.0);
 
     auto controller = Gtk::EventControllerMotion::create();
 
     controller->signal_enter().connect([=](const double& x, const double& y) {
-      remove->set_opacity(1);
-      drag_handle->set_opacity(1);
+      remove->set_opacity(1.0);
+      drag_handle->set_opacity(1.0);
     });
 
     controller->signal_leave().connect([=]() {
-      remove->set_opacity(0);
-      drag_handle->set_opacity(0);
+      remove->set_opacity(0.0);
+      drag_handle->set_opacity(0.0);
     });
 
     box->add_controller(controller);
@@ -1239,7 +1242,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     drag_source->set_actions(Gdk::DragAction::MOVE);
 
     drag_source->signal_prepare().connect(
-        [=](const double& x, const double& y) {
+        [=, this](const double& x, const double& y) {
           auto* const controller_widget = drag_source->get_widget();
 
           auto* const item = controller_widget->get_ancestor(Gtk::Box::get_type());
@@ -1248,13 +1251,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
-          Glib::Value<Glib::ustring> name_value;
-
-          name_value.init(Glib::Value<Glib::ustring>::value_type());
-
-          name_value.set(label->get_name());
-
-          return Gdk::ContentProvider::create(name_value);
+          return Gdk::ContentProvider::create(util::glib_value(label->get_name()));
         },
         false);
 
@@ -1320,8 +1317,13 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
+    auto translated_name = plugins_names[name];
+
     label->set_name(name);
-    label->set_text(plugins_names[name]);
+    label->set_text(translated_name);
+
+    remove->update_property(Gtk::Accessible::Property::LABEL,
+                            util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");

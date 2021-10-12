@@ -19,6 +19,9 @@
                         <child>
                             <object class="GtkToggleButton" id="toggle_output">
                                 <property name="active">1</property>
+                                <accessibility>
+                                    <property name="label">Output Presets</property>
+                                </accessibility>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -41,6 +44,9 @@
                         <child>
                             <object class="GtkToggleButton" id="toggle_input">
                                 <property name="group">toggle_output</property>
+                                <accessibility>
+                                    <property name="label">Input Presets</property>
+                                </accessibility>
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
@@ -96,6 +102,10 @@
                                                                 <property name="hexpand">1</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
+                                                                <property name="accessible_role">text-box</property>
+                                                                <accessibility>
+                                                                    <property name="label">New Output Preset Name</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                         <child>
@@ -127,6 +137,9 @@
                                                 <property name="valign">start</property>
                                                 <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
+                                                <accessibility>
+                                                    <property name="label">Search Output Preset</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -148,6 +161,9 @@
                                                                 <style>
                                                                     <class name="rich-list" />
                                                                 </style>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Output Presets List</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -196,6 +212,10 @@
                                                                 <property name="hexpand">1</property>
                                                                 <property name="placeholder_text" translatable="yes">Name</property>
                                                                 <property name="input_purpose">name</property>
+                                                                <property name="accessible_role">text-box</property>
+                                                                <accessibility>
+                                                                    <property name="label">New Input Preset Name</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                         <child>
@@ -227,6 +247,9 @@
                                                 <property name="valign">start</property>
                                                 <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
+                                                <accessibility>
+                                                    <property name="label">Search Input Preset</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -248,6 +271,9 @@
                                                                 <style>
                                                                     <class name="rich-list" />
                                                                 </style>
+                                                                <accessibility>
+                                                                    <property name="label" translatable="yes">Input Presets List</property>
+                                                                </accessibility>
                                                             </object>
                                                         </child>
                                                     </object>

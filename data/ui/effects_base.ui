@@ -32,6 +32,9 @@
                                                 <style>
                                                     <class name="rich-list" />
                                                 </style>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Applications List</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -74,6 +77,9 @@
                                                         <style>
                                                             <class name="navigation-sidebar" />
                                                         </style>
+                                                        <accessibility>
+                                                            <property name="label" translatable="yes">Used Plugins List</property>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -295,6 +301,10 @@
                                 <property name="valign">center</property>
                                 <property name="hexpand">1</property>
                                 <property name="placeholder_text" translatable="yes">Player Name</property>
+                                <property name="accessible_role">text-box</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Player Name</property>
+                                </accessibility>
                             </object>
                         </child>
                         <child>
@@ -305,6 +315,9 @@
                                 <style>
                                     <class name="suggested-action" />
                                 </style>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Add to Blocklist</property>
+                                </accessibility>
                             </object>
                         </child>
                         <style>
@@ -327,6 +340,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Blocklisted Applications List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
@@ -338,7 +354,7 @@
                     <object class="GtkBox">
                         <property name="spacing">6</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="show_blocklisted_apps_label">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Show Blocklisted Players</property>
@@ -349,6 +365,9 @@
                             <object class="GtkSwitch" id="show_blocklisted_apps">
                                 <property name="halign">start</property>
                                 <property name="valign">center</property>
+                                <accessibility>
+                                    <relation name="labelled-by">show_blocklisted_apps_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -372,6 +391,9 @@
                         <property name="valign">start</property>
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
+                        <accessibility>
+                            <property name="label">Search Plugin</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -389,6 +411,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Plugins List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

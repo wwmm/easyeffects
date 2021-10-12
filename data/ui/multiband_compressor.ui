@@ -27,12 +27,10 @@
                                 <property name="valign">start</property>
                                 <property name="row-spacing">6</property>
                                 <property name="column-spacing">24</property>
-
                                 <child>
                                     <object class="GtkToggleButton" id="bypass">
                                         <property name="halign">center</property>
                                         <property name="label" translatable="yes">Bypass</property>
-
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">1</property>
@@ -41,18 +39,16 @@
                                 </child>
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="compressor_mode_label">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Operating Mode</property>
-
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkComboBoxText" id="compressor_mode">
                                         <property name="halign">center</property>
@@ -60,27 +56,27 @@
                                             <item translatable="yes">Classic</item>
                                             <item translatable="yes">Modern</item>
                                         </items>
-
                                         <layout>
                                             <property name="column">0</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">compressor_mode_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="envelope_boost_label">
                                         <property name="halign">center</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Sidechain Boost</property>
-
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
                                 </child>
-
                                 <child>
                                     <object class="GtkComboBoxText" id="envelope_boost">
                                         <property name="halign">center</property>
@@ -91,11 +87,13 @@
                                             <item translatable="yes">Brown BT</item>
                                             <item translatable="yes">Brown MT</item>
                                         </items>
-
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">envelope_boost_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>
@@ -119,13 +117,15 @@
                     <object class="GtkFrame">
                         <property name="halign">center</property>
                         <property name="valign">start</property>
-
                         <child>
                             <object class="GtkListBox" id="listbox">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="selection-mode">single</property>
                                 <property name="show-separators">1</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Bands List</property>
+                                </accessibility>
                                 <child>
                                     <object class="GtkListBoxRow">
                                         <child>
@@ -148,7 +148,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band1_label">
                                                         <property name="label" translatable="yes">Band 2</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -160,6 +160,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band1_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -172,7 +175,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band2_label">
                                                         <property name="label" translatable="yes">Band 3</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -184,6 +187,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band2_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -196,7 +202,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band3_label">
                                                         <property name="label" translatable="yes">Band 4</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -208,6 +214,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band3_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -220,7 +229,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band4_label">
                                                         <property name="label" translatable="yes">Band 5</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -232,6 +241,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band4_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -244,7 +256,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band5_label">
                                                         <property name="label" translatable="yes">Band 6</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -256,6 +268,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band5_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -268,7 +283,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band6_label">
                                                         <property name="label" translatable="yes">Band 7</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -280,6 +295,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band6_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -292,7 +310,7 @@
                                         <child>
                                             <object class="GtkBox">
                                                 <child>
-                                                    <object class="GtkLabel">
+                                                    <object class="GtkLabel" id="enable_band7_label">
                                                         <property name="label" translatable="yes">Band 8</property>
                                                         <property name="halign">start</property>
                                                         <property name="valign">center</property>
@@ -304,6 +322,9 @@
                                                         <property name="halign">end</property>
                                                         <property name="valign">center</property>
                                                         <property name="margin-start">4</property>
+                                                        <accessibility>
+                                                            <relation name="labelled-by">enable_band7_label</relation>
+                                                        </accessibility>
                                                     </object>
                                                 </child>
                                             </object>
@@ -354,6 +375,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -435,6 +459,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

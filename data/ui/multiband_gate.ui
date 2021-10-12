@@ -31,13 +31,15 @@
                                 <property name="label" translatable="yes">Mode</property>
                             </object>
                         </child>
-
                         <child>
                             <object class="GtkComboBoxText" id="mode">
                                 <items>
                                     <item>LR4</item>
                                     <item>LR8</item>
                                 </items>
+                                <accessibility>
+                                    <property name="label">Split Mode</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -70,6 +72,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Split Frequency 1</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -102,6 +107,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Split Frequency 2</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -134,6 +142,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Split Frequency 3</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -188,6 +199,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -230,6 +244,9 @@
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Attack 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -264,6 +281,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Release 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -297,6 +317,9 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Threshold 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -331,6 +354,9 @@
                                                     <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Ratio 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -364,6 +390,9 @@
                                                     <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Knee 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -396,6 +425,9 @@
                                                     <property name="column">5</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Makeup 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -429,6 +461,9 @@
                                                     <property name="column">6</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Reduction 1</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -531,6 +566,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -573,6 +611,9 @@
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Attack 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -607,6 +648,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Release 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -640,6 +684,9 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Threshold 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -674,6 +721,9 @@
                                                     <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Ratio 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -707,6 +757,9 @@
                                                     <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Knee 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -739,6 +792,9 @@
                                                     <property name="column">5</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Makeup 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -772,6 +828,9 @@
                                                     <property name="column">6</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Reduction 2</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -874,6 +933,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -916,6 +978,9 @@
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Attack 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -950,6 +1015,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Release 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -983,6 +1051,9 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Threshold 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1017,6 +1088,9 @@
                                                     <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Ratio 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1050,6 +1124,9 @@
                                                     <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Knee 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1082,6 +1159,9 @@
                                                     <property name="column">5</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Makeup 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1115,6 +1195,9 @@
                                                     <property name="column">6</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Reduction 3</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -1217,6 +1300,9 @@
                                                     <item translatable="yes">RMS</item>
                                                     <item translatable="yes">Peak</item>
                                                 </items>
+                                                <accessibility>
+                                                    <property name="label">Detection 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -1259,6 +1345,9 @@
                                                     <property name="column">0</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Attack 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1293,6 +1382,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Release 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1326,6 +1418,9 @@
                                                     <property name="column">2</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Threshold 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1360,6 +1455,9 @@
                                                     <property name="column">3</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Ratio 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1393,6 +1491,9 @@
                                                     <property name="column">4</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Knee 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1425,6 +1526,9 @@
                                                     <property name="column">5</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Makeup 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -1458,6 +1562,9 @@
                                                     <property name="column">6</property>
                                                     <property name="row">1</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Reduction 4</property>
+                                                </accessibility>
                                             </object>
                                         </child>
                                     </object>
@@ -1563,6 +1670,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -1644,6 +1754,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

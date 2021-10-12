@@ -20,6 +20,9 @@
                         <property name="valign">center</property>
                         <property name="hexpand">0</property>
                         <property name="vexpand">0</property>
+                        <accessibility>
+                            <relation name="labelled-by">app_name</relation>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -65,6 +68,9 @@
                         <property name="halign">end</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Add to Blocklist</property>
+                        <accessibility>
+                            <relation name="labelled-by">app_name</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>
@@ -76,6 +82,7 @@
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
+                <property name="accessible-role">presentation</property>
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
@@ -218,6 +225,9 @@
                         <property name="halign">start</property>
                         <property name="valign">center</property>
                         <property name="icon_name">audio-volume-high-symbolic</property>
+                        <accessibility>
+                            <property name="label" translatable="yes">Mute Application</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -242,6 +252,9 @@
                             <mark value="90" position="bottom"></mark>
                             <mark value="100" position="bottom"></mark>
                         </marks>
+                        <accessibility>
+                            <property name="label" translatable="yes">Application Volume</property>
+                        </accessibility>
                     </object>
                 </child>
             </object>

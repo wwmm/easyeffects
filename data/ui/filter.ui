@@ -33,6 +33,9 @@
                     <item translatable="yes">12dB/oct Bandreject</item>
                     <item translatable="yes">18dB/oct Bandreject</item>
                 </items>
+                <accessibility>
+                    <property name="label">Mode</property>
+                </accessibility>
             </object>
         </child>
 
@@ -43,7 +46,7 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="frequency_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Frequency</property>
@@ -73,11 +76,14 @@
                             <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">frequency_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="resonance_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Resonance</property>
@@ -107,11 +113,14 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">resonance_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="inertia_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Inertia</property>
@@ -141,6 +150,9 @@
                             <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">inertia_label</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>
@@ -179,6 +191,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -260,6 +275,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

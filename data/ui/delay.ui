@@ -23,7 +23,7 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="time_l_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Left</property>
@@ -51,11 +51,14 @@
                             <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">time_l_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="time_r_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Right</property>
@@ -83,6 +86,9 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">time_r_label</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>
@@ -121,6 +127,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -202,6 +211,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

@@ -15,7 +15,7 @@
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="label_target">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Target</property>
@@ -42,11 +42,14 @@
                             <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">label_target</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="reference_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Reference</property>
@@ -61,7 +64,7 @@
                         <property name="halign">center</property>
                         <items>
                             <item translatable="yes">Momentary</item>
-                            <item translatable="yes">Shortterm</item>
+                            <item translatable="yes">Short-Term</item>
                             <item translatable="yes">Integrated</item>
                             <item translatable="yes">Geometric Mean</item>
                         </items>
@@ -69,6 +72,9 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">reference_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -349,6 +355,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -430,6 +439,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>

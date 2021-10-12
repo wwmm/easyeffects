@@ -77,6 +77,17 @@ auto timestamp_str(const time_point ts) -> std::string;
 
 void print_thread_id();
 
+template <typename T>
+  auto glib_value(const T& cppvalue) -> Glib::Value<T> {
+    Glib::Value<T> gval;
+
+    gval.init(Glib::Value<T>::value_type());
+
+    gval.set(cppvalue);
+
+    return gval;
+  }
+
 }  // namespace util
 
 #endif

@@ -78,7 +78,7 @@
                         </child>
 
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="ir_width_label">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Stereo Width</property>
@@ -100,6 +100,9 @@
                                         <property name="page-increment">10</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <relation name="labelled-by">ir_width_label</relation>
+                                </accessibility>
                             </object>
                         </child>
 
@@ -234,6 +237,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -315,6 +321,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -430,6 +439,9 @@
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
                     </object>
+                    <accessibility>
+                        <property name="label">Search Impulse File</property>
+                    </accessibility>
                 </child>
 
                 <child>
@@ -446,6 +458,9 @@
                                         <style>
                                             <class name="rich-list" />
                                         </style>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">Impulse Files List</property>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

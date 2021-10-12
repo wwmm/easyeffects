@@ -36,7 +36,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="detection_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Detection</property>
@@ -49,6 +49,9 @@
                                     <item translatable="yes">RMS</item>
                                     <item translatable="yes">Peak</item>
                                 </items>
+                                <accessibility>
+                                    <relation name="labelled-by">detection_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -59,7 +62,7 @@
                         <property name="spacing">6</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkLabel">
+                            <object class="GtkLabel" id="mode_label">
                                 <property name="halign">center</property>
                                 <property name="valign">end</property>
                                 <property name="label" translatable="yes">Mode</property>
@@ -72,6 +75,9 @@
                                     <item translatable="yes">Wide</item>
                                     <item translatable="yes">Split</item>
                                 </items>
+                                <accessibility>
+                                    <relation name="labelled-by">mode_label</relation>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -104,6 +110,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Frequency 1 Split</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -136,6 +145,9 @@
                                         <property name="page-increment">100</property>
                                     </object>
                                 </property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Frequency 2 Peak</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -180,6 +192,9 @@
                             <property name="column">0</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Frequency 1 Gain</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -214,6 +229,9 @@
                             <property name="column">1</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Frequency 2 Level</property>
+                        </accessibility>
                     </object>
                 </child>
 
@@ -248,11 +266,14 @@
                             <property name="column">2</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Frequency 2 Peak Q</property>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="laxity_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Laxity</property>
@@ -282,11 +303,14 @@
                             <property name="column">3</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">laxity_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="threshold_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Threshold</property>
@@ -315,11 +339,14 @@
                             <property name="column">4</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">threshold_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="ratio_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Ratio</property>
@@ -349,12 +376,15 @@
                             <property name="column">5</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">ratio_label</relation>
+                        </accessibility>
                     </object>
                 </child>
 
 
                 <child>
-                    <object class="GtkLabel">
+                    <object class="GtkLabel" id="makeup_label">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Makeup</property>
@@ -382,6 +412,9 @@
                             <property name="column">6</property>
                             <property name="row">1</property>
                         </layout>
+                        <accessibility>
+                            <relation name="labelled-by">makeup_label</relation>
+                        </accessibility>
                     </object>
                 </child>
             </object>
@@ -420,6 +453,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Input Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -501,6 +537,9 @@
                                 <property name="draw-value">1</property>
                                 <property name="digits">1</property>
                                 <property name="value-pos">right</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Plugin Output Gain</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
