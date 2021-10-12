@@ -680,6 +680,10 @@ void PipeInfoUi::setup_listview_autoloading(PresetType preset_type,
     device_profile->set_text(holder->device_profile);
     preset_name->set_text(holder->preset_name);
 
+    remove->update_property(
+        Gtk::Accessible::Property::LABEL,
+        util::glib_value(Glib::ustring(_("Remove Autoloading Preset")) + " " + holder->preset_name));
+
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       presets_manager->remove_autoload(preset_type, holder->preset_name, holder->device, holder->device_profile);
     });

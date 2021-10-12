@@ -98,17 +98,6 @@ class EffectsBaseUi {
 
   std::vector<sigc::connection> connections;
 
-  template <typename T>
-  auto glib_value(const T& cppvalue) -> Glib::Value<T> {
-    Glib::Value<T> gval;
-
-    gval.init(Glib::Value<T>::value_type());
-
-    gval.set(cppvalue);
-
-    return gval;
-  }
-
   void on_app_added(NodeInfo);
   void on_app_changed(util::time_point ts);
   void on_app_removed(util::time_point ts);

@@ -1072,7 +1072,8 @@ void EffectsBaseUi::setup_listview_plugins() {
 
     label->set_text(translated_name);
 
-    add->update_property(Gtk::Accessible::Property::LABEL, glib_value(Glib::ustring(_("Add")) + " " + translated_name));
+    add->update_property(Gtk::Accessible::Property::LABEL,
+                         util::glib_value(Glib::ustring(_("Add")) + " " + translated_name));
 
     auto connection_add = add->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");
@@ -1250,7 +1251,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
           // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
-          return Gdk::ContentProvider::create(glib_value(label->get_name()));
+          return Gdk::ContentProvider::create(util::glib_value(label->get_name()));
         },
         false);
 
@@ -1322,7 +1323,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     label->set_text(translated_name);
 
     remove->update_property(Gtk::Accessible::Property::LABEL,
-                            glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
+                            util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
 
     auto connection_remove = remove->signal_clicked().connect([=, this]() {
       auto list = settings->get_string_array("plugins");

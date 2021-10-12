@@ -20,6 +20,7 @@
 #ifndef PIPE_INFO_UI_HPP
 #define PIPE_INFO_UI_HPP
 
+#include <glibmm/i18n.h>
 #include "info_holders.hpp"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"

@@ -79,7 +79,7 @@
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="dropdown_input_devices_label">
                                                 <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Input Device</property>
                                                 <layout>
@@ -94,11 +94,14 @@
                                                     <property name="column">1</property>
                                                     <property name="row">2</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">dropdown_input_devices_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
                                         <child>
-                                            <object class="GtkLabel">
+                                            <object class="GtkLabel" id="dropdown_output_devices_label">
                                                 <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Output Device</property>
                                                 <layout>
@@ -113,6 +116,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">3</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <relation name="labelled-by">dropdown_output_devices_label</relation>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -298,6 +304,9 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">0</property>
                                                                         </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Output Devices</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
 
@@ -307,6 +316,9 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Output Presets</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
 
@@ -378,6 +390,9 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">0</property>
                                                                         </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Input Devices</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
 
@@ -387,6 +402,9 @@
                                                                             <property name="column">0</property>
                                                                             <property name="row">1</property>
                                                                         </layout>
+                                                                        <accessibility>
+                                                                            <property name="label" translatable="yes">Input Presets</property>
+                                                                        </accessibility>
                                                                     </object>
                                                                 </child>
 
@@ -558,6 +576,9 @@
                                                 <property name="valign">end</property>
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Left</property>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Left Channel</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -567,6 +588,9 @@
                                                 <property name="halign">center</property>
                                                 <property name="group">checkbutton_channel_left</property>
                                                 <property name="label" translatable="yes">Right</property>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Right Channel</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -577,6 +601,9 @@
                                                 <property name="group">checkbutton_channel_left</property>
                                                 <property name="label" translatable="yes">Both</property>
                                                 <property name="active">1</property>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Both Channels</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
@@ -638,7 +665,7 @@
 
 
                                 <child>
-                                    <object class="GtkLabel">
+                                    <object class="GtkLabel" id="frequency_label">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Frequency</property>
@@ -667,6 +694,9 @@
                                             <property name="column">1</property>
                                             <property name="row">3</property>
                                         </layout>
+                                        <accessibility>
+                                            <relation name="labelled-by">frequency_label</relation>
+                                        </accessibility>
                                     </object>
                                 </child>
                             </object>

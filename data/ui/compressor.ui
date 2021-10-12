@@ -582,6 +582,9 @@
                                                     <property name="column">1</property>
                                                     <property name="row">2</property>
                                                 </layout>
+                                                <accessibility>
+                                                    <property name="label" translatable="yes">Input Device</property>
+                                                </accessibility>
                                             </object>
                                         </child>
 
