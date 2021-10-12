@@ -32,6 +32,12 @@ Spectrum::Spectrum(const std::string& tag,
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
   fftw_ready = true;
+
+  settings->signal_changed("show").connect([=, this](const auto& key) {
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    post_messages = settings->get_boolean(key);
+  });
 }
 
 Spectrum::~Spectrum() {

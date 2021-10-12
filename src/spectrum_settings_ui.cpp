@@ -78,13 +78,15 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
   Gdk::RGBA rgba;
 
-  rgba.set_rgba(v.get()[0], v.get()[1], v.get()[2], v.get()[3]);
+  rgba.set_rgba(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]), static_cast<float>(v.get()[2]),
+                static_cast<float>(v.get()[3]));
 
   spectrum_color_button->set_rgba(rgba);
 
   settings->get_value("color-axis-labels", v);
 
-  rgba.set_rgba(v.get()[0], v.get()[1], v.get()[2], v.get()[3]);
+  rgba.set_rgba(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]), static_cast<float>(v.get()[2]),
+                static_cast<float>(v.get()[3]));
 
   axis_color_button->set_rgba(rgba);
 
@@ -95,11 +97,10 @@ SpectrumSettingsUi::SpectrumSettingsUi(BaseObjectType* cobject,
 
     settings->get_value("color", v);
 
-    const auto rgba = v.get();
-
     Gdk::RGBA color;
 
-    color.set_rgba(rgba[0], rgba[1], rgba[2], rgba[3]);
+    color.set_rgba(static_cast<float>(v.get()[0]), static_cast<float>(v.get()[1]), static_cast<float>(v.get()[2]),
+                   static_cast<float>(v.get()[3]));
 
     spectrum_color_button->set_rgba(color);
   }));

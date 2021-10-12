@@ -179,7 +179,7 @@ EffectsBaseUi::EffectsBaseUi(const Glib::RefPtr<Gtk::Builder>& builder,
   effects_base->pitch->post_messages = true;
   effects_base->reverb->post_messages = true;
   effects_base->rnnoise->post_messages = true;
-  effects_base->spectrum->post_messages = true;
+  effects_base->spectrum->post_messages = spectrum_ui->get_visible();
   effects_base->stereo_tools->post_messages = true;
 
   auto set_latency = [=, this](const auto& v) {
