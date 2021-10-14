@@ -122,6 +122,8 @@ auto ApplicationUi::setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme> {
       util::debug("application_ui: Icon Theme " + icon_theme_name.raw() + " detected");
     }
 
+    ic_theme->add_resource_path("/com/github/wwmm/easyeffects/icons");
+
     return ic_theme;
   } catch (...) {
     util::warning("application_ui: Can't retrieve the icon theme in use on the system. App icons won't be shown.");

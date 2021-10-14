@@ -1207,6 +1207,9 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     drag_handle->set_from_icon_name("view-app-grid-symbolic");
 
+    // it is Adwaita folder-download-symbolic icon renamed
+    // plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
+
     plugin_icon->set_from_icon_name("emblem-system-symbolic");
     plugin_icon->set_margin_start(6);
     plugin_icon->set_margin_end(6);
@@ -1242,14 +1245,12 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     drag_source->set_actions(Gdk::DragAction::MOVE);
 
     drag_source->signal_prepare().connect(
-        [=, this](const double& x, const double& y) {
+        [=](const double& x, const double& y) {
           auto* const controller_widget = drag_source->get_widget();
 
           auto* const item = controller_widget->get_ancestor(Gtk::Box::get_type());
 
           controller_widget->set_data("dragged-item", item);
-
-          // Glib::Value<Glib::RefPtr<const Gtk::Label>> texture_value;
 
           return Gdk::ContentProvider::create(util::glib_value(label->get_name()));
         },
