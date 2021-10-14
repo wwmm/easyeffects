@@ -13,7 +13,7 @@ if 'DESTDIR' not in os.environ:
         ['glib-compile-schemas', os.path.join(datadir, 'glib-2.0', 'schemas')])
 
     print('Updating icon cache...')
-    subprocess.call(['gtk-update-icon-cache', '-qtf',
+    subprocess.call(['gtk4-update-icon-cache', '-qtf',
                      os.path.join(datadir, 'icons', 'hicolor')])
 
     print('Updating desktop database...')
