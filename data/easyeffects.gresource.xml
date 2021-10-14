@@ -41,5 +41,6 @@
         <file>ui/spectrum_settings.ui</file>
         <file>ui/stereo_tools.ui</file>
         <file>icons/scalable/status/ee-arrow-down-symbolic.svg</file>
+        <file>icons/scalable/status/ee-square-symbolic.svg</file>
     </gresource>
 </gresources>

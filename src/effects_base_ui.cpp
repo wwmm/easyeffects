@@ -1208,9 +1208,8 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     drag_handle->set_from_icon_name("view-app-grid-symbolic");
 
     // it is Adwaita folder-download-symbolic icon renamed
-    // plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
+    plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
 
-    plugin_icon->set_from_icon_name("emblem-system-symbolic");
     plugin_icon->set_margin_start(6);
     plugin_icon->set_margin_end(6);
 
@@ -1308,6 +1307,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     list_item->set_data("name", label);
     list_item->set_data("remove", remove);
+    list_item->set_data("plugin_icon", plugin_icon);
 
     list_item->set_child(*box);
   });
@@ -1315,6 +1315,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
     auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
     auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
+    auto* const plugin_icon = static_cast<Gtk::Image*>(list_item->get_data("plugin_icon"));
 
     const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
 
@@ -1322,6 +1323,16 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     label->set_name(name);
     label->set_text(translated_name);
+
+    auto selected_plugins_list = settings->get_string_array("plugins");
+
+    const auto iter_name = std::ranges::find(selected_plugins_list, name);
+
+    if (iter_name == selected_plugins_list.begin() || iter_name == selected_plugins_list.end() - 1) {
+      plugin_icon->set_from_icon_name("ee-square-symbolic");
+    } else {
+      plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
+    }
 
     remove->update_property(Gtk::Accessible::Property::LABEL,
                             util::glib_value(Glib::ustring(_("Remove")) + " " + translated_name));
