@@ -1329,6 +1329,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
     const auto iter_name = std::ranges::find(selected_plugins_list, name);
 
     if (iter_name == selected_plugins_list.begin() || iter_name == selected_plugins_list.end() - 1) {
+      // it is Adwaita media-playback-stop-symbolic icon renamed
       plugin_icon->set_from_icon_name("ee-square-symbolic");
     } else {
       plugin_icon->set_from_icon_name("ee-arrow-down-symbolic");
