@@ -29,8 +29,8 @@ Compressor::Compressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
   }
 
-  settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
-    if (settings->get_string(key) == "External") {
+  auto update_sidechain_links = [=, this](const auto& key) {
+    if (settings->get_string("sidechain-type") == "External") {
       const auto* device_name = settings->get_string("sidechain-input-device").c_str();
 
       NodeInfo input_device = pm->ee_source_node;
@@ -43,6 +43,10 @@ Compressor::Compressor(const std::string& tag,
         }
       }
 
+      pm->destroy_links(list_proxies);
+
+      list_proxies.clear();
+
       for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
         list_proxies.push_back(link);
       }
@@ -51,31 +55,10 @@ Compressor::Compressor(const std::string& tag,
 
       list_proxies.clear();
     }
-  });
+  };
 
-  settings->signal_changed("sidechain-input-device").connect([=, this](const auto& key) {
-    if (settings->get_string("sidechain-type") == "External") {
-      const auto* device_name = settings->get_string(key).c_str();
-
-      NodeInfo input_device = pm->ee_source_node;
-
-      for (const auto& [ts, node] : pm->node_map) {
-        if (node.name == device_name) {
-          input_device = node;
-
-          break;
-        }
-      }
-
-      pm->destroy_links(list_proxies);
-
-      list_proxies.clear();
-
-      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-        list_proxies.push_back(link);
-      }
-    }
-  });
+  settings->signal_changed("sidechain-type").connect(update_sidechain_links);
+  settings->signal_changed("sidechain-input-device").connect(update_sidechain_links);
 
   lv2_wrapper->bind_key_enum(settings, "mode", "cm");
 

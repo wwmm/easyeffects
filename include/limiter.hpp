@@ -37,7 +37,9 @@ class Limiter : public PluginBase {
   void process(std::span<float>& left_in,
                std::span<float>& right_in,
                std::span<float>& left_out,
-               std::span<float>& right_out) override;
+               std::span<float>& right_out,
+               std::span<float>& probe_left,
+               std::span<float>& probe_right) override;
 
   sigc::signal<void(const float&)> gain_left, gain_right, sidechain_left, sidechain_right, latency;
 
@@ -51,6 +53,8 @@ class Limiter : public PluginBase {
   uint latency_n_frames = 0U;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
+
+  std::vector<pw_proxy*> list_proxies;
 };
 
 #endif

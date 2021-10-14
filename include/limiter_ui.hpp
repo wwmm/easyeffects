@@ -20,6 +20,7 @@
 #ifndef LIMITER_UI_HPP
 #define LIMITER_UI_HPP
 
+#include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
 
 class LimiterUi : public Gtk::Box, public PluginUiBase {
@@ -41,20 +42,30 @@ class LimiterUi : public Gtk::Box, public PluginUiBase {
   void on_new_left_sidechain(const float& value);
   void on_new_right_sidechain(const float& value);
 
+  void set_pipe_manager_ptr(PipeManager* pipe_manager);
+
   void reset() override;
 
  private:
   Gtk::ComboBoxText *mode = nullptr, *oversampling = nullptr, *dither = nullptr;
 
   Gtk::SpinButton *sc_preamp = nullptr, *lookahead = nullptr, *attack = nullptr, *release = nullptr,
-      *threshold = nullptr, *stereo_link = nullptr, *alr_attack = nullptr, *alr_release = nullptr,
-      *alr_knee = nullptr;
+                  *threshold = nullptr, *stereo_link = nullptr, *alr_attack = nullptr, *alr_release = nullptr,
+                  *alr_knee = nullptr;
 
   Gtk::CheckButton* boost = nullptr;
 
-  Gtk::ToggleButton* alr = nullptr;
+  Gtk::ToggleButton *alr = nullptr, *external_sidechain = nullptr;
 
   Gtk::Label *gain_left = nullptr, *gain_right = nullptr, *sidechain_left = nullptr, *sidechain_right = nullptr;
+
+  Gtk::DropDown* dropdown_input_devices = nullptr;
+
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model;
+
+  PipeManager* pm = nullptr;
+
+  void setup_dropdown_input_devices();
 };
 
 #endif

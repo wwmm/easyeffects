@@ -471,6 +471,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       limiter_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->limiter->bypass = limiter_ui->bypass->get_active(); });
 
+      limiter_ui->set_pipe_manager_ptr(pm);
+
       effects_base->limiter->input_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_input_level));
       effects_base->limiter->output_level.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_output_level));
       effects_base->limiter->gain_left.connect(sigc::mem_fun(*limiter_ui, &LimiterUi::on_new_left_gain));

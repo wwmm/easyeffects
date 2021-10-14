@@ -234,13 +234,11 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
   dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
 
   dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
-    if (dropdown_input_devices->get_selected_item() == nullptr) {
-      return;
+    if (auto item = dropdown_input_devices->get_selected_item(); item != nullptr) {
+      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(item);
+
+      settings->set_string("sidechain-input-device", holder->name);
     }
-
-    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
-
-    settings->set_string("sidechain-input-device", holder->name);
   });
 
   setup_dropdown_input_devices();
@@ -285,12 +283,10 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
                                filter_mode_enum_to_int, int_to_filter_mode_enum, nullptr, nullptr);
 
   connections.push_back(settings->signal_changed("sidechain-type").connect([=, this](const auto& key) {
-    if (settings->get_string(key) != "External") {
-      dropdown_input_devices->set_sensitive(false);
-    } else {
-      dropdown_input_devices->set_sensitive(true);
-    }
+    dropdown_input_devices->set_sensitive(settings->get_string(key) == "External");
   }));
+
+  // prepare widgets
 
   prepare_spinbutton(threshold, "dB");
   prepare_spinbutton(attack, "ms");
@@ -312,11 +308,7 @@ CompressorUi::CompressorUi(BaseObjectType* cobject,
 
   prepare_spinbutton(ratio);
 
-  if (settings->get_string("sidechain-type") != "External") {
-    dropdown_input_devices->set_sensitive(false);
-  } else {
-    dropdown_input_devices->set_sensitive(true);
-  }
+  dropdown_input_devices->set_sensitive(settings->get_string("sidechain-type") == "External");
 
   // set boost spinbuttons sensitivity on compression mode
 
@@ -398,6 +390,8 @@ void CompressorUi::reset() {
   settings->reset("sidechain-reactivity");
 
   settings->reset("sidechain-lookahead");
+
+  settings->reset("sidechain-input-device");
 
   settings->reset("hpf-mode");
 

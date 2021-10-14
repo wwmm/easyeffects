@@ -282,7 +282,9 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
                      const Glib::RefPtr<Gtk::Builder>& builder,
                      const std::string& schema,
                      const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
+    : Gtk::Box(cobject),
+      PluginUiBase(builder, schema, schema_path),
+      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()) {
   name = plugin_name::limiter;
 
   // loading builder widgets
@@ -301,13 +303,26 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   alr_release = builder->get_widget<Gtk::SpinButton>("alr_release");
   alr_knee = builder->get_widget<Gtk::SpinButton>("alr_knee");
 
-  boost = builder->get_widget<Gtk::CheckButton>("gain_boost");
   alr = builder->get_widget<Gtk::ToggleButton>("alr");
+  external_sidechain = builder->get_widget<Gtk::ToggleButton>("external_sidechain");
+  boost = builder->get_widget<Gtk::CheckButton>("gain_boost");
 
   gain_left = builder->get_widget<Gtk::Label>("gain_left_label");
   gain_right = builder->get_widget<Gtk::Label>("gain_right_label");
   sidechain_left = builder->get_widget<Gtk::Label>("sidechain_left_label");
   sidechain_right = builder->get_widget<Gtk::Label>("sidechain_right_label");
+
+  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
+
+  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
+    if (auto item = dropdown_input_devices->get_selected_item(); item != nullptr) {
+      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(item);
+
+      settings->set_string("sidechain-input-device", holder->name);
+    }
+  });
+
+  setup_dropdown_input_devices();
 
   // gsettings bindings
 
@@ -318,6 +333,7 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   settings->bind("threshold", threshold->get_adjustment().get(), "value");
   settings->bind("stereo-link", stereo_link->get_adjustment().get(), "value");
   settings->bind("gain-boost", boost, "active");
+  settings->bind("external-sidechain", external_sidechain, "active");
   settings->bind("alr", alr, "active");
   settings->bind("alr-attack", alr_attack->get_adjustment().get(), "value");
   settings->bind("alr-release", alr_release->get_adjustment().get(), "value");
@@ -332,6 +348,10 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   g_settings_bind_with_mapping(settings->gobj(), "dithering", dither->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                dither_enum_to_int, int_to_dither_enum, nullptr, nullptr);
 
+  connections.push_back(settings->signal_changed("external-sidechain").connect([=, this](const auto& key) {
+    dropdown_input_devices->set_sensitive(settings->get_boolean(key));
+  }));
+
   // prepare widgets
 
   prepare_spinbutton(sc_preamp, "db");
@@ -343,6 +363,8 @@ LimiterUi::LimiterUi(BaseObjectType* cobject,
   prepare_spinbutton(alr_attack, "ms");
   prepare_spinbutton(alr_release, "ms");
   prepare_spinbutton(alr_knee, "db");
+
+  dropdown_input_devices->set_sensitive(settings->get_boolean("external-sidechain"));
 
   // set alr spinbuttons sensitivity on alr button
 
@@ -410,6 +432,10 @@ void LimiterUi::reset() {
   settings->reset("alr-release");
 
   settings->reset("alr-knee");
+
+  settings->reset("external-sidechain");
+
+  settings->reset("sidechain-input-device");
 }
 
 void LimiterUi::on_new_left_gain(const float& value) {
@@ -426,4 +452,81 @@ void LimiterUi::on_new_left_sidechain(const float& value) {
 
 void LimiterUi::on_new_right_sidechain(const float& value) {
   sidechain_right->set_text(level_to_localized_string(util::linear_to_db(value), 0));
+}
+
+void LimiterUi::setup_dropdown_input_devices() {
+  // setting the dropdown model and factory
+
+  auto selection_model = Gtk::SingleSelection::create(input_devices_model);
+
+  dropdown_input_devices->set_model(selection_model);
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown_input_devices->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const icon = Gtk::make_managed<Gtk::Image>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    icon->set_from_icon_name("audio-input-microphone-symbolic");
+
+    box->set_spacing(6);
+    box->append(*icon);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+    list_item->set_data("icon", icon);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
+
+    label->set_name(holder->name);
+    label->set_text(holder->name);
+  });
+}
+
+void LimiterUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
+  pm = pipe_manager;
+
+  input_devices_model->append(NodeInfoHolder::create(pm->ee_source_node));
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.media_class == pm->media_class_source) {
+      input_devices_model->append(NodeInfoHolder::create(node));
+    }
+  }
+
+  connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+      if (input_devices_model->get_item(n)->id == info.id) {
+        return;
+      }
+    }
+
+    input_devices_model->append(NodeInfoHolder::create(info));
+  }));
+
+  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+      if (input_devices_model->get_item(n)->id == info.id) {
+        input_devices_model->remove(n);
+
+        return;
+      }
+    }
+  }));
 }
