@@ -162,8 +162,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
         const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-        for (size_t n = 0U; n < links.size(); n++) {
-          list_proxies.push_back(links[n]);
+        for (auto* link : links) {
+          list_proxies.push_back(link);
         }
 
         if (links.size() == 2U) {
@@ -184,9 +184,9 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
             list_proxies.push_back(link);
           }
         }
-
-        break;
       }
+
+      plugins[name]->update_probe_links();
     }
   }
 
@@ -197,8 +197,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
     const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-    for (size_t n = 0U; n < links.size(); n++) {
-      list_proxies.push_back(links[n]);
+    for (auto* link : links) {
+      list_proxies.push_back(link);
     }
 
     if (links.size() == 2U) {
@@ -215,8 +215,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-  for (size_t n = 0U; n < links.size(); n++) {
-    list_proxies.push_back(links[n]);
+  for (auto* link : links) {
+    list_proxies.push_back(link);
   }
 
   if (links.size() < 2U) {

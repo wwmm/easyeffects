@@ -14,6 +14,8 @@
 - The Spectrum plugin was supposed to enter passthrough whenever it was not visible, but this was happening only when
   our window was closed.
 - Improved support for Assistive Technology.
+- The probes used in some filters like the compressor and the limiter was not being relinked after changing the
+  order of the filters in the pipeline. It should be working now.
 
 ## [6.1.3]
 

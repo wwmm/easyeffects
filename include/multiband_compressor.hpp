@@ -46,6 +46,8 @@ class MultibandCompressor : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
+  void update_probe_links() override;
+
   sigc::signal<void(const float&)> latency;
 
   sigc::signal<void(const std::array<float, n_bands>&)> reduction, envelope, curve, frequency_range;
@@ -63,6 +65,8 @@ class MultibandCompressor : public PluginBase {
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
   std::vector<pw_proxy*> list_proxies;
+
+  void update_sidechain_links(const Glib::ustring& key);
 };
 
 #endif

@@ -155,4 +155,6 @@ void AutoGainUi::reset() {
   settings->reset("output-gain");
 
   settings->reset("target");
+
+  settings->reset("reference");
 }

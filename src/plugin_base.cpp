@@ -302,3 +302,5 @@ void PluginBase::notify() {
   output_peak_left = util::minimum_linear_level;
   output_peak_right = util::minimum_linear_level;
 }
+
+void PluginBase::update_probe_links() {}

@@ -174,13 +174,13 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
         const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-        for (size_t n = 0U; n < links.size(); n++) {
-          list_proxies.push_back(links[n]);
+        for (auto* link : links) {
+          list_proxies.push_back(link);
         }
 
         if (mic_linked && (links.size() == 2U)) {
           prev_node_id = next_node_id;
-        } else if (!mic_linked && (links.size() > 0U)) {
+        } else if (!mic_linked && (!links.empty())) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
@@ -199,9 +199,9 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
             list_proxies.push_back(link);
           }
         }
-
-        break;
       }
+
+      plugins[name]->update_probe_links();
     }
   }
 
@@ -212,13 +212,13 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
     const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-    for (size_t n = 0U; n < links.size(); n++) {
-      list_proxies.push_back(links[n]);
+    for (auto* link : links) {
+      list_proxies.push_back(link);
     }
 
     if (mic_linked && (links.size() == 2U)) {
       prev_node_id = next_node_id;
-    } else if (!mic_linked && (links.size() > 0U)) {
+    } else if (!mic_linked && (!links.empty())) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {

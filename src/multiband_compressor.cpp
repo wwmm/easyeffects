@@ -29,43 +29,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_mb_compressor_stereo is not installed");
   }
 
-  auto update_sidechain_links = [=, this](const auto& key) {
-    auto external_sidechain_enabled = false;
-
-    for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
-      const auto nstr = std::to_string(n);
-
-      external_sidechain_enabled = settings->get_boolean("external-sidechain" + nstr);
-    }
-
-    if (external_sidechain_enabled) {
-      const auto device_name = settings->get_string("sidechain-input-device").raw();
-
-      NodeInfo input_device = pm->ee_source_node;
-
-      for (const auto& [ts, node] : pm->node_map) {
-        if (node.name == device_name) {
-          input_device = node;
-
-          break;
-        }
-      }
-
-      pm->destroy_links(list_proxies);
-
-      list_proxies.clear();
-
-      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-        list_proxies.push_back(link);
-      }
-    } else {
-      pm->destroy_links(list_proxies);
-
-      list_proxies.clear();
-    }
-  };
-
-  settings->signal_changed("sidechain-input-device").connect(update_sidechain_links);
+  settings->signal_changed("sidechain-input-device")
+      .connect(sigc::mem_fun(*this, &MultibandCompressor::update_sidechain_links));
 
   lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
 
@@ -74,7 +39,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
-    settings->signal_changed("external-sidechain" + nstr).connect(update_sidechain_links);
+    settings->signal_changed("external-sidechain" + nstr)
+        .connect(sigc::mem_fun(*this, &MultibandCompressor::update_sidechain_links));
 
     lv2_wrapper->bind_key_bool(settings, "external-sidechain" + nstr, "sce_" + nstr);
 
@@ -230,4 +196,44 @@ void MultibandCompressor::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
   }
+}
+
+void MultibandCompressor::update_sidechain_links(const Glib::ustring& key) {
+  auto external_sidechain_enabled = false;
+
+  for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
+    const auto nstr = std::to_string(n);
+
+    external_sidechain_enabled = settings->get_boolean("external-sidechain" + nstr);
+  }
+
+  if (external_sidechain_enabled) {
+    const auto device_name = settings->get_string("sidechain-input-device").raw();
+
+    NodeInfo input_device = pm->ee_source_node;
+
+    for (const auto& [ts, node] : pm->node_map) {
+      if (node.name == device_name) {
+        input_device = node;
+
+        break;
+      }
+    }
+
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+
+    for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+      list_proxies.push_back(link);
+    }
+  } else {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+  }
+}
+
+void MultibandCompressor::update_probe_links() {
+  update_sidechain_links("");
 }

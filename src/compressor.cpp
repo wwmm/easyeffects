@@ -29,36 +29,8 @@ Compressor::Compressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
   }
 
-  auto update_sidechain_links = [=, this](const auto& key) {
-    if (settings->get_string("sidechain-type") == "External") {
-      const auto device_name = settings->get_string("sidechain-input-device").raw();
-
-      NodeInfo input_device = pm->ee_source_node;
-
-      for (const auto& [ts, node] : pm->node_map) {
-        if (node.name == device_name) {
-          input_device = node;
-
-          break;
-        }
-      }
-
-      pm->destroy_links(list_proxies);
-
-      list_proxies.clear();
-
-      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
-        list_proxies.push_back(link);
-      }
-    } else {
-      pm->destroy_links(list_proxies);
-
-      list_proxies.clear();
-    }
-  };
-
-  settings->signal_changed("sidechain-type").connect(update_sidechain_links);
-  settings->signal_changed("sidechain-input-device").connect(update_sidechain_links);
+  settings->signal_changed("sidechain-type").connect(sigc::mem_fun(*this, &Compressor::update_sidechain_links));
+  settings->signal_changed("sidechain-input-device").connect(sigc::mem_fun(*this, &Compressor::update_sidechain_links));
 
   lv2_wrapper->bind_key_enum(settings, "mode", "cm");
 
@@ -199,4 +171,36 @@ void Compressor::process(std::span<float>& left_in,
       notification_dt = 0.0F;
     }
   }
+}
+
+void Compressor::update_sidechain_links(const Glib::ustring& key) {
+  if (settings->get_string("sidechain-type") == "External") {
+    const auto device_name = settings->get_string("sidechain-input-device").raw();
+
+    NodeInfo input_device = pm->ee_source_node;
+
+    for (const auto& [ts, node] : pm->node_map) {
+      if (node.name == device_name) {
+        input_device = node;
+
+        break;
+      }
+    }
+
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+
+    for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+      list_proxies.push_back(link);
+    }
+  } else {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+  }
+}
+
+void Compressor::update_probe_links() {
+  update_sidechain_links("");
 }

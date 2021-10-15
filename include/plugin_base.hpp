@@ -103,6 +103,8 @@ class PluginBase {
                        std::span<float>& probe_left,
                        std::span<float>& probe_right);
 
+  virtual void update_probe_links();
+
   sigc::signal<void(const float&, const float&)> input_level;
   sigc::signal<void(const float&, const float&)> output_level;
 

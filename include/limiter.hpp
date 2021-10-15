@@ -41,6 +41,8 @@ class Limiter : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
+  void update_probe_links() override;
+
   sigc::signal<void(const float&)> gain_left, gain_right, sidechain_left, sidechain_right, latency;
 
   float gain_l_port_value = 0.0F;
@@ -55,6 +57,8 @@ class Limiter : public PluginBase {
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
   std::vector<pw_proxy*> list_proxies;
+
+  void update_sidechain_links(const Glib::ustring& key);
 };
 
 #endif
