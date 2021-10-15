@@ -139,7 +139,7 @@ void Limiter::process(std::span<float>& left_in,
   if (post_messages) {
     get_peaks(left_in, right_in, left_out, right_out);
 
-    notification_dt += sample_duration;
+    notification_dt += buffer_duration;
 
     if (notification_dt >= notification_time_window) {
       gain_l_port_value = lv2_wrapper->get_control_port_value("grlm_l");

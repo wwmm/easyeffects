@@ -73,7 +73,7 @@ class PluginBase {
 
   uint rate = 0U;
 
-  float sample_duration = 0.0F;
+  float buffer_duration = 0.0F;
 
   bool bypass = false;
 

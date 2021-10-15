@@ -58,7 +58,11 @@ Spectrum::~Spectrum() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void Spectrum::setup() {}
+void Spectrum::setup() {
+  notification_dt = 0.0F;
+
+  fft_buffer_duration = static_cast<float>(n_bands) / static_cast<float>(rate);
+}
 
 void Spectrum::process(std::span<float>& left_in,
                        std::span<float>& right_in,
@@ -102,8 +106,14 @@ void Spectrum::process(std::span<float>& left_in,
 
       output[i] = sqr;
     }
+  }
 
+  notification_dt += fft_buffer_duration;
+
+  if (notification_dt >= notification_time_window) {
     auto output_copy = output;
+
+    notification_dt = 0.0F;
 
     Glib::signal_idle().connect_once([=, this] { power.emit(rate, output_copy.size(), output_copy); });
   }

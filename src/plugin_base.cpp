@@ -34,7 +34,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
-    d->pb->sample_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
+    d->pb->buffer_duration = static_cast<float>(n_samples) / static_cast<float>(rate);
 
     d->pb->setup();
   }
