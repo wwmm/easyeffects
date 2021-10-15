@@ -23,11 +23,42 @@ Limiter::Limiter(const std::string& tag,
                  const std::string& schema,
                  const std::string& schema_path,
                  PipeManager* pipe_manager)
-    : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager),
-      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/limiter_stereo")) {
+    : PluginBase(tag, plugin_name::limiter, schema, schema_path, pipe_manager, true),
+      lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_limiter_stereo")) {
   if (!lv2_wrapper->found_plugin) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/limiter_stereo is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_limiter_stereo is not installed");
   }
+
+  auto update_sidechain_links = [=, this](const auto& key) {
+    if (settings->get_boolean("external-sidechain")) {
+      const auto device_name = settings->get_string("sidechain-input-device").raw();
+
+      NodeInfo input_device = pm->ee_source_node;
+
+      for (const auto& [ts, node] : pm->node_map) {
+        if (node.name == device_name) {
+          input_device = node;
+
+          break;
+        }
+      }
+
+      pm->destroy_links(list_proxies);
+
+      list_proxies.clear();
+
+      for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+        list_proxies.push_back(link);
+      }
+    } else {
+      pm->destroy_links(list_proxies);
+
+      list_proxies.clear();
+    }
+  };
+
+  settings->signal_changed("external-sidechain").connect(update_sidechain_links);
+  settings->signal_changed("sidechain-input-device").connect(update_sidechain_links);
 
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
@@ -57,6 +88,8 @@ Limiter::Limiter(const std::string& tag,
 
   lv2_wrapper->bind_key_double_db(settings, "alr-knee", "knee");
 
+  lv2_wrapper->bind_key_bool(settings, "external-sidechain", "extsc");
+
   setup_input_output_gain();
 }
 
@@ -80,7 +113,9 @@ void Limiter::setup() {
 void Limiter::process(std::span<float>& left_in,
                       std::span<float>& right_in,
                       std::span<float>& left_out,
-                      std::span<float>& right_out) {
+                      std::span<float>& right_out,
+                      std::span<float>& probe_left,
+                      std::span<float>& probe_right) {
   if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
@@ -92,7 +127,7 @@ void Limiter::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out);
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
   lv2_wrapper->run();
 
   if (output_gain != 1.0F) {

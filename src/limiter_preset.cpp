@@ -61,6 +61,8 @@ void LimiterPreset::save(nlohmann::json& json,
   json[section]["limiter"]["alr"] = settings->get_boolean("alr");
 
   json[section]["limiter"]["gain-boost"] = settings->get_boolean("gain-boost");
+
+  json[section]["limiter"]["external-sidechain"] = settings->get_boolean("external-sidechain");
 }
 
 void LimiterPreset::load(const nlohmann::json& json,
@@ -97,4 +99,6 @@ void LimiterPreset::load(const nlohmann::json& json,
   update_key<bool>(json.at(section).at("limiter"), settings, "alr", "alr");
 
   update_key<bool>(json.at(section).at("limiter"), settings, "gain-boost", "gain-boost");
+
+  update_key<bool>(json.at(section).at("limiter"), settings, "external-sidechain", "external-sidechain");
 }

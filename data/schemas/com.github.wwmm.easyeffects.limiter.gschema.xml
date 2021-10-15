@@ -108,5 +108,11 @@
             <range min="-12" max="12" />
             <default>0</default>
         </key>
+        <key name="external-sidechain" type="b">
+            <default>false</default>
+        </key>
+        <key name="sidechain-input-device" type="s">
+            <default>""</default>
+        </key>
     </schema>
 </schemalist>

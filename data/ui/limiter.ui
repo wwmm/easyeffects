@@ -453,23 +453,20 @@
 
                 <child>
                     <object class="GtkBox">
-                        <property name="visible">False</property>
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="spacing">6</property>
+                        <property name="spacing">24</property>
                         <child>
-                            <object class="GtkLabel" id="input_devices_label">
-                                <property name="halign">center</property>
+                            <object class="GtkToggleButton" id="external_sidechain">
                                 <property name="valign">center</property>
-                                <property name="label" translatable="yes">Device</property>
+                                <property name="label" translatable="yes">External Sidechain</property>
                             </object>
                         </child>
                         <child>
                             <object class="GtkDropDown" id="dropdown_input_devices">
-                                <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <accessibility>
-                                    <relation name="labelled-by">input_devices_label</relation>
+                                    <property name="label" translatable="yes">External Sidechain Source</property>
                                 </accessibility>
                             </object>
                         </child>

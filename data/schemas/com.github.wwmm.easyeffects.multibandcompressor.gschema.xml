@@ -96,6 +96,35 @@
             <default>16000</default>
         </key>
 
+        <key name="sidechain-input-device" type="s">
+            <default>""</default>
+        </key>
+
+        <key name="external-sidechain0" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain1" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain2" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain3" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain4" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain5" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain6" type="b">
+            <default>false</default>
+        </key>
+        <key name="external-sidechain7" type="b">
+            <default>false</default>
+        </key>
+
         <key name="sidechain-mode0" enum="com.github.wwmm.easyeffects.multibandcompressor.sidechainmode.enum">
             <default>"RMS"</default>
         </key>

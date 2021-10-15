@@ -197,7 +197,9 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                              const Glib::RefPtr<Gtk::Builder>& builder,
                                              const std::string& schema,
                                              const std::string& schema_path)
-    : Gtk::Box(cobject), PluginUiBase(builder, schema, schema_path) {
+    : Gtk::Box(cobject),
+      PluginUiBase(builder, schema, schema_path),
+      input_devices_model(Gio::ListStore<NodeInfoHolder>::create()) {
   name = plugin_name::multiband_compressor;
 
   // loading builder widgets
@@ -223,6 +225,20 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
     }
   });
 
+  dropdown_input_devices = builder->get_widget<Gtk::DropDown>("dropdown_input_devices");
+
+  dropdown_input_devices->property_selected_item().signal_changed().connect([=, this]() {
+    if (auto item = dropdown_input_devices->get_selected_item(); item != nullptr) {
+      auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(item);
+
+      settings->set_string("sidechain-input-device", holder->name);
+    }
+  });
+
+  setup_dropdown_input_devices();
+
+  set_dropdown_input_devices_sensitivity();
+
   // gsettings bindings
 
   g_settings_bind_with_mapping(settings->gobj(), "compressor-mode", compressor_mode->gobj(), "active",
@@ -233,7 +249,7 @@ MultibandCompressorUi::MultibandCompressorUi(BaseObjectType* cobject,
                                G_SETTINGS_BIND_DEFAULT, envelope_boost_enum_to_int, int_to_envelope_boost_enum, nullptr,
                                nullptr);
 
-  // band checkbuttons
+  // setup band checkbuttons
 
   for (uint n = 1U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
@@ -344,6 +360,8 @@ void MultibandCompressorUi::prepare_bands() {
 
     auto* const sidechain_source = builder->get_widget<Gtk::ComboBoxText>("sidechain_source");
 
+    auto* const external_sidechain = builder->get_widget<Gtk::ToggleButton>("external_sidechain");
+
     // gsettings bindings
 
     settings->bind("compressor-enable" + nstr, band_bypass, "active", Gio::Settings::BindFlags::INVERT_BOOLEAN);
@@ -374,6 +392,8 @@ void MultibandCompressorUi::prepare_bands() {
 
     settings->bind("makeup" + nstr, makeup->get_adjustment().get(), "value");
 
+    settings->bind("external-sidechain" + nstr, external_sidechain, "active");
+
     settings->bind("sidechain-preamp" + nstr, sidechain_preamp->get_adjustment().get(), "value");
 
     settings->bind("sidechain-reactivity" + nstr, sidechain_reactivity->get_adjustment().get(), "value");
@@ -395,6 +415,10 @@ void MultibandCompressorUi::prepare_bands() {
     g_settings_bind_with_mapping(settings->gobj(), std::string("sidechain-source" + nstr).c_str(),
                                  sidechain_source->gobj(), "active", G_SETTINGS_BIND_DEFAULT,
                                  sidechain_source_enum_to_int, int_to_sidechain_source_enum, nullptr, nullptr);
+
+    connections.push_back(settings->signal_changed("external-sidechain" + nstr).connect([=, this](const auto& key) {
+      set_dropdown_input_devices_sensitivity();
+    }));
 
     // prepare widgets
 
@@ -469,6 +493,8 @@ void MultibandCompressorUi::reset() {
 
   settings->reset("envelope-boost");
 
+  settings->reset("sidechain-input-device");
+
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
@@ -499,6 +525,8 @@ void MultibandCompressorUi::reset() {
     settings->reset("makeup" + nstr);
 
     settings->reset("compression-mode" + nstr);
+
+    settings->reset("external-sidechain" + nstr);
 
     settings->reset("sidechain-mode" + nstr);
 
@@ -546,4 +574,93 @@ void MultibandCompressorUi::on_new_reduction(const std::array<float, n_bands>& v
   for (size_t n = 0U; n < values.size(); n++) {
     bands_gain_label.at(n)->set_text(level_to_localized_string(util::linear_to_db(values.at(n)), 0));
   }
+}
+
+void MultibandCompressorUi::setup_dropdown_input_devices() {
+  // setting the dropdown model and factory
+
+  auto selection_model = Gtk::SingleSelection::create(input_devices_model);
+
+  dropdown_input_devices->set_model(selection_model);
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown_input_devices->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+    auto* const icon = Gtk::make_managed<Gtk::Image>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    icon->set_from_icon_name("audio-input-microphone-symbolic");
+
+    box->set_spacing(6);
+    box->append(*icon);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+    list_item->set_data("icon", icon);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+
+    auto holder = std::dynamic_pointer_cast<NodeInfoHolder>(list_item->get_item());
+
+    label->set_name(holder->name);
+    label->set_text(holder->name);
+  });
+}
+
+void MultibandCompressorUi::set_dropdown_input_devices_sensitivity() {
+  for (uint n = 0U; n < n_bands; n++) {
+    if (settings->get_boolean("external-sidechain" + std::to_string(n))) {
+      dropdown_input_devices->set_sensitive(true);
+
+      return;
+    }
+  }
+
+  dropdown_input_devices->set_sensitive(false);
+}
+
+void MultibandCompressorUi::set_pipe_manager_ptr(PipeManager* pipe_manager) {
+  pm = pipe_manager;
+
+  input_devices_model->append(NodeInfoHolder::create(pm->ee_source_node));
+
+  for (const auto& [ts, node] : pm->node_map) {
+    if (node.media_class == pm->media_class_source) {
+      input_devices_model->append(NodeInfoHolder::create(node));
+    }
+  }
+
+  connections.push_back(pm->source_added.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+      if (input_devices_model->get_item(n)->id == info.id) {
+        return;
+      }
+    }
+
+    input_devices_model->append(NodeInfoHolder::create(info));
+  }));
+
+  connections.push_back(pm->source_removed.connect([=, this](const NodeInfo info) {
+    for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
+      if (input_devices_model->get_item(n)->id == info.id) {
+        input_devices_model->remove(n);
+
+        return;
+      }
+    }
+  }));
 }
