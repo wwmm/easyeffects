@@ -4,7 +4,7 @@
 
 ### Added
 
-- The Limiter plugin can now use an optional external sidechain.
+- The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.
 - The Autogain plugin now allows the user to select which Loudness is used as reference for the volume correction.
 - The APO Profile Import feature of Equalizer plugin now parses the "Pre Amplification" parameter.
 - Optional Cubic Volume can be enabled in General Settings.

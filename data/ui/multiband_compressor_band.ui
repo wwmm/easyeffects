@@ -14,11 +14,10 @@
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">24</property>
-
                 <child>
                     <object class="GtkLabel" id="split_frequency_label">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">end</property>
                         <property name="label" translatable="yes">Band Start</property>
                         <layout>
                             <property name="column">0</property>
@@ -55,10 +54,11 @@
                         </child>
                     </object>
                 </child>
+
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">end</property>
                         <property name="label" translatable="yes">Band End</property>
                         <layout>
                             <property name="column">1</property>
@@ -95,7 +95,7 @@
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
+                        <property name="valign">end</property>
                         <property name="label" translatable="yes">Compression Mode</property>
                         <layout>
                             <property name="column">2</property>
@@ -122,8 +122,18 @@
                 </child>
 
                 <child>
+                    <object class="GtkToggleButton" id="external_sidechain">
+                        <property name="valign">center</property>
+                        <property name="label" translatable="yes">External Sidechain</property>
+                        <layout>
+                            <property name="column">3</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
                     <object class="GtkToggleButton" id="bypass">
-                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Band Bypass</property>
                         <layout>
                             <property name="column">3</property>
@@ -133,20 +143,20 @@
                 </child>
                 <child>
                     <object class="GtkToggleButton" id="mute">
-                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Mute</property>
                         <layout>
                             <property name="column">4</property>
-                            <property name="row">1</property>
+                            <property name="row">0</property>
                         </layout>
                     </object>
                 </child>
                 <child>
                     <object class="GtkToggleButton" id="solo">
-                        <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Solo</property>
                         <layout>
-                            <property name="column">5</property>
+                            <property name="column">4</property>
                             <property name="row">1</property>
                         </layout>
                     </object>
@@ -184,18 +194,6 @@
                                 <layout>
                                     <property name="column">0</property>
                                     <property name="row">2</property>
-                                </layout>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkLabel">
-                                <property name="visible">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Device</property>
-                                <layout>
-                                    <property name="column">0</property>
-                                    <property name="row">3</property>
                                 </layout>
                             </object>
                         </child>
@@ -310,21 +308,6 @@
                                 </layout>
                                 <accessibility>
                                     <property name="label" translatable="yes">Release Threshold</property>
-                                </accessibility>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkDropDown" id="dropdown_input_devices">
-                                <property name="visible">False</property>
-                                <property name="valign">center</property>
-                                <property name="hexpand">1</property>
-                                <layout>
-                                    <property name="column">1</property>
-                                    <property name="column-span">2</property>
-                                    <property name="row">3</property>
-                                </layout>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Input Device</property>
                                 </accessibility>
                             </object>
                         </child>

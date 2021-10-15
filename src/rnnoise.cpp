@@ -223,15 +223,11 @@ void RNNoise::process(std::span<float>& left_in,
 }
 
 auto RNNoise::get_model_from_file() -> RNNModel* {
-  const auto* path = settings->get_string("model-path").c_str();
-
   RNNModel* m = nullptr;
 
-  if (path != nullptr) {
-    FILE* f = fopen(path, "r");
-
-    if (f != nullptr) {
-      util::debug("rnnoise plugin: loading model from file: " + std::string(path));
+  if (const auto path = settings->get_string("model-path"); !path.empty()) {
+    if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
+      util::debug("rnnoise plugin: loading model from file: " + path.raw());
 
       m = rnnoise_model_from_file(f);
 

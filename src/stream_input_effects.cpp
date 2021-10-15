@@ -28,7 +28,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
   } else {
     auto found = false;
 
-    const auto* input_device = settings->get_string("input-device").c_str();
+    const auto input_device = settings->get_string("input-device").raw();
 
     if (input_device != pm->ee_source_name) {
       for (const auto& [ts, node] : pm->node_map) {

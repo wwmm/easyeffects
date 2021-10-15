@@ -20,6 +20,7 @@
 #ifndef MULTIBAND_COMPRESSOR_UI_HPP
 #define MULTIBAND_COMPRESSOR_UI_HPP
 
+#include "info_holders.hpp"
 #include "plugin_ui_base.hpp"
 
 class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
@@ -46,6 +47,8 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   void on_new_reduction(const std::array<float, n_bands>& values);
 
+  void set_pipe_manager_ptr(PipeManager* pipe_manager);
+
   void reset() override;
 
  private:
@@ -55,9 +58,28 @@ class MultibandCompressorUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::ListBox* listbox = nullptr;
 
-  std::array<Gtk::Label*, n_bands> bands_end, bands_gain_label, bands_envelope_label, bands_curve_label;
+  std::array<Gtk::Label*, n_bands> bands_end = {nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr, nullptr};
+
+  std::array<Gtk::Label*, n_bands> bands_gain_label = {nullptr, nullptr, nullptr, nullptr,
+                                                       nullptr, nullptr, nullptr, nullptr};
+
+  std::array<Gtk::Label*, n_bands> bands_envelope_label = {nullptr, nullptr, nullptr, nullptr,
+                                                           nullptr, nullptr, nullptr, nullptr};
+
+  std::array<Gtk::Label*, n_bands> bands_curve_label = {nullptr, nullptr, nullptr, nullptr,
+                                                        nullptr, nullptr, nullptr, nullptr};
+
+  Gtk::DropDown* dropdown_input_devices = nullptr;
+
+  Glib::RefPtr<Gio::ListStore<NodeInfoHolder>> input_devices_model;
+
+  PipeManager* pm = nullptr;
 
   void prepare_bands();
+
+  void setup_dropdown_input_devices();
+
+  void set_dropdown_input_devices_sensitivity();
 };
 
 #endif

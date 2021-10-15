@@ -32,7 +32,7 @@
                                         <property name="halign">center</property>
                                         <property name="label" translatable="yes">Bypass</property>
                                         <layout>
-                                            <property name="column">1</property>
+                                            <property name="column">3</property>
                                             <property name="row">1</property>
                                         </layout>
                                     </object>
@@ -72,7 +72,7 @@
                                         <property name="valign">center</property>
                                         <property name="label" translatable="yes">Sidechain Boost</property>
                                         <layout>
-                                            <property name="column">2</property>
+                                            <property name="column">1</property>
                                             <property name="row">0</property>
                                         </layout>
                                     </object>
@@ -88,11 +88,35 @@
                                             <item translatable="yes">Brown MT</item>
                                         </items>
                                         <layout>
-                                            <property name="column">2</property>
+                                            <property name="column">1</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
                                             <relation name="labelled-by">envelope_boost_label</relation>
+                                        </accessibility>
+                                    </object>
+                                </child>
+
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">center</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Sidechain Source</property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">0</property>
+                                        </layout>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkDropDown" id="dropdown_input_devices">
+                                        <property name="halign">center</property>
+                                        <layout>
+                                            <property name="column">2</property>
+                                            <property name="row">1</property>
+                                        </layout>
+                                        <accessibility>
+                                            <property name="label" translatable="yes">External Sidechain Source</property>
                                         </accessibility>
                                     </object>
                                 </child>

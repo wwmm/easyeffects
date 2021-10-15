@@ -508,6 +508,8 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
       multiband_compressor_ui->bypass->signal_toggled().connect(
           [=, this]() { effects_base->multiband_compressor->bypass = multiband_compressor_ui->bypass->get_active(); });
 
+      multiband_compressor_ui->set_pipe_manager_ptr(pm);
+
       effects_base->multiband_compressor->input_level.connect(
           sigc::mem_fun(*multiband_compressor_ui, &MultibandCompressorUi::on_new_input_level));
       effects_base->multiband_compressor->output_level.connect(

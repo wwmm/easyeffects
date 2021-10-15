@@ -31,7 +31,7 @@ Limiter::Limiter(const std::string& tag,
 
   auto update_sidechain_links = [=, this](const auto& key) {
     if (settings->get_boolean("external-sidechain")) {
-      const auto* device_name = settings->get_string("sidechain-input-device").c_str();
+      const auto device_name = settings->get_string("sidechain-input-device").raw();
 
       NodeInfo input_device = pm->ee_source_node;
 

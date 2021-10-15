@@ -127,7 +127,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_input_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      const auto* input_device_name = sie_settings->get_string("input-device").c_str();
+      const auto input_device_name = sie_settings->get_string("input-device").raw();
 
       if (holder_selected->name != input_device_name) {
         for (guint n = 0U; n < input_devices_model->get_n_items(); n++) {
@@ -143,7 +143,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     auto holder_selected = std::dynamic_pointer_cast<NodeInfoHolder>(dropdown_output_devices->get_selected_item());
 
     if (holder_selected != nullptr) {
-      const auto* output_device_name = soe_settings->get_string("output-device").c_str();
+      const auto output_device_name = soe_settings->get_string("output-device").raw();
 
       if (holder_selected->name != output_device_name) {
         for (guint n = 0U; n < output_devices_model->get_n_items(); n++) {

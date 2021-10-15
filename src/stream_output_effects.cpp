@@ -28,7 +28,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   } else {
     auto found = false;
 
-    const auto* output_device = settings->get_string("output-device").c_str();
+    const auto output_device = settings->get_string("output-device").raw();
 
     if (output_device != pm->ee_sink_name) {
       for (const auto& [ts, node] : pm->node_map) {
