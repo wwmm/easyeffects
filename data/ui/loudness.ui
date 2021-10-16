@@ -75,7 +75,7 @@
                                     <item>16384</item>
                                 </items>
                                 <accessibility>
-                                    <property name="label">Fast Fourier Transform Size</property>
+                                    <property name="label" translatable="yes">Fast Fourier Transform Size</property>
                                 </accessibility>
                             </object>
                         </child>

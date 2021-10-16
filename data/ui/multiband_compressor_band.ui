@@ -116,7 +116,7 @@
                             <property name="row">1</property>
                         </layout>
                         <accessibility>
-                            <property name="label">Band Compression Mode</property>
+                            <property name="label" translatable="yes">Band Compression Mode</property>
                         </accessibility>
                     </object>
                 </child>

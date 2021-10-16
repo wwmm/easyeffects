@@ -69,7 +69,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label">Compression Mode</property>
+                                                    <property name="label" translatable="yes">Compression Mode</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -464,7 +464,7 @@
                                                             <property name="row">1</property>
                                                         </layout>
                                                         <accessibility>
-                                                            <property name="label">Sidechain Mode</property>
+                                                            <property name="label" translatable="yes">Sidechain Mode</property>
                                                         </accessibility>
                                                     </object>
                                                 </child>
@@ -503,7 +503,7 @@
                                                             <property name="row">1</property>
                                                         </layout>
                                                         <accessibility>
-                                                            <property name="label">Sidechain Source</property>
+                                                            <property name="label" translatable="yes">Sidechain Source</property>
                                                         </accessibility>
                                                     </object>
                                                 </child>
@@ -568,7 +568,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label">Sidechain Type</property>
+                                                    <property name="label" translatable="yes">Sidechain Type</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -758,16 +758,16 @@
                                     <object class="GtkComboBoxText" id="hpf_mode">
                                         <items>
                                             <item translatable="yes">Off</item>
-                                            <item translatable="yes">12 dB/oct</item>
-                                            <item translatable="yes">24 dB/oct</item>
-                                            <item translatable="yes">36 dB/oct</item>
+                                            <item>12 dB/oct</item>
+                                            <item>24 dB/oct</item>
+                                            <item>36 dB/oct</item>
                                         </items>
                                         <layout>
                                             <property name="column">1</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
-                                            <property name="label">High-Pass Filter Mode</property>
+                                            <property name="label" translatable="yes">High-Pass Filter Mode</property>
                                         </accessibility>
                                     </object>
                                 </child>
@@ -812,16 +812,16 @@
                                     <object class="GtkComboBoxText" id="lpf_mode">
                                         <items>
                                             <item translatable="yes">Off</item>
-                                            <item translatable="yes">12 dB/oct</item>
-                                            <item translatable="yes">24 dB/oct</item>
-                                            <item translatable="yes">36 dB/oct</item>
+                                            <item>12 dB/oct</item>
+                                            <item>24 dB/oct</item>
+                                            <item>36 dB/oct</item>
                                         </items>
                                         <layout>
                                             <property name="column">2</property>
                                             <property name="row">1</property>
                                         </layout>
                                         <accessibility>
-                                            <property name="label">Low-Pass Filter Mode</property>
+                                            <property name="label" translatable="yes">Low-Pass Filter Mode</property>
                                         </accessibility>
                                     </object>
                                 </child>

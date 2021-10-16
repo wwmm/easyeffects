@@ -43,7 +43,7 @@
                                     <property name="row">1</property>
                                 </layout>
                                 <accessibility>
-                                    <property name="label">Band Type</property>
+                                    <property name="label" translatable="yes">Band Type</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -61,20 +61,20 @@
                         <child>
                             <object class="GtkComboBoxText" id="band_mode">
                                 <items>
-                                    <item translatable="yes">RLC (BT)</item>
-                                    <item translatable="yes">RLC (MT)</item>
-                                    <item translatable="yes">BWC (BT)</item>
-                                    <item translatable="yes">BWC (MT)</item>
-                                    <item translatable="yes">LRX (BT)</item>
-                                    <item translatable="yes">LRX (MT)</item>
-                                    <item translatable="yes">APO (DR)</item>
+                                    <item>RLC (BT)</item>
+                                    <item>RLC (MT)</item>
+                                    <item>BWC (BT)</item>
+                                    <item>BWC (MT)</item>
+                                    <item>LRX (BT)</item>
+                                    <item>LRX (MT)</item>
+                                    <item>APO (DR)</item>
                                 </items>
                                 <layout>
                                     <property name="column">1</property>
                                     <property name="row">1</property>
                                 </layout>
                                 <accessibility>
-                                    <property name="label">Band Mode</property>
+                                    <property name="label" translatable="yes">Band Mode</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -102,7 +102,7 @@
                                     <property name="row">1</property>
                                 </layout>
                                 <accessibility>
-                                    <property name="label">Band Slope</property>
+                                    <property name="label" translatable="yes">Band Slope</property>
                                 </accessibility>
                             </object>
                         </child>

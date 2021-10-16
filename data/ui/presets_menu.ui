@@ -20,7 +20,7 @@
                             <object class="GtkToggleButton" id="toggle_output">
                                 <property name="active">1</property>
                                 <accessibility>
-                                    <property name="label">Output Presets</property>
+                                    <property name="label" translatable="yes">Output Presets</property>
                                 </accessibility>
                                 <child>
                                     <object class="GtkBox">
@@ -45,7 +45,7 @@
                             <object class="GtkToggleButton" id="toggle_input">
                                 <property name="group">toggle_output</property>
                                 <accessibility>
-                                    <property name="label">Input Presets</property>
+                                    <property name="label" translatable="yes">Input Presets</property>
                                 </accessibility>
                                 <child>
                                     <object class="GtkBox">
@@ -104,7 +104,7 @@
                                                                 <property name="input_purpose">name</property>
                                                                 <property name="accessible_role">text-box</property>
                                                                 <accessibility>
-                                                                    <property name="label">New Output Preset Name</property>
+                                                                    <property name="label" translatable="yes">New Output Preset Name</property>
                                                                 </accessibility>
                                                             </object>
                                                         </child>
@@ -138,7 +138,7 @@
                                                 <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
                                                 <accessibility>
-                                                    <property name="label">Search Output Preset</property>
+                                                    <property name="label" translatable="yes">Search Output Preset</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -214,7 +214,7 @@
                                                                 <property name="input_purpose">name</property>
                                                                 <property name="accessible_role">text-box</property>
                                                                 <accessibility>
-                                                                    <property name="label">New Input Preset Name</property>
+                                                                    <property name="label" translatable="yes">New Input Preset Name</property>
                                                                 </accessibility>
                                                             </object>
                                                         </child>
@@ -248,7 +248,7 @@
                                                 <property name="hexpand">1</property>
                                                 <property name="placeholder_text" translatable="yes">Search</property>
                                                 <accessibility>
-                                                    <property name="label">Search Input Preset</property>
+                                                    <property name="label" translatable="yes">Search Input Preset</property>
                                                 </accessibility>
                                             </object>
                                         </child>

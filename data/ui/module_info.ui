@@ -10,7 +10,7 @@
                 <child>
                     <object class="GtkLabel">
                         <property name="halign">end</property>
-                        <property name="label" translatable="yes">Id</property>
+                        <property name="label">ID</property>
                         <layout>
                             <property name="column">0</property>
                             <property name="row">0</property>

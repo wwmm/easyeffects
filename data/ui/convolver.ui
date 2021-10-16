@@ -40,7 +40,7 @@
                                 <property name="active">1</property>
                                 <property name="label" translatable="yes">L</property>
                                 <accessibility>
-                                    <property name="label">Left Channel</property>
+                                    <property name="label" translatable="yes">Left Channel</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -52,7 +52,7 @@
                                 <property name="group">check_left</property>
                                 <property name="label" translatable="yes">R</property>
                                 <accessibility>
-                                    <property name="label">Right Channel</property>
+                                    <property name="label" translatable="yes">Right Channel</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -445,7 +445,7 @@
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
                         <accessibility>
-                            <property name="label">Search Impulse File</property>
+                            <property name="label" translatable="yes">Search Impulse File</property>
                         </accessibility>
                     </object>
                 </child>

@@ -392,7 +392,7 @@
                         <property name="hexpand">1</property>
                         <property name="placeholder_text" translatable="yes">Search</property>
                         <accessibility>
-                            <property name="label">Search Plugin</property>
+                            <property name="label" translatable="yes">Search Plugin</property>
                         </accessibility>
                     </object>
                 </child>

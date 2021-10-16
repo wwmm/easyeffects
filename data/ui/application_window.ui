@@ -57,7 +57,7 @@
                                 <property name="group">toggle_output</property>
 
                                 <accessibility>
-                                    <property name="label" translatable="yes">Input effects</property>
+                                    <property name="label" translatable="yes">Input Effects</property>
                                 </accessibility>
 
                                 <child>
@@ -126,7 +126,7 @@
                         <property name="valign">center</property>
                         <property name="label" translatable="yes">Presets</property>
                         <accessibility>
-                            <property name="label">Presets Menu</property>
+                            <property name="label" translatable="yes">Presets Menu</property>
                         </accessibility>
                     </object>
                 </child>
@@ -140,7 +140,7 @@
                         <property name="valign">center</property>
                         <property name="icon_name">media-playlist-shuffle-symbolic</property>
                         <accessibility>
-                            <property name="label">Global Bypass</property>
+                            <property name="label" translatable="yes">Global Bypass</property>
                         </accessibility>
                     </object>
                 </child>
@@ -155,7 +155,7 @@
                         <property name="icon_name">format-justify-fill-symbolic</property>
                         <property name="popover">settings_menu</property>
                         <accessibility>
-                            <property name="label">Settings Menu</property>
+                            <property name="label" translatable="yes">Settings Menu</property>
                         </accessibility>
                     </object>
                 </child>

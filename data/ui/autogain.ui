@@ -144,7 +144,7 @@
                     <object class="GtkLabel" id="s_title">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Short Term</property>
+                        <property name="label" translatable="yes">Short-Term</property>
                     </object>
                 </child>
 
