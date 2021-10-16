@@ -38,7 +38,7 @@
                                     <item>LR8</item>
                                 </items>
                                 <accessibility>
-                                    <property name="label">Split Mode</property>
+                                    <property name="label" translatable="yes">Split Mode</property>
                                 </accessibility>
                             </object>
                         </child>
@@ -184,7 +184,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
                                                 <accessibility>
-                                                    <property name="label">Band 1 Bypass</property>
+                                                    <property name="label" translatable="yes">Band 1 Bypass</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -194,7 +194,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
                                                 <accessibility>
-                                                    <property name="label">Band 1 Solo</property>
+                                                    <property name="label" translatable="yes">Band 1 Solo</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -206,7 +206,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Band 1 Detection</property>
+                                                    <property name="label" translatable="yes">Band 1 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -557,7 +557,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
                                                 <accessibility>
-                                                    <property name="label">Band 2 Bypass</property>
+                                                    <property name="label" translatable="yes">Band 2 Bypass</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -567,7 +567,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
                                                 <accessibility>
-                                                    <property name="label">Band 2 Solo</property>
+                                                    <property name="label" translatable="yes">Band 2 Solo</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -579,7 +579,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Band 2 Detection</property>
+                                                    <property name="label" translatable="yes">Band 2 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -930,7 +930,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
                                                 <accessibility>
-                                                    <property name="label">Band 3 Bypass</property>
+                                                    <property name="label" translatable="yes">Band 3 Bypass</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -940,7 +940,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
                                                 <accessibility>
-                                                    <property name="label">Band 3 Solo</property>
+                                                    <property name="label" translatable="yes">Band 3 Solo</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -952,7 +952,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Band 3 Detection</property>
+                                                    <property name="label" translatable="yes">Band 3 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1303,7 +1303,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Bypass</property>
                                                 <accessibility>
-                                                    <property name="label">Band 4 Bypass</property>
+                                                    <property name="label" translatable="yes">Band 4 Bypass</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1313,7 +1313,7 @@
                                                 <property name="halign">center</property>
                                                 <property name="label" translatable="yes">Solo</property>
                                                 <accessibility>
-                                                    <property name="label">Band 4 Solo</property>
+                                                    <property name="label" translatable="yes">Band 4 Solo</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1325,7 +1325,7 @@
                                                     <item translatable="yes">Peak</item>
                                                 </items>
                                                 <accessibility>
-                                                    <property name="label">Band 4 Detection</property>
+                                                    <property name="label" translatable="yes">Band 4 Detection</property>
                                                 </accessibility>
                                             </object>
                                         </child>

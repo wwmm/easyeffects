@@ -14,6 +14,7 @@ data/ui/crystalizer.ui
 data/ui/crystalizer_band.ui
 data/ui/deesser.ui
 data/ui/delay.ui
+data/ui/echo_canceller.ui
 data/ui/effects_base.ui
 data/ui/equalizer.ui
 data/ui/equalizer_band.ui
@@ -44,8 +45,10 @@ src/convolver_ui.cpp
 src/effects_base_ui.cpp
 src/equalizer_ui.cpp
 src/general_settings_ui.cpp
+src/pipe_info_ui.cpp
 src/presets_menu_ui.cpp
-src/stream_output_effects_ui.cpp
-src/stream_input_effects_ui.cpp
+src/rnnoise_ui.cpp
 src/spectrum_settings_ui.cpp
 src/spectrum_ui.cpp
+src/stream_output_effects_ui.cpp
+src/stream_input_effects_ui.cpp

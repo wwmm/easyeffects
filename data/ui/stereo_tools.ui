@@ -151,7 +151,7 @@
                                             <item translatable="yes">LR &gt; RL (Stereo Flip Channels)</item>
                                         </items>
                                         <accessibility>
-                                            <property name="label">Stereo Mode</property>
+                                            <property name="label" translatable="yes">Stereo Mode</property>
                                         </accessibility>
                                     </object>
                                 </child>
