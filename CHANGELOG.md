@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [6.1.4]
+
 ### Added
 
 - The Limiter and the Multiband Compressor plugins can now use an optional external sidechain.
