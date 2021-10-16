@@ -379,7 +379,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
-          util::warning("Can't retrieve information about the preset file");
+          util::warning(log_tag + "can't retrieve information about the preset file");
 
           return;
         }
@@ -398,7 +398,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
-          util::warning("Can't retrieve information about the preset file");
+          util::warning(log_tag + "can't retrieve information about the preset file");
 
           return;
         }
@@ -417,7 +417,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
-          util::warning("Can't retrieve information about the preset file");
+          util::warning(log_tag + "can't retrieve information about the preset file");
 
           return;
         }
@@ -436,7 +436,7 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
         const auto preset_name = util::remove_filename_extension(file->get_basename());
 
         if (preset_name.empty()) {
-          util::warning("Can't retrieve information about the preset file");
+          util::warning(log_tag + "can't retrieve information about the preset file");
 
           return;
         }

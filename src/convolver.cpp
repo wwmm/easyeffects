@@ -285,13 +285,13 @@ void Convolver::read_kernel_file() {
   SndfileHandle file = SndfileHandle(path.c_str());
 
   if (file.channels() == 0 || file.frames() == 0) {
-    util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path);
+    util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path.raw());
     util::warning(log_tag + name + ": Entering passthrough mode...");
 
     return;
   }
 
-  util::debug(log_tag + name + ": irs file: " + path);
+  util::debug(log_tag + name + ": irs file: " + path.raw());
   util::debug(log_tag + name + ": irs rate: " + std::to_string(file.samplerate()) + " Hz");
   util::debug(log_tag + name + ": irs channels: " + std::to_string(file.channels()));
   util::debug(log_tag + name + ": irs frames: " + std::to_string(file.frames()));

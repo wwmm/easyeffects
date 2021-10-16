@@ -74,7 +74,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
         const auto rnn_filename = util::remove_filename_extension(file->get_basename());
 
         if (rnn_filename.empty()) {
-          util::warning("Can't retrieve information about the rnn file");
+          util::warning(log_tag + "can't retrieve information about the rnn file");
 
           return;
         }

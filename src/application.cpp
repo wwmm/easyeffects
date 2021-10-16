@@ -63,7 +63,7 @@ auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine
     Glib::ustring name;
 
     if (!options->lookup_value("load-preset", name)) {
-      util::debug(log_tag + "failed to load preset: " + name);
+      util::debug(log_tag + "failed to load preset: " + name.raw());
     } else {
       if (presets_manager->preset_file_exists(PresetType::input, name)) {
         presets_manager->load_preset_file(PresetType::input, name);

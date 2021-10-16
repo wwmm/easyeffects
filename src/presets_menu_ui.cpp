@@ -95,7 +95,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
-      util::warning("Can't retrieve information about the preset file");
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
       return;
     }
@@ -113,7 +113,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
-      util::warning("Can't retrieve information about the preset file");
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
       return;
     }
@@ -131,7 +131,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
-      util::warning("Can't retrieve information about the preset file");
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
       return;
     }
@@ -149,7 +149,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     const auto preset_name = util::remove_filename_extension(file->get_basename());
 
     if (preset_name.empty()) {
-      util::warning("Can't retrieve information about the preset file");
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
       return;
     }
@@ -215,7 +215,7 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
   }
 
   if (name.find_first_of("\\/") != Glib::ustring::npos) {
-    util::debug(log_tag + " name " + name + " has illegal file name characters. Aborting preset creation!");
+    util::debug(log_tag + " name " + name.raw() + " has illegal file name characters. Aborting preset creation!");
 
     return;
   }

@@ -782,7 +782,7 @@ void EffectsBaseUi::setup_listview_players() {
             } else {
               app_icon->set_visible(false);
 
-              util::warning(log_tag + icon_name + " icon name not installed in the " +
+              util::warning(log_tag + icon_name.raw() + " icon name not installed in the " +
                             icon_theme->get_theme_name().raw() + " icon theme in use. " +
                             "The application icon has been hidden.");
             }
@@ -927,7 +927,7 @@ void EffectsBaseUi::setup_listview_blocklist() {
           } catch (...) {
             connect_stream(holder->id, holder->media_class);
 
-            util::warning("Can't retrieve enabled state of node " + std::to_string(holder->id));
+            util::warning("effects_base_ui: can't retrieve enabled state of node " + std::to_string(holder->id));
 
             enabled_app_list.insert({holder->id, true});
           }
@@ -1481,14 +1481,14 @@ auto EffectsBaseUi::icon_available(const Glib::ustring& icon_name) -> bool {
       for (std::filesystem::directory_iterator it{dir}; it != std::filesystem::directory_iterator{}; ++it) {
         if (std::filesystem::is_regular_file(it->status())) {
           if (it->path().stem().c_str() == icon_name) {
-            util::debug(log_tag + icon_name + " icon name not included in the icon theme, but found in " + dir);
+            util::debug(log_tag + icon_name.raw() + " icon name not included in the icon theme, but found in " + dir);
 
             return true;
           }
         }
       }
     } catch (...) {
-      util::debug(log_tag + "cannot lookup application icon " + icon_name + " in " + dir);
+      util::debug(log_tag + "cannot lookup application icon " + icon_name.raw() + " in " + dir);
     }
   }
 

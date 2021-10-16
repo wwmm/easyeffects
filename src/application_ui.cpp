@@ -126,7 +126,7 @@ auto ApplicationUi::setup_icon_theme() -> Glib::RefPtr<Gtk::IconTheme> {
 
     return ic_theme;
   } catch (...) {
-    util::warning("application_ui: Can't retrieve the icon theme in use on the system. App icons won't be shown.");
+    util::warning("application_ui: can't retrieve the icon theme in use on the system. App icons won't be shown.");
 
     return nullptr;
   }

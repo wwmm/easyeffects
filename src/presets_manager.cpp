@@ -67,10 +67,10 @@ PresetsManager::PresetsManager()
   system_output_dir.erase(std::unique(system_output_dir.begin(), system_output_dir.end()), system_output_dir.end());
 
   for (const auto& scd : system_input_dir) {
-    util::debug("presets_manager: system input presets directory: \"" + scd.string() + "\"; ");
+    util::debug(log_tag + "system input presets directory: \"" + scd.string() + "\"; ");
   }
   for (const auto& scd : system_output_dir) {
-    util::debug("presets_manager: system output presets directory: \"" + scd.string() + "\"; ");
+    util::debug(log_tag + "system output presets directory: \"" + scd.string() + "\"; ");
   }
 
   // user presets directories
@@ -488,7 +488,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         soe_settings->set_string_array("plugins", plugins);
       } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
+        util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
       }
 
       break;
@@ -532,7 +532,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         sie_settings->set_string_array("plugins", plugins);
       } else {
-        util::debug("can't find the preset " + name + " on the filesystem");
+        util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
       }
 
       break;
@@ -711,7 +711,7 @@ void PresetsManager::autoload(const PresetType& preset_type,
   const auto name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
-    util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
+    util::debug(log_tag + "autoloading preset " + name.raw() + " for device " + device_name);
 
     load_preset_file(preset_type, name);
 

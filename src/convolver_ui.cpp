@@ -128,7 +128,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         const auto irs_filename = util::remove_filename_extension(file->get_basename());
 
         if (irs_filename.empty()) {
-          util::warning("Can't retrieve information about irs file");
+          util::warning(log_tag + "can't retrieve information about irs file");
 
           return;
         }
@@ -391,7 +391,7 @@ void ConvolverUi::get_irs_info() {
     return;
   }
 
-  util::debug(log_tag + "reading the impulse file: " + path);
+  util::debug(log_tag + "reading the impulse file: " + path.raw());
 
   SndfileHandle file = SndfileHandle(path.c_str());
 
