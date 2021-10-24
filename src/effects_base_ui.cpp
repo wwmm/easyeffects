@@ -1197,7 +1197,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
   // setting the factory callbacks
 
   factory->signal_setup().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* box = Gtk::make_managed<Gtk::Box>();
     auto* const label = Gtk::make_managed<Gtk::Label>();
     auto* const remove = Gtk::make_managed<Gtk::Button>();
     auto* const drag_handle = Gtk::make_managed<Gtk::Image>();
@@ -1249,28 +1249,13 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
     drag_source->signal_prepare().connect(
         [=](const double& x, const double& y) {
-          auto* const controller_widget = drag_source->get_widget();
+          const auto paintable = Gtk::WidgetPaintable::create(*box);
 
-          auto* const item = controller_widget->get_ancestor(Gtk::Box::get_type());
-
-          controller_widget->set_data("dragged-item", item);
+          drag_source->set_icon(paintable, 0, 0);
 
           return Gdk::ContentProvider::create(util::glib_value(label->get_name()));
         },
         false);
-
-    drag_source->signal_drag_begin().connect([=](const Glib::RefPtr<Gdk::Drag>& drag) {
-      auto* controller_widget = drag_source->get_widget();
-
-      auto* row_box = static_cast<Gtk::Box*>(controller_widget->get_data("dragged-item"));
-
-      const auto paintable = Gtk::WidgetPaintable::create(*row_box);
-
-      drag_source->set_icon(paintable, row_box->get_allocated_width() - controller_widget->get_allocated_width() / 2,
-                            row_box->get_allocated_height() / 2);
-
-      controller_widget->set_data("dragged-item", nullptr);
-    });
 
     drop_target->signal_drop().connect(
         [=, this](const Glib::ValueBase& v, const double& x, const double& y) {
