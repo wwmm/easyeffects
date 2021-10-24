@@ -425,7 +425,7 @@ void ConvolverUi::get_irs_info() {
   right_mag.resize(file.frames());
 
   for (int n = 0; n < file.frames(); n++) {
-    time_axis[n] = n * dt;
+    time_axis[n] = static_cast<float>(n) * dt;
 
     left_mag[n] = kernel[2 * n];
 
@@ -434,7 +434,9 @@ void ConvolverUi::get_irs_info() {
 
   get_irs_spectrum(file.samplerate());
 
-  if (file.frames() > spectrum_settings->get_int("n-points")) {
+  auto max_drawing_points = 100 * drawing_area->get_width();
+
+  if (file.frames() > max_drawing_points) {
     // decimating the data so we can draw it
 
     std::vector<float> t;
@@ -589,11 +591,11 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // cleaning
 
-  fftwf_destroy_plan(plan);
-
   if (complex_output != nullptr) {
     fftwf_free(complex_output);
   }
+
+  fftwf_destroy_plan(plan);
 
   // initializing the frequency axis
 
@@ -605,7 +607,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), spectrum_settings->get_int("n-points"));
+  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), freq_axis.size());
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<float> l(log_axis.size());
@@ -618,38 +620,38 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  for (size_t j = 0U; j < freq_axis.size(); j++) {
-    for (size_t n = 0U; n < log_axis.size(); n++) {
-      if (n > 0U) {
-        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
-          l[n] += left_spectrum[j];
-          r[n] += right_spectrum[j];
+  // for (size_t j = 0U; j < freq_axis.size(); j++) {
+  //   for (size_t n = 0U; n < log_axis.size(); n++) {
+  //     if (n > 0U) {
+  //       if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
+  //         l[n] += left_spectrum[j];
+  //         r[n] += right_spectrum[j];
 
-          bin_count[n]++;
-        }
-      } else {
-        if (freq_axis[j] <= log_axis[n]) {
-          l[n] += left_spectrum[j];
-          r[n] += right_spectrum[j];
+  //         bin_count[n]++;
+  //       }
+  //     } else {
+  //       if (freq_axis[j] <= log_axis[n]) {
+  //         l[n] += left_spectrum[j];
+  //         r[n] += right_spectrum[j];
 
-          bin_count[n]++;
-        }
-      }
-    }
-  }
+  //         bin_count[n]++;
+  //       }
+  //     }
+  //   }
+  // }
 
   // fillint empty bins with their neighbors value
 
-  for (size_t n = 0U; n < bin_count.size(); n++) {
-    if (bin_count[n] == 0U && n > 0U) {
-      l[n] = l[n - 1U];
-      r[n] = r[n - 1U];
-    }
-  }
+  // for (size_t n = 0U; n < bin_count.size(); n++) {
+  //   if (bin_count[n] == 0U && n > 0U) {
+  //     l[n] = l[n - 1U];
+  //     r[n] = r[n - 1U];
+  //   }
+  // }
 
   freq_axis = log_axis;
-  left_spectrum = l;
-  right_spectrum = r;
+  // left_spectrum = l;
+  // right_spectrum = r;
 
   // find min and max values
 

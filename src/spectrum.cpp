@@ -49,11 +49,11 @@ Spectrum::~Spectrum() {
 
   fftw_ready = false;
 
-  fftwf_destroy_plan(plan);
-
   if (complex_output != nullptr) {
     fftwf_free(complex_output);
   }
+
+  fftwf_destroy_plan(plan);
 
   util::debug(log_tag + name + " destroyed");
 }
