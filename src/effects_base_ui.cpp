@@ -1280,7 +1280,7 @@ void EffectsBaseUi::setup_listview_selected_plugins() {
 
             list.insert(((insert_after) ? (iter_dst + 1) : iter_dst), src);
 
-            settings->set_string_array("plugins", list);
+            Glib::signal_idle().connect_once([=, this] { settings->set_string_array("plugins", list); });
 
             return true;
           }
