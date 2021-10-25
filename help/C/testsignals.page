@@ -4,8 +4,6 @@
     <info>
         <link type="guide" xref="index#calibration"/>
     </info>
-    <title>Test Signals</title>
-    <p>
-        These signals can be used to test the frequency response of your speakers.
-    </p>
+    <title>Test Signal</title>
+    <p>A specific signal can be used to test the frequency response of your speakers.</p>
 </page>
