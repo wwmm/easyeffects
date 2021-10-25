@@ -46,7 +46,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void reset() override;
 
  private:
-  inline static const std::string log_tag = "convolver_ui: ";
+  const std::string log_tag = "convolver_ui: ";
 
   const std::string irs_ext = ".irs";
 
@@ -69,7 +69,13 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::SearchEntry* entry_search = nullptr;
 
-  Gtk::Popover* popover_menu = nullptr;
+  Gtk::Popover* popover_import = nullptr;
+
+  Gtk::Popover* popover_combine = nullptr;
+
+  Gtk::DropDown* dropdown_kernel_1 = nullptr;
+
+  Gtk::DropDown* dropdown_kernel_2 = nullptr;
 
   std::filesystem::path irs_dir;
 
@@ -84,11 +90,11 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Glib::RefPtr<Gio::Settings> spectrum_settings;
 
-  // std::vector<sigc::connection> connections;
-
   std::mutex lock_guard_irs_info;
 
   void setup_listview();
+
+  void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
 
   auto get_irs_names() -> std::vector<Glib::ustring>;
 

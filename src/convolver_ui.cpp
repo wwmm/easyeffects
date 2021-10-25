@@ -52,7 +52,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   import = builder->get_widget<Gtk::Button>("import");
 
-  popover_menu = builder->get_widget<Gtk::Popover>("popover_menu");
+  popover_import = builder->get_widget<Gtk::Popover>("popover_import");
+  popover_combine = builder->get_widget<Gtk::Popover>("popover_combine");
+
+  dropdown_kernel_1 = builder->get_widget<Gtk::DropDown>("dropdown_kernel_1");
+  dropdown_kernel_2 = builder->get_widget<Gtk::DropDown>("dropdown_kernel_2");
 
   show_fft = builder->get_widget<Gtk::ToggleButton>("show_fft");
   check_left = builder->get_widget<Gtk::CheckButton>("check_left");
@@ -69,11 +73,14 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   setup_listview();
 
+  setup_dropdown_kernels(dropdown_kernel_1, string_list);
+  setup_dropdown_kernels(dropdown_kernel_2, string_list);
+
   plot = std::make_unique<Plot>(drawing_area);
 
   plot->set_n_x_labels(6);
 
-  popover_menu->signal_show().connect([=, this]() {
+  popover_import->signal_show().connect([=, this]() {
     int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
 
     scrolled_window->set_max_content_height(height);
@@ -283,6 +290,53 @@ void ConvolverUi::setup_listview() {
 
       list_item->set_data("connection_remove", nullptr);
     }
+  });
+}
+
+void ConvolverUi::setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list) {
+  // sorter
+
+  const auto sorter =
+      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
+  const auto sort_list_model = Gtk::SortListModel::create(string_list, sorter);
+
+  // setting the dropdown model and factory
+
+  const auto selection_model = Gtk::SingleSelection::create(sort_list_model);
+
+  dropdown->set_model(selection_model);
+
+  auto factory = Gtk::SignalListItemFactory::create();
+
+  dropdown->set_factory(factory);
+
+  // setting the factory callbacks
+
+  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const box = Gtk::make_managed<Gtk::Box>();
+    auto* const label = Gtk::make_managed<Gtk::Label>();
+
+    label->set_hexpand(true);
+    label->set_halign(Gtk::Align::START);
+
+    box->set_spacing(6);
+    box->append(*label);
+
+    // setting list_item data
+
+    list_item->set_data("name", label);
+
+    list_item->set_child(*box);
+  });
+
+  factory->signal_bind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
+    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
+
+    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
+
+    label->set_name(name);
+    label->set_text(name);
   });
 }
 
@@ -610,13 +664,13 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), freq_axis.size());
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
-  std::vector<float> l(log_axis.size());
-  std::vector<float> r(log_axis.size());
-  std::vector<uint> bin_count(log_axis.size());
+  // std::vector<float> l(log_axis.size());
+  // std::vector<float> r(log_axis.size());
+  // std::vector<uint> bin_count(log_axis.size());
 
-  std::ranges::fill(l, 0.0F);
-  std::ranges::fill(r, 0.0F);
-  std::ranges::fill(bin_count, 0U);
+  // std::ranges::fill(l, 0.0F);
+  // std::ranges::fill(r, 0.0F);
+  // std::ranges::fill(bin_count, 0U);
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 

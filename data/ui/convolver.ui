@@ -72,14 +72,19 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkMenuButton">
-                                <property name="margin-start">6</property>
-                                <property name="margin-end">6</property>
-                                <property name="margin-top">6</property>
-                                <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="direction">left</property>
-                                <property name="popover">popover_menu</property>
-                                <property name="label" translatable="yes">Impulses</property>
+                                <property name="popover">popover_import</property>
+                                <property name="label" translatable="yes">Import</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkMenuButton">
+                                <property name="valign">center</property>
+                                <property name="direction">left</property>
+                                <property name="popover">popover_combine</property>
+                                <property name="label" translatable="yes">Combine</property>
                             </object>
                         </child>
 
@@ -422,7 +427,7 @@
         </child>
     </object>
 
-    <object class="GtkPopover" id="popover_menu">
+    <object class="GtkPopover" id="popover_import">
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>
@@ -474,6 +479,107 @@
                     </object>
                 </child>
 
+            </object>
+        </child>
+    </object>
+
+    <object class="GtkPopover" id="popover_combine"> 
+        <child>
+            <object class="GtkGrid">
+                <property name="halign">start</property>
+                <property name="valign">start</property>
+                <property name="row-spacing">12</property>
+                <property name="column-spacing">6</property>
+                <child>
+                    <object class="GtkLabel">
+                        <property name="halign">center</property>
+                        <property name="label" translatable="yes">Combine Impulse Responses</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="column-span">2</property>
+                            <property name="row">0</property>
+                        </layout>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="dropdown_kernel_1_label">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">1</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">1</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkDropDown" id="dropdown_kernel_1">
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">1</property>
+                        </layout>
+                        <accessibility>
+                            <relation name="labelled-by">dropdown_kernel_1_label</relation>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel" id="dropdown_kernel_2_label">
+                        <property name="halign">end</property>
+                        <property name="label" translatable="yes">2</property>
+                        <layout>
+                            <property name="column">0</property>
+                            <property name="row">2</property>
+                        </layout>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkDropDown" id="dropdown_kernel_2">
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">2</property>
+                        </layout>
+                        <accessibility>
+                            <relation name="labelled-by">dropdown_kernel_2_label</relation>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkEntry" id="combined_kernel_name">
+                        <property name="valign">center</property>
+                        <property name="hexpand">1</property>
+                        <property name="placeholder_text" translatable="yes">Output File Name</property>
+                        <property name="input_purpose">name</property>
+                        <property name="accessible_role">text-box</property>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">3</property>
+                        </layout>
+                        <accessibility>
+                            <property name="label" translatable="yes">Combined kernel Name</property>
+                        </accessibility>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="button_combine_kernels">
+                        <property name="valign">center</property>
+                        <property name="halign">center</property>
+                        <property name="label" translatable="yes">Combine</property>
+                        <accessibility>
+                            <property name="label" translatable="yes">Combine</property>
+                        </accessibility>
+                        <style>
+                            <class name="suggested-action" />
+                        </style>
+                        <layout>
+                            <property name="column">1</property>
+                            <property name="row">4</property>
+                        </layout>
+                    </object>
+                </child>
             </object>
         </child>
     </object>
