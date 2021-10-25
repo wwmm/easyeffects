@@ -5,18 +5,7 @@
         <link type="guide" xref="index#ui"/>
     </info>
     <title>Creating and Importing User Presets</title>
-    <p>
-        You can save your own presets. Just add write a name and click on the add
-        button. Presets can be imported clicking on the button to the left.
-    </p>
-    <p>
-        When you save a preset the current configuration of all plugins is saved to its
-        file. This means you can have presets that combine the effects of different
-        plugins.
-    </p>
-    <p>
-        You can also make a preset autoload when an input or output device is added to
-        the system. Just click on the button with curved arrows while the desired device
-        is selected as the system default device.
-    </p>
+    <p>You can save your own presets. Just go in the "Presets" menu, write a name and click on the add button. Presets can be imported clicking on the import button.</p>
+    <p>When you save a preset the current configuration of all plugins is saved to its file. This means you can have presets that combine the effects of different plugins.</p>
+    <p>You can also make a preset autoload when an input or output device is added to the system. Just go in "PipeWire" tab, click on "Presets Autoloading", select the desired preset and the device you want to associate from the two comboboxes, then click the add button.</p>
 </page>
