@@ -51,6 +51,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window");
 
   import = builder->get_widget<Gtk::Button>("import");
+  button_combine_kernels = builder->get_widget<Gtk::Button>("button_combine_kernels");
 
   popover_import = builder->get_widget<Gtk::Popover>("popover_import");
   popover_combine = builder->get_widget<Gtk::Popover>("popover_combine");
@@ -71,6 +72,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   entry_search = builder->get_widget<Gtk::SearchEntry>("entry_search");
 
+  combined_kernel_name = builder->get_widget<Gtk::Entry>("combined_kernel_name");
+
   setup_listview();
 
   setup_dropdown_kernels(dropdown_kernel_1, string_list);
@@ -87,6 +90,19 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
   });
 
   import->signal_clicked().connect(sigc::mem_fun(*this, &ConvolverUi::on_import_irs_clicked));
+
+  button_combine_kernels->signal_clicked().connect([=, this]() {
+    if (string_list->get_n_items() == 0) {
+      return;
+    }
+
+    const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
+    const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
+
+    util::warning(kernel_1_name);
+    util::warning(kernel_2_name);
+    util::warning(combined_kernel_name->get_text());
+  });
 
   check_left->signal_toggled().connect([&, this]() {
     if (check_left->get_active()) {

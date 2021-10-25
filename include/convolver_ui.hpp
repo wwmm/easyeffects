@@ -58,6 +58,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::Button* import = nullptr;
 
+  Gtk::Button* button_combine_kernels = nullptr;
+
   Gtk::DrawingArea* drawing_area = nullptr;
 
   Gtk::Label *label_file_name = nullptr, *label_sampling_rate = nullptr, *label_samples = nullptr,
@@ -68,6 +70,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   Gtk::CheckButton *check_left = nullptr, *check_right = nullptr;
 
   Gtk::SearchEntry* entry_search = nullptr;
+
+  Gtk::Entry* combined_kernel_name = nullptr;
 
   Gtk::Popover* popover_import = nullptr;
 
