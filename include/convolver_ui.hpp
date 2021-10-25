@@ -115,6 +115,10 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void plot_waveform();
 
   void plot_fft();
+
+  void combine_kernels(const std::string& kernel_1_name,
+                       const std::string& kernel_2_name,
+                       const std::string& output_name);
 };
 
 #endif

@@ -99,9 +99,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
     const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    util::warning(kernel_1_name);
-    util::warning(kernel_2_name);
-    util::warning(combined_kernel_name->get_text());
+    combine_kernels(kernel_1_name, kernel_2_name, combined_kernel_name->get_text());
   });
 
   check_left->signal_toggled().connect([&, this]() {
@@ -280,7 +278,7 @@ void ConvolverUi::setup_listview() {
                             util::glib_value(Glib::ustring(_("Remove Impulse")) + " " + name));
 
     auto connection_load = load->signal_clicked().connect([=, this]() {
-      const auto irs_file = irs_dir / std::filesystem::path{name.c_str() + irs_ext};
+      const auto irs_file = irs_dir / std::filesystem::path{name + irs_ext};
 
       settings->set_string("kernel-path", irs_file.c_str());
     });
@@ -783,4 +781,12 @@ void ConvolverUi::plot_fft() {
   } else if (check_right->get_active()) {
     plot->set_data(freq_axis, right_spectrum);
   }
+}
+
+void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
+                                  const std::string& kernel_2_name,
+                                  const std::string& output_name) {
+  const auto kernel_1_path = irs_dir / std::filesystem::path{kernel_1_name + irs_ext};
+  const auto kernel_2_path = irs_dir / std::filesystem::path{kernel_2_name + irs_ext};
+  const auto output_path = irs_dir / std::filesystem::path{output_name + irs_ext};
 }
