@@ -43,16 +43,6 @@ help_pages = [
   'rnnoise.page'
 ]
 
-help_media = [
-  'figures/effectsorder.png',
-  'figures/enableapp.png',
-  'figures/settingsmenu.png',
-  'figures/userpresets.png',
-  'figures/advancedinfo.png',
-  'figures/saturated.png',
-  'figures/blocklist.png'
-]
-
 gnome_mod.yelp(meson.project_name(),
   sources: help_pages,
   media: help_media

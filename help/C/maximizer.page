@@ -1,4 +1,6 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="maximizer">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="maximizer">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
@@ -25,7 +27,6 @@
             <p>Set the release in milliseconds.</p>
         </item>
     </terms>
-    <!-- <section> <title>References</title> <list> <item> <p> <link
-    href="http://www.zamaudio.com"> http://www.zamaudio.com </link> </p> </item>
+    <!-- <section> <title>References</title> <list> <item> <p> <link href="http://www.zamaudio.com"> http://www.zamaudio.com </link> </p> </item>
     </list> </section> -->
 </page>
