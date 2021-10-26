@@ -29,6 +29,7 @@
 #include <tuple>
 #include "plot.hpp"
 #include "plugin_ui_base.hpp"
+#include "resampler.hpp"
 
 class ConvolverUi : public Gtk::Box, public PluginUiBase {
  public:

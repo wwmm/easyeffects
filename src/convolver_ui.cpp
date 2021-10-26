@@ -795,8 +795,8 @@ auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, s
 
   util::debug(log_tag + "reading the impulse file: " + file_path.string());
 
-  if (file_path.extension() != ".irs") {
-    file_path = file_path / std::filesystem::path{irs_ext};
+  if (file_path.extension() != irs_ext) {
+    file_path += irs_ext;
   }
 
   if (!std::filesystem::exists(file_path)) {
@@ -833,6 +833,10 @@ auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, s
 void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
                                   const std::string& kernel_2_name,
                                   const std::string& output_name) {
+  if (output_name.empty()) {
+    return;
+  }
+
   const auto output_path = irs_dir / std::filesystem::path{output_name + irs_ext};
 
   auto [rate1, kernel_1_L, kernel_1_R] = read_kernel(kernel_1_name);
@@ -840,6 +844,28 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
 
   if (rate1 == 0 || rate2 == 0) {
     return;
+  }
+
+  if (rate1 > rate2) {
+    util::debug(log_tag + name + " resampling the kernel " + kernel_2_name + " to " + std::to_string(rate1) + " Hz");
+
+    auto resampler = std::make_unique<Resampler>(rate2, rate1);
+
+    kernel_2_L = resampler->process(kernel_2_L, true);
+
+    resampler = std::make_unique<Resampler>(rate2, rate1);
+
+    kernel_2_R = resampler->process(kernel_2_R, true);
+  } else if (rate2 > rate1) {
+    util::debug(log_tag + name + " resampling the kernel " + kernel_1_name + " to " + std::to_string(rate2) + " Hz");
+
+    auto resampler = std::make_unique<Resampler>(rate1, rate2);
+
+    kernel_1_L = resampler->process(kernel_1_L, true);
+
+    resampler = std::make_unique<Resampler>(rate1, rate2);
+
+    kernel_1_R = resampler->process(kernel_1_R, true);
   }
 
   // auto* conv = new Convproc();
