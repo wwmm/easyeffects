@@ -105,6 +105,8 @@ cxx = meson.get_compiler('cpp')
 
 zita_convolver = cxx.find_library('zita-convolver', required: true)
 
+tbb = cxx.find_library('tbb', required: true)
+
 easyeffects_deps = [
 	dependency('libpipewire-0.3', version: '>=0.3.31'),
 	dependency('glib-2.0', version: '>=2.56'),
@@ -124,6 +126,7 @@ easyeffects_deps = [
 	dependency('speexdsp'),
 	dependency('nlohmann_json', required: true),
 	dependency('threads'),
+	tbb,
 	zita_convolver,
 ]
 

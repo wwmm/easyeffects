@@ -22,6 +22,8 @@
 
 #include <fftw3.h>
 #include <glibmm/i18n.h>
+#include <algorithm>
+#include <execution>
 #include <filesystem>
 #include <mutex>
 #include <numbers>
@@ -123,6 +125,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void combine_kernels(const std::string& kernel_1_name,
                        const std::string& kernel_2_name,
                        const std::string& output_name);
+
+  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 };
 
 #endif

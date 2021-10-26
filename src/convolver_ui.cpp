@@ -868,6 +868,15 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
     kernel_1_R = resampler->process(kernel_1_R, true);
   }
 
+  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1);
+  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1);
+
+  if (kernel_1_L.size() > kernel_2_L.size()) {
+    direct_conv(kernel_1_L, kernel_2_L, kernel_L);
+  } else {
+    direct_conv(kernel_2_L, kernel_1_L, kernel_L);
+  }
+
   // auto* conv = new Convproc();
 
   // conv->set_options(0);
@@ -882,4 +891,26 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
 
   //   return;
   // }
+}
+
+void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
+  // for (uint n = 0U; n < c.size(); n++) {
+  //   c[n] = 0.0F;
+
+  //   for (uint m = 0U; m < b.size(); m++) {
+  //     if (n - m >= 0U && n - m < a.size() - 1) {
+  //       c[n] += b[m] * a[n - m];
+  //     }
+  //   }
+  // }
+
+  std::for_each(std::execution::par_unseq, c.begin(), c.end(), [&](size_t n) {
+    c[n] = 0.0F;
+
+    for (uint m = 0U; m < b.size(); m++) {
+      if (n - m >= 0U && n - m < a.size() - 1) {
+        c[n] += b[m] * a[n - m];
+      }
+    }
+  });
 }
