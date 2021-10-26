@@ -85,6 +85,10 @@ void Plot::set_data(const std::vector<float>& x, const std::vector<float>& y) {
 }
 
 void Plot::init_axes() {
+  if (original_x.empty() || original_y.empty()) {
+    return;
+  }
+
   x_min = std::ranges::min(original_x);
   x_max = std::ranges::max(original_x);
 

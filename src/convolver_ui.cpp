@@ -459,11 +459,9 @@ void ConvolverUi::get_irs_info() {
     return;
   }
 
-  util::debug(log_tag + "reading the impulse file: " + path.raw());
+  auto [rate, kernel_L, kernel_R] = read_kernel(path);
 
-  SndfileHandle file = SndfileHandle(path.c_str());
-
-  if (file.channels() != 2 || file.frames() == 0) {
+  if (rate == 0) {
     // warning user that there is a problem
 
     connections.push_back(Glib::signal_idle().connect([=, this]() {
@@ -480,31 +478,24 @@ void ConvolverUi::get_irs_info() {
     return;
   }
 
-  std::vector<float> kernel(file.channels() * file.frames());
+  const float dt = 1.0F / static_cast<float>(rate);
 
-  file.readf(kernel.data(), file.frames());
+  const float duration = (static_cast<float>(kernel_L.size()) - 1.0F) * dt;
 
-  const float dt = 1.0F / static_cast<float>(file.samplerate());
+  time_axis.resize(kernel_L.size());
 
-  const float duration = (static_cast<float>(file.frames()) - 1.0F) * dt;
+  left_mag = kernel_L;
+  right_mag = kernel_R;
 
-  time_axis.resize(file.frames());
-  left_mag.resize(file.frames());
-  right_mag.resize(file.frames());
-
-  for (int n = 0; n < file.frames(); n++) {
+  for (size_t n = 0; n < time_axis.size(); n++) {
     time_axis[n] = static_cast<float>(n) * dt;
-
-    left_mag[n] = kernel[2 * n];
-
-    right_mag[n] = kernel[2 * n + 1];
   }
 
-  get_irs_spectrum(file.samplerate());
+  get_irs_spectrum(rate);
 
   auto max_drawing_points = 100 * drawing_area->get_width();
 
-  if (file.frames() > max_drawing_points) {
+  if (static_cast<int>(time_axis.size()) > max_drawing_points) {
     // decimating the data so we can draw it
 
     std::vector<float> t;
@@ -514,9 +505,9 @@ void ConvolverUi::get_irs_info() {
     std::vector<float> bin_l_y;
     std::vector<float> bin_r_y;
 
-    size_t bin_size = std::ceil(file.frames() / spectrum_settings->get_int("n-points"));
+    size_t bin_size = std::ceil(time_axis.size() / spectrum_settings->get_int("n-points"));
 
-    for (int n = 0; n < file.frames(); n++) {
+    for (size_t n = 0; n < time_axis.size(); n++) {
       bin_x.push_back(time_axis[n]);
 
       bin_l_y.push_back(left_mag[n]);
@@ -582,9 +573,12 @@ void ConvolverUi::get_irs_info() {
 
   // updating interface with ir file info
 
+  auto rate_copy = rate;
+  auto n_samples = kernel_L.size();
+
   connections.push_back(Glib::signal_idle().connect([=, this]() {
-    label_sampling_rate->set_text(Glib::ustring::format(file.samplerate()) + " Hz");
-    label_samples->set_text(Glib::ustring::format(file.frames()));
+    label_sampling_rate->set_text(Glib::ustring::format(rate_copy) + " Hz");
+    label_samples->set_text(Glib::ustring::format(n_samples));
 
     label_duration->set_text(level_to_localized_string(duration, 3) + " s");
 
@@ -744,6 +738,10 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 }
 
 void ConvolverUi::plot_waveform() {
+  if (time_axis.empty() || left_spectrum.empty() || right_spectrum.empty()) {
+    return;
+  }
+
   plot->set_plot_type(PlotType::line);
 
   plot->set_plot_scale(PlotScale::linear);
@@ -764,6 +762,10 @@ void ConvolverUi::plot_waveform() {
 }
 
 void ConvolverUi::plot_fft() {
+  if (freq_axis.empty() || left_spectrum.empty() || right_spectrum.empty()) {
+    return;
+  }
+
   plot->set_plot_type(PlotType::line);
 
   plot->set_plot_scale(PlotScale::logarithmic);
@@ -783,10 +785,70 @@ void ConvolverUi::plot_fft() {
   }
 }
 
+auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>> {
+  int rate = 0;
+  std::vector<float> buffer;
+  std::vector<float> kernel_L;
+  std::vector<float> kernel_R;
+
+  auto file_path = irs_dir / std::filesystem::path{file_name};
+
+  util::debug(log_tag + "reading the impulse file: " + file_path.string());
+
+  if (file_path.extension() != ".irs") {
+    file_path = file_path / std::filesystem::path{irs_ext};
+  }
+
+  if (!std::filesystem::exists(file_path)) {
+    util::debug(log_tag + "file: " + file_path.string() + " does not exist");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  auto sndfile = SndfileHandle(file_path.c_str());
+
+  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
+    util::warning(log_tag + name + " Only stereo impulse responses are supported.");
+    util::warning(log_tag + name + " The impulse file was not loaded!");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  buffer.resize(sndfile.frames() * sndfile.channels());
+  kernel_L.resize(sndfile.frames());
+  kernel_R.resize(sndfile.frames());
+
+  sndfile.readf(buffer.data(), sndfile.frames());
+
+  for (size_t n = 0U; n < kernel_L.size(); n++) {
+    kernel_L[n] = buffer[2U * n];
+    kernel_R[n] = buffer[2U * n + 1U];
+  }
+
+  rate = sndfile.samplerate();
+
+  return std::make_tuple(rate, kernel_L, kernel_R);
+}
+
 void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
                                   const std::string& kernel_2_name,
                                   const std::string& output_name) {
   const auto kernel_1_path = irs_dir / std::filesystem::path{kernel_1_name + irs_ext};
   const auto kernel_2_path = irs_dir / std::filesystem::path{kernel_2_name + irs_ext};
   const auto output_path = irs_dir / std::filesystem::path{output_name + irs_ext};
+
+  // Reading the first kernel
+
+  auto sndfile1 = SndfileHandle(kernel_1_path.c_str());
+
+  std::vector<float> buffer1(sndfile1.frames() * sndfile1.channels());
+  std::vector<float> kernel_1_L(sndfile1.frames());
+  std::vector<float> kernel_1_R(sndfile1.frames());
+
+  sndfile1.readf(buffer1.data(), sndfile1.frames());
+
+  for (size_t n = 0U; n < kernel_1_L.size(); n++) {
+    kernel_1_L[n] = buffer1[2U * n];
+    kernel_1_R[n] = buffer1[2U * n + 1U];
+  }
 }

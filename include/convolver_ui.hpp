@@ -26,6 +26,7 @@
 #include <mutex>
 #include <numbers>
 #include <sndfile.hh>
+#include <tuple>
 #include "plot.hpp"
 #include "plugin_ui_base.hpp"
 
@@ -115,6 +116,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
   void plot_waveform();
 
   void plot_fft();
+
+  auto read_kernel(const std::string& file_name) -> std::tuple<int, std::vector<float>, std::vector<float>>;
 
   void combine_kernels(const std::string& kernel_1_name,
                        const std::string& kernel_2_name,
