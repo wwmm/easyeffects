@@ -833,22 +833,27 @@ auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, s
 void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
                                   const std::string& kernel_2_name,
                                   const std::string& output_name) {
-  const auto kernel_1_path = irs_dir / std::filesystem::path{kernel_1_name + irs_ext};
-  const auto kernel_2_path = irs_dir / std::filesystem::path{kernel_2_name + irs_ext};
   const auto output_path = irs_dir / std::filesystem::path{output_name + irs_ext};
 
-  // Reading the first kernel
+  auto [rate1, kernel_1_L, kernel_1_R] = read_kernel(kernel_1_name);
+  auto [rate2, kernel_2_L, kernel_2_R] = read_kernel(kernel_2_name);
 
-  auto sndfile1 = SndfileHandle(kernel_1_path.c_str());
-
-  std::vector<float> buffer1(sndfile1.frames() * sndfile1.channels());
-  std::vector<float> kernel_1_L(sndfile1.frames());
-  std::vector<float> kernel_1_R(sndfile1.frames());
-
-  sndfile1.readf(buffer1.data(), sndfile1.frames());
-
-  for (size_t n = 0U; n < kernel_1_L.size(); n++) {
-    kernel_1_L[n] = buffer1[2U * n];
-    kernel_1_R[n] = buffer1[2U * n + 1U];
+  if (rate1 == 0 || rate2 == 0) {
+    return;
   }
+
+  // auto* conv = new Convproc();
+
+  // conv->set_options(0);
+
+  // const uint max_convolution_size = kernel_2_L.size();
+  // const uint buffer_size = kernel_1_L.size();
+
+  // int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
+
+  // if (ret != 0) {
+  //   util::warning(log_tag + name + " can't initialise zita-convolver engine: " + std::to_string(ret));
+
+  //   return;
+  // }
 }
