@@ -527,17 +527,34 @@
                     </object>
                 </child>
 
+
                 <child>
-                    <object class="GtkButton" id="button_combine_kernels">
-                        <property name="valign">center</property>
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Combine</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Combine</property>
-                        </accessibility>
-                        <style>
-                            <class name="suggested-action" />
-                        </style>
+                    <object class="GtkBox">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">0</property>
+                        <property name="layout-manager">
+                            <object class="GtkBinLayout"></object>
+                        </property>
+
+                        <child>
+                            <object class="GtkButton" id="button_combine_kernels">
+                                <property name="valign">center</property>
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes">Combine</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Combine</property>
+                                </accessibility>
+                                <style>
+                                    <class name="suggested-action" />
+                                </style>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkSpinner" id="spinner_combine_kernel">
+                                <property name="halign">start</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

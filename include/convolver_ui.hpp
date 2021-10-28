@@ -85,6 +85,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   Gtk::DropDown* dropdown_kernel_2 = nullptr;
 
+  Gtk::Spinner* spinner_combine_kernel = nullptr;
+
   std::filesystem::path irs_dir;
 
   Glib::RefPtr<Gio::FileMonitor> folder_monitor;

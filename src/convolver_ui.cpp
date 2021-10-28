@@ -74,6 +74,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   combined_kernel_name = builder->get_widget<Gtk::Entry>("combined_kernel_name");
 
+  spinner_combine_kernel = builder->get_widget<Gtk::Spinner>("spinner_combine_kernel");
+
   setup_listview();
 
   setup_dropdown_kernels(dropdown_kernel_1, string_list);
@@ -95,6 +97,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     if (string_list->get_n_items() == 0) {
       return;
     }
+
+    spinner_combine_kernel->start();
 
     const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
     const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
@@ -844,6 +848,9 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
                                   const std::string& kernel_2_name,
                                   const std::string& output_name) {
   if (output_name.empty()) {
+    // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
+    Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
+
     return;
   }
 
@@ -853,6 +860,8 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
   auto [rate2, kernel_2_L, kernel_2_R] = read_kernel(kernel_2_name);
 
   if (rate1 == 0 || rate2 == 0) {
+    Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
+
     return;
   }
 
@@ -890,6 +899,8 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
     direct_conv(kernel_2_L, kernel_1_L, kernel_L);
     direct_conv(kernel_2_R, kernel_1_R, kernel_R);
   }
+
+  Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
 }
 
 void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
