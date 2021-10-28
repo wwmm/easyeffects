@@ -6,6 +6,7 @@ endif
 
 help_pages = [
   'bassenhancer.page',
+  'bassloudness.page',
   'compressor.page',
   'deesser.page',
   'exciter.page',
