@@ -6,7 +6,7 @@
     </info>
     <title>Bass Enhancer</title>
     <p>The brain perceives the pitch of a tone not only by its fundamental frequency but also by the periodicity implied by the relationship between the higher harmonics. We may perceive the same pitch even if the fundamental frequency is missing from a tone.</p>
-    <p>EasyEffects uses the bass enhancer developed by Calf Studio.</p>
+    <p>EasyEffects uses the Bass Enhancer developed by Calf Studio Gears.</p>
     <terms>
         <item>
             <title>
@@ -28,13 +28,13 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Floor(button)</em>
+                <em style="strong" its:withinText="nested">Floor (button)</em>
             </title>
             <p>Constrain the enhancement on the lower end.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Floor(value)</em>
+                <em style="strong" its:withinText="nested">Floor (value)</em>
             </title>
             <p>The frequency no harmonics are produced below.</p>
         </item>
@@ -56,12 +56,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html" its:translate="no">https://calf-studio-gear.org/doc/Bass%20Enhancer.html</link>
+                    <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html" its:translate="no">Calf Bass Enhancer</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental" its:translate="no">https://en.wikipedia.org/wiki/Missing_fundamental</link>
+                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental" its:translate="no">Wikipedia Missing Fundamental</link>
                 </p>
             </item>
         </list>
