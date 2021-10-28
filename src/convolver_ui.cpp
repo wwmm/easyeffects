@@ -99,7 +99,13 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
     const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    combine_kernels(kernel_1_name, kernel_2_name, combined_kernel_name->get_text());
+    /*
+      The current code convolving the impulse responses is doing direct convolution. It can very slow depending on the
+      size of each kernel. So we do not want to do it in the main thread
+    */
+
+    mythreads.emplace_back(  // Using emplace_back here makes sense
+        [=, this]() { combine_kernels(kernel_1_name, kernel_2_name, combined_kernel_name->get_text()); });
   });
 
   check_left->signal_toggled().connect([&, this]() {
@@ -122,24 +128,24 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   setup_input_output_gain(builder);
 
-  // reading the current configured irs file
+  // Reading the current configured irs file
 
-  std::jthread jt{[this]() {
+  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
     std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
     get_irs_info();
-  }};
+  });
 
   /* this is necessary to update the interface with the irs info when a preset
      is loaded
   */
 
   connections.push_back(settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
-    std::jthread jt{[this]() {
+    mythreads.emplace_back([this]() {
       std::scoped_lock<std::mutex> lock(lock_guard_irs_info);
 
       get_irs_info();
-    }};
+    });
   }));
 
   folder_monitor = Gio::File::create_for_path(irs_dir.string())->monitor_directory();
@@ -184,9 +190,11 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 }
 
 ConvolverUi::~ConvolverUi() {
-  lock_guard_irs_info.lock();
+  for (auto& t : mythreads) {
+    t.join();
+  }
 
-  lock_guard_irs_info.unlock();
+  mythreads.clear();
 
   util::debug(name + " ui destroyed");
 }
@@ -437,8 +445,6 @@ void ConvolverUi::on_import_irs_clicked() {
       case Gtk::ResponseType::ACCEPT: {
         import_irs_file(dialog->get_file()->get_path());
 
-        // populate_irs_listbox();
-
         break;
       }
       default:
@@ -493,9 +499,9 @@ void ConvolverUi::get_irs_info() {
 
   get_irs_spectrum(rate);
 
-  auto max_drawing_points = 100 * drawing_area->get_width();
+  size_t bin_size = (drawing_area->get_width() > 0) ? time_axis.size() / drawing_area->get_width() : 0;
 
-  if (static_cast<int>(time_axis.size()) > max_drawing_points) {
+  if (bin_size > 0) {
     // decimating the data so we can draw it
 
     std::vector<float> t;
@@ -504,8 +510,6 @@ void ConvolverUi::get_irs_info() {
     std::vector<float> bin_x;
     std::vector<float> bin_l_y;
     std::vector<float> bin_r_y;
-
-    size_t bin_size = std::ceil(time_axis.size() / spectrum_settings->get_int("n-points"));
 
     for (size_t n = 0; n < time_axis.size(); n++) {
       bin_x.push_back(time_axis[n]);
@@ -586,7 +590,9 @@ void ConvolverUi::get_irs_info() {
 
     label_file_name->set_text(fpath.stem().c_str());
 
-    plot_waveform();
+    if (!show_fft->get_active()) {
+      plot_waveform();
+    }
 
     return false;
   }));
@@ -667,53 +673,55 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
     freq_axis[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(left_spectrum.size());
   }
 
+  size_t bin_size = (drawing_area->get_width() > 0) ? drawing_area->get_width() : 100;
+
   // initializing the logarithmic frequency axis
 
-  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), freq_axis.size());
+  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), bin_size);
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
-  // std::vector<float> l(log_axis.size());
-  // std::vector<float> r(log_axis.size());
-  // std::vector<uint> bin_count(log_axis.size());
+  std::vector<float> l(log_axis.size());
+  std::vector<float> r(log_axis.size());
+  std::vector<uint> bin_count(log_axis.size());
 
-  // std::ranges::fill(l, 0.0F);
-  // std::ranges::fill(r, 0.0F);
-  // std::ranges::fill(bin_count, 0U);
+  std::ranges::fill(l, 0.0F);
+  std::ranges::fill(r, 0.0F);
+  std::ranges::fill(bin_count, 0U);
 
   // reducing the amount of data we have to plot and converting the frequency axis to the logarithimic scale
 
-  // for (size_t j = 0U; j < freq_axis.size(); j++) {
-  //   for (size_t n = 0U; n < log_axis.size(); n++) {
-  //     if (n > 0U) {
-  //       if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
-  //         l[n] += left_spectrum[j];
-  //         r[n] += right_spectrum[j];
+  for (size_t j = 0U; j < freq_axis.size(); j++) {
+    for (size_t n = 0U; n < log_axis.size(); n++) {
+      if (n > 0U) {
+        if (freq_axis[j] <= log_axis[n] && freq_axis[j] > log_axis[n - 1U]) {
+          l[n] += left_spectrum[j];
+          r[n] += right_spectrum[j];
 
-  //         bin_count[n]++;
-  //       }
-  //     } else {
-  //       if (freq_axis[j] <= log_axis[n]) {
-  //         l[n] += left_spectrum[j];
-  //         r[n] += right_spectrum[j];
+          bin_count[n]++;
+        }
+      } else {
+        if (freq_axis[j] <= log_axis[n]) {
+          l[n] += left_spectrum[j];
+          r[n] += right_spectrum[j];
 
-  //         bin_count[n]++;
-  //       }
-  //     }
-  //   }
-  // }
+          bin_count[n]++;
+        }
+      }
+    }
+  }
 
   // fillint empty bins with their neighbors value
 
-  // for (size_t n = 0U; n < bin_count.size(); n++) {
-  //   if (bin_count[n] == 0U && n > 0U) {
-  //     l[n] = l[n - 1U];
-  //     r[n] = r[n - 1U];
-  //   }
-  // }
+  for (size_t n = 0U; n < bin_count.size(); n++) {
+    if (bin_count[n] == 0U && n > 0U) {
+      l[n] = l[n - 1U];
+      r[n] = r[n - 1U];
+    }
+  }
 
   freq_axis = log_axis;
-  // left_spectrum = l;
-  // right_spectrum = r;
+  left_spectrum = l;
+  right_spectrum = r;
 
   // find min and max values
 
@@ -731,7 +739,9 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   }
 
   connections.push_back(Glib::signal_idle().connect([=, this]() {
-    plot_fft();
+    if (show_fft->get_active()) {
+      plot_fft();
+    }
 
     return false;
   }));
@@ -871,44 +881,23 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
   std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1);
   std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1);
 
+  // As the convolution is commutative we change the order based on which will run faster
+
   if (kernel_1_L.size() > kernel_2_L.size()) {
     direct_conv(kernel_1_L, kernel_2_L, kernel_L);
+    direct_conv(kernel_1_R, kernel_2_R, kernel_R);
   } else {
     direct_conv(kernel_2_L, kernel_1_L, kernel_L);
+    direct_conv(kernel_2_R, kernel_1_R, kernel_R);
   }
-
-  // auto* conv = new Convproc();
-
-  // conv->set_options(0);
-
-  // const uint max_convolution_size = kernel_2_L.size();
-  // const uint buffer_size = kernel_1_L.size();
-
-  // int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
-
-  // if (ret != 0) {
-  //   util::warning(log_tag + name + " can't initialise zita-convolver engine: " + std::to_string(ret));
-
-  //   return;
-  // }
 }
 
 void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  // for (uint n = 0U; n < c.size(); n++) {
-  //   c[n] = 0.0F;
-
-  //   for (uint m = 0U; m < b.size(); m++) {
-  //     if (n - m >= 0U && n - m < a.size() - 1) {
-  //       c[n] += b[m] * a[n - m];
-  //     }
-  //   }
-  // }
-
   std::for_each(std::execution::par_unseq, c.begin(), c.end(), [&](size_t n) {
     c[n] = 0.0F;
 
     for (uint m = 0U; m < b.size(); m++) {
-      if (n - m >= 0U && n - m < a.size() - 1) {
+      if (n - m >= 0U && n - m < a.size() - 1U) {
         c[n] += b[m] * a[n - m];
       }
     }

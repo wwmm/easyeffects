@@ -100,6 +100,8 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   std::mutex lock_guard_irs_info;
 
+  std::vector<std::thread> mythreads;
+
   void setup_listview();
 
   void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
