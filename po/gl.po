@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 15:38+0200\n"
+"POT-Creation-Date: 2021-10-29 18:12-0300\n"
 "PO-Revision-Date: 2021-03-25 22:09+0100\n"
 "Last-Translator: Xosé <xosecalvo@gmail.com>\n"
 "Language-Team: \n"
@@ -106,7 +106,7 @@ msgstr "Engadir á lista de bloqueo"
 msgid "Format"
 msgstr "Formato"
 
-#: data/ui/app_info.ui:116 data/ui/convolver.ui:137
+#: data/ui/app_info.ui:116 data/ui/convolver.ui:142
 msgid "Rate"
 msgstr "Taxa"
 
@@ -138,7 +138,7 @@ msgstr "Efectos de saída"
 
 #: data/ui/application_window.ui:42 data/ui/autogain.ui:424
 #: data/ui/bass_enhancer.ui:337 data/ui/compressor.ui:1088
-#: data/ui/convolver.ui:312 data/ui/crossfeed.ui:227 data/ui/crystalizer.ui:124
+#: data/ui/convolver.ui:317 data/ui/crossfeed.ui:227 data/ui/crystalizer.ui:124
 #: data/ui/deesser.ui:522 data/ui/delay.ui:196 data/ui/echo_canceller.ui:200
 #: data/ui/equalizer.ui:275 data/ui/exciter.ui:337 data/ui/filter.ui:260
 #: data/ui/gate.ui:441 data/ui/limiter.ui:828 data/ui/loudness.ui:220
@@ -159,7 +159,7 @@ msgstr "Efectos de entrada"
 
 #: data/ui/application_window.ui:74 data/ui/autogain.ui:340
 #: data/ui/bass_enhancer.ui:253 data/ui/compressor.ui:526
-#: data/ui/compressor.ui:1004 data/ui/convolver.ui:228 data/ui/crossfeed.ui:143
+#: data/ui/compressor.ui:1004 data/ui/convolver.ui:233 data/ui/crossfeed.ui:143
 #: data/ui/crystalizer.ui:40 data/ui/deesser.ui:438 data/ui/delay.ui:112
 #: data/ui/echo_canceller.ui:116 data/ui/equalizer.ui:191
 #: data/ui/exciter.ui:253 data/ui/filter.ui:176 data/ui/gate.ui:357
@@ -271,7 +271,7 @@ msgid "Output Gain"
 msgstr "Saída"
 
 #: data/ui/autogain.ui:359 data/ui/bass_enhancer.ui:272
-#: data/ui/compressor.ui:1023 data/ui/convolver.ui:247 data/ui/crossfeed.ui:162
+#: data/ui/compressor.ui:1023 data/ui/convolver.ui:252 data/ui/crossfeed.ui:162
 #: data/ui/crystalizer.ui:59 data/ui/deesser.ui:457 data/ui/delay.ui:131
 #: data/ui/echo_canceller.ui:135 data/ui/equalizer.ui:210
 #: data/ui/exciter.ui:272 data/ui/filter.ui:195 data/ui/gate.ui:376
@@ -284,7 +284,7 @@ msgid "Plugin Input Gain"
 msgstr "Saída"
 
 #: data/ui/autogain.ui:443 data/ui/bass_enhancer.ui:356
-#: data/ui/compressor.ui:1107 data/ui/convolver.ui:331 data/ui/crossfeed.ui:246
+#: data/ui/compressor.ui:1107 data/ui/convolver.ui:336 data/ui/crossfeed.ui:246
 #: data/ui/crystalizer.ui:143 data/ui/deesser.ui:541 data/ui/delay.ui:215
 #: data/ui/echo_canceller.ui:219 data/ui/equalizer.ui:294
 #: data/ui/exciter.ui:356 data/ui/filter.ui:279 data/ui/gate.ui:460
@@ -297,7 +297,7 @@ msgid "Plugin Output Gain"
 msgstr "Saída"
 
 #: data/ui/autogain.ui:506 data/ui/bass_enhancer.ui:450
-#: data/ui/compressor.ui:1170 data/ui/convolver.ui:394 data/ui/crossfeed.ui:309
+#: data/ui/compressor.ui:1170 data/ui/convolver.ui:399 data/ui/crossfeed.ui:309
 #: data/ui/crystalizer.ui:198 data/ui/deesser.ui:664 data/ui/delay.ui:278
 #: data/ui/echo_canceller.ui:282 data/ui/equalizer.ui:357
 #: data/ui/equalizer_band.ui:149 data/ui/equalizer_band.ui:217
@@ -310,7 +310,7 @@ msgid "Reset"
 msgstr "Restabelecer"
 
 #: data/ui/autogain.ui:519 data/ui/bass_enhancer.ui:463
-#: data/ui/compressor.ui:1183 data/ui/convolver.ui:407 data/ui/crossfeed.ui:322
+#: data/ui/compressor.ui:1183 data/ui/convolver.ui:412 data/ui/crossfeed.ui:322
 #: data/ui/deesser.ui:677 data/ui/delay.ui:291 data/ui/echo_canceller.ui:295
 #: data/ui/equalizer.ui:370 data/ui/exciter.ui:462 data/ui/filter.ui:355
 #: data/ui/gate.ui:566 data/ui/limiter.ui:923 data/ui/loudness.ui:315
@@ -334,7 +334,7 @@ msgstr ""
 msgid "Preset"
 msgstr "Preconfiguracións"
 
-#: data/ui/autoload_row.ui:87 src/effects_base_ui.cpp:1343
+#: data/ui/autoload_row.ui:87 src/effects_base_ui.cpp:1327
 msgid "Remove"
 msgstr ""
 
@@ -663,45 +663,71 @@ msgstr "D"
 msgid "Right Channel"
 msgstr "Dividir canles"
 
-#: data/ui/convolver.ui:82
+#: data/ui/convolver.ui:78
 #, fuzzy
 msgid "Impulses"
 msgstr "Resposta de impulso"
 
-#: data/ui/convolver.ui:90
+#: data/ui/convolver.ui:87 data/ui/convolver.ui:545 data/ui/convolver.ui:547
+msgid "Combine"
+msgstr ""
+
+#: data/ui/convolver.ui:95
 msgid "Stereo Width"
 msgstr "Largura do estéreo"
 
-#: data/ui/convolver.ui:119 src/spectrum_settings_ui.cpp:190
+#: data/ui/convolver.ui:124 src/spectrum_settings_ui.cpp:190
 msgid "Spectrum"
 msgstr "Espectro"
 
-#: data/ui/convolver.ui:163
+#: data/ui/convolver.ui:168
 msgid "Samples"
 msgstr "Mostras"
 
-#: data/ui/convolver.ui:189
+#: data/ui/convolver.ui:194
 msgid "Duration"
 msgstr "Duración"
 
-#: data/ui/convolver.ui:438
+#: data/ui/convolver.ui:443
 msgid "Import Impulse"
 msgstr "Importar impulso"
 
-#: data/ui/convolver.ui:446 data/ui/effects_base.ui:393
+#: data/ui/convolver.ui:451 data/ui/effects_base.ui:393
 #: data/ui/presets_menu.ui:139 data/ui/presets_menu.ui:249
 msgid "Search"
 msgstr ""
 
-#: data/ui/convolver.ui:448
+#: data/ui/convolver.ui:453
 #, fuzzy
 msgid "Search Impulse File"
 msgstr "Importar ficheiro de impulso"
 
-#: data/ui/convolver.ui:468
+#: data/ui/convolver.ui:473
 #, fuzzy
 msgid "Impulse Files List"
 msgstr "Importar ficheiro de impulso"
+
+#: data/ui/convolver.ui:497
+#, fuzzy
+msgid "Combine Impulse Responses"
+msgstr "Resposta de impulso"
+
+#: data/ui/convolver.ui:505
+msgid "First Kernel"
+msgstr ""
+
+#: data/ui/convolver.ui:514
+msgid "Second Kernel"
+msgstr ""
+
+#: data/ui/convolver.ui:523
+#, fuzzy
+msgid "Output File Name"
+msgstr "Saída"
+
+#: data/ui/convolver.ui:527
+msgid "Combined kernel Name"
+msgstr ""
 
 #: data/ui/crossfeed.ui:26
 msgid "Cmoy"
@@ -1861,7 +1887,7 @@ msgstr "Oitavas"
 msgid "Crispness"
 msgstr "Limpidez"
 
-#: data/ui/preset_row.ui:18 src/convolver_ui.cpp:228
+#: data/ui/preset_row.ui:18 src/convolver_ui.cpp:261
 msgid "Load"
 msgstr "Cargar"
 
@@ -2315,41 +2341,41 @@ msgstr "Preconfiguracións de entrada: "
 msgid "Audio effects for PipeWire applications"
 msgstr "Efectos de son para as aplicacións de PulseAudio"
 
-#: src/convolver_ui.cpp:254
+#: src/convolver_ui.cpp:287
 #, fuzzy
 msgid "Load Impulse"
 msgstr "Resposta de impulso"
 
-#: src/convolver_ui.cpp:257
+#: src/convolver_ui.cpp:290
 #, fuzzy
 msgid "Remove Impulse"
 msgstr "Importar impulso"
 
-#: src/convolver_ui.cpp:352 src/convolver_ui.cpp:355
+#: src/convolver_ui.cpp:436 src/convolver_ui.cpp:439
 msgid "Import Impulse File"
 msgstr "Importar ficheiro de impulso"
 
-#: src/convolver_ui.cpp:353 src/convolver_ui.cpp:355 src/equalizer_ui.cpp:569
+#: src/convolver_ui.cpp:437 src/convolver_ui.cpp:439 src/equalizer_ui.cpp:569
 #: src/equalizer_ui.cpp:571 src/presets_menu_ui.cpp:230 src/rnnoise_ui.cpp:234
 #: src/rnnoise_ui.cpp:237
 msgid "Open"
 msgstr "Abrir"
 
-#: src/convolver_ui.cpp:353 src/convolver_ui.cpp:356 src/equalizer_ui.cpp:569
+#: src/convolver_ui.cpp:437 src/convolver_ui.cpp:440 src/equalizer_ui.cpp:569
 #: src/equalizer_ui.cpp:572 src/presets_menu_ui.cpp:230 src/rnnoise_ui.cpp:234
 #: src/rnnoise_ui.cpp:237
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/convolver_ui.cpp:361
+#: src/convolver_ui.cpp:445
 msgid "Impulse Response"
 msgstr "Resposta de impulso"
 
-#: src/convolver_ui.cpp:402 src/convolver_ui.cpp:403 src/convolver_ui.cpp:405
+#: src/convolver_ui.cpp:482 src/convolver_ui.cpp:483 src/convolver_ui.cpp:485
 msgid "Failed"
 msgstr "Fallou"
 
-#: src/convolver_ui.cpp:407
+#: src/convolver_ui.cpp:487
 msgid "Could Not Load The Impulse File"
 msgstr "Non foi posíbel cargar o ficheiro de impulso"
 
@@ -2357,27 +2383,27 @@ msgstr "Non foi posíbel cargar o ficheiro de impulso"
 msgid "Add"
 msgstr ""
 
-#: src/effects_base_ui.cpp:1432
+#: src/effects_base_ui.cpp:1416
 msgid "running"
 msgstr "en execución"
 
-#: src/effects_base_ui.cpp:1434
+#: src/effects_base_ui.cpp:1418
 msgid "suspended"
 msgstr "suspendido"
 
-#: src/effects_base_ui.cpp:1436
+#: src/effects_base_ui.cpp:1420
 msgid "idle"
 msgstr "ocioso"
 
-#: src/effects_base_ui.cpp:1438
+#: src/effects_base_ui.cpp:1422
 msgid "creating"
 msgstr "a crear"
 
-#: src/effects_base_ui.cpp:1440
+#: src/effects_base_ui.cpp:1424
 msgid "error"
 msgstr "erro"
 
-#: src/effects_base_ui.cpp:1442
+#: src/effects_base_ui.cpp:1426
 msgid "unknown"
 msgstr ""
 
