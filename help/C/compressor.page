@@ -6,63 +6,87 @@
     </info>
     <title>Compressor</title>
     <p>A compressor is used to reduce the audio signal dynamic range.</p>
-    <p>EasyEffects uses the compressor from Linux Studio Plugins.</p>
+    <p>EasyEffects uses the sidechain compressor from Linux Studio Plugins.</p>
     <section>
         <terms>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Attack</em>
+                    <em style="strong" its:withinText="nested">Attack Time</em>
                 </title>
-                <p>Attack determines how many milliseconds (ms) it takes your compressor to apply a full dose of compression to your audio signal once it passes the threshold. If the signal peaks above the threshold and quickly returns to below the threshold, it may never receive a full dose of compression.</p>
+                <p>The length of time it takes to apply roughly two-thirds of the targeted amount of compression ratio to the uncompressed signal.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Release</em>
+                    <em style="strong" its:withinText="nested">Release Time</em>
                 </title>
-                <p>Release determines how many milliseconds (ms) it takes your compressor to stop attenuating gain once your audio signal drops below the threshold. A fast release will cause your compressor to stop attenuating gain quickly once the signal returns below the threshold. A slow release will cause your compressor to stop attenuating gain slowly once the signal returns below the threshold.</p>
+                <p>The length of time it takes to restore roughly two-thirds of the reduced gain (in downward mode) or increased gain (in upward mode) to the compressed signal.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Threshold</em>
+                    <em style="strong" its:withinText="nested">Attack Threshold</em>
                 </title>
-                <p>If a signal surpass this level it will trigger the compression stage.</p>
+                <p>The target level around which the compression is applied (the range depends by the knee).</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Release Threshold</em>
+                </title>
+                <p>Telative to the Attack Threshold that sets up the threshold of the Release Time.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
-                <p>Set the ratio by which the signal will be reduced.</p>
+                <p>The amount of attenuation that will be applied to the signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Knee</em>
                 </title>
-                <p>Controls how smooth is the entrance in the gain reduction phase.</p>
+                <p>The decibel range over which the compressor switches from no compression to almost the full ratio compression (the threshold usually sits at the center of this transition zone).</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Makeup</em>
                 </title>
-                <p>It amplifies your signal after processing.</p>
+                <p>The gain to apply after the compression stage.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Compression Mode</em>
+                    <em style="strong" its:withinText="nested">Mode</em>
                 </title>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Downward</em>
-                            - Decreases the amplitude of the signal sections that are above the threshold.
+                            - Decreases the gain of the signal above the threshold.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Upwards</em>
-                            - Increases the amplitude of the signal sections that are below the threshold.
+                            <em style="strong">Upward</em>
+                            - Increases the gain of the signal below the threshold.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">Boosting</em>
+                            - Increases the gain of the signal below the threshold by a specific amount.
                         </p>
                     </item>
                 </list>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Boost Threshold</em>
+                </title>
+                <p>The threshold below which a constant amplification will be applied to the input signal in Upward Mode (it prevents from applying infinite amplification to very quiet signals).</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Boost Amount</em>
+                </title>
+                <p>Maximum gain amplification to apply in Boosting Mode.</p>
             </item>
         </terms>
     </section>
@@ -77,50 +101,64 @@
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Type</em>
+                    <em style="strong" its:withinText="nested">Input Type</em>
                 </title>
+                <p>Determines which signal is the sidechain or, in other words, the signal that controls the compression stage.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Feed-forward</em>
-                            - The sidechain input is connected to compressor's input. More aggressive compression.
+                            - The sidechain is the compressor input signal (taken after applying the plugin input gain). More aggressive compression.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Feed-back</em>
-                            - The sidechain input is connected to compressor's output. Vintage-style more accurate compression.
+                            - The sidechain is the compressor output signal (taken before applying the makeup and the plugin output gain). Vintage-style compression.
+                        </p>
+                    </item>
+                    <item>
+                        <p>
+                            <em style="strong">External</em>
+                            - The sidechain is an external source took by a specific input device (tipically a microphone).
                         </p>
                     </item>
                 </list>
             </item>
             <item>
                 <title>
+                    <em style="strong" its:withinText="nested">Input Device</em>
+                </title>
+                <p>Select the device for the External Sidechain.</p>
+            </item>
+            <item>
+                <title>
                     <em style="strong" its:withinText="nested">Mode</em>
                 </title>
+                <p>Determines how the sidechain is evaluated for the compression stage.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Peak</em>
-                            - Measure signal's peak.
+                            - The compressor reacts according to the peaks.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">RMS</em>
-                            - Root mean square of the input signal.
+                            - The compressor reacts according to the average loudness measured by the root mean square.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Low-Pass</em>
-                            - Input signal is processed by a low-pass filter.
+                            - The compressor reacts according to the signal processed by a Low-Pass filter.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Uniform</em>
-                            - Input signal is processed by a uniform filter.
+                            - The compressor reacts according to the signal processed by an Uniform filter.
                         </p>
                     </item>
                 </list>
@@ -129,38 +167,39 @@
                 <title>
                     <em style="strong" its:withinText="nested">Source</em>
                 </title>
+                <p>Determines witch part of the sidechain is taken into account for the compression stage.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Middle</em>
-                            - Middle part of signal is used for sidechain processing.
+                            - The middle part of signal.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Side</em>
-                            - Side part of signal is used for sidechain processing.
+                            - The side part of signal.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Left</em>
-                            - Only left channel is used for sidechain processing.
+                            - Only left channel is used.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Right</em>
-                            - Only right channel is used for sidechain processing.
+                            - Only right channel is used.
                         </p>
                     </item>
                 </list>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Pre-amplification</em>
+                    <em style="strong" its:withinText="nested">PreAmplification</em>
                 </title>
-                <p>Pre-amplification of the sidechain signal.</p>
+                <p>Gain applied to the sidechain signal.</p>
             </item>
             <item>
                 <title>
@@ -172,48 +211,36 @@
                 <title>
                     <em style="strong" its:withinText="nested">Lookahead</em>
                 </title>
-                <p>Look-ahead time of the sidechain relative to the input signal.</p>
+                <p>The signal to compress is delayed by this amount of time, so that the compression will be applied earlier than it would be otherwise.</p>
             </item>
         </terms>
     </section>
     <section>
-        <title>Advanced</title>
+        <title>Sidechain Filters</title>
         <terms>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Relative Release Threshold</em>
+                    <em style="strong" its:withinText="nested">High-Pass Filter Mode</em>
                 </title>
-                <p>Relative to the Attack Threshold that sets up the threshold of Release Time.</p>
+                <p>Sets the type of the High-Pass filter applied to sidechain signal.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Boost Threshold</em>
+                    <em style="strong" its:withinText="nested">High-Pass Frequency</em>
                 </title>
-                <p>Related to upward compression mode only. It defines the threshold below which the constant amplification will be applied to the input signal. This prevents the compressor from applying infinite amplification to very quiet signals.</p>
+                <p>Sets the cut-off frequency of the High-Pass filter.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">High-pass Filter Mode</em>
+                    <em style="strong" its:withinText="nested">Low-Pass Filter Mode</em>
                 </title>
-                <p>Sets the type of the high-pass filter applied to sidechain signal.</p>
+                <p>Sets the type of the Low-Pass filter applied to sidechain signal.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">High-pass Frequency</em>
+                    <em style="strong" its:withinText="nested">Low-Pass Frequency</em>
                 </title>
-                <p>Sets the cut-off frequency of the high-pass filter.</p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Low-pass Filter Mode</em>
-                </title>
-                <p>Sets the type of the low-pass filter applied to sidechain signal.</p>
-            </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Low-pass Frequency</em>
-                </title>
-                <p>Sets the cut-off frequency of the low-pass filter.</p>
+                <p>Sets the cut-off frequency of the Low-Pass filter.</p>
             </item>
         </terms>
     </section>
@@ -222,17 +249,22 @@
         <list>
             <item>
                 <p>
-                    <link href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression" its:translate="no">https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression</link>
+                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression" its:translate="no">Wikipedia Dynamic Range Compression</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo" its:translate="no">https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo</link>
+                    <link href="https://lsp-plug.in/?page=manuals&amp;section=sc_compressor_stereo" its:translate="no">LSP Sidechain Compressor Stereo</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Dynamic_range_compression" its:translate="no">https://en.wikipedia.org/wiki/Dynamic_range_compression</link>
+                    <link href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression" its:translate="no">Black Ghost Audio - The Ultimate Guide to Compression</link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://www.attackmagazine.com/features/columns/gregory-scott-demolishing-the-myths-of-compression/" its:translate="no">Attack Magazine - Demolishing The Myths of Compression</link>
                 </p>
             </item>
         </list>
