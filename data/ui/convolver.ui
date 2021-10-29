@@ -500,6 +500,7 @@
 
                 <child>
                     <object class="GtkDropDown" id="dropdown_kernel_1">
+                        <property name="enable-search">1</property>
                         <accessibility>
                             <property name="label" translatable="yes">First Kernel</property>
                         </accessibility>
@@ -508,6 +509,7 @@
 
                 <child>
                     <object class="GtkDropDown" id="dropdown_kernel_2">
+                        <property name="enable-search">1</property>
                         <accessibility>
                             <property name="label" translatable="yes">Second Kernel</property>
                         </accessibility>

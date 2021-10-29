@@ -320,6 +320,10 @@ void ConvolverUi::setup_listview() {
 }
 
 void ConvolverUi::setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list) {
+  // set the search expression
+
+  dropdown->set_expression(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
+
   // sorter
 
   const auto sorter =

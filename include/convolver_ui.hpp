@@ -106,7 +106,7 @@ class ConvolverUi : public Gtk::Box, public PluginUiBase {
 
   void setup_listview();
 
-  void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
+  static void setup_dropdown_kernels(Gtk::DropDown* dropdown, const Glib::RefPtr<Gtk::StringList>& string_list);
 
   auto get_irs_names() -> std::vector<Glib::ustring>;
 
