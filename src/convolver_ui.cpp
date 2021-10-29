@@ -823,7 +823,7 @@ auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, s
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
 
-  auto sndfile = SndfileHandle(file_path.c_str());
+  auto sndfile = SndfileHandle(file_path.string());
 
   if (sndfile.channels() != 2 || sndfile.frames() == 0) {
     util::warning(log_tag + name + " Only stereo impulse responses are supported.");
@@ -850,15 +850,13 @@ auto ConvolverUi::read_kernel(const std::string& file_name) -> std::tuple<int, s
 
 void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
                                   const std::string& kernel_2_name,
-                                  const std::string& output_name) {
-  if (output_name.empty()) {
+                                  const std::string& output_file_name) {
+  if (output_file_name.empty()) {
     // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
     Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
 
     return;
   }
-
-  const auto output_path = irs_dir / std::filesystem::path{output_name + irs_ext};
 
   auto [rate1, kernel_1_L, kernel_1_R] = read_kernel(kernel_1_name);
   auto [rate2, kernel_2_L, kernel_2_R] = read_kernel(kernel_2_name);
@@ -904,6 +902,28 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
     direct_conv(kernel_2_R, kernel_1_R, kernel_R);
   }
 
+  std::vector<float> buffer(kernel_L.size() * 2);  // 2 channels interleaved
+
+  for (size_t n = 0; n < kernel_L.size(); n++) {
+    buffer[2 * n] = kernel_L[n];
+    buffer[2 * n + 1] = kernel_R[n];
+
+    // util::warning(std::to_string(kernel_L[n]));
+  }
+
+  const auto output_file_path = irs_dir / std::filesystem::path{output_file_name + irs_ext};
+
+  auto mode = SFM_WRITE;
+  auto format = SF_FORMAT_WAV | SF_FORMAT_PCM_32;
+  auto n_channels = 2;
+  auto rate = (rate1 > rate2) ? rate1 : rate2;
+
+  auto sndfile = SndfileHandle(output_file_path.string(), mode, format, n_channels, rate);
+
+  sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
+
+  util::debug(log_tag + name + " combined kernel saved: " + output_file_path.string());
+
   Glib::signal_idle().connect_once([=, this] { spinner_combine_kernel->stop(); });
 }
 
@@ -914,6 +934,8 @@ void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<flo
     for (uint m = 0U; m < b.size(); m++) {
       if (n - m >= 0U && n - m < a.size() - 1U) {
         c[n] += b[m] * a[n - m];
+
+        // util::warning(std::to_string(b[m] * a[n - m]));
       }
     }
   });
