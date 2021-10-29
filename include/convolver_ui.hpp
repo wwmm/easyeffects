@@ -27,6 +27,7 @@
 #include <filesystem>
 #include <mutex>
 #include <numbers>
+#include <ranges>
 #include <sndfile.hh>
 #include <tuple>
 #include "plot.hpp"

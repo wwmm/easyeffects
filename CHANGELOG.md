@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Added
+
+- It is now possible to combine impulse responses in the convolver interface. A new impulse file is generated and it
+  should be visible in the impulse list.
+
 ## [6.1.4]
 
 ### Added

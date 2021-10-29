@@ -907,8 +907,6 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
   for (size_t n = 0; n < kernel_L.size(); n++) {
     buffer[2 * n] = kernel_L[n];
     buffer[2 * n + 1] = kernel_R[n];
-
-    // util::warning(std::to_string(kernel_L[n]));
   }
 
   const auto output_file_path = irs_dir / std::filesystem::path{output_file_name + irs_ext};
@@ -928,14 +926,16 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
 }
 
 void ConvolverUi::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
-  std::for_each(std::execution::par_unseq, c.begin(), c.end(), [&](size_t n) {
+  std::vector<size_t> indices(c.size());
+
+  std::iota(indices.begin(), indices.end(), 0);
+
+  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), [&](size_t n) {
     c[n] = 0.0F;
 
     for (uint m = 0U; m < b.size(); m++) {
       if (n - m >= 0U && n - m < a.size() - 1U) {
         c[n] += b[m] * a[n - m];
-
-        // util::warning(std::to_string(b[m] * a[n - m]));
       }
     }
   });
