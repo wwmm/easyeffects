@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
     <object class="GtkPopover" id="popover_menu">
-        <property name="autohide">0</property>
+        <property name="autohide">1</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>
