@@ -428,6 +428,7 @@
     </object>
 
     <object class="GtkPopover" id="popover_import">
+        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>
@@ -483,6 +484,7 @@
     </object>
 
     <object class="GtkPopover" id="popover_combine">
+        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

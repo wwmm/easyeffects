@@ -282,6 +282,7 @@
     </object>
 
     <object class="GtkPopover" id="popover_blocklist">
+        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>
@@ -377,6 +378,7 @@
     </object>
 
     <object class="GtkPopover" id="popover_plugins">
+        <property name="autohide">0</property>
         <child>
             <object class="GtkBox">
                 <property name="margin-start">6</property>

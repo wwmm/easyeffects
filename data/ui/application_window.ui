@@ -186,6 +186,7 @@
     </object>
 
     <object class="GtkPopover" id="settings_menu">
+        <property name="autohide">0</property>
         <accessibility>
             <property name="label" translatable="yes">Settings Menu</property>
         </accessibility>
