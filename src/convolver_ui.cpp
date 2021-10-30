@@ -103,13 +103,25 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
     const auto kernel_1_name = dropdown_kernel_1->get_selected_item()->get_property<Glib::ustring>("string").raw();
     const auto kernel_2_name = dropdown_kernel_2->get_selected_item()->get_property<Glib::ustring>("string").raw();
 
-    /*
-      The current code convolving the impulse responses is doing direct convolution. It can very slow depending on the
-      size of each kernel. So we do not want to do it in the main thread
-    */
+    auto output_file_name = combined_kernel_name->get_text();
 
-    mythreads.emplace_back(  // Using emplace_back here makes sense
-        [=, this]() { combine_kernels(kernel_1_name, kernel_2_name, combined_kernel_name->get_text()); });
+    if (output_file_name.empty()) {
+      combined_kernel_name->set_css_classes({"error"});
+
+      combined_kernel_name->grab_focus();
+
+      spinner_combine_kernel->stop();
+    } else {
+      combined_kernel_name->remove_css_class("error");
+
+      /*
+        The current code convolving the impulse responses is doing direct convolution. It can very slow depending on the
+        size of each kernel. So we do not want to do it in the main thread
+      */
+
+      mythreads.emplace_back(  // Using emplace_back here makes sense
+          [=, this]() { combine_kernels(kernel_1_name, kernel_2_name, output_file_name); });
+    }
   });
 
   check_left->signal_toggled().connect([&, this]() {
