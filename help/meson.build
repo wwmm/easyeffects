@@ -13,6 +13,7 @@ help_pages = [
   'filter.page',
   'gate.page',
   'delay.page',
+  'echocanceller.page',
   'index.page',
   'limiter.page',
   'loudness.page',
