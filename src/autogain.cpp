@@ -86,8 +86,6 @@ void AutoGain::init_ebur128() {
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
-  // ebur128_set_max_window(ebur_state, 30000);
-
   data_mutex.lock();
 
   ebur128_ready = ebur_state != nullptr;
@@ -119,7 +117,9 @@ void AutoGain::setup() {
 
     data_mutex.unlock();
 
-    data.resize(n_samples * 2);
+    if (n_samples != data.size()) {
+      data.resize(n_samples * 2);
+    }
 
     if (rate != old_rate) {
       old_rate = rate;

@@ -170,36 +170,6 @@
                 <property name="vexpand">0</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkLabel" id="lt_title">
-                        <property name="halign">end</property>
-                        <property name="xalign">1</property>
-                        <property name="label" translatable="yes">Long-Term</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLevelBar" id="lt_level">
-                        <property name="valign">center</property>
-                        <property name="hexpand">1</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkLabel" id="lt_label">
-                        <property name="halign">end</property>
-                        <property name="width-chars">4</property>
-                        <property name="label">0</property>
-                    </object>
-                </child>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkBox">
-                <property name="hexpand">1</property>
-                <property name="vexpand">0</property>
-                <property name="spacing">6</property>
-                <child>
                     <object class="GtkLabel" id="i_title">
                         <property name="halign">end</property>
                         <property name="xalign">1</property>
@@ -566,7 +536,6 @@
         <widgets>
             <widget name="m_title" />
             <widget name="s_title" />
-            <widget name="lt_title" />
             <widget name="i_title" />
             <widget name="r_title" />
             <widget name="lra_title" />
