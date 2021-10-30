@@ -165,6 +165,10 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
   if (const auto n_points = y_axis.size(); n_points > 0) {
     const auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
 
+    if (objects_x.empty()) {
+      return;
+    }
+
     x_axis_height = draw_x_labels(ctx, width, height);
 
     int usable_height = height - x_axis_height;

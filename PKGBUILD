@@ -28,17 +28,11 @@ pkgver() {
 }
 
 build() {
-  mkdir -p easyeffects/build
+  arch-meson easyeffects build
 
-  cd easyeffects/build
-
-  arch-meson ..
-
-  ninja
+  ninja -C build
 }
 
 package() {
-  cd easyeffects/build
-
-  DESTDIR="$pkgdir" ninja install
+  DESTDIR="${pkgdir}" ninja install -C build
 }

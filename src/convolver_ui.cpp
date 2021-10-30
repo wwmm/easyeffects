@@ -388,7 +388,7 @@ auto ConvolverUi::get_irs_names() -> std::vector<Glib::ustring> {
   for (std::filesystem::directory_iterator it{irs_dir}; it != std::filesystem::directory_iterator{}; ++it) {
     if (std::filesystem::is_regular_file(it->status())) {
       if (it->path().extension().c_str() == irs_ext) {
-        names.push_back(it->path().stem().c_str());
+        names.push_back(it->path().stem().string());
       }
     }
   }

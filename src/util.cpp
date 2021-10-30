@@ -56,11 +56,13 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
 
   float v = start;
 
-  while (v <= stop) {
+  while (output.size() != npoints) {
     output.push_back(std::pow(10.0F, v));
 
     v += delta;
   }
+
+  output[output.size() - 1] = std::pow(10.0F, stop);
 
   return output;
 }
@@ -76,11 +78,13 @@ auto linspace(const float& start, const float& stop, const uint& npoints) -> std
 
   float v = start;
 
-  while (v <= stop) {
+  while (output.size() != npoints) {
     output.push_back(v);
 
     v += delta;
   }
+
+  output[output.size() - 1] = stop;
 
   return output;
 }
