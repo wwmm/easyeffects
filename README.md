@@ -55,6 +55,7 @@ must have the following installed in your system:
 - [fftw](https://fftw.org/)
 - [speexdsp](https://www.speex.org/)
 - [nlohmann json](https://github.com/nlohmann/json)
+- [tbb](https://www.threadingbuildingblocks.org)
 
 ## Donate
 

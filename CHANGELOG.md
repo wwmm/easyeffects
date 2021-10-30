@@ -7,6 +7,10 @@
 - It is now possible to combine impulse responses in the convolver interface. A new impulse file is generated and it
   should be visible in the impulse list.
 
+### Note to packagers
+
+- The `tbb` library is a new dependency https://www.threadingbuildingblocks.org
+
 ## [6.1.4]
 
 ### Added
