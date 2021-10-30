@@ -5,9 +5,14 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Filter</title>
-    <p>Audio filters can amplify (boost), pass or attenuate (cut) some frequency ranges.</p>
-    <p>EasyEffects uses the filter from Calf Studio. It can be used to remove defined parts of a frequency spectrum.</p>
+    <p>A Filter is used to amplify (boost), pass or attenuate (cut) defined parts of a frequency spectrum. EasyEffects uses the Filter from Calf Studio Gear.</p>
     <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Mode</em>
+            </title>
+            <p>The type of the filter.</p>
+        </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Frequency</em>
@@ -18,7 +23,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Resonance</em>
             </title>
-            <p>Add an accentuation to the center frequency. When used on a bandpass the surrounding frequencies are decreased in level and the band gets more narrow, a bandreject is narrowed down to a thin needle.</p>
+            <p>Add an accentuation to the center frequency. When used on a bandpass the surrounding frequencies are decreased in level and the band gets more narrow. A bandreject is narrowed down to a thin needle.</p>
         </item>
         <item>
             <title>
@@ -32,12 +37,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Audio_filter" its:translate="no">https://en.wikipedia.org/wiki/Audio_filter</link>
+                    <link href="https://en.wikipedia.org/wiki/Audio_filter" its:translate="no">Wikipedia Audio Filter</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Filter.html" its:translate="no">https://calf-studio-gear.org/doc/Filter.html</link>
+                    <link href="https://calf-studio-gear.org/doc/Filter.html" its:translate="no">Calf Filter</link>
                 </p>
             </item>
         </list>
