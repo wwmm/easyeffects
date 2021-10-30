@@ -31,9 +31,15 @@ AutoGain::AutoGain(const std::string& tag,
   settings->signal_changed("target").connect([&, this](const auto& key) { target = settings->get_double(key); });
 
   settings->signal_changed("reset-history").connect([&, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+      data_mutex.lock();
 
-    init_ebur128();
+      ebur128_ready = false;
+
+      data_mutex.unlock();
+
+      init_ebur128();
+    });
   });
 
   settings->signal_changed("reference").connect([&, this](const auto& key) {
@@ -48,6 +54,12 @@ AutoGain::~AutoGain() {
     disconnect_from_pw();
   }
 
+  for (auto& t : mythreads) {
+    t.join();
+  }
+
+  mythreads.clear();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (ebur_state != nullptr) {
@@ -58,8 +70,6 @@ AutoGain::~AutoGain() {
 }
 
 void AutoGain::init_ebur128() {
-  ebur128_ready = false;
-
   if (n_samples == 0 || rate == 0) {
     return;
   }
@@ -76,7 +86,13 @@ void AutoGain::init_ebur128() {
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
+  // ebur128_set_max_window(ebur_state, 30000);
+
+  data_mutex.lock();
+
   ebur128_ready = ebur_state != nullptr;
+
+  data_mutex.unlock();
 }
 
 auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
@@ -96,15 +112,21 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
 }
 
 void AutoGain::setup() {
-  std::scoped_lock<std::mutex> lock(data_mutex);
+  mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+    data_mutex.lock();
 
-  if (rate != old_rate) {
-    old_rate = rate;
+    ebur128_ready = false;
 
-    init_ebur128();
-  }
+    data_mutex.unlock();
 
-  data.resize(n_samples * 2);
+    data.resize(n_samples * 2);
+
+    if (rate != old_rate) {
+      old_rate = rate;
+
+      init_ebur128();
+    }
+  });
 }
 
 void AutoGain::process(std::span<float>& left_in,
