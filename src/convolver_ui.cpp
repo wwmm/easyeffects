@@ -562,20 +562,6 @@ void ConvolverUi::get_irs_info() {
     right_mag = r;
   }
 
-  // ensure that the fft can be computed
-
-  if (time_axis.size() % 2U != 0U) {
-    time_axis.push_back(static_cast<float>(time_axis.size() - 1U) * dt);
-  }
-
-  if (left_mag.size() % 2U != 0U) {
-    left_mag.push_back(0.0F);
-  }
-
-  if (right_mag.size() % 2U != 0U) {
-    right_mag.push_back(0.0F);
-  }
-
   time_axis.shrink_to_fit();
   left_mag.shrink_to_fit();
   right_mag.shrink_to_fit();

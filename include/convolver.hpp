@@ -67,6 +67,8 @@ class Convolver : public PluginBase {
 
   Convproc* conv = nullptr;
 
+  std::vector<std::thread> mythreads;
+
   void read_kernel_file();
 
   void apply_kernel_autogain();
