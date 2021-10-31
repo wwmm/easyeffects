@@ -6,6 +6,8 @@
 
 - It is now possible to combine impulse responses in the convolver interface. A new impulse file is generated and it
   should be visible in the impulse list.
+- Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window
+  width.
 
 ### Note to packagers
 

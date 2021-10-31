@@ -83,8 +83,6 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   plot = std::make_unique<Plot>(drawing_area);
 
-  plot->set_n_x_labels(6);
-
   popover_import->signal_show().connect([=, this]() {
     int height = static_cast<int>(0.5F * static_cast<float>(get_allocated_height()));
 
@@ -683,7 +681,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
 
   // initializing the logarithmic frequency axis
 
-  const auto log_axis = util::logspace(std::log10(20.0F), std::log10(22000.0F), bin_size);
+  const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<float> l(log_axis.size());

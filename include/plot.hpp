@@ -55,8 +55,6 @@ class Plot {
 
   void set_fill_bars(const bool& v);
 
-  void set_n_x_labels(const int& v);
-
   void set_n_x_decimals(const int& v);
 
   void set_n_y_decimals(const int& v);
@@ -66,7 +64,7 @@ class Plot {
   void set_y_unit(const Glib::ustring& value);
 
  private:
-  inline static const std::string log_tag = "plot: ";
+  const std::string log_tag = "plot: ";
 
   Gtk::DrawingArea* da = nullptr;
 
@@ -78,7 +76,6 @@ class Plot {
   bool fill_bars = true;
 
   int x_axis_height = 0;
-  int n_x_labels = 10;
   int n_x_decimals = 1;
   int n_y_decimals = 1;
 

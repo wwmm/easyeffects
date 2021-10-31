@@ -48,21 +48,26 @@ void print_thread_id() {
 auto logspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
-  if (stop <= start) {
+  if (stop <= start || npoints < 2) {
     return output;
   }
 
-  const float delta = (stop - start) / static_cast<float>(npoints);
+  auto log10_start = std::log10(start);
+  auto log10_stop = std::log10(stop);
 
-  float v = start;
+  const float delta = (log10_stop - log10_start) / static_cast<float>(npoints - 1);
 
-  while (output.size() != npoints) {
-    output.push_back(std::pow(10.0F, v));
+  output.push_back(start);
 
+  float v = log10_start;
+
+  while (output.size() < npoints - 1) {
     v += delta;
+
+    output.push_back(std::pow(10.0F, v));
   }
 
-  output[output.size() - 1] = std::pow(10.0F, stop);
+  output.push_back(stop);
 
   return output;
 }
@@ -70,21 +75,23 @@ auto logspace(const float& start, const float& stop, const uint& npoints) -> std
 auto linspace(const float& start, const float& stop, const uint& npoints) -> std::vector<float> {
   std::vector<float> output;
 
-  if (stop <= start) {
+  if (stop <= start || npoints < 2) {
     return output;
   }
 
-  const float delta = (stop - start) / static_cast<float>(npoints);
+  const float delta = (stop - start) / static_cast<float>(npoints - 1);
+
+  output.push_back(start);
 
   float v = start;
 
-  while (output.size() != npoints) {
-    output.push_back(v);
-
+  while (output.size() < npoints - 1) {
     v += delta;
+
+    output.push_back(v);
   }
 
-  output[output.size() - 1] = stop;
+  output.push_back(stop);
 
   return output;
 }

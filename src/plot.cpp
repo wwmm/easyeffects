@@ -139,10 +139,6 @@ void Plot::set_fill_bars(const bool& v) {
   fill_bars = v;
 }
 
-void Plot::set_n_x_labels(const int& v) {
-  n_x_labels = v;
-}
-
 void Plot::set_n_x_decimals(const int& v) {
   n_x_decimals = v;
 }
@@ -182,10 +178,10 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 
           if (draw_bar_border) {
             ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
-                           static_cast<double>(width) / n_points - line_width, bar_height);
+                           static_cast<double>(width) / static_cast<double>(n_points) - line_width, bar_height);
           } else {
             ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
-                           static_cast<double>(width) / n_points, bar_height);
+                           static_cast<double>(width) / static_cast<double>(n_points), bar_height);
           }
         }
 
@@ -241,13 +237,26 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 }
 
 auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) -> int {
-  const double labels_offset = width / static_cast<double>(n_x_labels);
+  /*
+     Initial value for the offset between labels. For it has been found based on trial and error. It would be good
+     to have a better procedure to estimate the "good" separation value between labels
+  */
+
+  double labels_offset = 120;
+
+  int n_x_labels = static_cast<int>(std::ceil(width / labels_offset)) + 1;
+
+  /*
+    Correcting the offset based on the final n_x_labels value
+  */
+
+  labels_offset = width / static_cast<double>(n_x_labels - 1);
 
   std::vector<float> labels;
 
   switch (plot_scale) {
     case PlotScale::logarithmic: {
-      labels = util::logspace(std::log10(static_cast<float>(x_min)), std::log10(static_cast<float>(x_max)), n_x_labels);
+      labels = util::logspace(x_min, x_max, n_x_labels);
 
       break;
     }
@@ -262,11 +271,10 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
                        color_axis_labels.get_alpha());
 
   /*
-    we stop the loop at labels.size() - 1 because there is no space left in the window to show the last label. It
-    would start to be drawn at the border of the window.
+    There is no space left in the window to show the last label. So we skip it
   */
 
-  for (size_t n = 0U; n < labels.size() - 1U; n++) {
+  for (size_t n = 0U; n < labels.size() - 1; n++) {
     const auto msg = Glib::ustring::format(std::setprecision(n_x_decimals), std::fixed, labels[n]) + " " + x_unit;
 
     Pango::FontDescription font;
@@ -280,7 +288,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     layout->set_font_description(font);
     layout->get_pixel_size(text_width, text_height);
 
-    ctx->move_to(n * labels_offset, static_cast<double>(height - text_height));
+    ctx->move_to(static_cast<double>(n) * labels_offset, static_cast<double>(height - text_height));
 
     layout->show_in_cairo_context(ctx);
 

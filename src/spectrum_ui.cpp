@@ -201,7 +201,7 @@ void SpectrumUi::init_frequency_axis() {
       return;
     }
 
-    spectrum_x_axis = util::logspace(std::log10(min_freq), std::log10(max_freq), settings->get_int("n-points"));
+    spectrum_x_axis = util::logspace(min_freq, max_freq, settings->get_int("n-points"));
 
     const auto x_axis_size = spectrum_x_axis.size();
 
