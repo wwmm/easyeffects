@@ -69,7 +69,7 @@ class AutoGain : public PluginBase {
 
   std::vector<std::thread> mythreads;
 
-  void init_ebur128();
+  auto init_ebur128() -> bool;
 
   static auto parse_reference_key(const std::string& key) -> Reference;
 };

@@ -38,7 +38,13 @@ AutoGain::AutoGain(const std::string& tag,
 
       data_mutex.unlock();
 
-      init_ebur128();
+      auto status = init_ebur128();
+
+      data_mutex.lock();
+
+      ebur128_ready = status;
+
+      data_mutex.unlock();
     });
   });
 
@@ -69,9 +75,9 @@ AutoGain::~AutoGain() {
   util::debug(log_tag + name + " destroyed");
 }
 
-void AutoGain::init_ebur128() {
+auto AutoGain::init_ebur128() -> bool {
   if (n_samples == 0 || rate == 0) {
-    return;
+    return false;
   }
 
   if (ebur_state != nullptr) {
@@ -86,11 +92,7 @@ void AutoGain::init_ebur128() {
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
-  data_mutex.lock();
-
-  ebur128_ready = ebur_state != nullptr;
-
-  data_mutex.unlock();
+  return ebur_state != nullptr;
 }
 
 auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
@@ -121,11 +123,19 @@ void AutoGain::setup() {
       data.resize(n_samples * 2);
     }
 
+    auto status = true;
+
     if (rate != old_rate) {
       old_rate = rate;
 
-      init_ebur128();
+      status = init_ebur128();
     }
+
+    data_mutex.lock();
+
+    ebur128_ready = status;
+
+    data_mutex.unlock();
   });
 }
 
