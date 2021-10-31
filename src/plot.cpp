@@ -246,6 +246,10 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
 
   int n_x_labels = static_cast<int>(std::ceil(width / labels_offset)) + 1;
 
+  if (n_x_labels < 2) {
+    return 0;
+  }
+
   /*
     Correcting the offset based on the final n_x_labels value
   */
