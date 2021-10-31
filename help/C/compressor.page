@@ -5,8 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Compressor</title>
-    <p>A compressor is used to reduce the audio signal dynamic range.</p>
-    <p>EasyEffects uses the sidechain compressor from Linux Studio Plugins.</p>
+    <p>A Compressor is used to reduce the audio signal dynamic range. EasyEffects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
     <section>
         <terms>
             <item>

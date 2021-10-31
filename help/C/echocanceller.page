@@ -5,7 +5,8 @@
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Echo Canceller</title>
-    <p>Echo Cancellation is used to improve voice quality by preventing echo from being created or removing it after it is already present. In any hands-free communication system, speech from the remote end is played in the local loudspeaker, propagates in the room and is captured by the microphone. If the audio captured from the microphone is sent directly to the remote end, then the remote user hears an echo of his voice. An acoustic echo canceller is designed to remove the acoustic echo before it is sent to the remote end.</p>
+    <p>Echo Cancellation is used to improve voice quality by preventing echo from being created or removing it after it is already present.</p>
+    <p>In any hands-free communication system, speech from the remote end is played in the local loudspeaker, propagates in the room and is captured by the microphone. If the audio captured from the microphone is sent directly to the remote end, then the remote user hears an echo of his voice. An acoustic echo canceller is designed to remove the acoustic echo before it is sent to the remote end.</p>
     <terms>
         <item>
             <title>

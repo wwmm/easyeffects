@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="loudness">
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="bassloudness">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
-    <title>Loudness</title>
+    <title>Bass Loudness</title>
     <p>The ear is less sensitive to low frequencies when listening at low volume. This plugin developed by MDA allows the bass level to be adjusted measuring the "equal loudness contour".</p>
     <terms>
         <item>

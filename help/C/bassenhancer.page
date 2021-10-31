@@ -5,8 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Bass Enhancer</title>
-    <p>The brain perceives the pitch of a tone not only by its fundamental frequency but also by the periodicity implied by the relationship between the higher harmonics. We may perceive the same pitch even if the fundamental frequency is missing from a tone.</p>
-    <p>EasyEffects uses the Bass Enhancer developed by Calf Studio Gears.</p>
+    <p>A Bass Enhancer is used to produce very low sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the lower end of an audio signal without simply raising the lower frequencies like an equalizer would do to create a more "fat" or "boomy" sound.</p>
     <terms>
         <item>
             <title>

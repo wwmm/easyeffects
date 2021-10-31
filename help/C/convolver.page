@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Convolver</title>
-    <p>The Convolver plugin creates a simulation of an audio environment using a pre-recorded audio sample of the impulse response of the space being modeled. This feature is based on the "convolution": a process through which the sonic characteristics of one signal are used to alter the character of another.</p>
+    <p>The Convolver creates a simulation of an audio environment using a pre-recorded audio sample of the impulse response of the space being modeled. This feature is based on the "convolution": a process through which the sonic characteristics of one signal are used to alter the character of another.</p>
     <terms>
         <item>
             <title>
