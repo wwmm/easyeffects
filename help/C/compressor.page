@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Compressor</title>
-    <p>A Compressor is used to reduce the audio signal dynamic range. EasyEffects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
+    <p>A Compressor is used to reduce the dynamic range or, in other words, the difference in level between the quietest and the loudest parts of an audio signal. It achieves this purpose altering the gain when the signal overtakes a predetermined Threshold. EasyEffects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
     <section>
         <terms>
             <item>
@@ -18,7 +18,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Release Time</em>
                 </title>
-                <p>The length of time it takes to restore roughly two-thirds of the reduced gain (in downward mode) or increased gain (in upward mode) to the compressed signal.</p>
+                <p>The length of time it takes to restore roughly two-thirds of the reduced gain (in Downward mode) or increased gain (in Upward mode) to the compressed signal.</p>
             </item>
             <item>
                 <title>
@@ -30,20 +30,20 @@
                 <title>
                     <em style="strong" its:withinText="nested">Release Threshold</em>
                 </title>
-                <p>Telative to the Attack Threshold that sets up the threshold of the Release Time.</p>
+                <p>Relative to the Attack Threshold that sets up the Threshold of the Release Time.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
-                <p>The amount of attenuation (in downward mode) or amplification (in upward/boosting mode) that will be applied to the signal.</p>
-                <p>In example, when the ratio is 2 in downward mode and the sidechain rises abose the threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
+                <p>The amount of attenuation (in Downward mode) or amplification (in Upward/Boosting mode) that will be applied to the signal.</p>
+                <p>In example, when the ratio is 2 in Downward mode and the Sidechain rises abose the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Knee</em>
                 </title>
-                <p>The range over which the Compressor switches from no compression to almost the full ratio compression (the threshold usually sits at the center of this transition zone).</p>
+                <p>The range over which the Compressor switches from no compression to almost the full ratio compression (the Threshold usually sits at the center of this transition zone).</p>
             </item>
             <item>
                 <title>
@@ -59,19 +59,19 @@
                     <item>
                         <p>
                             <em style="strong">Downward</em>
-                            - Decreases the gain of the signal above the threshold.
+                            - It's aimed to decrease the gain of the signal above the Threshold.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Upward</em>
-                            - Increases the gain of the signal below the threshold.
+                            - It's aimed to increase the gain of the signal below the Threshold.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Boosting</em>
-                            - Increases the gain of the signal below the threshold by a specific amount.
+                            - It's aimed to increase the gain of the signal below the Threshold by a specific amount.
                         </p>
                     </item>
                 </list>
@@ -80,7 +80,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Boost Threshold</em>
                 </title>
-                <p>The threshold below which a constant amplification will be applied to the input signal in Upward Mode (it prevents from applying infinite amplification to very quiet signals).</p>
+                <p>The Threshold below which a constant amplification will be applied to the input signal in Upward Mode (it prevents from applying infinite amplification to very quiet signals).</p>
             </item>
             <item>
                 <title>
@@ -97,30 +97,30 @@
                 <title>
                     <em style="strong" its:withinText="nested">Listen</em>
                 </title>
-                <p>Allows to listen the processed sidechain signal.</p>
+                <p>Allows to listen the processed Sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Input Type</em>
                 </title>
-                <p>Determines which signal is the sidechain or, in other words, the signal that controls the compression stage.</p>
+                <p>Determines which signal is the Sidechain or, in other words, the signal that controls the compression stage.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Feed-forward</em>
-                            - The sidechain is the Compressor input signal (taken after applying the plugin input gain). More aggressive compression.
+                            - The Sidechain is the Compressor input signal (taken after applying the plugin input gain). More aggressive compression.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Feed-back</em>
-                            - The sidechain is the Compressor output signal (taken before applying the makeup and the plugin output gain). Vintage-style compression.
+                            - The Sidechain is the Compressor output signal (taken before applying the makeup and the plugin output gain). Vintage-style compression.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">External</em>
-                            - The sidechain is an external source took by a specific input device (tipically a microphone).
+                            - The Sidechain is an external source took by a specific input device (tipically a microphone).
                         </p>
                     </item>
                 </list>
@@ -135,7 +135,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Mode</em>
                 </title>
-                <p>Determines how the sidechain is evaluated for the compression stage.</p>
+                <p>Determines how the Sidechain is evaluated for the compression stage.</p>
                 <list>
                     <item>
                         <p>
@@ -167,7 +167,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Source</em>
                 </title>
-                <p>Determines witch part of the sidechain is taken into account for the compression stage.</p>
+                <p>Determines which part of the Sidechain is taken into account for the compression stage.</p>
                 <list>
                     <item>
                         <p>
@@ -199,13 +199,13 @@
                 <title>
                     <em style="strong" its:withinText="nested">PreAmplification</em>
                 </title>
-                <p>Gain applied to the sidechain signal.</p>
+                <p>Gain applied to the Sidechain signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Reactivity</em>
                 </title>
-                <p>Reactivity of the sidechain signal.</p>
+                <p>Reactivity of the Sidechain signal.</p>
             </item>
             <item>
                 <title>
@@ -222,7 +222,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">High-Pass Filter Mode</em>
                 </title>
-                <p>Sets the type of the High-Pass filter applied to sidechain signal.</p>
+                <p>Sets the type of the High-Pass filter applied to Sidechain signal.</p>
             </item>
             <item>
                 <title>
@@ -234,7 +234,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Low-Pass Filter Mode</em>
                 </title>
-                <p>Sets the type of the Low-Pass filter applied to sidechain signal.</p>
+                <p>Sets the type of the Low-Pass filter applied to Sidechain signal.</p>
             </item>
             <item>
                 <title>

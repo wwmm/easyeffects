@@ -37,7 +37,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Stereo Link</em>
             </title>
-            <p>Determines witch part of the signal is taken into account for the gain reduction.</p>
+            <p>Determines which part of the signal is taken into account for the gain reduction.</p>
             <list>
                 <item>
                     <p>
