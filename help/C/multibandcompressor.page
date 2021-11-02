@@ -25,7 +25,7 @@
                     <item>
                         <p>
                             <em style="strong">Classic</em>
-                            - The original signal is splitted using crossover filters. After the compression stage, all bands become phase-compensated using All-Pass filters and then summarized.
+                            - The original signal is splitted using crossover filters. After the compression stage, all bands become phase-compensated using All-Pass filters.
                         </p>
                     </item>
                     <item>

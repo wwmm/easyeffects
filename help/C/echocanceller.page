@@ -5,8 +5,7 @@
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Echo Canceller</title>
-    <p>Echo Cancellation is used to improve voice quality by preventing echo from being created or removing it after it is already present.</p>
-    <p>In any hands-free communication system, speech from the remote end is played in the local loudspeaker, propagates in the room and is captured by the microphone. If the audio captured from the microphone is sent directly to the remote end, then the remote user hears an echo of his voice. An acoustic echo canceller is designed to remove the acoustic echo before it is sent to the remote end.</p>
+    <p>The Echo is a reflected sound wave with sufficient magnitude and delay to be detectable as a signal distinct from the source one. An Echo Canceller is used to improve voice quality by preventing Echo from being created or removing it after it has been added to the source signal. EasyEffects uses the Echo Canceller from SpeexDSP library.</p>
     <terms>
         <item>
             <title>
@@ -18,7 +17,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Filter Length</em>
             </title>
-            <p>The amount of time of the echo cancelling filter to use (also known as tail length). The recommended tail length is approximately the third of the room reverberation time. For example, in a small room, reverberation time is in the order of 300 ms, so a tail length of 100 ms is a good choice.</p>
+            <p>The amount of time of the Echo cancelling filter to use (also known as tail length). The recommended tail length is approximately the third of the room reverberation time. For example, in a small room, reverberation time is in the order of 300 ms, so a tail length of 100 ms is a good choice.</p>
         </item>
     </terms>
     <section>
