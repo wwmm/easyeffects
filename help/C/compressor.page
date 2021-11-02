@@ -7,6 +7,7 @@
     <title>Compressor</title>
     <p>A Compressor is used to reduce the dynamic range or, in other words, the difference in level between the quietest and the loudest parts of an audio signal. It achieves this purpose altering the gain when the signal overtakes a predetermined Threshold. EasyEffects uses the Stereo Sidechain Compressor from Linux Studio Plugins.</p>
     <section>
+        <title>Compressor Options</title>
         <terms>
             <item>
                 <title>
@@ -18,13 +19,13 @@
                 <title>
                     <em style="strong" its:withinText="nested">Release Time</em>
                 </title>
-                <p>The length of time it takes to restore roughly two-thirds of the reduced gain (in Downward mode) or increased gain (in Upward mode) to the compressed signal.</p>
+                <p>The length of time it takes to restore roughly two-thirds of the reduced gain (in Downward mode) or increased gain (in Upward/Boosting mode) to the compressed signal.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Attack Threshold</em>
                 </title>
-                <p>The target level around which the compression is applied (the range depends by the knee).</p>
+                <p>The target level around which the compression is applied (the range depends by the Knee).</p>
             </item>
             <item>
                 <title>
