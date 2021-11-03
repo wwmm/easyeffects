@@ -11,7 +11,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
-            <p>Select the detection of the sidechain signal between Peak (stronger) and RMS (smoother).</p>
+            <p>Select the detection of the Sidechain signal between Peak (stronger) and RMS (smoother).</p>
         </item>
         <item>
             <title>
@@ -29,13 +29,13 @@
             <title>
                 <em style="strong" its:withinText="nested">F1 Gain</em>
             </title>
-            <p>It shifts the volume of the higher band. In Wideband mode it affects the sidechain. In Split mode it also affects the processed high frequencies.</p>
+            <p>It shifts the volume of the higher band. In Wideband mode it affects the Sidechain. In Split mode it also affects the processed high frequencies.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">F2 Peak</em>
             </title>
-            <p>Center frequency of the bell filter. It allows a more precise selection of the sidechain signal.</p>
+            <p>Center frequency of the bell filter. It allows a more precise selection of the Sidechain signal.</p>
         </item>
         <item>
             <title>

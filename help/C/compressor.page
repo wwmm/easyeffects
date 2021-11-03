@@ -38,7 +38,7 @@
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
                 <p>The amount of attenuation (in Downward mode) or amplification (in Upward/Boosting mode) that will be applied to the signal.</p>
-                <p>In example, when the Ratio is 2 in Downward mode and the Sidechain rises abose the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
+                <p>In example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
             </item>
             <item>
                 <title>
@@ -121,7 +121,7 @@
                     <item>
                         <p>
                             <em style="strong">External</em>
-                            - The Sidechain is an external source took by a specific input device (tipically a microphone).
+                            - The Sidechain is an external source took by a specific input device (typically a microphone).
                         </p>
                     </item>
                 </list>

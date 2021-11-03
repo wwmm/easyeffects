@@ -39,7 +39,7 @@
                 <item>
                     <p>
                         <em style="strong">0</em>
-                        - Disable phase resynchronisation at transients, phase lamination and use longer processing window.
+                        - Disable phase resynchronization at transients, phase lamination and use longer processing window.
                     </p>
                 </item>
                 <item>
@@ -51,13 +51,13 @@
                 <item>
                     <p>
                         <em style="strong">2</em>
-                        - Disable phase resynchronisation at transients and phase lamination.
+                        - Disable phase resynchronization at transients and phase lamination.
                     </p>
                 </item>
                 <item>
                     <p>
                         <em style="strong">3</em>
-                        - Disable phase resynchronisation at transients.
+                        - Disable phase resynchronization at transients.
                     </p>
                 </item>
             </list>

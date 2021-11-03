@@ -18,7 +18,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Presets Autoloading</em>
             </title>
-            <p>The list of Autoloading Presets associated to specific Devices and their Profile.</p>
+            <p>The list of autoloading presets associated to specific Devices and their Profile.</p>
             <p>The user can change their combination selecting between the available Presets and the connected Devices from the relative comboboxes.</p>
         </item>
         <item>

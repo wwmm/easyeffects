@@ -14,18 +14,18 @@
                     <em style="strong" its:withinText="nested">Band Management</em>
                 </title>
                 <p>This Compressor allows to split the input signal up to 8 bands. Each band is not attached to it's strict frequency and can be controlled by completely different frequency range that can be obtained by applying Low-Cut and Hi-Cut filters to the Sidechain signal.</p>
-                <p>The first band is always enabled while the others can be activated if needed. When only the first band is enabled, the functionality is similar to the Singleband Sidechain Compressor. Otherwise the signal is splitted in more bands and each band is compressed individually. After the compression stage, the bands are mixed together to form the output result.</p>
+                <p>The first band is always enabled while the others can be activated if needed. When only the first band is enabled, the functionality is similar to the Singleband Sidechain Compressor. Otherwise the signal is split in more bands and each band is compressed individually. After the compression stage, the bands are mixed together to form the output result.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Operating Mode</em>
                 </title>
-                <p>Determines how the input signal is splitted to obtain the different bands.</p>
+                <p>Determines how the input signal is split to obtain the different bands.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">Classic</em>
-                            - The original signal is splitted using crossover filters. After the compression stage, all bands become phase-compensated using All-Pass filters.
+                            - The original signal is split using crossover filters. After the compression stage, all bands become phase-compensated using All-Pass filters.
                         </p>
                     </item>
                     <item>
@@ -45,7 +45,7 @@
                 <p>On the other hand the Sidechain Boost mode allows to compensate the -3 dB/octave falloff of the signal spectrum and, even more, makes the signal spectrum growing +3 dB/octave in the almost fully audible frequency range.</p>
                 <p>
                     <em style="strong">Pink</em> applies +3 db/octave while
-                    <em style="strong">Brown</em> applies +6 db/octave sidechain boost.
+                    <em style="strong">Brown</em> applies +6 db/octave Sidechain Boost.
                     Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter.
                 </p>
             </item>
@@ -101,7 +101,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">External Sidechain</em>
                 </title>
-                <p>The Sidechain is an external source took by a specific input device (tipically a microphone).</p>
+                <p>The Sidechain is an external source took by a specific input device (typically a microphone).</p>
             </item>
             <item>
                 <title>
@@ -150,7 +150,7 @@
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
                 <p>The amount of attenuation (in Downward mode) or amplification (in Upward/Boosting mode) that will be applied to the signal.</p>
-                <p>In example, when the Ratio is 2 in Downward mode and the Sidechain rises abose the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Multiband Compressor is designed and configured.</p>
+                <p>In example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Multiband Compressor is designed and configured.</p>
             </item>
             <item>
                 <title>

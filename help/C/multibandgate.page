@@ -19,18 +19,18 @@
                 <title>
                     <em style="strong" its:withinText="nested">Operating Mode</em>
                 </title>
-                <p>Determines how the input signal is splitted to obtain the 4 bands.</p>
+                <p>Determines how the input signal is split to obtain the 4 bands.</p>
                 <list>
                     <item>
                         <p>
                             <em style="strong">LR4</em>
-                            - The original signal is splitted using the fourth-order Linkwitz–Riley crossover filter.
+                            - The original signal is split using the fourth-order Linkwitz–Riley crossover filter.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">LR8</em>
-                            - The original signal is splitted using the eighth-order Linkwitz–Riley crossover filter.
+                            - The original signal is split using the eighth-order Linkwitz–Riley crossover filter.
                         </p>
                     </item>
                 </list>

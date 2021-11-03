@@ -56,14 +56,14 @@
                 <em style="strong" its:withinText="nested">Attack</em>
             </title>
             <p>The length of time it takes to apply the needed gain reduction to keep the peak below the threshold.</p>
-            <p>It affects the lenght of the gain reduction patch. It cannot be larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
+            <p>It affects the length of the gain reduction patch. It cannot be larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Release</em>
             </title>
             <p>The length of time it takes to restore the reduced gain around the limited peak.</p>
-            <p>It affects the lenght of the gain reduction patch. It cannot be twice larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
+            <p>It affects the length of the gain reduction patch. It cannot be twice larger than the Lookahead (if specified larger, it's set internally as the max possible value).</p>
         </item>
         <item>
             <title>
@@ -105,12 +105,12 @@
             <title>
                 <em style="strong" its:withinText="nested">External Sidechain</em>
             </title>
-            <p>Switch the Sidechain to an external source took by a specific input device (tipically a microphone).</p>
+            <p>Switch the Sidechain to an external source took by a specific input device (typically a microphone).</p>
         </item>
     </terms>
     <section>
         <title>Auto Leveling</title>
-        <p>This checkbutton introduces an additional feature called "Automated Level Regulation" (ALR) which acts like a Compressor with infinite ratio for the purpose of applying a smoothed gain reduction rather than a stroger peak cutter like in brick-wall mode. This configuration could get the output level to exceed the Threshold even if the signal is highly compressed.</p>
+        <p>This checkbutton introduces an additional feature called "Automated Level Regulation" (ALR) which acts like a Compressor with infinite ratio for the purpose of applying a smoothed gain reduction rather than a stronger peak cutter like in brick-wall mode. This configuration could get the output level to exceed the Threshold even if the signal is highly compressed.</p>
         <terms>
             <item>
                 <title>

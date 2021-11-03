@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>EasyEffects Autogain is based on the library libebur128 which imppements the EBU R 128 standard for loudness normalisation. It changes the audio volume to a perceived loudness target that can be tweaked by the user.</p>
+    <p>EasyEffects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be tweaked by the user.</p>
     <terms>
         <item>
             <title>
@@ -55,7 +55,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Monitor Parameters</em>
             </title>
-            <p>Other values not tweakable by the user.</p>
+            <p>Other values not customizable by the user.</p>
             <list>
                 <item>
                     <p>

@@ -21,7 +21,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Softclip</em>
                 </title>
-                <p>Makes a kind of analog distortion instead of harsh digital 0db clipping.</p>
+                <p>Makes a kind of analog distortion instead of harsh digital 0 db clipping.</p>
             </item>
             <item>
                 <title>
