@@ -10,52 +10,49 @@
             <title>
                 <em style="strong" its:withinText="nested">Start Service at Login</em>
             </title>
-            <p>
-                Start EasyEffects as a service in the next login. This is done by creating an autostart file at
-                <cmd its:withinText="yes">~/.config/autostart</cmd>
-            </p>
+            <p>Start EasyEffects as a service in the next login.</p>
         </item>
         <item>
             <title id="title_enable_all_apps">
                 <em style="strong" its:withinText="nested">Process All Outputs</em>
             </title>
-            <p>Apply effects to the output of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry.</p>
+            <p>Apply effects to the output of all audio applications (except blocklisted ones). This will automatically switch on the "enable switch" that can be seen in the app list entries.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Process All Inputs</em>
             </title>
-            <p>Apply effects to the input(microphone) of all audio applications. This will automatically switch on the per application switch that can be seen in the Applications entry.</p>
+            <p>Apply effects to the input (microphone) of all audio applications (except blocklisted ones). This will automatically switch on the "enable switch" that can be seen in the app list entries.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Use Dark Theme</em>
             </title>
-            <p>Use the dark version of the GTK theme.</p>
+            <p>Switch to the dark version of the GTK theme.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Reset</em>
+                <em style="strong" its:withinText="nested">Reset All Settings</em>
             </title>
             <p>Reset all parameters to their default values. This will reset the plugins too.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Priority type</em>
+                <em style="strong" its:withinText="nested">Shutdown on Window Close</em>
             </title>
-            <p>Choose between real time mode, niceness or none. This parameter allows to choose a higher priority for the threads that process audio.</p>
+            <p>Terminates EasyEffects process on window close rather than running it in background.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Niceness</em>
+                <em style="strong" its:withinText="nested">Use Cubic Volume</em>
             </title>
-            <p>Niceness value.</p>
+            <p>Use cubic values for app volume rather than linear ones. Low percentages give lower volume.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Priority</em>
+                <em style="strong" its:withinText="nested">Reset All Settings</em>
             </title>
-            <p>Real time priority.</p>
+            <p>Reset all parameters to their default values. This will reset the plugins too.</p>
         </item>
     </terms>
 </page>

@@ -8,91 +8,70 @@
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Show</em>
+                <em style="strong" its:withinText="nested">Show Spectrum</em>
             </title>
-            <p>
-                Hide or show the spectrum.
-            </p>
+            <p>Enable or Disable the Spectrum.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Points</em>
+                <em style="strong" its:withinText="nested">Spectrum Type</em>
             </title>
-            <p>
-                Number of points displayed.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Height</em>
-            </title>
-            <p>
-                Spectrum height.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Scale</em>
-            </title>
-            <p>
-                Bar height scaling factor.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Exponent</em>
-            </title>
-            <p>
-                Scaling factor exponent.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Sampling</em>
-            </title>
-            <p>
-                Spectrum update frequency.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Line Width</em>
-            </title>
-            <p>
-                Bar line width.
-            </p>
+            <p>Choose between drawing lines or bars.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Fill</em>
             </title>
-            <p>
-                Draw filled bars.
-            </p>
+            <p>Draw filled bars.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Border</em>
             </title>
-            <p>
-                Show bar border.
-            </p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Use Custom Color</em>
-            </title>
-            <p>
-                Use a user defined color or the GTK theme color.
-            </p>
+            <p>Show bar border.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Spectrum Color</em>
             </title>
-            <p>
-                User defined color.
+            <p>Choose the color of the Spectrum.
             </p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Axis Color</em>
+            </title>
+            <p>Choose the color of the frequencies axis.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Points</em>
+            </title>
+            <p>Number of points displayed.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Height</em>
+            </title>
+            <p>Height of the Spectrum.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Line Width</em>
+            </title>
+            <p>Bar width. Higher values give more spacing between bars.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Minimum</em>
+            </title>
+            <p>Lower end frequency of the Spectrum.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Maximum</em>
+            </title>
+            <p>Upper end frequency of the Spectrum.</p>
         </item>
     </terms>
 </page>

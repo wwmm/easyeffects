@@ -11,7 +11,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Intensities</em>
             </title>
-            <p>The higher the value the higher is the difference in magnitude between the loudest and the quietest sounds of the selected band. You can set different intensities for each frequency band.</p>
+            <p>The higher the value the higher is the difference in magnitude between the loudest and the quietest sounds of the selected band. Different intensities can be set for each frequency band.</p>
         </item>
         <item>
             <title>
