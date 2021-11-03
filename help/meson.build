@@ -6,12 +6,14 @@ endif
 
 help_pages = [
   'bassenhancer.page',
+  'bassloudness.page',
   'compressor.page',
   'deesser.page',
   'exciter.page',
   'filter.page',
   'gate.page',
   'delay.page',
+  'echocanceller.page',
   'index.page',
   'limiter.page',
   'loudness.page',
@@ -23,13 +25,12 @@ help_pages = [
   'crossfeed.page',
   'equalizer.page',
   'pitch.page',
-  'webrtc.page',
   'crystalizer.page',
   'convolver.page',
   'settingsmenu.page',
   'general.page',
   'spectrum.page',
-  'pulseaudio.page',
+  'pipewire.page',
   'testsignals.page',
   'calibrationmic.page',
   'enableapp.page',
@@ -41,16 +42,6 @@ help_pages = [
   'blocklist.page',
   'guide_1.page',
   'rnnoise.page'
-]
-
-help_media = [
-  'figures/effectsorder.png',
-  'figures/enableapp.png',
-  'figures/settingsmenu.png',
-  'figures/userpresets.png',
-  'figures/advancedinfo.png',
-  'figures/saturated.png',
-  'figures/blocklist.png'
 ]
 
 gnome_mod.yelp(meson.project_name(),

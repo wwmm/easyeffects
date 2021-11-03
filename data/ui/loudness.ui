@@ -38,7 +38,7 @@
                                 <property name="halign">center</property>
                                 <items>
                                     <item translatable="yes">Flat</item>
-                                    <item>ISO226-2003</item>
+                                    <item>ISO 226:2003</item>
                                     <item>Fletcher-Munson</item>
                                     <item>Robinson-Dadson</item>
                                 </items>

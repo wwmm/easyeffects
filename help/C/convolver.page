@@ -1,15 +1,17 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="convolver">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="convolver">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Convolver</title>
-    <p>A convolver creates a simulation of an audio environment. It is based on the mathematical convolution operation, and uses a pre-recorded audio sample of the impulse response of the space being modeled.</p>
+    <p>The Convolver creates a simulation of an audio environment using a pre-recorded audio sample of the impulse response of the space being modeled. This feature is based on the "convolution": a process through which the sonic characteristics of one signal are used to alter the character of another.</p>
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Import Impulse</em>
+                <em style="strong" its:withinText="nested">Impulses Menu</em>
             </title>
-            <p>Import an impulse response file to EasyEffects configuration directory.</p>
+            <p>Manage and load response files to EasyEffects configuration directory.</p>
         </item>
         <item>
             <title>
@@ -29,7 +31,17 @@
         <list>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Convolution_reverb" its:translate="no">https://en.wikipedia.org/wiki/Convolution_reverb</link>
+                    <link href="https://en.wikipedia.org/wiki/Reverb_effect" its:translate="no">Wikipedia Reverb Effect</link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://cmtext.indiana.edu/synthesis/chapter4_convolution.php" its:translate="no">Indiana University - Convolution: A Form of Cross-Synthesis</link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="https://designingsound.org/2012/12/29/recording-impulse-responses/" its:translate="no">Designing Sound - Recording Impulse Responses</link>
                 </p>
             </item>
         </list>

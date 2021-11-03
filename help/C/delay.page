@@ -1,32 +1,24 @@
-<page
-    xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its"
-    type="guide"
-    id="delay">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="delay">
     <info>
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Delay</title>
-    <p>
-        This plugin allows to add short delay to each individual channel of the stereo
-        channel
-    </p>
+    <p>This plugin allows the user to add short Delay to each individual channel of the stereo
+        stream.</p>
     <terms>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Left</em>
             </title>
-            <p>
-                Left channel delay.
-            </p>
+            <p>Left channel delay in milliseconds.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Right</em>
             </title>
-            <p>
-                Right channel delay.
-            </p>
+            <p>Right channel delay in milliseconds.</p>
         </item>
     </terms>
     <section>
@@ -34,20 +26,12 @@
         <list>
             <item>
                 <p>
-                    <link
-                        href="http://lsp-plug.in/?page=manuals&amp;section=comp_delay_x2_stereo"
-                        its:translate="no">
-                        http://lsp-plug.in/?page=manuals&amp;section=comp_delay_x2_stereo
-                    </link>
+                    <link href="https://en.wikipedia.org/wiki/Delay_(audio_effect)" its:translate="no">Wikipedia Delay (audio effect)</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link
-                        href="https://en.wikipedia.org/wiki/Delay_(audio_effect)"
-                        its:translate="no">
-                        https://en.wikipedia.org/wiki/Delay_(audio_effect)
-                    </link>
+                    <link href="http://lsp-plug.in/?page=manuals&amp;section=comp_delay_x2_stereo" its:translate="no">LSP Delay Compensator Stereo</link>
                 </p>
             </item>
         </list>

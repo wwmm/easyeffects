@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="bassloudness">
+    <info>
+        <link type="guide" xref="index#plugins"/>
+    </info>
+    <title>Bass Loudness</title>
+    <p>The ear is less sensitive to low frequencies when listening at low volume. This plugin developed by MDA allows the bass level to be adjusted measuring the "equal-loudness contour".</p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Loudness</em>
+            </title>
+            <p>Source level relative to listening level (based on a 100 dB SPL maximum level).</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Output</em>
+            </title>
+            <p>Change output level.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Link</em>
+            </title>
+            <p>Automatically adjusts Output to maintain a consistent tonal balance at all levels.</p>
+        </item>
+    </terms>
+    <section>
+        <title>References</title>
+        <list>
+            <item>
+                <p>
+                    <link href="https://en.wikipedia.org/wiki/Equal-loudness_contour" its:translate="no">Wikipedia Equal-Loudness Contour</link>
+                </p>
+            </item>
+            <item>
+                <p>
+                    <link href="http://mda.smartelectronix.com/vst/help/loudness.htm" its:translate="no">MDA Loudness</link>
+                </p>
+            </item>
+        </list>
+    </section>
+</page>
