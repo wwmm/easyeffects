@@ -45,6 +45,5 @@ help_pages = [
 ]
 
 gnome_mod.yelp(meson.project_name(),
-  sources: help_pages,
-  media: help_media
+  sources: help_pages
 )
