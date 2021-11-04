@@ -23,31 +23,31 @@
         <list>
             <item>
                 <p>
-                    <em style="strong">Sub</em>
+                    <em style="strong">Sub</em> –
                     More or less vibrations up to something an ear can barely hear. Everything from 10 Hz to ~40 Hz.
                 </p>
             </item>
             <item>
                 <p>
-                    <em style="strong">Low or Bass</em>
-                    Where the whole fundament of a signal is located. Low end of bass drums, bass synthesizers and bass guitars are found here. Movies occupy this range with explosions, rumbling waters, thunder, heavy gun fire and the like. Absolutely missing on notebooks and tablets. Technically speaking its ~60 Hz - ~200 Hz.
+                    <em style="strong">Low or Bass</em> –
+                    Where the whole fundament of a signal is located. Low end of bass drums, bass synthesizers and bass guitars are found here. Movies occupy this range with explosions, rumbling waters, thunder, heavy gun fire and the like. Absolutely missing on notebooks and tablets. Technically speaking it's ~60 Hz - ~200 Hz.
                 </p>
             </item>
             <item>
                 <p>
-                    <em style="strong">Low-Mid</em>
+                    <em style="strong">Low-Mid</em> –
                     Hit a 0.5 m³ cardboard box and you know what low-mids are. The "punch" of a sound is often located here, also the juice of snare drums and electric guitars. In Movies, roaring engines and shotguns are found in this range. We're talking about ~250 Hz - ~750 Hz.
                 </p>
             </item>
             <item>
                 <p>
-                    <em style="strong">High-Mid</em>
+                    <em style="strong">High-Mid</em> –
                     This is the ears most important and sensitive range. The main information of any kind of signal is located here. Human voice, picking of guitars, attack of drums, the colour of a synthesizer - everything carrying the main information of sound. Something around ~1 kHz - ~4 kHz.
                 </p>
             </item>
             <item>
                 <p>
-                    <em style="strong">Highs</em>
+                    <em style="strong">Highs</em> –
                     The air, the breathe, the sizzling, the splashing - this is the range of brightness. Everything around and above ~5 kHz.
                 </p>
             </item>
@@ -55,9 +55,7 @@
     </section>
     <section>
         <title>Test Signal</title>
-        <p>You definitely need a good signal for this job. I decided to use
-            <link href="https://www.youtube.com/watch?v=OxAP6ieuDgI" its:translate="no">Seeed</link>.
-        </p>
+        <p>You definitely need a good signal for this job. I decided to use the song <link href="https://www.youtube.com/watch?v=OxAP6ieuDgI" its:translate="no">G€LD</link> by Seeed.</p>
         <p>It is quite snappy, has lots of well defined substance, clear and bright highs, present vocals, comes with a very balanced frequency response and is a great mix in combination with great mastering. Afterwards I tested against various movies and other stuff like talks, classical music and the like and was convinced of the result. Well produced, modern pop music (avoid the 80's and 90's stuff) is always a good test signal for this kind of job. Movies are way too dynamic, so is classical music, and they normally don't cover a steady, broad frequency range like this kind of signal.</p>
         <p>We will not be able to make the notebook bounce. What is the goal here is that everything contained in the mix gets audible in a well balanced manner and to gain a present, upfront, broad and hopefully rich sound.</p>
         <p>I assume you don't utilize a player or source which is able to produce levels above 0 dB. I also assume you don't use e.g. video players volume bar to lower the volume of your source. This approach works well for defined, mixed and mastered sound sources like music, movies, tv and the like, played back at 100% volume in the player. Set the desired volume directly on your hardware <em style="strong">after</em> the processing happened.</p>
@@ -108,7 +106,7 @@
         <title>Solutions</title>
         <p>Let's start fixing the sound. The result will not come even close to something more substantial but at least we'll be able to get the best out of the physical boundaries of these transducers.</p>
         <p>Every parameter we are gonna set absolutely depends on your situation and the hardware you've got. Every notebook has its own frequency response and dynamic range so there's no panacea. But the audio signal processors, their order and their missions are well defined and reproducible.</p>
-        <p>Don't care about clipping in the plugins level meters. The signal will be processed as 32 bit numbers internally (check title bar) which gives a non-clipping overhead of hundreds of decibels. The only thing that shouldn't happen is that there's clipping when the signal hits the sound card DAC(Digital-to-Analog Converter), which would result in digital distortion.</p>
+        <p>Don't care about clipping in the plugins level meters. The signal will be processed as 32 bit numbers internally (check title bar) which gives a non-clipping overhead of hundreds of decibels. The only thing that shouldn't happen is that there's clipping when the signal hits the sound card DAC (Digital-to-Analog Converter), which would result in digital distortion.</p>
         <p>Let's head over to the signal chain:</p>
         <terms>
             <item>
@@ -136,7 +134,7 @@
                 </title>
                 <p>Let's grow some testicles to the signal.</p>
                 <p>Add the Bass Enhancer and place it at the second position, between the Filter and the Limiter. Set the Floor to 10 Hz and forget about it (we already removed everything below the Filter plugin cutoff frequency). Raise Harmonics to 10 and start with a Scope of 200 Hz. Now start raising the Amount continuously until the bass takes over the whole energy, which is definitely too much. For me it works best at +24 dB. Which is huge but my ThinkPad P1 has the worst speakers I've ever heard in a 2.8k € notebook.</p>
-                <p>What happens is that the Bass Enhancer adds frequencies to the signal which weren't there before. While an Equalizer only raises stuff which is already in the signal, a bass enhancer improves the lower end by adding distortion to a specific frequency range. This kind of distortion adds so called Harmonics to the signal which is a multiple of existing frequencies. On the Blend slider you can choose seamlessly between 2nd and 3rd Harmonics, which means that a frequency of 100 Hz produces a new signal of 200/300/400/600/800/900 Hz... at varying (due to the Harmonics setting) and constantly decreasing levels. This means we're effectively raising the lower range into something better reproducible. It doesn't add or raise the <em style="strong">real</em> fundament (so your trousers won't start to flutter), but makes more audible signals that have been swallowed by the hardware before.</p>
+                <p>What happens is that the Bass Enhancer adds frequencies to the signal which weren't there before. While an Equalizer only raises stuff which is already in the signal, a Bass Enhancer improves the lower end by adding distortion to a specific frequency range. This kind of distortion adds so called Harmonics to the signal which is a multiple of existing frequencies. On the Blend slider you can choose seamlessly between 2nd and 3rd Harmonics, which means that a frequency of 100 Hz produces a new signal of 200/300/400/600/800/900 Hz... at varying (due to the Harmonics setting) and constantly decreasing levels. This means we're effectively raising the lower range into something better reproducible. It doesn't add or raise the <em style="strong">real</em> fundament (so your trousers won't start to flutter), but makes more audible signals that have been swallowed by the hardware before.</p>
                 <p>Later on, in order to refine the result, you should play with the Amount parameter to define the level of bass and maybe with the Scope to define the upper end of our additional Harmonics.</p>
             </item>
             <item>
@@ -254,22 +252,20 @@
                     </item>
                 </list>
                 <p>Compression Mode for all enabled bands should be Downward. The remaining parameters can be left to their defaults. These values should be a good starting point.</p>
-                <p>A Compressor lowers signal levels which appear above a certain Threshold. It adds a simple multiplication to the signal defined by the ratio. If the Threshold is set to -24 dB and ratio to 2, a signal of -12 dB would in fact become -18 dB. In this example one can then raise the Makeup parameter to 6 dB, since this is what went "lost". So first of all we're rendering loud signals quieter to then raise the overall volume, which leads to less dynamic range with quiet parts becoming more audible.</p>
+                <p>A Compressor lowers signal levels which appear above a certain Threshold. It adds a simple multiplication to the signal defined by the Ratio. If the Threshold is set to -24 dB and Ratio to 2, a signal of -12 dB would in fact become -18 dB. In this example one can then raise the Makeup parameter to 6 dB, since this is what went "lost". So first of all we're rendering loud signals quieter to then raise the overall volume, which leads to less dynamic range with quiet parts becoming more audible.</p>
                 <p>The timing settings affect the "speed" of the compression. Attack means that a signal needs to go over Threshold for this amount of time until the Compressor reaches the full (negative) amplification. Release defines the amount of time the signal has to stay below Threshold until the amplification is back to 1 again.</p>
                 <p>A Multiband Compressor splits the signal in various frequency ranges to work on them exclusively with dedicated compression stages. This means that a very loud bass drum would not affect a crash cymbal, since they are clearly located in different bands.</p>
                 <p>Start playing around with these parameters:</p>
                 <terms>
                     <item>
                         <p>
-                            <em style="strong">Makeup</em> -
-                            This is probably most important setting in this concept. Makeup raises the signal after compression stage which means that it directly influences the perceived volume of every single band. Or in other words:
-                            <em style="strong">this is your Equalizer</em> :)
-                            Raise Makeup of single bands to make them louder or quieter. On my ThinkPad P1 I ended up with 4 dB, 3 dB, 6 dB and 6 dB respectively in band 1, 2, 3 and 4.
+                            <em style="strong">Makeup</em> –
+                            This is probably most important setting in this concept. Makeup raises the signal after compression stage which means that it directly influences the perceived volume of every single band. Or in other words: <em style="strong">this is your Equalizer</em> :). Raise Makeup of single bands to make them louder or quieter. On my ThinkPad P1 I ended up with 4 dB, 3 dB, 6 dB and 6 dB respectively in band 1, 2, 3 and 4.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Input Level</em> -
+                            <em style="strong">Input Level</em> –
                             Set it to -6 dB by default, I ended up at -3 dB. What happens is that a higher input level pushes all bands of the Compressor equally, leading to a allegedly louder sound (well, the loudness was raised in fact) without tweaking every single band manually. This reduces the overall dynamic range, raising quiet parts and squeezing loud parts even more.
                         </p>
                     </item>
