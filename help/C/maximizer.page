@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Maximizer</title>
-    <p>The Maximizer is a special type of Limiter that does not only prevent the signal to exceed a specified target level, but also adjusts the average Loudness of the audio track.</p>
+    <p>The Maximizer is a special type of <link xref="limiter" its:withinText="yes">Limiter</link> that does not only prevent the signal to exceed a specified target level, but also adjusts the average Loudness of the audio track.</p>
     <p>EasyEffects uses the Maximizer developed by ZamAudio. It acts like an Amplifier that feeds a brick-wall Limiter with a fixed Lookahead of 10 ms adding the corresponding delay to the output signal.</p>
     <terms>
         <item>
@@ -13,9 +13,9 @@
                 <em style="strong" its:withinText="nested">Threshold</em>
             </title>
             <p>This parameter represents the ideal amplification level needed by the signal.</p>
-            <p>It contributes along with the Ceiling to determine the amount of gain applied to the signal before it's limited. The gain is calculated by <code its:withinText="nested">(-Threshold) - (-Ceiling)</code>.
+            <p>It contributes along with the Ceiling to determine the amount of gain to apply to the signal before the limiting stage. The gain is calculated by <code its:withinText="nested">(-Threshold) - (-Ceiling)</code>.
             </p>
-            <p>In example, on Threshold -6 db and Ceiling -2 db, the signal is amplified by 4 db and limited to not exceed -2 db output level.</p>
+            <p>For example, on Threshold -6 db and Ceiling -2 db, the signal is amplified by 4 db and limited to not exceed -2 db output level.</p>
         </item>
         <item>
             <title>

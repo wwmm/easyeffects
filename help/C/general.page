@@ -16,13 +16,13 @@
             <title id="title_enable_all_apps">
                 <em style="strong" its:withinText="nested">Process All Outputs</em>
             </title>
-            <p>Apply effects to the output of all audio applications (except blocklisted ones). This will automatically switch on the "enable switch" that can be seen in the app list entries.</p>
+            <p>Apply effects to the output of all audio applications (except those into the <link xref="blocklist" its:withinText="yes">Blocklist</link>). This will automatically activate the <link xref="enableapp" its:withinText="yes">enable switch</link> that can be seen in the app list entries.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Process All Inputs</em>
             </title>
-            <p>Apply effects to the input (microphone) of all audio applications (except blocklisted ones). This will automatically switch on the "enable switch" that can be seen in the app list entries.</p>
+            <p>Apply effects to the input (microphone) of all audio applications (except those into the <link xref="blocklist" its:withinText="yes">Blocklist</link>). This will automatically activate the <link xref="enableapp" its:withinText="yes">enable switch</link> that can be seen in the app list entries.</p>
         </item>
         <item>
             <title>
@@ -32,15 +32,9 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Reset All Settings</em>
-            </title>
-            <p>Reset all parameters to their default values. This will reset the plugins too.</p>
-        </item>
-        <item>
-            <title>
                 <em style="strong" its:withinText="nested">Shutdown on Window Close</em>
             </title>
-            <p>Terminates EasyEffects process on window close rather than running it in background.</p>
+            <p>Terminates EasyEffects process on window close rather than keep it running in background.</p>
         </item>
         <item>
             <title>

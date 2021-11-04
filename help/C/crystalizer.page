@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins"/>
     </info>
     <title>Crystalizer</title>
-    <p>This plugin can be used to add a little of dynamic range to songs that were overly compressed</p>
+    <p>The Crystalizer plugin can be used to add a little of dynamic range to songs that were overly compressed. The signal is split in multiple bands to which different intensities can be applied in order to alter the overall dynamic range.</p>
     <terms>
         <item>
             <title>
@@ -17,13 +17,13 @@
             <title>
                 <em style="strong" its:withinText="nested">Bypass</em>
             </title>
-            <p>When active the audio signal passing through this band will not be modified.</p>
+            <p>When active the audio signal passing through the selected band is not modified.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Mute</em>
             </title>
-            <p>Silence the band.</p>
+            <p>Mutes the selected band.</p>
         </item>
     </terms>
     <section>

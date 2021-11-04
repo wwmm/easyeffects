@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>EasyEffects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be tweaked by the user.</p>
+    <p>EasyEffects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be customized by the user.</p>
     <terms>
         <item>
             <title>
@@ -23,7 +23,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Use Geometric Mean</em>
             </title>
-            <p>The estimated loudness is obtained from the geometric mean of the momentary, short-term and integrated loudness. When this option is disabled a weighted average is used.</p>
+            <p>The estimated loudness is obtained from the geometric mean of the Momentary, Short-Term and Integrated loudness. When this option is disabled, a weighted average is used.</p>
         </item>
         <item>
             <title>
@@ -34,19 +34,19 @@
                 <item>
                     <p>
                         <em style="strong">Momentary</em>
-                        - Measures the loudness of the past 400 ms.
+                        - Measures the loudness of the past 400 milliseconds.
                     </p>
                 </item>
                 <item>
                     <p>
                         <em style="strong">Short-Term</em>
-                        - Measures the loudness of the past 3 s.
+                        - Measures the loudness of the past 3 seconds.
                     </p>
                 </item>
                 <item>
                     <p>
                         <em style="strong">Integrated</em>
-                        - Measured the loudness over the entire duration and indicates how loud the content is on average.
+                        - The measure of the loudness over the entire duration. It indicates how loud the whole content is on average.
                     </p>
                 </item>
             </list>
@@ -60,7 +60,7 @@
                 <item>
                     <p>
                         <em style="strong">Relative</em>
-                        - Used to detect silence. Whenever the momentary term is below this threshold, modifications to the output gain will be disabled.
+                        - Used to detect silence. Whenever the Momentary term is below a predetermined threshold, modifications to the output gain will be disabled.
                     </p>
                 </item>
                 <item>
@@ -72,7 +72,7 @@
                 <item>
                     <p>
                         <em style="strong">Range</em>
-                        - Indicates how large is the material dynamic range.
+                        - Indicates how large is the dynamic range of the content played.
                     </p>
                 </item>
                 <item>

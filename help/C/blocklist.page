@@ -5,6 +5,6 @@
         <link type="guide" xref="index#ui"/>
     </info>
     <title>Applications Blocklist</title>
-    <p>There are cases where the user wants a specific application to be excluded from the "Process All Input/Output" functionality. This can be done by using a Blocklist.</p>
+    <p>There are cases in which the user wants a specific application to be excluded from the "Process All Input/Output" functionality. This can be done by using a Blocklist.</p>
     <p>Just click the "Blocklist" button in the bottom bar and add the application name exactly as it is shown in the "Players" tab list.</p>
 </page>

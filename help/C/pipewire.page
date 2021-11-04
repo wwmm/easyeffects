@@ -37,7 +37,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Test Signal</em>
             </title>
-            <p>Configures a test signal for testing purpose.</p>
+            <p>Configures a <link xref="testsignals" its:withinText="yes">test signal</link> for testing purpose.</p>
         </item>
     </terms>
 </page>

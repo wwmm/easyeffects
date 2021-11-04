@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Exciter</title>
-    <p>An Exciter is used to produce high sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the upper end of an audio signal without simply raising the higher frequencies like an equalizer would do to create a more "crisp" or "brilliant" sound.</p>
+    <p>An Exciter is used to produce high sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the upper end of an audio signal without simply raising the higher frequencies like an <link xref="equalizer" its:withinText="yes">Equalizer</link> would do to create a more "crisp" or "brilliant" sound.</p>
     <terms>
         <item>
             <title>
@@ -23,7 +23,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
-            <p>The frequency harmonics are produced above.</p>
+            <p>The frequency above which harmonics are produced.</p>
         </item>
         <item>
             <title>
@@ -35,7 +35,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Ceiling (value)</em>
             </title>
-            <p>The frequency no harmonics are produced above.</p>
+            <p>The frequency above which no harmonics are produced.</p>
         </item>
         <item>
             <title>

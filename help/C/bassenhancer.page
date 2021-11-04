@@ -5,7 +5,7 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Bass Enhancer</title>
-    <p>A Bass Enhancer is used to produce very low sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the lower end of an audio signal without simply raising the lower frequencies like an equalizer would do to create a more "fat" or "boomy" sound.</p>
+    <p>A Bass Enhancer is used to produce very low sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the lower end of an audio signal without simply raising the lower frequencies like an <link xref="equalizer" its:withinText="yes">Equalizer</link> would do to create a more "fat" or "boomy" sound.</p>
     <terms>
         <item>
             <title>
@@ -23,7 +23,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
-            <p>The frequency harmonics are produced above.</p>
+            <p>The frequency above which harmonics are produced.</p>
         </item>
         <item>
             <title>
@@ -35,7 +35,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Floor (value)</em>
             </title>
-            <p>The frequency no harmonics are produced below.</p>
+            <p>The frequency below which no harmonics are produced.</p>
         </item>
         <item>
             <title>

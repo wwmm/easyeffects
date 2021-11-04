@@ -7,7 +7,7 @@
     <title>Equalizer</title>
     <p>The Equalization in sound recording and reproduction is the process of adjusting the volume of different frequency bands within an audio signal. EasyEffects uses the Parametric Equalizer from Linux Studio Plugins. The user can choose between 1 and 30 bands. Width and center frequency of each band can be customized as needed.</p>
     <section>
-        <title>Main Menu</title>
+        <title>Global Options</title>
         <terms>
             <item>
                 <title>
@@ -44,7 +44,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Split Channels</em>
                 </title>
-                <p>When enabled it is possible to apply different configurations to the left and the right channel.</p>
+                <p>When enabled it is possible to apply different configurations to left and right channels.</p>
             </item>
             <item>
                 <title>
@@ -60,9 +60,8 @@
             </item>
         </terms>
     </section>
-
     <section>
-        <title>Band Menu</title>
+        <title>Band Options</title>
         <terms>
             <item>
                 <title>
@@ -72,7 +71,7 @@
                     <item>
                         <p>
                             <em style="strong">Off</em>
-                            - Filter is not working (turned off).
+                            - The filter is not working (turned off).
                         </p>
                     </item>
                     <item>
@@ -195,7 +194,6 @@
             </item>
         </terms>
     </section>
-
     <section>
         <title>References</title>
         <list>

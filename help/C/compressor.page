@@ -38,7 +38,7 @@
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
                 <p>The amount of attenuation (in Downward mode) or amplification (in Upward/Boosting mode) that will be applied to the signal.</p>
-                <p>In example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
+                <p>For example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Compressor is designed and configured.</p>
             </item>
             <item>
                 <title>
@@ -115,7 +115,7 @@
                     <item>
                         <p>
                             <em style="strong">Feed-back</em>
-                            - The Sidechain is the Compressor output signal (taken before applying the makeup and the plugin output gain). Vintage-style compression.
+                            - The Sidechain is the Compressor output signal (taken before applying the Makeup and the plugin output gain). Vintage-style compression.
                         </p>
                     </item>
                     <item>
@@ -173,13 +173,13 @@
                     <item>
                         <p>
                             <em style="strong">Middle</em>
-                            - The middle part of signal.
+                            - The sum of left and right channels.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">Side</em>
-                            - The side part of signal.
+                            - The difference between left and right channels.
                         </p>
                     </item>
                     <item>
@@ -212,7 +212,7 @@
                 <title>
                     <em style="strong" its:withinText="nested">Lookahead</em>
                 </title>
-                <p>The signal to compress is delayed by this amount of time, so that the compression will be applied earlier than it would be otherwise.</p>
+                <p>The signal to compress is delayed by this amount of time, so that the compression will be applied earlier than it would be otherwise. The corresponding delay is reproduced on the output signal.</p>
             </item>
         </terms>
     </section>
