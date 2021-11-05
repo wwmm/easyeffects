@@ -234,6 +234,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   nbands = builder->get_widget<Gtk::SpinButton>("nbands");
 
+  prepare_spinbutton(nbands);
+
   // signals connections
 
   nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));

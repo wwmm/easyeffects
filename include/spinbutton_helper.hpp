@@ -22,18 +22,29 @@
 
 #include <sstream>
 
-inline auto parse_spinbutton_output(Gtk::SpinButton* button, const Glib::ustring& unit) -> bool {
-  button->set_text(Glib::ustring::format(std::setprecision(button->get_digits()), std::fixed,
-                                         button->get_adjustment()->get_value()) +
-                   ((unit.empty()) ? "" : (" " + unit)));
+inline auto parse_spinbutton_output(Gtk::SpinButton* b, const Glib::ustring& u) -> bool {
+  b->set_text(Glib::ustring::format(std::setprecision(b->get_digits()), std::fixed, b->get_adjustment()->get_value()) +
+              ((u.empty()) ? u : (" " + u)));
 
   return true;
 }
 
-inline auto parse_spinbutton_input(Gtk::SpinButton* button, double& new_value) {
+inline auto parse_spinbutton_input(Gtk::SpinButton* button, double& new_value) -> int {
   std::istringstream str(button->get_text().c_str());
 
-  return (str >> new_value) ? 1 : GTK_INPUT_ERROR;
+  if (auto min = 0.0, max = 0.0; str >> new_value) {
+    button->get_range(min, max);
+
+    if (new_value < min) {
+      new_value = min;
+    } else if (new_value > max) {
+      new_value = max;
+    }
+
+    return 1;
+  }
+
+  return GTK_INPUT_ERROR;
 }
 
 #endif
