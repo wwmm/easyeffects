@@ -1,13 +1,20 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="equalizer">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="equalizer">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Equalizer</title>
-    <p>EasyEffects uses the parametric equalizer from Linux Studio Plugins. You can choose between 1 and 30 bands. You also can change the center frequency and the width of each band as needed. There are a few presets but at this moment all of them have only 10 bands. Presets with other number of bands may be added in the future.</p>
+    <p>The Equalization in sound recording and reproduction is the process of adjusting the volume of different frequency bands within an audio signal. EasyEffects uses the Parametric Equalizer from Linux Studio Plugins. The user can choose between 1 and 32 bands. Width and center frequency of each band can be customized as needed.</p>
     <section>
-        <title>Main Menu</title>
-
+        <title>Global Options</title>
         <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Bands</em>
+                </title>
+                <p>The number of bands.</p>
+            </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Mode</em>
@@ -22,7 +29,7 @@
                     <item>
                         <p>
                             <em style="strong">FIR</em>
-                            - Finite Impulse Response filters with linear phase, finite approximation of equalizer's impulse response. Adds noticeable latency to output signal.
+                            - Finite Impulse Response filters with linear phase, finite approximation of Equalizer's impulse response. Adds noticeable latency to output signal.
                         </p>
                     </item>
                     <item>
@@ -35,15 +42,9 @@
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Bands</em>
-                </title>
-                <p>The number of equalizer bands.</p>
-            </item>
-            <item>
-                <title>
                     <em style="strong" its:withinText="nested">Split Channels</em>
                 </title>
-                <p>When this option is enabled it is possible to apply different equalizations to the left and the right channel.</p>
+                <p>When enabled it is possible to apply different configurations to left and right channels.</p>
             </item>
             <item>
                 <title>
@@ -55,20 +56,12 @@
                 <title>
                     <em style="strong" its:withinText="nested">Calculate Frequencies</em>
                 </title>
-                <p>This function can be used to calculate the center frequencies and bandwidth of a graphic equalizer with the current number of selected bands. Useful when the user does not want the default number of 30 bands but has no idea about which frequencies and bandwidth he/she should choose.</p>
+                <p>This function calculates the center frequency and the width of each bands using the current number of bands. Useful when the user wants less than 32 bands but has no idea about which frequencies should be chosen.</p>
             </item>
-            <item>
-                <title>
-                    <em style="strong" its:withinText="nested">Reset Equalizer</em>
-                </title>
-                <p>Reset the equalizer to its default settings.</p>
-            </item>
-
         </terms>
     </section>
-
     <section>
-        <title>Band Menu</title>
+        <title>Band Options</title>
         <terms>
             <item>
                 <title>
@@ -78,7 +71,7 @@
                     <item>
                         <p>
                             <em style="strong">Off</em>
-                            - Filter is not working (turned off).
+                            - The filter is not working (turned off).
                         </p>
                     </item>
                     <item>
@@ -89,26 +82,26 @@
                     </item>
                     <item>
                         <p>
-                            <em style="strong">High-pass</em>
-                            - High-pass filter with rejection of low frequencies.
+                            <em style="strong">High Pass</em>
+                            - High Pass filter with rejection of low frequencies.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">High-shelf</em>
+                            <em style="strong">High Shelf</em>
                             - Shelving filter with adjustment of high frequency range.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-pass</em>
-                            - Low-pass filter with rejection of high frequencies.
+                            <em style="strong">Low Pass</em>
+                            - Low Pass filter with rejection of high frequencies.
                         </p>
                     </item>
                     <item>
                         <p>
-                            <em style="strong">Low-shelf</em>
-                            - Shelving filter with adjustment of low frequencies.
+                            <em style="strong">Low Shelf</em>
+                            - Shelving filter with adjustment of low frequency range.
                         </p>
                     </item>
                     <item>
@@ -123,6 +116,12 @@
                             - Resonance filter wih sharp peak/recess.
                         </p>
                     </item>
+                    <item>
+                        <p>
+                            <em style="strong">All Pass</em>
+                            - All Pass filter.
+                        </p>
+                    </item>
                 </list>
             </item>
             <item>
@@ -133,47 +132,25 @@
                     <item>
                         <p>
                             <em style="strong">RLC</em>
-                            - Very smooth filters based on similar cascades of RLC contours.
+                            - Very smooth filters based on similar cascades of RLC contours. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">BWC</em>
-                            - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and Notch filters.
+                            - Butterworth-Chebyshev-type-1 based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">LRX</em>
-                            - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters.
+                            - Linkwitz-Riley based filters. Does not affect Resonance and Notch filters. Bilinear Z-transform (BT) or Matched Z-transform (MT) is used for pole/zero mapping.
                         </p>
                     </item>
                     <item>
                         <p>
                             <em style="strong">APO</em>
-                            - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are textbook filters
-                            <link href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html" its:translate="no"></link>
-                            which are implemented as in the
-                            <link href="https://equalizerapo.com/" its:translate="no">Equalizer APO</link>
-                            software.
-                        </p>
-                    </item>
-                    <item>
-                        <p>
-                            <em style="strong">(BT)</em>
-                            - Bilinear Z-transform is used for pole/zero mapping.
-                        </p>
-                    </item>
-                    <item>
-                        <p>
-                            <em style="strong">(MT)</em>
-                            - Matched Z-transform is used for pole/zero mapping.
-                        </p>
-                    </item>
-                    <item>
-                        <p>
-                            <em style="strong">(DR)</em>
-                            - Direct design is used to serve the digital filter coefficients directly in the digital domain without performing transforms.
+                            - Digital biquad filters derived from canonic analog biquad prototypes digitalized through Bilinear transform. These are <link href="https://shepazu.github.io/Audio-EQ-Cookbook/audio-eq-cookbook.html" its:translate="no">textbook filters</link> which are implemented as in the <link href="https://equalizerapo.com/" its:translate="no">Equalizer APO</link> software. Direct design (DR) is used to serve the digital filter coefficients directly in the digital domain, without performing transforms.
                         </p>
                     </item>
                 </list>
@@ -188,60 +165,56 @@
                 <title>
                     <em style="strong" its:withinText="nested">Solo</em>
                 </title>
-                <p>Makes this band the only one active.</p>
+                <p>Makes the selected band the only one active.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Mute</em>
                 </title>
-                <p>Mutes the band.</p>
+                <p>Mutes the selected band.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Frequency</em>
                 </title>
-                <p>Band center frequency.</p>
+                <p>Center frequency of the selected band.</p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Width</em>
                 </title>
-                <p>
-                    Bandwidth. Calculated as
-                    <code its:withinText="nested">width = frequency / quality</code>
-                    .
+                <p>Bandwidth calculated as <code its:withinText="nested">width = frequency / quality</code>.
                 </p>
             </item>
             <item>
                 <title>
                     <em style="strong" its:withinText="nested">Quality</em>
                 </title>
-                <p>Quality factor.</p>
+                <p>The quality factor of the filter used.</p>
             </item>
         </terms>
     </section>
-
     <section>
         <title>References</title>
         <list>
             <item>
                 <p>
-                    <link href="http://lsp-plug.in/?page=manuals&amp;section=para_equalizer_x32_lr" its:translate="no">http://lsp-plug.in/?page=manuals&amp;section=para_equalizer_x32_lr</link>
+                    <link href="https://en.wikipedia.org/wiki/Equalization_(audio)" its:translate="no">Wikipedia Equalization (audio)</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Equalization_(audio)" its:translate="no">https://en.wikipedia.org/wiki/Equalization_(audio)</link>
+                    <link href="http://lsp-plug.in/?page=manuals&amp;section=para_equalizer_x32_lr" its:translate="no">LSP Parametric Equalizer x32 LeftRight</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Q_factor" its:translate="no">https://en.wikipedia.org/wiki/Q_factor</link>
+                    <link href="https://en.wikipedia.org/wiki/Q_factor" its:translate="no">Wikipedia Q Factor</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/" its:translate="no">https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/</link>
+                    <link href="https://howtoeq.wordpress.com/2010/10/07/q-factor-and-bandwidth-in-eq-what-it-all-means/" its:translate="no">How to EQ - Q Factor and Bandwidth in EQ: What They Mean</link>
                 </p>
             </item>
         </list>

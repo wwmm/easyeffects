@@ -174,7 +174,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">center</property>
                                         <property name="valign">end</property>
-                                        <property name="label" translatable="yes">PreAmp</property>
+                                        <property name="label" translatable="yes">SC PreAmp</property>
                                     </object>
                                 </child>
                                 <layout>

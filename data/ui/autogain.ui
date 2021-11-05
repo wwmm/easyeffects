@@ -28,6 +28,7 @@
                 <child>
                     <object class="GtkSpinButton" id="spinbutton_target">
                         <property name="halign">center</property>
+                        <property name="width-chars">10</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
                                 <property name="lower">-100</property>

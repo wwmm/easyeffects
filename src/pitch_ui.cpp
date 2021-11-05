@@ -45,6 +45,13 @@ PitchUi::PitchUi(BaseObjectType* cobject,
   settings->bind("faster", faster, "active");
   settings->bind("formant-preserving", formant_preserving, "active");
 
+  // prepare widgets
+
+  prepare_spinbutton(crispness);
+  prepare_spinbutton(cents);
+  prepare_spinbutton(semitones);
+  prepare_spinbutton(octaves);
+
   setup_input_output_gain(builder);
 }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="pipewire" style="2column">
+    <info>
+        <link type="guide" xref="index#ui"/>
+    </info>
+    <title>PipeWire</title>
+    <p>PipeWire tab can be used to set default devices, autoloading presets and test signals in addition to refer to different information about PipeWire installation on the user system.</p>
+    <terms>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">General</em>
+            </title>
+            <p>Choose between using default devices or select one of the connected devices managed by PipeWire.</p>
+            <p>PipeWire version, quantum values and sample rate are also reported inside the tab.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Presets Autoloading</em>
+            </title>
+            <p>The list of autoloading presets associated to specific Devices and their Profile.</p>
+            <p>The user can change their combination selecting between the available Presets and the connected Devices from the relative comboboxes.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Modules</em>
+            </title>
+            <p>The list of PipeWire modules installed on the system.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Modules</em>
+            </title>
+            <p>The list of PipeWire clients loaded on the system.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Test Signal</em>
+            </title>
+            <p>Configures a <link xref="testsignals" its:withinText="yes">test signal</link> for testing purpose.</p>
+        </item>
+    </terms>
+</page>

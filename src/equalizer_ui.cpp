@@ -234,6 +234,8 @@ EqualizerUi::EqualizerUi(BaseObjectType* cobject,
 
   nbands = builder->get_widget<Gtk::SpinButton>("nbands");
 
+  prepare_spinbutton(nbands);
+
   // signals connections
 
   nbands->signal_value_changed().connect(sigc::mem_fun(*this, &EqualizerUi::on_nbands_changed));
@@ -315,7 +317,7 @@ void EqualizerUi::on_nbands_changed() {
 
   const auto split = settings->get_boolean("split-channels");
 
-  const auto nb = static_cast<int>(nbands->get_value());
+  const auto nb = nbands->get_value_as_int();
 
   build_bands(bands_box_left, settings_left, nb, split);
 
@@ -608,6 +610,7 @@ bool EqualizerUi::parse_apo_preamp(const std::string& line, double& preamp) {
   }
 
   preamp = std::stod(matches.str(1));
+
   return true;
 }
 

@@ -1,9 +1,11 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="autogain">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="autogain">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Auto Gain</title>
-    <p>EasyEffects auto gain is based on the library libebur128. It changes the audio volume to a perceived loudness level that can be tweaked by the user.</p>
+    <p>EasyEffects Autogain is based on the library libebur128 which implements the EBU R 128 standard for loudness normalization. It changes the audio volume to a perceived loudness target that can be customized by the user.</p>
     <terms>
         <item>
             <title>
@@ -13,63 +15,73 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Reset</em>
+                <em style="strong" its:withinText="nested">Reset History</em>
             </title>
-            <p>Resets the auto gain history.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Detect Silence</em>
-            </title>
-            <p>When the momentary loudness is below the relative we assume the audio material is passing through a brief moment of silence and no changes to the output gain are applied. If you do not want this behavior disable the silence detection.</p>
+            <p>Resets the Autogain history related to Momentary, Short-Term, Integrated, Relative and Range values which affect the volume changes.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Use Geometric Mean</em>
             </title>
-            <p>The estimated loudness is obtained from the geometric mean of the momentary, short-term and integrated loudness. When this option is disabled a weighted average is used.</p>
+            <p>The estimated loudness is obtained from the geometric mean of the Momentary, Short-Term and Integrated loudness. When this option is disabled, a weighted average is used.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Momentary</em>
+                <em style="strong" its:withinText="nested">Reference</em>
             </title>
-            <p>Controls how much the momentary term will influence the loudness level estimation.</p>
+            <p>The parameter used as reference to evaluate the output level.</p>
+            <list>
+                <item>
+                    <p>
+                        <em style="strong">Momentary</em>
+                        - Measures the loudness of the past 400 milliseconds.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Short-Term</em>
+                        - Measures the loudness of the past 3 seconds.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Integrated</em>
+                        - The measure of the loudness over the entire duration. It indicates how loud the whole content is on average.
+                    </p>
+                </item>
+            </list>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Short Term</em>
+                <em style="strong" its:withinText="nested">Monitor Parameters</em>
             </title>
-            <p>Controls how much the short term measure will influence the loudness level estimation.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Integrated</em>
-            </title>
-            <p>Controls how much the integrated term will influence the loudness level estimation.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Relative</em>
-            </title>
-            <p>Relative threshold. It is used to detect silence. Whenever the momentary term is below this threshold modifications to the output gain will be disabled.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Loudness</em>
-            </title>
-            <p>Estimated input loudness. The difference between its value and the target loudness determines the output gain.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Range</em>
-            </title>
-            <p>Loudness range. Indicates how large is the material dynamic range.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Gain</em>
-            </title>
-            <p>Output gain value. The input signal will be multiplied by this correction gain to bring its loudness to the target value.</p>
+            <p>Other values not customizable by the user.</p>
+            <list>
+                <item>
+                    <p>
+                        <em style="strong">Relative</em>
+                        - Used to detect silence. Whenever the Momentary term is below a predetermined threshold, modifications to the output gain will be disabled.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Loudness</em>
+                        - The difference between its value and the target loudness determines the output gain.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Range</em>
+                        - Indicates how large is the dynamic range of the content played.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Output Gain</em>
+                        - The input signal will be multiplied by this correction gain to bring its loudness to the target value.
+                    </p>
+                </item>
+            </list>
         </item>
     </terms>
     <section>
@@ -77,7 +89,14 @@
         <list>
             <item>
                 <p>
-                    <link href="https://tech.ebu.ch/loudness#tab" its:translate="no">https://tech.ebu.ch/loudness#tab</link>
+                    <link href="https://en.wikipedia.org/wiki/EBU_R_128" its:translate="no">Wikipedia EBU R 128</link>
+                </p>
+            </item>
+        </list>
+        <list>
+            <item>
+                <p>
+                    <link href="https://tech.ebu.ch/publications/r128/" its:translate="no">EBU - Loudness Normalisation and Permitted Maximum Level of Audio Signals</link>
                 </p>
             </item>
         </list>

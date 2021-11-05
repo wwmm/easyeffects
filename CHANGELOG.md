@@ -8,6 +8,8 @@
   should be visible in the impulse list.
 - Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window
   width.
+- The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects
+  have been removed.
 
 ### Note to packagers
 

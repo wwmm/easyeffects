@@ -1,64 +1,94 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="gate">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="gate">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Gate</title>
-    <p>Gates attenuate signals that register below the threshold. This kind of signal processing reduces disturbing noise between useful signals.</p>
-    <p>EasyEffects uses the gate developed by Calf Studio.</p>
+    <p>The Gate attenuates signals that register below a Threshold. This kind of signal processing is used to reduce disturbing noise between useful signals. EasyEffects uses the Gate developed by Calf Studio Gear.</p>
     <terms>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Attack</em>
+                <em style="strong" its:withinText="nested">Maximum Gain Reduction</em>
             </title>
-            <p>Amount of milliseconds the signal has to rise above the threshold before gain reduction stops.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Release</em>
-            </title>
-            <p>Amount of milliseconds the signal has to fall below the threshold before the reduction is increased again.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Threshold</em>
-            </title>
-            <p>If a signal rises above this level the gain reduction is released.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Ratio</em>
-            </title>
-            <p>Set the ratio by which the signal will be reduced.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Knee</em>
-            </title>
-            <p>Controls how smooth is the entrance in the gain reduction phase.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Makeup</em>
-            </title>
-            <p>It amplifies your signal after processing.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Stereo Link</em>
-            </title>
-            <p>Choose if the gain reduction is affected by the louder channel or by the average level between the channels.</p>
+            <p>The maximum level of gain reduction to apply when the signal is below the Threshold.</p>
         </item>
         <item>
             <title>
                 <em style="strong" its:withinText="nested">Detection</em>
             </title>
-            <p>Choose if the gate should take the signal peak for detection or the RMS value (it is smoother).</p>
+            <p>Determines how the signal is evaluated for the gain reduction.</p>
+            <list>
+                <item>
+                    <p>
+                        <em style="strong">Peak</em>
+                        - The Gate reacts according to the peaks.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">RMS</em>
+                        - The Gate reacts according to the average level measured by the root mean square.
+                    </p>
+                </item>
+            </list>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Gain Reduction</em>
+                <em style="strong" its:withinText="nested">Stereo Link</em>
             </title>
-            <p>The level of gain reduction when the signal is below the threshold.</p>
+            <p>Determines which part of the signal is taken into account for the gain reduction.</p>
+            <list>
+                <item>
+                    <p>
+                        <em style="strong">Average</em>
+                        - The average level between both channels.
+                    </p>
+                </item>
+                <item>
+                    <p>
+                        <em style="strong">Maximum</em>
+                        - The loudest channel.
+                    </p>
+                </item>
+            </list>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Release</em>
+            </title>
+            <p>The length of time it takes to apply roughly two-thirds of the targeted amount of reduction ratio.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Attack</em>
+            </title>
+            <p>The length of time it takes to restore roughly two-thirds of the reduced gain.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Threshold</em>
+            </title>
+            <p>The target level around which the reduction is applied (the range depends by the Knee).</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Ratio</em>
+            </title>
+            <p>The amount of reduction that will be applied to the signal.</p>
+            <p>For example, when the Ratio is 2 and the signal falls below the Threshold by 5 db, it would be ideally reduced by 10 db (5x2 db, or less if the Maximum Gain Reduction is greater than -10 db). In practice this behavior mostly depends on how the Gate is designed and configured.</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Knee</em>
+            </title>
+            <p>The range over which the Gate switches from no reduction to almost the full ratio reduction (the Threshold usually sits at the center of this transition zone).</p>
+        </item>
+        <item>
+            <title>
+                <em style="strong" its:withinText="nested">Makeup</em>
+            </title>
+            <p>The gain to apply after the gating stage.</p>
         </item>
     </terms>
     <section>
@@ -66,12 +96,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Gate.html" its:translate="no">https://calf-studio-gear.org/doc/Gate.html</link>
+                    <link href="https://calf-studio-gear.org/doc/Gate.html" its:translate="no">Calf Gate</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">https://en.wikipedia.org/wiki/Noise_gate</link>
+                    <link href="https://en.wikipedia.org/wiki/Noise_gate" its:translate="no">Wikipedia Noise Gate</link>
                 </p>
             </item>
         </list>

@@ -1,10 +1,11 @@
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="bassenhancer">
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://projectmallard.org/1.0/"
+    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="bassenhancer">
     <info>
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Bass Enhancer</title>
-    <p>The brain perceives the pitch of a tone not only by its fundamental frequency but also by the periodicity implied by the relationship between the higher harmonics. We may perceive the same pitch even if the fundamental frequency is missing from a tone.</p>
-    <p>EasyEffects uses the bass enhancer developed by Calf Studio.</p>
+    <p>A Bass Enhancer is used to produce very low sound that is not present in the original signal. This is done by creating harmonic distortions of the signal which are restricted in range and added to the original signal. It raises the lower end of an audio signal without simply raising the lower frequencies like an <link xref="equalizer" its:withinText="yes">Equalizer</link> would do to create a more "fat" or "boomy" sound.</p>
     <terms>
         <item>
             <title>
@@ -22,19 +23,19 @@
             <title>
                 <em style="strong" its:withinText="nested">Scope</em>
             </title>
-            <p>The frequency harmonics are produced above.</p>
+            <p>The frequency above which harmonics are produced.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Floor(button)</em>
+                <em style="strong" its:withinText="nested">Floor (button)</em>
             </title>
             <p>Constrain the enhancement on the lower end.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Floor(value)</em>
+                <em style="strong" its:withinText="nested">Floor (value)</em>
             </title>
-            <p>The frequency no harmonics are produced below.</p>
+            <p>The frequency below which no harmonics are produced.</p>
         </item>
         <item>
             <title>
@@ -54,12 +55,12 @@
         <list>
             <item>
                 <p>
-                    <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html" its:translate="no">https://calf-studio-gear.org/doc/Bass%20Enhancer.html</link>
+                    <link href="https://calf-studio-gear.org/doc/Bass%20Enhancer.html" its:translate="no">Calf Bass Enhancer</link>
                 </p>
             </item>
             <item>
                 <p>
-                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental" its:translate="no">https://en.wikipedia.org/wiki/Missing_fundamental</link>
+                    <link href="https://en.wikipedia.org/wiki/Missing_fundamental" its:translate="no">Wikipedia Missing Fundamental</link>
                 </p>
             </item>
         </list>

@@ -46,6 +46,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
   ir_width = builder->get_widget<Gtk::SpinButton>("ir_width");
 
+  prepare_spinbutton(ir_width);
+
   listview = builder->get_widget<Gtk::ListView>("listview");
 
   scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("scrolled_window");
