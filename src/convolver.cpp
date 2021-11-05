@@ -407,13 +407,15 @@ void Convolver::setup_zita() {
   const uint max_convolution_size = kernel_L.size();
   const uint buffer_size = get_zita_buffer_size();
 
-  if (conv == nullptr) {
-    conv = new Convproc();
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
   }
 
-  conv->stop_process();
-
-  conv->cleanup();
+  conv = new Convproc();
 
   conv->set_options(0);
 

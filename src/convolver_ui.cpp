@@ -605,11 +605,13 @@ void ConvolverUi::get_irs_info() {
 }
 
 void ConvolverUi::get_irs_spectrum(const int& rate) {
-  if (left_mag.empty() || right_mag.empty()) {
+  if (left_mag.empty() || right_mag.empty() || left_mag.size() != right_mag.size()) {
+    util::debug(log_tag + name + " aborting the impulse fft calculation...");
+
     return;
   }
 
-  util::debug(log_tag + "calculating the impulse fft...");
+  util::debug(log_tag + name + " calculating the impulse fft...");
 
   left_spectrum.resize(left_mag.size() / 2U + 1U);
   right_spectrum.resize(right_mag.size() / 2U + 1U);

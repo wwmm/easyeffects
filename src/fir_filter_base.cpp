@@ -139,12 +139,15 @@ void FirFilterBase::setup_zita() {
     return;
   }
 
-  if (conv == nullptr) {
-    conv = new Convproc();
+  if (conv != nullptr) {
+    conv->stop_process();
+
+    conv->cleanup();
+
+    delete conv;
   }
 
-  conv->stop_process();
-  conv->cleanup();
+  conv = new Convproc();
 
   conv->set_options(0);
 
