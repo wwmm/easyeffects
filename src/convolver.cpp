@@ -57,23 +57,27 @@ Convolver::Convolver(const std::string& tag,
 
     data_mutex.unlock();
 
-    read_kernel_file();
+    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
+      read_kernel_file();
 
-    if (kernel_is_initialized) {
-      kernel_L = original_kernel_L;
-      kernel_R = original_kernel_R;
+      if (kernel_is_initialized) {
+        kernel_L = original_kernel_L;
+        kernel_R = original_kernel_R;
 
-      set_kernel_stereo_width();
-      apply_kernel_autogain();
+        set_kernel_stereo_width();
+        apply_kernel_autogain();
 
-      setup_zita();
+        Glib::signal_idle().connect_once([&, this] {
+          setup_zita();
 
-      data_mutex.lock();
+          data_mutex.lock();
 
-      ready = kernel_is_initialized && zita_ready;
+          ready = kernel_is_initialized && zita_ready;
 
-      data_mutex.unlock();
-    }
+          data_mutex.unlock();
+        });
+      }
+    });
   });
 
   setup_input_output_gain();
