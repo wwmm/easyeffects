@@ -72,6 +72,8 @@ SpectrumUi::SpectrumUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>
   plot->set_n_x_decimals(0);
   plot->set_n_y_decimals(1);
 
+  plot->set_margin(0);
+
   set_content_height(settings->get_int("height"));
 }
 
