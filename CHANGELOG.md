@@ -4,12 +4,17 @@
 
 ### Added
 
-- It is now possible to combine impulse responses in the convolver interface. A new impulse file is generated and it
+- It is now possible to combine impulse responses in the Convolver interface. A new impulse file is generated and it
   should be visible in the impulse list.
 - Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window
   width.
 - The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects
   have been removed.
+
+### Fixed
+- When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than
+  resetting to the previous one.
+- The application window now remembers the maximized state and restores it on the next opening event.
 
 ### Note to packagers
 
