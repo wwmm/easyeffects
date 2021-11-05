@@ -315,7 +315,7 @@ void EqualizerUi::on_nbands_changed() {
 
   const auto split = settings->get_boolean("split-channels");
 
-  const auto nb = static_cast<int>(nbands->get_value());
+  const auto nb = nbands->get_value_as_int();
 
   build_bands(bands_box_left, settings_left, nb, split);
 
