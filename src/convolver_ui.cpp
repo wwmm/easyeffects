@@ -686,6 +686,7 @@ void ConvolverUi::get_irs_spectrum(const int& rate) {
   // initializing the logarithmic frequency axis
 
   const auto log_axis = util::logspace(20.0F, 22000.0F, bin_size);
+  // const auto log_axis = util::logspace(20.0F, 22000.0F, freq_axis.size());
   // auto log_axis = util::linspace(20.0F, 22000.0F, spectrum_settings->get_int("n-points"));
 
   std::vector<float> l(log_axis.size());
