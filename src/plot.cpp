@@ -35,13 +35,17 @@ Plot::Plot(Gtk::DrawingArea* drawing_area)
     const auto width = da->get_width();
     const auto height = da->get_height();
 
-    if (const auto usable_height = height - x_axis_height; y < usable_height) {
+    const auto usable_height = height - margin * height - x_axis_height;
+
+    if (y < height - x_axis_height && y > margin * height && x > margin * width && x < width - margin * width) {
       switch (plot_scale) {
         case PlotScale::logarithmic: {
           const double& x_min_log = std::log10(x_min);
           const double& x_max_log = std::log10(x_max);
 
-          const double& mouse_x_log = x / static_cast<double>(width) * (x_max_log - x_min_log) + x_min_log;
+          const double& mouse_x_log =
+              (x - margin * width) / static_cast<double>(width - 2 * margin * width) * (x_max_log - x_min_log) +
+              x_min_log;
 
           mouse_x = std::pow(10.0, mouse_x_log);  // exp10 does not exist on FreeBSD
 
@@ -50,7 +54,7 @@ Plot::Plot(Gtk::DrawingArea* drawing_area)
           break;
         }
         case PlotScale::linear: {
-          mouse_x = x / static_cast<double>(width) * (x_max - x_min) + x_min;
+          mouse_x = (x - margin * width) / static_cast<double>(width - 2 * margin * width) * (x_max - x_min) + x_min;
 
           mouse_y = (y_max - y_min) * (usable_height - y) / usable_height;
 
@@ -155,11 +159,17 @@ void Plot::set_y_unit(const Glib::ustring& value) {
   y_unit = value;
 }
 
+void Plot::set_margin(const double& v) {
+  margin = v;
+}
+
 void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, const int& height) {
   ctx->paint();
 
   if (const auto n_points = y_axis.size(); n_points > 0) {
-    const auto objects_x = util::linspace(line_width, static_cast<float>(width) - line_width, n_points);
+    const auto objects_x =
+        util::linspace(static_cast<float>(line_width + margin * width),
+                       static_cast<float>(static_cast<float>(width) - line_width - margin * width), n_points);
 
     if (objects_x.empty()) {
       return;
@@ -167,7 +177,7 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
 
     x_axis_height = draw_x_labels(ctx, width, height);
 
-    int usable_height = height - x_axis_height;
+    int usable_height = static_cast<int>(height - margin * height) - x_axis_height;
 
     ctx->set_source_rgba(color.get_red(), color.get_green(), color.get_blue(), color.get_alpha());
 
@@ -177,10 +187,10 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
           double bar_height = static_cast<double>(usable_height) * y_axis[n];
 
           if (draw_bar_border) {
-            ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
+            ctx->rectangle(objects_x[n], margin * height + static_cast<double>(usable_height) - bar_height,
                            static_cast<double>(width) / static_cast<double>(n_points) - line_width, bar_height);
           } else {
-            ctx->rectangle(objects_x[n], static_cast<double>(usable_height) - bar_height,
+            ctx->rectangle(objects_x[n], margin * height + static_cast<double>(usable_height) - bar_height,
                            static_cast<double>(width) / static_cast<double>(n_points), bar_height);
           }
         }
@@ -188,19 +198,27 @@ void Plot::on_draw(const Cairo::RefPtr<Cairo::Context>& ctx, const int& width, c
         break;
       }
       case PlotType::line: {
-        ctx->move_to(0, usable_height);
+        if (fill_bars) {
+          ctx->move_to(margin * width, margin * height + static_cast<float>(usable_height));
+        } else {
+          const auto point_height = y_axis.front() * static_cast<float>(usable_height);
 
-        for (uint n = 0U; n < n_points - 1U; n++) {
-          const auto bar_height = y_axis[n] * static_cast<float>(usable_height);
-
-          ctx->line_to(objects_x[n], static_cast<float>(usable_height) - bar_height);
+          ctx->move_to(objects_x.front(), margin * height + static_cast<float>(usable_height) - point_height);
         }
 
-        ctx->line_to(width, usable_height);
+        for (uint n = 0U; n < n_points - 1U; n++) {
+          const auto next_point_height = y_axis[n + 1] * static_cast<float>(usable_height);
 
-        ctx->move_to(width, usable_height);
+          ctx->line_to(objects_x[n + 1], margin * height + static_cast<float>(usable_height) - next_point_height);
+        }
 
-        ctx->close_path();
+        if (fill_bars) {
+          ctx->line_to(objects_x.back(), margin * height + static_cast<float>(usable_height));
+
+          ctx->move_to(objects_x.back(), margin * height + static_cast<float>(usable_height));
+
+          ctx->close_path();
+        }
 
         break;
       }
@@ -244,7 +262,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
 
   double labels_offset = 120;
 
-  int n_x_labels = static_cast<int>(std::ceil(width / labels_offset)) + 1;
+  int n_x_labels = static_cast<int>(std::ceil((width - 2 * margin * width) / labels_offset)) + 1;
 
   if (n_x_labels < 2) {
     return 0;
@@ -254,7 +272,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     Correcting the offset based on the final n_x_labels value
   */
 
-  labels_offset = width / static_cast<double>(n_x_labels - 1);
+  labels_offset = (width - 2 * margin * width) / static_cast<double>(n_x_labels - 1);
 
   std::vector<float> labels;
 
@@ -292,7 +310,7 @@ auto Plot::draw_x_labels(const Cairo::RefPtr<Cairo::Context>& ctx, const int& wi
     layout->set_font_description(font);
     layout->get_pixel_size(text_width, text_height);
 
-    ctx->move_to(static_cast<double>(n) * labels_offset, static_cast<double>(height - text_height));
+    ctx->move_to(margin * width + static_cast<double>(n) * labels_offset, static_cast<double>(height - text_height));
 
     layout->show_in_cairo_context(ctx);
 

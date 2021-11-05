@@ -63,6 +63,8 @@ class Plot {
 
   void set_y_unit(const Glib::ustring& value);
 
+  void set_margin(const double& v);
+
  private:
   const std::string log_tag = "plot: ";
 
@@ -78,6 +80,8 @@ class Plot {
   int x_axis_height = 0;
   int n_x_decimals = 1;
   int n_y_decimals = 1;
+
+  double margin = 0.02;
 
   double mouse_y = 0.0, mouse_x = 0.0;
 
