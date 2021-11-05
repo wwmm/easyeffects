@@ -482,10 +482,10 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
 
   header_version->set_text(pm->header_version);
   library_version->set_text(pm->library_version);
-  server_rate->set_text(pm->default_clock_rate);
-  min_quantum->set_text(pm->default_min_quantum);
-  max_quantum->set_text(pm->default_max_quantum);
-  quantum->set_text(pm->default_quantum);
+  server_rate->set_text(Glib::ustring::format(std::stoi(pm->default_clock_rate)) + " Hz");
+  min_quantum->set_text(Glib::ustring::format(std::stoi(pm->default_min_quantum)));
+  max_quantum->set_text(Glib::ustring::format(std::stoi(pm->default_max_quantum)));
+  quantum->set_text(Glib::ustring::format(std::stoi(pm->default_quantum)));
 
   update_modules_info();
   update_clients_info();

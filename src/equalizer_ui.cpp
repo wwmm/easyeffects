@@ -608,6 +608,7 @@ bool EqualizerUi::parse_apo_preamp(const std::string& line, double& preamp) {
   }
 
   preamp = std::stod(matches.str(1));
+
   return true;
 }
 

@@ -279,8 +279,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       const auto delimiter_pos = str.find('/');
 
-      const auto latency_str = str.substr(0, delimiter_pos);
-
       const auto rate_str = str.substr(delimiter_pos + 1);
 
       if (auto rate = std::stoi(rate_str); rate != nd->nd_info.rate) {
@@ -288,6 +286,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
         app_info_ui_changed = true;
       }
+
+      const auto latency_str = str.substr(0, delimiter_pos);
 
       if (auto latency = (std::stof(latency_str) / static_cast<float>(nd->nd_info.rate));
           latency != nd->nd_info.latency) {

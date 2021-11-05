@@ -232,8 +232,11 @@ class PipeManager {
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 
-  std::string header_version, library_version, core_name, default_clock_rate, default_min_quantum, default_max_quantum,
-      default_quantum;
+  std::string header_version, library_version, core_name;
+  std::string default_clock_rate = "0";
+  std::string default_min_quantum = "0";
+  std::string default_max_quantum = "0";
+  std::string default_quantum = "0";
 
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 
