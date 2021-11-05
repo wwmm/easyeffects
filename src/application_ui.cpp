@@ -77,9 +77,15 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // restore window size
 
-  if (const auto window_width = settings->get_int("window-width"), window_height = settings->get_int("window-height");
-      window_width > 0 && window_height > 0) {
-    set_default_size(window_width, window_height);
+  if (settings->get_boolean("window-maximized")) {
+    maximize();
+  } else {
+    const auto window_width = settings->get_int("window-width");
+    const auto window_height = settings->get_int("window-height");
+
+    if (window_width > 0 && window_height > 0) {
+      set_default_size(window_width, window_height);
+    }
   }
 }
 

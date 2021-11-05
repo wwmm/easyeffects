@@ -294,6 +294,7 @@ void Application::on_activate() {
 
           settings->set_int("window-width", width);
           settings->set_int("window-height", height);
+          settings->set_boolean("window-maximized", window->is_maximized());
 
           // util::warning(std::to_string(width) + " x " + std::to_string(height));
 
