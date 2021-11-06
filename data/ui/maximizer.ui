@@ -18,14 +18,14 @@
 
         <child>
             <object class="GtkGrid">
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel" id="threshold_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Threshold</property>
                         <layout>
                             <property name="column">0</property>
@@ -59,8 +59,6 @@
 
                 <child>
                     <object class="GtkLabel" id="ceiling_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Ceiling</property>
                         <layout>
                             <property name="column">1</property>
@@ -94,8 +92,6 @@
 
                 <child>
                     <object class="GtkLabel" id="release_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Release</property>
                         <layout>
                             <property name="column">2</property>
