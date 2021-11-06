@@ -18,14 +18,13 @@
 
         <child>
             <object class="GtkGrid">
+                <property name="margin-bottom">6</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel" id="frame_size_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Frame Size</property>
                         <layout>
                             <property name="column">0</property>
@@ -61,8 +60,6 @@
 
                 <child>
                     <object class="GtkLabel" id="filter_length_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Filter Length</property>
                         <layout>
                             <property name="column">1</property>

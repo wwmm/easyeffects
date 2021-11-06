@@ -5,12 +5,12 @@
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
-        <property name="spacing">24</property>
+        <property name="spacing">12</property>
         <property name="orientation">vertical</property>
 
         <child>
             <object class="GtkBox">
-                <property name="spacing">6</property>
+                <property name="spacing">24</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <child>
@@ -27,7 +27,8 @@
         </child>
 
         <child>
-            <object class="GtkBox" id="box_detection">
+            <object class="GtkBox">
+                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -37,8 +38,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="detection_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Detection</property>
                             </object>
                         </child>
@@ -63,8 +62,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="mode_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Mode</property>
                             </object>
                         </child>
@@ -89,8 +86,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">F1 Split</property>
                             </object>
                         </child>
@@ -124,8 +119,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">F2 Peak</property>
                             </object>
                         </child>
@@ -156,15 +149,14 @@
         </child>
 
         <child>
-            <object class="GtkGrid" id="grid_spinbox">
+            <object class="GtkGrid">
+                <property name="margin-bottom">12</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">24</property>
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">F1 Gain</property>
                         <layout>
                             <property name="column">0</property>
@@ -200,8 +192,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">F2 Level</property>
                         <layout>
                             <property name="column">1</property>
@@ -237,8 +227,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">F2 Peak Q</property>
                         <layout>
                             <property name="column">2</property>
@@ -274,8 +262,6 @@
 
                 <child>
                     <object class="GtkLabel" id="laxity_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Laxity</property>
                         <layout>
                             <property name="column">3</property>
@@ -311,8 +297,6 @@
 
                 <child>
                     <object class="GtkLabel" id="threshold_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Threshold</property>
                         <layout>
                             <property name="column">4</property>
@@ -347,8 +331,6 @@
 
                 <child>
                     <object class="GtkLabel" id="ratio_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Ratio</property>
                         <layout>
                             <property name="column">5</property>
@@ -385,8 +367,6 @@
 
                 <child>
                     <object class="GtkLabel" id="makeup_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Makeup</property>
                         <layout>
                             <property name="column">6</property>
