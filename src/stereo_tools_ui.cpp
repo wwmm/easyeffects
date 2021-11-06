@@ -98,8 +98,6 @@ StereoToolsUi::StereoToolsUi(BaseObjectType* cobject,
   phasel = builder->get_widget<Gtk::ToggleButton>("phasel");
   phaser = builder->get_widget<Gtk::ToggleButton>("phaser");
   mode = builder->get_widget<Gtk::ComboBoxText>("mode");
-  meter_phase_levelbar = builder->get_widget<Gtk::LevelBar>("meter_phase_levelbar");
-  meter_phase_label = builder->get_widget<Gtk::Label>("meter_phase_label");
 
   // gsettings bindings
 
@@ -191,10 +189,4 @@ void StereoToolsUi::reset() {
   settings->reset("sc-level");
 
   settings->reset("stereo-phase");
-}
-
-void StereoToolsUi::on_new_phase_correlation(const double& value) {
-  meter_phase_levelbar->set_value(value);
-
-  meter_phase_label->set_text(level_to_localized_string(value, 0));
 }

@@ -597,8 +597,6 @@ void EffectsBaseUi::add_plugins_to_stack_plugins() {
           sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_input_level));
       effects_base->stereo_tools->output_level.connect(
           sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_output_level));
-      effects_base->stereo_tools->new_correlation.connect(
-          sigc::mem_fun(*stereo_tools_ui, &StereoToolsUi::on_new_phase_correlation));
 
       effects_base->stereo_tools->bypass = false;
     }
