@@ -40,8 +40,6 @@
 
                                 <child>
                                     <object class="GtkLabel" id="compressor_mode_label">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="label" translatable="yes">Operating Mode</property>
                                         <layout>
                                             <property name="column">0</property>
@@ -68,8 +66,6 @@
 
                                 <child>
                                     <object class="GtkLabel" id="envelope_boost_label">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="label" translatable="yes">Sidechain Boost</property>
                                         <layout>
                                             <property name="column">1</property>
@@ -99,8 +95,6 @@
 
                                 <child>
                                     <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="label" translatable="yes">Sidechain Source</property>
                                         <layout>
                                             <property name="column">2</property>

@@ -19,13 +19,11 @@
         <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
-                <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
+                <property name="margin-bottom">6</property>
                 <child>
                     <object class="GtkLabel" id="loudness_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Loudness</property>
                         <layout>
                             <property name="column">0</property>
@@ -60,8 +58,6 @@
 
                 <child>
                     <object class="GtkLabel" id="output_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Output</property>
                         <layout>
                             <property name="column">1</property>
@@ -96,8 +92,6 @@
 
                 <child>
                     <object class="GtkLabel" id="link_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Link</property>
                         <layout>
                             <property name="column">2</property>
