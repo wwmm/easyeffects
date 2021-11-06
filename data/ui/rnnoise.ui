@@ -10,7 +10,7 @@
 
         <child>
             <object class="GtkBox">
-                <property name="spacing">6</property>
+                <property name="spacing">24</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <child>
@@ -31,7 +31,6 @@
 
         <child>
             <object class="GtkLabel">
-                <property name="halign">center</property>
                 <property name="label" translatable="yes">Models</property>
             </object>
         </child>
