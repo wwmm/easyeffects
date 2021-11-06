@@ -5,7 +5,7 @@
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
-        <property name="spacing">24</property>
+        <property name="spacing">12</property>
         <property name="orientation">vertical</property>
 
         <child>
@@ -30,6 +30,7 @@
 
         <child>
             <object class="GtkBox" id="box_room_size">
+                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -39,8 +40,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="hf_damp_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">High Frequency Damping</property>
                             </object>
                         </child>
@@ -73,8 +72,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="room_size_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Room Size</property>
                             </object>
                         </child>
@@ -105,8 +102,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="diffusion_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Diffusion</property>
                             </object>
                         </child>
@@ -137,14 +132,13 @@
 
         <child>
             <object class="GtkGrid" id="grid_spinbox">
+                <property name="margin-bottom">12</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">24</property>
                 <child>
                     <object class="GtkLabel" id="predelay_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Pre Delay</property>
                         <layout>
                             <property name="column">0</property>
@@ -178,8 +172,6 @@
 
                 <child>
                     <object class="GtkLabel" id="decay_time_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Decay Time</property>
                         <layout>
                             <property name="column">1</property>
@@ -215,9 +207,7 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Wet</property>
+                        <property name="label" translatable="yes">Wet Amount</property>
                         <layout>
                             <property name="column">2</property>
                             <property name="row">0</property>
@@ -252,9 +242,7 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Dry</property>
+                        <property name="label" translatable="yes">Dry Amount</property>
                         <layout>
                             <property name="column">3</property>
                             <property name="row">0</property>
@@ -288,8 +276,6 @@
 
                 <child>
                     <object class="GtkLabel" id="bass_cut_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Bass Cut</property>
                         <layout>
                             <property name="column">4</property>
@@ -325,8 +311,6 @@
 
                 <child>
                     <object class="GtkLabel" id="treble_cut_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Treble Cut</property>
                         <layout>
                             <property name="column">5</property>

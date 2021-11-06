@@ -10,7 +10,7 @@
 
         <child>
             <object class="GtkBox">
-                <property name="spacing">6</property>
+                <property name="spacing">24</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <child>
@@ -35,14 +35,14 @@
 
         <child>
             <object class="GtkGrid">
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">12</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel" id="cents_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Cents</property>
                         <layout>
                             <property name="column">0</property>
@@ -77,8 +77,6 @@
 
                 <child>
                     <object class="GtkLabel" id="semitones_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Semitones</property>
                         <layout>
                             <property name="column">1</property>
@@ -113,8 +111,6 @@
 
                 <child>
                     <object class="GtkLabel" id="octaves_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Octaves</property>
                         <layout>
                             <property name="column">2</property>
@@ -149,8 +145,6 @@
 
                 <child>
                     <object class="GtkLabel" id="crispness_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Crispness</property>
                         <layout>
                             <property name="column">3</property>

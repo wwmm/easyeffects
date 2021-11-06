@@ -40,13 +40,13 @@
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Wet</em>
+                <em style="strong" its:withinText="nested">Wet Amount</em>
             </title>
             <p>Amount of processed signal (Reverberation) in the output.</p>
         </item>
         <item>
             <title>
-                <em style="strong" its:withinText="nested">Dry</em>
+                <em style="strong" its:withinText="nested">Dry Amount</em>
             </title>
             <p>Amount of unprocessed signal in the output.</p>
         </item>
