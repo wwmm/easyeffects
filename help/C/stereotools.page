@@ -19,13 +19,13 @@
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">Softclip</em>
+                    <em style="strong" its:withinText="nested">Softclip (button)</em>
                 </title>
-                <p>Makes a kind of analog distortion instead of harsh digital 0 db clipping.</p>
+                <p>Makes a kind of analog distortion instead of harsh digital 0 dB clipping.</p>
             </item>
             <item>
                 <title>
-                    <em style="strong" its:withinText="nested">S/C Level</em>
+                    <em style="strong" its:withinText="nested">Softclip (value)</em>
                 </title>
                 <p>Level of Softclip.</p>
             </item>
