@@ -18,6 +18,7 @@
 
         <child>
             <object class="GtkComboBoxText" id="mode">
+                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <items>
                     <item translatable="yes">12dB/oct Lowpass</item>
@@ -41,14 +42,13 @@
 
         <child>
             <object class="GtkGrid">
+                <property name="margin-bottom">6</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel" id="frequency_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Frequency</property>
                         <layout>
                             <property name="column">0</property>
@@ -84,8 +84,6 @@
 
                 <child>
                     <object class="GtkLabel" id="resonance_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Resonance</property>
                         <layout>
                             <property name="column">1</property>
@@ -121,8 +119,6 @@
 
                 <child>
                     <object class="GtkLabel" id="inertia_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Inertia</property>
                         <layout>
                             <property name="column">2</property>
