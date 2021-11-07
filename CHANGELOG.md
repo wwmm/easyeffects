@@ -12,6 +12,7 @@
   have been removed. The documentation button has been added in the menu section.
 
 ### Fixed
+
 - When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than
   resetting to the previous one.
 - The application window now remembers the maximized state and restores it on the next opening event.

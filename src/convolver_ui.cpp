@@ -123,8 +123,8 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
       combined_kernel_name->remove_css_class("error");
 
       /*
-        The current code convolving the impulse responses is doing direct convolution. It can very slow depending on the
-        size of each kernel. So we do not want to do it in the main thread.
+        The current code convolving the impulse responses is doing direct convolution. It can be very slow depending on
+        the size of each kernel. So we do not want to do it in the main thread.
       */
 
       mythreads.emplace_back(  // Using emplace_back here makes sense
