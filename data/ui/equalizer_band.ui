@@ -18,7 +18,6 @@
                         <property name="column-homogeneous">1</property>
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
                                 <property name="label" translatable="yes">Type</property>
                                 <layout>
                                     <property name="column">0</property>
@@ -51,7 +50,6 @@
 
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
                                 <property name="label" translatable="yes">Mode</property>
                                 <layout>
                                     <property name="column">1</property>
@@ -82,7 +80,6 @@
 
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
                                 <property name="label" translatable="yes">Slope</property>
                                 <layout>
                                     <property name="column">2</property>
@@ -120,7 +117,6 @@
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkLabel" id="band_frequency_label">
-                                        <property name="halign">center</property>
                                         <property name="label" translatable="yes">Frequency</property>
                                     </object>
                                 </child>
@@ -165,14 +161,12 @@
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkLabel">
-                                        <property name="halign">center</property>
                                         <property name="label" translatable="yes">Width</property>
                                     </object>
                                 </child>
 
                                 <child>
                                     <object class="GtkLabel" id="band_width">
-                                        <property name="halign">center</property>
                                         <property name="label">w</property>
                                         <style>
                                             <class name="dim-label" />
@@ -188,7 +182,6 @@
                                 <property name="orientation">vertical</property>
                                 <child>
                                     <object class="GtkLabel" id="band_quality_spinbutton_label">
-                                        <property name="halign">center</property>
                                         <property name="label" translatable="yes">Quality</property>
                                     </object>
                                 </child>
@@ -229,8 +222,9 @@
 
                 <child>
                     <object class="GtkBox">
+                        <property name="margin-top">6</property>
                         <property name="halign">center</property>
-                        <property name="spacing">12</property>
+                        <property name="spacing">24</property>
                         <child>
                             <object class="GtkToggleButton" id="band_solo">
                                 <property name="label" translatable="yes">Solo</property>
@@ -253,6 +247,7 @@
         <property name="orientation">vertical</property>
         <child>
             <object class="GtkMenuButton">
+                <property name="margin-bottom">6</property>
                 <property name="halign">center</property>
                 <property name="popover">popover_menu</property>
                 <property name="icon-name">emblem-system-symbolic</property>

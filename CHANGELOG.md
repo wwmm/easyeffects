@@ -9,7 +9,7 @@
 - Improved `x axis` drawings in our plots. Now the number of labels is adjusted dynamically depending on our window
   width.
 - The documentation has been updated reflecting the new EasyEffects features. Old references about PulseEffects
-  have been removed.
+  have been removed. The documentation button has been added in the menu section.
 
 ### Fixed
 - When a spinbutton is filled with an out of range value, now it is updated with the lowest/highest value rather than

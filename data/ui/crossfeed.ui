@@ -18,6 +18,7 @@
 
         <child>
             <object class="GtkBox">
+                <property name="margin-top">6</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -45,14 +46,13 @@
 
         <child>
             <object class="GtkGrid">
+                <property name="margin-bottom">6</property>
                 <property name="halign">center</property>
                 <property name="valign">center</property>
                 <property name="row-spacing">6</property>
                 <property name="column-spacing">48</property>
                 <child>
                     <object class="GtkLabel" id="fcut_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Cutoff</property>
                         <layout>
                             <property name="column">0</property>
@@ -88,8 +88,6 @@
 
                 <child>
                     <object class="GtkLabel" id="feed_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Feed</property>
                         <layout>
                             <property name="column">1</property>

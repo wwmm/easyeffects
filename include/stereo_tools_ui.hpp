@@ -36,8 +36,6 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
 
   static auto add_to_stack(Gtk::Stack* stack, const std::string& schema_path) -> StereoToolsUi*;
 
-  void on_new_phase_correlation(const double& value);
-
   void reset() override;
 
  private:
@@ -48,10 +46,6 @@ class StereoToolsUi : public Gtk::Box, public PluginUiBase {
   Gtk::ComboBoxText* mode = nullptr;
 
   Gtk::ToggleButton *softclip = nullptr, *mutel = nullptr, *muter = nullptr, *phasel = nullptr, *phaser = nullptr;
-
-  Gtk::LevelBar* meter_phase_levelbar = nullptr;
-
-  Gtk::Label* meter_phase_label = nullptr;
 };
 
 #endif

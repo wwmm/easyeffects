@@ -85,8 +85,6 @@
                 <property name="accessible-role">presentation</property>
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Format</property>
                         <layout>
                             <property name="column">0</property>
@@ -96,8 +94,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="format">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label">f</property>
                         <style>
                             <class name="dim-label" />
@@ -111,8 +107,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Rate</property>
                         <layout>
                             <property name="column">1</property>
@@ -122,8 +116,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="rate">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label">r</property>
                         <style>
                             <class name="dim-label" />
@@ -137,8 +129,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Channels</property>
                         <layout>
                             <property name="column">2</property>
@@ -148,8 +138,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="channels">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label">c</property>
                         <style>
                             <class name="dim-label" />
@@ -163,8 +151,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Latency</property>
                         <layout>
                             <property name="column">3</property>
@@ -174,8 +160,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="latency">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label">l</property>
                         <style>
                             <class name="dim-label" />
@@ -189,8 +173,6 @@
 
                 <child>
                     <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">State</property>
                         <layout>
                             <property name="column">4</property>
@@ -200,8 +182,6 @@
                 </child>
                 <child>
                     <object class="GtkLabel" id="state">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label">s</property>
                         <style>
                             <class name="dim-label" />

@@ -41,11 +41,11 @@
                     <em style="strong" its:withinText="nested">Sidechain Boost</em>
                 </title>
                 <p>If enabled, it introduces a special mode for assigning the same weight for higher frequencies opposite to lower frequencies.</p>
-                <p>When disabled, the frequency band is processed 'as is', but the usual audio signal has 3 db/octave falloff in the frequency domain and could be compared with the pink noise. So lower frequencies take more effect on the Compressor rather than higher frequencies.</p>
+                <p>When disabled, the frequency band is processed 'as is', but the usual audio signal has 3 dB/octave falloff in the frequency domain and could be compared with the pink noise. So lower frequencies take more effect on the Compressor rather than higher frequencies.</p>
                 <p>On the other hand the Sidechain Boost mode allows to compensate the -3 dB/octave falloff of the signal spectrum and, even more, makes the signal spectrum growing +3 dB/octave in the almost fully audible frequency range.</p>
                 <p>
-                    <em style="strong">Pink</em> applies +3 db/octave while
-                    <em style="strong">Brown</em> applies +6 db/octave Sidechain Boost.
+                    <em style="strong">Pink</em> applies +3 dB/octave while
+                    <em style="strong">Brown</em> applies +6 dB/octave Sidechain Boost.
                     Each of them can use bilinear-transformed (BT) or matched-transformed (MT) shelving filter.
                 </p>
             </item>
@@ -150,7 +150,7 @@
                     <em style="strong" its:withinText="nested">Ratio</em>
                 </title>
                 <p>The amount of attenuation (in Downward mode) or amplification (in Upward/Boosting mode) that will be applied to the signal.</p>
-                <p>For example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 db, the signal would be ideally reduced by 5 db (10/2 db). In practice this behavior mostly depends on how the Multiband Compressor is designed and configured.</p>
+                <p>For example, when the Ratio is 2 in Downward mode and the Sidechain rises above the Threshold by 10 dB, the signal would be ideally reduced by 5 dB (10/2 dB). In practice this behavior mostly depends on how the Multiband Compressor is designed and configured.</p>
             </item>
             <item>
                 <title>

@@ -11,13 +11,12 @@
         <child>
             <object class="GtkGrid">
                 <property name="halign">center</property>
-                <property name="valign">center</property>
+                <property name="row-homogeneous">1</property>
                 <property name="row-spacing">6</property>
-                <property name="column-spacing">48</property>
+                <property name="column-spacing">24</property>
+                <property name="margin-bottom">6</property>
                 <child>
                     <object class="GtkLabel" id="label_target">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Target</property>
                         <layout>
                             <property name="column">0</property>
@@ -28,6 +27,7 @@
                 <child>
                     <object class="GtkSpinButton" id="spinbutton_target">
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <property name="width-chars">10</property>
                         <property name="adjustment">
                             <object class="GtkAdjustment">
@@ -51,8 +51,6 @@
 
                 <child>
                     <object class="GtkLabel" id="reference_label">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
                         <property name="label" translatable="yes">Reference</property>
                         <layout>
                             <property name="column">1</property>
@@ -63,6 +61,7 @@
                 <child>
                     <object class="GtkComboBoxText" id="reference">
                         <property name="halign">center</property>
+                        <property name="valign">center</property>
                         <items>
                             <item translatable="yes">Momentary</item>
                             <item translatable="yes">Short-Term</item>
@@ -80,30 +79,33 @@
                 </child>
 
                 <child>
-                    <object class="GtkButton" id="reset">
-                        <property name="halign">center</property>
-                        <property name="label" translatable="yes">Reset History</property>
-                        <layout>
-                            <property name="column">2</property>
-                            <property name="row">1</property>
-                        </layout>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkToggleButton" id="bypass">
+                    <object class="GtkBox">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="label" translatable="yes">Bypass</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">6</property>
+                        <property name="homogeneous">1</property>
+                        <child>
+                            <object class="GtkToggleButton" id="bypass">
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Bypass</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkButton" id="reset">
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Reset History</property>
+                            </object>
+                        </child>
                         <layout>
-                            <property name="column">3</property>
-                            <property name="row">1</property>
+                            <property name="column">2</property>
+                            <property name="row">0</property>
+                            <property name="row-span">2</property>
                         </layout>
                     </object>
                 </child>
             </object>
         </child>
-
 
         <child>
             <object class="GtkBox">
@@ -291,6 +293,7 @@
 
         <child>
             <object class="GtkBox">
+                <property name="margin-bottom">6</property>
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
                 <property name="spacing">6</property>

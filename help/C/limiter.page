@@ -75,7 +75,7 @@
             <title>
                 <em style="strong" its:withinText="nested">Threshold Boost</em>
             </title>
-            <p>If enabled it applies an amount of gain to the limited signal equal to the absolute value of the Threshold. This causes the peak limited at the Threshold level to output at 0 db (it has only effect when the Threshold is set below 0 db).</p>
+            <p>If enabled it applies an amount of gain to the limited signal equal to the absolute value of the Threshold. This causes the peak limited at the Threshold level to output at 0 dB (it has only effect when the Threshold is set below 0 dB).</p>
         </item>
         <item>
             <title>

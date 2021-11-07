@@ -25,6 +25,7 @@
         <child>
             <object class="GtkStack" id="stack">
                 <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="hexpand">1</property>
                 <property name="hhomogeneous">0</property>
                 <property name="vhomogeneous">0</property>
@@ -42,13 +43,10 @@
                                 <child>
                                     <object class="GtkGrid">
                                         <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="row-spacing">6</property>
                                         <property name="column-spacing">24</property>
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">end</property>
                                                 <property name="label" translatable="yes">Mode</property>
                                                 <layout>
                                                     <property name="column">0</property>
@@ -76,8 +74,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="boost_threshold_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Boost Threshold</property>
                                                 <layout>
                                                     <property name="column">1</property>
@@ -112,8 +108,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="boost_amount_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Boost Amount</property>
                                                 <layout>
                                                     <property name="column">2</property>
@@ -151,13 +145,10 @@
                                 <child>
                                     <object class="GtkGrid">
                                         <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="row-spacing">6</property>
                                         <property name="column-spacing">12</property>
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Attack</property>
                                                 <layout>
                                                     <property name="column">1</property>
@@ -167,7 +158,7 @@
                                         </child>
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
+                                                <property name="halign">end</property>
                                                 <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Time</property>
                                                 <layout>
@@ -178,8 +169,7 @@
                                         </child>
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
+                                                <property name="halign">end</property>
                                                 <property name="label" translatable="yes">Threshold</property>
                                                 <layout>
                                                     <property name="column">0</property>
@@ -237,8 +227,6 @@
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Release</property>
                                                 <layout>
                                                     <property name="column">2</property>
@@ -298,8 +286,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="ratio_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Ratio</property>
                                                 <layout>
                                                     <property name="column">3</property>
@@ -338,8 +324,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="knee_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Knee</property>
                                                 <layout>
                                                     <property name="column">4</property>
@@ -377,8 +361,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="makeup_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Makeup</property>
                                                 <layout>
                                                     <property name="column">5</property>
@@ -437,13 +419,11 @@
                                         <property name="spacing">24</property>
                                         <child>
                                             <object class="GtkGrid">
-                                                <property name="valign">center</property>
                                                 <property name="row-spacing">6</property>
                                                 <property name="column-spacing">18</property>
                                                 <property name="column-homogeneous">1</property>
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="valign">end</property>
                                                         <property name="label" translatable="yes">Mode</property>
                                                         <layout>
                                                             <property name="column">0</property>
@@ -482,7 +462,6 @@
 
                                                 <child>
                                                     <object class="GtkLabel">
-                                                        <property name="valign">end</property>
                                                         <property name="label" translatable="yes">Source</property>
                                                         <layout>
                                                             <property name="column">2</property>
@@ -515,14 +494,11 @@
                                 <child>
                                     <object class="GtkGrid">
                                         <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="row-spacing">6</property>
                                         <property name="column-spacing">12</property>
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Input</property>
                                                 <layout>
                                                     <property name="column">1</property>
@@ -589,8 +565,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="preamp_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">PreAmplification</property>
                                                 <layout>
                                                     <property name="column">2</property>
@@ -628,8 +602,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="reactivity_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Reactivity</property>
                                                 <layout>
                                                     <property name="column">3</property>
@@ -667,8 +639,6 @@
 
                                         <child>
                                             <object class="GtkLabel" id="lookahead_label">
-                                                <property name="halign">center</property>
-                                                <property name="valign">center</property>
                                                 <property name="label" translatable="yes">Lookahead</property>
                                                 <layout>
                                                     <property name="column">4</property>
@@ -717,11 +687,11 @@
                             <object class="GtkGrid">
                                 <property name="halign">center</property>
                                 <property name="row-spacing">6</property>
-                                <property name="column-spacing">6</property>
+                                <property name="column-spacing">12</property>
+                                <property name="margin-top">12</property>
+                                <property name="margin-bottom">12</property>
                                 <child>
                                     <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="label" translatable="yes">High-Pass</property>
                                         <layout>
                                             <property name="column">1</property>
@@ -734,6 +704,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-bottom">6</property>
                                         <property name="label" translatable="yes">Mode</property>
                                         <layout>
                                             <property name="column">0</property>
@@ -746,6 +717,7 @@
                                     <object class="GtkLabel">
                                         <property name="halign">end</property>
                                         <property name="valign">center</property>
+                                        <property name="margin-top">6</property>
                                         <property name="label" translatable="yes">Frequency</property>
                                         <layout>
                                             <property name="column">0</property>
@@ -756,6 +728,8 @@
 
                                 <child>
                                     <object class="GtkComboBoxText" id="hpf_mode">
+                                        <property name="margin-bottom">6</property>
+                                        <property name="margin-end">6</property>
                                         <items>
                                             <item translatable="yes">Off</item>
                                             <item>12 dB/oct</item>
@@ -774,6 +748,8 @@
 
                                 <child>
                                     <object class="GtkSpinButton" id="hpf_freq">
+                                        <property name="margin-top">6</property>
+                                        <property name="margin-end">6</property>
                                         <property name="digits">0</property>
                                         <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
@@ -783,7 +759,7 @@
                                                 <property name="upper">20000</property>
                                                 <property name="value">10</property>
                                                 <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <property name="page-increment">100</property>
                                             </object>
                                         </property>
                                         <layout>
@@ -798,8 +774,6 @@
 
                                 <child>
                                     <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
                                         <property name="label" translatable="yes">Low-Pass</property>
                                         <layout>
                                             <property name="column">2</property>
@@ -810,6 +784,8 @@
 
                                 <child>
                                     <object class="GtkComboBoxText" id="lpf_mode">
+                                        <property name="margin-bottom">6</property>
+                                        <property name="margin-start">6</property>
                                         <items>
                                             <item translatable="yes">Off</item>
                                             <item>12 dB/oct</item>
@@ -828,6 +804,8 @@
 
                                 <child>
                                     <object class="GtkSpinButton" id="lpf_freq">
+                                        <property name="margin-top">6</property>
+                                        <property name="margin-start">6</property>
                                         <property name="digits">0</property>
                                         <property name="width-chars">10</property>
                                         <property name="update-policy">if-valid</property>
@@ -837,7 +815,7 @@
                                                 <property name="upper">20000</property>
                                                 <property name="value">20000</property>
                                                 <property name="step-increment">1</property>
-                                                <property name="page-increment">10</property>
+                                                <property name="page-increment">100</property>
                                             </object>
                                         </property>
                                         <layout>
@@ -867,8 +845,6 @@
                 <child>
                     <object class="GtkBox">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-
                         <child>
                             <object class="GtkLabel" id="gain_title">
                                 <property name="halign">end</property>
@@ -879,7 +855,6 @@
 
                         <child>
                             <object class="GtkLabel" id="gain_label">
-                                <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
@@ -897,8 +872,6 @@
                 <child>
                     <object class="GtkBox">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-
                         <child>
                             <object class="GtkLabel" id="envelope_title">
                                 <property name="halign">end</property>
@@ -909,7 +882,6 @@
 
                         <child>
                             <object class="GtkLabel" id="envelope_label">
-                                <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
@@ -927,8 +899,6 @@
                 <child>
                     <object class="GtkBox">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-
                         <child>
                             <object class="GtkLabel" id="sidechain_title">
                                 <property name="halign">end</property>
@@ -939,7 +909,6 @@
 
                         <child>
                             <object class="GtkLabel" id="sidechain_label">
-                                <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>
@@ -957,8 +926,6 @@
                 <child>
                     <object class="GtkBox">
                         <property name="halign">center</property>
-                        <property name="valign">center</property>
-
                         <child>
                             <object class="GtkLabel" id="curve_title">
                                 <property name="halign">end</property>
@@ -969,7 +936,6 @@
 
                         <child>
                             <object class="GtkLabel" id="curve_label">
-                                <property name="halign">center</property>
                                 <property name="width-chars">6</property>
                                 <property name="label">0</property>
                             </object>

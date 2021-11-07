@@ -178,6 +178,12 @@
                     </object>
                 </child>
                 <child>
+                    <object class="GtkButton" id="documentation">
+                        <property name="hexpand">1</property>
+                        <property name="label" translatable="yes">Documentation</property>
+                    </object>
+                </child>
+                <child>
                     <object class="GtkButton" id="about_button">
                         <property name="hexpand">1</property>
                         <property name="label" translatable="yes">About EasyEffects</property>

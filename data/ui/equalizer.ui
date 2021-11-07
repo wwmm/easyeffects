@@ -73,6 +73,7 @@
                                 <property name="hexpand">0</property>
                                 <child>
                                     <object class="GtkLabel" id="nbands_label">
+                                        <property name="halign">end</property>
                                         <property name="label" translatable="yes">Bands</property>
                                         <layout>
                                             <property name="column">0</property>
@@ -106,6 +107,7 @@
 
                                 <child>
                                     <object class="GtkLabel" id="mode_label">
+                                        <property name="halign">end</property>
                                         <property name="label" translatable="yes">Mode</property>
                                         <layout>
                                             <property name="column">0</property>

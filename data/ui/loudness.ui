@@ -18,6 +18,8 @@
 
         <child>
             <object class="GtkBox">
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">12</property>
                 <property name="halign">center</property>
                 <property name="homogeneous">1</property>
                 <property name="spacing">48</property>
@@ -27,8 +29,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="standard_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Standard</property>
                             </object>
                         </child>
@@ -56,8 +56,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">FFT Size</property>
                             </object>
                         </child>
@@ -88,8 +86,6 @@
                         <property name="orientation">vertical</property>
                         <child>
                             <object class="GtkLabel" id="volume_label">
-                                <property name="halign">center</property>
-                                <property name="valign">end</property>
                                 <property name="label" translatable="yes">Output Volume</property>
                             </object>
                         </child>

@@ -208,7 +208,7 @@ void PresetsMenuUi::create_preset(PresetType preset_type) {
 
   preset_name_box->set_text("");
 
-  // Truncate if longer then 100 characters
+  // Truncate if longer than 100 characters
 
   if (name.length() > 100U) {
     name.resize(100U);

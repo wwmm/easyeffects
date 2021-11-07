@@ -33,6 +33,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
   use_cubic_volumes = builder->get_widget<Gtk::Switch>("use_cubic_volumes");
 
   reset_settings = builder->get_widget<Gtk::Button>("reset_settings");
+  documentation = builder->get_widget<Gtk::Button>("documentation");
   about_button = builder->get_widget<Gtk::Button>("about_button");
 
   // signals connection
@@ -41,6 +42,7 @@ GeneralSettingsUi::GeneralSettingsUi(BaseObjectType* cobject,
 
   reset_settings->signal_clicked().connect(sigc::mem_fun(*this, &GeneralSettingsUi::on_reset_settings));
 
+  documentation->signal_clicked().connect([=, this]() { app->activate_action("help"); });
   about_button->signal_clicked().connect([=, this]() { app->activate_action("about"); });
 
   settings->bind("use-dark-theme", theme_switch, "active");

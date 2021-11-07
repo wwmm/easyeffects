@@ -105,18 +105,26 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
 
     auto output_file_name = combined_kernel_name->get_text();
 
-    if (output_file_name.empty()) {
+    if (output_file_name.empty() || output_file_name.find_first_of("\\/") != Glib::ustring::npos) {
+      util::debug(log_tag + " combined IR filename is empty or has illegal characters.");
+
       combined_kernel_name->set_css_classes({"error"});
 
       combined_kernel_name->grab_focus();
 
       spinner_combine_kernel->stop();
     } else {
+      // Truncate filename if longer than 100 characters
+
+      if (output_file_name.length() > 100U) {
+        output_file_name.resize(100U);
+      }
+
       combined_kernel_name->remove_css_class("error");
 
       /*
         The current code convolving the impulse responses is doing direct convolution. It can very slow depending on the
-        size of each kernel. So we do not want to do it in the main thread
+        size of each kernel. So we do not want to do it in the main thread.
       */
 
       mythreads.emplace_back(  // Using emplace_back here makes sense
@@ -893,7 +901,7 @@ void ConvolverUi::combine_kernels(const std::string& kernel_1_name,
   std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1);
   std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1);
 
-  // As the convolution is commutative we change the order based on which will run faster
+  // As the convolution is commutative we change the order based on which will run faster.
 
   if (kernel_1_L.size() > kernel_2_L.size()) {
     direct_conv(kernel_1_L, kernel_2_L, kernel_L);

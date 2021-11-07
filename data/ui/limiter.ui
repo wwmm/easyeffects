@@ -5,7 +5,7 @@
         <property name="margin-end">6</property>
         <property name="margin-top">6</property>
         <property name="margin-bottom">6</property>
-        <property name="spacing">24</property>
+        <property name="spacing">12</property>
         <property name="orientation">vertical</property>
 
         <child>
@@ -17,6 +17,8 @@
 
         <child>
             <object class="GtkBox">
+                <property name="margin-top">6</property>
+                <property name="margin-bottom">6</property>
                 <property name="spacing">12</property>
                 <property name="orientation">vertical</property>
 
@@ -474,135 +476,127 @@
                 </child>
 
                 <child>
-                    <object class="GtkBox">
+                    <object class="GtkGrid" id="alr_grid">
                         <property name="halign">center</property>
                         <property name="valign">center</property>
-                        <property name="spacing">24</property>
+                        <property name="row-spacing">6</property>
+                        <property name="column-spacing">12</property>
 
                         <child>
                             <object class="GtkToggleButton" id="alr">
+                                <property name="margin-end">12</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Auto Leveling</property>
+                                <layout>
+                                    <property name="column">0</property>
+                                    <property name="row">1</property>
+                                </layout>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="label" translatable="yes">Attack</property>
+
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">0</property>
+                                </layout>
                             </object>
                         </child>
                         <child>
-                            <object class="GtkGrid" id="alr_grid">
+                            <object class="GtkSpinButton" id="alr_attack">
                                 <property name="halign">center</property>
-                                <property name="valign">end</property>
-                                <property name="row-spacing">6</property>
-                                <property name="column-spacing">12</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">0.1</property>
+                                        <property name="upper">200</property>
+                                        <property name="value">5</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">1</property>
+                                    <property name="row">1</property>
+                                </layout>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Auto Leveling Attack</property>
+                                </accessibility>
+                            </object>
+                        </child>
 
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Attack</property>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="label" translatable="yes">Release</property>
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="alr_release">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">2</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">10</property>
+                                        <property name="upper">1000</property>
+                                        <property name="value">50</property>
+                                        <property name="step-increment">0.01</property>
+                                        <property name="page-increment">0.1</property>
+                                    </object>
+                                </property>
+                                <layout>
+                                    <property name="column">2</property>
+                                    <property name="row">1</property>
+                                </layout>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Auto Leveling Release</property>
+                                </accessibility>
+                            </object>
+                        </child>
 
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">0</property>
-                                        </layout>
+                        <child>
+                            <object class="GtkLabel">
+                                <property name="label" translatable="yes">Knee</property>
+                                <layout>
+                                    <property name="column">3</property>
+                                    <property name="row">0</property>
+                                </layout>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkSpinButton" id="alr_knee">
+                                <property name="halign">center</property>
+                                <property name="orientation">vertical</property>
+                                <property name="width-chars">10</property>
+                                <property name="digits">1</property>
+                                <property name="update-policy">if-valid</property>
+                                <property name="adjustment">
+                                    <object class="GtkAdjustment">
+                                        <property name="lower">-12</property>
+                                        <property name="upper">12</property>
+                                        <property name="step-increment">0.1</property>
+                                        <property name="page-increment">1</property>
                                     </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="alr_attack">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">0.1</property>
-                                                <property name="upper">200</property>
-                                                <property name="value">5</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.1</property>
-                                            </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">0</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Auto Leveling Attack</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Release</property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="alr_release">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">2</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">10</property>
-                                                <property name="upper">1000</property>
-                                                <property name="value">50</property>
-                                                <property name="step-increment">0.01</property>
-                                                <property name="page-increment">0.1</property>
-                                            </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">1</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Auto Leveling Release</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
-
-                                <child>
-                                    <object class="GtkLabel">
-                                        <property name="halign">center</property>
-                                        <property name="valign">center</property>
-                                        <property name="label" translatable="yes">Knee</property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">0</property>
-                                        </layout>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="GtkSpinButton" id="alr_knee">
-                                        <property name="halign">center</property>
-                                        <property name="orientation">vertical</property>
-                                        <property name="width-chars">10</property>
-                                        <property name="digits">1</property>
-                                        <property name="update-policy">if-valid</property>
-                                        <property name="adjustment">
-                                            <object class="GtkAdjustment">
-                                                <property name="lower">-12</property>
-                                                <property name="upper">12</property>
-                                                <property name="step-increment">0.1</property>
-                                                <property name="page-increment">1</property>
-                                            </object>
-                                        </property>
-                                        <layout>
-                                            <property name="column">2</property>
-                                            <property name="row">1</property>
-                                        </layout>
-                                        <accessibility>
-                                            <property name="label" translatable="yes">Auto Leveling Knee</property>
-                                        </accessibility>
-                                    </object>
-                                </child>
+                                </property>
+                                <layout>
+                                    <property name="column">3</property>
+                                    <property name="row">1</property>
+                                </layout>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Auto Leveling Knee</property>
+                                </accessibility>
                             </object>
                         </child>
                     </object>
@@ -615,6 +609,8 @@
                 <property name="hexpand">1</property>
                 <property name="vexpand">0</property>
                 <property name="homogeneous">1</property>
+                <property name="margin-top">4</property>
+                <property name="margin-bottom">4</property>
 
                 <child>
                     <object class="GtkBox">

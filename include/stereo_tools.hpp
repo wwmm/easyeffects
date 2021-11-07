@@ -42,8 +42,6 @@ class StereoTools : public PluginBase {
                std::span<float>& left_out,
                std::span<float>& right_out) override;
 
-  sigc::signal<void(const double&)> new_correlation;
-
   double correlation_port_value = 0.0;
 
  private:
