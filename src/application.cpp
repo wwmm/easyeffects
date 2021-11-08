@@ -281,34 +281,40 @@ void Application::on_activate() {
       widgets.
     */
 
-    auto* const window = ApplicationUi::create(this);
+    // auto* const window = ApplicationUi::create(this);
 
-    add_window(*window);
+    // add_window(*window);
 
-    window->signal_close_request().connect(
-        [&, window]() {
-          int width = 0;
-          int height = 0;
+    // window->signal_close_request().connect(
+    //     [&, window]() {
+    //       int width = 0;
+    //       int height = 0;
 
-          window->get_default_size(width, height);
+    //       window->get_default_size(width, height);
 
-          settings->set_int("window-width", width);
-          settings->set_int("window-height", height);
-          settings->set_boolean("window-maximized", window->is_maximized());
+    //       settings->set_int("window-width", width);
+    //       settings->set_int("window-height", height);
+    //       settings->set_boolean("window-maximized", window->is_maximized());
 
-          // util::warning(std::to_string(width) + " x " + std::to_string(height));
+    //       // util::warning(std::to_string(width) + " x " + std::to_string(height));
 
-          delete window;
+    //       delete window;
 
-          if (settings->get_boolean("shutdown-on-window-close")) {
-            release();
-          }
+    //       if (settings->get_boolean("shutdown-on-window-close")) {
+    //         release();
+    //       }
 
-          return false;
-        },
-        false);
+    //       return false;
+    //     },
+    //     false);
 
-    window->show();
+    // window->show();
+
+    auto* window = ui::application_window::application_window_new();
+
+    gtk_application_add_window(this->gobj(), GTK_WINDOW(window));
+
+    gtk_window_present(GTK_WINDOW(window));
   }
 }
 

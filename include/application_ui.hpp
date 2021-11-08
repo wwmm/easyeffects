@@ -17,8 +17,23 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef APPLICATION_WINDOW_HPP
-#define APPLICATION_WINDOW_HPP
+#pragma once
+
+#include <adwaita.h>
+
+namespace ui::application_window {
+
+G_BEGIN_DECLS
+
+#define APPLICATION_WINDOW_TYPE (application_window_get_type())
+
+G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EASYEFFECTS, APPLICATION_WINDOW, AdwApplicationWindow)
+
+auto application_window_new(void) -> ApplicationWindow*;
+
+G_END_DECLS
+
+}  // namespace ui::application_window
 
 #include <glibmm/i18n.h>
 #include "application.hpp"
@@ -66,5 +81,3 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   static void apply_css_style(const std::string& css_file_name);
 };
-
-#endif

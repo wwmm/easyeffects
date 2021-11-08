@@ -19,6 +19,32 @@
 
 #include "application_ui.hpp"
 
+namespace ui::application_window {
+
+struct _ApplicationWindow {
+  AdwWindow parent_instance;
+};
+
+G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
+
+void application_window_init(ApplicationWindow* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+}
+
+void application_window_class_init(ApplicationWindowClass* klass) {
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
+}
+
+auto application_window_new(void) -> ApplicationWindow* {
+  adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_PREFER_LIGHT);
+
+  return static_cast<ApplicationWindow*>(g_object_new(APPLICATION_WINDOW_TYPE, nullptr));
+}
+
+}  // namespace ui::application_window
+
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Application* application)
@@ -72,7 +98,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   // binding properties to gsettings keys
 
-  settings->bind("use-dark-theme", Gtk::Settings::get_default().get(), "gtk_application_prefer_dark_theme");
+  // settings->bind("use-dark-theme", Gtk::Settings::get_default().get(), "gtk_application_prefer_dark_theme");
   settings->bind("bypass", bypass_button, "active");
 
   // restore window size
@@ -100,6 +126,8 @@ ApplicationUi::~ApplicationUi() {
 }
 
 auto ApplicationUi::create(Application* app_this) -> ApplicationUi* {
+  adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_PREFER_LIGHT);
+
   const auto builder = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/application_window.ui");
 
   return Gtk::Builder::get_widget_derived<ApplicationUi>(builder, "ApplicationUi", app_this);

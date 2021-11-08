@@ -112,6 +112,7 @@ easyeffects_deps = [
 	dependency('glib-2.0', version: '>=2.56'),
 	dependency('glibmm-2.68', version: '>=2.68'),
 	dependency('gtk4', version: '>=4.2.1'),
+	dependency('libadwaita-1'),
 	dependency('gtkmm-4.0', version: '>=4.2.0'),
 	dependency('sigc++-3.0', version: '>=3.0.6'),
 	dependency('lilv-0', version: '>=0.22'),

@@ -1,21 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
+    <template class="ApplicationWindow" parent="AdwApplicationWindow">
+        <property name="title">EasyEffects</property>
+        <property name="content">
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="AdwHeaderBar">
+                        <property name="centering-policy">strict</property>
 
-    <!-- main window widget -->
+                        <property name="title-widget">
+                            <object class="AdwViewSwitcherTitle" id="switcher_title">
+                                <property name="stack">stack</property>
+                                <property name="title" bind-source="ApplicationWindow" bind-property="title" bind-flags="sync-create" />
+                            </object>
+                        </property>
 
-    <object class="GtkApplicationWindow" id="ApplicationUi">
+                        <child>
+                            <object class="GtkMenuButton" id="presets_menu_button">
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="label" translatable="yes">Presets</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Presets Menu</property>
+                                </accessibility>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GtkToggleButton" id="bypass_button">
+                                <property name="tooltip_text" translatable="yes">Global Bypass</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="icon_name">media-playlist-shuffle-symbolic</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Global Bypass</property>
+                                </accessibility>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwViewStack" id="stack">
+                        <property name="hexpand">1</property>
+                        <property name="vexpand">1</property>
+                        <property name="hhomogeneous">0</property>
+                        <property name="vhomogeneous">0</property>
+                    </object>
+                </child>
+            </object>
+        </property>
+    </template>
+
+    <!-- <object class="GtkApplicationWindow" id="ApplicationUi">
         <property name="icon-name">easyeffects</property>
 
         <child type="titlebar">
 
-            <!-- headerbar -->
-
-            <object class="GtkHeaderBar" id="headerbar">
-
-                <!-- title and subtitle  -->
+            <object class="AdwHeaderBar" id="headerbar">
 
                 <property name="title-widget">
-                    <!-- stack switcher to select on of the sections: input effects, output effects and server info -->
 
                     <object class="GtkBox">
                         <property name="halign">center</property>
@@ -118,8 +163,6 @@
                     </object>
                 </property>
 
-                <!-- button for the presets menu -->
-
                 <child>
                     <object class="GtkMenuButton" id="presets_menu_button">
                         <property name="halign">center</property>
@@ -130,8 +173,6 @@
                         </accessibility>
                     </object>
                 </child>
-
-                <!-- bypass button  -->
 
                 <child>
                     <object class="GtkToggleButton" id="bypass_button">
@@ -145,47 +186,43 @@
                     </object>
                 </child>
 
-                <!-- button for the settings menu -->
+    <child type="end">
+        <object class="GtkMenuButton" id="settings_popover_button">
+            <property name="tooltip_text" translatable="yes">Settings</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="icon_name">format-justify-fill-symbolic</property>
+            <property name="popover">settings_menu</property>
+            <accessibility>
+                <property name="label" translatable="yes">Settings Menu</property>
+            </accessibility>
+        </object>
+    </child>
 
-                <child type="end">
-                    <object class="GtkMenuButton" id="settings_popover_button">
-                        <property name="tooltip_text" translatable="yes">Settings</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">format-justify-fill-symbolic</property>
-                        <property name="popover">settings_menu</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Settings Menu</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-            </object>
-        </child>
-
-        <!-- stack switcher where input and output effects and the server info can be shown -->
-
-        <child>
-            <object class="GtkStack" id="stack">
-                <property name="hexpand">1</property>
-                <property name="vexpand">1</property>
-                <property name="hhomogeneous">0</property>
-                <property name="vhomogeneous">0</property>
-                <property name="transition_duration">250</property>
-                <property name="transition_type">slide-left-right</property>
-            </object>
-        </child>
-
-        <style>
-            <class name="rounded_corners" />
-        </style>
-
-        <accessibility>
-            <property name="label" translatable="yes">EasyEffects Window</property>
-        </accessibility>
     </object>
+    </child>
 
-    <object class="GtkPopover" id="settings_menu">
+    <child>
+        <object class="GtkStack" id="stack">
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <property name="hhomogeneous">0</property>
+            <property name="vhomogeneous">0</property>
+            <property name="transition_duration">250</property>
+            <property name="transition_type">slide-left-right</property>
+        </object>
+    </child>
+
+    <style>
+        <class name="rounded_corners" />
+    </style>
+
+    <accessibility>
+        <property name="label" translatable="yes">EasyEffects Window</property>
+    </accessibility>
+    </object>
+    -->
+    <!-- <object class="GtkPopover" id="settings_menu">
         <property name="autohide">1</property>
         <accessibility>
             <property name="label" translatable="yes">Settings Menu</property>
@@ -227,5 +264,6 @@
                 </child>
             </object>
         </child>
-    </object>
+    </object> -->
+
 </interface>
