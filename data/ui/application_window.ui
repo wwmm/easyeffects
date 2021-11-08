@@ -38,6 +38,20 @@
                                 </accessibility>
                             </object>
                         </child>
+
+                        <child type="end">
+                            <object class="GtkMenuButton" id="settings_popover_button">
+                                <property name="tooltip_text" translatable="yes">Settings</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="icon_name">format-justify-fill-symbolic</property>
+                                <property name="popover">settings_menu</property>
+                                <accessibility>
+                                    <property name="label" translatable="yes">Settings Menu</property>
+                                </accessibility>
+                            </object>
+                        </child>
+
                     </object>
                 </child>
 
@@ -49,221 +63,55 @@
                         <property name="vhomogeneous">0</property>
                     </object>
                 </child>
+
+                <accessibility>
+                    <property name="label" translatable="yes">EasyEffects Window</property>
+                </accessibility>
             </object>
         </property>
-    </template>
 
-    <!-- <object class="GtkApplicationWindow" id="ApplicationUi">
-        <property name="icon-name">easyeffects</property>
-
-        <child type="titlebar">
-
-            <object class="AdwHeaderBar" id="headerbar">
-
-                <property name="title-widget">
-
-                    <object class="GtkBox">
-                        <property name="halign">center</property>
-                        <property name="homogeneous">1</property>
-                        <child>
-                            <object class="GtkToggleButton" id="toggle_output">
-                                <property name="active">1</property>
-
-                                <accessibility>
-                                    <property name="label" translatable="yes">Output Effects</property>
-                                </accessibility>
-
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">center</property>
-                                        <property name="spacing">6</property>
-                                        <child>
-                                            <object class="GtkImage">
-                                                <property name="icon-name">audio-speakers-symbolic</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Output</property>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-
-                                <style>
-                                    <class name="flat" />
-                                    <class name="headerbar_title_button_font" />
-                                </style>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkToggleButton" id="toggle_input">
-                                <property name="group">toggle_output</property>
-
-                                <accessibility>
-                                    <property name="label" translatable="yes">Input Effects</property>
-                                </accessibility>
-
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">center</property>
-                                        <property name="spacing">6</property>
-                                        <child>
-                                            <object class="GtkImage">
-                                                <property name="icon-name">audio-input-microphone-symbolic</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Input</property>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-
-                                <style>
-                                    <class name="flat" />
-                                    <class name="headerbar_title_button_font" />
-                                </style>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkToggleButton" id="toggle_pipe_info">
-                                <property name="group">toggle_output</property>
-
-                                <accessibility>
-                                    <property name="label" translatable="yes">PipeWire Information</property>
-                                </accessibility>
-
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">center</property>
-                                        <property name="spacing">6</property>
-                                        <child>
-                                            <object class="GtkImage">
-                                                <property name="icon-name">network-server-symbolic</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">PipeWire</property>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-
-                                <style>
-                                    <class name="flat" />
-                                    <class name="headerbar_title_button_font" />
-                                </style>
-                            </object>
-                        </child>
-                    </object>
-                </property>
-
-                <child>
-                    <object class="GtkMenuButton" id="presets_menu_button">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Presets</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Presets Menu</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkToggleButton" id="bypass_button">
-                        <property name="tooltip_text" translatable="yes">Global Bypass</property>
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="icon_name">media-playlist-shuffle-symbolic</property>
-                        <accessibility>
-                            <property name="label" translatable="yes">Global Bypass</property>
-                        </accessibility>
-                    </object>
-                </child>
-
-    <child type="end">
-        <object class="GtkMenuButton" id="settings_popover_button">
-            <property name="tooltip_text" translatable="yes">Settings</property>
-            <property name="halign">center</property>
-            <property name="valign">center</property>
-            <property name="icon_name">format-justify-fill-symbolic</property>
-            <property name="popover">settings_menu</property>
+        <object class="GtkPopover" id="settings_menu">
+            <property name="autohide">1</property>
             <accessibility>
                 <property name="label" translatable="yes">Settings Menu</property>
             </accessibility>
+            <child>
+                <object class="GtkBox">
+                    <property name="margin-start">6</property>
+                    <property name="margin-end">6</property>
+                    <property name="margin-top">6</property>
+                    <property name="margin-bottom">6</property>
+                    <property name="spacing">12</property>
+                    <property name="orientation">vertical</property>
+                    <child>
+                        <object class="GtkLabel">
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="label" translatable="yes">Settings</property>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkBox">
+                            <property name="spacing">18</property>
+                            <child>
+                                <object class="GtkStackSidebar">
+                                    <property name="halign">center</property>
+                                    <property name="stack">stack_menu_settings</property>
+                                </object>
+                            </child>
+                            <child>
+                                <object class="GtkStack" id="stack_menu_settings">
+                                    <property name="hexpand">1</property>
+                                    <property name="hhomogeneous">0</property>
+                                    <property name="vhomogeneous">0</property>
+                                    <property name="transition_duration">250</property>
+                                    <property name="transition_type">slide-up-down</property>
+                                </object>
+                            </child>
+                        </object>
+                    </child>
+                </object>
+            </child>
         </object>
-    </child>
-
-    </object>
-    </child>
-
-    <child>
-        <object class="GtkStack" id="stack">
-            <property name="hexpand">1</property>
-            <property name="vexpand">1</property>
-            <property name="hhomogeneous">0</property>
-            <property name="vhomogeneous">0</property>
-            <property name="transition_duration">250</property>
-            <property name="transition_type">slide-left-right</property>
-        </object>
-    </child>
-
-    <style>
-        <class name="rounded_corners" />
-    </style>
-
-    <accessibility>
-        <property name="label" translatable="yes">EasyEffects Window</property>
-    </accessibility>
-    </object>
-    -->
-    <!-- <object class="GtkPopover" id="settings_menu">
-        <property name="autohide">1</property>
-        <accessibility>
-            <property name="label" translatable="yes">Settings Menu</property>
-        </accessibility>
-        <child>
-            <object class="GtkBox">
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
-                <property name="margin-top">6</property>
-                <property name="margin-bottom">6</property>
-                <property name="spacing">12</property>
-                <property name="orientation">vertical</property>
-                <child>
-                    <object class="GtkLabel">
-                        <property name="halign">center</property>
-                        <property name="valign">center</property>
-                        <property name="label" translatable="yes">Settings</property>
-                    </object>
-                </child>
-                <child>
-                    <object class="GtkBox">
-                        <property name="spacing">18</property>
-                        <child>
-                            <object class="GtkStackSidebar">
-                                <property name="halign">center</property>
-                                <property name="stack">stack_menu_settings</property>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="GtkStack" id="stack_menu_settings">
-                                <property name="hexpand">1</property>
-                                <property name="hhomogeneous">0</property>
-                                <property name="vhomogeneous">0</property>
-                                <property name="transition_duration">250</property>
-                                <property name="transition_type">slide-up-down</property>
-                            </object>
-                        </child>
-                    </object>
-                </child>
-            </object>
-        </child>
-    </object> -->
-
+    </template>
 </interface>

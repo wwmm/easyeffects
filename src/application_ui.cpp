@@ -22,7 +22,9 @@
 namespace ui::application_window {
 
 struct _ApplicationWindow {
-  AdwWindow parent_instance;
+  AdwWindow parent_instance{};
+
+  AdwViewStack* stack = nullptr;
 };
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
@@ -35,6 +37,8 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, ApplicationWindow, stack);
 }
 
 auto application_window_new(void) -> ApplicationWindow* {
