@@ -69,6 +69,11 @@ auto command_line(GApplication* app, GApplicationCommandLine* cmdline) -> int {
 
     g_application_quit(G_APPLICATION(app));
   } else if (g_variant_dict_contains(options, "load-preset") != 0) {
+    const char* name = nullptr;
+
+    g_variant_dict_lookup(options, "load-preset", "&s", &name);
+
+    util::warning(name);
   } else {
     g_application_activate(app);
   }
@@ -92,7 +97,6 @@ void application_init(Application* self) {}
 
 void application_class_init(ApplicationClass* klass) {
   G_APPLICATION_CLASS(klass)->startup = startup;
-  // G_APPLICATION_CLASS(class)->open = application_open;
 }
 
 auto application_new() -> GApplication* {
@@ -100,6 +104,9 @@ auto application_new() -> GApplication* {
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Quit EasyEffects. Useful when running in service mode."), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
+                                _("Load a preset. Example: easyeffects -l music"), nullptr);
 
   g_signal_connect(app, "activate", G_CALLBACK(application_activate), nullptr);
   g_signal_connect(app, "command-line", G_CALLBACK(command_line), nullptr);
