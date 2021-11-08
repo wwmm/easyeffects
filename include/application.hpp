@@ -17,15 +17,29 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef APPLICATION_HPP
-#define APPLICATION_HPP
+#pragma once
 
+#include <adwaita.h>
 #include <glibmm/i18n.h>
 #include "config.h"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
+
+namespace app {
+
+G_BEGIN_DECLS
+
+#define APPLICATION_TYPE (application_get_type())
+
+G_DECLARE_FINAL_TYPE(Application, application, EASYEFFECTS, APPLICATION, AdwApplication)
+
+auto application_new() -> GApplication*;
+
+G_END_DECLS
+
+}  // namespace app
 
 class Application : public Gtk::Application {
  public:
@@ -62,5 +76,3 @@ class Application : public Gtk::Application {
   void create_actions();
   void update_bypass_state(const Glib::ustring& key);
 };
-
-#endif

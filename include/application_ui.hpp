@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EASYEFFECTS, APPLICATION_WINDOW, AdwApplicationWindow)
 
-auto application_window_new(void) -> ApplicationWindow*;
+auto application_window_new() -> ApplicationWindow*;
 
 G_END_DECLS
 

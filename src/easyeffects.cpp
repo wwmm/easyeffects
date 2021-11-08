@@ -50,11 +50,17 @@ auto main(int argc, char* argv[]) -> int {
       return errno;
     }
 
-    auto app = Application::create();
+    // auto app = Application::create();
 
-    g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
+    // g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
 
-    return app->run(argc, argv);
+    auto* app = app::application_new();
+
+    auto status = g_application_run(app, argc, argv);
+
+    g_object_unref(app);
+
+    return status;
   } catch (const std::exception& e) {
     std::cerr << e.what() << std::endl;
 

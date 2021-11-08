@@ -20,6 +20,96 @@
 #include "application.hpp"
 #include "application_ui.hpp"
 
+namespace app {
+
+struct _Application {
+  AdwApplication parent_instance{};
+};
+
+G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
+
+void quit_activated(GSimpleAction* action, GVariant* parameter, gpointer app) {
+  g_application_quit(G_APPLICATION(app));
+}
+
+void startup(GApplication* app) {
+  G_APPLICATION_CLASS(application_parent_class)->startup(app);
+
+  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+
+  std::array<GActionEntry, 2> entries = {{{"quit", quit_activated, nullptr, nullptr, nullptr}}};
+
+  g_action_map_add_action_entries(G_ACTION_MAP(app), entries.data(), entries.size(), app);
+
+  gtk_application_set_accels_for_action(GTK_APPLICATION(app), "app.quit", quit_accels.data());
+}
+
+void application_activate(GApplication* app) {
+  auto* window = ui::application_window::application_window_new();
+
+  gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
+
+  gtk_window_present(GTK_WINDOW(window));
+}
+
+auto command_line(GApplication* app, GApplicationCommandLine* cmdline) -> int {
+  auto* options = g_application_command_line_get_options_dict(cmdline);
+
+  if (g_variant_dict_contains(options, "quit") != 0) {
+    auto* list = gtk_application_get_windows(GTK_APPLICATION(app));
+
+    while (list != nullptr) {
+      auto* window = list->data;
+      auto* next = list->next;
+
+      gtk_window_destroy(GTK_WINDOW(window));
+
+      list = next;
+    }
+
+    g_application_quit(G_APPLICATION(app));
+  } else if (g_variant_dict_contains(options, "load-preset") != 0) {
+  } else {
+    g_application_activate(app);
+  }
+
+  return 0;
+}
+
+auto local_options(GApplication* app, GVariantDict* options, gpointer data) -> int {
+  gboolean version = FALSE;
+
+  g_variant_dict_lookup(options, "version", "b", &version);
+
+  if (version) {
+    return 0;
+  }
+
+  return -1;
+}
+
+void application_init(Application* self) {}
+
+void application_class_init(ApplicationClass* klass) {
+  G_APPLICATION_CLASS(klass)->startup = startup;
+  // G_APPLICATION_CLASS(class)->open = application_open;
+}
+
+auto application_new() -> GApplication* {
+  auto* app = adw_application_new("com.github.wwmm.easyeffects", G_APPLICATION_HANDLES_COMMAND_LINE);
+
+  g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                _("Quit EasyEffects. Useful when running in service mode."), nullptr);
+
+  g_signal_connect(app, "activate", G_CALLBACK(application_activate), nullptr);
+  g_signal_connect(app, "command-line", G_CALLBACK(command_line), nullptr);
+  g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
+
+  return G_APPLICATION(app);
+}
+
+}  // namespace app
+
 Application::Application()
     : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
   Glib::set_application_name("EasyEffects");
@@ -310,11 +400,11 @@ void Application::on_activate() {
 
     // window->show();
 
-    auto* window = ui::application_window::application_window_new();
+    // auto* window = ui::application_window::application_window_new();
 
-    gtk_application_add_window(this->gobj(), GTK_WINDOW(window));
+    // gtk_application_add_window(this->gobj(), GTK_WINDOW(window));
 
-    gtk_window_present(GTK_WINDOW(window));
+    // gtk_window_present(GTK_WINDOW(window));
   }
 }
 
