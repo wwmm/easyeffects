@@ -37,6 +37,8 @@ G_DECLARE_FINAL_TYPE(Application, application, EE, APP, AdwApplication)
 
 auto application_new() -> GApplication*;
 
+void hide_all_windows(GApplication* app);
+
 G_END_DECLS
 
 }  // namespace app

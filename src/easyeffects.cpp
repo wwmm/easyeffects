@@ -20,16 +20,13 @@
 #include <glib-unix.h>
 #include "application.hpp"
 #include "config.h"
-#include "gtkmm/window.h"
 
 auto sigterm(void* data) -> bool {
-  auto* const app = static_cast<Application*>(data);
+  auto* app = G_APPLICATION(data);
 
-  for (const auto& w : app->get_windows()) {
-    w->hide();
-  }
+  app::hide_all_windows(app);
 
-  app->quit();
+  g_application_quit(app);
 
   return G_SOURCE_REMOVE;
 }
@@ -50,11 +47,9 @@ auto main(int argc, char* argv[]) -> int {
       return errno;
     }
 
-    // auto app = Application::create();
-
-    // g_unix_signal_add(2, (GSourceFunc)sigterm, app.get());
-
     auto* app = app::application_new();
+
+    g_unix_signal_add(2, (GSourceFunc)sigterm, app);
 
     auto status = g_application_run(app, argc, argv);
 

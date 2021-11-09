@@ -142,7 +142,7 @@ void application_class_init(ApplicationClass* klass) {
 
     g_object_unref(app->settings);
 
-    // Making sure some destructors are called. I have no idea why this is not happneing automatically
+    // Making sure some destructors are called. I have no idea why this is not happening automatically
 
     app->pm = nullptr;
 
