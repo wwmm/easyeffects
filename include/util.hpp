@@ -71,9 +71,9 @@ auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> 
 
 auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
 
-auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring;
+auto remove_filename_extension(const std::string& basename) -> std::string;
 
-auto timestamp_str(const time_point ts) -> std::string;
+auto timestamp_str(time_point ts) -> std::string;
 
 void print_thread_id();
 
@@ -87,6 +87,10 @@ auto glib_value(const T& cppvalue) -> Glib::Value<T> {
 
   return gval;
 }
+
+auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string>;
+
+auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<gchar*>;
 
 }  // namespace util
 

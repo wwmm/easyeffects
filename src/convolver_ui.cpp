@@ -187,7 +187,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
             for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n) == irs_filename) {
+              if (string_list->get_string(n).raw() == irs_filename) {
                 return;
               }
             }
@@ -198,7 +198,7 @@ ConvolverUi::ConvolverUi(BaseObjectType* cobject,
           }
           case Gio::FileMonitor::Event::DELETED: {
             for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n) == irs_filename) {
+              if (string_list->get_string(n).raw() == irs_filename) {
                 string_list->remove(n);
 
                 break;

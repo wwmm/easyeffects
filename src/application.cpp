@@ -32,6 +32,7 @@ struct _Application {
   GSettings* sie_settings = nullptr;
 
   std::unique_ptr<PipeManager> pm;
+  std::unique_ptr<PresetsManager> presets_manager;
 };
 
 G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
@@ -47,18 +48,6 @@ void hide_all_windows(GApplication* app) {
 
     list = next;
   }
-}
-
-auto local_options(GApplication* app, GVariantDict* options, gpointer data) -> int {
-  gboolean version = FALSE;
-
-  g_variant_dict_lookup(options, "version", "b", &version);
-
-  if (version) {
-    return 0;
-  }
-
-  return -1;
 }
 
 void application_class_init(ApplicationClass* klass) {
@@ -97,6 +86,40 @@ void application_class_init(ApplicationClass* klass) {
     }
 
     return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
+  };
+
+  G_APPLICATION_CLASS(klass)->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
+    if (options == nullptr) {
+      return -1;
+    }
+
+    // auto* app = EE_APP(gapp);
+
+    // if (app->presets_manager == nullptr) {
+    // app->presets_manager = std::make_unique<PresetsManager>();
+    // }
+
+    // if (g_variant_dict_contains(options, "presets") != 0) {
+    //   std::string list;
+
+    //   for (const auto& name : app->presets_manager->get_names(PresetType::output)) {
+    //     list += name + ",";
+    //   }
+
+    //   std::clog << _("Output Presets: ") + list << std::endl;
+
+    //   list = "";
+
+    //   for (const auto& name : app->presets_manager->get_names(PresetType::input)) {
+    //     list += name + ",";
+    //   }
+
+    //   std::clog << _("Input Presets: ") + list << std::endl;
+
+    //   return -1;
+    // }
+
+    return -1;
   };
 
   G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
@@ -154,6 +177,7 @@ void application_init(Application* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
   self->pm = std::make_unique<PipeManager>();
+  self->presets_manager = std::make_unique<PresetsManager>();
 }
 
 auto application_new() -> GApplication* {
@@ -177,7 +201,7 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "bypass", 'b', G_OPTION_FLAG_NONE, G_OPTION_ARG_INT,
                                 _("Global bypass. 1 to enable, 2 to disable and 3 to get status"), nullptr);
 
-  g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
+  // g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
 
   return G_APPLICATION(app);
 }
@@ -195,21 +219,6 @@ Application::~Application() {
 
 auto Application::create() -> Glib::RefPtr<Application> {
   return Glib::RefPtr<Application>(new Application());
-}
-
-auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
-  const auto options = command_line->get_options_dict();
-
-  if (options->contains("reset")) {
-    settings->reset("");
-
-    util::info(log_tag + "All settings were reset");
-  } else if (options->contains("bypass")) {
-  } else {
-    activate();
-  }
-
-  return Gtk::Application::on_command_line(command_line);
 }
 
 void Application::on_startup() {
@@ -433,10 +442,6 @@ auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>&
   // Remove some options to show that we have handled them in the local
   // instance, so they won't be passed to the primary (remote) instance:
   options->remove("preset");
-
-  if (presets_manager == nullptr) {
-    presets_manager = std::make_unique<PresetsManager>();
-  }
 
   if (options->contains("presets")) {
     std::string list;

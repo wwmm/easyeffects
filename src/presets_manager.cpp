@@ -20,14 +20,15 @@
 #include "presets_manager.hpp"
 
 PresetsManager::PresetsManager()
-    : user_presets_dir(Glib::get_user_config_dir() + "/easyeffects/"),
-      user_input_dir(Glib::get_user_config_dir() + "/easyeffects/input"),
-      user_output_dir(Glib::get_user_config_dir() + "/easyeffects/output"),
-      autoload_input_dir(Glib::get_user_config_dir() + "/easyeffects/autoload/input"),
-      autoload_output_dir(Glib::get_user_config_dir() + "/easyeffects/autoload/output"),
-      settings(Gio::Settings::create("com.github.wwmm.easyeffects")),
-      soe_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs")),
-      sie_settings(Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs")),
+    : user_config_dir(std::string(g_get_user_config_dir()) + "/easyeffects/"),
+      user_presets_dir(user_config_dir + "/easyeffects/"),
+      user_input_dir(user_config_dir + "/easyeffects/input"),
+      user_output_dir(user_config_dir + "/easyeffects/output"),
+      autoload_input_dir(user_config_dir + "/easyeffects/autoload/input"),
+      autoload_output_dir(user_config_dir + "/easyeffects/autoload/output"),
+      settings(g_settings_new("com.github.wwmm.easyeffects")),
+      soe_settings(g_settings_new("com.github.wwmm.easyeffects.streamoutputs")),
+      sie_settings(g_settings_new("com.github.wwmm.easyeffects.streaminputs")),
       autogain(std::make_unique<AutoGainPreset>()),
       bass_enhancer(std::make_unique<BassEnhancerPreset>()),
       bass_loudness(std::make_unique<BassLoudnessPreset>()),
@@ -54,13 +55,13 @@ PresetsManager::PresetsManager()
   // system presets directories provided by Glib
 
   for (const auto& scd : Glib::get_system_config_dirs()) {
-    system_input_dir.push_back(scd + "/easyeffects/input");
-    system_output_dir.push_back(scd + "/easyeffects/output");
+    system_input_dir.emplace_back(scd + "/easyeffects/input");  // it should be fine to use emplace_back in these cases
+    system_output_dir.emplace_back(scd + "/easyeffects/output");
   }
 
   // add "/etc" to system config folders array and remove duplicates
-  system_input_dir.push_back("/etc/easyeffects/input");
-  system_output_dir.push_back("/etc/easyeffects/output");
+  system_input_dir.emplace_back("/etc/easyeffects/input");
+  system_output_dir.emplace_back("/etc/easyeffects/output");
   std::sort(system_input_dir.begin(), system_input_dir.end());
   std::sort(system_output_dir.begin(), system_output_dir.end());
   system_input_dir.erase(std::unique(system_input_dir.begin(), system_input_dir.end()), system_input_dir.end());
@@ -81,89 +82,118 @@ PresetsManager::PresetsManager()
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
 
-  user_output_monitor = Gio::File::create_for_path(user_output_dir.string())->monitor_directory();
+  auto* gfile = g_file_new_for_path(user_output_dir.c_str());
 
-  user_output_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            user_output_preset_created.emit(file);
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            user_output_preset_removed.emit(file);
-            break;
-          }
-          default:
-            break;
-        }
-      });
+  user_output_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
 
-  user_input_monitor = Gio::File::create_for_path(user_input_dir.string())->monitor_directory();
+  g_signal_connect(user_output_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  gpointer user_data) {
+                     auto self = static_cast<PresetsManager*>(user_data);
 
-  user_input_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            user_input_preset_created.emit(file);
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            user_input_preset_removed.emit(file);
-            break;
-          }
-          default:
-            break;
-        }
-      });
+                     switch (event_type) {
+                       case G_FILE_MONITOR_EVENT_CREATED: {
+                         const auto preset_name = util::remove_filename_extension(g_file_get_basename(file));
 
-  autoload_input_monitor = Gio::File::create_for_path(autoload_input_dir.string())->monitor_directory();
+                         self->user_output_preset_created.emit(preset_name);
 
-  autoload_input_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto profiles = get_autoload_profiles(PresetType::input);
+                         break;
+                       }
+                       case G_FILE_MONITOR_EVENT_DELETED: {
+                         const auto preset_name = util::remove_filename_extension(g_file_get_basename(file));
 
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            autoload_input_profiles_changed.emit(profiles);
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            autoload_input_profiles_changed.emit(profiles);
-            break;
-          }
-          default:
-            break;
-        }
-      });
+                         self->user_output_preset_removed.emit(preset_name);
 
-  autoload_output_monitor = Gio::File::create_for_path(autoload_output_dir.string())->monitor_directory();
+                         break;
+                       }
+                       default:
+                         break;
+                     }
+                   }),
+                   this);
 
-  autoload_output_monitor->signal_changed().connect(
-      [=, this](const Glib::RefPtr<Gio::File>& file, const auto& other_f, const auto& event) {
-        const auto profiles = get_autoload_profiles(PresetType::output);
+  g_object_unref(gfile);
 
-        switch (event) {
-          case Gio::FileMonitor::Event::CREATED: {
-            autoload_output_profiles_changed.emit(profiles);
-            break;
-          }
-          case Gio::FileMonitor::Event::DELETED: {
-            autoload_output_profiles_changed.emit(profiles);
-            break;
-          }
-          default:
-            break;
-        }
-      });
+  gfile = g_file_new_for_path(user_input_dir.c_str());
+
+  user_input_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
+
+  g_signal_connect(user_input_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  gpointer user_data) {
+                     auto self = static_cast<PresetsManager*>(user_data);
+
+                     switch (event_type) {
+                       case G_FILE_MONITOR_EVENT_CREATED: {
+                         const auto preset_name = util::remove_filename_extension(g_file_get_basename(file));
+
+                         self->user_input_preset_created.emit(preset_name);
+
+                         break;
+                       }
+                       case G_FILE_MONITOR_EVENT_DELETED: {
+                         const auto preset_name = util::remove_filename_extension(g_file_get_basename(file));
+
+                         self->user_input_preset_removed.emit(preset_name);
+
+                         break;
+                       }
+                       default:
+                         break;
+                     }
+                   }),
+                   this);
+
+  g_object_unref(gfile);
+
+  gfile = g_file_new_for_path(autoload_input_dir.c_str());
+
+  autoload_input_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
+
+  g_signal_connect(autoload_input_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  gpointer user_data) {
+                     auto self = static_cast<PresetsManager*>(user_data);
+
+                     if (event_type == G_FILE_MONITOR_EVENT_CREATED || event_type == G_FILE_MONITOR_EVENT_DELETED) {
+                       const auto profiles = self->get_autoload_profiles(PresetType::input);
+
+                       self->autoload_input_profiles_changed.emit(profiles);
+                     }
+                   }),
+                   this);
+
+  g_object_unref(gfile);
+
+  gfile = g_file_new_for_path(autoload_input_dir.c_str());
+
+  autoload_output_monitor = g_file_monitor_directory(gfile, G_FILE_MONITOR_NONE, nullptr, nullptr);
+
+  g_signal_connect(autoload_output_monitor, "changed",
+                   G_CALLBACK(+[](GFileMonitor* monitor, GFile* file, GFile* other_file, GFileMonitorEvent event_type,
+                                  gpointer user_data) {
+                     auto self = static_cast<PresetsManager*>(user_data);
+
+                     if (event_type == G_FILE_MONITOR_EVENT_CREATED || event_type == G_FILE_MONITOR_EVENT_DELETED) {
+                       const auto profiles = self->get_autoload_profiles(PresetType::output);
+
+                       self->autoload_output_profiles_changed.emit(profiles);
+                     }
+                   }),
+                   this);
+
+  g_object_unref(gfile);
 }
 
 PresetsManager::~PresetsManager() {
-  user_output_monitor->cancel();
-  user_input_monitor->cancel();
+  g_file_monitor_cancel(user_output_monitor);
+  g_file_monitor_cancel(user_input_monitor);
+  g_file_monitor_cancel(autoload_input_monitor);
+  g_file_monitor_cancel(autoload_output_monitor);
 
-  autoload_input_monitor->cancel();
-  autoload_output_monitor->cancel();
+  g_object_unref(settings);
+  g_object_unref(sie_settings);
+  g_object_unref(soe_settings);
 
   util::debug(log_tag + "destroyed");
 }
@@ -255,8 +285,10 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
 
   switch (preset_type) {
     case PresetType::output: {
-      for (const auto& l : soe_settings->get_string_array("blocklist")) {
-        blocklist.push_back(l.c_str());
+      const auto list = util::gchar_array_to_vector(g_settings_get_strv(soe_settings, "blocklist"));
+
+      for (const auto& l : list) {
+        blocklist.push_back(l);
       }
 
       json["output"]["blocklist"] = blocklist;
@@ -264,8 +296,10 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
       break;
     }
     case PresetType::input: {
-      for (const auto& l : sie_settings->get_string_array("blocklist")) {
-        blocklist.push_back(l.c_str());
+      const auto list = util::gchar_array_to_vector(g_settings_get_strv(sie_settings, "blocklist"));
+
+      for (const auto& l : list) {
+        blocklist.push_back(l);
       }
 
       json["input"]["blocklist"] = blocklist;
@@ -276,18 +310,16 @@ void PresetsManager::save_blocklist(const PresetType& preset_type, nlohmann::jso
 }
 
 void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) {
-  std::vector<Glib::ustring> blocklist;
+  std::vector<std::string> blocklist;
 
   switch (preset_type) {
     case PresetType::input: {
       try {
-        for (const auto& l : json.at("input").at("blocklist").get<std::vector<std::string>>()) {
-          blocklist.push_back(l);
-        }
+        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
 
-        sie_settings->set_string_array("blocklist", blocklist);
+        g_settings_set_strv(sie_settings, "blocklist", util::make_gchar_pointer_vector(list).data());
       } catch (const nlohmann::json::exception& e) {
-        sie_settings->reset("blocklist");
+        g_settings_reset(sie_settings, "blocklist");
 
         util::warning(log_tag + e.what());
       }
@@ -296,13 +328,11 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
     }
     case PresetType::output: {
       try {
-        for (const auto& l : json.at("output").at("blocklist").get<std::vector<std::string>>()) {
-          blocklist.push_back(l);
-        }
+        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
 
-        soe_settings->set_string_array("blocklist", blocklist);
+        g_settings_set_strv(soe_settings, "blocklist", util::make_gchar_pointer_vector(list).data());
       } catch (const nlohmann::json::exception& e) {
-        soe_settings->reset("blocklist");
+        g_settings_reset(soe_settings, "blocklist");
 
         util::warning(log_tag + e.what());
       }
@@ -321,14 +351,14 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
 
   switch (preset_type) {
     case PresetType::output: {
-      const auto plugins = soe_settings->get_string_array("plugins");
+      const auto plugins = util::gchar_array_to_vector(g_settings_get_strv(soe_settings, "plugins"));
 
       std::vector<std::string> list;
 
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.push_back(p.raw());
+        list.push_back(p);
       }
 
       json["output"]["plugins_order"] = list;
@@ -340,14 +370,14 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
       break;
     }
     case PresetType::input: {
-      const auto plugins = sie_settings->get_string_array("plugins");
+      const auto plugins = util::gchar_array_to_vector(g_settings_get_strv(sie_settings, "plugins"));
 
       std::vector<std::string> list;
 
       list.reserve(plugins.size());
 
       for (const auto& p : plugins) {
-        list.push_back(p.raw());
+        list.push_back(p);
       }
 
       json["input"]["plugins_order"] = list;
@@ -370,7 +400,7 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const Glib:
 }
 
 void PresetsManager::write_plugins_preset(const PresetType& preset_type,
-                                          const std::vector<Glib::ustring>& plugins,
+                                          const std::vector<std::string>& plugins,
                                           nlohmann::json& json) {
   for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
@@ -440,7 +470,7 @@ void PresetsManager::remove(const PresetType& preset_type, const Glib::ustring& 
 void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib::ustring& name) {
   nlohmann::json json;
 
-  std::vector<Glib::ustring> plugins;
+  std::vector<std::string> plugins;
 
   std::vector<std::filesystem::path> conf_dirs;
 
@@ -486,7 +516,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
           util::warning(log_tag + e.what());
         }
 
-        soe_settings->set_string_array("plugins", plugins);
+        g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
         util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
       }
@@ -530,7 +560,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
           util::warning(log_tag + e.what());
         }
 
-        sie_settings->set_string_array("plugins", plugins);
+        g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
         util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
       }
@@ -547,7 +577,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 }
 
 void PresetsManager::read_plugins_preset(const PresetType& preset_type,
-                                         const std::vector<Glib::ustring>& plugins,
+                                         const std::vector<std::string>& plugins,
                                          const nlohmann::json& json) {
   for (const auto& name : plugins) {
     if (name == plugin_name::autogain) {
@@ -680,7 +710,7 @@ void PresetsManager::remove_autoload(const PresetType& preset_type,
 
 auto PresetsManager::find_autoload(const PresetType& preset_type,
                                    const std::string& device_name,
-                                   const std::string& device_profile) -> Glib::ustring {
+                                   const std::string& device_profile) -> std::string {
   std::filesystem::path input_file;
 
   switch (preset_type) {
@@ -711,16 +741,16 @@ void PresetsManager::autoload(const PresetType& preset_type,
   const auto name = find_autoload(preset_type, device_name, device_profile);
 
   if (!name.empty()) {
-    util::debug(log_tag + "autoloading preset " + name.raw() + " for device " + device_name);
+    util::debug(log_tag + "autoloading preset " + name + " for device " + device_name);
 
     load_preset_file(preset_type, name);
 
     switch (preset_type) {
       case PresetType::output:
-        settings->set_string("last-used-output-preset", name);
+        g_settings_set_string(settings, "last-used-output-preset", name.c_str());
         break;
       case PresetType::input:
-        settings->set_string("last-used-input-preset", name);
+        g_settings_set_string(settings, "last-used-input-preset", name.c_str());
         break;
     }
   }

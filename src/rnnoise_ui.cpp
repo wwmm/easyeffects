@@ -82,7 +82,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
         switch (event) {
           case Gio::FileMonitor::Event::CREATED: {
             for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n) == rnn_filename) {
+              if (string_list->get_string(n).raw() == rnn_filename) {
                 return;
               }
             }
@@ -93,7 +93,7 @@ RNNoiseUi::RNNoiseUi(BaseObjectType* cobject,
           }
           case Gio::FileMonitor::Event::DELETED: {
             for (guint n = 0; n < string_list->get_n_items(); n++) {
-              if (string_list->get_string(n) == rnn_filename) {
+              if (string_list->get_string(n).raw() == rnn_filename) {
                 string_list->remove(n);
 
                 // Workaround for GTK not calling the listview signal_selection_changed (issue #1110)

@@ -175,12 +175,34 @@ auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean 
   return 1;
 }
 
-auto remove_filename_extension(const Glib::ustring& basename) -> Glib::ustring {
-  return basename.substr(0, basename.find_last_of("."));
+auto remove_filename_extension(const std::string& basename) -> std::string {
+  return basename.substr(0, basename.find_last_of('.'));
 }
 
 auto timestamp_str(const time_point ts) -> std::string {
   return std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(ts.time_since_epoch()).count());
+}
+
+auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
+  std::vector<std::string> output;
+
+  if (gchar_array != nullptr) {
+    for (int n = 0; gchar_array[n] != nullptr; n++) {
+      output.push_back(gchar_array[n]);
+    }
+  }
+
+  return output;
+}
+
+auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<gchar*> {
+  std::vector<gchar*> output(input.size());
+
+  for (const auto& v : input) {
+    output.push_back(const_cast<gchar*>(v.c_str()));
+  }
+
+  return output;
 }
 
 }  // namespace util

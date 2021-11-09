@@ -91,9 +91,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     last_used_input->set_label(settings->get_string("last-used-input-preset"));
   });
 
-  app->presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto preset_name = util::remove_filename_extension(file->get_basename());
-
+  app->presets_manager->user_output_preset_created.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {
       util::warning(log_tag + "can't retrieve information about the preset file");
 
@@ -101,7 +99,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
 
     for (guint n = 0; n < output_string_list->get_n_items(); n++) {
-      if (preset_name == output_string_list->get_string(n)) {
+      if (preset_name == output_string_list->get_string(n).raw()) {
         return;
       }
     }
@@ -109,9 +107,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     output_string_list->append(preset_name);
   });
 
-  app->presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto preset_name = util::remove_filename_extension(file->get_basename());
-
+  app->presets_manager->user_output_preset_removed.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {
       util::warning(log_tag + "can't retrieve information about the preset file");
 
@@ -119,7 +115,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
 
     for (guint n = 0; n < output_string_list->get_n_items(); n++) {
-      if (preset_name == output_string_list->get_string(n)) {
+      if (preset_name == output_string_list->get_string(n).raw()) {
         output_string_list->remove(n);
 
         return;
@@ -127,9 +123,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
   });
 
-  app->presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto preset_name = util::remove_filename_extension(file->get_basename());
-
+  app->presets_manager->user_input_preset_created.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {
       util::warning(log_tag + "can't retrieve information about the preset file");
 
@@ -137,7 +131,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
 
     for (guint n = 0; n < input_string_list->get_n_items(); n++) {
-      if (input_string_list->get_string(n) == preset_name) {
+      if (input_string_list->get_string(n).raw() == preset_name) {
         return;
       }
     }
@@ -145,9 +139,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     input_string_list->append(preset_name);
   });
 
-  app->presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-    const auto preset_name = util::remove_filename_extension(file->get_basename());
-
+  app->presets_manager->user_input_preset_removed.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {
       util::warning(log_tag + "can't retrieve information about the preset file");
 
@@ -155,7 +147,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
     }
 
     for (guint n = 0; n < input_string_list->get_n_items(); n++) {
-      if (input_string_list->get_string(n) == preset_name) {
+      if (input_string_list->get_string(n).raw() == preset_name) {
         input_string_list->remove(n);
 
         return;

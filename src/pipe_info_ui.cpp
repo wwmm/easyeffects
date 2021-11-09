@@ -374,81 +374,69 @@ PipeInfoUi::PipeInfoUi(BaseObjectType* cobject,
     }
   }));
 
-  connections.push_back(
-      presets_manager->user_output_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto preset_name = util::remove_filename_extension(file->get_basename());
+  connections.push_back(presets_manager->user_output_preset_created.connect([=, this](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
-        if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file");
+      return;
+    }
 
-          return;
-        }
+    for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
+      if (output_presets_string_list->get_string(n).raw() == preset_name) {
+        return;
+      }
+    }
 
-        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
-          if (output_presets_string_list->get_string(n) == preset_name) {
-            return;
-          }
-        }
+    output_presets_string_list->append(preset_name);
+  }));
 
-        output_presets_string_list->append(preset_name);
-      }));
+  connections.push_back(presets_manager->user_output_preset_removed.connect([=, this](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
-  connections.push_back(
-      presets_manager->user_output_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto preset_name = util::remove_filename_extension(file->get_basename());
+      return;
+    }
 
-        if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file");
+    for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
+      if (output_presets_string_list->get_string(n).raw() == preset_name) {
+        output_presets_string_list->remove(n);
 
-          return;
-        }
+        return;
+      }
+    }
+  }));
 
-        for (guint n = 0; n < output_presets_string_list->get_n_items(); n++) {
-          if (output_presets_string_list->get_string(n) == preset_name) {
-            output_presets_string_list->remove(n);
+  connections.push_back(presets_manager->user_input_preset_created.connect([=, this](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
-            return;
-          }
-        }
-      }));
+      return;
+    }
 
-  connections.push_back(
-      presets_manager->user_input_preset_created.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto preset_name = util::remove_filename_extension(file->get_basename());
+    for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
+      if (input_presets_string_list->get_string(n).raw() == preset_name) {
+        return;
+      }
+    }
 
-        if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file");
+    input_presets_string_list->append(preset_name);
+  }));
 
-          return;
-        }
+  connections.push_back(presets_manager->user_input_preset_removed.connect([=, this](const std::string& preset_name) {
+    if (preset_name.empty()) {
+      util::warning(log_tag + "can't retrieve information about the preset file");
 
-        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
-          if (input_presets_string_list->get_string(n) == preset_name) {
-            return;
-          }
-        }
+      return;
+    }
 
-        input_presets_string_list->append(preset_name);
-      }));
+    for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
+      if (input_presets_string_list->get_string(n).raw() == preset_name) {
+        input_presets_string_list->remove(n);
 
-  connections.push_back(
-      presets_manager->user_input_preset_removed.connect([=, this](const Glib::RefPtr<Gio::File>& file) {
-        const auto preset_name = util::remove_filename_extension(file->get_basename());
-
-        if (preset_name.empty()) {
-          util::warning(log_tag + "can't retrieve information about the preset file");
-
-          return;
-        }
-
-        for (guint n = 0; n < input_presets_string_list->get_n_items(); n++) {
-          if (input_presets_string_list->get_string(n) == preset_name) {
-            input_presets_string_list->remove(n);
-
-            return;
-          }
-        }
-      }));
+        return;
+      }
+    }
+  }));
 
   connections.push_back(
       presets_manager->autoload_output_profiles_changed.connect([=, this](const std::vector<nlohmann::json>& profiles) {

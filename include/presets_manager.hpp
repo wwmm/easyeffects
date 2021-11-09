@@ -66,14 +66,14 @@ class PresetsManager {
 
   auto get_names(const PresetType& preset_type) -> std::vector<Glib::ustring>;
 
-  static auto search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring>;
+  auto search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring>;
 
   void add(const PresetType& preset_type, const Glib::ustring& name);
 
   void save_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
   void write_plugins_preset(const PresetType& preset_type,
-                            const std::vector<Glib::ustring>& plugins,
+                            const std::vector<std::string>& plugins,
                             nlohmann::json& json);
 
   void remove(const PresetType& preset_type, const Glib::ustring& name);
@@ -81,7 +81,7 @@ class PresetsManager {
   void load_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
   void read_plugins_preset(const PresetType& preset_type,
-                           const std::vector<Glib::ustring>& plugins,
+                           const std::vector<std::string>& plugins,
                            const nlohmann::json& json);
 
   void import(const PresetType& preset_type, const std::string& file_path);
@@ -97,7 +97,7 @@ class PresetsManager {
                        const std::string& device_profile);
 
   auto find_autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile)
-      -> Glib::ustring;
+      -> std::string;
 
   void autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile);
 
@@ -105,28 +105,30 @@ class PresetsManager {
 
   auto preset_file_exists(const PresetType& preset_type, const Glib::ustring& name) -> bool;
 
-  sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_created;
-  sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_output_preset_removed;
-  sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_input_preset_created;
-  sigc::signal<void(const Glib::RefPtr<Gio::File>& file)> user_input_preset_removed;
+  sigc::signal<void(const std::string& preset_name)> user_output_preset_created;
+  sigc::signal<void(const std::string& preset_name)> user_output_preset_removed;
+  sigc::signal<void(const std::string& preset_name)> user_input_preset_created;
+  sigc::signal<void(const std::string& preset_name)> user_input_preset_removed;
 
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_input_profiles_changed;
   sigc::signal<void(const std::vector<nlohmann::json>& profiles)> autoload_output_profiles_changed;
 
  private:
-  inline static const std::string log_tag = "presets_manager: ";
+  const std::string log_tag = "presets_manager: ";
 
-  inline static const std::string json_ext = ".json";
+  const std::string json_ext = ".json";
+
+  std::string user_config_dir;
 
   std::filesystem::path user_presets_dir, user_input_dir, user_output_dir, autoload_input_dir, autoload_output_dir;
 
   std::vector<std::filesystem::path> system_input_dir, system_output_dir;
 
-  Glib::RefPtr<Gio::Settings> settings, soe_settings, sie_settings;
+  GSettings *settings = nullptr, *soe_settings = nullptr, *sie_settings = nullptr;
 
-  Glib::RefPtr<Gio::FileMonitor> user_output_monitor, user_input_monitor;
+  GFileMonitor *user_output_monitor = nullptr, *user_input_monitor = nullptr;
 
-  Glib::RefPtr<Gio::FileMonitor> autoload_output_monitor, autoload_input_monitor;
+  GFileMonitor *autoload_output_monitor = nullptr, *autoload_input_monitor = nullptr;
 
   std::unique_ptr<AutoGainPreset> autogain;
   std::unique_ptr<BassEnhancerPreset> bass_enhancer;
@@ -152,7 +154,7 @@ class PresetsManager {
   std::unique_ptr<RNNoisePreset> rnnoise;
   std::unique_ptr<StereoToolsPreset> stereo_tools;
 
-  static void create_user_directory(const std::filesystem::path& path);
+  void create_user_directory(const std::filesystem::path& path);
 
   void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
