@@ -246,6 +246,68 @@ void application_init(Application* self) {
       g_settings_set_string(self->sie_settings, "input-device", node.name.c_str());
     }
   });
+
+  self->pm->device_input_route_changed.connect([=](const DeviceInfo device) {
+    if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
+      return;
+    }
+
+    util::debug(std::string(log_tag) + "device " + device.name +
+                " has changed its input route to: " + device.input_route_name);
+
+    NodeInfo target_node;
+
+    for (const auto& [ts, node] : self->pm->node_map) {
+      if (node.device_id == device.id && node.media_class == self->pm->media_class_source) {
+        target_node = node;
+
+        break;
+      }
+    }
+
+    if (target_node.id != SPA_ID_INVALID) {
+      if (target_node.name.c_str() == g_settings_get_string(self->sie_settings, "input-device")) {
+        self->presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
+      } else {
+        util::debug(std::string(log_tag) +
+                    "input autoloading: the target node name does not match the input device name");
+      }
+    } else {
+      util::debug(std::string(log_tag) + "input autoloading: could not find the target node");
+    }
+  });
+
+  self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
+    if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
+      return;
+    }
+
+    util::debug(std::string(log_tag) + "device " + device.name +
+                " has changed its output route to: " + device.output_route_name);
+
+    NodeInfo target_node;
+
+    for (const auto& [ts, node] : self->pm->node_map) {
+      target_node = node;
+
+      if (node.device_id == device.id && node.media_class == self->pm->media_class_sink) {
+        target_node = node;
+
+        break;
+      }
+    }
+
+    if (target_node.id != SPA_ID_INVALID) {
+      if (target_node.name.c_str() == g_settings_get_string(self->soe_settings, "output-device")) {
+        self->presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
+      } else {
+        util::debug(std::string(log_tag) +
+                    "output autoloading: the target node name does not match the output device name");
+      }
+    } else {
+      util::debug(std::string(log_tag) + "output autoloading: could not find the target node");
+    }
+  });
 }
 
 auto application_new() -> GApplication* {
@@ -291,62 +353,6 @@ auto Application::create() -> Glib::RefPtr<Application> {
 }
 
 void Application::on_startup() {
-  pm->device_input_route_changed.connect([&](const DeviceInfo device) {
-    if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
-      return;
-    }
-
-    util::debug(log_tag + "device " + device.name + " has changed its input route to: " + device.input_route_name);
-
-    NodeInfo target_node;
-
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.device_id == device.id && node.media_class == pm->media_class_source) {
-        target_node = node;
-
-        break;
-      }
-    }
-
-    if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name.c_str() == sie_settings->get_string("input-device")) {
-        presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
-      } else {
-        util::debug(log_tag + "input autoloading: the target node name does not match the input device name");
-      }
-    } else {
-      util::debug(log_tag + "input autoloading: could not find the target node");
-    }
-  });
-
-  pm->device_output_route_changed.connect([&](const DeviceInfo device) {
-    if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
-      return;
-    }
-
-    util::debug(log_tag + "device " + device.name + " has changed its output route to: " + device.output_route_name);
-
-    NodeInfo target_node;
-
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.device_id == device.id && node.media_class == pm->media_class_sink) {
-        target_node = node;
-
-        break;
-      }
-    }
-
-    if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name.c_str() == soe_settings->get_string("output-device")) {
-        presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
-      } else {
-        util::debug(log_tag + "output autoloading: the target node name does not match the output device name");
-      }
-    } else {
-      util::debug(log_tag + "output autoloading: could not find the target node");
-    }
-  });
-
   soe_settings->signal_changed("output-device").connect([&, this](const auto& key) {
     const auto name = soe_settings->get_string(key).raw();
 
