@@ -34,6 +34,8 @@ struct _Application {
   GSettings* sie_settings = nullptr;
 
   std::unique_ptr<PipeManager> pm;
+  std::unique_ptr<StreamOutputEffects> soe;
+  std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
 };
 
@@ -143,7 +145,7 @@ void application_class_init(ApplicationClass* klass) {
       self->running_as_service = true;
     }
 
-    std::array<GActionEntry, 2> entries{};
+    std::array<GActionEntry, 3> entries{};
 
     entries[0] = {
         "quit",
@@ -154,6 +156,16 @@ void application_class_init(ApplicationClass* klass) {
                   [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
                     gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
                                  GDK_CURRENT_TIME);
+                  },
+                  nullptr, nullptr, nullptr};
+
+    entries[2] = {"about",
+                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    gtk_show_about_dialog(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "program-name",
+                                          "EasyEffects", "version", VERSION, "comments",
+                                          _("Audio effects for PipeWire applications"), "authors", "Wellington Wallace",
+                                          "logo-icon-name", "easyeffects", "license-type", GTK_LICENSE_GPL_3_0,
+                                          "website", "https://github.com/wwmm/easyeffects", nullptr);
                   },
                   nullptr, nullptr, nullptr};
 
@@ -200,6 +212,8 @@ void application_init(Application* self) {
   self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
   self->pm = std::make_unique<PipeManager>();
+  self->soe = std::make_unique<StreamOutputEffects>(self->pm.get());
+  self->sie = std::make_unique<StreamInputEffects>(self->pm.get());
 
   if (self->presets_manager == nullptr) {
     self->presets_manager = std::make_unique<PresetsManager>();
@@ -277,22 +291,6 @@ auto Application::create() -> Glib::RefPtr<Application> {
 }
 
 void Application::on_startup() {
-  Gtk::Application::on_startup();
-
-  settings = Gio::Settings::create("com.github.wwmm.easyeffects");
-  soe_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs");
-  sie_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs");
-
-  create_actions();
-
-  pm = std::make_unique<PipeManager>();
-  soe = std::make_unique<StreamOutputEffects>(pm.get());
-  sie = std::make_unique<StreamInputEffects>(pm.get());
-
-  if (presets_manager == nullptr) {
-    presets_manager = std::make_unique<PresetsManager>();
-  }
-
   pm->device_input_route_changed.connect([&](const DeviceInfo device) {
     if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
       return;
@@ -418,12 +416,6 @@ void Application::on_startup() {
 
 void Application::on_activate() {
   if (get_active_window() == nullptr) {
-    /*
-      Note to myself: do not wrap this pointer in a smart pointer. Causes memory leaks when closing the window because
-      GTK reference counting system will see that there is still someone with an object reference and it won't free the
-      widgets.
-    */
-
     // auto* const window = ApplicationUi::create(this);
 
     // add_window(*window);
@@ -453,28 +445,6 @@ void Application::on_activate() {
 
     // window->show();
   }
-}
-
-void Application::create_actions() {
-  add_action("about", [&]() {
-    auto* const dialog = new Gtk::AboutDialog();
-
-    dialog->set_program_name("EasyEffects");
-    dialog->set_version(VERSION);
-    dialog->set_comments(_("Audio effects for PipeWire applications"));
-    dialog->set_authors({"Wellington Wallace"});
-    dialog->set_logo_icon_name("easyeffects");
-    dialog->set_license_type(Gtk::License::GPL_3_0);
-    dialog->set_website("https://github.com/wwmm/pulseeffects");
-
-    dialog->set_modal(true);
-
-    dialog->set_transient_for(*get_active_window());
-
-    dialog->set_hide_on_close(true);
-
-    dialog->present();
-  });
 }
 
 void Application::update_bypass_state(const Glib::ustring& key) {

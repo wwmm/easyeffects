@@ -71,6 +71,5 @@ class Application : public Gtk::Application {
 
   bool running_as_service = false;
 
-  void create_actions();
   void update_bypass_state(const Glib::ustring& key);
 };
