@@ -20,7 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
-#include <glibmm/i18n.h>
+#include <glib/gi18n.h>
 #include "config.h"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"
@@ -63,13 +63,11 @@ class Application : public Gtk::Application {
   std::unique_ptr<PresetsManager> presets_manager;
 
  protected:
-  auto on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int override;
-
   void on_startup() override;
   void on_activate() override;
 
  private:
-  inline static const std::string log_tag = "application: ";
+  const std::string log_tag = "application: ";
 
   bool running_as_service = false;
 

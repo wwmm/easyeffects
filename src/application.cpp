@@ -22,10 +22,12 @@
 
 namespace app {
 
-constexpr std::string_view log_tag = "application: ";
+auto constexpr log_tag = "application: ";
 
 struct _Application {
   AdwApplication parent_instance{};
+
+  bool running_as_service = false;
 
   GSettings* settings = nullptr;
   GSettings* soe_settings = nullptr;
@@ -68,11 +70,11 @@ void application_class_init(ApplicationClass* klass) {
     } else if (g_variant_dict_contains(options, "reset") != 0) {
       g_settings_reset(app->settings, "");
 
-      util::info(log_tag.data() + std::string("All settings were reset"));
+      util::info(std::string(log_tag) + "All settings were reset");
     } else if (g_variant_dict_contains(options, "hide-window") != 0) {
       hide_all_windows(gapp);
 
-      util::info(log_tag.data() + std::string("Hiding the window..."));
+      util::info(std::string(log_tag) + "Hiding the window...");
     } else if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 1) {
@@ -93,16 +95,16 @@ void application_class_init(ApplicationClass* klass) {
       return -1;
     }
 
-    auto* app = EE_APP(gapp);
+    auto* self = EE_APP(gapp);
 
-    if (app->presets_manager == nullptr) {
-      app->presets_manager = std::make_unique<PresetsManager>();
+    if (self->presets_manager == nullptr) {
+      self->presets_manager = std::make_unique<PresetsManager>();
     }
 
     if (g_variant_dict_contains(options, "presets") != 0) {
       std::string list;
 
-      for (const auto& name : app->presets_manager->get_names(PresetType::output)) {
+      for (const auto& name : self->presets_manager->get_names(PresetType::output)) {
         list += name + ",";
       }
 
@@ -110,13 +112,23 @@ void application_class_init(ApplicationClass* klass) {
 
       list = "";
 
-      for (const auto& name : app->presets_manager->get_names(PresetType::input)) {
+      for (const auto& name : self->presets_manager->get_names(PresetType::input)) {
         list += name + ",";
       }
 
       std::clog << _("Input Presets: ") + list << std::endl;
 
-      return -1;
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "bypass") != 0) {
+      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
+        if (bypass_arg == 3) {
+          std::clog << g_settings_get_boolean(self->settings, "bypass") << std::endl;
+
+          return EXIT_SUCCESS;
+        }
+      }
     }
 
     return -1;
@@ -124,6 +136,12 @@ void application_class_init(ApplicationClass* klass) {
 
   G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
+
+    auto* self = EE_APP(gapp);
+
+    if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
+      self->running_as_service = true;
+    }
 
     std::array<GActionEntry, 2> entries{};
 
@@ -163,23 +181,57 @@ void application_class_init(ApplicationClass* klass) {
   G_APPLICATION_CLASS(klass)->shutdown = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->shutdown(gapp);
 
-    auto* app = EE_APP(gapp);
+    auto* self = EE_APP(gapp);
 
-    g_object_unref(app->settings);
+    g_object_unref(self->settings);
 
     // Making sure some destructors are called. I have no idea why this is not happening automatically
 
-    app->pm = nullptr;
+    self->pm = nullptr;
+    self->presets_manager = nullptr;
 
-    util::debug(log_tag.data() + std::string("shutting down..."));
+    util::debug(std::string(log_tag) + "shutting down...");
   };
 }
 
 void application_init(Application* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+  self->sie_settings = g_settings_new("com.github.wwmm.easyeffects.streaminputs");
+  self->soe_settings = g_settings_new("com.github.wwmm.easyeffects.streamoutputs");
 
   self->pm = std::make_unique<PipeManager>();
-  self->presets_manager = std::make_unique<PresetsManager>();
+
+  if (self->presets_manager == nullptr) {
+    self->presets_manager = std::make_unique<PresetsManager>();
+  }
+
+  self->pm->new_default_sink.connect([=](const NodeInfo node) {
+    util::debug("new default output device: " + node.name);
+
+    if (g_settings_get_boolean(self->soe_settings, "use-default-output-device") != 0) {
+      /*
+        Depending on the hardware headphones can cause a node recreation here the id and the name are kept.
+        So we clear the key to force the callbacks to be called
+      */
+
+      g_settings_set_string(self->soe_settings, "output-device", "");
+      g_settings_set_string(self->soe_settings, "output-device", node.name.c_str());
+    }
+  });
+
+  self->pm->new_default_source.connect([=](const NodeInfo node) {
+    util::debug("new default input device: " + node.name);
+
+    if (g_settings_get_boolean(self->sie_settings, "use-default-input-device") != 0) {
+      /*
+        Depending on the hardware microphones can cause a node recreation hwere the id and the name are kept.
+        So we clear the key to force the callbacks to be called
+      */
+
+      g_settings_set_string(self->sie_settings, "input-device", "");
+      g_settings_set_string(self->sie_settings, "input-device", node.name.c_str());
+    }
+  });
 }
 
 auto application_new() -> GApplication* {
@@ -227,15 +279,9 @@ auto Application::create() -> Glib::RefPtr<Application> {
 void Application::on_startup() {
   Gtk::Application::on_startup();
 
-  util::debug(log_tag + "easyeffects version: " + std::string(VERSION));
-
   settings = Gio::Settings::create("com.github.wwmm.easyeffects");
   soe_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streamoutputs");
   sie_settings = Gio::Settings::create("com.github.wwmm.easyeffects.streaminputs");
-
-  if (static_cast<int>(get_flags() & Gio::Application::Flags::IS_SERVICE) != 0) {
-    running_as_service = true;
-  }
 
   create_actions();
 
@@ -246,34 +292,6 @@ void Application::on_startup() {
   if (presets_manager == nullptr) {
     presets_manager = std::make_unique<PresetsManager>();
   }
-
-  pm->new_default_sink.connect([&](const NodeInfo node) {
-    util::debug("new default output device: " + node.name);
-
-    if (soe_settings->get_boolean("use-default-output-device")) {
-      /*
-        Depending on the hardware headphones can cause a node recreation here the id and the name are kept.
-        So we clear the key to force the callbacks to be called
-      */
-
-      soe_settings->set_string("output-device", "");
-      soe_settings->set_string("output-device", node.name);
-    }
-  });
-
-  pm->new_default_source.connect([&](const NodeInfo node) {
-    util::debug("new default input device: " + node.name);
-
-    if (sie_settings->get_boolean("use-default-input-device")) {
-      /*
-        Depending on the hardware microphones can cause a node recreation hwere the id and the name are kept.
-        So we clear the key to force the callbacks to be called
-      */
-
-      sie_settings->set_string("input-device", "");
-      sie_settings->set_string("input-device", node.name);
-    }
-  });
 
   pm->device_input_route_changed.connect([&](const DeviceInfo device) {
     if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
@@ -435,50 +453,6 @@ void Application::on_activate() {
 
     // window->show();
   }
-}
-
-auto Application::on_handle_local_options(const Glib::RefPtr<Glib::VariantDict>& options) -> int {
-  if (!options) {
-    std::cerr << G_STRFUNC << ": options is null." << std::endl;
-  }
-
-  // Remove some options to show that we have handled them in the local
-  // instance, so they won't be passed to the primary (remote) instance:
-  options->remove("preset");
-
-  if (options->contains("presets")) {
-    std::string list;
-
-    for (const auto& name : presets_manager->get_names(PresetType::output)) {
-      list += name + ",";
-    }
-
-    std::clog << _("Output Presets: ") + list << std::endl;
-
-    list = "";
-
-    for (const auto& name : presets_manager->get_names(PresetType::input)) {
-      list += name + ",";
-    }
-
-    std::clog << _("Input Presets: ") + list << std::endl;
-
-    return EXIT_SUCCESS;
-  }
-
-  if (options->contains("bypass")) {
-    if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
-      if (bypass_arg == 3) {
-        const auto cfg = Gio::Settings::create("com.github.wwmm.easyeffects");
-
-        std::clog << cfg->get_boolean("bypass") << std::endl;
-
-        return EXIT_SUCCESS;
-      }
-    }
-  }
-
-  return -1;
 }
 
 void Application::create_actions() {

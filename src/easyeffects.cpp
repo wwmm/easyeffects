@@ -32,6 +32,8 @@ auto sigterm(void* data) -> bool {
 }
 
 auto main(int argc, char* argv[]) -> int {
+  util::debug("easyeffects version: " + std::string(VERSION));
+
   try {
     // Init internationalization support before anything else
 
