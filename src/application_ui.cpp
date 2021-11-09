@@ -50,7 +50,7 @@ void application_window_init(ApplicationWindow* self) {
 }
 
 auto application_window_new() -> ApplicationWindow* {
-  return static_cast<ApplicationWindow*>(g_object_new(APPLICATION_WINDOW_TYPE, nullptr));
+  return static_cast<ApplicationWindow*>(g_object_new(EE_TYPE_APPLICATION_WINDOW, nullptr));
 }
 
 }  // namespace ui::application_window

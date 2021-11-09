@@ -31,9 +31,9 @@ namespace app {
 
 G_BEGIN_DECLS
 
-#define APPLICATION_TYPE (application_get_type())
+#define EE_TYPE_APPLICATION (application_get_type())
 
-G_DECLARE_FINAL_TYPE(Application, application, EASYEFFECTS, APPLICATION, AdwApplication)
+G_DECLARE_FINAL_TYPE(Application, application, EE, APP, AdwApplication)
 
 auto application_new() -> GApplication*;
 

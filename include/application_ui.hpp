@@ -25,9 +25,9 @@ namespace ui::application_window {
 
 G_BEGIN_DECLS
 
-#define APPLICATION_WINDOW_TYPE (application_window_get_type())
+#define EE_TYPE_APPLICATION_WINDOW (application_window_get_type())
 
-G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EASYEFFECTS, APPLICATION_WINDOW, AdwApplicationWindow)
+G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EE, APP_WINDOW, AdwApplicationWindow)
 
 auto application_window_new() -> ApplicationWindow*;
 

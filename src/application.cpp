@@ -22,63 +22,29 @@
 
 namespace app {
 
+constexpr std::string_view log_tag = "application: ";
+
 struct _Application {
   AdwApplication parent_instance{};
+
+  GSettings* settings = nullptr;
+  GSettings* soe_settings = nullptr;
+  GSettings* sie_settings = nullptr;
 };
 
 G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
 
-void quit_activated(GSimpleAction* action, GVariant* parameter, gpointer app) {
-  g_application_quit(G_APPLICATION(app));
-}
+void hide_all_windows(GApplication* app) {
+  auto* list = gtk_application_get_windows(GTK_APPLICATION(app));
 
-void startup(GApplication* app) {
-  G_APPLICATION_CLASS(application_parent_class)->startup(app);
+  while (list != nullptr) {
+    auto* window = list->data;
+    auto* next = list->next;
 
-  std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+    gtk_window_destroy(GTK_WINDOW(window));
 
-  std::array<GActionEntry, 2> entries = {{{"quit", quit_activated, nullptr, nullptr, nullptr}}};
-
-  g_action_map_add_action_entries(G_ACTION_MAP(app), entries.data(), entries.size(), app);
-
-  gtk_application_set_accels_for_action(GTK_APPLICATION(app), "app.quit", quit_accels.data());
-}
-
-void application_activate(GApplication* app) {
-  auto* window = ui::application_window::application_window_new();
-
-  gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(window));
-
-  gtk_window_present(GTK_WINDOW(window));
-}
-
-auto command_line(GApplication* app, GApplicationCommandLine* cmdline) -> int {
-  auto* options = g_application_command_line_get_options_dict(cmdline);
-
-  if (g_variant_dict_contains(options, "quit") != 0) {
-    auto* list = gtk_application_get_windows(GTK_APPLICATION(app));
-
-    while (list != nullptr) {
-      auto* window = list->data;
-      auto* next = list->next;
-
-      gtk_window_destroy(GTK_WINDOW(window));
-
-      list = next;
-    }
-
-    g_application_quit(G_APPLICATION(app));
-  } else if (g_variant_dict_contains(options, "load-preset") != 0) {
-    const char* name = nullptr;
-
-    g_variant_dict_lookup(options, "load-preset", "&s", &name);
-
-    util::warning(name);
-  } else {
-    g_application_activate(app);
+    list = next;
   }
-
-  return 0;
 }
 
 auto local_options(GApplication* app, GVariantDict* options, gpointer data) -> int {
@@ -93,14 +59,91 @@ auto local_options(GApplication* app, GVariantDict* options, gpointer data) -> i
   return -1;
 }
 
-void application_init(Application* self) {}
-
 void application_class_init(ApplicationClass* klass) {
-  G_APPLICATION_CLASS(klass)->startup = startup;
+  G_APPLICATION_CLASS(klass)->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
+    auto* app = EE_APP(gapp);
+    auto* options = g_application_command_line_get_options_dict(cmdline);
+
+    if (g_variant_dict_contains(options, "quit") != 0) {
+      hide_all_windows(gapp);
+
+      g_application_quit(G_APPLICATION(gapp));
+    } else if (g_variant_dict_contains(options, "load-preset") != 0) {
+      const char* name = nullptr;
+
+      g_variant_dict_lookup(options, "load-preset", "&s", &name);
+
+      util::warning(name);
+    } else if (g_variant_dict_contains(options, "reset") != 0) {
+      g_settings_reset(app->settings, "");
+
+      util::info(log_tag.data() + std::string("All settings were reset"));
+    } else if (g_variant_dict_contains(options, "hide-window") != 0) {
+      hide_all_windows(gapp);
+
+      util::info(log_tag.data() + std::string("Hiding the window..."));
+    } else if (g_variant_dict_contains(options, "bypass") != 0) {
+      if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
+        if (bypass_arg == 1) {
+          g_settings_set_boolean(app->settings, "bypass", 1);
+        } else if (bypass_arg == 2) {
+          g_settings_set_boolean(app->settings, "bypass", 0);
+        }
+      }
+    } else {
+      g_application_activate(gapp);
+    }
+
+    return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
+  };
+
+  G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
+    G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
+
+    std::array<GActionEntry, 1> entries = {
+        {{"quit",
+          [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
+          nullptr, nullptr, nullptr}}};
+
+    g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
+
+    std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
+    std::array<const char*, 2> help_accels = {"F1", nullptr};
+
+    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
+    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
+  };
+
+  G_APPLICATION_CLASS(klass)->activate = [](GApplication* gapp) {
+    G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
+
+    auto* window = ui::application_window::application_window_new();
+
+    gtk_application_add_window(GTK_APPLICATION(gapp), GTK_WINDOW(window));
+
+    gtk_window_present(GTK_WINDOW(window));
+  };
+
+  G_APPLICATION_CLASS(klass)->shutdown = [](GApplication* gapp) {
+    G_APPLICATION_CLASS(application_parent_class)->shutdown(gapp);
+
+    auto* app = EE_APP(gapp);
+
+    g_object_unref(app->settings);
+
+    util::debug(log_tag.data() + std::string("shutting down..."));
+  };
+}
+
+void application_init(Application* self) {
+  self->settings = g_settings_new("com.github.wwmm.easyeffects");
 }
 
 auto application_new() -> GApplication* {
-  auto* app = adw_application_new("com.github.wwmm.easyeffects", G_APPLICATION_HANDLES_COMMAND_LINE);
+  g_set_application_name("EasyEffects");
+
+  auto* app = g_object_new(EE_TYPE_APPLICATION, "application-id", "com.github.wwmm.easyeffects", "flags",
+                           G_APPLICATION_HANDLES_COMMAND_LINE, nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "quit", 'q', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Quit EasyEffects. Useful when running in service mode."), nullptr);
@@ -108,8 +151,15 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
                                 _("Load a preset. Example: easyeffects -l music"), nullptr);
 
-  g_signal_connect(app, "activate", G_CALLBACK(application_activate), nullptr);
-  g_signal_connect(app, "command-line", G_CALLBACK(command_line), nullptr);
+  g_application_add_main_option(G_APPLICATION(app), "reset", 'r', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                _("Reset EasyEffects."), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "hide-window", 'w', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                _("Hide the Window."), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "bypass", 'b', G_OPTION_FLAG_NONE, G_OPTION_ARG_INT,
+                                _("Global bypass. 1 to enable, 2 to disable and 3 to get status"), nullptr);
+
   g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
 
   return G_APPLICATION(app);
@@ -119,24 +169,7 @@ auto application_new() -> GApplication* {
 
 Application::Application()
     : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
-  Glib::set_application_name("EasyEffects");
-
-  signal_handle_local_options().connect(sigc::mem_fun(*this, &Application::on_handle_local_options), false);
-
-  add_main_option_entry(Gio::Application::OptionType::BOOL, "quit", 'q',
-                        _("Quit EasyEffects. Useful when running in service mode."));
-
   add_main_option_entry(Gio::Application::OptionType::BOOL, "presets", 'p', _("Show available presets."));
-
-  add_main_option_entry(Gio::Application::OptionType::STRING, "load-preset", 'l',
-                        _("Load a preset. Example: easyeffects -l music"));
-
-  add_main_option_entry(Gio::Application::OptionType::BOOL, "reset", 'r', _("Reset EasyEffects."));
-
-  add_main_option_entry(Gio::Application::OptionType::INT, "bypass", 'b',
-                        _("Global bypass. 1 to enable, 2 to disable and 3 to get status"));
-
-  add_main_option_entry(Gio::Application::OptionType::BOOL, "hide-window", 'w', _("Hide the Window."));
 }
 
 Application::~Application() {
@@ -150,45 +183,11 @@ auto Application::create() -> Glib::RefPtr<Application> {
 auto Application::on_command_line(const Glib::RefPtr<Gio::ApplicationCommandLine>& command_line) -> int {
   const auto options = command_line->get_options_dict();
 
-  if (options->contains("quit")) {
-    for (const auto& w : get_windows()) {
-      w->hide();
-    }
-
-    quit();
-  } else if (options->contains("load-preset")) {
-    Glib::ustring name;
-
-    if (!options->lookup_value("load-preset", name)) {
-      util::debug(log_tag + "failed to load preset: " + name.raw());
-    } else {
-      if (presets_manager->preset_file_exists(PresetType::input, name)) {
-        presets_manager->load_preset_file(PresetType::input, name);
-      }
-
-      if (presets_manager->preset_file_exists(PresetType::output, name)) {
-        presets_manager->load_preset_file(PresetType::output, name);
-      }
-    }
-  } else if (options->contains("reset")) {
+  if (options->contains("reset")) {
     settings->reset("");
 
     util::info(log_tag + "All settings were reset");
-  } else if (options->contains("hide-window")) {
-    util::info(log_tag + "Hiding the window...");
-
-    for (const auto& w : get_windows()) {
-      w->hide();
-    }
   } else if (options->contains("bypass")) {
-    if (int bypass_arg = 2; options->lookup_value("bypass", bypass_arg)) {
-      if (bypass_arg == 1) {
-        settings->set_boolean("bypass", true);
-      } else if (bypass_arg == 2) {
-        settings->set_boolean("bypass", false);
-      }
-    }
-
   } else {
     activate();
   }
@@ -406,12 +405,6 @@ void Application::on_activate() {
     //     false);
 
     // window->show();
-
-    // auto* window = ui::application_window::application_window_new();
-
-    // gtk_application_add_window(this->gobj(), GTK_WINDOW(window));
-
-    // gtk_window_present(GTK_WINDOW(window));
   }
 }
 
