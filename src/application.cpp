@@ -93,31 +93,31 @@ void application_class_init(ApplicationClass* klass) {
       return -1;
     }
 
-    // auto* app = EE_APP(gapp);
+    auto* app = EE_APP(gapp);
 
-    // if (app->presets_manager == nullptr) {
-    // app->presets_manager = std::make_unique<PresetsManager>();
-    // }
+    if (app->presets_manager == nullptr) {
+      app->presets_manager = std::make_unique<PresetsManager>();
+    }
 
-    // if (g_variant_dict_contains(options, "presets") != 0) {
-    //   std::string list;
+    if (g_variant_dict_contains(options, "presets") != 0) {
+      std::string list;
 
-    //   for (const auto& name : app->presets_manager->get_names(PresetType::output)) {
-    //     list += name + ",";
-    //   }
+      for (const auto& name : app->presets_manager->get_names(PresetType::output)) {
+        list += name + ",";
+      }
 
-    //   std::clog << _("Output Presets: ") + list << std::endl;
+      std::clog << _("Output Presets: ") + list << std::endl;
 
-    //   list = "";
+      list = "";
 
-    //   for (const auto& name : app->presets_manager->get_names(PresetType::input)) {
-    //     list += name + ",";
-    //   }
+      for (const auto& name : app->presets_manager->get_names(PresetType::input)) {
+        list += name + ",";
+      }
 
-    //   std::clog << _("Input Presets: ") + list << std::endl;
+      std::clog << _("Input Presets: ") + list << std::endl;
 
-    //   return -1;
-    // }
+      return -1;
+    }
 
     return -1;
   };
@@ -149,13 +149,15 @@ void application_class_init(ApplicationClass* klass) {
   };
 
   G_APPLICATION_CLASS(klass)->activate = [](GApplication* gapp) {
-    G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
+    if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {
+      G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
 
-    auto* window = ui::application_window::application_window_new();
+      auto* window = ui::application_window::application_window_new();
 
-    gtk_application_add_window(GTK_APPLICATION(gapp), GTK_WINDOW(window));
+      gtk_application_add_window(GTK_APPLICATION(gapp), GTK_WINDOW(window));
 
-    gtk_window_present(GTK_WINDOW(window));
+      gtk_window_present(GTK_WINDOW(window));
+    }
   };
 
   G_APPLICATION_CLASS(klass)->shutdown = [](GApplication* gapp) {
@@ -201,6 +203,9 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "bypass", 'b', G_OPTION_FLAG_NONE, G_OPTION_ARG_INT,
                                 _("Global bypass. 1 to enable, 2 to disable and 3 to get status"), nullptr);
 
+  g_application_add_main_option(G_APPLICATION(app), "presets", 'p', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
+                                _("Show available presets."), nullptr);
+
   // g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
 
   return G_APPLICATION(app);
@@ -209,9 +214,7 @@ auto application_new() -> GApplication* {
 }  // namespace app
 
 Application::Application()
-    : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {
-  add_main_option_entry(Gio::Application::OptionType::BOOL, "presets", 'p', _("Show available presets."));
-}
+    : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {}
 
 Application::~Application() {
   util::debug(log_tag + " destroyed");

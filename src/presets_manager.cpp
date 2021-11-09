@@ -20,7 +20,7 @@
 #include "presets_manager.hpp"
 
 PresetsManager::PresetsManager()
-    : user_config_dir(std::string(g_get_user_config_dir()) + "/easyeffects/"),
+    : user_config_dir(g_get_user_config_dir()),
       user_presets_dir(user_config_dir + "/easyeffects/"),
       user_input_dir(user_config_dir + "/easyeffects/input"),
       user_output_dir(user_config_dir + "/easyeffects/output"),
