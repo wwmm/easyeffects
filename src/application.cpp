@@ -30,6 +30,8 @@ struct _Application {
   GSettings* settings = nullptr;
   GSettings* soe_settings = nullptr;
   GSettings* sie_settings = nullptr;
+
+  std::unique_ptr<PipeManager> pm;
 };
 
 G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
@@ -73,7 +75,7 @@ void application_class_init(ApplicationClass* klass) {
 
       g_variant_dict_lookup(options, "load-preset", "&s", &name);
 
-      util::warning(name);
+      util::warning(name + std::string(" Not implemented yet..."));
     } else if (g_variant_dict_contains(options, "reset") != 0) {
       g_settings_reset(app->settings, "");
 
@@ -100,10 +102,19 @@ void application_class_init(ApplicationClass* klass) {
   G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-    std::array<GActionEntry, 1> entries = {
-        {{"quit",
-          [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
-          nullptr, nullptr, nullptr}}};
+    std::array<GActionEntry, 2> entries{};
+
+    entries[0] = {
+        "quit",
+        [](GSimpleAction* action, GVariant* parameter, gpointer app) { g_application_quit(G_APPLICATION(app)); },
+        nullptr, nullptr, nullptr};
+
+    entries[1] = {"help",
+                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    gtk_show_uri(gtk_application_get_active_window(GTK_APPLICATION(gapp)), "help:easyeffects",
+                                 GDK_CURRENT_TIME);
+                  },
+                  nullptr, nullptr, nullptr};
 
     g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
 
@@ -131,12 +142,18 @@ void application_class_init(ApplicationClass* klass) {
 
     g_object_unref(app->settings);
 
+    // Making sure some destructors are called. I have no idea why this is not happneing automatically
+
+    app->pm = nullptr;
+
     util::debug(log_tag.data() + std::string("shutting down..."));
   };
 }
 
 void application_init(Application* self) {
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  self->pm = std::make_unique<PipeManager>();
 }
 
 auto application_new() -> GApplication* {
@@ -476,23 +493,6 @@ void Application::create_actions() {
 
     dialog->present();
   });
-
-  add_action("help", [&] {
-    auto* const window = get_active_window();
-
-    // show_uri has not been wrapped by GTKMM yet :-(
-
-    gtk_show_uri(window->gobj(), "help:easyeffects", GDK_CURRENT_TIME);
-  });
-
-  add_action("quit", [&] {
-    auto* const window = get_active_window();
-
-    window->hide();
-  });
-
-  set_accel_for_action("app.help", "F1");
-  set_accel_for_action("app.quit", "<Ctrl>Q");
 }
 
 void Application::update_bypass_state(const Glib::ustring& key) {
