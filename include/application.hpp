@@ -70,6 +70,4 @@ class Application : public Gtk::Application {
   const std::string log_tag = "application: ";
 
   bool running_as_service = false;
-
-  void update_bypass_state(const Glib::ustring& key);
 };

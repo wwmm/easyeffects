@@ -27,8 +27,6 @@ auto constexpr log_tag = "application: ";
 struct _Application {
   AdwApplication parent_instance{};
 
-  bool running_as_service = false;
-
   GSettings* settings = nullptr;
   GSettings* soe_settings = nullptr;
   GSettings* sie_settings = nullptr;
@@ -52,6 +50,15 @@ void hide_all_windows(GApplication* app) {
 
     list = next;
   }
+}
+
+void update_bypass_state(Application* self) {
+  const auto state = g_settings_get_boolean(self->settings, "bypass");
+
+  self->soe->set_bypass(state != 0);
+  self->sie->set_bypass(state != 0);
+
+  util::info(std::string(log_tag) + ((state) != 0 ? "enabling" : "disabling") + " global bypass");
 }
 
 void application_class_init(ApplicationClass* klass) {
@@ -139,12 +146,6 @@ void application_class_init(ApplicationClass* klass) {
   G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-    auto* self = EE_APP(gapp);
-
-    if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
-      self->running_as_service = true;
-    }
-
     std::array<GActionEntry, 3> entries{};
 
     entries[0] = {
@@ -176,6 +177,10 @@ void application_class_init(ApplicationClass* klass) {
 
     gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
     gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
+
+    if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
+      // g_application_hold(gapp);
+    }
   };
 
   G_APPLICATION_CLASS(klass)->activate = [](GApplication* gapp) {
@@ -266,7 +271,7 @@ void application_init(Application* self) {
     }
 
     if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name.c_str() == g_settings_get_string(self->sie_settings, "input-device")) {
+      if (target_node.name == g_settings_get_string(self->sie_settings, "input-device")) {
         self->presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
       } else {
         util::debug(std::string(log_tag) +
@@ -298,7 +303,7 @@ void application_init(Application* self) {
     }
 
     if (target_node.id != SPA_ID_INVALID) {
-      if (target_node.name.c_str() == g_settings_get_string(self->soe_settings, "output-device")) {
+      if (target_node.name == g_settings_get_string(self->soe_settings, "output-device")) {
         self->presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
       } else {
         util::debug(std::string(log_tag) +
@@ -308,6 +313,80 @@ void application_init(Application* self) {
       util::debug(std::string(log_tag) + "output autoloading: could not find the target node");
     }
   });
+
+  g_signal_connect(self->soe_settings, "changed::output-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Application*>(user_data);
+
+                     const auto name = std::string(g_settings_get_string(settings, key));
+
+                     if (name.empty()) {
+                       return;
+                     }
+
+                     uint device_id = SPA_ID_INVALID;
+
+                     for (const auto& [ts, node] : self->pm->node_map) {
+                       if (node.name == name) {
+                         device_id = node.device_id;
+
+                         break;
+                       }
+                     }
+
+                     if (device_id != SPA_ID_INVALID) {
+                       for (const auto& device : self->pm->list_devices) {
+                         if (device.id == device_id) {
+                           self->presets_manager->autoload(PresetType::output, name, device.output_route_name);
+
+                           break;
+                         }
+                       }
+                     }
+                   }),
+                   self);
+
+  g_signal_connect(self->sie_settings, "changed::input-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Application*>(user_data);
+
+                     const auto name = std::string(g_settings_get_string(settings, key));
+
+                     if (name.empty()) {
+                       return;
+                     }
+
+                     uint device_id = SPA_ID_INVALID;
+
+                     for (const auto& [ts, node] : self->pm->node_map) {
+                       if (node.name == name) {
+                         device_id = node.device_id;
+
+                         break;
+                       }
+                     }
+
+                     if (device_id != SPA_ID_INVALID) {
+                       for (const auto& device : self->pm->list_devices) {
+                         if (device.id == device_id) {
+                           self->presets_manager->autoload(PresetType::input, name, device.input_route_name);
+
+                           break;
+                         }
+                       }
+                     }
+                   }),
+                   self);
+
+  g_signal_connect(self->settings, "changed::bypass",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Application*>(user_data);
+
+                     update_bypass_state(self);
+                   }),
+                   self);
+
+  update_bypass_state(self);
 }
 
 auto application_new() -> GApplication* {
@@ -353,66 +432,6 @@ auto Application::create() -> Glib::RefPtr<Application> {
 }
 
 void Application::on_startup() {
-  soe_settings->signal_changed("output-device").connect([&, this](const auto& key) {
-    const auto name = soe_settings->get_string(key).raw();
-
-    if (name.empty()) {
-      return;
-    }
-
-    uint device_id = SPA_ID_INVALID;
-
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.name == name) {
-        device_id = node.device_id;
-
-        break;
-      }
-    }
-
-    if (device_id != SPA_ID_INVALID) {
-      for (const auto& device : pm->list_devices) {
-        if (device.id == device_id) {
-          presets_manager->autoload(PresetType::output, name, device.output_route_name);
-
-          break;
-        }
-      }
-    }
-  });
-
-  sie_settings->signal_changed("input-device").connect([&, this](const auto& key) {
-    const auto name = sie_settings->get_string(key).raw();
-
-    if (name.empty()) {
-      return;
-    }
-
-    uint device_id = SPA_ID_INVALID;
-
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.name == name) {
-        device_id = node.device_id;
-
-        break;
-      }
-    }
-
-    if (device_id != SPA_ID_INVALID) {
-      for (const auto& device : pm->list_devices) {
-        if (device.id == device_id) {
-          presets_manager->autoload(PresetType::input, name, device.input_route_name);
-
-          break;
-        }
-      }
-    }
-  });
-
-  settings->signal_changed("bypass").connect([=, this](const auto& key) { update_bypass_state(key); });
-
-  update_bypass_state("bypass");
-
   if (running_as_service) {
     util::debug(log_tag + "Running in Background");
 
@@ -451,13 +470,4 @@ void Application::on_activate() {
 
     // window->show();
   }
-}
-
-void Application::update_bypass_state(const Glib::ustring& key) {
-  const auto state = settings->get_boolean(key);
-
-  soe->set_bypass(state);
-  sie->set_bypass(state);
-
-  util::info(log_tag + ((state) ? "enabling" : "disabling") + " global bypass");
 }
