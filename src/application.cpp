@@ -65,7 +65,7 @@ void application_class_init(ApplicationClass* klass) {
   auto* application_class = G_APPLICATION_CLASS(klass);
 
   application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
-    auto* app = EE_APP(gapp);
+    auto* self = EE_APP(gapp);
     auto* options = g_application_command_line_get_options_dict(cmdline);
 
     if (g_variant_dict_contains(options, "quit") != 0) {
@@ -75,11 +75,17 @@ void application_class_init(ApplicationClass* klass) {
     } else if (g_variant_dict_contains(options, "load-preset") != 0) {
       const char* name = nullptr;
 
-      g_variant_dict_lookup(options, "load-preset", "&s", &name);
+      if (g_variant_dict_lookup(options, "load-preset", "&s", &name) != 0) {
+        if (self->presets_manager->preset_file_exists(PresetType::input, name)) {
+          self->presets_manager->load_preset_file(PresetType::input, name);
+        }
 
-      util::warning(name + std::string(" Not implemented yet..."));
+        if (self->presets_manager->preset_file_exists(PresetType::output, name)) {
+          self->presets_manager->load_preset_file(PresetType::output, name);
+        }
+      }
     } else if (g_variant_dict_contains(options, "reset") != 0) {
-      g_settings_reset(app->settings, "");
+      g_settings_reset(self->settings, "");
 
       util::info(std::string(log_tag) + "All settings were reset");
     } else if (g_variant_dict_contains(options, "hide-window") != 0) {
@@ -89,9 +95,9 @@ void application_class_init(ApplicationClass* klass) {
     } else if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 1) {
-          g_settings_set_boolean(app->settings, "bypass", 1);
+          g_settings_set_boolean(self->settings, "bypass", 1);
         } else if (bypass_arg == 2) {
-          g_settings_set_boolean(app->settings, "bypass", 0);
+          g_settings_set_boolean(self->settings, "bypass", 0);
         }
       }
     } else {
