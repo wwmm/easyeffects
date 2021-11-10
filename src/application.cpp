@@ -62,7 +62,9 @@ void update_bypass_state(Application* self) {
 }
 
 void application_class_init(ApplicationClass* klass) {
-  G_APPLICATION_CLASS(klass)->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
+  auto* application_class = G_APPLICATION_CLASS(klass);
+
+  application_class->command_line = [](GApplication* gapp, GApplicationCommandLine* cmdline) {
     auto* app = EE_APP(gapp);
     auto* options = g_application_command_line_get_options_dict(cmdline);
 
@@ -99,7 +101,7 @@ void application_class_init(ApplicationClass* klass) {
     return G_APPLICATION_CLASS(application_parent_class)->command_line(gapp, cmdline);
   };
 
-  G_APPLICATION_CLASS(klass)->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
+  application_class->handle_local_options = [](GApplication* gapp, GVariantDict* options) {
     if (options == nullptr) {
       return -1;
     }
@@ -143,7 +145,7 @@ void application_class_init(ApplicationClass* klass) {
     return -1;
   };
 
-  G_APPLICATION_CLASS(klass)->startup = [](GApplication* gapp) {
+  application_class->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
     std::array<GActionEntry, 3> entries{};
@@ -179,28 +181,28 @@ void application_class_init(ApplicationClass* klass) {
     gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
 
     if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
-      // g_application_hold(gapp);
+      g_application_hold(gapp);
     }
   };
 
-  G_APPLICATION_CLASS(klass)->activate = [](GApplication* gapp) {
+  application_class->activate = [](GApplication* gapp) {
     if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {
       G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
 
-      auto* window = ui::application_window::application_window_new();
-
-      gtk_application_add_window(GTK_APPLICATION(gapp), GTK_WINDOW(window));
+      auto* window = ui::application_window::application_window_new(gapp);
 
       gtk_window_present(GTK_WINDOW(window));
     }
   };
 
-  G_APPLICATION_CLASS(klass)->shutdown = [](GApplication* gapp) {
+  application_class->shutdown = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->shutdown(gapp);
 
     auto* self = EE_APP(gapp);
 
     g_object_unref(self->settings);
+    g_object_unref(self->sie_settings);
+    g_object_unref(self->soe_settings);
 
     // Making sure some destructors are called. I have no idea why this is not happening automatically
 
@@ -413,61 +415,7 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "presets", 'p', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Show available presets."), nullptr);
 
-  // g_signal_connect(app, "handle-local-options", G_CALLBACK(local_options), nullptr);
-
   return G_APPLICATION(app);
 }
 
 }  // namespace app
-
-Application::Application()
-    : Gtk::Application("com.github.wwmm.easyeffects", Gio::Application::Flags::HANDLES_COMMAND_LINE) {}
-
-Application::~Application() {
-  util::debug(log_tag + " destroyed");
-}
-
-auto Application::create() -> Glib::RefPtr<Application> {
-  return Glib::RefPtr<Application>(new Application());
-}
-
-void Application::on_startup() {
-  if (running_as_service) {
-    util::debug(log_tag + "Running in Background");
-
-    hold();
-  }
-}
-
-void Application::on_activate() {
-  if (get_active_window() == nullptr) {
-    // auto* const window = ApplicationUi::create(this);
-
-    // add_window(*window);
-
-    // window->signal_close_request().connect(
-    //     [&, window]() {
-    //       int width = 0;
-    //       int height = 0;
-
-    //       window->get_default_size(width, height);
-
-    //       settings->set_int("window-width", width);
-    //       settings->set_int("window-height", height);
-    //       settings->set_boolean("window-maximized", window->is_maximized());
-
-    //       // util::warning(std::to_string(width) + " x " + std::to_string(height));
-
-    //       delete window;
-
-    //       if (settings->get_boolean("shutdown-on-window-close")) {
-    //         release();
-    //       }
-
-    //       return false;
-    //     },
-    //     false);
-
-    // window->show();
-  }
-}

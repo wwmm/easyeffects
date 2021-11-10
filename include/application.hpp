@@ -53,21 +53,12 @@ class Application : public Gtk::Application {
   ~Application() override;
 
   static auto create() -> Glib::RefPtr<Application>;
+
   Glib::RefPtr<Gio::Settings> settings;
   Glib::RefPtr<Gio::Settings> soe_settings;
   Glib::RefPtr<Gio::Settings> sie_settings;
 
-  std::unique_ptr<PipeManager> pm;
   std::unique_ptr<StreamOutputEffects> soe;
   std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
-
- protected:
-  void on_startup() override;
-  void on_activate() override;
-
- private:
-  const std::string log_tag = "application: ";
-
-  bool running_as_service = false;
 };

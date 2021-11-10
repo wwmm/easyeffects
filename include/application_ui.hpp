@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EE, APP_WINDOW, AdwApplicationWindow)
 
-auto application_window_new() -> ApplicationWindow*;
+auto application_window_new(GApplication* gapp) -> ApplicationWindow*;
 
 G_END_DECLS
 

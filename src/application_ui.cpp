@@ -27,12 +27,103 @@ struct _ApplicationWindow {
   AdwViewStack* stack = nullptr;
 
   GtkMenuButton* presets_menu_button = nullptr;
+
+  int width = -1;
+  int height = -1;
+  bool maximized = false;
+  bool fullscreen = false;
+
+  GSettings* settings = nullptr;
+
+  GApplication* gapp = nullptr;
 };
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
 
+void window_constructed(GObject* object) {
+  auto* self = EE_APP_WINDOW(object);
+
+  self->maximized = (g_settings_get_boolean(self->settings, "window-maximized") != 0);
+  self->fullscreen = (g_settings_get_boolean(self->settings, "window-fullscreen") != 0);
+  self->width = g_settings_get_int(self->settings, "window-width");
+  self->height = g_settings_get_int(self->settings, "window-height");
+
+  gtk_window_set_default_size(GTK_WINDOW(self), self->width, self->height);
+
+  if (self->maximized) {
+    gtk_window_maximize(GTK_WINDOW(self));
+  }
+
+  if (self->fullscreen) {
+    gtk_window_fullscreen(GTK_WINDOW(self));
+  }
+
+  G_OBJECT_CLASS(application_window_parent_class)->constructed(object);
+}
+
+void window_size_allocate(GtkWidget* widget, int width, int height, int baseline) {
+  auto* self = EE_APP_WINDOW(widget);
+
+  GTK_WIDGET_CLASS(application_window_parent_class)->size_allocate(widget, width, height, baseline);
+
+  if (!self->maximized && !self->fullscreen) {
+    gtk_window_get_default_size(GTK_WINDOW(self), &self->width, &self->height);
+  }
+}
+
+void surface_state_changed(GtkWidget* widget) {
+  auto* self = EE_APP_WINDOW(widget);
+
+  GdkToplevelState new_state = GDK_TOPLEVEL_STATE_MAXIMIZED;
+
+  new_state = gdk_toplevel_get_state(GDK_TOPLEVEL(gtk_native_get_surface(GTK_NATIVE(widget))));
+
+  self->maximized = (new_state & GDK_TOPLEVEL_STATE_MAXIMIZED) != 0;
+  self->fullscreen = (new_state & GDK_TOPLEVEL_STATE_FULLSCREEN) != 0;
+}
+
+void window_realize(GtkWidget* widget) {
+  GTK_WIDGET_CLASS(application_window_parent_class)->realize(widget);
+
+  EE_APP_WINDOW(widget)->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
+
+  g_signal_connect_swapped(gtk_native_get_surface(GTK_NATIVE(widget)), "notify::state",
+                           G_CALLBACK(surface_state_changed), widget);
+}
+
+void window_unrealize(GtkWidget* widget) {
+  g_signal_handlers_disconnect_by_func(gtk_native_get_surface(GTK_NATIVE((widget))),
+                                       reinterpret_cast<gpointer>(surface_state_changed), widget);
+
+  GTK_WIDGET_CLASS(application_window_parent_class)->unrealize(widget);
+}
+
+void window_dispose(GObject* object) {
+  auto* self = EE_APP_WINDOW(object);
+
+  g_settings_set_int(self->settings, "window-width", self->width);
+  g_settings_set_int(self->settings, "window-height", self->height);
+  g_settings_set_boolean(self->settings, "window-maximized", static_cast<gboolean>(self->maximized));
+  g_settings_set_boolean(self->settings, "window-fullscreen", static_cast<gboolean>(self->fullscreen));
+
+  if (g_settings_get_boolean(self->settings, "shutdown-on-window-close") != 0 &&
+      (g_application_get_flags(self->gapp) & G_APPLICATION_IS_SERVICE) != 0) {
+    g_application_release(self->gapp);
+  }
+
+  G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
+}
+
 void application_window_class_init(ApplicationWindowClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->constructed = window_constructed;
+  object_class->dispose = window_dispose;
+
+  widget_class->size_allocate = window_size_allocate;
+  widget_class->realize = window_realize;
+  widget_class->unrealize = window_unrealize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
 
@@ -43,14 +134,20 @@ void application_window_class_init(ApplicationWindowClass* klass) {
 void application_window_init(ApplicationWindow* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
 
+  self->width = -1;
+  self->height = -1;
+  self->maximized = false;
+  self->fullscreen = false;
+
   adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_PREFER_LIGHT);
 
-  // auto app = gtk_window_get_application();
+  self->settings = g_settings_new("com.github.wwmm.easyeffects");
+
   // auto presets_menu_ui = PresetsMenuUi::create(app);
 }
 
-auto application_window_new() -> ApplicationWindow* {
-  return static_cast<ApplicationWindow*>(g_object_new(EE_TYPE_APPLICATION_WINDOW, nullptr));
+auto application_window_new(GApplication* gapp) -> ApplicationWindow* {
+  return static_cast<ApplicationWindow*>(g_object_new(EE_TYPE_APPLICATION_WINDOW, "application", gapp, nullptr));
 }
 
 }  // namespace ui::application_window
@@ -79,7 +176,7 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
 
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
-  pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
+  // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
 
   presets_menu_button->set_popover(*presets_menu_ui);
 

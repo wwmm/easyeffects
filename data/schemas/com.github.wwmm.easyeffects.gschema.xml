@@ -19,6 +19,9 @@
         <key name="window-maximized" type="b">
             <default>false</default>
         </key>
+        <key name="window-fullscreen" type="b">
+            <default>false</default>
+        </key>
         <key name="window-width" type="i">
             <default>0</default>
         </key>
