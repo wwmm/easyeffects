@@ -22,8 +22,8 @@
 EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager)
     : log_tag(std::move(tag)),
       pm(pipe_manager),
-      settings(Gio::Settings::create(schema)),
-      global_settings(Gio::Settings::create("com.github.wwmm.easyeffects")) {
+      settings(g_settings_new(schema.c_str())),
+      global_settings(g_settings_new("com.github.wwmm.easyeffects")) {
   std::string path = "/" + schema + "/";
 
   std::replace(path.begin(), path.end(), '.', '/');
@@ -197,11 +197,18 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, PipeManager
     broadcast_pipeline_latency();
   });
 
-  settings->signal_changed("plugins").connect([&, this](const auto& key) { broadcast_pipeline_latency(); });
+  g_signal_connect(settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<EffectsBase*>(user_data);
+
+                     self->broadcast_pipeline_latency();
+                   }),
+                   this);
 }
 
 EffectsBase::~EffectsBase() {
   util::debug("effects_base: destroyed");
+
+  g_object_unref(settings);
 }
 
 void EffectsBase::activate_filters() {
@@ -219,7 +226,7 @@ void EffectsBase::deactivate_filters() {
 auto EffectsBase::get_pipeline_latency() -> float {
   float total = 0.0F;
 
-  for (const auto& name : settings->get_string_array("plugins")) {
+  for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"))) {
     total += plugins_latency[name];
   }
 

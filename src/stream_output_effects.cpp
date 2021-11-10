@@ -23,12 +23,12 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     : EffectsBase("soe: ", "com.github.wwmm.easyeffects.streamoutputs", pipe_manager) {
   pm->output_device = pm->default_output_device;
 
-  if (settings->get_boolean("use-default-output-device")) {
-    settings->set_string("output-device", pm->output_device.name);
+  if (g_settings_get_boolean(settings, "use-default-output-device") != 0) {
+    g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
   } else {
     auto found = false;
 
-    const auto output_device = settings->get_string("output-device").raw();
+    const auto output_device = std::string(g_settings_get_string(settings, "output-device"));
 
     if (output_device != pm->ee_sink_name) {
       for (const auto& [ts, node] : pm->node_map) {
@@ -43,7 +43,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
     }
 
     if (!found) {
-      settings->set_string("output-device", pm->output_device.name);
+      g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
     }
   }
 
@@ -54,7 +54,7 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
-        settings->set_string("output-device", pm->output_device.name);
+        g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
 
         break;
       }
@@ -66,35 +66,46 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
 
   connect_filters();
 
-  auto reset_filter_connection = [=, this]() {
-    if (global_settings->get_boolean("bypass")) {
-      global_settings->set_boolean("bypass", false);
+  g_signal_connect(settings, "changed::output-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<StreamOutputEffects*>(user_data);
 
-      return;  // filter connected through update_bypass_state
-    }
+                     const auto name = std::string(g_settings_get_string(settings, key));
 
-    set_bypass(false);
-  };
+                     if (name.empty()) {
+                       return;
+                     }
 
-  settings->signal_changed("output-device").connect([=, this](const auto& key) {
-    const auto name = settings->get_string(key).raw();
+                     for (const auto& [ts, node] : self->pm->node_map) {
+                       if (node.name == name) {
+                         self->pm->output_device = node;
 
-    if (name.empty()) {
-      return;
-    }
+                         if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                           g_settings_set_boolean(self->global_settings, "bypass", 0);
 
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.name == name) {
-        pm->output_device = node;
+                           return;  // filter connected through update_bypass_state
+                         }
 
-        reset_filter_connection();
+                         self->set_bypass(false);
 
-        break;
-      }
-    }
-  });
+                         break;
+                       }
+                     }
+                   }),
+                   this);
 
-  settings->signal_changed("plugins").connect([=, this](const auto& key) { reset_filter_connection(); });
+  g_signal_connect(settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<StreamOutputEffects*>(user_data);
+
+                     if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                       g_settings_set_boolean(self->global_settings, "bypass", 0);
+
+                       return;  // filter connected through update_bypass_state
+                     }
+
+                     self->set_bypass(false);
+                   }),
+                   this);
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
@@ -104,13 +115,13 @@ StreamOutputEffects::~StreamOutputEffects() {
 }
 
 void StreamOutputEffects::on_app_added(const NodeInfo node_info) {
-  const auto blocklist = settings->get_string_array("blocklist");
+  const auto blocklist = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
   const auto is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
 
   if (is_blocklisted) {
     pm->disconnect_stream_output(node_info.id);
-  } else if (global_settings->get_boolean("process-all-outputs")) {
+  } else if (g_settings_get_boolean(global_settings, "process-all-outputs") != 0) {
     pm->connect_stream_output(node_info.id);
   }
 }
@@ -148,7 +159,8 @@ void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
-  const auto list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
+  const auto list =
+      (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
 
   uint prev_node_id = pm->ee_sink_node.id;
   uint next_node_id = 0U;

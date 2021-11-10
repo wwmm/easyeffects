@@ -92,7 +92,7 @@ class EffectsBase {
   sigc::signal<void(const float&)> pipeline_latency;
 
  protected:
-  Glib::RefPtr<Gio::Settings> settings, global_settings;
+  GSettings *settings = nullptr, *global_settings = nullptr;
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 

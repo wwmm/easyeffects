@@ -23,12 +23,12 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     : EffectsBase("sie: ", "com.github.wwmm.easyeffects.streaminputs", pipe_manager) {
   pm->input_device = pm->default_input_device;
 
-  if (settings->get_boolean("use-default-input-device")) {
-    settings->set_string("input-device", pm->input_device.name);
+  if (g_settings_get_boolean(settings, "use-default-input-device") != 0) {
+    g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
   } else {
     auto found = false;
 
-    const auto input_device = settings->get_string("input-device").raw();
+    const auto input_device = std::string(g_settings_get_string(settings, "input-device"));
 
     if (input_device != pm->ee_source_name) {
       for (const auto& [ts, node] : pm->node_map) {
@@ -43,7 +43,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
     }
 
     if (!found) {
-      settings->set_string("input-device", pm->input_device.name);
+      g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
     }
   }
 
@@ -54,7 +54,7 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
       if (node.name == PULSE_SOURCE) {
         pm->input_device = node;
 
-        settings->set_string("input-device", pm->input_device.name);
+        g_settings_set_string(settings, "input-device", pm->input_device.name.c_str());
 
         break;
       }
@@ -66,35 +66,46 @@ StreamInputEffects::StreamInputEffects(PipeManager* pipe_manager)
 
   connect_filters();
 
-  auto reset_filter_connection = [=, this]() {
-    if (global_settings->get_boolean("bypass")) {
-      global_settings->set_boolean("bypass", false);
+  g_signal_connect(settings, "changed::input-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<StreamInputEffects*>(user_data);
 
-      return;  // filter connected through update_bypass_state
-    }
+                     const auto name = std::string(g_settings_get_string(settings, key));
 
-    set_bypass(false);
-  };
+                     if (name.empty()) {
+                       return;
+                     }
 
-  settings->signal_changed("input-device").connect([=, this](const auto& key) {
-    const auto name = settings->get_string(key).raw();
+                     for (const auto& [ts, node] : self->pm->node_map) {
+                       if (node.name == name) {
+                         self->pm->input_device = node;
 
-    if (name.empty()) {
-      return;
-    }
+                         if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                           g_settings_set_boolean(self->global_settings, "bypass", 0);
 
-    for (const auto& [ts, node] : pm->node_map) {
-      if (node.name == name) {
-        pm->input_device = node;
+                           return;  // filter connected through update_bypass_state
+                         }
 
-        reset_filter_connection();
+                         self->set_bypass(false);
 
-        break;
-      }
-    }
-  });
+                         break;
+                       }
+                     }
+                   }),
+                   this);
 
-  settings->signal_changed("plugins").connect([=, this](const auto& key) { reset_filter_connection(); });
+  g_signal_connect(settings, "changed::plugins", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<StreamInputEffects*>(user_data);
+
+                     if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
+                       g_settings_set_boolean(self->global_settings, "bypass", 0);
+
+                       return;  // filter connected through update_bypass_state
+                     }
+
+                     self->set_bypass(false);
+                   }),
+                   this);
 }
 
 StreamInputEffects::~StreamInputEffects() {
@@ -104,13 +115,13 @@ StreamInputEffects::~StreamInputEffects() {
 }
 
 void StreamInputEffects::on_app_added(const NodeInfo node_info) {
-  const auto blocklist = settings->get_string_array("blocklist");
+  const auto blocklist = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
 
-  const auto is_blocklisted = std::ranges::find(blocklist, node_info.name.c_str()) != blocklist.end();
+  const auto is_blocklisted = std::ranges::find(blocklist, node_info.name) != blocklist.end();
 
   if (is_blocklisted) {
     pm->disconnect_stream_input(node_info.id);
-  } else if (global_settings->get_boolean("process-all-inputs")) {
+  } else if (g_settings_get_boolean(global_settings, "process-all-inputs") != 0) {
     pm->connect_stream_input(node_info.id);
   }
 }
@@ -158,7 +169,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     return;
   }
 
-  const auto list = (bypass) ? std::vector<Glib::ustring>() : settings->get_string_array("plugins");
+  const auto list =
+      (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
 
   auto mic_linked = false;
 
