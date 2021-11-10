@@ -21,6 +21,7 @@
 
 #include <adwaita.h>
 #include <glib/gi18n.h>
+#include <string>
 #include "config.h"
 #include "pipe_manager.hpp"
 #include "presets_manager.hpp"

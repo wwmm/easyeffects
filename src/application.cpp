@@ -22,6 +22,8 @@
 
 namespace app {
 
+using namespace std::string_literals;
+
 auto constexpr log_tag = "application: ";
 
 struct _Application {
@@ -58,7 +60,7 @@ void update_bypass_state(Application* self) {
   self->soe->set_bypass(state != 0);
   self->sie->set_bypass(state != 0);
 
-  util::info(std::string(log_tag) + ((state) != 0 ? "enabling" : "disabling") + " global bypass");
+  util::info(log_tag + ((state) != 0 ? "enabling"s : "disabling"s) + " global bypass"s);
 }
 
 void application_class_init(ApplicationClass* klass) {
@@ -87,11 +89,11 @@ void application_class_init(ApplicationClass* klass) {
     } else if (g_variant_dict_contains(options, "reset") != 0) {
       g_settings_reset(self->settings, "");
 
-      util::info(std::string(log_tag) + "All settings were reset");
+      util::info(log_tag + "All settings were reset"s);
     } else if (g_variant_dict_contains(options, "hide-window") != 0) {
       hide_all_windows(gapp);
 
-      util::info(std::string(log_tag) + "Hiding the window...");
+      util::info(log_tag + "Hiding the window..."s);
     } else if (g_variant_dict_contains(options, "bypass") != 0) {
       if (int bypass_arg = 2; g_variant_dict_lookup(options, "bypass", "i", &bypass_arg)) {
         if (bypass_arg == 1) {
@@ -215,7 +217,7 @@ void application_class_init(ApplicationClass* klass) {
     self->pm = nullptr;
     self->presets_manager = nullptr;
 
-    util::debug(std::string(log_tag) + "shutting down...");
+    util::debug(log_tag + "shutting down..."s);
   };
 }
 
@@ -265,8 +267,7 @@ void application_init(Application* self) {
       return;
     }
 
-    util::debug(std::string(log_tag) + "device " + device.name +
-                " has changed its input route to: " + device.input_route_name);
+    util::debug(log_tag + "device "s + device.name + " has changed its input route to: "s + device.input_route_name);
 
     NodeInfo target_node;
 
@@ -282,11 +283,10 @@ void application_init(Application* self) {
       if (target_node.name == g_settings_get_string(self->sie_settings, "input-device")) {
         self->presets_manager->autoload(PresetType::input, target_node.name, device.input_route_name);
       } else {
-        util::debug(std::string(log_tag) +
-                    "input autoloading: the target node name does not match the input device name");
+        util::debug(log_tag + "input autoloading: the target node name does not match the input device name"s);
       }
     } else {
-      util::debug(std::string(log_tag) + "input autoloading: could not find the target node");
+      util::debug(log_tag + "input autoloading: could not find the target node"s);
     }
   });
 
@@ -295,8 +295,7 @@ void application_init(Application* self) {
       return;
     }
 
-    util::debug(std::string(log_tag) + "device " + device.name +
-                " has changed its output route to: " + device.output_route_name);
+    util::debug(log_tag + "device "s + device.name + " has changed its output route to: "s + device.output_route_name);
 
     NodeInfo target_node;
 
@@ -314,11 +313,10 @@ void application_init(Application* self) {
       if (target_node.name == g_settings_get_string(self->soe_settings, "output-device")) {
         self->presets_manager->autoload(PresetType::output, target_node.name, device.output_route_name);
       } else {
-        util::debug(std::string(log_tag) +
-                    "output autoloading: the target node name does not match the output device name");
+        util::debug(log_tag + "output autoloading: the target node name does not match the output device name"s);
       }
     } else {
-      util::debug(std::string(log_tag) + "output autoloading: could not find the target node");
+      util::debug(log_tag + "output autoloading: could not find the target node"s);
     }
   });
 
