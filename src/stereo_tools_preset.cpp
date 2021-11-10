@@ -20,56 +20,52 @@
 #include "stereo_tools_preset.hpp"
 
 StereoToolsPreset::StereoToolsPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.stereotools",
-                                         "/com/github/wwmm/easyeffects/streaminputs/stereotools/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.stereotools",
+                                            "/com/github/wwmm/easyeffects/streaminputs/stereotools/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.stereotools",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/stereotools/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.stereotools",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/stereotools/");
 }
 
-void StereoToolsPreset::save(nlohmann::json& json,
-                             const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["stereo_tools"]["input-gain"] = settings->get_double("input-gain");
+void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["stereo_tools"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["stereo_tools"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["stereo_tools"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["stereo_tools"]["balance-in"] = settings->get_double("balance-in");
+  json[section]["stereo_tools"]["balance-in"] = g_settings_get_double(settings, "balance-in");
 
-  json[section]["stereo_tools"]["balance-out"] = settings->get_double("balance-out");
+  json[section]["stereo_tools"]["balance-out"] = g_settings_get_double(settings, "balance-out");
 
-  json[section]["stereo_tools"]["softclip"] = settings->get_boolean("softclip");
+  json[section]["stereo_tools"]["softclip"] = g_settings_get_boolean(settings, "softclip");
 
-  json[section]["stereo_tools"]["mutel"] = settings->get_boolean("mutel");
+  json[section]["stereo_tools"]["mutel"] = g_settings_get_boolean(settings, "mutel");
 
-  json[section]["stereo_tools"]["muter"] = settings->get_boolean("muter");
+  json[section]["stereo_tools"]["muter"] = g_settings_get_boolean(settings, "muter");
 
-  json[section]["stereo_tools"]["phasel"] = settings->get_boolean("phasel");
+  json[section]["stereo_tools"]["phasel"] = g_settings_get_boolean(settings, "phasel");
 
-  json[section]["stereo_tools"]["phaser"] = settings->get_boolean("phaser");
+  json[section]["stereo_tools"]["phaser"] = g_settings_get_boolean(settings, "phaser");
 
-  json[section]["stereo_tools"]["mode"] = settings->get_string("mode").c_str();
+  json[section]["stereo_tools"]["mode"] = g_settings_get_string(settings, "mode");
 
-  json[section]["stereo_tools"]["side-level"] = settings->get_double("slev");
+  json[section]["stereo_tools"]["side-level"] = g_settings_get_double(settings, "slev");
 
-  json[section]["stereo_tools"]["side-balance"] = settings->get_double("sbal");
+  json[section]["stereo_tools"]["side-balance"] = g_settings_get_double(settings, "sbal");
 
-  json[section]["stereo_tools"]["middle-level"] = settings->get_double("mlev");
+  json[section]["stereo_tools"]["middle-level"] = g_settings_get_double(settings, "mlev");
 
-  json[section]["stereo_tools"]["middle-panorama"] = settings->get_double("mpan");
+  json[section]["stereo_tools"]["middle-panorama"] = g_settings_get_double(settings, "mpan");
 
-  json[section]["stereo_tools"]["stereo-base"] = settings->get_double("stereo-base");
+  json[section]["stereo_tools"]["stereo-base"] = g_settings_get_double(settings, "stereo-base");
 
-  json[section]["stereo_tools"]["delay"] = settings->get_double("delay");
+  json[section]["stereo_tools"]["delay"] = g_settings_get_double(settings, "delay");
 
-  json[section]["stereo_tools"]["sc-level"] = settings->get_double("sc-level");
+  json[section]["stereo_tools"]["sc-level"] = g_settings_get_double(settings, "sc-level");
 
-  json[section]["stereo_tools"]["stereo-phase"] = settings->get_double("stereo-phase");
+  json[section]["stereo_tools"]["stereo-phase"] = g_settings_get_double(settings, "stereo-phase");
 }
 
-void StereoToolsPreset::load(const nlohmann::json& json,
-                             const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {
+void StereoToolsPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("stereo_tools"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("stereo_tools"), settings, "output-gain", "output-gain");

@@ -20,8 +20,9 @@
 #ifndef PLUGIN_PRESET_BASE_HPP
 #define PLUGIN_PRESET_BASE_HPP
 
-#include <giomm.h>
+#include <gio/gio.h>
 #include <nlohmann/json.hpp>
+#include <string>
 #include "preset_type.hpp"
 #include "util.hpp"
 
@@ -32,7 +33,11 @@ class PluginPresetBase {
   auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
   PluginPresetBase(const PluginPresetBase&&) = delete;
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
-  virtual ~PluginPresetBase() = default;
+
+  virtual ~PluginPresetBase() {
+    g_object_unref(input_settings);
+    g_object_unref(output_settings);
+  };
 
   void write(PresetType preset_type, nlohmann::json& json) {
     try {
@@ -65,52 +70,78 @@ class PluginPresetBase {
   }
 
  protected:
-  Glib::RefPtr<Gio::Settings> input_settings, output_settings;
+  GSettings *input_settings = nullptr, *output_settings = nullptr;
 
-  virtual void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) = 0;
+  virtual void save(nlohmann::json& json, const std::string& section, GSettings* settings) = 0;
 
-  virtual void load(const nlohmann::json& json,
-                    const std::string& section,
-                    const Glib::RefPtr<Gio::Settings>& settings) = 0;
+  virtual void load(const nlohmann::json& json, const std::string& section, GSettings* settings) = 0;
 
   template <typename T>
-  auto get_default(const Glib::RefPtr<Gio::Settings>& settings, const Glib::ustring& key) -> T {
-    Glib::Variant<T> value;
+  auto get_default(GSettings* settings, const std::string& key) -> T {
+    GVariant* variant = g_settings_get_default_value(settings, key.c_str());
 
-    settings->get_default_value(key, value);
+    T value{};
 
-    return value.get();
+    if constexpr (std::is_same_v<T, double>) {
+      value = g_variant_get_double(variant);
+    } else if constexpr (std::is_same_v<T, int>) {
+      value = g_variant_get_int32(variant);
+    } else if constexpr (std::is_same_v<T, bool>) {
+      value = g_variant_get_boolean(variant);
+    } else if constexpr (std::is_same_v<T, gchar*>) {
+      gsize* length = nullptr;
+
+      value = g_variant_get_string(variant, length);
+    }
+
+    g_variant_unref(variant);
+
+    return value;
   }
 
   template <typename T>
   void update_key(const nlohmann::json& json,
-                  const Glib::RefPtr<Gio::Settings>& settings,
-                  const Glib::ustring& key,
+                  GSettings* settings,
+                  const std::string& key,
                   const std::string& json_key) {
-    Glib::Variant<T> aux;
+    const T new_value = json.value(json_key, get_default<T>(settings, key));
 
-    settings->get_value(key, aux);
+    T current_value;
 
-    const T& current_value = aux.get();
-
-    const T& new_value = json.value(json_key, get_default<T>(settings, key));
+    if constexpr (std::is_same_v<T, double>) {
+      current_value = g_settings_get_double(settings, key.c_str());
+    } else if constexpr (std::is_same_v<T, int>) {
+      current_value = g_settings_get_int(settings, key.c_str());
+    } else if constexpr (std::is_same_v<T, bool>) {
+      current_value = g_settings_get_boolean(settings, key.c_str());
+    } else if constexpr (std::is_same_v<T, gchar*>) {
+      current_value = g_settings_get_string(settings, key.c_str());
+    }
 
     if (is_different(current_value, new_value)) {
-      settings->set_value(key, Glib::Variant<T>::create(new_value));
+      if constexpr (std::is_same_v<T, double>) {
+        g_settings_set_double(settings, key.c_str(), new_value);
+      } else if constexpr (std::is_same_v<T, int>) {
+        g_settings_set_int(settings, key.c_str(), new_value);
+      } else if constexpr (std::is_same_v<T, bool>) {
+        g_settings_set_boolean(settings, key.c_str(), new_value);
+      } else if constexpr (std::is_same_v<T, gchar*>) {
+        g_settings_set_string(settings, key.c_str(), new_value);
+      }
     }
   }
 
   void update_string_key(const nlohmann::json& json,
-                         const Glib::RefPtr<Gio::Settings>& settings,
+                         GSettings* settings,
                          const Glib::ustring& key,
                          const std::string& json_key) {
-    const auto& current_value = settings->get_string(key);
+    // const auto& current_value = settings->get_string(key);
 
-    const Glib::ustring& new_value = json.value(json_key, get_default<std::string>(settings, key));
+    // const Glib::ustring& new_value = json.value(json_key, get_default<std::string>(settings, key));
 
-    if (current_value != new_value) {
-      settings->set_string(key, new_value);
-    }
+    // if (current_value != new_value) {
+    //   settings->set_string(key, new_value);
+    // }
   }
 
  private:
@@ -120,6 +151,10 @@ class PluginPresetBase {
 
   template <typename T>
   auto is_different(const T& a, const T& b) -> bool {
+    if constexpr (std::is_same_v<T, gchar*>) {
+      return static_cast<bool>(g_strcmp0(a, b) == 0);
+    }
+
     return a != b;
   }
 };

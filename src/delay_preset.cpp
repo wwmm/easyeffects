@@ -21,25 +21,23 @@
 
 DelayPreset::DelayPreset() {
   input_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.delay", "/com/github/wwmm/easyeffects/streaminputs/delay/");
+      g_settings_new_with_path("com.github.wwmm.easyeffects.delay", "/com/github/wwmm/easyeffects/streaminputs/delay/");
 
-  output_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.delay", "/com/github/wwmm/easyeffects/streamoutputs/delay/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.delay",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/delay/");
 }
 
-void DelayPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["delay"]["input-gain"] = settings->get_double("input-gain");
+void DelayPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["delay"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["delay"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["delay"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["delay"]["time-l"] = settings->get_double("time-l");
+  json[section]["delay"]["time-l"] = g_settings_get_double(settings, "time-l");
 
-  json[section]["delay"]["time-r"] = settings->get_double("time-r");
+  json[section]["delay"]["time-r"] = g_settings_get_double(settings, "time-r");
 }
 
-void DelayPreset::load(const nlohmann::json& json,
-                       const std::string& section,
-                       const Glib::RefPtr<Gio::Settings>& settings) {
+void DelayPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("delay"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("delay"), settings, "output-gain", "output-gain");

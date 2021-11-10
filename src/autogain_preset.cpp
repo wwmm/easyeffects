@@ -20,28 +20,24 @@
 #include "autogain_preset.hpp"
 
 AutoGainPreset::AutoGainPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
-                                         "/com/github/wwmm/easyeffects/streaminputs/autogain/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.autogain",
+                                            "/com/github/wwmm/easyeffects/streaminputs/autogain/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.autogain",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/autogain/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.autogain",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/autogain/");
 }
 
-void AutoGainPreset::save(nlohmann::json& json,
-                          const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["autogain"]["input-gain"] = settings->get_double("input-gain");
+void AutoGainPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["autogain"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["autogain"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["autogain"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["autogain"]["target"] = settings->get_double("target");
+  json[section]["autogain"]["target"] = g_settings_get_double(settings, "target");
 
-  json[section]["autogain"]["reference"] = settings->get_string("reference").c_str();
+  json[section]["autogain"]["reference"] = g_settings_get_string(settings, "reference");
 }
 
-void AutoGainPreset::load(const nlohmann::json& json,
-                          const std::string& section,
-                          const Glib::RefPtr<Gio::Settings>& settings) {
+void AutoGainPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("autogain"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("autogain"), settings, "output-gain", "output-gain");

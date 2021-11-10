@@ -21,39 +21,37 @@
 
 GatePreset::GatePreset() {
   input_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streaminputs/gate/");
+      g_settings_new_with_path("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streaminputs/gate/");
 
   output_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streamoutputs/gate/");
+      g_settings_new_with_path("com.github.wwmm.easyeffects.gate", "/com/github/wwmm/easyeffects/streamoutputs/gate/");
 }
 
-void GatePreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["gate"]["input-gain"] = settings->get_double("input-gain");
+void GatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["gate"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["gate"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["gate"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["gate"]["detection"] = settings->get_string("detection").c_str();
+  json[section]["gate"]["detection"] = g_settings_get_string(settings, "detection");
 
-  json[section]["gate"]["stereo-link"] = settings->get_string("stereo-link").c_str();
+  json[section]["gate"]["stereo-link"] = g_settings_get_string(settings, "stereo-link");
 
-  json[section]["gate"]["range"] = settings->get_double("range");
+  json[section]["gate"]["range"] = g_settings_get_double(settings, "range");
 
-  json[section]["gate"]["attack"] = settings->get_double("attack");
+  json[section]["gate"]["attack"] = g_settings_get_double(settings, "attack");
 
-  json[section]["gate"]["release"] = settings->get_double("release");
+  json[section]["gate"]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["gate"]["threshold"] = settings->get_double("threshold");
+  json[section]["gate"]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["gate"]["ratio"] = settings->get_double("ratio");
+  json[section]["gate"]["ratio"] = g_settings_get_double(settings, "ratio");
 
-  json[section]["gate"]["knee"] = settings->get_double("knee");
+  json[section]["gate"]["knee"] = g_settings_get_double(settings, "knee");
 
-  json[section]["gate"]["makeup"] = settings->get_double("makeup");
+  json[section]["gate"]["makeup"] = g_settings_get_double(settings, "makeup");
 }
 
-void GatePreset::load(const nlohmann::json& json,
-                      const std::string& section,
-                      const Glib::RefPtr<Gio::Settings>& settings) {
+void GatePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("gate"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("gate"), settings, "output-gain", "output-gain");

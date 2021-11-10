@@ -20,6 +20,7 @@
 #ifndef PRESETS_MANAGER_HPP
 #define PRESETS_MANAGER_HPP
 
+#include <gio/gio.h>
 #include <sigc++/sigc++.h>
 #include <algorithm>
 #include <filesystem>
@@ -40,8 +41,6 @@
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
-#include "giomm/file.h"
-#include "giomm/filemonitor.h"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"

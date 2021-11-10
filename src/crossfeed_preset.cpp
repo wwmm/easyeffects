@@ -20,28 +20,24 @@
 #include "crossfeed_preset.hpp"
 
 CrossfeedPreset::CrossfeedPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crossfeed",
-                                         "/com/github/wwmm/easyeffects/streaminputs/crossfeed/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed",
+                                            "/com/github/wwmm/easyeffects/streaminputs/crossfeed/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crossfeed",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/crossfeed/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crossfeed",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/crossfeed/");
 }
 
-void CrossfeedPreset::save(nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["crossfeed"]["input-gain"] = settings->get_double("input-gain");
+void CrossfeedPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["crossfeed"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["crossfeed"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["crossfeed"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["crossfeed"]["fcut"] = settings->get_int("fcut");
+  json[section]["crossfeed"]["fcut"] = g_settings_get_int(settings, "fcut");
 
-  json[section]["crossfeed"]["feed"] = settings->get_double("feed");
+  json[section]["crossfeed"]["feed"] = g_settings_get_double(settings, "feed");
 }
 
-void CrossfeedPreset::load(const nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
+void CrossfeedPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("crossfeed"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("crossfeed"), settings, "output-gain", "output-gain");

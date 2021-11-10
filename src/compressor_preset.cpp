@@ -20,64 +20,60 @@
 #include "compressor_preset.hpp"
 
 CompressorPreset::CompressorPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
-                                         "/com/github/wwmm/easyeffects/streaminputs/compressor/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor",
+                                            "/com/github/wwmm/easyeffects/streaminputs/compressor/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.compressor",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/compressor/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.compressor",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/compressor/");
 }
 
-void CompressorPreset::save(nlohmann::json& json,
-                            const std::string& section,
-                            const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["compressor"]["input-gain"] = settings->get_double("input-gain");
+void CompressorPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["compressor"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["compressor"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["compressor"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["compressor"]["mode"] = settings->get_string("mode").c_str();
+  json[section]["compressor"]["mode"] = g_settings_get_string(settings, "mode");
 
-  json[section]["compressor"]["attack"] = settings->get_double("attack");
+  json[section]["compressor"]["attack"] = g_settings_get_double(settings, "attack");
 
-  json[section]["compressor"]["release"] = settings->get_double("release");
+  json[section]["compressor"]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["compressor"]["release-threshold"] = settings->get_double("release-threshold");
+  json[section]["compressor"]["release-threshold"] = g_settings_get_double(settings, "release-threshold");
 
-  json[section]["compressor"]["threshold"] = settings->get_double("threshold");
+  json[section]["compressor"]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["compressor"]["ratio"] = settings->get_double("ratio");
+  json[section]["compressor"]["ratio"] = g_settings_get_double(settings, "ratio");
 
-  json[section]["compressor"]["knee"] = settings->get_double("knee");
+  json[section]["compressor"]["knee"] = g_settings_get_double(settings, "knee");
 
-  json[section]["compressor"]["makeup"] = settings->get_double("makeup");
+  json[section]["compressor"]["makeup"] = g_settings_get_double(settings, "makeup");
 
-  json[section]["compressor"]["boost-threshold"] = settings->get_double("boost-threshold");
+  json[section]["compressor"]["boost-threshold"] = g_settings_get_double(settings, "boost-threshold");
 
-  json[section]["compressor"]["boost-amount"] = settings->get_double("boost-amount");
+  json[section]["compressor"]["boost-amount"] = g_settings_get_double(settings, "boost-amount");
 
-  json[section]["compressor"]["sidechain"]["type"] = settings->get_string("sidechain-type").c_str();
+  json[section]["compressor"]["sidechain"]["type"] = g_settings_get_string(settings, "sidechain-type");
 
-  json[section]["compressor"]["sidechain"]["mode"] = settings->get_string("sidechain-mode").c_str();
+  json[section]["compressor"]["sidechain"]["mode"] = g_settings_get_string(settings, "sidechain-mode");
 
-  json[section]["compressor"]["sidechain"]["source"] = settings->get_string("sidechain-source").c_str();
+  json[section]["compressor"]["sidechain"]["source"] = g_settings_get_string(settings, "sidechain-source");
 
-  json[section]["compressor"]["sidechain"]["preamp"] = settings->get_double("sidechain-preamp");
+  json[section]["compressor"]["sidechain"]["preamp"] = g_settings_get_double(settings, "sidechain-preamp");
 
-  json[section]["compressor"]["sidechain"]["reactivity"] = settings->get_double("sidechain-reactivity");
+  json[section]["compressor"]["sidechain"]["reactivity"] = g_settings_get_double(settings, "sidechain-reactivity");
 
-  json[section]["compressor"]["sidechain"]["lookahead"] = settings->get_double("sidechain-lookahead");
+  json[section]["compressor"]["sidechain"]["lookahead"] = g_settings_get_double(settings, "sidechain-lookahead");
 
-  json[section]["compressor"]["hpf-mode"] = settings->get_string("hpf-mode").c_str();
+  json[section]["compressor"]["hpf-mode"] = g_settings_get_string(settings, "hpf-mode");
 
-  json[section]["compressor"]["hpf-frequency"] = settings->get_double("hpf-frequency");
+  json[section]["compressor"]["hpf-frequency"] = g_settings_get_double(settings, "hpf-frequency");
 
-  json[section]["compressor"]["lpf-mode"] = settings->get_string("lpf-mode").c_str();
+  json[section]["compressor"]["lpf-mode"] = g_settings_get_string(settings, "lpf-mode");
 
-  json[section]["compressor"]["lpf-frequency"] = settings->get_double("lpf-frequency");
+  json[section]["compressor"]["lpf-frequency"] = g_settings_get_double(settings, "lpf-frequency");
 }
 
-void CompressorPreset::load(const nlohmann::json& json,
-                            const std::string& section,
-                            const Glib::RefPtr<Gio::Settings>& settings) {
+void CompressorPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("compressor"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("compressor"), settings, "output-gain", "output-gain");

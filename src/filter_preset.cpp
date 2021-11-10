@@ -20,30 +20,28 @@
 #include "filter_preset.hpp"
 
 FilterPreset::FilterPreset() {
-  input_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.filter", "/com/github/wwmm/easyeffects/streaminputs/filter/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter",
+                                            "/com/github/wwmm/easyeffects/streaminputs/filter/");
 
-  output_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.filter", "/com/github/wwmm/easyeffects/streamoutputs/filter/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.filter",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/filter/");
 }
 
-void FilterPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["filter"]["input-gain"] = settings->get_double("input-gain");
+void FilterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["filter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["filter"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["filter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["filter"]["frequency"] = settings->get_double("frequency");
+  json[section]["filter"]["frequency"] = g_settings_get_double(settings, "frequency");
 
-  json[section]["filter"]["resonance"] = settings->get_double("resonance");
+  json[section]["filter"]["resonance"] = g_settings_get_double(settings, "resonance");
 
-  json[section]["filter"]["mode"] = settings->get_string("mode").c_str();
+  json[section]["filter"]["mode"] = g_settings_get_string(settings, "mode");
 
-  json[section]["filter"]["inertia"] = settings->get_double("inertia");
+  json[section]["filter"]["inertia"] = g_settings_get_double(settings, "inertia");
 }
 
-void FilterPreset::load(const nlohmann::json& json,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
+void FilterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("filter"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("filter"), settings, "output-gain", "output-gain");

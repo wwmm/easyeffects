@@ -20,36 +20,32 @@
 #include "bass_enhancer_preset.hpp"
 
 BassEnhancerPreset::BassEnhancerPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.bassenhancer",
-                                         "/com/github/wwmm/easyeffects/streaminputs/bassenhancer/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer",
+                                            "/com/github/wwmm/easyeffects/streaminputs/bassenhancer/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.bassenhancer",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/bassenhancer/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassenhancer",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/bassenhancer/");
 }
 
-void BassEnhancerPreset::save(nlohmann::json& json,
-                              const std::string& section,
-                              const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["bass_enhancer"]["input-gain"] = settings->get_double("input-gain");
+void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["bass_enhancer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["bass_enhancer"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["bass_enhancer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["bass_enhancer"]["amount"] = settings->get_double("amount");
+  json[section]["bass_enhancer"]["amount"] = g_settings_get_double(settings, "amount");
 
-  json[section]["bass_enhancer"]["harmonics"] = settings->get_double("harmonics");
+  json[section]["bass_enhancer"]["harmonics"] = g_settings_get_double(settings, "harmonics");
 
-  json[section]["bass_enhancer"]["scope"] = settings->get_double("scope");
+  json[section]["bass_enhancer"]["scope"] = g_settings_get_double(settings, "scope");
 
-  json[section]["bass_enhancer"]["floor"] = settings->get_double("floor");
+  json[section]["bass_enhancer"]["floor"] = g_settings_get_double(settings, "floor");
 
-  json[section]["bass_enhancer"]["blend"] = settings->get_double("blend");
+  json[section]["bass_enhancer"]["blend"] = g_settings_get_double(settings, "blend");
 
-  json[section]["bass_enhancer"]["floor-active"] = settings->get_boolean("floor-active");
+  json[section]["bass_enhancer"]["floor-active"] = g_settings_get_boolean(settings, "floor-active");
 }
 
-void BassEnhancerPreset::load(const nlohmann::json& json,
-                              const std::string& section,
-                              const Glib::RefPtr<Gio::Settings>& settings) {
+void BassEnhancerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("bass_enhancer"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("bass_enhancer"), settings, "output-gain", "output-gain");

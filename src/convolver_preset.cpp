@@ -20,28 +20,24 @@
 #include "convolver_preset.hpp"
 
 ConvolverPreset::ConvolverPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
-                                         "/com/github/wwmm/easyeffects/streaminputs/convolver/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver",
+                                            "/com/github/wwmm/easyeffects/streaminputs/convolver/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.convolver",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/convolver/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.convolver",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/convolver/");
 }
 
-void ConvolverPreset::save(nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["convolver"]["input-gain"] = settings->get_double("input-gain");
+void ConvolverPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["convolver"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["convolver"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["convolver"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["convolver"]["kernel-path"] = settings->get_string("kernel-path").c_str();
+  json[section]["convolver"]["kernel-path"] = g_settings_get_string(settings, "kernel-path");
 
-  json[section]["convolver"]["ir-width"] = settings->get_int("ir-width");
+  json[section]["convolver"]["ir-width"] = g_settings_get_int(settings, "ir-width");
 }
 
-void ConvolverPreset::load(const nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
+void ConvolverPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("convolver"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("convolver"), settings, "output-gain", "output-gain");

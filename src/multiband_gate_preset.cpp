@@ -20,120 +20,116 @@
 #include "multiband_gate_preset.hpp"
 
 MultibandGatePreset::MultibandGatePreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
-                                         "/com/github/wwmm/easyeffects/streaminputs/multibandgate/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate",
+                                            "/com/github/wwmm/easyeffects/streaminputs/multibandgate/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.multibandgate",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.multibandgate",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/multibandgate/");
 }
 
-void MultibandGatePreset::save(nlohmann::json& json,
-                               const std::string& section,
-                               const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["multiband_gate"]["input-gain"] = settings->get_double("input-gain");
+void MultibandGatePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["multiband_gate"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["multiband_gate"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["multiband_gate"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["multiband_gate"]["freq0"] = settings->get_double("freq0");
+  json[section]["multiband_gate"]["freq0"] = g_settings_get_double(settings, "freq0");
 
-  json[section]["multiband_gate"]["freq1"] = settings->get_double("freq1");
+  json[section]["multiband_gate"]["freq1"] = g_settings_get_double(settings, "freq1");
 
-  json[section]["multiband_gate"]["freq2"] = settings->get_double("freq2");
+  json[section]["multiband_gate"]["freq2"] = g_settings_get_double(settings, "freq2");
 
-  json[section]["multiband_gate"]["mode"] = settings->get_string("mode").c_str();
+  json[section]["multiband_gate"]["mode"] = g_settings_get_string(settings, "mode");
 
   // sub band
 
-  json[section]["multiband_gate"]["subband"]["reduction"] = settings->get_double("range0");
+  json[section]["multiband_gate"]["subband"]["reduction"] = g_settings_get_double(settings, "range0");
 
-  json[section]["multiband_gate"]["subband"]["threshold"] = settings->get_double("threshold0");
+  json[section]["multiband_gate"]["subband"]["threshold"] = g_settings_get_double(settings, "threshold0");
 
-  json[section]["multiband_gate"]["subband"]["ratio"] = settings->get_double("ratio0");
+  json[section]["multiband_gate"]["subband"]["ratio"] = g_settings_get_double(settings, "ratio0");
 
-  json[section]["multiband_gate"]["subband"]["attack"] = settings->get_double("attack0");
+  json[section]["multiband_gate"]["subband"]["attack"] = g_settings_get_double(settings, "attack0");
 
-  json[section]["multiband_gate"]["subband"]["release"] = settings->get_double("release0");
+  json[section]["multiband_gate"]["subband"]["release"] = g_settings_get_double(settings, "release0");
 
-  json[section]["multiband_gate"]["subband"]["makeup"] = settings->get_double("makeup0");
+  json[section]["multiband_gate"]["subband"]["makeup"] = g_settings_get_double(settings, "makeup0");
 
-  json[section]["multiband_gate"]["subband"]["knee"] = settings->get_double("knee0");
+  json[section]["multiband_gate"]["subband"]["knee"] = g_settings_get_double(settings, "knee0");
 
-  json[section]["multiband_gate"]["subband"]["detection"] = settings->get_string("detection0").c_str();
+  json[section]["multiband_gate"]["subband"]["detection"] = g_settings_get_string(settings, "detection0");
 
-  json[section]["multiband_gate"]["subband"]["bypass"] = settings->get_boolean("bypass0");
+  json[section]["multiband_gate"]["subband"]["bypass"] = g_settings_get_boolean(settings, "bypass0");
 
-  json[section]["multiband_gate"]["subband"]["solo"] = settings->get_boolean("solo0");
+  json[section]["multiband_gate"]["subband"]["solo"] = g_settings_get_boolean(settings, "solo0");
 
   // low band
 
-  json[section]["multiband_gate"]["lowband"]["reduction"] = settings->get_double("range1");
+  json[section]["multiband_gate"]["lowband"]["reduction"] = g_settings_get_double(settings, "range1");
 
-  json[section]["multiband_gate"]["lowband"]["threshold"] = settings->get_double("threshold1");
+  json[section]["multiband_gate"]["lowband"]["threshold"] = g_settings_get_double(settings, "threshold1");
 
-  json[section]["multiband_gate"]["lowband"]["ratio"] = settings->get_double("ratio1");
+  json[section]["multiband_gate"]["lowband"]["ratio"] = g_settings_get_double(settings, "ratio1");
 
-  json[section]["multiband_gate"]["lowband"]["attack"] = settings->get_double("attack1");
+  json[section]["multiband_gate"]["lowband"]["attack"] = g_settings_get_double(settings, "attack1");
 
-  json[section]["multiband_gate"]["lowband"]["release"] = settings->get_double("release1");
+  json[section]["multiband_gate"]["lowband"]["release"] = g_settings_get_double(settings, "release1");
 
-  json[section]["multiband_gate"]["lowband"]["makeup"] = settings->get_double("makeup1");
+  json[section]["multiband_gate"]["lowband"]["makeup"] = g_settings_get_double(settings, "makeup1");
 
-  json[section]["multiband_gate"]["lowband"]["knee"] = settings->get_double("knee1");
+  json[section]["multiband_gate"]["lowband"]["knee"] = g_settings_get_double(settings, "knee1");
 
-  json[section]["multiband_gate"]["lowband"]["detection"] = settings->get_string("detection1").c_str();
+  json[section]["multiband_gate"]["lowband"]["detection"] = g_settings_get_string(settings, "detection1");
 
-  json[section]["multiband_gate"]["lowband"]["bypass"] = settings->get_boolean("bypass1");
+  json[section]["multiband_gate"]["lowband"]["bypass"] = g_settings_get_boolean(settings, "bypass1");
 
-  json[section]["multiband_gate"]["lowband"]["solo"] = settings->get_boolean("solo1");
+  json[section]["multiband_gate"]["lowband"]["solo"] = g_settings_get_boolean(settings, "solo1");
 
   // mid band
 
-  json[section]["multiband_gate"]["midband"]["reduction"] = settings->get_double("range2");
+  json[section]["multiband_gate"]["midband"]["reduction"] = g_settings_get_double(settings, "range2");
 
-  json[section]["multiband_gate"]["midband"]["threshold"] = settings->get_double("threshold2");
+  json[section]["multiband_gate"]["midband"]["threshold"] = g_settings_get_double(settings, "threshold2");
 
-  json[section]["multiband_gate"]["midband"]["ratio"] = settings->get_double("ratio2");
+  json[section]["multiband_gate"]["midband"]["ratio"] = g_settings_get_double(settings, "ratio2");
 
-  json[section]["multiband_gate"]["midband"]["attack"] = settings->get_double("attack2");
+  json[section]["multiband_gate"]["midband"]["attack"] = g_settings_get_double(settings, "attack2");
 
-  json[section]["multiband_gate"]["midband"]["release"] = settings->get_double("release2");
+  json[section]["multiband_gate"]["midband"]["release"] = g_settings_get_double(settings, "release2");
 
-  json[section]["multiband_gate"]["midband"]["makeup"] = settings->get_double("makeup2");
+  json[section]["multiband_gate"]["midband"]["makeup"] = g_settings_get_double(settings, "makeup2");
 
-  json[section]["multiband_gate"]["midband"]["knee"] = settings->get_double("knee2");
+  json[section]["multiband_gate"]["midband"]["knee"] = g_settings_get_double(settings, "knee2");
 
-  json[section]["multiband_gate"]["midband"]["detection"] = settings->get_string("detection2").c_str();
+  json[section]["multiband_gate"]["midband"]["detection"] = g_settings_get_string(settings, "detection2");
 
-  json[section]["multiband_gate"]["midband"]["bypass"] = settings->get_boolean("bypass2");
+  json[section]["multiband_gate"]["midband"]["bypass"] = g_settings_get_boolean(settings, "bypass2");
 
-  json[section]["multiband_gate"]["midband"]["solo"] = settings->get_boolean("solo2");
+  json[section]["multiband_gate"]["midband"]["solo"] = g_settings_get_boolean(settings, "solo2");
 
   // high band
 
-  json[section]["multiband_gate"]["highband"]["reduction"] = settings->get_double("range3");
+  json[section]["multiband_gate"]["highband"]["reduction"] = g_settings_get_double(settings, "range3");
 
-  json[section]["multiband_gate"]["highband"]["threshold"] = settings->get_double("threshold3");
+  json[section]["multiband_gate"]["highband"]["threshold"] = g_settings_get_double(settings, "threshold3");
 
-  json[section]["multiband_gate"]["highband"]["ratio"] = settings->get_double("ratio3");
+  json[section]["multiband_gate"]["highband"]["ratio"] = g_settings_get_double(settings, "ratio3");
 
-  json[section]["multiband_gate"]["highband"]["attack"] = settings->get_double("attack3");
+  json[section]["multiband_gate"]["highband"]["attack"] = g_settings_get_double(settings, "attack3");
 
-  json[section]["multiband_gate"]["highband"]["release"] = settings->get_double("release3");
+  json[section]["multiband_gate"]["highband"]["release"] = g_settings_get_double(settings, "release3");
 
-  json[section]["multiband_gate"]["highband"]["makeup"] = settings->get_double("makeup3");
+  json[section]["multiband_gate"]["highband"]["makeup"] = g_settings_get_double(settings, "makeup3");
 
-  json[section]["multiband_gate"]["highband"]["knee"] = settings->get_double("knee3");
+  json[section]["multiband_gate"]["highband"]["knee"] = g_settings_get_double(settings, "knee3");
 
-  json[section]["multiband_gate"]["highband"]["detection"] = settings->get_string("detection3").c_str();
+  json[section]["multiband_gate"]["highband"]["detection"] = g_settings_get_string(settings, "detection3");
 
-  json[section]["multiband_gate"]["highband"]["bypass"] = settings->get_boolean("bypass3");
+  json[section]["multiband_gate"]["highband"]["bypass"] = g_settings_get_boolean(settings, "bypass3");
 
-  json[section]["multiband_gate"]["highband"]["solo"] = settings->get_boolean("solo3");
+  json[section]["multiband_gate"]["highband"]["solo"] = g_settings_get_boolean(settings, "solo3");
 }
 
-void MultibandGatePreset::load(const nlohmann::json& json,
-                               const std::string& section,
-                               const Glib::RefPtr<Gio::Settings>& settings) {
+void MultibandGatePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("multiband_gate"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("multiband_gate"), settings, "output-gain", "output-gain");

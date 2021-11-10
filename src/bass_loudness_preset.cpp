@@ -20,30 +20,26 @@
 #include "bass_loudness_preset.hpp"
 
 BassLoudnessPreset::BassLoudnessPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.bassloudness",
-                                         "/com/github/wwmm/easyeffects/streaminputs/bassloudness/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness",
+                                            "/com/github/wwmm/easyeffects/streaminputs/bassloudness/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.bassloudness",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/bassloudness/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.bassloudness",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/bassloudness/");
 }
 
-void BassLoudnessPreset::save(nlohmann::json& json,
-                              const std::string& section,
-                              const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["bass_loudness"]["input-gain"] = settings->get_double("input-gain");
+void BassLoudnessPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["bass_loudness"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["bass_loudness"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["bass_loudness"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["bass_loudness"]["loudness"] = settings->get_double("loudness");
+  json[section]["bass_loudness"]["loudness"] = g_settings_get_double(settings, "loudness");
 
-  json[section]["bass_loudness"]["output"] = settings->get_double("output");
+  json[section]["bass_loudness"]["output"] = g_settings_get_double(settings, "output");
 
-  json[section]["bass_loudness"]["link"] = settings->get_double("link");
+  json[section]["bass_loudness"]["link"] = g_settings_get_double(settings, "link");
 }
 
-void BassLoudnessPreset::load(const nlohmann::json& json,
-                              const std::string& section,
-                              const Glib::RefPtr<Gio::Settings>& settings) {
+void BassLoudnessPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("bass_loudness"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("bass_loudness"), settings, "output-gain", "output-gain");

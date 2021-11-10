@@ -213,17 +213,17 @@ void RNNoiseUi::setup_listview() {
 
   // initializing selecting the row that corresponds to the saved model
 
-  const auto* model_path = settings->get_string("model-path").c_str();
+  // const auto* model_path = settings->get_string("model-path");
 
-  const Glib::ustring saved_name = std::filesystem::path{model_path}.stem().c_str();
+  // const Glib::ustring saved_name = std::filesystem::path{model_path}.stem().c_str();
 
-  auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
+  // auto single = std::dynamic_pointer_cast<Gtk::SingleSelection>(listview->get_model());
 
-  for (guint n = 0U; n < single->get_n_items(); n++) {
-    if (single->get_object(n)->get_property<Glib::ustring>("string") == saved_name) {
-      single->select_item(n, true);
-    }
-  }
+  // for (guint n = 0U; n < single->get_n_items(); n++) {
+  //   if (single->get_object(n)->get_property<Glib::ustring>("string") == saved_name) {
+  //     single->select_item(n, true);
+  //   }
+  // }
 }
 
 void RNNoiseUi::on_import_model_clicked() {

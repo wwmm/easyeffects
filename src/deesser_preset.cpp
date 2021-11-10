@@ -20,48 +20,44 @@
 #include "deesser_preset.hpp"
 
 DeesserPreset::DeesserPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.deesser",
-                                         "/com/github/wwmm/easyeffects/streaminputs/deesser/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser",
+                                            "/com/github/wwmm/easyeffects/streaminputs/deesser/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.deesser",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/deesser/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.deesser",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/deesser/");
 }
 
-void DeesserPreset::save(nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["deesser"]["input-gain"] = settings->get_double("input-gain");
+void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["deesser"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["deesser"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["deesser"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["deesser"]["detection"] = settings->get_string("detection").c_str();
+  json[section]["deesser"]["detection"] = g_settings_get_string(settings, "detection");
 
-  json[section]["deesser"]["mode"] = settings->get_string("mode").c_str();
+  json[section]["deesser"]["mode"] = g_settings_get_string(settings, "mode");
 
-  json[section]["deesser"]["threshold"] = settings->get_double("threshold");
+  json[section]["deesser"]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["deesser"]["ratio"] = settings->get_double("ratio");
+  json[section]["deesser"]["ratio"] = g_settings_get_double(settings, "ratio");
 
-  json[section]["deesser"]["laxity"] = settings->get_int("laxity");
+  json[section]["deesser"]["laxity"] = g_settings_get_int(settings, "laxity");
 
-  json[section]["deesser"]["makeup"] = settings->get_double("makeup");
+  json[section]["deesser"]["makeup"] = g_settings_get_double(settings, "makeup");
 
-  json[section]["deesser"]["f1-freq"] = settings->get_double("f1-freq");
+  json[section]["deesser"]["f1-freq"] = g_settings_get_double(settings, "f1-freq");
 
-  json[section]["deesser"]["f2-freq"] = settings->get_double("f2-freq");
+  json[section]["deesser"]["f2-freq"] = g_settings_get_double(settings, "f2-freq");
 
-  json[section]["deesser"]["f1-level"] = settings->get_double("f1-level");
+  json[section]["deesser"]["f1-level"] = g_settings_get_double(settings, "f1-level");
 
-  json[section]["deesser"]["f2-level"] = settings->get_double("f2-level");
+  json[section]["deesser"]["f2-level"] = g_settings_get_double(settings, "f2-level");
 
-  json[section]["deesser"]["f2-q"] = settings->get_double("f2-q");
+  json[section]["deesser"]["f2-q"] = g_settings_get_double(settings, "f2-q");
 
-  json[section]["deesser"]["sc-listen"] = settings->get_boolean("sc-listen");
+  json[section]["deesser"]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen");
 }
 
-void DeesserPreset::load(const nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
+void DeesserPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("deesser"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("deesser"), settings, "output-gain", "output-gain");

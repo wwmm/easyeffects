@@ -20,37 +20,30 @@
 #include "crystalizer_preset.hpp"
 
 CrystalizerPreset::CrystalizerPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
-                                         "/com/github/wwmm/easyeffects/streaminputs/crystalizer/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer",
+                                            "/com/github/wwmm/easyeffects/streaminputs/crystalizer/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.crystalizer",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.crystalizer",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/crystalizer/");
 }
 
-void CrystalizerPreset::save(nlohmann::json& json,
-                             const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["crystalizer"]["input-gain"] = settings->get_double("input-gain");
+void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["crystalizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["crystalizer"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["crystalizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
   for (int n = 0; n < 13; n++) {
     const auto bandn = "band" + std::to_string(n);
 
-    json[section]["crystalizer"][bandn]["intensity"] =
-        settings->get_double("intensity-" + bandn);
+    json[section]["crystalizer"][bandn]["intensity"] = g_settings_get_double(settings, ("intensity-" + bandn).c_str());
 
-    json[section]["crystalizer"][bandn]["mute"] =
-        settings->get_boolean("mute-" + bandn);
+    json[section]["crystalizer"][bandn]["mute"] = g_settings_get_boolean(settings, ("mute-" + bandn).c_str());
 
-    json[section]["crystalizer"][bandn]["bypass"] =
-        settings->get_boolean("bypass-" + bandn);
+    json[section]["crystalizer"][bandn]["bypass"] = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str());
   }
 }
 
-void CrystalizerPreset::load(const nlohmann::json& json,
-                             const std::string& section,
-                             const Glib::RefPtr<Gio::Settings>& settings) {
+void CrystalizerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("crystalizer"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("crystalizer"), settings, "output-gain", "output-gain");
@@ -58,13 +51,10 @@ void CrystalizerPreset::load(const nlohmann::json& json,
   for (int n = 0; n < 13; n++) {
     const auto bandn = "band" + std::to_string(n);
 
-    update_key<double>(json.at(section).at("crystalizer")[bandn], settings,
-                       "intensity-" + bandn, "intensity");
+    update_key<double>(json.at(section).at("crystalizer")[bandn], settings, "intensity-" + bandn, "intensity");
 
-    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings,
-                     "mute-" + bandn, "mute");
+    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings, "mute-" + bandn, "mute");
 
-    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings,
-                     "bypass-" + bandn, "bypass");
+    update_key<bool>(json.at(section).at("crystalizer")[bandn], settings, "bypass-" + bandn, "bypass");
   }
 }

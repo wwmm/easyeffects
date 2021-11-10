@@ -20,54 +20,50 @@
 #include "limiter_preset.hpp"
 
 LimiterPreset::LimiterPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
-                                         "/com/github/wwmm/easyeffects/streaminputs/limiter/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter",
+                                            "/com/github/wwmm/easyeffects/streaminputs/limiter/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.limiter",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/limiter/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.limiter",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/limiter/");
 }
 
-void LimiterPreset::save(nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["limiter"]["mode"] = settings->get_string("mode").c_str();
+void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["limiter"]["mode"] = g_settings_get_string(settings, "mode");
 
-  json[section]["limiter"]["oversampling"] = settings->get_string("oversampling").c_str();
+  json[section]["limiter"]["oversampling"] = g_settings_get_string(settings, "oversampling");
 
-  json[section]["limiter"]["dithering"] = settings->get_string("dithering").c_str();
+  json[section]["limiter"]["dithering"] = g_settings_get_string(settings, "dithering");
 
-  json[section]["limiter"]["input-gain"] = settings->get_double("input-gain");
+  json[section]["limiter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["limiter"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["limiter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["limiter"]["lookahead"] = settings->get_double("lookahead");
+  json[section]["limiter"]["lookahead"] = g_settings_get_double(settings, "lookahead");
 
-  json[section]["limiter"]["attack"] = settings->get_double("attack");
+  json[section]["limiter"]["attack"] = g_settings_get_double(settings, "attack");
 
-  json[section]["limiter"]["release"] = settings->get_double("release");
+  json[section]["limiter"]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["limiter"]["threshold"] = settings->get_double("threshold");
+  json[section]["limiter"]["threshold"] = g_settings_get_double(settings, "threshold");
 
-  json[section]["limiter"]["sidechain-preamp"] = settings->get_double("sidechain-preamp");
+  json[section]["limiter"]["sidechain-preamp"] = g_settings_get_double(settings, "sidechain-preamp");
 
-  json[section]["limiter"]["stereo-link"] = settings->get_double("stereo-link");
+  json[section]["limiter"]["stereo-link"] = g_settings_get_double(settings, "stereo-link");
 
-  json[section]["limiter"]["alr-attack"] = settings->get_double("alr-attack");
+  json[section]["limiter"]["alr-attack"] = g_settings_get_double(settings, "alr-attack");
 
-  json[section]["limiter"]["alr-release"] = settings->get_double("alr-release");
+  json[section]["limiter"]["alr-release"] = g_settings_get_double(settings, "alr-release");
 
-  json[section]["limiter"]["alr-knee"] = settings->get_double("alr-knee");
+  json[section]["limiter"]["alr-knee"] = g_settings_get_double(settings, "alr-knee");
 
-  json[section]["limiter"]["alr"] = settings->get_boolean("alr");
+  json[section]["limiter"]["alr"] = g_settings_get_boolean(settings, "alr");
 
-  json[section]["limiter"]["gain-boost"] = settings->get_boolean("gain-boost");
+  json[section]["limiter"]["gain-boost"] = g_settings_get_boolean(settings, "gain-boost");
 
-  json[section]["limiter"]["external-sidechain"] = settings->get_boolean("external-sidechain");
+  json[section]["limiter"]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain");
 }
 
-void LimiterPreset::load(const nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
+void LimiterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_string_key(json.at(section).at("limiter"), settings, "mode", "mode");
 
   update_string_key(json.at(section).at("limiter"), settings, "oversampling", "oversampling");

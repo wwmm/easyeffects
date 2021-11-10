@@ -20,30 +20,26 @@
 #include "maximizer_preset.hpp"
 
 MaximizerPreset::MaximizerPreset() {
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/maximizer/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/maximizer/");
 
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.maximizer",
-                                         "/com/github/wwmm/easyeffects/streaminputs/maximizer/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.maximizer",
+                                            "/com/github/wwmm/easyeffects/streaminputs/maximizer/");
 }
 
-void MaximizerPreset::save(nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["maximizer"]["input-gain"] = settings->get_double("input-gain");
+void MaximizerPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["maximizer"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["maximizer"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["maximizer"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["maximizer"]["release"] = settings->get_double("release");
+  json[section]["maximizer"]["release"] = g_settings_get_double(settings, "release");
 
-  json[section]["maximizer"]["ceiling"] = settings->get_double("ceiling");
+  json[section]["maximizer"]["ceiling"] = g_settings_get_double(settings, "ceiling");
 
-  json[section]["maximizer"]["threshold"] = settings->get_double("threshold");
+  json[section]["maximizer"]["threshold"] = g_settings_get_double(settings, "threshold");
 }
 
-void MaximizerPreset::load(const nlohmann::json& json,
-                           const std::string& section,
-                           const Glib::RefPtr<Gio::Settings>& settings) {
+void MaximizerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("maximizer"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("maximizer"), settings, "output-gain", "output-gain");

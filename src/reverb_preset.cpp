@@ -20,40 +20,38 @@
 #include "reverb_preset.hpp"
 
 ReverbPreset::ReverbPreset() {
-  input_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streaminputs/reverb/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.reverb",
+                                            "/com/github/wwmm/easyeffects/streaminputs/reverb/");
 
-  output_settings =
-      Gio::Settings::create("com.github.wwmm.easyeffects.reverb", "/com/github/wwmm/easyeffects/streamoutputs/reverb/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.reverb",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/reverb/");
 }
 
-void ReverbPreset::save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["reverb"]["input-gain"] = settings->get_double("input-gain");
+void ReverbPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["reverb"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["reverb"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["reverb"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["reverb"]["room-size"] = settings->get_string("room-size").c_str();
+  json[section]["reverb"]["room-size"] = g_settings_get_string(settings, "room-size");
 
-  json[section]["reverb"]["decay-time"] = settings->get_double("decay-time");
+  json[section]["reverb"]["decay-time"] = g_settings_get_double(settings, "decay-time");
 
-  json[section]["reverb"]["hf-damp"] = settings->get_double("hf-damp");
+  json[section]["reverb"]["hf-damp"] = g_settings_get_double(settings, "hf-damp");
 
-  json[section]["reverb"]["diffusion"] = settings->get_double("diffusion");
+  json[section]["reverb"]["diffusion"] = g_settings_get_double(settings, "diffusion");
 
-  json[section]["reverb"]["amount"] = settings->get_double("amount");
+  json[section]["reverb"]["amount"] = g_settings_get_double(settings, "amount");
 
-  json[section]["reverb"]["dry"] = settings->get_double("dry");
+  json[section]["reverb"]["dry"] = g_settings_get_double(settings, "dry");
 
-  json[section]["reverb"]["predelay"] = settings->get_double("predelay");
+  json[section]["reverb"]["predelay"] = g_settings_get_double(settings, "predelay");
 
-  json[section]["reverb"]["bass-cut"] = settings->get_double("bass-cut");
+  json[section]["reverb"]["bass-cut"] = g_settings_get_double(settings, "bass-cut");
 
-  json[section]["reverb"]["treble-cut"] = settings->get_double("treble-cut");
+  json[section]["reverb"]["treble-cut"] = g_settings_get_double(settings, "treble-cut");
 }
 
-void ReverbPreset::load(const nlohmann::json& json,
-                        const std::string& section,
-                        const Glib::RefPtr<Gio::Settings>& settings) {
+void ReverbPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("reverb"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("reverb"), settings, "output-gain", "output-gain");

@@ -20,36 +20,32 @@
 #include "exciter_preset.hpp"
 
 ExciterPreset::ExciterPreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
-                                         "/com/github/wwmm/easyeffects/streaminputs/exciter/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter",
+                                            "/com/github/wwmm/easyeffects/streaminputs/exciter/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.exciter",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.exciter",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/exciter/");
 }
 
-void ExciterPreset::save(nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["exciter"]["input-gain"] = settings->get_double("input-gain");
+void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["exciter"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["exciter"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["exciter"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["exciter"]["amount"] = settings->get_double("amount");
+  json[section]["exciter"]["amount"] = g_settings_get_double(settings, "amount");
 
-  json[section]["exciter"]["harmonics"] = settings->get_double("harmonics");
+  json[section]["exciter"]["harmonics"] = g_settings_get_double(settings, "harmonics");
 
-  json[section]["exciter"]["scope"] = settings->get_double("scope");
+  json[section]["exciter"]["scope"] = g_settings_get_double(settings, "scope");
 
-  json[section]["exciter"]["ceil"] = settings->get_double("ceil");
+  json[section]["exciter"]["ceil"] = g_settings_get_double(settings, "ceil");
 
-  json[section]["exciter"]["blend"] = settings->get_double("blend");
+  json[section]["exciter"]["blend"] = g_settings_get_double(settings, "blend");
 
-  json[section]["exciter"]["ceil-active"] = settings->get_boolean("ceil-active");
+  json[section]["exciter"]["ceil-active"] = g_settings_get_boolean(settings, "ceil-active");
 }
 
-void ExciterPreset::load(const nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
+void ExciterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("exciter"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("exciter"), settings, "output-gain", "output-gain");

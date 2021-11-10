@@ -25,21 +25,21 @@
 class EqualizerPreset : public PluginPresetBase {
  public:
   EqualizerPreset();
+  ~EqualizerPreset();
 
  private:
   inline static const std::string log_tag = "equalizer_preset: ";
 
-  Glib::RefPtr<Gio::Settings> input_settings_left, input_settings_right, output_settings_left, output_settings_right;
+  GSettings *input_settings_left = nullptr, *input_settings_right = nullptr, *output_settings_left = nullptr,
+            *output_settings_right = nullptr;
 
-  void save(nlohmann::json& json, const std::string& section, const Glib::RefPtr<Gio::Settings>& settings) override;
+  void save(nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
-  void load(const nlohmann::json& json,
-            const std::string& section,
-            const Glib::RefPtr<Gio::Settings>& settings) override;
+  void load(const nlohmann::json& json, const std::string& section, GSettings* settings) override;
 
-  static void save_channel(nlohmann::json& json, const Glib::RefPtr<Gio::Settings>& settings, const int& nbands);
+  static void save_channel(nlohmann::json& json, GSettings* settings, const int& nbands);
 
-  void load_channel(const nlohmann::json& json, const Glib::RefPtr<Gio::Settings>& settings, const int& nbands);
+  void load_channel(const nlohmann::json& json, GSettings* settings, const int& nbands);
 
   void load_legacy_preset();
 };

@@ -20,26 +20,22 @@
 #include "rnnoise_preset.hpp"
 
 RNNoisePreset::RNNoisePreset() {
-  input_settings = Gio::Settings::create("com.github.wwmm.easyeffects.rnnoise",
-                                         "/com/github/wwmm/easyeffects/streaminputs/rnnoise/");
+  input_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise",
+                                            "/com/github/wwmm/easyeffects/streaminputs/rnnoise/");
 
-  output_settings = Gio::Settings::create("com.github.wwmm.easyeffects.rnnoise",
-                                          "/com/github/wwmm/easyeffects/streamoutputs/rnnoise/");
+  output_settings = g_settings_new_with_path("com.github.wwmm.easyeffects.rnnoise",
+                                             "/com/github/wwmm/easyeffects/streamoutputs/rnnoise/");
 }
 
-void RNNoisePreset::save(nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
-  json[section]["rnnoise"]["input-gain"] = settings->get_double("input-gain");
+void RNNoisePreset::save(nlohmann::json& json, const std::string& section, GSettings* settings) {
+  json[section]["rnnoise"]["input-gain"] = g_settings_get_double(settings, "input-gain");
 
-  json[section]["rnnoise"]["output-gain"] = settings->get_double("output-gain");
+  json[section]["rnnoise"]["output-gain"] = g_settings_get_double(settings, "output-gain");
 
-  json[section]["rnnoise"]["model-path"] = settings->get_string("model-path").c_str();
+  json[section]["rnnoise"]["model-path"] = g_settings_get_string(settings, "model-path");
 }
 
-void RNNoisePreset::load(const nlohmann::json& json,
-                         const std::string& section,
-                         const Glib::RefPtr<Gio::Settings>& settings) {
+void RNNoisePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
   update_key<double>(json.at(section).at("rnnoise"), settings, "input-gain", "input-gain");
 
   update_key<double>(json.at(section).at("rnnoise"), settings, "output-gain", "output-gain");
