@@ -32,49 +32,56 @@ Convolver::Convolver(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::convolver, schema, schema_path, pipe_manager) {
-  settings->signal_changed("ir-width").connect([=, this](const auto& key) {
-    ir_width = settings->get_int(key);
+  g_signal_connect(settings, "changed::ir-width", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Convolver*>(user_data);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->ir_width = g_settings_get_int(self->settings, key);
 
-    if (kernel_is_initialized) {
-      kernel_L = original_kernel_L;
-      kernel_R = original_kernel_R;
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-      set_kernel_stereo_width();
-      apply_kernel_autogain();
-    }
-  });
+                     if (self->kernel_is_initialized) {
+                       self->kernel_L = self->original_kernel_L;
+                       self->kernel_R = self->original_kernel_R;
 
-  settings->signal_changed("kernel-path").connect([=, this](const auto& key) {
-    if (n_samples == 0U || rate == 0U) {
-      return;
-    }
+                       self->set_kernel_stereo_width();
+                       self->apply_kernel_autogain();
+                     }
+                   }),
+                   this);
 
-    data_mutex.lock();
+  g_signal_connect(settings, "changed::kernel-path",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Convolver*>(user_data);
 
-    ready = false;
+                     if (self->n_samples == 0U || self->rate == 0U) {
+                       return;
+                     }
 
-    data_mutex.unlock();
+                     self->data_mutex.lock();
 
-    read_kernel_file();
+                     self->ready = false;
 
-    if (kernel_is_initialized) {
-      kernel_L = original_kernel_L;
-      kernel_R = original_kernel_R;
+                     self->data_mutex.unlock();
 
-      set_kernel_stereo_width();
-      apply_kernel_autogain();
+                     self->read_kernel_file();
 
-      setup_zita();
+                     if (self->kernel_is_initialized) {
+                       self->kernel_L = self->original_kernel_L;
+                       self->kernel_R = self->original_kernel_R;
 
-      data_mutex.lock();
+                       self->set_kernel_stereo_width();
+                       self->apply_kernel_autogain();
 
-      ready = kernel_is_initialized && zita_ready;
+                       self->setup_zita();
 
-      data_mutex.unlock();
-    }
-  });
+                       self->data_mutex.lock();
+
+                       self->ready = self->kernel_is_initialized && self->zita_ready;
+
+                       self->data_mutex.unlock();
+                     }
+                   }),
+                   this);
 
   setup_input_output_gain();
 }
@@ -278,7 +285,7 @@ void Convolver::process(std::span<float>& left_in,
 void Convolver::read_kernel_file() {
   kernel_is_initialized = false;
 
-  const auto path = settings->get_string("kernel-path");
+  const auto path = std::string(g_settings_get_string(settings, "kernel-path"));
 
   if (path.empty()) {
     util::warning(log_tag + name + ": irs file path is null. Entering passthrough mode...");
@@ -291,13 +298,13 @@ void Convolver::read_kernel_file() {
   SndfileHandle file = SndfileHandle(path.c_str());
 
   if (file.channels() == 0 || file.frames() == 0) {
-    util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path.raw());
+    util::warning(log_tag + name + ": irs file does not exists or it is empty: " + path);
     util::warning(log_tag + name + ": Entering passthrough mode...");
 
     return;
   }
 
-  util::debug(log_tag + name + ": irs file: " + path.raw());
+  util::debug(log_tag + name + ": irs file: " + path);
   util::debug(log_tag + name + ": irs rate: " + std::to_string(file.samplerate()) + " Hz");
   util::debug(log_tag + name + ": irs channels: " + std::to_string(file.channels()));
   util::debug(log_tag + name + ": irs frames: " + std::to_string(file.frames()));

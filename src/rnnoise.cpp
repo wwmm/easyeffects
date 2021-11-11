@@ -27,24 +27,27 @@ RNNoise::RNNoise(const std::string& tag,
   data_L.reserve(blocksize);
   data_R.reserve(blocksize);
 
-  settings->signal_changed("model-path").connect([=, this](const auto& key) {
-    data_mutex.lock();
+  g_signal_connect(settings, "changed::model-path", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<RNNoise*>(user_data);
 
-    rnnoise_ready = false;
+                     self->data_mutex.lock();
 
-    data_mutex.unlock();
+                     self->rnnoise_ready = false;
 
-    free_rnnoise();
+                     self->data_mutex.unlock();
 
-    auto* m = get_model_from_file();
+                     self->free_rnnoise();
 
-    model = m;
+                     auto* m = self->get_model_from_file();
 
-    state_left = rnnoise_create(model);
-    state_right = rnnoise_create(model);
+                     self->model = m;
 
-    rnnoise_ready = true;
-  });
+                     self->state_left = rnnoise_create(self->model);
+                     self->state_right = rnnoise_create(self->model);
+
+                     self->rnnoise_ready = true;
+                   }),
+                   this);
 
   setup_input_output_gain();
 
@@ -186,11 +189,19 @@ void RNNoise::process(std::span<float>& left_in,
   }
 
   if (notify_latency) {
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* self = static_cast<RNNoise*>(user_data);
+
+                     self->latency.emit(self->latency_value);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               this);
 
     spa_process_latency_info latency_info{};
 
@@ -225,9 +236,9 @@ void RNNoise::process(std::span<float>& left_in,
 auto RNNoise::get_model_from_file() -> RNNModel* {
   RNNModel* m = nullptr;
 
-  if (const auto path = settings->get_string("model-path"); !path.empty()) {
+  if (const auto path = std::string(g_settings_get_string(settings, "model-path")); !path.empty()) {
     if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
-      util::debug("rnnoise plugin: loading model from file: " + path.raw());
+      util::debug("rnnoise plugin: loading model from file: " + path);
 
       m = rnnoise_model_from_file(f);
 

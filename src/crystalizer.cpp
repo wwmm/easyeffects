@@ -250,21 +250,47 @@ void Crystalizer::process(std::span<float>& left_in,
 }
 
 void Crystalizer::bind_band(const int& n) {
-  const auto bandn = "band" + std::to_string(n);
+  const std::string bandn = "band" + std::to_string(n);
 
-  band_intensity.at(n) = static_cast<float>(util::db_to_linear(settings->get_double("intensity-" + bandn)));
-  band_mute.at(n) = settings->get_boolean("mute-" + bandn);
-  band_bypass.at(n) = settings->get_boolean("bypass-" + bandn);
+  band_intensity.at(n) =
+      static_cast<float>(util::db_to_linear(g_settings_get_double(settings, ("intensity-" + bandn).c_str())));
 
-  settings->signal_changed("intensity-" + bandn).connect([=, this](const auto& key) {
-    band_intensity.at(n) = util::db_to_linear(settings->get_double(key));
-  });
+  band_mute.at(n) = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
+  band_bypass.at(n) = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
 
-  settings->signal_changed("mute-" + bandn).connect([=, this](const auto& key) {
-    band_mute.at(n) = settings->get_boolean(key);
-  });
+  struct Data {
+    Crystalizer* self;
+    const int n;
+    const std::string bandn;
+  };
 
-  settings->signal_changed("bypass-" + bandn).connect([=, this](const auto& key) {
-    band_bypass.at(n) = settings->get_boolean(key);
-  });
+  Data data{this, n, bandn};
+
+  using namespace std::string_literals;
+
+  g_signal_connect(settings, ("changed::"s + "intensity-"s + bandn).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->band_intensity.at(d->n) =
+                         g_settings_get_boolean(settings, ("intensity-" + d->bandn).c_str()) != 0;
+                   }),
+                   &data);
+
+  g_signal_connect(settings, ("changed::"s + "mute-"s + bandn).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->band_mute.at(d->n) = g_settings_get_boolean(settings, ("mute-" + d->bandn).c_str()) != 0;
+                   }),
+                   &data);
+
+  g_signal_connect(settings, ("changed::"s + "bypass-"s + bandn).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->band_bypass.at(d->n) =
+                         g_settings_get_boolean(settings, ("bypass-" + d->bandn).c_str()) != 0;
+                   }),
+                   &data);
 }

@@ -29,8 +29,21 @@ Compressor::Compressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
   }
 
-  settings->signal_changed("sidechain-type").connect(sigc::mem_fun(*this, &Compressor::update_sidechain_links));
-  settings->signal_changed("sidechain-input-device").connect(sigc::mem_fun(*this, &Compressor::update_sidechain_links));
+  g_signal_connect(settings, "changed::sidechain-type",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Compressor*>(user_data);
+
+                     self->update_sidechain_links(key);
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::sidechain-input-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Compressor*>(user_data);
+
+                     self->update_sidechain_links(key);
+                   }),
+                   this);
 
   lv2_wrapper->bind_key_enum(settings, "mode", "cm");
 
@@ -131,7 +144,15 @@ void Compressor::process(std::span<float>& left_in,
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_port_value) + " s");
 
-    Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* self = static_cast<Compressor*>(user_data);
+
+                     self->latency.emit(self->latency_port_value);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               this);
 
     spa_process_latency_info latency_info{};
 
@@ -174,8 +195,8 @@ void Compressor::process(std::span<float>& left_in,
 }
 
 void Compressor::update_sidechain_links(const Glib::ustring& key) {
-  if (settings->get_string("sidechain-type") == "External") {
-    const auto device_name = settings->get_string("sidechain-input-device").raw();
+  if (g_strcmp0(g_settings_get_string(settings, "sidechain-type"), "External") == 0) {
+    const auto device_name = std::string(g_settings_get_string(settings, "sidechain-input-device"));
 
     NodeInfo input_device = pm->ee_source_node;
 

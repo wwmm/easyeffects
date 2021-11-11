@@ -111,7 +111,7 @@ class PluginBase {
  protected:
   std::mutex data_mutex;
 
-  Glib::RefPtr<Gio::Settings> settings;
+  GSettings* settings = nullptr;
 
   PipeManager* pm = nullptr;
 

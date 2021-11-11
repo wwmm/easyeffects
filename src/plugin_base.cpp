@@ -78,7 +78,7 @@ PluginBase::PluginBase(std::string tag,
     : log_tag(std::move(tag)),
       name(std::move(plugin_name)),
       enable_probe(enable_probe),
-      settings(Gio::Settings::create(schema.c_str(), schema_path.c_str())),
+      settings(g_settings_new_with_path(schema.c_str(), schema_path.c_str())),
       pm(pipe_manager) {
   pf_data.pb = this;
 
@@ -172,6 +172,8 @@ PluginBase::~PluginBase() {
   if (listener.link.next != nullptr || listener.link.prev != nullptr) {
     spa_hook_remove(&listener);
   }
+
+  g_object_unref(settings);
 }
 
 auto PluginBase::connect_to_pw() -> bool {
@@ -266,16 +268,23 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
 }
 
 void PluginBase::setup_input_output_gain() {
-  input_gain = static_cast<float>(util::db_to_linear(settings->get_double("input-gain")));
-  output_gain = static_cast<float>(util::db_to_linear(settings->get_double("output-gain")));
+  input_gain = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, "input-gain")));
+  output_gain = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, "output-gain")));
 
-  settings->signal_changed("input-gain").connect([=, this](const auto& key) {
-    input_gain = util::db_to_linear(settings->get_double(key));
-  });
+  g_signal_connect(settings, "changed::input-gain", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<PluginBase*>(user_data);
 
-  settings->signal_changed("output-gain").connect([=, this](const auto& key) {
-    output_gain = util::db_to_linear(settings->get_double(key));
-  });
+                     self->input_gain = util::db_to_linear(g_settings_get_double(settings, key));
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::output-gain",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<PluginBase*>(user_data);
+
+                     self->output_gain = util::db_to_linear(g_settings_get_double(settings, key));
+                   }),
+                   this);
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {

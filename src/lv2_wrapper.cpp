@@ -361,54 +361,107 @@ auto Lv2Wrapper::has_instance() -> bool {
   return instance != nullptr;
 }
 
-void Lv2Wrapper::bind_key_double(const Glib::RefPtr<Gio::Settings>& settings,
-                                 const Glib::ustring& gsettings_key,
-                                 const std::string& lv2_symbol) {
-  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(gsettings_key)));
+void Lv2Wrapper::bind_key_double(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(g_settings_get_double(settings, gsettings_key.c_str())));
 
-  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
-    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_double(key)));
-  });
+  struct Data {
+    Lv2Wrapper* self;
+    const std::string lv2_symbol;
+  };
+
+  Data data{this, lv2_symbol};
+
+  g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->set_control_port_value(d->lv2_symbol,
+                                                     static_cast<float>(g_settings_get_double(settings, key)));
+                   }),
+                   &data);
 }
 
-void Lv2Wrapper::bind_key_double_db(const Glib::RefPtr<Gio::Settings>& settings,
-                                    const Glib::ustring& gsettings_key,
+void Lv2Wrapper::bind_key_double_db(GSettings* settings,
+                                    const std::string& gsettings_key,
                                     const std::string& lv2_symbol) {
-  set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(gsettings_key))));
+  set_control_port_value(
+      lv2_symbol, static_cast<float>(util::db_to_linear(g_settings_get_double(settings, gsettings_key.c_str()))));
 
-  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
-    set_control_port_value(lv2_symbol, static_cast<float>(util::db_to_linear(settings->get_double(key))));
-  });
+  struct Data {
+    Lv2Wrapper* self;
+    const std::string lv2_symbol;
+  };
+
+  Data data{this, lv2_symbol};
+
+  g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->set_control_port_value(
+                         d->lv2_symbol, static_cast<float>(util::db_to_linear(g_settings_get_double(settings, key))));
+                   }),
+                   &data);
 }
 
-void Lv2Wrapper::bind_key_bool(const Glib::RefPtr<Gio::Settings>& settings,
-                               const Glib::ustring& gsettings_key,
-                               const std::string& lv2_symbol) {
-  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(gsettings_key)));
+void Lv2Wrapper::bind_key_bool(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(g_settings_get_boolean(settings, gsettings_key.c_str())));
 
-  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
-    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_boolean(key)));
-  });
+  struct Data {
+    Lv2Wrapper* self;
+    const std::string lv2_symbol;
+  };
+
+  Data data{this, lv2_symbol};
+
+  g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->set_control_port_value(d->lv2_symbol,
+                                                     static_cast<float>(g_settings_get_boolean(settings, key)));
+                   }),
+                   &data);
 }
 
-void Lv2Wrapper::bind_key_enum(const Glib::RefPtr<Gio::Settings>& settings,
-                               const Glib::ustring& gsettings_key,
-                               const std::string& lv2_symbol) {
-  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(gsettings_key)));
+void Lv2Wrapper::bind_key_enum(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(g_settings_get_enum(settings, gsettings_key.c_str())));
 
-  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
-    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_enum(key)));
-  });
+  struct Data {
+    Lv2Wrapper* self;
+    const std::string lv2_symbol;
+  };
+
+  Data data{this, lv2_symbol};
+
+  g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->set_control_port_value(d->lv2_symbol,
+                                                     static_cast<float>(g_settings_get_enum(settings, key)));
+                   }),
+                   &data);
 }
 
-void Lv2Wrapper::bind_key_int(const Glib::RefPtr<Gio::Settings>& settings,
-                              const Glib::ustring& gsettings_key,
-                              const std::string& lv2_symbol) {
-  set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(gsettings_key)));
+void Lv2Wrapper::bind_key_int(GSettings* settings, const std::string& gsettings_key, const std::string& lv2_symbol) {
+  set_control_port_value(lv2_symbol, static_cast<float>(g_settings_get_int(settings, gsettings_key.c_str())));
 
-  settings->signal_changed(gsettings_key).connect([=, this](const auto& key) {
-    set_control_port_value(lv2_symbol, static_cast<float>(settings->get_int(key)));
-  });
+  struct Data {
+    Lv2Wrapper* self;
+    const std::string lv2_symbol;
+  };
+
+  Data data{this, lv2_symbol};
+
+  g_signal_connect(settings, ("changed::" + gsettings_key).c_str(),
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto d = static_cast<Data*>(user_data);
+
+                     d->self->set_control_port_value(d->lv2_symbol,
+                                                     static_cast<float>(g_settings_get_int(settings, key)));
+                   }),
+                   &data);
 }
 
 auto Lv2Wrapper::map_urid(const std::string& uri) -> LV2_URID {

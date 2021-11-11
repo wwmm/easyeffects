@@ -24,21 +24,28 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                              const std::string& schema_path,
                              PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::echo_canceller, schema, schema_path, pipe_manager, true) {
-  settings->signal_changed("frame-size").connect([=, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  g_signal_connect(settings, "changed::frame-size", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<EchoCanceller*>(user_data);
 
-    blocksize_ms = settings->get_int(key);
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-    init_speex();
-  });
+                     self->blocksize_ms = g_settings_get_int(settings, key);
 
-  settings->signal_changed("filter-length").connect([=, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->init_speex();
+                   }),
+                   this);
 
-    filter_length_ms = settings->get_int(key);
+  g_signal_connect(settings, "changed::filter-length",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<EchoCanceller*>(user_data);
 
-    init_speex();
-  });
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                     self->filter_length_ms = g_settings_get_int(settings, key);
+
+                     self->init_speex();
+                   }),
+                   this);
 
   setup_input_output_gain();
 }

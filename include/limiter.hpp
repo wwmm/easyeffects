@@ -58,7 +58,7 @@ class Limiter : public PluginBase {
 
   std::vector<pw_proxy*> list_proxies;
 
-  void update_sidechain_links(const Glib::ustring& key);
+  void update_sidechain_links(const std::string& key);
 };
 
 #endif

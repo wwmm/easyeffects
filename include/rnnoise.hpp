@@ -43,6 +43,8 @@ class RNNoise : public PluginBase {
 
   sigc::signal<void(const float&)> latency;
 
+  float latency_value = 0.0F;
+
  private:
   bool resample = false;
   bool notify_latency = false;
