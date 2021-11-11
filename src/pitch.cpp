@@ -24,71 +24,92 @@ Pitch::Pitch(const std::string& tag,
              const std::string& schema_path,
              PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::pitch, schema, schema_path, pipe_manager) {
-  formant_preserving = settings->get_boolean("formant-preserving");
-  faster = settings->get_boolean("faster");
+  formant_preserving = g_settings_get_boolean(settings, "formant-preserving") != 0;
+  faster = g_settings_get_boolean(settings, "faster") != 0;
 
-  crispness = settings->get_int("crispness");
-  octaves = settings->get_int("octaves");
-  semitones = settings->get_int("semitones");
-  cents = settings->get_int("cents");
+  crispness = g_settings_get_int(settings, "crispness");
+  octaves = g_settings_get_int(settings, "octaves");
+  semitones = g_settings_get_int(settings, "semitones");
+  cents = g_settings_get_int(settings, "cents");
 
-  settings->signal_changed("crispness").connect([=, this](const auto& key) {
-    crispness = settings->get_int("crispness");
+  g_signal_connect(settings, "changed::formant-preserving",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->formant_preserving = g_settings_get_boolean(settings, key) != 0;
 
-    update_crispness();
-  });
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-  settings->signal_changed("formant-preserving").connect([=, this](const auto& key) {
-    formant_preserving = settings->get_boolean(key);
+                     if (!self->rubberband_ready) {
+                       return;
+                     }
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->stretcher->setFormantOption(self->formant_preserving
+                                                           ? RubberBand::RubberBandStretcher::OptionFormantPreserved
+                                                           : RubberBand::RubberBandStretcher::OptionFormantShifted);
+                   }),
+                   this);
 
-    if (!rubberband_ready) {
-      return;
-    }
+  g_signal_connect(settings, "changed::faster", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
 
-    stretcher->setFormantOption(formant_preserving ? RubberBand::RubberBandStretcher::OptionFormantPreserved
-                                                   : RubberBand::RubberBandStretcher::OptionFormantShifted);
-  });
+                     self->faster = g_settings_get_boolean(settings, key) != 0;
 
-  settings->signal_changed("faster").connect([=, this](const auto& key) {
-    faster = settings->get_boolean(key);
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     if (!self->rubberband_ready) {
+                       return;
+                     }
 
-    if (!rubberband_ready) {
-      return;
-    }
+                     self->stretcher->setPitchOption(self->faster
+                                                         ? RubberBand::RubberBandStretcher::OptionPitchHighSpeed
+                                                         : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
+                   }),
+                   this);
 
-    stretcher->setPitchOption(faster ? RubberBand::RubberBandStretcher::OptionPitchHighSpeed
-                                     : RubberBand::RubberBandStretcher::OptionPitchHighConsistency);
-  });
+  g_signal_connect(settings, "changed::crispness", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
 
-  settings->signal_changed("octaves").connect([=, this](const auto& key) {
-    octaves = settings->get_int(key);
+                     self->crispness = g_settings_get_int(settings, key);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-    update_pitch_scale();
-  });
+                     self->update_crispness();
+                   }),
+                   this);
 
-  settings->signal_changed("semitones").connect([=, this](const auto& key) {
-    semitones = settings->get_int(key);
+  g_signal_connect(settings, "changed::octaves", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->octaves = g_settings_get_int(settings, key);
 
-    update_pitch_scale();
-  });
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-  settings->signal_changed("cents").connect([=, this](const auto& key) {
-    cents = settings->get_int(key);
+                     self->update_pitch_scale();
+                   }),
+                   this);
 
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  g_signal_connect(settings, "changed::semitones", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
 
-    update_pitch_scale();
-  });
+                     self->semitones = g_settings_get_int(settings, key);
+
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                     self->update_pitch_scale();
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::cents", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Pitch*>(user_data);
+
+                     self->cents = g_settings_get_int(settings, key);
+
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                     self->update_pitch_scale();
+                   }),
+                   this);
 
   setup_input_output_gain();
 }
@@ -201,11 +222,21 @@ void Pitch::process(std::span<float>& left_in,
   }
 
   if (notify_latency) {
-    const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
     util::debug(log_tag + name + " latency: " + std::to_string(latency_value) + " s");
 
     Glib::signal_idle().connect_once([=, this] { latency.emit(latency_value); });
+
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* self = static_cast<Pitch*>(user_data);
+
+                     self->latency.emit(self->latency_value);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               this);
 
     spa_process_latency_info latency_info{};
 

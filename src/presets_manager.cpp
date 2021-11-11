@@ -328,7 +328,7 @@ void PresetsManager::load_blocklist(const PresetType& preset_type, const nlohman
     }
     case PresetType::output: {
       try {
-        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
+        auto list = json.at("output").at("blocklist").get<std::vector<std::string>>();
 
         g_settings_set_strv(soe_settings, "blocklist", util::make_gchar_pointer_vector(list).data());
       } catch (const nlohmann::json::exception& e) {

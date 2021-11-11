@@ -195,12 +195,16 @@ auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string> {
   return output;
 }
 
-auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<gchar*> {
-  std::vector<gchar*> output(input.size());
+auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*> {
+  std::vector<const gchar*> output;
+
+  output.reserve(input.size());
 
   for (const auto& v : input) {
-    output.push_back(const_cast<gchar*>(v.c_str()));
+    output.push_back(v.c_str());
   }
+
+  output.push_back(nullptr);  // char* arrays passed to g_settings_set_strv must have a null pointer as the last element
 
   return output;
 }

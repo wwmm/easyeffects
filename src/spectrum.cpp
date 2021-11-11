@@ -33,11 +33,14 @@ Spectrum::Spectrum(const std::string& tag,
 
   fftw_ready = true;
 
-  settings->signal_changed("show").connect([=, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Spectrum*>(user_data);
 
-    post_messages = settings->get_boolean(key);
-  });
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                     self->post_messages = g_settings_get_boolean(settings, key);
+                   }),
+                   this);
 }
 
 Spectrum::~Spectrum() {
@@ -111,10 +114,23 @@ void Spectrum::process(std::span<float>& left_in,
   notification_dt += fft_buffer_duration;
 
   if (notification_dt >= notification_time_window) {
-    auto output_copy = output;
-
     notification_dt = 0.0F;
 
-    Glib::signal_idle().connect_once([=, this] { power.emit(rate, output_copy.size(), output_copy); });
+    struct Data {
+      Spectrum* self;
+      const std::vector<float> output;
+    };
+
+    Data data{this, output};
+
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* d = static_cast<Data*>(user_data);
+
+                     d->self->power.emit(d->self->rate, d->output.size(), d->output);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               &data);
   }
 }

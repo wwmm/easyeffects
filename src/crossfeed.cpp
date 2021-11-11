@@ -24,21 +24,28 @@ Crossfeed::Crossfeed(const std::string& tag,
                      const std::string& schema_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::crossfeed, schema, schema_path, pipe_manager) {
-  bs2b.set_level_fcut(settings->get_int("fcut"));
+  bs2b.set_level_fcut(g_settings_get_int(settings, "fcut"));
 
-  bs2b.set_level_feed(10 * static_cast<int>(settings->get_double("feed")));
+  bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, "feed")));
 
-  settings->signal_changed("fcut").connect([=, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  g_signal_connect(settings, "changed::external-sidechain",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Crossfeed*>(user_data);
 
-    bs2b.set_level_fcut(settings->get_int(key));
-  });
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-  settings->signal_changed("feed").connect([=, this](const auto& key) {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+                     self->bs2b.set_level_fcut(g_settings_get_int(settings, key));
+                   }),
+                   this);
 
-    bs2b.set_level_feed(10 * settings->get_double(key));
-  });
+  g_signal_connect(settings, "changed::feed", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Crossfeed*>(user_data);
+
+                     std::scoped_lock<std::mutex> lock(self->data_mutex);
+
+                     self->bs2b.set_level_feed(10 * static_cast<int>(g_settings_get_double(settings, key)));
+                   }),
+                   this);
 
   setup_input_output_gain();
 }
@@ -81,7 +88,7 @@ void Crossfeed::process(std::span<float>& left_in,
     data[n * 2U + 1U] = right_in[n];
   }
 
-  bs2b.cross_feed(data.data(), n_samples);
+  bs2b.cross_feed(data.data(), static_cast<int>(n_samples));
 
   for (size_t n = 0U; n < left_out.size(); n++) {
     left_out[n] = data[n * 2U];

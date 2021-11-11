@@ -90,7 +90,7 @@ auto glib_value(const T& cppvalue) -> Glib::Value<T> {
 
 auto gchar_array_to_vector(gchar** gchar_array) -> std::vector<std::string>;
 
-auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<gchar*>;
+auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*>;
 
 }  // namespace util
 

@@ -375,6 +375,8 @@ void Lv2Wrapper::bind_key_double(GSettings* settings, const std::string& gsettin
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto d = static_cast<Data*>(user_data);
 
+                     util::warning(d->lv2_symbol);
+
                      d->self->set_control_port_value(d->lv2_symbol,
                                                      static_cast<float>(g_settings_get_double(settings, key)));
                    }),
