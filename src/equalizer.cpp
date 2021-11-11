@@ -27,8 +27,8 @@ Equalizer::Equalizer(const std::string& tag,
                      const std::string& schema_channel_right_path,
                      PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::equalizer, schema, schema_path, pipe_manager),
-      settings_left(Gio::Settings::create(schema_channel, schema_channel_left_path)),
-      settings_right(Gio::Settings::create(schema_channel, schema_channel_right_path)),
+      settings_left(g_settings_new_with_path(schema_channel.c_str(), schema_channel_left_path.c_str())),
+      settings_right(g_settings_new_with_path(schema_channel.c_str(), schema_channel_right_path.c_str())),
       lv2_wrapper(std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr")) {
   if (!lv2_wrapper->found_plugin) {
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/para_equalizer_x32_lr is not installed");
@@ -37,51 +37,66 @@ Equalizer::Equalizer(const std::string& tag,
   lv2_wrapper->bind_key_enum(settings, "mode", "mode");
 
   for (uint n = 0U; n < max_bands; n++) {
-    bind_band(n);
+    bind_band(static_cast<int>(n));
   }
 
-  settings->signal_changed("num-bands").connect([=, this](const auto& key) {
-    const uint& nbands = settings->get_int(key);
+  g_signal_connect(settings, "changed::num-bands", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<Equalizer*>(user_data);
 
-    for (uint n = 0U; n < max_bands; n++) {
-      const auto bandn = "band" + std::to_string(n);
+                     const uint& nbands = g_settings_get_int(settings, key);
 
-      if (n < nbands) {
-        settings_left->set_enum(bandn + "-type", 1);
-        settings_right->set_enum(bandn + "-type", 1);
-      } else {
-        // turn off unused bands
-        settings_left->set_enum(bandn + "-type", 0);
-        settings_right->set_enum(bandn + "-type", 0);
-      }
-    }
-  });
+                     for (uint n = 0U; n < self->max_bands; n++) {
+                       const auto bandn = "band" + std::to_string(n);
 
-  settings->signal_changed("split-channels").connect([=, this](const auto& key) {
-    if (settings->get_boolean(key) == true) {
-      return;
-    }
+                       if (n < nbands) {
+                         g_settings_set_enum(self->settings_left, (bandn + "-type").c_str(), 1);
+                         g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 1);
+                       } else {
+                         // turn off unused bands
+                         g_settings_set_enum(self->settings_left, (bandn + "-type").c_str(), 0);
+                         g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(), 0);
+                       }
+                     }
+                   }),
+                   this);
 
-    for (uint n = 0U; n < max_bands; n++) {
-      const auto bandn = "band" + std::to_string(n);
+  g_signal_connect(
+      settings, "changed::split-channels", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+        auto self = static_cast<Equalizer*>(user_data);
 
-      settings_right->set_enum(bandn + "-type", settings_left->get_enum(bandn + "-type"));
+        if (g_settings_get_boolean(settings, key) == 1) {
+          return;
+        }
 
-      settings_right->set_enum(bandn + "-mode", settings_left->get_enum(bandn + "-mode"));
+        for (uint n = 0U; n < self->max_bands; n++) {
+          const auto bandn = "band" + std::to_string(n);
 
-      settings_right->set_enum(bandn + "-slope", settings_left->get_enum(bandn + "-slope"));
+          g_settings_set_enum(self->settings_right, (bandn + "-type").c_str(),
+                              g_settings_get_enum(self->settings_left, (bandn + "-type").c_str()));
 
-      settings_right->set_boolean(bandn + "-solo", settings_left->get_boolean(bandn + "-solo"));
+          g_settings_set_enum(self->settings_right, (bandn + "-mode").c_str(),
+                              g_settings_get_enum(self->settings_left, (bandn + "-mode").c_str()));
 
-      settings_right->set_boolean(bandn + "-mute", settings_left->get_boolean(bandn + "-mute"));
+          g_settings_set_enum(self->settings_right, (bandn + "-slope").c_str(),
+                              g_settings_get_enum(self->settings_left, (bandn + "-slope").c_str()));
 
-      settings_right->set_double(bandn + "-frequency", settings_left->get_double(bandn + "-frequency"));
+          g_settings_set_boolean(self->settings_right, (bandn + "-solo").c_str(),
+                                 g_settings_get_boolean(self->settings_left, (bandn + "-solo").c_str()));
 
-      settings_right->set_double(bandn + "-gain", settings_left->get_double(bandn + "-gain"));
+          g_settings_set_boolean(self->settings_right, (bandn + "-mute").c_str(),
+                                 g_settings_get_boolean(self->settings_left, (bandn + "-mute").c_str()));
 
-      settings_right->set_double(bandn + "-q", settings_left->get_double(bandn + "-q"));
-    }
-  });
+          g_settings_set_double(self->settings_right, (bandn + "-frequency").c_str(),
+                                g_settings_get_double(self->settings_left, (bandn + "-frequency").c_str()));
+
+          g_settings_set_double(self->settings_right, (bandn + "-gain").c_str(),
+                                g_settings_get_double(self->settings_left, (bandn + "-gain").c_str()));
+
+          g_settings_set_double(self->settings_right, (bandn + "-q").c_str(),
+                                g_settings_get_double(self->settings_left, (bandn + "-q").c_str()));
+        }
+      }),
+      this);
 
   setup_input_output_gain();
 }

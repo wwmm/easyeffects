@@ -185,17 +185,23 @@ void MultibandGate::process(std::span<float>& left_in,
       gating2_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating2"));
       gating3_port_value = static_cast<double>(lv2_wrapper->get_control_port_value("gating3"));
 
-      Glib::signal_idle().connect_once([=, this] {
-        output0.emit(output0_port_value);
-        output1.emit(output1_port_value);
-        output2.emit(output2_port_value);
-        output3.emit(output3_port_value);
+      g_idle_add((GSourceFunc) +
+                     [](gpointer user_data) {
+                       auto* self = static_cast<MultibandGate*>(user_data);
 
-        gating0.emit(gating0_port_value);
-        gating1.emit(gating1_port_value);
-        gating2.emit(gating2_port_value);
-        gating3.emit(gating3_port_value);
-      });
+                       self->output0.emit(self->output0_port_value);
+                       self->output1.emit(self->output1_port_value);
+                       self->output2.emit(self->output2_port_value);
+                       self->output3.emit(self->output3_port_value);
+
+                       self->gating0.emit(self->gating0_port_value);
+                       self->gating1.emit(self->gating1_port_value);
+                       self->gating2.emit(self->gating2_port_value);
+                       self->gating3.emit(self->gating3_port_value);
+
+                       return G_SOURCE_REMOVE;
+                     },
+                 this);
 
       notify();
 

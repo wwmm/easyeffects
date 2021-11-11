@@ -50,7 +50,7 @@ class Equalizer : public PluginBase {
   float latency_port_value = 0.0F;
 
  private:
-  Glib::RefPtr<Gio::Settings> settings_left, settings_right;
+  GSettings *settings_left = nullptr, *settings_right = nullptr;
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 

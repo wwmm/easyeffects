@@ -29,8 +29,13 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
     util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_mb_compressor_stereo is not installed");
   }
 
-  settings->signal_changed("sidechain-input-device")
-      .connect(sigc::mem_fun(*this, &MultibandCompressor::update_sidechain_links));
+  g_signal_connect(settings, "changed::sidechain-input-device",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<MultibandCompressor*>(user_data);
+
+                     self->update_sidechain_links(key);
+                   }),
+                   this);
 
   lv2_wrapper->bind_key_enum(settings, "compressor-mode", "mode");
 
@@ -39,8 +44,13 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   for (uint n = 0U; n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
-    settings->signal_changed("external-sidechain" + nstr)
-        .connect(sigc::mem_fun(*this, &MultibandCompressor::update_sidechain_links));
+    g_signal_connect(settings, "changed::external-sidechain",
+                     G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                       auto self = static_cast<MultibandCompressor*>(user_data);
+
+                       self->update_sidechain_links(key);
+                     }),
+                     this);
 
     lv2_wrapper->bind_key_bool(settings, "external-sidechain" + nstr, "sce_" + nstr);
 
@@ -154,6 +164,16 @@ void MultibandCompressor::process(std::span<float>& left_in,
 
     Glib::signal_idle().connect_once([=, this] { latency.emit(latency_port_value); });
 
+    g_idle_add((GSourceFunc) +
+                   [](gpointer user_data) {
+                     auto* self = static_cast<MultibandCompressor*>(user_data);
+
+                     self->latency.emit(self->latency_port_value);
+
+                     return G_SOURCE_REMOVE;
+                   },
+               this);
+
     spa_process_latency_info latency_info{};
 
     latency_info.ns = static_cast<uint64_t>(latency_port_value * 1000000000.0F);
@@ -184,12 +204,18 @@ void MultibandCompressor::process(std::span<float>& left_in,
         reduction_port_array.at(n) = lv2_wrapper->get_control_port_value("rlm_" + nstr);
       }
 
-      Glib::signal_idle().connect_once([=, this] {
-        frequency_range.emit(frequency_range_end_port_array);
-        envelope.emit(envelope_port_array);
-        curve.emit(curve_port_array);
-        reduction.emit(reduction_port_array);
-      });
+      g_idle_add((GSourceFunc) +
+                     [](gpointer user_data) {
+                       auto* self = static_cast<MultibandCompressor*>(user_data);
+
+                       self->frequency_range.emit(self->frequency_range_end_port_array);
+                       self->envelope.emit(self->envelope_port_array);
+                       self->curve.emit(self->curve_port_array);
+                       self->reduction.emit(self->reduction_port_array);
+
+                       return G_SOURCE_REMOVE;
+                     },
+                 this);
 
       notify();
 
@@ -204,11 +230,11 @@ void MultibandCompressor::update_sidechain_links(const Glib::ustring& key) {
   for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
     const auto nstr = std::to_string(n);
 
-    external_sidechain_enabled = settings->get_boolean("external-sidechain" + nstr);
+    external_sidechain_enabled = g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
   }
 
   if (external_sidechain_enabled) {
-    const auto device_name = settings->get_string("sidechain-input-device").raw();
+    const auto device_name = std::string(g_settings_get_string(settings, "sidechain-input-device"));
 
     NodeInfo input_device = pm->ee_source_node;
 

@@ -53,6 +53,13 @@ class AutoGain : public PluginBase {
                     const double&)>
       results;  // range
 
+  double momentary = 0.0;
+  double shortterm = 0.0;
+  double global = 0.0;
+  double relative = 0.0;
+  double range = 0.0;
+  double loudness = 0.0;
+
  private:
   bool ebur128_ready = false;
 

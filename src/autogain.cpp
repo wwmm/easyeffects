@@ -24,33 +24,45 @@ AutoGain::AutoGain(const std::string& tag,
                    const std::string& schema_path,
                    PipeManager* pipe_manager)
     : PluginBase(tag, plugin_name::autogain, schema, schema_path, pipe_manager) {
-  target = settings->get_double("target");
+  target = g_settings_get_double(settings, "target");
 
-  reference = parse_reference_key(settings->get_string("reference"));
+  reference = parse_reference_key(std::string(g_settings_get_string(settings, "reference")));
 
-  settings->signal_changed("target").connect([&, this](const auto& key) { target = settings->get_double(key); });
+  g_signal_connect(settings, "changed::target", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<AutoGain*>(user_data);
 
-  settings->signal_changed("reset-history").connect([&, this](const auto& key) {
-    mythreads.emplace_back([this]() {  // Using emplace_back here makes sense
-      data_mutex.lock();
+                     self->target = g_settings_get_double(settings, key);
+                   }),
+                   this);
 
-      ebur128_ready = false;
+  g_signal_connect(settings, "changed::reset-history",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<AutoGain*>(user_data);
 
-      data_mutex.unlock();
+                     self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
+                       self->data_mutex.lock();
 
-      auto status = init_ebur128();
+                       self->ebur128_ready = false;
 
-      data_mutex.lock();
+                       self->data_mutex.unlock();
 
-      ebur128_ready = status;
+                       auto status = self->init_ebur128();
 
-      data_mutex.unlock();
-    });
-  });
+                       self->data_mutex.lock();
 
-  settings->signal_changed("reference").connect([&, this](const auto& key) {
-    reference = parse_reference_key(settings->get_string(key));
-  });
+                       self->ebur128_ready = status;
+
+                       self->data_mutex.unlock();
+                     });
+                   }),
+                   this);
+
+  g_signal_connect(settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<AutoGain*>(user_data);
+
+                     self->reference = parse_reference_key(std::string(g_settings_get_string(settings, key)));
+                   }),
+                   this);
 
   setup_input_output_gain();
 }
@@ -164,12 +176,6 @@ void AutoGain::process(std::span<float>& left_in,
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
 
   auto failed = false;
-  double momentary = 0.0;
-  double shortterm = 0.0;
-  double global = 0.0;
-  double relative = 0.0;
-  double range = 0.0;
-  double loudness = 0.0;
 
   if (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) {
     failed = true;
@@ -261,8 +267,16 @@ void AutoGain::process(std::span<float>& left_in,
     notification_dt += buffer_duration;
 
     if (notification_dt >= notification_time_window) {
-      Glib::signal_idle().connect_once(
-          [=, this] { results.emit(loudness, internal_output_gain, momentary, shortterm, global, relative, range); });
+      g_idle_add((GSourceFunc) +
+                     [](gpointer user_data) {
+                       auto* self = static_cast<AutoGain*>(user_data);
+
+                       self->results.emit(self->loudness, self->internal_output_gain, self->momentary, self->shortterm,
+                                          self->global, self->relative, self->range);
+
+                       return G_SOURCE_REMOVE;
+                     },
+                 this);
 
       notify();
 
