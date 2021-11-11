@@ -258,39 +258,41 @@ void Crystalizer::bind_band(const int& n) {
   band_mute.at(n) = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
   band_bypass.at(n) = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
 
-  struct Data {
-    Crystalizer* self;
-    const int n;
-    const std::string bandn;
-  };
-
-  Data data{this, n, bandn};
-
   using namespace std::string_literals;
 
   g_signal_connect(settings, ("changed::"s + "intensity-"s + bandn).c_str(),
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto d = static_cast<Data*>(user_data);
+                     auto self = static_cast<Crystalizer*>(user_data);
 
-                     d->self->band_intensity.at(d->n) =
-                         g_settings_get_boolean(settings, ("intensity-" + d->bandn).c_str()) != 0;
+                     auto s_key = std::string(key);
+
+                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+
+                     self->band_intensity.at(index) = g_settings_get_double(settings, key) != 0;
                    }),
-                   &data);
+                   this);
 
   g_signal_connect(settings, ("changed::"s + "mute-"s + bandn).c_str(),
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto d = static_cast<Data*>(user_data);
+                     auto self = static_cast<Crystalizer*>(user_data);
 
-                     d->self->band_mute.at(d->n) = g_settings_get_boolean(settings, ("mute-" + d->bandn).c_str()) != 0;
+                     auto s_key = std::string(key);
+
+                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+
+                     self->band_mute.at(index) = g_settings_get_boolean(settings, key) != 0;
                    }),
-                   &data);
+                   this);
 
   g_signal_connect(settings, ("changed::"s + "bypass-"s + bandn).c_str(),
                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                     auto d = static_cast<Data*>(user_data);
+                     auto self = static_cast<Crystalizer*>(user_data);
 
-                     d->self->band_bypass.at(d->n) =
-                         g_settings_get_boolean(settings, ("bypass-" + d->bandn).c_str()) != 0;
+                     auto s_key = std::string(key);
+
+                     int index = std::stoi(s_key.substr(s_key.find("-band") + 5));
+
+                     self->band_bypass.at(index) = g_settings_get_boolean(settings, key) != 0;
                    }),
-                   &data);
+                   this);
 }
