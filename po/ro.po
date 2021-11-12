@@ -790,7 +790,7 @@ msgstr "Despică"
 #: data/ui/deesser.glade:959 data/ui/multiband_gate.glade:865
 #: data/ui/multiband_gate.glade:1298 data/ui/multiband_gate.glade:1711
 #: data/ui/multiband_gate.glade:2124
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "Reducere"
 
 #: data/ui/deesser.glade:972

@@ -846,7 +846,7 @@ msgstr "Wykryto"
 #: data/ui/deesser.ui:630 data/ui/maximizer.ui:311
 #: data/ui/multiband_gate.ui:444 data/ui/multiband_gate.ui:817
 #: data/ui/multiband_gate.ui:1190 data/ui/multiband_gate.ui:1563
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "Redukcja"
 
 #: data/ui/echo_canceller.ui:29
@@ -1576,7 +1576,7 @@ msgstr "Wzmocnienie"
 
 #: data/ui/multiband_gate.ui:471
 #, fuzzy
-msgid "Band 1 Reduction"
+msgid "Band 1 Max Reduction"
 msgstr "Redukcja wzmocnienia"
 
 #: data/ui/multiband_gate.ui:545
@@ -1633,7 +1633,7 @@ msgstr "Wzmocnienie"
 
 #: data/ui/multiband_gate.ui:844
 #, fuzzy
-msgid "Band 2 Reduction"
+msgid "Band 2 Max Reduction"
 msgstr "Redukcja wzmocnienia"
 
 #: data/ui/multiband_gate.ui:918
@@ -1690,7 +1690,7 @@ msgstr "Wzmocnienie"
 
 #: data/ui/multiband_gate.ui:1217
 #, fuzzy
-msgid "Band 3 Reduction"
+msgid "Band 3 Max Reduction"
 msgstr "Redukcja wzmocnienia"
 
 #: data/ui/multiband_gate.ui:1291
@@ -1747,7 +1747,7 @@ msgstr "Wzmocnienie"
 
 #: data/ui/multiband_gate.ui:1590
 #, fuzzy
-msgid "Band 4 Reduction"
+msgid "Band 4 Max Reduction"
 msgstr "Redukcja wzmocnienia"
 
 #: data/ui/pipe_info.ui:24 src/general_settings_ui.cpp:68
