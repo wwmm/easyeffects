@@ -147,7 +147,7 @@ void application_window_init(ApplicationWindow* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(presets_menu_new()));
+  // gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(presets_menu_new()));
 }
 
 auto application_window_new(GApplication* gapp) -> ApplicationWindow* {

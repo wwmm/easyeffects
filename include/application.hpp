@@ -42,6 +42,19 @@ void hide_all_windows(GApplication* app);
 
 G_END_DECLS
 
+struct _Application {
+  AdwApplication parent_instance{};
+
+  GSettings* settings = nullptr;
+  GSettings* soe_settings = nullptr;
+  GSettings* sie_settings = nullptr;
+
+  std::unique_ptr<PipeManager> pm;
+  std::unique_ptr<StreamOutputEffects> soe;
+  std::unique_ptr<StreamInputEffects> sie;
+  std::unique_ptr<PresetsManager> presets_manager;
+};
+
 }  // namespace app
 
 class Application : public Gtk::Application {

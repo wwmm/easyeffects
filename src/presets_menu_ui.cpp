@@ -25,6 +25,8 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "presets_menu_ui: ";
 
+enum { PROP_APPLICATION = 1 };
+
 struct _PresetsMenu {
   GtkPopover parent_instance{};
 
@@ -40,7 +42,7 @@ struct _PresetsMenu {
 
   GSettings* settings = nullptr;
 
-  GApplication* gapp = nullptr;
+  app::Application* application = nullptr;
 };
 
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
@@ -79,17 +81,55 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   // app->presets_manager->add(preset_type, name);
 }
 
+void setup_listview(GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {}
+
+void presets_menu_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+  auto* self = EE_PRESETS_MENU(object);
+
+  switch (prop_id) {
+    case PROP_APPLICATION:
+      self->application = static_cast<app::Application*>(g_value_dup_object(value));
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
+
+void presets_menu_get_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
+  auto* self = EE_PRESETS_MENU(object);
+
+  switch (prop_id) {
+    case PROP_APPLICATION:
+      self->application = static_cast<app::Application*>(g_value_dup_object(value));
+      g_value_set_object(const_cast<GValue*>(value), self->application);
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
+      break;
+  }
+}
+
 void presets_menu_class_init(PresetsMenuClass* klass) {
+  GObjectClass* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   // widget_class->realize = window_realize;
 
+  g_object_class_install_property(
+      object_class, PROP_APPLICATION,
+      g_param_spec_object("application", "Application", "Application", app::application_get_type(), G_PARAM_READWRITE));
+
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, stack);
+
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
+
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
@@ -99,10 +139,15 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
 
 void presets_menu_init(PresetsMenu* self) {
   gtk_widget_init_template(GTK_WIDGET(self));
+
+  self->output_string_list = gtk_string_list_new(nullptr);
+  self->input_string_list = gtk_string_list_new(nullptr);
+
+  setup_listview(self->output_listview, PresetType::output, self->output_string_list);
 }
 
-auto presets_menu_new() -> PresetsMenu* {
-  return static_cast<PresetsMenu*>(g_object_new(EE_TYPE_PRESETS_MENU, nullptr));
+auto presets_menu_new(app::Application* application) -> PresetsMenu* {
+  return static_cast<PresetsMenu*>(g_object_new(EE_TYPE_PRESETS_MENU, "application", application, nullptr));
 }
 
 }  // namespace ui
@@ -121,7 +166,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
   output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
   output_name = builder->get_widget<Gtk::Text>("output_name");
-  add_output = builder->get_widget<Gtk::Button>("add_output");
   import_output = builder->get_widget<Gtk::Button>("import_output");
   output_search = builder->get_widget<Gtk::SearchEntry>("output_search");
   last_used_output = builder->get_widget<Gtk::Label>("last_used_output");
@@ -129,7 +173,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   input_listview = builder->get_widget<Gtk::ListView>("input_listview");
   input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
   input_name = builder->get_widget<Gtk::Text>("input_name");
-  add_input = builder->get_widget<Gtk::Button>("add_input");
   import_input = builder->get_widget<Gtk::Button>("import_input");
   input_search = builder->get_widget<Gtk::SearchEntry>("input_search");
   last_used_input = builder->get_widget<Gtk::Label>("last_used_input");
@@ -145,10 +188,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   // signals connection
 
   stack_model = stack->get_pages();
-
-  add_output->signal_clicked().connect([=, this]() { create_preset(PresetType::output); });
-
-  add_input->signal_clicked().connect([=, this]() { create_preset(PresetType::input); });
 
   import_output->signal_clicked().connect([=, this]() { import_preset(PresetType::output); });
 
@@ -245,45 +284,6 @@ auto PresetsMenuUi::create(Application* app) -> PresetsMenuUi* {
   const auto settings = Gio::Settings::create("com.github.wwmm.easyeffects");
 
   return Gtk::Builder::get_widget_derived<PresetsMenuUi>(builder, "PresetsMenuUi", settings, app);
-}
-
-void PresetsMenuUi::create_preset(PresetType preset_type) {
-  Gtk::Text* preset_name_box = nullptr;
-
-  switch (preset_type) {
-    case PresetType::output:
-      preset_name_box = output_name;
-      break;
-    case PresetType::input:
-      preset_name_box = input_name;
-      break;
-    default:
-      return;
-  }
-
-  // Parse to have a valid UTF-8 string
-
-  auto name = preset_name_box->get_text().make_valid();
-
-  if (name.empty()) {
-    return;
-  }
-
-  preset_name_box->set_text("");
-
-  // Truncate if longer than 100 characters
-
-  if (name.length() > 100U) {
-    name.resize(100U);
-  }
-
-  if (name.find_first_of("\\/") != Glib::ustring::npos) {
-    util::debug(log_tag + " name " + name.raw() + " has illegal file name characters. Aborting preset creation!");
-
-    return;
-  }
-
-  app->presets_manager->add(preset_type, name);
 }
 
 void PresetsMenuUi::import_preset(PresetType preset_type) {

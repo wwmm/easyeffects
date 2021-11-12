@@ -26,19 +26,6 @@ using namespace std::string_literals;
 
 auto constexpr log_tag = "application: ";
 
-struct _Application {
-  AdwApplication parent_instance{};
-
-  GSettings* settings = nullptr;
-  GSettings* soe_settings = nullptr;
-  GSettings* sie_settings = nullptr;
-
-  std::unique_ptr<PipeManager> pm;
-  std::unique_ptr<StreamOutputEffects> soe;
-  std::unique_ptr<StreamInputEffects> sie;
-  std::unique_ptr<PresetsManager> presets_manager;
-};
-
 G_DEFINE_TYPE(Application, application, ADW_TYPE_APPLICATION)
 
 void hide_all_windows(GApplication* app) {

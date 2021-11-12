@@ -20,6 +20,7 @@
 #pragma once
 
 #include <adwaita.h>
+#include "preset_type.hpp"
 
 namespace ui {
 
@@ -37,7 +38,6 @@ G_END_DECLS
 
 #include <glibmm/i18n.h>
 #include "application.hpp"
-#include "preset_type.hpp"
 
 class PresetsMenuUi : public Gtk::Popover {
  public:
@@ -62,7 +62,7 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Gtk::Stack* stack = nullptr;
 
-  Gtk::Button *add_output = nullptr, *add_input = nullptr, *import_output = nullptr, *import_input = nullptr;
+  Gtk::Button *import_output = nullptr, *import_input = nullptr;
 
   Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
 
@@ -79,8 +79,6 @@ class PresetsMenuUi : public Gtk::Popover {
   Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
 
   std::vector<sigc::connection> connections;
-
-  void create_preset(PresetType preset_type);
 
   void import_preset(PresetType preset_type);
 
