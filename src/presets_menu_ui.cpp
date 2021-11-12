@@ -36,6 +36,8 @@ struct _PresetsMenu {
 
   GtkText *output_name = nullptr, *input_name = nullptr;
 
+  GtkSearchEntry *output_search = nullptr, *input_search = nullptr;
+
   GtkStringList *output_string_list = nullptr, *input_string_list = nullptr;
 
   GSettings* settings = nullptr;
@@ -86,15 +88,120 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
 
 void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {
   for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
-    // string_list->append(name);
-    util::warning(name);
+    gtk_string_list_append(string_list, name.c_str());
   }
+
+  // filter
+
+  auto* filter = gtk_string_filter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* filter_model = gtk_filter_list_model_new(G_LIST_MODEL(string_list), GTK_FILTER(filter));
+
+  gtk_filter_list_model_set_incremental(filter_model, 1);
+
+  switch (preset_type) {
+    case PresetType::output: {
+      g_object_bind_property(self->output_search, "text", filter, "search", G_BINDING_DEFAULT);
+      break;
+    }
+    case PresetType::input: {
+      g_object_bind_property(self->input_search, "text", filter, "search", G_BINDING_DEFAULT);
+      break;
+    }
+  }
+
+  // sorter
+
+  auto* sorter = gtk_string_sorter_new(gtk_property_expression_new(GTK_TYPE_STRING_OBJECT, nullptr, "string"));
+
+  auto* sorter_model = gtk_sort_list_model_new(G_LIST_MODEL(filter_model), GTK_SORTER(sorter));
+
+  // setting the listview model and factory
+
+  auto* selection = gtk_no_selection_new(G_LIST_MODEL(sorter_model));
+
+  gtk_list_view_set_model(listview, GTK_SELECTION_MODEL(selection));
+
+  g_object_unref(selection);
+
+  auto* factory = gtk_signal_list_item_factory_new();
+
+  // setting the factory callbacks
+
+  g_signal_connect(factory, "setup",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+                     auto builder = gtk_builder_new();
+
+                     gtk_builder_add_from_resource(builder, "/com/github/wwmm/easyeffects/ui/preset_row.ui", nullptr);
+
+                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+
+                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
+                     g_object_set_data(G_OBJECT(item), "apply", gtk_builder_get_object(builder, "apply"));
+                     g_object_set_data(G_OBJECT(item), "save", gtk_builder_get_object(builder, "save"));
+                     g_object_set_data(G_OBJECT(item), "remove", gtk_builder_get_object(builder, "remove"));
+
+                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+
+                     gtk_list_item_set_activatable(item, 0);
+                   }),
+                   self);
+
+  g_signal_connect(factory, "bind",
+                   G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+                     auto* label = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "name"));
+                     auto* apply = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "apply"));
+                     auto* save = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "save"));
+                     auto* remove = static_cast<GtkLabel*>(g_object_get_data(G_OBJECT(item), "remove"));
+
+                     auto* child_item = gtk_list_item_get_item(item);
+
+                     auto* name = gtk_string_object_get_string(GTK_STRING_OBJECT(child_item));
+
+                     gtk_label_set_text(label, name);
+
+                     // auto connection_apply = apply->signal_clicked().connect([=, this]() {
+                     //   switch (preset_type) {
+                     //     case PresetType::input:
+                     //       settings->set_string("last-used-input-preset", name);
+                     //       break;
+                     //     case PresetType::output:
+                     //       settings->set_string("last-used-output-preset", name);
+                     //       break;
+                     //   }
+
+                     //   app->presets_manager->load_preset_file(preset_type, name);
+                     // });
+
+                     // auto connection_save =
+                     //     save->signal_clicked().connect([=, this]() {
+                     //     app->presets_manager->save_preset_file(preset_type, name); });
+
+                     // auto connection_remove =
+                     //     remove->signal_clicked().connect([=, this]() { app->presets_manager->remove(preset_type,
+                     //     name); });
+
+                     // list_item->set_data("connection_apply", new sigc::connection(connection_apply),
+                     //                     Glib::destroy_notify_delete<sigc::connection>);
+
+                     // list_item->set_data("connection_save", new sigc::connection(connection_save),
+                     //                     Glib::destroy_notify_delete<sigc::connection>);
+
+                     // list_item->set_data("connection_remove", new sigc::connection(connection_remove),
+                     //                     Glib::destroy_notify_delete<sigc::connection>);
+                   }),
+                   self);
+
+  gtk_list_view_set_factory(listview, factory);
+
+  g_object_unref(factory);
 }
 
 void setup(PresetsMenu* self, app::Application* application) {
   self->application = application;
 
   setup_listview(self, self->output_listview, PresetType::output, self->output_string_list);
+  setup_listview(self, self->input_listview, PresetType::input, self->input_string_list);
 }
 
 void presets_menu_class_init(PresetsMenuClass* klass) {
@@ -109,10 +216,12 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_search);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_search);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
 }
