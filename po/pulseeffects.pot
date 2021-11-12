@@ -494,7 +494,7 @@ msgstr ""
 #: data/ui/compressor.ui:922 data/ui/deesser.ui:585 data/ui/maximizer.ui:254
 #: data/ui/multiband_gate.ui:406 data/ui/multiband_gate.ui:749
 #: data/ui/multiband_gate.ui:1092 data/ui/multiband_gate.ui:1435
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr ""
 
 #: data/ui/convolver.ui:43

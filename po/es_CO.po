@@ -1115,7 +1115,7 @@ msgstr "Puerta Multibanda"
 #: data/ui/multiband_gate.glade:722 data/ui/multiband_gate.glade:1152
 #: data/ui/multiband_gate.glade:1562 data/ui/multiband_gate.glade:1972
 #: data/ui/deesser.glade:748
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "Reducción"
 
 #: data/ui/deesser.glade:61

@@ -426,7 +426,7 @@
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Reduction</property>
+                                                <property name="label" translatable="yes">Max Reduction</property>
                                                 <layout>
                                                     <property name="column">6</property>
                                                     <property name="row">0</property>
@@ -453,7 +453,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Band 1 Reduction</property>
+                                                    <property name="label" translatable="yes">Band 1 Max Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -786,7 +786,7 @@
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Reduction</property>
+                                                <property name="label" translatable="yes">Max Reduction</property>
                                                 <layout>
                                                     <property name="column">6</property>
                                                     <property name="row">0</property>
@@ -813,7 +813,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Band 2 Reduction</property>
+                                                    <property name="label" translatable="yes">Band 2 Max Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1146,7 +1146,7 @@
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Reduction</property>
+                                                <property name="label" translatable="yes">Max Reduction</property>
                                                 <layout>
                                                     <property name="column">6</property>
                                                     <property name="row">0</property>
@@ -1173,7 +1173,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Band 3 Reduction</property>
+                                                    <property name="label" translatable="yes">Band 3 Max Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>
@@ -1506,7 +1506,7 @@
 
                                         <child>
                                             <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Reduction</property>
+                                                <property name="label" translatable="yes">Max Reduction</property>
                                                 <layout>
                                                     <property name="column">6</property>
                                                     <property name="row">0</property>
@@ -1533,7 +1533,7 @@
                                                     <property name="row">1</property>
                                                 </layout>
                                                 <accessibility>
-                                                    <property name="label" translatable="yes">Band 4 Reduction</property>
+                                                    <property name="label" translatable="yes">Band 4 Max Reduction</property>
                                                 </accessibility>
                                             </object>
                                         </child>

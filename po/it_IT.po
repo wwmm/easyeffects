@@ -782,7 +782,7 @@ msgstr "Rilevato"
 #: data/ui/deesser.ui:630 data/ui/maximizer.ui:311
 #: data/ui/multiband_gate.ui:444 data/ui/multiband_gate.ui:817
 #: data/ui/multiband_gate.ui:1190 data/ui/multiband_gate.ui:1563
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "Riduzione"
 
 #: data/ui/echo_canceller.ui:29
@@ -1439,7 +1439,7 @@ msgid "Band 1 Makeup"
 msgstr "Banda 1 Guadagno"
 
 #: data/ui/multiband_gate.ui:471
-msgid "Band 1 Reduction"
+msgid "Band 1 Max Reduction"
 msgstr "Banda 1 Riduzione"
 
 #: data/ui/multiband_gate.ui:545
@@ -1483,7 +1483,7 @@ msgid "Band 2 Makeup"
 msgstr "Banda 2 Guadagno"
 
 #: data/ui/multiband_gate.ui:844
-msgid "Band 2 Reduction"
+msgid "Band 2 Max Reduction"
 msgstr "Banda 2 Riduzione"
 
 #: data/ui/multiband_gate.ui:918
@@ -1527,7 +1527,7 @@ msgid "Band 3 Makeup"
 msgstr "Banda 3 Guadagno"
 
 #: data/ui/multiband_gate.ui:1217
-msgid "Band 3 Reduction"
+msgid "Band 3 Max Reduction"
 msgstr "Banda 3 Riduzione"
 
 #: data/ui/multiband_gate.ui:1291
@@ -1571,7 +1571,7 @@ msgid "Band 4 Makeup"
 msgstr "Banda 4 Guadagno"
 
 #: data/ui/multiband_gate.ui:1590
-msgid "Band 4 Reduction"
+msgid "Band 4 Max Reduction"
 msgstr "Banda 4 Riduzione"
 
 #: data/ui/pipe_info.ui:24 src/general_settings_ui.cpp:68
