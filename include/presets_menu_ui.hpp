@@ -20,9 +20,10 @@
 #pragma once
 
 #include <adwaita.h>
+#include "application.hpp"
 #include "preset_type.hpp"
 
-namespace ui {
+namespace ui::presets_menu {
 
 G_BEGIN_DECLS
 
@@ -30,14 +31,15 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(PresetsMenu, presets_menu, EE, PRESETS_MENU, GtkPopover)
 
-auto presets_menu_new() -> PresetsMenu*;
-
 G_END_DECLS
 
-}  // namespace ui
+auto create() -> PresetsMenu*;
+
+void setup(PresetsMenu* self, app::Application* application);
+
+}  // namespace ui::presets_menu
 
 #include <glibmm/i18n.h>
-#include "application.hpp"
 
 class PresetsMenuUi : public Gtk::Popover {
  public:

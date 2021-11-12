@@ -19,13 +19,11 @@
 
 #include "presets_menu_ui.hpp"
 
-namespace ui {
+namespace ui::presets_menu {
 
 using namespace std::string_literals;
 
 auto constexpr log_tag = "presets_menu_ui: ";
-
-enum { PROP_APPLICATION = 1 };
 
 struct _PresetsMenu {
   GtkPopover parent_instance{};
@@ -51,11 +49,16 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   const auto* widget_name = gtk_widget_get_name(GTK_WIDGET(button));
 
   GtkText* preset_name_box = nullptr;
+  PresetType preset_type;
 
   if (g_strcmp0(widget_name, "output_preset") == 0) {
     preset_name_box = self->output_name;
+
+    preset_type = PresetType::output;
   } else if (g_strcmp0(widget_name, "input_preset") == 0) {
     preset_name_box = self->input_name;
+
+    preset_type = PresetType::input;
   }
 
   auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(preset_name_box)), -1));
@@ -78,49 +81,26 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
     return;
   }
 
-  // app->presets_manager->add(preset_type, name);
+  self->application->presets_manager->add(preset_type, name);
 }
 
-void setup_listview(GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {}
-
-void presets_menu_set_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
-  auto* self = EE_PRESETS_MENU(object);
-
-  switch (prop_id) {
-    case PROP_APPLICATION:
-      self->application = static_cast<app::Application*>(g_value_dup_object(value));
-      break;
-
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-      break;
+void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {
+  for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
+    // string_list->append(name);
+    util::warning(name);
   }
 }
 
-void presets_menu_get_property(GObject* object, guint prop_id, const GValue* value, GParamSpec* pspec) {
-  auto* self = EE_PRESETS_MENU(object);
+void setup(PresetsMenu* self, app::Application* application) {
+  self->application = application;
 
-  switch (prop_id) {
-    case PROP_APPLICATION:
-      self->application = static_cast<app::Application*>(g_value_dup_object(value));
-      g_value_set_object(const_cast<GValue*>(value), self->application);
-      break;
-
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID(object, prop_id, pspec);
-      break;
-  }
+  setup_listview(self, self->output_listview, PresetType::output, self->output_string_list);
 }
 
 void presets_menu_class_init(PresetsMenuClass* klass) {
-  GObjectClass* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
   // widget_class->realize = window_realize;
-
-  g_object_class_install_property(
-      object_class, PROP_APPLICATION,
-      g_param_spec_object("application", "Application", "Application", app::application_get_type(), G_PARAM_READWRITE));
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
@@ -142,15 +122,13 @@ void presets_menu_init(PresetsMenu* self) {
 
   self->output_string_list = gtk_string_list_new(nullptr);
   self->input_string_list = gtk_string_list_new(nullptr);
-
-  setup_listview(self->output_listview, PresetType::output, self->output_string_list);
 }
 
-auto presets_menu_new(app::Application* application) -> PresetsMenu* {
-  return static_cast<PresetsMenu*>(g_object_new(EE_TYPE_PRESETS_MENU, "application", application, nullptr));
+auto create() -> PresetsMenu* {
+  return static_cast<PresetsMenu*>(g_object_new(EE_TYPE_PRESETS_MENU, nullptr));
 }
 
-}  // namespace ui
+}  // namespace ui::presets_menu
 
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,

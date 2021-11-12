@@ -19,7 +19,7 @@
 
 #include "application_ui.hpp"
 
-namespace ui {
+namespace ui::application_window {
 
 using namespace std::string_literals;
 
@@ -31,6 +31,8 @@ struct _ApplicationWindow {
   AdwViewStack* stack = nullptr;
 
   GtkMenuButton* presets_menu_button = nullptr;
+
+  ui::presets_menu::PresetsMenu* presetsMenu = nullptr;
 
   int width = -1;
   int height = -1;
@@ -44,7 +46,7 @@ struct _ApplicationWindow {
 
 G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW)
 
-void window_constructed(GObject* object) {
+void constructed(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
   self->maximized = (g_settings_get_boolean(self->settings, "window-maximized") != 0);
@@ -65,7 +67,7 @@ void window_constructed(GObject* object) {
   G_OBJECT_CLASS(application_window_parent_class)->constructed(object);
 }
 
-void window_size_allocate(GtkWidget* widget, int width, int height, int baseline) {
+void size_allocate(GtkWidget* widget, int width, int height, int baseline) {
   auto* self = EE_APP_WINDOW(widget);
 
   GTK_WIDGET_CLASS(application_window_parent_class)->size_allocate(widget, width, height, baseline);
@@ -86,23 +88,31 @@ void surface_state_changed(GtkWidget* widget) {
   self->fullscreen = (new_state & GDK_TOPLEVEL_STATE_FULLSCREEN) != 0;
 }
 
-void window_realize(GtkWidget* widget) {
+void realize(GtkWidget* widget) {
   GTK_WIDGET_CLASS(application_window_parent_class)->realize(widget);
-
-  EE_APP_WINDOW(widget)->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
 
   g_signal_connect_swapped(gtk_native_get_surface(GTK_NATIVE(widget)), "notify::state",
                            G_CALLBACK(surface_state_changed), widget);
+
+  auto* self = EE_APP_WINDOW(widget);
+
+  /*
+    Getting the gapp pointer here because it is not defined when "init" is called
+  */
+
+  self->gapp = G_APPLICATION(gtk_window_get_application(GTK_WINDOW(widget)));
+
+  ui::presets_menu::setup(self->presetsMenu, app::EE_APP(self->gapp));
 }
 
-void window_unrealize(GtkWidget* widget) {
+void unrealize(GtkWidget* widget) {
   g_signal_handlers_disconnect_by_func(gtk_native_get_surface(GTK_NATIVE((widget))),
                                        reinterpret_cast<gpointer>(surface_state_changed), widget);
 
   GTK_WIDGET_CLASS(application_window_parent_class)->unrealize(widget);
 }
 
-void window_dispose(GObject* object) {
+void dispose(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
   g_settings_set_int(self->settings, "window-width", self->width);
@@ -122,12 +132,12 @@ void application_window_class_init(ApplicationWindowClass* klass) {
   auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-  object_class->constructed = window_constructed;
-  object_class->dispose = window_dispose;
+  object_class->constructed = constructed;
+  object_class->dispose = dispose;
 
-  widget_class->size_allocate = window_size_allocate;
-  widget_class->realize = window_realize;
-  widget_class->unrealize = window_unrealize;
+  widget_class->size_allocate = size_allocate;
+  widget_class->realize = realize;
+  widget_class->unrealize = unrealize;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/application_window.ui");
 
@@ -147,14 +157,16 @@ void application_window_init(ApplicationWindow* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  // gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(presets_menu_new()));
+  self->presetsMenu = presets_menu::create();
+
+  gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(self->presetsMenu));
 }
 
-auto application_window_new(GApplication* gapp) -> ApplicationWindow* {
+auto create(GApplication* gapp) -> ApplicationWindow* {
   return static_cast<ApplicationWindow*>(g_object_new(EE_TYPE_APPLICATION_WINDOW, "application", gapp, nullptr));
 }
 
-}  // namespace ui
+}  // namespace ui::application_window
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,

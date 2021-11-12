@@ -36,10 +36,6 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(Application, application, EE, APP, AdwApplication)
 
-auto application_new() -> GApplication*;
-
-void hide_all_windows(GApplication* app);
-
 G_END_DECLS
 
 struct _Application {
@@ -54,6 +50,10 @@ struct _Application {
   std::unique_ptr<StreamInputEffects> sie;
   std::unique_ptr<PresetsManager> presets_manager;
 };
+
+auto application_new() -> GApplication*;
+
+void hide_all_windows(GApplication* app);
 
 }  // namespace app
 

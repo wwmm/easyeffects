@@ -22,7 +22,7 @@
 #include <adwaita.h>
 #include "presets_menu_ui.hpp"
 
-namespace ui {
+namespace ui::application_window {
 
 G_BEGIN_DECLS
 
@@ -30,11 +30,11 @@ G_BEGIN_DECLS
 
 G_DECLARE_FINAL_TYPE(ApplicationWindow, application_window, EE, APP_WINDOW, AdwApplicationWindow)
 
-auto application_window_new(GApplication* gapp) -> ApplicationWindow*;
-
 G_END_DECLS
 
-}  // namespace ui
+auto create(GApplication* gapp) -> ApplicationWindow*;
+
+}  // namespace ui::application_window
 
 #include <glibmm/i18n.h>
 #include "application.hpp"

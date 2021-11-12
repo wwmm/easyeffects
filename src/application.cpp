@@ -184,7 +184,7 @@ void application_class_init(ApplicationClass* klass) {
     if (gtk_application_get_active_window(GTK_APPLICATION(gapp)) == nullptr) {
       G_APPLICATION_CLASS(application_parent_class)->activate(gapp);
 
-      auto* window = ui::application_window_new(gapp);
+      auto* window = ui::application_window::create(gapp);
 
       gtk_window_present(GTK_WINDOW(window));
     }
