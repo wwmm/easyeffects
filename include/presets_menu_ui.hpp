@@ -17,8 +17,23 @@
  *  along with EasyEffects.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef PRESETS_MENU_UI_HPP
-#define PRESETS_MENU_UI_HPP
+#pragma once
+
+#include <adwaita.h>
+
+namespace ui {
+
+G_BEGIN_DECLS
+
+#define EE_TYPE_PRESETS_MENU (presets_menu_get_type())
+
+G_DECLARE_FINAL_TYPE(PresetsMenu, presets_menu, EE, PRESETS_MENU, GtkPopover)
+
+auto presets_menu_new() -> PresetsMenu*;
+
+G_END_DECLS
+
+}  // namespace ui
 
 #include <glibmm/i18n.h>
 #include "application.hpp"
@@ -77,5 +92,3 @@ class PresetsMenuUi : public Gtk::Popover {
 
   void on_show() override;
 };
-
-#endif

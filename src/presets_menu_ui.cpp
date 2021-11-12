@@ -19,6 +19,50 @@
 
 #include "presets_menu_ui.hpp"
 
+namespace ui {
+
+struct _PresetsMenu {
+  GtkPopover parent_instance{};
+
+  AdwViewStack* stack = nullptr;
+
+  GtkScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
+
+  GtkListView *output_listview = nullptr, *input_listview = nullptr;
+
+  GtkStringList *output_string_list = nullptr, *input_string_list = nullptr;
+
+  GSettings* settings = nullptr;
+
+  GApplication* gapp = nullptr;
+};
+
+G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
+
+void presets_menu_class_init(PresetsMenuClass* klass) {
+  auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  // widget_class->realize = window_realize;
+
+  gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
+
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, stack);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
+}
+
+void presets_menu_init(PresetsMenu* self) {
+  gtk_widget_init_template(GTK_WIDGET(self));
+}
+
+auto presets_menu_new() -> PresetsMenu* {
+  return static_cast<PresetsMenu*>(g_object_new(EE_TYPE_PRESETS_MENU, nullptr));
+}
+
+}  // namespace ui
+
 PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,

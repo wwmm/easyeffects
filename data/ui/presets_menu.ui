@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface domain="easyeffects">
-    <object class="GtkPopover" id="PresetsMenuUi">
-        <property name="autohide">1</property>
+    <template class="PresetsMenu" parent="GtkPopover">
         <child>
             <object class="GtkBox" id="top_box">
                 <property name="orientation">vertical</property>
@@ -13,71 +12,18 @@
                 <property name="margin-bottom">6</property>
                 <property name="spacing">6</property>
                 <child>
-                    <object class="GtkBox">
-                        <property name="spacing">6</property>
-                        <property name="halign">center</property>
-                        <property name="homogeneous">1</property>
-                        <child>
-                            <object class="GtkToggleButton" id="toggle_output">
-                                <property name="active">1</property>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Output Presets</property>
-                                </accessibility>
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">center</property>
-                                        <property name="spacing">3</property>
-                                        <child>
-                                            <object class="GtkImage">
-                                                <property name="icon-name">audio-speakers-symbolic</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Output</property>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-
-                        <child>
-                            <object class="GtkToggleButton" id="toggle_input">
-                                <property name="group">toggle_output</property>
-                                <accessibility>
-                                    <property name="label" translatable="yes">Input Presets</property>
-                                </accessibility>
-                                <child>
-                                    <object class="GtkBox">
-                                        <property name="halign">center</property>
-                                        <property name="spacing">3</property>
-                                        <child>
-                                            <object class="GtkImage">
-                                                <property name="icon-name">audio-input-microphone-symbolic</property>
-                                            </object>
-                                        </child>
-                                        <child>
-                                            <object class="GtkLabel">
-                                                <property name="label" translatable="yes">Input</property>
-                                            </object>
-                                        </child>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
+                    <object class="AdwViewSwitcher" id="switcher_title">
+                        <property name="stack">stack</property>
                     </object>
                 </child>
 
                 <child>
-                    <object class="GtkStack" id="stack">
+                    <object class="AdwViewStack" id="stack">
                         <property name="hexpand">1</property>
                         <property name="vexpand">1</property>
-                        <property name="transition_duration">250</property>
-                        <property name="transition_type">slide-left-right</property>
 
                         <child>
-                            <object class="GtkStackPage">
+                            <object class="AdwViewStackPage">
                                 <property name="name">page_output</property>
                                 <property name="title" translatable="yes">Speakers</property>
                                 <property name="icon_name">audio-speakers-symbolic</property>
@@ -187,7 +133,7 @@
                         </child>
 
                         <child>
-                            <object class="GtkStackPage">
+                            <object class="AdwViewStackPage">
                                 <property name="name">page_input</property>
                                 <property name="title" translatable="yes">Microphone</property>
                                 <property name="icon_name">audio-input-microphone-symbolic</property>
@@ -299,7 +245,6 @@
                     </object>
                 </child>
             </object>
-
         </child>
-    </object>
+    </template>
 </interface>

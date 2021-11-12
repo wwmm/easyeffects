@@ -20,8 +20,9 @@
 #pragma once
 
 #include <adwaita.h>
+#include "presets_menu_ui.hpp"
 
-namespace ui::application_window {
+namespace ui {
 
 G_BEGIN_DECLS
 
@@ -33,14 +34,14 @@ auto application_window_new(GApplication* gapp) -> ApplicationWindow*;
 
 G_END_DECLS
 
-}  // namespace ui::application_window
+}  // namespace ui
 
 #include <glibmm/i18n.h>
 #include "application.hpp"
 #include "general_settings_ui.hpp"
 #include "pipe_info_ui.hpp"
 #include "pipe_manager.hpp"
-#include "presets_menu_ui.hpp"
+
 #include "spectrum_settings_ui.hpp"
 #include "stream_input_effects_ui.hpp"
 #include "stream_output_effects_ui.hpp"

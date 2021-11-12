@@ -19,7 +19,7 @@
 
 #include "application_ui.hpp"
 
-namespace ui::application_window {
+namespace ui {
 
 struct _ApplicationWindow {
   AdwWindow parent_instance{};
@@ -143,14 +143,14 @@ void application_window_init(ApplicationWindow* self) {
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
 
-  // auto presets_menu_ui = PresetsMenuUi::create(app);
+  gtk_menu_button_set_popover(self->presets_menu_button, GTK_WIDGET(presets_menu_new()));
 }
 
 auto application_window_new(GApplication* gapp) -> ApplicationWindow* {
   return static_cast<ApplicationWindow*>(g_object_new(EE_TYPE_APPLICATION_WINDOW, "application", gapp, nullptr));
 }
 
-}  // namespace ui::application_window
+}  // namespace ui
 
 ApplicationUi::ApplicationUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
