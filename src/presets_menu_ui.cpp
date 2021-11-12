@@ -70,7 +70,7 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
     name.resize(100U);
   }
 
-  if (name.find_first_of("\\/") != Glib::ustring::npos) {
+  if (name.find_first_of("\\/") != std::string::npos) {
     util::debug(log_tag + " name "s + name + " has illegal file name characters. Aborting preset creation!"s);
 
     return;
