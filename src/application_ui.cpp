@@ -21,6 +21,10 @@
 
 namespace ui {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "application_ui: ";
+
 struct _ApplicationWindow {
   AdwWindow parent_instance{};
 

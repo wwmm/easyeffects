@@ -21,6 +21,10 @@
 
 namespace ui {
 
+using namespace std::string_literals;
+
+auto constexpr log_tag = "presets_menu_ui: ";
+
 struct _PresetsMenu {
   GtkPopover parent_instance{};
 
@@ -30,6 +34,8 @@ struct _PresetsMenu {
 
   GtkListView *output_listview = nullptr, *input_listview = nullptr;
 
+  GtkText *output_name = nullptr, *input_name = nullptr;
+
   GtkStringList *output_string_list = nullptr, *input_string_list = nullptr;
 
   GSettings* settings = nullptr;
@@ -38,6 +44,40 @@ struct _PresetsMenu {
 };
 
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
+
+void create_preset(PresetsMenu* self, GtkButton* button) {
+  const auto* widget_name = gtk_widget_get_name(GTK_WIDGET(button));
+
+  GtkText* preset_name_box = nullptr;
+
+  if (g_strcmp0(widget_name, "output_preset") == 0) {
+    preset_name_box = self->output_name;
+  } else if (g_strcmp0(widget_name, "input_preset") == 0) {
+    preset_name_box = self->input_name;
+  }
+
+  auto name = std::string(g_utf8_make_valid(gtk_editable_get_text(GTK_EDITABLE(preset_name_box)), -1));
+
+  if (name.empty()) {
+    return;
+  }
+
+  gtk_editable_set_text(GTK_EDITABLE(preset_name_box), "");
+
+  // Truncate if longer than 100 characters
+
+  if (name.length() > 100U) {
+    name.resize(100U);
+  }
+
+  if (name.find_first_of("\\/") != Glib::ustring::npos) {
+    util::debug(log_tag + " name "s + name + " has illegal file name characters. Aborting preset creation!"s);
+
+    return;
+  }
+
+  // app->presets_manager->add(preset_type, name);
+}
 
 void presets_menu_class_init(PresetsMenuClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
@@ -49,8 +89,12 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, stack);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
+
+  gtk_widget_class_bind_template_callback(widget_class, create_preset);
 }
 
 void presets_menu_init(PresetsMenu* self) {
@@ -73,11 +117,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       output_string_list(Gtk::StringList::create({"initial_value"})),
       input_string_list(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
-
-  stack = builder->get_widget<Gtk::Stack>("stack");
-
-  toggle_output = builder->get_widget<Gtk::ToggleButton>("toggle_output");
-  toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
 
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
   output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
@@ -106,18 +145,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   // signals connection
 
   stack_model = stack->get_pages();
-
-  toggle_output->signal_toggled().connect([&, this]() {
-    if (toggle_output->get_active()) {
-      stack->get_pages()->select_item(0, true);
-    }
-  });
-
-  toggle_input->signal_toggled().connect([&, this]() {
-    if (toggle_input->get_active()) {
-      stack->get_pages()->select_item(1, true);
-    }
-  });
 
   add_output->signal_clicked().connect([=, this]() { create_preset(PresetType::output); });
 

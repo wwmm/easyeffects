@@ -57,10 +57,14 @@
                                                         </child>
                                                         <child>
                                                             <object class="GtkButton" id="add_output">
+                                                                <property name="margin-top">3</property>
+                                                                <property name="margin-bottom">3</property>
                                                                 <property name="tooltip_text" translatable="yes">Create Preset</property>
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">list-add-symbolic</property>
+                                                                <property name="name">output_preset</property>
+                                                                <signal name="clicked" handler="create_preset" object="PresetsMenu" />
                                                                 <style>
                                                                     <class name="suggested-action" />
                                                                 </style>
@@ -68,6 +72,8 @@
                                                         </child>
                                                         <child>
                                                             <object class="GtkButton" id="import_output">
+                                                                <property name="margin-top">3</property>
+                                                                <property name="margin-bottom">3</property>
                                                                 <property name="tooltip_text" translatable="yes">Import Presets</property>
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
@@ -167,10 +173,14 @@
                                                         </child>
                                                         <child>
                                                             <object class="GtkButton" id="add_input">
+                                                                <property name="margin-top">3</property>
+                                                                <property name="margin-bottom">3</property>
                                                                 <property name="tooltip_text" translatable="yes">Create Preset</property>
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">list-add-symbolic</property>
+                                                                <property name="name">input_preset</property>
+                                                                <signal name="clicked" handler="create_preset" object="PresetsMenu" />
                                                                 <style>
                                                                     <class name="suggested-action" />
                                                                 </style>
@@ -178,6 +188,8 @@
                                                         </child>
                                                         <child>
                                                             <object class="GtkButton" id="import_input">
+                                                                <property name="margin-top">3</property>
+                                                                <property name="margin-bottom">3</property>
                                                                 <property name="tooltip_text" translatable="yes">Import Presets</property>
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
