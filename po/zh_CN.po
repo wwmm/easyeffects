@@ -528,7 +528,7 @@ msgstr "压缩曲线"
 #: data/ui/compressor.ui:971 data/ui/deesser.ui:585 data/ui/maximizer.ui:254
 #: data/ui/multiband_gate.ui:406 data/ui/multiband_gate.ui:749
 #: data/ui/multiband_gate.ui:1092 data/ui/multiband_gate.ui:1435
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "衰减"
 
 #: data/ui/convolver.ui:43

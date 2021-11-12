@@ -839,7 +839,7 @@ msgstr "Atténuation"
 #: data/ui/multiband_gate.ui:444 data/ui/multiband_gate.ui:817
 #: data/ui/multiband_gate.ui:1190 data/ui/multiband_gate.ui:1563
 #, fuzzy
-msgid "Reduction"
+msgid "Max Reduction"
 msgstr "Réduction de gain"
 
 # Taking lingual shortcuts to squeeze it in the text box
@@ -1551,7 +1551,7 @@ msgstr "Gain de remise [dB]"
 
 #: data/ui/multiband_gate.ui:471
 #, fuzzy
-msgid "Band 1 Reduction"
+msgid "Band 1 Max Reduction"
 msgstr "Réduction de gain"
 
 #: data/ui/multiband_gate.ui:545
@@ -1606,7 +1606,7 @@ msgstr "Gain de remise [dB]"
 
 #: data/ui/multiband_gate.ui:844
 #, fuzzy
-msgid "Band 2 Reduction"
+msgid "Band 2 Max Reduction"
 msgstr "Réduction de gain"
 
 #: data/ui/multiband_gate.ui:918
@@ -1661,7 +1661,7 @@ msgstr "Gain de remise [dB]"
 
 #: data/ui/multiband_gate.ui:1217
 #, fuzzy
-msgid "Band 3 Reduction"
+msgid "Band 3 Max Reduction"
 msgstr "Réduction de gain"
 
 #: data/ui/multiband_gate.ui:1291
@@ -1716,7 +1716,7 @@ msgstr "Gain de remise [dB]"
 
 #: data/ui/multiband_gate.ui:1590
 #, fuzzy
-msgid "Band 4 Reduction"
+msgid "Band 4 Max Reduction"
 msgstr "Réduction de gain"
 
 #: data/ui/pipe_info.ui:24 src/general_settings_ui.cpp:68
