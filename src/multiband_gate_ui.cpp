@@ -208,10 +208,10 @@ MultibandGateUi::MultibandGateUi(BaseObjectType* cobject,
   prepare_spinbutton(range2, "dB");
   prepare_spinbutton(range3, "dB");
 
-  prepare_spinbutton(attack0, "dB");
-  prepare_spinbutton(attack1, "dB");
-  prepare_spinbutton(attack2, "dB");
-  prepare_spinbutton(attack3, "dB");
+  prepare_spinbutton(attack0, "ms");
+  prepare_spinbutton(attack1, "ms");
+  prepare_spinbutton(attack2, "ms");
+  prepare_spinbutton(attack3, "ms");
 
   prepare_spinbutton(threshold0, "dB");
   prepare_spinbutton(threshold1, "dB");
