@@ -36,15 +36,15 @@ void StereoToolsPreset::save(nlohmann::json& json, const std::string& section, G
 
   json[section]["stereo_tools"]["balance-out"] = g_settings_get_double(settings, "balance-out");
 
-  json[section]["stereo_tools"]["softclip"] = g_settings_get_boolean(settings, "softclip");
+  json[section]["stereo_tools"]["softclip"] = g_settings_get_boolean(settings, "softclip") != 0;
 
-  json[section]["stereo_tools"]["mutel"] = g_settings_get_boolean(settings, "mutel");
+  json[section]["stereo_tools"]["mutel"] = g_settings_get_boolean(settings, "mutel") != 0;
 
-  json[section]["stereo_tools"]["muter"] = g_settings_get_boolean(settings, "muter");
+  json[section]["stereo_tools"]["muter"] = g_settings_get_boolean(settings, "muter") != 0;
 
-  json[section]["stereo_tools"]["phasel"] = g_settings_get_boolean(settings, "phasel");
+  json[section]["stereo_tools"]["phasel"] = g_settings_get_boolean(settings, "phasel") != 0;
 
-  json[section]["stereo_tools"]["phaser"] = g_settings_get_boolean(settings, "phaser");
+  json[section]["stereo_tools"]["phaser"] = g_settings_get_boolean(settings, "phaser") != 0;
 
   json[section]["stereo_tools"]["mode"] = g_settings_get_string(settings, "mode");
 

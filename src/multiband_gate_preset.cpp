@@ -58,9 +58,9 @@ void MultibandGatePreset::save(nlohmann::json& json, const std::string& section,
 
   json[section]["multiband_gate"]["subband"]["detection"] = g_settings_get_string(settings, "detection0");
 
-  json[section]["multiband_gate"]["subband"]["bypass"] = g_settings_get_boolean(settings, "bypass0");
+  json[section]["multiband_gate"]["subband"]["bypass"] = g_settings_get_boolean(settings, "bypass0") != 0;
 
-  json[section]["multiband_gate"]["subband"]["solo"] = g_settings_get_boolean(settings, "solo0");
+  json[section]["multiband_gate"]["subband"]["solo"] = g_settings_get_boolean(settings, "solo0") != 0;
 
   // low band
 
@@ -80,9 +80,9 @@ void MultibandGatePreset::save(nlohmann::json& json, const std::string& section,
 
   json[section]["multiband_gate"]["lowband"]["detection"] = g_settings_get_string(settings, "detection1");
 
-  json[section]["multiband_gate"]["lowband"]["bypass"] = g_settings_get_boolean(settings, "bypass1");
+  json[section]["multiband_gate"]["lowband"]["bypass"] = g_settings_get_boolean(settings, "bypass1") != 0;
 
-  json[section]["multiband_gate"]["lowband"]["solo"] = g_settings_get_boolean(settings, "solo1");
+  json[section]["multiband_gate"]["lowband"]["solo"] = g_settings_get_boolean(settings, "solo1") != 0;
 
   // mid band
 
@@ -102,9 +102,9 @@ void MultibandGatePreset::save(nlohmann::json& json, const std::string& section,
 
   json[section]["multiband_gate"]["midband"]["detection"] = g_settings_get_string(settings, "detection2");
 
-  json[section]["multiband_gate"]["midband"]["bypass"] = g_settings_get_boolean(settings, "bypass2");
+  json[section]["multiband_gate"]["midband"]["bypass"] = g_settings_get_boolean(settings, "bypass2") != 0;
 
-  json[section]["multiband_gate"]["midband"]["solo"] = g_settings_get_boolean(settings, "solo2");
+  json[section]["multiband_gate"]["midband"]["solo"] = g_settings_get_boolean(settings, "solo2") != 0;
 
   // high band
 
@@ -124,9 +124,9 @@ void MultibandGatePreset::save(nlohmann::json& json, const std::string& section,
 
   json[section]["multiband_gate"]["highband"]["detection"] = g_settings_get_string(settings, "detection3");
 
-  json[section]["multiband_gate"]["highband"]["bypass"] = g_settings_get_boolean(settings, "bypass3");
+  json[section]["multiband_gate"]["highband"]["bypass"] = g_settings_get_boolean(settings, "bypass3") != 0;
 
-  json[section]["multiband_gate"]["highband"]["solo"] = g_settings_get_boolean(settings, "solo3");
+  json[section]["multiband_gate"]["highband"]["solo"] = g_settings_get_boolean(settings, "solo3") != 0;
 }
 
 void MultibandGatePreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

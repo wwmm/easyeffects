@@ -42,7 +42,7 @@ void BassEnhancerPreset::save(nlohmann::json& json, const std::string& section, 
 
   json[section]["bass_enhancer"]["blend"] = g_settings_get_double(settings, "blend");
 
-  json[section]["bass_enhancer"]["floor-active"] = g_settings_get_boolean(settings, "floor-active");
+  json[section]["bass_enhancer"]["floor-active"] = g_settings_get_boolean(settings, "floor-active") != 0;
 }
 
 void BassEnhancerPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

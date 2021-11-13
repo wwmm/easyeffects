@@ -467,7 +467,7 @@ void PresetsManager::remove(const PresetType& preset_type, const Glib::ustring& 
   }
 }
 
-void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib::ustring& name) {
+void PresetsManager::load_preset_file(const PresetType& preset_type, const std::string& name) {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
@@ -485,7 +485,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
       conf_dirs.insert(conf_dirs.end(), system_output_dir.begin(), system_output_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
+        input_file = dir / std::filesystem::path{name + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
@@ -518,7 +518,9 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         g_settings_set_strv(soe_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
-        util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
+        util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
+
+        return;
       }
 
       break;
@@ -529,7 +531,7 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
       conf_dirs.insert(conf_dirs.end(), system_input_dir.begin(), system_input_dir.end());
 
       for (const auto& dir : conf_dirs) {
-        input_file = dir / std::filesystem::path{name.c_str() + json_ext};
+        input_file = dir / std::filesystem::path{name + json_ext};
 
         if (std::filesystem::exists(input_file)) {
           preset_found = true;
@@ -562,7 +564,9 @@ void PresetsManager::load_preset_file(const PresetType& preset_type, const Glib:
 
         g_settings_set_strv(sie_settings, "plugins", util::make_gchar_pointer_vector(plugins).data());
       } else {
-        util::debug(log_tag + "can't find the preset " + name.raw() + " on the filesystem");
+        util::debug(log_tag + "can't find the preset " + name + " on the filesystem");
+
+        return;
       }
 
       break;

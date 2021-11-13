@@ -38,7 +38,7 @@ Spectrum::Spectrum(const std::string& tag,
 
                      std::scoped_lock<std::mutex> lock(self->data_mutex);
 
-                     self->post_messages = g_settings_get_boolean(settings, key);
+                     self->post_messages = g_settings_get_boolean(settings, key) != 0;
                    }),
                    this);
 }

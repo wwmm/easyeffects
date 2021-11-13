@@ -77,7 +77,7 @@ class PresetsManager {
 
   void remove(const PresetType& preset_type, const Glib::ustring& name);
 
-  void load_preset_file(const PresetType& preset_type, const Glib::ustring& name);
+  void load_preset_file(const PresetType& preset_type, const std::string& name);
 
   void read_plugins_preset(const PresetType& preset_type,
                            const std::vector<std::string>& plugins,

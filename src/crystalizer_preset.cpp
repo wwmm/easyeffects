@@ -37,9 +37,9 @@ void CrystalizerPreset::save(nlohmann::json& json, const std::string& section, G
 
     json[section]["crystalizer"][bandn]["intensity"] = g_settings_get_double(settings, ("intensity-" + bandn).c_str());
 
-    json[section]["crystalizer"][bandn]["mute"] = g_settings_get_boolean(settings, ("mute-" + bandn).c_str());
+    json[section]["crystalizer"][bandn]["mute"] = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
 
-    json[section]["crystalizer"][bandn]["bypass"] = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str());
+    json[section]["crystalizer"][bandn]["bypass"] = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
   }
 }
 

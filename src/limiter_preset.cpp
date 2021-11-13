@@ -56,11 +56,11 @@ void LimiterPreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["limiter"]["alr-knee"] = g_settings_get_double(settings, "alr-knee");
 
-  json[section]["limiter"]["alr"] = g_settings_get_boolean(settings, "alr");
+  json[section]["limiter"]["alr"] = g_settings_get_boolean(settings, "alr") != 0;
 
-  json[section]["limiter"]["gain-boost"] = g_settings_get_boolean(settings, "gain-boost");
+  json[section]["limiter"]["gain-boost"] = g_settings_get_boolean(settings, "gain-boost") != 0;
 
-  json[section]["limiter"]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain");
+  json[section]["limiter"]["external-sidechain"] = g_settings_get_boolean(settings, "external-sidechain") != 0;
 }
 
 void LimiterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

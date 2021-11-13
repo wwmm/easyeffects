@@ -126,26 +126,88 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
 
   auto* factory = gtk_signal_list_item_factory_new();
 
+  switch (preset_type) {
+    case PresetType::output: {
+      g_object_set_data(G_OBJECT(factory), "preset-type", const_cast<char*>("output"));
+      break;
+    }
+    case PresetType::input: {
+      g_object_set_data(G_OBJECT(factory), "preset-type", const_cast<char*>("input"));
+      break;
+    }
+  }
+
   // setting the factory callbacks
 
-  g_signal_connect(factory, "setup",
-                   G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
-                     auto builder = gtk_builder_new();
+  g_signal_connect(
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+        auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
-                     gtk_builder_add_from_resource(builder, "/com/github/wwmm/easyeffects/ui/preset_row.ui", nullptr);
+        auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto* apply = gtk_builder_get_object(builder, "apply");
+        auto* save = gtk_builder_get_object(builder, "save");
+        auto* remove = gtk_builder_get_object(builder, "remove");
 
-                     auto* top_box = gtk_builder_get_object(builder, "top_box");
+        auto preset_type = g_object_get_data(G_OBJECT(self), "preset-type");
 
-                     g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
-                     g_object_set_data(G_OBJECT(item), "apply", gtk_builder_get_object(builder, "apply"));
-                     g_object_set_data(G_OBJECT(item), "save", gtk_builder_get_object(builder, "save"));
-                     g_object_set_data(G_OBJECT(item), "remove", gtk_builder_get_object(builder, "remove"));
+        g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
+        g_object_set_data(G_OBJECT(item), "apply", apply);
+        g_object_set_data(G_OBJECT(item), "save", save);
+        g_object_set_data(G_OBJECT(item), "remove", remove);
+        g_object_set_data(G_OBJECT(apply), "preset-type", preset_type);
+        g_object_set_data(G_OBJECT(save), "preset-type", preset_type);
+        g_object_set_data(G_OBJECT(remove), "preset-type", preset_type);
 
-                     gtk_list_item_set_child(item, GTK_WIDGET(top_box));
+        gtk_list_item_set_activatable(item, 0);
+        gtk_list_item_set_child(item, GTK_WIDGET(top_box));
 
-                     gtk_list_item_set_activatable(item, 0);
-                   }),
-                   self);
+        g_signal_connect(apply, "clicked", G_CALLBACK(+[](GtkButton* button, gpointer user_data) {
+                           auto self = static_cast<PresetsMenu*>(user_data);
+
+                           auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
+                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
+
+                           if (g_strcmp0(preset_type, "output") == 0) {
+                             self->application->presets_manager->load_preset_file(PresetType::output, preset_name);
+
+                             g_settings_set_string(self->settings, "last-used-output-preset", preset_name);
+                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                             self->application->presets_manager->load_preset_file(PresetType::input, preset_name);
+
+                             g_settings_set_string(self->settings, "last-used-input-preset", preset_name);
+                           }
+                         }),
+                         user_data);
+
+        g_signal_connect(save, "clicked", G_CALLBACK(+[](GtkButton* button, gpointer user_data) {
+                           auto self = static_cast<PresetsMenu*>(user_data);
+
+                           auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
+                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
+
+                           if (g_strcmp0(preset_type, "output") == 0) {
+                             self->application->presets_manager->save_preset_file(PresetType::output, preset_name);
+                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                             self->application->presets_manager->save_preset_file(PresetType::input, preset_name);
+                           }
+                         }),
+                         user_data);
+
+        g_signal_connect(remove, "clicked", G_CALLBACK(+[](GtkButton* button, gpointer user_data) {
+                           auto self = static_cast<PresetsMenu*>(user_data);
+
+                           auto* preset_name = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-name"));
+                           auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(button), "preset-type"));
+
+                           if (g_strcmp0(preset_type, "output") == 0) {
+                             self->application->presets_manager->remove(PresetType::output, preset_name);
+                           } else if (g_strcmp0(preset_type, "input") == 0) {
+                             self->application->presets_manager->remove(PresetType::input, preset_name);
+                           }
+                         }),
+                         user_data);
+      }),
+      self);
 
   g_signal_connect(factory, "bind",
                    G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
@@ -160,35 +222,9 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
 
                      gtk_label_set_text(label, name);
 
-                     // auto connection_apply = apply->signal_clicked().connect([=, this]() {
-                     //   switch (preset_type) {
-                     //     case PresetType::input:
-                     //       settings->set_string("last-used-input-preset", name);
-                     //       break;
-                     //     case PresetType::output:
-                     //       settings->set_string("last-used-output-preset", name);
-                     //       break;
-                     //   }
-
-                     //   app->presets_manager->load_preset_file(preset_type, name);
-                     // });
-
-                     // auto connection_save =
-                     //     save->signal_clicked().connect([=, this]() {
-                     //     app->presets_manager->save_preset_file(preset_type, name); });
-
-                     // auto connection_remove =
-                     //     remove->signal_clicked().connect([=, this]() { app->presets_manager->remove(preset_type,
-                     //     name); });
-
-                     // list_item->set_data("connection_apply", new sigc::connection(connection_apply),
-                     //                     Glib::destroy_notify_delete<sigc::connection>);
-
-                     // list_item->set_data("connection_save", new sigc::connection(connection_save),
-                     //                     Glib::destroy_notify_delete<sigc::connection>);
-
-                     // list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                     //                     Glib::destroy_notify_delete<sigc::connection>);
+                     g_object_set_data(G_OBJECT(apply), "preset-name", const_cast<char*>(name));
+                     g_object_set_data(G_OBJECT(save), "preset-name", const_cast<char*>(name));
+                     g_object_set_data(G_OBJECT(remove), "preset-name", const_cast<char*>(name));
                    }),
                    self);
 
@@ -231,6 +267,8 @@ void presets_menu_init(PresetsMenu* self) {
 
   self->output_string_list = gtk_string_list_new(nullptr);
   self->input_string_list = gtk_string_list_new(nullptr);
+
+  self->settings = g_settings_new("com.github.wwmm.easyeffects");
 }
 
 auto create() -> PresetsMenu* {

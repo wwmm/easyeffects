@@ -42,18 +42,20 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
 
     if (n > 0U) {
       json[section]["multiband_compressor"][bandn]["enable-band"] =
-          g_settings_get_boolean(settings, ("enable-band" + nstr).c_str());
+          g_settings_get_boolean(settings, ("enable-band" + nstr).c_str()) != 0;
 
       json[section]["multiband_compressor"][bandn]["split-frequency"] =
           g_settings_get_double(settings, ("split-frequency" + nstr).c_str());
     }
 
     json[section]["multiband_compressor"][bandn]["compressor-enable"] =
-        g_settings_get_boolean(settings, ("compressor-enable" + nstr).c_str());
+        g_settings_get_boolean(settings, ("compressor-enable" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["solo"] = g_settings_get_boolean(settings, ("solo" + nstr).c_str());
+    json[section]["multiband_compressor"][bandn]["solo"] =
+        g_settings_get_boolean(settings, ("solo" + nstr).c_str()) != 0;
 
-    json[section]["multiband_compressor"][bandn]["mute"] = g_settings_get_boolean(settings, ("mute" + nstr).c_str());
+    json[section]["multiband_compressor"][bandn]["mute"] =
+        g_settings_get_boolean(settings, ("mute" + nstr).c_str()) != 0;
 
     json[section]["multiband_compressor"][bandn]["attack-threshold"] =
         g_settings_get_double(settings, ("attack-threshold" + nstr).c_str());
@@ -77,7 +79,7 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
         g_settings_get_string(settings, ("compression-mode" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["external-sidechain"] =
-        g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str());
+        g_settings_get_boolean(settings, ("external-sidechain" + nstr).c_str()) != 0;
 
     json[section]["multiband_compressor"][bandn]["sidechain-mode"] =
         g_settings_get_string(settings, ("sidechain-mode" + nstr).c_str());
@@ -95,10 +97,10 @@ void MultibandCompressorPreset::save(nlohmann::json& json, const std::string& se
         g_settings_get_double(settings, ("sidechain-preamp" + nstr).c_str());
 
     json[section]["multiband_compressor"][bandn]["sidechain-custom-lowcut-filter"] =
-        g_settings_get_boolean(settings, ("sidechain-custom-lowcut-filter" + nstr).c_str());
+        g_settings_get_boolean(settings, ("sidechain-custom-lowcut-filter" + nstr).c_str()) != 0;
 
     json[section]["multiband_compressor"][bandn]["sidechain-custom-highcut-filter"] =
-        g_settings_get_boolean(settings, ("sidechain-custom-highcut-filter" + nstr).c_str());
+        g_settings_get_boolean(settings, ("sidechain-custom-highcut-filter" + nstr).c_str()) != 0;
 
     json[section]["multiband_compressor"][bandn]["sidechain-lowcut-frequency"] =
         g_settings_get_double(settings, ("sidechain-lowcut-frequency" + nstr).c_str());

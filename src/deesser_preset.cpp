@@ -54,7 +54,7 @@ void DeesserPreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["deesser"]["f2-q"] = g_settings_get_double(settings, "f2-q");
 
-  json[section]["deesser"]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen");
+  json[section]["deesser"]["sc-listen"] = g_settings_get_boolean(settings, "sc-listen") != 0;
 }
 
 void DeesserPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

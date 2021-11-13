@@ -42,7 +42,7 @@ void ExciterPreset::save(nlohmann::json& json, const std::string& section, GSett
 
   json[section]["exciter"]["blend"] = g_settings_get_double(settings, "blend");
 
-  json[section]["exciter"]["ceil-active"] = g_settings_get_boolean(settings, "ceil-active");
+  json[section]["exciter"]["ceil-active"] = g_settings_get_boolean(settings, "ceil-active") != 0;
 }
 
 void ExciterPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {

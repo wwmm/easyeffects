@@ -40,9 +40,9 @@ void PitchPreset::save(nlohmann::json& json, const std::string& section, GSettin
 
   json[section]["pitch"]["crispness"] = g_settings_get_int(settings, "crispness");
 
-  json[section]["pitch"]["formant-preserving"] = g_settings_get_boolean(settings, "formant-preserving");
+  json[section]["pitch"]["formant-preserving"] = g_settings_get_boolean(settings, "formant-preserving") != 0;
 
-  json[section]["pitch"]["faster"] = g_settings_get_boolean(settings, "faster");
+  json[section]["pitch"]["faster"] = g_settings_get_boolean(settings, "faster") != 0;
 }
 
 void PitchPreset::load(const nlohmann::json& json, const std::string& section, GSettings* settings) {
