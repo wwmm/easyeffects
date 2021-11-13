@@ -78,6 +78,7 @@
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">document-open-symbolic</property>
+                                                                <signal name="clicked" handler="import_output_preset" object="PresetsMenu" />
                                                             </object>
                                                         </child>
                                                     </object>
@@ -194,6 +195,7 @@
                                                                 <property name="halign">center</property>
                                                                 <property name="valign">center</property>
                                                                 <property name="icon_name">document-open-symbolic</property>
+                                                                <signal name="clicked" handler="import_input_preset" object="PresetsMenu" />
                                                             </object>
                                                         </child>
                                                     </object>

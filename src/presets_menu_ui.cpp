@@ -90,6 +90,51 @@ void create_preset(PresetsMenu* self, GtkButton* button) {
   self->application->presets_manager->add(preset_type, name);
 }
 
+void import_preset(PresetsMenu* self, PresetType preset_type) {
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+
+  auto* dialog = gtk_file_chooser_native_new(_("Import Preset"), active_window, GTK_FILE_CHOOSER_ACTION_OPEN, _("Open"),
+                                             _("Cancel"));
+
+  auto* filter = gtk_file_filter_new();
+
+  gtk_file_filter_add_pattern(filter, "*.json");
+  gtk_file_filter_set_name(filter, _("Presets"));
+
+  gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
+
+  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* native, int response, PresetsMenu* self) {
+                     if (response == GTK_RESPONSE_ACCEPT) {
+                       auto* chooser = GTK_FILE_CHOOSER(native);
+                       auto* file = gtk_file_chooser_get_file(chooser);
+                       auto* path = g_file_get_path(file);
+
+                       util::warning(path);
+
+                       //  self->application->presets_manager->import(preset_type, path);
+
+                       //  if constexpr (preset_type == PresetType::output) {
+                       //  }
+
+                       g_object_unref(file);
+                     }
+
+                     g_object_unref(native);
+                   }),
+                   self);
+
+  gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(dialog), 1);
+  gtk_native_dialog_show(GTK_NATIVE_DIALOG(dialog));
+}
+
+void import_output_preset(PresetsMenu* self, GtkButton* button) {
+  import_preset(self, PresetType::output);
+}
+
+void import_input_preset(PresetsMenu* self, GtkButton* button) {
+  import_preset(self, PresetType::input);
+}
+
 void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_type, GtkStringList* string_list) {
   for (const auto& name : self->application->presets_manager->get_names(preset_type)) {
     gtk_string_list_append(string_list, name.c_str());
@@ -305,6 +350,40 @@ void setup(PresetsMenu* self, app::Application* application) {
           }
         }
       }));
+
+  self->connections.push_back(
+      self->application->presets_manager->user_input_preset_created.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+          if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
+            return;
+          }
+        }
+
+        gtk_string_list_append(self->input_string_list, preset_name.c_str());
+      }));
+
+  self->connections.push_back(
+      self->application->presets_manager->user_input_preset_removed.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->input_string_list)); n++) {
+          if (preset_name == gtk_string_list_get_string(self->input_string_list, n)) {
+            gtk_string_list_remove(self->input_string_list, n);
+
+            return;
+          }
+        }
+      }));
 }
 
 void show(GtkWidget* widget) {
@@ -359,6 +438,8 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_input);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
+  gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
+  gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
 }
 
 void presets_menu_init(PresetsMenu* self) {
@@ -399,11 +480,7 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
                              const Glib::RefPtr<Gtk::Builder>& builder,
                              Glib::RefPtr<Gio::Settings> refSettings,
                              Application* application)
-    : Gtk::Popover(cobject),
-      settings(std::move(refSettings)),
-      app(application),
-      output_string_list(Gtk::StringList::create({"initial_value"})),
-      input_string_list(Gtk::StringList::create({"initial_value"})) {
+    : Gtk::Popover(cobject), settings(std::move(refSettings)), app(application) {
   // loading builder widgets
 
   import_output = builder->get_widget<Gtk::Button>("import_output");
@@ -417,54 +494,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_output->signal_clicked().connect([=, this]() { import_preset(PresetType::output); });
 
   import_input->signal_clicked().connect([=, this]() { import_preset(PresetType::input); });
-
-  app->presets_manager->user_output_preset_removed.connect([=, this](const std::string& preset_name) {
-    if (preset_name.empty()) {
-      util::warning(log_tag + "can't retrieve information about the preset file");
-
-      return;
-    }
-
-    for (guint n = 0; n < output_string_list->get_n_items(); n++) {
-      if (preset_name == output_string_list->get_string(n).raw()) {
-        output_string_list->remove(n);
-
-        return;
-      }
-    }
-  });
-
-  app->presets_manager->user_input_preset_created.connect([=, this](const std::string& preset_name) {
-    if (preset_name.empty()) {
-      util::warning(log_tag + "can't retrieve information about the preset file");
-
-      return;
-    }
-
-    for (guint n = 0; n < input_string_list->get_n_items(); n++) {
-      if (input_string_list->get_string(n).raw() == preset_name) {
-        return;
-      }
-    }
-
-    input_string_list->append(preset_name);
-  });
-
-  app->presets_manager->user_input_preset_removed.connect([=, this](const std::string& preset_name) {
-    if (preset_name.empty()) {
-      util::warning(log_tag + "can't retrieve information about the preset file");
-
-      return;
-    }
-
-    for (guint n = 0; n < input_string_list->get_n_items(); n++) {
-      if (input_string_list->get_string(n).raw() == preset_name) {
-        input_string_list->remove(n);
-
-        return;
-      }
-    }
-  });
 }
 
 PresetsMenuUi::~PresetsMenuUi() {

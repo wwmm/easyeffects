@@ -68,8 +68,6 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Glib::RefPtr<Gtk::SelectionModel> stack_model;
 
-  Glib::RefPtr<Gtk::StringList> output_string_list, input_string_list;
-
   std::vector<sigc::connection> connections;
 
   void import_preset(PresetType preset_type);
