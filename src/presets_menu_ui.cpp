@@ -45,6 +45,8 @@ struct _PresetsMenu {
   GSettings* settings = nullptr;
 
   app::Application* application = nullptr;
+
+  std::vector<sigc::connection> connections;
 };
 
 G_DEFINE_TYPE(PresetsMenu, presets_menu, GTK_TYPE_POPOVER)
@@ -269,6 +271,40 @@ void setup(PresetsMenu* self, app::Application* application) {
   setup_listview(self, self->input_listview, PresetType::input, self->input_string_list);
 
   reset_menu_button_label(self);
+
+  self->connections.push_back(
+      self->application->presets_manager->user_output_preset_created.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+          if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
+            return;
+          }
+        }
+
+        gtk_string_list_append(self->output_string_list, preset_name.c_str());
+      }));
+
+  self->connections.push_back(
+      self->application->presets_manager->user_output_preset_removed.connect([=](const std::string& preset_name) {
+        if (preset_name.empty()) {
+          util::warning(log_tag + "can't retrieve information about the preset file"s);
+
+          return;
+        }
+
+        for (guint n = 0; n < g_list_model_get_n_items(G_LIST_MODEL(self->output_string_list)); n++) {
+          if (preset_name == gtk_string_list_get_string(self->output_string_list, n)) {
+            gtk_string_list_remove(self->output_string_list, n);
+
+            return;
+          }
+        }
+      }));
 }
 
 void show(GtkWidget* widget) {
@@ -286,8 +322,23 @@ void show(GtkWidget* widget) {
   GTK_WIDGET_CLASS(presets_menu_parent_class)->show(widget);
 }
 
+void dispose(GObject* object) {
+  auto* self = EE_PRESETS_MENU(object);
+
+  for (auto& c : self->connections) {
+    c.disconnect();
+  }
+
+  util::debug(log_tag + "destroyed"s);
+
+  G_OBJECT_CLASS(presets_menu_parent_class)->dispose(object);
+}
+
 void presets_menu_class_init(PresetsMenuClass* klass) {
+  auto* object_class = G_OBJECT_CLASS(klass);
   auto* widget_class = GTK_WIDGET_CLASS(klass);
+
+  object_class->dispose = dispose;
 
   widget_class->show = show;
 
@@ -355,12 +406,8 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       input_string_list(Gtk::StringList::create({"initial_value"})) {
   // loading builder widgets
 
-  output_listview = builder->get_widget<Gtk::ListView>("output_listview");
-  output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
   import_output = builder->get_widget<Gtk::Button>("import_output");
 
-  input_listview = builder->get_widget<Gtk::ListView>("input_listview");
-  input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
   import_input = builder->get_widget<Gtk::Button>("import_input");
 
   // signals connection
@@ -370,22 +417,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_output->signal_clicked().connect([=, this]() { import_preset(PresetType::output); });
 
   import_input->signal_clicked().connect([=, this]() { import_preset(PresetType::input); });
-
-  app->presets_manager->user_output_preset_created.connect([=, this](const std::string& preset_name) {
-    if (preset_name.empty()) {
-      util::warning(log_tag + "can't retrieve information about the preset file");
-
-      return;
-    }
-
-    for (guint n = 0; n < output_string_list->get_n_items(); n++) {
-      if (preset_name == output_string_list->get_string(n).raw()) {
-        return;
-      }
-    }
-
-    output_string_list->append(preset_name);
-  });
 
   app->presets_manager->user_output_preset_removed.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {

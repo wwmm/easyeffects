@@ -125,6 +125,8 @@ void dispose(GObject* object) {
     g_application_release(self->gapp);
   }
 
+  util::debug(log_tag + "destroyed"s);
+
   G_OBJECT_CLASS(application_window_parent_class)->dispose(object);
 }
 
