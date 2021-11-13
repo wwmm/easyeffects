@@ -480,14 +480,3 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
   dialog->set_modal(true);
   dialog->show();
 }
-
-void PresetsMenuUi::on_show() {
-  auto* const parent = dynamic_cast<Gtk::ApplicationWindow*>(app->get_active_window());
-
-  const int height = static_cast<int>(0.5F * static_cast<float>(parent->get_allocated_height()));
-
-  output_scrolled_window->set_max_content_height(height);
-  input_scrolled_window->set_max_content_height(height);
-
-  Gtk::Popover::on_show();
-}

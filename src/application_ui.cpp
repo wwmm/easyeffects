@@ -49,8 +49,8 @@ G_DEFINE_TYPE(ApplicationWindow, application_window, ADW_TYPE_APPLICATION_WINDOW
 void constructed(GObject* object) {
   auto* self = EE_APP_WINDOW(object);
 
-  self->maximized = (g_settings_get_boolean(self->settings, "window-maximized") != 0);
-  self->fullscreen = (g_settings_get_boolean(self->settings, "window-fullscreen") != 0);
+  self->maximized = g_settings_get_boolean(self->settings, "window-maximized") != 0;
+  self->fullscreen = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
   self->width = g_settings_get_int(self->settings, "window-width");
   self->height = g_settings_get_int(self->settings, "window-height");
 

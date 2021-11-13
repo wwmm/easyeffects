@@ -77,6 +77,4 @@ class PresetsMenuUi : public Gtk::Popover {
   std::vector<sigc::connection> connections;
 
   void import_preset(PresetType preset_type);
-
-  void on_show() override;
 };

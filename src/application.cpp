@@ -143,7 +143,7 @@ void application_class_init(ApplicationClass* klass) {
   application_class->startup = [](GApplication* gapp) {
     G_APPLICATION_CLASS(application_parent_class)->startup(gapp);
 
-    std::array<GActionEntry, 3> entries{};
+    std::array<GActionEntry, 4> entries{};
 
     entries[0] = {
         "quit",
@@ -167,13 +167,33 @@ void application_class_init(ApplicationClass* klass) {
                   },
                   nullptr, nullptr, nullptr};
 
+    entries[3] = {"fullscreen",
+                  [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
+                    auto* self = EE_APP(gapp);
+
+                    auto state = g_settings_get_boolean(self->settings, "window-fullscreen") != 0;
+
+                    if (state) {
+                      gtk_window_unfullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                      g_settings_set_boolean(self->settings, "window-fullscreen", 0);
+                    } else {
+                      gtk_window_fullscreen(GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
+
+                      g_settings_set_boolean(self->settings, "window-fullscreen", 1);
+                    }
+                  },
+                  nullptr, nullptr, nullptr};
+
     g_action_map_add_action_entries(G_ACTION_MAP(gapp), entries.data(), entries.size(), gapp);
 
     std::array<const char*, 2> quit_accels = {"<Ctrl>Q", nullptr};
     std::array<const char*, 2> help_accels = {"F1", nullptr};
+    std::array<const char*, 2> fullscreen_accels = {"F11", nullptr};
 
     gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.quit", quit_accels.data());
     gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.help", help_accels.data());
+    gtk_application_set_accels_for_action(GTK_APPLICATION(gapp), "app.fullscreen", fullscreen_accels.data());
 
     if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
       g_application_hold(gapp);
