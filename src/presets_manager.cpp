@@ -211,9 +211,9 @@ void PresetsManager::create_user_directory(const std::filesystem::path& path) {
   }
 }
 
-auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<Glib::ustring> {
+auto PresetsManager::get_names(const PresetType& preset_type) -> std::vector<std::string> {
   std::filesystem::directory_iterator it;
-  std::vector<Glib::ustring> names;
+  std::vector<std::string> names;
 
   // system directories search
   std::vector<std::filesystem::path> sys_dirs;
@@ -270,7 +270,7 @@ auto PresetsManager::search_names(std::filesystem::directory_iterator& it) -> st
   return names;
 }
 
-void PresetsManager::add(const PresetType& preset_type, const Glib::ustring& name) {
+void PresetsManager::add(const PresetType& preset_type, const std::string& name) {
   for (const auto& p : get_names(preset_type)) {
     if (p == name) {
       return;

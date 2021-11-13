@@ -68,13 +68,7 @@ class PresetsMenuUi : public Gtk::Popover {
 
   Gtk::ListView *output_listview = nullptr, *input_listview = nullptr;
 
-  Gtk::Text *output_name = nullptr, *input_name = nullptr;
-
   Gtk::ScrolledWindow *output_scrolled_window = nullptr, *input_scrolled_window = nullptr;
-
-  Gtk::SearchEntry *output_search = nullptr, *input_search = nullptr;
-
-  Gtk::Label *last_used_output = nullptr, *last_used_input = nullptr;
 
   Glib::RefPtr<Gtk::SelectionModel> stack_model;
 
@@ -83,10 +77,6 @@ class PresetsMenuUi : public Gtk::Popover {
   std::vector<sigc::connection> connections;
 
   void import_preset(PresetType preset_type);
-
-  void setup_listview(Gtk::ListView* listview, PresetType preset_type, Glib::RefPtr<Gtk::StringList>& string_list);
-
-  void reset_menu_button_label();
 
   void on_show() override;
 };

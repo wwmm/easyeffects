@@ -38,6 +38,8 @@ struct _PresetsMenu {
 
   GtkSearchEntry *output_search = nullptr, *input_search = nullptr;
 
+  GtkLabel *last_used_output = nullptr, *last_used_input = nullptr;
+
   GtkStringList *output_string_list = nullptr, *input_string_list = nullptr;
 
   GSettings* settings = nullptr;
@@ -140,7 +142,7 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
   // setting the factory callbacks
 
   g_signal_connect(
-      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* self, GtkListItem* item, gpointer user_data) {
+      factory, "setup", G_CALLBACK(+[](GtkSignalListItemFactory* factory, GtkListItem* item, gpointer user_data) {
         auto builder = gtk_builder_new_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
 
         auto* top_box = gtk_builder_get_object(builder, "top_box");
@@ -148,7 +150,7 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
         auto* save = gtk_builder_get_object(builder, "save");
         auto* remove = gtk_builder_get_object(builder, "remove");
 
-        auto preset_type = g_object_get_data(G_OBJECT(self), "preset-type");
+        auto preset_type = g_object_get_data(G_OBJECT(factory), "preset-type");
 
         g_object_set_data(G_OBJECT(item), "name", gtk_builder_get_object(builder, "name"));
         g_object_set_data(G_OBJECT(item), "apply", apply);
@@ -233,17 +235,61 @@ void setup_listview(PresetsMenu* self, GtkListView* listview, PresetType preset_
   g_object_unref(factory);
 }
 
+void reset_menu_button_label(PresetsMenu* self) {
+  const auto names_input = self->application->presets_manager->get_names(PresetType::input);
+  const auto names_output = self->application->presets_manager->get_names(PresetType::output);
+
+  if (names_input.empty() && names_output.empty()) {
+    g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
+    g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
+
+    return;
+  }
+
+  for (const auto& name : names_input) {
+    if (name == g_settings_get_string(self->settings, "last-used-input-preset")) {
+      return;
+    }
+  }
+
+  for (const auto& name : names_output) {
+    if (name == g_settings_get_string(self->settings, "last-used-output-preset")) {
+      return;
+    }
+  }
+
+  g_settings_set_string(self->settings, "last-used-output-preset", _("Presets"));
+  g_settings_set_string(self->settings, "last-used-input-preset", _("Presets"));
+}
+
 void setup(PresetsMenu* self, app::Application* application) {
   self->application = application;
 
   setup_listview(self, self->output_listview, PresetType::output, self->output_string_list);
   setup_listview(self, self->input_listview, PresetType::input, self->input_string_list);
+
+  reset_menu_button_label(self);
+}
+
+void show(GtkWidget* widget) {
+  auto* self = EE_PRESETS_MENU(widget);
+
+  auto* active_window = gtk_application_get_active_window(GTK_APPLICATION(self->application));
+
+  auto active_window_height = gtk_widget_get_allocated_height(GTK_WIDGET(active_window));
+
+  const int menu_height = static_cast<int>(0.5F * static_cast<float>(active_window_height));
+
+  gtk_scrolled_window_set_max_content_height(self->output_scrolled_window, menu_height);
+  gtk_scrolled_window_set_max_content_height(self->input_scrolled_window, menu_height);
+
+  GTK_WIDGET_CLASS(presets_menu_parent_class)->show(widget);
 }
 
 void presets_menu_class_init(PresetsMenuClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
-  // widget_class->realize = window_realize;
+  widget_class->show = show;
 
   gtk_widget_class_set_template_from_resource(widget_class, "/com/github/wwmm/easyeffects/ui/presets_menu.ui");
 
@@ -253,11 +299,13 @@ void presets_menu_class_init(PresetsMenuClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, output_search);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_output);
 
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_scrolled_window);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_listview);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_name);
   gtk_widget_class_bind_template_child(widget_class, PresetsMenu, input_search);
+  gtk_widget_class_bind_template_child(widget_class, PresetsMenu, last_used_input);
 
   gtk_widget_class_bind_template_callback(widget_class, create_preset);
 }
@@ -269,6 +317,25 @@ void presets_menu_init(PresetsMenu* self) {
   self->input_string_list = gtk_string_list_new(nullptr);
 
   self->settings = g_settings_new("com.github.wwmm.easyeffects");
+
+  gtk_label_set_text(self->last_used_output, g_settings_get_string(self->settings, "last-used-output-preset"));
+  gtk_label_set_text(self->last_used_input, g_settings_get_string(self->settings, "last-used-input-preset"));
+
+  g_signal_connect(self->settings, "changed::last-used-output-preset",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<PresetsMenu*>(user_data);
+
+                     gtk_label_set_text(self->last_used_output, g_settings_get_string(settings, key));
+                   }),
+                   self);
+
+  g_signal_connect(self->settings, "changed::last-used-input-preset",
+                   G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                     auto self = static_cast<PresetsMenu*>(user_data);
+
+                     gtk_label_set_text(self->last_used_input, g_settings_get_string(settings, key));
+                   }),
+                   self);
 }
 
 auto create() -> PresetsMenu* {
@@ -290,25 +357,11 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
 
   output_listview = builder->get_widget<Gtk::ListView>("output_listview");
   output_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("output_scrolled_window");
-  output_name = builder->get_widget<Gtk::Text>("output_name");
   import_output = builder->get_widget<Gtk::Button>("import_output");
-  output_search = builder->get_widget<Gtk::SearchEntry>("output_search");
-  last_used_output = builder->get_widget<Gtk::Label>("last_used_output");
 
   input_listview = builder->get_widget<Gtk::ListView>("input_listview");
   input_scrolled_window = builder->get_widget<Gtk::ScrolledWindow>("input_scrolled_window");
-  input_name = builder->get_widget<Gtk::Text>("input_name");
   import_input = builder->get_widget<Gtk::Button>("import_input");
-  input_search = builder->get_widget<Gtk::SearchEntry>("input_search");
-  last_used_input = builder->get_widget<Gtk::Label>("last_used_input");
-
-  // widgets configuration
-
-  setup_listview(output_listview, PresetType::output, output_string_list);
-  setup_listview(input_listview, PresetType::input, input_string_list);
-
-  last_used_output->set_label(settings->get_string("last-used-output-preset"));
-  last_used_input->set_label(settings->get_string("last-used-input-preset"));
 
   // signals connection
 
@@ -317,14 +370,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
   import_output->signal_clicked().connect([=, this]() { import_preset(PresetType::output); });
 
   import_input->signal_clicked().connect([=, this]() { import_preset(PresetType::input); });
-
-  settings->signal_changed("last-used-output-preset").connect([=, this](const auto& key) {
-    last_used_output->set_label(settings->get_string("last-used-output-preset"));
-  });
-
-  settings->signal_changed("last-used-input-preset").connect([=, this](const auto& key) {
-    last_used_input->set_label(settings->get_string("last-used-input-preset"));
-  });
 
   app->presets_manager->user_output_preset_created.connect([=, this](const std::string& preset_name) {
     if (preset_name.empty()) {
@@ -389,10 +434,6 @@ PresetsMenuUi::PresetsMenuUi(BaseObjectType* cobject,
       }
     }
   });
-
-  reset_menu_button_label();
-
-  reference();
 }
 
 PresetsMenuUi::~PresetsMenuUi() {
@@ -438,142 +479,6 @@ void PresetsMenuUi::import_preset(PresetType preset_type) {
 
   dialog->set_modal(true);
   dialog->show();
-}
-
-void PresetsMenuUi::setup_listview(Gtk::ListView* listview,
-                                   PresetType preset_type,
-                                   Glib::RefPtr<Gtk::StringList>& string_list) {
-  string_list->remove(0);
-
-  for (const auto& name : app->presets_manager->get_names(preset_type)) {
-    string_list->append(name);
-  }
-
-  // filter
-
-  auto filter =
-      Gtk::StringFilter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  auto filter_model = Gtk::FilterListModel::create(string_list, filter);
-
-  filter_model->set_incremental(true);
-
-  switch (preset_type) {
-    case PresetType::output: {
-      Glib::Binding::bind_property(output_search->property_text(), filter->property_search());
-      break;
-    }
-    case PresetType::input: {
-      Glib::Binding::bind_property(input_search->property_text(), filter->property_search());
-      break;
-    }
-  }
-
-  // sorter
-
-  const auto sorter =
-      Gtk::StringSorter::create(Gtk::PropertyExpression<Glib::ustring>::create(GTK_TYPE_STRING_OBJECT, "string"));
-
-  const auto sort_list_model = Gtk::SortListModel::create(filter_model, sorter);
-
-  // setting the listview model and factory
-
-  listview->set_model(Gtk::NoSelection::create(sort_list_model));
-
-  auto factory = Gtk::SignalListItemFactory::create();
-
-  listview->set_factory(factory);
-
-  // setting the factory callbacks
-
-  factory->signal_setup().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    const auto b = Gtk::Builder::create_from_resource("/com/github/wwmm/easyeffects/ui/preset_row.ui");
-
-    auto* const top_box = b->get_widget<Gtk::Box>("top_box");
-
-    list_item->set_data("name", b->get_widget<Gtk::Label>("name"));
-    list_item->set_data("apply", b->get_widget<Gtk::Button>("apply"));
-    list_item->set_data("save", b->get_widget<Gtk::Button>("save"));
-    list_item->set_data("remove", b->get_widget<Gtk::Button>("remove"));
-
-    list_item->set_child(*top_box);
-  });
-
-  factory->signal_bind().connect([=, this](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    auto* const label = static_cast<Gtk::Label*>(list_item->get_data("name"));
-    auto* const apply = static_cast<Gtk::Button*>(list_item->get_data("apply"));
-    auto* const save = static_cast<Gtk::Button*>(list_item->get_data("save"));
-    auto* const remove = static_cast<Gtk::Button*>(list_item->get_data("remove"));
-
-    const auto name = list_item->get_item()->get_property<Glib::ustring>("string");
-
-    label->set_text(name);
-
-    auto connection_apply = apply->signal_clicked().connect([=, this]() {
-      switch (preset_type) {
-        case PresetType::input:
-          settings->set_string("last-used-input-preset", name);
-          break;
-        case PresetType::output:
-          settings->set_string("last-used-output-preset", name);
-          break;
-      }
-
-      app->presets_manager->load_preset_file(preset_type, name);
-    });
-
-    auto connection_save =
-        save->signal_clicked().connect([=, this]() { app->presets_manager->save_preset_file(preset_type, name); });
-
-    auto connection_remove =
-        remove->signal_clicked().connect([=, this]() { app->presets_manager->remove(preset_type, name); });
-
-    list_item->set_data("connection_apply", new sigc::connection(connection_apply),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_save", new sigc::connection(connection_save),
-                        Glib::destroy_notify_delete<sigc::connection>);
-
-    list_item->set_data("connection_remove", new sigc::connection(connection_remove),
-                        Glib::destroy_notify_delete<sigc::connection>);
-  });
-
-  factory->signal_unbind().connect([=](const Glib::RefPtr<Gtk::ListItem>& list_item) {
-    for (const auto* conn : {"connection_apply", "connection_save", "connection_remove"}) {
-      if (auto* connection = static_cast<sigc::connection*>(list_item->get_data(conn))) {
-        connection->disconnect();
-
-        list_item->set_data(conn, nullptr);
-      }
-    }
-  });
-}
-
-void PresetsMenuUi::reset_menu_button_label() {
-  const auto names_input = app->presets_manager->get_names(PresetType::input);
-  const auto names_output = app->presets_manager->get_names(PresetType::output);
-
-  if (names_input.empty() && names_output.empty()) {
-    settings->set_string("last-used-output-preset", _("Presets"));
-    settings->set_string("last-used-input-preset", _("Presets"));
-
-    return;
-  }
-
-  for (const auto& name : names_input) {
-    if (name == settings->get_string("last-used-input-preset")) {
-      return;
-    }
-  }
-
-  for (const auto& name : names_output) {
-    if (name == settings->get_string("last-used-output-preset")) {
-      return;
-    }
-  }
-
-  settings->set_string("last-used-output-preset", _("Presets"));
-  settings->set_string("last-used-input-preset", _("Presets"));
 }
 
 void PresetsMenuUi::on_show() {

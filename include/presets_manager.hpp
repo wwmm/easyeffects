@@ -63,11 +63,11 @@ class PresetsManager {
   auto operator=(const PresetsManager&&) -> PresetsManager& = delete;
   ~PresetsManager();
 
-  auto get_names(const PresetType& preset_type) -> std::vector<Glib::ustring>;
+  auto get_names(const PresetType& preset_type) -> std::vector<std::string>;
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<Glib::ustring>;
 
-  void add(const PresetType& preset_type, const Glib::ustring& name);
+  void add(const PresetType& preset_type, const std::string& name);
 
   void save_preset_file(const PresetType& preset_type, const Glib::ustring& name);
 
