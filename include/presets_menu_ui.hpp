@@ -20,8 +20,6 @@
 #pragma once
 
 #include <adwaita.h>
-#include <memory>
-#include <unordered_map>
 #include "application.hpp"
 #include "preset_type.hpp"
 
@@ -40,37 +38,3 @@ auto create() -> PresetsMenu*;
 void setup(PresetsMenu* self, app::Application* application);
 
 }  // namespace ui::presets_menu
-
-#include <glibmm/i18n.h>
-
-class PresetsMenuUi : public Gtk::Popover {
- public:
-  PresetsMenuUi(BaseObjectType* cobject,
-                const Glib::RefPtr<Gtk::Builder>& builder,
-                Glib::RefPtr<Gio::Settings> refSettings,
-                Application* application);
-  PresetsMenuUi(const PresetsMenuUi&) = delete;
-  auto operator=(const PresetsMenuUi&) -> PresetsMenuUi& = delete;
-  PresetsMenuUi(const PresetsMenuUi&&) = delete;
-  auto operator=(const PresetsMenuUi&&) -> PresetsMenuUi& = delete;
-  ~PresetsMenuUi() override;
-
-  static auto create(Application* app) -> PresetsMenuUi*;
-
- private:
-  inline static const std::string log_tag = "presets_menu_ui: ";
-
-  Glib::RefPtr<Gio::Settings> settings;
-
-  Application* app = nullptr;
-
-  Gtk::Stack* stack = nullptr;
-
-  Gtk::Button *import_output = nullptr, *import_input = nullptr;
-
-  Glib::RefPtr<Gtk::SelectionModel> stack_model;
-
-  std::vector<sigc::connection> connections;
-
-  void import_preset(PresetType preset_type);
-};

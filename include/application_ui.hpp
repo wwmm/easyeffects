@@ -73,7 +73,6 @@ class ApplicationUi : public Gtk::ApplicationWindow {
 
   std::vector<sigc::connection> connections;
 
-  PresetsMenuUi* presets_menu_ui = nullptr;
   StreamOutputEffectsUi* soe_ui = nullptr;
   StreamInputEffectsUi* sie_ui = nullptr;
   PipeInfoUi* pipe_info_ui = nullptr;

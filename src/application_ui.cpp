@@ -186,7 +186,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
   toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
 
-  presets_menu_ui = PresetsMenuUi::create(app);
   GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
@@ -195,8 +194,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   soe_ui = StreamOutputEffectsUi::add_to_stack(stack, app->soe.get(), icon_theme);
   sie_ui = StreamInputEffectsUi::add_to_stack(stack, app->sie.get(), icon_theme);
   // pipe_info_ui = PipeInfoUi::add_to_stack(stack, app->pm.get(), app->presets_manager.get());
-
-  presets_menu_button->set_popover(*presets_menu_ui);
 
   soe_ui->set_transient_window(this);
   sie_ui->set_transient_window(this);
@@ -244,8 +241,6 @@ ApplicationUi::~ApplicationUi() {
   for (auto& c : connections) {
     c.disconnect();
   }
-
-  presets_menu_ui->unreference();
 
   util::debug(log_tag + "destroyed");
 }
