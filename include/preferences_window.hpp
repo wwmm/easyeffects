@@ -20,7 +20,10 @@
 #pragma once
 
 #include <adwaita.h>
+#include <filesystem>
+#include <fstream>
 #include <string>
+#include "util.hpp"
 
 namespace ui::preferences_window {
 

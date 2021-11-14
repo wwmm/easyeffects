@@ -17,6 +17,43 @@ struct _PreferencesWindow {
 
 G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
 
+auto on_enable_autostart(GtkSwitch* obj, gboolean state, gpointer user_data) -> gboolean {
+  std::filesystem::path autostart_dir{g_get_user_config_dir() + "/autostart"s};
+
+  if (!std::filesystem::is_directory(autostart_dir)) {
+    std::filesystem::create_directories(autostart_dir);
+  }
+
+  std::filesystem::path autostart_file{g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s};
+
+  if (state != 0) {
+    if (!std::filesystem::exists(autostart_file)) {
+      std::ofstream ofs{autostart_file};
+
+      ofs << "[Desktop Entry]\n";
+      ofs << "Name=EasyEffects\n";
+      ofs << "Comment=EasyEffects Service\n";
+      ofs << "Exec=easyeffects --gapplication-service\n";
+      ofs << "Icon=easyeffects\n";
+      ofs << "StartupNotify=false\n";
+      ofs << "Terminal=false\n";
+      ofs << "Type=Application\n";
+
+      ofs.close();
+
+      util::debug(log_tag + "autostart file created"s);
+    }
+  } else {
+    if (std::filesystem::exists(autostart_file)) {
+      std::filesystem::remove(autostart_file);
+
+      util::debug(log_tag + "autostart file removed"s);
+    }
+  }
+
+  return 0;
+}
+
 void preferences_window_class_init(PreferencesWindowClass* klass) {
   auto* widget_class = GTK_WIDGET_CLASS(klass);
 
@@ -29,9 +66,7 @@ void preferences_window_class_init(PreferencesWindowClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, shutdown_on_window_close);
   gtk_widget_class_bind_template_child(widget_class, PreferencesWindow, use_cubic_volumes);
 
-  //   gtk_widget_class_bind_template_callback(widget_class, create_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, import_output_preset);
-  //   gtk_widget_class_bind_template_callback(widget_class, import_input_preset);
+  gtk_widget_class_bind_template_callback(widget_class, on_enable_autostart);
 }
 
 void preferences_window_init(PreferencesWindow* self) {
@@ -46,21 +81,9 @@ void preferences_window_init(PreferencesWindow* self) {
                   G_SETTINGS_BIND_DEFAULT);
   g_settings_bind(self->settings, "use-cubic-volumes", self->use_cubic_volumes, "active", G_SETTINGS_BIND_DEFAULT);
 
-  //   g_signal_connect(self->settings, "changed::last-used-output-preset",
-  //                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                      auto self = static_cast<PreferencesWindow*>(user_data);
-
-  //                      gtk_label_set_text(self->last_used_output, g_settings_get_string(settings, key));
-  //                    }),
-  //                    self);
-
-  //   g_signal_connect(self->settings, "changed::last-used-input-preset",
-  //                    G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                      auto self = static_cast<PreferencesWindow*>(user_data);
-
-  //                      gtk_label_set_text(self->last_used_input, g_settings_get_string(settings, key));
-  //                    }),
-  //                    self);
+  gtk_switch_set_active(self->enable_autostart,
+                        static_cast<gboolean>(std::filesystem::is_regular_file(
+                            g_get_user_config_dir() + "/autostart/easyeffects-service.desktop"s)));
 }
 
 auto create() -> PreferencesWindow* {

@@ -198,7 +198,6 @@ ApplicationUi::ApplicationUi(BaseObjectType* cobject,
   toggle_input = builder->get_widget<Gtk::ToggleButton>("toggle_input");
   toggle_pipe_info = builder->get_widget<Gtk::ToggleButton>("toggle_pipe_info");
 
-  GeneralSettingsUi::add_to_stack(stack_menu_settings, app);
   SpectrumSettingsUi::add_to_stack(stack_menu_settings, app);
 
   auto icon_theme = setup_icon_theme();
