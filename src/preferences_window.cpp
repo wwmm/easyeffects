@@ -10,7 +10,12 @@ struct _PreferencesWindow {
   AdwPreferencesWindow parent_instance{};
 
   GtkSwitch *enable_autostart = nullptr, *process_all_inputs = nullptr, *process_all_outputs = nullptr,
-            *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr;
+            *theme_switch = nullptr, *shutdown_on_window_close = nullptr, *use_cubic_volumes = nullptr,
+            *spectrum_show = nullptr, *fill = nullptr, *spectrum_show_bar_border = nullptr;
+
+  GtkColorButton *spectrum_color_button = nullptr, *spectrum_axis_color_button = nullptr;
+
+  GtkComboBoxText* spectrum_type = nullptr;
 
   GSettings* settings = nullptr;
 };

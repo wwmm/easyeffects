@@ -107,7 +107,7 @@
                                 <property name="title" translatable="yes">Enabled</property>
 
                                 <child>
-                                    <object class="GtkSwitch" id="switch_spectrum_show">
+                                    <object class="GtkSwitch" id="spectrum_show">
                                         <property name="valign">center</property>
                                     </object>
                                 </child>
@@ -119,6 +119,22 @@
                 <child>
                     <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Style</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Shape</property>
+
+                                <child>
+                                    <object class="GtkComboBoxText" id="spectrum_type">
+                                        <property name="valign">center</property>
+                                        <items>
+                                            <item translatable="yes">Bars</item>
+                                            <item translatable="yes">Lines</item>
+                                        </items>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Points</property>
