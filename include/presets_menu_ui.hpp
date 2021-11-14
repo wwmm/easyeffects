@@ -20,6 +20,8 @@
 #pragma once
 
 #include <adwaita.h>
+#include <memory>
+#include <unordered_map>
 #include "application.hpp"
 #include "preset_type.hpp"
 

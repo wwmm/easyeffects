@@ -103,23 +103,35 @@ void import_preset(PresetsMenu* self, PresetType preset_type) {
 
   gtk_file_chooser_set_filter(GTK_FILE_CHOOSER(dialog), filter);
 
-  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* native, int response, PresetsMenu* self) {
+  switch (preset_type) {
+    case PresetType::output: {
+      g_object_set_data(G_OBJECT(dialog), "preset-type", const_cast<char*>("output"));
+      break;
+    }
+    case PresetType::input: {
+      g_object_set_data(G_OBJECT(dialog), "preset-type", const_cast<char*>("input"));
+      break;
+    }
+  }
+
+  g_signal_connect(dialog, "response", G_CALLBACK(+[](GtkNativeDialog* dialog, int response, PresetsMenu* self) {
                      if (response == GTK_RESPONSE_ACCEPT) {
-                       auto* chooser = GTK_FILE_CHOOSER(native);
+                       auto* chooser = GTK_FILE_CHOOSER(dialog);
                        auto* file = gtk_file_chooser_get_file(chooser);
                        auto* path = g_file_get_path(file);
 
-                       util::warning(path);
+                       auto preset_type = static_cast<char*>(g_object_get_data(G_OBJECT(dialog), "preset-type"));
 
-                       //  self->application->presets_manager->import(preset_type, path);
-
-                       //  if constexpr (preset_type == PresetType::output) {
-                       //  }
+                       if (g_strcmp0(preset_type, "output") == 0) {
+                         self->application->presets_manager->import(PresetType::output, path);
+                       } else if (g_strcmp0(preset_type, "input") == 0) {
+                         self->application->presets_manager->import(PresetType::input, path);
+                       }
 
                        g_object_unref(file);
                      }
 
-                     g_object_unref(native);
+                     g_object_unref(dialog);
                    }),
                    self);
 
